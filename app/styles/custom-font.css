@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'IBMPlexSerif';
+  font-display: swap;
+  font-weight: 400;
+  src: url('./fonts/IBMPlexSerif-Text.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBMPlexSerif';
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+  src: url('./fonts/IBMPlexSerif-TextItalic.woff2') format('woff2');
+  
+}
+@font-face {
+  font-family: 'Tarzan';
+  /* font-display: swap; */
+  font-weight: 700;
+  font-style: italic;
+  src: url('./fonts/Tarzan.ttf') format('ttf');
+
+}
+
+@font-face {
+
+  font-family: 'GT-America-Extended-Regular';
+
+  src: url('/src/fonts/GT-America-Extended-Regular.woff') format('woff');
+
+  font-weight: 500;
+
+  font-style: normal;
+
+  font-display: swap;
+
+}
