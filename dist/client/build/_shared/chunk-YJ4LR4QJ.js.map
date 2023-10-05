@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../app/lib/const.js"],
+  "sourcesContent": ["// REMIX HMR BEGIN\nimport * as __hmr__ from \"remix:hmr\";\nif (import.meta) {\nimport.meta.hot = __hmr__.createHotContext(\n//@ts-expect-error\n\"app\\\\lib\\\\const.js\"\n);\nimport.meta.hot.lastModified = \"1696490276869.27\";\n}\n// REMIX HMR END\n\nexport const PAGINATION_SIZE = 8;\r\nexport const DEFAULT_GRID_IMG_LOAD_EAGER_COUNT = 4;\r\nexport const ATTR_LOADING_EAGER = 'eager';\r\n\r\nexport function getImageLoadingPriority(\r\n  index,\r\n  maxEagerLoadCount = DEFAULT_GRID_IMG_LOAD_EAGER_COUNT,\r\n) {\r\n  return index < maxEagerLoadCount ? ATTR_LOADING_EAGER : undefined;\r\n}\r\n"],
+  "mappings": ";;;;;AAEA,IAAI,aAAa;AACjB,cAAY,MAAc;AAAA;AAAA,IAE1B;AAAA,EACA;AACA,cAAY,IAAI,eAAe;AAC/B;AAIO,IAAM,oCAAoC;AAC1C,IAAM,qBAAqB;AAE3B,SAAS,wBACd,OACA,oBAAoB,mCACpB;AACA,SAAO,QAAQ,oBAAoB,qBAAqB;AAC1D;",
+  "names": []
+}

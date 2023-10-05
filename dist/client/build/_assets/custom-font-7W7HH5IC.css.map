@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../app/styles/custom-font.css"],
+  "sourcesContent": ["@font-face {\r\n  font-family: 'IBMPlexSerif';\r\n  font-display: swap;\r\n  font-weight: 400;\r\n  src: url('./fonts/IBMPlexSerif-Text.woff2') format('woff2');\r\n}\r\n@font-face {\r\n  font-family: 'IBMPlexSerif';\r\n  font-display: swap;\r\n  font-weight: 400;\r\n  font-style: italic;\r\n  src: url('./fonts/IBMPlexSerif-TextItalic.woff2') format('woff2');\r\n  \r\n}\r\n@font-face {\r\n  font-family: 'Tarzan';\r\n  /* font-display: swap; */\r\n  font-weight: 700;\r\n  font-style: italic;\r\n  src: url('./fonts/Tarzan.ttf') format('ttf');\r\n\r\n}\r\n\r\n@font-face {\r\n\r\n  font-family: 'GT-America-Extended-Regular';\r\n\r\n  src: url('/src/fonts/GT-America-Extended-Regular.woff') format('woff');\r\n\r\n  font-weight: 500;\r\n\r\n  font-style: normal;\r\n\r\n  font-display: swap;\r\n\r\n}"],
+  "mappings": ";AAAA;AACE;AACA;AACA;AACA;;AAEF;AACE;AACA;AACA;AACA;AACA;;AAGF;AACE;AAEA;AACA;AACA;;AAIF;AAEE;AAEA;AAEA;AAEA;AAEA;;",
+  "names": []
+}

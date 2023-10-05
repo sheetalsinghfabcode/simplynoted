@@ -128,11 +128,12 @@ export default function Product() {
   const input = document.querySelector('.inputText');
   const input2 = document.querySelector('.inputText2');
   console.log(input, "PPPPPPPPPPPPPPPPPP");
-  const output = document.querySelector('.output');
-  const output2 = document.querySelector('.output2');
-  if(output){
+  let output = document.querySelector('.output');
+     if(output){
   output.innerHTML='Enter your data'
   }
+  const output2 = document.querySelector('.output2');
+ 
   const outputContainer = document.querySelector('.outerSec');
   const outputContainer2 = document.querySelector('.secDiv');
   // const data = document.querySelector('#customText')
@@ -199,6 +200,8 @@ export default function Product() {
   }
   const ref = useRef(null);
   useEffect(() => {
+  //   output = document.querySelector('.output');
+  
     const element = ref.current;
     console.log(element,'refElement');
     console.log(element.id);

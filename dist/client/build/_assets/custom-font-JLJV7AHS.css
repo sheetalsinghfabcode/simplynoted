@@ -1,0 +1,28 @@
+/* app/styles/custom-font.css */
+@font-face {
+  font-family: IBMPlexSerif;
+  font-display: swap;
+  font-weight: 400;
+  src: url(/build/_assets/IBMPlexSerif-Text-YFMZNZW6.woff2) format("woff2");
+}
+@font-face {
+  font-family: IBMPlexSerif;
+  font-display: swap;
+  font-weight: 400;
+  font-style: italic;
+  src: url(/build/_assets/IBMPlexSerif-TextItalic-CS6L5H7S.woff2) format("woff2");
+}
+@font-face {
+  font-family: Tarzan;
+  font-weight: 700;
+  font-style: italic;
+  src: url(/build/_assets/Tarzan-M5AP7BEW.ttf) format("ttf");
+}
+@font-face {
+  font-family: GT-America-Extended-Regular;
+  src: url(/src/fonts/GT-America-Extended-Regular.woff) format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: \a0swap;
+}
+/*# sourceMappingURL=/build/_assets/custom-font-7W7HH5IC.css.map */
