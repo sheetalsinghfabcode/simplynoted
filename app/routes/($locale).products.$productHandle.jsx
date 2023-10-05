@@ -127,7 +127,7 @@ export default function Product() {
   };
   const input = document.querySelector('.inputText');
   const input2 = document.querySelector('.inputText2');
-  console.log(input, "PPPPPPPPPPPPPPPPPPPPPPPPPPP");
+  console.log(input, "PPPPPPPPPPPPPPPPPP");
   const output = document.querySelector('.output');
   const output2 = document.querySelector('.output2');
   if(output){
