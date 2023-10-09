@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'react-datepicker/dist/react-datepicker';
 
 /* Tokens */
 :root {
@@ -365,7 +366,7 @@ shop-pay-button {
   width: 100%;
   border: none;
   background: white;
-  max-width: 570px;
+  max-width: 600px;
   /* padding: 10px 20px;
   font-family: astTracy;
   font-size: 60px;
@@ -403,7 +404,7 @@ shop-pay-button {
 }
   #example-one-input2 {
     height: 100px;
-    width: 60%;
+    width: 50%;
     border-radius: 6px;
     padding: 5px 10px;
 }
@@ -418,7 +419,52 @@ shop-pay-button {
   word-break: break-all; word-wrap: break-word;
   
 }
+.price-breakdown td {
+  padding: 4px 16px;
+  border: 1px solid #ddd;
+  font-size: 14px;
 
+}
+.price-breakdown td.label {
+  font-weight: 600;
+}
+
+.address-grid {
+  border: 2px solid #aaaaaa;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f1f1f1;
+  max-height: 600px;
+  overflow-y: auto;
+}
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 600px; /* Should be removed. Only for demonstration */
+}
+
+#aiTextArea{
+  font-size: 18px;
+    height: 300px;
+    line-height: 1.52rem;
+    width: 100%;
+    border: 1px dashed #999999;
+    outline: none;
+    padding: 10px 15px;
+    overflow-y: auto;
+    resize: none;
+}
+.ai-generate button {
+  width: 50%;
+  height: 50px;
+  background-color: #ef6e6e;
+  color: #fff;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
 @font-face {
   font-family: 'Tarzan';
   /* font-display: swap; */

@@ -1,9 +1,9 @@
-import {useParams, Form, Await, useMatches} from '@remix-run/react';
-import {useWindowScroll} from 'react-use';
-import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo} from 'react';
-import {CartForm,Image} from '@shopify/hydrogen';
-import  LogoShopify from "../../assets/Image/simply-noted-logo.avif"
+import { useParams, Form, Await, useMatches } from '@remix-run/react';
+import { useWindowScroll } from 'react-use';
+import { Disclosure } from '@headlessui/react';
+import { Suspense, useEffect, useMemo } from 'react';
+import { CartForm, Image } from '@shopify/hydrogen';
+import LogoShopify from "../../assets/Image/simply-noted-logo.avif"
 import CartShopify from '../../assets/Image/cart-icon.png'
 
 
@@ -26,13 +26,13 @@ import {
   CartLoading,
   Link,
 } from '~/components';
-import {useIsHomePath} from '~/lib/utils';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useCartFetchers} from '~/hooks/useCartFetchers';
-
-export function Layout({children, layout}) {
-  const {headerMenu, footerMenu} = layout;
- return (
+import { useIsHomePath } from '~/lib/utils';
+import { useIsHydrated } from '~/hooks/useIsHydrated';
+import { useCartFetchers } from '~/hooks/useCartFetchers';
+let customerid
+export function Layout({ children, layout }) {
+  const { headerMenu, footerMenu } = layout;
+  return (
     <>
       <div className="flex flex-col min-h-screen ">
         <div className="">
@@ -50,7 +50,7 @@ export function Layout({children, layout}) {
   );
 }
 
-function Header({title, menu}) {
+function Header({ title, menu }) {
   const isHome = useIsHomePath();
 
   const {
@@ -95,7 +95,7 @@ function Header({title, menu}) {
   );
 }
 
-function CartDrawer({isOpen, onClose}) {
+function CartDrawer({ isOpen, onClose }) {
   const [root] = useMatches();
 
   return (
@@ -111,7 +111,7 @@ function CartDrawer({isOpen, onClose}) {
   );
 }
 
-export function MenuDrawer({isOpen, onClose, menu}) {
+export function MenuDrawer({ isOpen, onClose, menu }) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -121,7 +121,7 @@ export function MenuDrawer({isOpen, onClose, menu}) {
   );
 }
 
-function MenuMobileNav({menu, onClose}) {
+function MenuMobileNav({ menu, onClose }) {
   return (
     <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
       {/* Top level menu items */}
@@ -131,7 +131,7 @@ function MenuMobileNav({menu, onClose}) {
             to={item.to}
             target={item.target}
             onClick={onClose}
-            className={({isActive}) =>
+            className={({ isActive }) =>
               isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
             }
           >
@@ -145,7 +145,7 @@ function MenuMobileNav({menu, onClose}) {
   );
 }
 
-function MobileHeader({title, isHome, openCart, openMenu}) {
+function MobileHeader({ title, isHome, openCart, openMenu }) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -153,11 +153,10 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome
+      className={`${isHome
           ? 'bg-primary'
           : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+        } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -211,36 +210,37 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({isHome, menu, openCart, title}) {
+function DesktopHeader({ isHome, menu, openCart, title }) {
 
+useEffect(()=>{
+  customerid = localStorage.getItem('customerId')
+console.log(customerid,'LoginScreen000000000000');
+},[])
 
-
-  console.log("title",title)
-  console.log("menu",menu)
+  console.log("title", title)
+  console.log("menu", menu)
   const params = useParams();
-  const {y} = useWindowScroll();
+  const { y } = useWindowScroll();
   return (
     <header
       role="banner"
-      className={`${
-        isHome
+      className={`${isHome
           ? ' dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
           : 'bg-contrast/80 text-primary'
-      } ${
-        !isHome && y > 50 && ' shadow-lightHeader'
-      } hidden h-nav lg:flex items-center  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+        } ${!isHome && y > 50 && ' shadow-lightHeader'
+        } hidden h-nav lg:flex items-center  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
     >
       <div className="flex gap-12  items-center">
         <Link className="font-bold" to="/" prefetch="intent">
           {/* {title} */}
           <img
-          src={LogoShopify}
-          style={{
-            position: 'relative',
-            height: 'auto',
-            marginleft: "-10px",
-          }}
-         />
+            src={LogoShopify}
+            style={{
+              position: 'relative',
+              height: 'auto',
+              marginleft: "-10px",
+            }}
+          />
         </Link>
         <nav className="flex gap-8 text-black flex gap-8 text-black font-karla text-17 leading-1.1  text-black-800 font-bold tracking-tight">
           {/* Top level menu items */}
@@ -250,76 +250,76 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               to={item.to}
               target={item.target}
               prefetch="intent"
-              className={({isActive}) =>
+              className={({ isActive }) =>
                 isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
               }
             >
-        {item.title === "Send a Card" ? (
-        <div class="dropdown">
-       <div>
-      Send a Card
-       </div>
-      <div class="dropdown-content">
-    
-     <p className='card'  onClick={() => window.open("/card","_self")}
-      >Card</p>
+              {item.title === "Send a Card" ? (
+                <div class="dropdown">
+                  <div>
+                    Send a Card
+                  </div>
+                  <div class="dropdown-content">
 
-      <p>Item 2</p>
-      <p>Item 3</p>
-    </div>
-  </div>
-) : null}
+                    <p className='card' onClick={() => window.open("/card", "_self")}
+                    >Card</p>
 
-{item.title === "Pricing" ? (
-  <div class="dropdown">
-    <div>
-     Pricing
-    </div>
-    <div class="dropdown-content">
-      <p>Item 1</p>
-      <p> Item 2</p>
-      <p>Item 3</p>
-    </div>
-  </div>
-) : null}
+                    <p>Item 2</p>
+                    <p>Item 3</p>
+                  </div>
+                </div>
+              ) : null}
 
-{["Send a Card", "Pricing"].includes(item.title) ? null : item.title}
+              {item.title === "Pricing" ? (
+                <div class="dropdown">
+                  <div>
+                    Pricing
+                  </div>
+                  <div class="dropdown-content">
+                    <p>Item 1</p>
+                    <p> Item 2</p>
+                    <p>Item 3</p>
+                  </div>
+                </div>
+              ) : null}
 
-              
+              {["Send a Card", "Pricing"].includes(item.title) ? null : item.title}
+
+
             </Link>
           ))}
         </nav>
       </div>
       <div className="flex items-center gap-1">
-      <div className='tooltip'>
-      <img
-      src={CartShopify}
-      alt="cart-icon"
-      style={{
-      width: '40px',
-      height: '38px',
-      
-      }}
-     />
-    <span class="tooltiptext">Cart  </span>
-  
-</div>
+        <div className='tooltip'>
+          <img
+            src={CartShopify}
+            alt="cart-icon"
+            style={{
+              width: '40px',
+              height: '38px',
 
-<button
-     className="request-button"
-     type="button"
-      onClick={() => window.location.href = "https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb"}
-      >
-      Request a Sample
-       </button>
+            }}
+          />
+          <span class="tooltiptext">Cart  </span>
+
+        </div>
+
+        <button
+          className="request-button"
+          type="button"
+          onClick={() => window.location.href = "https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb"}
+        >
+          Request a Sample
+        </button>
         <button className='login-button'
-         type="button"
+          type="button"
           onClick={() => window.open("/account",
-           "_self")}
-            >
+            "_self")}
+        >
           Login →
-          </button>
-       {/* <Form
+        </button>
+        {/* <Form
           method="get"
           action={params.locale ? `/${params.locale}/search` : '/search'}
           className="flex items-center gap-2"
@@ -343,13 +343,13 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           </button>
         </Form> */}
         {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
-       
+
       </div>
     </header>
   );
 }
 
-function AccountLink({className}) {
+function AccountLink({ className }) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -363,7 +363,7 @@ function AccountLink({className}) {
   );
 }
 
-function CartCount({isHome, openCart}) {
+function CartCount({ isHome, openCart }) {
   const [root] = useMatches();
 
   return (
@@ -381,7 +381,7 @@ function CartCount({isHome, openCart}) {
   );
 }
 
-function Badge({openCart, dark, count}) {
+function Badge({ openCart, dark, count }) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -389,11 +389,10 @@ function Badge({openCart, dark, count}) {
       <>
         <IconBag />
         <div
-          className={`${
-            dark
+          className={`${dark
               ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
               : 'text-contrast bg-primary'
-          } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
+            } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
         </div>
@@ -408,18 +407,18 @@ function Badge({openCart, dark, count}) {
       className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
     >
       {BadgeCounter}
-    </button>) 
+    </button>)
     : (
-    <Link
-      to="/cart"
-      className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-    >
-      {BadgeCounter}
-    </Link>
-  );
+      <Link
+        to="/cart"
+        className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
+      >
+        {BadgeCounter}
+      </Link>
+    );
 }
 
-function Footer({menu}) {
+function Footer({ menu }) {
   const isHome = useIsHomePath();
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
@@ -447,7 +446,7 @@ function Footer({menu}) {
   );
 }
 
-function FooterLink({item}) {
+function FooterLink({ item }) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -463,7 +462,7 @@ function FooterLink({item}) {
   );
 }
 
-function FooterMenu({menu}) {
+function FooterMenu({ menu }) {
   const styles = {
     section: 'grid gap-4',
     nav: 'grid gap-2 pb-6',
@@ -474,7 +473,7 @@ function FooterMenu({menu}) {
       {(menu?.items || []).map((item) => (
         <section key={item.id} className={styles.section}>
           <Disclosure>
-            {({open}) => (
+            {({ open }) => (
               <>
                 <Disclosure.Button className="text-left md:cursor-default">
                   <Heading className="flex justify-between" size="lead" as="h3">
@@ -488,9 +487,8 @@ function FooterMenu({menu}) {
                 </Disclosure.Button>
                 {item?.items?.length > 0 ? (
                   <div
-                    className={`${
-                      open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                    } overflow-hidden transition-all duration-300`}
+                    className={`${open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                      } overflow-hidden transition-all duration-300`}
                   >
                     <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
                       <Disclosure.Panel static>

@@ -84,6 +84,13 @@ export default function Login() {
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
+  async function setVar(){
+    if(typeof window !== 'undefined'){
+      console.log('wwwwwwww');
+      localStorage.setItem('resultVar','result')
+      console.log('dddddddd');
+    }
+  }
   return (
     <div className="flex justify-center my-24 px-4">
       <div className="max-w-md w-full">
@@ -161,7 +168,7 @@ export default function Login() {
             )}
           </div>
           <div className="flex items-center justify-between">
-            <button
+            <button onClick={()=>setVar()}
               className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}

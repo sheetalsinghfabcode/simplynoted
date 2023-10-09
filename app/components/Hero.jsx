@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import {MediaFile} from '@shopify/hydrogen';
-// import {Heading, Text, Link} from '~/components';
+import {Heading, Text, Link} from '~/components';
 
 /**
  * Hero component that renders metafields attached to collection resources
