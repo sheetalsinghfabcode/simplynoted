@@ -412,11 +412,12 @@ shop-pay-button {
   margin: 10px; width:50%;
 }
 .output{
-  word-break: break-all; word-wrap: break-word;
+  word-break: break-all; word-wrap: break-word;    white-space: pre-wrap;
+
   
 }
 .output2{
-  word-break: break-all; word-wrap: break-word;
+  word-break: break-all; word-wrap: break-word;  white-space: pre-wrap;
   
 }
 .price-breakdown td {
@@ -463,7 +464,18 @@ shop-pay-button {
   font-size: 16px;
   border: 0px;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 10px; 
+   transition: all 0.5s ease-in-out;
+
+}
+.custom_testing {
+  background-color: #f1f1f1;
+  border: solid 2px #aaa;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 375px;
 }
 @font-face {
   font-family: 'Tarzan';
