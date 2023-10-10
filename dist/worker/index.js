@@ -753,7 +753,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         }
         return dispatcher.useContext(Context);
       }
-      function useState22(initialState) {
+      function useState26(initialState) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useState(initialState);
       }
@@ -765,7 +765,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useRef(initialValue);
       }
-      function useEffect26(create, deps) {
+      function useEffect27(create, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useEffect(create, deps);
       }
@@ -1294,7 +1294,7 @@ Check the top-level render call using <` + parentName + ">.");
         toArray,
         only: onlyChild
       };
-      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext5, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef6, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback9, exports.useContext = useContext7, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect26, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect3, exports.useMemo = useMemo14, exports.useReducer = useReducer, exports.useRef = useRef18, exports.useState = useState22, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext5, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef6, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback9, exports.useContext = useContext7, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect27, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect3, exports.useMemo = useMemo14, exports.useReducer = useReducer, exports.useRef = useRef18, exports.useState = useState26, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
     })();
   }
 });
@@ -5250,7 +5250,7 @@ var require_server = __commonJS({
   "node_modules/react-router-dom/server.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: !0 });
-    var React13 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouter = (init_dist(), __toCommonJS(dist_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports2));
+    var React16 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouter = (init_dist(), __toCommonJS(dist_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports2));
     function _interopNamespace(e4) {
       if (e4 && e4.__esModule)
         return e4;
@@ -5267,7 +5267,7 @@ var require_server = __commonJS({
         }
       }), n6.default = e4, Object.freeze(n6);
     }
-    var React__namespace = /* @__PURE__ */ _interopNamespace(React13);
+    var React__namespace = /* @__PURE__ */ _interopNamespace(React16);
     function StaticRouter({
       basename,
       children,
@@ -5496,7 +5496,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React16 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -6990,7 +6990,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React13.Children.forEach(children, function(child) {
+        return React16.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -8138,7 +8138,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function basicStateReducer(state, action10) {
         return typeof action10 == "function" ? action10(state) : action10;
       }
-      function useState22(initialState) {
+      function useState26(initialState) {
         return currentHookNameInDev = "useState", useReducer(
           basicStateReducer,
           // useReducer has a special case to support lazy useState initializers
@@ -8258,7 +8258,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useMemo: useMemo14,
         useReducer,
         useRef: useRef18,
-        useState: useState22,
+        useState: useState26,
         useInsertionEffect: noop,
         useLayoutEffect: useLayoutEffect3,
         useCallback: useCallback9,
@@ -9077,7 +9077,7 @@ var require_react_dom_server_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React16 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -10586,7 +10586,7 @@ var require_react_dom_server_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React13.Children.forEach(children, function(child) {
+        return React16.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -11690,7 +11690,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function basicStateReducer(state, action10) {
         return typeof action10 == "function" ? action10(state) : action10;
       }
-      function useState22(initialState) {
+      function useState26(initialState) {
         return currentHookNameInDev = "useState", useReducer(
           basicStateReducer,
           // useReducer has a special case to support lazy useState initializers
@@ -11810,7 +11810,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useMemo: useMemo14,
         useReducer,
         useRef: useRef18,
-        useState: useState22,
+        useState: useState26,
         useInsertionEffect: noop,
         useLayoutEffect: useLayoutEffect3,
         useCallback: useCallback9,
@@ -12649,14 +12649,14 @@ var require_react_jsx_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React16 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -13057,7 +13057,7 @@ var require_react_jsx_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV54(type, config, maybeKey, source, self) {
+      function jsxDEV59(type, config, maybeKey, source, self) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config, self));
@@ -13204,7 +13204,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV54(type, props, key, source, self);
+          var element = jsxDEV59(type, props, key, source, self);
           if (element == null)
             return element;
           if (validType) {
@@ -13509,14 +13509,14 @@ var require_react_jsx_dev_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React16 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -13917,7 +13917,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV54(type, config, maybeKey, source, self) {
+      function jsxDEV59(type, config, maybeKey, source, self) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config, self));
@@ -14064,7 +14064,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV54(type, props, key, source, self);
+          var element = jsxDEV59(type, props, key, source, self);
           if (element == null)
             return element;
           if (validType) {
@@ -14388,7 +14388,7 @@ var require_react_dom_development = __commonJS({
     (function() {
       "use strict";
       typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-      var React13 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+      var React16 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
       function setSuppressWarning(newSuppressWarning) {
         suppressWarning = newSuppressWarning;
       }
@@ -14416,7 +14416,7 @@ var require_react_dom_development = __commonJS({
           argsWithFormat.unshift("Warning: " + format), Function.prototype.apply.call(console[level], console, argsWithFormat);
         }
       }
-      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment36 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
+      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment37 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
       function registerTwoPhaseEvent(registrationName, dependencies) {
         registerDirectEvent(registrationName, dependencies), registerDirectEvent(registrationName + "Capture", dependencies);
       }
@@ -15266,7 +15266,7 @@ Error generating stack: ` + x5.message + `
             return "DehydratedFragment";
           case ForwardRef:
             return getWrappedName$1(type, type.render, "ForwardRef");
-          case Fragment36:
+          case Fragment37:
             return "Fragment";
           case HostComponent:
             return type;
@@ -15510,7 +15510,7 @@ Error generating stack: ` + x5.message + `
       }
       var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
       function validateProps(element, props) {
-        props.value == null && (typeof props.children == "object" && props.children !== null ? React13.Children.forEach(props.children, function(child) {
+        props.value == null && (typeof props.children == "object" && props.children !== null ? React16.Children.forEach(props.children, function(child) {
           child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
       }
@@ -21206,7 +21206,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
             callback !== null && (effect.callback = null, callCallback(callback, instance));
           }
       }
-      var fakeInternalInstance = {}, emptyRefsObject = new React13.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
+      var fakeInternalInstance = {}, emptyRefsObject = new React16.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
       {
         didWarnAboutStateAssignmentForComponent = /* @__PURE__ */ new Set(), didWarnAboutUninitializedState = /* @__PURE__ */ new Set(), didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = /* @__PURE__ */ new Set(), didWarnAboutLegacyLifecyclesAndDerivedState = /* @__PURE__ */ new Set(), didWarnAboutDirectlyAssigningPropsToState = /* @__PURE__ */ new Set(), didWarnAboutUndefinedDerivedState = /* @__PURE__ */ new Set(), didWarnAboutContextTypeAndContextTypes = /* @__PURE__ */ new Set(), didWarnAboutInvalidateContextType = /* @__PURE__ */ new Set();
         var didWarnOnInvalidCallback = /* @__PURE__ */ new Set();
@@ -21595,7 +21595,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
           }
         }
         function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-          if (current2 === null || current2.tag !== Fragment36) {
+          if (current2 === null || current2.tag !== Fragment37) {
             var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
             return created.return = returnFiber, created;
           } else {
@@ -21823,7 +21823,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
             if (child.key === key) {
               var elementType = element.type;
               if (elementType === REACT_FRAGMENT_TYPE) {
-                if (child.tag === Fragment36) {
+                if (child.tag === Fragment37) {
                   deleteRemainingChildren(returnFiber, child.sibling);
                   var existing = useFiber(child, element.props.children);
                   return existing.return = returnFiber, existing._debugSource = element._source, existing._debugOwner = element._owner, existing;
@@ -24413,7 +24413,7 @@ Check the render method of \`` + ownerName + "`.");
             var type = workInProgress2.type, _unresolvedProps2 = workInProgress2.pendingProps, _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
             return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
           }
-          case Fragment36:
+          case Fragment37:
             return updateFragment(current2, workInProgress2, renderLanes2);
           case Mode:
             return updateMode(current2, workInProgress2, renderLanes2);
@@ -24565,7 +24565,7 @@ Check the render method of \`` + ownerName + "`.");
           case SimpleMemoComponent:
           case FunctionComponent:
           case ForwardRef:
-          case Fragment36:
+          case Fragment37:
           case Mode:
           case Profiler:
           case ContextConsumer:
@@ -27122,7 +27122,7 @@ Check the render method of \`` + ownerName + "`.");
         return fiber._debugSource = element._source, fiber._debugOwner = element._owner, fiber;
       }
       function createFiberFromFragment(elements, mode, lanes, key) {
-        var fiber = createFiber(Fragment36, elements, key, mode);
+        var fiber = createFiber(Fragment37, elements, key, mode);
         return fiber.lanes = lanes, fiber;
       }
       function createFiberFromProfiler(pendingProps, mode, lanes, key) {
@@ -28255,7 +28255,7 @@ var require_react_is_development = __commonJS({
           }
         }
       }
-      var AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element2 = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment36 = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense8 = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
+      var AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element2 = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment37 = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense8 = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
       function isAsyncMode(object) {
         return hasWarnedAboutDeprecatedIsAsyncMode || (hasWarnedAboutDeprecatedIsAsyncMode = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
       }
@@ -28295,7 +28295,7 @@ var require_react_is_development = __commonJS({
       function isSuspense(object) {
         return typeOf(object) === REACT_SUSPENSE_TYPE;
       }
-      exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, exports.Element = Element2, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment36, exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, exports.StrictMode = StrictMode, exports.Suspense = Suspense8, exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense, exports.isValidElementType = isValidElementType, exports.typeOf = typeOf;
+      exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, exports.Element = Element2, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment37, exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, exports.StrictMode = StrictMode, exports.Suspense = Suspense8, exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense, exports.isValidElementType = isValidElementType, exports.typeOf = typeOf;
     })();
   }
 });
@@ -29601,25 +29601,25 @@ var require_Modal = __commonJS({
     function getParentElement(parentSelector) {
       return parentSelector();
     }
-    var Modal3 = function(_Component) {
-      _inherits(Modal4, _Component);
-      function Modal4() {
+    var Modal4 = function(_Component) {
+      _inherits(Modal5, _Component);
+      function Modal5() {
         var _ref, _temp, _this, _ret;
-        _classCallCheck2(this, Modal4);
+        _classCallCheck2(this, Modal5);
         for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal4.__proto__ || Object.getPrototypeOf(Modal4)).call.apply(_ref, [this].concat(args))), _this), _this.removePortal = function() {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal5.__proto__ || Object.getPrototypeOf(Modal5)).call.apply(_ref, [this].concat(args))), _this), _this.removePortal = function() {
           !isReact16 && _reactDom2.default.unmountComponentAtNode(_this.node);
           var parent = getParentElement(_this.props.parentSelector);
           parent && parent.contains(_this.node) ? parent.removeChild(_this.node) : console.warn('React-Modal: "parentSelector" prop did not returned any DOM element. Make sure that the parent element is unmounted to avoid any memory leaks.');
         }, _this.portalRef = function(ref) {
           _this.portal = ref;
         }, _this.renderPortal = function(props) {
-          var createPortal = getCreatePortal(), portal = createPortal(_this, _react2.default.createElement(_ModalPortal2.default, _extends5({ defaultStyles: Modal4.defaultStyles }, props)), _this.node);
+          var createPortal = getCreatePortal(), portal = createPortal(_this, _react2.default.createElement(_ModalPortal2.default, _extends5({ defaultStyles: Modal5.defaultStyles }, props)), _this.node);
           _this.portalRef(portal);
         }, _temp), _possibleConstructorReturn(_this, _ret);
       }
-      return _createClass2(Modal4, [{
+      return _createClass2(Modal5, [{
         key: "componentDidMount",
         value: function() {
           if (_safeHTMLElement.canUseDOM) {
@@ -29661,7 +29661,7 @@ var require_Modal = __commonJS({
           var createPortal = getCreatePortal();
           return createPortal(_react2.default.createElement(_ModalPortal2.default, _extends5({
             ref: this.portalRef,
-            defaultStyles: Modal4.defaultStyles
+            defaultStyles: Modal5.defaultStyles
           }, this.props)), this.node);
         }
       }], [{
@@ -29671,9 +29671,9 @@ var require_Modal = __commonJS({
         }
         /* eslint-disable react/no-unused-prop-types */
         /* eslint-enable react/no-unused-prop-types */
-      }]), Modal4;
+      }]), Modal5;
     }(_react.Component);
-    Modal3.propTypes = {
+    Modal4.propTypes = {
       isOpen: _propTypes2.default.bool.isRequired,
       style: _propTypes2.default.shape({
         content: _propTypes2.default.object,
@@ -29713,7 +29713,7 @@ var require_Modal = __commonJS({
       overlayElement: _propTypes2.default.func,
       contentElement: _propTypes2.default.func
     };
-    Modal3.defaultProps = {
+    Modal4.defaultProps = {
       isOpen: !1,
       portalClassName,
       bodyOpenClassName,
@@ -29743,7 +29743,7 @@ var require_Modal = __commonJS({
         );
       }
     };
-    Modal3.defaultStyles = {
+    Modal4.defaultStyles = {
       overlay: {
         position: "fixed",
         top: 0,
@@ -29767,11 +29767,11 @@ var require_Modal = __commonJS({
         padding: "20px"
       }
     };
-    (0, _reactLifecyclesCompat.polyfill)(Modal3);
-    Modal3.setCreateHTMLElement = function(fn) {
+    (0, _reactLifecyclesCompat.polyfill)(Modal4);
+    Modal4.setCreateHTMLElement = function(fn) {
       return createHTMLElement = fn;
     };
-    exports.default = Modal3;
+    exports.default = Modal4;
   }
 });
 
@@ -30898,7 +30898,7 @@ var LiveReload = function({
                     ${port} ||
                     REMIX_DEV_ORIGIN ? new URL(REMIX_DEV_ORIGIN).port :
                     Number(${// TODO: remove in v2
-      8002}) ||
+      51715}) ||
                     8002;
 
                   let ws = new WebSocket(url.href);
@@ -42854,7 +42854,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-NR43BKW3.css";
+var app_default = "/build/_assets/app-TGBBLAMO.css";
 
 // app/hooks/useAnalytics.jsx
 var import_react77 = __toESM(require_react());
@@ -44238,7 +44238,7 @@ function Product() {
   async function checkUserLogged() {
     console.log(customerid2, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk"), customerid2 ? (console.log(customerid2), setProductShow(!1)) : alert("please Login First");
   }
-  let customStyles = {
+  let customStyles2 = {
     content: {
       top: "60%",
       left: "50%",
@@ -44756,7 +44756,7 @@ function Product() {
       import_react_modal.default,
       {
         isOpen: modalIsOpen,
-        style: customStyles,
+        style: customStyles2,
         contentLabel: "Example Modal",
         children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex", children: [
@@ -48823,6 +48823,2257 @@ var CUSTOMER_UPDATE_MUTATION = `#graphql
   }
   `;
 
+// app/routes/($locale).address-book.jsx
+var locale_address_book_exports = {};
+__export(locale_address_book_exports, {
+  default: () => AddressBook
+});
+var import_react110 = __toESM(require_react());
+
+// app/components/ContactDetail.jsx
+var import_react107 = __toESM(require_react());
+
+// assets/image/edit.png
+var edit_default = "/build/_assets/edit-UOYXJGUT.png";
+
+// app/components/ContactDetail.jsx
+var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), ContactDetail = ({
+  filteredAddresses,
+  editAddress,
+  setEditAddress,
+  customerID,
+  setSelectedAddress
+}) => {
+  let tableHeaders = [
+    "Checkobox",
+    "Item",
+    "Type",
+    "first Name",
+    "last Name",
+    "business Name",
+    "anniversary",
+    "birthday",
+    "state",
+    "country",
+    "zip",
+    "postal code",
+    "address 1",
+    "address 2"
+  ], [selectedCheckboxes, setSelectedCheckboxes] = (0, import_react107.useState)([]), [selectedType, setSelectedType] = (0, import_react107.useState)("all"), handleTypeChange = (e4) => {
+    setSelectedType(e4.target.value);
+  }, handleCheckboxChange = (e4) => {
+    let checkboxValue = e4.target.value;
+    e4.target.checked ? setSelectedCheckboxes([...selectedCheckboxes, checkboxValue]) : setSelectedCheckboxes(
+      selectedCheckboxes.filter((value) => value !== checkboxValue)
+    );
+  }, handleDeleteSelected = () => {
+    let url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ addressIds: selectedCheckboxes })
+    }).then((response) => {
+      if (!response.ok)
+        throw new Error("Network response was not ok");
+      return response.json();
+    }).then((data) => {
+      console.log("API Response:", data), data.result.deletedCount > 0 && window.location.reload();
+    }).catch((error) => {
+      console.error("API Error:", error);
+    });
+  }, contactAddress = (() => selectedType === "all" ? filteredAddresses : filteredAddresses.filter(
+    (address) => address.type === selectedType
+  ))();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "container mx-auto mt-8", children: !editAddress && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex gap-[16px] items-center mb-[14px]", children: [
+      selectedCheckboxes && selectedCheckboxes.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+        "button",
+        {
+          onClick: handleDeleteSelected,
+          className: "text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]",
+          children: "Delete Selected"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/ContactDetail.jsx",
+          lineNumber: 97,
+          columnNumber: 15
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("span", { className: "text-black text-[14px] font-bold", children: [
+        "Number of address selected : ",
+        selectedCheckboxes == null ? void 0 : selectedCheckboxes.length
+      ] }, void 0, !0, {
+        fileName: "app/components/ContactDetail.jsx",
+        lineNumber: 104,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/ContactDetail.jsx",
+      lineNumber: 95,
+      columnNumber: 11
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("table", { className: "min-w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("tr", { className: "uppercase w-full", children: tableHeaders.map((header, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+        "th",
+        {
+          className: "text-center whitespace-nowrap text-white bg-[#001a5f] border border-solid border-[#001a5f] text-[14px] font-bold p-[5px]",
+          children: index === 2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center relative", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+              "select",
+              {
+                className: "bg-transparent text-white border-none outline-none appearance-none  absolute inset-y-0 right-0 opacity-0",
+                onChange: handleTypeChange,
+                value: selectedType,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("option", { className: "text-black", value: "all", children: "all" }, void 0, !1, {
+                    fileName: "app/components/ContactDetail.jsx",
+                    lineNumber: 123,
+                    columnNumber: 22
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("option", { className: "text-black", value: "recipient", children: "Recipient" }, void 0, !1, {
+                    fileName: "app/components/ContactDetail.jsx",
+                    lineNumber: 126,
+                    columnNumber: 22
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("option", { className: "text-black", value: "return", children: "Return" }, void 0, !1, {
+                    fileName: "app/components/ContactDetail.jsx",
+                    lineNumber: 129,
+                    columnNumber: 22
+                  }, this)
+                ]
+              },
+              void 0,
+              !0,
+              {
+                fileName: "app/components/ContactDetail.jsx",
+                lineNumber: 118,
+                columnNumber: 20
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("span", { className: "pl-[10px]", children: "Type" }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 133,
+              columnNumber: 20
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "absolute top-0 right-0 h-full flex items-center pr-2 pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+              "svg",
+              {
+                className: "w-4 h-4 text-white fill-current",
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 20 20",
+                children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("path", { d: "M10 12l-6-6h12z" }, void 0, !1, {
+                  fileName: "app/components/ContactDetail.jsx",
+                  lineNumber: 140,
+                  columnNumber: 24
+                }, this)
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/ContactDetail.jsx",
+                lineNumber: 135,
+                columnNumber: 22
+              },
+              this
+            ) }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 134,
+              columnNumber: 20
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/ContactDetail.jsx",
+            lineNumber: 117,
+            columnNumber: 20
+          }, this) : header
+        },
+        index,
+        !1,
+        {
+          fileName: "app/components/ContactDetail.jsx",
+          lineNumber: 112,
+          columnNumber: 19
+        },
+        this
+      )) }, void 0, !1, {
+        fileName: "app/components/ContactDetail.jsx",
+        lineNumber: 110,
+        columnNumber: 15
+      }, this) }, void 0, !1, {
+        fileName: "app/components/ContactDetail.jsx",
+        lineNumber: 109,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("tbody", { children: contactAddress == null ? void 0 : contactAddress.map((value, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+        "tr",
+        {
+          className: `text-center font-bold ${i6 % 2 === 0 ? "bg-[#f1f7fc]" : "bg-[#96bee3]"} `,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "flex border-l border-b border-solid border-black py-[10px] gap-[10px] justify-center items-center", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+                "input",
+                {
+                  type: "checkbox",
+                  className: "cursor-pointer",
+                  onChange: handleCheckboxChange,
+                  value: value._id
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/ContactDetail.jsx",
+                  lineNumber: 161,
+                  columnNumber: 21
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+                "img",
+                {
+                  src: edit_default,
+                  className: "w-[20px] cursor-pointer h-[20px]",
+                  onClick: () => {
+                    setSelectedAddress(value);
+                  }
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/ContactDetail.jsx",
+                  lineNumber: 167,
+                  columnNumber: 21
+                },
+                this
+              )
+            ] }, void 0, !0, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 160,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2  border border-solid border-black px-2", children: i6 }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 175,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2  border border-solid border-black px-2", children: value.type }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 178,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2  border border-solid border-black px-2", children: value.firstName }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 181,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2  border border-solid border-black px-2", children: value.lastName }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 184,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2  border border-solid border-black px-2", children: value.businessName }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 187,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2  border border-solid border-black px-2", children: value.anniversary }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 190,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.birthday }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 193,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.state }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 196,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.country }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 199,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.zip }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 202,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.city }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 205,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.address1 }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 208,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("td", { className: "py-2 px-2  border border-solid border-black", children: value.address2 }, void 0, !1, {
+              fileName: "app/components/ContactDetail.jsx",
+              lineNumber: 211,
+              columnNumber: 19
+            }, this)
+          ]
+        },
+        i6,
+        !0,
+        {
+          fileName: "app/components/ContactDetail.jsx",
+          lineNumber: 154,
+          columnNumber: 17
+        },
+        this
+      )) }, void 0, !1, {
+        fileName: "app/components/ContactDetail.jsx",
+        lineNumber: 152,
+        columnNumber: 13
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/ContactDetail.jsx",
+      lineNumber: 108,
+      columnNumber: 11
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/ContactDetail.jsx",
+    lineNumber: 94,
+    columnNumber: 9
+  }, this) }, void 0, !1, {
+    fileName: "app/components/ContactDetail.jsx",
+    lineNumber: 92,
+    columnNumber: 5
+  }, this);
+}, ContactDetail_default = ContactDetail;
+
+// app/components/AddressForm.jsx
+var import_react108 = __toESM(require_react()), import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime()), AddressForm = ({ setAddressForm, setEditAddress }) => {
+  let [formData, setFormData] = (0, import_react108.useState)({
+    firstName: "",
+    lastName: "",
+    businessName: "",
+    address1: "",
+    address2: "",
+    city: "",
+    stateProvince: "",
+    postalCode: "",
+    country: "",
+    type: "",
+    birthday: "",
+    anniversary: ""
+  }), handleChange = (e4) => {
+    let { name, value } = e4.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  }, uploadDataToAPI = () => {
+    let apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${6406284116073}`;
+    try {
+      fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName || "",
+          lastName: formData.lastName || "",
+          businessName: formData.businessName || "",
+          address1: formData.address1 || "",
+          address2: formData.address2 || "",
+          city: formData.city || "",
+          state: formData.stateProvince || "",
+          zip: formData.postalCode || "",
+          country: formData.country || "USA",
+          type: formData.type && formData.type.toLowerCase() === "sender" ? "return" : "recipient",
+          birthday: formData.birthday || "",
+          anniversary: formData.anniversary || ""
+        })
+      }) && setAddressForm(!1);
+    } catch (error) {
+      throw console.error("Error uploading data:", error), error;
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "container mx-auto p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4 flex flex-wrap -mx-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "firstName",
+            children: "First Name"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 72,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "firstName",
+            name: "firstName",
+            type: "text",
+            required: !0,
+            placeholder: "First Name",
+            value: formData.firstName,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 78,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/AddressForm.jsx",
+        lineNumber: 71,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "lastName",
+            children: "Last Name"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 90,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "lastName",
+            name: "lastName",
+            required: !0,
+            type: "text",
+            placeholder: "Last Name",
+            value: formData.lastName,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 96,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/AddressForm.jsx",
+        lineNumber: 89,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 70,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "businessName",
+          children: "Business Name (Optional)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 110,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "businessName",
+          name: "businessName",
+          type: "text",
+          placeholder: "Business Name",
+          value: formData.businessName,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 116,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 109,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "address1",
+          children: "Address 1"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 128,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "address1",
+          name: "address1",
+          type: "text",
+          placeholder: "Address 1",
+          required: !0,
+          value: formData.address1,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 134,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 127,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "address2",
+          children: "Address 2 (Optional)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 147,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "address2",
+          name: "address2",
+          type: "text",
+          placeholder: "Address 2",
+          value: formData.address2,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 153,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 146,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4 flex flex-wrap -mx-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "city",
+            children: "City"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 166,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "city",
+            name: "city",
+            type: "text",
+            required: !0,
+            placeholder: "City",
+            value: formData.city,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 172,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/AddressForm.jsx",
+        lineNumber: 165,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "stateProvince",
+            children: "State/Province"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 184,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "stateProvince",
+            name: "stateProvince",
+            type: "text",
+            required: !0,
+            value: formData.stateProvince,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/AddressForm.jsx",
+            lineNumber: 190,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/AddressForm.jsx",
+        lineNumber: 183,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 164,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "postalCode",
+          children: "Postal Code"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 203,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "postalCode",
+          required: !0,
+          name: "postalCode",
+          type: "text",
+          placeholder: "Postal Code",
+          value: formData.postalCode,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 209,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 202,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "country",
+          children: "Country"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 222,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "country",
+          name: "country",
+          required: !0,
+          value: formData.country,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 228,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 221,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "type",
+          children: "Type"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 239,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "select",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "type",
+          name: "type",
+          value: formData.type,
+          onChange: handleChange,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("option", { children: "Recipient" }, void 0, !1, {
+              fileName: "app/components/AddressForm.jsx",
+              lineNumber: 252,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("option", { children: "Sender" }, void 0, !1, {
+              fileName: "app/components/AddressForm.jsx",
+              lineNumber: 253,
+              columnNumber: 13
+            }, this)
+          ]
+        },
+        void 0,
+        !0,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 245,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 238,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "birthday",
+          children: "Birthday (MM/DD/YYYY)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 259,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "birthday",
+          name: "birthday",
+          type: "date",
+          pattern: "\\d{1,2}/\\d{1,2}/\\d{4}",
+          placeholder: "MM/DD/YYYY",
+          value: formData.birthday,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 265,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 258,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "anniversary",
+          children: "Anniversary (MM/DD/YYYY)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 278,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "anniversary",
+          name: "anniversary",
+          type: "date",
+          pattern: "\\d{1,2}/\\d{1,2}/\\d{4}",
+          placeholder: "MM/DD/YYYY",
+          value: formData.anniversary,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 284,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 277,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: " flex gap-[20px] mb-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "button",
+        {
+          onClick: uploadDataToAPI,
+          className: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+          children: "Save Address"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 296,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "button",
+        {
+          className: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+          onClick: () => {
+            setAddressForm(!1), setEditAddress(!1);
+          },
+          children: "Cancel"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/AddressForm.jsx",
+          lineNumber: 302,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/AddressForm.jsx",
+      lineNumber: 295,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/AddressForm.jsx",
+    lineNumber: 69,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/components/AddressForm.jsx",
+    lineNumber: 68,
+    columnNumber: 5
+  }, this);
+}, AddressForm_default = AddressForm;
+
+// app/components/EditAddressForm.jsx
+var import_react109 = __toESM(require_react()), import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), EditAddressForm = ({ setAddressForm, setSelectedAddress, selectedAddress }) => {
+  let handleChange = (e4) => {
+    let { name, value } = e4.target;
+    setSelectedAddress({
+      ...selectedAddress,
+      [name]: value
+    });
+  }, uploadDataToAPI = () => {
+    let apiUrl = `https://api.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${6406284116073}`;
+    try {
+      let responseData = fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: selectedAddress.firstName || "",
+          lastName: selectedAddress.lastName || "",
+          businessName: selectedAddress.businessName || "",
+          address1: selectedAddress.address1 || "",
+          address2: selectedAddress.address2 || "",
+          city: selectedAddress.city || "",
+          state: selectedAddress.state || "",
+          zip: selectedAddress.zip || "",
+          country: selectedAddress.country || "US",
+          type: selectedAddress.type && selectedAddress.type.toLowerCase() === "sender" ? "return" : "recipient",
+          birthday: selectedAddress.birthday || "",
+          anniversary: selectedAddress.anniversary || ""
+        })
+      });
+      responseData && (window.location.reload(), console.log("responseData", responseData));
+    } catch (error) {
+      throw console.error("Error uploading data:", error), error;
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "container mx-auto p-4 bg-[#e2ecf6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4 flex flex-wrap -mx-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "firstName",
+            children: "First Name"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 61,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "firstName",
+            name: "firstName",
+            type: "text",
+            required: !0,
+            placeholder: "First Name",
+            value: selectedAddress.firstName,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 67,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/EditAddressForm.jsx",
+        lineNumber: 60,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "lastName",
+            children: "Last Name"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 79,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "lastName",
+            name: "lastName",
+            required: !0,
+            type: "text",
+            placeholder: "Last Name",
+            value: selectedAddress.lastName,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 85,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/EditAddressForm.jsx",
+        lineNumber: 78,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 59,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "businessName",
+          children: "Business Name (Optional)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 99,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "businessName",
+          name: "businessName",
+          type: "text",
+          placeholder: "Business Name",
+          value: selectedAddress.businessName,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 105,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 98,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "address1",
+          children: "Address 1"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 117,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "address1",
+          name: "address1",
+          type: "text",
+          placeholder: "Address 1",
+          required: !0,
+          value: selectedAddress.address1,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 123,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 116,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "address2",
+          children: "Address 2 (Optional)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 136,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "address2",
+          name: "address2",
+          type: "text",
+          placeholder: "Address 2",
+          value: selectedAddress.address2,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 142,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 135,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4 flex flex-wrap -mx-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "city",
+            children: "City"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 155,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "city",
+            name: "city",
+            type: "text",
+            required: !0,
+            placeholder: "City",
+            value: selectedAddress.city,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 161,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/EditAddressForm.jsx",
+        lineNumber: 154,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-1/2 px-3 mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "label",
+          {
+            className: "block text-gray-700 text-sm font-bold mb-2",
+            htmlFor: "stateProvince",
+            children: "State/Province"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 173,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "input",
+          {
+            className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+            id: "state",
+            name: "state",
+            type: "text",
+            required: !0,
+            value: selectedAddress.state,
+            onChange: handleChange
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/EditAddressForm.jsx",
+            lineNumber: 179,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/EditAddressForm.jsx",
+        lineNumber: 172,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 153,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "postalCode",
+          children: "Postal Code"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 192,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "postalCode",
+          required: !0,
+          name: "postalCode",
+          type: "text",
+          placeholder: "Postal Code",
+          value: selectedAddress.zip,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 198,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 191,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "country",
+          children: "Country"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 211,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "country",
+          name: "country",
+          required: !0,
+          value: selectedAddress.country,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 217,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 210,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "type",
+          children: "Type"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 228,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "select",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "type",
+          name: "type",
+          value: selectedAddress.type,
+          onChange: handleChange,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("option", { children: "Recipient" }, void 0, !1, {
+              fileName: "app/components/EditAddressForm.jsx",
+              lineNumber: 241,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("option", { children: "Sender" }, void 0, !1, {
+              fileName: "app/components/EditAddressForm.jsx",
+              lineNumber: 242,
+              columnNumber: 13
+            }, this)
+          ]
+        },
+        void 0,
+        !0,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 234,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 227,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "birthday",
+          children: "Birthday (MM/DD/YYYY)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 248,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "birthday",
+          name: "birthday",
+          type: "date",
+          pattern: "\\d{1,2}/\\d{1,2}/\\d{4}",
+          placeholder: "MM/DD/YYYY",
+          value: selectedAddress.birthday,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 254,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 247,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "label",
+        {
+          className: "block text-gray-700 text-sm font-bold mb-2",
+          htmlFor: "anniversary",
+          children: "Anniversary (MM/DD/YYYY)"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 267,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "input",
+        {
+          className: "appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
+          id: "anniversary",
+          name: "anniversary",
+          type: "date",
+          pattern: "\\d{1,2}/\\d{1,2}/\\d{4}",
+          placeholder: "MM/DD/YYYY",
+          value: selectedAddress.anniversary,
+          onChange: handleChange
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 273,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 266,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: " flex gap-[20px] mb-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "button",
+        {
+          onClick: uploadDataToAPI,
+          className: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+          children: "Update Address"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 285,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+        "button",
+        {
+          className: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline",
+          onClick: () => {
+            setAddressForm(!1), setSelectedAddress(null);
+          },
+          children: "Cancel"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/EditAddressForm.jsx",
+          lineNumber: 291,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/EditAddressForm.jsx",
+      lineNumber: 284,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/EditAddressForm.jsx",
+    lineNumber: 58,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/components/EditAddressForm.jsx",
+    lineNumber: 57,
+    columnNumber: 5
+  }, this);
+}, EditAddressForm_default = EditAddressForm;
+
+// app/components/CsvInstruction.jsx
+var import_react_modal2 = __toESM(require_lib()), import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime()), customStyles = {
+  content: {
+    top: "60%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    width: "100%",
+    transform: "translate(-50%, -50%)",
+    maxWidth: "80%"
+    // Add your desired width here
+  },
+  overlay: {
+    backgroundColor: "rgba(0, 0, 0, 0.7)"
+  }
+};
+function CsvInstruction({ isOpen, closeModal }) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+    import_react_modal2.default,
+    {
+      isOpen,
+      onRequestClose: closeModal,
+      style: customStyles,
+      shouldCloseOnOverlayClick: !1,
+      contentLabel: "CSV Instruction Modal",
+      children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "relative", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+          "span",
+          {
+            className: "absolute cursor-pointer !leading-0 right-[10px]  text-[40px]",
+            onClick: closeModal,
+            children: "\xD7"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 29,
+            columnNumber: 9
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("h2", { className: "text-[#001a5f] font-bold text-[30px] text-center mb-4", children: "INSTRUCTIONS FOR BULK UPLOAD" }, void 0, !1, {
+          fileName: "app/components/CsvInstruction.jsx",
+          lineNumber: 35,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "!text-[#1e1e1e] text-[14px] leading-[160%]", children: [
+          "Bulk upload can be used to add addresses to your address book or for bulk card orders.",
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("li", { children: " Download the bulk upload template (csv) " }, void 0, !1, {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 41,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("li", { children: "Complete a row for each address you wish to add" }, void 0, !1, {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 42,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("li", { children: "Upload your completed file in .csv format" }, void 0, !1, {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 43,
+            columnNumber: 11
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/CsvInstruction.jsx",
+          lineNumber: 38,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "bg-white  mt-[20px] text-black overflow-popup rounded-lg overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("table", { className: "w-full text-[14px] text-[#1e1e1e] px-[10x]", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("thead", { clasName: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { className: "text-left", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("th", { className: "border border-solid border-black py-2 px-4", children: "Field Name" }, void 0, !1, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 49,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("th", { className: "border border-solid border-black py-2 px-4", children: "Notes" }, void 0, !1, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 52,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 48,
+            columnNumber: 15
+          }, this) }, void 0, !1, {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 47,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tbody", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Type*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 59,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "\u201CSender\u201D or \u201CRecipient\u201D" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 62,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 58,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "First Name*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 67,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 70,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 66,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Last Name*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 75,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 78,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 74,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Address*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 83,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Numbers + Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 86,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 82,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Address 2" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 91,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Numbers + Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 94,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 90,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 99,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 100,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 98,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "State/Province*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 105,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Please use full names for US States (E.g., California, not CA)" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 108,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 104,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Postal Code*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 113,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "For US addresses, 5 digits are required. For non-US addresses, any postal code may be used." }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 116,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 112,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Country*" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 122,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "If no country is provided, USA is assumed. USA, US, U.S., U.S.A, United States, and United States of America are all acceptable for US addresses. US postage rates apply for US addresses. Non-US postage rates apply for all other countries." }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 125,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 121,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Phone" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 133,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "E.g., (801) 444-4444 or 999.222.2222" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 136,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 132,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Email" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 141,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "name@company.com" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 144,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 140,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Company" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 149,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 152,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 148,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Anniversary" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 157,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "May be used for anniversary card automation. Format as MM/DD/YYYY - e.g., 05/20/1990" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 160,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 156,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Custom 1" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 166,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "border border-solid border-black py-2 px-4", children: "Text" }, void 0, !1, {
+                fileName: "app/components/CsvInstruction.jsx",
+                lineNumber: 169,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/CsvInstruction.jsx",
+              lineNumber: 165,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/CsvInstruction.jsx",
+            lineNumber: 57,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/CsvInstruction.jsx",
+          lineNumber: 46,
+          columnNumber: 11
+        }, this) }, void 0, !1, {
+          fileName: "app/components/CsvInstruction.jsx",
+          lineNumber: 45,
+          columnNumber: 9
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/CsvInstruction.jsx",
+        lineNumber: 28,
+        columnNumber: 7
+      }, this)
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/components/CsvInstruction.jsx",
+      lineNumber: 21,
+      columnNumber: 5
+    },
+    this
+  );
+}
+var CsvInstruction_default = CsvInstruction;
+
+// app/routes/($locale).address-book.jsx
+var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime());
+function AddressBook() {
+  let [selectedFile, setSelectedFile] = (0, import_react110.useState)(null), [fileData, setFileData] = (0, import_react110.useState)([]), [addresses, setAddresses] = (0, import_react110.useState)([]), [addressForm, setAddressForm] = (0, import_react110.useState)(!1), [searchText, setSearchText] = (0, import_react110.useState)(""), [editAddress, setEditAddress] = (0, import_react110.useState)(!1), [filteredAddresses, setFilteredAddresses] = (0, import_react110.useState)([addresses]), [selectedAddress, setSelectedAddress] = (0, import_react110.useState)(null), [isModalOpen, setIsModalOpen] = (0, import_react110.useState)(!1), openModal = () => {
+    setIsModalOpen(!0);
+  }, closeModal = () => {
+    setIsModalOpen(!1);
+  };
+  (0, import_react110.useEffect)(() => {
+    fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${6406284116073}`).then((response) => {
+      if (!response.ok)
+        throw new Error("Network response was not ok");
+      return response.json();
+    }).then((data) => {
+      setAddresses(data.result);
+    }).catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+  }, []), (0, import_react110.useEffect)(() => {
+    addresses && setFilteredAddresses(addresses);
+  }, [addresses]);
+  function csvToJson(csv) {
+    for (var lines = csv.split(`
+`), result = [], headers12 = lines[0].split(","), i6 = 1; i6 < lines.length; i6++) {
+      var currentLine = lines[i6].split(",");
+      if (!(currentLine.length === 1 && currentLine[0].trim() === "")) {
+        for (var obj = {}, j5 = 0; j5 < headers12.length; j5++)
+          obj[headers12[j5]] = currentLine[j5];
+        result.push(obj);
+      }
+    }
+    return result;
+  }
+  let handleFileChange = (event) => {
+    let file = event.target.files[0];
+    if (file) {
+      let reader = new FileReader();
+      reader.onload = (e4) => {
+        let csvData = e4.target.result, jsonData = csvToJson(csvData);
+        setSelectedFile(file), setFileData(jsonData);
+      }, reader.readAsText(file);
+    }
+  }, uploadDataToAPI = async (data) => {
+    let modifiedData = {};
+    for (let key in data) {
+      let modifiedKey = key == null ? void 0 : key.replace(/"/g, "");
+      modifiedData[modifiedKey] = data[key].replace(/"/g, "");
+    }
+    let apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${6406284116073}`;
+    try {
+      let responseData = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: modifiedData["First Name"] || "",
+          lastName: modifiedData["Last Name"] || "",
+          businessName: modifiedData.Company || "",
+          address1: modifiedData.Address || "",
+          address2: modifiedData["Address 2"] || "",
+          city: modifiedData.City || "",
+          state: modifiedData["State/Province"] || "",
+          zip: modifiedData["Postal Code"] || "",
+          country: modifiedData.Country || "USA",
+          type: modifiedData.Type && modifiedData.Type.toLowerCase() === "sender" ? "return" : "recipient",
+          birthday: modifiedData.Birthday || "",
+          anniversary: modifiedData.Anniversary || ""
+        })
+      });
+    } catch (error) {
+      throw console.error("Error uploading data:", error), error;
+    }
+  }, handleUploadClick = async () => {
+    if (fileData.length === 0) {
+      console.warn("No data to upload");
+      return;
+    }
+    try {
+      await Promise.all(fileData.map(uploadDataToAPI)), window.location.reload();
+    } catch (error) {
+      console.error("Error uploading data:", error);
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "bg-[#e0e9f8]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("h2", { className: "text-center text-[#001a5f] font-bold text-[36px]", children: "Address Book" }, void 0, !1, {
+      fileName: "app/routes/($locale).address-book.jsx",
+      lineNumber: 165,
+      columnNumber: 7
+    }, this),
+    !addressForm && !selectedAddress && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+          "input",
+          {
+            type: "text",
+            placeholder: "Search Addresses...",
+            value: searchText,
+            onChange: (event) => {
+              let value = event.target.value;
+              setSearchText(value);
+              let filtered = addresses.filter(
+                (address) => Object.values(address).some(
+                  (field) => field.toString().toLowerCase().includes(value.toLowerCase())
+                )
+              );
+              setFilteredAddresses(filtered);
+            },
+            className: "w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/($locale).address-book.jsx",
+            lineNumber: 169,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+            "div",
+            {
+              className: "border-[2px] border-soild border-[#000] py-[5px]",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex flex-col", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("h2", { className: "font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]", children: "Bulk Address Upload" }, void 0, !1, {
+                    fileName: "app/routes/($locale).address-book.jsx",
+                    lineNumber: 181,
+                    columnNumber: 19
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+                    "input",
+                    {
+                      onChange: handleFileChange,
+                      type: "file",
+                      accept: ".csv",
+                      className: "p-[10px]"
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/routes/($locale).address-book.jsx",
+                      lineNumber: 182,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+                    "a",
+                    {
+                      href: "https://api.simplynoted.com/docs/bulk-template",
+                      className: "text-[14px] px-[10px] font-bold underline",
+                      children: "Download bulk address template"
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/routes/($locale).address-book.jsx",
+                      lineNumber: 188,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+                    "span",
+                    {
+                      onClick: openModal,
+                      className: "font-bold text-[14px] text-black px-[10px] cursor-pointer underline",
+                      children: " View Instructions"
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/routes/($locale).address-book.jsx",
+                      lineNumber: 194,
+                      columnNumber: 17
+                    },
+                    this
+                  )
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).address-book.jsx",
+                  lineNumber: 180,
+                  columnNumber: 17
+                }, this),
+                selectedFile && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+                  "button",
+                  {
+                    onClick: () => handleUploadClick(),
+                    className: "w-full text-white bg-[#ef6e6e] p-[5px] mx-[10px] max-w-[292px] mt-[5px]",
+                    children: "Upload"
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/routes/($locale).address-book.jsx",
+                    lineNumber: 200,
+                    columnNumber: 19
+                  },
+                  this
+                )
+              ]
+            },
+            void 0,
+            !0,
+            {
+              fileName: "app/routes/($locale).address-book.jsx",
+              lineNumber: 177,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-end justify-end ml-[10px] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+            "button",
+            {
+              onClick: () => setAddressForm(!0),
+              className: "text-white h-[40px] text-[14px] px-[10px] font-bold bg-[#1b5299]",
+              children: "+New Address"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/($locale).address-book.jsx",
+              lineNumber: 209,
+              columnNumber: 17
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/routes/($locale).address-book.jsx",
+            lineNumber: 208,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/routes/($locale).address-book.jsx",
+          lineNumber: 176,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/($locale).address-book.jsx",
+        lineNumber: 168,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(CsvInstruction_default, { isOpen: isModalOpen, closeModal }, void 0, !1, {
+        fileName: "app/routes/($locale).address-book.jsx",
+        lineNumber: 218,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+        ContactDetail_default,
+        {
+          customerID: 6406284116073,
+          searchText,
+          setSearchText,
+          filteredAddresses,
+          editAddress,
+          setSelectedAddress,
+          setEditAddress
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/($locale).address-book.jsx",
+          lineNumber: 220,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/routes/($locale).address-book.jsx",
+      lineNumber: 167,
+      columnNumber: 9
+    }, this),
+    addressForm && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "w-full max-w-[1440px] px-[20px] mx-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+      AddressForm_default,
+      {
+        setAddressForm,
+        setEditAddress
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/($locale).address-book.jsx",
+        lineNumber: 233,
+        columnNumber: 11
+      },
+      this
+    ) }, void 0, !1, {
+      fileName: "app/routes/($locale).address-book.jsx",
+      lineNumber: 232,
+      columnNumber: 9
+    }, this),
+    selectedAddress && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "w-full max-w-[1440px] px-[20px] mx-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+      EditAddressForm_default,
+      {
+        selectedAddress,
+        setSelectedAddress,
+        setEditAddress,
+        setAddressForm
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/($locale).address-book.jsx",
+        lineNumber: 241,
+        columnNumber: 11
+      },
+      this
+    ) }, void 0, !1, {
+      fileName: "app/routes/($locale).address-book.jsx",
+      lineNumber: 240,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/($locale).address-book.jsx",
+    lineNumber: 164,
+    columnNumber: 5
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/($locale).address-book.jsx",
+    lineNumber: 163,
+    columnNumber: 5
+  }, this);
+}
+
 // app/routes/($locale).api.products.jsx
 var locale_api_products_exports = {};
 __export(locale_api_products_exports, {
@@ -48916,8 +51167,8 @@ __export(locale_search_exports, {
   getNoResultRecommendations: () => getNoResultRecommendations,
   loader: () => loader24
 });
-var import_react108 = __toESM(require_react());
-var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime());
+var import_react112 = __toESM(require_react());
+var import_jsx_dev_runtime54 = __toESM(require_jsx_dev_runtime());
 async function loader24({ request, context: { storefront } }) {
   var _a2;
   let searchTerm = new URL(request.url).searchParams.get("q"), variables = getPaginationVariables(request, { pageBy: 8 }), { products } = await storefront.query(SEARCH_QUERY, {
@@ -48954,15 +51205,15 @@ async function loader24({ request, context: { storefront } }) {
 function Search() {
   var _a2;
   let { searchTerm, products, noResultRecommendations } = useLoaderData2(), noResults = ((_a2 = products == null ? void 0 : products.nodes) == null ? void 0 : _a2.length) === 0;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(PageHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(PageHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
         fileName: "app/routes/($locale).search.jsx",
         lineNumber: 74,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
           Input,
           {
             defaultValue: searchTerm,
@@ -48980,7 +51231,7 @@ function Search() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 85,
           columnNumber: 11
@@ -48995,7 +51246,7 @@ function Search() {
       lineNumber: 73,
       columnNumber: 7
     }, this),
-    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
       NoResults,
       {
         noResults,
@@ -49009,8 +51260,8 @@ function Search() {
         columnNumber: 9
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
-      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
+      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
         ProductCard,
         {
           product: product2,
@@ -49025,8 +51276,8 @@ function Search() {
         },
         this
       ));
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 110,
           columnNumber: 21
@@ -49035,12 +51286,12 @@ function Search() {
           lineNumber: 109,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 114,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 116,
           columnNumber: 21
@@ -49070,8 +51321,8 @@ function Search() {
   }, this);
 }
 function NoResults({ noResults, recommendations }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-    noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Text, { className: "opacity-50", children: "No results, try a different search." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+    noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Text, { className: "opacity-50", children: "No results, try a different search." }, void 0, !1, {
       fileName: "app/routes/($locale).search.jsx",
       lineNumber: 135,
       columnNumber: 11
@@ -49080,7 +51331,7 @@ function NoResults({ noResults, recommendations }) {
       lineNumber: 134,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_react108.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_react112.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
       Await2,
       {
         errorElement: "There was a problem loading related products",
@@ -49089,8 +51340,8 @@ function NoResults({ noResults, recommendations }) {
           if (!result)
             return null;
           let { featuredCollections, featuredProducts } = result;
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
               FeaturedCollections,
               {
                 title: "Trending Collections",
@@ -49105,7 +51356,7 @@ function NoResults({ noResults, recommendations }) {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
               ProductSwimlane,
               {
                 title: "Trending Products",
@@ -49191,10 +51442,10 @@ __export(locale_index_exports, {
   headers: () => headers11,
   loader: () => loader25
 });
-var import_react110 = __toESM(require_react());
+var import_react114 = __toESM(require_react());
 
 // app/components/home/Home.jsx
-var import_react109 = __toESM(require_react());
+var import_react113 = __toESM(require_react());
 
 // assets/Image/Card_Keller_kwlegacy.webp
 var Card_Keller_kwlegacy_default = "/build/_assets/Card_Keller_kwlegacy-O4KBEFT3.webp";
@@ -49203,14 +51454,14 @@ var Card_Keller_kwlegacy_default = "/build/_assets/Card_Keller_kwlegacy-O4KBEFT3
 var Your_Logo_simplinoted_default = "/build/_assets/Your_Logo_simplinoted-VHE6U2G4.webp";
 
 // app/components/home/Home.jsx
-var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime());
 function Home() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "sec-section", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "handwritten-notice", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("h3", { children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "sec-section", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "handwritten-notice", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("h3", { children: [
           "Send Real Handwritten Notes ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("br", {}, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("br", {}, void 0, !1, {
             fileName: "app/components/home/Home.jsx",
             lineNumber: 14,
             columnNumber: 39
@@ -49220,14 +51471,14 @@ function Home() {
           lineNumber: 14,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { children: "to your____________" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { children: "to your____________" }, void 0, !1, {
           fileName: "app/components/home/Home.jsx",
           lineNumber: 15,
           columnNumber: 14
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("h2", { className: "scale-starting", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("h2", { className: "scale-starting", children: [
           "Send real handwritten notes, at scale.",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("b", { children: "Starting at $3.25" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("b", { children: "Starting at $3.25" }, void 0, !1, {
             fileName: "app/components/home/Home.jsx",
             lineNumber: 16,
             columnNumber: 85
@@ -49241,7 +51492,7 @@ function Home() {
           lineNumber: 16,
           columnNumber: 10
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
           "button",
           {
             type: "button",
@@ -49257,7 +51508,7 @@ function Home() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
           "button",
           {
             type: "button",
@@ -49279,12 +51530,12 @@ function Home() {
         lineNumber: 13,
         columnNumber: 6
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("img", { className: "logo-simplinoted", src: Your_Logo_simplinoted_default, alt: "LogoSimplinotedpic" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("img", { className: "logo-simplinoted", src: Your_Logo_simplinoted_default, alt: "LogoSimplinotedpic" }, void 0, !1, {
         fileName: "app/components/home/Home.jsx",
         lineNumber: 30,
         columnNumber: 5
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("img", { className: "cars-killer", src: Card_Keller_kwlegacy_default, alt: "CardKillerpic" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("img", { className: "cars-killer", src: Card_Keller_kwlegacy_default, alt: "CardKillerpic" }, void 0, !1, {
         fileName: "app/components/home/Home.jsx",
         lineNumber: 32,
         columnNumber: 8
@@ -49294,7 +51545,7 @@ function Home() {
       lineNumber: 11,
       columnNumber: 6
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("video", { className: "robot-gif", autoPlay: !0, loop: !0, muted: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("video", { className: "robot-gif", autoPlay: !0, loop: !0, muted: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
       "source",
       {
         src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/robots.webm?v=1650939452",
@@ -49321,7 +51572,7 @@ function Home() {
 }
 
 // app/routes/($locale)._index.jsx
-var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), headers11 = routeHeaders;
+var import_jsx_dev_runtime56 = __toESM(require_jsx_dev_runtime()), headers11 = routeHeaders;
 async function loader25({ params, context }) {
   let { language, country } = context.storefront.i18n;
   if (params.locale && params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase())
@@ -49382,18 +51633,18 @@ function Homepage() {
     featuredCollections,
     featuredProducts
   } = useLoaderData2(), skeletons = getHeroPlaceholder([{}, {}, {}]);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
-    primaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...primaryHero, height: "full", top: !0, loading: "eager" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, { children: [
+    primaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Hero, { ...primaryHero, height: "full", top: !0, loading: "eager" }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 95,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Home, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Home, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 97,
       columnNumber: 7
     }, this),
-    featuredProducts && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: featuredProducts, children: ({ products }) => products != null && products.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+    featuredProducts && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react114.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: featuredProducts, children: ({ products }) => products != null && products.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
       ProductSwimlane,
       {
         products,
@@ -49408,7 +51659,7 @@ function Homepage() {
         columnNumber: 17
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 103,
       columnNumber: 44
@@ -49421,15 +51672,15 @@ function Homepage() {
       lineNumber: 100,
       columnNumber: 9
     }, this),
-    secondaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...skeletons[1] }, void 0, !1, {
+    secondaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react114.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Hero, { ...skeletons[1] }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 117,
       columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: secondaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...hero }, void 0, !1, {
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: secondaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Hero, { ...hero }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 121,
       columnNumber: 22
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 120,
       columnNumber: 33
@@ -49442,7 +51693,7 @@ function Homepage() {
       lineNumber: 117,
       columnNumber: 9
     }, this),
-    featuredCollections && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: featuredCollections, children: ({ collections }) => collections != null && collections.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+    featuredCollections && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react114.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: featuredCollections, children: ({ collections }) => collections != null && collections.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
       FeaturedCollections,
       {
         collections,
@@ -49456,7 +51707,7 @@ function Homepage() {
         columnNumber: 17
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 131,
       columnNumber: 47
@@ -49469,15 +51720,15 @@ function Homepage() {
       lineNumber: 128,
       columnNumber: 9
     }, this),
-    tertiaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...skeletons[2] }, void 0, !1, {
+    tertiaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react114.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Hero, { ...skeletons[2] }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 144,
       columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: tertiaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...hero }, void 0, !1, {
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: tertiaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Hero, { ...hero }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 148,
       columnNumber: 22
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 147,
       columnNumber: 33
@@ -49580,20 +51831,20 @@ var locale_card_exports = {};
 __export(locale_card_exports, {
   default: () => s14
 });
-var import_react112 = __toESM(require_react()), import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime());
+var import_react116 = __toESM(require_react()), import_jsx_dev_runtime57 = __toESM(require_jsx_dev_runtime());
 function s14() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { class: "buttons", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("a", { href: "#", class: "prmry", children: "Create A Custom Card" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)("div", { class: "buttons", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)("a", { href: "#", class: "prmry", children: "Create A Custom Card" }, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
       lineNumber: 7,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("br", {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)("br", {}, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
       lineNumber: 7,
       columnNumber: 59
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("a", { href: "#", class: "secndry", children: "View My Custom Cards" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)("a", { href: "#", class: "secndry", children: "View My Custom Cards" }, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
       lineNumber: 8,
       columnNumber: 9
@@ -49616,7 +51867,7 @@ __export(locale_cart_exports, {
   default: () => CartRoute,
   loader: () => loader26
 });
-var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime58 = __toESM(require_jsx_dev_runtime());
 async function action9({ request, context }) {
   let { session, cart } = context, [formData, customerAccessToken] = await Promise.all([
     request.formData(),
@@ -49668,7 +51919,7 @@ async function loader26({ context }) {
 function CartRoute() {
   var _a2;
   let [root2] = useMatches2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
     fileName: "app/routes/($locale).cart.jsx",
     lineNumber: 90,
     columnNumber: 20
@@ -49851,21 +52102,21 @@ var debug_network_exports = {};
 __export(debug_network_exports, {
   default: () => DebugNetwork
 });
-var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1), import_react116 = __toESM(require_react(), 1);
+var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1), import_react120 = __toESM(require_react(), 1);
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/FlameChartWrapper.jsx
-var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1), import_react115 = __toESM(require_react(), 1);
+var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1), import_react119 = __toESM(require_react(), 1);
 
 // node_modules/use-resize-observer/dist/bundle.esm.js
-var import_react114 = __toESM(require_react());
+var import_react118 = __toESM(require_react());
 function useResolvedElement(subscriber, refOrElement) {
-  var lastReportRef = (0, import_react114.useRef)(null), refOrElementRef = (0, import_react114.useRef)(null);
+  var lastReportRef = (0, import_react118.useRef)(null), refOrElementRef = (0, import_react118.useRef)(null);
   refOrElementRef.current = refOrElement;
-  var cbElementRef = (0, import_react114.useRef)(null);
-  (0, import_react114.useEffect)(function() {
+  var cbElementRef = (0, import_react118.useRef)(null);
+  (0, import_react118.useEffect)(function() {
     evaluateSubscription();
   });
-  var evaluateSubscription = (0, import_react114.useCallback)(function() {
+  var evaluateSubscription = (0, import_react118.useCallback)(function() {
     var cbElement = cbElementRef.current, refOrElement2 = refOrElementRef.current, element = cbElement || (refOrElement2 ? refOrElement2 instanceof Element ? refOrElement2 : refOrElement2.current : null);
     lastReportRef.current && lastReportRef.current.element === element && lastReportRef.current.subscriber === subscriber || (lastReportRef.current && lastReportRef.current.cleanup && lastReportRef.current.cleanup(), lastReportRef.current = {
       element,
@@ -49875,11 +52126,11 @@ function useResolvedElement(subscriber, refOrElement) {
       cleanup: element ? subscriber(element) : void 0
     });
   }, [subscriber]);
-  return (0, import_react114.useEffect)(function() {
+  return (0, import_react118.useEffect)(function() {
     return function() {
       lastReportRef.current && lastReportRef.current.cleanup && (lastReportRef.current.cleanup(), lastReportRef.current = null);
     };
-  }, []), (0, import_react114.useCallback)(function(element) {
+  }, []), (0, import_react118.useCallback)(function(element) {
     cbElementRef.current = element, evaluateSubscription();
   }, [evaluateSubscription]);
 }
@@ -49893,21 +52144,21 @@ function extractSize(entry2, boxProp, sizeType) {
 }
 function useResizeObserver(opts) {
   opts === void 0 && (opts = {});
-  var onResize = opts.onResize, onResizeRef = (0, import_react114.useRef)(void 0);
+  var onResize = opts.onResize, onResizeRef = (0, import_react118.useRef)(void 0);
   onResizeRef.current = onResize;
-  var round = opts.round || Math.round, resizeObserverRef = (0, import_react114.useRef)(), _useState = (0, import_react114.useState)({
+  var round = opts.round || Math.round, resizeObserverRef = (0, import_react118.useRef)(), _useState = (0, import_react118.useState)({
     width: void 0,
     height: void 0
-  }), size = _useState[0], setSize = _useState[1], didUnmount = (0, import_react114.useRef)(!1);
-  (0, import_react114.useEffect)(function() {
+  }), size = _useState[0], setSize = _useState[1], didUnmount = (0, import_react118.useRef)(!1);
+  (0, import_react118.useEffect)(function() {
     return didUnmount.current = !1, function() {
       didUnmount.current = !0;
     };
   }, []);
-  var previous = (0, import_react114.useRef)({
+  var previous = (0, import_react118.useRef)({
     width: void 0,
     height: void 0
-  }), refCallback = useResolvedElement((0, import_react114.useCallback)(function(element) {
+  }), refCallback = useResolvedElement((0, import_react118.useCallback)(function(element) {
     return (!resizeObserverRef.current || resizeObserverRef.current.box !== opts.box || resizeObserverRef.current.round !== round) && (resizeObserverRef.current = {
       box: opts.box,
       round,
@@ -49927,7 +52178,7 @@ function useResizeObserver(opts) {
       resizeObserverRef.current && resizeObserverRef.current.instance.unobserve(element);
     };
   }, [opts.box, round]), opts.ref);
-  return (0, import_react114.useMemo)(function() {
+  return (0, import_react118.useMemo)(function() {
     return {
       ref: refCallback,
       width: size.width,
@@ -49938,7 +52189,7 @@ function useResizeObserver(opts) {
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/FlameChartWrapper.jsx
 var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
-  let boxRef = (0, import_react115.useRef)(null), canvasRef = (0, import_react115.useRef)(null), flameChart = (0, import_react115.useRef)(null);
+  let boxRef = (0, import_react119.useRef)(null), canvasRef = (0, import_react119.useRef)(null), flameChart = (0, import_react119.useRef)(null);
   useResizeObserver2({
     ref: boxRef,
     onResize: ({ width = 0, height = 0 }) => {
@@ -49946,7 +52197,7 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
       return (_a2 = flameChart.current) == null ? void 0 : _a2.resize(width, height - 3);
     }
   });
-  let initialize = (0, import_react115.useCallback)(() => {
+  let initialize = (0, import_react119.useCallback)(() => {
     let {
       data,
       marks,
@@ -49971,43 +52222,43 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
         plugins
       });
     }
-  }, [props]), setBoxRef = (0, import_react115.useCallback)(
+  }, [props]), setBoxRef = (0, import_react119.useCallback)(
     (ref) => {
       let isNewRef = ref !== boxRef.current;
       boxRef.current = ref, isNewRef && initialize();
     },
     [initialize]
-  ), setCanvasRef = (0, import_react115.useCallback)(
+  ), setCanvasRef = (0, import_react119.useCallback)(
     (ref) => {
       let isNewRef = ref !== canvasRef.current;
       canvasRef.current = ref, isNewRef && initialize();
     },
     [initialize]
   );
-  return (0, import_react115.useEffect)(() => {
+  return (0, import_react119.useEffect)(() => {
     var _a2;
     props.data && ((_a2 = flameChart.current) == null || _a2.setNodes(props.data));
-  }, [props.data]), (0, import_react115.useEffect)(() => {
+  }, [props.data]), (0, import_react119.useEffect)(() => {
     var _a2;
     props.marks && ((_a2 = flameChart.current) == null || _a2.setMarks(props.marks));
-  }, [props.marks]), (0, import_react115.useEffect)(() => {
+  }, [props.marks]), (0, import_react119.useEffect)(() => {
     var _a2;
     props.waterfall && ((_a2 = flameChart.current) == null || _a2.setWaterfall(props.waterfall));
-  }, [props.waterfall]), (0, import_react115.useEffect)(() => {
+  }, [props.waterfall]), (0, import_react119.useEffect)(() => {
     var _a2;
     props.timeseries && ((_a2 = flameChart.current) == null || _a2.setTimeseries(props.timeseries));
-  }, [props.timeseries]), (0, import_react115.useEffect)(() => {
+  }, [props.timeseries]), (0, import_react119.useEffect)(() => {
     var _a2;
     props.timeframeTimeseries && ((_a2 = flameChart.current) == null || _a2.setTimeframeTimeseries(props.timeframeTimeseries));
-  }, [props.timeframeTimeseries]), (0, import_react115.useEffect)(() => {
+  }, [props.timeframeTimeseries]), (0, import_react119.useEffect)(() => {
     props.settings && flameChart.current && (flameChart.current.setSettings(props.settings), flameChart.current.renderEngine.recalcChildrenSizes(), flameChart.current.render());
-  }, [props.settings]), (0, import_react115.useEffect)(() => {
+  }, [props.settings]), (0, import_react119.useEffect)(() => {
     var _a2;
     props.position && ((_a2 = flameChart.current) == null || _a2.setFlameChartPosition(props.position));
-  }, [props.position]), (0, import_react115.useEffect)(() => {
+  }, [props.position]), (0, import_react119.useEffect)(() => {
     var _a2;
     props.zoom && ((_a2 = flameChart.current) == null || _a2.setZoom(props.zoom.start, props.zoom.end));
-  }, [props.zoom]), (0, import_react115.useEffect)(() => {
+  }, [props.zoom]), (0, import_react119.useEffect)(() => {
     var _a2;
     return props.onSelect && ((_a2 = flameChart.current) == null || _a2.on("select", props.onSelect)), () => {
       var _a3;
@@ -50026,12 +52277,12 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/routes/debug-network.jsx
 function DebugNetwork() {
-  let serverEvents = (0, import_react116.useRef)({
+  let serverEvents = (0, import_react120.useRef)({
     smallestStartTime: 0,
     mainRequests: [],
     subRequests: {},
     showPutRequests: !1
-  }), [timestamp, setTimestamp] = (0, import_react116.useState)();
+  }), [timestamp, setTimestamp] = (0, import_react120.useState)();
   function serverEventHandler(onEvent) {
     return (event) => {
       let data = JSON.parse(event.data);
@@ -50043,7 +52294,7 @@ function DebugNetwork() {
       }, 0);
     };
   }
-  return (0, import_react116.useEffect)(() => {
+  return (0, import_react120.useEffect)(() => {
     let evtSource = new EventSource("/debug-network-server", {
       withCredentials: !0
     }), mainRequestHandler = serverEventHandler((data) => {
@@ -51132,7 +53383,7 @@ var LAYOUT_QUERY2 = `#graphql
 `;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-3DQV7LAR.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-M7ZELIPT.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-QLMTPHJM.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-RLRTI7RK.js", imports: ["/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-B4UWBIDW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-2E5OOK5H.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-74NKATZP.js", imports: ["/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-3T7HBPHS.js", imports: ["/build/_shared/chunk-SGR3BVRJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-IT77ZPED.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-VVVJV3JK.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-CAP7JFKR.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-GZD3KG7S.js", imports: ["/build/_shared/chunk-HKQZ4OI5.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-FHAW5WV3.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-MORQOXRX.js", imports: ["/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-WGJ4WJRW.js", imports: ["/build/_shared/chunk-HKQZ4OI5.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-LWVZCEEF.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-S7LAFWLU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-FEONJEMV.js", imports: ["/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-NNKMTMSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-VAC2K2N3.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ELWFAUUC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-TZHRYH2T.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-GODRRUOK.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-F4ENGRL3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-RDSCHRPS.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-7KBSUE6F.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-2GXOX7ZT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-K7J6PDH7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-NPMZFJ6J.js", imports: ["/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-62N4LQOV.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-VUKL6RW7.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-EKHBQMYZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EZSSUTZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-W6Y64MDS.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "04b1be2c", hmr: { runtime: "/build/_shared\\chunk-QLMTPHJM.js", timestamp: 1696751583533 }, url: "/build/manifest-04B1BE2C.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-VGJAQVYX.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-7LX4FZKM.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-M5RZR2GW.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NI5HZPEF.js", imports: ["/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-X3BOBH72.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-XG5PUFHQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-YL3H25MX.js", imports: ["/build/_shared/chunk-KUTWGYOA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-NZIWA4LZ.js", imports: ["/build/_shared/chunk-KZAEUWVY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-RULOBSI7.js", imports: ["/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-HXJBOIP3.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-CXH6LCOI.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-TQ3XSJ47.js", imports: ["/build/_shared/chunk-E6V2BKPD.js", "/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-CT3OR5SK.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-COYVMSEY.js", imports: ["/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-XLNMLQK5.js", imports: ["/build/_shared/chunk-E6V2BKPD.js", "/build/_shared/chunk-Z5LFC6FH.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-EVIHHMW2.js", imports: ["/build/_shared/chunk-OMGXAGHL.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VFPJDGJ3.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).address-book": { id: "routes/($locale).address-book", parentId: "root", path: ":locale?/address-book", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).address-book-654AEMCZ.js", imports: ["/build/_shared/chunk-LPT5DYTP.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-VY4RBW47.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-MUUJFAWZ.js", imports: ["/build/_shared/chunk-KUTWGYOA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-XLZA5AKM.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-RNY4ZMSE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-3EXEJLIG.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-TVBGW6BT.js", imports: ["/build/_shared/chunk-4MYYP63X.js", "/build/_shared/chunk-KUTWGYOA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-CQKGGEZB.js", imports: ["/build/_shared/chunk-4MYYP63X.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-AR2DGCT2.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-NY6PKZKJ.js", imports: ["/build/_shared/chunk-4MYYP63X.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-BY2IMXTQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-ELIKAIZG.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-B2MLQZA5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-6INVP6R4.js", imports: ["/build/_shared/chunk-LPT5DYTP.js", "/build/_shared/chunk-KUTWGYOA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-ZO4V7M22.js", imports: ["/build/_shared/chunk-4MYYP63X.js", "/build/_shared/chunk-KUTWGYOA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-HBMI5W5H.js", imports: ["/build/_shared/chunk-4MYYP63X.js", "/build/_shared/chunk-KUTWGYOA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-VAOGLETH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EBEKOZQF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-XDC435VJ.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-ZGUXAR4N.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "1e598e7c", hmr: { runtime: "/build/_shared\\chunk-M5RZR2GW.js", timestamp: 1696936813722 }, url: "/build/manifest-1E598E7C.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -51327,6 +53578,14 @@ var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_
     index: void 0,
     caseSensitive: void 0,
     module: locale_account_edit_exports
+  },
+  "routes/($locale).address-book": {
+    id: "routes/($locale).address-book",
+    parentId: "root",
+    path: ":locale?/address-book",
+    index: void 0,
+    caseSensitive: void 0,
+    module: locale_address_book_exports
   },
   "routes/($locale).api.products": {
     id: "routes/($locale).api.products",

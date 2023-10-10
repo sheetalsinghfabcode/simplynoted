@@ -686,3 +686,9 @@ shop-pay-button {
 
 
 }
+
+.overflow-popup {
+  max-height: 50vh;
+  overflow: auto;
+}
+
