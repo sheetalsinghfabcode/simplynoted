@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import location from '../../location.json';
 
 const AddressForm = ({setAddressForm, setEditAddress}) => {
   const customerID = 6406284116073;
@@ -12,7 +13,7 @@ const AddressForm = ({setAddressForm, setEditAddress}) => {
     city: '',
     stateProvince: '',
     postalCode: '',
-    country: '',
+    country: 'United States',
     type: '',
     birthday: '',
     anniversary: '',
@@ -20,11 +21,28 @@ const AddressForm = ({setAddressForm, setEditAddress}) => {
 
   const handleChange = (e) => {
     const {name, value} = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (name === 'country') {
+      // Find the selected country's states
+      const selectedCountry = location.countries.find(
+        (country) => country.country === value,
+      );
+      setFormData((prev) => ({
+        ...prev,
+        country: value,
+        state: selectedCountry ? selectedCountry.states[0] : '', // Set default state
+      }));
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
+
+  const selectedCountry = location.countries.find(
+    (country) => country.country === formData.country,
+  );
+
 
   const uploadDataToAPI = () => {
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
@@ -56,13 +74,14 @@ const AddressForm = ({setAddressForm, setEditAddress}) => {
         }),
       });
       if (responseData) {
-        setAddressForm(false)
+        setAddressForm(false);
       }
     } catch (error) {
       console.error('Error uploading data:', error);
       throw error;
     }
   };
+
 
   return (
     <div className="container mx-auto p-4">
@@ -187,15 +206,21 @@ const AddressForm = ({setAddressForm, setEditAddress}) => {
             >
               State/Province
             </label>
-            <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="stateProvince"
-              name="stateProvince"
-              type="text"
-              required
-              value={formData.stateProvince}
+            <select
               onChange={handleChange}
-            />
+              value={formData.state}
+              name="state"
+              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="state"
+            >
+              <option value="">Select a state</option>
+              {selectedCountry &&
+                selectedCountry.states.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+            </select>
           </div>
         </div>
 
@@ -225,14 +250,20 @@ const AddressForm = ({setAddressForm, setEditAddress}) => {
           >
             Country
           </label>
-          <input
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="country"
-            name="country"
-            required
-            value={formData.country}
+          <select
             onChange={handleChange}
-          />
+            value={formData.country}
+            itemID="country"
+            name="country"
+            id="country"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            {location.countries.map((country) => (
+              <option key={country.country} value={country.country}>
+                {country.country}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="mb-4">

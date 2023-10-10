@@ -214,11 +214,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
 
 useEffect(()=>{
   customerid = localStorage.getItem('customerId')
-console.log(customerid,'LoginScreen000000000000');
 },[])
 
-  console.log("title", title)
-  console.log("menu", menu)
   const params = useParams();
   const { y } = useWindowScroll();
   return (

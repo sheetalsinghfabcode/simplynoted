@@ -9,7 +9,7 @@ const ContactDetail = ({
   setSelectedAddress,
 }) => {
   const tableHeaders = [
-    'Checkobox',
+    'check',
     'Item',
     'Type',
     'first Name',
@@ -75,6 +75,9 @@ const ContactDetail = ({
       });
   };
 
+
+  
+
   const filterAddressesByType = () => {
     if (selectedType === 'all') {
       return filteredAddresses; // Return all addresses if "all" is selected
@@ -87,6 +90,20 @@ const ContactDetail = ({
 
   // Get the filtered addresses based on selected type
   const contactAddress = filterAddressesByType();
+
+  const handleSelectAll = () => {
+    // Check if all checkboxes are already selected
+    const allSelected = selectedCheckboxes.length === contactAddress.length;
+    
+    if (allSelected) {
+      // If all are selected, unselect all
+      setSelectedCheckboxes([]);
+    } else {
+      // If not all are selected, select all
+      setSelectedCheckboxes(contactAddress.map(value => value._id));
+    }
+  };
+  
 
   return (
     <div className="container mx-auto mt-8">
@@ -111,37 +128,41 @@ const ContactDetail = ({
                 {tableHeaders.map((header, index) => (
                   <th
                     key={index}
-                    className="text-center whitespace-nowrap text-white bg-[#001a5f] border border-solid border-[#001a5f] text-[14px] font-bold p-[5px]"
+                    className="text-center whitespace-nowrap text-white bg-[#001a5f] border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
                   >
                     {index === 2 ? (
-                   <div className="flex items-center relative">
-                   <select
-                     className="bg-transparent text-white border-none outline-none appearance-none  absolute inset-y-0 right-0 opacity-0"
-                     onChange={handleTypeChange}
-                     value={selectedType}
-                   >
-                     <option className="text-black" value="all">
-                       all
-                     </option>
-                     <option className="text-black" value="recipient">
-                       Recipient
-                     </option>
-                     <option className="text-black" value="return">
-                     Return
-                     </option>
-                   </select>
-                   <span className='pl-[10px]'>Type</span>
-                   <div className="absolute top-0 right-0 h-full flex items-center pr-2 pointer-events-none">
-                     <svg
-                       className="w-4 h-4 text-white fill-current"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewBox="0 0 20 20"
-                     >
-                       <path d="M10 12l-6-6h12z" />
-                     </svg>
-                   </div>
-                 </div>
-                 
+                      <div className="flex items-center relative">
+                        <select
+                          className="bg-transparent w-[10px] text-white border-none outline-none appearance-none  absolute inset-y-0 right-0 w-[10p] "
+                          onChange={handleTypeChange}
+                          value={selectedType}
+                        >
+                          <option className="text-black" value="all">
+                            all
+                          </option>
+                          <option className="text-black" value="recipient">
+                            Recipient
+                          </option>
+                          <option className="text-black" value="return">
+                            Return
+                          </option>
+                        </select>
+                        <span className="">Type</span>
+                        <div className="absolute top-[2px] right-0 left-[41px] h-full flex items-center pr-2 pointer-events-none">
+                          <svg
+                            className="w-4 h-4 text-white fill-current"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M10 12l-6-6h12z" />
+                          </svg>
+                        </div>
+                      </div>
+                    ) : index === 0 ? (
+                      <input
+                      onChange={handleSelectAll}
+                      className='cursor-pointer'
+                      type="checkbox" />
                     ) : (
                       header
                     )}
@@ -157,7 +178,7 @@ const ContactDetail = ({
                     i % 2 === 0 ? 'bg-[#f1f7fc]' : 'bg-[#96bee3]'
                   } `}
                 >
-                  <td className="flex border-l border-b border-solid border-black py-[10px] gap-[10px] justify-center items-center">
+                  <td className="flex border-l border-b border-solid border-black p-[10px] gap-[16px] justify-center items-center">
                     <input
                       type="checkbox"
                       className="cursor-pointer"
@@ -172,43 +193,43 @@ const ContactDetail = ({
                       }}
                     />
                   </td>
-                  <td className="py-2  border border-solid border-black px-2">
+                  <td className="p-[10px]  border border-solid border-black">
                     {i}
                   </td>
-                  <td className="py-2  border border-solid border-black px-2">
+                  <td className="p-[10px] border border-solid border-black ">
                     {value.type}
                   </td>
-                  <td className="py-2  border border-solid border-black px-2">
+                  <td className="p-[10px]  border border-solid border-black ">
                     {value.firstName}
                   </td>
-                  <td className="py-2  border border-solid border-black px-2">
+                  <td className=" p-[10px] border border-solid border-black ">
                     {value.lastName}
                   </td>
-                  <td className="py-2  border border-solid border-black px-2">
+                  <td className=" p-[10px] border border-solid border-black">
                     {value.businessName}
                   </td>
-                  <td className="py-2  border border-solid border-black px-2">
+                  <td className=" p-[10px] border border-solid border-black ">
                     {value.anniversary}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className="p-[10px] border border-solid border-black">
                     {value.birthday}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className="p-[10px] border border-solid border-black">
                     {value.state}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className=" p-[10px] border border-solid border-black">
                     {value.country}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className=" p-[10px] border border-solid border-black">
                     {value.zip}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className=" p-[10px] border border-solid border-black">
                     {value.city}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className="p-[10px] border border-solid border-black">
                     {value.address1}
                   </td>
-                  <td className="py-2 px-2  border border-solid border-black">
+                  <td className="p-[10px] border border-solid border-black">
                     {value.address2}
                   </td>
                 </tr>

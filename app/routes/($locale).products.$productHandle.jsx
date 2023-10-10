@@ -123,8 +123,6 @@ function redirectToFirstVariant({ product, request }) {
 
 export default function Product() {
   const { product, shop, recommended, variants } = useLoaderData();
-  console.log(variants, '!1!!!!!!variants');
-  console.log(product.variants.nodes[0].price, "productData-------------");
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
   const [name, setName] = useState('Enter Your Text Here....')
@@ -140,7 +138,6 @@ export default function Product() {
 
   //  input = document.querySelector('.inputText');
   input2 = document.querySelector('.inputText2');
-  console.log(input, "PPPPPPPPPPPPPPPPPP");
 
   output2 = document.querySelector('.output2');
 
