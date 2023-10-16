@@ -212,10 +212,6 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
 
-useEffect(()=>{
-  customerid = localStorage.getItem('customerId')
-},[])
-
   const params = useParams();
   const { y } = useWindowScroll();
   return (
@@ -252,11 +248,11 @@ useEffect(()=>{
               }
             >
               {item.title === "Send a Card" ? (
-                <div class="dropdown">
+                <div className="dropdown">
                   <div>
                     Send a Card
                   </div>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
 
                     <p className='card' onClick={() => window.open("/card", "_self")}
                     >Card</p>
@@ -268,11 +264,11 @@ useEffect(()=>{
               ) : null}
 
               {item.title === "Pricing" ? (
-                <div class="dropdown">
+                <div className="dropdown">
                   <div>
                     Pricing
                   </div>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                     <p>Item 1</p>
                     <p> Item 2</p>
                     <p>Item 3</p>

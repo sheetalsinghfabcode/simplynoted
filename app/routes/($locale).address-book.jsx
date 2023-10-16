@@ -1,12 +1,17 @@
 import {useEffect, useState} from 'react';
-import ContactDetail from '../components/ContactDetail';
-import AddressForm from '../components/AddressForm';
-import EditAddressForm from '../components/EditAddressForm';
-import CsvInstruction from '~/components/CsvInstruction';
+import ContactDetail from '../components/addressBook/ContactDetail';
+import AddressForm from '../components/addressBook/AddressForm';
+import EditAddressForm from '../components/addressBook/EditAddressForm';
+import CsvInstruction from '~/components/addressBook/CsvInstruction';
+import {useNavigate} from '@remix-run/react';
+import Loader from '../components/modal/Loader';
+import DynamicButton from '~/components/DynamicButton';
+import ErrorModal from '../components/modal/ErrorModal';
+
+let customerID;
+let errorMessages;
 
 export default function AddressBook() {
-  const customerID = 6406284116073;
-
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileData, setFileData] = useState([]);
   const [addresses, setAddresses] = useState([]);
@@ -16,6 +21,20 @@ export default function AddressBook() {
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+  const [loadAddress, setLoadAddress] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorContent, serErrorContent] = useState([]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    customerID = localStorage.getItem('customerId');
+    if (!customerID) {
+      navigate('/account/login');
+    }
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -26,9 +45,9 @@ export default function AddressBook() {
   };
 
   useEffect(() => {
+    ('useEffect Trigger');
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
-
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
@@ -38,13 +57,12 @@ export default function AddressBook() {
         return response.json();
       })
       .then((data) => {
-        // Update the state with the response data
         setAddresses(data.result);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [loadAddress, addressForm, selectedAddress]);
 
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
@@ -85,12 +103,12 @@ export default function AddressBook() {
         setSelectedFile(file); // Update the selected file state
         setFileData(jsonData);
       };
-
       reader.readAsText(file);
     }
   };
 
   const uploadDataToAPI = async (data) => {
+    setLoader(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -101,7 +119,7 @@ export default function AddressBook() {
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
 
     try {
-      const responseData = await fetch(apiUrl, {
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -125,8 +143,18 @@ export default function AddressBook() {
           anniversary: modifiedData.Anniversary || '',
         }),
       });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        setLoadAddress(!loadAddress);
+        setSelectedFile(null);
+        setLoader(false);
+        'Successful response data:', responseData.result;
+      } else {
+        throw new Error('Network response was not ok');
+      }
     } catch (error) {
-      console.error('Error uploading data:', error);
+      console.log('Error uploading data:', error);
       throw error;
     }
   };
@@ -137,18 +165,58 @@ export default function AddressBook() {
       return;
     }
 
+    const requiredFields = [
+      'First Name',
+      'Last Name',
+      'Address',
+      'City',
+      'State/Province',
+      'Postal Code',
+    ];
+    const errors = [];
+
     try {
-      await Promise.all(fileData.map(uploadDataToAPI));
-      window.location.reload();
+      for (let i = 0; i < fileData.length; i++) {
+        const data = fileData[i];
+        const missingFields = [];
+
+        for (const field of requiredFields) {
+          if (!data[field] || data[field].trim() === '') {
+            missingFields.push(field);
+          }
+        }
+
+        if (missingFields.length > 0) {
+          for (const field of missingFields) {
+            errors.push(`Row ${i + 1}: Missing field - ${field}`);
+          }
+        } else {
+          await uploadDataToAPI(data);
+        }
+      }
+
+      if (errors.length > 0) {
+        errorMessages = `Errors in CSV data:\n${errors.join('\n')}`;
+        console.log('error', errors);
+        setSelectedFile(null);
+
+        serErrorContent(errors);
+        setErrorModal(true);
+        setTimeout(() => {
+          setErrorModal(false);
+        }, [4000]);
+        throw new Error(errorMessages);
+      }
     } catch (error) {
       console.error('Error uploading data:', error);
+      // You can handle the error here, e.g., display a message to the user.
     }
   };
 
-  // Function to handle the search input change
   const handleSearchInputChange = (event) => {
     const value = event.target.value;
     setSearchText(value);
+    setSelectedCheckboxes([]);
 
     // Filter the addresses based on the search term
     const filtered = addresses.filter((address) =>
@@ -159,94 +227,125 @@ export default function AddressBook() {
     setFilteredAddresses(filtered);
   };
 
+
   return (
-    <div className='bg-[#e0e9f8]'>
-    <div className="w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto">
-      <h2 className="text-center text-[#001a5f] font-bold text-[36px]">Address Book</h2>
-      {!addressForm && !selectedAddress && (
-        <div className="w-full">
-          <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
-            <input
-              type="text"
-              placeholder="Search Addresses..."
-              value={searchText}
-              onChange={handleSearchInputChange}
-              className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
-            />
-            <div className="flex">
-              <div
-                className={`border-[2px] border-soild border-[#000] py-[5px]`}
-              >
-                <div className="flex flex-col">
-                  <h2 className='font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]'>Bulk Address Upload</h2>
-                  <input
-                    onChange={handleFileChange}
-                    type="file"
-                    accept=".csv"
-                    className='p-[10px]'
-                  />
-                  <a
-                    href="https://api.simplynoted.com/docs/bulk-template"
-                    className="text-[14px] px-[10px] font-bold underline"
+    <div className="bg-[#e0e9f8]">
+      {loader ? (
+        <Loader loaderMessage="Uploading Address Book" />
+      ) : errorModal ? (
+        <ErrorModal
+          title="Uploaded Error!"
+          isOpen={errorModal}
+          onRequestClose={() => setErrorModal(false)}
+          content={errorContent}
+        />
+      ) : (
+        <div className="w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto">
+          <h2 className="text-center text-[#001a5f] font-bold text-[36px]">
+            Address Book
+          </h2>
+          {!addressForm && !selectedAddress && (
+            <div className="w-full">
+              <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
+                <input
+                  type="text"
+                  placeholder="Search Addresses..."
+                  value={searchText}
+                  onChange={handleSearchInputChange}
+                  className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+                />
+                <div className="flex">
+                  <div
+                    className={`border-[2px] border-soild border-[#000] py-[5px]`}
                   >
-                    Download bulk address template
-                  </a>
-                <span 
-                onClick={openModal}
-                className='font-bold text-[14px] text-black px-[10px] cursor-pointer underline'> View Instructions</span>
+                    <div className="flex flex-col">
+                      <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                        Bulk Address Upload
+                      </h2>
+                      <input
+                        onChange={handleFileChange}
+                        type="file"
+                        accept=".csv"
+                        className="p-[10px] cursor-pointer"
+                      />
+                      <a
+                        href="https://api.simplynoted.com/docs/bulk-template"
+                        className="text-[14px] px-[10px] font-bold underline"
+                      >
+                        Download bulk address template
+                      </a>
+                      <span
+                        onClick={openModal}
+                        className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
+                      >
+                        {' '}
+                        View Instructions
+                      </span>
+                    </div>
+                    {selectedFile && (
+                      <DynamicButton
+                        text="Upload"
+                        className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
+                        onClickFunction={() => handleUploadClick()}
+                      />
+                    )}
+                  </div>
+                  <div className="flex items-end justify-end ml-[10px] ">
+                    <DynamicButton
+                      className="bg-[#1b5299]"
+                      text="+ New Address"
+                      onClickFunction={() => setAddressForm(true)}
+                    />
+                  </div>
                 </div>
+              </div>
+              <CsvInstruction
+                isOpen={isModalOpen}
+                title="INSTRUCTIONS FOR BULK UPLOAD"
+                closeModal={closeModal}
+                instructions={[
+                  'Download the bulk upload template (csv)',
+                  'Complete a row for each address you wish to add',
+                  'Upload your completed file in .csv format',
+                ]}
+                table={true}
+              />
 
-                {selectedFile && (
-                  <button
-                    onClick={() => handleUploadClick()}
-                    className="w-full text-white bg-[#ef6e6e] p-[5px] mx-[10px] max-w-[292px] mt-[5px]"
-                  >
-                    Upload
-                  </button>
-                )}
-              </div>
-              <div className="flex items-end justify-end ml-[10px] ">
-                <button
-                  onClick={() => setAddressForm(true)}
-                  className="text-white h-[40px] text-[14px] px-[10px] font-bold bg-[#1b5299]"
-                >
-                  +New Address
-                </button>
-              </div>
+              <ContactDetail
+                customerID={customerID}
+                filteredAddresses={filteredAddresses}
+                editAddress={editAddress}
+                setSelectedAddress={setSelectedAddress}
+                handleSearchInputChange={handleSearchInputChange}
+                setSelectedCheckboxes={setSelectedCheckboxes}
+                selectedCheckboxes={selectedCheckboxes}
+              />
             </div>
-          </div>
-          <CsvInstruction isOpen={isModalOpen} closeModal={closeModal} />
-
-          <ContactDetail
-            customerID={customerID}
-            searchText={searchText}
-            setSearchText={setSearchText}
-            filteredAddresses={filteredAddresses}
-            editAddress={editAddress}
-            setSelectedAddress={setSelectedAddress}
-            setEditAddress={setEditAddress}
-          />
+          )}
+          {addressForm && (
+            <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+              <AddressForm
+                customerID={customerID}
+                setAddressForm={setAddressForm}
+                setEditAddress={setEditAddress}
+              />
+            </div>
+          )}
+          {selectedAddress && (
+            <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+              <EditAddressForm
+                customerID={customerID}
+                selectedAddress={selectedAddress}
+                setSelectedAddress={setSelectedAddress}
+                setEditAddress={setEditAddress}
+                setAddressForm={setAddressForm}
+                loadAddress={loadAddress}
+                setLoadAddress={setLoadAddress}
+              />
+            </div>
+          )}
         </div>
       )}
-      {addressForm && (
-        <div className="w-full max-w-[1440px] px-[20px] mx-auto">
-          <AddressForm
-            setAddressForm={setAddressForm}
-            setEditAddress={setEditAddress}
-          />
-        </div>
-      )}
-      {selectedAddress && (
-        <div className="w-full max-w-[1440px] px-[20px] mx-auto">
-          <EditAddressForm
-            selectedAddress={selectedAddress}
-            setSelectedAddress={setSelectedAddress}
-            setEditAddress={setEditAddress}
-            setAddressForm={setAddressForm}
-          />
-        </div>
-      )}
-    </div>
     </div>
   );
 }

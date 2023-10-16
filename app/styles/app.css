@@ -199,7 +199,6 @@ shop-pay-button {
     min-height: 52px;
     cursor: pointer;
     color:white;
-
   }
   .font-bold {
     font-weight: 500 !important;
@@ -465,13 +464,53 @@ shop-pay-button {
   border-radius: 5px;
   margin-top: 10px;
 }
+
+
+
+
+/* For mobile devices or narrow screens */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+  }
+  
+  .table thead {
+    display: none; /* Hide the table header on narrow screens */
+  }
+  
+  .table tbody {
+    display: block;
+    width: 100%;
+  }
+  
+  .table td, .table th {
+    white-space: normal;
+    text-align: left;
+  }
+  
+  .table td {
+    padding: 10px;
+  }
+  
+  .table tr {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+}
+
 @font-face {
   font-family: 'Tarzan';
   /* font-display: swap; */
   font-weight: 700;
   font-style: italic;
   src: url('./fonts/Tarzan.ttf') format('truetype');
-
 }
 @font-face {
   font-family: 'Stitch';
@@ -684,7 +723,6 @@ shop-pay-button {
 
 }
 
-
 }
 
 .overflow-popup {
@@ -692,3 +730,6 @@ shop-pay-button {
   overflow: auto;
 }
 
+.type-select select{
+  --tw-ring-color: transparent;
+}

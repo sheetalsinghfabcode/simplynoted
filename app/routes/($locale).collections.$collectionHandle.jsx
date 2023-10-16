@@ -98,7 +98,6 @@ export async function loader({params, request, context}) {
       },
     },
   );
-  console.log(collection,"--------------");
 
   if (!collection) {
     throw new Response('collection', {status: 404});

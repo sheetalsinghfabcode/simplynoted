@@ -1,7 +1,7 @@
-import { useRef, Suspense } from 'react';
-import { Disclosure, Listbox } from '@headlessui/react';
-import { defer, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await } from '@remix-run/react';
+import {useRef, Suspense} from 'react';
+import {Disclosure, Listbox} from '@headlessui/react';
+import {defer, redirect} from '@shopify/remix-oxygen';
+import {useLoaderData, Await} from '@remix-run/react';
 import {
   AnalyticsPageType,
   Money,
@@ -25,26 +25,31 @@ import {
   AddToCartButton,
   Button,
 } from '~/components';
-import { getExcerpt } from '~/lib/utils';
-import { seoPayload } from '~/lib/seo.server';
-import { routeHeaders } from '~/data/cache';
-import { MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
-import { useState, useEffect } from 'react';
-import { BiSolidChevronLeft } from "react-icons/bi";
-import { BsXCircle } from "react-icons/bs";
+import {getExcerpt} from '~/lib/utils';
+import {seoPayload} from '~/lib/seo.server';
+import {routeHeaders} from '~/data/cache';
+import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {useState, useEffect} from 'react';
+import {BiSolidChevronLeft} from 'react-icons/bi';
+import {BsXCircle} from 'react-icons/bs';
 import Modal from 'react-modal';
 
-
 export const headers = routeHeaders;
-let input, input2, output, output2, outputContainer, outputContainer2, customerid
+let input,
+  input2,
+  output,
+  output2,
+  outputContainer,
+  outputContainer2,
+  customerid;
 
-export async function loader({ params, request, context }) {
-  const { productHandle } = params;
+export async function loader({params, request, context}) {
+  const {productHandle} = params;
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
 
-  const { shop, product } = await context.storefront.query(PRODUCT_QUERY, {
+  const {shop, product} = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
       handle: productHandle,
       selectedOptions,
@@ -54,11 +59,11 @@ export async function loader({ params, request, context }) {
   });
 
   if (!product?.id) {
-    throw new Response('product', { status: 404 });
+    throw new Response('product', {status: 404});
   }
 
   if (!product.selectedVariant) {
-    return redirectToFirstVariant({ product, request });
+    return redirectToFirstVariant({product, request});
   }
 
   // In order to show which variants are available in the UI, we need to query
@@ -111,7 +116,7 @@ export async function loader({ params, request, context }) {
   });
 }
 
-function redirectToFirstVariant({ product, request }) {
+function redirectToFirstVariant({product, request}) {
   const searchParams = new URLSearchParams(new URL(request.url).search);
   const firstVariant = product.variants.nodes[0];
   for (const option of firstVariant.selectedOptions) {
@@ -122,19 +127,19 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 export default function Product() {
-  const { product, shop, recommended, variants } = useLoaderData();
-  const { media, title, vendor, descriptionHtml } = product;
-  const { shippingPolicy, refundPolicy } = shop;
-  const [name, setName] = useState('Enter Your Text Here....')
-  const [name2, setName2] = useState('')
+  const {product, shop, recommended, variants} = useLoaderData();
+  const {media, title, vendor, descriptionHtml} = product;
+  const {shippingPolicy, refundPolicy} = shop;
+  const [name, setName] = useState('Enter Your Text Here....');
+  const [name2, setName2] = useState('');
   const [show, setShow] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
-  const [productshow, setProductShow] = useState(true)
-  const [recipientAddress, setRecipientAddress] = useState('')
-  const [returnAddress, setReturnAddress] = useState('')
+  const [productshow, setProductShow] = useState(true);
+  const [recipientAddress, setRecipientAddress] = useState('');
+  const [returnAddress, setReturnAddress] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [aiText,setaiText] = useState('')
-  const [valToGen,setValToGen] = useState('')
+  const [aiText, setaiText] = useState('');
+  const [valToGen, setValToGen] = useState('');
 
   //  input = document.querySelector('.inputText');
   input2 = document.querySelector('.inputText2');
@@ -143,33 +148,27 @@ export default function Product() {
 
   outputContainer2 = document.querySelector('.secDiv');
 
-
   if (input) {
     input.addEventListener('input', processInput);
   }
 
   function resize_to_fit() {
     let fontSize = window.getComputedStyle(output).fontSize;
-    output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-    console.log(output.clientHeight, "------------", outputContainer.clientHeight);
+    output.style.fontSize = parseFloat(fontSize) - 1 + 'px';
     if (output.clientHeight >= outputContainer.clientHeight) {
       resize_to_fit();
     }
   }
 
   async function processInput() {
-    console.log(input.value, "PPPPPPPPPPPPPPPPPPPPPPPPPPP", this.value);
-
     output.innerHTML = await this.value;
     output.style.fontSize = '60px'; // Default font size
     resize_to_fit();
   }
 
-
   function resize_to_fit2() {
     let fontSize = window.getComputedStyle(output2).fontSize;
-    output2.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-    console.log(output2.clientHeight, "------------", outputContainer2.clientHeight);
+    output2.style.fontSize = parseFloat(fontSize) - 1 + 'px';
     if (output2.clientHeight >= outputContainer2.clientHeight) {
       resize_to_fit2();
     }
@@ -186,14 +185,12 @@ export default function Product() {
   }
 
   function setFont() {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
-    var selectFont = document.getElementById("font");
+    var selectFont = document.getElementById('font');
     if (selectFont) {
       var selectFontValue = selectFont.options[selectFont.selectedIndex].value;
-      console.log(selectFontValue, "==========");
       if (selectFontValue) {
-        document.getElementById("abcd").style.fontFamily = selectFontValue;
-        document.getElementById("abcd2").style.fontFamily = selectFontValue;
+        document.getElementById('abcd').style.fontFamily = selectFontValue;
+        document.getElementById('abcd2').style.fontFamily = selectFontValue;
       }
       // else if (selectFontValue == "Plain") {
       //     document.getElementById("abcd").style.fontFamily  = "Bold";
@@ -215,42 +212,40 @@ export default function Product() {
     input = ref.current;
     output = ref1.current;
     outputContainer = ref2.current;
-    // console.log(element,'refElement');
-    console.log(input.className, output.className, outputContainer.className);
-    customerid = localStorage.getItem('customerId')
-    console.log(customerid, 'customerId----------------');
-    getRecipient()
-    getReturn()
+    customerid = localStorage.getItem('customerId');
+    getRecipient();
+    getReturn();
   }, []);
-  console.log(recipientAddress, '-----------------recipientAddress')
   async function getRecipient() {
     try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`)
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
+      );
       const json = await res.json();
       console.log(json, 'getRecipient Response____________');
-      setRecipientAddress(json.result)
+      setRecipientAddress(json.result);
     } catch (error) {
       console.log(error, 'Recipient error--------');
     }
   }
   async function getReturn() {
     try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`)
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
+      );
       const json = await res.json();
       console.log(json, 'getRecipient Response____________');
-      setReturnAddress(json.result)
+      setReturnAddress(json.result);
     } catch (error) {
       console.log(error, 'Recipient error--------');
     }
   }
 
   async function checkUserLogged() {
-    console.log(customerid, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkk');
     if (customerid) {
-      console.log(customerid);
-      setProductShow(false)
+      setProductShow(false);
     } else {
-      alert('please Login First')
+      alert('please Login First');
     }
   }
   const customStyles = {
@@ -261,37 +256,38 @@ export default function Product() {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      maxWidth:'620px',
+      maxWidth: '620px',
       background: '#fff',
       width: '100%',
       padding: '30px',
       maxHeight: '500px',
       zIndex: '2',
-      position: 'relative'
+      position: 'relative',
     },
   };
 
-  async function aiGenrateMess(){
+  async function aiGenrateMess() {
     try {
-      const res = await fetch('https://api.simplynoted.com/api/ai-generate',{
+      const res = await fetch('https://api.simplynoted.com/api/ai-generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
+          Authorization:
+            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
         },
-        body: JSON.stringify({msg: valToGen})  
-      })
+        body: JSON.stringify({msg: valToGen}),
+      });
       const json = await res.json();
-      setaiText(json.message)
+      setaiText(json.message);
 
       console.log(json.message, 'AiGenrated Response____________');
     } catch (error) {
-      console.log(error,"error at Ai generated message ");
+      console.log(error, 'error at Ai generated message ');
     }
   }
   return (
     <>
-      {productshow ?
+      {productshow ? (
         <>
           <Section className="px-0 md:px-8 lg:px-12">
             <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -305,73 +301,166 @@ export default function Product() {
                     <Heading as="h1" className="whitespace-normal">
                       {title}
                     </Heading>
-                    <Text className={'opacity-50 font-medium'}>$ {product.variants.nodes[0].price.amount}</Text>
+                    <Text className={'opacity-50 font-medium'}>
+                      $ {product.variants.nodes[0].price.amount}
+                    </Text>
                     {/* {vendor && (
               <Text className={'opacity-50 font-medium'}>{vendor}</Text>
             )} */}
-                    <div className='buttonClass flex justify-start'>
-                      <div className='buttonDiv pr-5'>
-                        <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => setShow(false)}>Single Card</button>
+                    <div className="buttonClass flex justify-start">
+                      <div className="buttonDiv pr-5">
+                        <button
+                          className="bg-[#001a5f] text-[#fff] p-2 rounded "
+                          onClick={() => setShow(false)}
+                        >
+                          Single Card
+                        </button>
                       </div>
-                      <div className='gap-2'>
-                        <button className="bg-[#ef6e6e] text-[#fff] p-2 rounded " onClick={() => setShow(true)}>Bulk Purchase</button>
+                      <div className="gap-2">
+                        <button
+                          className="bg-[#ef6e6e] text-[#fff] p-2 rounded "
+                          onClick={() => setShow(true)}
+                        >
+                          Bulk Purchase
+                        </button>
                       </div>
                     </div>
-                    {show &&
-                      <table class="price-breakdown desktop">
+                    {show && (
+                      <table className="price-breakdown desktop">
                         <tbody>
                           <tr>
-                            <td class="label">Quantity</td><td>1-99</td><td>100-249</td><td>250-499</td><td>500-999</td><td>1000-2499</td><td>2500+</td></tr>
+                            <td className="label">Quantity</td>
+                            <td>1-99</td>
+                            <td>100-249</td>
+                            <td>250-499</td>
+                            <td>500-999</td>
+                            <td>1000-2499</td>
+                            <td>2500+</td>
+                          </tr>
                           <tr>
-                            <td class="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
+                            <td className="label">Price</td>
+                            <td>$3.25</td>
+                            <td>$3.15</td>
+                            <td>$3.00</td>
+                            <td>$2.85</td>
+                            <td>$2.70</td>
+                            <td>$2.55</td>
+                          </tr>
                         </tbody>
-                      </table>}
-                    <div className='selectOtion mb-5 flex'>
-                      <div className='w-[192px]'>
-                        <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
+                      </table>
+                    )}
+                    <div className="selectOtion mb-5 flex">
+                      <div className="w-[192px]">
+                        <Text className="text-sm w-[100px]">
+                          Standard Handwriting Style
+                        </Text>
                         <br />
-                        <select id="font" onClick={() => setFont()} >
-                          <option value="pinocchio" className={`font-pinocchio`}>Pinocchio</option>
-                          <option value="tarzan" className={`font-tarzan`}>Tarzan</option>
-                          <option value="stitch" className={`font-stitch`}>Stitch</option>
-                          <option value="simba" className={`font-simba`}>Simba</option>
-                          <option value="roo" className={`font-roo`}>Roo</option>
-                          <option value="nimo" className={`font-nimo`}>Nimo</option>
-                          <option value="lumiere" className={`font-lumiere`}>Lumiere</option>
-                          <option value="kaa" className={`font-kaa`}>Kaa</option>
-                          <option value="kaaNew" className={`font-kaaNew`}>KaaNew</option>
-                          <option value="dumbo" className={`font-dumbo`}>Dumbo</option>
-                          <option value="donald" className={`font-donald`}>Donald</option>
-                          <option value="aladdin" className={`font-aladdin`}>Aladdin</option>
-                          <option value="belle" className={`font-belle`}>Belle</option>
-                          <option value="boo" className={`font-boo`}>Boo</option>
-                          <option value="cinderella" className={`font-cinderella`}>Cinderella</option>
-                          <option value="copper" className={`font-copper`}>Copper</option>
-                          <option value="jasmine" className={`font-jasmine`}>Jasmine</option>
-                          <option value="merlin" className={`font-merlin`}>Merlin</option>
-                          <option value="goofy" className={`font-goofy`}>Goofy</option>
-                          <option value="hercules" className={`font-hercules`}>Hercules</option>
-                          <option value="rafiki" className={`font-rafiki`}>Rafiki</option>
-                          <option value="rapunzel" className={`font-rapunzel`}>Rapunzel</option>
-                          <option value="ratigan" className={`font-ratigan`}>Ratigan</option>
-                          <option value="sarabi" className={`font-sarabi`}>Sarabi</option>
-                          <option value="scar" className={`font-scar`}>Scar</option>
-                          <option value="triton" className={`font-triton`}>Triton</option>
-                          <option value="woody" className={`font-woody`}>Woody</option>
-
+                        <select id="font" onClick={() => setFont()}>
+                          <option
+                            value="pinocchio"
+                            className={`font-pinocchio`}
+                          >
+                            Pinocchio
+                          </option>
+                          <option value="tarzan" className={`font-tarzan`}>
+                            Tarzan
+                          </option>
+                          <option value="stitch" className={`font-stitch`}>
+                            Stitch
+                          </option>
+                          <option value="simba" className={`font-simba`}>
+                            Simba
+                          </option>
+                          <option value="roo" className={`font-roo`}>
+                            Roo
+                          </option>
+                          <option value="nimo" className={`font-nimo`}>
+                            Nimo
+                          </option>
+                          <option value="lumiere" className={`font-lumiere`}>
+                            Lumiere
+                          </option>
+                          <option value="kaa" className={`font-kaa`}>
+                            Kaa
+                          </option>
+                          <option value="kaaNew" className={`font-kaaNew`}>
+                            KaaNew
+                          </option>
+                          <option value="dumbo" className={`font-dumbo`}>
+                            Dumbo
+                          </option>
+                          <option value="donald" className={`font-donald`}>
+                            Donald
+                          </option>
+                          <option value="aladdin" className={`font-aladdin`}>
+                            Aladdin
+                          </option>
+                          <option value="belle" className={`font-belle`}>
+                            Belle
+                          </option>
+                          <option value="boo" className={`font-boo`}>
+                            Boo
+                          </option>
+                          <option
+                            value="cinderella"
+                            className={`font-cinderella`}
+                          >
+                            Cinderella
+                          </option>
+                          <option value="copper" className={`font-copper`}>
+                            Copper
+                          </option>
+                          <option value="jasmine" className={`font-jasmine`}>
+                            Jasmine
+                          </option>
+                          <option value="merlin" className={`font-merlin`}>
+                            Merlin
+                          </option>
+                          <option value="goofy" className={`font-goofy`}>
+                            Goofy
+                          </option>
+                          <option value="hercules" className={`font-hercules`}>
+                            Hercules
+                          </option>
+                          <option value="rafiki" className={`font-rafiki`}>
+                            Rafiki
+                          </option>
+                          <option value="rapunzel" className={`font-rapunzel`}>
+                            Rapunzel
+                          </option>
+                          <option value="ratigan" className={`font-ratigan`}>
+                            Ratigan
+                          </option>
+                          <option value="sarabi" className={`font-sarabi`}>
+                            Sarabi
+                          </option>
+                          <option value="scar" className={`font-scar`}>
+                            Scar
+                          </option>
+                          <option value="triton" className={`font-triton`}>
+                            Triton
+                          </option>
+                          <option value="woody" className={`font-woody`}>
+                            Woody
+                          </option>
                         </select>
                       </div>
                       <div>
-                        <Text className='text-sm'>Custom Handwriting Style</Text>
+                        <Text className="text-sm">
+                          Custom Handwriting Style
+                        </Text>
                         <br />
-                        <select id="Coustomfont text-sm"  >
-                          <option className='text-sm'>Custom Handwriting Style</option>
+                        <select id="Coustomfont text-sm">
+                          <option className="text-sm">
+                            Custom Handwriting Style
+                          </option>
                         </select>
                       </div>
                     </div>
                     <div>
-                      <Text>Optional shipping date</Text><br />
-                      <input type='date' />
+                      <Text>Optional shipping date</Text>
+                      <br />
+                      <input type="date" />
                       {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /> */}
                     </div>
                   </div>
@@ -389,7 +478,6 @@ export default function Product() {
             </Await>
 
           </Suspense> */}
-
 
                   {/* Return and Policy button */}
                   {/* <div className="grid gap-4 py-4">
@@ -415,7 +503,6 @@ export default function Product() {
             )}
           </div> */}
                 </section>
-
               </div>
             </div>
             {/* <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
@@ -428,36 +515,55 @@ export default function Product() {
       <input id="your-notes-for-our-design" onChange={onChange} value={name} placeholder='Enter your custom message here....' type="text" name="properties [Your notes for our design]" />
     </div> */}
 
-
-            <div className='mainDivForBox flex gap-10'>
+            <div className="mainDivForBox flex gap-10">
               <div id="outer" className="outerr">
-                <div className='outerSec' ref={ref2}>
-                  <div id='abcd' ref={ref1} className="output">
+                <div className="outerSec" ref={ref2}>
+                  <div id="abcd" ref={ref1} className="output">
                     {name}
                   </div>
                 </div>
-                <div className='secDiv'>
-                  <div id='abcd2' className="output2">
+                <div className="secDiv">
+                  <div id="abcd2" className="output2">
                     {name2}
                   </div>
                 </div>
-
               </div>
-              <div className='textAreaView w-[600px]'>
-                <textarea type="text" id="example-one-input" ref={ref} className='inputText' maxlength="450" onChange={(e) => setName(e.target.value)} placeholder="Enter your custom message text here..." data-gtm-form-interact-field-id="0"></textarea>
-                <div className='flex'>
-                  <text onClick={()=> setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                  <textarea type="text" id="example-one-input2" className='inputText2' maxlength="24" onChange={(e) => setName2(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0"></textarea>
-
+              <div className="textAreaView w-[600px]">
+                <textarea
+                  type="text"
+                  id="example-one-input"
+                  ref={ref}
+                  className="inputText"
+                  maxlength="450"
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your custom message text here..."
+                  data-gtm-form-interact-field-id="0"
+                ></textarea>
+                <div className="flex">
+                  <text onClick={() => setIsOpen(true)}>
+                    Try our new AI Assistant to <br /> help write your message
+                  </text>
+                  <textarea
+                    type="text"
+                    id="example-one-input2"
+                    className="inputText2"
+                    maxlength="24"
+                    onChange={(e) => setName2(e.target.value)}
+                    placeholder="Enter here..."
+                    data-gtm-form-interact-field-id="0"
+                  ></textarea>
                 </div>
-                <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
-                  <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
+                <div className="bg-[#1b5299] h-[50px] text-center mt-10">
+                  <button
+                    className="text-[#fff] items-center justify-center mt-3 w-full"
+                    onClick={() => checkUserLogged()}
+                  >
+                    Next
+                  </button>
                 </div>
               </div>
               {/* <input id='customText' className='inputText' type="text" placeholder="Enter your custom text here...." /> */}
-
             </div>
-
           </Section>
           <Suspense fallback={<Skeleton className="h-32" />}>
             <Await
@@ -476,107 +582,188 @@ export default function Product() {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <div className='flex'>
-            <h2 className='font-bold text-xl w-[600px]'>AI Message Assistant</h2>
-            <BsXCircle className='' onClick={()=>setIsOpen(false)}/>
+            <div className="flex">
+              <h2 className="font-bold text-xl w-[600px]">
+                AI Message Assistant
+              </h2>
+              <BsXCircle className="" onClick={() => setIsOpen(false)} />
             </div>
             <div>
-              <text className=' text-[#999999] '>Type in words or a phrase to use our AI Assistant to<br/> help generate a great message</text>
+              <text className=" text-[#999999] ">
+                Type in words or a phrase to use our AI Assistant to
+                <br /> help generate a great message
+              </text>
             </div>
             <div>
-            <textarea type="text" id="aiTextArea" value={aiText?aiText:valToGen}  onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxlength="450"></textarea>
+              <textarea
+                type="text"
+                id="aiTextArea"
+                value={aiText ? aiText : valToGen}
+                onChange={(e) => setValToGen(e.target.value)}
+                placeholder="Example: Message for Birthday"
+                maxlength="450"
+              ></textarea>
             </div>
-            <div class="ai-generate" >
-        <button id="generate-msg" disabled=""  onClick={()=>aiGenrateMess()}>Generate Message</button>
-      </div>
+            <div className="ai-generate">
+              <button
+                id="generate-msg"
+                disabled=""
+                onClick={() => aiGenrateMess()}
+              >
+                Generate Message
+              </button>
+            </div>
           </Modal>
         </>
-        : <div className='  w-full h-full gap-2 mt-8'>
-
-          <h3 className='items-center font-bold flex text-2xl' onClick={() => setProductShow(true)}><BiSolidChevronLeft size='50px' />Back To Product Customization</h3>
-          <div className='row flex mr-2 ml-2 gap-4'>
-            <div className='col-6 w-[50%] '>
-              <div className='address-grid'>
-                <div className='address-data'>
-                  <h3 className='text-2xl font-bold mt-4 mb-4'>Your Info (return/sender address)</h3>
-                  <div className='buttonDiv pr-5 mt-2'>
-                    <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
+      ) : (
+        <div className="  w-full h-full gap-2 mt-8">
+          <h3
+            className="items-center font-bold flex text-2xl"
+            onClick={() => setProductShow(true)}
+          >
+            <BiSolidChevronLeft size="50px" />
+            Back To Product Customization
+          </h3>
+          <div className="row flex mr-2 ml-2 gap-4">
+            <div className="col-6 w-[50%] ">
+              <div className="address-grid">
+                <div className="address-data">
+                  <h3 className="text-2xl font-bold mt-4 mb-4">
+                    Your Info (return/sender address)
+                  </h3>
+                  <div className="buttonDiv pr-5 mt-2">
+                    <button className="bg-[#001a5f] text-[#fff] p-3">
+                      New Address
+                    </button>
                   </div>
                   <div>
-                    <input type="text " className='w-full rounded p-3 mt-4' placeholder='Search Addresses...' />
+                    <input
+                      type="text "
+                      className="w-full rounded p-3 mt-4"
+                      placeholder="Search Addresses..."
+                    />
                   </div>
-                  {returnAddress.map((item) =>
-                    <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
-                      <input type="checkbox" className='mr-4' />
-                      {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
+                  {returnAddress.map((item) => (
+                    <div className="w-full rounded p-3 mt-4 bg-[#fff] ">
+                      <input type="checkbox" className="mr-4" />
+                      {item.firstName} {item.lastName}, {item.city},{' '}
+                      {item.state}, {item.zip}, {item.country}
                     </div>
-                  )}
+                  ))}
                 </div>
               </div>
             </div>
-            <div className='col-6 w-[50%]'>
-              <div className='address-grid'>
-                <div className='address-data'>
-                  <h3 className='text-2xl font-bold mt-4 mb-4'>Recipient address</h3>
-                  <div className='buttonDiv pr-5 mt-2'>
-                    <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
+            <div className="col-6 w-[50%]">
+              <div className="address-grid">
+                <div className="address-data">
+                  <h3 className="text-2xl font-bold mt-4 mb-4">
+                    Recipient address
+                  </h3>
+                  <div className="buttonDiv pr-5 mt-2">
+                    <button className="bg-[#001a5f] text-[#fff] p-3">
+                      New Address
+                    </button>
                   </div>
                   <div>
-                    <input type="text " className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
+                    <input
+                      type="text "
+                      className="w-full rounded p-3 mt-4 "
+                      placeholder="Search Addresses..."
+                    />
                   </div>
-                  {recipientAddress.map((item) =>
-                    <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
-                      <input type="checkbox" className='mr-4' />
-                      {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
+                  {recipientAddress.map((item) => (
+                    <div className="w-full rounded p-3 mt-4 bg-[#fff] ">
+                      <input type="checkbox" className="mr-4" />
+                      {item.firstName} {item.lastName}, {item.city},{' '}
+                      {item.state}, {item.zip}, {item.country}
                     </div>
-                  )}
-
+                  ))}
                 </div>
               </div>
-              <div className='address-grid mt-10'>
-                <div className='address-data'>
-                  <h3 className='text-2xl font-bold mt-6 mb-6'>Add a Gift Card</h3>
-                  <div className='row flex mr-2 ml-2 '>
-                    <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
-                    <div className='col-8 mt-3 pr-0 w-[370px]' >
-                      <select name="gift_name" className='w-full' id="gift_name" onchange="changeGiftPrice(this.value)" >
-                        <option value="" disabled="" selected="">Select</option>
-                        <option value="6661818679401" id="giftName">Starbucks Gift Card</option>
-                        <option value="6661817729129" id="giftName">Amazon Gift Card</option>
-                        <option value="6661818941545" id="giftName">Visa Gift Card</option>
-                        <option value="6661815795817" id="giftName">Home Depot Gift Card</option>
-                        <option value="6661818253417" id="giftName">Lowe's Gift Card</option>
+              <div className="address-grid mt-10">
+                <div className="address-data">
+                  <h3 className="text-2xl font-bold mt-6 mb-6">
+                    Add a Gift Card
+                  </h3>
+                  <div className="row flex mr-2 ml-2 ">
+                    <div className="col-4 mt-4 font-bold w-[190px]">
+                      Select Gift Card:
+                    </div>
+                    <div className="col-8 mt-3 pr-0 w-[370px]">
+                      <select
+                        name="gift_name"
+                        className="w-full"
+                        id="gift_name"
+                        onchange="changeGiftPrice(this.value)"
+                      >
+                        <option value="" disabled="" selected="">
+                          Select
+                        </option>
+                        <option value="6661818679401" id="giftName">
+                          Starbucks Gift Card
+                        </option>
+                        <option value="6661817729129" id="giftName">
+                          Amazon Gift Card
+                        </option>
+                        <option value="6661818941545" id="giftName">
+                          Visa Gift Card
+                        </option>
+                        <option value="6661815795817" id="giftName">
+                          Home Depot Gift Card
+                        </option>
+                        <option value="6661818253417" id="giftName">
+                          Lowe's Gift Card
+                        </option>
                       </select>
                     </div>
                   </div>
-                  <div className='row flex mr-2 ml-2 '>
-                    <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Price:</div>
-                    <div className='col-8 mt-3 pr-0 w-[370px]' >
-                      <select name="gift_name" className='w-full' id="gift_name" onchange="changeGiftPrice(this.value)" >
-                        <option value="" disabled="" selected="">Select</option>
-                        <option value="6661818679401" id="giftName">Starbucks Gift Card</option>
-                        <option value="6661817729129" id="giftName">Amazon Gift Card</option>
-                        <option value="6661818941545" id="giftName">Visa Gift Card</option>
-                        <option value="6661815795817" id="giftName">Home Depot Gift Card</option>
-                        <option value="6661818253417" id="giftName">Lowe's Gift Card</option>
+                  <div className="row flex mr-2 ml-2 ">
+                    <div className="col-4 mt-4 font-bold w-[190px]">
+                      Select Gift Price:
+                    </div>
+                    <div className="col-8 mt-3 pr-0 w-[370px]">
+                      <select
+                        name="gift_name"
+                        className="w-full"
+                        id="gift_name"
+                        onchange="changeGiftPrice(this.value)"
+                      >
+                        <option value="" disabled="" selected="">
+                          Select
+                        </option>
+                        <option value="6661818679401" id="giftName">
+                          Starbucks Gift Card
+                        </option>
+                        <option value="6661817729129" id="giftName">
+                          Amazon Gift Card
+                        </option>
+                        <option value="6661818941545" id="giftName">
+                          Visa Gift Card
+                        </option>
+                        <option value="6661815795817" id="giftName">
+                          Home Depot Gift Card
+                        </option>
+                        <option value="6661818253417" id="giftName">
+                          Lowe's Gift Card
+                        </option>
                       </select>
                     </div>
                   </div>
                   <div>
                     <input type="checkbox" id="" name="" value="" />
-                    <text className='ml-3'>Add Gift Card</text>
+                    <text className="ml-3">Add Gift Card</text>
                   </div>
                 </div>
               </div>
-              <div className='buttonDiv pr-5 m-2'>
-                <button className="bg-[#001a5f] text-[#fff] p-3">Add To Cart</button>
+              <div className="buttonDiv pr-5 m-2">
+                <button className="bg-[#001a5f] text-[#fff] p-3">
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>
-
         </div>
-      }
-
+      )}
     </>
   );
 }
@@ -759,10 +946,10 @@ export default function Product() {
 //   );
 // }
 
-function ProductDetail({ title, content, learnMore }) {
+function ProductDetail({title, content, learnMore}) {
   return (
     <Disclosure key={title} as="div" className="grid w-full gap-2">
-      {({ open }) => (
+      {({open}) => (
         <>
           <Disclosure.Button className="text-left">
             <div className="flex justify-between">
@@ -781,7 +968,7 @@ function ProductDetail({ title, content, learnMore }) {
           <Disclosure.Panel className={'pb-4 pt-2 grid gap-2'}>
             <div
               className="prose dark:prose-invert"
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{__html: content}}
             />
             {learnMore && (
               <div className="">
@@ -929,7 +1116,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 
 async function getRecommendedProducts(storefront, productId) {
   const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
-    variables: { productId, count: 12 },
+    variables: {productId, count: 12},
   });
 
   invariant(products, 'No data returned from Shopify API');
@@ -947,5 +1134,5 @@ async function getRecommendedProducts(storefront, productId) {
 
   mergedProducts.splice(originalProduct, 1);
 
-  return { nodes: mergedProducts };
+  return {nodes: mergedProducts};
 }

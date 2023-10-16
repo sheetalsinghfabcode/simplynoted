@@ -86,9 +86,7 @@ export default function Login() {
 
   async function setVar(){
     if(typeof window !== 'undefined'){
-      console.log('wwwwwwww');
       localStorage.setItem('resultVar','result')
-      console.log('dddddddd');
     }
   }
   return (
@@ -131,7 +129,6 @@ export default function Login() {
               <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
             )}
           </div>
-
           <div>
             <input
               className={`mb-1 ${getInputStyleClasses(nativePasswordError)}`}
