@@ -217,8 +217,8 @@ useEffect(()=>{
 console.log(customerid,'LoginScreen000000000000');
 },[])
 
-  console.log("title", title)
-  console.log("menu", menu)
+  // console.log("title", title)
+  // console.log("menu", menu)
   const params = useParams();
   const { y } = useWindowScroll();
   return (

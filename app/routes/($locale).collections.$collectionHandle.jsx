@@ -98,7 +98,7 @@ export async function loader({params, request, context}) {
       },
     },
   );
-  console.log(collection,"--------------");
+  // console.log(collection,"--------------");
 
   if (!collection) {
     throw new Response('collection', {status: 404});
@@ -173,7 +173,9 @@ export default function Collection() {
 }
 
 const COLLECTION_QUERY = `#graphql
-  query CollectionDetails(
+  query 
+  
+  CollectionDetails(
     $handle: String!
     $country: CountryCode
     $language: LanguageCode
