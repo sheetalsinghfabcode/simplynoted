@@ -61,6 +61,12 @@ shop-pay-button {
 @layer base {
   * {
     font-variant-ligatures: none;
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   body {
@@ -724,6 +730,45 @@ shop-pay-button {
 }
 
 }
+
+
+
+/* Add this CSS to your component's stylesheet or CSS file */
+
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Pagination buttons */
+.pagination button {
+  background-color: #001a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+/* Disabled pagination buttons */
+.pagination button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Active page button */
+.pagination button.active {
+  background-color: #333;
+}
+
+/* Adjust styles as needed to match your design */
+
 
 .overflow-popup {
   max-height: 50vh;

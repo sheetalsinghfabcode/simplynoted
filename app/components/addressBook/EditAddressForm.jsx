@@ -176,8 +176,9 @@ const EditAddressForm = ({
             )}
           </div>
         </div>
+        <div className="mb-4 flex flex-wrap -mx-3">
 
-        <div className="mb-4">
+        <div className="w-1/2 px-3 mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="businessName"
@@ -194,8 +195,37 @@ const EditAddressForm = ({
             onChange={handleChange}
           />
         </div>
+        <div className="w-1/2 px-3 mb-6">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="postalCode"
+          >
+            Postal Code
+          </label>
+          <input
+            className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              errors.zip ? 'border-red-500' : ''
+            }`}
+            id="postalCode"
+            required
+            name="zip"
+            type="number"
+            placeholder="Postal Code"
+            value={selectedAddress.zip}
+            onChange={handleChange}
+          />
+          {errors.zip && (
+            <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+              {errors.zip}
+            </p>
+          )}
+        </div>
+        </div>
+        <div className="mb-4 flex flex-wrap -mx-3">
 
-        <div className="mb-4">
+
+        <div className="w-1/2 px-3 mb-6">
+
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="address1"
@@ -221,7 +251,8 @@ const EditAddressForm = ({
           )}
         </div>
 
-        <div className="mb-4">
+        <div className="w-1/2 px-3 mb-6">
+
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="address2"
@@ -237,6 +268,8 @@ const EditAddressForm = ({
             value={selectedAddress.address2}
             onChange={handleChange}
           />
+        </div>
+
         </div>
 
         <div className="mb-4 flex flex-wrap -mx-3">
@@ -297,33 +330,11 @@ const EditAddressForm = ({
           </div>
         </div>
 
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="postalCode"
-          >
-            Postal Code
-          </label>
-          <input
-            className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-              errors.zip ? 'border-red-500' : ''
-            }`}
-            id="postalCode"
-            required
-            name="zip"
-            type="number"
-            placeholder="Postal Code"
-            value={selectedAddress.zip}
-            onChange={handleChange}
-          />
-          {errors.zip && (
-            <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
-              {errors.zip}
-            </p>
-          )}
-        </div>
+      
+        <div className="mb-4 flex flex-wrap -mx-3">
 
-        <div className="mb-4">
+
+        <div className="w-1/2 px-3 mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="country"
@@ -345,7 +356,7 @@ const EditAddressForm = ({
             ))}
           </select>
         </div>
-        <div className="mb-4">
+        <div className="w-1/2 px-3 mb-6">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="type"
@@ -364,8 +375,11 @@ const EditAddressForm = ({
             {/* Add other types if needed */}
           </select>
         </div>
+        </div>
 
-        <div className="mb-4">
+        <div className="mb-4 flex flex-wrap -mx-3">
+
+        <div className="w-1/2 px-3 mb-6">
           <DateInput
             fieldType="birthday"
             label="Birthday"
@@ -375,8 +389,7 @@ const EditAddressForm = ({
             }
           />
         </div>
-
-        <div className="mb-4">
+        <div className="w-1/2 px-3 mb-6">
           <DateInput
             fieldType="anniversary"
             label="Anniversary"
@@ -385,6 +398,8 @@ const EditAddressForm = ({
               handleChange({target: {name: 'anniversary', value}})
             }
           />
+        </div>
+
         </div>
         <div className="flex gap-[20px] mb-6">
           <DynamicButton

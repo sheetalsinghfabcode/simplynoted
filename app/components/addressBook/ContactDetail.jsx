@@ -1,8 +1,7 @@
-import {useState,useMemo} from 'react';
+import {useState} from 'react';
 import edit from '../../../assets/Image/edit.png';
 import ConfirmationModal from '../../components/modal/ConfirmationModal';
 import Loader from '../../components/modal/Loader';
-import { useTable, useSortBy, useFilters, useRowSelect } from 'react-table';
 
 const ContactDetail = ({
   customerID,
@@ -32,7 +31,6 @@ const ContactDetail = ({
   const [selectedType, setSelectedType] = useState('all');
   const [deleteModal, setDeleteModal] = useState(false);
   const [loader, setLoader] = useState(false);
-
 
   const handleTypeChange = (e) => {
     setSelectedCheckboxes([]);
@@ -268,3 +266,5 @@ const ContactDetail = ({
 };
 
 export default ContactDetail;
+
+

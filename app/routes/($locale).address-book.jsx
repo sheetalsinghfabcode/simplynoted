@@ -6,10 +6,10 @@ import CsvInstruction from '~/components/addressBook/CsvInstruction';
 import {useNavigate} from '@remix-run/react';
 import Loader from '../components/modal/Loader';
 import DynamicButton from '~/components/DynamicButton';
+import ContactTable from "~/components/addressBook/ContactTable"
 import ErrorModal from '../components/modal/ErrorModal';
 
 let customerID;
-let errorMessages;
 
 export default function AddressBook() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -45,7 +45,6 @@ export default function AddressBook() {
   };
 
   useEffect(() => {
-    ('useEffect Trigger');
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
     // Make a GET request to the API
@@ -62,7 +61,9 @@ export default function AddressBook() {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [loadAddress, addressForm, selectedAddress]);
+  }, [loadAddress, addressForm, selectedAddress,editAddress]);
+
+
 
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
@@ -100,7 +101,7 @@ export default function AddressBook() {
       reader.onload = (e) => {
         const csvData = e.target.result;
         const jsonData = csvToJson(csvData);
-        setSelectedFile(file); // Update the selected file state
+        setSelectedFile(file); 
         setFileData(jsonData);
       };
       reader.readAsText(file);
@@ -172,44 +173,48 @@ export default function AddressBook() {
       'City',
       'State/Province',
       'Postal Code',
+      'Email',
     ];
     const errors = [];
 
-    try {
-      for (let i = 0; i < fileData.length; i++) {
-        const data = fileData[i];
-        const missingFields = [];
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
-        for (const field of requiredFields) {
-          if (!data[field] || data[field].trim() === '') {
-            missingFields.push(field);
-          }
-        }
+    for (let i = 0; i < fileData.length; i++) {
+      const data = fileData[i];
+      const missingFields = [];
 
-        if (missingFields.length > 0) {
-          for (const field of missingFields) {
-            errors.push(`Row ${i + 1}: Missing field - ${field}`);
+      for (const field of requiredFields) {
+        if (!data[field] || data[field].trim() === '') {
+          missingFields.push(field);
+        } else if (field === 'First Name' || field === 'Last Name') {
+          if (!namePattern.test(data[field])) {
+            missingFields.push(`${field} contains numbers`);
           }
-        } else {
-          await uploadDataToAPI(data);
+        } else if (field === 'Email') {
+          if (!emailPattern.test(data[field])) {
+            missingFields.push(`${field} is not a valid `);
+          }
         }
       }
 
-      if (errors.length > 0) {
-        errorMessages = `Errors in CSV data:\n${errors.join('\n')}`;
-        console.log('error', errors);
-        setSelectedFile(null);
+      if (missingFields.length > 0) {
+        for (const field of missingFields) {
+          errors.push(`Row ${i + 1}: Missing field - ${field}`);
+        }
+      } else {
 
-        serErrorContent(errors);
-        setErrorModal(true);
-        setTimeout(() => {
-          setErrorModal(false);
-        }, [4000]);
-        throw new Error(errorMessages);
+        await uploadDataToAPI(data);
       }
-    } catch (error) {
-      console.error('Error uploading data:', error);
-      // You can handle the error here, e.g., display a message to the user.
+    }
+
+    if (errors.length > 0) {
+      serErrorContent(errors);
+      setErrorModal(true);
+      setTimeout(() => {
+        setErrorModal(false);
+        serErrorContent([]);
+      }, [4000]);
     }
   };
 
@@ -227,8 +232,8 @@ export default function AddressBook() {
     setFilteredAddresses(filtered);
   };
 
-
   return (
+    <>
     <div className="bg-[#e0e9f8]">
       {loader ? (
         <Loader loaderMessage="Uploading Address Book" />
@@ -311,7 +316,7 @@ export default function AddressBook() {
                 table={true}
               />
 
-              <ContactDetail
+              {/* <ContactDetail
                 customerID={customerID}
                 filteredAddresses={filteredAddresses}
                 editAddress={editAddress}
@@ -319,6 +324,16 @@ export default function AddressBook() {
                 handleSearchInputChange={handleSearchInputChange}
                 setSelectedCheckboxes={setSelectedCheckboxes}
                 selectedCheckboxes={selectedCheckboxes}
+              /> */}
+              <ContactTable
+              customerID={customerID}
+              filteredAddresses={filteredAddresses}
+              editAddress={editAddress}
+              setSelectedAddress={setSelectedAddress}
+              handleSearchInputChange={handleSearchInputChange}
+              setSelectedCheckboxes={setSelectedCheckboxes}
+              selectedCheckboxes={selectedCheckboxes}
+              
               />
             </div>
           )}
@@ -347,5 +362,6 @@ export default function AddressBook() {
         </div>
       )}
     </div>
+    </>
   );
 }
