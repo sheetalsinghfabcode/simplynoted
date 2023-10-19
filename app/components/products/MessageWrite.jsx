@@ -3,9 +3,9 @@ import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
 
 let input, input2, output, output2, outputContainer, outputContainer2, customerid, recipientAddressVal, globalMessData
-export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow }) {
-    const [name, setName] = useState('')
-    const [name2, setName2] = useState('')
+export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow,onValueChange,EditMess,editEndMess,shareBoxData}) {
+    const [name, setName] = useState(EditMess?EditMess:'')
+    const [name2, setName2] = useState(editEndMess?editEndMess:'')
     const [fileData, setFileData] = useState([]);
     const [valToGen, setValToGen] = useState('')
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -52,6 +52,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             alert('Message Can not be empty ')
         } else {
             setProductShow(false)
+            console.log(name,'namefield');
         }
     }
     function AfterUpload() {
@@ -235,10 +236,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             }
         }
         setErrorVal(aa)
-
-
-
-
         // let ab = fileData.map((item) => {
 
         //   for (reqField in item) {
@@ -295,6 +292,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         setValue('abbabbbbb')
     }
     async function onInsetClick() {
+        // input.value = aiText
         setName(aiText)
         setIsOpen(false)
         setaiText('')
@@ -319,9 +317,16 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         }
     }
     async function onChnageNameVal(nameData) {
+        onValueChange(nameData,name2)
         setName(nameData)
         globalMessData = nameData
         console.log(nameData, 'nameData----');
+        console.log(input.value,'input',output.style);
+        
+    }
+    async function onchnageOfRegardBox(data){
+        setName2(data)
+        shareBoxData(data)
     }
     const ref = useRef(null);
     const ref1 = useRef(null);
@@ -331,7 +336,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         output = ref1.current;
         outputContainer = ref2.current;
         customerid = localStorage.getItem('customerId')
-
     }, [])
     // console.log(bbc, 'bbc--');
     return (
@@ -339,7 +343,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr">
                     <div className='outerSec' ref={ref2}>
-                        <div id='abcd' ref={ref1} className="output m-5">
+                        <div id='abcd'  ref={ref1} className="output m-5">
                             {name}
                         </div>
                     </div>
@@ -356,7 +360,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     <span className="charLeft">{remainingWord} characters remaining</span>
                     <div className='flex gap-4 mt-5' >
                         <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                        <textarea type="text" v-model="keyword" id="example-one-input2" className='inputText2' maxlength="50" onChange={(e) => setName2(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
+                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
                         </textarea><br />
                     </div>
                     <span className="charLeft ml-40">{remainSign} characters remaining</span>

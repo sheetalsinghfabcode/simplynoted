@@ -1,7 +1,7 @@
 import { useRef, Suspense } from 'react';
 import { Disclosure, Listbox } from '@headlessui/react';
 import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await } from '@remix-run/react';
+import { useLoaderData, Await,useLocation } from '@remix-run/react';
 import {
   AnalyticsPageType,
   Money,
@@ -36,18 +36,20 @@ import Modal from 'react-modal';
 import { MessageWriting } from '~/components/products/MessageWrite';
 import { AddCart } from '~/components/products/AddCart';
 
-
 export const headers = routeHeaders;
-let input,  customerid, recipientAddressVal
+let input,  customerid, recipientAddressVal,selectFontValue
 
 export async function loader({ params, request, context }) {
+  // console.log(context,'context');
   const { productHandle } = params;
+  // console.log(params,'params');
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
   const data  = await context.storefront.query(GiftProduct, {
     variables: {},
   })
+
 
   // console.log("data",data)
 
@@ -64,9 +66,10 @@ export async function loader({ params, request, context }) {
     throw new Response('product', { status: 404 });
   }
 
-  if (!product.selectedVariant) {
-    return redirectToFirstVariant({ product, request });
-  }
+  //this condition is commented by me(ayush) for removing the params from url  
+  // if (!product.selectedVariant) {
+  //   return redirectToFirstVariant({ product, request });
+  // }
 
   // In order to show which variants are available in the UI, we need to query
   // all of them. But there might be a *lot*, so instead separate the variants
@@ -85,7 +88,9 @@ export async function loader({ params, request, context }) {
   // TODO: firstVariant is never used because we will always have a selectedVariant due to redirect
   // Investigate if we can avoid the redirect for product pages with no search params for first variant
   const firstVariant = product.variants.nodes[0];
-  const selectedVariant = product.selectedVariant ?? firstVariant;
+  // console.log(firstVariant,'firstVariant');
+  // console.log(product.selectedVariant,'product.selectedVariant');
+  const selectedVariant = product.selectedVariant == null?firstVariant: firstVariant;
 
   const productAnalytics = {
     productGid: product.id,
@@ -131,7 +136,14 @@ function redirectToFirstVariant({ product, request }) {
 
 export default function Product() {
   const { product, shop, recommended, variants, data } = useLoaderData();
-  // console.log(data,'************');
+  console.log(product,'************');
+  const datafornav = useLocation();
+  let EditMess = datafornav.state?.data?.messageData
+  let addressDataReciver = datafornav.state?.data?.reciverAddress
+  let addressDataSender = datafornav.state?.data?.senderAddress
+  let editDataIndex = datafornav.state?.index
+  let editEndMess = datafornav.state?.data.endText
+   console.log(datafornav.state,'locationState');
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
   const [show, setShow] = useState(false);
@@ -145,12 +157,14 @@ export default function Product() {
   function setFont() {
     var selectFont = document.getElementById("font");
     if (selectFont) {
-      var selectFontValue = selectFont.options[selectFont.selectedIndex].value;
+       selectFontValue = selectFont.options[selectFont.selectedIndex].value;
       if (selectFontValue) {
         document.getElementById("abcd").style.fontFamily = selectFontValue;
         document.getElementById("abcd2").style.fontFamily = selectFontValue;
       }
     }
+  // console.log(selectFontValue,'selectFontValue');
+
   }
   const ref = useRef(null);
   const ref3 = useRef(null);
@@ -180,19 +194,26 @@ export default function Product() {
     },
   };
 
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [clickedItem, setClickedItem] = useState(false)
-  const handleCheckboxChange = (item) => {
-    console.log(item, '***********item');
-    setSelectedItem(item);
-  };
+  // const [selectedItem, setSelectedItem] = useState(null);
+  // const [clickedItem, setClickedItem] = useState(false)
+  // const handleCheckboxChange = (item) => {
+  //   console.log(item, '***********item');
+  //   // setSelectedItem(item);
+  // };
 
   async function singleBtnCLick() {
     setShow(false)
     setSelectedFile('')
     setShowBox(true)
   }
-
+  const [sharedValue, setSharedValue] = useState('');
+  const [sharedValueBoxData, setSharedValueBoxData] = useState('');
+  const handleValueChange = (newValue) => {
+    setSharedValue(newValue);
+  };
+  const handleValueChangeSecBox = (newValue) => {
+    setSharedValueBoxData(newValue);
+  };
   return (
     <>
       {productshow ?
@@ -321,7 +342,9 @@ export default function Product() {
 
               </div>
             </div>
-            <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile} setShowBox={setShowBox} setProductShow={setProductShow} />
+            <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
+             setShowBox={setShowBox} setProductShow={setProductShow} onValueChange={handleValueChange}
+             EditMess={EditMess} editEndMess={editEndMess} shareBoxData={handleValueChangeSecBox}/>
 
           </Section>
           <Suspense fallback={<Skeleton className="h-32" />}>
@@ -349,7 +372,12 @@ export default function Product() {
           </Modal>
         </>
         :
-        <AddCart show={show} setProductShow={setProductShow} data={data} productData={product.selectedVariant} />
+        <AddCart show={show} setProductShow={setProductShow}
+         data={data} productData={product.variants.nodes[0]} sharedValue={sharedValue}
+         sharedValueBoxData={sharedValueBoxData}
+         selectFontValue={selectFontValue} 
+         addressDataReciver={addressDataReciver} addressDataSender={addressDataSender}
+         editDataIndex={editDataIndex} EditMess={EditMess} editEndMess={editEndMess}/>
       }
 
     </>

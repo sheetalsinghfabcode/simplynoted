@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BiSolidChevronLeft } from "react-icons/bi";
 import { useNavigate } from '@remix-run/react';
-import Cookies from 'js-cookie';
 
-let customerid, firstPrice
-export function AddCart({ show, setProductShow, data, productData, globalMessData }) {
+
+let customerid, senderAddressVal, reciverAddressVal
+export function AddCart({ show, setProductShow, data, productData, sharedValue,sharedValueBoxData, selectFontValue, addressDataSender, addressDataReciver, editDataIndex, EditMess,editEndMess }) {
+    
+    console.log(addressDataReciver, 'addressDataReciver');
     const [returnAddress, setReturnAddress] = useState([])
     const [recipientAddress, setRecipientAddress] = useState([])
-    const [selectedItem, setSelectedItem] = useState(null);
-    const [selectedItem2, setSelectedItem2] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(addressDataReciver ? addressDataReciver : null);
+    const [selectedItem2, setSelectedItem2] = useState(addressDataSender ? addressDataSender : null);
     const [searchData, setsearchData] = useState(null);
     const [cardVal, setCardVal] = useState('')
     const [cardPriceVal, setCardPriceVal] = useState([])
@@ -21,7 +23,7 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
         try {
             const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`)
             const json = await res.json();
-            // console.log(json, 'getRecipient Response____________');
+            console.log(json, 'getRecipient Response____________');
             setRecipientAddress(json.result)
         } catch (error) {
             console.log(error, 'Recipient error--------');
@@ -39,6 +41,8 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
     }
     const handleCheckboxChange = (item) => {
         console.log(item, '***********item');
+        // console.log(reciverAddressVal.value,'addressOfRecivers----');
+
         setSelectedItem(item);
     };
     const handleCheckboxChange2 = (item) => {
@@ -66,7 +70,7 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
         console.log(item, 'cardVal-----');
         setCardVal(item)
         let selCardName = data.collection.products.edges[item].node
-        //    console.log(selCardName,'selCardName--');
+        console.log(selCardName, 'selCardName--');
         setCardName(selCardName)
         // console.log(cardName,'cardName-----');
         let arrCardPrice = data.collection.products.edges[item].node.variants.edges
@@ -103,7 +107,13 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
         console.log(item, 'PriceVAl');
         setCardPrice(item ? item : firstPrice)
     }
+
+    const refRec = useRef(null);
+    const ref1 = useRef(null);
+
     useEffect(() => {
+        reciverAddressVal = refRec.current
+        senderAddressVal = ref1.current
         customerid = localStorage.getItem('customerId')
         console.log(customerid, '----------------------');
         console.log(productData, '----productData-----');
@@ -127,43 +137,72 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
         }
     }
     const navigate = useNavigate()
-
+    console.log(sharedValue, 'ooooooo', selectFontValue);
+    console.log(window.location.pathname);
     let arrOfObj = {
         productTitle: productData.product.title ? productData.product.title : null,
         variant_id: productData.id,
         price: productData.price.amount,
         productImg: productData.image.url,
-        senderAddress: selectedItem,
-        reciverAddress: selectedItem2,
+        senderAddress: selectedItem2,
+        reciverAddress: selectedItem,
         giftCardName: cardName ? cardName.title : null,
         giftCardImg: cardName ? cardName.featuredImage.url : null,
-        giftCardPrice: cardName ? cardName.cardPrice : null
+        giftCardPrice: cardPrice ? cardPrice : null,
+        messageData: sharedValue ? sharedValue : '',
+        fontFamily: selectFontValue ? selectFontValue : 'tarzan',
+        productGetUrl: window.location.pathname,
+        endText:sharedValueBoxData ? sharedValueBoxData:''
     }
 
     // const dataString = JSON.stringify(arrOfObj);
     // console.log(globalMessData, 'globalMessData');
+    let keyUpdate1 = 'messageData'
+    let keyUpdate2 = 'reciverAddress'
+    let keyUpdate3 = 'senderAddress'
+    let keyUpdate4 = 'giftCardImg'
+    let keyUpdate5 = 'giftCardName'
+    let keyUpdate6 = 'giftCardPrice'
+    let keyUpdate7 = 'endText'
     function onClickAddCart() {
 
-        if (selectedItem && selectedItem2) {
-            const existingDataString = localStorage.getItem('mydata');
-            // console.log(existingDataString, '=-=existingDataString=-=-', arrOfObj);
-            let existingDataArray = [];
-            if (existingDataString) {
-                existingDataArray = JSON.parse(existingDataString);
-                localStorage.removeItem('mydata')
-
+        if (editDataIndex) {
+            const storedData = JSON.parse(localStorage.getItem('mydata'));
+            console.log(storedData, 'storedData');
+            if (editDataIndex >= 0 && editDataIndex < storedData.length) {
+                storedData[editDataIndex][keyUpdate1] = sharedValue ? sharedValue : EditMess;
+                storedData[editDataIndex][keyUpdate2] = selectedItem ? selectedItem : addressDataReciver;
+                storedData[editDataIndex][keyUpdate3] = selectedItem2 ? selectedItem2 : addressDataSender;
+                storedData[editDataIndex][keyUpdate4] = cardName ? cardName.featuredImage.url : null;
+                storedData[editDataIndex][keyUpdate5] = cardName ? cardName.title : null;
+                storedData[editDataIndex][keyUpdate6] = cardPrice;
+                storedData[editDataIndex][keyUpdate7] = sharedValueBoxData?sharedValueBoxData:editEndMess;
             }
-
-            existingDataArray.push(arrOfObj);
-            // console.log(existingDataArray, 'existingDataArray)0000000000');
-            const updatedDataString = JSON.stringify(existingDataArray);
-            // console.log(updatedDataString, '------updatedDataString');
-            localStorage.setItem('mydata', updatedDataString);
-            // Cookies.set('myArrayCookie', dataString);
+            localStorage.setItem('mydata', JSON.stringify(storedData));
             navigate('/carts')
         } else {
-            alert('please select the address')
+            if (selectedItem && selectedItem2) {
+                const existingDataString = localStorage.getItem('mydata');
+                console.log('=-=existingDataString=-=-');
+                let existingDataArray = [];
+                if (existingDataString) {
+                    existingDataArray = JSON.parse(existingDataString);
+                    localStorage.removeItem('mydata')
+
+                }
+
+                existingDataArray.push(arrOfObj);
+                // console.log(existingDataArray, 'existingDataArray)0000000000');
+                const updatedDataString = JSON.stringify(existingDataArray);
+                // console.log(updatedDataString, '------updatedDataString');
+                localStorage.setItem('mydata', updatedDataString);
+                // Cookies.set('myArrayCookie', dataString);
+                navigate('/carts')
+            } else {
+                alert('please select the address')
+            }
         }
+
 
 
     }
@@ -189,7 +228,7 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
                                         <input
                                             type="checkbox"
                                             value={item}
-                                            checked={selectedItem2 === item}
+                                            checked={selectedItem2?._id === item._id}
                                             onChange={() => handleCheckboxChange2(item)}
                                         />
                                         <span >  {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}</span>
@@ -214,15 +253,16 @@ export function AddCart({ show, setProductShow, data, productData, globalMessDat
                                             <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
                                         </div>
                                         <div>
-                                            <input type="text " onChange={(e) => setsearchData(e.target.value)} className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
+                                            <input type="text" onChange={(e) => setsearchData(e.target.value)} className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
                                         </div>
-                                        {filteredList(recipientAddress, searchData).map((item) =>
+                                        {filteredList(recipientAddress, searchData).map((item, index) =>
                                             <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
                                                 <input
                                                     type="checkbox"
                                                     value={item}
-                                                    checked={selectedItem === item}
+                                                    checked={selectedItem?._id === item._id}
                                                     onChange={() => handleCheckboxChange(item)}
+                                                    ref={refRec}
                                                 />
                                                 {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
                                             </div>
