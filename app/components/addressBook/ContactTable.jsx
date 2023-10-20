@@ -40,7 +40,6 @@ const ContactTable = ({
     });
   };
 
-
   const handleDeleteSelected = () => {
     setLoader(true);
     const url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
@@ -81,7 +80,8 @@ const ContactTable = ({
     }
   };
 
-  data = useMemo(() => filterAddressesByType(),
+  data = useMemo(
+    () => filterAddressesByType(),
     [selectedType, filteredAddresses],
   );
 
@@ -90,15 +90,12 @@ const ContactTable = ({
       {
         Header: 'check',
         accessor: '_id',
-        Cell: ({row}) =>
-         (
-          <CheckBox 
-          onChange={handleCheckboxChange} 
-          value={row.original._id}
-          // checked={selectedCheckboxes.includes(row.original._id)}
-          />
+        Cell: ({row}) => (
+          <CheckBox
+           onChange={handleCheckboxChange}
+            value={row.original._id}
+            />
         ),
-         
       },
       {
         Header: 'Edit',
@@ -190,6 +187,7 @@ const ContactTable = ({
   );
 
   const allSelected =  data.length > 0 && selectedCheckboxes?.length === data.length;
+
   const handleSelectAll = () => {
     if (allSelected) {
       setSelectedCheckboxes([]);
@@ -198,7 +196,7 @@ const ContactTable = ({
     }
   };
 
-  return (  
+  return (
     <div className="container mx-auto mt-8">
       {loader ? (
         <Loader loaderMessage="Deleting Address Book Data" />
@@ -302,7 +300,7 @@ const ContactTable = ({
                   })}
                 </tbody>
               </table>
-              {page && page.length> 0 &&  (
+              {page && page.length > 0 && (
                 <div className="pagination">
                   <div>
                     <button

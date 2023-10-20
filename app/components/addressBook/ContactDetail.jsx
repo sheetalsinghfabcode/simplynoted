@@ -101,6 +101,8 @@ const ContactDetail = ({
     }
   };
 
+  console.log("selectedCheckboxes",selectedCheckboxes)
+
   return (
     <div className="container mx-auto mt-8">
       {loader ? (
