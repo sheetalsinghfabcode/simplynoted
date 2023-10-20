@@ -16,25 +16,27 @@ const customStyles = {
   },
 };
 
-const ErrorModal = ({isOpen, onRequestClose,title, content}) => {
+const ErrorModal = ({isOpen, onRequestClose, title, content}) => {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Error Modal"
       style={customStyles}
-      shouldCloseOnOverlayClick={false}
-
+      // shouldCloseOnOverlayClick={false}
     >
-       <div className="relative">
-        <h2 className='text-center uppercase text-[20px] text-red-900'>{title}</h2>
-       
+      <div className="relative">
+        <h2 className="text-center uppercase text-[20px] text-red-900">
+          {title}
+        </h2>
+
         <ul>
-        {content.map((errorMessage, index) => (
-          <li className='text-center text-black text-[16px]' key={index}>{errorMessage}</li>
-        ))}
-      </ul>
-       
+          {content.map((errorMessage, index) => (
+            <li className="text-center text-black text-[16px]" key={index}>
+              {errorMessage}
+            </li>
+          ))}
+        </ul>
       </div>
     </Modal>
   );

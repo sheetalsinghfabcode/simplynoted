@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
 
-function Checkbox({ items, onCheckboxChange }) {
-  const [checkedItems, setCheckedItems] = useState({});
-
-  const handleCheckboxChange = (itemId) => {
-    const updatedCheckedItems = { ...checkedItems };
-    updatedCheckedItems[itemId] = !checkedItems[itemId];
-    setCheckedItems(updatedCheckedItems);
-    onCheckboxChange(updatedCheckedItems);
-  };
-
+const Checkbox = ({ label, checked, onChange,value }) => {
+  
   return (
-    <div>
-      {items.map((item) => (
-        <label key={item.id}>
-          <input
-            type="checkbox"
-            checked={checkedItems[item.id] || false}
-            onChange={() => handleCheckboxChange(item.id)}
-          />
-          {item.label}
-        </label>
-      ))}
-    </div>
+    <label className="flex items-center space-x-2">
+      <input
+        type="checkbox"
+        className="cursor-pointer"
+        checked={checked}
+        onChange={onChange}
+        value={value}
+      />
+      <span>{label}</span>
+    </label>
   );
-}
+};
 
 export default Checkbox;

@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {useTable, usePagination} from 'react-table';
 import Loader from '../modal/Loader';
 import edit from '../../../assets/Image/edit.png';
 import ConfirmationModal from '../modal/ConfirmationModal';
+import {useAddressBook} from '../AddressBookContext';
+import CheckBox from '../../components/CheckBox';
 
 const ContactTable = ({
   customerID,
@@ -12,6 +14,7 @@ const ContactTable = ({
   setSelectedAddress,
   selectedCheckboxes,
 }) => {
+  const {loadAddress, setLoadAddress} = useAddressBook();
   const [selectedType, setSelectedType] = useState('all');
   const [loader, setLoader] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -26,13 +29,15 @@ const ContactTable = ({
   const handleCheckboxChange = (e) => {
     const checkboxValue = e.target.value;
 
-    if (e.target.checked) {
-      setSelectedCheckboxes([...selectedCheckboxes, checkboxValue]);
-    } else {
-      setSelectedCheckboxes(
-        selectedCheckboxes.filter((value) => value !== checkboxValue),
-      );
-    }
+    setSelectedCheckboxes((prevSelectedCheckboxes) => {
+      if (prevSelectedCheckboxes.includes(checkboxValue)) {
+        return prevSelectedCheckboxes.filter(
+          (value) => value !== checkboxValue,
+        );
+      } else {
+        return [...prevSelectedCheckboxes, checkboxValue];
+      }
+    });
   };
 
 
@@ -58,6 +63,7 @@ const ContactTable = ({
         setLoader(false);
         setSelectedCheckboxes([]);
         setDeleteModal(false);
+        setLoadAddress(!loadAddress);
       })
       .catch((error) => {
         // Handle errors here
@@ -65,20 +71,34 @@ const ContactTable = ({
       });
   };
 
+  const filterAddressesByType = () => {
+    if (selectedType === 'all') {
+      return filteredAddresses;
+    } else {
+      return filteredAddresses.filter(
+        (address) => address.type === selectedType,
+      );
+    }
+  };
+
+  data = useMemo(() => filterAddressesByType(),
+    [selectedType, filteredAddresses],
+  );
+
   const columns = React.useMemo(
     () => [
       {
         Header: 'check',
-        accessor: 'check',
-        Cell: ({row}) => (
-          <input
-            type="checkbox"
-            className="cursor-pointer"
-            onChange={handleCheckboxChange}
-            value={row.original._id}
-            checked={selectedCheckboxes.includes(row.original._id)}
+        accessor: '_id',
+        Cell: ({row}) =>
+         (
+          <CheckBox 
+          onChange={handleCheckboxChange} 
+          value={row.original._id}
+          // checked={selectedCheckboxes.includes(row.original._id)}
           />
         ),
+         
       },
       {
         Header: 'Edit',
@@ -169,18 +189,7 @@ const ContactTable = ({
     usePagination, // Use the pagination plugin
   );
 
-  const filterAddressesByType = () => {
-    if (selectedType === 'all') {
-      return filteredAddresses; // Return all addresses if "all" is selected
-    } else {
-      return filteredAddresses.filter(
-        (address) => address.type === selectedType,
-      );
-    }
-  };
-
-  data = filterAddressesByType();
-  const allSelected = selectedCheckboxes?.length === data.length;
+  const allSelected =  data.length > 0 && selectedCheckboxes?.length === data.length;
   const handleSelectAll = () => {
     if (allSelected) {
       setSelectedCheckboxes([]);
@@ -189,8 +198,7 @@ const ContactTable = ({
     }
   };
 
-
-  return (
+  return (  
     <div className="container mx-auto mt-8">
       {loader ? (
         <Loader loaderMessage="Deleting Address Book Data" />
@@ -255,14 +263,13 @@ const ContactTable = ({
                                 </svg>
                               </div>
                             </div>
-                          ) : column.id === 'check' ? (
-                            <input
+                          ) : column.id === '_id' ? (
+                            <CheckBox
                               onChange={handleSelectAll}
-                              className={`cursor-pointer ${
-                                filteredAddresses.length === 0 && '!bg-white'
-                              }`}
-                              type="checkbox"
                               checked={allSelected}
+                              className={`cursor-pointer ${
+                                data.length === 0 && '!bg-white'
+                              }`}
                             />
                           ) : (
                             column.render('Header')
@@ -295,38 +302,39 @@ const ContactTable = ({
                   })}
                 </tbody>
               </table>
-
-              <div className="pagination">
-                <div>
-                  <button
-                    onClick={() => gotoPage(0)}
-                    disabled={!canPreviousPage}
-                  >
-                    {'<<'}
-                  </button>{' '}
-                  <button
-                    onClick={() => previousPage()}
-                    disabled={!canPreviousPage}
-                  >
-                    {'<'}
-                  </button>{' '}
-                  <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    {'>'}
-                  </button>{' '}
-                  <button
-                    onClick={() => gotoPage(pageCount - 1)}
-                    disabled={!canNextPage}
-                  >
-                    {'>>'}
-                  </button>{' '}
+              {page && page.length> 0 &&  (
+                <div className="pagination">
+                  <div>
+                    <button
+                      onClick={() => gotoPage(0)}
+                      disabled={!canPreviousPage}
+                    >
+                      {'<<'}
+                    </button>{' '}
+                    <button
+                      onClick={() => previousPage()}
+                      disabled={!canPreviousPage}
+                    >
+                      {'<'}
+                    </button>{' '}
+                    <button onClick={() => nextPage()} disabled={!canNextPage}>
+                      {'>'}
+                    </button>{' '}
+                    <button
+                      onClick={() => gotoPage(pageCount - 1)}
+                      disabled={!canNextPage}
+                    >
+                      {'>>'}
+                    </button>{' '}
+                  </div>
+                  <div>
+                    Page{' '}
+                    <strong>
+                      {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
+                  </div>
                 </div>
-                <div>
-                  Page{' '}
-                  <strong>
-                    {pageIndex + 1} of {pageOptions.length}
-                  </strong>{' '}
-                </div>
-              </div>
+              )}
             </>
           )}
           <ConfirmationModal

@@ -11,6 +11,11 @@ const ContactDetail = ({
   setSelectedAddress,
   selectedCheckboxes,
 }) => {
+
+  const [selectedType, setSelectedType] = useState('all');
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [loader, setLoader] = useState(false);
+
   const tableHeaders = [
     'check',
     'Edit',
@@ -28,10 +33,6 @@ const ContactDetail = ({
     'anniversary',
   ];
 
-  const [selectedType, setSelectedType] = useState('all');
-  const [deleteModal, setDeleteModal] = useState(false);
-  const [loader, setLoader] = useState(false);
-
   const handleTypeChange = (e) => {
     setSelectedCheckboxes([]);
     setSelectedType(e.target.value); // Update selectedType when the user selects a type
@@ -40,7 +41,6 @@ const ContactDetail = ({
   // Function to handle checkbox changes
   const handleCheckboxChange = (e) => {
     const checkboxValue = e.target.value;
-
     if (e.target.checked) {
       setSelectedCheckboxes([...selectedCheckboxes, checkboxValue]);
     } else {
@@ -220,10 +220,10 @@ const ContactDetail = ({
                         <td className="border border-solid border-black p-[10px] text-center">
                           {value.address2}
                         </td>
-                        <td className="border border-solid border-black p-[10px] text-center">
+                        <td className="border border-solid whitespace-nowrap border-black p-[10px] text-center">
                           {value.city}
                         </td>
-                        <td className="border  border-solid border-black p-[10px] text-center">
+                        <td className="border  border-solid whitespace-nowrap border-black p-[10px] text-center">
                           {value.state}
                         </td>
                         <td className="border border-solid border-black p-[10px] text-center">

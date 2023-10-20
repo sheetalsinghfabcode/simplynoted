@@ -39,7 +39,7 @@
     },
     {
       "country": "Australia",
-      "states": []
+      "states": ["New South Wales", "Victoria", "Queensland" ,"South Australia", "Western Australia ",  "Tasmania","Australian Capital Territory (ACT)", "Northern Territory"]
     },
     {
       "country": "Austria",
