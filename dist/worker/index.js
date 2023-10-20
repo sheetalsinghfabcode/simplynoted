@@ -777,7 +777,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useLayoutEffect(create, deps);
       }
-      function useCallback9(callback, deps) {
+      function useCallback10(callback, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useCallback(callback, deps);
       }
@@ -1294,7 +1294,7 @@ Check the top-level render call using <` + parentName + ">.");
         toArray,
         only: onlyChild
       };
-      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext6, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef7, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback9, exports.useContext = useContext8, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect30, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo14, exports.useReducer = useReducer, exports.useRef = useRef21, exports.useState = useState26, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext6, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef7, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback10, exports.useContext = useContext8, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect30, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo14, exports.useReducer = useReducer, exports.useRef = useRef21, exports.useState = useState26, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
     })();
   }
 });
@@ -8221,7 +8221,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
           }
         }
       }
-      function useCallback9(callback, deps) {
+      function useCallback10(callback, deps) {
         return useMemo14(function() {
           return callback;
         }, deps);
@@ -8261,7 +8261,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useState: useState26,
         useInsertionEffect: noop,
         useLayoutEffect: useLayoutEffect4,
-        useCallback: useCallback9,
+        useCallback: useCallback10,
         // useImperativeHandle is not run in the server environment
         useImperativeHandle: noop,
         // Effects are not run in the server environment.
@@ -11773,7 +11773,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
           }
         }
       }
-      function useCallback9(callback, deps) {
+      function useCallback10(callback, deps) {
         return useMemo14(function() {
           return callback;
         }, deps);
@@ -11813,7 +11813,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useState: useState26,
         useInsertionEffect: noop,
         useLayoutEffect: useLayoutEffect4,
-        useCallback: useCallback9,
+        useCallback: useCallback10,
         // useImperativeHandle is not run in the server environment
         useImperativeHandle: noop,
         // Effects are not run in the server environment.
@@ -42854,7 +42854,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-3BUW6JNA.css";
+var app_default = "/build/_assets/app-IZIKDIS7.css";
 
 // app/hooks/useAnalytics.jsx
 var import_react77 = __toESM(require_react());
@@ -44141,7 +44141,7 @@ var import_react86 = __toESM(require_react()), import_react_modal = __toESM(requ
 var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), input, input2, output, output2, outputContainer, outputContainer2, customerid2;
 function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
   let [name, setName] = (0, import_react86.useState)(EditMess || ""), [name2, setName2] = (0, import_react86.useState)(editEndMess || ""), [fileData, setFileData] = (0, import_react86.useState)([]), [valToGen, setValToGen] = (0, import_react86.useState)(""), [modalIsOpen, setIsOpen] = (0, import_react86.useState)(!1), [aiText, setaiText] = (0, import_react86.useState)(""), [modalIsOpen2, setIsOpen2] = (0, import_react86.useState)(!1), [errorVal, setErrorVal] = (0, import_react86.useState)([]), [clickedItem, setClickedItem] = (0, import_react86.useState)(!1), [showNextBtn, setShowNextBtn] = (0, import_react86.useState)(!1), [csvFile, setCsvFile] = (0, import_react86.useState)(""), [bulkUploadDiv, setbulkUploadDiv] = (0, import_react86.useState)(!0), [lenCsvData, setLenCsvData] = (0, import_react86.useState)(""), [usAddress, setUsAddress] = (0, import_react86.useState)(null), [nonusAddress, setnonUsAddress] = (0, import_react86.useState)(null);
-  console.log(name, "Message Text field----"), input2 = document.querySelector(".inputText2"), output2 = document.querySelector(".output2"), outputContainer2 = document.querySelector(".secDiv");
+  input2 = document.querySelector(".inputText2"), output2 = document.querySelector(".output2"), outputContainer2 = document.querySelector(".secDiv");
   let remainingWord = 450 - name.length, remainSign = 50 - name2.length, customStyles = {
     content: {
       top: "60%",
@@ -44165,45 +44165,38 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
     else if (name.length == 0)
       alert("Message Can not be empty ");
     else {
-      let reqField, checkWord = "[First Name]";
-      if (fileData.length) {
-        fileData.forEach((obj) => {
-          obj.msgData = name, obj.endMsgData = name2;
-        });
-        let newArray = fileData.map((obj) => ({ ...obj, msgData: name, endMsgData: name2 }));
-        console.log(newArray), newArray.forEach((obj) => {
-          obj.msgData.includes(checkWord) && (obj.msgData = obj.msgData.replace(checkWord, obj["First Name"]));
-        }), console.log(console.log(newArray, "after Replace")), reqField = {
-          msg: name,
-          signOffText: name2,
-          csvFileBulk: csvFile || null,
-          csvFileLen: lenCsvData || "1",
-          usCount: usAddress,
-          nonUsCount: nonusAddress,
-          bulkCsvData: newArray
-        };
-      } else
-        reqField = {
-          msg: name,
-          signOffText: name2,
-          csvFileBulk: csvFile || null,
-          csvFileLen: lenCsvData || "1",
-          usCount: usAddress,
-          nonUsCount: nonusAddress,
-          bulkCsvData: fileData || null
-        };
-      localStorage.setItem("reqFielddInCart", JSON.stringify(reqField)), setProductShow(!1), console.log(name, "namefield");
+      let reqField, checkWord = "[First Name]", checkWord2 = "[Last Name]";
+      fileData.length ? (fileData.map((obj) => {
+        let subName = name;
+        obj["First Name"] && (subName = subName.replace(/\[First Name\]/g, obj["First Name"])), obj["Last Name"] && (subName = subName.replace(/\[Last Name\]/g, obj["Last Name"])), obj.msgData = subName;
+      }), console.log(fileData, "fileData"), reqField = {
+        msg: name,
+        signOffText: name2,
+        csvFileBulk: csvFile || null,
+        csvFileLen: lenCsvData || "1",
+        usCount: usAddress,
+        nonUsCount: nonusAddress,
+        bulkCsvData: fileData
+      }) : reqField = {
+        msg: name,
+        signOffText: name2,
+        csvFileBulk: csvFile || null,
+        csvFileLen: lenCsvData || "1",
+        usCount: usAddress,
+        nonUsCount: nonusAddress,
+        bulkCsvData: fileData || null
+      }, localStorage.setItem("reqFielddInCart", JSON.stringify(reqField)), setProductShow(!1), console.log(name, "namefield");
     }
   }
   function AfterUpload() {
     return selectedFile ? (setShowBox(!1), /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: showNextBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, !1, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 113,
+        lineNumber: 124,
         columnNumber: 33
       }, this) }, void 0, !1, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 112,
+        lineNumber: 123,
         columnNumber: 29
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { children: [
@@ -44211,38 +44204,38 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
         lenCsvData
       ] }, void 0, !0, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 115,
+        lineNumber: 126,
         columnNumber: 29
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 111,
+      lineNumber: 122,
       columnNumber: 25
     }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#ef6e6e] text-[#fff] p-2 rounded", onClick: () => uploadCsvFile(), children: "Upload" }, void 0, !1, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 118,
+      lineNumber: 129,
       columnNumber: 25
     }, this) }, void 0, !1, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 108,
+      lineNumber: 119,
       columnNumber: 17
     }, this) }, void 0, !1, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 107,
+      lineNumber: 118,
       columnNumber: 20
     }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", {}, void 0, !1, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 127,
+      lineNumber: 138,
       columnNumber: 20
     }, this);
   }
   input && input.addEventListener("input", processInput);
   function resize_to_fit() {
     let fontSize = window.getComputedStyle(output).fontSize;
-    output.style.fontSize = parseFloat(fontSize) - 1 + "px", console.log(output.clientHeight, "------------", outputContainer.clientHeight), output.clientHeight >= outputContainer.clientHeight && resize_to_fit();
+    output.style.fontSize = parseFloat(fontSize) - 1 + "px", output.clientHeight >= outputContainer.clientHeight && resize_to_fit();
   }
   async function processInput() {
-    output.innerHTML = await this.value, output.style.fontSize = "60px", resize_to_fit();
+    output.innerHTML = await this.value, output.style.fontSize = "50px", resize_to_fit();
   }
   function resize_to_fit2() {
     let fontSize = window.getComputedStyle(output2).fontSize;
@@ -44330,7 +44323,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
     setIsOpen(!1), setValToGen(null), setaiText(null), setValue("abbabbbbb");
   }
   async function onInsetClick() {
-    setName(aiText), setIsOpen(!1), setaiText(""), setValToGen(null);
+    output.style.fontSize = "20px", setName(aiText), setIsOpen(!1), setaiText(""), setValToGen(null);
   }
   async function aiGenrateMess() {
     try {
@@ -44348,7 +44341,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
     }
   }
   async function onChnageNameVal(nameData) {
-    setName(nameData), console.log(nameData, "nameData----"), console.log(input.value, "input", output.style);
+    setName(nameData), console.log(nameData, "nameData----");
   }
   async function onchnageOfRegardBox(data) {
     setName2(data);
@@ -44363,33 +44356,33 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
   return /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "mainDivForBox flex gap-10", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "outer", className: "outerr", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "outerSec", ref: ref2, children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd", ref: ref1, className: "output m-5", children: name }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "outerSec", ref: ref2, children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd", ref: ref1, className: "output m-5 ", children: name }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 410,
+          lineNumber: 420,
           columnNumber: 25
         }, this) }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 409,
+          lineNumber: 419,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "secDiv", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd2", className: "output2", children: name2 }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 415,
+          lineNumber: 425,
           columnNumber: 25
         }, this) }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 414,
+          lineNumber: 424,
           columnNumber: 21
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 408,
+        lineNumber: 418,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "textAreaView w-[600px]", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "example-one-input", value: name, placeholder: "Enter your custom message text here...", ref, className: "inputText", maxlength: "450", onChange: (e4) => onChnageNameVal(e4.target.value), "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 422,
+          lineNumber: 432,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("span", { className: "charLeft", children: [
@@ -44397,46 +44390,57 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
           " characters remaining"
         ] }, void 0, !0, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 424,
+          lineNumber: 434,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 424,
+          lineNumber: 434,
           columnNumber: 91
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "addFirstnameBtn", value: "[First Name]", onClick: (e4) => firstNameBtn(e4.target.value), children: "First Name" }, void 0, !1, {
+        show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "addFirstnameBtn p-2 m-2", value: "[First Name]", onClick: (e4) => firstNameBtn(e4.target.value), children: "First Name" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 437,
+            columnNumber: 29
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "addFirstnameBtn p-2", value: "[Last Name]", onClick: (e4) => firstNameBtn(e4.target.value), children: "Last Name" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 439,
+            columnNumber: 29
+          }, this)
+        ] }, void 0, !0, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 425,
-          columnNumber: 21
+          lineNumber: 436,
+          columnNumber: 25
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex gap-4 mt-5", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { className: "cursor-pointer", onClick: () => setIsOpen(!0), children: [
             "Try our new AI Assistant to ",
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 427,
+              lineNumber: 445,
               columnNumber: 118
             }, this),
             " help write your message"
           ] }, void 0, !0, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 427,
+            lineNumber: 445,
             columnNumber: 25
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", value: name2, "v-model": "keyword", id: "example-one-input2", className: "inputText2", maxlength: "50", onChange: (e4) => onchnageOfRegardBox(e4.target.value), placeholder: "Enter here...", "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 428,
+            lineNumber: 446,
             columnNumber: 25
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 429,
+            lineNumber: 447,
             columnNumber: 36
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 426,
+          lineNumber: 444,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("span", { className: "charLeft ml-40", children: [
@@ -44444,87 +44448,87 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
           " characters remaining"
         ] }, void 0, !0, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 431,
+          lineNumber: 449,
           columnNumber: 21
         }, this),
         show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-[263px] mt-10 font-bold", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { children: "As of july5,2023, we have upgraded the bulk order template.Please download the new template below" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 435,
+            lineNumber: 453,
             columnNumber: 33
           }, this) }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 434,
+            lineNumber: 452,
             columnNumber: 29
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "custom_testing", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h3", { className: "font-bold", children: "Bulk Address Upload" }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 440,
+              lineNumber: 458,
               columnNumber: 37
             }, this) }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 439,
+              lineNumber: 457,
               columnNumber: 33
             }, this),
             bulkUploadDiv ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "file", name: "file", accept: ".csv", className: "upload-input", onChange: (e4) => handleFileChange(e4) }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 445,
+              lineNumber: 463,
               columnNumber: 45
             }, this) }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 444,
+              lineNumber: 462,
               columnNumber: 41
             }, this) }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 443,
+              lineNumber: 461,
               columnNumber: 37
             }, this) : "",
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("p", { children: [
               " Download the",
               /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("a", { href: "https://api.simplynoted.com/docs/bulk-template", className: "text-[blue]", children: " Bulk Order Template" }, void 0, !1, {
                 fileName: "app/components/products/MessageWrite.jsx",
-                lineNumber: 450,
+                lineNumber: 468,
                 columnNumber: 49
               }, this),
               " "
             ] }, void 0, !0, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 450,
+              lineNumber: 468,
               columnNumber: 33
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(AfterUpload, {}, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 451,
+              lineNumber: 469,
               columnNumber: 33
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 438,
+            lineNumber: 456,
             columnNumber: 29
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 433,
+          lineNumber: 451,
           columnNumber: 25
         }, this),
         !show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 456,
+          lineNumber: 474,
           columnNumber: 29
         }, this) }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 455,
+          lineNumber: 473,
           columnNumber: 25
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 421,
+        lineNumber: 431,
         columnNumber: 17
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 407,
+      lineNumber: 417,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
@@ -44537,75 +44541,75 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h2", { className: "font-bold text-xl w-[600px]", children: "AI Message Assistant" }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 472,
+              lineNumber: 490,
               columnNumber: 21
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(BsXCircle, { className: "", onClick: () => onCancl() }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 473,
+              lineNumber: 491,
               columnNumber: 21
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 471,
+            lineNumber: 489,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { className: " text-[#999999]", children: [
             "Type in words or a phrase to use our AI Assistant to",
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 476,
+              lineNumber: 494,
               columnNumber: 107
             }, this),
             " help generate a great message"
           ] }, void 0, !0, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 476,
+            lineNumber: 494,
             columnNumber: 21
           }, this) }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 475,
+            lineNumber: 493,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "aiTextArea", value: aiText || valToGen, onChange: (e4) => setValToGen(e4.target.value), placeholder: "Example: Message for Birthday", maxlength: "450" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 479,
+            lineNumber: 497,
             columnNumber: 21
           }, this) }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 478,
+            lineNumber: 496,
             columnNumber: 17
           }, this),
           aiText ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonClass flex justify-start", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonDiv pr-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => onInsetClick(), children: "Insert" }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 488,
+              lineNumber: 506,
               columnNumber: 29
             }, this) }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 487,
+              lineNumber: 505,
               columnNumber: 25
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#f0f0f0] text-[black] p-2 rounded ", onClick: () => onCancl(), children: "Cancel" }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 491,
+              lineNumber: 509,
               columnNumber: 29
             }, this) }, void 0, !1, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 490,
+              lineNumber: 508,
               columnNumber: 25
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 486,
+            lineNumber: 504,
             columnNumber: 21
           }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { class: "ai-generate", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { id: "generate-msg", disabled: "", onClick: () => aiGenrateMess(), children: "Generate Message" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 484,
+            lineNumber: 502,
             columnNumber: 25
           }, this) }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 483,
+            lineNumber: 501,
             columnNumber: 21
           }, this)
         ]
@@ -44614,7 +44618,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
       !0,
       {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 464,
+        lineNumber: 482,
         columnNumber: 13
       },
       this
@@ -44628,7 +44632,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
         children: errorVal.map(
           (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: item }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 504,
+            lineNumber: 522,
             columnNumber: 21
           }, this)
         )
@@ -44637,14 +44641,14 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
       !1,
       {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 496,
+        lineNumber: 514,
         columnNumber: 13
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/components/products/MessageWrite.jsx",
-    lineNumber: 406,
+    lineNumber: 416,
     columnNumber: 9
   }, this);
 }
@@ -44676,7 +44680,7 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
   }, handleCheckboxChange2 = (item) => {
     console.log(item, "***********item2"), setSelectedItem2(item);
   }, handleBoxoNShipping = (item) => {
-    console.log(item, "shippingData"), setSelectShipMode(item);
+    console.log(item, "shippingData----"), setSelectShipMode(item);
   }, filteredList = (recipientAddress2, searchData2) => recipientAddress2.filter((dataobj) => bySearch(dataobj, searchData2)), bySearch = (dataobj, searchData2) => searchData2 ? Object.values(dataobj).some((field) => (
     // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
     field.toString().toLowerCase().includes(searchData2.toLowerCase())
@@ -44716,7 +44720,9 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
     csvFileLen: cartDataReq == null ? void 0 : cartDataReq.csvFileLen,
     usCount: cartDataReq == null ? void 0 : cartDataReq.usCount,
     nonUSCount: cartDataReq == null ? void 0 : cartDataReq.nonUsCount,
-    csvBulkData: cartDataReq == null ? void 0 : cartDataReq.bulkCsvData
+    csvBulkData: cartDataReq == null ? void 0 : cartDataReq.bulkCsvData,
+    shippingData: selectShipMode || "",
+    shippingMethodImage: shippingData ? shippingData.featuredImage.url : ""
   }, keyUpdate1 = "messageData", keyUpdate2 = "reciverAddress", keyUpdate3 = "senderAddress", keyUpdate4 = "giftCardImg", keyUpdate5 = "giftCardName", keyUpdate6 = "giftCardPrice", keyUpdate7 = "endText";
   function onClickAddCart() {
     if ((editOrderValue == null ? void 0 : editOrderValue.index) >= 0) {
@@ -44743,38 +44749,38 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
     /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "items-center font-bold flex text-2xl", onClick: () => setProductShow(!0), children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(BiSolidChevronLeft, { size: "50px" }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 231,
+        lineNumber: 233,
         columnNumber: 107
       }, this),
       "Back To Product Customization"
     ] }, void 0, !0, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 231,
+      lineNumber: 233,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-data", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Your Info (return/sender address)" }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 236,
+          lineNumber: 238,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 239,
+          lineNumber: 241,
           columnNumber: 37
         }, this) }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 238,
+          lineNumber: 240,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("input", { type: "text ", className: "w-full rounded p-3 mt-4", placeholder: "Search Addresses..." }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 242,
+          lineNumber: 244,
           columnNumber: 37
         }, this) }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 241,
+          lineNumber: 243,
           columnNumber: 33
         }, this),
         returnAddress.map(
@@ -44791,7 +44797,7 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
               !1,
               {
                 fileName: "app/components/products/AddCart.jsx",
-                lineNumber: 247,
+                lineNumber: 249,
                 columnNumber: 41
               },
               this
@@ -44811,59 +44817,59 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
               item.country
             ] }, void 0, !0, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 253,
+              lineNumber: 255,
               columnNumber: 41
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 246,
+            lineNumber: 248,
             columnNumber: 37
           }, this)
         )
       ] }, void 0, !0, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 235,
+        lineNumber: 237,
         columnNumber: 29
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 234,
+        lineNumber: 236,
         columnNumber: 25
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 233,
+        lineNumber: 235,
         columnNumber: 21
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-data", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Recipient address" }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 262,
+          lineNumber: 264,
           columnNumber: 33
         }, this),
         show ? /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("text", { children: "Recipient addresses were specified in your bulk order upload." }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 265,
+          lineNumber: 267,
           columnNumber: 41
         }, this) }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 264,
+          lineNumber: 266,
           columnNumber: 37
         }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(import_jsx_dev_runtime35.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 272,
+            lineNumber: 274,
             columnNumber: 45
           }, this) }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 271,
+            lineNumber: 273,
             columnNumber: 41
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("input", { type: "text", onChange: (e4) => setsearchData(e4.target.value), className: "w-full rounded p-3 mt-4 ", placeholder: "Search Addresses..." }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 275,
+            lineNumber: 277,
             columnNumber: 45
           }, this) }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 274,
+            lineNumber: 276,
             columnNumber: 41
           }, this),
           filteredList(recipientAddress, searchData).map(
@@ -44881,7 +44887,7 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
                 !1,
                 {
                   fileName: "app/components/products/AddCart.jsx",
-                  lineNumber: 279,
+                  lineNumber: 281,
                   columnNumber: 49
                 },
                 this
@@ -44899,38 +44905,38 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
               item.country
             ] }, void 0, !0, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 278,
+              lineNumber: 280,
               columnNumber: 45
             }, this)
           )
         ] }, void 0, !0, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 270,
+          lineNumber: 272,
           columnNumber: 37
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 261,
+        lineNumber: 263,
         columnNumber: 29
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 260,
+        lineNumber: 262,
         columnNumber: 25
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 259,
+        lineNumber: 261,
         columnNumber: 21
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 232,
+      lineNumber: 234,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
       show ? /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: shippingData == null ? void 0 : shippingData.title }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 300,
+          lineNumber: 302,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { class: "shipping-methods", id: "shipping-options", children: shippingData == null ? void 0 : shippingData.variants.edges.map(
@@ -44949,19 +44955,19 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
                 !1,
                 {
                   fileName: "app/components/products/AddCart.jsx",
-                  lineNumber: 306,
+                  lineNumber: 308,
                   columnNumber: 41
                 },
                 this
               ),
               /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("label", { for: "Mail-Individual-Cards-Normally-(default)", children: item == null ? void 0 : item.node.title }, void 0, !1, {
                 fileName: "app/components/products/AddCart.jsx",
-                lineNumber: 312,
+                lineNumber: 314,
                 columnNumber: 41
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 305,
+              lineNumber: 307,
               columnNumber: 37
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { class: "custom_variant_price", children: [
@@ -44969,69 +44975,69 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
               item == null ? void 0 : item.node.price.amount
             ] }, void 0, !0, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 314,
+              lineNumber: 316,
               columnNumber: 37
             }, this)
           ] }, "7027299254377", !0, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 304,
+            lineNumber: 306,
             columnNumber: 37
           }, this)
         ) }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 302,
+          lineNumber: 304,
           columnNumber: 33
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 299,
+        lineNumber: 301,
         columnNumber: 29
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 298,
+        lineNumber: 300,
         columnNumber: 25
       }, this) : "",
       /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-data", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-6 mb-6", children: "Add a Gift Card" }, void 0, !1, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 368,
+          lineNumber: 370,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 370,
+            lineNumber: 372,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("select", { className: "w-full", value: "pppppp", onChange: (e4) => cardvalFunc(e4.target.value), children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("option", { className: "w-full", children: "Select Gift Card " }, void 0, !1, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 373,
+              lineNumber: 375,
               columnNumber: 45
             }, this),
             data.collection.products.edges.map((item, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("option", { value: i6, children: item.node.title }, void 0, !1, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 375,
+              lineNumber: 377,
               columnNumber: 49
             }, this))
           ] }, void 0, !0, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 372,
+            lineNumber: 374,
             columnNumber: 41
           }, this) }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 371,
+            lineNumber: 373,
             columnNumber: 37
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 369,
+          lineNumber: 371,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 380,
+            lineNumber: 382,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: cardPrice ? (
@@ -45047,84 +45053,84 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
                 !1,
                 {
                   fileName: "app/components/products/AddCart.jsx",
-                  lineNumber: 386,
+                  lineNumber: 388,
                   columnNumber: 53
                 },
                 this
               )
             ) }, void 0, !1, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 384,
+              lineNumber: 386,
               columnNumber: 45
             }, this)
           ) : /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("select", { name: "", id: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("option", { value: "", children: "Price card" }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 393,
+            lineNumber: 395,
             columnNumber: 49
           }, this) }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 392,
+            lineNumber: 394,
             columnNumber: 45
           }, this) }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 381,
+            lineNumber: 383,
             columnNumber: 37
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 379,
+          lineNumber: 381,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("input", { type: "checkbox", id: "", name: "", value: "" }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 407,
+            lineNumber: 409,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("text", { className: "ml-3", children: "Add Gift Card" }, void 0, !1, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 408,
+            lineNumber: 410,
             columnNumber: 37
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 406,
+          lineNumber: 408,
           columnNumber: 33
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 367,
+        lineNumber: 369,
         columnNumber: 29
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 366,
+        lineNumber: 368,
         columnNumber: 25
       }, this) }, void 0, !1, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 365,
+        lineNumber: 367,
         columnNumber: 21
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 296,
+      lineNumber: 298,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", onClick: () => onClickAddCart(), children: "Add To Cart" }, void 0, !1, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 416,
+      lineNumber: 418,
       columnNumber: 21
     }, this) }, void 0, !1, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 414,
+      lineNumber: 416,
       columnNumber: 17
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/products/AddCart.jsx",
-    lineNumber: 230,
+    lineNumber: 232,
     columnNumber: 13
   }, this) }, void 0, !1, {
     fileName: "app/components/products/AddCart.jsx",
-    lineNumber: 229,
+    lineNumber: 231,
     columnNumber: 9
   }, this);
 }
@@ -45850,6 +45856,9 @@ query
 {
   product(id:"gid://shopify/Product/7027299254377"){
     title
+    featuredImage{
+      url
+    }
     variants(first:10){
       edges{
         node{
@@ -53767,8 +53776,8 @@ function AddCartFunc() {
                 lineNumber: 491,
                 columnNumber: 33
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: "text-2xl w-[600px]", style: { fontFamily: msgFont }, children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: " w-[600px]", style: { fontFamily: msgFont }, children: [
                   " ",
                   item.msgData
                 ] }, void 0, !0, {
@@ -53779,9 +53788,9 @@ function AddCartFunc() {
                 /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 493,
-                  columnNumber: 120
+                  columnNumber: 112
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: "text-2xl text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: " text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 494,
                   columnNumber: 29
@@ -55521,7 +55530,7 @@ var LAYOUT_QUERY2 = `#graphql
 `;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-3DQV7LAR.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-M7ZELIPT.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-QLMTPHJM.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-YZ57YPFP.js", imports: ["/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-B4UWBIDW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-RUONCLQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-NILORIT6.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-POUQYQPW.js", imports: ["/build/_shared/chunk-EJA5HIWI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-IT77ZPED.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-2CRRXDZN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-MQJCQV4A.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-TIAW6N6F.js", imports: ["/build/_shared/chunk-OUKB2UNJ.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-B5Z4LVNN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-J52WCVXQ.js", imports: ["/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-W5BGKHHF.js", imports: ["/build/_shared/chunk-OUKB2UNJ.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-LWVZCEEF.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-S7LAFWLU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-6HSIGCK2.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-NNKMTMSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-6CAP2OXL.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ELWFAUUC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-IAY45JWL.js", imports: ["/build/_shared/chunk-Z2ON2YDZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-TGNNWHUF.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-4V6GMRQ6.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-BQSG5DT7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-3LSGVTOT.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-6UC7HCFS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-5PQULYR3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-YPIMF4NJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-OE2YSJVV.js", imports: ["/build/_shared/chunk-Z2ON2YDZ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-Z46Z6BSQ.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-ME2KPIMN.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-EKHBQMYZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EZSSUTZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-W6Y64MDS.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "cc297806", hmr: { runtime: "/build/_shared\\chunk-QLMTPHJM.js", timestamp: 1697786145363 }, url: "/build/manifest-CC297806.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-3DQV7LAR.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-M7ZELIPT.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-QLMTPHJM.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-DAV4HDAV.js", imports: ["/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-B4UWBIDW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-RUONCLQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-NILORIT6.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-POUQYQPW.js", imports: ["/build/_shared/chunk-EJA5HIWI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-IT77ZPED.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-2CRRXDZN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-MQJCQV4A.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-TIAW6N6F.js", imports: ["/build/_shared/chunk-OUKB2UNJ.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-B5Z4LVNN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-J52WCVXQ.js", imports: ["/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-W5BGKHHF.js", imports: ["/build/_shared/chunk-OUKB2UNJ.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-LWVZCEEF.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-S7LAFWLU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-6HSIGCK2.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-NNKMTMSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-6CAP2OXL.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ELWFAUUC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-MWJ6V4YB.js", imports: ["/build/_shared/chunk-Z2ON2YDZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-TGNNWHUF.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-4V6GMRQ6.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-BQSG5DT7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-3LSGVTOT.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-6UC7HCFS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-5PQULYR3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-YPIMF4NJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-6C662OHQ.js", imports: ["/build/_shared/chunk-Z2ON2YDZ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-Z46Z6BSQ.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-ME2KPIMN.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-EKHBQMYZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EZSSUTZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-W6Y64MDS.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "c71bd608", hmr: { runtime: "/build/_shared\\chunk-QLMTPHJM.js", timestamp: 1697808899013 }, url: "/build/manifest-C71BD608.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

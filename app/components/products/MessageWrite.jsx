@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
 
@@ -20,7 +20,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [usAddress, setUsAddress] = useState(null)
     const [nonusAddress, setnonUsAddress] = useState(null)
     // const [productshow, setProductShow] = useState(true)
-    console.log(name, 'Message Text field----');
+    // console.log(name, 'Message Text field----');
     // console.log(name, name2, 'ssasasasas');
     input2 = document.querySelector('.inputText2');
     output2 = document.querySelector('.output2');
@@ -57,45 +57,56 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         } else {
             let reqField
             let checkWord = "[First Name]"
-            if(fileData.length){
-                fileData.forEach(obj => {
-                    obj.msgData = name,
-                    obj.endMsgData = name2
-                })
-                const newArray = fileData.map(obj => {
-                    return { ...obj, msgData: name,endMsgData:name2 };
-                  });
-
-                  console.log(newArray);
-
-                  newArray.forEach(obj => {
-                    if(obj.msgData.includes(checkWord)){
-                        obj.msgData = obj.msgData.replace(checkWord,obj["First Name"])
+            let checkWord2 = "[Last Name]"
+            if (fileData.length) {
+                fileData.map(obj => {
+                    let subName = name;
+                    if (obj["First Name"]) {
+                        subName = subName.replace(/\[First Name\]/g, obj["First Name"]);
                     }
-                  })
-                  console.log(console.log(newArray,"after Replace"));
-                 reqField = {
+                    if (obj["Last Name"]) {
+                        subName = subName.replace(/\[Last Name\]/g, obj["Last Name"]);
+                    }
+                    obj.msgData = subName;
+                    // obj.msgData = name2
+                });
+                console.log(fileData, 'fileData');
+                // let data = name.replace(/\[First Name\]/g, "yayra");
+                // debugger;
+                //   console.log(newArray);
+                //   let newDataIs = newArray.map(function(obj){
+                //     obj.msgData = obj.msgData.replace(/checkWord/g,obj["First Name"])
+                //     return obj
+                //   })
+                //   newArray.forEach(obj => {
+                //     if(obj.msgData.includes(checkWord)){
+                //         obj.msgData = obj.msgData.replace(checkWord,obj["First Name"])
+                //     } if(obj.msgData.includes(checkWord2)){
+                //         obj.msgData = obj.msgData.replace(checkWord2,obj["Last Name"])
+                //     }
+                //   })
+                //   console.log(console.log(newArray,"after Replace",newDataIs));
+                reqField = {
                     msg: name,
                     signOffText: name2,
                     csvFileBulk: csvFile ? csvFile : null,
                     csvFileLen: lenCsvData ? lenCsvData : '1',
                     usCount: usAddress,
                     nonUsCount: nonusAddress,
-                    bulkCsvData:newArray
+                    bulkCsvData: fileData
                 }
-            } else
-            {
-                 reqField = {
+            } else {
+                reqField = {
                     msg: name,
                     signOffText: name2,
                     csvFileBulk: csvFile ? csvFile : null,
                     csvFileLen: lenCsvData ? lenCsvData : '1',
                     usCount: usAddress,
                     nonUsCount: nonusAddress,
-                    bulkCsvData:fileData?fileData:null
+                    bulkCsvData: fileData ? fileData : null
                 }
             }
-            
+
             localStorage.setItem('reqFielddInCart', JSON.stringify(reqField))
             setProductShow(false)
             console.log(name, 'namefield');
@@ -134,17 +145,16 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     function resize_to_fit() {
         let fontSize = window.getComputedStyle(output).fontSize;
         output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-        console.log(output.clientHeight, "------------", outputContainer.clientHeight);
+        // 
+
         if (output.clientHeight >= outputContainer.clientHeight) {
             resize_to_fit();
         }
     }
 
     async function processInput() {
-        // console.log(input.value, "PPPPPPPPPPPPPPPPPPPPPPPPPPP", this.value);
-
         output.innerHTML = await this.value;
-        output.style.fontSize = '60px'; // Default font size
+        output.style.fontSize = '50px'; // Default font size
         resize_to_fit();
     }
 
@@ -252,7 +262,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
         for (let index = 0; index < fileData.length; index++) {
             const obj = fileData[index];
-            console.log(obj["First Name"],'Name data');
+            console.log(obj["First Name"], 'Name data');
             const emptyKeys = [];
             const numkeys = []
             let targetField = "First Name"
@@ -264,12 +274,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 }
 
             }
-            // if (name.includes("First Name")) {
-            //     console.log(obj["First Name"], '333333');
-            //     name = name.replace('First Name', obj["First Name"])
-            //     replacedMsg.push(name)
-            //     console.log(name, 'name');
-            // }
 
             if (alphabetPattern.test(obj[targetField]) == false) {
                 aa.push(`'${targetField}' at row ${index} includes a number.`)
@@ -355,11 +359,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         setValue('abbabbbbb')
     }
     async function onInsetClick() {
-        // input.value = aiText
+        output.style.fontSize = '20px';
+
         setName(aiText)
         setIsOpen(false)
         setaiText('')
         setValToGen(null)
+
     }
     async function aiGenrateMess() {
         try {
@@ -371,6 +377,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 },
                 body: JSON.stringify({ msg: valToGen })
             })
+
             const json = await res.json();
             setaiText(json.message)
 
@@ -379,10 +386,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             console.log(error, "error at Ai generated message ");
         }
     }
+    // const onChnageNameVal = useCallback((e)=>{
+    //     setName(e)
+
+    // },[])
     async function onChnageNameVal(nameData) {
         setName(nameData)
         console.log(nameData, 'nameData----');
-        console.log(input.value, 'input', output.style);
 
     }
     async function onchnageOfRegardBox(data) {
@@ -407,7 +417,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr">
                     <div className='outerSec' ref={ref2}>
-                        <div id='abcd' ref={ref1} className="output m-5">
+                        <div id='abcd' ref={ref1} className="output m-5 ">
                             {name}
                         </div>
                     </div>
@@ -422,7 +432,15 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." ref={ref} className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
                     <span className="charLeft">{remainingWord} characters remaining</span><br />
-                    <button className='addFirstnameBtn' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
+                    {show &&
+                        <>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
+
+                            <button className='addFirstnameBtn p-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+
+                        </>
+
+                    }
                     <div className='flex gap-4 mt-5' >
                         <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
                         <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">

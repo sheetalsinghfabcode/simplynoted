@@ -50,7 +50,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         setSelectedItem2(item);
     };
     const handleBoxoNShipping = (item) => {
-        console.log(item,'shippingData');
+        console.log(item,'shippingData----');
         setSelectShipMode(item)
     }
     const filteredList = (recipientAddress, searchData) => {
@@ -163,7 +163,9 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         csvFileLen: cartDataReq?.csvFileLen,
         usCount: cartDataReq?.usCount,
         nonUSCount: cartDataReq?.nonUsCount,
-        csvBulkData:cartDataReq?.bulkCsvData
+        csvBulkData:cartDataReq?.bulkCsvData,
+        shippingData:selectShipMode?selectShipMode:'',
+        shippingMethodImage:shippingData?shippingData.featuredImage.url:''
     }
 
     // const dataString = JSON.stringify(arrOfObj);

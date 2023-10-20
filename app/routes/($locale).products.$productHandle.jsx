@@ -786,6 +786,9 @@ query
 {
   product(id:"gid://shopify/Product/7027299254377"){
     title
+    featuredImage{
+      url
+    }
     variants(first:10){
       edges{
         node{

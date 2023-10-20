@@ -43,7 +43,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\($locale).carts.jsx"
   );
-  import.meta.hot.lastModified = "1697786144287.2283";
+  import.meta.hot.lastModified = "1697800979081.3438";
 }
 var storedDataString;
 function AddCartFunc() {
@@ -1057,8 +1057,8 @@ function AddCartFunc() {
           lineNumber: 464,
           columnNumber: 33
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { className: "text-2xl w-[600px]", style: {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { className: " w-[600px]", style: {
             fontFamily: msgFont
           }, children: [
             " ",
@@ -1073,7 +1073,7 @@ function AddCartFunc() {
             lineNumber: 468,
             columnNumber: 40
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { className: "text-2xl text-center w-[600px] ml-10", style: {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { className: " text-center w-[600px] ml-10", style: {
             fontFamily: msgFont
           }, children: msglastText }, void 0, false, {
             fileName: "app/routes/($locale).carts.jsx",
@@ -1216,4 +1216,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   AddCartFunc as default
 };
-//# sourceMappingURL=/build/routes/($locale).carts-IAY45JWL.js.map
+//# sourceMappingURL=/build/routes/($locale).carts-MWJ6V4YB.js.map

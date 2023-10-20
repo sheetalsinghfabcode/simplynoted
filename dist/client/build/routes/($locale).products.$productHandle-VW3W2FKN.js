@@ -77,7 +77,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\components\\products\\MessageWrite.jsx"
   );
-  import.meta.hot.lastModified = "1697785887547.018";
+  import.meta.hot.lastModified = "1697808072504.5115";
 }
 var input;
 var input2;
@@ -111,7 +111,6 @@ function MessageWriting({
   const [lenCsvData, setLenCsvData] = (0, import_react.useState)("");
   const [usAddress, setUsAddress] = (0, import_react.useState)(null);
   const [nonusAddress, setnonUsAddress] = (0, import_react.useState)(null);
-  console.log(name, "Message Text field----");
   input2 = document.querySelector(".inputText2");
   output2 = document.querySelector(".output2");
   outputContainer2 = document.querySelector(".secDiv");
@@ -144,24 +143,19 @@ function MessageWriting({
     } else {
       let reqField;
       let checkWord = "[First Name]";
+      let checkWord2 = "[Last Name]";
       if (fileData.length) {
-        fileData.forEach((obj) => {
-          obj.msgData = name, obj.endMsgData = name2;
-        });
-        const newArray = fileData.map((obj) => {
-          return {
-            ...obj,
-            msgData: name,
-            endMsgData: name2
-          };
-        });
-        console.log(newArray);
-        newArray.forEach((obj) => {
-          if (obj.msgData.includes(checkWord)) {
-            obj.msgData = obj.msgData.replace(checkWord, obj["First Name"]);
+        fileData.map((obj) => {
+          let subName = name;
+          if (obj["First Name"]) {
+            subName = subName.replace(/\[First Name\]/g, obj["First Name"]);
           }
+          if (obj["Last Name"]) {
+            subName = subName.replace(/\[Last Name\]/g, obj["Last Name"]);
+          }
+          obj.msgData = subName;
         });
-        console.log(console.log(newArray, "after Replace"));
+        console.log(fileData, "fileData");
         reqField = {
           msg: name,
           signOffText: name2,
@@ -169,7 +163,7 @@ function MessageWriting({
           csvFileLen: lenCsvData ? lenCsvData : "1",
           usCount: usAddress,
           nonUsCount: nonusAddress,
-          bulkCsvData: newArray
+          bulkCsvData: fileData
         };
       } else {
         reqField = {
@@ -193,11 +187,11 @@ function MessageWriting({
       return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: showNextBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 138,
+          lineNumber: 150,
           columnNumber: 33
         }, this) }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 137,
+          lineNumber: 149,
           columnNumber: 29
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { children: [
@@ -205,30 +199,30 @@ function MessageWriting({
           lenCsvData
         ] }, void 0, true, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 140,
+          lineNumber: 152,
           columnNumber: 29
         }, this)
       ] }, void 0, true, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 136,
+        lineNumber: 148,
         columnNumber: 36
       }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "bg-[#ef6e6e] text-[#fff] p-2 rounded", onClick: () => uploadCsvFile(), children: "Upload" }, void 0, false, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 141,
+        lineNumber: 153,
         columnNumber: 31
       }, this) }, void 0, false, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 135,
+        lineNumber: 147,
         columnNumber: 17
       }, this) }, void 0, false, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 134,
+        lineNumber: 146,
         columnNumber: 14
       }, this);
     } else {
       return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", {}, void 0, false, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 148,
+        lineNumber: 160,
         columnNumber: 14
       }, this);
     }
@@ -239,14 +233,13 @@ function MessageWriting({
   function resize_to_fit() {
     let fontSize = window.getComputedStyle(output).fontSize;
     output.style.fontSize = parseFloat(fontSize) - 1 + "px";
-    console.log(output.clientHeight, "------------", outputContainer.clientHeight);
     if (output.clientHeight >= outputContainer.clientHeight) {
       resize_to_fit();
     }
   }
   async function processInput() {
     output.innerHTML = await this.value;
-    output.style.fontSize = "60px";
+    output.style.fontSize = "50px";
     resize_to_fit();
   }
   function resize_to_fit2() {
@@ -410,6 +403,7 @@ function MessageWriting({
     setValue("abbabbbbb");
   }
   async function onInsetClick() {
+    output.style.fontSize = "20px";
     setName(aiText);
     setIsOpen(false);
     setaiText("");
@@ -437,7 +431,6 @@ function MessageWriting({
   async function onChnageNameVal(nameData) {
     setName(nameData);
     console.log(nameData, "nameData----");
-    console.log(input.value, "input", output.style);
   }
   async function onchnageOfRegardBox(data) {
     setName2(data);
@@ -458,33 +451,33 @@ function MessageWriting({
   return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "mainDivForBox flex gap-10", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { id: "outer", className: "outerr", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "outerSec", ref: ref2, children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { id: "abcd", ref: ref1, className: "output m-5", children: name }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "outerSec", ref: ref2, children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { id: "abcd", ref: ref1, className: "output m-5 ", children: name }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 407,
+          lineNumber: 419,
           columnNumber: 25
         }, this) }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 406,
+          lineNumber: 418,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "secDiv", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { id: "abcd2", className: "output2", children: name2 }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 412,
+          lineNumber: 424,
           columnNumber: 25
         }, this) }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 411,
+          lineNumber: 423,
           columnNumber: 21
         }, this)
       ] }, void 0, true, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 405,
+        lineNumber: 417,
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "textAreaView w-[600px]", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("textarea", { type: "text", id: "example-one-input", value: name, placeholder: "Enter your custom message text here...", ref, className: "inputText", maxlength: "450", onChange: (e) => onChnageNameVal(e.target.value), "data-gtm-form-interact-field-id": "0" }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("textarea", { type: "text", id: "example-one-input", value: name, placeholder: "Enter your custom message text here...", className: "inputText", maxlength: "450", onInput: (e) => setName(e.target.value) }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 419,
+          lineNumber: 431,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "charLeft", children: [
@@ -492,46 +485,57 @@ function MessageWriting({
           " characters remaining"
         ] }, void 0, true, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 421,
+          lineNumber: 434,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("br", {}, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 421,
+          lineNumber: 434,
           columnNumber: 91
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "addFirstnameBtn", value: "[First Name]", onClick: (e) => firstNameBtn(e.target.value), children: "First Name" }, void 0, false, {
+        show && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "addFirstnameBtn p-2 m-2", value: "[First Name]", onClick: (e) => firstNameBtn(e.target.value), children: "First Name" }, void 0, false, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 436,
+            columnNumber: 29
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "addFirstnameBtn p-2", value: "[Last Name]", onClick: (e) => firstNameBtn(e.target.value), children: "Last Name" }, void 0, false, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 438,
+            columnNumber: 29
+          }, this)
+        ] }, void 0, true, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 422,
-          columnNumber: 21
+          lineNumber: 435,
+          columnNumber: 30
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "flex gap-4 mt-5", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { className: "cursor-pointer", onClick: () => setIsOpen(true), children: [
             "Try our new AI Assistant to ",
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("br", {}, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 424,
+              lineNumber: 442,
               columnNumber: 118
             }, this),
             " help write your message"
           ] }, void 0, true, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 424,
+            lineNumber: 442,
             columnNumber: 25
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("textarea", { type: "text", value: name2, "v-model": "keyword", id: "example-one-input2", className: "inputText2", maxlength: "50", onChange: (e) => onchnageOfRegardBox(e.target.value), placeholder: "Enter here...", "data-gtm-form-interact-field-id": "0" }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 425,
+            lineNumber: 443,
             columnNumber: 25
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("br", {}, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 426,
+            lineNumber: 444,
             columnNumber: 36
           }, this)
         ] }, void 0, true, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 423,
+          lineNumber: 441,
           columnNumber: 21
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("span", { className: "charLeft ml-40", children: [
@@ -539,87 +543,87 @@ function MessageWriting({
           " characters remaining"
         ] }, void 0, true, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 428,
+          lineNumber: 446,
           columnNumber: 21
         }, this),
         show && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_jsx_dev_runtime.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "w-[263px] mt-10 font-bold", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { children: "As of july5,2023, we have upgraded the bulk order template.Please download the new template below" }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 431,
+            lineNumber: 449,
             columnNumber: 33
           }, this) }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 430,
+            lineNumber: 448,
             columnNumber: 29
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "custom_testing", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h3", { className: "font-bold", children: "Bulk Address Upload" }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 436,
+              lineNumber: 454,
               columnNumber: 37
             }, this) }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 435,
+              lineNumber: 453,
               columnNumber: 33
             }, this),
             bulkUploadDiv ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("input", { type: "file", name: "file", accept: ".csv", className: "upload-input", onChange: (e) => handleFileChange(e) }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 440,
+              lineNumber: 458,
               columnNumber: 45
             }, this) }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 439,
+              lineNumber: 457,
               columnNumber: 41
             }, this) }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 438,
+              lineNumber: 456,
               columnNumber: 50
             }, this) : "",
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { children: [
               " Download the",
               /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("a", { href: "https://api.simplynoted.com/docs/bulk-template", className: "text-[blue]", children: " Bulk Order Template" }, void 0, false, {
                 fileName: "app/components/products/MessageWrite.jsx",
-                lineNumber: 444,
+                lineNumber: 462,
                 columnNumber: 49
               }, this),
               " "
             ] }, void 0, true, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 444,
+              lineNumber: 462,
               columnNumber: 33
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(AfterUpload, {}, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 445,
+              lineNumber: 463,
               columnNumber: 33
             }, this)
           ] }, void 0, true, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 434,
+            lineNumber: 452,
             columnNumber: 29
           }, this)
         ] }, void 0, true, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 429,
+          lineNumber: 447,
           columnNumber: 30
         }, this),
         !show && /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 449,
+          lineNumber: 467,
           columnNumber: 29
         }, this) }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 448,
+          lineNumber: 466,
           columnNumber: 31
         }, this)
       ] }, void 0, true, {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 418,
+        lineNumber: 430,
         columnNumber: 17
       }, this)
     ] }, void 0, true, {
       fileName: "app/components/products/MessageWrite.jsx",
-      lineNumber: 404,
+      lineNumber: 416,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(
@@ -632,75 +636,75 @@ function MessageWriting({
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "flex", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h2", { className: "font-bold text-xl w-[600px]", children: "AI Message Assistant" }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 461,
+              lineNumber: 479,
               columnNumber: 21
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(BsXCircle, { className: "", onClick: () => onCancl() }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 462,
+              lineNumber: 480,
               columnNumber: 21
             }, this)
           ] }, void 0, true, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 460,
+            lineNumber: 478,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("text", { className: " text-[#999999]", children: [
             "Type in words or a phrase to use our AI Assistant to",
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("br", {}, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 465,
+              lineNumber: 483,
               columnNumber: 107
             }, this),
             " help generate a great message"
           ] }, void 0, true, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 465,
+            lineNumber: 483,
             columnNumber: 21
           }, this) }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 464,
+            lineNumber: 482,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("textarea", { type: "text", id: "aiTextArea", value: aiText ? aiText : valToGen, onChange: (e) => setValToGen(e.target.value), placeholder: "Example: Message for Birthday", maxlength: "450" }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 468,
+            lineNumber: 486,
             columnNumber: 21
           }, this) }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 467,
+            lineNumber: 485,
             columnNumber: 17
           }, this),
           !aiText ? /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { class: "ai-generate", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { id: "generate-msg", disabled: "", onClick: () => aiGenrateMess(), children: "Generate Message" }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 471,
+            lineNumber: 489,
             columnNumber: 25
           }, this) }, void 0, false, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 470,
+            lineNumber: 488,
             columnNumber: 28
           }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "buttonClass flex justify-start", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "buttonDiv pr-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => onInsetClick(), children: "Insert" }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 474,
+              lineNumber: 492,
               columnNumber: 29
             }, this) }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 473,
+              lineNumber: 491,
               columnNumber: 25
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("button", { className: "bg-[#f0f0f0] text-[black] p-2 rounded ", onClick: () => onCancl(), children: "Cancel" }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 477,
+              lineNumber: 495,
               columnNumber: 29
             }, this) }, void 0, false, {
               fileName: "app/components/products/MessageWrite.jsx",
-              lineNumber: 476,
+              lineNumber: 494,
               columnNumber: 25
             }, this)
           ] }, void 0, true, {
             fileName: "app/components/products/MessageWrite.jsx",
-            lineNumber: 472,
+            lineNumber: 490,
             columnNumber: 30
           }, this)
         ]
@@ -709,7 +713,7 @@ function MessageWriting({
       true,
       {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 456,
+        lineNumber: 474,
         columnNumber: 13
       },
       this
@@ -722,7 +726,7 @@ function MessageWriting({
         contentLabel: "Example Modal",
         children: errorVal.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { children: item }, void 0, false, {
           fileName: "app/components/products/MessageWrite.jsx",
-          lineNumber: 485,
+          lineNumber: 503,
           columnNumber: 39
         }, this))
       },
@@ -730,14 +734,14 @@ function MessageWriting({
       false,
       {
         fileName: "app/components/products/MessageWrite.jsx",
-        lineNumber: 481,
+        lineNumber: 499,
         columnNumber: 13
       },
       this
     )
   ] }, void 0, true, {
     fileName: "app/components/products/MessageWrite.jsx",
-    lineNumber: 403,
+    lineNumber: 415,
     columnNumber: 10
   }, this);
 }
@@ -776,7 +780,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\components\\products\\AddCart.jsx"
   );
-  import.meta.hot.lastModified = "1697730029023.1018";
+  import.meta.hot.lastModified = "1697789496164.6094";
 }
 var customerid2;
 var senderAddressVal;
@@ -832,7 +836,7 @@ function AddCart({
     setSelectedItem2(item);
   };
   const handleBoxoNShipping = (item) => {
-    console.log(item, "shippingData");
+    console.log(item, "shippingData----");
     setSelectShipMode(item);
   };
   const filteredList = (recipientAddress2, searchData2) => {
@@ -928,7 +932,9 @@ function AddCart({
     csvFileLen: cartDataReq?.csvFileLen,
     usCount: cartDataReq?.usCount,
     nonUSCount: cartDataReq?.nonUsCount,
-    csvBulkData: cartDataReq?.bulkCsvData
+    csvBulkData: cartDataReq?.bulkCsvData,
+    shippingData: selectShipMode ? selectShipMode : "",
+    shippingMethodImage: shippingData ? shippingData.featuredImage.url : ""
   };
   let keyUpdate1 = "messageData";
   let keyUpdate2 = "reciverAddress";
@@ -986,44 +992,44 @@ function AddCart({
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h3", { className: "items-center font-bold flex text-2xl", onClick: () => setProductShow(true), children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(BiSolidChevronLeft, { size: "50px" }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 264,
+        lineNumber: 266,
         columnNumber: 107
       }, this),
       "Back To Product Customization"
     ] }, void 0, true, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 264,
+      lineNumber: 266,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-data", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Your Info (return/sender address)" }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 269,
+          lineNumber: 271,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 272,
+          lineNumber: 274,
           columnNumber: 37
         }, this) }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 271,
+          lineNumber: 273,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("input", { type: "text ", className: "w-full rounded p-3 mt-4", placeholder: "Search Addresses..." }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 275,
+          lineNumber: 277,
           columnNumber: 37
         }, this) }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 274,
+          lineNumber: 276,
           columnNumber: 33
         }, this),
         returnAddress.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "w-full rounded p-3 mt-4 bg-[#fff] ", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("input", { type: "checkbox", value: item, checked: selectedItem2?._id === item._id, onChange: () => handleCheckboxChange2(item) }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 278,
+            lineNumber: 280,
             columnNumber: 41
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { children: [
@@ -1041,64 +1047,64 @@ function AddCart({
             item.country
           ] }, void 0, true, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 279,
+            lineNumber: 281,
             columnNumber: 41
           }, this)
         ] }, void 0, true, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 277,
+          lineNumber: 279,
           columnNumber: 60
         }, this))
       ] }, void 0, true, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 268,
+        lineNumber: 270,
         columnNumber: 29
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 267,
+        lineNumber: 269,
         columnNumber: 25
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 266,
+        lineNumber: 268,
         columnNumber: 21
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-6 w-[50%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-data", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Recipient address" }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 287,
+          lineNumber: 289,
           columnNumber: 33
         }, this),
         show ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("text", { children: "Recipient addresses were specified in your bulk order upload." }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 289,
+          lineNumber: 291,
           columnNumber: 41
         }, this) }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 288,
+          lineNumber: 290,
           columnNumber: 41
         }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 294,
+            lineNumber: 296,
             columnNumber: 45
           }, this) }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 293,
+            lineNumber: 295,
             columnNumber: 41
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("input", { type: "text", onChange: (e) => setsearchData(e.target.value), className: "w-full rounded p-3 mt-4 ", placeholder: "Search Addresses..." }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 297,
+            lineNumber: 299,
             columnNumber: 45
           }, this) }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 296,
+            lineNumber: 298,
             columnNumber: 41
           }, this),
           filteredList(recipientAddress, searchData).map((item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "w-full rounded p-3 mt-4 bg-[#fff] ", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("input", { type: "checkbox", value: item, checked: selectedItem?._id === item._id, onChange: () => handleCheckboxChange(item), ref: refRec }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 300,
+              lineNumber: 302,
               columnNumber: 49
             }, this),
             item.firstName,
@@ -1114,54 +1120,54 @@ function AddCart({
             item.country
           ] }, void 0, true, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 299,
+            lineNumber: 301,
             columnNumber: 106
           }, this))
         ] }, void 0, true, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 292,
+          lineNumber: 294,
           columnNumber: 46
         }, this)
       ] }, void 0, true, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 286,
+        lineNumber: 288,
         columnNumber: 29
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 285,
+        lineNumber: 287,
         columnNumber: 25
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 284,
+        lineNumber: 286,
         columnNumber: 21
       }, this)
     ] }, void 0, true, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 265,
+      lineNumber: 267,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
       show ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-grid", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: shippingData?.title }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 313,
+          lineNumber: 315,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { class: "shipping-methods", id: "shipping-options", children: shippingData?.variants.edges.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { class: "getProductId", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("input", { value: item, checked: selectShipMode === item, type: "radio", name: "radioGroup", onChange: () => handleBoxoNShipping(item) }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 318,
+              lineNumber: 320,
               columnNumber: 41
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("label", { for: "Mail-Individual-Cards-Normally-(default)", children: item?.node.title }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 319,
+              lineNumber: 321,
               columnNumber: 41
             }, this)
           ] }, void 0, true, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 317,
+            lineNumber: 319,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { class: "custom_variant_price", children: [
@@ -1169,149 +1175,149 @@ function AddCart({
             item?.node.price.amount
           ] }, void 0, true, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 321,
+            lineNumber: 323,
             columnNumber: 37
           }, this)
         ] }, "7027299254377", true, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 316,
+          lineNumber: 318,
           columnNumber: 79
         }, this)) }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 315,
+          lineNumber: 317,
           columnNumber: 33
         }, this)
       ] }, void 0, true, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 312,
+        lineNumber: 314,
         columnNumber: 29
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 311,
+        lineNumber: 313,
         columnNumber: 29
       }, this) : "",
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-6 w-[50%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-grid mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "address-data", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h3", { className: "text-2xl font-bold mt-6 mb-6", children: "Add a Gift Card" }, void 0, false, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 369,
+          lineNumber: 371,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 371,
+            lineNumber: 373,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("select", { className: "w-full", value: "pppppp", onChange: (e) => cardvalFunc(e.target.value), children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { className: "w-full", children: "Select Gift Card " }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 374,
+              lineNumber: 376,
               columnNumber: 45
             }, this),
             data.collection.products.edges.map((item, i) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: i, children: item.node.title }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 375,
+              lineNumber: 377,
               columnNumber: 94
             }, this))
           ] }, void 0, true, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 373,
+            lineNumber: 375,
             columnNumber: 41
           }, this) }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 372,
+            lineNumber: 374,
             columnNumber: 37
           }, this)
         ] }, void 0, true, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 370,
+          lineNumber: 372,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 380,
+            lineNumber: 382,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: cardPrice ? (
             // <div>heelooo</div>
             /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("select", { name: "", id: "", className: "w-full", onChange: (e) => priceValFunc(e.target.value), children: cardPriceVal.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: item.node.price.amount, children: item.node.title }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 385,
+              lineNumber: 387,
               columnNumber: 75
             }, this)) }, void 0, false, {
               fileName: "app/components/products/AddCart.jsx",
-              lineNumber: 384,
+              lineNumber: 386,
               columnNumber: 19
             }, this)
           ) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("select", { name: "", id: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("option", { value: "", children: "Price card" }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 389,
+            lineNumber: 391,
             columnNumber: 49
           }, this) }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 388,
+            lineNumber: 390,
             columnNumber: 21
           }, this) }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 381,
+            lineNumber: 383,
             columnNumber: 37
           }, this)
         ] }, void 0, true, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 379,
+          lineNumber: 381,
           columnNumber: 33
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("input", { type: "checkbox", id: "", name: "", value: "" }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 402,
+            lineNumber: 404,
             columnNumber: 37
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("text", { className: "ml-3", children: "Add Gift Card" }, void 0, false, {
             fileName: "app/components/products/AddCart.jsx",
-            lineNumber: 403,
+            lineNumber: 405,
             columnNumber: 37
           }, this)
         ] }, void 0, true, {
           fileName: "app/components/products/AddCart.jsx",
-          lineNumber: 401,
+          lineNumber: 403,
           columnNumber: 33
         }, this)
       ] }, void 0, true, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 368,
+        lineNumber: 370,
         columnNumber: 29
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 367,
+        lineNumber: 369,
         columnNumber: 25
       }, this) }, void 0, false, {
         fileName: "app/components/products/AddCart.jsx",
-        lineNumber: 366,
+        lineNumber: 368,
         columnNumber: 21
       }, this)
     ] }, void 0, true, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 310,
+      lineNumber: 312,
       columnNumber: 17
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", onClick: () => onClickAddCart(), children: "Add To Cart" }, void 0, false, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 411,
+      lineNumber: 413,
       columnNumber: 21
     }, this) }, void 0, false, {
       fileName: "app/components/products/AddCart.jsx",
-      lineNumber: 409,
+      lineNumber: 411,
       columnNumber: 17
     }, this)
   ] }, void 0, true, {
     fileName: "app/components/products/AddCart.jsx",
-    lineNumber: 263,
+    lineNumber: 265,
     columnNumber: 13
   }, this) }, void 0, false, {
     fileName: "app/components/products/AddCart.jsx",
-    lineNumber: 262,
+    lineNumber: 264,
     columnNumber: 10
   }, this);
 }
@@ -1344,7 +1350,7 @@ if (import.meta) {
     //@ts-expect-error
     "app\\routes\\($locale).products.$productHandle.jsx"
   );
-  import.meta.hot.lastModified = "1697717273668.9321";
+  import.meta.hot.lastModified = "1697789411233.4817";
 }
 var input3;
 var customerid3;
@@ -2048,4 +2054,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   Product as default
 };
-//# sourceMappingURL=/build/routes/($locale).products.$productHandle-OE2YSJVV.js.map
+//# sourceMappingURL=/build/routes/($locale).products.$productHandle-VW3W2FKN.js.map

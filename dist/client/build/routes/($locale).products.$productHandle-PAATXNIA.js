@@ -2534,7 +2534,7 @@ function MessageWriting({
   function resize_to_fit() {
     let fontSize = window.getComputedStyle(output).fontSize;
     output.style.fontSize = parseFloat(fontSize) - 1 + "px";
-    console.log(output.clientHeight, "------------", outputContainer.clientHeight);
+    
     if (output.clientHeight >= outputContainer.clientHeight) {
       resize_to_fit();
     }

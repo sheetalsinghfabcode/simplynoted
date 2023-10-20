@@ -489,9 +489,9 @@ export default function AddCartFunc() {
                                 Recipient:  {item["First Name"]},{item["Last Name"]},{item["Address"]},{item["City"]},{item["State/Province"]}
                                 </text>
                                 <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
-                        <div className='w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]'>
-                            <text className='text-2xl w-[600px]' style={{ fontFamily: msgFont }}> {item.msgData}</text><br />
-                            <text className='text-2xl text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
+                        <div className='w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]'>
+                            <text className=' w-[600px]' style={{ fontFamily: msgFont }}> {item.msgData}</text><br />
+                            <text className=' text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
                         </div>
                         <div>
                             <text>Font: {msgFont}</text>
