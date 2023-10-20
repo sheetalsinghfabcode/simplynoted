@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
 
-let input, input2, output, output2, outputContainer, outputContainer2, customerid, recipientAddressVal, globalMessData
-export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow,onValueChange,EditMess,editEndMess,shareBoxData}) {
-    const [name, setName] = useState(EditMess?EditMess:'')
-    const [name2, setName2] = useState(editEndMess?editEndMess:'')
+let input, input2, output, output2, outputContainer, outputContainer2, customerid
+export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
+    let [name, setName] = useState(EditMess ? EditMess : '')
+    const [name2, setName2] = useState(editEndMess ? editEndMess : '')
     const [fileData, setFileData] = useState([]);
     const [valToGen, setValToGen] = useState('')
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -14,7 +14,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [errorVal, setErrorVal] = useState([]);
     const [clickedItem, setClickedItem] = useState(false)
     const [showNextBtn, setShowNextBtn] = useState(false)
-
+    const [csvFile, setCsvFile] = useState('')
+    const [bulkUploadDiv, setbulkUploadDiv] = useState(true)
+    const [lenCsvData, setLenCsvData] = useState('')
+    const [usAddress, setUsAddress] = useState(null)
+    const [nonusAddress, setnonUsAddress] = useState(null)
     // const [productshow, setProductShow] = useState(true)
     console.log(name, 'Message Text field----');
     // console.log(name, name2, 'ssasasasas');
@@ -51,25 +55,65 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         } else if (name.length == 0) {
             alert('Message Can not be empty ')
         } else {
+            let reqField
+            let checkWord = "[First Name]"
+            if(fileData.length){
+                fileData.forEach(obj => {
+                    obj.msgData = name,
+                    obj.endMsgData = name2
+                })
+                const newArray = fileData.map(obj => {
+                    return { ...obj, msgData: name,endMsgData:name2 };
+                  });
+
+                  console.log(newArray);
+
+                  newArray.forEach(obj => {
+                    if(obj.msgData.includes(checkWord)){
+                        obj.msgData = obj.msgData.replace(checkWord,obj["First Name"])
+                    }
+                  })
+                  console.log(console.log(newArray,"after Replace"));
+                 reqField = {
+                    msg: name,
+                    signOffText: name2,
+                    csvFileBulk: csvFile ? csvFile : null,
+                    csvFileLen: lenCsvData ? lenCsvData : '1',
+                    usCount: usAddress,
+                    nonUsCount: nonusAddress,
+                    bulkCsvData:newArray
+                }
+            } else
+            {
+                 reqField = {
+                    msg: name,
+                    signOffText: name2,
+                    csvFileBulk: csvFile ? csvFile : null,
+                    csvFileLen: lenCsvData ? lenCsvData : '1',
+                    usCount: usAddress,
+                    nonUsCount: nonusAddress,
+                    bulkCsvData:fileData?fileData:null
+                }
+            }
+            
+            localStorage.setItem('reqFielddInCart', JSON.stringify(reqField))
             setProductShow(false)
-            console.log(name,'namefield');
+            console.log(name, 'namefield');
         }
     }
     function AfterUpload() {
         if (selectedFile) {
             setShowBox(false)
             return <div className="">
-                {/* <div>
-                    <h3 className='text-[green]'>Your upload was successful.</h3>
-                    <p >Number of recipients uploaded: <span id="card-quantity" ></span></p>
-                </div> */}
                 <div>
                     {showNextBtn
                         ?
-
-                        <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
-                            <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
-                        </div>
+                        <>
+                            <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
+                                <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
+                            </div>
+                            <text> Number of recipient Uploaded:{lenCsvData}</text>
+                        </>
                         :
                         <button className="bg-[#ef6e6e] text-[#fff] p-2 rounded" onClick={() => uploadCsvFile()}>
                             Upload
@@ -137,12 +181,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 const cleanedArray = jsonData.map(obj => {
                     const cleanedObj = {};
 
-                    for (const key in obj) {
-                        if (obj.hasOwnProperty(key)) {
-                            // Remove outer double quotes using slice
-                            cleanedObj[key] = obj[key].slice(1, -1);
-                        }
-                    }
+                    Object.keys(obj).forEach(key => {
+                        const newKey = key.replace(/"/g, ''); // Remove quotes from key
+                        const newValue = obj[key].replace(/"/g, ''); // Remove quotes from value
+                        cleanedObj[newKey] = newValue;
+                    });
 
                     return cleanedObj;
                 });
@@ -184,36 +227,68 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     }
     async function uploadCsvFile() {
         let aa = []
+        let usCount = 0
+        let nonUSCount = 0
         let found = false
+        let replacedMsg = []
 
-        setClickedItem(true)
+        setbulkUploadDiv(false)
         if (!fileData.length) {
             aa.push('it is empty please add addresses')
             setErrorVal(aa)
             setIsOpen2(true)
             setTimeout(() => setIsOpen2(false), 3000)
             return
+        } else {
+            console.log(fileData.length, '=====');
+            setLenCsvData(fileData.length)
         }
-        let reqField = ['"First Name"', '"Last Name"', '"Address"', '"City"', '"State/Province"', '"Postal Code"']
+        let reqField = ["First Name", "Last Name", "Address", "City", "State/Province", "Postal Code"]
 
-        console.log(fileData.length, 'length of addresses');
+        // console.log(fileData.length, 'length of addresses');
+
         const alphabetPattern = /^[A-Za-z]+$/;
         const mailText = /@.*\.com$/
 
         for (let index = 0; index < fileData.length; index++) {
             const obj = fileData[index];
+            console.log(obj["First Name"],'Name data');
             const emptyKeys = [];
             const numkeys = []
-            let targetField = '"First Name"'
-            let emailValid = '"Email"'
+            let targetField = "First Name"
+            let emailValid = "Email"
+            let countryCheck = "Country"
             for (const key of reqField) {
                 if (obj[key] === "") {
                     emptyKeys.push(key);
                 }
+
             }
+            // if (name.includes("First Name")) {
+            //     console.log(obj["First Name"], '333333');
+            //     name = name.replace('First Name', obj["First Name"])
+            //     replacedMsg.push(name)
+            //     console.log(name, 'name');
+            // }
+
             if (alphabetPattern.test(obj[targetField]) == false) {
                 aa.push(`'${targetField}' at row ${index} includes a number.`)
                 console.log(`Index: ${index}, '${targetField}' includes a number.`);
+            }
+            if (obj[countryCheck] === "USA" ||
+                obj[countryCheck].toLowerCase() === "" ||
+                obj[countryCheck].toLowerCase() === " " ||
+                obj[countryCheck].toLowerCase() === "u.s.a" ||
+                obj[countryCheck].toLowerCase() === "u.s" ||
+                obj[countryCheck].toLowerCase() === "usa" ||
+                obj[countryCheck].toLowerCase() === "us" ||
+                obj[countryCheck].toLowerCase() === "america" ||
+                obj[countryCheck].toLowerCase() === "united states" ||
+                obj[countryCheck].toLowerCase() === "united states of america" ||
+                obj[countryCheck].toLowerCase() == undefined) {
+                usCount++
+            } else {
+                nonUSCount++
             }
             if (mailText.test(obj[emailValid]) == false) {
                 aa.push(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`)
@@ -236,27 +311,15 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             }
         }
         setErrorVal(aa)
-        // let ab = fileData.map((item) => {
-
-        //   for (reqField in item) {
-        //     console.log(item,')))))))))))))))))))');
-        //     if (item[reqField] === '""') {
-        //     console.log(item,'------------------');
-
-        //       setIsOpen2(true)
-        //       aa.push(`${reqField} is empty please check`)
-        //       console.log(`${reqField}`, item[reqField], 'field is empty');
-        //       found = true;
-        //       break;
-        //     }
-        //   }
-        //   setErrorVal(aa)
-        // });
+        setUsAddress(usCount)
+        setnonUsAddress(nonUSCount)
+        console.log(replacedMsg, 'replacedMsg');
         if (found) {
             console.log(`Found  in the array.`);
         } else {
             console.log(` not found in the array.`);
-            // uploadCsvFileOnClick()
+            uploadCsvFileOnClick()
+            // checkUserLogged()
         }
 
     }
@@ -276,7 +339,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     body: JSON.stringify(fileData),
                 })
             const json = await res.json();
-
+            setCsvFile(json.result)
             console.log(json, 'CSV UPLOAD DATA ---------------');
             if (json.result) {
                 setShowNextBtn(true)
@@ -317,16 +380,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         }
     }
     async function onChnageNameVal(nameData) {
-        onValueChange(nameData,name2)
         setName(nameData)
-        globalMessData = nameData
         console.log(nameData, 'nameData----');
-        console.log(input.value,'input',output.style);
-        
+        console.log(input.value, 'input', output.style);
+
     }
-    async function onchnageOfRegardBox(data){
+    async function onchnageOfRegardBox(data) {
         setName2(data)
-        shareBoxData(data)
     }
     const ref = useRef(null);
     const ref1 = useRef(null);
@@ -337,13 +397,17 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         outputContainer = ref2.current;
         customerid = localStorage.getItem('customerId')
     }, [])
+    async function firstNameBtn(data) {
+        console.log(data);
+        setName(prevString => prevString + data)
+    }
     // console.log(bbc, 'bbc--');
     return (
         <>
             <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr">
                     <div className='outerSec' ref={ref2}>
-                        <div id='abcd'  ref={ref1} className="output m-5">
+                        <div id='abcd' ref={ref1} className="output m-5">
                             {name}
                         </div>
                     </div>
@@ -357,7 +421,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 <div className='textAreaView w-[600px]'>
                     <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." ref={ref} className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
-                    <span className="charLeft">{remainingWord} characters remaining</span>
+                    <span className="charLeft">{remainingWord} characters remaining</span><br />
+                    <button className='addFirstnameBtn' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
                     <div className='flex gap-4 mt-5' >
                         <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
                         <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
@@ -374,11 +439,14 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                 <div >
                                     <h3 className='font-bold'>Bulk Address Upload</h3>
                                 </div>
-                                <div>
-                                    <div >
-                                        <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
-                                    </div>
-                                </div>
+                                {bulkUploadDiv ?
+                                    <div>
+                                        <div >
+                                            <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
+                                        </div>
+                                    </div> : ''
+                                }
+
                                 <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
                                 <AfterUpload />
                             </div>

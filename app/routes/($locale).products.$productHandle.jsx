@@ -49,6 +49,9 @@ export async function loader({ params, request, context }) {
   const data  = await context.storefront.query(GiftProduct, {
     variables: {},
   })
+  const shippingData  = await context.storefront.query(ShippingMethod, {
+    variables: {},
+  })
 
 
   // console.log("data",data)
@@ -108,6 +111,7 @@ export async function loader({ params, request, context }) {
   });
 
   return defer({
+    shippingData,
     data,
     variants,
     product,
@@ -135,14 +139,13 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 export default function Product() {
-  const { product, shop, recommended, variants, data } = useLoaderData();
-  console.log(product,'************');
+  const { product, shop, recommended, variants, data,shippingData } = useLoaderData();
+  // console.log(product,'************');
+  console.log(shippingData,'shippingData');
   const datafornav = useLocation();
   let EditMess = datafornav.state?.data?.messageData
-  let addressDataReciver = datafornav.state?.data?.reciverAddress
-  let addressDataSender = datafornav.state?.data?.senderAddress
-  let editDataIndex = datafornav.state?.index
   let editEndMess = datafornav.state?.data.endText
+  let editOrderValue = datafornav.state
    console.log(datafornav.state,'locationState');
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
@@ -206,14 +209,7 @@ export default function Product() {
     setSelectedFile('')
     setShowBox(true)
   }
-  const [sharedValue, setSharedValue] = useState('');
-  const [sharedValueBoxData, setSharedValueBoxData] = useState('');
-  const handleValueChange = (newValue) => {
-    setSharedValue(newValue);
-  };
-  const handleValueChangeSecBox = (newValue) => {
-    setSharedValueBoxData(newValue);
-  };
+  
   return (
     <>
       {productshow ?
@@ -343,8 +339,8 @@ export default function Product() {
               </div>
             </div>
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
-             setShowBox={setShowBox} setProductShow={setProductShow} onValueChange={handleValueChange}
-             EditMess={EditMess} editEndMess={editEndMess} shareBoxData={handleValueChangeSecBox}/>
+             setShowBox={setShowBox} setProductShow={setProductShow} 
+             EditMess={EditMess} editEndMess={editEndMess} />
 
           </Section>
           <Suspense fallback={<Skeleton className="h-32" />}>
@@ -373,11 +369,10 @@ export default function Product() {
         </>
         :
         <AddCart show={show} setProductShow={setProductShow}
-         data={data} productData={product.variants.nodes[0]} sharedValue={sharedValue}
-         sharedValueBoxData={sharedValueBoxData}
-         selectFontValue={selectFontValue} 
-         addressDataReciver={addressDataReciver} addressDataSender={addressDataSender}
-         editDataIndex={editDataIndex} EditMess={EditMess} editEndMess={editEndMess}/>
+         data={data} productData={product.variants.nodes[0]}
+         selectFontValue={selectFontValue}
+         editOrderValue={editOrderValue}
+         shippingData={shippingData?.product}/>
       }
 
     </>
@@ -786,6 +781,23 @@ const GiftProduct = `#graphql
     }
   `
 
+const ShippingMethod = `#graphql
+query
+{
+  product(id:"gid://shopify/Product/7027299254377"){
+    title
+    variants(first:10){
+      edges{
+        node{
+          title
+          price
+          {
+            amount}
+        }
+      }
+    }
+  }
+}`
 async function getRecommendedProducts(storefront, productId) {
   const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
     variables: { productId, count: 12 },

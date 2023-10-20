@@ -3,27 +3,27 @@ import { BiSolidChevronLeft } from "react-icons/bi";
 import { useNavigate } from '@remix-run/react';
 
 
-let customerid, senderAddressVal, reciverAddressVal
-export function AddCart({ show, setProductShow, data, productData, sharedValue,sharedValueBoxData, selectFontValue, addressDataSender, addressDataReciver, editDataIndex, EditMess,editEndMess }) {
-    
-    console.log(addressDataReciver, 'addressDataReciver');
+let customerid, senderAddressVal, reciverAddressVal, cartDataReq
+export function AddCart({ show, setProductShow, data, productData, selectFontValue,editOrderValue,shippingData}) {
+    // console.log(editOrderValue,'editOrderValur');
+    console.log(shippingData, 'shippingData');
     const [returnAddress, setReturnAddress] = useState([])
     const [recipientAddress, setRecipientAddress] = useState([])
-    const [selectedItem, setSelectedItem] = useState(addressDataReciver ? addressDataReciver : null);
-    const [selectedItem2, setSelectedItem2] = useState(addressDataSender ? addressDataSender : null);
+    const [selectedItem, setSelectedItem] = useState(editOrderValue?.data ?editOrderValue.data.reciverAddress : null);
+    const [selectedItem2, setSelectedItem2] = useState(editOrderValue?.data ?editOrderValue.data.senderAddress : null);
+    const [selectShipMode,setSelectShipMode] = useState(null)
     const [searchData, setsearchData] = useState(null);
     const [cardVal, setCardVal] = useState('')
     const [cardPriceVal, setCardPriceVal] = useState([])
-    const [cardName, setCardName] = useState('')
-    const [cardPrice, setCardPrice] = useState('')
-    const [allData, setAllData] = useState([])
-    // console.log(searchData, 'searchData{-------}')
-    // console.log(cardVal, '8808888');
+    const [cardName, setCardName] = useState(editOrderValue?.data?editOrderValue.data.giftCardName:'')
+    const [cardImg, setCardImg] = useState(editOrderValue?.data?editOrderValue.data.giftCardImg:'')
+    const [cardPrice, setCardPrice] = useState(editOrderValue?.data?editOrderValue.data.giftCardPrice:'')
+    const [MsgText,setMesgtext] = useState('')
     async function getRecipient() {
         try {
             const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`)
             const json = await res.json();
-            console.log(json, 'getRecipient Response____________');
+            // console.log(json, 'getRecipient Response____________');
             setRecipientAddress(json.result)
         } catch (error) {
             console.log(error, 'Recipient error--------');
@@ -49,6 +49,10 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
         console.log(item, '***********item2');
         setSelectedItem2(item);
     };
+    const handleBoxoNShipping = (item) => {
+        console.log(item,'shippingData');
+        setSelectShipMode(item)
+    }
     const filteredList = (recipientAddress, searchData) => {
         return recipientAddress
             .filter(dataobj => bySearch(dataobj, searchData));
@@ -64,14 +68,14 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
         } else return dataobj;
 
     };
-    // console.log(data.collection.products.edges[0], 'data--------');
 
     const cardvalFunc = async (item) => {
         console.log(item, 'cardVal-----');
         setCardVal(item)
         let selCardName = data.collection.products.edges[item].node
         console.log(selCardName, 'selCardName--');
-        setCardName(selCardName)
+        setCardName(selCardName.title)
+        setCardImg(selCardName.featuredImage.url)
         // console.log(cardName,'cardName-----');
         let arrCardPrice = data.collection.products.edges[item].node.variants.edges
         console.log(arrCardPrice[0].node.price.amount, '---------abababababaababab');
@@ -115,9 +119,11 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
         reciverAddressVal = refRec.current
         senderAddressVal = ref1.current
         customerid = localStorage.getItem('customerId')
-        console.log(customerid, '----------------------');
-        console.log(productData, '----productData-----');
-
+        // console.log(customerid, '----------------------');
+        // console.log(productData, '----productData-----');
+        cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'))
+        console.log(cartDataReq,'cartDataReq');
+        setMesgtext(cartDataReq.msg)
         getRecipient()
         getReturn()
     }, [])
@@ -137,8 +143,8 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
         }
     }
     const navigate = useNavigate()
-    console.log(sharedValue, 'ooooooo', selectFontValue);
-    console.log(window.location.pathname);
+    // console.log('ooooooo', selectFontValue);
+    // console.log(window.location.pathname);
     let arrOfObj = {
         productTitle: productData.product.title ? productData.product.title : null,
         variant_id: productData.id,
@@ -146,13 +152,18 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
         productImg: productData.image.url,
         senderAddress: selectedItem2,
         reciverAddress: selectedItem,
-        giftCardName: cardName ? cardName.title : null,
-        giftCardImg: cardName ? cardName.featuredImage.url : null,
+        giftCardName: cardName ? cardName : null,
+        giftCardImg: cardImg ? cardImg : null,
         giftCardPrice: cardPrice ? cardPrice : null,
-        messageData: sharedValue ? sharedValue : '',
+        messageData: MsgText,
         fontFamily: selectFontValue ? selectFontValue : 'tarzan',
         productGetUrl: window.location.pathname,
-        endText:sharedValueBoxData ? sharedValueBoxData:''
+        endText:cartDataReq?.signOffText,
+        csvFileURL: cartDataReq?.csvFileBulk,
+        csvFileLen: cartDataReq?.csvFileLen,
+        usCount: cartDataReq?.usCount,
+        nonUSCount: cartDataReq?.nonUsCount,
+        csvBulkData:cartDataReq?.bulkCsvData
     }
 
     // const dataString = JSON.stringify(arrOfObj);
@@ -166,37 +177,45 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
     let keyUpdate7 = 'endText'
     function onClickAddCart() {
 
-        if (editDataIndex) {
+        if (editOrderValue?.index >= 0) {
             const storedData = JSON.parse(localStorage.getItem('mydata'));
             console.log(storedData, 'storedData');
-            if (editDataIndex >= 0 && editDataIndex < storedData.length) {
-                storedData[editDataIndex][keyUpdate1] = sharedValue ? sharedValue : EditMess;
-                storedData[editDataIndex][keyUpdate2] = selectedItem ? selectedItem : addressDataReciver;
-                storedData[editDataIndex][keyUpdate3] = selectedItem2 ? selectedItem2 : addressDataSender;
-                storedData[editDataIndex][keyUpdate4] = cardName ? cardName.featuredImage.url : null;
-                storedData[editDataIndex][keyUpdate5] = cardName ? cardName.title : null;
-                storedData[editDataIndex][keyUpdate6] = cardPrice;
-                storedData[editDataIndex][keyUpdate7] = sharedValueBoxData?sharedValueBoxData:editEndMess;
+            if (editOrderValue.index >= 0 && editOrderValue.index < storedData.length) {
+                storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg ? cartDataReq?.msg : editOrderValue?.data.messageData;
+                storedData[editOrderValue.index][keyUpdate2] = selectedItem;
+                storedData[editOrderValue.index][keyUpdate3] = selectedItem2 ;
+                storedData[editOrderValue.index][keyUpdate4] = cardImg ? cardImg : null;
+                storedData[editOrderValue.index][keyUpdate5] = cardName ? cardName : null;
+                storedData[editOrderValue.index][keyUpdate6] = cardPrice;
+                storedData[editOrderValue.index][keyUpdate7] = cartDataReq?.signOffText?cartDataReq?.signOffText: editOrderValue?.data.endText;
             }
             localStorage.setItem('mydata', JSON.stringify(storedData));
             navigate('/carts')
         } else {
-            if (selectedItem && selectedItem2) {
+            if(cartDataReq && cartDataReq.csvFileLen && selectedItem2){
+                const existingDataString = localStorage.getItem('mydata');
+                console.log('cartDataReq');
+                let existingDataArray = [];
+                if (existingDataString) {
+                    existingDataArray = JSON.parse(existingDataString);
+                    localStorage.removeItem('mydata')
+                }
+                existingDataArray.push(arrOfObj);
+                const updatedDataString = JSON.stringify(existingDataArray);
+                localStorage.setItem('mydata', updatedDataString);
+                navigate('/carts')
+            }
+          else if (selectedItem && selectedItem2) {
                 const existingDataString = localStorage.getItem('mydata');
                 console.log('=-=existingDataString=-=-');
                 let existingDataArray = [];
                 if (existingDataString) {
                     existingDataArray = JSON.parse(existingDataString);
                     localStorage.removeItem('mydata')
-
                 }
-
                 existingDataArray.push(arrOfObj);
-                // console.log(existingDataArray, 'existingDataArray)0000000000');
                 const updatedDataString = JSON.stringify(existingDataArray);
-                // console.log(updatedDataString, '------updatedDataString');
                 localStorage.setItem('mydata', updatedDataString);
-                // Cookies.set('myArrayCookie', dataString);
                 navigate('/carts')
             } else {
                 alert('please select the address')
@@ -278,18 +297,26 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
                     {show ?
                         <div className='col-6 w-[50%] '>
                             <div className='address-grid'>
-                                <h3 className='text-2xl font-bold mt-4 mb-4'>Shipping Methods</h3>
+                                <h3 className='text-2xl font-bold mt-4 mb-4'>{shippingData?.title}</h3>
 
                                 <div class="shipping-methods" id="shipping-options">
+                                    {shippingData?.variants.edges.map((item)=>
                                     <div key="7027299254377" class="getProductId">
-                                        <div>
-                                            <input data-product-url="/products/shipping-methods" checked="" id="Mail-Individual-Cards-Normally-(default)" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526056041" />
-                                            <label for="Mail-Individual-Cards-Normally-(default)">Mail Individual Cards Normally (default)</label>
-                                        </div>
-                                        <div class="custom_variant_price">$0.00</div>
+                                    <div>
+                                        <input 
+                                         value={item}
+                                         checked={selectShipMode === item}
+                                           type="radio" name="radioGroup" 
+                                           onChange={() => handleBoxoNShipping(item)}
+                                           />
+                                        <label for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
                                     </div>
+                                    <div class="custom_variant_price">${item?.node.price.amount}</div>
+                                </div>
+                                    )}
+                                    
 
-                                    <div key="7027299254377" class="getProductId">
+                                    {/* <div key="7027299254377" class="getProductId">
                                         <div>
                                             <input data-product-url="/products/shipping-methods" id="Ship-Cards-in-Bulk-with-Envelopes-Addressed--Sealed--and-Stamped" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526088809" />
                                             <label for="Ship-Cards-in-Bulk-with-Envelopes-Addressed--Sealed--and-Stamped">Ship Cards in Bulk with Envelopes Addressed, Sealed, and Stamped</label>
@@ -327,7 +354,7 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
                                             <label for="Ship-Cards-in-Bulk---Cards-Plus-Envelopes-Addressed-and-Sealed--Not-Stamped">Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped</label>
                                         </div>
                                         <div class="custom_variant_price">$49.00</div>
-                                    </div>
+                                    </div> */}
 
 
                                 </div>
@@ -342,8 +369,8 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
                                 <div className='row flex mr-2 ml-2 '>
                                     <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
                                     <div className='col-8 mt-3 pr-0 w-[370px]' >
-                                        <select className='w-full' onChange={(e) => cardvalFunc(e.target.value)}>
-                                            <option className='w-full' > Select Gift Card</option>
+                                        <select className='w-full' value={'pppppp'} onChange={(e) => cardvalFunc(e.target.value)}>
+                                            <option className='w-full' >Select Gift Card </option>
                                             {data.collection.products.edges.map((item, i) =>
                                                 <option value={i}>{item.node.title}</option>)}
                                         </select>
@@ -352,11 +379,9 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
                                 <div className='row flex mr-2 ml-2 '>
                                     <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Price:</div>
                                     <div className='col-8 mt-3 pr-0 w-[370px]' >
-                                        {cardPriceVal && cardPriceVal.length ?
+                                        {cardPrice  ?
                                             // <div>heelooo</div>
-                                            <select
-
-                                                name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
+                                            <select name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
                                                 {cardPriceVal.map((item) =>
                                                     <option
                                                         value={item.node.price.amount}>{item.node.title}</option>
@@ -365,7 +390,7 @@ export function AddCart({ show, setProductShow, data, productData, sharedValue,s
                                             // <AfterCardSel />
                                             :
                                             <select name="" id="">
-                                                <option value="">Price Card</option>
+                                                <option value="">Price card</option>
                                             </select>
                                         }
                                         {/* <select name="gift_name" className='w-full' id="gift_name" onchange="changeGiftPrice(this.value)" >

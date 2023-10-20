@@ -4,6 +4,9 @@ import { useLoaderData, Await } from '@remix-run/react';
 import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
 import { useNavigate } from '@remix-run/react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 let storedDataString, storedDataArray
 
@@ -43,6 +46,9 @@ export default function AddCartFunc() {
     const [senderAddress, setSenderAddress] = useState('')
     const [msgShow, setMsgShow] = useState('')
     const [msgFont, setMsgFont] = useState('')
+    const [msglastText, setMsglastText] = useState('')
+    const [reciverAddress, setReciverAddress] = useState('')
+    const [bulkAddress, setBulkAddress] = useState([])
     // console.log(postPrice2, postImage);
     useEffect(() => {
         storedDataString = localStorage.getItem('mydata');
@@ -53,19 +59,16 @@ export default function AddCartFunc() {
         }
     }, [updateGift])
     function setPostalValue() {
-        // if (postalData && postalData.product) {
         let postalTit = postalData.product.variants.edges[0].node.title
         let postalrate = postalData.product.variants.edges[0].node.price.amount
         let postalTit2 = postalData.product.variants.edges[1].node.title
         let postalrate2 = postalData.product.variants.edges[1].node.price.amount
         let postalImag = postalData.product.variants.edges[1].node.image
-        // console.log(postalTit, postalrate, postalTit2, postalrate2, '+++++++++++');
         setPostTitle(postalTit)
         setPostTitle2(postalTit2)
         setPostPrice(postalrate)
         setPostPrice2(postalrate2)
         setPostImage(postalImag.url)
-        // }
     }
     // console.log(cartData);
     let keyToUpdate1 = 'giftCardName'
@@ -100,12 +103,12 @@ export default function AddCartFunc() {
         localStorage.setItem('mydata', JSON.stringify(cartData));
 
     }
-    function deleteOrder(index){
+    function deleteOrder(index) {
         setUpdateGift(!updateGift)
         // if (index >= 0 && index < cartData.length) {
-            // Delete the order
-            cartData.splice(index, 1);
-            console.log(cartData,'deleteOrder');
+        // Delete the order
+        cartData.splice(index, 1);
+        console.log(cartData, 'deleteOrder');
 
         // delete cartData[index];
         // }
@@ -113,12 +116,12 @@ export default function AddCartFunc() {
 
     }
 
-    function editOrderData(index){
+    function editOrderData(index) {
         // navigate(,{state:{index:'index'}})
         let data = cartData[index]
-        console.log(data,'data---');
+        console.log(data, 'data---');
         let ab = cartData[index].productGetUrl
-        navigate(`${ab}`, { state: {data:data,index:index} })
+        navigate(`${ab}`, { state: { data: data, index: index } })
 
     }
     const navigate = useNavigate()
@@ -147,11 +150,24 @@ export default function AddCartFunc() {
 
     }
     async function OpenModalFunc2(item) {
+        console.log(item);
         setIsOpen2(true)
         // setCardVal(item)
-        setMsgFont(cartData[item].fontFamily);
-        setMsgShow(cartData[item].messageData);
-        setSenderAddress(cartData[item].senderAddress);
+        if (cartData[item].csvBulkData.length) {
+            console.log("bulkAddress");
+            setBulkAddress(cartData[item].csvBulkData)
+            setMsgFont(cartData[item].fontFamily);
+            setMsgShow(cartData[item].messageData);
+            setMsglastText(cartData[item].endText)
+
+
+        } else {
+            setMsgFont(cartData[item].fontFamily);
+            setMsgShow(cartData[item].messageData);
+            setReciverAddress(cartData[item].reciverAddress);
+            setMsglastText(cartData[item].endText)
+        }
+
 
     }
     const cardvalFunc = async (item) => {
@@ -172,7 +188,24 @@ export default function AddCartFunc() {
         console.log(item, 'PriceVAl');
         setCardPrice(item)
     }
+    function closeModal() {
+        setBulkAddress([])
 
+        setIsOpen2(false)
+    }
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrevClick = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (currentIndex < bulkAddress.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
     return (
         <>
             <div className='w-full h-full gap-2 mt-8'>
@@ -204,10 +237,10 @@ export default function AddCartFunc() {
                                         <text> Price:<span >{item.price}</span></text>
                                     </div>
                                     <div>
-                                        <text> Quantity:<span >1</span></text>
+                                        <text> Quantity:<span >{item.csvFileLen}</span></text>
                                     </div>
                                     <div>
-                                        <text> Subtotal:{item.price * 1}</text>
+                                        <text> Subtotal:{item.price * item.csvFileLen}</text>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +251,7 @@ export default function AddCartFunc() {
                                     </div>}
 
                                 <div className='buttonDiv pr-5 m-2'>
-                                    <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={()=>editOrderData(index)}>EDIT ORDER</button>
+                                    <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => editOrderData(index)}>EDIT ORDER</button>
                                 </div>
                                 <div className='buttonDiv pr-5 m-2'>
                                     <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => deleteOrder(index)}>DELETE ORDER</button>
@@ -245,10 +278,10 @@ export default function AddCartFunc() {
                                             <text> Price:<span >{item.giftCardPrice}</span></text>
                                         </div>
                                         <div>
-                                            <text> Quantity:<span >1</span></text>
+                                            <text> Quantity:<span >{item.csvFileLen}</span></text>
                                         </div>
                                         <div>
-                                            <text> Subtotal:{item.giftCardPrice * 1}</text>
+                                            <text> Subtotal:{item.giftCardPrice * item.csvFileLen}</text>
                                         </div>
                                     </div>
                                 </div>
@@ -260,71 +293,136 @@ export default function AddCartFunc() {
                             </div>
                             : ''}
                         <div className='w-[1000px] h-[2px] bg-[red]'></div>
-                        {item.reciverAddress.country === "USA" ||
-                            item.reciverAddress.country?.toLowerCase() === "" ||
-                            item.reciverAddress.country?.toLowerCase() === " " ||
-                            item.reciverAddress.country?.toLowerCase() === "u.s.a" ||
-                            item.reciverAddress.country?.toLowerCase() === "u.s" ||
-                            item.reciverAddress.country?.toLowerCase() === "usa" ||
-                            item.reciverAddress.country?.toLowerCase() === "us" ||
-                            item.reciverAddress.country?.toLowerCase() === "america" ||
-                            item.reciverAddress.country?.toLowerCase() === "united states" ||
-                            item.reciverAddress.country?.toLowerCase() === "united states of america" ||
-                            item.reciverAddress.country?.toLowerCase() == undefined
-                            ?
 
-                            <div className='flex'>
-                                <div className='w-[400px]'>
-                                    <div className='flex m-5'>
-                                        <div className='max-w-[20%] m-5'>
-                                            <img src={postImage} alt="" />
+                        {item.usCount || item.nonUSCount ?
+                            <>
+                                {/* {item.nonUSCount ? */}
+                                {item.nonUSCount ?
+                                    <div className='flex'>
+                                        <div className='w-[400px]'>
+                                            <div className='flex m-5'>
+                                                <div className='max-w-[20%] m-5'>
+                                                    <img src={postImage} alt="" />
+                                                </div>
+                                                <div className='max-w-[40%] mt-10'>
+                                                    <text>Postal {postTitle2}</text><br /><br />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className='max-w-[40%] mt-10'>
-                                            <text>Postal {postTitle}</text><br /><br />
+                                        <div className='w-[200px] gap-5'>
+                                            <div className='m-6'>
+                                                <div className=''>
+                                                    <text> Price:<span >{postPrice2}</span></text>
+                                                </div>
+                                                <div>
+                                                    <text> Quantity:<span >{item.nonUSCount}</span></text>
+                                                </div>
+                                                <div>
+                                                    <text> Subtotal:{postPrice2 * item.nonUSCount}</text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> : ''
+                                }
+                                {item.usCount ? <div className='flex'>
+                                    <div className='w-[400px]'>
+                                        <div className='flex m-5'>
+                                            <div className='max-w-[20%] m-5'>
+                                                <img src={postImage} alt="" />
+                                            </div>
+                                            <div className='max-w-[40%] mt-10'>
+                                                <text>Postal {postTitle}</text><br /><br />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className='w-[200px] gap-5'>
-                                    <div className='m-6'>
-                                        <div className=''>
-                                            <text> Price:<span >{postPrice}</span></text>
-                                        </div>
-                                        <div>
-                                            <text> Quantity:<span >1</span></text>
-                                        </div>
-                                        <div>
-                                            <text> Subtotal:{postPrice * 1}</text>
+                                    <div className='w-[200px] gap-5'>
+                                        <div className='m-6'>
+                                            <div className=''>
+                                                <text> Price:<span >{postPrice}</span></text>
+                                            </div>
+                                            <div>
+                                                <text> Quantity:<span >{item.usCount}</span></text>
+                                            </div>
+                                            <div>
+                                                <text> Subtotal:{postPrice * item.usCount}</text>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div> : ''}
 
-                            : <div className='flex'>
-                                <div className='w-[400px]'>
-                                    <div className='flex m-5'>
-                                        <div className='max-w-[20%] m-5'>
-                                            <img src={postImage} alt="" />
-                                        </div>
-                                        <div className='max-w-[40%] mt-10'>
-                                            <text>{postTitle2}</text><br /><br />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='w-[200px] gap-5'>
-                                    <div className='m-6'>
-                                        <div className=''>
-                                            <text> Price:<span >{postPrice2}</span></text>
-                                        </div>
-                                        <div>
-                                            <text> Quantity:<span >1</span></text>
-                                        </div>
-                                        <div>
-                                            <text> Subtotal:{postPrice2 * 1}</text>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/* } */}
 
-                            </div>}
+                            </>
+
+                            :
+                            <>
+                                {item.reciverAddress?.country === "USA" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "" ||
+                                    item.reciverAddress?.country?.toLowerCase() === " " ||
+                                    item.reciverAddress?.country?.toLowerCase() === "u.s.a" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "u.s" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "usa" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "us" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "america" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "united states" ||
+                                    item.reciverAddress?.country?.toLowerCase() === "united states of america" ||
+                                    item.reciverAddress?.country?.toLowerCase() == undefined
+                                    ?
+
+                                    <div className='flex'>
+                                        <div className='w-[400px]'>
+                                            <div className='flex m-5'>
+                                                <div className='max-w-[20%] m-5'>
+                                                    <img src={postImage} alt="" />
+                                                </div>
+                                                <div className='max-w-[40%] mt-10'>
+                                                    <text>Postal {postTitle}</text><br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='w-[200px] gap-5'>
+                                            <div className='m-6'>
+                                                <div className=''>
+                                                    <text> Price:<span >{postPrice}</span></text>
+                                                </div>
+                                                <div>
+                                                    <text> Quantity:<span >{item.csvFileLen}</span></text>
+                                                </div>
+                                                <div>
+                                                    <text> Subtotal:{postPrice * item.csvFileLen}</text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    : <div className='flex'>
+                                        <div className='w-[400px]'>
+                                            <div className='flex m-5'>
+                                                <div className='max-w-[20%] m-5'>
+                                                    <img src={postImage} alt="" />
+                                                </div>
+                                                <div className='max-w-[40%] mt-10'>
+                                                    <text>Postal{postTitle2}</text><br /><br />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='w-[200px] gap-5'>
+                                            <div className='m-6'>
+                                                <div className=''>
+                                                    <text> Price:<span >{postPrice2}</span></text>
+                                                </div>
+                                                <div>
+                                                    <text> Quantity:<span >{item.csvFileLen}</span></text>
+                                                </div>
+                                                <div>
+                                                    <text> Subtotal:{postPrice2 * item.csvFileLen}</text>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>}
+                            </>}
+
 
                     </div>
                 )}
@@ -376,23 +474,81 @@ export default function AddCartFunc() {
                 </div>
             </Modal>
             <Modal
-            isOpen={modalIsOpen2}
-            style={customStyles}
-            contentLabel="Example Modal">
-                <div className='flex'>
-                    <div className='w-[600px]'>
-                        <text className=' text-xl text-center'>Recipient: {senderAddress.firstName},{senderAddress.address1},{senderAddress.city},{senderAddress.country}</text>
+                isOpen={modalIsOpen2}
+                style={customStyles}
+                contentLabel="Example Modal">
+                {bulkAddress.length ?
+                    <>
+                        <BsXCircle className='absolute right-10 cursor-pointer'  onClick={() => closeModal()} />
+                        <button onClick={handlePrevClick} className='absolute top-[130px]'>Previous</button>
+                        {bulkAddress && bulkAddress.map((item,index) =>
+                            <div>
+                                {/* {item["First Name"]} */}
+                                <div key={index} style={{ display: index === currentIndex ? 'block' : 'none' }}>
+                                <text className=' text-xl text-center'>
+                                Recipient:  {item["First Name"]},{item["Last Name"]},{item["Address"]},{item["City"]},{item["State/Province"]}
+                                </text>
+                                <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
+                        <div className='w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]'>
+                            <text className='text-2xl w-[600px]' style={{ fontFamily: msgFont }}> {item.msgData}</text><br />
+                            <text className='text-2xl text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
+                        </div>
+                        <div>
+                            <text>Font: {msgFont}</text>
+                        </div>
+                                </div>
+
+                            </div>
+                        )}
+                              <button className='absolute right-10 bottom-[95px]' onClick={handleNextClick}>Next</button>
+
+                    </>
+                    :
+                    <>
+                        <div className='flex'>
+                            <div className='w-[600px]'>
+                                <text className=' text-xl text-center'>Recipient: {reciverAddress.firstName},{reciverAddress.address1},{reciverAddress.city},{reciverAddress.country}</text>
+                            </div>
+
+                            <BsXCircle className='cursor-pointer' onClick={() => closeModal()} />
+                        </div>
+                        <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
+                        <div className='w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]'>
+                            <text className='text-2xl w-[600px]' style={{ fontFamily: msgFont }}> {msgShow}</text><br />
+                            <text className='text-2xl text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
+                        </div>
+                        <div>
+                            <text>Font: {msgFont}</text>
+                        </div>
+                    </>
+                }
+
+                {/* {csvBulkData? */}
+                {/* <div className='flex'>
+                    <text>Heelooo</text>
+                </div> */}
+                {/* //  : */}
+                {/* <>
+                    <div className='flex'>
+                        <div className='w-[600px]'>
+                            <text className=' text-xl text-center'>Recipient: {reciverAddress.firstName},{reciverAddress.address1},{reciverAddress.city},{reciverAddress.country}</text>
+                        </div>
+
+                        <BsXCircle className='' onClick={() => setIsOpen2(false)} />
                     </div>
-                    <BsXCircle className='' onClick={() => setIsOpen2(false)} />
-                </div>
-                <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
-                <div className='w-[400px] items-center bg-[#fff] h-[50px] mt-5 ml-[70px] p-[10px]'>
-                   <text className='text-xl' style={{fontFamily:msgFont}}> {msgShow}</text>
-                </div>
-                <div>
-                    <text>Font: {msgFont}</text>
-                </div>
+                    <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
+                    <div className='w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]'>
+                        <text className='text-xl w-[600px]' style={{ fontFamily: msgFont }}> {msgShow}</text><br />
+                        <text className='text-xl text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
+                    </div>
+                    <div>
+                        <text>Font: {msgFont}</text>
+                    </div>
+                </> */}
+                {/* } */}
+
             </Modal>
+
         </>
     )
 }
