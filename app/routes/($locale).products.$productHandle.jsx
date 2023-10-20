@@ -1,7 +1,7 @@
 import { useRef, Suspense } from 'react';
 import { Disclosure, Listbox } from '@headlessui/react';
-import { defer, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await } from '@remix-run/react';
+import { defer, json, redirect } from '@shopify/remix-oxygen';
+import { useLoaderData, Await,useLocation } from '@remix-run/react';
 import {
   AnalyticsPageType,
   Money,
@@ -33,16 +33,28 @@ import { useState, useEffect } from 'react';
 import { BiSolidChevronLeft } from "react-icons/bi";
 import { BsXCircle } from "react-icons/bs";
 import Modal from 'react-modal';
-
+import { MessageWriting } from '~/components/products/MessageWrite';
+import { AddCart } from '~/components/products/AddCart';
 
 export const headers = routeHeaders;
-let input, input2, output, output2, outputContainer, outputContainer2, customerid
+let input,  customerid, recipientAddressVal,selectFontValue
 
 export async function loader({ params, request, context }) {
+  // console.log(context,'context');
   const { productHandle } = params;
+  // console.log(params,'params');
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
+  const data  = await context.storefront.query(GiftProduct, {
+    variables: {},
+  })
+  const shippingData  = await context.storefront.query(ShippingMethod, {
+    variables: {},
+  })
+
+
+  // console.log("data",data)
 
   const { shop, product } = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
@@ -52,14 +64,15 @@ export async function loader({ params, request, context }) {
       language: context.storefront.i18n.language,
     },
   });
-
+// console.log(product,'product ----99999999999999');
   if (!product?.id) {
     throw new Response('product', { status: 404 });
   }
 
-  if (!product.selectedVariant) {
-    return redirectToFirstVariant({ product, request });
-  }
+  //this condition is commented by me(ayush) for removing the params from url  
+  // if (!product.selectedVariant) {
+  //   return redirectToFirstVariant({ product, request });
+  // }
 
   // In order to show which variants are available in the UI, we need to query
   // all of them. But there might be a *lot*, so instead separate the variants
@@ -78,7 +91,9 @@ export async function loader({ params, request, context }) {
   // TODO: firstVariant is never used because we will always have a selectedVariant due to redirect
   // Investigate if we can avoid the redirect for product pages with no search params for first variant
   const firstVariant = product.variants.nodes[0];
-  const selectedVariant = product.selectedVariant ?? firstVariant;
+  // console.log(firstVariant,'firstVariant');
+  // console.log(product.selectedVariant,'product.selectedVariant');
+  const selectedVariant = product.selectedVariant == null?firstVariant: firstVariant;
 
   const productAnalytics = {
     productGid: product.id,
@@ -96,6 +111,8 @@ export async function loader({ params, request, context }) {
   });
 
   return defer({
+    shippingData,
+    data,
     variants,
     product,
     shop,
@@ -122,140 +139,46 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 export default function Product() {
-  const { product, shop, recommended, variants } = useLoaderData();
-  console.log(variants, '!1!!!!!!variants');
-  console.log(product.variants.nodes[0].price, "productData-------------");
+  const { product, shop, recommended, variants, data,shippingData } = useLoaderData();
+  // console.log(product,'************');
+  console.log(shippingData,'shippingData');
+  const datafornav = useLocation();
+  let EditMess = datafornav.state?.data?.messageData
+  let editEndMess = datafornav.state?.data.endText
+  let editOrderValue = datafornav.state
+   console.log(datafornav.state,'locationState');
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
-  const [name, setName] = useState('Enter Your Text Here....')
-  const [name2, setName2] = useState('')
   const [show, setShow] = useState(false);
-  const [startDate, setStartDate] = useState(new Date());
   const [productshow, setProductShow] = useState(true)
-  const [recipientAddress, setRecipientAddress] = useState('')
-  const [returnAddress, setReturnAddress] = useState('')
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [aiText,setaiText] = useState('')
-  const [valToGen,setValToGen] = useState('')
-
-  //  input = document.querySelector('.inputText');
-  input2 = document.querySelector('.inputText2');
-  console.log(input, "PPPPPPPPPPPPPPPPPP");
-
-  output2 = document.querySelector('.output2');
-
-  outputContainer2 = document.querySelector('.secDiv');
-
-
-  if (input) {
-    input.addEventListener('input', processInput);
-  }
-
-  function resize_to_fit() {
-    let fontSize = window.getComputedStyle(output).fontSize;
-    output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-    console.log(output.clientHeight, "------------", outputContainer.clientHeight);
-    if (output.clientHeight >= outputContainer.clientHeight) {
-      resize_to_fit();
-    }
-  }
-
-  async function processInput() {
-    console.log(input.value, "PPPPPPPPPPPPPPPPPPPPPPPPPPP", this.value);
-
-    output.innerHTML = await this.value;
-    output.style.fontSize = '60px'; // Default font size
-    resize_to_fit();
-  }
-
-
-  function resize_to_fit2() {
-    let fontSize = window.getComputedStyle(output2).fontSize;
-    output2.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-    console.log(output2.clientHeight, "------------", outputContainer2.clientHeight);
-    if (output2.clientHeight >= outputContainer2.clientHeight) {
-      resize_to_fit2();
-    }
-  }
-
-  async function processInput2() {
-    output2.innerHTML = await this.value;
-    output2.style.fontSize = '60px'; // Default font size
-    resize_to_fit2();
-  }
-
-  if (input2) {
-    input2.addEventListener('input', processInput2);
-  }
-
+  const [modalIsOpen2, setIsOpen2] = useState(false);
+  const [showBox, setShowBox] = useState(true)
+  const [selectedFile, setSelectedFile] = useState('');
+  const [fileData, setFileData] = useState([]);
+  const [errorVal, setErrorVal] = useState([]);
+  
   function setFont() {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
     var selectFont = document.getElementById("font");
     if (selectFont) {
-      var selectFontValue = selectFont.options[selectFont.selectedIndex].value;
-      console.log(selectFontValue, "==========");
+       selectFontValue = selectFont.options[selectFont.selectedIndex].value;
       if (selectFontValue) {
         document.getElementById("abcd").style.fontFamily = selectFontValue;
         document.getElementById("abcd2").style.fontFamily = selectFontValue;
       }
-      // else if (selectFontValue == "Plain") {
-      //     document.getElementById("abcd").style.fontFamily  = "Bold";
-      // }
-      // else if (selectFontValue == "Bold") {
-      //     document.getElementById("abcd").style.fontFamily  = 'Courier';
-      // }
-      // else {
-      //     document.getElementById("abcd").style.fontFamily  = 'Times New Roman';
-      // }
     }
+  // console.log(selectFontValue,'selectFontValue');
+
   }
   const ref = useRef(null);
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
+  const ref3 = useRef(null);
   useEffect(() => {
-    //   output = document.querySelector('.output');
-    // newData()
     input = ref.current;
-    output = ref1.current;
-    outputContainer = ref2.current;
-    // console.log(element,'refElement');
-    console.log(input.className, output.className, outputContainer.className);
+    recipientAddressVal = ref3.current
     customerid = localStorage.getItem('customerId')
-    console.log(customerid, 'customerId----------------');
-    getRecipient()
-    getReturn()
   }, []);
-  console.log(recipientAddress, '-----------------recipientAddress')
-  async function getRecipient() {
-    try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`)
-      const json = await res.json();
-      console.log(json, 'getRecipient Response____________');
-      setRecipientAddress(json.result)
-    } catch (error) {
-      console.log(error, 'Recipient error--------');
-    }
-  }
-  async function getReturn() {
-    try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`)
-      const json = await res.json();
-      console.log(json, 'getRecipient Response____________');
-      setReturnAddress(json.result)
-    } catch (error) {
-      console.log(error, 'Recipient error--------');
-    }
+  if (recipientAddressVal && recipientAddressVal.value) {
   }
 
-  async function checkUserLogged() {
-    console.log(customerid, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkk');
-    if (customerid) {
-      console.log(customerid);
-      setProductShow(false)
-    } else {
-      alert('please Login First')
-    }
-  }
   const customStyles = {
     content: {
       top: '60%',
@@ -264,7 +187,7 @@ export default function Product() {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      maxWidth:'620px',
+      maxWidth: '620px',
       background: '#fff',
       width: '100%',
       padding: '30px',
@@ -274,24 +197,19 @@ export default function Product() {
     },
   };
 
-  async function aiGenrateMess(){
-    try {
-      const res = await fetch('https://api.simplynoted.com/api/ai-generate',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
-        },
-        body: JSON.stringify({msg: valToGen})  
-      })
-      const json = await res.json();
-      setaiText(json.message)
+  // const [selectedItem, setSelectedItem] = useState(null);
+  // const [clickedItem, setClickedItem] = useState(false)
+  // const handleCheckboxChange = (item) => {
+  //   console.log(item, '***********item');
+  //   // setSelectedItem(item);
+  // };
 
-      console.log(json.message, 'AiGenrated Response____________');
-    } catch (error) {
-      console.log(error,"error at Ai generated message ");
-    }
+  async function singleBtnCLick() {
+    setShow(false)
+    setSelectedFile('')
+    setShowBox(true)
   }
+  
   return (
     <>
       {productshow ?
@@ -314,7 +232,7 @@ export default function Product() {
             )} */}
                     <div className='buttonClass flex justify-start'>
                       <div className='buttonDiv pr-5'>
-                        <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => setShow(false)}>Single Card</button>
+                        <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => singleBtnCLick()}>Single Card</button>
                       </div>
                       <div className='gap-2'>
                         <button className="bg-[#ef6e6e] text-[#fff] p-2 rounded " onClick={() => setShow(true)}>Bulk Purchase</button>
@@ -375,7 +293,6 @@ export default function Product() {
                     <div>
                       <Text>Optional shipping date</Text><br />
                       <input type='date' />
-                      {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} /> */}
                     </div>
                   </div>
                   {/* Product page Data Vieew */}
@@ -421,45 +338,9 @@ export default function Product() {
 
               </div>
             </div>
-            {/* <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-      <input onChange={onChange} value={name} id="your-notes-for-our-design"
-        disabled placeholder='Enter your custom message here....'
-        type="text" name="properties [Your notes for our design]"
-      />
-    </div> */}
-            {/* <div className="grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3">
-      <input id="your-notes-for-our-design" onChange={onChange} value={name} placeholder='Enter your custom message here....' type="text" name="properties [Your notes for our design]" />
-    </div> */}
-
-
-            <div className='mainDivForBox flex gap-10'>
-              <div id="outer" className="outerr">
-                <div className='outerSec' ref={ref2}>
-                  <div id='abcd' ref={ref1} className="output">
-                    {name}
-                  </div>
-                </div>
-                <div className='secDiv'>
-                  <div id='abcd2' className="output2">
-                    {name2}
-                  </div>
-                </div>
-
-              </div>
-              <div className='textAreaView w-[600px]'>
-                <textarea type="text" id="example-one-input" ref={ref} className='inputText' maxlength="450" onChange={(e) => setName(e.target.value)} placeholder="Enter your custom message text here..." data-gtm-form-interact-field-id="0"></textarea>
-                <div className='flex'>
-                  <text onClick={()=> setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                  <textarea type="text" id="example-one-input2" className='inputText2' maxlength="24" onChange={(e) => setName2(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0"></textarea>
-
-                </div>
-                <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
-                  <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
-                </div>
-              </div>
-              {/* <input id='customText' className='inputText' type="text" placeholder="Enter your custom text here...." /> */}
-
-            </div>
+            <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
+             setShowBox={setShowBox} setProductShow={setProductShow} 
+             EditMess={EditMess} editEndMess={editEndMess} />
 
           </Section>
           <Suspense fallback={<Skeleton className="h-32" />}>
@@ -472,117 +353,32 @@ export default function Product() {
               )}
             </Await>
           </Suspense>
+
           <Modal
-            isOpen={modalIsOpen}
+            isOpen={modalIsOpen2}
             // onAfterOpen={afterOpenModal}
             // onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <div className='flex'>
-            <h2 className='font-bold text-xl w-[600px]'>AI Message Assistant</h2>
-            <BsXCircle className='' onClick={()=>setIsOpen(false)}/>
-            </div>
-            <div>
-              <text className=' text-[#999999] '>Type in words or a phrase to use our AI Assistant to<br/> help generate a great message</text>
-            </div>
-            <div>
-            <textarea type="text" id="aiTextArea" value={aiText?aiText:valToGen}  onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxlength="450"></textarea>
-            </div>
-            <div class="ai-generate" >
-        <button id="generate-msg" disabled=""  onClick={()=>aiGenrateMess()}>Generate Message</button>
-      </div>
+            {errorVal.map((item) =>
+              <div>{item}</div>
+
+            )}
           </Modal>
         </>
-        : <div className='  w-full h-full gap-2 mt-8'>
-
-          <h3 className='items-center font-bold flex text-2xl' onClick={() => setProductShow(true)}><BiSolidChevronLeft size='50px' />Back To Product Customization</h3>
-          <div className='row flex mr-2 ml-2 gap-4'>
-            <div className='col-6 w-[50%] '>
-              <div className='address-grid'>
-                <div className='address-data'>
-                  <h3 className='text-2xl font-bold mt-4 mb-4'>Your Info (return/sender address)</h3>
-                  <div className='buttonDiv pr-5 mt-2'>
-                    <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
-                  </div>
-                  <div>
-                    <input type="text " className='w-full rounded p-3 mt-4' placeholder='Search Addresses...' />
-                  </div>
-                  {returnAddress.map((item) =>
-                    <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
-                      <input type="checkbox" className='mr-4' />
-                      {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div className='col-6 w-[50%]'>
-              <div className='address-grid'>
-                <div className='address-data'>
-                  <h3 className='text-2xl font-bold mt-4 mb-4'>Recipient address</h3>
-                  <div className='buttonDiv pr-5 mt-2'>
-                    <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
-                  </div>
-                  <div>
-                    <input type="text " className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
-                  </div>
-                  {recipientAddress.map((item) =>
-                    <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
-                      <input type="checkbox" className='mr-4' />
-                      {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
-                    </div>
-                  )}
-
-                </div>
-              </div>
-              <div className='address-grid mt-10'>
-                <div className='address-data'>
-                  <h3 className='text-2xl font-bold mt-6 mb-6'>Add a Gift Card</h3>
-                  <div className='row flex mr-2 ml-2 '>
-                    <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
-                    <div className='col-8 mt-3 pr-0 w-[370px]' >
-                      <select name="gift_name" className='w-full' id="gift_name" onchange="changeGiftPrice(this.value)" >
-                        <option value="" disabled="" selected="">Select</option>
-                        <option value="6661818679401" id="giftName">Starbucks Gift Card</option>
-                        <option value="6661817729129" id="giftName">Amazon Gift Card</option>
-                        <option value="6661818941545" id="giftName">Visa Gift Card</option>
-                        <option value="6661815795817" id="giftName">Home Depot Gift Card</option>
-                        <option value="6661818253417" id="giftName">Lowe's Gift Card</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className='row flex mr-2 ml-2 '>
-                    <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Price:</div>
-                    <div className='col-8 mt-3 pr-0 w-[370px]' >
-                      <select name="gift_name" className='w-full' id="gift_name" onchange="changeGiftPrice(this.value)" >
-                        <option value="" disabled="" selected="">Select</option>
-                        <option value="6661818679401" id="giftName">Starbucks Gift Card</option>
-                        <option value="6661817729129" id="giftName">Amazon Gift Card</option>
-                        <option value="6661818941545" id="giftName">Visa Gift Card</option>
-                        <option value="6661815795817" id="giftName">Home Depot Gift Card</option>
-                        <option value="6661818253417" id="giftName">Lowe's Gift Card</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="" name="" value="" />
-                    <text className='ml-3'>Add Gift Card</text>
-                  </div>
-                </div>
-              </div>
-              <div className='buttonDiv pr-5 m-2'>
-                <button className="bg-[#001a5f] text-[#fff] p-3">Add To Cart</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        :
+        <AddCart show={show} setProductShow={setProductShow}
+         data={data} productData={product.variants.nodes[0]}
+         selectFontValue={selectFontValue}
+         editOrderValue={editOrderValue}
+         shippingData={shippingData?.product}/>
       }
 
     </>
   );
 }
+
 
 // export function ProductForm({ variants }) {
 //   const { product, analytics, storeDomain } = useLoaderData();
@@ -929,7 +725,82 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   ${PRODUCT_CARD_FRAGMENT}
 `;
+// const GiftProduct = `#graphql
+// query 
+// {
+// collection(handle:"gift-cards"){
+//   title
+//   products(first:10){
+//     edges{
+//       node{
+//         title
+//         variants(first:10){
+//           edges{
+//             node{
+//               title
+//               price{
+//                 amount
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+// }
+// }`
 
+const GiftProduct = `#graphql
+
+  query
+  {
+    collection(handle:"gift-cards"){
+      title
+      products(first:10){
+        edges{
+          node{
+            title
+            featuredImage{
+              url
+            }
+            variants(first:10){
+              edges{
+                node{
+                  title
+                  price{
+                    amount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+  `
+
+const ShippingMethod = `#graphql
+query
+{
+  product(id:"gid://shopify/Product/7027299254377"){
+    title
+    featuredImage{
+      url
+    }
+    variants(first:10){
+      edges{
+        node{
+          title
+          price
+          {
+            amount}
+        }
+      }
+    }
+  }
+}`
 async function getRecommendedProducts(storefront, productId) {
   const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
     variables: { productId, count: 12 },

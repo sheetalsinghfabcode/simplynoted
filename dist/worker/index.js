@@ -375,7 +375,7 @@ var require_react_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function createElement10(type, config, children) {
+      function createElement11(type, config, children) {
         var propName, props = {}, key = null, ref = null, self = null, source = null;
         if (config != null) {
           hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config)), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), self = config.__self === void 0 ? null : config.__self, source = config.__source === void 0 ? null : config.__source;
@@ -533,7 +533,7 @@ var require_react_development = __commonJS({
           throw new Error("React.Children.only expected to receive a single React element child.");
         return children;
       }
-      function createContext5(defaultValue) {
+      function createContext6(defaultValue) {
         var context = {
           $$typeof: REACT_CONTEXT_TYPE,
           // As a workaround to support multiple concurrent renderers, we categorize
@@ -685,7 +685,7 @@ Your code should look like:
         }
         return lazyType;
       }
-      function forwardRef6(render) {
+      function forwardRef7(render) {
         render != null && render.$$typeof === REACT_MEMO_TYPE ? error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).") : typeof render != "function" ? error("forwardRef requires a render function but was given %s.", render === null ? "null" : typeof render) : render.length !== 0 && render.length !== 2 && error("forwardRef render functions accept exactly two parameters: props and ref. %s", render.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined."), render != null && (render.defaultProps != null || render.propTypes != null) && error("forwardRef render functions do not support propTypes or defaultProps. Did you accidentally pass a React component?");
         var elementType = {
           $$typeof: REACT_FORWARD_REF_TYPE,
@@ -745,7 +745,7 @@ Your code should look like:
 3. You might have more than one copy of React in the same app
 See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.`), dispatcher;
       }
-      function useContext7(Context) {
+      function useContext8(Context) {
         var dispatcher = resolveDispatcher();
         if (Context._context !== void 0) {
           var realContext = Context._context;
@@ -753,7 +753,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         }
         return dispatcher.useContext(Context);
       }
-      function useState22(initialState) {
+      function useState26(initialState) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useState(initialState);
       }
@@ -761,11 +761,11 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useReducer(reducer, initialArg, init);
       }
-      function useRef18(initialValue) {
+      function useRef21(initialValue) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useRef(initialValue);
       }
-      function useEffect26(create, deps) {
+      function useEffect30(create, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useEffect(create, deps);
       }
@@ -773,11 +773,11 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useInsertionEffect(create, deps);
       }
-      function useLayoutEffect3(create, deps) {
+      function useLayoutEffect4(create, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useLayoutEffect(create, deps);
       }
-      function useCallback9(callback, deps) {
+      function useCallback10(callback, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useCallback(callback, deps);
       }
@@ -1143,7 +1143,7 @@ Check the top-level render call using <` + parentName + ">.");
           var typeString;
           type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
         }
-        var element = createElement10.apply(this, arguments);
+        var element = createElement11.apply(this, arguments);
         if (element == null)
           return element;
         if (validType)
@@ -1294,7 +1294,7 @@ Check the top-level render call using <` + parentName + ">.");
         toArray,
         only: onlyChild
       };
-      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext5, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef6, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback9, exports.useContext = useContext7, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect26, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect3, exports.useMemo = useMemo14, exports.useReducer = useReducer, exports.useRef = useRef18, exports.useState = useState22, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext6, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef7, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback10, exports.useContext = useContext8, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect30, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo14, exports.useReducer = useReducer, exports.useRef = useRef21, exports.useState = useState26, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
     })();
   }
 });
@@ -2224,13 +2224,13 @@ function createRouter(init) {
         shortCircuited: !0
       };
     pendingNavigationController && pendingNavigationController.signal.removeEventListener("abort", abortPendingFetchRevalidations), revalidatingFetchers.forEach((rf) => fetchControllers.delete(rf.key));
-    let redirect4 = findRedirect(results);
-    if (redirect4) {
-      if (redirect4.idx >= matchesToLoad.length) {
-        let fetcherKey = revalidatingFetchers[redirect4.idx - matchesToLoad.length].key;
+    let redirect5 = findRedirect(results);
+    if (redirect5) {
+      if (redirect5.idx >= matchesToLoad.length) {
+        let fetcherKey = revalidatingFetchers[redirect5.idx - matchesToLoad.length].key;
         fetchRedirectIds.add(fetcherKey);
       }
-      return await startRedirectNavigation(state, redirect4.result, {
+      return await startRedirectNavigation(state, redirect5.result, {
         replace
       }), {
         shortCircuited: !0
@@ -2373,13 +2373,13 @@ function createRouter(init) {
     if (abortController.signal.aborted)
       return;
     abortController.signal.removeEventListener("abort", abortPendingFetchRevalidations), fetchReloadIds.delete(key), fetchControllers.delete(key), revalidatingFetchers.forEach((r9) => fetchControllers.delete(r9.key));
-    let redirect4 = findRedirect(results);
-    if (redirect4) {
-      if (redirect4.idx >= matchesToLoad.length) {
-        let fetcherKey = revalidatingFetchers[redirect4.idx - matchesToLoad.length].key;
+    let redirect5 = findRedirect(results);
+    if (redirect5) {
+      if (redirect5.idx >= matchesToLoad.length) {
+        let fetcherKey = revalidatingFetchers[redirect5.idx - matchesToLoad.length].key;
         fetchRedirectIds.add(fetcherKey);
       }
-      return startRedirectNavigation(state, redirect4.result);
+      return startRedirectNavigation(state, redirect5.result);
     }
     let {
       loaderData,
@@ -2439,16 +2439,16 @@ function createRouter(init) {
       fetchers: new Map(state.fetchers)
     });
   }
-  async function startRedirectNavigation(state2, redirect4, _temp) {
+  async function startRedirectNavigation(state2, redirect5, _temp) {
     let {
       submission,
       replace,
       isFetchActionRedirect
     } = _temp === void 0 ? {} : _temp;
-    redirect4.revalidate && (isRevalidationRequired = !0);
+    redirect5.revalidate && (isRevalidationRequired = !0);
     let redirectLocation = createLocation(
       state2.location,
-      redirect4.location,
+      redirect5.location,
       // TODO: This can be removed once we get rid of useTransition in Remix v2
       _extends({
         _isRedirect: !0
@@ -2456,19 +2456,19 @@ function createRouter(init) {
         _isFetchActionRedirect: !0
       } : {})
     );
-    if (invariant(redirectLocation, "Expected a location on the redirect navigation"), ABSOLUTE_URL_REGEX.test(redirect4.location) && isBrowser3) {
-      let url = init.history.createURL(redirect4.location), isDifferentBasename = stripBasename(url.pathname, basename) == null;
+    if (invariant(redirectLocation, "Expected a location on the redirect navigation"), ABSOLUTE_URL_REGEX.test(redirect5.location) && isBrowser3) {
+      let url = init.history.createURL(redirect5.location), isDifferentBasename = stripBasename(url.pathname, basename) == null;
       if (routerWindow.location.origin !== url.origin || isDifferentBasename) {
-        replace ? routerWindow.location.replace(redirect4.location) : routerWindow.location.assign(redirect4.location);
+        replace ? routerWindow.location.replace(redirect5.location) : routerWindow.location.assign(redirect5.location);
         return;
       }
     }
     pendingNavigationController = null;
     let redirectHistoryAction = replace === !0 ? Action.Replace : Action.Push, activeSubmission = submission || getSubmissionFromNavigation(state2.navigation);
-    if (redirectPreserveMethodStatusCodes.has(redirect4.status) && activeSubmission && isMutationMethod(activeSubmission.formMethod))
+    if (redirectPreserveMethodStatusCodes.has(redirect5.status) && activeSubmission && isMutationMethod(activeSubmission.formMethod))
       await startNavigation(redirectHistoryAction, redirectLocation, {
         submission: _extends({}, activeSubmission, {
-          formAction: redirect4.location
+          formAction: redirect5.location
         }),
         // Preserve this flag across redirects
         preventScrollReset: pendingPreventScrollReset
@@ -2973,7 +2973,7 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
       if (!isMutationMethod(formMethod))
         return getInvalidBodyError();
       try {
-        let json4 = typeof opts.body == "string" ? JSON.parse(opts.body) : opts.body;
+        let json6 = typeof opts.body == "string" ? JSON.parse(opts.body) : opts.body;
         return {
           path,
           submission: {
@@ -2981,7 +2981,7 @@ function normalizeNavigateOptions(normalizeFormMethod, isFetcher, path, opts) {
             formAction,
             formEncType: opts.formEncType,
             formData: void 0,
-            json: json4,
+            json: json6,
             text: void 0
           }
         };
@@ -3459,7 +3459,7 @@ function getSubmissionFromNavigation(navigation) {
     formEncType,
     text,
     formData,
-    json: json4
+    json: json6
   } = navigation;
   if (!(!formMethod || !formAction || !formEncType)) {
     if (text != null)
@@ -3480,13 +3480,13 @@ function getSubmissionFromNavigation(navigation) {
         json: void 0,
         text: void 0
       };
-    if (json4 !== void 0)
+    if (json6 !== void 0)
       return {
         formMethod,
         formAction,
         formEncType,
         formData: void 0,
-        json: json4,
+        json: json6,
         text: void 0
       };
   }
@@ -4006,7 +4006,7 @@ function _renderMatches(matches, parentMatches, dataRouterState) {
   return renderedMatches.reduceRight((outlet, match, index) => {
     let error = match.route.id ? errors == null ? void 0 : errors[match.route.id] : null, errorElement = null;
     dataRouterState && (errorElement = match.route.errorElement || defaultErrorElement);
-    let matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1)), getChildren = () => {
+    let matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1)), getChildren2 = () => {
       let children;
       return error ? children = errorElement : match.route.Component ? children = /* @__PURE__ */ React.createElement(match.route.Component, null) : match.route.element ? children = match.route.element : children = outlet, /* @__PURE__ */ React.createElement(RenderedRoute, {
         match,
@@ -4023,13 +4023,13 @@ function _renderMatches(matches, parentMatches, dataRouterState) {
       revalidation: dataRouterState.revalidation,
       component: errorElement,
       error,
-      children: getChildren(),
+      children: getChildren2(),
       routeContext: {
         outlet: null,
         matches: matches2,
         isDataRoute: !0
       }
-    }) : getChildren();
+    }) : getChildren2();
   }, null);
 }
 function getDataRouterConsoleError(hookName) {
@@ -5114,7 +5114,7 @@ var React2, defaultMethod, defaultEncType, _formDataSupportsSubmitter, supported
     HistoryRouter.displayName = "unstable_HistoryRouter";
     isBrowser = typeof window < "u" && typeof window.document < "u" && typeof window.document.createElement < "u", ABSOLUTE_URL_REGEX2 = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i, Link = /* @__PURE__ */ React2.forwardRef(function(_ref4, ref) {
       let {
-        onClick,
+        onClick: onClick2,
         relative,
         reloadDocument,
         replace,
@@ -5142,13 +5142,13 @@ var React2, defaultMethod, defaultEncType, _formDataSupportsSubmitter, supported
         relative
       });
       function handleClick(event) {
-        onClick && onClick(event), event.defaultPrevented || internalOnClick(event);
+        onClick2 && onClick2(event), event.defaultPrevented || internalOnClick(event);
       }
       return (
         // eslint-disable-next-line jsx-a11y/anchor-has-content
         /* @__PURE__ */ React2.createElement("a", _extends3({}, rest, {
           href: absoluteHref || href,
-          onClick: isExternal || reloadDocument ? onClick : handleClick,
+          onClick: isExternal || reloadDocument ? onClick2 : handleClick,
           ref,
           target
         }))
@@ -5250,7 +5250,7 @@ var require_server = __commonJS({
   "node_modules/react-router-dom/server.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: !0 });
-    var React13 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouter = (init_dist(), __toCommonJS(dist_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports2));
+    var React17 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouter = (init_dist(), __toCommonJS(dist_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports2));
     function _interopNamespace(e4) {
       if (e4 && e4.__esModule)
         return e4;
@@ -5267,7 +5267,7 @@ var require_server = __commonJS({
         }
       }), n6.default = e4, Object.freeze(n6);
     }
-    var React__namespace = /* @__PURE__ */ _interopNamespace(React13);
+    var React__namespace = /* @__PURE__ */ _interopNamespace(React17);
     function StaticRouter({
       basename,
       children,
@@ -5496,7 +5496,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React17 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -6990,7 +6990,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React13.Children.forEach(children, function(child) {
+        return React17.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -7430,8 +7430,8 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
         return writeChunk(destination, boundaryID), writeChunk(destination, clientRenderScript1A), (errorDigest || errorMessage || errorComponentStack) && (writeChunk(destination, clientRenderErrorScriptArgInterstitial), writeChunk(destination, escapeJSStringsForInstructionScripts(errorDigest || ""))), (errorMessage || errorComponentStack) && (writeChunk(destination, clientRenderErrorScriptArgInterstitial), writeChunk(destination, escapeJSStringsForInstructionScripts(errorMessage || ""))), errorComponentStack && (writeChunk(destination, clientRenderErrorScriptArgInterstitial), writeChunk(destination, escapeJSStringsForInstructionScripts(errorComponentStack))), writeChunkAndReturn(destination, clientRenderScript2);
       }
       var regexForJSStringsInScripts = /[<\u2028\u2029]/g;
-      function escapeJSStringsForInstructionScripts(input3) {
-        var escaped = JSON.stringify(input3);
+      function escapeJSStringsForInstructionScripts(input4) {
+        var escaped = JSON.stringify(input4);
         return escaped.replace(regexForJSStringsInScripts, function(match) {
           switch (match) {
             case "<":
@@ -8132,13 +8132,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function readContext$1(context) {
         return isInHookUserCodeInDev && error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo()."), readContext(context);
       }
-      function useContext7(context) {
+      function useContext8(context) {
         return currentHookNameInDev = "useContext", resolveCurrentlyRenderingComponent(), readContext(context);
       }
       function basicStateReducer(state, action10) {
         return typeof action10 == "function" ? action10(state) : action10;
       }
-      function useState22(initialState) {
+      function useState26(initialState) {
         return currentHookNameInDev = "useState", useReducer(
           basicStateReducer,
           // useReducer has a special case to support lazy useState initializers
@@ -8152,11 +8152,11 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
             var firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
             if (firstRenderPhaseUpdate !== void 0) {
               renderPhaseUpdates.delete(queue);
-              var newState = workInProgressHook.memoizedState, update = firstRenderPhaseUpdate;
+              var newState = workInProgressHook.memoizedState, update2 = firstRenderPhaseUpdate;
               do {
-                var action10 = update.action;
-                isInHookUserCodeInDev = !0, newState = reducer(newState, action10), isInHookUserCodeInDev = !1, update = update.next;
-              } while (update !== null);
+                var action10 = update2.action;
+                isInHookUserCodeInDev = !0, newState = reducer(newState, action10), isInHookUserCodeInDev = !1, update2 = update2.next;
+              } while (update2 !== null);
               return workInProgressHook.memoizedState = newState, [newState, dispatch];
             }
           }
@@ -8187,7 +8187,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var nextValue = nextCreate();
         return isInHookUserCodeInDev = !1, workInProgressHook.memoizedState = [nextValue, nextDeps], nextValue;
       }
-      function useRef18(initialValue) {
+      function useRef21(initialValue) {
         currentlyRenderingComponent = resolveCurrentlyRenderingComponent(), workInProgressHook = createWorkInProgressHook();
         var previousRef = workInProgressHook.memoizedState;
         if (previousRef === null) {
@@ -8198,7 +8198,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         } else
           return previousRef;
       }
-      function useLayoutEffect3(create, inputs) {
+      function useLayoutEffect4(create, inputs) {
         currentHookNameInDev = "useLayoutEffect", error("useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.");
       }
       function dispatchAction(componentIdentity, queue, action10) {
@@ -8206,22 +8206,22 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
           throw new Error("Too many re-renders. React limits the number of renders to prevent an infinite loop.");
         if (componentIdentity === currentlyRenderingComponent) {
           didScheduleRenderPhaseUpdate = !0;
-          var update = {
+          var update2 = {
             action: action10,
             next: null
           };
           renderPhaseUpdates === null && (renderPhaseUpdates = /* @__PURE__ */ new Map());
           var firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
           if (firstRenderPhaseUpdate === void 0)
-            renderPhaseUpdates.set(queue, update);
+            renderPhaseUpdates.set(queue, update2);
           else {
             for (var lastRenderPhaseUpdate = firstRenderPhaseUpdate; lastRenderPhaseUpdate.next !== null; )
               lastRenderPhaseUpdate = lastRenderPhaseUpdate.next;
-            lastRenderPhaseUpdate.next = update;
+            lastRenderPhaseUpdate.next = update2;
           }
         }
       }
-      function useCallback9(callback, deps) {
+      function useCallback10(callback, deps) {
         return useMemo14(function() {
           return callback;
         }, deps);
@@ -8254,14 +8254,14 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       }
       var Dispatcher = {
         readContext: readContext$1,
-        useContext: useContext7,
+        useContext: useContext8,
         useMemo: useMemo14,
         useReducer,
-        useRef: useRef18,
-        useState: useState22,
+        useRef: useRef21,
+        useState: useState26,
         useInsertionEffect: noop,
-        useLayoutEffect: useLayoutEffect3,
-        useCallback: useCallback9,
+        useLayoutEffect: useLayoutEffect4,
+        useCallback: useCallback10,
         // useImperativeHandle is not run in the server environment
         useImperativeHandle: noop,
         // Effects are not run in the server environment.
@@ -9077,7 +9077,7 @@ var require_react_dom_server_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React17 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -10586,7 +10586,7 @@ var require_react_dom_server_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React13.Children.forEach(children, function(child) {
+        return React17.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -11026,8 +11026,8 @@ var require_react_dom_server_browser_development = __commonJS({
         return writeChunk(destination, boundaryID), writeChunk(destination, clientRenderScript1A), (errorDigest || errorMessage || errorComponentStack) && (writeChunk(destination, clientRenderErrorScriptArgInterstitial), writeChunk(destination, stringToChunk(escapeJSStringsForInstructionScripts(errorDigest || "")))), (errorMessage || errorComponentStack) && (writeChunk(destination, clientRenderErrorScriptArgInterstitial), writeChunk(destination, stringToChunk(escapeJSStringsForInstructionScripts(errorMessage || "")))), errorComponentStack && (writeChunk(destination, clientRenderErrorScriptArgInterstitial), writeChunk(destination, stringToChunk(escapeJSStringsForInstructionScripts(errorComponentStack)))), writeChunkAndReturn(destination, clientRenderScript2);
       }
       var regexForJSStringsInScripts = /[<\u2028\u2029]/g;
-      function escapeJSStringsForInstructionScripts(input3) {
-        var escaped = JSON.stringify(input3);
+      function escapeJSStringsForInstructionScripts(input4) {
+        var escaped = JSON.stringify(input4);
         return escaped.replace(regexForJSStringsInScripts, function(match) {
           switch (match) {
             case "<":
@@ -11684,13 +11684,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function readContext$1(context) {
         return isInHookUserCodeInDev && error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo()."), readContext(context);
       }
-      function useContext7(context) {
+      function useContext8(context) {
         return currentHookNameInDev = "useContext", resolveCurrentlyRenderingComponent(), readContext(context);
       }
       function basicStateReducer(state, action10) {
         return typeof action10 == "function" ? action10(state) : action10;
       }
-      function useState22(initialState) {
+      function useState26(initialState) {
         return currentHookNameInDev = "useState", useReducer(
           basicStateReducer,
           // useReducer has a special case to support lazy useState initializers
@@ -11704,11 +11704,11 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
             var firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
             if (firstRenderPhaseUpdate !== void 0) {
               renderPhaseUpdates.delete(queue);
-              var newState = workInProgressHook.memoizedState, update = firstRenderPhaseUpdate;
+              var newState = workInProgressHook.memoizedState, update2 = firstRenderPhaseUpdate;
               do {
-                var action10 = update.action;
-                isInHookUserCodeInDev = !0, newState = reducer(newState, action10), isInHookUserCodeInDev = !1, update = update.next;
-              } while (update !== null);
+                var action10 = update2.action;
+                isInHookUserCodeInDev = !0, newState = reducer(newState, action10), isInHookUserCodeInDev = !1, update2 = update2.next;
+              } while (update2 !== null);
               return workInProgressHook.memoizedState = newState, [newState, dispatch];
             }
           }
@@ -11739,7 +11739,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var nextValue = nextCreate();
         return isInHookUserCodeInDev = !1, workInProgressHook.memoizedState = [nextValue, nextDeps], nextValue;
       }
-      function useRef18(initialValue) {
+      function useRef21(initialValue) {
         currentlyRenderingComponent = resolveCurrentlyRenderingComponent(), workInProgressHook = createWorkInProgressHook();
         var previousRef = workInProgressHook.memoizedState;
         if (previousRef === null) {
@@ -11750,7 +11750,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         } else
           return previousRef;
       }
-      function useLayoutEffect3(create, inputs) {
+      function useLayoutEffect4(create, inputs) {
         currentHookNameInDev = "useLayoutEffect", error("useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.");
       }
       function dispatchAction(componentIdentity, queue, action10) {
@@ -11758,22 +11758,22 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
           throw new Error("Too many re-renders. React limits the number of renders to prevent an infinite loop.");
         if (componentIdentity === currentlyRenderingComponent) {
           didScheduleRenderPhaseUpdate = !0;
-          var update = {
+          var update2 = {
             action: action10,
             next: null
           };
           renderPhaseUpdates === null && (renderPhaseUpdates = /* @__PURE__ */ new Map());
           var firstRenderPhaseUpdate = renderPhaseUpdates.get(queue);
           if (firstRenderPhaseUpdate === void 0)
-            renderPhaseUpdates.set(queue, update);
+            renderPhaseUpdates.set(queue, update2);
           else {
             for (var lastRenderPhaseUpdate = firstRenderPhaseUpdate; lastRenderPhaseUpdate.next !== null; )
               lastRenderPhaseUpdate = lastRenderPhaseUpdate.next;
-            lastRenderPhaseUpdate.next = update;
+            lastRenderPhaseUpdate.next = update2;
           }
         }
       }
-      function useCallback9(callback, deps) {
+      function useCallback10(callback, deps) {
         return useMemo14(function() {
           return callback;
         }, deps);
@@ -11806,14 +11806,14 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       }
       var Dispatcher = {
         readContext: readContext$1,
-        useContext: useContext7,
+        useContext: useContext8,
         useMemo: useMemo14,
         useReducer,
-        useRef: useRef18,
-        useState: useState22,
+        useRef: useRef21,
+        useState: useState26,
         useInsertionEffect: noop,
-        useLayoutEffect: useLayoutEffect3,
-        useCallback: useCallback9,
+        useLayoutEffect: useLayoutEffect4,
+        useCallback: useCallback10,
         // useImperativeHandle is not run in the server environment
         useImperativeHandle: noop,
         // Effects are not run in the server environment.
@@ -12649,14 +12649,14 @@ var require_react_jsx_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React17 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -13057,7 +13057,7 @@ var require_react_jsx_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV54(type, config, maybeKey, source, self) {
+      function jsxDEV57(type, config, maybeKey, source, self) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config, self));
@@ -13204,7 +13204,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV54(type, props, key, source, self);
+          var element = jsxDEV57(type, props, key, source, self);
           if (element == null)
             return element;
           if (validType) {
@@ -13363,30 +13363,30 @@ var require_set_cookie = __commonJS({
       var name = "", value = "", nameValueArr = nameValuePairStr.split("=");
       return nameValueArr.length > 1 ? (name = nameValueArr.shift(), value = nameValueArr.join("=")) : value = nameValuePairStr, { name, value };
     }
-    function parse2(input3, options) {
-      if (options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions, !input3)
+    function parse2(input4, options) {
+      if (options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions, !input4)
         return options.map ? {} : [];
-      if (input3.headers)
-        if (typeof input3.headers.getSetCookie == "function")
-          input3 = input3.headers.getSetCookie();
-        else if (input3.headers["set-cookie"])
-          input3 = input3.headers["set-cookie"];
+      if (input4.headers)
+        if (typeof input4.headers.getSetCookie == "function")
+          input4 = input4.headers.getSetCookie();
+        else if (input4.headers["set-cookie"])
+          input4 = input4.headers["set-cookie"];
         else {
-          var sch = input3.headers[Object.keys(input3.headers).find(function(key) {
+          var sch = input4.headers[Object.keys(input4.headers).find(function(key) {
             return key.toLowerCase() === "set-cookie";
           })];
-          !sch && input3.headers.cookie && !options.silent && console.warn(
+          !sch && input4.headers.cookie && !options.silent && console.warn(
             "Warning: set-cookie-parser appears to have been called on a request object. It is designed to parse Set-Cookie headers from responses, not Cookie headers from requests. Set the option {silent: true} to suppress this warning."
-          ), input3 = sch;
+          ), input4 = sch;
         }
-      if (Array.isArray(input3) || (input3 = [input3]), options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions, options.map) {
+      if (Array.isArray(input4) || (input4 = [input4]), options = options ? Object.assign({}, defaultParseOptions, options) : defaultParseOptions, options.map) {
         var cookies = {};
-        return input3.filter(isNonEmptyString).reduce(function(cookies2, str) {
+        return input4.filter(isNonEmptyString).reduce(function(cookies2, str) {
           var cookie = parseString(str, options);
           return cookies2[cookie.name] = cookie, cookies2;
         }, cookies);
       } else
-        return input3.filter(isNonEmptyString).map(function(str) {
+        return input4.filter(isNonEmptyString).map(function(str) {
           return parseString(str, options);
         });
     }
@@ -13509,14 +13509,14 @@ var require_react_jsx_dev_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React13 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React17 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -13917,7 +13917,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV54(type, config, maybeKey, source, self) {
+      function jsxDEV57(type, config, maybeKey, source, self) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config, self));
@@ -14064,7 +14064,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV54(type, props, key, source, self);
+          var element = jsxDEV57(type, props, key, source, self);
           if (element == null)
             return element;
           if (validType) {
@@ -14388,7 +14388,7 @@ var require_react_dom_development = __commonJS({
     (function() {
       "use strict";
       typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-      var React13 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React13.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+      var React17 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
       function setSuppressWarning(newSuppressWarning) {
         suppressWarning = newSuppressWarning;
       }
@@ -14416,7 +14416,7 @@ var require_react_dom_development = __commonJS({
           argsWithFormat.unshift("Warning: " + format), Function.prototype.apply.call(console[level], console, argsWithFormat);
         }
       }
-      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment36 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
+      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment39 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
       function registerTwoPhaseEvent(registrationName, dependencies) {
         registerDirectEvent(registrationName, dependencies), registerDirectEvent(registrationName + "Capture", dependencies);
       }
@@ -15266,7 +15266,7 @@ Error generating stack: ` + x5.message + `
             return "DehydratedFragment";
           case ForwardRef:
             return getWrappedName$1(type, type.render, "ForwardRef");
-          case Fragment36:
+          case Fragment39:
             return "Fragment";
           case HostComponent:
             return type;
@@ -15510,7 +15510,7 @@ Error generating stack: ` + x5.message + `
       }
       var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
       function validateProps(element, props) {
-        props.value == null && (typeof props.children == "object" && props.children !== null ? React13.Children.forEach(props.children, function(child) {
+        props.value == null && (typeof props.children == "object" && props.children !== null ? React17.Children.forEach(props.children, function(child) {
           child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
       }
@@ -16983,7 +16983,7 @@ Check the render method of \`` + ownerName + "`." : "";
         }
         return null;
       }
-      var scheduleCallback = Scheduler.unstable_scheduleCallback, cancelCallback = Scheduler.unstable_cancelCallback, shouldYield = Scheduler.unstable_shouldYield, requestPaint = Scheduler.unstable_requestPaint, now = Scheduler.unstable_now, getCurrentPriorityLevel = Scheduler.unstable_getCurrentPriorityLevel, ImmediatePriority = Scheduler.unstable_ImmediatePriority, UserBlockingPriority = Scheduler.unstable_UserBlockingPriority, NormalPriority = Scheduler.unstable_NormalPriority, LowPriority = Scheduler.unstable_LowPriority, IdlePriority = Scheduler.unstable_IdlePriority, unstable_yieldValue = Scheduler.unstable_yieldValue, unstable_setDisableYieldValue = Scheduler.unstable_setDisableYieldValue, rendererID = null, injectedHook = null, injectedProfilingHooks = null, hasLoggedError = !1, isDevToolsPresent = typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u";
+      var scheduleCallback = Scheduler.unstable_scheduleCallback, cancelCallback = Scheduler.unstable_cancelCallback, shouldYield = Scheduler.unstable_shouldYield, requestPaint = Scheduler.unstable_requestPaint, now2 = Scheduler.unstable_now, getCurrentPriorityLevel = Scheduler.unstable_getCurrentPriorityLevel, ImmediatePriority = Scheduler.unstable_ImmediatePriority, UserBlockingPriority = Scheduler.unstable_UserBlockingPriority, NormalPriority = Scheduler.unstable_NormalPriority, LowPriority = Scheduler.unstable_LowPriority, IdlePriority = Scheduler.unstable_IdlePriority, unstable_yieldValue = Scheduler.unstable_yieldValue, unstable_setDisableYieldValue = Scheduler.unstable_setDisableYieldValue, rendererID = null, injectedHook = null, injectedProfilingHooks = null, hasLoggedError = !1, isDevToolsPresent = typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u";
       function injectInternals(internals) {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ > "u")
           return !1;
@@ -18760,19 +18760,19 @@ Check the render method of \`` + ownerName + "`." : "";
           }
         }
       }
-      function getSelection(input3) {
+      function getSelection(input4) {
         var selection;
-        return "selectionStart" in input3 ? selection = {
-          start: input3.selectionStart,
-          end: input3.selectionEnd
-        } : selection = getOffsets(input3), selection || {
+        return "selectionStart" in input4 ? selection = {
+          start: input4.selectionStart,
+          end: input4.selectionEnd
+        } : selection = getOffsets(input4), selection || {
           start: 0,
           end: 0
         };
       }
-      function setSelection(input3, offsets) {
+      function setSelection(input4, offsets) {
         var start = offsets.start, end = offsets.end;
-        end === void 0 && (end = start), "selectionStart" in input3 ? (input3.selectionStart = start, input3.selectionEnd = Math.min(end, input3.value.length)) : setOffsets(input3, offsets);
+        end === void 0 && (end = start), "selectionStart" in input4 ? (input4.selectionStart = start, input4.selectionEnd = Math.min(end, input4.value.length)) : setOffsets(input4, offsets);
       }
       var skipSelectionChangeEvent = canUseDOM && "documentMode" in document && document.documentMode <= 11;
       function registerEvents$3() {
@@ -19247,7 +19247,7 @@ Check the render method of \`` + ownerName + "`." : "";
           propKey === STYLE ? setValueForStyles(domElement, propValue) : propKey === DANGEROUSLY_SET_INNER_HTML ? setInnerHTML(domElement, propValue) : propKey === CHILDREN ? setTextContent(domElement, propValue) : setValueForProperty(domElement, propKey, propValue, isCustomComponentTag);
         }
       }
-      function createElement10(type, props, rootContainerElement, parentNamespace) {
+      function createElement11(type, props, rootContainerElement, parentNamespace) {
         var isCustomComponentTag, ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement), domElement, namespaceURI = parentNamespace;
         if (namespaceURI === HTML_NAMESPACE && (namespaceURI = getIntrinsicNamespace(type)), namespaceURI === HTML_NAMESPACE) {
           if (isCustomComponentTag = isCustomComponent(type, props), !isCustomComponentTag && type !== type.toLowerCase() && error("<%s /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.", type), type === "script") {
@@ -19787,7 +19787,7 @@ Check the render method of \`` + ownerName + "`." : "";
           }
           parentNamespace = hostContextDev.namespace;
         }
-        var domElement = createElement10(type, props, rootContainerInstance, parentNamespace);
+        var domElement = createElement11(type, props, rootContainerInstance, parentNamespace);
         return precacheFiberNode(internalInstanceHandle, domElement), updateFiberProps(domElement, props), domElement;
       }
       function appendInitialChild(parentInstance, child) {
@@ -20846,12 +20846,12 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
             for (var dependency = list2.firstContext; dependency !== null; ) {
               if (dependency.context === context) {
                 if (fiber.tag === ClassComponent) {
-                  var lane = pickArbitraryLane(renderLanes2), update = createUpdate(NoTimestamp, lane);
-                  update.tag = ForceUpdate;
+                  var lane = pickArbitraryLane(renderLanes2), update2 = createUpdate(NoTimestamp, lane);
+                  update2.tag = ForceUpdate;
                   var updateQueue = fiber.updateQueue;
                   if (updateQueue !== null) {
                     var sharedQueue = updateQueue.shared, pending = sharedQueue.pending;
-                    pending === null ? update.next = update : (update.next = pending.next, pending.next = update), sharedQueue.pending = update;
+                    pending === null ? update2.next = update2 : (update2.next = pending.next, pending.next = update2), sharedQueue.pending = update2;
                   }
                 }
                 fiber.lanes = mergeLanes(fiber.lanes, renderLanes2);
@@ -20940,17 +20940,17 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
           concurrentQueues = null;
         }
       }
-      function enqueueConcurrentHookUpdate(fiber, queue, update, lane) {
+      function enqueueConcurrentHookUpdate(fiber, queue, update2, lane) {
         var interleaved = queue.interleaved;
-        return interleaved === null ? (update.next = update, pushConcurrentUpdateQueue(queue)) : (update.next = interleaved.next, interleaved.next = update), queue.interleaved = update, markUpdateLaneFromFiberToRoot(fiber, lane);
+        return interleaved === null ? (update2.next = update2, pushConcurrentUpdateQueue(queue)) : (update2.next = interleaved.next, interleaved.next = update2), queue.interleaved = update2, markUpdateLaneFromFiberToRoot(fiber, lane);
       }
-      function enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane) {
+      function enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update2, lane) {
         var interleaved = queue.interleaved;
-        interleaved === null ? (update.next = update, pushConcurrentUpdateQueue(queue)) : (update.next = interleaved.next, interleaved.next = update), queue.interleaved = update;
+        interleaved === null ? (update2.next = update2, pushConcurrentUpdateQueue(queue)) : (update2.next = interleaved.next, interleaved.next = update2), queue.interleaved = update2;
       }
-      function enqueueConcurrentClassUpdate(fiber, queue, update, lane) {
+      function enqueueConcurrentClassUpdate(fiber, queue, update2, lane) {
         var interleaved = queue.interleaved;
-        return interleaved === null ? (update.next = update, pushConcurrentUpdateQueue(queue)) : (update.next = interleaved.next, interleaved.next = update), queue.interleaved = update, markUpdateLaneFromFiberToRoot(fiber, lane);
+        return interleaved === null ? (update2.next = update2, pushConcurrentUpdateQueue(queue)) : (update2.next = interleaved.next, interleaved.next = update2), queue.interleaved = update2, markUpdateLaneFromFiberToRoot(fiber, lane);
       }
       function enqueueConcurrentRenderForLane(fiber, lane) {
         return markUpdateLaneFromFiberToRoot(fiber, lane);
@@ -20998,7 +20998,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
         }
       }
       function createUpdate(eventTime, lane) {
-        var update = {
+        var update2 = {
           eventTime,
           lane,
           tag: UpdateState,
@@ -21006,18 +21006,18 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
           callback: null,
           next: null
         };
-        return update;
+        return update2;
       }
-      function enqueueUpdate(fiber, update, lane) {
+      function enqueueUpdate(fiber, update2, lane) {
         var updateQueue = fiber.updateQueue;
         if (updateQueue === null)
           return null;
         var sharedQueue = updateQueue.shared;
         if (currentlyProcessingQueue === sharedQueue && !didWarnUpdateInsideUpdate && (error("An update (setState, replaceState, or forceUpdate) was scheduled from inside an update function. Update functions should be pure, with zero side-effects. Consider using componentDidUpdate or a callback."), didWarnUpdateInsideUpdate = !0), isUnsafeClassRenderPhaseUpdate()) {
           var pending = sharedQueue.pending;
-          return pending === null ? update.next = update : (update.next = pending.next, pending.next = update), sharedQueue.pending = update, unsafe_markUpdateLaneFromFiberToRoot(fiber, lane);
+          return pending === null ? update2.next = update2 : (update2.next = pending.next, pending.next = update2), sharedQueue.pending = update2, unsafe_markUpdateLaneFromFiberToRoot(fiber, lane);
         } else
-          return enqueueConcurrentClassUpdate(fiber, sharedQueue, update, lane);
+          return enqueueConcurrentClassUpdate(fiber, sharedQueue, update2, lane);
       }
       function entangleTransitions(root3, fiber, lane) {
         var updateQueue = fiber.updateQueue;
@@ -21038,18 +21038,18 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
           if (queue === currentQueue) {
             var newFirst = null, newLast = null, firstBaseUpdate = queue.firstBaseUpdate;
             if (firstBaseUpdate !== null) {
-              var update = firstBaseUpdate;
+              var update2 = firstBaseUpdate;
               do {
                 var clone = {
-                  eventTime: update.eventTime,
-                  lane: update.lane,
-                  tag: update.tag,
-                  payload: update.payload,
-                  callback: update.callback,
+                  eventTime: update2.eventTime,
+                  lane: update2.lane,
+                  tag: update2.tag,
+                  payload: update2.payload,
+                  callback: update2.callback,
                   next: null
                 };
-                newLast === null ? newFirst = newLast = clone : (newLast.next = clone, newLast = clone), update = update.next;
-              } while (update !== null);
+                newLast === null ? newFirst = newLast = clone : (newLast.next = clone, newLast = clone), update2 = update2.next;
+              } while (update2 !== null);
               newLast === null ? newFirst = newLast = capturedUpdate : (newLast.next = capturedUpdate, newLast = capturedUpdate);
             } else
               newFirst = newLast = capturedUpdate;
@@ -21066,10 +21066,10 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
         var lastBaseUpdate = queue.lastBaseUpdate;
         lastBaseUpdate === null ? queue.firstBaseUpdate = capturedUpdate : lastBaseUpdate.next = capturedUpdate, queue.lastBaseUpdate = capturedUpdate;
       }
-      function getStateFromUpdate(workInProgress2, queue, update, prevState, nextProps, instance) {
-        switch (update.tag) {
+      function getStateFromUpdate(workInProgress2, queue, update2, prevState, nextProps, instance) {
+        switch (update2.tag) {
           case ReplaceState: {
-            var payload = update.payload;
+            var payload = update2.payload;
             if (typeof payload == "function") {
               enterDisallowedContextReadInDEV();
               var nextState = payload.call(instance, prevState, nextProps);
@@ -21091,7 +21091,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
           case CaptureUpdate:
             workInProgress2.flags = workInProgress2.flags & ~ShouldCapture | DidCapture;
           case UpdateState: {
-            var _payload = update.payload, partialState;
+            var _payload = update2.payload, partialState;
             if (typeof _payload == "function") {
               enterDisallowedContextReadInDEV(), partialState = _payload.call(instance, prevState, nextProps);
               {
@@ -21129,9 +21129,9 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
           }
         }
         if (firstBaseUpdate !== null) {
-          var newState = queue.baseState, newLanes = NoLanes, newBaseState = null, newFirstBaseUpdate = null, newLastBaseUpdate = null, update = firstBaseUpdate;
+          var newState = queue.baseState, newLanes = NoLanes, newBaseState = null, newFirstBaseUpdate = null, newLastBaseUpdate = null, update2 = firstBaseUpdate;
           do {
-            var updateLane = update.lane, updateEventTime = update.eventTime;
+            var updateLane = update2.lane, updateEventTime = update2.eventTime;
             if (isSubsetOfLanes(renderLanes2, updateLane)) {
               if (newLastBaseUpdate !== null) {
                 var _clone = {
@@ -21140,38 +21140,38 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
                   // it. Using NoLane works because 0 is a subset of all bitmasks, so
                   // this will never be skipped by the check above.
                   lane: NoLane,
-                  tag: update.tag,
-                  payload: update.payload,
-                  callback: update.callback,
+                  tag: update2.tag,
+                  payload: update2.payload,
+                  callback: update2.callback,
                   next: null
                 };
                 newLastBaseUpdate = newLastBaseUpdate.next = _clone;
               }
-              newState = getStateFromUpdate(workInProgress2, queue, update, newState, props, instance);
-              var callback = update.callback;
+              newState = getStateFromUpdate(workInProgress2, queue, update2, newState, props, instance);
+              var callback = update2.callback;
               if (callback !== null && // If the update was already committed, we should not queue its
               // callback again.
-              update.lane !== NoLane) {
+              update2.lane !== NoLane) {
                 workInProgress2.flags |= Callback;
                 var effects = queue.effects;
-                effects === null ? queue.effects = [update] : effects.push(update);
+                effects === null ? queue.effects = [update2] : effects.push(update2);
               }
             } else {
               var clone = {
                 eventTime: updateEventTime,
                 lane: updateLane,
-                tag: update.tag,
-                payload: update.payload,
-                callback: update.callback,
+                tag: update2.tag,
+                payload: update2.payload,
+                callback: update2.callback,
                 next: null
               };
               newLastBaseUpdate === null ? (newFirstBaseUpdate = newLastBaseUpdate = clone, newBaseState = newState) : newLastBaseUpdate = newLastBaseUpdate.next = clone, newLanes = mergeLanes(newLanes, updateLane);
             }
-            if (update = update.next, update === null) {
+            if (update2 = update2.next, update2 === null) {
               if (pendingQueue = queue.shared.pending, pendingQueue === null)
                 break;
               var _lastPendingUpdate = pendingQueue, _firstPendingUpdate = _lastPendingUpdate.next;
-              _lastPendingUpdate.next = null, update = _firstPendingUpdate, queue.lastBaseUpdate = _lastPendingUpdate, queue.shared.pending = null;
+              _lastPendingUpdate.next = null, update2 = _firstPendingUpdate, queue.lastBaseUpdate = _lastPendingUpdate, queue.shared.pending = null;
             }
           } while (!0);
           newLastBaseUpdate === null && (newBaseState = newState), queue.baseState = newBaseState, queue.firstBaseUpdate = newFirstBaseUpdate, queue.lastBaseUpdate = newLastBaseUpdate;
@@ -21206,7 +21206,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
             callback !== null && (effect.callback = null, callCallback(callback, instance));
           }
       }
-      var fakeInternalInstance = {}, emptyRefsObject = new React13.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
+      var fakeInternalInstance = {}, emptyRefsObject = new React17.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
       {
         didWarnAboutStateAssignmentForComponent = /* @__PURE__ */ new Set(), didWarnAboutUninitializedState = /* @__PURE__ */ new Set(), didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = /* @__PURE__ */ new Set(), didWarnAboutLegacyLifecyclesAndDerivedState = /* @__PURE__ */ new Set(), didWarnAboutDirectlyAssigningPropsToState = /* @__PURE__ */ new Set(), didWarnAboutUndefinedDerivedState = /* @__PURE__ */ new Set(), didWarnAboutContextTypeAndContextTypes = /* @__PURE__ */ new Set(), didWarnAboutInvalidateContextType = /* @__PURE__ */ new Set();
         var didWarnOnInvalidCallback = /* @__PURE__ */ new Set();
@@ -21249,21 +21249,21 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
       var classComponentUpdater = {
         isMounted,
         enqueueSetState: function(inst, payload, callback) {
-          var fiber = get(inst), eventTime = requestEventTime(), lane = requestUpdateLane(fiber), update = createUpdate(eventTime, lane);
-          update.payload = payload, callback != null && (warnOnInvalidCallback(callback, "setState"), update.callback = callback);
-          var root3 = enqueueUpdate(fiber, update, lane);
+          var fiber = get(inst), eventTime = requestEventTime(), lane = requestUpdateLane(fiber), update2 = createUpdate(eventTime, lane);
+          update2.payload = payload, callback != null && (warnOnInvalidCallback(callback, "setState"), update2.callback = callback);
+          var root3 = enqueueUpdate(fiber, update2, lane);
           root3 !== null && (scheduleUpdateOnFiber(root3, fiber, lane, eventTime), entangleTransitions(root3, fiber, lane)), markStateUpdateScheduled(fiber, lane);
         },
         enqueueReplaceState: function(inst, payload, callback) {
-          var fiber = get(inst), eventTime = requestEventTime(), lane = requestUpdateLane(fiber), update = createUpdate(eventTime, lane);
-          update.tag = ReplaceState, update.payload = payload, callback != null && (warnOnInvalidCallback(callback, "replaceState"), update.callback = callback);
-          var root3 = enqueueUpdate(fiber, update, lane);
+          var fiber = get(inst), eventTime = requestEventTime(), lane = requestUpdateLane(fiber), update2 = createUpdate(eventTime, lane);
+          update2.tag = ReplaceState, update2.payload = payload, callback != null && (warnOnInvalidCallback(callback, "replaceState"), update2.callback = callback);
+          var root3 = enqueueUpdate(fiber, update2, lane);
           root3 !== null && (scheduleUpdateOnFiber(root3, fiber, lane, eventTime), entangleTransitions(root3, fiber, lane)), markStateUpdateScheduled(fiber, lane);
         },
         enqueueForceUpdate: function(inst, callback) {
-          var fiber = get(inst), eventTime = requestEventTime(), lane = requestUpdateLane(fiber), update = createUpdate(eventTime, lane);
-          update.tag = ForceUpdate, callback != null && (warnOnInvalidCallback(callback, "forceUpdate"), update.callback = callback);
-          var root3 = enqueueUpdate(fiber, update, lane);
+          var fiber = get(inst), eventTime = requestEventTime(), lane = requestUpdateLane(fiber), update2 = createUpdate(eventTime, lane);
+          update2.tag = ForceUpdate, callback != null && (warnOnInvalidCallback(callback, "forceUpdate"), update2.callback = callback);
+          var root3 = enqueueUpdate(fiber, update2, lane);
           root3 !== null && (scheduleUpdateOnFiber(root3, fiber, lane, eventTime), entangleTransitions(root3, fiber, lane)), markForceUpdateScheduled(fiber, lane);
         }
       };
@@ -21595,7 +21595,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
           }
         }
         function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-          if (current2 === null || current2.tag !== Fragment36) {
+          if (current2 === null || current2.tag !== Fragment39) {
             var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
             return created.return = returnFiber, created;
           } else {
@@ -21823,7 +21823,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
             if (child.key === key) {
               var elementType = element.type;
               if (elementType === REACT_FRAGMENT_TYPE) {
-                if (child.tag === Fragment36) {
+                if (child.tag === Fragment39) {
                   deleteRemainingChildren(returnFiber, child.sibling);
                   var existing = useFiber(child, element.props.children);
                   return existing.return = returnFiber, existing._debugSource = element._source, existing._debugOwner = element._owner, existing;
@@ -22189,9 +22189,9 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
           current2.baseQueue !== baseQueue && error("Internal error: Expected work-in-progress queue to be a clone. This is a bug in React."), current2.baseQueue = baseQueue = pendingQueue, queue.pending = null;
         }
         if (baseQueue !== null) {
-          var first = baseQueue.next, newState = current2.baseState, newBaseState = null, newBaseQueueFirst = null, newBaseQueueLast = null, update = first;
+          var first = baseQueue.next, newState = current2.baseState, newBaseState = null, newBaseQueueFirst = null, newBaseQueueLast = null, update2 = first;
           do {
-            var updateLane = update.lane;
+            var updateLane = update2.lane;
             if (isSubsetOfLanes(renderLanes, updateLane)) {
               if (newBaseQueueLast !== null) {
                 var _clone = {
@@ -22199,31 +22199,31 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
                   // it. Using NoLane works because 0 is a subset of all bitmasks, so
                   // this will never be skipped by the check above.
                   lane: NoLane,
-                  action: update.action,
-                  hasEagerState: update.hasEagerState,
-                  eagerState: update.eagerState,
+                  action: update2.action,
+                  hasEagerState: update2.hasEagerState,
+                  eagerState: update2.eagerState,
                   next: null
                 };
                 newBaseQueueLast = newBaseQueueLast.next = _clone;
               }
-              if (update.hasEagerState)
-                newState = update.eagerState;
+              if (update2.hasEagerState)
+                newState = update2.eagerState;
               else {
-                var action10 = update.action;
+                var action10 = update2.action;
                 newState = reducer(newState, action10);
               }
             } else {
               var clone = {
                 lane: updateLane,
-                action: update.action,
-                hasEagerState: update.hasEagerState,
-                eagerState: update.eagerState,
+                action: update2.action,
+                hasEagerState: update2.hasEagerState,
+                eagerState: update2.eagerState,
                 next: null
               };
               newBaseQueueLast === null ? (newBaseQueueFirst = newBaseQueueLast = clone, newBaseState = newState) : newBaseQueueLast = newBaseQueueLast.next = clone, currentlyRenderingFiber$1.lanes = mergeLanes(currentlyRenderingFiber$1.lanes, updateLane), markSkippedUpdateLanes(updateLane);
             }
-            update = update.next;
-          } while (update !== null && update !== first);
+            update2 = update2.next;
+          } while (update2 !== null && update2 !== first);
           newBaseQueueLast === null ? newBaseState = newState : newBaseQueueLast.next = newBaseQueueFirst, objectIs(newState, hook.memoizedState) || markWorkInProgressReceivedUpdate(), hook.memoizedState = newState, hook.baseState = newBaseState, hook.baseQueue = newBaseQueueLast, queue.lastRenderedState = newState;
         }
         var lastInterleaved = queue.interleaved;
@@ -22246,11 +22246,11 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
         var dispatch = queue.dispatch, lastRenderPhaseUpdate = queue.pending, newState = hook.memoizedState;
         if (lastRenderPhaseUpdate !== null) {
           queue.pending = null;
-          var firstRenderPhaseUpdate = lastRenderPhaseUpdate.next, update = firstRenderPhaseUpdate;
+          var firstRenderPhaseUpdate = lastRenderPhaseUpdate.next, update2 = firstRenderPhaseUpdate;
           do {
-            var action10 = update.action;
-            newState = reducer(newState, action10), update = update.next;
-          } while (update !== firstRenderPhaseUpdate);
+            var action10 = update2.action;
+            newState = reducer(newState, action10), update2 = update2.next;
+          } while (update2 !== firstRenderPhaseUpdate);
           objectIs(newState, hook.memoizedState) || markWorkInProgressReceivedUpdate(), hook.memoizedState = newState, hook.baseQueue === null && (hook.baseState = newState), queue.lastRenderedState = newState;
         }
         return [newState, dispatch];
@@ -22562,7 +22562,7 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
       }
       function dispatchReducerAction(fiber, queue, action10) {
         typeof arguments[3] == "function" && error("State updates from the useState() and useReducer() Hooks don't support the second callback argument. To execute a side effect after rendering, declare it in the component body with useEffect().");
-        var lane = requestUpdateLane(fiber), update = {
+        var lane = requestUpdateLane(fiber), update2 = {
           lane,
           action: action10,
           hasEagerState: !1,
@@ -22570,9 +22570,9 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
           next: null
         };
         if (isRenderPhaseUpdate(fiber))
-          enqueueRenderPhaseUpdate(queue, update);
+          enqueueRenderPhaseUpdate(queue, update2);
         else {
-          var root3 = enqueueConcurrentHookUpdate(fiber, queue, update, lane);
+          var root3 = enqueueConcurrentHookUpdate(fiber, queue, update2, lane);
           if (root3 !== null) {
             var eventTime = requestEventTime();
             scheduleUpdateOnFiber(root3, fiber, lane, eventTime), entangleTransitionUpdate(root3, queue, lane);
@@ -22582,7 +22582,7 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
       }
       function dispatchSetState(fiber, queue, action10) {
         typeof arguments[3] == "function" && error("State updates from the useState() and useReducer() Hooks don't support the second callback argument. To execute a side effect after rendering, declare it in the component body with useEffect().");
-        var lane = requestUpdateLane(fiber), update = {
+        var lane = requestUpdateLane(fiber), update2 = {
           lane,
           action: action10,
           hasEagerState: !1,
@@ -22590,7 +22590,7 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
           next: null
         };
         if (isRenderPhaseUpdate(fiber))
-          enqueueRenderPhaseUpdate(queue, update);
+          enqueueRenderPhaseUpdate(queue, update2);
         else {
           var alternate = fiber.alternate;
           if (fiber.lanes === NoLanes && (alternate === null || alternate.lanes === NoLanes)) {
@@ -22600,8 +22600,8 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
               prevDispatcher = ReactCurrentDispatcher$1.current, ReactCurrentDispatcher$1.current = InvalidNestedHooksDispatcherOnUpdateInDEV;
               try {
                 var currentState = queue.lastRenderedState, eagerState = lastRenderedReducer(currentState, action10);
-                if (update.hasEagerState = !0, update.eagerState = eagerState, objectIs(eagerState, currentState)) {
-                  enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update, lane);
+                if (update2.hasEagerState = !0, update2.eagerState = eagerState, objectIs(eagerState, currentState)) {
+                  enqueueConcurrentHookUpdateAndEagerlyBailout(fiber, queue, update2, lane);
                   return;
                 }
               } catch {
@@ -22610,7 +22610,7 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
               }
             }
           }
-          var root3 = enqueueConcurrentHookUpdate(fiber, queue, update, lane);
+          var root3 = enqueueConcurrentHookUpdate(fiber, queue, update2, lane);
           if (root3 !== null) {
             var eventTime = requestEventTime();
             scheduleUpdateOnFiber(root3, fiber, lane, eventTime), entangleTransitionUpdate(root3, queue, lane);
@@ -22622,10 +22622,10 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
         var alternate = fiber.alternate;
         return fiber === currentlyRenderingFiber$1 || alternate !== null && alternate === currentlyRenderingFiber$1;
       }
-      function enqueueRenderPhaseUpdate(queue, update) {
+      function enqueueRenderPhaseUpdate(queue, update2) {
         didScheduleRenderPhaseUpdateDuringThisPass = didScheduleRenderPhaseUpdate = !0;
         var pending = queue.pending;
-        pending === null ? update.next = update : (update.next = pending.next, pending.next = update), queue.pending = update;
+        pending === null ? update2.next = update2 : (update2.next = pending.next, pending.next = update2), queue.pending = update2;
       }
       function entangleTransitionUpdate(root3, queue, lane) {
         if (isTransitionLane(lane)) {
@@ -23314,35 +23314,35 @@ Visit https://reactjs.org/link/error-boundaries to learn more about error bounda
       }
       var PossiblyWeakMap$1 = typeof WeakMap == "function" ? WeakMap : Map;
       function createRootErrorUpdate(fiber, errorInfo, lane) {
-        var update = createUpdate(NoTimestamp, lane);
-        update.tag = CaptureUpdate, update.payload = {
+        var update2 = createUpdate(NoTimestamp, lane);
+        update2.tag = CaptureUpdate, update2.payload = {
           element: null
         };
         var error2 = errorInfo.value;
-        return update.callback = function() {
+        return update2.callback = function() {
           onUncaughtError(error2), logCapturedError(fiber, errorInfo);
-        }, update;
+        }, update2;
       }
       function createClassErrorUpdate(fiber, errorInfo, lane) {
-        var update = createUpdate(NoTimestamp, lane);
-        update.tag = CaptureUpdate;
+        var update2 = createUpdate(NoTimestamp, lane);
+        update2.tag = CaptureUpdate;
         var getDerivedStateFromError = fiber.type.getDerivedStateFromError;
         if (typeof getDerivedStateFromError == "function") {
           var error$1 = errorInfo.value;
-          update.payload = function() {
+          update2.payload = function() {
             return getDerivedStateFromError(error$1);
-          }, update.callback = function() {
+          }, update2.callback = function() {
             markFailedErrorBoundaryForHotReloading(fiber), logCapturedError(fiber, errorInfo);
           };
         }
         var inst = fiber.stateNode;
-        return inst !== null && typeof inst.componentDidCatch == "function" && (update.callback = function() {
+        return inst !== null && typeof inst.componentDidCatch == "function" && (update2.callback = function() {
           markFailedErrorBoundaryForHotReloading(fiber), logCapturedError(fiber, errorInfo), typeof getDerivedStateFromError != "function" && markLegacyErrorBoundaryAsFailed(this);
           var error$12 = errorInfo.value, stack = errorInfo.stack;
           this.componentDidCatch(error$12, {
             componentStack: stack !== null ? stack : ""
           }), typeof getDerivedStateFromError != "function" && (includesSomeLane(fiber.lanes, SyncLane) || error("%s: Error boundaries should implement getDerivedStateFromError(). In that method, return a state update to display an error message or fallback UI.", getComponentNameFromFiber(fiber) || "Unknown"));
-        }), update;
+        }), update2;
       }
       function attachPingListener(root3, wakeable, lanes) {
         var pingCache = root3.pingCache, threadIDs;
@@ -23386,8 +23386,8 @@ Visit https://reactjs.org/link/error-boundaries to learn more about error bounda
               if (currentSourceFiber === null)
                 sourceFiber.tag = IncompleteClassComponent;
               else {
-                var update = createUpdate(NoTimestamp, SyncLane);
-                update.tag = ForceUpdate, enqueueUpdate(sourceFiber, update, SyncLane);
+                var update2 = createUpdate(NoTimestamp, SyncLane);
+                update2.tag = ForceUpdate, enqueueUpdate(sourceFiber, update2, SyncLane);
               }
             }
             sourceFiber.lanes = mergeLanes(sourceFiber.lanes, SyncLane);
@@ -23429,8 +23429,8 @@ Visit https://reactjs.org/link/error-boundaries to learn more about error bounda
               workInProgress2.flags |= ShouldCapture;
               var lane = pickArbitraryLane(rootRenderLanes);
               workInProgress2.lanes = mergeLanes(workInProgress2.lanes, lane);
-              var update = createRootErrorUpdate(workInProgress2, _errorInfo, lane);
-              enqueueCapturedUpdate(workInProgress2, update);
+              var update2 = createRootErrorUpdate(workInProgress2, _errorInfo, lane);
+              enqueueCapturedUpdate(workInProgress2, update2);
               return;
             }
             case ClassComponent:
@@ -23663,8 +23663,8 @@ Visit https://reactjs.org/link/error-boundaries to learn more about error bounda
               workInProgress2.flags |= DidCapture, workInProgress2.flags |= ShouldCapture;
               var error$1 = new Error("Simulated error coming from DevTools"), lane = pickArbitraryLane(renderLanes2);
               workInProgress2.lanes = mergeLanes(workInProgress2.lanes, lane);
-              var update = createClassErrorUpdate(workInProgress2, createCapturedValueAtFiber(error$1, workInProgress2), lane);
-              enqueueCapturedUpdate(workInProgress2, update);
+              var update2 = createClassErrorUpdate(workInProgress2, createCapturedValueAtFiber(error$1, workInProgress2), lane);
+              enqueueCapturedUpdate(workInProgress2, update2);
               break;
             }
           }
@@ -24413,7 +24413,7 @@ Check the render method of \`` + ownerName + "`.");
             var type = workInProgress2.type, _unresolvedProps2 = workInProgress2.pendingProps, _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
             return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
           }
-          case Fragment36:
+          case Fragment39:
             return updateFragment(current2, workInProgress2, renderLanes2);
           case Mode:
             return updateMode(current2, workInProgress2, renderLanes2);
@@ -24565,7 +24565,7 @@ Check the render method of \`` + ownerName + "`.");
           case SimpleMemoComponent:
           case FunctionComponent:
           case ForwardRef:
-          case Fragment36:
+          case Fragment39:
           case Mode:
           case Profiler:
           case ContextConsumer:
@@ -24680,7 +24680,7 @@ Check the render method of \`` + ownerName + "`.");
                     }
                     row = row.sibling;
                   }
-                renderState.tail !== null && now() > getRenderTargetTime() && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
+                renderState.tail !== null && now2() > getRenderTargetTime() && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
               }
             else {
               if (!didSuspendAlready) {
@@ -24694,7 +24694,7 @@ Check the render method of \`` + ownerName + "`.");
                   // The time it took to render last row is greater than the remaining
                   // time we have to render. So rendering one more row would likely
                   // exceed it.
-                  now() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
+                  now2() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
               }
               if (renderState.isBackwards)
                 renderedTail.sibling = workInProgress2.child, workInProgress2.child = renderedTail;
@@ -24705,7 +24705,7 @@ Check the render method of \`` + ownerName + "`.");
             }
             if (renderState.tail !== null) {
               var next = renderState.tail;
-              renderState.rendering = next, renderState.tail = next.sibling, renderState.renderingStartTime = now(), next.sibling = null;
+              renderState.rendering = next, renderState.tail = next.sibling, renderState.renderingStartTime = now2(), next.sibling = null;
               var suspenseContext = suspenseStackCursor.current;
               return didSuspendAlready ? suspenseContext = setShallowSuspenseContext(suspenseContext, ForceSuspenseFallback) : suspenseContext = setDefaultShallowSuspenseContext(suspenseContext), pushSuspenseContext(workInProgress2, suspenseContext), next;
             }
@@ -26022,7 +26022,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         4
       ), RootInProgress = 0, RootFatalErrored = 1, RootErrored = 2, RootSuspended = 3, RootSuspendedWithDelay = 4, RootCompleted = 5, RootDidNotComplete = 6, executionContext = NoContext, workInProgressRoot = null, workInProgress = null, workInProgressRootRenderLanes = NoLanes, subtreeRenderLanes = NoLanes, subtreeRenderLanesCursor = createCursor(NoLanes), workInProgressRootExitStatus = RootInProgress, workInProgressRootFatalError = null, workInProgressRootIncludedLanes = NoLanes, workInProgressRootSkippedLanes = NoLanes, workInProgressRootInterleavedUpdatedLanes = NoLanes, workInProgressRootPingedLanes = NoLanes, workInProgressRootConcurrentErrors = null, workInProgressRootRecoverableErrors = null, globalMostRecentFallbackTime = 0, FALLBACK_THROTTLE_MS = 500, workInProgressRootRenderTargetTime = 1 / 0, RENDER_TIMEOUT_MS = 500, workInProgressTransitions = null;
       function resetRenderTimer() {
-        workInProgressRootRenderTargetTime = now() + RENDER_TIMEOUT_MS;
+        workInProgressRootRenderTargetTime = now2() + RENDER_TIMEOUT_MS;
       }
       function getRenderTargetTime() {
         return workInProgressRootRenderTargetTime;
@@ -26032,7 +26032,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         return workInProgressRoot;
       }
       function requestEventTime() {
-        return (executionContext & (RenderContext | CommitContext)) !== NoContext ? now() : (currentEventTime !== NoTimestamp || (currentEventTime = now()), currentEventTime);
+        return (executionContext & (RenderContext | CommitContext)) !== NoContext ? now2() : (currentEventTime !== NoTimestamp || (currentEventTime = now2()), currentEventTime);
       }
       function requestUpdateLane(fiber) {
         var mode = fiber.mode;
@@ -26043,8 +26043,8 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         var isTransition = requestCurrentTransition() !== NoTransition;
         if (isTransition) {
           if (ReactCurrentBatchConfig$3.transition !== null) {
-            var transition = ReactCurrentBatchConfig$3.transition;
-            transition._updatedFibers || (transition._updatedFibers = /* @__PURE__ */ new Set()), transition._updatedFibers.add(fiber);
+            var transition2 = ReactCurrentBatchConfig$3.transition;
+            transition2._updatedFibers || (transition2._updatedFibers = /* @__PURE__ */ new Set()), transition2._updatedFibers.add(fiber);
           }
           return currentEventTransitionLane === NoLane && (currentEventTransitionLane = claimNextTransitionLane()), currentEventTransitionLane;
         }
@@ -26135,7 +26135,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           }
           if (exitStatus === RootFatalErrored) {
             var fatalError = workInProgressRootFatalError;
-            throw prepareFreshStack(root3, NoLanes), markRootSuspended$1(root3, lanes), ensureRootIsScheduled(root3, now()), fatalError;
+            throw prepareFreshStack(root3, NoLanes), markRootSuspended$1(root3, lanes), ensureRootIsScheduled(root3, now2()), fatalError;
           }
           if (exitStatus === RootDidNotComplete)
             markRootSuspended$1(root3, lanes);
@@ -26148,13 +26148,13 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
               }
               if (exitStatus === RootFatalErrored) {
                 var _fatalError = workInProgressRootFatalError;
-                throw prepareFreshStack(root3, NoLanes), markRootSuspended$1(root3, lanes), ensureRootIsScheduled(root3, now()), _fatalError;
+                throw prepareFreshStack(root3, NoLanes), markRootSuspended$1(root3, lanes), ensureRootIsScheduled(root3, now2()), _fatalError;
               }
             }
             root3.finishedWork = finishedWork, root3.finishedLanes = lanes, finishConcurrentRender(root3, exitStatus, lanes);
           }
         }
-        return ensureRootIsScheduled(root3, now()), root3.callbackNode === originalCallbackNode ? performConcurrentWorkOnRoot.bind(null, root3) : null;
+        return ensureRootIsScheduled(root3, now2()), root3.callbackNode === originalCallbackNode ? performConcurrentWorkOnRoot.bind(null, root3) : null;
       }
       function recoverFromConcurrentError(root3, errorRetryLanes) {
         var errorsFromFirstAttempt = workInProgressRootConcurrentErrors;
@@ -26184,7 +26184,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           case RootSuspended: {
             if (markRootSuspended$1(root3, lanes), includesOnlyRetries(lanes) && // do not delay if we're inside an act() scope
             !shouldForceFlushFallbacksInDEV()) {
-              var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now();
+              var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now2();
               if (msUntilTimeout > 10) {
                 var nextLanes = getNextLanes(root3, NoLanes);
                 if (nextLanes !== NoLanes)
@@ -26206,7 +26206,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
             if (markRootSuspended$1(root3, lanes), includesOnlyTransitions(lanes))
               break;
             if (!shouldForceFlushFallbacksInDEV()) {
-              var mostRecentEventTime = getMostRecentEventTime(root3, lanes), eventTimeMs = mostRecentEventTime, timeElapsedMs = now() - eventTimeMs, _msUntilTimeout = jnd(timeElapsedMs) - timeElapsedMs;
+              var mostRecentEventTime = getMostRecentEventTime(root3, lanes), eventTimeMs = mostRecentEventTime, timeElapsedMs = now2() - eventTimeMs, _msUntilTimeout = jnd(timeElapsedMs) - timeElapsedMs;
               if (_msUntilTimeout > 10) {
                 root3.timeoutHandle = scheduleTimeout(commitRoot.bind(null, root3, workInProgressRootRecoverableErrors, workInProgressTransitions), _msUntilTimeout);
                 break;
@@ -26266,7 +26266,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         flushPassiveEffects();
         var lanes = getNextLanes(root3, NoLanes);
         if (!includesSomeLane(lanes, SyncLane))
-          return ensureRootIsScheduled(root3, now()), null;
+          return ensureRootIsScheduled(root3, now2()), null;
         var exitStatus = renderRootSync(root3, lanes);
         if (root3.tag !== LegacyRoot && exitStatus === RootErrored) {
           var errorRetryLanes = getLanesToRetrySynchronouslyOnError(root3);
@@ -26274,15 +26274,15 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         }
         if (exitStatus === RootFatalErrored) {
           var fatalError = workInProgressRootFatalError;
-          throw prepareFreshStack(root3, NoLanes), markRootSuspended$1(root3, lanes), ensureRootIsScheduled(root3, now()), fatalError;
+          throw prepareFreshStack(root3, NoLanes), markRootSuspended$1(root3, lanes), ensureRootIsScheduled(root3, now2()), fatalError;
         }
         if (exitStatus === RootDidNotComplete)
           throw new Error("Root did not complete. This is a bug in React.");
         var finishedWork = root3.current.alternate;
-        return root3.finishedWork = finishedWork, root3.finishedLanes = lanes, commitRoot(root3, workInProgressRootRecoverableErrors, workInProgressTransitions), ensureRootIsScheduled(root3, now()), null;
+        return root3.finishedWork = finishedWork, root3.finishedLanes = lanes, commitRoot(root3, workInProgressRootRecoverableErrors, workInProgressTransitions), ensureRootIsScheduled(root3, now2()), null;
       }
       function flushRoot(root3, lanes) {
-        lanes !== NoLanes && (markRootEntangled(root3, mergeLanes(lanes, SyncLane)), ensureRootIsScheduled(root3, now()), (executionContext & (RenderContext | CommitContext)) === NoContext && (resetRenderTimer(), flushSyncCallbacks()));
+        lanes !== NoLanes && (markRootEntangled(root3, mergeLanes(lanes, SyncLane)), ensureRootIsScheduled(root3, now2()), (executionContext & (RenderContext | CommitContext)) === NoContext && (resetRenderTimer(), flushSyncCallbacks()));
       }
       function batchedUpdates$1(fn, a12) {
         var prevExecutionContext = executionContext;
@@ -26364,7 +26364,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         ReactCurrentDispatcher$2.current = prevDispatcher;
       }
       function markCommitTimeOfFallback() {
-        globalMostRecentFallbackTime = now();
+        globalMostRecentFallbackTime = now2();
       }
       function markSkippedUpdateLanes(lane) {
         workInProgressRootSkippedLanes = mergeLanes(lane, workInProgressRootSkippedLanes);
@@ -26518,7 +26518,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         } else
           root3.current = finishedWork, recordCommitTime();
         var rootDidHavePassiveEffects = rootDoesHavePassiveEffects;
-        if (rootDoesHavePassiveEffects ? (rootDoesHavePassiveEffects = !1, rootWithPendingPassiveEffects = root3, pendingPassiveEffectsLanes = lanes) : (nestedPassiveUpdateCount = 0, rootWithPassiveNestedUpdates = null), remainingLanes = root3.pendingLanes, remainingLanes === NoLanes && (legacyErrorBoundariesThatAlreadyFailed = null), rootDidHavePassiveEffects || commitDoubleInvokeEffectsInDEV(root3.current, !1), onCommitRoot(finishedWork.stateNode, renderPriorityLevel), isDevToolsPresent && root3.memoizedUpdaters.clear(), onCommitRoot$1(), ensureRootIsScheduled(root3, now()), recoverableErrors !== null)
+        if (rootDoesHavePassiveEffects ? (rootDoesHavePassiveEffects = !1, rootWithPendingPassiveEffects = root3, pendingPassiveEffectsLanes = lanes) : (nestedPassiveUpdateCount = 0, rootWithPassiveNestedUpdates = null), remainingLanes = root3.pendingLanes, remainingLanes === NoLanes && (legacyErrorBoundariesThatAlreadyFailed = null), rootDidHavePassiveEffects || commitDoubleInvokeEffectsInDEV(root3.current, !1), onCommitRoot(finishedWork.stateNode, renderPriorityLevel), isDevToolsPresent && root3.memoizedUpdaters.clear(), onCommitRoot$1(), ensureRootIsScheduled(root3, now2()), recoverableErrors !== null)
           for (var onRecoverableError = root3.onRecoverableError, i6 = 0; i6 < recoverableErrors.length; i6++) {
             var recoverableError = recoverableErrors[i6], componentStack = recoverableError.stack, digest = recoverableError.digest;
             onRecoverableError(recoverableError.value, {
@@ -26586,7 +26586,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
       }
       var onUncaughtError = prepareToThrowUncaughtError;
       function captureCommitPhaseErrorOnRoot(rootFiber, sourceFiber, error2) {
-        var errorInfo = createCapturedValueAtFiber(error2, sourceFiber), update = createRootErrorUpdate(rootFiber, errorInfo, SyncLane), root3 = enqueueUpdate(rootFiber, update, SyncLane), eventTime = requestEventTime();
+        var errorInfo = createCapturedValueAtFiber(error2, sourceFiber), update2 = createRootErrorUpdate(rootFiber, errorInfo, SyncLane), root3 = enqueueUpdate(rootFiber, update2, SyncLane), eventTime = requestEventTime();
         root3 !== null && (markRootUpdated(root3, SyncLane, eventTime), ensureRootIsScheduled(root3, eventTime));
       }
       function captureCommitPhaseError(sourceFiber, nearestMountedAncestor, error$1) {
@@ -26602,7 +26602,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           } else if (fiber.tag === ClassComponent) {
             var ctor = fiber.type, instance = fiber.stateNode;
             if (typeof ctor.getDerivedStateFromError == "function" || typeof instance.componentDidCatch == "function" && !isAlreadyFailedLegacyErrorBoundary(instance)) {
-              var errorInfo = createCapturedValueAtFiber(error$1, sourceFiber), update = createClassErrorUpdate(fiber, errorInfo, SyncLane), root3 = enqueueUpdate(fiber, update, SyncLane), eventTime = requestEventTime();
+              var errorInfo = createCapturedValueAtFiber(error$1, sourceFiber), update2 = createClassErrorUpdate(fiber, errorInfo, SyncLane), root3 = enqueueUpdate(fiber, update2, SyncLane), eventTime = requestEventTime();
               root3 !== null && (markRootUpdated(root3, SyncLane, eventTime), ensureRootIsScheduled(root3, eventTime));
               return;
             }
@@ -26619,7 +26619,7 @@ Error message:
         var pingCache = root3.pingCache;
         pingCache !== null && pingCache.delete(wakeable);
         var eventTime = requestEventTime();
-        markRootPinged(root3, pingedLanes), warnIfSuspenseResolutionNotWrappedWithActDEV(root3), workInProgressRoot === root3 && isSubsetOfLanes(workInProgressRootRenderLanes, pingedLanes) && (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS ? prepareFreshStack(root3, NoLanes) : workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes)), ensureRootIsScheduled(root3, eventTime);
+        markRootPinged(root3, pingedLanes), warnIfSuspenseResolutionNotWrappedWithActDEV(root3), workInProgressRoot === root3 && isSubsetOfLanes(workInProgressRootRenderLanes, pingedLanes) && (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now2() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS ? prepareFreshStack(root3, NoLanes) : workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes)), ensureRootIsScheduled(root3, eventTime);
       }
       function retryTimedOutBoundary(boundaryFiber, retryLane) {
         retryLane === NoLane && (retryLane = requestRetryLane(boundaryFiber));
@@ -26868,11 +26868,11 @@ This ensures that you're testing the behavior the user would see in the browser.
           failedBoundaries === null && (failedBoundaries = /* @__PURE__ */ new WeakSet()), failedBoundaries.add(fiber);
         }
       }
-      var scheduleRefresh = function(root3, update) {
+      var scheduleRefresh = function(root3, update2) {
         {
           if (resolveFamily === null)
             return;
-          var staleFamilies = update.staleFamilies, updatedFamilies = update.updatedFamilies;
+          var staleFamilies = update2.staleFamilies, updatedFamilies = update2.updatedFamilies;
           flushPassiveEffects(), flushSync(function() {
             scheduleFibersWithFamiliesRecursively(root3.current, updatedFamilies, staleFamilies);
           });
@@ -27122,7 +27122,7 @@ Check the render method of \`` + ownerName + "`.");
         return fiber._debugSource = element._source, fiber._debugOwner = element._owner, fiber;
       }
       function createFiberFromFragment(elements, mode, lanes, key) {
-        var fiber = createFiber(Fragment36, elements, key, mode);
+        var fiber = createFiber(Fragment39, elements, key, mode);
         return fiber.lanes = lanes, fiber;
       }
       function createFiberFromProfiler(pendingProps, mode, lanes, key) {
@@ -27264,8 +27264,8 @@ Check the render method of \`` + ownerName + "`.");
       function createHydrationContainer(initialChildren, callback, containerInfo, tag, hydrationCallbacks, isStrictMode, concurrentUpdatesByDefaultOverride, identifierPrefix, onRecoverableError, transitionCallbacks) {
         var hydrate2 = !0, root3 = createFiberRoot(containerInfo, tag, hydrate2, initialChildren, hydrationCallbacks, isStrictMode, concurrentUpdatesByDefaultOverride, identifierPrefix, onRecoverableError);
         root3.context = getContextForSubtree(null);
-        var current2 = root3.current, eventTime = requestEventTime(), lane = requestUpdateLane(current2), update = createUpdate(eventTime, lane);
-        return update.callback = callback ?? null, enqueueUpdate(current2, update, lane), scheduleInitialHydrationOnRoot(root3, lane, eventTime), root3;
+        var current2 = root3.current, eventTime = requestEventTime(), lane = requestUpdateLane(current2), update2 = createUpdate(eventTime, lane);
+        return update2.callback = callback ?? null, enqueueUpdate(current2, update2, lane), scheduleInitialHydrationOnRoot(root3, lane, eventTime), root3;
       }
       function updateContainer(element, container, parentComponent, callback) {
         onScheduleRoot(container, element);
@@ -27275,11 +27275,11 @@ Check the render method of \`` + ownerName + "`.");
         container.context === null ? container.context = context : container.pendingContext = context, isRendering && current !== null && !didWarnAboutNestedUpdates && (didWarnAboutNestedUpdates = !0, error(`Render methods should be a pure function of props and state; triggering nested component updates from render is not allowed. If necessary, trigger nested updates in componentDidUpdate.
 
 Check the render method of %s.`, getComponentNameFromFiber(current) || "Unknown"));
-        var update = createUpdate(eventTime, lane);
-        update.payload = {
+        var update2 = createUpdate(eventTime, lane);
+        update2.payload = {
           element
-        }, callback = callback === void 0 ? null : callback, callback !== null && (typeof callback != "function" && error("render(...): Expected the last optional `callback` argument to be a function. Instead received: %s.", callback), update.callback = callback);
-        var root3 = enqueueUpdate(current$1, update, lane);
+        }, callback = callback === void 0 ? null : callback, callback !== null && (typeof callback != "function" && error("render(...): Expected the last optional `callback` argument to be a function. Instead received: %s.", callback), update2.callback = callback);
+        var root3 = enqueueUpdate(current$1, update2, lane);
         return root3 !== null && (scheduleUpdateOnFiber(root3, current$1, lane, eventTime), entangleTransitions(root3, current$1, lane)), lane;
       }
       function getPublicRootInstance(container) {
@@ -27776,15 +27776,15 @@ var require_react_dom = __commonJS({
 var require_textr = __commonJS({
   "node_modules/textr/index.js"(exports, module) {
     "use strict";
-    module.exports = function(defaults) {
+    module.exports = function(defaults2) {
       var mws = [];
-      defaults = defaults || {};
+      defaults2 = defaults2 || {};
       function api() {
         return exec.apply(null, arguments);
       }
       return api.exec = exec, api.use = use, api.mws = mws, api;
       function exec(text, options) {
-        options = clone(defaults, options);
+        options = clone(defaults2, options);
         for (var l13 = mws.length, i6 = 0; i6 < l13; i6++)
           text = mws[i6].apply(text, [text, options]) || text;
         return text;
@@ -27808,8 +27808,8 @@ var require_textr = __commonJS({
 var require_index_es5 = __commonJS({
   "node_modules/typographic-apostrophes/index.es5.js"(exports, module) {
     "use strict";
-    module.exports = function(input3) {
-      return input3.replace(/ 'n' /gim, " \u2019n\u2019 ").replace(/'n'/gim, "\u2019n\u2019").replace(/(\S)'(\S)/gim, "$1\u2019$2").replace(/'(\d0s)/gim, "\u2019$1");
+    module.exports = function(input4) {
+      return input4.replace(/ 'n' /gim, " \u2019n\u2019 ").replace(/'n'/gim, "\u2019n\u2019").replace(/(\S)'(\S)/gim, "$1\u2019$2").replace(/'(\d0s)/gim, "\u2019$1");
     };
   }
 });
@@ -27933,13 +27933,13 @@ var require_index_es52 = __commonJS({
     }
     var _typographicQuotesL10nDb = require_typographic_quotes_l10n_db(), _typographicQuotesL10nDb2 = _interopRequireDefault(_typographicQuotesL10nDb);
     function typographicQuotes() {
-      var input3 = arguments.length <= 0 || arguments[0] === void 0 ? "" : arguments[0], _ref = arguments.length <= 1 || arguments[1] === void 0 ? {} : arguments[1], _ref$locale = _ref.locale, locale = _ref$locale === void 0 ? "en-us" : _ref$locale, separator = "", localeQuotes = _typographicQuotesL10nDb2.default[locale], pattern = /(^|\s)(?:"(.*?)"|'(.*?)')(\s|$|\.|,|\?|!)/gim, handleQuotes = function(quotes, cb) {
+      var input4 = arguments.length <= 0 || arguments[0] === void 0 ? "" : arguments[0], _ref = arguments.length <= 1 || arguments[1] === void 0 ? {} : arguments[1], _ref$locale = _ref.locale, locale = _ref$locale === void 0 ? "en-us" : _ref$locale, separator = "", localeQuotes = _typographicQuotesL10nDb2.default[locale], pattern = /(^|\s)(?:"(.*?)"|'(.*?)')(\s|$|\.|,|\?|!)/gim, handleQuotes = function(quotes, cb) {
         return function(match) {
           var before = arguments.length <= 1 || arguments[1] === void 0 ? "" : arguments[1], part1 = arguments.length <= 2 || arguments[2] === void 0 ? "" : arguments[2], part2 = arguments.length <= 3 || arguments[3] === void 0 ? "" : arguments[3], after = arguments.length <= 4 || arguments[4] === void 0 ? "" : arguments[4], text = part1 + part2;
           return cb && (text = text.replace(pattern, cb)), locale === "fr" && (separator = "\xA0"), "" + before + quotes[0] + separator + text + separator + quotes[1] + after;
         };
       };
-      return input3.replace(pattern, handleQuotes(localeQuotes.slice(0, 2), handleQuotes(localeQuotes.slice(2, 4))));
+      return input4.replace(pattern, handleQuotes(localeQuotes.slice(0, 2), handleQuotes(localeQuotes.slice(2, 4))));
     }
     module.exports = exports.default;
   }
@@ -27949,8 +27949,8 @@ var require_index_es52 = __commonJS({
 var require_index_es53 = __commonJS({
   "node_modules/typographic-apostrophes-for-possessive-plurals/index.es5.js"(exports, module) {
     "use strict";
-    module.exports = function(input3) {
-      return input3.replace(/s'(\s|$)/gim, "s\u2019$1");
+    module.exports = function(input4) {
+      return input4.replace(/s'(\s|$)/gim, "s\u2019$1");
     };
   }
 });
@@ -27963,8 +27963,8 @@ var require_index_es54 = __commonJS({
       value: !0
     });
     exports.default = typographicArrows;
-    function typographicArrows(input3) {
-      return input3.replace(/<->/gim, "\u2194").replace(/<=>/gim, "\u21D4").replace(/<-/gim, "\u2190").replace(/->/gim, "\u2192").replace(/<=/gim, "\u21D0").replace(/=>/gim, "\u21D2");
+    function typographicArrows(input4) {
+      return input4.replace(/<->/gim, "\u2194").replace(/<=>/gim, "\u21D4").replace(/<-/gim, "\u2190").replace(/->/gim, "\u2192").replace(/<=/gim, "\u21D0").replace(/=>/gim, "\u21D2");
     }
     module.exports = exports.default;
   }
@@ -27977,8 +27977,8 @@ var require_index_es55 = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.default = function(input3) {
-      return input3.replace(/\(c\)/gim, "\xA9").replace(/© *(\d)/gim, "\xA9\xA0$1");
+    exports.default = function(input4) {
+      return input4.replace(/\(c\)/gim, "\xA9").replace(/© *(\d)/gim, "\xA9\xA0$1");
     };
     module.exports = exports.default;
   }
@@ -28100,11 +28100,11 @@ var require_index_es57 = __commonJS({
     var pattern = function(key) {
       return new RegExp("([^a-z]|\\b)(" + key + ")\\b", "gi");
     };
-    function typographicCurrency(input3) {
-      if (input3)
+    function typographicCurrency(input4) {
+      if (input4)
         return Object.keys(_typographicCurrencyDb2.default).reduce(function(state, key) {
           return state.replace(pattern(key), "$1" + _typographicCurrencyDb2.default[key]);
-        }, input3);
+        }, input4);
     }
   }
 });
@@ -28113,8 +28113,8 @@ var require_index_es57 = __commonJS({
 var require_index_es58 = __commonJS({
   "node_modules/typographic-ellipses/index.es5.js"(exports, module) {
     "use strict";
-    module.exports = function(input3) {
-      return input3.replace(/\.{3}/gim, "\u2026");
+    module.exports = function(input4) {
+      return input4.replace(/\.{3}/gim, "\u2026");
     };
   }
 });
@@ -28123,8 +28123,8 @@ var require_index_es58 = __commonJS({
 var require_index_es59 = __commonJS({
   "node_modules/typographic-em-dashes/index.es5.js"(exports, module) {
     "use strict";
-    module.exports = function(input3) {
-      return input3.replace(/--/gim, "\u2014").replace(/ — /gim, "\u200A\u2014\u200A");
+    module.exports = function(input4) {
+      return input4.replace(/--/gim, "\u2014").replace(/ — /gim, "\u200A\u2014\u200A");
     };
   }
 });
@@ -28136,8 +28136,8 @@ var require_index_es510 = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.default = function(input3) {
-      return input3.replace(/(\d)-(\d)/gim, "$1\u2013$2");
+    exports.default = function(input4) {
+      return input4.replace(/(\d)-(\d)/gim, "$1\u2013$2");
     };
     module.exports = exports.default;
   }
@@ -28150,8 +28150,8 @@ var require_index_es511 = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.default = function(input3) {
-      return input3.replace(/(\d) x (\d)/gim, "$1 \xD7 $2").replace(/(\d) - (\d)/gim, "$1 \u2212 $2").replace(/(\w) >> (\w)/gim, "$1 \u226B $2").replace(/(\w) << (\w)/gim, "$1 \u226A $2").replace(/(\w) >= (\w)/gim, "$1 \u2265 $2").replace(/(\w) <= (\w)/gim, "$1 \u2264 $2").replace(/\+-/gim, "\xB1").replace(/-\+/gim, "\u2213");
+    exports.default = function(input4) {
+      return input4.replace(/(\d) x (\d)/gim, "$1 \xD7 $2").replace(/(\d) - (\d)/gim, "$1 \u2212 $2").replace(/(\w) >> (\w)/gim, "$1 \u226B $2").replace(/(\w) << (\w)/gim, "$1 \u226A $2").replace(/(\w) >= (\w)/gim, "$1 \u2265 $2").replace(/(\w) <= (\w)/gim, "$1 \u2264 $2").replace(/\+-/gim, "\xB1").replace(/-\+/gim, "\u2213");
     };
     module.exports = exports.default;
   }
@@ -28164,8 +28164,8 @@ var require_index_es512 = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.default = function(input3) {
-      return input3.replace(/\(r\)/gim, "\xAE");
+    exports.default = function(input4) {
+      return input4.replace(/\(r\)/gim, "\xAE");
     };
     module.exports = exports.default;
   }
@@ -28175,8 +28175,8 @@ var require_index_es512 = __commonJS({
 var require_index_es513 = __commonJS({
   "node_modules/typographic-single-spaces/index.es5.js"(exports, module) {
     "use strict";
-    module.exports = function(input3) {
-      return input3.replace(/ +/gim, " ");
+    module.exports = function(input4) {
+      return input4.replace(/ +/gim, " ");
     };
   }
 });
@@ -28188,8 +28188,8 @@ var require_index_es514 = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.default = function(input3) {
-      return input3.replace(/ *\(tm\)/gim, "\u2122");
+    exports.default = function(input4) {
+      return input4.replace(/ *\(tm\)/gim, "\u2122");
     };
     module.exports = exports.default;
   }
@@ -28255,7 +28255,7 @@ var require_react_is_development = __commonJS({
           }
         }
       }
-      var AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element2 = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment36 = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense8 = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
+      var AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element2 = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment39 = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense8 = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
       function isAsyncMode(object) {
         return hasWarnedAboutDeprecatedIsAsyncMode || (hasWarnedAboutDeprecatedIsAsyncMode = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
       }
@@ -28295,7 +28295,7 @@ var require_react_is_development = __commonJS({
       function isSuspense(object) {
         return typeOf(object) === REACT_SUSPENSE_TYPE;
       }
-      exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, exports.Element = Element2, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment36, exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, exports.StrictMode = StrictMode, exports.Suspense = Suspense8, exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense, exports.isValidElementType = isValidElementType, exports.typeOf = typeOf;
+      exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, exports.Element = Element2, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment39, exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, exports.StrictMode = StrictMode, exports.Suspense = Suspense8, exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense, exports.isValidElementType = isValidElementType, exports.typeOf = typeOf;
     })();
   }
 });
@@ -28619,7 +28619,7 @@ var require_factoryWithTypeCheckers = __commonJS({
       }
       function createNodeChecker() {
         function validate2(props, propName, componentName, location2, propFullName) {
-          return isNode(props[propName]) ? null : new PropTypeError("Invalid " + location2 + " `" + propFullName + "` supplied to " + ("`" + componentName + "`, expected a ReactNode."));
+          return isNode2(props[propName]) ? null : new PropTypeError("Invalid " + location2 + " `" + propFullName + "` supplied to " + ("`" + componentName + "`, expected a ReactNode."));
         }
         return createChainableTypeChecker(validate2);
       }
@@ -28668,7 +28668,7 @@ Valid keys: ` + JSON.stringify(Object.keys(shapeTypes), null, "  ")
         }
         return createChainableTypeChecker(validate2);
       }
-      function isNode(propValue) {
+      function isNode2(propValue) {
         switch (typeof propValue) {
           case "number":
           case "string":
@@ -28678,7 +28678,7 @@ Valid keys: ` + JSON.stringify(Object.keys(shapeTypes), null, "  ")
             return !propValue;
           case "object":
             if (Array.isArray(propValue))
-              return propValue.every(isNode);
+              return propValue.every(isNode2);
             if (propValue === null || isValidElement2(propValue))
               return !0;
             var iteratorFn = getIteratorFn(propValue);
@@ -28686,12 +28686,12 @@ Valid keys: ` + JSON.stringify(Object.keys(shapeTypes), null, "  ")
               var iterator = iteratorFn.call(propValue), step;
               if (iteratorFn !== propValue.entries) {
                 for (; !(step = iterator.next()).done; )
-                  if (!isNode(step.value))
+                  if (!isNode2(step.value))
                     return !1;
               } else
                 for (; !(step = iterator.next()).done; ) {
                   var entry2 = step.value;
-                  if (entry2 && !isNode(entry2[1]))
+                  if (entry2 && !isNode2(entry2[1]))
                     return !1;
                 }
             } else
@@ -29099,17 +29099,17 @@ var require_classList = __commonJS({
       htmlClassList = {}, docBodyClassList = {};
     }
     function log() {
-      var classes = document.getElementsByTagName("html")[0].className, buffer = `Show tracked classes:
+      var classes2 = document.getElementsByTagName("html")[0].className, buffer = `Show tracked classes:
 
 `;
-      buffer += "<html /> (" + classes + `):
+      buffer += "<html /> (" + classes2 + `):
   `;
       for (var x5 in htmlClassList)
         buffer += "  " + x5 + " " + htmlClassList[x5] + `
   `;
-      classes = document.body.className, buffer += `
+      classes2 = document.body.className, buffer += `
 
-doc.body (` + classes + `):
+doc.body (` + classes2 + `):
   `;
       for (var _x in docBodyClassList)
         buffer += "  " + _x + " " + docBodyClassList[_x] + `
@@ -29121,12 +29121,12 @@ doc.body (` + classes + `):
       return poll[className] || (poll[className] = 0), poll[className] += 1, className;
     }, decrementReference = function(poll, className) {
       return poll[className] && (poll[className] -= 1), className;
-    }, trackClass = function(classListRef, poll, classes) {
-      classes.forEach(function(className) {
+    }, trackClass = function(classListRef, poll, classes2) {
+      classes2.forEach(function(className) {
         incrementReference(poll, className), classListRef.add(className);
       });
-    }, untrackClass = function(classListRef, poll, classes) {
-      classes.forEach(function(className) {
+    }, untrackClass = function(classListRef, poll, classes2) {
+      classes2.forEach(function(className) {
         decrementReference(poll, className), poll[className] === 0 && classListRef.remove(className);
       });
     }, add = exports.add = function(element, classString) {
@@ -29239,7 +29239,7 @@ var require_ModalPortal = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    var _extends5 = Object.assign || function(target) {
+    var _extends6 = Object.assign || function(target) {
       for (var i6 = 1; i6 < arguments.length; i6++) {
         var source = arguments[i6];
         for (var key in source)
@@ -29399,13 +29399,13 @@ var require_ModalPortal = __commonJS({
           var overlayProps = {
             ref: this.setOverlayRef,
             className: this.buildClassName("overlay", overlayClassName),
-            style: _extends5({}, overlayStyles, this.props.style.overlay),
+            style: _extends6({}, overlayStyles, this.props.style.overlay),
             onClick: this.handleOverlayOnClick,
             onMouseDown: this.handleOverlayOnMouseDown
-          }, contentProps = _extends5({
+          }, contentProps = _extends6({
             id,
             ref: this.setContentRef,
-            style: _extends5({}, contentStyles, this.props.style.content),
+            style: _extends6({}, contentStyles, this.props.style.content),
             className: this.buildClassName("content", className),
             tabIndex: "-1",
             onKeyDown: this.handleKeyDown,
@@ -29414,7 +29414,7 @@ var require_ModalPortal = __commonJS({
             onClick: this.handleContentOnClick,
             role: this.props.role,
             "aria-label": this.props.contentLabel
-          }, this.attributesFromObject("aria", _extends5({ modal: !0 }, this.props.aria)), this.attributesFromObject("data", this.props.data || {}), {
+          }, this.attributesFromObject("aria", _extends6({ modal: !0 }, this.props.aria)), this.attributesFromObject("data", this.props.data || {}), {
             "data-testid": this.props.testId
           }), contentElement = this.props.contentElement(contentProps, children);
           return this.props.overlayElement(overlayProps, contentElement);
@@ -29549,7 +29549,7 @@ var require_Modal = __commonJS({
       value: !0
     });
     exports.bodyOpenClassName = exports.portalClassName = void 0;
-    var _extends5 = Object.assign || function(target) {
+    var _extends6 = Object.assign || function(target) {
       for (var i6 = 1; i6 < arguments.length; i6++) {
         var source = arguments[i6];
         for (var key in source)
@@ -29601,25 +29601,25 @@ var require_Modal = __commonJS({
     function getParentElement(parentSelector) {
       return parentSelector();
     }
-    var Modal3 = function(_Component) {
-      _inherits(Modal4, _Component);
-      function Modal4() {
+    var Modal5 = function(_Component) {
+      _inherits(Modal6, _Component);
+      function Modal6() {
         var _ref, _temp, _this, _ret;
-        _classCallCheck2(this, Modal4);
+        _classCallCheck2(this, Modal6);
         for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal4.__proto__ || Object.getPrototypeOf(Modal4)).call.apply(_ref, [this].concat(args))), _this), _this.removePortal = function() {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Modal6.__proto__ || Object.getPrototypeOf(Modal6)).call.apply(_ref, [this].concat(args))), _this), _this.removePortal = function() {
           !isReact16 && _reactDom2.default.unmountComponentAtNode(_this.node);
           var parent = getParentElement(_this.props.parentSelector);
           parent && parent.contains(_this.node) ? parent.removeChild(_this.node) : console.warn('React-Modal: "parentSelector" prop did not returned any DOM element. Make sure that the parent element is unmounted to avoid any memory leaks.');
         }, _this.portalRef = function(ref) {
           _this.portal = ref;
         }, _this.renderPortal = function(props) {
-          var createPortal = getCreatePortal(), portal = createPortal(_this, _react2.default.createElement(_ModalPortal2.default, _extends5({ defaultStyles: Modal4.defaultStyles }, props)), _this.node);
+          var createPortal = getCreatePortal(), portal = createPortal(_this, _react2.default.createElement(_ModalPortal2.default, _extends6({ defaultStyles: Modal6.defaultStyles }, props)), _this.node);
           _this.portalRef(portal);
         }, _temp), _possibleConstructorReturn(_this, _ret);
       }
-      return _createClass2(Modal4, [{
+      return _createClass2(Modal6, [{
         key: "componentDidMount",
         value: function() {
           if (_safeHTMLElement.canUseDOM) {
@@ -29648,8 +29648,8 @@ var require_Modal = __commonJS({
         key: "componentWillUnmount",
         value: function() {
           if (!(!_safeHTMLElement.canUseDOM || !this.node || !this.portal)) {
-            var state = this.portal.state, now = Date.now(), closesAt = state.isOpen && this.props.closeTimeoutMS && (state.closesAt || now + this.props.closeTimeoutMS);
-            closesAt ? (state.beforeClose || this.portal.closeWithTimeout(), setTimeout(this.removePortal, closesAt - now)) : this.removePortal();
+            var state = this.portal.state, now2 = Date.now(), closesAt = state.isOpen && this.props.closeTimeoutMS && (state.closesAt || now2 + this.props.closeTimeoutMS);
+            closesAt ? (state.beforeClose || this.portal.closeWithTimeout(), setTimeout(this.removePortal, closesAt - now2)) : this.removePortal();
           }
         }
       }, {
@@ -29659,9 +29659,9 @@ var require_Modal = __commonJS({
             return null;
           !this.node && isReact16 && (this.node = createHTMLElement("div"));
           var createPortal = getCreatePortal();
-          return createPortal(_react2.default.createElement(_ModalPortal2.default, _extends5({
+          return createPortal(_react2.default.createElement(_ModalPortal2.default, _extends6({
             ref: this.portalRef,
-            defaultStyles: Modal4.defaultStyles
+            defaultStyles: Modal6.defaultStyles
           }, this.props)), this.node);
         }
       }], [{
@@ -29671,9 +29671,9 @@ var require_Modal = __commonJS({
         }
         /* eslint-disable react/no-unused-prop-types */
         /* eslint-enable react/no-unused-prop-types */
-      }]), Modal4;
+      }]), Modal6;
     }(_react.Component);
-    Modal3.propTypes = {
+    Modal5.propTypes = {
       isOpen: _propTypes2.default.bool.isRequired,
       style: _propTypes2.default.shape({
         content: _propTypes2.default.object,
@@ -29713,7 +29713,7 @@ var require_Modal = __commonJS({
       overlayElement: _propTypes2.default.func,
       contentElement: _propTypes2.default.func
     };
-    Modal3.defaultProps = {
+    Modal5.defaultProps = {
       isOpen: !1,
       portalClassName,
       bodyOpenClassName,
@@ -29743,7 +29743,7 @@ var require_Modal = __commonJS({
         );
       }
     };
-    Modal3.defaultStyles = {
+    Modal5.defaultStyles = {
       overlay: {
         position: "fixed",
         top: 0,
@@ -29767,11 +29767,11 @@ var require_Modal = __commonJS({
         padding: "20px"
       }
     };
-    (0, _reactLifecyclesCompat.polyfill)(Modal3);
-    Modal3.setCreateHTMLElement = function(fn) {
+    (0, _reactLifecyclesCompat.polyfill)(Modal5);
+    Modal5.setCreateHTMLElement = function(fn) {
       return createHTMLElement = fn;
     };
-    exports.default = Modal3;
+    exports.default = Modal5;
   }
 });
 
@@ -30196,7 +30196,7 @@ function usePrefetchBehavior(prefetch, theirElementProps) {
     onBlur,
     onMouseEnter,
     onMouseLeave,
-    onTouchStart
+    onTouchStart: onTouchStart2
   } = theirElementProps, ref = React3.useRef(null);
   React3.useEffect(() => {
     if (prefetch === "render" && setShouldPrefetch(!0), prefetch === "viewport") {
@@ -30231,7 +30231,7 @@ function usePrefetchBehavior(prefetch, theirElementProps) {
     onBlur: composeEventHandlers(onBlur, cancelIntent),
     onMouseEnter: composeEventHandlers(onMouseEnter, setIntent),
     onMouseLeave: composeEventHandlers(onMouseLeave, cancelIntent),
-    onTouchStart: composeEventHandlers(onTouchStart, setIntent)
+    onTouchStart: composeEventHandlers(onTouchStart2, setIntent)
   }];
 }
 var ABSOLUTE_URL_REGEX3 = /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i, NavLink2 = /* @__PURE__ */ React3.forwardRef(({
@@ -30450,12 +30450,12 @@ To reference the v1 meta function API, see https://remix.run/route/meta`);
         charSet: metaProps.charSet
       }) : null;
     if ("script:ld+json" in metaProps) {
-      let json4 = null;
+      let json6 = null;
       try {
-        json4 = JSON.stringify(metaProps["script:ld+json"]);
+        json6 = JSON.stringify(metaProps["script:ld+json"]);
       } catch {
       }
-      return json4 != null && /* @__PURE__ */ React3.createElement("script", {
+      return json6 != null && /* @__PURE__ */ React3.createElement("script", {
         key: "script:ld+json",
         type: "application/ld+json",
         dangerouslySetInnerHTML: {
@@ -30744,7 +30744,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
     formAction,
     formEncType,
     formData,
-    json: json4,
+    json: json6,
     text,
     data
   } = fetcherRR, isActionSubmission = formMethod != null && ["POST", "PUT", "PATCH", "DELETE"].includes(formMethod.toUpperCase());
@@ -30761,7 +30761,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
       submission: void 0,
       data
     } : IDLE_FETCHER2;
-  if (state === "submitting" && formMethod && formAction && formEncType && (formData || json4 !== void 0 || text !== void 0)) {
+  if (state === "submitting" && formMethod && formAction && formEncType && (formData || json6 !== void 0 || text !== void 0)) {
     if (isActionSubmission)
       return {
         state,
@@ -30770,7 +30770,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
         formAction,
         formEncType,
         formData,
-        json: json4,
+        json: json6,
         text,
         // @ts-expect-error formData/json/text are mutually exclusive in the type,
         // so TS can't be sure these meet that criteria, but as a straight
@@ -30780,7 +30780,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
           action: formAction,
           encType: formEncType,
           formData,
-          json: json4,
+          json: json6,
           text,
           key: ""
         },
@@ -30797,7 +30797,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
         formAction,
         formEncType,
         formData,
-        json: json4,
+        json: json6,
         text,
         // @ts-expect-error formData/json/text are mutually exclusive in the type,
         // so TS can't be sure these meet that criteria, but as a straight
@@ -30807,7 +30807,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
           action: formAction,
           encType: formEncType,
           formData,
-          json: json4,
+          json: json6,
           text,
           key: ""
         },
@@ -30819,7 +30819,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
         formAction,
         formEncType,
         formData,
-        json: json4,
+        json: json6,
         text,
         // @ts-expect-error formData/json/text are mutually exclusive in the type,
         // so TS can't be sure these meet that criteria, but as a straight
@@ -30829,7 +30829,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
           action: formAction,
           encType: formEncType,
           formData,
-          json: json4,
+          json: json6,
           text,
           key: ""
         },
@@ -30844,7 +30844,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
         formAction,
         formEncType,
         formData,
-        json: json4,
+        json: json6,
         text,
         // @ts-expect-error formData/json/text are mutually exclusive in the type,
         // so TS can't be sure these meet that criteria, but as a straight
@@ -30854,7 +30854,7 @@ function convertRouterFetcherToRemixFetcher(fetcherRR) {
           action: url.pathname + url.search,
           encType: formEncType,
           formData,
-          json: json4,
+          json: json6,
           text,
           key: ""
         },
@@ -31175,17 +31175,17 @@ function _nonIterableRest() {
   throw new TypeError(`Invalid attempt to destructure non-iterable instance.
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
 }
-function _toPrimitive(input3, hint) {
-  if (typeof input3 != "object" || input3 === null)
-    return input3;
-  var prim = input3[Symbol.toPrimitive];
+function _toPrimitive(input4, hint) {
+  if (typeof input4 != "object" || input4 === null)
+    return input4;
+  var prim = input4[Symbol.toPrimitive];
   if (prim !== void 0) {
-    var res = prim.call(input3, hint || "default");
+    var res = prim.call(input4, hint || "default");
     if (typeof res != "object")
       return res;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
-  return (hint === "string" ? String : Number)(input3);
+  return (hint === "string" ? String : Number)(input4);
 }
 function _toPropertyKey(arg) {
   var key = _toPrimitive(arg, "string");
@@ -32014,23 +32014,23 @@ function sendShopifyAnalytics(event, shopDomain) {
   let { eventName, payload } = event;
   if (!payload.hasUserConsent)
     return Promise.resolve();
-  let events = [];
+  let events2 = [];
   if (eventName === AnalyticsEventName.PAGE_VIEW) {
     let pageViewPayload = payload;
-    events = events.concat(
+    events2 = events2.concat(
       pageView(pageViewPayload),
       pageView2(pageViewPayload)
     );
   } else
-    eventName === AnalyticsEventName.ADD_TO_CART && (events = events.concat(
+    eventName === AnalyticsEventName.ADD_TO_CART && (events2 = events2.concat(
       addToCart(payload)
     ));
-  return events.length ? sendToShopify(events, shopDomain) : Promise.resolve();
+  return events2.length ? sendToShopify(events2, shopDomain) : Promise.resolve();
 }
 var ERROR_MESSAGE = "sendShopifyAnalytics request is unsuccessful";
-function sendToShopify(events, shopDomain) {
+function sendToShopify(events2, shopDomain) {
   let eventsToBeSent = {
-    events,
+    events: events2,
     metadata: {
       event_sent_at_ms: Date.now()
     }
@@ -32292,7 +32292,7 @@ var Image = React7.forwardRef(
     data,
     decoding = "async",
     height = "auto",
-    loader: loader32 = shopifyLoader,
+    loader: loader33 = shopifyLoader,
     loaderOptions,
     loading = "lazy",
     sizes,
@@ -32373,7 +32373,7 @@ var Image = React7.forwardRef(
         decoding,
         height,
         imageWidths,
-        loader: loader32,
+        loader: loader33,
         loading,
         normalizedProps,
         passthroughProps,
@@ -32387,7 +32387,7 @@ var Image = React7.forwardRef(
         crop,
         decoding,
         imageWidths,
-        loader: loader32,
+        loader: loader33,
         loading,
         normalizedProps,
         passthroughProps,
@@ -32404,14 +32404,14 @@ var Image = React7.forwardRef(
     decoding,
     height,
     imageWidths,
-    loader: loader32 = shopifyLoader,
+    loader: loader33 = shopifyLoader,
     loading,
     normalizedProps,
     passthroughProps,
     width
   }, ref) => {
     let fixed = React7.useMemo(() => {
-      let intWidth = getNormalizedFixedUnit(width), intHeight = getNormalizedFixedUnit(height), fixedAspectRatio = aspectRatio || (unitsMatch(normalizedProps.width, normalizedProps.height) ? [intWidth, intHeight].join("/") : normalizedProps.aspectRatio ? normalizedProps.aspectRatio : void 0), sizesArray = imageWidths === void 0 ? void 0 : generateSizes(imageWidths, fixedAspectRatio, crop), fixedHeight = intHeight || (fixedAspectRatio && intWidth ? intWidth * (parseAspectRatio(fixedAspectRatio) ?? 1) : void 0), srcSet = generateSrcSet(normalizedProps.src, sizesArray, loader32), src = loader32({
+      let intWidth = getNormalizedFixedUnit(width), intHeight = getNormalizedFixedUnit(height), fixedAspectRatio = aspectRatio || (unitsMatch(normalizedProps.width, normalizedProps.height) ? [intWidth, intHeight].join("/") : normalizedProps.aspectRatio ? normalizedProps.aspectRatio : void 0), sizesArray = imageWidths === void 0 ? void 0 : generateSizes(imageWidths, fixedAspectRatio, crop), fixedHeight = intHeight || (fixedAspectRatio && intWidth ? intWidth * (parseAspectRatio(fixedAspectRatio) ?? 1) : void 0), srcSet = generateSrcSet(normalizedProps.src, sizesArray, loader33), src = loader33({
         src: normalizedProps.src,
         width: intWidth,
         height: fixedHeight,
@@ -32429,7 +32429,7 @@ var Image = React7.forwardRef(
       crop,
       height,
       imageWidths,
-      loader32,
+      loader33,
       normalizedProps,
       width
     ]);
@@ -32457,7 +32457,7 @@ var Image = React7.forwardRef(
     crop,
     decoding,
     imageWidths,
-    loader: loader32 = shopifyLoader,
+    loader: loader33 = shopifyLoader,
     loading,
     normalizedProps,
     passthroughProps,
@@ -32465,7 +32465,7 @@ var Image = React7.forwardRef(
     sizes
   }, ref) => {
     let fluid = React7.useMemo(() => {
-      let sizesArray = imageWidths === void 0 ? void 0 : generateSizes(imageWidths, normalizedProps.aspectRatio, crop), placeholderHeight = normalizedProps.aspectRatio && placeholderWidth ? placeholderWidth * (parseAspectRatio(normalizedProps.aspectRatio) ?? 1) : void 0, srcSet = generateSrcSet(normalizedProps.src, sizesArray, loader32), src = loader32({
+      let sizesArray = imageWidths === void 0 ? void 0 : generateSizes(imageWidths, normalizedProps.aspectRatio, crop), placeholderHeight = normalizedProps.aspectRatio && placeholderWidth ? placeholderWidth * (parseAspectRatio(normalizedProps.aspectRatio) ?? 1) : void 0, srcSet = generateSrcSet(normalizedProps.src, sizesArray, loader33), src = loader33({
         src: normalizedProps.src,
         width: placeholderWidth,
         height: placeholderHeight,
@@ -32476,7 +32476,7 @@ var Image = React7.forwardRef(
         srcSet,
         src
       };
-    }, [crop, imageWidths, loader32, normalizedProps, placeholderWidth]);
+    }, [crop, imageWidths, loader33, normalizedProps, placeholderWidth]);
     return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
       "img",
       {
@@ -32535,9 +32535,9 @@ function getNormalizedFixedUnit(value) {
 function isFixedWidth(width) {
   return typeof width == "number" || typeof width == "string" && /\d(px|em|rem)$/.test(width);
 }
-function generateSrcSet(src, sizesArray, loader32 = shopifyLoader) {
+function generateSrcSet(src, sizesArray, loader33 = shopifyLoader) {
   return src ? (sizesArray == null ? void 0 : sizesArray.length) === 0 || !sizesArray ? src : sizesArray.map(
-    (size, i6) => `${loader32({
+    (size, i6) => `${loader33({
       src,
       width: size.width,
       height: size.height,
@@ -33173,12 +33173,12 @@ async function callRouteActionRR({
 }
 async function callRouteLoaderRR({
   loadContext,
-  loader: loader32,
+  loader: loader33,
   params,
   request,
   routeId
 }) {
-  let result = await loader32({
+  let result = await loader33({
     request: stripDataParam(stripIndexParam(request)),
     context: loadContext,
     params
@@ -33615,8 +33615,8 @@ function CacheLong(overrideOptions) {
 function CacheCustom(overrideOptions) {
   return overrideOptions;
 }
-function parseJSON(json4) {
-  return String(json4).includes("__proto__") ? JSON.parse(json4, noproto) : JSON.parse(json4);
+function parseJSON(json6) {
+  return String(json6).includes("__proto__") ? JSON.parse(json6, noproto) : JSON.parse(json6);
 }
 function noproto(k2, v4) {
   if (k2 !== "__proto__")
@@ -34402,9 +34402,9 @@ function generateSeoTags(seoInput) {
     }
   return tagResults.flat().sort((a12, b6) => a12.key.localeCompare(b6.key));
 }
-function generateTag(tagName, input3, group) {
+function generateTag(tagName, input4, group) {
   let tag = { tag: tagName, props: {}, key: "" };
-  return tagName === "title" ? (tag.children = input3.title, tag.key = generateKey(tag), tag) : tagName === "script" ? (tag.children = typeof input3.children == "string" ? input3.children : "", tag.key = generateKey(tag, group), delete input3.children, tag.props = input3, tag) : (tag.props = input3, Object.keys(tag.props).forEach(
+  return tagName === "title" ? (tag.children = input4.title, tag.key = generateKey(tag), tag) : tagName === "script" ? (tag.children = typeof input4.children == "string" ? input4.children : "", tag.key = generateKey(tag, group), delete input4.children, tag.props = input4, tag) : (tag.props = input4, Object.keys(tag.props).forEach(
     (key) => !tag.props[key] && delete tag.props[key]
   ), tag.key = generateKey(tag, group), tag);
 }
@@ -34694,10 +34694,10 @@ var USER_ERROR_FRAGMENT = `#graphql
   }
 `;
 function cartCreateDefault(options) {
-  return async (input3, optionalParams) => {
+  return async (input4, optionalParams) => {
     let { cartId, ...restOfOptionalParams } = optionalParams || {}, { cartCreate } = await options.storefront.mutate(CART_CREATE_MUTATION(options.cartFragment), {
       variables: {
-        input: input3,
+        input: input4,
         ...restOfOptionalParams
       }
     });
@@ -37573,9 +37573,9 @@ function missingClass(string, prefix2) {
   let regex = new RegExp(` ?${prefix2}`, "g");
   return string.match(regex) === null;
 }
-function formatText(input3) {
-  if (input3)
-    return typeof input3 != "string" ? input3 : (0, import_typographic_base.default)(input3, { locale: "en-us" }).replace(
+function formatText(input4) {
+  if (input4)
+    return typeof input4 != "string" ? input4 : (0, import_typographic_base.default)(input4, { locale: "en-us" }).replace(
       /\s([^\s<]+)\s*$/g,
       "\xA0$1"
     );
@@ -38084,7 +38084,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
 function DesktopHeader({ isHome, menu, openCart, title }) {
   (0, import_react56.useEffect)(() => {
     customerid = localStorage.getItem("customerId"), console.log(customerid, "LoginScreen000000000000");
-  }, []), console.log("title", title), console.log("menu", menu);
+  }, []);
   let params = useParams(), { y: y6 } = useWindowScroll_default();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
     "header",
@@ -39149,7 +39149,7 @@ function ProductCard({
   label,
   className,
   loading,
-  onClick,
+  onClick: onClick2,
   quickAdd
 }) {
   var _a2, _b;
@@ -39174,7 +39174,7 @@ function ProductCard({
     /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
       Link3,
       {
-        onClick,
+        onClick: onClick2,
         to: `/products/${product2.handle}`,
         prefetch: "intent",
         children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: clsx_m_default("grid gap-4", className), children: [
@@ -40903,7 +40903,7 @@ function Address({ address, defaultAddress }) {
 // app/components/Modal.jsx
 var import_jsx_dev_runtime17 = __toESM(require_jsx_dev_runtime());
 function Modal({ children, cancelLink }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
+  return console.log(children, "children"), /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
     "div",
     {
       className: "relative z-50",
@@ -40914,7 +40914,7 @@ function Modal({ children, cancelLink }) {
       children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "fixed inset-0 transition-opacity bg-opacity-75 bg-primary/40" }, void 0, !1, {
           fileName: "app/components/Modal.jsx",
-          lineNumber: 12,
+          lineNumber: 13,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "fixed inset-0 z-50 overflow-y-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "flex items-center justify-center min-h-full p-4 text-center sm:p-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
@@ -40937,7 +40937,7 @@ function Modal({ children, cancelLink }) {
                   className: "p-4 -m-4 transition text-primary hover:text-primary/50",
                   children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(IconClose, { "aria-label": "Close panel" }, void 0, !1, {
                     fileName: "app/components/Modal.jsx",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 17
                   }, this)
                 },
@@ -40945,13 +40945,13 @@ function Modal({ children, cancelLink }) {
                 !1,
                 {
                   fileName: "app/components/Modal.jsx",
-                  lineNumber: 27,
+                  lineNumber: 28,
                   columnNumber: 15
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/components/Modal.jsx",
-                lineNumber: 26,
+                lineNumber: 27,
                 columnNumber: 13
               }, this),
               children
@@ -40961,17 +40961,17 @@ function Modal({ children, cancelLink }) {
           !0,
           {
             fileName: "app/components/Modal.jsx",
-            lineNumber: 15,
+            lineNumber: 16,
             columnNumber: 11
           },
           this
         ) }, void 0, !1, {
           fileName: "app/components/Modal.jsx",
-          lineNumber: 14,
+          lineNumber: 15,
           columnNumber: 9
         }, this) }, void 0, !1, {
           fileName: "app/components/Modal.jsx",
-          lineNumber: 13,
+          lineNumber: 14,
           columnNumber: 7
         }, this)
       ]
@@ -40980,7 +40980,7 @@ function Modal({ children, cancelLink }) {
     !0,
     {
       fileName: "app/components/Modal.jsx",
-      lineNumber: 5,
+      lineNumber: 6,
       columnNumber: 5
     },
     this
@@ -41553,13 +41553,13 @@ function PriceRangeFilter({ max, min }) {
   }, this);
 }
 function filterInputToParams(type, rawInput, params) {
-  let input3 = typeof rawInput == "string" ? JSON.parse(rawInput) : rawInput;
+  let input4 = typeof rawInput == "string" ? JSON.parse(rawInput) : rawInput;
   switch (type) {
     case "PRICE_RANGE":
-      input3.price.min && params.set("minPrice", input3.price.min), input3.price.max && params.set("maxPrice", input3.price.max);
+      input4.price.min && params.set("minPrice", input4.price.min), input4.price.max && params.set("maxPrice", input4.price.max);
       break;
     case "LIST":
-      Object.entries(input3).forEach(([key, value]) => {
+      Object.entries(input4).forEach(([key, value]) => {
         if (typeof value == "string")
           params.set(key, value);
         else if (typeof value == "boolean")
@@ -41758,7 +41758,7 @@ function FeaturedProducts({
     columnNumber: 5
   }, this);
 }
-function FeatureProductsContent({ count = 4, onClick, products }) {
+function FeatureProductsContent({ count = 4, onClick: onClick2, products }) {
   let id = (0, import_react69.useId)();
   return products ? (products == null ? void 0 : products.length) === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(Text, { format: !0, children: "No products found." }, void 0, !1, {
     fileName: "app/components/FeaturedProducts.jsx",
@@ -41768,7 +41768,7 @@ function FeatureProductsContent({ count = 4, onClick, products }) {
     ProductCard,
     {
       product: product2,
-      onClick,
+      onClick: onClick2,
       quickAdd: !0
     },
     product2.id,
@@ -42854,7 +42854,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-NR43BKW3.css";
+var app_default = "/build/_assets/app-IZIKDIS7.css";
 
 // app/hooks/useAnalytics.jsx
 var import_react77 = __toESM(require_react());
@@ -43829,7 +43829,7 @@ async function loader3({ params, request, context }) {
       }
     }
   );
-  if (console.log(collection2, "--------------"), !collection2)
+  if (!collection2)
     throw new Response("collection", { status: 404 });
   let seo = seoPayload.collection({ collection: collection2, url: request.url });
   return json3({
@@ -43938,7 +43938,9 @@ function Collection() {
   }, this);
 }
 var COLLECTION_QUERY = `#graphql
-  query CollectionDetails(
+  query 
+  
+  CollectionDetails(
     $handle: String!
     $country: CountryCode
     $language: LanguageCode
@@ -44051,8 +44053,8 @@ __export(locale_products_productHandle_exports, {
   headers: () => headers2,
   loader: () => loader4
 });
-var import_react86 = __toESM(require_react());
-var import_react88 = __toESM(require_react());
+var import_react89 = __toESM(require_react());
+var import_react91 = __toESM(require_react());
 
 // node_modules/react-icons/lib/esm/iconBase.js
 var import_react85 = __toESM(require_react());
@@ -44132,11 +44134,1017 @@ function BsXCircle(props) {
 }
 
 // app/routes/($locale).products.$productHandle.jsx
-var import_react_modal = __toESM(require_lib()), import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), headers2 = routeHeaders, input, input2, output, output2, outputContainer, outputContainer2, customerid2;
+var import_react_modal2 = __toESM(require_lib());
+
+// app/components/products/MessageWrite.jsx
+var import_react86 = __toESM(require_react()), import_react_modal = __toESM(require_lib());
+var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), input, input2, output, output2, outputContainer, outputContainer2, customerid2;
+function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
+  let [name, setName] = (0, import_react86.useState)(EditMess || ""), [name2, setName2] = (0, import_react86.useState)(editEndMess || ""), [fileData, setFileData] = (0, import_react86.useState)([]), [valToGen, setValToGen] = (0, import_react86.useState)(""), [modalIsOpen, setIsOpen] = (0, import_react86.useState)(!1), [aiText, setaiText] = (0, import_react86.useState)(""), [modalIsOpen2, setIsOpen2] = (0, import_react86.useState)(!1), [errorVal, setErrorVal] = (0, import_react86.useState)([]), [clickedItem, setClickedItem] = (0, import_react86.useState)(!1), [showNextBtn, setShowNextBtn] = (0, import_react86.useState)(!1), [csvFile, setCsvFile] = (0, import_react86.useState)(""), [bulkUploadDiv, setbulkUploadDiv] = (0, import_react86.useState)(!0), [lenCsvData, setLenCsvData] = (0, import_react86.useState)(""), [usAddress, setUsAddress] = (0, import_react86.useState)(null), [nonusAddress, setnonUsAddress] = (0, import_react86.useState)(null);
+  input2 = document.querySelector(".inputText2"), output2 = document.querySelector(".output2"), outputContainer2 = document.querySelector(".secDiv");
+  let remainingWord = 450 - name.length, remainSign = 50 - name2.length, customStyles = {
+    content: {
+      top: "60%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      maxWidth: "620px",
+      background: "#fff",
+      width: "100%",
+      padding: "30px",
+      maxHeight: "500px",
+      zIndex: "2",
+      position: "relative"
+    }
+  };
+  async function checkUserLogged() {
+    if (!customerid2)
+      alert("please Login First");
+    else if (name.length == 0)
+      alert("Message Can not be empty ");
+    else {
+      let reqField, checkWord = "[First Name]", checkWord2 = "[Last Name]";
+      fileData.length ? (fileData.map((obj) => {
+        let subName = name;
+        obj["First Name"] && (subName = subName.replace(/\[First Name\]/g, obj["First Name"])), obj["Last Name"] && (subName = subName.replace(/\[Last Name\]/g, obj["Last Name"])), obj.msgData = subName;
+      }), console.log(fileData, "fileData"), reqField = {
+        msg: name,
+        signOffText: name2,
+        csvFileBulk: csvFile || null,
+        csvFileLen: lenCsvData || "1",
+        usCount: usAddress,
+        nonUsCount: nonusAddress,
+        bulkCsvData: fileData
+      }) : reqField = {
+        msg: name,
+        signOffText: name2,
+        csvFileBulk: csvFile || null,
+        csvFileLen: lenCsvData || "1",
+        usCount: usAddress,
+        nonUsCount: nonusAddress,
+        bulkCsvData: fileData || null
+      }, localStorage.setItem("reqFielddInCart", JSON.stringify(reqField)), setProductShow(!1), console.log(name, "namefield");
+    }
+  }
+  function AfterUpload() {
+    return selectedFile ? (setShowBox(!1), /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: showNextBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, !1, {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 124,
+        columnNumber: 33
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 123,
+        columnNumber: 29
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { children: [
+        " Number of recipient Uploaded:",
+        lenCsvData
+      ] }, void 0, !0, {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 126,
+        columnNumber: 29
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/products/MessageWrite.jsx",
+      lineNumber: 122,
+      columnNumber: 25
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#ef6e6e] text-[#fff] p-2 rounded", onClick: () => uploadCsvFile(), children: "Upload" }, void 0, !1, {
+      fileName: "app/components/products/MessageWrite.jsx",
+      lineNumber: 129,
+      columnNumber: 25
+    }, this) }, void 0, !1, {
+      fileName: "app/components/products/MessageWrite.jsx",
+      lineNumber: 119,
+      columnNumber: 17
+    }, this) }, void 0, !1, {
+      fileName: "app/components/products/MessageWrite.jsx",
+      lineNumber: 118,
+      columnNumber: 20
+    }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", {}, void 0, !1, {
+      fileName: "app/components/products/MessageWrite.jsx",
+      lineNumber: 138,
+      columnNumber: 20
+    }, this);
+  }
+  input && input.addEventListener("input", processInput);
+  function resize_to_fit() {
+    let fontSize = window.getComputedStyle(output).fontSize;
+    output.style.fontSize = parseFloat(fontSize) - 1 + "px", output.clientHeight >= outputContainer.clientHeight && resize_to_fit();
+  }
+  async function processInput() {
+    output.innerHTML = await this.value, output.style.fontSize = "50px", resize_to_fit();
+  }
+  function resize_to_fit2() {
+    let fontSize = window.getComputedStyle(output2).fontSize;
+    output2.style.fontSize = parseFloat(fontSize) - 1 + "px", output2.clientHeight >= outputContainer2.clientHeight && resize_to_fit2();
+  }
+  async function processInput2() {
+    output2.innerHTML = await this.value, output2.style.fontSize = output.style.fontSize, resize_to_fit2();
+  }
+  input2 && input2.addEventListener("input", processInput2);
+  let handleFileChange = (event) => {
+    let file = event.target.files[0];
+    if (file) {
+      let reader = new FileReader(), keyToRemove = "Type";
+      reader.onload = (e4) => {
+        let csvData = e4.target.result, jsonData = csvToJson(csvData);
+        console.log(jsonData, "jsonData^^^^^^^^^^^^^^^^^");
+        let cleanedArray = jsonData.map((obj) => {
+          let cleanedObj = {};
+          return Object.keys(obj).forEach((key) => {
+            let newKey = key.replace(/"/g, ""), newValue = obj[key].replace(/"/g, "");
+            cleanedObj[newKey] = newValue;
+          }), cleanedObj;
+        });
+        console.log(cleanedArray, "cleaned Array");
+        let ab = cleanedArray.map((item) => {
+          let newData = { ...item };
+          return delete newData['"Type"'], newData;
+        });
+        console.log(ab, "fiteredDatat,========="), setSelectedFile(file), setFileData(ab);
+      }, reader.readAsText(file);
+    }
+  };
+  function csvToJson(csv) {
+    for (var lines = csv.split(`
+`), result = [], headers12 = lines[0].split(","), i6 = 1; i6 < lines.length; i6++) {
+      var currentLine = lines[i6].split(",");
+      if (!(currentLine.length === 1 && currentLine[0].trim() === "")) {
+        for (var obj = {}, j5 = 0; j5 < headers12.length; j5++)
+          obj[headers12[j5]] = currentLine[j5];
+        result.push(obj);
+      }
+    }
+    return result;
+  }
+  async function uploadCsvFile() {
+    let aa = [], usCount = 0, nonUSCount = 0, found = !1, replacedMsg = [];
+    if (setbulkUploadDiv(!1), fileData.length)
+      console.log(fileData.length, "====="), setLenCsvData(fileData.length);
+    else {
+      aa.push("it is empty please add addresses"), setErrorVal(aa), setIsOpen2(!0), setTimeout(() => setIsOpen2(!1), 3e3);
+      return;
+    }
+    let reqField = ["First Name", "Last Name", "Address", "City", "State/Province", "Postal Code"], alphabetPattern = /^[A-Za-z]+$/, mailText = /@.*\.com$/;
+    for (let index = 0; index < fileData.length; index++) {
+      let obj = fileData[index];
+      console.log(obj["First Name"], "Name data");
+      let emptyKeys = [], numkeys = [], targetField = "First Name", emailValid = "Email", countryCheck = "Country";
+      for (let key of reqField)
+        obj[key] === "" && emptyKeys.push(key);
+      alphabetPattern.test(obj[targetField]) == !1 && (aa.push(`'${targetField}' at row ${index} includes a number.`), console.log(`Index: ${index}, '${targetField}' includes a number.`)), obj[countryCheck] === "USA" || obj[countryCheck].toLowerCase() === "" || obj[countryCheck].toLowerCase() === " " || obj[countryCheck].toLowerCase() === "u.s.a" || obj[countryCheck].toLowerCase() === "u.s" || obj[countryCheck].toLowerCase() === "usa" || obj[countryCheck].toLowerCase() === "us" || obj[countryCheck].toLowerCase() === "america" || obj[countryCheck].toLowerCase() === "united states" || obj[countryCheck].toLowerCase() === "united states of america" || obj[countryCheck].toLowerCase() == null ? usCount++ : nonUSCount++, mailText.test(obj[emailValid]) == !1 && (aa.push(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`), console.log(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`)), emptyKeys.length > 0 && (aa.push(` ${emptyKeys.join(", ")} is empty please check at row ${index}`), console.log(`Index: ${index}, Empty Keys: [${emptyKeys.join(", ")}]`, numkeys)), aa.length > 0 && (setIsOpen2(!0), setTimeout(() => setIsOpen2(!1), 3e3), found = !0);
+    }
+    setErrorVal(aa), setUsAddress(usCount), setnonUsAddress(nonUSCount), console.log(replacedMsg, "replacedMsg"), found ? console.log("Found  in the array.") : (console.log(" not found in the array."), uploadCsvFileOnClick());
+  }
+  async function uploadCsvFileOnClick() {
+    try {
+      console.log("uploadCsvFile OnClick");
+      let json6 = await (await fetch(
+        "https://api.simplynoted.com/api/orders/bulk-orders-upload-s3",
+        {
+          method: "POST",
+          timeout: 0,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko"
+          },
+          body: JSON.stringify(fileData)
+        }
+      )).json();
+      setCsvFile(json6.result), console.log(json6, "CSV UPLOAD DATA ---------------"), json6.result && setShowNextBtn(!0);
+    } catch (error) {
+      console.log(error, "file upload error");
+    }
+  }
+  async function onCancl() {
+    setIsOpen(!1), setValToGen(null), setaiText(null), setValue("abbabbbbb");
+  }
+  async function onInsetClick() {
+    output.style.fontSize = "20px", setName(aiText), setIsOpen(!1), setaiText(""), setValToGen(null);
+  }
+  async function aiGenrateMess() {
+    try {
+      let json6 = await (await fetch("https://api.simplynoted.com/api/ai-generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc"
+        },
+        body: JSON.stringify({ msg: valToGen })
+      })).json();
+      setaiText(json6.message), console.log(json6.message, "AiGenrated Response____________");
+    } catch (error) {
+      console.log(error, "error at Ai generated message ");
+    }
+  }
+  async function onChnageNameVal(nameData) {
+    setName(nameData), console.log(nameData, "nameData----");
+  }
+  async function onchnageOfRegardBox(data) {
+    setName2(data);
+  }
+  let ref = (0, import_react86.useRef)(null), ref1 = (0, import_react86.useRef)(null), ref2 = (0, import_react86.useRef)(null);
+  (0, import_react86.useEffect)(() => {
+    input = ref.current, output = ref1.current, outputContainer = ref2.current, customerid2 = localStorage.getItem("customerId");
+  }, []);
+  async function firstNameBtn(data) {
+    console.log(data), setName((prevString) => prevString + data);
+  }
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "mainDivForBox flex gap-10", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "outer", className: "outerr", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "outerSec", ref: ref2, children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd", ref: ref1, className: "output m-5 ", children: name }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 420,
+          columnNumber: 25
+        }, this) }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 419,
+          columnNumber: 21
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "secDiv", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd2", className: "output2", children: name2 }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 425,
+          columnNumber: 25
+        }, this) }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 424,
+          columnNumber: 21
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 418,
+        columnNumber: 17
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "textAreaView w-[600px]", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "example-one-input", value: name, placeholder: "Enter your custom message text here...", ref, className: "inputText", maxlength: "450", onChange: (e4) => onChnageNameVal(e4.target.value), "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 432,
+          columnNumber: 21
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("span", { className: "charLeft", children: [
+          remainingWord,
+          " characters remaining"
+        ] }, void 0, !0, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 434,
+          columnNumber: 21
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 434,
+          columnNumber: 91
+        }, this),
+        show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "addFirstnameBtn p-2 m-2", value: "[First Name]", onClick: (e4) => firstNameBtn(e4.target.value), children: "First Name" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 437,
+            columnNumber: 29
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "addFirstnameBtn p-2", value: "[Last Name]", onClick: (e4) => firstNameBtn(e4.target.value), children: "Last Name" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 439,
+            columnNumber: 29
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 436,
+          columnNumber: 25
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex gap-4 mt-5", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { className: "cursor-pointer", onClick: () => setIsOpen(!0), children: [
+            "Try our new AI Assistant to ",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 445,
+              columnNumber: 118
+            }, this),
+            " help write your message"
+          ] }, void 0, !0, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 445,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", value: name2, "v-model": "keyword", id: "example-one-input2", className: "inputText2", maxlength: "50", onChange: (e4) => onchnageOfRegardBox(e4.target.value), placeholder: "Enter here...", "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 446,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 447,
+            columnNumber: 36
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 444,
+          columnNumber: 21
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("span", { className: "charLeft ml-40", children: [
+          remainSign,
+          " characters remaining"
+        ] }, void 0, !0, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 449,
+          columnNumber: 21
+        }, this),
+        show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-[263px] mt-10 font-bold", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { children: "As of july5,2023, we have upgraded the bulk order template.Please download the new template below" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 453,
+            columnNumber: 33
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 452,
+            columnNumber: 29
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "custom_testing", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h3", { className: "font-bold", children: "Bulk Address Upload" }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 458,
+              columnNumber: 37
+            }, this) }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 457,
+              columnNumber: 33
+            }, this),
+            bulkUploadDiv ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "file", name: "file", accept: ".csv", className: "upload-input", onChange: (e4) => handleFileChange(e4) }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 463,
+              columnNumber: 45
+            }, this) }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 462,
+              columnNumber: 41
+            }, this) }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 461,
+              columnNumber: 37
+            }, this) : "",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("p", { children: [
+              " Download the",
+              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("a", { href: "https://api.simplynoted.com/docs/bulk-template", className: "text-[blue]", children: " Bulk Order Template" }, void 0, !1, {
+                fileName: "app/components/products/MessageWrite.jsx",
+                lineNumber: 468,
+                columnNumber: 49
+              }, this),
+              " "
+            ] }, void 0, !0, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 468,
+              columnNumber: 33
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(AfterUpload, {}, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 469,
+              columnNumber: 33
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 456,
+            columnNumber: 29
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 451,
+          columnNumber: 25
+        }, this),
+        !show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 474,
+          columnNumber: 29
+        }, this) }, void 0, !1, {
+          fileName: "app/components/products/MessageWrite.jsx",
+          lineNumber: 473,
+          columnNumber: 25
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 431,
+        columnNumber: 17
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/products/MessageWrite.jsx",
+      lineNumber: 417,
+      columnNumber: 13
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+      import_react_modal.default,
+      {
+        isOpen: modalIsOpen,
+        style: customStyles,
+        contentLabel: "Example Modal",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h2", { className: "font-bold text-xl w-[600px]", children: "AI Message Assistant" }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 490,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(BsXCircle, { className: "", onClick: () => onCancl() }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 491,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 489,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { className: " text-[#999999]", children: [
+            "Type in words or a phrase to use our AI Assistant to",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 494,
+              columnNumber: 107
+            }, this),
+            " help generate a great message"
+          ] }, void 0, !0, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 494,
+            columnNumber: 21
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 493,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "aiTextArea", value: aiText || valToGen, onChange: (e4) => setValToGen(e4.target.value), placeholder: "Example: Message for Birthday", maxlength: "450" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 497,
+            columnNumber: 21
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 496,
+            columnNumber: 17
+          }, this),
+          aiText ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonClass flex justify-start", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonDiv pr-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => onInsetClick(), children: "Insert" }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 506,
+              columnNumber: 29
+            }, this) }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 505,
+              columnNumber: 25
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#f0f0f0] text-[black] p-2 rounded ", onClick: () => onCancl(), children: "Cancel" }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 509,
+              columnNumber: 29
+            }, this) }, void 0, !1, {
+              fileName: "app/components/products/MessageWrite.jsx",
+              lineNumber: 508,
+              columnNumber: 25
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 504,
+            columnNumber: 21
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { class: "ai-generate", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { id: "generate-msg", disabled: "", onClick: () => aiGenrateMess(), children: "Generate Message" }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 502,
+            columnNumber: 25
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 501,
+            columnNumber: 21
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 482,
+        columnNumber: 13
+      },
+      this
+    ),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+      import_react_modal.default,
+      {
+        isOpen: modalIsOpen2,
+        style: customStyles,
+        contentLabel: "Example Modal",
+        children: errorVal.map(
+          (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: item }, void 0, !1, {
+            fileName: "app/components/products/MessageWrite.jsx",
+            lineNumber: 522,
+            columnNumber: 21
+          }, this)
+        )
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/components/products/MessageWrite.jsx",
+        lineNumber: 514,
+        columnNumber: 13
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/components/products/MessageWrite.jsx",
+    lineNumber: 416,
+    columnNumber: 9
+  }, this);
+}
+
+// app/components/products/AddCart.jsx
+var import_react87 = __toESM(require_react());
+var import_jsx_dev_runtime35 = __toESM(require_jsx_dev_runtime()), customerid3, senderAddressVal, reciverAddressVal, cartDataReq;
+function AddCart({ show, setProductShow, data, productData, selectFontValue: selectFontValue2, editOrderValue, shippingData }) {
+  console.log(shippingData, "shippingData");
+  let [returnAddress, setReturnAddress] = (0, import_react87.useState)([]), [recipientAddress, setRecipientAddress] = (0, import_react87.useState)([]), [selectedItem, setSelectedItem] = (0, import_react87.useState)(editOrderValue != null && editOrderValue.data ? editOrderValue.data.reciverAddress : null), [selectedItem2, setSelectedItem2] = (0, import_react87.useState)(editOrderValue != null && editOrderValue.data ? editOrderValue.data.senderAddress : null), [selectShipMode, setSelectShipMode] = (0, import_react87.useState)(null), [searchData, setsearchData] = (0, import_react87.useState)(null), [cardVal, setCardVal] = (0, import_react87.useState)(""), [cardPriceVal, setCardPriceVal] = (0, import_react87.useState)([]), [cardName, setCardName] = (0, import_react87.useState)(editOrderValue != null && editOrderValue.data ? editOrderValue.data.giftCardName : ""), [cardImg, setCardImg] = (0, import_react87.useState)(editOrderValue != null && editOrderValue.data ? editOrderValue.data.giftCardImg : ""), [cardPrice, setCardPrice] = (0, import_react87.useState)(editOrderValue != null && editOrderValue.data ? editOrderValue.data.giftCardPrice : ""), [MsgText, setMesgtext] = (0, import_react87.useState)("");
+  async function getRecipient() {
+    try {
+      let json6 = await (await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid3}&type=recipient`)).json();
+      setRecipientAddress(json6.result);
+    } catch (error) {
+      console.log(error, "Recipient error--------");
+    }
+  }
+  async function getReturn() {
+    try {
+      let json6 = await (await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid3}&type=return`)).json();
+      setReturnAddress(json6.result);
+    } catch (error) {
+      console.log(error, "Recipient error--------");
+    }
+  }
+  let handleCheckboxChange = (item) => {
+    console.log(item, "***********item"), setSelectedItem(item);
+  }, handleCheckboxChange2 = (item) => {
+    console.log(item, "***********item2"), setSelectedItem2(item);
+  }, handleBoxoNShipping = (item) => {
+    console.log(item, "shippingData----"), setSelectShipMode(item);
+  }, filteredList = (recipientAddress2, searchData2) => recipientAddress2.filter((dataobj) => bySearch(dataobj, searchData2)), bySearch = (dataobj, searchData2) => searchData2 ? Object.values(dataobj).some((field) => (
+    // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
+    field.toString().toLowerCase().includes(searchData2.toLowerCase())
+  )) : dataobj, cardvalFunc = async (item) => {
+    console.log(item, "cardVal-----"), setCardVal(item);
+    let selCardName = data.collection.products.edges[item].node;
+    console.log(selCardName, "selCardName--"), setCardName(selCardName.title), setCardImg(selCardName.featuredImage.url);
+    let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
+    console.log(arrCardPrice[0].node.price.amount, "---------abababababaababab");
+    let firstPrice2 = arrCardPrice[0].node.price.amount;
+    setCardPrice(firstPrice2), setCardPriceVal(arrCardPrice);
+  }, priceValFunc = async (item) => {
+    console.log(item, "PriceVAl"), setCardPrice(item || firstPrice);
+  }, refRec = (0, import_react87.useRef)(null), ref1 = (0, import_react87.useRef)(null);
+  (0, import_react87.useEffect)(() => {
+    reciverAddressVal = refRec.current, senderAddressVal = ref1.current, customerid3 = localStorage.getItem("customerId"), cartDataReq = JSON.parse(localStorage.getItem("reqFielddInCart")), console.log(cartDataReq, "cartDataReq"), setMesgtext(cartDataReq.msg), getRecipient(), getReturn();
+  }, []);
+  function onClickAddCartBtn() {
+    let CartData = [];
+    selectedItem && selectedItem2 && cardName && cardPrice && productData ? (CartData.push({ selectedItem, selectedItem2, cardName, cardPrice, productData }), console.log("ssssssssss"), navigate("/carts", { state: { data: CartData } })) : selectedItem && selectedItem2 && productData ? (CartData.push({ selectedItem, selectedItem2, productData }), console.log("ssssssssss"), navigate("/carts", { state: { data: CartData } }), console.log("ooooooooo")) : alert("please Select Address");
+  }
+  let navigate = useNavigate(), arrOfObj = {
+    productTitle: productData.product.title ? productData.product.title : null,
+    variant_id: productData.id,
+    price: productData.price.amount,
+    productImg: productData.image.url,
+    senderAddress: selectedItem2,
+    reciverAddress: selectedItem,
+    giftCardName: cardName || null,
+    giftCardImg: cardImg || null,
+    giftCardPrice: cardPrice || null,
+    messageData: MsgText,
+    fontFamily: selectFontValue2 || "tarzan",
+    productGetUrl: window.location.pathname,
+    endText: cartDataReq == null ? void 0 : cartDataReq.signOffText,
+    csvFileURL: cartDataReq == null ? void 0 : cartDataReq.csvFileBulk,
+    csvFileLen: cartDataReq == null ? void 0 : cartDataReq.csvFileLen,
+    usCount: cartDataReq == null ? void 0 : cartDataReq.usCount,
+    nonUSCount: cartDataReq == null ? void 0 : cartDataReq.nonUsCount,
+    csvBulkData: cartDataReq == null ? void 0 : cartDataReq.bulkCsvData,
+    shippingData: selectShipMode || "",
+    shippingMethodImage: shippingData ? shippingData.featuredImage.url : ""
+  }, keyUpdate1 = "messageData", keyUpdate2 = "reciverAddress", keyUpdate3 = "senderAddress", keyUpdate4 = "giftCardImg", keyUpdate5 = "giftCardName", keyUpdate6 = "giftCardPrice", keyUpdate7 = "endText";
+  function onClickAddCart() {
+    if ((editOrderValue == null ? void 0 : editOrderValue.index) >= 0) {
+      let storedData = JSON.parse(localStorage.getItem("mydata"));
+      console.log(storedData, "storedData"), editOrderValue.index >= 0 && editOrderValue.index < storedData.length && (storedData[editOrderValue.index][keyUpdate1] = cartDataReq != null && cartDataReq.msg ? cartDataReq == null ? void 0 : cartDataReq.msg : editOrderValue == null ? void 0 : editOrderValue.data.messageData, storedData[editOrderValue.index][keyUpdate2] = selectedItem, storedData[editOrderValue.index][keyUpdate3] = selectedItem2, storedData[editOrderValue.index][keyUpdate4] = cardImg || null, storedData[editOrderValue.index][keyUpdate5] = cardName || null, storedData[editOrderValue.index][keyUpdate6] = cardPrice, storedData[editOrderValue.index][keyUpdate7] = cartDataReq != null && cartDataReq.signOffText ? cartDataReq == null ? void 0 : cartDataReq.signOffText : editOrderValue == null ? void 0 : editOrderValue.data.endText), localStorage.setItem("mydata", JSON.stringify(storedData)), navigate("/carts");
+    } else if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
+      let existingDataString = localStorage.getItem("mydata");
+      console.log("cartDataReq");
+      let existingDataArray = [];
+      existingDataString && (existingDataArray = JSON.parse(existingDataString), localStorage.removeItem("mydata")), existingDataArray.push(arrOfObj);
+      let updatedDataString = JSON.stringify(existingDataArray);
+      localStorage.setItem("mydata", updatedDataString), navigate("/carts");
+    } else if (selectedItem && selectedItem2) {
+      let existingDataString = localStorage.getItem("mydata");
+      console.log("=-=existingDataString=-=-");
+      let existingDataArray = [];
+      existingDataString && (existingDataArray = JSON.parse(existingDataString), localStorage.removeItem("mydata")), existingDataArray.push(arrOfObj);
+      let updatedDataString = JSON.stringify(existingDataArray);
+      localStorage.setItem("mydata", updatedDataString), navigate("/carts");
+    } else
+      alert("please select the address");
+  }
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(import_jsx_dev_runtime35.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "  w-full h-full gap-2 mt-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "items-center font-bold flex text-2xl", onClick: () => setProductShow(!0), children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(BiSolidChevronLeft, { size: "50px" }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 233,
+        columnNumber: 107
+      }, this),
+      "Back To Product Customization"
+    ] }, void 0, !0, {
+      fileName: "app/components/products/AddCart.jsx",
+      lineNumber: 233,
+      columnNumber: 17
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-data", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Your Info (return/sender address)" }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 238,
+          columnNumber: 33
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 241,
+          columnNumber: 37
+        }, this) }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 240,
+          columnNumber: 33
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("input", { type: "text ", className: "w-full rounded p-3 mt-4", placeholder: "Search Addresses..." }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 244,
+          columnNumber: 37
+        }, this) }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 243,
+          columnNumber: 33
+        }, this),
+        returnAddress.map(
+          (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "w-full rounded p-3 mt-4 bg-[#fff] ", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
+              "input",
+              {
+                type: "checkbox",
+                value: item,
+                checked: (selectedItem2 == null ? void 0 : selectedItem2._id) === item._id,
+                onChange: () => handleCheckboxChange2(item)
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/products/AddCart.jsx",
+                lineNumber: 249,
+                columnNumber: 41
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("span", { children: [
+              "  ",
+              item.firstName,
+              " ",
+              item.lastName,
+              ", ",
+              item.city,
+              ", ",
+              item.state,
+              ", ",
+              item.zip,
+              ", ",
+              item.country
+            ] }, void 0, !0, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 255,
+              columnNumber: 41
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 248,
+            columnNumber: 37
+          }, this)
+        )
+      ] }, void 0, !0, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 237,
+        columnNumber: 29
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 236,
+        columnNumber: 25
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 235,
+        columnNumber: 21
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-data", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Recipient address" }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 264,
+          columnNumber: 33
+        }, this),
+        show ? /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("text", { children: "Recipient addresses were specified in your bulk order upload." }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 267,
+          columnNumber: 41
+        }, this) }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 266,
+          columnNumber: 37
+        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(import_jsx_dev_runtime35.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 274,
+            columnNumber: 45
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 273,
+            columnNumber: 41
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("input", { type: "text", onChange: (e4) => setsearchData(e4.target.value), className: "w-full rounded p-3 mt-4 ", placeholder: "Search Addresses..." }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 277,
+            columnNumber: 45
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 276,
+            columnNumber: 41
+          }, this),
+          filteredList(recipientAddress, searchData).map(
+            (item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "w-full rounded p-3 mt-4 bg-[#fff] ", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
+                "input",
+                {
+                  type: "checkbox",
+                  value: item,
+                  checked: (selectedItem == null ? void 0 : selectedItem._id) === item._id,
+                  onChange: () => handleCheckboxChange(item),
+                  ref: refRec
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/products/AddCart.jsx",
+                  lineNumber: 281,
+                  columnNumber: 49
+                },
+                this
+              ),
+              item.firstName,
+              " ",
+              item.lastName,
+              ", ",
+              item.city,
+              ", ",
+              item.state,
+              ", ",
+              item.zip,
+              ", ",
+              item.country
+            ] }, void 0, !0, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 280,
+              columnNumber: 45
+            }, this)
+          )
+        ] }, void 0, !0, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 272,
+          columnNumber: 37
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 263,
+        columnNumber: 29
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 262,
+        columnNumber: 25
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 261,
+        columnNumber: 21
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/products/AddCart.jsx",
+      lineNumber: 234,
+      columnNumber: 17
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
+      show ? /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: shippingData == null ? void 0 : shippingData.title }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 302,
+          columnNumber: 33
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { class: "shipping-methods", id: "shipping-options", children: shippingData == null ? void 0 : shippingData.variants.edges.map(
+          (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { class: "getProductId", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
+                "input",
+                {
+                  value: item,
+                  checked: selectShipMode === item,
+                  type: "radio",
+                  name: "radioGroup",
+                  onChange: () => handleBoxoNShipping(item)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/products/AddCart.jsx",
+                  lineNumber: 308,
+                  columnNumber: 41
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("label", { for: "Mail-Individual-Cards-Normally-(default)", children: item == null ? void 0 : item.node.title }, void 0, !1, {
+                fileName: "app/components/products/AddCart.jsx",
+                lineNumber: 314,
+                columnNumber: 41
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 307,
+              columnNumber: 37
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { class: "custom_variant_price", children: [
+              "$",
+              item == null ? void 0 : item.node.price.amount
+            ] }, void 0, !0, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 316,
+              columnNumber: 37
+            }, this)
+          ] }, "7027299254377", !0, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 306,
+            columnNumber: 37
+          }, this)
+        ) }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 304,
+          columnNumber: 33
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 301,
+        columnNumber: 29
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 300,
+        columnNumber: 25
+      }, this) : "",
+      /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-6 w-[50%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-grid mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "address-data", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("h3", { className: "text-2xl font-bold mt-6 mb-6", children: "Add a Gift Card" }, void 0, !1, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 370,
+          columnNumber: 33
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 372,
+            columnNumber: 37
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("select", { className: "w-full", value: "pppppp", onChange: (e4) => cardvalFunc(e4.target.value), children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("option", { className: "w-full", children: "Select Gift Card " }, void 0, !1, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 375,
+              columnNumber: 45
+            }, this),
+            data.collection.products.edges.map((item, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("option", { value: i6, children: item.node.title }, void 0, !1, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 377,
+              columnNumber: 49
+            }, this))
+          ] }, void 0, !0, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 374,
+            columnNumber: 41
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 373,
+            columnNumber: 37
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 371,
+          columnNumber: 33
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 382,
+            columnNumber: 37
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: cardPrice ? (
+            // <div>heelooo</div>
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("select", { name: "", id: "", className: "w-full", onChange: (e4) => priceValFunc(e4.target.value), children: cardPriceVal.map(
+              (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
+                "option",
+                {
+                  value: item.node.price.amount,
+                  children: item.node.title
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/products/AddCart.jsx",
+                  lineNumber: 388,
+                  columnNumber: 53
+                },
+                this
+              )
+            ) }, void 0, !1, {
+              fileName: "app/components/products/AddCart.jsx",
+              lineNumber: 386,
+              columnNumber: 45
+            }, this)
+          ) : /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("select", { name: "", id: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("option", { value: "", children: "Price card" }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 395,
+            columnNumber: 49
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 394,
+            columnNumber: 45
+          }, this) }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 383,
+            columnNumber: 37
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 381,
+          columnNumber: 33
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("input", { type: "checkbox", id: "", name: "", value: "" }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 409,
+            columnNumber: 37
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("text", { className: "ml-3", children: "Add Gift Card" }, void 0, !1, {
+            fileName: "app/components/products/AddCart.jsx",
+            lineNumber: 410,
+            columnNumber: 37
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/products/AddCart.jsx",
+          lineNumber: 408,
+          columnNumber: 33
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 369,
+        columnNumber: 29
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 368,
+        columnNumber: 25
+      }, this) }, void 0, !1, {
+        fileName: "app/components/products/AddCart.jsx",
+        lineNumber: 367,
+        columnNumber: 21
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/products/AddCart.jsx",
+      lineNumber: 298,
+      columnNumber: 17
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", onClick: () => onClickAddCart(), children: "Add To Cart" }, void 0, !1, {
+      fileName: "app/components/products/AddCart.jsx",
+      lineNumber: 418,
+      columnNumber: 21
+    }, this) }, void 0, !1, {
+      fileName: "app/components/products/AddCart.jsx",
+      lineNumber: 416,
+      columnNumber: 17
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/products/AddCart.jsx",
+    lineNumber: 232,
+    columnNumber: 13
+  }, this) }, void 0, !1, {
+    fileName: "app/components/products/AddCart.jsx",
+    lineNumber: 231,
+    columnNumber: 9
+  }, this);
+}
+
+// app/routes/($locale).products.$productHandle.jsx
+var import_jsx_dev_runtime36 = __toESM(require_jsx_dev_runtime()), headers2 = routeHeaders, input3, customerid4, recipientAddressVal, selectFontValue;
 async function loader4({ params, request, context }) {
   let { productHandle } = params;
   invariant4(productHandle, "Missing productHandle param, check route filename");
-  let selectedOptions = getSelectedProductOptions(request), { shop, product: product2 } = await context.storefront.query(PRODUCT_QUERY, {
+  let selectedOptions = getSelectedProductOptions(request), data = await context.storefront.query(GiftProduct, {
+    variables: {}
+  }), shippingData = await context.storefront.query(ShippingMethod, {
+    variables: {}
+  }), { shop, product: product2 } = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
       handle: productHandle,
       selectedOptions,
@@ -44146,15 +45154,13 @@ async function loader4({ params, request, context }) {
   });
   if (!(product2 != null && product2.id))
     throw new Response("product", { status: 404 });
-  if (!product2.selectedVariant)
-    return redirectToFirstVariant({ product: product2, request });
   let variants = context.storefront.query(VARIANTS_QUERY, {
     variables: {
       handle: productHandle,
       country: context.storefront.i18n.country,
       language: context.storefront.i18n.language
     }
-  }), recommended = getRecommendedProducts(context.storefront, product2.id), firstVariant = product2.variants.nodes[0], selectedVariant = product2.selectedVariant ?? firstVariant, productAnalytics = {
+  }), recommended = getRecommendedProducts(context.storefront, product2.id), firstVariant = product2.variants.nodes[0], selectedVariant = (product2.selectedVariant == null, firstVariant), productAnalytics = {
     productGid: product2.id,
     variantGid: selectedVariant.id,
     name: product2.title,
@@ -44167,6 +45173,8 @@ async function loader4({ params, request, context }) {
     url: request.url
   });
   return defer3({
+    shippingData,
+    data,
     variants,
     product: product2,
     shop,
@@ -44181,63 +45189,21 @@ async function loader4({ params, request, context }) {
     seo
   });
 }
-function redirectToFirstVariant({ product: product2, request }) {
-  let searchParams = new URLSearchParams(new URL(request.url).search), firstVariant = product2.variants.nodes[0];
-  for (let option of firstVariant.selectedOptions)
-    searchParams.set(option.name, option.value);
-  throw redirect3(`/products/${product2.handle}?${searchParams.toString()}`, 302);
-}
 function Product() {
-  let { product: product2, shop, recommended, variants } = useLoaderData2();
-  console.log(variants, "!1!!!!!!variants"), console.log(product2.variants.nodes[0].price, "productData-------------");
-  let { media, title, vendor, descriptionHtml } = product2, { shippingPolicy, refundPolicy } = shop, [name, setName] = (0, import_react88.useState)("Enter Your Text Here...."), [name2, setName2] = (0, import_react88.useState)(""), [show, setShow] = (0, import_react88.useState)(!1), [startDate, setStartDate] = (0, import_react88.useState)(/* @__PURE__ */ new Date()), [productshow, setProductShow] = (0, import_react88.useState)(!0), [recipientAddress, setRecipientAddress] = (0, import_react88.useState)(""), [returnAddress, setReturnAddress] = (0, import_react88.useState)(""), [modalIsOpen, setIsOpen] = (0, import_react88.useState)(!1), [aiText, setaiText] = (0, import_react88.useState)(""), [valToGen, setValToGen] = (0, import_react88.useState)("");
-  input2 = document.querySelector(".inputText2"), console.log(input, "PPPPPPPPPPPPPPPPPP"), output2 = document.querySelector(".output2"), outputContainer2 = document.querySelector(".secDiv"), input && input.addEventListener("input", processInput);
-  function resize_to_fit() {
-    let fontSize = window.getComputedStyle(output).fontSize;
-    output.style.fontSize = parseFloat(fontSize) - 1 + "px", console.log(output.clientHeight, "------------", outputContainer.clientHeight), output.clientHeight >= outputContainer.clientHeight && resize_to_fit();
-  }
-  async function processInput() {
-    console.log(input.value, "PPPPPPPPPPPPPPPPPPPPPPPPPPP", this.value), output.innerHTML = await this.value, output.style.fontSize = "60px", resize_to_fit();
-  }
-  function resize_to_fit2() {
-    let fontSize = window.getComputedStyle(output2).fontSize;
-    output2.style.fontSize = parseFloat(fontSize) - 1 + "px", console.log(output2.clientHeight, "------------", outputContainer2.clientHeight), output2.clientHeight >= outputContainer2.clientHeight && resize_to_fit2();
-  }
-  async function processInput2() {
-    output2.innerHTML = await this.value, output2.style.fontSize = "60px", resize_to_fit2();
-  }
-  input2 && input2.addEventListener("input", processInput2);
+  var _a2, _b, _c;
+  let { product: product2, shop, recommended, variants, data, shippingData } = useLoaderData2();
+  console.log(shippingData, "shippingData");
+  let datafornav = useLocation(), EditMess = (_b = (_a2 = datafornav.state) == null ? void 0 : _a2.data) == null ? void 0 : _b.messageData, editEndMess = (_c = datafornav.state) == null ? void 0 : _c.data.endText, editOrderValue = datafornav.state;
+  console.log(datafornav.state, "locationState");
+  let { media, title, vendor, descriptionHtml } = product2, { shippingPolicy, refundPolicy } = shop, [show, setShow] = (0, import_react91.useState)(!1), [productshow, setProductShow] = (0, import_react91.useState)(!0), [modalIsOpen2, setIsOpen2] = (0, import_react91.useState)(!1), [showBox, setShowBox] = (0, import_react91.useState)(!0), [selectedFile, setSelectedFile] = (0, import_react91.useState)(""), [fileData, setFileData] = (0, import_react91.useState)([]), [errorVal, setErrorVal] = (0, import_react91.useState)([]);
   function setFont() {
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaa");
     var selectFont = document.getElementById("font");
-    if (selectFont) {
-      var selectFontValue = selectFont.options[selectFont.selectedIndex].value;
-      console.log(selectFontValue, "=========="), selectFontValue && (document.getElementById("abcd").style.fontFamily = selectFontValue, document.getElementById("abcd2").style.fontFamily = selectFontValue);
-    }
+    selectFont && (selectFontValue = selectFont.options[selectFont.selectedIndex].value, selectFontValue && (document.getElementById("abcd").style.fontFamily = selectFontValue, document.getElementById("abcd2").style.fontFamily = selectFontValue));
   }
-  let ref = (0, import_react86.useRef)(null), ref1 = (0, import_react86.useRef)(null), ref2 = (0, import_react86.useRef)(null);
-  (0, import_react88.useEffect)(() => {
-    input = ref.current, output = ref1.current, outputContainer = ref2.current, console.log(input.className, output.className, outputContainer.className), customerid2 = localStorage.getItem("customerId"), console.log(customerid2, "customerId----------------"), getRecipient(), getReturn();
-  }, []), console.log(recipientAddress, "-----------------recipientAddress");
-  async function getRecipient() {
-    try {
-      let json4 = await (await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid2}&type=recipient`)).json();
-      console.log(json4, "getRecipient Response____________"), setRecipientAddress(json4.result);
-    } catch (error) {
-      console.log(error, "Recipient error--------");
-    }
-  }
-  async function getReturn() {
-    try {
-      let json4 = await (await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid2}&type=return`)).json();
-      console.log(json4, "getRecipient Response____________"), setReturnAddress(json4.result);
-    } catch (error) {
-      console.log(error, "Recipient error--------");
-    }
-  }
-  async function checkUserLogged() {
-    console.log(customerid2, "kkkkkkkkkkkkkkkkkkkkkkkkkkkk"), customerid2 ? (console.log(customerid2), setProductShow(!1)) : alert("please Login First");
-  }
+  let ref = (0, import_react89.useRef)(null), ref3 = (0, import_react89.useRef)(null);
+  (0, import_react91.useEffect)(() => {
+    input3 = ref.current, recipientAddressVal = ref3.current, customerid4 = localStorage.getItem("customerId");
+  }, []), recipientAddressVal && recipientAddressVal.value;
   let customStyles = {
     content: {
       top: "60%",
@@ -44255,25 +45221,13 @@ function Product() {
       position: "relative"
     }
   };
-  async function aiGenrateMess() {
-    try {
-      let json4 = await (await fetch("https://api.simplynoted.com/api/ai-generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc"
-        },
-        body: JSON.stringify({ msg: valToGen })
-      })).json();
-      setaiText(json4.message), console.log(json4.message, "AiGenrated Response____________");
-    } catch (error) {
-      console.log(error, "error at Ai generated message ");
-    }
+  async function singleBtnCLick() {
+    setShow(!1), setSelectedFile(""), setShowBox(!0);
   }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: productshow ? /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_jsx_dev_runtime34.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Section, { className: "px-0 md:px-8 lg:px-12", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(import_jsx_dev_runtime36.Fragment, { children: productshow ? /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(import_jsx_dev_runtime36.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Section, { className: "px-0 md:px-8 lg:px-12", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
           ProductGallery,
           {
             media: media.nodes,
@@ -44283,459 +45237,405 @@ function Product() {
           !1,
           {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 301,
+            lineNumber: 219,
             columnNumber: 15
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("section", { className: "flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Heading, { as: "h1", className: "whitespace-normal", children: title }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("section", { className: "flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Heading, { as: "h1", className: "whitespace-normal", children: title }, void 0, !1, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 308,
+            lineNumber: 226,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Text, { className: "opacity-50 font-medium", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Text, { className: "opacity-50 font-medium", children: [
             "$ ",
             product2.variants.nodes[0].price.amount
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 311,
+            lineNumber: 229,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonClass flex justify-start", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonDiv pr-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => setShow(!1), children: "Single Card" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "buttonClass flex justify-start", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "buttonDiv pr-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => singleBtnCLick(), children: "Single Card" }, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 317,
+              lineNumber: 235,
               columnNumber: 25
             }, this) }, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 316,
+              lineNumber: 234,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#ef6e6e] text-[#fff] p-2 rounded ", onClick: () => setShow(!0), children: "Bulk Purchase" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("button", { className: "bg-[#ef6e6e] text-[#fff] p-2 rounded ", onClick: () => setShow(!0), children: "Bulk Purchase" }, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 320,
+              lineNumber: 238,
               columnNumber: 25
             }, this) }, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 319,
+              lineNumber: 237,
               columnNumber: 23
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 315,
+            lineNumber: 233,
             columnNumber: 21
           }, this),
-          show && /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("table", { class: "price-breakdown desktop", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("tbody", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { class: "label", children: "Quantity" }, void 0, !1, {
+          show && /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("table", { class: "price-breakdown desktop", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("tbody", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { class: "label", children: "Quantity" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 29
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "1-99" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "1-99" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 60
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "100-249" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "100-249" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 73
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "250-499" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "250-499" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 89
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "500-999" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "500-999" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 105
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "1000-2499" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "1000-2499" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 121
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "2500+" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "2500+" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 327,
+                lineNumber: 245,
                 columnNumber: 139
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 326,
+              lineNumber: 244,
               columnNumber: 27
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { class: "label", children: "Price" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { class: "label", children: "Price" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 29
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "$3.25" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "$3.25" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 57
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "$3.15" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "$3.15" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 71
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "$3.00" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "$3.00" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 85
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "$2.85" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "$2.85" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 99
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "$2.70" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "$2.70" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 113
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("td", { children: "$2.55" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("td", { children: "$2.55" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 329,
+                lineNumber: 247,
                 columnNumber: 127
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 328,
+              lineNumber: 246,
               columnNumber: 27
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 325,
+            lineNumber: 243,
             columnNumber: 25
           }, this) }, void 0, !1, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 324,
+            lineNumber: 242,
             columnNumber: 23
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "selectOtion mb-5 flex", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-[192px]", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Text, { className: "text-sm w-[100px]", children: "Standard Handwriting Style" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "selectOtion mb-5 flex", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "w-[192px]", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Text, { className: "text-sm w-[100px]", children: "Standard Handwriting Style" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 334,
+                lineNumber: 252,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("br", {}, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 335,
+                lineNumber: 253,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("select", { id: "font", onClick: () => setFont(), children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "pinocchio", className: "font-pinocchio", children: "Pinocchio" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("select", { id: "font", onClick: () => setFont(), children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "pinocchio", className: "font-pinocchio", children: "Pinocchio" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 337,
+                  lineNumber: 255,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "tarzan", className: "font-tarzan", children: "Tarzan" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "tarzan", className: "font-tarzan", children: "Tarzan" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 338,
+                  lineNumber: 256,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "stitch", className: "font-stitch", children: "Stitch" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "stitch", className: "font-stitch", children: "Stitch" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 339,
+                  lineNumber: 257,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "simba", className: "font-simba", children: "Simba" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "simba", className: "font-simba", children: "Simba" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 340,
+                  lineNumber: 258,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "roo", className: "font-roo", children: "Roo" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "roo", className: "font-roo", children: "Roo" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 341,
+                  lineNumber: 259,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "nimo", className: "font-nimo", children: "Nimo" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "nimo", className: "font-nimo", children: "Nimo" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 342,
+                  lineNumber: 260,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "lumiere", className: "font-lumiere", children: "Lumiere" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "lumiere", className: "font-lumiere", children: "Lumiere" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 343,
+                  lineNumber: 261,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "kaa", className: "font-kaa", children: "Kaa" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "kaa", className: "font-kaa", children: "Kaa" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 344,
+                  lineNumber: 262,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "kaaNew", className: "font-kaaNew", children: "KaaNew" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "kaaNew", className: "font-kaaNew", children: "KaaNew" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 345,
+                  lineNumber: 263,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "dumbo", className: "font-dumbo", children: "Dumbo" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "dumbo", className: "font-dumbo", children: "Dumbo" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 346,
+                  lineNumber: 264,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "donald", className: "font-donald", children: "Donald" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "donald", className: "font-donald", children: "Donald" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 347,
+                  lineNumber: 265,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "aladdin", className: "font-aladdin", children: "Aladdin" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "aladdin", className: "font-aladdin", children: "Aladdin" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 348,
+                  lineNumber: 266,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "belle", className: "font-belle", children: "Belle" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "belle", className: "font-belle", children: "Belle" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 349,
+                  lineNumber: 267,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "boo", className: "font-boo", children: "Boo" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "boo", className: "font-boo", children: "Boo" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 350,
+                  lineNumber: 268,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "cinderella", className: "font-cinderella", children: "Cinderella" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "cinderella", className: "font-cinderella", children: "Cinderella" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 351,
+                  lineNumber: 269,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "copper", className: "font-copper", children: "Copper" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "copper", className: "font-copper", children: "Copper" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 352,
+                  lineNumber: 270,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "jasmine", className: "font-jasmine", children: "Jasmine" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "jasmine", className: "font-jasmine", children: "Jasmine" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 353,
+                  lineNumber: 271,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "merlin", className: "font-merlin", children: "Merlin" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "merlin", className: "font-merlin", children: "Merlin" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 354,
+                  lineNumber: 272,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "goofy", className: "font-goofy", children: "Goofy" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "goofy", className: "font-goofy", children: "Goofy" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 355,
+                  lineNumber: 273,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "hercules", className: "font-hercules", children: "Hercules" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "hercules", className: "font-hercules", children: "Hercules" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 356,
+                  lineNumber: 274,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "rafiki", className: "font-rafiki", children: "Rafiki" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "rafiki", className: "font-rafiki", children: "Rafiki" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 357,
+                  lineNumber: 275,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "rapunzel", className: "font-rapunzel", children: "Rapunzel" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "rapunzel", className: "font-rapunzel", children: "Rapunzel" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 358,
+                  lineNumber: 276,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "ratigan", className: "font-ratigan", children: "Ratigan" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "ratigan", className: "font-ratigan", children: "Ratigan" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 359,
+                  lineNumber: 277,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "sarabi", className: "font-sarabi", children: "Sarabi" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "sarabi", className: "font-sarabi", children: "Sarabi" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 360,
+                  lineNumber: 278,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "scar", className: "font-scar", children: "Scar" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "scar", className: "font-scar", children: "Scar" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 361,
+                  lineNumber: 279,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "triton", className: "font-triton", children: "Triton" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "triton", className: "font-triton", children: "Triton" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 362,
+                  lineNumber: 280,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "woody", className: "font-woody", children: "Woody" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { value: "woody", className: "font-woody", children: "Woody" }, void 0, !1, {
                   fileName: "app/routes/($locale).products.$productHandle.jsx",
-                  lineNumber: 363,
+                  lineNumber: 281,
                   columnNumber: 27
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 336,
+                lineNumber: 254,
                 columnNumber: 25
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 333,
+              lineNumber: 251,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Text, { className: "text-sm", children: "Custom Handwriting Style" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Text, { className: "text-sm", children: "Custom Handwriting Style" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 368,
+                lineNumber: 286,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("br", {}, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 369,
+                lineNumber: 287,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("select", { id: "Coustomfont text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { className: "text-sm", children: "Custom Handwriting Style" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("select", { id: "Coustomfont text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("option", { className: "text-sm", children: "Custom Handwriting Style" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 371,
+                lineNumber: 289,
                 columnNumber: 27
               }, this) }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 370,
+                lineNumber: 288,
                 columnNumber: 25
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 367,
+              lineNumber: 285,
               columnNumber: 23
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 332,
+            lineNumber: 250,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Text, { children: "Optional shipping date" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Text, { children: "Optional shipping date" }, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 376,
+              lineNumber: 294,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 376,
+              lineNumber: 294,
               columnNumber: 58
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "date" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("input", { type: "date" }, void 0, !1, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 377,
+              lineNumber: 295,
               columnNumber: 23
             }, this)
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 375,
+            lineNumber: 293,
             columnNumber: 21
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 307,
+          lineNumber: 225,
           columnNumber: 19
         }, this) }, void 0, !1, {
           fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 306,
+          lineNumber: 224,
           columnNumber: 17
         }, this) }, void 0, !1, {
           fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 305,
+          lineNumber: 223,
           columnNumber: 15
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 300,
+        lineNumber: 218,
         columnNumber: 13
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "mainDivForBox flex gap-10", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "outer", className: "outerr", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "outerSec", ref: ref2, children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd", ref: ref1, className: "output", children: name }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 438,
-            columnNumber: 19
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 437,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "secDiv", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { id: "abcd2", className: "output2", children: name2 }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 443,
-            columnNumber: 19
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 442,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+        MessageWriting,
+        {
+          show,
+          selectedFile,
+          setSelectedFile,
+          setShowBox,
+          setProductShow,
+          EditMess,
+          editEndMess
+        },
+        void 0,
+        !1,
+        {
           fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 436,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "textAreaView w-[600px]", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "example-one-input", ref, className: "inputText", maxlength: "450", onChange: (e4) => setName(e4.target.value), placeholder: "Enter your custom message text here...", "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 450,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { onClick: () => setIsOpen(!0), children: [
-              "Try our new AI Assistant to ",
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 452,
-                columnNumber: 84
-              }, this),
-              " help write your message"
-            ] }, void 0, !0, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 452,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "example-one-input2", className: "inputText2", maxlength: "24", onChange: (e4) => setName2(e4.target.value), placeholder: "Enter here...", "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 453,
-              columnNumber: 19
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 451,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 457,
-            columnNumber: 19
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 456,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 449,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 435,
-        columnNumber: 13
-      }, this)
+          lineNumber: 341,
+          columnNumber: 13
+        },
+        this
+      )
     ] }, void 0, !0, {
       fileName: "app/routes/($locale).products.$productHandle.jsx",
-      lineNumber: 299,
+      lineNumber: 217,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_react86.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Skeleton, { className: "h-32" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(import_react89.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(Skeleton, { className: "h-32" }, void 0, !1, {
       fileName: "app/routes/($locale).products.$productHandle.jsx",
-      lineNumber: 465,
+      lineNumber: 346,
       columnNumber: 31
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
       Await2,
       {
         errorElement: "There was a problem loading related products",
         resolve: recommended,
-        children: (products) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(ProductSwimlane, { title: "Related Products", products }, void 0, !1, {
+        children: (products) => /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(ProductSwimlane, { title: "Related Products", products }, void 0, !1, {
           fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 471,
+          lineNumber: 352,
           columnNumber: 17
         }, this)
       },
@@ -44743,380 +45643,64 @@ function Product() {
       !1,
       {
         fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 466,
+        lineNumber: 347,
         columnNumber: 13
       },
       this
     ) }, void 0, !1, {
       fileName: "app/routes/($locale).products.$productHandle.jsx",
-      lineNumber: 465,
+      lineNumber: 346,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
-      import_react_modal.default,
+    /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+      import_react_modal2.default,
       {
-        isOpen: modalIsOpen,
+        isOpen: modalIsOpen2,
         style: customStyles,
         contentLabel: "Example Modal",
-        children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h2", { className: "font-bold text-xl w-[600px]", children: "AI Message Assistant" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 483,
-              columnNumber: 13
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(BsXCircle, { className: "", onClick: () => setIsOpen(!1) }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 484,
-              columnNumber: 13
-            }, this)
-          ] }, void 0, !0, {
+        children: errorVal.map(
+          (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { children: item }, void 0, !1, {
             fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 482,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { className: " text-[#999999] ", children: [
-            "Type in words or a phrase to use our AI Assistant to",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("br", {}, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 487,
-              columnNumber: 102
-            }, this),
-            " help generate a great message"
-          ] }, void 0, !0, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 487,
+            lineNumber: 365,
             columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 486,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("textarea", { type: "text", id: "aiTextArea", value: aiText || valToGen, onChange: (e4) => setValToGen(e4.target.value), placeholder: "Example: Message for Birthday", maxlength: "450" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 490,
-            columnNumber: 13
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 489,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { class: "ai-generate", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { id: "generate-msg", disabled: "", onClick: () => aiGenrateMess(), children: "Generate Message" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 493,
-            columnNumber: 9
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 492,
-            columnNumber: 13
           }, this)
-        ]
+        )
       },
       void 0,
-      !0,
+      !1,
       {
         fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 475,
+        lineNumber: 357,
         columnNumber: 11
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).products.$productHandle.jsx",
-    lineNumber: 298,
+    lineNumber: 216,
     columnNumber: 9
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "  w-full h-full gap-2 mt-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h3", { className: "items-center font-bold flex text-2xl", onClick: () => setProductShow(!0), children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(BiSolidChevronLeft, { size: "50px" }, void 0, !1, {
-        fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 499,
-        columnNumber: 101
-      }, this),
-      "Back To Product Customization"
-    ] }, void 0, !0, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+    AddCart,
+    {
+      show,
+      setProductShow,
+      data,
+      productData: product2.variants.nodes[0],
+      selectFontValue,
+      editOrderValue,
+      shippingData: shippingData == null ? void 0 : shippingData.product
+    },
+    void 0,
+    !1,
+    {
       fileName: "app/routes/($locale).products.$productHandle.jsx",
-      lineNumber: 499,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "row flex mr-2 ml-2 gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "col-6 w-[50%] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "address-data", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Your Info (return/sender address)" }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 504,
-          columnNumber: 19
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 506,
-          columnNumber: 21
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 505,
-          columnNumber: 19
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "text ", className: "w-full rounded p-3 mt-4", placeholder: "Search Addresses..." }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 509,
-          columnNumber: 21
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 508,
-          columnNumber: 19
-        }, this),
-        returnAddress.map(
-          (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-full rounded p-3 mt-4 bg-[#fff] ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "checkbox", className: "mr-4" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 513,
-              columnNumber: 23
-            }, this),
-            item.firstName,
-            " ",
-            item.lastName,
-            ", ",
-            item.city,
-            ", ",
-            item.state,
-            ", ",
-            item.zip,
-            ", ",
-            item.country
-          ] }, void 0, !0, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 512,
-            columnNumber: 21
-          }, this)
-        )
-      ] }, void 0, !0, {
-        fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 503,
-        columnNumber: 17
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 502,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 501,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "col-6 w-[50%]", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "address-grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "address-data", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h3", { className: "text-2xl font-bold mt-4 mb-4", children: "Recipient address" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 523,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonDiv pr-5 mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "New Address" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 525,
-            columnNumber: 21
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 524,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "text ", className: "w-full rounded p-3 mt-4 ", placeholder: "Search Addresses..." }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 528,
-            columnNumber: 21
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 527,
-            columnNumber: 19
-          }, this),
-          recipientAddress.map(
-            (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-full rounded p-3 mt-4 bg-[#fff] ", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "checkbox", className: "mr-4" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 532,
-                columnNumber: 23
-              }, this),
-              item.firstName,
-              " ",
-              item.lastName,
-              ", ",
-              item.city,
-              ", ",
-              item.state,
-              ", ",
-              item.zip,
-              ", ",
-              item.country
-            ] }, void 0, !0, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 531,
-              columnNumber: 21
-            }, this)
-          )
-        ] }, void 0, !0, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 522,
-          columnNumber: 17
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 521,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "address-grid mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "address-data", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("h3", { className: "text-2xl font-bold mt-6 mb-6", children: "Add a Gift Card" }, void 0, !1, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 541,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 543,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("select", { name: "gift_name", className: "w-full", id: "gift_name", onchange: "changeGiftPrice(this.value)", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "", disabled: "", selected: "", children: "Select" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 546,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661818679401", id: "giftName", children: "Starbucks Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 547,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661817729129", id: "giftName", children: "Amazon Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 548,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661818941545", id: "giftName", children: "Visa Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 549,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661815795817", id: "giftName", children: "Home Depot Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 550,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661818253417", id: "giftName", children: "Lowe's Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 551,
-                columnNumber: 25
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 545,
-              columnNumber: 23
-            }, this) }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 544,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 542,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "row flex mr-2 ml-2 ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 556,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("select", { name: "gift_name", className: "w-full", id: "gift_name", onchange: "changeGiftPrice(this.value)", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "", disabled: "", selected: "", children: "Select" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 559,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661818679401", id: "giftName", children: "Starbucks Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 560,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661817729129", id: "giftName", children: "Amazon Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 561,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661818941545", id: "giftName", children: "Visa Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 562,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661815795817", id: "giftName", children: "Home Depot Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 563,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("option", { value: "6661818253417", id: "giftName", children: "Lowe's Gift Card" }, void 0, !1, {
-                fileName: "app/routes/($locale).products.$productHandle.jsx",
-                lineNumber: 564,
-                columnNumber: 25
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 558,
-              columnNumber: 23
-            }, this) }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 557,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 555,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("input", { type: "checkbox", id: "", name: "", value: "" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 569,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("text", { className: "ml-3", children: "Add Gift Card" }, void 0, !1, {
-              fileName: "app/routes/($locale).products.$productHandle.jsx",
-              lineNumber: 570,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/($locale).products.$productHandle.jsx",
-            lineNumber: 568,
-            columnNumber: 19
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 540,
-          columnNumber: 17
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 539,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-3", children: "Add To Cart" }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 575,
-          columnNumber: 17
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/($locale).products.$productHandle.jsx",
-          lineNumber: 574,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/($locale).products.$productHandle.jsx",
-        lineNumber: 520,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/($locale).products.$productHandle.jsx",
-      lineNumber: 500,
-      columnNumber: 11
-    }, this)
-  ] }, void 0, !0, {
+      lineNumber: 371,
+      columnNumber: 9
+    },
+    this
+  ) }, void 0, !1, {
     fileName: "app/routes/($locale).products.$productHandle.jsx",
-    lineNumber: 497,
-    columnNumber: 11
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/($locale).products.$productHandle.jsx",
-    lineNumber: 296,
+    lineNumber: 214,
     columnNumber: 5
   }, this);
 }
@@ -45239,7 +45823,54 @@ var PRODUCT_VARIANT_FRAGMENT = `#graphql
     }
   }
   ${PRODUCT_CARD_FRAGMENT}
-`;
+`, GiftProduct = `#graphql
+
+  query
+  {
+    collection(handle:"gift-cards"){
+      title
+      products(first:10){
+        edges{
+          node{
+            title
+            featuredImage{
+              url
+            }
+            variants(first:10){
+              edges{
+                node{
+                  title
+                  price{
+                    amount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+  `, ShippingMethod = `#graphql
+query
+{
+  product(id:"gid://shopify/Product/7027299254377"){
+    title
+    featuredImage{
+      url
+    }
+    variants(first:10){
+      edges{
+        node{
+          title
+          price
+          {
+            amount}
+        }
+      }
+    }
+  }
+}`;
 async function getRecommendedProducts(storefront, productId) {
   let products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
     variables: { productId, count: 12 }
@@ -45266,7 +45897,7 @@ __export(locale_journal_journalHandle_exports, {
 var custom_font_default = "/build/_assets/custom-font-JLJV7AHS.css";
 
 // app/routes/($locale).journal.$journalHandle.jsx
-var import_jsx_dev_runtime35 = __toESM(require_jsx_dev_runtime()), BLOG_HANDLE = "journal", headers3 = routeHeaders, links2 = () => [{ rel: "stylesheet", href: custom_font_default }];
+var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), BLOG_HANDLE = "journal", headers3 = routeHeaders, links2 = () => [{ rel: "stylesheet", href: custom_font_default }];
 async function loader5({ request, params, context }) {
   let { language, country } = context.storefront.i18n;
   invariant4(params.journalHandle, "Missing journal handle");
@@ -45288,8 +45919,8 @@ async function loader5({ request, params, context }) {
 }
 function Article() {
   let { article: article2, formattedDate } = useLoaderData2(), { title, image, contentHtml, author } = article2;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(import_jsx_dev_runtime35.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(PageHeader, { heading: title, variant: "blogPost", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("span", { children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(import_jsx_dev_runtime37.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(PageHeader, { heading: title, variant: "blogPost", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("span", { children: [
       formattedDate,
       " \xB7 ",
       author == null ? void 0 : author.name
@@ -45302,8 +45933,8 @@ function Article() {
       lineNumber: 57,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(Section, { as: "article", padding: "x", children: [
-      image && /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Section, { as: "article", padding: "x", children: [
+      image && /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
         Image,
         {
           data: image,
@@ -45320,7 +45951,7 @@ function Article() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
         "div",
         {
           dangerouslySetInnerHTML: { __html: contentHtml },
@@ -45383,7 +46014,7 @@ __export(locale_policies_policyHandle_exports, {
   headers: () => headers4,
   loader: () => loader6
 });
-var import_jsx_dev_runtime36 = __toESM(require_jsx_dev_runtime()), headers4 = routeHeaders;
+var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), headers4 = routeHeaders;
 async function loader6({ request, params, context }) {
   var _a2;
   invariant4(params.policyHandle, "Missing policy handle");
@@ -45409,19 +46040,19 @@ async function loader6({ request, params, context }) {
 }
 function Policies() {
   let { policy: policy2 } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(import_jsx_dev_runtime36.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(import_jsx_dev_runtime38.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
     Section,
     {
       padding: "all",
       display: "flex",
       className: "flex-col items-baseline w-full gap-8 md:flex-row",
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
           PageHeader,
           {
             heading: policy2.title,
             className: "grid items-start flex-grow gap-4 md:sticky top-36 md:w-5/12",
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
               Button,
               {
                 className: "justify-self-start",
@@ -45448,7 +46079,7 @@ function Policies() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)("div", { className: "flex-grow w-full md:w-7/12", children: /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex-grow w-full md:w-7/12", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
           "div",
           {
             dangerouslySetInnerHTML: { __html: policy2.body },
@@ -45523,7 +46154,7 @@ __export(locale_account_address_id_exports, {
   default: () => EditAddress,
   handle: () => handle2
 });
-var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), handle2 = {
+var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), handle2 = {
   renderInModal: !0
 }, action3 = async ({ request, context, params }) => {
   var _a2, _b;
@@ -45600,14 +46231,14 @@ function EditAddress() {
   let { id: addressId } = useParams(), isNewAddress = addressId === "add", actionData = useActionData2(), { state } = useNavigation(), { customer } = useOutletContext(), addresses = flattenConnection(customer.addresses), defaultAddress = customer.defaultAddress, normalizedAddress = decodeURIComponent(addressId ?? "").split("?")[0], address = addresses.find(
     (address2) => address2.id.startsWith(normalizedAddress)
   );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(import_jsx_dev_runtime37.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: isNewAddress ? "Add address" : "Edit address" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(import_jsx_dev_runtime39.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: isNewAddress ? "Add address" : "Edit address" }, void 0, !1, {
       fileName: "app/routes/($locale).account.address.$id.jsx",
       lineNumber: 144,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Form, { method: "post", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Form, { method: "post", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           type: "hidden",
@@ -45623,7 +46254,7 @@ function EditAddress() {
         },
         this
       ),
-      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
+      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
         fileName: "app/routes/($locale).account.address.$id.jsx",
         lineNumber: 156,
         columnNumber: 15
@@ -45632,7 +46263,7 @@ function EditAddress() {
         lineNumber: 155,
         columnNumber: 13
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45658,7 +46289,7 @@ function EditAddress() {
         lineNumber: 159,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45684,7 +46315,7 @@ function EditAddress() {
         lineNumber: 172,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45709,7 +46340,7 @@ function EditAddress() {
         lineNumber: 185,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45735,7 +46366,7 @@ function EditAddress() {
         lineNumber: 197,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45760,7 +46391,7 @@ function EditAddress() {
         lineNumber: 210,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45786,7 +46417,7 @@ function EditAddress() {
         lineNumber: 222,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45812,7 +46443,7 @@ function EditAddress() {
         lineNumber: 235,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45838,7 +46469,7 @@ function EditAddress() {
         lineNumber: 248,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45864,7 +46495,7 @@ function EditAddress() {
         lineNumber: 261,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -45889,8 +46520,8 @@ function EditAddress() {
         lineNumber: 274,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
           "input",
           {
             type: "checkbox",
@@ -45908,7 +46539,7 @@ function EditAddress() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
           "label",
           {
             className: "inline-block ml-2 text-sm cursor-pointer",
@@ -45929,7 +46560,7 @@ function EditAddress() {
         lineNumber: 286,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { className: "mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         Button,
         {
           className: "w-full rounded focus:shadow-outline",
@@ -45951,7 +46582,7 @@ function EditAddress() {
         lineNumber: 301,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         Button,
         {
           to: "..",
@@ -46060,7 +46691,7 @@ __export(locale_account_orders_id_exports, {
   loader: () => loader7,
   meta: () => meta3
 });
-var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), meta3 = ({ data }) => {
+var import_jsx_dev_runtime40 = __toESM(require_jsx_dev_runtime()), meta3 = ({ data }) => {
   var _a2;
   return [{ title: `Order ${(_a2 = data == null ? void 0 : data.order) == null ? void 0 : _a2.name}` }];
 };
@@ -46089,8 +46720,8 @@ async function loader7({ request, context, params }) {
 function OrderRoute() {
   var _a2;
   let { order, lineItems, discountValue, discountPercentage } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(PageHeader, { heading: "Order detail", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Link3, { to: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { color: "subtle", children: "Return to Account Overview" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(PageHeader, { heading: "Order detail", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Link3, { to: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { color: "subtle", children: "Return to Account Overview" }, void 0, !1, {
       fileName: "app/routes/($locale).account.orders.$id.jsx",
       lineNumber: 69,
       columnNumber: 11
@@ -46103,8 +46734,8 @@ function OrderRoute() {
       lineNumber: 67,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { as: "h3", size: "lead", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { as: "h3", size: "lead", children: [
         "Order No. ",
         order.name
       ] }, void 0, !0, {
@@ -46112,7 +46743,7 @@ function OrderRoute() {
         lineNumber: 74,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { className: "mt-2", as: "p", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { className: "mt-2", as: "p", children: [
         "Placed on ",
         new Date(order.processedAt).toDateString()
       ] }, void 0, !0, {
@@ -46120,10 +46751,10 @@ function OrderRoute() {
         lineNumber: 77,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("table", { className: "min-w-full my-8 divide-y divide-gray-300 md:col-span-3", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tr", { className: "align-baseline ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("table", { className: "min-w-full my-8 divide-y divide-gray-300 md:col-span-3", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tr", { className: "align-baseline ", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -46139,7 +46770,7 @@ function OrderRoute() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -46155,7 +46786,7 @@ function OrderRoute() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -46171,7 +46802,7 @@ function OrderRoute() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -46196,15 +46827,15 @@ function OrderRoute() {
             lineNumber: 82,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: lineItems.map((lineItem) => {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: lineItems.map((lineItem) => {
             var _a3;
-            return /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex gap-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            return /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex gap-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                   Link3,
                   {
                     to: `/products/${lineItem.variant.product.handle}`,
-                    children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+                    children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                       Image,
                       {
                         data: lineItem.variant.image,
@@ -46234,13 +46865,13 @@ function OrderRoute() {
                   },
                   this
                 ),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex-col justify-center hidden lg:flex", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { as: "p", children: lineItem.title }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex-col justify-center hidden lg:flex", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { as: "p", children: lineItem.title }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 129,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { size: "fine", className: "mt-1", as: "p", children: lineItem.variant.title }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { size: "fine", className: "mt-1", as: "p", children: lineItem.variant.title }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 130,
                     columnNumber: 27
@@ -46250,19 +46881,19 @@ function OrderRoute() {
                   lineNumber: 128,
                   columnNumber: 25
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dl", { className: "grid", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dt", { className: "sr-only", children: "Product" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dl", { className: "grid", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dt", { className: "sr-only", children: "Product" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 135,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dd", { className: "truncate lg:hidden", children: [
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Heading, { size: "copy", format: !0, as: "h3", children: lineItem.title }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dd", { className: "truncate lg:hidden", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Heading, { size: "copy", format: !0, as: "h3", children: lineItem.title }, void 0, !1, {
                       fileName: "app/routes/($locale).account.orders.$id.jsx",
                       lineNumber: 137,
                       columnNumber: 29
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { size: "fine", className: "mt-1", children: lineItem.variant.title }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { size: "fine", className: "mt-1", children: lineItem.variant.title }, void 0, !1, {
                       fileName: "app/routes/($locale).account.orders.$id.jsx",
                       lineNumber: 140,
                       columnNumber: 29
@@ -46272,12 +46903,12 @@ function OrderRoute() {
                     lineNumber: 136,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dt", { className: "sr-only", children: "Price" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dt", { className: "sr-only", children: "Price" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 144,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { size: "fine", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { size: "fine", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 147,
                     columnNumber: 31
@@ -46290,12 +46921,12 @@ function OrderRoute() {
                     lineNumber: 145,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dt", { className: "sr-only", children: "Quantity" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dt", { className: "sr-only", children: "Quantity" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 150,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { className: "mt-1", size: "fine", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { className: "mt-1", size: "fine", children: [
                     "Qty: ",
                     lineItem.quantity
                   ] }, void 0, !0, {
@@ -46321,7 +46952,7 @@ function OrderRoute() {
                 lineNumber: 113,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 160,
                 columnNumber: 23
@@ -46330,12 +46961,12 @@ function OrderRoute() {
                 lineNumber: 159,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: lineItem.quantity }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: lineItem.quantity }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 162,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: lineItem.discountedTotalPrice }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: lineItem.discountedTotalPrice }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 167,
                 columnNumber: 25
@@ -46358,15 +46989,15 @@ function OrderRoute() {
             lineNumber: 110,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tfoot", { children: [
-            (discountValue && discountValue.amount || discountPercentage) && /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tfoot", { children: [
+            (discountValue && discountValue.amount || discountPercentage) && /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   colSpan: 3,
                   className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 182,
                     columnNumber: 23
@@ -46381,12 +47012,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-6 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 188,
                     columnNumber: 23
@@ -46401,7 +47032,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3", children: discountPercentage ? /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("span", { className: "text-sm", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3", children: discountPercentage ? /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("span", { className: "text-sm", children: [
                 "-",
                 discountPercentage,
                 "% OFF"
@@ -46409,7 +47040,7 @@ function OrderRoute() {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 192,
                 columnNumber: 25
-              }, this) : discountValue && /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: discountValue }, void 0, !1, {
+              }, this) : discountValue && /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: discountValue }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 196,
                 columnNumber: 42
@@ -46423,14 +47054,14 @@ function OrderRoute() {
               lineNumber: 176,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   colSpan: 3,
                   className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 207,
                     columnNumber: 21
@@ -46445,12 +47076,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-6 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 213,
                     columnNumber: 21
@@ -46465,7 +47096,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: order.subtotalPriceV2 }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: order.subtotalPriceV2 }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 216,
                 columnNumber: 21
@@ -46479,8 +47110,8 @@ function OrderRoute() {
               lineNumber: 201,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
@@ -46497,12 +47128,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-4 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: "Tax" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: "Tax" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 231,
                     columnNumber: 21
@@ -46517,7 +47148,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: order.totalTaxV2 }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: order.totalTaxV2 }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 234,
                 columnNumber: 21
@@ -46531,8 +47162,8 @@ function OrderRoute() {
               lineNumber: 219,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
@@ -46549,12 +47180,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-4 pr-3 font-semibold text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: "Total" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: "Total" }, void 0, !1, {
                     fileName: "app/routes/($locale).account.orders.$id.jsx",
                     lineNumber: 249,
                     columnNumber: 21
@@ -46569,7 +47200,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 font-semibold text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Money, { data: order.totalPriceV2 }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 font-semibold text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Money, { data: order.totalPriceV2 }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 252,
                 columnNumber: 21
@@ -46593,14 +47224,14 @@ function OrderRoute() {
           lineNumber: 81,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "sticky border-none top-nav md:my-8", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Heading, { size: "copy", className: "font-semibold", as: "h3", children: "Shipping Address" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "sticky border-none top-nav md:my-8", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Heading, { size: "copy", className: "font-semibold", as: "h3", children: "Shipping Address" }, void 0, !1, {
             fileName: "app/routes/($locale).account.orders.$id.jsx",
             lineNumber: 258,
             columnNumber: 15
           }, this),
-          order != null && order.shippingAddress ? /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("ul", { className: "mt-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: [
+          order != null && order.shippingAddress ? /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("ul", { className: "mt-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: [
               order.shippingAddress.firstName && order.shippingAddress.firstName + " ",
               order.shippingAddress.lastName
             ] }, void 0, !0, {
@@ -46612,7 +47243,7 @@ function OrderRoute() {
               lineNumber: 263,
               columnNumber: 19
             }, this),
-            (_a2 = order == null ? void 0 : order.shippingAddress) != null && _a2.formatted ? order.shippingAddress.formatted.map((line) => /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { children: line }, void 0, !1, {
+            (_a2 = order == null ? void 0 : order.shippingAddress) != null && _a2.formatted ? order.shippingAddress.formatted.map((line) => /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { children: line }, void 0, !1, {
               fileName: "app/routes/($locale).account.orders.$id.jsx",
               lineNumber: 273,
               columnNumber: 25
@@ -46620,7 +47251,7 @@ function OrderRoute() {
               fileName: "app/routes/($locale).account.orders.$id.jsx",
               lineNumber: 272,
               columnNumber: 23
-            }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(import_jsx_dev_runtime38.Fragment, {}, void 0, !1, {
+            }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(import_jsx_dev_runtime40.Fragment, {}, void 0, !1, {
               fileName: "app/routes/($locale).account.orders.$id.jsx",
               lineNumber: 277,
               columnNumber: 21
@@ -46629,24 +47260,24 @@ function OrderRoute() {
             fileName: "app/routes/($locale).account.orders.$id.jsx",
             lineNumber: 262,
             columnNumber: 17
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("p", { className: "mt-3", children: "No shipping address defined" }, void 0, !1, {
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("p", { className: "mt-3", children: "No shipping address defined" }, void 0, !1, {
             fileName: "app/routes/($locale).account.orders.$id.jsx",
             lineNumber: 281,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Heading, { size: "copy", className: "mt-8 font-semibold", as: "h3", children: "Status" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Heading, { size: "copy", className: "mt-8 font-semibold", as: "h3", children: "Status" }, void 0, !1, {
             fileName: "app/routes/($locale).account.orders.$id.jsx",
             lineNumber: 283,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
             "div",
             {
               className: clsx_m_default(
                 "mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto",
                 order.fulfillmentStatus === "FULFILLED" ? "bg-green-100 text-green-800" : "bg-primary/20 text-primary/50"
               ),
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Text, { size: "fine", children: statusMessage(order.fulfillmentStatus) }, void 0, !1, {
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { size: "fine", children: statusMessage(order.fulfillmentStatus) }, void 0, !1, {
                 fileName: "app/routes/($locale).account.orders.$id.jsx",
                 lineNumber: 294,
                 columnNumber: 17
@@ -46809,7 +47440,7 @@ __export(locale_collections_index_exports, {
   headers: () => headers5,
   loader: () => loader8
 });
-var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), PAGINATION_SIZE = 4, headers5 = routeHeaders, loader8 = async ({ request, context: { storefront } }) => {
+var import_jsx_dev_runtime41 = __toESM(require_jsx_dev_runtime()), PAGINATION_SIZE = 4, headers5 = routeHeaders, loader8 = async ({ request, context: { storefront } }) => {
   let variables = getPaginationVariables(request, { pageBy: PAGINATION_SIZE }), { collections } = await storefront.query(COLLECTIONS_QUERY, {
     variables: {
       ...variables,
@@ -46824,14 +47455,14 @@ var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), PAGINATION_SI
 };
 function Collections() {
   let { collections } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(import_jsx_dev_runtime39.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(PageHeader, { heading: "Collections" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(PageHeader, { heading: "Collections" }, void 0, !1, {
       fileName: "app/routes/($locale).collections._index.jsx",
       lineNumber: 37,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Pagination, { connection: collections, children: ({ nodes, isLoading, PreviousLink, NextLink }) => /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(import_jsx_dev_runtime39.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "flex items-center justify-center mb-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Button, { as: PreviousLink, variant: "secondary", width: "full", children: isLoading ? "Loading..." : "Previous collections" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Pagination, { connection: collections, children: ({ nodes, isLoading, PreviousLink, NextLink }) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex items-center justify-center mb-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Button, { as: PreviousLink, variant: "secondary", width: "full", children: isLoading ? "Loading..." : "Previous collections" }, void 0, !1, {
         fileName: "app/routes/($locale).collections._index.jsx",
         lineNumber: 43,
         columnNumber: 17
@@ -46840,12 +47471,12 @@ function Collections() {
         lineNumber: 42,
         columnNumber: 15
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
         Grid,
         {
           items: nodes.length === 3 ? 3 : 2,
           "data-test": "collection-grid",
-          children: nodes.map((collection2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
+          children: nodes.map((collection2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
             CollectionCard,
             {
               collection: collection2,
@@ -46870,7 +47501,7 @@ function Collections() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Button, { as: NextLink, variant: "secondary", width: "full", children: isLoading ? "Loading..." : "Next collections" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Button, { as: NextLink, variant: "secondary", width: "full", children: isLoading ? "Loading..." : "Next collections" }, void 0, !1, {
         fileName: "app/routes/($locale).collections._index.jsx",
         lineNumber: 60,
         columnNumber: 17
@@ -46899,8 +47530,8 @@ function Collections() {
   }, this);
 }
 function CollectionCard({ collection: collection2, loading }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Link3, { to: `/collections/${collection2.handle}`, className: "grid gap-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { className: "card-image bg-primary/5 aspect-[3/2]", children: (collection2 == null ? void 0 : collection2.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Link3, { to: `/collections/${collection2.handle}`, className: "grid gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "card-image bg-primary/5 aspect-[3/2]", children: (collection2 == null ? void 0 : collection2.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
       Image,
       {
         data: collection2.image,
@@ -46921,7 +47552,7 @@ function CollectionCard({ collection: collection2, loading }) {
       lineNumber: 75,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Heading, { as: "h3", size: "copy", children: collection2.title }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Heading, { as: "h3", size: "copy", children: collection2.title }, void 0, !1, {
       fileName: "app/routes/($locale).collections._index.jsx",
       lineNumber: 85,
       columnNumber: 7
@@ -47019,7 +47650,7 @@ __export(locale_pages_pageHandle_exports, {
   headers: () => headers6,
   loader: () => loader10
 });
-var import_jsx_dev_runtime40 = __toESM(require_jsx_dev_runtime()), headers6 = routeHeaders;
+var import_jsx_dev_runtime42 = __toESM(require_jsx_dev_runtime()), headers6 = routeHeaders;
 async function loader10({ request, params, context }) {
   invariant4(params.pageHandle, "Missing page handle");
   let { page: page2 } = await context.storefront.query(PAGE_QUERY, {
@@ -47035,7 +47666,7 @@ async function loader10({ request, params, context }) {
 }
 function Page() {
   let { page: page2 } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(import_jsx_dev_runtime40.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(PageHeader, { heading: page2.title, children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(import_jsx_dev_runtime42.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(PageHeader, { heading: page2.title, children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
     "div",
     {
       dangerouslySetInnerHTML: { __html: page2.body },
@@ -47082,7 +47713,7 @@ __export(locale_account_register_exports, {
   loader: () => loader12,
   meta: () => meta5
 });
-var import_react98 = __toESM(require_react());
+var import_react101 = __toESM(require_react());
 
 // app/routes/($locale).account.login.jsx
 var locale_account_login_exports = {};
@@ -47094,8 +47725,8 @@ __export(locale_account_login_exports, {
   loader: () => loader11,
   meta: () => meta4
 });
-var import_react96 = __toESM(require_react());
-var import_jsx_dev_runtime41 = __toESM(require_jsx_dev_runtime()), handle3 = {
+var import_react99 = __toESM(require_react());
+var import_jsx_dev_runtime43 = __toESM(require_jsx_dev_runtime()), handle3 = {
   isPublic: !0
 };
 async function loader11({ context, params }) {
@@ -47124,24 +47755,24 @@ var badRequest4 = (data) => json3(data, { status: 400 }), action4 = async ({ req
   }
 }, meta4 = () => [{ title: "Login" }];
 function Login() {
-  let { shopName } = useLoaderData2(), actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react96.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react96.useState)(null);
+  let { shopName } = useLoaderData2(), actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react99.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react99.useState)(null);
   async function setVar() {
     typeof window < "u" && (console.log("wwwwwwww"), localStorage.setItem("resultVar", "result"), console.log("dddddddd"));
   }
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("h1", { className: "text-4xl", children: "Sign in." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("h1", { className: "text-4xl", children: "Sign in." }, void 0, !1, {
       fileName: "app/routes/($locale).account.login.jsx",
       lineNumber: 97,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/($locale).account.login.jsx",
             lineNumber: 106,
             columnNumber: 15
@@ -47150,8 +47781,8 @@ function Login() {
             lineNumber: 105,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
@@ -47178,7 +47809,7 @@ function Login() {
               },
               this
             ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               nativeEmailError,
               " \xA0"
             ] }, void 0, !0, {
@@ -47191,8 +47822,8 @@ function Login() {
             lineNumber: 109,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
@@ -47220,7 +47851,7 @@ function Login() {
               },
               this
             ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordError,
               " \xA0"
@@ -47234,7 +47865,7 @@ function Login() {
             lineNumber: 135,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             "button",
             {
               onClick: () => setVar(),
@@ -47256,12 +47887,12 @@ function Login() {
             lineNumber: 170,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex justify-between items-center mt-8 border-t border-gray-300", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex justify-between items-center mt-8 border-t border-gray-300", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
               "New to ",
               shopName,
               "? \xA0",
-              /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Link3, { className: "inline underline", to: "/account/register", children: "Create an account" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Link3, { className: "inline underline", to: "/account/register", children: "Create an account" }, void 0, !1, {
                 fileName: "app/routes/($locale).account.login.jsx",
                 lineNumber: 182,
                 columnNumber: 15
@@ -47271,7 +47902,7 @@ function Login() {
               lineNumber: 180,
               columnNumber: 13
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
               Link3,
               {
                 className: "mt-6 inline-block align-baseline text-sm text-primary/50",
@@ -47346,7 +47977,7 @@ async function doLogin({ storefront }, { email, password }) {
 }
 
 // app/routes/($locale).account.register.jsx
-var import_jsx_dev_runtime42 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime44 = __toESM(require_jsx_dev_runtime());
 async function loader12({ context, params }) {
   return await context.session.get("customerAccessToken") ? redirect3(params.locale ? `${params.locale}/account` : "/account") : new Response(null);
 }
@@ -47380,21 +48011,21 @@ var badRequest5 = (data) => json3(data, { status: 400 }), action5 = async ({ req
   }
 }, meta5 = () => [{ title: "Register" }];
 function Register() {
-  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react98.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react98.useState)(null);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("h1", { className: "text-4xl", children: "Create an Account." }, void 0, !1, {
+  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react101.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react101.useState)(null);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("h1", { className: "text-4xl", children: "Create an Account." }, void 0, !1, {
       fileName: "app/routes/($locale).account.register.jsx",
       lineNumber: 92,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/($locale).account.register.jsx",
             lineNumber: 101,
             columnNumber: 15
@@ -47403,8 +48034,8 @@ function Register() {
             lineNumber: 100,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
@@ -47431,7 +48062,7 @@ function Register() {
               },
               this
             ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               nativeEmailError,
               " \xA0"
             ] }, void 0, !0, {
@@ -47444,8 +48075,8 @@ function Register() {
             lineNumber: 104,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
@@ -47473,7 +48104,7 @@ function Register() {
               },
               this
             ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordError,
               " \xA0"
@@ -47487,7 +48118,7 @@ function Register() {
             lineNumber: 129,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -47508,9 +48139,9 @@ function Register() {
             lineNumber: 164,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
             "Already have an account? \xA0",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Sign in" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Sign in" }, void 0, !1, {
               fileName: "app/routes/($locale).account.register.jsx",
               lineNumber: 176,
               columnNumber: 15
@@ -47568,8 +48199,8 @@ __export(locale_account_recover_exports, {
   loader: () => loader13,
   meta: () => meta6
 });
-var import_react100 = __toESM(require_react());
-var import_jsx_dev_runtime43 = __toESM(require_jsx_dev_runtime());
+var import_react103 = __toESM(require_react());
+var import_jsx_dev_runtime45 = __toESM(require_jsx_dev_runtime());
 async function loader13({ context, params }) {
   return await context.session.get("customerAccessToken") ? redirect3(params.locale ? `${params.locale}/account` : "/account") : new Response(null);
 }
@@ -47590,14 +48221,14 @@ var badRequest6 = (data) => json3(data, { status: 400 }), action6 = async ({ req
   }
 }, meta6 = () => [{ title: "Recover Password" }];
 function Recover() {
-  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react100.useState)(null), isSubmitted = actionData == null ? void 0 : actionData.resetRequested;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "max-w-md w-full", children: isSubmitted ? /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("h1", { className: "text-4xl", children: "Request Sent." }, void 0, !1, {
+  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react103.useState)(null), isSubmitted = actionData == null ? void 0 : actionData.resetRequested;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "max-w-md w-full", children: isSubmitted ? /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("h1", { className: "text-4xl", children: "Request Sent." }, void 0, !1, {
       fileName: "app/routes/($locale).account.recover.jsx",
       lineNumber: 57,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "mt-4", children: "If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes." }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("p", { className: "mt-4", children: "If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes." }, void 0, !1, {
       fileName: "app/routes/($locale).account.recover.jsx",
       lineNumber: 58,
       columnNumber: 13
@@ -47606,25 +48237,25 @@ function Recover() {
     fileName: "app/routes/($locale).account.recover.jsx",
     lineNumber: 56,
     columnNumber: 11
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("h1", { className: "text-4xl", children: "Forgot Password." }, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("h1", { className: "text-4xl", children: "Forgot Password." }, void 0, !1, {
       fileName: "app/routes/($locale).account.recover.jsx",
       lineNumber: 66,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "mt-4", children: "Enter the email address associated with your account to receive a link to reset your password." }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("p", { className: "mt-4", children: "Enter the email address associated with your account to receive a link to reset your password." }, void 0, !1, {
       fileName: "app/routes/($locale).account.recover.jsx",
       lineNumber: 67,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/($locale).account.recover.jsx",
             lineNumber: 79,
             columnNumber: 19
@@ -47633,8 +48264,8 @@ function Recover() {
             lineNumber: 78,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
@@ -47661,7 +48292,7 @@ function Recover() {
               },
               this
             ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               nativeEmailError,
               " \xA0"
             ] }, void 0, !0, {
@@ -47674,7 +48305,7 @@ function Recover() {
             lineNumber: 84,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -47694,9 +48325,9 @@ function Recover() {
             lineNumber: 111,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
             "Return to \xA0",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Login" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Login" }, void 0, !1, {
               fileName: "app/routes/($locale).account.recover.jsx",
               lineNumber: 122,
               columnNumber: 19
@@ -47763,7 +48394,7 @@ __export(locale_policies_index_exports, {
   headers: () => headers7,
   loader: () => loader15
 });
-var import_jsx_dev_runtime44 = __toESM(require_jsx_dev_runtime()), headers7 = routeHeaders;
+var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), headers7 = routeHeaders;
 async function loader15({ request, context: { storefront } }) {
   let data = await storefront.query(POLICIES_QUERY);
   invariant4(data, "No data returned from Shopify API");
@@ -47778,13 +48409,13 @@ async function loader15({ request, context: { storefront } }) {
 }
 function Policies2() {
   let { policies: policies2 } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(import_jsx_dev_runtime44.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(PageHeader, { heading: "Policies" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(PageHeader, { heading: "Policies" }, void 0, !1, {
       fileName: "app/routes/($locale).policies._index.jsx",
       lineNumber: 34,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(Section, { padding: "x", className: "mb-24", children: policies2.map((policy2) => policy2 && /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(Heading, { className: "font-normal text-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(Link3, { to: `/policies/${policy2.handle}`, children: policy2.title }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Section, { padding: "x", className: "mb-24", children: policies2.map((policy2) => policy2 && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Heading, { className: "font-normal text-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Link3, { to: `/policies/${policy2.handle}`, children: policy2.title }, void 0, !1, {
       fileName: "app/routes/($locale).policies._index.jsx",
       lineNumber: 40,
       columnNumber: 17
@@ -47840,7 +48471,7 @@ __export(locale_products_index_exports, {
   headers: () => headers8,
   loader: () => loader16
 });
-var import_jsx_dev_runtime45 = __toESM(require_jsx_dev_runtime()), PAGE_BY = 8, headers8 = routeHeaders;
+var import_jsx_dev_runtime47 = __toESM(require_jsx_dev_runtime()), PAGE_BY = 8, headers8 = routeHeaders;
 async function loader16({ request, context: { storefront } }) {
   let variables = getPaginationVariables(request, { pageBy: PAGE_BY }), data = await storefront.query(ALL_PRODUCTS_QUERY, {
     variables: {
@@ -47874,14 +48505,14 @@ async function loader16({ request, context: { storefront } }) {
 }
 function AllProducts() {
   let { products } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(PageHeader, { heading: "All Products", variant: "allCollections" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(PageHeader, { heading: "All Products", variant: "allCollections" }, void 0, !1, {
       fileName: "app/routes/($locale).products._index.jsx",
       lineNumber: 58,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
-      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
+      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
         ProductCard,
         {
           product: product2,
@@ -47896,8 +48527,8 @@ function AllProducts() {
         },
         this
       ));
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
           fileName: "app/routes/($locale).products._index.jsx",
           lineNumber: 73,
           columnNumber: 19
@@ -47906,12 +48537,12 @@ function AllProducts() {
           lineNumber: 72,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
           fileName: "app/routes/($locale).products._index.jsx",
           lineNumber: 77,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
           fileName: "app/routes/($locale).products._index.jsx",
           lineNumber: 79,
           columnNumber: 19
@@ -48009,7 +48640,7 @@ __export(locale_journal_index_exports, {
   headers: () => headers9,
   loader: () => loader19
 });
-var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), BLOG_HANDLE2 = "Journal", headers9 = routeHeaders, loader19 = async ({ request, context: { storefront } }) => {
+var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), BLOG_HANDLE2 = "Journal", headers9 = routeHeaders, loader19 = async ({ request, context: { storefront } }) => {
   let { language, country } = storefront.i18n, { blog: blog2 } = await storefront.query(BLOGS_QUERY, {
     variables: {
       blogHandle: BLOG_HANDLE2,
@@ -48034,13 +48665,13 @@ var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), BLOG_HANDLE2 
 };
 function Journals() {
   let { articles } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(PageHeader, { heading: BLOG_HANDLE2 }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(import_jsx_dev_runtime48.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(PageHeader, { heading: BLOG_HANDLE2 }, void 0, !1, {
       fileName: "app/routes/($locale).journal._index.jsx",
-      lineNumber: 50,
+      lineNumber: 51,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Grid, { as: "ol", layout: "blog", children: articles.map((article2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Grid, { as: "ol", layout: "blog", children: articles.map((article2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
       ArticleCard,
       {
         blogHandle: BLOG_HANDLE2.toLowerCase(),
@@ -48051,28 +48682,28 @@ function Journals() {
       !1,
       {
         fileName: "app/routes/($locale).journal._index.jsx",
-        lineNumber: 54,
+        lineNumber: 55,
         columnNumber: 13
       },
       this
     )) }, void 0, !1, {
       fileName: "app/routes/($locale).journal._index.jsx",
-      lineNumber: 52,
+      lineNumber: 53,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/($locale).journal._index.jsx",
-      lineNumber: 51,
+      lineNumber: 52,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).journal._index.jsx",
-    lineNumber: 49,
+    lineNumber: 50,
     columnNumber: 5
   }, this);
 }
 function ArticleCard({ blogHandle, article: article2, loading }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Link3, { to: `/${blogHandle}/${article2.handle}`, children: [
-    article2.image && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "card-image aspect-[3/2]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Link3, { to: `/${blogHandle}/${article2.handle}`, children: [
+    article2.image && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "card-image aspect-[3/2]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
       Image,
       {
         alt: article2.image.altText || article2.title,
@@ -48086,32 +48717,32 @@ function ArticleCard({ blogHandle, article: article2, loading }) {
       !1,
       {
         fileName: "app/routes/($locale).journal._index.jsx",
-        lineNumber: 73,
+        lineNumber: 74,
         columnNumber: 13
       },
       this
     ) }, void 0, !1, {
       fileName: "app/routes/($locale).journal._index.jsx",
-      lineNumber: 72,
+      lineNumber: 73,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("h2", { className: "mt-4 font-medium", children: article2.title }, void 0, !1, {
-      fileName: "app/routes/($locale).journal._index.jsx",
-      lineNumber: 83,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("span", { className: "block mt-1", children: article2.publishedAt }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("h2", { className: "mt-4 font-medium", children: article2.title }, void 0, !1, {
       fileName: "app/routes/($locale).journal._index.jsx",
       lineNumber: 84,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("span", { className: "block mt-1", children: article2.publishedAt }, void 0, !1, {
+      fileName: "app/routes/($locale).journal._index.jsx",
+      lineNumber: 85,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).journal._index.jsx",
-    lineNumber: 70,
+    lineNumber: 71,
     columnNumber: 7
   }, this) }, article2.id, !1, {
     fileName: "app/routes/($locale).journal._index.jsx",
-    lineNumber: 69,
+    lineNumber: 70,
     columnNumber: 5
   }, this);
 }
@@ -48195,8 +48826,8 @@ __export(locale_account_exports, {
   headers: () => headers10,
   loader: () => loader21
 });
-var import_react105 = __toESM(require_react());
-var import_jsx_dev_runtime47 = __toESM(require_jsx_dev_runtime()), headers10 = routeHeaders;
+var import_react108 = __toESM(require_react());
+var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), headers10 = routeHeaders;
 async function loader21({ request, context, params }) {
   let { pathname } = new URL(request.url), locale = params.locale, customerAccessToken = await context.session.get("customerAccessToken"), isAuthenticated = Boolean(customerAccessToken), loginPath = locale ? `/${locale}/account/login` : "/account/login", isAccountPage = /^\/account\/?$/.test(pathname);
   if (!isAuthenticated)
@@ -48221,8 +48852,8 @@ function Authenticated() {
     var _a2;
     return (_a2 = match == null ? void 0 : match.handle) == null ? void 0 : _a2.renderInModal;
   });
-  return data.isAuthenticated ? outlet ? renderOutletInModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Modal, { cancelLink: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
+  return data.isAuthenticated ? outlet ? renderOutletInModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Modal, { cancelLink: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 91,
       columnNumber: 13
@@ -48231,7 +48862,7 @@ function Authenticated() {
       lineNumber: 90,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Account, { ...data }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Account, { ...data }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 93,
       columnNumber: 11
@@ -48240,28 +48871,28 @@ function Authenticated() {
     fileName: "app/routes/($locale).account.jsx",
     lineNumber: 89,
     columnNumber: 9
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
     fileName: "app/routes/($locale).account.jsx",
     lineNumber: 97,
     columnNumber: 14
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Account, { ...data }, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Account, { ...data }, void 0, !1, {
     fileName: "app/routes/($locale).account.jsx",
     lineNumber: 101,
     columnNumber: 10
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, {}, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Outlet, {}, void 0, !1, {
     fileName: "app/routes/($locale).account.jsx",
     lineNumber: 82,
     columnNumber: 12
   }, this);
 }
 function Account({ customer, heading, featuredData }) {
-  let orders = flattenConnection(customer.orders), addresses = flattenConnection(customer.addresses), [data, setData] = (0, import_react105.useState)(!1);
+  let orders = flattenConnection(customer.orders), addresses = flattenConnection(customer.addresses), [data, setData] = (0, import_react108.useState)(!1);
   console.log("!!!!!!!!!", customer, "customerData--------------");
   let result = customer.id.replace(/[^0-9]/g, ""), remove = () => {
     console.log("aaaaaaaaaaaaa"), typeof window < "u" && customer && (console.log("bbbbbbbbbbbbbbb"), localStorage.removeItem("customerId"), console.log("ccccccccccccc"));
   };
-  return data == !0 ? remove() : data == !1 && typeof window < "u" && customer && (console.log("########"), localStorage.setItem("customerId", result), console.log("@@@@@@@@@@")), /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("button", { type: "submit", className: "text-primary/50", onClick: () => setData(!0), children: "Sign out" }, void 0, !1, {
+  return data == !0 ? remove() : data == !1 && typeof window < "u" && customer && (console.log("########"), localStorage.setItem("customerId", result), console.log("@@@@@@@@@@")), /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("button", { type: "submit", className: "text-primary/50", onClick: () => setData(!0), children: "Sign out" }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 132,
       columnNumber: 11
@@ -48274,28 +48905,28 @@ function Account({ customer, heading, featuredData }) {
       lineNumber: 130,
       columnNumber: 7
     }, this),
-    orders && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
+    orders && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 137,
       columnNumber: 18
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 138,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountAddressBook, { addresses, customer }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(AccountAddressBook, { addresses, customer }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 139,
       columnNumber: 7
     }, this),
-    !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_react105.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_react108.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
       Await2,
       {
         resolve: featuredData,
         errorElement: "There was a problem loading featured products.",
-        children: (data2) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+        children: (data2) => /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
             FeaturedCollections,
             {
               title: "Popular Collections",
@@ -48310,7 +48941,7 @@ function Account({ customer, heading, featuredData }) {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(ProductSwimlane, { products: data2.featuredProducts }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(ProductSwimlane, { products: data2.featuredProducts }, void 0, !1, {
             fileName: "app/routes/($locale).account.jsx",
             lineNumber: 152,
             columnNumber: 17
@@ -48341,17 +48972,17 @@ function Account({ customer, heading, featuredData }) {
   }, this);
 }
 function AccountOrderHistory({ orders }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 166,
       columnNumber: 9
     }, this),
-    orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Orders, { orders }, void 0, !1, {
+    orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Orders, { orders }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 167,
       columnNumber: 27
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(EmptyOrders, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(EmptyOrders, {}, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 167,
       columnNumber: 56
@@ -48367,13 +48998,13 @@ function AccountOrderHistory({ orders }) {
   }, this);
 }
 function EmptyOrders() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
       lineNumber: 176,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
       Button,
       {
         className: "w-full mt-2 text-sm",
@@ -48401,7 +49032,7 @@ function EmptyOrders() {
   }, this);
 }
 function Orders({ orders }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(OrderCard, { order }, order.id, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order) => /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(OrderCard, { order }, order.id, !1, {
     fileName: "app/routes/($locale).account.jsx",
     lineNumber: 196,
     columnNumber: 9
@@ -48479,7 +49110,7 @@ async function getCustomer(context, customerAccessToken) {
 }
 
 // app/routes/($locale).account.edit.jsx
-var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), badRequest7 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
+var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime()), badRequest7 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
   if (!formData.has(key))
     return !1;
   let value = formData.get(key);
@@ -48520,14 +49151,14 @@ var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), badRequest7 =
 function AccountDetailsEdit() {
   var _a2, _b, _c, _d, _e2, _f, _g, _h, _i;
   let actionData = useActionData2(), { customer } = useOutletContext(), { state } = useNavigation();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(import_jsx_dev_runtime48.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: "Update your profile" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(import_jsx_dev_runtime50.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: "Update your profile" }, void 0, !1, {
       fileName: "app/routes/($locale).account.edit.jsx",
       lineNumber: 110,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Form, { method: "post", children: [
-      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Form, { method: "post", children: [
+      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
         fileName: "app/routes/($locale).account.edit.jsx",
         lineNumber: 116,
         columnNumber: 13
@@ -48536,7 +49167,7 @@ function AccountDetailsEdit() {
         lineNumber: 115,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48561,7 +49192,7 @@ function AccountDetailsEdit() {
         lineNumber: 119,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48586,7 +49217,7 @@ function AccountDetailsEdit() {
         lineNumber: 131,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48611,8 +49242,8 @@ function AccountDetailsEdit() {
         lineNumber: 143,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-3", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
           "input",
           {
             className: getInputStyleClasses((_a2 = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _a2.email),
@@ -48634,7 +49265,7 @@ function AccountDetailsEdit() {
           },
           this
         ),
-        ((_b = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _b.email) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+        ((_b = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _b.email) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
           actionData.fieldErrors.email,
           " \xA0"
         ] }, void 0, !0, {
@@ -48647,12 +49278,12 @@ function AccountDetailsEdit() {
         lineNumber: 155,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Text, { className: "mb-6 mt-6", as: "h3", size: "lead", children: "Change your password" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Text, { className: "mb-6 mt-6", as: "h3", size: "lead", children: "Change your password" }, void 0, !1, {
         fileName: "app/routes/($locale).account.edit.jsx",
         lineNumber: 173,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         Password,
         {
           name: "currentPassword",
@@ -48668,7 +49299,7 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      ((_d = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _d.currentPassword) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
+      ((_d = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _d.currentPassword) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
         actionData.fieldErrors.currentPassword,
         " \xA0"
       ] }, void 0, !0, {
@@ -48676,7 +49307,7 @@ function AccountDetailsEdit() {
         lineNumber: 182,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         Password,
         {
           name: "newPassword",
@@ -48692,7 +49323,7 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         Password,
         {
           name: "newPassword2",
@@ -48708,7 +49339,7 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         Text,
         {
           size: "fine",
@@ -48728,12 +49359,12 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      (_h = actionData == null ? void 0 : actionData.fieldErrors) != null && _h.newPassword2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("br", {}, void 0, !1, {
+      (_h = actionData == null ? void 0 : actionData.fieldErrors) != null && _h.newPassword2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("br", {}, void 0, !1, {
         fileName: "app/routes/($locale).account.edit.jsx",
         lineNumber: 206,
         columnNumber: 50
       }, this) : null,
-      ((_i = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _i.newPassword2) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
+      ((_i = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _i.newPassword2) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
         actionData.fieldErrors.newPassword2,
         " \xA0"
       ] }, void 0, !0, {
@@ -48741,7 +49372,7 @@ function AccountDetailsEdit() {
         lineNumber: 208,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
         Button,
         {
           className: "text-sm mb-2",
@@ -48764,7 +49395,7 @@ function AccountDetailsEdit() {
         lineNumber: 212,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Button, { to: "..", className: "text-sm", variant: "secondary", width: "full", children: "Cancel" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Button, { to: "..", className: "text-sm", variant: "secondary", width: "full", children: "Cancel" }, void 0, !1, {
         fileName: "app/routes/($locale).account.edit.jsx",
         lineNumber: 224,
         columnNumber: 11
@@ -48785,7 +49416,7 @@ function AccountDetailsEdit() {
   }, this);
 }
 function Password({ name, passwordError, label }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
     "input",
     {
       className: getInputStyleClasses(passwordError),
@@ -48916,8 +49547,8 @@ __export(locale_search_exports, {
   getNoResultRecommendations: () => getNoResultRecommendations,
   loader: () => loader24
 });
-var import_react108 = __toESM(require_react());
-var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime());
+var import_react111 = __toESM(require_react());
+var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime());
 async function loader24({ request, context: { storefront } }) {
   var _a2;
   let searchTerm = new URL(request.url).searchParams.get("q"), variables = getPaginationVariables(request, { pageBy: 8 }), { products } = await storefront.query(SEARCH_QUERY, {
@@ -48954,15 +49585,15 @@ async function loader24({ request, context: { storefront } }) {
 function Search() {
   var _a2;
   let { searchTerm, products, noResultRecommendations } = useLoaderData2(), noResults = ((_a2 = products == null ? void 0 : products.nodes) == null ? void 0 : _a2.length) === 0;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(PageHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(PageHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
         fileName: "app/routes/($locale).search.jsx",
         lineNumber: 74,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
           Input,
           {
             defaultValue: searchTerm,
@@ -48980,7 +49611,7 @@ function Search() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 85,
           columnNumber: 11
@@ -48995,7 +49626,7 @@ function Search() {
       lineNumber: 73,
       columnNumber: 7
     }, this),
-    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
       NoResults,
       {
         noResults,
@@ -49009,8 +49640,8 @@ function Search() {
         columnNumber: 9
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
-      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
+      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
         ProductCard,
         {
           product: product2,
@@ -49025,8 +49656,8 @@ function Search() {
         },
         this
       ));
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 110,
           columnNumber: 21
@@ -49035,12 +49666,12 @@ function Search() {
           lineNumber: 109,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 114,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 116,
           columnNumber: 21
@@ -49070,8 +49701,8 @@ function Search() {
   }, this);
 }
 function NoResults({ noResults, recommendations }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-    noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Text, { className: "opacity-50", children: "No results, try a different search." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
+    noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { className: "opacity-50", children: "No results, try a different search." }, void 0, !1, {
       fileName: "app/routes/($locale).search.jsx",
       lineNumber: 135,
       columnNumber: 11
@@ -49080,7 +49711,7 @@ function NoResults({ noResults, recommendations }) {
       lineNumber: 134,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_react108.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react111.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
       Await2,
       {
         errorElement: "There was a problem loading related products",
@@ -49089,8 +49720,8 @@ function NoResults({ noResults, recommendations }) {
           if (!result)
             return null;
           let { featuredCollections, featuredProducts } = result;
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(import_jsx_dev_runtime49.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
               FeaturedCollections,
               {
                 title: "Trending Collections",
@@ -49105,7 +49736,7 @@ function NoResults({ noResults, recommendations }) {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
               ProductSwimlane,
               {
                 title: "Trending Products",
@@ -49191,10 +49822,10 @@ __export(locale_index_exports, {
   headers: () => headers11,
   loader: () => loader25
 });
-var import_react110 = __toESM(require_react());
+var import_react113 = __toESM(require_react());
 
 // app/components/home/Home.jsx
-var import_react109 = __toESM(require_react());
+var import_react112 = __toESM(require_react());
 
 // assets/Image/Card_Keller_kwlegacy.webp
 var Card_Keller_kwlegacy_default = "/build/_assets/Card_Keller_kwlegacy-O4KBEFT3.webp";
@@ -49203,14 +49834,14 @@ var Card_Keller_kwlegacy_default = "/build/_assets/Card_Keller_kwlegacy-O4KBEFT3
 var Your_Logo_simplinoted_default = "/build/_assets/Your_Logo_simplinoted-VHE6U2G4.webp";
 
 // app/components/home/Home.jsx
-var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime());
 function Home() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "sec-section", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "handwritten-notice", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("h3", { children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "sec-section", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "handwritten-notice", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("h3", { children: [
           "Send Real Handwritten Notes ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("br", {}, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("br", {}, void 0, !1, {
             fileName: "app/components/home/Home.jsx",
             lineNumber: 14,
             columnNumber: 39
@@ -49220,14 +49851,14 @@ function Home() {
           lineNumber: 14,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { children: "to your____________" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { children: "to your____________" }, void 0, !1, {
           fileName: "app/components/home/Home.jsx",
           lineNumber: 15,
           columnNumber: 14
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("h2", { className: "scale-starting", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("h2", { className: "scale-starting", children: [
           "Send real handwritten notes, at scale.",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("b", { children: "Starting at $3.25" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("b", { children: "Starting at $3.25" }, void 0, !1, {
             fileName: "app/components/home/Home.jsx",
             lineNumber: 16,
             columnNumber: 85
@@ -49241,7 +49872,7 @@ function Home() {
           lineNumber: 16,
           columnNumber: 10
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
           "button",
           {
             type: "button",
@@ -49257,7 +49888,7 @@ function Home() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
           "button",
           {
             type: "button",
@@ -49279,12 +49910,12 @@ function Home() {
         lineNumber: 13,
         columnNumber: 6
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("img", { className: "logo-simplinoted", src: Your_Logo_simplinoted_default, alt: "LogoSimplinotedpic" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("img", { className: "logo-simplinoted", src: Your_Logo_simplinoted_default, alt: "LogoSimplinotedpic" }, void 0, !1, {
         fileName: "app/components/home/Home.jsx",
         lineNumber: 30,
         columnNumber: 5
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("img", { className: "cars-killer", src: Card_Keller_kwlegacy_default, alt: "CardKillerpic" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("img", { className: "cars-killer", src: Card_Keller_kwlegacy_default, alt: "CardKillerpic" }, void 0, !1, {
         fileName: "app/components/home/Home.jsx",
         lineNumber: 32,
         columnNumber: 8
@@ -49294,7 +49925,7 @@ function Home() {
       lineNumber: 11,
       columnNumber: 6
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("video", { className: "robot-gif", autoPlay: !0, loop: !0, muted: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("video", { className: "robot-gif", autoPlay: !0, loop: !0, muted: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
       "source",
       {
         src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/robots.webm?v=1650939452",
@@ -49321,7 +49952,7 @@ function Home() {
 }
 
 // app/routes/($locale)._index.jsx
-var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), headers11 = routeHeaders;
+var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime()), headers11 = routeHeaders;
 async function loader25({ params, context }) {
   let { language, country } = context.storefront.i18n;
   if (params.locale && params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase())
@@ -49382,18 +50013,18 @@ function Homepage() {
     featuredCollections,
     featuredProducts
   } = useLoaderData2(), skeletons = getHeroPlaceholder([{}, {}, {}]);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
-    primaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...primaryHero, height: "full", top: !0, loading: "eager" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_jsx_dev_runtime53.Fragment, { children: [
+    primaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Hero, { ...primaryHero, height: "full", top: !0, loading: "eager" }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 95,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Home, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Home, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 97,
       columnNumber: 7
     }, this),
-    featuredProducts && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: featuredProducts, children: ({ products }) => products != null && products.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+    featuredProducts && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_react113.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Await2, { resolve: featuredProducts, children: ({ products }) => products != null && products.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
       ProductSwimlane,
       {
         products,
@@ -49408,7 +50039,7 @@ function Homepage() {
         columnNumber: 17
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_jsx_dev_runtime53.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 103,
       columnNumber: 44
@@ -49421,15 +50052,15 @@ function Homepage() {
       lineNumber: 100,
       columnNumber: 9
     }, this),
-    secondaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...skeletons[1] }, void 0, !1, {
+    secondaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_react113.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Hero, { ...skeletons[1] }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 117,
       columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: secondaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...hero }, void 0, !1, {
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Await2, { resolve: secondaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Hero, { ...hero }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 121,
       columnNumber: 22
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_jsx_dev_runtime53.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 120,
       columnNumber: 33
@@ -49442,7 +50073,7 @@ function Homepage() {
       lineNumber: 117,
       columnNumber: 9
     }, this),
-    featuredCollections && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: featuredCollections, children: ({ collections }) => collections != null && collections.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+    featuredCollections && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_react113.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Await2, { resolve: featuredCollections, children: ({ collections }) => collections != null && collections.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
       FeaturedCollections,
       {
         collections,
@@ -49456,7 +50087,7 @@ function Homepage() {
         columnNumber: 17
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_jsx_dev_runtime53.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 131,
       columnNumber: 47
@@ -49469,15 +50100,15 @@ function Homepage() {
       lineNumber: 128,
       columnNumber: 9
     }, this),
-    tertiaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_react110.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...skeletons[2] }, void 0, !1, {
+    tertiaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_react113.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Hero, { ...skeletons[2] }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 144,
       columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Await2, { resolve: tertiaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Hero, { ...hero }, void 0, !1, {
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Await2, { resolve: tertiaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Hero, { ...hero }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 148,
       columnNumber: 22
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(import_jsx_dev_runtime53.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 147,
       columnNumber: 33
@@ -49575,25 +50206,3792 @@ var COLLECTION_CONTENT_FRAGMENT = `#graphql
   }
 `;
 
+// app/routes/($locale).carts.jsx
+var locale_carts_exports = {};
+__export(locale_carts_exports, {
+  default: () => AddCartFunc,
+  loader: () => loader26
+});
+var import_react116 = __toESM(require_react());
+var import_react_modal3 = __toESM(require_lib());
+
+// node_modules/swiper/swiper-react.mjs
+var import_react115 = __toESM(require_react(), 1);
+
+// node_modules/swiper/shared/ssr-window.esm.mjs
+function isObject(obj) {
+  return obj !== null && typeof obj == "object" && "constructor" in obj && obj.constructor === Object;
+}
+function extend(target, src) {
+  target === void 0 && (target = {}), src === void 0 && (src = {}), Object.keys(src).forEach((key) => {
+    typeof target[key] > "u" ? target[key] = src[key] : isObject(src[key]) && isObject(target[key]) && Object.keys(src[key]).length > 0 && extend(target[key], src[key]);
+  });
+}
+var ssrDocument = {
+  body: {},
+  addEventListener() {
+  },
+  removeEventListener() {
+  },
+  activeElement: {
+    blur() {
+    },
+    nodeName: ""
+  },
+  querySelector() {
+    return null;
+  },
+  querySelectorAll() {
+    return [];
+  },
+  getElementById() {
+    return null;
+  },
+  createEvent() {
+    return {
+      initEvent() {
+      }
+    };
+  },
+  createElement() {
+    return {
+      children: [],
+      childNodes: [],
+      style: {},
+      setAttribute() {
+      },
+      getElementsByTagName() {
+        return [];
+      }
+    };
+  },
+  createElementNS() {
+    return {};
+  },
+  importNode() {
+    return null;
+  },
+  location: {
+    hash: "",
+    host: "",
+    hostname: "",
+    href: "",
+    origin: "",
+    pathname: "",
+    protocol: "",
+    search: ""
+  }
+};
+function getDocument() {
+  let doc = typeof document < "u" ? document : {};
+  return extend(doc, ssrDocument), doc;
+}
+var ssrWindow = {
+  document: ssrDocument,
+  navigator: {
+    userAgent: ""
+  },
+  location: {
+    hash: "",
+    host: "",
+    hostname: "",
+    href: "",
+    origin: "",
+    pathname: "",
+    protocol: "",
+    search: ""
+  },
+  history: {
+    replaceState() {
+    },
+    pushState() {
+    },
+    go() {
+    },
+    back() {
+    }
+  },
+  CustomEvent: function() {
+    return this;
+  },
+  addEventListener() {
+  },
+  removeEventListener() {
+  },
+  getComputedStyle() {
+    return {
+      getPropertyValue() {
+        return "";
+      }
+    };
+  },
+  Image() {
+  },
+  Date() {
+  },
+  screen: {},
+  setTimeout() {
+  },
+  clearTimeout() {
+  },
+  matchMedia() {
+    return {};
+  },
+  requestAnimationFrame(callback) {
+    return typeof setTimeout > "u" ? (callback(), null) : setTimeout(callback, 0);
+  },
+  cancelAnimationFrame(id) {
+    typeof setTimeout > "u" || clearTimeout(id);
+  }
+};
+function getWindow() {
+  let win = typeof window < "u" ? window : {};
+  return extend(win, ssrWindow), win;
+}
+
+// node_modules/swiper/shared/utils.mjs
+function deleteProps(obj) {
+  let object = obj;
+  Object.keys(object).forEach((key) => {
+    try {
+      object[key] = null;
+    } catch {
+    }
+    try {
+      delete object[key];
+    } catch {
+    }
+  });
+}
+function nextTick(callback, delay) {
+  return delay === void 0 && (delay = 0), setTimeout(callback, delay);
+}
+function now() {
+  return Date.now();
+}
+function getComputedStyle2(el) {
+  let window2 = getWindow(), style;
+  return window2.getComputedStyle && (style = window2.getComputedStyle(el, null)), !style && el.currentStyle && (style = el.currentStyle), style || (style = el.style), style;
+}
+function getTranslate(el, axis) {
+  axis === void 0 && (axis = "x");
+  let window2 = getWindow(), matrix, curTransform, transformMatrix, curStyle = getComputedStyle2(el);
+  return window2.WebKitCSSMatrix ? (curTransform = curStyle.transform || curStyle.webkitTransform, curTransform.split(",").length > 6 && (curTransform = curTransform.split(", ").map((a12) => a12.replace(",", ".")).join(", ")), transformMatrix = new window2.WebKitCSSMatrix(curTransform === "none" ? "" : curTransform)) : (transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform || curStyle.transform || curStyle.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,"), matrix = transformMatrix.toString().split(",")), axis === "x" && (window2.WebKitCSSMatrix ? curTransform = transformMatrix.m41 : matrix.length === 16 ? curTransform = parseFloat(matrix[12]) : curTransform = parseFloat(matrix[4])), axis === "y" && (window2.WebKitCSSMatrix ? curTransform = transformMatrix.m42 : matrix.length === 16 ? curTransform = parseFloat(matrix[13]) : curTransform = parseFloat(matrix[5])), curTransform || 0;
+}
+function isObject2(o10) {
+  return typeof o10 == "object" && o10 !== null && o10.constructor && Object.prototype.toString.call(o10).slice(8, -1) === "Object";
+}
+function isNode(node) {
+  return typeof window < "u" && typeof window.HTMLElement < "u" ? node instanceof HTMLElement : node && (node.nodeType === 1 || node.nodeType === 11);
+}
+function extend2() {
+  let to = Object(arguments.length <= 0 ? void 0 : arguments[0]), noExtend = ["__proto__", "constructor", "prototype"];
+  for (let i6 = 1; i6 < arguments.length; i6 += 1) {
+    let nextSource = i6 < 0 || arguments.length <= i6 ? void 0 : arguments[i6];
+    if (nextSource != null && !isNode(nextSource)) {
+      let keysArray = Object.keys(Object(nextSource)).filter((key) => noExtend.indexOf(key) < 0);
+      for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+        let nextKey = keysArray[nextIndex], desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+        desc !== void 0 && desc.enumerable && (isObject2(to[nextKey]) && isObject2(nextSource[nextKey]) ? nextSource[nextKey].__swiper__ ? to[nextKey] = nextSource[nextKey] : extend2(to[nextKey], nextSource[nextKey]) : !isObject2(to[nextKey]) && isObject2(nextSource[nextKey]) ? (to[nextKey] = {}, nextSource[nextKey].__swiper__ ? to[nextKey] = nextSource[nextKey] : extend2(to[nextKey], nextSource[nextKey])) : to[nextKey] = nextSource[nextKey]);
+      }
+    }
+  }
+  return to;
+}
+function setCSSProperty(el, varName, varValue) {
+  el.style.setProperty(varName, varValue);
+}
+function animateCSSModeScroll(_ref) {
+  let {
+    swiper,
+    targetPosition,
+    side
+  } = _ref, window2 = getWindow(), startPosition = -swiper.translate, startTime = null, time, duration = swiper.params.speed;
+  swiper.wrapperEl.style.scrollSnapType = "none", window2.cancelAnimationFrame(swiper.cssModeFrameID);
+  let dir = targetPosition > startPosition ? "next" : "prev", isOutOfBound = (current, target) => dir === "next" && current >= target || dir === "prev" && current <= target, animate = () => {
+    time = (/* @__PURE__ */ new Date()).getTime(), startTime === null && (startTime = time);
+    let progress = Math.max(Math.min((time - startTime) / duration, 1), 0), easeProgress = 0.5 - Math.cos(progress * Math.PI) / 2, currentPosition = startPosition + easeProgress * (targetPosition - startPosition);
+    if (isOutOfBound(currentPosition, targetPosition) && (currentPosition = targetPosition), swiper.wrapperEl.scrollTo({
+      [side]: currentPosition
+    }), isOutOfBound(currentPosition, targetPosition)) {
+      swiper.wrapperEl.style.overflow = "hidden", swiper.wrapperEl.style.scrollSnapType = "", setTimeout(() => {
+        swiper.wrapperEl.style.overflow = "", swiper.wrapperEl.scrollTo({
+          [side]: currentPosition
+        });
+      }), window2.cancelAnimationFrame(swiper.cssModeFrameID);
+      return;
+    }
+    swiper.cssModeFrameID = window2.requestAnimationFrame(animate);
+  };
+  animate();
+}
+function elementChildren(element, selector) {
+  return selector === void 0 && (selector = ""), [...element.children].filter((el) => el.matches(selector));
+}
+function createElement10(tag, classes2) {
+  classes2 === void 0 && (classes2 = []);
+  let el = document.createElement(tag);
+  return el.classList.add(...Array.isArray(classes2) ? classes2 : [classes2]), el;
+}
+function elementPrevAll(el, selector) {
+  let prevEls = [];
+  for (; el.previousElementSibling; ) {
+    let prev = el.previousElementSibling;
+    selector ? prev.matches(selector) && prevEls.push(prev) : prevEls.push(prev), el = prev;
+  }
+  return prevEls;
+}
+function elementNextAll(el, selector) {
+  let nextEls = [];
+  for (; el.nextElementSibling; ) {
+    let next = el.nextElementSibling;
+    selector ? next.matches(selector) && nextEls.push(next) : nextEls.push(next), el = next;
+  }
+  return nextEls;
+}
+function elementStyle(el, prop) {
+  return getWindow().getComputedStyle(el, null).getPropertyValue(prop);
+}
+function elementIndex(el) {
+  let child = el, i6;
+  if (child) {
+    for (i6 = 0; (child = child.previousSibling) !== null; )
+      child.nodeType === 1 && (i6 += 1);
+    return i6;
+  }
+}
+function elementParents(el, selector) {
+  let parents = [], parent = el.parentElement;
+  for (; parent; )
+    selector ? parent.matches(selector) && parents.push(parent) : parents.push(parent), parent = parent.parentElement;
+  return parents;
+}
+function elementOuterSize(el, size, includeMargins) {
+  let window2 = getWindow();
+  return includeMargins ? el[size === "width" ? "offsetWidth" : "offsetHeight"] + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size === "width" ? "margin-right" : "margin-top")) + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size === "width" ? "margin-left" : "margin-bottom")) : el.offsetWidth;
+}
+
+// node_modules/swiper/shared/swiper-core.mjs
+var support;
+function calcSupport() {
+  let window2 = getWindow(), document2 = getDocument();
+  return {
+    smoothScroll: document2.documentElement && document2.documentElement.style && "scrollBehavior" in document2.documentElement.style,
+    touch: !!("ontouchstart" in window2 || window2.DocumentTouch && document2 instanceof window2.DocumentTouch)
+  };
+}
+function getSupport() {
+  return support || (support = calcSupport()), support;
+}
+var deviceCached;
+function calcDevice(_temp) {
+  let {
+    userAgent
+  } = _temp === void 0 ? {} : _temp, support2 = getSupport(), window2 = getWindow(), platform = window2.navigator.platform, ua = userAgent || window2.navigator.userAgent, device = {
+    ios: !1,
+    android: !1
+  }, screenWidth = window2.screen.width, screenHeight = window2.screen.height, android = ua.match(/(Android);?[\s\/]+([\d.]+)?/), ipad = ua.match(/(iPad).*OS\s([\d_]+)/), ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/), iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/), windows = platform === "Win32", macos = platform === "MacIntel", iPadScreens = ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"];
+  return !ipad && macos && support2.touch && iPadScreens.indexOf(`${screenWidth}x${screenHeight}`) >= 0 && (ipad = ua.match(/(Version)\/([\d.]+)/), ipad || (ipad = [0, 1, "13_0_0"]), macos = !1), android && !windows && (device.os = "android", device.android = !0), (ipad || iphone || ipod) && (device.os = "ios", device.ios = !0), device;
+}
+function getDevice(overrides) {
+  return overrides === void 0 && (overrides = {}), deviceCached || (deviceCached = calcDevice(overrides)), deviceCached;
+}
+var browser;
+function calcBrowser() {
+  let window2 = getWindow(), needPerspectiveFix = !1;
+  function isSafari() {
+    let ua = window2.navigator.userAgent.toLowerCase();
+    return ua.indexOf("safari") >= 0 && ua.indexOf("chrome") < 0 && ua.indexOf("android") < 0;
+  }
+  if (isSafari()) {
+    let ua = String(window2.navigator.userAgent);
+    if (ua.includes("Version/")) {
+      let [major, minor] = ua.split("Version/")[1].split(" ")[0].split(".").map((num) => Number(num));
+      needPerspectiveFix = major < 16 || major === 16 && minor < 2;
+    }
+  }
+  return {
+    isSafari: needPerspectiveFix || isSafari(),
+    needPerspectiveFix,
+    isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window2.navigator.userAgent)
+  };
+}
+function getBrowser() {
+  return browser || (browser = calcBrowser()), browser;
+}
+function Resize(_ref) {
+  let {
+    swiper,
+    on: on2,
+    emit
+  } = _ref, window2 = getWindow(), observer = null, animationFrame = null, resizeHandler = () => {
+    !swiper || swiper.destroyed || !swiper.initialized || (emit("beforeResize"), emit("resize"));
+  }, createObserver2 = () => {
+    !swiper || swiper.destroyed || !swiper.initialized || (observer = new ResizeObserver((entries) => {
+      animationFrame = window2.requestAnimationFrame(() => {
+        let {
+          width,
+          height
+        } = swiper, newWidth = width, newHeight = height;
+        entries.forEach((_ref2) => {
+          let {
+            contentBoxSize,
+            contentRect,
+            target
+          } = _ref2;
+          target && target !== swiper.el || (newWidth = contentRect ? contentRect.width : (contentBoxSize[0] || contentBoxSize).inlineSize, newHeight = contentRect ? contentRect.height : (contentBoxSize[0] || contentBoxSize).blockSize);
+        }), (newWidth !== width || newHeight !== height) && resizeHandler();
+      });
+    }), observer.observe(swiper.el));
+  }, removeObserver = () => {
+    animationFrame && window2.cancelAnimationFrame(animationFrame), observer && observer.unobserve && swiper.el && (observer.unobserve(swiper.el), observer = null);
+  }, orientationChangeHandler = () => {
+    !swiper || swiper.destroyed || !swiper.initialized || emit("orientationchange");
+  };
+  on2("init", () => {
+    if (swiper.params.resizeObserver && typeof window2.ResizeObserver < "u") {
+      createObserver2();
+      return;
+    }
+    window2.addEventListener("resize", resizeHandler), window2.addEventListener("orientationchange", orientationChangeHandler);
+  }), on2("destroy", () => {
+    removeObserver(), window2.removeEventListener("resize", resizeHandler), window2.removeEventListener("orientationchange", orientationChangeHandler);
+  });
+}
+function Observer(_ref) {
+  let {
+    swiper,
+    extendParams,
+    on: on2,
+    emit
+  } = _ref, observers = [], window2 = getWindow(), attach = function(target, options) {
+    options === void 0 && (options = {});
+    let ObserverFunc = window2.MutationObserver || window2.WebkitMutationObserver, observer = new ObserverFunc((mutations) => {
+      if (swiper.__preventObserver__)
+        return;
+      if (mutations.length === 1) {
+        emit("observerUpdate", mutations[0]);
+        return;
+      }
+      let observerUpdate = function() {
+        emit("observerUpdate", mutations[0]);
+      };
+      window2.requestAnimationFrame ? window2.requestAnimationFrame(observerUpdate) : window2.setTimeout(observerUpdate, 0);
+    });
+    observer.observe(target, {
+      attributes: typeof options.attributes > "u" ? !0 : options.attributes,
+      childList: typeof options.childList > "u" ? !0 : options.childList,
+      characterData: typeof options.characterData > "u" ? !0 : options.characterData
+    }), observers.push(observer);
+  }, init = () => {
+    if (swiper.params.observer) {
+      if (swiper.params.observeParents) {
+        let containerParents = elementParents(swiper.hostEl);
+        for (let i6 = 0; i6 < containerParents.length; i6 += 1)
+          attach(containerParents[i6]);
+      }
+      attach(swiper.hostEl, {
+        childList: swiper.params.observeSlideChildren
+      }), attach(swiper.wrapperEl, {
+        attributes: !1
+      });
+    }
+  }, destroy = () => {
+    observers.forEach((observer) => {
+      observer.disconnect();
+    }), observers.splice(0, observers.length);
+  };
+  extendParams({
+    observer: !1,
+    observeParents: !1,
+    observeSlideChildren: !1
+  }), on2("init", init), on2("destroy", destroy);
+}
+var eventsEmitter = {
+  on(events2, handler, priority) {
+    let self = this;
+    if (!self.eventsListeners || self.destroyed || typeof handler != "function")
+      return self;
+    let method = priority ? "unshift" : "push";
+    return events2.split(" ").forEach((event) => {
+      self.eventsListeners[event] || (self.eventsListeners[event] = []), self.eventsListeners[event][method](handler);
+    }), self;
+  },
+  once(events2, handler, priority) {
+    let self = this;
+    if (!self.eventsListeners || self.destroyed || typeof handler != "function")
+      return self;
+    function onceHandler() {
+      self.off(events2, onceHandler), onceHandler.__emitterProxy && delete onceHandler.__emitterProxy;
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
+        args[_key] = arguments[_key];
+      handler.apply(self, args);
+    }
+    return onceHandler.__emitterProxy = handler, self.on(events2, onceHandler, priority);
+  },
+  onAny(handler, priority) {
+    let self = this;
+    if (!self.eventsListeners || self.destroyed || typeof handler != "function")
+      return self;
+    let method = priority ? "unshift" : "push";
+    return self.eventsAnyListeners.indexOf(handler) < 0 && self.eventsAnyListeners[method](handler), self;
+  },
+  offAny(handler) {
+    let self = this;
+    if (!self.eventsListeners || self.destroyed || !self.eventsAnyListeners)
+      return self;
+    let index = self.eventsAnyListeners.indexOf(handler);
+    return index >= 0 && self.eventsAnyListeners.splice(index, 1), self;
+  },
+  off(events2, handler) {
+    let self = this;
+    return !self.eventsListeners || self.destroyed || !self.eventsListeners || events2.split(" ").forEach((event) => {
+      typeof handler > "u" ? self.eventsListeners[event] = [] : self.eventsListeners[event] && self.eventsListeners[event].forEach((eventHandler, index) => {
+        (eventHandler === handler || eventHandler.__emitterProxy && eventHandler.__emitterProxy === handler) && self.eventsListeners[event].splice(index, 1);
+      });
+    }), self;
+  },
+  emit() {
+    let self = this;
+    if (!self.eventsListeners || self.destroyed || !self.eventsListeners)
+      return self;
+    let events2, data, context;
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++)
+      args[_key2] = arguments[_key2];
+    return typeof args[0] == "string" || Array.isArray(args[0]) ? (events2 = args[0], data = args.slice(1, args.length), context = self) : (events2 = args[0].events, data = args[0].data, context = args[0].context || self), data.unshift(context), (Array.isArray(events2) ? events2 : events2.split(" ")).forEach((event) => {
+      self.eventsAnyListeners && self.eventsAnyListeners.length && self.eventsAnyListeners.forEach((eventHandler) => {
+        eventHandler.apply(context, [event, ...data]);
+      }), self.eventsListeners && self.eventsListeners[event] && self.eventsListeners[event].forEach((eventHandler) => {
+        eventHandler.apply(context, data);
+      });
+    }), self;
+  }
+};
+function updateSize() {
+  let swiper = this, width, height, el = swiper.el;
+  typeof swiper.params.width < "u" && swiper.params.width !== null ? width = swiper.params.width : width = el.clientWidth, typeof swiper.params.height < "u" && swiper.params.height !== null ? height = swiper.params.height : height = el.clientHeight, !(width === 0 && swiper.isHorizontal() || height === 0 && swiper.isVertical()) && (width = width - parseInt(elementStyle(el, "padding-left") || 0, 10) - parseInt(elementStyle(el, "padding-right") || 0, 10), height = height - parseInt(elementStyle(el, "padding-top") || 0, 10) - parseInt(elementStyle(el, "padding-bottom") || 0, 10), Number.isNaN(width) && (width = 0), Number.isNaN(height) && (height = 0), Object.assign(swiper, {
+    width,
+    height,
+    size: swiper.isHorizontal() ? width : height
+  }));
+}
+function updateSlides() {
+  let swiper = this;
+  function getDirectionLabel(property) {
+    return swiper.isHorizontal() ? property : {
+      width: "height",
+      "margin-top": "margin-left",
+      "margin-bottom ": "margin-right",
+      "margin-left": "margin-top",
+      "margin-right": "margin-bottom",
+      "padding-left": "padding-top",
+      "padding-right": "padding-bottom",
+      marginRight: "marginBottom"
+    }[property];
+  }
+  function getDirectionPropertyValue(node, label) {
+    return parseFloat(node.getPropertyValue(getDirectionLabel(label)) || 0);
+  }
+  let params = swiper.params, {
+    wrapperEl,
+    slidesEl,
+    size: swiperSize,
+    rtlTranslate: rtl,
+    wrongRTL
+  } = swiper, isVirtual = swiper.virtual && params.virtual.enabled, previousSlidesLength = isVirtual ? swiper.virtual.slides.length : swiper.slides.length, slides = elementChildren(slidesEl, `.${swiper.params.slideClass}, swiper-slide`), slidesLength = isVirtual ? swiper.virtual.slides.length : slides.length, snapGrid = [], slidesGrid = [], slidesSizesGrid = [], offsetBefore = params.slidesOffsetBefore;
+  typeof offsetBefore == "function" && (offsetBefore = params.slidesOffsetBefore.call(swiper));
+  let offsetAfter = params.slidesOffsetAfter;
+  typeof offsetAfter == "function" && (offsetAfter = params.slidesOffsetAfter.call(swiper));
+  let previousSnapGridLength = swiper.snapGrid.length, previousSlidesGridLength = swiper.slidesGrid.length, spaceBetween = params.spaceBetween, slidePosition = -offsetBefore, prevSlideSize = 0, index = 0;
+  if (typeof swiperSize > "u")
+    return;
+  typeof spaceBetween == "string" && spaceBetween.indexOf("%") >= 0 ? spaceBetween = parseFloat(spaceBetween.replace("%", "")) / 100 * swiperSize : typeof spaceBetween == "string" && (spaceBetween = parseFloat(spaceBetween)), swiper.virtualSize = -spaceBetween, slides.forEach((slideEl) => {
+    rtl ? slideEl.style.marginLeft = "" : slideEl.style.marginRight = "", slideEl.style.marginBottom = "", slideEl.style.marginTop = "";
+  }), params.centeredSlides && params.cssMode && (setCSSProperty(wrapperEl, "--swiper-centered-offset-before", ""), setCSSProperty(wrapperEl, "--swiper-centered-offset-after", ""));
+  let gridEnabled = params.grid && params.grid.rows > 1 && swiper.grid;
+  gridEnabled && swiper.grid.initSlides(slidesLength);
+  let slideSize, shouldResetSlideSize = params.slidesPerView === "auto" && params.breakpoints && Object.keys(params.breakpoints).filter((key) => typeof params.breakpoints[key].slidesPerView < "u").length > 0;
+  for (let i6 = 0; i6 < slidesLength; i6 += 1) {
+    slideSize = 0;
+    let slide2;
+    if (slides[i6] && (slide2 = slides[i6]), gridEnabled && swiper.grid.updateSlide(i6, slide2, slidesLength, getDirectionLabel), !(slides[i6] && elementStyle(slide2, "display") === "none")) {
+      if (params.slidesPerView === "auto") {
+        shouldResetSlideSize && (slides[i6].style[getDirectionLabel("width")] = "");
+        let slideStyles = getComputedStyle(slide2), currentTransform = slide2.style.transform, currentWebKitTransform = slide2.style.webkitTransform;
+        if (currentTransform && (slide2.style.transform = "none"), currentWebKitTransform && (slide2.style.webkitTransform = "none"), params.roundLengths)
+          slideSize = swiper.isHorizontal() ? elementOuterSize(slide2, "width", !0) : elementOuterSize(slide2, "height", !0);
+        else {
+          let width = getDirectionPropertyValue(slideStyles, "width"), paddingLeft = getDirectionPropertyValue(slideStyles, "padding-left"), paddingRight = getDirectionPropertyValue(slideStyles, "padding-right"), marginLeft = getDirectionPropertyValue(slideStyles, "margin-left"), marginRight = getDirectionPropertyValue(slideStyles, "margin-right"), boxSizing = slideStyles.getPropertyValue("box-sizing");
+          if (boxSizing && boxSizing === "border-box")
+            slideSize = width + marginLeft + marginRight;
+          else {
+            let {
+              clientWidth,
+              offsetWidth
+            } = slide2;
+            slideSize = width + paddingLeft + paddingRight + marginLeft + marginRight + (offsetWidth - clientWidth);
+          }
+        }
+        currentTransform && (slide2.style.transform = currentTransform), currentWebKitTransform && (slide2.style.webkitTransform = currentWebKitTransform), params.roundLengths && (slideSize = Math.floor(slideSize));
+      } else
+        slideSize = (swiperSize - (params.slidesPerView - 1) * spaceBetween) / params.slidesPerView, params.roundLengths && (slideSize = Math.floor(slideSize)), slides[i6] && (slides[i6].style[getDirectionLabel("width")] = `${slideSize}px`);
+      slides[i6] && (slides[i6].swiperSlideSize = slideSize), slidesSizesGrid.push(slideSize), params.centeredSlides ? (slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween, prevSlideSize === 0 && i6 !== 0 && (slidePosition = slidePosition - swiperSize / 2 - spaceBetween), i6 === 0 && (slidePosition = slidePosition - swiperSize / 2 - spaceBetween), Math.abs(slidePosition) < 1 / 1e3 && (slidePosition = 0), params.roundLengths && (slidePosition = Math.floor(slidePosition)), index % params.slidesPerGroup === 0 && snapGrid.push(slidePosition), slidesGrid.push(slidePosition)) : (params.roundLengths && (slidePosition = Math.floor(slidePosition)), (index - Math.min(swiper.params.slidesPerGroupSkip, index)) % swiper.params.slidesPerGroup === 0 && snapGrid.push(slidePosition), slidesGrid.push(slidePosition), slidePosition = slidePosition + slideSize + spaceBetween), swiper.virtualSize += slideSize + spaceBetween, prevSlideSize = slideSize, index += 1;
+    }
+  }
+  if (swiper.virtualSize = Math.max(swiper.virtualSize, swiperSize) + offsetAfter, rtl && wrongRTL && (params.effect === "slide" || params.effect === "coverflow") && (wrapperEl.style.width = `${swiper.virtualSize + spaceBetween}px`), params.setWrapperSize && (wrapperEl.style[getDirectionLabel("width")] = `${swiper.virtualSize + spaceBetween}px`), gridEnabled && swiper.grid.updateWrapperSize(slideSize, snapGrid, getDirectionLabel), !params.centeredSlides) {
+    let newSlidesGrid = [];
+    for (let i6 = 0; i6 < snapGrid.length; i6 += 1) {
+      let slidesGridItem = snapGrid[i6];
+      params.roundLengths && (slidesGridItem = Math.floor(slidesGridItem)), snapGrid[i6] <= swiper.virtualSize - swiperSize && newSlidesGrid.push(slidesGridItem);
+    }
+    snapGrid = newSlidesGrid, Math.floor(swiper.virtualSize - swiperSize) - Math.floor(snapGrid[snapGrid.length - 1]) > 1 && snapGrid.push(swiper.virtualSize - swiperSize);
+  }
+  if (isVirtual && params.loop) {
+    let size = slidesSizesGrid[0] + spaceBetween;
+    if (params.slidesPerGroup > 1) {
+      let groups = Math.ceil((swiper.virtual.slidesBefore + swiper.virtual.slidesAfter) / params.slidesPerGroup), groupSize = size * params.slidesPerGroup;
+      for (let i6 = 0; i6 < groups; i6 += 1)
+        snapGrid.push(snapGrid[snapGrid.length - 1] + groupSize);
+    }
+    for (let i6 = 0; i6 < swiper.virtual.slidesBefore + swiper.virtual.slidesAfter; i6 += 1)
+      params.slidesPerGroup === 1 && snapGrid.push(snapGrid[snapGrid.length - 1] + size), slidesGrid.push(slidesGrid[slidesGrid.length - 1] + size), swiper.virtualSize += size;
+  }
+  if (snapGrid.length === 0 && (snapGrid = [0]), spaceBetween !== 0) {
+    let key = swiper.isHorizontal() && rtl ? "marginLeft" : getDirectionLabel("marginRight");
+    slides.filter((_3, slideIndex) => !params.cssMode || params.loop ? !0 : slideIndex !== slides.length - 1).forEach((slideEl) => {
+      slideEl.style[key] = `${spaceBetween}px`;
+    });
+  }
+  if (params.centeredSlides && params.centeredSlidesBounds) {
+    let allSlidesSize = 0;
+    slidesSizesGrid.forEach((slideSizeValue) => {
+      allSlidesSize += slideSizeValue + (spaceBetween || 0);
+    }), allSlidesSize -= spaceBetween;
+    let maxSnap = allSlidesSize - swiperSize;
+    snapGrid = snapGrid.map((snap) => snap <= 0 ? -offsetBefore : snap > maxSnap ? maxSnap + offsetAfter : snap);
+  }
+  if (params.centerInsufficientSlides) {
+    let allSlidesSize = 0;
+    if (slidesSizesGrid.forEach((slideSizeValue) => {
+      allSlidesSize += slideSizeValue + (spaceBetween || 0);
+    }), allSlidesSize -= spaceBetween, allSlidesSize < swiperSize) {
+      let allSlidesOffset = (swiperSize - allSlidesSize) / 2;
+      snapGrid.forEach((snap, snapIndex) => {
+        snapGrid[snapIndex] = snap - allSlidesOffset;
+      }), slidesGrid.forEach((snap, snapIndex) => {
+        slidesGrid[snapIndex] = snap + allSlidesOffset;
+      });
+    }
+  }
+  if (Object.assign(swiper, {
+    slides,
+    snapGrid,
+    slidesGrid,
+    slidesSizesGrid
+  }), params.centeredSlides && params.cssMode && !params.centeredSlidesBounds) {
+    setCSSProperty(wrapperEl, "--swiper-centered-offset-before", `${-snapGrid[0]}px`), setCSSProperty(wrapperEl, "--swiper-centered-offset-after", `${swiper.size / 2 - slidesSizesGrid[slidesSizesGrid.length - 1] / 2}px`);
+    let addToSnapGrid = -swiper.snapGrid[0], addToSlidesGrid = -swiper.slidesGrid[0];
+    swiper.snapGrid = swiper.snapGrid.map((v4) => v4 + addToSnapGrid), swiper.slidesGrid = swiper.slidesGrid.map((v4) => v4 + addToSlidesGrid);
+  }
+  if (slidesLength !== previousSlidesLength && swiper.emit("slidesLengthChange"), snapGrid.length !== previousSnapGridLength && (swiper.params.watchOverflow && swiper.checkOverflow(), swiper.emit("snapGridLengthChange")), slidesGrid.length !== previousSlidesGridLength && swiper.emit("slidesGridLengthChange"), params.watchSlidesProgress && swiper.updateSlidesOffset(), !isVirtual && !params.cssMode && (params.effect === "slide" || params.effect === "fade")) {
+    let backFaceHiddenClass = `${params.containerModifierClass}backface-hidden`, hasClassBackfaceClassAdded = swiper.el.classList.contains(backFaceHiddenClass);
+    slidesLength <= params.maxBackfaceHiddenSlides ? hasClassBackfaceClassAdded || swiper.el.classList.add(backFaceHiddenClass) : hasClassBackfaceClassAdded && swiper.el.classList.remove(backFaceHiddenClass);
+  }
+}
+function updateAutoHeight(speed) {
+  let swiper = this, activeSlides = [], isVirtual = swiper.virtual && swiper.params.virtual.enabled, newHeight = 0, i6;
+  typeof speed == "number" ? swiper.setTransition(speed) : speed === !0 && swiper.setTransition(swiper.params.speed);
+  let getSlideByIndex = (index) => isVirtual ? swiper.slides[swiper.getSlideIndexByData(index)] : swiper.slides[index];
+  if (swiper.params.slidesPerView !== "auto" && swiper.params.slidesPerView > 1)
+    if (swiper.params.centeredSlides)
+      (swiper.visibleSlides || []).forEach((slide2) => {
+        activeSlides.push(slide2);
+      });
+    else
+      for (i6 = 0; i6 < Math.ceil(swiper.params.slidesPerView); i6 += 1) {
+        let index = swiper.activeIndex + i6;
+        if (index > swiper.slides.length && !isVirtual)
+          break;
+        activeSlides.push(getSlideByIndex(index));
+      }
+  else
+    activeSlides.push(getSlideByIndex(swiper.activeIndex));
+  for (i6 = 0; i6 < activeSlides.length; i6 += 1)
+    if (typeof activeSlides[i6] < "u") {
+      let height = activeSlides[i6].offsetHeight;
+      newHeight = height > newHeight ? height : newHeight;
+    }
+  (newHeight || newHeight === 0) && (swiper.wrapperEl.style.height = `${newHeight}px`);
+}
+function updateSlidesOffset() {
+  let swiper = this, slides = swiper.slides, minusOffset = swiper.isElement ? swiper.isHorizontal() ? swiper.wrapperEl.offsetLeft : swiper.wrapperEl.offsetTop : 0;
+  for (let i6 = 0; i6 < slides.length; i6 += 1)
+    slides[i6].swiperSlideOffset = (swiper.isHorizontal() ? slides[i6].offsetLeft : slides[i6].offsetTop) - minusOffset - swiper.cssOverflowAdjustment();
+}
+function updateSlidesProgress(translate2) {
+  translate2 === void 0 && (translate2 = this && this.translate || 0);
+  let swiper = this, params = swiper.params, {
+    slides,
+    rtlTranslate: rtl,
+    snapGrid
+  } = swiper;
+  if (slides.length === 0)
+    return;
+  typeof slides[0].swiperSlideOffset > "u" && swiper.updateSlidesOffset();
+  let offsetCenter = -translate2;
+  rtl && (offsetCenter = translate2), slides.forEach((slideEl) => {
+    slideEl.classList.remove(params.slideVisibleClass);
+  }), swiper.visibleSlidesIndexes = [], swiper.visibleSlides = [];
+  let spaceBetween = params.spaceBetween;
+  typeof spaceBetween == "string" && spaceBetween.indexOf("%") >= 0 ? spaceBetween = parseFloat(spaceBetween.replace("%", "")) / 100 * swiper.size : typeof spaceBetween == "string" && (spaceBetween = parseFloat(spaceBetween));
+  for (let i6 = 0; i6 < slides.length; i6 += 1) {
+    let slide2 = slides[i6], slideOffset = slide2.swiperSlideOffset;
+    params.cssMode && params.centeredSlides && (slideOffset -= slides[0].swiperSlideOffset);
+    let slideProgress = (offsetCenter + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide2.swiperSlideSize + spaceBetween), originalSlideProgress = (offsetCenter - snapGrid[0] + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide2.swiperSlideSize + spaceBetween), slideBefore = -(offsetCenter - slideOffset), slideAfter = slideBefore + swiper.slidesSizesGrid[i6];
+    (slideBefore >= 0 && slideBefore < swiper.size - 1 || slideAfter > 1 && slideAfter <= swiper.size || slideBefore <= 0 && slideAfter >= swiper.size) && (swiper.visibleSlides.push(slide2), swiper.visibleSlidesIndexes.push(i6), slides[i6].classList.add(params.slideVisibleClass)), slide2.progress = rtl ? -slideProgress : slideProgress, slide2.originalProgress = rtl ? -originalSlideProgress : originalSlideProgress;
+  }
+}
+function updateProgress(translate2) {
+  let swiper = this;
+  if (typeof translate2 > "u") {
+    let multiplier = swiper.rtlTranslate ? -1 : 1;
+    translate2 = swiper && swiper.translate && swiper.translate * multiplier || 0;
+  }
+  let params = swiper.params, translatesDiff = swiper.maxTranslate() - swiper.minTranslate(), {
+    progress,
+    isBeginning,
+    isEnd,
+    progressLoop
+  } = swiper, wasBeginning = isBeginning, wasEnd = isEnd;
+  if (translatesDiff === 0)
+    progress = 0, isBeginning = !0, isEnd = !0;
+  else {
+    progress = (translate2 - swiper.minTranslate()) / translatesDiff;
+    let isBeginningRounded = Math.abs(translate2 - swiper.minTranslate()) < 1, isEndRounded = Math.abs(translate2 - swiper.maxTranslate()) < 1;
+    isBeginning = isBeginningRounded || progress <= 0, isEnd = isEndRounded || progress >= 1, isBeginningRounded && (progress = 0), isEndRounded && (progress = 1);
+  }
+  if (params.loop) {
+    let firstSlideIndex = swiper.getSlideIndexByData(0), lastSlideIndex = swiper.getSlideIndexByData(swiper.slides.length - 1), firstSlideTranslate = swiper.slidesGrid[firstSlideIndex], lastSlideTranslate = swiper.slidesGrid[lastSlideIndex], translateMax = swiper.slidesGrid[swiper.slidesGrid.length - 1], translateAbs = Math.abs(translate2);
+    translateAbs >= firstSlideTranslate ? progressLoop = (translateAbs - firstSlideTranslate) / translateMax : progressLoop = (translateAbs + translateMax - lastSlideTranslate) / translateMax, progressLoop > 1 && (progressLoop -= 1);
+  }
+  Object.assign(swiper, {
+    progress,
+    progressLoop,
+    isBeginning,
+    isEnd
+  }), (params.watchSlidesProgress || params.centeredSlides && params.autoHeight) && swiper.updateSlidesProgress(translate2), isBeginning && !wasBeginning && swiper.emit("reachBeginning toEdge"), isEnd && !wasEnd && swiper.emit("reachEnd toEdge"), (wasBeginning && !isBeginning || wasEnd && !isEnd) && swiper.emit("fromEdge"), swiper.emit("progress", progress);
+}
+function updateSlidesClasses() {
+  let swiper = this, {
+    slides,
+    params,
+    slidesEl,
+    activeIndex
+  } = swiper, isVirtual = swiper.virtual && params.virtual.enabled, getFilteredSlide = (selector) => elementChildren(slidesEl, `.${params.slideClass}${selector}, swiper-slide${selector}`)[0];
+  slides.forEach((slideEl) => {
+    slideEl.classList.remove(params.slideActiveClass, params.slideNextClass, params.slidePrevClass);
+  });
+  let activeSlide;
+  if (isVirtual)
+    if (params.loop) {
+      let slideIndex = activeIndex - swiper.virtual.slidesBefore;
+      slideIndex < 0 && (slideIndex = swiper.virtual.slides.length + slideIndex), slideIndex >= swiper.virtual.slides.length && (slideIndex -= swiper.virtual.slides.length), activeSlide = getFilteredSlide(`[data-swiper-slide-index="${slideIndex}"]`);
+    } else
+      activeSlide = getFilteredSlide(`[data-swiper-slide-index="${activeIndex}"]`);
+  else
+    activeSlide = slides[activeIndex];
+  if (activeSlide) {
+    activeSlide.classList.add(params.slideActiveClass);
+    let nextSlide = elementNextAll(activeSlide, `.${params.slideClass}, swiper-slide`)[0];
+    params.loop && !nextSlide && (nextSlide = slides[0]), nextSlide && nextSlide.classList.add(params.slideNextClass);
+    let prevSlide = elementPrevAll(activeSlide, `.${params.slideClass}, swiper-slide`)[0];
+    params.loop && !prevSlide === 0 && (prevSlide = slides[slides.length - 1]), prevSlide && prevSlide.classList.add(params.slidePrevClass);
+  }
+  swiper.emitSlidesClasses();
+}
+var processLazyPreloader = (swiper, imageEl) => {
+  if (!swiper || swiper.destroyed || !swiper.params)
+    return;
+  let slideSelector = () => swiper.isElement ? "swiper-slide" : `.${swiper.params.slideClass}`, slideEl = imageEl.closest(slideSelector());
+  if (slideEl) {
+    let lazyEl = slideEl.querySelector(`.${swiper.params.lazyPreloaderClass}`);
+    !lazyEl && swiper.isElement && (slideEl.shadowRoot ? lazyEl = slideEl.shadowRoot.querySelector(`.${swiper.params.lazyPreloaderClass}`) : requestAnimationFrame(() => {
+      slideEl.shadowRoot && (lazyEl = slideEl.shadowRoot.querySelector(`.${swiper.params.lazyPreloaderClass}`), lazyEl && lazyEl.remove());
+    })), lazyEl && lazyEl.remove();
+  }
+}, unlazy = (swiper, index) => {
+  if (!swiper.slides[index])
+    return;
+  let imageEl = swiper.slides[index].querySelector('[loading="lazy"]');
+  imageEl && imageEl.removeAttribute("loading");
+}, preload = (swiper) => {
+  if (!swiper || swiper.destroyed || !swiper.params)
+    return;
+  let amount = swiper.params.lazyPreloadPrevNext, len = swiper.slides.length;
+  if (!len || !amount || amount < 0)
+    return;
+  amount = Math.min(amount, len);
+  let slidesPerView = swiper.params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(swiper.params.slidesPerView), activeIndex = swiper.activeIndex;
+  if (swiper.params.grid && swiper.params.grid.rows > 1) {
+    let activeColumn = activeIndex, preloadColumns = [activeColumn - amount];
+    preloadColumns.push(...Array.from({
+      length: amount
+    }).map((_3, i6) => activeColumn + slidesPerView + i6)), swiper.slides.forEach((slideEl, i6) => {
+      preloadColumns.includes(slideEl.column) && unlazy(swiper, i6);
+    });
+    return;
+  }
+  let slideIndexLastInView = activeIndex + slidesPerView - 1;
+  if (swiper.params.rewind || swiper.params.loop)
+    for (let i6 = activeIndex - amount; i6 <= slideIndexLastInView + amount; i6 += 1) {
+      let realIndex = (i6 % len + len) % len;
+      (realIndex < activeIndex || realIndex > slideIndexLastInView) && unlazy(swiper, realIndex);
+    }
+  else
+    for (let i6 = Math.max(activeIndex - amount, 0); i6 <= Math.min(slideIndexLastInView + amount, len - 1); i6 += 1)
+      i6 !== activeIndex && (i6 > slideIndexLastInView || i6 < activeIndex) && unlazy(swiper, i6);
+};
+function getActiveIndexByTranslate(swiper) {
+  let {
+    slidesGrid,
+    params
+  } = swiper, translate2 = swiper.rtlTranslate ? swiper.translate : -swiper.translate, activeIndex;
+  for (let i6 = 0; i6 < slidesGrid.length; i6 += 1)
+    typeof slidesGrid[i6 + 1] < "u" ? translate2 >= slidesGrid[i6] && translate2 < slidesGrid[i6 + 1] - (slidesGrid[i6 + 1] - slidesGrid[i6]) / 2 ? activeIndex = i6 : translate2 >= slidesGrid[i6] && translate2 < slidesGrid[i6 + 1] && (activeIndex = i6 + 1) : translate2 >= slidesGrid[i6] && (activeIndex = i6);
+  return params.normalizeSlideIndex && (activeIndex < 0 || typeof activeIndex > "u") && (activeIndex = 0), activeIndex;
+}
+function updateActiveIndex(newActiveIndex) {
+  let swiper = this, translate2 = swiper.rtlTranslate ? swiper.translate : -swiper.translate, {
+    snapGrid,
+    params,
+    activeIndex: previousIndex,
+    realIndex: previousRealIndex,
+    snapIndex: previousSnapIndex
+  } = swiper, activeIndex = newActiveIndex, snapIndex, getVirtualRealIndex = (aIndex) => {
+    let realIndex2 = aIndex - swiper.virtual.slidesBefore;
+    return realIndex2 < 0 && (realIndex2 = swiper.virtual.slides.length + realIndex2), realIndex2 >= swiper.virtual.slides.length && (realIndex2 -= swiper.virtual.slides.length), realIndex2;
+  };
+  if (typeof activeIndex > "u" && (activeIndex = getActiveIndexByTranslate(swiper)), snapGrid.indexOf(translate2) >= 0)
+    snapIndex = snapGrid.indexOf(translate2);
+  else {
+    let skip = Math.min(params.slidesPerGroupSkip, activeIndex);
+    snapIndex = skip + Math.floor((activeIndex - skip) / params.slidesPerGroup);
+  }
+  if (snapIndex >= snapGrid.length && (snapIndex = snapGrid.length - 1), activeIndex === previousIndex) {
+    snapIndex !== previousSnapIndex && (swiper.snapIndex = snapIndex, swiper.emit("snapIndexChange")), swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled && (swiper.realIndex = getVirtualRealIndex(activeIndex));
+    return;
+  }
+  let realIndex;
+  swiper.virtual && params.virtual.enabled && params.loop ? realIndex = getVirtualRealIndex(activeIndex) : swiper.slides[activeIndex] ? realIndex = parseInt(swiper.slides[activeIndex].getAttribute("data-swiper-slide-index") || activeIndex, 10) : realIndex = activeIndex, Object.assign(swiper, {
+    previousSnapIndex,
+    snapIndex,
+    previousRealIndex,
+    realIndex,
+    previousIndex,
+    activeIndex
+  }), swiper.initialized && preload(swiper), swiper.emit("activeIndexChange"), swiper.emit("snapIndexChange"), (swiper.initialized || swiper.params.runCallbacksOnInit) && (previousRealIndex !== realIndex && swiper.emit("realIndexChange"), swiper.emit("slideChange"));
+}
+function updateClickedSlide(el, path) {
+  let swiper = this, params = swiper.params, slide2 = el.closest(`.${params.slideClass}, swiper-slide`);
+  !slide2 && swiper.isElement && path && path.length > 1 && path.includes(el) && [...path.slice(path.indexOf(el) + 1, path.length)].forEach((pathEl) => {
+    !slide2 && pathEl.matches && pathEl.matches(`.${params.slideClass}, swiper-slide`) && (slide2 = pathEl);
+  });
+  let slideFound = !1, slideIndex;
+  if (slide2) {
+    for (let i6 = 0; i6 < swiper.slides.length; i6 += 1)
+      if (swiper.slides[i6] === slide2) {
+        slideFound = !0, slideIndex = i6;
+        break;
+      }
+  }
+  if (slide2 && slideFound)
+    swiper.clickedSlide = slide2, swiper.virtual && swiper.params.virtual.enabled ? swiper.clickedIndex = parseInt(slide2.getAttribute("data-swiper-slide-index"), 10) : swiper.clickedIndex = slideIndex;
+  else {
+    swiper.clickedSlide = void 0, swiper.clickedIndex = void 0;
+    return;
+  }
+  params.slideToClickedSlide && swiper.clickedIndex !== void 0 && swiper.clickedIndex !== swiper.activeIndex && swiper.slideToClickedSlide();
+}
+var update = {
+  updateSize,
+  updateSlides,
+  updateAutoHeight,
+  updateSlidesOffset,
+  updateSlidesProgress,
+  updateProgress,
+  updateSlidesClasses,
+  updateActiveIndex,
+  updateClickedSlide
+};
+function getSwiperTranslate(axis) {
+  axis === void 0 && (axis = this.isHorizontal() ? "x" : "y");
+  let swiper = this, {
+    params,
+    rtlTranslate: rtl,
+    translate: translate2,
+    wrapperEl
+  } = swiper;
+  if (params.virtualTranslate)
+    return rtl ? -translate2 : translate2;
+  if (params.cssMode)
+    return translate2;
+  let currentTranslate = getTranslate(wrapperEl, axis);
+  return currentTranslate += swiper.cssOverflowAdjustment(), rtl && (currentTranslate = -currentTranslate), currentTranslate || 0;
+}
+function setTranslate(translate2, byController) {
+  let swiper = this, {
+    rtlTranslate: rtl,
+    params,
+    wrapperEl,
+    progress
+  } = swiper, x5 = 0, y6 = 0, z4 = 0;
+  swiper.isHorizontal() ? x5 = rtl ? -translate2 : translate2 : y6 = translate2, params.roundLengths && (x5 = Math.floor(x5), y6 = Math.floor(y6)), swiper.previousTranslate = swiper.translate, swiper.translate = swiper.isHorizontal() ? x5 : y6, params.cssMode ? wrapperEl[swiper.isHorizontal() ? "scrollLeft" : "scrollTop"] = swiper.isHorizontal() ? -x5 : -y6 : params.virtualTranslate || (swiper.isHorizontal() ? x5 -= swiper.cssOverflowAdjustment() : y6 -= swiper.cssOverflowAdjustment(), wrapperEl.style.transform = `translate3d(${x5}px, ${y6}px, ${z4}px)`);
+  let newProgress, translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  translatesDiff === 0 ? newProgress = 0 : newProgress = (translate2 - swiper.minTranslate()) / translatesDiff, newProgress !== progress && swiper.updateProgress(translate2), swiper.emit("setTranslate", swiper.translate, byController);
+}
+function minTranslate() {
+  return -this.snapGrid[0];
+}
+function maxTranslate() {
+  return -this.snapGrid[this.snapGrid.length - 1];
+}
+function translateTo(translate2, speed, runCallbacks, translateBounds, internal) {
+  translate2 === void 0 && (translate2 = 0), speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0), translateBounds === void 0 && (translateBounds = !0);
+  let swiper = this, {
+    params,
+    wrapperEl
+  } = swiper;
+  if (swiper.animating && params.preventInteractionOnTransition)
+    return !1;
+  let minTranslate2 = swiper.minTranslate(), maxTranslate2 = swiper.maxTranslate(), newTranslate;
+  if (translateBounds && translate2 > minTranslate2 ? newTranslate = minTranslate2 : translateBounds && translate2 < maxTranslate2 ? newTranslate = maxTranslate2 : newTranslate = translate2, swiper.updateProgress(newTranslate), params.cssMode) {
+    let isH = swiper.isHorizontal();
+    if (speed === 0)
+      wrapperEl[isH ? "scrollLeft" : "scrollTop"] = -newTranslate;
+    else {
+      if (!swiper.support.smoothScroll)
+        return animateCSSModeScroll({
+          swiper,
+          targetPosition: -newTranslate,
+          side: isH ? "left" : "top"
+        }), !0;
+      wrapperEl.scrollTo({
+        [isH ? "left" : "top"]: -newTranslate,
+        behavior: "smooth"
+      });
+    }
+    return !0;
+  }
+  return speed === 0 ? (swiper.setTransition(0), swiper.setTranslate(newTranslate), runCallbacks && (swiper.emit("beforeTransitionStart", speed, internal), swiper.emit("transitionEnd"))) : (swiper.setTransition(speed), swiper.setTranslate(newTranslate), runCallbacks && (swiper.emit("beforeTransitionStart", speed, internal), swiper.emit("transitionStart")), swiper.animating || (swiper.animating = !0, swiper.onTranslateToWrapperTransitionEnd || (swiper.onTranslateToWrapperTransitionEnd = function(e4) {
+    !swiper || swiper.destroyed || e4.target === this && (swiper.wrapperEl.removeEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd), swiper.onTranslateToWrapperTransitionEnd = null, delete swiper.onTranslateToWrapperTransitionEnd, runCallbacks && swiper.emit("transitionEnd"));
+  }), swiper.wrapperEl.addEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd))), !0;
+}
+var translate = {
+  getTranslate: getSwiperTranslate,
+  setTranslate,
+  minTranslate,
+  maxTranslate,
+  translateTo
+};
+function setTransition(duration, byController) {
+  let swiper = this;
+  swiper.params.cssMode || (swiper.wrapperEl.style.transitionDuration = `${duration}ms`, swiper.wrapperEl.style.transitionDelay = duration === 0 ? "0ms" : ""), swiper.emit("setTransition", duration, byController);
+}
+function transitionEmit(_ref) {
+  let {
+    swiper,
+    runCallbacks,
+    direction,
+    step
+  } = _ref, {
+    activeIndex,
+    previousIndex
+  } = swiper, dir = direction;
+  if (dir || (activeIndex > previousIndex ? dir = "next" : activeIndex < previousIndex ? dir = "prev" : dir = "reset"), swiper.emit(`transition${step}`), runCallbacks && activeIndex !== previousIndex) {
+    if (dir === "reset") {
+      swiper.emit(`slideResetTransition${step}`);
+      return;
+    }
+    swiper.emit(`slideChangeTransition${step}`), dir === "next" ? swiper.emit(`slideNextTransition${step}`) : swiper.emit(`slidePrevTransition${step}`);
+  }
+}
+function transitionStart(runCallbacks, direction) {
+  runCallbacks === void 0 && (runCallbacks = !0);
+  let swiper = this, {
+    params
+  } = swiper;
+  params.cssMode || (params.autoHeight && swiper.updateAutoHeight(), transitionEmit({
+    swiper,
+    runCallbacks,
+    direction,
+    step: "Start"
+  }));
+}
+function transitionEnd(runCallbacks, direction) {
+  runCallbacks === void 0 && (runCallbacks = !0);
+  let swiper = this, {
+    params
+  } = swiper;
+  swiper.animating = !1, !params.cssMode && (swiper.setTransition(0), transitionEmit({
+    swiper,
+    runCallbacks,
+    direction,
+    step: "End"
+  }));
+}
+var transition = {
+  setTransition,
+  transitionStart,
+  transitionEnd
+};
+function slideTo(index, speed, runCallbacks, internal, initial) {
+  index === void 0 && (index = 0), speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0), typeof index == "string" && (index = parseInt(index, 10));
+  let swiper = this, slideIndex = index;
+  slideIndex < 0 && (slideIndex = 0);
+  let {
+    params,
+    snapGrid,
+    slidesGrid,
+    previousIndex,
+    activeIndex,
+    rtlTranslate: rtl,
+    wrapperEl,
+    enabled
+  } = swiper;
+  if (swiper.animating && params.preventInteractionOnTransition || !enabled && !internal && !initial)
+    return !1;
+  let skip = Math.min(swiper.params.slidesPerGroupSkip, slideIndex), snapIndex = skip + Math.floor((slideIndex - skip) / swiper.params.slidesPerGroup);
+  snapIndex >= snapGrid.length && (snapIndex = snapGrid.length - 1);
+  let translate2 = -snapGrid[snapIndex];
+  if (params.normalizeSlideIndex)
+    for (let i6 = 0; i6 < slidesGrid.length; i6 += 1) {
+      let normalizedTranslate = -Math.floor(translate2 * 100), normalizedGrid = Math.floor(slidesGrid[i6] * 100), normalizedGridNext = Math.floor(slidesGrid[i6 + 1] * 100);
+      typeof slidesGrid[i6 + 1] < "u" ? normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext - (normalizedGridNext - normalizedGrid) / 2 ? slideIndex = i6 : normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext && (slideIndex = i6 + 1) : normalizedTranslate >= normalizedGrid && (slideIndex = i6);
+    }
+  if (swiper.initialized && slideIndex !== activeIndex && (!swiper.allowSlideNext && (rtl ? translate2 > swiper.translate && translate2 > swiper.minTranslate() : translate2 < swiper.translate && translate2 < swiper.minTranslate()) || !swiper.allowSlidePrev && translate2 > swiper.translate && translate2 > swiper.maxTranslate() && (activeIndex || 0) !== slideIndex))
+    return !1;
+  slideIndex !== (previousIndex || 0) && runCallbacks && swiper.emit("beforeSlideChangeStart"), swiper.updateProgress(translate2);
+  let direction;
+  if (slideIndex > activeIndex ? direction = "next" : slideIndex < activeIndex ? direction = "prev" : direction = "reset", rtl && -translate2 === swiper.translate || !rtl && translate2 === swiper.translate)
+    return swiper.updateActiveIndex(slideIndex), params.autoHeight && swiper.updateAutoHeight(), swiper.updateSlidesClasses(), params.effect !== "slide" && swiper.setTranslate(translate2), direction !== "reset" && (swiper.transitionStart(runCallbacks, direction), swiper.transitionEnd(runCallbacks, direction)), !1;
+  if (params.cssMode) {
+    let isH = swiper.isHorizontal(), t17 = rtl ? translate2 : -translate2;
+    if (speed === 0) {
+      let isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+      isVirtual && (swiper.wrapperEl.style.scrollSnapType = "none", swiper._immediateVirtual = !0), isVirtual && !swiper._cssModeVirtualInitialSet && swiper.params.initialSlide > 0 ? (swiper._cssModeVirtualInitialSet = !0, requestAnimationFrame(() => {
+        wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t17;
+      })) : wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t17, isVirtual && requestAnimationFrame(() => {
+        swiper.wrapperEl.style.scrollSnapType = "", swiper._immediateVirtual = !1;
+      });
+    } else {
+      if (!swiper.support.smoothScroll)
+        return animateCSSModeScroll({
+          swiper,
+          targetPosition: t17,
+          side: isH ? "left" : "top"
+        }), !0;
+      wrapperEl.scrollTo({
+        [isH ? "left" : "top"]: t17,
+        behavior: "smooth"
+      });
+    }
+    return !0;
+  }
+  return swiper.setTransition(speed), swiper.setTranslate(translate2), swiper.updateActiveIndex(slideIndex), swiper.updateSlidesClasses(), swiper.emit("beforeTransitionStart", speed, internal), swiper.transitionStart(runCallbacks, direction), speed === 0 ? swiper.transitionEnd(runCallbacks, direction) : swiper.animating || (swiper.animating = !0, swiper.onSlideToWrapperTransitionEnd || (swiper.onSlideToWrapperTransitionEnd = function(e4) {
+    !swiper || swiper.destroyed || e4.target === this && (swiper.wrapperEl.removeEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd), swiper.onSlideToWrapperTransitionEnd = null, delete swiper.onSlideToWrapperTransitionEnd, swiper.transitionEnd(runCallbacks, direction));
+  }), swiper.wrapperEl.addEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd)), !0;
+}
+function slideToLoop(index, speed, runCallbacks, internal) {
+  index === void 0 && (index = 0), speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0), typeof index == "string" && (index = parseInt(index, 10));
+  let swiper = this, newIndex = index;
+  return swiper.params.loop && (swiper.virtual && swiper.params.virtual.enabled ? newIndex = newIndex + swiper.virtual.slidesBefore : newIndex = swiper.getSlideIndexByData(newIndex)), swiper.slideTo(newIndex, speed, runCallbacks, internal);
+}
+function slideNext(speed, runCallbacks, internal) {
+  speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0);
+  let swiper = this, {
+    enabled,
+    params,
+    animating
+  } = swiper;
+  if (!enabled)
+    return swiper;
+  let perGroup = params.slidesPerGroup;
+  params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto && (perGroup = Math.max(swiper.slidesPerViewDynamic("current", !0), 1));
+  let increment = swiper.activeIndex < params.slidesPerGroupSkip ? 1 : perGroup, isVirtual = swiper.virtual && params.virtual.enabled;
+  if (params.loop) {
+    if (animating && !isVirtual && params.loopPreventsSliding)
+      return !1;
+    if (swiper.loopFix({
+      direction: "next"
+    }), swiper._clientLeft = swiper.wrapperEl.clientLeft, swiper.activeIndex === swiper.slides.length - 1 && params.cssMode)
+      return requestAnimationFrame(() => {
+        swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
+      }), !0;
+  }
+  return params.rewind && swiper.isEnd ? swiper.slideTo(0, speed, runCallbacks, internal) : swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
+}
+function slidePrev(speed, runCallbacks, internal) {
+  speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0);
+  let swiper = this, {
+    params,
+    snapGrid,
+    slidesGrid,
+    rtlTranslate,
+    enabled,
+    animating
+  } = swiper;
+  if (!enabled)
+    return swiper;
+  let isVirtual = swiper.virtual && params.virtual.enabled;
+  if (params.loop) {
+    if (animating && !isVirtual && params.loopPreventsSliding)
+      return !1;
+    swiper.loopFix({
+      direction: "prev"
+    }), swiper._clientLeft = swiper.wrapperEl.clientLeft;
+  }
+  let translate2 = rtlTranslate ? swiper.translate : -swiper.translate;
+  function normalize(val) {
+    return val < 0 ? -Math.floor(Math.abs(val)) : Math.floor(val);
+  }
+  let normalizedTranslate = normalize(translate2), normalizedSnapGrid = snapGrid.map((val) => normalize(val)), prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
+  if (typeof prevSnap > "u" && params.cssMode) {
+    let prevSnapIndex;
+    snapGrid.forEach((snap, snapIndex) => {
+      normalizedTranslate >= snap && (prevSnapIndex = snapIndex);
+    }), typeof prevSnapIndex < "u" && (prevSnap = snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex]);
+  }
+  let prevIndex = 0;
+  if (typeof prevSnap < "u" && (prevIndex = slidesGrid.indexOf(prevSnap), prevIndex < 0 && (prevIndex = swiper.activeIndex - 1), params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto && (prevIndex = prevIndex - swiper.slidesPerViewDynamic("previous", !0) + 1, prevIndex = Math.max(prevIndex, 0))), params.rewind && swiper.isBeginning) {
+    let lastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
+    return swiper.slideTo(lastIndex, speed, runCallbacks, internal);
+  } else if (params.loop && swiper.activeIndex === 0 && params.cssMode)
+    return requestAnimationFrame(() => {
+      swiper.slideTo(prevIndex, speed, runCallbacks, internal);
+    }), !0;
+  return swiper.slideTo(prevIndex, speed, runCallbacks, internal);
+}
+function slideReset(speed, runCallbacks, internal) {
+  speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0);
+  let swiper = this;
+  return swiper.slideTo(swiper.activeIndex, speed, runCallbacks, internal);
+}
+function slideToClosest(speed, runCallbacks, internal, threshold) {
+  speed === void 0 && (speed = this.params.speed), runCallbacks === void 0 && (runCallbacks = !0), threshold === void 0 && (threshold = 0.5);
+  let swiper = this, index = swiper.activeIndex, skip = Math.min(swiper.params.slidesPerGroupSkip, index), snapIndex = skip + Math.floor((index - skip) / swiper.params.slidesPerGroup), translate2 = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+  if (translate2 >= swiper.snapGrid[snapIndex]) {
+    let currentSnap = swiper.snapGrid[snapIndex], nextSnap = swiper.snapGrid[snapIndex + 1];
+    translate2 - currentSnap > (nextSnap - currentSnap) * threshold && (index += swiper.params.slidesPerGroup);
+  } else {
+    let prevSnap = swiper.snapGrid[snapIndex - 1], currentSnap = swiper.snapGrid[snapIndex];
+    translate2 - prevSnap <= (currentSnap - prevSnap) * threshold && (index -= swiper.params.slidesPerGroup);
+  }
+  return index = Math.max(index, 0), index = Math.min(index, swiper.slidesGrid.length - 1), swiper.slideTo(index, speed, runCallbacks, internal);
+}
+function slideToClickedSlide() {
+  let swiper = this, {
+    params,
+    slidesEl
+  } = swiper, slidesPerView = params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : params.slidesPerView, slideToIndex = swiper.clickedIndex, realIndex, slideSelector = swiper.isElement ? "swiper-slide" : `.${params.slideClass}`;
+  if (params.loop) {
+    if (swiper.animating)
+      return;
+    realIndex = parseInt(swiper.clickedSlide.getAttribute("data-swiper-slide-index"), 10), params.centeredSlides ? slideToIndex < swiper.loopedSlides - slidesPerView / 2 || slideToIndex > swiper.slides.length - swiper.loopedSlides + slidesPerView / 2 ? (swiper.loopFix(), slideToIndex = swiper.getSlideIndex(elementChildren(slidesEl, `${slideSelector}[data-swiper-slide-index="${realIndex}"]`)[0]), nextTick(() => {
+      swiper.slideTo(slideToIndex);
+    })) : swiper.slideTo(slideToIndex) : slideToIndex > swiper.slides.length - slidesPerView ? (swiper.loopFix(), slideToIndex = swiper.getSlideIndex(elementChildren(slidesEl, `${slideSelector}[data-swiper-slide-index="${realIndex}"]`)[0]), nextTick(() => {
+      swiper.slideTo(slideToIndex);
+    })) : swiper.slideTo(slideToIndex);
+  } else
+    swiper.slideTo(slideToIndex);
+}
+var slide = {
+  slideTo,
+  slideToLoop,
+  slideNext,
+  slidePrev,
+  slideReset,
+  slideToClosest,
+  slideToClickedSlide
+};
+function loopCreate(slideRealIndex) {
+  let swiper = this, {
+    params,
+    slidesEl
+  } = swiper;
+  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled)
+    return;
+  elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`).forEach((el, index) => {
+    el.setAttribute("data-swiper-slide-index", index);
+  }), swiper.loopFix({
+    slideRealIndex,
+    direction: params.centeredSlides ? void 0 : "next"
+  });
+}
+function loopFix(_temp) {
+  let {
+    slideRealIndex,
+    slideTo: slideTo2 = !0,
+    direction,
+    setTranslate: setTranslate2,
+    activeSlideIndex,
+    byController,
+    byMousewheel
+  } = _temp === void 0 ? {} : _temp, swiper = this;
+  if (!swiper.params.loop)
+    return;
+  swiper.emit("beforeLoopFix");
+  let {
+    slides,
+    allowSlidePrev,
+    allowSlideNext,
+    slidesEl,
+    params
+  } = swiper;
+  if (swiper.allowSlidePrev = !0, swiper.allowSlideNext = !0, swiper.virtual && params.virtual.enabled) {
+    slideTo2 && (!params.centeredSlides && swiper.snapIndex === 0 ? swiper.slideTo(swiper.virtual.slides.length, 0, !1, !0) : params.centeredSlides && swiper.snapIndex < params.slidesPerView ? swiper.slideTo(swiper.virtual.slides.length + swiper.snapIndex, 0, !1, !0) : swiper.snapIndex === swiper.snapGrid.length - 1 && swiper.slideTo(swiper.virtual.slidesBefore, 0, !1, !0)), swiper.allowSlidePrev = allowSlidePrev, swiper.allowSlideNext = allowSlideNext, swiper.emit("loopFix");
+    return;
+  }
+  let slidesPerView = params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(parseFloat(params.slidesPerView, 10)), loopedSlides = params.loopedSlides || slidesPerView;
+  loopedSlides % params.slidesPerGroup !== 0 && (loopedSlides += params.slidesPerGroup - loopedSlides % params.slidesPerGroup), swiper.loopedSlides = loopedSlides;
+  let prependSlidesIndexes = [], appendSlidesIndexes = [], activeIndex = swiper.activeIndex;
+  typeof activeSlideIndex > "u" ? activeSlideIndex = swiper.getSlideIndex(swiper.slides.filter((el) => el.classList.contains(params.slideActiveClass))[0]) : activeIndex = activeSlideIndex;
+  let isNext = direction === "next" || !direction, isPrev = direction === "prev" || !direction, slidesPrepended = 0, slidesAppended = 0;
+  if (activeSlideIndex < loopedSlides) {
+    slidesPrepended = Math.max(loopedSlides - activeSlideIndex, params.slidesPerGroup);
+    for (let i6 = 0; i6 < loopedSlides - activeSlideIndex; i6 += 1) {
+      let index = i6 - Math.floor(i6 / slides.length) * slides.length;
+      prependSlidesIndexes.push(slides.length - index - 1);
+    }
+  } else if (activeSlideIndex > swiper.slides.length - loopedSlides * 2) {
+    slidesAppended = Math.max(activeSlideIndex - (swiper.slides.length - loopedSlides * 2), params.slidesPerGroup);
+    for (let i6 = 0; i6 < slidesAppended; i6 += 1) {
+      let index = i6 - Math.floor(i6 / slides.length) * slides.length;
+      appendSlidesIndexes.push(index);
+    }
+  }
+  if (isPrev && prependSlidesIndexes.forEach((index) => {
+    swiper.slides[index].swiperLoopMoveDOM = !0, slidesEl.prepend(swiper.slides[index]), swiper.slides[index].swiperLoopMoveDOM = !1;
+  }), isNext && appendSlidesIndexes.forEach((index) => {
+    swiper.slides[index].swiperLoopMoveDOM = !0, slidesEl.append(swiper.slides[index]), swiper.slides[index].swiperLoopMoveDOM = !1;
+  }), swiper.recalcSlides(), params.slidesPerView === "auto" && swiper.updateSlides(), params.watchSlidesProgress && swiper.updateSlidesOffset(), slideTo2) {
+    if (prependSlidesIndexes.length > 0 && isPrev)
+      if (typeof slideRealIndex > "u") {
+        let currentSlideTranslate = swiper.slidesGrid[activeIndex], diff = swiper.slidesGrid[activeIndex + slidesPrepended] - currentSlideTranslate;
+        byMousewheel ? swiper.setTranslate(swiper.translate - diff) : (swiper.slideTo(activeIndex + slidesPrepended, 0, !1, !0), setTranslate2 && (swiper.touches[swiper.isHorizontal() ? "startX" : "startY"] += diff, swiper.touchEventsData.currentTranslate = swiper.translate));
+      } else
+        setTranslate2 && (swiper.slideToLoop(slideRealIndex, 0, !1, !0), swiper.touchEventsData.currentTranslate = swiper.translate);
+    else if (appendSlidesIndexes.length > 0 && isNext)
+      if (typeof slideRealIndex > "u") {
+        let currentSlideTranslate = swiper.slidesGrid[activeIndex], diff = swiper.slidesGrid[activeIndex - slidesAppended] - currentSlideTranslate;
+        byMousewheel ? swiper.setTranslate(swiper.translate - diff) : (swiper.slideTo(activeIndex - slidesAppended, 0, !1, !0), setTranslate2 && (swiper.touches[swiper.isHorizontal() ? "startX" : "startY"] += diff, swiper.touchEventsData.currentTranslate = swiper.translate));
+      } else
+        swiper.slideToLoop(slideRealIndex, 0, !1, !0);
+  }
+  if (swiper.allowSlidePrev = allowSlidePrev, swiper.allowSlideNext = allowSlideNext, swiper.controller && swiper.controller.control && !byController) {
+    let loopParams = {
+      slideRealIndex,
+      direction,
+      setTranslate: setTranslate2,
+      activeSlideIndex,
+      byController: !0
+    };
+    Array.isArray(swiper.controller.control) ? swiper.controller.control.forEach((c12) => {
+      !c12.destroyed && c12.params.loop && c12.loopFix({
+        ...loopParams,
+        slideTo: c12.params.slidesPerView === params.slidesPerView ? slideTo2 : !1
+      });
+    }) : swiper.controller.control instanceof swiper.constructor && swiper.controller.control.params.loop && swiper.controller.control.loopFix({
+      ...loopParams,
+      slideTo: swiper.controller.control.params.slidesPerView === params.slidesPerView ? slideTo2 : !1
+    });
+  }
+  swiper.emit("loopFix");
+}
+function loopDestroy() {
+  let swiper = this, {
+    params,
+    slidesEl
+  } = swiper;
+  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled)
+    return;
+  swiper.recalcSlides();
+  let newSlidesOrder = [];
+  swiper.slides.forEach((slideEl) => {
+    let index = typeof slideEl.swiperSlideIndex > "u" ? slideEl.getAttribute("data-swiper-slide-index") * 1 : slideEl.swiperSlideIndex;
+    newSlidesOrder[index] = slideEl;
+  }), swiper.slides.forEach((slideEl) => {
+    slideEl.removeAttribute("data-swiper-slide-index");
+  }), newSlidesOrder.forEach((slideEl) => {
+    slidesEl.append(slideEl);
+  }), swiper.recalcSlides(), swiper.slideTo(swiper.realIndex, 0);
+}
+var loop = {
+  loopCreate,
+  loopFix,
+  loopDestroy
+};
+function setGrabCursor(moving) {
+  let swiper = this;
+  if (!swiper.params.simulateTouch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode)
+    return;
+  let el = swiper.params.touchEventsTarget === "container" ? swiper.el : swiper.wrapperEl;
+  swiper.isElement && (swiper.__preventObserver__ = !0), el.style.cursor = "move", el.style.cursor = moving ? "grabbing" : "grab", swiper.isElement && requestAnimationFrame(() => {
+    swiper.__preventObserver__ = !1;
+  });
+}
+function unsetGrabCursor() {
+  let swiper = this;
+  swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode || (swiper.isElement && (swiper.__preventObserver__ = !0), swiper[swiper.params.touchEventsTarget === "container" ? "el" : "wrapperEl"].style.cursor = "", swiper.isElement && requestAnimationFrame(() => {
+    swiper.__preventObserver__ = !1;
+  }));
+}
+var grabCursor = {
+  setGrabCursor,
+  unsetGrabCursor
+};
+function closestElement(selector, base) {
+  base === void 0 && (base = this);
+  function __closestFrom(el) {
+    if (!el || el === getDocument() || el === getWindow())
+      return null;
+    el.assignedSlot && (el = el.assignedSlot);
+    let found = el.closest(selector);
+    return !found && !el.getRootNode ? null : found || __closestFrom(el.getRootNode().host);
+  }
+  return __closestFrom(base);
+}
+function onTouchStart(event) {
+  let swiper = this, document2 = getDocument(), window2 = getWindow(), data = swiper.touchEventsData;
+  data.evCache.push(event);
+  let {
+    params,
+    touches,
+    enabled
+  } = swiper;
+  if (!enabled || !params.simulateTouch && event.pointerType === "mouse" || swiper.animating && params.preventInteractionOnTransition)
+    return;
+  !swiper.animating && params.cssMode && params.loop && swiper.loopFix();
+  let e4 = event;
+  e4.originalEvent && (e4 = e4.originalEvent);
+  let targetEl = e4.target;
+  if (params.touchEventsTarget === "wrapper" && !swiper.wrapperEl.contains(targetEl) || "which" in e4 && e4.which === 3 || "button" in e4 && e4.button > 0 || data.isTouched && data.isMoved)
+    return;
+  let swipingClassHasValue = !!params.noSwipingClass && params.noSwipingClass !== "", eventPath = event.composedPath ? event.composedPath() : event.path;
+  swipingClassHasValue && e4.target && e4.target.shadowRoot && eventPath && (targetEl = eventPath[0]);
+  let noSwipingSelector = params.noSwipingSelector ? params.noSwipingSelector : `.${params.noSwipingClass}`, isTargetShadow = !!(e4.target && e4.target.shadowRoot);
+  if (params.noSwiping && (isTargetShadow ? closestElement(noSwipingSelector, targetEl) : targetEl.closest(noSwipingSelector))) {
+    swiper.allowClick = !0;
+    return;
+  }
+  if (params.swipeHandler && !targetEl.closest(params.swipeHandler))
+    return;
+  touches.currentX = e4.pageX, touches.currentY = e4.pageY;
+  let startX = touches.currentX, startY = touches.currentY, edgeSwipeDetection = params.edgeSwipeDetection || params.iOSEdgeSwipeDetection, edgeSwipeThreshold = params.edgeSwipeThreshold || params.iOSEdgeSwipeThreshold;
+  if (edgeSwipeDetection && (startX <= edgeSwipeThreshold || startX >= window2.innerWidth - edgeSwipeThreshold))
+    if (edgeSwipeDetection === "prevent")
+      event.preventDefault();
+    else
+      return;
+  Object.assign(data, {
+    isTouched: !0,
+    isMoved: !1,
+    allowTouchCallbacks: !0,
+    isScrolling: void 0,
+    startMoving: void 0
+  }), touches.startX = startX, touches.startY = startY, data.touchStartTime = now(), swiper.allowClick = !0, swiper.updateSize(), swiper.swipeDirection = void 0, params.threshold > 0 && (data.allowThresholdMove = !1);
+  let preventDefault = !0;
+  targetEl.matches(data.focusableElements) && (preventDefault = !1, targetEl.nodeName === "SELECT" && (data.isTouched = !1)), document2.activeElement && document2.activeElement.matches(data.focusableElements) && document2.activeElement !== targetEl && document2.activeElement.blur();
+  let shouldPreventDefault = preventDefault && swiper.allowTouchMove && params.touchStartPreventDefault;
+  (params.touchStartForcePreventDefault || shouldPreventDefault) && !targetEl.isContentEditable && e4.preventDefault(), params.freeMode && params.freeMode.enabled && swiper.freeMode && swiper.animating && !params.cssMode && swiper.freeMode.onTouchStart(), swiper.emit("touchStart", e4);
+}
+function onTouchMove(event) {
+  let document2 = getDocument(), swiper = this, data = swiper.touchEventsData, {
+    params,
+    touches,
+    rtlTranslate: rtl,
+    enabled
+  } = swiper;
+  if (!enabled || !params.simulateTouch && event.pointerType === "mouse")
+    return;
+  let e4 = event;
+  if (e4.originalEvent && (e4 = e4.originalEvent), !data.isTouched) {
+    data.startMoving && data.isScrolling && swiper.emit("touchMoveOpposite", e4);
+    return;
+  }
+  let pointerIndex = data.evCache.findIndex((cachedEv) => cachedEv.pointerId === e4.pointerId);
+  pointerIndex >= 0 && (data.evCache[pointerIndex] = e4);
+  let targetTouch = data.evCache.length > 1 ? data.evCache[0] : e4, pageX = targetTouch.pageX, pageY = targetTouch.pageY;
+  if (e4.preventedByNestedSwiper) {
+    touches.startX = pageX, touches.startY = pageY;
+    return;
+  }
+  if (!swiper.allowTouchMove) {
+    e4.target.matches(data.focusableElements) || (swiper.allowClick = !1), data.isTouched && (Object.assign(touches, {
+      startX: pageX,
+      startY: pageY,
+      prevX: swiper.touches.currentX,
+      prevY: swiper.touches.currentY,
+      currentX: pageX,
+      currentY: pageY
+    }), data.touchStartTime = now());
+    return;
+  }
+  if (params.touchReleaseOnEdges && !params.loop) {
+    if (swiper.isVertical()) {
+      if (pageY < touches.startY && swiper.translate <= swiper.maxTranslate() || pageY > touches.startY && swiper.translate >= swiper.minTranslate()) {
+        data.isTouched = !1, data.isMoved = !1;
+        return;
+      }
+    } else if (pageX < touches.startX && swiper.translate <= swiper.maxTranslate() || pageX > touches.startX && swiper.translate >= swiper.minTranslate())
+      return;
+  }
+  if (document2.activeElement && e4.target === document2.activeElement && e4.target.matches(data.focusableElements)) {
+    data.isMoved = !0, swiper.allowClick = !1;
+    return;
+  }
+  if (data.allowTouchCallbacks && swiper.emit("touchMove", e4), e4.targetTouches && e4.targetTouches.length > 1)
+    return;
+  touches.currentX = pageX, touches.currentY = pageY;
+  let diffX = touches.currentX - touches.startX, diffY = touches.currentY - touches.startY;
+  if (swiper.params.threshold && Math.sqrt(diffX ** 2 + diffY ** 2) < swiper.params.threshold)
+    return;
+  if (typeof data.isScrolling > "u") {
+    let touchAngle;
+    swiper.isHorizontal() && touches.currentY === touches.startY || swiper.isVertical() && touches.currentX === touches.startX ? data.isScrolling = !1 : diffX * diffX + diffY * diffY >= 25 && (touchAngle = Math.atan2(Math.abs(diffY), Math.abs(diffX)) * 180 / Math.PI, data.isScrolling = swiper.isHorizontal() ? touchAngle > params.touchAngle : 90 - touchAngle > params.touchAngle);
+  }
+  if (data.isScrolling && swiper.emit("touchMoveOpposite", e4), typeof data.startMoving > "u" && (touches.currentX !== touches.startX || touches.currentY !== touches.startY) && (data.startMoving = !0), data.isScrolling || swiper.zoom && swiper.params.zoom && swiper.params.zoom.enabled && data.evCache.length > 1) {
+    data.isTouched = !1;
+    return;
+  }
+  if (!data.startMoving)
+    return;
+  swiper.allowClick = !1, !params.cssMode && e4.cancelable && e4.preventDefault(), params.touchMoveStopPropagation && !params.nested && e4.stopPropagation();
+  let diff = swiper.isHorizontal() ? diffX : diffY, touchesDiff = swiper.isHorizontal() ? touches.currentX - touches.previousX : touches.currentY - touches.previousY;
+  params.oneWayMovement && (diff = Math.abs(diff) * (rtl ? 1 : -1), touchesDiff = Math.abs(touchesDiff) * (rtl ? 1 : -1)), touches.diff = diff, diff *= params.touchRatio, rtl && (diff = -diff, touchesDiff = -touchesDiff);
+  let prevTouchesDirection = swiper.touchesDirection;
+  swiper.swipeDirection = diff > 0 ? "prev" : "next", swiper.touchesDirection = touchesDiff > 0 ? "prev" : "next";
+  let isLoop = swiper.params.loop && !params.cssMode, allowLoopFix = swiper.swipeDirection === "next" && swiper.allowSlideNext || swiper.swipeDirection === "prev" && swiper.allowSlidePrev;
+  if (!data.isMoved) {
+    if (isLoop && allowLoopFix && swiper.loopFix({
+      direction: swiper.swipeDirection
+    }), data.startTranslate = swiper.getTranslate(), swiper.setTransition(0), swiper.animating) {
+      let evt = new window.CustomEvent("transitionend", {
+        bubbles: !0,
+        cancelable: !0
+      });
+      swiper.wrapperEl.dispatchEvent(evt);
+    }
+    data.allowMomentumBounce = !1, params.grabCursor && (swiper.allowSlideNext === !0 || swiper.allowSlidePrev === !0) && swiper.setGrabCursor(!0), swiper.emit("sliderFirstMove", e4);
+  }
+  let loopFixed;
+  data.isMoved && prevTouchesDirection !== swiper.touchesDirection && isLoop && allowLoopFix && Math.abs(diff) >= 1 && (swiper.loopFix({
+    direction: swiper.swipeDirection,
+    setTranslate: !0
+  }), loopFixed = !0), swiper.emit("sliderMove", e4), data.isMoved = !0, data.currentTranslate = diff + data.startTranslate;
+  let disableParentSwiper = !0, resistanceRatio = params.resistanceRatio;
+  if (params.touchReleaseOnEdges && (resistanceRatio = 0), diff > 0 ? (isLoop && allowLoopFix && !loopFixed && data.currentTranslate > (params.centeredSlides ? swiper.minTranslate() - swiper.size / 2 : swiper.minTranslate()) && swiper.loopFix({
+    direction: "prev",
+    setTranslate: !0,
+    activeSlideIndex: 0
+  }), data.currentTranslate > swiper.minTranslate() && (disableParentSwiper = !1, params.resistance && (data.currentTranslate = swiper.minTranslate() - 1 + (-swiper.minTranslate() + data.startTranslate + diff) ** resistanceRatio))) : diff < 0 && (isLoop && allowLoopFix && !loopFixed && data.currentTranslate < (params.centeredSlides ? swiper.maxTranslate() + swiper.size / 2 : swiper.maxTranslate()) && swiper.loopFix({
+    direction: "next",
+    setTranslate: !0,
+    activeSlideIndex: swiper.slides.length - (params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(parseFloat(params.slidesPerView, 10)))
+  }), data.currentTranslate < swiper.maxTranslate() && (disableParentSwiper = !1, params.resistance && (data.currentTranslate = swiper.maxTranslate() + 1 - (swiper.maxTranslate() - data.startTranslate - diff) ** resistanceRatio))), disableParentSwiper && (e4.preventedByNestedSwiper = !0), !swiper.allowSlideNext && swiper.swipeDirection === "next" && data.currentTranslate < data.startTranslate && (data.currentTranslate = data.startTranslate), !swiper.allowSlidePrev && swiper.swipeDirection === "prev" && data.currentTranslate > data.startTranslate && (data.currentTranslate = data.startTranslate), !swiper.allowSlidePrev && !swiper.allowSlideNext && (data.currentTranslate = data.startTranslate), params.threshold > 0)
+    if (Math.abs(diff) > params.threshold || data.allowThresholdMove) {
+      if (!data.allowThresholdMove) {
+        data.allowThresholdMove = !0, touches.startX = touches.currentX, touches.startY = touches.currentY, data.currentTranslate = data.startTranslate, touches.diff = swiper.isHorizontal() ? touches.currentX - touches.startX : touches.currentY - touches.startY;
+        return;
+      }
+    } else {
+      data.currentTranslate = data.startTranslate;
+      return;
+    }
+  !params.followFinger || params.cssMode || ((params.freeMode && params.freeMode.enabled && swiper.freeMode || params.watchSlidesProgress) && (swiper.updateActiveIndex(), swiper.updateSlidesClasses()), params.freeMode && params.freeMode.enabled && swiper.freeMode && swiper.freeMode.onTouchMove(), swiper.updateProgress(data.currentTranslate), swiper.setTranslate(data.currentTranslate));
+}
+function onTouchEnd(event) {
+  let swiper = this, data = swiper.touchEventsData, pointerIndex = data.evCache.findIndex((cachedEv) => cachedEv.pointerId === event.pointerId);
+  if (pointerIndex >= 0 && data.evCache.splice(pointerIndex, 1), ["pointercancel", "pointerout", "pointerleave", "contextmenu"].includes(event.type) && !(["pointercancel", "contextmenu"].includes(event.type) && (swiper.browser.isSafari || swiper.browser.isWebView)))
+    return;
+  let {
+    params,
+    touches,
+    rtlTranslate: rtl,
+    slidesGrid,
+    enabled
+  } = swiper;
+  if (!enabled || !params.simulateTouch && event.pointerType === "mouse")
+    return;
+  let e4 = event;
+  if (e4.originalEvent && (e4 = e4.originalEvent), data.allowTouchCallbacks && swiper.emit("touchEnd", e4), data.allowTouchCallbacks = !1, !data.isTouched) {
+    data.isMoved && params.grabCursor && swiper.setGrabCursor(!1), data.isMoved = !1, data.startMoving = !1;
+    return;
+  }
+  params.grabCursor && data.isMoved && data.isTouched && (swiper.allowSlideNext === !0 || swiper.allowSlidePrev === !0) && swiper.setGrabCursor(!1);
+  let touchEndTime = now(), timeDiff = touchEndTime - data.touchStartTime;
+  if (swiper.allowClick) {
+    let pathTree = e4.path || e4.composedPath && e4.composedPath();
+    swiper.updateClickedSlide(pathTree && pathTree[0] || e4.target, pathTree), swiper.emit("tap click", e4), timeDiff < 300 && touchEndTime - data.lastClickTime < 300 && swiper.emit("doubleTap doubleClick", e4);
+  }
+  if (data.lastClickTime = now(), nextTick(() => {
+    swiper.destroyed || (swiper.allowClick = !0);
+  }), !data.isTouched || !data.isMoved || !swiper.swipeDirection || touches.diff === 0 || data.currentTranslate === data.startTranslate) {
+    data.isTouched = !1, data.isMoved = !1, data.startMoving = !1;
+    return;
+  }
+  data.isTouched = !1, data.isMoved = !1, data.startMoving = !1;
+  let currentPos;
+  if (params.followFinger ? currentPos = rtl ? swiper.translate : -swiper.translate : currentPos = -data.currentTranslate, params.cssMode)
+    return;
+  if (params.freeMode && params.freeMode.enabled) {
+    swiper.freeMode.onTouchEnd({
+      currentPos
+    });
+    return;
+  }
+  let stopIndex = 0, groupSize = swiper.slidesSizesGrid[0];
+  for (let i6 = 0; i6 < slidesGrid.length; i6 += i6 < params.slidesPerGroupSkip ? 1 : params.slidesPerGroup) {
+    let increment2 = i6 < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+    typeof slidesGrid[i6 + increment2] < "u" ? currentPos >= slidesGrid[i6] && currentPos < slidesGrid[i6 + increment2] && (stopIndex = i6, groupSize = slidesGrid[i6 + increment2] - slidesGrid[i6]) : currentPos >= slidesGrid[i6] && (stopIndex = i6, groupSize = slidesGrid[slidesGrid.length - 1] - slidesGrid[slidesGrid.length - 2]);
+  }
+  let rewindFirstIndex = null, rewindLastIndex = null;
+  params.rewind && (swiper.isBeginning ? rewindLastIndex = params.virtual && params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1 : swiper.isEnd && (rewindFirstIndex = 0));
+  let ratio = (currentPos - slidesGrid[stopIndex]) / groupSize, increment = stopIndex < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+  if (timeDiff > params.longSwipesMs) {
+    if (!params.longSwipes) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    swiper.swipeDirection === "next" && (ratio >= params.longSwipesRatio ? swiper.slideTo(params.rewind && swiper.isEnd ? rewindFirstIndex : stopIndex + increment) : swiper.slideTo(stopIndex)), swiper.swipeDirection === "prev" && (ratio > 1 - params.longSwipesRatio ? swiper.slideTo(stopIndex + increment) : rewindLastIndex !== null && ratio < 0 && Math.abs(ratio) > params.longSwipesRatio ? swiper.slideTo(rewindLastIndex) : swiper.slideTo(stopIndex));
+  } else {
+    if (!params.shortSwipes) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    swiper.navigation && (e4.target === swiper.navigation.nextEl || e4.target === swiper.navigation.prevEl) ? e4.target === swiper.navigation.nextEl ? swiper.slideTo(stopIndex + increment) : swiper.slideTo(stopIndex) : (swiper.swipeDirection === "next" && swiper.slideTo(rewindFirstIndex !== null ? rewindFirstIndex : stopIndex + increment), swiper.swipeDirection === "prev" && swiper.slideTo(rewindLastIndex !== null ? rewindLastIndex : stopIndex));
+  }
+}
+function onResize() {
+  let swiper = this, {
+    params,
+    el
+  } = swiper;
+  if (el && el.offsetWidth === 0)
+    return;
+  params.breakpoints && swiper.setBreakpoint();
+  let {
+    allowSlideNext,
+    allowSlidePrev,
+    snapGrid
+  } = swiper, isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+  swiper.allowSlideNext = !0, swiper.allowSlidePrev = !0, swiper.updateSize(), swiper.updateSlides(), swiper.updateSlidesClasses();
+  let isVirtualLoop = isVirtual && params.loop;
+  (params.slidesPerView === "auto" || params.slidesPerView > 1) && swiper.isEnd && !swiper.isBeginning && !swiper.params.centeredSlides && !isVirtualLoop ? swiper.slideTo(swiper.slides.length - 1, 0, !1, !0) : swiper.params.loop && !isVirtual ? swiper.slideToLoop(swiper.realIndex, 0, !1, !0) : swiper.slideTo(swiper.activeIndex, 0, !1, !0), swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused && (clearTimeout(swiper.autoplay.resizeTimeout), swiper.autoplay.resizeTimeout = setTimeout(() => {
+    swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused && swiper.autoplay.resume();
+  }, 500)), swiper.allowSlidePrev = allowSlidePrev, swiper.allowSlideNext = allowSlideNext, swiper.params.watchOverflow && snapGrid !== swiper.snapGrid && swiper.checkOverflow();
+}
+function onClick(e4) {
+  let swiper = this;
+  swiper.enabled && (swiper.allowClick || (swiper.params.preventClicks && e4.preventDefault(), swiper.params.preventClicksPropagation && swiper.animating && (e4.stopPropagation(), e4.stopImmediatePropagation())));
+}
+function onScroll() {
+  let swiper = this, {
+    wrapperEl,
+    rtlTranslate,
+    enabled
+  } = swiper;
+  if (!enabled)
+    return;
+  swiper.previousTranslate = swiper.translate, swiper.isHorizontal() ? swiper.translate = -wrapperEl.scrollLeft : swiper.translate = -wrapperEl.scrollTop, swiper.translate === 0 && (swiper.translate = 0), swiper.updateActiveIndex(), swiper.updateSlidesClasses();
+  let newProgress, translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  translatesDiff === 0 ? newProgress = 0 : newProgress = (swiper.translate - swiper.minTranslate()) / translatesDiff, newProgress !== swiper.progress && swiper.updateProgress(rtlTranslate ? -swiper.translate : swiper.translate), swiper.emit("setTranslate", swiper.translate, !1);
+}
+function onLoad(e4) {
+  let swiper = this;
+  processLazyPreloader(swiper, e4.target), !(swiper.params.cssMode || swiper.params.slidesPerView !== "auto" && !swiper.params.autoHeight) && swiper.update();
+}
+var dummyEventAttached = !1;
+function dummyEventListener() {
+}
+var events = (swiper, method) => {
+  let document2 = getDocument(), {
+    params,
+    el,
+    wrapperEl,
+    device
+  } = swiper, capture = !!params.nested, domMethod = method === "on" ? "addEventListener" : "removeEventListener", swiperMethod = method;
+  el[domMethod]("pointerdown", swiper.onTouchStart, {
+    passive: !1
+  }), document2[domMethod]("pointermove", swiper.onTouchMove, {
+    passive: !1,
+    capture
+  }), document2[domMethod]("pointerup", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("pointercancel", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("pointerout", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("pointerleave", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("contextmenu", swiper.onTouchEnd, {
+    passive: !0
+  }), (params.preventClicks || params.preventClicksPropagation) && el[domMethod]("click", swiper.onClick, !0), params.cssMode && wrapperEl[domMethod]("scroll", swiper.onScroll), params.updateOnWindowResize ? swiper[swiperMethod](device.ios || device.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", onResize, !0) : swiper[swiperMethod]("observerUpdate", onResize, !0), el[domMethod]("load", swiper.onLoad, {
+    capture: !0
+  });
+};
+function attachEvents() {
+  let swiper = this, document2 = getDocument(), {
+    params
+  } = swiper;
+  swiper.onTouchStart = onTouchStart.bind(swiper), swiper.onTouchMove = onTouchMove.bind(swiper), swiper.onTouchEnd = onTouchEnd.bind(swiper), params.cssMode && (swiper.onScroll = onScroll.bind(swiper)), swiper.onClick = onClick.bind(swiper), swiper.onLoad = onLoad.bind(swiper), dummyEventAttached || (document2.addEventListener("touchstart", dummyEventListener), dummyEventAttached = !0), events(swiper, "on");
+}
+function detachEvents() {
+  events(this, "off");
+}
+var events$1 = {
+  attachEvents,
+  detachEvents
+}, isGridEnabled = (swiper, params) => swiper.grid && params.grid && params.grid.rows > 1;
+function setBreakpoint() {
+  let swiper = this, {
+    realIndex,
+    initialized,
+    params,
+    el
+  } = swiper, breakpoints2 = params.breakpoints;
+  if (!breakpoints2 || breakpoints2 && Object.keys(breakpoints2).length === 0)
+    return;
+  let breakpoint = swiper.getBreakpoint(breakpoints2, swiper.params.breakpointsBase, swiper.el);
+  if (!breakpoint || swiper.currentBreakpoint === breakpoint)
+    return;
+  let breakpointParams = (breakpoint in breakpoints2 ? breakpoints2[breakpoint] : void 0) || swiper.originalParams, wasMultiRow = isGridEnabled(swiper, params), isMultiRow = isGridEnabled(swiper, breakpointParams), wasEnabled = params.enabled;
+  wasMultiRow && !isMultiRow ? (el.classList.remove(`${params.containerModifierClass}grid`, `${params.containerModifierClass}grid-column`), swiper.emitContainerClasses()) : !wasMultiRow && isMultiRow && (el.classList.add(`${params.containerModifierClass}grid`), (breakpointParams.grid.fill && breakpointParams.grid.fill === "column" || !breakpointParams.grid.fill && params.grid.fill === "column") && el.classList.add(`${params.containerModifierClass}grid-column`), swiper.emitContainerClasses()), ["navigation", "pagination", "scrollbar"].forEach((prop) => {
+    if (typeof breakpointParams[prop] > "u")
+      return;
+    let wasModuleEnabled = params[prop] && params[prop].enabled, isModuleEnabled = breakpointParams[prop] && breakpointParams[prop].enabled;
+    wasModuleEnabled && !isModuleEnabled && swiper[prop].disable(), !wasModuleEnabled && isModuleEnabled && swiper[prop].enable();
+  });
+  let directionChanged = breakpointParams.direction && breakpointParams.direction !== params.direction, needsReLoop = params.loop && (breakpointParams.slidesPerView !== params.slidesPerView || directionChanged), wasLoop = params.loop;
+  directionChanged && initialized && swiper.changeDirection(), extend2(swiper.params, breakpointParams);
+  let isEnabled = swiper.params.enabled, hasLoop = swiper.params.loop;
+  Object.assign(swiper, {
+    allowTouchMove: swiper.params.allowTouchMove,
+    allowSlideNext: swiper.params.allowSlideNext,
+    allowSlidePrev: swiper.params.allowSlidePrev
+  }), wasEnabled && !isEnabled ? swiper.disable() : !wasEnabled && isEnabled && swiper.enable(), swiper.currentBreakpoint = breakpoint, swiper.emit("_beforeBreakpoint", breakpointParams), initialized && (needsReLoop ? (swiper.loopDestroy(), swiper.loopCreate(realIndex), swiper.updateSlides()) : !wasLoop && hasLoop ? (swiper.loopCreate(realIndex), swiper.updateSlides()) : wasLoop && !hasLoop && swiper.loopDestroy()), swiper.emit("breakpoint", breakpointParams);
+}
+function getBreakpoint(breakpoints2, base, containerEl) {
+  if (base === void 0 && (base = "window"), !breakpoints2 || base === "container" && !containerEl)
+    return;
+  let breakpoint = !1, window2 = getWindow(), currentHeight = base === "window" ? window2.innerHeight : containerEl.clientHeight, points = Object.keys(breakpoints2).map((point) => {
+    if (typeof point == "string" && point.indexOf("@") === 0) {
+      let minRatio = parseFloat(point.substr(1));
+      return {
+        value: currentHeight * minRatio,
+        point
+      };
+    }
+    return {
+      value: point,
+      point
+    };
+  });
+  points.sort((a12, b6) => parseInt(a12.value, 10) - parseInt(b6.value, 10));
+  for (let i6 = 0; i6 < points.length; i6 += 1) {
+    let {
+      point,
+      value
+    } = points[i6];
+    base === "window" ? window2.matchMedia(`(min-width: ${value}px)`).matches && (breakpoint = point) : value <= containerEl.clientWidth && (breakpoint = point);
+  }
+  return breakpoint || "max";
+}
+var breakpoints = {
+  setBreakpoint,
+  getBreakpoint
+};
+function prepareClasses(entries, prefix2) {
+  let resultClasses = [];
+  return entries.forEach((item) => {
+    typeof item == "object" ? Object.keys(item).forEach((classNames) => {
+      item[classNames] && resultClasses.push(prefix2 + classNames);
+    }) : typeof item == "string" && resultClasses.push(prefix2 + item);
+  }), resultClasses;
+}
+function addClasses() {
+  let swiper = this, {
+    classNames,
+    params,
+    rtl,
+    el,
+    device
+  } = swiper, suffixes = prepareClasses(["initialized", params.direction, {
+    "free-mode": swiper.params.freeMode && params.freeMode.enabled
+  }, {
+    autoheight: params.autoHeight
+  }, {
+    rtl
+  }, {
+    grid: params.grid && params.grid.rows > 1
+  }, {
+    "grid-column": params.grid && params.grid.rows > 1 && params.grid.fill === "column"
+  }, {
+    android: device.android
+  }, {
+    ios: device.ios
+  }, {
+    "css-mode": params.cssMode
+  }, {
+    centered: params.cssMode && params.centeredSlides
+  }, {
+    "watch-progress": params.watchSlidesProgress
+  }], params.containerModifierClass);
+  classNames.push(...suffixes), el.classList.add(...classNames), swiper.emitContainerClasses();
+}
+function removeClasses() {
+  let swiper = this, {
+    el,
+    classNames
+  } = swiper;
+  el.classList.remove(...classNames), swiper.emitContainerClasses();
+}
+var classes = {
+  addClasses,
+  removeClasses
+};
+function checkOverflow() {
+  let swiper = this, {
+    isLocked: wasLocked,
+    params
+  } = swiper, {
+    slidesOffsetBefore
+  } = params;
+  if (slidesOffsetBefore) {
+    let lastSlideIndex = swiper.slides.length - 1, lastSlideRightEdge = swiper.slidesGrid[lastSlideIndex] + swiper.slidesSizesGrid[lastSlideIndex] + slidesOffsetBefore * 2;
+    swiper.isLocked = swiper.size > lastSlideRightEdge;
+  } else
+    swiper.isLocked = swiper.snapGrid.length === 1;
+  params.allowSlideNext === !0 && (swiper.allowSlideNext = !swiper.isLocked), params.allowSlidePrev === !0 && (swiper.allowSlidePrev = !swiper.isLocked), wasLocked && wasLocked !== swiper.isLocked && (swiper.isEnd = !1), wasLocked !== swiper.isLocked && swiper.emit(swiper.isLocked ? "lock" : "unlock");
+}
+var checkOverflow$1 = {
+  checkOverflow
+}, defaults = {
+  init: !0,
+  direction: "horizontal",
+  oneWayMovement: !1,
+  touchEventsTarget: "wrapper",
+  initialSlide: 0,
+  speed: 300,
+  cssMode: !1,
+  updateOnWindowResize: !0,
+  resizeObserver: !0,
+  nested: !1,
+  createElements: !1,
+  enabled: !0,
+  focusableElements: "input, select, option, textarea, button, video, label",
+  // Overrides
+  width: null,
+  height: null,
+  //
+  preventInteractionOnTransition: !1,
+  // ssr
+  userAgent: null,
+  url: null,
+  // To support iOS's swipe-to-go-back gesture (when being used in-app).
+  edgeSwipeDetection: !1,
+  edgeSwipeThreshold: 20,
+  // Autoheight
+  autoHeight: !1,
+  // Set wrapper width
+  setWrapperSize: !1,
+  // Virtual Translate
+  virtualTranslate: !1,
+  // Effects
+  effect: "slide",
+  // 'slide' or 'fade' or 'cube' or 'coverflow' or 'flip'
+  // Breakpoints
+  breakpoints: void 0,
+  breakpointsBase: "window",
+  // Slides grid
+  spaceBetween: 0,
+  slidesPerView: 1,
+  slidesPerGroup: 1,
+  slidesPerGroupSkip: 0,
+  slidesPerGroupAuto: !1,
+  centeredSlides: !1,
+  centeredSlidesBounds: !1,
+  slidesOffsetBefore: 0,
+  // in px
+  slidesOffsetAfter: 0,
+  // in px
+  normalizeSlideIndex: !0,
+  centerInsufficientSlides: !1,
+  // Disable swiper and hide navigation when container not overflow
+  watchOverflow: !0,
+  // Round length
+  roundLengths: !1,
+  // Touches
+  touchRatio: 1,
+  touchAngle: 45,
+  simulateTouch: !0,
+  shortSwipes: !0,
+  longSwipes: !0,
+  longSwipesRatio: 0.5,
+  longSwipesMs: 300,
+  followFinger: !0,
+  allowTouchMove: !0,
+  threshold: 5,
+  touchMoveStopPropagation: !1,
+  touchStartPreventDefault: !0,
+  touchStartForcePreventDefault: !1,
+  touchReleaseOnEdges: !1,
+  // Unique Navigation Elements
+  uniqueNavElements: !0,
+  // Resistance
+  resistance: !0,
+  resistanceRatio: 0.85,
+  // Progress
+  watchSlidesProgress: !1,
+  // Cursor
+  grabCursor: !1,
+  // Clicks
+  preventClicks: !0,
+  preventClicksPropagation: !0,
+  slideToClickedSlide: !1,
+  // loop
+  loop: !1,
+  loopedSlides: null,
+  loopPreventsSliding: !0,
+  // rewind
+  rewind: !1,
+  // Swiping/no swiping
+  allowSlidePrev: !0,
+  allowSlideNext: !0,
+  swipeHandler: null,
+  // '.swipe-handler',
+  noSwiping: !0,
+  noSwipingClass: "swiper-no-swiping",
+  noSwipingSelector: null,
+  // Passive Listeners
+  passiveListeners: !0,
+  maxBackfaceHiddenSlides: 10,
+  // NS
+  containerModifierClass: "swiper-",
+  // NEW
+  slideClass: "swiper-slide",
+  slideActiveClass: "swiper-slide-active",
+  slideVisibleClass: "swiper-slide-visible",
+  slideNextClass: "swiper-slide-next",
+  slidePrevClass: "swiper-slide-prev",
+  wrapperClass: "swiper-wrapper",
+  lazyPreloaderClass: "swiper-lazy-preloader",
+  lazyPreloadPrevNext: 0,
+  // Callbacks
+  runCallbacksOnInit: !0,
+  // Internals
+  _emitClasses: !1
+};
+function moduleExtendParams(params, allModulesParams) {
+  return function(obj) {
+    obj === void 0 && (obj = {});
+    let moduleParamName = Object.keys(obj)[0], moduleParams = obj[moduleParamName];
+    if (typeof moduleParams != "object" || moduleParams === null) {
+      extend2(allModulesParams, obj);
+      return;
+    }
+    if (params[moduleParamName] === !0 && (params[moduleParamName] = {
+      enabled: !0
+    }), moduleParamName === "navigation" && params[moduleParamName] && params[moduleParamName].enabled && !params[moduleParamName].prevEl && !params[moduleParamName].nextEl && (params[moduleParamName].auto = !0), ["pagination", "scrollbar"].indexOf(moduleParamName) >= 0 && params[moduleParamName] && params[moduleParamName].enabled && !params[moduleParamName].el && (params[moduleParamName].auto = !0), !(moduleParamName in params && "enabled" in moduleParams)) {
+      extend2(allModulesParams, obj);
+      return;
+    }
+    typeof params[moduleParamName] == "object" && !("enabled" in params[moduleParamName]) && (params[moduleParamName].enabled = !0), params[moduleParamName] || (params[moduleParamName] = {
+      enabled: !1
+    }), extend2(allModulesParams, obj);
+  };
+}
+var prototypes = {
+  eventsEmitter,
+  update,
+  translate,
+  transition,
+  slide,
+  loop,
+  grabCursor,
+  events: events$1,
+  breakpoints,
+  checkOverflow: checkOverflow$1,
+  classes
+}, extendedDefaults = {}, Swiper = class {
+  constructor() {
+    let el, params;
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
+      args[_key] = arguments[_key];
+    args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === "Object" ? params = args[0] : [el, params] = args, params || (params = {}), params = extend2({}, params), el && !params.el && (params.el = el);
+    let document2 = getDocument();
+    if (params.el && typeof params.el == "string" && document2.querySelectorAll(params.el).length > 1) {
+      let swipers = [];
+      return document2.querySelectorAll(params.el).forEach((containerEl) => {
+        let newParams = extend2({}, params, {
+          el: containerEl
+        });
+        swipers.push(new Swiper(newParams));
+      }), swipers;
+    }
+    let swiper = this;
+    swiper.__swiper__ = !0, swiper.support = getSupport(), swiper.device = getDevice({
+      userAgent: params.userAgent
+    }), swiper.browser = getBrowser(), swiper.eventsListeners = {}, swiper.eventsAnyListeners = [], swiper.modules = [...swiper.__modules__], params.modules && Array.isArray(params.modules) && swiper.modules.push(...params.modules);
+    let allModulesParams = {};
+    swiper.modules.forEach((mod) => {
+      mod({
+        params,
+        swiper,
+        extendParams: moduleExtendParams(params, allModulesParams),
+        on: swiper.on.bind(swiper),
+        once: swiper.once.bind(swiper),
+        off: swiper.off.bind(swiper),
+        emit: swiper.emit.bind(swiper)
+      });
+    });
+    let swiperParams = extend2({}, defaults, allModulesParams);
+    return swiper.params = extend2({}, swiperParams, extendedDefaults, params), swiper.originalParams = extend2({}, swiper.params), swiper.passedParams = extend2({}, params), swiper.params && swiper.params.on && Object.keys(swiper.params.on).forEach((eventName) => {
+      swiper.on(eventName, swiper.params.on[eventName]);
+    }), swiper.params && swiper.params.onAny && swiper.onAny(swiper.params.onAny), Object.assign(swiper, {
+      enabled: swiper.params.enabled,
+      el,
+      // Classes
+      classNames: [],
+      // Slides
+      slides: [],
+      slidesGrid: [],
+      snapGrid: [],
+      slidesSizesGrid: [],
+      // isDirection
+      isHorizontal() {
+        return swiper.params.direction === "horizontal";
+      },
+      isVertical() {
+        return swiper.params.direction === "vertical";
+      },
+      // Indexes
+      activeIndex: 0,
+      realIndex: 0,
+      //
+      isBeginning: !0,
+      isEnd: !1,
+      // Props
+      translate: 0,
+      previousTranslate: 0,
+      progress: 0,
+      velocity: 0,
+      animating: !1,
+      cssOverflowAdjustment() {
+        return Math.trunc(this.translate / 2 ** 23) * 2 ** 23;
+      },
+      // Locks
+      allowSlideNext: swiper.params.allowSlideNext,
+      allowSlidePrev: swiper.params.allowSlidePrev,
+      // Touch Events
+      touchEventsData: {
+        isTouched: void 0,
+        isMoved: void 0,
+        allowTouchCallbacks: void 0,
+        touchStartTime: void 0,
+        isScrolling: void 0,
+        currentTranslate: void 0,
+        startTranslate: void 0,
+        allowThresholdMove: void 0,
+        // Form elements to match
+        focusableElements: swiper.params.focusableElements,
+        // Last click time
+        lastClickTime: 0,
+        clickTimeout: void 0,
+        // Velocities
+        velocities: [],
+        allowMomentumBounce: void 0,
+        startMoving: void 0,
+        evCache: []
+      },
+      // Clicks
+      allowClick: !0,
+      // Touches
+      allowTouchMove: swiper.params.allowTouchMove,
+      touches: {
+        startX: 0,
+        startY: 0,
+        currentX: 0,
+        currentY: 0,
+        diff: 0
+      },
+      // Images
+      imagesToLoad: [],
+      imagesLoaded: 0
+    }), swiper.emit("_swiper"), swiper.params.init && swiper.init(), swiper;
+  }
+  getSlideIndex(slideEl) {
+    let {
+      slidesEl,
+      params
+    } = this, slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`), firstSlideIndex = elementIndex(slides[0]);
+    return elementIndex(slideEl) - firstSlideIndex;
+  }
+  getSlideIndexByData(index) {
+    return this.getSlideIndex(this.slides.filter((slideEl) => slideEl.getAttribute("data-swiper-slide-index") * 1 === index)[0]);
+  }
+  recalcSlides() {
+    let swiper = this, {
+      slidesEl,
+      params
+    } = swiper;
+    swiper.slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);
+  }
+  enable() {
+    let swiper = this;
+    swiper.enabled || (swiper.enabled = !0, swiper.params.grabCursor && swiper.setGrabCursor(), swiper.emit("enable"));
+  }
+  disable() {
+    let swiper = this;
+    swiper.enabled && (swiper.enabled = !1, swiper.params.grabCursor && swiper.unsetGrabCursor(), swiper.emit("disable"));
+  }
+  setProgress(progress, speed) {
+    let swiper = this;
+    progress = Math.min(Math.max(progress, 0), 1);
+    let min = swiper.minTranslate(), current = (swiper.maxTranslate() - min) * progress + min;
+    swiper.translateTo(current, typeof speed > "u" ? 0 : speed), swiper.updateActiveIndex(), swiper.updateSlidesClasses();
+  }
+  emitContainerClasses() {
+    let swiper = this;
+    if (!swiper.params._emitClasses || !swiper.el)
+      return;
+    let cls = swiper.el.className.split(" ").filter((className) => className.indexOf("swiper") === 0 || className.indexOf(swiper.params.containerModifierClass) === 0);
+    swiper.emit("_containerClasses", cls.join(" "));
+  }
+  getSlideClasses(slideEl) {
+    let swiper = this;
+    return swiper.destroyed ? "" : slideEl.className.split(" ").filter((className) => className.indexOf("swiper-slide") === 0 || className.indexOf(swiper.params.slideClass) === 0).join(" ");
+  }
+  emitSlidesClasses() {
+    let swiper = this;
+    if (!swiper.params._emitClasses || !swiper.el)
+      return;
+    let updates = [];
+    swiper.slides.forEach((slideEl) => {
+      let classNames = swiper.getSlideClasses(slideEl);
+      updates.push({
+        slideEl,
+        classNames
+      }), swiper.emit("_slideClass", slideEl, classNames);
+    }), swiper.emit("_slideClasses", updates);
+  }
+  slidesPerViewDynamic(view, exact) {
+    view === void 0 && (view = "current"), exact === void 0 && (exact = !1);
+    let swiper = this, {
+      params,
+      slides,
+      slidesGrid,
+      slidesSizesGrid,
+      size: swiperSize,
+      activeIndex
+    } = swiper, spv = 1;
+    if (typeof params.slidesPerView == "number")
+      return params.slidesPerView;
+    if (params.centeredSlides) {
+      let slideSize = slides[activeIndex] ? slides[activeIndex].swiperSlideSize : 0, breakLoop;
+      for (let i6 = activeIndex + 1; i6 < slides.length; i6 += 1)
+        slides[i6] && !breakLoop && (slideSize += slides[i6].swiperSlideSize, spv += 1, slideSize > swiperSize && (breakLoop = !0));
+      for (let i6 = activeIndex - 1; i6 >= 0; i6 -= 1)
+        slides[i6] && !breakLoop && (slideSize += slides[i6].swiperSlideSize, spv += 1, slideSize > swiperSize && (breakLoop = !0));
+    } else if (view === "current")
+      for (let i6 = activeIndex + 1; i6 < slides.length; i6 += 1)
+        (exact ? slidesGrid[i6] + slidesSizesGrid[i6] - slidesGrid[activeIndex] < swiperSize : slidesGrid[i6] - slidesGrid[activeIndex] < swiperSize) && (spv += 1);
+    else
+      for (let i6 = activeIndex - 1; i6 >= 0; i6 -= 1)
+        slidesGrid[activeIndex] - slidesGrid[i6] < swiperSize && (spv += 1);
+    return spv;
+  }
+  update() {
+    let swiper = this;
+    if (!swiper || swiper.destroyed)
+      return;
+    let {
+      snapGrid,
+      params
+    } = swiper;
+    params.breakpoints && swiper.setBreakpoint(), [...swiper.el.querySelectorAll('[loading="lazy"]')].forEach((imageEl) => {
+      imageEl.complete && processLazyPreloader(swiper, imageEl);
+    }), swiper.updateSize(), swiper.updateSlides(), swiper.updateProgress(), swiper.updateSlidesClasses();
+    function setTranslate2() {
+      let translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate, newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());
+      swiper.setTranslate(newTranslate), swiper.updateActiveIndex(), swiper.updateSlidesClasses();
+    }
+    let translated;
+    if (params.freeMode && params.freeMode.enabled && !params.cssMode)
+      setTranslate2(), params.autoHeight && swiper.updateAutoHeight();
+    else {
+      if ((params.slidesPerView === "auto" || params.slidesPerView > 1) && swiper.isEnd && !params.centeredSlides) {
+        let slides = swiper.virtual && params.virtual.enabled ? swiper.virtual.slides : swiper.slides;
+        translated = swiper.slideTo(slides.length - 1, 0, !1, !0);
+      } else
+        translated = swiper.slideTo(swiper.activeIndex, 0, !1, !0);
+      translated || setTranslate2();
+    }
+    params.watchOverflow && snapGrid !== swiper.snapGrid && swiper.checkOverflow(), swiper.emit("update");
+  }
+  changeDirection(newDirection, needUpdate) {
+    needUpdate === void 0 && (needUpdate = !0);
+    let swiper = this, currentDirection = swiper.params.direction;
+    return newDirection || (newDirection = currentDirection === "horizontal" ? "vertical" : "horizontal"), newDirection === currentDirection || newDirection !== "horizontal" && newDirection !== "vertical" || (swiper.el.classList.remove(`${swiper.params.containerModifierClass}${currentDirection}`), swiper.el.classList.add(`${swiper.params.containerModifierClass}${newDirection}`), swiper.emitContainerClasses(), swiper.params.direction = newDirection, swiper.slides.forEach((slideEl) => {
+      newDirection === "vertical" ? slideEl.style.width = "" : slideEl.style.height = "";
+    }), swiper.emit("changeDirection"), needUpdate && swiper.update()), swiper;
+  }
+  changeLanguageDirection(direction) {
+    let swiper = this;
+    swiper.rtl && direction === "rtl" || !swiper.rtl && direction === "ltr" || (swiper.rtl = direction === "rtl", swiper.rtlTranslate = swiper.params.direction === "horizontal" && swiper.rtl, swiper.rtl ? (swiper.el.classList.add(`${swiper.params.containerModifierClass}rtl`), swiper.el.dir = "rtl") : (swiper.el.classList.remove(`${swiper.params.containerModifierClass}rtl`), swiper.el.dir = "ltr"), swiper.update());
+  }
+  mount(element) {
+    let swiper = this;
+    if (swiper.mounted)
+      return !0;
+    let el = element || swiper.params.el;
+    if (typeof el == "string" && (el = document.querySelector(el)), !el)
+      return !1;
+    el.swiper = swiper, el.parentNode && el.parentNode.host && el.parentNode.host.nodeName === "SWIPER-CONTAINER" && (swiper.isElement = !0);
+    let getWrapperSelector = () => `.${(swiper.params.wrapperClass || "").trim().split(" ").join(".")}`, wrapperEl = (() => el && el.shadowRoot && el.shadowRoot.querySelector ? el.shadowRoot.querySelector(getWrapperSelector()) : elementChildren(el, getWrapperSelector())[0])();
+    return !wrapperEl && swiper.params.createElements && (wrapperEl = createElement10("div", swiper.params.wrapperClass), el.append(wrapperEl), elementChildren(el, `.${swiper.params.slideClass}`).forEach((slideEl) => {
+      wrapperEl.append(slideEl);
+    })), Object.assign(swiper, {
+      el,
+      wrapperEl,
+      slidesEl: swiper.isElement && !el.parentNode.host.slideSlots ? el.parentNode.host : wrapperEl,
+      hostEl: swiper.isElement ? el.parentNode.host : el,
+      mounted: !0,
+      // RTL
+      rtl: el.dir.toLowerCase() === "rtl" || elementStyle(el, "direction") === "rtl",
+      rtlTranslate: swiper.params.direction === "horizontal" && (el.dir.toLowerCase() === "rtl" || elementStyle(el, "direction") === "rtl"),
+      wrongRTL: elementStyle(wrapperEl, "display") === "-webkit-box"
+    }), !0;
+  }
+  init(el) {
+    let swiper = this;
+    if (swiper.initialized || swiper.mount(el) === !1)
+      return swiper;
+    swiper.emit("beforeInit"), swiper.params.breakpoints && swiper.setBreakpoint(), swiper.addClasses(), swiper.updateSize(), swiper.updateSlides(), swiper.params.watchOverflow && swiper.checkOverflow(), swiper.params.grabCursor && swiper.enabled && swiper.setGrabCursor(), swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled ? swiper.slideTo(swiper.params.initialSlide + swiper.virtual.slidesBefore, 0, swiper.params.runCallbacksOnInit, !1, !0) : swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, !1, !0), swiper.params.loop && swiper.loopCreate(), swiper.attachEvents();
+    let lazyElements = [...swiper.el.querySelectorAll('[loading="lazy"]')];
+    return swiper.isElement && lazyElements.push(...swiper.hostEl.querySelectorAll('[loading="lazy"]')), lazyElements.forEach((imageEl) => {
+      imageEl.complete ? processLazyPreloader(swiper, imageEl) : imageEl.addEventListener("load", (e4) => {
+        processLazyPreloader(swiper, e4.target);
+      });
+    }), preload(swiper), swiper.initialized = !0, preload(swiper), swiper.emit("init"), swiper.emit("afterInit"), swiper;
+  }
+  destroy(deleteInstance, cleanStyles) {
+    deleteInstance === void 0 && (deleteInstance = !0), cleanStyles === void 0 && (cleanStyles = !0);
+    let swiper = this, {
+      params,
+      el,
+      wrapperEl,
+      slides
+    } = swiper;
+    return typeof swiper.params > "u" || swiper.destroyed || (swiper.emit("beforeDestroy"), swiper.initialized = !1, swiper.detachEvents(), params.loop && swiper.loopDestroy(), cleanStyles && (swiper.removeClasses(), el.removeAttribute("style"), wrapperEl.removeAttribute("style"), slides && slides.length && slides.forEach((slideEl) => {
+      slideEl.classList.remove(params.slideVisibleClass, params.slideActiveClass, params.slideNextClass, params.slidePrevClass), slideEl.removeAttribute("style"), slideEl.removeAttribute("data-swiper-slide-index");
+    })), swiper.emit("destroy"), Object.keys(swiper.eventsListeners).forEach((eventName) => {
+      swiper.off(eventName);
+    }), deleteInstance !== !1 && (swiper.el.swiper = null, deleteProps(swiper)), swiper.destroyed = !0), null;
+  }
+  static extendDefaults(newDefaults) {
+    extend2(extendedDefaults, newDefaults);
+  }
+  static get extendedDefaults() {
+    return extendedDefaults;
+  }
+  static get defaults() {
+    return defaults;
+  }
+  static installModule(mod) {
+    Swiper.prototype.__modules__ || (Swiper.prototype.__modules__ = []);
+    let modules = Swiper.prototype.__modules__;
+    typeof mod == "function" && modules.indexOf(mod) < 0 && modules.push(mod);
+  }
+  static use(module) {
+    return Array.isArray(module) ? (module.forEach((m10) => Swiper.installModule(m10)), Swiper) : (Swiper.installModule(module), Swiper);
+  }
+};
+Object.keys(prototypes).forEach((prototypeGroup) => {
+  Object.keys(prototypes[prototypeGroup]).forEach((protoMethod) => {
+    Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
+  });
+});
+Swiper.use([Resize, Observer]);
+
+// node_modules/swiper/shared/update-swiper.mjs
+var paramsList = [
+  "eventsPrefix",
+  "injectStyles",
+  "injectStylesUrls",
+  "modules",
+  "init",
+  "_direction",
+  "oneWayMovement",
+  "touchEventsTarget",
+  "initialSlide",
+  "_speed",
+  "cssMode",
+  "updateOnWindowResize",
+  "resizeObserver",
+  "nested",
+  "focusableElements",
+  "_enabled",
+  "_width",
+  "_height",
+  "preventInteractionOnTransition",
+  "userAgent",
+  "url",
+  "_edgeSwipeDetection",
+  "_edgeSwipeThreshold",
+  "_freeMode",
+  "_autoHeight",
+  "setWrapperSize",
+  "virtualTranslate",
+  "_effect",
+  "breakpoints",
+  "breakpointsBase",
+  "_spaceBetween",
+  "_slidesPerView",
+  "maxBackfaceHiddenSlides",
+  "_grid",
+  "_slidesPerGroup",
+  "_slidesPerGroupSkip",
+  "_slidesPerGroupAuto",
+  "_centeredSlides",
+  "_centeredSlidesBounds",
+  "_slidesOffsetBefore",
+  "_slidesOffsetAfter",
+  "normalizeSlideIndex",
+  "_centerInsufficientSlides",
+  "_watchOverflow",
+  "roundLengths",
+  "touchRatio",
+  "touchAngle",
+  "simulateTouch",
+  "_shortSwipes",
+  "_longSwipes",
+  "longSwipesRatio",
+  "longSwipesMs",
+  "_followFinger",
+  "allowTouchMove",
+  "_threshold",
+  "touchMoveStopPropagation",
+  "touchStartPreventDefault",
+  "touchStartForcePreventDefault",
+  "touchReleaseOnEdges",
+  "uniqueNavElements",
+  "_resistance",
+  "_resistanceRatio",
+  "_watchSlidesProgress",
+  "_grabCursor",
+  "preventClicks",
+  "preventClicksPropagation",
+  "_slideToClickedSlide",
+  "_loop",
+  "loopedSlides",
+  "loopPreventsSliding",
+  "_rewind",
+  "_allowSlidePrev",
+  "_allowSlideNext",
+  "_swipeHandler",
+  "_noSwiping",
+  "noSwipingClass",
+  "noSwipingSelector",
+  "passiveListeners",
+  "containerModifierClass",
+  "slideClass",
+  "slideActiveClass",
+  "slideVisibleClass",
+  "slideNextClass",
+  "slidePrevClass",
+  "wrapperClass",
+  "lazyPreloaderClass",
+  "lazyPreloadPrevNext",
+  "runCallbacksOnInit",
+  "observer",
+  "observeParents",
+  "observeSlideChildren",
+  // modules
+  "a11y",
+  "_autoplay",
+  "_controller",
+  "coverflowEffect",
+  "cubeEffect",
+  "fadeEffect",
+  "flipEffect",
+  "creativeEffect",
+  "cardsEffect",
+  "hashNavigation",
+  "history",
+  "keyboard",
+  "mousewheel",
+  "_navigation",
+  "_pagination",
+  "parallax",
+  "_scrollbar",
+  "_thumbs",
+  "virtual",
+  "zoom",
+  "control"
+];
+function isObject3(o10) {
+  return typeof o10 == "object" && o10 !== null && o10.constructor && Object.prototype.toString.call(o10).slice(8, -1) === "Object" && !o10.__swiper__;
+}
+function extend3(target, src) {
+  let noExtend = ["__proto__", "constructor", "prototype"];
+  Object.keys(src).filter((key) => noExtend.indexOf(key) < 0).forEach((key) => {
+    typeof target[key] > "u" ? target[key] = src[key] : isObject3(src[key]) && isObject3(target[key]) && Object.keys(src[key]).length > 0 ? src[key].__swiper__ ? target[key] = src[key] : extend3(target[key], src[key]) : target[key] = src[key];
+  });
+}
+function needsNavigation(params) {
+  return params === void 0 && (params = {}), params.navigation && typeof params.navigation.nextEl > "u" && typeof params.navigation.prevEl > "u";
+}
+function needsPagination(params) {
+  return params === void 0 && (params = {}), params.pagination && typeof params.pagination.el > "u";
+}
+function needsScrollbar(params) {
+  return params === void 0 && (params = {}), params.scrollbar && typeof params.scrollbar.el > "u";
+}
+function uniqueClasses(classNames) {
+  classNames === void 0 && (classNames = "");
+  let classes2 = classNames.split(" ").map((c12) => c12.trim()).filter((c12) => !!c12), unique = [];
+  return classes2.forEach((c12) => {
+    unique.indexOf(c12) < 0 && unique.push(c12);
+  }), unique.join(" ");
+}
+function wrapperClass(className) {
+  return className === void 0 && (className = ""), className ? className.includes("swiper-wrapper") ? className : `swiper-wrapper ${className}` : "swiper-wrapper";
+}
+function updateSwiper(_ref) {
+  let {
+    swiper,
+    slides,
+    passedParams,
+    changedParams,
+    nextEl,
+    prevEl,
+    scrollbarEl,
+    paginationEl
+  } = _ref, updateParams = changedParams.filter((key) => key !== "children" && key !== "direction" && key !== "wrapperClass"), {
+    params: currentParams,
+    pagination,
+    navigation,
+    scrollbar,
+    virtual,
+    thumbs
+  } = swiper, needThumbsInit, needControllerInit, needPaginationInit, needScrollbarInit, needNavigationInit, loopNeedDestroy, loopNeedEnable, loopNeedReloop;
+  changedParams.includes("thumbs") && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper && (needThumbsInit = !0), changedParams.includes("controller") && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control && (needControllerInit = !0), changedParams.includes("pagination") && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === !1) && pagination && !pagination.el && (needPaginationInit = !0), changedParams.includes("scrollbar") && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === !1) && scrollbar && !scrollbar.el && (needScrollbarInit = !0), changedParams.includes("navigation") && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === !1) && navigation && !navigation.prevEl && !navigation.nextEl && (needNavigationInit = !0);
+  let destroyModule = (mod) => {
+    swiper[mod] && (swiper[mod].destroy(), mod === "navigation" ? (swiper.isElement && (swiper[mod].prevEl.remove(), swiper[mod].nextEl.remove()), currentParams[mod].prevEl = void 0, currentParams[mod].nextEl = void 0, swiper[mod].prevEl = void 0, swiper[mod].nextEl = void 0) : (swiper.isElement && swiper[mod].el.remove(), currentParams[mod].el = void 0, swiper[mod].el = void 0));
+  };
+  changedParams.includes("loop") && swiper.isElement && (currentParams.loop && !passedParams.loop ? loopNeedDestroy = !0 : !currentParams.loop && passedParams.loop ? loopNeedEnable = !0 : loopNeedReloop = !0), updateParams.forEach((key) => {
+    if (isObject3(currentParams[key]) && isObject3(passedParams[key]))
+      extend3(currentParams[key], passedParams[key]), (key === "navigation" || key === "pagination" || key === "scrollbar") && "enabled" in passedParams[key] && !passedParams[key].enabled && destroyModule(key);
+    else {
+      let newValue = passedParams[key];
+      (newValue === !0 || newValue === !1) && (key === "navigation" || key === "pagination" || key === "scrollbar") ? newValue === !1 && destroyModule(key) : currentParams[key] = passedParams[key];
+    }
+  }), updateParams.includes("controller") && !needControllerInit && swiper.controller && swiper.controller.control && currentParams.controller && currentParams.controller.control && (swiper.controller.control = currentParams.controller.control), changedParams.includes("children") && slides && virtual && currentParams.virtual.enabled && (virtual.slides = slides, virtual.update(!0)), changedParams.includes("children") && slides && currentParams.loop && (loopNeedReloop = !0), needThumbsInit && thumbs.init() && thumbs.update(!0), needControllerInit && (swiper.controller.control = currentParams.controller.control), needPaginationInit && (swiper.isElement && (!paginationEl || typeof paginationEl == "string") && (paginationEl = document.createElement("div"), paginationEl.classList.add("swiper-pagination"), paginationEl.part.add("pagination"), swiper.el.appendChild(paginationEl)), paginationEl && (currentParams.pagination.el = paginationEl), pagination.init(), pagination.render(), pagination.update()), needScrollbarInit && (swiper.isElement && (!scrollbarEl || typeof scrollbarEl == "string") && (scrollbarEl = document.createElement("div"), scrollbarEl.classList.add("swiper-scrollbar"), scrollbarEl.part.add("scrollbar"), swiper.el.appendChild(scrollbarEl)), scrollbarEl && (currentParams.scrollbar.el = scrollbarEl), scrollbar.init(), scrollbar.updateSize(), scrollbar.setTranslate()), needNavigationInit && (swiper.isElement && ((!nextEl || typeof nextEl == "string") && (nextEl = document.createElement("div"), nextEl.classList.add("swiper-button-next"), nextEl.innerHTML = swiper.hostEl.constructor.nextButtonSvg, nextEl.part.add("button-next"), swiper.el.appendChild(nextEl)), (!prevEl || typeof prevEl == "string") && (prevEl = document.createElement("div"), prevEl.classList.add("swiper-button-prev"), prevEl.innerHTML = swiper.hostEl.constructor.prevButtonSvg, prevEl.part.add("button-prev"), swiper.el.appendChild(prevEl))), nextEl && (currentParams.navigation.nextEl = nextEl), prevEl && (currentParams.navigation.prevEl = prevEl), navigation.init(), navigation.update()), changedParams.includes("allowSlideNext") && (swiper.allowSlideNext = passedParams.allowSlideNext), changedParams.includes("allowSlidePrev") && (swiper.allowSlidePrev = passedParams.allowSlidePrev), changedParams.includes("direction") && swiper.changeDirection(passedParams.direction, !1), (loopNeedDestroy || loopNeedReloop) && swiper.loopDestroy(), (loopNeedEnable || loopNeedReloop) && swiper.loopCreate(), swiper.update();
+}
+
+// node_modules/swiper/shared/update-on-virtual-data.mjs
+function getParams(obj, splitEvents) {
+  obj === void 0 && (obj = {}), splitEvents === void 0 && (splitEvents = !0);
+  let params = {
+    on: {}
+  }, events2 = {}, passedParams = {};
+  extend3(params, defaults), params._emitClasses = !0, params.init = !1;
+  let rest = {}, allowedParams = paramsList.map((key) => key.replace(/_/, "")), plainObj = Object.assign({}, obj);
+  return Object.keys(plainObj).forEach((key) => {
+    typeof obj[key] > "u" || (allowedParams.indexOf(key) >= 0 ? isObject3(obj[key]) ? (params[key] = {}, passedParams[key] = {}, extend3(params[key], obj[key]), extend3(passedParams[key], obj[key])) : (params[key] = obj[key], passedParams[key] = obj[key]) : key.search(/on[A-Z]/) === 0 && typeof obj[key] == "function" ? splitEvents ? events2[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key] : params.on[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key] : rest[key] = obj[key]);
+  }), ["navigation", "pagination", "scrollbar"].forEach((key) => {
+    params[key] === !0 && (params[key] = {}), params[key] === !1 && delete params[key];
+  }), {
+    params,
+    passedParams,
+    rest,
+    events: events2
+  };
+}
+function mountSwiper(_ref, swiperParams) {
+  let {
+    el,
+    nextEl,
+    prevEl,
+    paginationEl,
+    scrollbarEl,
+    swiper
+  } = _ref;
+  needsNavigation(swiperParams) && nextEl && prevEl && (swiper.params.navigation.nextEl = nextEl, swiper.originalParams.navigation.nextEl = nextEl, swiper.params.navigation.prevEl = prevEl, swiper.originalParams.navigation.prevEl = prevEl), needsPagination(swiperParams) && paginationEl && (swiper.params.pagination.el = paginationEl, swiper.originalParams.pagination.el = paginationEl), needsScrollbar(swiperParams) && scrollbarEl && (swiper.params.scrollbar.el = scrollbarEl, swiper.originalParams.scrollbar.el = scrollbarEl), swiper.init(el);
+}
+function getChangedParams(swiperParams, oldParams, children, oldChildren, getKey) {
+  let keys = [];
+  if (!oldParams)
+    return keys;
+  let addKey = (key) => {
+    keys.indexOf(key) < 0 && keys.push(key);
+  };
+  if (children && oldChildren) {
+    let oldChildrenKeys = oldChildren.map(getKey), childrenKeys = children.map(getKey);
+    oldChildrenKeys.join("") !== childrenKeys.join("") && addKey("children"), oldChildren.length !== children.length && addKey("children");
+  }
+  return paramsList.filter((key) => key[0] === "_").map((key) => key.replace(/_/, "")).forEach((key) => {
+    if (key in swiperParams && key in oldParams)
+      if (isObject3(swiperParams[key]) && isObject3(oldParams[key])) {
+        let newKeys = Object.keys(swiperParams[key]), oldKeys = Object.keys(oldParams[key]);
+        newKeys.length !== oldKeys.length ? addKey(key) : (newKeys.forEach((newKey) => {
+          swiperParams[key][newKey] !== oldParams[key][newKey] && addKey(key);
+        }), oldKeys.forEach((oldKey) => {
+          swiperParams[key][oldKey] !== oldParams[key][oldKey] && addKey(key);
+        }));
+      } else
+        swiperParams[key] !== oldParams[key] && addKey(key);
+  }), keys;
+}
+var updateOnVirtualData = (swiper) => {
+  !swiper || swiper.destroyed || !swiper.params.virtual || swiper.params.virtual && !swiper.params.virtual.enabled || (swiper.updateSlides(), swiper.updateProgress(), swiper.updateSlidesClasses(), swiper.parallax && swiper.params.parallax && swiper.params.parallax.enabled && swiper.parallax.setTranslate());
+};
+
+// node_modules/swiper/swiper-react.mjs
+function _extends5() {
+  return _extends5 = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i6 = 1; i6 < arguments.length; i6++) {
+      var source = arguments[i6];
+      for (var key in source)
+        Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+    }
+    return target;
+  }, _extends5.apply(this, arguments);
+}
+function isChildSwiperSlide(child) {
+  return child.type && child.type.displayName && child.type.displayName.includes("SwiperSlide");
+}
+function processChildren(c12) {
+  let slides = [];
+  return import_react115.default.Children.toArray(c12).forEach((child) => {
+    isChildSwiperSlide(child) ? slides.push(child) : child.props && child.props.children && processChildren(child.props.children).forEach((slide2) => slides.push(slide2));
+  }), slides;
+}
+function getChildren(c12) {
+  let slides = [], slots = {
+    "container-start": [],
+    "container-end": [],
+    "wrapper-start": [],
+    "wrapper-end": []
+  };
+  return import_react115.default.Children.toArray(c12).forEach((child) => {
+    if (isChildSwiperSlide(child))
+      slides.push(child);
+    else if (child.props && child.props.slot && slots[child.props.slot])
+      slots[child.props.slot].push(child);
+    else if (child.props && child.props.children) {
+      let foundSlides = processChildren(child.props.children);
+      foundSlides.length > 0 ? foundSlides.forEach((slide2) => slides.push(slide2)) : slots["container-end"].push(child);
+    } else
+      slots["container-end"].push(child);
+  }), {
+    slides,
+    slots
+  };
+}
+function renderVirtual(swiper, slides, virtualData) {
+  if (!virtualData)
+    return null;
+  let getSlideIndex = (index) => {
+    let slideIndex = index;
+    return index < 0 ? slideIndex = slides.length + index : slideIndex >= slides.length && (slideIndex = slideIndex - slides.length), slideIndex;
+  }, style = swiper.isHorizontal() ? {
+    [swiper.rtlTranslate ? "right" : "left"]: `${virtualData.offset}px`
+  } : {
+    top: `${virtualData.offset}px`
+  }, {
+    from,
+    to
+  } = virtualData, loopFrom = swiper.params.loop ? -slides.length : 0, loopTo = swiper.params.loop ? slides.length * 2 : slides.length, slidesToRender = [];
+  for (let i6 = loopFrom; i6 < loopTo; i6 += 1)
+    i6 >= from && i6 <= to && slidesToRender.push(slides[getSlideIndex(i6)]);
+  return slidesToRender.map((child, index) => /* @__PURE__ */ import_react115.default.cloneElement(child, {
+    swiper,
+    style,
+    key: `slide-${index}`
+  }));
+}
+function useIsomorphicLayoutEffect2(callback, deps) {
+  return typeof window > "u" ? (0, import_react115.useEffect)(callback, deps) : (0, import_react115.useLayoutEffect)(callback, deps);
+}
+var SwiperSlideContext = /* @__PURE__ */ (0, import_react115.createContext)(null);
+var SwiperContext = /* @__PURE__ */ (0, import_react115.createContext)(null);
+var Swiper2 = /* @__PURE__ */ (0, import_react115.forwardRef)(function(_temp, externalElRef) {
+  let {
+    className,
+    tag: Tag = "div",
+    wrapperTag: WrapperTag = "div",
+    children,
+    onSwiper,
+    ...rest
+  } = _temp === void 0 ? {} : _temp, eventsAssigned = !1, [containerClasses, setContainerClasses] = (0, import_react115.useState)("swiper"), [virtualData, setVirtualData] = (0, import_react115.useState)(null), [breakpointChanged, setBreakpointChanged] = (0, import_react115.useState)(!1), initializedRef = (0, import_react115.useRef)(!1), swiperElRef = (0, import_react115.useRef)(null), swiperRef = (0, import_react115.useRef)(null), oldPassedParamsRef = (0, import_react115.useRef)(null), oldSlides = (0, import_react115.useRef)(null), nextElRef = (0, import_react115.useRef)(null), prevElRef = (0, import_react115.useRef)(null), paginationElRef = (0, import_react115.useRef)(null), scrollbarElRef = (0, import_react115.useRef)(null), {
+    params: swiperParams,
+    passedParams,
+    rest: restProps,
+    events: events2
+  } = getParams(rest), {
+    slides,
+    slots
+  } = getChildren(children), onBeforeBreakpoint = () => {
+    setBreakpointChanged(!breakpointChanged);
+  };
+  Object.assign(swiperParams.on, {
+    _containerClasses(swiper, classes2) {
+      setContainerClasses(classes2);
+    }
+  });
+  let initSwiper = () => {
+    Object.assign(swiperParams.on, events2), eventsAssigned = !0;
+    let passParams = {
+      ...swiperParams
+    };
+    if (delete passParams.wrapperClass, swiperRef.current = new Swiper(passParams), swiperRef.current.virtual && swiperRef.current.params.virtual.enabled) {
+      swiperRef.current.virtual.slides = slides;
+      let extendWith = {
+        cache: !1,
+        slides,
+        renderExternal: setVirtualData,
+        renderExternalUpdate: !1
+      };
+      extend3(swiperRef.current.params.virtual, extendWith), extend3(swiperRef.current.originalParams.virtual, extendWith);
+    }
+  };
+  swiperElRef.current || initSwiper(), swiperRef.current && swiperRef.current.on("_beforeBreakpoint", onBeforeBreakpoint);
+  let attachEvents2 = () => {
+    eventsAssigned || !events2 || !swiperRef.current || Object.keys(events2).forEach((eventName) => {
+      swiperRef.current.on(eventName, events2[eventName]);
+    });
+  }, detachEvents2 = () => {
+    !events2 || !swiperRef.current || Object.keys(events2).forEach((eventName) => {
+      swiperRef.current.off(eventName, events2[eventName]);
+    });
+  };
+  (0, import_react115.useEffect)(() => () => {
+    swiperRef.current && swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
+  }), (0, import_react115.useEffect)(() => {
+    !initializedRef.current && swiperRef.current && (swiperRef.current.emitSlidesClasses(), initializedRef.current = !0);
+  }), useIsomorphicLayoutEffect2(() => {
+    if (externalElRef && (externalElRef.current = swiperElRef.current), !!swiperElRef.current)
+      return swiperRef.current.destroyed && initSwiper(), mountSwiper({
+        el: swiperElRef.current,
+        nextEl: nextElRef.current,
+        prevEl: prevElRef.current,
+        paginationEl: paginationElRef.current,
+        scrollbarEl: scrollbarElRef.current,
+        swiper: swiperRef.current
+      }, swiperParams), onSwiper && onSwiper(swiperRef.current), () => {
+        swiperRef.current && !swiperRef.current.destroyed && swiperRef.current.destroy(!0, !1);
+      };
+  }, []), useIsomorphicLayoutEffect2(() => {
+    attachEvents2();
+    let changedParams = getChangedParams(passedParams, oldPassedParamsRef.current, slides, oldSlides.current, (c12) => c12.key);
+    return oldPassedParamsRef.current = passedParams, oldSlides.current = slides, changedParams.length && swiperRef.current && !swiperRef.current.destroyed && updateSwiper({
+      swiper: swiperRef.current,
+      slides,
+      passedParams,
+      changedParams,
+      nextEl: nextElRef.current,
+      prevEl: prevElRef.current,
+      scrollbarEl: scrollbarElRef.current,
+      paginationEl: paginationElRef.current
+    }), () => {
+      detachEvents2();
+    };
+  }), useIsomorphicLayoutEffect2(() => {
+    updateOnVirtualData(swiperRef.current);
+  }, [virtualData]);
+  function renderSlides() {
+    return swiperParams.virtual ? renderVirtual(swiperRef.current, slides, virtualData) : slides.map((child, index) => /* @__PURE__ */ import_react115.default.cloneElement(child, {
+      swiper: swiperRef.current,
+      swiperSlideIndex: index
+    }));
+  }
+  return /* @__PURE__ */ import_react115.default.createElement(Tag, _extends5({
+    ref: swiperElRef,
+    className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
+  }, restProps), /* @__PURE__ */ import_react115.default.createElement(SwiperContext.Provider, {
+    value: swiperRef.current
+  }, slots["container-start"], /* @__PURE__ */ import_react115.default.createElement(WrapperTag, {
+    className: wrapperClass(swiperParams.wrapperClass)
+  }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react115.default.createElement(import_react115.default.Fragment, null, /* @__PURE__ */ import_react115.default.createElement("div", {
+    ref: prevElRef,
+    className: "swiper-button-prev"
+  }), /* @__PURE__ */ import_react115.default.createElement("div", {
+    ref: nextElRef,
+    className: "swiper-button-next"
+  })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react115.default.createElement("div", {
+    ref: scrollbarElRef,
+    className: "swiper-scrollbar"
+  }), needsPagination(swiperParams) && /* @__PURE__ */ import_react115.default.createElement("div", {
+    ref: paginationElRef,
+    className: "swiper-pagination"
+  }), slots["container-end"]));
+});
+Swiper2.displayName = "Swiper";
+var SwiperSlide = /* @__PURE__ */ (0, import_react115.forwardRef)(function(_temp, externalRef) {
+  let {
+    tag: Tag = "div",
+    children,
+    className = "",
+    swiper,
+    zoom,
+    lazy: lazy2,
+    virtualIndex,
+    swiperSlideIndex,
+    ...rest
+  } = _temp === void 0 ? {} : _temp, slideElRef = (0, import_react115.useRef)(null), [slideClasses, setSlideClasses] = (0, import_react115.useState)("swiper-slide"), [lazyLoaded, setLazyLoaded] = (0, import_react115.useState)(!1);
+  function updateClasses(_s, el, classNames) {
+    el === slideElRef.current && setSlideClasses(classNames);
+  }
+  useIsomorphicLayoutEffect2(() => {
+    if (typeof swiperSlideIndex < "u" && (slideElRef.current.swiperSlideIndex = swiperSlideIndex), externalRef && (externalRef.current = slideElRef.current), !(!slideElRef.current || !swiper)) {
+      if (swiper.destroyed) {
+        slideClasses !== "swiper-slide" && setSlideClasses("swiper-slide");
+        return;
+      }
+      return swiper.on("_slideClass", updateClasses), () => {
+        swiper && swiper.off("_slideClass", updateClasses);
+      };
+    }
+  }), useIsomorphicLayoutEffect2(() => {
+    swiper && slideElRef.current && !swiper.destroyed && setSlideClasses(swiper.getSlideClasses(slideElRef.current));
+  }, [swiper]);
+  let slideData = {
+    isActive: slideClasses.indexOf("swiper-slide-active") >= 0,
+    isVisible: slideClasses.indexOf("swiper-slide-visible") >= 0,
+    isPrev: slideClasses.indexOf("swiper-slide-prev") >= 0,
+    isNext: slideClasses.indexOf("swiper-slide-next") >= 0
+  }, renderChildren = () => typeof children == "function" ? children(slideData) : children, onLoad2 = () => {
+    setLazyLoaded(!0);
+  };
+  return /* @__PURE__ */ import_react115.default.createElement(Tag, _extends5({
+    ref: slideElRef,
+    className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
+    "data-swiper-slide-index": virtualIndex,
+    onLoad: onLoad2
+  }, rest), zoom && /* @__PURE__ */ import_react115.default.createElement(SwiperSlideContext.Provider, {
+    value: slideData
+  }, /* @__PURE__ */ import_react115.default.createElement("div", {
+    className: "swiper-zoom-container",
+    "data-swiper-zoom": typeof zoom == "number" ? zoom : void 0
+  }, renderChildren(), lazy2 && !lazyLoaded && /* @__PURE__ */ import_react115.default.createElement("div", {
+    className: "swiper-lazy-preloader"
+  }))), !zoom && /* @__PURE__ */ import_react115.default.createElement(SwiperSlideContext.Provider, {
+    value: slideData
+  }, renderChildren(), lazy2 && !lazyLoaded && /* @__PURE__ */ import_react115.default.createElement("div", {
+    className: "swiper-lazy-preloader"
+  })));
+});
+SwiperSlide.displayName = "SwiperSlide";
+
+// app/routes/($locale).carts.jsx
+var import_jsx_dev_runtime54 = __toESM(require_jsx_dev_runtime()), storedDataString;
+async function loader26({ context }) {
+  let data = await context.storefront.query(GiftProduct2, {
+    variables: {}
+  }), postalData = await context.storefront.query(PostalProduct, {
+    variants: {}
+  });
+  return defer3({
+    data,
+    postalData
+  });
+}
+function AddCartFunc() {
+  let { data, postalData } = useLoaderData2(), [cartData, setCartData] = (0, import_react116.useState)(""), [updateGift, setUpdateGift] = (0, import_react116.useState)(!1), [modalIsOpen, setIsOpen] = (0, import_react116.useState)(!1), [modalIsOpen2, setIsOpen2] = (0, import_react116.useState)(!1), [cardPriceVal, setCardPriceVal] = (0, import_react116.useState)([]), [cardPrice, setCardPrice] = (0, import_react116.useState)(""), [cardName, setCardName] = (0, import_react116.useState)(""), [cardVal, setCardVal] = (0, import_react116.useState)(""), [cardImg, setCardImage] = (0, import_react116.useState)(""), [postTitle, setPostTitle] = (0, import_react116.useState)(""), [postTitle2, setPostTitle2] = (0, import_react116.useState)(""), [postPrice, setPostPrice] = (0, import_react116.useState)(""), [postPrice2, setPostPrice2] = (0, import_react116.useState)(""), [postImage, setPostImage] = (0, import_react116.useState)(""), [senderAddress, setSenderAddress] = (0, import_react116.useState)(""), [msgShow, setMsgShow] = (0, import_react116.useState)(""), [msgFont, setMsgFont] = (0, import_react116.useState)(""), [msglastText, setMsglastText] = (0, import_react116.useState)(""), [reciverAddress, setReciverAddress] = (0, import_react116.useState)(""), [bulkAddress, setBulkAddress] = (0, import_react116.useState)([]);
+  (0, import_react116.useEffect)(() => {
+    storedDataString = localStorage.getItem("mydata"), setCartData(JSON.parse(storedDataString)), postalData && setPostalValue();
+  }, [updateGift]);
+  function setPostalValue() {
+    let postalTit = postalData.product.variants.edges[0].node.title, postalrate = postalData.product.variants.edges[0].node.price.amount, postalTit2 = postalData.product.variants.edges[1].node.title, postalrate2 = postalData.product.variants.edges[1].node.price.amount, postalImag = postalData.product.variants.edges[1].node.image;
+    setPostTitle(postalTit), setPostTitle2(postalTit2), setPostPrice(postalrate), setPostPrice2(postalrate2), setPostImage(postalImag.url);
+  }
+  let keyToUpdate1 = "giftCardName", keyToUpdate2 = "giftCardImg", keyToUpdate3 = "giftCardPrice";
+  function updateValueInArray(index) {
+    console.log(index), setUpdateGift(!updateGift), index >= 0 && index < cartData.length && (cartData[index][keyToUpdate1] = cardName, cartData[index][keyToUpdate2] = cardImg, cartData[index][keyToUpdate3] = cardPrice), localStorage.setItem("mydata", JSON.stringify(cartData)), setCardPrice(""), setIsOpen(!1);
+  }
+  function deleteKeyInArray(index) {
+    setUpdateGift(!updateGift), console.log(index), index >= 0 && index < cartData.length && (cartData[index][keyToUpdate1] = null, cartData[index][keyToUpdate2] = null, cartData[index][keyToUpdate3] = null), localStorage.setItem("mydata", JSON.stringify(cartData));
+  }
+  function deleteOrder(index) {
+    setUpdateGift(!updateGift), cartData.splice(index, 1), console.log(cartData, "deleteOrder"), localStorage.setItem("mydata", JSON.stringify(cartData));
+  }
+  function editOrderData(index) {
+    let data2 = cartData[index];
+    console.log(data2, "data---");
+    let ab = cartData[index].productGetUrl;
+    navigate(`${ab}`, { state: { data: data2, index } });
+  }
+  let navigate = useNavigate(), customStyles = {
+    content: {
+      top: "60%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      maxWidth: "620px",
+      background: "#FFF6F6",
+      width: "100%",
+      padding: "30px",
+      maxHeight: "500px",
+      zIndex: "2",
+      position: "relative"
+    }
+  };
+  async function OpenModalFunc(item) {
+    setIsOpen(!0), setCardVal(item);
+  }
+  async function OpenModalFunc2(item) {
+    console.log(item), setIsOpen2(!0), cartData[item].csvBulkData.length ? (console.log("bulkAddress"), setBulkAddress(cartData[item].csvBulkData), setMsgFont(cartData[item].fontFamily), setMsgShow(cartData[item].messageData), setMsglastText(cartData[item].endText)) : (setMsgFont(cartData[item].fontFamily), setMsgShow(cartData[item].messageData), setReciverAddress(cartData[item].reciverAddress), setMsglastText(cartData[item].endText));
+  }
+  let cardvalFunc = async (item) => {
+    console.log(item, "cardVal-----");
+    let selCardName = data.collection.products.edges[item].node;
+    console.log(selCardName, "selCardName--"), setCardName(selCardName.title), setCardImage(selCardName.featuredImage.url);
+    let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
+    console.log(arrCardPrice[0].node.price.amount, "---------abababababaababab");
+    let firstPrice2 = arrCardPrice[0].node.price.amount;
+    setCardPrice(firstPrice2), setCardPriceVal(arrCardPrice);
+  }, priceValFunc = async (item) => {
+    console.log(item, "PriceVAl"), setCardPrice(item);
+  };
+  function closeModal() {
+    setBulkAddress([]), setIsOpen2(!1);
+  }
+  let [currentIndex, setCurrentIndex] = (0, import_react116.useState)(0), handlePrevClick = () => {
+    currentIndex > 0 && setCurrentIndex(currentIndex - 1);
+  }, handleNextClick = () => {
+    currentIndex < bulkAddress.length - 1 && setCurrentIndex(currentIndex + 1);
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-full h-full gap-2 mt-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h1", { className: "text-center font-bold text-4xl", children: "SHOPPING CART" }, void 0, !1, {
+        fileName: "app/routes/($locale).carts.jsx",
+        lineNumber: 212,
+        columnNumber: 17
+      }, this),
+      cartData && cartData.map(
+        (item, index) => {
+          var _a2, _b, _c, _d, _e2, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t2, _u;
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[1000px]  bg-[white] m-auto mt-10 mb-10", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[700px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("img", { src: item.productImg, alt: "" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 219,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 218,
+                  columnNumber: 37
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[100%]", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: item.productTitle }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 223,
+                    columnNumber: 41
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 223,
+                    columnNumber: 73
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 223,
+                    columnNumber: 79
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Sender: ",
+                    item.senderAddress.address1,
+                    ",",
+                    item.senderAddress.city,
+                    ",",
+                    item.senderAddress.state,
+                    ",",
+                    item.senderAddress.country
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 224,
+                    columnNumber: 41
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "bg-[#EF6E6E] text-[#fff] p-2 rounded", onClick: () => OpenModalFunc2(index), children: "PREVIEW YOUR CUSTOM MESSAGE" }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 226,
+                    columnNumber: 45
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 225,
+                    columnNumber: 41
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 222,
+                  columnNumber: 37
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 217,
+                columnNumber: 33
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 216,
+                columnNumber: 29
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Price:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.price }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 237,
+                    columnNumber: 54
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 237,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 236,
+                  columnNumber: 37
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Quantity:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 240,
+                    columnNumber: 57
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 240,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 239,
+                  columnNumber: 37
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Subtotal:",
+                  item.price * item.csvFileLen
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 243,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 242,
+                  columnNumber: 37
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 235,
+                columnNumber: 33
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 234,
+                columnNumber: 29
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] m-4", children: [
+                item.giftCardName !== null ? "" : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded", onClick: () => OpenModalFunc(index), children: "ADD GIFT CART" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 250,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 249,
+                  columnNumber: 42
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => editOrderData(index), children: "EDIT ORDER" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 254,
+                  columnNumber: 37
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 253,
+                  columnNumber: 33
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded", onClick: () => deleteOrder(index), children: "DELETE ORDER" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 257,
+                  columnNumber: 37
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 256,
+                  columnNumber: 33
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 247,
+                columnNumber: 29
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 215,
+              columnNumber: 25
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[1000px] h-[2px] bg-[red]" }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 261,
+              columnNumber: 25
+            }, this),
+            item.giftCardName ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("img", { src: item.giftCardImg, alt: "" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 267,
+                  columnNumber: 45
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 266,
+                  columnNumber: 41
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: item.giftCardName }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 270,
+                    columnNumber: 45
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 270,
+                    columnNumber: 77
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 270,
+                    columnNumber: 83
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 269,
+                  columnNumber: 41
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 265,
+                columnNumber: 37
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 264,
+                columnNumber: 33
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Price:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.giftCardPrice }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 278,
+                    columnNumber: 58
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 278,
+                  columnNumber: 45
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 277,
+                  columnNumber: 41
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Quantity:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 281,
+                    columnNumber: 61
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 281,
+                  columnNumber: 45
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 280,
+                  columnNumber: 41
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Subtotal:",
+                  item.giftCardPrice * item.csvFileLen
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 284,
+                  columnNumber: 45
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 283,
+                  columnNumber: 41
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 276,
+                columnNumber: 37
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 275,
+                columnNumber: 33
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] m-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => deleteKeyInArray(index), children: "DELETE CARD" }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 290,
+                columnNumber: 41
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 289,
+                columnNumber: 37
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 288,
+                columnNumber: 33
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 263,
+              columnNumber: 29
+            }, this) : "",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[1000px] h-[2px] bg-[red]" }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 295,
+              columnNumber: 25
+            }, this),
+            item.usCount || item.nonUSCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+              item.nonUSCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex m-5", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 305,
+                    columnNumber: 53
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 304,
+                    columnNumber: 49
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                      "Postal ",
+                      postTitle2
+                    ] }, void 0, !0, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 308,
+                      columnNumber: 53
+                    }, this),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 308,
+                      columnNumber: 85
+                    }, this),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 308,
+                      columnNumber: 91
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 307,
+                    columnNumber: 49
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 303,
+                  columnNumber: 45
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 302,
+                  columnNumber: 41
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "m-6", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Price:",
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: postPrice2 }, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 315,
+                      columnNumber: 66
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 315,
+                    columnNumber: 53
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 314,
+                    columnNumber: 49
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Quantity:",
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.nonUSCount }, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 318,
+                      columnNumber: 69
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 318,
+                    columnNumber: 53
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 317,
+                    columnNumber: 49
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Subtotal:",
+                    postPrice2 * item.nonUSCount
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 321,
+                    columnNumber: 53
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 320,
+                    columnNumber: 49
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 313,
+                  columnNumber: 45
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 312,
+                  columnNumber: 41
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 301,
+                columnNumber: 37
+              }, this) : "",
+              item.usCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex m-5", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 331,
+                    columnNumber: 49
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 330,
+                    columnNumber: 45
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                      "Postal ",
+                      postTitle
+                    ] }, void 0, !0, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 334,
+                      columnNumber: 49
+                    }, this),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 334,
+                      columnNumber: 80
+                    }, this),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 334,
+                      columnNumber: 86
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 333,
+                    columnNumber: 45
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 329,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 328,
+                  columnNumber: 37
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "m-6", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Price:",
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: postPrice }, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 341,
+                      columnNumber: 62
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 341,
+                    columnNumber: 49
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 340,
+                    columnNumber: 45
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Quantity:",
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.usCount }, void 0, !1, {
+                      fileName: "app/routes/($locale).carts.jsx",
+                      lineNumber: 344,
+                      columnNumber: 65
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 344,
+                    columnNumber: 49
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 343,
+                    columnNumber: 45
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    " Subtotal:",
+                    postPrice * item.usCount
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 347,
+                    columnNumber: 49
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 346,
+                    columnNumber: 45
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 339,
+                  columnNumber: 41
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 338,
+                  columnNumber: 37
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 327,
+                columnNumber: 49
+              }, this) : ""
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 298,
+              columnNumber: 29
+            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: ((_a2 = item.reciverAddress) == null ? void 0 : _a2.country) === "USA" || ((_c = (_b = item.reciverAddress) == null ? void 0 : _b.country) == null ? void 0 : _c.toLowerCase()) === "" || ((_e2 = (_d = item.reciverAddress) == null ? void 0 : _d.country) == null ? void 0 : _e2.toLowerCase()) === " " || ((_g = (_f = item.reciverAddress) == null ? void 0 : _f.country) == null ? void 0 : _g.toLowerCase()) === "u.s.a" || ((_i = (_h = item.reciverAddress) == null ? void 0 : _h.country) == null ? void 0 : _i.toLowerCase()) === "u.s" || ((_k = (_j = item.reciverAddress) == null ? void 0 : _j.country) == null ? void 0 : _k.toLowerCase()) === "usa" || ((_m = (_l = item.reciverAddress) == null ? void 0 : _l.country) == null ? void 0 : _m.toLowerCase()) === "us" || ((_o = (_n = item.reciverAddress) == null ? void 0 : _n.country) == null ? void 0 : _o.toLowerCase()) === "america" || ((_q = (_p = item.reciverAddress) == null ? void 0 : _p.country) == null ? void 0 : _q.toLowerCase()) === "united states" || ((_s = (_r = item.reciverAddress) == null ? void 0 : _r.country) == null ? void 0 : _s.toLowerCase()) === "united states of america" || ((_u = (_t2 = item.reciverAddress) == null ? void 0 : _t2.country) == null ? void 0 : _u.toLowerCase()) == null ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 376,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 375,
+                  columnNumber: 49
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    "Postal ",
+                    postTitle
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 379,
+                    columnNumber: 53
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 379,
+                    columnNumber: 84
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 379,
+                    columnNumber: 90
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 378,
+                  columnNumber: 49
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 374,
+                columnNumber: 45
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 373,
+                columnNumber: 41
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Price:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: postPrice }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 386,
+                    columnNumber: 66
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 386,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 385,
+                  columnNumber: 49
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Quantity:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 389,
+                    columnNumber: 69
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 389,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 388,
+                  columnNumber: 49
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Subtotal:",
+                  postPrice * item.csvFileLen
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 392,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 391,
+                  columnNumber: 49
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 384,
+                columnNumber: 45
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 383,
+                columnNumber: 41
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 372,
+              columnNumber: 37
+            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 402,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 401,
+                  columnNumber: 49
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                    "Postal",
+                    postTitle2
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 405,
+                    columnNumber: 53
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 405,
+                    columnNumber: 84
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 405,
+                    columnNumber: 90
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 404,
+                  columnNumber: 49
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 400,
+                columnNumber: 45
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 399,
+                columnNumber: 41
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Price:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: postPrice2 }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 412,
+                    columnNumber: 66
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 412,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 411,
+                  columnNumber: 49
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Quantity:",
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 415,
+                    columnNumber: 69
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 415,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 414,
+                  columnNumber: 49
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                  " Subtotal:",
+                  postPrice2 * item.csvFileLen
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 418,
+                  columnNumber: 53
+                }, this) }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 417,
+                  columnNumber: 49
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 410,
+                columnNumber: 45
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 409,
+                columnNumber: 41
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 398,
+              columnNumber: 39
+            }, this) }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 358,
+              columnNumber: 29
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 214,
+            columnNumber: 21
+          }, this);
+        }
+      )
+    ] }, void 0, !0, {
+      fileName: "app/routes/($locale).carts.jsx",
+      lineNumber: 211,
+      columnNumber: 13
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+      import_react_modal3.default,
+      {
+        isOpen: modalIsOpen,
+        style: customStyles,
+        contentLabel: "Example Modal",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center", children: "Add a Gift Card" }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 436,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(BsXCircle, { className: "", onClick: () => setIsOpen(!1) }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 437,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 435,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "address-data", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "row  mr-2 ml-2 ", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 441,
+                columnNumber: 25
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("select", { className: "w-full", onChange: (e4) => cardvalFunc(e4.target.value), children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("option", { className: "w-full", children: " Select Gift Card" }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 444,
+                  columnNumber: 33
+                }, this),
+                data.collection.products.edges.map((item, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("option", { value: i6, children: item.node.title }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 446,
+                  columnNumber: 37
+                }, this))
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 443,
+                columnNumber: 29
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 442,
+                columnNumber: 25
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 440,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "row  mr-2 ml-2 ", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 451,
+                columnNumber: 25
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: cardPriceVal && cardPriceVal.length ? (
+                // <div>heelooo</div>
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+                  "select",
+                  {
+                    name: "",
+                    id: "",
+                    className: "w-full",
+                    onChange: (e4) => priceValFunc(e4.target.value),
+                    children: cardPriceVal.map(
+                      (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+                        "option",
+                        {
+                          value: item.node.price.amount,
+                          children: item.node.title
+                        },
+                        void 0,
+                        !1,
+                        {
+                          fileName: "app/routes/($locale).carts.jsx",
+                          lineNumber: 459,
+                          columnNumber: 41
+                        },
+                        this
+                      )
+                    )
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/routes/($locale).carts.jsx",
+                    lineNumber: 455,
+                    columnNumber: 33
+                  },
+                  this
+                )
+              ) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("select", { name: "", id: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("option", { value: "", children: "Price Card" }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 466,
+                columnNumber: 37
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 465,
+                columnNumber: 33
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 452,
+                columnNumber: 25
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 450,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "buttonDiv pr-5 items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => updateValueInArray(cardVal), children: "Add Gift Card" }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 472,
+              columnNumber: 25
+            }, this) }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 471,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 439,
+            columnNumber: 17
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/routes/($locale).carts.jsx",
+        lineNumber: 431,
+        columnNumber: 13
+      },
+      this
+    ),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+      import_react_modal3.default,
+      {
+        isOpen: modalIsOpen2,
+        style: customStyles,
+        contentLabel: "Example Modal",
+        children: bulkAddress.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(BsXCircle, { className: "absolute right-10 cursor-pointer", onClick: () => closeModal() }, void 0, !1, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 482,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { onClick: handlePrevClick, className: "absolute top-[130px]", children: "Previous" }, void 0, !1, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 483,
+            columnNumber: 25
+          }, this),
+          bulkAddress && bulkAddress.map(
+            (item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { style: { display: index === currentIndex ? "block" : "none" }, children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: " text-xl text-center", children: [
+                "Recipient:  ",
+                item["First Name"],
+                ",",
+                item["Last Name"],
+                ",",
+                item.Address,
+                ",",
+                item.City,
+                ",",
+                item["State/Province"]
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 488,
+                columnNumber: 33
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center mt-3", children: "Your Custom Message" }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 491,
+                columnNumber: 33
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: " w-[600px]", style: { fontFamily: msgFont }, children: [
+                  " ",
+                  item.msgData
+                ] }, void 0, !0, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 493,
+                  columnNumber: 29
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 493,
+                  columnNumber: 112
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: " text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
+                  fileName: "app/routes/($locale).carts.jsx",
+                  lineNumber: 494,
+                  columnNumber: 29
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 492,
+                columnNumber: 25
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+                "Font: ",
+                msgFont
+              ] }, void 0, !0, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 497,
+                columnNumber: 29
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/($locale).carts.jsx",
+                lineNumber: 496,
+                columnNumber: 25
+              }, this)
+            ] }, index, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 487,
+              columnNumber: 33
+            }, this) }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 485,
+              columnNumber: 29
+            }, this)
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("button", { className: "absolute right-10 bottom-[95px]", onClick: handleNextClick, children: "Next" }, void 0, !1, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 503,
+            columnNumber: 31
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/routes/($locale).carts.jsx",
+          lineNumber: 481,
+          columnNumber: 21
+        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[600px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: " text-xl text-center", children: [
+              "Recipient: ",
+              reciverAddress.firstName,
+              ",",
+              reciverAddress.address1,
+              ",",
+              reciverAddress.city,
+              ",",
+              reciverAddress.country
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 510,
+              columnNumber: 33
+            }, this) }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 509,
+              columnNumber: 29
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(BsXCircle, { className: "cursor-pointer", onClick: () => closeModal() }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 513,
+              columnNumber: 29
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 508,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center mt-3", children: "Your Custom Message" }, void 0, !1, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 515,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: "text-2xl w-[600px]", style: { fontFamily: msgFont }, children: [
+              " ",
+              msgShow
+            ] }, void 0, !0, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 517,
+              columnNumber: 29
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 517,
+              columnNumber: 115
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { className: "text-2xl text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
+              fileName: "app/routes/($locale).carts.jsx",
+              lineNumber: 518,
+              columnNumber: 29
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 516,
+            columnNumber: 25
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("text", { children: [
+            "Font: ",
+            msgFont
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 521,
+            columnNumber: 29
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/($locale).carts.jsx",
+            lineNumber: 520,
+            columnNumber: 25
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/routes/($locale).carts.jsx",
+          lineNumber: 507,
+          columnNumber: 21
+        }, this)
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/($locale).carts.jsx",
+        lineNumber: 476,
+        columnNumber: 13
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/routes/($locale).carts.jsx",
+    lineNumber: 210,
+    columnNumber: 9
+  }, this);
+}
+var GiftProduct2 = `#graphql
+
+  query
+  {
+    collection(handle:"gift-cards"){
+      title
+      products(first:10){
+        edges{
+          node{
+            title
+            featuredImage{
+              url
+            }
+            variants(first:10){
+              edges{
+                node{
+                  title
+                  price{
+                    amount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    }
+  `, PostalProduct = `#graphql
+  query
+  {
+    product(id:"gid://shopify/Product/7032044912745"){
+      title
+      variants(first:10){
+        edges{
+          node{
+            title
+            image{
+                url
+              }
+            price
+            {
+              amount
+            }
+          }
+        }
+      }
+    }
+  }`;
+
 // app/routes/($locale).card.jsx
 var locale_card_exports = {};
 __export(locale_card_exports, {
   default: () => s14
 });
-var import_react112 = __toESM(require_react()), import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime());
+var import_react120 = __toESM(require_react()), import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime());
 function s14() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { class: "buttons", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("a", { href: "#", class: "prmry", children: "Create A Custom Card" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { class: "buttons", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("a", { href: "#", class: "prmry", children: "Create A Custom Card" }, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
       lineNumber: 7,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("br", {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("br", {}, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
       lineNumber: 7,
       columnNumber: 59
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("a", { href: "#", class: "secndry", children: "View My Custom Cards" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("a", { href: "#", class: "secndry", children: "View My Custom Cards" }, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
       lineNumber: 8,
       columnNumber: 9
@@ -49614,9 +54012,9 @@ var locale_cart_exports = {};
 __export(locale_cart_exports, {
   action: () => action9,
   default: () => CartRoute,
-  loader: () => loader26
+  loader: () => loader27
 });
-var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime56 = __toESM(require_jsx_dev_runtime());
 async function action9({ request, context }) {
   let { session, cart } = context, [formData, customerAccessToken] = await Promise.all([
     request.formData(),
@@ -49661,14 +54059,14 @@ async function action9({ request, context }) {
     { status, headers: headers12 }
   );
 }
-async function loader26({ context }) {
+async function loader27({ context }) {
   let { cart } = context;
   return json3(await cart.get());
 }
 function CartRoute() {
   var _a2;
   let [root2] = useMatches2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
     fileName: "app/routes/($locale).cart.jsx",
     lineNumber: 90,
     columnNumber: 20
@@ -49686,10 +54084,10 @@ function CartRoute() {
 // app/routes/[sitemap.xml].jsx
 var sitemap_xml_exports = {};
 __export(sitemap_xml_exports, {
-  loader: () => loader27
+  loader: () => loader28
 });
 var MAX_URLS = 250;
-async function loader27({ request, context: { storefront } }) {
+async function loader28({ request, context: { storefront } }) {
   let data = await storefront.query(SITEMAP_QUERY, {
     variables: {
       urlLimits: MAX_URLS,
@@ -49795,9 +54193,9 @@ var SITEMAP_QUERY = `#graphql
 // app/routes/[robots.txt].jsx
 var robots_txt_exports = {};
 __export(robots_txt_exports, {
-  loader: () => loader28
+  loader: () => loader29
 });
-var loader28 = ({ request }) => {
+var loader29 = ({ request }) => {
   let url = new URL(request.url);
   return new Response(robotsTxtData({ url: url.origin }), {
     status: 200,
@@ -49837,9 +54235,9 @@ Crawl-delay: 1
 var __exports = {};
 __export(__exports, {
   default: () => Component4,
-  loader: () => loader29
+  loader: () => loader30
 });
-async function loader29() {
+async function loader30() {
   throw new Response("Not found", { status: 404 });
 }
 function Component4() {
@@ -49851,21 +54249,21 @@ var debug_network_exports = {};
 __export(debug_network_exports, {
   default: () => DebugNetwork
 });
-var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1), import_react116 = __toESM(require_react(), 1);
+var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1), import_react124 = __toESM(require_react(), 1);
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/FlameChartWrapper.jsx
-var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1), import_react115 = __toESM(require_react(), 1);
+var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1), import_react123 = __toESM(require_react(), 1);
 
 // node_modules/use-resize-observer/dist/bundle.esm.js
-var import_react114 = __toESM(require_react());
+var import_react122 = __toESM(require_react());
 function useResolvedElement(subscriber, refOrElement) {
-  var lastReportRef = (0, import_react114.useRef)(null), refOrElementRef = (0, import_react114.useRef)(null);
+  var lastReportRef = (0, import_react122.useRef)(null), refOrElementRef = (0, import_react122.useRef)(null);
   refOrElementRef.current = refOrElement;
-  var cbElementRef = (0, import_react114.useRef)(null);
-  (0, import_react114.useEffect)(function() {
+  var cbElementRef = (0, import_react122.useRef)(null);
+  (0, import_react122.useEffect)(function() {
     evaluateSubscription();
   });
-  var evaluateSubscription = (0, import_react114.useCallback)(function() {
+  var evaluateSubscription = (0, import_react122.useCallback)(function() {
     var cbElement = cbElementRef.current, refOrElement2 = refOrElementRef.current, element = cbElement || (refOrElement2 ? refOrElement2 instanceof Element ? refOrElement2 : refOrElement2.current : null);
     lastReportRef.current && lastReportRef.current.element === element && lastReportRef.current.subscriber === subscriber || (lastReportRef.current && lastReportRef.current.cleanup && lastReportRef.current.cleanup(), lastReportRef.current = {
       element,
@@ -49875,11 +54273,11 @@ function useResolvedElement(subscriber, refOrElement) {
       cleanup: element ? subscriber(element) : void 0
     });
   }, [subscriber]);
-  return (0, import_react114.useEffect)(function() {
+  return (0, import_react122.useEffect)(function() {
     return function() {
       lastReportRef.current && lastReportRef.current.cleanup && (lastReportRef.current.cleanup(), lastReportRef.current = null);
     };
-  }, []), (0, import_react114.useCallback)(function(element) {
+  }, []), (0, import_react122.useCallback)(function(element) {
     cbElementRef.current = element, evaluateSubscription();
   }, [evaluateSubscription]);
 }
@@ -49893,21 +54291,21 @@ function extractSize(entry2, boxProp, sizeType) {
 }
 function useResizeObserver(opts) {
   opts === void 0 && (opts = {});
-  var onResize = opts.onResize, onResizeRef = (0, import_react114.useRef)(void 0);
-  onResizeRef.current = onResize;
-  var round = opts.round || Math.round, resizeObserverRef = (0, import_react114.useRef)(), _useState = (0, import_react114.useState)({
+  var onResize2 = opts.onResize, onResizeRef = (0, import_react122.useRef)(void 0);
+  onResizeRef.current = onResize2;
+  var round = opts.round || Math.round, resizeObserverRef = (0, import_react122.useRef)(), _useState = (0, import_react122.useState)({
     width: void 0,
     height: void 0
-  }), size = _useState[0], setSize = _useState[1], didUnmount = (0, import_react114.useRef)(!1);
-  (0, import_react114.useEffect)(function() {
+  }), size = _useState[0], setSize = _useState[1], didUnmount = (0, import_react122.useRef)(!1);
+  (0, import_react122.useEffect)(function() {
     return didUnmount.current = !1, function() {
       didUnmount.current = !0;
     };
   }, []);
-  var previous = (0, import_react114.useRef)({
+  var previous = (0, import_react122.useRef)({
     width: void 0,
     height: void 0
-  }), refCallback = useResolvedElement((0, import_react114.useCallback)(function(element) {
+  }), refCallback = useResolvedElement((0, import_react122.useCallback)(function(element) {
     return (!resizeObserverRef.current || resizeObserverRef.current.box !== opts.box || resizeObserverRef.current.round !== round) && (resizeObserverRef.current = {
       box: opts.box,
       round,
@@ -49927,7 +54325,7 @@ function useResizeObserver(opts) {
       resizeObserverRef.current && resizeObserverRef.current.instance.unobserve(element);
     };
   }, [opts.box, round]), opts.ref);
-  return (0, import_react114.useMemo)(function() {
+  return (0, import_react122.useMemo)(function() {
     return {
       ref: refCallback,
       width: size.width,
@@ -49938,7 +54336,7 @@ function useResizeObserver(opts) {
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/FlameChartWrapper.jsx
 var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
-  let boxRef = (0, import_react115.useRef)(null), canvasRef = (0, import_react115.useRef)(null), flameChart = (0, import_react115.useRef)(null);
+  let boxRef = (0, import_react123.useRef)(null), canvasRef = (0, import_react123.useRef)(null), flameChart = (0, import_react123.useRef)(null);
   useResizeObserver2({
     ref: boxRef,
     onResize: ({ width = 0, height = 0 }) => {
@@ -49946,7 +54344,7 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
       return (_a2 = flameChart.current) == null ? void 0 : _a2.resize(width, height - 3);
     }
   });
-  let initialize = (0, import_react115.useCallback)(() => {
+  let initialize = (0, import_react123.useCallback)(() => {
     let {
       data,
       marks,
@@ -49971,43 +54369,43 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
         plugins
       });
     }
-  }, [props]), setBoxRef = (0, import_react115.useCallback)(
+  }, [props]), setBoxRef = (0, import_react123.useCallback)(
     (ref) => {
       let isNewRef = ref !== boxRef.current;
       boxRef.current = ref, isNewRef && initialize();
     },
     [initialize]
-  ), setCanvasRef = (0, import_react115.useCallback)(
+  ), setCanvasRef = (0, import_react123.useCallback)(
     (ref) => {
       let isNewRef = ref !== canvasRef.current;
       canvasRef.current = ref, isNewRef && initialize();
     },
     [initialize]
   );
-  return (0, import_react115.useEffect)(() => {
+  return (0, import_react123.useEffect)(() => {
     var _a2;
     props.data && ((_a2 = flameChart.current) == null || _a2.setNodes(props.data));
-  }, [props.data]), (0, import_react115.useEffect)(() => {
+  }, [props.data]), (0, import_react123.useEffect)(() => {
     var _a2;
     props.marks && ((_a2 = flameChart.current) == null || _a2.setMarks(props.marks));
-  }, [props.marks]), (0, import_react115.useEffect)(() => {
+  }, [props.marks]), (0, import_react123.useEffect)(() => {
     var _a2;
     props.waterfall && ((_a2 = flameChart.current) == null || _a2.setWaterfall(props.waterfall));
-  }, [props.waterfall]), (0, import_react115.useEffect)(() => {
+  }, [props.waterfall]), (0, import_react123.useEffect)(() => {
     var _a2;
     props.timeseries && ((_a2 = flameChart.current) == null || _a2.setTimeseries(props.timeseries));
-  }, [props.timeseries]), (0, import_react115.useEffect)(() => {
+  }, [props.timeseries]), (0, import_react123.useEffect)(() => {
     var _a2;
     props.timeframeTimeseries && ((_a2 = flameChart.current) == null || _a2.setTimeframeTimeseries(props.timeframeTimeseries));
-  }, [props.timeframeTimeseries]), (0, import_react115.useEffect)(() => {
+  }, [props.timeframeTimeseries]), (0, import_react123.useEffect)(() => {
     props.settings && flameChart.current && (flameChart.current.setSettings(props.settings), flameChart.current.renderEngine.recalcChildrenSizes(), flameChart.current.render());
-  }, [props.settings]), (0, import_react115.useEffect)(() => {
+  }, [props.settings]), (0, import_react123.useEffect)(() => {
     var _a2;
     props.position && ((_a2 = flameChart.current) == null || _a2.setFlameChartPosition(props.position));
-  }, [props.position]), (0, import_react115.useEffect)(() => {
+  }, [props.position]), (0, import_react123.useEffect)(() => {
     var _a2;
     props.zoom && ((_a2 = flameChart.current) == null || _a2.setZoom(props.zoom.start, props.zoom.end));
-  }, [props.zoom]), (0, import_react115.useEffect)(() => {
+  }, [props.zoom]), (0, import_react123.useEffect)(() => {
     var _a2;
     return props.onSelect && ((_a2 = flameChart.current) == null || _a2.on("select", props.onSelect)), () => {
       var _a3;
@@ -50026,12 +54424,12 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/routes/debug-network.jsx
 function DebugNetwork() {
-  let serverEvents = (0, import_react116.useRef)({
+  let serverEvents = (0, import_react124.useRef)({
     smallestStartTime: 0,
     mainRequests: [],
     subRequests: {},
     showPutRequests: !1
-  }), [timestamp, setTimestamp] = (0, import_react116.useState)();
+  }), [timestamp, setTimestamp] = (0, import_react124.useState)();
   function serverEventHandler(onEvent) {
     return (event) => {
       let data = JSON.parse(event.data);
@@ -50043,7 +54441,7 @@ function DebugNetwork() {
       }, 0);
     };
   }
-  return (0, import_react116.useEffect)(() => {
+  return (0, import_react124.useEffect)(() => {
     let evtSource = new EventSource("/debug-network-server", {
       withCredentials: !0
     }), mainRequestHandler = serverEventHandler((data) => {
@@ -50373,9 +54771,9 @@ function ErrorBoundary3() {
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/routes/graphiql.jsx
 var graphiql_exports = {};
 __export(graphiql_exports, {
-  loader: () => loader30
+  loader: () => loader31
 });
-var loader30 = graphiqlLoader;
+var loader31 = graphiqlLoader;
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/routes/index.jsx
 var routes_exports = {};
@@ -50384,7 +54782,7 @@ __export(routes_exports, {
   HYDROGEN_SHOP_ID: () => HYDROGEN_SHOP_ID,
   default: () => Index,
   links: () => links4,
-  loader: () => loader31
+  loader: () => loader32
 });
 var import_jsx_runtime20 = __toESM(require_jsx_runtime(), 1);
 
@@ -50899,7 +55297,7 @@ var links4 = () => [
     crossOrigin: "anonymous"
   }
 ];
-async function loader31({
+async function loader32({
   context: { storefront }
 }) {
   return { layout: await storefront.query(LAYOUT_QUERY2), isMockShop: storefront.getApiUrl().includes("mock.shop") };
@@ -51132,7 +55530,7 @@ var LAYOUT_QUERY2 = `#graphql
 `;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-3DQV7LAR.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-M7ZELIPT.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-QLMTPHJM.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-RLRTI7RK.js", imports: ["/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-B4UWBIDW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-2E5OOK5H.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-74NKATZP.js", imports: ["/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-3T7HBPHS.js", imports: ["/build/_shared/chunk-SGR3BVRJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-IT77ZPED.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-VVVJV3JK.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-CAP7JFKR.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-GZD3KG7S.js", imports: ["/build/_shared/chunk-HKQZ4OI5.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-FHAW5WV3.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-MORQOXRX.js", imports: ["/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-WGJ4WJRW.js", imports: ["/build/_shared/chunk-HKQZ4OI5.js", "/build/_shared/chunk-JEJQEZUJ.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-LWVZCEEF.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-S7LAFWLU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-FEONJEMV.js", imports: ["/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-NNKMTMSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-VAC2K2N3.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ELWFAUUC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-TZHRYH2T.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-GODRRUOK.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-F4ENGRL3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-RDSCHRPS.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-7KBSUE6F.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-2GXOX7ZT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-K7J6PDH7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-NPMZFJ6J.js", imports: ["/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-62N4LQOV.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-VUKL6RW7.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-Y2Q63SEX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-EKHBQMYZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EZSSUTZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-W6Y64MDS.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "04b1be2c", hmr: { runtime: "/build/_shared\\chunk-QLMTPHJM.js", timestamp: 1696751583533 }, url: "/build/manifest-04B1BE2C.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-3DQV7LAR.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-M7ZELIPT.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-QLMTPHJM.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-DAV4HDAV.js", imports: ["/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-B4UWBIDW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-RUONCLQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-NILORIT6.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-POUQYQPW.js", imports: ["/build/_shared/chunk-EJA5HIWI.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-IT77ZPED.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-2CRRXDZN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-MQJCQV4A.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-TIAW6N6F.js", imports: ["/build/_shared/chunk-OUKB2UNJ.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-B5Z4LVNN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-J52WCVXQ.js", imports: ["/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-W5BGKHHF.js", imports: ["/build/_shared/chunk-OUKB2UNJ.js", "/build/_shared/chunk-GOQTW4BK.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-LWVZCEEF.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-S7LAFWLU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-6HSIGCK2.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-NNKMTMSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-6CAP2OXL.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ELWFAUUC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-MWJ6V4YB.js", imports: ["/build/_shared/chunk-Z2ON2YDZ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-TGNNWHUF.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-4V6GMRQ6.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-BQSG5DT7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-3LSGVTOT.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-6UC7HCFS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-5PQULYR3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-YPIMF4NJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-6C662OHQ.js", imports: ["/build/_shared/chunk-Z2ON2YDZ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-Z46Z6BSQ.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-ME2KPIMN.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-EKHBQMYZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EZSSUTZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-W6Y64MDS.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "c71bd608", hmr: { runtime: "/build/_shared\\chunk-QLMTPHJM.js", timestamp: 1697808899013 }, url: "/build/manifest-C71BD608.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -51367,6 +55765,14 @@ var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_
     index: !0,
     caseSensitive: void 0,
     module: locale_index_exports
+  },
+  "routes/($locale).carts": {
+    id: "routes/($locale).carts",
+    parentId: "root",
+    path: ":locale?/carts",
+    index: void 0,
+    caseSensitive: void 0,
+    module: locale_carts_exports
   },
   "routes/($locale).card": {
     id: "routes/($locale).card",

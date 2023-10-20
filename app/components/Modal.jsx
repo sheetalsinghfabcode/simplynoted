@@ -1,6 +1,7 @@
 import {IconClose, Link} from '~/components';
 
 export function Modal({children, cancelLink}) {
+  console.log(children,"children");
   return (
     <div
       className="relative z-50"
