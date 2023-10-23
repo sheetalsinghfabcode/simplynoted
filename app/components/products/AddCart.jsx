@@ -6,7 +6,7 @@ import { useNavigate } from '@remix-run/react';
 let customerid, senderAddressVal, reciverAddressVal, cartDataReq
 export function AddCart({ show, setProductShow, data, productData, selectFontValue,editOrderValue,shippingData}) {
     // console.log(editOrderValue,'editOrderValur');
-    console.log(shippingData, 'shippingData');
+    // console.log(shippingData, 'shippingData');
     const [returnAddress, setReturnAddress] = useState([])
     const [recipientAddress, setRecipientAddress] = useState([])
     const [selectedItem, setSelectedItem] = useState(editOrderValue?.data ?editOrderValue.data.reciverAddress : null);
@@ -15,10 +15,11 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
     const [searchData, setsearchData] = useState(null);
     const [cardVal, setCardVal] = useState('')
     const [cardPriceVal, setCardPriceVal] = useState([])
-    const [cardName, setCardName] = useState(editOrderValue?.data?editOrderValue.data.giftCardName:'')
+    const [cardName, setCardName] = useState(editOrderValue?.data?editOrderValue.data.giftCardName:'Select Gift Card')
     const [cardImg, setCardImg] = useState(editOrderValue?.data?editOrderValue.data.giftCardImg:'')
     const [cardPrice, setCardPrice] = useState(editOrderValue?.data?editOrderValue.data.giftCardPrice:'')
     const [MsgText,setMesgtext] = useState('')
+    const [cardPriceTitle,setCardPriceTitle] = useState('')
     async function getRecipient() {
         try {
             const res = await fetch(`https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`)
@@ -39,6 +40,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
             console.log(error, 'Recipient error--------');
         }
     }
+    // console.log(cardName,'cardName',cardPrice);
     const handleCheckboxChange = (item) => {
         console.log(item, '***********item');
         // console.log(reciverAddressVal.value,'addressOfRecivers----');
@@ -50,7 +52,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         setSelectedItem2(item);
     };
     const handleBoxoNShipping = (item) => {
-        console.log(item,'shippingData----');
+        // console.log(item,'shippingData----');
         setSelectShipMode(item)
     }
     const filteredList = (recipientAddress, searchData) => {
@@ -78,35 +80,13 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         setCardImg(selCardName.featuredImage.url)
         // console.log(cardName,'cardName-----');
         let arrCardPrice = data.collection.products.edges[item].node.variants.edges
-        console.log(arrCardPrice[0].node.price.amount, '---------abababababaababab');
+        console.log(arrCardPrice[0].node, '---------abababababaababab');
         let firstPrice = arrCardPrice[0].node.price.amount
         setCardPrice(firstPrice)
+        
         setCardPriceVal(arrCardPrice)
         // await AfterCardSel(ab)
     }
-
-    // async function AfterCardSel(itemda) {
-    //     // console.log(itemda.length,'ppppppppp');
-    //     // console.log(itemda.edges, 'cardPriceVal');
-    //     // console.log(cardPriceVal,'cardPriceVal2222');
-    //     if (itemda && itemda.length) {
-
-    //         return (
-    //             <select className='w-full' onChange={(e)=> priceValFunc(e.target.value)}>
-    //                 <option className='w-full' > Select Gift Price</option>
-    //                 {itemda.map((item, i) =>
-    //                     <option value={i}>{item.node.title}</option>)}
-    //             </select>
-    //         )
-    //     } else {
-    //         return (
-    //             <select className='w-full' >
-    //                 <option className='w-full' disabled>card Price</option>
-    //             </select>
-    //         )
-    //     }
-    // }
-
     const priceValFunc = async (item) => {
         console.log(item, 'PriceVAl');
         setCardPrice(item ? item : firstPrice)
@@ -316,49 +296,6 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                     <div class="custom_variant_price">${item?.node.price.amount}</div>
                                 </div>
                                     )}
-                                    
-
-                                    {/* <div key="7027299254377" class="getProductId">
-                                        <div>
-                                            <input data-product-url="/products/shipping-methods" id="Ship-Cards-in-Bulk-with-Envelopes-Addressed--Sealed--and-Stamped" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526088809" />
-                                            <label for="Ship-Cards-in-Bulk-with-Envelopes-Addressed--Sealed--and-Stamped">Ship Cards in Bulk with Envelopes Addressed, Sealed, and Stamped</label>
-                                        </div>
-                                        <div class="custom_variant_price">$49.00</div>
-                                    </div>
-
-                                    <div key="7027299254377" class="getProductId">
-                                        <div>
-                                            <input data-product-url="/products/shipping-methods" id="Ship-Cards-in-Bulk---Cards-plus-Blank-Envelopes-Unsealed" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526121577" />
-                                            <label for="Ship-Cards-in-Bulk---Cards-plus-Blank-Envelopes-Unsealed">Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed</label>
-                                        </div>
-                                        <div class="custom_variant_price">$49.00</div>
-                                    </div>
-
-                                    <div key="7027299254377" class="getProductId">
-                                        <div>
-                                            <input data-product-url="/products/shipping-methods" id="Ship-Cards-in-Bulk---Cards-Only" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526154345" />
-                                            <label for="Ship-Cards-in-Bulk---Cards-Only">Ship Cards in Bulk - Cards Only</label>
-                                        </div>
-                                        <div class="custom_variant_price">$49.00</div>
-                                    </div>
-
-                                    <div key="7027299254377" class="getProductId">
-                                        <div>
-                                            <input data-product-url="/products/shipping-methods" id="Ship-Cards-in-Bulk---Cards-Plus-Envelopes-Addressed--Unsealed--Not-Stamped" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526187113" />
-                                            <label for="Ship-Cards-in-Bulk---Cards-Plus-Envelopes-Addressed--Unsealed--Not-Stamped">Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped</label>
-                                        </div>
-                                        <div class="custom_variant_price">$49.00</div>
-                                    </div>
-
-                                    <div key="7027299254377" class="getProductId">
-                                        <div>
-                                            <input data-product-url="/products/shipping-methods" id="Ship-Cards-in-Bulk---Cards-Plus-Envelopes-Addressed-and-Sealed--Not-Stamped" type="radio" name="radioGroup" class="shipping_method_chose" value="40647526219881" />
-                                            <label for="Ship-Cards-in-Bulk---Cards-Plus-Envelopes-Addressed-and-Sealed--Not-Stamped">Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped</label>
-                                        </div>
-                                        <div class="custom_variant_price">$49.00</div>
-                                    </div> */}
-
-
                                 </div>
                             </div>
                         </div>
@@ -371,8 +308,8 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                 <div className='row flex mr-2 ml-2 '>
                                     <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
                                     <div className='col-8 mt-3 pr-0 w-[370px]' >
-                                        <select className='w-full' value={'pppppp'} onChange={(e) => cardvalFunc(e.target.value)}>
-                                            <option className='w-full' >Select Gift Card </option>
+                                        <select className='w-full' onChange={(e) => cardvalFunc(e.target.value)}>
+                                            <option className='w-full' >{cardName} </option>
                                             {data.collection.products.edges.map((item, i) =>
                                                 <option value={i}>{item.node.title}</option>)}
                                         </select>
@@ -384,6 +321,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                         {cardPrice  ?
                                             // <div>heelooo</div>
                                             <select name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
+                                                {/* <option value="">{cardPrice}</option> */}
                                                 {cardPriceVal.map((item) =>
                                                     <option
                                                         value={item.node.price.amount}>{item.node.title}</option>
@@ -392,7 +330,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                             // <AfterCardSel />
                                             :
                                             <select name="" id="">
-                                                <option value="">Price card</option>
+                                                <option value="">{'Price Card'}</option>
                                             </select>
                                         }
                                         {/* <select name="gift_name" className='w-full' id="gift_name" onchange="changeGiftPrice(this.value)" >

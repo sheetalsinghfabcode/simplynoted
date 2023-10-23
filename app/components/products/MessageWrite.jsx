@@ -67,6 +67,18 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     if (obj["Last Name"]) {
                         subName = subName.replace(/\[Last Name\]/g, obj["Last Name"]);
                     }
+                    if (obj["Company"]) {
+                        subName = subName.replace(/\[Company\]/g, obj["Company"]);
+                    }
+                    if (obj["Custom 1"]) {
+                        subName = subName.replace(/\[Custom 1\]/g, obj["Custom 1"]);
+                    }
+                    if (obj["Custom 2"]) {
+                        subName = subName.replace(/\[Custom 2\]/g, obj["Custom 2"]);
+                    }
+                    if (obj["Custom 3"]) {
+                        subName = subName.replace(/\[Custom 3\]/g, obj["Custom 3"]);
+                    }
                     obj.msgData = subName;
                     // obj.msgData = name2
                 });
@@ -138,13 +150,15 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             return <div></div>
         }
     }
-    if (input) {
-        input.addEventListener('input', processInput);
-    }
+    // if (input) {
+    //     input.addEventListener('input', processInput);
+    // }
 
     function resize_to_fit() {
         let fontSize = window.getComputedStyle(output).fontSize;
         output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
+        output2.style.fontSize = output.style.fontSize
+
         // 
 
         if (output.clientHeight >= outputContainer.clientHeight) {
@@ -153,7 +167,9 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     }
 
     async function processInput() {
-        output.innerHTML = await this.value;
+        console.log('processInput');
+        // output.innerHTML = await this.value;
+        // console.log(output.innerHTML);
         output.style.fontSize = '50px'; // Default font size
         resize_to_fit();
     }
@@ -161,7 +177,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
     function resize_to_fit2() {
         let fontSize = window.getComputedStyle(output2).fontSize;
-        output2.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
+        output2.style.fontSize = (parseFloat(fontSize) - 3) + 'px';
         // console.log(output2.clientHeight, "------------", outputContainer2.clientHeight);
         if (output2.clientHeight >= outputContainer2.clientHeight) {
             resize_to_fit2();
@@ -169,14 +185,14 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     }
 
     async function processInput2() {
-        output2.innerHTML = await this.value;
-        output2.style.fontSize = output.style.fontSize; // Default font size
+        // output2.innerHTML = await this.value;
+        output2.style.fontSize = '50px'; // Default font size
         resize_to_fit2();
     }
 
-    if (input2) {
-        input2.addEventListener('input', processInput2);
-    }
+    // if (input2) {
+    //     input2.addEventListener('input', processInput2);
+    // }
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -386,23 +402,21 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             console.log(error, "error at Ai generated message ");
         }
     }
-    // const onChnageNameVal = useCallback((e)=>{
-    //     setName(e)
-
-    // },[])
     async function onChnageNameVal(nameData) {
         setName(nameData)
-        console.log(nameData, 'nameData----');
+        processInput()
+        // console.log(nameData, 'nameData----');
 
     }
     async function onchnageOfRegardBox(data) {
         setName2(data)
+        processInput2()
     }
     const ref = useRef(null);
     const ref1 = useRef(null);
     const ref2 = useRef(null);
     useEffect(() => {
-        input = ref.current;
+        // input = ref.current;
         output = ref1.current;
         outputContainer = ref2.current;
         customerid = localStorage.getItem('customerId')
@@ -417,26 +431,30 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr">
                     <div className='outerSec' ref={ref2}>
-                        <div id='abcd' ref={ref1} className="output m-5 ">
+                        <div id='messageBoxID' ref={ref1} className="output m-5 ">
                             {name}
                         </div>
                     </div>
                     <div className='secDiv'>
-                        <div id='abcd2' className="output2">
+                        <div id='signOffText' className="output2">
                             {name2}
                         </div>
                     </div>
 
                 </div>
                 <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." ref={ref} className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..."  className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
                     <span className="charLeft">{remainingWord} characters remaining</span><br />
                     {show &&
                         <>
                             <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
 
-                            <button className='addFirstnameBtn p-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
 
                         </>
 

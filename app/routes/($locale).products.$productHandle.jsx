@@ -1,7 +1,7 @@
 import { useRef, Suspense } from 'react';
 import { Disclosure, Listbox } from '@headlessui/react';
 import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await,useLocation } from '@remix-run/react';
+import { useLoaderData, Await, useLocation } from '@remix-run/react';
 import {
   AnalyticsPageType,
   Money,
@@ -37,7 +37,7 @@ import { MessageWriting } from '~/components/products/MessageWrite';
 import { AddCart } from '~/components/products/AddCart';
 
 export const headers = routeHeaders;
-let input,  customerid, recipientAddressVal,selectFontValue
+let input, customerid, recipientAddressVal, selectFontValue
 
 export async function loader({ params, request, context }) {
   // console.log(context,'context');
@@ -46,10 +46,10 @@ export async function loader({ params, request, context }) {
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
   const selectedOptions = getSelectedProductOptions(request);
-  const data  = await context.storefront.query(GiftProduct, {
+  const data = await context.storefront.query(GiftProduct, {
     variables: {},
   })
-  const shippingData  = await context.storefront.query(ShippingMethod, {
+  const shippingData = await context.storefront.query(ShippingMethod, {
     variables: {},
   })
 
@@ -64,7 +64,7 @@ export async function loader({ params, request, context }) {
       language: context.storefront.i18n.language,
     },
   });
-// console.log(product,'product ----99999999999999');
+  // console.log(product,'product ----99999999999999');
   if (!product?.id) {
     throw new Response('product', { status: 404 });
   }
@@ -93,7 +93,7 @@ export async function loader({ params, request, context }) {
   const firstVariant = product.variants.nodes[0];
   // console.log(firstVariant,'firstVariant');
   // console.log(product.selectedVariant,'product.selectedVariant');
-  const selectedVariant = product.selectedVariant == null?firstVariant: firstVariant;
+  const selectedVariant = product.selectedVariant == null ? firstVariant : firstVariant;
 
   const productAnalytics = {
     productGid: product.id,
@@ -139,34 +139,35 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 export default function Product() {
-  const { product, shop, recommended, variants, data,shippingData } = useLoaderData();
+  const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
   // console.log(product,'************');
-  console.log(shippingData,'shippingData');
+  console.log(shippingData, 'shippingData');
   const datafornav = useLocation();
   let EditMess = datafornav.state?.data?.messageData
   let editEndMess = datafornav.state?.data.endText
   let editOrderValue = datafornav.state
-   console.log(datafornav.state,'locationState');
+  let csvFileLenEditTime = datafornav.state?.data.csvBulkData.length
+  console.log(datafornav.state, 'locationState');
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(csvFileLenEditTime ? true : false);
   const [productshow, setProductShow] = useState(true)
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true)
   const [selectedFile, setSelectedFile] = useState('');
   const [fileData, setFileData] = useState([]);
   const [errorVal, setErrorVal] = useState([]);
-  
+
   function setFont() {
     var selectFont = document.getElementById("font");
+    console.log(selectFont);
     if (selectFont) {
-       selectFontValue = selectFont.options[selectFont.selectedIndex].value;
+      selectFontValue = selectFont.options[selectFont.selectedIndex].value;
       if (selectFontValue) {
-        document.getElementById("abcd").style.fontFamily = selectFontValue;
-        document.getElementById("abcd2").style.fontFamily = selectFontValue;
+        document.getElementById("messageBoxID").style.fontFamily = selectFontValue;
+        document.getElementById("signOffText").style.fontFamily = selectFontValue;
       }
     }
-  // console.log(selectFontValue,'selectFontValue');
 
   }
   const ref = useRef(null);
@@ -209,7 +210,7 @@ export default function Product() {
     setSelectedFile('')
     setShowBox(true)
   }
-  
+
   return (
     <>
       {productshow ?
@@ -339,8 +340,8 @@ export default function Product() {
               </div>
             </div>
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
-             setShowBox={setShowBox} setProductShow={setProductShow} 
-             EditMess={EditMess} editEndMess={editEndMess} />
+              setShowBox={setShowBox} setProductShow={setProductShow}
+              EditMess={EditMess} editEndMess={editEndMess} />
 
           </Section>
           <Suspense fallback={<Skeleton className="h-32" />}>
@@ -369,10 +370,10 @@ export default function Product() {
         </>
         :
         <AddCart show={show} setProductShow={setProductShow}
-         data={data} productData={product.variants.nodes[0]}
-         selectFontValue={selectFontValue}
-         editOrderValue={editOrderValue}
-         shippingData={shippingData?.product}/>
+          data={data} productData={product.variants.nodes[0]}
+          selectFontValue={selectFontValue}
+          editOrderValue={editOrderValue}
+          shippingData={shippingData?.product} />
       }
 
     </>
