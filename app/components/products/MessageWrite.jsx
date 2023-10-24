@@ -19,9 +19,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [lenCsvData, setLenCsvData] = useState('')
     const [usAddress, setUsAddress] = useState(null)
     const [nonusAddress, setnonUsAddress] = useState(null)
-    // const [productshow, setProductShow] = useState(true)
-    // console.log(name, 'Message Text field----');
-    // console.log(name, name2, 'ssasasasas');
     input2 = document.querySelector('.inputText2');
     output2 = document.querySelector('.output2');
     outputContainer2 = document.querySelector('.secDiv');
@@ -48,16 +45,12 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     };
     async function checkUserLogged() {
         if (!customerid) {
-            // console.log(customerid);
-            // setProductShow(false)
             alert('please Login First')
 
         } else if (name.length == 0) {
             alert('Message Can not be empty ')
         } else {
             let reqField
-            let checkWord = "[First Name]"
-            let checkWord2 = "[Last Name]"
             if (fileData.length) {
                 fileData.map(obj => {
                     let subName = name;
@@ -80,24 +73,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                         subName = subName.replace(/\[Custom 3\]/g, obj["Custom 3"]);
                     }
                     obj.msgData = subName;
-                    // obj.msgData = name2
                 });
                 console.log(fileData, 'fileData');
-                // let data = name.replace(/\[First Name\]/g, "yayra");
-                // debugger;
-                //   console.log(newArray);
-                //   let newDataIs = newArray.map(function(obj){
-                //     obj.msgData = obj.msgData.replace(/checkWord/g,obj["First Name"])
-                //     return obj
-                //   })
-                //   newArray.forEach(obj => {
-                //     if(obj.msgData.includes(checkWord)){
-                //         obj.msgData = obj.msgData.replace(checkWord,obj["First Name"])
-                //     } if(obj.msgData.includes(checkWord2)){
-                //         obj.msgData = obj.msgData.replace(checkWord2,obj["Last Name"])
-                //     }
-                //   })
-                //   console.log(console.log(newArray,"after Replace",newDataIs));
                 reqField = {
                     msg: name,
                     signOffText: name2,
@@ -158,9 +135,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         let fontSize = window.getComputedStyle(output).fontSize;
         output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
         output2.style.fontSize = output.style.fontSize
-
-        // 
-
         if (output.clientHeight >= outputContainer.clientHeight) {
             resize_to_fit();
         }
@@ -168,8 +142,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
     async function processInput() {
         console.log('processInput');
-        // output.innerHTML = await this.value;
-        // console.log(output.innerHTML);
         output.style.fontSize = '50px'; // Default font size
         resize_to_fit();
     }
@@ -178,14 +150,12 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     function resize_to_fit2() {
         let fontSize = window.getComputedStyle(output2).fontSize;
         output2.style.fontSize = (parseFloat(fontSize) - 3) + 'px';
-        // console.log(output2.clientHeight, "------------", outputContainer2.clientHeight);
         if (output2.clientHeight >= outputContainer2.clientHeight) {
             resize_to_fit2();
         }
     }
 
     async function processInput2() {
-        // output2.innerHTML = await this.value;
         output2.style.fontSize = '50px'; // Default font size
         resize_to_fit2();
     }
@@ -200,7 +170,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             const keyToRemove = "Type";
             reader.onload = (e) => {
                 const csvData = e.target.result;
-                // console.log( csvData,'csVData,0000000000000000');
                 let jsonData = csvToJson(csvData);
                 console.log(jsonData, 'jsonData^^^^^^^^^^^^^^^^^');
 
@@ -221,7 +190,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     const newData = { ...item }
                     // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
                     delete newData['"Type"'];
-                    // console.log(newData,'&&&&&&&&&&newDataaaaaaaaaaa');
                     return newData
                 })
 
@@ -252,7 +220,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         return result;
     }
     async function uploadCsvFile() {
-        let aa = []
+        let errMsg = []
         let usCount = 0
         let nonUSCount = 0
         let found = false
@@ -260,8 +228,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
         setbulkUploadDiv(false)
         if (!fileData.length) {
-            aa.push('it is empty please add addresses')
-            setErrorVal(aa)
+            errMsg.push('it is empty please add addresses')
+            setErrorVal(errMsg)
             setIsOpen2(true)
             setTimeout(() => setIsOpen2(false), 3000)
             return
@@ -271,7 +239,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         }
         let reqField = ["First Name", "Last Name", "Address", "City", "State/Province", "Postal Code"]
 
-        // console.log(fileData.length, 'length of addresses');
 
         const alphabetPattern = /^[A-Za-z]+$/;
         const mailText = /@.*\.com$/
@@ -292,7 +259,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             }
 
             if (alphabetPattern.test(obj[targetField]) == false) {
-                aa.push(`'${targetField}' at row ${index} includes a number.`)
+                errMsg.push(`'${targetField}' at row ${index} includes a number.`)
                 console.log(`Index: ${index}, '${targetField}' includes a number.`);
             }
             if (obj[countryCheck] === "USA" ||
@@ -311,26 +278,26 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 nonUSCount++
             }
             if (mailText.test(obj[emailValid]) == false) {
-                aa.push(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`)
+                errMsg.push(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`)
                 console.log(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`);
                 // setIsOpen2(true)
                 // setTimeout(() => setIsOpen2(false), 3000)
             }
 
             if (emptyKeys.length > 0) {
-                aa.push(` ${emptyKeys.join(', ')} is empty please check at row ${index}`)
+                errMsg.push(` ${emptyKeys.join(', ')} is empty please check at row ${index}`)
                 console.log(`Index: ${index}, Empty Keys: [${emptyKeys.join(', ')}]`, numkeys);
                 // setIsOpen2(true)
                 // setTimeout(() => setIsOpen2(false), 3000)
                 // break;
             }
-            if (aa.length > 0) {
+            if (errMsg.length > 0) {
                 setIsOpen2(true)
                 setTimeout(() => setIsOpen2(false), 3000)
                 found = true;
             }
         }
-        setErrorVal(aa)
+        setErrorVal(errMsg)
         setUsAddress(usCount)
         setnonUsAddress(nonUSCount)
         console.log(replacedMsg, 'replacedMsg');
@@ -346,7 +313,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     async function uploadCsvFileOnClick() {
         try {
             console.log('uploadCsvFile OnClick');
-            // console.log(fileData, 'fileDatatatatatatataat******************');
 
             const res = await fetch("https://api.simplynoted.com/api/orders/bulk-orders-upload-s3",
                 {
@@ -405,8 +371,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     async function onChnageNameVal(nameData) {
         setName(nameData)
         processInput()
-        // console.log(nameData, 'nameData----');
-
     }
     async function onchnageOfRegardBox(data) {
         setName2(data)
@@ -425,7 +389,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         console.log(data);
         setName(prevString => prevString + data)
     }
-    // console.log(bbc, 'bbc--');
     return (
         <>
             <div className='mainDivForBox flex gap-10'>
@@ -494,13 +457,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     }
 
                 </div>
-                {/* <input id='customText' className='inputText' type="text" placeholder="Enter your custom text here...." /> */}
 
             </div>
             <Modal
                 isOpen={modalIsOpen}
-                // onAfterOpen={afterOpenModal}
-                // onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >
@@ -531,8 +491,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             </Modal>
             <Modal
                 isOpen={modalIsOpen2}
-                // onAfterOpen={afterOpenModal}
-                // onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >

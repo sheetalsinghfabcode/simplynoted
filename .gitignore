@@ -1,5 +1,5 @@
 node_modules
-dist
+/dist
 /.DS_Store
 /.cache
 /build
@@ -8,3 +8,4 @@ dist
 .env
 .vscode
 .shopify
+

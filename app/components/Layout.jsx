@@ -255,11 +255,11 @@ console.log(customerid,'LoginScreen000000000000');
               }
             >
               {item.title === "Send a Card" ? (
-                <div class="dropdown">
+                <div className="dropdown">
                   <div>
                     Send a Card
                   </div>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
 
                     <p className='card' onClick={() => window.open("/card", "_self")}
                     >Card</p>
@@ -271,11 +271,11 @@ console.log(customerid,'LoginScreen000000000000');
               ) : null}
 
               {item.title === "Pricing" ? (
-                <div class="dropdown">
+                <div className="dropdown">
                   <div>
                     Pricing
                   </div>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                     <p>Item 1</p>
                     <p> Item 2</p>
                     <p>Item 3</p>
