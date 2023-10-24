@@ -437,12 +437,12 @@ export default function Product() {
                       </div>
                     </div>
                     {show &&
-                      <table class="price-breakdown desktop">
+                      <table className="price-breakdown desktop">
                         <tbody>
                           <tr>
-                            <td class="label">Quantity</td><td>1-99</td><td>100-249</td><td>250-499</td><td>500-999</td><td>1000-2499</td><td>2500+</td></tr>
+                            <td className="label">Quantity</td><td>1-99</td><td>100-249</td><td>250-499</td><td>500-999</td><td>1000-2499</td><td>2500+</td></tr>
                           <tr>
-                            <td class="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
+                            <td className="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
                         </tbody>
                       </table>}
                     <div className='selectOtion mb-5 flex'>

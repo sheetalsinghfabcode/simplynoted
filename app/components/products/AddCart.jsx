@@ -321,9 +321,9 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                             <div className='address-grid'>
                                 <h3 className='text-2xl font-bold mt-4 mb-4'>{shippingData?.title}</h3>
 
-                                <div class="shipping-methods" id="shipping-options">
+                                <div className="shipping-methods" id="shipping-options">
                                     {shippingData?.variants.edges.map((item) =>
-                                        <div key="7027299254377" class="getProductId">
+                                        <div key="7027299254377" className="getProductId">
                                             <div>
                                                 <input
                                                     value={item}
@@ -333,7 +333,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                                 />
                                                 <label for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
                                             </div>
-                                            <div class="custom_variant_price">${item?.node.price.amount}</div>
+                                            <div className="custom_variant_price">${item?.node.price.amount}</div>
                                         </div>
                                     )}
                                 </div>

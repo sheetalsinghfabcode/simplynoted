@@ -423,7 +423,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
                 </div>
                 <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText' maxLength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
                     <span className="charLeft">{remainingWord} characters remaining</span><br />
                     {show &&
@@ -441,7 +441,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     }
                     <div className='flex gap-4 mt-5' >
                         <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
+                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxLength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
                         </textarea><br />
                     </div>
                     <span className="charLeft ml-40">{remainSign} characters remaining</span>
@@ -489,11 +489,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     <text className=' text-[#999999]'>Type in words or a phrase to use our AI Assistant to<br /> help generate a great message</text>
                 </div>
                 <div>
-                    <textarea type="text" id="aiTextArea" value={aiText ? aiText : valToGen} onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxlength="450"></textarea>
+                    <textarea type="text" id="aiTextArea" value={aiText ? aiText : valToGen} onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxLength="450"></textarea>
                 </div>
                 {!aiText ?
 
-                    <div class="ai-generate" >
+                    <div className="ai-generate" >
                         <button id="generate-msg" disabled="" onClick={() => aiGenrateMess()}>Generate Message</button>
                     </div> :
                     <div className='buttonClass flex justify-start'>

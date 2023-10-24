@@ -753,7 +753,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         }
         return dispatcher.useContext(Context);
       }
-      function useState33(initialState) {
+      function useState36(initialState) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useState(initialState);
       }
@@ -761,11 +761,11 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useReducer(reducer, initialArg, init);
       }
-      function useRef22(initialValue) {
+      function useRef24(initialValue) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useRef(initialValue);
       }
-      function useEffect34(create, deps) {
+      function useEffect36(create, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useEffect(create, deps);
       }
@@ -1294,7 +1294,7 @@ Check the top-level render call using <` + parentName + ">.");
         toArray,
         only: onlyChild
       };
-      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext7, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef7, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback11, exports.useContext = useContext9, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect34, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo15, exports.useReducer = useReducer, exports.useRef = useRef22, exports.useState = useState33, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+      exports.Children = Children2, exports.Component = Component5, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext7, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef7, exports.isValidElement = isValidElement2, exports.lazy = lazy2, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback11, exports.useContext = useContext9, exports.useDebugValue = useDebugValue, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect36, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo15, exports.useReducer = useReducer, exports.useRef = useRef24, exports.useState = useState36, exports.useSyncExternalStore = useSyncExternalStore, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
     })();
   }
 });
@@ -5250,7 +5250,7 @@ var require_server = __commonJS({
   "node_modules/react-router-dom/server.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: !0 });
-    var React25 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouter = (init_dist(), __toCommonJS(dist_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports2));
+    var React26 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouter = (init_dist(), __toCommonJS(dist_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports2));
     function _interopNamespace(e4) {
       if (e4 && e4.__esModule)
         return e4;
@@ -5267,7 +5267,7 @@ var require_server = __commonJS({
         }
       }), n6.default = e4, Object.freeze(n6);
     }
-    var React__namespace = /* @__PURE__ */ _interopNamespace(React25);
+    var React__namespace = /* @__PURE__ */ _interopNamespace(React26);
     function StaticRouter({
       basename,
       children,
@@ -5496,7 +5496,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React25 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React25.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React26 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React26.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -6990,7 +6990,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React25.Children.forEach(children, function(child) {
+        return React26.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -8138,7 +8138,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function basicStateReducer(state, action10) {
         return typeof action10 == "function" ? action10(state) : action10;
       }
-      function useState33(initialState) {
+      function useState36(initialState) {
         return currentHookNameInDev = "useState", useReducer(
           basicStateReducer,
           // useReducer has a special case to support lazy useState initializers
@@ -8187,7 +8187,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var nextValue = nextCreate();
         return isInHookUserCodeInDev = !1, workInProgressHook.memoizedState = [nextValue, nextDeps], nextValue;
       }
-      function useRef22(initialValue) {
+      function useRef24(initialValue) {
         currentlyRenderingComponent = resolveCurrentlyRenderingComponent(), workInProgressHook = createWorkInProgressHook();
         var previousRef = workInProgressHook.memoizedState;
         if (previousRef === null) {
@@ -8257,8 +8257,8 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useContext: useContext9,
         useMemo: useMemo15,
         useReducer,
-        useRef: useRef22,
-        useState: useState33,
+        useRef: useRef24,
+        useState: useState36,
         useInsertionEffect: noop,
         useLayoutEffect: useLayoutEffect4,
         useCallback: useCallback11,
@@ -9077,7 +9077,7 @@ var require_react_dom_server_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React25 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React25.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React26 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React26.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -10586,7 +10586,7 @@ var require_react_dom_server_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React25.Children.forEach(children, function(child) {
+        return React26.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -11690,7 +11690,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function basicStateReducer(state, action10) {
         return typeof action10 == "function" ? action10(state) : action10;
       }
-      function useState33(initialState) {
+      function useState36(initialState) {
         return currentHookNameInDev = "useState", useReducer(
           basicStateReducer,
           // useReducer has a special case to support lazy useState initializers
@@ -11739,7 +11739,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var nextValue = nextCreate();
         return isInHookUserCodeInDev = !1, workInProgressHook.memoizedState = [nextValue, nextDeps], nextValue;
       }
-      function useRef22(initialValue) {
+      function useRef24(initialValue) {
         currentlyRenderingComponent = resolveCurrentlyRenderingComponent(), workInProgressHook = createWorkInProgressHook();
         var previousRef = workInProgressHook.memoizedState;
         if (previousRef === null) {
@@ -11809,8 +11809,8 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         useContext: useContext9,
         useMemo: useMemo15,
         useReducer,
-        useRef: useRef22,
-        useState: useState33,
+        useRef: useRef24,
+        useState: useState36,
         useInsertionEffect: noop,
         useLayoutEffect: useLayoutEffect4,
         useCallback: useCallback11,
@@ -12649,14 +12649,14 @@ var require_react_jsx_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React25 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React26 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React25.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React26.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -13057,7 +13057,7 @@ var require_react_jsx_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV70(type, config, maybeKey, source, self2) {
+      function jsxDEV73(type, config, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config, self2));
@@ -13204,7 +13204,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV70(type, props, key, source, self2);
+          var element = jsxDEV73(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -13509,14 +13509,14 @@ var require_react_jsx_dev_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React25 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React26 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React25.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React26.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -13917,7 +13917,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV70(type, config, maybeKey, source, self2) {
+      function jsxDEV73(type, config, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config) && (checkKeyStringCoercion(config.key), key = "" + config.key), hasValidRef(config) && (ref = config.ref, warnIfStringRefCannotBeAutoConverted(config, self2));
@@ -14064,7 +14064,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV70(type, props, key, source, self2);
+          var element = jsxDEV73(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -14388,7 +14388,7 @@ var require_react_dom_development = __commonJS({
     (function() {
       "use strict";
       typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-      var React25 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React25.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+      var React26 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React26.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
       function setSuppressWarning(newSuppressWarning) {
         suppressWarning = newSuppressWarning;
       }
@@ -14416,7 +14416,7 @@ var require_react_dom_development = __commonJS({
           argsWithFormat.unshift("Warning: " + format), Function.prototype.apply.call(console[level], console, argsWithFormat);
         }
       }
-      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment44 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
+      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment47 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
       function registerTwoPhaseEvent(registrationName, dependencies) {
         registerDirectEvent(registrationName, dependencies), registerDirectEvent(registrationName + "Capture", dependencies);
       }
@@ -15266,7 +15266,7 @@ Error generating stack: ` + x5.message + `
             return "DehydratedFragment";
           case ForwardRef:
             return getWrappedName$1(type, type.render, "ForwardRef");
-          case Fragment44:
+          case Fragment47:
             return "Fragment";
           case HostComponent:
             return type;
@@ -15510,7 +15510,7 @@ Error generating stack: ` + x5.message + `
       }
       var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
       function validateProps(element, props) {
-        props.value == null && (typeof props.children == "object" && props.children !== null ? React25.Children.forEach(props.children, function(child) {
+        props.value == null && (typeof props.children == "object" && props.children !== null ? React26.Children.forEach(props.children, function(child) {
           child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
       }
@@ -21206,7 +21206,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
             callback !== null && (effect.callback = null, callCallback(callback, instance));
           }
       }
-      var fakeInternalInstance = {}, emptyRefsObject = new React25.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
+      var fakeInternalInstance = {}, emptyRefsObject = new React26.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
       {
         didWarnAboutStateAssignmentForComponent = /* @__PURE__ */ new Set(), didWarnAboutUninitializedState = /* @__PURE__ */ new Set(), didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = /* @__PURE__ */ new Set(), didWarnAboutLegacyLifecyclesAndDerivedState = /* @__PURE__ */ new Set(), didWarnAboutDirectlyAssigningPropsToState = /* @__PURE__ */ new Set(), didWarnAboutUndefinedDerivedState = /* @__PURE__ */ new Set(), didWarnAboutContextTypeAndContextTypes = /* @__PURE__ */ new Set(), didWarnAboutInvalidateContextType = /* @__PURE__ */ new Set();
         var didWarnOnInvalidCallback = /* @__PURE__ */ new Set();
@@ -21595,7 +21595,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
           }
         }
         function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-          if (current2 === null || current2.tag !== Fragment44) {
+          if (current2 === null || current2.tag !== Fragment47) {
             var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
             return created.return = returnFiber, created;
           } else {
@@ -21823,7 +21823,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
             if (child.key === key) {
               var elementType = element.type;
               if (elementType === REACT_FRAGMENT_TYPE) {
-                if (child.tag === Fragment44) {
+                if (child.tag === Fragment47) {
                   deleteRemainingChildren(returnFiber, child.sibling);
                   var existing = useFiber(child, element.props.children);
                   return existing.return = returnFiber, existing._debugSource = element._source, existing._debugOwner = element._owner, existing;
@@ -24413,7 +24413,7 @@ Check the render method of \`` + ownerName + "`.");
             var type = workInProgress2.type, _unresolvedProps2 = workInProgress2.pendingProps, _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
             return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
           }
-          case Fragment44:
+          case Fragment47:
             return updateFragment(current2, workInProgress2, renderLanes2);
           case Mode:
             return updateMode(current2, workInProgress2, renderLanes2);
@@ -24565,7 +24565,7 @@ Check the render method of \`` + ownerName + "`.");
           case SimpleMemoComponent:
           case FunctionComponent:
           case ForwardRef:
-          case Fragment44:
+          case Fragment47:
           case Mode:
           case Profiler:
           case ContextConsumer:
@@ -27122,7 +27122,7 @@ Check the render method of \`` + ownerName + "`.");
         return fiber._debugSource = element._source, fiber._debugOwner = element._owner, fiber;
       }
       function createFiberFromFragment(elements, mode, lanes, key) {
-        var fiber = createFiber(Fragment44, elements, key, mode);
+        var fiber = createFiber(Fragment47, elements, key, mode);
         return fiber.lanes = lanes, fiber;
       }
       function createFiberFromProfiler(pendingProps, mode, lanes, key) {
@@ -28255,7 +28255,7 @@ var require_react_is_development = __commonJS({
           }
         }
       }
-      var AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element2 = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment44 = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense8 = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
+      var AsyncMode = REACT_ASYNC_MODE_TYPE, ConcurrentMode = REACT_CONCURRENT_MODE_TYPE, ContextConsumer = REACT_CONTEXT_TYPE, ContextProvider = REACT_PROVIDER_TYPE, Element2 = REACT_ELEMENT_TYPE, ForwardRef = REACT_FORWARD_REF_TYPE, Fragment47 = REACT_FRAGMENT_TYPE, Lazy = REACT_LAZY_TYPE, Memo = REACT_MEMO_TYPE, Portal = REACT_PORTAL_TYPE, Profiler = REACT_PROFILER_TYPE, StrictMode = REACT_STRICT_MODE_TYPE, Suspense8 = REACT_SUSPENSE_TYPE, hasWarnedAboutDeprecatedIsAsyncMode = !1;
       function isAsyncMode(object) {
         return hasWarnedAboutDeprecatedIsAsyncMode || (hasWarnedAboutDeprecatedIsAsyncMode = !0, console.warn("The ReactIs.isAsyncMode() alias has been deprecated, and will be removed in React 17+. Update your code to use ReactIs.isConcurrentMode() instead. It has the exact same API.")), isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;
       }
@@ -28295,7 +28295,7 @@ var require_react_is_development = __commonJS({
       function isSuspense(object) {
         return typeOf(object) === REACT_SUSPENSE_TYPE;
       }
-      exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, exports.Element = Element2, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment44, exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, exports.StrictMode = StrictMode, exports.Suspense = Suspense8, exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense, exports.isValidElementType = isValidElementType, exports.typeOf = typeOf;
+      exports.AsyncMode = AsyncMode, exports.ConcurrentMode = ConcurrentMode, exports.ContextConsumer = ContextConsumer, exports.ContextProvider = ContextProvider, exports.Element = Element2, exports.ForwardRef = ForwardRef, exports.Fragment = Fragment47, exports.Lazy = Lazy, exports.Memo = Memo, exports.Portal = Portal, exports.Profiler = Profiler, exports.StrictMode = StrictMode, exports.Suspense = Suspense8, exports.isAsyncMode = isAsyncMode, exports.isConcurrentMode = isConcurrentMode, exports.isContextConsumer = isContextConsumer, exports.isContextProvider = isContextProvider, exports.isElement = isElement, exports.isForwardRef = isForwardRef, exports.isFragment = isFragment, exports.isLazy = isLazy, exports.isMemo = isMemo, exports.isPortal = isPortal, exports.isProfiler = isProfiler, exports.isStrictMode = isStrictMode, exports.isSuspense = isSuspense, exports.isValidElementType = isValidElementType, exports.typeOf = typeOf;
     })();
   }
 });
@@ -29796,9 +29796,9 @@ var require_react_table_development = __commonJS({
   "node_modules/react-table/dist/react-table.development.js"(exports, module) {
     (function(global, factory) {
       typeof exports == "object" && typeof module < "u" ? factory(exports, require_react()) : typeof define == "function" && define.amd ? define(["exports", "react"], factory) : (global = global || self, factory(global.ReactTable = {}, global.React));
-    })(exports, function(exports2, React25) {
+    })(exports, function(exports2, React26) {
       "use strict";
-      React25 = React25 && Object.prototype.hasOwnProperty.call(React25, "default") ? React25.default : React25;
+      React26 = React26 && Object.prototype.hasOwnProperty.call(React26, "default") ? React26.default : React26;
       function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
         try {
           var info = gen[key](arg), value = info.value;
@@ -29863,7 +29863,7 @@ var require_react_table_development = __commonJS({
         var _ref$value = _ref.value, value = _ref$value === void 0 ? "" : _ref$value;
         return value;
       }, emptyRenderer = function() {
-        return React25.createElement(React25.Fragment, null, "\xA0");
+        return React26.createElement(React26.Fragment, null, "\xA0");
       }, defaultColumn = {
         Cell: defaultRenderer,
         width: 150,
@@ -29927,22 +29927,22 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         return typeof updater == "function" ? updater(old) : updater;
       }
       function useGetLatest(obj) {
-        var ref = React25.useRef();
-        return ref.current = obj, React25.useCallback(function() {
+        var ref = React26.useRef();
+        return ref.current = obj, React26.useCallback(function() {
           return ref.current;
         }, []);
       }
-      var safeUseLayoutEffect = typeof document < "u" ? React25.useLayoutEffect : React25.useEffect;
+      var safeUseLayoutEffect = typeof document < "u" ? React26.useLayoutEffect : React26.useEffect;
       function useMountedLayoutEffect(fn, deps) {
-        var mountedRef = React25.useRef(!1);
+        var mountedRef = React26.useRef(!1);
         safeUseLayoutEffect(function() {
           mountedRef.current && fn(), mountedRef.current = !0;
         }, deps);
       }
       function useAsyncDebounce(defaultFn, defaultWait) {
         defaultWait === void 0 && (defaultWait = 0);
-        var debounceRef = React25.useRef({}), getDefaultFn = useGetLatest(defaultFn), getDefaultWait = useGetLatest(defaultWait);
-        return React25.useCallback(
+        var debounceRef = React26.useRef({}), getDefaultFn = useGetLatest(defaultFn), getDefaultWait = useGetLatest(defaultWait);
+        return React26.useCallback(
           /* @__PURE__ */ function() {
             var _ref2 = _asyncToGenerator(
               /* @__PURE__ */ regeneratorRuntime.mark(function _callee2() {
@@ -30005,7 +30005,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         };
       }
       function flexRender(Comp, props) {
-        return isReactComponent(Comp) ? React25.createElement(Comp, props) : Comp;
+        return isReactComponent(Comp) ? React26.createElement(Comp, props) : Comp;
       }
       function isReactComponent(component) {
         return isClassComponent(component) || typeof component == "function" || isExoticComponent(component);
@@ -30323,7 +30323,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         }
       }
       function useInstanceBeforeDimensions(instance) {
-        var headers12 = instance.headers, hiddenColumns = instance.state.hiddenColumns, isMountedRef = React25.useRef(!1);
+        var headers12 = instance.headers, hiddenColumns = instance.state.hiddenColumns, isMountedRef = React26.useRef(!1);
         isMountedRef.current;
         var handleColumn = function handleColumn2(column, parentVisible) {
           column.isVisible = parentVisible && !hiddenColumns.includes(column.id);
@@ -30337,18 +30337,18 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         });
       }
       function useInstance(instance) {
-        var columns = instance.columns, flatHeaders = instance.flatHeaders, dispatch = instance.dispatch, allColumns2 = instance.allColumns, getHooks = instance.getHooks, hiddenColumns = instance.state.hiddenColumns, _instance$autoResetHi = instance.autoResetHiddenColumns, autoResetHiddenColumns = _instance$autoResetHi === void 0 ? !0 : _instance$autoResetHi, getInstance = useGetLatest(instance), allColumnsHidden = allColumns2.length === hiddenColumns.length, toggleHideColumn = React25.useCallback(function(columnId, value) {
+        var columns = instance.columns, flatHeaders = instance.flatHeaders, dispatch = instance.dispatch, allColumns2 = instance.allColumns, getHooks = instance.getHooks, hiddenColumns = instance.state.hiddenColumns, _instance$autoResetHi = instance.autoResetHiddenColumns, autoResetHiddenColumns = _instance$autoResetHi === void 0 ? !0 : _instance$autoResetHi, getInstance = useGetLatest(instance), allColumnsHidden = allColumns2.length === hiddenColumns.length, toggleHideColumn = React26.useCallback(function(columnId, value) {
           return dispatch({
             type: actions.toggleHideColumn,
             columnId,
             value
           });
-        }, [dispatch]), setHiddenColumns = React25.useCallback(function(value) {
+        }, [dispatch]), setHiddenColumns = React26.useCallback(function(value) {
           return dispatch({
             type: actions.setHiddenColumns,
             value
           });
-        }, [dispatch]), toggleHideAllColumns = React25.useCallback(function(value) {
+        }, [dispatch]), toggleHideAllColumns = React26.useCallback(function(value) {
           return dispatch({
             type: actions.toggleHideAllColumns,
             value
@@ -30405,7 +30405,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         for (var _len = arguments.length, plugins = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
           plugins[_key - 1] = arguments[_key];
         props = applyDefaults(props), plugins = [useColumnVisibility].concat(plugins);
-        var instanceRef = React25.useRef({}), getInstance = useGetLatest(instanceRef.current);
+        var instanceRef = React26.useRef({}), getInstance = useGetLatest(instanceRef.current);
         Object.assign(getInstance(), _extends6({}, props, {
           plugins,
           hooks: makeDefaultPluginHooks()
@@ -30414,7 +30414,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         });
         var getHooks = useGetLatest(getInstance().hooks);
         getInstance().getHooks = getHooks, delete getInstance().hooks, Object.assign(getInstance(), reduceHooks(getHooks().useOptions, applyDefaults(props)));
-        var _getInstance = getInstance(), data = _getInstance.data, userColumns = _getInstance.columns, initialState = _getInstance.initialState, defaultColumn2 = _getInstance.defaultColumn, getSubRows = _getInstance.getSubRows, getRowId = _getInstance.getRowId, stateReducer = _getInstance.stateReducer, useControlledState = _getInstance.useControlledState, getStateReducer = useGetLatest(stateReducer), reducer2 = React25.useCallback(function(state2, action10) {
+        var _getInstance = getInstance(), data = _getInstance.data, userColumns = _getInstance.columns, initialState = _getInstance.initialState, defaultColumn2 = _getInstance.defaultColumn, getSubRows = _getInstance.getSubRows, getRowId = _getInstance.getRowId, stateReducer = _getInstance.stateReducer, useControlledState = _getInstance.useControlledState, getStateReducer = useGetLatest(stateReducer), reducer2 = React26.useCallback(function(state2, action10) {
           if (!action10.type)
             throw console.info({
               action: action10
@@ -30422,7 +30422,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           return [].concat(getHooks().stateReducers, Array.isArray(getStateReducer()) ? getStateReducer() : [getStateReducer()]).reduce(function(s15, handler) {
             return handler(s15, action10, state2, getInstance()) || s15;
           }, state2);
-        }, [getHooks, getStateReducer, getInstance]), _React$useReducer = React25.useReducer(reducer2, void 0, function() {
+        }, [getHooks, getStateReducer, getInstance]), _React$useReducer = React26.useReducer(reducer2, void 0, function() {
           return reducer2(initialState, {
             type: actions.init
           });
@@ -30433,7 +30433,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           state,
           dispatch
         });
-        var columns = React25.useMemo(function() {
+        var columns = React26.useMemo(function() {
           return linkColumnStructure(reduceHooks(getHooks().columns, userColumns, {
             instance: getInstance()
           }));
@@ -30441,7 +30441,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           instance: getInstance()
         })));
         getInstance().columns = columns;
-        var allColumns2 = React25.useMemo(function() {
+        var allColumns2 = React26.useMemo(function() {
           return reduceHooks(getHooks().allColumns, flattenColumns(columns), {
             instance: getInstance()
           }).map(assignColumnAccessor);
@@ -30449,7 +30449,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           instance: getInstance()
         })));
         getInstance().allColumns = allColumns2;
-        var _React$useMemo = React25.useMemo(function() {
+        var _React$useMemo = React26.useMemo(function() {
           for (var rows2 = [], flatRows2 = [], rowsById2 = {}, allColumnsQueue = [].concat(allColumns2); allColumnsQueue.length; ) {
             var column = allColumnsQueue.shift();
             accessRowsForColumn({
@@ -30473,7 +30473,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           rowsById
           // materializedColumns,
         }), loopHooks(getHooks().useInstanceAfterData, getInstance());
-        var visibleColumns2 = React25.useMemo(function() {
+        var visibleColumns2 = React26.useMemo(function() {
           return reduceHooks(getHooks().visibleColumns, allColumns2, {
             instance: getInstance()
           }).map(function(d11) {
@@ -30482,7 +30482,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         }, [getHooks, allColumns2, getInstance, defaultColumn2].concat(reduceHooks(getHooks().visibleColumnsDeps, [], {
           instance: getInstance()
         })));
-        allColumns2 = React25.useMemo(function() {
+        allColumns2 = React26.useMemo(function() {
           var columns2 = [].concat(visibleColumns2);
           return allColumns2.forEach(function(column) {
             columns2.find(function(d11) {
@@ -30501,13 +30501,13 @@ This usually means you need to need to name your plugin hook by setting the 'plu
               return d11.id;
             }).join(", ") + '" in the columns array above');
         }
-        var headerGroups = React25.useMemo(function() {
+        var headerGroups = React26.useMemo(function() {
           return reduceHooks(getHooks().headerGroups, makeHeaderGroups(visibleColumns2, defaultColumn2), getInstance());
         }, [getHooks, visibleColumns2, defaultColumn2, getInstance].concat(reduceHooks(getHooks().headerGroupsDeps, [], {
           instance: getInstance()
         })));
         getInstance().headerGroups = headerGroups;
-        var headers12 = React25.useMemo(function() {
+        var headers12 = React26.useMemo(function() {
           return headerGroups.length ? headerGroups[0].headers : [];
         }, [headerGroups]);
         getInstance().headers = headers12, getInstance().flatHeaders = headerGroups.reduce(function(all, headerGroup) {
@@ -30518,7 +30518,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         }).map(function(d11) {
           return d11.id;
         }).sort().join("_");
-        visibleColumns2 = React25.useMemo(
+        visibleColumns2 = React26.useMemo(
           function() {
             return visibleColumns2.filter(function(d11) {
               return d11.isVisible;
@@ -30536,7 +30536,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             instance: getInstance(),
             column
           });
-        }), getInstance().headerGroups = React25.useMemo(function() {
+        }), getInstance().headerGroups = React26.useMemo(function() {
           return headerGroups.filter(function(headerGroup, i6) {
             return headerGroup.headers = headerGroup.headers.filter(function(column) {
               var recurse = function recurse2(headers13) {
@@ -30555,7 +30555,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
               index: i6
             }), !0) : !1;
           });
-        }, [headerGroups, getInstance, getHooks]), getInstance().footerGroups = [].concat(getInstance().headerGroups).reverse(), getInstance().prepareRow = React25.useCallback(function(row) {
+        }, [headerGroups, getInstance, getHooks]), getInstance().footerGroups = [].concat(getInstance().headerGroups).reverse(), getInstance().prepareRow = React26.useCallback(function(row) {
           row.getRowProps = makePropGetter(getHooks().getRowProps, {
             instance: getInstance(),
             row
@@ -30708,24 +30708,24 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             type: actions.resetExpanded
           });
         }, [dispatch, data]);
-        var toggleRowExpanded = React25.useCallback(function(id, value) {
+        var toggleRowExpanded = React26.useCallback(function(id, value) {
           dispatch({
             type: actions.toggleRowExpanded,
             id,
             value
           });
-        }, [dispatch]), toggleAllRowsExpanded = React25.useCallback(function(value) {
+        }, [dispatch]), toggleAllRowsExpanded = React26.useCallback(function(value) {
           return dispatch({
             type: actions.toggleAllRowsExpanded,
             value
           });
-        }, [dispatch]), expandedRows = React25.useMemo(function() {
+        }, [dispatch]), expandedRows = React26.useMemo(function() {
           return paginateExpandedRows ? expandRows(rows, {
             manualExpandedKey,
             expanded,
             expandSubRows
           }) : rows;
-        }, [paginateExpandedRows, rows, manualExpandedKey, expanded, expandSubRows]), expandedDepth = React25.useMemo(function() {
+        }, [paginateExpandedRows, rows, manualExpandedKey, expanded, expandSubRows]), expandedDepth = React26.useMemo(function() {
           return findExpandedDepth(expanded);
         }, [expanded]), getInstance = useGetLatest(instance), getToggleAllRowsExpandedProps = makePropGetter(getHooks().getToggleAllRowsExpandedProps, {
           instance: getInstance()
@@ -30944,13 +30944,13 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         }
       }
       function useInstance$2(instance) {
-        var data = instance.data, rows = instance.rows, flatRows = instance.flatRows, rowsById = instance.rowsById, allColumns2 = instance.allColumns, userFilterTypes = instance.filterTypes, manualFilters = instance.manualFilters, _instance$defaultCanF = instance.defaultCanFilter, defaultCanFilter = _instance$defaultCanF === void 0 ? !1 : _instance$defaultCanF, disableFilters = instance.disableFilters, filters = instance.state.filters, dispatch = instance.dispatch, _instance$autoResetFi = instance.autoResetFilters, autoResetFilters = _instance$autoResetFi === void 0 ? !0 : _instance$autoResetFi, setFilter = React25.useCallback(function(columnId, filterValue) {
+        var data = instance.data, rows = instance.rows, flatRows = instance.flatRows, rowsById = instance.rowsById, allColumns2 = instance.allColumns, userFilterTypes = instance.filterTypes, manualFilters = instance.manualFilters, _instance$defaultCanF = instance.defaultCanFilter, defaultCanFilter = _instance$defaultCanF === void 0 ? !1 : _instance$defaultCanF, disableFilters = instance.disableFilters, filters = instance.state.filters, dispatch = instance.dispatch, _instance$autoResetFi = instance.autoResetFilters, autoResetFilters = _instance$autoResetFi === void 0 ? !0 : _instance$autoResetFi, setFilter = React26.useCallback(function(columnId, filterValue) {
           dispatch({
             type: actions.setFilter,
             columnId,
             filterValue
           });
-        }, [dispatch]), setAllFilters = React25.useCallback(function(filters2) {
+        }, [dispatch]), setAllFilters = React26.useCallback(function(filters2) {
           dispatch({
             type: actions.setAllFilters,
             filters: filters2
@@ -30966,7 +30966,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           });
           column.filterValue = found && found.value;
         });
-        var _React$useMemo = React25.useMemo(function() {
+        var _React$useMemo = React26.useMemo(function() {
           if (manualFilters || !filters.length)
             return [rows, flatRows, rowsById];
           var filteredFlatRows2 = [], filteredRowsById2 = {}, filterRows = function filterRows2(rows2, depth) {
@@ -30987,7 +30987,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
           };
           return [filterRows(rows), filteredFlatRows2, filteredRowsById2];
         }, [manualFilters, filters, rows, flatRows, rowsById, allColumns2, userFilterTypes]), filteredRows = _React$useMemo[0], filteredFlatRows = _React$useMemo[1], filteredRowsById = _React$useMemo[2];
-        React25.useMemo(function() {
+        React26.useMemo(function() {
           var nonFilteredColumns = allColumns2.filter(function(column) {
             return !filters.find(function(d11) {
               return d11.id === column.id;
@@ -31038,12 +31038,12 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         }
       }
       function useInstance$3(instance) {
-        var data = instance.data, rows = instance.rows, flatRows = instance.flatRows, rowsById = instance.rowsById, allColumns2 = instance.allColumns, userFilterTypes = instance.filterTypes, globalFilter = instance.globalFilter, manualGlobalFilter = instance.manualGlobalFilter, globalFilterValue = instance.state.globalFilter, dispatch = instance.dispatch, _instance$autoResetGl = instance.autoResetGlobalFilter, autoResetGlobalFilter = _instance$autoResetGl === void 0 ? !0 : _instance$autoResetGl, disableGlobalFilter = instance.disableGlobalFilter, setGlobalFilter = React25.useCallback(function(filterValue) {
+        var data = instance.data, rows = instance.rows, flatRows = instance.flatRows, rowsById = instance.rowsById, allColumns2 = instance.allColumns, userFilterTypes = instance.filterTypes, globalFilter = instance.globalFilter, manualGlobalFilter = instance.manualGlobalFilter, globalFilterValue = instance.state.globalFilter, dispatch = instance.dispatch, _instance$autoResetGl = instance.autoResetGlobalFilter, autoResetGlobalFilter = _instance$autoResetGl === void 0 ? !0 : _instance$autoResetGl, disableGlobalFilter = instance.disableGlobalFilter, setGlobalFilter = React26.useCallback(function(filterValue) {
           dispatch({
             type: actions.setGlobalFilter,
             filterValue
           });
-        }, [dispatch]), _React$useMemo = React25.useMemo(function() {
+        }, [dispatch]), _React$useMemo = React26.useMemo(function() {
           if (manualGlobalFilter || typeof globalFilterValue > "u")
             return [rows, flatRows, rowsById];
           var filteredFlatRows = [], filteredRowsById = {}, filterMethod = getFilterMethod(globalFilter, userFilterTypes || {}, filterTypes);
@@ -31206,13 +31206,13 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             return instance.toggleGroupBy(column.id);
           }), column.Aggregated = column.Aggregated || column.Cell;
         });
-        var toggleGroupBy = React25.useCallback(function(columnId, value) {
+        var toggleGroupBy = React26.useCallback(function(columnId, value) {
           dispatch({
             type: actions.toggleGroupBy,
             columnId,
             value
           });
-        }, [dispatch]), setGroupBy = React25.useCallback(function(value) {
+        }, [dispatch]), setGroupBy = React26.useCallback(function(value) {
           dispatch({
             type: actions.setGroupBy,
             value
@@ -31224,7 +31224,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             header
           });
         });
-        var _React$useMemo = React25.useMemo(function() {
+        var _React$useMemo = React26.useMemo(function() {
           if (manualGroupBy || !groupBy.length)
             return [rows, flatRows, rowsById, emptyArray, emptyObject, flatRows, rowsById];
           var existingGroupBy = groupBy.filter(function(g8) {
@@ -31467,12 +31467,12 @@ This usually means you need to need to name your plugin hook by setting the 'plu
       function useInstance$5(instance) {
         var data = instance.data, rows = instance.rows, flatRows = instance.flatRows, allColumns2 = instance.allColumns, _instance$orderByFn = instance.orderByFn, orderByFn = _instance$orderByFn === void 0 ? defaultOrderByFn : _instance$orderByFn, userSortTypes = instance.sortTypes, manualSortBy = instance.manualSortBy, defaultCanSort = instance.defaultCanSort, disableSortBy = instance.disableSortBy, flatHeaders = instance.flatHeaders, sortBy = instance.state.sortBy, dispatch = instance.dispatch, plugins = instance.plugins, getHooks = instance.getHooks, _instance$autoResetSo = instance.autoResetSortBy, autoResetSortBy = _instance$autoResetSo === void 0 ? !0 : _instance$autoResetSo;
         ensurePluginOrder(plugins, ["useFilters", "useGlobalFilter", "useGroupBy", "usePivotColumns"], "useSortBy");
-        var setSortBy = React25.useCallback(function(sortBy2) {
+        var setSortBy = React26.useCallback(function(sortBy2) {
           dispatch({
             type: actions.setSortBy,
             sortBy: sortBy2
           });
-        }, [dispatch]), toggleSortBy = React25.useCallback(function(columnId, desc, multi) {
+        }, [dispatch]), toggleSortBy = React26.useCallback(function(columnId, desc, multi) {
           dispatch({
             type: actions.toggleSortBy,
             columnId,
@@ -31500,7 +31500,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             return d11.id === id;
           }), column.isSortedDesc = column.isSorted ? columnSort.desc : void 0;
         });
-        var _React$useMemo = React25.useMemo(function() {
+        var _React$useMemo = React26.useMemo(function() {
           if (manualSortBy || !sortBy.length)
             return [rows, flatRows];
           var sortedFlatRows2 = [], availableSortBy = sortBy.filter(function(sort) {
@@ -31601,11 +31601,11 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             type: actions.resetPage
           });
         }, [dispatch, manualPagination ? null : data, globalFilter, filters, groupBy, sortBy]);
-        var pageCount = manualPagination ? userPageCount : Math.ceil(rows.length / pageSize), pageOptions = React25.useMemo(function() {
+        var pageCount = manualPagination ? userPageCount : Math.ceil(rows.length / pageSize), pageOptions = React26.useMemo(function() {
           return pageCount > 0 ? [].concat(new Array(pageCount)).fill(null).map(function(d11, i6) {
             return i6;
           }) : [];
-        }, [pageCount]), page2 = React25.useMemo(function() {
+        }, [pageCount]), page2 = React26.useMemo(function() {
           var page3;
           if (manualPagination)
             page3 = rows;
@@ -31618,20 +31618,20 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             expanded,
             expandSubRows
           });
-        }, [expandSubRows, expanded, manualExpandedKey, manualPagination, pageIndex, pageSize, paginateExpandedRows, rows]), canPreviousPage = pageIndex > 0, canNextPage = pageCount === -1 ? page2.length >= pageSize : pageIndex < pageCount - 1, gotoPage = React25.useCallback(function(pageIndex2) {
+        }, [expandSubRows, expanded, manualExpandedKey, manualPagination, pageIndex, pageSize, paginateExpandedRows, rows]), canPreviousPage = pageIndex > 0, canNextPage = pageCount === -1 ? page2.length >= pageSize : pageIndex < pageCount - 1, gotoPage = React26.useCallback(function(pageIndex2) {
           dispatch({
             type: actions.gotoPage,
             pageIndex: pageIndex2
           });
-        }, [dispatch]), previousPage = React25.useCallback(function() {
+        }, [dispatch]), previousPage = React26.useCallback(function() {
           return gotoPage(function(old) {
             return old - 1;
           });
-        }, [gotoPage]), nextPage = React25.useCallback(function() {
+        }, [gotoPage]), nextPage = React26.useCallback(function() {
           return gotoPage(function(old) {
             return old + 1;
           });
-        }, [gotoPage]), setPageSize = React25.useCallback(function(pageSize2) {
+        }, [gotoPage]), setPageSize = React26.useCallback(function(pageSize2) {
           dispatch({
             type: actions.setPageSize,
             pageSize: pageSize2
@@ -31902,7 +31902,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
       function useInstance$8(instance) {
         var data = instance.data, rows = instance.rows, getHooks = instance.getHooks, plugins = instance.plugins, rowsById = instance.rowsById, _instance$nonGroupedR2 = instance.nonGroupedRowsById, nonGroupedRowsById = _instance$nonGroupedR2 === void 0 ? rowsById : _instance$nonGroupedR2, _instance$autoResetSe = instance.autoResetSelectedRows, autoResetSelectedRows = _instance$autoResetSe === void 0 ? !0 : _instance$autoResetSe, selectedRowIds = instance.state.selectedRowIds, _instance$selectSubRo3 = instance.selectSubRows, selectSubRows = _instance$selectSubRo3 === void 0 ? !0 : _instance$selectSubRo3, dispatch = instance.dispatch, page2 = instance.page, getSubRows = instance.getSubRows;
         ensurePluginOrder(plugins, ["useFilters", "useGroupBy", "useSortBy", "useExpanded", "usePagination"], "useRowSelect");
-        var selectedFlatRows = React25.useMemo(function() {
+        var selectedFlatRows = React26.useMemo(function() {
           var selectedFlatRows2 = [];
           return rows.forEach(function(row) {
             var isSelected = selectSubRows ? getRowIsSelected(row, selectedRowIds, getSubRows) : !!selectedRowIds[row.id];
@@ -31921,17 +31921,17 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             type: actions.resetSelectedRows
           });
         }, [dispatch, data]);
-        var toggleAllRowsSelected = React25.useCallback(function(value) {
+        var toggleAllRowsSelected = React26.useCallback(function(value) {
           return dispatch({
             type: actions.toggleAllRowsSelected,
             value
           });
-        }, [dispatch]), toggleAllPageRowsSelected = React25.useCallback(function(value) {
+        }, [dispatch]), toggleAllPageRowsSelected = React26.useCallback(function(value) {
           return dispatch({
             type: actions.toggleAllPageRowsSelected,
             value
           });
-        }, [dispatch]), toggleRowSelected = React25.useCallback(function(id, value) {
+        }, [dispatch]), toggleRowSelected = React26.useCallback(function(id, value) {
           return dispatch({
             type: actions.toggleRowSelected,
             id,
@@ -32012,13 +32012,13 @@ This usually means you need to need to name your plugin hook by setting the 'plu
         }
       }
       function useInstance$9(instance) {
-        var _instance$autoResetRo = instance.autoResetRowState, autoResetRowState = _instance$autoResetRo === void 0 ? !0 : _instance$autoResetRo, data = instance.data, dispatch = instance.dispatch, setRowState = React25.useCallback(function(rowId, value) {
+        var _instance$autoResetRo = instance.autoResetRowState, autoResetRowState = _instance$autoResetRo === void 0 ? !0 : _instance$autoResetRo, data = instance.data, dispatch = instance.dispatch, setRowState = React26.useCallback(function(rowId, value) {
           return dispatch({
             type: actions.setRowState,
             rowId,
             value
           });
-        }, [dispatch]), setCellState = React25.useCallback(function(rowId, columnId, value) {
+        }, [dispatch]), setCellState = React26.useCallback(function(rowId, columnId, value) {
           return dispatch({
             type: actions.setCellState,
             rowId,
@@ -32082,7 +32082,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
       }
       function useInstance$a(instance) {
         var dispatch = instance.dispatch;
-        instance.setColumnOrder = React25.useCallback(function(columnOrder) {
+        instance.setColumnOrder = React26.useCallback(function(columnOrder) {
           return dispatch({
             type: actions.setColumnOrder,
             columnOrder
@@ -32226,7 +32226,7 @@ This usually means you need to need to name your plugin hook by setting the 'plu
             type: actions.resetResize
           });
         }, [columns]);
-        var resetResizing = React25.useCallback(function() {
+        var resetResizing = React26.useCallback(function() {
           return dispatch({
             type: actions.resetResize
           });
@@ -32476,6 +32476,4889 @@ This usually means you need to need to name your plugin hook by setting the 'plu
 var require_react_table = __commonJS({
   "node_modules/react-table/index.js"(exports, module) {
     module.exports = require_react_table_development();
+  }
+});
+
+// node_modules/html2canvas/dist/html2canvas.js
+var require_html2canvas = __commonJS({
+  "node_modules/html2canvas/dist/html2canvas.js"(exports, module) {
+    (function(global, factory) {
+      typeof exports == "object" && typeof module < "u" ? module.exports = factory() : typeof define == "function" && define.amd ? define(factory) : (global = typeof globalThis < "u" ? globalThis : global || self, global.html2canvas = factory());
+    })(exports, function() {
+      "use strict";
+      var extendStatics = function(d11, b6) {
+        return extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d12, b7) {
+          d12.__proto__ = b7;
+        } || function(d12, b7) {
+          for (var p6 in b7)
+            Object.prototype.hasOwnProperty.call(b7, p6) && (d12[p6] = b7[p6]);
+        }, extendStatics(d11, b6);
+      };
+      function __extends(d11, b6) {
+        if (typeof b6 != "function" && b6 !== null)
+          throw new TypeError("Class extends value " + String(b6) + " is not a constructor or null");
+        extendStatics(d11, b6);
+        function __() {
+          this.constructor = d11;
+        }
+        d11.prototype = b6 === null ? Object.create(b6) : (__.prototype = b6.prototype, new __());
+      }
+      var __assign2 = function() {
+        return __assign2 = Object.assign || function(t17) {
+          for (var s15, i7 = 1, n6 = arguments.length; i7 < n6; i7++) {
+            s15 = arguments[i7];
+            for (var p6 in s15)
+              Object.prototype.hasOwnProperty.call(s15, p6) && (t17[p6] = s15[p6]);
+          }
+          return t17;
+        }, __assign2.apply(this, arguments);
+      };
+      function __awaiter(thisArg, _arguments, P4, generator) {
+        function adopt(value) {
+          return value instanceof P4 ? value : new P4(function(resolve) {
+            resolve(value);
+          });
+        }
+        return new (P4 || (P4 = Promise))(function(resolve, reject) {
+          function fulfilled(value) {
+            try {
+              step(generator.next(value));
+            } catch (e5) {
+              reject(e5);
+            }
+          }
+          function rejected(value) {
+            try {
+              step(generator.throw(value));
+            } catch (e5) {
+              reject(e5);
+            }
+          }
+          function step(result) {
+            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          }
+          step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+      }
+      function __generator(thisArg, body) {
+        var _3 = { label: 0, sent: function() {
+          if (t17[0] & 1)
+            throw t17[1];
+          return t17[1];
+        }, trys: [], ops: [] }, f11, y6, t17, g8;
+        return g8 = { next: verb(0), throw: verb(1), return: verb(2) }, typeof Symbol == "function" && (g8[Symbol.iterator] = function() {
+          return this;
+        }), g8;
+        function verb(n6) {
+          return function(v4) {
+            return step([n6, v4]);
+          };
+        }
+        function step(op) {
+          if (f11)
+            throw new TypeError("Generator is already executing.");
+          for (; _3; )
+            try {
+              if (f11 = 1, y6 && (t17 = op[0] & 2 ? y6.return : op[0] ? y6.throw || ((t17 = y6.return) && t17.call(y6), 0) : y6.next) && !(t17 = t17.call(y6, op[1])).done)
+                return t17;
+              switch (y6 = 0, t17 && (op = [op[0] & 2, t17.value]), op[0]) {
+                case 0:
+                case 1:
+                  t17 = op;
+                  break;
+                case 4:
+                  return _3.label++, { value: op[1], done: !1 };
+                case 5:
+                  _3.label++, y6 = op[1], op = [0];
+                  continue;
+                case 7:
+                  op = _3.ops.pop(), _3.trys.pop();
+                  continue;
+                default:
+                  if (t17 = _3.trys, !(t17 = t17.length > 0 && t17[t17.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                    _3 = 0;
+                    continue;
+                  }
+                  if (op[0] === 3 && (!t17 || op[1] > t17[0] && op[1] < t17[3])) {
+                    _3.label = op[1];
+                    break;
+                  }
+                  if (op[0] === 6 && _3.label < t17[1]) {
+                    _3.label = t17[1], t17 = op;
+                    break;
+                  }
+                  if (t17 && _3.label < t17[2]) {
+                    _3.label = t17[2], _3.ops.push(op);
+                    break;
+                  }
+                  t17[2] && _3.ops.pop(), _3.trys.pop();
+                  continue;
+              }
+              op = body.call(thisArg, _3);
+            } catch (e5) {
+              op = [6, e5], y6 = 0;
+            } finally {
+              f11 = t17 = 0;
+            }
+          if (op[0] & 5)
+            throw op[1];
+          return { value: op[0] ? op[1] : void 0, done: !0 };
+        }
+      }
+      function __spreadArray(to, from, pack2) {
+        if (pack2 || arguments.length === 2)
+          for (var i7 = 0, l13 = from.length, ar; i7 < l13; i7++)
+            (ar || !(i7 in from)) && (ar || (ar = Array.prototype.slice.call(from, 0, i7)), ar[i7] = from[i7]);
+        return to.concat(ar || from);
+      }
+      for (var Bounds = (
+        /** @class */
+        function() {
+          function Bounds2(left, top, width, height) {
+            this.left = left, this.top = top, this.width = width, this.height = height;
+          }
+          return Bounds2.prototype.add = function(x5, y6, w6, h9) {
+            return new Bounds2(this.left + x5, this.top + y6, this.width + w6, this.height + h9);
+          }, Bounds2.fromClientRect = function(context, clientRect) {
+            return new Bounds2(clientRect.left + context.windowBounds.left, clientRect.top + context.windowBounds.top, clientRect.width, clientRect.height);
+          }, Bounds2.fromDOMRectList = function(context, domRectList) {
+            var domRect = Array.from(domRectList).find(function(rect) {
+              return rect.width !== 0;
+            });
+            return domRect ? new Bounds2(domRect.left + context.windowBounds.left, domRect.top + context.windowBounds.top, domRect.width, domRect.height) : Bounds2.EMPTY;
+          }, Bounds2.EMPTY = new Bounds2(0, 0, 0, 0), Bounds2;
+        }()
+      ), parseBounds = function(context, node) {
+        return Bounds.fromClientRect(context, node.getBoundingClientRect());
+      }, parseDocumentSize = function(document2) {
+        var body = document2.body, documentElement = document2.documentElement;
+        if (!body || !documentElement)
+          throw new Error("Unable to get document size");
+        var width = Math.max(Math.max(body.scrollWidth, documentElement.scrollWidth), Math.max(body.offsetWidth, documentElement.offsetWidth), Math.max(body.clientWidth, documentElement.clientWidth)), height = Math.max(Math.max(body.scrollHeight, documentElement.scrollHeight), Math.max(body.offsetHeight, documentElement.offsetHeight), Math.max(body.clientHeight, documentElement.clientHeight));
+        return new Bounds(0, 0, width, height);
+      }, toCodePoints$1 = function(str) {
+        for (var codePoints = [], i7 = 0, length = str.length; i7 < length; ) {
+          var value = str.charCodeAt(i7++);
+          if (value >= 55296 && value <= 56319 && i7 < length) {
+            var extra = str.charCodeAt(i7++);
+            (extra & 64512) === 56320 ? codePoints.push(((value & 1023) << 10) + (extra & 1023) + 65536) : (codePoints.push(value), i7--);
+          } else
+            codePoints.push(value);
+        }
+        return codePoints;
+      }, fromCodePoint$1 = function() {
+        for (var codePoints = [], _i = 0; _i < arguments.length; _i++)
+          codePoints[_i] = arguments[_i];
+        if (String.fromCodePoint)
+          return String.fromCodePoint.apply(String, codePoints);
+        var length = codePoints.length;
+        if (!length)
+          return "";
+        for (var codeUnits = [], index = -1, result = ""; ++index < length; ) {
+          var codePoint = codePoints[index];
+          codePoint <= 65535 ? codeUnits.push(codePoint) : (codePoint -= 65536, codeUnits.push((codePoint >> 10) + 55296, codePoint % 1024 + 56320)), (index + 1 === length || codeUnits.length > 16384) && (result += String.fromCharCode.apply(String, codeUnits), codeUnits.length = 0);
+        }
+        return result;
+      }, chars$2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", lookup$2 = typeof Uint8Array > "u" ? [] : new Uint8Array(256), i$2 = 0; i$2 < chars$2.length; i$2++)
+        lookup$2[chars$2.charCodeAt(i$2)] = i$2;
+      for (var chars$1$1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", lookup$1$1 = typeof Uint8Array > "u" ? [] : new Uint8Array(256), i$1$1 = 0; i$1$1 < chars$1$1.length; i$1$1++)
+        lookup$1$1[chars$1$1.charCodeAt(i$1$1)] = i$1$1;
+      for (var decode$1 = function(base642) {
+        var bufferLength = base642.length * 0.75, len = base642.length, i7, p6 = 0, encoded1, encoded2, encoded3, encoded4;
+        base642[base642.length - 1] === "=" && (bufferLength--, base642[base642.length - 2] === "=" && bufferLength--);
+        var buffer = typeof ArrayBuffer < "u" && typeof Uint8Array < "u" && typeof Uint8Array.prototype.slice < "u" ? new ArrayBuffer(bufferLength) : new Array(bufferLength), bytes = Array.isArray(buffer) ? buffer : new Uint8Array(buffer);
+        for (i7 = 0; i7 < len; i7 += 4)
+          encoded1 = lookup$1$1[base642.charCodeAt(i7)], encoded2 = lookup$1$1[base642.charCodeAt(i7 + 1)], encoded3 = lookup$1$1[base642.charCodeAt(i7 + 2)], encoded4 = lookup$1$1[base642.charCodeAt(i7 + 3)], bytes[p6++] = encoded1 << 2 | encoded2 >> 4, bytes[p6++] = (encoded2 & 15) << 4 | encoded3 >> 2, bytes[p6++] = (encoded3 & 3) << 6 | encoded4 & 63;
+        return buffer;
+      }, polyUint16Array$1 = function(buffer) {
+        for (var length = buffer.length, bytes = [], i7 = 0; i7 < length; i7 += 2)
+          bytes.push(buffer[i7 + 1] << 8 | buffer[i7]);
+        return bytes;
+      }, polyUint32Array$1 = function(buffer) {
+        for (var length = buffer.length, bytes = [], i7 = 0; i7 < length; i7 += 4)
+          bytes.push(buffer[i7 + 3] << 24 | buffer[i7 + 2] << 16 | buffer[i7 + 1] << 8 | buffer[i7]);
+        return bytes;
+      }, UTRIE2_SHIFT_2$1 = 5, UTRIE2_SHIFT_1$1 = 6 + 5, UTRIE2_INDEX_SHIFT$1 = 2, UTRIE2_SHIFT_1_2$1 = UTRIE2_SHIFT_1$1 - UTRIE2_SHIFT_2$1, UTRIE2_LSCP_INDEX_2_OFFSET$1 = 65536 >> UTRIE2_SHIFT_2$1, UTRIE2_DATA_BLOCK_LENGTH$1 = 1 << UTRIE2_SHIFT_2$1, UTRIE2_DATA_MASK$1 = UTRIE2_DATA_BLOCK_LENGTH$1 - 1, UTRIE2_LSCP_INDEX_2_LENGTH$1 = 1024 >> UTRIE2_SHIFT_2$1, UTRIE2_INDEX_2_BMP_LENGTH$1 = UTRIE2_LSCP_INDEX_2_OFFSET$1 + UTRIE2_LSCP_INDEX_2_LENGTH$1, UTRIE2_UTF8_2B_INDEX_2_OFFSET$1 = UTRIE2_INDEX_2_BMP_LENGTH$1, UTRIE2_UTF8_2B_INDEX_2_LENGTH$1 = 32, UTRIE2_INDEX_1_OFFSET$1 = UTRIE2_UTF8_2B_INDEX_2_OFFSET$1 + UTRIE2_UTF8_2B_INDEX_2_LENGTH$1, UTRIE2_OMITTED_BMP_INDEX_1_LENGTH$1 = 65536 >> UTRIE2_SHIFT_1$1, UTRIE2_INDEX_2_BLOCK_LENGTH$1 = 1 << UTRIE2_SHIFT_1_2$1, UTRIE2_INDEX_2_MASK$1 = UTRIE2_INDEX_2_BLOCK_LENGTH$1 - 1, slice16$1 = function(view, start, end) {
+        return view.slice ? view.slice(start, end) : new Uint16Array(Array.prototype.slice.call(view, start, end));
+      }, slice32$1 = function(view, start, end) {
+        return view.slice ? view.slice(start, end) : new Uint32Array(Array.prototype.slice.call(view, start, end));
+      }, createTrieFromBase64$1 = function(base642, _byteLength) {
+        var buffer = decode$1(base642), view32 = Array.isArray(buffer) ? polyUint32Array$1(buffer) : new Uint32Array(buffer), view16 = Array.isArray(buffer) ? polyUint16Array$1(buffer) : new Uint16Array(buffer), headerLength = 24, index = slice16$1(view16, headerLength / 2, view32[4] / 2), data = view32[5] === 2 ? slice16$1(view16, (headerLength + view32[4]) / 2) : slice32$1(view32, Math.ceil((headerLength + view32[4]) / 4));
+        return new Trie$1(view32[0], view32[1], view32[2], view32[3], index, data);
+      }, Trie$1 = (
+        /** @class */
+        function() {
+          function Trie2(initialValue, errorValue, highStart, highValueIndex, index, data) {
+            this.initialValue = initialValue, this.errorValue = errorValue, this.highStart = highStart, this.highValueIndex = highValueIndex, this.index = index, this.data = data;
+          }
+          return Trie2.prototype.get = function(codePoint) {
+            var ix;
+            if (codePoint >= 0) {
+              if (codePoint < 55296 || codePoint > 56319 && codePoint <= 65535)
+                return ix = this.index[codePoint >> UTRIE2_SHIFT_2$1], ix = (ix << UTRIE2_INDEX_SHIFT$1) + (codePoint & UTRIE2_DATA_MASK$1), this.data[ix];
+              if (codePoint <= 65535)
+                return ix = this.index[UTRIE2_LSCP_INDEX_2_OFFSET$1 + (codePoint - 55296 >> UTRIE2_SHIFT_2$1)], ix = (ix << UTRIE2_INDEX_SHIFT$1) + (codePoint & UTRIE2_DATA_MASK$1), this.data[ix];
+              if (codePoint < this.highStart)
+                return ix = UTRIE2_INDEX_1_OFFSET$1 - UTRIE2_OMITTED_BMP_INDEX_1_LENGTH$1 + (codePoint >> UTRIE2_SHIFT_1$1), ix = this.index[ix], ix += codePoint >> UTRIE2_SHIFT_2$1 & UTRIE2_INDEX_2_MASK$1, ix = this.index[ix], ix = (ix << UTRIE2_INDEX_SHIFT$1) + (codePoint & UTRIE2_DATA_MASK$1), this.data[ix];
+              if (codePoint <= 1114111)
+                return this.data[this.highValueIndex];
+            }
+            return this.errorValue;
+          }, Trie2;
+        }()
+      ), chars$3 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", lookup$3 = typeof Uint8Array > "u" ? [] : new Uint8Array(256), i$3 = 0; i$3 < chars$3.length; i$3++)
+        lookup$3[chars$3.charCodeAt(i$3)] = i$3;
+      var base64$1 = "KwAAAAAAAAAACA4AUD0AADAgAAACAAAAAAAIABAAGABAAEgAUABYAGAAaABgAGgAYgBqAF8AZwBgAGgAcQB5AHUAfQCFAI0AlQCdAKIAqgCyALoAYABoAGAAaABgAGgAwgDKAGAAaADGAM4A0wDbAOEA6QDxAPkAAQEJAQ8BFwF1AH0AHAEkASwBNAE6AUIBQQFJAVEBWQFhAWgBcAF4ATAAgAGGAY4BlQGXAZ8BpwGvAbUBvQHFAc0B0wHbAeMB6wHxAfkBAQIJAvEBEQIZAiECKQIxAjgCQAJGAk4CVgJeAmQCbAJ0AnwCgQKJApECmQKgAqgCsAK4ArwCxAIwAMwC0wLbAjAA4wLrAvMC+AIAAwcDDwMwABcDHQMlAy0DNQN1AD0DQQNJA0kDSQNRA1EDVwNZA1kDdQB1AGEDdQBpA20DdQN1AHsDdQCBA4kDkQN1AHUAmQOhA3UAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AKYDrgN1AHUAtgO+A8YDzgPWAxcD3gPjA+sD8wN1AHUA+wMDBAkEdQANBBUEHQQlBCoEFwMyBDgEYABABBcDSARQBFgEYARoBDAAcAQzAXgEgASIBJAEdQCXBHUAnwSnBK4EtgS6BMIEyAR1AHUAdQB1AHUAdQCVANAEYABgAGAAYABgAGAAYABgANgEYADcBOQEYADsBPQE/AQEBQwFFAUcBSQFLAU0BWQEPAVEBUsFUwVbBWAAYgVgAGoFcgV6BYIFigWRBWAAmQWfBaYFYABgAGAAYABgAKoFYACxBbAFuQW6BcEFwQXHBcEFwQXPBdMF2wXjBeoF8gX6BQIGCgYSBhoGIgYqBjIGOgZgAD4GRgZMBmAAUwZaBmAAYABgAGAAYABgAGAAYABgAGAAYABgAGIGYABpBnAGYABgAGAAYABgAGAAYABgAGAAYAB4Bn8GhQZgAGAAYAB1AHcDFQSLBmAAYABgAJMGdQA9A3UAmwajBqsGqwaVALMGuwbDBjAAywbSBtIG1QbSBtIG0gbSBtIG0gbdBuMG6wbzBvsGAwcLBxMHAwcbByMHJwcsBywHMQcsB9IGOAdAB0gHTgfSBkgHVgfSBtIG0gbSBtIG0gbSBtIG0gbSBiwHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAdgAGAALAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAdbB2MHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsB2kH0gZwB64EdQB1AHUAdQB1AHUAdQB1AHUHfQdgAIUHjQd1AHUAlQedB2AAYAClB6sHYACzB7YHvgfGB3UAzgfWBzMB3gfmB1EB7gf1B/0HlQENAQUIDQh1ABUIHQglCBcDLQg1CD0IRQhNCEEDUwh1AHUAdQBbCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIaQhjCGQIZQhmCGcIaAhpCGMIZAhlCGYIZwhoCGkIYwhkCGUIZghnCGgIcAh3CHoIMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwAIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIgggwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAALAcsBywHLAcsBywHLAcsBywHLAcsB4oILAcsB44I0gaWCJ4Ipgh1AHUAqgiyCHUAdQB1AHUAdQB1AHUAdQB1AHUAtwh8AXUAvwh1AMUIyQjRCNkI4AjoCHUAdQB1AO4I9gj+CAYJDgkTCS0HGwkjCYIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiCCIIIggiAAIAAAAFAAYABgAGIAXwBgAHEAdQBFAJUAogCyAKAAYABgAEIA4ABGANMA4QDxAMEBDwE1AFwBLAE6AQEBUQF4QkhCmEKoQrhCgAHIQsAB0MLAAcABwAHAAeDC6ABoAHDCwMMAAcABwAHAAdDDGMMAAcAB6MM4wwjDWMNow3jDaABoAGgAaABoAGgAaABoAGgAaABoAGgAaABoAGgAaABoAGgAaABoAEjDqABWw6bDqABpg6gAaABoAHcDvwOPA+gAaABfA/8DvwO/A78DvwO/A78DvwO/A78DvwO/A78DvwO/A78DvwO/A78DvwO/A78DvwO/A78DvwO/A78DpcPAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcAB9cPKwkyCToJMAB1AHUAdQBCCUoJTQl1AFUJXAljCWcJawkwADAAMAAwAHMJdQB2CX4JdQCECYoJjgmWCXUAngkwAGAAYABxAHUApgn3A64JtAl1ALkJdQDACTAAMAAwADAAdQB1AHUAdQB1AHUAdQB1AHUAowYNBMUIMAAwADAAMADICcsJ0wnZCRUE4QkwAOkJ8An4CTAAMAB1AAAKvwh1AAgKDwoXCh8KdQAwACcKLgp1ADYKqAmICT4KRgowADAAdQB1AE4KMAB1AFYKdQBeCnUAZQowADAAMAAwADAAMAAwADAAMAAVBHUAbQowADAAdQC5CXUKMAAwAHwBxAijBogEMgF9CoQKiASMCpQKmgqIBKIKqgquCogEDQG2Cr4KxgrLCjAAMADTCtsKCgHjCusK8Qr5CgELMAAwADAAMAB1AIsECQsRC3UANAEZCzAAMAAwADAAMAB1ACELKQswAHUANAExCzkLdQBBC0kLMABRC1kLMAAwADAAMAAwADAAdQBhCzAAMAAwAGAAYABpC3ELdwt/CzAAMACHC4sLkwubC58Lpwt1AK4Ltgt1APsDMAAwADAAMAAwADAAMAAwAL4LwwvLC9IL1wvdCzAAMADlC+kL8Qv5C/8LSQswADAAMAAwADAAMAAwADAAMAAHDDAAMAAwADAAMAAODBYMHgx1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1ACYMMAAwADAAdQB1AHUALgx1AHUAdQB1AHUAdQA2DDAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwAHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AD4MdQBGDHUAdQB1AHUAdQB1AEkMdQB1AHUAdQB1AFAMMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwAHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQBYDHUAdQB1AF8MMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUA+wMVBGcMMAAwAHwBbwx1AHcMfwyHDI8MMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAYABgAJcMMAAwADAAdQB1AJ8MlQClDDAAMACtDCwHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsB7UMLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHdQB1AHUAdQB1AHUAdQB1AHUAdQB1AHUAdQB1AA0EMAC9DDAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAsBywHLAcsBywHLAcsBywHLQcwAMEMyAwsBywHLAcsBywHLAcsBywHLAcsBywHzAwwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwAHUAdQB1ANQM2QzhDDAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMABgAGAAYABgAGAAYABgAOkMYADxDGAA+AwADQYNYABhCWAAYAAODTAAMAAwADAAFg1gAGAAHg37AzAAMAAwADAAYABgACYNYAAsDTQNPA1gAEMNPg1LDWAAYABgAGAAYABgAGAAYABgAGAAUg1aDYsGVglhDV0NcQBnDW0NdQ15DWAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAlQCBDZUAiA2PDZcNMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAnw2nDTAAMAAwADAAMAAwAHUArw23DTAAMAAwADAAMAAwADAAMAAwADAAMAB1AL8NMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAB1AHUAdQB1AHUAdQDHDTAAYABgAM8NMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAA1w11ANwNMAAwAD0B5A0wADAAMAAwADAAMADsDfQN/A0EDgwOFA4wABsOMAAwADAAMAAwADAAMAAwANIG0gbSBtIG0gbSBtIG0gYjDigOwQUuDsEFMw7SBjoO0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIGQg5KDlIOVg7SBtIGXg5lDm0OdQ7SBtIGfQ6EDooOjQ6UDtIGmg6hDtIG0gaoDqwO0ga0DrwO0gZgAGAAYADEDmAAYAAkBtIGzA5gANIOYADaDokO0gbSBt8O5w7SBu8O0gb1DvwO0gZgAGAAxA7SBtIG0gbSBtIGYABgAGAAYAAED2AAsAUMD9IG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIGFA8sBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAccD9IGLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHJA8sBywHLAcsBywHLAccDywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywPLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAc0D9IG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIGLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAccD9IG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIGFA8sBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHLAcsBywHPA/SBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gbSBtIG0gYUD0QPlQCVAJUAMAAwADAAMACVAJUAlQCVAJUAlQCVAEwPMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAA//8EAAQABAAEAAQABAAEAAQABAANAAMAAQABAAIABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQACgATABcAHgAbABoAHgAXABYAEgAeABsAGAAPABgAHABLAEsASwBLAEsASwBLAEsASwBLABgAGAAeAB4AHgATAB4AUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQABYAGwASAB4AHgAeAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAWAA0AEQAeAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAAQABAAEAAQABAAFAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAJABYAGgAbABsAGwAeAB0AHQAeAE8AFwAeAA0AHgAeABoAGwBPAE8ADgBQAB0AHQAdAE8ATwAXAE8ATwBPABYAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAFAAUABQAFAAUABQAFAAUAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAFAAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAeAB4AHgAeAFAATwBAAE8ATwBPAEAATwBQAFAATwBQAB4AHgAeAB4AHgAeAB0AHQAdAB0AHgAdAB4ADgBQAFAAUABQAFAAHgAeAB4AHgAeAB4AHgBQAB4AUAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4ABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAJAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAkACQAJAAkACQAJAAkABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAeAB4AHgAeAFAAHgAeAB4AKwArAFAAUABQAFAAGABQACsAKwArACsAHgAeAFAAHgBQAFAAUAArAFAAKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4ABAAEAAQABAAEAAQABAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAUAAeAB4AHgAeAB4AHgBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAYAA0AKwArAB4AHgAbACsABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQADQAEAB4ABAAEAB4ABAAEABMABAArACsAKwArACsAKwArACsAVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAKwArACsAKwBWAFYAVgBWAB4AHgArACsAKwArACsAKwArACsAKwArACsAHgAeAB4AHgAeAB4AHgAeAB4AGgAaABoAGAAYAB4AHgAEAAQABAAEAAQABAAEAAQABAAEAAQAEwAEACsAEwATAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABABLAEsASwBLAEsASwBLAEsASwBLABoAGQAZAB4AUABQAAQAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQABMAUAAEAAQABAAEAAQABAAEAB4AHgAEAAQABAAEAAQABABQAFAABAAEAB4ABAAEAAQABABQAFAASwBLAEsASwBLAEsASwBLAEsASwBQAFAAUAAeAB4AUAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwAeAFAABABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQABAAEAFAAKwArACsAKwArACsAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQAUABQAB4AHgAYABMAUAArACsABAAbABsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAFAABAAEAAQABAAEAFAABAAEAAQAUAAEAAQABAAEAAQAKwArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAArACsAHgArAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwArACsAKwArACsAKwArAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAB4ABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAUAAEAAQABAAEAAQABAAEAFAAUABQAFAAUABQAFAAUABQAFAABAAEAA0ADQBLAEsASwBLAEsASwBLAEsASwBLAB4AUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAArAFAAUABQAFAAUABQAFAAUAArACsAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAUAArACsAKwBQAFAAUABQACsAKwAEAFAABAAEAAQABAAEAAQABAArACsABAAEACsAKwAEAAQABABQACsAKwArACsAKwArACsAKwAEACsAKwArACsAUABQACsAUABQAFAABAAEACsAKwBLAEsASwBLAEsASwBLAEsASwBLAFAAUAAaABoAUABQAFAAUABQAEwAHgAbAFAAHgAEACsAKwAEAAQABAArAFAAUABQAFAAUABQACsAKwArACsAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAUABQACsAUABQACsAUABQACsAKwAEACsABAAEAAQABAAEACsAKwArACsABAAEACsAKwAEAAQABAArACsAKwAEACsAKwArACsAKwArACsAUABQAFAAUAArAFAAKwArACsAKwArACsAKwBLAEsASwBLAEsASwBLAEsASwBLAAQABABQAFAAUAAEAB4AKwArACsAKwArACsAKwArACsAKwAEAAQABAArAFAAUABQAFAAUABQAFAAUABQACsAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAUABQACsAUABQAFAAUABQACsAKwAEAFAABAAEAAQABAAEAAQABAAEACsABAAEAAQAKwAEAAQABAArACsAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAABAAEACsAKwBLAEsASwBLAEsASwBLAEsASwBLAB4AGwArACsAKwArACsAKwArAFAABAAEAAQABAAEAAQAKwAEAAQABAArAFAAUABQAFAAUABQAFAAUAArACsAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABAArACsABAAEACsAKwAEAAQABAArACsAKwArACsAKwArAAQABAAEACsAKwArACsAUABQACsAUABQAFAABAAEACsAKwBLAEsASwBLAEsASwBLAEsASwBLAB4AUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArAAQAUAArAFAAUABQAFAAUABQACsAKwArAFAAUABQACsAUABQAFAAUAArACsAKwBQAFAAKwBQACsAUABQACsAKwArAFAAUAArACsAKwBQAFAAUAArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArAAQABAAEAAQABAArACsAKwAEAAQABAArAAQABAAEAAQAKwArAFAAKwArACsAKwArACsABAArACsAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAUABQAFAAHgAeAB4AHgAeAB4AGwAeACsAKwArACsAKwAEAAQABAAEAAQAUABQAFAAUABQAFAAUABQACsAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAUAAEAAQABAAEAAQABAAEACsABAAEAAQAKwAEAAQABAAEACsAKwArACsAKwArACsABAAEACsAUABQAFAAKwArACsAKwArAFAAUAAEAAQAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAKwAOAFAAUABQAFAAUABQAFAAHgBQAAQABAAEAA4AUABQAFAAUABQAFAAUABQACsAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAKwArAAQAUAAEAAQABAAEAAQABAAEACsABAAEAAQAKwAEAAQABAAEACsAKwArACsAKwArACsABAAEACsAKwArACsAKwArACsAUAArAFAAUAAEAAQAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwBQAFAAKwArACsAKwArACsAKwArACsAKwArACsAKwAEAAQABAAEAFAAUABQAFAAUABQAFAAUABQACsAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAFAABAAEAAQABAAEAAQABAArAAQABAAEACsABAAEAAQABABQAB4AKwArACsAKwBQAFAAUAAEAFAAUABQAFAAUABQAFAAUABQAFAABAAEACsAKwBLAEsASwBLAEsASwBLAEsASwBLAFAAUABQAFAAUABQAFAAUABQABoAUABQAFAAUABQAFAAKwAEAAQABAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQACsAUAArACsAUABQAFAAUABQAFAAUAArACsAKwAEACsAKwArACsABAAEAAQABAAEAAQAKwAEACsABAAEAAQABAAEAAQABAAEACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArAAQABAAeACsAKwArACsAKwArACsAKwArACsAKwArAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXAAqAFwAXAAqACoAKgAqACoAKgAqACsAKwArACsAGwBcAFwAXABcAFwAXABcACoAKgAqACoAKgAqACoAKgAeAEsASwBLAEsASwBLAEsASwBLAEsADQANACsAKwArACsAKwBcAFwAKwBcACsAXABcAFwAXABcACsAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcACsAXAArAFwAXABcAFwAXABcAFwAXABcAFwAKgBcAFwAKgAqACoAKgAqACoAKgAqACoAXAArACsAXABcAFwAXABcACsAXAArACoAKgAqACoAKgAqACsAKwBLAEsASwBLAEsASwBLAEsASwBLACsAKwBcAFwAXABcAFAADgAOAA4ADgAeAA4ADgAJAA4ADgANAAkAEwATABMAEwATAAkAHgATAB4AHgAeAAQABAAeAB4AHgAeAB4AHgBLAEsASwBLAEsASwBLAEsASwBLAFAAUABQAFAAUABQAFAAUABQAFAADQAEAB4ABAAeAAQAFgARABYAEQAEAAQAUABQAFAAUABQAFAAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQADQAEAAQABAAEAAQADQAEAAQAUABQAFAAUABQAAQABAAEAAQABAAEAAQABAAEAAQABAArAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAArAA0ADQAeAB4AHgAeAB4AHgAEAB4AHgAeAB4AHgAeACsAHgAeAA4ADgANAA4AHgAeAB4AHgAeAAkACQArACsAKwArACsAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgBcAEsASwBLAEsASwBLAEsASwBLAEsADQANAB4AHgAeAB4AXABcAFwAXABcAFwAKgAqACoAKgBcAFwAXABcACoAKgAqAFwAKgAqACoAXABcACoAKgAqACoAKgAqACoAXABcAFwAKgAqACoAKgBcAFwAXABcAFwAXABcAFwAXABcAFwAXABcACoAKgAqACoAKgAqACoAKgAqACoAKgAqAFwAKgBLAEsASwBLAEsASwBLAEsASwBLACoAKgAqACoAKgAqAFAAUABQAFAAUABQACsAUAArACsAKwArACsAUAArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAHgBQAFAAUABQAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFAAUABQAFAAUABQAFAAUABQACsAUABQAFAAUAArACsAUABQAFAAUABQAFAAUAArAFAAKwBQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAKwArAFAAUABQAFAAUABQAFAAKwBQACsAUABQAFAAUAArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsABAAEAAQAHgANAB4AHgAeAB4AHgAeAB4AUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwBQAFAAUABQAFAAUAArACsADQBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAHgAeAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAANAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAWABEAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAA0ADQANAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAAQABAAEACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAANAA0AKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUAArAAQABAArACsAKwArACsAKwArACsAKwArACsAKwBcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqAA0ADQAVAFwADQAeAA0AGwBcACoAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwAeAB4AEwATAA0ADQAOAB4AEwATAB4ABAAEAAQACQArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAFAAUABQAFAAUAAEAAQAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQAUAArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwAEAAQABAAEAAQABAAEAAQABAAEAAQABAArACsAKwArAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsAKwArACsAHgArACsAKwATABMASwBLAEsASwBLAEsASwBLAEsASwBcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXAArACsAXABcAFwAXABcACsAKwArACsAKwArACsAKwArACsAKwBcAFwAXABcAFwAXABcAFwAXABcAFwAXAArACsAKwArAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAXAArACsAKwAqACoAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABAArACsAHgAeAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcACoAKgAqACoAKgAqACoAKgAqACoAKwAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKwArAAQASwBLAEsASwBLAEsASwBLAEsASwArACsAKwArACsAKwBLAEsASwBLAEsASwBLAEsASwBLACsAKwArACsAKwArACoAKgAqACoAKgAqACoAXAAqACoAKgAqACoAKgArACsABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsABAAEAAQABAAEAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABABQAFAAUABQAFAAUABQACsAKwArACsASwBLAEsASwBLAEsASwBLAEsASwANAA0AHgANAA0ADQANAB4AHgAeAB4AHgAeAB4AHgAeAB4ABAAEAAQABAAEAAQABAAEAAQAHgAeAB4AHgAeAB4AHgAeAB4AKwArACsABAAEAAQAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABABQAFAASwBLAEsASwBLAEsASwBLAEsASwBQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsAKwArACsAKwArACsAKwAeAB4AHgAeAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsAKwArAA0ADQANAA0ADQBLAEsASwBLAEsASwBLAEsASwBLACsAKwArAFAAUABQAEsASwBLAEsASwBLAEsASwBLAEsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAA0ADQBQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwBQAFAAUAAeAB4AHgAeAB4AHgAeAB4AKwArACsAKwArACsAKwArAAQABAAEAB4ABAAEAAQABAAEAAQABAAEAAQABAAEAAQABABQAFAAUABQAAQAUABQAFAAUABQAFAABABQAFAABAAEAAQAUAArACsAKwArACsABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsABAAEAAQABAAEAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwArAFAAUABQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAKwBQACsAUAArAFAAKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeACsAKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArAB4AHgAeAB4AHgAeAB4AHgBQAB4AHgAeAFAAUABQACsAHgAeAB4AHgAeAB4AHgAeAB4AHgBQAFAAUABQACsAKwAeAB4AHgAeAB4AHgArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwArAFAAUABQACsAHgAeAB4AHgAeAB4AHgAOAB4AKwANAA0ADQANAA0ADQANAAkADQANAA0ACAAEAAsABAAEAA0ACQANAA0ADAAdAB0AHgAXABcAFgAXABcAFwAWABcAHQAdAB4AHgAUABQAFAANAAEAAQAEAAQABAAEAAQACQAaABoAGgAaABoAGgAaABoAHgAXABcAHQAVABUAHgAeAB4AHgAeAB4AGAAWABEAFQAVABUAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4ADQAeAA0ADQANAA0AHgANAA0ADQAHAB4AHgAeAB4AKwAEAAQABAAEAAQABAAEAAQABAAEAFAAUAArACsATwBQAFAAUABQAFAAHgAeAB4AFgARAE8AUABPAE8ATwBPAFAAUABQAFAAUAAeAB4AHgAWABEAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArABsAGwAbABsAGwAbABsAGgAbABsAGwAbABsAGwAbABsAGwAbABsAGwAbABsAGgAbABsAGwAbABoAGwAbABoAGwAbABsAGwAbABsAGwAbABsAGwAbABsAGwAbABsAGwAbAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAHgAeAFAAGgAeAB0AHgBQAB4AGgAeAB4AHgAeAB4AHgAeAB4AHgBPAB4AUAAbAB4AHgBQAFAAUABQAFAAHgAeAB4AHQAdAB4AUAAeAFAAHgBQAB4AUABPAFAAUAAeAB4AHgAeAB4AHgAeAFAAUABQAFAAUAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAFAAHgBQAFAAUABQAE8ATwBQAFAAUABQAFAATwBQAFAATwBQAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAFAAUABQAFAATwBPAE8ATwBPAE8ATwBPAE8ATwBQAFAAUABQAFAAUABQAFAAUAAeAB4AUABQAFAAUABPAB4AHgArACsAKwArAB0AHQAdAB0AHQAdAB0AHQAdAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB0AHgAdAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAB4AHQAdAB4AHgAeAB0AHQAeAB4AHQAeAB4AHgAdAB4AHQAbABsAHgAdAB4AHgAeAB4AHQAeAB4AHQAdAB0AHQAeAB4AHQAeAB0AHgAdAB0AHQAdAB0AHQAeAB0AHgAeAB4AHgAeAB0AHQAdAB0AHgAeAB4AHgAdAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAB4AHgAeAB0AHgAeAB4AHgAeAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAB0AHgAeAB0AHQAdAB0AHgAeAB0AHQAeAB4AHQAdAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB0AHQAeAB4AHQAdAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHQAeAB4AHgAdAB4AHgAeAB4AHgAeAB4AHQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AFAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeABYAEQAWABEAHgAeAB4AHgAeAB4AHQAeAB4AHgAeAB4AHgAeACUAJQAeAB4AHgAeAB4AHgAeAB4AHgAWABEAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AJQAlACUAJQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAFAAHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHgAeAB4AHgAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAeAB4AHQAdAB0AHQAeAB4AHgAeAB4AHgAeAB4AHgAeAB0AHQAeAB0AHQAdAB0AHQAdAB0AHgAeAB4AHgAeAB4AHgAeAB0AHQAeAB4AHQAdAB4AHgAeAB4AHQAdAB4AHgAeAB4AHQAdAB0AHgAeAB0AHgAeAB0AHQAdAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAB0AHQAdAB4AHgAeAB4AHgAeAB4AHgAeAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAlACUAJQAlAB4AHQAdAB4AHgAdAB4AHgAeAB4AHQAdAB4AHgAeAB4AJQAlAB0AHQAlAB4AJQAlACUAIAAlACUAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAlACUAJQAeAB4AHgAeAB0AHgAdAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAB0AHgAdAB0AHQAeAB0AJQAdAB0AHgAdAB0AHgAdAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeACUAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHQAdAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAlACUAJQAlACUAJQAlACUAJQAlACUAJQAdAB0AHQAdACUAHgAlACUAJQAdACUAJQAdAB0AHQAlACUAHQAdACUAHQAdACUAJQAlAB4AHQAeAB4AHgAeAB0AHQAlAB0AHQAdAB0AHQAdACUAJQAlACUAJQAdACUAJQAgACUAHQAdACUAJQAlACUAJQAlACUAJQAeAB4AHgAlACUAIAAgACAAIAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB0AHgAeAB4AFwAXABcAFwAXABcAHgATABMAJQAeAB4AHgAWABEAFgARABYAEQAWABEAFgARABYAEQAWABEATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeABYAEQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAWABEAFgARABYAEQAWABEAFgARAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AFgARABYAEQAWABEAFgARABYAEQAWABEAFgARABYAEQAWABEAFgARABYAEQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAWABEAFgARAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AFgARAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAdAB0AHQAdAB0AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AUABQAFAAUAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAEAAQABAAeAB4AKwArACsAKwArABMADQANAA0AUAATAA0AUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAUAANACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAEAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQACsAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXAA0ADQANAA0ADQANAA0ADQAeAA0AFgANAB4AHgAXABcAHgAeABcAFwAWABEAFgARABYAEQAWABEADQANAA0ADQATAFAADQANAB4ADQANAB4AHgAeAB4AHgAMAAwADQANAA0AHgANAA0AFgANAA0ADQANAA0ADQANAA0AHgANAB4ADQANAB4AHgAeACsAKwArACsAKwArACsAKwArACsAKwArACsAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACsAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAKwArACsAKwArACsAKwArACsAKwArACsAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAlACUAJQAlACUAJQAlACUAJQAlACUAJQArACsAKwArAA0AEQARACUAJQBHAFcAVwAWABEAFgARABYAEQAWABEAFgARACUAJQAWABEAFgARABYAEQAWABEAFQAWABEAEQAlAFcAVwBXAFcAVwBXAFcAVwBXAAQABAAEAAQABAAEACUAVwBXAFcAVwA2ACUAJQBXAFcAVwBHAEcAJQAlACUAKwBRAFcAUQBXAFEAVwBRAFcAUQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFEAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBRAFcAUQBXAFEAVwBXAFcAVwBXAFcAUQBXAFcAVwBXAFcAVwBRAFEAKwArAAQABAAVABUARwBHAFcAFQBRAFcAUQBXAFEAVwBRAFcAUQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFEAVwBRAFcAUQBXAFcAVwBXAFcAVwBRAFcAVwBXAFcAVwBXAFEAUQBXAFcAVwBXABUAUQBHAEcAVwArACsAKwArACsAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAKwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAKwAlACUAVwBXAFcAVwAlACUAJQAlACUAJQAlACUAJQAlACsAKwArACsAKwArACsAKwArACsAKwArAFEAUQBRAFEAUQBRAFEAUQBRAFEAUQBRAFEAUQBRAFEAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQArAFcAVwBXAFcAVwBXAFcAVwBXAFcAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQBPAE8ATwBPAE8ATwBPAE8AJQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXACUAJQAlAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAEcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAKwArACsAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAADQATAA0AUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABLAEsASwBLAEsASwBLAEsASwBLAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAFAABAAEAAQABAAeAAQABAAEAAQABAAEAAQABAAEAAQAHgBQAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AUABQAAQABABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAeAA0ADQANAA0ADQArACsAKwArACsAKwArACsAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAFAAUABQAFAAUABQAFAAUABQAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AUAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgBQAB4AHgAeAB4AHgAeAFAAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAHgAeAB4AHgAeAB4AHgAeAB4AKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAeAB4AUABQAFAAUABQAFAAUABQAFAAUABQAAQAUABQAFAABABQAFAAUABQAAQAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABAAeAB4AHgAeAAQAKwArACsAUABQAFAAUABQAFAAHgAeABoAHgArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAADgAOABMAEwArACsAKwArACsAKwArACsABAAEAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABAAEACsAKwArACsAKwArACsAKwANAA0ASwBLAEsASwBLAEsASwBLAEsASwArACsAKwArACsAKwAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABABQAFAAUABQAFAAUAAeAB4AHgBQAA4AUABQAAQAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAA0ADQBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAKwArACsAKwArACsAKwArACsAKwArAB4AWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYAFgAWABYACsAKwArAAQAHgAeAB4AHgAeAB4ADQANAA0AHgAeAB4AHgArAFAASwBLAEsASwBLAEsASwBLAEsASwArACsAKwArAB4AHgBcAFwAXABcAFwAKgBcAFwAXABcAFwAXABcAFwAXABcAEsASwBLAEsASwBLAEsASwBLAEsAXABcAFwAXABcACsAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsAKwArACsAKwArACsAKwArAFAAUABQAAQAUABQAFAAUABQAFAAUABQAAQABAArACsASwBLAEsASwBLAEsASwBLAEsASwArACsAHgANAA0ADQBcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAKgAqACoAXAAqACoAKgBcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXAAqAFwAKgAqACoAXABcACoAKgBcAFwAXABcAFwAKgAqAFwAKgBcACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFwAXABcACoAKgBQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAA0ADQBQAFAAUAAEAAQAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUAArACsAUABQAFAAUABQAFAAKwArAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAHgAeACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQADQAEAAQAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAVABVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBUAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVAFUAVQBVACsAKwArACsAKwArACsAKwArACsAKwArAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAWQBZAFkAKwArACsAKwBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAWgBaAFoAKwArACsAKwAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYABgAGAAYAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXACUAJQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAJQAlACUAJQAlACUAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAKwArACsAKwArAFYABABWAFYAVgBWAFYAVgBWAFYAVgBWAB4AVgBWAFYAVgBWAFYAVgBWAFYAVgBWAFYAVgArAFYAVgBWAFYAVgArAFYAKwBWAFYAKwBWAFYAKwBWAFYAVgBWAFYAVgBWAFYAVgBWAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAEQAWAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUAAaAB4AKwArAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAGAARABEAGAAYABMAEwAWABEAFAArACsAKwArACsAKwAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACUAJQAlACUAJQAWABEAFgARABYAEQAWABEAFgARABYAEQAlACUAFgARACUAJQAlACUAJQAlACUAEQAlABEAKwAVABUAEwATACUAFgARABYAEQAWABEAJQAlACUAJQAlACUAJQAlACsAJQAbABoAJQArACsAKwArAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArAAcAKwATACUAJQAbABoAJQAlABYAEQAlACUAEQAlABEAJQBXAFcAVwBXAFcAVwBXAFcAVwBXABUAFQAlACUAJQATACUAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXABYAJQARACUAJQAlAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwAWACUAEQAlABYAEQARABYAEQARABUAVwBRAFEAUQBRAFEAUQBRAFEAUQBRAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAEcARwArACsAVwBXAFcAVwBXAFcAKwArAFcAVwBXAFcAVwBXACsAKwBXAFcAVwBXAFcAVwArACsAVwBXAFcAKwArACsAGgAbACUAJQAlABsAGwArAB4AHgAeAB4AHgAeAB4AKwArACsAKwArACsAKwArACsAKwAEAAQABAAQAB0AKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsADQANAA0AKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArAB4AHgAeAB4AHgAeAB4AHgAeAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgBQAFAAHgAeAB4AKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAAQAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAEAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAA0AUABQAFAAUAArACsAKwArAFAAUABQAFAAUABQAFAAUAANAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArACsAKwAeACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAKwArAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUAArACsAKwBQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwANAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAeAB4AUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUAArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArAA0AUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwAeAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAUABQAFAAUABQAAQABAAEACsABAAEACsAKwArACsAKwAEAAQABAAEAFAAUABQAFAAKwBQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArAAQABAAEACsAKwArACsABABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAA0ADQANAA0ADQANAA0ADQAeACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAeAFAAUABQAFAAUABQAFAAUAAeAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAArACsAKwArAFAAUABQAFAAUAANAA0ADQANAA0ADQAUACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsADQANAA0ADQANAA0ADQBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAB4AHgAeAB4AKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArAFAAUABQAFAAUABQAAQABAAEAAQAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUAArAAQABAANACsAKwBQAFAAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAAQABAAEAAQABAAEAAQABAAEAAQABABQAFAAUABQAB4AHgAeAB4AHgArACsAKwArACsAKwAEAAQABAAEAAQABAAEAA0ADQAeAB4AHgAeAB4AKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsABABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAQABAAEAAQABAAEAAQABAAEAAQABAAeAB4AHgANAA0ADQANACsAKwArACsAKwArACsAKwArACsAKwAeACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwArACsAKwBLAEsASwBLAEsASwBLAEsASwBLACsAKwArACsAKwArAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEACsASwBLAEsASwBLAEsASwBLAEsASwANAA0ADQANAFAABAAEAFAAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAeAA4AUAArACsAKwArACsAKwArACsAKwAEAFAAUABQAFAADQANAB4ADQAEAAQABAAEAB4ABAAEAEsASwBLAEsASwBLAEsASwBLAEsAUAAOAFAADQANAA0AKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQABAANAA0AHgANAA0AHgAEACsAUABQAFAAUABQAFAAUAArAFAAKwBQAFAAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAA0AKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsABAAEAAQABAArAFAAUABQAFAAUABQAFAAUAArACsAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAUABQACsAUABQAFAAUABQACsABAAEAFAABAAEAAQABAAEAAQABAArACsABAAEACsAKwAEAAQABAArACsAUAArACsAKwArACsAKwAEACsAKwArACsAKwBQAFAAUABQAFAABAAEACsAKwAEAAQABAAEAAQABAAEACsAKwArAAQABAAEAAQABAArACsAKwArACsAKwArACsAKwArACsABAAEAAQABAAEAAQABABQAFAAUABQAA0ADQANAA0AHgBLAEsASwBLAEsASwBLAEsASwBLAA0ADQArAB4ABABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAEAAQABAAEAFAAUAAeAFAAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAArACsABAAEAAQABAAEAAQABAAEAAQADgANAA0AEwATAB4AHgAeAA0ADQANAA0ADQANAA0ADQANAA0ADQANAA0ADQANAFAAUABQAFAABAAEACsAKwAEAA0ADQAeAFAAKwArACsAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAFAAKwArACsAKwArACsAKwBLAEsASwBLAEsASwBLAEsASwBLACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAXABcAFwAKwArACoAKgAqACoAKgAqACoAKgAqACoAKgAqACoAKgAqACsAKwArACsASwBLAEsASwBLAEsASwBLAEsASwBcAFwADQANAA0AKgBQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAeACsAKwArACsASwBLAEsASwBLAEsASwBLAEsASwBQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAKwArAFAAKwArAFAAUABQAFAAUABQAFAAUAArAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQAKwAEAAQAKwArAAQABAAEAAQAUAAEAFAABAAEAA0ADQANACsAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAArACsABAAEAAQABAAEAAQABABQAA4AUAAEACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAABAAEAAQABAAEAAQABAAEAAQABABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAFAABAAEAAQABAAOAB4ADQANAA0ADQAOAB4ABAArACsAKwArACsAKwArACsAUAAEAAQABAAEAAQABAAEAAQABAAEAAQAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAA0ADQANAFAADgAOAA4ADQANACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAEAAQABAAEACsABAAEAAQABAAEAAQABAAEAFAADQANAA0ADQANACsAKwArACsAKwArACsAKwArACsASwBLAEsASwBLAEsASwBLAEsASwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwAOABMAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAArAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQACsAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAArACsAKwAEACsABAAEACsABAAEAAQABAAEAAQABABQAAQAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAUABQAFAAUABQAFAAKwBQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQAKwAEAAQAKwAEAAQABAAEAAQAUAArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAABAAEAAQABAAeAB4AKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAB4AHgAeAB4AHgAeAB4AHgAaABoAGgAaAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAKwArACsAKwArACsAKwArACsAKwArAA0AUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsADQANAA0ADQANACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAASABIAEgAQwBDAEMAUABQAFAAUABDAFAAUABQAEgAQwBIAEMAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAASABDAEMAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwAJAAkACQAJAAkACQAJABYAEQArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABIAEMAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwANAA0AKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArAAQABAAEAAQABAANACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEAA0ADQANAB4AHgAeAB4AHgAeAFAAUABQAFAADQAeACsAKwArACsAKwArACsAKwArACsASwBLAEsASwBLAEsASwBLAEsASwArAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAANAA0AHgAeACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwAEAFAABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAKwArACsAKwArACsAKwAEAAQABAAEAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAARwBHABUARwAJACsAKwArACsAKwArACsAKwArACsAKwAEAAQAKwArACsAKwArACsAKwArACsAKwArACsAKwArAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXACsAKwArACsAKwArACsAKwBXAFcAVwBXAFcAVwBXAFcAVwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUQBRAFEAKwArACsAKwArACsAKwArACsAKwArACsAKwBRAFEAUQBRACsAKwArACsAKwArACsAKwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUAArACsAHgAEAAQADQAEAAQABAAEACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAKwArACsAKwArACsAKwArAB4AHgAeAB4AHgAeAB4AKwArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAAQABAAEAAQABAAeAB4AHgAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAB4AHgAEAAQABAAEAAQABAAEAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4ABAAEAAQABAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4ABAAEAAQAHgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwArACsAKwArACsAKwArACsAKwArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAKwArACsAKwArACsAKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwBQAFAAKwArAFAAKwArAFAAUAArACsAUABQAFAAUAArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeACsAUAArAFAAUABQAFAAUABQAFAAKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwBQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAHgAeAFAAUABQAFAAUAArAFAAKwArACsAUABQAFAAUABQAFAAUAArAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAHgBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgBQAFAAUABQAFAAUABQAFAAUABQAFAAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAB4AHgAeAB4AHgAeAB4AHgAeACsAKwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAEsASwBLAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAeAB4AHgAeAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAeAB4AHgAeAB4AHgAeAB4ABAAeAB4AHgAeAB4AHgAeAB4AHgAeAAQAHgAeAA0ADQANAA0AHgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAEAAQABAAEAAQAKwAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAAQABAAEAAQABAAEAAQAKwAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAKwArAAQABAAEAAQABAAEAAQAKwAEAAQAKwAEAAQABAAEAAQAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwAEAAQABAAEAAQABAAEAFAAUABQAFAAUABQAFAAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwBQAB4AKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArABsAUABQAFAAUABQACsAKwBQAFAAUABQAFAAUABQAFAAUAAEAAQABAAEAAQABAAEACsAKwArACsAKwArACsAKwArAB4AHgAeAB4ABAAEAAQABAAEAAQABABQACsAKwArACsASwBLAEsASwBLAEsASwBLAEsASwArACsAKwArABYAFgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAGgBQAFAAUAAaAFAAUABQAFAAKwArACsAKwArACsAKwArACsAKwArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAeAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQACsAKwBQAFAAUABQACsAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwBQAFAAKwBQACsAKwBQACsAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAKwBQACsAUAArACsAKwArACsAKwBQACsAKwArACsAUAArAFAAKwBQACsAUABQAFAAKwBQAFAAKwBQACsAKwBQACsAUAArAFAAKwBQACsAUAArAFAAUAArAFAAKwArAFAAUABQAFAAKwBQAFAAUABQAFAAUABQACsAUABQAFAAUAArAFAAUABQAFAAKwBQACsAUABQAFAAUABQAFAAUABQAFAAUAArAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAArACsAKwArACsAUABQAFAAKwBQAFAAUABQAFAAKwBQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwAeAB4AKwArACsAKwArACsAKwArACsAKwArACsAKwArAE8ATwBPAE8ATwBPAE8ATwBPAE8ATwBPAE8AJQAlACUAHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHgAeAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB4AHgAeACUAJQAlAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAdAB0AHQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQApACkAKQApACkAKQApACkAKQApACkAKQApACkAKQApACkAKQApACkAKQApACkAKQApACkAJQAlACUAJQAlACAAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAeAB4AJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlAB4AHgAlACUAJQAlACUAHgAlACUAJQAlACUAIAAgACAAJQAlACAAJQAlACAAIAAgACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACEAIQAhACEAIQAlACUAIAAgACUAJQAgACAAIAAgACAAIAAgACAAIAAgACAAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAJQAlACUAIAAlACUAJQAlACAAIAAgACUAIAAgACAAJQAlACUAJQAlACUAJQAgACUAIAAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAHgAlAB4AJQAeACUAJQAlACUAJQAgACUAJQAlACUAHgAlAB4AHgAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlAB4AHgAeAB4AHgAeAB4AJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAeAB4AHgAeAB4AHgAeAB4AHgAeACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACAAIAAlACUAJQAlACAAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACAAJQAlACUAJQAgACAAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAHgAeAB4AHgAeAB4AHgAeACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAeAB4AHgAeAB4AHgAlACUAJQAlACUAJQAlACAAIAAgACUAJQAlACAAIAAgACAAIAAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeABcAFwAXABUAFQAVAB4AHgAeAB4AJQAlACUAIAAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACAAIAAgACUAJQAlACUAJQAlACUAJQAlACAAJQAlACUAJQAlACUAJQAlACUAJQAlACAAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AJQAlACUAJQAlACUAJQAlACUAJQAlACUAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AJQAlACUAJQAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeACUAJQAlACUAJQAlACUAJQAeAB4AHgAeAB4AHgAeAB4AHgAeACUAJQAlACUAJQAlAB4AHgAeAB4AHgAeAB4AHgAlACUAJQAlACUAJQAlACUAHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAgACUAJQAgACUAJQAlACUAJQAlACUAJQAgACAAIAAgACAAIAAgACAAJQAlACUAJQAlACUAIAAlACUAJQAlACUAJQAlACUAJQAgACAAIAAgACAAIAAgACAAIAAgACUAJQAgACAAIAAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAgACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACAAIAAlACAAIAAlACAAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAgACAAIAAlACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAJQAlAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AKwAeAB4AHgAeAB4AHgAeAB4AHgAeAB4AHgArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAEsASwBLAEsASwBLAEsASwBLAEsAKwArACsAKwArACsAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAKwArAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXACUAJQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwAlACUAJQAlACUAJQAlACUAJQAlACUAVwBXACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQBXAFcAVwBXAFcAVwBXAFcAVwBXAFcAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAJQAlACUAKwAEACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArACsAKwArAA==", LETTER_NUMBER_MODIFIER = 50, BK = 1, CR$1 = 2, LF$1 = 3, CM = 4, NL = 5, WJ = 7, ZW = 8, GL = 9, SP = 10, ZWJ$1 = 11, B2 = 12, BA = 13, BB = 14, HY = 15, CB = 16, CL = 17, CP = 18, EX = 19, IN = 20, NS = 21, OP = 22, QU = 23, IS = 24, NU = 25, PO = 26, PR = 27, SY = 28, AI = 29, AL = 30, CJ = 31, EB = 32, EM = 33, H22 = 34, H32 = 35, HL = 36, ID = 37, JL = 38, JV = 39, JT = 40, RI$1 = 41, SA = 42, XX = 43, ea_OP = [9001, 65288], BREAK_MANDATORY = "!", BREAK_NOT_ALLOWED$1 = "\xD7", BREAK_ALLOWED$1 = "\xF7", UnicodeTrie$1 = createTrieFromBase64$1(base64$1), ALPHABETICS = [AL, HL], HARD_LINE_BREAKS = [BK, CR$1, LF$1, NL], SPACE$1 = [SP, ZW], PREFIX_POSTFIX = [PR, PO], LINE_BREAKS = HARD_LINE_BREAKS.concat(SPACE$1), KOREAN_SYLLABLE_BLOCK = [JL, JV, JT, H22, H32], HYPHEN = [HY, BA], codePointsToCharacterClasses = function(codePoints, lineBreak2) {
+        lineBreak2 === void 0 && (lineBreak2 = "strict");
+        var types = [], indices = [], categories = [];
+        return codePoints.forEach(function(codePoint, index) {
+          var classType = UnicodeTrie$1.get(codePoint);
+          if (classType > LETTER_NUMBER_MODIFIER ? (categories.push(!0), classType -= LETTER_NUMBER_MODIFIER) : categories.push(!1), ["normal", "auto", "loose"].indexOf(lineBreak2) !== -1 && [8208, 8211, 12316, 12448].indexOf(codePoint) !== -1)
+            return indices.push(index), types.push(CB);
+          if (classType === CM || classType === ZWJ$1) {
+            if (index === 0)
+              return indices.push(index), types.push(AL);
+            var prev = types[index - 1];
+            return LINE_BREAKS.indexOf(prev) === -1 ? (indices.push(indices[index - 1]), types.push(prev)) : (indices.push(index), types.push(AL));
+          }
+          if (indices.push(index), classType === CJ)
+            return types.push(lineBreak2 === "strict" ? NS : ID);
+          if (classType === SA || classType === AI)
+            return types.push(AL);
+          if (classType === XX)
+            return codePoint >= 131072 && codePoint <= 196605 || codePoint >= 196608 && codePoint <= 262141 ? types.push(ID) : types.push(AL);
+          types.push(classType);
+        }), [indices, types, categories];
+      }, isAdjacentWithSpaceIgnored = function(a13, b6, currentIndex, classTypes) {
+        var current = classTypes[currentIndex];
+        if (Array.isArray(a13) ? a13.indexOf(current) !== -1 : a13 === current)
+          for (var i7 = currentIndex; i7 <= classTypes.length; ) {
+            i7++;
+            var next = classTypes[i7];
+            if (next === b6)
+              return !0;
+            if (next !== SP)
+              break;
+          }
+        if (current === SP)
+          for (var i7 = currentIndex; i7 > 0; ) {
+            i7--;
+            var prev = classTypes[i7];
+            if (Array.isArray(a13) ? a13.indexOf(prev) !== -1 : a13 === prev)
+              for (var n6 = currentIndex; n6 <= classTypes.length; ) {
+                n6++;
+                var next = classTypes[n6];
+                if (next === b6)
+                  return !0;
+                if (next !== SP)
+                  break;
+              }
+            if (prev !== SP)
+              break;
+          }
+        return !1;
+      }, previousNonSpaceClassType = function(currentIndex, classTypes) {
+        for (var i7 = currentIndex; i7 >= 0; ) {
+          var type = classTypes[i7];
+          if (type === SP)
+            i7--;
+          else
+            return type;
+        }
+        return 0;
+      }, _lineBreakAtIndex = function(codePoints, classTypes, indicies, index, forbiddenBreaks) {
+        if (indicies[index] === 0)
+          return BREAK_NOT_ALLOWED$1;
+        var currentIndex = index - 1;
+        if (Array.isArray(forbiddenBreaks) && forbiddenBreaks[currentIndex] === !0)
+          return BREAK_NOT_ALLOWED$1;
+        var beforeIndex = currentIndex - 1, afterIndex = currentIndex + 1, current = classTypes[currentIndex], before = beforeIndex >= 0 ? classTypes[beforeIndex] : 0, next = classTypes[afterIndex];
+        if (current === CR$1 && next === LF$1)
+          return BREAK_NOT_ALLOWED$1;
+        if (HARD_LINE_BREAKS.indexOf(current) !== -1)
+          return BREAK_MANDATORY;
+        if (HARD_LINE_BREAKS.indexOf(next) !== -1 || SPACE$1.indexOf(next) !== -1)
+          return BREAK_NOT_ALLOWED$1;
+        if (previousNonSpaceClassType(currentIndex, classTypes) === ZW)
+          return BREAK_ALLOWED$1;
+        if (UnicodeTrie$1.get(codePoints[currentIndex]) === ZWJ$1 || (current === EB || current === EM) && UnicodeTrie$1.get(codePoints[afterIndex]) === ZWJ$1 || current === WJ || next === WJ || current === GL || [SP, BA, HY].indexOf(current) === -1 && next === GL || [CL, CP, EX, IS, SY].indexOf(next) !== -1 || previousNonSpaceClassType(currentIndex, classTypes) === OP || isAdjacentWithSpaceIgnored(QU, OP, currentIndex, classTypes) || isAdjacentWithSpaceIgnored([CL, CP], NS, currentIndex, classTypes) || isAdjacentWithSpaceIgnored(B2, B2, currentIndex, classTypes))
+          return BREAK_NOT_ALLOWED$1;
+        if (current === SP)
+          return BREAK_ALLOWED$1;
+        if (current === QU || next === QU)
+          return BREAK_NOT_ALLOWED$1;
+        if (next === CB || current === CB)
+          return BREAK_ALLOWED$1;
+        if ([BA, HY, NS].indexOf(next) !== -1 || current === BB || before === HL && HYPHEN.indexOf(current) !== -1 || current === SY && next === HL || next === IN || ALPHABETICS.indexOf(next) !== -1 && current === NU || ALPHABETICS.indexOf(current) !== -1 && next === NU || current === PR && [ID, EB, EM].indexOf(next) !== -1 || [ID, EB, EM].indexOf(current) !== -1 && next === PO || ALPHABETICS.indexOf(current) !== -1 && PREFIX_POSTFIX.indexOf(next) !== -1 || PREFIX_POSTFIX.indexOf(current) !== -1 && ALPHABETICS.indexOf(next) !== -1 || // (PR | PO) × ( OP | HY )? NU
+        [PR, PO].indexOf(current) !== -1 && (next === NU || [OP, HY].indexOf(next) !== -1 && classTypes[afterIndex + 1] === NU) || // ( OP | HY ) × NU
+        [OP, HY].indexOf(current) !== -1 && next === NU || // NU ×	(NU | SY | IS)
+        current === NU && [NU, SY, IS].indexOf(next) !== -1)
+          return BREAK_NOT_ALLOWED$1;
+        if ([NU, SY, IS, CL, CP].indexOf(next) !== -1)
+          for (var prevIndex = currentIndex; prevIndex >= 0; ) {
+            var type = classTypes[prevIndex];
+            if (type === NU)
+              return BREAK_NOT_ALLOWED$1;
+            if ([SY, IS].indexOf(type) !== -1)
+              prevIndex--;
+            else
+              break;
+          }
+        if ([PR, PO].indexOf(next) !== -1)
+          for (var prevIndex = [CL, CP].indexOf(current) !== -1 ? beforeIndex : currentIndex; prevIndex >= 0; ) {
+            var type = classTypes[prevIndex];
+            if (type === NU)
+              return BREAK_NOT_ALLOWED$1;
+            if ([SY, IS].indexOf(type) !== -1)
+              prevIndex--;
+            else
+              break;
+          }
+        if (JL === current && [JL, JV, H22, H32].indexOf(next) !== -1 || [JV, H22].indexOf(current) !== -1 && [JV, JT].indexOf(next) !== -1 || [JT, H32].indexOf(current) !== -1 && next === JT || KOREAN_SYLLABLE_BLOCK.indexOf(current) !== -1 && [IN, PO].indexOf(next) !== -1 || KOREAN_SYLLABLE_BLOCK.indexOf(next) !== -1 && current === PR || ALPHABETICS.indexOf(current) !== -1 && ALPHABETICS.indexOf(next) !== -1 || current === IS && ALPHABETICS.indexOf(next) !== -1 || ALPHABETICS.concat(NU).indexOf(current) !== -1 && next === OP && ea_OP.indexOf(codePoints[afterIndex]) === -1 || ALPHABETICS.concat(NU).indexOf(next) !== -1 && current === CP)
+          return BREAK_NOT_ALLOWED$1;
+        if (current === RI$1 && next === RI$1) {
+          for (var i7 = indicies[currentIndex], count = 1; i7 > 0 && (i7--, classTypes[i7] === RI$1); )
+            count++;
+          if (count % 2 !== 0)
+            return BREAK_NOT_ALLOWED$1;
+        }
+        return current === EB && next === EM ? BREAK_NOT_ALLOWED$1 : BREAK_ALLOWED$1;
+      }, cssFormattedClasses = function(codePoints, options) {
+        options || (options = { lineBreak: "normal", wordBreak: "normal" });
+        var _a2 = codePointsToCharacterClasses(codePoints, options.lineBreak), indicies = _a2[0], classTypes = _a2[1], isLetterNumber = _a2[2];
+        (options.wordBreak === "break-all" || options.wordBreak === "break-word") && (classTypes = classTypes.map(function(type) {
+          return [NU, AL, SA].indexOf(type) !== -1 ? ID : type;
+        }));
+        var forbiddenBreakpoints = options.wordBreak === "keep-all" ? isLetterNumber.map(function(letterNumber, i7) {
+          return letterNumber && codePoints[i7] >= 19968 && codePoints[i7] <= 40959;
+        }) : void 0;
+        return [indicies, classTypes, forbiddenBreakpoints];
+      }, Break = (
+        /** @class */
+        function() {
+          function Break2(codePoints, lineBreak2, start, end) {
+            this.codePoints = codePoints, this.required = lineBreak2 === BREAK_MANDATORY, this.start = start, this.end = end;
+          }
+          return Break2.prototype.slice = function() {
+            return fromCodePoint$1.apply(void 0, this.codePoints.slice(this.start, this.end));
+          }, Break2;
+        }()
+      ), LineBreaker = function(str, options) {
+        var codePoints = toCodePoints$1(str), _a2 = cssFormattedClasses(codePoints, options), indicies = _a2[0], classTypes = _a2[1], forbiddenBreakpoints = _a2[2], length = codePoints.length, lastEnd = 0, nextIndex = 0;
+        return {
+          next: function() {
+            if (nextIndex >= length)
+              return { done: !0, value: null };
+            for (var lineBreak2 = BREAK_NOT_ALLOWED$1; nextIndex < length && (lineBreak2 = _lineBreakAtIndex(codePoints, classTypes, indicies, ++nextIndex, forbiddenBreakpoints)) === BREAK_NOT_ALLOWED$1; )
+              ;
+            if (lineBreak2 !== BREAK_NOT_ALLOWED$1 || nextIndex === length) {
+              var value = new Break(codePoints, lineBreak2, lastEnd, nextIndex);
+              return lastEnd = nextIndex, { value, done: !1 };
+            }
+            return { done: !0, value: null };
+          }
+        };
+      }, FLAG_UNRESTRICTED = 1 << 0, FLAG_ID = 1 << 1, FLAG_INTEGER = 1 << 2, FLAG_NUMBER = 1 << 3, LINE_FEED = 10, SOLIDUS = 47, REVERSE_SOLIDUS = 92, CHARACTER_TABULATION = 9, SPACE = 32, QUOTATION_MARK = 34, EQUALS_SIGN = 61, NUMBER_SIGN = 35, DOLLAR_SIGN = 36, PERCENTAGE_SIGN = 37, APOSTROPHE = 39, LEFT_PARENTHESIS = 40, RIGHT_PARENTHESIS = 41, LOW_LINE = 95, HYPHEN_MINUS = 45, EXCLAMATION_MARK = 33, LESS_THAN_SIGN = 60, GREATER_THAN_SIGN = 62, COMMERCIAL_AT = 64, LEFT_SQUARE_BRACKET = 91, RIGHT_SQUARE_BRACKET = 93, CIRCUMFLEX_ACCENT = 61, LEFT_CURLY_BRACKET = 123, QUESTION_MARK = 63, RIGHT_CURLY_BRACKET = 125, VERTICAL_LINE = 124, TILDE = 126, CONTROL = 128, REPLACEMENT_CHARACTER = 65533, ASTERISK = 42, PLUS_SIGN = 43, COMMA = 44, COLON = 58, SEMICOLON = 59, FULL_STOP = 46, NULL = 0, BACKSPACE = 8, LINE_TABULATION = 11, SHIFT_OUT = 14, INFORMATION_SEPARATOR_ONE = 31, DELETE = 127, EOF = -1, ZERO = 48, a12 = 97, e4 = 101, f10 = 102, u11 = 117, z4 = 122, A = 65, E8 = 69, F6 = 70, U4 = 85, Z4 = 90, isDigit = function(codePoint) {
+        return codePoint >= ZERO && codePoint <= 57;
+      }, isSurrogateCodePoint = function(codePoint) {
+        return codePoint >= 55296 && codePoint <= 57343;
+      }, isHex = function(codePoint) {
+        return isDigit(codePoint) || codePoint >= A && codePoint <= F6 || codePoint >= a12 && codePoint <= f10;
+      }, isLowerCaseLetter = function(codePoint) {
+        return codePoint >= a12 && codePoint <= z4;
+      }, isUpperCaseLetter = function(codePoint) {
+        return codePoint >= A && codePoint <= Z4;
+      }, isLetter = function(codePoint) {
+        return isLowerCaseLetter(codePoint) || isUpperCaseLetter(codePoint);
+      }, isNonASCIICodePoint = function(codePoint) {
+        return codePoint >= CONTROL;
+      }, isWhiteSpace = function(codePoint) {
+        return codePoint === LINE_FEED || codePoint === CHARACTER_TABULATION || codePoint === SPACE;
+      }, isNameStartCodePoint = function(codePoint) {
+        return isLetter(codePoint) || isNonASCIICodePoint(codePoint) || codePoint === LOW_LINE;
+      }, isNameCodePoint = function(codePoint) {
+        return isNameStartCodePoint(codePoint) || isDigit(codePoint) || codePoint === HYPHEN_MINUS;
+      }, isNonPrintableCodePoint = function(codePoint) {
+        return codePoint >= NULL && codePoint <= BACKSPACE || codePoint === LINE_TABULATION || codePoint >= SHIFT_OUT && codePoint <= INFORMATION_SEPARATOR_ONE || codePoint === DELETE;
+      }, isValidEscape = function(c1, c22) {
+        return c1 !== REVERSE_SOLIDUS ? !1 : c22 !== LINE_FEED;
+      }, isIdentifierStart = function(c1, c22, c32) {
+        return c1 === HYPHEN_MINUS ? isNameStartCodePoint(c22) || isValidEscape(c22, c32) : isNameStartCodePoint(c1) ? !0 : !!(c1 === REVERSE_SOLIDUS && isValidEscape(c1, c22));
+      }, isNumberStart = function(c1, c22, c32) {
+        return c1 === PLUS_SIGN || c1 === HYPHEN_MINUS ? isDigit(c22) ? !0 : c22 === FULL_STOP && isDigit(c32) : isDigit(c1 === FULL_STOP ? c22 : c1);
+      }, stringToNumber = function(codePoints) {
+        var c12 = 0, sign2 = 1;
+        (codePoints[c12] === PLUS_SIGN || codePoints[c12] === HYPHEN_MINUS) && (codePoints[c12] === HYPHEN_MINUS && (sign2 = -1), c12++);
+        for (var integers = []; isDigit(codePoints[c12]); )
+          integers.push(codePoints[c12++]);
+        var int = integers.length ? parseInt(fromCodePoint$1.apply(void 0, integers), 10) : 0;
+        codePoints[c12] === FULL_STOP && c12++;
+        for (var fraction = []; isDigit(codePoints[c12]); )
+          fraction.push(codePoints[c12++]);
+        var fracd = fraction.length, frac = fracd ? parseInt(fromCodePoint$1.apply(void 0, fraction), 10) : 0;
+        (codePoints[c12] === E8 || codePoints[c12] === e4) && c12++;
+        var expsign = 1;
+        (codePoints[c12] === PLUS_SIGN || codePoints[c12] === HYPHEN_MINUS) && (codePoints[c12] === HYPHEN_MINUS && (expsign = -1), c12++);
+        for (var exponent = []; isDigit(codePoints[c12]); )
+          exponent.push(codePoints[c12++]);
+        var exp = exponent.length ? parseInt(fromCodePoint$1.apply(void 0, exponent), 10) : 0;
+        return sign2 * (int + frac * Math.pow(10, -fracd)) * Math.pow(10, expsign * exp);
+      }, LEFT_PARENTHESIS_TOKEN = {
+        type: 2
+        /* LEFT_PARENTHESIS_TOKEN */
+      }, RIGHT_PARENTHESIS_TOKEN = {
+        type: 3
+        /* RIGHT_PARENTHESIS_TOKEN */
+      }, COMMA_TOKEN = {
+        type: 4
+        /* COMMA_TOKEN */
+      }, SUFFIX_MATCH_TOKEN = {
+        type: 13
+        /* SUFFIX_MATCH_TOKEN */
+      }, PREFIX_MATCH_TOKEN = {
+        type: 8
+        /* PREFIX_MATCH_TOKEN */
+      }, COLUMN_TOKEN = {
+        type: 21
+        /* COLUMN_TOKEN */
+      }, DASH_MATCH_TOKEN = {
+        type: 9
+        /* DASH_MATCH_TOKEN */
+      }, INCLUDE_MATCH_TOKEN = {
+        type: 10
+        /* INCLUDE_MATCH_TOKEN */
+      }, LEFT_CURLY_BRACKET_TOKEN = {
+        type: 11
+        /* LEFT_CURLY_BRACKET_TOKEN */
+      }, RIGHT_CURLY_BRACKET_TOKEN = {
+        type: 12
+        /* RIGHT_CURLY_BRACKET_TOKEN */
+      }, SUBSTRING_MATCH_TOKEN = {
+        type: 14
+        /* SUBSTRING_MATCH_TOKEN */
+      }, BAD_URL_TOKEN = {
+        type: 23
+        /* BAD_URL_TOKEN */
+      }, BAD_STRING_TOKEN = {
+        type: 1
+        /* BAD_STRING_TOKEN */
+      }, CDO_TOKEN = {
+        type: 25
+        /* CDO_TOKEN */
+      }, CDC_TOKEN = {
+        type: 24
+        /* CDC_TOKEN */
+      }, COLON_TOKEN = {
+        type: 26
+        /* COLON_TOKEN */
+      }, SEMICOLON_TOKEN = {
+        type: 27
+        /* SEMICOLON_TOKEN */
+      }, LEFT_SQUARE_BRACKET_TOKEN = {
+        type: 28
+        /* LEFT_SQUARE_BRACKET_TOKEN */
+      }, RIGHT_SQUARE_BRACKET_TOKEN = {
+        type: 29
+        /* RIGHT_SQUARE_BRACKET_TOKEN */
+      }, WHITESPACE_TOKEN = {
+        type: 31
+        /* WHITESPACE_TOKEN */
+      }, EOF_TOKEN = {
+        type: 32
+        /* EOF_TOKEN */
+      }, Tokenizer = (
+        /** @class */
+        function() {
+          function Tokenizer2() {
+            this._value = [];
+          }
+          return Tokenizer2.prototype.write = function(chunk) {
+            this._value = this._value.concat(toCodePoints$1(chunk));
+          }, Tokenizer2.prototype.read = function() {
+            for (var tokens = [], token = this.consumeToken(); token !== EOF_TOKEN; )
+              tokens.push(token), token = this.consumeToken();
+            return tokens;
+          }, Tokenizer2.prototype.consumeToken = function() {
+            var codePoint = this.consumeCodePoint();
+            switch (codePoint) {
+              case QUOTATION_MARK:
+                return this.consumeStringToken(QUOTATION_MARK);
+              case NUMBER_SIGN:
+                var c1 = this.peekCodePoint(0), c22 = this.peekCodePoint(1), c32 = this.peekCodePoint(2);
+                if (isNameCodePoint(c1) || isValidEscape(c22, c32)) {
+                  var flags2 = isIdentifierStart(c1, c22, c32) ? FLAG_ID : FLAG_UNRESTRICTED, value = this.consumeName();
+                  return { type: 5, value, flags: flags2 };
+                }
+                break;
+              case DOLLAR_SIGN:
+                if (this.peekCodePoint(0) === EQUALS_SIGN)
+                  return this.consumeCodePoint(), SUFFIX_MATCH_TOKEN;
+                break;
+              case APOSTROPHE:
+                return this.consumeStringToken(APOSTROPHE);
+              case LEFT_PARENTHESIS:
+                return LEFT_PARENTHESIS_TOKEN;
+              case RIGHT_PARENTHESIS:
+                return RIGHT_PARENTHESIS_TOKEN;
+              case ASTERISK:
+                if (this.peekCodePoint(0) === EQUALS_SIGN)
+                  return this.consumeCodePoint(), SUBSTRING_MATCH_TOKEN;
+                break;
+              case PLUS_SIGN:
+                if (isNumberStart(codePoint, this.peekCodePoint(0), this.peekCodePoint(1)))
+                  return this.reconsumeCodePoint(codePoint), this.consumeNumericToken();
+                break;
+              case COMMA:
+                return COMMA_TOKEN;
+              case HYPHEN_MINUS:
+                var e1 = codePoint, e22 = this.peekCodePoint(0), e32 = this.peekCodePoint(1);
+                if (isNumberStart(e1, e22, e32))
+                  return this.reconsumeCodePoint(codePoint), this.consumeNumericToken();
+                if (isIdentifierStart(e1, e22, e32))
+                  return this.reconsumeCodePoint(codePoint), this.consumeIdentLikeToken();
+                if (e22 === HYPHEN_MINUS && e32 === GREATER_THAN_SIGN)
+                  return this.consumeCodePoint(), this.consumeCodePoint(), CDC_TOKEN;
+                break;
+              case FULL_STOP:
+                if (isNumberStart(codePoint, this.peekCodePoint(0), this.peekCodePoint(1)))
+                  return this.reconsumeCodePoint(codePoint), this.consumeNumericToken();
+                break;
+              case SOLIDUS:
+                if (this.peekCodePoint(0) === ASTERISK)
+                  for (this.consumeCodePoint(); ; ) {
+                    var c12 = this.consumeCodePoint();
+                    if (c12 === ASTERISK && (c12 = this.consumeCodePoint(), c12 === SOLIDUS))
+                      return this.consumeToken();
+                    if (c12 === EOF)
+                      return this.consumeToken();
+                  }
+                break;
+              case COLON:
+                return COLON_TOKEN;
+              case SEMICOLON:
+                return SEMICOLON_TOKEN;
+              case LESS_THAN_SIGN:
+                if (this.peekCodePoint(0) === EXCLAMATION_MARK && this.peekCodePoint(1) === HYPHEN_MINUS && this.peekCodePoint(2) === HYPHEN_MINUS)
+                  return this.consumeCodePoint(), this.consumeCodePoint(), CDO_TOKEN;
+                break;
+              case COMMERCIAL_AT:
+                var a1 = this.peekCodePoint(0), a22 = this.peekCodePoint(1), a32 = this.peekCodePoint(2);
+                if (isIdentifierStart(a1, a22, a32)) {
+                  var value = this.consumeName();
+                  return { type: 7, value };
+                }
+                break;
+              case LEFT_SQUARE_BRACKET:
+                return LEFT_SQUARE_BRACKET_TOKEN;
+              case REVERSE_SOLIDUS:
+                if (isValidEscape(codePoint, this.peekCodePoint(0)))
+                  return this.reconsumeCodePoint(codePoint), this.consumeIdentLikeToken();
+                break;
+              case RIGHT_SQUARE_BRACKET:
+                return RIGHT_SQUARE_BRACKET_TOKEN;
+              case CIRCUMFLEX_ACCENT:
+                if (this.peekCodePoint(0) === EQUALS_SIGN)
+                  return this.consumeCodePoint(), PREFIX_MATCH_TOKEN;
+                break;
+              case LEFT_CURLY_BRACKET:
+                return LEFT_CURLY_BRACKET_TOKEN;
+              case RIGHT_CURLY_BRACKET:
+                return RIGHT_CURLY_BRACKET_TOKEN;
+              case u11:
+              case U4:
+                var u1 = this.peekCodePoint(0), u22 = this.peekCodePoint(1);
+                return u1 === PLUS_SIGN && (isHex(u22) || u22 === QUESTION_MARK) && (this.consumeCodePoint(), this.consumeUnicodeRangeToken()), this.reconsumeCodePoint(codePoint), this.consumeIdentLikeToken();
+              case VERTICAL_LINE:
+                if (this.peekCodePoint(0) === EQUALS_SIGN)
+                  return this.consumeCodePoint(), DASH_MATCH_TOKEN;
+                if (this.peekCodePoint(0) === VERTICAL_LINE)
+                  return this.consumeCodePoint(), COLUMN_TOKEN;
+                break;
+              case TILDE:
+                if (this.peekCodePoint(0) === EQUALS_SIGN)
+                  return this.consumeCodePoint(), INCLUDE_MATCH_TOKEN;
+                break;
+              case EOF:
+                return EOF_TOKEN;
+            }
+            return isWhiteSpace(codePoint) ? (this.consumeWhiteSpace(), WHITESPACE_TOKEN) : isDigit(codePoint) ? (this.reconsumeCodePoint(codePoint), this.consumeNumericToken()) : isNameStartCodePoint(codePoint) ? (this.reconsumeCodePoint(codePoint), this.consumeIdentLikeToken()) : { type: 6, value: fromCodePoint$1(codePoint) };
+          }, Tokenizer2.prototype.consumeCodePoint = function() {
+            var value = this._value.shift();
+            return typeof value > "u" ? -1 : value;
+          }, Tokenizer2.prototype.reconsumeCodePoint = function(codePoint) {
+            this._value.unshift(codePoint);
+          }, Tokenizer2.prototype.peekCodePoint = function(delta) {
+            return delta >= this._value.length ? -1 : this._value[delta];
+          }, Tokenizer2.prototype.consumeUnicodeRangeToken = function() {
+            for (var digits = [], codePoint = this.consumeCodePoint(); isHex(codePoint) && digits.length < 6; )
+              digits.push(codePoint), codePoint = this.consumeCodePoint();
+            for (var questionMarks = !1; codePoint === QUESTION_MARK && digits.length < 6; )
+              digits.push(codePoint), codePoint = this.consumeCodePoint(), questionMarks = !0;
+            if (questionMarks) {
+              var start_1 = parseInt(fromCodePoint$1.apply(void 0, digits.map(function(digit) {
+                return digit === QUESTION_MARK ? ZERO : digit;
+              })), 16), end = parseInt(fromCodePoint$1.apply(void 0, digits.map(function(digit) {
+                return digit === QUESTION_MARK ? F6 : digit;
+              })), 16);
+              return { type: 30, start: start_1, end };
+            }
+            var start = parseInt(fromCodePoint$1.apply(void 0, digits), 16);
+            if (this.peekCodePoint(0) === HYPHEN_MINUS && isHex(this.peekCodePoint(1))) {
+              this.consumeCodePoint(), codePoint = this.consumeCodePoint();
+              for (var endDigits = []; isHex(codePoint) && endDigits.length < 6; )
+                endDigits.push(codePoint), codePoint = this.consumeCodePoint();
+              var end = parseInt(fromCodePoint$1.apply(void 0, endDigits), 16);
+              return { type: 30, start, end };
+            } else
+              return { type: 30, start, end: start };
+          }, Tokenizer2.prototype.consumeIdentLikeToken = function() {
+            var value = this.consumeName();
+            return value.toLowerCase() === "url" && this.peekCodePoint(0) === LEFT_PARENTHESIS ? (this.consumeCodePoint(), this.consumeUrlToken()) : this.peekCodePoint(0) === LEFT_PARENTHESIS ? (this.consumeCodePoint(), { type: 19, value }) : { type: 20, value };
+          }, Tokenizer2.prototype.consumeUrlToken = function() {
+            var value = [];
+            if (this.consumeWhiteSpace(), this.peekCodePoint(0) === EOF)
+              return { type: 22, value: "" };
+            var next = this.peekCodePoint(0);
+            if (next === APOSTROPHE || next === QUOTATION_MARK) {
+              var stringToken = this.consumeStringToken(this.consumeCodePoint());
+              return stringToken.type === 0 && (this.consumeWhiteSpace(), this.peekCodePoint(0) === EOF || this.peekCodePoint(0) === RIGHT_PARENTHESIS) ? (this.consumeCodePoint(), { type: 22, value: stringToken.value }) : (this.consumeBadUrlRemnants(), BAD_URL_TOKEN);
+            }
+            for (; ; ) {
+              var codePoint = this.consumeCodePoint();
+              if (codePoint === EOF || codePoint === RIGHT_PARENTHESIS)
+                return { type: 22, value: fromCodePoint$1.apply(void 0, value) };
+              if (isWhiteSpace(codePoint))
+                return this.consumeWhiteSpace(), this.peekCodePoint(0) === EOF || this.peekCodePoint(0) === RIGHT_PARENTHESIS ? (this.consumeCodePoint(), { type: 22, value: fromCodePoint$1.apply(void 0, value) }) : (this.consumeBadUrlRemnants(), BAD_URL_TOKEN);
+              if (codePoint === QUOTATION_MARK || codePoint === APOSTROPHE || codePoint === LEFT_PARENTHESIS || isNonPrintableCodePoint(codePoint))
+                return this.consumeBadUrlRemnants(), BAD_URL_TOKEN;
+              if (codePoint === REVERSE_SOLIDUS)
+                if (isValidEscape(codePoint, this.peekCodePoint(0)))
+                  value.push(this.consumeEscapedCodePoint());
+                else
+                  return this.consumeBadUrlRemnants(), BAD_URL_TOKEN;
+              else
+                value.push(codePoint);
+            }
+          }, Tokenizer2.prototype.consumeWhiteSpace = function() {
+            for (; isWhiteSpace(this.peekCodePoint(0)); )
+              this.consumeCodePoint();
+          }, Tokenizer2.prototype.consumeBadUrlRemnants = function() {
+            for (; ; ) {
+              var codePoint = this.consumeCodePoint();
+              if (codePoint === RIGHT_PARENTHESIS || codePoint === EOF)
+                return;
+              isValidEscape(codePoint, this.peekCodePoint(0)) && this.consumeEscapedCodePoint();
+            }
+          }, Tokenizer2.prototype.consumeStringSlice = function(count) {
+            for (var SLICE_STACK_SIZE = 5e4, value = ""; count > 0; ) {
+              var amount = Math.min(SLICE_STACK_SIZE, count);
+              value += fromCodePoint$1.apply(void 0, this._value.splice(0, amount)), count -= amount;
+            }
+            return this._value.shift(), value;
+          }, Tokenizer2.prototype.consumeStringToken = function(endingCodePoint) {
+            var value = "", i7 = 0;
+            do {
+              var codePoint = this._value[i7];
+              if (codePoint === EOF || codePoint === void 0 || codePoint === endingCodePoint)
+                return value += this.consumeStringSlice(i7), { type: 0, value };
+              if (codePoint === LINE_FEED)
+                return this._value.splice(0, i7), BAD_STRING_TOKEN;
+              if (codePoint === REVERSE_SOLIDUS) {
+                var next = this._value[i7 + 1];
+                next !== EOF && next !== void 0 && (next === LINE_FEED ? (value += this.consumeStringSlice(i7), i7 = -1, this._value.shift()) : isValidEscape(codePoint, next) && (value += this.consumeStringSlice(i7), value += fromCodePoint$1(this.consumeEscapedCodePoint()), i7 = -1));
+              }
+              i7++;
+            } while (!0);
+          }, Tokenizer2.prototype.consumeNumber = function() {
+            var repr = [], type = FLAG_INTEGER, c1 = this.peekCodePoint(0);
+            for ((c1 === PLUS_SIGN || c1 === HYPHEN_MINUS) && repr.push(this.consumeCodePoint()); isDigit(this.peekCodePoint(0)); )
+              repr.push(this.consumeCodePoint());
+            c1 = this.peekCodePoint(0);
+            var c22 = this.peekCodePoint(1);
+            if (c1 === FULL_STOP && isDigit(c22))
+              for (repr.push(this.consumeCodePoint(), this.consumeCodePoint()), type = FLAG_NUMBER; isDigit(this.peekCodePoint(0)); )
+                repr.push(this.consumeCodePoint());
+            c1 = this.peekCodePoint(0), c22 = this.peekCodePoint(1);
+            var c32 = this.peekCodePoint(2);
+            if ((c1 === E8 || c1 === e4) && ((c22 === PLUS_SIGN || c22 === HYPHEN_MINUS) && isDigit(c32) || isDigit(c22)))
+              for (repr.push(this.consumeCodePoint(), this.consumeCodePoint()), type = FLAG_NUMBER; isDigit(this.peekCodePoint(0)); )
+                repr.push(this.consumeCodePoint());
+            return [stringToNumber(repr), type];
+          }, Tokenizer2.prototype.consumeNumericToken = function() {
+            var _a2 = this.consumeNumber(), number = _a2[0], flags2 = _a2[1], c1 = this.peekCodePoint(0), c22 = this.peekCodePoint(1), c32 = this.peekCodePoint(2);
+            if (isIdentifierStart(c1, c22, c32)) {
+              var unit = this.consumeName();
+              return { type: 15, number, flags: flags2, unit };
+            }
+            return c1 === PERCENTAGE_SIGN ? (this.consumeCodePoint(), { type: 16, number, flags: flags2 }) : { type: 17, number, flags: flags2 };
+          }, Tokenizer2.prototype.consumeEscapedCodePoint = function() {
+            var codePoint = this.consumeCodePoint();
+            if (isHex(codePoint)) {
+              for (var hex2 = fromCodePoint$1(codePoint); isHex(this.peekCodePoint(0)) && hex2.length < 6; )
+                hex2 += fromCodePoint$1(this.consumeCodePoint());
+              isWhiteSpace(this.peekCodePoint(0)) && this.consumeCodePoint();
+              var hexCodePoint = parseInt(hex2, 16);
+              return hexCodePoint === 0 || isSurrogateCodePoint(hexCodePoint) || hexCodePoint > 1114111 ? REPLACEMENT_CHARACTER : hexCodePoint;
+            }
+            return codePoint === EOF ? REPLACEMENT_CHARACTER : codePoint;
+          }, Tokenizer2.prototype.consumeName = function() {
+            for (var result = ""; ; ) {
+              var codePoint = this.consumeCodePoint();
+              if (isNameCodePoint(codePoint))
+                result += fromCodePoint$1(codePoint);
+              else if (isValidEscape(codePoint, this.peekCodePoint(0)))
+                result += fromCodePoint$1(this.consumeEscapedCodePoint());
+              else
+                return this.reconsumeCodePoint(codePoint), result;
+            }
+          }, Tokenizer2;
+        }()
+      ), Parser = (
+        /** @class */
+        function() {
+          function Parser2(tokens) {
+            this._tokens = tokens;
+          }
+          return Parser2.create = function(value) {
+            var tokenizer = new Tokenizer();
+            return tokenizer.write(value), new Parser2(tokenizer.read());
+          }, Parser2.parseValue = function(value) {
+            return Parser2.create(value).parseComponentValue();
+          }, Parser2.parseValues = function(value) {
+            return Parser2.create(value).parseComponentValues();
+          }, Parser2.prototype.parseComponentValue = function() {
+            for (var token = this.consumeToken(); token.type === 31; )
+              token = this.consumeToken();
+            if (token.type === 32)
+              throw new SyntaxError("Error parsing CSS component value, unexpected EOF");
+            this.reconsumeToken(token);
+            var value = this.consumeComponentValue();
+            do
+              token = this.consumeToken();
+            while (token.type === 31);
+            if (token.type === 32)
+              return value;
+            throw new SyntaxError("Error parsing CSS component value, multiple values found when expecting only one");
+          }, Parser2.prototype.parseComponentValues = function() {
+            for (var values = []; ; ) {
+              var value = this.consumeComponentValue();
+              if (value.type === 32)
+                return values;
+              values.push(value), values.push();
+            }
+          }, Parser2.prototype.consumeComponentValue = function() {
+            var token = this.consumeToken();
+            switch (token.type) {
+              case 11:
+              case 28:
+              case 2:
+                return this.consumeSimpleBlock(token.type);
+              case 19:
+                return this.consumeFunction(token);
+            }
+            return token;
+          }, Parser2.prototype.consumeSimpleBlock = function(type) {
+            for (var block = { type, values: [] }, token = this.consumeToken(); ; ) {
+              if (token.type === 32 || isEndingTokenFor(token, type))
+                return block;
+              this.reconsumeToken(token), block.values.push(this.consumeComponentValue()), token = this.consumeToken();
+            }
+          }, Parser2.prototype.consumeFunction = function(functionToken) {
+            for (var cssFunction = {
+              name: functionToken.value,
+              values: [],
+              type: 18
+              /* FUNCTION */
+            }; ; ) {
+              var token = this.consumeToken();
+              if (token.type === 32 || token.type === 3)
+                return cssFunction;
+              this.reconsumeToken(token), cssFunction.values.push(this.consumeComponentValue());
+            }
+          }, Parser2.prototype.consumeToken = function() {
+            var token = this._tokens.shift();
+            return typeof token > "u" ? EOF_TOKEN : token;
+          }, Parser2.prototype.reconsumeToken = function(token) {
+            this._tokens.unshift(token);
+          }, Parser2;
+        }()
+      ), isDimensionToken = function(token) {
+        return token.type === 15;
+      }, isNumberToken = function(token) {
+        return token.type === 17;
+      }, isIdentToken = function(token) {
+        return token.type === 20;
+      }, isStringToken = function(token) {
+        return token.type === 0;
+      }, isIdentWithValue = function(token, value) {
+        return isIdentToken(token) && token.value === value;
+      }, nonWhiteSpace = function(token) {
+        return token.type !== 31;
+      }, nonFunctionArgSeparator = function(token) {
+        return token.type !== 31 && token.type !== 4;
+      }, parseFunctionArgs = function(tokens) {
+        var args = [], arg = [];
+        return tokens.forEach(function(token) {
+          if (token.type === 4) {
+            if (arg.length === 0)
+              throw new Error("Error parsing function args, zero tokens for arg");
+            args.push(arg), arg = [];
+            return;
+          }
+          token.type !== 31 && arg.push(token);
+        }), arg.length && args.push(arg), args;
+      }, isEndingTokenFor = function(token, type) {
+        return type === 11 && token.type === 12 || type === 28 && token.type === 29 ? !0 : type === 2 && token.type === 3;
+      }, isLength = function(token) {
+        return token.type === 17 || token.type === 15;
+      }, isLengthPercentage = function(token) {
+        return token.type === 16 || isLength(token);
+      }, parseLengthPercentageTuple = function(tokens) {
+        return tokens.length > 1 ? [tokens[0], tokens[1]] : [tokens[0]];
+      }, ZERO_LENGTH = {
+        type: 17,
+        number: 0,
+        flags: FLAG_INTEGER
+      }, FIFTY_PERCENT = {
+        type: 16,
+        number: 50,
+        flags: FLAG_INTEGER
+      }, HUNDRED_PERCENT = {
+        type: 16,
+        number: 100,
+        flags: FLAG_INTEGER
+      }, getAbsoluteValueForTuple = function(tuple, width, height) {
+        var x5 = tuple[0], y6 = tuple[1];
+        return [getAbsoluteValue(x5, width), getAbsoluteValue(typeof y6 < "u" ? y6 : x5, height)];
+      }, getAbsoluteValue = function(token, parent) {
+        if (token.type === 16)
+          return token.number / 100 * parent;
+        if (isDimensionToken(token))
+          switch (token.unit) {
+            case "rem":
+            case "em":
+              return 16 * token.number;
+            case "px":
+            default:
+              return token.number;
+          }
+        return token.number;
+      }, DEG = "deg", GRAD = "grad", RAD = "rad", TURN = "turn", angle = {
+        name: "angle",
+        parse: function(_context, value) {
+          if (value.type === 15)
+            switch (value.unit) {
+              case DEG:
+                return Math.PI * value.number / 180;
+              case GRAD:
+                return Math.PI / 200 * value.number;
+              case RAD:
+                return value.number;
+              case TURN:
+                return Math.PI * 2 * value.number;
+            }
+          throw new Error("Unsupported angle type");
+        }
+      }, isAngle = function(value) {
+        return value.type === 15 && (value.unit === DEG || value.unit === GRAD || value.unit === RAD || value.unit === TURN);
+      }, parseNamedSide = function(tokens) {
+        var sideOrCorner = tokens.filter(isIdentToken).map(function(ident) {
+          return ident.value;
+        }).join(" ");
+        switch (sideOrCorner) {
+          case "to bottom right":
+          case "to right bottom":
+          case "left top":
+          case "top left":
+            return [ZERO_LENGTH, ZERO_LENGTH];
+          case "to top":
+          case "bottom":
+            return deg(0);
+          case "to bottom left":
+          case "to left bottom":
+          case "right top":
+          case "top right":
+            return [ZERO_LENGTH, HUNDRED_PERCENT];
+          case "to right":
+          case "left":
+            return deg(90);
+          case "to top left":
+          case "to left top":
+          case "right bottom":
+          case "bottom right":
+            return [HUNDRED_PERCENT, HUNDRED_PERCENT];
+          case "to bottom":
+          case "top":
+            return deg(180);
+          case "to top right":
+          case "to right top":
+          case "left bottom":
+          case "bottom left":
+            return [HUNDRED_PERCENT, ZERO_LENGTH];
+          case "to left":
+          case "right":
+            return deg(270);
+        }
+        return 0;
+      }, deg = function(deg2) {
+        return Math.PI * deg2 / 180;
+      }, color$1 = {
+        name: "color",
+        parse: function(context, value) {
+          if (value.type === 18) {
+            var colorFunction = SUPPORTED_COLOR_FUNCTIONS[value.name];
+            if (typeof colorFunction > "u")
+              throw new Error('Attempting to parse an unsupported color function "' + value.name + '"');
+            return colorFunction(context, value.values);
+          }
+          if (value.type === 5) {
+            if (value.value.length === 3) {
+              var r9 = value.value.substring(0, 1), g8 = value.value.substring(1, 2), b6 = value.value.substring(2, 3);
+              return pack(parseInt(r9 + r9, 16), parseInt(g8 + g8, 16), parseInt(b6 + b6, 16), 1);
+            }
+            if (value.value.length === 4) {
+              var r9 = value.value.substring(0, 1), g8 = value.value.substring(1, 2), b6 = value.value.substring(2, 3), a13 = value.value.substring(3, 4);
+              return pack(parseInt(r9 + r9, 16), parseInt(g8 + g8, 16), parseInt(b6 + b6, 16), parseInt(a13 + a13, 16) / 255);
+            }
+            if (value.value.length === 6) {
+              var r9 = value.value.substring(0, 2), g8 = value.value.substring(2, 4), b6 = value.value.substring(4, 6);
+              return pack(parseInt(r9, 16), parseInt(g8, 16), parseInt(b6, 16), 1);
+            }
+            if (value.value.length === 8) {
+              var r9 = value.value.substring(0, 2), g8 = value.value.substring(2, 4), b6 = value.value.substring(4, 6), a13 = value.value.substring(6, 8);
+              return pack(parseInt(r9, 16), parseInt(g8, 16), parseInt(b6, 16), parseInt(a13, 16) / 255);
+            }
+          }
+          if (value.type === 20) {
+            var namedColor = COLORS[value.value.toUpperCase()];
+            if (typeof namedColor < "u")
+              return namedColor;
+          }
+          return COLORS.TRANSPARENT;
+        }
+      }, isTransparent = function(color2) {
+        return (255 & color2) === 0;
+      }, asString = function(color2) {
+        var alpha = 255 & color2, blue = 255 & color2 >> 8, green = 255 & color2 >> 16, red = 255 & color2 >> 24;
+        return alpha < 255 ? "rgba(" + red + "," + green + "," + blue + "," + alpha / 255 + ")" : "rgb(" + red + "," + green + "," + blue + ")";
+      }, pack = function(r9, g8, b6, a13) {
+        return (r9 << 24 | g8 << 16 | b6 << 8 | Math.round(a13 * 255) << 0) >>> 0;
+      }, getTokenColorValue = function(token, i7) {
+        if (token.type === 17)
+          return token.number;
+        if (token.type === 16) {
+          var max = i7 === 3 ? 1 : 255;
+          return i7 === 3 ? token.number / 100 * max : Math.round(token.number / 100 * max);
+        }
+        return 0;
+      }, rgb = function(_context, args) {
+        var tokens = args.filter(nonFunctionArgSeparator);
+        if (tokens.length === 3) {
+          var _a2 = tokens.map(getTokenColorValue), r9 = _a2[0], g8 = _a2[1], b6 = _a2[2];
+          return pack(r9, g8, b6, 1);
+        }
+        if (tokens.length === 4) {
+          var _b = tokens.map(getTokenColorValue), r9 = _b[0], g8 = _b[1], b6 = _b[2], a13 = _b[3];
+          return pack(r9, g8, b6, a13);
+        }
+        return 0;
+      };
+      function hue2rgb(t1, t22, hue) {
+        return hue < 0 && (hue += 1), hue >= 1 && (hue -= 1), hue < 1 / 6 ? (t22 - t1) * hue * 6 + t1 : hue < 1 / 2 ? t22 : hue < 2 / 3 ? (t22 - t1) * 6 * (2 / 3 - hue) + t1 : t1;
+      }
+      var hsl = function(context, args) {
+        var tokens = args.filter(nonFunctionArgSeparator), hue = tokens[0], saturation = tokens[1], lightness = tokens[2], alpha = tokens[3], h9 = (hue.type === 17 ? deg(hue.number) : angle.parse(context, hue)) / (Math.PI * 2), s15 = isLengthPercentage(saturation) ? saturation.number / 100 : 0, l13 = isLengthPercentage(lightness) ? lightness.number / 100 : 0, a13 = typeof alpha < "u" && isLengthPercentage(alpha) ? getAbsoluteValue(alpha, 1) : 1;
+        if (s15 === 0)
+          return pack(l13 * 255, l13 * 255, l13 * 255, 1);
+        var t22 = l13 <= 0.5 ? l13 * (s15 + 1) : l13 + s15 - l13 * s15, t1 = l13 * 2 - t22, r9 = hue2rgb(t1, t22, h9 + 1 / 3), g8 = hue2rgb(t1, t22, h9), b6 = hue2rgb(t1, t22, h9 - 1 / 3);
+        return pack(r9 * 255, g8 * 255, b6 * 255, a13);
+      }, SUPPORTED_COLOR_FUNCTIONS = {
+        hsl,
+        hsla: hsl,
+        rgb,
+        rgba: rgb
+      }, parseColor = function(context, value) {
+        return color$1.parse(context, Parser.create(value).parseComponentValue());
+      }, COLORS = {
+        ALICEBLUE: 4042850303,
+        ANTIQUEWHITE: 4209760255,
+        AQUA: 16777215,
+        AQUAMARINE: 2147472639,
+        AZURE: 4043309055,
+        BEIGE: 4126530815,
+        BISQUE: 4293182719,
+        BLACK: 255,
+        BLANCHEDALMOND: 4293643775,
+        BLUE: 65535,
+        BLUEVIOLET: 2318131967,
+        BROWN: 2771004159,
+        BURLYWOOD: 3736635391,
+        CADETBLUE: 1604231423,
+        CHARTREUSE: 2147418367,
+        CHOCOLATE: 3530104575,
+        CORAL: 4286533887,
+        CORNFLOWERBLUE: 1687547391,
+        CORNSILK: 4294499583,
+        CRIMSON: 3692313855,
+        CYAN: 16777215,
+        DARKBLUE: 35839,
+        DARKCYAN: 9145343,
+        DARKGOLDENROD: 3095837695,
+        DARKGRAY: 2846468607,
+        DARKGREEN: 6553855,
+        DARKGREY: 2846468607,
+        DARKKHAKI: 3182914559,
+        DARKMAGENTA: 2332068863,
+        DARKOLIVEGREEN: 1433087999,
+        DARKORANGE: 4287365375,
+        DARKORCHID: 2570243327,
+        DARKRED: 2332033279,
+        DARKSALMON: 3918953215,
+        DARKSEAGREEN: 2411499519,
+        DARKSLATEBLUE: 1211993087,
+        DARKSLATEGRAY: 793726975,
+        DARKSLATEGREY: 793726975,
+        DARKTURQUOISE: 13554175,
+        DARKVIOLET: 2483082239,
+        DEEPPINK: 4279538687,
+        DEEPSKYBLUE: 12582911,
+        DIMGRAY: 1768516095,
+        DIMGREY: 1768516095,
+        DODGERBLUE: 512819199,
+        FIREBRICK: 2988581631,
+        FLORALWHITE: 4294635775,
+        FORESTGREEN: 579543807,
+        FUCHSIA: 4278255615,
+        GAINSBORO: 3705462015,
+        GHOSTWHITE: 4177068031,
+        GOLD: 4292280575,
+        GOLDENROD: 3668254975,
+        GRAY: 2155905279,
+        GREEN: 8388863,
+        GREENYELLOW: 2919182335,
+        GREY: 2155905279,
+        HONEYDEW: 4043305215,
+        HOTPINK: 4285117695,
+        INDIANRED: 3445382399,
+        INDIGO: 1258324735,
+        IVORY: 4294963455,
+        KHAKI: 4041641215,
+        LAVENDER: 3873897215,
+        LAVENDERBLUSH: 4293981695,
+        LAWNGREEN: 2096890111,
+        LEMONCHIFFON: 4294626815,
+        LIGHTBLUE: 2916673279,
+        LIGHTCORAL: 4034953471,
+        LIGHTCYAN: 3774873599,
+        LIGHTGOLDENRODYELLOW: 4210742015,
+        LIGHTGRAY: 3553874943,
+        LIGHTGREEN: 2431553791,
+        LIGHTGREY: 3553874943,
+        LIGHTPINK: 4290167295,
+        LIGHTSALMON: 4288707327,
+        LIGHTSEAGREEN: 548580095,
+        LIGHTSKYBLUE: 2278488831,
+        LIGHTSLATEGRAY: 2005441023,
+        LIGHTSLATEGREY: 2005441023,
+        LIGHTSTEELBLUE: 2965692159,
+        LIGHTYELLOW: 4294959359,
+        LIME: 16711935,
+        LIMEGREEN: 852308735,
+        LINEN: 4210091775,
+        MAGENTA: 4278255615,
+        MAROON: 2147483903,
+        MEDIUMAQUAMARINE: 1724754687,
+        MEDIUMBLUE: 52735,
+        MEDIUMORCHID: 3126187007,
+        MEDIUMPURPLE: 2473647103,
+        MEDIUMSEAGREEN: 1018393087,
+        MEDIUMSLATEBLUE: 2070474495,
+        MEDIUMSPRINGGREEN: 16423679,
+        MEDIUMTURQUOISE: 1221709055,
+        MEDIUMVIOLETRED: 3340076543,
+        MIDNIGHTBLUE: 421097727,
+        MINTCREAM: 4127193855,
+        MISTYROSE: 4293190143,
+        MOCCASIN: 4293178879,
+        NAVAJOWHITE: 4292783615,
+        NAVY: 33023,
+        OLDLACE: 4260751103,
+        OLIVE: 2155872511,
+        OLIVEDRAB: 1804477439,
+        ORANGE: 4289003775,
+        ORANGERED: 4282712319,
+        ORCHID: 3664828159,
+        PALEGOLDENROD: 4008225535,
+        PALEGREEN: 2566625535,
+        PALETURQUOISE: 2951671551,
+        PALEVIOLETRED: 3681588223,
+        PAPAYAWHIP: 4293907967,
+        PEACHPUFF: 4292524543,
+        PERU: 3448061951,
+        PINK: 4290825215,
+        PLUM: 3718307327,
+        POWDERBLUE: 2967529215,
+        PURPLE: 2147516671,
+        REBECCAPURPLE: 1714657791,
+        RED: 4278190335,
+        ROSYBROWN: 3163525119,
+        ROYALBLUE: 1097458175,
+        SADDLEBROWN: 2336560127,
+        SALMON: 4202722047,
+        SANDYBROWN: 4104413439,
+        SEAGREEN: 780883967,
+        SEASHELL: 4294307583,
+        SIENNA: 2689740287,
+        SILVER: 3233857791,
+        SKYBLUE: 2278484991,
+        SLATEBLUE: 1784335871,
+        SLATEGRAY: 1887473919,
+        SLATEGREY: 1887473919,
+        SNOW: 4294638335,
+        SPRINGGREEN: 16744447,
+        STEELBLUE: 1182971135,
+        TAN: 3535047935,
+        TEAL: 8421631,
+        THISTLE: 3636451583,
+        TOMATO: 4284696575,
+        TRANSPARENT: 0,
+        TURQUOISE: 1088475391,
+        VIOLET: 4001558271,
+        WHEAT: 4125012991,
+        WHITE: 4294967295,
+        WHITESMOKE: 4126537215,
+        YELLOW: 4294902015,
+        YELLOWGREEN: 2597139199
+      }, backgroundClip = {
+        name: "background-clip",
+        initialValue: "border-box",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return tokens.map(function(token) {
+            if (isIdentToken(token))
+              switch (token.value) {
+                case "padding-box":
+                  return 1;
+                case "content-box":
+                  return 2;
+              }
+            return 0;
+          });
+        }
+      }, backgroundColor = {
+        name: "background-color",
+        initialValue: "transparent",
+        prefix: !1,
+        type: 3,
+        format: "color"
+      }, parseColorStop = function(context, args) {
+        var color2 = color$1.parse(context, args[0]), stop = args[1];
+        return stop && isLengthPercentage(stop) ? { color: color2, stop } : { color: color2, stop: null };
+      }, processColorStops = function(stops, lineLength) {
+        var first = stops[0], last = stops[stops.length - 1];
+        first.stop === null && (first.stop = ZERO_LENGTH), last.stop === null && (last.stop = HUNDRED_PERCENT);
+        for (var processStops = [], previous = 0, i7 = 0; i7 < stops.length; i7++) {
+          var stop_1 = stops[i7].stop;
+          if (stop_1 !== null) {
+            var absoluteValue = getAbsoluteValue(stop_1, lineLength);
+            absoluteValue > previous ? processStops.push(absoluteValue) : processStops.push(previous), previous = absoluteValue;
+          } else
+            processStops.push(null);
+        }
+        for (var gapBegin = null, i7 = 0; i7 < processStops.length; i7++) {
+          var stop_2 = processStops[i7];
+          if (stop_2 === null)
+            gapBegin === null && (gapBegin = i7);
+          else if (gapBegin !== null) {
+            for (var gapLength = i7 - gapBegin, beforeGap = processStops[gapBegin - 1], gapValue = (stop_2 - beforeGap) / (gapLength + 1), g8 = 1; g8 <= gapLength; g8++)
+              processStops[gapBegin + g8 - 1] = gapValue * g8;
+            gapBegin = null;
+          }
+        }
+        return stops.map(function(_a2, i8) {
+          var color2 = _a2.color;
+          return { color: color2, stop: Math.max(Math.min(1, processStops[i8] / lineLength), 0) };
+        });
+      }, getAngleFromCorner = function(corner, width, height) {
+        var centerX = width / 2, centerY = height / 2, x5 = getAbsoluteValue(corner[0], width) - centerX, y6 = centerY - getAbsoluteValue(corner[1], height);
+        return (Math.atan2(y6, x5) + Math.PI * 2) % (Math.PI * 2);
+      }, calculateGradientDirection = function(angle2, width, height) {
+        var radian = typeof angle2 == "number" ? angle2 : getAngleFromCorner(angle2, width, height), lineLength = Math.abs(width * Math.sin(radian)) + Math.abs(height * Math.cos(radian)), halfWidth = width / 2, halfHeight = height / 2, halfLineLength = lineLength / 2, yDiff = Math.sin(radian - Math.PI / 2) * halfLineLength, xDiff = Math.cos(radian - Math.PI / 2) * halfLineLength;
+        return [lineLength, halfWidth - xDiff, halfWidth + xDiff, halfHeight - yDiff, halfHeight + yDiff];
+      }, distance = function(a13, b6) {
+        return Math.sqrt(a13 * a13 + b6 * b6);
+      }, findCorner = function(width, height, x5, y6, closest) {
+        var corners = [
+          [0, 0],
+          [0, height],
+          [width, 0],
+          [width, height]
+        ];
+        return corners.reduce(function(stat, corner) {
+          var cx = corner[0], cy = corner[1], d11 = distance(x5 - cx, y6 - cy);
+          return (closest ? d11 < stat.optimumDistance : d11 > stat.optimumDistance) ? {
+            optimumCorner: corner,
+            optimumDistance: d11
+          } : stat;
+        }, {
+          optimumDistance: closest ? 1 / 0 : -1 / 0,
+          optimumCorner: null
+        }).optimumCorner;
+      }, calculateRadius = function(gradient, x5, y6, width, height) {
+        var rx = 0, ry = 0;
+        switch (gradient.size) {
+          case 0:
+            gradient.shape === 0 ? rx = ry = Math.min(Math.abs(x5), Math.abs(x5 - width), Math.abs(y6), Math.abs(y6 - height)) : gradient.shape === 1 && (rx = Math.min(Math.abs(x5), Math.abs(x5 - width)), ry = Math.min(Math.abs(y6), Math.abs(y6 - height)));
+            break;
+          case 2:
+            if (gradient.shape === 0)
+              rx = ry = Math.min(distance(x5, y6), distance(x5, y6 - height), distance(x5 - width, y6), distance(x5 - width, y6 - height));
+            else if (gradient.shape === 1) {
+              var c12 = Math.min(Math.abs(y6), Math.abs(y6 - height)) / Math.min(Math.abs(x5), Math.abs(x5 - width)), _a2 = findCorner(width, height, x5, y6, !0), cx = _a2[0], cy = _a2[1];
+              rx = distance(cx - x5, (cy - y6) / c12), ry = c12 * rx;
+            }
+            break;
+          case 1:
+            gradient.shape === 0 ? rx = ry = Math.max(Math.abs(x5), Math.abs(x5 - width), Math.abs(y6), Math.abs(y6 - height)) : gradient.shape === 1 && (rx = Math.max(Math.abs(x5), Math.abs(x5 - width)), ry = Math.max(Math.abs(y6), Math.abs(y6 - height)));
+            break;
+          case 3:
+            if (gradient.shape === 0)
+              rx = ry = Math.max(distance(x5, y6), distance(x5, y6 - height), distance(x5 - width, y6), distance(x5 - width, y6 - height));
+            else if (gradient.shape === 1) {
+              var c12 = Math.max(Math.abs(y6), Math.abs(y6 - height)) / Math.max(Math.abs(x5), Math.abs(x5 - width)), _b = findCorner(width, height, x5, y6, !1), cx = _b[0], cy = _b[1];
+              rx = distance(cx - x5, (cy - y6) / c12), ry = c12 * rx;
+            }
+            break;
+        }
+        return Array.isArray(gradient.size) && (rx = getAbsoluteValue(gradient.size[0], width), ry = gradient.size.length === 2 ? getAbsoluteValue(gradient.size[1], height) : rx), [rx, ry];
+      }, linearGradient = function(context, tokens) {
+        var angle$1 = deg(180), stops = [];
+        return parseFunctionArgs(tokens).forEach(function(arg, i7) {
+          if (i7 === 0) {
+            var firstToken = arg[0];
+            if (firstToken.type === 20 && firstToken.value === "to") {
+              angle$1 = parseNamedSide(arg);
+              return;
+            } else if (isAngle(firstToken)) {
+              angle$1 = angle.parse(context, firstToken);
+              return;
+            }
+          }
+          var colorStop = parseColorStop(context, arg);
+          stops.push(colorStop);
+        }), {
+          angle: angle$1,
+          stops,
+          type: 1
+          /* LINEAR_GRADIENT */
+        };
+      }, prefixLinearGradient = function(context, tokens) {
+        var angle$1 = deg(180), stops = [];
+        return parseFunctionArgs(tokens).forEach(function(arg, i7) {
+          if (i7 === 0) {
+            var firstToken = arg[0];
+            if (firstToken.type === 20 && ["top", "left", "right", "bottom"].indexOf(firstToken.value) !== -1) {
+              angle$1 = parseNamedSide(arg);
+              return;
+            } else if (isAngle(firstToken)) {
+              angle$1 = (angle.parse(context, firstToken) + deg(270)) % deg(360);
+              return;
+            }
+          }
+          var colorStop = parseColorStop(context, arg);
+          stops.push(colorStop);
+        }), {
+          angle: angle$1,
+          stops,
+          type: 1
+          /* LINEAR_GRADIENT */
+        };
+      }, webkitGradient = function(context, tokens) {
+        var angle2 = deg(180), stops = [], type = 1, shape = 0, size = 3, position2 = [];
+        return parseFunctionArgs(tokens).forEach(function(arg, i7) {
+          var firstToken = arg[0];
+          if (i7 === 0) {
+            if (isIdentToken(firstToken) && firstToken.value === "linear") {
+              type = 1;
+              return;
+            } else if (isIdentToken(firstToken) && firstToken.value === "radial") {
+              type = 2;
+              return;
+            }
+          }
+          if (firstToken.type === 18) {
+            if (firstToken.name === "from") {
+              var color2 = color$1.parse(context, firstToken.values[0]);
+              stops.push({ stop: ZERO_LENGTH, color: color2 });
+            } else if (firstToken.name === "to") {
+              var color2 = color$1.parse(context, firstToken.values[0]);
+              stops.push({ stop: HUNDRED_PERCENT, color: color2 });
+            } else if (firstToken.name === "color-stop") {
+              var values = firstToken.values.filter(nonFunctionArgSeparator);
+              if (values.length === 2) {
+                var color2 = color$1.parse(context, values[1]), stop_1 = values[0];
+                isNumberToken(stop_1) && stops.push({
+                  stop: { type: 16, number: stop_1.number * 100, flags: stop_1.flags },
+                  color: color2
+                });
+              }
+            }
+          }
+        }), type === 1 ? {
+          angle: (angle2 + deg(180)) % deg(360),
+          stops,
+          type
+        } : { size, shape, stops, position: position2, type };
+      }, CLOSEST_SIDE = "closest-side", FARTHEST_SIDE = "farthest-side", CLOSEST_CORNER = "closest-corner", FARTHEST_CORNER = "farthest-corner", CIRCLE = "circle", ELLIPSE = "ellipse", COVER = "cover", CONTAIN = "contain", radialGradient = function(context, tokens) {
+        var shape = 0, size = 3, stops = [], position2 = [];
+        return parseFunctionArgs(tokens).forEach(function(arg, i7) {
+          var isColorStop = !0;
+          if (i7 === 0) {
+            var isAtPosition_1 = !1;
+            isColorStop = arg.reduce(function(acc, token) {
+              if (isAtPosition_1)
+                if (isIdentToken(token))
+                  switch (token.value) {
+                    case "center":
+                      return position2.push(FIFTY_PERCENT), acc;
+                    case "top":
+                    case "left":
+                      return position2.push(ZERO_LENGTH), acc;
+                    case "right":
+                    case "bottom":
+                      return position2.push(HUNDRED_PERCENT), acc;
+                  }
+                else
+                  (isLengthPercentage(token) || isLength(token)) && position2.push(token);
+              else if (isIdentToken(token))
+                switch (token.value) {
+                  case CIRCLE:
+                    return shape = 0, !1;
+                  case ELLIPSE:
+                    return shape = 1, !1;
+                  case "at":
+                    return isAtPosition_1 = !0, !1;
+                  case CLOSEST_SIDE:
+                    return size = 0, !1;
+                  case COVER:
+                  case FARTHEST_SIDE:
+                    return size = 1, !1;
+                  case CONTAIN:
+                  case CLOSEST_CORNER:
+                    return size = 2, !1;
+                  case FARTHEST_CORNER:
+                    return size = 3, !1;
+                }
+              else if (isLength(token) || isLengthPercentage(token))
+                return Array.isArray(size) || (size = []), size.push(token), !1;
+              return acc;
+            }, isColorStop);
+          }
+          if (isColorStop) {
+            var colorStop = parseColorStop(context, arg);
+            stops.push(colorStop);
+          }
+        }), {
+          size,
+          shape,
+          stops,
+          position: position2,
+          type: 2
+          /* RADIAL_GRADIENT */
+        };
+      }, prefixRadialGradient = function(context, tokens) {
+        var shape = 0, size = 3, stops = [], position2 = [];
+        return parseFunctionArgs(tokens).forEach(function(arg, i7) {
+          var isColorStop = !0;
+          if (i7 === 0 ? isColorStop = arg.reduce(function(acc, token) {
+            if (isIdentToken(token))
+              switch (token.value) {
+                case "center":
+                  return position2.push(FIFTY_PERCENT), !1;
+                case "top":
+                case "left":
+                  return position2.push(ZERO_LENGTH), !1;
+                case "right":
+                case "bottom":
+                  return position2.push(HUNDRED_PERCENT), !1;
+              }
+            else if (isLengthPercentage(token) || isLength(token))
+              return position2.push(token), !1;
+            return acc;
+          }, isColorStop) : i7 === 1 && (isColorStop = arg.reduce(function(acc, token) {
+            if (isIdentToken(token))
+              switch (token.value) {
+                case CIRCLE:
+                  return shape = 0, !1;
+                case ELLIPSE:
+                  return shape = 1, !1;
+                case CONTAIN:
+                case CLOSEST_SIDE:
+                  return size = 0, !1;
+                case FARTHEST_SIDE:
+                  return size = 1, !1;
+                case CLOSEST_CORNER:
+                  return size = 2, !1;
+                case COVER:
+                case FARTHEST_CORNER:
+                  return size = 3, !1;
+              }
+            else if (isLength(token) || isLengthPercentage(token))
+              return Array.isArray(size) || (size = []), size.push(token), !1;
+            return acc;
+          }, isColorStop)), isColorStop) {
+            var colorStop = parseColorStop(context, arg);
+            stops.push(colorStop);
+          }
+        }), {
+          size,
+          shape,
+          stops,
+          position: position2,
+          type: 2
+          /* RADIAL_GRADIENT */
+        };
+      }, isLinearGradient = function(background) {
+        return background.type === 1;
+      }, isRadialGradient = function(background) {
+        return background.type === 2;
+      }, image = {
+        name: "image",
+        parse: function(context, value) {
+          if (value.type === 22) {
+            var image_1 = {
+              url: value.value,
+              type: 0
+              /* URL */
+            };
+            return context.cache.addImage(value.value), image_1;
+          }
+          if (value.type === 18) {
+            var imageFunction = SUPPORTED_IMAGE_FUNCTIONS[value.name];
+            if (typeof imageFunction > "u")
+              throw new Error('Attempting to parse an unsupported image function "' + value.name + '"');
+            return imageFunction(context, value.values);
+          }
+          throw new Error("Unsupported image type " + value.type);
+        }
+      };
+      function isSupportedImage(value) {
+        return !(value.type === 20 && value.value === "none") && (value.type !== 18 || !!SUPPORTED_IMAGE_FUNCTIONS[value.name]);
+      }
+      var SUPPORTED_IMAGE_FUNCTIONS = {
+        "linear-gradient": linearGradient,
+        "-moz-linear-gradient": prefixLinearGradient,
+        "-ms-linear-gradient": prefixLinearGradient,
+        "-o-linear-gradient": prefixLinearGradient,
+        "-webkit-linear-gradient": prefixLinearGradient,
+        "radial-gradient": radialGradient,
+        "-moz-radial-gradient": prefixRadialGradient,
+        "-ms-radial-gradient": prefixRadialGradient,
+        "-o-radial-gradient": prefixRadialGradient,
+        "-webkit-radial-gradient": prefixRadialGradient,
+        "-webkit-gradient": webkitGradient
+      }, backgroundImage = {
+        name: "background-image",
+        initialValue: "none",
+        type: 1,
+        prefix: !1,
+        parse: function(context, tokens) {
+          if (tokens.length === 0)
+            return [];
+          var first = tokens[0];
+          return first.type === 20 && first.value === "none" ? [] : tokens.filter(function(value) {
+            return nonFunctionArgSeparator(value) && isSupportedImage(value);
+          }).map(function(value) {
+            return image.parse(context, value);
+          });
+        }
+      }, backgroundOrigin = {
+        name: "background-origin",
+        initialValue: "border-box",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return tokens.map(function(token) {
+            if (isIdentToken(token))
+              switch (token.value) {
+                case "padding-box":
+                  return 1;
+                case "content-box":
+                  return 2;
+              }
+            return 0;
+          });
+        }
+      }, backgroundPosition = {
+        name: "background-position",
+        initialValue: "0% 0%",
+        type: 1,
+        prefix: !1,
+        parse: function(_context, tokens) {
+          return parseFunctionArgs(tokens).map(function(values) {
+            return values.filter(isLengthPercentage);
+          }).map(parseLengthPercentageTuple);
+        }
+      }, backgroundRepeat = {
+        name: "background-repeat",
+        initialValue: "repeat",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return parseFunctionArgs(tokens).map(function(values) {
+            return values.filter(isIdentToken).map(function(token) {
+              return token.value;
+            }).join(" ");
+          }).map(parseBackgroundRepeat);
+        }
+      }, parseBackgroundRepeat = function(value) {
+        switch (value) {
+          case "no-repeat":
+            return 1;
+          case "repeat-x":
+          case "repeat no-repeat":
+            return 2;
+          case "repeat-y":
+          case "no-repeat repeat":
+            return 3;
+          case "repeat":
+          default:
+            return 0;
+        }
+      }, BACKGROUND_SIZE;
+      (function(BACKGROUND_SIZE2) {
+        BACKGROUND_SIZE2.AUTO = "auto", BACKGROUND_SIZE2.CONTAIN = "contain", BACKGROUND_SIZE2.COVER = "cover";
+      })(BACKGROUND_SIZE || (BACKGROUND_SIZE = {}));
+      var backgroundSize = {
+        name: "background-size",
+        initialValue: "0",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return parseFunctionArgs(tokens).map(function(values) {
+            return values.filter(isBackgroundSizeInfoToken);
+          });
+        }
+      }, isBackgroundSizeInfoToken = function(value) {
+        return isIdentToken(value) || isLengthPercentage(value);
+      }, borderColorForSide = function(side) {
+        return {
+          name: "border-" + side + "-color",
+          initialValue: "transparent",
+          prefix: !1,
+          type: 3,
+          format: "color"
+        };
+      }, borderTopColor = borderColorForSide("top"), borderRightColor = borderColorForSide("right"), borderBottomColor = borderColorForSide("bottom"), borderLeftColor = borderColorForSide("left"), borderRadiusForSide = function(side) {
+        return {
+          name: "border-radius-" + side,
+          initialValue: "0 0",
+          prefix: !1,
+          type: 1,
+          parse: function(_context, tokens) {
+            return parseLengthPercentageTuple(tokens.filter(isLengthPercentage));
+          }
+        };
+      }, borderTopLeftRadius = borderRadiusForSide("top-left"), borderTopRightRadius = borderRadiusForSide("top-right"), borderBottomRightRadius = borderRadiusForSide("bottom-right"), borderBottomLeftRadius = borderRadiusForSide("bottom-left"), borderStyleForSide = function(side) {
+        return {
+          name: "border-" + side + "-style",
+          initialValue: "solid",
+          prefix: !1,
+          type: 2,
+          parse: function(_context, style) {
+            switch (style) {
+              case "none":
+                return 0;
+              case "dashed":
+                return 2;
+              case "dotted":
+                return 3;
+              case "double":
+                return 4;
+            }
+            return 1;
+          }
+        };
+      }, borderTopStyle = borderStyleForSide("top"), borderRightStyle = borderStyleForSide("right"), borderBottomStyle = borderStyleForSide("bottom"), borderLeftStyle = borderStyleForSide("left"), borderWidthForSide = function(side) {
+        return {
+          name: "border-" + side + "-width",
+          initialValue: "0",
+          type: 0,
+          prefix: !1,
+          parse: function(_context, token) {
+            return isDimensionToken(token) ? token.number : 0;
+          }
+        };
+      }, borderTopWidth = borderWidthForSide("top"), borderRightWidth = borderWidthForSide("right"), borderBottomWidth = borderWidthForSide("bottom"), borderLeftWidth = borderWidthForSide("left"), color = {
+        name: "color",
+        initialValue: "transparent",
+        prefix: !1,
+        type: 3,
+        format: "color"
+      }, direction = {
+        name: "direction",
+        initialValue: "ltr",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, direction2) {
+          switch (direction2) {
+            case "rtl":
+              return 1;
+            case "ltr":
+            default:
+              return 0;
+          }
+        }
+      }, display = {
+        name: "display",
+        initialValue: "inline-block",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return tokens.filter(isIdentToken).reduce(
+            function(bit, token) {
+              return bit | parseDisplayValue(token.value);
+            },
+            0
+            /* NONE */
+          );
+        }
+      }, parseDisplayValue = function(display2) {
+        switch (display2) {
+          case "block":
+          case "-webkit-box":
+            return 2;
+          case "inline":
+            return 4;
+          case "run-in":
+            return 8;
+          case "flow":
+            return 16;
+          case "flow-root":
+            return 32;
+          case "table":
+            return 64;
+          case "flex":
+          case "-webkit-flex":
+            return 128;
+          case "grid":
+          case "-ms-grid":
+            return 256;
+          case "ruby":
+            return 512;
+          case "subgrid":
+            return 1024;
+          case "list-item":
+            return 2048;
+          case "table-row-group":
+            return 4096;
+          case "table-header-group":
+            return 8192;
+          case "table-footer-group":
+            return 16384;
+          case "table-row":
+            return 32768;
+          case "table-cell":
+            return 65536;
+          case "table-column-group":
+            return 131072;
+          case "table-column":
+            return 262144;
+          case "table-caption":
+            return 524288;
+          case "ruby-base":
+            return 1048576;
+          case "ruby-text":
+            return 2097152;
+          case "ruby-base-container":
+            return 4194304;
+          case "ruby-text-container":
+            return 8388608;
+          case "contents":
+            return 16777216;
+          case "inline-block":
+            return 33554432;
+          case "inline-list-item":
+            return 67108864;
+          case "inline-table":
+            return 134217728;
+          case "inline-flex":
+            return 268435456;
+          case "inline-grid":
+            return 536870912;
+        }
+        return 0;
+      }, float = {
+        name: "float",
+        initialValue: "none",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, float2) {
+          switch (float2) {
+            case "left":
+              return 1;
+            case "right":
+              return 2;
+            case "inline-start":
+              return 3;
+            case "inline-end":
+              return 4;
+          }
+          return 0;
+        }
+      }, letterSpacing = {
+        name: "letter-spacing",
+        initialValue: "0",
+        prefix: !1,
+        type: 0,
+        parse: function(_context, token) {
+          return token.type === 20 && token.value === "normal" ? 0 : token.type === 17 || token.type === 15 ? token.number : 0;
+        }
+      }, LINE_BREAK;
+      (function(LINE_BREAK2) {
+        LINE_BREAK2.NORMAL = "normal", LINE_BREAK2.STRICT = "strict";
+      })(LINE_BREAK || (LINE_BREAK = {}));
+      var lineBreak = {
+        name: "line-break",
+        initialValue: "normal",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, lineBreak2) {
+          switch (lineBreak2) {
+            case "strict":
+              return LINE_BREAK.STRICT;
+            case "normal":
+            default:
+              return LINE_BREAK.NORMAL;
+          }
+        }
+      }, lineHeight = {
+        name: "line-height",
+        initialValue: "normal",
+        prefix: !1,
+        type: 4
+        /* TOKEN_VALUE */
+      }, computeLineHeight = function(token, fontSize2) {
+        return isIdentToken(token) && token.value === "normal" ? 1.2 * fontSize2 : token.type === 17 ? fontSize2 * token.number : isLengthPercentage(token) ? getAbsoluteValue(token, fontSize2) : fontSize2;
+      }, listStyleImage = {
+        name: "list-style-image",
+        initialValue: "none",
+        type: 0,
+        prefix: !1,
+        parse: function(context, token) {
+          return token.type === 20 && token.value === "none" ? null : image.parse(context, token);
+        }
+      }, listStylePosition = {
+        name: "list-style-position",
+        initialValue: "outside",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, position2) {
+          switch (position2) {
+            case "inside":
+              return 0;
+            case "outside":
+            default:
+              return 1;
+          }
+        }
+      }, listStyleType = {
+        name: "list-style-type",
+        initialValue: "none",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, type) {
+          switch (type) {
+            case "disc":
+              return 0;
+            case "circle":
+              return 1;
+            case "square":
+              return 2;
+            case "decimal":
+              return 3;
+            case "cjk-decimal":
+              return 4;
+            case "decimal-leading-zero":
+              return 5;
+            case "lower-roman":
+              return 6;
+            case "upper-roman":
+              return 7;
+            case "lower-greek":
+              return 8;
+            case "lower-alpha":
+              return 9;
+            case "upper-alpha":
+              return 10;
+            case "arabic-indic":
+              return 11;
+            case "armenian":
+              return 12;
+            case "bengali":
+              return 13;
+            case "cambodian":
+              return 14;
+            case "cjk-earthly-branch":
+              return 15;
+            case "cjk-heavenly-stem":
+              return 16;
+            case "cjk-ideographic":
+              return 17;
+            case "devanagari":
+              return 18;
+            case "ethiopic-numeric":
+              return 19;
+            case "georgian":
+              return 20;
+            case "gujarati":
+              return 21;
+            case "gurmukhi":
+              return 22;
+            case "hebrew":
+              return 22;
+            case "hiragana":
+              return 23;
+            case "hiragana-iroha":
+              return 24;
+            case "japanese-formal":
+              return 25;
+            case "japanese-informal":
+              return 26;
+            case "kannada":
+              return 27;
+            case "katakana":
+              return 28;
+            case "katakana-iroha":
+              return 29;
+            case "khmer":
+              return 30;
+            case "korean-hangul-formal":
+              return 31;
+            case "korean-hanja-formal":
+              return 32;
+            case "korean-hanja-informal":
+              return 33;
+            case "lao":
+              return 34;
+            case "lower-armenian":
+              return 35;
+            case "malayalam":
+              return 36;
+            case "mongolian":
+              return 37;
+            case "myanmar":
+              return 38;
+            case "oriya":
+              return 39;
+            case "persian":
+              return 40;
+            case "simp-chinese-formal":
+              return 41;
+            case "simp-chinese-informal":
+              return 42;
+            case "tamil":
+              return 43;
+            case "telugu":
+              return 44;
+            case "thai":
+              return 45;
+            case "tibetan":
+              return 46;
+            case "trad-chinese-formal":
+              return 47;
+            case "trad-chinese-informal":
+              return 48;
+            case "upper-armenian":
+              return 49;
+            case "disclosure-open":
+              return 50;
+            case "disclosure-closed":
+              return 51;
+            case "none":
+            default:
+              return -1;
+          }
+        }
+      }, marginForSide = function(side) {
+        return {
+          name: "margin-" + side,
+          initialValue: "0",
+          prefix: !1,
+          type: 4
+          /* TOKEN_VALUE */
+        };
+      }, marginTop = marginForSide("top"), marginRight = marginForSide("right"), marginBottom = marginForSide("bottom"), marginLeft = marginForSide("left"), overflow = {
+        name: "overflow",
+        initialValue: "visible",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return tokens.filter(isIdentToken).map(function(overflow2) {
+            switch (overflow2.value) {
+              case "hidden":
+                return 1;
+              case "scroll":
+                return 2;
+              case "clip":
+                return 3;
+              case "auto":
+                return 4;
+              case "visible":
+              default:
+                return 0;
+            }
+          });
+        }
+      }, overflowWrap = {
+        name: "overflow-wrap",
+        initialValue: "normal",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, overflow2) {
+          switch (overflow2) {
+            case "break-word":
+              return "break-word";
+            case "normal":
+            default:
+              return "normal";
+          }
+        }
+      }, paddingForSide = function(side) {
+        return {
+          name: "padding-" + side,
+          initialValue: "0",
+          prefix: !1,
+          type: 3,
+          format: "length-percentage"
+        };
+      }, paddingTop = paddingForSide("top"), paddingRight = paddingForSide("right"), paddingBottom = paddingForSide("bottom"), paddingLeft = paddingForSide("left"), textAlign = {
+        name: "text-align",
+        initialValue: "left",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, textAlign2) {
+          switch (textAlign2) {
+            case "right":
+              return 2;
+            case "center":
+            case "justify":
+              return 1;
+            case "left":
+            default:
+              return 0;
+          }
+        }
+      }, position = {
+        name: "position",
+        initialValue: "static",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, position2) {
+          switch (position2) {
+            case "relative":
+              return 1;
+            case "absolute":
+              return 2;
+            case "fixed":
+              return 3;
+            case "sticky":
+              return 4;
+          }
+          return 0;
+        }
+      }, textShadow = {
+        name: "text-shadow",
+        initialValue: "none",
+        type: 1,
+        prefix: !1,
+        parse: function(context, tokens) {
+          return tokens.length === 1 && isIdentWithValue(tokens[0], "none") ? [] : parseFunctionArgs(tokens).map(function(values) {
+            for (var shadow = {
+              color: COLORS.TRANSPARENT,
+              offsetX: ZERO_LENGTH,
+              offsetY: ZERO_LENGTH,
+              blur: ZERO_LENGTH
+            }, c12 = 0, i7 = 0; i7 < values.length; i7++) {
+              var token = values[i7];
+              isLength(token) ? (c12 === 0 ? shadow.offsetX = token : c12 === 1 ? shadow.offsetY = token : shadow.blur = token, c12++) : shadow.color = color$1.parse(context, token);
+            }
+            return shadow;
+          });
+        }
+      }, textTransform = {
+        name: "text-transform",
+        initialValue: "none",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, textTransform2) {
+          switch (textTransform2) {
+            case "uppercase":
+              return 2;
+            case "lowercase":
+              return 1;
+            case "capitalize":
+              return 3;
+          }
+          return 0;
+        }
+      }, transform$1 = {
+        name: "transform",
+        initialValue: "none",
+        prefix: !0,
+        type: 0,
+        parse: function(_context, token) {
+          if (token.type === 20 && token.value === "none")
+            return null;
+          if (token.type === 18) {
+            var transformFunction = SUPPORTED_TRANSFORM_FUNCTIONS[token.name];
+            if (typeof transformFunction > "u")
+              throw new Error('Attempting to parse an unsupported transform function "' + token.name + '"');
+            return transformFunction(token.values);
+          }
+          return null;
+        }
+      }, matrix = function(args) {
+        var values = args.filter(function(arg) {
+          return arg.type === 17;
+        }).map(function(arg) {
+          return arg.number;
+        });
+        return values.length === 6 ? values : null;
+      }, matrix3d = function(args) {
+        var values = args.filter(function(arg) {
+          return arg.type === 17;
+        }).map(function(arg) {
+          return arg.number;
+        }), a1 = values[0], b1 = values[1];
+        values[2], values[3];
+        var a22 = values[4], b22 = values[5];
+        values[6], values[7], values[8], values[9], values[10], values[11];
+        var a42 = values[12], b42 = values[13];
+        return values[14], values[15], values.length === 16 ? [a1, b1, a22, b22, a42, b42] : null;
+      }, SUPPORTED_TRANSFORM_FUNCTIONS = {
+        matrix,
+        matrix3d
+      }, DEFAULT_VALUE = {
+        type: 16,
+        number: 50,
+        flags: FLAG_INTEGER
+      }, DEFAULT = [DEFAULT_VALUE, DEFAULT_VALUE], transformOrigin = {
+        name: "transform-origin",
+        initialValue: "50% 50%",
+        prefix: !0,
+        type: 1,
+        parse: function(_context, tokens) {
+          var origins = tokens.filter(isLengthPercentage);
+          return origins.length !== 2 ? DEFAULT : [origins[0], origins[1]];
+        }
+      }, visibility = {
+        name: "visible",
+        initialValue: "none",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, visibility2) {
+          switch (visibility2) {
+            case "hidden":
+              return 1;
+            case "collapse":
+              return 2;
+            case "visible":
+            default:
+              return 0;
+          }
+        }
+      }, WORD_BREAK;
+      (function(WORD_BREAK2) {
+        WORD_BREAK2.NORMAL = "normal", WORD_BREAK2.BREAK_ALL = "break-all", WORD_BREAK2.KEEP_ALL = "keep-all";
+      })(WORD_BREAK || (WORD_BREAK = {}));
+      for (var wordBreak = {
+        name: "word-break",
+        initialValue: "normal",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, wordBreak2) {
+          switch (wordBreak2) {
+            case "break-all":
+              return WORD_BREAK.BREAK_ALL;
+            case "keep-all":
+              return WORD_BREAK.KEEP_ALL;
+            case "normal":
+            default:
+              return WORD_BREAK.NORMAL;
+          }
+        }
+      }, zIndex = {
+        name: "z-index",
+        initialValue: "auto",
+        prefix: !1,
+        type: 0,
+        parse: function(_context, token) {
+          if (token.type === 20)
+            return { auto: !0, order: 0 };
+          if (isNumberToken(token))
+            return { auto: !1, order: token.number };
+          throw new Error("Invalid z-index number parsed");
+        }
+      }, time = {
+        name: "time",
+        parse: function(_context, value) {
+          if (value.type === 15)
+            switch (value.unit.toLowerCase()) {
+              case "s":
+                return 1e3 * value.number;
+              case "ms":
+                return value.number;
+            }
+          throw new Error("Unsupported time type");
+        }
+      }, opacity = {
+        name: "opacity",
+        initialValue: "1",
+        type: 0,
+        prefix: !1,
+        parse: function(_context, token) {
+          return isNumberToken(token) ? token.number : 1;
+        }
+      }, textDecorationColor = {
+        name: "text-decoration-color",
+        initialValue: "transparent",
+        prefix: !1,
+        type: 3,
+        format: "color"
+      }, textDecorationLine = {
+        name: "text-decoration-line",
+        initialValue: "none",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          return tokens.filter(isIdentToken).map(function(token) {
+            switch (token.value) {
+              case "underline":
+                return 1;
+              case "overline":
+                return 2;
+              case "line-through":
+                return 3;
+              case "none":
+                return 4;
+            }
+            return 0;
+          }).filter(function(line) {
+            return line !== 0;
+          });
+        }
+      }, fontFamily = {
+        name: "font-family",
+        initialValue: "",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          var accumulator = [], results = [];
+          return tokens.forEach(function(token) {
+            switch (token.type) {
+              case 20:
+              case 0:
+                accumulator.push(token.value);
+                break;
+              case 17:
+                accumulator.push(token.number.toString());
+                break;
+              case 4:
+                results.push(accumulator.join(" ")), accumulator.length = 0;
+                break;
+            }
+          }), accumulator.length && results.push(accumulator.join(" ")), results.map(function(result) {
+            return result.indexOf(" ") === -1 ? result : "'" + result + "'";
+          });
+        }
+      }, fontSize = {
+        name: "font-size",
+        initialValue: "0",
+        prefix: !1,
+        type: 3,
+        format: "length"
+      }, fontWeight = {
+        name: "font-weight",
+        initialValue: "normal",
+        type: 0,
+        prefix: !1,
+        parse: function(_context, token) {
+          if (isNumberToken(token))
+            return token.number;
+          if (isIdentToken(token))
+            switch (token.value) {
+              case "bold":
+                return 700;
+              case "normal":
+              default:
+                return 400;
+            }
+          return 400;
+        }
+      }, fontVariant = {
+        name: "font-variant",
+        initialValue: "none",
+        type: 1,
+        prefix: !1,
+        parse: function(_context, tokens) {
+          return tokens.filter(isIdentToken).map(function(token) {
+            return token.value;
+          });
+        }
+      }, fontStyle = {
+        name: "font-style",
+        initialValue: "normal",
+        prefix: !1,
+        type: 2,
+        parse: function(_context, overflow2) {
+          switch (overflow2) {
+            case "oblique":
+              return "oblique";
+            case "italic":
+              return "italic";
+            case "normal":
+            default:
+              return "normal";
+          }
+        }
+      }, contains = function(bit, value) {
+        return (bit & value) !== 0;
+      }, content = {
+        name: "content",
+        initialValue: "none",
+        type: 1,
+        prefix: !1,
+        parse: function(_context, tokens) {
+          if (tokens.length === 0)
+            return [];
+          var first = tokens[0];
+          return first.type === 20 && first.value === "none" ? [] : tokens;
+        }
+      }, counterIncrement = {
+        name: "counter-increment",
+        initialValue: "none",
+        prefix: !0,
+        type: 1,
+        parse: function(_context, tokens) {
+          if (tokens.length === 0)
+            return null;
+          var first = tokens[0];
+          if (first.type === 20 && first.value === "none")
+            return null;
+          for (var increments = [], filtered = tokens.filter(nonWhiteSpace), i7 = 0; i7 < filtered.length; i7++) {
+            var counter = filtered[i7], next = filtered[i7 + 1];
+            if (counter.type === 20) {
+              var increment = next && isNumberToken(next) ? next.number : 1;
+              increments.push({ counter: counter.value, increment });
+            }
+          }
+          return increments;
+        }
+      }, counterReset = {
+        name: "counter-reset",
+        initialValue: "none",
+        prefix: !0,
+        type: 1,
+        parse: function(_context, tokens) {
+          if (tokens.length === 0)
+            return [];
+          for (var resets = [], filtered = tokens.filter(nonWhiteSpace), i7 = 0; i7 < filtered.length; i7++) {
+            var counter = filtered[i7], next = filtered[i7 + 1];
+            if (isIdentToken(counter) && counter.value !== "none") {
+              var reset = next && isNumberToken(next) ? next.number : 0;
+              resets.push({ counter: counter.value, reset });
+            }
+          }
+          return resets;
+        }
+      }, duration = {
+        name: "duration",
+        initialValue: "0s",
+        prefix: !1,
+        type: 1,
+        parse: function(context, tokens) {
+          return tokens.filter(isDimensionToken).map(function(token) {
+            return time.parse(context, token);
+          });
+        }
+      }, quotes = {
+        name: "quotes",
+        initialValue: "none",
+        prefix: !0,
+        type: 1,
+        parse: function(_context, tokens) {
+          if (tokens.length === 0)
+            return null;
+          var first = tokens[0];
+          if (first.type === 20 && first.value === "none")
+            return null;
+          var quotes2 = [], filtered = tokens.filter(isStringToken);
+          if (filtered.length % 2 !== 0)
+            return null;
+          for (var i7 = 0; i7 < filtered.length; i7 += 2) {
+            var open_1 = filtered[i7].value, close_1 = filtered[i7 + 1].value;
+            quotes2.push({ open: open_1, close: close_1 });
+          }
+          return quotes2;
+        }
+      }, getQuote = function(quotes2, depth, open) {
+        if (!quotes2)
+          return "";
+        var quote = quotes2[Math.min(depth, quotes2.length - 1)];
+        return quote ? open ? quote.open : quote.close : "";
+      }, boxShadow = {
+        name: "box-shadow",
+        initialValue: "none",
+        type: 1,
+        prefix: !1,
+        parse: function(context, tokens) {
+          return tokens.length === 1 && isIdentWithValue(tokens[0], "none") ? [] : parseFunctionArgs(tokens).map(function(values) {
+            for (var shadow = {
+              color: 255,
+              offsetX: ZERO_LENGTH,
+              offsetY: ZERO_LENGTH,
+              blur: ZERO_LENGTH,
+              spread: ZERO_LENGTH,
+              inset: !1
+            }, c12 = 0, i7 = 0; i7 < values.length; i7++) {
+              var token = values[i7];
+              isIdentWithValue(token, "inset") ? shadow.inset = !0 : isLength(token) ? (c12 === 0 ? shadow.offsetX = token : c12 === 1 ? shadow.offsetY = token : c12 === 2 ? shadow.blur = token : shadow.spread = token, c12++) : shadow.color = color$1.parse(context, token);
+            }
+            return shadow;
+          });
+        }
+      }, paintOrder = {
+        name: "paint-order",
+        initialValue: "normal",
+        prefix: !1,
+        type: 1,
+        parse: function(_context, tokens) {
+          var DEFAULT_VALUE2 = [
+            0,
+            1,
+            2
+            /* MARKERS */
+          ], layers = [];
+          return tokens.filter(isIdentToken).forEach(function(token) {
+            switch (token.value) {
+              case "stroke":
+                layers.push(
+                  1
+                  /* STROKE */
+                );
+                break;
+              case "fill":
+                layers.push(
+                  0
+                  /* FILL */
+                );
+                break;
+              case "markers":
+                layers.push(
+                  2
+                  /* MARKERS */
+                );
+                break;
+            }
+          }), DEFAULT_VALUE2.forEach(function(value) {
+            layers.indexOf(value) === -1 && layers.push(value);
+          }), layers;
+        }
+      }, webkitTextStrokeColor = {
+        name: "-webkit-text-stroke-color",
+        initialValue: "currentcolor",
+        prefix: !1,
+        type: 3,
+        format: "color"
+      }, webkitTextStrokeWidth = {
+        name: "-webkit-text-stroke-width",
+        initialValue: "0",
+        type: 0,
+        prefix: !1,
+        parse: function(_context, token) {
+          return isDimensionToken(token) ? token.number : 0;
+        }
+      }, CSSParsedDeclaration = (
+        /** @class */
+        function() {
+          function CSSParsedDeclaration2(context, declaration) {
+            var _a2, _b;
+            this.animationDuration = parse2(context, duration, declaration.animationDuration), this.backgroundClip = parse2(context, backgroundClip, declaration.backgroundClip), this.backgroundColor = parse2(context, backgroundColor, declaration.backgroundColor), this.backgroundImage = parse2(context, backgroundImage, declaration.backgroundImage), this.backgroundOrigin = parse2(context, backgroundOrigin, declaration.backgroundOrigin), this.backgroundPosition = parse2(context, backgroundPosition, declaration.backgroundPosition), this.backgroundRepeat = parse2(context, backgroundRepeat, declaration.backgroundRepeat), this.backgroundSize = parse2(context, backgroundSize, declaration.backgroundSize), this.borderTopColor = parse2(context, borderTopColor, declaration.borderTopColor), this.borderRightColor = parse2(context, borderRightColor, declaration.borderRightColor), this.borderBottomColor = parse2(context, borderBottomColor, declaration.borderBottomColor), this.borderLeftColor = parse2(context, borderLeftColor, declaration.borderLeftColor), this.borderTopLeftRadius = parse2(context, borderTopLeftRadius, declaration.borderTopLeftRadius), this.borderTopRightRadius = parse2(context, borderTopRightRadius, declaration.borderTopRightRadius), this.borderBottomRightRadius = parse2(context, borderBottomRightRadius, declaration.borderBottomRightRadius), this.borderBottomLeftRadius = parse2(context, borderBottomLeftRadius, declaration.borderBottomLeftRadius), this.borderTopStyle = parse2(context, borderTopStyle, declaration.borderTopStyle), this.borderRightStyle = parse2(context, borderRightStyle, declaration.borderRightStyle), this.borderBottomStyle = parse2(context, borderBottomStyle, declaration.borderBottomStyle), this.borderLeftStyle = parse2(context, borderLeftStyle, declaration.borderLeftStyle), this.borderTopWidth = parse2(context, borderTopWidth, declaration.borderTopWidth), this.borderRightWidth = parse2(context, borderRightWidth, declaration.borderRightWidth), this.borderBottomWidth = parse2(context, borderBottomWidth, declaration.borderBottomWidth), this.borderLeftWidth = parse2(context, borderLeftWidth, declaration.borderLeftWidth), this.boxShadow = parse2(context, boxShadow, declaration.boxShadow), this.color = parse2(context, color, declaration.color), this.direction = parse2(context, direction, declaration.direction), this.display = parse2(context, display, declaration.display), this.float = parse2(context, float, declaration.cssFloat), this.fontFamily = parse2(context, fontFamily, declaration.fontFamily), this.fontSize = parse2(context, fontSize, declaration.fontSize), this.fontStyle = parse2(context, fontStyle, declaration.fontStyle), this.fontVariant = parse2(context, fontVariant, declaration.fontVariant), this.fontWeight = parse2(context, fontWeight, declaration.fontWeight), this.letterSpacing = parse2(context, letterSpacing, declaration.letterSpacing), this.lineBreak = parse2(context, lineBreak, declaration.lineBreak), this.lineHeight = parse2(context, lineHeight, declaration.lineHeight), this.listStyleImage = parse2(context, listStyleImage, declaration.listStyleImage), this.listStylePosition = parse2(context, listStylePosition, declaration.listStylePosition), this.listStyleType = parse2(context, listStyleType, declaration.listStyleType), this.marginTop = parse2(context, marginTop, declaration.marginTop), this.marginRight = parse2(context, marginRight, declaration.marginRight), this.marginBottom = parse2(context, marginBottom, declaration.marginBottom), this.marginLeft = parse2(context, marginLeft, declaration.marginLeft), this.opacity = parse2(context, opacity, declaration.opacity);
+            var overflowTuple = parse2(context, overflow, declaration.overflow);
+            this.overflowX = overflowTuple[0], this.overflowY = overflowTuple[overflowTuple.length > 1 ? 1 : 0], this.overflowWrap = parse2(context, overflowWrap, declaration.overflowWrap), this.paddingTop = parse2(context, paddingTop, declaration.paddingTop), this.paddingRight = parse2(context, paddingRight, declaration.paddingRight), this.paddingBottom = parse2(context, paddingBottom, declaration.paddingBottom), this.paddingLeft = parse2(context, paddingLeft, declaration.paddingLeft), this.paintOrder = parse2(context, paintOrder, declaration.paintOrder), this.position = parse2(context, position, declaration.position), this.textAlign = parse2(context, textAlign, declaration.textAlign), this.textDecorationColor = parse2(context, textDecorationColor, (_a2 = declaration.textDecorationColor) !== null && _a2 !== void 0 ? _a2 : declaration.color), this.textDecorationLine = parse2(context, textDecorationLine, (_b = declaration.textDecorationLine) !== null && _b !== void 0 ? _b : declaration.textDecoration), this.textShadow = parse2(context, textShadow, declaration.textShadow), this.textTransform = parse2(context, textTransform, declaration.textTransform), this.transform = parse2(context, transform$1, declaration.transform), this.transformOrigin = parse2(context, transformOrigin, declaration.transformOrigin), this.visibility = parse2(context, visibility, declaration.visibility), this.webkitTextStrokeColor = parse2(context, webkitTextStrokeColor, declaration.webkitTextStrokeColor), this.webkitTextStrokeWidth = parse2(context, webkitTextStrokeWidth, declaration.webkitTextStrokeWidth), this.wordBreak = parse2(context, wordBreak, declaration.wordBreak), this.zIndex = parse2(context, zIndex, declaration.zIndex);
+          }
+          return CSSParsedDeclaration2.prototype.isVisible = function() {
+            return this.display > 0 && this.opacity > 0 && this.visibility === 0;
+          }, CSSParsedDeclaration2.prototype.isTransparent = function() {
+            return isTransparent(this.backgroundColor);
+          }, CSSParsedDeclaration2.prototype.isTransformed = function() {
+            return this.transform !== null;
+          }, CSSParsedDeclaration2.prototype.isPositioned = function() {
+            return this.position !== 0;
+          }, CSSParsedDeclaration2.prototype.isPositionedWithZIndex = function() {
+            return this.isPositioned() && !this.zIndex.auto;
+          }, CSSParsedDeclaration2.prototype.isFloating = function() {
+            return this.float !== 0;
+          }, CSSParsedDeclaration2.prototype.isInlineLevel = function() {
+            return contains(
+              this.display,
+              4
+              /* INLINE */
+            ) || contains(
+              this.display,
+              33554432
+              /* INLINE_BLOCK */
+            ) || contains(
+              this.display,
+              268435456
+              /* INLINE_FLEX */
+            ) || contains(
+              this.display,
+              536870912
+              /* INLINE_GRID */
+            ) || contains(
+              this.display,
+              67108864
+              /* INLINE_LIST_ITEM */
+            ) || contains(
+              this.display,
+              134217728
+              /* INLINE_TABLE */
+            );
+          }, CSSParsedDeclaration2;
+        }()
+      ), CSSParsedPseudoDeclaration = (
+        /** @class */
+        function() {
+          function CSSParsedPseudoDeclaration2(context, declaration) {
+            this.content = parse2(context, content, declaration.content), this.quotes = parse2(context, quotes, declaration.quotes);
+          }
+          return CSSParsedPseudoDeclaration2;
+        }()
+      ), CSSParsedCounterDeclaration = (
+        /** @class */
+        function() {
+          function CSSParsedCounterDeclaration2(context, declaration) {
+            this.counterIncrement = parse2(context, counterIncrement, declaration.counterIncrement), this.counterReset = parse2(context, counterReset, declaration.counterReset);
+          }
+          return CSSParsedCounterDeclaration2;
+        }()
+      ), parse2 = function(context, descriptor, style) {
+        var tokenizer = new Tokenizer(), value = style !== null && typeof style < "u" ? style.toString() : descriptor.initialValue;
+        tokenizer.write(value);
+        var parser = new Parser(tokenizer.read());
+        switch (descriptor.type) {
+          case 2:
+            var token = parser.parseComponentValue();
+            return descriptor.parse(context, isIdentToken(token) ? token.value : descriptor.initialValue);
+          case 0:
+            return descriptor.parse(context, parser.parseComponentValue());
+          case 1:
+            return descriptor.parse(context, parser.parseComponentValues());
+          case 4:
+            return parser.parseComponentValue();
+          case 3:
+            switch (descriptor.format) {
+              case "angle":
+                return angle.parse(context, parser.parseComponentValue());
+              case "color":
+                return color$1.parse(context, parser.parseComponentValue());
+              case "image":
+                return image.parse(context, parser.parseComponentValue());
+              case "length":
+                var length_1 = parser.parseComponentValue();
+                return isLength(length_1) ? length_1 : ZERO_LENGTH;
+              case "length-percentage":
+                var value_1 = parser.parseComponentValue();
+                return isLengthPercentage(value_1) ? value_1 : ZERO_LENGTH;
+              case "time":
+                return time.parse(context, parser.parseComponentValue());
+            }
+            break;
+        }
+      }, elementDebuggerAttribute = "data-html2canvas-debug", getElementDebugType = function(element) {
+        var attribute = element.getAttribute(elementDebuggerAttribute);
+        switch (attribute) {
+          case "all":
+            return 1;
+          case "clone":
+            return 2;
+          case "parse":
+            return 3;
+          case "render":
+            return 4;
+          default:
+            return 0;
+        }
+      }, isDebugging = function(element, type) {
+        var elementType = getElementDebugType(element);
+        return elementType === 1 || type === elementType;
+      }, ElementContainer = (
+        /** @class */
+        function() {
+          function ElementContainer2(context, element) {
+            if (this.context = context, this.textNodes = [], this.elements = [], this.flags = 0, isDebugging(
+              element,
+              3
+              /* PARSE */
+            ))
+              debugger;
+            this.styles = new CSSParsedDeclaration(context, window.getComputedStyle(element, null)), isHTMLElementNode(element) && (this.styles.animationDuration.some(function(duration2) {
+              return duration2 > 0;
+            }) && (element.style.animationDuration = "0s"), this.styles.transform !== null && (element.style.transform = "none")), this.bounds = parseBounds(this.context, element), isDebugging(
+              element,
+              4
+              /* RENDER */
+            ) && (this.flags |= 16);
+          }
+          return ElementContainer2;
+        }()
+      ), base64 = "AAAAAAAAAAAAEA4AGBkAAFAaAAACAAAAAAAIABAAGAAwADgACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAAQABIAEQATAAIABAACAAQAAgAEAAIABAAVABcAAgAEAAIABAACAAQAGAAaABwAHgAgACIAI4AlgAIABAAmwCjAKgAsAC2AL4AvQDFAMoA0gBPAVYBWgEIAAgACACMANoAYgFkAWwBdAF8AX0BhQGNAZUBlgGeAaMBlQGWAasBswF8AbsBwwF0AcsBYwHTAQgA2wG/AOMBdAF8AekB8QF0AfkB+wHiAHQBfAEIAAMC5gQIAAsCEgIIAAgAFgIeAggAIgIpAggAMQI5AkACygEIAAgASAJQAlgCYAIIAAgACAAKBQoFCgUTBRMFGQUrBSsFCAAIAAgACAAIAAgACAAIAAgACABdAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACABoAmgCrwGvAQgAbgJ2AggAHgEIAAgACADnAXsCCAAIAAgAgwIIAAgACAAIAAgACACKAggAkQKZAggAPADJAAgAoQKkAqwCsgK6AsICCADJAggA0AIIAAgACAAIANYC3gIIAAgACAAIAAgACABAAOYCCAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAkASoB+QIEAAgACAA8AEMCCABCBQgACABJBVAFCAAIAAgACAAIAAgACAAIAAgACABTBVoFCAAIAFoFCABfBWUFCAAIAAgACAAIAAgAbQUIAAgACAAIAAgACABzBXsFfQWFBYoFigWKBZEFigWKBYoFmAWfBaYFrgWxBbkFCAAIAAgACAAIAAgACAAIAAgACAAIAMEFCAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAMgFCADQBQgACAAIAAgACAAIAAgACAAIAAgACAAIAO4CCAAIAAgAiQAIAAgACABAAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAD0AggACAD8AggACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIANYFCAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAMDvwAIAAgAJAIIAAgACAAIAAgACAAIAAgACwMTAwgACAB9BOsEGwMjAwgAKwMyAwsFYgE3A/MEPwMIAEUDTQNRAwgAWQOsAGEDCAAIAAgACAAIAAgACABpAzQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFOgU0BTUFNgU3BTgFOQU6BTQFNQU2BTcFOAU5BToFNAU1BTYFNwU4BTkFIQUoBSwFCAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACABtAwgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACABMAEwACAAIAAgACAAIABgACAAIAAgACAC/AAgACAAyAQgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACACAAIAAwAAgACAAIAAgACAAIAAgACAAIAAAARABIAAgACAAIABQASAAIAAgAIABwAEAAjgCIABsAqAC2AL0AigDQAtwC+IJIQqVAZUBWQqVAZUBlQGVAZUBlQGrC5UBlQGVAZUBlQGVAZUBlQGVAXsKlQGVAbAK6wsrDGUMpQzlDJUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAZUBlQGVAfAKAAuZA64AtwCJALoC6ADwAAgAuACgA/oEpgO6AqsD+AAIAAgAswMIAAgACAAIAIkAuwP5AfsBwwPLAwgACAAIAAgACADRA9kDCAAIAOED6QMIAAgACAAIAAgACADuA/YDCAAIAP4DyQAIAAgABgQIAAgAXQAOBAgACAAIAAgACAAIABMECAAIAAgACAAIAAgACAD8AAQBCAAIAAgAGgQiBCoECAExBAgAEAEIAAgACAAIAAgACAAIAAgACAAIAAgACAA4BAgACABABEYECAAIAAgATAQYAQgAVAQIAAgACAAIAAgACAAIAAgACAAIAFoECAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAOQEIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAB+BAcACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAEABhgSMBAgACAAIAAgAlAQIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAwAEAAQABAADAAMAAwADAAQABAAEAAQABAAEAAQABHATAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAdQMIAAgACAAIAAgACAAIAMkACAAIAAgAfQMIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACACFA4kDCAAIAAgACAAIAOcBCAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAIcDCAAIAAgACAAIAAgACAAIAAgACAAIAJEDCAAIAAgACADFAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACABgBAgAZgQIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAbAQCBXIECAAIAHkECAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACABAAJwEQACjBKoEsgQIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAC6BMIECAAIAAgACAAIAAgACABmBAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAxwQIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAGYECAAIAAgAzgQIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgAigWKBYoFigWKBYoFigWKBd0FXwUIAOIF6gXxBYoF3gT5BQAGCAaKBYoFigWKBYoFigWKBYoFigWKBYoFigXWBIoFigWKBYoFigWKBYoFigWKBYsFEAaKBYoFigWKBYoFigWKBRQGCACKBYoFigWKBQgACAAIANEECAAIABgGigUgBggAJgYIAC4GMwaKBYoF0wQ3Bj4GigWKBYoFigWKBYoFigWKBYoFigWKBYoFigUIAAgACAAIAAgACAAIAAgAigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWKBYoFigWLBf///////wQABAAEAAQABAAEAAQABAAEAAQAAwAEAAQAAgAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAQADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAUAAAAFAAUAAAAFAAUAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAQABAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUAAQAAAAUABQAFAAUABQAFAAAAAAAFAAUAAAAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAFAAUAAQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABwAFAAUABQAFAAAABwAHAAcAAAAHAAcABwAFAAEAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABwAFAAUABQAFAAcABwAFAAUAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAQABAAAAAAAAAAAAAAAFAAUABQAFAAAABwAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAHAAcABwAHAAcAAAAHAAcAAAAAAAUABQAHAAUAAQAHAAEABwAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABwABAAUABQAFAAUAAAAAAAAAAAAAAAEAAQABAAEAAQABAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABwAFAAUAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUAAQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABQANAAQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAQABAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAQABAAEAAQABAAEAAQABAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQABAAEAAQABAAEAAQABAAAAAAAAAAAAAAAAAAAAAAABQAHAAUABQAFAAAAAAAAAAcABQAFAAUABQAFAAQABAAEAAQABAAEAAQABAAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUAAAAFAAUABQAFAAUAAAAFAAUABQAAAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAAAAAAAAAAAAUABQAFAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAHAAUAAAAHAAcABwAFAAUABQAFAAUABQAFAAUABwAHAAcABwAFAAcABwAAAAUABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABwAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAUABwAHAAUABQAFAAUAAAAAAAcABwAAAAAABwAHAAUAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAABQAFAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAABwAHAAcABQAFAAAAAAAAAAAABQAFAAAAAAAFAAUABQAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAFAAUABQAFAAUAAAAFAAUABwAAAAcABwAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAFAAUABwAFAAUABQAFAAAAAAAHAAcAAAAAAAcABwAFAAAAAAAAAAAAAAAAAAAABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAcABwAAAAAAAAAHAAcABwAAAAcABwAHAAUAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAABQAHAAcABwAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABwAHAAcABwAAAAUABQAFAAAABQAFAAUABQAAAAAAAAAAAAAAAAAAAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAcABQAHAAcABQAHAAcAAAAFAAcABwAAAAcABwAFAAUAAAAAAAAAAAAAAAAAAAAFAAUAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAcABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAUABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAFAAcABwAFAAUABQAAAAUAAAAHAAcABwAHAAcABwAHAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAHAAUABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAABwAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAUAAAAFAAAAAAAAAAAABwAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABwAFAAUABQAFAAUAAAAFAAUAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABwAFAAUABQAFAAUABQAAAAUABQAHAAcABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABQAFAAAAAAAAAAAABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAcABQAFAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAHAAUABQAFAAUABQAFAAUABwAHAAcABwAHAAcABwAHAAUABwAHAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABwAHAAcABwAFAAUABwAHAAcAAAAAAAAAAAAHAAcABQAHAAcABwAHAAcABwAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAcABwAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABQAHAAUABQAFAAUABQAFAAUAAAAFAAAABQAAAAAABQAFAAUABQAFAAUABQAFAAcABwAHAAcABwAHAAUABQAFAAUABQAFAAUABQAFAAUAAAAAAAUABQAFAAUABQAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABwAFAAcABwAHAAcABwAFAAcABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAUABQAFAAUABwAHAAUABQAHAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAcABQAFAAcABwAHAAUABwAFAAUABQAHAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAcABwAHAAcABwAHAAUABQAFAAUABQAFAAUABQAHAAcABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUAAAAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAcABQAFAAUABQAFAAUABQAAAAAAAAAAAAUAAAAAAAAAAAAAAAAABQAAAAAABwAFAAUAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAAABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUAAAAFAAUABQAFAAUABQAFAAUABQAFAAAAAAAAAAAABQAAAAAAAAAFAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAUABQAHAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABwAHAAcABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAUABQAFAAUABQAHAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAcABwAFAAUABQAFAAcABwAFAAUABwAHAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAFAAcABwAFAAUABwAHAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAFAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAFAAUABQAAAAAABQAFAAAAAAAAAAAAAAAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABQAFAAcABwAAAAAAAAAAAAAABwAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABwAFAAcABwAFAAcABwAAAAcABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAAAAAAAAAAAAAAAAAFAAUABQAAAAUABQAAAAAAAAAAAAAABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABQAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABwAFAAUABQAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAcABQAFAAUABQAFAAUABQAFAAUABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABwAFAAUABQAHAAcABQAHAAUABQAAAAAAAAAAAAAAAAAFAAAABwAHAAcABQAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABwAHAAcABwAAAAAABwAHAAAAAAAHAAcABwAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAAAAAAFAAUABQAFAAUABQAFAAAAAAAAAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABwAFAAUABQAFAAUABQAFAAUABwAHAAUABQAFAAcABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAHAAcABQAFAAUABQAFAAUABwAFAAcABwAFAAcABQAFAAcABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAHAAcABQAFAAUABQAAAAAABwAHAAcABwAFAAUABwAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABwAHAAUABQAFAAUABQAFAAUABQAHAAcABQAHAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABwAFAAcABwAFAAUABQAFAAUABQAHAAUAAAAAAAAAAAAAAAAAAAAAAAcABwAFAAUABQAFAAcABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABwAFAAUABQAFAAUABQAFAAUABQAHAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABwAFAAUABQAFAAAAAAAFAAUABwAHAAcABwAFAAAAAAAAAAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABwAHAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABQAFAAUABQAFAAUABQAAAAUABQAFAAUABQAFAAcABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUAAAAHAAUABQAFAAUABQAFAAUABwAFAAUABwAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUAAAAAAAAABQAAAAUABQAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAHAAcABwAHAAcAAAAFAAUAAAAHAAcABQAHAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABwAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAAAAAAAAAAAAAAAAAAABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAAAAUABQAFAAAAAAAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAAAAAAAAAAABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUABQAFAAUABQAAAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABQAAAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAFAAUABQAAAAAABQAFAAUABQAFAAUABQAAAAUABQAAAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAUABQAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQAFAAUABQAFAAUABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAFAAUABQAFAAUADgAOAA4ADgAOAA4ADwAPAA8ADwAPAA8ADwAPAA8ADwAPAA8ADwAPAA8ADwAPAA8ADwAPAA8ADwAPAA8ADwAPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAcABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAcABwAHAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAgACAAIAAAAAAAAAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAMAAwADAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkAAAAAAAAAAAAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAKAAoACgAAAAAAAAAAAAsADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwACwAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAMAAwADAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4ADgAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAA4ADgAOAA4ADgAOAA4ADgAOAAAAAAAAAAAADgAOAA4AAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAA4ADgAAAA4ADgAOAA4ADgAOAAAADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4AAAAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4AAAAAAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAAAA4AAAAOAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAADgAAAAAAAAAAAA4AAAAOAAAAAAAAAAAADgAOAA4AAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAOAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4ADgAOAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAADgAOAA4ADgAOAA4ADgAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAAAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAA4ADgAOAA4ADgAOAA4ADgAOAAAADgAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4AAAAAAAAAAAAAAAAADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAA4ADgAOAA4ADgAOAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAOAA4ADgAOAA4AAAAAAAAAAAAAAAAAAAAAAA4ADgAOAA4ADgAOAA4ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4AAAAOAA4ADgAOAA4ADgAAAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4ADgAOAA4AAAAAAAAAAAA=", chars$1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", lookup$1 = typeof Uint8Array > "u" ? [] : new Uint8Array(256), i$1 = 0; i$1 < chars$1.length; i$1++)
+        lookup$1[chars$1.charCodeAt(i$1)] = i$1;
+      for (var decode = function(base642) {
+        var bufferLength = base642.length * 0.75, len = base642.length, i7, p6 = 0, encoded1, encoded2, encoded3, encoded4;
+        base642[base642.length - 1] === "=" && (bufferLength--, base642[base642.length - 2] === "=" && bufferLength--);
+        var buffer = typeof ArrayBuffer < "u" && typeof Uint8Array < "u" && typeof Uint8Array.prototype.slice < "u" ? new ArrayBuffer(bufferLength) : new Array(bufferLength), bytes = Array.isArray(buffer) ? buffer : new Uint8Array(buffer);
+        for (i7 = 0; i7 < len; i7 += 4)
+          encoded1 = lookup$1[base642.charCodeAt(i7)], encoded2 = lookup$1[base642.charCodeAt(i7 + 1)], encoded3 = lookup$1[base642.charCodeAt(i7 + 2)], encoded4 = lookup$1[base642.charCodeAt(i7 + 3)], bytes[p6++] = encoded1 << 2 | encoded2 >> 4, bytes[p6++] = (encoded2 & 15) << 4 | encoded3 >> 2, bytes[p6++] = (encoded3 & 3) << 6 | encoded4 & 63;
+        return buffer;
+      }, polyUint16Array = function(buffer) {
+        for (var length = buffer.length, bytes = [], i7 = 0; i7 < length; i7 += 2)
+          bytes.push(buffer[i7 + 1] << 8 | buffer[i7]);
+        return bytes;
+      }, polyUint32Array = function(buffer) {
+        for (var length = buffer.length, bytes = [], i7 = 0; i7 < length; i7 += 4)
+          bytes.push(buffer[i7 + 3] << 24 | buffer[i7 + 2] << 16 | buffer[i7 + 1] << 8 | buffer[i7]);
+        return bytes;
+      }, UTRIE2_SHIFT_2 = 5, UTRIE2_SHIFT_1 = 6 + 5, UTRIE2_INDEX_SHIFT = 2, UTRIE2_SHIFT_1_2 = UTRIE2_SHIFT_1 - UTRIE2_SHIFT_2, UTRIE2_LSCP_INDEX_2_OFFSET = 65536 >> UTRIE2_SHIFT_2, UTRIE2_DATA_BLOCK_LENGTH = 1 << UTRIE2_SHIFT_2, UTRIE2_DATA_MASK = UTRIE2_DATA_BLOCK_LENGTH - 1, UTRIE2_LSCP_INDEX_2_LENGTH = 1024 >> UTRIE2_SHIFT_2, UTRIE2_INDEX_2_BMP_LENGTH = UTRIE2_LSCP_INDEX_2_OFFSET + UTRIE2_LSCP_INDEX_2_LENGTH, UTRIE2_UTF8_2B_INDEX_2_OFFSET = UTRIE2_INDEX_2_BMP_LENGTH, UTRIE2_UTF8_2B_INDEX_2_LENGTH = 32, UTRIE2_INDEX_1_OFFSET = UTRIE2_UTF8_2B_INDEX_2_OFFSET + UTRIE2_UTF8_2B_INDEX_2_LENGTH, UTRIE2_OMITTED_BMP_INDEX_1_LENGTH = 65536 >> UTRIE2_SHIFT_1, UTRIE2_INDEX_2_BLOCK_LENGTH = 1 << UTRIE2_SHIFT_1_2, UTRIE2_INDEX_2_MASK = UTRIE2_INDEX_2_BLOCK_LENGTH - 1, slice16 = function(view, start, end) {
+        return view.slice ? view.slice(start, end) : new Uint16Array(Array.prototype.slice.call(view, start, end));
+      }, slice32 = function(view, start, end) {
+        return view.slice ? view.slice(start, end) : new Uint32Array(Array.prototype.slice.call(view, start, end));
+      }, createTrieFromBase64 = function(base642, _byteLength) {
+        var buffer = decode(base642), view32 = Array.isArray(buffer) ? polyUint32Array(buffer) : new Uint32Array(buffer), view16 = Array.isArray(buffer) ? polyUint16Array(buffer) : new Uint16Array(buffer), headerLength = 24, index = slice16(view16, headerLength / 2, view32[4] / 2), data = view32[5] === 2 ? slice16(view16, (headerLength + view32[4]) / 2) : slice32(view32, Math.ceil((headerLength + view32[4]) / 4));
+        return new Trie(view32[0], view32[1], view32[2], view32[3], index, data);
+      }, Trie = (
+        /** @class */
+        function() {
+          function Trie2(initialValue, errorValue, highStart, highValueIndex, index, data) {
+            this.initialValue = initialValue, this.errorValue = errorValue, this.highStart = highStart, this.highValueIndex = highValueIndex, this.index = index, this.data = data;
+          }
+          return Trie2.prototype.get = function(codePoint) {
+            var ix;
+            if (codePoint >= 0) {
+              if (codePoint < 55296 || codePoint > 56319 && codePoint <= 65535)
+                return ix = this.index[codePoint >> UTRIE2_SHIFT_2], ix = (ix << UTRIE2_INDEX_SHIFT) + (codePoint & UTRIE2_DATA_MASK), this.data[ix];
+              if (codePoint <= 65535)
+                return ix = this.index[UTRIE2_LSCP_INDEX_2_OFFSET + (codePoint - 55296 >> UTRIE2_SHIFT_2)], ix = (ix << UTRIE2_INDEX_SHIFT) + (codePoint & UTRIE2_DATA_MASK), this.data[ix];
+              if (codePoint < this.highStart)
+                return ix = UTRIE2_INDEX_1_OFFSET - UTRIE2_OMITTED_BMP_INDEX_1_LENGTH + (codePoint >> UTRIE2_SHIFT_1), ix = this.index[ix], ix += codePoint >> UTRIE2_SHIFT_2 & UTRIE2_INDEX_2_MASK, ix = this.index[ix], ix = (ix << UTRIE2_INDEX_SHIFT) + (codePoint & UTRIE2_DATA_MASK), this.data[ix];
+              if (codePoint <= 1114111)
+                return this.data[this.highValueIndex];
+            }
+            return this.errorValue;
+          }, Trie2;
+        }()
+      ), chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", lookup = typeof Uint8Array > "u" ? [] : new Uint8Array(256), i6 = 0; i6 < chars.length; i6++)
+        lookup[chars.charCodeAt(i6)] = i6;
+      var Prepend = 1, CR = 2, LF = 3, Control = 4, Extend = 5, SpacingMark = 7, L2 = 8, V2 = 9, T7 = 10, LV = 11, LVT = 12, ZWJ = 13, Extended_Pictographic = 14, RI = 15, toCodePoints = function(str) {
+        for (var codePoints = [], i7 = 0, length = str.length; i7 < length; ) {
+          var value = str.charCodeAt(i7++);
+          if (value >= 55296 && value <= 56319 && i7 < length) {
+            var extra = str.charCodeAt(i7++);
+            (extra & 64512) === 56320 ? codePoints.push(((value & 1023) << 10) + (extra & 1023) + 65536) : (codePoints.push(value), i7--);
+          } else
+            codePoints.push(value);
+        }
+        return codePoints;
+      }, fromCodePoint = function() {
+        for (var codePoints = [], _i = 0; _i < arguments.length; _i++)
+          codePoints[_i] = arguments[_i];
+        if (String.fromCodePoint)
+          return String.fromCodePoint.apply(String, codePoints);
+        var length = codePoints.length;
+        if (!length)
+          return "";
+        for (var codeUnits = [], index = -1, result = ""; ++index < length; ) {
+          var codePoint = codePoints[index];
+          codePoint <= 65535 ? codeUnits.push(codePoint) : (codePoint -= 65536, codeUnits.push((codePoint >> 10) + 55296, codePoint % 1024 + 56320)), (index + 1 === length || codeUnits.length > 16384) && (result += String.fromCharCode.apply(String, codeUnits), codeUnits.length = 0);
+        }
+        return result;
+      }, UnicodeTrie = createTrieFromBase64(base64), BREAK_NOT_ALLOWED = "\xD7", BREAK_ALLOWED = "\xF7", codePointToClass = function(codePoint) {
+        return UnicodeTrie.get(codePoint);
+      }, _graphemeBreakAtIndex = function(_codePoints, classTypes, index) {
+        var prevIndex = index - 2, prev = classTypes[prevIndex], current = classTypes[index - 1], next = classTypes[index];
+        if (current === CR && next === LF)
+          return BREAK_NOT_ALLOWED;
+        if (current === CR || current === LF || current === Control || next === CR || next === LF || next === Control)
+          return BREAK_ALLOWED;
+        if (current === L2 && [L2, V2, LV, LVT].indexOf(next) !== -1 || (current === LV || current === V2) && (next === V2 || next === T7) || (current === LVT || current === T7) && next === T7 || next === ZWJ || next === Extend || next === SpacingMark || current === Prepend)
+          return BREAK_NOT_ALLOWED;
+        if (current === ZWJ && next === Extended_Pictographic) {
+          for (; prev === Extend; )
+            prev = classTypes[--prevIndex];
+          if (prev === Extended_Pictographic)
+            return BREAK_NOT_ALLOWED;
+        }
+        if (current === RI && next === RI) {
+          for (var countRI = 0; prev === RI; )
+            countRI++, prev = classTypes[--prevIndex];
+          if (countRI % 2 === 0)
+            return BREAK_NOT_ALLOWED;
+        }
+        return BREAK_ALLOWED;
+      }, GraphemeBreaker = function(str) {
+        var codePoints = toCodePoints(str), length = codePoints.length, index = 0, lastEnd = 0, classTypes = codePoints.map(codePointToClass);
+        return {
+          next: function() {
+            if (index >= length)
+              return { done: !0, value: null };
+            for (var graphemeBreak = BREAK_NOT_ALLOWED; index < length && (graphemeBreak = _graphemeBreakAtIndex(codePoints, classTypes, ++index)) === BREAK_NOT_ALLOWED; )
+              ;
+            if (graphemeBreak !== BREAK_NOT_ALLOWED || index === length) {
+              var value = fromCodePoint.apply(null, codePoints.slice(lastEnd, index));
+              return lastEnd = index, { value, done: !1 };
+            }
+            return { done: !0, value: null };
+          }
+        };
+      }, splitGraphemes = function(str) {
+        for (var breaker = GraphemeBreaker(str), graphemes = [], bk; !(bk = breaker.next()).done; )
+          bk.value && graphemes.push(bk.value.slice());
+        return graphemes;
+      }, testRangeBounds = function(document2) {
+        var TEST_HEIGHT = 123;
+        if (document2.createRange) {
+          var range = document2.createRange();
+          if (range.getBoundingClientRect) {
+            var testElement = document2.createElement("boundtest");
+            testElement.style.height = TEST_HEIGHT + "px", testElement.style.display = "block", document2.body.appendChild(testElement), range.selectNode(testElement);
+            var rangeBounds = range.getBoundingClientRect(), rangeHeight = Math.round(rangeBounds.height);
+            if (document2.body.removeChild(testElement), rangeHeight === TEST_HEIGHT)
+              return !0;
+          }
+        }
+        return !1;
+      }, testIOSLineBreak = function(document2) {
+        var testElement = document2.createElement("boundtest");
+        testElement.style.width = "50px", testElement.style.display = "block", testElement.style.fontSize = "12px", testElement.style.letterSpacing = "0px", testElement.style.wordSpacing = "0px", document2.body.appendChild(testElement);
+        var range = document2.createRange();
+        testElement.innerHTML = typeof "".repeat == "function" ? "&#128104;".repeat(10) : "";
+        var node = testElement.firstChild, textList = toCodePoints$1(node.data).map(function(i7) {
+          return fromCodePoint$1(i7);
+        }), offset = 0, prev = {}, supports = textList.every(function(text, i7) {
+          range.setStart(node, offset), range.setEnd(node, offset + text.length);
+          var rect = range.getBoundingClientRect();
+          offset += text.length;
+          var boundAhead = rect.x > prev.x || rect.y > prev.y;
+          return prev = rect, i7 === 0 ? !0 : boundAhead;
+        });
+        return document2.body.removeChild(testElement), supports;
+      }, testCORS = function() {
+        return typeof new Image().crossOrigin < "u";
+      }, testResponseType = function() {
+        return typeof new XMLHttpRequest().responseType == "string";
+      }, testSVG = function(document2) {
+        var img = new Image(), canvas = document2.createElement("canvas"), ctx = canvas.getContext("2d");
+        if (!ctx)
+          return !1;
+        img.src = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>";
+        try {
+          ctx.drawImage(img, 0, 0), canvas.toDataURL();
+        } catch {
+          return !1;
+        }
+        return !0;
+      }, isGreenPixel = function(data) {
+        return data[0] === 0 && data[1] === 255 && data[2] === 0 && data[3] === 255;
+      }, testForeignObject = function(document2) {
+        var canvas = document2.createElement("canvas"), size = 100;
+        canvas.width = size, canvas.height = size;
+        var ctx = canvas.getContext("2d");
+        if (!ctx)
+          return Promise.reject(!1);
+        ctx.fillStyle = "rgb(0, 255, 0)", ctx.fillRect(0, 0, size, size);
+        var img = new Image(), greenImageSrc = canvas.toDataURL();
+        img.src = greenImageSrc;
+        var svg = createForeignObjectSVG(size, size, 0, 0, img);
+        return ctx.fillStyle = "red", ctx.fillRect(0, 0, size, size), loadSerializedSVG$1(svg).then(function(img2) {
+          ctx.drawImage(img2, 0, 0);
+          var data = ctx.getImageData(0, 0, size, size).data;
+          ctx.fillStyle = "red", ctx.fillRect(0, 0, size, size);
+          var node = document2.createElement("div");
+          return node.style.backgroundImage = "url(" + greenImageSrc + ")", node.style.height = size + "px", isGreenPixel(data) ? loadSerializedSVG$1(createForeignObjectSVG(size, size, 0, 0, node)) : Promise.reject(!1);
+        }).then(function(img2) {
+          return ctx.drawImage(img2, 0, 0), isGreenPixel(ctx.getImageData(0, 0, size, size).data);
+        }).catch(function() {
+          return !1;
+        });
+      }, createForeignObjectSVG = function(width, height, x5, y6, node) {
+        var xmlns = "http://www.w3.org/2000/svg", svg = document.createElementNS(xmlns, "svg"), foreignObject = document.createElementNS(xmlns, "foreignObject");
+        return svg.setAttributeNS(null, "width", width.toString()), svg.setAttributeNS(null, "height", height.toString()), foreignObject.setAttributeNS(null, "width", "100%"), foreignObject.setAttributeNS(null, "height", "100%"), foreignObject.setAttributeNS(null, "x", x5.toString()), foreignObject.setAttributeNS(null, "y", y6.toString()), foreignObject.setAttributeNS(null, "externalResourcesRequired", "true"), svg.appendChild(foreignObject), foreignObject.appendChild(node), svg;
+      }, loadSerializedSVG$1 = function(svg) {
+        return new Promise(function(resolve, reject) {
+          var img = new Image();
+          img.onload = function() {
+            return resolve(img);
+          }, img.onerror = reject, img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(svg));
+        });
+      }, FEATURES = {
+        get SUPPORT_RANGE_BOUNDS() {
+          var value = testRangeBounds(document);
+          return Object.defineProperty(FEATURES, "SUPPORT_RANGE_BOUNDS", { value }), value;
+        },
+        get SUPPORT_WORD_BREAKING() {
+          var value = FEATURES.SUPPORT_RANGE_BOUNDS && testIOSLineBreak(document);
+          return Object.defineProperty(FEATURES, "SUPPORT_WORD_BREAKING", { value }), value;
+        },
+        get SUPPORT_SVG_DRAWING() {
+          var value = testSVG(document);
+          return Object.defineProperty(FEATURES, "SUPPORT_SVG_DRAWING", { value }), value;
+        },
+        get SUPPORT_FOREIGNOBJECT_DRAWING() {
+          var value = typeof Array.from == "function" && typeof window.fetch == "function" ? testForeignObject(document) : Promise.resolve(!1);
+          return Object.defineProperty(FEATURES, "SUPPORT_FOREIGNOBJECT_DRAWING", { value }), value;
+        },
+        get SUPPORT_CORS_IMAGES() {
+          var value = testCORS();
+          return Object.defineProperty(FEATURES, "SUPPORT_CORS_IMAGES", { value }), value;
+        },
+        get SUPPORT_RESPONSE_TYPE() {
+          var value = testResponseType();
+          return Object.defineProperty(FEATURES, "SUPPORT_RESPONSE_TYPE", { value }), value;
+        },
+        get SUPPORT_CORS_XHR() {
+          var value = "withCredentials" in new XMLHttpRequest();
+          return Object.defineProperty(FEATURES, "SUPPORT_CORS_XHR", { value }), value;
+        },
+        get SUPPORT_NATIVE_TEXT_SEGMENTATION() {
+          var value = !!(typeof Intl < "u" && Intl.Segmenter);
+          return Object.defineProperty(FEATURES, "SUPPORT_NATIVE_TEXT_SEGMENTATION", { value }), value;
+        }
+      }, TextBounds = (
+        /** @class */
+        function() {
+          function TextBounds2(text, bounds) {
+            this.text = text, this.bounds = bounds;
+          }
+          return TextBounds2;
+        }()
+      ), parseTextBounds = function(context, value, styles, node) {
+        var textList = breakText(value, styles), textBounds = [], offset = 0;
+        return textList.forEach(function(text) {
+          if (styles.textDecorationLine.length || text.trim().length > 0)
+            if (FEATURES.SUPPORT_RANGE_BOUNDS) {
+              var clientRects = createRange(node, offset, text.length).getClientRects();
+              if (clientRects.length > 1) {
+                var subSegments = segmentGraphemes(text), subOffset_1 = 0;
+                subSegments.forEach(function(subSegment) {
+                  textBounds.push(new TextBounds(subSegment, Bounds.fromDOMRectList(context, createRange(node, subOffset_1 + offset, subSegment.length).getClientRects()))), subOffset_1 += subSegment.length;
+                });
+              } else
+                textBounds.push(new TextBounds(text, Bounds.fromDOMRectList(context, clientRects)));
+            } else {
+              var replacementNode = node.splitText(text.length);
+              textBounds.push(new TextBounds(text, getWrapperBounds(context, node))), node = replacementNode;
+            }
+          else
+            FEATURES.SUPPORT_RANGE_BOUNDS || (node = node.splitText(text.length));
+          offset += text.length;
+        }), textBounds;
+      }, getWrapperBounds = function(context, node) {
+        var ownerDocument = node.ownerDocument;
+        if (ownerDocument) {
+          var wrapper = ownerDocument.createElement("html2canvaswrapper");
+          wrapper.appendChild(node.cloneNode(!0));
+          var parentNode = node.parentNode;
+          if (parentNode) {
+            parentNode.replaceChild(wrapper, node);
+            var bounds = parseBounds(context, wrapper);
+            return wrapper.firstChild && parentNode.replaceChild(wrapper.firstChild, wrapper), bounds;
+          }
+        }
+        return Bounds.EMPTY;
+      }, createRange = function(node, offset, length) {
+        var ownerDocument = node.ownerDocument;
+        if (!ownerDocument)
+          throw new Error("Node has no owner document");
+        var range = ownerDocument.createRange();
+        return range.setStart(node, offset), range.setEnd(node, offset + length), range;
+      }, segmentGraphemes = function(value) {
+        if (FEATURES.SUPPORT_NATIVE_TEXT_SEGMENTATION) {
+          var segmenter = new Intl.Segmenter(void 0, { granularity: "grapheme" });
+          return Array.from(segmenter.segment(value)).map(function(segment) {
+            return segment.segment;
+          });
+        }
+        return splitGraphemes(value);
+      }, segmentWords = function(value, styles) {
+        if (FEATURES.SUPPORT_NATIVE_TEXT_SEGMENTATION) {
+          var segmenter = new Intl.Segmenter(void 0, {
+            granularity: "word"
+          });
+          return Array.from(segmenter.segment(value)).map(function(segment) {
+            return segment.segment;
+          });
+        }
+        return breakWords(value, styles);
+      }, breakText = function(value, styles) {
+        return styles.letterSpacing !== 0 ? segmentGraphemes(value) : segmentWords(value, styles);
+      }, wordSeparators = [32, 160, 4961, 65792, 65793, 4153, 4241], breakWords = function(str, styles) {
+        for (var breaker = LineBreaker(str, {
+          lineBreak: styles.lineBreak,
+          wordBreak: styles.overflowWrap === "break-word" ? "break-word" : styles.wordBreak
+        }), words = [], bk, _loop_1 = function() {
+          if (bk.value) {
+            var value = bk.value.slice(), codePoints = toCodePoints$1(value), word_1 = "";
+            codePoints.forEach(function(codePoint) {
+              wordSeparators.indexOf(codePoint) === -1 ? word_1 += fromCodePoint$1(codePoint) : (word_1.length && words.push(word_1), words.push(fromCodePoint$1(codePoint)), word_1 = "");
+            }), word_1.length && words.push(word_1);
+          }
+        }; !(bk = breaker.next()).done; )
+          _loop_1();
+        return words;
+      }, TextContainer = (
+        /** @class */
+        function() {
+          function TextContainer2(context, node, styles) {
+            this.text = transform(node.data, styles.textTransform), this.textBounds = parseTextBounds(context, this.text, styles, node);
+          }
+          return TextContainer2;
+        }()
+      ), transform = function(text, transform2) {
+        switch (transform2) {
+          case 1:
+            return text.toLowerCase();
+          case 3:
+            return text.replace(CAPITALIZE, capitalize);
+          case 2:
+            return text.toUpperCase();
+          default:
+            return text;
+        }
+      }, CAPITALIZE = /(^|\s|:|-|\(|\))([a-z])/g, capitalize = function(m10, p1, p22) {
+        return m10.length > 0 ? p1 + p22.toUpperCase() : m10;
+      }, ImageElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(ImageElementContainer2, _super);
+          function ImageElementContainer2(context, img) {
+            var _this = _super.call(this, context, img) || this;
+            return _this.src = img.currentSrc || img.src, _this.intrinsicWidth = img.naturalWidth, _this.intrinsicHeight = img.naturalHeight, _this.context.cache.addImage(_this.src), _this;
+          }
+          return ImageElementContainer2;
+        }(ElementContainer)
+      ), CanvasElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(CanvasElementContainer2, _super);
+          function CanvasElementContainer2(context, canvas) {
+            var _this = _super.call(this, context, canvas) || this;
+            return _this.canvas = canvas, _this.intrinsicWidth = canvas.width, _this.intrinsicHeight = canvas.height, _this;
+          }
+          return CanvasElementContainer2;
+        }(ElementContainer)
+      ), SVGElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(SVGElementContainer2, _super);
+          function SVGElementContainer2(context, img) {
+            var _this = _super.call(this, context, img) || this, s15 = new XMLSerializer(), bounds = parseBounds(context, img);
+            return img.setAttribute("width", bounds.width + "px"), img.setAttribute("height", bounds.height + "px"), _this.svg = "data:image/svg+xml," + encodeURIComponent(s15.serializeToString(img)), _this.intrinsicWidth = img.width.baseVal.value, _this.intrinsicHeight = img.height.baseVal.value, _this.context.cache.addImage(_this.svg), _this;
+          }
+          return SVGElementContainer2;
+        }(ElementContainer)
+      ), LIElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(LIElementContainer2, _super);
+          function LIElementContainer2(context, element) {
+            var _this = _super.call(this, context, element) || this;
+            return _this.value = element.value, _this;
+          }
+          return LIElementContainer2;
+        }(ElementContainer)
+      ), OLElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(OLElementContainer2, _super);
+          function OLElementContainer2(context, element) {
+            var _this = _super.call(this, context, element) || this;
+            return _this.start = element.start, _this.reversed = typeof element.reversed == "boolean" && element.reversed === !0, _this;
+          }
+          return OLElementContainer2;
+        }(ElementContainer)
+      ), CHECKBOX_BORDER_RADIUS = [
+        {
+          type: 15,
+          flags: 0,
+          unit: "px",
+          number: 3
+        }
+      ], RADIO_BORDER_RADIUS = [
+        {
+          type: 16,
+          flags: 0,
+          number: 50
+        }
+      ], reformatInputBounds = function(bounds) {
+        return bounds.width > bounds.height ? new Bounds(bounds.left + (bounds.width - bounds.height) / 2, bounds.top, bounds.height, bounds.height) : bounds.width < bounds.height ? new Bounds(bounds.left, bounds.top + (bounds.height - bounds.width) / 2, bounds.width, bounds.width) : bounds;
+      }, getInputValue = function(node) {
+        var value = node.type === PASSWORD ? new Array(node.value.length + 1).join("\u2022") : node.value;
+        return value.length === 0 ? node.placeholder || "" : value;
+      }, CHECKBOX = "checkbox", RADIO = "radio", PASSWORD = "password", INPUT_COLOR = 707406591, InputElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(InputElementContainer2, _super);
+          function InputElementContainer2(context, input2) {
+            var _this = _super.call(this, context, input2) || this;
+            switch (_this.type = input2.type.toLowerCase(), _this.checked = input2.checked, _this.value = getInputValue(input2), (_this.type === CHECKBOX || _this.type === RADIO) && (_this.styles.backgroundColor = 3739148031, _this.styles.borderTopColor = _this.styles.borderRightColor = _this.styles.borderBottomColor = _this.styles.borderLeftColor = 2779096575, _this.styles.borderTopWidth = _this.styles.borderRightWidth = _this.styles.borderBottomWidth = _this.styles.borderLeftWidth = 1, _this.styles.borderTopStyle = _this.styles.borderRightStyle = _this.styles.borderBottomStyle = _this.styles.borderLeftStyle = 1, _this.styles.backgroundClip = [
+              0
+              /* BORDER_BOX */
+            ], _this.styles.backgroundOrigin = [
+              0
+              /* BORDER_BOX */
+            ], _this.bounds = reformatInputBounds(_this.bounds)), _this.type) {
+              case CHECKBOX:
+                _this.styles.borderTopRightRadius = _this.styles.borderTopLeftRadius = _this.styles.borderBottomRightRadius = _this.styles.borderBottomLeftRadius = CHECKBOX_BORDER_RADIUS;
+                break;
+              case RADIO:
+                _this.styles.borderTopRightRadius = _this.styles.borderTopLeftRadius = _this.styles.borderBottomRightRadius = _this.styles.borderBottomLeftRadius = RADIO_BORDER_RADIUS;
+                break;
+            }
+            return _this;
+          }
+          return InputElementContainer2;
+        }(ElementContainer)
+      ), SelectElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(SelectElementContainer2, _super);
+          function SelectElementContainer2(context, element) {
+            var _this = _super.call(this, context, element) || this, option = element.options[element.selectedIndex || 0];
+            return _this.value = option && option.text || "", _this;
+          }
+          return SelectElementContainer2;
+        }(ElementContainer)
+      ), TextareaElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(TextareaElementContainer2, _super);
+          function TextareaElementContainer2(context, element) {
+            var _this = _super.call(this, context, element) || this;
+            return _this.value = element.value, _this;
+          }
+          return TextareaElementContainer2;
+        }(ElementContainer)
+      ), IFrameElementContainer = (
+        /** @class */
+        function(_super) {
+          __extends(IFrameElementContainer2, _super);
+          function IFrameElementContainer2(context, iframe) {
+            var _this = _super.call(this, context, iframe) || this;
+            _this.src = iframe.src, _this.width = parseInt(iframe.width, 10) || 0, _this.height = parseInt(iframe.height, 10) || 0, _this.backgroundColor = _this.styles.backgroundColor;
+            try {
+              if (iframe.contentWindow && iframe.contentWindow.document && iframe.contentWindow.document.documentElement) {
+                _this.tree = parseTree(context, iframe.contentWindow.document.documentElement);
+                var documentBackgroundColor = iframe.contentWindow.document.documentElement ? parseColor(context, getComputedStyle(iframe.contentWindow.document.documentElement).backgroundColor) : COLORS.TRANSPARENT, bodyBackgroundColor = iframe.contentWindow.document.body ? parseColor(context, getComputedStyle(iframe.contentWindow.document.body).backgroundColor) : COLORS.TRANSPARENT;
+                _this.backgroundColor = isTransparent(documentBackgroundColor) ? isTransparent(bodyBackgroundColor) ? _this.styles.backgroundColor : bodyBackgroundColor : documentBackgroundColor;
+              }
+            } catch {
+            }
+            return _this;
+          }
+          return IFrameElementContainer2;
+        }(ElementContainer)
+      ), LIST_OWNERS = ["OL", "UL", "MENU"], parseNodeTree = function(context, node, parent, root2) {
+        for (var childNode = node.firstChild, nextNode = void 0; childNode; childNode = nextNode)
+          if (nextNode = childNode.nextSibling, isTextNode(childNode) && childNode.data.trim().length > 0)
+            parent.textNodes.push(new TextContainer(context, childNode, parent.styles));
+          else if (isElementNode(childNode))
+            if (isSlotElement(childNode) && childNode.assignedNodes)
+              childNode.assignedNodes().forEach(function(childNode2) {
+                return parseNodeTree(context, childNode2, parent, root2);
+              });
+            else {
+              var container = createContainer(context, childNode);
+              container.styles.isVisible() && (createsRealStackingContext(childNode, container, root2) ? container.flags |= 4 : createsStackingContext(container.styles) && (container.flags |= 2), LIST_OWNERS.indexOf(childNode.tagName) !== -1 && (container.flags |= 8), parent.elements.push(container), childNode.slot, childNode.shadowRoot ? parseNodeTree(context, childNode.shadowRoot, container, root2) : !isTextareaElement(childNode) && !isSVGElement(childNode) && !isSelectElement(childNode) && parseNodeTree(context, childNode, container, root2));
+            }
+      }, createContainer = function(context, element) {
+        return isImageElement(element) ? new ImageElementContainer(context, element) : isCanvasElement(element) ? new CanvasElementContainer(context, element) : isSVGElement(element) ? new SVGElementContainer(context, element) : isLIElement(element) ? new LIElementContainer(context, element) : isOLElement(element) ? new OLElementContainer(context, element) : isInputElement2(element) ? new InputElementContainer(context, element) : isSelectElement(element) ? new SelectElementContainer(context, element) : isTextareaElement(element) ? new TextareaElementContainer(context, element) : isIFrameElement(element) ? new IFrameElementContainer(context, element) : new ElementContainer(context, element);
+      }, parseTree = function(context, element) {
+        var container = createContainer(context, element);
+        return container.flags |= 4, parseNodeTree(context, element, container, container), container;
+      }, createsRealStackingContext = function(node, container, root2) {
+        return container.styles.isPositionedWithZIndex() || container.styles.opacity < 1 || container.styles.isTransformed() || isBodyElement(node) && root2.styles.isTransparent();
+      }, createsStackingContext = function(styles) {
+        return styles.isPositioned() || styles.isFloating();
+      }, isTextNode = function(node) {
+        return node.nodeType === Node.TEXT_NODE;
+      }, isElementNode = function(node) {
+        return node.nodeType === Node.ELEMENT_NODE;
+      }, isHTMLElementNode = function(node) {
+        return isElementNode(node) && typeof node.style < "u" && !isSVGElementNode(node);
+      }, isSVGElementNode = function(element) {
+        return typeof element.className == "object";
+      }, isLIElement = function(node) {
+        return node.tagName === "LI";
+      }, isOLElement = function(node) {
+        return node.tagName === "OL";
+      }, isInputElement2 = function(node) {
+        return node.tagName === "INPUT";
+      }, isHTMLElement = function(node) {
+        return node.tagName === "HTML";
+      }, isSVGElement = function(node) {
+        return node.tagName === "svg";
+      }, isBodyElement = function(node) {
+        return node.tagName === "BODY";
+      }, isCanvasElement = function(node) {
+        return node.tagName === "CANVAS";
+      }, isVideoElement = function(node) {
+        return node.tagName === "VIDEO";
+      }, isImageElement = function(node) {
+        return node.tagName === "IMG";
+      }, isIFrameElement = function(node) {
+        return node.tagName === "IFRAME";
+      }, isStyleElement = function(node) {
+        return node.tagName === "STYLE";
+      }, isScriptElement = function(node) {
+        return node.tagName === "SCRIPT";
+      }, isTextareaElement = function(node) {
+        return node.tagName === "TEXTAREA";
+      }, isSelectElement = function(node) {
+        return node.tagName === "SELECT";
+      }, isSlotElement = function(node) {
+        return node.tagName === "SLOT";
+      }, isCustomElement = function(node) {
+        return node.tagName.indexOf("-") > 0;
+      }, CounterState = (
+        /** @class */
+        function() {
+          function CounterState2() {
+            this.counters = {};
+          }
+          return CounterState2.prototype.getCounterValue = function(name) {
+            var counter = this.counters[name];
+            return counter && counter.length ? counter[counter.length - 1] : 1;
+          }, CounterState2.prototype.getCounterValues = function(name) {
+            var counter = this.counters[name];
+            return counter || [];
+          }, CounterState2.prototype.pop = function(counters) {
+            var _this = this;
+            counters.forEach(function(counter) {
+              return _this.counters[counter].pop();
+            });
+          }, CounterState2.prototype.parse = function(style) {
+            var _this = this, counterIncrement2 = style.counterIncrement, counterReset2 = style.counterReset, canReset = !0;
+            counterIncrement2 !== null && counterIncrement2.forEach(function(entry2) {
+              var counter = _this.counters[entry2.counter];
+              counter && entry2.increment !== 0 && (canReset = !1, counter.length || counter.push(1), counter[Math.max(0, counter.length - 1)] += entry2.increment);
+            });
+            var counterNames = [];
+            return canReset && counterReset2.forEach(function(entry2) {
+              var counter = _this.counters[entry2.counter];
+              counterNames.push(entry2.counter), counter || (counter = _this.counters[entry2.counter] = []), counter.push(entry2.reset);
+            }), counterNames;
+          }, CounterState2;
+        }()
+      ), ROMAN_UPPER = {
+        integers: [1e3, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1],
+        values: ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
+      }, ARMENIAN = {
+        integers: [
+          9e3,
+          8e3,
+          7e3,
+          6e3,
+          5e3,
+          4e3,
+          3e3,
+          2e3,
+          1e3,
+          900,
+          800,
+          700,
+          600,
+          500,
+          400,
+          300,
+          200,
+          100,
+          90,
+          80,
+          70,
+          60,
+          50,
+          40,
+          30,
+          20,
+          10,
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        values: [
+          "\u0554",
+          "\u0553",
+          "\u0552",
+          "\u0551",
+          "\u0550",
+          "\u054F",
+          "\u054E",
+          "\u054D",
+          "\u054C",
+          "\u054B",
+          "\u054A",
+          "\u0549",
+          "\u0548",
+          "\u0547",
+          "\u0546",
+          "\u0545",
+          "\u0544",
+          "\u0543",
+          "\u0542",
+          "\u0541",
+          "\u0540",
+          "\u053F",
+          "\u053E",
+          "\u053D",
+          "\u053C",
+          "\u053B",
+          "\u053A",
+          "\u0539",
+          "\u0538",
+          "\u0537",
+          "\u0536",
+          "\u0535",
+          "\u0534",
+          "\u0533",
+          "\u0532",
+          "\u0531"
+        ]
+      }, HEBREW = {
+        integers: [
+          1e4,
+          9e3,
+          8e3,
+          7e3,
+          6e3,
+          5e3,
+          4e3,
+          3e3,
+          2e3,
+          1e3,
+          400,
+          300,
+          200,
+          100,
+          90,
+          80,
+          70,
+          60,
+          50,
+          40,
+          30,
+          20,
+          19,
+          18,
+          17,
+          16,
+          15,
+          10,
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        values: [
+          "\u05D9\u05F3",
+          "\u05D8\u05F3",
+          "\u05D7\u05F3",
+          "\u05D6\u05F3",
+          "\u05D5\u05F3",
+          "\u05D4\u05F3",
+          "\u05D3\u05F3",
+          "\u05D2\u05F3",
+          "\u05D1\u05F3",
+          "\u05D0\u05F3",
+          "\u05EA",
+          "\u05E9",
+          "\u05E8",
+          "\u05E7",
+          "\u05E6",
+          "\u05E4",
+          "\u05E2",
+          "\u05E1",
+          "\u05E0",
+          "\u05DE",
+          "\u05DC",
+          "\u05DB",
+          "\u05D9\u05D8",
+          "\u05D9\u05D7",
+          "\u05D9\u05D6",
+          "\u05D8\u05D6",
+          "\u05D8\u05D5",
+          "\u05D9",
+          "\u05D8",
+          "\u05D7",
+          "\u05D6",
+          "\u05D5",
+          "\u05D4",
+          "\u05D3",
+          "\u05D2",
+          "\u05D1",
+          "\u05D0"
+        ]
+      }, GEORGIAN = {
+        integers: [
+          1e4,
+          9e3,
+          8e3,
+          7e3,
+          6e3,
+          5e3,
+          4e3,
+          3e3,
+          2e3,
+          1e3,
+          900,
+          800,
+          700,
+          600,
+          500,
+          400,
+          300,
+          200,
+          100,
+          90,
+          80,
+          70,
+          60,
+          50,
+          40,
+          30,
+          20,
+          10,
+          9,
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        values: [
+          "\u10F5",
+          "\u10F0",
+          "\u10EF",
+          "\u10F4",
+          "\u10EE",
+          "\u10ED",
+          "\u10EC",
+          "\u10EB",
+          "\u10EA",
+          "\u10E9",
+          "\u10E8",
+          "\u10E7",
+          "\u10E6",
+          "\u10E5",
+          "\u10E4",
+          "\u10F3",
+          "\u10E2",
+          "\u10E1",
+          "\u10E0",
+          "\u10DF",
+          "\u10DE",
+          "\u10DD",
+          "\u10F2",
+          "\u10DC",
+          "\u10DB",
+          "\u10DA",
+          "\u10D9",
+          "\u10D8",
+          "\u10D7",
+          "\u10F1",
+          "\u10D6",
+          "\u10D5",
+          "\u10D4",
+          "\u10D3",
+          "\u10D2",
+          "\u10D1",
+          "\u10D0"
+        ]
+      }, createAdditiveCounter = function(value, min, max, symbols, fallback, suffix) {
+        return value < min || value > max ? createCounterText(value, fallback, suffix.length > 0) : symbols.integers.reduce(function(string, integer, index) {
+          for (; value >= integer; )
+            value -= integer, string += symbols.values[index];
+          return string;
+        }, "") + suffix;
+      }, createCounterStyleWithSymbolResolver = function(value, codePointRangeLength, isNumeric, resolver) {
+        var string = "";
+        do
+          isNumeric || value--, string = resolver(value) + string, value /= codePointRangeLength;
+        while (value * codePointRangeLength >= codePointRangeLength);
+        return string;
+      }, createCounterStyleFromRange = function(value, codePointRangeStart, codePointRangeEnd, isNumeric, suffix) {
+        var codePointRangeLength = codePointRangeEnd - codePointRangeStart + 1;
+        return (value < 0 ? "-" : "") + (createCounterStyleWithSymbolResolver(Math.abs(value), codePointRangeLength, isNumeric, function(codePoint) {
+          return fromCodePoint$1(Math.floor(codePoint % codePointRangeLength) + codePointRangeStart);
+        }) + suffix);
+      }, createCounterStyleFromSymbols = function(value, symbols, suffix) {
+        suffix === void 0 && (suffix = ". ");
+        var codePointRangeLength = symbols.length;
+        return createCounterStyleWithSymbolResolver(Math.abs(value), codePointRangeLength, !1, function(codePoint) {
+          return symbols[Math.floor(codePoint % codePointRangeLength)];
+        }) + suffix;
+      }, CJK_ZEROS = 1 << 0, CJK_TEN_COEFFICIENTS = 1 << 1, CJK_TEN_HIGH_COEFFICIENTS = 1 << 2, CJK_HUNDRED_COEFFICIENTS = 1 << 3, createCJKCounter = function(value, numbers, multipliers, negativeSign, suffix, flags2) {
+        if (value < -9999 || value > 9999)
+          return createCounterText(value, 4, suffix.length > 0);
+        var tmp = Math.abs(value), string = suffix;
+        if (tmp === 0)
+          return numbers[0] + string;
+        for (var digit = 0; tmp > 0 && digit <= 4; digit++) {
+          var coefficient = tmp % 10;
+          coefficient === 0 && contains(flags2, CJK_ZEROS) && string !== "" ? string = numbers[coefficient] + string : coefficient > 1 || coefficient === 1 && digit === 0 || coefficient === 1 && digit === 1 && contains(flags2, CJK_TEN_COEFFICIENTS) || coefficient === 1 && digit === 1 && contains(flags2, CJK_TEN_HIGH_COEFFICIENTS) && value > 100 || coefficient === 1 && digit > 1 && contains(flags2, CJK_HUNDRED_COEFFICIENTS) ? string = numbers[coefficient] + (digit > 0 ? multipliers[digit - 1] : "") + string : coefficient === 1 && digit > 0 && (string = multipliers[digit - 1] + string), tmp = Math.floor(tmp / 10);
+        }
+        return (value < 0 ? negativeSign : "") + string;
+      }, CHINESE_INFORMAL_MULTIPLIERS = "\u5341\u767E\u5343\u842C", CHINESE_FORMAL_MULTIPLIERS = "\u62FE\u4F70\u4EDF\u842C", JAPANESE_NEGATIVE = "\u30DE\u30A4\u30CA\u30B9", KOREAN_NEGATIVE = "\uB9C8\uC774\uB108\uC2A4", createCounterText = function(value, type, appendSuffix) {
+        var defaultSuffix = appendSuffix ? ". " : "", cjkSuffix = appendSuffix ? "\u3001" : "", koreanSuffix = appendSuffix ? ", " : "", spaceSuffix = appendSuffix ? " " : "";
+        switch (type) {
+          case 0:
+            return "\u2022" + spaceSuffix;
+          case 1:
+            return "\u25E6" + spaceSuffix;
+          case 2:
+            return "\u25FE" + spaceSuffix;
+          case 5:
+            var string = createCounterStyleFromRange(value, 48, 57, !0, defaultSuffix);
+            return string.length < 4 ? "0" + string : string;
+          case 4:
+            return createCounterStyleFromSymbols(value, "\u3007\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D", cjkSuffix);
+          case 6:
+            return createAdditiveCounter(value, 1, 3999, ROMAN_UPPER, 3, defaultSuffix).toLowerCase();
+          case 7:
+            return createAdditiveCounter(value, 1, 3999, ROMAN_UPPER, 3, defaultSuffix);
+          case 8:
+            return createCounterStyleFromRange(value, 945, 969, !1, defaultSuffix);
+          case 9:
+            return createCounterStyleFromRange(value, 97, 122, !1, defaultSuffix);
+          case 10:
+            return createCounterStyleFromRange(value, 65, 90, !1, defaultSuffix);
+          case 11:
+            return createCounterStyleFromRange(value, 1632, 1641, !0, defaultSuffix);
+          case 12:
+          case 49:
+            return createAdditiveCounter(value, 1, 9999, ARMENIAN, 3, defaultSuffix);
+          case 35:
+            return createAdditiveCounter(value, 1, 9999, ARMENIAN, 3, defaultSuffix).toLowerCase();
+          case 13:
+            return createCounterStyleFromRange(value, 2534, 2543, !0, defaultSuffix);
+          case 14:
+          case 30:
+            return createCounterStyleFromRange(value, 6112, 6121, !0, defaultSuffix);
+          case 15:
+            return createCounterStyleFromSymbols(value, "\u5B50\u4E11\u5BC5\u536F\u8FB0\u5DF3\u5348\u672A\u7533\u9149\u620C\u4EA5", cjkSuffix);
+          case 16:
+            return createCounterStyleFromSymbols(value, "\u7532\u4E59\u4E19\u4E01\u620A\u5DF1\u5E9A\u8F9B\u58EC\u7678", cjkSuffix);
+          case 17:
+          case 48:
+            return createCJKCounter(value, "\u96F6\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D", CHINESE_INFORMAL_MULTIPLIERS, "\u8CA0", cjkSuffix, CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS | CJK_HUNDRED_COEFFICIENTS);
+          case 47:
+            return createCJKCounter(value, "\u96F6\u58F9\u8CB3\u53C3\u8086\u4F0D\u9678\u67D2\u634C\u7396", CHINESE_FORMAL_MULTIPLIERS, "\u8CA0", cjkSuffix, CJK_ZEROS | CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS | CJK_HUNDRED_COEFFICIENTS);
+          case 42:
+            return createCJKCounter(value, "\u96F6\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D", CHINESE_INFORMAL_MULTIPLIERS, "\u8D1F", cjkSuffix, CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS | CJK_HUNDRED_COEFFICIENTS);
+          case 41:
+            return createCJKCounter(value, "\u96F6\u58F9\u8D30\u53C1\u8086\u4F0D\u9646\u67D2\u634C\u7396", CHINESE_FORMAL_MULTIPLIERS, "\u8D1F", cjkSuffix, CJK_ZEROS | CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS | CJK_HUNDRED_COEFFICIENTS);
+          case 26:
+            return createCJKCounter(value, "\u3007\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D", "\u5341\u767E\u5343\u4E07", JAPANESE_NEGATIVE, cjkSuffix, 0);
+          case 25:
+            return createCJKCounter(value, "\u96F6\u58F1\u5F10\u53C2\u56DB\u4F0D\u516D\u4E03\u516B\u4E5D", "\u62FE\u767E\u5343\u4E07", JAPANESE_NEGATIVE, cjkSuffix, CJK_ZEROS | CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS);
+          case 31:
+            return createCJKCounter(value, "\uC601\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C", "\uC2ED\uBC31\uCC9C\uB9CC", KOREAN_NEGATIVE, koreanSuffix, CJK_ZEROS | CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS);
+          case 33:
+            return createCJKCounter(value, "\u96F6\u4E00\u4E8C\u4E09\u56DB\u4E94\u516D\u4E03\u516B\u4E5D", "\u5341\u767E\u5343\u842C", KOREAN_NEGATIVE, koreanSuffix, 0);
+          case 32:
+            return createCJKCounter(value, "\u96F6\u58F9\u8CB3\u53C3\u56DB\u4E94\u516D\u4E03\u516B\u4E5D", "\u62FE\u767E\u5343", KOREAN_NEGATIVE, koreanSuffix, CJK_ZEROS | CJK_TEN_COEFFICIENTS | CJK_TEN_HIGH_COEFFICIENTS);
+          case 18:
+            return createCounterStyleFromRange(value, 2406, 2415, !0, defaultSuffix);
+          case 20:
+            return createAdditiveCounter(value, 1, 19999, GEORGIAN, 3, defaultSuffix);
+          case 21:
+            return createCounterStyleFromRange(value, 2790, 2799, !0, defaultSuffix);
+          case 22:
+            return createCounterStyleFromRange(value, 2662, 2671, !0, defaultSuffix);
+          case 22:
+            return createAdditiveCounter(value, 1, 10999, HEBREW, 3, defaultSuffix);
+          case 23:
+            return createCounterStyleFromSymbols(value, "\u3042\u3044\u3046\u3048\u304A\u304B\u304D\u304F\u3051\u3053\u3055\u3057\u3059\u305B\u305D\u305F\u3061\u3064\u3066\u3068\u306A\u306B\u306C\u306D\u306E\u306F\u3072\u3075\u3078\u307B\u307E\u307F\u3080\u3081\u3082\u3084\u3086\u3088\u3089\u308A\u308B\u308C\u308D\u308F\u3090\u3091\u3092\u3093");
+          case 24:
+            return createCounterStyleFromSymbols(value, "\u3044\u308D\u306F\u306B\u307B\u3078\u3068\u3061\u308A\u306C\u308B\u3092\u308F\u304B\u3088\u305F\u308C\u305D\u3064\u306D\u306A\u3089\u3080\u3046\u3090\u306E\u304A\u304F\u3084\u307E\u3051\u3075\u3053\u3048\u3066\u3042\u3055\u304D\u3086\u3081\u307F\u3057\u3091\u3072\u3082\u305B\u3059");
+          case 27:
+            return createCounterStyleFromRange(value, 3302, 3311, !0, defaultSuffix);
+          case 28:
+            return createCounterStyleFromSymbols(value, "\u30A2\u30A4\u30A6\u30A8\u30AA\u30AB\u30AD\u30AF\u30B1\u30B3\u30B5\u30B7\u30B9\u30BB\u30BD\u30BF\u30C1\u30C4\u30C6\u30C8\u30CA\u30CB\u30CC\u30CD\u30CE\u30CF\u30D2\u30D5\u30D8\u30DB\u30DE\u30DF\u30E0\u30E1\u30E2\u30E4\u30E6\u30E8\u30E9\u30EA\u30EB\u30EC\u30ED\u30EF\u30F0\u30F1\u30F2\u30F3", cjkSuffix);
+          case 29:
+            return createCounterStyleFromSymbols(value, "\u30A4\u30ED\u30CF\u30CB\u30DB\u30D8\u30C8\u30C1\u30EA\u30CC\u30EB\u30F2\u30EF\u30AB\u30E8\u30BF\u30EC\u30BD\u30C4\u30CD\u30CA\u30E9\u30E0\u30A6\u30F0\u30CE\u30AA\u30AF\u30E4\u30DE\u30B1\u30D5\u30B3\u30A8\u30C6\u30A2\u30B5\u30AD\u30E6\u30E1\u30DF\u30B7\u30F1\u30D2\u30E2\u30BB\u30B9", cjkSuffix);
+          case 34:
+            return createCounterStyleFromRange(value, 3792, 3801, !0, defaultSuffix);
+          case 37:
+            return createCounterStyleFromRange(value, 6160, 6169, !0, defaultSuffix);
+          case 38:
+            return createCounterStyleFromRange(value, 4160, 4169, !0, defaultSuffix);
+          case 39:
+            return createCounterStyleFromRange(value, 2918, 2927, !0, defaultSuffix);
+          case 40:
+            return createCounterStyleFromRange(value, 1776, 1785, !0, defaultSuffix);
+          case 43:
+            return createCounterStyleFromRange(value, 3046, 3055, !0, defaultSuffix);
+          case 44:
+            return createCounterStyleFromRange(value, 3174, 3183, !0, defaultSuffix);
+          case 45:
+            return createCounterStyleFromRange(value, 3664, 3673, !0, defaultSuffix);
+          case 46:
+            return createCounterStyleFromRange(value, 3872, 3881, !0, defaultSuffix);
+          case 3:
+          default:
+            return createCounterStyleFromRange(value, 48, 57, !0, defaultSuffix);
+        }
+      }, IGNORE_ATTRIBUTE = "data-html2canvas-ignore", DocumentCloner = (
+        /** @class */
+        function() {
+          function DocumentCloner2(context, element, options) {
+            if (this.context = context, this.options = options, this.scrolledElements = [], this.referenceElement = element, this.counters = new CounterState(), this.quoteDepth = 0, !element.ownerDocument)
+              throw new Error("Cloned element does not have an owner document");
+            this.documentElement = this.cloneNode(element.ownerDocument.documentElement, !1);
+          }
+          return DocumentCloner2.prototype.toIFrame = function(ownerDocument, windowSize) {
+            var _this = this, iframe = createIFrameContainer(ownerDocument, windowSize);
+            if (!iframe.contentWindow)
+              return Promise.reject("Unable to find iframe window");
+            var scrollX = ownerDocument.defaultView.pageXOffset, scrollY = ownerDocument.defaultView.pageYOffset, cloneWindow = iframe.contentWindow, documentClone = cloneWindow.document, iframeLoad = iframeLoader(iframe).then(function() {
+              return __awaiter(_this, void 0, void 0, function() {
+                var onclone, referenceElement;
+                return __generator(this, function(_a2) {
+                  switch (_a2.label) {
+                    case 0:
+                      return this.scrolledElements.forEach(restoreNodeScroll), cloneWindow && (cloneWindow.scrollTo(windowSize.left, windowSize.top), /(iPad|iPhone|iPod)/g.test(navigator.userAgent) && (cloneWindow.scrollY !== windowSize.top || cloneWindow.scrollX !== windowSize.left) && (this.context.logger.warn("Unable to restore scroll position for cloned document"), this.context.windowBounds = this.context.windowBounds.add(cloneWindow.scrollX - windowSize.left, cloneWindow.scrollY - windowSize.top, 0, 0))), onclone = this.options.onclone, referenceElement = this.clonedReferenceElement, typeof referenceElement > "u" ? [2, Promise.reject("Error finding the " + this.referenceElement.nodeName + " in the cloned document")] : documentClone.fonts && documentClone.fonts.ready ? [4, documentClone.fonts.ready] : [3, 2];
+                    case 1:
+                      _a2.sent(), _a2.label = 2;
+                    case 2:
+                      return /(AppleWebKit)/g.test(navigator.userAgent) ? [4, imagesReady(documentClone)] : [3, 4];
+                    case 3:
+                      _a2.sent(), _a2.label = 4;
+                    case 4:
+                      return typeof onclone == "function" ? [2, Promise.resolve().then(function() {
+                        return onclone(documentClone, referenceElement);
+                      }).then(function() {
+                        return iframe;
+                      })] : [2, iframe];
+                  }
+                });
+              });
+            });
+            return documentClone.open(), documentClone.write(serializeDoctype(document.doctype) + "<html></html>"), restoreOwnerScroll(this.referenceElement.ownerDocument, scrollX, scrollY), documentClone.replaceChild(documentClone.adoptNode(this.documentElement), documentClone.documentElement), documentClone.close(), iframeLoad;
+          }, DocumentCloner2.prototype.createElementClone = function(node) {
+            if (isDebugging(
+              node,
+              2
+              /* CLONE */
+            ))
+              debugger;
+            if (isCanvasElement(node))
+              return this.createCanvasClone(node);
+            if (isVideoElement(node))
+              return this.createVideoClone(node);
+            if (isStyleElement(node))
+              return this.createStyleClone(node);
+            var clone = node.cloneNode(!1);
+            return isImageElement(clone) && (isImageElement(node) && node.currentSrc && node.currentSrc !== node.src && (clone.src = node.currentSrc, clone.srcset = ""), clone.loading === "lazy" && (clone.loading = "eager")), isCustomElement(clone) ? this.createCustomElementClone(clone) : clone;
+          }, DocumentCloner2.prototype.createCustomElementClone = function(node) {
+            var clone = document.createElement("html2canvascustomelement");
+            return copyCSSStyles(node.style, clone), clone;
+          }, DocumentCloner2.prototype.createStyleClone = function(node) {
+            try {
+              var sheet = node.sheet;
+              if (sheet && sheet.cssRules) {
+                var css = [].slice.call(sheet.cssRules, 0).reduce(function(css2, rule) {
+                  return rule && typeof rule.cssText == "string" ? css2 + rule.cssText : css2;
+                }, ""), style = node.cloneNode(!1);
+                return style.textContent = css, style;
+              }
+            } catch (e5) {
+              if (this.context.logger.error("Unable to access cssRules property", e5), e5.name !== "SecurityError")
+                throw e5;
+            }
+            return node.cloneNode(!1);
+          }, DocumentCloner2.prototype.createCanvasClone = function(canvas) {
+            var _a2;
+            if (this.options.inlineImages && canvas.ownerDocument) {
+              var img = canvas.ownerDocument.createElement("img");
+              try {
+                return img.src = canvas.toDataURL(), img;
+              } catch {
+                this.context.logger.info("Unable to inline canvas contents, canvas is tainted", canvas);
+              }
+            }
+            var clonedCanvas = canvas.cloneNode(!1);
+            try {
+              clonedCanvas.width = canvas.width, clonedCanvas.height = canvas.height;
+              var ctx = canvas.getContext("2d"), clonedCtx = clonedCanvas.getContext("2d");
+              if (clonedCtx)
+                if (!this.options.allowTaint && ctx)
+                  clonedCtx.putImageData(ctx.getImageData(0, 0, canvas.width, canvas.height), 0, 0);
+                else {
+                  var gl = (_a2 = canvas.getContext("webgl2")) !== null && _a2 !== void 0 ? _a2 : canvas.getContext("webgl");
+                  if (gl) {
+                    var attribs = gl.getContextAttributes();
+                    (attribs == null ? void 0 : attribs.preserveDrawingBuffer) === !1 && this.context.logger.warn("Unable to clone WebGL context as it has preserveDrawingBuffer=false", canvas);
+                  }
+                  clonedCtx.drawImage(canvas, 0, 0);
+                }
+              return clonedCanvas;
+            } catch {
+              this.context.logger.info("Unable to clone canvas as it is tainted", canvas);
+            }
+            return clonedCanvas;
+          }, DocumentCloner2.prototype.createVideoClone = function(video) {
+            var canvas = video.ownerDocument.createElement("canvas");
+            canvas.width = video.offsetWidth, canvas.height = video.offsetHeight;
+            var ctx = canvas.getContext("2d");
+            try {
+              return ctx && (ctx.drawImage(video, 0, 0, canvas.width, canvas.height), this.options.allowTaint || ctx.getImageData(0, 0, canvas.width, canvas.height)), canvas;
+            } catch {
+              this.context.logger.info("Unable to clone video as it is tainted", video);
+            }
+            var blankCanvas = video.ownerDocument.createElement("canvas");
+            return blankCanvas.width = video.offsetWidth, blankCanvas.height = video.offsetHeight, blankCanvas;
+          }, DocumentCloner2.prototype.appendChildNode = function(clone, child, copyStyles) {
+            (!isElementNode(child) || !isScriptElement(child) && !child.hasAttribute(IGNORE_ATTRIBUTE) && (typeof this.options.ignoreElements != "function" || !this.options.ignoreElements(child))) && (!this.options.copyStyles || !isElementNode(child) || !isStyleElement(child)) && clone.appendChild(this.cloneNode(child, copyStyles));
+          }, DocumentCloner2.prototype.cloneChildNodes = function(node, clone, copyStyles) {
+            for (var _this = this, child = node.shadowRoot ? node.shadowRoot.firstChild : node.firstChild; child; child = child.nextSibling)
+              if (isElementNode(child) && isSlotElement(child) && typeof child.assignedNodes == "function") {
+                var assignedNodes = child.assignedNodes();
+                assignedNodes.length && assignedNodes.forEach(function(assignedNode) {
+                  return _this.appendChildNode(clone, assignedNode, copyStyles);
+                });
+              } else
+                this.appendChildNode(clone, child, copyStyles);
+          }, DocumentCloner2.prototype.cloneNode = function(node, copyStyles) {
+            if (isTextNode(node))
+              return document.createTextNode(node.data);
+            if (!node.ownerDocument)
+              return node.cloneNode(!1);
+            var window2 = node.ownerDocument.defaultView;
+            if (window2 && isElementNode(node) && (isHTMLElementNode(node) || isSVGElementNode(node))) {
+              var clone = this.createElementClone(node);
+              clone.style.transitionProperty = "none";
+              var style = window2.getComputedStyle(node), styleBefore = window2.getComputedStyle(node, ":before"), styleAfter = window2.getComputedStyle(node, ":after");
+              this.referenceElement === node && isHTMLElementNode(clone) && (this.clonedReferenceElement = clone), isBodyElement(clone) && createPseudoHideStyles(clone);
+              var counters = this.counters.parse(new CSSParsedCounterDeclaration(this.context, style)), before = this.resolvePseudoContent(node, clone, styleBefore, PseudoElementType.BEFORE);
+              isCustomElement(node) && (copyStyles = !0), isVideoElement(node) || this.cloneChildNodes(node, clone, copyStyles), before && clone.insertBefore(before, clone.firstChild);
+              var after = this.resolvePseudoContent(node, clone, styleAfter, PseudoElementType.AFTER);
+              return after && clone.appendChild(after), this.counters.pop(counters), (style && (this.options.copyStyles || isSVGElementNode(node)) && !isIFrameElement(node) || copyStyles) && copyCSSStyles(style, clone), (node.scrollTop !== 0 || node.scrollLeft !== 0) && this.scrolledElements.push([clone, node.scrollLeft, node.scrollTop]), (isTextareaElement(node) || isSelectElement(node)) && (isTextareaElement(clone) || isSelectElement(clone)) && (clone.value = node.value), clone;
+            }
+            return node.cloneNode(!1);
+          }, DocumentCloner2.prototype.resolvePseudoContent = function(node, clone, style, pseudoElt) {
+            var _this = this;
+            if (style) {
+              var value = style.content, document2 = clone.ownerDocument;
+              if (!(!document2 || !value || value === "none" || value === "-moz-alt-content" || style.display === "none")) {
+                this.counters.parse(new CSSParsedCounterDeclaration(this.context, style));
+                var declaration = new CSSParsedPseudoDeclaration(this.context, style), anonymousReplacedElement = document2.createElement("html2canvaspseudoelement");
+                copyCSSStyles(style, anonymousReplacedElement), declaration.content.forEach(function(token) {
+                  if (token.type === 0)
+                    anonymousReplacedElement.appendChild(document2.createTextNode(token.value));
+                  else if (token.type === 22) {
+                    var img = document2.createElement("img");
+                    img.src = token.value, img.style.opacity = "1", anonymousReplacedElement.appendChild(img);
+                  } else if (token.type === 18) {
+                    if (token.name === "attr") {
+                      var attr = token.values.filter(isIdentToken);
+                      attr.length && anonymousReplacedElement.appendChild(document2.createTextNode(node.getAttribute(attr[0].value) || ""));
+                    } else if (token.name === "counter") {
+                      var _a2 = token.values.filter(nonFunctionArgSeparator), counter = _a2[0], counterStyle = _a2[1];
+                      if (counter && isIdentToken(counter)) {
+                        var counterState = _this.counters.getCounterValue(counter.value), counterType = counterStyle && isIdentToken(counterStyle) ? listStyleType.parse(_this.context, counterStyle.value) : 3;
+                        anonymousReplacedElement.appendChild(document2.createTextNode(createCounterText(counterState, counterType, !1)));
+                      }
+                    } else if (token.name === "counters") {
+                      var _b = token.values.filter(nonFunctionArgSeparator), counter = _b[0], delim = _b[1], counterStyle = _b[2];
+                      if (counter && isIdentToken(counter)) {
+                        var counterStates = _this.counters.getCounterValues(counter.value), counterType_1 = counterStyle && isIdentToken(counterStyle) ? listStyleType.parse(_this.context, counterStyle.value) : 3, separator = delim && delim.type === 0 ? delim.value : "", text = counterStates.map(function(value2) {
+                          return createCounterText(value2, counterType_1, !1);
+                        }).join(separator);
+                        anonymousReplacedElement.appendChild(document2.createTextNode(text));
+                      }
+                    }
+                  } else if (token.type === 20)
+                    switch (token.value) {
+                      case "open-quote":
+                        anonymousReplacedElement.appendChild(document2.createTextNode(getQuote(declaration.quotes, _this.quoteDepth++, !0)));
+                        break;
+                      case "close-quote":
+                        anonymousReplacedElement.appendChild(document2.createTextNode(getQuote(declaration.quotes, --_this.quoteDepth, !1)));
+                        break;
+                      default:
+                        anonymousReplacedElement.appendChild(document2.createTextNode(token.value));
+                    }
+                }), anonymousReplacedElement.className = PSEUDO_HIDE_ELEMENT_CLASS_BEFORE + " " + PSEUDO_HIDE_ELEMENT_CLASS_AFTER;
+                var newClassName = pseudoElt === PseudoElementType.BEFORE ? " " + PSEUDO_HIDE_ELEMENT_CLASS_BEFORE : " " + PSEUDO_HIDE_ELEMENT_CLASS_AFTER;
+                return isSVGElementNode(clone) ? clone.className.baseValue += newClassName : clone.className += newClassName, anonymousReplacedElement;
+              }
+            }
+          }, DocumentCloner2.destroy = function(container) {
+            return container.parentNode ? (container.parentNode.removeChild(container), !0) : !1;
+          }, DocumentCloner2;
+        }()
+      ), PseudoElementType;
+      (function(PseudoElementType2) {
+        PseudoElementType2[PseudoElementType2.BEFORE = 0] = "BEFORE", PseudoElementType2[PseudoElementType2.AFTER = 1] = "AFTER";
+      })(PseudoElementType || (PseudoElementType = {}));
+      var createIFrameContainer = function(ownerDocument, bounds) {
+        var cloneIframeContainer = ownerDocument.createElement("iframe");
+        return cloneIframeContainer.className = "html2canvas-container", cloneIframeContainer.style.visibility = "hidden", cloneIframeContainer.style.position = "fixed", cloneIframeContainer.style.left = "-10000px", cloneIframeContainer.style.top = "0px", cloneIframeContainer.style.border = "0", cloneIframeContainer.width = bounds.width.toString(), cloneIframeContainer.height = bounds.height.toString(), cloneIframeContainer.scrolling = "no", cloneIframeContainer.setAttribute(IGNORE_ATTRIBUTE, "true"), ownerDocument.body.appendChild(cloneIframeContainer), cloneIframeContainer;
+      }, imageReady = function(img) {
+        return new Promise(function(resolve) {
+          if (img.complete) {
+            resolve();
+            return;
+          }
+          if (!img.src) {
+            resolve();
+            return;
+          }
+          img.onload = resolve, img.onerror = resolve;
+        });
+      }, imagesReady = function(document2) {
+        return Promise.all([].slice.call(document2.images, 0).map(imageReady));
+      }, iframeLoader = function(iframe) {
+        return new Promise(function(resolve, reject) {
+          var cloneWindow = iframe.contentWindow;
+          if (!cloneWindow)
+            return reject("No window assigned for iframe");
+          var documentClone = cloneWindow.document;
+          cloneWindow.onload = iframe.onload = function() {
+            cloneWindow.onload = iframe.onload = null;
+            var interval = setInterval(function() {
+              documentClone.body.childNodes.length > 0 && documentClone.readyState === "complete" && (clearInterval(interval), resolve(iframe));
+            }, 50);
+          };
+        });
+      }, ignoredStyleProperties = [
+        "all",
+        "d",
+        "content"
+        // Safari shows pseudoelements if content is set
+      ], copyCSSStyles = function(style, target) {
+        for (var i7 = style.length - 1; i7 >= 0; i7--) {
+          var property = style.item(i7);
+          ignoredStyleProperties.indexOf(property) === -1 && target.style.setProperty(property, style.getPropertyValue(property));
+        }
+        return target;
+      }, serializeDoctype = function(doctype) {
+        var str = "";
+        return doctype && (str += "<!DOCTYPE ", doctype.name && (str += doctype.name), doctype.internalSubset && (str += doctype.internalSubset), doctype.publicId && (str += '"' + doctype.publicId + '"'), doctype.systemId && (str += '"' + doctype.systemId + '"'), str += ">"), str;
+      }, restoreOwnerScroll = function(ownerDocument, x5, y6) {
+        ownerDocument && ownerDocument.defaultView && (x5 !== ownerDocument.defaultView.pageXOffset || y6 !== ownerDocument.defaultView.pageYOffset) && ownerDocument.defaultView.scrollTo(x5, y6);
+      }, restoreNodeScroll = function(_a2) {
+        var element = _a2[0], x5 = _a2[1], y6 = _a2[2];
+        element.scrollLeft = x5, element.scrollTop = y6;
+      }, PSEUDO_BEFORE = ":before", PSEUDO_AFTER = ":after", PSEUDO_HIDE_ELEMENT_CLASS_BEFORE = "___html2canvas___pseudoelement_before", PSEUDO_HIDE_ELEMENT_CLASS_AFTER = "___html2canvas___pseudoelement_after", PSEUDO_HIDE_ELEMENT_STYLE = `{
+    content: "" !important;
+    display: none !important;
+}`, createPseudoHideStyles = function(body) {
+        createStyles(body, "." + PSEUDO_HIDE_ELEMENT_CLASS_BEFORE + PSEUDO_BEFORE + PSEUDO_HIDE_ELEMENT_STYLE + `
+         .` + PSEUDO_HIDE_ELEMENT_CLASS_AFTER + PSEUDO_AFTER + PSEUDO_HIDE_ELEMENT_STYLE);
+      }, createStyles = function(body, styles) {
+        var document2 = body.ownerDocument;
+        if (document2) {
+          var style = document2.createElement("style");
+          style.textContent = styles, body.appendChild(style);
+        }
+      }, CacheStorage = (
+        /** @class */
+        function() {
+          function CacheStorage2() {
+          }
+          return CacheStorage2.getOrigin = function(url) {
+            var link = CacheStorage2._link;
+            return link ? (link.href = url, link.href = link.href, link.protocol + link.hostname + link.port) : "about:blank";
+          }, CacheStorage2.isSameOrigin = function(src) {
+            return CacheStorage2.getOrigin(src) === CacheStorage2._origin;
+          }, CacheStorage2.setContext = function(window2) {
+            CacheStorage2._link = window2.document.createElement("a"), CacheStorage2._origin = CacheStorage2.getOrigin(window2.location.href);
+          }, CacheStorage2._origin = "about:blank", CacheStorage2;
+        }()
+      ), Cache = (
+        /** @class */
+        function() {
+          function Cache2(context, _options) {
+            this.context = context, this._options = _options, this._cache = {};
+          }
+          return Cache2.prototype.addImage = function(src) {
+            var result = Promise.resolve();
+            return this.has(src) || (isBlobImage(src) || isRenderable(src)) && (this._cache[src] = this.loadImage(src)).catch(function() {
+            }), result;
+          }, Cache2.prototype.match = function(src) {
+            return this._cache[src];
+          }, Cache2.prototype.loadImage = function(key) {
+            return __awaiter(this, void 0, void 0, function() {
+              var isSameOrigin, useCORS, useProxy, src, _this = this;
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    return isSameOrigin = CacheStorage.isSameOrigin(key), useCORS = !isInlineImage(key) && this._options.useCORS === !0 && FEATURES.SUPPORT_CORS_IMAGES && !isSameOrigin, useProxy = !isInlineImage(key) && !isSameOrigin && !isBlobImage(key) && typeof this._options.proxy == "string" && FEATURES.SUPPORT_CORS_XHR && !useCORS, !isSameOrigin && this._options.allowTaint === !1 && !isInlineImage(key) && !isBlobImage(key) && !useProxy && !useCORS ? [
+                      2
+                      /*return*/
+                    ] : (src = key, useProxy ? [4, this.proxy(src)] : [3, 2]);
+                  case 1:
+                    src = _a2.sent(), _a2.label = 2;
+                  case 2:
+                    return this.context.logger.debug("Added image " + key.substring(0, 256)), [4, new Promise(function(resolve, reject) {
+                      var img = new Image();
+                      img.onload = function() {
+                        return resolve(img);
+                      }, img.onerror = reject, (isInlineBase64Image(src) || useCORS) && (img.crossOrigin = "anonymous"), img.src = src, img.complete === !0 && setTimeout(function() {
+                        return resolve(img);
+                      }, 500), _this._options.imageTimeout > 0 && setTimeout(function() {
+                        return reject("Timed out (" + _this._options.imageTimeout + "ms) loading image");
+                      }, _this._options.imageTimeout);
+                    })];
+                  case 3:
+                    return [2, _a2.sent()];
+                }
+              });
+            });
+          }, Cache2.prototype.has = function(key) {
+            return typeof this._cache[key] < "u";
+          }, Cache2.prototype.keys = function() {
+            return Promise.resolve(Object.keys(this._cache));
+          }, Cache2.prototype.proxy = function(src) {
+            var _this = this, proxy = this._options.proxy;
+            if (!proxy)
+              throw new Error("No proxy defined");
+            var key = src.substring(0, 256);
+            return new Promise(function(resolve, reject) {
+              var responseType = FEATURES.SUPPORT_RESPONSE_TYPE ? "blob" : "text", xhr = new XMLHttpRequest();
+              xhr.onload = function() {
+                if (xhr.status === 200)
+                  if (responseType === "text")
+                    resolve(xhr.response);
+                  else {
+                    var reader_1 = new FileReader();
+                    reader_1.addEventListener("load", function() {
+                      return resolve(reader_1.result);
+                    }, !1), reader_1.addEventListener("error", function(e5) {
+                      return reject(e5);
+                    }, !1), reader_1.readAsDataURL(xhr.response);
+                  }
+                else
+                  reject("Failed to proxy resource " + key + " with status code " + xhr.status);
+              }, xhr.onerror = reject;
+              var queryString = proxy.indexOf("?") > -1 ? "&" : "?";
+              if (xhr.open("GET", "" + proxy + queryString + "url=" + encodeURIComponent(src) + "&responseType=" + responseType), responseType !== "text" && xhr instanceof XMLHttpRequest && (xhr.responseType = responseType), _this._options.imageTimeout) {
+                var timeout_1 = _this._options.imageTimeout;
+                xhr.timeout = timeout_1, xhr.ontimeout = function() {
+                  return reject("Timed out (" + timeout_1 + "ms) proxying " + key);
+                };
+              }
+              xhr.send();
+            });
+          }, Cache2;
+        }()
+      ), INLINE_SVG = /^data:image\/svg\+xml/i, INLINE_BASE64 = /^data:image\/.*;base64,/i, INLINE_IMG = /^data:image\/.*/i, isRenderable = function(src) {
+        return FEATURES.SUPPORT_SVG_DRAWING || !isSVG(src);
+      }, isInlineImage = function(src) {
+        return INLINE_IMG.test(src);
+      }, isInlineBase64Image = function(src) {
+        return INLINE_BASE64.test(src);
+      }, isBlobImage = function(src) {
+        return src.substr(0, 4) === "blob";
+      }, isSVG = function(src) {
+        return src.substr(-3).toLowerCase() === "svg" || INLINE_SVG.test(src);
+      }, Vector = (
+        /** @class */
+        function() {
+          function Vector2(x5, y6) {
+            this.type = 0, this.x = x5, this.y = y6;
+          }
+          return Vector2.prototype.add = function(deltaX, deltaY) {
+            return new Vector2(this.x + deltaX, this.y + deltaY);
+          }, Vector2;
+        }()
+      ), lerp = function(a13, b6, t17) {
+        return new Vector(a13.x + (b6.x - a13.x) * t17, a13.y + (b6.y - a13.y) * t17);
+      }, BezierCurve = (
+        /** @class */
+        function() {
+          function BezierCurve2(start, startControl, endControl, end) {
+            this.type = 1, this.start = start, this.startControl = startControl, this.endControl = endControl, this.end = end;
+          }
+          return BezierCurve2.prototype.subdivide = function(t17, firstHalf) {
+            var ab = lerp(this.start, this.startControl, t17), bc = lerp(this.startControl, this.endControl, t17), cd = lerp(this.endControl, this.end, t17), abbc = lerp(ab, bc, t17), bccd = lerp(bc, cd, t17), dest = lerp(abbc, bccd, t17);
+            return firstHalf ? new BezierCurve2(this.start, ab, abbc, dest) : new BezierCurve2(dest, bccd, cd, this.end);
+          }, BezierCurve2.prototype.add = function(deltaX, deltaY) {
+            return new BezierCurve2(this.start.add(deltaX, deltaY), this.startControl.add(deltaX, deltaY), this.endControl.add(deltaX, deltaY), this.end.add(deltaX, deltaY));
+          }, BezierCurve2.prototype.reverse = function() {
+            return new BezierCurve2(this.end, this.endControl, this.startControl, this.start);
+          }, BezierCurve2;
+        }()
+      ), isBezierCurve = function(path) {
+        return path.type === 1;
+      }, BoundCurves = (
+        /** @class */
+        function() {
+          function BoundCurves2(element) {
+            var styles = element.styles, bounds = element.bounds, _a2 = getAbsoluteValueForTuple(styles.borderTopLeftRadius, bounds.width, bounds.height), tlh = _a2[0], tlv = _a2[1], _b = getAbsoluteValueForTuple(styles.borderTopRightRadius, bounds.width, bounds.height), trh = _b[0], trv = _b[1], _c = getAbsoluteValueForTuple(styles.borderBottomRightRadius, bounds.width, bounds.height), brh = _c[0], brv = _c[1], _d = getAbsoluteValueForTuple(styles.borderBottomLeftRadius, bounds.width, bounds.height), blh = _d[0], blv = _d[1], factors = [];
+            factors.push((tlh + trh) / bounds.width), factors.push((blh + brh) / bounds.width), factors.push((tlv + blv) / bounds.height), factors.push((trv + brv) / bounds.height);
+            var maxFactor = Math.max.apply(Math, factors);
+            maxFactor > 1 && (tlh /= maxFactor, tlv /= maxFactor, trh /= maxFactor, trv /= maxFactor, brh /= maxFactor, brv /= maxFactor, blh /= maxFactor, blv /= maxFactor);
+            var topWidth = bounds.width - trh, rightHeight = bounds.height - brv, bottomWidth = bounds.width - brh, leftHeight = bounds.height - blv, borderTopWidth2 = styles.borderTopWidth, borderRightWidth2 = styles.borderRightWidth, borderBottomWidth2 = styles.borderBottomWidth, borderLeftWidth2 = styles.borderLeftWidth, paddingTop2 = getAbsoluteValue(styles.paddingTop, element.bounds.width), paddingRight2 = getAbsoluteValue(styles.paddingRight, element.bounds.width), paddingBottom2 = getAbsoluteValue(styles.paddingBottom, element.bounds.width), paddingLeft2 = getAbsoluteValue(styles.paddingLeft, element.bounds.width);
+            this.topLeftBorderDoubleOuterBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 / 3, bounds.top + borderTopWidth2 / 3, tlh - borderLeftWidth2 / 3, tlv - borderTopWidth2 / 3, CORNER.TOP_LEFT) : new Vector(bounds.left + borderLeftWidth2 / 3, bounds.top + borderTopWidth2 / 3), this.topRightBorderDoubleOuterBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + topWidth, bounds.top + borderTopWidth2 / 3, trh - borderRightWidth2 / 3, trv - borderTopWidth2 / 3, CORNER.TOP_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2 / 3, bounds.top + borderTopWidth2 / 3), this.bottomRightBorderDoubleOuterBox = brh > 0 || brv > 0 ? getCurvePoints(bounds.left + bottomWidth, bounds.top + rightHeight, brh - borderRightWidth2 / 3, brv - borderBottomWidth2 / 3, CORNER.BOTTOM_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2 / 3, bounds.top + bounds.height - borderBottomWidth2 / 3), this.bottomLeftBorderDoubleOuterBox = blh > 0 || blv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 / 3, bounds.top + leftHeight, blh - borderLeftWidth2 / 3, blv - borderBottomWidth2 / 3, CORNER.BOTTOM_LEFT) : new Vector(bounds.left + borderLeftWidth2 / 3, bounds.top + bounds.height - borderBottomWidth2 / 3), this.topLeftBorderDoubleInnerBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 * 2 / 3, bounds.top + borderTopWidth2 * 2 / 3, tlh - borderLeftWidth2 * 2 / 3, tlv - borderTopWidth2 * 2 / 3, CORNER.TOP_LEFT) : new Vector(bounds.left + borderLeftWidth2 * 2 / 3, bounds.top + borderTopWidth2 * 2 / 3), this.topRightBorderDoubleInnerBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + topWidth, bounds.top + borderTopWidth2 * 2 / 3, trh - borderRightWidth2 * 2 / 3, trv - borderTopWidth2 * 2 / 3, CORNER.TOP_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2 * 2 / 3, bounds.top + borderTopWidth2 * 2 / 3), this.bottomRightBorderDoubleInnerBox = brh > 0 || brv > 0 ? getCurvePoints(bounds.left + bottomWidth, bounds.top + rightHeight, brh - borderRightWidth2 * 2 / 3, brv - borderBottomWidth2 * 2 / 3, CORNER.BOTTOM_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2 * 2 / 3, bounds.top + bounds.height - borderBottomWidth2 * 2 / 3), this.bottomLeftBorderDoubleInnerBox = blh > 0 || blv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 * 2 / 3, bounds.top + leftHeight, blh - borderLeftWidth2 * 2 / 3, blv - borderBottomWidth2 * 2 / 3, CORNER.BOTTOM_LEFT) : new Vector(bounds.left + borderLeftWidth2 * 2 / 3, bounds.top + bounds.height - borderBottomWidth2 * 2 / 3), this.topLeftBorderStroke = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 / 2, bounds.top + borderTopWidth2 / 2, tlh - borderLeftWidth2 / 2, tlv - borderTopWidth2 / 2, CORNER.TOP_LEFT) : new Vector(bounds.left + borderLeftWidth2 / 2, bounds.top + borderTopWidth2 / 2), this.topRightBorderStroke = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + topWidth, bounds.top + borderTopWidth2 / 2, trh - borderRightWidth2 / 2, trv - borderTopWidth2 / 2, CORNER.TOP_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2 / 2, bounds.top + borderTopWidth2 / 2), this.bottomRightBorderStroke = brh > 0 || brv > 0 ? getCurvePoints(bounds.left + bottomWidth, bounds.top + rightHeight, brh - borderRightWidth2 / 2, brv - borderBottomWidth2 / 2, CORNER.BOTTOM_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2 / 2, bounds.top + bounds.height - borderBottomWidth2 / 2), this.bottomLeftBorderStroke = blh > 0 || blv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 / 2, bounds.top + leftHeight, blh - borderLeftWidth2 / 2, blv - borderBottomWidth2 / 2, CORNER.BOTTOM_LEFT) : new Vector(bounds.left + borderLeftWidth2 / 2, bounds.top + bounds.height - borderBottomWidth2 / 2), this.topLeftBorderBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left, bounds.top, tlh, tlv, CORNER.TOP_LEFT) : new Vector(bounds.left, bounds.top), this.topRightBorderBox = trh > 0 || trv > 0 ? getCurvePoints(bounds.left + topWidth, bounds.top, trh, trv, CORNER.TOP_RIGHT) : new Vector(bounds.left + bounds.width, bounds.top), this.bottomRightBorderBox = brh > 0 || brv > 0 ? getCurvePoints(bounds.left + bottomWidth, bounds.top + rightHeight, brh, brv, CORNER.BOTTOM_RIGHT) : new Vector(bounds.left + bounds.width, bounds.top + bounds.height), this.bottomLeftBorderBox = blh > 0 || blv > 0 ? getCurvePoints(bounds.left, bounds.top + leftHeight, blh, blv, CORNER.BOTTOM_LEFT) : new Vector(bounds.left, bounds.top + bounds.height), this.topLeftPaddingBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2, bounds.top + borderTopWidth2, Math.max(0, tlh - borderLeftWidth2), Math.max(0, tlv - borderTopWidth2), CORNER.TOP_LEFT) : new Vector(bounds.left + borderLeftWidth2, bounds.top + borderTopWidth2), this.topRightPaddingBox = trh > 0 || trv > 0 ? getCurvePoints(bounds.left + Math.min(topWidth, bounds.width - borderRightWidth2), bounds.top + borderTopWidth2, topWidth > bounds.width + borderRightWidth2 ? 0 : Math.max(0, trh - borderRightWidth2), Math.max(0, trv - borderTopWidth2), CORNER.TOP_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2, bounds.top + borderTopWidth2), this.bottomRightPaddingBox = brh > 0 || brv > 0 ? getCurvePoints(bounds.left + Math.min(bottomWidth, bounds.width - borderLeftWidth2), bounds.top + Math.min(rightHeight, bounds.height - borderBottomWidth2), Math.max(0, brh - borderRightWidth2), Math.max(0, brv - borderBottomWidth2), CORNER.BOTTOM_RIGHT) : new Vector(bounds.left + bounds.width - borderRightWidth2, bounds.top + bounds.height - borderBottomWidth2), this.bottomLeftPaddingBox = blh > 0 || blv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2, bounds.top + Math.min(leftHeight, bounds.height - borderBottomWidth2), Math.max(0, blh - borderLeftWidth2), Math.max(0, blv - borderBottomWidth2), CORNER.BOTTOM_LEFT) : new Vector(bounds.left + borderLeftWidth2, bounds.top + bounds.height - borderBottomWidth2), this.topLeftContentBox = tlh > 0 || tlv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 + paddingLeft2, bounds.top + borderTopWidth2 + paddingTop2, Math.max(0, tlh - (borderLeftWidth2 + paddingLeft2)), Math.max(0, tlv - (borderTopWidth2 + paddingTop2)), CORNER.TOP_LEFT) : new Vector(bounds.left + borderLeftWidth2 + paddingLeft2, bounds.top + borderTopWidth2 + paddingTop2), this.topRightContentBox = trh > 0 || trv > 0 ? getCurvePoints(bounds.left + Math.min(topWidth, bounds.width + borderLeftWidth2 + paddingLeft2), bounds.top + borderTopWidth2 + paddingTop2, topWidth > bounds.width + borderLeftWidth2 + paddingLeft2 ? 0 : trh - borderLeftWidth2 + paddingLeft2, trv - (borderTopWidth2 + paddingTop2), CORNER.TOP_RIGHT) : new Vector(bounds.left + bounds.width - (borderRightWidth2 + paddingRight2), bounds.top + borderTopWidth2 + paddingTop2), this.bottomRightContentBox = brh > 0 || brv > 0 ? getCurvePoints(bounds.left + Math.min(bottomWidth, bounds.width - (borderLeftWidth2 + paddingLeft2)), bounds.top + Math.min(rightHeight, bounds.height + borderTopWidth2 + paddingTop2), Math.max(0, brh - (borderRightWidth2 + paddingRight2)), brv - (borderBottomWidth2 + paddingBottom2), CORNER.BOTTOM_RIGHT) : new Vector(bounds.left + bounds.width - (borderRightWidth2 + paddingRight2), bounds.top + bounds.height - (borderBottomWidth2 + paddingBottom2)), this.bottomLeftContentBox = blh > 0 || blv > 0 ? getCurvePoints(bounds.left + borderLeftWidth2 + paddingLeft2, bounds.top + leftHeight, Math.max(0, blh - (borderLeftWidth2 + paddingLeft2)), blv - (borderBottomWidth2 + paddingBottom2), CORNER.BOTTOM_LEFT) : new Vector(bounds.left + borderLeftWidth2 + paddingLeft2, bounds.top + bounds.height - (borderBottomWidth2 + paddingBottom2));
+          }
+          return BoundCurves2;
+        }()
+      ), CORNER;
+      (function(CORNER2) {
+        CORNER2[CORNER2.TOP_LEFT = 0] = "TOP_LEFT", CORNER2[CORNER2.TOP_RIGHT = 1] = "TOP_RIGHT", CORNER2[CORNER2.BOTTOM_RIGHT = 2] = "BOTTOM_RIGHT", CORNER2[CORNER2.BOTTOM_LEFT = 3] = "BOTTOM_LEFT";
+      })(CORNER || (CORNER = {}));
+      var getCurvePoints = function(x5, y6, r1, r22, position2) {
+        var kappa = 4 * ((Math.sqrt(2) - 1) / 3), ox = r1 * kappa, oy = r22 * kappa, xm = x5 + r1, ym = y6 + r22;
+        switch (position2) {
+          case CORNER.TOP_LEFT:
+            return new BezierCurve(new Vector(x5, ym), new Vector(x5, ym - oy), new Vector(xm - ox, y6), new Vector(xm, y6));
+          case CORNER.TOP_RIGHT:
+            return new BezierCurve(new Vector(x5, y6), new Vector(x5 + ox, y6), new Vector(xm, ym - oy), new Vector(xm, ym));
+          case CORNER.BOTTOM_RIGHT:
+            return new BezierCurve(new Vector(xm, y6), new Vector(xm, y6 + oy), new Vector(x5 + ox, ym), new Vector(x5, ym));
+          case CORNER.BOTTOM_LEFT:
+          default:
+            return new BezierCurve(new Vector(xm, ym), new Vector(xm - ox, ym), new Vector(x5, y6 + oy), new Vector(x5, y6));
+        }
+      }, calculateBorderBoxPath = function(curves) {
+        return [curves.topLeftBorderBox, curves.topRightBorderBox, curves.bottomRightBorderBox, curves.bottomLeftBorderBox];
+      }, calculateContentBoxPath = function(curves) {
+        return [
+          curves.topLeftContentBox,
+          curves.topRightContentBox,
+          curves.bottomRightContentBox,
+          curves.bottomLeftContentBox
+        ];
+      }, calculatePaddingBoxPath = function(curves) {
+        return [
+          curves.topLeftPaddingBox,
+          curves.topRightPaddingBox,
+          curves.bottomRightPaddingBox,
+          curves.bottomLeftPaddingBox
+        ];
+      }, TransformEffect = (
+        /** @class */
+        function() {
+          function TransformEffect2(offsetX, offsetY, matrix2) {
+            this.offsetX = offsetX, this.offsetY = offsetY, this.matrix = matrix2, this.type = 0, this.target = 6;
+          }
+          return TransformEffect2;
+        }()
+      ), ClipEffect = (
+        /** @class */
+        function() {
+          function ClipEffect2(path, target) {
+            this.path = path, this.target = target, this.type = 1;
+          }
+          return ClipEffect2;
+        }()
+      ), OpacityEffect = (
+        /** @class */
+        function() {
+          function OpacityEffect2(opacity2) {
+            this.opacity = opacity2, this.type = 2, this.target = 6;
+          }
+          return OpacityEffect2;
+        }()
+      ), isTransformEffect = function(effect) {
+        return effect.type === 0;
+      }, isClipEffect = function(effect) {
+        return effect.type === 1;
+      }, isOpacityEffect = function(effect) {
+        return effect.type === 2;
+      }, equalPath = function(a13, b6) {
+        return a13.length === b6.length ? a13.some(function(v4, i7) {
+          return v4 === b6[i7];
+        }) : !1;
+      }, transformPath = function(path, deltaX, deltaY, deltaW, deltaH) {
+        return path.map(function(point, index) {
+          switch (index) {
+            case 0:
+              return point.add(deltaX, deltaY);
+            case 1:
+              return point.add(deltaX + deltaW, deltaY);
+            case 2:
+              return point.add(deltaX + deltaW, deltaY + deltaH);
+            case 3:
+              return point.add(deltaX, deltaY + deltaH);
+          }
+          return point;
+        });
+      }, StackingContext = (
+        /** @class */
+        function() {
+          function StackingContext2(container) {
+            this.element = container, this.inlineLevel = [], this.nonInlineLevel = [], this.negativeZIndex = [], this.zeroOrAutoZIndexOrTransformedOrOpacity = [], this.positiveZIndex = [], this.nonPositionedFloats = [], this.nonPositionedInlineLevel = [];
+          }
+          return StackingContext2;
+        }()
+      ), ElementPaint = (
+        /** @class */
+        function() {
+          function ElementPaint2(container, parent) {
+            if (this.container = container, this.parent = parent, this.effects = [], this.curves = new BoundCurves(this.container), this.container.styles.opacity < 1 && this.effects.push(new OpacityEffect(this.container.styles.opacity)), this.container.styles.transform !== null) {
+              var offsetX = this.container.bounds.left + this.container.styles.transformOrigin[0].number, offsetY = this.container.bounds.top + this.container.styles.transformOrigin[1].number, matrix2 = this.container.styles.transform;
+              this.effects.push(new TransformEffect(offsetX, offsetY, matrix2));
+            }
+            if (this.container.styles.overflowX !== 0) {
+              var borderBox = calculateBorderBoxPath(this.curves), paddingBox2 = calculatePaddingBoxPath(this.curves);
+              equalPath(borderBox, paddingBox2) ? this.effects.push(new ClipEffect(
+                borderBox,
+                6
+                /* CONTENT */
+              )) : (this.effects.push(new ClipEffect(
+                borderBox,
+                2
+                /* BACKGROUND_BORDERS */
+              )), this.effects.push(new ClipEffect(
+                paddingBox2,
+                4
+                /* CONTENT */
+              )));
+            }
+          }
+          return ElementPaint2.prototype.getEffects = function(target) {
+            for (var inFlow = [
+              2,
+              3
+              /* FIXED */
+            ].indexOf(this.container.styles.position) === -1, parent = this.parent, effects = this.effects.slice(0); parent; ) {
+              var croplessEffects = parent.effects.filter(function(effect) {
+                return !isClipEffect(effect);
+              });
+              if (inFlow || parent.container.styles.position !== 0 || !parent.parent) {
+                if (effects.unshift.apply(effects, croplessEffects), inFlow = [
+                  2,
+                  3
+                  /* FIXED */
+                ].indexOf(parent.container.styles.position) === -1, parent.container.styles.overflowX !== 0) {
+                  var borderBox = calculateBorderBoxPath(parent.curves), paddingBox2 = calculatePaddingBoxPath(parent.curves);
+                  equalPath(borderBox, paddingBox2) || effects.unshift(new ClipEffect(
+                    paddingBox2,
+                    6
+                    /* CONTENT */
+                  ));
+                }
+              } else
+                effects.unshift.apply(effects, croplessEffects);
+              parent = parent.parent;
+            }
+            return effects.filter(function(effect) {
+              return contains(effect.target, target);
+            });
+          }, ElementPaint2;
+        }()
+      ), parseStackTree = function(parent, stackingContext, realStackingContext, listItems) {
+        parent.container.elements.forEach(function(child) {
+          var treatAsRealStackingContext = contains(
+            child.flags,
+            4
+            /* CREATES_REAL_STACKING_CONTEXT */
+          ), createsStackingContext2 = contains(
+            child.flags,
+            2
+            /* CREATES_STACKING_CONTEXT */
+          ), paintContainer = new ElementPaint(child, parent);
+          contains(
+            child.styles.display,
+            2048
+            /* LIST_ITEM */
+          ) && listItems.push(paintContainer);
+          var listOwnerItems = contains(
+            child.flags,
+            8
+            /* IS_LIST_OWNER */
+          ) ? [] : listItems;
+          if (treatAsRealStackingContext || createsStackingContext2) {
+            var parentStack = treatAsRealStackingContext || child.styles.isPositioned() ? realStackingContext : stackingContext, stack = new StackingContext(paintContainer);
+            if (child.styles.isPositioned() || child.styles.opacity < 1 || child.styles.isTransformed()) {
+              var order_1 = child.styles.zIndex.order;
+              if (order_1 < 0) {
+                var index_1 = 0;
+                parentStack.negativeZIndex.some(function(current, i7) {
+                  return order_1 > current.element.container.styles.zIndex.order ? (index_1 = i7, !1) : index_1 > 0;
+                }), parentStack.negativeZIndex.splice(index_1, 0, stack);
+              } else if (order_1 > 0) {
+                var index_2 = 0;
+                parentStack.positiveZIndex.some(function(current, i7) {
+                  return order_1 >= current.element.container.styles.zIndex.order ? (index_2 = i7 + 1, !1) : index_2 > 0;
+                }), parentStack.positiveZIndex.splice(index_2, 0, stack);
+              } else
+                parentStack.zeroOrAutoZIndexOrTransformedOrOpacity.push(stack);
+            } else
+              child.styles.isFloating() ? parentStack.nonPositionedFloats.push(stack) : parentStack.nonPositionedInlineLevel.push(stack);
+            parseStackTree(paintContainer, stack, treatAsRealStackingContext ? stack : realStackingContext, listOwnerItems);
+          } else
+            child.styles.isInlineLevel() ? stackingContext.inlineLevel.push(paintContainer) : stackingContext.nonInlineLevel.push(paintContainer), parseStackTree(paintContainer, stackingContext, realStackingContext, listOwnerItems);
+          contains(
+            child.flags,
+            8
+            /* IS_LIST_OWNER */
+          ) && processListItems(child, listOwnerItems);
+        });
+      }, processListItems = function(owner, elements) {
+        for (var numbering = owner instanceof OLElementContainer ? owner.start : 1, reversed = owner instanceof OLElementContainer ? owner.reversed : !1, i7 = 0; i7 < elements.length; i7++) {
+          var item = elements[i7];
+          item.container instanceof LIElementContainer && typeof item.container.value == "number" && item.container.value !== 0 && (numbering = item.container.value), item.listValue = createCounterText(numbering, item.container.styles.listStyleType, !0), numbering += reversed ? -1 : 1;
+        }
+      }, parseStackingContexts = function(container) {
+        var paintContainer = new ElementPaint(container, null), root2 = new StackingContext(paintContainer), listItems = [];
+        return parseStackTree(paintContainer, root2, root2, listItems), processListItems(paintContainer.container, listItems), root2;
+      }, parsePathForBorder = function(curves, borderSide) {
+        switch (borderSide) {
+          case 0:
+            return createPathFromCurves(curves.topLeftBorderBox, curves.topLeftPaddingBox, curves.topRightBorderBox, curves.topRightPaddingBox);
+          case 1:
+            return createPathFromCurves(curves.topRightBorderBox, curves.topRightPaddingBox, curves.bottomRightBorderBox, curves.bottomRightPaddingBox);
+          case 2:
+            return createPathFromCurves(curves.bottomRightBorderBox, curves.bottomRightPaddingBox, curves.bottomLeftBorderBox, curves.bottomLeftPaddingBox);
+          case 3:
+          default:
+            return createPathFromCurves(curves.bottomLeftBorderBox, curves.bottomLeftPaddingBox, curves.topLeftBorderBox, curves.topLeftPaddingBox);
+        }
+      }, parsePathForBorderDoubleOuter = function(curves, borderSide) {
+        switch (borderSide) {
+          case 0:
+            return createPathFromCurves(curves.topLeftBorderBox, curves.topLeftBorderDoubleOuterBox, curves.topRightBorderBox, curves.topRightBorderDoubleOuterBox);
+          case 1:
+            return createPathFromCurves(curves.topRightBorderBox, curves.topRightBorderDoubleOuterBox, curves.bottomRightBorderBox, curves.bottomRightBorderDoubleOuterBox);
+          case 2:
+            return createPathFromCurves(curves.bottomRightBorderBox, curves.bottomRightBorderDoubleOuterBox, curves.bottomLeftBorderBox, curves.bottomLeftBorderDoubleOuterBox);
+          case 3:
+          default:
+            return createPathFromCurves(curves.bottomLeftBorderBox, curves.bottomLeftBorderDoubleOuterBox, curves.topLeftBorderBox, curves.topLeftBorderDoubleOuterBox);
+        }
+      }, parsePathForBorderDoubleInner = function(curves, borderSide) {
+        switch (borderSide) {
+          case 0:
+            return createPathFromCurves(curves.topLeftBorderDoubleInnerBox, curves.topLeftPaddingBox, curves.topRightBorderDoubleInnerBox, curves.topRightPaddingBox);
+          case 1:
+            return createPathFromCurves(curves.topRightBorderDoubleInnerBox, curves.topRightPaddingBox, curves.bottomRightBorderDoubleInnerBox, curves.bottomRightPaddingBox);
+          case 2:
+            return createPathFromCurves(curves.bottomRightBorderDoubleInnerBox, curves.bottomRightPaddingBox, curves.bottomLeftBorderDoubleInnerBox, curves.bottomLeftPaddingBox);
+          case 3:
+          default:
+            return createPathFromCurves(curves.bottomLeftBorderDoubleInnerBox, curves.bottomLeftPaddingBox, curves.topLeftBorderDoubleInnerBox, curves.topLeftPaddingBox);
+        }
+      }, parsePathForBorderStroke = function(curves, borderSide) {
+        switch (borderSide) {
+          case 0:
+            return createStrokePathFromCurves(curves.topLeftBorderStroke, curves.topRightBorderStroke);
+          case 1:
+            return createStrokePathFromCurves(curves.topRightBorderStroke, curves.bottomRightBorderStroke);
+          case 2:
+            return createStrokePathFromCurves(curves.bottomRightBorderStroke, curves.bottomLeftBorderStroke);
+          case 3:
+          default:
+            return createStrokePathFromCurves(curves.bottomLeftBorderStroke, curves.topLeftBorderStroke);
+        }
+      }, createStrokePathFromCurves = function(outer1, outer2) {
+        var path = [];
+        return isBezierCurve(outer1) ? path.push(outer1.subdivide(0.5, !1)) : path.push(outer1), isBezierCurve(outer2) ? path.push(outer2.subdivide(0.5, !0)) : path.push(outer2), path;
+      }, createPathFromCurves = function(outer1, inner1, outer2, inner2) {
+        var path = [];
+        return isBezierCurve(outer1) ? path.push(outer1.subdivide(0.5, !1)) : path.push(outer1), isBezierCurve(outer2) ? path.push(outer2.subdivide(0.5, !0)) : path.push(outer2), isBezierCurve(inner2) ? path.push(inner2.subdivide(0.5, !0).reverse()) : path.push(inner2), isBezierCurve(inner1) ? path.push(inner1.subdivide(0.5, !1).reverse()) : path.push(inner1), path;
+      }, paddingBox = function(element) {
+        var bounds = element.bounds, styles = element.styles;
+        return bounds.add(styles.borderLeftWidth, styles.borderTopWidth, -(styles.borderRightWidth + styles.borderLeftWidth), -(styles.borderTopWidth + styles.borderBottomWidth));
+      }, contentBox = function(element) {
+        var styles = element.styles, bounds = element.bounds, paddingLeft2 = getAbsoluteValue(styles.paddingLeft, bounds.width), paddingRight2 = getAbsoluteValue(styles.paddingRight, bounds.width), paddingTop2 = getAbsoluteValue(styles.paddingTop, bounds.width), paddingBottom2 = getAbsoluteValue(styles.paddingBottom, bounds.width);
+        return bounds.add(paddingLeft2 + styles.borderLeftWidth, paddingTop2 + styles.borderTopWidth, -(styles.borderRightWidth + styles.borderLeftWidth + paddingLeft2 + paddingRight2), -(styles.borderTopWidth + styles.borderBottomWidth + paddingTop2 + paddingBottom2));
+      }, calculateBackgroundPositioningArea = function(backgroundOrigin2, element) {
+        return backgroundOrigin2 === 0 ? element.bounds : backgroundOrigin2 === 2 ? contentBox(element) : paddingBox(element);
+      }, calculateBackgroundPaintingArea = function(backgroundClip2, element) {
+        return backgroundClip2 === 0 ? element.bounds : backgroundClip2 === 2 ? contentBox(element) : paddingBox(element);
+      }, calculateBackgroundRendering = function(container, index, intrinsicSize) {
+        var backgroundPositioningArea = calculateBackgroundPositioningArea(getBackgroundValueForIndex(container.styles.backgroundOrigin, index), container), backgroundPaintingArea = calculateBackgroundPaintingArea(getBackgroundValueForIndex(container.styles.backgroundClip, index), container), backgroundImageSize = calculateBackgroundSize(getBackgroundValueForIndex(container.styles.backgroundSize, index), intrinsicSize, backgroundPositioningArea), sizeWidth = backgroundImageSize[0], sizeHeight = backgroundImageSize[1], position2 = getAbsoluteValueForTuple(getBackgroundValueForIndex(container.styles.backgroundPosition, index), backgroundPositioningArea.width - sizeWidth, backgroundPositioningArea.height - sizeHeight), path = calculateBackgroundRepeatPath(getBackgroundValueForIndex(container.styles.backgroundRepeat, index), position2, backgroundImageSize, backgroundPositioningArea, backgroundPaintingArea), offsetX = Math.round(backgroundPositioningArea.left + position2[0]), offsetY = Math.round(backgroundPositioningArea.top + position2[1]);
+        return [path, offsetX, offsetY, sizeWidth, sizeHeight];
+      }, isAuto = function(token) {
+        return isIdentToken(token) && token.value === BACKGROUND_SIZE.AUTO;
+      }, hasIntrinsicValue = function(value) {
+        return typeof value == "number";
+      }, calculateBackgroundSize = function(size, _a2, bounds) {
+        var intrinsicWidth = _a2[0], intrinsicHeight = _a2[1], intrinsicProportion = _a2[2], first = size[0], second = size[1];
+        if (!first)
+          return [0, 0];
+        if (isLengthPercentage(first) && second && isLengthPercentage(second))
+          return [getAbsoluteValue(first, bounds.width), getAbsoluteValue(second, bounds.height)];
+        var hasIntrinsicProportion = hasIntrinsicValue(intrinsicProportion);
+        if (isIdentToken(first) && (first.value === BACKGROUND_SIZE.CONTAIN || first.value === BACKGROUND_SIZE.COVER)) {
+          if (hasIntrinsicValue(intrinsicProportion)) {
+            var targetRatio = bounds.width / bounds.height;
+            return targetRatio < intrinsicProportion != (first.value === BACKGROUND_SIZE.COVER) ? [bounds.width, bounds.width / intrinsicProportion] : [bounds.height * intrinsicProportion, bounds.height];
+          }
+          return [bounds.width, bounds.height];
+        }
+        var hasIntrinsicWidth = hasIntrinsicValue(intrinsicWidth), hasIntrinsicHeight = hasIntrinsicValue(intrinsicHeight), hasIntrinsicDimensions = hasIntrinsicWidth || hasIntrinsicHeight;
+        if (isAuto(first) && (!second || isAuto(second))) {
+          if (hasIntrinsicWidth && hasIntrinsicHeight)
+            return [intrinsicWidth, intrinsicHeight];
+          if (!hasIntrinsicProportion && !hasIntrinsicDimensions)
+            return [bounds.width, bounds.height];
+          if (hasIntrinsicDimensions && hasIntrinsicProportion) {
+            var width_1 = hasIntrinsicWidth ? intrinsicWidth : intrinsicHeight * intrinsicProportion, height_1 = hasIntrinsicHeight ? intrinsicHeight : intrinsicWidth / intrinsicProportion;
+            return [width_1, height_1];
+          }
+          var width_2 = hasIntrinsicWidth ? intrinsicWidth : bounds.width, height_2 = hasIntrinsicHeight ? intrinsicHeight : bounds.height;
+          return [width_2, height_2];
+        }
+        if (hasIntrinsicProportion) {
+          var width_3 = 0, height_3 = 0;
+          return isLengthPercentage(first) ? width_3 = getAbsoluteValue(first, bounds.width) : isLengthPercentage(second) && (height_3 = getAbsoluteValue(second, bounds.height)), isAuto(first) ? width_3 = height_3 * intrinsicProportion : (!second || isAuto(second)) && (height_3 = width_3 / intrinsicProportion), [width_3, height_3];
+        }
+        var width = null, height = null;
+        if (isLengthPercentage(first) ? width = getAbsoluteValue(first, bounds.width) : second && isLengthPercentage(second) && (height = getAbsoluteValue(second, bounds.height)), width !== null && (!second || isAuto(second)) && (height = hasIntrinsicWidth && hasIntrinsicHeight ? width / intrinsicWidth * intrinsicHeight : bounds.height), height !== null && isAuto(first) && (width = hasIntrinsicWidth && hasIntrinsicHeight ? height / intrinsicHeight * intrinsicWidth : bounds.width), width !== null && height !== null)
+          return [width, height];
+        throw new Error("Unable to calculate background-size for element");
+      }, getBackgroundValueForIndex = function(values, index) {
+        var value = values[index];
+        return typeof value > "u" ? values[0] : value;
+      }, calculateBackgroundRepeatPath = function(repeat, _a2, _b, backgroundPositioningArea, backgroundPaintingArea) {
+        var x5 = _a2[0], y6 = _a2[1], width = _b[0], height = _b[1];
+        switch (repeat) {
+          case 2:
+            return [
+              new Vector(Math.round(backgroundPositioningArea.left), Math.round(backgroundPositioningArea.top + y6)),
+              new Vector(Math.round(backgroundPositioningArea.left + backgroundPositioningArea.width), Math.round(backgroundPositioningArea.top + y6)),
+              new Vector(Math.round(backgroundPositioningArea.left + backgroundPositioningArea.width), Math.round(height + backgroundPositioningArea.top + y6)),
+              new Vector(Math.round(backgroundPositioningArea.left), Math.round(height + backgroundPositioningArea.top + y6))
+            ];
+          case 3:
+            return [
+              new Vector(Math.round(backgroundPositioningArea.left + x5), Math.round(backgroundPositioningArea.top)),
+              new Vector(Math.round(backgroundPositioningArea.left + x5 + width), Math.round(backgroundPositioningArea.top)),
+              new Vector(Math.round(backgroundPositioningArea.left + x5 + width), Math.round(backgroundPositioningArea.height + backgroundPositioningArea.top)),
+              new Vector(Math.round(backgroundPositioningArea.left + x5), Math.round(backgroundPositioningArea.height + backgroundPositioningArea.top))
+            ];
+          case 1:
+            return [
+              new Vector(Math.round(backgroundPositioningArea.left + x5), Math.round(backgroundPositioningArea.top + y6)),
+              new Vector(Math.round(backgroundPositioningArea.left + x5 + width), Math.round(backgroundPositioningArea.top + y6)),
+              new Vector(Math.round(backgroundPositioningArea.left + x5 + width), Math.round(backgroundPositioningArea.top + y6 + height)),
+              new Vector(Math.round(backgroundPositioningArea.left + x5), Math.round(backgroundPositioningArea.top + y6 + height))
+            ];
+          default:
+            return [
+              new Vector(Math.round(backgroundPaintingArea.left), Math.round(backgroundPaintingArea.top)),
+              new Vector(Math.round(backgroundPaintingArea.left + backgroundPaintingArea.width), Math.round(backgroundPaintingArea.top)),
+              new Vector(Math.round(backgroundPaintingArea.left + backgroundPaintingArea.width), Math.round(backgroundPaintingArea.height + backgroundPaintingArea.top)),
+              new Vector(Math.round(backgroundPaintingArea.left), Math.round(backgroundPaintingArea.height + backgroundPaintingArea.top))
+            ];
+        }
+      }, SMALL_IMAGE = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7", SAMPLE_TEXT = "Hidden Text", FontMetrics = (
+        /** @class */
+        function() {
+          function FontMetrics2(document2) {
+            this._data = {}, this._document = document2;
+          }
+          return FontMetrics2.prototype.parseMetrics = function(fontFamily2, fontSize2) {
+            var container = this._document.createElement("div"), img = this._document.createElement("img"), span = this._document.createElement("span"), body = this._document.body;
+            container.style.visibility = "hidden", container.style.fontFamily = fontFamily2, container.style.fontSize = fontSize2, container.style.margin = "0", container.style.padding = "0", container.style.whiteSpace = "nowrap", body.appendChild(container), img.src = SMALL_IMAGE, img.width = 1, img.height = 1, img.style.margin = "0", img.style.padding = "0", img.style.verticalAlign = "baseline", span.style.fontFamily = fontFamily2, span.style.fontSize = fontSize2, span.style.margin = "0", span.style.padding = "0", span.appendChild(this._document.createTextNode(SAMPLE_TEXT)), container.appendChild(span), container.appendChild(img);
+            var baseline = img.offsetTop - span.offsetTop + 2;
+            container.removeChild(span), container.appendChild(this._document.createTextNode(SAMPLE_TEXT)), container.style.lineHeight = "normal", img.style.verticalAlign = "super";
+            var middle = img.offsetTop - container.offsetTop + 2;
+            return body.removeChild(container), { baseline, middle };
+          }, FontMetrics2.prototype.getMetrics = function(fontFamily2, fontSize2) {
+            var key = fontFamily2 + " " + fontSize2;
+            return typeof this._data[key] > "u" && (this._data[key] = this.parseMetrics(fontFamily2, fontSize2)), this._data[key];
+          }, FontMetrics2;
+        }()
+      ), Renderer = (
+        /** @class */
+        function() {
+          function Renderer2(context, options) {
+            this.context = context, this.options = options;
+          }
+          return Renderer2;
+        }()
+      ), MASK_OFFSET = 1e4, CanvasRenderer = (
+        /** @class */
+        function(_super) {
+          __extends(CanvasRenderer2, _super);
+          function CanvasRenderer2(context, options) {
+            var _this = _super.call(this, context, options) || this;
+            return _this._activeEffects = [], _this.canvas = options.canvas ? options.canvas : document.createElement("canvas"), _this.ctx = _this.canvas.getContext("2d"), options.canvas || (_this.canvas.width = Math.floor(options.width * options.scale), _this.canvas.height = Math.floor(options.height * options.scale), _this.canvas.style.width = options.width + "px", _this.canvas.style.height = options.height + "px"), _this.fontMetrics = new FontMetrics(document), _this.ctx.scale(_this.options.scale, _this.options.scale), _this.ctx.translate(-options.x, -options.y), _this.ctx.textBaseline = "bottom", _this._activeEffects = [], _this.context.logger.debug("Canvas renderer initialized (" + options.width + "x" + options.height + ") with scale " + options.scale), _this;
+          }
+          return CanvasRenderer2.prototype.applyEffects = function(effects) {
+            for (var _this = this; this._activeEffects.length; )
+              this.popEffect();
+            effects.forEach(function(effect) {
+              return _this.applyEffect(effect);
+            });
+          }, CanvasRenderer2.prototype.applyEffect = function(effect) {
+            this.ctx.save(), isOpacityEffect(effect) && (this.ctx.globalAlpha = effect.opacity), isTransformEffect(effect) && (this.ctx.translate(effect.offsetX, effect.offsetY), this.ctx.transform(effect.matrix[0], effect.matrix[1], effect.matrix[2], effect.matrix[3], effect.matrix[4], effect.matrix[5]), this.ctx.translate(-effect.offsetX, -effect.offsetY)), isClipEffect(effect) && (this.path(effect.path), this.ctx.clip()), this._activeEffects.push(effect);
+          }, CanvasRenderer2.prototype.popEffect = function() {
+            this._activeEffects.pop(), this.ctx.restore();
+          }, CanvasRenderer2.prototype.renderStack = function(stack) {
+            return __awaiter(this, void 0, void 0, function() {
+              var styles;
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    return styles = stack.element.container.styles, styles.isVisible() ? [4, this.renderStackContent(stack)] : [3, 2];
+                  case 1:
+                    _a2.sent(), _a2.label = 2;
+                  case 2:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.renderNode = function(paint) {
+            return __awaiter(this, void 0, void 0, function() {
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    if (contains(
+                      paint.container.flags,
+                      16
+                      /* DEBUG_RENDER */
+                    ))
+                      debugger;
+                    return paint.container.styles.isVisible() ? [4, this.renderNodeBackgroundAndBorders(paint)] : [3, 3];
+                  case 1:
+                    return _a2.sent(), [4, this.renderNodeContent(paint)];
+                  case 2:
+                    _a2.sent(), _a2.label = 3;
+                  case 3:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.renderTextWithLetterSpacing = function(text, letterSpacing2, baseline) {
+            var _this = this;
+            if (letterSpacing2 === 0)
+              this.ctx.fillText(text.text, text.bounds.left, text.bounds.top + baseline);
+            else {
+              var letters = segmentGraphemes(text.text);
+              letters.reduce(function(left, letter) {
+                return _this.ctx.fillText(letter, left, text.bounds.top + baseline), left + _this.ctx.measureText(letter).width;
+              }, text.bounds.left);
+            }
+          }, CanvasRenderer2.prototype.createFontStyle = function(styles) {
+            var fontVariant2 = styles.fontVariant.filter(function(variant) {
+              return variant === "normal" || variant === "small-caps";
+            }).join(""), fontFamily2 = fixIOSSystemFonts(styles.fontFamily).join(", "), fontSize2 = isDimensionToken(styles.fontSize) ? "" + styles.fontSize.number + styles.fontSize.unit : styles.fontSize.number + "px";
+            return [
+              [styles.fontStyle, fontVariant2, styles.fontWeight, fontSize2, fontFamily2].join(" "),
+              fontFamily2,
+              fontSize2
+            ];
+          }, CanvasRenderer2.prototype.renderTextNode = function(text, styles) {
+            return __awaiter(this, void 0, void 0, function() {
+              var _a2, font, fontFamily2, fontSize2, _b, baseline, middle, paintOrder2, _this = this;
+              return __generator(this, function(_c) {
+                return _a2 = this.createFontStyle(styles), font = _a2[0], fontFamily2 = _a2[1], fontSize2 = _a2[2], this.ctx.font = font, this.ctx.direction = styles.direction === 1 ? "rtl" : "ltr", this.ctx.textAlign = "left", this.ctx.textBaseline = "alphabetic", _b = this.fontMetrics.getMetrics(fontFamily2, fontSize2), baseline = _b.baseline, middle = _b.middle, paintOrder2 = styles.paintOrder, text.textBounds.forEach(function(text2) {
+                  paintOrder2.forEach(function(paintOrderLayer) {
+                    switch (paintOrderLayer) {
+                      case 0:
+                        _this.ctx.fillStyle = asString(styles.color), _this.renderTextWithLetterSpacing(text2, styles.letterSpacing, baseline);
+                        var textShadows = styles.textShadow;
+                        textShadows.length && text2.text.trim().length && (textShadows.slice(0).reverse().forEach(function(textShadow2) {
+                          _this.ctx.shadowColor = asString(textShadow2.color), _this.ctx.shadowOffsetX = textShadow2.offsetX.number * _this.options.scale, _this.ctx.shadowOffsetY = textShadow2.offsetY.number * _this.options.scale, _this.ctx.shadowBlur = textShadow2.blur.number, _this.renderTextWithLetterSpacing(text2, styles.letterSpacing, baseline);
+                        }), _this.ctx.shadowColor = "", _this.ctx.shadowOffsetX = 0, _this.ctx.shadowOffsetY = 0, _this.ctx.shadowBlur = 0), styles.textDecorationLine.length && (_this.ctx.fillStyle = asString(styles.textDecorationColor || styles.color), styles.textDecorationLine.forEach(function(textDecorationLine2) {
+                          switch (textDecorationLine2) {
+                            case 1:
+                              _this.ctx.fillRect(text2.bounds.left, Math.round(text2.bounds.top + baseline), text2.bounds.width, 1);
+                              break;
+                            case 2:
+                              _this.ctx.fillRect(text2.bounds.left, Math.round(text2.bounds.top), text2.bounds.width, 1);
+                              break;
+                            case 3:
+                              _this.ctx.fillRect(text2.bounds.left, Math.ceil(text2.bounds.top + middle), text2.bounds.width, 1);
+                              break;
+                          }
+                        }));
+                        break;
+                      case 1:
+                        styles.webkitTextStrokeWidth && text2.text.trim().length && (_this.ctx.strokeStyle = asString(styles.webkitTextStrokeColor), _this.ctx.lineWidth = styles.webkitTextStrokeWidth, _this.ctx.lineJoin = window.chrome ? "miter" : "round", _this.ctx.strokeText(text2.text, text2.bounds.left, text2.bounds.top + baseline)), _this.ctx.strokeStyle = "", _this.ctx.lineWidth = 0, _this.ctx.lineJoin = "miter";
+                        break;
+                    }
+                  });
+                }), [
+                  2
+                  /*return*/
+                ];
+              });
+            });
+          }, CanvasRenderer2.prototype.renderReplacedElement = function(container, curves, image2) {
+            if (image2 && container.intrinsicWidth > 0 && container.intrinsicHeight > 0) {
+              var box = contentBox(container), path = calculatePaddingBoxPath(curves);
+              this.path(path), this.ctx.save(), this.ctx.clip(), this.ctx.drawImage(image2, 0, 0, container.intrinsicWidth, container.intrinsicHeight, box.left, box.top, box.width, box.height), this.ctx.restore();
+            }
+          }, CanvasRenderer2.prototype.renderNodeContent = function(paint) {
+            return __awaiter(this, void 0, void 0, function() {
+              var container, curves, styles, _i, _a2, child, image2, image2, iframeRenderer, canvas, size, _b, fontFamily2, fontSize2, baseline, bounds, x5, textBounds, img, image2, url, fontFamily2, bounds;
+              return __generator(this, function(_c) {
+                switch (_c.label) {
+                  case 0:
+                    this.applyEffects(paint.getEffects(
+                      4
+                      /* CONTENT */
+                    )), container = paint.container, curves = paint.curves, styles = container.styles, _i = 0, _a2 = container.textNodes, _c.label = 1;
+                  case 1:
+                    return _i < _a2.length ? (child = _a2[_i], [4, this.renderTextNode(child, styles)]) : [3, 4];
+                  case 2:
+                    _c.sent(), _c.label = 3;
+                  case 3:
+                    return _i++, [3, 1];
+                  case 4:
+                    if (!(container instanceof ImageElementContainer))
+                      return [3, 8];
+                    _c.label = 5;
+                  case 5:
+                    return _c.trys.push([5, 7, , 8]), [4, this.context.cache.match(container.src)];
+                  case 6:
+                    return image2 = _c.sent(), this.renderReplacedElement(container, curves, image2), [3, 8];
+                  case 7:
+                    return _c.sent(), this.context.logger.error("Error loading image " + container.src), [3, 8];
+                  case 8:
+                    if (container instanceof CanvasElementContainer && this.renderReplacedElement(container, curves, container.canvas), !(container instanceof SVGElementContainer))
+                      return [3, 12];
+                    _c.label = 9;
+                  case 9:
+                    return _c.trys.push([9, 11, , 12]), [4, this.context.cache.match(container.svg)];
+                  case 10:
+                    return image2 = _c.sent(), this.renderReplacedElement(container, curves, image2), [3, 12];
+                  case 11:
+                    return _c.sent(), this.context.logger.error("Error loading svg " + container.svg.substring(0, 255)), [3, 12];
+                  case 12:
+                    return container instanceof IFrameElementContainer && container.tree ? (iframeRenderer = new CanvasRenderer2(this.context, {
+                      scale: this.options.scale,
+                      backgroundColor: container.backgroundColor,
+                      x: 0,
+                      y: 0,
+                      width: container.width,
+                      height: container.height
+                    }), [4, iframeRenderer.render(container.tree)]) : [3, 14];
+                  case 13:
+                    canvas = _c.sent(), container.width && container.height && this.ctx.drawImage(canvas, 0, 0, container.width, container.height, container.bounds.left, container.bounds.top, container.bounds.width, container.bounds.height), _c.label = 14;
+                  case 14:
+                    if (container instanceof InputElementContainer && (size = Math.min(container.bounds.width, container.bounds.height), container.type === CHECKBOX ? container.checked && (this.ctx.save(), this.path(
+                      [
+                        new Vector(container.bounds.left + size * 0.39363, container.bounds.top + size * 0.79),
+                        new Vector(container.bounds.left + size * 0.16, container.bounds.top + size * 0.5549),
+                        new Vector(container.bounds.left + size * 0.27347, container.bounds.top + size * 0.44071),
+                        new Vector(container.bounds.left + size * 0.39694, container.bounds.top + size * 0.5649),
+                        new Vector(container.bounds.left + size * 0.72983, container.bounds.top + size * 0.23),
+                        new Vector(container.bounds.left + size * 0.84, container.bounds.top + size * 0.34085),
+                        new Vector(container.bounds.left + size * 0.39363, container.bounds.top + size * 0.79)
+                      ]
+                    ), this.ctx.fillStyle = asString(INPUT_COLOR), this.ctx.fill(), this.ctx.restore()) : container.type === RADIO && container.checked && (this.ctx.save(), this.ctx.beginPath(), this.ctx.arc(container.bounds.left + size / 2, container.bounds.top + size / 2, size / 4, 0, Math.PI * 2, !0), this.ctx.fillStyle = asString(INPUT_COLOR), this.ctx.fill(), this.ctx.restore())), isTextInputElement(container) && container.value.length) {
+                      switch (_b = this.createFontStyle(styles), fontFamily2 = _b[0], fontSize2 = _b[1], baseline = this.fontMetrics.getMetrics(fontFamily2, fontSize2).baseline, this.ctx.font = fontFamily2, this.ctx.fillStyle = asString(styles.color), this.ctx.textBaseline = "alphabetic", this.ctx.textAlign = canvasTextAlign(container.styles.textAlign), bounds = contentBox(container), x5 = 0, container.styles.textAlign) {
+                        case 1:
+                          x5 += bounds.width / 2;
+                          break;
+                        case 2:
+                          x5 += bounds.width;
+                          break;
+                      }
+                      textBounds = bounds.add(x5, 0, 0, -bounds.height / 2 + 1), this.ctx.save(), this.path(
+                        [
+                          new Vector(bounds.left, bounds.top),
+                          new Vector(bounds.left + bounds.width, bounds.top),
+                          new Vector(bounds.left + bounds.width, bounds.top + bounds.height),
+                          new Vector(bounds.left, bounds.top + bounds.height)
+                        ]
+                      ), this.ctx.clip(), this.renderTextWithLetterSpacing(new TextBounds(container.value, textBounds), styles.letterSpacing, baseline), this.ctx.restore(), this.ctx.textBaseline = "alphabetic", this.ctx.textAlign = "left";
+                    }
+                    if (!contains(
+                      container.styles.display,
+                      2048
+                      /* LIST_ITEM */
+                    ))
+                      return [3, 20];
+                    if (container.styles.listStyleImage === null)
+                      return [3, 19];
+                    if (img = container.styles.listStyleImage, img.type !== 0)
+                      return [3, 18];
+                    image2 = void 0, url = img.url, _c.label = 15;
+                  case 15:
+                    return _c.trys.push([15, 17, , 18]), [4, this.context.cache.match(url)];
+                  case 16:
+                    return image2 = _c.sent(), this.ctx.drawImage(image2, container.bounds.left - (image2.width + 10), container.bounds.top), [3, 18];
+                  case 17:
+                    return _c.sent(), this.context.logger.error("Error loading list-style-image " + url), [3, 18];
+                  case 18:
+                    return [3, 20];
+                  case 19:
+                    paint.listValue && container.styles.listStyleType !== -1 && (fontFamily2 = this.createFontStyle(styles)[0], this.ctx.font = fontFamily2, this.ctx.fillStyle = asString(styles.color), this.ctx.textBaseline = "middle", this.ctx.textAlign = "right", bounds = new Bounds(container.bounds.left, container.bounds.top + getAbsoluteValue(container.styles.paddingTop, container.bounds.width), container.bounds.width, computeLineHeight(styles.lineHeight, styles.fontSize.number) / 2 + 1), this.renderTextWithLetterSpacing(new TextBounds(paint.listValue, bounds), styles.letterSpacing, computeLineHeight(styles.lineHeight, styles.fontSize.number) / 2 + 2), this.ctx.textBaseline = "bottom", this.ctx.textAlign = "left"), _c.label = 20;
+                  case 20:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.renderStackContent = function(stack) {
+            return __awaiter(this, void 0, void 0, function() {
+              var _i, _a2, child, _b, _c, child, _d, _e2, child, _f, _g, child, _h, _j, child, _k, _l, child, _m, _o, child;
+              return __generator(this, function(_p) {
+                switch (_p.label) {
+                  case 0:
+                    if (contains(
+                      stack.element.container.flags,
+                      16
+                      /* DEBUG_RENDER */
+                    ))
+                      debugger;
+                    return [4, this.renderNodeBackgroundAndBorders(stack.element)];
+                  case 1:
+                    _p.sent(), _i = 0, _a2 = stack.negativeZIndex, _p.label = 2;
+                  case 2:
+                    return _i < _a2.length ? (child = _a2[_i], [4, this.renderStack(child)]) : [3, 5];
+                  case 3:
+                    _p.sent(), _p.label = 4;
+                  case 4:
+                    return _i++, [3, 2];
+                  case 5:
+                    return [4, this.renderNodeContent(stack.element)];
+                  case 6:
+                    _p.sent(), _b = 0, _c = stack.nonInlineLevel, _p.label = 7;
+                  case 7:
+                    return _b < _c.length ? (child = _c[_b], [4, this.renderNode(child)]) : [3, 10];
+                  case 8:
+                    _p.sent(), _p.label = 9;
+                  case 9:
+                    return _b++, [3, 7];
+                  case 10:
+                    _d = 0, _e2 = stack.nonPositionedFloats, _p.label = 11;
+                  case 11:
+                    return _d < _e2.length ? (child = _e2[_d], [4, this.renderStack(child)]) : [3, 14];
+                  case 12:
+                    _p.sent(), _p.label = 13;
+                  case 13:
+                    return _d++, [3, 11];
+                  case 14:
+                    _f = 0, _g = stack.nonPositionedInlineLevel, _p.label = 15;
+                  case 15:
+                    return _f < _g.length ? (child = _g[_f], [4, this.renderStack(child)]) : [3, 18];
+                  case 16:
+                    _p.sent(), _p.label = 17;
+                  case 17:
+                    return _f++, [3, 15];
+                  case 18:
+                    _h = 0, _j = stack.inlineLevel, _p.label = 19;
+                  case 19:
+                    return _h < _j.length ? (child = _j[_h], [4, this.renderNode(child)]) : [3, 22];
+                  case 20:
+                    _p.sent(), _p.label = 21;
+                  case 21:
+                    return _h++, [3, 19];
+                  case 22:
+                    _k = 0, _l = stack.zeroOrAutoZIndexOrTransformedOrOpacity, _p.label = 23;
+                  case 23:
+                    return _k < _l.length ? (child = _l[_k], [4, this.renderStack(child)]) : [3, 26];
+                  case 24:
+                    _p.sent(), _p.label = 25;
+                  case 25:
+                    return _k++, [3, 23];
+                  case 26:
+                    _m = 0, _o = stack.positiveZIndex, _p.label = 27;
+                  case 27:
+                    return _m < _o.length ? (child = _o[_m], [4, this.renderStack(child)]) : [3, 30];
+                  case 28:
+                    _p.sent(), _p.label = 29;
+                  case 29:
+                    return _m++, [3, 27];
+                  case 30:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.mask = function(paths) {
+            this.ctx.beginPath(), this.ctx.moveTo(0, 0), this.ctx.lineTo(this.canvas.width, 0), this.ctx.lineTo(this.canvas.width, this.canvas.height), this.ctx.lineTo(0, this.canvas.height), this.ctx.lineTo(0, 0), this.formatPath(paths.slice(0).reverse()), this.ctx.closePath();
+          }, CanvasRenderer2.prototype.path = function(paths) {
+            this.ctx.beginPath(), this.formatPath(paths), this.ctx.closePath();
+          }, CanvasRenderer2.prototype.formatPath = function(paths) {
+            var _this = this;
+            paths.forEach(function(point, index) {
+              var start = isBezierCurve(point) ? point.start : point;
+              index === 0 ? _this.ctx.moveTo(start.x, start.y) : _this.ctx.lineTo(start.x, start.y), isBezierCurve(point) && _this.ctx.bezierCurveTo(point.startControl.x, point.startControl.y, point.endControl.x, point.endControl.y, point.end.x, point.end.y);
+            });
+          }, CanvasRenderer2.prototype.renderRepeat = function(path, pattern, offsetX, offsetY) {
+            this.path(path), this.ctx.fillStyle = pattern, this.ctx.translate(offsetX, offsetY), this.ctx.fill(), this.ctx.translate(-offsetX, -offsetY);
+          }, CanvasRenderer2.prototype.resizeImage = function(image2, width, height) {
+            var _a2;
+            if (image2.width === width && image2.height === height)
+              return image2;
+            var ownerDocument = (_a2 = this.canvas.ownerDocument) !== null && _a2 !== void 0 ? _a2 : document, canvas = ownerDocument.createElement("canvas");
+            canvas.width = Math.max(1, width), canvas.height = Math.max(1, height);
+            var ctx = canvas.getContext("2d");
+            return ctx.drawImage(image2, 0, 0, image2.width, image2.height, 0, 0, width, height), canvas;
+          }, CanvasRenderer2.prototype.renderBackgroundImage = function(container) {
+            return __awaiter(this, void 0, void 0, function() {
+              var index, _loop_1, this_1, _i, _a2, backgroundImage2;
+              return __generator(this, function(_b) {
+                switch (_b.label) {
+                  case 0:
+                    index = container.styles.backgroundImage.length - 1, _loop_1 = function(backgroundImage3) {
+                      var image2, url, _c, path, x5, y6, width, height, pattern, _d, path, x5, y6, width, height, _e2, lineLength, x0, x1, y0, y1, canvas, ctx, gradient_1, pattern, _f, path, left, top_1, width, height, position2, x5, y6, _g, rx, ry, radialGradient_1, midX, midY, f11, invF;
+                      return __generator(this, function(_h) {
+                        switch (_h.label) {
+                          case 0:
+                            if (backgroundImage3.type !== 0)
+                              return [3, 5];
+                            image2 = void 0, url = backgroundImage3.url, _h.label = 1;
+                          case 1:
+                            return _h.trys.push([1, 3, , 4]), [4, this_1.context.cache.match(url)];
+                          case 2:
+                            return image2 = _h.sent(), [3, 4];
+                          case 3:
+                            return _h.sent(), this_1.context.logger.error("Error loading background-image " + url), [3, 4];
+                          case 4:
+                            return image2 && (_c = calculateBackgroundRendering(
+                              container,
+                              index,
+                              [
+                                image2.width,
+                                image2.height,
+                                image2.width / image2.height
+                              ]
+                            ), path = _c[0], x5 = _c[1], y6 = _c[2], width = _c[3], height = _c[4], pattern = this_1.ctx.createPattern(this_1.resizeImage(image2, width, height), "repeat"), this_1.renderRepeat(path, pattern, x5, y6)), [3, 6];
+                          case 5:
+                            isLinearGradient(backgroundImage3) ? (_d = calculateBackgroundRendering(container, index, [null, null, null]), path = _d[0], x5 = _d[1], y6 = _d[2], width = _d[3], height = _d[4], _e2 = calculateGradientDirection(backgroundImage3.angle, width, height), lineLength = _e2[0], x0 = _e2[1], x1 = _e2[2], y0 = _e2[3], y1 = _e2[4], canvas = document.createElement("canvas"), canvas.width = width, canvas.height = height, ctx = canvas.getContext("2d"), gradient_1 = ctx.createLinearGradient(x0, y0, x1, y1), processColorStops(backgroundImage3.stops, lineLength).forEach(function(colorStop) {
+                              return gradient_1.addColorStop(colorStop.stop, asString(colorStop.color));
+                            }), ctx.fillStyle = gradient_1, ctx.fillRect(0, 0, width, height), width > 0 && height > 0 && (pattern = this_1.ctx.createPattern(canvas, "repeat"), this_1.renderRepeat(path, pattern, x5, y6))) : isRadialGradient(backgroundImage3) && (_f = calculateBackgroundRendering(
+                              container,
+                              index,
+                              [
+                                null,
+                                null,
+                                null
+                              ]
+                            ), path = _f[0], left = _f[1], top_1 = _f[2], width = _f[3], height = _f[4], position2 = backgroundImage3.position.length === 0 ? [FIFTY_PERCENT] : backgroundImage3.position, x5 = getAbsoluteValue(position2[0], width), y6 = getAbsoluteValue(position2[position2.length - 1], height), _g = calculateRadius(backgroundImage3, x5, y6, width, height), rx = _g[0], ry = _g[1], rx > 0 && ry > 0 && (radialGradient_1 = this_1.ctx.createRadialGradient(left + x5, top_1 + y6, 0, left + x5, top_1 + y6, rx), processColorStops(backgroundImage3.stops, rx * 2).forEach(function(colorStop) {
+                              return radialGradient_1.addColorStop(colorStop.stop, asString(colorStop.color));
+                            }), this_1.path(path), this_1.ctx.fillStyle = radialGradient_1, rx !== ry ? (midX = container.bounds.left + 0.5 * container.bounds.width, midY = container.bounds.top + 0.5 * container.bounds.height, f11 = ry / rx, invF = 1 / f11, this_1.ctx.save(), this_1.ctx.translate(midX, midY), this_1.ctx.transform(1, 0, 0, f11, 0, 0), this_1.ctx.translate(-midX, -midY), this_1.ctx.fillRect(left, invF * (top_1 - midY) + midY, width, height * invF), this_1.ctx.restore()) : this_1.ctx.fill())), _h.label = 6;
+                          case 6:
+                            return index--, [
+                              2
+                              /*return*/
+                            ];
+                        }
+                      });
+                    }, this_1 = this, _i = 0, _a2 = container.styles.backgroundImage.slice(0).reverse(), _b.label = 1;
+                  case 1:
+                    return _i < _a2.length ? (backgroundImage2 = _a2[_i], [5, _loop_1(backgroundImage2)]) : [3, 4];
+                  case 2:
+                    _b.sent(), _b.label = 3;
+                  case 3:
+                    return _i++, [3, 1];
+                  case 4:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.renderSolidBorder = function(color2, side, curvePoints) {
+            return __awaiter(this, void 0, void 0, function() {
+              return __generator(this, function(_a2) {
+                return this.path(parsePathForBorder(curvePoints, side)), this.ctx.fillStyle = asString(color2), this.ctx.fill(), [
+                  2
+                  /*return*/
+                ];
+              });
+            });
+          }, CanvasRenderer2.prototype.renderDoubleBorder = function(color2, width, side, curvePoints) {
+            return __awaiter(this, void 0, void 0, function() {
+              var outerPaths, innerPaths;
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    return width < 3 ? [4, this.renderSolidBorder(color2, side, curvePoints)] : [3, 2];
+                  case 1:
+                    return _a2.sent(), [
+                      2
+                      /*return*/
+                    ];
+                  case 2:
+                    return outerPaths = parsePathForBorderDoubleOuter(curvePoints, side), this.path(outerPaths), this.ctx.fillStyle = asString(color2), this.ctx.fill(), innerPaths = parsePathForBorderDoubleInner(curvePoints, side), this.path(innerPaths), this.ctx.fill(), [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.renderNodeBackgroundAndBorders = function(paint) {
+            return __awaiter(this, void 0, void 0, function() {
+              var styles, hasBackground, borders, backgroundPaintingArea, side, _i, borders_1, border, _this = this;
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    return this.applyEffects(paint.getEffects(
+                      2
+                      /* BACKGROUND_BORDERS */
+                    )), styles = paint.container.styles, hasBackground = !isTransparent(styles.backgroundColor) || styles.backgroundImage.length, borders = [
+                      { style: styles.borderTopStyle, color: styles.borderTopColor, width: styles.borderTopWidth },
+                      { style: styles.borderRightStyle, color: styles.borderRightColor, width: styles.borderRightWidth },
+                      { style: styles.borderBottomStyle, color: styles.borderBottomColor, width: styles.borderBottomWidth },
+                      { style: styles.borderLeftStyle, color: styles.borderLeftColor, width: styles.borderLeftWidth }
+                    ], backgroundPaintingArea = calculateBackgroundCurvedPaintingArea(getBackgroundValueForIndex(styles.backgroundClip, 0), paint.curves), hasBackground || styles.boxShadow.length ? (this.ctx.save(), this.path(backgroundPaintingArea), this.ctx.clip(), isTransparent(styles.backgroundColor) || (this.ctx.fillStyle = asString(styles.backgroundColor), this.ctx.fill()), [4, this.renderBackgroundImage(paint.container)]) : [3, 2];
+                  case 1:
+                    _a2.sent(), this.ctx.restore(), styles.boxShadow.slice(0).reverse().forEach(function(shadow) {
+                      _this.ctx.save();
+                      var borderBoxArea = calculateBorderBoxPath(paint.curves), maskOffset = shadow.inset ? 0 : MASK_OFFSET, shadowPaintingArea = transformPath(borderBoxArea, -maskOffset + (shadow.inset ? 1 : -1) * shadow.spread.number, (shadow.inset ? 1 : -1) * shadow.spread.number, shadow.spread.number * (shadow.inset ? -2 : 2), shadow.spread.number * (shadow.inset ? -2 : 2));
+                      shadow.inset ? (_this.path(borderBoxArea), _this.ctx.clip(), _this.mask(shadowPaintingArea)) : (_this.mask(borderBoxArea), _this.ctx.clip(), _this.path(shadowPaintingArea)), _this.ctx.shadowOffsetX = shadow.offsetX.number + maskOffset, _this.ctx.shadowOffsetY = shadow.offsetY.number, _this.ctx.shadowColor = asString(shadow.color), _this.ctx.shadowBlur = shadow.blur.number, _this.ctx.fillStyle = shadow.inset ? asString(shadow.color) : "rgba(0,0,0,1)", _this.ctx.fill(), _this.ctx.restore();
+                    }), _a2.label = 2;
+                  case 2:
+                    side = 0, _i = 0, borders_1 = borders, _a2.label = 3;
+                  case 3:
+                    return _i < borders_1.length ? (border = borders_1[_i], border.style !== 0 && !isTransparent(border.color) && border.width > 0 ? border.style !== 2 ? [3, 5] : [4, this.renderDashedDottedBorder(
+                      border.color,
+                      border.width,
+                      side,
+                      paint.curves,
+                      2
+                      /* DASHED */
+                    )] : [3, 11]) : [3, 13];
+                  case 4:
+                    return _a2.sent(), [3, 11];
+                  case 5:
+                    return border.style !== 3 ? [3, 7] : [4, this.renderDashedDottedBorder(
+                      border.color,
+                      border.width,
+                      side,
+                      paint.curves,
+                      3
+                      /* DOTTED */
+                    )];
+                  case 6:
+                    return _a2.sent(), [3, 11];
+                  case 7:
+                    return border.style !== 4 ? [3, 9] : [4, this.renderDoubleBorder(border.color, border.width, side, paint.curves)];
+                  case 8:
+                    return _a2.sent(), [3, 11];
+                  case 9:
+                    return [4, this.renderSolidBorder(border.color, side, paint.curves)];
+                  case 10:
+                    _a2.sent(), _a2.label = 11;
+                  case 11:
+                    side++, _a2.label = 12;
+                  case 12:
+                    return _i++, [3, 3];
+                  case 13:
+                    return [
+                      2
+                      /*return*/
+                    ];
+                }
+              });
+            });
+          }, CanvasRenderer2.prototype.renderDashedDottedBorder = function(color2, width, side, curvePoints, style) {
+            return __awaiter(this, void 0, void 0, function() {
+              var strokePaths, boxPaths, startX, startY, endX, endY, length, dashLength, spaceLength, useLineDash, multiplier, numberOfDashes, minSpace, maxSpace, path1, path2, path1, path2;
+              return __generator(this, function(_a2) {
+                return this.ctx.save(), strokePaths = parsePathForBorderStroke(curvePoints, side), boxPaths = parsePathForBorder(curvePoints, side), style === 2 && (this.path(boxPaths), this.ctx.clip()), isBezierCurve(boxPaths[0]) ? (startX = boxPaths[0].start.x, startY = boxPaths[0].start.y) : (startX = boxPaths[0].x, startY = boxPaths[0].y), isBezierCurve(boxPaths[1]) ? (endX = boxPaths[1].end.x, endY = boxPaths[1].end.y) : (endX = boxPaths[1].x, endY = boxPaths[1].y), side === 0 || side === 2 ? length = Math.abs(startX - endX) : length = Math.abs(startY - endY), this.ctx.beginPath(), style === 3 ? this.formatPath(strokePaths) : this.formatPath(boxPaths.slice(0, 2)), dashLength = width < 3 ? width * 3 : width * 2, spaceLength = width < 3 ? width * 2 : width, style === 3 && (dashLength = width, spaceLength = width), useLineDash = !0, length <= dashLength * 2 ? useLineDash = !1 : length <= dashLength * 2 + spaceLength ? (multiplier = length / (2 * dashLength + spaceLength), dashLength *= multiplier, spaceLength *= multiplier) : (numberOfDashes = Math.floor((length + spaceLength) / (dashLength + spaceLength)), minSpace = (length - numberOfDashes * dashLength) / (numberOfDashes - 1), maxSpace = (length - (numberOfDashes + 1) * dashLength) / numberOfDashes, spaceLength = maxSpace <= 0 || Math.abs(spaceLength - minSpace) < Math.abs(spaceLength - maxSpace) ? minSpace : maxSpace), useLineDash && (style === 3 ? this.ctx.setLineDash([0, dashLength + spaceLength]) : this.ctx.setLineDash([dashLength, spaceLength])), style === 3 ? (this.ctx.lineCap = "round", this.ctx.lineWidth = width) : this.ctx.lineWidth = width * 2 + 1.1, this.ctx.strokeStyle = asString(color2), this.ctx.stroke(), this.ctx.setLineDash([]), style === 2 && (isBezierCurve(boxPaths[0]) && (path1 = boxPaths[3], path2 = boxPaths[0], this.ctx.beginPath(), this.formatPath([new Vector(path1.end.x, path1.end.y), new Vector(path2.start.x, path2.start.y)]), this.ctx.stroke()), isBezierCurve(boxPaths[1]) && (path1 = boxPaths[1], path2 = boxPaths[2], this.ctx.beginPath(), this.formatPath([new Vector(path1.end.x, path1.end.y), new Vector(path2.start.x, path2.start.y)]), this.ctx.stroke())), this.ctx.restore(), [
+                  2
+                  /*return*/
+                ];
+              });
+            });
+          }, CanvasRenderer2.prototype.render = function(element) {
+            return __awaiter(this, void 0, void 0, function() {
+              var stack;
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    return this.options.backgroundColor && (this.ctx.fillStyle = asString(this.options.backgroundColor), this.ctx.fillRect(this.options.x, this.options.y, this.options.width, this.options.height)), stack = parseStackingContexts(element), [4, this.renderStack(stack)];
+                  case 1:
+                    return _a2.sent(), this.applyEffects([]), [2, this.canvas];
+                }
+              });
+            });
+          }, CanvasRenderer2;
+        }(Renderer)
+      ), isTextInputElement = function(container) {
+        return container instanceof TextareaElementContainer || container instanceof SelectElementContainer ? !0 : container instanceof InputElementContainer && container.type !== RADIO && container.type !== CHECKBOX;
+      }, calculateBackgroundCurvedPaintingArea = function(clip, curves) {
+        switch (clip) {
+          case 0:
+            return calculateBorderBoxPath(curves);
+          case 2:
+            return calculateContentBoxPath(curves);
+          case 1:
+          default:
+            return calculatePaddingBoxPath(curves);
+        }
+      }, canvasTextAlign = function(textAlign2) {
+        switch (textAlign2) {
+          case 1:
+            return "center";
+          case 2:
+            return "right";
+          case 0:
+          default:
+            return "left";
+        }
+      }, iOSBrokenFonts = ["-apple-system", "system-ui"], fixIOSSystemFonts = function(fontFamilies) {
+        return /iPhone OS 15_(0|1)/.test(window.navigator.userAgent) ? fontFamilies.filter(function(fontFamily2) {
+          return iOSBrokenFonts.indexOf(fontFamily2) === -1;
+        }) : fontFamilies;
+      }, ForeignObjectRenderer = (
+        /** @class */
+        function(_super) {
+          __extends(ForeignObjectRenderer2, _super);
+          function ForeignObjectRenderer2(context, options) {
+            var _this = _super.call(this, context, options) || this;
+            return _this.canvas = options.canvas ? options.canvas : document.createElement("canvas"), _this.ctx = _this.canvas.getContext("2d"), _this.options = options, _this.canvas.width = Math.floor(options.width * options.scale), _this.canvas.height = Math.floor(options.height * options.scale), _this.canvas.style.width = options.width + "px", _this.canvas.style.height = options.height + "px", _this.ctx.scale(_this.options.scale, _this.options.scale), _this.ctx.translate(-options.x, -options.y), _this.context.logger.debug("EXPERIMENTAL ForeignObject renderer initialized (" + options.width + "x" + options.height + " at " + options.x + "," + options.y + ") with scale " + options.scale), _this;
+          }
+          return ForeignObjectRenderer2.prototype.render = function(element) {
+            return __awaiter(this, void 0, void 0, function() {
+              var svg, img;
+              return __generator(this, function(_a2) {
+                switch (_a2.label) {
+                  case 0:
+                    return svg = createForeignObjectSVG(this.options.width * this.options.scale, this.options.height * this.options.scale, this.options.scale, this.options.scale, element), [4, loadSerializedSVG(svg)];
+                  case 1:
+                    return img = _a2.sent(), this.options.backgroundColor && (this.ctx.fillStyle = asString(this.options.backgroundColor), this.ctx.fillRect(0, 0, this.options.width * this.options.scale, this.options.height * this.options.scale)), this.ctx.drawImage(img, -this.options.x * this.options.scale, -this.options.y * this.options.scale), [2, this.canvas];
+                }
+              });
+            });
+          }, ForeignObjectRenderer2;
+        }(Renderer)
+      ), loadSerializedSVG = function(svg) {
+        return new Promise(function(resolve, reject) {
+          var img = new Image();
+          img.onload = function() {
+            resolve(img);
+          }, img.onerror = reject, img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(new XMLSerializer().serializeToString(svg));
+        });
+      }, Logger2 = (
+        /** @class */
+        function() {
+          function Logger3(_a2) {
+            var id = _a2.id, enabled = _a2.enabled;
+            this.id = id, this.enabled = enabled, this.start = Date.now();
+          }
+          return Logger3.prototype.debug = function() {
+            for (var args = [], _i = 0; _i < arguments.length; _i++)
+              args[_i] = arguments[_i];
+            this.enabled && (typeof window < "u" && window.console && typeof console.debug == "function" ? console.debug.apply(console, __spreadArray([this.id, this.getTime() + "ms"], args)) : this.info.apply(this, args));
+          }, Logger3.prototype.getTime = function() {
+            return Date.now() - this.start;
+          }, Logger3.prototype.info = function() {
+            for (var args = [], _i = 0; _i < arguments.length; _i++)
+              args[_i] = arguments[_i];
+            this.enabled && typeof window < "u" && window.console && typeof console.info == "function" && console.info.apply(console, __spreadArray([this.id, this.getTime() + "ms"], args));
+          }, Logger3.prototype.warn = function() {
+            for (var args = [], _i = 0; _i < arguments.length; _i++)
+              args[_i] = arguments[_i];
+            this.enabled && (typeof window < "u" && window.console && typeof console.warn == "function" ? console.warn.apply(console, __spreadArray([this.id, this.getTime() + "ms"], args)) : this.info.apply(this, args));
+          }, Logger3.prototype.error = function() {
+            for (var args = [], _i = 0; _i < arguments.length; _i++)
+              args[_i] = arguments[_i];
+            this.enabled && (typeof window < "u" && window.console && typeof console.error == "function" ? console.error.apply(console, __spreadArray([this.id, this.getTime() + "ms"], args)) : this.info.apply(this, args));
+          }, Logger3.instances = {}, Logger3;
+        }()
+      ), Context = (
+        /** @class */
+        function() {
+          function Context2(options, windowBounds) {
+            var _a2;
+            this.windowBounds = windowBounds, this.instanceName = "#" + Context2.instanceCount++, this.logger = new Logger2({ id: this.instanceName, enabled: options.logging }), this.cache = (_a2 = options.cache) !== null && _a2 !== void 0 ? _a2 : new Cache(this, options);
+          }
+          return Context2.instanceCount = 1, Context2;
+        }()
+      ), html2canvas3 = function(element, options) {
+        return options === void 0 && (options = {}), renderElement(element, options);
+      };
+      typeof window < "u" && CacheStorage.setContext(window);
+      var renderElement = function(element, opts) {
+        return __awaiter(void 0, void 0, void 0, function() {
+          var ownerDocument, defaultView, resourceOptions, contextOptions, windowOptions, windowBounds, context, foreignObjectRendering, cloneOptions, documentCloner, clonedElement, container, _a2, width, height, left, top, backgroundColor2, renderOptions, canvas, renderer, root2, renderer, _b, _c, _d, _e2, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t2;
+          return __generator(this, function(_u) {
+            switch (_u.label) {
+              case 0:
+                if (!element || typeof element != "object")
+                  return [2, Promise.reject("Invalid element provided as first argument")];
+                if (ownerDocument = element.ownerDocument, !ownerDocument)
+                  throw new Error("Element is not attached to a Document");
+                if (defaultView = ownerDocument.defaultView, !defaultView)
+                  throw new Error("Document is not attached to a Window");
+                return resourceOptions = {
+                  allowTaint: (_b = opts.allowTaint) !== null && _b !== void 0 ? _b : !1,
+                  imageTimeout: (_c = opts.imageTimeout) !== null && _c !== void 0 ? _c : 15e3,
+                  proxy: opts.proxy,
+                  useCORS: (_d = opts.useCORS) !== null && _d !== void 0 ? _d : !1
+                }, contextOptions = __assign2({ logging: (_e2 = opts.logging) !== null && _e2 !== void 0 ? _e2 : !0, cache: opts.cache }, resourceOptions), windowOptions = {
+                  windowWidth: (_f = opts.windowWidth) !== null && _f !== void 0 ? _f : defaultView.innerWidth,
+                  windowHeight: (_g = opts.windowHeight) !== null && _g !== void 0 ? _g : defaultView.innerHeight,
+                  scrollX: (_h = opts.scrollX) !== null && _h !== void 0 ? _h : defaultView.pageXOffset,
+                  scrollY: (_j = opts.scrollY) !== null && _j !== void 0 ? _j : defaultView.pageYOffset
+                }, windowBounds = new Bounds(windowOptions.scrollX, windowOptions.scrollY, windowOptions.windowWidth, windowOptions.windowHeight), context = new Context(contextOptions, windowBounds), foreignObjectRendering = (_k = opts.foreignObjectRendering) !== null && _k !== void 0 ? _k : !1, cloneOptions = {
+                  allowTaint: (_l = opts.allowTaint) !== null && _l !== void 0 ? _l : !1,
+                  onclone: opts.onclone,
+                  ignoreElements: opts.ignoreElements,
+                  inlineImages: foreignObjectRendering,
+                  copyStyles: foreignObjectRendering
+                }, context.logger.debug("Starting document clone with size " + windowBounds.width + "x" + windowBounds.height + " scrolled to " + -windowBounds.left + "," + -windowBounds.top), documentCloner = new DocumentCloner(context, element, cloneOptions), clonedElement = documentCloner.clonedReferenceElement, clonedElement ? [4, documentCloner.toIFrame(ownerDocument, windowBounds)] : [2, Promise.reject("Unable to find element in cloned iframe")];
+              case 1:
+                return container = _u.sent(), _a2 = isBodyElement(clonedElement) || isHTMLElement(clonedElement) ? parseDocumentSize(clonedElement.ownerDocument) : parseBounds(context, clonedElement), width = _a2.width, height = _a2.height, left = _a2.left, top = _a2.top, backgroundColor2 = parseBackgroundColor(context, clonedElement, opts.backgroundColor), renderOptions = {
+                  canvas: opts.canvas,
+                  backgroundColor: backgroundColor2,
+                  scale: (_o = (_m = opts.scale) !== null && _m !== void 0 ? _m : defaultView.devicePixelRatio) !== null && _o !== void 0 ? _o : 1,
+                  x: ((_p = opts.x) !== null && _p !== void 0 ? _p : 0) + left,
+                  y: ((_q = opts.y) !== null && _q !== void 0 ? _q : 0) + top,
+                  width: (_r = opts.width) !== null && _r !== void 0 ? _r : Math.ceil(width),
+                  height: (_s = opts.height) !== null && _s !== void 0 ? _s : Math.ceil(height)
+                }, foreignObjectRendering ? (context.logger.debug("Document cloned, using foreign object rendering"), renderer = new ForeignObjectRenderer(context, renderOptions), [4, renderer.render(clonedElement)]) : [3, 3];
+              case 2:
+                return canvas = _u.sent(), [3, 5];
+              case 3:
+                return context.logger.debug("Document cloned, element located at " + left + "," + top + " with size " + width + "x" + height + " using computed rendering"), context.logger.debug("Starting DOM parsing"), root2 = parseTree(context, clonedElement), backgroundColor2 === root2.styles.backgroundColor && (root2.styles.backgroundColor = COLORS.TRANSPARENT), context.logger.debug("Starting renderer for element at " + renderOptions.x + "," + renderOptions.y + " with size " + renderOptions.width + "x" + renderOptions.height), renderer = new CanvasRenderer(context, renderOptions), [4, renderer.render(root2)];
+              case 4:
+                canvas = _u.sent(), _u.label = 5;
+              case 5:
+                return (!((_t2 = opts.removeContainer) !== null && _t2 !== void 0) || _t2) && (DocumentCloner.destroy(container) || context.logger.error("Cannot detach cloned iframe as it is not in the DOM anymore")), context.logger.debug("Finished rendering"), [2, canvas];
+            }
+          });
+        });
+      }, parseBackgroundColor = function(context, element, backgroundColorOverride) {
+        var ownerDocument = element.ownerDocument, documentBackgroundColor = ownerDocument.documentElement ? parseColor(context, getComputedStyle(ownerDocument.documentElement).backgroundColor) : COLORS.TRANSPARENT, bodyBackgroundColor = ownerDocument.body ? parseColor(context, getComputedStyle(ownerDocument.body).backgroundColor) : COLORS.TRANSPARENT, defaultBackgroundColor = typeof backgroundColorOverride == "string" ? parseColor(context, backgroundColorOverride) : backgroundColorOverride === null ? COLORS.TRANSPARENT : 4294967295;
+        return element === ownerDocument.documentElement ? isTransparent(documentBackgroundColor) ? isTransparent(bodyBackgroundColor) ? defaultBackgroundColor : bodyBackgroundColor : documentBackgroundColor : defaultBackgroundColor;
+      };
+      return html2canvas3;
+    });
   }
 });
 
@@ -34972,7 +39855,7 @@ function ExternalVideo(props) {
 
 // node_modules/@shopify/hydrogen-react/dist/browser-dev/Image.mjs
 var import_jsx_runtime4 = __toESM(require_jsx_runtime(), 1), React7 = __toESM(require_react(), 1);
-var Image = React7.forwardRef(
+var Image2 = React7.forwardRef(
   ({
     alt,
     aspectRatio,
@@ -35488,7 +40371,7 @@ function MediaFile({
         throw new Error(noDataImage);
       }
       return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
-        Image,
+        Image2,
         {
           ...passthroughProps,
           ...mediaOptions == null ? void 0 : mediaOptions.image,
@@ -38031,7 +42914,7 @@ async function handleRequest(request, responseStatusCode, responseHeaders, remix
       }
     }
   );
-  return isbot(request.headers.get("user-agent")) && await body.allReady, responseHeaders.set("Content-Type", "text/html"), responseHeaders.set("Content-Security-Policy", header), new Response(body, {
+  return isbot(request.headers.get("user-agent")) && await body.allReady, responseHeaders.set("Content-Type", "text/html"), new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode
   });
@@ -40816,7 +45699,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: "Send a Card" }, void 0, !1, {
                     fileName: "app/components/Layout.jsx",
                     lineNumber: 259,
-                    columnNumber: 19
+                    columnNumber: 8
                   }, this),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown-content", children: [
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -40831,60 +45714,63 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                       {
                         fileName: "app/components/Layout.jsx",
                         lineNumber: 264,
-                        columnNumber: 21
+                        columnNumber: 6
                       },
                       this
                     ),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 2" }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { className: "Create-a-card", onClick: () => window.open(
+                      "/createcard",
+                      "_self"
+                    ), children: "Create a Card" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 267,
-                      columnNumber: 21
+                      lineNumber: 266,
+                      columnNumber: 8
                     }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 3" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 268,
-                      columnNumber: 21
+                      lineNumber: 269,
+                      columnNumber: 7
                     }, this)
                   ] }, void 0, !0, {
                     fileName: "app/components/Layout.jsx",
                     lineNumber: 262,
-                    columnNumber: 19
+                    columnNumber: 7
                   }, this)
                 ] }, void 0, !0, {
                   fileName: "app/components/Layout.jsx",
                   lineNumber: 258,
-                  columnNumber: 17
+                  columnNumber: 9
                 }, this) : null,
                 item.title === "Pricing" ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown", children: [
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: "Pricing" }, void 0, !1, {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 275,
+                    lineNumber: 276,
                     columnNumber: 19
                   }, this),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown-content", children: [
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 1" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 279,
+                      lineNumber: 280,
                       columnNumber: 21
                     }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: " Item 2" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 280,
+                      lineNumber: 281,
                       columnNumber: 21
                     }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 3" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 281,
+                      lineNumber: 282,
                       columnNumber: 21
                     }, this)
                   ] }, void 0, !0, {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 278,
+                    lineNumber: 279,
                     columnNumber: 19
                   }, this)
                 ] }, void 0, !0, {
                   fileName: "app/components/Layout.jsx",
-                  lineNumber: 274,
+                  lineNumber: 275,
                   columnNumber: 17
                 }, this) : null,
                 ["Send a Card", "Pricing"].includes(item.title) ? null : item.title
@@ -40924,19 +45810,19 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               !1,
               {
                 fileName: "app/components/Layout.jsx",
-                lineNumber: 295,
+                lineNumber: 296,
                 columnNumber: 11
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { class: "tooltiptext", children: "Cart  " }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "tooltiptext", children: "Cart" }, void 0, !1, {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 304,
+              lineNumber: 305,
               columnNumber: 11
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 294,
+            lineNumber: 295,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -40951,7 +45837,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             !1,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 308,
+              lineNumber: 309,
               columnNumber: 9
             },
             this
@@ -40971,14 +45857,14 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             !1,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 315,
+              lineNumber: 316,
               columnNumber: 9
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 293,
+          lineNumber: 294,
           columnNumber: 7
         }, this)
       ]
@@ -40998,19 +45884,19 @@ function AccountLink({ className }) {
   let [root2] = useMatches2();
   return ((_a2 = root2.data) == null ? void 0 : _a2.isLoggedIn) ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: "/account", className, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconAccount, {}, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 357,
+    lineNumber: 358,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 356,
+    lineNumber: 357,
     columnNumber: 5
   }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: "/account/login", className, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconLogin, {}, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 361,
+    lineNumber: 362,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 360,
+    lineNumber: 361,
     columnNumber: 5
   }, this);
 }
@@ -41019,7 +45905,7 @@ function CartCount({ isHome, openCart }) {
   let [root2] = useMatches2();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react56.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Badge, { count: 0, dark: isHome, openCart }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 370,
+    lineNumber: 371,
     columnNumber: 25
   }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
     Badge,
@@ -41032,17 +45918,17 @@ function CartCount({ isHome, openCart }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 373,
+      lineNumber: 374,
       columnNumber: 11
     },
     this
   ) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 371,
+    lineNumber: 372,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 370,
+    lineNumber: 371,
     columnNumber: 5
   }, this);
 }
@@ -41051,7 +45937,7 @@ function Badge({ openCart, dark, count }) {
     () => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconBag, {}, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 390,
+        lineNumber: 391,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -41060,7 +45946,7 @@ function Badge({ openCart, dark, count }) {
           className: `${dark ? "text-primary bg-contrast dark:text-contrast dark:bg-primary" : "text-contrast bg-primary"} absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`,
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { children: count || 0 }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 397,
+            lineNumber: 398,
             columnNumber: 11
           }, this)
         },
@@ -41068,14 +45954,14 @@ function Badge({ openCart, dark, count }) {
         !1,
         {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 391,
+          lineNumber: 392,
           columnNumber: 9
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 389,
+      lineNumber: 390,
       columnNumber: 7
     }, this),
     [count, dark]
@@ -41091,7 +45977,7 @@ function Badge({ openCart, dark, count }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 405,
+      lineNumber: 406,
       columnNumber: 5
     },
     this
@@ -41106,7 +45992,7 @@ function Badge({ openCart, dark, count }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 412,
+      lineNumber: 413,
       columnNumber: 7
     },
     this
@@ -41126,12 +46012,12 @@ function Footer({ menu }) {
       children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(FooterMenu, { menu }, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 437,
+          lineNumber: 438,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(CountrySelector, {}, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 438,
+          lineNumber: 439,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -41148,7 +46034,7 @@ function Footer({ menu }) {
           !0,
           {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 439,
+            lineNumber: 440,
             columnNumber: 7
           },
           this
@@ -41159,7 +46045,7 @@ function Footer({ menu }) {
     !0,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 430,
+      lineNumber: 431,
       columnNumber: 5
     },
     this
@@ -41168,11 +46054,11 @@ function Footer({ menu }) {
 function FooterLink({ item }) {
   return item.to.startsWith("http") ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: item.to, target: item.target, rel: "noopener noreferrer", children: item.title }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 452,
+    lineNumber: 453,
     columnNumber: 7
   }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: item.to, target: item.target, prefetch: "intent", children: item.title }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 459,
+    lineNumber: 460,
     columnNumber: 5
   }, this);
 }
@@ -41188,20 +46074,20 @@ function FooterMenu({ menu }) {
         item.title,
         ((_a2 = item == null ? void 0 : item.items) == null ? void 0 : _a2.length) > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "md:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconCaret, { direction: open ? "up" : "down" }, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 483,
+          lineNumber: 484,
           columnNumber: 25
         }, this) }, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 482,
+          lineNumber: 483,
           columnNumber: 23
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 479,
+        lineNumber: 480,
         columnNumber: 19
       }, this) }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 478,
+        lineNumber: 479,
         columnNumber: 17
       }, this),
       ((_b = item == null ? void 0 : item.items) == null ? void 0 : _b.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -41210,19 +46096,19 @@ function FooterMenu({ menu }) {
           className: `${open ? "max-h-48 h-fit" : "max-h-0 md:max-h-fit"} overflow-hidden transition-all duration-300`,
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react56.Suspense, { "data-comment": "This suspense fixes a hydration bug in Disclosure.Panel with static prop", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(ve.Panel, { static: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("nav", { className: styles.nav, children: item.items.map((subItem) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(FooterLink, { item: subItem }, subItem.id, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 497,
+            lineNumber: 498,
             columnNumber: 29
           }, this)) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 495,
+            lineNumber: 496,
             columnNumber: 25
           }, this) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 494,
+            lineNumber: 495,
             columnNumber: 23
           }, this) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 493,
+            lineNumber: 494,
             columnNumber: 21
           }, this)
         },
@@ -41230,27 +46116,27 @@ function FooterMenu({ menu }) {
         !1,
         {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 489,
+          lineNumber: 490,
           columnNumber: 19
         },
         this
       ) : null
     ] }, void 0, !0, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 477,
+      lineNumber: 478,
       columnNumber: 15
     }, this);
   } }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 475,
+    lineNumber: 476,
     columnNumber: 11
   }, this) }, item.id, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 474,
+    lineNumber: 475,
     columnNumber: 9
   }, this)) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 472,
+    lineNumber: 473,
     columnNumber: 5
   }, this);
 }
@@ -41598,7 +46484,7 @@ function ProductGallery({ media, className }) {
           "aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[400px]"
         ].join(" ");
         return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: style, children: image && /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-          Image,
+          Image2,
           {
             loading: i6 === 0 ? "eager" : "lazy",
             data: image,
@@ -41868,7 +46754,7 @@ function ProductCard({
         children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: clsx_m_default("grid gap-4", className), children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "card-image aspect-[4/5] bg-primary/5", children: [
             image && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
-              Image,
+              Image2,
               {
                 className: "object-cover w-full fadeIn",
                 sizes: "(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw",
@@ -42714,7 +47600,7 @@ function CartLineItem({ line }) {
   let { id, quantity, merchandise } = line;
   return typeof quantity > "u" || !(merchandise != null && merchandise.product) ? null : /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("li", { className: "flex gap-4", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex-shrink", children: merchandise.image && /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-      Image,
+      Image2,
       {
         width: 110,
         height: 110,
@@ -43169,7 +48055,7 @@ function OrderCard({ order }) {
         prefetch: "intent",
         children: [
           ((_a2 = lineItems[0].variant) == null ? void 0 : _a2.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "card-image aspect-square bg-primary/5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
-            Image,
+            Image2,
             {
               width: 168,
               height: 168,
@@ -43704,7 +48590,7 @@ function FeaturedCollections({
   let collectionsWithImage = collections.nodes.filter((item) => item.image);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(Section, { ...props, heading: title, children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(Grid, { items: collectionsWithImage.length, children: collectionsWithImage.map((collection2) => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(Link3, { to: `/collections/${collection2.handle}`, children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "grid gap-4", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: "card-image bg-primary/5 aspect-[3/2]", children: (collection2 == null ? void 0 : collection2.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
-      Image,
+      Image2,
       {
         alt: `Image of ${collection2.title}`,
         data: collection2.image,
@@ -45542,7 +50428,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-7RNQSP63.css";
+var app_default = "/build/_assets/app-DS5IGJUB.css";
 
 // app/hooks/useAnalytics.jsx
 var import_react77 = __toESM(require_react());
@@ -47528,7 +52414,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
         columnNumber: 17
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "textAreaView w-[600px]", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("textarea", { type: "text", id: "example-one-input", value: name, placeholder: "Enter your custom message text here...", className: "inputText", maxlength: "450", onChange: (e4) => onChnageNameVal(e4.target.value), "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("textarea", { type: "text", id: "example-one-input", value: name, placeholder: "Enter your custom message text here...", className: "inputText", maxLength: "450", onChange: (e4) => onChnageNameVal(e4.target.value), "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
           fileName: "app/components/products/MessageWrite.jsx",
           lineNumber: 426,
           columnNumber: 21
@@ -47596,7 +52482,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
             lineNumber: 443,
             columnNumber: 25
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("textarea", { type: "text", value: name2, "v-model": "keyword", id: "example-one-input2", className: "inputText2", maxlength: "50", onChange: (e4) => onchnageOfRegardBox(e4.target.value), placeholder: "Enter here...", "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("textarea", { type: "text", value: name2, "v-model": "keyword", id: "example-one-input2", className: "inputText2", maxLength: "50", onChange: (e4) => onchnageOfRegardBox(e4.target.value), placeholder: "Enter here...", "data-gtm-form-interact-field-id": "0" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
             lineNumber: 444,
             columnNumber: 25
@@ -47739,7 +52625,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
             lineNumber: 488,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("textarea", { type: "text", id: "aiTextArea", value: aiText || valToGen, onChange: (e4) => setValToGen(e4.target.value), placeholder: "Example: Message for Birthday", maxlength: "450" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("textarea", { type: "text", id: "aiTextArea", value: aiText || valToGen, onChange: (e4) => setValToGen(e4.target.value), placeholder: "Example: Message for Birthday", maxLength: "450" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
             lineNumber: 492,
             columnNumber: 21
@@ -47771,7 +52657,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
             fileName: "app/components/products/MessageWrite.jsx",
             lineNumber: 499,
             columnNumber: 21
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { class: "ai-generate", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("button", { id: "generate-msg", disabled: "", onClick: () => aiGenrateMess(), children: "Generate Message" }, void 0, !1, {
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "ai-generate", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("button", { id: "generate-msg", disabled: "", onClick: () => aiGenrateMess(), children: "Generate Message" }, void 0, !1, {
             fileName: "app/components/products/MessageWrite.jsx",
             lineNumber: 497,
             columnNumber: 25
@@ -49752,8 +54638,8 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
             lineNumber: 322,
             columnNumber: 33
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { class: "shipping-methods", id: "shipping-options", children: shippingData == null ? void 0 : shippingData.variants.edges.map(
-            (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { class: "getProductId", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "shipping-methods", id: "shipping-options", children: shippingData == null ? void 0 : shippingData.variants.edges.map(
+            (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "getProductId", children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
                   "input",
@@ -49783,7 +54669,7 @@ function AddCart({ show, setProductShow, data, productData, selectFontValue: sel
                 lineNumber: 327,
                 columnNumber: 45
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { class: "custom_variant_price", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "custom_variant_price", children: [
                 "$",
                 item == null ? void 0 : item.node.price.amount
               ] }, void 0, !0, {
@@ -50112,9 +54998,9 @@ function Product() {
             lineNumber: 431,
             columnNumber: 21
           }, this),
-          show && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("table", { class: "price-breakdown desktop", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("tbody", { children: [
+          show && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("table", { className: "price-breakdown desktop", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("tbody", { children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { class: "label", children: "Quantity" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { className: "label", children: "Quantity" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
                 columnNumber: 29
@@ -50122,32 +55008,32 @@ function Product() {
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "1-99" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
-                columnNumber: 60
+                columnNumber: 64
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "100-249" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
-                columnNumber: 73
+                columnNumber: 77
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "250-499" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
-                columnNumber: 89
+                columnNumber: 93
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "500-999" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
-                columnNumber: 105
+                columnNumber: 109
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "1000-2499" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
-                columnNumber: 121
+                columnNumber: 125
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "2500+" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 443,
-                columnNumber: 139
+                columnNumber: 143
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
@@ -50155,7 +55041,7 @@ function Product() {
               columnNumber: 27
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { class: "label", children: "Price" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { className: "label", children: "Price" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
                 columnNumber: 29
@@ -50163,32 +55049,32 @@ function Product() {
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "$3.25" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
-                columnNumber: 57
+                columnNumber: 61
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "$3.15" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
-                columnNumber: 71
+                columnNumber: 75
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "$3.00" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
-                columnNumber: 85
+                columnNumber: 89
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "$2.85" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
-                columnNumber: 99
+                columnNumber: 103
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "$2.70" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
-                columnNumber: 113
+                columnNumber: 117
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("td", { children: "$2.55" }, void 0, !1, {
                 fileName: "app/routes/($locale).products.$productHandle.jsx",
                 lineNumber: 445,
-                columnNumber: 127
+                columnNumber: 131
               }, this)
             ] }, void 0, !0, {
               fileName: "app/routes/($locale).products.$productHandle.jsx",
@@ -50929,7 +55815,7 @@ function Article() {
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(Section, { as: "article", padding: "x", children: [
       image && /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
-        Image,
+        Image2,
         {
           data: image,
           className: "w-full mx-auto mt-8 md:mt-16 max-w-7xl",
@@ -51830,7 +56716,7 @@ function OrderRoute() {
                   {
                     to: `/products/${lineItem.variant.product.handle}`,
                     children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
-                      Image,
+                      Image2,
                       {
                         data: lineItem.variant.image,
                         width: 96,
@@ -52526,7 +57412,7 @@ function Collections() {
 function CollectionCard({ collection: collection2, loading }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Link3, { to: `/collections/${collection2.handle}`, className: "grid gap-4", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "card-image bg-primary/5 aspect-[3/2]", children: (collection2 == null ? void 0 : collection2.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
-      Image,
+      Image2,
       {
         data: collection2.image,
         aspectRatio: "6/4",
@@ -53698,7 +58584,7 @@ function Journals() {
 function ArticleCard({ blogHandle, article: article2, loading }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Link3, { to: `/${blogHandle}/${article2.handle}`, children: [
     article2.image && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "card-image aspect-[3/2]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
-      Image,
+      Image2,
       {
         alt: article2.image.altText || article2.title,
         className: "object-cover w-full",
@@ -56291,6 +61177,1823 @@ function Component3() {
   return null;
 }
 
+// app/routes/($locale).createcard.jsx
+var locale_createcard_exports = {};
+__export(locale_createcard_exports, {
+  default: () => createcard
+});
+var import_react120 = __toESM(require_react());
+
+// assets/Image/flat-green.png
+var flat_green_default = "/build/_assets/flat-green-NT3IV6KG.png";
+
+// assets/Image/folded-green.png
+var folded_green_default = "/build/_assets/folded-green-NPPES4LC.png";
+
+// app/components/createCard/FoldCard.jsx
+var import_react118 = __toESM(require_react());
+
+// assets/Image/add_image_icon.png
+var add_image_icon_default = "/build/_assets/add_image_icon-X7FKEYTH.png";
+
+// app/components/createCard/FoldCard.jsx
+var import_html2canvas = __toESM(require_html2canvas()), import_jsx_dev_runtime63 = __toESM(require_jsx_dev_runtime());
+function FoldCard() {
+  let [isFolded, setIsFolded] = (0, import_react118.useState)(!0), [cardPageName, setCardPageName] = (0, import_react118.useState)("Front"), [selectedFile, setSelectedFile] = (0, import_react118.useState)(null), [backCardImage, setBackCardImage] = (0, import_react118.useState)(null), [imageScale, setImageScale] = (0, import_react118.useState)(1), [selectButton, setSelectButton] = (0, import_react118.useState)(null), [showAlert, setShowAlert] = (0, import_react118.useState)(!1), [ModalOpen, setModalOpen] = (0, import_react118.useState)(!1), fileInputRef = (0, import_react118.useRef)(null), redDotDivRef = (0, import_react118.useRef)(null), openModal = (data) => {
+    setModalOpen(!0), setModalData(data);
+  }, closeModal = () => {
+    setModalOpen(!1);
+  };
+  (0, import_react118.useEffect)(() => {
+    generateScreenshotURL(redDotDivRef.current);
+  }, [imageScale, backCardImage, selectedFile, redDotDivRef]);
+  let generateScreenshotURL = async (element) => {
+    try {
+      let canvas = await (0, import_html2canvas.default)(element), cropSize = 23, newWidth = canvas.width - 2 * cropSize, newHeight = canvas.height - 2 * cropSize, xOffset = cropSize, yOffset = cropSize, newCanvas = document.createElement("canvas");
+      newCanvas.width = newWidth, newCanvas.height = newHeight, newCanvas.getContext("2d").drawImage(
+        canvas,
+        xOffset,
+        yOffset,
+        newWidth,
+        newHeight,
+        0,
+        0,
+        newWidth,
+        newHeight
+      );
+      let dataURL = newCanvas.toDataURL("image/png");
+      return console.log(dataURL), dataURL;
+    } catch (error) {
+      console.error("Error generating screenshot:", error);
+    }
+  }, handleAlertClick = () => {
+    setShowAlert(!0), alert("Please enter url first!");
+  }, handleButtonClick = (cardPageName2) => {
+    setCardPageName(cardPageName2);
+  }, handleFileChange = (event, cardPageName2) => {
+    let file = event.target.files[0];
+    cardPageName2 === "Front" && setSelectedFile(file), cardPageName2 === "Back" && setBackCardImage(file), setSelectButton(null);
+  }, handleRemoveImage = () => {
+    setSelectedFile(null), setBackCardImage(null), setImageScale(1), fileInputRef.current && (fileInputRef.current.value = "");
+  }, handleSliderChange = (value) => {
+    let scaleFactor = 1 + (value - 50) / 100;
+    setImageScale(scaleFactor);
+  }, handleClickButton = (buttonId) => {
+    setSelectButton(buttonId);
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "Custom-folded-card-front", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("h1", { className: "custom-folded-card ml-[-71px]", children: "Custom Folded Card Front" }, void 0, !1, {
+      fileName: "app/components/createCard/FoldCard.jsx",
+      lineNumber: 104,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/components/createCard/FoldCard.jsx",
+      lineNumber: 103,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "folded-card flex items-center justify-evenly", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "main-div  h-[416px] w-[553px]", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+          "div",
+          {
+            ref: redDotDivRef,
+            style: { border: "2px solid black" },
+            className: "bg-white relative overflow-hidden -z-30",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "dotted-div -z-10" }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 116,
+                columnNumber: 13
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "red-dot flex align-items justify-center -z-20", children: cardPageName === "Front" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "front-div p-[19px] flex justify-center align-center ", children: selectedFile && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                "img",
+                {
+                  className: `${selectButton === "dark" ? "dark" : ""} image-scal`,
+                  src: isFolded ? URL.createObjectURL(selectedFile) : null,
+                  style: { transform: `scale(${imageScale})` },
+                  alt: "selected"
+                },
+                selectedFile.name,
+                !1,
+                {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 121,
+                  columnNumber: 21
+                },
+                this
+              ) }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 119,
+                columnNumber: 17
+              }, this) || cardPageName === "Inside" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "custom-msg font-cursive text-base text-22 text-blue-500 pt-16", children: "Your custom message text will be here..." }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 134,
+                columnNumber: 19
+              }, this) || cardPageName === "Back" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "front-div p-[19px] flex justify-center align-center", children: backCardImage && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                "img",
+                {
+                  className: `${selectButton === "dark" ? "dark" : ""} image-scal`,
+                  src: isFolded ? URL.createObjectURL(backCardImage) : null,
+                  style: { transform: `scale(${imageScale})` },
+                  alt: "selected"
+                },
+                backCardImage.name,
+                !1,
+                {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 141,
+                  columnNumber: 23
+                },
+                this
+              ) }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 139,
+                columnNumber: 19
+              }, this) }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 117,
+                columnNumber: 13
+              }, this)
+            ]
+          },
+          void 0,
+          !0,
+          {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 111,
+            columnNumber: 11
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex gap-x-3 justify-between pt-2", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+            "button",
+            {
+              className: "card-button button-blue",
+              type: "button",
+              onClick: () => {
+                handleButtonClick("Front");
+              },
+              children: "Card Front"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 158,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+            "button",
+            {
+              className: "card-button button-tomato",
+              type: "button",
+              onClick: () => {
+                handleButtonClick("Inside");
+              },
+              children: "Card Inside"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 167,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+            "button",
+            {
+              className: "card-button button-tomato",
+              type: "button",
+              onClick: () => {
+                handleButtonClick("Back");
+              },
+              children: "Card Back"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 176,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/components/createCard/FoldCard.jsx",
+          lineNumber: 157,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/createCard/FoldCard.jsx",
+        lineNumber: 110,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "choose-file-button", children: [
+        (cardPageName === "Back" || cardPageName === "Front") && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("img", { className: "choose-image", src: add_image_icon_default, alt: "addpicture" }, void 0, !1, {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 190,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+            "input",
+            {
+              type: "file",
+              id: "file-upload mb-[17px]",
+              onChange: (event) => {
+                handleFileChange(event, cardPageName);
+              },
+              ref: fileInputRef
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 191,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/components/createCard/FoldCard.jsx",
+          lineNumber: 189,
+          columnNumber: 13
+        }, this),
+        cardPageName === "Front" && selectedFile && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+          "div",
+          {
+            className: `${selectButton === "dark" ? "dark" : ""}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "slider-container", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("b", { children: "Resize image" }, void 0, !1, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 207,
+                  columnNumber: 17
+                }, this),
+                " ",
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("br", {}, void 0, !1, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 207,
+                  columnNumber: 37
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                  "input",
+                  {
+                    type: "range",
+                    min: "0",
+                    max: "100",
+                    value: (imageScale - 1) * 100 + 50,
+                    onChange: (e4) => handleSliderChange(e4.target.value)
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 208,
+                    columnNumber: 17
+                  },
+                  this
+                )
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 206,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "select-color-change flex gap-10", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "dark",
+                      checked: selectButton === "dark",
+                      onChange: () => handleClickButton("dark")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FoldCard.jsx",
+                      lineNumber: 219,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 226,
+                    columnNumber: 19
+                  }, this),
+                  " B/W"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 218,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "colorful",
+                      checked: selectButton === "colorful",
+                      onChange: () => handleClickButton("colorful")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FoldCard.jsx",
+                      lineNumber: 229,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 236,
+                    columnNumber: 19
+                  }, this),
+                  " Color"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 228,
+                  columnNumber: 17
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 217,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "remove-finishing position-relative", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                "button",
+                {
+                  className: "remove-image",
+                  type: "button",
+                  onClick: handleRemoveImage,
+                  children: "Remove image"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 240,
+                  columnNumber: 17
+                },
+                this
+              ) }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 239,
+                columnNumber: 15
+              }, this)
+            ]
+          },
+          selectedFile.name,
+          !0,
+          {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 202,
+            columnNumber: 13
+          },
+          this
+        ),
+        cardPageName === "Back" && backCardImage && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+          "div",
+          {
+            className: `${selectButton === "dark" ? "dark" : ""}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "slider-container", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("b", { children: "Resize image" }, void 0, !1, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 257,
+                  columnNumber: 17
+                }, this),
+                " ",
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("br", {}, void 0, !1, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 257,
+                  columnNumber: 37
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                  "input",
+                  {
+                    type: "range",
+                    min: "0",
+                    max: "100",
+                    value: (imageScale - 1) * 100 + 50,
+                    onChange: (e4) => handleSliderChange(e4.target.value)
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 258,
+                    columnNumber: 17
+                  },
+                  this
+                )
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 256,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "select-color-change flex gap-10", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "dark",
+                      checked: selectButton === "dark",
+                      onChange: () => handleClickButton("dark")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FoldCard.jsx",
+                      lineNumber: 269,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 276,
+                    columnNumber: 19
+                  }, this),
+                  " B/W"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 268,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "colorful",
+                      checked: selectButton === "colorful",
+                      onChange: () => handleClickButton("colorful")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FoldCard.jsx",
+                      lineNumber: 279,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 286,
+                    columnNumber: 19
+                  }, this),
+                  " Color"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 278,
+                  columnNumber: 17
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 267,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "remove-finishing position-relative", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                "button",
+                {
+                  className: "remove-image",
+                  type: "button",
+                  onClick: handleRemoveImage,
+                  children: "Remove image"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 290,
+                  columnNumber: 17
+                },
+                this
+              ) }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 289,
+                columnNumber: 15
+              }, this)
+            ]
+          },
+          backCardImage.name,
+          !0,
+          {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 252,
+            columnNumber: 13
+          },
+          this
+        ),
+        cardPageName === "Back" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "finish-button-editing", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { type: "button", children: "Finish Editing" }, void 0, !1, {
+          fileName: "app/components/createCard/FoldCard.jsx",
+          lineNumber: 303,
+          columnNumber: 15
+        }, this) }, void 0, !1, {
+          fileName: "app/components/createCard/FoldCard.jsx",
+          lineNumber: 302,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "bar-code flex items-center  absolute top-236  gap-5 border border-solid border-gray-300 bg-gray-200", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+            "img",
+            {
+              onClick: openModal,
+              src: "	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 307,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "qr-code font-bold ", children: "ADD QR CODE" }, void 0, !1, {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 311,
+            columnNumber: 13
+          }, this),
+          ModalOpen && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Modal, { cancelLink: "#", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "modal min-w-40", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { className: "float-right text-[25px]", type: "button", onClick: closeModal, children: "X" }, void 0, !1, {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 316,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("h1", { children: "ADD QR CODE" }, void 0, !1, {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 317,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("p", { children: "Enter website URL or message:" }, void 0, !1, {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 318,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("input", { type: "text" }, void 0, !1, {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 319,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex gap-10", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { children: "Position:" }, void 0, !1, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 321,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "form-check", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                  "input",
+                  {
+                    className: "form-check-input",
+                    type: "radio",
+                    name: "flexRadioDefault",
+                    id: "flexRadioDefault1"
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 323,
+                    columnNumber: 25
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { className: "form-check-label", for: "flexRadioDefault1", children: "Add header" }, void 0, !1, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 329,
+                  columnNumber: 25
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 322,
+                columnNumber: 23
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "form-check", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                  "input",
+                  {
+                    className: "form-check-input",
+                    type: "radio",
+                    name: "flexRadioDefault",
+                    id: "flexRadioDefault2",
+                    checked: !0
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 334,
+                    columnNumber: 25
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { className: "form-check-label", for: "flexRadioDefault2", children: "Add footer" }, void 0, !1, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 341,
+                  columnNumber: 25
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FoldCard.jsx",
+                lineNumber: 333,
+                columnNumber: 23
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 320,
+              columnNumber: 21
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { onClick: handleAlertClick, className: "insert-btn", type: "button", children: "Insert QR Code" }, void 0, !1, {
+              fileName: "app/components/createCard/FoldCard.jsx",
+              lineNumber: 346,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 315,
+            columnNumber: 19
+          }, this) }, void 0, !1, {
+            fileName: "app/components/createCard/FoldCard.jsx",
+            lineNumber: 313,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/createCard/FoldCard.jsx",
+          lineNumber: 306,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/components/createCard/FoldCard.jsx",
+        lineNumber: 187,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/components/createCard/FoldCard.jsx",
+      lineNumber: 109,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/createCard/FoldCard.jsx",
+    lineNumber: 102,
+    columnNumber: 5
+  }, this);
+}
+
+// app/components/createCard/FlatCard.jsx
+var import_react119 = __toESM(require_react());
+var import_html2canvas2 = __toESM(require_html2canvas()), import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime());
+function FlatCard() {
+  let [isFrontCard, setIsFrontCard] = (0, import_react119.useState)(!0), [isHeaderChecked, setIsHeaderChecked] = (0, import_react119.useState)(!1), [isFooterChecked, setIsFooterChecked] = (0, import_react119.useState)(!1), [inputText, setInputText] = (0, import_react119.useState)(""), [headerText, setHeaderText] = (0, import_react119.useState)("Header Text"), [footerText, setFooterText] = (0, import_react119.useState)(""), [scaledImage, setScaledImage] = (0, import_react119.useState)(null), [backHeaderImage, setBackHeaderImage] = (0, import_react119.useState)(), [backFooterImage, setBackFooterImage] = (0, import_react119.useState)(), [scale, setScale] = (0, import_react119.useState)(1), [backScale, setBackScale] = (0, import_react119.useState)(1), [qrCodeShow, setQrCodeShow] = (0, import_react119.useState)(!1), [selectButton, setSelectButton] = (0, import_react119.useState)(null), fileInputRef = (0, import_react119.useRef)(null), [isDivOpen, setIsDivOpen] = (0, import_react119.useState)(!1), [alignment, setAlignment] = (0, import_react119.useState)(""), [selectedFontSize, setSelectedFontSize] = (0, import_react119.useState)({}), handleDivOpen = (setScale2) => {
+    setIsDivOpen(!isDivOpen), isFrontCard ? setScale2(scale) : setBackScale(backScale);
+  }, handleClickButton = (buttonId) => {
+    setSelectButton(buttonId);
+  }, handleHeaderCheckboxChange = () => {
+    setIsHeaderChecked(!isHeaderChecked);
+  }, handleFooterCheckboxChange = () => {
+    setIsFooterChecked(!isFooterChecked);
+  }, handleFilesChange = (event) => {
+    let selectedFile = event.target.files[0];
+    if (selectedFile) {
+      let reader = new FileReader();
+      reader.onload = (e4) => {
+        isFrontCard && setScaledImage(e4.target.result), !isFrontCard && isHeaderChecked && setBackHeaderImage(e4.target.result), !isFrontCard && isFooterChecked && setBackFooterImage(e4.target.result);
+      }, setInputText(""), setFooterText(""), reader.readAsDataURL(selectedFile);
+    }
+  }, handleScaleChange = (event) => {
+    isFrontCard ? setScale(event.target.value) : setBackScale(event.target.value), console.log(event.target.value, "resize");
+  };
+  function clrchange(selectedColor) {
+    document.getElementById("color-header").style.color = selectedColor, document.getElementById("color-footer").style.color = selectedColor;
+  }
+  function handleHeaderClick() {
+    setHeaderText("Header Text");
+  }
+  function handleFooterClick() {
+    setHeaderText("Footer Text");
+  }
+  let handleClearData = () => {
+    isFrontCard && setScaledImage(null), !isFrontCard && setBackHeaderImage(null), !isFrontCard && setBackFooterImage(null), fileInputRef.current && (fileInputRef.current.value = "");
+  }, customStyles3 = {
+    control: (provided) => ({
+      ...provided,
+      fontSize: selectedFontSize.value
+    })
+  }, handleChange = (selectedOption) => {
+    setSelectedFontSize(selectedOption);
+  }, handleInputChange = (e4) => {
+    setInputText(e4.target.value), setFooterText(e4.target.value), setBackFooterImage(null), setBackHeaderImage(null);
+  }, handleInputHeader = (e4) => {
+    setInputText(e4.target.value), setBackFooterImage(null), setBackHeaderImage(null);
+  }, handleInputFooter = (e4) => {
+    setFooterText(e4.target.value), setBackFooterImage(null), setBackHeaderImage(null);
+  }, dottedDivRef = (0, import_react119.useRef)(null);
+  (0, import_react119.useEffect)(() => {
+    generateScreenshotURL(dottedDivRef.current);
+  }, [scale, scaledImage, fileInputRef, dottedDivRef]);
+  let generateScreenshotURL = async (element) => {
+    try {
+      let canvas = await (0, import_html2canvas2.default)(element), cropSize = 20, newWidth = canvas.width - 2 * cropSize, newHeight = canvas.height - 2 * cropSize, xOffset = cropSize, yOffset = cropSize, newCanvas = document.createElement("canvas");
+      newCanvas.width = newWidth, newCanvas.height = newHeight, newCanvas.getContext("2d").drawImage(
+        canvas,
+        xOffset,
+        yOffset,
+        newWidth,
+        newHeight,
+        0,
+        0,
+        newWidth,
+        newHeight
+      );
+      let dataURL = newCanvas.toDataURL("image/png");
+      return console.log(dataURL), dataURL;
+    } catch (error) {
+      console.error("Error generating screenshot:", error);
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+    "section",
+    {
+      className: `flat_main flex  justify-evenly ${isFrontCard ? "items-center" : "items-end"}`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flat_first-cont flex flex-col items-center justify-center pt-5", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("h2", { className: " text-2xl font-medium", children: " Custom Flat Card" }, void 0, !1, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 174,
+            columnNumber: 9
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "border border-solid border-black bg-white text-center h-[416px] w-[553px] m-[46px] -z-30", children: [
+            isFrontCard ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+              "div",
+              {
+                ref: dottedDivRef,
+                className: "flat__front-card min-h-full overflow-hidden relative flex justify-center h-100 ",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "dotted-div -z-10" }, void 0, !1, {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 181,
+                    columnNumber: 15
+                  }, this),
+                  scaledImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex min-h-full flex-1 p-[18px] h-[416px] w-[553px] justify-center align-center overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                    "img",
+                    {
+                      className: "absolute-scaled-image  -z-20",
+                      src: scaledImage,
+                      style: {
+                        transform: `scale(${scale})`
+                      },
+                      alt: "selected"
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FlatCard.jsx",
+                      lineNumber: 184,
+                      columnNumber: 19
+                    },
+                    this
+                  ) }, void 0, !1, {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 183,
+                    columnNumber: 17
+                  }, this)
+                ]
+              },
+              void 0,
+              !0,
+              {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 177,
+                columnNumber: 13
+              },
+              this
+            ) : /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "relative min-h-full overflow-hidden", children: [
+              isHeaderChecked ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "div",
+                {
+                  className: `${backHeaderImage && "flex"} ${alignment === "left" && "justify-start"} ${alignment === "right" && "justify-end"} ${alignment === "center" && "justify-center"} enclosed-div absolute top-0 m-3 overflow-hidden`,
+                  children: [
+                    backHeaderImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "img",
+                      {
+                        className: "w-10 absolute",
+                        src: backHeaderImage,
+                        style: { transform: `scale(${backScale})` },
+                        alt: "Selected Image"
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 206,
+                        columnNumber: 23
+                      },
+                      this
+                    ),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "input",
+                      {
+                        id: "color-footer",
+                        className: `border-none min-w-full ${alignment === "left" && headerText === "Header Text" && "text-left"} ${alignment === "center" && headerText === "Header Text" && "text-center"} ${alignment === "right" && headerText === "Header Text" && "text-right"}`,
+                        value: inputText,
+                        onChange: handleInputChange,
+                        type: "text",
+                        placeholder: backHeaderImage ? "" : "Header",
+                        style: { fontSize: selectedFontSize.value }
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 213,
+                        columnNumber: 19
+                      },
+                      this
+                    )
+                  ]
+                },
+                void 0,
+                !0,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 198,
+                  columnNumber: 17
+                },
+                this
+              ) : null,
+              isFooterChecked ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "div",
+                {
+                  className: `${backFooterImage && "flex"} ${alignment === "left" && "justify-start"} ${alignment === "right" && "justify-end"} ${alignment === "center" && "justify-center"} enclosed-div absolute bottom-0 m-3 overflow-hidden`,
+                  children: [
+                    backFooterImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "img",
+                      {
+                        className: "w-10 absolute",
+                        src: backFooterImage,
+                        style: { transform: `scale(${backScale})` },
+                        alt: "Selected Image"
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 245,
+                        columnNumber: 23
+                      },
+                      this
+                    ),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "input",
+                      {
+                        id: "color-header",
+                        className: `border-none min-w-full ${alignment === "left" && headerText === "Footer Text" && "text-left"} ${alignment === "center" && headerText === "Footer Text" && "text-center"} ${alignment === "right" && headerText === "Footer Text" && "text-right"}`,
+                        value: footerText,
+                        type: "text",
+                        placeholder: backFooterImage ? "" : "Footer",
+                        style: { fontSize: selectedFontSize.value }
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 252,
+                        columnNumber: 19
+                      },
+                      this
+                    )
+                  ]
+                },
+                void 0,
+                !0,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 237,
+                  columnNumber: 17
+                },
+                this
+              ) : null
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 196,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex gap-x-3 justify-center pt-2", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "button",
+                {
+                  onClick: () => setIsFrontCard(!0),
+                  className: "card-button button-blue",
+                  type: "button",
+                  children: "Card Front"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 277,
+                  columnNumber: 13
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "button",
+                {
+                  className: "card-button button-tomato",
+                  type: "button",
+                  onClick: () => setIsFrontCard(!1),
+                  children: "Card Back"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 284,
+                  columnNumber: 13
+                },
+                this
+              )
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 276,
+              columnNumber: 11
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 175,
+            columnNumber: 9
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/createCard/FlatCard.jsx",
+          lineNumber: 173,
+          columnNumber: 7
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flat_second-cont flex flex-col items-center justify-center relative", children: [
+          !isFrontCard && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(import_jsx_dev_runtime64.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex min-w-full gap-[42px] text-[23px] justify-evenly mb-5", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "header-btn", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "button",
+                {
+                  type: "button",
+                  onClick: handleHeaderClick,
+                  children: "Header"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 301,
+                  columnNumber: 17
+                },
+                this
+              ) }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 299,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "footer-btn", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleFooterClick, children: "Footer" }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 307,
+                columnNumber: 17
+              }, this) }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 306,
+                columnNumber: 15
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 298,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "header-text", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { children: headerText }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 313,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 314,
+                columnNumber: 15
+              }, this),
+              headerText === "Header Text" ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "input",
+                {
+                  type: "text",
+                  value: inputText,
+                  onChange: handleInputHeader
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 316,
+                  columnNumber: 17
+                },
+                this
+              ) : /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "input",
+                {
+                  type: "text",
+                  value: footerText,
+                  onChange: handleInputFooter
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 322,
+                  columnNumber: 17
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "mt-3 flex gap-2 mb-15", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { className: "field-label mr-3 ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("b", { children: "Alignment" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 330,
+                  columnNumber: 19
+                }, this) }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 329,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                  "svg",
+                  {
+                    className: "alignment-left",
+                    onClick: () => setAlignment("left"),
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 20 20",
+                    children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "path",
+                      {
+                        fill: "#637381",
+                        d: "M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 338,
+                        columnNumber: 19
+                      },
+                      this
+                    )
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 332,
+                    columnNumber: 17
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                  "svg",
+                  {
+                    className: "alignment-center",
+                    onClick: () => setAlignment("center"),
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 20 20",
+                    children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "path",
+                      {
+                        fill: "#637381",
+                        d: "M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 349,
+                        columnNumber: 19
+                      },
+                      this
+                    )
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 343,
+                    columnNumber: 17
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                  "svg",
+                  {
+                    className: "alignment-right",
+                    onClick: () => setAlignment("right"),
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 20 20",
+                    children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                      "path",
+                      {
+                        fill: "#637381",
+                        d: "M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/components/createCard/FlatCard.jsx",
+                        lineNumber: 360,
+                        columnNumber: 19
+                      },
+                      this
+                    )
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 354,
+                    columnNumber: 17
+                  },
+                  this
+                )
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 328,
+                columnNumber: 15
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 312,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: "Font" }, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 367,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "text-color mt-[25px] flex items-center gap-[5px]", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("b", { children: "Font Color" }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 377,
+                columnNumber: 17
+              }, this) }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 376,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("select", { id: "s1", onChange: (e4) => clrchange(e4.target.value), children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r1", value: "black", children: "Black" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 380,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r2", value: "yellow", children: "Yellow" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 383,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r3", value: "grey", children: "Grey" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 386,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r4", value: "red", children: "Red" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 389,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r5", value: "blue", children: "Blue" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 392,
+                  columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r6", value: "green", children: "Green" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 395,
+                  columnNumber: 17
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 379,
+                columnNumber: 15
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 399,
+                columnNumber: 15
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 375,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+              "button",
+              {
+                className: "finish-editing",
+                onClick: handleDivOpen,
+                type: "button",
+                children: "Finish editing"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 401,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 408,
+              columnNumber: 13
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 297,
+            columnNumber: 11
+          }, this),
+          isFrontCard && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+              "img",
+              {
+                className: "add-image-button h-[50px] w-[70px] mb-3",
+                onChange: handleFilesChange,
+                src: add_image_icon_default,
+                alt: "addimage"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 414,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+              "input",
+              {
+                type: "file",
+                className: "choose-file",
+                accept: "image/*",
+                onChange: handleFilesChange,
+                ref: fileInputRef
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 420,
+                columnNumber: 13
+              },
+              this
+            ),
+            scaledImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "zoom-slider mt-3", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { htmlFor: "scale", children: "Resize:" }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 429,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 430,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "input",
+                {
+                  type: "range",
+                  id: "scale",
+                  name: "scale",
+                  min: "1",
+                  max: "3",
+                  step: "0.4",
+                  value: isFrontCard ? scale : backScale,
+                  onChange: handleScaleChange
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 431,
+                  columnNumber: 17
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 441,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "dark-colorfull-btn flex gap-5 mt-[12px]", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "dark",
+                      checked: selectButton === "dark",
+                      onChange: () => handleClickButton("dark")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FlatCard.jsx",
+                      lineNumber: 444,
+                      columnNumber: 21
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 451,
+                    columnNumber: 21
+                  }, this),
+                  " B/W"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 443,
+                  columnNumber: 19
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "colorful",
+                      checked: selectButton === "colorful",
+                      onChange: () => handleClickButton("colorful")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FlatCard.jsx",
+                      lineNumber: 454,
+                      columnNumber: 21
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 461,
+                    columnNumber: 21
+                  }, this),
+                  " Color"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 453,
+                  columnNumber: 19
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 442,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "finish-button mt-[12px] pt-3 text-white bg-blue-500 text-center w-[150px] h-[50px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleClearData, children: "Remove Image" }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 465,
+                columnNumber: 19
+              }, this) }, void 0, !1, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 464,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 428,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 413,
+            columnNumber: 11
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/createCard/FlatCard.jsx",
+          lineNumber: 295,
+          columnNumber: 7
+        }, this),
+        !isFrontCard && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flat__checkbox self-center", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+            "input",
+            {
+              type: "checkbox",
+              name: "header",
+              value: "header",
+              checked: isHeaderChecked,
+              onChange: handleHeaderCheckboxChange
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 476,
+              columnNumber: 11
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { className: "add-header", value: footerText, htmlFor: "vehicle1", children: "Add Header" }, void 0, !1, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 483,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 486,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+            "input",
+            {
+              type: "checkbox",
+              name: "footer",
+              checked: isFooterChecked,
+              onChange: handleFooterCheckboxChange,
+              value: "footer"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 487,
+              columnNumber: 11
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { className: "add-footer", htmlFor: "vehicle2", children: "Add Footer" }, void 0, !1, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 494,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 497,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "choose-file-btn-sec", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+            "input",
+            {
+              type: "file",
+              id: "myFile",
+              onChange: handleFilesChange,
+              ref: fileInputRef,
+              name: "filename"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 499,
+              columnNumber: 13
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 498,
+            columnNumber: 11
+          }, this),
+          qrCodeShow && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex items-center mt-[173px] absolute gap-5 border border-solid border-gray-300 bg-gray-200", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+              "img",
+              {
+                src: "	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 509,
+                columnNumber: 12
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "qr-code font-bold ", children: "ADD QR CODE" }, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 511,
+              columnNumber: 13
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 508,
+            columnNumber: 11
+          }, this),
+          (backHeaderImage || backFooterImage) && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "zoom-slider mt-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { htmlFor: "scale", children: "Resize:" }, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 517,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 518,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+              "input",
+              {
+                type: "range",
+                id: "scale",
+                name: "scale",
+                min: "1",
+                max: "3",
+                step: "0.4",
+                value: isFrontCard ? scale : backScale,
+                onChange: handleScaleChange
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 519,
+                columnNumber: 15
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 529,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "dark-colorfull-btn flex gap-5 mt-[12px]", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                  "input",
+                  {
+                    type: "radio",
+                    name: "mode",
+                    value: "dark",
+                    checked: selectButton === "dark",
+                    onChange: () => handleClickButton("dark")
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 532,
+                    columnNumber: 19
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 539,
+                  columnNumber: 19
+                }, this),
+                " B/W"
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 531,
+                columnNumber: 17
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                  "input",
+                  {
+                    type: "radio",
+                    name: "mode",
+                    value: "colorful",
+                    checked: selectButton === "colorful",
+                    onChange: () => handleClickButton("colorful")
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/createCard/FlatCard.jsx",
+                    lineNumber: 542,
+                    columnNumber: 19
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 549,
+                  columnNumber: 19
+                }, this),
+                " Color"
+              ] }, void 0, !0, {
+                fileName: "app/components/createCard/FlatCard.jsx",
+                lineNumber: 541,
+                columnNumber: 17
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 530,
+              columnNumber: 15
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "finish-button mt-[12px] pt-3 text-white bg-blue-500 text-center w-[150px] h-[50px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleClearData, children: "Remove Image" }, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 553,
+              columnNumber: 17
+            }, this) }, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 552,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/components/createCard/FlatCard.jsx",
+            lineNumber: 516,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/createCard/FlatCard.jsx",
+          lineNumber: 475,
+          columnNumber: 9
+        }, this)
+      ]
+    },
+    void 0,
+    !0,
+    {
+      fileName: "app/components/createCard/FlatCard.jsx",
+      lineNumber: 168,
+      columnNumber: 5
+    },
+    this
+  );
+}
+
+// app/routes/($locale).createcard.jsx
+var import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime());
+function createcard() {
+  let [selectedImage, setSelectedImage] = (0, import_react120.useState)("first"), [card, setCard] = (0, import_react120.useState)(!1);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, { children: [
+    !card && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "create-card-select-cont flex justify-center gap-20 m-20", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "images", children: [
+          selectedImage === "first" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+            "img",
+            {
+              src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Screenshot_1.png?v=1689262698%22",
+              alt: "pic",
+              className: "w-[400px] h-[360px]"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/($locale).createcard.jsx",
+              lineNumber: 28,
+              columnNumber: 13
+            },
+            this
+          ),
+          selectedImage === "sec" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+            "img",
+            {
+              src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/create_a_card.png?v=1689262711",
+              alt: "pics",
+              className: "w-[400px] h-[360px]"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/($locale).createcard.jsx",
+              lineNumber: 37,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/routes/($locale).createcard.jsx",
+          lineNumber: 26,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "slect-btn-image", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("p", { children: [
+            "Start by selecting the size and style",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/routes/($locale).createcard.jsx",
+              lineNumber: 48,
+              columnNumber: 50
+            }, this),
+            "of the card you want to create."
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).createcard.jsx",
+            lineNumber: 47,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "saaelect-img-btn flex gap-2 mt-[22px] justify-center", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+              "img",
+              {
+                className: `select-btn w-[80px] h-[70px] ${selectedImage === "first" ? "bg-blue-500" : "bg-green-500"} sm:bg-indigo-500 md:bg-red-500 lg:bg-red-500 xl:bg-white text-white w-23`,
+                src: flat_green_default,
+                alt: "flatgreenpic",
+                onClick: () => {
+                  setSelectedImage("first");
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/($locale).createcard.jsx",
+                lineNumber: 52,
+                columnNumber: 13
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("br", {}, void 0, !1, {
+              fileName: "app/routes/($locale).createcard.jsx",
+              lineNumber: 60,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+              "img",
+              {
+                className: `select-btn w-[80px] h-[70px] ${selectedImage === "sec" ? "bg-red-500" : "bg-indigo-500"} sm:bg-red-500 md:bg-indigo-500 xl:bg-white text-white w-23`,
+                src: folded_green_default,
+                alt: "flatgreenpic",
+                onClick: () => {
+                  setSelectedImage("sec");
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/($locale).createcard.jsx",
+                lineNumber: 61,
+                columnNumber: 13
+              },
+              this
+            )
+          ] }, void 0, !0, {
+            fileName: "app/routes/($locale).createcard.jsx",
+            lineNumber: 51,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+            Link2,
+            {
+              className: "slect-result-btn  mt-[19px] w-[300px] h-[60px] text-center pt-[12px;]  first-select-btn bg-#1b5299-500 sm:bg-#1b5299-500 md:bg-indigo-500 lg:bg-#1b5299-500 xl:bg-#1b5299 text-white w-23",
+              type: "button",
+              onClick: () => setCard(!0),
+              children: "Next"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/($locale).createcard.jsx",
+              lineNumber: 71,
+              columnNumber: 11
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/routes/($locale).createcard.jsx",
+          lineNumber: 46,
+          columnNumber: 9
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/($locale).createcard.jsx",
+        lineNumber: 25,
+        columnNumber: 7
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "companies-header text-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("h1", { children: "Companies we've worked with" }, void 0, !1, {
+        fileName: "app/routes/($locale).createcard.jsx",
+        lineNumber: 81,
+        columnNumber: 9
+      }, this) }, void 0, !1, {
+        fileName: "app/routes/($locale).createcard.jsx",
+        lineNumber: 80,
+        columnNumber: 7
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/($locale).createcard.jsx",
+      lineNumber: 24,
+      columnNumber: 5
+    }, this),
+    card && selectedImage === "first" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(FlatCard, {}, void 0, !1, {
+      fileName: "app/routes/($locale).createcard.jsx",
+      lineNumber: 85,
+      columnNumber: 45
+    }, this),
+    card && selectedImage === "sec" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(FoldCard, {}, void 0, !1, {
+      fileName: "app/routes/($locale).createcard.jsx",
+      lineNumber: 86,
+      columnNumber: 43
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/($locale).createcard.jsx",
+    lineNumber: 22,
+    columnNumber: 5
+  }, this);
+}
+
 // app/routes/($locale).search.jsx
 var locale_search_exports = {};
 __export(locale_search_exports, {
@@ -56298,8 +63001,8 @@ __export(locale_search_exports, {
   getNoResultRecommendations: () => getNoResultRecommendations,
   loader: () => loader24
 });
-var import_react119 = __toESM(require_react());
-var import_jsx_dev_runtime63 = __toESM(require_jsx_dev_runtime());
+var import_react123 = __toESM(require_react());
+var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime());
 async function loader24({ request, context: { storefront } }) {
   var _a2;
   let searchTerm = new URL(request.url).searchParams.get("q"), variables = getPaginationVariables(request, { pageBy: 8 }), { products } = await storefront.query(SEARCH_QUERY, {
@@ -56336,15 +63039,15 @@ async function loader24({ request, context: { storefront } }) {
 function Search() {
   var _a2;
   let { searchTerm, products, noResultRecommendations } = useLoaderData2(), noResults = ((_a2 = products == null ? void 0 : products.nodes) == null ? void 0 : _a2.length) === 0;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(PageHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_jsx_dev_runtime66.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(PageHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
         fileName: "app/routes/($locale).search.jsx",
         lineNumber: 74,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
           Input,
           {
             defaultValue: searchTerm,
@@ -56362,7 +63065,7 @@ function Search() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 85,
           columnNumber: 11
@@ -56377,7 +63080,7 @@ function Search() {
       lineNumber: 73,
       columnNumber: 7
     }, this),
-    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
       NoResults,
       {
         noResults,
@@ -56391,8 +63094,8 @@ function Search() {
         columnNumber: 9
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
-      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Pagination, { connection: products, children: ({ nodes, isLoading, NextLink, PreviousLink }) => {
+      let itemsMarkup = nodes.map((product2, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
         ProductCard,
         {
           product: product2,
@@ -56407,8 +63110,8 @@ function Search() {
         },
         this
       ));
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_jsx_dev_runtime66.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(PreviousLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Previous" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 110,
           columnNumber: 21
@@ -56417,12 +63120,12 @@ function Search() {
           lineNumber: 109,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 114,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(NextLink, { className: "inline-block rounded font-medium text-center py-3 px-6 border border-primary/10 bg-contrast text-primary w-full", children: isLoading ? "Loading..." : "Next" }, void 0, !1, {
           fileName: "app/routes/($locale).search.jsx",
           lineNumber: 116,
           columnNumber: 21
@@ -56452,8 +63155,8 @@ function Search() {
   }, this);
 }
 function NoResults({ noResults, recommendations }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
-    noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Text, { className: "opacity-50", children: "No results, try a different search." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_jsx_dev_runtime66.Fragment, { children: [
+    noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { className: "opacity-50", children: "No results, try a different search." }, void 0, !1, {
       fileName: "app/routes/($locale).search.jsx",
       lineNumber: 135,
       columnNumber: 11
@@ -56462,7 +63165,7 @@ function NoResults({ noResults, recommendations }) {
       lineNumber: 134,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_react119.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_react123.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
       Await2,
       {
         errorElement: "There was a problem loading related products",
@@ -56471,8 +63174,8 @@ function NoResults({ noResults, recommendations }) {
           if (!result)
             return null;
           let { featuredCollections, featuredProducts } = result;
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_jsx_dev_runtime66.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
               FeaturedCollections,
               {
                 title: "Trending Collections",
@@ -56487,7 +63190,7 @@ function NoResults({ noResults, recommendations }) {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
               ProductSwimlane,
               {
                 title: "Trending Products",
@@ -56573,10 +63276,10 @@ __export(locale_index_exports, {
   headers: () => headers11,
   loader: () => loader25
 });
-var import_react121 = __toESM(require_react());
+var import_react125 = __toESM(require_react());
 
 // app/components/home/Home.jsx
-var import_react120 = __toESM(require_react());
+var import_react124 = __toESM(require_react());
 
 // assets/Image/Card_Keller_kwlegacy.webp
 var Card_Keller_kwlegacy_default = "/build/_assets/Card_Keller_kwlegacy-O4KBEFT3.webp";
@@ -56585,14 +63288,14 @@ var Card_Keller_kwlegacy_default = "/build/_assets/Card_Keller_kwlegacy-O4KBEFT3
 var Your_Logo_simplinoted_default = "/build/_assets/Your_Logo_simplinoted-VHE6U2G4.webp";
 
 // app/components/home/Home.jsx
-var import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime());
 function Home() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "sec-section", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "handwritten-notice", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("h3", { children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "sec-section", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "handwritten-notice", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h3", { children: [
           "Send Real Handwritten Notes ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
             fileName: "app/components/home/Home.jsx",
             lineNumber: 14,
             columnNumber: 39
@@ -56602,14 +63305,14 @@ function Home() {
           lineNumber: 14,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("p", { children: "to your____________" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("p", { children: "to your____________" }, void 0, !1, {
           fileName: "app/components/home/Home.jsx",
           lineNumber: 15,
           columnNumber: 14
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("h2", { className: "scale-starting", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h2", { className: "scale-starting", children: [
           "Send real handwritten notes, at scale.",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("b", { children: "Starting at $3.25" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("b", { children: "Starting at $3.25" }, void 0, !1, {
             fileName: "app/components/home/Home.jsx",
             lineNumber: 16,
             columnNumber: 85
@@ -56623,7 +63326,7 @@ function Home() {
           lineNumber: 16,
           columnNumber: 10
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
           "button",
           {
             type: "button",
@@ -56639,7 +63342,7 @@ function Home() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
           "button",
           {
             type: "button",
@@ -56661,12 +63364,12 @@ function Home() {
         lineNumber: 13,
         columnNumber: 6
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("img", { className: "logo-simplinoted", src: Your_Logo_simplinoted_default, alt: "LogoSimplinotedpic" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { className: "logo-simplinoted", src: Your_Logo_simplinoted_default, alt: "LogoSimplinotedpic" }, void 0, !1, {
         fileName: "app/components/home/Home.jsx",
         lineNumber: 30,
         columnNumber: 5
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("img", { className: "cars-killer", src: Card_Keller_kwlegacy_default, alt: "CardKillerpic" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { className: "cars-killer", src: Card_Keller_kwlegacy_default, alt: "CardKillerpic" }, void 0, !1, {
         fileName: "app/components/home/Home.jsx",
         lineNumber: 32,
         columnNumber: 8
@@ -56676,7 +63379,7 @@ function Home() {
       lineNumber: 11,
       columnNumber: 6
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("video", { className: "robot-gif", autoPlay: !0, loop: !0, muted: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("video", { className: "robot-gif", autoPlay: !0, loop: !0, muted: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
       "source",
       {
         src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/robots.webm?v=1650939452",
@@ -56703,7 +63406,7 @@ function Home() {
 }
 
 // app/routes/($locale)._index.jsx
-var import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime()), headers11 = routeHeaders;
+var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), headers11 = routeHeaders;
 async function loader25({ params, context }) {
   let { language, country } = context.storefront.i18n;
   if (params.locale && params.locale.toLowerCase() !== `${language}-${country}`.toLowerCase())
@@ -56764,18 +63467,18 @@ function Homepage() {
     featuredCollections,
     featuredProducts
   } = useLoaderData2(), skeletons = getHeroPlaceholder([{}, {}, {}]);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, { children: [
-    primaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Hero, { ...primaryHero, height: "full", top: !0, loading: "eager" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, { children: [
+    primaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Hero, { ...primaryHero, height: "full", top: !0, loading: "eager" }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 95,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Home, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Home, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 97,
       columnNumber: 7
     }, this),
-    featuredProducts && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_react121.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Await2, { resolve: featuredProducts, children: ({ products }) => products != null && products.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+    featuredProducts && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_react125.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Await2, { resolve: featuredProducts, children: ({ products }) => products != null && products.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
       ProductSwimlane,
       {
         products,
@@ -56790,7 +63493,7 @@ function Homepage() {
         columnNumber: 17
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, {}, void 0, !1, {
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 103,
       columnNumber: 44
@@ -56803,15 +63506,15 @@ function Homepage() {
       lineNumber: 100,
       columnNumber: 9
     }, this),
-    secondaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_react121.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Hero, { ...skeletons[1] }, void 0, !1, {
+    secondaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_react125.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Hero, { ...skeletons[1] }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 117,
       columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Await2, { resolve: secondaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Hero, { ...hero }, void 0, !1, {
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Await2, { resolve: secondaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Hero, { ...hero }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 121,
       columnNumber: 22
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 120,
       columnNumber: 33
@@ -56824,7 +63527,7 @@ function Homepage() {
       lineNumber: 117,
       columnNumber: 9
     }, this),
-    featuredCollections && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_react121.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Await2, { resolve: featuredCollections, children: ({ collections }) => collections != null && collections.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+    featuredCollections && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_react125.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Await2, { resolve: featuredCollections, children: ({ collections }) => collections != null && collections.nodes ? /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
       FeaturedCollections,
       {
         collections,
@@ -56838,7 +63541,7 @@ function Homepage() {
         columnNumber: 17
       },
       this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, {}, void 0, !1, {
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 131,
       columnNumber: 47
@@ -56851,15 +63554,15 @@ function Homepage() {
       lineNumber: 128,
       columnNumber: 9
     }, this),
-    tertiaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_react121.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Hero, { ...skeletons[2] }, void 0, !1, {
+    tertiaryHero && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_react125.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Hero, { ...skeletons[2] }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 144,
       columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Await2, { resolve: tertiaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Hero, { ...hero }, void 0, !1, {
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Await2, { resolve: tertiaryHero, children: ({ hero }) => hero ? /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Hero, { ...hero }, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 148,
       columnNumber: 22
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, {}, void 0, !1, {
       fileName: "app/routes/($locale)._index.jsx",
       lineNumber: 147,
       columnNumber: 33
@@ -56963,11 +63666,11 @@ __export(locale_carts_exports, {
   default: () => AddCartFunc,
   loader: () => loader26
 });
-var import_react125 = __toESM(require_react());
+var import_react129 = __toESM(require_react());
 var import_react_modal5 = __toESM(require_lib());
 
 // node_modules/swiper/swiper-react.mjs
-var import_react123 = __toESM(require_react(), 1);
+var import_react127 = __toESM(require_react(), 1);
 
 // node_modules/swiper/shared/ssr-window.esm.mjs
 function isObject(obj) {
@@ -59324,7 +66027,7 @@ function isChildSwiperSlide(child) {
 }
 function processChildren(c12) {
   let slides = [];
-  return import_react123.default.Children.toArray(c12).forEach((child) => {
+  return import_react127.default.Children.toArray(c12).forEach((child) => {
     isChildSwiperSlide(child) ? slides.push(child) : child.props && child.props.children && processChildren(child.props.children).forEach((slide2) => slides.push(slide2));
   }), slides;
 }
@@ -59335,7 +66038,7 @@ function getChildren(c12) {
     "wrapper-start": [],
     "wrapper-end": []
   };
-  return import_react123.default.Children.toArray(c12).forEach((child) => {
+  return import_react127.default.Children.toArray(c12).forEach((child) => {
     if (isChildSwiperSlide(child))
       slides.push(child);
     else if (child.props && child.props.slot && slots[child.props.slot])
@@ -59366,18 +66069,18 @@ function renderVirtual(swiper, slides, virtualData) {
   } = virtualData, loopFrom = swiper.params.loop ? -slides.length : 0, loopTo = swiper.params.loop ? slides.length * 2 : slides.length, slidesToRender = [];
   for (let i6 = loopFrom; i6 < loopTo; i6 += 1)
     i6 >= from && i6 <= to && slidesToRender.push(slides[getSlideIndex(i6)]);
-  return slidesToRender.map((child, index) => /* @__PURE__ */ import_react123.default.cloneElement(child, {
+  return slidesToRender.map((child, index) => /* @__PURE__ */ import_react127.default.cloneElement(child, {
     swiper,
     style,
     key: `slide-${index}`
   }));
 }
 function useIsomorphicLayoutEffect2(callback, deps) {
-  return typeof window > "u" ? (0, import_react123.useEffect)(callback, deps) : (0, import_react123.useLayoutEffect)(callback, deps);
+  return typeof window > "u" ? (0, import_react127.useEffect)(callback, deps) : (0, import_react127.useLayoutEffect)(callback, deps);
 }
-var SwiperSlideContext = /* @__PURE__ */ (0, import_react123.createContext)(null);
-var SwiperContext = /* @__PURE__ */ (0, import_react123.createContext)(null);
-var Swiper2 = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp, externalElRef) {
+var SwiperSlideContext = /* @__PURE__ */ (0, import_react127.createContext)(null);
+var SwiperContext = /* @__PURE__ */ (0, import_react127.createContext)(null);
+var Swiper2 = /* @__PURE__ */ (0, import_react127.forwardRef)(function(_temp, externalElRef) {
   let {
     className,
     tag: Tag = "div",
@@ -59385,7 +66088,7 @@ var Swiper2 = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp, ex
     children,
     onSwiper,
     ...rest
-  } = _temp === void 0 ? {} : _temp, eventsAssigned = !1, [containerClasses, setContainerClasses] = (0, import_react123.useState)("swiper"), [virtualData, setVirtualData] = (0, import_react123.useState)(null), [breakpointChanged, setBreakpointChanged] = (0, import_react123.useState)(!1), initializedRef = (0, import_react123.useRef)(!1), swiperElRef = (0, import_react123.useRef)(null), swiperRef = (0, import_react123.useRef)(null), oldPassedParamsRef = (0, import_react123.useRef)(null), oldSlides = (0, import_react123.useRef)(null), nextElRef = (0, import_react123.useRef)(null), prevElRef = (0, import_react123.useRef)(null), paginationElRef = (0, import_react123.useRef)(null), scrollbarElRef = (0, import_react123.useRef)(null), {
+  } = _temp === void 0 ? {} : _temp, eventsAssigned = !1, [containerClasses, setContainerClasses] = (0, import_react127.useState)("swiper"), [virtualData, setVirtualData] = (0, import_react127.useState)(null), [breakpointChanged, setBreakpointChanged] = (0, import_react127.useState)(!1), initializedRef = (0, import_react127.useRef)(!1), swiperElRef = (0, import_react127.useRef)(null), swiperRef = (0, import_react127.useRef)(null), oldPassedParamsRef = (0, import_react127.useRef)(null), oldSlides = (0, import_react127.useRef)(null), nextElRef = (0, import_react127.useRef)(null), prevElRef = (0, import_react127.useRef)(null), paginationElRef = (0, import_react127.useRef)(null), scrollbarElRef = (0, import_react127.useRef)(null), {
     params: swiperParams,
     passedParams,
     rest: restProps,
@@ -59427,9 +66130,9 @@ var Swiper2 = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp, ex
       swiperRef.current.off(eventName, events2[eventName]);
     });
   };
-  (0, import_react123.useEffect)(() => () => {
+  (0, import_react127.useEffect)(() => () => {
     swiperRef.current && swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
-  }), (0, import_react123.useEffect)(() => {
+  }), (0, import_react127.useEffect)(() => {
     !initializedRef.current && swiperRef.current && (swiperRef.current.emitSlidesClasses(), initializedRef.current = !0);
   }), useIsomorphicLayoutEffect2(() => {
     if (externalElRef && (externalElRef.current = swiperElRef.current), !!swiperElRef.current)
@@ -59462,34 +66165,34 @@ var Swiper2 = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp, ex
     updateOnVirtualData(swiperRef.current);
   }, [virtualData]);
   function renderSlides() {
-    return swiperParams.virtual ? renderVirtual(swiperRef.current, slides, virtualData) : slides.map((child, index) => /* @__PURE__ */ import_react123.default.cloneElement(child, {
+    return swiperParams.virtual ? renderVirtual(swiperRef.current, slides, virtualData) : slides.map((child, index) => /* @__PURE__ */ import_react127.default.cloneElement(child, {
       swiper: swiperRef.current,
       swiperSlideIndex: index
     }));
   }
-  return /* @__PURE__ */ import_react123.default.createElement(Tag, _extends5({
+  return /* @__PURE__ */ import_react127.default.createElement(Tag, _extends5({
     ref: swiperElRef,
     className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
-  }, restProps), /* @__PURE__ */ import_react123.default.createElement(SwiperContext.Provider, {
+  }, restProps), /* @__PURE__ */ import_react127.default.createElement(SwiperContext.Provider, {
     value: swiperRef.current
-  }, slots["container-start"], /* @__PURE__ */ import_react123.default.createElement(WrapperTag, {
+  }, slots["container-start"], /* @__PURE__ */ import_react127.default.createElement(WrapperTag, {
     className: wrapperClass(swiperParams.wrapperClass)
-  }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react123.default.createElement(import_react123.default.Fragment, null, /* @__PURE__ */ import_react123.default.createElement("div", {
+  }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react127.default.createElement(import_react127.default.Fragment, null, /* @__PURE__ */ import_react127.default.createElement("div", {
     ref: prevElRef,
     className: "swiper-button-prev"
-  }), /* @__PURE__ */ import_react123.default.createElement("div", {
+  }), /* @__PURE__ */ import_react127.default.createElement("div", {
     ref: nextElRef,
     className: "swiper-button-next"
-  })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react123.default.createElement("div", {
+  })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react127.default.createElement("div", {
     ref: scrollbarElRef,
     className: "swiper-scrollbar"
-  }), needsPagination(swiperParams) && /* @__PURE__ */ import_react123.default.createElement("div", {
+  }), needsPagination(swiperParams) && /* @__PURE__ */ import_react127.default.createElement("div", {
     ref: paginationElRef,
     className: "swiper-pagination"
   }), slots["container-end"]));
 });
 Swiper2.displayName = "Swiper";
-var SwiperSlide = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp, externalRef) {
+var SwiperSlide = /* @__PURE__ */ (0, import_react127.forwardRef)(function(_temp, externalRef) {
   let {
     tag: Tag = "div",
     children,
@@ -59500,7 +66203,7 @@ var SwiperSlide = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp
     virtualIndex,
     swiperSlideIndex,
     ...rest
-  } = _temp === void 0 ? {} : _temp, slideElRef = (0, import_react123.useRef)(null), [slideClasses, setSlideClasses] = (0, import_react123.useState)("swiper-slide"), [lazyLoaded, setLazyLoaded] = (0, import_react123.useState)(!1);
+  } = _temp === void 0 ? {} : _temp, slideElRef = (0, import_react127.useRef)(null), [slideClasses, setSlideClasses] = (0, import_react127.useState)("swiper-slide"), [lazyLoaded, setLazyLoaded] = (0, import_react127.useState)(!1);
   function updateClasses(_s, el, classNames) {
     el === slideElRef.current && setSlideClasses(classNames);
   }
@@ -59525,21 +66228,21 @@ var SwiperSlide = /* @__PURE__ */ (0, import_react123.forwardRef)(function(_temp
   }, renderChildren = () => typeof children == "function" ? children(slideData) : children, onLoad2 = () => {
     setLazyLoaded(!0);
   };
-  return /* @__PURE__ */ import_react123.default.createElement(Tag, _extends5({
+  return /* @__PURE__ */ import_react127.default.createElement(Tag, _extends5({
     ref: slideElRef,
     className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
     "data-swiper-slide-index": virtualIndex,
     onLoad: onLoad2
-  }, rest), zoom && /* @__PURE__ */ import_react123.default.createElement(SwiperSlideContext.Provider, {
+  }, rest), zoom && /* @__PURE__ */ import_react127.default.createElement(SwiperSlideContext.Provider, {
     value: slideData
-  }, /* @__PURE__ */ import_react123.default.createElement("div", {
+  }, /* @__PURE__ */ import_react127.default.createElement("div", {
     className: "swiper-zoom-container",
     "data-swiper-zoom": typeof zoom == "number" ? zoom : void 0
-  }, renderChildren(), lazy2 && !lazyLoaded && /* @__PURE__ */ import_react123.default.createElement("div", {
+  }, renderChildren(), lazy2 && !lazyLoaded && /* @__PURE__ */ import_react127.default.createElement("div", {
     className: "swiper-lazy-preloader"
-  }))), !zoom && /* @__PURE__ */ import_react123.default.createElement(SwiperSlideContext.Provider, {
+  }))), !zoom && /* @__PURE__ */ import_react127.default.createElement(SwiperSlideContext.Provider, {
     value: slideData
-  }, renderChildren(), lazy2 && !lazyLoaded && /* @__PURE__ */ import_react123.default.createElement("div", {
+  }, renderChildren(), lazy2 && !lazyLoaded && /* @__PURE__ */ import_react127.default.createElement("div", {
     className: "swiper-lazy-preloader"
   })));
 });
@@ -59556,10 +66259,10 @@ function HiArrowLongRight(props) {
 }
 
 // app/components/Checkout.jsx
-var import_react124 = __toESM(require_react()), import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime());
+var import_react128 = __toESM(require_react()), import_jsx_dev_runtime69 = __toESM(require_jsx_dev_runtime());
 function CheckoutData() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_jsx_dev_runtime66.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "'w-full h-full gap-2 mt-8 ", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "pb-[80px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("h1", { className: "text-center font-bold text-4xl", children: "PAYMENT" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_jsx_dev_runtime69.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "'w-full h-full gap-2 mt-8 ", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "pb-[80px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("h1", { className: "text-center font-bold text-4xl", children: "PAYMENT" }, void 0, !1, {
       fileName: "app/components/Checkout.jsx",
       lineNumber: 10,
       columnNumber: 21
@@ -59568,21 +66271,21 @@ function CheckoutData() {
       lineNumber: 9,
       columnNumber: 17
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "w-[100%] flex mr-2 ml-2 gap-8  justify-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "p-5 bg-white max-w-[42%] w-full rounded-xl" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "w-[100%] flex mr-2 ml-2 gap-8  justify-center", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "p-5 bg-white max-w-[42%] w-full rounded-xl" }, void 0, !1, {
         fileName: "app/components/Checkout.jsx",
         lineNumber: 13,
         columnNumber: 21
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "p-5 bg-white max-w-[35%] w-full rounded-xl", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("h1", { className: "text-left font-bold text-2xl", children: "ORDER SUMMARY" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "p-5 bg-white max-w-[35%] w-full rounded-xl", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("h1", { className: "text-left font-bold text-2xl", children: "ORDER SUMMARY" }, void 0, !1, {
           fileName: "app/components/Checkout.jsx",
           lineNumber: 16,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("text", { className: "flex justify-between items-center m-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("text", { className: "flex justify-between items-center m-3", children: [
           "Subtotal ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("span", { children: "$22.8" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("span", { children: "$22.8" }, void 0, !1, {
             fileName: "app/components/Checkout.jsx",
             lineNumber: 17,
             columnNumber: 90
@@ -59592,14 +66295,14 @@ function CheckoutData() {
           lineNumber: 17,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "w-full h-[1px] bg-black" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "w-full h-[1px] bg-black" }, void 0, !1, {
           fileName: "app/components/Checkout.jsx",
           lineNumber: 18,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("text", { className: "flex justify-between items-center m-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("text", { className: "flex justify-between items-center m-3", children: [
           "Total ",
-          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("span", { children: "$22.8" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("span", { children: "$22.8" }, void 0, !1, {
             fileName: "app/components/Checkout.jsx",
             lineNumber: 19,
             columnNumber: 87
@@ -59631,7 +66334,7 @@ function CheckoutData() {
 }
 
 // app/routes/($locale).carts.jsx
-var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), storedDataString;
+var import_jsx_dev_runtime70 = __toESM(require_jsx_dev_runtime()), storedDataString;
 async function loader26({ context }) {
   let data = await context.storefront.query(GiftProduct2, {
     variables: {}
@@ -59644,8 +66347,8 @@ async function loader26({ context }) {
   });
 }
 function AddCartFunc() {
-  let { data, postalData } = useLoaderData2(), [cartData, setCartData] = (0, import_react125.useState)(""), [updateGift, setUpdateGift] = (0, import_react125.useState)(!1), [modalIsOpen, setIsOpen] = (0, import_react125.useState)(!1), [modalIsOpen2, setIsOpen2] = (0, import_react125.useState)(!1), [cardPriceVal, setCardPriceVal] = (0, import_react125.useState)([]), [cardPrice, setCardPrice] = (0, import_react125.useState)(""), [cardName, setCardName] = (0, import_react125.useState)(""), [cardVal, setCardVal] = (0, import_react125.useState)(""), [cardImg, setCardImage] = (0, import_react125.useState)(""), [postTitle, setPostTitle] = (0, import_react125.useState)(""), [postTitle2, setPostTitle2] = (0, import_react125.useState)(""), [postPrice, setPostPrice] = (0, import_react125.useState)(""), [postPrice2, setPostPrice2] = (0, import_react125.useState)(""), [postImage, setPostImage] = (0, import_react125.useState)(""), [senderAddress, setSenderAddress] = (0, import_react125.useState)(""), [msgShow, setMsgShow] = (0, import_react125.useState)(""), [msgFont, setMsgFont] = (0, import_react125.useState)(""), [msglastText, setMsglastText] = (0, import_react125.useState)(""), [reciverAddress, setReciverAddress] = (0, import_react125.useState)(""), [bulkAddress, setBulkAddress] = (0, import_react125.useState)([]), [deleteModal, setDeleteModal] = (0, import_react125.useState)(!1), [deleteCardModal, setDeleteCardModal] = (0, import_react125.useState)(!1), [deleteOrderIndex, setDelOrderIndex] = (0, import_react125.useState)(null), [delCardIndex, setDelCardIndex] = (0, import_react125.useState)(null), [showCartPage, setShowCartPage] = (0, import_react125.useState)(!0);
-  (0, import_react125.useEffect)(() => {
+  let { data, postalData } = useLoaderData2(), [cartData, setCartData] = (0, import_react129.useState)(""), [updateGift, setUpdateGift] = (0, import_react129.useState)(!1), [modalIsOpen, setIsOpen] = (0, import_react129.useState)(!1), [modalIsOpen2, setIsOpen2] = (0, import_react129.useState)(!1), [cardPriceVal, setCardPriceVal] = (0, import_react129.useState)([]), [cardPrice, setCardPrice] = (0, import_react129.useState)(""), [cardName, setCardName] = (0, import_react129.useState)(""), [cardVal, setCardVal] = (0, import_react129.useState)(""), [cardImg, setCardImage] = (0, import_react129.useState)(""), [postTitle, setPostTitle] = (0, import_react129.useState)(""), [postTitle2, setPostTitle2] = (0, import_react129.useState)(""), [postPrice, setPostPrice] = (0, import_react129.useState)(""), [postPrice2, setPostPrice2] = (0, import_react129.useState)(""), [postImage, setPostImage] = (0, import_react129.useState)(""), [senderAddress, setSenderAddress] = (0, import_react129.useState)(""), [msgShow, setMsgShow] = (0, import_react129.useState)(""), [msgFont, setMsgFont] = (0, import_react129.useState)(""), [msglastText, setMsglastText] = (0, import_react129.useState)(""), [reciverAddress, setReciverAddress] = (0, import_react129.useState)(""), [bulkAddress, setBulkAddress] = (0, import_react129.useState)([]), [deleteModal, setDeleteModal] = (0, import_react129.useState)(!1), [deleteCardModal, setDeleteCardModal] = (0, import_react129.useState)(!1), [deleteOrderIndex, setDelOrderIndex] = (0, import_react129.useState)(null), [delCardIndex, setDelCardIndex] = (0, import_react129.useState)(null), [showCartPage, setShowCartPage] = (0, import_react129.useState)(!0);
+  (0, import_react129.useEffect)(() => {
     storedDataString = localStorage.getItem("mydata"), setCartData(JSON.parse(storedDataString)), postalData && setPostalValue();
   }, [updateGift]);
   function setPostalValue() {
@@ -59711,14 +66414,14 @@ function AddCartFunc() {
   function closeModal() {
     setBulkAddress([]), setIsOpen2(!1);
   }
-  let [currentIndex, setCurrentIndex] = (0, import_react125.useState)(0), handlePrevClick = () => {
+  let [currentIndex, setCurrentIndex] = (0, import_react129.useState)(0), handlePrevClick = () => {
     currentIndex > 0 && setCurrentIndex(currentIndex - 1);
   }, handleNextClick = () => {
     currentIndex < bulkAddress.length - 1 && setCurrentIndex(currentIndex + 1);
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_jsx_dev_runtime67.Fragment, { children: showCartPage ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_jsx_dev_runtime67.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-full h-full gap-2 mt-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h1", { className: "text-center font-bold text-4xl", children: "SHOPPING CART" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: showCartPage ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-full h-full gap-2 mt-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("h1", { className: "text-center font-bold text-4xl", children: "SHOPPING CART" }, void 0, !1, {
         fileName: "app/routes/($locale).carts.jsx",
         lineNumber: 235,
         columnNumber: 17
@@ -59726,10 +66429,10 @@ function AddCartFunc() {
       cartData && cartData.map(
         (item, index) => {
           var _a2, _b, _c, _d, _e2, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t2, _u;
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[1000px]  bg-[white] m-auto mt-10 mb-10", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[700px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex m-5", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { src: item.productImg, alt: "" }, void 0, !1, {
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[1000px]  bg-[white] m-auto mt-10 mb-10", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[700px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("img", { src: item.productImg, alt: "" }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 242,
                   columnNumber: 41
@@ -59738,23 +66441,23 @@ function AddCartFunc() {
                   lineNumber: 241,
                   columnNumber: 37
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[100%]", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: item.productTitle }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[100%]", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: item.productTitle }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 246,
                     columnNumber: 41
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 246,
                     columnNumber: 73
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 246,
                     columnNumber: 79
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Sender: ",
                     item.senderAddress.address1,
                     ",",
@@ -59768,7 +66471,7 @@ function AddCartFunc() {
                     lineNumber: 247,
                     columnNumber: 41
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("button", { className: "bg-[#EF6E6E] text-[#fff] p-2 rounded", onClick: () => OpenModalFunc2(index), children: "PREVIEW YOUR CUSTOM MESSAGE" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("button", { className: "bg-[#EF6E6E] text-[#fff] p-2 rounded", onClick: () => OpenModalFunc2(index), children: "PREVIEW YOUR CUSTOM MESSAGE" }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 249,
                     columnNumber: 45
@@ -59791,10 +66494,10 @@ function AddCartFunc() {
                 lineNumber: 239,
                 columnNumber: 29
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "m-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Price:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.price }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.price }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 260,
                     columnNumber: 54
@@ -59808,9 +66511,9 @@ function AddCartFunc() {
                   lineNumber: 259,
                   columnNumber: 37
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Quantity:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 263,
                     columnNumber: 57
@@ -59824,7 +66527,7 @@ function AddCartFunc() {
                   lineNumber: 262,
                   columnNumber: 37
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Subtotal:",
                   item.price * item.csvFileLen
                 ] }, void 0, !0, {
@@ -59845,8 +66548,8 @@ function AddCartFunc() {
                 lineNumber: 257,
                 columnNumber: 29
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] m-4", children: [
-                item.giftCardName !== null ? "" : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] m-4", children: [
+                item.giftCardName !== null ? "" : /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
                   DynamicButton_default,
                   {
                     className: "bg-[#1b5299]",
@@ -59866,7 +66569,7 @@ function AddCartFunc() {
                   lineNumber: 272,
                   columnNumber: 42
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
                   DynamicButton_default,
                   {
                     className: "bg-[#1b5299]",
@@ -59886,7 +66589,7 @@ function AddCartFunc() {
                   lineNumber: 281,
                   columnNumber: 33
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
                   DynamicButton_default,
                   {
                     className: "bg-[#1b5299]",
@@ -59916,14 +66619,14 @@ function AddCartFunc() {
               lineNumber: 238,
               columnNumber: 25
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[1000px] h-[2px] bg-[red]" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[1000px] h-[2px] bg-[red]" }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 299,
               columnNumber: 25
             }, this),
-            item.giftCardName ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex m-5", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { src: item.giftCardImg, alt: "" }, void 0, !1, {
+            item.giftCardName ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("img", { src: item.giftCardImg, alt: "" }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 305,
                   columnNumber: 45
@@ -59932,18 +66635,18 @@ function AddCartFunc() {
                   lineNumber: 304,
                   columnNumber: 41
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: item.giftCardName }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: item.giftCardName }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 308,
                     columnNumber: 45
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 308,
                     columnNumber: 77
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 308,
                     columnNumber: 83
@@ -59962,10 +66665,10 @@ function AddCartFunc() {
                 lineNumber: 302,
                 columnNumber: 33
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "m-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Price:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.giftCardPrice }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.giftCardPrice }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 316,
                     columnNumber: 58
@@ -59979,9 +66682,9 @@ function AddCartFunc() {
                   lineNumber: 315,
                   columnNumber: 41
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Quantity:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 319,
                     columnNumber: 61
@@ -59995,7 +66698,7 @@ function AddCartFunc() {
                   lineNumber: 318,
                   columnNumber: 41
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Subtotal:",
                   item.giftCardPrice * item.csvFileLen
                 ] }, void 0, !0, {
@@ -60016,7 +66719,7 @@ function AddCartFunc() {
                 lineNumber: 313,
                 columnNumber: 33
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] m-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] m-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
                 DynamicButton_default,
                 {
                   className: "bg-[#1b5299]",
@@ -60045,15 +66748,15 @@ function AddCartFunc() {
               lineNumber: 301,
               columnNumber: 29
             }, this) : "",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[1000px] h-[2px] bg-[red]" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[1000px] h-[2px] bg-[red]" }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 338,
               columnNumber: 25
             }, this),
-            item.usCount || item.nonUSCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_jsx_dev_runtime67.Fragment, { children: [
-              item.nonUSCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex m-5", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+            item.usCount || item.nonUSCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: [
+              item.nonUSCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex m-5", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 348,
                     columnNumber: 53
@@ -60062,8 +66765,8 @@ function AddCartFunc() {
                     lineNumber: 347,
                     columnNumber: 49
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                       "Postal ",
                       postTitle2
                     ] }, void 0, !0, {
@@ -60071,12 +66774,12 @@ function AddCartFunc() {
                       lineNumber: 351,
                       columnNumber: 53
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 351,
                       columnNumber: 85
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 351,
                       columnNumber: 91
@@ -60095,10 +66798,10 @@ function AddCartFunc() {
                   lineNumber: 345,
                   columnNumber: 41
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "m-6", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "m-6", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Price:",
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: postPrice2 }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: postPrice2 }, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 358,
                       columnNumber: 66
@@ -60112,9 +66815,9 @@ function AddCartFunc() {
                     lineNumber: 357,
                     columnNumber: 49
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Quantity:",
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.nonUSCount }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.nonUSCount }, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 361,
                       columnNumber: 69
@@ -60128,7 +66831,7 @@ function AddCartFunc() {
                     lineNumber: 360,
                     columnNumber: 49
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Subtotal:",
                     postPrice2 * item.nonUSCount
                   ] }, void 0, !0, {
@@ -60154,9 +66857,9 @@ function AddCartFunc() {
                 lineNumber: 344,
                 columnNumber: 37
               }, this) : "",
-              item.usCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex m-5", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+              item.usCount ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex m-5", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 374,
                     columnNumber: 49
@@ -60165,8 +66868,8 @@ function AddCartFunc() {
                     lineNumber: 373,
                     columnNumber: 45
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                       "Postal ",
                       postTitle
                     ] }, void 0, !0, {
@@ -60174,12 +66877,12 @@ function AddCartFunc() {
                       lineNumber: 377,
                       columnNumber: 49
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 377,
                       columnNumber: 80
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 377,
                       columnNumber: 86
@@ -60198,10 +66901,10 @@ function AddCartFunc() {
                   lineNumber: 371,
                   columnNumber: 37
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "m-6", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "m-6", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Price:",
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: postPrice }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: postPrice }, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 384,
                       columnNumber: 62
@@ -60215,9 +66918,9 @@ function AddCartFunc() {
                     lineNumber: 383,
                     columnNumber: 45
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Quantity:",
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.usCount }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.usCount }, void 0, !1, {
                       fileName: "app/routes/($locale).carts.jsx",
                       lineNumber: 387,
                       columnNumber: 65
@@ -60231,7 +66934,7 @@ function AddCartFunc() {
                     lineNumber: 386,
                     columnNumber: 45
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     " Subtotal:",
                     postPrice * item.usCount
                   ] }, void 0, !0, {
@@ -60261,9 +66964,9 @@ function AddCartFunc() {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 341,
               columnNumber: 29
-            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_jsx_dev_runtime67.Fragment, { children: ((_a2 = item.reciverAddress) == null ? void 0 : _a2.country) === "USA" || ((_c = (_b = item.reciverAddress) == null ? void 0 : _b.country) == null ? void 0 : _c.toLowerCase()) === "" || ((_e2 = (_d = item.reciverAddress) == null ? void 0 : _d.country) == null ? void 0 : _e2.toLowerCase()) === " " || ((_g = (_f = item.reciverAddress) == null ? void 0 : _f.country) == null ? void 0 : _g.toLowerCase()) === "u.s.a" || ((_i = (_h = item.reciverAddress) == null ? void 0 : _h.country) == null ? void 0 : _i.toLowerCase()) === "u.s" || ((_k = (_j = item.reciverAddress) == null ? void 0 : _j.country) == null ? void 0 : _k.toLowerCase()) === "usa" || ((_m = (_l = item.reciverAddress) == null ? void 0 : _l.country) == null ? void 0 : _m.toLowerCase()) === "us" || ((_o = (_n = item.reciverAddress) == null ? void 0 : _n.country) == null ? void 0 : _o.toLowerCase()) === "america" || ((_q = (_p = item.reciverAddress) == null ? void 0 : _p.country) == null ? void 0 : _q.toLowerCase()) === "united states" || ((_s = (_r = item.reciverAddress) == null ? void 0 : _r.country) == null ? void 0 : _s.toLowerCase()) === "united states of america" || ((_u = (_t2 = item.reciverAddress) == null ? void 0 : _t2.country) == null ? void 0 : _u.toLowerCase()) == null ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex m-5", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: ((_a2 = item.reciverAddress) == null ? void 0 : _a2.country) === "USA" || ((_c = (_b = item.reciverAddress) == null ? void 0 : _b.country) == null ? void 0 : _c.toLowerCase()) === "" || ((_e2 = (_d = item.reciverAddress) == null ? void 0 : _d.country) == null ? void 0 : _e2.toLowerCase()) === " " || ((_g = (_f = item.reciverAddress) == null ? void 0 : _f.country) == null ? void 0 : _g.toLowerCase()) === "u.s.a" || ((_i = (_h = item.reciverAddress) == null ? void 0 : _h.country) == null ? void 0 : _i.toLowerCase()) === "u.s" || ((_k = (_j = item.reciverAddress) == null ? void 0 : _j.country) == null ? void 0 : _k.toLowerCase()) === "usa" || ((_m = (_l = item.reciverAddress) == null ? void 0 : _l.country) == null ? void 0 : _m.toLowerCase()) === "us" || ((_o = (_n = item.reciverAddress) == null ? void 0 : _n.country) == null ? void 0 : _o.toLowerCase()) === "america" || ((_q = (_p = item.reciverAddress) == null ? void 0 : _p.country) == null ? void 0 : _q.toLowerCase()) === "united states" || ((_s = (_r = item.reciverAddress) == null ? void 0 : _r.country) == null ? void 0 : _s.toLowerCase()) === "united states of america" || ((_u = (_t2 = item.reciverAddress) == null ? void 0 : _t2.country) == null ? void 0 : _u.toLowerCase()) == null ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 419,
                   columnNumber: 53
@@ -60272,8 +66975,8 @@ function AddCartFunc() {
                   lineNumber: 418,
                   columnNumber: 49
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     "Postal ",
                     postTitle
                   ] }, void 0, !0, {
@@ -60281,12 +66984,12 @@ function AddCartFunc() {
                     lineNumber: 422,
                     columnNumber: 53
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 422,
                     columnNumber: 84
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 422,
                     columnNumber: 90
@@ -60305,10 +67008,10 @@ function AddCartFunc() {
                 lineNumber: 416,
                 columnNumber: 41
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "m-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Price:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: postPrice }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: postPrice }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 429,
                     columnNumber: 66
@@ -60322,9 +67025,9 @@ function AddCartFunc() {
                   lineNumber: 428,
                   columnNumber: 49
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Quantity:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 432,
                     columnNumber: 69
@@ -60338,7 +67041,7 @@ function AddCartFunc() {
                   lineNumber: 431,
                   columnNumber: 49
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Subtotal:",
                   postPrice * item.csvFileLen
                 ] }, void 0, !0, {
@@ -60363,9 +67066,9 @@ function AddCartFunc() {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 415,
               columnNumber: 37
-            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex m-5", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
+            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex m-5", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[20%] m-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("img", { src: postImage, alt: "" }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 445,
                   columnNumber: 53
@@ -60374,8 +67077,8 @@ function AddCartFunc() {
                   lineNumber: 444,
                   columnNumber: 49
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "max-w-[40%] mt-10", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                     "Postal",
                     postTitle2
                   ] }, void 0, !0, {
@@ -60383,12 +67086,12 @@ function AddCartFunc() {
                     lineNumber: 448,
                     columnNumber: 53
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 448,
                     columnNumber: 84
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 448,
                     columnNumber: 90
@@ -60407,10 +67110,10 @@ function AddCartFunc() {
                 lineNumber: 442,
                 columnNumber: 41
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "m-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px] gap-5", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "m-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Price:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: postPrice2 }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: postPrice2 }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 455,
                     columnNumber: 66
@@ -60424,9 +67127,9 @@ function AddCartFunc() {
                   lineNumber: 454,
                   columnNumber: 49
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Quantity:",
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("span", { children: item.csvFileLen }, void 0, !1, {
                     fileName: "app/routes/($locale).carts.jsx",
                     lineNumber: 458,
                     columnNumber: 69
@@ -60440,7 +67143,7 @@ function AddCartFunc() {
                   lineNumber: 457,
                   columnNumber: 49
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                   " Subtotal:",
                   postPrice2 * item.csvFileLen
                 ] }, void 0, !0, {
@@ -60477,9 +67180,9 @@ function AddCartFunc() {
           }, this);
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[1000px]  bg-[#FFF6F6] m-auto mt-10 mb-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex p-2 border-4 border-indigo-600", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("button", { className: "bg-[#1b5299] text-[#fff] p-2 rounded flex", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(RiDeleteBin5Line, { className: "mr-2 mt-1" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[1000px]  bg-[#FFF6F6] m-auto mt-10 mb-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex p-2 border-4 border-indigo-600", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 m-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("button", { className: "bg-[#1b5299] text-[#fff] p-2 rounded flex", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(RiDeleteBin5Line, { className: "mr-2 mt-1" }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 478,
             columnNumber: 33
@@ -60498,7 +67201,7 @@ function AddCartFunc() {
           lineNumber: 475,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[200px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: "text-2xl text-[#1b5299] font-bold mt-2", children: "GRAND TOTAL" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[200px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: "text-2xl text-[#1b5299] font-bold mt-2", children: "GRAND TOTAL" }, void 0, !1, {
           fileName: "app/routes/($locale).carts.jsx",
           lineNumber: 483,
           columnNumber: 33
@@ -60511,7 +67214,7 @@ function AddCartFunc() {
           lineNumber: 481,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: "text-2xl text-[#1b5299] font-bold mt-2", children: "$22" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: "text-2xl text-[#1b5299] font-bold mt-2", children: "$22" }, void 0, !1, {
           fileName: "app/routes/($locale).carts.jsx",
           lineNumber: 488,
           columnNumber: 33
@@ -60524,20 +67227,20 @@ function AddCartFunc() {
           lineNumber: 486,
           columnNumber: 25
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("input", { type: "checkbox" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[300px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("input", { type: "checkbox" }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 493,
             columnNumber: 33
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: "text-s", children: " i agree with terms and condition" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: "text-s", children: " i agree with terms and condition" }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 494,
             columnNumber: 33
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("button", { className: "bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex", onClick: () => setShowCartPage(!1), children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("button", { className: "bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex", onClick: () => setShowCartPage(!1), children: [
             "CHECKOUT ",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(HiArrowLongRight, { className: "text-2xl ml-2 " }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(HiArrowLongRight, { className: "text-2xl ml-2 " }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 495,
               columnNumber: 151
@@ -60571,7 +67274,7 @@ function AddCartFunc() {
       lineNumber: 234,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
       ConfirmationModal_default,
       {
         show: deleteModal,
@@ -60590,7 +67293,7 @@ function AddCartFunc() {
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
       ConfirmationModal_default,
       {
         show: deleteCardModal,
@@ -60609,20 +67312,20 @@ function AddCartFunc() {
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
       import_react_modal5.default,
       {
         isOpen: modalIsOpen,
         style: customStyles3,
         contentLabel: "Example Modal",
         children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center", children: "Add a Gift Card" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center", children: "Add a Gift Card" }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 522,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(BsXCircle, { className: "", onClick: () => setIsOpen(!1) }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(BsXCircle, { className: "", onClick: () => setIsOpen(!1) }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 523,
               columnNumber: 21
@@ -60632,20 +67335,20 @@ function AddCartFunc() {
             lineNumber: 521,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "address-data", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "row  mr-2 ml-2 ", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "address-data", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "row  mr-2 ml-2 ", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Card:" }, void 0, !1, {
                 fileName: "app/routes/($locale).carts.jsx",
                 lineNumber: 527,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("select", { className: "w-full", onChange: (e4) => cardvalFunc(e4.target.value), children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("option", { className: "w-full", children: " Select Gift Card" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("select", { className: "w-full", onChange: (e4) => cardvalFunc(e4.target.value), children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("option", { className: "w-full", children: " Select Gift Card" }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 530,
                   columnNumber: 33
                 }, this),
-                data.collection.products.edges.map((item, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("option", { value: i6, children: item.node.title }, void 0, !1, {
+                data.collection.products.edges.map((item, i6) => /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("option", { value: i6, children: item.node.title }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 532,
                   columnNumber: 37
@@ -60664,15 +67367,15 @@ function AddCartFunc() {
               lineNumber: 526,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "row  mr-2 ml-2 ", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "row  mr-2 ml-2 ", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "col-4 mt-4 font-bold w-[190px]", children: "Select Gift Price:" }, void 0, !1, {
                 fileName: "app/routes/($locale).carts.jsx",
                 lineNumber: 537,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: cardPriceVal && cardPriceVal.length ? (
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "col-8 mt-3 pr-0 w-[370px]", children: cardPriceVal && cardPriceVal.length ? (
                 // <div>heelooo</div>
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
                   "select",
                   {
                     name: "",
@@ -60680,7 +67383,7 @@ function AddCartFunc() {
                     className: "w-full",
                     onChange: (e4) => priceValFunc(e4.target.value),
                     children: cardPriceVal.map(
-                      (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+                      (item) => /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
                         "option",
                         {
                           value: item.node.price.amount,
@@ -60706,7 +67409,7 @@ function AddCartFunc() {
                   },
                   this
                 )
-              ) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("select", { name: "", id: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("option", { value: "", children: "Price Card" }, void 0, !1, {
+              ) : /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("select", { name: "", id: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("option", { value: "", children: "Price Card" }, void 0, !1, {
                 fileName: "app/routes/($locale).carts.jsx",
                 lineNumber: 552,
                 columnNumber: 37
@@ -60724,7 +67427,7 @@ function AddCartFunc() {
               lineNumber: 536,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "buttonDiv pr-5 items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => updateValueInArray(cardVal), children: "Add Gift Card" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "buttonDiv pr-5 items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("button", { className: "bg-[#001a5f] text-[#fff] p-2 rounded ", onClick: () => updateValueInArray(cardVal), children: "Add Gift Card" }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 558,
               columnNumber: 25
@@ -60749,26 +67452,26 @@ function AddCartFunc() {
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
       import_react_modal5.default,
       {
         isOpen: modalIsOpen2,
         style: customStyles3,
         contentLabel: "Example Modal",
-        children: bulkAddress.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_jsx_dev_runtime67.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(BsXCircle, { className: "absolute right-10 cursor-pointer", onClick: () => closeModal() }, void 0, !1, {
+        children: bulkAddress.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(BsXCircle, { className: "absolute right-10 cursor-pointer", onClick: () => closeModal() }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 568,
             columnNumber: 25
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("button", { onClick: handlePrevClick, className: "absolute top-[130px]", children: "Previous" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("button", { onClick: handlePrevClick, className: "absolute top-[130px]", children: "Previous" }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 569,
             columnNumber: 25
           }, this),
           bulkAddress && bulkAddress.map(
-            (item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { style: { display: index === currentIndex ? "block" : "none" }, children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: " text-xl text-center", children: [
+            (item, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { style: { display: index === currentIndex ? "block" : "none" }, children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: " text-xl text-center", children: [
                 "Recipient:  ",
                 item["First Name"],
                 ",",
@@ -60784,13 +67487,13 @@ function AddCartFunc() {
                 lineNumber: 573,
                 columnNumber: 37
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center mt-3", children: "Your Custom Message" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center mt-3", children: "Your Custom Message" }, void 0, !1, {
                 fileName: "app/routes/($locale).carts.jsx",
                 lineNumber: 576,
                 columnNumber: 37
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: " w-[600px]", style: { fontFamily: msgFont }, children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: " w-[600px]", style: { fontFamily: msgFont }, children: [
                   " ",
                   item.msgData
                 ] }, void 0, !0, {
@@ -60798,12 +67501,12 @@ function AddCartFunc() {
                   lineNumber: 578,
                   columnNumber: 41
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 578,
                   columnNumber: 124
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: " text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: " text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
                   fileName: "app/routes/($locale).carts.jsx",
                   lineNumber: 579,
                   columnNumber: 41
@@ -60813,7 +67516,7 @@ function AddCartFunc() {
                 lineNumber: 577,
                 columnNumber: 37
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
                 "Font: ",
                 msgFont
               ] }, void 0, !0, {
@@ -60835,7 +67538,7 @@ function AddCartFunc() {
               columnNumber: 29
             }, this)
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("button", { className: "absolute right-10 bottom-[95px]", onClick: handleNextClick, children: "Next" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("button", { className: "absolute right-10 bottom-[95px]", onClick: handleNextClick, children: "Next" }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 588,
             columnNumber: 25
@@ -60844,9 +67547,9 @@ function AddCartFunc() {
           fileName: "app/routes/($locale).carts.jsx",
           lineNumber: 567,
           columnNumber: 21
-        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_jsx_dev_runtime67.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[600px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: " text-xl text-center", children: [
+        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[600px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: " text-xl text-center", children: [
               "Recipient: ",
               reciverAddress.firstName,
               ",",
@@ -60864,7 +67567,7 @@ function AddCartFunc() {
               lineNumber: 594,
               columnNumber: 29
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(BsXCircle, { className: "cursor-pointer", onClick: () => closeModal() }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(BsXCircle, { className: "cursor-pointer", onClick: () => closeModal() }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 598,
               columnNumber: 29
@@ -60874,13 +67577,13 @@ function AddCartFunc() {
             lineNumber: 593,
             columnNumber: 25
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center mt-3", children: "Your Custom Message" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("h2", { className: "font-bold text-2xl w-[600px] text-center mt-3", children: "Your Custom Message" }, void 0, !1, {
             fileName: "app/routes/($locale).carts.jsx",
             lineNumber: 600,
             columnNumber: 25
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: "text-2xl w-[600px]", style: { fontFamily: msgFont }, children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: "text-2xl w-[600px]", style: { fontFamily: msgFont }, children: [
               " ",
               msgShow
             ] }, void 0, !0, {
@@ -60888,12 +67591,12 @@ function AddCartFunc() {
               lineNumber: 602,
               columnNumber: 29
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("br", {}, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 602,
               columnNumber: 115
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { className: "text-2xl text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { className: "text-2xl text-center w-[600px] ml-10", style: { fontFamily: msgFont }, children: msglastText }, void 0, !1, {
               fileName: "app/routes/($locale).carts.jsx",
               lineNumber: 603,
               columnNumber: 29
@@ -60903,7 +67606,7 @@ function AddCartFunc() {
             lineNumber: 601,
             columnNumber: 25
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("text", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("text", { children: [
             "Font: ",
             msgFont
           ] }, void 0, !0, {
@@ -60934,7 +67637,7 @@ function AddCartFunc() {
     fileName: "app/routes/($locale).carts.jsx",
     lineNumber: 233,
     columnNumber: 9
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(CheckoutData, {}, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(CheckoutData, {}, void 0, !1, {
     fileName: "app/routes/($locale).carts.jsx",
     lineNumber: 613,
     columnNumber: 9
@@ -60999,29 +67702,25 @@ var locale_card_exports = {};
 __export(locale_card_exports, {
   default: () => s14
 });
-var import_react129 = __toESM(require_react()), import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime());
+var import_react133 = __toESM(require_react()), import_jsx_dev_runtime71 = __toESM(require_jsx_dev_runtime());
 function s14() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { class: "buttons", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("a", { href: "#", class: "prmry", children: "Create A Custom Card" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "buttons", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("a", { href: "#", className: "prmry", children: "Create A Custom Card" }, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
-      lineNumber: 7,
-      columnNumber: 9
+      lineNumber: 6,
+      columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("br", {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("br", {}, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
-      lineNumber: 7,
-      columnNumber: 59
+      lineNumber: 9,
+      columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("a", { href: "#", class: "secndry", children: "View My Custom Cards" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("a", { href: "#", className: "secndry", children: "View My Custom Cards" }, void 0, !1, {
       fileName: "app/routes/($locale).card.jsx",
-      lineNumber: 8,
-      columnNumber: 9
+      lineNumber: 10,
+      columnNumber: 7
     }, this)
   ] }, void 0, !0, {
-    fileName: "app/routes/($locale).card.jsx",
-    lineNumber: 6,
-    columnNumber: 6
-  }, this) }, void 0, !1, {
     fileName: "app/routes/($locale).card.jsx",
     lineNumber: 5,
     columnNumber: 5
@@ -61035,7 +67734,7 @@ __export(locale_cart_exports, {
   default: () => CartRoute,
   loader: () => loader27
 });
-var import_jsx_dev_runtime69 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime72 = __toESM(require_jsx_dev_runtime());
 async function action9({ request, context }) {
   let { session, cart } = context, [formData, customerAccessToken] = await Promise.all([
     request.formData(),
@@ -61087,7 +67786,7 @@ async function loader27({ context }) {
 function CartRoute() {
   var _a2;
   let [root2] = useMatches2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
     fileName: "app/routes/($locale).cart.jsx",
     lineNumber: 90,
     columnNumber: 20
@@ -61270,21 +67969,21 @@ var debug_network_exports = {};
 __export(debug_network_exports, {
   default: () => DebugNetwork
 });
-var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1), import_react133 = __toESM(require_react(), 1);
+var import_jsx_runtime10 = __toESM(require_jsx_runtime(), 1), import_react137 = __toESM(require_react(), 1);
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/FlameChartWrapper.jsx
-var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1), import_react132 = __toESM(require_react(), 1);
+var import_jsx_runtime9 = __toESM(require_jsx_runtime(), 1), import_react136 = __toESM(require_react(), 1);
 
 // node_modules/use-resize-observer/dist/bundle.esm.js
-var import_react131 = __toESM(require_react());
+var import_react135 = __toESM(require_react());
 function useResolvedElement(subscriber, refOrElement) {
-  var lastReportRef = (0, import_react131.useRef)(null), refOrElementRef = (0, import_react131.useRef)(null);
+  var lastReportRef = (0, import_react135.useRef)(null), refOrElementRef = (0, import_react135.useRef)(null);
   refOrElementRef.current = refOrElement;
-  var cbElementRef = (0, import_react131.useRef)(null);
-  (0, import_react131.useEffect)(function() {
+  var cbElementRef = (0, import_react135.useRef)(null);
+  (0, import_react135.useEffect)(function() {
     evaluateSubscription();
   });
-  var evaluateSubscription = (0, import_react131.useCallback)(function() {
+  var evaluateSubscription = (0, import_react135.useCallback)(function() {
     var cbElement = cbElementRef.current, refOrElement2 = refOrElementRef.current, element = cbElement || (refOrElement2 ? refOrElement2 instanceof Element ? refOrElement2 : refOrElement2.current : null);
     lastReportRef.current && lastReportRef.current.element === element && lastReportRef.current.subscriber === subscriber || (lastReportRef.current && lastReportRef.current.cleanup && lastReportRef.current.cleanup(), lastReportRef.current = {
       element,
@@ -61294,11 +67993,11 @@ function useResolvedElement(subscriber, refOrElement) {
       cleanup: element ? subscriber(element) : void 0
     });
   }, [subscriber]);
-  return (0, import_react131.useEffect)(function() {
+  return (0, import_react135.useEffect)(function() {
     return function() {
       lastReportRef.current && lastReportRef.current.cleanup && (lastReportRef.current.cleanup(), lastReportRef.current = null);
     };
-  }, []), (0, import_react131.useCallback)(function(element) {
+  }, []), (0, import_react135.useCallback)(function(element) {
     cbElementRef.current = element, evaluateSubscription();
   }, [evaluateSubscription]);
 }
@@ -61312,21 +68011,21 @@ function extractSize(entry2, boxProp, sizeType) {
 }
 function useResizeObserver(opts) {
   opts === void 0 && (opts = {});
-  var onResize2 = opts.onResize, onResizeRef = (0, import_react131.useRef)(void 0);
+  var onResize2 = opts.onResize, onResizeRef = (0, import_react135.useRef)(void 0);
   onResizeRef.current = onResize2;
-  var round = opts.round || Math.round, resizeObserverRef = (0, import_react131.useRef)(), _useState = (0, import_react131.useState)({
+  var round = opts.round || Math.round, resizeObserverRef = (0, import_react135.useRef)(), _useState = (0, import_react135.useState)({
     width: void 0,
     height: void 0
-  }), size = _useState[0], setSize = _useState[1], didUnmount = (0, import_react131.useRef)(!1);
-  (0, import_react131.useEffect)(function() {
+  }), size = _useState[0], setSize = _useState[1], didUnmount = (0, import_react135.useRef)(!1);
+  (0, import_react135.useEffect)(function() {
     return didUnmount.current = !1, function() {
       didUnmount.current = !0;
     };
   }, []);
-  var previous = (0, import_react131.useRef)({
+  var previous = (0, import_react135.useRef)({
     width: void 0,
     height: void 0
-  }), refCallback = useResolvedElement((0, import_react131.useCallback)(function(element) {
+  }), refCallback = useResolvedElement((0, import_react135.useCallback)(function(element) {
     return (!resizeObserverRef.current || resizeObserverRef.current.box !== opts.box || resizeObserverRef.current.round !== round) && (resizeObserverRef.current = {
       box: opts.box,
       round,
@@ -61346,7 +68045,7 @@ function useResizeObserver(opts) {
       resizeObserverRef.current && resizeObserverRef.current.instance.unobserve(element);
     };
   }, [opts.box, round]), opts.ref);
-  return (0, import_react131.useMemo)(function() {
+  return (0, import_react135.useMemo)(function() {
     return {
       ref: refCallback,
       width: size.width,
@@ -61357,7 +68056,7 @@ function useResizeObserver(opts) {
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/FlameChartWrapper.jsx
 var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
-  let boxRef = (0, import_react132.useRef)(null), canvasRef = (0, import_react132.useRef)(null), flameChart = (0, import_react132.useRef)(null);
+  let boxRef = (0, import_react136.useRef)(null), canvasRef = (0, import_react136.useRef)(null), flameChart = (0, import_react136.useRef)(null);
   useResizeObserver2({
     ref: boxRef,
     onResize: ({ width = 0, height = 0 }) => {
@@ -61365,7 +68064,7 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
       return (_a2 = flameChart.current) == null ? void 0 : _a2.resize(width, height - 3);
     }
   });
-  let initialize = (0, import_react132.useCallback)(() => {
+  let initialize = (0, import_react136.useCallback)(() => {
     let {
       data,
       marks,
@@ -61390,43 +68089,43 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
         plugins
       });
     }
-  }, [props]), setBoxRef = (0, import_react132.useCallback)(
+  }, [props]), setBoxRef = (0, import_react136.useCallback)(
     (ref) => {
       let isNewRef = ref !== boxRef.current;
       boxRef.current = ref, isNewRef && initialize();
     },
     [initialize]
-  ), setCanvasRef = (0, import_react132.useCallback)(
+  ), setCanvasRef = (0, import_react136.useCallback)(
     (ref) => {
       let isNewRef = ref !== canvasRef.current;
       canvasRef.current = ref, isNewRef && initialize();
     },
     [initialize]
   );
-  return (0, import_react132.useEffect)(() => {
+  return (0, import_react136.useEffect)(() => {
     var _a2;
     props.data && ((_a2 = flameChart.current) == null || _a2.setNodes(props.data));
-  }, [props.data]), (0, import_react132.useEffect)(() => {
+  }, [props.data]), (0, import_react136.useEffect)(() => {
     var _a2;
     props.marks && ((_a2 = flameChart.current) == null || _a2.setMarks(props.marks));
-  }, [props.marks]), (0, import_react132.useEffect)(() => {
+  }, [props.marks]), (0, import_react136.useEffect)(() => {
     var _a2;
     props.waterfall && ((_a2 = flameChart.current) == null || _a2.setWaterfall(props.waterfall));
-  }, [props.waterfall]), (0, import_react132.useEffect)(() => {
+  }, [props.waterfall]), (0, import_react136.useEffect)(() => {
     var _a2;
     props.timeseries && ((_a2 = flameChart.current) == null || _a2.setTimeseries(props.timeseries));
-  }, [props.timeseries]), (0, import_react132.useEffect)(() => {
+  }, [props.timeseries]), (0, import_react136.useEffect)(() => {
     var _a2;
     props.timeframeTimeseries && ((_a2 = flameChart.current) == null || _a2.setTimeframeTimeseries(props.timeframeTimeseries));
-  }, [props.timeframeTimeseries]), (0, import_react132.useEffect)(() => {
+  }, [props.timeframeTimeseries]), (0, import_react136.useEffect)(() => {
     props.settings && flameChart.current && (flameChart.current.setSettings(props.settings), flameChart.current.renderEngine.recalcChildrenSizes(), flameChart.current.render());
-  }, [props.settings]), (0, import_react132.useEffect)(() => {
+  }, [props.settings]), (0, import_react136.useEffect)(() => {
     var _a2;
     props.position && ((_a2 = flameChart.current) == null || _a2.setFlameChartPosition(props.position));
-  }, [props.position]), (0, import_react132.useEffect)(() => {
+  }, [props.position]), (0, import_react136.useEffect)(() => {
     var _a2;
     props.zoom && ((_a2 = flameChart.current) == null || _a2.setZoom(props.zoom.start, props.zoom.end));
-  }, [props.zoom]), (0, import_react132.useEffect)(() => {
+  }, [props.zoom]), (0, import_react136.useEffect)(() => {
     var _a2;
     return props.onSelect && ((_a2 = flameChart.current) == null || _a2.on("select", props.onSelect)), () => {
       var _a3;
@@ -61445,12 +68144,12 @@ var useResizeObserver2 = useResizeObserver, FlameChartWrapper = (props) => {
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/routes/debug-network.jsx
 function DebugNetwork() {
-  let serverEvents = (0, import_react133.useRef)({
+  let serverEvents = (0, import_react137.useRef)({
     smallestStartTime: 0,
     mainRequests: [],
     subRequests: {},
     showPutRequests: !1
-  }), [timestamp, setTimestamp] = (0, import_react133.useState)();
+  }), [timestamp, setTimestamp] = (0, import_react137.useState)();
   function serverEventHandler(onEvent) {
     return (event) => {
       let data = JSON.parse(event.data);
@@ -61462,7 +68161,7 @@ function DebugNetwork() {
       }, 0);
     };
   }
-  return (0, import_react133.useEffect)(() => {
+  return (0, import_react137.useEffect)(() => {
     let evtSource = new EventSource("/debug-network-server", {
       withCredentials: !0
     }), mainRequestHandler = serverEventHandler((data) => {
@@ -62551,7 +69250,7 @@ var LAYOUT_QUERY2 = `#graphql
 `;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-AX53VSVT.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-M7ZELIPT.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-QLMTPHJM.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-Q7CBK5WE.js", imports: ["/build/_shared/chunk-5PQXV4RB.js", "/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-B4UWBIDW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-GD6JTTM4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-ATMEFXLN.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-OBSII5XY.js", imports: ["/build/_shared/chunk-77A3WDT2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-K6LE5K2Y.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-F4QTCI3Z.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-2H5C6EW5.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-IZXH4W67.js", imports: ["/build/_shared/chunk-JER4UWC7.js", "/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-NKTQWECW.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-EKTMDH7C.js", imports: ["/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-RTMPBWBG.js", imports: ["/build/_shared/chunk-JER4UWC7.js", "/build/_shared/chunk-XRBUXZ3Z.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-BWIE6UCW.js", imports: ["/build/_shared/chunk-4BGUX6VE.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-VROBH53W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).address-book": { id: "routes/($locale).address-book", parentId: "root", path: ":locale?/address-book", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).address-book-EYWILORI.js", imports: ["/build/_shared/chunk-UTFEC2L3.js", "/build/_shared/chunk-WJBFKUPB.js", "/build/_shared/chunk-7XTQCKDX.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-S7LAFWLU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-6HSIGCK2.js", imports: ["/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-NNKMTMSA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-Z23WM3QV.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ELWFAUUC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-YXZDM6KC.js", imports: ["/build/_shared/chunk-UTFEC2L3.js", "/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-7XTQCKDX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-KDPVLSHO.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-5BUYAOOY.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-YJR2IJZJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-4Y27BQLP.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-OV4BWZNX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-I5OCYYMO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-4MYCWZ3D.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-JDRWN72Y.js", imports: ["/build/_shared/chunk-WJBFKUPB.js", "/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-7XTQCKDX.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-TQC6KINO.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-HHOSU77T.js", imports: ["/build/_shared/chunk-YJ4LR4QJ.js", "/build/_shared/chunk-643JJXO2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-EKHBQMYZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-EZSSUTZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-W6Y64MDS.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-UQLQSQUR.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "f3fb1aca", hmr: { runtime: "/build/_shared\\chunk-QLMTPHJM.js", timestamp: 1698139205115 }, url: "/build/manifest-F3FB1ACA.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-XB6U7DVH.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-ALYC6J47.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-EVSCZEQO.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-KPR67EZ5.js", imports: ["/build/_shared/chunk-IGTQHGGQ.js", "/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-EL66URKV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-YC63J2AA.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-WN4FP67S.js", imports: ["/build/_shared/chunk-E5OFLJTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-OB7ZA3XG.js", imports: ["/build/_shared/chunk-JCPNB2UN.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-FKDRX2DX.js", imports: ["/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-3AK2OOIX.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-XDIVLGB5.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-R7P2JTEG.js", imports: ["/build/_shared/chunk-NSU5C3BV.js", "/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-EPTZ4CD6.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-3E4F3CSW.js", imports: ["/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-RBOGIOVS.js", imports: ["/build/_shared/chunk-NSU5C3BV.js", "/build/_shared/chunk-XURI2PDL.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-H3KHVR3M.js", imports: ["/build/_shared/chunk-LLRHNQY5.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-LFA243CG.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).address-book": { id: "routes/($locale).address-book", parentId: "root", path: ":locale?/address-book", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).address-book-UYNUDP2M.js", imports: ["/build/_shared/chunk-TUQN64EW.js", "/build/_shared/chunk-C6NEDJ3Z.js", "/build/_shared/chunk-DVR5AW3F.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-P3ULBKM4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-D6PRFJ5O.js", imports: ["/build/_shared/chunk-E5OFLJTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-T5P6VMQO.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-SYNFV7WA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-ZZFNPKEU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-SCBJWH63.js", imports: ["/build/_shared/chunk-TUQN64EW.js", "/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-DVR5AW3F.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-BJTZZF3F.js", imports: ["/build/_shared/chunk-YRBSWKWV.js", "/build/_shared/chunk-E5OFLJTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-DDOTXWDP.js", imports: ["/build/_shared/chunk-YRBSWKWV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).createcard": { id: "routes/($locale).createcard", parentId: "root", path: ":locale?/createcard", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).createcard-VMFPCKHG.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-O6EKHDFV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-OLJKYCO2.js", imports: ["/build/_shared/chunk-YRBSWKWV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-SVWGP6ZQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-UBVEVXOY.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-UTYT3BHM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-A7EFCBJP.js", imports: ["/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-C6NEDJ3Z.js", "/build/_shared/chunk-DVR5AW3F.js", "/build/_shared/chunk-E5OFLJTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-6Y2L22T6.js", imports: ["/build/_shared/chunk-YRBSWKWV.js", "/build/_shared/chunk-E5OFLJTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-W7NTNQRC.js", imports: ["/build/_shared/chunk-YRBSWKWV.js", "/build/_shared/chunk-E5OFLJTM.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-G7VJQF6R.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-SMARS76Y.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-YSIAT2YY.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-EK5F5RU7.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "c24938ee", hmr: { runtime: "/build/_shared\\chunk-EVSCZEQO.js", timestamp: 1698167086370 }, url: "/build/manifest-C24938EE.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -62770,6 +69469,14 @@ var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_
     index: void 0,
     caseSensitive: void 0,
     module: locale_cart_lines_exports
+  },
+  "routes/($locale).createcard": {
+    id: "routes/($locale).createcard",
+    parentId: "root",
+    path: ":locale?/createcard",
+    index: void 0,
+    caseSensitive: void 0,
+    module: locale_createcard_exports
   },
   "routes/($locale).account": {
     id: "routes/($locale).account",
@@ -63166,6 +69873,25 @@ exenv/index.js:
     Based on code that is Copyright 2013-2015, Facebook, Inc.
     All rights reserved.
   *)
+
+html2canvas/dist/html2canvas.js:
+  (*!
+   * html2canvas 1.4.1 <https://html2canvas.hertzen.com>
+   * Copyright (c) 2022 Niklas von Hertzen <https://hertzen.com>
+   * Released under MIT License
+   *)
+  (*! *****************************************************************************
+  Copyright (c) Microsoft Corporation.
+    Permission to use, copy, modify, and/or distribute this software for any
+  purpose with or without fee is hereby granted.
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+  REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  PERFORMANCE OF THIS SOFTWARE.
+  ***************************************************************************** *)
 
 @remix-run/react/dist/esm/_virtual/_rollupPluginBabelHelpers.js:
   (**
