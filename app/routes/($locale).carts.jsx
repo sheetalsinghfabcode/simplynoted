@@ -10,7 +10,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
 import DynamicButton from '~/components/DynamicButton';
 import { RiDeleteBin5Line } from "react-icons/Ri";
-
+import { HiArrowLongRight } from "react-icons/hi2";
+import {CheckoutData} from '../components/Checkout'
 let storedDataString, storedDataArray
 
 export async function loader({ context }) {
@@ -56,6 +57,7 @@ export default function AddCartFunc() {
     const [deleteCardModal, setDeleteCardModal] = useState(false);
     const [deleteOrderIndex, setDelOrderIndex] = useState(null)
     const [delCardIndex, setDelCardIndex] = useState(null)
+    const [showCartPage,setShowCartPage] = useState(true)
 
     // console.log(postPrice2, postImage);
     useEffect(() => {
@@ -227,7 +229,9 @@ export default function AddCartFunc() {
     };
     return (
         <>
-            <div className='w-full h-full gap-2 mt-8'>
+        {showCartPage?
+        <>
+        <div className='w-full h-full gap-2 mt-8'>
                 <h1 className='text-center font-bold text-4xl'>SHOPPING CART</h1>
                 {cartData && cartData.map((item, index) =>
                     <div className='w-[1000px]  bg-[white] m-auto mt-10 mb-10'>
@@ -488,7 +492,7 @@ export default function AddCartFunc() {
                             <div className=''>
                                 <input type="checkbox" />
                                 <text className='text-s'> i agree with terms and condition</text>
-                                <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" >CHECKOUT </button>
+                                <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={()=>setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 '/> </button>
                             </div>
                         </div>
                     </div>
@@ -604,8 +608,11 @@ export default function AddCartFunc() {
                     </>
                 }
             </Modal>
-
-
+        </>
+        :
+        <CheckoutData/>
+        }
+            
         </>
     )
 }

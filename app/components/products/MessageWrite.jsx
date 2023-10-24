@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
+import Instruction from '../modal/Instruction';
+import ErrorModal from '../modal/ErrorModal';
+import Loader from '../modal/Loader';
 
 let input, input2, output, output2, outputContainer, outputContainer2, customerid
 export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
@@ -19,8 +22,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [lenCsvData, setLenCsvData] = useState('')
     const [usAddress, setUsAddress] = useState(null)
     const [nonusAddress, setnonUsAddress] = useState(null)
-    input2 = document.querySelector('.inputText2');
-    output2 = document.querySelector('.output2');
+    const [instructionModal, setInstructionModal] = useState(false);
+    const [loader, setLoader] = useState(false);
+
+    // input2 = document?.querySelector('.inputText2');
+    output2 = document?.querySelector('.output2');
     outputContainer2 = document.querySelector('.secDiv');
     const maxMessCount = 450
     const remainingWord = maxMessCount - name.length
@@ -43,12 +49,17 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             position: 'relative'
         },
     };
+    function closeModalInt() {
+        setInstructionModal(false)
+    }
     async function checkUserLogged() {
         if (!customerid) {
             alert('please Login First')
 
         } else if (name.length == 0) {
-            alert('Message Can not be empty ')
+            setInstructionModal(true)
+            // alert('Message Can not be empty ')
+
         } else {
             let reqField
             if (fileData.length) {
@@ -226,7 +237,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         let found = false
         let replacedMsg = []
 
-        setbulkUploadDiv(false)
+        // setbulkUploadDiv(false)
         if (!fileData.length) {
             errMsg.push('it is empty please add addresses')
             setErrorVal(errMsg)
@@ -350,6 +361,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
     }
     async function aiGenrateMess() {
+        setLoader(true)
         try {
             const res = await fetch('https://api.simplynoted.com/api/ai-generate', {
                 method: 'POST',
@@ -362,9 +374,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
             const json = await res.json();
             setaiText(json.message)
+            setLoader(false)
 
             console.log(json.message, 'AiGenrated Response____________');
         } catch (error) {
+            setLoader(false)
             console.log(error, "error at Ai generated message ");
         }
     }
@@ -391,7 +405,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     }
     return (
         <>
-            <div className='mainDivForBox flex gap-10'>
+        {loader?
+        <Loader />:
+        <>
+        <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr">
                     <div className='outerSec' ref={ref2}>
                         <div id='messageBoxID' ref={ref1} className="output m-5 ">
@@ -406,7 +423,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
                 </div>
                 <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..."  className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
                     <span className="charLeft">{remainingWord} characters remaining</span><br />
                     {show &&
@@ -438,7 +455,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                 <div >
                                     <h3 className='font-bold'>Bulk Address Upload</h3>
                                 </div>
-                                {bulkUploadDiv ?
+                                {bulkUploadDiv && !showNextBtn ?
                                     <div>
                                         <div >
                                             <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
@@ -489,7 +506,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     </div>
                 }
             </Modal>
-            <Modal
+            {/* <Modal
                 isOpen={modalIsOpen2}
                 style={customStyles}
                 contentLabel="Example Modal"
@@ -498,7 +515,22 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     <div>{item}</div>
 
                 )}
-            </Modal>
+            </Modal> */}
+            <Instruction
+                isOpen={instructionModal}
+                title="Text Can not be Empty"
+                closeModal={closeModalInt}
+                table={false}
+            />
+            <ErrorModal
+            title="Uploaded Error!"
+            isOpen={modalIsOpen2}
+            // onRequestClose={() => setErrorModal(false)}
+            content={errorVal}
+          />
+          </>
+        }
+            
         </>
     )
 }

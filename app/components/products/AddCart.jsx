@@ -35,6 +35,12 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
     const [cardPrice, setCardPrice] = useState(editOrderValue?.data ? editOrderValue.data.giftCardPrice : '')
     const [MsgText, setMesgtext] = useState('')
     const [loader, setLoader] = useState(false);
+    const [componentHide, setComponentHide] = useState(false)
+
+    function onNewAddressClick() {
+        setAddressForm(true)      
+        
+    }
 
     async function getRecipient() {
         setLoader(true);
@@ -91,14 +97,15 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
 
     };
 
-    const filteredForSender = (returnAddress,searchData2) =>{
+    const filteredForSender = (returnAddress, searchData2) => {
+        console.log(searchData2,'searchData2');
         return returnAddress
             .filter(dataobj => searchBy(dataobj, searchData2));
     }
-    const searchBy = (dataobj,searchData2) =>{
-        if (searchData) {
+    const searchBy = (dataobj, searchData2) => {
+        if (searchData2) {
             return Object.values(dataobj).some(field =>
-                // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
+                // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!')
                 field.toString().toLowerCase().includes(searchData2.toLowerCase()))
         } else return dataobj;
     }
@@ -128,7 +135,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         setMesgtext(cartDataReq.msg)
         getRecipient()
         getReturn()
-    }, [])
+    }, [addressForm])
     const navigate = useNavigate()
     let arrOfObj = {
         productTitle: productData.product.title ? productData.product.title : null,
@@ -222,167 +229,172 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
             {loader ?
                 <Loader loaderMessage="Adding Data to Cart" />
                 :
+                <>
+                {addressForm && (
+                    <div className="w-full  max-w-[1440px] px-[20px] mx-auto">
+                        <AddressForm
+                            customerID={customerid}
+                            setAddressForm={setAddressForm}
+                            setEditAddress={setEditAddress}
+                        />
+                    </div>
+                )}
+                {!addressForm &&
                 <div className='  w-full h-full gap-2 mt-8'>
-                    {addressForm && (
-                        <div className="w-full max-w-[1440px] px-[20px] mx-auto">
-                            <AddressForm
-                                customerID={customerid}
-                                setAddressForm={setAddressForm}
-                                setEditAddress={setEditAddress}
-                            />
+                   
+                <h3 className='items-center font-bold flex text-2xl' onClick={() => setProductShow(true)}><BiSolidChevronLeft size='50px' />Back To Product Customization</h3>
+                <div className='row flex mr-2 ml-2 gap-4'>
+                    <div className='col-6 w-[50%] '>
+                        <div className='address-grid'>
+                            <div className='address-data'>
+                                <h3 className='text-2xl font-bold mt-4 mb-4'>Your Info (return/sender address)</h3>
+                                <DynamicButton
+                                    className="bg-[#1b5299]"
+                                    text="+ New Address"
+                                    onClickFunction={() => onNewAddressClick()}
+                                />
+
+                                {/* <div className='buttonDiv pr-5 mt-2'>
+                                <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
+                            </div> */}
+                                <div>
+                                    <input type="text " className='w-full rounded p-3 mt-4' onChange={(e) => setsearchData2(e.target.value)} placeholder='Search Addresses...' />
+                                </div>
+                                {filteredForSender(returnAddress, searchData2).map((item) =>
+
+                                    <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
+                                        <input
+                                            type="checkbox"
+                                            value={item}
+                                            checked={selectedItem2?._id === item._id}
+                                            onChange={() => handleCheckboxChange2(item)}
+                                        />
+                                        <span >  {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}</span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
-                    )}
-                    <h3 className='items-center font-bold flex text-2xl' onClick={() => setProductShow(true)}><BiSolidChevronLeft size='50px' />Back To Product Customization</h3>
-                    <div className='row flex mr-2 ml-2 gap-4'>
+                    </div>
+                    <div className='col-6 w-[50%]'>
+                        <div className='address-grid'>
+                            <div className='address-data'>
+                                <h3 className='text-2xl font-bold mt-4 mb-4'>Recipient address</h3>
+                                {show ?
+                                    <div>
+                                        <text>
+                                            Recipient addresses were specified in your bulk order upload.
+                                        </text>
+                                    </div>
+                                    :
+                                    <>
+                                        <DynamicButton
+                                            className="bg-[#1b5299]"
+                                            text="+ New Address"
+                                            onClickFunction={() => setAddressForm(true)}
+                                        />
+                                        <div>
+                                            <input type="text" onChange={(e) => setsearchData(e.target.value)} className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
+                                        </div>
+                                        {filteredList(recipientAddress, searchData).map((item, index) =>
+                                            <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
+                                                <input
+                                                    type="checkbox"
+                                                    value={item}
+                                                    checked={selectedItem?._id === item._id}
+                                                    onChange={() => handleCheckboxChange(item)}
+                                                // ref={refRec}
+                                                />
+                                                {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
+                                            </div>
+                                        )}
+                                    </>}
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div className='row flex mr-2 ml-2 gap-4'>
+                    {show ?
                         <div className='col-6 w-[50%] '>
                             <div className='address-grid'>
-                                <div className='address-data'>
-                                    <h3 className='text-2xl font-bold mt-4 mb-4'>Your Info (return/sender address)</h3>
-                                    <DynamicButton
-                                        className="bg-[#1b5299]"
-                                        text="+ New Address"
-                                        onClickFunction={() => setAddressForm(true)}
-                                    />
+                                <h3 className='text-2xl font-bold mt-4 mb-4'>{shippingData?.title}</h3>
 
-                                    {/* <div className='buttonDiv pr-5 mt-2'>
-                                    <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
-                                </div> */}
-                                    <div>
-                                        <input type="text " className='w-full rounded p-3 mt-4' onChange={(e) => setsearchData2(e.target.value)}  placeholder='Search Addresses...' />
-                                    </div>
-                                    {filteredForSender(returnAddress, searchData2).map((item) =>
-
-                                        <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
-                                            <input
-                                                type="checkbox"
-                                                value={item}
-                                                checked={selectedItem2?._id === item._id}
-                                                onChange={() => handleCheckboxChange2(item)}
-                                            />
-                                            <span >  {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}</span>
+                                <div class="shipping-methods" id="shipping-options">
+                                    {shippingData?.variants.edges.map((item) =>
+                                        <div key="7027299254377" class="getProductId">
+                                            <div>
+                                                <input
+                                                    value={item}
+                                                    checked={selectShipMode === item}
+                                                    type="radio" name="radioGroup"
+                                                    onChange={() => handleBoxoNShipping(item)}
+                                                />
+                                                <label for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
+                                            </div>
+                                            <div class="custom_variant_price">${item?.node.price.amount}</div>
                                         </div>
                                     )}
                                 </div>
                             </div>
                         </div>
-                        <div className='col-6 w-[50%]'>
-                            <div className='address-grid'>
-                                <div className='address-data'>
-                                    <h3 className='text-2xl font-bold mt-4 mb-4'>Recipient address</h3>
-                                    {show ?
-                                        <div>
-                                            <text>
-                                                Recipient addresses were specified in your bulk order upload.
-                                            </text>
-                                        </div>
-                                        :
-                                        <>
-                                            <DynamicButton
-                                                className="bg-[#1b5299]"
-                                                text="+ New Address"
-                                                onClickFunction={() => setAddressForm(true)}
-                                            />
-                                            <div>
-                                                <input type="text" onChange={(e) => setsearchData(e.target.value)} className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
-                                            </div>
-                                            {filteredList(recipientAddress, searchData).map((item, index) =>
-                                                <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
-                                                    <input
-                                                        type="checkbox"
-                                                        value={item}
-                                                        checked={selectedItem?._id === item._id}
-                                                        onChange={() => handleCheckboxChange(item)}
-                                                    // ref={refRec}
-                                                    />
-                                                    {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
-                                                </div>
-                                            )}
-                                        </>}
+                        : ''}
 
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className='row flex mr-2 ml-2 gap-4'>
-                        {show ?
-                            <div className='col-6 w-[50%] '>
-                                <div className='address-grid'>
-                                    <h3 className='text-2xl font-bold mt-4 mb-4'>{shippingData?.title}</h3>
-
-                                    <div class="shipping-methods" id="shipping-options">
-                                        {shippingData?.variants.edges.map((item) =>
-                                            <div key="7027299254377" class="getProductId">
-                                                <div>
-                                                    <input
-                                                        value={item}
-                                                        checked={selectShipMode === item}
-                                                        type="radio" name="radioGroup"
-                                                        onChange={() => handleBoxoNShipping(item)}
-                                                    />
-                                                    <label for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
-                                                </div>
-                                                <div class="custom_variant_price">${item?.node.price.amount}</div>
-                                            </div>
-                                        )}
+                    <div className='col-6 w-[50%]'>
+                        <div className='address-grid mt-10'>
+                            <div className='address-data'>
+                                <h3 className='text-2xl font-bold mt-6 mb-6'>Add a Gift Card</h3>
+                                <div className='row flex mr-2 ml-2 '>
+                                    <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
+                                    <div className='col-8 mt-3 pr-0 w-[370px]' >
+                                        <select className='w-full' onChange={(e) => cardvalFunc(e.target.value)}>
+                                            <option className='w-full' >{cardName} </option>
+                                            {data.collection.products.edges.map((item, i) =>
+                                                <option value={i}>{item.node.title}</option>)}
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
-                            : ''}
-
-                        <div className='col-6 w-[50%]'>
-                            <div className='address-grid mt-10'>
-                                <div className='address-data'>
-                                    <h3 className='text-2xl font-bold mt-6 mb-6'>Add a Gift Card</h3>
-                                    <div className='row flex mr-2 ml-2 '>
-                                        <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
-                                        <div className='col-8 mt-3 pr-0 w-[370px]' >
-                                            <select className='w-full' onChange={(e) => cardvalFunc(e.target.value)}>
-                                                <option className='w-full' >{cardName} </option>
-                                                {data.collection.products.edges.map((item, i) =>
-                                                    <option value={i}>{item.node.title}</option>)}
+                                <div className='row flex mr-2 ml-2 '>
+                                    <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Price:</div>
+                                    <div className='col-8 mt-3 pr-0 w-[370px]' >
+                                        {cardPrice ?
+                                            // <div>heelooo</div>
+                                            <select name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
+                                                {cardPriceVal.map((item) =>
+                                                    <option
+                                                        value={item.node.price.amount}>{item.node.title}</option>
+                                                )}
                                             </select>
-                                        </div>
+                                            :
+                                            <select name="" id="">
+                                                <option value="">{'Price Card'}</option>
+                                            </select>
+                                        }
                                     </div>
-                                    <div className='row flex mr-2 ml-2 '>
-                                        <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Price:</div>
-                                        <div className='col-8 mt-3 pr-0 w-[370px]' >
-                                            {cardPrice ?
-                                                // <div>heelooo</div>
-                                                <select name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
-                                                    {cardPriceVal.map((item) =>
-                                                        <option
-                                                            value={item.node.price.amount}>{item.node.title}</option>
-                                                    )}
-                                                </select>
-                                                :
-                                                <select name="" id="">
-                                                    <option value="">{'Price Card'}</option>
-                                                </select>
-                                            }
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id="" name="" value="" />
-                                        <text className='ml-3'>Add Gift Card</text>
-                                    </div>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="" name="" value="" />
+                                    <text className='ml-3'>Add Gift Card</text>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className='buttonDiv pr-5 m-2'>
-                        {/* <Link to={`/carts`}> */}
-                        {/* <button className="bg-[#001a5f] text-[#fff] p-3" onClick={() => onClickAddCart()} >Add To Cart</button> */}
-                        {/* </Link> */}
-                        <DynamicButton
-                            className="bg-[#1b5299]"
-                            text="Add To Cart"
-                            onClickFunction={() => onClickAddCart()}
-                        />
-                    </div>
-
                 </div>
+                <div className='buttonDiv pr-5 m-2'>
+                    {/* <Link to={`/carts`}> */}
+                    {/* <button className="bg-[#001a5f] text-[#fff] p-3" onClick={() => onClickAddCart()} >Add To Cart</button> */}
+                    {/* </Link> */}
+                    <DynamicButton
+                        className="bg-[#1b5299]"
+                        text="Add To Cart"
+                        onClickFunction={() => onClickAddCart()}
+                    />
+                </div>
+
+            </div> }
+                
+                </>
             }
         </>
     )

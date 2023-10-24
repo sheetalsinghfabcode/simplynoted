@@ -36,7 +36,7 @@ function Instruction({isOpen, closeModal,title,instructions,table}) {
         {title}
         </h2>
         <p className="!text-[#000] font-medium text-[14px] font-medium leading-[160%]">
-        {instructions.map((instruction, index) => (
+        {instructions && instructions.map((instruction, index) => (
             <li key={index}>{instruction}</li>
           ))}
         </p>

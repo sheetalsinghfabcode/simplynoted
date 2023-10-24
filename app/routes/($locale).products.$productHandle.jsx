@@ -1,40 +1,75 @@
 import { useRef, Suspense } from 'react';
+
 import { Disclosure, Listbox } from '@headlessui/react';
+
 import { defer, json, redirect } from '@shopify/remix-oxygen';
+
 import { useLoaderData, Await,useLocation } from '@remix-run/react';
+
 import {
+
   AnalyticsPageType,
+
   Money,
+
   ShopPayButton,
+
   VariantSelector,
+
   getSelectedProductOptions,
+
 } from '@shopify/hydrogen';
+
 import invariant from 'tiny-invariant';
+
 import clsx from 'clsx';
+
 import {
+
   Heading,
+
   IconCaret,
+
   IconCheck,
+
   IconClose,
+
   ProductGallery,
+
   ProductSwimlane,
+
   Section,
+
   Skeleton,
+
   Text,
+
   Link,
+
   AddToCartButton,
+
   Button,
 
 } from '~/components';
+
 import { getExcerpt } from '~/lib/utils';
+
 import { seoPayload } from '~/lib/seo.server';
+
 import { routeHeaders } from '~/data/cache';
+
 import { MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
+
 import { useState, useEffect } from 'react';
+
 import { BiSolidChevronLeft } from "react-icons/bi";
+
 import { BsXCircle } from "react-icons/bs";
+
 import Modal from 'react-modal';
+
 import { MessageWriting } from '~/components/products/MessageWrite';
+
 import { AddCart } from '~/components/products/AddCart';
 
  
@@ -244,39 +279,23 @@ function redirectToFirstVariant({ product, request }) {
  
 
 export default function Product() {
-
   const { product, shop, recommended, variants, data,shippingData } = useLoaderData();
-
   // console.log(product,'************');
-
   console.log(shippingData,'shippingData');
-
   const datafornav = useLocation();
-
   let EditMess = datafornav.state?.data?.messageData
-
   let editEndMess = datafornav.state?.data.endText
-
   let editOrderValue = datafornav.state
-
    console.log(datafornav.state,'locationState');
-
+   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
   const { media, title, vendor, descriptionHtml } = product;
-
   const { shippingPolicy, refundPolicy } = shop;
-
-  const [show, setShow] = useState(false);
-
+  const [show, setShow] = useState(showBulkOnEdit?true:false);
   const [productshow, setProductShow] = useState(true)
-
   const [modalIsOpen2, setIsOpen2] = useState(false);
-
   const [showBox, setShowBox] = useState(true)
-
   const [selectedFile, setSelectedFile] = useState('');
-
   const [fileData, setFileData] = useState([]);
-
   const [errorVal, setErrorVal] = useState([]);
 
  
@@ -392,105 +411,55 @@ export default function Product() {
     <>
 
       {productshow ?
-
         <>
-
           <Section className="px-0 md:px-8 lg:px-12">
-
             <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">
-
               <ProductGallery
-
                 media={media.nodes}
-
                 className="w-full lg:col-span-2"
-
               />
-
               <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-300px]">
-
                 <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-
                   <div className="grid gap-2">
-
                     <Heading as="h1" className="whitespace-normal">
-
                       {title}
-
                     </Heading>
-
                     <Text className={'opacity-50 font-medium'}>$ {product.variants.nodes[0].price.amount}</Text>
-
                     {/* {vendor && (
-
               <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-
             )} */}
-
                     <div className='buttonClass flex justify-start'>
-
                       <div className='buttonDiv pr-5'>
-
                         <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => singleBtnCLick()}>Single Card</button>
-
                       </div>
-
                       <div className='gap-2'>
-
                         <button className="bg-[#ef6e6e] text-[#fff] p-2 rounded " onClick={() => setShow(true)}>Bulk Purchase</button>
-
                       </div>
-
                     </div>
-
                     {show &&
-
                       <table class="price-breakdown desktop">
-
                         <tbody>
-
                           <tr>
-
                             <td class="label">Quantity</td><td>1-99</td><td>100-249</td><td>250-499</td><td>500-999</td><td>1000-2499</td><td>2500+</td></tr>
-
                           <tr>
-
                             <td class="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
-
                         </tbody>
-
                       </table>}
-
                     <div className='selectOtion mb-5 flex'>
-
                       <div className='w-[192px]'>
-
                         <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
-
                         <br />
-
                         <select id="font" onClick={() => setFont()} >
-
                           <option value="pinocchio" className={`font-pinocchio`}>Pinocchio</option>
-
                           <option value="tarzan" className={`font-tarzan`}>Tarzan</option>
-
                           <option value="stitch" className={`font-stitch`}>Stitch</option>
-
                           <option value="simba" className={`font-simba`}>Simba</option>
-
                           <option value="roo" className={`font-roo`}>Roo</option>
-
                           <option value="nimo" className={`font-nimo`}>Nimo</option>
-
                           <option value="lumiere" className={`font-lumiere`}>Lumiere</option>
-
                           <option value="kaa" className={`font-kaa`}>Kaa</option>
-
                           <option value="kaaNew" className={`font-kaaNew`}>KaaNew</option>
-
                           <option value="dumbo" className={`font-dumbo`}>Dumbo</option>
-
                           <option value="donald" className={`font-donald`}>Donald</option>
 
                           <option value="aladdin" className={`font-aladdin`}>Aladdin</option>
@@ -546,31 +515,18 @@ export default function Product() {
                       </div>
 
                     </div>
-
                     <div>
-
                       <Text>Optional shipping date</Text><br />
-
                       <input type='date' />
-
                     </div>
-
                   </div>
-
                   {/* Product page Data Vieew */}
-
                   {/* <Suspense fallback={<ProductForm variants={[]} />}>
-
             <Await
-
               errorElement="There was a problem loading related products"
-
               resolve={variants}
-
             >
-
               {(resp) => (
-
                 <ProductForm
 
                   variants={resp.product?.variants.nodes || []}
@@ -654,27 +610,15 @@ export default function Product() {
           </Section>
 
           <Suspense fallback={<Skeleton className="h-32" />}>
-
             <Await
-
               errorElement="There was a problem loading related products"
-
               resolve={recommended}
-
             >
-
               {(products) => (
-
                 <ProductSwimlane title="Related Products" products={products} />
-
               )}
-
             </Await>
-
           </Suspense>
-
- 
-
           <Modal
 
             isOpen={modalIsOpen2}
@@ -698,19 +642,13 @@ export default function Product() {
             )}
 
           </Modal>
-
         </>
 
         :
-
         <AddCart show={show} setProductShow={setProductShow}
-
          data={data} productData={product.variants.nodes[0]}
-
          selectFontValue={selectFontValue}
-
          editOrderValue={editOrderValue}
-
          shippingData={shippingData?.product}/>
 
       }
