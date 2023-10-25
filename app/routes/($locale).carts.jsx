@@ -9,8 +9,8 @@ import { Navigation } from "swiper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
 import DynamicButton from '~/components/DynamicButton';
-import { RiDeleteBin5Line } from "react-icons/Ri";
-import { HiArrowLongRight } from "react-icons/hi2";
+// import { RiDeleteBin5Line } from "react-icons/Ri";
+// import { HiArrowLongRight } from "react-icons/hi2";
 import {CheckoutData} from '../components/Checkout'
 let storedDataString, storedDataArray
 
@@ -475,7 +475,8 @@ export default function AddCartFunc() {
                         <div className='w-[300px]'>
                             <div className='buttonDiv pr-5 m-2'>
                                 <button className="bg-[#1b5299] text-[#fff] p-2 rounded flex" >
-                                <RiDeleteBin5Line className='mr-2 mt-1'/>    CLEAR SHOPING CART</button>
+{/*                                 <RiDeleteBin5Line className='mr-2 mt-1'/>  */}
+                                  CLEAR SHOPING CART</button>
                             </div>
                         </div>
                         <div className='w-[200px]'>
@@ -492,7 +493,9 @@ export default function AddCartFunc() {
                             <div className=''>
                                 <input type="checkbox" />
                                 <text className='text-s'> i agree with terms and condition</text>
-                                <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={()=>setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 '/> </button>
+                                <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={()=>setShowCartPage(false)}>CHECKOUT
+{/*                                   <HiArrowLongRight className='text-2xl ml-2 '/>  */}
+                                </button>
                             </div>
                         </div>
                     </div>
