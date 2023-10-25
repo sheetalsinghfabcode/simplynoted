@@ -7,7 +7,11 @@ import { useNavigate } from '@remix-run/react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
+import ConfirmationModal from '~/components/modal/ConfirmationModal';
+import DynamicButton from '~/components/DynamicButton';
+import { RiDeleteBin5Line } from "react-icons/Ri";
+import { HiArrowLongRight } from "react-icons/hi2";
+import {CheckoutData} from '../components/Checkout'
 let storedDataString, storedDataArray
 
 export async function loader({ context }) {
@@ -49,6 +53,12 @@ export default function AddCartFunc() {
     const [msglastText, setMsglastText] = useState('')
     const [reciverAddress, setReciverAddress] = useState('')
     const [bulkAddress, setBulkAddress] = useState([])
+    const [deleteModal, setDeleteModal] = useState(false);
+    const [deleteCardModal, setDeleteCardModal] = useState(false);
+    const [deleteOrderIndex, setDelOrderIndex] = useState(null)
+    const [delCardIndex, setDelCardIndex] = useState(null)
+    const [showCartPage,setShowCartPage] = useState(true)
+
     // console.log(postPrice2, postImage);
     useEffect(() => {
         storedDataString = localStorage.getItem('mydata');
@@ -101,8 +111,19 @@ export default function AddCartFunc() {
             cartData[index][keyToUpdate3] = null;
         }
         localStorage.setItem('mydata', JSON.stringify(cartData));
-
+        setDeleteCardModal(false)
     }
+    function confirmCardDel(index) {
+        setDeleteCardModal(true)
+        setDelCardIndex(index)
+    }
+
+    function ConfirmDeleteOrder(index) {
+        console.log(index);
+        setDelOrderIndex(index)
+        setDeleteModal(true)
+    }
+
     function deleteOrder(index) {
         setUpdateGift(!updateGift)
         // if (index >= 0 && index < cartData.length) {
@@ -113,7 +134,7 @@ export default function AddCartFunc() {
         // delete cartData[index];
         // }
         localStorage.setItem('mydata', JSON.stringify(cartData));
-
+        setDeleteModal(false)
     }
 
     function editOrderData(index) {
@@ -195,20 +216,22 @@ export default function AddCartFunc() {
     }
     const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handlePrevClick = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
+    const handlePrevClick = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(currentIndex - 1);
+        }
+    };
 
-  const handleNextClick = () => {
-    if (currentIndex < bulkAddress.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+    const handleNextClick = () => {
+        if (currentIndex < bulkAddress.length - 1) {
+            setCurrentIndex(currentIndex + 1);
+        }
+    };
     return (
         <>
-            <div className='w-full h-full gap-2 mt-8'>
+        {showCartPage?
+        <>
+        <div className='w-full h-full gap-2 mt-8'>
                 <h1 className='text-center font-bold text-4xl'>SHOPPING CART</h1>
                 {cartData && cartData.map((item, index) =>
                     <div className='w-[1000px]  bg-[white] m-auto mt-10 mb-10'>
@@ -247,14 +270,29 @@ export default function AddCartFunc() {
                             <div className='w-[200px] m-4'>
                                 {item.giftCardName !== null ?
                                     '' : <div className='buttonDiv pr-5 m-2'>
-                                        <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => OpenModalFunc(index)}>ADD GIFT CART</button>
+                                        <DynamicButton
+                                            className="bg-[#1b5299]"
+                                            text="Add Gift Card"
+                                            onClickFunction={() => OpenModalFunc(index)}
+                                        />
+                                        {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => OpenModalFunc(index)}>ADD GIFT CART</button> */}
                                     </div>}
 
                                 <div className='buttonDiv pr-5 m-2'>
-                                    <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => editOrderData(index)}>EDIT ORDER</button>
+                                    <DynamicButton
+                                        className="bg-[#1b5299]"
+                                        text="EDIT ORDER"
+                                        onClickFunction={() => editOrderData(index)}
+                                    />
+                                    {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => editOrderData(index)}>EDIT ORDER</button> */}
                                 </div>
                                 <div className='buttonDiv pr-5 m-2'>
-                                    <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => deleteOrder(index)}>DELETE ORDER</button>
+                                    <DynamicButton
+                                        className="bg-[#1b5299]"
+                                        text="DELETE ORDER"
+                                        onClickFunction={() => ConfirmDeleteOrder(index)}
+                                    />
+                                    {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => ConfirmDeleteOrder(index)}>DELETE ORDER</button> */}
                                 </div>
                             </div>
                         </div>
@@ -287,7 +325,12 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className='w-[200px] m-4'>
                                     <div className='buttonDiv pr-5 m-2'>
-                                        <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => deleteKeyInArray(index)}>DELETE CARD</button>
+                                        <DynamicButton
+                                            className="bg-[#1b5299]"
+                                            text="DELETE CARD"
+                                            onClickFunction={() => confirmCardDel(index)}
+                                        />
+                                        {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => confirmCardDel(index)}>DELETE CARD</button> */}
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +470,50 @@ export default function AddCartFunc() {
                     </div>
                 )}
 
+                <div className='w-[1000px]  bg-[#FFF6F6] m-auto mt-10 mb-10'>
+                    <div className='flex p-2 border-4 border-indigo-600'>
+                        <div className='w-[300px]'>
+                            <div className='buttonDiv pr-5 m-2'>
+                                <button className="bg-[#1b5299] text-[#fff] p-2 rounded flex" >
+                                <RiDeleteBin5Line className='mr-2 mt-1'/>    CLEAR SHOPING CART</button>
+                            </div>
+                        </div>
+                        <div className='w-[200px]'>
+                            <div className='mt-2'>
+                                <text className='text-2xl text-[#1b5299] font-bold mt-2'>GRAND TOTAL</text>
+                            </div>
+                        </div>
+                        <div className='w-[300px]'>
+                            <div className='mt-2'>
+                                <text className='text-2xl text-[#1b5299] font-bold mt-2'>$22</text>
+                            </div>
+                        </div>
+                        <div className='w-[300px]'>
+                            <div className=''>
+                                <input type="checkbox" />
+                                <text className='text-s'> i agree with terms and condition</text>
+                                <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={()=>setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 '/> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <ConfirmationModal
+                show={deleteModal}
+                onCancel={() => setDeleteModal(false)}
+                onConfirm={() => deleteOrder(deleteOrderIndex)}
+                message="Are you sure you want to delete this order."
+                confirmText="Delete"
+                cancelText="Cancel"
+            />
+            <ConfirmationModal
+                show={deleteCardModal}
+                onCancel={() => setDeleteCardModal(false)}
+                onConfirm={() => deleteKeyInArray(delCardIndex)}
+                message="Are you sure you want to delete Gift Card."
+                confirmText="Delete"
+                cancelText="Cancel"
+            />
             <Modal
                 isOpen={modalIsOpen}
                 style={customStyles}
@@ -479,28 +565,27 @@ export default function AddCartFunc() {
                 contentLabel="Example Modal">
                 {bulkAddress.length ?
                     <>
-                        <BsXCircle className='absolute right-10 cursor-pointer'  onClick={() => closeModal()} />
+                        <BsXCircle className='absolute right-10 cursor-pointer' onClick={() => closeModal()} />
                         <button onClick={handlePrevClick} className='absolute top-[130px]'>Previous</button>
-                        {bulkAddress && bulkAddress.map((item,index) =>
+                        {bulkAddress && bulkAddress.map((item, index) =>
                             <div>
-                                {/* {item["First Name"]} */}
                                 <div key={index} style={{ display: index === currentIndex ? 'block' : 'none' }}>
-                                <text className=' text-xl text-center'>
-                                Recipient:  {item["First Name"]},{item["Last Name"]},{item["Address"]},{item["City"]},{item["State/Province"]}
-                                </text>
-                                <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
-                        <div className='w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]'>
-                            <text className=' w-[600px]' style={{ fontFamily: msgFont }}> {item.msgData}</text><br />
-                            <text className=' text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
-                        </div>
-                        <div>
-                            <text>Font: {msgFont}</text>
-                        </div>
+                                    <text className=' text-xl text-center'>
+                                        Recipient:  {item["First Name"]},{item["Last Name"]},{item["Address"]},{item["City"]},{item["State/Province"]}
+                                    </text>
+                                    <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
+                                    <div className='w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]'>
+                                        <text className=' w-[600px]' style={{ fontFamily: msgFont }}> {item.msgData}</text><br />
+                                        <text className=' text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
+                                    </div>
+                                    <div>
+                                        <text>Font: {msgFont}</text>
+                                    </div>
                                 </div>
 
                             </div>
                         )}
-                              <button className='absolute right-10 bottom-[95px]' onClick={handleNextClick}>Next</button>
+                        <button className='absolute right-10 bottom-[95px]' onClick={handleNextClick}>Next</button>
 
                     </>
                     :
@@ -522,33 +607,12 @@ export default function AddCartFunc() {
                         </div>
                     </>
                 }
-
-                {/* {csvBulkData? */}
-                {/* <div className='flex'>
-                    <text>Heelooo</text>
-                </div> */}
-                {/* //  : */}
-                {/* <>
-                    <div className='flex'>
-                        <div className='w-[600px]'>
-                            <text className=' text-xl text-center'>Recipient: {reciverAddress.firstName},{reciverAddress.address1},{reciverAddress.city},{reciverAddress.country}</text>
-                        </div>
-
-                        <BsXCircle className='' onClick={() => setIsOpen2(false)} />
-                    </div>
-                    <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
-                    <div className='w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]'>
-                        <text className='text-xl w-[600px]' style={{ fontFamily: msgFont }}> {msgShow}</text><br />
-                        <text className='text-xl text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
-                    </div>
-                    <div>
-                        <text>Font: {msgFont}</text>
-                    </div>
-                </> */}
-                {/* } */}
-
             </Modal>
-
+        </>
+        :
+        <CheckoutData/>
+        }
+            
         </>
     )
 }

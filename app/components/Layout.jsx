@@ -212,10 +212,10 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
 
-useEffect(()=>{
-  customerid = localStorage.getItem('customerId')
-console.log(customerid,'LoginScreen000000000000');
-},[])
+  useEffect(()=>{
+    customerid = localStorage.getItem('customerId')
+    console.log(customerid,'LoginScreen000000000000');
+  },[]);
 
   // console.log("title", title)
   // console.log("menu", menu)
@@ -254,28 +254,29 @@ console.log(customerid,'LoginScreen000000000000');
                 isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
               }
             >
-              {item.title === "Send a Card" ? (
-                <div class="dropdown">
-                  <div>
-                    Send a Card
-                  </div>
-                  <div class="dropdown-content">
-
-                    <p className='card' onClick={() => window.open("/card", "_self")}
-                    >Card</p>
-
-                    <p>Item 2</p>
-                    <p>Item 3</p>
-                  </div>
-                </div>
-              ) : null}
+                  {item.title === "Send a Card" ? (
+        <div className="dropdown">
+       <div>
+          Send a Card
+       </div>
+      <div className="dropdown-content">
+    
+     <p className='card'  onClick={() => window.open("/card","_self")}
+          >Card</p>
+       <p className='Create-a-card' onClick={() => window.open("/createcard",
+       "_self"
+       )}>Create a Card</p>
+      <p>Item 3</p>
+    </div>
+  </div>
+    ) : null}
 
               {item.title === "Pricing" ? (
-                <div class="dropdown">
+                <div className="dropdown">
                   <div>
                     Pricing
                   </div>
-                  <div class="dropdown-content">
+                  <div className="dropdown-content">
                     <p>Item 1</p>
                     <p> Item 2</p>
                     <p>Item 3</p>
@@ -301,7 +302,7 @@ console.log(customerid,'LoginScreen000000000000');
 
             }}
           />
-          <span class="tooltiptext">Cart  </span>
+          <span className="tooltiptext">Cart</span>
 
         </div>
 

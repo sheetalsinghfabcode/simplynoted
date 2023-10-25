@@ -105,24 +105,18 @@ function Account({customer, heading, featuredData}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
   const [data,setData] = useState(false)
-  console.log('!!!!!!!!!',customer,'customerData--------------');
   let result =  customer.id.replace(/[^0-9]/g,"");
   
   const remove = () =>{
-    console.log('aaaaaaaaaaaaa');
     if(typeof window !== 'undefined' && customer ){
-      console.log('bbbbbbbbbbbbbbb');
       localStorage.removeItem('customerId')
-      console.log('ccccccccccccc');
     }
     }
       if(data == true){
         remove()
       } else if(data == false){
         if(typeof window !== 'undefined' && customer ){
-          console.log('########');
           localStorage.setItem('customerId',result)
-          console.log('@@@@@@@@@@');
         }
       }
   return (

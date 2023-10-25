@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
+import Instruction from '../modal/Instruction';
+import ErrorModal from '../modal/ErrorModal';
+import Loader from '../modal/Loader';
 
 let input, input2, output, output2, outputContainer, outputContainer2, customerid
 export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
@@ -19,11 +22,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [lenCsvData, setLenCsvData] = useState('')
     const [usAddress, setUsAddress] = useState(null)
     const [nonusAddress, setnonUsAddress] = useState(null)
-    // const [productshow, setProductShow] = useState(true)
-    // console.log(name, 'Message Text field----');
-    // console.log(name, name2, 'ssasasasas');
-    input2 = document.querySelector('.inputText2');
-    output2 = document.querySelector('.output2');
+    const [instructionModal, setInstructionModal] = useState(false);
+    const [loader, setLoader] = useState(false);
+
+    // input2 = document?.querySelector('.inputText2');
+    output2 = document?.querySelector('.output2');
     outputContainer2 = document.querySelector('.secDiv');
     const maxMessCount = 450
     const remainingWord = maxMessCount - name.length
@@ -46,18 +49,19 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             position: 'relative'
         },
     };
+    function closeModalInt() {
+        setInstructionModal(false)
+    }
     async function checkUserLogged() {
         if (!customerid) {
-            // console.log(customerid);
-            // setProductShow(false)
             alert('please Login First')
 
         } else if (name.length == 0) {
-            alert('Message Can not be empty ')
+            setInstructionModal(true)
+            // alert('Message Can not be empty ')
+
         } else {
             let reqField
-            let checkWord = "[First Name]"
-            let checkWord2 = "[Last Name]"
             if (fileData.length) {
                 fileData.map(obj => {
                     let subName = name;
@@ -67,25 +71,21 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     if (obj["Last Name"]) {
                         subName = subName.replace(/\[Last Name\]/g, obj["Last Name"]);
                     }
+                    if (obj["Company"]) {
+                        subName = subName.replace(/\[Company\]/g, obj["Company"]);
+                    }
+                    if (obj["Custom 1"]) {
+                        subName = subName.replace(/\[Custom 1\]/g, obj["Custom 1"]);
+                    }
+                    if (obj["Custom 2"]) {
+                        subName = subName.replace(/\[Custom 2\]/g, obj["Custom 2"]);
+                    }
+                    if (obj["Custom 3"]) {
+                        subName = subName.replace(/\[Custom 3\]/g, obj["Custom 3"]);
+                    }
                     obj.msgData = subName;
-                    // obj.msgData = name2
                 });
                 console.log(fileData, 'fileData');
-                // let data = name.replace(/\[First Name\]/g, "yayra");
-                // debugger;
-                //   console.log(newArray);
-                //   let newDataIs = newArray.map(function(obj){
-                //     obj.msgData = obj.msgData.replace(/checkWord/g,obj["First Name"])
-                //     return obj
-                //   })
-                //   newArray.forEach(obj => {
-                //     if(obj.msgData.includes(checkWord)){
-                //         obj.msgData = obj.msgData.replace(checkWord,obj["First Name"])
-                //     } if(obj.msgData.includes(checkWord2)){
-                //         obj.msgData = obj.msgData.replace(checkWord2,obj["Last Name"])
-                //     }
-                //   })
-                //   console.log(console.log(newArray,"after Replace",newDataIs));
                 reqField = {
                     msg: name,
                     signOffText: name2,
@@ -138,22 +138,21 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             return <div></div>
         }
     }
-    if (input) {
-        input.addEventListener('input', processInput);
-    }
+    // if (input) {
+    //     input.addEventListener('input', processInput);
+    // }
 
     function resize_to_fit() {
         let fontSize = window.getComputedStyle(output).fontSize;
         output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-        // 
-
+        output2.style.fontSize = output.style.fontSize
         if (output.clientHeight >= outputContainer.clientHeight) {
             resize_to_fit();
         }
     }
 
     async function processInput() {
-        output.innerHTML = await this.value;
+        console.log('processInput');
         output.style.fontSize = '50px'; // Default font size
         resize_to_fit();
     }
@@ -161,22 +160,20 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
     function resize_to_fit2() {
         let fontSize = window.getComputedStyle(output2).fontSize;
-        output2.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-        // console.log(output2.clientHeight, "------------", outputContainer2.clientHeight);
+        output2.style.fontSize = (parseFloat(fontSize) - 3) + 'px';
         if (output2.clientHeight >= outputContainer2.clientHeight) {
             resize_to_fit2();
         }
     }
 
     async function processInput2() {
-        output2.innerHTML = await this.value;
-        output2.style.fontSize = output.style.fontSize; // Default font size
+        output2.style.fontSize = '50px'; // Default font size
         resize_to_fit2();
     }
 
-    if (input2) {
-        input2.addEventListener('input', processInput2);
-    }
+    // if (input2) {
+    //     input2.addEventListener('input', processInput2);
+    // }
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -184,7 +181,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             const keyToRemove = "Type";
             reader.onload = (e) => {
                 const csvData = e.target.result;
-                // console.log( csvData,'csVData,0000000000000000');
                 let jsonData = csvToJson(csvData);
                 console.log(jsonData, 'jsonData^^^^^^^^^^^^^^^^^');
 
@@ -205,7 +201,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     const newData = { ...item }
                     // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
                     delete newData['"Type"'];
-                    // console.log(newData,'&&&&&&&&&&newDataaaaaaaaaaa');
                     return newData
                 })
 
@@ -236,16 +231,16 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         return result;
     }
     async function uploadCsvFile() {
-        let aa = []
+        let errMsg = []
         let usCount = 0
         let nonUSCount = 0
         let found = false
         let replacedMsg = []
 
-        setbulkUploadDiv(false)
+        // setbulkUploadDiv(false)
         if (!fileData.length) {
-            aa.push('it is empty please add addresses')
-            setErrorVal(aa)
+            errMsg.push('it is empty please add addresses')
+            setErrorVal(errMsg)
             setIsOpen2(true)
             setTimeout(() => setIsOpen2(false), 3000)
             return
@@ -255,7 +250,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         }
         let reqField = ["First Name", "Last Name", "Address", "City", "State/Province", "Postal Code"]
 
-        // console.log(fileData.length, 'length of addresses');
 
         const alphabetPattern = /^[A-Za-z]+$/;
         const mailText = /@.*\.com$/
@@ -276,7 +270,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             }
 
             if (alphabetPattern.test(obj[targetField]) == false) {
-                aa.push(`'${targetField}' at row ${index} includes a number.`)
+                errMsg.push(`'${targetField}' at row ${index} includes a number.`)
                 console.log(`Index: ${index}, '${targetField}' includes a number.`);
             }
             if (obj[countryCheck] === "USA" ||
@@ -295,26 +289,26 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 nonUSCount++
             }
             if (mailText.test(obj[emailValid]) == false) {
-                aa.push(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`)
+                errMsg.push(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`)
                 console.log(`Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`);
                 // setIsOpen2(true)
                 // setTimeout(() => setIsOpen2(false), 3000)
             }
 
             if (emptyKeys.length > 0) {
-                aa.push(` ${emptyKeys.join(', ')} is empty please check at row ${index}`)
+                errMsg.push(` ${emptyKeys.join(', ')} is empty please check at row ${index}`)
                 console.log(`Index: ${index}, Empty Keys: [${emptyKeys.join(', ')}]`, numkeys);
                 // setIsOpen2(true)
                 // setTimeout(() => setIsOpen2(false), 3000)
                 // break;
             }
-            if (aa.length > 0) {
+            if (errMsg.length > 0) {
                 setIsOpen2(true)
                 setTimeout(() => setIsOpen2(false), 3000)
                 found = true;
             }
         }
-        setErrorVal(aa)
+        setErrorVal(errMsg)
         setUsAddress(usCount)
         setnonUsAddress(nonUSCount)
         console.log(replacedMsg, 'replacedMsg');
@@ -330,7 +324,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     async function uploadCsvFileOnClick() {
         try {
             console.log('uploadCsvFile OnClick');
-            // console.log(fileData, 'fileDatatatatatatataat******************');
 
             const res = await fetch("https://api.simplynoted.com/api/orders/bulk-orders-upload-s3",
                 {
@@ -368,6 +361,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
     }
     async function aiGenrateMess() {
+        setLoader(true)
         try {
             const res = await fetch('https://api.simplynoted.com/api/ai-generate', {
                 method: 'POST',
@@ -380,29 +374,27 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
             const json = await res.json();
             setaiText(json.message)
+            setLoader(false)
 
             console.log(json.message, 'AiGenrated Response____________');
         } catch (error) {
+            setLoader(false)
             console.log(error, "error at Ai generated message ");
         }
     }
-    // const onChnageNameVal = useCallback((e)=>{
-    //     setName(e)
-
-    // },[])
     async function onChnageNameVal(nameData) {
         setName(nameData)
-        console.log(nameData, 'nameData----');
-
+        processInput()
     }
     async function onchnageOfRegardBox(data) {
         setName2(data)
+        processInput2()
     }
     const ref = useRef(null);
     const ref1 = useRef(null);
     const ref2 = useRef(null);
     useEffect(() => {
-        input = ref.current;
+        // input = ref.current;
         output = ref1.current;
         outputContainer = ref2.current;
         customerid = localStorage.getItem('customerId')
@@ -411,39 +403,45 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         console.log(data);
         setName(prevString => prevString + data)
     }
-    // console.log(bbc, 'bbc--');
     return (
         <>
-            <div className='mainDivForBox flex gap-10'>
+        {loader?
+        <Loader />:
+        <>
+        <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr">
                     <div className='outerSec' ref={ref2}>
-                        <div id='abcd' ref={ref1} className="output m-5 ">
+                        <div id='messageBoxID' ref={ref1} className="output m-5 ">
                             {name}
                         </div>
                     </div>
                     <div className='secDiv'>
-                        <div id='abcd2' className="output2">
+                        <div id='signOffText' className="output2">
                             {name2}
                         </div>
                     </div>
 
                 </div>
                 <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." ref={ref} className='inputText' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText' maxLength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
                     <span className="charLeft">{remainingWord} characters remaining</span><br />
                     {show &&
                         <>
                             <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
 
-                            <button className='addFirstnameBtn p-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
+                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
 
                         </>
 
                     }
                     <div className='flex gap-4 mt-5' >
                         <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
+                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxLength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
                         </textarea><br />
                     </div>
                     <span className="charLeft ml-40">{remainSign} characters remaining</span>
@@ -457,7 +455,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                 <div >
                                     <h3 className='font-bold'>Bulk Address Upload</h3>
                                 </div>
-                                {bulkUploadDiv ?
+                                {bulkUploadDiv && !showNextBtn ?
                                     <div>
                                         <div >
                                             <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
@@ -476,13 +474,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     }
 
                 </div>
-                {/* <input id='customText' className='inputText' type="text" placeholder="Enter your custom text here...." /> */}
 
             </div>
             <Modal
                 isOpen={modalIsOpen}
-                // onAfterOpen={afterOpenModal}
-                // onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >
@@ -494,11 +489,11 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     <text className=' text-[#999999]'>Type in words or a phrase to use our AI Assistant to<br /> help generate a great message</text>
                 </div>
                 <div>
-                    <textarea type="text" id="aiTextArea" value={aiText ? aiText : valToGen} onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxlength="450"></textarea>
+                    <textarea type="text" id="aiTextArea" value={aiText ? aiText : valToGen} onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxLength="450"></textarea>
                 </div>
                 {!aiText ?
 
-                    <div class="ai-generate" >
+                    <div className="ai-generate" >
                         <button id="generate-msg" disabled="" onClick={() => aiGenrateMess()}>Generate Message</button>
                     </div> :
                     <div className='buttonClass flex justify-start'>
@@ -511,10 +506,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     </div>
                 }
             </Modal>
-            <Modal
+            {/* <Modal
                 isOpen={modalIsOpen2}
-                // onAfterOpen={afterOpenModal}
-                // onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="Example Modal"
             >
@@ -522,7 +515,22 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     <div>{item}</div>
 
                 )}
-            </Modal>
+            </Modal> */}
+            <Instruction
+                isOpen={instructionModal}
+                title="Text Can not be Empty"
+                closeModal={closeModalInt}
+                table={false}
+            />
+            <ErrorModal
+            title="Uploaded Error!"
+            isOpen={modalIsOpen2}
+            // onRequestClose={() => setErrorModal(false)}
+            content={errorVal}
+          />
+          </>
+        }
+            
         </>
     )
 }

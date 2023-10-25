@@ -61,6 +61,12 @@ shop-pay-button {
 @layer base {
   * {
     font-variant-ligatures: none;
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   body {
@@ -199,7 +205,6 @@ shop-pay-button {
     min-height: 52px;
     cursor: pointer;
     color:white;
-
   }
   .font-bold {
     font-weight: 500 !important;
@@ -516,13 +521,53 @@ shop-pay-button {
   height: 100%;
   object-fit: cover;
 }
+
+
+
+
+/* For mobile devices or narrow screens */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+  }
+  
+  .table thead {
+    display: none; /* Hide the table header on narrow screens */
+  }
+  
+  .table tbody {
+    display: block;
+    width: 100%;
+  }
+  
+  .table td, .table th {
+    white-space: normal;
+    text-align: left;
+  }
+  
+  .table td {
+    padding: 10px;
+  }
+  
+  .table tr {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+}
+
 @font-face {
   font-family: 'Tarzan';
   /* font-display: swap; */
   font-weight: 700;
   font-style: italic;
   src: url('./fonts/Tarzan.ttf') format('truetype');
-
 }
 @font-face {
   font-family: 'Stitch';
@@ -735,5 +780,455 @@ shop-pay-button {
 
 }
 
-
 }
+
+
+
+/* Add this CSS to your component's stylesheet or CSS file */
+
+/* Pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Pagination buttons */
+.pagination button {
+  background-color: #001a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+/* Disabled pagination buttons */
+.pagination button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Active page button */
+.pagination button.active {
+  background-color: #333;
+}
+
+/* Adjust styles as needed to match your design */
+
+
+.overflow-popup {
+  max-height: 50vh;
+  overflow: auto;
+}
+
+.type-select select{
+  --tw-ring-color: transparent;
+}
+
+.request-button {
+  background: rgb(239, 110, 110);
+  min-width: 203px;
+  text-transform: uppercase;
+  padding: 12px;
+  min-height: 52px;
+  cursor: pointer;
+  color: white;
+}
+.dropdown > div {
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.font-bold {
+  font-weight: 500 !important;
+  letter-spacing: 0px;
+}
+.request-button:hover {
+  background-color: #001a5f;
+}
+a:hover {
+  color: #0056b3;
+}
+
+.px-12 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.lg\:px-12 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 12rem !important;
+}
+
+nav a {
+  text-decoration: none;
+  transition: text-decoration 0.3s, font-style 0.3s;
+}
+.shadow-darkHeader {
+  --tw-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0) !important;
+}
+
+.login-button {
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  margin-right: -14px;
+}
+.gap-1 {
+  gap: 1.25rem;
+}
+.logo-simplinoted {
+  width: 23%;
+  rotate: -5deg;
+  max-height: 241px;
+  position: absolute;
+  top: 157px;
+}
+.cars-killer {
+  width: 24%;
+  rotate: -7deg;
+  margin-top: -21px;
+  position: absolute;
+  right: 11px;
+  top: 141px;
+}
+.bg-contrast {
+  background-color: none !important;
+}
+
+.handwritten-notice {
+  text-align: center;
+  margin-top: 55px;
+  position: relative;
+}
+.handwritten-notice h3 {
+  font-size: 45px;
+  color: #001a5f;
+  font-weight: 500;
+  margin-top: -31px;
+  margin-right: -78px;
+}
+.handwritten-notice p {
+  font-size: 45px;
+  color: #001a5f;
+  font-weight: 500;
+  margin-left: 80px;
+}
+.scale-starting {
+  font-size: 21px;
+  margin-top: 12px;
+}
+.start-writing-button {
+  margin-top: 41px;
+  background-color: #ef6e6e;
+  min-width: 264px;
+  text-transform: uppercase;
+  padding: 12px;
+  min-height: 64px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 19px;
+}
+
+.request-a-button {
+  background: #1b5299;
+  min-width: 250px;
+  text-transform: uppercase;
+  padding: 12px;
+  min-height: 64px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 19px;
+}
+.robot-gif {
+  margin-top: 7px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown > div {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 200px;
+  left: 60%;
+  transform: translateX(-50%);
+  top: 26px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content p {
+  padding: 12px 16px;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.dropdown-content p:last-child {
+  border-bottom: none;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+/* .absolute-scaled-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+} */
+
+.rotate {
+  transform: rotateY(180deg);
+}
+.text-at-top {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.overflow-x-hidden {
+  /* overflow-x: hidden !important; */
+}
+
+.companies-header {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: none;
+  letter-spacing: -0.96px;
+  line-height: 1em;
+  color: #001a5f;
+  padding: 0.5em 0;
+}
+
+.visible {
+  margin-top: -97px;
+}
+.flat__checkbox {
+  margin-left: 4rem;
+}
+.finish-editing {
+  width: 215px;
+  background-color: #1b5299;
+  height: 42px;
+  color: #fff;
+  font-size: 15px;
+  margin-top: 52px;
+}
+ .slect-btn-image {
+  font-size: 19px;
+  font-family: sans-serif;
+}
+
+.enclosed-div {
+  min-width: 96%;
+}
+.alignment.selected {
+  border: 2px solid #3498db;
+}
+.select-image {
+  margin-left: 67px;
+  
+}
+
+.main-div {
+  width:45%;
+  min-height: 400px;
+}
+
+.red-dot {
+  position: relative;
+  width: 97%;
+  margin: 7px;
+  height: 385px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  background-color: white;
+}
+
+.red-dot.rotate {
+  transform: rotateX(180deg);
+}
+
+.card-button {
+  width: 100%;
+  border: none;
+  height: 40px;
+  color: white;
+  font-size: 18px;
+}
+.button-tomato {
+  background-color: #ef6e6e;
+}
+
+.button-blue {
+  background-color: #1b5299;
+}
+.choose-image {
+  width: 60px;
+}
+.choose-file-button {
+  min-width: 40%;
+}
+body {
+  overflow-x: hidden;
+  height: 0;
+}
+.finish-button-editing {
+  background-color: #1b5299;
+  width: 250px;
+  text-align: center;
+  color: white;
+  height: 43px;
+  padding-top: 6px;
+  position: absolute;
+  margin-top: 83px;
+}
+.Custom-folded-card-front {
+  padding-left: 20%;
+  margin: 5% 0 5px 0;
+  font-size: 25px;
+  font-family: 'Noto Sans';
+  color: #191919;
+}
+.remove-image {
+  background: #1b5299;
+  font-family: 'Karla', sans-serif;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  position: relative;
+  outline: none;
+  padding: 6px 31px 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 40px;
+  margin-top: 12px;
+}
+.dark {
+  color: darkslategray;
+}
+.trash-icon {
+  color: white;
+}
+.trash-icon {
+  width: 21px;
+  position: absolute;
+  top: 472px;
+  left: 704px;
+}
+
+.add-header,
+.add-footer {
+  margin-left: 18px;
+}
+
+.scaled-image {
+  width: 100%;
+  height: 100%;
+}
+
+.dotted-div {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border: dashed 2px #ff0000;
+}
+.overflow-x-hidden {
+  overflow: show !important;
+}
+.testing {
+  border: 1px solid black;
+  height: 123px;
+  width: 123px;
+  position: absolute;
+  margin-top: 88px;
+}
+.red-dot{
+  border:none;
+}
+.bar-code{
+  top:236px;
+}
+.front-div{
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  /* border: 2px dotted red; */
+  border:none;
+}
+.fold-open-div{
+  /* transition: transform .8s;
+  transform-style: preserve-3d;
+  transform-origin: top; */
+}
+.custom-msg{
+  font-family: 'astTracy';
+}
+
+.insert-btn{
+  border: none;
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: #ef6e6e;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

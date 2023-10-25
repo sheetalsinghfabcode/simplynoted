@@ -24,6 +24,7 @@ import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
+import {AddressBookProvider} from './components/AddressBookContext';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
@@ -86,26 +87,29 @@ export default function App() {
   useAnalytics(hasUserConsent);
 
   return (
-    <html lang={locale.language}>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <Seo />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Layout
-          key={`${locale.language}-${locale.country}`}
-          layout={data.layout}
-        >
-          <Outlet />
-        </Layout>
-        <ScrollRestoration nonce={nonce} />
-        <Scripts nonce={nonce} />
-        <LiveReload nonce={nonce} />
-      </body>
-    </html>
+    <AddressBookProvider>
+      <html lang={locale.language}>
+        <head>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <Seo />
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1475.0.min.js"></script>
+          <Layout
+            key={`${locale.language}-${locale.country}`}
+            layout={data.layout}
+          >
+            <Outlet />
+          </Layout>
+          <ScrollRestoration nonce={nonce} />
+          <Scripts nonce={nonce} />
+          <LiveReload nonce={nonce} />
+        </body>
+      </html>
+    </AddressBookProvider>
   );
 }
 
