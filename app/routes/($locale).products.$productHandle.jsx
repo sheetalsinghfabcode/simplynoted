@@ -310,9 +310,9 @@ export default function Product() {
 
       if (selectFontValue) {
 
-        document.getElementById("abcd").style.fontFamily = selectFontValue;
+        document.getElementById("messageBoxID").style.fontFamily = selectFontValue;
 
-        document.getElementById("abcd2").style.fontFamily = selectFontValue;
+        document.getElementById("signOffText").style.fontFamily = selectFontValue;
 
       }
 

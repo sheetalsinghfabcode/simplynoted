@@ -1,7 +1,7 @@
 import {useState, useRef, useEffect} from 'react';
 import AddImage from '../../../assets/Image/add_image_icon.png';
 import html2canvas from 'html2canvas';
-                                             
+
 export default function FlatCard() {
   const [isFrontCard, setIsFrontCard] = useState(true);
   const [isHeaderChecked, setIsHeaderChecked] = useState(false);
@@ -14,7 +14,7 @@ export default function FlatCard() {
   const [backFooterImage, setBackFooterImage] = useState();
   const [scale, setScale] = useState(1);
   const [backScale, setBackScale] = useState(1);
-  const [qrCodeShow, setQrCodeShow]= useState(false)
+  const [qrCodeShow, setQrCodeShow] = useState(false);
 
   const [selectButton, setSelectButton] = useState(null);
   const fileInputRef = useRef(null);
@@ -66,13 +66,28 @@ export default function FlatCard() {
   function clrchange(selectedColor) {
     document.getElementById('color-header').style.color = selectedColor;
     document.getElementById('color-footer').style.color = selectedColor;
+  };
+
+  function setFont() {
+    var selectFont = document.getElementById("font");
+    if (selectFont) {
+     let selectFontValue = selectFont.options[selectFont.selectedIndex].value;
+      if (selectFontValue) {
+        document.getElementById("color-header").style.fontFamily = selectFontValue;
+        document.getElementById("color-footer").style.fontFamily = selectFontValue;
+
+      }
+
+    }
+
+    // console.log(selectFontValue,'selectFontValue');
+
   }
+
 
   function handleHeaderClick() {
     setHeaderText('Header Text');
     // setQrCodeShow(true);
-
-
   }
 
   function handleFooterClick() {
@@ -172,7 +187,7 @@ export default function FlatCard() {
     >
       <div className="flat_first-cont flex flex-col items-center justify-center pt-5">
         <h2 className=" text-2xl font-medium"> Custom Flat Card</h2>
-        <div className="border border-solid border-black bg-white text-center h-[416px] w-[553px] m-[46px] -z-30">
+        <div className="border border-solid border-black bg-white text-center h-[416px] w-[553px] -z-30">
           {isFrontCard ? (
             <div
               ref={dottedDivRef}
@@ -203,12 +218,12 @@ export default function FlatCard() {
                   } enclosed-div absolute top-0 m-3 overflow-hidden`}
                 >
                   {backHeaderImage && (
-                      <img
-                        className="w-10 absolute"
-                        src={backHeaderImage}
-                        style={{transform: `scale(${backScale})`}}
-                        alt="Selected Image"
-                      />
+                    <img
+                      className="w-10 absolute"
+                      src={backHeaderImage}
+                      style={{transform: `scale(${backScale})`}}
+                      alt="Selected Image"
+                    />
                   )}
                   <input
                     id="color-footer"
@@ -242,12 +257,12 @@ export default function FlatCard() {
                   } enclosed-div absolute bottom-0 m-3 overflow-hidden`}
                 >
                   {backFooterImage && (
-                      <img
-                        className="w-10 absolute"
-                        src={backFooterImage}
-                        style={{transform: `scale(${backScale})`}}
-                        alt="Selected Image"
-                      />
+                    <img
+                      className="w-10 absolute"
+                      src={backFooterImage}
+                      style={{transform: `scale(${backScale})`}}
+                      alt="Selected Image"
+                    />
                   )}
                   <input
                     id="color-header"
@@ -297,9 +312,7 @@ export default function FlatCard() {
           <>
             <div className="flex min-w-full gap-[42px] text-[23px] justify-evenly mb-5">
               <div className="header-btn">
-                
-                <button type="button"
-                onClick={handleHeaderClick}>
+                <button type="button" onClick={handleHeaderClick}>
                   Header
                 </button>
               </div>
@@ -364,7 +377,115 @@ export default function FlatCard() {
                 </svg>
               </div>
             </div>
-            <label>Font</label>
+            <select id="font" onClick={() => setFont()}>
+              <option value="pinocchio" className={`font-pinocchio`}>
+                Pinocchio
+              </option>
+
+              <option value="tarzan" className={`font-tarzan`}>
+                Tarzan
+              </option>
+
+              <option value="stitch" className={`font-stitch`}>
+                Stitch
+              </option>
+
+              <option value="simba" className={`font-simba`}>
+                Simba
+              </option>
+
+              <option value="roo" className={`font-roo`}>
+                Roo
+              </option>
+
+              <option value="nimo" className={`font-nimo`}>
+                Nimo
+              </option>
+
+              <option value="lumiere" className={`font-lumiere`}>
+                Lumiere
+              </option>
+
+              <option value="kaa" className={`font-kaa`}>
+                Kaa
+              </option>
+
+              <option value="kaaNew" className={`font-kaaNew`}>
+                KaaNew
+              </option>
+
+              <option value="dumbo" className={`font-dumbo`}>
+                Dumbo
+              </option>
+
+              <option value="donald" className={`font-donald`}>
+                Donald
+              </option>
+
+              <option value="aladdin" className={`font-aladdin`}>
+                Aladdin
+              </option>
+
+              <option value="belle" className={`font-belle`}>
+                Belle
+              </option>
+
+              <option value="boo" className={`font-boo`}>
+                Boo
+              </option>
+
+              <option value="cinderella" className={`font-cinderella`}>
+                Cinderella
+              </option>
+
+              <option value="copper" className={`font-copper`}>
+                Copper
+              </option>
+
+              <option value="jasmine" className={`font-jasmine`}>
+                Jasmine
+              </option>
+
+              <option value="merlin" className={`font-merlin`}>
+                Merlin
+              </option>
+
+              <option value="goofy" className={`font-goofy`}>
+                Goofy
+              </option>
+
+              <option value="hercules" className={`font-hercules`}>
+                Hercules
+              </option>
+
+              <option value="rafiki" className={`font-rafiki`}>
+                Rafiki
+              </option>
+
+              <option value="rapunzel" className={`font-rapunzel`}>
+                Rapunzel
+              </option>
+
+              <option value="ratigan" className={`font-ratigan`}>
+                Ratigan
+              </option>
+
+              <option value="sarabi" className={`font-sarabi`}>
+                Sarabi
+              </option>
+
+              <option value="scar" className={`font-scar`}>
+                Scar
+              </option>
+
+              <option value="triton" className={`font-triton`}>
+                Triton
+              </option>
+
+              <option value="woody" className={`font-woody`}>
+                Woody
+              </option>
+            </select>
             {/* <Select
             id="fontSize"
             value={selectedFontSize}
@@ -504,14 +625,13 @@ export default function FlatCard() {
               name="filename"
             />
           </div>
-         {qrCodeShow && (
-          <div className="flex items-center mt-[173px] absolute gap-5 border border-solid border-gray-300 bg-gray-200">
-           <img src="	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445"
-            />
-            <span className="qr-code font-bold ">ADD QR CODE</span>
-          </div>
-              )} 
-            
+          {qrCodeShow && (
+            <div className="flex items-center mt-[173px] absolute gap-5 border border-solid border-gray-300 bg-gray-200">
+              <img src="	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445" />
+              <span className="qr-code font-bold ">ADD QR CODE</span>
+            </div>
+          )}
+
           {(backHeaderImage || backFooterImage) && (
             <div className="zoom-slider mt-3">
               <label htmlFor="scale">Resize:</label>

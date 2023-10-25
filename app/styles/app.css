@@ -1102,6 +1102,7 @@ nav a {
 }
 body {
   overflow-x: hidden;
+  height: 0;
 }
 .finish-button-editing {
   background-color: #1b5299;
