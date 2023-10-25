@@ -21,6 +21,13 @@ export default function FlatCard() {
   const [isDivOpen, setIsDivOpen] = useState(false);
   const [alignment, setAlignment] = useState('');
   const [selectedFontSize, setSelectedFontSize] = useState({});
+  const [headerFontSize, setHeaderFontSize] = useState(16); 
+  const [footerFontSize, setFooterFontSize] = useState(16); 
+
+  const handleFontSizeChange = (event) => {
+    headerText === "Header Text" && setHeaderFontSize(event.target.value);
+    headerText === "Footer Text" && setFooterFontSize(event.target.value);
+  }
 
   const handleDivOpen = (setScale) => {
     setIsDivOpen(!isDivOpen);
@@ -64,24 +71,21 @@ export default function FlatCard() {
   };
 
   function clrchange(selectedColor) {
-    document.getElementById('color-header').style.color = selectedColor;
-    document.getElementById('color-footer').style.color = selectedColor;
+    if(!selectedColor) return;
+    headerText === "Header Text" && (document.getElementById('color-header').style.color = selectedColor);
+    headerText === "Footer Text" && (document.getElementById('color-footer').style.color = selectedColor);
   };
 
+
   function setFont() {
-    var selectFont = document.getElementById("font");
+    const selectFont = document.getElementById("font");
     if (selectFont) {
      let selectFontValue = selectFont.options[selectFont.selectedIndex].value;
       if (selectFontValue) {
-        document.getElementById("color-header").style.fontFamily = selectFontValue;
-        document.getElementById("color-footer").style.fontFamily = selectFontValue;
-
+        headerText === "Header Text" && (document.getElementById("color-header").style.fontFamily = selectFontValue);
+        headerText === "Footer Text" && (document.getElementById("color-footer").style.fontFamily = selectFontValue);
       }
-
     }
-
-    // console.log(selectFontValue,'selectFontValue');
-
   }
 
 
@@ -226,7 +230,7 @@ export default function FlatCard() {
                     />
                   )}
                   <input
-                    id="color-footer"
+                    id="color-header"
                     className={`border-none min-w-full ${
                       alignment === 'left' &&
                       headerText === 'Header Text' &&
@@ -244,7 +248,7 @@ export default function FlatCard() {
                     onChange={handleInputChange}
                     type="text"
                     placeholder={backHeaderImage ? '' : 'Header'}
-                    style={{fontSize: selectedFontSize.value}}
+                    style={{ fontSize: `${headerFontSize}px` }}
                   />
                 </div>
               ) : null}
@@ -265,7 +269,7 @@ export default function FlatCard() {
                     />
                   )}
                   <input
-                    id="color-header"
+                    id="color-footer"
                     className={`border-none min-w-full ${
                       alignment === 'left' &&
                       headerText === 'Footer Text' &&
@@ -282,7 +286,7 @@ export default function FlatCard() {
                     value={footerText}
                     type="text"
                     placeholder={backFooterImage ? '' : 'Footer'}
-                    style={{fontSize: selectedFontSize.value}}
+                    style={{ fontSize: `${footerFontSize}px` }}
                   />
                 </div>
               ) : null}
@@ -486,13 +490,13 @@ export default function FlatCard() {
                 Woody
               </option>
             </select>
-            {/* <Select
-            id="fontSize"
-            value={selectedFontSize}
-            onChange={handleChange}
-            options={options}
-            isSearchable={false}
-          /> */}
+            <select style={{width: "125px"}} onClick={handleFontSizeChange}>
+           <option value="16">16px</option>
+           <option value="20">20px</option>
+           <option value="24">24px</option>
+           <option value="28">28px</option>
+           <option value="32">32px</option>
+          </select>
             <div className="text-color mt-[25px] flex items-center gap-[5px]">
               <span>
                 <b>Font Color</b>
