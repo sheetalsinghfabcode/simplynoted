@@ -105,11 +105,16 @@ function Account({customer, heading, featuredData}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
   const [data,setData] = useState(false)
+
+  console.log(customer);
   let result =  customer.id.replace(/[^0-9]/g,"");
+  let customerName = customer.firstName 
   
   const remove = () =>{
     if(typeof window !== 'undefined' && customer ){
       localStorage.removeItem('customerId')
+      localStorage.removeItem('customerName',customerName)
+
     }
     }
       if(data == true){
@@ -117,6 +122,7 @@ function Account({customer, heading, featuredData}) {
       } else if(data == false){
         if(typeof window !== 'undefined' && customer ){
           localStorage.setItem('customerId',result)
+          localStorage.setItem('customerName',customerName)
         }
       }
   return (

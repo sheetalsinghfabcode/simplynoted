@@ -1017,9 +1017,7 @@ nav a {
   left: 50%;
   transform: translateX(-50%);
 }
-.overflow-x-hidden {
-  /* overflow-x: hidden !important; */
-}
+
 
 .companies-header {
   font-size: 30px;
@@ -1052,6 +1050,9 @@ nav a {
 
 .enclosed-div {
   min-width: 96%;
+}
+#color-header:hover {
+  border:block;
 }
 .alignment.selected {
   border: 2px solid #3498db;
@@ -1094,11 +1095,30 @@ nav a {
 .button-blue {
   background-color: #1b5299;
 }
-.choose-image {
-  width: 60px;
-}
 .choose-file-button {
+  
   min-width: 40%;
+}  
+.file-click {
+  --click-width: 60px;
+  --click-height: 50px;
+}
+.choose-image {
+  max-width: var(--click-width);
+  max-height: var(--click-height);
+}
+         
+.file-upload {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--click-width);
+}
+.file-upload:focus {
+  outline: none;
+  border: none;
 }
 body {
   overflow-x: hidden;
@@ -1185,7 +1205,7 @@ body {
   border:none;
 }
 .bar-code{
-  top:236px;
+  top:-137px;
 }
 .front-div{
   width: 100%;
@@ -1213,6 +1233,44 @@ body {
   background-color: #ef6e6e;
   color: white;
 }
+
+/***********modal***************/
+.modal-save-name{
+  background: #deebf7;
+   max-width: 476px;
+   height: 55px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color:black;
+   border:2px solid gray;
+   margin-top: 26px;
+}
+.input-modal{
+  width: 100%;
+    margin-top: 21px;
+    border: 2px solid black;
+}
+.button-modal{
+  background: #1b5299;
+  font-family: 'Karla', sans-serif;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.0;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  outline: none;
+  padding: 6px 31px 4px;
+  justify-content: center;
+  align-items: center;
+  min-width: 477px;
+  min-height: 43px;
+  margin-top: 22px;
+}
+
+
+
 
 
 

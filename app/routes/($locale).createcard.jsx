@@ -7,16 +7,24 @@ import FlatCard from "../components/createCard/FlatCard";
 
 
 export default function createcard() {
-  const [selectedImage, setSelectedImage] = useState('first');
+  const [selectedImage, setSelectedImage] = useState('Flat 5*7');
   const [card, setCard] = useState(false)
+  const [clickColor, setClickColor] = useState('transparent')
+  const [isClicked, setIsClicked] = useState(false);
+  
+
+  
 
   const handleFirstButtonClick = () => {
-    setSelectedImage('first');
+    setSelectedImage('Flat 5*7');
+    setClickColor("black");
+    setIsClicked(true);
   };
   const handleSecButtonClick = () => {
-    setSelectedImage('sec');
+    setSelectedImage('Folded 5*7');
+    etClickColor("black");
+    setIsClicked(false);
   };
-
 
   return (
     <>
@@ -24,7 +32,7 @@ export default function createcard() {
     <>
       <div className="create-card-select-cont flex justify-center gap-20 m-20">
         <div className="images">
-          {selectedImage === 'first' && (
+          {selectedImage === 'Flat 5*7' && (
             <img
               src={
                 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Screenshot_1.png?v=1689262698%22'
@@ -33,7 +41,7 @@ export default function createcard() {
               className="w-[400px] h-[360px]"
             />
           )}
-          {selectedImage === 'sec' && (
+          {selectedImage === 'Folded 5*7' && (
             <img
               src={
                 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/create_a_card.png?v=1689262711'
@@ -51,20 +59,22 @@ export default function createcard() {
           <div className="saaelect-img-btn flex gap-2 mt-[22px] justify-center">
             <img
               className={`select-btn w-[80px] h-[70px] ${
-                selectedImage === 'first' ? 'bg-blue-500' : 'bg-green-500'
+                selectedImage === 'Fold 5*7' ? 'bg-blue-500' : 'bg-green-500'
               } sm:bg-indigo-500 md:bg-red-500 lg:bg-red-500 xl:bg-white text-white w-23`}
               src={FlatGreen}
               alt="flatgreenpic"
               onClick={handleFirstButtonClick}
+                style={{ backgroundColor: isClicked? clickColor: "" }}            
             />
             <br />
             <img
               className={`select-btn w-[80px] h-[70px] ${
-                selectedImage === 'sec' ? 'bg-red-500' : 'bg-indigo-500'
+                selectedImage === 'Folded 5*7' ? 'bg-red-500' : 'bg-indigo-500'
               } sm:bg-red-500 md:bg-indigo-500 xl:bg-white text-white w-23`}
               src={FoldedGreen}
               alt="flatgreenpic"
               onClick={handleSecButtonClick}
+              style={{ backgroundColor : isClicked? "": clickColor }}
             />
           </div>
 
@@ -82,8 +92,8 @@ export default function createcard() {
       </div>  
       </>
   }
-      {card &&  selectedImage ==="first" && <FlatCard/>}
-      {card &&  selectedImage ==="sec" && <FoldCard/>}
+      {card &&  selectedImage ==="Flat 5*7" && <FlatCard/>}
+      {card &&  selectedImage ==="Folded 5*7" && <FoldCard/>}
     </>
   );
 }

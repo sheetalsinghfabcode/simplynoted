@@ -10,6 +10,7 @@ export default function FoldCard() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [backCardImage, setBackCardImage] = useState(null);
   const [imageScale, setImageScale] = useState(1);
+  const [backImageScale, setBackImageScale] = useState(1);
   const [selectButton, setSelectButton] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
   const [ModalOpen, setModalOpen] = useState(false);
@@ -79,25 +80,33 @@ export default function FoldCard() {
     cardPageName === 'Front' && setSelectedFile(file);
     cardPageName === 'Back' && setBackCardImage(file);
     setSelectButton(null);
-  };
-
-  const handleRemoveImage = () => {
-    setSelectedFile(null);
-    setBackCardImage(null);
-    setImageScale(1);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
   };
 
+  const handleRemoveImage = () => {
+    if (cardPageName === "Back") {
+      setBackImageScale(1);
+      setBackCardImage(null);
+    }
+    if (cardPageName === "Front") {
+      setImageScale(1);
+      setSelectedFile(null);
+    }
+  };
+
   const handleSliderChange = (value) => {
     const scaleFactor = 1 + (value - 50) / 100;
-    setImageScale(scaleFactor);
+    cardPageName === "Front" && setImageScale(scaleFactor);
+    cardPageName === "Back" && setBackImageScale(scaleFactor);
   };
 
   const handleClickButton = (buttonId) => {
     setSelectButton(buttonId);
   };
+
+  
   return (
     <>
       <div className="Custom-folded-card-front">
@@ -120,9 +129,9 @@ export default function FoldCard() {
                   {selectedFile && (
                     <img
                       key={selectedFile.name}
-                      className={`${
-                        selectButton === 'dark' ? 'dark' : ''
-                      } image-scal`}
+                    className={`${
+                        selectButton === 'dark' ? 'graysacle' : 'grayscale-0'
+                      } image-scal  `}  
                       src={isFolded ? URL.createObjectURL(selectedFile) : null}
                       style={{transform: `scale(${imageScale})`}}
                       alt="selected"
@@ -146,7 +155,7 @@ export default function FoldCard() {
                         src={
                           isFolded ? URL.createObjectURL(backCardImage) : null
                         }
-                        style={{transform: `scale(${imageScale})`}}
+                        style={{transform: `scale(${backImageScale})`}}
                         alt="selected"
                       />
                     )}
@@ -186,7 +195,7 @@ export default function FoldCard() {
         </div>
         <div className="choose-file-button">
           {(cardPageName === 'Back' || cardPageName === 'Front') && (
-            <>
+            <div className='file-click relative'>
               <img className="choose-image" src={AddPicture} alt="addpicture" />
               <input
                 type="file"
@@ -194,14 +203,15 @@ export default function FoldCard() {
                 onChange={(event) => {
                   handleFileChange(event, cardPageName);
                 }}
-                ref={fileInputRef}
+                value=""
+                className='file-upload'
               />
-            </>
+            </div>
           )}
           {cardPageName === 'Front' && selectedFile && (
             <div
               key={selectedFile.name}
-              className={`${selectButton === 'dark' ? 'dark' : ''}`}
+          
             >
               <div className="slider-container">
                 <b>Resize image</b> <br />
@@ -259,7 +269,7 @@ export default function FoldCard() {
                   type="range"
                   min="0"
                   max="100"
-                  value={(imageScale - 1) * 100 + 50}
+                  value={(backImageScale - 1) * 100 + 50}
                   onChange={(e) => handleSliderChange(e.target.value)}
                 />
               </div>

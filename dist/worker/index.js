@@ -45331,36 +45331,36 @@ function Layout({ children, layout }) {
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex flex-col min-h-screen ", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: "#mainContent", className: "sr-only", children: "Skip to content" }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 39,
+        lineNumber: 44,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 38,
+        lineNumber: 43,
         columnNumber: 9
       }, this),
       headerMenu && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Header, { title: layout.shop.name, menu: headerMenu }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 43,
+        lineNumber: 48,
         columnNumber: 24
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("main", { role: "main", id: "mainContent", className: "flex-grow", children }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 44,
+        lineNumber: 49,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 37,
+      lineNumber: 42,
       columnNumber: 7
     }, this),
     footerMenu && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Footer, { menu: footerMenu }, void 0, !1, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 48,
+      lineNumber: 53,
       columnNumber: 22
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 36,
+    lineNumber: 41,
     columnNumber: 5
   }, this);
 }
@@ -45379,12 +45379,12 @@ function Header({ title, menu }) {
   }, [addToCartFetchers, isCartOpen, openCart]), /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(CartDrawer, { isOpen: isCartOpen, onClose: closeCart }, void 0, !1, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 78,
+      lineNumber: 83,
       columnNumber: 7
     }, this),
     menu && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(MenuDrawer, { isOpen: isMenuOpen, onClose: closeMenu, menu }, void 0, !1, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 80,
+      lineNumber: 85,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -45399,7 +45399,7 @@ function Header({ title, menu }) {
       !1,
       {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 82,
+        lineNumber: 87,
         columnNumber: 7
       },
       this
@@ -45416,14 +45416,14 @@ function Header({ title, menu }) {
       !1,
       {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 88,
+        lineNumber: 93,
         columnNumber: 7
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 77,
+    lineNumber: 82,
     columnNumber: 5
   }, this);
 }
@@ -45432,42 +45432,42 @@ function CartDrawer({ isOpen, onClose }) {
   let [root2] = useMatches2();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Drawer, { open: isOpen, onClose, heading: "Cart", openFrom: "right", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react56.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(CartLoading, {}, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 104,
+    lineNumber: 109,
     columnNumber: 29
   }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Cart, { layout: "drawer", onClose, cart }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 106,
+    lineNumber: 111,
     columnNumber: 24
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 105,
+    lineNumber: 110,
     columnNumber: 11
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 104,
+    lineNumber: 109,
     columnNumber: 9
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 103,
+    lineNumber: 108,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 102,
+    lineNumber: 107,
     columnNumber: 5
   }, this);
 }
 function MenuDrawer({ isOpen, onClose, menu }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Drawer, { open: isOpen, onClose, openFrom: "left", heading: "Menu", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "grid", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(MenuMobileNav, { menu, onClose }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 118,
+    lineNumber: 123,
     columnNumber: 9
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 117,
+    lineNumber: 122,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 116,
+    lineNumber: 121,
     columnNumber: 5
   }, this);
 }
@@ -45481,7 +45481,7 @@ function MenuMobileNav({ menu, onClose }) {
       className: ({ isActive }) => isActive ? "pb-1 border-b -mb-px" : "pb-1",
       children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Text, { as: "span", size: "copy", children: item.title }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 138,
+        lineNumber: 143,
         columnNumber: 13
       }, this)
     },
@@ -45489,17 +45489,17 @@ function MenuMobileNav({ menu, onClose }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 130,
+      lineNumber: 135,
       columnNumber: 11
     },
     this
   ) }, item.id, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 129,
+    lineNumber: 134,
     columnNumber: 9
   }, this)) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 126,
+    lineNumber: 131,
     columnNumber: 5
   }, this);
 }
@@ -45519,7 +45519,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
               className: "relative flex items-center justify-center w-8 h-8",
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconMenu, {}, void 0, !1, {
                 fileName: "app/components/Layout.jsx",
-                lineNumber: 166,
+                lineNumber: 170,
                 columnNumber: 11
               }, this)
             },
@@ -45527,7 +45527,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
             !1,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 162,
+              lineNumber: 166,
               columnNumber: 9
             },
             this
@@ -45546,7 +45546,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
                     className: "relative flex items-center justify-center w-8 h-8",
                     children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconSearch, {}, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 177,
+                      lineNumber: 181,
                       columnNumber: 13
                     }, this)
                   },
@@ -45554,7 +45554,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
                   !1,
                   {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 173,
+                    lineNumber: 177,
                     columnNumber: 11
                   },
                   this
@@ -45572,7 +45572,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
                   !1,
                   {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 179,
+                    lineNumber: 183,
                     columnNumber: 11
                   },
                   this
@@ -45583,14 +45583,14 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
             !0,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 168,
+              lineNumber: 172,
               columnNumber: 9
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 161,
+          lineNumber: 165,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -45609,7 +45609,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
               !1,
               {
                 fileName: "app/components/Layout.jsx",
-                lineNumber: 197,
+                lineNumber: 201,
                 columnNumber: 9
               },
               this
@@ -45619,7 +45619,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
           !1,
           {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 193,
+            lineNumber: 197,
             columnNumber: 7
           },
           this
@@ -45627,17 +45627,17 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex items-center justify-end w-full gap-4", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(AccountLink, { className: "relative flex items-center justify-center w-8 h-8" }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 206,
+            lineNumber: 210,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(CartCount, { isHome, openCart }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 207,
+            lineNumber: 211,
             columnNumber: 9
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 205,
+          lineNumber: 209,
           columnNumber: 7
         }, this)
       ]
@@ -45646,7 +45646,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
     !0,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 154,
+      lineNumber: 159,
       columnNumber: 5
     },
     this
@@ -45656,7 +45656,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
   (0, import_react56.useEffect)(() => {
     customerid = localStorage.getItem("customerId"), console.log(customerid, "LoginScreen000000000000");
   }, []);
-  let params = useParams(), { y: y6 } = useWindowScroll_default();
+  let navigate = useNavigate(), params = useParams(), { y: y6 } = useWindowScroll_default();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
     "header",
     {
@@ -45678,13 +45678,13 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             !1,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 236,
+              lineNumber: 243,
               columnNumber: 11
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 234,
+            lineNumber: 241,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("nav", { className: "flex gap-8 text-black flex gap-8 text-black font-karla text-17 leading-1.1  text-black-800 font-bold tracking-tight", children: ((menu == null ? void 0 : menu.items) || []).map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -45698,79 +45698,93 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                 item.title === "Send a Card" ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown", children: [
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: "Send a Card" }, void 0, !1, {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 259,
-                    columnNumber: 8
+                    lineNumber: 266,
+                    columnNumber: 19
                   }, this),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown-content", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: "/card", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { className: "card", children: "Card" }, void 0, !1, {
+                      fileName: "app/components/Layout.jsx",
+                      lineNumber: 269,
+                      columnNumber: 23
+                    }, this) }, void 0, !1, {
+                      fileName: "app/components/Layout.jsx",
+                      lineNumber: 268,
+                      columnNumber: 21
+                    }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-                      "p",
+                      Link3,
                       {
-                        className: "card",
-                        onClick: () => window.open("/card", "_self"),
-                        children: "Card"
+                        to: "createcard",
+                        children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+                          "p",
+                          {
+                            className: "Create-a-card",
+                            children: "Create a Card"
+                          },
+                          void 0,
+                          !1,
+                          {
+                            fileName: "app/components/Layout.jsx",
+                            lineNumber: 274,
+                            columnNumber: 21
+                          },
+                          this
+                        )
                       },
                       void 0,
                       !1,
                       {
                         fileName: "app/components/Layout.jsx",
-                        lineNumber: 264,
-                        columnNumber: 6
+                        lineNumber: 271,
+                        columnNumber: 21
                       },
                       this
                     ),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { className: "Create-a-card", onClick: () => window.open(
-                      "/createcard",
-                      "_self"
-                    ), children: "Create a Card" }, void 0, !1, {
-                      fileName: "app/components/Layout.jsx",
-                      lineNumber: 266,
-                      columnNumber: 8
-                    }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 3" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 269,
-                      columnNumber: 7
+                      lineNumber: 281,
+                      columnNumber: 21
                     }, this)
                   ] }, void 0, !0, {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 262,
-                    columnNumber: 7
+                    lineNumber: 267,
+                    columnNumber: 19
                   }, this)
                 ] }, void 0, !0, {
                   fileName: "app/components/Layout.jsx",
-                  lineNumber: 258,
-                  columnNumber: 9
+                  lineNumber: 265,
+                  columnNumber: 17
                 }, this) : null,
                 item.title === "Pricing" ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown", children: [
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { children: "Pricing" }, void 0, !1, {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 276,
+                    lineNumber: 288,
                     columnNumber: 19
                   }, this),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "dropdown-content", children: [
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 1" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 280,
+                      lineNumber: 290,
                       columnNumber: 21
                     }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: " Item 2" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 281,
+                      lineNumber: 291,
                       columnNumber: 21
                     }, this),
                     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { children: "Item 3" }, void 0, !1, {
                       fileName: "app/components/Layout.jsx",
-                      lineNumber: 282,
+                      lineNumber: 292,
                       columnNumber: 21
                     }, this)
                   ] }, void 0, !0, {
                     fileName: "app/components/Layout.jsx",
-                    lineNumber: 279,
+                    lineNumber: 289,
                     columnNumber: 19
                   }, this)
                 ] }, void 0, !0, {
                   fileName: "app/components/Layout.jsx",
-                  lineNumber: 275,
+                  lineNumber: 287,
                   columnNumber: 17
                 }, this) : null,
                 ["Send a Card", "Pricing"].includes(item.title) ? null : item.title
@@ -45780,18 +45794,18 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             !0,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 248,
+              lineNumber: 255,
               columnNumber: 13
             },
             this
           )) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 245,
+            lineNumber: 252,
             columnNumber: 9
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 233,
+          lineNumber: 240,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex items-center gap-1", children: [
@@ -45810,19 +45824,19 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               !1,
               {
                 fileName: "app/components/Layout.jsx",
-                lineNumber: 296,
+                lineNumber: 306,
                 columnNumber: 11
               },
               this
             ),
             /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "tooltiptext", children: "Cart" }, void 0, !1, {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 305,
+              lineNumber: 314,
               columnNumber: 11
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 295,
+            lineNumber: 305,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -45837,7 +45851,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             !1,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 309,
+              lineNumber: 317,
               columnNumber: 9
             },
             this
@@ -45847,24 +45861,21 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             {
               className: "login-button",
               type: "button",
-              onClick: () => window.open(
-                "/account",
-                "_self"
-              ),
+              onClick: () => window.open("/account", "_self"),
               children: "Login \u2192"
             },
             void 0,
             !1,
             {
               fileName: "app/components/Layout.jsx",
-              lineNumber: 316,
+              lineNumber: 327,
               columnNumber: 9
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 294,
+          lineNumber: 304,
           columnNumber: 7
         }, this)
       ]
@@ -45873,7 +45884,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
     !0,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 225,
+      lineNumber: 230,
       columnNumber: 5
     },
     this
@@ -45884,19 +45895,19 @@ function AccountLink({ className }) {
   let [root2] = useMatches2();
   return ((_a2 = root2.data) == null ? void 0 : _a2.isLoggedIn) ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: "/account", className, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconAccount, {}, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 358,
+    lineNumber: 368,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 357,
+    lineNumber: 367,
     columnNumber: 5
   }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: "/account/login", className, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconLogin, {}, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 362,
+    lineNumber: 372,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 361,
+    lineNumber: 371,
     columnNumber: 5
   }, this);
 }
@@ -45905,7 +45916,7 @@ function CartCount({ isHome, openCart }) {
   let [root2] = useMatches2();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react56.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Badge, { count: 0, dark: isHome, openCart }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 371,
+    lineNumber: 381,
     columnNumber: 25
   }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Await2, { resolve: (_a2 = root2.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
     Badge,
@@ -45918,17 +45929,17 @@ function CartCount({ isHome, openCart }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 374,
+      lineNumber: 384,
       columnNumber: 11
     },
     this
   ) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 372,
+    lineNumber: 382,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 371,
+    lineNumber: 381,
     columnNumber: 5
   }, this);
 }
@@ -45937,7 +45948,7 @@ function Badge({ openCart, dark, count }) {
     () => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconBag, {}, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 391,
+        lineNumber: 401,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -45946,7 +45957,7 @@ function Badge({ openCart, dark, count }) {
           className: `${dark ? "text-primary bg-contrast dark:text-contrast dark:bg-primary" : "text-contrast bg-primary"} absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`,
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { children: count || 0 }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 398,
+            lineNumber: 409,
             columnNumber: 11
           }, this)
         },
@@ -45954,14 +45965,14 @@ function Badge({ openCart, dark, count }) {
         !1,
         {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 392,
+          lineNumber: 402,
           columnNumber: 9
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 390,
+      lineNumber: 400,
       columnNumber: 7
     }, this),
     [count, dark]
@@ -45977,7 +45988,7 @@ function Badge({ openCart, dark, count }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 406,
+      lineNumber: 417,
       columnNumber: 5
     },
     this
@@ -45992,8 +46003,8 @@ function Badge({ openCart, dark, count }) {
     !1,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 413,
-      columnNumber: 7
+      lineNumber: 424,
+      columnNumber: 5
     },
     this
   );
@@ -46012,12 +46023,12 @@ function Footer({ menu }) {
       children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(FooterMenu, { menu }, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 438,
+          lineNumber: 449,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(CountrySelector, {}, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 439,
+          lineNumber: 450,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -46034,7 +46045,7 @@ function Footer({ menu }) {
           !0,
           {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 440,
+            lineNumber: 451,
             columnNumber: 7
           },
           this
@@ -46045,7 +46056,7 @@ function Footer({ menu }) {
     !0,
     {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 431,
+      lineNumber: 442,
       columnNumber: 5
     },
     this
@@ -46054,11 +46065,11 @@ function Footer({ menu }) {
 function FooterLink({ item }) {
   return item.to.startsWith("http") ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: item.to, target: item.target, rel: "noopener noreferrer", children: item.title }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 453,
+    lineNumber: 464,
     columnNumber: 7
   }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link3, { to: item.to, target: item.target, prefetch: "intent", children: item.title }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 460,
+    lineNumber: 471,
     columnNumber: 5
   }, this);
 }
@@ -46074,20 +46085,20 @@ function FooterMenu({ menu }) {
         item.title,
         ((_a2 = item == null ? void 0 : item.items) == null ? void 0 : _a2.length) > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "md:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(IconCaret, { direction: open ? "up" : "down" }, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 484,
+          lineNumber: 495,
           columnNumber: 25
         }, this) }, void 0, !1, {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 483,
+          lineNumber: 494,
           columnNumber: 23
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 480,
+        lineNumber: 491,
         columnNumber: 19
       }, this) }, void 0, !1, {
         fileName: "app/components/Layout.jsx",
-        lineNumber: 479,
+        lineNumber: 490,
         columnNumber: 17
       }, this),
       ((_b = item == null ? void 0 : item.items) == null ? void 0 : _b.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -46096,19 +46107,19 @@ function FooterMenu({ menu }) {
           className: `${open ? "max-h-48 h-fit" : "max-h-0 md:max-h-fit"} overflow-hidden transition-all duration-300`,
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react56.Suspense, { "data-comment": "This suspense fixes a hydration bug in Disclosure.Panel with static prop", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(ve.Panel, { static: !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("nav", { className: styles.nav, children: item.items.map((subItem) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(FooterLink, { item: subItem }, subItem.id, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 498,
+            lineNumber: 510,
             columnNumber: 29
           }, this)) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 496,
+            lineNumber: 508,
             columnNumber: 25
           }, this) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 495,
+            lineNumber: 507,
             columnNumber: 23
           }, this) }, void 0, !1, {
             fileName: "app/components/Layout.jsx",
-            lineNumber: 494,
+            lineNumber: 506,
             columnNumber: 21
           }, this)
         },
@@ -46116,27 +46127,27 @@ function FooterMenu({ menu }) {
         !1,
         {
           fileName: "app/components/Layout.jsx",
-          lineNumber: 490,
+          lineNumber: 501,
           columnNumber: 19
         },
         this
       ) : null
     ] }, void 0, !0, {
       fileName: "app/components/Layout.jsx",
-      lineNumber: 478,
+      lineNumber: 489,
       columnNumber: 15
     }, this);
   } }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 476,
+    lineNumber: 487,
     columnNumber: 11
   }, this) }, item.id, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 475,
+    lineNumber: 486,
     columnNumber: 9
   }, this)) }, void 0, !1, {
     fileName: "app/components/Layout.jsx",
-    lineNumber: 473,
+    lineNumber: 484,
     columnNumber: 5
   }, this);
 }
@@ -48494,7 +48505,7 @@ function Modal({ children, cancelLink }) {
         /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "fixed inset-0 z-50 overflow-y-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "flex items-center justify-center min-h-full p-4 text-center sm:p-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
           "div",
           {
-            className: "relative flex-1 px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform rounded shadow-xl bg-contrast sm:my-12 sm:flex-none sm:w-full sm:max-w-sm sm:p-6",
+            className: "file-click relative flex-1 min-w-[524px] px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform rounded shadow-xl bg-contrast sm:my-12 sm:flex-none sm:w-full sm:max-w-sm sm:p-6",
             role: "button",
             onClick: (e4) => {
               e4.stopPropagation();
@@ -48504,14 +48515,54 @@ function Modal({ children, cancelLink }) {
             },
             tabIndex: 0,
             children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "modal-flatpage", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "first-1st", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("p", { className: "modal-save-name", children: "Name your card and save it." }, void 0, !1, {
+                  fileName: "app/components/Modal.jsx",
+                  lineNumber: 29,
+                  columnNumber: 15
+                }, this) }, void 0, !1, {
+                  fileName: "app/components/Modal.jsx",
+                  lineNumber: 28,
+                  columnNumber: 13
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
+                  "input",
+                  {
+                    className: "input-modal",
+                    type: "text"
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/components/Modal.jsx",
+                    lineNumber: 31,
+                    columnNumber: 13
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("br", {}, void 0, !1, {
+                  fileName: "app/components/Modal.jsx",
+                  lineNumber: 32,
+                  columnNumber: 34
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("button", { className: "button-modal", type: "button", children: "SAVE CARD" }, void 0, !1, {
+                  fileName: "app/components/Modal.jsx",
+                  lineNumber: 33,
+                  columnNumber: 13
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/components/Modal.jsx",
+                lineNumber: 27,
+                columnNumber: 12
+              }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("div", { className: "absolute top-0 right-0 hidden pt-4 pr-4 sm:block", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(
-                Link3,
+                "button",
                 {
-                  to: cancelLink,
+                  onClick: cancelLink,
                   className: "p-4 -m-4 transition text-primary hover:text-primary/50",
                   children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(IconClose, { "aria-label": "Close panel" }, void 0, !1, {
                     fileName: "app/components/Modal.jsx",
-                    lineNumber: 32,
+                    lineNumber: 40,
                     columnNumber: 17
                   }, this)
                 },
@@ -48519,13 +48570,13 @@ function Modal({ children, cancelLink }) {
                 !1,
                 {
                   fileName: "app/components/Modal.jsx",
-                  lineNumber: 28,
+                  lineNumber: 36,
                   columnNumber: 15
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/components/Modal.jsx",
-                lineNumber: 27,
+                lineNumber: 35,
                 columnNumber: 13
               }, this),
               children
@@ -50428,7 +50479,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-A2AYIGFP.css";
+var app_default = "/build/_assets/app-GUUFQDC7.css";
 
 // app/hooks/useAnalytics.jsx
 var import_react77 = __toESM(require_react());
@@ -52167,7 +52218,7 @@ var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), Loader = ({ l
 // app/components/products/MessageWrite.jsx
 var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime());
 var output, output2, outputContainer, outputContainer2, customerid2;
-function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
+function MessageWriting({ show, selectedFile: selectedFile2, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
   let [name, setName] = (0, import_react87.useState)(EditMess || ""), [name2, setName2] = (0, import_react87.useState)(editEndMess || ""), [fileData, setFileData] = (0, import_react87.useState)([]), [valToGen, setValToGen] = (0, import_react87.useState)(""), [modalIsOpen, setIsOpen] = (0, import_react87.useState)(!1), [aiText, setaiText] = (0, import_react87.useState)(""), [modalIsOpen2, setIsOpen2] = (0, import_react87.useState)(!1), [errorVal, setErrorVal] = (0, import_react87.useState)([]), [clickedItem, setClickedItem] = (0, import_react87.useState)(!1), [showNextBtn, setShowNextBtn] = (0, import_react87.useState)(!1), [csvFile, setCsvFile] = (0, import_react87.useState)(""), [bulkUploadDiv, setbulkUploadDiv] = (0, import_react87.useState)(!0), [lenCsvData, setLenCsvData] = (0, import_react87.useState)(""), [usAddress, setUsAddress] = (0, import_react87.useState)(null), [nonusAddress, setnonUsAddress] = (0, import_react87.useState)(null), [instructionModal, setInstructionModal] = (0, import_react87.useState)(!1), [loader33, setLoader] = (0, import_react87.useState)(!1);
   output2 = document == null ? void 0 : document.querySelector(".output2"), outputContainer2 = document.querySelector(".secDiv");
   let remainingWord = 450 - name.length, remainSign = 50 - name2.length, customStyles3 = {
@@ -52220,7 +52271,7 @@ function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setPr
     }
   }
   function AfterUpload() {
-    return selectedFile ? (setShowBox(!1), /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { children: showNextBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(import_jsx_dev_runtime38.Fragment, { children: [
+    return selectedFile2 ? (setShowBox(!1), /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { children: showNextBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(import_jsx_dev_runtime38.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "bg-[#1b5299] h-[50px] text-center mt-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("button", { className: "text-[#fff] items-center justify-center mt-3 w-full", onClick: () => checkUserLogged(), children: "Next" }, void 0, !1, {
         fileName: "app/components/products/MessageWrite.jsx",
         lineNumber: 124,
@@ -54913,7 +54964,7 @@ function Product() {
   console.log(shippingData, "shippingData");
   let datafornav = useLocation(), EditMess = (_b = (_a2 = datafornav.state) == null ? void 0 : _a2.data) == null ? void 0 : _b.messageData, editEndMess = (_c = datafornav.state) == null ? void 0 : _c.data.endText, editOrderValue = datafornav.state;
   console.log(datafornav.state, "locationState");
-  let showBulkOnEdit = (_d = datafornav.state) == null ? void 0 : _d.data.csvBulkData.length, { media, title, vendor, descriptionHtml } = product2, { shippingPolicy, refundPolicy } = shop, [show, setShow] = (0, import_react95.useState)(!!showBulkOnEdit), [productshow, setProductShow] = (0, import_react95.useState)(!0), [modalIsOpen2, setIsOpen2] = (0, import_react95.useState)(!1), [showBox, setShowBox] = (0, import_react95.useState)(!0), [selectedFile, setSelectedFile] = (0, import_react95.useState)(""), [fileData, setFileData] = (0, import_react95.useState)([]), [errorVal, setErrorVal] = (0, import_react95.useState)([]);
+  let showBulkOnEdit = (_d = datafornav.state) == null ? void 0 : _d.data.csvBulkData.length, { media, title, vendor, descriptionHtml } = product2, { shippingPolicy, refundPolicy } = shop, [show, setShow] = (0, import_react95.useState)(!!showBulkOnEdit), [productshow, setProductShow] = (0, import_react95.useState)(!0), [modalIsOpen2, setIsOpen2] = (0, import_react95.useState)(!1), [showBox, setShowBox] = (0, import_react95.useState)(!0), [selectedFile2, setSelectedFile] = (0, import_react95.useState)(""), [fileData, setFileData] = (0, import_react95.useState)([]), [errorVal, setErrorVal] = (0, import_react95.useState)([]);
   function setFont() {
     var selectFont = document.getElementById("font");
     selectFont && (selectFontValue = selectFont.options[selectFont.selectedIndex].value, selectFontValue && (document.getElementById("messageBoxID").style.fontFamily = selectFontValue, document.getElementById("signOffText").style.fontFamily = selectFontValue));
@@ -55321,7 +55372,7 @@ function Product() {
         MessageWriting,
         {
           show,
-          selectedFile,
+          selectedFile: selectedFile2,
           setSelectedFile,
           setShowBox,
           setProductShow,
@@ -58766,36 +58817,38 @@ function Authenticated() {
   }, this);
 }
 function Account({ customer, heading, featuredData }) {
-  let orders = flattenConnection(customer.orders), addresses = flattenConnection(customer.addresses), [data, setData] = (0, import_react112.useState)(!1), result = customer.id.replace(/[^0-9]/g, ""), remove = () => {
-    typeof window < "u" && customer && localStorage.removeItem("customerId");
+  let orders = flattenConnection(customer.orders), addresses = flattenConnection(customer.addresses), [data, setData] = (0, import_react112.useState)(!1);
+  console.log(customer);
+  let result = customer.id.replace(/[^0-9]/g, ""), customerName = customer.firstName, remove = () => {
+    typeof window < "u" && customer && (localStorage.removeItem("customerId"), localStorage.removeItem("customerName", customerName));
   };
-  return data == !0 ? remove() : data == !1 && typeof window < "u" && customer && localStorage.setItem("customerId", result), /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, { children: [
+  return data == !0 ? remove() : data == !1 && typeof window < "u" && customer && (localStorage.setItem("customerId", result), localStorage.setItem("customerName", customerName)), /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("button", { type: "submit", className: "text-primary/50", onClick: () => setData(!0), children: "Sign out" }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 126,
+      lineNumber: 132,
       columnNumber: 11
     }, this) }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 125,
+      lineNumber: 131,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 124,
+      lineNumber: 130,
       columnNumber: 7
     }, this),
     orders && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 131,
+      lineNumber: 137,
       columnNumber: 18
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 132,
+      lineNumber: 138,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(AccountAddressBook, { addresses, customer }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 133,
+      lineNumber: 139,
       columnNumber: 7
     }, this),
     !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react112.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
@@ -58814,19 +58867,19 @@ function Account({ customer, heading, featuredData }) {
             !1,
             {
               fileName: "app/routes/($locale).account.jsx",
-              lineNumber: 142,
+              lineNumber: 148,
               columnNumber: 17
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(ProductSwimlane, { products: data2.featuredProducts }, void 0, !1, {
             fileName: "app/routes/($locale).account.jsx",
-            lineNumber: 146,
+            lineNumber: 152,
             columnNumber: 17
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/($locale).account.jsx",
-          lineNumber: 141,
+          lineNumber: 147,
           columnNumber: 15
         }, this)
       },
@@ -58834,18 +58887,18 @@ function Account({ customer, heading, featuredData }) {
       !1,
       {
         fileName: "app/routes/($locale).account.jsx",
-        lineNumber: 136,
+        lineNumber: 142,
         columnNumber: 11
       },
       this
     ) }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 135,
+      lineNumber: 141,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).account.jsx",
-    lineNumber: 123,
+    lineNumber: 129,
     columnNumber: 5
   }, this);
 }
@@ -58853,25 +58906,25 @@ function AccountOrderHistory({ orders }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 160,
+      lineNumber: 166,
       columnNumber: 9
     }, this),
     orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Orders, { orders }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 161,
+      lineNumber: 167,
       columnNumber: 27
     }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(EmptyOrders, {}, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 161,
+      lineNumber: 167,
       columnNumber: 56
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).account.jsx",
-    lineNumber: 159,
+    lineNumber: 165,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/routes/($locale).account.jsx",
-    lineNumber: 158,
+    lineNumber: 164,
     columnNumber: 5
   }, this);
 }
@@ -58879,7 +58932,7 @@ function EmptyOrders() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 170,
+      lineNumber: 176,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
@@ -58894,29 +58947,29 @@ function EmptyOrders() {
       !1,
       {
         fileName: "app/routes/($locale).account.jsx",
-        lineNumber: 174,
+        lineNumber: 180,
         columnNumber: 9
       },
       this
     ) }, void 0, !1, {
       fileName: "app/routes/($locale).account.jsx",
-      lineNumber: 173,
+      lineNumber: 179,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).account.jsx",
-    lineNumber: 169,
+    lineNumber: 175,
     columnNumber: 5
   }, this);
 }
 function Orders({ orders }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order) => /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(OrderCard, { order }, order.id, !1, {
     fileName: "app/routes/($locale).account.jsx",
-    lineNumber: 190,
+    lineNumber: 196,
     columnNumber: 9
   }, this)) }, void 0, !1, {
     fileName: "app/routes/($locale).account.jsx",
-    lineNumber: 188,
+    lineNumber: 194,
     columnNumber: 5
   }, this);
 }
@@ -60695,7 +60748,7 @@ function AddressBook() {
     setEditAddress,
     selectedAddress,
     setSelectedAddress
-  } = useAddressBook(), [selectedFile, setSelectedFile] = (0, import_react116.useState)(null), [fileData, setFileData] = (0, import_react116.useState)([]), [searchText, setSearchText] = (0, import_react116.useState)(""), [filteredAddresses, setFilteredAddresses] = (0, import_react116.useState)([addresses]), [isModalOpen, setIsModalOpen] = (0, import_react116.useState)(!1), [selectedCheckboxes, setSelectedCheckboxes] = (0, import_react116.useState)([]), [loader33, setLoader] = (0, import_react116.useState)(!1), [errorModal, setErrorModal] = (0, import_react116.useState)(!1), [errorContent, serErrorContent] = (0, import_react116.useState)([]), navigate = useNavigate();
+  } = useAddressBook(), [selectedFile2, setSelectedFile] = (0, import_react116.useState)(null), [fileData, setFileData] = (0, import_react116.useState)([]), [searchText, setSearchText] = (0, import_react116.useState)(""), [filteredAddresses, setFilteredAddresses] = (0, import_react116.useState)([addresses]), [isModalOpen, setIsModalOpen] = (0, import_react116.useState)(!1), [selectedCheckboxes, setSelectedCheckboxes] = (0, import_react116.useState)([]), [loader33, setLoader] = (0, import_react116.useState)(!1), [errorModal, setErrorModal] = (0, import_react116.useState)(!1), [errorContent, serErrorContent] = (0, import_react116.useState)([]), navigate = useNavigate();
   (0, import_react116.useEffect)(() => {
     customerID = localStorage.getItem("customerId"), customerID || navigate("/account/login");
   }, []);
@@ -60928,7 +60981,7 @@ function AddressBook() {
                   lineNumber: 273,
                   columnNumber: 23
                 }, this),
-                selectedFile && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
+                selectedFile2 && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
                   DynamicButton_default,
                   {
                     text: "Upload",
@@ -61199,14 +61252,14 @@ var add_image_icon_default = "/build/_assets/add_image_icon-X7FKEYTH.png";
 // app/components/createCard/FoldCard.jsx
 var import_html2canvas = __toESM(require_html2canvas()), import_jsx_dev_runtime63 = __toESM(require_jsx_dev_runtime());
 function FoldCard() {
-  let [isFolded, setIsFolded] = (0, import_react118.useState)(!0), [cardPageName, setCardPageName] = (0, import_react118.useState)("Front"), [selectedFile, setSelectedFile] = (0, import_react118.useState)(null), [backCardImage, setBackCardImage] = (0, import_react118.useState)(null), [imageScale, setImageScale] = (0, import_react118.useState)(1), [selectButton, setSelectButton] = (0, import_react118.useState)(null), [showAlert, setShowAlert] = (0, import_react118.useState)(!1), [ModalOpen, setModalOpen] = (0, import_react118.useState)(!1), fileInputRef = (0, import_react118.useRef)(null), redDotDivRef = (0, import_react118.useRef)(null), openModal = (data) => {
+  let [isFolded, setIsFolded] = (0, import_react118.useState)(!0), [cardPageName, setCardPageName] = (0, import_react118.useState)("Front"), [selectedFile2, setSelectedFile] = (0, import_react118.useState)(null), [backCardImage, setBackCardImage] = (0, import_react118.useState)(null), [imageScale, setImageScale] = (0, import_react118.useState)(1), [backImageScale, setBackImageScale] = (0, import_react118.useState)(1), [selectButton, setSelectButton] = (0, import_react118.useState)(null), [showAlert, setShowAlert] = (0, import_react118.useState)(!1), [ModalOpen, setModalOpen] = (0, import_react118.useState)(!1), fileInputRef = (0, import_react118.useRef)(null), redDotDivRef = (0, import_react118.useRef)(null), openModal = (data) => {
     setModalOpen(!0), setModalData(data);
   }, closeModal = () => {
     setModalOpen(!1);
   };
   (0, import_react118.useEffect)(() => {
     generateScreenshotURL(redDotDivRef.current);
-  }, [imageScale, backCardImage, selectedFile, redDotDivRef]);
+  }, [imageScale, backCardImage, selectedFile2, redDotDivRef]);
   let generateScreenshotURL = async (element) => {
     try {
       let canvas = await (0, import_html2canvas.default)(element), cropSize = 23, newWidth = canvas.width - 2 * cropSize, newHeight = canvas.height - 2 * cropSize, xOffset = cropSize, yOffset = cropSize, newCanvas = document.createElement("canvas");
@@ -61232,23 +61285,23 @@ function FoldCard() {
     setCardPageName(cardPageName2);
   }, handleFileChange = (event, cardPageName2) => {
     let file = event.target.files[0];
-    cardPageName2 === "Front" && setSelectedFile(file), cardPageName2 === "Back" && setBackCardImage(file), setSelectButton(null);
+    cardPageName2 === "Front" && setSelectedFile(file), cardPageName2 === "Back" && setBackCardImage(file), setSelectButton(null), fileInputRef.current && (fileInputRef.current.value = "");
   }, handleRemoveImage = () => {
-    setSelectedFile(null), setBackCardImage(null), setImageScale(1), fileInputRef.current && (fileInputRef.current.value = "");
+    cardPageName === "Back" && (setBackImageScale(1), setBackCardImage(null)), cardPageName === "Front" && (setImageScale(1), setSelectedFile(null));
   }, handleSliderChange = (value) => {
     let scaleFactor = 1 + (value - 50) / 100;
-    setImageScale(scaleFactor);
+    cardPageName === "Front" && setImageScale(scaleFactor), cardPageName === "Back" && setBackImageScale(scaleFactor);
   }, handleClickButton = (buttonId) => {
     setSelectButton(buttonId);
   };
   return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "Custom-folded-card-front", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("h1", { className: "custom-folded-card ml-[-71px]", children: "Custom Folded Card Front" }, void 0, !1, {
       fileName: "app/components/createCard/FoldCard.jsx",
-      lineNumber: 104,
+      lineNumber: 113,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/components/createCard/FoldCard.jsx",
-      lineNumber: 103,
+      lineNumber: 112,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "folded-card flex items-center justify-evenly", children: [
@@ -61262,56 +61315,56 @@ function FoldCard() {
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "dotted-div -z-10" }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 116,
+                lineNumber: 125,
                 columnNumber: 13
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "red-dot flex align-items justify-center -z-20", children: cardPageName === "Front" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "front-div p-[19px] flex justify-center align-center ", children: selectedFile && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "red-dot flex align-items justify-center -z-20", children: cardPageName === "Front" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "front-div p-[19px] flex justify-center align-center ", children: selectedFile2 && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
                 "img",
                 {
-                  className: `${selectButton === "dark" ? "dark" : ""} image-scal`,
-                  src: isFolded ? URL.createObjectURL(selectedFile) : null,
+                  className: `${selectButton === "dark" ? "graysacle" : "grayscale-0"} image-scal  `,
+                  src: isFolded ? URL.createObjectURL(selectedFile2) : null,
                   style: { transform: `scale(${imageScale})` },
                   alt: "selected"
                 },
-                selectedFile.name,
+                selectedFile2.name,
                 !1,
                 {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 121,
+                  lineNumber: 130,
                   columnNumber: 21
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 119,
+                lineNumber: 128,
                 columnNumber: 17
               }, this) || cardPageName === "Inside" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "custom-msg font-cursive text-base text-22 text-blue-500 pt-16", children: "Your custom message text will be here..." }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 134,
+                lineNumber: 143,
                 columnNumber: 19
               }, this) || cardPageName === "Back" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "front-div p-[19px] flex justify-center align-center", children: backCardImage && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
                 "img",
                 {
                   className: `${selectButton === "dark" ? "dark" : ""} image-scal`,
                   src: isFolded ? URL.createObjectURL(backCardImage) : null,
-                  style: { transform: `scale(${imageScale})` },
+                  style: { transform: `scale(${backImageScale})` },
                   alt: "selected"
                 },
                 backCardImage.name,
                 !1,
                 {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 141,
+                  lineNumber: 150,
                   columnNumber: 23
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 139,
+                lineNumber: 148,
                 columnNumber: 19
               }, this) }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 117,
+                lineNumber: 126,
                 columnNumber: 13
               }, this)
             ]
@@ -61320,7 +61373,7 @@ function FoldCard() {
           !0,
           {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 111,
+            lineNumber: 120,
             columnNumber: 11
           },
           this
@@ -61340,7 +61393,7 @@ function FoldCard() {
             !1,
             {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 158,
+              lineNumber: 167,
               columnNumber: 13
             },
             this
@@ -61359,7 +61412,7 @@ function FoldCard() {
             !1,
             {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 167,
+              lineNumber: 176,
               columnNumber: 13
             },
             this
@@ -61378,26 +61431,26 @@ function FoldCard() {
             !1,
             {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 176,
+              lineNumber: 185,
               columnNumber: 13
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/components/createCard/FoldCard.jsx",
-          lineNumber: 157,
+          lineNumber: 166,
           columnNumber: 11
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/createCard/FoldCard.jsx",
-        lineNumber: 110,
+        lineNumber: 119,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "choose-file-button", children: [
-        (cardPageName === "Back" || cardPageName === "Front") && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(import_jsx_dev_runtime63.Fragment, { children: [
+        (cardPageName === "Back" || cardPageName === "Front") && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "file-click relative", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("img", { className: "choose-image", src: add_image_icon_default, alt: "addpicture" }, void 0, !1, {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 190,
+            lineNumber: 199,
             columnNumber: 15
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
@@ -61408,37 +61461,37 @@ function FoldCard() {
               onChange: (event) => {
                 handleFileChange(event, cardPageName);
               },
-              ref: fileInputRef
+              value: "",
+              className: "file-upload"
             },
             void 0,
             !1,
             {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 191,
+              lineNumber: 200,
               columnNumber: 15
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/components/createCard/FoldCard.jsx",
-          lineNumber: 189,
+          lineNumber: 198,
           columnNumber: 13
         }, this),
-        cardPageName === "Front" && selectedFile && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+        cardPageName === "Front" && selectedFile2 && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
           "div",
           {
-            className: `${selectButton === "dark" ? "dark" : ""}`,
             children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "slider-container", children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("b", { children: "Resize image" }, void 0, !1, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 207,
+                  lineNumber: 217,
                   columnNumber: 17
                 }, this),
                 " ",
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("br", {}, void 0, !1, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 207,
+                  lineNumber: 217,
                   columnNumber: 37
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
@@ -61454,14 +61507,14 @@ function FoldCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 208,
+                    lineNumber: 218,
                     columnNumber: 17
                   },
                   this
                 )
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 206,
+                lineNumber: 216,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "select-color-change flex gap-10", children: [
@@ -61474,36 +61527,6 @@ function FoldCard() {
                       value: "dark",
                       checked: selectButton === "dark",
                       onChange: () => handleClickButton("dark")
-                    },
-                    void 0,
-                    !1,
-                    {
-                      fileName: "app/components/createCard/FoldCard.jsx",
-                      lineNumber: 219,
-                      columnNumber: 19
-                    },
-                    this
-                  ),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
-                    fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 226,
-                    columnNumber: 19
-                  }, this),
-                  " B/W"
-                ] }, void 0, !0, {
-                  fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 218,
-                  columnNumber: 17
-                }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
-                    "input",
-                    {
-                      type: "radio",
-                      name: "mode",
-                      value: "colorful",
-                      checked: selectButton === "colorful",
-                      onChange: () => handleClickButton("colorful")
                     },
                     void 0,
                     !1,
@@ -61519,15 +61542,45 @@ function FoldCard() {
                     lineNumber: 236,
                     columnNumber: 19
                   }, this),
-                  " Color"
+                  " B/W"
                 ] }, void 0, !0, {
                   fileName: "app/components/createCard/FoldCard.jsx",
                   lineNumber: 228,
                   columnNumber: 17
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
+                    "input",
+                    {
+                      type: "radio",
+                      name: "mode",
+                      value: "colorful",
+                      checked: selectButton === "colorful",
+                      onChange: () => handleClickButton("colorful")
+                    },
+                    void 0,
+                    !1,
+                    {
+                      fileName: "app/components/createCard/FoldCard.jsx",
+                      lineNumber: 239,
+                      columnNumber: 19
+                    },
+                    this
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
+                    fileName: "app/components/createCard/FoldCard.jsx",
+                    lineNumber: 246,
+                    columnNumber: 19
+                  }, this),
+                  " Color"
+                ] }, void 0, !0, {
+                  fileName: "app/components/createCard/FoldCard.jsx",
+                  lineNumber: 238,
+                  columnNumber: 17
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 217,
+                lineNumber: 227,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "remove-finishing position-relative", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
@@ -61542,22 +61595,22 @@ function FoldCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 240,
+                  lineNumber: 250,
                   columnNumber: 17
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 239,
+                lineNumber: 249,
                 columnNumber: 15
               }, this)
             ]
           },
-          selectedFile.name,
+          selectedFile2.name,
           !0,
           {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 202,
+            lineNumber: 212,
             columnNumber: 13
           },
           this
@@ -61570,13 +61623,13 @@ function FoldCard() {
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "slider-container", children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("b", { children: "Resize image" }, void 0, !1, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 257,
+                  lineNumber: 267,
                   columnNumber: 17
                 }, this),
                 " ",
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("br", {}, void 0, !1, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 257,
+                  lineNumber: 267,
                   columnNumber: 37
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
@@ -61585,21 +61638,21 @@ function FoldCard() {
                     type: "range",
                     min: "0",
                     max: "100",
-                    value: (imageScale - 1) * 100 + 50,
+                    value: (backImageScale - 1) * 100 + 50,
                     onChange: (e4) => handleSliderChange(e4.target.value)
                   },
                   void 0,
                   !1,
                   {
                     fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 258,
+                    lineNumber: 268,
                     columnNumber: 17
                   },
                   this
                 )
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 256,
+                lineNumber: 266,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "select-color-change flex gap-10", children: [
@@ -61617,20 +61670,20 @@ function FoldCard() {
                     !1,
                     {
                       fileName: "app/components/createCard/FoldCard.jsx",
-                      lineNumber: 269,
+                      lineNumber: 279,
                       columnNumber: 19
                     },
                     this
                   ),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
                     fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 276,
+                    lineNumber: 286,
                     columnNumber: 19
                   }, this),
                   " B/W"
                 ] }, void 0, !0, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 268,
+                  lineNumber: 278,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { children: [
@@ -61647,25 +61700,25 @@ function FoldCard() {
                     !1,
                     {
                       fileName: "app/components/createCard/FoldCard.jsx",
-                      lineNumber: 279,
+                      lineNumber: 289,
                       columnNumber: 19
                     },
                     this
                   ),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
                     fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 286,
+                    lineNumber: 296,
                     columnNumber: 19
                   }, this),
                   " Color"
                 ] }, void 0, !0, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 278,
+                  lineNumber: 288,
                   columnNumber: 17
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 267,
+                lineNumber: 277,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "remove-finishing position-relative", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
@@ -61680,13 +61733,13 @@ function FoldCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 290,
+                  lineNumber: 300,
                   columnNumber: 17
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 289,
+                lineNumber: 299,
                 columnNumber: 15
               }, this)
             ]
@@ -61695,18 +61748,18 @@ function FoldCard() {
           !0,
           {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 252,
+            lineNumber: 262,
             columnNumber: 13
           },
           this
         ),
         cardPageName === "Back" && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "finish-button-editing", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { type: "button", children: "Finish Editing" }, void 0, !1, {
           fileName: "app/components/createCard/FoldCard.jsx",
-          lineNumber: 303,
+          lineNumber: 313,
           columnNumber: 15
         }, this) }, void 0, !1, {
           fileName: "app/components/createCard/FoldCard.jsx",
-          lineNumber: 302,
+          lineNumber: 312,
           columnNumber: 13
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "bar-code flex items-center  absolute top-236  gap-5 border border-solid border-gray-300 bg-gray-200", children: [
@@ -61720,41 +61773,41 @@ function FoldCard() {
             !1,
             {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 307,
+              lineNumber: 317,
               columnNumber: 13
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { className: "qr-code font-bold ", children: "ADD QR CODE" }, void 0, !1, {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 311,
+            lineNumber: 321,
             columnNumber: 13
           }, this),
           ModalOpen && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(Modal, { cancelLink: "#", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "modal min-w-40", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { className: "float-right text-[25px]", type: "button", onClick: closeModal, children: "X" }, void 0, !1, {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 316,
+              lineNumber: 326,
               columnNumber: 19
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("h1", { children: "ADD QR CODE" }, void 0, !1, {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 317,
+              lineNumber: 327,
               columnNumber: 21
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("p", { children: "Enter website URL or message:" }, void 0, !1, {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 318,
+              lineNumber: 328,
               columnNumber: 21
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("input", { type: "text" }, void 0, !1, {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 319,
+              lineNumber: 329,
               columnNumber: 21
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex gap-10", children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("span", { children: "Position:" }, void 0, !1, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 321,
+                lineNumber: 331,
                 columnNumber: 23
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "form-check", children: [
@@ -61770,19 +61823,19 @@ function FoldCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 323,
+                    lineNumber: 333,
                     columnNumber: 25
                   },
                   this
                 ),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { className: "form-check-label", for: "flexRadioDefault1", children: "Add header" }, void 0, !1, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 329,
+                  lineNumber: 339,
                   columnNumber: 25
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 322,
+                lineNumber: 332,
                 columnNumber: 23
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "form-check", children: [
@@ -61799,67 +61852,74 @@ function FoldCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FoldCard.jsx",
-                    lineNumber: 334,
+                    lineNumber: 344,
                     columnNumber: 25
                   },
                   this
                 ),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("label", { className: "form-check-label", for: "flexRadioDefault2", children: "Add footer" }, void 0, !1, {
                   fileName: "app/components/createCard/FoldCard.jsx",
-                  lineNumber: 341,
+                  lineNumber: 351,
                   columnNumber: 25
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FoldCard.jsx",
-                lineNumber: 333,
+                lineNumber: 343,
                 columnNumber: 23
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 320,
+              lineNumber: 330,
               columnNumber: 21
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("button", { onClick: handleAlertClick, className: "insert-btn", type: "button", children: "Insert QR Code" }, void 0, !1, {
               fileName: "app/components/createCard/FoldCard.jsx",
-              lineNumber: 346,
+              lineNumber: 356,
               columnNumber: 21
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 315,
+            lineNumber: 325,
             columnNumber: 19
           }, this) }, void 0, !1, {
             fileName: "app/components/createCard/FoldCard.jsx",
-            lineNumber: 313,
+            lineNumber: 323,
             columnNumber: 15
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/createCard/FoldCard.jsx",
-          lineNumber: 306,
+          lineNumber: 316,
           columnNumber: 11
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/createCard/FoldCard.jsx",
-        lineNumber: 187,
+        lineNumber: 196,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/createCard/FoldCard.jsx",
-      lineNumber: 109,
+      lineNumber: 118,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/createCard/FoldCard.jsx",
-    lineNumber: 102,
+    lineNumber: 111,
     columnNumber: 5
   }, this);
 }
 
 // app/components/createCard/FlatCard.jsx
 var import_react119 = __toESM(require_react());
-var import_html2canvas2 = __toESM(require_html2canvas()), import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime());
+var import_html2canvas2 = __toESM(require_html2canvas());
+var import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime());
 function FlatCard() {
-  let [isFrontCard, setIsFrontCard] = (0, import_react119.useState)(!0), [isHeaderChecked, setIsHeaderChecked] = (0, import_react119.useState)(!1), [isFooterChecked, setIsFooterChecked] = (0, import_react119.useState)(!1), [inputText, setInputText] = (0, import_react119.useState)(""), [headerText, setHeaderText] = (0, import_react119.useState)("Header Text"), [footerText, setFooterText] = (0, import_react119.useState)(""), [scaledImage, setScaledImage] = (0, import_react119.useState)(null), [backHeaderImage, setBackHeaderImage] = (0, import_react119.useState)(), [backFooterImage, setBackFooterImage] = (0, import_react119.useState)(), [scale, setScale] = (0, import_react119.useState)(1), [backScale, setBackScale] = (0, import_react119.useState)(1), [qrCodeShow, setQrCodeShow] = (0, import_react119.useState)(!1), [selectButton, setSelectButton] = (0, import_react119.useState)(null), fileInputRef = (0, import_react119.useRef)(null), [isDivOpen, setIsDivOpen] = (0, import_react119.useState)(!1), [alignment, setAlignment] = (0, import_react119.useState)(""), [selectedFontSize, setSelectedFontSize] = (0, import_react119.useState)({}), [headerFontSize, setHeaderFontSize] = (0, import_react119.useState)(16), [footerFontSize, setFooterFontSize] = (0, import_react119.useState)(16), handleFontSizeChange = (event) => {
+  let [isFrontCard, setIsFrontCard] = (0, import_react119.useState)(!0), [isHeaderChecked, setIsHeaderChecked] = (0, import_react119.useState)(!1), [isFooterChecked, setIsFooterChecked] = (0, import_react119.useState)(!1), [inputText, setInputText] = (0, import_react119.useState)(""), [headerText, setHeaderText] = (0, import_react119.useState)("Header Text"), [footerText, setFooterText] = (0, import_react119.useState)(""), [scaledImage, setScaledImage] = (0, import_react119.useState)(null), [backHeaderImage, setBackHeaderImage] = (0, import_react119.useState)(), [backFooterImage, setBackFooterImage] = (0, import_react119.useState)(), [scale, setScale] = (0, import_react119.useState)(1), [backScale, setBackScale] = (0, import_react119.useState)(1), [qrCodeShow, setQrCodeShow] = (0, import_react119.useState)(!1), [selectButton, setSelectButton] = (0, import_react119.useState)(null), fileInputRef = (0, import_react119.useRef)(null), [isDivOpen, setIsDivOpen] = (0, import_react119.useState)(!1), [alignment, setAlignment] = (0, import_react119.useState)(""), [footeralignment, setFooteraligmment] = (0, import_react119.useState)(!1), [selectedFontSize, setSelectedFontSize] = (0, import_react119.useState)({}), [headerFontSize, setHeaderFontSize] = (0, import_react119.useState)(16), [footerFontSize, setFooterFontSize] = (0, import_react119.useState)(16), [modalOpen, setModalOpen] = (0, import_react119.useState)(!1), [modalData, setModalData2] = (0, import_react119.useState)(null), openModal = (data) => {
+    setModalOpen(!0), setModalData2(data);
+  }, closeModal = () => {
+    setModalOpen(!1);
+  }, handleDivOpenChange = () => {
+    openModal({});
+  }, handleFontSizeChange = (event) => {
     headerText === "Header Text" && setHeaderFontSize(event.target.value), headerText === "Footer Text" && setFooterFontSize(event.target.value);
   }, handleDivOpen = (setScale2) => {
     setIsDivOpen(!isDivOpen), isFrontCard ? setScale2(scale) : setBackScale(backScale);
@@ -61870,12 +61930,12 @@ function FlatCard() {
   }, handleFooterCheckboxChange = () => {
     setIsFooterChecked(!isFooterChecked);
   }, handleFilesChange = (event) => {
-    let selectedFile = event.target.files[0];
-    if (selectedFile) {
+    let selectedFile2 = event.target.files[0];
+    if (selectedFile2) {
       let reader = new FileReader();
       reader.onload = (e4) => {
         isFrontCard && setScaledImage(e4.target.result), !isFrontCard && isHeaderChecked && setBackHeaderImage(e4.target.result), !isFrontCard && isFooterChecked && setBackFooterImage(e4.target.result);
-      }, setInputText(""), setFooterText(""), reader.readAsDataURL(selectedFile);
+      }, setInputText(""), setFooterText(""), reader.readAsDataURL(selectedFile2);
     }
   }, handleScaleChange = (event) => {
     isFrontCard ? setScale(event.target.value) : setBackScale(event.target.value), console.log(event.target.value, "resize");
@@ -61934,6 +61994,18 @@ function FlatCard() {
     } catch (error) {
       console.error("Error generating screenshot:", error);
     }
+  }, customerid5 = localStorage.getItem("customerId"), customerName = localStorage.getItem("customerName");
+  console.log("footeralignment", footeralignment), console.log("alignment", alignment);
+  let uploadPdf = () => {
+    fetch(`https://api.simplynoted.com/api/customizedCard/uploadPDFv2?customerId=${customerid5}`, {
+      method: "POST",
+      body: JSON.stringify({
+        cardType: selectedFile,
+        name: customerName,
+        headerData: headerText || alignment,
+        footerData: footerText
+      })
+    });
   };
   return /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
     "section",
@@ -61943,7 +62015,7 @@ function FlatCard() {
         /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flat_first-cont flex flex-col items-center justify-center pt-5", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("h2", { className: " text-2xl font-medium", children: " Custom Flat Card" }, void 0, !1, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 193,
+            lineNumber: 237,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "border border-solid border-black bg-white text-center h-[416px] w-[553px] -z-30", children: [
@@ -61955,13 +62027,13 @@ function FlatCard() {
                 children: [
                   /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "dotted-div -z-10" }, void 0, !1, {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 200,
+                    lineNumber: 244,
                     columnNumber: 15
                   }, this),
                   scaledImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex min-h-full flex-1 p-[18px] h-[416px] w-[553px] justify-center align-center overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
                     "img",
                     {
-                      className: "absolute-scaled-image  -z-20",
+                      className: `absolute-scaled-image -z-20 ${selectButton === "dark" ? "grayscale" : "grayscale-0"} image-scal`,
                       src: scaledImage,
                       style: {
                         transform: `scale(${scale})`
@@ -61972,13 +62044,13 @@ function FlatCard() {
                     !1,
                     {
                       fileName: "app/components/createCard/FlatCard.jsx",
-                      lineNumber: 203,
+                      lineNumber: 247,
                       columnNumber: 19
                     },
                     this
                   ) }, void 0, !1, {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 202,
+                    lineNumber: 246,
                     columnNumber: 17
                   }, this)
                 ]
@@ -61987,7 +62059,7 @@ function FlatCard() {
               !0,
               {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 196,
+                lineNumber: 240,
                 columnNumber: 13
               },
               this
@@ -61995,7 +62067,7 @@ function FlatCard() {
               isHeaderChecked ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
                 "div",
                 {
-                  className: `${backHeaderImage && "flex"} ${alignment === "left" && "justify-start"} ${alignment === "right" && "justify-end"} ${alignment === "center" && "justify-center"} enclosed-div absolute top-0 m-3 overflow-hidden`,
+                  className: `${backHeaderImage && "flex"} ${alignment === "left" && "justify-start"} ${alignment === "right" && "justify-end"} ${alignment === "center" && "justify-center"}  enclosed-div absolute top-0 m-3 overflow-hidden`,
                   children: [
                     backHeaderImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
                       "img",
@@ -62009,7 +62081,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 225,
+                        lineNumber: 273,
                         columnNumber: 21
                       },
                       this
@@ -62018,7 +62090,7 @@ function FlatCard() {
                       "input",
                       {
                         id: "color-header",
-                        className: `border-none min-w-full ${alignment === "left" && headerText === "Header Text" && "text-left"} ${alignment === "center" && headerText === "Header Text" && "text-center"} ${alignment === "right" && headerText === "Header Text" && "text-right"}`,
+                        className: `border-none min-w-full ${alignment === "left" && "text-left"} ${alignment === "center" && "text-center"} ${alignment === "right" && "text-right"}`,
                         value: inputText,
                         onChange: handleInputChange,
                         type: "text",
@@ -62029,7 +62101,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 232,
+                        lineNumber: 280,
                         columnNumber: 19
                       },
                       this
@@ -62040,7 +62112,7 @@ function FlatCard() {
                 !0,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 217,
+                  lineNumber: 265,
                   columnNumber: 17
                 },
                 this
@@ -62048,7 +62120,7 @@ function FlatCard() {
               isFooterChecked ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
                 "div",
                 {
-                  className: `${backFooterImage && "flex"} ${alignment === "left" && "justify-start"} ${alignment === "right" && "justify-end"} ${alignment === "center" && "justify-center"} enclosed-div absolute bottom-0 m-3 overflow-hidden`,
+                  className: `${backFooterImage && "flex"} ${footeralignment === "left" && "justify-start"} ${footeralignment === "right" && "justify-end"} ${footeralignment === "center" && "justify-center"} enclosed-div border border-dashed border-1 border-black  absolute bottom-0 m-3 overflow-hidden`,
                   children: [
                     backFooterImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
                       "img",
@@ -62062,7 +62134,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 264,
+                        lineNumber: 305,
                         columnNumber: 21
                       },
                       this
@@ -62071,7 +62143,7 @@ function FlatCard() {
                       "input",
                       {
                         id: "color-footer",
-                        className: `border-none min-w-full ${alignment === "left" && headerText === "Footer Text" && "text-left"} ${alignment === "center" && headerText === "Footer Text" && "text-center"} ${alignment === "right" && headerText === "Footer Text" && "text-right"}`,
+                        className: `border-none  min-w-full ${footeralignment === "left" && "text-left"} ${footeralignment === "center" && "text-center"} ${footeralignment === "right" && "text-right"}`,
                         value: footerText,
                         type: "text",
                         placeholder: backFooterImage ? "" : "Footer",
@@ -62081,7 +62153,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 271,
+                        lineNumber: 312,
                         columnNumber: 19
                       },
                       this
@@ -62092,14 +62164,14 @@ function FlatCard() {
                 !0,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 256,
+                  lineNumber: 297,
                   columnNumber: 17
                 },
                 this
               ) : null
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 215,
+              lineNumber: 263,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex gap-x-3 justify-center pt-2", children: [
@@ -62115,7 +62187,7 @@ function FlatCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 296,
+                  lineNumber: 329,
                   columnNumber: 13
                 },
                 this
@@ -62132,61 +62204,85 @@ function FlatCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 303,
+                  lineNumber: 336,
                   columnNumber: 13
                 },
                 this
               )
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 295,
+              lineNumber: 328,
               columnNumber: 11
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 194,
+            lineNumber: 238,
             columnNumber: 9
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/createCard/FlatCard.jsx",
-          lineNumber: 192,
+          lineNumber: 236,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flat_second-cont flex flex-col items-center justify-center relative", children: [
           !isFrontCard && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(import_jsx_dev_runtime64.Fragment, { children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex min-w-full gap-[42px] text-[23px] justify-evenly mb-5", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "header-btn", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleHeaderClick, children: "Header" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "header-btn", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "button",
+                {
+                  className: `${headerText === "Header Text" ? "text-[36px] opacity-100  font-bold" : "text-[20x] opacity-50 font-normal"}  text-[#001a5f]`,
+                  type: "button",
+                  onClick: handleHeaderClick,
+                  children: "Header"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 352,
+                  columnNumber: 17
+                },
+                this
+              ) }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 319,
-                columnNumber: 17
-              }, this) }, void 0, !1, {
-                fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 318,
+                lineNumber: 351,
                 columnNumber: 15
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "footer-btn", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleFooterClick, children: "Footer" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "footer-btn", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
+                "button",
+                {
+                  className: `${headerText === "Footer Text" ? "text-[36px]  opacity-100  font-bold" : "text-[20x] opacity-50 font-normal"} text-[#001a5f]`,
+                  type: "button",
+                  onClick: handleFooterClick,
+                  children: "Footer"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/createCard/FlatCard.jsx",
+                  lineNumber: 365,
+                  columnNumber: 17
+                },
+                this
+              ) }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 324,
-                columnNumber: 17
-              }, this) }, void 0, !1, {
-                fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 323,
+                lineNumber: 364,
                 columnNumber: 15
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 317,
+              lineNumber: 350,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "header-text", children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { children: headerText }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 330,
+                lineNumber: 379,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 331,
+                lineNumber: 380,
                 columnNumber: 15
               }, this),
               headerText === "Header Text" ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62200,7 +62296,7 @@ function FlatCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 333,
+                  lineNumber: 382,
                   columnNumber: 17
                 },
                 this
@@ -62215,7 +62311,7 @@ function FlatCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 339,
+                  lineNumber: 388,
                   columnNumber: 17
                 },
                 this
@@ -62223,18 +62319,20 @@ function FlatCard() {
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "mt-3 flex gap-2 mb-15", children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { className: "field-label mr-3 ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("b", { children: "Alignment" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 347,
+                  lineNumber: 396,
                   columnNumber: 19
                 }, this) }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 346,
+                  lineNumber: 395,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
                   "svg",
                   {
                     className: "alignment-left",
-                    onClick: () => setAlignment("left"),
+                    onClick: () => {
+                      isHeaderChecked && headerText === "Header Text" && setAlignment("left"), isFooterChecked && headerText === "Footer Text" && setFooteraligmment("left");
+                    },
                     xmlns: "http://www.w3.org/2000/svg",
                     viewBox: "0 0 20 20",
                     children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62247,7 +62345,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 355,
+                        lineNumber: 411,
                         columnNumber: 19
                       },
                       this
@@ -62257,7 +62355,7 @@ function FlatCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 349,
+                    lineNumber: 398,
                     columnNumber: 17
                   },
                   this
@@ -62266,7 +62364,9 @@ function FlatCard() {
                   "svg",
                   {
                     className: "alignment-center",
-                    onClick: () => setAlignment("center"),
+                    onClick: () => {
+                      isHeaderChecked && headerText === "Header Text" && setAlignment("center"), isFooterChecked && headerText === "Footer Text" && setFooteraligmment("center");
+                    },
                     xmlns: "http://www.w3.org/2000/svg",
                     viewBox: "0 0 20 20",
                     children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62279,7 +62379,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 366,
+                        lineNumber: 429,
                         columnNumber: 19
                       },
                       this
@@ -62289,7 +62389,7 @@ function FlatCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 360,
+                    lineNumber: 416,
                     columnNumber: 17
                   },
                   this
@@ -62298,7 +62398,9 @@ function FlatCard() {
                   "svg",
                   {
                     className: "alignment-right",
-                    onClick: () => setAlignment("right"),
+                    onClick: () => {
+                      isHeaderChecked && headerText === "Header Text" && setAlignment("right"), isFooterChecked && headerText === "Footer Text" && setFooteraligmment("right");
+                    },
                     xmlns: "http://www.w3.org/2000/svg",
                     viewBox: "0 0 20 20",
                     children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62311,7 +62413,7 @@ function FlatCard() {
                       !1,
                       {
                         fileName: "app/components/createCard/FlatCard.jsx",
-                        lineNumber: 377,
+                        lineNumber: 447,
                         columnNumber: 19
                       },
                       this
@@ -62321,254 +62423,254 @@ function FlatCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 371,
+                    lineNumber: 434,
                     columnNumber: 17
                   },
                   this
                 )
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 345,
+                lineNumber: 394,
                 columnNumber: 15
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 329,
+              lineNumber: 378,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("select", { id: "font", onClick: () => setFont(), children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "pinocchio", className: "font-pinocchio", children: "Pinocchio" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 385,
+                lineNumber: 455,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "tarzan", className: "font-tarzan", children: "Tarzan" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 389,
+                lineNumber: 459,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "stitch", className: "font-stitch", children: "Stitch" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 393,
+                lineNumber: 463,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "simba", className: "font-simba", children: "Simba" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 397,
+                lineNumber: 467,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "roo", className: "font-roo", children: "Roo" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 401,
+                lineNumber: 471,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "nimo", className: "font-nimo", children: "Nimo" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 405,
+                lineNumber: 475,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "lumiere", className: "font-lumiere", children: "Lumiere" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 409,
+                lineNumber: 479,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "kaa", className: "font-kaa", children: "Kaa" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 413,
+                lineNumber: 483,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "kaaNew", className: "font-kaaNew", children: "KaaNew" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 417,
+                lineNumber: 487,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "dumbo", className: "font-dumbo", children: "Dumbo" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 421,
+                lineNumber: 491,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "donald", className: "font-donald", children: "Donald" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 425,
+                lineNumber: 495,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "aladdin", className: "font-aladdin", children: "Aladdin" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 429,
+                lineNumber: 499,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "belle", className: "font-belle", children: "Belle" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 433,
+                lineNumber: 503,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "boo", className: "font-boo", children: "Boo" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 437,
+                lineNumber: 507,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "cinderella", className: "font-cinderella", children: "Cinderella" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 441,
+                lineNumber: 511,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "copper", className: "font-copper", children: "Copper" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 445,
+                lineNumber: 515,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "jasmine", className: "font-jasmine", children: "Jasmine" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 449,
+                lineNumber: 519,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "merlin", className: "font-merlin", children: "Merlin" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 453,
+                lineNumber: 523,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "goofy", className: "font-goofy", children: "Goofy" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 457,
+                lineNumber: 527,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "hercules", className: "font-hercules", children: "Hercules" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 461,
+                lineNumber: 531,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "rafiki", className: "font-rafiki", children: "Rafiki" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 465,
+                lineNumber: 535,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "rapunzel", className: "font-rapunzel", children: "Rapunzel" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 469,
+                lineNumber: 539,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "ratigan", className: "font-ratigan", children: "Ratigan" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 473,
+                lineNumber: 543,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "sarabi", className: "font-sarabi", children: "Sarabi" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 477,
+                lineNumber: 547,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "scar", className: "font-scar", children: "Scar" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 481,
+                lineNumber: 551,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "triton", className: "font-triton", children: "Triton" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 485,
+                lineNumber: 555,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "woody", className: "font-woody", children: "Woody" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 489,
+                lineNumber: 559,
                 columnNumber: 15
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 384,
+              lineNumber: 454,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("select", { style: { width: "125px" }, onClick: handleFontSizeChange, children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "16", children: "16px" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 494,
-                columnNumber: 12
+                lineNumber: 564,
+                columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "20", children: "20px" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 495,
-                columnNumber: 12
+                lineNumber: 565,
+                columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "24", children: "24px" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 496,
-                columnNumber: 12
+                lineNumber: 566,
+                columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "28", children: "28px" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 497,
-                columnNumber: 12
+                lineNumber: 567,
+                columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { value: "32", children: "32px" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 498,
-                columnNumber: 12
+                lineNumber: 568,
+                columnNumber: 15
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 493,
+              lineNumber: 563,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "text-color mt-[25px] flex items-center gap-[5px]", children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("b", { children: "Font Color" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 502,
+                lineNumber: 572,
                 columnNumber: 17
               }, this) }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 501,
+                lineNumber: 571,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("select", { id: "s1", onChange: (e4) => clrchange(e4.target.value), children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r1", value: "black", children: "Black" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 505,
+                  lineNumber: 575,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r2", value: "yellow", children: "Yellow" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 508,
+                  lineNumber: 578,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r3", value: "grey", children: "Grey" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 511,
+                  lineNumber: 581,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r4", value: "red", children: "Red" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 514,
+                  lineNumber: 584,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r5", value: "blue", children: "Blue" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 517,
+                  lineNumber: 587,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("option", { id: "r6", value: "green", children: "Green" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 520,
+                  lineNumber: 590,
                   columnNumber: 17
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 504,
+                lineNumber: 574,
                 columnNumber: 15
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 524,
+                lineNumber: 594,
                 columnNumber: 15
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 500,
+              lineNumber: 570,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
               "button",
               {
                 className: "finish-editing",
-                onClick: handleDivOpen,
+                onClick: handleDivOpenChange,
                 type: "button",
                 children: "Finish editing"
               },
@@ -62576,19 +62678,24 @@ function FlatCard() {
               !1,
               {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 526,
+                lineNumber: 596,
                 columnNumber: 13
               },
               this
             ),
+            modalOpen && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Modal, { cancelLink: closeModal }, void 0, !1, {
+              fileName: "app/components/createCard/FlatCard.jsx",
+              lineNumber: 604,
+              columnNumber: 12
+            }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 533,
+              lineNumber: 608,
               columnNumber: 13
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 316,
+            lineNumber: 349,
             columnNumber: 11
           }, this),
           isFrontCard && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { children: [
@@ -62604,7 +62711,7 @@ function FlatCard() {
               !1,
               {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 539,
+                lineNumber: 614,
                 columnNumber: 13
               },
               this
@@ -62622,7 +62729,7 @@ function FlatCard() {
               !1,
               {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 545,
+                lineNumber: 620,
                 columnNumber: 13
               },
               this
@@ -62630,12 +62737,12 @@ function FlatCard() {
             scaledImage && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "zoom-slider mt-3", children: [
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { htmlFor: "scale", children: "Resize:" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 554,
+                lineNumber: 629,
                 columnNumber: 17
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 555,
+                lineNumber: 630,
                 columnNumber: 17
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62654,14 +62761,14 @@ function FlatCard() {
                 !1,
                 {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 556,
+                  lineNumber: 631,
                   columnNumber: 17
                 },
                 this
               ),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 566,
+                lineNumber: 641,
                 columnNumber: 17
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "dark-colorfull-btn flex gap-5 mt-[12px]", children: [
@@ -62679,20 +62786,20 @@ function FlatCard() {
                     !1,
                     {
                       fileName: "app/components/createCard/FlatCard.jsx",
-                      lineNumber: 569,
+                      lineNumber: 644,
                       columnNumber: 21
                     },
                     this
                   ),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 576,
+                    lineNumber: 651,
                     columnNumber: 21
                   }, this),
                   " B/W"
                 ] }, void 0, !0, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 568,
+                  lineNumber: 643,
                   columnNumber: 19
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: [
@@ -62709,49 +62816,49 @@ function FlatCard() {
                     !1,
                     {
                       fileName: "app/components/createCard/FlatCard.jsx",
-                      lineNumber: 579,
+                      lineNumber: 654,
                       columnNumber: 21
                     },
                     this
                   ),
                   /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 586,
+                    lineNumber: 661,
                     columnNumber: 21
                   }, this),
                   " Color"
                 ] }, void 0, !0, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 578,
+                  lineNumber: 653,
                   columnNumber: 19
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 567,
+                lineNumber: 642,
                 columnNumber: 17
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "finish-button mt-[12px] pt-3 text-white bg-blue-500 text-center w-[150px] h-[50px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleClearData, children: "Remove Image" }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 590,
+                lineNumber: 665,
                 columnNumber: 19
               }, this) }, void 0, !1, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 589,
+                lineNumber: 664,
                 columnNumber: 17
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 553,
+              lineNumber: 628,
               columnNumber: 15
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 538,
+            lineNumber: 613,
             columnNumber: 11
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/createCard/FlatCard.jsx",
-          lineNumber: 314,
+          lineNumber: 347,
           columnNumber: 7
         }, this),
         !isFrontCard && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flat__checkbox self-center", children: [
@@ -62768,19 +62875,19 @@ function FlatCard() {
             !1,
             {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 601,
+              lineNumber: 676,
               columnNumber: 11
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { className: "add-header", value: footerText, htmlFor: "vehicle1", children: "Add Header" }, void 0, !1, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 608,
+            lineNumber: 683,
             columnNumber: 11
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 611,
+            lineNumber: 686,
             columnNumber: 11
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62796,19 +62903,19 @@ function FlatCard() {
             !1,
             {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 612,
+              lineNumber: 687,
               columnNumber: 11
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { className: "add-footer", htmlFor: "vehicle2", children: "Add Footer" }, void 0, !1, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 619,
+            lineNumber: 694,
             columnNumber: 11
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 622,
+            lineNumber: 697,
             columnNumber: 11
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "choose-file-btn-sec", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62824,40 +62931,40 @@ function FlatCard() {
             !1,
             {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 624,
+              lineNumber: 699,
               columnNumber: 13
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 623,
+            lineNumber: 698,
             columnNumber: 11
           }, this),
           qrCodeShow && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex items-center mt-[173px] absolute gap-5 border border-solid border-gray-300 bg-gray-200", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("img", { src: "	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445" }, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 634,
+              lineNumber: 709,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "qr-code font-bold ", children: "ADD QR CODE" }, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 635,
+              lineNumber: 710,
               columnNumber: 15
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 633,
+            lineNumber: 708,
             columnNumber: 13
           }, this),
           (backHeaderImage || backFooterImage) && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "zoom-slider mt-3", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { htmlFor: "scale", children: "Resize:" }, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 641,
+              lineNumber: 716,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 642,
+              lineNumber: 717,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
@@ -62876,14 +62983,14 @@ function FlatCard() {
               !1,
               {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 643,
+                lineNumber: 718,
                 columnNumber: 15
               },
               this
             ),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 653,
+              lineNumber: 728,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "dark-colorfull-btn flex gap-5 mt-[12px]", children: [
@@ -62901,20 +63008,20 @@ function FlatCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 656,
+                    lineNumber: 731,
                     columnNumber: 19
                   },
                   this
                 ),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 663,
+                  lineNumber: 738,
                   columnNumber: 19
                 }, this),
                 " B/W"
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 655,
+                lineNumber: 730,
                 columnNumber: 17
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("label", { children: [
@@ -62931,44 +63038,44 @@ function FlatCard() {
                   !1,
                   {
                     fileName: "app/components/createCard/FlatCard.jsx",
-                    lineNumber: 666,
+                    lineNumber: 741,
                     columnNumber: 19
                   },
                   this
                 ),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("span", { className: "radio-icon" }, void 0, !1, {
                   fileName: "app/components/createCard/FlatCard.jsx",
-                  lineNumber: 673,
+                  lineNumber: 748,
                   columnNumber: 19
                 }, this),
                 " Color"
               ] }, void 0, !0, {
                 fileName: "app/components/createCard/FlatCard.jsx",
-                lineNumber: 665,
+                lineNumber: 740,
                 columnNumber: 17
               }, this)
             ] }, void 0, !0, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 654,
+              lineNumber: 729,
               columnNumber: 15
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "finish-button mt-[12px] pt-3 text-white bg-blue-500 text-center w-[150px] h-[50px]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("button", { type: "button", onClick: handleClearData, children: "Remove Image" }, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 677,
+              lineNumber: 752,
               columnNumber: 17
             }, this) }, void 0, !1, {
               fileName: "app/components/createCard/FlatCard.jsx",
-              lineNumber: 676,
+              lineNumber: 751,
               columnNumber: 15
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/createCard/FlatCard.jsx",
-            lineNumber: 640,
+            lineNumber: 715,
             columnNumber: 13
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/createCard/FlatCard.jsx",
-          lineNumber: 600,
+          lineNumber: 675,
           columnNumber: 9
         }, this)
       ]
@@ -62977,7 +63084,7 @@ function FlatCard() {
     !0,
     {
       fileName: "app/components/createCard/FlatCard.jsx",
-      lineNumber: 187,
+      lineNumber: 231,
       columnNumber: 5
     },
     this
@@ -62987,12 +63094,12 @@ function FlatCard() {
 // app/routes/($locale).createcard.jsx
 var import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime());
 function createcard() {
-  let [selectedImage, setSelectedImage] = (0, import_react120.useState)("first"), [card, setCard] = (0, import_react120.useState)(!1);
+  let [selectedImage, setSelectedImage] = (0, import_react120.useState)("Flat 5*7"), [card, setCard] = (0, import_react120.useState)(!1), [clickColor, setClickColor] = (0, import_react120.useState)("transparent"), [isClicked, setIsClicked] = (0, import_react120.useState)(!1);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, { children: [
     !card && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "create-card-select-cont flex justify-center gap-20 m-20", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "images", children: [
-          selectedImage === "first" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+          selectedImage === "Flat 5*7" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
             "img",
             {
               src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Screenshot_1.png?v=1689262698%22",
@@ -63003,12 +63110,12 @@ function createcard() {
             !1,
             {
               fileName: "app/routes/($locale).createcard.jsx",
-              lineNumber: 28,
+              lineNumber: 36,
               columnNumber: 13
             },
             this
           ),
-          selectedImage === "sec" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+          selectedImage === "Folded 5*7" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
             "img",
             {
               src: "https://cdn.shopify.com/s/files/1/0275/6457/2777/files/create_a_card.png?v=1689262711",
@@ -63019,14 +63126,14 @@ function createcard() {
             !1,
             {
               fileName: "app/routes/($locale).createcard.jsx",
-              lineNumber: 37,
+              lineNumber: 45,
               columnNumber: 13
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/($locale).createcard.jsx",
-          lineNumber: 26,
+          lineNumber: 34,
           columnNumber: 9
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "slect-btn-image", children: [
@@ -63034,62 +63141,64 @@ function createcard() {
             "Start by selecting the size and style",
             /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/routes/($locale).createcard.jsx",
-              lineNumber: 48,
+              lineNumber: 56,
               columnNumber: 50
             }, this),
             "of the card you want to create."
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).createcard.jsx",
-            lineNumber: 47,
+            lineNumber: 55,
             columnNumber: 11
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "saaelect-img-btn flex gap-2 mt-[22px] justify-center", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
               "img",
               {
-                className: `select-btn w-[80px] h-[70px] ${selectedImage === "first" ? "bg-blue-500" : "bg-green-500"} sm:bg-indigo-500 md:bg-red-500 lg:bg-red-500 xl:bg-white text-white w-23`,
+                className: `select-btn w-[80px] h-[70px] ${selectedImage === "Fold 5*7" ? "bg-blue-500" : "bg-green-500"} sm:bg-indigo-500 md:bg-red-500 lg:bg-red-500 xl:bg-white text-white w-23`,
                 src: flat_green_default,
                 alt: "flatgreenpic",
                 onClick: () => {
-                  setSelectedImage("first");
-                }
+                  setSelectedImage("Flat 5*7"), setClickColor("black"), setIsClicked(!0);
+                },
+                style: { backgroundColor: isClicked ? clickColor : "" }
               },
               void 0,
               !1,
               {
                 fileName: "app/routes/($locale).createcard.jsx",
-                lineNumber: 52,
+                lineNumber: 60,
                 columnNumber: 13
               },
               this
             ),
             /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("br", {}, void 0, !1, {
               fileName: "app/routes/($locale).createcard.jsx",
-              lineNumber: 60,
+              lineNumber: 69,
               columnNumber: 13
             }, this),
             /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
               "img",
               {
-                className: `select-btn w-[80px] h-[70px] ${selectedImage === "sec" ? "bg-red-500" : "bg-indigo-500"} sm:bg-red-500 md:bg-indigo-500 xl:bg-white text-white w-23`,
+                className: `select-btn w-[80px] h-[70px] ${selectedImage === "Folded 5*7" ? "bg-red-500" : "bg-indigo-500"} sm:bg-red-500 md:bg-indigo-500 xl:bg-white text-white w-23`,
                 src: folded_green_default,
                 alt: "flatgreenpic",
                 onClick: () => {
-                  setSelectedImage("sec");
-                }
+                  setSelectedImage("Folded 5*7"), etClickColor("black"), setIsClicked(!1);
+                },
+                style: { backgroundColor: isClicked ? "" : clickColor }
               },
               void 0,
               !1,
               {
                 fileName: "app/routes/($locale).createcard.jsx",
-                lineNumber: 61,
+                lineNumber: 70,
                 columnNumber: 13
               },
               this
             )
           ] }, void 0, !0, {
             fileName: "app/routes/($locale).createcard.jsx",
-            lineNumber: 51,
+            lineNumber: 59,
             columnNumber: 11
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
@@ -63104,48 +63213,48 @@ function createcard() {
             !1,
             {
               fileName: "app/routes/($locale).createcard.jsx",
-              lineNumber: 71,
+              lineNumber: 81,
               columnNumber: 11
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/($locale).createcard.jsx",
-          lineNumber: 46,
+          lineNumber: 54,
           columnNumber: 9
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/($locale).createcard.jsx",
-        lineNumber: 25,
+        lineNumber: 33,
         columnNumber: 7
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "companies-header text-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("h1", { children: "Companies we've worked with" }, void 0, !1, {
         fileName: "app/routes/($locale).createcard.jsx",
-        lineNumber: 81,
+        lineNumber: 91,
         columnNumber: 9
       }, this) }, void 0, !1, {
         fileName: "app/routes/($locale).createcard.jsx",
-        lineNumber: 80,
+        lineNumber: 90,
         columnNumber: 7
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/($locale).createcard.jsx",
-      lineNumber: 24,
+      lineNumber: 32,
       columnNumber: 5
     }, this),
-    card && selectedImage === "first" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(FlatCard, {}, void 0, !1, {
+    card && selectedImage === "Flat 5*7" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(FlatCard, {}, void 0, !1, {
       fileName: "app/routes/($locale).createcard.jsx",
-      lineNumber: 85,
-      columnNumber: 45
+      lineNumber: 95,
+      columnNumber: 48
     }, this),
-    card && selectedImage === "sec" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(FoldCard, {}, void 0, !1, {
+    card && selectedImage === "Folded 5*7" && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(FoldCard, {}, void 0, !1, {
       fileName: "app/routes/($locale).createcard.jsx",
-      lineNumber: 86,
-      columnNumber: 43
+      lineNumber: 96,
+      columnNumber: 50
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/($locale).createcard.jsx",
-    lineNumber: 22,
+    lineNumber: 30,
     columnNumber: 5
   }, this);
 }
@@ -69406,7 +69515,7 @@ var LAYOUT_QUERY2 = `#graphql
 `;
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-QSBQNBX5.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-4O7Q2G2L.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-LWIKZBJ5.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ZQMGS536.js", imports: ["/build/_shared/chunk-R5OTP2B3.js", "/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-VXI3H4MX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-SI5A7S55.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-EUJXPKFD.js", imports: ["/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-ZPEZQHZH.js", imports: ["/build/_shared/chunk-TNU3BKUX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-23AMWAOZ.js", imports: ["/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-JNQ6UV2P.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-XLUCZBHG.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-WPWUDW5E.js", imports: ["/build/_shared/chunk-LV4STEJ5.js", "/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-DPSDDUXV.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-WOGIF2T2.js", imports: ["/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-NETK3AK4.js", imports: ["/build/_shared/chunk-LV4STEJ5.js", "/build/_shared/chunk-XROEOZ7I.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-NZF34NMZ.js", imports: ["/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).address-book": { id: "routes/($locale).address-book", parentId: "root", path: ":locale?/address-book", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).address-book-EVHXM4WB.js", imports: ["/build/_shared/chunk-YTR5SFD2.js", "/build/_shared/chunk-P3GSFGO6.js", "/build/_shared/chunk-FKPSF7P5.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-MOU6E3L4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-OAJB3DAE.js", imports: ["/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-4QGRVPXJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-4FGI6RSK.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-W3RN7LEB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-UTA2YNAY.js", imports: ["/build/_shared/chunk-YTR5SFD2.js", "/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-FKPSF7P5.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-OV62KZG3.js", imports: ["/build/_shared/chunk-7UKMYZRW.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-2NAK64TN.js", imports: ["/build/_shared/chunk-7UKMYZRW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).createcard": { id: "routes/($locale).createcard", parentId: "root", path: ":locale?/createcard", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).createcard-X4VONCSP.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-UFMYJ7RR.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-RTIGX4WU.js", imports: ["/build/_shared/chunk-7UKMYZRW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-BYKAWDFP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-ANBMC6S5.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-3EFB7SGK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-UPCYQ5ZS.js", imports: ["/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-P3GSFGO6.js", "/build/_shared/chunk-FKPSF7P5.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-6SFIBE6B.js", imports: ["/build/_shared/chunk-7UKMYZRW.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-575Q6QB5.js", imports: ["/build/_shared/chunk-7UKMYZRW.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-SYYEGSFQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-IBAGW2DX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-6623ANRH.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "99b80a3b", hmr: { runtime: "/build/_shared\\chunk-LWIKZBJ5.js", timestamp: 1698252972249 }, url: "/build/manifest-99B80A3B.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-QSBQNBX5.js", imports: ["/build/_shared/chunk-776LNBDF.js", "/build/_shared/chunk-IEDAELJY.js", "/build/_shared/chunk-UHAUI7PR.js", "/build/_shared/chunk-4O7Q2G2L.js", "/build/_shared/chunk-BVWHYGSQ.js", "/build/_shared/chunk-LWIKZBJ5.js", "/build/_shared/chunk-LSHG36UU.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-7BNEYOXC.js", imports: ["/build/_shared/chunk-R5OTP2B3.js", "/build/_shared/chunk-PA7CGJSA.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-VXI3H4MX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).$shopid.orders.$token.authenticate": { id: "routes/($locale).$shopid.orders.$token.authenticate", parentId: "root", path: ":locale?/:shopid/orders/:token/authenticate", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).$shopid.orders.$token.authenticate-FYIAYSMB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/($locale)._index": { id: "routes/($locale)._index", parentId: "root", path: ":locale?", index: !0, caseSensitive: void 0, module: "/build/routes/($locale)._index-GXULF4UY.js", imports: ["/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account": { id: "routes/($locale).account", parentId: "root", path: ":locale?/account", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account-5GE7TPIJ.js", imports: ["/build/_shared/chunk-MXWGUHCH.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.activate.$id.$activationToken": { id: "routes/($locale).account.activate.$id.$activationToken", parentId: "routes/($locale).account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.activate.$id.$activationToken-23AMWAOZ.js", imports: ["/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.address.$id": { id: "routes/($locale).account.address.$id", parentId: "routes/($locale).account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.address.$id-LUJ3X3BE.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.edit": { id: "routes/($locale).account.edit", parentId: "routes/($locale).account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.edit-WBF6VNWN.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.login": { id: "routes/($locale).account.login", parentId: "routes/($locale).account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.login-L55GW45B.js", imports: ["/build/_shared/chunk-DINKTBQ5.js", "/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.logout": { id: "routes/($locale).account.logout", parentId: "routes/($locale).account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.logout-XL42W67V.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.orders.$id": { id: "routes/($locale).account.orders.$id", parentId: "routes/($locale).account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.orders.$id-AEGJMGFL.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.recover": { id: "routes/($locale).account.recover", parentId: "routes/($locale).account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.recover-DQY3EIA5.js", imports: ["/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.register": { id: "routes/($locale).account.register", parentId: "routes/($locale).account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.register-425FZ2GV.js", imports: ["/build/_shared/chunk-DINKTBQ5.js", "/build/_shared/chunk-2VV7CVUS.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).account.reset.$id.$resetToken": { id: "routes/($locale).account.reset.$id.$resetToken", parentId: "routes/($locale).account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).account.reset.$id.$resetToken-NZF34NMZ.js", imports: ["/build/_shared/chunk-OUNRLCJT.js", "/build/_shared/chunk-GZRC5YLW.js", "/build/_shared/chunk-OMU6QE56.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).address-book": { id: "routes/($locale).address-book", parentId: "root", path: ":locale?/address-book", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).address-book-EVHXM4WB.js", imports: ["/build/_shared/chunk-YTR5SFD2.js", "/build/_shared/chunk-P3GSFGO6.js", "/build/_shared/chunk-FKPSF7P5.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.countries": { id: "routes/($locale).api.countries", parentId: "root", path: ":locale?/api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.countries-MOU6E3L4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).api.products": { id: "routes/($locale).api.products", parentId: "root", path: ":locale?/api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).api.products-OAJB3DAE.js", imports: ["/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).card": { id: "routes/($locale).card", parentId: "root", path: ":locale?/card", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).card-4QGRVPXJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart": { id: "routes/($locale).cart", parentId: "root", path: ":locale?/cart", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart-23DN7GTK.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).cart.$lines": { id: "routes/($locale).cart.$lines", parentId: "routes/($locale).cart", path: ":lines", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).cart.$lines-W3RN7LEB.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).carts": { id: "routes/($locale).carts", parentId: "root", path: ":locale?/carts", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).carts-UTA2YNAY.js", imports: ["/build/_shared/chunk-YTR5SFD2.js", "/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-FKPSF7P5.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.$collectionHandle": { id: "routes/($locale).collections.$collectionHandle", parentId: "root", path: ":locale?/collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.$collectionHandle-66YBP7CQ.js", imports: ["/build/_shared/chunk-7UKMYZRW.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections._index": { id: "routes/($locale).collections._index", parentId: "root", path: ":locale?/collections", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).collections._index-CYPX5NRG.js", imports: ["/build/_shared/chunk-7UKMYZRW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).collections.all": { id: "routes/($locale).collections.all", parentId: "root", path: ":locale?/collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).collections.all-LLQPI4RJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).createcard": { id: "routes/($locale).createcard", parentId: "root", path: ":locale?/createcard", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).createcard-M6KQXEVG.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).discount.$code": { id: "routes/($locale).discount.$code", parentId: "root", path: ":locale?/discount/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).discount.$code-YCTJBBXD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).featured-products": { id: "routes/($locale).featured-products", parentId: "root", path: ":locale?/featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).featured-products-NZ4FWR42.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal.$journalHandle": { id: "routes/($locale).journal.$journalHandle", parentId: "root", path: ":locale?/journal/:journalHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).journal.$journalHandle-TPKF6UBA.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).journal._index": { id: "routes/($locale).journal._index", parentId: "root", path: ":locale?/journal", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).journal._index-GKXURJW4.js", imports: ["/build/_shared/chunk-7UKMYZRW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).pages.$pageHandle": { id: "routes/($locale).pages.$pageHandle", parentId: "root", path: ":locale?/pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).pages.$pageHandle-D2RZQS72.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies.$policyHandle": { id: "routes/($locale).policies.$policyHandle", parentId: "root", path: ":locale?/policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).policies.$policyHandle-Q66VNYAW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).policies._index": { id: "routes/($locale).policies._index", parentId: "root", path: ":locale?/policies", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).policies._index-YVSNAGNR.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products.$productHandle": { id: "routes/($locale).products.$productHandle", parentId: "root", path: ":locale?/products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).products.$productHandle-6ZLH3LO5.js", imports: ["/build/_shared/chunk-3BFLTPUH.js", "/build/_shared/chunk-P3GSFGO6.js", "/build/_shared/chunk-FKPSF7P5.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).products._index": { id: "routes/($locale).products._index", parentId: "root", path: ":locale?/products", index: !0, caseSensitive: void 0, module: "/build/routes/($locale).products._index-EBT5XCJB.js", imports: ["/build/_shared/chunk-7UKMYZRW.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/($locale).search": { id: "routes/($locale).search", parentId: "root", path: ":locale?/search", index: void 0, caseSensitive: void 0, module: "/build/routes/($locale).search-VQ54C3UA.js", imports: ["/build/_shared/chunk-7UKMYZRW.js", "/build/_shared/chunk-PRD5ON2B.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-5H2YKBW4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-OGW6B5QK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/debug-network": { id: "virtual-routes/routes/debug-network", parentId: "virtual-routes/virtual-root", path: "debug-network", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/debug-network-SYYEGSFQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-IUV5DDHT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/index": { id: "virtual-routes/routes/index", parentId: "virtual-routes/virtual-root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/virtual-routes/routes/index-IBAGW2DX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-6623ANRH.js", imports: ["/build/_shared/chunk-Z7RIBLB2.js", "/build/_shared/chunk-YWA24MZZ.js", "/build/_shared/chunk-YOSDW4RD.js", "/build/_shared/chunk-GZRC5YLW.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !0 } }, version: "8e8e694d", hmr: { runtime: "/build/_shared\\chunk-LWIKZBJ5.js", timestamp: 1698388394923 }, url: "/build/manifest-8E8E694D.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { v2_dev: !0, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

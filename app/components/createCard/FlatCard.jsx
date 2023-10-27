@@ -1,6 +1,7 @@
 import {useState, useRef, useEffect} from 'react';
 import AddImage from '../../../assets/Image/add_image_icon.png';
 import html2canvas from 'html2canvas';
+import {Modal} from '../../components';
 
 export default function FlatCard() {
   const [isFrontCard, setIsFrontCard] = useState(true);
@@ -15,19 +16,37 @@ export default function FlatCard() {
   const [scale, setScale] = useState(1);
   const [backScale, setBackScale] = useState(1);
   const [qrCodeShow, setQrCodeShow] = useState(false);
-
   const [selectButton, setSelectButton] = useState(null);
   const fileInputRef = useRef(null);
   const [isDivOpen, setIsDivOpen] = useState(false);
   const [alignment, setAlignment] = useState('');
+  const [footeralignment, setFooteraligmment] = useState(false);
   const [selectedFontSize, setSelectedFontSize] = useState({});
-  const [headerFontSize, setHeaderFontSize] = useState(16); 
-  const [footerFontSize, setFooterFontSize] = useState(16); 
+  const [headerFontSize, setHeaderFontSize] = useState(16);
+  const [footerFontSize, setFooterFontSize] = useState(16);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState(null);
+
+  const openModal = (data) => {
+    setModalOpen(true);
+    setModalData(data);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleDivOpenChange = () => {
+    const data = {};
+    openModal(data);
+  };
+
+
 
   const handleFontSizeChange = (event) => {
-    headerText === "Header Text" && setHeaderFontSize(event.target.value);
-    headerText === "Footer Text" && setFooterFontSize(event.target.value);
-  }
+    headerText === 'Header Text' && setHeaderFontSize(event.target.value);
+    headerText === 'Footer Text' && setFooterFontSize(event.target.value);
+  };
 
   const handleDivOpen = (setScale) => {
     setIsDivOpen(!isDivOpen);
@@ -71,23 +90,27 @@ export default function FlatCard() {
   };
 
   function clrchange(selectedColor) {
-    if(!selectedColor) return;
-    headerText === "Header Text" && (document.getElementById('color-header').style.color = selectedColor);
-    headerText === "Footer Text" && (document.getElementById('color-footer').style.color = selectedColor);
-  };
-
+    if (!selectedColor) return;
+    headerText === 'Header Text' &&
+      (document.getElementById('color-header').style.color = selectedColor);
+    headerText === 'Footer Text' &&
+      (document.getElementById('color-footer').style.color = selectedColor);
+  }
 
   function setFont() {
-    const selectFont = document.getElementById("font");
+    const selectFont = document.getElementById('font');
     if (selectFont) {
-     let selectFontValue = selectFont.options[selectFont.selectedIndex].value;
+      let selectFontValue = selectFont.options[selectFont.selectedIndex].value;
       if (selectFontValue) {
-        headerText === "Header Text" && (document.getElementById("color-header").style.fontFamily = selectFontValue);
-        headerText === "Footer Text" && (document.getElementById("color-footer").style.fontFamily = selectFontValue);
+        headerText === 'Header Text' &&
+          (document.getElementById('color-header').style.fontFamily =
+            selectFontValue);
+        headerText === 'Footer Text' &&
+          (document.getElementById('color-footer').style.fontFamily =
+            selectFontValue);
       }
     }
   }
-
 
   function handleHeaderClick() {
     setHeaderText('Header Text');
@@ -183,6 +206,27 @@ export default function FlatCard() {
     }
   };
 
+  let customerid = localStorage.getItem('customerId');
+  let customerName = localStorage.getItem('customerName');
+
+  console.log('footeralignment', footeralignment);
+  console.log('alignment', alignment);
+
+  const uploadPdf = ()=>{
+      fetch(`https://api.simplynoted.com/api/customizedCard/uploadPDFv2?customerId=${customerid}`,{
+      method: "POST",
+
+      body: JSON.stringify({
+       cardType: selectedFile,
+       name : customerName,
+       headerData : headerText || alignment,
+       footerData : footerText,
+
+      }),
+
+  })
+  }
+
   return (
     <section
       className={`flat_main flex  justify-evenly ${
@@ -201,7 +245,11 @@ export default function FlatCard() {
               {scaledImage && (
                 <div className="flex min-h-full flex-1 p-[18px] h-[416px] w-[553px] justify-center align-center overflow-hidden">
                   <img
-                    className="absolute-scaled-image  -z-20"
+                    className={`absolute-scaled-image -z-20 ${
+                      selectButton === 'dark'
+                        ? 'grayscale'
+                        : 'grayscale-0'
+                    } image-scal`}
                     src={scaledImage}
                     style={{
                       transform: `scale(${scale})`,
@@ -212,14 +260,14 @@ export default function FlatCard() {
               )}
             </div>
           ) : (
-            <div className="relative min-h-full overflow-hidden">
+            <div className="relative min-h-full overflow-hidden" >
               {isHeaderChecked ? (
-                <div
+                <div 
                   className={`${backHeaderImage && 'flex'} ${
                     alignment === 'left' && 'justify-start'
                   } ${alignment === 'right' && 'justify-end'} ${
                     alignment === 'center' && 'justify-center'
-                  } enclosed-div absolute top-0 m-3 overflow-hidden`}
+                  }  enclosed-div absolute top-0 m-3 overflow-hidden`}
                 >
                   {backHeaderImage && (
                     <img
@@ -232,33 +280,26 @@ export default function FlatCard() {
                   <input
                     id="color-header"
                     className={`border-none min-w-full ${
-                      alignment === 'left' &&
-                      headerText === 'Header Text' &&
-                      'text-left'
-                    } ${
-                      alignment === 'center' &&
-                      headerText === 'Header Text' &&
-                      'text-center'
-                    } ${
-                      alignment === 'right' &&
-                      headerText === 'Header Text' &&
-                      'text-right'
+                      alignment === 'left' && 'text-left'
+                    } ${alignment === 'center' && 'text-center'} ${
+                      alignment === 'right' && 'text-right'
                     }`}
                     value={inputText}
                     onChange={handleInputChange}
                     type="text"
                     placeholder={backHeaderImage ? '' : 'Header'}
-                    style={{ fontSize: `${headerFontSize}px` }}
+                    style={{fontSize: `${headerFontSize}px`}}
                   />
                 </div>
               ) : null}
+
               {isFooterChecked ? (
                 <div
-                  className={`${backFooterImage && 'flex'} ${
-                    alignment === 'left' && 'justify-start'
-                  } ${alignment === 'right' && 'justify-end'} ${
-                    alignment === 'center' && 'justify-center'
-                  } enclosed-div absolute bottom-0 m-3 overflow-hidden`}
+                      className={`${backFooterImage && 'flex'} ${
+                    footeralignment === 'left' && 'justify-start'
+                  } ${footeralignment === 'right' && 'justify-end'} ${
+                    footeralignment === 'center' && 'justify-center'
+                  } enclosed-div border border-dashed border-1 border-black  absolute bottom-0 m-3 overflow-hidden`}
                 >
                   {backFooterImage && (
                     <img
@@ -270,23 +311,15 @@ export default function FlatCard() {
                   )}
                   <input
                     id="color-footer"
-                    className={`border-none min-w-full ${
-                      alignment === 'left' &&
-                      headerText === 'Footer Text' &&
-                      'text-left'
-                    } ${
-                      alignment === 'center' &&
-                      headerText === 'Footer Text' &&
-                      'text-center'
-                    } ${
-                      alignment === 'right' &&
-                      headerText === 'Footer Text' &&
-                      'text-right'
+                    className={`border-none  min-w-full ${
+                      footeralignment === 'left' && 'text-left'
+                    } ${footeralignment === 'center' && 'text-center'} ${
+                      footeralignment === 'right' && 'text-right'
                     }`}
                     value={footerText}
                     type="text"
                     placeholder={backFooterImage ? '' : 'Footer'}
-                    style={{ fontSize: `${footerFontSize}px` }}
+                    style={{fontSize: `${footerFontSize}px`}}
                   />
                 </div>
               ) : null}
@@ -316,12 +349,28 @@ export default function FlatCard() {
           <>
             <div className="flex min-w-full gap-[42px] text-[23px] justify-evenly mb-5">
               <div className="header-btn">
-                <button type="button" onClick={handleHeaderClick}>
+                <button
+                  className={`${
+                    headerText === 'Header Text'
+                      ? 'text-[36px] opacity-100  font-bold'
+                      : 'text-[20x] opacity-50 font-normal'
+                  }  text-[#001a5f]`}
+                  type="button"
+                  onClick={handleHeaderClick}
+                >
                   Header
                 </button>
               </div>
               <div className="footer-btn">
-                <button type="button" onClick={handleFooterClick}>
+                <button
+                  className={`${
+                    headerText === 'Footer Text'
+                      ? 'text-[36px]  opacity-100  font-bold'
+                      : 'text-[20x] opacity-50 font-normal'
+                  } text-[#001a5f]`}
+                  type="button"
+                  onClick={handleFooterClick}
+                >
                   Footer
                 </button>
               </div>
@@ -348,7 +397,14 @@ export default function FlatCard() {
                 </label>
                 <svg
                   className="alignment-left"
-                  onClick={() => setAlignment('left')}
+                  onClick={() => {
+                    if (isHeaderChecked && headerText === 'Header Text') {
+                      setAlignment('left');
+                    }
+                    if (isFooterChecked && headerText === 'Footer Text') {
+                      setFooteraligmment('left');
+                    }
+                  }}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -359,7 +415,14 @@ export default function FlatCard() {
                 </svg>
                 <svg
                   className="alignment-center"
-                  onClick={() => setAlignment('center')}
+                  onClick={() => {
+                    if (isHeaderChecked && headerText === 'Header Text') {
+                      setAlignment('center');
+                    }
+                    if (isFooterChecked && headerText === 'Footer Text') {
+                      setFooteraligmment('center');
+                    }
+                  }}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -370,7 +433,14 @@ export default function FlatCard() {
                 </svg>
                 <svg
                   className="alignment-right"
-                  onClick={() => setAlignment('right')}
+                  onClick={() => {
+                    if (isHeaderChecked && headerText === 'Header Text') {
+                      setAlignment('right');
+                    }
+                    if (isFooterChecked && headerText === 'Footer Text') {
+                      setFooteraligmment('right');
+                    }
+                  }}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                 >
@@ -490,13 +560,13 @@ export default function FlatCard() {
                 Woody
               </option>
             </select>
-            <select style={{width: "125px"}} onClick={handleFontSizeChange}>
-           <option value="16">16px</option>
-           <option value="20">20px</option>
-           <option value="24">24px</option>
-           <option value="28">28px</option>
-           <option value="32">32px</option>
-          </select>
+            <select  style={{width: '125px'}} onClick={handleFontSizeChange}>
+              <option value="16">16px</option>
+              <option value="20">20px</option>
+              <option value="24">24px</option>
+              <option value="28">28px</option>
+              <option value="32">32px</option>
+            </select>
             <div className="text-color mt-[25px] flex items-center gap-[5px]">
               <span>
                 <b>Font Color</b>
@@ -524,12 +594,17 @@ export default function FlatCard() {
               <br />
             </div>
             <button
-              className="finish-editing"
-              onClick={handleDivOpen}
-              type="button"
-            >
-              Finish editing
-            </button>
+        className="finish-editing"
+        onClick={handleDivOpenChange}
+        type="button"
+      >
+        Finish editing
+         </button>
+         {modalOpen && (
+           <Modal cancelLink={closeModal}>
+           </Modal>
+           )}
+
             <br />
           </>
         )}
