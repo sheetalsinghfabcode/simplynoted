@@ -2,6 +2,7 @@ import {Link} from '~/components';
 
 export function AccountDetails({customer}) {
   const {firstName, lastName, email, phone} = customer;
+  const tags = customer.tags
 
   return (
     <>
@@ -9,14 +10,13 @@ export function AccountDetails({customer}) {
         <h3 className="font-bold text-lead">Account Details</h3>
         <div className="lg:p-8 p-6 border border-gray-200 rounded">
           <div className="flex">
-            <h3 className="font-bold text-base flex-1">Profile & Security</h3>
-            <Link
+            {/* <Link
               prefetch="intent"
               className="underline text-sm font-normal"
               to="/account/edit"
             >
               Edit
-            </Link>
+            </Link> */}
           </div>
           <div className="mt-4 text-sm text-primary/50">Name</div>
           <p className="mt-1">
@@ -25,8 +25,8 @@ export function AccountDetails({customer}) {
               : 'Add name'}{' '}
           </p>
 
-          <div className="mt-4 text-sm text-primary/50">Contact</div>
-          <p className="mt-1">{phone ?? 'Add mobile'}</p>
+          <div className="mt-4 text-sm text-primary/50">Phone</div>
+          <p className="mt-1">{phone }</p>
 
           <div className="mt-4 text-sm text-primary/50">Email address</div>
           <p className="mt-1">{email}</p>

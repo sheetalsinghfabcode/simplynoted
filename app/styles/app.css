@@ -206,10 +206,7 @@ shop-pay-button {
     cursor: pointer;
     color:white;
   }
-  .font-bold {
-    font-weight: 500 !important;
-    letter-spacing: 0px;
-}
+
   .request-button:hover{
    background-color:#001a5f;
   }
@@ -785,7 +782,7 @@ shop-pay-button {
   gap: 20px;
 }
 
-/* Pagination buttons */
+/* Pagination buttons */xx
 .pagination button {
   background-color: #001a5f;
   color: #fff;
@@ -817,6 +814,11 @@ shop-pay-button {
 
 .type-select select{
   --tw-ring-color: transparent;
+}
+.sec-cont{
+  display: flex;
+  justify-content: flex-start;
+  gap: 159px;
 }
 
 .request-button {

@@ -219,6 +219,7 @@ console.log(actionData,"create Accoint");
               </p>
             )}
           </div>
+         
           <div className="flex items-center justify-between">
             <button
               className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
@@ -247,9 +248,9 @@ const CUSTOMER_CREATE_MUTATION = `#graphql
     customerCreate(input: $input) {
       customer {
         id
+       
       }
       customerUserErrors {
-        code
         field
         message
       }
