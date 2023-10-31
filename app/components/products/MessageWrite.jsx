@@ -6,7 +6,7 @@ import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
 
 let input, input2, output, output2, outputContainer, outputContainer2, customerid
-export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess }) {
+export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess,editFontFamily }) {
     let [name, setName] = useState(EditMess ? EditMess : '')
     const [name2, setName2] = useState(editEndMess ? editEndMess : '')
     const [fileData, setFileData] = useState([]);
@@ -23,6 +23,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [usAddress, setUsAddress] = useState(null)
     const [nonusAddress, setnonUsAddress] = useState(null)
     const [instructionModal, setInstructionModal] = useState(false);
+    const [loginCheck, setLoginCHeck] = useState(false);
     const [loader, setLoader] = useState(false);
 
     // input2 = document?.querySelector('.inputText2');
@@ -52,9 +53,16 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     function closeModalInt() {
         setInstructionModal(false)
     }
+    function closeLoginModal(){
+        setLoginCHeck(false)
+    }
+    function onCancelCSVUpload(){
+        setShowNextBtn(false)
+    }
     async function checkUserLogged() {
         if (!customerid) {
-            alert('please Login First')
+            setLoginCHeck(true)
+            // alert('please Login First')
 
         } else if (name.length == 0) {
             setInstructionModal(true)
@@ -120,8 +128,9 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     {showNextBtn
                         ?
                         <>
-                            <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
-                                <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
+                            <div className=' h-[50px] text-center mt-5 flex mb-2'>
+                                <button className='bg-[#1b5299] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]' onClick={() => checkUserLogged()}>Next</button>
+                                <button className='bg-[#ef6e6e] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]' onClick={() => onCancelCSVUpload()}>Cancel</button>
                             </div>
                             <text> Number of recipient Uploaded:{lenCsvData}</text>
                         </>
@@ -323,6 +332,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     }
     async function uploadCsvFileOnClick() {
         try {
+            setLoader(true)
             console.log('uploadCsvFile OnClick');
 
             const res = await fetch("https://api.simplynoted.com/api/orders/bulk-orders-upload-s3",
@@ -339,10 +349,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             setCsvFile(json.result)
             console.log(json, 'CSV UPLOAD DATA ---------------');
             if (json.result) {
-                setShowNextBtn(true)
+            setShowNextBtn(true)
+            setLoader(false)
             }
         } catch (error) {
             console.log(error, 'file upload error');
+            setLoader(false)
+
         }
     }
     async function onCancl() {
@@ -409,13 +422,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         <Loader />:
         <>
         <div className='mainDivForBox flex gap-10'>
-                <div id="outer" className="outerr">
-                    <div className='outerSec' ref={ref2}>
-                        <div id='messageBoxID' ref={ref1} className="output m-5 ">
+                <div id="outer" className="outerr h-[700px] w-[100%] bg-white max-w-[600px] relative">
+                    <div className='outerSec h-[400px] w-[100%] max-w-[570px] absolute' ref={ref2}>
+                        <div id='messageBoxID' ref={ref1} className="output m-5 "  style={{fontFamily:editFontFamily?editFontFamily:''}}>
                             {name}
                         </div>
                     </div>
-                    <div className='secDiv'>
+                    <div className='secDiv absolute h-[300px] w-[100%] max-w-[50%]'>
                         <div id='signOffText' className="output2">
                             {name2}
                         </div>
@@ -423,7 +436,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
                 </div>
                 <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText' maxLength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText h-[200px] w-[100%] rounded-[6px] p-[7px] ' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                     </textarea>
                     <span className="charLeft">{remainingWord} characters remaining</span><br />
                     {show &&
@@ -441,7 +454,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     }
                     <div className='flex gap-4 mt-5' >
                         <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2' maxLength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
+                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2 h-[100px] w-[50%] rounded-[6px] p-[7px]' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
                         </textarea><br />
                     </div>
                     <span className="charLeft ml-40">{remainSign} characters remaining</span>
@@ -520,6 +533,12 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 isOpen={instructionModal}
                 title="Text Can not be Empty"
                 closeModal={closeModalInt}
+                table={false}
+            />
+            <Instruction
+                isOpen={loginCheck}
+                title="Please Login First"
+                closeModal={closeLoginModal}
                 table={false}
             />
             <ErrorModal
