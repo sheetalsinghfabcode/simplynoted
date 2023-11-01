@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import ContactDetail from '../components/addressBook/ContactDetail';
 import AddressForm from '../components/addressBook/AddressForm';
 import EditAddressForm from '../components/addressBook/EditAddressForm';
 import Instruction from '~/components/modal/Instruction';
@@ -133,6 +132,7 @@ export default function AddressBook() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+
           firstName: modifiedData['First Name'] || '',
           lastName: modifiedData['Last Name'] || '',
           businessName: modifiedData.Company || '',
@@ -322,16 +322,6 @@ export default function AddressBook() {
                   ]}
                   table={true}
                 />
-                {/* <ContactDetail
-                  customerID={customerID}
-                  filteredAddresses={filteredAddresses}
-                  editAddress={editAddress}
-                  setSelectedAddress={setSelectedAddress}
-                  handleSearchInputChange={handleSearchInputChange}
-                  setSelectedCheckboxes={setSelectedCheckboxes}
-                  selectedCheckboxes={selectedCheckboxes}
-                /> */}
-
                 <ContactTable
                   customerID={customerID}
                   filteredAddresses={filteredAddresses}

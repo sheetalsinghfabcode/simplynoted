@@ -1,84 +1,52 @@
 import { useRef, Suspense } from 'react';
-
 import { Disclosure, Listbox } from '@headlessui/react';
-
 import { defer, json, redirect } from '@shopify/remix-oxygen';
-
-import { useLoaderData, Await,useLocation } from '@remix-run/react';
+import { useLoaderData, Await, useLocation } from '@remix-run/react';
 
 import {
-
   AnalyticsPageType,
-
   Money,
-
   ShopPayButton,
-
   VariantSelector,
-
   getSelectedProductOptions,
 
 } from '@shopify/hydrogen';
-
 import invariant from 'tiny-invariant';
 
 import clsx from 'clsx';
 
 import {
-
   Heading,
-
   IconCaret,
-
   IconCheck,
-
   IconClose,
-
   ProductGallery,
-
   ProductSwimlane,
-
   Section,
-
   Skeleton,
-
   Text,
-
   Link,
-
   AddToCartButton,
-
   Button,
-
 } from '~/components';
-
 import { getExcerpt } from '~/lib/utils';
-
 import { seoPayload } from '~/lib/seo.server';
-
 import { routeHeaders } from '~/data/cache';
-
 import { MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
-
 import { useState, useEffect } from 'react';
-
 import { BiSolidChevronLeft } from "react-icons/bi";
-
 import { BsXCircle } from "react-icons/bs";
-
 import Modal from 'react-modal';
-
 import { MessageWriting } from '~/components/products/MessageWrite';
-
 import { AddCart } from '~/components/products/AddCart';
+import {ProductInfo} from '../components/products/ProductInfo'
 
- 
 
 export const headers = routeHeaders;
 
-let input,  customerid, recipientAddressVal,selectFontValue
+let input, customerid, recipientAddressVal, selectFontValue
 
- 
+
 
 export async function loader({ params, request, context }) {
 
@@ -90,29 +58,29 @@ export async function loader({ params, request, context }) {
 
   invariant(productHandle, 'Missing productHandle param, check route filename');
 
- 
+
 
   const selectedOptions = getSelectedProductOptions(request);
 
-  const data  = await context.storefront.query(GiftProduct, {
+  const data = await context.storefront.query(GiftProduct, {
 
     variables: {},
 
   })
 
-  const shippingData  = await context.storefront.query(ShippingMethod, {
+  const shippingData = await context.storefront.query(ShippingMethod, {
 
     variables: {},
 
   })
 
- 
 
- 
+
+
 
   // console.log("data",data)
 
- 
+
 
   const { shop, product } = await context.storefront.query(PRODUCT_QUERY, {
 
@@ -130,7 +98,7 @@ export async function loader({ params, request, context }) {
 
   });
 
-// console.log(product,'product ----99999999999999');
+  // console.log(product,'product ----99999999999999');
 
   if (!product?.id) {
 
@@ -138,7 +106,7 @@ export async function loader({ params, request, context }) {
 
   }
 
- 
+
 
   //this condition is commented by me(ayush) for removing the params from url  
 
@@ -148,7 +116,7 @@ export async function loader({ params, request, context }) {
 
   // }
 
- 
+
 
   // In order to show which variants are available in the UI, we need to query
 
@@ -176,7 +144,7 @@ export async function loader({ params, request, context }) {
 
   const recommended = getRecommendedProducts(context.storefront, product.id);
 
- 
+
 
   // TODO: firstVariant is never used because we will always have a selectedVariant due to redirect
 
@@ -188,9 +156,9 @@ export async function loader({ params, request, context }) {
 
   // console.log(product.selectedVariant,'product.selectedVariant');
 
-  const selectedVariant = product.selectedVariant == null?firstVariant: firstVariant;
+  const selectedVariant = product.selectedVariant == null ? firstVariant : firstVariant;
 
- 
+
 
   const productAnalytics = {
 
@@ -208,7 +176,7 @@ export async function loader({ params, request, context }) {
 
   };
 
- 
+
 
   const seo = seoPayload.product({
 
@@ -220,7 +188,7 @@ export async function loader({ params, request, context }) {
 
   });
 
- 
+
 
   return defer({
 
@@ -256,7 +224,7 @@ export async function loader({ params, request, context }) {
 
 }
 
- 
+
 
 function redirectToFirstVariant({ product, request }) {
 
@@ -270,43 +238,40 @@ function redirectToFirstVariant({ product, request }) {
 
   }
 
- 
+
 
   throw redirect(`/products/${product.handle}?${searchParams.toString()}`, 302);
 
 }
 
- 
+
 
 export default function Product() {
-  const { product, shop, recommended, variants, data,shippingData } = useLoaderData();
+  const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
   // console.log(product,'************');
-  console.log(shippingData,'shippingData');
+  console.log(shippingData, 'shippingData');
   const datafornav = useLocation();
   let EditMess = datafornav.state?.data?.messageData
   let editEndMess = datafornav.state?.data.endText
   let editOrderValue = datafornav.state
-   console.log(datafornav.state,'locationState');
-   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
+  let editFontFamily = datafornav.state?.data.fontFamily
+  console.log(datafornav.state, 'locationState');
+  let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
-  const [show, setShow] = useState(showBulkOnEdit?true:false);
+  const [show, setShow] = useState(showBulkOnEdit ? true : false);
   const [productshow, setProductShow] = useState(true)
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true)
   const [selectedFile, setSelectedFile] = useState('');
   const [fileData, setFileData] = useState([]);
   const [errorVal, setErrorVal] = useState([]);
-
- 
+  const [fontFamilyName,setFontFamily] = useState('')
 
   function setFont() {
-
     var selectFont = document.getElementById("font");
-
     if (selectFont) {
-
-       selectFontValue = selectFont.options[selectFont.selectedIndex].value;
+      selectFontValue = selectFont.options[selectFont.selectedIndex].value;
 
       if (selectFontValue) {
 
@@ -318,16 +283,13 @@ export default function Product() {
 
     }
 
-  // console.log(selectFontValue,'selectFontValue');
+    // console.log(selectFontValue,'selectFontValue');
 
- 
+
 
   }
-
   const ref = useRef(null);
-
   const ref3 = useRef(null);
-
   useEffect(() => {
 
     input = ref.current;
@@ -339,11 +301,7 @@ export default function Product() {
   }, []);
 
   if (recipientAddressVal && recipientAddressVal.value) {
-
   }
-
- 
-
   const customStyles = {
 
     content: {
@@ -378,38 +336,20 @@ export default function Product() {
 
   };
 
- 
-
   // const [selectedItem, setSelectedItem] = useState(null);
-
   // const [clickedItem, setClickedItem] = useState(false)
-
   // const handleCheckboxChange = (item) => {
-
   //   console.log(item, '***********item');
-
   //   // setSelectedItem(item);
-
   // };
 
- 
-
   async function singleBtnCLick() {
-
     setShow(false)
-
     setSelectedFile('')
-
     setShowBox(true)
-
   }
-
- 
-
   return (
-
     <>
-
       {productshow ?
         <>
           <Section className="px-0 md:px-8 lg:px-12">
@@ -418,195 +358,14 @@ export default function Product() {
                 media={media.nodes}
                 className="w-full lg:col-span-2"
               />
-              <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-300px]">
-                <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
-                  <div className="grid gap-2">
-                    <Heading as="h1" className="whitespace-normal">
-                      {title}
-                    </Heading>
-                    <Text className={'opacity-50 font-medium'}>$ {product.variants.nodes[0].price.amount}</Text>
-                    {/* {vendor && (
-              <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-            )} */}
-                    <div className='buttonClass flex justify-start'>
-                      <div className='buttonDiv pr-5'>
-                        <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => singleBtnCLick()}>Single Card</button>
-                      </div>
-                      <div className='gap-2'>
-                        <button className="bg-[#ef6e6e] text-[#fff] p-2 rounded " onClick={() => setShow(true)}>Bulk Purchase</button>
-                      </div>
-                    </div>
-                    {show &&
-                      <table className="price-breakdown desktop">
-                        <tbody>
-                          <tr>
-                            <td className="label">Quantity</td><td>1-99</td><td>100-249</td><td>250-499</td><td>500-999</td><td>1000-2499</td><td>2500+</td></tr>
-                          <tr>
-                            <td className="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
-                        </tbody>
-                      </table>}
-                    <div className='selectOtion mb-5 flex'>
-                      <div className='w-[192px]'>
-                        <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
-                        <br />
-                        <select id="font" onClick={() => setFont()} >
-                          <option value="pinocchio" className={`font-pinocchio`}>Pinocchio</option>
-                          <option value="tarzan" className={`font-tarzan`}>Tarzan</option>
-                          <option value="stitch" className={`font-stitch`}>Stitch</option>
-                          <option value="simba" className={`font-simba`}>Simba</option>
-                          <option value="roo" className={`font-roo`}>Roo</option>
-                          <option value="nimo" className={`font-nimo`}>Nimo</option>
-                          <option value="lumiere" className={`font-lumiere`}>Lumiere</option>
-                          <option value="kaa" className={`font-kaa`}>Kaa</option>
-                          <option value="kaaNew" className={`font-kaaNew`}>KaaNew</option>
-                          <option value="dumbo" className={`font-dumbo`}>Dumbo</option>
-                          <option value="donald" className={`font-donald`}>Donald</option>
-
-                          <option value="aladdin" className={`font-aladdin`}>Aladdin</option>
-
-                          <option value="belle" className={`font-belle`}>Belle</option>
-
-                          <option value="boo" className={`font-boo`}>Boo</option>
-
-                          <option value="cinderella" className={`font-cinderella`}>Cinderella</option>
-
-                          <option value="copper" className={`font-copper`}>Copper</option>
-
-                          <option value="jasmine" className={`font-jasmine`}>Jasmine</option>
-
-                          <option value="merlin" className={`font-merlin`}>Merlin</option>
-
-                          <option value="goofy" className={`font-goofy`}>Goofy</option>
-
-                          <option value="hercules" className={`font-hercules`}>Hercules</option>
-
-                          <option value="rafiki" className={`font-rafiki`}>Rafiki</option>
-
-                          <option value="rapunzel" className={`font-rapunzel`}>Rapunzel</option>
-
-                          <option value="ratigan" className={`font-ratigan`}>Ratigan</option>
-
-                          <option value="sarabi" className={`font-sarabi`}>Sarabi</option>
-
-                          <option value="scar" className={`font-scar`}>Scar</option>
-
-                          <option value="triton" className={`font-triton`}>Triton</option>
-
-                          <option value="woody" className={`font-woody`}>Woody</option>
-
- 
-
-                        </select>
-
-                      </div>
-
-                      <div>
-
-                        <Text className='text-sm'>Custom Handwriting Style</Text>
-
-                        <br />
-
-                        <select id="Coustomfont text-sm"  >
-
-                          <option className='text-sm'>Custom Handwriting Style</option>
-
-                        </select>
-
-                      </div>
-
-                    </div>
-                    <div>
-                      <Text>Optional shipping date</Text><br />
-                      <input type='date' />
-                    </div>
-                  </div>
-                  {/* Product page Data Vieew */}
-                  {/* <Suspense fallback={<ProductForm variants={[]} />}>
-            <Await
-              errorElement="There was a problem loading related products"
-              resolve={variants}
-            >
-              {(resp) => (
-                <ProductForm
-
-                  variants={resp.product?.variants.nodes || []}
-
-                />
-
-              )}
-
-            </Await>
-
- 
-
-          </Suspense> */}
-
- 
-
- 
-
-                  {/* Return and Policy button */}
-
-                  {/* <div className="grid gap-4 py-4">
-
-            {descriptionHtml && (
-
-              <ProductDetail
-
-                title="Product Details"
-
-                content={descriptionHtml}
-
-              />
-
-            )}
-
-            {shippingPolicy?.body && (
-
-              <ProductDetail
-
-                title="Shipping"
-
-                content={getExcerpt(shippingPolicy.body)}
-
-                learnMore={`/policies/${shippingPolicy.handle}`}
-
-              />
-
-            )}
-
-            {refundPolicy?.body && (
-
-              <ProductDetail
-
-                title="Returns"
-
-                content={getExcerpt(refundPolicy.body)}
-
-                learnMore={`/policies/${refundPolicy.handle}`}
-
-              />
-
-            )}
-
-          </div> */}
-
-                </section>
-
- 
-
-              </div>
-
+              <ProductInfo title={title} product={product} 
+              show={show} setShow={setShow} setShowBox={setShowBox}
+               editFontFamily={editFontFamily} setFontFamily={setFontFamily}/>
             </div>
-
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
-
-             setShowBox={setShowBox} setProductShow={setProductShow}
-
-             EditMess={EditMess} editEndMess={editEndMess} />
-
- 
-
+              setShowBox={setShowBox} setProductShow={setProductShow}
+              EditMess={EditMess} editEndMess={editEndMess}
+              editFontFamily={editFontFamily} />
           </Section>
 
           <Suspense fallback={<Skeleton className="h-32" />}>
@@ -637,7 +396,7 @@ export default function Product() {
 
               <div>{item}</div>
 
- 
+
 
             )}
 
@@ -646,14 +405,15 @@ export default function Product() {
 
         :
         <AddCart show={show} setProductShow={setProductShow}
-         data={data} productData={product.variants.nodes[0]}
-         selectFontValue={selectFontValue}
-         editOrderValue={editOrderValue}
-         shippingData={shippingData?.product}/>
+          data={data} productData={product.variants.nodes[0]}
+          selectFontValue={selectFontValue}
+          editOrderValue={editOrderValue}
+          shippingData={shippingData?.product} 
+          fontFamilyName={fontFamilyName}/>
 
       }
 
- 
+
 
     </>
 
@@ -661,19 +421,19 @@ export default function Product() {
 
 }
 
- 
 
- 
+
+
 
 // export function ProductForm({ variants }) {
 
 //   const { product, analytics, storeDomain } = useLoaderData();
 
- 
+
 
 //   const closeRef = useRef(null);
 
- 
+
 
 //   /**
 
@@ -689,7 +449,7 @@ export default function Product() {
 
 //   const isOutOfStock = !selectedVariant?.availableForSale;
 
- 
+
 
 //   const isOnSale =
 
@@ -699,7 +459,7 @@ export default function Product() {
 
 //     selectedVariant?.price?.amount < selectedVariant?.compareAtPrice?.amount;
 
- 
+
 
 //   const productAnalytics = {
 
@@ -709,7 +469,7 @@ export default function Product() {
 
 //   };
 
- 
+
 
 //   return (
 
@@ -1019,7 +779,7 @@ export default function Product() {
 
 // }
 
- 
+
 
 function ProductDetail({ title, content, learnMore }) {
 
@@ -1057,7 +817,7 @@ function ProductDetail({ title, content, learnMore }) {
 
           </Disclosure.Button>
 
- 
+
 
           <Disclosure.Panel className={'pb-4 pt-2 grid gap-2'}>
 
@@ -1101,7 +861,7 @@ function ProductDetail({ title, content, learnMore }) {
 
 }
 
- 
+
 
 const PRODUCT_VARIANT_FRAGMENT = `#graphql
 
@@ -1173,7 +933,7 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
 
 `;
 
- 
+
 
 const PRODUCT_QUERY = `#graphql
 
@@ -1283,7 +1043,7 @@ const PRODUCT_QUERY = `#graphql
 
 `;
 
- 
+
 
 const VARIANTS_QUERY = `#graphql
 
@@ -1317,7 +1077,7 @@ const VARIANTS_QUERY = `#graphql
 
 `;
 
- 
+
 
 const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 
@@ -1405,7 +1165,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 
 // }`
 
- 
+
 
 const GiftProduct = `#graphql
   query
@@ -1461,7 +1221,7 @@ const GiftProduct = `#graphql
 
   `
 
- 
+
 
 const ShippingMethod = `#graphql
 

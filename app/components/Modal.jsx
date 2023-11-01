@@ -1,7 +1,7 @@
 import {IconClose, Link} from '~/components';
 
 export function Modal({children, cancelLink}) {
-  console.log(children,"children");
+  // console.log(children,"children");
   return (
     <div
       className="relative z-50"
@@ -14,7 +14,9 @@ export function Modal({children, cancelLink}) {
       <div className="fixed inset-0 z-50 overflow-y-auto">
         <div className="flex items-center justify-center min-h-full p-4 text-center sm:p-0">
           <div
-            className="file-click relative flex-1 min-w-[524px] px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform rounded shadow-xl bg-contrast sm:my-12 sm:flex-none sm:w-full sm:max-w-sm sm:p-6"
+            className="relative flex-1 px-4 pt-5 pb-4 overflow-hidden text-left transition-all 
+            transform rounded shadow-xl
+              sm:my-12 sm:flex-none sm:w-full sm:max-w-[600px] sm:p-6 bg-[#FFF6F6]"
             role="button"
             onClick={(e) => {
               e.stopPropagation();
@@ -34,11 +36,11 @@ export function Modal({children, cancelLink}) {
            </div>
             <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
               <button
+                // to={cancelLink}
                 onClick={cancelLink}
                 className="p-4 -m-4 transition text-primary hover:text-primary/50"
               >
                 <IconClose aria-label="Close panel" />
-            
               </button>
             </div>
             {children}

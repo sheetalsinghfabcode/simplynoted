@@ -5,6 +5,7 @@ import {
   useLoaderData,
   useMatches,
   useOutlet,
+  useNavigate
 } from '@remix-run/react';
 import {Suspense, useState} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
@@ -26,6 +27,7 @@ import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
+import DynamicButton from '~/components/DynamicButton';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -46,10 +48,11 @@ export async function loader({request, context, params}) {
 
   const customer = await getCustomer(context, customerAccessToken);
 
+  console.log(customer,'customer');
   const heading = customer
     ? customer.result
       ? `Welcome, ${customer.firstName}.`
-      : `Welcome to your account.`
+      : `Account`
     : 'Account Details';
 
   return defer(
@@ -104,17 +107,18 @@ export default function Authenticated() {
 function Account({customer, heading, featuredData}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
+
+  const navigate = useNavigate()
   const [data,setData] = useState(false)
 
   console.log(customer);
   let result =  customer.id.replace(/[^0-9]/g,"");
-  let customerName = customer.firstName 
-  
+  console.log();
   const remove = () =>{
     if(typeof window !== 'undefined' && customer ){
       localStorage.removeItem('customerId')
-      localStorage.removeItem('customerName',customerName)
-
+      localStorage.removeItem('SNFirstName')
+      localStorage.removeItem('SnEmail')
     }
     }
       if(data == true){
@@ -122,22 +126,47 @@ function Account({customer, heading, featuredData}) {
       } else if(data == false){
         if(typeof window !== 'undefined' && customer ){
           localStorage.setItem('customerId',result)
-          localStorage.setItem('customerName',customerName)
+          localStorage.setItem('SNFullName',`${customer.firstName + customer.lastName}`)
+          localStorage.setItem('SnEmail',customer.email)
         }
       }
+
+
+
   return (
-    <>
-      <PageHeader heading={heading}>
+    <div className='w-full max-w-[1344px] mx-auto px-[20px]'>
+      <PageHeader className="my-[40px] uppercase" heading={heading}>
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
-          <button type="submit" className="text-primary/50" onClick={()=> setData(true)}>
-            Sign out
-          </button>
+          <DynamicButton
+            className="text-primary/50 bg-[#767676]"
+            text="Log Out"
+             onClick={()=> setData(true)}/>
         </Form>
       </PageHeader>
-      {orders && <AccountOrderHistory orders={orders} />}
+      <div className='flex gap-[20px]'>
+        <DynamicButton
+        text="Order History"
+        onClickFunction={()=>setOrderHistory(!orderHistory)}
+        className="border-2 flex justity-center items-center border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+        />
+        <DynamicButton
+        text="View Addresses"
+        onClickFunction={()=>navigate('/address-book')}
+        className="flex justity-center items-center  border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px]  uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+
+
+        />
+        <DynamicButton
+        text="Manage Plan"
+        className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+        onClickFunction={()=>navigate('/simply-noted-plans')}
+        />
+
+      </div>
+      {orders && orderHistory && <AccountOrderHistory orders={orders} />}
       <AccountDetails customer={customer} />
-      <AccountAddressBook addresses={addresses} customer={customer} />
-      {!orders.length && (
+      {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
+      {/* {!orders.length && (
         <Suspense>
           <Await
             resolve={featuredData}
@@ -154,8 +183,8 @@ function Account({customer, heading, featuredData}) {
             )}
           </Await>
         </Suspense>
-      )}
-    </>
+      )} */}
+    </div>
   );
 }
 
@@ -230,6 +259,7 @@ const CUSTOMER_QUERY = `#graphql
     lastName
     phone
     email
+    tags
     id
     defaultAddress {
       ...AddressPartial

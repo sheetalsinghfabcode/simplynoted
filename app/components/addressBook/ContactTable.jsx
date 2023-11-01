@@ -26,9 +26,7 @@ const ContactTable = ({
     setSelectedType(e.target.value);
   };
 
-  const handleCheckboxChange = (e) => {
-    const checkboxValue = e.target.value;
-
+  const handleCheckboxChange = (e, row) => {
     setSelectedCheckboxes((prevSelectedCheckboxes) => {
       if (prevSelectedCheckboxes.includes(checkboxValue)) {
         return prevSelectedCheckboxes.filter(
@@ -38,6 +36,11 @@ const ContactTable = ({
         return [...prevSelectedCheckboxes, checkboxValue];
       }
     });
+
+    const checkboxValue = e.target.value;
+    const res = selectedCheckboxes.some(
+      (selectedId) => row.original._id == selectedId,
+    );
   };
 
   const handleDeleteSelected = () => {
@@ -92,14 +95,14 @@ const ContactTable = ({
         accessor: '_id',
         Cell: ({row}) => (
           <CheckBox
-           onChange={handleCheckboxChange}
+            onChange={(e) => handleCheckboxChange(e, row)}
             value={row.original._id}
-            />
+          />
         ),
       },
       {
         Header: 'Edit',
-        accessor: 'edit_id',
+        accessor: 'id',
         Cell: ({row}) => (
           <img
             src={edit}
@@ -186,7 +189,8 @@ const ContactTable = ({
     usePagination, // Use the pagination plugin
   );
 
-  const allSelected =  data.length > 0 && selectedCheckboxes?.length === data.length;
+  const allSelected =
+    data.length > 0 && selectedCheckboxes?.length === data.length;
 
   const handleSelectAll = () => {
     if (allSelected) {
@@ -195,6 +199,8 @@ const ContactTable = ({
       setSelectedCheckboxes(data.map((value) => value._id));
     }
   };
+
+  console.log('selectedCheckboxes', selectedCheckboxes);
 
   return (
     <div className="container mx-auto mt-8">
@@ -300,6 +306,11 @@ const ContactTable = ({
                   })}
                 </tbody>
               </table>
+              {page.length === 0 && (
+                <div className="text-center text-[24px] font-bold mt-[20px] text-[#001a5f]">
+                  No Address Found
+                </div>
+              )}
               {page && page.length > 0 && (
                 <div className="pagination">
                   <div>

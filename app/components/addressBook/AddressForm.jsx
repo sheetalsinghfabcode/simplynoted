@@ -137,7 +137,7 @@ const AddressForm = ({customerID}) => {
       {loader ? (
         <Loader loaderMessage="Saving Address Book" />
       ) : (
-        <div className="container mx-auto p-4">
+        <div className={`container mx-auto p-4 `}>
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="flex justify-between items-center mb-[16px]">
               <h2 className="text-left text-[#001a5f] font-bold text-[34px] leading-[44px]">
