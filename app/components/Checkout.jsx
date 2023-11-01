@@ -5,7 +5,8 @@ import StripeCardComp from './StripeCardComp'
 import { Elements } from '@stripe/react-stripe-js';
 import { Modal } from './Modal'
 import location from '../../location.json'
-export function CheckoutData({ setShowCartPage, StripeKey }) {
+import Loader from './modal/Loader';
+export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
     const stripe = loadStripe(StripeKey);
     let customerid, fullName, userEmail
     const [showWallet, setShowWallet] = useState(true)
@@ -15,6 +16,7 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
     const [paymentMethodId, setPaymentMethodId] = useState('')
     const [newCardAdded, setNewCardAdded] = useState(false)
     const [custmerID, setCustomertID] = useState('')
+    const [loader , setloader] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -42,7 +44,7 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
     }
     async function createCustomerId(id) {
         try {
-            // console.log(formData, '--formData---');
+            setloader(true)
             const res = await fetch(`https://api.simplynoted.com/stripe/create-customer?customerId=${custmerID}`, {
                 method: "POST",
                 headers: {
@@ -66,11 +68,13 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
             await addNewCreditCard(id, json.stripeCustomerId)
             // }
         } catch (error) {
+            setloader(false)
             console.log(error, 'error on CreateCard');
         }
     }
     async function addNewCreditCard(paymentID, stripeCustomerId) {
         try {
+            
             const res = await fetch(`https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${custmerID}`, {
                 method: "POST",
                 headers: {
@@ -83,8 +87,12 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
             })
             const jsonData = await res.json()
             console.log(jsonData, 'addNewCard');
+            setNewCardAdded(true)
             setShowCardBox(false)
+            setloader(false)
+
         } catch (error) {
+            setloader(false)
             console.log(error, 'addNewCreditCard ------');
         }
     }
@@ -109,17 +117,8 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
         getSavedCards(customerid)
         formData.name = fullName
         formData.email = userEmail
-    }, [])
-    let abc;
-    if (newCardAdded == true) {
-        // createCustomerId()
-        setNewCardAdded(false)
-        abc = '123'
-    }
-    console.log(abc);
-    console.log(newCardAdded,'newCardAdded');
+    }, [newCardAdded])
     
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name.startsWith('address.')) {
@@ -154,6 +153,8 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
     }
     return (
         <>
+        {loader?<Loader/>:
+            <>
             <div className="'w-full h-full gap-2 mt-8 mb-8">
                 <div className='pb-[80px]'>
                     <h1 className='text-center font-bold text-4xl'>PAYMENT</h1>
@@ -214,9 +215,9 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
                     <div className=' max-w-[35%] w-full'>
                         <div className='p-5 bg-white  rounded-xl h-[155px]'>
                             <h1 className='text-left font-bold text-2xl'>ORDER SUMMARY</h1>
-                            <text className='flex justify-between items-center m-3'>Subtotal <span>$22.8</span></text>
+                            <text className='flex justify-between items-center m-3'>Subtotal <span>${totalPrize}</span></text>
                             <div className='w-full h-[1px] bg-black'></div>
-                            <text className='flex justify-between items-center m-3 font-bold'>Total <span>$22.8</span></text>
+                            <text className='flex justify-between items-center m-3 font-bold'>Total <span>${totalPrize}</span></text>
                         </div>
                         <div className='mt-2'>
                             <button className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-2 rounded flex"  >PURCHASE  </button>
@@ -349,7 +350,8 @@ export function CheckoutData({ setShowCartPage, StripeKey }) {
                     </div>
                     <StripeCardComp setPaymentMethodId={setPaymentMethodId} createCustomerId={createCustomerId} />
                 </Elements>} cancelLink={closeModal} />}
-
+                </>
+            }
         </>
     )
 }

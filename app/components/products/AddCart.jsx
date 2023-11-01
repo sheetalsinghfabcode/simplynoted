@@ -7,6 +7,7 @@ import AddressForm from '../addressBook/AddressForm';
 import Loader from '../modal/Loader';
 import { Modal } from '../Modal'
 import location from '../../../location.json'
+import Instruction from '../modal/Instruction';
 
 
 let customerid, senderAddressVal, reciverAddressVal, cartDataReq, firstPrice
@@ -23,17 +24,17 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         selectedAddress,
         setSelectedAddress,
     } = useAddressBook();
-    console.log(editOrderValue,'editOrderValue');
+    console.log(editOrderValue, 'editOrderValue');
     const [returnAddress, setReturnAddress] = useState([])
     const [recipientAddress, setRecipientAddress] = useState([])
     const [selectedItem, setSelectedItem] = useState(editOrderValue?.data ? editOrderValue.data.reciverAddress : null);
     const [selectedItem2, setSelectedItem2] = useState(editOrderValue?.data ? editOrderValue.data.senderAddress : null);
-    const [selectShipMode, setSelectShipMode] = useState(editOrderValue?.data ? editOrderValue.data.shippingData:null)
+    const [selectShipMode, setSelectShipMode] = useState(editOrderValue?.data ? editOrderValue.data.shippingData : null)
     const [searchData, setsearchData] = useState(null);
     const [searchData2, setsearchData2] = useState(null);
     const [cardVal, setCardVal] = useState('')
     const [cardPriceVal, setCardPriceVal] = useState([])
-    const [cardPriceTitle,setCardPriceTitle] = useState(editOrderValue?.data ? editOrderValue.data.giftCardPriceTitle:'')
+    const [cardPriceTitle, setCardPriceTitle] = useState(editOrderValue?.data ? editOrderValue.data.giftCardPriceTitle : '')
     const [cardName, setCardName] = useState(editOrderValue?.data ? editOrderValue.data.giftCardName : '')
     const [cardImg, setCardImg] = useState(editOrderValue?.data ? editOrderValue.data.giftCardImg : '')
     const [cardPrice, setCardPrice] = useState(editOrderValue?.data ? editOrderValue.data.giftCardPrice : '')
@@ -43,17 +44,18 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
     const [enterShippingAddress, setEnterShippingAddress] = useState('')
     const [showShipAddress, setShowShipAddress] = useState(false)
     const [errors, setErrors] = useState({});
-    const [onSaveShip,setSaveShip] = useState(false)
+    const [onSaveShip, setSaveShip] = useState(false)
     const [formData, setFormData] = useState({
-        firstName: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.firstName :'',
-        lastName: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.lastName :'',
-        address1: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.address1 :'',
-        address2: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.address2 :'',
-        city: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.city :'',
-        state: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.state :'',
-        postalCode: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.postalCode :'',
-        country: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.country :'USA',
+        firstName: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.firstName : '',
+        lastName: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.lastName : '',
+        address1: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.address1 : '',
+        address2: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.address2 : '',
+        city: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.city : '',
+        state: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.state : '',
+        postalCode: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.postalCode : '',
+        country: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.country : 'USA',
     });
+    const [checkSelAddress,setCheckSelAddress] = useState(false)
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === 'country') {
@@ -77,7 +79,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
             [name]: '',
         }));
     };
-console.log(formData,'formData');
+    console.log(formData, 'formData');
     const selectedCountry = location.countries.find(
         (country) => country.country === formData.country,
     );
@@ -161,18 +163,18 @@ console.log(formData,'formData');
         setCardName(selCardName.title)
         setCardImg(selCardName.featuredImage.url)
         let arrCardPrice = data.collection.products.edges[item].node.variants.edges
-         firstPrice = arrCardPrice[0].node.price.amount
+        firstPrice = arrCardPrice[0].node.price.amount
         setCardPrice(firstPrice)
         setCardPriceTitle(arrCardPrice[0].node.title)
-        console.log(cardPrice,'----cardPrice=--',firstPrice);
+        console.log(cardPrice, '----cardPrice=--', firstPrice);
         setCardPriceVal(arrCardPrice)
     }
     const priceValFunc = async (item) => {
-        console.log(cardPriceVal[item].node.price,'ooooooo');
+        console.log(cardPriceVal[item].node.price, 'ooooooo');
         let priceAmount = cardPriceVal[item].node.price.amount
         let priceTitle = cardPriceVal[item].node.title
-        console.log(priceTitle,'cardPriceVal',priceAmount)
-        console.log(item,'priceValue');
+        console.log(priceTitle, 'cardPriceVal', priceAmount)
+        console.log(item, 'priceValue');
         setCardPrice(priceAmount)
         setCardPriceTitle(priceTitle)
     }
@@ -201,7 +203,7 @@ console.log(formData,'formData');
         giftCardName: cardName ? cardName : null,
         giftCardImg: cardImg ? cardImg : null,
         giftCardPrice: cardPrice ? cardPrice : null,
-        giftCardPriceTitle : cardPriceTitle?cardPriceTitle:'',
+        giftCardPriceTitle: cardPriceTitle ? cardPriceTitle : '',
         messageData: MsgText,
         fontFamily: fontFamilyName ? fontFamilyName : 'tarzan',
         productGetUrl: window?.location.pathname,
@@ -213,8 +215,8 @@ console.log(formData,'formData');
         csvBulkData: cartDataReq?.bulkCsvData,
         shippingData: selectShipMode ? selectShipMode : '',
         shippingMethodImage: selectShipMode ? shippingData.featuredImage.url : '',
-        locationForShipMethod:formData?formData:'',
-        shippingDataCost:selectShipMode? selectShipMode.node.price.amount:''
+        locationForShipMethod: formData ? formData : '',
+        shippingDataCost: selectShipMode ? selectShipMode.node.price.amount : ''
     }
 
     let keyUpdate1 = 'messageData'
@@ -241,7 +243,7 @@ console.log(formData,'formData');
                 storedData[editOrderValue.index][keyUpdate5] = cardName ? cardName : null;
                 storedData[editOrderValue.index][keyUpdate6] = cardPrice;
                 storedData[editOrderValue.index][keyUpdate7] = cartDataReq?.signOffText ? cartDataReq?.signOffText : editOrderValue?.data.endText;
-                storedData[editOrderValue.index][keyUpdate8] = formData?formData:'';
+                storedData[editOrderValue.index][keyUpdate8] = formData ? formData : '';
                 storedData[editOrderValue.index][keyUpdate9] = selectShipMode ? selectShipMode : '';
                 storedData[editOrderValue.index][keyUpdate10] = selectShipMode ? selectShipMode.node.price.amount : '';
                 storedData[editOrderValue.index][keyUpdate11] = fontFamilyName ? fontFamilyName : 'tarzan';
@@ -282,14 +284,15 @@ console.log(formData,'formData');
                 setLoader(false);
 
             } else {
-                alert('please select the address')
+                setCheckSelAddress(true)
+                // alert('please select the address')
                 setLoader(false);
 
             }
         }
-
-
-
+    }
+    function closeSelAddressModal(){
+        setCheckSelAddress(false)
     }
     function onpenAddCardModal() {
         setShowShipAddress(true)
@@ -297,7 +300,7 @@ console.log(formData,'formData');
     function closeModal() {
         setShowShipAddress(false)
     }
-    function OnSaveClickShipAddress(){
+    function OnSaveClickShipAddress() {
         setSaveShip(true)
         setShowShipAddress(false)
     }
@@ -399,13 +402,13 @@ console.log(formData,'formData');
                                             <h3 className='text-2xl font-bold mt-4 mb-4'>{shippingData?.title}</h3>
 
                                             <div class="shipping-methods" id="shipping-options">
-                                                {shippingData?.variants.edges.map((item,index) =>
+                                                {shippingData?.variants.edges.map((item, index) =>
                                                     <div >
                                                         <div>
                                                             <input
                                                                 value={item}
                                                                 checked={selectShipMode?.node.title === item.node.title}
-                                                                type="radio" 
+                                                                type="radio"
                                                                 onChange={() => handleBoxoNShipping(item)}
                                                             />
                                                             <label for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
@@ -425,7 +428,7 @@ console.log(formData,'formData');
                                                 <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
                                                 <div className='col-8 mt-3 pr-0 w-[370px]' >
                                                     <select className='w-full' onChange={(e) => cardvalFunc(e.target.value)}>
-                                                        <option className='w-full' selected disabled>{cardName?cardName:'Select Gift Card'} </option>
+                                                        <option className='w-full' selected disabled>{cardName ? cardName : 'Select Gift Card'} </option>
                                                         {data.collection.products.edges.map((item, i) =>
                                                             <option value={i}>{item.node.title}</option>)}
                                                     </select>
@@ -438,7 +441,7 @@ console.log(formData,'formData');
                                                         // <div>heelooo</div>
                                                         <select name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
                                                             <option selected disabled>{cardPriceTitle}</option>
-                                                            {cardPriceVal.map((item,i) =>
+                                                            {cardPriceVal.map((item, i) =>
                                                                 <option
                                                                     value={i}>{item.node.title}</option>
                                                             )}
@@ -460,10 +463,10 @@ console.log(formData,'formData');
                             </div>
 
                             {onSaveShip &&
-                            <div className='w-[600px] border border-solid border-black p-3 mt-3 ml-3'>
-                                {formData?.firstName}, {formData?.lastName}, {formData?.address1}, {formData?.city}, {formData?.state}, {formData?.country}
-                            </div>
-                        }
+                                <div className='w-[600px] border border-solid border-black p-3 mt-3 ml-3'>
+                                    {formData?.firstName}, {formData?.lastName}, {formData?.address1}, {formData?.city}, {formData?.state}, {formData?.country}
+                                </div>
+                            }
                             <div className='row flex mt-4'>
                                 <div className='buttonDiv pr-5 m-2'>
                                     <DynamicButton
@@ -482,7 +485,7 @@ console.log(formData,'formData');
                                     </div>}
                             </div>
                         </div>
-                        }
+                    }
                     {showShipAddress &&
                         <Modal children={
                             <div className='w-[100%] border border-solid border-black p-3 mt-3'>
@@ -614,23 +617,30 @@ console.log(formData,'formData');
                                 </div>
                                 <div className='grid-rows-2 flex gap-[10rem] mt-5'>
                                     <div>
-                                    <DynamicButton
-                                        className="bg-[#ef6e6e] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
-                                        text="Cancel"
-                                        onClickFunction = {() =>closeModal()}
-                                    />
+                                        <DynamicButton
+                                            className="bg-[#ef6e6e] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
+                                            text="Cancel"
+                                            onClickFunction={() => closeModal()}
+                                        />
                                     </div>
                                     <div>
-                                    <DynamicButton
-                                        className="bg-[#1b5299] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
-                                        text="Save Address"
-                                        onClickFunction = {() =>OnSaveClickShipAddress()}
+                                        <DynamicButton
+                                            className="bg-[#1b5299] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
+                                            text="Save Address"
+                                            onClickFunction={() => OnSaveClickShipAddress()}
 
-                                    />
+                                        />
                                     </div>
                                 </div>
                             </div>
                         } cancelLink={closeModal} />}
+
+                    <Instruction
+                        isOpen={checkSelAddress}
+                        title="Please Select Address"
+                        closeModal={closeSelAddressModal}
+                        table={false}
+                    />
                 </>
             }
         </>

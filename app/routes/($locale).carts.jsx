@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await, Form, useActionData } from '@remix-run/react';
+import { useLoaderData, Await } from '@remix-run/react';
 import Modal from 'react-modal';
 import { BsXCircle } from "react-icons/bs";
 import { useNavigate } from '@remix-run/react';
@@ -16,7 +16,7 @@ import { CheckoutData } from '../components/Checkout'
 
 let storedDataString, storedDataArray
 
-export async function loader({ context }) {
+export async function loader({ context,request }) {
     const StripeKey = context.env.STRIPE_KEY
 
     // console.log(StripeKey,'eeee'); 
@@ -27,25 +27,18 @@ export async function loader({ context }) {
         variants: {}
     })
     //   console.log(data,'cartData');
+    // const formData = new FormData()
+    // formData.append("name","ayush")
     return defer({
         data,
         postalData,
-        StripeKey
+        StripeKey,
     })
 }
 
-export const action = async ({ request }) => {
-    const formData = await request.formData()
-    console.log(formData, 'input---');
-
-    const name = formData.get("name");
-    return `Hello, ${name}`;
-
-}
 export default function AddCartFunc() {
-    const actionData = useActionData();
-    console.log(actionData, 'actiondata');
     const { data, postalData, StripeKey } = useLoaderData()
+    // console.log(formData,'-----------');
     const [cartData, setCartData] = useState([])
     const [updateGift, setUpdateGift] = useState(false)
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -71,32 +64,21 @@ export default function AddCartFunc() {
     const [deleteOrderIndex, setDelOrderIndex] = useState(null)
     const [delCardIndex, setDelCardIndex] = useState(null)
     const [showCartPage, setShowCartPage] = useState(true)
+    const [totalPrize, setTotalPrize] = useState('')
 
     useEffect(() => {
         storedDataString = localStorage.getItem('mydata');
         setCartData(JSON.parse(storedDataString))
-        // subTotalAmount()
         if (postalData) {
             setPostalValue()
         }
-    }, [updateGift])
-    if (cartData) {
-        const prices = cartData.map((cartData) => {
-            let b = parseFloat(cartData.price * 2) + parseFloat(postPrice * 1)
-            console.log(b);
-            console.log((1) + (2), 'eeeeeee')
-
+        if(postPrice){
+            subTotalAmount(JSON.parse(storedDataString))
         }
 
-            //     (cartData.price * cartData.csvFileLen) +
-            // //  (cartData.giftCardPrice * cartData.csvFileLen) +
-            //  (0.66 * cartData.usCount)
-            //  + (1.5 * cartData.nonUSCount) + (cartData.shippingDataCost * 1)
-        );
-        console.log(prices, 'pricesssss');
+    }, [updateGift,postPrice])
 
-    }
-    function setPostalValue() {
+   async function setPostalValue() {
         let postalTit = postalData.product.variants.edges[0].node.title
         let postalrate = postalData.product.variants.edges[0].node.price.amount
         let postalTit2 = postalData.product.variants.edges[1].node.title
@@ -107,15 +89,7 @@ export default function AddCartFunc() {
         setPostPrice(postalrate)
         setPostPrice2(postalrate2)
         setPostImage(postalImag.url)
-        console.log(typeof (postalrate), '2@@@@@');
-
-        let grandPrice = cartData.map(cartData =>
-            (cartData.price * cartData.csvFileLen) +
-            (cartData.giftCardPrice * cartData.csvFileLen) +
-            (0.66 * cartData.usCount)
-            + (1.5 * cartData.nonUSCount) + (cartData.shippingDataCost * 1) + (postPrice * cartData.csvFileLen) + (postPrice2 * cartData.csvFileLen)
-        )
-        console.log(grandPrice, 'grandPrice');
+        // console.log(typeof (postalrate), '2@@@@@');
     }
     let keyToUpdate1 = 'giftCardName'
     let keyToUpdate2 = 'giftCardImg'
@@ -264,12 +238,27 @@ export default function AddCartFunc() {
         }
     };
 
-    function subTotalAmount() {
-        let bb = []
-
-        console.log(bb);
+   async function subTotalAmount(cartData) {
+        const prices = cartData.reduce((sum,cartData) => 
+          sum + (
+                (cartData.price * cartData.csvFileLen) +
+                (cartData.giftCardPrice * cartData.csvFileLen) +
+                (cartData.usCount || cartData.nonUSCount ? (postPrice * cartData.usCount) + (postPrice2 * cartData.nonUSCount):(cartData.reciverAddress?.country === "USA" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === " " ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "u.s.a" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "u.s" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "usa" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "us" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "america" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "united states" ||
+                    cartData.reciverAddress?.country?.toLowerCase() === "united states of america" ||
+                    cartData.reciverAddress?.country?.toLowerCase() == undefined ? postPrice * cartData.csvFileLen : postPrice2 * cartData.csvFileLen))
+                + (cartData.shippingDataCost * 1)),0
+        )
+        console.log(prices, 'pricesssss');
+        setTotalPrize(prices)
     }
-    subTotalAmount()
     return (
         <>
             {showCartPage ?
@@ -318,7 +307,6 @@ export default function AddCartFunc() {
                                                     text="Add Gift Card"
                                                     onClickFunction={() => OpenModalFunc(index)}
                                                 />
-                                                {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => OpenModalFunc(index)}>ADD GIFT CART</button> */}
                                             </div>}
 
                                         <div className='buttonDiv pr-5 m-2'>
@@ -327,7 +315,6 @@ export default function AddCartFunc() {
                                                 text="EDIT ORDER"
                                                 onClickFunction={() => editOrderData(index)}
                                             />
-                                            {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => editOrderData(index)}>EDIT ORDER</button> */}
                                         </div>
                                         <div className='buttonDiv pr-5 m-2'>
                                             <DynamicButton
@@ -335,7 +322,6 @@ export default function AddCartFunc() {
                                                 text="DELETE ORDER"
                                                 onClickFunction={() => ConfirmDeleteOrder(index)}
                                             />
-                                            {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded" onClick={() => ConfirmDeleteOrder(index)}>DELETE ORDER</button> */}
                                         </div>
                                     </div>
                                 </div>
@@ -349,7 +335,6 @@ export default function AddCartFunc() {
                                                 </div>
                                                 <div className='max-w-[40%] mt-10'>
                                                     <text>{item.giftCardName}</text><br /><br />
-                                                    {/* <text> Sender: {item.senderAddress.address1},{item.senderAddress.city},{item.senderAddress.state},{item.senderAddress.country}</text> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -373,7 +358,6 @@ export default function AddCartFunc() {
                                                     text="DELETE CARD"
                                                     onClickFunction={() => confirmCardDel(index)}
                                                 />
-                                                {/* <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => confirmCardDel(index)}>DELETE CARD</button> */}
                                             </div>
                                         </div>
                                     </div>
@@ -382,7 +366,6 @@ export default function AddCartFunc() {
 
                                 {item.usCount || item.nonUSCount ?
                                     <>
-                                        {/* {item.nonUSCount ? */}
                                         {item.nonUSCount &&
                                             <div className='flex'>
                                                 <div className='w-[400px]'>
@@ -539,17 +522,19 @@ export default function AddCartFunc() {
                                     <div className='w-[200px] gap-5'>
                                         <div className='m-6'>
                                             <div>
-                                                <text> Subtotal: $  {(item.price * item.csvFileLen) + (postPrice * item.usCount) +  (postPrice2 * item.nonUSCount) + (item.giftCardPrice * item.csvFileLen) + (item.shippingDataCost * 1) + (item.reciverAddress?.country === "USA" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "" ||
-                                            item.reciverAddress?.country?.toLowerCase() === " " ||
-                                            item.reciverAddress?.country?.toLowerCase() === "u.s.a" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "u.s" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "usa" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "us" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "america" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "united states" ||
-                                            item.reciverAddress?.country?.toLowerCase() === "united states of america" ||
-                                            item.reciverAddress?.country?.toLowerCase() == undefined ? postPrice * item.csvFileLen:postPrice2 * item.csvFileLen)}</text>
+                                                <text> Subtotal: $  {(item.price * item.csvFileLen)  + (item.giftCardPrice * item.csvFileLen) + (item.shippingDataCost * 1) +
+                                                (item.usCount || item.nonUSCount ? (postPrice * item.usCount) + (postPrice2 * item.nonUSCount): (item.reciverAddress?.country === "USA" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === " " ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "u.s.a" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "u.s" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "usa" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "us" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "america" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "united states" ||
+                                                    item.reciverAddress?.country?.toLowerCase() === "united states of america" ||
+                                                    item.reciverAddress?.country?.toLowerCase() == undefined ? postPrice * item.csvFileLen : postPrice2 * item.csvFileLen))
+                                                    }</text>
                                             </div>
                                         </div>
                                     </div>
@@ -560,6 +545,8 @@ export default function AddCartFunc() {
 
                         )}
 
+
+                        {totalPrize &&
                         <div className='w-[1000px]  bg-[#FFF6F6] m-auto mt-10 mb-10'>
                             <div className='flex p-2 border-4 border-indigo-600'>
                                 <div className='w-[300px]'>
@@ -575,7 +562,7 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className='w-[300px]'>
                                     <div className='mt-2'>
-                                        <text className='text-2xl text-[#1b5299] font-bold mt-2'>$22</text>
+                                        <text className='text-2xl text-[#1b5299] font-bold mt-2'>${totalPrize}</text>
                                     </div>
                                 </div>
                                 <div className='w-[300px]'>
@@ -586,7 +573,7 @@ export default function AddCartFunc() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                     </div>
                     <ConfirmationModal
                         show={deleteModal}
@@ -700,7 +687,7 @@ export default function AddCartFunc() {
                     </Modal>
                 </>
                 :
-                <CheckoutData setShowCartPage={setShowCartPage} StripeKey={StripeKey} />
+                <CheckoutData setShowCartPage={setShowCartPage} StripeKey={StripeKey} totalPrize={totalPrize}/>
             }
 
         </>
