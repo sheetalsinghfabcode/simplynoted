@@ -9,3 +9,6 @@ node_modules
 .vscode
 .shopify
 
+
+# Local Netlify folder
+.netlify

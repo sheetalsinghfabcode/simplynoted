@@ -60,8 +60,6 @@ export default function SimplyNoted() {
       });
   }, []);
 
-  console.log('stripeCollection', stripeCollection);
-  console.log('WalletData', WalletData);
 
   return (
     <div>

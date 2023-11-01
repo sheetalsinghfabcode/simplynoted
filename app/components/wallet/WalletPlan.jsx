@@ -15,6 +15,8 @@ const WalletPlans = ({
     setSelectedPlan(event.target.value);
   };
 
+    
+
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
       <DynamicButton
