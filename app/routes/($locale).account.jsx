@@ -110,6 +110,7 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate()
   const [data,setData] = useState(false)
+  const [orderHistory,setOrderHistory] = useState(false)
 
   console.log(customer);
   let result =  customer.id.replace(/[^0-9]/g,"");
