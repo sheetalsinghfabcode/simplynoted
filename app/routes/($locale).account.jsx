@@ -48,7 +48,6 @@ export async function loader({request, context, params}) {
 
   const customer = await getCustomer(context, customerAccessToken);
 
-  console.log(customer,'customer');
   const heading = customer
     ? customer.result
       ? `Welcome, ${customer.firstName}.`
@@ -112,9 +111,7 @@ function Account({customer, heading, featuredData}) {
   const [data,setData] = useState(false)
   const [orderHistory,setOrderHistory] = useState(false)
 
-  console.log(customer);
   let result =  customer.id.replace(/[^0-9]/g,"");
-  console.log();
   const remove = () =>{
     if(typeof window !== 'undefined' && customer ){
       localStorage.removeItem('customerId')
