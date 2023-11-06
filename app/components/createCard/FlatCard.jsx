@@ -4,7 +4,7 @@ import html2canvas from 'html2canvas';
 import {Modal} from '../../components';
 import {useAddressBook} from '../AddressBookContext';
 import Loader from '../modal/Loader';
-
+                                                                             
 export default function FlatCard({}) {
   const [isFrontCard, setIsFrontCard] = useState(true);
   const [headerText, setHeaderText] = useState('Header Text');
@@ -882,7 +882,7 @@ export default function FlatCard({}) {
                   onChange={handleFilesChange}
                   ref={fileInputRef}
                   name="filename"
-                  style={{opacity: 0, position: 'absolute', top: 0, left: 0}}
+                  style={{opacity: 0, position:  'absolute', width:"0", top: 0, left: 0}}
                 />
               </div>
 

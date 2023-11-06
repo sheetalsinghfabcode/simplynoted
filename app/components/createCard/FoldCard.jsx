@@ -529,7 +529,7 @@ export default function FoldCard() {
              {isModalOpen && <Modal cancelLink={handleCloseModal}>
              <div className='modal-flatpage'>
             <div className='first-1st'>
-              <p className='modal-save-name'>Name your card and save it.</p>
+              <p className='modal-save-name font-bold'>Name your card and save it.</p>
             </div>
             <input className='input-modal'
              type="text" onChange={(e) => setProductTitle(e.target.value)}></input><br />
