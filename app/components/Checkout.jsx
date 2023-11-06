@@ -209,7 +209,6 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
 
                         <div className='mt-2'>
                             <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={() => setShowCartPage(true)} > <HiArrowLongLeft className='text-2xl mr-2 ' />GO BACK TO CART  </button>
-
                         </div>
                     </div>
                     <div className=' max-w-[35%] w-full'>
@@ -221,10 +220,8 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                         </div>
                         <div className='mt-2'>
                             <button className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-2 rounded flex"  >PURCHASE  </button>
-
                         </div>
                     </div>
-
                 </div>
             </div>
             {showCardBox &&

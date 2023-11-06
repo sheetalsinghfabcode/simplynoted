@@ -190,17 +190,16 @@ const ContactTable = ({
   );
 
   const allSelected =
-    data.length > 0 && selectedCheckboxes?.length === data.length;
+    page.length > 0 && selectedCheckboxes?.length === page.length;
 
   const handleSelectAll = () => {
     if (allSelected) {
       setSelectedCheckboxes([]);
     } else {
-      setSelectedCheckboxes(data.map((value) => value._id));
+      setSelectedCheckboxes(page.map((value) => value._id));
     }
   };
 
-  console.log('selectedCheckboxes', selectedCheckboxes);
 
   return (
     <div className="container mx-auto mt-8">
@@ -321,12 +320,27 @@ const ContactTable = ({
                       {'<<'}
                     </button>{' '}
                     <button
-                      onClick={() => previousPage()}
+                      onClick={() => {
+                        previousPage();
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth', // Make the scroll behavior smooth
+                        });
+                      }}
                       disabled={!canPreviousPage}
                     >
                       {'<'}
                     </button>{' '}
-                    <button onClick={() => nextPage()} disabled={!canNextPage}>
+                    <button
+                      onClick={() => {
+                        nextPage();
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth', // Make the scroll behavior smooth
+                        });
+                      }}
+                      disabled={!canNextPage}
+                    >
                       {'>'}
                     </button>{' '}
                     <button

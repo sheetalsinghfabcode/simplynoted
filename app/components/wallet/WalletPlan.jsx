@@ -1,21 +1,40 @@
 import DynamicButton from '../DynamicButton';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const WalletPlans = ({
   WalletData,
   setWalletPlan,
-  setWalletPurchase,
   setSelectedPlan,
   selectedPlan,
   setAmount,
+  setWalletPurchase,
   setSubscription,
   stripeCollection,
+  amount,
 }) => {
   const handleRadioChange = (event) => {
     setSelectedPlan(event.target.value);
   };
 
-    
+  let packageQuantity;
+
+  useEffect(() => {
+    // Set initial values based on stripeCollection data
+    if (stripeCollection) {
+      const packageDiscount = stripeCollection.stripe?.packageDiscount || 0;
+      packageQuantity = stripeCollection.stripe?.packageQuantity || 0;
+
+      if (packageQuantity >= 1000) {
+        packageQuantity = packageQuantity.toLocaleString();
+      }
+
+      const selectedPlanString = `${packageDiscount}% Discount ${packageQuantity} Standard Cards`;
+
+      setSelectedPlan(selectedPlanString); // Set the selected plan
+      setAmount(stripeCollection.stripe?.packageQuantity || 0); // Set the amount
+    }
+  }, [stripeCollection]);
+
 
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
@@ -25,15 +44,14 @@ const WalletPlans = ({
         className="!bg-[#EF6E6E] mb-[18px]"
       />
 
-      <div className="grid grid-cols-3 mx-auto  gap-[28px]">
+      <div className="grid grid-cols-3 mx-auto gap-[20px]">
         {WalletData.collection.products.edges.map((product, index) => (
           <div
             key={product.node.title}
             className={`col-span-1 p-[20px] ${
-              product.node.title === 'Free' ||
-              (stripeCollection &&
-                product.node.title.toLowerCase() ===
-                  stripeCollection.stripe?.subscription)
+              (stripeCollection?.error && product.node.title === 'Free') ||
+              product.node.title.toLowerCase() ===
+                stripeCollection.stripe?.subscription
                 ? 'bg-[#F7B7B7]'
                 : ''
             }`}
@@ -63,13 +81,11 @@ const WalletPlans = ({
                         stripeCollection.stripe?.subscription,
                   );
 
-                  console.log('subscriptionMetafield', subscriptionMetafield);
-
                   return (
                     <div
                       onClick={() => {
                         setSubscription(subscriptionMetafield?.value || 0);
-                        setAmount(amountMetafield?.value || 0);
+                        setAmount((variant.node.price.amount) || 0);
                         handleRadioChange({
                           target: {
                             value: `${variant.node.title} ${titleMetafield?.value}`,
@@ -108,7 +124,7 @@ const WalletPlans = ({
                           )}
                         {amountMetafield?.value && (
                           <span className="text-[14px] font-medium">
-                            ${amountMetafield?.value}
+                            ${(variant.node.price.amount)}
                           </span>
                         )}
                       </div>
@@ -140,10 +156,15 @@ const WalletPlans = ({
         </div>
         <DynamicButton
           text="Continue"
+          disabled={amount === 0}
           className="!bg-[#0c5699] !rounded-0 !border-2 border-black"
           onClickFunction={() => {
             setWalletPlan(false);
             setWalletPurchase(true);
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth', // Make the scroll behavior smooth
+            });
           }}
         />
       </div>

@@ -48,7 +48,6 @@ export async function loader({request, context, params}) {
 
   const customer = await getCustomer(context, customerAccessToken);
 
-  console.log(customer,'customer');
   const heading = customer
     ? customer.result
       ? `Welcome, ${customer.firstName}.`
@@ -112,14 +111,14 @@ function Account({customer, heading, featuredData}) {
   const [data,setData] = useState(false)
   const [orderHistory,setOrderHistory] = useState(false)
 
-  console.log(customer);
   let result =  customer.id.replace(/[^0-9]/g,"");
-  console.log();
   const remove = () =>{
     if(typeof window !== 'undefined' && customer ){
       localStorage.removeItem('customerId')
       localStorage.removeItem('SNFirstName')
       localStorage.removeItem('SnEmail')
+      localStorage.removeItem('firstName',customer.firstName)
+      localStorage.removeItem('lastName',customer.lastName)
     }
     }
       if(data == true){
@@ -129,6 +128,8 @@ function Account({customer, heading, featuredData}) {
           localStorage.setItem('customerId',result)
           localStorage.setItem('SNFullName',`${customer.firstName + customer.lastName}`)
           localStorage.setItem('SnEmail',customer.email)
+          localStorage.setItem('firstName',customer.firstName)
+          localStorage.setItem('lastName',customer.lastName)
         }
       }
 

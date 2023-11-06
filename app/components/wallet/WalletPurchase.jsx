@@ -6,29 +6,37 @@ const WalletPurchase = ({
   amount,
   selectedPlan,
   subscription,
+  WalletData,
+  setWalletPayment,
+  setFinalPrice,
 }) => {
-  const subscriptionPrice =
-    subscription !== 0 ? subscription?.split('/')[0].replace('$', '') : '0';
+  const subscriptionPrice = subscription !== 0 ? subscription?.split('/')[0].replace('$', '') : '0';
 
-  console.log('subscriptionPrice', subscriptionPrice);
-  const total = (parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2);
+  const total = subscriptionPrice > 0 ? ((parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2) ):(parseFloat(amount)).toFixed(2) ;
+  setFinalPrice(total);
+
+
+  console.log("WalletData",WalletData)
 
   return (
     <div className="w-full max-w-[1366px] mx-auto px-[20px] py-[40px] bg-white">
       <div className="max-w-[750px] mx-auto p-[50px] border border-solid border-[#ef6e6e]">
         <div className="flex justify-center">
           <DynamicButton
-            text="Team Plan Packages"
-            className="!bg-[#EF6E6E] text-[22px]"
+            text={`${
+              WalletData ? "Team" : 'Free'
+            } Plan Packages`}
+            className="!bg-[#EF6E6E] uppercase text-[22px]"
           />
         </div>
         <div className="flex justify-between items-center mt-[10px] text-[16px] font-medium text-[#001a5f]">
           <span>Plan Amount</span>
           <span>
             {' '}
-            {subscription === 'Always Free' || 0 ? 0 : subscriptionPrice}
+            ${subscription === 'Always Free' || 0 ? 0 : subscriptionPrice}
           </span>
         </div>
+
         <div className="flex justify-between items-center mt-[10px] text-[16px] font-medium text-[#001a5f]">
           <span>Selected Prepaid Package: {selectedPlan} </span>
           <span>${amount || 0}</span>
@@ -36,11 +44,7 @@ const WalletPurchase = ({
 
         <div className="flex justify-between items-center py-[10px] mt-[10px] border-y border-solid border-[#cfcfcf] text-[16px] font-medium text-[#001a5f]">
           <span>Total</span>
-          <span>
-            {subscription === 'Always Free'
-              ? parseFloat(amount).toFixed(2)
-              : total}
-          </span>
+          <span>${subscription === 'Always Free' ? amount : total}</span>
         </div>
 
         <div className="flex justify-between items-center mt-[24px]">
@@ -54,6 +58,10 @@ const WalletPurchase = ({
           />
           <DynamicButton
             text="Continue to Checkout"
+            onClickFunction={() => {
+              setWalletPurchase(false);
+              setWalletPayment(true);
+            }}
             className="!bg-[#EF6E6E] uppercase text-[22px]"
           />
         </div>
