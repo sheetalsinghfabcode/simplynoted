@@ -191,6 +191,8 @@ a.active {
       @apply aspect-[inherit] w-full object-cover;
     }
   }
+
+}
   .request-button {
     background: rgb(239, 110, 110);
     min-width: 203px;
@@ -442,6 +444,81 @@ a.active {
     padding: 10px 15px;
     overflow-y: auto;
     resize: none;
+}
+.ai-generate button {
+  width: 50%;
+  height: 50px;
+  background-color: #ef6e6e;
+  color: #fff;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 5px;
+  margin-top: 10px; 
+   transition: all 0.5s ease-in-out;
+
+}
+.custom_testing {
+  background-color: #f1f1f1;
+  border: solid 2px #aaa;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 375px;
+}
+.addFirstnameBtn{
+  background: #1b5299;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+/* .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+ 
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+} */
+
+/* .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+
+
+
+/* For mobile devices or narrow screens */
+@media (max-width: 768px) {
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
   }
   .ai-generate button {
     width: 50%;
@@ -502,6 +579,23 @@ a.active {
     height: 100%;
     object-fit: cover;
   }
+}
+
+
+@font-face {
+  font-family: 'Beauty';
+  /* font-display: swap; */
+  font-weight: 700;
+  font-style: italic;
+  src: url('./fonts/Beauty_City.ttf') format('truetype');
+
+}
+@font-face {
+  font-family: 'Hercules';
+  /* font-display: swap; */
+  font-weight: 700;
+  font-style: italic;
+  src: url('./fonts/Hercules.ttf') format('truetype');
 
   /* For mobile devices or narrow screens */
   @media (max-width: 768px) {
@@ -747,7 +841,7 @@ a.active {
 }
 
 /* Pagination buttons */
-xx .pagination button {
+.pagination button {
   background-color: #001a5f;
   color: #fff;
   border: none;
@@ -1232,6 +1326,18 @@ body {
   margin-top: 20px;
   flex-direction: column;
   gap: 20px;
+
+}
+.block-title::before{
+  content: "";
+    background: url(../../assets/Image/line-real-pen.png) no-repeat;
+    margin-top:160px;
+    margin-left:255px;
+    display: block;
+    height: 10px;
+    left: 27%;
+    position: absolute;
+    width: 100%;
 }
 
 /* Pagination buttons */
@@ -1266,8 +1372,93 @@ body {
 .type-select select {
   --tw-ring-color: transparent;
   opacity: 0 !important;
+
+}
+.btn1{
+  padding: 20px 30px!important;
+    margin-top: 7px;
+    background: #EF6E6E;
+    color: white;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-right: 15px;
+}
+.texts{
+  color: #707070;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 34px;
+    margin-bottom: 20px;
+}
+.btn2{
+  background: url(../../assets/Image/button-blue.png) no-repeat;
+    background-size: 100% 100%;
+   
+    color: #001A5F;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 26px 50px;
+}
+.robot{
+  position: absolute;
+    z-index: -1;
+    width:30%;
+    left:38rem; 
 }
 
+.robot2{
+  position: absolute;
+  z-index: -1;
+  width:28%;
+  left:24rem; 
+}
+.robot-img{
+  width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+.robot-gif{
+  max-width: 500px;
+    width: 60%;
+margin-left:21rem;
+}
+.robot-gif2{
+  max-width: 500px;
+    width: 106%;
+margin-left:1rem;
+}
+
+.swiper-wrapper{
+  display: inline-flex;
+}
+.swiper{
+  margin:1px 20px
+}
+
+.btn3{
+  background: url(../../assets/Image/button-white.webp) no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 26px 50px;
+}
+
+.bottom_background{
+  background: url(../../assets/Image/box-blue.webp) no-repeat;
+  height: 100%;
+  background-size: 104% 102%;
+  margin-left: -40px;
+  margin-right: -40px;
+  color: white;
+
+}
 
 .user-name {
   width: 100px;
@@ -1282,3 +1473,12 @@ body {
   border-radius: 50%;
   margin: 0 auto;
 }
+
+
+ .input_email{
+  width: 38%;
+    height: 56px;
+    border: 2px solid gray;
+    
+    color:gray;
+ }

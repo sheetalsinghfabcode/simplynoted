@@ -4,6 +4,7 @@ import LogoSimplinoted from '../../../assets/Image/Your_Logo_simplinoted.webp';
 import { Button } from '../Button';
 
 export default function Home() {
+  
   return (
     <div>
      <div className='sec-section' >
@@ -34,6 +35,8 @@ export default function Home() {
         <source src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/robots.webm?v=1650939452" 
          type="video/webm"></source>
        </video> 
+     
     </div>
+   
   );
 }

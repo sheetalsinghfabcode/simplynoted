@@ -91,6 +91,7 @@ export default function App() {
       <html lang={locale.language}>
         <head>
           <meta charSet="utf-8" />
+          
           <meta name="viewport" content="width=device-width,initial-scale=1" />
           <Seo />
           <Meta />

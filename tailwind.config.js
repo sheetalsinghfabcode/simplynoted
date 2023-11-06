@@ -68,6 +68,7 @@ export default {
         triton:['Triton'],
         woody:['Woody'],
         ratigan:['Ratigan'],
+        beauty: ['Beauty']
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],
