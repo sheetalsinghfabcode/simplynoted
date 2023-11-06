@@ -3,13 +3,10 @@ import CardKiller from '../../../assets/Image/Card_Keller_kwlegacy.webp';
 import LogoSimplinoted from '../../../assets/Image/Your_Logo_simplinoted.webp';
 import { Button } from '../Button';
 
-
-
 export default function Home() {
   return (
     <div>
      <div className='sec-section' >
-
      <div className='handwritten-notice'>
       <h3>Send Real Handwritten Notes <br></br></h3>
              <p>to your____________</p>

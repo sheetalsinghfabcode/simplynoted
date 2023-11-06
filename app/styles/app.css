@@ -1015,7 +1015,7 @@ nav a {
 }
 
 .main-div {
-  width: 45%;
+  width:43%;
   min-height: 400px;
 }
 
@@ -1049,7 +1049,10 @@ nav a {
 }
 .choose-file-button {
   min-width: 40%;
-}
+} 
+.choose-file{
+  display: none;
+} 
 .file-click {
   --click-width: 60px;
   --click-height: 50px;
@@ -1073,7 +1076,6 @@ nav a {
 }
 body {
   overflow-x: hidden;
-  height: 0;
 }
 .finish-button-editing {
   background-color: #1b5299;
@@ -1197,7 +1199,10 @@ body {
   border: 2px solid gray;
   margin-top: 26px;
 }
-.input-modal {
+#color-header{
+  width:100%
+}
+.input-modal{
   width: 100%;
   margin-top: 21px;
   border: 2px solid black;
