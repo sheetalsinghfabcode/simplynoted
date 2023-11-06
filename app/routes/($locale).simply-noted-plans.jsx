@@ -4,21 +4,25 @@ import WalletTable from '../components/wallet/WalletTable';
 import {useState, useEffect} from 'react';
 import WalletPlan from '~/components/wallet/WalletPlan';
 import WalletPurchase from '../components/wallet/WalletPurchase';
+import {WalletPayment} from '~/components/WalletPayment';
+import Accordion from '~/components/wallet/Accordian';
+import Loader from '~/components/modal/Loader';
 
 export async function loader({context}) {
+  const StripeKey = context.env.STRIPE_KEY;
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });
 
   return defer({
     WalletData,
+    StripeKey,
   });
 }
-
 let customerID;
 
 export default function SimplyNoted() {
-  const {WalletData} = useLoaderData();
+  const {WalletData, StripeKey} = useLoaderData();
 
   const pricePerCard = WalletData.collection.products.edges.map(
     (price) =>
@@ -30,7 +34,10 @@ export default function SimplyNoted() {
   const [walletPurcase, setWalletPurchase] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [amount, setAmount] = useState(0);
-  const [subscription,setSubscription]= useState(0)
+  const [subscription, setSubscription] = useState(0);
+  const [walletPayment, setWalletPayment] = useState(false);
+  const [finalPrice, setFinalPrice] = useState(null);
+  const [loader,setloader]= useState(true)
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -39,7 +46,13 @@ export default function SimplyNoted() {
     }
   }, []);
 
+  console.log("customerID",customerID)
+
+
   useEffect(() => {
+
+    console.log("Component mount")
+
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
 
@@ -54,16 +67,23 @@ export default function SimplyNoted() {
       .then((data) => {
         console.log('data', data);
         setStripeCollection(data);
+        setloader(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
+      return() =>{
+        console.log("Component Unmount")
+      }
   }, []);
 
-
   return (
-    <div>
-      {!walletPlan && !walletPurcase && (
+    <>
+    {loader ? (<Loader
+      loaderMessage="Loading Plans"
+      />
+      ):(<div>
+      {!walletPlan && !walletPurcase && !walletPayment && (
         <WalletTable
           WalletData={WalletData}
           pricePerCard={pricePerCard}
@@ -79,9 +99,9 @@ export default function SimplyNoted() {
           setSelectedPlan={setSelectedPlan}
           selectedPlan={selectedPlan}
           setAmount={setAmount}
+          amount={amount}
           setSubscription={setSubscription}
           stripeCollection={stripeCollection}
-
         />
       )}
       {walletPurcase && (
@@ -90,10 +110,25 @@ export default function SimplyNoted() {
           setWalletPlan={setWalletPlan}
           amount={amount}
           selectedPlan={selectedPlan}
+          finalPrice={finalPrice}
+          setFinalPrice={setFinalPrice}
+          WalletData={WalletData}
           subscription={subscription}
+          setWalletPayment={setWalletPayment}
         />
       )}
-    </div>
+
+      {walletPayment && (
+        <Accordion
+          setWalletPurchase={setWalletPurchase}
+          setWalletPayment={setWalletPayment}
+          finalPrice={finalPrice}
+          StripeKey={StripeKey}
+        />
+      )}
+    </div>)}
+    
+    </>
   );
 }
 
