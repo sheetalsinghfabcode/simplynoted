@@ -45,7 +45,6 @@ import {ProductInfo} from '../components/products/ProductInfo'
 export const headers = routeHeaders;
 
 export async function loader({ params, request, context }) {
-  // console.log(context,'context');
   const { productHandle } = params;
   // console.log(params,'params');
   invariant(productHandle, 'Missing productHandle param, check route filename');
@@ -536,6 +535,10 @@ const PRODUCT_QUERY = `#graphql
       handle
       descriptionHtml
       description
+      metafield(namespace: "custom_fields", key: "data") {
+        id
+        value
+      }
       options {
         name
         values
