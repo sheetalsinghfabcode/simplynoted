@@ -13,31 +13,19 @@ import {
     Heading,
     Button,
 } from '../Text';
-export function ProductInfo({title,product,setShow,show,setShowBox,editFontFamily,setFontFamily}) {
+export function ProductInfo({title,product,setShow,show,setShowBox,editFontFamily,setFontFamily,fontFamilyName}) {
     console.log(editFontFamily,'editFontFamily');
-let selectFontValue;
     async function singleBtnCLick() {
         setShow(false)
         setSelectedFile('')
         setShowBox(true)
       }
-      function setFont() {
-
-        var selectFont = document.getElementById("font");
-        selectFontValue = editFontFamily 
-        // console.log(selectFontValue,selectFont);
-        if (selectFont) {
-          selectFontValue = selectFont.options[selectFont.selectedIndex].value;
-          if (selectFontValue) {
-        console.log(selectFontValue);
-
-            document.getElementById("messageBoxID").style.fontFamily = selectFontValue;
-            document.getElementById("signOffText").style.fontFamily = selectFontValue;
-          }
+      function setFont(e) {
+        console.log(e,'fontFamily');
+        setFontFamily(e)
+       
         }
-        setFontFamily(selectFontValue)
-        // console.log(selectFontValue,'selectFontValue');
-      }
+      
     return (
         <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-300px]">
             <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
@@ -70,7 +58,7 @@ let selectFontValue;
                         <div className='w-[192px]'>
                             <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
                             <br />
-                            <select id="font" onClick={() => setFont()} >
+                            <select id="font" onClick={(e) => setFont(e.target.value)} >
                                 <option value="">{editFontFamily?editFontFamily:'Select FontFamily'}</option>
                                 {editFontFamily && editFontFamily !== 'tarzan' &&
                             <option value="tarzan" className={`font-tarzan`}>Tarzan</option>}

@@ -5,8 +5,8 @@ import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
 
-let input, input2, output, output2, outputContainer, outputContainer2, customerid
-export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess,editFontFamily }) {
+let  mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid
+export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess,editFontFamily,fontFamilyName }) {
     let [name, setName] = useState(EditMess ? EditMess : '')
     const [name2, setName2] = useState(editEndMess ? editEndMess : '')
     const [fileData, setFileData] = useState([]);
@@ -27,8 +27,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [loader, setLoader] = useState(false);
 
     // input2 = document?.querySelector('.inputText2');
-    output2 = document?.querySelector('.output2');
-    outputContainer2 = document.querySelector('.secDiv');
+    // signOffTextBox = document?.querySelector('.signOffTextBox');
+    // signOffBocContainer = document.querySelector('.secDiv');
     const maxMessCount = 450
     const remainingWord = maxMessCount - name.length
     const maxSignCount = 50
@@ -152,31 +152,31 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     // }
 
     function resize_to_fit() {
-        let fontSize = window.getComputedStyle(output).fontSize;
-        output.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
-        output2.style.fontSize = output.style.fontSize
-        if (output.clientHeight >= outputContainer.clientHeight) {
+        let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
+        mainMessageBox.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
+        signOffTextBox.style.fontSize = mainMessageBox.style.fontSize
+        if (mainMessageBox.clientHeight >= messageBocContainer.clientHeight) {
             resize_to_fit();
         }
     }
 
     async function processInput() {
         console.log('processInput');
-        output.style.fontSize = '50px'; // Default font size
+        mainMessageBox.style.fontSize = '50px'; // Default font size
         resize_to_fit();
     }
 
 
     function resize_to_fit2() {
-        let fontSize = window.getComputedStyle(output2).fontSize;
-        output2.style.fontSize = (parseFloat(fontSize) - 3) + 'px';
-        if (output2.clientHeight >= outputContainer2.clientHeight) {
+        let fontSize = window.getComputedStyle(signOffTextBox).fontSize;
+        signOffTextBox.style.fontSize = (parseFloat(fontSize) - 3) + 'px';
+        if (signOffTextBox.clientHeight >= signOffBocContainer.clientHeight) {
             resize_to_fit2();
         }
     }
 
     async function processInput2() {
-        output2.style.fontSize = '50px'; // Default font size
+        signOffTextBox.style.fontSize = '50px'; // Default font size
         resize_to_fit2();
     }
 
@@ -365,7 +365,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         setValue('abbabbbbb')
     }
     async function onInsetClick() {
-        output.style.fontSize = '20px';
+        mainMessageBox.style.fontSize = '20px';
 
         setName(aiText)
         setIsOpen(false)
@@ -406,10 +406,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const ref = useRef(null);
     const ref1 = useRef(null);
     const ref2 = useRef(null);
+    const ref3 = useRef(null)
     useEffect(() => {
         // input = ref.current;
-        output = ref1.current;
-        outputContainer = ref2.current;
+        mainMessageBox = ref1.current;
+        signOffTextBox = ref3.current;
+        messageBocContainer = ref2.current;
+        signOffBocContainer = ref.current;
         customerid = localStorage.getItem('customerId')
     }, [])
     async function firstNameBtn(data) {
@@ -424,12 +427,12 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         <div className='mainDivForBox flex gap-10'>
                 <div id="outer" className="outerr h-[700px] w-[100%] bg-white max-w-[600px] relative">
                     <div className='outerSec h-[400px] w-[100%] max-w-[570px] absolute' ref={ref2}>
-                        <div id='messageBoxID' ref={ref1} className="output m-5 "  style={{fontFamily:editFontFamily?editFontFamily:''}}>
+                        <div id='messageBoxID' ref={ref1} className="output m-5 "  style={{fontFamily:fontFamilyName?fontFamilyName:editFontFamily}}>
                             {name}
                         </div>
                     </div>
-                    <div className='secDiv absolute h-[300px] w-[100%] max-w-[50%]'>
-                        <div id='signOffText' className="output2">
+                    <div className='secDiv absolute h-[300px] w-[100%] max-w-[50%]' ref={ref}>
+                        <div id='signOffText' ref={ref3} className="output2" style={{fontFamily:fontFamilyName?fontFamilyName:editFontFamily}}>
                             {name2}
                         </div>
                     </div>

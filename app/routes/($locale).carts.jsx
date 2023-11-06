@@ -65,6 +65,7 @@ export default function AddCartFunc() {
     const [delCardIndex, setDelCardIndex] = useState(null)
     const [showCartPage, setShowCartPage] = useState(true)
     const [totalPrize, setTotalPrize] = useState('')
+    const [agree,setAgree] = useState(false)
 
     useEffect(() => {
         storedDataString = localStorage.getItem('mydata');
@@ -568,9 +569,11 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className='w-[300px]'>
                                     <div className=''>
-                                        <input type="checkbox" />
+                                        <input type="checkbox"  onClick={()=>setAgree(!agree)} checked={agree}/>
                                         <text className='text-s'> i agree with terms and condition</text>
-                                        <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={() => setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 ' /> </button>
+                                        <button 
+                                        disabled={!agree}
+                                        className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={() => setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 ' /> </button>
                                     </div>
                                 </div>
                             </div>
