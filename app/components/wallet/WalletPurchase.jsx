@@ -6,7 +6,7 @@ const WalletPurchase = ({
   amount,
   selectedPlan,
   subscription,
-  stripeCollection,
+  WalletData,
   setWalletPayment,
   setFinalPrice,
 }) => {
@@ -15,13 +15,16 @@ const WalletPurchase = ({
   const total = subscriptionPrice > 0 ? ((parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2) ):(parseFloat(amount)).toFixed(2) ;
   setFinalPrice(total);
 
+
+  console.log("WalletData",WalletData)
+
   return (
     <div className="w-full max-w-[1366px] mx-auto px-[20px] py-[40px] bg-white">
       <div className="max-w-[750px] mx-auto p-[50px] border border-solid border-[#ef6e6e]">
         <div className="flex justify-center">
           <DynamicButton
             text={`${
-              stripeCollection ? stripeCollection : 'Free'
+              WalletData ? "Team" : 'Free'
             } Plan Packages`}
             className="!bg-[#EF6E6E] uppercase text-[22px]"
           />

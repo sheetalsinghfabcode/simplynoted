@@ -6,6 +6,7 @@ import WalletPlan from '~/components/wallet/WalletPlan';
 import WalletPurchase from '../components/wallet/WalletPurchase';
 import {WalletPayment} from '~/components/WalletPayment';
 import Accordion from '~/components/wallet/Accordian';
+import Loader from '~/components/modal/Loader';
 
 export async function loader({context}) {
   const StripeKey = context.env.STRIPE_KEY;
@@ -36,6 +37,7 @@ export default function SimplyNoted() {
   const [subscription, setSubscription] = useState(0);
   const [walletPayment, setWalletPayment] = useState(false);
   const [finalPrice, setFinalPrice] = useState(null);
+  const [loader,setloader]= useState(true)
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -45,6 +47,7 @@ export default function SimplyNoted() {
   }, []);
 
   console.log("customerID",customerID)
+
 
   useEffect(() => {
 
@@ -64,6 +67,7 @@ export default function SimplyNoted() {
       .then((data) => {
         console.log('data', data);
         setStripeCollection(data);
+        setloader(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -74,7 +78,11 @@ export default function SimplyNoted() {
   }, []);
 
   return (
-    <div>
+    <>
+    {loader ? (<Loader
+      loaderMessage="Loading Plans"
+      />
+      ):(<div>
       {!walletPlan && !walletPurcase && !walletPayment && (
         <WalletTable
           WalletData={WalletData}
@@ -104,9 +112,7 @@ export default function SimplyNoted() {
           selectedPlan={selectedPlan}
           finalPrice={finalPrice}
           setFinalPrice={setFinalPrice}
-          stripeCollection={
-            stripeCollection && stripeCollection.stripe?.subscription
-          }
+          WalletData={WalletData}
           subscription={subscription}
           setWalletPayment={setWalletPayment}
         />
@@ -120,7 +126,9 @@ export default function SimplyNoted() {
           StripeKey={StripeKey}
         />
       )}
-    </div>
+    </div>)}
+    
+    </>
   );
 }
 

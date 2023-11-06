@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import DynamicButton from '../DynamicButton';
 
@@ -21,15 +21,18 @@ const CARD_OPTIONS = {
 const StripeCard = ({
   setPaymentMethodId,
   createCustomerId,
-  setWalletPurchase,
-  setWalletPayment,
+  savedCard,
+  setloader
+
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
   const elements = useElements();
 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
 
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
@@ -54,25 +57,12 @@ const StripeCard = ({
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-[500px]">
       <CardElement options={CARD_OPTIONS} className="m-5" />
-      <div className="flex justify-between  w-full gap-[10px] items-center my-[16px]">
-        <DynamicButton
-          text="Previous"
-          onClickFunction={() => {
-            setWalletPurchase(true);
-            setWalletPayment(false);
-          }}
-          className="!bg-[#EF6E6E] w-full !rounded-0 !py-[16px] !px-[30px] max-w-[190px]"
-        />
-        {/* <DynamicButton
-                text="Complete Purchase"
-                type="submit"
-                className="!bg-[#EF6E6E] w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
-              /> */}
+      <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
         <button
           type="submit"
           className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
         >
-          Complete Purchase
+         {savedCard ? "Add Card" : "Complete Purchase"}
         </button>
       </div>
     </form>

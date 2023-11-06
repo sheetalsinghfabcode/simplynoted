@@ -8,7 +8,7 @@ const ConfirmationModal = ({ show, onCancel, onConfirm, title, message, confirmT
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
       
-      <div className="modal-container bg-white w-11/12 md:max-w-[500px] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container bg-white w-11/12 md:max-w-[750px] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <div className="modal-content py-4  px-6">
           <div className="modal-header">
             <h3 
@@ -24,13 +24,13 @@ const ConfirmationModal = ({ show, onCancel, onConfirm, title, message, confirmT
           <div className="modal-footer w-full flex justify-center items-center gap-[12px] mt-[20px]">
             <button
               onClick={onConfirm}
-              className="bg-red-500 uppercase tracking-[1.2px] w-full h-[48px] max-w-[175px] text-center hover:bg-red-600 text-white font-semibold py-2 px-4 "
+              className="bg-red-500 uppercase tracking-[1.2px] w-full h-[48px] min-w-[175px] max-w-[400px]  text-center hover:bg-red-600 text-white font-semibold py-2 px-4 "
             >
               {confirmText}
             </button>
             <button
               onClick={onCancel}
-              className="bg-gray-300 uppercase tracking-[1.2px] w-full h-[48px] max-w-[175px] text-center hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4"
+              className="bg-gray-300 uppercase tracking-[1.2px] w-full h-[48px] max-w-[400px] min-w-[175px] text-center hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4"
             >
               {cancelText}
             </button>
