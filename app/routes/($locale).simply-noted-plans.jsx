@@ -44,7 +44,6 @@ export default function SimplyNoted() {
     }
   }, []);
 
-
   console.log("customerID",customerID)
 
   useEffect(() => {

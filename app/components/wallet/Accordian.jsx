@@ -163,6 +163,11 @@ const Accordion = ({
   );
 
 
+
+  console.log("finalPrice",finalPrice)
+  console.log("type of finalPrice ",typeof(finalPrice))
+
+
   return (
     <div div className="w-full p-[20px] max-w-[640px] mx-auto">
       <div
