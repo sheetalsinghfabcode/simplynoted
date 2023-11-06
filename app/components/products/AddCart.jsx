@@ -10,8 +10,8 @@ import location from '../../../location.json'
 import Instruction from '../modal/Instruction';
 
 
-let customerid, senderAddressVal, reciverAddressVal, cartDataReq, firstPrice
-export function AddCart({ show, setProductShow, data, productData, selectFontValue, editOrderValue, shippingData, fontFamilyName }) {
+let customerid, cartDataReq
+export function AddCart({ show, setProductShow, data, productData, editOrderValue, shippingData, fontFamilyName }) {
     const {
         addresses,
         setAddresses,
@@ -56,6 +56,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         country: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.country : 'USA',
     });
     const [checkSelAddress,setCheckSelAddress] = useState(false)
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === 'country') {
@@ -163,7 +164,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
         setCardName(selCardName.title)
         setCardImg(selCardName.featuredImage.url)
         let arrCardPrice = data.collection.products.edges[item].node.variants.edges
-        firstPrice = arrCardPrice[0].node.price.amount
+      let  firstPrice = arrCardPrice[0].node.price.amount
         setCardPrice(firstPrice)
         setCardPriceTitle(arrCardPrice[0].node.title)
         console.log(cardPrice, '----cardPrice=--', firstPrice);
@@ -454,7 +455,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="checkbox" id="" name="" value="" />
+                                                <input type="checkbox" id="" name="" value=""  checked={cardPriceTitle}/>
                                                 <text className='ml-3'>Add Gift Card</text>
                                             </div>
                                         </div>
@@ -472,6 +473,7 @@ export function AddCart({ show, setProductShow, data, productData, selectFontVal
                                     <DynamicButton
                                         className="bg-[#1b5299]"
                                         text="Add To Cart"
+                                        // disabled={!agree}
                                         onClickFunction={() => onClickAddCart()}
                                     />
                                 </div>

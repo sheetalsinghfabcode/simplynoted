@@ -1,5 +1,5 @@
-import {json} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
+import { json, defer } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
 import {
   flattenConnection,
   AnalyticsPageType,
@@ -17,32 +17,42 @@ import {
   ProductCard,
   Button,
 } from '~/components';
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
-import {routeHeaders} from '~/data/cache';
-import {seoPayload} from '~/lib/seo.server';
-import {getImageLoadingPriority} from '~/lib/const';
+import { PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
+import { routeHeaders } from '~/data/cache';
+import { seoPayload } from '~/lib/seo.server';
+import { getImageLoadingPriority } from '~/lib/const';
+import { useEffect, useState } from 'react';
+import { useNavigate } from '@remix-run/react';
+import DynamicButton from '~/components/DynamicButton';
+import { CustomComponent } from '~/components/CustomComponent';
 
 export const headers = routeHeaders;
 
-export async function loader({params, request, context}) {
+export async function loader({ params, request, context }) {
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 8,
   });
-  const {collectionHandle} = params;
+  const variables = getPaginationVariables(request, { pageBy: 10 });
 
+  const { collectionHandle } = params;
+  // console.log(params,'url value ---');
+  const handleLinkData = await context.storefront.query(HANDLE_QUERY, {
+    variables: {}
+  })
+  // console.log(collectionsData,'collectionData');
   invariant(collectionHandle, 'Missing collectionHandle param');
 
   const searchParams = new URL(request.url).searchParams;
   const knownFilters = ['productVendor', 'productType'];
   const available = 'available';
   const variantOption = 'variantOption';
-  const {sortKey, reverse} = getSortValuesFromParam(searchParams.get('sort'));
+  const { sortKey, reverse } = getSortValuesFromParam(searchParams.get('sort'));
   const filters = [];
   const appliedFilters = [];
 
   for (const [key, value] of searchParams.entries()) {
     if (available === key) {
-      filters.push({available: value === 'true'});
+      filters.push({ available: value === 'true' });
       appliedFilters.push({
         label: value === 'true' ? 'In stock' : 'Out of stock',
         urlParam: {
@@ -51,12 +61,12 @@ export async function loader({params, request, context}) {
         },
       });
     } else if (knownFilters.includes(key)) {
-      filters.push({[key]: value});
-      appliedFilters.push({label: value, urlParam: {key, value}});
+      filters.push({ [key]: value });
+      appliedFilters.push({ label: value, urlParam: { key, value } });
     } else if (key.includes(variantOption)) {
       const [name, val] = value.split(':');
-      filters.push({variantOption: {name, value: val}});
-      appliedFilters.push({label: val, urlParam: {key, value}});
+      filters.push({ variantOption: { name, value: val } });
+      appliedFilters.push({ label: val, urlParam: { key, value } });
     }
   }
 
@@ -69,14 +79,14 @@ export async function loader({params, request, context}) {
       price.min = Number(searchParams.get('minPrice')) || 0;
       appliedFilters.push({
         label: `Min: $${price.min}`,
-        urlParam: {key: 'minPrice', value: searchParams.get('minPrice')},
+        urlParam: { key: 'minPrice', value: searchParams.get('minPrice') },
       });
     }
     if (searchParams.has('maxPrice')) {
       price.max = Number(searchParams.get('maxPrice')) || 0;
       appliedFilters.push({
         label: `Max: $${price.max}`,
-        urlParam: {key: 'maxPrice', value: searchParams.get('maxPrice')},
+        urlParam: { key: 'maxPrice', value: searchParams.get('maxPrice') },
       });
     }
     filters.push({
@@ -84,7 +94,7 @@ export async function loader({params, request, context}) {
     });
   }
 
-  const {collection, collections} = await context.storefront.query(
+  const { collection, collections } = await context.storefront.query(
     COLLECTION_QUERY,
     {
       variables: {
@@ -99,16 +109,22 @@ export async function loader({params, request, context}) {
     },
   );
   // console.log(collection,"--------------");
-
+  const myCollection = await context.storefront.query(MY_COLLECTION, {
+    variables: {
+      handle: collectionHandle,
+    }
+  })
   if (!collection) {
-    throw new Response('collection', {status: 404});
+    throw new Response('collection', { status: 404 });
   }
 
-  const seo = seoPayload.collection({collection, url: request.url});
+  const seo = seoPayload.collection({ collection, url: request.url });
 
   return json({
+    myCollection,
     collection,
     appliedFilters,
+    handleLinkData,
     collections: flattenConnection(collections),
     analytics: {
       pageType: AnalyticsPageType.collection,
@@ -117,11 +133,77 @@ export async function loader({params, request, context}) {
     },
     seo,
   });
+
 }
-
+let customerid
 export default function Collection() {
-  const {collection, collections, appliedFilters} = useLoaderData();
+  const navigate = useNavigate()
+  const [handleName, setHandleName] = useState('')
+  const [addingProductsData, setAddingProd] = useState([]);
+  const [checkState,setCheckState] = useState(false)
+  const { collection, collections, appliedFilters, handleLinkData, myCollection } = useLoaderData();
+  let myColletionData = myCollection.collection.products
+  myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
+  console.log(myColletionData,'filterCollections');
+ async function changeHandle(e) {
+    setHandleName(e)
+    console.log(e, 'HandleChange');
+    if (e == "customisable-cards") {
+      customisedCard()
+      navigate(`/collections/${e}`)
 
+      // debugger;
+    } else{
+      navigate(`/collections/${e}`)
+  setCheckState(false)
+
+    }
+  }
+
+  async function customisedCard(){
+    try {
+      const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`)
+      const json =await res.json()
+      console.log(json.result,'customise-data');
+    let  myData = await json.result.products
+      //  setAddingProd(json.result.products)
+      setCheckState(true)
+      if(json.result) {
+        console.log(myData,'create Api');
+        setAddingProd(myData)
+    // navigate(`/collections/${'customisable-cards'}`)
+        CustomeCard()
+      }
+      // debugger;
+    // navigate(`/collections/${'customisable-cards'}`)
+
+    } catch (error) {
+      console.log(error,'customiseCard---');
+    }
+  }
+  
+
+  function CustomeCard(){
+    console.log(addingProductsData,'======my-----');
+    
+    return(
+      <>
+      {addingProductsData && addingProductsData.map((product, i) => (
+        <>
+      {/* <h2>Hello</h2> */}
+        <CustomComponent
+          key={product.id}
+          product={product}
+          // loading={getImageLoadingPriority(i)}
+        />
+        </>
+      ))}
+      </>
+    )
+  }
+  useEffect(()=>{
+    customerid = localStorage.getItem('customerId')
+  },[])
   return (
     <>
       <PageHeader heading={collection.title}>
@@ -136,41 +218,131 @@ export default function Collection() {
         )}
       </PageHeader>
       <Section>
-        <SortFilter
+        {/* <SortFilter
           filters={collection.products.filters}
           appliedFilters={appliedFilters}
           collections={collections}
-        >
-          <Pagination connection={collection.products}>
-            {({nodes, isLoading, PreviousLink, NextLink}) => (
-              <>
-                <div className="flex items-center justify-center mb-6">
-                  <Button as={PreviousLink} variant="secondary" width="full">
-                    {isLoading ? 'Loading...' : 'Load previous'}
-                  </Button>
-                </div>
-                <Grid layout="products">
-                  {nodes.map((product, i) => (
-                    <ProductCard
-                      key={product.id}
-                      product={product}
-                      loading={getImageLoadingPriority(i)}
-                    />
-                  ))}
-                </Grid>
-                <div className="flex items-center justify-center mt-6">
-                  <Button as={NextLink} variant="secondary" width="full">
-                    {isLoading ? 'Loading...' : 'Load more products'}
-                  </Button>
-                </div>
-              </>
+        > */}
+        <div className='gap-4'>
+          <DynamicButton
+            className="bg-[#1b5299] w-[200px] text-[#fff] p-2 mb-6"
+            text="Create A Custom Card"
+            onClickFunction={() => ''}
+          />
+          <br />
+          <DynamicButton
+            className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+            text="View My Custom Card"
+            onClickFunction={() => ''}
+          />
+        </div>
+        <div className='flex gap-5 justify-center'>
+          <h2 className='text-2xl'>Choose a card from our collection: </h2>
+          <select name="" id="" onChange={(e) => changeHandle(e.target.value)}>
+            <option value="best-sellers">{'best-sellers'}</option>
+            {handleLinkData.collections.edges.map((item) =>
+              <option value={item.node.handle}>{item.node.handle}</option>
             )}
-          </Pagination>
-        </SortFilter>
+          </select>
+        </div>
+        <div>
+          <Grid layout="products">
+            {!checkState ?
+            <>
+            {myColletionData && myColletionData.map((product, i) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                loading={getImageLoadingPriority(i)}
+              />
+            ))}
+            </>
+            :<>
+          <CustomeCard/>
+          </>
+
+            }
+          </Grid>
+        </div>
+        {/* <Pagination connection={collection.products}>
+          {({ nodes, isLoading, PreviousLink, NextLink }) => (
+            <>
+              <div className='gap-4'>
+                <DynamicButton
+                  className="bg-[#1b5299] w-[200px] text-[#fff] p-2 mb-6"
+                  text="Create A Custom Card"
+                  onClickFunction={() => ''}
+                />
+                <br />
+                <DynamicButton
+                  className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+                  text="View My Custom Card"
+                  onClickFunction={() => ''}
+                />
+              </div>
+              <div className='flex gap-5 justify-center'>
+                <h2 className='text-2xl'>Choose a card from our collection: </h2>
+                <select name="" id="" onChange={(e) => changeHandle(e.target.value)}>
+                  <option value="best-sellers">{'best-sellers'}</option>
+                  {handleLinkData.collections.edges.map((item) =>
+                    <option value={item.node.handle}>{item.node.handle}</option>
+                  )}
+                </select>
+              </div>
+              <div className="flex items-center justify-center mb-6">
+                <Button as={PreviousLink} variant="secondary" width="full">
+                  {isLoading ? 'Loading...' : 'Load previous'}
+                </Button>
+              </div>
+              <Grid layout="products">
+                {collection.products.nodes.map((product, i) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    loading={getImageLoadingPriority(i)}
+                  />
+                ))}
+              </Grid>
+
+              <div className="flex items-center justify-center mt-6">
+                <Button as={NextLink} variant="secondary" width="full">
+                  {isLoading ? 'Loading...' : 'Load more products'}
+                </Button>
+              </div>
+            </>
+          )}
+        </Pagination> */}
+        {/* </SortFilter> */}
       </Section>
     </>
   );
 }
+
+const MY_COLLECTION = `#graphql
+query
+CollectionDetails(
+  $handle: String!
+)
+{
+collection(handle:$handle) {
+  id
+     handle
+     title
+     description
+     seo {
+       description
+       title
+     }
+     products(first:250){
+      nodes{
+        ...ProductCard
+  }
+    }
+    }
+  }
+  ${PRODUCT_CARD_FRAGMENT}
+ `
+
 
 const COLLECTION_QUERY = `#graphql
   query 
@@ -246,6 +418,18 @@ const COLLECTION_QUERY = `#graphql
   }
   ${PRODUCT_CARD_FRAGMENT}
 `;
+
+const HANDLE_QUERY = `#graphql
+query
+{
+  collections(first: 10) {
+    edges {
+      node {
+        handle
+      }
+    }
+  }
+}`
 
 function getSortValuesFromParam(sortParam) {
   switch (sortParam) {

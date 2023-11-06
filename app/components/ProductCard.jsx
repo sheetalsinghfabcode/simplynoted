@@ -13,7 +13,7 @@ export function ProductCard({
   quickAdd,
 }) {
   let cardLabel;
-
+console.log(product,'----product----');
   const cardProduct = product?.variants ? product : getProductPlaceholder();
   if (!cardProduct?.variants?.nodes?.length) return null;
 
@@ -29,7 +29,6 @@ export function ProductCard({
   } else if (isNewArrival(product.publishedAt)) {
     cardLabel = 'New';
   }
-
   const productAnalytics = {
     productGid: product.id,
     variantGid: firstVariant.id,
@@ -39,9 +38,9 @@ export function ProductCard({
     price: firstVariant.price.amount,
     quantity: 1,
   };
-
   return (
     <div className="flex flex-col gap-2">
+      {/* <h2>Helloo{product.title}</h2> */}
       <Link
         onClick={onClick}
         to={`/products/${product.handle}`}

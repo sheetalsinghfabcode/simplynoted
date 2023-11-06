@@ -21,6 +21,8 @@ export const loader = async ({request, context: {storefront}}) => {
     },
   });
 
+  // console.log("collections>>>",collections)
+
   const seo = seoPayload.listCollections({
     collections,
     url: request.url,
@@ -70,6 +72,7 @@ export default function Collections() {
 }
 
 function CollectionCard({collection, loading}) {
+  // console.log(collection.handle,'collections');
   return (
     <Link to={`/collections/${collection.handle}`} className="grid gap-4">
       <div className="card-image bg-primary/5 aspect-[3/2]">
