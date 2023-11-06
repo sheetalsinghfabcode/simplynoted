@@ -15,9 +15,12 @@ import Profile1 from'../../../assets/Image/Profile1.webp';
 
 import pen from'../../../assets/Image/pen-img.webp';
 const Card=()=>{
+   
+    console.log("Card")
     return(
         <>
         <div>
+            
         <div className="bg-white  mx-56 text-center mt-5">
         <div className="pl-[25rem] pt-20 ">
             <img src={Profile1} alt="" className="w-[100px] mt-1"></img>
