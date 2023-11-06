@@ -26,14 +26,6 @@ export function Modal({children, cancelLink}) {
             }}
             tabIndex={0}
           >
-           <div className='modal-flatpage'>
-            <div className='first-1st'>
-              <p className='modal-save-name'>Name your card and save it.</p>
-            </div>
-            <input className='input-modal'
-             type="text"></input><br />
-            <button className='button-modal' type="button">SAVE CARD</button>
-           </div>
             <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
               <button
                 // to={cancelLink}

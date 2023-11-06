@@ -91,15 +91,14 @@ export default function Register() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
-  const [nativeFirstNameError, setNativeFirstNameError] = useState(null);
-  const [nativeLastNameError, setNativeLastNameError] = useState(null);
-console.log(actionData,"create Accoint");
+
+  console.log("actionData",actionData);
   return (
     <div className="flex justify-center my-24 px-4">
       <div className="max-w-md w-full">
         <h1 className="text-4xl">Create an Account.</h1>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form
+        <Form 
           method="post"
           noValidate
           className="pt-6 pb-8 mt-4 mb-4 space-y-3"

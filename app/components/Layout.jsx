@@ -34,7 +34,7 @@ import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
 let customerid;
-export function Layout({children, layout}) {
+export function Layout({children,layout}) {
   const {headerMenu, footerMenu} = layout;
 
   return (
@@ -57,6 +57,7 @@ export function Layout({children, layout}) {
 
 function Header({title, menu}) {
   const isHome = useIsHomePath();
+
 
   const {
     isOpen: isCartOpen,
