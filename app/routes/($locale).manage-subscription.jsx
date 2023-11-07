@@ -68,7 +68,9 @@ const ManageSubscription = () => {
         show={cancelSubscription}
         onCancel={() => setCancelSubscription(false)}
         // onConfirm={handleDeleteSelected}
-        message="Are you sure you want to cancel your existing plan?"
+        
+        title="Are you sure you want to cancel your existing plan?"
+        message="If you continue with this cancellation, your current plan will be converted to a Free plan and Prepaid Package when your current plan expires, and your discount level will decrease.?"
         confirmText="YES, CONTINUE WITH CANCELLATION"
         cancelText=" No, I do not wish to cancel at this time. "
       />
@@ -106,12 +108,12 @@ const ManageSubscription = () => {
             </span>
           </div>
           <div className="mt-[20px] border-b-2 border-solid border-[$e6edf8]"></div>
-          <div className="flex justify-between items-center cursor-pointer w-full min-h-[40px] uppercase py-[5px]">
+          {/* <div className="flex justify-between items-center cursor-pointer w-full min-h-[40px] uppercase py-[5px]">
             <span className="text-[15px] text-[#001a5f] !font-bold uppercase">
               Plan
             </span>
             <span>▼</span>
-          </div>
+          </div> */}
           <WalletAccordion title="Plan">
             <div className="p-[15px] mb-[15px] border border-solid border-[#e6edf8]">
               <div className="flex justify-between items-center gap-[15px] py-[10px]">
@@ -132,6 +134,16 @@ const ManageSubscription = () => {
                   onClickFunction={() => setCancelSubscription(true)}
                   text="Cancel Plan"
                   className="!bg-[#ef6e6e] max-w-[190px] uppercase min-w-[190px]"
+                />
+              </div>
+              <div className="flex justify-between items-center gap-[15px] py-[10px]">
+                <span className="text-[15px] text-[#001a5f] font-bold uppercase">
+                  CHANGE PLAN
+                </span>
+                <DynamicButton
+                  onClickFunction={() => navi(true)}
+                  text="Change  Plan"
+                  className="!bg-[#001a5f] max-w-[190px] uppercase min-w-[190px]"
                 />
               </div>
             </div>
