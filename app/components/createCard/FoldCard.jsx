@@ -5,7 +5,7 @@ import html2canvas from 'html2canvas';
 import Loader from '../modal/Loader';
 
 
-export default function FoldCard() {
+export default function FoldCard({CardData,variants,}) {
   const [isFolded, setIsFolded] = useState(true);
   const [cardPageName, setCardPageName] = useState('Front');
   const [selectedFile, setSelectedFile] = useState(null);
@@ -18,6 +18,7 @@ export default function FoldCard() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [productTitle, setProductTitle] = useState("");
   const [loader, setLoader] = useState(false);
+  const [pdfData, setPdfData] = useState({});
 
 
 
@@ -132,7 +133,7 @@ export default function FoldCard() {
       transformFace: '' , 
       transformBack: '',
       name: '',
-      cardType: " Folded5*7",
+      cardType: "folded5x7",
       isLongImageBack:"",
       QR:"",
       // isHeaderIncluded: '',
@@ -163,17 +164,42 @@ export default function FoldCard() {
     };
   }, payloadDependency);
 
+  function dataURLtoFile(dataurl, filename) {
+    if (dataurl === null) return;
+    let arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, {type: mime});
+  }
   const handleFinishEditing = async (event) => {
     setLoader(true);
     try {
-      let formdata = new FormData();
-      for(const name in payload) {
-        formdata.append(name, JSON.stringify(payload[name]));
-      }
+      const formData = new FormData();
+      formData.append('headerData', JSON.stringify(payload.headerData));
+      formData.append('footerData', JSON.stringify(payload.footerData));
 
-      let requestOptions = {
+      formData.append('faceImage', dataURLtoFile(payload.faceImage, 'jpg'));
+      formData.append('backImage', dataURLtoFile(payload.backImage, 'jpg'));
+      formData.append('headerImage', dataURLtoFile(payload.headerImage, 'jpg'));
+      formData.append('footerImage', dataURLtoFile(payload.footerImage, 'jpg'));
+
+      formData.append('isLongImage', false);
+      formData.append('isLongImageBack', false);
+      formData.append('transformFace', '1');
+      formData.append('transformBack', '1');
+      formData.append('cardType', 'folded5x7');
+      console.log(formData, '------------------------------------------');
+
+      const requestOptions = {
         method: 'POST',
-        body: formdata
+        body: formData,
       };
 
       let data = await fetch(`https://api.simplynoted.com/api/customizedCard/uploadPDFv2?customerId=${customerId}`, requestOptions);
@@ -181,19 +207,23 @@ export default function FoldCard() {
       if (data.ok){
         setLoader(false);
         setModalOpen(true);
-        alert("uploadPDF worked!!");
+        const response = await data.json();
+        setPdfData(response?.result);
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+
   const saveCardClick = async () => {
     let saveCardRequests = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',},
-       body: JSON.stringify({
-        "productTitle": productTitle
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        productTitle: productTitle,
       }),
     };
     try {
@@ -202,38 +232,38 @@ export default function FoldCard() {
       if (response.ok) {
         let data = await response.json();
         if (data.result.count === 0) {
-          const payload ={
+          const saveFormData = new FormData();
+          const savePayload = {
             product: {
-              title:'',
-              vendor: "",
-              product_type: "",
-              tags:
-                "customise_card, customise_card_edited, packageDiscount_" ,
-              variants: allVariantsPriceing,
+              title: productTitle,
+              vendor: CardData.product.vendor,
+              product_type: CardData.product.customisable_card,
+              tags: CardData.product.customise_card,
+              variants: variants,
               metafields: [
-                    {
-                      key: "",
-                      value: '',
-                      value_type: "",
-                      namespace: "",
-                    },
                 {
-                  key: "",
+                  key: 'qrImage',
+                  value: '',
+                  value_type: 'string',
+                  namespace: 'is_customised',
+                },
+                {
+                  key: 'customer',
                   value: customerId,
-                  value_type: "", //"value_type": "string",
-                  namespace: "",
+                  value_type: 'integer',
+                  namespace: 'shopify_id',
                 },
                 {
-                  key: "",
-                  value: "",
-                  value_type: "",
-                  namespace: "",
+                  key: 'flag',
+                  value: 'true',
+                  value_type: 'string',
+                  namespace: 'is_customised',
                 },
                 {
-                  key: "",
-                  value: varaintOption.toString(),
-                  value_type: "",
-                  namespace: "",
+                  key: 'variantDefaultPricing',
+                  value: '',
+                  value_type: 'string',
+                  namespace: 'product',
                 },
               ],
             },
@@ -241,47 +271,46 @@ export default function FoldCard() {
               cardType: 'folded5x7',
               isHeaderIncluded: false,
               isFooterIncluded: true,
-              messageAreaPosition: messageAreaPosition,
+              messageAreaPosition: '',
               header: {
-                data: '', //it will contain text or image base64 'data:image/base64
-                textAlign: '',
-                justifyContent: '',
-                flexDirection: '',
-                fontType: selectedHeaderFont,
-                fontSize: parseInt(''),
-                fontColor: '',
-                zoom: '',
-                isColored: false,
-                height: parseInt(''),
+                data: "",
+                textAlign: "",
+                isColored: selectButton === 'dark' ? false : true,
+                zoom: "",
+                fontType: "",
+                fontSize: "",
+                fontColor: "",
+                justifyContent: 'center',
+                flexDirection: 'column',
+                isImage: 'false',
+                height: 50,
               },
               message: {
                 data: '',
                 fontSize: parseInt(''),
                 fontType: '',
-                fontFamily: customFontFamily,
+                fontFamily: '',
                 height: parseInt(''),
-                fontAutoResize: '',
+                fontAutoResize: true,
               },
               footer: {
-                data: '', //it will contain text or image
-                textAlign: '',
-                justifyContent: '',
-                flexDirection: '',
-                fontType: selectedFooterFont,
-                fontSize: parseInt(''),
-                fontColor: '',
-                zoom: '',
-                isColored: '',
+                data: "",
+                textAlign: "",
+                fontSize: "",
+                fontType: "",
+                zoom: "",
+                fontColor: "",
+                isColored: selectButton === 'dark' ? false : true,
+                justifyContent: 'center',
+                flexDirection: 'column',
+                isImage: 'false',
+                height: 50,
               },
               face: {
                 zoom: '',
                 isColored: '',
-                width: isFolded
-                  ?''
-                  : '',
-                height: isFolded
-                  ? ''
-                  :'',
+                width: '',
+                height: '',
               },
               back: {
                 zoom: '',
@@ -289,19 +318,33 @@ export default function FoldCard() {
                 width: '',
                 height: '',
               },
-              pdfURL: customPdfURL,
+              pdfURL: pdfData?.pdfUrl,
             },
-          }
+            s3ImageUrls: pdfData,
+            featuredImage: null,
+          };
+          saveFormData.append('product', JSON.stringify(savePayload.product));
+          saveFormData.append(
+            'customFields',
+            JSON.stringify(savePayload.customFields),
+          );
+          saveFormData.append(
+            's3ImageUrls',
+            JSON.stringify(savePayload.s3ImageUrls),
+          );
+          saveFormData.append('featuredImage', dataURLtoFile(dataURL, 'jpg'));
+          console.log(saveFormData, '--------');
 
-          const saveInDbOptions = {
-            method: "POST", 
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-          
-            })
-          }
-          const saveInDbResponse = await fetch(`https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,saveInDbOptions);    
-          if(saveInDbResponse.ok) alert("Saved in the DB.");
+          let saveRequestOptions = {
+            method: 'POST',
+            body: saveFormData,
+          };
+          console.log(saveFormData, '--------');
+          const saveInDbResponse = await fetch(
+            `https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
+            saveRequestOptions,
+          );
+          if (saveInDbResponse.ok) navigate(`/products/${productTitle}`);
         } else if (data.result.count === 1) {
           alert("Card already exist!!");
         }

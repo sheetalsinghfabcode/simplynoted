@@ -1,13 +1,15 @@
-import {useState, useRef, useEffect, useNavigate} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import AddImage from '../../../assets/Image/add_image_icon.png';
 import html2canvas from 'html2canvas';
-import {Modal} from '../../components';
+import {Link, Modal} from '../../components';
 import {useAddressBook} from '../AddressBookContext';
 import Loader from '../modal/Loader';
-                                                                             
-export default function FlatCard({}) {
+import {useNavigate} from '@remix-run/react';
+
+export default function FlatCard({CardData, variants, setCard}) {
   const [isFrontCard, setIsFrontCard] = useState(true);
   const [headerText, setHeaderText] = useState('Header Text');
+
   const [scaledImage, setScaledImage] = useState(null);
   const fileInputRef = useRef(null);
   const [isDivOpen, setIsDivOpen] = useState(false);
@@ -19,6 +21,10 @@ export default function FlatCard({}) {
   const customerId = customerIdRef.current;
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState(false);
+  const [dataURL, setDataURL] = useState(null);
+  const [pdfData, setPdfData] = useState({});
+
+  const navigate = useNavigate();
 
   const {
     inputText,
@@ -66,8 +72,8 @@ export default function FlatCard({}) {
     setSelectedColor('#000');
     setIsHeaderChecked(false);
     setIsFooterChecked(false);
-    setBackHeaderImage();
-    setBackFooterImage();
+    setBackHeaderImage(null);
+    setBackFooterImage(null);
     setScale(1);
   }, []);
 
@@ -101,6 +107,7 @@ export default function FlatCard({}) {
   };
   const handleFilesChange = (event) => {
     const selectedFile = event.target.files[0];
+    console.log('selectedFile', selectedFile);
 
     if (selectedFile) {
       const reader = new FileReader();
@@ -189,13 +196,11 @@ export default function FlatCard({}) {
   };
   const handleInputHeader = (e) => {
     setInputText(e.target.value);
-    setBackFooterImage(null);
     setBackHeaderImage(null);
   };
   const handleInputFooter = (e) => {
     setFooterText(e.target.value);
     setBackFooterImage(null);
-    setBackHeaderImage(null);
   };
 
   const dottedDivRef = useRef(null);
@@ -231,7 +236,8 @@ export default function FlatCard({}) {
       );
 
       const dataURL = newCanvas.toDataURL('image/png');
-      console.log(dataURL);
+      console.log(dataURL, 'imaBFBSKDFKSDKFSKDFKJSDFKSDFKDSFKSDKJFKJSDgeURL');
+      setDataURL(dataURL);
       return dataURL;
     } catch (error) {
       console.error('Error generating screenshot:', error);
@@ -254,9 +260,12 @@ export default function FlatCard({}) {
     backFooterImage,
     selectedColor,
     footerText,
+    dataURL,
   ];
   let payload;
   useEffect(() => {
+    console.log('scaledImage', scaledImage);
+
     payload = {
       headerData: {
         data: inputText,
@@ -282,8 +291,9 @@ export default function FlatCard({}) {
         flexDirection: 'column',
         isImage: 'false',
       },
-      faceImage: scaledImage,
-      backImage: null,
+      faceImage: dataURL,
+      backImage: scaledImage,
+      zoom: backScale,
       // isHeaderIncluded: isHeaderChecked,
       // isFooterIncluded: isFooterChecked,
       headerImage: backHeaderImage,
@@ -298,28 +308,59 @@ export default function FlatCard({}) {
     };
   }, payloadDependency);
 
+  function dataURLtoFile(dataurl, filename) {
+    if (dataurl === null) return;
+    let arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, {type: mime});
+  }
+
   const handleFinishEditing = async (event) => {
     setError(null);
     setLoader(true);
     try {
-      let formdata = new FormData();
-      for (const name in payload) {
-        formdata.append(name, JSON.stringify(payload[name]));
-      }
+      let formData = new FormData();
+      console.log(payload, 'payloadpayloadpayloadpayloadpayload');
+      // for (const name in payload) {
+      //   formdata.append(name, JSON.stringify(payload[name]));
 
+      // }
+      formData.append('headerData', JSON.stringify(payload.headerData));
+      formData.append('footerData', JSON.stringify(payload.footerData));
+
+      formData.append('faceImage', dataURLtoFile(payload.faceImage, 'jpg'));
+      formData.append('backImage', dataURLtoFile(payload.backImage, 'jpg'));
+      formData.append('headerImage', dataURLtoFile(payload.headerImage, 'jpg'));
+      formData.append('footerImage', dataURLtoFile(payload.footerImage, 'jpg'));
+
+      formData.append('isLongImage', false);
+      formData.append('isLongImageBack', false);
+      formData.append('transformFace', '1');
+      formData.append('transformBack', '1');
+      formData.append('cardType', 'flat');
+      console.log(formData, '------------------------------------------');
       let requestOptions = {
         method: 'POST',
-        body: formdata,
+        body: formData,
       };
 
-      let data = await fetch(
+      const data = await fetch(
         `https://api.simplynoted.com/api/customizedCard/uploadPDFv2?customerId=${customerId}`,
         requestOptions,
       );
-       
       if (data.ok) {
         setLoader(false);
         setModalOpen(true);
+        const response = await data.json();
+        setPdfData(response?.result);
       }
     } catch (error) {
       console.log(error);
@@ -345,12 +386,123 @@ export default function FlatCard({}) {
       if (response.ok) {
         let data = await response.json();
         if (data.result.count === 0) {
+          const saveFormData = new FormData();
+          const savePayload = {
+            product: {
+              title: productTitle,
+              vendor: CardData.product.vendor,
+              product_type: CardData.product.customisable_card,
+              tags: CardData.product.customise_card,
+              variants: variants,
+              metafields: [
+                {
+                  key: 'qrImage',
+                  value: '',
+                  value_type: 'string',
+                  namespace: 'is_customised',
+                },
+                {
+                  key: 'customer',
+                  value: customerId,
+                  value_type: 'integer',
+                  namespace: 'shopify_id',
+                },
+                {
+                  key: 'flag',
+                  value: 'true',
+                  value_type: 'string',
+                  namespace: 'is_customised',
+                },
+                {
+                  key: 'variantDefaultPricing',
+                  value: '',
+                  value_type: 'string',
+                  namespace: 'product',
+                },
+              ],
+            },
+            customFields: {
+              cardType: 'folded5x7',
+              isHeaderIncluded: false,
+              isFooterIncluded: true,
+              messageAreaPosition: '',
+              header: {
+                data: inputText,
+                textAlign: alignment,
+                isColored: selectButton === 'dark' ? false : true,
+                zoom: backScale,
+                fontType: selectFontValue,
+                fontSize: headerFontSize,
+                fontColor: selectedColor,
+                justifyContent: 'center',
+                flexDirection: 'column',
+                isImage: 'false',
+                height: 50,
+              },
+              message: {
+                data: '',
+                fontSize: parseInt(''),
+                fontType: '',
+                fontFamily: '',
+                height: parseInt(''),
+                fontAutoResize: true,
+              },
+              footer: {
+                data: footerText,
+                textAlign: footeralignment,
+                fontSize: footerFontSize,
+                fontType: selectFontValue,
+                zoom: backScale,
+                fontColor: selectedColor,
+                isColored: selectButton === 'dark' ? false : true,
+                justifyContent: 'center',
+                flexDirection: 'column',
+                isImage: 'false',
+                height: 50,
+              },
+              face: {
+                zoom: '',
+                isColored: '',
+                width: '',
+                height: '',
+              },
+              back: {
+                zoom: '',
+                isColored: '',
+                width: '',
+                height: '',
+              },
+              pdfURL: pdfData?.pdfUrl,
+            },
+            s3ImageUrls: pdfData,
+            featuredImage: null,
+          };
+          saveFormData.append('product', JSON.stringify(savePayload.product));
+          saveFormData.append(
+            'customFields',
+            JSON.stringify(savePayload.customFields),
+          );
+          saveFormData.append(
+            's3ImageUrls',
+            JSON.stringify(savePayload.s3ImageUrls),
+          );
+          saveFormData.append('featuredImage', dataURLtoFile(dataURL, 'jpg'));
+          console.log(saveFormData, '--------');
+
+          let saveRequestOptions = {
+            method: 'POST',
+            body: saveFormData,
+          };
+          console.log(saveFormData, '--------');
           const saveInDbResponse = await fetch(
             `https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
+            saveRequestOptions,
           );
-          if (saveInDbResponse.ok) alert('Saved in the DB.');
+          if (saveInDbResponse.ok) navigate(`/products/${productTitle}`);
+          // alert('Saved API triggered successfully.');
         } else if (data.result.count === 1) {
           setError(true);
+          alert('Card already exists.');
         }
         console.log(data);
       } else {
@@ -360,9 +512,10 @@ export default function FlatCard({}) {
       console.error('There was a problem with the fetch operation:', error);
     }
   };
-
+  console.log(scaledImage, 'sdfsfssfsfsdffsdf');
   return (
     <>
+     <button type="button" onClick={() => setCard(false)}>Back</button>
       {loader ? (
         <Loader loaderMessage="Saving Flat Card" />
       ) : (
@@ -741,7 +894,7 @@ export default function FlatCard({}) {
 
                 {modalOpen && (
                   <Modal cancelLink={closeModal}>
-                    <div className="modal-flatpage">
+                    <div className="modal-flatpage bg-white">
                       <div className="first-1st">
                         <p className="modal-save-name">
                           Name your card and save it.
@@ -753,7 +906,12 @@ export default function FlatCard({}) {
                         type="text"
                       />
                       <br />
-                      {error && <span className='text-red-500'>*Card with the same name already exists. Please try another name</span>}
+                      {error && (
+                        <span className="text-red-500">
+                          *Card with the same name already exists. Please try
+                          another name
+                        </span>
+                      )}
                       <button
                         className="button-modal"
                         type="button"
@@ -851,6 +1009,7 @@ export default function FlatCard({}) {
                 Add Header
               </label>
               <br />
+
               <input
                 type="checkbox"
                 name="footer"
@@ -882,7 +1041,13 @@ export default function FlatCard({}) {
                   onChange={handleFilesChange}
                   ref={fileInputRef}
                   name="filename"
-                  style={{opacity: 0, position:  'absolute', width:"0", top: 0, left: 0}}
+                  style={{
+                    opacity: 0,
+                    position: 'absolute',
+                    width: '0',
+                    top: 0,
+                    left: 0,
+                  }}
                 />
               </div>
 

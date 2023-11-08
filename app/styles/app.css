@@ -1289,7 +1289,6 @@ body {
 /***********modal***************/
 .modal-save-name {
   background: #deebf7;
-  max-width: 476px;
   height: 55px;
   display: flex;
   justify-content: center;
@@ -1319,7 +1318,7 @@ body {
   padding: 6px 31px 4px;
   justify-content: center;
   align-items: center;
-  min-width: 477px;
+  min-width: 554px;
   min-height: 43px;
   margin-top: 22px;
 }
