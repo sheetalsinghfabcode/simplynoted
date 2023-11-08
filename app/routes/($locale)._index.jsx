@@ -11,9 +11,7 @@ import {routeHeaders} from '~/data/cache';
 import Home from '~/components/home/Home';
 import Note from '~/components/home/Note';
 import Data from '~/components/home/Data';
-import Bottom from '~/components/home/Bottom';
-import Card from '~/components/home/Card';
-import Footer from '~/components/home/Footer';
+
 export const headers = routeHeaders;
 
 export async function loader({params, context}) {
@@ -101,9 +99,8 @@ export default function Homepage() {
       <Home/>
       <Note/>
 <Data/>
-<Card/>
-<Bottom/>
-<Footer />
+
+
       {/* {featuredProducts && (
         <Suspense>
           <Await resolve={featuredProducts}>
