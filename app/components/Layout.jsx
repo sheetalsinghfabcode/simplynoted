@@ -5,13 +5,22 @@ import {
   useMatches,
   useNavigate,
 } from '@remix-run/react';
+ import { useState,useRef } from 'react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
 import {Suspense, useEffect, useMemo} from 'react';
 import {CartForm, Image} from '@shopify/hydrogen';
 import LogoShopify from '../../assets/Image/simply-noted-logo.avif';
-import CartShopify from '../../assets/Image/cart-icon.png';
-
+import CartShopify from '../../assets/Image/cart_icon.png';
+import footerlogo from"../../assets/Image/logo-footer.webp";
+import linkdin from"../../assets/Image/Linkdin.svg";
+import fb from"../../assets/Image/fb.png";
+import twitter from"../../assets/Image/twitter.png";
+import DynamicButton from './DynamicButton';
+import top from'../../assets/Image/top.png';
+import Data2 from './home/Data2';
+import Bottom from '~/components/home/Bottom';
+import Card from '~/components/home/Card';
 import {
   Drawer,
   useDrawer,
@@ -50,6 +59,9 @@ export function Layout({children,layout}) {
           {children}
         </main>
       </div>
+      <Data2/>
+      <Card/>
+<Bottom/>
       {footerMenu && <Footer menu={footerMenu} />}
     </>
   );
@@ -161,7 +173,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       role="banner"
       className={`${
         isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -232,7 +244,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
       role="banner"
       className={`${
         isHome
-          ? ' dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
+          ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader'
           : 'bg-contrast/80 text-primary'
       } ${
         !isHome && y > 50 && ' shadow-lightHeader'
@@ -250,7 +262,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             }}
           />
         </Link>
-        <nav className="flex gap-8 text-black flex gap-8 text-black font-karla text-17 leading-1.1  text-black-800 font-bold tracking-tight">
+        <nav className="flex gap-8 text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight">
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => (
             <Link
@@ -259,43 +271,67 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               target={item.target}
               prefetch="intent"
               className={({isActive}) =>
-                isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+                isActive ? 'navitem-active' : 'navitems'
               }
+        
             >
               {item.title === 'Send a Card' ? (
                 <div className="dropdown">
                   <div>Send a Card</div>
                   <div className="dropdown-content">
-                    <Link to="/card">
-                      <p className="card">Card</p>
-                    </Link>
-                    <Link
-                    to="createcard"
-                    >
-                    <p
-                      className="Create-a-card"
-                     
-                    >
-                      Create a Card
-                    </p>
-                    </Link>
-                    <p>Item 3</p>
+                    <ul className='dropdown-list'>
+                    <Link to="/collections/best-sellers"> <li>  Card   
+                      </li></Link>
+                     <Link  to="createcard" >   <li> Create a Card </li> </Link>
+                   <Link to="/collections/birthday" ><li>Birthday Automation</li></Link>
+           <Link to="collections/gift-cards"> <li>Gift Cards </li></Link>
+            </ul>
                   </div>
                 </div>
               ) : null}
+
+                {item.title === 'Integrations' ? (
+                <div className="dropdown">
+                  <div>Integrations</div>
+                  <div className="dropdown-content">
+                    <ul className='dropdown-list'>
+                 <Link to="/pages/zapier-integration"> <li>  Zapier</li></Link>
+                <Link to="/pages/shopify-integration"> <li> Shopify</li></Link>
+               <Link to="/pages/salesforce"> <li> Salesforce</li> </Link>
+                   <Link to="/pages/api-automation"> <li> API</li></Link> 
+                         
+            </ul>
+                  </div>
+                </div>
+              ) : null}  
 
               {item.title === 'Pricing' ? (
                 <div className="dropdown">
                   <div>Pricing</div>
                   <div className="dropdown-content">
-                    <p>Item 1</p>
-                    <p> Item 2</p>
-                    <p>Item 3</p>
+                  <ul className='dropdown-list'>
+                  <Link to="/pages/pricing"><li>Credit Packages</li></Link>  
+                   <Link to=""><li>Get a Custom Quote</li></Link> 
+                   <Link to="/pages/marketing"> <li>ROI Calculator</li></Link> 
+                  </ul>
                   </div>
                 </div>
               ) : null}
 
-              {['Send a Card', 'Pricing'].includes(item.title)
+                  {item.title === 'Learn' ? (
+                <div className="dropdown">
+                  <div>Learn</div>
+                  <div className="dropdown-content">
+                  <ul className='dropdown-list'>
+                    <li>Blog.</li>
+                    <li>Tutorials</li>
+                    <li>Videos</li>
+                   <Link to="/pages/faq"><li>F.A.Q.</li></Link> 
+                  </ul>
+                  </div>
+                </div>
+              ) : null}
+              {['Send a Card','Integrations', 'Pricing','Learn'].includes(item.title)
                 ? null
                 : item.title}
             </Link>
@@ -308,30 +344,28 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             src={CartShopify}
             alt="cart-icon"
             style={{
-              width: '40px',
-              height: '38px',
+              width: '32px',
+              height: '29px',
+              marginTop:'-11px'
             }}
           />
           <span className="tooltiptext">Cart</span>
         </div>
-
-        <button
-          className="request-button"
-          type="button"
-          onClick={() =>
-            (window.location.href =
-              'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
-          }
-        >
-          Request a Sample
-        </button>
-        <button
-          className="login-button"
-          type="button"
-          onClick={() => window.open('/account', '_self')}
-        >
-          Login →
-        </button>
+       
+        <DynamicButton
+                    text="REQUEST A SAMPLE"
+                    className="request-button"
+                    onClickFunction={()=>window.location.href=("https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb")}
+                   
+         />
+      
+      <DynamicButton
+                    text=" Account →"
+                    className="login-button"
+                    onClickFunction={()=>navigate("/account/login")}
+                   
+         />
+        
         {/* <Form
           method="get"
           action={params.locale ? `/${params.locale}/search` : '/search'}
@@ -360,6 +394,8 @@ function DesktopHeader({isHome, menu, openCart, title}) {
     </header>
   );
 }
+
+
 
 function AccountLink({className}) {
   const [root] = useMatches();
@@ -433,29 +469,57 @@ function Badge({openCart, dark, count}) {
 
 function Footer({menu}) {
   const isHome = useIsHomePath();
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset >600) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    });
+  }, []);
+ 
   const itemsCount = menu
     ? menu?.items?.length + 1 > 4
       ? 4
       : menu?.items?.length + 1
     : [];
 
+  
+
   return (
-    <Section
+    <div
       divider={isHome ? 'none' : 'top'}
       as="footer"
       role="contentinfo"
-      className={`grid min-h-[25rem] items-start grid-flow-row w-full gap-6 py-8 px-6 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
-        bg-primary dark:bg-contrast dark:text-primary text-contrast overflow-hidden`}
+    //   className={`block min-h-[25rem] items-start grid-flow-row w-full gap-2 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
+    //  bg-[#2d4271] dark:text-primary text-contrast overflow-hidden`}
+    className={`bg-[#2d4271] text-white p-0  font-karla`}
     >
       <FooterMenu menu={menu} />
-      <CountrySelector />
+      {/* <ScrolltoTop/> */}
+
+      {showButton && (
+      <button
+        onClick={() => {
+          window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }}
+       className='button-top'
+      >
+      
+        <img className='w-6' src={top} alt=""></img>
+      </button>
+      )}
+      {/* <CountrySelector /> */}
       <div
-        className={`self-end pt-8 opacity-50 md:col-span-2 lg:col-span-${itemsCount}`}
+        className={` bg-[#2c3b68] h-[45px] flex pl-[6px] pt-[10px] text-base`}
       >
         &copy;Simply Noted  {new Date().getFullYear()}.All Rights Reserved
         
       </div>
-    </Section>
+    </div>
   );
 }
 
@@ -481,9 +545,12 @@ function FooterMenu({menu}) {
     nav: 'grid gap-2 pb-6',
   };
 
+
+
+
   return (
     <>
-      {(menu?.items || []).map((item) => (
+      {/* {(menu?.items || []).map((item) => (
         <section key={item.id} className={styles.section}>
           <Disclosure>
             {({open}) => (
@@ -519,7 +586,82 @@ function FooterMenu({menu}) {
             )}
           </Disclosure>
         </section>
-      ))}
+      ))} */}
+{/* 
+<div className="bg-[#2d4271]  text-white"> */}
+        <div className="row flex">
+            <div className="gap-x-6 my-20 mr-24 ml-3">
+                <div className="w-48"><img src={footerlogo} alt=""></img></div>
+                <div className="flex mt-5">
+                <img className="w-14 m-1" src={linkdin} alt=""></img>
+                <img className="w-14 m-1" src={fb} alt=""></img>
+                <img className="w-14 m-1" src={twitter} alt=""></img>
+                </div>
+            </div>
+            <div className="gap-x-6 mx-16 my-20">
+                <div className="text-xl font-semibold">Quick Links </div>
+                {(menu?.items || []).map((item) => (
+        <section key={item.id} className={styles.section}>
+          <Disclosure>
+            {({open}) => (
+              <>
+                <Disclosure.Button className="text-left md:cursor-default">
+                  <Link to={item.to}>
+                  <Heading
+                   className="flex justify-between !font-base hover:text-white" size="lead" as="h3">
+                    {item.title}
+                    {item?.items?.length > 0 && (
+                      <span className="md:hidden">
+                        <IconCaret direction={open ? 'up' : 'down'} />
+                      </span>
+                    )}
+                  </Heading>
+                  </Link>
+                </Disclosure.Button>
+                {item?.items?.length > 0 ? (
+                  <div
+                    className={`${
+                      open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                    } overflow-hidden transition-all duration-300`}
+                  >
+                    <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
+                      <Disclosure.Panel static>
+                        <nav className={styles.nav}>
+                          {item.items.map((subItem) => (
+                            <FooterLink key={subItem.id} item={subItem} />
+                          ))}
+                        </nav>
+                      </Disclosure.Panel>
+                    </Suspense>
+                  </div>
+                ) : null}
+              </>
+            )}
+          </Disclosure>
+        </section>
+      ))} 
+            </div>
+            <div className="gap-x-6 ml-20 mr-10 my-20">
+                <div >
+                    <div className="text-xl  font-semibold">Address</div>
+                    <div >5025 S Ash Ave Suite B16 Tempe AZ<br></br>
+                     85282</div>
+                </div>
+
+                <div className="mt-24">
+                    <div className="text-xl font-semibold">Email</div>
+                    <div>support@simplynoted.com</div>
+                </div>
+            </div>
+            
+            <div className="gap-x-6 mr-20 my-20">
+                <div className="text-xl font-semibold">Hours</div>
+                <div>Monday-Friday</div>
+                <div>9:00am - 5:00pm MST</div>
+            </div>
+        </div>
+     
+
     </>
   );
 }

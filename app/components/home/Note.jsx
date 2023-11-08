@@ -39,21 +39,29 @@ const Note = () => {
             </div>
           </div>
           </div>
+          <div className='mb-10'></div>
           </div>
           <div className='mt-6 ml-[-20rem]'>
           <Swiper
-      modules={[Autoplay]}
-      direction={'horizontal'}
-      spaceBetween={2}
-      slidesPerView={3.5}
-      loop={true}
+            modules={[Autoplay]}
+            direction={'horizontal'}
+            spaceBetween={1}
+            slidesPerView={3.5}
+           
+          loop={true}
+     
+     
       autoplay={{ delay:1000 ,
         pauseOnMouseEnter: true, 
          disableOnInteraction: false,
         }}
-    className='slider_notes'
+
     >
        
+      <SwiperSlide><img className='w-[90%]' src={Note1} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={Note2} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={Note3} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={Note2} alt="LogoSimplinotedpic"  /> </SwiperSlide>
       <SwiperSlide><img className='w-[90%]' src={Note1} alt="LogoSimplinotedpic"  /> </SwiperSlide>
       <SwiperSlide><img className='w-[90%]' src={Note2} alt="LogoSimplinotedpic"  /> </SwiperSlide>
       <SwiperSlide><img className='w-[90%]' src={Note3} alt="LogoSimplinotedpic"  /> </SwiperSlide>
@@ -61,28 +69,7 @@ const Note = () => {
     </Swiper>
 
           </div>
-          {/* <Slider {...settings}>
-            <div>
-              <h3>1</h3>
-            </div>
-            <div>
-              <h3>2</h3>
-            </div>
-            <div>
-              <h3>3</h3>
-            </div>
-            <div>
-              <h3>4</h3>
-            </div>
-            <div>
-              <h3>5</h3>
-            </div>
-            <div>
-              <h3>6</h3>
-            </div>
-          </Slider> */}
-    
-     
+         
     </>
   );
 };

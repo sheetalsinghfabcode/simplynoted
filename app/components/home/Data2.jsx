@@ -37,37 +37,33 @@ return(
     <Swiper
       modules={[Autoplay]}
       direction={'horizontal'}
-      spaceBetween={30}
+      spaceBetween={20}
       slidesPerView={7}
-     
-    //   loopFillGroupWithBlank={true}
-    //   loopAdditionalSlides={true}
-    //   centeredSlides={true}
-    //   navigation={true}
       loop={true}
     
-      
-    //   freeMode={true}
-    //   autoplayDisableOnInteraction={false}
-    // speed={3000}   
-      autoplay={{ delay:1000 ,
+      autoplay={{ delay:3000 ,
         pauseOnMouseEnter: true, 
          disableOnInteraction: false,
         }}
-    //   pagination={{ clickable: true }}
-         
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
+  className="swiper-company"
     >
        
+      <SwiperSlide ><img className='w-full' src={Fairway} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide className=" relative top-[-10px] ml-5"><img className='w-[64%] h-[66%]' src={Mariott} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide><img className='w-[84%]' src={Ncca} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className="relative top-[-10px]"><img className='w-[90%]' src={Ford} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide ><img className='w-[80%]' src={Edward} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-27px]"><img className='w-[90%]' src={Ronald} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-10px]"><img className='w-[70%]' src={kw} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-15px] ml-[-20px]"><img className='w-full' src={tesla} alt="LogoSimplinotedpic"  /></SwiperSlide>
       <SwiperSlide><img className='w-full' src={Fairway} alt="LogoSimplinotedpic"  /> </SwiperSlide>
-      <SwiperSlide className="flex justify-center relative top-[-22px] "><img className='w-[64%] h-[66%]' src={Mariott} alt="LogoSimplinotedpic"  /></SwiperSlide>
-      <SwiperSlide><img className='w-[90%]' src={Ncca} alt="LogoSimplinotedpic"  /></SwiperSlide>
-      <SwiperSlide><img className='w-full' src={Ford} alt="LogoSimplinotedpic"  /></SwiperSlide>
-      <SwiperSlide className="ml-6"><img className='w-[75%]' src={Edward} alt="LogoSimplinotedpic"  /></SwiperSlide>
-      <SwiperSlide className="flex justify-center relative top-[-25px]"><img className='w-[90%]' src={Ronald} alt="LogoSimplinotedpic"  /></SwiperSlide>
-      <SwiperSlide ><img className='w-[70%]' src={kw} alt="LogoSimplinotedpic"  /></SwiperSlide>
-      <SwiperSlide><img className='w-full' src={tesla} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-10px] ml-5"><img className='w-[64%] h-[66%]' src={Mariott} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide><img className='w-[84%]' src={Ncca} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className="relative top-[-10px]"><img className='w-[90%]' src={Ford} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide ><img className='w-[80%]' src={Edward} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-27px]"><img className='w-[90%]' src={Ronald} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-10px]"><img className='w-[70%]' src={kw} alt="LogoSimplinotedpic"  /></SwiperSlide>
+      <SwiperSlide className=" relative top-[-15px] ml-[-20px]"><img className='w-full' src={tesla} alt="LogoSimplinotedpic"  /></SwiperSlide>
     </Swiper>
 
     
