@@ -42,6 +42,15 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
     function closeModal() {
         setShowCardBox(false)
     }
+
+    function AddCreditCard(id){
+        if(savedCard){
+            addNewCreditCard(id)
+        }else{
+            createCustomerId(id)
+        }
+    }
+
     async function createCustomerId(id) {
         try {
             setloader(true)
@@ -65,16 +74,18 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
             })
             const json = await res.json()
             console.log(json, 'createCustomerId Response');
-            await addNewCreditCard(id, json.stripeCustomerId)
+            // await addNewCreditCard(id, json.stripeCustomerId)
+            setloader(false)
+
             // }
         } catch (error) {
             setloader(false)
             console.log(error, 'error on CreateCard');
         }
     }
-    async function addNewCreditCard(paymentID, stripeCustomerId) {
+    async function addNewCreditCard(paymentID) {
         try {
-            
+            setloader(true)
             const res = await fetch(`https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${custmerID}`, {
                 method: "POST",
                 headers: {
@@ -82,7 +93,6 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                 },
                 body: JSON.stringify({
                     "paymentMethodId": paymentID,
-                    "stripeCustomerId": stripeCustomerId
                 })
             })
             const jsonData = await res.json()
@@ -226,6 +236,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
             </div>
             {showCardBox &&
                 <Modal children={<Elements stripe={stripe}>
+                    {!savedCard &&
                     <div className='w-[100%] border border-solid border-black p-3 mt-3'>
                         <div className='grid-rows-2 flex gap-3'>
                             <div>
@@ -345,7 +356,8 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                             </div>
                         </div>
                     </div>
-                    <StripeCardComp setPaymentMethodId={setPaymentMethodId} createCustomerId={createCustomerId} />
+                    }
+                    <StripeCardComp setPaymentMethodId={setPaymentMethodId} AddCreditCard={AddCreditCard} />
                 </Elements>} cancelLink={closeModal} />}
                 </>
             }
