@@ -7,6 +7,8 @@ import WalletPurchase from '../components/wallet/WalletPurchase';
 import {WalletPayment} from '~/components/WalletPayment';
 import Accordion from '~/components/wallet/Accordian';
 import Loader from '~/components/modal/Loader';
+import {useNavigate} from '@remix-run/react';
+
 
 export async function loader({context}) {
   const StripeKey = context.env.STRIPE_KEY;
@@ -39,6 +41,9 @@ export default function SimplyNoted() {
   const [finalPrice, setFinalPrice] = useState(null);
   const [loader,setloader]= useState(true)
 
+  const navigate = useNavigate();
+
+
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
     if (!customerID) {
@@ -46,12 +51,9 @@ export default function SimplyNoted() {
     }
   }, []);
 
-  console.log("customerID",customerID)
-
+  console.log("selectedPlan",selectedPlan)
 
   useEffect(() => {
-
-    console.log("Component mount")
 
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
@@ -73,7 +75,6 @@ export default function SimplyNoted() {
         console.error('Error fetching data:', error);
       });
       return() =>{
-        console.log("Component Unmount")
       }
   }, []);
 
