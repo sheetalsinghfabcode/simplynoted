@@ -4,9 +4,13 @@ import { BsXCircle } from "react-icons/bs";
 import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
+import { Image } from '@shopify/hydrogen';
 
-let  mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid
-export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess,editFontFamily,fontFamilyName }) {
+
+let mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid
+export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess, editFontFamily, fontFamilyName, metafields }) {
+    console.log(metafields, 'metafields');
+
     let [name, setName] = useState(EditMess ? EditMess : '')
     const [name2, setName2] = useState(editEndMess ? editEndMess : '')
     const [fileData, setFileData] = useState([]);
@@ -25,6 +29,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [instructionModal, setInstructionModal] = useState(false);
     const [loginCheck, setLoginCHeck] = useState(false);
     const [loader, setLoader] = useState(false);
+    const [fontSize,setFontSize] = useState('')
 
     // input2 = document?.querySelector('.inputText2');
     // signOffTextBox = document?.querySelector('.signOffTextBox');
@@ -53,10 +58,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     function closeModalInt() {
         setInstructionModal(false)
     }
-    function closeLoginModal(){
+    function closeLoginModal() {
         setLoginCHeck(false)
     }
-    function onCancelCSVUpload(){
+    function onCancelCSVUpload() {
         setShowNextBtn(false)
     }
     async function checkUserLogged() {
@@ -101,7 +106,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     csvFileLen: lenCsvData ? lenCsvData : '1',
                     usCount: usAddress,
                     nonUsCount: nonusAddress,
-                    bulkCsvData: fileData
+                    bulkCsvData: fileData,
+                    fontSize:fontSize
                 }
             } else {
                 reqField = {
@@ -111,10 +117,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     csvFileLen: lenCsvData ? lenCsvData : '1',
                     usCount: usAddress,
                     nonUsCount: nonusAddress,
-                    bulkCsvData: fileData ? fileData : null
+                    bulkCsvData: fileData ? fileData : null,
+                    fontSize:fontSize
                 }
             }
-
             localStorage.setItem('reqFielddInCart', JSON.stringify(reqField))
             setProductShow(false)
             console.log(name, 'namefield');
@@ -147,6 +153,55 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             return <div></div>
         }
     }
+    function ShowHeaderComp() {
+        if (typeof metafields.header.data == 'string') {
+            if (metafields.header.data.startsWith("http://") || metafields.header.data.startsWith("https://")) {
+                return (
+
+                    <div className={`flex h-[50px]  m-5`} style={{justifyContent:metafields.header.justifyContent}}>
+                        <Image className={`!w-20`}
+                            src={metafields.header.data} 
+                            
+                            />
+                    </div>
+                )
+            } else {
+                return(
+                    <div className={`flex h-[50px] w-[100%] bg-red max-w-[600px] justify-${metafields.header.justifyContent} m-5`}
+                    style={{
+                        fontFamily: metafields.header.fontType, fontSize:metafields.header.fontSize
+                    }}>
+                    {metafields.header.data}
+                </div>
+                )
+            }
+        }
+    }
+
+    function ShowFooterComp(){
+        if (typeof metafields.footer.data == 'string') {
+            if (metafields.footer.data.startsWith("http://") || metafields.footer.data.startsWith("https://")) {
+                return (
+
+                    <div className={`flex h-[50px]  m-5`} style={{justifyContent:metafields.footer.justifyContent}}>
+                        <Image className={`!w-20`}
+                            src={metafields.footer.data} 
+                            
+                            />
+                    </div>
+                )
+            } else {
+                return(
+                    <div className={`flex h-[100px] w-[100%] bg-red max-w-[600px] justify-${metafields.footer.justifyContent} `}
+                    style={{
+                        fontFamily: metafields.footer.fontType, fontSize:metafields.footer.fontSize
+                    }}>
+                    {metafields.footer.data}
+                </div>
+                )
+            }
+        }
+    }
     // if (input) {
     //     input.addEventListener('input', processInput);
     // }
@@ -155,6 +210,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
         mainMessageBox.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
         signOffTextBox.style.fontSize = mainMessageBox.style.fontSize
+        setFontSize(mainMessageBox.style.fontSize)
         if (mainMessageBox.clientHeight >= messageBocContainer.clientHeight) {
             resize_to_fit();
         }
@@ -349,8 +405,8 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             setCsvFile(json.result)
             console.log(json, 'CSV UPLOAD DATA ---------------');
             if (json.result) {
-            setShowNextBtn(true)
-            setLoader(false)
+                setShowNextBtn(true)
+                setLoader(false)
             }
         } catch (error) {
             console.log(error, 'file upload error');
@@ -421,108 +477,116 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     }
     return (
         <>
-        {loader?
-        <Loader />:
-        <>
-        <div className='mainDivForBox flex gap-10'>
-                <div id="outer" className="outerr h-[700px] w-[100%] bg-white max-w-[600px] relative">
-                    <div className='outerSec h-[400px] w-[100%] max-w-[570px] absolute' ref={ref2}>
-                        <div id='messageBoxID' ref={ref1} className="output m-5 "  style={{fontFamily:fontFamilyName?fontFamilyName:editFontFamily}}>
-                            {name}
-                        </div>
-                    </div>
-                    <div className='secDiv absolute h-[300px] w-[100%] max-w-[50%]' ref={ref}>
-                        <div id='signOffText' ref={ref3} className="output2" style={{fontFamily:fontFamilyName?fontFamilyName:editFontFamily}}>
-                            {name2}
-                        </div>
-                    </div>
+            {loader ?
+                <Loader /> :
+                <>
+                    <div className='mainDivForBox flex gap-10'>
 
-                </div>
-                <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText h-[200px] w-[100%] rounded-[6px] p-[7px] ' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
-                    </textarea>
-                    <span className="charLeft">{remainingWord} characters remaining</span><br />
-                    {show &&
-                        <>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
+                        <div id="outer" className="outerr h-[650px] w-[100%] bg-white max-w-[600px] relative">
+                            {metafields.header &&
+                                <ShowHeaderComp/>
+                            }
 
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
-
-                        </>
-
-                    }
-                    <div className='flex gap-4 mt-5' >
-                        <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
-                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2 h-[100px] w-[50%] rounded-[6px] p-[7px]' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
-                        </textarea><br />
-                    </div>
-                    <span className="charLeft ml-40">{remainSign} characters remaining</span>
-                    {show &&
-                        <>
-                            <div className='w-[263px] mt-10 font-bold'>
-                                <text>As of july5,2023, we have upgraded the bulk order template.Please download the new template below</text>
-                            </div>
-
-                            <div className='custom_testing'>
-                                <div >
-                                    <h3 className='font-bold'>Bulk Address Upload</h3>
+                            <div className='outerSec h-[300px] w-[100%] bg-white' ref={ref2}>
+                                <div id='messageBoxID' ref={ref1} className="output m-5 " style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily }}>
+                                    {name ? name : "enter"}
                                 </div>
-                                {bulkUploadDiv && !showNextBtn ?
-                                    <div>
-                                        <div >
-                                            <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
-                                        </div>
-                                    </div> : ''
-                                }
-
-                                <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
-                                <AfterUpload />
                             </div>
-                        </>}
-                    {!show &&
-                        <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
-                            <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
+                            <div className='secDiv  h-[150px] w-[100%] max-w-[300px] ml-auto bg-white' ref={ref}>
+                                <div id='signOffText' ref={ref3} className="output2" style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily }}>
+                                    {name2}
+                                </div>
+                            </div>
+                            {metafields.footer &&
+                                <ShowFooterComp/>
+                                
+                            }
                         </div>
-                    }
+                        <div className='textAreaView w-[600px]'>
+                            <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText h-[200px] w-[100%] rounded-[6px] p-[7px] ' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                            </textarea>
+                            <span className="charLeft">{remainingWord} characters remaining</span><br />
+                            {show &&
+                                <>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
 
-                </div>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
 
-            </div>
-            <Modal
-                isOpen={modalIsOpen}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                <div className='flex'>
-                    <h2 className='font-bold text-xl w-[600px]'>AI Message Assistant</h2>
-                    <BsXCircle className='' onClick={() => onCancl()} />
-                </div>
-                <div>
-                    <text className=' text-[#999999]'>Type in words or a phrase to use our AI Assistant to<br /> help generate a great message</text>
-                </div>
-                <div>
-                    <textarea type="text" id="aiTextArea" value={aiText ? aiText : valToGen} onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxLength="450"></textarea>
-                </div>
-                {!aiText ?
+                                </>
 
-                    <div className="ai-generate" >
-                        <button id="generate-msg" disabled="" onClick={() => aiGenrateMess()}>Generate Message</button>
-                    </div> :
-                    <div className='buttonClass flex justify-start'>
-                        <div className='buttonDiv pr-5'>
-                            <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => onInsetClick()}>Insert</button>
+                            }
+                            <div className='flex gap-4 mt-5' >
+                                <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
+                                <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2 h-[100px] w-[50%] rounded-[6px] p-[7px]' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
+                                </textarea><br />
+                            </div>
+                            <span className="charLeft ml-40">{remainSign} characters remaining</span>
+                            {show &&
+                                <>
+                                    <div className='w-[263px] mt-10 font-bold'>
+                                        <text>As of july5,2023, we have upgraded the bulk order template.Please download the new template below</text>
+                                    </div>
+
+                                    <div className='custom_testing'>
+                                        <div >
+                                            <h3 className='font-bold'>Bulk Address Upload</h3>
+                                        </div>
+                                        {bulkUploadDiv && !showNextBtn ?
+                                            <div>
+                                                <div >
+                                                    <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
+                                                </div>
+                                            </div> : ''
+                                        }
+
+                                        <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
+                                        <AfterUpload />
+                                    </div>
+                                </>}
+                            {!show &&
+                                <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
+                                    <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
+                                </div>
+                            }
+
                         </div>
-                        <div className='gap-2'>
-                            <button className="bg-[#f0f0f0] text-[black] p-2 rounded " onClick={() => onCancl()}>Cancel</button>
-                        </div>
+
                     </div>
-                }
-            </Modal>
-            {/* <Modal
+                    <Modal
+                        isOpen={modalIsOpen}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+                        <div className='flex'>
+                            <h2 className='font-bold text-xl w-[600px]'>AI Message Assistant</h2>
+                            <BsXCircle className='' onClick={() => onCancl()} />
+                        </div>
+                        <div>
+                            <text className=' text-[#999999]'>Type in words or a phrase to use our AI Assistant to<br /> help generate a great message</text>
+                        </div>
+                        <div>
+                            <textarea type="text" id="aiTextArea" value={aiText ? aiText : valToGen} onChange={(e) => setValToGen(e.target.value)} placeholder="Example: Message for Birthday" maxLength="450"></textarea>
+                        </div>
+                        {!aiText ?
+
+                            <div className="ai-generate" >
+                                <button id="generate-msg" disabled="" onClick={() => aiGenrateMess()}>Generate Message</button>
+                            </div> :
+                            <div className='buttonClass flex justify-start'>
+                                <div className='buttonDiv pr-5'>
+                                    <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => onInsetClick()}>Insert</button>
+                                </div>
+                                <div className='gap-2'>
+                                    <button className="bg-[#f0f0f0] text-[black] p-2 rounded " onClick={() => onCancl()}>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </Modal>
+                    {/* <Modal
                 isOpen={modalIsOpen2}
                 style={customStyles}
                 contentLabel="Example Modal"
@@ -532,27 +596,27 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
 
                 )}
             </Modal> */}
-            <Instruction
-                isOpen={instructionModal}
-                title="Text Can not be Empty"
-                closeModal={closeModalInt}
-                table={false}
-            />
-            <Instruction
-                isOpen={loginCheck}
-                title="Please Login First"
-                closeModal={closeLoginModal}
-                table={false}
-            />
-            <ErrorModal
-            title="Uploaded Error!"
-            isOpen={modalIsOpen2}
-            // onRequestClose={() => setErrorModal(false)}
-            content={errorVal}
-          />
-          </>
-        }
-            
+                    <Instruction
+                        isOpen={instructionModal}
+                        title="Text Can not be Empty"
+                        closeModal={closeModalInt}
+                        table={false}
+                    />
+                    <Instruction
+                        isOpen={loginCheck}
+                        title="Please Login First"
+                        closeModal={closeLoginModal}
+                        table={false}
+                    />
+                    <ErrorModal
+                        title="Uploaded Error!"
+                        isOpen={modalIsOpen2}
+                        // onRequestClose={() => setErrorModal(false)}
+                        content={errorVal}
+                    />
+                </>
+            }
+
         </>
     )
 }
