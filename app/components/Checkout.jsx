@@ -7,7 +7,7 @@ import { Modal } from './Modal'
 import location from '../../location.json'
 import Loader from './modal/Loader';
 export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
-    const stripe = loadStripe(StripeKey);
+    const stripe = loadStripe(`${StripeKey}`);
     let customerid, fullName, userEmail
     const [showWallet, setShowWallet] = useState(true)
     const [showCardDetail, setShowCardDetail] = useState(false)
