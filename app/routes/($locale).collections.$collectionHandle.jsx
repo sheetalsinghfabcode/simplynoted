@@ -25,6 +25,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from '@remix-run/react';
 import DynamicButton from '~/components/DynamicButton';
 import { CustomComponent } from '~/components/CustomComponent';
+import Instruction from '~/components/modal/Instruction';
 
 export const headers = routeHeaders;
 
@@ -140,70 +141,77 @@ export default function Collection() {
   const navigate = useNavigate()
   const [handleName, setHandleName] = useState('')
   const [addingProductsData, setAddingProd] = useState([]);
-  const [checkState,setCheckState] = useState(false)
+  const [checkState, setCheckState] = useState(false)
+  const [loginCheck, setLoginCHeck] = useState(false);
+
   const { collection, collections, appliedFilters, handleLinkData, myCollection } = useLoaderData();
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
   // console.log(myColletionData,'filterCollections');
- async function changeHandle(e) {
+  async function changeHandle(e) {
     setHandleName(e)
     console.log(e, 'HandleChange');
     if (e == "customisable-cards") {
       customisedCard()
-      navigate(`/collections/${e}`)
 
       // debugger;
-    } else{
+    } else {
       navigate(`/collections/${e}`)
-  setCheckState(false)
+      setCheckState(false)
 
     }
   }
+  function closeLoginModal() {
+    setLoginCHeck(false)
+}
 
-  async function customisedCard(){
+  async function customisedCard() {
     try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`)
-      const json =await res.json()
-      console.log(json.result,'customise-data');
-    let  myData = await json.result.products
-      //  setAddingProd(json.result.products)
-      setCheckState(true)
-      if(json.result) {
-        console.log(myData,'create Api');
-        setAddingProd(myData)
-    // navigate(`/collections/${'customisable-cards'}`)
-        CustomeCard()
+      if (customerid) {
+        const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`)
+        const json = await res.json()
+        console.log(json.result, 'customise-data');
+        let myData = await json.result.products
+        setCheckState(true)
+        if (json.result) {
+          console.log(myData, 'create Api');
+          setAddingProd(myData)
+          CustomeCard()
+      navigate(`/collections/customisable-cards`)
+
+        }
+      } else {
+        setLoginCHeck(true)
       }
-      // debugger;
-    // navigate(`/collections/${'customisable-cards'}`)
+
 
     } catch (error) {
-      console.log(error,'customiseCard---');
+      console.log(error, 'customiseCard---');
     }
   }
-  
 
-  function CustomeCard(){
+
+  function CustomeCard() {
     // console.log(addingProductsData,'======my-----');
-    
-    return(
+
+    return (
       <>
-      {addingProductsData && addingProductsData.map((product, i) => (
-        <>
-      {/* <h2>Hello</h2> */}
-        <CustomComponent
-          key={product.id}
-          product={product}
-          // loading={getImageLoadingPriority(i)}
-        />
-        </>
-      ))}
+        {addingProductsData && addingProductsData.map((product, i) => (
+          <>
+            {/* <h2>Hello</h2> */}
+            <CustomComponent
+              key={product.id}
+              product={product}
+            // loading={getImageLoadingPriority(i)}
+            />
+          </>
+        ))}
       </>
     )
   }
-  useEffect(()=>{
+  useEffect(() => {
     customerid = localStorage.getItem('customerId')
-  },[])
+  }, [])
   return (
     <>
       <PageHeader heading={collection.title}>
@@ -248,18 +256,18 @@ export default function Collection() {
         <div>
           <Grid layout="products">
             {!checkState ?
-            <>
-            {myColletionData && myColletionData.map((product, i) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                loading={getImageLoadingPriority(i)}
-              />
-            ))}
-            </>
-            :<>
-          <CustomeCard/>
-          </>
+              <>
+                {myColletionData && myColletionData.map((product, i) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    loading={getImageLoadingPriority(i)}
+                  />
+                ))}
+              </>
+              : <>
+                <CustomeCard />
+              </>
 
             }
           </Grid>
@@ -314,6 +322,12 @@ export default function Collection() {
         </Pagination> */}
         {/* </SortFilter> */}
       </Section>
+      <Instruction
+        isOpen={loginCheck}
+        title="Please Login First"
+        closeModal={closeLoginModal}
+        table={false}
+      />
     </>
   );
 }

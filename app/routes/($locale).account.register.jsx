@@ -90,6 +90,8 @@ export const meta = () => {
 export default function Register() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
+  const [nativeFirstNameError, setNativeFirstNameError] = useState(null);
+  const [nativeLastNameError, setNativeLastNameError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
   console.log("actionData",actionData);

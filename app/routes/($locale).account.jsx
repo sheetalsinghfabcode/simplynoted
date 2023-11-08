@@ -142,7 +142,7 @@ function Account({customer, heading, featuredData}) {
           <DynamicButton
             className="text-primary/50 bg-[#767676]"
             text="Log Out"
-             onClick={()=> setData(true)}/>
+             onClickFunction={()=> setData(true)}/>
         </Form>
       </PageHeader>
       <div className='flex gap-[20px]'>
