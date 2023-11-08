@@ -1,10 +1,13 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import FlatGreen from '../../assets/Image/flat-green.png';
 import FoldedGreen from '../../assets/Image/folded-green.png';
 import FoldCard from '../components/createCard/FoldCard';
 import FlatCard from '../components/createCard/FlatCard';
 import {useLoaderData} from 'react-router';
 import {defer} from '@remix-run/server-runtime';
+import {useNavigate} from '@remix-run/react';
+
+import LoginModal from '~/components/modal/loginModal';
 
 export async function loader({context}) {
   const CardData = await context.storefront.query(Card, {
@@ -16,6 +19,9 @@ export async function loader({context}) {
   });
 }
 
+let customerID ;
+
+
 export default function createACard() {
   const {CardData} = useLoaderData();
   const [selectedImage, setSelectedImage] = useState('Flat 5*7');
@@ -23,6 +29,18 @@ export default function createACard() {
   const [clickColor, setClickColor] = useState('white');
   const [isClicked, setIsClicked] = useState(false);
   const [variants,setVariants] = useState('');
+
+
+
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    customerID = localStorage.getItem('customerId');
+    if (!customerID) {
+      navigate('/account/login');
+    }
+  }, []);
 
 
   const onChnage = (event) =>{
