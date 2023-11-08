@@ -22,7 +22,8 @@ const StripeCard = ({
   setPaymentMethodId,
   createCustomerId,
   savedCard,
-  setloader
+  setloader,
+  handlePurchaseCard
 
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
@@ -33,7 +34,6 @@ const StripeCard = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -43,8 +43,7 @@ const StripeCard = ({
       try {
         const {id} = paymentMethod;
         if (id) {
-          setPaymentMethodId(id);
-          createCustomerId(id);
+          handlePurchaseCard(id);
         }
         console.log(id, 'stripeID');
       } catch (error) {

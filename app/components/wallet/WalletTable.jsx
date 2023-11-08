@@ -86,7 +86,7 @@ const data = [
 
 const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const getSubscriptionType = (stripeCollection) => {
-    if (stripeCollection) {
+    if (stripeCollection && stripeCollection.stripe.subscriptionStatus !=="canceled") {
       const subscription = stripeCollection.stripe?.subscription || 'free';
       if (subscription === 'team') {
         return 'team';
@@ -97,6 +97,8 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     return 'free';
   };
 
+  console.log("stripeCollection",stripeCollection)
+
   const navigate = useNavigate();
 
   const subscriptionType = getSubscriptionType(stripeCollection);
@@ -106,7 +108,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
 
   const pricingPlans = [
     
-
     {
       name: 'Enterprise',
       price: 'Contact Us',

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import {useState} from 'react';
 
-function WalletAccordion({ title, children }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function WalletAccordion({title, children, accordion = false}) {
+  const [isExpanded, setIsExpanded] = useState(accordion);
 
   const toggleAccordion = () => {
     setIsExpanded(!isExpanded);
@@ -18,11 +18,7 @@ function WalletAccordion({ title, children }) {
         </span>
         <span>{isExpanded ? '▲' : '▼'}</span>
       </div>
-      {isExpanded && (
-        <div className="bg-white p-2">
-          {children}
-        </div>
-      )}
+      {isExpanded && <div className="bg-white p-2">{children}</div>}
     </div>
   );
 }

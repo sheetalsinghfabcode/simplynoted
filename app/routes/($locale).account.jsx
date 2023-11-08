@@ -161,7 +161,7 @@ function Account({customer, heading, featuredData}) {
         <DynamicButton
         text="Manage Plan"
         className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
-        onClickFunction={()=>navigate('/simply-noted-plans')}
+        onClickFunction={()=>navigate('/manage-subscription')}
         />
 
       </div>
