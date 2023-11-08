@@ -357,9 +357,9 @@ a.active {
   .tooltip:hover .tooltiptext {
     visibility: visible;
   }
-
+/* 
   .outerr {
-    height: 700px;
+    height: 500px;
     width: 100%;
     border: none;
     background: white;
@@ -367,23 +367,20 @@ a.active {
     position: relative;
   }
   .outerSec {
-    height: 400px;
+    height: 300px;
     width: 100%;
     border: none;
-    /* background: red; */
-    max-width: 570px;
+    max-width: 300px;
     position: absolute;
   }
   .secDiv {
     position: absolute;
-    height: 300px;
+    height: 200px;
     width: 100%;
     max-width: 50%;
-    /* background: green; */
-    /* z-index: 1; */
     bottom: 0;
     right: 0;
-  }
+  } */
   #example-one-input {
     height: 200px;
     width: 100%;
@@ -596,7 +593,7 @@ a.active {
   font-weight: 700;
   font-style: italic;
   src: url('./fonts/Hercules.ttf') format('truetype');
-
+}
   /* For mobile devices or narrow screens */
   @media (max-width: 768px) {
     .table-responsive {
@@ -826,7 +823,7 @@ a.active {
     font-style: italic;
     src: url('./fonts/Woody.ttf') format('truetype');
   }
-}
+
 
 /* Add this CSS to your component's stylesheet or CSS file */
 

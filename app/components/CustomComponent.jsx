@@ -5,7 +5,7 @@ import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 
 export function CustomComponent({product}){
-console.log(product,'customComponent');
+// console.log(product,'customComponent');
     return (
         <div className="flex flex-col gap-2">
       {/* <h2>Helloo{product.title}</h2> */}

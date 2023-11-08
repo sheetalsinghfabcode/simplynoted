@@ -151,7 +151,7 @@ function redirectToFirstVariant({ product, request }) {
 
 export default function Product() {
   const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
-  console.log(product,'************');
+  // console.log(product,'************');
   // console.log(shippingData, 'shippingData');
   const datafornav = useLocation();
   let EditMess = datafornav.state?.data?.messageData
@@ -170,12 +170,37 @@ export default function Product() {
   const [fileData, setFileData] = useState([]);
   const [errorVal, setErrorVal] = useState([]);
   const [fontFamilyName,setFontFamily] = useState('')
+  const [metafields,setMetafields] = useState([])
 
   const ref = useRef(null);
   const ref3 = useRef(null);
-  // useEffect(() => {
-    // customerid = localStorage.getItem('customerId')
-  // }, []);
+  useEffect(() => {
+    let result =  product.id.replace(/[^0-9]/g,"");
+         getMetaFields(result)
+    }, []);
+    async function getMetaFields(id) {
+      try {
+        const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`
+        const data = await fetch(queryEndPoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            "productId": id
+        })
+        });
+        const json = await data.json();
+        console.log(json.result.metafields[0], "shopifyData----Success");
+        let y = json.result.metafields[0].value
+        let extractMetafield = JSON.parse(y)
+        setMetafields(extractMetafield)
+      } catch (error) {
+        console.error(error, "shopify");
+      }
+      // debugger;
+   
+    }
 
  
   const customStyles = {
@@ -229,7 +254,7 @@ export default function Product() {
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
               setShowBox={setShowBox} setProductShow={setProductShow}
               EditMess={EditMess} editEndMess={editEndMess}
-              editFontFamily={editFontFamily} fontFamilyName={fontFamilyName}/>
+              editFontFamily={editFontFamily} fontFamilyName={fontFamilyName} metafields={metafields}/>
           </Section>
 
           <Suspense fallback={<Skeleton className="h-32" />}>

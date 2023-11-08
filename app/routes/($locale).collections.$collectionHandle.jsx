@@ -144,7 +144,7 @@ export default function Collection() {
   const { collection, collections, appliedFilters, handleLinkData, myCollection } = useLoaderData();
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
-  console.log(myColletionData,'filterCollections');
+  // console.log(myColletionData,'filterCollections');
  async function changeHandle(e) {
     setHandleName(e)
     console.log(e, 'HandleChange');
@@ -184,7 +184,7 @@ export default function Collection() {
   
 
   function CustomeCard(){
-    console.log(addingProductsData,'======my-----');
+    // console.log(addingProductsData,'======my-----');
     
     return(
       <>
