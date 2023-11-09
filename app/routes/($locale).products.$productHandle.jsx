@@ -151,14 +151,11 @@ function redirectToFirstVariant({ product, request }) {
 
 export default function Product() {
   const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
-  // console.log(product,'************');
-  // console.log(shippingData, 'shippingData');
   const datafornav = useLocation();
   let EditMess = datafornav.state?.data?.messageData
   let editEndMess = datafornav.state?.data.endText
   let editOrderValue = datafornav.state
   let editFontFamily = datafornav.state?.data.fontFamily
-  // console.log(datafornav.state, 'locationState');
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;

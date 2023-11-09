@@ -5,7 +5,7 @@ import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
 import { Image } from '@shopify/hydrogen';
-
+import LoginModal from '../modal/LoginModal';
 
 let mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid
 export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess, editFontFamily, fontFamilyName, metafields }) {
@@ -27,13 +27,9 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [usAddress, setUsAddress] = useState(null)
     const [nonusAddress, setnonUsAddress] = useState(null)
     const [instructionModal, setInstructionModal] = useState(false);
-    const [loginCheck, setLoginCHeck] = useState(false);
     const [loader, setLoader] = useState(false);
-    const [fontSize,setFontSize] = useState('')
-
-    // input2 = document?.querySelector('.inputText2');
-    // signOffTextBox = document?.querySelector('.signOffTextBox');
-    // signOffBocContainer = document.querySelector('.secDiv');
+    const [fontSize, setFontSize] = useState('')
+    const [loginModal, setLoginModal] = useState(false);
     const maxMessCount = 450
     const remainingWord = maxMessCount - name.length
     const maxSignCount = 50
@@ -58,21 +54,15 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     function closeModalInt() {
         setInstructionModal(false)
     }
-    function closeLoginModal() {
-        setLoginCHeck(false)
-    }
+    
     function onCancelCSVUpload() {
         setShowNextBtn(false)
     }
     async function checkUserLogged() {
         if (!customerid) {
-            setLoginCHeck(true)
-            // alert('please Login First')
-
+            setLoginModal(true)
         } else if (name.length == 0) {
             setInstructionModal(true)
-            // alert('Message Can not be empty ')
-
         } else {
             let reqField
             if (fileData.length) {
@@ -107,7 +97,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     usCount: usAddress,
                     nonUsCount: nonusAddress,
                     bulkCsvData: fileData,
-                    fontSize:fontSize
+                    fontSize: fontSize
                 }
             } else {
                 reqField = {
@@ -118,7 +108,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                     usCount: usAddress,
                     nonUsCount: nonusAddress,
                     bulkCsvData: fileData ? fileData : null,
-                    fontSize:fontSize
+                    fontSize: fontSize
                 }
             }
             localStorage.setItem('reqFielddInCart', JSON.stringify(reqField))
@@ -158,54 +148,50 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             if (metafields.header.data.startsWith("http://") || metafields.header.data.startsWith("https://")) {
                 return (
 
-                    <div className={`flex h-[50px]  m-5`} style={{justifyContent:metafields.header.justifyContent}}>
+                    <div className={`flex h-[50px]  m-5`} style={{ justifyContent: metafields.header.justifyContent }}>
                         <Image className={`!w-20`}
-                            src={metafields.header.data} 
-                            
-                            />
+                            src={metafields.header.data}
+
+                        />
                     </div>
                 )
             } else {
-                return(
+                return (
                     <div className={`flex h-[50px] w-[100%] bg-red max-w-[600px] justify-${metafields.header.justifyContent} m-5`}
-                    style={{
-                        fontFamily: metafields.header.fontType, fontSize:metafields.header.fontSize
-                    }}>
-                    {metafields.header.data}
-                </div>
+                        style={{
+                            fontFamily: metafields.header.fontType, fontSize: metafields.header.fontSize
+                        }}>
+                        {metafields.header.data}
+                    </div>
                 )
             }
         }
     }
 
-    function ShowFooterComp(){
+    function ShowFooterComp() {
         if (typeof metafields.footer.data == 'string') {
             if (metafields.footer.data.startsWith("http://") || metafields.footer.data.startsWith("https://")) {
                 return (
 
-                    <div className={`flex h-[50px]  m-5`} style={{justifyContent:metafields.footer.justifyContent}}>
+                    <div className={`flex h-[50px]  m-5`} style={{ justifyContent: metafields.footer.justifyContent }}>
                         <Image className={`!w-20`}
-                            src={metafields.footer.data} 
-                            
-                            />
+                            src={metafields.footer.data}
+
+                        />
                     </div>
                 )
             } else {
-                return(
+                return (
                     <div className={`flex h-[100px] w-[100%] bg-red max-w-[600px] justify-${metafields.footer.justifyContent} `}
-                    style={{
-                        fontFamily: metafields.footer.fontType, fontSize:metafields.footer.fontSize
-                    }}>
-                    {metafields.footer.data}
-                </div>
+                        style={{
+                            fontFamily: metafields.footer.fontType, fontSize: metafields.footer.fontSize
+                        }}>
+                        {metafields.footer.data}
+                    </div>
                 )
             }
         }
     }
-    // if (input) {
-    //     input.addEventListener('input', processInput);
-    // }
-
     function resize_to_fit() {
         let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
         mainMessageBox.style.fontSize = (parseFloat(fontSize) - 1) + 'px';
@@ -236,9 +222,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         resize_to_fit2();
     }
 
-    // if (input2) {
-    //     input2.addEventListener('input', processInput2);
-    // }
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -464,7 +447,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const ref2 = useRef(null);
     const ref3 = useRef(null)
     useEffect(() => {
-        // input = ref.current;
         mainMessageBox = ref1.current;
         signOffTextBox = ref3.current;
         messageBocContainer = ref2.current;
@@ -481,12 +463,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 <Loader /> :
                 <>
                     <div className='mainDivForBox flex gap-10'>
-
                         <div id="outer" className="outerr h-[650px] w-[100%] bg-white max-w-[600px] relative">
                             {metafields.header &&
-                                <ShowHeaderComp/>
+                                <ShowHeaderComp />
                             }
-
                             <div className='outerSec h-[300px] w-[100%] bg-white' ref={ref2}>
                                 <div id='messageBoxID' ref={ref1} className="output m-5 " style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily }}>
                                     {name ? name : "enter"}
@@ -498,8 +478,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                 </div>
                             </div>
                             {metafields.footer &&
-                                <ShowFooterComp/>
-                                
+                                <ShowFooterComp />
                             }
                         </div>
                         <div className='textAreaView w-[600px]'>
@@ -509,15 +488,12 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                             {show &&
                                 <>
                                     <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
-
                                     <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
                                     <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
                                     <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
                                     <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
                                     <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
-
                                 </>
-
                             }
                             <div className='flex gap-4 mt-5' >
                                 <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
@@ -530,7 +506,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                     <div className='w-[263px] mt-10 font-bold'>
                                         <text>As of july5,2023, we have upgraded the bulk order template.Please download the new template below</text>
                                     </div>
-
                                     <div className='custom_testing'>
                                         <div >
                                             <h3 className='font-bold'>Bulk Address Upload</h3>
@@ -542,7 +517,6 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                                 </div>
                                             </div> : ''
                                         }
-
                                         <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
                                         <AfterUpload />
                                     </div>
@@ -586,27 +560,19 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                             </div>
                         }
                     </Modal>
-                    {/* <Modal
-                isOpen={modalIsOpen2}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                {errorVal.map((item) =>
-                    <div>{item}</div>
-
-                )}
-            </Modal> */}
                     <Instruction
                         isOpen={instructionModal}
                         title="Text Can not be Empty"
                         closeModal={closeModalInt}
                         table={false}
                     />
-                    <Instruction
-                        isOpen={loginCheck}
-                        title="Please Login First"
-                        closeModal={closeLoginModal}
-                        table={false}
+                    <LoginModal
+                    title={" Add Card"}
+                        show={loginModal}
+                        setLoginModal={setLoginModal}
+                        onCancel={() => setLoginModal(false)}
+                        confirmText="Login"
+                        cancelText="Register"
                     />
                     <ErrorModal
                         title="Uploaded Error!"

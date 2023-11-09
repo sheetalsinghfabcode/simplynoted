@@ -38,7 +38,7 @@ export default function createACard() {
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
     if (!customerID) {
-      navigate('/account/login');
+      // navigate('/account/login');
     }
   }, []);
 

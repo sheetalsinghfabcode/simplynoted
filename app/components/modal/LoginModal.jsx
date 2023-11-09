@@ -1,7 +1,7 @@
 import DynamicButton from '../DynamicButton';
 import {Link, useNavigate} from '@remix-run/react';
 
-const LoginModal = ({show, onCancel, setLoginModal}) => {
+const LoginModal = ({show, onCancel, setLoginModal,title,confirmText,cancelText}) => {
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ const LoginModal = ({show, onCancel, setLoginModal}) => {
           <div className="modal-header">
             <h3 className="text-[29px] text-center leading-[1.4] text-[#001a5f] font-semibold">
               Want to
-              <span className="font-beauty text-[40px]">Create a Card ?</span>
+              <span className="font-beauty text-[40px]"> { title } ?</span>
             </h3>
           </div>
           <div className="modal-body mt-[12px]">
@@ -35,7 +35,7 @@ const LoginModal = ({show, onCancel, setLoginModal}) => {
           </div>
           <div className="modal-footer w-full flex flex-col justify-center items-center gap-[12px] mt-[20px]">
             <DynamicButton
-              text="Login"
+              text={confirmText}
               onClickFunction={() => {
                 setLoginModal(false)
                 navigate('/account/login');
@@ -47,7 +47,7 @@ const LoginModal = ({show, onCancel, setLoginModal}) => {
                 onClick={onCancel}
                 className="text-[#707070] underline text-[16px]"
               >
-                Register
+                {cancelText}
               </span>
             </Link>
           </div>

@@ -26,6 +26,8 @@ import { useNavigate } from '@remix-run/react';
 import DynamicButton from '~/components/DynamicButton';
 import { CustomComponent } from '~/components/CustomComponent';
 import Instruction from '~/components/modal/Instruction';
+import LoginModal from '~/components/modal/LoginModal';
+import Loader from '~/components/modal/Loader';
 
 export const headers = routeHeaders;
 
@@ -139,34 +141,36 @@ export async function loader({ params, request, context }) {
 let customerid
 export default function Collection() {
   const navigate = useNavigate()
-  const [handleName, setHandleName] = useState('')
+  const [handleName, setHandleName] = useState('best-sellers')
   const [addingProductsData, setAddingProd] = useState([]);
   const [checkState, setCheckState] = useState(false)
-  const [loginCheck, setLoginCHeck] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const { collection, collections, appliedFilters, handleLinkData, myCollection } = useLoaderData();
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
-  // console.log(myColletionData,'filterCollections');
   async function changeHandle(e) {
+    setLoader(true)
     setHandleName(e)
     console.log(e, 'HandleChange');
     if (e == "customisable-cards") {
       customisedCard()
-
+      setLoader(false)
       // debugger;
     } else {
       navigate(`/collections/${e}`)
       setCheckState(false)
+      setLoader(false)
 
     }
   }
-  function closeLoginModal() {
-    setLoginCHeck(false)
-}
+  
 
   async function customisedCard() {
     try {
+    setHandleName("customisable-cards")
+      setLoader(true)
       if (customerid) {
         const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`)
         const json = await res.json()
@@ -177,11 +181,13 @@ export default function Collection() {
           console.log(myData, 'create Api');
           setAddingProd(myData)
           CustomeCard()
-      navigate(`/collections/customisable-cards`)
-
+          // navigate(`/collections/customisable-cards`)
+          setLoader(false)
         }
       } else {
-        setLoginCHeck(true)
+        setLoginModal(true)
+        setLoader(false)
+
       }
 
 
@@ -192,8 +198,6 @@ export default function Collection() {
 
 
   function CustomeCard() {
-    // console.log(addingProductsData,'======my-----');
-
     return (
       <>
         {addingProductsData && addingProductsData.map((product, i) => (
@@ -214,7 +218,11 @@ export default function Collection() {
   }, [])
   return (
     <>
-      <PageHeader heading={collection.title}>
+    {loader ? 
+    <Loader loaderMessage="Collection Pages" />
+    :
+    <>
+    <PageHeader heading={collection.title}>
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
@@ -226,11 +234,6 @@ export default function Collection() {
         )}
       </PageHeader>
       <Section>
-        {/* <SortFilter
-          filters={collection.products.filters}
-          appliedFilters={appliedFilters}
-          collections={collections}
-        > */}
         <div className='gap-4'>
           <DynamicButton
             className="bg-[#1b5299] w-[200px] text-[#fff] p-2 mb-6"
@@ -241,13 +244,13 @@ export default function Collection() {
           <DynamicButton
             className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
             text="View My Custom Card"
-            onClickFunction={() => ''}
+            onClickFunction={() => customisedCard()}
           />
         </div>
         <div className='flex gap-5 justify-center'>
           <h2 className='text-2xl'>Choose a card from our collection: </h2>
           <select name="" id="" onChange={(e) => changeHandle(e.target.value)}>
-            <option value="best-sellers">{'best-sellers'}</option>
+            <option value={handleName}>{handleName}</option>
             {handleLinkData.collections.edges.map((item) =>
               <option value={item.node.handle}>{item.node.handle}</option>
             )}
@@ -322,12 +325,17 @@ export default function Collection() {
         </Pagination> */}
         {/* </SortFilter> */}
       </Section>
-      <Instruction
-        isOpen={loginCheck}
-        title="Please Login First"
-        closeModal={closeLoginModal}
-        table={false}
+      <LoginModal
+        title={" Check your Custom Card"}
+        show={loginModal}
+        setLoginModal={setLoginModal}
+        onCancel={() => setLoginModal(false)}
+        confirmText="Login"
+        cancelText="Register"
       />
+    </>
+    }
+      
     </>
   );
 }
