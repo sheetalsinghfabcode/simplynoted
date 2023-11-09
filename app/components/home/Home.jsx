@@ -5,7 +5,9 @@ import { Button } from '../Button';
 import DynamicButton from '../DynamicButton';
 import { useNavigate } from '@remix-run/react';
 
-export default function Home() {
+export default function Home({contentfulBanner}) {
+
+  console.log("contentfulBanner",contentfulBanner)
   const Navigate=useNavigate()
   return (
     <div>

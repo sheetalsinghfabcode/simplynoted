@@ -6,8 +6,8 @@ import FlatCard from '../components/createCard/FlatCard';
 import {useLoaderData} from 'react-router';
 import {defer} from '@remix-run/server-runtime';
 import {useNavigate} from '@remix-run/react';
+import LoginModal from '~/components/modal/LoginModal';
 
-import LoginModal from '~/components/modal/loginModal';
 
 export async function loader({context}) {
   const CardData = await context.storefront.query(Card, {
@@ -63,8 +63,13 @@ export default function createACard() {
   // console.log('CREATECARD', CardData.product.title);
   // console.log(CardData,'ggggg');
 
+
+  console.log("customerID",customerID)
+
  return (
     <>
+      
+
       {!card && (
         <>
           <div className="create-card-select-cont flex justify-center gap-20 m-20">
@@ -116,7 +121,7 @@ export default function createACard() {
                 />
               </div>
               <div
-                className="slect-result-btn  mt-[19px] w-[300px] h-[60px] text-center pt-[12px;]  first-select-btn bg-#1b5299-500 sm:bg-#1b5299-500 md:bg-indigo-500 lg:bg-#1b5299-500 xl:bg-#1b5299 text-white w-23"
+                className="slect-result-btn cursor-pointer  mt-[19px] w-[300px] h-[60px] text-center pt-[12px;]  first-select-btn bg-#1b5299-500 sm:bg-#1b5299-500 md:bg-indigo-500 lg:bg-#1b5299-500 xl:bg-#1b5299 text-white w-23"
                 type="button"
                 onClick={() => setCard(true)}
               >
