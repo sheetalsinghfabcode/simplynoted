@@ -24,7 +24,7 @@ import 'swiper/css';
 //     arrows:false
 //   };
 
-const Note = () => {
+const Notes = () => {
     
   return (
     <>
@@ -49,7 +49,18 @@ const Note = () => {
             slidesPerView={3.5}
            
           loop={true}
-     
+          breakpoints={{
+          1024:{
+            slidesPerView: 3.5
+          },
+            768: {
+              spaceBetween:10,
+              slidesPerView: 1,
+            },
+            640:{
+              slidesPerView:1
+            }
+          }}
      
       autoplay={{ delay:1000 ,
         pauseOnMouseEnter: true, 
@@ -74,4 +85,4 @@ const Note = () => {
   );
 };
 
-export default Note;
+export default Notes;

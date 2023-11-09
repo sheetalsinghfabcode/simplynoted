@@ -20,17 +20,8 @@ import 'swiper/css/autoplay';
 import 'swiper/css';
 
 // &copy;Simply Noted  {new Date().getFullYear()}.All Rights Reserved
-const Data2=()=>{
-    const settings = {
-        arrows: true,
-        dots: true,
-        infinite: true,
-        centerMode: true,
-        speed:1000,
-        autoplay: false,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
+const Swipers=()=>{
+   
 return(
     <>
 <div className="text-3xl font-bold text-[#001A5F] text-center mt-40 mb-20">Companies we've worked with</div>
@@ -74,4 +65,4 @@ return(
     </>
 )
 }
-export default Data2;
+export default Swipers;

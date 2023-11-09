@@ -17,8 +17,7 @@ import fb from '../../assets/Image/fb.png';
 import twitter from '../../assets/Image/twitter.png';
 import DynamicButton from './DynamicButton';
 import top from '../../assets/Image/top.png';
-import Data2 from './home/Data2';
-import Bottom from '~/components/home/Bottom';
+import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
 import {
   Drawer,
@@ -80,9 +79,8 @@ export function Layout({ children, layout }) {
           {children}
         </main>
       </div>
-      <Data2 />
+      <Swipers/>
       <Card />
-      <Bottom />
       {footerMenu && <Footer menu={footerMenu} />}
     </>
   );
@@ -298,7 +296,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
               }}
             />
           </Link>
-          <nav className="flex gap-8 text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight">
+          <nav className="flex gap-8 lg:text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight  !md:text-white !sm:text-white">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
               <Link
@@ -661,9 +659,9 @@ function FooterMenu({ menu }) {
       ))} */}
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
-      <div className="row flex">
-        <div className="gap-x-6 my-20 mr-24 ml-3">
-          <div className="w-48">
+      <div className="row block md:flex ">
+        <div className="gap-x-6 md:my-20 md:mr-24 md:ml-3 ml-24">
+          <div className="w-48 pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
           <div className="flex mt-5">
@@ -672,7 +670,7 @@ function FooterMenu({ menu }) {
             <img className="w-14 m-1" src={twitter} alt=""></img>
           </div>
         </div>
-        <div className="gap-x-6 mx-16 my-20">
+        <div className="gap-x-6 mx-32 my-10 md:mx-16 md:my-20">
           <div className="text-xl font-semibold">Quick Links </div>
           {(menu?.items || []).map((item) => (
             <section key={item.id} className={styles.section}>
@@ -682,7 +680,7 @@ function FooterMenu({ menu }) {
                     <Disclosure.Button className="text-left md:cursor-default">
                       <Link to={item.to}>
                         <Heading
-                          className="flex justify-between !font-base hover:text-white"
+                          className="flex justify-between !font-base leading-loose hover:text-white"
                           size="lead"
                           as="h3"
                         >
@@ -717,9 +715,9 @@ function FooterMenu({ menu }) {
             </section>
           ))}
         </div>
-        <div className="gap-x-6 ml-20 mr-10 my-20">
+        <div className="gap-x-6  md:ml-20 md:mr-10 md:my-20 mx-10">
           <div>
-            <div className="text-xl  font-semibold">Address</div>
+            <div className="text-xl   font-semibold">Address</div>
             <div>
               5025 S Ash Ave Suite B16 Tempe AZ<br></br>
               85282

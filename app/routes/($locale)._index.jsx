@@ -9,8 +9,8 @@ import {getHeroPlaceholder} from '~/lib/placeholders';
 import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
 import Home from '~/components/home/Home';
-import Note from '~/components/home/Note';
-import Data from '~/components/home/Data';
+import Notes from '~/components/home/Notes';
+import CanvasDesign from '~/components/home/CanvasDesign';
 
 export const headers = routeHeaders;
 
@@ -103,8 +103,8 @@ export default function Homepage() {
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
       <Home contentfulBanner={contentfulBanner}/>
-      <Note/>
-<Data/>
+      <Notes/>
+<CanvasDesign/>
 
 
       {/* {featuredProducts && (

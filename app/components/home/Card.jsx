@@ -66,8 +66,8 @@ const Card=()=>{
       
     </Swiper>
 
-    <div class="swiper-button-prev absolute mt-[-16rem] ml-[9rem]"><img src={prev} className="w-[25px]" alt="" /></div>
-<div class="swiper-button-next  absolute mt-[-16rem] ml-[73rem] "><img src={next} className="w-[25px]" alt="" /></div>
+    <div class="swiper-button-prev cursor-pointer absolute mt-[-16rem] ml-[9rem]"><img src={prev} className="w-[25px]" alt="" /></div>
+<div class="swiper-button-next cursor-pointer absolute mt-[-16rem] ml-[73rem] "><img src={next} className="w-[25px]" alt="" /></div>
 </div>     
  
 
@@ -80,10 +80,10 @@ const Card=()=>{
    
 
    <div className="bg-white text-center mt-[-11rem] mb-[-12px]">
-   <div className="w-[43rem] ml-[22rem] pt-60">
+   <div className="md:w-[43rem] w-[100%] md:ml-[22rem] pt-60">
     <img className='w-full' src={pen} alt="LogoSimplinotedpic"  /> 
     </div>
-    <div className="text-4xl font-bold text-[#001A5F]">Get your first card FREE!</div>
+    <div className="md:text-4xl text-3xlfont-bold text-[#001A5F]">Get your first card FREE!</div>
     <div className="text-xl pt-4 text-[#696969]">Join our email list and receive your first card free.</div>
 
     <div className="pt-10 pb-10">
@@ -99,6 +99,28 @@ const Card=()=>{
         </form>
     </div>
    </div>
+        </div>
+
+        <div className="bottom_background mt-3 md:w-[107%] sm:(w-[100%] h-[100%])">
+            <div className="pt-10 md:flex   justify-center">
+                <h3 className="md:text-4xl text-[26px] font-bold md:m-20 ml-28 mt-5">Ready to start writing?</h3>
+           
+            <div className=" flex flex-col md:flex-row text-white md:m-20 mx-10 mt-10">
+            <DynamicButton
+                    text="REQUEST SAMPLE"
+                    className="btn1"
+                     onClickFunction={()=>window.location.href=("https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb")}
+                
+            />
+            <DynamicButton
+                    text="SCHEDULE A DEMO"
+                    className="btn3"
+                     onClickFunction={()=>window.location.href=("https://meetings.hubspot.com/rick24")}
+                
+            />
+              
+            </div>
+</div>
         </div>
         </>
     )
