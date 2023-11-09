@@ -23,8 +23,8 @@ const StripeCard = ({
   createCustomerId,
   savedCard,
   setloader,
-  handlePurchaseCard
-
+  handlePurchaseCard,
+  addCreditModal
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
@@ -61,7 +61,7 @@ const StripeCard = ({
           type="submit"
           className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
         >
-         {savedCard ? "Add Card" : "Complete Purchase"}
+         {addCreditModal ? "Add Card" : "Complete Purchase"}
         </button>
       </div>
     </form>
