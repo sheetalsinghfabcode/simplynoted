@@ -21,11 +21,10 @@ import { PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
 import { routeHeaders } from '~/data/cache';
 import { seoPayload } from '~/lib/seo.server';
 import { getImageLoadingPriority } from '~/lib/const';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import { useNavigate } from '@remix-run/react';
 import DynamicButton from '~/components/DynamicButton';
 import { CustomComponent } from '~/components/CustomComponent';
-import Instruction from '~/components/modal/Instruction';
 import LoginModal from '~/components/modal/LoginModal';
 import Loader from '~/components/modal/Loader';
 
@@ -128,6 +127,7 @@ export async function loader({ params, request, context }) {
     collection,
     appliedFilters,
     handleLinkData,
+    collectionHandle,
     collections: flattenConnection(collections),
     analytics: {
       pageType: AnalyticsPageType.collection,
@@ -141,13 +141,14 @@ export async function loader({ params, request, context }) {
 let customerid
 export default function Collection() {
   const navigate = useNavigate()
-  const [handleName, setHandleName] = useState('best-sellers')
+  const [handleName, setHandleName] = useState('')
   const [addingProductsData, setAddingProd] = useState([]);
   const [checkState, setCheckState] = useState(false)
   const [loginModal, setLoginModal] = useState(false);
   const [loader, setLoader] = useState(false);
 
-  const { collection, collections, appliedFilters, handleLinkData, myCollection } = useLoaderData();
+  const { collection, collections, appliedFilters, handleLinkData, myCollection,collectionHandle } = useLoaderData();
+  // console.log(collectionHandle,"000000");
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
   async function changeHandle(e) {
@@ -165,13 +166,12 @@ export default function Collection() {
 
     }
   }
-  
 
   async function customisedCard() {
     try {
-    setHandleName("customisable-cards")
       setLoader(true)
       if (customerid) {
+      navigate(`/collections/customisable-cards`)
         const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`)
         const json = await res.json()
         console.log(json.result, 'customise-data');
@@ -181,7 +181,6 @@ export default function Collection() {
           console.log(myData, 'create Api');
           setAddingProd(myData)
           CustomeCard()
-          // navigate(`/collections/customisable-cards`)
           setLoader(false)
         }
       } else {
@@ -215,6 +214,9 @@ export default function Collection() {
   }
   useEffect(() => {
     customerid = localStorage.getItem('customerId')
+    if(collectionHandle == 'customisable-cards'){
+      customisedCard()
+    }
   }, [])
   return (
     <>
@@ -249,10 +251,11 @@ export default function Collection() {
         </div>
         <div className='flex gap-5 justify-center'>
           <h2 className='text-2xl'>Choose a card from our collection: </h2>
-          <select name="" id="" onChange={(e) => changeHandle(e.target.value)}>
-            <option value={handleName}>{handleName}</option>
+          <select name="" id=""  onChange={(e) => changeHandle(e.target.value)}>
+          <option className='w-full' selected disabled>{collectionHandle} </option>
+
             {handleLinkData.collections.edges.map((item) =>
-              <option value={item.node.handle}>{item.node.handle}</option>
+              <option  value={item.node.handle}>{item.node.handle}</option>
             )}
           </select>
         </div>
@@ -444,7 +447,7 @@ const COLLECTION_QUERY = `#graphql
 const HANDLE_QUERY = `#graphql
 query
 {
-  collections(first: 10) {
+  collections(first: 15) {
     edges {
       node {
         handle

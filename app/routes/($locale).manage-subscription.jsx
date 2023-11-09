@@ -33,6 +33,7 @@ const ManageSubscription = () => {
   const [deleteModal, setDeleteModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [addCreditModal,setAddCreditModal] = useState(false)
+  const [forUpdateData,setForUpdateData] = useState(false)
 
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
@@ -58,7 +59,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     console.log('Component mount');
-
+    setLoader(true)
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
 
@@ -73,20 +74,23 @@ const ManageSubscription = () => {
       .then((data) => {
         console.log('data', data);
         setStripeCollection(data);
+        setLoader(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setLoader(false)
       });
     getSavedCards(customerID);
 
     return () => {
       console.log('Component Unmount');
     };
-  }, [autoModal, restartAutoRenew, deleteModal]);
+  }, [forUpdateData]);
 
   useEffect(() => {
     console.log('Component mount');
     // Define the API URL
+    setLoader(true)
     const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
 
     // Make a GET request to the API
@@ -100,9 +104,11 @@ const ManageSubscription = () => {
       .then((data) => {
         console.log('data', data);
         setPaymentHistory(data);
+        setLoader(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setLoader(false)
       });
     return () => {
       console.log('Component Unmount');
@@ -110,6 +116,7 @@ const ManageSubscription = () => {
   }, []);
 
   const handleSubscription = () => {
+    setLoader(true)
     const apiUrl = `https://api.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
     // Make a GET request to the API
@@ -122,13 +129,16 @@ const ManageSubscription = () => {
       })
       .then((data) => {
         console.log('data', data);
+        setLoader(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setLoader(false)
       });
   };
 
   const handleAutoRewnew = () => {
+    setLoader(true)
     const apiUrl = `https://api.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
 
     // Make a GET request to the API
@@ -144,13 +154,16 @@ const ManageSubscription = () => {
         setAutoModal(false);
         setRestartAutoNew(false);
         console.log('data', data);
+        setLoader(false)
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setLoader(false)
       });
   };
 
   const handleDeleteSelected = () => {
+    setLoader(true)
     const url = `https://api.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
 
     fetch(url, {
@@ -169,15 +182,19 @@ const ManageSubscription = () => {
       .then((data) => {
         console.log('data', data);
         setDeleteModal(false);
+        setLoader(false)
+        setForUpdateData(true)
         // Handle the response data if needed
       })
       .catch((error) => {
         // Handle errors here
         console.error('API Error:', error);
+        setLoader(false)
       });
   };
 
   const updateCreditCard = (id) => {
+    setLoader(true)
     const url = `https://api.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
 
     fetch(url, {
@@ -195,11 +212,15 @@ const ManageSubscription = () => {
       })
       .then((data) => {
         console.log(data,'updateData');
+        setLoader(false)
+        setForUpdateData(true)
+        setUpdateModal(false)
         // Handle the response data if needed
       })
       .catch((error) => {
         // Handle errors here
         console.error('API Error:', error);
+        setLoader(false)
       });
   };
 
@@ -212,6 +233,7 @@ const ManageSubscription = () => {
   }
   async function addNewCreditCard(paymentID) {
     try {
+      setLoader(true)
       const res = await fetch(
         `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
@@ -228,9 +250,11 @@ const ManageSubscription = () => {
       console.log(jsonData, 'addNewCard');
       // setNewCardAdded(true);
       // setShowCardBox(false);
-      // setloader(false);
+      setLoader(false);
+      setForUpdateData(true)
+      setUpdateModal(false)
     } catch (error) {
-      // setloader(false);
+      setLoader(false);
       console.log(error, 'addNewCreditCard ------');
     }
   }
@@ -259,6 +283,7 @@ const ManageSubscription = () => {
 
   async function getSavedCards(Id) {
     try {
+      setLoader(true)
       const res = await fetch(
         `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
@@ -266,9 +291,11 @@ const ManageSubscription = () => {
       console.log(json, 'creditCard Details');
       if (json) {
         setSavedCard(json.payments);
+        setLoader(false)
       }
     } catch (error) {
       console.log(error, 'error at credit Card');
+      setLoader(false)
     }
   }
 
@@ -316,7 +343,7 @@ const ManageSubscription = () => {
     show={updateModal}
     onConfirm={updateCreditCard}
     onCancel={() => setUpdateModal(false)}
-    title="Update Credit Card"
+    title={addCreditModal?"Add Credit Card":"Update Credit Card"}
     // confirmText="Update"
     StripeKey={StripeKey}
     addCreditModal={addCreditModal}
@@ -505,6 +532,7 @@ const ManageSubscription = () => {
                               text="Update"
                               className="bg-[#ef6e6e] text-white "
                               onClickFunction={() => {
+                                setAddCreditModal(false)
                                 setPaymentId(item.paymentId);
                                 setUpdateModal(true);
                               }}

@@ -68,7 +68,7 @@ export function Layout({ children, layout }) {
         )}
         <main role="main" id="mainContent" className="flex-grow">
           <LoginModal
-          title={" Create a Card"}
+            title={" Create a Card"}
             show={loginModal}
             setLoginModal={setLoginModal}
             onCancel={() => setLoginModal(false)}
@@ -248,29 +248,29 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
 }
 
 function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
-  
 
-  function CreateCardCheck(){
-   if(typeof window !== 'undefined'){
-    let id = localStorage.getItem('customerId');
-    // console.log(id,'[[[[[[[]]]]][');
-    if(id){
-      return(
+
+  function CreateCardCheck() {
+    if (typeof window !== 'undefined') {
+      let id = localStorage.getItem('customerId');
+      // console.log(id,'[[[[[[[]]]]][');
+      if (id) {
+        return (
           <Link to="/createcard">
             <li>Create a Card</li>
           </Link>
-      )
-    } else{
-      return (
-        <Link>
-      <li onClick={() => setLoginModal(true)}>
-        Create a Card
-      </li>
-    </Link>
-      )
+        )
+      } else {
+        return (
+          <Link>
+            <li onClick={() => setLoginModal(true)}>
+              Create a Card
+            </li>
+          </Link>
+        )
+      }
     }
-   }
-    
+
   }
   // const [customerid, setCustomerid] = useState(null);
   const [customeridLoaded, setCustomeridLoaded] = useState(false);
@@ -294,8 +294,8 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
       <header
         role="banner"
         className={`${isHome
-            ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader'
-            : 'bg-contrast/80 text-primary'
+          ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader'
+          : 'bg-contrast/80 text-primary'
           } ${!isHome && y > 50 && ' shadow-lightHeader'
           } hidden h-nav lg:flex items-center  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
@@ -332,7 +332,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
                           {' '}
                           <li> Card</li>
                         </Link>
-                        <CreateCardCheck/>
+                        <CreateCardCheck />
                         {/* {!customerid ? (
                           customerid ? (
                             <Link to="/createcard">
@@ -451,12 +451,14 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
               'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-
-          <DynamicButton
+          <Link to="/account/login">
+            Account →
+          </Link>
+          {/* <DynamicButton
             text=" Account →"
             className="login-button"
             onClickFunction={() => navigate('/account/login')}
-          />
+          /> */}
 
           {/* <Form
           method="get"
@@ -529,8 +531,8 @@ function Badge({ openCart, dark, count }) {
         <IconBag />
         <div
           className={`${dark
-              ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
-              : 'text-contrast bg-primary'
+            ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
+            : 'text-contrast bg-primary'
             } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
