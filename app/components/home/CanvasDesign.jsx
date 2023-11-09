@@ -10,7 +10,7 @@ import DynamicButton from "../DynamicButton";
 
 import { useNavigate } from "@remix-run/react";
 
-const Data=()=>{
+const CanvasDesign=()=>{
 
 
   const navigate = useNavigate()
@@ -112,4 +112,4 @@ const Data=()=>{
     )
 }
 
-export default Data;
+export default CanvasDesign;

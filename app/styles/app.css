@@ -1379,7 +1379,7 @@ body {
 
 }
 .btn1{
-  padding: 20px 30px!important;
+  padding: 20px 30px;
     margin-top: 7px;
     background: #EF6E6E;
     color: white;
@@ -1391,7 +1391,7 @@ body {
 }
 
 .subscribe{
-  padding: 20px 30px!important;
+  padding: 20px 30px;
    margin-left: -5px;
     background: #EF6E6E;
     color: white;
@@ -1466,7 +1466,9 @@ margin-left:1rem;
     font-size: 16px;
     font-weight: 600;
     line-height: 16px;
+    color:white;
     padding: 26px 50px;
+    cursor: pointer;
 }
 
 .bottom_background{
@@ -1502,8 +1504,11 @@ margin-left:1rem;
   width: 38%;
     height: 56px;
     border: 2px solid gray;
-    
     color:gray;
+ }
+ .input_email:focus{
+border-color: gray;
+ box-shadow: none;
  }
  .swiper-company{
   margin:1px 20px;
@@ -1544,4 +1549,27 @@ background-size: 100%;
     background-color:rgba(153, 98, 27, 0.75);
     color:#fff;
     text-align: center,
+}
+
+
+/* Media Query */
+@media only screen and (max-width:768px) {
+  .btn1{
+width:58%;
+margin-left:5rem;
+  }
+  .btn3{
+    font-size:11px;
+    margin-top:10px;
+   width:60%;
+   margin-left:5rem;
+   margin-bottom:30px;
+  }
+  .input_email{
+    width:54%;
+  
+}
+.bottom_background{
+  margin-right:0px;
+}
 }
