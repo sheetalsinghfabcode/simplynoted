@@ -37,11 +37,9 @@ export async function loader({ params, request, context }) {
   const variables = getPaginationVariables(request, { pageBy: 10 });
 
   const { collectionHandle } = params;
-  // console.log(params,'url value ---');
   const handleLinkData = await context.storefront.query(HANDLE_QUERY, {
     variables: {}
   })
-  // console.log(collectionsData,'collectionData');
   invariant(collectionHandle, 'Missing collectionHandle param');
 
   const searchParams = new URL(request.url).searchParams;
@@ -110,7 +108,6 @@ export async function loader({ params, request, context }) {
       },
     },
   );
-  // console.log(collection,"--------------");
   const myCollection = await context.storefront.query(MY_COLLECTION, {
     variables: {
       handle: collectionHandle,
@@ -148,13 +145,11 @@ export default function Collection() {
   const [loader, setLoader] = useState(false);
 
   const { collection, collections, appliedFilters, handleLinkData, myCollection,collectionHandle } = useLoaderData();
-  // console.log(collectionHandle,"000000");
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
   async function changeHandle(e) {
     setLoader(true)
     setHandleName(e)
-    console.log(e, 'HandleChange');
     if (e == "customisable-cards") {
       customisedCard()
       setLoader(false)
@@ -174,11 +169,9 @@ export default function Collection() {
       navigate(`/collections/customisable-cards`)
         const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`)
         const json = await res.json()
-        console.log(json.result, 'customise-data');
         let myData = await json.result.products
         setCheckState(true)
         if (json.result) {
-          console.log(myData, 'create Api');
           setAddingProd(myData)
           CustomeCard()
           setLoader(false)
