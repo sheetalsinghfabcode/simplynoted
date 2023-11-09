@@ -179,13 +179,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         setCardPrice(priceAmount)
         setCardPriceTitle(priceTitle)
     }
-
-    // const refRec = useRef(null);
-    // const ref1 = useRef(null);
-
     useEffect(() => {
-        // reciverAddressVal = refRec.current
-        // senderAddressVal = ref1.current
         customerid = localStorage.getItem('customerId')
         cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'))
         console.log(cartDataReq, 'cartDataReq');

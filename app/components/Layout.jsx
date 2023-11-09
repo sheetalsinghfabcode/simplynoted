@@ -5,11 +5,10 @@ import {
   useMatches,
   useNavigate,
 } from '@remix-run/react';
-import {useState, useRef} from 'react';
-import {useWindowScroll} from 'react-use';
-import {Disclosure} from '@headlessui/react';
-import {Suspense, useEffect, useMemo} from 'react';
-import {CartForm, Image} from '@shopify/hydrogen';
+import { useState, useRef, Suspense, useEffect, useMemo } from 'react';
+import { useWindowScroll } from 'react-use';
+import { Disclosure } from '@headlessui/react';
+import { CartForm, Image } from '@shopify/hydrogen';
 import LogoShopify from '../../assets/Image/simply-noted-logo.avif';
 import CartShopify from '../../assets/Image/cart_icon.png';
 import footerlogo from '../../assets/Image/logo-footer.webp';
@@ -39,16 +38,16 @@ import {
   CartLoading,
   Link,
 } from '~/components';
-import {useIsHomePath} from '~/lib/utils';
-import {useIsHydrated} from '~/hooks/useIsHydrated';
-import {useCartFetchers} from '~/hooks/useCartFetchers';
+import { useIsHomePath } from '~/lib/utils';
+import { useIsHydrated } from '~/hooks/useIsHydrated';
+import { useCartFetchers } from '~/hooks/useCartFetchers';
 import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
 
-// let customerid ;
+let customerid;
 
-export function Layout({children, layout}) {
-  const {headerMenu, footerMenu} = layout;
+export function Layout({ children, layout }) {
+  const { headerMenu, footerMenu } = layout;
 
   const [loginModal, setLoginModal] = useState(false);
 
@@ -69,6 +68,7 @@ export function Layout({children, layout}) {
         )}
         <main role="main" id="mainContent" className="flex-grow">
           <LoginModal
+          title={" Create a Card"}
             show={loginModal}
             setLoginModal={setLoginModal}
             onCancel={() => setLoginModal(false)}
@@ -87,7 +87,7 @@ export function Layout({children, layout}) {
   );
 }
 
-function Header({title, menu, setLoginModal}) {
+function Header({ title, menu, setLoginModal }) {
   const isHome = useIsHomePath();
 
   const {
@@ -133,7 +133,7 @@ function Header({title, menu, setLoginModal}) {
   );
 }
 
-function CartDrawer({isOpen, onClose}) {
+function CartDrawer({ isOpen, onClose }) {
   const [root] = useMatches();
 
   return (
@@ -149,7 +149,7 @@ function CartDrawer({isOpen, onClose}) {
   );
 }
 
-export function MenuDrawer({isOpen, onClose, menu}) {
+export function MenuDrawer({ isOpen, onClose, menu }) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -159,7 +159,7 @@ export function MenuDrawer({isOpen, onClose, menu}) {
   );
 }
 
-function MenuMobileNav({menu, onClose}) {
+function MenuMobileNav({ menu, onClose }) {
   return (
     <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
       {/* Top level menu items */}
@@ -169,7 +169,7 @@ function MenuMobileNav({menu, onClose}) {
             to={item.to}
             target={item.target}
             onClick={onClose}
-            className={({isActive}) =>
+            className={({ isActive }) =>
               isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
             }
           >
@@ -183,7 +183,7 @@ function MenuMobileNav({menu, onClose}) {
   );
 }
 
-function MobileHeader({title, isHome, openCart, openMenu}) {
+function MobileHeader({ title, isHome, openCart, openMenu }) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -191,9 +191,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   return (
     <header
       role="banner"
-      className={`${
-        isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
+        } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -247,37 +246,57 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({isHome, menu, openCart, title, setLoginModal}) {
-  // useEffect(() => {
-  //   customerid = localStorage.getItem('customerId');
-  // }, []);
+function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
+  
 
-  const [customerid, setCustomerid] = useState(null);
+  function CreateCardCheck(){
+   if(typeof window !== 'undefined'){
+    let id = localStorage.getItem('customerId');
+    // console.log(id,'[[[[[[[]]]]][');
+    if(id){
+      return(
+          <Link to="/createcard">
+            <li>Create a Card</li>
+          </Link>
+      )
+    } else{
+      return (
+        <Link>
+      <li onClick={() => setLoginModal(true)}>
+        Create a Card
+      </li>
+    </Link>
+      )
+    }
+   }
+    
+  }
+  // const [customerid, setCustomerid] = useState(null);
   const [customeridLoaded, setCustomeridLoaded] = useState(false);
 
-  useEffect(() => {
-    const storedCustomerId = localStorage.getItem('customerId');
-    if (storedCustomerId) {
-      setCustomerid(storedCustomerId);
-    }
-    setCustomeridLoaded(true); // Indicate that the value has been loaded.
-  }, []);
+  // useEffect(() => {
+  //   const storedCustomerId = localStorage.getItem('customerId');
+  //   console.log(storedCustomerId,'storedCustomerId11111');
+  //   if (storedCustomerId) {
+  //     setCustomerid(storedCustomerId);
+  //     console.log(storedCustomerId,'22222');
+  //   }
+  //   setCustomeridLoaded(true); // Indicate that the value has been loaded.
+  // }, []);
 
   const navigate = useNavigate();
 
   const params = useParams();
-  const {y} = useWindowScroll();
+  const { y } = useWindowScroll();
   return (
     <>
       <header
         role="banner"
-        className={`${
-          isHome
+        className={`${isHome
             ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader'
             : 'bg-contrast/80 text-primary'
-        } ${
-          !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-nav lg:flex items-center  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+          } ${!isHome && y > 50 && ' shadow-lightHeader'
+          } hidden h-nav lg:flex items-center  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
         <div className="flex gap-12  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -299,7 +318,7 @@ function DesktopHeader({isHome, menu, openCart, title, setLoginModal}) {
                 to={item.to}
                 target={item.target}
                 prefetch="intent"
-                className={({isActive}) =>
+                className={({ isActive }) =>
                   isActive ? 'navitem-active' : 'navitems'
                 }
               >
@@ -312,7 +331,8 @@ function DesktopHeader({isHome, menu, openCart, title, setLoginModal}) {
                           {' '}
                           <li> Card</li>
                         </Link>
-                        {customeridLoaded ? (
+                        <CreateCardCheck/>
+                        {/* {!customerid ? (
                           customerid ? (
                             <Link to="/createcard">
                               <li>Create a Card</li>
@@ -325,7 +345,7 @@ function DesktopHeader({isHome, menu, openCart, title, setLoginModal}) {
                             </Link>
                           )
                         ) : null // Render a loading indicator or other content while waiting for customerid.
-                        }
+                        } */}
                         <Link to="/collections/birthday">
                           <li>Birthday Automation</li>
                         </Link>
@@ -426,8 +446,8 @@ function DesktopHeader({isHome, menu, openCart, title, setLoginModal}) {
             text="REQUEST A SAMPLE"
             className="request-button"
             onClickFunction={() =>
-              (window.location.href =
-                'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
+            (window.location.href =
+              'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
 
@@ -467,7 +487,7 @@ function DesktopHeader({isHome, menu, openCart, title, setLoginModal}) {
   );
 }
 
-function AccountLink({className}) {
+function AccountLink({ className }) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -481,7 +501,7 @@ function AccountLink({className}) {
   );
 }
 
-function CartCount({isHome, openCart}) {
+function CartCount({ isHome, openCart }) {
   const [root] = useMatches();
 
   return (
@@ -499,7 +519,7 @@ function CartCount({isHome, openCart}) {
   );
 }
 
-function Badge({openCart, dark, count}) {
+function Badge({ openCart, dark, count }) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -507,11 +527,10 @@ function Badge({openCart, dark, count}) {
       <>
         <IconBag />
         <div
-          className={`${
-            dark
+          className={`${dark
               ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
               : 'text-contrast bg-primary'
-          } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
+            } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
         </div>
@@ -537,7 +556,7 @@ function Badge({openCart, dark, count}) {
   );
 }
 
-function Footer({menu}) {
+function Footer({ menu }) {
   const isHome = useIsHomePath();
   const [showButton, setShowButton] = useState(false);
 
@@ -572,7 +591,7 @@ function Footer({menu}) {
       {showButton && (
         <button
           onClick={() => {
-            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
           }}
           className="button-top"
         >
@@ -589,7 +608,7 @@ function Footer({menu}) {
   );
 }
 
-function FooterLink({item}) {
+function FooterLink({ item }) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -605,7 +624,7 @@ function FooterLink({item}) {
   );
 }
 
-function FooterMenu({menu}) {
+function FooterMenu({ menu }) {
   const styles = {
     section: 'grid gap-4',
     nav: 'grid gap-2 pb-6',
@@ -668,7 +687,7 @@ function FooterMenu({menu}) {
           {(menu?.items || []).map((item) => (
             <section key={item.id} className={styles.section}>
               <Disclosure>
-                {({open}) => (
+                {({ open }) => (
                   <>
                     <Disclosure.Button className="text-left md:cursor-default">
                       <Link to={item.to}>
@@ -688,9 +707,8 @@ function FooterMenu({menu}) {
                     </Disclosure.Button>
                     {item?.items?.length > 0 ? (
                       <div
-                        className={`${
-                          open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                        } overflow-hidden transition-all duration-300`}
+                        className={`${open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                          } overflow-hidden transition-all duration-300`}
                       >
                         <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
                           <Disclosure.Panel static>
