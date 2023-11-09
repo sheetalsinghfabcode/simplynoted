@@ -24,6 +24,10 @@ export default function FlatCard({CardData, variants, setCard}) {
   const [dataURL, setDataURL] = useState(null);
   const [pdfData, setPdfData] = useState({});
 
+  const [selectedFont, setSelectedFont] = useState('pinocchio');
+  const [selectedFooterFont, setSelectedFooterFont] = useState('pinocchio');
+
+
   const navigate = useNavigate();
 
   const {
@@ -58,6 +62,21 @@ export default function FlatCard({CardData, variants, setCard}) {
     scale,
     setScale,
   } = useAddressBook();
+
+  const setFont = (event) => {
+    const selectedFontValue = event.target.value;
+
+    if (headerText === 'Header Text') {
+      document.getElementById('color-header').style.fontFamily =
+        selectedFontValue;
+      setSelectedFont(selectedFontValue);
+    } else if (headerText === 'Footer Text') {
+      document.getElementById('color-footer').style.fontFamily =
+        selectedFontValue;
+      setSelectedFooterFont(selectedFontValue);
+    }
+  };
+
 
   useEffect(() => {
     setInputText('');
@@ -107,7 +126,6 @@ export default function FlatCard({CardData, variants, setCard}) {
   };
   const handleFilesChange = (event) => {
     const selectedFile = event.target.files[0];
-    console.log('selectedFile', selectedFile);
 
     if (selectedFile) {
       const reader = new FileReader();
@@ -140,21 +158,6 @@ export default function FlatCard({CardData, variants, setCard}) {
       (document.getElementById('color-footer').style.color = selectedColor);
   }
 
-  function setFont() {
-    const selectFont = document.getElementById('font');
-    if (selectFont) {
-      setSelectFontValue(selectFont.options[selectFont.selectedIndex].value);
-      if (selectFontValue) {
-        headerText === 'Header Text' &&
-          (document.getElementById('color-header').style.fontFamily =
-            selectFontValue);
-        headerText === 'Footer Text' &&
-          (document.getElementById('color-footer').style.fontFamily =
-            selectFontValue);
-      }
-    }
-  }
-
   function handleHeaderClick() {
     setHeaderText(
       headerText === 'Header Text' ? 'Header Image' : 'Header Text',
@@ -172,9 +175,8 @@ export default function FlatCard({CardData, variants, setCard}) {
     isFrontCard && setScaledImage(null);
     !isFrontCard && setBackHeaderImage(null);
     !isFrontCard && setBackFooterImage(null);
-    if (fileInputRef.current) {
-      fileInputRef.current.value = '';
-    }
+    const inputfile = document.getElementById('fileInput');
+    inputfile.value = '';
   };
 
   const customStyles = {
@@ -244,6 +246,7 @@ export default function FlatCard({CardData, variants, setCard}) {
     }
   };
 
+
   const payloadDependency = [
     inputText,
     alignment,
@@ -264,8 +267,6 @@ export default function FlatCard({CardData, variants, setCard}) {
   ];
   let payload;
   useEffect(() => {
-    console.log('scaledImage', scaledImage);
-
     payload = {
       headerData: {
         data: inputText,
@@ -512,10 +513,11 @@ export default function FlatCard({CardData, variants, setCard}) {
       console.error('There was a problem with the fetch operation:', error);
     }
   };
-  console.log(scaledImage, 'sdfsfssfsfsdffsdf');
   return (
     <>
-     <button type="button" onClick={() => setCard(false)}>Back</button>
+      <button type="button" onClick={() => setCard(false)}>
+        Back
+      </button>
       {loader ? (
         <Loader loaderMessage="Saving Flat Card" />
       ) : (
@@ -568,7 +570,7 @@ export default function FlatCard({CardData, variants, setCard}) {
                       )}
                       <input
                         id="color-header"
-                        className={`border-none min-w-full${
+                        className={`border-none min-w-full ${
                           alignment === 'left' && 'text-left'
                         } ${alignment === 'center' && 'text-center'} ${
                           alignment === 'right' && 'text-right'
@@ -577,7 +579,10 @@ export default function FlatCard({CardData, variants, setCard}) {
                         onChange={handleInputChange}
                         type="text"
                         placeholder={backHeaderImage ? '' : 'Header'}
-                        style={{fontSize: `${headerFontSize}px`}}
+                        style={{
+                          fontSize: `${headerFontSize}px`,
+                          fontFamily: `${selectedFont}`,
+                        }}
                       />
                     </div>
                   ) : null}
@@ -607,7 +612,10 @@ export default function FlatCard({CardData, variants, setCard}) {
                         value={footerText}
                         type="text"
                         placeholder={backFooterImage ? '' : 'Footer'}
-                        style={{fontSize: `${footerFontSize}px`}}
+                        style={{
+                          fontSize: `${footerFontSize}px`,
+                          fontFamily: `${selectedFooterFont}`,
+                        }}
                       />
                     </div>
                   ) : null}
@@ -740,118 +748,50 @@ export default function FlatCard({CardData, variants, setCard}) {
                 </div>
                 <span className="font-bold">Font-Family</span>
                 <select
-                  id="font"
                   className="min-w-[207px] h-9 rounded-[12px]"
-                  onChange={() => setFont()}
+                  onChange={setFont}
+                  value={
+                    headerText === 'Header Text'  ? selectedFont    : selectedFooterFont
+                  }
                 >
-                  <option value="pinocchio" className={`font-pinocchio`}>
-                    Pinocchio
-                  </option>
-
-                  <option value="tarzan" className={`font-tarzan`}>
-                    Tarzan
-                  </option>
-
-                  <option value="stitch" className={`font-stitch`}>
-                    Stitch
-                  </option>
-
-                  <option value="simba" className={`font-simba`}>
-                    Simba
-                  </option>
-
-                  <option value="roo" className={`font-roo`}>
-                    Roo
-                  </option>
-
-                  <option value="nimo" className={`font-nimo`}>
-                    Nimo
-                  </option>
-
-                  <option value="lumiere" className={`font-lumiere`}>
-                    Lumiere
-                  </option>
-
-                  <option value="kaaNew" className={`font-kaaNew`}>
-                    KaaNew
-                  </option>
-
-                  <option value="dumbo" className={`font-dumbo`}>
-                    Dumbo
-                  </option>
-
-                  <option value="donald" className={`font-donald`}>
-                    Donald
-                  </option>
-
-                  <option value="aladdin" className={`font-aladdin`}>
-                    Aladdin
-                  </option>
-
-                  <option value="belle" className={`font-belle`}>
-                    Belle
-                  </option>
-
-                  <option value="boo" className={`font-boo`}>
-                    Boo
-                  </option>
-
-                  <option value="cinderella" className={`font-cinderella`}>
-                    Cinderella
-                  </option>
-
-                  <option value="copper" className={`font-copper`}>
-                    Copper
-                  </option>
-
-                  <option value="jasmine" className={`font-jasmine`}>
-                    Jasmine
-                  </option>
-
-                  <option value="merlin" className={`font-merlin`}>
-                    Merlin
-                  </option>
-
-                  <option value="goofy" className={`font-goofy`}>
-                    Goofy
-                  </option>
-
-                  <option value="hercules" className={`font-hercules`}>
-                    Hercules
-                  </option>
-
-                  <option value="rafiki" className={`font-rafiki`}>
-                    Rafiki
-                  </option>
-
-                  <option value="rapunzel" className={`font-rapunzel`}>
-                    Rapunzel
-                  </option>
-
-                  <option value="ratigan" className={`font-ratigan`}>
-                    Ratigan
-                  </option>
-
-                  <option value="sarabi" className={`font-sarabi`}>
-                    Sarabi
-                  </option>
-
-                  <option value="scar" className={`font-scar`}>
-                    Scar
-                  </option>
-
-                  <option value="triton" className={`font-triton`}>
-                    Triton
-                  </option>
-
-                  <option value="woody" className={`font-woody`}>
-                    Woody
-                  </option>
+                  {[
+                    'pinocchio',
+                    'tarzan',
+                    'stitch',
+                    'simba',
+                    'roo',
+                    'nimo',
+                    'lumiere',
+                    'kaaNew',
+                    'dumbo',
+                    'donald',
+                    'aladdin',
+                    'belle',
+                    'boo',
+                    'cinderella',
+                    'copper',
+                    'jasmine',
+                    'merlin',
+                    'goofy',
+                    'hercules',
+                    'rafiki',
+                    'rapunzel',
+                    'ratigan',
+                    'sarabi',
+                    'scar',
+                    'triton',
+                    'woody',
+                  ].map((font) => (
+                    <option key={font} value={font} className={`font-${font}`}>
+                      {font.charAt(0).toUpperCase() + font.slice(1)}
+                    </option>
+                  ))}
                 </select>
                 <span>Font</span>
                 <select
                   style={{width: '200px', borderRadius: '19px'}}
                   onClick={handleFontSizeChange}
+                
                 >
                   <option value="16">16px</option>
                   <option value="20">20px</option>
@@ -891,7 +831,6 @@ export default function FlatCard({CardData, variants, setCard}) {
                 >
                   Finish editing
                 </button>
-
                 {modalOpen && (
                   <Modal cancelLink={closeModal}>
                     <div className="modal-flatpage bg-white">
@@ -940,6 +879,7 @@ export default function FlatCard({CardData, variants, setCard}) {
                 </div>
                 <input
                   type="file"
+                  id="fileInput"
                   className="choose-file"
                   accept="image/*"
                   onChange={handleFilesChange}
@@ -1030,14 +970,14 @@ export default function FlatCard({CardData, variants, setCard}) {
                     className="w-12"
                     src={AddImage}
                     alt=""
-                    onClick={() => document.getElementById('myFile').click()}
+                    onClick={() => document.getElementById('fileInput').click()}
                     style={{cursor: 'pointer'}}
                   />
                   {headerText === 'Header Image' && <span>Header Image</span>}
                 </div>
                 <input
                   type="file"
-                  id="myFile"
+                  id="fileInput"
                   onChange={handleFilesChange}
                   ref={fileInputRef}
                   name="filename"

@@ -65,6 +65,11 @@ export async function loader({params, context}) {
         language,
       },
     }),
+    contentfulBanner: context.storefront.query(CONTENTFUL_BANNER_QUERY, {
+      variables: {
+      
+      },
+    }),
     tertiaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'winter-2022',
@@ -85,6 +90,7 @@ export default function Homepage() {
     secondaryHero,
     tertiaryHero,
     featuredCollections,
+    contentfulBanner,
     featuredProducts,
   } = useLoaderData();
 
@@ -96,7 +102,7 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
-      <Home/>
+      <Home contentfulBanner={contentfulBanner}/>
       <Note/>
 <Data/>
 
@@ -248,3 +254,21 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
     }
   }
 `;
+
+
+export const CONTENTFUL_BANNER_QUERY = `#graphql
+query {
+  bannerCollection{
+    items{
+      title
+      subTitle
+      roboVideo{
+        url
+      }
+      bannerImage{
+        url
+      }
+    }
+  }
+}
+`

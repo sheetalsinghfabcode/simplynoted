@@ -74,6 +74,7 @@ export function Layout({ children, layout }) {
             onCancel={() => setLoginModal(false)}
             confirmText="Login"
             cancelText="Register"
+            cross={true}
           />
 
           {children}
