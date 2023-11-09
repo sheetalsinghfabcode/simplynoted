@@ -253,7 +253,6 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
   function CreateCardCheck() {
     if (typeof window !== 'undefined') {
       let id = localStorage.getItem('customerId');
-      // console.log(id,'[[[[[[[]]]]][');
       if (id) {
         return (
           <Link to="/createcard">
@@ -272,19 +271,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
     }
 
   }
-  // const [customerid, setCustomerid] = useState(null);
   const [customeridLoaded, setCustomeridLoaded] = useState(false);
-
-  // useEffect(() => {
-  //   const storedCustomerId = localStorage.getItem('customerId');
-  //   console.log(storedCustomerId,'storedCustomerId11111');
-  //   if (storedCustomerId) {
-  //     setCustomerid(storedCustomerId);
-  //     console.log(storedCustomerId,'22222');
-  //   }
-  //   setCustomeridLoaded(true); // Indicate that the value has been loaded.
-  // }, []);
-
   const navigate = useNavigate();
 
   const params = useParams();

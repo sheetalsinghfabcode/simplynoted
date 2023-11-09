@@ -46,7 +46,6 @@ export const headers = routeHeaders;
 
 export async function loader({ params, request, context }) {
   const { productHandle } = params;
-  // console.log(params,'params');
   invariant(productHandle, 'Missing productHandle param, check route filename');
   const selectedOptions = getSelectedProductOptions(request);
   const data = await context.storefront.query(GiftProduct, {
@@ -56,7 +55,6 @@ export async function loader({ params, request, context }) {
   const shippingData = await context.storefront.query(ShippingMethod, {
     variables: {},
   })
-  // console.log("data",data)
   const { shop, product } = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
       handle: productHandle,
@@ -65,7 +63,6 @@ export async function loader({ params, request, context }) {
       language: context.storefront.i18n.language,
     },
   });
-  // console.log(product,'product ----99999999999999');
   if (!product?.id) {
     throw new Response('product', { status: 404 });
   }
@@ -96,8 +93,6 @@ export async function loader({ params, request, context }) {
   // Investigate if we can avoid the redirect for product pages with no search params for first variant
 
   const firstVariant = product.variants.nodes[0];
-  // console.log(firstVariant,'firstVariant');
-  // console.log(product.selectedVariant,'product.selectedVariant');
   const selectedVariant = product.selectedVariant == null ? firstVariant : firstVariant;
 
 
@@ -164,13 +159,10 @@ export default function Product() {
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true)
   const [selectedFile, setSelectedFile] = useState('');
-  const [fileData, setFileData] = useState([]);
   const [errorVal, setErrorVal] = useState([]);
   const [fontFamilyName,setFontFamily] = useState('')
   const [metafields,setMetafields] = useState([])
 
-  const ref = useRef(null);
-  const ref3 = useRef(null);
   useEffect(() => {
     let result =  product.id.replace(/[^0-9]/g,"");
          getMetaFields(result)
@@ -188,7 +180,6 @@ export default function Product() {
         })
         });
         const json = await data.json();
-        console.log(json.result.metafields[0], "shopifyData----Success");
         let y = json.result.metafields[0].value
         let extractMetafield = JSON.parse(y)
         setMetafields(extractMetafield)
