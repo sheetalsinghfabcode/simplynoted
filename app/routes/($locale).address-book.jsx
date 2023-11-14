@@ -1,13 +1,14 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import AddressForm from '../components/addressBook/AddressForm';
 import EditAddressForm from '../components/addressBook/EditAddressForm';
 import Instruction from '~/components/modal/Instruction';
-import {useNavigate} from '@remix-run/react';
+import { useNavigate } from '@remix-run/react';
 import Loader from '../components/modal/Loader';
 import DynamicButton from '~/components/DynamicButton';
 import ContactTable from '~/components/addressBook/ContactTable';
 import ErrorModal from '../components/modal/ErrorModal';
-import {useAddressBook} from '~/components/AddressBookContext';
+import { useAddressBook } from '~/components/AddressBookContext';
+import DynamicTitle from '~/components/Title';
 
 let customerID;
 
@@ -36,6 +37,8 @@ export default function AddressBook() {
   const [errorContent, serErrorContent] = useState([]);
 
   const navigate = useNavigate();
+  const goBack = () => navigate(-1)
+
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -69,7 +72,7 @@ export default function AddressBook() {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [addressForm, selectedAddress, editAddress,loadAddress]);
+  }, [addressForm, selectedAddress, editAddress, loadAddress]);
 
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
@@ -147,7 +150,7 @@ export default function AddressBook() {
               ? 'return'
               : 'recipient'
             : 'recipient',
-          birthday: modifiedData.Birthday ||  '',
+          birthday: modifiedData.Birthday || '',
           anniversary: modifiedData.Anniversary || '',
         }),
       });
@@ -252,87 +255,90 @@ export default function AddressBook() {
             content={errorContent}
           />
         ) : (
-          <div className="w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto">
-            <h2 className="text-center text-[#001a5f] font-bold text-[36px]">
-              Address Book
-            </h2>
-            {!addressForm && !selectedAddress && (
-              <div className="w-full">
-                <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
-                  <input
-                    type="text"
-                    placeholder="Search Addresses..."
-                    value={searchText}
-                    onChange={handleSearchInputChange}
-                    className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
-                  />
-                  <div className="flex">
-                    <div
-                      className={`border-[2px] border-soild border-[#000] py-[5px]`}
-                    >
-                      <div className="flex flex-col">
-                        <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
-                          Bulk Address Upload
-                        </h2>
-                        <input
-                          onChange={handleFileChange}
-                          type="file"
-                          accept=".csv"
-                          className="p-[10px] cursor-pointer"
-                        />
-                        <a
-                          href="https://api.simplynoted.com/docs/bulk-template"
-                          className="text-[14px] px-[10px] font-bold underline"
-                        >
-                          Download bulk address template
-                        </a>
-                        <span
-                          onClick={openModal}
-                          className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
-                        >
-                          {' '}
-                          View Instructions
-                        </span>
+          <>
+            <DynamicButton
+              className="bg-[#EF6E6E] m-5 "
+              text="Prev"
+              onClickFunction={goBack} />
+            <div className="w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto">
+              <DynamicTitle title={"Address Book"} />
+              {!addressForm && !selectedAddress && (
+                <div className="w-full">
+                  <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
+                    <input
+                      type="text"
+                      placeholder="Search Addresses..."
+                      value={searchText}
+                      onChange={handleSearchInputChange}
+                      className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+                    />
+                    <div className="flex">
+                      <div
+                        className={`border-[2px] border-soild border-[#000] py-[5px]`}
+                      >
+                        <div className="flex flex-col">
+                          <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                            Bulk Address Upload
+                          </h2>
+                          <input
+                            onChange={handleFileChange}
+                            type="file"
+                            accept=".csv"
+                            className="p-[10px] cursor-pointer"
+                          />
+                          <a
+                            href="https://api.simplynoted.com/docs/bulk-template"
+                            className="text-[14px] px-[10px] font-bold underline"
+                          >
+                            Download bulk address template
+                          </a>
+                          <span
+                            onClick={openModal}
+                            className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
+                          >
+                            {' '}
+                            View Instructions
+                          </span>
+                        </div>
+                        {selectedFile && (
+                          <DynamicButton
+                            text="Upload"
+                            className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
+                            onClickFunction={() => handleUploadClick()}
+                          />
+                        )}
                       </div>
-                      {selectedFile && (
+                      <div className="flex items-end justify-end ml-[10px] ">
                         <DynamicButton
-                          text="Upload"
-                          className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
-                          onClickFunction={() => handleUploadClick()}
+                          className="bg-[#1b5299]"
+                          text="+ New Address"
+                          onClickFunction={() => setAddressForm(true)}
                         />
-                      )}
-                    </div>
-                    <div className="flex items-end justify-end ml-[10px] ">
-                      <DynamicButton
-                        className="bg-[#1b5299]"
-                        text="+ New Address"
-                        onClickFunction={() => setAddressForm(true)}
-                      />
+                      </div>
                     </div>
                   </div>
+                  <Instruction
+                    isOpen={isModalOpen}
+                    title="INSTRUCTIONS FOR BULK UPLOAD"
+                    closeModal={closeModal}
+                    instructions={[
+                      'Download the bulk upload template (csv)',
+                      'Complete a row for each address you wish to add',
+                      'Upload your completed file in .csv format',
+                    ]}
+                    table={true}
+                  />
+                  <ContactTable
+                    customerID={customerID}
+                    filteredAddresses={filteredAddresses}
+                    editAddress={editAddress}
+                    setSelectedAddress={setSelectedAddress}
+                    handleSearchInputChange={handleSearchInputChange}
+                    setSelectedCheckboxes={setSelectedCheckboxes}
+                    selectedCheckboxes={selectedCheckboxes}
+                  />
                 </div>
-                <Instruction
-                  isOpen={isModalOpen}
-                  title="INSTRUCTIONS FOR BULK UPLOAD"
-                  closeModal={closeModal}
-                  instructions={[
-                    'Download the bulk upload template (csv)',
-                    'Complete a row for each address you wish to add',
-                    'Upload your completed file in .csv format',
-                  ]}
-                  table={true}
-                />
-                <ContactTable
-                  customerID={customerID}
-                  filteredAddresses={filteredAddresses}
-                  editAddress={editAddress}
-                  setSelectedAddress={setSelectedAddress}
-                  handleSearchInputChange={handleSearchInputChange}
-                  setSelectedCheckboxes={setSelectedCheckboxes}
-                  selectedCheckboxes={selectedCheckboxes}
-                />
-              </div>
-            )}
+              )}
               {addressForm && (
                 <div className="w-full max-w-[1440px] px-[20px] mx-auto">
                   <AddressForm
@@ -342,20 +348,21 @@ export default function AddressBook() {
                   />
                 </div>
               )}
-            {selectedAddress && (
-              <div className="w-full max-w-[1440px] px-[20px] mx-auto">
-                <EditAddressForm
-                  customerID={customerID}
-                  selectedAddress={selectedAddress}
-                  setSelectedAddress={setSelectedAddress}
-                  setEditAddress={setEditAddress}
-                  setAddressForm={setAddressForm}
-                  loadAddress={loadAddress}
-                  setLoadAddress={setLoadAddress}
-                />
-              </div>
-            )}
-          </div>
+              {selectedAddress && (
+                <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+                  <EditAddressForm
+                    customerID={customerID}
+                    selectedAddress={selectedAddress}
+                    setSelectedAddress={setSelectedAddress}
+                    setEditAddress={setEditAddress}
+                    setAddressForm={setAddressForm}
+                    loadAddress={loadAddress}
+                    setLoadAddress={setLoadAddress}
+                  />
+                </div>
+              )}
+            </div>
+          </>
         )}
       </div>
     </>

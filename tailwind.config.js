@@ -68,7 +68,8 @@ export default {
         triton:['Triton'],
         woody:['Woody'],
         ratigan:['Ratigan'],
-        beauty: ['Beauty']
+        beauty: ['Beauty'],
+        karla:['Karla']
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

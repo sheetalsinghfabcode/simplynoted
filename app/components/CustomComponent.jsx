@@ -3,6 +3,8 @@ import { flattenConnection, Image, Money, useMoney } from '@shopify/hydrogen';
 import { Text, Link, AddToCartButton, Button } from '~/components';
 import { useState } from 'react';
 import Loader from './modal/Loader';
+import DynamicButton from './DynamicButton';
+
 
 export function CustomComponent({ product }) {
   const [loader, setLoader] = useState(false);
@@ -12,7 +14,7 @@ export function CustomComponent({ product }) {
       {loader ?
         <Loader loaderMessage="Loading Custom Products" />
         :
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 bg-[white] items-center">
           <Link
             to={`/products/${product.handle}`}
             prefetch="intent"
@@ -28,20 +30,50 @@ export function CustomComponent({ product }) {
               </div>
               <div className="grid gap-1">
                 <Text
-                  className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
+                  className="w-full overflow-hidden whitespace-nowrap text-ellipsis text-center uppercase text-[14px] font-karla"
                   as="h3"
                 >
                   {product.title}
                 </Text>
-                <div className="flex gap-4">
-                  <Text className="flex gap-4">
-                  </Text>
-                </div>
+                {/* <Text className="flex w-full justify-center gap-4">
+                <Money withoutTrailingZeros data={price} />
+                {isDiscounted(price, compareAtPrice) && (
+                  <CompareAtPrice
+                    className={'opacity-50 text-center'}
+                    data={compareAtPrice}
+                  />
+                )}
+              </Text> */}
               </div>
+              <div>
+            <DynamicButton
+                  className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
+                  text="SINGLE CARD"
+                  onClickFunction={() => ''}
+                />
+            <DynamicButton
+                  className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
+                  text="BULK PURCHASE"
+                  onClickFunction={() => ''}
+                />
+            </div>
             </div>
           </Link>
         </div>
       }
     </>
   )
+}
+function CompareAtPrice({data, className}) {
+  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
+    useMoney(data);
+
+  const styles = clsx('strike', className);
+
+  return (
+    <span className={styles}>
+      {currencyNarrowSymbol}
+      {withoutTrailingZerosAndCurrency}
+    </span>
+  );
 }

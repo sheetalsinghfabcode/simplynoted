@@ -6,6 +6,7 @@ import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
 import { Image } from '@shopify/hydrogen';
 import LoginModal from '../modal/LoginModal';
+import DynamicButton from '../DynamicButton';
 
 let mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid
 export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess, editFontFamily, fontFamilyName, metafields }) {
@@ -30,6 +31,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [loader, setLoader] = useState(false);
     const [fontSize, setFontSize] = useState('')
     const [loginModal, setLoginModal] = useState(false);
+    const [checkCharCount, setCheckCharCount] = useState(false)
     const maxMessCount = 450
     const remainingWord = maxMessCount - name.length
     const maxSignCount = 50
@@ -54,7 +56,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     function closeModalInt() {
         setInstructionModal(false)
     }
-    
+
     function onCancelCSVUpload() {
         setShowNextBtn(false)
     }
@@ -113,6 +115,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             }
             localStorage.setItem('reqFielddInCart', JSON.stringify(reqField))
             setProductShow(false)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth', // Make the scroll behavior smooth
+            })
             console.log(name, 'namefield');
         }
     }
@@ -148,7 +154,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             if (metafields.header.data.startsWith("http://") || metafields.header.data.startsWith("https://")) {
                 return (
 
-                    <div className={`flex h-[50px]  m-5`} style={{ justifyContent: metafields.header.justifyContent }}>
+                    <div className={`flex h-[50px]  m-2`} style={{ justifyContent: metafields.header.justifyContent }}>
                         <Image className={`!w-20`}
                             src={metafields.header.data}
 
@@ -157,7 +163,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 )
             } else {
                 return (
-                    <div className={`flex h-[50px] w-[100%] bg-red max-w-[600px] justify-${metafields.header.justifyContent} m-5`}
+                    <div className={`flex h-[50px] w-[100%] bg-red max-w-[600px] justify-${metafields.header.justifyContent} m-2`}
                         style={{
                             fontFamily: metafields.header.fontType, fontSize: metafields.header.fontSize
                         }}>
@@ -173,7 +179,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             if (metafields.footer.data.startsWith("http://") || metafields.footer.data.startsWith("https://")) {
                 return (
 
-                    <div className={`flex h-[50px]  m-5`} style={{ justifyContent: metafields.footer.justifyContent }}>
+                    <div className={`flex h-[50px]  m-2`} style={{ justifyContent: metafields.footer.justifyContent }}>
                         <Image className={`!w-20`}
                             src={metafields.footer.data}
 
@@ -452,10 +458,17 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         messageBocContainer = ref2.current;
         signOffBocContainer = ref.current;
         customerid = localStorage.getItem('customerId')
+        let savedMsg = localStorage.getItem('reqFielddInCart')
+        console.log(savedMsg, "savedMessage");
     }, [])
     async function firstNameBtn(data) {
         console.log(data);
-        setName(prevString => prevString + data)
+        if (remainingWord > data.length) {
+            setCheckCharCount(false)
+            setName(prevString => prevString + data)
+        } else {
+            setCheckCharCount(true)
+        }
     }
     return (
         <>
@@ -463,16 +476,16 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                 <Loader /> :
                 <>
                     <div className='mainDivForBox flex gap-10'>
-                        <div id="outer" className="outerr h-[650px] w-[100%] bg-white max-w-[600px] relative">
+                        <div id="outer" className="outerr h-[500px] w-[100%] bg-white max-w-[600px] relative">
                             {metafields.header &&
                                 <ShowHeaderComp />
                             }
-                            <div className='outerSec h-[300px] w-[100%] bg-white' ref={ref2}>
+                            <div className='outerSec h-[250px] w-[100%] bg-white max-h-[250px]' ref={ref2}>
                                 <div id='messageBoxID' ref={ref1} className="output m-5 " style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily }}>
-                                    {name ? name : "enter"}
+                                    {name ? name : "Enter your custom message here..."}
                                 </div>
                             </div>
-                            <div className='secDiv  h-[150px] w-[100%] max-w-[300px] ml-auto bg-white' ref={ref}>
+                            <div className='secDiv  h-[100px] w-[100%] max-w-[300px] ml-auto bg-white' ref={ref}>
                                 <div id='signOffText' ref={ref3} className="output2" style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily }}>
                                     {name2}
                                 </div>
@@ -485,6 +498,10 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                             <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText h-[200px] w-[100%] rounded-[6px] p-[7px] ' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
                             </textarea>
                             <span className="charLeft">{remainingWord} characters remaining</span><br />
+                            {checkCharCount &&
+                                <span className='text-[red] font-bold'>you don't have enough character remaining</span>
+                            }
+                            <br />
                             {show &&
                                 <>
                                     <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
@@ -506,20 +523,37 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                     <div className='w-[263px] mt-10 font-bold'>
                                         <text>As of july5,2023, we have upgraded the bulk order template.Please download the new template below</text>
                                     </div>
-                                    <div className='custom_testing'>
-                                        <div >
-                                            <h3 className='font-bold'>Bulk Address Upload</h3>
+                                    <div className='flex gap-4'>
+                                        <div className='custom_testing'>
+                                            <div >
+                                                <h3 className='font-bold'>Bulk Address Upload</h3>
+                                            </div>
+                                            {bulkUploadDiv && !showNextBtn ?
+                                                <div>
+                                                    <div >
+                                                        <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
+                                                    </div>
+                                                </div> : ''
+                                            }
+                                            <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
+                                            <AfterUpload />
                                         </div>
-                                        {bulkUploadDiv && !showNextBtn ?
-                                            <div>
-                                                <div >
-                                                    <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
-                                                </div>
-                                            </div> : ''
-                                        }
-                                        <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
-                                        <AfterUpload />
+                                        <span className='flex items-center font-bold'>OR</span>
+                                        <div className='m-auto'>
+                                            <DynamicButton
+                                                className="bg-[#1b5299] text-[14px] mb-6 w-full"
+                                                text="Select from Address Book"
+                                                onClickFunction={() => ''}
+                                            />
+                                            <DynamicButton
+                                                className="bg-[#1b5299] text-[14px] w-full"
+                                                text="Next"
+                                                onClickFunction={() => ''}
+                                            />
+                                            
+                                        </div>
                                     </div>
+
                                 </>}
                             {!show &&
                                 <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
@@ -567,7 +601,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                         table={false}
                     />
                     <LoginModal
-                    title={" Add Card"}
+                        title={" Add Card"}
                         show={loginModal}
                         setLoginModal={setLoginModal}
                         onCancel={() => setLoginModal(false)}

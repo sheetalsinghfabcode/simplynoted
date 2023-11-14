@@ -6,6 +6,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { Modal } from './Modal'
 import location from '../../location.json'
 import Loader from './modal/Loader';
+import DynamicTitle from './Title';
 export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
     const stripe = loadStripe(`${StripeKey}`);
     let customerid, fullName, userEmail
@@ -167,7 +168,8 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
             <>
             <div className="'w-full h-full gap-2 mt-8 mb-8">
                 <div className='pb-[80px]'>
-                    <h1 className='text-center font-bold text-4xl'>PAYMENT</h1>
+                <DynamicTitle title={'PAYMENT'}/>
+
                 </div>
                 <div className='w-[100%] flex mr-2 ml-2 gap-8  justify-center'>
                     <div className='p-5 bg-white max-w-[42%] w-full rounded-xl'>

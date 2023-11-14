@@ -3,6 +3,7 @@ import {flattenConnection, Image, Money, useMoney} from '@shopify/hydrogen';
 import {Text, Link, AddToCartButton, Button} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
+import DynamicButton from './DynamicButton';
 
 export function ProductCard({
   product,
@@ -38,7 +39,7 @@ export function ProductCard({
     quantity: 1,
   };
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 bg-[white] items-center">
       {/* <h2>Helloo{product.title}</h2> */}
       <Link
         onClick={onClick}
@@ -65,25 +66,35 @@ export function ProductCard({
               {cardLabel}
             </Text>
           </div>
-          <div className="grid gap-1">
+          <div className="grid">
             <Text
-              className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
+              className="w-full overflow-hidden whitespace-nowrap text-ellipsis text-center uppercase text-[14px] font-karla"
               as="h3"
             >
               {product.title}
             </Text>
-            <div className="flex gap-4">
-              <Text className="flex gap-4">
+              <Text className="flex w-full justify-center gap-4">
                 <Money withoutTrailingZeros data={price} />
                 {isDiscounted(price, compareAtPrice) && (
                   <CompareAtPrice
-                    className={'opacity-50'}
+                    className={'opacity-50 text-center'}
                     data={compareAtPrice}
                   />
                 )}
               </Text>
             </div>
-          </div>
+            <div>
+            <DynamicButton
+                  className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
+                  text="SINGLE CARD"
+                  onClickFunction={() => ''}
+                />
+            <DynamicButton
+                  className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
+                  text="BULK PURCHASE"
+                  onClickFunction={() => ''}
+                />
+            </div>
         </div>
       </Link>
       {quickAdd && firstVariant.availableForSale && (

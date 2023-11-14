@@ -8,6 +8,7 @@ import Loader from '~/components/modal/Loader';
 import StripeModal from '~/components/modal/StripeModal';
 import { useLoaderData } from '@remix-run/react';
 import { defer } from '@shopify/remix-oxygen';
+import DynamicTitle from '~/components/Title';
 
 
 export async function loader({ context,request }) {
@@ -19,7 +20,6 @@ export async function loader({ context,request }) {
 } 
 const ManageSubscription = () => {
   const {  StripeKey } = useLoaderData()
-
   const [firstNameChar, setFirstNameChar] = useState('');
   const [lastNameChar, setLastNameChar] = useState('');
   const [stripeCollection, setStripeCollection] = useState([]);
@@ -38,6 +38,8 @@ const ManageSubscription = () => {
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
   const navigate = useNavigate();
+  const goBack = () => navigate(-1)
+
 
 
   useEffect(() => {
@@ -352,12 +354,18 @@ const ManageSubscription = () => {
       {loader ? (
         <Loader loaderMessage="Loading Manage Plans Data" />
       ) : (
+        <>
+        <DynamicButton 
+        className="bg-[#EF6E6E] m-5 "
+        text="Prev"
+        onClickFunction={goBack}/>
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
-          <div className="flex justify-center items-center mt-[10px] mb-[40px] ">
+          <DynamicTitle title={"Manage Plans and Prepaid Packages"}/>
+          {/* <div className="flex justify-center items-center mt-[10px] mb-[40px] ">
             <h2 className=" text-[18px] lg:text-[50px] font-bold text-[#001a5f]">
               Manage Plans and Prepaid Packages
             </h2>
-          </div>
+          </div> */}
           <div className="flex w-full max-w-[1366px] gap-[30px] items-start">
             <div className="w-[30%]  bg-white p-[20px] text-center">
               <div className="user-name">
@@ -606,6 +614,7 @@ const ManageSubscription = () => {
             </div>
           </div>
         </div>
+        </>
       )}
     </>
   );

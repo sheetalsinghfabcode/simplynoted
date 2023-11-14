@@ -12,6 +12,7 @@ import DynamicButton from '~/components/DynamicButton';
 // import { RiDeleteBin5Line } from "react-icons/Ri";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { CheckoutData } from '../components/Checkout'
+import DynamicTitle from '../components/Title';
 
 
 let storedDataString, storedDataArray
@@ -265,7 +266,7 @@ export default function AddCartFunc() {
             {showCartPage ?
                 <>
                     <div className='w-full h-full gap-2 mt-8'>
-                        <h1 className='text-center font-bold text-4xl'>SHOPPING CART</h1>
+                        <DynamicTitle title={'SHOPPING CART'}/>
                         {cartData && cartData.map((item, index) =>
                             <div className='w-[1000px]  bg-[white] m-auto mt-10 mb-10'>
                                 <div className='flex'>
