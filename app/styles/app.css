@@ -201,6 +201,7 @@ a.active {
     min-height: 52px;
     cursor: pointer;
     color: white;
+    border-radius: none;
   }
 
   .request-button:hover {
@@ -273,6 +274,17 @@ a.active {
 } */
 
  
+
+  .request-a-button {
+    background: #1b5299;
+    min-width: 250px;
+    text-transform: uppercase;
+    padding: 12px;
+    min-height: 64px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 19px;
+  }
   .robot-gif {
     margin-top: -37px;
   }
@@ -1595,3 +1607,13 @@ margin-left:5rem;
 
 }
 
+
+
+
+/*********************************LOGIN-MODAL-PAGE********************************/
+
+.shadow-custom {
+  background: rgb(239, 110, 110);
+  font-weight: 500;
+  font-size: 19px;
+}

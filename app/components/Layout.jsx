@@ -376,7 +376,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
                     <div>Pricing</div>
                     <div className="dropdown-content">
                       <ul className="dropdown-list">
-                        <Link to="/pages/pricing">
+                        <Link to="/price">
                           <li>Credit Packages</li>
                         </Link>
                         <Link to="">
