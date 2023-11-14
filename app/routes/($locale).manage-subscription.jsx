@@ -311,7 +311,7 @@ const ManageSubscription = () => {
         onCancel={() => setDeleteModal(false)}
         title="Are you sure you want to delete your card?"
         confirmText="YES, CONTINUE WITH DELETE"
-        cancelText="No, I do not wish to cancel at this time. "
+        cancelText="No, I do not wish to delete card at this time. "
       />
       <ConfirmationModal
         show={cancelSubscription}

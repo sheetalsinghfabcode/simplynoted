@@ -61,7 +61,7 @@ const StripeCard = ({
           type="submit"
           className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
         >
-         {addCreditModal ? "Add Card" : "Complete Purchase"}
+         {addCreditModal ? "Add Card" : "Update Card"}
         </button>
       </div>
     </form>
