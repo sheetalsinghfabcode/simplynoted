@@ -1,7 +1,7 @@
 import { useRef, Suspense } from 'react';
 import { Disclosure, Listbox } from '@headlessui/react';
 import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await, useLocation } from '@remix-run/react';
+import { useLoaderData, Await, useLocation,useNavigate, } from '@remix-run/react';
 
 import {
   AnalyticsPageType,
@@ -40,6 +40,7 @@ import Modal from 'react-modal';
 import { MessageWriting } from '~/components/products/MessageWrite';
 import { AddCart } from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo'
+import DynamicButton from '~/components/DynamicButton';
 
 
 export const headers = routeHeaders;
@@ -146,6 +147,8 @@ function redirectToFirstVariant({ product, request }) {
 
 export default function Product() {
   const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
+  const navigate = useNavigate()
+  const goBack = () => navigate(-1)
   const datafornav = useLocation();
   let EditMess = datafornav.state?.data?.messageData
   let editEndMess = datafornav.state?.data.endText
@@ -229,7 +232,11 @@ export default function Product() {
     <>
       {productshow ?
         <>
-          <Section className="px-0 md:px-8 lg:px-12">
+        <DynamicButton 
+        className="bg-[#EF6E6E] m-5 "
+        text="Prev"
+        onClickFunction={goBack}/>
+          <Section className="px-0 md:px-8 ">
             <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">
               <ProductGallery
                 media={media.nodes}

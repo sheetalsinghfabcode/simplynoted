@@ -462,9 +462,8 @@ a.active {
 
 }
 .custom_testing {
-  background-color: #f1f1f1;
-  border: solid 2px #aaa;
-  border-radius: 10px;
+  /* background-color: #f1f1f1; */
+  border: solid 2px black;
   padding: 15px;
   margin-top: 15px;
   width: 100%;
@@ -693,6 +692,13 @@ a.active {
     font-weight: 700;
     font-style: italic;
     src: url('./fonts/Kaa.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Karla';
+    /* font-display: swap; */
+    font-weight: 700;
+    font-style: italic;
+    src: url('./fonts/Karla_700.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Kaa-new';
@@ -1528,6 +1534,11 @@ border-color: gray;
 background-size: 100%;
   
 }
+.titleImage{
+  background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
+  background-position: center bottom !important;
+  background-size: 32% !important;
+}
 
 /* .navbar-item:hover{
   background: url(../../assets/Image/menu-underline.png) no-repeat;
@@ -1572,4 +1583,13 @@ margin-left:5rem;
 .bottom_background{
   margin-right:0px;
 }
+}
+.btnShadow {
+  box-shadow: 5px 8px 15px rgb(0 0 0 / 40%);
+}
+
+.selectArrow select{
+  background-image: url(../../assets/Image/Polygon_13.svg) !important;
+  background-size: 6% !important;
+
 }

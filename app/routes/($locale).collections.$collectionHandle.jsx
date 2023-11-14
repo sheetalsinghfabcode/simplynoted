@@ -27,6 +27,7 @@ import DynamicButton from '~/components/DynamicButton';
 import { CustomComponent } from '~/components/CustomComponent';
 import LoginModal from '~/components/modal/LoginModal';
 import Loader from '~/components/modal/Loader';
+import DynamicTitle from '~/components/Title';
 
 export const headers = routeHeaders;
 
@@ -217,7 +218,7 @@ export default function Collection() {
     <Loader loaderMessage="Collection Pages" />
     :
     <>
-    <PageHeader heading={collection.title}>
+    {/* <PageHeader heading={collection.title}>
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
             <div>
@@ -227,24 +228,26 @@ export default function Collection() {
             </div>
           </div>
         )}
-      </PageHeader>
+      </PageHeader> */}
+      <DynamicTitle title={"Simply Noted"} title2={"cards"}/>
       <Section>
-        <div className='gap-4'>
+        <div className='gap-2 flex justify-between'>
+          <div className='gap-2 flex'>
           <DynamicButton
-            className="bg-[#1b5299] w-[200px] text-[#fff] p-2 mb-6"
+            className="btnShadow bg-[#1b5299] w-[200px] text-[#fff] p-2 "
             text="Create A Custom Card"
             onClickFunction={() => ''}
           />
           <br />
           <DynamicButton
-            className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+            className="btnShadow bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
             text="View My Custom Card"
             onClickFunction={() => customisedCard()}
           />
-        </div>
-        <div className='flex gap-5 justify-center'>
-          <h2 className='text-2xl'>Choose a card from our collection: </h2>
-          <select name="" id=""  onChange={(e) => changeHandle(e.target.value)}>
+          </div>
+          <div className='flex gap-5 justify-end items-center selectArrow'>
+          <h2 className='text-l '>Choose a card from our collection: </h2>
+          <select name="" id="" className='!border-none text-[#508ee3]'  onChange={(e) => changeHandle(e.target.value)}>
           <option className='w-full' selected disabled>{collectionHandle} </option>
 
             {handleLinkData.collections.edges.map((item) =>
@@ -252,6 +255,8 @@ export default function Collection() {
             )}
           </select>
         </div>
+        </div>
+        
         <div>
           <Grid layout="products">
             {!checkState ?

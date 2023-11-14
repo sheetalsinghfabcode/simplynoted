@@ -55,7 +55,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         postalCode: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.postalCode : '',
         country: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.country : 'USA',
     });
-    const [checkSelAddress,setCheckSelAddress] = useState(false)
+    const [checkSelAddress, setCheckSelAddress] = useState(false)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -164,7 +164,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         setCardName(selCardName.title)
         setCardImg(selCardName.featuredImage.url)
         let arrCardPrice = data.collection.products.edges[item].node.variants.edges
-      let  firstPrice = arrCardPrice[0].node.price.amount
+        let firstPrice = arrCardPrice[0].node.price.amount
         setCardPrice(firstPrice)
         setCardPriceTitle(arrCardPrice[0].node.title)
         console.log(cardPrice, '----cardPrice=--', firstPrice);
@@ -286,7 +286,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
             }
         }
     }
-    function closeSelAddressModal(){
+    function closeSelAddressModal() {
         setCheckSelAddress(false)
     }
     function onpenAddCardModal() {
@@ -305,6 +305,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                 <Loader loaderMessage="Adding Data to Cart" />
                 :
                 <>
+                    <DynamicButton
+                        className="bg-[#EF6E6E] m-5 "
+                        text="Prev"
+                        onClickFunction={() => setProductShow(true)} />
                     {addressForm && (
                         <div className="w-full  max-w-[1440px] px-[20px] mx-auto">
                             <AddressForm
@@ -316,7 +320,6 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                     )}
                     {!addressForm &&
                         <div className='  w-full h-full gap-2 mt-8'>
-
                             <h3 className='items-center font-bold flex text-2xl' onClick={() => setProductShow(true)}><BiSolidChevronLeft size='50px' />Back To Product Customization</h3>
                             <div className='row flex mr-2 ml-2 gap-4'>
                                 <div className='col-6 w-[50%] '>
@@ -449,7 +452,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="checkbox" id="" name="" value=""  checked={cardPriceTitle}/>
+                                                <input type="checkbox" id="" name="" value="" checked={cardPriceTitle} />
                                                 <text className='ml-3'>Add Gift Card</text>
                                             </div>
                                         </div>

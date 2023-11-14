@@ -8,6 +8,7 @@ import {WalletPayment} from '~/components/WalletPayment';
 import Accordion from '~/components/wallet/Accordian';
 import Loader from '~/components/modal/Loader';
 import {useNavigate} from '@remix-run/react';
+import DynamicButton from '~/components/DynamicButton';
 
 
 export async function loader({context}) {
@@ -42,6 +43,8 @@ export default function SimplyNoted() {
   const [loader,setloader]= useState(true)
 
   const navigate = useNavigate();
+  const goBack = () => navigate(-1)
+
 
 
   useEffect(() => {
@@ -83,7 +86,14 @@ export default function SimplyNoted() {
     {loader ? (<Loader
       loaderMessage="Loading Plans"
       />
-      ):(<div>
+      ):(
+      <>
+       {!walletPlan && !walletPurcase && !walletPayment && (
+      <DynamicButton
+        className="bg-[#EF6E6E] m-5 "
+        text="Prev"
+        onClickFunction={goBack}/>)}
+      <div>
       {!walletPlan && !walletPurcase && !walletPayment && (
         <WalletTable
           WalletData={WalletData}
@@ -127,7 +137,8 @@ export default function SimplyNoted() {
           StripeKey={StripeKey}
         />
       )}
-    </div>)}
+    </div>
+    </>)}
     
     </>
   );

@@ -42,7 +42,7 @@ import { useIsHydrated } from '~/hooks/useIsHydrated';
 import { useCartFetchers } from '~/hooks/useCartFetchers';
 import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
-
+import Loader from './modal/Loader';
 let customerid;
 
 export function Layout({ children, layout }) {
@@ -299,6 +299,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
           <nav className="flex gap-8 lg:text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight  !md:text-white !sm:text-white">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
+              
               <Link
                 key={item.id}
                 to={item.to}
@@ -416,6 +417,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
+            <Link to="/carts">
             <img
               src={CartShopify}
               alt="cart-icon"
@@ -425,7 +427,8 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
                 marginTop: '-11px',
               }}
             />
-            <span className="tooltiptext">Cart</span>
+            </Link>
+            {/* <span className="tooltiptext">Cart</span> */}
           </div>
 
           <DynamicButton
@@ -436,7 +439,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
               'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-          <Link to="/account/login">
+          <Link to="/account/login" className='text-[#001A5F]'>
             Account →
           </Link>
           {/* <DynamicButton

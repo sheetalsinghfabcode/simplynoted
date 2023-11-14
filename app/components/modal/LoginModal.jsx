@@ -12,7 +12,7 @@ const LoginModal = ({show, onCancel, setLoginModal,title,confirmText,cancelText}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="modal-container relative bg-white w-11/12 md:max-w-[60%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container relative bg-white w-11/12 md:max-w-[45%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
        
           <span
             className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
@@ -46,7 +46,7 @@ const LoginModal = ({show, onCancel, setLoginModal,title,confirmText,cancelText}
             <Link to="/account/register">
               <span
                 onClick={onCancel}
-                className="text-[#707070] underline text-[16px]"
+                className="text-[#001a5f] underline text-[16px]"
               >
                 {cancelText}
               </span>

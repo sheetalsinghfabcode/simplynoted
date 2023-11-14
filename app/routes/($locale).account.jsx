@@ -140,7 +140,7 @@ function Account({customer, heading, featuredData}) {
       <PageHeader className="my-[40px] uppercase" heading={heading}>
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
-            className="text-primary/50 bg-[#767676]"
+            className="text-primary/50 bg-[#EF6E6E]"
             text="Log Out"
              onClickFunction={()=> setData(true)}/>
         </Form>
