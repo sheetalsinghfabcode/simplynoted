@@ -22,10 +22,20 @@ const Card=()=>{
     return(
         <>
         <div>
-            <div className="">
+           
         <Swiper
       modules={[Navigation,Pagination]}
       direction={'horizontal'}
+      breakpoints={{
+        1024:{
+           slidesPerView:1
+        },
+       768: {
+         spaceBetween:10,
+         slidesPerView:1,
+        
+       }
+     }}
       spaceBetween={30}
       slidesPerView={1}
      
@@ -68,7 +78,7 @@ const Card=()=>{
 
     <div class="swiper-button-prev cursor-pointer absolute mt-[-16rem] ml-[9rem]"><img src={prev} className="w-[25px]" alt="" /></div>
 <div class="swiper-button-next cursor-pointer absolute mt-[-16rem] ml-[73rem] "><img src={next} className="w-[25px]" alt="" /></div>
-</div>     
+     
  
 
     <div className="flex mx-[-10rem] mt-1">
@@ -90,11 +100,11 @@ const Card=()=>{
         <form>
             <div>
             <input type="email" className="input_email" placeholder="Enter your email address" />
-            <span> <DynamicButton
+            <DynamicButton
                     text="SUBSCRIBE"
                     className="subscribe"
                     onClickFunction={()=>Navigate('/blogs/news')}
-            /></span>
+            />
             </div>
         </form>
     </div>

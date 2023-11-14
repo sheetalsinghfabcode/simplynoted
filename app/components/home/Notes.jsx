@@ -50,16 +50,12 @@ const Notes = () => {
            
           loop={true}
           breakpoints={{
-          1024:{
-            slidesPerView: 3.5
-          },
-            768: {
-              spaceBetween:10,
-              slidesPerView: 1,
-            },
-            640:{
-              slidesPerView:1
-            }
+         
+            // 768: {
+            //   spaceBetween:10,
+            //   slidesPerView:2,
+             
+            // }
           }}
      
       autoplay={{ delay:1000 ,

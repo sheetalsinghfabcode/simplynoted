@@ -282,7 +282,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
           ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader'
           : 'bg-contrast/80 text-primary'
           } ${!isHome && y > 50 && ' shadow-lightHeader'
-          } hidden h-nav lg:flex items-center  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+          } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
       >
         <div className="flex gap-12  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -296,7 +296,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
               }}
             />
           </Link>
-          <nav className="flex gap-8 lg:text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight  !md:text-white !sm:text-white">
+          <nav className="flex gap-8 text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
               
@@ -311,12 +311,12 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
               >
                 {item.title === 'Send a Card' ? (
                   <div className="dropdown">
-                    <div>Send a Card</div>
+                    <div>Send A Card</div>
                     <div className="dropdown-content">
                       <ul className="dropdown-list">
                         <Link to="/collections/best-sellers">
                           {' '}
-                          <li> Card</li>
+                          <li> Cards</li>
                         </Link>
                         <CreateCardCheck />
                         {/* {!customerid ? (
@@ -439,7 +439,7 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
               'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-          <Link to="/account/login" className='text-[#001A5F]'>
+          <Link to="/account/login" className="text-black font-bold">
             Account →
           </Link>
           {/* <DynamicButton
