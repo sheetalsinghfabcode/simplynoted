@@ -96,9 +96,10 @@ export default function Register() {
 
   console.log("actionData",actionData);
   return (
-    <div className="flex justify-center my-24 px-4">
+    <div className="flex justify-center mt-8 mb-24 px-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl">Create an Account.</h1>
+        <h1 className="text-4xl block text-blue-900 text-2xl">Create an Account.</h1>
+        <img className='w-64 mt-3'src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form 
           method="post"
@@ -112,13 +113,13 @@ export default function Register() {
           )}
           <div>
             <input
-              className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
               id="email"
               name="email"
               type="email"
               autoComplete="email"
               required
-              placeholder="Email address"
+              placeholder="Enter Email"
               aria-label="Email address"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -137,13 +138,13 @@ export default function Register() {
           </div>
           <div>
             <input
-              className={`mb-1 ${getInputStyleClasses(nativeFirstNameError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(nativeFirstNameError)}`}
               id="name"
               name="name"
               type="name"
               autoComplete="name"
               required
-              placeholder="First Name"
+              placeholder="Enter First Name"
               aria-label="First Name"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -162,13 +163,13 @@ export default function Register() {
           </div>
           <div>
             <input
-              className={`mb-1 ${getInputStyleClasses(nativeLastNameError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(nativeLastNameError)}`}
               id="last name"
               name="last Name"
               type="name"
               autoComplete="last Name"
               required
-              placeholder="Last Name"
+              placeholder="Enter Last Name"
               aria-label="Last Name"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -187,12 +188,12 @@ export default function Register() {
           </div>
           <div>
             <input
-              className={`mb-1 ${getInputStyleClasses(nativePasswordError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(nativePasswordError)}`}
               id="password"
               name="password"
               type="password"
               autoComplete="current-password"
-              placeholder="Password"
+              placeholder="Enter Password"
               aria-label="Password"
               minLength={8}
               required
@@ -223,7 +224,7 @@ export default function Register() {
          
           <div className="flex items-center justify-between">
             <button
-              className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+              className=" shadow-custom  shadow-lg hover:bg-indigo-900 h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError || nativeFirstNameError || nativeLastNameError)}
             >

@@ -89,14 +89,16 @@ export default function Login() {
     }
   }
   return (
-    <div className="flex justify-center my-24 px-4">
-      <div className="max-w-md w-full">
-        <h1 className="text-4xl">Sign in.</h1>
+    <div className="flex justify-center  mt-8 mb-24 px-4">
+      <div className="max-w-md w-full"> 
+        <h1 className="  name text-4xl text-blue-900">Sign in</h1>
+        <img className='mt-2 w-32' src='https://simplynoted.com/cdn/shop/files/menu-underline.png'/>
+        <p className='mt-[12px] text-black text-opacity-80 text-xs'>If you have an account with us, please log in.</p>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form
           method="post"
           noValidate
-          className="pt-6 pb-8 mt-4 mb-4 space-y-3"
+          className="pb-8 mt-4 mb-4 space-y-3"
         >
           {actionData?.formError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
@@ -105,13 +107,13 @@ export default function Login() {
           )}
           <div>
             <input
-              className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
               id="email"
               name="email"
               type="email"
               autoComplete="email"
               required
-              placeholder="Email address"
+              placeholder="Enter-E-mail"
               aria-label="Email address"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -130,12 +132,12 @@ export default function Login() {
           </div>
           <div>
             <input
-              className={`mb-1 ${getInputStyleClasses(nativePasswordError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(nativePasswordError)}`}
               id="password"
               name="password"
               type="password"
               autoComplete="current-password"
-              placeholder="Password"
+              placeholder=" Enter-Password"
               aria-label="Password"
               minLength={8}
               required
@@ -165,7 +167,7 @@ export default function Login() {
           </div>
           <div className="flex items-center justify-between">
             <button onClick={()=>setVar()}
-              className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+              className=" shadow-custom h-12 sign-in-modal shadow-lg hover:bg-indigo-900 text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}
             >
@@ -175,8 +177,8 @@ export default function Login() {
           <div className="flex justify-between items-center mt-8 border-t border-gray-300">
             <p className="align-baseline text-sm mt-6">
               New to {shopName}? &nbsp;
-              <Link className="inline underline" to="/account/register">
-                Create an account
+              <Link className="text-xs inline underline" to="/account/register">
+             CREATE AN ACCOUNT
               </Link>
             </p>
             <Link
