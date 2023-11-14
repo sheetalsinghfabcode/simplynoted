@@ -34,7 +34,7 @@ const StripeModal = ({
         </span>
         <div className="modal-content py-4  px-6">
           <div className="modal-header">
-            <h3 className="text-[29px] text-center leading-[1.4] text-[#001a5f] font-semibold">
+            <h3 className="text-[29px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
               {title}
             </h3>
           </div>

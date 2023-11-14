@@ -1,8 +1,41 @@
 import {Link} from '~/components';
+import DynamicButton from './DynamicButton';
+import { useEffect, useState } from 'react';
 
 export function AccountDetails({customer}) {
-  const {firstName, lastName, email, phone} = customer;
-  const tags = customer.tags
+  const {firstName, lastName, email, phone,id} = customer;
+
+  const customerID = customer.id.replace(/[^0-9]/g,"")
+
+
+  let apiKey = "" ;
+
+  const generateApiKey = async () => {
+
+   try {
+     const response = await fetch(`https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       
+       
+     });
+
+     if (response.ok) {
+       const data = await response.json();
+       localStorage.setItem('apiKey',data.result)
+       // Process the data received from the API
+       console.log('Response data:', data);
+     } else {
+       // Handle errors here
+       console.error('Error:', response.statusText);
+     }
+   } catch (error) {
+     // Handle network errors or exceptions
+     console.error('Error:', error);
+   }
+ };
 
   return (
     <>
@@ -26,13 +59,22 @@ export function AccountDetails({customer}) {
           </p>
 
           <div className="mt-4 text-sm text-primary/50">Phone</div>
-          <p className="mt-1">{phone }</p>
+          <p className="mt-1">{phone}</p>
 
           <div className="mt-4 text-sm text-primary/50">Email address</div>
           <p className="mt-1">{email}</p>
 
           <div className="mt-4 text-sm text-primary/50">Password</div>
           <p className="mt-1">**************</p>
+          <div className='flex items-center'>
+          <div className=" text-sm text-primary/50">API Key</div>
+          <DynamicButton
+          text="Generate"
+          className="!text-black"
+          onClickFunction={()=>generateApiKey()}
+          />
+          </div>
+          <div className='my-[10px]  max-w-[60%] text-black text-[16px] break-all font-semibold'>{apiKey}</div>  
         </div>
       </div>
     </>
