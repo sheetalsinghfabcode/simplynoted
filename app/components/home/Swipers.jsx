@@ -24,7 +24,7 @@ const Swipers=()=>{
    
 return(
     <>
-<div className="text-3xl font-bold text-[#001A5F] text-center mt-40 mb-20">Companies we've worked with</div>
+<div className="text-3xl font-bold text-[#001A5F] text-center  mb-20">Companies we've worked with</div>
     <Swiper
       modules={[Autoplay]}
       direction={'horizontal'}

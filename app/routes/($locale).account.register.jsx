@@ -96,7 +96,7 @@ export default function Register() {
 
   console.log("actionData",actionData);
   return (
-    <div className="flex justify-center mt-8 mb-24 px-4">
+    <div className="flex justify-center mt-12 mb-24 px-4">
       <div className="max-w-md w-full">
         <h1 className="text-4xl block text-blue-900 text-2xl">Create an Account.</h1>
         <img className='w-64 mt-3'src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/>
@@ -224,7 +224,7 @@ export default function Register() {
          
           <div className="flex items-center justify-between">
             <button
-              className=" shadow-custom  shadow-lg hover:bg-indigo-900 h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
+              className=" shadow-custom  shadow-lg h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError || nativeFirstNameError || nativeLastNameError)}
             >

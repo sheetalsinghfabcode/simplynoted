@@ -1627,3 +1627,214 @@ body {
 .custom-spinner {
   animation: spin 1s linear infinite; /* Adjust animation duration and timing function as needed */
 }
+
+.arrow-down-line {
+  margin-top: -19px;
+  z-index: 1;
+}
+
+/************************************PRICE*****************************/
+
+.flex-item {
+  background-image: url('https://simplynoted.com/cdn/shop/files/circle-title.png');
+  color: #fff;
+  font-size: 36px;
+  line-height: 30px;
+  font-weight: 700;
+  height: 145px;
+  width: 145px;
+  border-radius: 50%;
+  padding: 36px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 23px 45px;
+}
+
+@media only screen and (max-width: 600px) {
+  .flex-item {
+    font-size: 24px;
+    height: 100px;
+    width: 100px;
+    padding: 20px 5px;
+    margin: 15px 30px;
+  }
+}
+.credits-card {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.credits-cont {
+  position: absolute;
+  top: -77px;
+}
+
+.Includes {
+  text-align: center;
+  font-size: 20px;
+  color: #001a5f;
+  font-weight: inherit;
+}
+
+.side-line {
+  right: -48px;
+  min-width: 20px;
+}
+
+.main-cont {
+  min-height: 377px;
+}
+
+.discrition {
+  margin-left: 41px;
+}
+
+@media only screen and (max-width: 600px) {
+  .credits-cont {
+    top: 0;
+  }
+
+  .side-line {
+    right: 0;
+  }
+
+  .main-cont {
+    min-height: auto;
+  }
+
+  .discrition {
+    margin-left: 0;
+  }
+}
+
+.add-to-cart {
+  background: #ef6e6e;
+  bottom: -22px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 700;
+  left: 0;
+  margin: auto;
+  right: 0;
+  padding: 24px 25px;
+  text-align: center;
+  max-width: 265px;
+  width: 100%;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  margin-top: -51px;
+}
+
+.circle-percentage {
+  background: #ef6e6e;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  color: #fff;
+  font-family: 'Beauty City', Handwriting !important;
+  font-size: 22px;
+  font-weight: 400;
+  height: 66px;
+  margin: auto;
+  padding: 20px 5px;
+  text-align: center;
+  width: 66px;
+}
+
+.real-pen-notice {
+  background: url('https://simplynoted.com/cdn/shop/files/pricing-box-white.png');
+  background-size: 100% 100%;
+  height: 235px;
+  padding: 30px 30px;
+  position: relative;
+  width: 235px;
+}
+
+@media only screen and (max-width: 600px) {
+  .add-to-cart {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+
+  .circle-percentage {
+    font-size: 18px;
+    height: 50px;
+    width: 50px;
+    padding: 15px 5px;
+  }
+
+  .real-pen-notice {
+    height: 180px;
+    padding: 20px 20px;
+    width: 180px;
+  }
+}
+.real-pen-notice .p {
+  color: #001a5f;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 24px;
+  padding: 0;
+  text-align: center;
+}
+
+.card-icon {
+  position: absolute;
+  max-height: 34px;
+  left: 101px;
+  top: 45px;
+}
+
+.custom-icon {
+  max-height: 23px;
+  padding-left: 12px;
+}
+
+.amount {
+  background-image: url('https://simplynoted.com/cdn/shop/files/pricing-table-field.png');
+  color: #001a5f;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background-size: 100% 100%;
+  font-size: 19px;
+  gap: 30px;
+}
+
+.right-cont {
+  background-image: url('https://simplynoted.com/cdn/shop/files/pricing-form-bg.png');
+  background-size: 100% 100%;
+  color: #fff;
+  padding: 62px;
+}
+
+@media only screen and (max-width: 600px) {
+  .real-pen-notice .p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .card-icon {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+  }
+
+  .custom-icon {
+    max-height: 20px;
+    padding-left: 8px;
+  }
+
+  .amount {
+    gap: 15px;
+  }
+
+  .right-cont {
+    padding: 20px;
+  }
+}
