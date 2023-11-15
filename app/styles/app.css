@@ -1617,3 +1617,18 @@ margin-left:5rem;
   font-weight: 500;
   font-size: 19px;
 }
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply styles to the custom spinner */
+.custom-spinner {
+  animation: spin 1s linear infinite; /* Adjust animation duration and timing function as needed */
+}

@@ -5,7 +5,7 @@ import {
   useLoaderData,
   useMatches,
   useOutlet,
-  useNavigate
+  useNavigate,
 } from '@remix-run/react';
 import {Suspense, useState} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
@@ -29,6 +29,7 @@ import Profile from '~/components/Profile';
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
 import DynamicButton from '~/components/DynamicButton';
+import DynamicTitle from '~/components/Title';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -108,97 +109,107 @@ function Account({customer, heading, featuredData}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
 
-  const navigate = useNavigate()
-  const [data,setData] = useState(false)
-  const [orderHistory,setOrderHistory] = useState(false)
-  const [accountDetail, setAccountDetail] = useState(true)
-  const [profile,setProfile] = useState(false)
+  const navigate = useNavigate();
+  const [data, setData] = useState(false);
+  const [orderHistory, setOrderHistory] = useState(false);
+  const [accountDetail, setAccountDetail] = useState(true);
+  const [profile, setProfile] = useState(false);
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
     setOrderHistory(false);
-    setProfile(false)
+    setProfile(false);
   };
 
   const handleOrderHistoryClick = () => {
     setOrderHistory(true);
     setAccountDetail(false);
-    setProfile(false)
+    setProfile(false);
   };
 
+  const handleProfile = () => {
+    setProfile(true);
+    setOrderHistory(false);
+    setAccountDetail(false);
+  };
 
-  const handleProfile = ()=>{
-      setProfile(true)
-      setOrderHistory(false);
-      setAccountDetail(false);
+  let result = customer.id.replace(/[^0-9]/g, '');
+  const remove = () => {
+    if (typeof window !== 'undefined' && customer) {
+      localStorage.removeItem('customerId');
+      localStorage.removeItem('SNFirstName');
+      localStorage.removeItem('SnEmail');
+      localStorage.removeItem('apiKey');
+
+      localStorage.removeItem('firstName', customer.firstName);
+      localStorage.removeItem('lastName', customer.lastName);
+    }
+  };
+  if (data == true) {
+    remove();
+  } else if (data == false) {
+    if (typeof window !== 'undefined' && customer) {
+      localStorage.setItem('customerId', result);
+      localStorage.setItem(
+        'SNFullName',
+        `${customer.firstName + customer.lastName}`,
+      );
+      localStorage.setItem('SnEmail', customer.email);
+      localStorage.setItem('firstName', customer.firstName);
+      localStorage.setItem('lastName', customer.lastName);
+    }
   }
 
-
-  let result =  customer.id.replace(/[^0-9]/g,"");
-  const remove = () =>{
-    if(typeof window !== 'undefined' && customer ){
-      localStorage.removeItem('customerId')
-      localStorage.removeItem('SNFirstName')
-      localStorage.removeItem('SnEmail')
-      localStorage.removeItem('apiKey')
-
-      localStorage.removeItem('firstName',customer.firstName)
-      localStorage.removeItem('lastName',customer.lastName)
-    }
-    }
-      if(data == true){
-        remove()
-      } else if(data == false){
-        if(typeof window !== 'undefined' && customer ){
-          localStorage.setItem('customerId',result)
-          localStorage.setItem('SNFullName',`${customer.firstName + customer.lastName}`)
-          localStorage.setItem('SnEmail',customer.email)
-          localStorage.setItem('firstName',customer.firstName)
-          localStorage.setItem('lastName',customer.lastName)
-        }
-      }
-
-
   return (
-    <div className='w-full max-w-[1344px] mx-auto px-[20px]'>
-      <PageHeader className="my-[40px] uppercase" heading={heading}>
+    <div className="w-full max-w-[1344px] mx-auto px-[20px]">
+      <div className="flex justify-between items-center">
+        <DynamicTitle title="Account" />
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             className="text-primary/50 bg-[#EF6E6E]"
             text="Log Out"
-             onClickFunction={()=> setData(true)}/>
+            onClickFunction={() => setData(true)}
+          />
         </Form>
-      </PageHeader>
-      <div className='flex gap-[20px]'>
-      <DynamicButton
-        text="Account detail"
-        className={`flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${accountDetail ? "bg-[#1b5299] !text-white" : "bg-transparent !text-[#1b5299]"} ` }
-        onClickFunction={()=>handleAccountDetailClick()}
+      </div>
+      <div className="flex gap-[20px]">
+        <DynamicButton
+          text="Account detail"
+          className={`flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
+            accountDetail
+              ? 'bg-[#1b5299] !text-white'
+              : 'bg-transparent !text-[#1b5299]'
+          } `}
+          onClickFunction={() => handleAccountDetailClick()}
         />
         <DynamicButton
-        text="Order History"
-        onClickFunction={()=>handleOrderHistoryClick()}
-        className={`border-2 flex justity-center items-center border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299]   ${orderHistory ? "bg-[#1b5299] !text-white" : "bg-transparent !text-[#1b5299]"}`}
+          text="Order History"
+          onClickFunction={() => handleOrderHistoryClick()}
+          className={`border-2 flex justity-center items-center border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299]   ${
+            orderHistory
+              ? 'bg-[#1b5299] !text-white'
+              : 'bg-transparent !text-[#1b5299]'
+          }`}
         />
         <DynamicButton
-        text="View Addresses"
-        onClickFunction={()=>navigate('/address-book')}
-        className={`flex justity-center items-center  border-2 border-solid h-[40px] hover:bg-[#1b5299]  hover:!text-white !px-[29px]  uppercase border-[#1b5299] !text-[#1b5299]  `}
+          text="View Addresses"
+          onClickFunction={() => navigate('/address-book')}
+          className={`flex justity-center items-center  border-2 border-solid h-[40px] hover:bg-[#1b5299]  hover:!text-white !px-[29px]  uppercase border-[#1b5299] !text-[#1b5299]  `}
         />
         <DynamicButton
-        text="Manage Plan"
-        className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
-        onClickFunction={()=>navigate('/manage-subscription')}
+          text="Manage Plan"
+          className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+          onClickFunction={() => navigate('/manage-subscription')}
         />
-     <DynamicButton
-        text="Edit Profile"
-        className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
-        onClickFunction={()=>handleProfile()}
+        <DynamicButton
+          text="Edit Profile"
+          className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+          onClickFunction={() => handleProfile()}
         />
       </div>
       {orders && orderHistory && <AccountOrderHistory orders={orders} />}
-      {accountDetail && <AccountDetails customer={customer} /> }
-      {profile && <Profile customer={customer} result={result}/>}
+      {accountDetail && <AccountDetails customer={customer} />}
+      {profile && <Profile customer={customer} result={result} />}
       {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
       {/* {!orders.length && (
         <Suspense>
