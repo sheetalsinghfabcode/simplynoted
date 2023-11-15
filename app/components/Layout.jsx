@@ -235,15 +235,13 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
 }
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
-
   const [loginModal, setLoginModal] = useState(false);
-
-  function CreateCardCheck() {
-    if (typeof window !== 'undefined') {
-      let id = localStorage.getItem('customerId');
-      if (id) {
-        return (
-          <Link to="/createcard">
+  function CreateCardCheck(){
+   if(typeof window !== 'undefined'){
+    let id = localStorage.getItem('customerId');
+    if(id){
+      return(
+          <Link to="/customise-your-card">
             <li>Create a Card</li>
           </Link>
         )
