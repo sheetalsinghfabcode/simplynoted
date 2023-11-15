@@ -1,80 +1,112 @@
 import {Link} from '~/components';
 import DynamicButton from './DynamicButton';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
+import CircularLoader from './CircularLoder';
 
 export function AccountDetails({customer}) {
-  const {firstName, lastName, email, phone,id} = customer;
+  const {firstName, lastName, email, phone, id} = customer;
 
-  const customerID = customer.id.replace(/[^0-9]/g,"")
+  const [key, setKey] = useState('');
+  const [loader, setLoader] = useState(false);
 
-
-  let apiKey = "" ;
+  const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const generateApiKey = async () => {
+    setLoader(true);
+    try {
+      const response = await fetch(
+        `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
 
-   try {
-     const response = await fetch(`https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`, {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       
-       
-     });
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('apiKey', data.result);
+        setLoader(false);
 
-     if (response.ok) {
-       const data = await response.json();
-       localStorage.setItem('apiKey',data.result)
-       // Process the data received from the API
-       console.log('Response data:', data);
-     } else {
-       // Handle errors here
-       console.error('Error:', response.statusText);
-     }
-   } catch (error) {
-     // Handle network errors or exceptions
-     console.error('Error:', error);
-   }
- };
+        setKey(data.result);
+        // Process the data received from the API
+        console.log('Response data:', data);
+      } else {
+        // Handle errors here
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      // Handle network errors or exceptions
+      console.error('Error:', error);
+    }
+  };
+
+  let apiKey;
+
+  useEffect(() => {
+    apiKey = localStorage.getItem('apiKey');
+
+    console.log('apiKey ', apiKey);
+  }, [key]);
+
+  console.log('key,>>>>>', key);
 
   return (
     <>
-      <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h3 className="font-bold text-lead">Account Details</h3>
-        <div className="lg:p-8 p-6 border border-gray-200 rounded">
-          <div className="flex">
-            {/* <Link
-              prefetch="intent"
-              className="underline text-sm font-normal"
-              to="/account/edit"
+      <div className="container mx-auto px-4 py-8">
+        <h3 className="text-2xl font-bold mb-6">Account Details</h3>
+        <div className="bg-white font-karla shadow-md rounded-lg p-6">
+          {/* Name */}
+          <div className="flex mb-4">
+            <div className="w-1/4 text-sm text-gray-600">Name:</div>
+            <p className="w-3/4 text-[16px] font-semibold">
+              {firstName || lastName
+                ? `${firstName || ''} ${lastName || ''}`
+                : 'Add name'}
+            </p>
+          </div>
+
+          {/* Phone */}
+          <div className="flex mb-4">
+            <div className="w-1/4 text-sm text-gray-600">Phone:</div>
+            <p className="w-3/4 text-[16px]  font-semibold">{phone}</p>
+          </div>
+
+          {/* Email */}
+          <div className="flex mb-4">
+            <div className="w-1/4 text-sm text-gray-600">Email address:</div>
+            <p className="w-3/4 text-[16px]  font-semibold">{email}</p>
+          </div>
+
+          {/* Password */}
+          <div className="flex mb-4">
+            <div className="w-1/4 text-sm text-gray-600">Password:</div>
+            <p className="w-3/4 text-[16px]  font-semibold">**************</p>
+          </div>
+
+          {/* API Key */}
+          <div className="flex mb-4 items-center">
+            <div className="w-1/4 text-sm text-gray-600 ">API Key:</div>
+            <button
+              className="px-4 py-2 bg-[#1b52b1] text-white  text-sm font-semibold hover:bg-[#1b52b1] focus:outline-none"
+              onClick={generateApiKey}
             >
-              Edit
-            </Link> */}
+              Generate
+            </button>
           </div>
-          <div className="mt-4 text-sm text-primary/50">Name</div>
-          <p className="mt-1">
-            {firstName || lastName
-              ? (firstName ? firstName + ' ' : '') + lastName
-              : 'Add name'}{' '}
-          </p>
 
-          <div className="mt-4 text-sm text-primary/50">Phone</div>
-          <p className="mt-1">{phone}</p>
-
-          <div className="mt-4 text-sm text-primary/50">Email address</div>
-          <p className="mt-1">{email}</p>
-
-          <div className="mt-4 text-sm text-primary/50">Password</div>
-          <p className="mt-1">**************</p>
-          <div className='flex items-center'>
-          <div className=" text-sm text-primary/50">API Key</div>
-          <DynamicButton
-          text="Generate"
-          className="!text-black"
-          onClickFunction={()=>generateApiKey()}
-          />
-          </div>
-          <div className='my-[10px]  max-w-[60%] text-black text-[16px] break-all font-semibold'>{apiKey}</div>  
+        
+            <div className="flex mb-4">
+              <div className="w-1/4 text-sm text-gray-600">
+                Generated API Key:
+              </div>
+              {loader ? (
+            <CircularLoader color="#1b52b1" />
+          ) : (
+              <p className="w-3/4 text-[14px] font-semibold break-all">{key}</p>)}
+            </div>
+          
         </div>
       </div>
     </>
