@@ -16,7 +16,7 @@ const customStyles = {
   },
 };
 
-function Instruction({isOpen, closeModal,title,instructions,table}) {
+function Instruction({isOpen, closeModal,title,instructions,table,body}) {
   return (
     <Modal
       isOpen={isOpen}
@@ -35,6 +35,9 @@ function Instruction({isOpen, closeModal,title,instructions,table}) {
         <h2 className="text-[#001a5f] font-bold text-[30px] text-center mb-4">
         {title}
         </h2>
+        <div className='w-full'>
+          {body}
+        </div>
         <p className="!text-[#000] font-medium text-[14px] font-medium leading-[160%]">
         {instructions && instructions.map((instruction, index) => (
             <li key={index}>{instruction}</li>

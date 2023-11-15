@@ -356,8 +356,9 @@ const ManageSubscription = () => {
       ) : (
         <>
         <DynamicButton 
-        className="bg-[#EF6E6E] m-5 "
+        className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
         text="Prev"
+        backArrow={true}
         onClickFunction={goBack}/>
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
           <DynamicTitle title={"Manage Plans and Prepaid Packages"}/>

@@ -7,12 +7,13 @@ import Loader from '../modal/Loader';
 import { Image } from '@shopify/hydrogen';
 import LoginModal from '../modal/LoginModal';
 import DynamicButton from '../DynamicButton';
+import ContactTable from '../addressBook/ContactTable';
 
-let mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid
+let mainMessageBox, signOffTextBox, messageBocContainer, signOffBocContainer, customerid,savedMsg
 export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox, setProductShow, EditMess, editEndMess, editFontFamily, fontFamilyName, metafields }) {
     console.log(metafields, 'metafields');
 
-    let [name, setName] = useState(EditMess ? EditMess : '')
+    let [name, setName] = useState(EditMess? EditMess  : '')
     const [name2, setName2] = useState(editEndMess ? editEndMess : '')
     const [fileData, setFileData] = useState([]);
     const [valToGen, setValToGen] = useState('')
@@ -32,6 +33,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     const [fontSize, setFontSize] = useState('')
     const [loginModal, setLoginModal] = useState(false);
     const [checkCharCount, setCheckCharCount] = useState(false)
+    const [modalForAddressBook,setModalForAddressBook] = useState(false)
     const maxMessCount = 450
     const remainingWord = maxMessCount - name.length
     const maxSignCount = 50
@@ -55,6 +57,9 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
     };
     function closeModalInt() {
         setInstructionModal(false)
+    }
+    function closeSelectAddressModal(){
+        setModalForAddressBook(false)
     }
 
     function onCancelCSVUpload() {
@@ -458,8 +463,9 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
         messageBocContainer = ref2.current;
         signOffBocContainer = ref.current;
         customerid = localStorage.getItem('customerId')
-        let savedMsg = localStorage.getItem('reqFielddInCart')
-        console.log(savedMsg, "savedMessage");
+         savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'))
+         setName(savedMsg?.msg)
+         console.log(savedMsg?.msg);
     }, [])
     async function firstNameBtn(data) {
         console.log(data);
@@ -482,7 +488,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                             }
                             <div className='outerSec h-[250px] w-[100%] bg-white max-h-[250px]' ref={ref2}>
                                 <div id='messageBoxID' ref={ref1} className="output m-5 " style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily }}>
-                                    {name ? name : "Enter your custom message here..."}
+                                    {name  ? name  : "Enter your custom message here..."}
                                 </div>
                             </div>
                             <div className='secDiv  h-[100px] w-[100%] max-w-[300px] ml-auto bg-white' ref={ref}>
@@ -543,7 +549,7 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                                             <DynamicButton
                                                 className="bg-[#1b5299] text-[14px] mb-6 w-full"
                                                 text="Select from Address Book"
-                                                onClickFunction={() => ''}
+                                                onClickFunction={() => setModalForAddressBook(true)}
                                             />
                                             <DynamicButton
                                                 className="bg-[#1b5299] text-[14px] w-full"
@@ -599,6 +605,13 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
                         title="Text Can not be Empty"
                         closeModal={closeModalInt}
                         table={false}
+                    />
+                    <Instruction
+                        isOpen={modalForAddressBook}
+                        title="Text Can not be Empty"
+                        closeModal={closeSelectAddressModal}
+                        table={false}
+                        body={<ContactTable/>}
                     />
                     <LoginModal
                         title={" Add Card"}

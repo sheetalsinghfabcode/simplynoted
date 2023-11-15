@@ -144,7 +144,7 @@ function redirectToFirstVariant({ product, request }) {
 }
 
 
-
+let parameterValue;
 export default function Product() {
   const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
   const navigate = useNavigate()
@@ -157,7 +157,7 @@ export default function Product() {
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
-  const [show, setShow] = useState(showBulkOnEdit ? true : false);
+  const [show, setShow] = useState(showBulkOnEdit || parameterValue == "Bulk" ? true : false);
   const [productshow, setProductShow] = useState(true)
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true)
@@ -165,6 +165,13 @@ export default function Product() {
   const [errorVal, setErrorVal] = useState([]);
   const [fontFamilyName,setFontFamily] = useState('')
   const [metafields,setMetafields] = useState([])
+
+  if (typeof window !== 'undefined') {
+
+    const urlParams = new URLSearchParams(window?.location.search);
+     parameterValue = urlParams.get('select');
+    console.log(parameterValue,"---000000");
+  }
 
   useEffect(() => {
     let result =  product.id.replace(/[^0-9]/g,"");
@@ -233,8 +240,9 @@ export default function Product() {
       {productshow ?
         <>
         <DynamicButton 
-        className="bg-[#EF6E6E] m-5 "
+        className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
         text="Prev"
+        backArrow={true}
         onClickFunction={goBack}/>
           <Section className="px-0 md:px-8 ">
             <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">

@@ -4,6 +4,7 @@ import {Text, Link, AddToCartButton, Button} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 import DynamicButton from './DynamicButton';
+import { useState } from 'react';
 
 export function ProductCard({
   product,
@@ -14,6 +15,7 @@ export function ProductCard({
   quickAdd,
 }) {
   let cardLabel;
+  const [isbulk,setIsBulk] = useState('')
   const cardProduct = product?.variants ? product : getProductPlaceholder();
   if (!cardProduct?.variants?.nodes?.length) return null;
 
@@ -39,7 +41,7 @@ export function ProductCard({
     quantity: 1,
   };
   return (
-    <div className="flex flex-col gap-2 bg-[white] items-center">
+    <div className="flex flex-col gap-2 bg-[white]">
       {/* <h2>Helloo{product.title}</h2> */}
       <Link
         onClick={onClick}
@@ -83,20 +85,28 @@ export function ProductCard({
                 )}
               </Text>
             </div>
-            <div>
+            
+        </div>
+      </Link>
+      <div>
+        <Link to={`/products/${product.handle}`}>
             <DynamicButton
                   className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
                   text="SINGLE CARD"
                   onClickFunction={() => ''}
                 />
-            <DynamicButton
+                </Link>
+                <Link to={`/products/${product.handle}?select=Bulk`}>
+                <DynamicButton
                   className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
                   text="BULK PURCHASE"
-                  onClickFunction={() => ''}
+                  onClickFunction={() =>''}
                 />
+                </Link>
+            
+                
+
             </div>
-        </div>
-      </Link>
       {quickAdd && firstVariant.availableForSale && (
         <AddToCartButton
           lines={[

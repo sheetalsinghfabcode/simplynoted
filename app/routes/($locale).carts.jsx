@@ -268,44 +268,43 @@ export default function AddCartFunc() {
                     <div className='w-full h-full gap-2 mt-8'>
                         <DynamicTitle title={'SHOPPING CART'}/>
                         {cartData && cartData.map((item, index) =>
-                            <div className='w-[1000px]  bg-[white] m-auto mt-10 mb-10'>
+                            <div className='w-[73rem]  bg-[white] m-auto mt-10 mb-10'>
                                 <div className='flex'>
-                                    <div className='w-[700px]'>
+                                    <div className='w-[36rem]'>
                                         <div className='flex m-5'>
                                             <div className='max-w-[20%] m-5'>
                                                 <img src={item.productImg} alt="" />
-
                                             </div>
                                             <div className='max-w-[100%]'>
-                                                <text>{item.productTitle}</text><br /><br />
-                                                <text> Sender: {item.senderAddress.address1},{item.senderAddress.city},{item.senderAddress.state},{item.senderAddress.country}</text>
+                                                <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>{item.productTitle}</h3><br/>
+
+                                                <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Sender</span>:<span className=' text-[black] text-[16px] tracking-[1.5px]'> {item.senderAddress.address1},{item.senderAddress.city},{item.senderAddress.state},{item.senderAddress.country}</span>
                                                 <div className='buttonDiv pr-5 m-2'>
-                                                    <button className="bg-[#EF6E6E] text-[#fff] p-2 rounded" onClick={() => OpenModalFunc2(index)}>PREVIEW YOUR CUSTOM MESSAGE</button>
+                                                    <button className="bg-[#EF6E6E] text-[#fff] p-2" onClick={() => OpenModalFunc2(index)}>PREVIEW YOUR CUSTOM MESSAGE</button>
                                                 </div>
                                             </div>
-
                                         </div>
-
                                     </div>
 
-                                    <div className='w-[200px] gap-5'>
-                                        <div className='m-6'>
-                                            <div className=''>
-                                                <text> Price:<span >$ {item.price}</span></text>
+                                    <div className='w-[18rem] gap-5 flex items-center'>
+                                        <div className='m-6 w-[16rem]'>
+                                            <div className='flex justify-between'>
+                                                <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {item.price}</span>
                                             </div>
-                                            <div>
-                                                <text> Quantity:<span >{item.csvFileLen}</span></text>
+                                            <div className='flex justify-between'>
+                                                <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>{item.csvFileLen}</span>
                                             </div>
-                                            <div>
-                                                <text >Subtotal:$ {item.price * item.csvFileLen}</text>
+                                            <div className='flex justify-between'>
+                                                <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'>Subtotal:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {item.price * item.csvFileLen}</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='w-[200px] m-4'>
+                                    <div className='w-[19rem] m-4 flex justify-center'>
+                                        <div>
                                         {item.giftCardName !== null ?
                                             '' : <div className='buttonDiv pr-5 m-2'>
                                                 <DynamicButton
-                                                    className="bg-[#1b5299]"
+                                                    className="bg-[#ef6e6e] w-full"
                                                     text="Add Gift Card"
                                                     onClickFunction={() => OpenModalFunc(index)}
                                                 />
@@ -313,50 +312,51 @@ export default function AddCartFunc() {
 
                                         <div className='buttonDiv pr-5 m-2'>
                                             <DynamicButton
-                                                className="bg-[#1b5299]"
+                                                className="bg-[#1b5299] w-full"
                                                 text="EDIT ORDER"
                                                 onClickFunction={() => editOrderData(index)}
                                             />
                                         </div>
                                         <div className='buttonDiv pr-5 m-2'>
                                             <DynamicButton
-                                                className="bg-[#1b5299]"
+                                                className="bg-[#E30000] w-full"
                                                 text="DELETE ORDER"
                                                 onClickFunction={() => ConfirmDeleteOrder(index)}
                                             />
                                         </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className='w-[1000px] h-[2px] bg-[red]'></div>
+                                <div className='w-full h-[1px] bg-[black]'></div>
                                 {item.giftCardName &&
                                     <div className='flex'>
-                                        <div className='w-[400px]'>
+                                        <div className='w-[36rem]'>
                                             <div className='flex m-5'>
                                                 <div className='max-w-[20%] m-5'>
                                                     <img src={item.giftCardImg} alt="" />
                                                 </div>
-                                                <div className='max-w-[40%] mt-10'>
-                                                    <text>{item.giftCardName}</text><br /><br />
+                                                <div className='max-w-[100%] mt-10'>
+                                                    <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>{item.giftCardName}</h3><br />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='w-[200px] gap-5'>
-                                            <div className='m-6'>
-                                                <div className=''>
-                                                    <text> Price:<span >$ {item.giftCardPrice}</span></text>
+                                        <div className='w-[18rem] gap-5 flex items-center'>
+                                            <div className='m-6 w-[16rem]'>
+                                                <div className='flex justify-between'>
+                                                    <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {item.giftCardPrice}</span>
                                                 </div>
-                                                <div>
-                                                    <text> Quantity:<span >{item.csvFileLen}</span></text>
+                                                <div className='flex justify-between'>
+                                                    <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>{item.csvFileLen}</span>
                                                 </div>
-                                                <div>
-                                                    <text> Subtotal:$ {item.giftCardPrice * item.csvFileLen}</text>
+                                                <div className='flex justify-between'>
+                                                    <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Subtotal:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {item.giftCardPrice * item.csvFileLen}</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='w-[200px] m-4'>
+                                        <div className='w-[19rem] m-4 flex justify-center items-center'>
                                             <div className='buttonDiv pr-5 m-2'>
                                                 <DynamicButton
-                                                    className="bg-[#1b5299]"
+                                                    className="bg-[#1b5299] w-full"
                                                     text="DELETE CARD"
                                                     onClickFunction={() => confirmCardDel(index)}
                                                 />
@@ -364,58 +364,61 @@ export default function AddCartFunc() {
                                         </div>
                                     </div>
                                 }
-                                <div className='w-[1000px] h-[2px] bg-[red]'></div>
+                                {item.giftCardName &&
+                                <div className='w-full h-[1px] bg-[black]'></div>
+
+                                }
 
                                 {item.usCount || item.nonUSCount ?
                                     <>
                                         {item.nonUSCount &&
                                             <div className='flex'>
-                                                <div className='w-[400px]'>
+                                                <div className='w-[36rem]'>
                                                     <div className='flex m-5'>
                                                         <div className='max-w-[20%] m-5'>
                                                             <img src={postImage} alt="" />
                                                         </div>
-                                                        <div className='max-w-[40%] mt-10'>
-                                                            <text>Postal {postTitle2}</text><br /><br />
+                                                        <div className='max-w-[100%] mt-10'>
+                                                            <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>Postal {postTitle2}</h3><br />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='w-[200px] gap-5'>
-                                                    <div className='m-6'>
-                                                        <div className=''>
-                                                            <text> Price:<span >$ {postPrice2}</span></text>
+                                                <div className='w-[18rem] gap-5 flex items-center'>
+                                                    <div className='m-6 w-[16rem]'>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {postPrice2}</span>
                                                         </div>
-                                                        <div>
-                                                            <text> Quantity:<span >{item.nonUSCount}</span></text>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>{item.nonUSCount}</span>
                                                         </div>
-                                                        <div>
-                                                            <text> Subtotal:$ {postPrice2 * item.nonUSCount}</text>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Subtotal:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {postPrice2 * item.nonUSCount}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         }
                                         {item.usCount && <div className='flex'>
-                                            <div className='w-[400px]'>
+                                            <div className='w-[36rem]'>
                                                 <div className='flex m-5'>
                                                     <div className='max-w-[20%] m-5'>
                                                         <img src={postImage} alt="" />
                                                     </div>
-                                                    <div className='max-w-[40%] mt-10'>
-                                                        <text>Postal {postTitle}</text><br /><br />
+                                                    <div className='max-w-[100%] mt-10'>
+                                                        <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>Postal {postTitle}</h3><br/>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className='w-[200px] gap-5'>
-                                                <div className='m-6'>
-                                                    <div className=''>
-                                                        <text> Price:<span >$ {postPrice}</span></text>
+                                            <div className='w-[18rem] gap-5 flex items-center'>
+                                                <div className='m-6 w-[16rem]'>
+                                                    <div className='flex justify-between'>
+                                                        <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {postPrice}</span>
                                                     </div>
-                                                    <div>
-                                                        <text> Quantity:<span >{item.usCount}</span></text>
+                                                    <div className='flex justify-between'>
+                                                        <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>{item.usCount}</span>
                                                     </div>
-                                                    <div>
-                                                        <text> Subtotal:$ {postPrice * item.usCount}</text>
+                                                    <div className='flex justify-between'>
+                                                        <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Subtotal:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {postPrice * item.usCount}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -437,94 +440,94 @@ export default function AddCartFunc() {
                                             ?
 
                                             <div className='flex'>
-                                                <div className='w-[400px]'>
+                                                <div className='w-[36rem]'>
                                                     <div className='flex m-5'>
                                                         <div className='max-w-[20%] m-5'>
                                                             <img src={postImage} alt="" />
                                                         </div>
-                                                        <div className='max-w-[40%] mt-10'>
-                                                            <text>Postal {postTitle}</text><br /><br />
+                                                        <div className='max-w-[100%] mt-10'>
+                                                            <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>Postal {postTitle}</h3><br /><br />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='w-[200px] gap-5'>
-                                                    <div className='m-6'>
-                                                        <div className=''>
-                                                            <text> Price:<span >$ {postPrice}</span></text>
+                                                <div className='w-[18rem] gap-5 flex items-center'>
+                                                    <div className='m-6 w-[16rem]'>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {postPrice}</span>
                                                         </div>
-                                                        <div>
-                                                            <text> Quantity:<span >{item.csvFileLen}</span></text>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>{item.csvFileLen}</span>
                                                         </div>
-                                                        <div>
-                                                            <text> Subtotal:$ {postPrice * item.csvFileLen}</text>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Subtotal:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {postPrice * item.csvFileLen}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             : <div className='flex'>
-                                                <div className='w-[400px]'>
+                                                <div className='w-[36rem]'>
                                                     <div className='flex m-5'>
                                                         <div className='max-w-[20%] m-5'>
                                                             <img src={postImage} alt="" />
                                                         </div>
-                                                        <div className='max-w-[40%] mt-10'>
-                                                            <text>Postal{postTitle2}</text><br /><br />
+                                                        <div className='max-w-[100%] mt-10'>
+                                                            <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>Postal{postTitle2}</h3><br /><br />
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div className='w-[200px] gap-5'>
-                                                    <div className='m-6'>
-                                                        <div className=''>
-                                                            <text> Price:<span >${postPrice2}</span></text>
+                                                <div className='w-[18rem] gap-5 flex items-center'>
+                                                    <div className='m-6 w-[16rem]'>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>${postPrice2}</span>
                                                         </div>
-                                                        <div>
-                                                            <text> Quantity:<span >{item.csvFileLen}</span></text>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>{item.csvFileLen}</span>
                                                         </div>
-                                                        <div>
-                                                            <text> Subtotal:${postPrice2 * item.csvFileLen}</text>
+                                                        <div className='flex justify-between'>
+                                                            <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Subtotal:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'> ${postPrice2 * item.csvFileLen}</span>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                             </div>}
                                     </>}
-                                <div className='w-[1000px] h-[2px] bg-[red]'></div>
+                                <div className='w-full h-[1px] bg-[black]'></div>
 
                                 {item.shippingData && item.shippingMethodImage &&
                                     <div className='flex'>
-                                        <div className='w-[400px]'>
+                                        <div className='w-[36rem]'>
                                             <div className='flex m-5'>
                                                 <div className='max-w-[20%] m-5'>
                                                     <img src={item.shippingMethodImage} alt="" />
                                                 </div>
-                                                <div className='max-w-[40%] mt-10'>
-                                                    <text>Shipping Methods</text><br /><br />
+                                                <div className='max-w-[100%] mt-10'>
+                                                    <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>Shipping Methods</h3><br /><br />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className='w-[200px] gap-5'>
-                                            <div className='m-6'>
-                                                <div className=''>
-                                                    <text> Price: <span>$ {item.shippingDataCost}</span></text>
+                                        <div className='w-[18rem] gap-5 flex items-center'>
+                                            <div className='m-6 w-[16rem]'>
+                                                <div className='flex justify-between'>
+                                                    <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Price:</span> <span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>$ {item.shippingDataCost}</span>
                                                 </div>
-                                                <div>
-                                                    <text> Quantity:<span >1</span></text>
+                                                <div className='flex justify-between'>
+                                                    <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Quantity:</span><span className='font-karla text-[black] text-[16px] tracking-[1.5px]'>1</span>
                                                 </div>
-                                                <div>
-                                                    <text> Subtotal: $ {item.shippingDataCost * 1}</text>
+                                                <div className='flex justify-between'>
+                                                    <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Subtotal:</span> <span className='font-karla text-[black] text-[16px] tracking-[1.5px]'> $ {item.shippingDataCost * 1}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 }
                                 <div className='flex'>
-                                    <div className='w-[400px]'>
+                                    <div className='w-[36rem]'>
                                     </div>
-                                    <div className='w-[200px] gap-5'>
-                                        <div className='m-6'>
+                                    <div className='w-[18rem] gap-5'>
+                                        <div className='m-6 w-[16rem]'>
                                             <div>
-                                                <text> Subtotal: $  {(item.price * item.csvFileLen)  + (item.giftCardPrice * item.csvFileLen) + (item.shippingDataCost * 1) +
+                                                <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'> Subtotal: $  {(item.price * item.csvFileLen)  + (item.giftCardPrice * item.csvFileLen) + (item.shippingDataCost * 1) +
                                                 (item.usCount || item.nonUSCount ? (postPrice * item.usCount) + (postPrice2 * item.nonUSCount): (item.reciverAddress?.country === "USA" ||
                                                     item.reciverAddress?.country?.toLowerCase() === "" ||
                                                     item.reciverAddress?.country?.toLowerCase() === " " ||
@@ -536,7 +539,7 @@ export default function AddCartFunc() {
                                                     item.reciverAddress?.country?.toLowerCase() === "united states" ||
                                                     item.reciverAddress?.country?.toLowerCase() === "united states of america" ||
                                                     item.reciverAddress?.country?.toLowerCase() == undefined ? postPrice * item.csvFileLen : postPrice2 * item.csvFileLen))
-                                                    }</text>
+                                                    }</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -571,7 +574,7 @@ export default function AddCartFunc() {
                                 <div className='w-[300px]'>
                                     <div className=''>
                                         <input type="checkbox"  onClick={()=>setAgree(!agree)} checked={agree}/>
-                                        <text className='text-s'> i agree with terms and condition</text>
+                                        <text className='text-s'> I agree with <span className='underline decoration-solid'><a href='/policies/terms-of-service'>terms of service</a></span></text>
                                         <button 
                                         disabled={!agree}
                                         className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={() => setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 ' /> </button>
