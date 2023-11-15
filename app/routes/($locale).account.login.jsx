@@ -89,7 +89,7 @@ export default function Login() {
     }
   }
   return (
-    <div className="flex justify-center  mt-8 mb-24 px-4">
+    <div className="flex justify-center mt-12 mb-24 px-4">
       <div className="max-w-md w-full"> 
         <h1 className="  name text-4xl text-blue-900">Sign in</h1>
         <img className='mt-2 w-32' src='https://simplynoted.com/cdn/shop/files/menu-underline.png'/>
@@ -167,7 +167,7 @@ export default function Login() {
           </div>
           <div className="flex items-center justify-between">
             <button onClick={()=>setVar()}
-              className=" shadow-custom h-12 sign-in-modal shadow-lg hover:bg-indigo-900 text-contrast py-2 px-4 focus:shadow-outline block w-full"
+              className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}
             >
