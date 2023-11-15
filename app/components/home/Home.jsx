@@ -15,7 +15,7 @@ export default function Home({contentfulBanner}) {
      <div className='sec-section' >
       <div className='text-center'>
      <div className='handwritten-notice'>
-      <h3>Send Real Handwritten Notes <br></br>
+      <h3 className='inline-block'>Send Real Handwritten Notes <br></br>
              to your____________</h3>
              </div>
              <div className='lg:mt-0 mt-[120px]'>

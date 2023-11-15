@@ -18,6 +18,8 @@ const CanvasDesign=()=>{
     return(
         <>
         <div className="mt-10px">
+
+          {/* First */}
       <div className="container flex mt-6">
         <div className="w-2/5 m-20 data-background">
             <div className="text-3xl font-extrabold text-[#001A5F]">Send one or send <span className="font-beauty text-7xl font-bold">thousands</span>
@@ -106,7 +108,7 @@ const CanvasDesign=()=>{
        </div>
         </div>
       </div>
-      </div>
+      </div> 
   
         </>
     )

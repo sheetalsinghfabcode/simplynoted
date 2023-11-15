@@ -54,11 +54,11 @@ const Card=()=>{
                    
                         
                   <SwiperSlide>
-                  <div className="bg-white  mx-56 text-center mt-5">
-        <div className="pl-[25rem] pt-20 ">
-            <img src={data.img} alt="" className="w-[100px] mt-1"></img>
+                  <div className="data_card bg-white md:mx-56 sm:mx-[133px]  text-center mt-5">
+        <div className="m-auto w-full pt-5 md:pt-20">
+            <img src={data.img} alt="" className="w-[100px] mt-1 text-center inline"></img>
         </div>
-        <div className="pt-5 pb-5  text-center text-sm px-24 text-[#696969] tracking-normal">
+        <div className="pt-5 pb-5  text-center text-sm md:px-24 px-16 text-[#696969] tracking-normal">
    {data.description}
                 </div>
                 <div className="text-black pb-32 font-bold">
@@ -69,28 +69,64 @@ const Card=()=>{
                     </div>
                     </div>
                     </SwiperSlide>
-   
+    
             </div>
           );
         })}
       
     </Swiper>
+<div className="md:mb-0 mb-20">
+    <div class="swiper-button-prev cursor-pointer absolute md:mt-[-16rem] sm:mt-[-3rem] md:ml-[9rem]  sm:ml-[17rem]  "><img src={prev} className="w-[25px]" alt="" /></div>
+<div class="swiper-button-next cursor-pointer absolute md:mt-[-16rem]   sm:mt-[-3rem]  xl:ml-[73rem] lg:ml-[55rem] md:ml-[50rem]"><img src={next} className="w-[25px]" alt="" /></div>
+</div>   
 
-    <div class="swiper-button-prev cursor-pointer absolute mt-[-16rem] ml-[9rem]"><img src={prev} className="w-[25px]" alt="" /></div>
-<div class="swiper-button-next cursor-pointer absolute mt-[-16rem] ml-[73rem] "><img src={next} className="w-[25px]" alt="" /></div>
+
+      <div className="ml-[-20rem]">
+       <Swiper
+
+            direction={'horizontal'}
+            spaceBetween={10}
+            slidesPerView={3.5}
+           
+         
+          breakpoints={{
+         580:{
+          spaceBetween:20,
+              slidesPerView:3.5,
+         },
+            768: {
+              spaceBetween:10,
+              slidesPerView:4,
+             
+            },
+            998:{
+              spaceBetween:10,
+              slidesPerView:4,
+            },
+            1024:{
+              spaceBetween:10,
+              slidesPerView:4,
+            },
+            1280:{
+              spaceBetween:10,
+              slidesPerView:3.5,
+            }
+          }}
      
- 
+     
 
-    <div className="flex mx-[-10rem] mt-1">
-      <div className=" w-[450px]  px-5 ml-[-8.5rem]"><img className='w-full' src={Card1} alt="LogoSimplinotedpic"  /> </div>
-      <div  className=" w-[400px] mx-8 relative" ><img className='w-full mt-[-3rem]' src={Card2} alt="LogoSimplinotedpic"  /> </div>
-      <div  className=" w-[450px] mx-8"><img className='w-full' src={Card3} alt="LogoSimplinotedpic"  /> </div>
-      <div  className=" w-[390px]  "><img className='w-full ml-4 mt-[-3rem]' src={Card2} alt="LogoSimplinotedpic"  /> </div>
-      </div>
-   
+    >
+       
+      <SwiperSlide><img className='w-full' src={Card1} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='lg:w-[30%] w-full lg:absolute lg:mt-[-3rem]' src={Card2} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-full' src={Card3} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%] lg:mt-[-1rem]' src={Card2} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+     
+    </Swiper>
+    </div>
 
-   <div className="bg-white text-center mt-[-11rem] mb-[-12px]">
-   <div className="md:w-[43rem] w-[100%] md:ml-[22rem] pt-60">
+   <div className="bg-white text-center mt-[-11rem] mb-[-12px] ">
+   <div className="xl:w-[43rem] md:w-[40rem] w-[100%] xl:ml-[22rem] md:ml-[17rem] pt-60">
     <img className='w-full' src={pen} alt="LogoSimplinotedpic"  /> 
     </div>
     <div className="md:text-4xl text-3xlfont-bold text-[#001A5F]">Get your first card FREE!</div>
@@ -111,7 +147,7 @@ const Card=()=>{
    </div>
         </div>
 
-        <div className="bottom_background mt-3 md:w-[107%] sm:(w-[100%] h-[100%])">
+        <div className="bottom_background mt-3 xl:w-[107%] md:w-[104%] sm:(w-[100%] h-[100%])">
             <div className="pt-10 md:flex   justify-center">
                 <h3 className="md:text-4xl text-[26px] font-bold md:m-20 ml-28 mt-5">Ready to start writing?</h3>
            
