@@ -1,5 +1,5 @@
-import {json, defer} from '@shopify/remix-oxygen';
-import {useLoaderData} from '@remix-run/react';
+import { json, defer } from '@shopify/remix-oxygen';
+import { useLoaderData } from '@remix-run/react';
 import {
   flattenConnection,
   AnalyticsPageType,
@@ -17,44 +17,43 @@ import {
   ProductCard,
   Button,
 } from '~/components';
-import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
-import {routeHeaders} from '~/data/cache';
-import {seoPayload} from '~/lib/seo.server';
-import {getImageLoadingPriority} from '~/lib/const';
-import {useEffect, useState, useRef} from 'react';
-import {useNavigate} from '@remix-run/react';
+import { PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
+import { routeHeaders } from '~/data/cache';
+import { seoPayload } from '~/lib/seo.server';
+import { getImageLoadingPriority } from '~/lib/const';
+import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from '@remix-run/react';
 import DynamicButton from '~/components/DynamicButton';
-import {CustomComponent} from '~/components/CustomComponent';
+import { CustomComponent } from '~/components/CustomComponent';
 import LoginModal from '~/components/modal/LoginModal';
 import Loader from '~/components/modal/Loader';
 import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
-
 export const headers = routeHeaders;
 
-export async function loader({params, request, context}) {
+export async function loader({ params, request, context }) {
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 8,
   });
-  const variables = getPaginationVariables(request, {pageBy: 10});
+  const variables = getPaginationVariables(request, { pageBy: 10 });
 
-  const {collectionHandle} = params;
+  const { collectionHandle } = params;
   const handleLinkData = await context.storefront.query(HANDLE_QUERY, {
-    variables: {},
-  });
+    variables: {}
+  })
   invariant(collectionHandle, 'Missing collectionHandle param');
 
   const searchParams = new URL(request.url).searchParams;
   const knownFilters = ['productVendor', 'productType'];
   const available = 'available';
   const variantOption = 'variantOption';
-  const {sortKey, reverse} = getSortValuesFromParam(searchParams.get('sort'));
+  const { sortKey, reverse } = getSortValuesFromParam(searchParams.get('sort'));
   const filters = [];
   const appliedFilters = [];
 
   for (const [key, value] of searchParams.entries()) {
     if (available === key) {
-      filters.push({available: value === 'true'});
+      filters.push({ available: value === 'true' });
       appliedFilters.push({
         label: value === 'true' ? 'In stock' : 'Out of stock',
         urlParam: {
@@ -63,12 +62,12 @@ export async function loader({params, request, context}) {
         },
       });
     } else if (knownFilters.includes(key)) {
-      filters.push({[key]: value});
-      appliedFilters.push({label: value, urlParam: {key, value}});
+      filters.push({ [key]: value });
+      appliedFilters.push({ label: value, urlParam: { key, value } });
     } else if (key.includes(variantOption)) {
       const [name, val] = value.split(':');
-      filters.push({variantOption: {name, value: val}});
-      appliedFilters.push({label: val, urlParam: {key, value}});
+      filters.push({ variantOption: { name, value: val } });
+      appliedFilters.push({ label: val, urlParam: { key, value } });
     }
   }
 
@@ -81,14 +80,14 @@ export async function loader({params, request, context}) {
       price.min = Number(searchParams.get('minPrice')) || 0;
       appliedFilters.push({
         label: `Min: $${price.min}`,
-        urlParam: {key: 'minPrice', value: searchParams.get('minPrice')},
+        urlParam: { key: 'minPrice', value: searchParams.get('minPrice') },
       });
     }
     if (searchParams.has('maxPrice')) {
       price.max = Number(searchParams.get('maxPrice')) || 0;
       appliedFilters.push({
         label: `Max: $${price.max}`,
-        urlParam: {key: 'maxPrice', value: searchParams.get('maxPrice')},
+        urlParam: { key: 'maxPrice', value: searchParams.get('maxPrice') },
       });
     }
     filters.push({
@@ -96,7 +95,7 @@ export async function loader({params, request, context}) {
     });
   }
 
-  const {collection, collections} = await context.storefront.query(
+  const { collection, collections } = await context.storefront.query(
     COLLECTION_QUERY,
     {
       variables: {
@@ -113,13 +112,13 @@ export async function loader({params, request, context}) {
   const myCollection = await context.storefront.query(MY_COLLECTION, {
     variables: {
       handle: collectionHandle,
-    },
-  });
+    }
+  })
   if (!collection) {
-    throw new Response('collection', {status: 404});
+    throw new Response('collection', { status: 404 });
   }
 
-  const seo = seoPayload.collection({collection, url: request.url});
+  const seo = seoPayload.collection({ collection, url: request.url });
 
   return json({
     myCollection,
@@ -135,95 +134,98 @@ export async function loader({params, request, context}) {
     },
     seo,
   });
+
 }
-let customerid;
+let customerid
 export default function Collection() {
-  const navigate = useNavigate();
-  const [handleName, setHandleName] = useState('');
+  const navigate = useNavigate()
+  const [handleName, setHandleName] = useState('')
   const [addingProductsData, setAddingProd] = useState([]);
-  const [checkState, setCheckState] = useState(false);
+  const [checkState, setCheckState] = useState(false)
   const [loginModal, setLoginModal] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [offSetVal, setOffSetVal] = useState(0)
+  const [loadMore, setLoadMore] = useState(false)
 
-  const {
-    collection,
-    collections,
-    appliedFilters,
-    handleLinkData,
-    myCollection,
-    collectionHandle,
-  } = useLoaderData();
-  let myColletionData = myCollection.collection.products;
-  myColletionData = myColletionData.nodes.filter(
-    (item) => item.productType != 'customisable card',
-  );
+  const { collection, collections, appliedFilters, handleLinkData, myCollection, collectionHandle } = useLoaderData();
+  let myColletionData = myCollection.collection.products
+  myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
   async function changeHandle(e) {
-    setLoader(true);
-    setHandleName(e);
-    if (e == 'customisable-cards') {
-      customisedCard();
-      setLoader(false);
+    setLoader(true)
+    setHandleName(e)
+    if (e == "customisable-cards") {
+      customisedCard()
+      setLoader(false)
       // debugger;
     } else {
-      navigate(`/collections/${e}`);
-      setCheckState(false);
-      setLoader(false);
+      navigate(`/collections/${e}`)
+      setCheckState(false)
+      setLoader(false)
+
     }
   }
 
   async function customisedCard() {
     try {
-      setLoader(true);
+      setLoader(true)
       if (customerid) {
-        navigate(`/collections/customisable-cards`);
-        const res = await fetch(
-          `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=0`,
-        );
-        const json = await res.json();
-        let myData = await json.result.products;
-        setCheckState(true);
+        navigate(`/collections/customisable-cards`)
+        const res = await fetch(`https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`)
+        const json = await res.json()
+        let myData = await json.result.products
+        console.log(json.result);
+        console.log(offSetVal, 'newOffset');
+        setCheckState(true)
         if (json.result) {
-          setAddingProd(myData);
-          CustomeCard();
-          setLoader(false);
+          setAddingProd(myData)
+          CustomeCard()
+          setLoader(false)
+          setLoadMore(json.result.moreProducts)
         }
       } else {
-        setLoginModal(true);
-        setLoader(false);
+        setLoginModal(true)
+        setLoader(false)
+
       }
+
+
     } catch (error) {
       console.log(error, 'customiseCard---');
     }
   }
 
+
   function CustomeCard() {
     return (
       <>
-        {addingProductsData &&
-          addingProductsData.map((product, i) => (
-            <>
-              {/* <h2>Hello</h2> */}
-              <CustomComponent
-                key={product.id}
-                product={product}
-                // loading={getImageLoadingPriority(i)}
-              />
-            </>
-          ))}
+        {addingProductsData && addingProductsData.map((product, i) => (
+          <>
+            {/* <h2>Hello</h2> */}
+            <CustomComponent
+              key={product.id}
+              product={product}
+            // loading={getImageLoadingPriority(i)}
+            />
+          </>
+        ))}
       </>
-    );
+    )
   }
   useEffect(() => {
-    customerid = localStorage.getItem('customerId');
-    if (collectionHandle == 'customisable-cards') {
-      customisedCard();
+    customerid = localStorage.getItem('customerId')
+    if (collectionHandle == 'customisable-cards' || offSetVal > 0) {
+      customisedCard()
     }
-  }, []);
-
-
-  console.log("myColletionData",myColletionData.length)
+  }, [offSetVal])
+  function loadMoreCustomData() {
+    setOffSetVal(offSetVal + 1)
+  }
+  function loadBackCustomData() {
+    setOffSetVal(offSetVal - 1)
+  }
   return (
- 
+    <>
+    
         <>
           {/* <PageHeader heading={collection.title}>
         {collection?.description && (
@@ -236,10 +238,10 @@ export default function Collection() {
           </div>
         )}
       </PageHeader> */}
-          <DynamicTitle title={'Simply Noted'} title2={'cards'} />
+          <DynamicTitle title={"Simply Noted"} title2={"cards"} />
           <Section>
-            <div className="gap-2 flex justify-between">
-              <div className="gap-2 flex">
+            <div className='gap-2 flex justify-between'>
+              <div className='gap-2 flex'>
                 <DynamicButton
                   className="btnShadow bg-[#1b5299] w-[200px] text-[#fff] p-2 "
                   text="Create A Custom Card"
@@ -252,47 +254,54 @@ export default function Collection() {
                   onClickFunction={() => customisedCard()}
                 />
               </div>
-              <div className="flex gap-5 justify-end items-center selectArrow">
-                <h2 className="text-l ">Choose a card from our collection: </h2>
-                <select
-                  name=""
-                  id=""
-                  className="!border-none text-[#508ee3]"
-                  onChange={(e) => changeHandle(e.target.value)}
-                >
-                  <option className="w-full" selected disabled>
-                    {collectionHandle}{' '}
-                  </option>
+              <div className='flex gap-5 justify-end items-center selectArrow'>
+                <h2 className='text-l '>Choose a card from our collection: </h2>
+                <select name="" id="" className='!border-none text-[#508ee3]' onChange={(e) => changeHandle(e.target.value)}>
+                  <option className='w-full' selected disabled>{collectionHandle} </option>
 
-                  {handleLinkData.collections.edges.map((item) => (
+                  {handleLinkData.collections.edges.map((item) =>
                     <option value={item.node.handle}>{item.node.handle}</option>
-                  ))}
+                  )}
                 </select>
               </div>
             </div>
 
             <div>
+              {offSetVal > 0 && addingProductsData &&
+                <div className='flex justify-center'>
+                   <DynamicButton className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+                    text="Show Back"
+                    onClickFunction={() => loadBackCustomData()}
+                  />
+                </div>
+              }
               <Grid layout="products">
-                {!checkState ? (
+                {!checkState ?
                   <>
-                    {myColletionData.length === 0 && (
+                  {myColletionData.length === 0 && (
                       <CircularLoader color="#1b52b1" />
                     )}
-                    {myColletionData &&
-                      myColletionData.map((product, i) => (
-                        <ProductCard
-                          key={product.id}
-                          product={product}
-                          loading={getImageLoadingPriority(i)}
-                        />
-                      ))}
+                    {myColletionData && myColletionData.map((product, i) => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        loading={getImageLoadingPriority(i)}
+                      />
+                    ))}
                   </>
-                ) : (
-                  <>
+                  : <>
                     <CustomeCard />
                   </>
-                )}
+                }
               </Grid>
+              {loadMore && addingProductsData &&
+                <div className='flex justify-center'>
+                  <DynamicButton className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+                    text="Load More"
+                    onClickFunction={() => loadMoreCustomData()}
+                  />
+                </div>
+              }
             </div>
             {/* <Pagination connection={collection.products}>
           {({ nodes, isLoading, PreviousLink, NextLink }) => (
@@ -345,7 +354,7 @@ export default function Collection() {
             {/* </SortFilter> */}
           </Section>
           <LoginModal
-            title={' Check your Custom Card'}
+            title={" Check your Custom Card"}
             show={loginModal}
             setLoginModal={setLoginModal}
             onCancel={() => setLoginModal(false)}
@@ -353,6 +362,9 @@ export default function Collection() {
             cancelText="Register"
           />
         </>
+      
+
+    </>
   );
 }
 
@@ -379,7 +391,8 @@ collection(handle:$handle) {
     }
   }
   ${PRODUCT_CARD_FRAGMENT}
- `;
+ `
+
 
 const COLLECTION_QUERY = `#graphql
   query 
@@ -466,7 +479,7 @@ query
       }
     }
   }
-}`;
+}`
 
 function getSortValuesFromParam(sortParam) {
   switch (sortParam) {
