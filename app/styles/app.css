@@ -983,17 +983,10 @@ nav a {
   left: 60%;
   transform: translateX(-50%);
   top: 37px;
-<<<<<<< HEAD
   color: #bcbaba;
   font-size: 14px;
   letter-spacing: 0.1px;
   font-weight: lighter;
-=======
-  color: #737070;
-  font-size: 13px;
-  letter-spacing: 0.1px;
-  font-weight: 300;
->>>>>>> 9aa3af0 (pricepage)
   width: 17rem;
   margin-left: 45px;
 }
@@ -1300,7 +1293,6 @@ body {
   flex-direction: column;
   gap: 20px;
 }
-<<<<<<< HEAD
 /* .block-title::before{
   content: "";
     background: url(../../assets/Image/line-real-pen.png) no-repeat;
@@ -1312,19 +1304,6 @@ body {
     position: absolute;
     width: 100%;
 } */
-=======
-.block-title::before {
-  content: '';
-  background: url(../../assets/Image/line-real-pen.png) no-repeat;
-  margin-top: 160px;
-  margin-left: 255px;
-  display: block;
-  height: 10px;
-  left: 27%;
-  position: absolute;
-  width: 100%;
-}
->>>>>>> 9aa3af0 (pricepage)
 
 /* Pagination buttons */
 .pagination button {
@@ -1442,12 +1421,8 @@ body {
   display: inline-flex;
 }
 .swiper {
-<<<<<<< HEAD
   width: 100%;
   overflow-x: hidden;
-=======
-  margin: 1px 20px;
->>>>>>> 9aa3af0 (pricepage)
 }
 
 .btn3 {
@@ -1598,7 +1573,6 @@ body {
   .bottom_background {
     margin-right: 0px;
   }
-<<<<<<< HEAD
   .swiper-button-prev,
   .swiper-button-next {
     background-color: #ef6e6e;
@@ -1621,8 +1595,6 @@ body {
     margin: 0 25px;
     height: 77%;
   }
-=======
->>>>>>> 9aa3af0 (pricepage)
 }
 
 .btnShadow {
@@ -1634,15 +1606,13 @@ body {
   background-size: 6% !important;
 }
 
-<<<<<<< HEAD
 /*********************************LOGIN-MODAL-PAGE********************************/
 
-=======
->>>>>>> 9aa3af0 (pricepage)
 .shadow-custom {
   background: rgb(239, 110, 110);
+  font-weight: 500;
+  font-size: 19px;
 }
-<<<<<<< HEAD
 
 @keyframes spin {
   0% {
@@ -1657,7 +1627,7 @@ body {
 .custom-spinner {
   animation: spin 1s linear infinite; /* Adjust animation duration and timing function as needed */
 }
-=======
+
 .arrow-down-line {
   margin-top: -19px;
   z-index: 1;
@@ -1695,7 +1665,6 @@ body {
   display: flex;
   gap: 12px;
   justify-content: center;
-
 }
 
 .credits-cont {
@@ -1733,21 +1702,13 @@ body {
   }
 
   .main-cont {
-    min-height: auto; 
+    min-height: auto;
   }
 
   .discrition {
     margin-left: 0;
   }
 }
-
-
-
-
-
-
-
-
 
 .add-to-cart {
   background: #ef6e6e;
@@ -1817,7 +1778,7 @@ body {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -1px;
-  line-height: 24px; 
+  line-height: 24px;
   padding: 0;
   text-align: center;
 }
@@ -1842,14 +1803,14 @@ body {
   padding: 8px;
   background-size: 100% 100%;
   font-size: 19px;
-  gap: 30px; 
+  gap: 30px;
 }
 
 .right-cont {
   background-image: url('https://simplynoted.com/cdn/shop/files/pricing-form-bg.png');
   background-size: 100% 100%;
   color: #fff;
-  padding: 62px; 
+  padding: 62px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1859,7 +1820,7 @@ body {
   }
 
   .card-icon {
-    left: 50%; 
+    left: 50%;
     transform: translateX(-50%);
     top: 20px;
   }
@@ -1870,12 +1831,10 @@ body {
   }
 
   .amount {
-    gap: 15px; 
+    gap: 15px;
   }
 
   .right-cont {
     padding: 20px;
   }
 }
-
->>>>>>> 9aa3af0 (pricepage)
