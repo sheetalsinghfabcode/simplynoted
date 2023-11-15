@@ -19,6 +19,39 @@ const CanvasDesign=()=>{
         <>
         <div className="mt-10px">
 
+
+
+
+{/* 
+        <div className="container flex mt-6">
+      <div className="w-100  mt-10">
+            <div className="robot">
+            <img className='robot-img' src={robot1} alt="LogoSimplinotedpic"  /> 
+            </div>
+            <div className="text-right">
+        <video className='robot-gif ' autoPlay loop muted>
+        <source src={First} 
+         type="video/webm"></source>
+       </video> 
+       </div>
+        </div>
+        <div className="w-2/5 m-20 data-background">
+            <div className="text-3xl font-extrabold text-[#001A5F]">Send one or send <span className="font-beauty text-7xl font-bold">thousands</span>
+            </div>
+            <div className="texts mt-5 mr-10">Simply Noteds platform makes sending 1,000s of real penwritten notes as quick and easy as sending just 1. It has never been easier to scale your personal touch and leave lasting impressions!</div>
+            <DynamicButton
+                    text="START WRITTING"
+                    className="btn1"
+                    onClickFunction={()=>navigate('/collections/best-sellers')}
+            />
+            <DynamicButton
+                    text="TUTORIALS"
+                    className="btn2"
+                    onClickFunction={()=>navigate('/blogs/news')}
+            />
+        </div>
+       
+      </div> */}
           {/* First */}
       <div className="container flex mt-6">
         <div className="w-2/5 m-20 data-background">

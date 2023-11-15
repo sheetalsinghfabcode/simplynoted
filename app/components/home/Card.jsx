@@ -132,9 +132,9 @@ const Card=()=>{
     <div className="md:text-4xl text-3xlfont-bold text-[#001A5F]">Get your first card FREE!</div>
     <div className="text-xl pt-4 text-[#696969]">Join our email list and receive your first card free.</div>
 
-    <div className="pt-10 pb-10">
+    <div className="pt-10 pb-10 text-center">
         <form>
-            <div>
+            <div className="flex justify-center">
             <input type="email" className="input_email" placeholder="Enter your email address" />
             <DynamicButton
                     text="SUBSCRIBE"
