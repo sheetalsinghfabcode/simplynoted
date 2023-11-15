@@ -1,4 +1,5 @@
 import {Image} from '@shopify/hydrogen';
+import CircularLoader from './CircularLoder';
 
 /**
  * A client component that defines a media gallery for hosting images, 3D models, and videos of products
@@ -43,6 +44,8 @@ export function ProductGallery({media, className}) {
                 className="object-cover w-[550px] h-[400px] aspect-square fadeIn"
               />
             )}
+
+            {!image && <CircularLoader color="#1b52b1"/>}
           </div>
         );
       })}
