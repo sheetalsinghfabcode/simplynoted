@@ -20,7 +20,7 @@ const CanvasDesign=()=>{
         <div className="mt-10px">
 
           {/* First */}
-      {/* <div className="container flex mt-6">
+      <div className="container flex mt-6">
         <div className="w-2/5 m-20 data-background">
             <div className="text-3xl font-extrabold text-[#001A5F]">Send one or send <span className="font-beauty text-7xl font-bold">thousands</span>
             </div>
@@ -47,11 +47,11 @@ const CanvasDesign=()=>{
        </video> 
        </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Second */}
 
-      {/* <div className="container flex mt-6">
+      <div className="container flex mt-6">
       <div className="w-100  mt-10 mr-96">
             <div className="robot2">
             <img className='robot-img' src={robot2} alt="LogoSimplinotedpic"  /> 
@@ -76,13 +76,13 @@ const CanvasDesign=()=>{
           
         </div>
         
-      </div> */}
+      </div>
 
 
 
       {/* Third */}
 
-      {/* <div className="container flex mt-6">
+      <div className="container flex mt-6">
         <div className="w-2/5 m-20 data-background">
             <div className="text-4xl font-extrabold text-[#001A5F]">Gift cards &<span className="font-beauty text-7xl font-bold">inserts</span>
             </div>
@@ -107,7 +107,7 @@ const CanvasDesign=()=>{
        </video> 
        </div>
         </div>
-      </div>*/}
+      </div>
       </div> 
   
         </>
