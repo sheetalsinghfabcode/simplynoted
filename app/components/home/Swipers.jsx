@@ -19,7 +19,7 @@ import 'swiper/css/autoplay';
 
 import 'swiper/css';
 
-// &copy;Simply Noted  {new Date().getFullYear()}.All Rights Reserved
+
 const Swipers=()=>{
    
 return(
@@ -31,7 +31,27 @@ return(
       spaceBetween={20}
       slidesPerView={7}
       loop={true}
-    
+      breakpoints={{
+         280:{
+          slidesPerView:3
+         },
+        768: {
+          spaceBetween:10,
+          slidesPerView:4,
+         
+        },
+        1024:{
+          spaceBetween:10,
+          slidesPerView:4,
+        },
+        1075:{
+          slidesPerView:6
+        },
+        1280:{
+          slidesPerView:7
+        }
+
+      }}
       autoplay={{ delay:3000 ,
         pauseOnMouseEnter: true, 
          disableOnInteraction: false,

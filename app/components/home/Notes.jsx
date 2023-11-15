@@ -30,32 +30,36 @@ const Notes = () => {
     <>
       <div className="container-indent bg-[#324879] flex items-center justify-center">
         <div className="container">
-          <div className="block-title">
-            <h1 className="tt-title text-3xl text-center font-bold pt-20 text-white">
+          <div className="block-title text-xl font-bold md:text-3xl">
+            <h1 className="tt-title  text-center pt-20 text-white">
               Real Pen.Real Ink.
             </h1>
-            <div className="tt-description text-center font-bold text-3xl pt-1 text-white">
+            <div className="tt-description text-center pt-1 text-white">
               Real Impressions.
             </div>
           </div>
           </div>
-          <div className='mb-10'></div>
+         
           </div>
           <div className='mt-6 ml-[-20rem]'>
           <Swiper
             modules={[Autoplay]}
             direction={'horizontal'}
             spaceBetween={1}
-            slidesPerView={3.5}
+            slidesPerView={4}
            
           loop={true}
           breakpoints={{
          
-            // 768: {
-            //   spaceBetween:10,
-            //   slidesPerView:2,
+            768: {
+              spaceBetween:10,
+              slidesPerView:2.5,
              
-            // }
+            },
+            1024:{
+              spaceBetween:10,
+              slidesPerView:3.5,
+            }
           }}
      
       autoplay={{ delay:1000 ,
