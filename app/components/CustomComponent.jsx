@@ -14,7 +14,7 @@ export function CustomComponent({ product }) {
       {loader ?
         <Loader loaderMessage="Loading Custom Products" />
         :
-        <div className="flex flex-col gap-2 bg-[white] items-center">
+        <div className="flex flex-col gap-2 bg-[white]">
           <Link
             to={`/products/${product.handle}`}
             prefetch="intent"
@@ -45,27 +45,32 @@ export function CustomComponent({ product }) {
                 )}
               </Text> */}
               </div>
-              <div>
-            <DynamicButton
-                  className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
-                  text="SINGLE CARD"
-                  onClickFunction={() => ''}
-                />
-            <DynamicButton
-                  className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
-                  text="BULK PURCHASE"
-                  onClickFunction={() => ''}
-                />
-            </div>
+
             </div>
           </Link>
+          <div>
+            <Link to={`/products/${product.handle}`}>
+              <DynamicButton
+                className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
+                text="SINGLE CARD"
+                onClickFunction={() => ''}
+              />
+            </Link>
+            <Link to={`/products/${product.handle}?select=Bulk`}>
+              <DynamicButton
+                className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
+                text="BULK PURCHASE"
+                onClickFunction={() => ''}
+              />
+            </Link>
+          </div>
         </div>
       }
     </>
   )
 }
-function CompareAtPrice({data, className}) {
-  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
+function CompareAtPrice({ data, className }) {
+  const { currencyNarrowSymbol, withoutTrailingZerosAndCurrency } =
     useMoney(data);
 
   const styles = clsx('strike', className);

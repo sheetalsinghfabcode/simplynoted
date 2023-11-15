@@ -48,7 +48,6 @@ let customerid;
 export function Layout({ children, layout }) {
   const { headerMenu, footerMenu } = layout;
 
-  const [loginModal, setLoginModal] = useState(false);
 
   return (
     <>
@@ -60,21 +59,12 @@ export function Layout({ children, layout }) {
         </div>
         {headerMenu && (
           <Header
-            setLoginModal={setLoginModal}
             title={layout.shop.name}
             menu={headerMenu}
           />
         )}
         <main role="main" id="mainContent" className="flex-grow">
-          <LoginModal
-            title={" Create a Card"}
-            show={loginModal}
-            setLoginModal={setLoginModal}
-            onCancel={() => setLoginModal(false)}
-            confirmText="Login"
-            cancelText="Register"
-            cross={true}
-          />
+          
 
           {children}
         </main>
@@ -86,7 +76,7 @@ export function Layout({ children, layout }) {
   );
 }
 
-function Header({ title, menu, setLoginModal }) {
+function Header({ title, menu, }) {
   const isHome = useIsHomePath();
 
   const {
@@ -120,7 +110,6 @@ function Header({ title, menu, setLoginModal }) {
         title={title}
         menu={menu}
         openCart={openCart}
-        setLoginModal={setLoginModal}
       />
       <MobileHeader
         isHome={isHome}
@@ -245,8 +234,9 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   );
 }
 
-function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
+function DesktopHeader({ isHome, menu, openCart, title }) {
 
+  const [loginModal, setLoginModal] = useState(false);
 
   function CreateCardCheck() {
     if (typeof window !== 'undefined') {
@@ -259,18 +249,16 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
         )
       } else {
         return (
-          <Link>
+          <div>
             <li onClick={() => setLoginModal(true)}>
               Create a Card
             </li>
-          </Link>
+          </div>
         )
       }
     }
 
   }
-  const [customeridLoaded, setCustomeridLoaded] = useState(false);
-  const navigate = useNavigate();
 
   const params = useParams();
   const { y } = useWindowScroll();
@@ -319,20 +307,6 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
                           <li> Cards</li>
                         </Link>
                         <CreateCardCheck />
-                        {/* {!customerid ? (
-                          customerid ? (
-                            <Link to="/createcard">
-                              <li>Create a Card</li>
-                            </Link>
-                          ) : (
-                            <Link>
-                              <li onClick={() => setLoginModal(true)}>
-                                Create a Card
-                              </li>
-                            </Link>
-                          )
-                        ) : null // Render a loading indicator or other content while waiting for customerid.
-                        } */}
                         <Link to="/collections/birthday">
                           <li>Birthday Automation</li>
                         </Link>
@@ -474,6 +448,15 @@ function DesktopHeader({ isHome, menu, openCart, title, setLoginModal }) {
           {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
         </div>
       </header>
+      <LoginModal
+            title={" Create a Card"}
+            show={loginModal}
+            setLoginModal={setLoginModal}
+            onCancel={() => setLoginModal(false)}
+            confirmText="Login"
+            cancelText="Register"
+            cross={true}
+          />
     </>
   );
 }

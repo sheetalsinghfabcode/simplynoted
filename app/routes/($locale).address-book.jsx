@@ -257,8 +257,9 @@ export default function AddressBook() {
         ) : (
           <>
             <DynamicButton
-              className="bg-[#EF6E6E] m-5 "
+              className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
               text="Prev"
+              backArrow={true}
               onClickFunction={goBack} />
             <div className="w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto">
               <DynamicTitle title={"Address Book"} />

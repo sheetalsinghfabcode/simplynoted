@@ -90,8 +90,9 @@ export default function SimplyNoted() {
       <>
        {!walletPlan && !walletPurcase && !walletPayment && (
       <DynamicButton
-        className="bg-[#EF6E6E] m-5 "
+        className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
         text="Prev"
+        backArrow={true}
         onClickFunction={goBack}/>)}
       <div>
       {!walletPlan && !walletPurcase && !walletPayment && (

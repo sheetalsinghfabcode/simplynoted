@@ -56,6 +56,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         country: editOrderValue?.data ? editOrderValue.data.locationForShipMethod?.country : 'USA',
     });
     const [checkSelAddress, setCheckSelAddress] = useState(false)
+    const [stateCheckCart,setStateCheckCart] = useState(true)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -195,10 +196,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         productImg: productData.image.url,
         senderAddress: selectedItem2,
         reciverAddress: selectedItem,
-        giftCardName: cardName ? cardName : null,
-        giftCardImg: cardImg ? cardImg : null,
-        giftCardPrice: cardPrice ? cardPrice : null,
-        giftCardPriceTitle: cardPriceTitle ? cardPriceTitle : '',
+        giftCardName: cardName && stateCheckCart ? cardName : null,
+        giftCardImg: cardImg && stateCheckCart? cardImg : null,
+        giftCardPrice: cardPrice && stateCheckCart? cardPrice : null,
+        giftCardPriceTitle: cardPriceTitle && stateCheckCart? cardPriceTitle : '',
         messageData: MsgText,
         fontFamily: fontFamilyName ? fontFamilyName : 'tarzan',
         productGetUrl: window?.location.pathname,
@@ -225,6 +226,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     let keyUpdate9 = 'shippingData'
     let keyUpdate10 = 'shippingDataCost'
     let keyUpdate11 = 'fontFamily'
+    let keyUpdate12 = 'giftCardPriceTitle'
     function onClickAddCart() {
         setLoader(true);
         if (editOrderValue?.index >= 0) {
@@ -234,14 +236,15 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                 storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg ? cartDataReq?.msg : editOrderValue?.data.messageData;
                 storedData[editOrderValue.index][keyUpdate2] = selectedItem;
                 storedData[editOrderValue.index][keyUpdate3] = selectedItem2;
-                storedData[editOrderValue.index][keyUpdate4] = cardImg ? cardImg : null;
-                storedData[editOrderValue.index][keyUpdate5] = cardName ? cardName : null;
-                storedData[editOrderValue.index][keyUpdate6] = cardPrice;
+                storedData[editOrderValue.index][keyUpdate4] = cardImg && stateCheckCart ? cardImg : null;
+                storedData[editOrderValue.index][keyUpdate5] = cardName && stateCheckCart? cardName : null;
+                storedData[editOrderValue.index][keyUpdate6] = cardPrice && stateCheckCart?cardPrice:null;
                 storedData[editOrderValue.index][keyUpdate7] = cartDataReq?.signOffText ? cartDataReq?.signOffText : editOrderValue?.data.endText;
                 storedData[editOrderValue.index][keyUpdate8] = formData ? formData : '';
                 storedData[editOrderValue.index][keyUpdate9] = selectShipMode ? selectShipMode : '';
                 storedData[editOrderValue.index][keyUpdate10] = selectShipMode ? selectShipMode.node.price.amount : '';
                 storedData[editOrderValue.index][keyUpdate11] = fontFamilyName ? fontFamilyName : 'tarzan';
+                storedData[editOrderValue.index][keyUpdate12] = cardPriceTitle && stateCheckCart? cardPriceTitle : null
 
 
             }
@@ -306,9 +309,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                 :
                 <>
                     <DynamicButton
-                        className="bg-[#EF6E6E] m-5 "
+                        className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
                         text="Prev"
-                        onClickFunction={() => setProductShow(true)} />
+                        onClickFunction={() => setProductShow(true)}
+                        backArrow={true} />
                     {addressForm && (
                         <div className="w-full  max-w-[1440px] px-[20px] mx-auto">
                             <AddressForm
@@ -452,7 +456,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                 </div>
                                             </div>
                                             <div>
-                                                <input type="checkbox" id="" name="" value="" checked={cardPriceTitle} />
+                                                <input type="checkbox" id="" name="" value="" onClick={()=>setStateCheckCart(!stateCheckCart)} checked={cardPriceTitle && stateCheckCart} />
                                                 <text className='ml-3'>Add Gift Card</text>
                                             </div>
                                         </div>

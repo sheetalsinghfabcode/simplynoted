@@ -23,7 +23,6 @@ export function Link(props) {
   const {to, className, ...resOfProps} = props;
   const [root] = useMatches();
   const selectedLocale = root.data?.selectedLocale;
-
   let toWithLocale = to;
 
   if (typeof to === 'string') {
