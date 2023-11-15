@@ -1,7 +1,15 @@
 import DynamicButton from '../DynamicButton';
 import {Link, useNavigate} from '@remix-run/react';
 
-const LoginModal = ({show, onCancel, setLoginModal,title,confirmText,cancelText}) => {
+const LoginModal = ({
+  show,
+  onCancel,
+  setLoginModal,
+  title,
+  confirmText,
+  cancelText,
+  hasCancelIcon = true,
+}) => {
   const navigate = useNavigate();
 
   return (
@@ -12,19 +20,20 @@ const LoginModal = ({show, onCancel, setLoginModal,title,confirmText,cancelText}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="modal-container relative bg-white w-11/12 md:max-w-[45%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
-       
+      <div className="modal-container relative bg-white w-11/12 md:max-w-[60%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+        {hasCancelIcon && (
           <span
             className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
             onClick={onCancel}
           >
             &times;
           </span>
+        )}
         <div className="modal-content py-4  px-6">
           <div className="modal-header">
             <h3 className="text-[29px] text-center leading-[1.4] text-[#001a5f] font-semibold">
               Want to
-              <span className="font-beauty text-[40px]"> { title } ?</span>
+              <span className="font-beauty text-[40px]"> {title} ?</span>
             </h3>
           </div>
           <div className="modal-body mt-[12px]">
@@ -38,7 +47,6 @@ const LoginModal = ({show, onCancel, setLoginModal,title,confirmText,cancelText}
             <DynamicButton
               text={confirmText}
               onClickFunction={() => {
-                setLoginModal(false);
                 navigate('/account/login');
               }}
               className="text-white bg-[#ef6e6e]"
