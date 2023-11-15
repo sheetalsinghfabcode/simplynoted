@@ -413,7 +413,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-          <Link to="/account/login" className="text-black font-bold">
+          <Link to="/account" className="text-black font-bold">
             Account →
           </Link>
           {/* <DynamicButton

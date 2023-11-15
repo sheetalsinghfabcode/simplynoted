@@ -1,18 +1,19 @@
 // src/components/AccountForm.js
 import React, {useState, useEffect} from 'react';
 import DynamicButton from './DynamicButton';
+import CircularLoader from './CircularLoder';
 
-const Profile = ({customer}) => {
+const Profile = ({customer,setProfile,setAccountDetail}) => {
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const [activeTab, setActiveTab] = useState('account'); // 'account' or 'security'
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
+  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
     setKey(apiKey);
-
   }, [key]);
 
   const [accountDetails, setAccountDetails] = useState({
@@ -43,6 +44,7 @@ const Profile = ({customer}) => {
 
   const handleSecurityInputChange = (e) => {
     const {name, value} = e.target;
+    setError("")
     setSecurityDetails({
       ...securityDetails,
       [name]: value,
@@ -56,8 +58,6 @@ const Profile = ({customer}) => {
   };
 
   const updateUserProfile = async () => {
-
-  
     const payload = {
       first_name: accountDetails.firstName,
       last_name: accountDetails.lastName,
@@ -89,11 +89,18 @@ const Profile = ({customer}) => {
         },
       );
 
+     
       if (response.ok) {
         // Request was successful
         const jsonResponse = await response.json();
+         
         console.log('User profile updated:', jsonResponse);
+        if(jsonResponse.updated){
         // Perform further actions with the response if needed
+        setProfile(false)
+        setAccountDetail(true)
+
+        }
       } else {
         // Handle errors if the response is not OK
         console.error('Error updating user profile:', response.statusText);
@@ -105,7 +112,6 @@ const Profile = ({customer}) => {
   };
 
   const updateUserPassword = async () => {
-
     if (securityDetails.newPassword.trim() === '') {
       setError('Password cannot be empty');
       return;
@@ -113,6 +119,8 @@ const Profile = ({customer}) => {
       setError('Password must be at least 8 characters long');
       return;
     }
+    setLoader(true);
+
     const payload = {
       newPassword: securityDetails.newPassword,
       confirmNewPassword: securityDetails.confirmPassword,
@@ -131,9 +139,18 @@ const Profile = ({customer}) => {
       );
 
       const jsonResponse = await response.json();
-      setError(jsonResponse.errors.password_confirmation);
+      setError((jsonResponse.errors?.password_confirmation || jsonResponse.errors?.password) || "");
+      if (error) {
+        setLoader(false);
+      }
+      if(jsonResponse.customer){
+        setProfile(false)
+        setAccountDetail(true)
+      }
 
       if (response.ok) {
+        
+        setLoader(false);
         // Request was successful
         console.log('User password updated:', jsonResponse);
       } else {
@@ -151,6 +168,8 @@ const Profile = ({customer}) => {
   };
 
   console.log('error', error);
+
+  console.log("loader",loader)
 
   return (
     <div className=" bg-white shadow-md rounded-lg p-6 w-full max-w-[60%] mx-auto mt-[40px] ">
@@ -177,7 +196,7 @@ const Profile = ({customer}) => {
         </button>
       </div>
 
-      {activeTab === 'account' && (
+      {activeTab === 'account' && (  
         <form onSubmit={handleSubmit} className="">
           <div className="mb-4 flex flex-wrap -mx-3">
             <div className="w-1/2 px-3 mb-6">

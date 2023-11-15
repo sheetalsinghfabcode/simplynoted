@@ -7,7 +7,7 @@ import {
   useOutlet,
   useNavigate,
 } from '@remix-run/react';
-import {Suspense, useState} from 'react';
+import {Suspense, useEffect, useState} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
 import {flattenConnection} from '@shopify/hydrogen';
 import {
@@ -115,6 +115,12 @@ function Account({customer, heading, featuredData}) {
   const [accountDetail, setAccountDetail] = useState(true);
   const [profile, setProfile] = useState(false);
 
+
+  useEffect(() => {
+    console.log("trigger")
+  },[accountDetail,profile])
+
+
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
     setOrderHistory(false);
@@ -208,8 +214,8 @@ function Account({customer, heading, featuredData}) {
         />
       </div>
       {orders && orderHistory && <AccountOrderHistory orders={orders} />}
-      {accountDetail && <AccountDetails customer={customer} />}
-      {profile && <Profile customer={customer} result={result} />}
+      {accountDetail && <AccountDetails accountDetail={accountDetail}  customer={customer} />}
+      {profile && <Profile setProfile={setProfile} setAccountDetail={setAccountDetail} customer={customer} result={result} />}
       {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
       {/* {!orders.length && (
         <Suspense>

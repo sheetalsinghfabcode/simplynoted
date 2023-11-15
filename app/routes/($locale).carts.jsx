@@ -13,6 +13,7 @@ import DynamicButton from '~/components/DynamicButton';
 import { HiArrowLongRight } from "react-icons/hi2";
 import { CheckoutData } from '../components/Checkout'
 import DynamicTitle from '../components/Title';
+import CircularLoader from '~/components/CircularLoder';
 
 
 let storedDataString, storedDataArray
@@ -267,6 +268,13 @@ export default function AddCartFunc() {
                 <>
                     <div className='w-full h-full gap-2 mt-8'>
                         <DynamicTitle title={'SHOPPING CART'}/>
+                        <>
+
+                        {cartData.length ===0  && 
+                        <CircularLoader
+                        color="#1b52b1"
+                        />
+                        }
                         {cartData && cartData.map((item, index) =>
                             <div className='w-[73rem]  bg-[white] m-auto mt-10 mb-10'>
                                 <div className='flex'>
@@ -550,7 +558,6 @@ export default function AddCartFunc() {
 
                         )}
 
-
                         {totalPrize &&
                         <div className='w-[1000px]  bg-[#FFF6F6] m-auto mt-10 mb-10'>
                             <div className='flex p-2 border-4 border-indigo-600'>
@@ -582,6 +589,7 @@ export default function AddCartFunc() {
                                 </div>
                             </div>
                         </div>}
+                        </>
                     </div>
                     <ConfirmationModal
                         show={deleteModal}
