@@ -155,6 +155,7 @@ export default function Product() {
   let editOrderValue = datafornav.state
   let editFontFamily = datafornav.state?.data.fontFamily
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
+  let editFontSize = datafornav.state?.data.fontSizeMsg
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
   const [show, setShow] = useState(showBulkOnEdit || parameterValue == "Bulk" ? true : false);
@@ -257,7 +258,7 @@ export default function Product() {
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
               setShowBox={setShowBox} setProductShow={setProductShow}
               EditMess={EditMess} editEndMess={editEndMess}
-              editFontFamily={editFontFamily} fontFamilyName={fontFamilyName} metafields={metafields}/>
+              editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}/>
           </Section>
 
           <Suspense fallback={<Skeleton className="h-32" />}>
