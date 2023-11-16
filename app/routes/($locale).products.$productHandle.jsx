@@ -236,10 +236,10 @@ export default function Product() {
     },
 
   };
-  // useEffect(() => {
-  //   localStorage.removeItem('reqFielddInCart')
-  //   console.log(location.pathname,'0000000000');
-  // }, [datafornav.pathname]);
+  useEffect(() => {
+    localStorage.removeItem('reqFielddInCart')
+    console.log(location.pathname,'0000000000');
+  }, [datafornav.pathname]);
   return (
     <>
       {productshow ?
