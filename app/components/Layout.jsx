@@ -238,9 +238,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
   const [loginModal, setLoginModal] = useState(false);
   const [cartCount,setCartCount] = useState(0)
   useEffect(()=>{
-let ab = JSON.parse(localStorage.getItem('mydata'))
-console.log(ab.length,"0000000");
-setCartCount(ab.length)
+    let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
+    setCartCount(calculatedCartCount.length)
   },[])
   function CreateCardCheck(){
    if(typeof window !== 'undefined'){
