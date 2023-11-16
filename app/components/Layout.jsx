@@ -236,6 +236,12 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
   const [loginModal, setLoginModal] = useState(false);
+  const [cartCount,setCartCount] = useState(0)
+  useEffect(()=>{
+let ab = JSON.parse(localStorage.getItem('mydata'))
+console.log(ab.length,"0000000");
+setCartCount(ab.length)
+  },[])
   function CreateCardCheck(){
    if(typeof window !== 'undefined'){
     let id = localStorage.getItem('customerId');
@@ -391,6 +397,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         <div className="flex items-center gap-1">
           <div className="tooltip">
             <Link to="/carts">
+              <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
+              <span className='text-[white]'>{cartCount?cartCount:''}</span>
+              </div>
             <img
               src={CartShopify}
               alt="cart-icon"

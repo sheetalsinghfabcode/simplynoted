@@ -69,7 +69,16 @@ export default {
         woody:['Woody'],
         ratigan:['Ratigan'],
         beauty: ['Beauty'],
-        karla:['Karla']
+        karla:['Karla'],
+        "hello keta":['hello keta'],
+        "sea garden":['sea garden'],
+        "great vibes":['great vibes'],
+        "Copper Canyon":['Copper Canyon'],
+        Alex:['Alex'],
+        wedding:['wedding'],
+        Via:['Via'],
+        "Winter Song":['Winter Song'],
+        "Premium Ultra":['Premium Ultra'],
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

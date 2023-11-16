@@ -332,7 +332,6 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                     )}
                     {!addressForm &&
                         <div className='  w-full h-full gap-2 mt-8'>
-                            <h3 className='items-center font-bold flex text-2xl' onClick={() => setProductShow(true)}><BiSolidChevronLeft size='50px' />Back To Product Customization</h3>
                             <div className='row flex mr-2 ml-2 gap-4'>
                                 <div className='col-6 w-[50%] '>
                                     <div className='address-grid'>
