@@ -146,6 +146,7 @@ export default function Collection() {
   const [loader, setLoader] = useState(false);
   const [offSetVal, setOffSetVal] = useState(0)
   const [loadMore, setLoadMore] = useState(false)
+  const [newOffset,setNewOffset] = useState('')
 
   const { collection, collections, appliedFilters, handleLinkData, myCollection, collectionHandle } = useLoaderData();
   let myColletionData = myCollection.collection.products
@@ -176,12 +177,21 @@ export default function Collection() {
         console.log(json.result);
         console.log(offSetVal, 'newOffset');
         setCheckState(true)
+        if(addingProductsData.length>0){
+          setAddingProd(addingProductsData.concat(myData))
+          setNewOffset(json.result.nextOffset)
+          CustomeCard()
+          setLoader(false)
+          setLoadMore(json.result.moreProducts)
+        }else{
         if (json.result) {
           setAddingProd(myData)
+          setNewOffset(json.result.nextOffset)
           CustomeCard()
           setLoader(false)
           setLoadMore(json.result.moreProducts)
         }
+      }
       } else {
         setLoginModal(true)
         setLoader(false)
@@ -196,6 +206,7 @@ export default function Collection() {
 
 
   function CustomeCard() {
+    console.log(addingProductsData,'99999999');
     return (
       <>
         {addingProductsData && addingProductsData.map((product, i) => (
@@ -213,16 +224,19 @@ export default function Collection() {
   }
   useEffect(() => {
     customerid = localStorage.getItem('customerId')
-    if (collectionHandle == 'customisable-cards' || offSetVal > 0) {
+    if (collectionHandle == 'customisable-cards' ) {
       customisedCard()
     }
-  }, [offSetVal])
+  }, [])
   function loadMoreCustomData() {
-    setOffSetVal(offSetVal + 1)
+    setOffSetVal(newOffset)
   }
-  function loadBackCustomData() {
-    setOffSetVal(offSetVal - 1)
-  }
+  useEffect(()=>{
+    if(offSetVal>0){
+      customisedCard()
+
+    }
+  },[offSetVal])
   return (
     <>
     
@@ -267,14 +281,6 @@ export default function Collection() {
             </div>
 
             <div>
-              {offSetVal > 0 && addingProductsData &&
-                <div className='flex justify-center'>
-                   <DynamicButton className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
-                    text="Show Back"
-                    onClickFunction={() => loadBackCustomData()}
-                  />
-                </div>
-              }
               <Grid layout="products">
                 {!checkState ?
                   <>
@@ -294,8 +300,8 @@ export default function Collection() {
                   </>
                 }
               </Grid>
-              {loadMore && addingProductsData &&
-                <div className='flex justify-center'>
+              {loadMore && collectionHandle ==  "customisable-cards" &&
+                <div className='flex justify-center mt-[2rem]'>
                   <DynamicButton className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
                     text="Load More"
                     onClickFunction={() => loadMoreCustomData()}
