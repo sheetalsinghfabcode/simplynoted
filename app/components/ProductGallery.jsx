@@ -45,7 +45,7 @@ export function ProductGallery({media, className}) {
               />
             )}
 
-            {!image && <CircularLoader color="#1b52b1"/>}
+            {!image && <CircularLoader color="#ef6e6e"/>}
           </div>
         );
       })}

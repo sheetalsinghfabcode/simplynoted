@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import AddressForm from '../components/addressBook/AddressForm';
 import EditAddressForm from '../components/addressBook/EditAddressForm';
 import Instruction from '~/components/modal/Instruction';
-import { useNavigate } from '@remix-run/react';
+import {useNavigate} from '@remix-run/react';
 import Loader from '../components/modal/Loader';
 import DynamicButton from '~/components/DynamicButton';
 import ContactTable from '~/components/addressBook/ContactTable';
 import ErrorModal from '../components/modal/ErrorModal';
-import { useAddressBook } from '~/components/AddressBookContext';
+import {useAddressBook} from '~/components/AddressBookContext';
 import DynamicTitle from '~/components/Title';
+import CircularLoader from '~/components/CircularLoder';
 
 let customerID;
 
@@ -32,13 +33,12 @@ export default function AddressBook() {
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const [updateLoader, setupdateLoader] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [errorContent, serErrorContent] = useState([]);
 
   const navigate = useNavigate();
-  const goBack = () => navigate(-1)
-
+  const goBack = () => navigate(-1);
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -118,7 +118,7 @@ export default function AddressBook() {
   };
 
   const uploadDataToAPI = async (data) => {
-    setLoader(true);
+    setupdateLoader(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -135,7 +135,6 @@ export default function AddressBook() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-
           firstName: modifiedData['First Name'] || '',
           lastName: modifiedData['Last Name'] || '',
           businessName: modifiedData.Company || '',
@@ -159,7 +158,7 @@ export default function AddressBook() {
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
-        setLoader(false);
+        setupdateLoader(false);
         'Successful response data:', responseData.result;
       } else {
         throw new Error('Network response was not ok');
@@ -241,13 +240,12 @@ export default function AddressBook() {
     setFilteredAddresses(filtered);
   };
 
-
   return (
     <>
-      <div className="bg-[#e0e9f8]">
-        {loader ? (
-          <Loader loaderMessage="Uploading Address Book" />
-        ) : errorModal ? (
+      <div className="bg-[#e0e9f8] relative w-full max-w-[1440px] mx-auto px-[20px]">
+      
+      {
+        errorModal ? (
           <ErrorModal
             title="Uploaded Error!"
             isOpen={errorModal}
@@ -256,13 +254,8 @@ export default function AddressBook() {
           />
         ) : (
           <>
-            <DynamicButton
-              className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
-              text="Prev"
-              backArrow={true}
-              onClickFunction={goBack} />
-            <div className="w-full max-w-[1440px] px-[24px]  py-[40px] mx-auto">
-              <DynamicTitle title={"Address Book"} />
+            <div className={`w-full max-w-[1440px]  mx-auto`}>
+              <DynamicTitle dynamicButton title={'Address Book'} />
               {!addressForm && !selectedAddress && (
                 <div className="w-full">
                   <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
@@ -275,7 +268,7 @@ export default function AddressBook() {
                     />
                     <div className="flex">
                       <div
-                        className={`border-[2px] border-soild border-[#000] py-[5px]`}
+                        className={`border-[1px] border-dashed border-[#000] py-[5px]`}
                       >
                         <div className="flex flex-col">
                           <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
@@ -333,6 +326,8 @@ export default function AddressBook() {
                     customerID={customerID}
                     filteredAddresses={filteredAddresses}
                     editAddress={editAddress}
+                    updateLoader={updateLoader}
+                    setupdateLoader={setupdateLoader}
                     setSelectedAddress={setSelectedAddress}
                     handleSearchInputChange={handleSearchInputChange}
                     setSelectedCheckboxes={setSelectedCheckboxes}

@@ -275,7 +275,7 @@ export default function AddCartFunc() {
                                 <>
                                     {cartData.length === 0 &&
                                         <CircularLoader
-                                            color="#1b52b1"
+                                            color="#ef6e6e"
                                         />
                                     }
                                     {cartData && cartData.map((item, index) =>

@@ -94,7 +94,6 @@ export default function Register() {
   const [nativeLastNameError, setNativeLastNameError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
-  console.log("actionData",actionData);
   return (
     <div className="flex justify-center mt-12 mb-24 px-4">
       <div className="max-w-md w-full">

@@ -480,178 +480,173 @@ export function MessageWriting({ show, selectedFile, setSelectedFile, setShowBox
             setCheckCharCount(true)
         }
     }
+    return (
+        
+            
+                <>
+                    <div className='mainDivForBox flex gap-10'>
+                        <div id="outer" className="outerr h-[500px] w-[100%] bg-white max-w-[600px] relative">
+                            {metafields.header &&
+                                <ShowHeaderComp />
+                            }
+                            <div className='outerSec h-[250px] w-[100%] bg-white max-h-[250px]' ref={ref2}>
+                                <div id='messageBoxID' ref={ref1} className="output m-5 " style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily ?editFontFamily:'tarzan',fontSize:editFontSize?editFontSize:'50px' }}>
+                                    {name  ? name  : "Enter your custom message here..."}
+                                </div>
+                            </div>
+                            <div className='secDiv  h-[100px] w-[100%] max-w-[300px] ml-auto bg-white' ref={ref}>
+                                <div id='signOffText' ref={ref3} className="output2" style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily ?editFontFamily:'tarzan',fontSize:editFontSize?editFontSize:'50px'}}>
+                                    {name2}
+                                </div>
+                            </div>
+                            {metafields.footer &&
+                                <ShowFooterComp />
+                            }
+                        </div>
+                        <div className='textAreaView w-[600px]'>
+                            <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText h-[200px] w-[100%] rounded-[6px] p-[7px] ' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
+                            </textarea>
+                            <span className="charLeft">{remainingWord} characters remaining</span><br />
+                            {checkCharCount &&
+                                <span className='text-[red] font-bold'>you don't have enough character remaining</span>
+                            }
+                            <br />
+                            {show &&
+                                <>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
+                                    <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
+                                </>
+                            }
+                            <div className='flex gap-4 mt-5' >
+                                <text className='cursor-pointer' onClick={() => setIsOpen(true)}>Try our new AI Assistant to <br /> help write your message</text>
+                                <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2 h-[100px] w-[50%] rounded-[6px] p-[7px]' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
+                                </textarea><br />
+                            </div>
+                            <span className="charLeft ml-40">{remainSign} characters remaining</span>
+                            {show &&
+                                <>
+                                    <div className='w-[263px] mt-10 font-bold'>
+                                        <text>As of july5,2023, we have upgraded the bulk order template.Please download the new template below</text>
+                                    </div>
+                                    <div className='flex gap-4'>
+                                        <div className='custom_testing'>
+                                            <div >
+                                                <h3 className='font-bold'>Bulk Address Upload</h3>
+                                            </div>
+                                            {bulkUploadDiv && !showNextBtn ?
+                                                <div>
+                                                    <div >
+                                                        <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
+                                                    </div>
+                                                </div> : ''
+                                            }
+                                            <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
+                                            <AfterUpload />
+                                        </div>
+                                        <span className='flex items-center font-bold'>OR</span>
+                                        <div className='m-auto'>
+                                            <DynamicButton
+                                                className="bg-[#1b5299] text-[14px] mb-6 w-full"
+                                                text="Select from Address Book"
+                                                onClickFunction={() => setModalForAddressBook(true)}
+                                            />
+                                            <DynamicButton
+                                                className="bg-[#1b5299] text-[14px] w-full"
+                                                text="Next"
+                                                onClickFunction={() => ''}
+                                            />
+                                            
+                                        </div>
+                                    </div>
+
+                                </>}
+                            {!show &&
+                                <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
+                                    <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+                    <Modal
+                        isOpen={modalIsOpen}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                    >
+                        <div className='flex'>
+                            <h2 className='font-bold text-xl w-[600px]'>AI Message Assistant</h2>
+                            <BsXCircle className='' onClick={() => onCancl()} />
+                        </div>
+                        <div>
+                            <text className=' text-[#999999]'>Type in words or a phrase to use our AI Assistant to<br /> help generate a great message</text>
+                        </div>
+                        <div>
+          {loader ? (
+            <div className='h-[300px] flex justify-center items-center border-dashed border border-[#999999]'>
+            <CircularLoader color="#ef6e6e" />
+            </div>
+          ) : (
+            <textarea
+              type="text"
+              id="aiTextArea"
+              value={aiText ? aiText : valToGen}
+              onChange={(e) => setValToGen(e.target.value)}
+              placeholder="Example: Message for Birthday"
+              maxLength="450"
+            ></textarea>
+          )}
+        </div>
+                        {!aiText ?
+
+                            <div className="ai-generate" >
+                                <button id="generate-msg" disabled="" onClick={() => aiGenrateMess()}>Generate Message</button>
+                            </div> :
+                            <div className='buttonClass flex justify-start'>
+                                <div className='buttonDiv pr-5'>
+                                    <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => onInsetClick()}>Insert</button>
+                                </div>
+                                <div className='gap-2'>
+                                    <button className="bg-[#f0f0f0] text-[black] p-2 rounded " onClick={() => onCancl()}>Cancel</button>
+                                </div>
+                            </div>
+                        }
+                    </Modal>
+                    <Instruction
+                        isOpen={instructionModal}
+                        title="Text Can not be Empty"
+                        closeModal={closeModalInt}
+                        table={false}
+                    />
+                    <Instruction
+                        isOpen={modalForAddressBook}
+                        title="Text Can not be Empty"
+                        closeModal={closeSelectAddressModal}
+                        table={false}
+                        body={<ContactTable/>}
+                    />
+                    <LoginModal
+                        title={" Add Card"}
+                        show={loginModal}
+                        setLoginModal={setLoginModal}
+                        onCancel={() => setLoginModal(false)}
+                        confirmText="Login"
+                        cancelText="Register"
+                    />
+                    <ErrorModal
+                        title="Uploaded Error!"
+                        isOpen={modalIsOpen2}
+                        // onRequestClose={() => setErrorModal(false)}
+                        content={errorVal}
+                    />
+                </>
+            
 
     
-
-    return (
-        <>
-            <div className='mainDivForBox flex gap-10'>
-                <div id="outer" className="outerr h-[500px] w-[100%] bg-white max-w-[600px] relative">
-                    {metafields.header &&
-                        <ShowHeaderComp />
-                    }
-                    <div className='outerSec h-[250px] w-[100%] bg-white max-h-[250px]' ref={ref2}>
-                        <div id='messageBoxID' ref={ref1} className="output m-5 text-[#0040ac]" style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily ? editFontFamily : 'tarzan', fontSize: editFontSize ? editFontSize : '50px' }}>
-                            {name ? name : "Enter your custom message here..."}
-                        </div>
-                    </div>
-                    <div className='secDiv  h-[100px] w-[100%] max-w-[300px] ml-auto bg-white' ref={ref}>
-                        <div id='signOffText' ref={ref3} className="output2 text-[#0040ac]" style={{ fontFamily: fontFamilyName ? fontFamilyName : editFontFamily ? editFontFamily : 'tarzan', fontSize: editFontSize ? editFontSize : '50px' }}>
-                            {name2}
-                        </div>
-                    </div>
-                    {metafields.footer &&
-                        <ShowFooterComp />
-                    }
-                </div>
-                <div className='textAreaView w-[600px]'>
-                    <textarea type="text" id="example-one-input" value={name} placeholder="Enter your custom message text here..." className='inputText h-[200px] w-[100%] rounded-[6px] p-[7px] ' maxlength="450" onChange={(e) => onChnageNameVal(e.target.value)} data-gtm-form-interact-field-id="0">
-                    </textarea>
-                    <span className="charLeft">{remainingWord} characters remaining</span><br />
-                    {checkCharCount &&
-                        <span className='text-[red] font-bold'>you don't have enough character remaining</span>
-                    }
-                    <br />
-                    {show &&
-                        <>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[First Name]"} onClick={(e) => firstNameBtn(e.target.value)}>First Name</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Last Name]"} onClick={(e) => firstNameBtn(e.target.value)}>Last Name</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Company]"} onClick={(e) => firstNameBtn(e.target.value)}>Company</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 1]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 1</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 2]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 2</button>
-                            <button className='addFirstnameBtn p-2 m-2' value={"[Custom 3]"} onClick={(e) => firstNameBtn(e.target.value)}>Custom 3</button>
-                        </>
-                    }
-                    <div className='flex gap-4 mt-5 cursor-pointer' onClick={() => setIsOpen(true)}>
-                        <img src={AiImage} className='w-[10%] h-[10%]' />
-                        <text className='cursor-pointer text-[#0040ac] tracking-[0.5px] font-karla w-[32%] text-[13px] mt-[0.5rem]' >Try our <span className='text-[red]'>New</span> AI Assistant to <br /> help write your message</text>
-                        <textarea type="text" value={name2} v-model="keyword" id="example-one-input2" className='inputText2 h-[100px] w-[50%] rounded-[6px] p-[7px] border-dotted' maxlength="50" onChange={(e) => onchnageOfRegardBox(e.target.value)} placeholder="Enter here..." data-gtm-form-interact-field-id="0">
-                        </textarea><br />
-
-                    </div>
-                    <div className='ml-[17rem] mt-[1rem]'>
-                        <span className=' text-[#0040ac] tracking-[1.5px] font-karla w-[50%]'>Optional Sign Off/ Signature</span><br />
-                        <span className="charLeft">{remainSign} characters remaining</span>
-                    </div>
-                    {show &&
-                        <>
-                            <div className='w-[263px] mt-10 font-bold'>
-                                <text>As of july5,2023, we have upgraded the bulk order template.Please download the new template below</text>
-                            </div>
-                            <div className='flex gap-4'>
-                                <div className='custom_testing'>
-                                    <div >
-                                        <h3 className='font-bold'>Bulk Address Upload</h3>
-                                    </div>
-                                    {bulkUploadDiv && !showNextBtn ?
-                                        <div>
-                                            <div >
-                                                <input type="file" name="file" accept=".csv" className="upload-input" onChange={(e) => handleFileChange(e)} />
-                                            </div>
-                                        </div> : ''
-                                    }
-                                    <p> Download the<a href="https://api.simplynoted.com/docs/bulk-template" className='text-[blue]'> Bulk Order Template</a> </p>
-                                    <AfterUpload />
-                                </div>
-                                <span className='flex items-center font-bold'>OR</span>
-                                <div className='m-auto'>
-                                    <DynamicButton
-                                        className="bg-[#1b5299] text-[14px] mb-6 w-full"
-                                        text="Select from Address Book"
-                                        onClickFunction={() => setModalForAddressBook(true)}
-                                    />
-                                    <DynamicButton
-                                        className="bg-[#1b5299] text-[14px] w-full"
-                                        text="Next"
-                                        onClickFunction={() => ''}
-                                    />
-
-                                </div>
-                            </div>
-
-                        </>}
-                    {!show &&
-                        <div className='bg-[#1b5299] h-[50px] text-center mt-10'>
-                            <button className='text-[#fff] items-center justify-center mt-3 w-full' onClick={() => checkUserLogged()}>Next</button>
-                        </div>
-                    }
-
-                </div>
-
-            </div>
-            <Modal
-                isOpen={modalIsOpen}
-                style={customStyles}
-                contentLabel="Example Modal"
-            >
-                <div className='flex'>
-                    <h2 className='font-bold text-xl w-[600px]'>AI Message Assistant</h2>
-                    <BsXCircle className='' onClick={() => onCancl()} />
-                </div>
-                <div>
-                    <text className=' text-[#999999]'>Type in words or a phrase to use our AI Assistant to<br /> help generate a great message</text>
-                </div>
-                <div>
-                    {loader ? (
-                        <div className='h-[300px] flex justify-center items-center border-dashed border border-[#999999]'>
-                            <CircularLoader color="#1b52b1" />
-                        </div>
-                    ) : (
-                        <textarea
-                            type="text"
-                            id="aiTextArea"
-                            value={aiText ? aiText : valToGen}
-                            onChange={(e) => setValToGen(e.target.value)}
-                            placeholder="Example: Message for Birthday"
-                            maxLength="450"
-                        ></textarea>
-                    )}
-                </div>
-                {!aiText ?
-
-                    <div className="ai-generate" >
-                        <button id="generate-msg" disabled="" onClick={() => aiGenrateMess()}>Generate Message</button>
-                    </div> :
-                    <div className='buttonClass flex justify-start'>
-                        <div className='buttonDiv pr-5'>
-                            <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => onInsetClick()}>Insert</button>
-                        </div>
-                        <div className='gap-2'>
-                            <button className="bg-[#f0f0f0] text-[black] p-2 rounded " onClick={() => onCancl()}>Cancel</button>
-                        </div>
-                    </div>
-                }
-            </Modal>
-            <Instruction
-                isOpen={instructionModal}
-                title="Text Can not be Empty"
-                closeModal={closeModalInt}
-                table={false}
-            />
-            <Instruction
-                isOpen={modalForAddressBook}
-                title="Text Can not be Empty"
-                closeModal={closeSelectAddressModal}
-                table={false}
-                body={<ContactTable customerID={''} filteredAddresses={[]}/>}
-            />
-            <LoginModal
-                title={" Add Card"}
-                show={loginModal}
-                setLoginModal={setLoginModal}
-                onCancel={() => setLoginModal(false)}
-                confirmText="Login"
-                cancelText="Register"
-            />
-            <ErrorModal
-                title="Uploaded Error!"
-                isOpen={modalIsOpen2}
-                // onRequestClose={() => setErrorModal(false)}
-                content={errorVal}
-            />
-        </>
-
-
-
     )
+   
 }

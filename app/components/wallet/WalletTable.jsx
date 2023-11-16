@@ -97,7 +97,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     return 'free';
   };
 
-  console.log("stripeCollection",stripeCollection)
 
   const navigate = useNavigate();
 
