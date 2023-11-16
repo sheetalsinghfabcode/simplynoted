@@ -295,12 +295,15 @@ setCartCount(ab.length)
               
               <Link
                 key={item.id}
-                // to={item.to}
+                to={item.to}
                 target={item.target}
                 prefetch="intent"
-                className={
-                     'navitems'
-                }
+                // className={
+                //      'navitems'
+                // }
+                className={({ isActive }) =>
+                isActive ? 'navitem-active' : 'navitems'
+              }
               >
                 {item.title === 'Send a Card' ? (
                   <div className="dropdown">
@@ -378,7 +381,7 @@ setCartCount(ab.length)
                         <li>Blog.</li>
                         <li>Tutorials</li>
                         <li>Videos</li>
-                        <Link to="/pages/faq">
+                        <Link to="/faq">
                           <li>F.A.Q.</li>
                         </Link>
                       </ul>
@@ -386,7 +389,7 @@ setCartCount(ab.length)
                   </div>
                 ) : null}
                 {['Send a Card', 'Integrations', 'Pricing', 'Learn'].includes(
-                  item.title,
+                  item.title
                 )
                   ? null
                   : item.title}

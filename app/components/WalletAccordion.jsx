@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function WalletAccordion({title, children, accordion = false}) {
+function WalletAccordion({title, children,className, accordion = false}) {
   const [isExpanded, setIsExpanded] = useState(accordion);
 
   const toggleAccordion = () => {
@@ -10,7 +10,7 @@ function WalletAccordion({title, children, accordion = false}) {
   return (
     <div className="w-full">
       <div
-        className="flex justify-between items-center cursor-pointer w-full min-h-[40px] uppercase py-[5px] "
+        className={`flex justify-between items-center cursor-pointer w-full min-h-[40px] uppercase py-[5px] ${className}`}
         onClick={toggleAccordion}
       >
         <span className="text-[17px] font-kaa text-[#001a5f] !font-bold uppercase pl-4">
