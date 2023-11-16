@@ -403,7 +403,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
           <div className="tooltip">
             <Link to="/carts">
               <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
-              <span className='text-[white]'>{cartCount?cartCount:''}</span>
+              {/* <span className='text-[white]'>{cartCount?cartCount:''}</span> */}
               </div>
             <img
               src={CartShopify}
