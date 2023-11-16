@@ -853,7 +853,7 @@ nav a {
 }
 .dropdown > div {
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 .font-bold {
   font-weight: 500 !important;
@@ -982,13 +982,13 @@ nav a {
   z-index: 1;
   left: 60%;
   transform: translateX(-50%);
-  top: 37px;
-  color: #bcbaba;
-  font-size: 14px;
-  letter-spacing: 0.1px;
-  font-weight: lighter;
-  width: 17rem;
-  margin-left: 45px;
+  top:28px;
+  color:#9c9a9a;
+  font-size:14px;
+  letter-spacing:0.1px;
+font-weight: lighter;
+ width:17rem ;
+margin-left:45px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -1520,7 +1520,19 @@ body {
 }
 
 /* Media Query */
-@media only screen and (max-width: 1024px) {
+
+@media only screen and (max-width:1200px)   {
+.dropdown-content{
+top:24px;
+width:12rem ;
+
+}
+.dropdown-list {
+  padding: 22px 20px;
+}
+}
+@media only screen and (max-width:1024px)   {
+
   .handwritten-notice h3 {
     font-size: 30px;
   }

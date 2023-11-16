@@ -265,12 +265,12 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
       <header
         role="banner"
         className={`${isHome
-          ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader'
+          ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
           : 'bg-contrast/80 text-primary'
           } ${!isHome && y > 50 && ' shadow-lightHeader'
-          } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`}
+          } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-12 py-8`}
       >
-        <div className="flex gap-12  items-center">
+        <div className="flex xl:gap-12 lg:gap-1 items-center">
           <Link className="font-bold" to="/" prefetch="intent">
             {/* {title} */}
             <img
@@ -280,19 +280,20 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                 height: 'auto',
                 marginleft: '-10px',
               }}
+              className='xl:w-full lg:w-[80%]'
             />
           </Link>
-          <nav className="flex gap-8 text-[#001A5F] text-base font-karla text-17 pb-0 leading-1.1  font-bold tracking-tight">
+          <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-bold tracking-tight">
             {/* Top level menu items */}
             {(menu?.items || []).map((item) => (
               
               <Link
                 key={item.id}
-                to={item.to}
+                // to={item.to}
                 target={item.target}
                 prefetch="intent"
-                className={({ isActive }) =>
-                  isActive ? 'navitem-active' : 'navitems'
+                className={
+                     'navitems'
                 }
               >
                 {item.title === 'Send a Card' ? (
