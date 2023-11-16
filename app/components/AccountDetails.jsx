@@ -52,7 +52,6 @@ export function AccountDetails({customer}) {
   }, [key]);
 
 
-  console.log("customer",customer)
 
   return (
     <>
@@ -104,7 +103,7 @@ export function AccountDetails({customer}) {
                 Generated API Key:
               </div>
               {loader ? (
-            <CircularLoader color="#1b52b1" />
+            <CircularLoader color="#ef6e6e" />
           ) : (
               <p className="w-3/4 text-[14px] font-semibold break-all">{key}</p>)}
             </div>

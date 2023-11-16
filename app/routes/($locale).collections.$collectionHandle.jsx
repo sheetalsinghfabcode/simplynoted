@@ -280,13 +280,14 @@ export default function Collection() {
               </div>
             </div>
 
-            <div>
+            <div className='mt-[24px]'>
+            {myColletionData.length === 0 && (
+                      <CircularLoader color="#ef6e6e" />
+                    )}
               <Grid layout="products">
                 {!checkState ?
                   <>
-                  {myColletionData.length === 0 && (
-                      <CircularLoader color="#1b52b1" />
-                    )}
+                 
                     {myColletionData && myColletionData.map((product, i) => (
                       <ProductCard
                         key={product.id}

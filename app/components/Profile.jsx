@@ -169,7 +169,6 @@ const Profile = ({customer,setProfile,setAccountDetail}) => {
 
   console.log('error', error);
 
-  console.log("loader",loader)
 
   return (
     <div className=" bg-white shadow-md rounded-lg p-6 w-full max-w-[60%] mx-auto mt-[40px] ">

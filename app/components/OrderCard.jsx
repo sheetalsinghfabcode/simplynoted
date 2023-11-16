@@ -1,6 +1,7 @@
 import {flattenConnection, Image} from '@shopify/hydrogen';
 import {Heading, Text, Link} from '~/components';
 import {statusMessage} from '~/lib/utils';
+import DynamicButton from './DynamicButton';
 
 export function OrderCard({order}) {
   if (!order?.id) return null;
@@ -49,7 +50,7 @@ export function OrderCard({order}) {
               </Text>
             </dd>
             <dt className="sr-only">Fulfillment Status</dt>
-            <dd className="mt-2">
+            <dd className="">
               <span
                 className={`px-3 py-1 text-xs font-medium rounded-full ${
                   order.fulfillmentStatus === 'FULFILLED'
@@ -57,9 +58,11 @@ export function OrderCard({order}) {
                     : 'bg-primary/5 text-primary/50'
                 }`}
               >
-                <Text size="fine">
-                  {statusMessage(order.fulfillmentStatus)}
-                </Text>
+                <DynamicButton
+                className="bg-[#ef6e6e] font-semibold max-w-[156px] w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
+
+                text={statusMessage(order.fulfillmentStatus)} />
+               
               </span>
             </dd>
           </dl>
@@ -71,9 +74,13 @@ export function OrderCard({order}) {
           to={`/account/orders/${legacyOrderId}?${key}`}
           prefetch="intent"
         >
-          <Text color="subtle" className="ml-3">
+          <DynamicButton
+            className="bg-[#001a5f] font-semibold w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
+            text="View Details"
+          />
+          {/* <Text color="subtle" className="ml-3">
             View Details
-          </Text>
+          </Text> */}
         </Link>
       </div>
     </li>

@@ -5,6 +5,7 @@ import edit from '../../../assets/Image/edit.png';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import {useAddressBook} from '../AddressBookContext';
 import CheckBox from '../../components/CheckBox';
+import CircularLoader from '../CircularLoder';
 
 const ContactTable = ({
   customerID,
@@ -13,6 +14,7 @@ const ContactTable = ({
   setSelectedCheckboxes,
   setSelectedAddress,
   selectedCheckboxes,
+  updateLoader,
 }) => {
   const {loadAddress, setLoadAddress} = useAddressBook();
   const [selectedType, setSelectedType] = useState('all');
@@ -200,9 +202,8 @@ const ContactTable = ({
     }
   };
 
-
   return (
-    <div className="container mx-auto mt-8">
+    <div className="w-full max-w-[100%] overflow-x-auto">
       {loader ? (
         <Loader loaderMessage="Deleting Address Book Data" />
       ) : (
@@ -224,7 +225,7 @@ const ContactTable = ({
               </div>
               {/* Your table rendering code here... */}
               <table
-                className="w-full overflow-auto max-h-[60vh]"
+                className="w-full overflow-auto max-w-[100%]"
                 {...getTableProps()}
               >
                 <thead>
@@ -282,6 +283,7 @@ const ContactTable = ({
                     </tr>
                   ))}
                 </thead>
+                {!updateLoader &&
                 <tbody {...getTableBodyProps()}>
                   {page.map((row) => {
                     prepareRow(row);
@@ -303,8 +305,12 @@ const ContactTable = ({
                       </tr>
                     );
                   })}
-                </tbody>
-              </table>
+                </tbody>}
+              </table>{updateLoader &&
+              <div className="flex justify-center items-center mt-[24px]">
+                 <CircularLoader color="#ef6e6e" />
+              </div>}
+
               {page.length === 0 && (
                 <div className="text-center text-[24px] font-bold mt-[20px] text-[#001a5f]">
                   No Address Found

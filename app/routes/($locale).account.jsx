@@ -115,11 +115,7 @@ function Account({customer, heading, featuredData}) {
   const [accountDetail, setAccountDetail] = useState(true);
   const [profile, setProfile] = useState(false);
 
-
-  useEffect(() => {
-    console.log("trigger")
-  },[accountDetail,profile])
-
+  useEffect(() => {}, [accountDetail, profile]);
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
@@ -214,8 +210,17 @@ function Account({customer, heading, featuredData}) {
         />
       </div>
       {orders && orderHistory && <AccountOrderHistory orders={orders} />}
-      {accountDetail && <AccountDetails accountDetail={accountDetail}  customer={customer} />}
-      {profile && <Profile setProfile={setProfile} setAccountDetail={setAccountDetail} customer={customer} result={result} />}
+      {accountDetail && (
+        <AccountDetails accountDetail={accountDetail} customer={customer} />
+      )}
+      {profile && (
+        <Profile
+          setProfile={setProfile}
+          setAccountDetail={setAccountDetail}
+          customer={customer}
+          result={result}
+        />
+      )}
       {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}
       {/* {!orders.length && (
         <Suspense>
@@ -242,8 +247,8 @@ function Account({customer, heading, featuredData}) {
 function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
-      <div className="grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12">
-        <h2 className="font-bold text-lead">Order History</h2>
+      <div className="grid w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
+        <h2 className=" text-[18px] font-karla font-semibold lg:text-[22px]">Order History</h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
@@ -251,19 +256,19 @@ function AccountOrderHistory({orders}) {
 }
 
 function EmptyOrders() {
+  const navigate = useNavigate();
+
   return (
     <div>
-      <Text className="mb-1" size="fine" width="narrow" as="p">
+      <span className=" font-karla  text-[16px] font-medium" >
         You haven&apos;t placed any orders yet.
-      </Text>
-      <div className="w-48">
-        <Button
-          className="w-full mt-2 text-sm"
-          variant="secondary"
-          to={usePrefixPathWithLocale('/')}
-        >
-          Start Shopping
-        </Button>
+      </span>
+      <div className="w-48 mt-[12px]">
+        <DynamicButton
+          text="Start Shopping"
+          onClickFunction={() => navigate('/collections/best-sellers')}
+          className="bg-[#ef6e6e] font-semibold max-w-[340px] w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
+        />
       </div>
     </div>
   );

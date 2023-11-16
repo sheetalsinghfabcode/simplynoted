@@ -1554,10 +1554,16 @@ body {
   background-position: bottom;
   background-size: 105% 10%;
 }
+.navitems:target {
+  color: #30038b !important;
+  background: url(../../assets/Image/menu-underline.png) no-repeat;
+  background-position: bottom;
+  background-size: 105% 10%;
+}
 .titleImage {
   background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
   background-position: center bottom !important;
-  background-size: 32% !important;
+  background-size: 80% !important;
 }
 
 /* .navbar-item:hover{

@@ -54,7 +54,6 @@ export default function SimplyNoted() {
     }
   }, []);
 
-  console.log("selectedPlan",selectedPlan)
 
   useEffect(() => {
 

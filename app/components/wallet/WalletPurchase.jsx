@@ -11,14 +11,12 @@ const WalletPurchase = ({
   setFinalPrice,
 }) => {
 
-  console.log("subscription",subscription)
   const subscriptionPrice = subscription !== 0 ? subscription?.split('/')[0].replace('$', '') : '0';
 
   const total = subscriptionPrice > 0 ? ((parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2) ):(parseFloat(amount)).toFixed(2) ;
   setFinalPrice(total);
 
 
-  console.log("WalletData",WalletData)
 
   return (
     <div className="w-full max-w-[1366px] mx-auto px-[20px] py-[40px] bg-white">

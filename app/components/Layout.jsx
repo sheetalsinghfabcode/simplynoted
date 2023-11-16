@@ -5,10 +5,10 @@ import {
   useMatches,
   useNavigate,
 } from '@remix-run/react';
-import { useState, useRef, Suspense, useEffect, useMemo } from 'react';
-import { useWindowScroll } from 'react-use';
-import { Disclosure } from '@headlessui/react';
-import { CartForm, Image } from '@shopify/hydrogen';
+import {useState, useRef, Suspense, useEffect, useMemo} from 'react';
+import {useWindowScroll} from 'react-use';
+import {Disclosure} from '@headlessui/react';
+import {CartForm, Image} from '@shopify/hydrogen';
 import LogoShopify from '../../assets/Image/simply-noted-logo.avif';
 import CartShopify from '../../assets/Image/cart_icon.png';
 import footerlogo from '../../assets/Image/logo-footer.webp';
@@ -37,17 +37,16 @@ import {
   CartLoading,
   Link,
 } from '~/components';
-import { useIsHomePath } from '~/lib/utils';
-import { useIsHydrated } from '~/hooks/useIsHydrated';
-import { useCartFetchers } from '~/hooks/useCartFetchers';
+import {useIsHomePath} from '~/lib/utils';
+import {useIsHydrated} from '~/hooks/useIsHydrated';
+import {useCartFetchers} from '~/hooks/useCartFetchers';
 import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
 import Loader from './modal/Loader';
 let customerid;
 
-export function Layout({ children, layout }) {
-  const { headerMenu, footerMenu } = layout;
-
+export function Layout({children, layout}) {
+  const {headerMenu, footerMenu} = layout;
 
   return (
     <>
@@ -57,26 +56,19 @@ export function Layout({ children, layout }) {
             Skip to content
           </a>
         </div>
-        {headerMenu && (
-          <Header
-            title={layout.shop.name}
-            menu={headerMenu}
-          />
-        )}
+        {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow">
-          
-
           {children}
         </main>
       </div>
-      <Swipers/>
+      <Swipers />
       <Card />
       {footerMenu && <Footer menu={footerMenu} />}
     </>
   );
 }
 
-function Header({ title, menu, }) {
+function Header({title, menu}) {
   const isHome = useIsHomePath();
 
   const {
@@ -121,7 +113,7 @@ function Header({ title, menu, }) {
   );
 }
 
-function CartDrawer({ isOpen, onClose }) {
+function CartDrawer({isOpen, onClose}) {
   const [root] = useMatches();
 
   return (
@@ -137,7 +129,7 @@ function CartDrawer({ isOpen, onClose }) {
   );
 }
 
-export function MenuDrawer({ isOpen, onClose, menu }) {
+export function MenuDrawer({isOpen, onClose, menu}) {
   return (
     <Drawer open={isOpen} onClose={onClose} openFrom="left" heading="Menu">
       <div className="grid">
@@ -147,7 +139,7 @@ export function MenuDrawer({ isOpen, onClose, menu }) {
   );
 }
 
-function MenuMobileNav({ menu, onClose }) {
+function MenuMobileNav({menu, onClose}) {
   return (
     <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
       {/* Top level menu items */}
@@ -157,7 +149,7 @@ function MenuMobileNav({ menu, onClose }) {
             to={item.to}
             target={item.target}
             onClick={onClose}
-            className={({ isActive }) =>
+            className={({isActive}) =>
               isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
             }
           >
@@ -171,7 +163,7 @@ function MenuMobileNav({ menu, onClose }) {
   );
 }
 
-function MobileHeader({ title, isHome, openCart, openMenu }) {
+function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
   const params = useParams();
@@ -179,8 +171,9 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   return (
     <header
       role="banner"
-      className={`${isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
-        } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      className={`${
+        isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -234,9 +227,10 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
   );
 }
 
-function DesktopHeader({ isHome, menu, openCart, title }) {
+function DesktopHeader({isHome, menu, openCart, title}) {
   const [loginModal, setLoginModal] = useState(false);
   const [cartCount,setCartCount] = useState(0)
+  
   useEffect(()=>{
     let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
     setCartCount(calculatedCartCount.length)
@@ -249,31 +243,30 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
           <Link to="/customise-your-card">
             <li>Create a Card</li>
           </Link>
-        )
+        );
       } else {
         return (
           <div>
-            <li onClick={() => setLoginModal(true)}>
-              Create a Card
-            </li>
+            <li onClick={() => setLoginModal(true)}>Create a Card</li>
           </div>
-        )
+        );
       }
     }
-
   }
 
   const params = useParams();
-  const { y } = useWindowScroll();
+  const {y} = useWindowScroll();
   return (
     <>
       <header
         role="banner"
-        className={`${isHome
-          ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
-          : 'bg-contrast/80 text-primary'
-          } ${!isHome && y > 50 && ' shadow-lightHeader'
-          } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-12 py-8`}
+        className={`${
+          isHome
+            ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
+            : 'bg-contrast/80 text-primary'
+        } ${
+          !isHome && y > 50 && ' shadow-lightHeader'
+        } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-12 py-8`}
       >
         <div className="flex xl:gap-12 lg:gap-1 items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -285,122 +278,132 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                 height: 'auto',
                 marginleft: '-10px',
               }}
-              className='xl:w-full lg:w-[80%]'
+              className="xl:w-full lg:w-[80%]"
             />
           </Link>
           <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-bold tracking-tight">
-            {/* Top level menu items */}
-            {(menu?.items || []).map((item) => (
-              
-              <Link
-                key={item.id}
-                to={item.to}
-                target={item.target}
-                prefetch="intent"
-                // className={
-                //      'navitems'
-                // }
-                className={({ isActive }) =>
-                isActive ? 'navitem-active' : 'navitems'
-              }
-              >
-                {item.title === 'Send a Card' ? (
-                  <div className="dropdown">
-                    <div>Send A Card</div>
-                    <div className="dropdown-content">
-                      <ul className="dropdown-list">
-                        <Link to="/collections/best-sellers">
-                          {' '}
-                          <li> Cards</li>
-                        </Link>
-                        <CreateCardCheck />
-                        <Link to="/collections/birthday">
-                          <li>Birthday Automation</li>
-                        </Link>
-                        <Link to="collections/gift-cards">
-                          {' '}
-                          <li>Gift Cards </li>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
-                ) : null}
-
-                {item.title === 'Integrations' ? (
-                  <div className="dropdown">
-                    <div>Integrations</div>
-                    <div className="dropdown-content">
-                      <ul className="dropdown-list">
-                        <Link to="/pages/zapier-integration">
-                          {' '}
-                          <li> Zapier</li>
-                        </Link>
-                        <Link to="/pages/shopify-integration">
-                          {' '}
-                          <li> Shopify</li>
-                        </Link>
-                        <Link to="/pages/salesforce">
-                          {' '}
-                          <li> Salesforce</li>{' '}
-                        </Link>
-                        <Link to="/pages/api-automation">
-                          {' '}
-                          <li> API</li>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
-                ) : null}
-
-                {item.title === 'Pricing' ? (
-                  <div className="dropdown">
-                    <div>Pricing</div>
-                    <div className="dropdown-content">
-                      <ul className="dropdown-list">
-                        <Link to="/price">
-                          <li>Credit Packages</li>
-                        </Link>
-                        <Link to="">
-                          <li>Get a Custom Quote</li>
-                        </Link>
-                        <Link to="/pages/marketing">
-                          {' '}
-                          <li>ROI Calculator</li>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
-                ) : null}
-
-                {item.title === 'Learn' ? (
-                  <div className="dropdown">
-                    <div>Learn</div>
-                    <div className="dropdown-content">
-                      <ul className="dropdown-list">
-                        <li>Blog.</li>
-                        <li>Tutorials</li>
-                        <li>Videos</li>
-                        <Link to="/faq">
-                          <li>F.A.Q.</li>
-                        </Link>
-                      </ul>
-                    </div>
-                  </div>
-                ) : null}
-                {['Send a Card', 'Integrations', 'Pricing', 'Learn'].includes(
-                  item.title
+            {(menu?.items || []).map((item) => {
+              if (
+                ['Send a Card', 'Integrations', 'Pricing', 'Learn'].includes(
+                  item.title,
                 )
-                  ? null
-                  : item.title}
-              </Link>
-            ))}
+              ) {
+                return (
+                  <div
+                    key={item.id}
+                    prefetch="intent"
+                    className={({ isActive }) =>
+                    isActive ? 'navitem-active' : 'navitems'}
+                      >
+                  
+                    {item.title === 'Send a Card' ? (
+                      <div className="dropdown">
+                        <div>Send A Card</div>
+                        <div className="dropdown-content">
+                          <ul className="dropdown-list">
+                            <Link to="/collections/best-sellers">
+                              {' '}
+                              <li> Cards</li>
+                            </Link>
+                            <CreateCardCheck />
+                            <Link to="/collections/birthday">
+                              <li>Birthday Automation</li>
+                            </Link>
+                            <Link to="collections/gift-cards">
+                              {' '}
+                              <li>Gift Cards </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {item.title === 'Integrations' ? (
+                      <div className="dropdown">
+                        <div>Integrations</div>
+                        <div className="dropdown-content">
+                          <ul className="dropdown-list">
+                            <Link to="/pages/zapier-integration">
+                              {' '}
+                              <li> Zapier</li>
+                            </Link>
+                            <Link to="/pages/shopify-integration">
+                              {' '}
+                              <li> Shopify</li>
+                            </Link>
+                            <Link to="/pages/salesforce">
+                              {' '}
+                              <li> Salesforce</li>{' '}
+                            </Link>
+                            <Link to="/pages/api-automation">
+                              {' '}
+                              <li> API</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
+                    {item.title === 'Pricing' ? (
+                      <div className="dropdown">
+                        <div>Pricing</div>
+                        <div className="dropdown-content">
+                          <ul className="dropdown-list">
+                            <Link to="/price">
+                              <li>Credit Packages</li>
+                            </Link>
+                            <Link to="">
+                              <li>Get a Custom Quote</li>
+                            </Link>
+                            <Link to="/pages/marketing">
+                              {' '}
+                              <li>ROI Calculator</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {item.title === 'Learn' ? (
+                      <div className="dropdown">
+                        <div>Learn</div>
+                        <div className="dropdown-content">
+                          <ul className="dropdown-list">
+                            <li>Blog.</li>
+                            <li>Tutorials</li>
+                            <li>Videos</li>
+                            <Link to="/pages/faq">
+                              <li>F.A.Q.</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
+                  </div>
+                );
+              } else {
+                return (
+                  <Link
+                    key={item.id}
+                    to={item.to}
+                    target={item.target}
+                    prefetch="intent" 
+                       className={({ isActive }) =>
+                isActive ? 'navitem-active' : 'navitems'}
+                  >
+                    {item.title}
+                  </Link>
+                );
+              }
+            })}
           </nav>
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
             <Link to="/carts">
               <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
-              <span className='text-[white]'>{cartCount?cartCount:''}</span>
+              {/* <span className='text-[white]'>{cartCount?cartCount:''}</span> */}
               </div>
             <img
               src={CartShopify}
@@ -419,18 +422,18 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             text="REQUEST A SAMPLE"
             className="request-button"
             onClickFunction={() =>
-            (window.location.href =
-              'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
+              (window.location.href =
+                'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-          <Link to="/account" className="text-black font-bold">
+          {/* <Link to="/account" className="text-black font-bold">
             Account →
-          </Link>
-          {/* <DynamicButton
+          </Link> */}
+          <DynamicButton
             text=" Account →"
             className="login-button"
             onClickFunction={() => navigate('/account/login')}
-          /> */}
+          />
 
           {/* <Form
           method="get"
@@ -459,19 +462,19 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         </div>
       </header>
       <LoginModal
-            title={" Create a Card"}
-            show={loginModal}
-            setLoginModal={setLoginModal}
-            onCancel={() => setLoginModal(false)}
-            confirmText="Login"
-            cancelText="Register"
-            cross={true}
-          />
+        title={' Create a Card'}
+        show={loginModal}
+        setLoginModal={setLoginModal}
+        onCancel={() => setLoginModal(false)}
+        confirmText="Login"
+        cancelText="Register"
+        cross={true}
+      />
     </>
   );
 }
 
-function AccountLink({ className }) {
+function AccountLink({className}) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
@@ -485,7 +488,7 @@ function AccountLink({ className }) {
   );
 }
 
-function CartCount({ isHome, openCart }) {
+function CartCount({isHome, openCart}) {
   const [root] = useMatches();
 
   return (
@@ -503,7 +506,7 @@ function CartCount({ isHome, openCart }) {
   );
 }
 
-function Badge({ openCart, dark, count }) {
+function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
   const BadgeCounter = useMemo(
@@ -511,10 +514,11 @@ function Badge({ openCart, dark, count }) {
       <>
         <IconBag />
         <div
-          className={`${dark
-            ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
-            : 'text-contrast bg-primary'
-            } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
+          className={`${
+            dark
+              ? 'text-primary bg-contrast dark:text-contrast dark:bg-primary'
+              : 'text-contrast bg-primary'
+          } absolute bottom-1 right-1 text-[0.625rem] font-medium subpixel-antialiased h-3 min-w-[0.75rem] flex items-center justify-center leading-none text-center rounded-full w-auto px-[0.125rem] pb-px`}
         >
           <span>{count || 0}</span>
         </div>
@@ -540,7 +544,7 @@ function Badge({ openCart, dark, count }) {
   );
 }
 
-function Footer({ menu }) {
+function Footer({menu}) {
   const isHome = useIsHomePath();
   const [showButton, setShowButton] = useState(false);
 
@@ -575,7 +579,7 @@ function Footer({ menu }) {
       {showButton && (
         <button
           onClick={() => {
-            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
           }}
           className="button-top"
         >
@@ -592,7 +596,7 @@ function Footer({ menu }) {
   );
 }
 
-function FooterLink({ item }) {
+function FooterLink({item}) {
   if (item.to.startsWith('http')) {
     return (
       <a href={item.to} target={item.target} rel="noopener noreferrer">
@@ -608,7 +612,7 @@ function FooterLink({ item }) {
   );
 }
 
-function FooterMenu({ menu }) {
+function FooterMenu({menu}) {
   const styles = {
     section: 'grid gap-4',
     nav: 'grid gap-2 pb-6',
@@ -671,7 +675,7 @@ function FooterMenu({ menu }) {
           {(menu?.items || []).map((item) => (
             <section key={item.id} className={styles.section}>
               <Disclosure>
-                {({ open }) => (
+                {({open}) => (
                   <>
                     <Disclosure.Button className="text-left md:cursor-default">
                       <Link to={item.to}>
@@ -691,8 +695,9 @@ function FooterMenu({ menu }) {
                     </Disclosure.Button>
                     {item?.items?.length > 0 ? (
                       <div
-                        className={`${open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                          } overflow-hidden transition-all duration-300`}
+                        className={`${
+                          open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                        } overflow-hidden transition-all duration-300`}
                       >
                         <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
                           <Disclosure.Panel static>
