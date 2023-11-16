@@ -290,7 +290,7 @@ export default function AddCartFunc() {
                                                             <h3 className='text-[#1b5299] font-karla text-[18px] tracking-[1.5px]'>{item.productTitle}</h3><br />
 
                                                             <span className='font-karla text-[#1b5299] text-[16px] tracking-[1.5px]'> Sender</span>:<span className=' text-[black] text-[16px] tracking-[1.5px]'> {item.senderAddress.address1},{item.senderAddress.city},{item.senderAddress.state},{item.senderAddress.country}</span>
-                                                            <div className='buttonDiv pr-5 m-2'>
+                                                            <div className='buttonDiv pr-5 mt-2'>
                                                                 <button className="bg-[#EF6E6E] text-[#fff] p-2" onClick={() => OpenModalFunc2(index)}>PREVIEW YOUR CUSTOM MESSAGE</button>
                                                             </div>
                                                         </div>
@@ -407,6 +407,8 @@ export default function AddCartFunc() {
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="w-[19rem] m-4 flex justify-center items-center">
+                                                            </div>
                                                         </div>
                                                     }
                                                     {item.usCount && <div className='flex'>
@@ -433,6 +435,8 @@ export default function AddCartFunc() {
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="w-[19rem] m-4 flex justify-center items-center">
+                                                            </div>
                                                     </div>}
                                                 </>
                                                 :
@@ -474,6 +478,8 @@ export default function AddCartFunc() {
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="w-[19rem] m-4 flex justify-center items-center">
+                                                            </div>
                                                         </div>
 
                                                         : <div className='flex'>
@@ -500,7 +506,8 @@ export default function AddCartFunc() {
                                                                     </div>
                                                                 </div>
                                                             </div>
-
+                                                            <div class="w-[19rem] m-4 flex justify-center items-center">
+                                                            </div>
                                                         </div>}
                                                 </>}
                                             <div className='w-full h-[1px] bg-[black]'></div>
@@ -530,6 +537,8 @@ export default function AddCartFunc() {
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="w-[19rem] m-4 flex justify-center items-center">
+                                                            </div>
                                                 </div>
                                             }
                                             <div className='flex'>

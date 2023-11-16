@@ -146,6 +146,7 @@ function redirectToFirstVariant({ product, request }) {
 
 let parameterValue;
 export default function Product() {
+
   const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
   const navigate = useNavigate()
   const goBack = () => navigate(-1)
@@ -235,7 +236,10 @@ export default function Product() {
     },
 
   };
-
+  useEffect(() => {
+    localStorage.removeItem('reqFielddInCart')
+    console.log(location.pathname,'0000000000');
+  }, [datafornav.pathname]);
   return (
     <>
       {productshow ?
@@ -246,10 +250,10 @@ export default function Product() {
         backArrow={true}
         onClickFunction={goBack}/>
           <Section className="px-0 md:px-8 ">
-            <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2">
               <ProductGallery
                 media={media.nodes}
-                className="w-full lg:col-span-2"
+                className="w-full"
               />
               <ProductInfo title={title} product={product} 
               show={show} setShow={setShow} setShowBox={setShowBox}

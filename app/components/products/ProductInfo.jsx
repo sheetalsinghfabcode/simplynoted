@@ -13,22 +13,60 @@ import {
     Heading,
     Button,
 } from '../Text';
-export function ProductInfo({title,product,setShow,show,setShowBox,editFontFamily,setFontFamily,fontFamilyName}) {
-    console.log(editFontFamily,'editFontFamily');
+
+export function ProductInfo({ title, product, setShow, show, setShowBox, editFontFamily, setFontFamily }) {
+    console.log(editFontFamily, 'editFontFamily');
+    const [customFonts, setCustomFonts] = useState([])
+    const [standardFontVal, setStandardFontVal] = useState('Select FontFamily')
     async function singleBtnCLick() {
         setShow(false)
         setSelectedFile('')
         setShowBox(true)
-      }
-      function setFont(e) {
-        console.log(e,'fontFamily');
+    }
+    function setFont(e) {
+        // console.log(e, 'fontFamily');
+        // getCustomFont('dddd')
+        console.log(selectVal,'useRefData');
         setFontFamily(e)
-       
+        if(e){
+            refVal2.current.value = "Custom FOnt"
         }
-      
+    }
+
+
+    async function customFontFamily() {
+        try {
+            const res = await fetch(`https://api.simplynoted.com/fonts/getMyFonts/6232622891113`)
+            const json = await res.json()
+            console.log(json.data);
+            setCustomFonts(json.data)
+        } catch (error) {
+            console.error(error, 'customfontError');
+        }
+    }
+    const refVal = useRef('')
+    const refVal2 = useRef('')
+    let selectVal = refVal.current.value
+    let selectVal2 = refVal2.current.value
+    console.log(selectVal,'selectavl');
+    useEffect(() => {
+        let customerid = localStorage.getItem('customerId')
+        customFontFamily(customerid)
+    }, [])
+
+    function getCustomFont(val) {
+        console.log(val, 'getcustom val');
+        setFontFamily(val)
+
+        if(val){
+            refVal.current.value = "Standard Font"
+        }
+        // setFont('select')
+
+    }
     return (
-        <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-300px]">
-            <section className="flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0">
+        <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-1.5rem]">
+            <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
                 <div className="grid gap-2">
                     <Heading as="h1" className="whitespace-normal">
                         {title}
@@ -58,10 +96,10 @@ export function ProductInfo({title,product,setShow,show,setShowBox,editFontFamil
                         <div className='w-[192px]'>
                             <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
                             <br />
-                            <select id="font" onClick={(e) => setFont(e.target.value)} >
-                                <option value="">{editFontFamily?editFontFamily:'Select FontFamily'}</option>
+                            <select id="font" ref={refVal} onClick={(e) => setFont(e.target.value)} >
+                                <option value="">{editFontFamily ? editFontFamily : selectVal?selectVal:'Standard Fonts'}</option>
                                 {editFontFamily && editFontFamily !== 'tarzan' &&
-                            <option value="tarzan" className={`font-tarzan`}>Tarzan</option>}
+                                    <option value="tarzan" className={`font-tarzan`}>Tarzan</option>}
                                 {/* <option value="pinocchio" className={`font-pinocchio`}>Pinocchio</option> */}
                                 <option value="tarzan" className={`font-tarzan`}>Tarzan</option>
                                 <option value="stitch" className={`font-stitch`}>Stitch</option>
@@ -94,8 +132,11 @@ export function ProductInfo({title,product,setShow,show,setShowBox,editFontFamil
                         <div>
                             <Text className='text-sm'>Custom Handwriting Style</Text>
                             <br />
-                            <select id="Coustomfont text-sm"  >
-                                <option className='text-sm'>Custom Handwriting Style</option>
+                            <select id="Coustomfont text-sm" ref={refVal2} onChange={(e) => getCustomFont(e.target.value)}>
+                                <option className='text-sm' selected disabled>{selectVal2?selectVal2:"Custom Fonts"}</option>
+                                {customFonts && customFonts.map((item) =>
+                                    <option value={item.fontName}>{item.fontName}</option>
+                                )}
                             </select>
                         </div>
                     </div>
