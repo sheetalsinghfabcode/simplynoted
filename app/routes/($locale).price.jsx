@@ -21,7 +21,7 @@ export default function price() {
           </h3>
         </div>
         <div className="credits-card  mt-[100px] pl-[10px] pr-[10px]">
-          <div className="table-credits relative">
+          <div className="table-credits w-[1245px] relative">
             <img
               className="main-cont border border-b-0"
               src="https://simplynoted.com/cdn/shop/files/table-bg_12ce292e-bbd0-4c5a-a59c-d71ec51dd81c.png?v=1684911363"
