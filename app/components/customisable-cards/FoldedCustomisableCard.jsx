@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useNavigate} from '@remix-run/react';
 import html2canvas from 'html2canvas';
 import {Modal} from '../Modal';
@@ -12,6 +12,8 @@ export default function FoldedCustomisableCard({
   customerId,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
+    useState(false);
   const [checkTitleDuplicacyModalOpen, setCheckTitleDuplicacyModalOpen] =
     useState(false);
   const [selectedCardPage, setSelectedCardPage] = useState('Card Front');
@@ -39,6 +41,9 @@ export default function FoldedCustomisableCard({
     generatedQrImageLink:
       'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
   });
+
+  const frontImageRef = useRef(null);
+  const backImageRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -223,11 +228,15 @@ export default function FoldedCustomisableCard({
       isColoredImage: true,
       isLongImage: false,
     };
-    selectedCardPage === 'Card Front' &&
+    if (selectedCardPage === 'Card Front') {
+      frontImageRef.current.value = '';
       setFrontImageDetails(initialImageDetails);
+    }
 
-    selectedCardPage === 'Card Back' &&
+    if (selectedCardPage === 'Card Back') {
+      backImageRef.current.value = '';
       setBackImageDetails(initialImageDetails);
+    }
   };
 
   const handleFinishEditingButton = async () => {
@@ -245,12 +254,12 @@ export default function FoldedCustomisableCard({
     if (isDuplicateTitle) return alert('Card name already exists. 😔');
     const isCustomCardSaved = await saveCustomCard();
     if (!isCustomCardSaved) return alert('Unable to save the custom card.');
-    alert('Custom card succesfully saved!! 🚀');
-    // navigate(`/products/${customCardTitle}`);
+    navigate(`/collections/customisable-cards`);
   };
 
   const handleCardPageSelectionButton = (event) => {
     event.preventDefault();
+    setIsRotationAnimationApplied((prevRotationValue) => !prevRotationValue);
     switch (event.target.value) {
       case 'Card Front':
         setSelectedCardPage('Card Front');
@@ -326,7 +335,6 @@ export default function FoldedCustomisableCard({
       if (data.ok) {
         setIsLoading(false);
         const response = await data.json();
-        //TODO: set the response to new state for the save
         setS3ImageUrls(response.result);
         return true;
       } else {
@@ -400,8 +408,7 @@ export default function FoldedCustomisableCard({
           metafields: [
             {
               key: 'qrImage',
-              // TODO: Have a dynamic value here.
-              value: '',
+              value: `${qr.generatedQrImageLink}`,
               value_type: 'string',
               namespace: 'is_customised',
             },
@@ -490,8 +497,6 @@ export default function FoldedCustomisableCard({
         ` https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
         options,
       );
-
-      setIsLoading(false);
       return response.ok ? true : false;
     } catch (err) {
       console.error('Failed to save the custom card: ', err);
@@ -511,7 +516,9 @@ export default function FoldedCustomisableCard({
   };
 
   return isLoading ? (
-    <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
+    <div className="min-h-screen flex justify-center items-center">
+      <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
+    </div>
   ) : (
     <section>
       {checkTitleDuplicacyModalOpen && (
@@ -571,13 +578,14 @@ export default function FoldedCustomisableCard({
               className="bg-[#FF443A] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5"
               type="button"
               onClick={() => {
-                setQr((prevQrValues) => {
-                  return {
-                    ...prevQrValues,
-                    isInputModalOpened: false,
-                    isConfirmationModalOpened: true,
-                  };
-                });
+                qr.inputText !== '' &&
+                  setQr((prevQrValues) => {
+                    return {
+                      ...prevQrValues,
+                      isInputModalOpened: false,
+                      isConfirmationModalOpened: true,
+                    };
+                  });
               }}
             >
               Create QR Code
@@ -648,85 +656,122 @@ export default function FoldedCustomisableCard({
               Custom Folded {selectedCardPage}
             </span>
             <div>
-              <div
-                className="h-[350px] min-w-[500px] bg-white relative border-2 border-black border-solid overflow-hidden"
-                style={{zIndex: '-30'}}
-              >
-                {(selectedCardPage === 'Card Front' && (
-                  <>
-                    <div
-                      className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
-                      style={{background: 'transparent', zIndex: '-10'}}
-                    ></div>
-                    <div
-                      className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
-                      id="frontTrimmedDiv"
-                      style={{zIndex: '-20'}}
-                    >
-                      {frontImageDetails.imageFile && (
-                        <img
-                          src={frontImageDetails.imageFile}
-                          alt="Selected front card image file"
-                          className={`object-contain h-full ${
-                            frontImageDetails.isColoredImage
-                              ? 'grayscale-0'
-                              : 'grayscale'
-                          }`}
-                          draggable="false"
-                          style={{
-                            transform: `scale(${frontImageDetails.zoom})`,
-                          }}
-                        />
-                      )}
-                    </div>
-                  </>
-                )) ||
-                  (selectedCardPage === 'Card Inside' && (
-                    <div className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]">
-                      <div class="relative w-full h-full">
-                        <span className="p-8 ">
-                          Your custom message text will be here...
-                        </span>
-                        {qr.isQrAdded && (
-                          <div className="h-[50px] absolute bottom-0 right-0">
-                            <img
-                              src={qr.generatedQrImageLink}
-                              className="object-contain h-full"
-                            />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )) ||
-                  (selectedCardPage === 'Card Back' && (
+              <div className="border-2 border-black border-solid">
+                <div
+                  className="h-[350px] min-w-[500px] bg-white relative overflow-hidden"
+                  style={{
+                    zIndex: '-30',
+                    transform: isRotationAnimationApplied
+                      ? 'rotateY(0deg)'
+                      : 'rotateY(180deg)',
+                    transition: 'transform .8s',
+                  }}
+                >
+                  {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
                         className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
-                        style={{background: 'transparent', zIndex: '-10'}}
+                        style={{
+                          background: 'transparent',
+                          zIndex: '-10',
+                          transform: isRotationAnimationApplied
+                            ? 'rotateY(0deg)'
+                            : 'rotateY(180deg)',
+                        }}
                       ></div>
                       <div
                         className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
-                        id="backTrimmedDiv"
-                        style={{zIndex: '-20'}}
+                        id="frontTrimmedDiv"
+                        style={{
+                          zIndex: '-20',
+                          transform: isRotationAnimationApplied
+                            ? 'rotateY(0deg)'
+                            : 'rotateY(180deg)',
+                        }}
                       >
-                        {backImageDetails.imageFile && (
+                        {frontImageDetails.imageFile && (
                           <img
-                            src={backImageDetails.imageFile}
-                            alt="Selected back card image file"
+                            src={frontImageDetails.imageFile}
+                            alt="Selected front card image file"
                             className={`object-contain h-full ${
-                              backImageDetails.isColoredImage
+                              frontImageDetails.isColoredImage
                                 ? 'grayscale-0'
                                 : 'grayscale'
                             }`}
                             draggable="false"
                             style={{
-                              transform: `scale(${backImageDetails.zoom})`,
+                              transform: `scale(${frontImageDetails.zoom})`,
                             }}
                           />
                         )}
                       </div>
                     </>
-                  ))}
+                  )) ||
+                    (selectedCardPage === 'Card Inside' && (
+                      <div
+                        className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
+                        style={{
+                          transform: isRotationAnimationApplied
+                            ? 'rotateY(0deg)'
+                            : 'rotateY(180deg)',
+                        }}
+                      >
+                        <div class="relative w-full h-full">
+                          <span className="p-8 font-pinocchio">
+                            Your custom message text will be here...
+                          </span>
+                          {qr.isQrAdded && (
+                            <div className="h-[50px] absolute bottom-0 right-0">
+                              <img
+                                src={qr.generatedQrImageLink}
+                                className="object-contain h-full"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )) ||
+                    (selectedCardPage === 'Card Back' && (
+                      <>
+                        <div
+                          className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
+                          style={{
+                            background: 'transparent',
+                            zIndex: '-10',
+                            transform: isRotationAnimationApplied
+                              ? 'rotateY(0deg)'
+                              : 'rotateY(180deg)',
+                          }}
+                        ></div>
+                        <div
+                          className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
+                          id="backTrimmedDiv"
+                          style={{
+                            zIndex: '-20',
+                            transform: isRotationAnimationApplied
+                              ? 'rotateY(0deg)'
+                              : 'rotateY(180deg)',
+                          }}
+                        >
+                          {backImageDetails.imageFile && (
+                            <img
+                              src={backImageDetails.imageFile}
+                              alt="Selected back card image file"
+                              className={`object-contain h-full ${
+                                backImageDetails.isColoredImage
+                                  ? 'grayscale-0'
+                                  : 'grayscale'
+                              }`}
+                              draggable="false"
+                              style={{
+                                transform: `scale(${backImageDetails.zoom})`,
+                              }}
+                            />
+                          )}
+                        </div>
+                      </>
+                    ))}
+                </div>
               </div>
               <div className="flex gap-4 w-full mt-2">
                 <button
@@ -791,25 +836,36 @@ export default function FoldedCustomisableCard({
               {!(selectedCardPage === 'Card Inside') && (
                 <>
                   <div className="relative w-[60px] h-[50px]">
-                    <img
-                      src={AddImageIcon}
-                      alt="Add image file icon"
-                      draggable="false"
-                    />
                     {selectedCardPage === 'Card Front' && (
-                      <input
-                        type="file"
-                        className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
-                        onChange={handleImageFileInsertion}
-                      />
+                      <>
+                        <img
+                          src={AddImageIcon}
+                          alt="Add image file icon"
+                          draggable="false"
+                        />
+                        <input
+                          type="file"
+                          className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
+                          onChange={handleImageFileInsertion}
+                          ref={frontImageRef}
+                        />
+                      </>
                     )}
 
                     {selectedCardPage === 'Card Back' && (
-                      <input
-                        type="file"
-                        className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
-                        onChange={handleImageFileInsertion}
-                      />
+                      <>
+                        <img
+                          src={AddImageIcon}
+                          alt="Add image file icon"
+                          draggable="false"
+                        />
+                        <input
+                          type="file"
+                          className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
+                          onChange={handleImageFileInsertion}
+                          ref={backImageRef}
+                        />
+                      </>
                     )}
                   </div>
                   <div className="h-[200px]">
