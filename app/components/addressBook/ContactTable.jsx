@@ -23,7 +23,8 @@ const ContactTable = ({
   handleUploadClick,
   openModal,
   selectedFile,
-  setAddressForm
+  setAddressForm,
+  ProdcuctSide
 
 }) => {
   const {loadAddress, setLoadAddress} = useAddressBook();
@@ -32,6 +33,8 @@ const ContactTable = ({
   const [deleteModal, setDeleteModal] = useState(false);
 
   let data = filteredAddresses;
+
+  
 
   const handleTypeChange = (e) => {
     setSelectedCheckboxes([]);
@@ -271,7 +274,7 @@ const ContactTable = ({
           {!editAddress && (
             <>
               <div className="flex gap-[16px] items-center mb-[14px]">
-                {selectedCheckboxes && selectedCheckboxes.length > 0 && (
+                {selectedCheckboxes && selectedCheckboxes.length > 0 && !ProdcuctSide &&(
                   <button
                     onClick={() => setDeleteModal(true)}
                     className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
@@ -283,6 +286,11 @@ const ContactTable = ({
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
+              {ProdcuctSide &&
+              <div>
+                <button>Continue</button>
+              </div>
+              }
               {/* Your table rendering code here... */}
               <table
                 className="w-full overflow-auto max-w-[100%]"

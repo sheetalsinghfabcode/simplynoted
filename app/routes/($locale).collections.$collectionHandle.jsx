@@ -143,6 +143,7 @@ export default function Collection() {
   const [addingProductsData, setAddingProd] = useState([]);
   const [checkState, setCheckState] = useState(false)
   const [loginModal, setLoginModal] = useState(false);
+  const [loginModal2, setLoginModal2] = useState(false);
   const [loader, setLoader] = useState(false);
   const [offSetVal, setOffSetVal] = useState(0)
   const [loadMore, setLoadMore] = useState(false)
@@ -151,6 +152,11 @@ export default function Collection() {
   const { collection, collections, appliedFilters, handleLinkData, myCollection, collectionHandle } = useLoaderData();
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
+  console.log(handleLinkData.collections.edges,"handleLinkData.collections.edges");
+  let mainTags = ["thank-you","birthday","anniversary","business","congratulations","holidays","just-because","customisable-cards"]
+  let filterTag = handleLinkData.collections.edges
+  const data = filterTag.filter((item)=> mainTags.includes(item.node.handle))
+  // console.log(data,"filtereTag Data");
   async function changeHandle(e) {
     setLoader(true)
     setHandleName(e)
@@ -163,6 +169,23 @@ export default function Collection() {
       setCheckState(false)
       setLoader(false)
 
+    }
+  }
+
+   function CreateCustomCard(){
+    try {
+    setLoader(true)
+
+      if(customerid){
+        navigate("/customise-your-card")
+      setLoader(false)
+      } else{
+        setLoginModal2(true)
+      setLoader(false)
+      }
+    } catch (error) {
+      
+console.log(error);
     }
   }
 
@@ -259,7 +282,7 @@ export default function Collection() {
                 <DynamicButton
                   className="btnShadow bg-[#1b5299] w-[200px] text-[#fff] p-2 "
                   text="Create A Custom Card"
-                  onClickFunction={() => ''}
+                  onClickFunction={CreateCustomCard}
                 />
                 <br />
                 <DynamicButton
@@ -273,7 +296,7 @@ export default function Collection() {
                 <select name="" id="" className='!border-none text-[#508ee3]' onChange={(e) => changeHandle(e.target.value)}>
                   <option className='w-full' selected disabled>{collectionHandle} </option>
 
-                  {handleLinkData.collections.edges.map((item) =>
+                   {data && data.map((item) =>
                     <option value={item.node.handle}>{item.node.handle}</option>
                   )}
                 </select>
@@ -281,7 +304,7 @@ export default function Collection() {
             </div>
 
             <div className='mt-[24px]'>
-            {myColletionData.length === 0 && (
+            {myColletionData.length === 0 && !checkState && (
                       <CircularLoader color="#ef6e6e" />
                     )}
               <Grid layout="products">
@@ -365,6 +388,14 @@ export default function Collection() {
             show={loginModal}
             setLoginModal={setLoginModal}
             onCancel={() => setLoginModal(false)}
+            confirmText="Login"
+            cancelText="Register"
+          />
+          <LoginModal
+            title={" Create Custom Card"}
+            show={loginModal2}
+            setLoginModal={setLoginModal2}
+            onCancel={() => setLoginModal2(false)}
             confirmText="Login"
             cancelText="Register"
           />

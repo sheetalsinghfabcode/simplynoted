@@ -39,7 +39,6 @@ export default function AddressBook() {
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
-
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
     if (!customerID) {
