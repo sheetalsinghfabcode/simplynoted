@@ -245,7 +245,7 @@ export default function Product() {
       {productshow ?
         <>
         <DynamicButton 
-        className="bg-[#EF6E6E] m-5 w-full max-w-[150px]"
+        className="bg-[#EF6E6E] m-5 ml-[32px] w-full max-w-[150px]"
         text="Go Back"
         backArrow={true}
         onClickFunction={goBack}/>

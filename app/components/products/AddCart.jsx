@@ -311,10 +311,13 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         setShowShipAddress(false)
     }
     return (
-        <>
-            {loader ?
-                <Loader loaderMessage="Adding Data to Cart" />
-                :
+        <div className='relative'>
+           {loader && (
+          <div className="absolute top-[50%] left-[50%]">
+            <CircularLoader color="#ef6e6e" />
+          </div>
+        )}
+       
                 <>
                     <DynamicButton
                         className="bg-[#EF6E6E] m-5 w-full max-w-[150px]"
@@ -331,7 +334,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                         </div>
                     )}
                     {!addressForm &&
-                        <div className='  w-full h-full gap-2 mt-8'>
+                        <div className={`w-full h-full gap-2 mt-8 ${loader && 'opacity-40'}`}>
                             <div className='row flex mr-2 ml-2 gap-4'>
                                 <div className='col-6 w-[50%] '>
                                     <div className=' bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
@@ -655,7 +658,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                         table={false}
                     />
                 </>
-            }
-        </>
+            
+        </div>
     )
 }

@@ -347,6 +347,7 @@ const ManageSubscription = () => {
       />
 
       <StripeModal
+      loader={loader}
         show={updateModal}
         onConfirm={updateCreditCard}
         onCancel={() => setUpdateModal(false)}
