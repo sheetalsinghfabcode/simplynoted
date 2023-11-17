@@ -230,18 +230,20 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 function DesktopHeader({isHome, menu, openCart, title}) {
   const [loginModal, setLoginModal] = useState(false);
 
-  const navigate =  useNavigate();
-  const [cartCount,setCartCount] = useState(0)
-  
-  useEffect(()=>{
-    let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
-    setCartCount(calculatedCartCount.length)
-  },[])
-  function CreateCardCheck(){
-   if(typeof window !== 'undefined'){
-    let id = localStorage.getItem('customerId');
-    if(id){
-      return(
+  const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    let calculatedCartCount = localStorage.getItem('mydata')
+      ? JSON.parse(localStorage.getItem('mydata'))
+      : [];
+    setCartCount(calculatedCartCount.length);
+  }, []);
+  function CreateCardCheck() {
+    if (typeof window !== 'undefined') {
+      let id = localStorage.getItem('customerId');
+      if (id) {
+        return (
           <Link to="/customise-your-card">
             <li>Create a Card</li>
           </Link>
@@ -294,10 +296,10 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                   <div
                     key={item.id}
                     prefetch="intent"
-                    className={({ isActive }) =>
-                    isActive ? 'navitem-active' : 'navitems'}
-                      >
-                  
+                    className={({isActive}) =>
+                      isActive ? 'navitem-active' : 'navitems'
+                    }
+                  >
                     {item.title === 'Send a Card' ? (
                       <div className="dropdown">
                         <div>Send A Card</div>
@@ -325,11 +327,11 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                         <div>Integrations</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
-                            <Link to="/pages/zapier-integration">
+                            <Link to="/zapier">
                               {' '}
                               <li> Zapier</li>
                             </Link>
-                            <Link to="/pages/shopify-integration">
+                            <Link to="/shopify">
                               {' '}
                               <li> Shopify</li>
                             </Link>
@@ -353,8 +355,18 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                             <Link to="/price">
                               <li>Credit Packages</li>
                             </Link>
-                            <Link to="">
-                              <li>Get a Custom Quote</li>
+                            <Link to="#">
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  window.location.href =
+                                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
+                                  return false;
+                                }}
+                              >
+                                {' '}
+                                Get a Custom Quote
+                              </button>
                             </Link>
                             <Link to="/pages/marketing">
                               {' '}
@@ -390,9 +402,10 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                     key={item.id}
                     to={item.to}
                     target={item.target}
-                    prefetch="intent" 
-                       className={({ isActive }) =>
-                isActive ? 'navitem-active' : 'navitems'}
+                    prefetch="intent"
+                    className={({isActive}) =>
+                      isActive ? 'navitem-active' : 'navitems'
+                    }
                   >
                     {item.title}
                   </Link>
@@ -404,18 +417,20 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         <div className="flex items-center gap-1">
           <div className="tooltip">
             <Link to="/carts">
-              <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
-              <span className='text-[white]'>{cartCount?cartCount:''}</span>
+              <div className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]">
+                <span className="text-[white]">
+                  {cartCount ? cartCount : ''}
+                </span>
               </div>
-            <img
-              src={CartShopify}
-              alt="cart-icon"
-              style={{
-                width: '32px',
-                height: '29px',
-                marginTop: '-11px',
-              }}
-            />
+              <img
+                src={CartShopify}
+                alt="cart-icon"
+                style={{
+                  width: '32px',
+                  height: '29px',
+                  marginTop: '-11px',
+                }}
+              />
             </Link>
             {/* <span className="tooltiptext">Cart</span> */}
           </div>
