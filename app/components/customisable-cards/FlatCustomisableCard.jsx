@@ -67,6 +67,7 @@ export default function FlatCustomisableCard({
     isInputModalOpened: false,
     isConfirmationModalOpened: false,
     inputText: '',
+    isEnteredTextInvalid: false,
     isQrAdded: false,
     generatedQrImageLink:
       'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
@@ -458,6 +459,7 @@ export default function FlatCustomisableCard({
       setQr((prevQrValues) => {
         return {
           ...prevQrValues,
+          isEnteredTextInvalid: false,
           isQrAdded: false,
         };
       });
@@ -465,7 +467,27 @@ export default function FlatCustomisableCard({
       setQr((prevQrValues) => {
         return {
           ...prevQrValues,
+          isEnteredTextInvalid: false,
           isInputModalOpened: true,
+        };
+      });
+    }
+  };
+
+  const handleQrCodeCreation = () => {
+    if (qr.inputText !== '') {
+      setQr((prevQrValues) => {
+        return {
+          ...prevQrValues,
+          isInputModalOpened: false,
+          isConfirmationModalOpened: true,
+        };
+      });
+    } else {
+      setQr((prevQrValues) => {
+        return {
+          ...prevQrValues,
+          isEnteredTextInvalid: true,
         };
       });
     }
@@ -782,38 +804,40 @@ export default function FlatCustomisableCard({
         >
           <div>
             <div>
-              <p className="bg-[#deebf7] h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold">
+              <p className="bg-[#deebf7] text-2xl h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold mb-4">
                 ADD QR CODE
               </p>
             </div>
             <label htmlFor="qr">
-              <span className="mt-4">Enter website URL or message:</span>
+              <span className="font-bold">Enter website URL or message:</span>
               <br />
+              <div className="h-4 flex justify-start items-center">
+                {qr.isEnteredTextInvalid && (
+                  <span className="text-[red] text-xs">Required field*</span>
+                )}
+              </div>
               <input
-                className="w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none"
+                className={`${
+                  qr.isEnteredTextInvalid && 'border-red-500 '
+                } w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none`}
                 type="text"
                 required
                 onChange={(e) =>
                   setQr((prevQrValues) => {
-                    return {...prevQrValues, inputText: e.target.value};
+                    return {
+                      ...prevQrValues,
+                      isEnteredTextInvalid: false,
+                      inputText: e.target.value,
+                    };
                   })
                 }
               />
             </label>
             <br />
             <button
-              className="bg-[#FF443A] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5"
+              className="bg-[#ef6e6e] border-none text-white outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5 font-bold"
               type="button"
-              onClick={() => {
-                qr.inputText !== '' &&
-                  setQr((prevQrValues) => {
-                    return {
-                      ...prevQrValues,
-                      isInputModalOpened: false,
-                      isConfirmationModalOpened: true,
-                    };
-                  });
-              }}
+              onClick={handleQrCodeCreation}
             >
               Create QR Code
             </button>
@@ -841,13 +865,15 @@ export default function FlatCustomisableCard({
             </div>
             <div className="flex w-full gap-1 items-center justify-center">
               <button
-                className="flex-1 text-[#FF443A] border border-[#FF443A] p-1 h-[43px] mt-5"
+                className="flex-1 text-[#ef6e6e] border border-[#ef6e6e] p-1 h-[43px] mt-5 font-bold"
                 type="button"
                 onClick={() => {
                   setQr((prevQrValues) => {
                     return {
                       ...prevQrValues,
+                      inputText: '',
                       isInputModalOpened: true,
+                      isEnteredTextInvalid: false,
                       isConfirmationModalOpened: false,
                     };
                   });
@@ -856,7 +882,7 @@ export default function FlatCustomisableCard({
                 CHANGE QR
               </button>
               <button
-                className="flex-1 text-white bg-[#FF443A] p-1 h-[43px] mt-5"
+                className="flex-1 text-white bg-[#ef6e6e] p-1 h-[43px] mt-5 font-bold"
                 type="button"
                 onClick={() => {
                   setQr((prevQrValues) => {
@@ -952,11 +978,15 @@ export default function FlatCustomisableCard({
                         }}
                       >
                         <div
-                          className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
+                          className={`flex h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
                             headerFooterVisibility.isHeaderVisible
                               ? 'block '
                               : 'hidden '
-                          }  ${isMouseHoveredOnContainer && 'border '} ${
+                          }  ${
+                            isMouseHoveredOnContainer
+                              ? 'border-black '
+                              : 'border-transparent '
+                          } ${
                             (headerData.alignment === 'left' &&
                               'justify-start ') ||
                             (headerData.alignment === 'center' &&
@@ -965,7 +995,7 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${headerData.fontFamily}`}
+                            className={`font-${headerData.fontFamily} max-w-[434px] overflow-hidden`}
                             style={{
                               fontSize: `${headerData.fontSize}px`,
                               color: `${headerData.fontColor}`,
@@ -997,11 +1027,15 @@ export default function FlatCustomisableCard({
                           <span>Your custom message text will be here...</span>
                         </div>
                         <div
-                          className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
+                          className={`flex h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
                             headerFooterVisibility.isFooterVisible
                               ? 'block '
                               : 'hidden '
-                          } ${isMouseHoveredOnContainer && 'border '} ${
+                          } ${
+                            isMouseHoveredOnContainer
+                              ? 'border-black '
+                              : 'border-transparent '
+                          } ${
                             (footerData.alignment === 'left' &&
                               'justify-start ') ||
                             (footerData.alignment === 'center' &&
@@ -1010,7 +1044,7 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${footerData.fontFamily}`}
+                            className={`font-${footerData.fontFamily} max-w-[434px] overflow-hidden`}
                             style={{
                               fontSize: `${footerData.fontSize}px`,
                               color: `${footerData.fontColor}`,
@@ -1049,7 +1083,7 @@ export default function FlatCustomisableCard({
               <div className="flex gap-4 w-full mt-2">
                 <button
                   value="Card Front"
-                  className={`flex-1 p-2 text-white ${
+                  className={`flex-1 p-2 text-white font-bold ${
                     selectedCardPage === 'Card Front'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -1060,7 +1094,7 @@ export default function FlatCustomisableCard({
                 </button>
                 <button
                   value="Card Back"
-                  className={`flex-1 p-2 text-white ${
+                  className={`flex-1 p-2 text-white font-bold ${
                     selectedCardPage === 'Card Back'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -1139,7 +1173,7 @@ export default function FlatCustomisableCard({
                           </label>
                         </div>
                         <button
-                          className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px]"
+                          className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] font-bold"
                           type="button"
                           onClick={handleSelectedImageReset}
                         >
@@ -1231,10 +1265,10 @@ export default function FlatCustomisableCard({
                         />
                       </label>
                       <div className="flex h-[20px] mt-3 mb-5">
-                        <span className="flex-1 mr-2">Alignment</span>
+                        <span className="flex-1 font-bold mr-2">Alignment</span>
                         <div className="flex-1 flex">
                           <svg
-                            className="flex-1 mr-1"
+                            className="flex-1 mr-1 cursor-pointer"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             onClick={() => handleDataAlignment('left')}
@@ -1243,9 +1277,15 @@ export default function FlatCustomisableCard({
                               fill="#637381"
                               d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"
                             />
+                            {((observingData.isHeader &&
+                              headerData.alignment === 'left') ||
+                              (observingData.isFooter &&
+                                footerData.alignment === 'left')) && (
+                              <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z" />
+                            )}
                           </svg>
                           <svg
-                            className="flex-1 mr-1"
+                            className="flex-1 mr-1 cursor-pointer"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             onClick={() => handleDataAlignment('center')}
@@ -1254,9 +1294,15 @@ export default function FlatCustomisableCard({
                               fill="#637381"
                               d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
                             />
+                            {((observingData.isHeader &&
+                              headerData.alignment === 'center') ||
+                              (observingData.isFooter &&
+                                footerData.alignment === 'center')) && (
+                              <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z" />
+                            )}
                           </svg>
                           <svg
-                            className="flex-1 mr-1"
+                            className="flex-1 mr-1 cursor-pointer"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                             onClick={() => handleDataAlignment('right')}
@@ -1265,6 +1311,12 @@ export default function FlatCustomisableCard({
                               fill="#637381"
                               d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
                             />
+                            {((observingData.isHeader &&
+                              headerData.alignment === 'right') ||
+                              (observingData.isFooter &&
+                                footerData.alignment === 'right')) && (
+                              <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z" />
+                            )}
                           </svg>
                         </div>
                       </div>
@@ -1531,7 +1583,7 @@ export default function FlatCustomisableCard({
                         )}
                       </div>
                       <button
-                        className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2"
+                        className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
                         type="button"
                         onClick={handleSelectedImageReset}
                       >
@@ -1557,7 +1609,9 @@ export default function FlatCustomisableCard({
                         <span className="font-bold">
                           {qr.isQrAdded ? 'Remove QR Code' : 'Add QR Code'}
                         </span>
-                        <span className="text-xs">&#40;Footer Only&#41;</span>
+                        <span className="text-xs font-bold">
+                          &#40;Footer Only&#41;
+                        </span>
                       </div>
                     </div>
                   </div>
