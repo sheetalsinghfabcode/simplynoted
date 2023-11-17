@@ -687,8 +687,8 @@ export default function FoldedCustomisableCard({
                   style={{
                     zIndex: '-30',
                     transform: isRotationAnimationApplied
-                      ? 'rotateY(0deg)'
-                      : 'rotateY(180deg)',
+                      ? 'rotateY(-180deg)'
+                      : 'rotateY(0deg)',
                     transition: 'transform .8s',
                   }}
                 >
@@ -700,8 +700,8 @@ export default function FoldedCustomisableCard({
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(0deg)'
-                            : 'rotateY(180deg)',
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                         }}
                       ></div>
                       <div
@@ -710,8 +710,8 @@ export default function FoldedCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(0deg)'
-                            : 'rotateY(180deg)',
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                         }}
                       >
                         {frontImageDetails.imageFile && (
@@ -737,8 +737,8 @@ export default function FoldedCustomisableCard({
                         className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
                         style={{
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(0deg)'
-                            : 'rotateY(180deg)',
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                         }}
                       >
                         <div class="relative w-full h-full">
@@ -764,8 +764,8 @@ export default function FoldedCustomisableCard({
                             background: 'transparent',
                             zIndex: '-10',
                             transform: isRotationAnimationApplied
-                              ? 'rotateY(0deg)'
-                              : 'rotateY(180deg)',
+                              ? 'rotateY(-180deg)'
+                              : 'rotateY(0deg)',
                           }}
                         ></div>
                         <div
@@ -774,8 +774,8 @@ export default function FoldedCustomisableCard({
                           style={{
                             zIndex: '-20',
                             transform: isRotationAnimationApplied
-                              ? 'rotateY(0deg)'
-                              : 'rotateY(180deg)',
+                              ? 'rotateY(-180deg)'
+                              : 'rotateY( 0deg)',
                           }}
                         >
                           {backImageDetails.imageFile && (
@@ -854,7 +854,9 @@ export default function FoldedCustomisableCard({
                 <span className="font-bold">
                   {qr.isQrAdded ? 'Remove QR Code' : 'Add QR Code'}
                 </span>
-                <span className="text-xs font-bold">&#40;to inside of card&#41;</span>
+                <span className="text-xs font-bold">
+                  &#40;to inside of card&#41;
+                </span>
               </div>
             </div>
             <div className="flex flex-col justify-between items-center gap-5 min-h-[330px] min-w-[240px] ">

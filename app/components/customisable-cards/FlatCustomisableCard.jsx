@@ -919,8 +919,8 @@ export default function FlatCustomisableCard({
                   style={{
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
                     transform: isRotationAnimationApplied
-                      ? 'rotateY(0deg)'
-                      : 'rotateY(180deg)',
+                      ? 'rotateY(-180deg)'
+                      : 'rotateY(0deg)',
                     transition: 'transform .8s',
                   }}
                   onMouseOver={() => setIsMouseHoveredOnContainer(true)}
@@ -934,8 +934,8 @@ export default function FlatCustomisableCard({
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(0deg)'
-                            : 'rotateY(180deg)',
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                         }}
                       ></div>
                       <div
@@ -944,8 +944,8 @@ export default function FlatCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(0deg)'
-                            : 'rotateY(180deg)',
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                         }}
                       >
                         {frontImageDetails.imageFile && (
@@ -973,8 +973,8 @@ export default function FlatCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(0deg)'
-                            : 'rotateY(180deg)',
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                         }}
                       >
                         <div
@@ -1147,11 +1147,7 @@ export default function FlatCustomisableCard({
                               type="radio"
                               value="grayscale"
                               onChange={handleImageColorChange}
-                              checked={
-                                observingData.isHeader
-                                  ? !headerData.isColoredImage
-                                  : !footerData.isColoredImage
-                              }
+                              checked={!frontImageDetails.isColoredImage}
                             />
                             &nbsp;B/W
                           </label>
@@ -1162,11 +1158,7 @@ export default function FlatCustomisableCard({
                               name="isImageColored"
                               value="colored"
                               onChange={handleImageColorChange}
-                              checked={
-                                observingData.isHeader
-                                  ? headerData.isColoredImage
-                                  : footerData.isColoredImage
-                              }
+                              checked={frontImageDetails.isColoredImage}
                               defaultChecked
                             />
                             &nbsp;Color
