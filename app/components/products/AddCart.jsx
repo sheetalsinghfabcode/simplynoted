@@ -8,6 +8,7 @@ import Loader from '../modal/Loader';
 import { Modal } from '../Modal'
 import location from '../../../location.json'
 import Instruction from '../modal/Instruction';
+import CircularLoader from '../CircularLoder';
 
 
 let customerid, cartDataReq
