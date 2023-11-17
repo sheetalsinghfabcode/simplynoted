@@ -37,6 +37,7 @@ export default function FoldedCustomisableCard({
     isInputModalOpened: false,
     isConfirmationModalOpened: false,
     inputText: '',
+    isEnteredTextInvalid: false,
     isQrAdded: false,
     generatedQrImageLink:
       'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
@@ -53,7 +54,6 @@ export default function FoldedCustomisableCard({
     // To Store the actual value instead of a promise inside screenshotUrl object key.
     const generateScreenshot = async () => {
       try {
-        //
         // Image file present, generating screenshot.
         if (selectedCardPage === 'Card Front') {
           trimmedDiv = document.getElementById('frontTrimmedDiv');
@@ -278,6 +278,7 @@ export default function FoldedCustomisableCard({
       setQr((prevQrValues) => {
         return {
           ...prevQrValues,
+          isEnteredTextInvalid: false,
           isQrAdded: false,
         };
       });
@@ -285,7 +286,27 @@ export default function FoldedCustomisableCard({
       setQr((prevQrValues) => {
         return {
           ...prevQrValues,
+          isEnteredTextInvalid: false,
           isInputModalOpened: true,
+        };
+      });
+    }
+  };
+
+  const handleQrCodeCreation = () => {
+    if (qr.inputText !== '') {
+      setQr((prevQrValues) => {
+        return {
+          ...prevQrValues,
+          isInputModalOpened: false,
+          isConfirmationModalOpened: true,
+        };
+      });
+    } else {
+      setQr((prevQrValues) => {
+        return {
+          ...prevQrValues,
+          isEnteredTextInvalid: true,
         };
       });
     }
@@ -555,38 +576,40 @@ export default function FoldedCustomisableCard({
         >
           <div>
             <div>
-              <p className="bg-[#deebf7] h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold">
+              <p className="bg-[#deebf7] text-2xl h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold mb-4">
                 ADD QR CODE
               </p>
             </div>
             <label htmlFor="qr">
-              <span className="mt-4">Enter website URL or message:</span>
+              <span className="font-bold">Enter website URL or message:</span>
               <br />
+              <div className="h-4 flex justify-start items-center">
+                {qr.isEnteredTextInvalid && (
+                  <span className="text-[red] text-xs">Required field*</span>
+                )}
+              </div>
               <input
-                className="w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none"
+                className={`${
+                  qr.isEnteredTextInvalid && 'border-red-500 '
+                } w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none`}
                 type="text"
                 required
                 onChange={(e) =>
                   setQr((prevQrValues) => {
-                    return {...prevQrValues, inputText: e.target.value};
+                    return {
+                      ...prevQrValues,
+                      isEnteredTextInvalid: false,
+                      inputText: e.target.value,
+                    };
                   })
                 }
               />
             </label>
             <br />
             <button
-              className="bg-[#FF443A] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5"
+              className="bg-[#ef6e6e] border-none text-white outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5 font-bold"
               type="button"
-              onClick={() => {
-                qr.inputText !== '' &&
-                  setQr((prevQrValues) => {
-                    return {
-                      ...prevQrValues,
-                      isInputModalOpened: false,
-                      isConfirmationModalOpened: true,
-                    };
-                  });
-              }}
+              onClick={handleQrCodeCreation}
             >
               Create QR Code
             </button>
@@ -614,13 +637,15 @@ export default function FoldedCustomisableCard({
             </div>
             <div className="flex w-full gap-1 items-center justify-center">
               <button
-                className="flex-1 text-[#FF443A] border border-[#FF443A] p-1 h-[43px] mt-5"
+                className="flex-1 text-[#ef6e6e] border border-[#ef6e6e] p-1 h-[43px] mt-5 font-bold"
                 type="button"
                 onClick={() => {
                   setQr((prevQrValues) => {
                     return {
                       ...prevQrValues,
+                      inputText: '',
                       isInputModalOpened: true,
+                      isEnteredTextInvalid: false,
                       isConfirmationModalOpened: false,
                     };
                   });
@@ -629,7 +654,7 @@ export default function FoldedCustomisableCard({
                 CHANGE QR
               </button>
               <button
-                className="flex-1 text-white bg-[#FF443A] p-1 h-[43px] mt-5"
+                className="flex-1 text-white bg-[#ef6e6e] p-1 h-[43px] mt-5 font-bold"
                 type="button"
                 onClick={() => {
                   setQr((prevQrValues) => {
@@ -776,7 +801,7 @@ export default function FoldedCustomisableCard({
               <div className="flex gap-4 w-full mt-2">
                 <button
                   value="Card Front"
-                  className={`flex-1 p-2 text-white ${
+                  className={`flex-1 p-2 text-white font-bold ${
                     selectedCardPage === 'Card Front'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -787,7 +812,7 @@ export default function FoldedCustomisableCard({
                 </button>
                 <button
                   value="Card Inside"
-                  className={`flex-1 p-2 text-white ${
+                  className={`flex-1 p-2 text-white font-bold ${
                     selectedCardPage === 'Card Inside'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -798,7 +823,7 @@ export default function FoldedCustomisableCard({
                 </button>
                 <button
                   value="Card Back"
-                  className={`flex-1 p-2 text-white ${
+                  className={`flex-1 p-2 text-white font-bold ${
                     selectedCardPage === 'Card Back'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -829,7 +854,7 @@ export default function FoldedCustomisableCard({
                 <span className="font-bold">
                   {qr.isQrAdded ? 'Remove QR Code' : 'Add QR Code'}
                 </span>
-                <span className="text-xs">&#40;to inside of card&#41;</span>
+                <span className="text-xs font-bold">&#40;to inside of card&#41;</span>
               </div>
             </div>
             <div className="flex flex-col justify-between items-center gap-5 min-h-[330px] min-w-[240px] ">
@@ -909,7 +934,7 @@ export default function FoldedCustomisableCard({
                             </label>
                           </div>
                           <button
-                            className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px]"
+                            className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] font-bold"
                             type="button"
                             onClick={handleSelectedImageReset}
                           >
@@ -958,7 +983,7 @@ export default function FoldedCustomisableCard({
                             </label>
                           </div>
                           <button
-                            className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px]"
+                            className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] font-bold"
                             type="button"
                             onClick={handleSelectedImageReset}
                           >
