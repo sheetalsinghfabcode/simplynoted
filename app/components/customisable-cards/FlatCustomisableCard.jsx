@@ -3,8 +3,9 @@ import {useNavigate} from '@remix-run/react';
 import {FaArrowLeft} from 'react-icons/fa';
 import html2canvas from 'html2canvas';
 import {Modal} from '../Modal';
-import Loader from '../modal/Loader';
+import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
+import CustomCheckbox from '../CustomCheckbox';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -60,15 +61,24 @@ export default function FlatCustomisableCard({
   const [s3ImageUrls, setS3ImageUrls] = useState({});
   const [checkTitleDuplicacyModalOpen, setCheckTitleDuplicacyModalOpen] =
     useState(false);
+  const [qr, setQr] = useState({
+    isInputModalOpened: false,
+    isConfirmationModalOpened: false,
+    inputText: '',
+    isQrAdded: false,
+    generatedQrImageLink:
+      'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
+  });
 
   const navigate = useNavigate();
 
   useEffect(() => {
     console.log({
+      qr,
       frontImageDetails,
       backImageDetails: {observingData, headerData, footerData},
     });
-  }, [observingData, headerData, footerData]);
+  }, [observingData, headerData, footerData, qr]);
 
   useEffect(() => {
     // To Store the actual value instead of a promise inside screenshotUrl object key.
@@ -121,6 +131,15 @@ export default function FlatCustomisableCard({
     footerData.zoom,
     footerData.isColoredImage,
   ]);
+
+  useEffect(() => {
+    setQr((prevQrValues) => {
+      return {
+        ...prevQrValues,
+        generatedQrImageLink: `https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=${qr.inputText}`,
+      };
+    });
+  }, [qr.inputText]);
 
   async function generateTrimmedImageScreenshotFile(element) {
     try {
@@ -322,8 +341,6 @@ export default function FlatCustomisableCard({
       });
   };
 
-  const handleQrSelectionButton = () => {};
-
   const handleCustomTextChange = (event) => {
     if (observingData.isHeader) {
       setHeaderData((prevHeaderData) => {
@@ -425,6 +442,24 @@ export default function FlatCustomisableCard({
     }
   };
 
+  const handleQrSelectionButton = () => {
+    if (qr.isQrAdded) {
+      setQr((prevQrValues) => {
+        return {
+          ...prevQrValues,
+          isQrAdded: false,
+        };
+      });
+    } else {
+      setQr((prevQrValues) => {
+        return {
+          ...prevQrValues,
+          isInputModalOpened: true,
+        };
+      });
+    }
+  };
+
   const handleFinishEditingButton = async () => {
     try {
       const isPdfUploaded = await uploadPdfRequest();
@@ -492,7 +527,6 @@ export default function FlatCustomisableCard({
       if (data.ok) {
         setIsLoading(false);
         const response = await data.json();
-        //TODO: set the response to new state for the save
         setS3ImageUrls(response.result);
         return true;
       } else {
@@ -676,6 +710,19 @@ export default function FlatCustomisableCard({
     }
   }
 
+  const handleHeaderVisibilityChange = () => {
+    setHeaderFooterVisibility((prevVisibility) => ({
+      ...prevVisibility,
+      isHeaderVisible: !prevVisibility.isHeaderVisible,
+    }));
+  };
+  const handleFooterVisibilityChange = () => {
+    setHeaderFooterVisibility((prevVisibility) => ({
+      ...prevVisibility,
+      isFooterVisible: !prevVisibility.isFooterVisible,
+    }));
+  };
+
   const GoBackButton = () => {
     return (
       <div
@@ -688,9 +735,9 @@ export default function FlatCustomisableCard({
   };
 
   return isLoading ? (
-    <Loader loaderMessage="Saving in progress..." />
+    <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
   ) : (
-    <>
+    <section>
       {checkTitleDuplicacyModalOpen && (
         <Modal cancelLink={() => setCheckTitleDuplicacyModalOpen(false)}>
           <div>
@@ -715,682 +762,779 @@ export default function FlatCustomisableCard({
           </div>
         </Modal>
       )}
-
-      <section className="relative min-h-[553px] flex justify-center items-center flex-wrap gap-5 mt-4">
-        <GoBackButton />
-        <div className="flex flex-col justify-center items-center flex-1 ml-7">
-          <span className="text-2xl mb-2">Custom Flat {selectedCardPage}</span>
+      {qr.isInputModalOpened && (
+        <Modal
+          cancelLink={() =>
+            setQr((prevQrValues) => {
+              return {...prevQrValues, isInputModalOpened: false};
+            })
+          }
+        >
           <div>
-            <div
-              className="h-[350px] min-w-[500px] bg-white relative border-2 border-black border-solid overflow-hidden"
-              style={{zIndex: selectedCardPage === 'Card Front' ? '-30' : '0'}}
-              onMouseOver={() => setIsMouseHoveredOnContainer(true)}
-              onMouseOut={() => setIsMouseHoveredOnContainer(false)}
-            >
-              {(selectedCardPage === 'Card Front' && (
-                <>
-                  <div
-                    className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
-                    style={{background: 'transparent', zIndex: '-10'}}
-                  ></div>
-                  <div
-                    className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
-                    id="frontTrimmedDiv"
-                    style={{zIndex: '-20'}}
-                  >
-                    {frontImageDetails.imageFile && (
-                      <img
-                        src={frontImageDetails.imageFile}
-                        alt="Selected front card image file"
-                        className={`object-contain h-full ${
-                          frontImageDetails.isColoredImage
-                            ? 'grayscale-0'
-                            : 'grayscale'
-                        }`}
-                        draggable="false"
-                        style={{transform: `scale(${frontImageDetails.zoom})`}}
-                      />
-                    )}
-                  </div>
-                </>
-              )) ||
-                (selectedCardPage === 'Card Back' && (
-                  <div
-                    className="flex flex-col h-full p-2"
-                    id="backTrimmedDiv"
-                    style={{zIndex: '-20'}}
-                  >
-                    <div
-                      className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
-                        headerFooterVisibility.isHeaderVisible
-                          ? 'block '
-                          : 'hidden '
-                      }  ${isMouseHoveredOnContainer && 'border '} ${
-                        (headerData.alignment === 'left' && 'justify-start ') ||
-                        (headerData.alignment === 'center' &&
-                          'justify-center ') ||
-                        (headerData.alignment === 'right' && 'justify-end ')
-                      }`}
-                    >
-                      <div
-                        className={`font-${headerData.fontFamily}`}
-                        style={{
-                          fontSize: `${headerData.fontSize}px`,
-                          color: `${headerData.fontColor}`,
-                        }}
-                      >
-                        {!headerData.isImageSelected && headerData.customText}
-                      </div>
-                      {headerData.isImageSelected && (
-                        <div
-                          id="backHeaderImageDiv"
-                          className="h-[45px] w-[60px] overflow-hidden"
-                        >
-                          <img
-                            src={headerData.imageUrl}
-                            className={`object-contain h-full ${
-                              headerData.isColoredImage
-                                ? 'grayscale-0'
-                                : 'grayscale'
-                            }`}
-                            style={{transform: `scale(${headerData.zoom})`}}
-                            alt="Selected header image"
-                            draggable="false"
-                          />
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-1 pl-6 mt-2 mb-2">
-                      <span>Your custom message text will be here...</span>
-                    </div>
-                    <div
-                      className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
-                        headerFooterVisibility.isFooterVisible
-                          ? 'block '
-                          : 'hidden '
-                      } ${isMouseHoveredOnContainer && 'border '} ${
-                        (footerData.alignment === 'left' && 'justify-start ') ||
-                        (footerData.alignment === 'center' &&
-                          'justify-center ') ||
-                        (footerData.alignment === 'right' && 'justify-end ')
-                      }`}
-                    >
-                      <div
-                        className={`font-${footerData.fontFamily}`}
-                        style={{
-                          fontSize: `${footerData.fontSize}px`,
-                          color: `${footerData.fontColor}`,
-                        }}
-                      >
-                        {!footerData.isImageSelected && footerData.customText}
-                      </div>
-                      {footerData.isImageSelected && (
-                        <div
-                          id="backFooterImageDiv"
-                          className="h-[45px] w-[60px] overflow-hidden"
-                        >
-                          <img
-                            src={footerData.imageUrl}
-                            className={`object-contain h-full ${
-                              footerData.isColoredImage
-                                ? 'grayscale-0'
-                                : 'grayscale'
-                            }`}
-                            style={{transform: `scale(${footerData.zoom})`}}
-                            alt="Selected footer image"
-                            draggable="false"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
+            <div>
+              <p className="bg-[#deebf7] h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold">
+                ADD QR CODE
+              </p>
             </div>
-            <div className="flex gap-4 w-full mt-2">
+            <label htmlFor="qr">
+              <span className="mt-4">Enter website URL or message:</span>
+              <br />
+              <input
+                className="w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none"
+                type="text"
+                required
+                onChange={(e) =>
+                  setQr((prevQrValues) => {
+                    return {...prevQrValues, inputText: e.target.value};
+                  })
+                }
+              />
+            </label>
+            <br />
+            <button
+              className="bg-[#FF443A] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5"
+              type="button"
+              onClick={() => {
+                setQr((prevQrValues) => {
+                  return {
+                    ...prevQrValues,
+                    isInputModalOpened: false,
+                    isConfirmationModalOpened: true,
+                  };
+                });
+              }}
+            >
+              Create QR Code
+            </button>
+          </div>
+        </Modal>
+      )}
+      {qr.isConfirmationModalOpened && (
+        <Modal
+          cancelLink={() =>
+            setQr((prevQrValues) => {
+              return {...prevQrValues, isConfirmationModalOpened: false};
+            })
+          }
+        >
+          <div className="flex gap-1 flex-col justify-center items-center">
+            <div className="font-bold tex-xl p-3">
+              Please scan the QR code to confirm that it works as you expect.
+            </div>
+
+            <div className="h-[100px]">
+              <img
+                class="object-contain h-full"
+                src={qr.generatedQrImageLink}
+              />
+            </div>
+            <div className="flex w-full gap-1 items-center justify-center">
               <button
-                value="Card Front"
-                className={`flex-1 p-2 text-white ${
-                  selectedCardPage === 'Card Front'
-                    ? 'button-blue'
-                    : 'button-tomato'
-                }`}
-                onClick={handleCardPageSelectionButton}
+                className="flex-1 text-[#FF443A] border border-[#FF443A] p-1 h-[43px] mt-5"
+                type="button"
+                onClick={() => {
+                  setQr((prevQrValues) => {
+                    return {
+                      ...prevQrValues,
+                      isInputModalOpened: true,
+                      isConfirmationModalOpened: false,
+                    };
+                  });
+                }}
               >
-                Card Front
+                CHANGE QR
               </button>
               <button
-                value="Card Back"
-                className={`flex-1 p-2 text-white ${
-                  selectedCardPage === 'Card Back'
-                    ? 'button-blue'
-                    : 'button-tomato'
-                }`}
-                onClick={handleCardPageSelectionButton}
+                className="flex-1 text-white bg-[#FF443A] p-1 h-[43px] mt-5"
+                type="button"
+                onClick={() => {
+                  setQr((prevQrValues) => {
+                    return {
+                      ...prevQrValues,
+                      isInputModalOpened: false,
+                      isConfirmationModalOpened: false,
+                      isQrAdded: true,
+                    };
+                  });
+                }}
               >
-                Card Back
+                CONFIRM
               </button>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col justify-between items-start gap-5 min-h-[330px] min-w-[240px] flex-1">
-          {selectedCardPage === 'Card Front' && (
-            <>
-              <div className="relative w-[60px] h-[50px]">
-                <img
-                  src={AddImageIcon}
-                  alt="Add image file icon"
-                  draggable="false"
-                />
-                {selectedCardPage === 'Card Front' && (
-                  <input
-                    type="file"
-                    className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
-                    onChange={handleImageFileInsertion}
-                  />
-                )}
-              </div>
-              <div className="h-[200px]">
-                {selectedCardPage === 'Card Front' &&
-                  frontImageDetails.imageFile && (
-                    <div className="flex flex-col gap-8">
-                      <div className="flex flex-col">
-                        <span>Resize image</span>
-                        <input
-                          type="range"
-                          min="0.3"
-                          max="2"
-                          step="0.1"
-                          value={frontImageDetails.zoom}
-                          onChange={handleZoomSliderChange}
+        </Modal>
+      )}
+
+      <div className="relative mt-3">
+        <GoBackButton />
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-10">
+          <div className="flex flex-col justify-start items-center flex-1 ml-7 min-h-[560px]">
+            <span className="text-2xl mb-2">
+              Custom Flat {selectedCardPage}
+            </span>
+            <div>
+              <div
+                className="h-[350px] min-w-[500px] bg-white relative border-2 border-black border-solid overflow-hidden"
+                style={{
+                  zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
+                }}
+                onMouseOver={() => setIsMouseHoveredOnContainer(true)}
+                onMouseOut={() => setIsMouseHoveredOnContainer(false)}
+              >
+                {(selectedCardPage === 'Card Front' && (
+                  <>
+                    <div
+                      className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
+                      style={{background: 'transparent', zIndex: '-10'}}
+                    ></div>
+                    <div
+                      className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
+                      id="frontTrimmedDiv"
+                      style={{zIndex: '-20'}}
+                    >
+                      {frontImageDetails.imageFile && (
+                        <img
+                          src={frontImageDetails.imageFile}
+                          alt="Selected front card image file"
+                          className={`object-contain h-full ${
+                            frontImageDetails.isColoredImage
+                              ? 'grayscale-0'
+                              : 'grayscale'
+                          }`}
+                          draggable="false"
+                          style={{
+                            transform: `scale(${frontImageDetails.zoom})`,
+                          }}
                         />
+                      )}
+                    </div>
+                  </>
+                )) ||
+                  (selectedCardPage === 'Card Back' && (
+                    <div
+                      className="flex flex-col h-full p-2"
+                      id="backTrimmedDiv"
+                      style={{zIndex: '-20'}}
+                    >
+                      <div
+                        className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
+                          headerFooterVisibility.isHeaderVisible
+                            ? 'block '
+                            : 'hidden '
+                        }  ${isMouseHoveredOnContainer && 'border '} ${
+                          (headerData.alignment === 'left' &&
+                            'justify-start ') ||
+                          (headerData.alignment === 'center' &&
+                            'justify-center ') ||
+                          (headerData.alignment === 'right' && 'justify-end ')
+                        }`}
+                      >
+                        <div
+                          className={`font-${headerData.fontFamily}`}
+                          style={{
+                            fontSize: `${headerData.fontSize}px`,
+                            color: `${headerData.fontColor}`,
+                          }}
+                        >
+                          {!headerData.isImageSelected && headerData.customText}
+                        </div>
+                        {headerData.isImageSelected && (
+                          <div
+                            id="backHeaderImageDiv"
+                            className="h-[45px] w-[60px] overflow-hidden"
+                          >
+                            <img
+                              src={headerData.imageUrl}
+                              className={`object-contain h-full ${
+                                headerData.isColoredImage
+                                  ? 'grayscale-0'
+                                  : 'grayscale'
+                              }`}
+                              style={{transform: `scale(${headerData.zoom})`}}
+                              alt="Selected header image"
+                              draggable="false"
+                            />
+                          </div>
+                        )}
                       </div>
-                      <div className="flex justify-center items-center gap-5">
-                        <label htmlFor="bw-radio-btn">
+                      <div className="flex flex-1 pl-6 mt-2 mb-2">
+                        <span>Your custom message text will be here...</span>
+                      </div>
+                      <div
+                        className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
+                          headerFooterVisibility.isFooterVisible
+                            ? 'block '
+                            : 'hidden '
+                        } ${isMouseHoveredOnContainer && 'border '} ${
+                          (footerData.alignment === 'left' &&
+                            'justify-start ') ||
+                          (footerData.alignment === 'center' &&
+                            'justify-center ') ||
+                          (footerData.alignment === 'right' && 'justify-end ')
+                        }`}
+                      >
+                        <div
+                          className={`font-${footerData.fontFamily}`}
+                          style={{
+                            fontSize: `${footerData.fontSize}px`,
+                            color: `${footerData.fontColor}`,
+                          }}
+                        >
+                          {!footerData.isImageSelected && footerData.customText}
+                        </div>
+                        {(footerData.isImageSelected || qr.isQrAdded) && (
+                          <div
+                            id="backFooterImageDiv"
+                            className="h-[45px] w-[60px] overflow-hidden"
+                          >
+                            <img
+                              src={
+                                qr.isQrAdded
+                                  ? qr.generatedQrImageLink
+                                  : footerData.imageUrl
+                              }
+                              className={`object-contain h-full ${
+                                footerData.isColoredImage
+                                  ? 'grayscale-0'
+                                  : 'grayscale'
+                              }`}
+                              style={{transform: `scale(${footerData.zoom})`}}
+                              alt="Selected footer image"
+                              draggable="false"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <div className="flex gap-4 w-full mt-2">
+                <button
+                  value="Card Front"
+                  className={`flex-1 p-2 text-white ${
+                    selectedCardPage === 'Card Front'
+                      ? 'button-blue'
+                      : 'button-tomato'
+                  }`}
+                  onClick={handleCardPageSelectionButton}
+                >
+                  Card Front
+                </button>
+                <button
+                  value="Card Back"
+                  className={`flex-1 p-2 text-white ${
+                    selectedCardPage === 'Card Back'
+                      ? 'button-blue'
+                      : 'button-tomato'
+                  }`}
+                  onClick={handleCardPageSelectionButton}
+                >
+                  Card Back
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col justify-between items-start gap-5 min-h-[330px] min-w-[240px] flex-1">
+            {selectedCardPage === 'Card Front' && (
+              <>
+                <div className="relative w-[60px] h-[50px]">
+                  <img
+                    src={AddImageIcon}
+                    alt="Add image file icon"
+                    draggable="false"
+                  />
+                  {selectedCardPage === 'Card Front' && (
+                    <input
+                      type="file"
+                      className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
+                      onChange={handleImageFileInsertion}
+                    />
+                  )}
+                </div>
+                <div className="h-[200px]">
+                  {selectedCardPage === 'Card Front' &&
+                    frontImageDetails.imageFile && (
+                      <div className="flex flex-col gap-8">
+                        <div className="flex flex-col">
+                          <span>Resize image</span>
                           <input
-                            id="bw-radio-btn"
-                            name="isImageColored"
-                            type="radio"
-                            value="grayscale"
-                            onChange={handleImageColorChange}
-                            checked={
-                              observingData.isHeader
-                                ? !headerData.isColoredImage
-                                : !footerData.isColoredImage
-                            }
+                            type="range"
+                            min="0.3"
+                            max="2"
+                            step="0.1"
+                            value={frontImageDetails.zoom}
+                            onChange={handleZoomSliderChange}
                           />
-                          &nbsp;B/W
-                        </label>
-                        <label htmlFor="colored-radio-btn">
+                        </div>
+                        <div className="flex justify-center items-center gap-5">
+                          <label htmlFor="bw-radio-btn">
+                            <input
+                              id="bw-radio-btn"
+                              name="isImageColored"
+                              type="radio"
+                              value="grayscale"
+                              onChange={handleImageColorChange}
+                              checked={
+                                observingData.isHeader
+                                  ? !headerData.isColoredImage
+                                  : !footerData.isColoredImage
+                              }
+                            />
+                            &nbsp;B/W
+                          </label>
+                          <label htmlFor="colored-radio-btn">
+                            <input
+                              id="colored-radio-btn"
+                              type="radio"
+                              name="isImageColored"
+                              value="colored"
+                              onChange={handleImageColorChange}
+                              checked={
+                                observingData.isHeader
+                                  ? headerData.isColoredImage
+                                  : footerData.isColoredImage
+                              }
+                              defaultChecked
+                            />
+                            &nbsp;Color
+                          </label>
+                        </div>
+                        <button
+                          className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px]"
+                          type="button"
+                          onClick={handleSelectedImageReset}
+                        >
+                          Remove image
+                        </button>
+                      </div>
+                    )}
+                </div>
+                {selectedCardPage === 'Card Back' && (
+                  <button
+                    type="button"
+                    className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center w-full"
+                    onClick={handleFinishEditingButton}
+                  >
+                    Finish Editing
+                  </button>
+                )}
+              </>
+            )}
+            {selectedCardPage === 'Card Back' && (
+              <>
+                <div>
+                  <div className="flex items-center space-x-4 gap-8 mb-5">
+                    <CustomCheckbox
+                      label={'Add Header'}
+                      isChecked={headerFooterVisibility.isHeaderVisible}
+                      onChange={handleHeaderVisibilityChange}
+                      value={headerFooterVisibility.isHeaderVisible}
+                    />
+                    <CustomCheckbox
+                      label={'Add Footer'}
+                      isChecked={headerFooterVisibility.isFooterVisible}
+                      onChange={handleFooterVisibilityChange}
+                      value={headerFooterVisibility.isHeaderVisible}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="flex justify-between items-center text-white gap-1 "
+                  style={{width: '75%'}}
+                >
+                  <button
+                    className={`${
+                      observingData.isHeader
+                        ? 'bg-[#1b5299] text-white shadow-md'
+                        : 'bg-transparent text-[#1b5299]'
+                    } h-[35px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold`}
+                    onClick={() =>
+                      setObservingData({isHeader: true, isFooter: false})
+                    }
+                  >
+                    Header
+                  </button>
+                  <button
+                    className={`${
+                      observingData.isFooter
+                        ? 'bg-[#1b5299] text-white shadow-md'
+                        : 'bg-transparent text-[#1b5299]'
+                    } h-[38px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold`}
+                    onClick={() =>
+                      setObservingData({isHeader: false, isFooter: true})
+                    }
+                  >
+                    Footer
+                  </button>
+                </div>
+                <div className="flex min-h-[330px] w-full">
+                  <div className="flex flex-1">
+                    <div className="flex flex-col">
+                      <label htmlFor="custom-text">
+                        <span className="font-semibold">
+                          {observingData.isHeader
+                            ? 'Header Text'
+                            : 'Footer Text'}
+                        </span>
+                        <br />
+                        <input
+                          id="custom-text"
+                          type="text"
+                          placeholder={`Enter ${
+                            observingData.isHeader ? 'header' : 'footer'
+                          } text here.`}
+                          value={
+                            observingData.isHeader
+                              ? headerData.customText
+                              : footerData.customText
+                          }
+                          onChange={handleCustomTextChange}
+                        />
+                      </label>
+                      <div className="flex h-[20px] mt-3 mb-5">
+                        <span className="flex-1 mr-2">Alignment</span>
+                        <div className="flex-1 flex">
+                          <svg
+                            className="flex-1 mr-1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            onClick={() => handleDataAlignment('left')}
+                          >
+                            <path
+                              fill="#637381"
+                              d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"
+                            />
+                          </svg>
+                          <svg
+                            className="flex-1 mr-1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            onClick={() => handleDataAlignment('center')}
+                          >
+                            <path
+                              fill="#637381"
+                              d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
+                            />
+                          </svg>
+                          <svg
+                            className="flex-1 mr-1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            onClick={() => handleDataAlignment('right')}
+                          >
+                            <path
+                              fill="#637381"
+                              d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+
+                      <label
+                        htmlFor="font-family-selection"
+                        className="mt-1 mb-3"
+                      >
+                        <span className="font-bold">Font</span>
+                        <br />
+                        <select
+                          id="font-family-selection"
+                          className="min-w-[207px]"
+                          value={
+                            observingData.isHeader
+                              ? headerData.fontFamily
+                              : footerData.fontFamily
+                          }
+                          onChange={handleFontFamilyChange}
+                        >
+                          <option
+                            value="pinocchio"
+                            className={`font-pinocchio`}
+                          >
+                            Pinocchio
+                          </option>
+
+                          <option value="tarzan" className={`font-tarzan`}>
+                            Tarzan
+                          </option>
+
+                          <option value="stitch" className={`font-stitch`}>
+                            Stitch
+                          </option>
+
+                          <option value="simba" className={`font-simba`}>
+                            Simba
+                          </option>
+
+                          <option value="roo" className={`font-roo`}>
+                            Roo
+                          </option>
+
+                          <option value="nimo" className={`font-nimo`}>
+                            Nimo
+                          </option>
+
+                          <option value="lumiere" className={`font-lumiere`}>
+                            Lumiere
+                          </option>
+
+                          <option value="kaaNew" className={`font-kaaNew`}>
+                            KaaNew
+                          </option>
+
+                          <option value="dumbo" className={`font-dumbo`}>
+                            Dumbo
+                          </option>
+
+                          <option value="donald" className={`font-donald`}>
+                            Donald
+                          </option>
+
+                          <option value="aladdin" className={`font-aladdin`}>
+                            Aladdin
+                          </option>
+
+                          <option value="belle" className={`font-belle`}>
+                            Belle
+                          </option>
+
+                          <option value="boo" className={`font-boo`}>
+                            Boo
+                          </option>
+
+                          <option
+                            value="cinderella"
+                            className={`font-cinderella`}
+                          >
+                            Cinderella
+                          </option>
+
+                          <option value="copper" className={`font-copper`}>
+                            Copper
+                          </option>
+
+                          <option value="jasmine" className={`font-jasmine`}>
+                            Jasmine
+                          </option>
+
+                          <option value="merlin" className={`font-merlin`}>
+                            Merlin
+                          </option>
+
+                          <option value="goofy" className={`font-goofy`}>
+                            Goofy
+                          </option>
+
+                          <option value="hercules" className={`font-hercules`}>
+                            Hercules
+                          </option>
+
+                          <option value="rafiki" className={`font-rafiki`}>
+                            Rafiki
+                          </option>
+
+                          <option value="rapunzel" className={`font-rapunzel`}>
+                            Rapunzel
+                          </option>
+
+                          <option value="ratigan" className={`font-ratigan`}>
+                            Ratigan
+                          </option>
+
+                          <option value="sarabi" className={`font-sarabi`}>
+                            Sarabi
+                          </option>
+
+                          <option value="scar" className={`font-scar`}>
+                            Scar
+                          </option>
+
+                          <option value="triton" className={`font-triton`}>
+                            Triton
+                          </option>
+
+                          <option value="woody" className={`font-woody`}>
+                            Woody
+                          </option>
+                        </select>
+                      </label>
+
+                      <label htmlFor="font-size-selection" className="mb-3">
+                        <span className="font-bold">Font Size</span>
+                        <br />
+                        <select
+                          id="font-size-selection"
+                          className="min-w-[200px]"
+                          onChange={handleFontSizeChange}
+                          value={
+                            observingData.isHeader
+                              ? headerData.fontSize
+                              : footerData.fontSize
+                          }
+                        >
+                          {Array.from({length: 33}, (_, index) => (
+                            <option key={index} value={index + 8}>
+                              {index + 8}px
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+
+                      <label htmlFor="font-color-selection" className="mb-3">
+                        <span className="font-bold">Font Color</span>
+                        <br />
+                        <select
+                          id="font-color-selection"
+                          onChange={handleFontColorChange}
+                          value={
+                            observingData.isHeader
+                              ? headerData.fontColor
+                              : footerData.fontColor
+                          }
+                        >
+                          <option value="black">Black</option>
+                          <option value="yellow">Yellow</option>
+                          <option value="grey">Grey</option>
+                          <option value="red">Red</option>
+                          <option value="blue">Blue</option>
+                          <option value="green">Green</option>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-1 ml-10">
+                    <div className="relative mt-5 w-[60px] h-[50px]">
+                      {observingData.isHeader && (
+                        <>
+                          <img
+                            src={AddImageIcon}
+                            alt="Add image file icon"
+                            draggable="false"
+                          />
+
                           <input
-                            id="colored-radio-btn"
-                            type="radio"
-                            name="isImageColored"
-                            value="colored"
-                            onChange={handleImageColorChange}
-                            defaultChecked
+                            type="file"
+                            className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
+                            onChange={handleImageFileInsertion}
                           />
-                          &nbsp;Color
-                        </label>
+                        </>
+                      )}
+                      {observingData.isFooter && !qr.isQrAdded && (
+                        <>
+                          <img
+                            src={AddImageIcon}
+                            alt="Add image file icon"
+                            draggable="false"
+                          />
+                          <input
+                            type="file"
+                            className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
+                            onChange={handleImageFileInsertion}
+                          />
+                        </>
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-8 ">
+                      <div className="min-h-[130px] w-1/2">
+                        {((headerData.imageFile && headerData.imageUrl) ||
+                          (footerData.imageFile && footerData.imageUrl)) && (
+                          <>
+                            <div className="flex flex-col mb-3 mt-3">
+                              <span>Resize image</span>
+                              <input
+                                type="range"
+                                min="0.3"
+                                max="1"
+                                step="0.1"
+                                value={
+                                  observingData.isHeader
+                                    ? headerData.zoom
+                                    : footerData.zoom
+                                }
+                                onChange={handleZoomSliderChange}
+                              />
+                            </div>
+                            <div className="flex justify-start items-center gap-5">
+                              <label htmlFor="bw-radio-btn">
+                                <input
+                                  id="bw-radio-btn"
+                                  name="isImageColored"
+                                  type="radio"
+                                  value="grayscale"
+                                  checked={
+                                    observingData.isHeader
+                                      ? !headerData.isColoredImage
+                                      : !footerData.isColoredImage
+                                  }
+                                  onChange={handleImageColorChange}
+                                />
+                                &nbsp;B/W
+                              </label>
+                              <label htmlFor="colored-radio-btn">
+                                <input
+                                  id="colored-radio-btn"
+                                  type="radio"
+                                  name="isImageColored"
+                                  value="colored"
+                                  onChange={handleImageColorChange}
+                                  defaultChecked
+                                  checked={
+                                    observingData.isHeader
+                                      ? headerData.isColoredImage
+                                      : footerData.isColoredImage
+                                  }
+                                />
+                                &nbsp;Color
+                              </label>
+                            </div>
+                          </>
+                        )}
                       </div>
                       <button
-                        className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px]"
+                        className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2"
                         type="button"
                         onClick={handleSelectedImageReset}
                       >
                         Remove image
                       </button>
                     </div>
-                  )}
-              </div>
-              {selectedCardPage === 'Card Back' && (
-                <button
-                  type="button"
-                  className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center w-full"
-                  onClick={handleFinishEditingButton}
-                >
-                  Finish Editing
-                </button>
-              )}
-            </>
-          )}
-          {selectedCardPage === 'Card Back' && (
-            <>
-              <div>
-                <div className="flex items-center space-x-4 gap-8 mb-5">
-                  <label
-                    htmlFor="headerCheckbox"
-                    className="flex items-center cursor-pointer text-[#1b5299]"
-                  >
-                    <input
-                      type="checkbox"
-                      id="headerCheckbox"
-                      checked={headerFooterVisibility.isHeaderVisible}
-                      value={headerFooterVisibility.isHeaderVisible}
-                      onChange={() =>
-                        setHeaderFooterVisibility((prevVisibility) => ({
-                          ...prevVisibility,
-                          isHeaderVisible: !prevVisibility.isHeaderVisible,
-                        }))
-                      }
-                      className="hidden"
-                    />
-                    <div className="w-4 h-4 border border-[#1b5299] flex items-center justify-center">
-                      {headerFooterVisibility.isHeaderVisible && (
-                        <svg
-                          className="w-4 h-4 text-[#1b5299] fill-current"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                        </svg>
-                      )}
-                    </div>
-                    <span className="ml-2 font-semibold text-sm">
-                      Add Header
-                    </span>
-                  </label>
 
-                  <label
-                    htmlFor="footerCheckbox"
-                    className="flex items-center cursor-pointer text-[#1b5299]"
-                  >
-                    <input
-                      type="checkbox"
-                      id="footerCheckbox"
-                      checked={headerFooterVisibility.isFooterVisible}
-                      value={headerFooterVisibility.isFooterVisible}
-                      onChange={() =>
-                        setHeaderFooterVisibility((prevVisibility) => ({
-                          ...prevVisibility,
-                          isFooterVisible: !prevVisibility.isFooterVisible,
-                        }))
-                      }
-                      className="hidden"
-                    />
-                    <div className="w-4 h-4 border border-[#1b5299] flex items-center justify-center">
-                      {headerFooterVisibility.isFooterVisible && (
-                        <svg
-                          className="w-4 h-4 text-[#1b5299] fill-current"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                        </svg>
-                      )}
-                    </div>
-                    <span className="ml-2 font-semibold text-sm">
-                      Add Footer
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <div
-                className="flex justify-between items-center text-white gap-1 "
-                style={{width: '75%'}}
-              >
-                <button
-                  className={`${
-                    observingData.isHeader
-                      ? 'bg-[#1b5299] text-white shadow-md'
-                      : 'bg-transparent text-[#1b5299]'
-                  } h-[35px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold`}
-                  onClick={() =>
-                    setObservingData({isHeader: true, isFooter: false})
-                  }
-                >
-                  Header
-                </button>
-                <button
-                  className={`${
-                    observingData.isFooter
-                      ? 'bg-[#1b5299] text-white shadow-md'
-                      : 'bg-transparent text-[#1b5299]'
-                  } h-[38px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold`}
-                  onClick={() =>
-                    setObservingData({isHeader: false, isFooter: true})
-                  }
-                >
-                  Footer
-                </button>
-              </div>
-              <div className="flex min-h-[330px] w-full">
-                <div className="flex flex-1">
-                  <div className="flex flex-col">
-                    <label htmlFor="custom-text">
-                      <span className="font-semibold">
-                        {observingData.isHeader ? 'Header Text' : 'Footer Text'}
-                      </span>
-                      <br />
-                      <input
-                        id="custom-text"
-                        type="text"
-                        placeholder={`Enter ${
-                          observingData.isHeader ? 'header' : 'footer'
-                        } text here.`}
-                        value={
-                          observingData.isHeader
-                            ? headerData.customText
-                            : footerData.customText
-                        }
-                        onChange={handleCustomTextChange}
-                      />
-                    </label>
-                    <div className="flex h-[20px] mt-3 mb-5">
-                      <span className="flex-1 mr-2">Alignment</span>
-                      <div className="flex-1 flex">
-                        <svg
-                          className="flex-1 mr-1"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          onClick={() => handleDataAlignment('left')}
-                        >
-                          <path
-                            fill="#637381"
-                            d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z"
-                          />
-                        </svg>
-                        <svg
-                          className="flex-1 mr-1"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          onClick={() => handleDataAlignment('center')}
-                        >
-                          <path
-                            fill="#637381"
-                            d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
-                          />
-                        </svg>
-                        <svg
-                          className="flex-1 mr-1"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          onClick={() => handleDataAlignment('right')}
-                        >
-                          <path
-                            fill="#637381"
-                            d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z"
-                          />
-                        </svg>
+                    <div
+                      className={` ${
+                        qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
+                      } w-[200px] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10`}
+                      onClick={handleQrSelectionButton}
+                    >
+                      <div>
+                        <img
+                          src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445"
+                          alt="QR Sample Image"
+                          className="h-[40px]"
+                          draggable="false"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="font-bold">
+                          {qr.isQrAdded ? 'Remove QR Code' : 'Add QR Code'}
+                        </span>
+                        <span className="text-xs">&#40;Footer Only&#41;</span>
                       </div>
                     </div>
-
-                    <label
-                      htmlFor="font-family-selection"
-                      className="mt-1 mb-3"
-                    >
-                      <span className="font-bold">Font</span>
-                      <br />
-                      <select
-                        id="font-family-selection"
-                        className="min-w-[207px]"
-                        value={
-                          observingData.isHeader
-                            ? headerData.fontFamily
-                            : footerData.fontFamily
-                        }
-                        onChange={handleFontFamilyChange}
-                      >
-                        <option value="pinocchio" className={`font-pinocchio`}>
-                          Pinocchio
-                        </option>
-
-                        <option value="tarzan" className={`font-tarzan`}>
-                          Tarzan
-                        </option>
-
-                        <option value="stitch" className={`font-stitch`}>
-                          Stitch
-                        </option>
-
-                        <option value="simba" className={`font-simba`}>
-                          Simba
-                        </option>
-
-                        <option value="roo" className={`font-roo`}>
-                          Roo
-                        </option>
-
-                        <option value="nimo" className={`font-nimo`}>
-                          Nimo
-                        </option>
-
-                        <option value="lumiere" className={`font-lumiere`}>
-                          Lumiere
-                        </option>
-
-                        <option value="kaaNew" className={`font-kaaNew`}>
-                          KaaNew
-                        </option>
-
-                        <option value="dumbo" className={`font-dumbo`}>
-                          Dumbo
-                        </option>
-
-                        <option value="donald" className={`font-donald`}>
-                          Donald
-                        </option>
-
-                        <option value="aladdin" className={`font-aladdin`}>
-                          Aladdin
-                        </option>
-
-                        <option value="belle" className={`font-belle`}>
-                          Belle
-                        </option>
-
-                        <option value="boo" className={`font-boo`}>
-                          Boo
-                        </option>
-
-                        <option
-                          value="cinderella"
-                          className={`font-cinderella`}
-                        >
-                          Cinderella
-                        </option>
-
-                        <option value="copper" className={`font-copper`}>
-                          Copper
-                        </option>
-
-                        <option value="jasmine" className={`font-jasmine`}>
-                          Jasmine
-                        </option>
-
-                        <option value="merlin" className={`font-merlin`}>
-                          Merlin
-                        </option>
-
-                        <option value="goofy" className={`font-goofy`}>
-                          Goofy
-                        </option>
-
-                        <option value="hercules" className={`font-hercules`}>
-                          Hercules
-                        </option>
-
-                        <option value="rafiki" className={`font-rafiki`}>
-                          Rafiki
-                        </option>
-
-                        <option value="rapunzel" className={`font-rapunzel`}>
-                          Rapunzel
-                        </option>
-
-                        <option value="ratigan" className={`font-ratigan`}>
-                          Ratigan
-                        </option>
-
-                        <option value="sarabi" className={`font-sarabi`}>
-                          Sarabi
-                        </option>
-
-                        <option value="scar" className={`font-scar`}>
-                          Scar
-                        </option>
-
-                        <option value="triton" className={`font-triton`}>
-                          Triton
-                        </option>
-
-                        <option value="woody" className={`font-woody`}>
-                          Woody
-                        </option>
-                      </select>
-                    </label>
-
-                    <label htmlFor="font-size-selection" className="mb-3">
-                      <span className="font-bold">Font Size</span>
-                      <br />
-                      <select
-                        id="font-size-selection"
-                        className="min-w-[200px]"
-                        onChange={handleFontSizeChange}
-                        value={
-                          observingData.isHeader
-                            ? headerData.fontSize
-                            : footerData.fontSize
-                        }
-                      >
-                        {Array.from({length: 33}, (_, index) => (
-                          <option key={index} value={index + 8}>
-                            {index + 8}px
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-
-                    <label htmlFor="font-color-selection" className="mb-3">
-                      <span className="font-bold">Font Color</span>
-                      <br />
-                      <select
-                        id="font-color-selection"
-                        onChange={handleFontColorChange}
-                      >
-                        <option value="black">Black</option>
-                        <option value="yellow">Yellow</option>
-                        <option value="grey">Grey</option>
-                        <option value="red">Red</option>
-                        <option value="blue">Blue</option>
-                        <option value="green">Green</option>
-                      </select>
-                    </label>
                   </div>
                 </div>
-                <div className="flex flex-col flex-1 ml-10">
-                  <div className="relative w-[60px] h-[50px]">
-                    <img
-                      src={AddImageIcon}
-                      alt="Add image file icon"
-                      draggable="false"
-                    />
-                    {observingData.isHeader && (
-                      <input
-                        type="file"
-                        className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
-                        onChange={handleImageFileInsertion}
-                      />
-                    )}
-                    {observingData.isFooter && (
-                      <input
-                        type="file"
-                        className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
-                        onChange={handleImageFileInsertion}
-                      />
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-8 ">
-                    <div className="min-h-[130px] w-1/2">
-                      {((headerData.imageFile && headerData.imageUrl) ||
-                        (footerData.imageFile && footerData.imageUrl)) && (
-                        <>
-                          <div className="flex flex-col mb-3 mt-3">
-                            <span>Resize image</span>
-                            <input
-                              type="range"
-                              min="0.3"
-                              max="1"
-                              step="0.1"
-                              value={
-                                observingData.isHeader
-                                  ? headerData.zoom
-                                  : footerData.zoom
-                              }
-                              onChange={handleZoomSliderChange}
-                            />
-                          </div>
-                          <div className="flex justify-start items-center gap-5">
-                            <label htmlFor="bw-radio-btn">
-                              <input
-                                id="bw-radio-btn"
-                                name="isImageColored"
-                                type="radio"
-                                value="grayscale"
-                                onChange={handleImageColorChange}
-                              />
-                              &nbsp;B/W
-                            </label>
-                            <label htmlFor="colored-radio-btn">
-                              <input
-                                id="colored-radio-btn"
-                                type="radio"
-                                name="isImageColored"
-                                value="colored"
-                                onChange={handleImageColorChange}
-                                defaultChecked
-                                checked={
-                                  observingData.isHeader
-                                    ? headerData.isColoredImage
-                                    : footerData.isColoredImage
-                                }
-                              />
-                              &nbsp;Color
-                            </label>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                    <button
-                      className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2"
-                      type="button"
-                      onClick={handleSelectedImageReset}
-                    >
-                      Remove image
-                    </button>
-                  </div>
-
-                  <div
-                    className="w-[200px] cursor-pointer bg-[#1b5299] border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10"
-                    onClick={handleQrSelectionButton}
+                <div className="flex">
+                  <button
+                    type="button"
+                    className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center w-[250px] font-semibold"
+                    onClick={handleFinishEditingButton}
                   >
-                    <div>
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445"
-                        alt="QR Sample Image"
-                        className="h-[40px]"
-                        draggable="false"
-                      />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-bold">Add QR Code</span>
-                      <span className="text-xs">
-                        &#40;to inside of card&#41;
-                      </span>
-                    </div>
-                  </div>
+                    Finish Editing
+                  </button>
                 </div>
-              </div>
-              <div className="flex">
-                <button
-                  type="button"
-                  className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center w-[250px] font-semibold"
-                  onClick={handleFinishEditingButton}
-                >
-                  Finish Editing
-                </button>
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
