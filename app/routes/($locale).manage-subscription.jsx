@@ -359,12 +359,6 @@ const ManageSubscription = () => {
       <>
 
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
-          {/* <DynamicButton
-            className="bg-[#EF6E6E]  w-full max-w-[125px]"
-            text="Prev"
-            backArrow={true}
-            onClickFunction={goBack}
-          /> */}
           <DynamicTitle
             dynamicButton
             title={'Manage Plans and Prepaid Packages'}
@@ -451,7 +445,7 @@ const ManageSubscription = () => {
                           <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                             PLAN RENEWAL DATE
                           </span>
-                          <span className="text-[14px] text-[#001a5f] font-karla font-normal uppercase">
+                          <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                             {formattedDateString}
                           </span>
                         </div>
@@ -460,7 +454,7 @@ const ManageSubscription = () => {
                           <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                             SUBSCRIPTION CANCELLATION DATE
                           </span>
-                          <span className="text-[14px] text-[#001a5f] font-karla font-normal uppercase">
+                          <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                             {stripeCollection.stripe?.subscriptionCancelledAt}
                           </span>
                         </div>

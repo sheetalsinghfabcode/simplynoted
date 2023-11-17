@@ -86,7 +86,7 @@ const data = [
 
 const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const getSubscriptionType = (stripeCollection) => {
-    if (stripeCollection && stripeCollection.stripe.subscriptionStatus !=="canceled") {
+    if (stripeCollection && stripeCollection.stripe?.subscriptionStatus !=="canceled") {
       const subscription = stripeCollection.stripe?.subscription || 'free';
       if (subscription === 'team') {
         return 'team';
@@ -142,9 +142,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   return (
     <div>
       <div className="w-full  max-w-[1366px] p-[20px] mx-auto">
-        <h2 className="text-[50px] leading-[130%] my-[10px] text-center font-semibold text-[#1b5299]">
-          Simply Noted Plan
-        </h2>
+      
         <table className="mx-auto table bg-white  ">
           <thead>
             <tr className="h-[190px] flex flex-row-reverse">

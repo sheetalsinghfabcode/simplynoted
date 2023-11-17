@@ -12,8 +12,8 @@ const DynamicTitle = ({title,title2, dynamicButton})=> {
             {dynamicButton && 
             <div>
           <DynamicButton
-            className="bg-[#EF6E6E]  w-full max-w-[125px]"
-            text="Prev"
+            className="bg-[#EF6E6E]  w-full max-w-[150px]"
+            text="Go Back"
             backArrow={true}
             onClickFunction={goBack}
           />

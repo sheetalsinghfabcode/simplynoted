@@ -9,7 +9,8 @@ import Accordion from '~/components/wallet/Accordian';
 import Loader from '~/components/modal/Loader';
 import {useNavigate} from '@remix-run/react';
 import DynamicButton from '~/components/DynamicButton';
-
+import DynamicTitle from '~/components/Title';
+import CircularLoader from '~/components/CircularLoder';
 
 export async function loader({context}) {
   const StripeKey = context.env.STRIPE_KEY;
@@ -40,12 +41,10 @@ export default function SimplyNoted() {
   const [subscription, setSubscription] = useState(0);
   const [walletPayment, setWalletPayment] = useState(false);
   const [finalPrice, setFinalPrice] = useState(null);
-  const [loader,setloader]= useState(true)
+  const [loader, setloader] = useState(true);
 
   const navigate = useNavigate();
-  const goBack = () => navigate(-1)
-
-
+  const goBack = () => navigate(-1);
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -54,9 +53,7 @@ export default function SimplyNoted() {
     }
   }, []);
 
-
   useEffect(() => {
-
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
 
@@ -71,76 +68,74 @@ export default function SimplyNoted() {
       .then((data) => {
         console.log('data', data);
         setStripeCollection(data);
-        setloader(false)
+        setloader(false);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-      return() =>{
-      }
+    return () => {};
   }, []);
 
   return (
-    <>
-    {loader ? (<Loader
-      loaderMessage="Loading Plans"
-      />
-      ):(
-      <>
-       {!walletPlan && !walletPurcase && !walletPayment && (
-      <DynamicButton
-        className="bg-[#EF6E6E] m-5 w-full max-w-[125px]"
-        text="Prev"
-        backArrow={true}
-        onClickFunction={goBack}/>)}
-      <div>
-      {!walletPlan && !walletPurcase && !walletPayment && (
-        <WalletTable
-          WalletData={WalletData}
-          pricePerCard={pricePerCard}
-          setWalletPlan={setWalletPlan}
-          stripeCollection={stripeCollection}
-        />
-      )}
-      {walletPlan && (
-        <WalletPlan
-          setWalletPurchase={setWalletPurchase}
-          setWalletPlan={setWalletPlan}
-          WalletData={WalletData}
-          setSelectedPlan={setSelectedPlan}
-          selectedPlan={selectedPlan}
-          setAmount={setAmount}
-          amount={amount}
-          setSubscription={setSubscription}
-          stripeCollection={stripeCollection}
-        />
-      )}
-      {walletPurcase && (
-        <WalletPurchase
-          setWalletPurchase={setWalletPurchase}
-          setWalletPlan={setWalletPlan}
-          amount={amount}
-          selectedPlan={selectedPlan}
-          finalPrice={finalPrice}
-          setFinalPrice={setFinalPrice}
-          WalletData={WalletData}
-          subscription={subscription}
-          setWalletPayment={setWalletPayment}
-        />
-      )}
-
-      {walletPayment && (
-        <Accordion
-          setWalletPurchase={setWalletPurchase}
-          setWalletPayment={setWalletPayment}
-          finalPrice={finalPrice}
-          StripeKey={StripeKey}
-        />
-      )}
-    </div>
-    </>)}
+    <div className='w-full relative max-w-[1440px] mx-auto px-[16px]'>
+       {loader && (
+          <div className="absolute top-[50%] left-[50%]">
+            <CircularLoader color="#ef6e6e" />
+          </div>
+        )}
     
-    </>
+      {!walletPlan && !walletPurcase && !walletPayment && (
+        <DynamicTitle
+          dynamicButton
+          title={'Simply Noted Plans'}
+        />
+      )}
+      <div className={`${loader && 'opacity-40'}`}>
+        {!walletPlan && !walletPurcase && !walletPayment && (
+          <WalletTable
+            WalletData={WalletData}
+            pricePerCard={pricePerCard}
+            setWalletPlan={setWalletPlan}
+            stripeCollection={stripeCollection}
+          />
+        )}
+        {walletPlan && (
+          <WalletPlan
+            setWalletPurchase={setWalletPurchase}
+            setWalletPlan={setWalletPlan}
+            WalletData={WalletData}
+            setSelectedPlan={setSelectedPlan}
+            selectedPlan={selectedPlan}
+            setAmount={setAmount}
+            amount={amount}
+            setSubscription={setSubscription}
+            stripeCollection={stripeCollection}
+          />
+        )}
+        {walletPurcase && (
+          <WalletPurchase
+            setWalletPurchase={setWalletPurchase}
+            setWalletPlan={setWalletPlan}
+            amount={amount}
+            selectedPlan={selectedPlan}
+            finalPrice={finalPrice}
+            setFinalPrice={setFinalPrice}
+            WalletData={WalletData}
+            subscription={subscription}
+            setWalletPayment={setWalletPayment}
+          />
+        )}
+
+        {walletPayment && (
+          <Accordion
+            setWalletPurchase={setWalletPurchase}
+            setWalletPayment={setWalletPayment}
+            finalPrice={finalPrice}
+            StripeKey={StripeKey}
+          />
+        )}
+      </div>
+    </div>
   );
 }
 

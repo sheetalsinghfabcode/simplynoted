@@ -258,7 +258,7 @@ export default function AddressBook() {
               <DynamicTitle dynamicButton title={'Address Book'} />
               {!addressForm && !selectedAddress && (
                 <div className="w-full">
-                  <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
+                  {/* <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
                     <input
                       type="text"
                       placeholder="Search Addresses..."
@@ -310,7 +310,7 @@ export default function AddressBook() {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   <Instruction
                     isOpen={isModalOpen}
                     title="INSTRUCTIONS FOR BULK UPLOAD"
@@ -324,6 +324,10 @@ export default function AddressBook() {
                   />
                   <ContactTable
                     customerID={customerID}
+                    openModal={openModal}
+                    searchText={searchText}
+                    selectedFile={selectedFile}
+                    setSearchText={setSearchText}
                     filteredAddresses={filteredAddresses}
                     editAddress={editAddress}
                     updateLoader={updateLoader}
@@ -332,6 +336,9 @@ export default function AddressBook() {
                     handleSearchInputChange={handleSearchInputChange}
                     setSelectedCheckboxes={setSelectedCheckboxes}
                     selectedCheckboxes={selectedCheckboxes}
+                    handleFileChange={handleFileChange}
+                    handleUploadClick={handleUploadClick}
+                    setAddressForm={setAddressForm}
                   />
                 </div>
               )}
