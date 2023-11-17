@@ -39,7 +39,7 @@ const WalletPlans = ({
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
       <DynamicButton
-        text="Previous"
+        text="Go Back"
         onClickFunction={() => setWalletPlan(false)}
         className="!bg-[#EF6E6E] mb-[18px]"
       />

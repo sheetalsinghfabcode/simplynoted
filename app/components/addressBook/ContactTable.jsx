@@ -6,6 +6,7 @@ import ConfirmationModal from '../modal/ConfirmationModal';
 import {useAddressBook} from '../AddressBookContext';
 import CheckBox from '../../components/CheckBox';
 import CircularLoader from '../CircularLoder';
+import DynamicButton from '../DynamicButton';
 
 const ContactTable = ({
   customerID,
@@ -15,6 +16,15 @@ const ContactTable = ({
   setSelectedAddress,
   selectedCheckboxes,
   updateLoader,
+  searchText,
+  handleSearchInputChange,
+  setSeachText,
+  handleFileChange,
+  handleUploadClick,
+  openModal,
+  selectedFile,
+  setAddressForm
+
 }) => {
   const {loadAddress, setLoadAddress} = useAddressBook();
   const [selectedType, setSelectedType] = useState('all');
@@ -204,10 +214,60 @@ const ContactTable = ({
 
   return (
     <div className="w-full max-w-[100%] overflow-x-auto">
-      {loader ? (
-        <Loader loaderMessage="Deleting Address Book Data" />
-      ) : (
-        <>
+       <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
+                    <input
+                      type="text"
+                      placeholder="Search Addresses..."
+                      value={searchText}
+                      onChange={handleSearchInputChange}
+                      className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+                    />
+                    <div className="flex">
+                      <div
+                        className={`border-[1px] border-dashed border-[#000] py-[5px]`}
+                      >
+                        <div className="flex flex-col">
+                          <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                            Bulk Address Upload
+                          </h2>
+                          <input
+                            onChange={handleFileChange}
+                            type="file"
+                            accept=".csv"
+                            className="p-[10px] cursor-pointer"
+                          />
+                          <a
+                            href="https://api.simplynoted.com/docs/bulk-template"
+                            className="text-[14px] px-[10px] font-bold underline"
+                          >
+                            Download bulk address template
+                          </a>
+                          <span
+                            onClick={openModal}
+                            className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
+                          >
+                            {' '}
+                            View Instructions
+                          </span>
+                        </div>
+                        {selectedFile && (
+                          <DynamicButton
+                            text="Upload"
+                            className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
+                            onClickFunction={() => handleUploadClick()}
+                          />
+                        )}
+                      </div>
+                      <div className="flex items-end justify-end ml-[10px] ">
+                        <DynamicButton
+                          className="bg-[#1b5299]"
+                          text="+ New Address"
+                          onClickFunction={() => setAddressForm(true)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+      
           {!editAddress && (
             <>
               <div className="flex gap-[16px] items-center mb-[14px]">
@@ -374,8 +434,6 @@ const ContactTable = ({
             confirmText="Delete"
             cancelText="Cancel"
           />
-        </>
-      )}
     </div>
   );
 };

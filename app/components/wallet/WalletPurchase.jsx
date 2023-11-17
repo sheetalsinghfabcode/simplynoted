@@ -49,8 +49,8 @@ const WalletPurchase = ({
 
         <div className="flex justify-between items-center mt-[24px]">
           <DynamicButton
-            text="Prev"
-            className="!bg-[#EF6E6E] w-full max-w-[125px] uppercase text-[22px] "
+            text="Go Back"
+            className="!bg-[#EF6E6E] w-full max-w-[150px] uppercase text-[22px] "
             onClickFunction={() => {
               setWalletPurchase(false);
               setWalletPlan(true);
