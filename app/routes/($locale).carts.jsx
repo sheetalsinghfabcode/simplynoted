@@ -13,8 +13,11 @@ import DynamicButton from '~/components/DynamicButton';
 import { HiArrowLongRight } from "react-icons/hi2";
 import { CheckoutData } from '../components/Checkout'
 import DynamicTitle from '../components/Title';
-import Del from '../../assets/Image/delete.webp'
+import Del from '../../assets/Image/del2.png'
 import CircularLoader from '~/components/CircularLoder';
+import EditICon from '../../assets/Image/editIcon.png'
+import { useAddressBook } from '~/components/AddressBookContext';
+
 let storedDataString, storedDataArray
 
 export async function loader({ context, request }) {
@@ -38,6 +41,8 @@ export async function loader({ context, request }) {
 }
 
 export default function AddCartFunc() {
+    const { setCartCountVal, cartCountVal } = useAddressBook();
+
     const { data, postalData, StripeKey } = useLoaderData()
     // console.log(formData,'-----------');
     const [cartData, setCartData] = useState([])
@@ -62,6 +67,7 @@ export default function AddCartFunc() {
     const [bulkAddress, setBulkAddress] = useState([])
     const [deleteModal, setDeleteModal] = useState(false);
     const [deleteCardModal, setDeleteCardModal] = useState(false);
+    const [clearCartModal, setClearCartModal] = useState(false);
     const [deleteOrderIndex, setDelOrderIndex] = useState(null)
     const [delCardIndex, setDelCardIndex] = useState(null)
     const [showCartPage, setShowCartPage] = useState(true)
@@ -71,6 +77,11 @@ export default function AddCartFunc() {
     useEffect(() => {
         storedDataString = localStorage.getItem('mydata');
         setCartData(JSON.parse(storedDataString))
+        console.log(cartData, "--------");
+        localStorage.setItem('cartCount', JSON.stringify(cartData.length))
+        let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : ''
+        setCartCountVal(totalCartCount)
+
         if (postalData) {
             setPostalValue()
         }
@@ -129,6 +140,15 @@ export default function AddCartFunc() {
         setDeleteCardModal(true)
         setDelCardIndex(index)
     }
+    function clearCartBtn() {
+        setClearCartModal(true)
+    }
+
+    function clearCart() {
+        setUpdateGift(!updateGift)
+        localStorage.removeItem('mydata')
+        setClearCartModal(false)
+    }
 
     function ConfirmDeleteOrder(index) {
         console.log(index);
@@ -146,6 +166,7 @@ export default function AddCartFunc() {
         // delete cartData[index];
         // }
         localStorage.setItem('mydata', JSON.stringify(cartData));
+        localStorage.setItem('cartCount', JSON.stringify(cartData.length))
         setDeleteModal(false)
     }
 
@@ -259,8 +280,7 @@ export default function AddCartFunc() {
                     cartData.reciverAddress?.country?.toLowerCase() === "united states" ||
                     cartData.reciverAddress?.country?.toLowerCase() === "united states of america" ||
                     cartData.reciverAddress?.country?.toLowerCase() == undefined ? postPrice * cartData.csvFileLen : postPrice2 * cartData.csvFileLen))
-                + (cartData.shippingDataCost * 1)), 0
-        )
+                + (cartData.shippingDataCost * 1)), 0)
         console.log(prices, 'pricesssss');
         setTotalPrize(prices)
     }
@@ -269,7 +289,7 @@ export default function AddCartFunc() {
             {showCartPage ?
                 <>
                     <div className='w-full h-full gap-2 mt-8'>
-                        {cartData ?
+                        {cartData && cartData.length > 0 ?
                             <>
                                 <DynamicTitle title={'SHOPPING CART'} />
                                 <>
@@ -436,7 +456,7 @@ export default function AddCartFunc() {
                                                             </div>
                                                         </div>
                                                         <div class="w-[19rem] m-4 flex justify-center items-center">
-                                                            </div>
+                                                        </div>
                                                     </div>}
                                                 </>
                                                 :
@@ -538,7 +558,7 @@ export default function AddCartFunc() {
                                                         </div>
                                                     </div>
                                                     <div class="w-[19rem] m-4 flex justify-center items-center">
-                                                            </div>
+                                                    </div>
                                                 </div>
                                             }
                                             <div className='flex'>
@@ -568,6 +588,44 @@ export default function AddCartFunc() {
                                         </div>
 
                                     )}
+                                    {totalPrize &&
+                                        <div className='w-[73rem]  bg-[#FFF6F6] m-auto mt-10 mb-10'>
+                                            <div className='flex p-2 '>
+                                                <div className='w-[25rem] flex items-center'>
+                                                    <div className='buttonDiv pr-5 m-2'>
+                                                        <button className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla" onClick={() => clearCartBtn()}>
+                                                            <img src={Del} className="w-[20px] h-[20px] m-auto cursor-pointer text-[white] mr-1" />
+                                                            CLEAR SHOPING CART</button>
+                                                    </div>
+                                                </div>
+                                                <div className='w-[29rem] flex items-center'>
+                                                    <div className=''>
+                                                        <div className='mt-2'>
+                                                            <text className='text-2xl text-[#1b5299] font-karla  mr-4 tracking-[1.5px]'>GRAND TOTAL</text>
+                                                        </div>
+                                                    </div>
+                                                    <div className=''>
+                                                        <div className='mt-2'>
+                                                            <text className='text-2xl text-[#1b5299] font-karla mt-2 tracking-[1.5px]'>${totalPrize}</text>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className='w-[19rem] flex justify-end mr-1'>
+                                                    <div className=''>
+                                                        <div>
+                                                            <input type="checkbox" onClick={() => setAgree(!agree)} checked={agree} />
+                                                            <text className='text-s'> I agree with <span className='underline decoration-solid'><a href='/policies/terms-of-service'>Terms of service</a></span></text>
+
+                                                        </div>
+                                                        <button
+                                                            disabled={!agree}
+                                                            className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2  flex justify-center mt-2" onClick={() => setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 ' />
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
                                 </>
                             </>
                             :
@@ -587,40 +645,7 @@ export default function AddCartFunc() {
                         }
 
 
-                        {totalPrize &&
-                            <div className='w-[73rem]  bg-[#FFF6F6] m-auto mt-10 mb-10'>
-                                <div className='flex p-2 '>
-                                    <div className='w-[25rem] flex items-center'>
-                                        <div className='buttonDiv pr-5 m-2'>
-                                            <button className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px]" >
-                                                {/* <RiDeleteBin5Line className='mr-2 mt-1' />  */}
-                                                <img src={Del} className="w-[20px] h-[20px] m-auto cursor-pointer text-[white]" />
-                                                CLEAR SHOPING CART</button>
-                                        </div>
-                                    </div>
-                                    <div className='w-[29rem] flex items-center'>
-                                        <div className=''>
-                                            <div className='mt-2'>
-                                                <text className='text-2xl text-[#1b5299] font-karla  mr-4 tracking-[1.5px]'>GRAND TOTAL</text>
-                                            </div>
-                                        </div>
-                                        <div className=''>
-                                            <div className='mt-2'>
-                                                <text className='text-2xl text-[#1b5299] font-karla mt-2 tracking-[1.5px]'>${totalPrize}</text>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='w-[19rem]'>
-                                        <div className=''>
-                                            <input type="checkbox" onClick={() => setAgree(!agree)} checked={agree} />
-                                            <text className='text-s'> I agree with <span className='underline decoration-solid'><a href='/policies/terms-of-service'>terms of service</a></span></text>
-                                            <button
-                                                disabled={!agree}
-                                                className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2  flex justify-center mt-2" onClick={() => setShowCartPage(false)}>CHECKOUT <HiArrowLongRight className='text-2xl ml-2 ' /> </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>}
+
                     </div>
                     <ConfirmationModal
                         show={deleteModal}
@@ -635,6 +660,14 @@ export default function AddCartFunc() {
                         onCancel={() => setDeleteCardModal(false)}
                         onConfirm={() => deleteKeyInArray(delCardIndex)}
                         message="Are you sure you want to delete Gift Card."
+                        confirmText="Delete"
+                        cancelText="Cancel"
+                    />
+                    <ConfirmationModal
+                        show={clearCartModal}
+                        onCancel={() => setClearCartModal(false)}
+                        onConfirm={() => clearCart()}
+                        message="Are you sure you want to clear your Cart?."
                         confirmText="Delete"
                         cancelText="Cancel"
                     />

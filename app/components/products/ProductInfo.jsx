@@ -92,7 +92,7 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
                                     <td className="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
                             </tbody>
                         </table>}
-                    <div className='selectOtion mb-5 flex'>
+                    <div className='selectOtion mb-5 flex mt-[2rem]'>
                         <div className='w-[192px]'>
                             <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
                             <br />

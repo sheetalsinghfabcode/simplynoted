@@ -265,7 +265,7 @@ export default function Product() {
               editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}/>
           </Section>
 
-          <Suspense fallback={<Skeleton className="h-32" />}>
+          {/* <Suspense fallback={<Skeleton className="" />}>
             <Await
               errorElement="There was a problem loading related products"
               resolve={recommended}
@@ -274,7 +274,7 @@ export default function Product() {
                 <ProductSwimlane title="Related Products" products={products} />
               )}
             </Await>
-          </Suspense>
+          </Suspense> */}
           <Modal
             isOpen={modalIsOpen2}
             // onAfterOpen={afterOpenModal}

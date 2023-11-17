@@ -43,6 +43,8 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
 import Loader from './modal/Loader';
+import { useAddressBook } from './AddressBookContext';
+
 let customerid;
 
 export function Layout({children, layout}) {
@@ -87,6 +89,8 @@ function Header({title, menu}) {
 
   // toggle cart drawer when adding to cart
   useEffect(() => {
+    let aa = localStorage.getItem('cartCount')
+    console.log(aa,"sssssssss");
     if (isCartOpen || !addToCartFetchers.length) return;
     openCart();
   }, [addToCartFetchers, isCartOpen, openCart]);
@@ -227,23 +231,21 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({isHome, menu, openCart, title}) {
+function DesktopHeader({ isHome, menu, openCart, title }) {
+  const {setCartCountVal,cartCountVal} = useAddressBook();
   const [loginModal, setLoginModal] = useState(false);
-
-  const navigate = useNavigate();
-  const [cartCount, setCartCount] = useState(0);
-
-  useEffect(() => {
-    let calculatedCartCount = localStorage.getItem('mydata')
-      ? JSON.parse(localStorage.getItem('mydata'))
-      : [];
-    setCartCount(calculatedCartCount.length);
-  }, []);
-  function CreateCardCheck() {
-    if (typeof window !== 'undefined') {
-      let id = localStorage.getItem('customerId');
-      if (id) {
-        return (
+  useEffect(()=>{
+    let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
+    localStorage.setItem('cartCount',JSON.stringify(calculatedCartCount.length))
+    let totalCartCount = (localStorage.getItem('cartCount')) ?JSON.parse(localStorage.getItem('cartCount')):''
+    setCartCountVal(totalCartCount)
+    console.log(totalCartCount,'length');
+  },[])
+  function CreateCardCheck(){
+   if(typeof window !== 'undefined'){
+    let id = localStorage.getItem('customerId');
+    if(id){
+      return(
           <Link to="/customise-your-card">
             <li>Create a Card</li>
           </Link>
@@ -416,22 +418,38 @@ function DesktopHeader({isHome, menu, openCart, title}) {
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
+              {cartCountVal?
+              <>
             <Link to="/carts">
-              <div className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]">
-                <span className="text-[white]">
-                  {cartCount ? cartCount : ''}
-                </span>
+
+              <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
+              <span className='text-[white]'>{cartCountVal?cartCountVal:''}</span>
               </div>
-              <img
-                src={CartShopify}
-                alt="cart-icon"
-                style={{
-                  width: '32px',
-                  height: '29px',
-                  marginTop: '-11px',
-                }}
-              />
+               <img
+              src={CartShopify}
+              alt="cart-icon"
+              style={{
+                width: '32px',
+                height: '29px',
+                marginTop: '-11px',
+              }}
+            />
             </Link>
+              </>
+              :
+              <Link to="/carts">
+               <img
+              src={CartShopify}
+              alt="cart-icon"
+              style={{
+                width: '32px',
+                height: '29px',
+                marginTop: '-11px',
+              }}
+            />
+            </Link>
+              }
+           
             {/* <span className="tooltiptext">Cart</span> */}
           </div>
 

@@ -1,12 +1,12 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AddressBookContext = createContext();
 
-export function AddressBookProvider({children}) {
+export function AddressBookProvider({ children }) {
   const [addresses, setAddresses] = useState([]);
   const [loadAddress, setLoadAddress] = useState(false);
   const [addressForm, setAddressForm] = useState(false);
-  const [editAddress,setEditAddress]= useState(false)
+  const [editAddress, setEditAddress] = useState(false)
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isHeaderChecked, setIsHeaderChecked] = useState(false);
   const [isFooterChecked, setIsFooterChecked] = useState(false);
@@ -23,7 +23,7 @@ export function AddressBookProvider({children}) {
   const [selectFontValue, setSelectFontValue] = useState('');
   const [headerFontSize, setHeaderFontSize] = useState(16);
   const [selectedColor, setSelectedColor] = useState('#000');
-
+  const [cartCountVal, setCartCountVal] = useState('')
 
   return (
     <AddressBookContext.Provider
@@ -39,7 +39,7 @@ export function AddressBookProvider({children}) {
         editAddress,
         setEditAddress,
         selectedAddress,
-        setSelectedAddress, 
+        setSelectedAddress,
         footerText,
         setFooterText,
         footeralignment,
@@ -68,6 +68,8 @@ export function AddressBookProvider({children}) {
         setScale,
         backScale,
         setBackScale,
+        setCartCountVal,
+        cartCountVal
       }}
     >
       {children}
