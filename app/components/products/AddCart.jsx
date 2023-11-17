@@ -334,9 +334,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                         <div className='  w-full h-full gap-2 mt-8'>
                             <div className='row flex mr-2 ml-2 gap-4'>
                                 <div className='col-6 w-[50%] '>
-                                    <div className='address-grid'>
+                                    <div className=' bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
                                         <div className='address-data'>
-                                            <h3 className='text-2xl font-bold mt-4 mb-4'>Your Info (return/sender address)</h3>
+                                            <h3 className='text-2xl mt-4 mb-4 font-karla'>Your Info (return/sender address)</h3>
                                             <DynamicButton
                                                 className="bg-[#1b5299]"
                                                 text="+ New Address"
@@ -347,30 +347,30 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                 <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
                             </div> */}
                                             <div>
-                                                <input type="text " className='w-full rounded p-3 mt-4' onChange={(e) => setsearchData2(e.target.value)} placeholder='Search Addresses...' />
+                                                <input type="text " className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla' onChange={(e) => setsearchData2(e.target.value)} placeholder='Search Addresses...' />
                                             </div>
                                             {filteredForSender(returnAddress, searchData2).map((item) =>
 
-                                                <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
+                                                <div className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] '>
                                                     <input
                                                         type="checkbox"
                                                         value={item}
                                                         checked={selectedItem2?._id === item._id}
                                                         onChange={() => handleCheckboxChange2(item)}
                                                     />
-                                                    <span >  {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}</span>
+                                                    <span className='font-karla ml-2'>{item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}</span>
                                                 </div>
                                             )}
                                         </div>
                                     </div>
                                 </div>
                                 <div className='col-6 w-[50%]'>
-                                    <div className='address-grid'>
+                                    <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
                                         <div className='address-data'>
-                                            <h3 className='text-2xl font-bold mt-4 mb-4'>Recipient address</h3>
+                                            <h3 className='text-2xl font-karla mt-4 mb-4'>Recipient address</h3>
                                             {show ?
                                                 <div>
-                                                    <text>
+                                                    <text className='font-karla'>
                                                         Recipient addresses were specified in your bulk order upload.
                                                     </text>
                                                 </div>
@@ -382,10 +382,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                         onClickFunction={() => setAddressForm(true)}
                                                     />
                                                     <div>
-                                                        <input type="text" onChange={(e) => setsearchData(e.target.value)} className='w-full rounded p-3 mt-4 ' placeholder='Search Addresses...' />
+                                                        <input type="text " className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla' onChange={(e) => setsearchData(e.target.value)}  placeholder='Search Addresses...' />
                                                     </div>
                                                     {filteredList(recipientAddress, searchData).map((item, index) =>
-                                                        <div className='w-full rounded p-3 mt-4 bg-[#fff] '>
+                                                        <div className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] '>
                                                             <input
                                                                 type="checkbox"
                                                                 value={item}
@@ -393,7 +393,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                                 onChange={() => handleCheckboxChange(item)}
                                                             // ref={refRec}
                                                             />
+                                                            
+                                                            <span className='font-karla ml-2'>
                                                             {item.firstName} {item.lastName}, {item.city}, {item.state}, {item.zip}, {item.country}
+                                                            </span>
                                                         </div>
                                                     )}
                                                 </>}
@@ -407,8 +410,8 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                             <div className='row flex mr-2 ml-2 gap-4'>
                                 {show &&
                                     <div className='col-6 w-[50%] '>
-                                        <div className='address-grid'>
-                                            <h3 className='text-2xl font-bold mt-4 mb-4'>{shippingData?.title}</h3>
+                                        <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
+                                            <h3 className='text-2xl font-karla mt-4 mb-4'>{shippingData?.title}</h3>
 
                                             <div class="shipping-methods" id="shipping-options">
                                                 {shippingData?.variants.edges.map((item, index) =>
@@ -420,9 +423,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                                 type="radio"
                                                                 onChange={() => handleBoxoNShipping(item)}
                                                             />
-                                                            <label for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
+                                                            <label className='font-karla' for="Mail-Individual-Cards-Normally-(default)">{item?.node.title}</label>
                                                         </div>
-                                                        <div class="custom_variant_price">${item?.node.price.amount}</div>
+                                                        <div className="custom_variant_price font-karla">${item?.node.price.amount}</div>
                                                     </div>
                                                 )}
                                             </div>
@@ -430,41 +433,41 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                     </div>}
 
                                 <div className='col-6 w-[50%]'>
-                                    <div className='address-grid mt-10'>
+                                    <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto mt-10'>
                                         <div className='address-data'>
-                                            <h3 className='text-2xl font-bold mt-6 mb-6'>Add a Gift Card</h3>
+                                            <h3 className='text-2xl font-karla mt-6 mb-6'>Add a Gift Card</h3>
                                             <div className='row flex mr-2 ml-2 '>
-                                                <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Card:</div>
+                                                <div className='col-4 mt-4 font-karla w-[190px]'>Select Gift Card:</div>
                                                 <div className='col-8 mt-3 pr-0 w-[370px]' >
-                                                    <select className='w-full' onChange={(e) => cardvalFunc(e.target.value)}>
-                                                        <option className='w-full' selected disabled>{cardName ? cardName : 'Select Gift Card'} </option>
+                                                    <select className='w-full font-karla bg-[#e8e8ea3d]' onChange={(e) => cardvalFunc(e.target.value)}>
+                                                        <option className='w-full font-karla' selected disabled>{cardName ? cardName : 'Select Gift Card'} </option>
                                                         {data.collection.products.edges.map((item, i) =>
-                                                            <option value={i}>{item.node.title}</option>)}
+                                                            <option className='font-karla' value={i}>{item.node.title}</option>)}
                                                     </select>
                                                 </div>
                                             </div>
                                             <div className='row flex mr-2 ml-2 '>
-                                                <div className='col-4 mt-4 font-bold w-[190px]'>Select Gift Price:</div>
+                                                <div className='col-4 mt-4 font-karla w-[190px]'>Select Gift Price:</div>
                                                 <div className='col-8 mt-3 pr-0 w-[370px]' >
                                                     {cardPrice ?
                                                         // <div>heelooo</div>
-                                                        <select name="" id="" className='w-full' onChange={(e) => priceValFunc(e.target.value)}>
-                                                            <option selected disabled>{cardPriceTitle}</option>
+                                                        <select name="" id="" className='w-full font-karla bg-[#e8e8ea3d]' onChange={(e) => priceValFunc(e.target.value)}>
+                                                            <option selected disabled className='font-karla'>{cardPriceTitle}</option>
                                                             {cardPriceVal.map((item, i) =>
-                                                                <option
+                                                                <option className='font-karla'
                                                                     value={i}>{item.node.title}</option>
                                                             )}
                                                         </select>
                                                         :
-                                                        <select name="" id="">
-                                                            <option value="">{'Price Card'}</option>
+                                                        <select name="" id="" className='font-karla bg-[#e8e8ea3d]' >
+                                                            <option value="" className='font-karla'>{'Price Card'}</option>
                                                         </select>
                                                     }
                                                 </div>
                                             </div>
                                             <div>
                                                 <input type="checkbox" id="" name="" value="" onClick={() => setStateCheckCart(!stateCheckCart)} checked={cardPriceTitle && stateCheckCart} />
-                                                <text className='ml-3'>Add Gift Card</text>
+                                                <text className='ml-3 font-karla'>Add Gift Card</text>
                                             </div>
                                         </div>
                                     </div>
