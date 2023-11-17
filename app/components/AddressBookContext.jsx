@@ -23,7 +23,7 @@ export function AddressBookProvider({ children }) {
   const [selectFontValue, setSelectFontValue] = useState('');
   const [headerFontSize, setHeaderFontSize] = useState(16);
   const [selectedColor, setSelectedColor] = useState('#000');
-  const [cartCountVal, setCartCountVal] = useState('')
+  const [cartCountVal, setCartCountVal] = useState(0)
 
   return (
     <AddressBookContext.Provider
@@ -68,8 +68,8 @@ export function AddressBookProvider({ children }) {
         setScale,
         backScale,
         setBackScale,
-        setCartCountVal,
-        cartCountVal
+        cartCountVal,
+        setCartCountVal
       }}
     >
       {children}

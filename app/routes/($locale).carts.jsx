@@ -75,18 +75,17 @@ export default function AddCartFunc() {
     const [agree, setAgree] = useState(false)
 
     useEffect(() => {
-        storedDataString = localStorage.getItem('mydata');
-        setCartData(JSON.parse(storedDataString))
-        console.log(cartData, "--------");
-        localStorage.setItem('cartCount', JSON.stringify(cartData.length))
-        let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : ''
+        storedDataString = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
+        setCartData(storedDataString)
+        localStorage.setItem('cartCount', JSON.stringify(storedDataString.length))
+        let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : 0
         setCartCountVal(totalCartCount)
 
         if (postalData) {
             setPostalValue()
         }
         if (postPrice) {
-            subTotalAmount(JSON.parse(storedDataString))
+            subTotalAmount(storedDataString)
         }
 
     }, [updateGift, postPrice])

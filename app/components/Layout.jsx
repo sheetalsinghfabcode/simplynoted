@@ -43,7 +43,7 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
 import Loader from './modal/Loader';
-import { useAddressBook } from './AddressBookContext';
+import { useAddressBook } from "../components/AddressBookContext"
 
 let customerid;
 
@@ -232,14 +232,18 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
-  const {setCartCountVal,cartCountVal} = useAddressBook();
+
+  const {cartCountVal,setCartCountVal} = useAddressBook();
+  
+  const navigate = useNavigate();
+
+
   const [loginModal, setLoginModal] = useState(false);
   useEffect(()=>{
     let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
     localStorage.setItem('cartCount',JSON.stringify(calculatedCartCount.length))
-    let totalCartCount = (localStorage.getItem('cartCount')) ?JSON.parse(localStorage.getItem('cartCount')):''
+    let totalCartCount = (localStorage.getItem('cartCount')) ?JSON.parse(localStorage.getItem('cartCount')):0
     setCartCountVal(totalCartCount)
-    console.log(totalCartCount,'length');
   },[])
   function CreateCardCheck(){
    if(typeof window !== 'undefined'){
@@ -418,7 +422,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
-              {cartCountVal?
+              {cartCountVal > 0?
               <>
             <Link to="/carts">
 
