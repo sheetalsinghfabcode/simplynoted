@@ -16,7 +16,7 @@ import DynamicTitle from '../components/Title';
 import Del from '../../assets/Image/del2.png'
 import CircularLoader from '~/components/CircularLoder';
 import EditICon from '../../assets/Image/editIcon.png'
-import { useAddressBook } from '~/components/AddressBookContext';
+// import { useAddressBook } from '~/components/AddressBookContext';
 
 let storedDataString, storedDataArray
 
@@ -41,7 +41,7 @@ export async function loader({ context, request }) {
 }
 
 export default function AddCartFunc() {
-    const { setCartCountVal, cartCountVal } = useAddressBook();
+    // const { setCartCountVal, cartCountVal } = useAddressBook();
 
     const { data, postalData, StripeKey } = useLoaderData()
     // console.log(formData,'-----------');
@@ -77,9 +77,9 @@ export default function AddCartFunc() {
     useEffect(() => {
         storedDataString = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
         setCartData(storedDataString)
-        localStorage.setItem('cartCount', JSON.stringify(storedDataString.length))
-        let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : 0
-        setCartCountVal(totalCartCount)
+        // localStorage.setItem('cartCount', JSON.stringify(storedDataString.length))
+        // let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : 0
+        // setCartCountVal(totalCartCount)
 
         if (postalData) {
             setPostalValue()

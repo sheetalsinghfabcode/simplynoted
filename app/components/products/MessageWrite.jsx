@@ -32,7 +32,7 @@ export function MessageWriting({
   editFontSize,
 }) {
   console.log(EditMess, 'EditMess');
-
+  let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
   const [fileData, setFileData] = useState([]);
@@ -54,10 +54,26 @@ export function MessageWriting({
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
+  const [address, setAddresses] = useState([]);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
   const remainSign = maxSignCount - name2.length;
+  console.log(address, 'address');
+  console.log(selectedCheckboxes, 'selectedCheckboxes');
+
+  function gettingCheckBoxAddress() {
+    const data = address.filter((item) =>
+      selectedCheckboxes.includes(item._id),
+    );
+    console.log(data, 'gettingCheckBoxAddress');
+    setFileData(data)
+    console.log(fileData,'******fileData******');
+  }
+  useEffect(() => {
+    gettingCheckBoxAddress();
+  }, [selectedCheckboxes]);
   const customStyles = {
     content: {
       top: '60%',
@@ -80,12 +96,14 @@ export function MessageWriting({
   }
   function closeSelectAddressModal() {
     setModalForAddressBook(false);
+    setSelectedCheckboxes([]);
   }
 
   function onCancelCSVUpload() {
     setShowNextBtn(false);
   }
   async function checkUserLogged() {
+    console.log(fileData,"fileData************");
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
@@ -533,6 +551,25 @@ export function MessageWriting({
       setCheckCharCount(true);
     }
   }
+  useEffect(() => {
+    // Define the API URL
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+    // Make a GET request to the API
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setAddresses(data.result);
+        console.log(data.result, 'data.result');
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -719,7 +756,7 @@ export function MessageWriting({
                   <DynamicButton
                     className="bg-[#1b5299] text-[14px] w-full"
                     text="Next"
-                    onClickFunction={() => ''}
+                    onClickFunction={() => checkUserLogged()}
                   />
                 </div>
               </div>
@@ -810,7 +847,15 @@ export function MessageWriting({
         title="Text Can not be Empty"
         closeModal={closeSelectAddressModal}
         table={false}
-        body={<ContactTable />}
+        body={
+          <ContactTable
+            customerID={customerid}
+            filteredAddresses={address}
+            setSelectedCheckboxes={setSelectedCheckboxes}
+            selectedCheckboxes={selectedCheckboxes}
+            ProdcuctSide={ProdcuctSide}
+          />
+        }
       />
       <LoginModal
         title={' Add Card'}

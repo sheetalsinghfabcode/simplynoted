@@ -233,18 +233,18 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
 
-  const {cartCountVal,setCartCountVal} = useAddressBook();
+  // const {cartCountVal,setCartCountVal} = useAddressBook();
   
   const navigate = useNavigate();
 
 
   const [loginModal, setLoginModal] = useState(false);
-  useEffect(()=>{
-    let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
-    localStorage.setItem('cartCount',JSON.stringify(calculatedCartCount.length))
-    let totalCartCount = (localStorage.getItem('cartCount')) ?JSON.parse(localStorage.getItem('cartCount')):0
-    setCartCountVal(totalCartCount)
-  },[])
+  // useEffect(()=>{
+  //   let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
+  //   localStorage.setItem('cartCount',JSON.stringify(calculatedCartCount.length))
+  //   let totalCartCount = (localStorage.getItem('cartCount')) ?JSON.parse(localStorage.getItem('cartCount')):0
+  //   setCartCountVal(totalCartCount)
+  // },[])
   function CreateCardCheck(){
    if(typeof window !== 'undefined'){
     let id = localStorage.getItem('customerId');
@@ -422,9 +422,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
-              {cartCountVal > 0?
-              <>
-            <Link to="/carts">
+              {/* {cartCountVal > 0? */}
+              {/* <> */}
+            {/* <Link to="/carts">
 
               <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
               <span className='text-[white]'>{cartCountVal?cartCountVal:''}</span>
@@ -440,7 +440,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             />
             </Link>
               </>
-              :
+              : */}
               <Link to="/carts">
                <img
               src={CartShopify}
@@ -452,7 +452,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
               }}
             />
             </Link>
-              }
+              {/* } */}
            
             {/* <span className="tooltiptext">Cart</span> */}
           </div>
