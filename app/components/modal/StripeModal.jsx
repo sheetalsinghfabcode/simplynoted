@@ -1,3 +1,4 @@
+import CircularLoader from '../CircularLoder';
 import StripeCardComp from '../StripeCardComp';
 import StripeCard from '../wallet/StripeCard';
 import {Elements} from '@stripe/react-stripe-js';
@@ -5,6 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 
 const StripeModal = ({
+  loader,
   show,
   onCancel,
   onConfirm,
@@ -24,6 +26,7 @@ const StripeModal = ({
       } fixed inset-0 overflow-y-auto flex items-center justify-center z-50`}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
+ 
 
       <div className="modal-container relative bg-white w-11/12 md:max-w-[40%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <span
@@ -39,6 +42,14 @@ const StripeModal = ({
             </h3>
           </div>
           <div className="modal-body mt-[12px]">
+          {loader && (
+          <div className="flex items-center justify-center">
+            <div className="absolute inset-0 bg-white opacity-50 z-40"></div>
+            <div className="z-50">
+              <CircularLoader color="#ef6e6e" />
+            </div>
+          </div>
+        )}
           <Elements stripe={stripe}>
             <StripeCard handlePurchaseCard={handlePurchaseCard} addCreditModal={addCreditModal}/>
           </Elements>
@@ -46,12 +57,6 @@ const StripeModal = ({
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>
           </div>
           <div className="modal-footer w-full flex justify-center items-center gap-[12px] mt-[20px]">
-            {/* <button
-              onClick={onConfirm}
-              className="bg-red-500 uppercase whitespace-nowrap text-[12px] w-full min-h-[48px] min-w-[175px] max-w-[400px]  text-center hover:bg-red-600 text-white font-semibold py-2 px-4 "
-            >
-              {confirmText}
-            </button> */}
           </div>
         </div>
       </div>
