@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from '@remix-run/react';
 import {FaArrowLeft} from 'react-icons/fa';
 import html2canvas from 'html2canvas';
@@ -13,6 +13,8 @@ export default function FlatCustomisableCard({
   customerId,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
+    useState(false);
   const [selectedCardPage, setSelectedCardPage] = useState('Card Front');
   const [frontImageDetails, setFrontImageDetails] = useState({
     imageFile: null,
@@ -69,6 +71,10 @@ export default function FlatCustomisableCard({
     generatedQrImageLink:
       'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
   });
+
+  const frontImageRef = useRef(null);
+  const backHeaderImageRef = useRef(null);
+  const backFooterImageRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -173,6 +179,7 @@ export default function FlatCustomisableCard({
 
   const handleCardPageSelectionButton = (event) => {
     event.preventDefault();
+    setIsRotationAnimationApplied((prevRotationValue) => !prevRotationValue);
     switch (event.target.value) {
       case 'Card Front':
         setSelectedCardPage('Card Front');
@@ -303,7 +310,8 @@ export default function FlatCustomisableCard({
   };
 
   const handleSelectedImageReset = () => {
-    selectedCardPage === 'Card Front' &&
+    if (selectedCardPage === 'Card Front') {
+      frontImageRef.current.value = '';
       setFrontImageDetails({
         imageFile: null,
         screenshotUrl: null,
@@ -311,9 +319,10 @@ export default function FlatCustomisableCard({
         isColoredImage: true,
         isLongImage: false,
       });
+    }
 
-    selectedCardPage === 'Card Back' &&
-      observingData.isHeader &&
+    if (selectedCardPage === 'Card Back' && observingData.isHeader) {
+      backHeaderImageRef.current.value = '';
       setHeaderData((prevHeaderData) => {
         return {
           ...prevHeaderData,
@@ -325,9 +334,10 @@ export default function FlatCustomisableCard({
           isImageSelected: false,
         };
       });
+    }
 
-    selectedCardPage === 'Card Back' &&
-      observingData.isFooter &&
+    if (selectedCardPage === 'Card Back' && observingData.isFooter) {
+      backFooterImageRef.current.value = '';
       setFooterData((prevFooterData) => {
         return {
           ...prevFooterData,
@@ -339,6 +349,7 @@ export default function FlatCustomisableCard({
           isImageSelected: false,
         };
       });
+    }
   };
 
   const handleCustomTextChange = (event) => {
@@ -543,8 +554,7 @@ export default function FlatCustomisableCard({
     if (isDuplicateTitle) return alert('Card name already exists. 😔');
     const isCustomCardSaved = await saveCustomCard();
     if (!isCustomCardSaved) return alert('Unable to save the custom card.');
-    alert('Custom card succesfully saved!! 🚀');
-    // navigate(`/products/${customCardTitle}`);
+    navigate(`/collections/customisable-cards`);
   };
 
   async function checkForDuplicateTitle() {
@@ -609,8 +619,7 @@ export default function FlatCustomisableCard({
           metafields: [
             {
               key: 'qrImage',
-              // TODO: Have a dynamic value here.
-              value: '',
+              value: `${qr.generatedQrImageLink}`,
               value_type: 'string',
               namespace: 'is_customised',
             },
@@ -701,8 +710,6 @@ export default function FlatCustomisableCard({
         ` https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
         options,
       );
-
-      setIsLoading(false);
       return response.ok ? true : false;
     } catch (err) {
       console.error('Failed to save the custom card: ', err);
@@ -716,6 +723,7 @@ export default function FlatCustomisableCard({
       isHeaderVisible: !prevVisibility.isHeaderVisible,
     }));
   };
+
   const handleFooterVisibilityChange = () => {
     setHeaderFooterVisibility((prevVisibility) => ({
       ...prevVisibility,
@@ -735,7 +743,9 @@ export default function FlatCustomisableCard({
   };
 
   return isLoading ? (
-    <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
+    <div className="min-h-screen flex justify-center items-center">
+      <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
+    </div>
   ) : (
     <section>
       {checkTitleDuplicacyModalOpen && (
@@ -795,13 +805,14 @@ export default function FlatCustomisableCard({
               className="bg-[#FF443A] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5"
               type="button"
               onClick={() => {
-                setQr((prevQrValues) => {
-                  return {
-                    ...prevQrValues,
-                    isInputModalOpened: false,
-                    isConfirmationModalOpened: true,
-                  };
-                });
+                qr.inputText !== '' &&
+                  setQr((prevQrValues) => {
+                    return {
+                      ...prevQrValues,
+                      isInputModalOpened: false,
+                      isConfirmationModalOpened: true,
+                    };
+                  });
               }}
             >
               Create QR Code
@@ -868,145 +879,172 @@ export default function FlatCustomisableCard({
       <div className="relative mt-3">
         <GoBackButton />
         <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-10">
-          <div className="flex flex-col justify-start items-center flex-1 ml-7 min-h-[560px]">
+          <div
+            className="flex flex-col justify-start items-center flex-1 ml-7"
+            style={{minHeight: '564px'}}
+          >
             <span className="text-2xl mb-2">
               Custom Flat {selectedCardPage}
             </span>
             <div>
-              <div
-                className="h-[350px] min-w-[500px] bg-white relative border-2 border-black border-solid overflow-hidden"
-                style={{
-                  zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
-                }}
-                onMouseOver={() => setIsMouseHoveredOnContainer(true)}
-                onMouseOut={() => setIsMouseHoveredOnContainer(false)}
-              >
-                {(selectedCardPage === 'Card Front' && (
-                  <>
-                    <div
-                      className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
-                      style={{background: 'transparent', zIndex: '-10'}}
-                    ></div>
-                    <div
-                      className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
-                      id="frontTrimmedDiv"
-                      style={{zIndex: '-20'}}
-                    >
-                      {frontImageDetails.imageFile && (
-                        <img
-                          src={frontImageDetails.imageFile}
-                          alt="Selected front card image file"
-                          className={`object-contain h-full ${
-                            frontImageDetails.isColoredImage
-                              ? 'grayscale-0'
-                              : 'grayscale'
+              <div className="border-2 border-black border-solid">
+                <div
+                  className="h-[350px] min-w-[500px] bg-white relative overflow-hidden"
+                  style={{
+                    zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
+                    transform: isRotationAnimationApplied
+                      ? 'rotateY(0deg)'
+                      : 'rotateY(180deg)',
+                    transition: 'transform .8s',
+                  }}
+                  onMouseOver={() => setIsMouseHoveredOnContainer(true)}
+                  onMouseOut={() => setIsMouseHoveredOnContainer(false)}
+                >
+                  {(selectedCardPage === 'Card Front' && (
+                    <>
+                      <div
+                        className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
+                        style={{
+                          background: 'transparent',
+                          zIndex: '-10',
+                          transform: isRotationAnimationApplied
+                            ? 'rotateY(0deg)'
+                            : 'rotateY(180deg)',
+                        }}
+                      ></div>
+                      <div
+                        className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
+                        id="frontTrimmedDiv"
+                        style={{
+                          zIndex: '-20',
+                          transform: isRotationAnimationApplied
+                            ? 'rotateY(0deg)'
+                            : 'rotateY(180deg)',
+                        }}
+                      >
+                        {frontImageDetails.imageFile && (
+                          <img
+                            src={frontImageDetails.imageFile}
+                            alt="Selected front card image file"
+                            className={`object-contain h-full ${
+                              frontImageDetails.isColoredImage
+                                ? 'grayscale-0'
+                                : 'grayscale'
+                            }`}
+                            draggable="false"
+                            style={{
+                              transform: `scale(${frontImageDetails.zoom})`,
+                            }}
+                          />
+                        )}
+                      </div>
+                    </>
+                  )) ||
+                    (selectedCardPage === 'Card Back' && (
+                      <div
+                        className="flex flex-col h-full p-2"
+                        id="backTrimmedDiv"
+                        style={{
+                          zIndex: '-20',
+                          transform: isRotationAnimationApplied
+                            ? 'rotateY(0deg)'
+                            : 'rotateY(180deg)',
+                        }}
+                      >
+                        <div
+                          className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
+                            headerFooterVisibility.isHeaderVisible
+                              ? 'block '
+                              : 'hidden '
+                          }  ${isMouseHoveredOnContainer && 'border '} ${
+                            (headerData.alignment === 'left' &&
+                              'justify-start ') ||
+                            (headerData.alignment === 'center' &&
+                              'justify-center ') ||
+                            (headerData.alignment === 'right' && 'justify-end ')
                           }`}
-                          draggable="false"
-                          style={{
-                            transform: `scale(${frontImageDetails.zoom})`,
-                          }}
-                        />
-                      )}
-                    </div>
-                  </>
-                )) ||
-                  (selectedCardPage === 'Card Back' && (
-                    <div
-                      className="flex flex-col h-full p-2"
-                      id="backTrimmedDiv"
-                      style={{zIndex: '-20'}}
-                    >
-                      <div
-                        className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
-                          headerFooterVisibility.isHeaderVisible
-                            ? 'block '
-                            : 'hidden '
-                        }  ${isMouseHoveredOnContainer && 'border '} ${
-                          (headerData.alignment === 'left' &&
-                            'justify-start ') ||
-                          (headerData.alignment === 'center' &&
-                            'justify-center ') ||
-                          (headerData.alignment === 'right' && 'justify-end ')
-                        }`}
-                      >
-                        <div
-                          className={`font-${headerData.fontFamily}`}
-                          style={{
-                            fontSize: `${headerData.fontSize}px`,
-                            color: `${headerData.fontColor}`,
-                          }}
                         >
-                          {!headerData.isImageSelected && headerData.customText}
-                        </div>
-                        {headerData.isImageSelected && (
                           <div
-                            id="backHeaderImageDiv"
-                            className="h-[45px] w-[60px] overflow-hidden"
+                            className={`font-${headerData.fontFamily}`}
+                            style={{
+                              fontSize: `${headerData.fontSize}px`,
+                              color: `${headerData.fontColor}`,
+                            }}
                           >
-                            <img
-                              src={headerData.imageUrl}
-                              className={`object-contain h-full ${
-                                headerData.isColoredImage
-                                  ? 'grayscale-0'
-                                  : 'grayscale'
-                              }`}
-                              style={{transform: `scale(${headerData.zoom})`}}
-                              alt="Selected header image"
-                              draggable="false"
-                            />
+                            {!headerData.isImageSelected &&
+                              headerData.customText}
                           </div>
-                        )}
-                      </div>
-                      <div className="flex flex-1 pl-6 mt-2 mb-2">
-                        <span>Your custom message text will be here...</span>
-                      </div>
-                      <div
-                        className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
-                          headerFooterVisibility.isFooterVisible
-                            ? 'block '
-                            : 'hidden '
-                        } ${isMouseHoveredOnContainer && 'border '} ${
-                          (footerData.alignment === 'left' &&
-                            'justify-start ') ||
-                          (footerData.alignment === 'center' &&
-                            'justify-center ') ||
-                          (footerData.alignment === 'right' && 'justify-end ')
-                        }`}
-                      >
+                          {headerData.isImageSelected && (
+                            <div
+                              id="backHeaderImageDiv"
+                              className="h-[45px] w-[60px] overflow-hidden"
+                            >
+                              <img
+                                src={headerData.imageUrl}
+                                className={`object-contain h-full ${
+                                  headerData.isColoredImage
+                                    ? 'grayscale-0'
+                                    : 'grayscale'
+                                }`}
+                                style={{transform: `scale(${headerData.zoom})`}}
+                                alt="Selected header image"
+                                draggable="false"
+                              />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex flex-1 pl-6 mt-5 mb-5 font-pinocchio">
+                          <span>Your custom message text will be here...</span>
+                        </div>
                         <div
-                          className={`font-${footerData.fontFamily}`}
-                          style={{
-                            fontSize: `${footerData.fontSize}px`,
-                            color: `${footerData.fontColor}`,
-                          }}
+                          className={`flex h-[50px] border-dashed border-black font-semibold pl-6 pr-6 items-center ${
+                            headerFooterVisibility.isFooterVisible
+                              ? 'block '
+                              : 'hidden '
+                          } ${isMouseHoveredOnContainer && 'border '} ${
+                            (footerData.alignment === 'left' &&
+                              'justify-start ') ||
+                            (footerData.alignment === 'center' &&
+                              'justify-center ') ||
+                            (footerData.alignment === 'right' && 'justify-end ')
+                          }`}
                         >
-                          {!footerData.isImageSelected && footerData.customText}
-                        </div>
-                        {(footerData.isImageSelected || qr.isQrAdded) && (
                           <div
-                            id="backFooterImageDiv"
-                            className="h-[45px] w-[60px] overflow-hidden"
+                            className={`font-${footerData.fontFamily}`}
+                            style={{
+                              fontSize: `${footerData.fontSize}px`,
+                              color: `${footerData.fontColor}`,
+                            }}
                           >
-                            <img
-                              src={
-                                qr.isQrAdded
-                                  ? qr.generatedQrImageLink
-                                  : footerData.imageUrl
-                              }
-                              className={`object-contain h-full ${
-                                footerData.isColoredImage
-                                  ? 'grayscale-0'
-                                  : 'grayscale'
-                              }`}
-                              style={{transform: `scale(${footerData.zoom})`}}
-                              alt="Selected footer image"
-                              draggable="false"
-                            />
+                            {!footerData.isImageSelected &&
+                              footerData.customText}
                           </div>
-                        )}
+                          {(footerData.isImageSelected || qr.isQrAdded) && (
+                            <div
+                              id="backFooterImageDiv"
+                              className="h-[45px] w-[60px] overflow-hidden"
+                            >
+                              <img
+                                src={
+                                  qr.isQrAdded
+                                    ? qr.generatedQrImageLink
+                                    : footerData.imageUrl
+                                }
+                                className={`object-contain h-full ${
+                                  footerData.isColoredImage
+                                    ? 'grayscale-0'
+                                    : 'grayscale'
+                                }`}
+                                style={{transform: `scale(${footerData.zoom})`}}
+                                alt="Selected footer image"
+                                draggable="false"
+                              />
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                </div>
               </div>
               <div className="flex gap-4 w-full mt-2">
                 <button
@@ -1046,6 +1084,7 @@ export default function FlatCustomisableCard({
                   {selectedCardPage === 'Card Front' && (
                     <input
                       type="file"
+                      ref={frontImageRef}
                       className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                       onChange={handleImageFileInsertion}
                     />
@@ -1413,6 +1452,7 @@ export default function FlatCustomisableCard({
 
                           <input
                             type="file"
+                            ref={backHeaderImageRef}
                             className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                             onChange={handleImageFileInsertion}
                           />
@@ -1422,6 +1462,7 @@ export default function FlatCustomisableCard({
                         <>
                           <img
                             src={AddImageIcon}
+                            ref={backFooterImageRef}
                             alt="Add image file icon"
                             draggable="false"
                           />
