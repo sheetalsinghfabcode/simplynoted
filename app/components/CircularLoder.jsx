@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CircularLoader = ({ color,title }) => {
 
   return (
