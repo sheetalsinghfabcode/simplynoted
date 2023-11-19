@@ -341,7 +341,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                               {' '}
                               <li> Shopify</li>
                             </Link>
-                            <Link to="/pages/salesforce">
+                            <Link to="/salesforce">
                               {' '}
                               <li> Salesforce</li>{' '}
                             </Link>
