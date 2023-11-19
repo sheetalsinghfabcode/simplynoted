@@ -1045,13 +1045,13 @@ nav a {
   z-index: 1;
   left: 60%;
   transform: translateX(-50%);
-  top:28px;
-  color:#9c9a9a;
-  font-size:14px;
-  letter-spacing:0.1px;
-font-weight: lighter;
- width:17rem ;
-margin-left:45px;
+  top: 28px;
+  color: #9c9a9a;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  font-weight: lighter;
+  width: 17rem;
+  margin-left: 45px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -1590,18 +1590,16 @@ body {
 
 /* Media Query */
 
-@media only screen and (max-width:1200px)   {
-.dropdown-content{
-top:24px;
-width:12rem ;
-
+@media only screen and (max-width: 1200px) {
+  .dropdown-content {
+    top: 24px;
+    width: 12rem;
+  }
+  .dropdown-list {
+    padding: 22px 20px;
+  }
 }
-.dropdown-list {
-  padding: 22px 20px;
-}
-}
-@media only screen and (max-width:1024px)   {
-
+@media only screen and (max-width: 1024px) {
   .handwritten-notice h3 {
     font-size: 30px;
   }
@@ -1920,7 +1918,6 @@ width:12rem ;
   }
 }
 
-
 /************************************About Us*****************************/
 .wrapper-videos iframe {
   position: absolute;
@@ -1933,16 +1930,16 @@ width:12rem ;
 
 /************************************F.A.Q.*****************************/
 
-.tab-content{
+.tab-content {
   display: flex;
-    justify-content: space-between;
-    background: #fff;
-    font-weight: 700;
-    cursor: pointer;
-    color: #000 !important;
-    border-bottom: 1px solid #d3d3d3;
-    padding: 25px 20px;
-    font-size: 20px;
+  justify-content: space-between;
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  color: #000 !important;
+  border-bottom: 1px solid #d3d3d3;
+  padding: 25px 20px;
+  font-size: 20px;
 }
 .Integration-shopify {
   font-size: 42px;
@@ -2002,4 +1999,198 @@ width:12rem ;
   padding: 0 15%;
   flex-direction: column;
   text-align: center;
+}
+
+/******************* SALESFORCE FORM STYLES ****************************/
+.wrap-business-banner {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
+  text-align: left !important;
+  box-sizing: border-box;
+  display: inline-flex;
+  z-index: 0;
+  margin-top: 40px;
+}
+
+.formStamp {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
+  text-align: left !important;
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 3;
+  left: -70px;
+  top: -25px;
+}
+
+.wrap-business-form {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
+  text-align: left !important;
+  box-sizing: border-box;
+  height: auto !important;
+  padding-bottom: 39px !important;
+  background: url('../../assets/Image/salesforce-form-bg-1.webp') no-repeat;
+  background-size: 100% 100%;
+  margin-top: 0;
+  margin-bottom: 3vw;
+  width: 532px;
+  max-width: 100%;
+  z-index: 2;
+}
+
+.form-title {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  font-family: Karla, sans-serif;
+  font-weight: 700 !important;
+  margin-top: 40px !important;
+  padding-bottom: 0 !important;
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 5px !important;
+  line-height: 40px;
+  color: #fff;
+  font-size: 24px;
+  max-width: 280px;
+}
+
+.messageBox {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-weight: 300;
+  box-sizing: border-box;
+  margin: 16px 0 0 0px;
+  font-size: 24px !important;
+  line-height: 40px !important;
+  max-width: 350px;
+  color: #fff;
+  text-align: center;
+  margin-top: 0 !important;
+  padding-bottom: 10px;
+}
+
+.hubForm {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
+  text-align: left !important;
+  box-sizing: border-box;
+  width: 75%;
+  margin: auto;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.hubForm input,
+.hubForm select {
+  background: 0 0;
+  border: none;
+  color: #fff;
+}
+
+.hubForm input:focus,
+.hubForm select:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.hubForm select option {
+  background: 0 0;
+  background-color: #1f3469;
+}
+
+.row {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
+  text-align: left !important;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.white-underline {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
+  box-sizing: border-box;
+  width: 47%;
+  position: relative;
+  padding-bottom: 20px;
+  text-align: left;
+  margin: 1.5%;
+}
+
+.white-underline:after {
+  content: '_';
+  color: #1f3469;
+  position: absolute;
+  bottom: -10px;
+  left: -8px;
+  width: 100%;
+  background: url('../../assets/Image/white-underline.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.sample-request {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: visible;
+  padding: 21px 35px;
+  background: url('../../assets//Image/signup-background.svg') !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  -webkit-appearance: button;
+  border: none;
+  color: #fff;
 }
