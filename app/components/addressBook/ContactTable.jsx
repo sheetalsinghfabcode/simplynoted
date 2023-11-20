@@ -31,7 +31,7 @@ const ContactTable = ({
   const [searchText, setSearchText] = useState('');
   const [updateLoader, setupdateLoader] = useState(false);
 
-  const [isChecked,setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
 
   let data = filteredAddresses;
   console.log('selectedCheckboxes', selectedCheckboxes);
@@ -76,8 +76,6 @@ const ContactTable = ({
       }
     });
   };
- 
-  
 
   console.log('selectedCheckboxes', selectedCheckboxes);
 
@@ -406,6 +404,14 @@ const ContactTable = ({
     }
   };
 
+  useEffect(() => {
+    setupdateLoader(true);
+    setTimeout(() => {
+      setupdateLoader(false);
+    }, [1000]);
+  }, []);
+
+
   return (
     <div className="w-full max-w-[100%] overflow-x-auto">
       <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
@@ -571,18 +577,16 @@ const ContactTable = ({
           </table>
           {updateLoader && (
             <div className="flex justify-center items-center mt-[24px]">
-              <CircularLoader
-              title="Loading Address Book"
-              color="#ef6e6e" />
+              <CircularLoader title="Loading Address Book" color="#ef6e6e" />
             </div>
           )}
 
-          {page.length === 0 && (
+          {page.length === 0 && !updateLoader && (
             <div className="text-center text-[24px] font-bold mt-[20px] text-[#001a5f]">
               No Address Found
             </div>
           )}
-          {page && page.length > 0 && (
+          {page && page.length > 0 && !updateLoader && (
             <div className="pagination">
               <div>
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>

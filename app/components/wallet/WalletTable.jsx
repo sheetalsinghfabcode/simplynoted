@@ -140,118 +140,54 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   ];
 
   return (
-    <div>
-      <div className="w-full  max-w-[1366px] p-[20px] mx-auto">
-      
-        <table className="mx-auto table bg-white  ">
-          <thead>
-            <tr className="h-[190px] flex flex-row-reverse">
-              {pricingPlans.map((plan, index) => {
-                if (
-                  (subscriptionType === 'business' && plan.name === 'Team') ||
-                  (subscriptionType === 'business' && plan.name === 'Free') ||
-                  (subscriptionType === 'team' && plan.name === 'Free')
-                ) {
-                  return (
-                    <th
-                      key={index}
-                      className="flex flex-col py-[10px] px-[20px]"
-                    >
-                      <span className="text-[18px] text-[#000] uppercase">
-                        {plan.name}
-                      </span>
-                      <span className="text-[14px] text-[#000] leading-[150%]">
-                        As low as
-                      </span>
-                      <span className="text-[36px] font-bold text-[#000]">
-                        {plan.price}
-                      </span>
-                      <span className="text-[14px] text-[#000] leading-[150%]">
-                        per card
-                      </span>
-                    </th>
-                  );
-                }
+    <div className="w-full max-w-[1440px] p-[20px] mx-auto">
+  <table className="mx-auto table bg-white">
+    <thead>
+      <tr className="h-[120px]">
+        <th className="text-center py-4 px-10"></th>
+        {pricingPlans.slice(0).reverse().map((plan, index) => (
+          <th key={index} className="text-center py-4 px-10">
+            <span className="text-lg text-[#000] uppercase block">{plan.name}</span>
+            <span className="text-sm text-[#000] leading-[150%] block">As low as</span>
+            <span className="text-2xl font-bold text-[#000] block">{plan.price}</span>
+            <span className="text-sm text-[#000] leading-[150%] block">per card</span>
+              <DynamicButton
+                onClickFunction={plan.onClick}
+                className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
+                text={plan.buttonText}
+              />
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {data.map((item, index) => (
+        <tr className="text-[#001a5f] text-sm border-t border-[#ddd] last:border-b" key={index}>
+          <td className="py-4 pl-6">{item.feature}</td>
+          {Array.from({ length: pricingPlans.length }).map((_, i) => (
+            <td key={i} className="text-center">
+              {index < ((i + 1) * 5) ? (
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
+                  className="w-[18px] h-[16px] mx-auto"
+                  alt="tick"
+                />
+              ) : (
+                <img
+                  src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
+                  className="w-[18px] h-[16px] mx-auto"
+                  alt="remove"
+                />
+              )}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
-                return (
-                  <th key={index} className="flex flex-col py-[10px] px-[20px]">
-                    <span className="text-[18px] text-[#000] uppercase">
-                      {plan.name}
-                    </span>
-                    <span className="text-[14px] text-[#000] leading-[150%]">
-                      As low as
-                    </span>
-                    <span className="text-[36px] font-bold text-[#000]">
-                      {plan.price}
-                    </span>
-                    <span className="text-[14px] text-[#000] leading-[150%]">
-                      per card
-                    </span>
-                    <DynamicButton
-                      onClickFunction={plan.onClick}
-                      className={`bg-[${plan.buttonColor}] mt-[10px] whitespace-nowrap rounded-[100px] h-[60px] w-full xl:min-w-[180px] max-w-[200px]`}
-                      text={plan.buttonText}
-                    />
-                  </th>
-                );
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr className="flex justify-end gap-[159px]" key={index}>
-                <td className=" text-[#001a5f] text-[14px]">{item.feature}</td>
-                <td>
-                  {index < 10 ? (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                      className="w-[18px] h-[16px]"
-                    />
-                  ) : (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
-                      className="w-[18px] h-[16px]"
-                    />
-                  )}
-                </td>
-                <td>
-                  {index < 15 ? (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                      className="w-[18px] h-[16px]"
-                    />
-                  ) : (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
-                      className="w-[18px] h-[16px]"
-                    />
-                  )}
-                </td>
-                <td>
-                  {index < 20 ? (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                      className="w-[18px] h-[16px]"
-                    />
-                  ) : (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
-                      className="w-[18px] h-[16px]"
-                    />
-                  )}
-                </td>
-                <td>
-                  <img
-                    src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                    className="w-[18px] h-[16px]"
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+
   );
 };
 

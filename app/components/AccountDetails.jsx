@@ -55,7 +55,7 @@ export function AccountDetails({customer}) {
     apiKey = localStorage.getItem('apiKey');
 
     console.log('apiKey ', apiKey);
-  }, [key]);
+  }, [key,loader]);
 
   return (
     <>
