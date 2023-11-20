@@ -170,6 +170,7 @@ export default function Product() {
   const [fontFamilyName,setFontFamily] = useState('')
   const [metafields,setMetafields] = useState([])
   const [customFontName,setCustomFontName] = useState('')
+  const [locationValue,setLocationValue] = useState(false)
 
 
   if (typeof window !== 'undefined') {
@@ -228,7 +229,8 @@ export default function Product() {
   };
   useEffect(() => {
     localStorage.removeItem('reqFielddInCart')
-    // console.log(location.pathname,'0000000000');/
+    console.log(datafornav.pathname,'0000000000')
+    setLocationValue(true)
   }, [datafornav.pathname]);
   return (
     <>
@@ -251,11 +253,13 @@ export default function Product() {
                setCustomFontName={setCustomFontName}
                editCustomFontFamily={editCustomFontFamily}/>
             </div>
+            {locationValue &&
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
               setShowBox={setShowBox} setProductShow={setProductShow}
               EditMess={EditMess} editEndMess={editEndMess}
               editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}/>
-          </Section>
+            }
+              </Section>
 
           {/* <Suspense fallback={<Skeleton className="" />}>
             <Await
