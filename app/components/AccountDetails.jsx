@@ -97,7 +97,7 @@ export function AccountDetails({customer}) {
               className="px-4 py-2 bg-[#1b52b1] text-white  text-sm font-semibold hover:bg-[#1b52b1] focus:outline-none"
               onClick={() => {
                 setHandleGenerateClick(true);
-                generateApiKey;
+                generateApiKey()
               }}
             >
               Generate

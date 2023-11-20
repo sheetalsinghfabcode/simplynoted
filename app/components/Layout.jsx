@@ -239,6 +239,8 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
+  const [loader,setLoader] =  useState(false)
+
   useEffect(()=>{
     let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
     localStorage.setItem('cartCount',JSON.stringify(calculatedCartCount.length))
@@ -515,11 +517,11 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         cancelText="Register"
         cross={true}
       />
-      {/* {loader && pathname !== '/account' && (
+      {loader && pathname !== '/account' && (
         <div className="min-h-screen flex justify-center items-center">
           <CircularLoader color={'#ef6e6e'} title="Loading Address Page..." />
         </div>
-      )} */}
+      )}
     </>
   );
 }
