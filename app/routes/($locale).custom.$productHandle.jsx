@@ -163,7 +163,7 @@ export default function CustomProducts() {
   };
   useEffect(() => {
     localStorage.removeItem('reqFielddInCart');
-    setLocationValue
+    setLocationValue(true)
   }, [datafornav.pathname]);
   return (
     <>
