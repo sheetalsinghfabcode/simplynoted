@@ -5,6 +5,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import DynamicButton from '../DynamicButton';
 import Loader from '../modal/Loader';
+import {useNavigate} from '@remix-run/react';
 
 const Accordion = ({
   StripeKey,
@@ -161,8 +162,59 @@ const Accordion = ({
     (country) => country.country === formData.address.country,
   );
 
+  const payLoad = {
+    paymentMethodId: 'pm_1OEUvDKwXDGuBPYA4GvHHRvC',
+    packageDiscount: '70.1',
+    packageQuantity: '10000',
+    packagePrice: '16300',
+    description: 'business - 10,000 cards',
+    packageProduct: '40694774333545',
+    subscriptionProduct: '40690998050921',
+  };
+
+  console.log('savedCard', savedCard);
+
+  const paymentPurchase = () => {
+    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerid}`;
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payLoad),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Handle the response data here
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error('Error:', error);
+      });
+  };
+
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
+
   return (
-    <>
+    <div className="w-full max-w-[1440px] mt-[24px] mx-auto px-[24px]">
+      <DynamicButton
+        className="bg-[#EF6E6E]  w-full max-w-[150px]"
+        text="Go Back"
+        backArrow={true}
+        onClickFunction={() => {
+          setWalletPurchase(true);
+          setWalletPayment(false);
+        }}
+      />
+
       {loader ? (
         <Loader loaderMessage="Adding Card Details" />
       ) : (
@@ -353,6 +405,7 @@ const Accordion = ({
                         setPaymentMethodId={setPaymentMethodId}
                         createCustomerId={createCustomerId}
                         savedCard={savedCard}
+                        paymentPurchase={paymentPurchase}
                         setloader={setloader}
                       />
                     </div>
@@ -402,7 +455,7 @@ const Accordion = ({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

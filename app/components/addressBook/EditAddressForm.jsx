@@ -123,7 +123,9 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     <div className="container mx-auto p-4 bg-[#e2ecf6]">
       {loader && (
         <div className="absolute top-[50%] left-[50%]">
-          <CircularLoader color="#ef6e6e" />
+          <CircularLoader 
+          title="Updating Address Book..."
+          color="#ef6e6e" />
         </div>
       )}
       <div

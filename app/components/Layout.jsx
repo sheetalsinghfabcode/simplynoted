@@ -43,7 +43,10 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
 import Loader from './modal/Loader';
-import { useAddressBook } from './AddressBookContext';
+import {useAddressBook} from '../components/AddressBookContext';
+import CircularLoader from './CircularLoder';
+import {useLocation} from '@remix-run/react';
+
 let customerid;
 
 export function Layout({children, layout}) {
@@ -88,7 +91,7 @@ function Header({title, menu}) {
 
   // toggle cart drawer when adding to cart
   useEffect(() => {
-    let aa = localStorage.getItem('cartCount')
+    let aa = localStorage.getItem('cartCount');
     // console.log(aa,"sssssssss");
     if (isCartOpen || !addToCartFetchers.length) return;
     openCart();
@@ -472,7 +475,9 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
           <DynamicButton
             text=" Account →"
             className="login-button"
-            onClickFunction={() => navigate('/account/login')}
+            onClickFunction={() => {
+              navigate("/account")
+            }}
           />
 
           {/* <Form
@@ -510,6 +515,11 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         cancelText="Register"
         cross={true}
       />
+      {loader && pathname !== '/account' && (
+        <div className="min-h-screen flex justify-center items-center">
+          <CircularLoader color={'#ef6e6e'} title="Loading Address Page..." />
+        </div>
+      )}
     </>
   );
 }

@@ -139,7 +139,9 @@ const AddressForm = ({customerID}) => {
       >
         {loader && (
           <div className="absolute top-[50%] left-[50%]">
-            <CircularLoader color="#ef6e6e" />
+            <CircularLoader
+            title="Adding Address"
+            color="#ef6e6e" />
           </div>
         )}
         <div className={`bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4   ${loader && 'opacity-40'}`}>
