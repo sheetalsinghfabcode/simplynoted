@@ -115,8 +115,9 @@ function Account({customer, heading, featuredData}) {
   const [orderHistory, setOrderHistory] = useState(false);
   const [accountDetail, setAccountDetail] = useState(true);
   const [profile, setProfile] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-  const {pathname} = useLocation();
+
  
 
   useEffect(() => {
@@ -249,7 +250,10 @@ function Account({customer, heading, featuredData}) {
       </div>
       {orders && orderHistory && <AccountOrderHistory orders={orders} />}
       {accountDetail && (
-        <AccountDetails accountDetail={accountDetail} customer={customer} />
+        <AccountDetails 
+        loader={loader}
+        
+        accountDetail={accountDetail} customer={customer} />
       )}
       {profile && (
         <Profile
@@ -257,6 +261,8 @@ function Account({customer, heading, featuredData}) {
           setAccountDetail={setAccountDetail}
           customer={customer}
           result={result}
+          loader={loader}
+          setLoader={setLoader}
         />
       )}
       {/* <AccountAddressBook addresses={addresses} customer={customer} /> */}

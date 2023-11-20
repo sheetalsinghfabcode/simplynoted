@@ -6,6 +6,9 @@ import {Money, Image, flattenConnection} from '@shopify/hydrogen';
 
 import {statusMessage} from '~/lib/utils';
 import {Link, Heading, PageHeader, Text} from '~/components';
+import DynamicTitle from '~/components/Title';
+import DynamicButton from '~/components/DynamicButton';
+import {useNavigate} from '@remix-run/react';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -62,13 +65,21 @@ export async function loader({request, context, params}) {
 
 export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <PageHeader heading="Order detail">
-        <Link to="/account">
-          <Text color="subtle">Return to Account Overview</Text>
-        </Link>
-      </PageHeader>
+    <div className=" w-full max-w-[1440px] px-[24] mx-auto">
+      <div className="flex  justify-start">
+        <DynamicTitle title={'Order Detail'} />
+      </div>
+
+      <DynamicButton
+        text="Return to Account"
+        onClickFunction={() => navigate('/account')}
+        backArrow
+        className={`border-2 flex justity-center items-center border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299] bg-[#1b5299] !text-white  `}
+      />
+
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
         <div>
           <Text as="h3" size="lead">
@@ -117,10 +128,11 @@ export default function OrderRoute() {
                         >
                           {lineItem?.variant?.image && (
                             <div className="w-24 card-image aspect-square">
-                              <Image
-                                data={lineItem.variant.image}
-                                width={96}
-                                height={96}
+                              <img
+                                src={lineItem.variant.image.src}
+                                width="450px"
+                                height="450px"
+                                alt="order-image"
                               />
                             </div>
                           )}
@@ -258,43 +270,11 @@ export default function OrderRoute() {
               <Heading size="copy" className="font-semibold" as="h3">
                 Shipping Address
               </Heading>
-              {order?.shippingAddress ? (
-                <ul className="mt-6">
-                  <li>
-                    <Text>
-                      {order.shippingAddress.firstName &&
-                        order.shippingAddress.firstName + ' '}
-                      {order.shippingAddress.lastName}
-                    </Text>
-                  </li>
-                  {order?.shippingAddress?.formatted ? (
-                    order.shippingAddress.formatted.map((line) => (
-                      <li key={line}>
-                        <Text>{line}</Text>
-                      </li>
-                    ))
-                  ) : (
-                    <></>
-                  )}
-                </ul>
-              ) : (
-                <p className="mt-3">No shipping address defined</p>
-              )}
+              {/* Display shipping address */}
               <Heading size="copy" className="mt-8 font-semibold" as="h3">
                 Status
               </Heading>
-              <div
-                className={clsx(
-                  `mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto`,
-                  order.fulfillmentStatus === 'FULFILLED'
-                    ? 'bg-green-100 text-green-800'
-                    : 'bg-primary/20 text-primary/50',
-                )}
-              >
-                <Text size="fine">
-                  {statusMessage(order.fulfillmentStatus)}
-                </Text>
-              </div>
+              {/* Display order status */}
             </div>
           </div>
         </div>

@@ -3,13 +3,18 @@ import React, {useState, useEffect} from 'react';
 import DynamicButton from './DynamicButton';
 import CircularLoader from './CircularLoder';
 
-const Profile = ({customer, setProfile, setAccountDetail}) => {
+const Profile = ({
+  customer,
+  setProfile,
+  loader,
+  setLoader,
+  setAccountDetail,
+}) => {
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const [activeTab, setActiveTab] = useState('account'); // 'account' or 'security'
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
-  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
@@ -99,18 +104,18 @@ const Profile = ({customer, setProfile, setAccountDetail}) => {
         if (jsonResponse.updated) {
           // Perform further actions with the response if needed
           setProfile(false);
-        
-          setLoader(false);
+
+          // setLoader(false);
           setAccountDetail(true);
         }
       } else {
         // Handle errors if the response is not OK
-        setLoader(false);
+        // setLoader(false);
         console.error('Error updating user profile:', response.statusText);
       }
     } catch (error) {
       // Handle network errors or exceptions
-      setLoader(false);
+      // setLoader(false);
       console.error('Error:', error);
     }
   };
@@ -149,17 +154,17 @@ const Profile = ({customer, setProfile, setAccountDetail}) => {
           '',
       );
       if (error) {
-        setLoader(false);
+        // setLoader(false);
       }
       if (jsonResponse.customer) {
         setProfile(false);
-        setLoader(false);
+        // setLoader(false);
 
         setAccountDetail(true);
       }
 
       if (response.ok) {
-        setLoader(false);
+        // setLoader(false);
         // Request was successful
         console.log('User password updated:', jsonResponse);
       } else {
@@ -180,7 +185,12 @@ const Profile = ({customer, setProfile, setAccountDetail}) => {
     <div className="relative">
       {loader && (
         <div className="z-50 absolute top-[50%] left-[50%]">
-          <CircularLoader color="#ef6e6e" />
+          <CircularLoader
+            title={
+              activeTab === 'account' ? 'Updating Profile' : 'Updating Password'
+            }
+            color="#ef6e6e"
+          />
         </div>
       )}
       <div
