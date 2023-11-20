@@ -132,10 +132,10 @@ export default function zapier() {
           <h1 className="text-6xl flex text-white flex-col items-center">
             Integrate with Zapier
             <div className="button-tutorial-now mt-10 text-xl p-[12px] flex gap-12">
-              <button className="integrate-button w-[247px]  p-[12px] bg-rose-500 " type="button">
+              <button className="integrate-button w-[255px]  p-[12px] bg-rose-500 " type="button">
                 INTEGRATE NOW
               </button>
-              <button className="tutorial w-[247px]  p-[12px] ring ring-white-500" type="button">
+              <button className="tutorial w-[255px] text-large  p-[12px] ring ring-white-500" type="button">
               VIEW ALL INTEGRATIONS
               </button>
             </div>

@@ -2001,6 +2001,33 @@ body {
   text-align: center;
 }
 
+.roi-total {
+  background-image: url('https://simplynoted.com/cdn/shop/files/roi-bg.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 448px;
+  height: 119px;
+  padding: 19px;
+  position: absolute;
+  margin-left: -12px;
+}
+
+
+.form{
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: 56%;
+  height: 462px;
+  margin-top: 49px;
+  margin-left: 124px;
+  background: #203569;
+}
+.input-type{
+  background: #203569;
+}
+
 /******************* SALESFORCE FORM STYLES ****************************/
 .wrap-business-banner {
   -webkit-text-size-adjust: 100%;

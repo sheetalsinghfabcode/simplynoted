@@ -345,7 +345,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                               {' '}
                               <li> Salesforce</li>{' '}
                             </Link>
-                            <Link to="/pages/api-automation">
+                            <Link to="/apidocs">
                               {' '}
                               <li> API</li>
                             </Link>
@@ -374,7 +374,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                                 Get a Custom Quote
                               </button>
                             </Link>
-                            <Link to="/pages/marketing">
+                            <Link to="/roicalculator">
                               {' '}
                               <li>ROI Calculator</li>
                             </Link>
@@ -388,8 +388,12 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                         <div>Learn</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
+                            <Link to="/blog">
                             <li>Blog.</li>
+                            </Link>
+                            <Link to="/tutorials">
                             <li>Tutorials</li>
+                            </Link>
                             <li>Videos</li>
                             <Link to="/pages/faq">
                               <li>F.A.Q.</li>
