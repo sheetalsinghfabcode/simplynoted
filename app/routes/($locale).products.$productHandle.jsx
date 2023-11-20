@@ -9,7 +9,6 @@ import {
   ShopPayButton,
   VariantSelector,
   getSelectedProductOptions,
-
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
@@ -64,9 +63,9 @@ export async function loader({ params, request, context }) {
       language: context.storefront.i18n.language,
     },
   });
-  if (!product?.id) {
-    throw new Response('product', { status: 404 });
-  }
+  // if (!product) {
+  //   throw new Response('product', { status: 404 });
+  // }
 
   //this condition is commented by me(ayush) for removing the params from url  
   // if (!product.selectedVariant) {
@@ -88,7 +87,7 @@ export async function loader({ params, request, context }) {
     },
   });
 
-  const recommended = getRecommendedProducts(context.storefront, product.id);
+  // const recommended = getRecommendedProducts(context.storefront, product.id);
 
   // TODO: firstVariant is never used because we will always have a selectedVariant due to redirect
   // Investigate if we can avoid the redirect for product pages with no search params for first variant
@@ -120,7 +119,7 @@ export async function loader({ params, request, context }) {
     product,
     shop,
     storeDomain: shop.primaryDomain.url,
-    recommended,
+    // recommended,
     analytics: {
       pageType: AnalyticsPageType.product,
       resourceId: product.id,
@@ -172,7 +171,7 @@ export default function Product() {
 
     const urlParams = new URLSearchParams(window?.location.search);
      parameterValue = urlParams.get('select');
-    console.log(parameterValue,"---000000");
+    // console.log(parameterValue,"---000000");
   }
 
   useEffect(() => {
@@ -206,39 +205,25 @@ export default function Product() {
   const customStyles = {
 
     content: {
-
       top: '60%',
-
       left: '50%',
-
       right: 'auto',
-
       bottom: 'auto',
-
       marginRight: '-50%',
-
       transform: 'translate(-50%, -50%)',
-
       maxWidth: '620px',
-
       background: '#fff',
-
       width: '100%',
-
       padding: '30px',
-
       maxHeight: '500px',
-
       zIndex: '2',
-
       position: 'relative'
-
     },
 
   };
   useEffect(() => {
     localStorage.removeItem('reqFielddInCart')
-    console.log(location.pathname,'0000000000');
+    // console.log(location.pathname,'0000000000');/
   }, [datafornav.pathname]);
   return (
     <>
@@ -635,25 +620,25 @@ const VARIANTS_QUERY = `#graphql
 
 
 
-const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-  query productRecommendations(
-    $productId: ID!
-    $count: Int
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
-    recommended: productRecommendations(productId: $productId) {
-      ...ProductCard
-    }
-    additional: products(first: $count, sortKey: BEST_SELLING) {
-      nodes {
-        ...ProductCard
-      }
-    }
-  }
-  ${PRODUCT_CARD_FRAGMENT}
+// const RECOMMENDED_PRODUCTS_QUERY = `#graphql
+//   query productRecommendations(
+//     $productId: ID!
+//     $count: Int
+//     $country: CountryCode
+//     $language: LanguageCode
+//   ) @inContext(country: $country, language: $language) {
+//     recommended: productRecommendations(productId: $productId) {
+//       ...ProductCard
+//     }
+//     additional: products(first: $count, sortKey: BEST_SELLING) {
+//       nodes {
+//         ...ProductCard
+//       }
+//     }
+//   }
+//   ${PRODUCT_CARD_FRAGMENT}
 
-`;
+// `;
 
 
 const GiftProduct = `#graphql
@@ -707,23 +692,23 @@ query
   }
 }`
 
-async function getRecommendedProducts(storefront, productId) {
-  const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
-    variables: { productId, count: 12 },
+// async function getRecommendedProducts(storefront, productId) {
+//   const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
+//     variables: { productId, count: 12 },
 
-  });
-  invariant(products, 'No data returned from Shopify API');
-  const mergedProducts = (products.recommended ?? [])
-    .concat(products.additional.nodes)
-    .filter(
-      (value, index, array) =>
-        array.findIndex((value2) => value2.id === value.id) === index,
-    );
+//   });
+//   invariant(products, 'No data returned from Shopify API');
+//   const mergedProducts = (products.recommended ?? [])
+//     .concat(products.additional.nodes)
+//     .filter(
+//       (value, index, array) =>
+//         array.findIndex((value2) => value2.id === value.id) === index,
+//     );
 
-  const originalProduct = mergedProducts.findIndex(
-    (item) => item.id === productId,
-  );
-  mergedProducts.splice(originalProduct, 1);
-  return { nodes: mergedProducts };
+//   const originalProduct = mergedProducts.findIndex(
+//     (item) => item.id === productId,
+//   );
+//   mergedProducts.splice(originalProduct, 1);
+//   return { nodes: mergedProducts };
 
-}
+// }

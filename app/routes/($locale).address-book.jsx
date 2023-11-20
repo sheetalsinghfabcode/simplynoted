@@ -33,7 +33,6 @@ export default function AddressBook() {
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-  const [updateLoader, setupdateLoader] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [errorContent, serErrorContent] = useState([]);
 
@@ -77,167 +76,7 @@ export default function AddressBook() {
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
 
-  function csvToJson(csv) {
-    var lines = csv.split('\n');
-    var result = [];
 
-    var headers = lines[0].split(',');
-    for (var i = 1; i < lines.length; i++) {
-      var currentLine = lines[i].split(',');
-
-      // Skip empty lines
-      if (currentLine.length === 1 && currentLine[0].trim() === '') {
-        continue;
-      }
-
-      var obj = {};
-      for (var j = 0; j < headers.length; j++) {
-        obj[headers[j]] = currentLine[j];
-      }
-
-      result.push(obj);
-    }
-
-    return result;
-  }
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (e) => {
-        const csvData = e.target.result;
-        const jsonData = csvToJson(csvData);
-        setSelectedFile(file);
-        setFileData(jsonData);
-      };
-      reader.readAsText(file);
-    }
-  };
-
-  const uploadDataToAPI = async (data) => {
-    setupdateLoader(true);
-    const modifiedData = {};
-
-    for (let key in data) {
-      const modifiedKey = key?.replace(/"/g, '');
-
-      modifiedData[modifiedKey] = data[key].replace(/"/g, '');
-    }
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
-
-    try {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: modifiedData['First Name'] || '',
-          lastName: modifiedData['Last Name'] || '',
-          businessName: modifiedData.Company || '',
-          address1: modifiedData.Address || '',
-          address2: modifiedData['Address 2'] || '',
-          city: modifiedData.City || '',
-          state: modifiedData['State/Province'] || '',
-          zip: modifiedData['Postal Code'] || '',
-          country: modifiedData.Country || 'USA',
-          type: modifiedData.Type
-            ? modifiedData.Type.toLowerCase() === 'sender'
-              ? 'return'
-              : 'recipient'
-            : 'recipient',
-          birthday: modifiedData.Birthday || '',
-          anniversary: modifiedData.Anniversary || '',
-        }),
-      });
-
-      if (response.ok) {
-        const responseData = await response.json();
-        setLoadAddress(!loadAddress);
-        setSelectedFile(null);
-        setupdateLoader(false);
-        'Successful response data:', responseData.result;
-      } else {
-        throw new Error('Network response was not ok');
-      }
-    } catch (error) {
-      console.log('Error uploading data:', error);
-      throw error;
-    }
-  };
-
-  const handleUploadClick = async () => {
-    if (fileData.length === 0) {
-      console.warn('No data to upload');
-      return;
-    }
-
-    const requiredFields = [
-      'First Name',
-      'Last Name',
-      'Address',
-      'City',
-      'State/Province',
-      'Postal Code',
-      'Email',
-    ];
-    const errors = [];
-
-    const namePattern = /^[A-Za-z\s]+$/;
-    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-
-    for (let i = 0; i < fileData.length; i++) {
-      const data = fileData[i];
-      const missingFields = [];
-
-      for (const field of requiredFields) {
-        if (!data[field] || data[field].trim() === '') {
-          missingFields.push(field);
-        } else if (field === 'First Name' || field === 'Last Name') {
-          if (!namePattern.test(data[field])) {
-            missingFields.push(`${field} contains numbers`);
-          }
-        } else if (field === 'Email') {
-          if (!emailPattern.test(data[field])) {
-            missingFields.push(`${field} is not a valid `);
-          }
-        }
-      }
-
-      if (missingFields.length > 0) {
-        for (const field of missingFields) {
-          errors.push(`Row ${i + 1}: Missing field - ${field}`);
-        }
-      } else {
-        await uploadDataToAPI(data);
-      }
-    }
-
-    if (errors.length > 0) {
-      serErrorContent(errors);
-      setErrorModal(true);
-      setTimeout(() => {
-        setErrorModal(false);
-        serErrorContent([]);
-      }, [4000]);
-    }
-  };
-
-  const handleSearchInputChange = (event) => {
-    const value = event.target.value;
-    setSearchText(value);
-    setSelectedCheckboxes([]);
-
-    // Filter the addresses based on the search term
-    const filtered = addresses.filter((address) =>
-      Object.values(address).some((field) =>
-        field.toString().toLowerCase().includes(value.toLowerCase()),
-      ),
-    );
-    setFilteredAddresses(filtered);
-  };
 
   return (
     <>
@@ -272,19 +111,12 @@ export default function AddressBook() {
                   <ContactTable
                     customerID={customerID}
                     openModal={openModal}
-                    searchText={searchText}
-                    selectedFile={selectedFile}
-                    setSearchText={setSearchText}
                     filteredAddresses={filteredAddresses}
                     editAddress={editAddress}
-                    updateLoader={updateLoader}
-                    setupdateLoader={setupdateLoader}
                     setSelectedAddress={setSelectedAddress}
-                    handleSearchInputChange={handleSearchInputChange}
                     setSelectedCheckboxes={setSelectedCheckboxes}
                     selectedCheckboxes={selectedCheckboxes}
-                    handleFileChange={handleFileChange}
-                    handleUploadClick={handleUploadClick}
+                    setFilteredAddresses={setFilteredAddresses}
                     setAddressForm={setAddressForm}
                   />
                 </div>

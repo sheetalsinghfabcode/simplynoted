@@ -11,6 +11,8 @@ import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
 import {useLocation} from '@remix-run/react';
+import { useAddressBook } from '../AddressBookContext';
+import AddressForm from '../addressBook/AddressForm';
 
 let mainMessageBox,
   signOffTextBox,
@@ -31,7 +33,9 @@ export function MessageWriting({
   metafields,
   editFontSize,
 }) {
-  console.log(EditMess, 'EditMess');
+  //   console.log(EditMess, 'EditMess');
+ const {setAddressForm,addressForm,loadAddress,addresses,
+    setAddresses} =  useAddressBook()
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -54,22 +58,24 @@ export function MessageWriting({
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
-  const [address, setAddresses] = useState([]);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
+  const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
+
+  const [bulkFileCount,setBulkFileCount] = useState(0)
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
   const remainSign = maxSignCount - name2.length;
-  console.log(address, 'address');
+  console.log(addresses, 'address');
   console.log(selectedCheckboxes, 'selectedCheckboxes');
 
   function gettingCheckBoxAddress() {
-    const data = address.filter((item) =>
+    const data = addresses.filter((item) =>
       selectedCheckboxes.includes(item._id),
     );
     console.log(data, 'gettingCheckBoxAddress');
-    setFileData(data)
-    console.log(fileData,'******fileData******');
+    setFileData(data);
+    console.log(fileData, '******fileData******');
   }
   useEffect(() => {
     gettingCheckBoxAddress();
@@ -96,14 +102,13 @@ export function MessageWriting({
   }
   function closeSelectAddressModal() {
     setModalForAddressBook(false);
-    setSelectedCheckboxes([]);
+    // setSelectedCheckboxes([]);
   }
 
   function onCancelCSVUpload() {
     setShowNextBtn(false);
   }
   async function checkUserLogged() {
-    console.log(fileData,"fileData************");
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
@@ -165,6 +170,75 @@ export function MessageWriting({
       console.log(name, 'namefield');
     }
   }
+  console.log(fileData, '******+++++++******');
+
+  function onSelectFromAddressBook() {
+   
+    console.log(fileData);
+    if (!customerid) {
+      setLoginModal(true);
+    } else if (name.length == 0) {
+      setInstructionModal(true);
+    } else {
+        let reqField,
+        usCountAdd = 0,
+        nonUsAdd = 0;
+      if (fileData.length) {
+        fileData.map((obj) => {
+          let subName = name;
+          if (obj['firstName']) {
+            subName = subName.replace(/\[First Name\]/g, obj['firstName']);
+          }
+          if (obj['lastName']) {
+            subName = subName.replace(/\[Last Name\]/g, obj['lastName']);
+          }
+          if (
+            obj['country'] === 'USA' ||
+            obj['country'].toLowerCase() === '' ||
+            obj['country'].toLowerCase() === ' ' ||
+            obj['country'].toLowerCase() === 'u.s.a' ||
+            obj['country'].toLowerCase() === 'u.s' ||
+            obj['country'].toLowerCase() === 'usa' ||
+            obj['country'].toLowerCase() === 'us' ||
+            obj['country'].toLowerCase() === 'america' ||
+            obj['country'].toLowerCase() === 'united states' ||
+            obj['country'].toLowerCase() === 'united states of america' ||
+            obj['country'].toLowerCase() == undefined
+          ) {
+            usCountAdd++;
+          } else {
+            nonUsAdd++;
+          }
+          obj.msgData = subName;
+        });
+        console.log(fileData, 'fileData');
+        reqField = {
+          msg: name,
+          signOffText: name2,
+          csvFileBulk: csvFile ? csvFile : null,
+          csvFileLen: fileData ? fileData.length : '1',
+          usCount: usCountAdd,
+          nonUsCount: nonUsAdd,
+          bulkCsvData: fileData,
+          fontSize: fontSize,
+        };
+      }
+      else{
+        alert("you haven't added Address")
+      }
+    }
+    localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
+    setProductShow(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Make the scroll behavior smooth
+    });
+  }
+function onClickOfContinue(){
+    setModalForAddressBook(false);
+    setBulkFileCount(fileData.length)
+}
+
   function AfterUpload() {
     if (selectedFile) {
       setShowBox(false);
@@ -540,7 +614,7 @@ export function MessageWriting({
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
-    console.log(savedMsg?.msg);
+    // console.log(savedMsg?.msg);
   }, []);
   async function firstNameBtn(data) {
     console.log(data);
@@ -564,12 +638,15 @@ export function MessageWriting({
       })
       .then((data) => {
         setAddresses(data.result);
-        console.log(data.result, 'data.result');
+        // console.log(data.result, 'data.result');
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [addressForm,loadAddress]);
+  useEffect(() => {
+    if (addresses) setFilteredAddresses(addresses);
+  }, [addresses]);
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -585,7 +662,7 @@ export function MessageWriting({
             <div
               id="messageBoxID"
               ref={ref1}
-              className="output m-5 "
+              className="output m-5 text-[#0040ac]"
               style={{
                 fontFamily: fontFamilyName
                   ? fontFamilyName
@@ -605,7 +682,7 @@ export function MessageWriting({
             <div
               id="signOffText"
               ref={ref3}
-              className="output2"
+              className="output2 text-[#0040ac]"
               style={{
                 fontFamily: fontFamilyName
                   ? fontFamilyName
@@ -685,10 +762,13 @@ export function MessageWriting({
               </button>
             </>
           )}
-          <div className="flex gap-4 mt-5">
-            <text className="cursor-pointer" onClick={() => setIsOpen(true)}>
-              Try our new AI Assistant to <br /> help write your message
-            </text>
+          <div className="flex mt-5">
+            <div className='flex'>
+            <img src={AiImage} className='w-[20%] h-[40%] cursor-pointer' onClick={() => setIsOpen(true)}/>
+            <span className="cursor-pointer font-karla text-[#1b5299]" onClick={() => setIsOpen(true)}>
+              Try our <span className='text-[red]'>New</span> AI Assistant to <br /> help write your message
+            </span>
+            </div>
             <textarea
               type="text"
               value={name2}
@@ -702,9 +782,14 @@ export function MessageWriting({
             ></textarea>
             <br />
           </div>
-          <span className="charLeft ml-40">
+          <div className='flex justify-end mr-[3.9rem] mt-[1rem]'>
+            <div>
+            <span className='font-karla text-[#1b5299]'>Optional Sign Off / Signature</span> <br />
+            <span className="charLeft">
             {remainSign} characters remaining
           </span>
+            </div>
+          </div>
           {show && (
             <>
               <div className="w-[263px] mt-10 font-bold">
@@ -714,7 +799,41 @@ export function MessageWriting({
                 </text>
               </div>
               <div className="flex gap-4">
-                <div className="custom_testing">
+                {bulkFileCount && bulkFileCount>0?
+                <div className="custom_testing pointer-events-none opacity-40">
+                <div>
+                  <h3 className="font-bold">Bulk Address Upload</h3>
+                </div>
+                {bulkUploadDiv && !showNextBtn ? (
+                  <div>
+                    <div>
+                      <input
+                        type="file"
+                        name="file"
+                        accept=".csv"
+                        className="upload-input"
+                        onChange={(e) => handleFileChange(e)}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  ''
+                )}
+                <p>
+                  {' '}
+                  Download the
+                  <a
+                    href="https://api.simplynoted.com/docs/bulk-template"
+                    className="text-[blue]"
+                  >
+                    {' '}
+                    Bulk Order Template
+                  </a>{' '}
+                </p>
+                <AfterUpload />
+              </div>
+              :
+              <div className="custom_testing">
                   <div>
                     <h3 className="font-bold">Bulk Address Upload</h3>
                   </div>
@@ -746,6 +865,8 @@ export function MessageWriting({
                   </p>
                   <AfterUpload />
                 </div>
+
+                }
                 <span className="flex items-center font-bold">OR</span>
                 <div className="m-auto">
                   <DynamicButton
@@ -753,11 +874,22 @@ export function MessageWriting({
                     text="Select from Address Book"
                     onClickFunction={() => setModalForAddressBook(true)}
                   />
+                  {bulkFileCount && bulkFileCount>0?
                   <DynamicButton
-                    className="bg-[#1b5299] text-[14px] w-full"
+                  className="bg-[#1b5299] text-[14px] w-full"
+                  text="Next"
+                  onClickFunction={() => onSelectFromAddressBook()}
+                />:
+                <DynamicButton
+                    className="bg-[#697ba6] text-[14px] w-full"
                     text="Next"
-                    onClickFunction={() => checkUserLogged()}
+                    onClickFunction={() => ''}
                   />
+                  }
+                  {bulkFileCount && bulkFileCount>0 ?
+                  <span> Number of Bulk Address: {bulkFileCount}</span>
+                  :''
+                  }
                 </div>
               </div>
             </>
@@ -847,13 +979,18 @@ export function MessageWriting({
         title="Text Can not be Empty"
         closeModal={closeSelectAddressModal}
         table={false}
-        body={
+        body={ addressForm?
+            <AddressForm customerID={customerid}/>
+            :
           <ContactTable
             customerID={customerid}
-            filteredAddresses={address}
+            filteredAddresses={filteredAddresses}
             setSelectedCheckboxes={setSelectedCheckboxes}
             selectedCheckboxes={selectedCheckboxes}
             ProdcuctSide={ProdcuctSide}
+            setAddressForm={setAddressForm}
+            continueBtn={onClickOfContinue}
+            setFilteredAddresses={setFilteredAddresses}
           />
         }
       />

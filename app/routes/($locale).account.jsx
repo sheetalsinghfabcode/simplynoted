@@ -115,7 +115,9 @@ function Account({customer, heading, featuredData}) {
   const [accountDetail, setAccountDetail] = useState(true);
   const [profile, setProfile] = useState(false);
 
-  useEffect(() => {}, [accountDetail, profile]);
+  useEffect(() => {
+    getSavedCards()
+  }, []);
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
@@ -142,6 +144,8 @@ function Account({customer, heading, featuredData}) {
       localStorage.removeItem('SNFirstName');
       localStorage.removeItem('SnEmail');
       localStorage.removeItem('apiKey');
+      localStorage.removeItem('packageDiscount');
+      localStorage.removeItem('subscriptionName');
 
       localStorage.removeItem('firstName', customer.firstName);
       localStorage.removeItem('lastName', customer.lastName);
@@ -161,6 +165,26 @@ function Account({customer, heading, featuredData}) {
       localStorage.setItem('lastName', customer.lastName);
     }
   }
+  async function getSavedCards(Id) {
+    try {
+        const res = await fetch(`https://api.simplynoted.com/stripe/customer-data?customerId=${result}`)
+        const json = await res.json()
+        console.log(json, 'creditCard Details');
+        // if (json) {
+            // setSavedCart(json.payments)
+        // }
+        if(json.stripe){
+          localStorage.setItem('packageDiscount',JSON.stringify(json.stripe.packageDiscount))
+          localStorage.setItem('subscriptionName',JSON.stringify(json.stripe.subscription?json.stripe.subscription:"Free"))
+        } else {
+        localStorage.setItem('packageDiscount',JSON.stringify(0))
+        localStorage.setItem('subscriptionName',JSON.stringify("Free"))
+        }
+
+    } catch (error) {
+        console.log(error, 'error at credit Card');
+    }
+}
 
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[20px]">

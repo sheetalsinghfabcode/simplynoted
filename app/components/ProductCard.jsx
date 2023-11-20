@@ -4,7 +4,7 @@ import {Text, Link, AddToCartButton, Button} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 import DynamicButton from './DynamicButton';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export function ProductCard({
   product,
@@ -13,24 +13,23 @@ export function ProductCard({
   loading,
   onClick,
   quickAdd,
+  offPrice
 }) {
   let cardLabel;
-  const [isbulk,setIsBulk] = useState('')
+  const [productPrice, setproductPrice] = useState('');
   const cardProduct = product?.variants ? product : getProductPlaceholder();
   if (!cardProduct?.variants?.nodes?.length) return null;
-
   const firstVariant = flattenConnection(cardProduct.variants)[0];
 
   if (!firstVariant) return null;
-  const {image, price, compareAtPrice} = firstVariant;
-
-  if (label) {
-    cardLabel = label;
-  } else if (isDiscounted(price, compareAtPrice)) {
-    cardLabel = 'Sale';
-  } else if (isNewArrival(product.publishedAt)) {
-    cardLabel = 'New';
-  }
+  let {image, price, compareAtPrice} = firstVariant;
+  // if (label) {
+  //   cardLabel = label;
+  // } else if (isDiscounted(price, compareAtPrice)) {
+  //   cardLabel = 'Sale';
+  // } else if (isNewArrival(product.publishedAt)) {
+  //   cardLabel = 'New';
+  // }
   const productAnalytics = {
     productGid: product.id,
     variantGid: firstVariant.id,
@@ -39,7 +38,7 @@ export function ProductCard({
     brand: product.vendor,
     price: firstVariant.price.amount,
     quantity: 1,
-  };
+  };  
   return (
     <div className="flex flex-col gap-2 bg-[white]">
       {/* <h2>Helloo{product.title}</h2> */}
@@ -60,13 +59,13 @@ export function ProductCard({
                 loading={loading}
               />
             )}
-            <Text
+            {/* <Text
               as="label"
               size="fine"
               className="absolute top-0 right-0 m-4 text-right text-notice"
             >
               {cardLabel}
-            </Text>
+            </Text> */}
           </div>
           <div className="grid">
             <Text
@@ -75,39 +74,40 @@ export function ProductCard({
             >
               {product.title}
             </Text>
-              <Text className="flex w-full justify-center gap-4">
-                <Money withoutTrailingZeros data={price} />
-                {isDiscounted(price, compareAtPrice) && (
+            <Text className="flex w-full justify-center gap-4">
+              {offPrice>0?
+              <span className='text-[red]'><span className='line-through text-[black]'> ${price.amount}</span> $ {(price.amount - (price.amount * offPrice)/100)}</span>
+              :
+              <span className='text-[red]'>$ {price.amount}</span>
+              }
+              {/* <Money withoutTrailingZeros data={price} /> */}
+              {/* {isDiscounted(price, compareAtPrice) && (
                   <CompareAtPrice
                     className={'opacity-50 text-center'}
                     data={compareAtPrice}
                   />
-                )}
-              </Text>
-            </div>
-            
+                )} */}
+            </Text>
+          </div>
         </div>
       </Link>
       <div>
         <Link to={`/products/${product.handle}`}>
-            <DynamicButton
-                  className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
-                  text="SINGLE CARD"
-                  onClickFunction={() => ''}
-                />
-                </Link>
-                <Link to={`/products/${product.handle}?select=Bulk`}>
-                <DynamicButton
-                  className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
-                  text="BULK PURCHASE"
-                  onClickFunction={() =>''}
-                />
-                </Link>
-            
-                
-
-            </div>
-      {quickAdd && firstVariant.availableForSale && (
+          <DynamicButton
+            className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
+            text="SINGLE CARD"
+            onClickFunction={() => ''}
+          />
+        </Link>
+        <Link to={`/products/${product.handle}?select=Bulk`}>
+          <DynamicButton
+            className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
+            text="BULK PURCHASE"
+            onClickFunction={() => ''}
+          />
+        </Link>
+      </div>
+      {/* {quickAdd && firstVariant.availableForSale && (
         <AddToCartButton
           lines={[
             {
@@ -133,21 +133,21 @@ export function ProductCard({
             Sold out
           </Text>
         </Button>
-      )}
+      )} */}
     </div>
   );
 }
 
-function CompareAtPrice({data, className}) {
-  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
-    useMoney(data);
+// function CompareAtPrice({data, className}) {
+//   const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
+//     useMoney(data);
 
-  const styles = clsx('strike', className);
+//   const styles = clsx('strike', className);
 
-  return (
-    <span className={styles}>
-      {currencyNarrowSymbol}
-      {withoutTrailingZerosAndCurrency}
-    </span>
-  );
-}
+//   return (
+//     <span className={styles}>
+//       {currencyNarrowSymbol}
+//       {withoutTrailingZerosAndCurrency}
+//     </span>
+//   );
+// }

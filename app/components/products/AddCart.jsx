@@ -346,10 +346,6 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                 text="+ New Address"
                                                 onClickFunction={() => onNewAddressClick()}
                                             />
-
-                                            {/* <div className='buttonDiv pr-5 mt-2'>
-                                <button className="bg-[#001a5f] text-[#fff] p-3">New Address</button>
-                            </div> */}
                                             <div>
                                                 <input type="text " className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla' onChange={(e) => setsearchData2(e.target.value)} placeholder='Search Addresses...' />
                                             </div>
@@ -411,17 +407,18 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                 </div>
 
                             </div>
-                            <div className='row flex mr-2 ml-2 gap-4'>
+                            <div className='row flex mr-2 ml-2 gap-4 mt-10'>
                                 {show &&
-                                    <div className='col-6 w-[50%] '>
-                                        <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
+                                    <div className='col-6 w-[50%] mt-10'>
+                                        <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto '>
                                             <h3 className='text-2xl font-karla mt-4 mb-4'>{shippingData?.title}</h3>
 
-                                            <div class="shipping-methods" id="shipping-options">
+                                            <div className="shipping-methods grid grid-cols-2 gap-2" id="shipping-options">
                                                 {shippingData?.variants.edges.map((item, index) =>
                                                     <div >
                                                         <div>
                                                             <input
+                                                            className='mr-2'
                                                                 value={item}
                                                                 checked={selectShipMode?.node.title === item.node.title}
                                                                 type="radio"
