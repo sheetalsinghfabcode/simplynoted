@@ -84,6 +84,8 @@ export default function CustomProducts() {
   const [customProductData, setCustomProductData] = useState('');
   const [imageShow,setImageShow] = useState(0)
   const [customFontName,setCustomFontName] = useState('')
+  const [locationValue,setLocationValue] = useState(false)
+
   if (typeof window !== 'undefined') {
     const urlParams = new URLSearchParams(window?.location.search);
     parameterValue = urlParams.get('select');
@@ -161,7 +163,7 @@ export default function CustomProducts() {
   };
   useEffect(() => {
     localStorage.removeItem('reqFielddInCart');
-    // console.log(location.pathname,'0000000000');/
+    setLocationValue
   }, [datafornav.pathname]);
   return (
     <>
@@ -218,6 +220,7 @@ export default function CustomProducts() {
               />
             }
             </div>
+            {locationValue &&
             <MessageWriting
               show={show}
               selectedFile={selectedFile}
@@ -231,6 +234,7 @@ export default function CustomProducts() {
               fontFamilyName={fontFamilyName}
               metafields={metafields}
             />
+          }
           </Section>
           <Modal
             isOpen={modalIsOpen2}
