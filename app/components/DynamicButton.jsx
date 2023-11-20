@@ -1,4 +1,5 @@
 import {FaArrowLeft} from 'react-icons/fa';
+import { AiOutlineLogout } from "react-icons/ai";
 const DynamicButton = ({
   className,
   text,
@@ -6,6 +7,7 @@ const DynamicButton = ({
   disabled,
   type,
   backArrow,
+  logoutIcon
 }) => {
   return (
     <>
@@ -16,6 +18,7 @@ const DynamicButton = ({
         className={`text-white font-bold py-2 px-4 flex items-center justify-center gap-[6px] tracking-[1px] focus:outline-none focus:shadow-outline whitespace-nowrap  ${className}`}
       >
         {backArrow && <FaArrowLeft />}
+        {logoutIcon && <AiOutlineLogout/>}
         {text}
       </button>
     </>

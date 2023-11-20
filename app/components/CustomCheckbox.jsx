@@ -1,5 +1,5 @@
 export default function CustomCheckbox({label, isChecked, onChange, value}) {
-  const hyphenatedLabel = label.toLowerCase().replace(/\s+/g, '-');
+  const hyphenatedLabel = label?.toLowerCase().replace(/\s+/g, '-');
   return (
     <label
       htmlFor={`${hyphenatedLabel}`}

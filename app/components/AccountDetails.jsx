@@ -8,11 +8,14 @@ export function AccountDetails({customer}) {
 
   const [key, setKey] = useState('');
   const [loader, setLoader] = useState(false);
+  const [handleGenerateClick, setHandleGenerateClick] = useState(false);
 
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const generateApiKey = async () => {
-    setLoader(true);
+    if (handleGenerateClick) {
+      setLoader(true);
+    }
     try {
       const response = await fetch(
         `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`,
@@ -42,16 +45,17 @@ export function AccountDetails({customer}) {
     }
   };
 
+  useEffect(() => {
+    generateApiKey();
+  }, []);
+
   let apiKey;
 
   useEffect(() => {
-
     apiKey = localStorage.getItem('apiKey');
 
     console.log('apiKey ', apiKey);
   }, [key]);
-
-
 
   return (
     <>
@@ -91,23 +95,31 @@ export function AccountDetails({customer}) {
             <div className="w-1/4 text-sm text-gray-600 ">API Key:</div>
             <button
               className="px-4 py-2 bg-[#1b52b1] text-white  text-sm font-semibold hover:bg-[#1b52b1] focus:outline-none"
-              onClick={generateApiKey}
+              onClick={() => {
+                setHandleGenerateClick(true);
+                generateApiKey;
+              }}
             >
               Generate
             </button>
           </div>
 
-        
-            <div className="flex mb-4">
-              <div className="w-1/4 text-sm text-gray-600">
-                Generated API Key:
-              </div>
-              {loader ? (
-            <CircularLoader color="#ef6e6e" />
-          ) : (
-              <p className="w-3/4 text-[14px] font-semibold break-all">{key}</p>)}
+          <div className="flex mb-4">
+            <div className="w-1/4 text-sm text-gray-600">
+              Generated API Key:
             </div>
-          
+            {handleGenerateClick && (
+              <>
+                {loader ? (
+                  <CircularLoader color="#ef6e6e" />
+                ) : (
+                  <p className="w-3/4 text-[14px] font-semibold break-all">
+                    {key}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>

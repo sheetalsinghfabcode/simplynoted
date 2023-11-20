@@ -10,22 +10,21 @@ const WalletPurchase = ({
   setWalletPayment,
   setFinalPrice,
 }) => {
+  const subscriptionPrice =
+    subscription !== 0 ? subscription?.split('/')[0].replace('$', '') : '0';
 
-  const subscriptionPrice = subscription !== 0 ? subscription?.split('/')[0].replace('$', '') : '0';
-
-  const total = subscriptionPrice > 0 ? ((parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2) ):(parseFloat(amount)).toFixed(2) ;
+  const total =
+    subscriptionPrice > 0
+      ? (parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2)
+      : parseFloat(amount).toFixed(2);
   setFinalPrice(total);
-
-
 
   return (
     <div className="w-full max-w-[1366px] mx-auto px-[20px] py-[40px] bg-white">
       <div className="max-w-[750px] mx-auto p-[50px] border border-solid border-[#ef6e6e]">
         <div className="flex justify-center">
           <DynamicButton
-            text={`${
-              WalletData ? "Team" : 'Free'
-            } Plan Packages`}
+            text={`${WalletData ? 'Team' : 'Free'} Plan Packages`}
             className="!bg-[#EF6E6E] uppercase text-[22px]"
           />
         </div>
@@ -50,7 +49,7 @@ const WalletPurchase = ({
         <div className="flex justify-between items-center mt-[24px]">
           <DynamicButton
             text="Go Back"
-            className="!bg-[#EF6E6E] w-full max-w-[150px] uppercase text-[22px] "
+            className="!bg-[#EF6E6E] font-karla w-full max-w-[150px] uppercase text-[16px] "
             onClickFunction={() => {
               setWalletPurchase(false);
               setWalletPlan(true);
@@ -63,7 +62,7 @@ const WalletPurchase = ({
               setWalletPurchase(false);
               setWalletPayment(true);
             }}
-            className="!bg-[#EF6E6E] uppercase text-[22px]"
+            className="!bg-[#EF6E6E] font-karla uppercase text-[16px]"
           />
         </div>
       </div>

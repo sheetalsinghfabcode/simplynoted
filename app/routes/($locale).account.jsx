@@ -4,6 +4,7 @@ import {
   Outlet,
   useLoaderData,
   useMatches,
+  useLocation,
   useOutlet,
   useNavigate,
 } from '@remix-run/react';
@@ -115,8 +116,11 @@ function Account({customer, heading, featuredData}) {
   const [accountDetail, setAccountDetail] = useState(true);
   const [profile, setProfile] = useState(false);
 
+  const {pathname} = useLocation();
+ 
+
   useEffect(() => {
-    getSavedCards()
+    getSavedCards();
   }, []);
 
   const handleAccountDetailClick = () => {
@@ -167,24 +171,33 @@ function Account({customer, heading, featuredData}) {
   }
   async function getSavedCards(Id) {
     try {
-        const res = await fetch(`https://api.simplynoted.com/stripe/customer-data?customerId=${result}`)
-        const json = await res.json()
-        console.log(json, 'creditCard Details');
-        // if (json) {
-            // setSavedCart(json.payments)
-        // }
-        if(json.stripe){
-          localStorage.setItem('packageDiscount',JSON.stringify(json.stripe.packageDiscount))
-          localStorage.setItem('subscriptionName',JSON.stringify(json.stripe.subscription?json.stripe.subscription:"Free"))
-        } else {
-        localStorage.setItem('packageDiscount',JSON.stringify(0))
-        localStorage.setItem('subscriptionName',JSON.stringify("Free"))
-        }
-
+      const res = await fetch(
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
+      );
+      const json = await res.json();
+      console.log(json, 'creditCard Details');
+      // if (json) {
+      // setSavedCart(json.payments)
+      // }
+      if (json.stripe) {
+        localStorage.setItem(
+          'packageDiscount',
+          JSON.stringify(json.stripe.packageDiscount),
+        );
+        localStorage.setItem(
+          'subscriptionName',
+          JSON.stringify(
+            json.stripe.subscription ? json.stripe.subscription : 'Free',
+          ),
+        );
+      } else {
+        localStorage.setItem('packageDiscount', JSON.stringify(0));
+        localStorage.setItem('subscriptionName', JSON.stringify('Free'));
+      }
     } catch (error) {
-        console.log(error, 'error at credit Card');
+      console.log(error, 'error at credit Card');
     }
-}
+  }
 
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[20px]">
@@ -192,6 +205,7 @@ function Account({customer, heading, featuredData}) {
         <DynamicTitle title="Account" />
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
+            logoutIcon
             className="text-primary/50 bg-[#EF6E6E]"
             text="Log Out"
             onClickFunction={() => setData(true)}
@@ -272,7 +286,9 @@ function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
       <div className="grid w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
-        <h2 className=" text-[18px] font-karla font-semibold lg:text-[22px]">Order History</h2>
+        <h2 className=" text-[18px] font-karla font-semibold lg:text-[22px]">
+          Order History
+        </h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
@@ -284,7 +300,7 @@ function EmptyOrders() {
 
   return (
     <div>
-      <span className=" font-karla  text-[16px] font-medium" >
+      <span className=" font-karla  text-[16px] font-medium">
         You haven&apos;t placed any orders yet.
       </span>
       <div className="w-48 mt-[12px]">

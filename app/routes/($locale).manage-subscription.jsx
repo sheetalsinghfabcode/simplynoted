@@ -300,6 +300,8 @@ const ManageSubscription = () => {
     }
   }
 
+  console.log('stripeCollection', stripeCollection);
+
   return (
     <>
       <ConfirmationModal
@@ -347,7 +349,7 @@ const ManageSubscription = () => {
       />
 
       <StripeModal
-      loader={loader}
+        loader={loader}
         show={updateModal}
         onConfirm={updateCreditCard}
         onCancel={() => setUpdateModal(false)}
@@ -358,7 +360,6 @@ const ManageSubscription = () => {
         handlePurchaseCard={handlePurchaseCard}
       />
       <>
-
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
           <DynamicTitle
             dynamicButton
@@ -384,7 +385,9 @@ const ManageSubscription = () => {
 
             <div className="w-full md:w-[70%] bg-white  p-[20px] text-center">
               {loader ? (
-                <CircularLoader color="#ef6e6e" />
+                <CircularLoader
+                title="Loading Manage Plans"
+                color="#ef6e6e" />
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
@@ -392,7 +395,10 @@ const ManageSubscription = () => {
                       wallet balance
                     </span>
                     <span className="text-[24px] lg:text-[46px] !font-bold text-[#ef6e6e] uppercase">
-                      ${stripeCollection ? stripeCollection.stripe?.balance : 0}
+                      $
+                      {!stripeCollection.error
+                        ? stripeCollection.stripe?.balance
+                        : 0.0}
                     </span>
                   </div>
                   <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]"></div>
@@ -404,25 +410,28 @@ const ManageSubscription = () => {
                           My Plan
                         </span>
                         <span className="text-[20px] !font-bold text-[#ef6e6e] uppercase">
-                          {stripeCollection.stripe?.subscriptionStatus !==
-                          'canceled'
+                          {(stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled' || !stripeCollection.error)
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
                         </span>
                       </div>
                       {stripeCollection.stripe?.subscriptionStatus !==
-                        'canceled' && (
-                        <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                          <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
-                            CHANGE STATUS
-                          </span>
-                          <DynamicButton
-                            onClickFunction={() => setCancelSubscription(true)}
-                            text="Cancel Plan"
-                            className="!bg-[#ef6e6e] max-w-[190px] uppercase min-w-[190px]"
-                          />
-                        </div>
-                      )}
+                        'canceled' &&
+                        !stripeCollection.error && (
+                          <div className="flex justify-between items-center gap-[15px] py-[10px]">
+                            <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
+                              CHANGE STATUS
+                            </span>
+                            <DynamicButton
+                              onClickFunction={() =>
+                                setCancelSubscription(true)
+                              }
+                              text="Cancel Plan"
+                              className="!bg-[#ef6e6e] max-w-[190px] uppercase min-w-[190px]"
+                            />
+                          </div>
+                        )}
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
                         <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                           CHANGE PLAN
@@ -433,32 +442,40 @@ const ManageSubscription = () => {
                           }
                           text={
                             stripeCollection.stripe?.subscriptionStatus !==
-                            'canceled'
+                              'canceled' && !stripeCollection.error
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
                           className="!bg-[#001a5f] max-w-[190px] uppercase min-w-[190px]"
                         />
                       </div>
-                      {stripeCollection.stripe?.subscriptionStatus !==
-                      'canceled' ? (
-                        <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                          <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
-                            PLAN RENEWAL DATE
-                          </span>
-                          <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
-                            {formattedDateString}
-                          </span>
-                        </div>
-                      ) : (
-                        <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                          <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
-                            SUBSCRIPTION CANCELLATION DATE
-                          </span>
-                          <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
-                            {stripeCollection.stripe?.subscriptionCancelledAt}
-                          </span>
-                        </div>
+
+                      {!stripeCollection.error && (
+                        <>
+                          {stripeCollection.stripe?.subscriptionStatus !==
+                          'canceled' ? (
+                            <div className="flex justify-between items-center gap-[15px] py-[10px]">
+                              <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
+                                PLAN RENEWAL DATE
+                              </span>
+                              <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                                {formattedDateString}
+                              </span>
+                            </div>
+                          ) : (
+                            <div className="flex justify-between items-center gap-[15px] py-[10px]">
+                              <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
+                                SUBSCRIPTION CANCELLATION DATE
+                              </span>
+                              <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                                {
+                                  stripeCollection.stripe
+                                    ?.subscriptionCancelledAt
+                                }
+                              </span>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   </WalletAccordion>
@@ -467,10 +484,10 @@ const ManageSubscription = () => {
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
-                      {stripeCollection.stripe?.balance !== 0 ? (
+                      {stripeCollection.stripe?.balance !== 0 && !stripeCollection.error ? (
                         <span className="text-[20px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
-                          'canceled'
+                          'canceled' 
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}{' '}
                           - {stripeCollection.stripe?.packageQuantity} cards -
@@ -482,6 +499,7 @@ const ManageSubscription = () => {
                         </span>
                       )}
                     </div>
+                    {!stripeCollection.error &&
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         AUTO RENEW
@@ -502,6 +520,7 @@ const ManageSubscription = () => {
                         className="!bg-[#ef6e6e] max-w-[190px] !text-[14px] whitespace-nowrap uppercase min-w-[190px]"
                       />
                     </div>
+}
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         Update
@@ -509,7 +528,7 @@ const ManageSubscription = () => {
                       <DynamicButton
                         onClickFunction={() => navigate('/simply-noted-plans')}
                         text={
-                          stripeCollection.stripe?.balance !== 0
+                          stripeCollection.stripe?.balance !== 0 && !stripeCollection.error
                             ? 'Change Package'
                             : 'Buy Package'
                         }
@@ -607,28 +626,32 @@ const ManageSubscription = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {paymentHistory.map((payment, i) => (
-                          <tr
-                            className=" border-b border-solid border-[#e9e7e7]"
-                            key={i}
-                          >
-                            <td className="text-[#1b5299] p-[11px]">{i + 1}</td>
-                            <td className=" text-[#1b5299] p-[11px] text-[14px] font-karla !font-bold uppercase">
-                              {payment.description}
-                            </td>
-                            <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
-                              {payment.date}
-                            </td>
-                            <td className=" text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
-                              $ {payment.amount}
-                            </td>
-                            <td className="flex justify-center p-[11px] text-center">
-                              <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase text-[12px] px-[15px] bg-[#4BB543] text-white">
-                                {payment.status && 'Paid'}
+                        {paymentHistory &&
+                          paymentHistory.length > 0 &&
+                          paymentHistory.map((payment, i) => (
+                            <tr
+                              className=" border-b border-solid border-[#e9e7e7]"
+                              key={i}
+                            >
+                              <td className="text-[#1b5299] p-[11px]">
+                                {i + 1}
                               </td>
-                            </td>
-                          </tr>
-                        ))}
+                              <td className=" text-[#1b5299] p-[11px] text-[14px] font-karla !font-bold uppercase">
+                                {payment.description}
+                              </td>
+                              <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
+                                {payment.date}
+                              </td>
+                              <td className=" text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
+                                $ {payment.amount}
+                              </td>
+                              <td className="flex justify-center p-[11px] text-center">
+                                <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase text-[12px] px-[15px] bg-[#4BB543] text-white">
+                                  {payment.status && 'Paid'}
+                                </td>
+                              </td>
+                            </tr>
+                          ))}
                       </tbody>
                     </table>
                   </WalletAccordion>
