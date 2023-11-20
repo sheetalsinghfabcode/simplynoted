@@ -4,10 +4,18 @@ import { Text, Link, AddToCartButton, Button } from '~/components';
 import { useState } from 'react';
 import Loader from './modal/Loader';
 import DynamicButton from './DynamicButton';
+import {getProductPlaceholder} from '~/lib/placeholders';
 
 
-export function CustomComponent({ product }) {
+
+export function CustomComponent({ product,offPrice }) {
   const [loader, setLoader] = useState(false);
+  
+  // const cardProduct = product?.variants ? product : getProductPlaceholder();
+  // if (!cardProduct?.variants?.nodes?.length) return null;
+  // const firstVariant = flattenConnection(cardProduct.variants)[0];
+  // let {image, price, compareAtPrice} = firstVariant;
+
 
   return (
     <>
@@ -16,7 +24,7 @@ export function CustomComponent({ product }) {
         :
         <div className="flex flex-col gap-2 bg-[white]">
           <Link
-            to={`/products/${product.handle}`}
+            to={`/custom/${product.handle}`}
             prefetch="intent"
           >
             <div className={clsx('grid gap-4')}>
@@ -35,15 +43,20 @@ export function CustomComponent({ product }) {
                 >
                   {product.title}
                 </Text>
-                {/* <Text className="flex w-full justify-center gap-4">
-                <Money withoutTrailingZeros data={price} />
+                 <Text className="flex w-full justify-center gap-4">
+                 {/* {offPrice>0?
+              <span className='text-[red]'><span className='line-through text-[black]'> ${price.amount}</span> $ {(price.amount - (price.amount * offPrice)/100)}</span>
+              :
+              <span className='text-[red]'>$ {price.amount}</span>
+              } */}
+                {/* <Money withoutTrailingZeros data={price} />
                 {isDiscounted(price, compareAtPrice) && (
                   <CompareAtPrice
                     className={'opacity-50 text-center'}
                     data={compareAtPrice}
                   />
-                )}
-              </Text> */}
+                )} */}
+              </Text>
               </div>
 
             </div>
@@ -69,16 +82,16 @@ export function CustomComponent({ product }) {
     </>
   )
 }
-function CompareAtPrice({ data, className }) {
-  const { currencyNarrowSymbol, withoutTrailingZerosAndCurrency } =
-    useMoney(data);
+// function CompareAtPrice({ data, className }) {
+//   const { currencyNarrowSymbol, withoutTrailingZerosAndCurrency } =
+//     useMoney(data);
 
-  const styles = clsx('strike', className);
+//   const styles = clsx('strike', className);
 
-  return (
-    <span className={styles}>
-      {currencyNarrowSymbol}
-      {withoutTrailingZerosAndCurrency}
-    </span>
-  );
-}
+//   return (
+//     <span className={styles}>
+//       {currencyNarrowSymbol}
+//       {withoutTrailingZerosAndCurrency}
+//     </span>
+//   );
+// }

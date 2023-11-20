@@ -15,24 +15,30 @@ const ContactTable = ({
   setSelectedCheckboxes,
   setSelectedAddress,
   selectedCheckboxes,
-  updateLoader,
-  searchText,
-  handleSearchInputChange,
-  setSeachText,
-  handleFileChange,
-  handleUploadClick,
   openModal,
-  selectedFile,
   setAddressForm,
-  ProdcuctSide
+  ProdcuctSide,
+  continueBtn,
+  setFilteredAddresses
 
 }) => {
-  const {loadAddress, setLoadAddress} = useAddressBook();
+  const {loadAddress, setLoadAddress,addresses} = useAddressBook();
   const [selectedType, setSelectedType] = useState('all');
   const [loader, setLoader] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [fileData, setFileData] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [updateLoader, setupdateLoader] = useState(false);
+const [searchFilter,setSearchFilter] = useState([])
+  
 
   let data = filteredAddresses;
+
+
+
+  console.log("filteredAddresses",filteredAddresses)
+  console.log("data",data)
 
   
 
@@ -215,6 +221,174 @@ const ContactTable = ({
     }
   };
 
+  function csvToJson(csv) {
+    var lines = csv.split('\n');
+    var result = [];
+
+    var headers = lines[0].split(',');
+    for (var i = 1; i < lines.length; i++) {
+      var currentLine = lines[i].split(',');
+
+      // Skip empty lines
+      if (currentLine.length === 1 && currentLine[0].trim() === '') {
+        continue;
+      }
+
+      var obj = {};
+      for (var j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentLine[j];
+      }
+
+      result.push(obj);
+    }
+
+    return result;
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const csvData = e.target.result;
+        const jsonData = csvToJson(csvData);
+        setSelectedFile(file);
+        setFileData(jsonData);
+      };
+      reader.readAsText(file);
+    }
+  };
+  const handleSearchInputChange = (event) => {
+    const value = event.target.value;
+    setSearchText(value);
+    setSelectedCheckboxes([]);
+
+    // Filter the addresses based on the search term
+    if(value){
+    const filtered = data.filter((address) =>
+      Object.values(address).some((field) =>
+        field.toString().toLowerCase().includes(value.toLowerCase()),
+      ),
+    );
+    setFilteredAddresses(filtered);
+
+  } else {
+    setFilteredAddresses(addresses)
+  }
+  };
+console.log(searchText,"PPPPPPPPPP");
+  const uploadDataToAPI = async (data) => {
+    setupdateLoader(true);
+    const modifiedData = {};
+
+    for (let key in data) {
+      const modifiedKey = key?.replace(/"/g, '');
+
+      modifiedData[modifiedKey] = data[key].replace(/"/g, '');
+    }
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: modifiedData['First Name'] || '',
+          lastName: modifiedData['Last Name'] || '',
+          businessName: modifiedData.Company || '',
+          address1: modifiedData.Address || '',
+          address2: modifiedData['Address 2'] || '',
+          city: modifiedData.City || '',
+          state: modifiedData['State/Province'] || '',
+          zip: modifiedData['Postal Code'] || '',
+          country: modifiedData.Country || 'USA',
+          type: modifiedData.Type
+            ? modifiedData.Type.toLowerCase() === 'sender'
+              ? 'return'
+              : 'recipient'
+            : 'recipient',
+          birthday: modifiedData.Birthday || '',
+          anniversary: modifiedData.Anniversary || '',
+        }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        setLoadAddress(!loadAddress);
+        setSelectedFile(null);
+        setupdateLoader(false);
+        'Successful response data:', responseData.result;
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.log('Error uploading data:', error);
+      throw error;
+    }
+  };
+
+  const handleUploadClick = async () => {
+    if (fileData.length === 0) {
+      console.warn('No data to upload');
+      return;
+    }
+
+    const requiredFields = [
+      'First Name',
+      'Last Name',
+      'Address',
+      'City',
+      'State/Province',
+      'Postal Code',
+      'Email',
+    ];
+    const errors = [];
+
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+    for (let i = 0; i < fileData.length; i++) {
+      const data = fileData[i];
+      const missingFields = [];
+
+      for (const field of requiredFields) {
+        if (!data[field] || data[field].trim() === '') {
+          missingFields.push(field);
+        } else if (field === 'First Name' || field === 'Last Name') {
+          if (!namePattern.test(data[field])) {
+            missingFields.push(`${field} contains numbers`);
+          }
+        } else if (field === 'Email') {
+          if (!emailPattern.test(data[field])) {
+            missingFields.push(`${field} is not a valid `);
+          }
+        }
+      }
+
+      if (missingFields.length > 0) {
+        for (const field of missingFields) {
+          errors.push(`Row ${i + 1}: Missing field - ${field}`);
+        }
+      } else {
+        await uploadDataToAPI(data);
+      }
+    }
+
+    if (errors.length > 0) {
+      serErrorContent(errors);
+      setErrorModal(true);
+      setTimeout(() => {
+        setErrorModal(false);
+        serErrorContent([]);
+      }, [4000]);
+    }
+  };
+
+
+
   return (
     <div className="w-full max-w-[100%] overflow-x-auto">
        <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
@@ -288,7 +462,7 @@ const ContactTable = ({
               </div>
               {ProdcuctSide &&
               <div>
-                <button>Continue</button>
+                <button className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]" onClick={continueBtn}>Continue</button>
               </div>
               }
               {/* Your table rendering code here... */}

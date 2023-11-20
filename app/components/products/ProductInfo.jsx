@@ -15,9 +15,10 @@ import {
 } from '../Text';
 
 export function ProductInfo({ title, product, setShow, show, setShowBox, editFontFamily, setFontFamily }) {
-    console.log(editFontFamily, 'editFontFamily');
+    // console.log(editFontFamily, 'editFontFamily');
     const [customFonts, setCustomFonts] = useState([])
-    const [standardFontVal, setStandardFontVal] = useState('Select FontFamily')
+    const [standardFontVal, setStandardFontVal] = useState('Tarzan')
+    const [customFontVal, setCustomFontVal] = useState('Select Custom Font')
     async function singleBtnCLick() {
         setShow(false)
         setSelectedFile('')
@@ -26,11 +27,13 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
     function setFont(e) {
         // console.log(e, 'fontFamily');
         // getCustomFont('dddd')
-        console.log(selectVal,'useRefData');
+        // console.log(selectVal,'useRefData');
+        setCustomFontVal('Select Custom Font')
         setFontFamily(e)
-        if(e){
-            refVal2.current.value = "Custom FOnt"
-        }
+        setStandardFontVal(e)
+        // if(e){
+            // refVal2.current.valueOf = "Custom FOnt"
+        // }
     }
 
 
@@ -38,17 +41,17 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
         try {
             const res = await fetch(`https://api.simplynoted.com/fonts/getMyFonts/6232622891113`)
             const json = await res.json()
-            console.log(json.data);
+            // console.log(json.data);
             setCustomFonts(json.data)
         } catch (error) {
             console.error(error, 'customfontError');
         }
     }
-    const refVal = useRef('')
-    const refVal2 = useRef('')
-    let selectVal = refVal.current.value
-    let selectVal2 = refVal2.current.value
-    console.log(selectVal,'selectavl');
+    // const refVal = useRef('')
+    // const refVal2 = useRef('')
+    // let selectVal = refVal.current.valueOf
+    // let selectVal2 = refVal2.current.valueOf
+    // console.log(selectVal,'selectavl');
     useEffect(() => {
         let customerid = localStorage.getItem('customerId')
         customFontFamily(customerid)
@@ -57,12 +60,13 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
     function getCustomFont(val) {
         console.log(val, 'getcustom val');
         setFontFamily(val)
+        setCustomFontVal(val)
+        setStandardFontVal('Select Standard Font')
 
-        if(val){
-            refVal.current.value = "Standard Font"
-        }
+        // if(val){
+            // refVal.current.valueOf = "Standard Font"
+        // }
         // setFont('select')
-
     }
     return (
         <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-1.5rem]">
@@ -71,33 +75,26 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
                     <Heading as="h1" className="whitespace-normal">
                         {title}
                     </Heading>
-                    <Text className={'opacity-50 font-medium'}>$ {product?.variants.nodes[0].price.amount}</Text>
+                    <span>$3.25</span>
+                    {/* <span className='text-[30px] text-[#1b5299] leading-[47px] font-karla'>$ {product?.variants.nodes[0].price.amount}</span> */}
                     {/* {vendor && (
                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                      )} */}
-                    <div className='buttonClass flex justify-start'>
+                    <div className='buttonClass flex justify-start mt-[2rem]'>
                         <div className='buttonDiv pr-5'>
-                            <button className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => singleBtnCLick()}>Single Card</button>
+                            <button style={{backgroundColor: show?"#ef6e6e":"#001a5f"}} className="bg-[#001a5f] text-[#fff] p-2 rounded " onClick={() => singleBtnCLick()}>Single Card</button>
                         </div>
                         <div className='gap-2'>
-                            <button className="bg-[#ef6e6e] text-[#fff] p-2 rounded " onClick={() => setShow(true)}>Bulk Purchase</button>
+                            <button style={{backgroundColor: show?"#001a5f":"#ef6e6e"}} className="bg-[#ef6e6e] text-[#fff] p-2 rounded " onClick={() => setShow(true)}>Bulk Purchase</button>
                         </div>
                     </div>
-                    {show &&
-                        <table className="price-breakdown desktop">
-                            <tbody>
-                                <tr>
-                                    <td className="label p-[6px] text-xs border-solid border-[#ddd]">Quantity</td><td>1-99</td><td>100-249</td><td>250-499</td><td>500-999</td><td>1000-2499</td><td>2500+</td></tr>
-                                <tr>
-                                    <td className="label">Price</td><td>$3.25</td><td>$3.15</td><td>$3.00</td><td>$2.85</td><td>$2.70</td><td>$2.55</td></tr>
-                            </tbody>
-                        </table>}
-                    <div className='selectOtion mb-5 flex mt-[2rem]'>
+                    
+                    <div className='selectOtion mb-5 flex mt-[2rem] gap-[2rem]'>
                         <div className='w-[192px]'>
                             <Text className='text-sm w-[100px]'>Standard Handwriting Style</Text>
                             <br />
-                            <select id="font" ref={refVal} onClick={(e) => setFont(e.target.value)} >
-                                <option value="">{editFontFamily ? editFontFamily : selectVal?selectVal:'Standard Fonts'}</option>
+                            <select id="font" className='cursor-pointer' value={standardFontVal} onChange={(e) => setFont(e.target.value)} placeholder='aaaa'>
+                                <option value={standardFontVal} selected disabled>{editFontFamily ? editFontFamily :standardFontVal}</option>
                                 {editFontFamily && editFontFamily !== 'tarzan' &&
                                     <option value="tarzan" className={`font-tarzan`}>Tarzan</option>}
                                 {/* <option value="pinocchio" className={`font-pinocchio`}>Pinocchio</option> */}
@@ -132,8 +129,8 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
                         <div>
                             <Text className='text-sm'>Custom Handwriting Style</Text>
                             <br />
-                            <select id="Coustomfont text-sm" ref={refVal2} onChange={(e) => getCustomFont(e.target.value)}>
-                                <option className='text-sm' selected disabled>{selectVal2?selectVal2:"Custom Fonts"}</option>
+                            <select id="Coustomfont text-sm " className='cursor-pointer' value={customFontVal}  onChange={(e) => getCustomFont(e.target.value)}>
+                                <option className='text-sm' value={customFontVal} selected disabled>{customFontVal}</option>
                                 {customFonts && customFonts.map((item) =>
                                     <option value={item.fontName}>{item.fontName}</option>
                                 )}
@@ -142,7 +139,7 @@ export function ProductInfo({ title, product, setShow, show, setShowBox, editFon
                     </div>
                     <div>
                         <Text>Optional shipping date</Text><br />
-                        <input type='date' />
+                        <input type='date' className='cursor-pointer'/>
                     </div>
                 </div>
                 {/* Product page Data Vieew */}

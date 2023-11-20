@@ -90,7 +90,7 @@ function Header({title, menu}) {
   // toggle cart drawer when adding to cart
   useEffect(() => {
     let aa = localStorage.getItem('cartCount')
-    console.log(aa,"sssssssss");
+    // console.log(aa,"sssssssss");
     if (isCartOpen || !addToCartFetchers.length) return;
     openCart();
   }, [addToCartFetchers, isCartOpen, openCart]);

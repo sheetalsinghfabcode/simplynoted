@@ -148,11 +148,12 @@ export default function Collection() {
   const [offSetVal, setOffSetVal] = useState(0)
   const [loadMore, setLoadMore] = useState(false)
   const [newOffset,setNewOffset] = useState('')
+  const [offPrice,setOffPrice] = useState()
 
   const { collection, collections, appliedFilters, handleLinkData, myCollection, collectionHandle } = useLoaderData();
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
-  console.log(handleLinkData.collections.edges,"handleLinkData.collections.edges");
+  // console.log(handleLinkData.collections.edges,"handleLinkData.collections.edges");
   let mainTags = ["thank-you","birthday","anniversary","business","congratulations","holidays","just-because","customisable-cards"]
   let filterTag = handleLinkData.collections.edges
   const data = filterTag.filter((item)=> mainTags.includes(item.node.handle))
@@ -238,6 +239,8 @@ console.log(error);
             <CustomComponent
               key={product.id}
               product={product}
+              offPrice={offPrice}
+              
             // loading={getImageLoadingPriority(i)}
             />
           </>
@@ -247,6 +250,8 @@ console.log(error);
   }
   useEffect(() => {
     customerid = localStorage.getItem('customerId')
+   let discountedCount =  JSON.parse(localStorage.getItem('packageDiscount'))
+   setOffPrice(discountedCount)
     if (collectionHandle == 'customisable-cards' ) {
       customisedCard()
     }
@@ -316,6 +321,7 @@ console.log(error);
                         key={product.id}
                         product={product}
                         loading={getImageLoadingPriority(i)}
+                        offPrice={offPrice}
                       />
                     ))}
                   </>
