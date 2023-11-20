@@ -515,11 +515,11 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         cancelText="Register"
         cross={true}
       />
-      {loader && pathname !== '/account' && (
+      {/* {loader && pathname !== '/account' && (
         <div className="min-h-screen flex justify-center items-center">
           <CircularLoader color={'#ef6e6e'} title="Loading Address Page..." />
         </div>
-      )}
+      )} */}
     </>
   );
 }
