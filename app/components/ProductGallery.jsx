@@ -8,6 +8,7 @@ export function ProductGallery({media, className}) {
   if (!media.length) {
     return null;
   }
+  console.log(media,"media");
 
   return (
     <div
@@ -22,7 +23,7 @@ export function ProductGallery({media, className}) {
           med.__typename === 'MediaImage'
             ? {...med.image, altText: med.alt || 'Product image'}
             : null;
-
+            console.log(image,"image");
         const style = [
           isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
           isFirst || isFourth ? '' : 'md:aspect-[4/5]',

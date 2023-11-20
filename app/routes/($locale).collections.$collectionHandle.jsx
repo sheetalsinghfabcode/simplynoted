@@ -148,7 +148,7 @@ export default function Collection() {
   const [offSetVal, setOffSetVal] = useState(0)
   const [loadMore, setLoadMore] = useState(false)
   const [newOffset,setNewOffset] = useState('')
-  const [offPrice,setOffPrice] = useState()
+  const [offPrice,setOffPrice] = useState('')
 
   const { collection, collections, appliedFilters, handleLinkData, myCollection, collectionHandle } = useLoaderData();
   let myColletionData = myCollection.collection.products
@@ -240,6 +240,7 @@ console.log(error);
               key={product.id}
               product={product}
               offPrice={offPrice}
+              productPrice={product.variants[0].price}
               
             // loading={getImageLoadingPriority(i)}
             />

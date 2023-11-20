@@ -76,7 +76,7 @@ export function ProductCard({
             </Text>
             <Text className="flex w-full justify-center gap-4">
               {offPrice>0?
-              <span className='text-[red]'><span className='line-through text-[black]'> ${price.amount}</span> $ {(price.amount - (price.amount * offPrice)/100)}</span>
+              <span className='text-[red]'><span className='line-through text-[black]'> ${price.amount}</span> $ {(price.amount - (price.amount * offPrice)/100).toFixed(2)}</span>
               :
               <span className='text-[red]'>$ {price.amount}</span>
               }

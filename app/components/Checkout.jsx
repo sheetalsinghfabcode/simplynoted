@@ -76,8 +76,9 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
             const json = await res.json()
             console.log(json, 'createCustomerId Response');
             // await addNewCreditCard(id, json.stripeCustomerId)
+            setNewCardAdded(true)
+            setShowCardBox(false)
             setloader(false)
-
             // }
         } catch (error) {
             setloader(false)

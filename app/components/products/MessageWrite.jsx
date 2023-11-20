@@ -226,13 +226,14 @@ export function MessageWriting({
       else{
         alert("you haven't added Address")
       }
+      localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
+      setProductShow(false);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Make the scroll behavior smooth
+      });
     }
-    localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
-    setProductShow(false);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth', // Make the scroll behavior smooth
-    });
+   
   }
 function onClickOfContinue(){
     setModalForAddressBook(false);
@@ -833,8 +834,12 @@ function onClickOfContinue(){
                 <AfterUpload />
               </div>
               :
+              <>
+           
               <div className="custom_testing">
-                  <div>
+                {loader ? <CircularLoader  color="#ef6e6e"/>:
+                <>
+                <div>
                     <h3 className="font-bold">Bulk Address Upload</h3>
                   </div>
                   {bulkUploadDiv && !showNextBtn ? (
@@ -863,8 +868,12 @@ function onClickOfContinue(){
                       Bulk Order Template
                     </a>{' '}
                   </p>
-                  <AfterUpload />
+                  <AfterUpload /></>}
+                  
+
                 </div>
+                
+                </>
 
                 }
                 <span className="flex items-center font-bold">OR</span>

@@ -8,7 +8,7 @@ import {getProductPlaceholder} from '~/lib/placeholders';
 
 
 
-export function CustomComponent({ product,offPrice }) {
+export function CustomComponent({ product,offPrice,productPrice }) {
   const [loader, setLoader] = useState(false);
   
   // const cardProduct = product?.variants ? product : getProductPlaceholder();
@@ -44,11 +44,11 @@ export function CustomComponent({ product,offPrice }) {
                   {product.title}
                 </Text>
                  <Text className="flex w-full justify-center gap-4">
-                 {/* {offPrice>0?
-              <span className='text-[red]'><span className='line-through text-[black]'> ${price.amount}</span> $ {(price.amount - (price.amount * offPrice)/100)}</span>
+                 {offPrice>0?
+              <span className='text-[red]'><span className='line-through text-[black]'> ${productPrice}</span> $ {(productPrice - (productPrice * offPrice)/100).toFixed(2)}</span>
               :
-              <span className='text-[red]'>$ {price.amount}</span>
-              } */}
+              <span className='text-[red]'>$ {productPrice}</span>
+              }
                 {/* <Money withoutTrailingZeros data={price} />
                 {isDiscounted(price, compareAtPrice) && (
                   <CompareAtPrice
@@ -62,14 +62,14 @@ export function CustomComponent({ product,offPrice }) {
             </div>
           </Link>
           <div>
-            <Link to={`/products/${product.handle}`}>
+            <Link to={`/custom/${product.handle}`}>
               <DynamicButton
                 className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
                 text="SINGLE CARD"
                 onClickFunction={() => ''}
               />
             </Link>
-            <Link to={`/products/${product.handle}?select=Bulk`}>
+            <Link to={`/custom/${product.handle}?select=Bulk`}>
               <DynamicButton
                 className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
                 text="BULK PURCHASE"
