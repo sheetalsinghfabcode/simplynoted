@@ -147,6 +147,7 @@ let parameterValue;
 export default function Product() {
 
   const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
+  console.log(product,"----++++_++_-");
   const navigate = useNavigate()
   const goBack = () => navigate(-1)
   const datafornav = useLocation();
@@ -156,6 +157,8 @@ export default function Product() {
   let editFontFamily = datafornav.state?.data.fontFamily
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
   let editFontSize = datafornav.state?.data.fontSizeMsg
+  let editCustomFontFamily = datafornav.state?.data.customFontName
+
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
   const [show, setShow] = useState(showBulkOnEdit || parameterValue == "Bulk" ? true : false);
@@ -166,6 +169,8 @@ export default function Product() {
   const [errorVal, setErrorVal] = useState([]);
   const [fontFamilyName,setFontFamily] = useState('')
   const [metafields,setMetafields] = useState([])
+  const [customFontName,setCustomFontName] = useState('')
+
 
   if (typeof window !== 'undefined') {
 
@@ -242,7 +247,9 @@ export default function Product() {
               />
               <ProductInfo title={title} product={product} 
               show={show} setShow={setShow} setShowBox={setShowBox}
-               editFontFamily={editFontFamily} setFontFamily={setFontFamily}/>
+               editFontFamily={editFontFamily} setFontFamily={setFontFamily}
+               setCustomFontName={setCustomFontName}
+               editCustomFontFamily={editCustomFontFamily}/>
             </div>
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
               setShowBox={setShowBox} setProductShow={setProductShow}
@@ -277,7 +284,8 @@ export default function Product() {
           data={data} productData={product.variants.nodes[0]}
           editOrderValue={editOrderValue}
           shippingData={shippingData?.product} 
-          fontFamilyName={fontFamilyName}/>
+          fontFamilyName={fontFamilyName}
+          customFontName={customFontName}/>
       }
     </>
   );

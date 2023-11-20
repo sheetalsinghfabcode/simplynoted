@@ -16,8 +16,7 @@ import DynamicTitle from '../components/Title';
 import Del from '../../assets/Image/del2.png'
 import CircularLoader from '~/components/CircularLoder';
 import EditICon from '../../assets/Image/editIcon.png'
-// import { useAddressBook } from '~/components/AddressBookContext';
-
+import { useAddressBook } from '~/components/AddressBookContext';
 let storedDataString, storedDataArray
 
 export async function loader({ context, request }) {
@@ -41,7 +40,7 @@ export async function loader({ context, request }) {
 }
 
 export default function AddCartFunc() {
-    // const { setCartCountVal, cartCountVal } = useAddressBook();
+    const { setCartCountVal, cartCountVal } = useAddressBook();
 
     const { data, postalData, StripeKey } = useLoaderData()
     // console.log(formData,'-----------');
@@ -77,9 +76,9 @@ export default function AddCartFunc() {
     useEffect(() => {
         storedDataString = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
         setCartData(storedDataString)
-        // localStorage.setItem('cartCount', JSON.stringify(storedDataString.length))
-        // let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : 0
-        // setCartCountVal(totalCartCount)
+        localStorage.setItem('cartCount', JSON.stringify(storedDataString.length))
+        let totalCartCount = (localStorage.getItem('cartCount')) ? JSON.parse(localStorage.getItem('cartCount')) : 0
+        setCartCountVal(totalCartCount)
 
         if (postalData) {
             setPostalValue()
@@ -401,9 +400,9 @@ export default function AddCartFunc() {
 
                                             {item.usCount || item.nonUSCount ?
                                                 <>
-                                                    {item.nonUSCount &&
+                                                    {item.nonUSCount && item.nonUSCount?
                                                         <div className='flex'>
-                                                            <div className='w-[36rem]'>
+                                                            <div className='w-[36rem] ml-2'>
                                                                 <div className='flex m-5'>
                                                                     <div className='max-w-[20%] m-5'>
                                                                         <img src={postImage} alt="" />
@@ -429,9 +428,9 @@ export default function AddCartFunc() {
                                                             <div class="w-[19rem] m-4 flex justify-center items-center">
                                                             </div>
                                                         </div>
-                                                    }
+                                                    :''}
                                                     {item.usCount && <div className='flex'>
-                                                        <div className='w-[36rem]'>
+                                                        <div className='w-[36rem] ml-2'>
                                                             <div className='flex m-5'>
                                                                 <div className='max-w-[20%] m-5'>
                                                                     <img src={postImage} alt="" />
@@ -605,7 +604,7 @@ export default function AddCartFunc() {
                                                     </div>
                                                     <div className=''>
                                                         <div className='mt-2'>
-                                                            <text className='text-2xl text-[#1b5299] font-karla mt-2 tracking-[1.5px]'>${totalPrize}</text>
+                                                            <text className='text-2xl text-[#1b5299] font-karla mt-2 tracking-[1.5px]'>${totalPrize.toFixed(2)}</text>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -730,7 +729,7 @@ export default function AddCartFunc() {
                                                 Recipient:  {item["First Name"]},{item["Last Name"]},{item["Address"]},{item["City"]},{item["State/Province"]}
                                             </text>
                                             <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
-                                            <div className='w-[400px] items-center bg-[#fff] h-[100px] mt-5 ml-[70px] p-[10px]'>
+                                            <div className='w-[400px] items-center bg-[#fff] h-full mt-5 ml-[70px] p-[10px] '>
                                                 <text className=' w-[600px]' style={{ fontFamily: msgFont }}> {item.msgData}</text><br />
                                                 <text className=' text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
                                             </div>
@@ -754,7 +753,7 @@ export default function AddCartFunc() {
                                     <BsXCircle className='cursor-pointer' onClick={() => closeModal()} />
                                 </div>
                                 <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
-                                <div className='w-[400px] items-center bg-[#fff] h-[70px] mt-5 ml-[70px] p-[10px]'>
+                                <div className='w-[400px] items-center bg-[#fff] h-full mt-5 ml-[70px] p-[10px]'>
                                     <text className='text-2xl w-[600px]' style={{ fontFamily: msgFont }}> {msgShow}</text><br />
                                     <text className='text-2xl text-center w-[600px] ml-10' style={{ fontFamily: msgFont }}>{msglastText}</text>
                                 </div>

@@ -12,7 +12,7 @@ import CircularLoader from '../CircularLoder';
 
 
 let customerid, cartDataReq
-export function AddCart({ show, setProductShow, data, productData, editOrderValue, shippingData, fontFamilyName }) {
+export function AddCart({ show, setProductShow, data, productData, editOrderValue, shippingData, fontFamilyName,customFontName }) {
     const {
         addresses,
         setAddresses,
@@ -214,7 +214,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         shippingMethodImage: selectShipMode ? shippingData.featuredImage.url : '',
         locationForShipMethod: formData ? formData : '',
         shippingDataCost: selectShipMode ? selectShipMode.node.price.amount : '',
-        fontSizeMsg:cartDataReq?.fontSize
+        fontSizeMsg:cartDataReq?.fontSize,
+        customFontName:customFontName?customFontName: "Select Custom Font"
+        
     }
 
     let keyUpdate1 = 'messageData'
@@ -230,6 +232,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     let keyUpdate11 = 'fontFamily'
     let keyUpdate12 = 'giftCardPriceTitle'
     let keyUpdate13 = 'fontSizeMsg'
+    let keyUpdate14 = 'customFontName'
     function onClickAddCart() {
         setLoader(true);
         if (editOrderValue?.index >= 0) {
@@ -249,7 +252,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                 storedData[editOrderValue.index][keyUpdate11] = fontFamilyName ? fontFamilyName : 'tarzan';
                 storedData[editOrderValue.index][keyUpdate12] = cardPriceTitle && stateCheckCart ? cardPriceTitle : null
                 storedData[editOrderValue.index][keyUpdate13] = cartDataReq ? cartDataReq?.fontSize: editOrderValue?.data.fontSizeMsg;
-
+                storedData[editOrderValue.index][keyUpdate14] = customFontName ? customFontName : 'Select custom Font';
 
             }
             localStorage.setItem('mydata', JSON.stringify(storedData));
@@ -335,9 +338,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                         </div>
                     )}
                     {!addressForm &&
-                        <div className={`w-full h-full gap-2 mt-8 ${loader && 'opacity-40'}`}>
+                        <div className={`w-full h-full gap-2 m-[2rem] ${loader && 'opacity-40'}`}>
                             <div className='row flex mr-2 ml-2 gap-4'>
-                                <div className='col-6 w-[50%] '>
+                                <div className='col-6 w-[47%] '>
                                     <div className=' bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
                                         <div className='address-data'>
                                             <h3 className='text-2xl mt-4 mb-4 font-karla'>Your Info (return/sender address)</h3>
@@ -364,7 +367,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-6 w-[50%]'>
+                                <div className='col-6 w-[47%]'>
                                     <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
                                         <div className='address-data'>
                                             <h3 className='text-2xl font-karla mt-4 mb-4'>Recipient address</h3>
@@ -409,7 +412,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                             </div>
                             <div className='row flex mr-2 ml-2 gap-4 mt-10'>
                                 {show &&
-                                    <div className='col-6 w-[50%] mt-10'>
+                                    <div className='col-6 w-[47%] mt-10'>
                                         <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto '>
                                             <h3 className='text-2xl font-karla mt-4 mb-4'>{shippingData?.title}</h3>
 
@@ -433,7 +436,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                         </div>
                                     </div>}
 
-                                <div className='col-6 w-[50%]'>
+                                <div className='col-6 w-[47%]'>
                                     <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto mt-10'>
                                         <div className='address-data'>
                                             <h3 className='text-2xl font-karla mt-6 mb-6'>Add a Gift Card</h3>
