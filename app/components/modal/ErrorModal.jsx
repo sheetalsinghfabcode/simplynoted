@@ -10,6 +10,8 @@ const customStyles = {
     width: '100%',
     transform: 'translate(-50%, -50%)',
     maxWidth: '40%', // Add your desired width here
+    // height:'100%',
+    maxHeight:'70vh'
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -25,11 +27,11 @@ const ErrorModal = ({isOpen, onRequestClose, title, content}) => {
       style={customStyles}
       // shouldCloseOnOverlayClick={false}
     >
-      <div className="relative">
+      <div className="relative h-full w-full flex items-center justify-center">
+        <div>
         <h2 className="text-center uppercase text-[20px] text-red-900">
           {title}
         </h2>
-
         <ul>
           {content.map((errorMessage, index) => (
             <li className="text-center text-black text-[16px]" key={index}>
@@ -37,6 +39,9 @@ const ErrorModal = ({isOpen, onRequestClose, title, content}) => {
             </li>
           ))}
         </ul>
+        </div>
+
+        
       </div>
     </Modal>
   );
