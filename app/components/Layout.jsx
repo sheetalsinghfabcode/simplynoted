@@ -296,7 +296,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
           <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-bold tracking-tight">
             {(menu?.items || []).map((item) => {
               if (
-                ['Send a Card', 'Integrations', 'Pricing', 'Learn'].includes(
+                ['Send a Card', 'Integrations', 'Pricing', 'Learn','Business'].includes(
                   item.title,
                 )
               ) {
@@ -313,7 +313,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                         <div>Send A Card</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
-                            <Link to="/collections/best-sellers">
+                            <Link to="/collecti1ons/best-sellers">
                               {' '}
                               <li> Cards</li>
                             </Link>
@@ -404,6 +404,10 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                         </div>
                       </div>
                     ) : null}
+
+                    {item.title === 'Business' ? (
+                      <Link to="/business">Bussiness</Link>
+                    ):null}
 
                     {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
                   </div>
