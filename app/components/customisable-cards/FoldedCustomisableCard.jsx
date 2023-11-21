@@ -20,6 +20,7 @@ export default function FoldedCustomisableCard({
   const [customCardTitle, setCustomCardTitle] = useState('');
   const [s3ImageUrls, setS3ImageUrls] = useState({});
   const [frontImageDetails, setFrontImageDetails] = useState({
+    isImageSelected: false,
     imageFile: null,
     screenshotImageFile: null,
     zoom: 1,
@@ -27,6 +28,7 @@ export default function FoldedCustomisableCard({
     isLongImage: false,
   });
   const [backImageDetails, setBackImageDetails] = useState({
+    isImageSelected: false,
     imageFile: null,
     screenshotImageFile: null,
     zoom: 1,
@@ -55,7 +57,10 @@ export default function FoldedCustomisableCard({
     const generateScreenshot = async () => {
       try {
         // Image file present, generating screenshot.
-        if (selectedCardPage === 'Card Front') {
+        if (
+          selectedCardPage === 'Card Front' &&
+          frontImageDetails.isImageSelected
+        ) {
           trimmedDiv = document.getElementById('frontTrimmedDiv');
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
@@ -68,7 +73,10 @@ export default function FoldedCustomisableCard({
           });
         }
 
-        if (selectedCardPage === 'Card Back') {
+        if (
+          selectedCardPage === 'Card Back' &&
+          backImageDetails.isImageSelected
+        ) {
           trimmedDiv = document.getElementById('backTrimmedDiv');
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
@@ -153,6 +161,7 @@ export default function FoldedCustomisableCard({
             return {
               ...prevFrontImageDetails,
               imageFile: URL.createObjectURL(chosenFile),
+              isImageSelected: true,
               isLongImage,
             };
           });
@@ -163,6 +172,7 @@ export default function FoldedCustomisableCard({
             return {
               ...prevBackImageDetails,
               imageFile: URL.createObjectURL(chosenFile),
+              isImageSelected: true,
               isLongImage,
             };
           });
@@ -222,6 +232,7 @@ export default function FoldedCustomisableCard({
 
   const handleSelectedImageReset = () => {
     const initialImageDetails = {
+      isImageSelected: false,
       imageFile: null,
       screenshotUrl: null,
       zoom: 1,
