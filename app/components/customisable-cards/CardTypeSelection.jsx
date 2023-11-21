@@ -30,7 +30,7 @@ export default function CardTypeSelection({
             Start by selecting the size and style of card you want to create.
           </span>
           <div className="flex flex-col justify-center  items-center">
-            <div className="flex justify-center bg-white h-[88px] mt-8 mb-4 w-4/5">
+            <div className="flex justify-center h-[88px] mt-8 mb-4 gap-5 w-full">
               <div
                 className="pl-3 pr-3 flex justify-center items-center flex-1"
                 style={{

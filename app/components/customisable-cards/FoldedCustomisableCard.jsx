@@ -463,7 +463,7 @@ export default function FoldedCustomisableCard({
         customFields: {
           cardType: 'folded5x7',
           isHeaderIncluded: false,
-          isFooterIncluded: false,
+          isFooterIncluded: qr.isQrAdded ? true : false,
           messageAreaPosition: 'TOP',
           header: {
             data: '',
