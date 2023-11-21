@@ -42,10 +42,12 @@ const StripeCard = ({
     if (!error) {
       try {
         const {id} = paymentMethod;
-        if (id && !addCreditModal && savedCard) {
-          handlePurchaseCard(id);
-        } else if (id && !savedCard && !addCreditModal) {
+         if (id && !savedCard && !addCreditModal) {
           createCustomerId(id);
+        }
+        else {
+          handlePurchaseCard(id);
+
         }
 
         console.log(id, 'stripeID');
