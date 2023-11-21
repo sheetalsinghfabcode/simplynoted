@@ -235,7 +235,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
 
-  const {cartCountVal,setCartCountVal} = useAddressBook()??0;
+  const {cartCountVal,setCartCountVal} = useAddressBook();
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
@@ -313,7 +313,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                         <div>Send A Card</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
-                            <Link to="/collecti1ons/best-sellers">
+                            <Link to="/collections/best-sellers">
                               {' '}
                               <li> Cards</li>
                             </Link>

@@ -314,7 +314,7 @@ function onClickOfContinue(){
   }
 
   function ShowFooterComp() {
-    console.log(qrValue);
+    console.log(qrValue,"qrValu");
 
     if (typeof metafields.footer.data == 'string') {
       if (
@@ -344,8 +344,9 @@ function onClickOfContinue(){
               width:'100%',
               maxWidth:qrValue?"93%":'100%'
             }}> {metafields.footer.data}</span>
-            {qrValue &&
+            {qrValue && qrValue.length ?
             <img src={qrValue} className='h-[50px] w-[50px] absolute  right-[10px] bottom-[10px]'/>
+            :''
           }
           </div>
         );

@@ -139,9 +139,14 @@ export default function CustomProducts() {
       let extractMetafield = JSON.parse(extractedData)
       console.log(extractMetafield,"extractMetafield");
       setMetafields(extractMetafield)
-      let qrData = json.result.metafields[1].value
-      if(qrData){
-      setQrValue(qrData)
+      let key = "is_customised"
+      let key2 = "qrImage"
+      let qrData = json.result.metafields[1]
+      let newData = json.result.metafields
+      let dataAfterChecking = newData.filter((item) => key.includes(item.namespace) && key2.includes(item.key))
+      console.log(dataAfterChecking[0].value,"filter QR Data");
+      if(qrData.namespace == "is_customised"){
+      setQrValue(dataAfterChecking[0].value)
       }
     } catch (error) {
       console.error(error, "shopify");
