@@ -396,8 +396,10 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                             <Link to="/tutorials">
                             <li>Tutorials</li>
                             </Link>
+                            <a href="https://www.youtube.com/@simplynoted">
                             <li>Videos</li>
-                            <Link to="/pages/faq">
+                            </a>
+                            <Link to="/faq">
                               <li>F.A.Q.</li>
                             </Link>
                           </ul>
@@ -406,7 +408,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                     ) : null}
 
                     {item.title === 'Business' ? (
-                      <Link to="/business">Bussiness</Link>
+                      <Link to="/business"><div className='navitems'>Bussiness</div></Link>
                     ):null}
 
                     {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
@@ -715,7 +717,7 @@ function FooterMenu({menu}) {
       ))} */}
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
-      <div className="row block md:flex ">
+      <div className="row block md:flex justify-center gap-[50px] ">
         <div className="gap-x-6 md:my-20 md:mr-24 md:ml-3 ml-24">
           <div className="w-48 pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
@@ -726,7 +728,7 @@ function FooterMenu({menu}) {
             <img className="w-14 m-1" src={twitter} alt=""></img>
           </div>
         </div>
-        <div className="gap-x-6 mx-32 my-10 md:mx-16 md:my-20">
+        <div className="gap-x-6 mx-32 my-10 md:mx-16 md:my-20  text-white">
           <div className="text-xl font-semibold">Quick Links </div>
           {(menu?.items || []).map((item) => (
             <section key={item.id} className={styles.section}>
@@ -772,7 +774,7 @@ function FooterMenu({menu}) {
             </section>
           ))}
         </div>
-        <div className="gap-x-6  md:ml-20 md:mr-10 md:my-20 mx-10">
+        <div className="gap-x-6 text-white md:ml-20 md:mr-10 md:my-20 mx-10">
           <div>
             <div className="text-xl   font-semibold">Address</div>
             <div>
@@ -781,13 +783,13 @@ function FooterMenu({menu}) {
             </div>
           </div>
 
-          <div className="mt-24">
+          <div className="mt-24 text-white">
             <div className="text-xl font-semibold">Email</div>
             <div>support@simplynoted.com</div>
           </div>
         </div>
 
-        <div className="gap-x-6 mr-20 my-20">
+        <div className="gap-x-6 mr-20 my-20 text-white">
           <div className="text-xl font-semibold">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>

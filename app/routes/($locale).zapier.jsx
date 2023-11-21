@@ -1,5 +1,17 @@
 import React from 'react';
 import ZapierIcon from '../../assets/Image/zapier-logo-orange.png';
+import ac_blue from "../../assets/Image/ac-blue-orb.png";
+import shopify from '../../assets/Image/shopify-log.png';
+import hubspot from "../../assets/Image/Hubspot.png";
+import zoho from "../../assets/Image/zoho.png";
+import salesforce from "../../assets/Image/Salesforce.png";
+import amazon from "../../assets/Image/amazon.png";
+import sheet from "../../assets/Image/Google-Sheets.png";
+import click_funnel from "../../assets/Image/clickfunnels-dark-logo.png";
+import esty from "../../assets/Image/Etsy_logo.png";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import {  Autoplay } from 'swiper/modules';
+import 'swiper/css/autoplay';
 
 export default function zapier() {
   return (
@@ -31,12 +43,48 @@ export default function zapier() {
           </div>
         </div>
       </div>
-      <div className="shopify-tag flex justify-center max-w 5/6 mt-[74px]">
-        <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ac-blue-orb.png?v=1611259895" />
-        <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/shopify.png?v=1611259895" />
-        <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/hubspot.png?v=1611259895" />
-        <img src="	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zoho.png?v=1611259895" />
-        <img src="	https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce.png?v=1611259895" />
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 mt-[74px]">
+      <Swiper
+            modules={[Autoplay]}
+            direction={'horizontal'}
+            spaceBetween={1}
+            slidesPerView={6}
+           
+          loop={true}
+          breakpoints={{
+         
+            768: {
+              spaceBetween:10,
+              slidesPerView:4,
+             
+            },
+            1024:{
+              spaceBetween:10,
+              slidesPerView:6,
+            }
+          }}
+     
+      autoplay={{ delay:1000 ,
+        pauseOnMouseEnter: true, 
+         disableOnInteraction: false,
+        }}
+
+    >
+       
+      <SwiperSlide><img className='w-[90%]' src={ac_blue} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[60%]' src={shopify} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide className='!mr-[-60px]'><img className='w-[36%] mt-[-13px]' src={hubspot} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={zoho} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[40%]' src={salesforce} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={amazon} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={sheet} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={click_funnel} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={esty} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={ac_blue} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[60%]' src={shopify} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+      <SwiperSlide><img className='w-[90%]' src={zoho} alt="LogoSimplinotedpic"  /> </SwiperSlide>
+    </Swiper>
+
       </div>
       <div className="shopify-tag-card flex gap-[100px] items-center">
         <img

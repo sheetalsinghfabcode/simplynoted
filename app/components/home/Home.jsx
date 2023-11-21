@@ -20,7 +20,7 @@ export default function Home({contentfulBanner}) {
              <div className='lg:mt-0 mt-[120px]'>
          <h2 className='scale-starting'>Send real handwritten notes, at scale.<span><b>Starting at $3.25</b></span></h2>
          </div>
-         <div className='  lg:inline-flex  lg:mt-[40px]  lg:ml-0 mt-[-136px] ml-[60px] relative'>
+         <div className='lg:inline-flex mx-auto  lg:mt-[40px]  lg:ml-0 mt-[-136px] w-fit relative'>
           <div>
          <DynamicButton
                     text="START WRITTING!"

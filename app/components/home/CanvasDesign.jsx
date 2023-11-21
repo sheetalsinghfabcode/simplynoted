@@ -53,9 +53,9 @@ const CanvasDesign=()=>{
        
       </div> */}
           {/* First */}
-      <div className="container flex mt-6">
-        <div className="w-2/5 m-20 data-background">
-            <div className="text-3xl font-extrabold text-[#001A5F]">Send one or send <span className="font-beauty text-7xl font-bold">thousands</span>
+      <div className="justify-center flex mt-6 gap-[10px]">
+        <div className="w-[31%] xl:ml-20 ml-10 mt-20 data-background">
+            <div className="xl:text-3xl text-2xl font-extrabold text-[#001A5F]">Send one or send <span className="font-beauty text-7xl font-bold">thousands</span>
             </div>
             <div className="texts mt-5">Simply Noteds platform makes sending 1,000s of real penwritten notes as quick and easy as sending just 1. It has never been easier to scale your personal touch and leave lasting impressions!</div>
             <DynamicButton
@@ -69,7 +69,7 @@ const CanvasDesign=()=>{
                     onClickFunction={()=>navigate('/blogs/news')}
             />
         </div>
-        <div className="w-100  mt-10">
+        <div className="xl:w-[60%] w-auto mx-auto mt-10">
             <div className="robot">
             <img className='robot-img' src={robot1} alt="LogoSimplinotedpic"  /> 
             </div>
