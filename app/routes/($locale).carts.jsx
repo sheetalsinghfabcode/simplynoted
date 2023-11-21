@@ -726,7 +726,7 @@ export default function AddCartFunc() {
                                     <div>
                                         <div key={index} style={{ display: index === currentIndex ? 'block' : 'none' }}>
                                             <text className=' text-xl text-center'>
-                                                Recipient:  {item["First Name"]},{item["Last Name"]},{item["Address"]},{item["City"]},{item["State/Province"]}
+                                                Recipient:  {item["First Name"] ||item.firstName},{item["Last Name"] || item.lastName},{item["Address"] || item.address1},{item["City"] || item.city},{item["State/Province"] || item.state}
                                             </text>
                                             <h2 className='font-bold text-2xl w-[600px] text-center mt-3'>Your Custom Message</h2>
                                             <div className='w-[400px] items-center bg-[#fff] h-full mt-5 ml-[70px] p-[10px] '>

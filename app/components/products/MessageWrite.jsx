@@ -1000,7 +1000,7 @@ function onClickOfContinue(){
       />
       <Instruction
         isOpen={modalForAddressBook}
-        title="Text Can not be Empty"
+        title=""
         closeModal={closeSelectAddressModal}
         table={false}
         body={ addressForm?

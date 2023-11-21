@@ -545,14 +545,14 @@ nav a {
   font-family: 'Beauty';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: normal; */
   src: url('./fonts/Beauty_City.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Hercules';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: normal; */
   src: url('./fonts/Hercules.ttf') format('truetype');
 }
 /* For mobile devices or narrow screens */
@@ -597,7 +597,7 @@ nav a {
   font-family: 'Tarzan';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
   src: url('./fonts/Tarzan.ttf') format('truetype');
 }
 @font-face {
@@ -633,56 +633,56 @@ nav a {
   font-family: 'Nemo';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Nemo.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Lumiere';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Lumiere.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Kaa';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Kaa.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Karla';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Karla_700.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Kaa-new';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Kaa-new.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Dumbo';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Dumbo.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Donald';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Donald.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Aladdin';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Aladdin.ttf') format('truetype');
 }
 
@@ -690,140 +690,140 @@ nav a {
   font-family: 'Belle';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Belle.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Boo';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Boo.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Cinderella';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Cinderella.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Copper';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Copper.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Jasmine';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Jasmine.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Merlin';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Merlin.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Goofy';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Goofy.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Hercules';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Hercules.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Rafiki';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Rafiki.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Rapunzel';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Rapunzel.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Ratigan';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Ratigan.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Sarabi';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Sarabi.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Scar';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Scar.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Triton';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Triton.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Woody';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Woody.ttf') format('truetype');
 }
 @font-face {
   font-family: 'hello keta';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/helloketta-d99ox.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Alex';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/AlexBrush-Regular.ttf') format('truetype');
 }
 @font-face {
   font-family: 'wedding';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/WeddingdayPersonalUseRegular-1Gvo0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'sea garden';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/SeaGardens-Italic.otf') format('truetype');
 }
 @font-face {
   font-family: 'great vibes';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/GreatVibes-Regular.ttf') format('truetype');
 }
 @font-face {
@@ -837,21 +837,21 @@ nav a {
   font-family: 'Via';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Viafont.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Winter Song';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Wintersing.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Premium Ultra';
   /* font-display: swap; */
   font-weight: 700;
-  font-style: italic;
+  /* font-style: italic; */
   src: url('./fonts/Ultra.ttf') format('truetype');
 }
 
