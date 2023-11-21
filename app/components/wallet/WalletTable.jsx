@@ -86,7 +86,10 @@ const data = [
 
 const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const getSubscriptionType = (stripeCollection) => {
-    if (stripeCollection && stripeCollection.stripe?.subscriptionStatus !=="canceled") {
+    if (
+      stripeCollection &&
+      stripeCollection.stripe?.subscriptionStatus !== 'canceled'
+    ) {
       const subscription = stripeCollection.stripe?.subscription || 'free';
       if (subscription === 'team') {
         return 'team';
@@ -97,7 +100,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     return 'free';
   };
 
-
   const navigate = useNavigate();
 
   const subscriptionType = getSubscriptionType(stripeCollection);
@@ -105,8 +107,9 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
 
+  console.log('subscriptionType', subscriptionType);
+
   const pricingPlans = [
-    
     {
       name: 'Enterprise',
       price: 'Contact Us',
@@ -115,7 +118,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       onClick: () =>
         window.open('https://meetings.hubspot.com/rick24', '_blank'),
     },
-    
+
     {
       name: 'Business',
       price: pricePerCard[2],
@@ -139,55 +142,67 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     },
   ];
 
+
   return (
     <div className="w-full max-w-[1440px] p-[20px] mx-auto">
-  <table className="mx-auto table bg-white">
-    <thead>
-      <tr className="h-[120px]">
-        <th className="text-center py-4 px-10"></th>
-        {pricingPlans.slice(0).reverse().map((plan, index) => (
-          <th key={index} className="text-center py-4 px-10">
-            <span className="text-lg text-[#000] uppercase block">{plan.name}</span>
-            <span className="text-sm text-[#000] leading-[150%] block">As low as</span>
-            <span className="text-2xl font-bold text-[#000] block">{plan.price}</span>
-            <span className="text-sm text-[#000] leading-[150%] block">per card</span>
-              <DynamicButton
-                onClickFunction={plan.onClick}
-                className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
-                text={plan.buttonText}
-              />
-          </th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {data.map((item, index) => (
-        <tr className="text-[#001a5f] text-sm border-t border-[#ddd] last:border-b" key={index}>
-          <td className="py-4 pl-6">{item.feature}</td>
-          {Array.from({ length: pricingPlans.length }).map((_, i) => (
-            <td key={i} className="text-center">
-              {index < ((i + 1) * 5) ? (
-                <img
-                  src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                  className="w-[18px] h-[16px] mx-auto"
-                  alt="tick"
-                />
-              ) : (
-                <img
-                  src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
-                  className="w-[18px] h-[16px] mx-auto"
-                  alt="remove"
-                />
-              )}
-            </td>
+      <table className="mx-auto table bg-white">
+        <thead>
+          <tr className="h-[120px]">
+            <th className="text-center py-4 px-10"></th>
+            {pricingPlans.slice(0).reverse().map((plan, index) => (
+                <th key={index} className="text-center py-4 px-10">
+                  <span className="text-lg text-[#000] uppercase block">
+                    {plan.name}
+                  </span>
+                  <span className="text-sm text-[#000] leading-[150%] block">
+                    As low as
+                  </span>
+                  <span className="text-2xl font-bold text-[#000] block">
+                    {plan.price}
+                  </span>
+                  <span className="text-sm text-[#000] leading-[150%] block">
+                    per card
+                  </span>
+
+                  <DynamicButton
+                    onClickFunction={plan.onClick}
+                    className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
+                    text={plan.buttonText}
+                  />
+                </th>
+              ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr
+              className="text-[#001a5f] text-sm border-t border-[#ddd] last:border-b"
+              key={index}
+            >
+              <td className="py-4 pl-6">{item.feature}</td>
+              {Array.from({length: pricingPlans.length}).map((_, i) => (
+                <td key={i} className="text-center">
+                  {index < (i + 1) * 5 ? (
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
+                      className="w-[18px] h-[16px] mx-auto"
+                      alt="tick"
+                    />
+                  ) : (
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
+                      className="w-[18px] h-[16px] mx-auto"
+                      alt="remove"
+                    />
+                  )}
+                </td>
+              ))}
+            </tr>
           ))}
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-
-
+        </tbody>
+      </table>
+    
+    </div>
   );
 };
 

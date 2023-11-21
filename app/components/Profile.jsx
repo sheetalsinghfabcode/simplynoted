@@ -100,7 +100,6 @@ const Profile = ({
         // Request was successful
         const jsonResponse = await response.json();
 
-        console.log('User profile updated:', jsonResponse);
         if (jsonResponse.updated) {
           // Perform further actions with the response if needed
           setProfile(false);
@@ -166,7 +165,6 @@ const Profile = ({
       if (response.ok) {
         // setLoader(false);
         // Request was successful
-        console.log('User password updated:', jsonResponse);
       } else {
         // Handle errors if the response is not OK
         console.error('Error updating user profile:', response);

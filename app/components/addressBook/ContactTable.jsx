@@ -34,37 +34,14 @@ const ContactTable = ({
   const [isChecked, setIsChecked] = useState(false);
 
   let data = filteredAddresses;
-  console.log('selectedCheckboxes', selectedCheckboxes);
-
-  console.log('filteredAddresses', filteredAddresses);
-  console.log('data', data);
 
   const handleTypeChange = (e) => {
     setSelectedCheckboxes([]);
     setSelectedType(e.target.value);
   };
 
-  // const handleCheckboxChange = (e, row) => {
-  //   setSelectedCheckboxes((prevSelectedCheckboxes) => {
-  //     if (prevSelectedCheckboxes.includes(checkboxValue)) {
-  //       return prevSelectedCheckboxes.filter(
-  //         (value) => value !== checkboxValue,
-  //       );
-  //     } else {
-  //       return [...prevSelectedCheckboxes, checkboxValue];
-  //     }
-  //   });
-
-  //   const checkboxValue = e.target.value;
-  //   const res = selectedCheckboxes.some(
-  //     (selectedId) => row.original._id == selectedId,
-  //   );
-  // };
-
   const handleCheckboxChange = (e, row) => {
     const checkboxValue = e.target.value;
-    console.log('checkboxValue', checkboxValue);
-    console.log('row', row);
 
     setSelectedCheckboxes((prevSelectedCheckboxes) => {
       if (prevSelectedCheckboxes.includes(checkboxValue)) {
@@ -77,7 +54,6 @@ const ContactTable = ({
     });
   };
 
-  console.log('selectedCheckboxes', selectedCheckboxes);
 
   const handleDeleteSelected = () => {
     setLoader(true);
@@ -237,7 +213,6 @@ const ContactTable = ({
     }
   };
 
-  console.log('page', page);
 
   function csvToJson(csv) {
     var lines = csv.split('\n');
@@ -294,7 +269,7 @@ const ContactTable = ({
       setFilteredAddresses(addresses);
     }
   };
-  console.log(searchText, 'PPPPPPPPPP');
+  
   const uploadDataToAPI = async (data) => {
     setupdateLoader(true);
     const modifiedData = {};

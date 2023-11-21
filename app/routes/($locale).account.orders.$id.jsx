@@ -9,6 +9,7 @@ import {Link, Heading, PageHeader, Text} from '~/components';
 import DynamicTitle from '~/components/Title';
 import DynamicButton from '~/components/DynamicButton';
 import {useNavigate} from '@remix-run/react';
+import {useAddressBook} from '~/components/AddressBookContext';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -66,18 +67,15 @@ export async function loader({request, context, params}) {
 export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
   const navigate = useNavigate();
+  const {setOrderHistory} = useAddressBook();
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
-      <div className="flex  justify-start">
-        <DynamicTitle title={'Order Detail'} />
-      </div>
-
-      <DynamicButton
-        text="Return to Account"
-        onClickFunction={() => navigate('/account')}
-        backArrow
-        className={`border-2 flex justity-center items-center border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299] bg-[#1b5299] !text-white  `}
+      <DynamicTitle
+      text="Back to Order"
+        dynamicButton
+        setOrderHistory={setOrderHistory(true)}
+        title={'Order Detail'}
       />
 
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
@@ -91,7 +89,7 @@ export default function OrderRoute() {
           <div className="grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200">
             <table className="min-w-full my-8 divide-y divide-gray-300 md:col-span-3">
               <thead>
-                <tr className="align-baseline ">
+                <tr className="align-baseline font-karla text-[22px]">
                   <th
                     scope="col"
                     className="pb-4 pl-0 pr-3 font-semibold text-left"
@@ -266,15 +264,13 @@ export default function OrderRoute() {
                 </tr>
               </tfoot>
             </table>
-            <div className="sticky border-none top-nav md:my-8">
-              <Heading size="copy" className="font-semibold" as="h3">
+            <div className="sticky border-none text-[18px] font-karla top-nav md:my-8">
+              <Heading size="copy" className="font-semibold " as="h3">
                 Shipping Address
               </Heading>
-              {/* Display shipping address */}
               <Heading size="copy" className="mt-8 font-semibold" as="h3">
                 Status
               </Heading>
-              {/* Display order status */}
             </div>
           </div>
         </div>

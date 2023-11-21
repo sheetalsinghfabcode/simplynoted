@@ -79,7 +79,7 @@ export default function SimplyNoted() {
   return (
     <div className='w-full relative max-w-[1440px] mx-auto px-[16px]'>
        {loader && (
-          <div className="absolute top-[50%] left-[50%]">
+          <div className="absolute top-[20%] z-[50] left-[50%]">
             <CircularLoader
             title="Loading Plans"
             color="#ef6e6e" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import DynamicButton from '../DynamicButton';
 
@@ -23,13 +23,13 @@ const StripeCard = ({
   createCustomerId,
   savedCard,
   setloader,
+  paymentPurchase,
   handlePurchaseCard,
-  addCreditModal
+  addCreditModal,
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
   const elements = useElements();
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,9 +42,12 @@ const StripeCard = ({
     if (!error) {
       try {
         const {id} = paymentMethod;
-        if (id) {
+        if (id && !addCreditModal && savedCard) {
           handlePurchaseCard(id);
+        } else if (id && !savedCard && !addCreditModal) {
+          createCustomerId(id);
         }
+
         console.log(id, 'stripeID');
       } catch (error) {
         console.log(error, 'stripe error');
@@ -53,6 +56,8 @@ const StripeCard = ({
       console.log(error.message);
     }
   };
+
+  console.log('savedCard', savedCard);
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-[500px]">
       <CardElement options={CARD_OPTIONS} className="m-5" />
@@ -61,7 +66,9 @@ const StripeCard = ({
           type="submit"
           className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
         >
-         {addCreditModal ? "Add Card" : "Update Card"}
+          {savedCard && savedCard.length > 0 && (addCreditModal ? 'Add Card' : 'Update Card')}
+
+          {(!savedCard || savedCard.length===0) && 'Complete Purcase'}
         </button>
       </div>
     </form>

@@ -36,6 +36,9 @@ const ManageSubscription = () => {
   const [forUpdateData, setForUpdateData] = useState(false);
   const [defaultCard, setDefaultCard] = useState(false);
 
+
+  console.log("paymentId",paymentId)
+
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
   const navigate = useNavigate();
@@ -58,35 +61,7 @@ const ManageSubscription = () => {
     setFirstNameChar(firstName.charAt(0));
   }, []);
 
-  useEffect(() => {
-    console.log('Component mount');
-    setLoader(true);
-    // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
 
-    // Make a GET request to the API
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log('data', data);
-        setStripeCollection(data);
-        setLoader(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-        setLoader(false);
-      });
-    getSavedCards(customerID);
-
-    return () => {
-      console.log('Component Unmount');
-    };
-  }, [forUpdateData]);
 
   useEffect(() => {
     console.log('Component mount');
@@ -225,6 +200,39 @@ const ManageSubscription = () => {
       });
   };
 
+  const makeDefaultCard = () => {
+    setLoader(true);
+    const url = `https://api.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
+    console.log("paymentId",paymentId)
+
+
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({paymentMethodId: paymentId}),
+
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data, 'updateData');
+        setLoader(false);
+        setDefaultCard(false);
+        // Handle the response data if needed
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+        setLoader(false);
+      });
+  };
+
   function handlePurchaseCard(id) {
     if (addCreditModal) {
       addNewCreditCard(id);
@@ -259,6 +267,38 @@ const ManageSubscription = () => {
       console.log(error, 'addNewCreditCard ------');
     }
   }
+
+
+
+  useEffect(() => {
+    console.log('Component mount');
+    setLoader(true);
+    // Define the API URL
+    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+
+    // Make a GET request to the API
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('data', data);
+        setStripeCollection(data);
+        setLoader(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+        setLoader(false);
+      });
+    getSavedCards(customerID);
+
+    return () => {
+      console.log('Component Unmount');
+    };
+  }, [forUpdateData,defaultCard,addCreditModal,deleteModal,updateModal]);
 
   let formattedDateString;
 
@@ -331,7 +371,7 @@ const ManageSubscription = () => {
       />
       <ConfirmationModal
         show={defaultCard}
-        onConfirm={() => setDefaultCard(false)}
+        onConfirm={makeDefaultCard}
         onCancel={() => setDefaultCard(false)}
         title="Are you sure you want to make this card default?"
         confirmText="YES"
@@ -351,11 +391,13 @@ const ManageSubscription = () => {
       <StripeModal
         loader={loader}
         show={updateModal}
+        updateModal={updateModal}
         onConfirm={updateCreditCard}
         onCancel={() => setUpdateModal(false)}
         title={addCreditModal ? 'Add Credit Card' : 'Update Credit Card'}
         // confirmText="Update"
         StripeKey={StripeKey}
+        
         addCreditModal={addCreditModal}
         handlePurchaseCard={handlePurchaseCard}
       />
@@ -385,9 +427,7 @@ const ManageSubscription = () => {
 
             <div className="w-full md:w-[70%] bg-white  p-[20px] text-center">
               {loader ? (
-                <CircularLoader
-                title="Loading Manage Plans"
-                color="#ef6e6e" />
+                <CircularLoader title="Loading Manage Plans" color="#ef6e6e" />
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
@@ -410,8 +450,8 @@ const ManageSubscription = () => {
                           My Plan
                         </span>
                         <span className="text-[20px] !font-bold text-[#ef6e6e] uppercase">
-                          {(stripeCollection.stripe?.subscriptionStatus !==
-                            'canceled' || !stripeCollection.error)
+                          {stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled' || !stripeCollection.error
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
                         </span>
@@ -484,10 +524,11 @@ const ManageSubscription = () => {
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
-                      {stripeCollection.stripe?.balance !== 0 && !stripeCollection.error ? (
+                      {stripeCollection.stripe?.balance !== 0 &&
+                      !stripeCollection.error ? (
                         <span className="text-[20px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
-                          'canceled' 
+                          'canceled'
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}{' '}
                           - {stripeCollection.stripe?.packageQuantity} cards -
@@ -499,28 +540,28 @@ const ManageSubscription = () => {
                         </span>
                       )}
                     </div>
-                    {!stripeCollection.error &&
-                    <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                      <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
-                        AUTO RENEW
-                      </span>
-                      <DynamicButton
-                        onClickFunction={() => {
-                          if (stripeCollection.stripe?.isAutorenew) {
-                            setAutoModal(true);
-                          } else {
-                            setRestartAutoNew(true);
+                    {!stripeCollection.error && (
+                      <div className="flex justify-between items-center gap-[15px] py-[10px]">
+                        <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
+                          AUTO RENEW
+                        </span>
+                        <DynamicButton
+                          onClickFunction={() => {
+                            if (stripeCollection.stripe?.isAutorenew) {
+                              setAutoModal(true);
+                            } else {
+                              setRestartAutoNew(true);
+                            }
+                          }}
+                          text={
+                            stripeCollection.stripe?.isAutorenew
+                              ? 'Stop Auto Renew'
+                              : 'Restart Auto Renew'
                           }
-                        }}
-                        text={
-                          stripeCollection.stripe?.isAutorenew
-                            ? 'Stop Auto Renew'
-                            : 'Restart Auto Renew'
-                        }
-                        className="!bg-[#ef6e6e] max-w-[190px] !text-[14px] whitespace-nowrap uppercase min-w-[190px]"
-                      />
-                    </div>
-}
+                          className="!bg-[#ef6e6e] max-w-[190px] !text-[14px] whitespace-nowrap uppercase min-w-[190px]"
+                        />
+                      </div>
+                    )}
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         Update
@@ -528,7 +569,8 @@ const ManageSubscription = () => {
                       <DynamicButton
                         onClickFunction={() => navigate('/simply-noted-plans')}
                         text={
-                          stripeCollection.stripe?.balance !== 0 && !stripeCollection.error
+                          stripeCollection.stripe?.balance !== 0 &&
+                          !stripeCollection.error
                             ? 'Change Package'
                             : 'Buy Package'
                         }
@@ -579,9 +621,10 @@ const ManageSubscription = () => {
                                     <DynamicButton
                                       text="Make Default"
                                       className="bg-[#ef6e6e] text-white "
-                                      onClickFunction={() =>
-                                        setDefaultCard(true)
-                                      }
+                                      onClickFunction={() => {
+                                        setPaymentId(item.paymentId);
+                                        setDefaultCard(true);
+                                      }}
                                     />
 
                                     <img
