@@ -6,7 +6,7 @@ import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import CustomCheckbox from '../CustomCheckbox';
-import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.webp';
+import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.png';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -87,6 +87,7 @@ export default function FlatCustomisableCard({
 
   useEffect(() => {
     // Generate default image for the face URL of the custom card.
+    if (frontImageDetails.isImageSelected) return;
     const generateDefaultScreenshotImage = async () => {
       try {
         const response = await fetch(DefaultFrontCardImage);
@@ -107,8 +108,7 @@ export default function FlatCustomisableCard({
     };
 
     generateDefaultScreenshotImage();
-    console.log({frontImageDetails});
-  }, []);
+  }, [frontImageDetails.isImageSelected]);
 
   useEffect(() => {
     console.log({
@@ -576,7 +576,12 @@ export default function FlatCustomisableCard({
       formData.append('headerData', JSON.stringify(headerPayload));
       formData.append('footerData', JSON.stringify(footerPayload));
 
-      formData.append('faceImage', frontImageDetails.screenshotImageFile);
+      formData.append(
+        'faceImage',
+        frontImageDetails.isImageSelected
+          ? frontImageDetails.screenshotImageFile
+          : null,
+      );
       formData.append('backImage', null);
       formData.append('headerImage', headerData.imageFile);
       formData.append('footerImage', footerData.imageFile);

@@ -87,10 +87,13 @@ export default function FoldedCustomisableCard({
         console.error('Error fetching the default image:', error);
       }
     };
-
-    generateDefaultScreenshotImage(DefaultFrontCardImage, 'frontImage');
-    generateDefaultScreenshotImage(DefaultBackCardImage, 'backImage');
-  }, []);
+    if (!frontImageDetails.isImageSelected) {
+      generateDefaultScreenshotImage(DefaultFrontCardImage, 'frontImage');
+    }
+    if (!backImageDetails.isImageSelected) {
+      generateDefaultScreenshotImage(DefaultBackCardImage, 'backImage');
+    }
+  }, [frontImageDetails.isImageSelected, backImageDetails.isImageSelected]);
 
   useEffect(() => {
     console.clear();
@@ -406,8 +409,18 @@ export default function FoldedCustomisableCard({
       formData.append('headerData', JSON.stringify(commonHeaderFooterPayload));
       formData.append('footerData', JSON.stringify(commonHeaderFooterPayload));
 
-      formData.append('faceImage', frontImageDetails.screenshotImageFile);
-      formData.append('backImage', backImageDetails.screenshotImageFile);
+      formData.append(
+        'faceImage',
+        frontImageDetails.isImageSelected
+          ? frontImageDetails.screenshotImageFile
+          : null,
+      );
+      formData.append(
+        'backImage',
+        backImageDetails.isImageSelected
+          ? backImageDetails.screenshotImageFile
+          : null,
+      );
       formData.append('headerImage', null);
       formData.append('footerImage', null);
 
