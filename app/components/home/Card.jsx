@@ -147,7 +147,7 @@ const Card=()=>{
    </div>
         </div>
 
-        <div className="bottom_background mt-3 xl:w-[107%] md:w-[104%] sm:(w-[100%] h-[100%])">
+        <div className="bottom_background mt-3 relative xl:w-[103%] md:w-[104%] sm:(w-[100%] h-[100%])">
             <div className="pt-10 md:flex   justify-center">
                 <h3 className="md:text-4xl text-[26px] font-bold md:m-20 ml-28 mt-5">Ready to start writing?</h3>
            

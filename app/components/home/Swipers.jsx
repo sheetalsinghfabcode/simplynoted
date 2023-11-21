@@ -22,7 +22,7 @@ import 'swiper/css';
 const Swipers = () => {
   return (
     <>
-      <div className="text-3xl font-bold text-[#001A5F] text-center mt-20 mb-16">
+      <div className="md:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 mb-16">
         Companies we've worked with
       </div>
       <div className="ml-5 mr-10">

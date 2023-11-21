@@ -18,24 +18,26 @@ const Faq = () => {
 
         <FaqAccordion
           title="Do you have have business pricing / offer custom orders?"
-          className="tab-content"
-          children=" Yes we do! Orders up-to 5,000 can be placed online with our normal
+          className="tab-content">
+            <span>
+          Yes we do! Orders up-to 5,000 can be placed online with our normal
             pricing. For larger orders or custom orders please reach out to us
             at support@simplynoted.com."
-        ></FaqAccordion>
+            </span>
+        </FaqAccordion>
 
         <FaqAccordion
           title="What type of card / paper can you write on?"
-          className="tab-content"
+          className="tab-content" 
         >
-          
+          <span>
             We are proud to offer the most flexibility in the industry by giving
             our clients the ability to write on a variety paper sizes 3x5, 4x6,
             5x7, 6x9 or 8.5x11 card stock or A1, A2, A6, A7, A8, A9, & A10
             envelope sizes. By default we use 5x7 (10x7 fold over) stationary &
             A7 envelopes. To place a custom order please reach out to us at
             support@simplynoted.com.
-          
+            </span>
         </FaqAccordion>
 
         <FaqAccordion

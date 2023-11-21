@@ -1435,7 +1435,7 @@ body {
 }
 .texts {
   color: #707070;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: normal;
   line-height: 34px;
   margin-bottom: 20px;
@@ -1453,8 +1453,8 @@ body {
 .robot {
   position: absolute;
   z-index: -1;
-  width: 30%;
-  left: 38rem;
+  width:28%;
+  left: 37.5rem;
 }
 
 .robot2 {
@@ -1471,8 +1471,9 @@ body {
 }
 .robot-gif {
   max-width: 500px;
-  width: 60%;
-  margin-left: 21rem;
+  width:55%;
+  display: inline;
+ 
 }
 .robot-gif2 {
   max-width: 500px;
@@ -1588,6 +1589,15 @@ body {
 }
 
 /* Media Query */
+@media only screen and (max-width: 1326px) {
+  .robot-gif{
+    width:auto;
+  }
+.robot{
+  width:24%;
+  left:35rem;
+}
+}
 
 @media only screen and (max-width: 1200px) {
   .dropdown-content {
@@ -1600,6 +1610,7 @@ body {
   .swiper-company {
     margin-right: 80px;
   }
+  
 }
 @media only screen and (max-width: 1024px) {
   .handwritten-notice h3 {
@@ -1671,6 +1682,7 @@ body {
   }
   .handwritten-notice h3 {
     font-size: 20px;
+    margin-right: 0px;
   }
   .data_card {
     margin: 0 25px;
