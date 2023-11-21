@@ -5,6 +5,8 @@ import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import {FaArrowLeft} from 'react-icons/fa';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
+import DefaultFrontCardImage from '../../../assets/Image/foldFront.webp';
+import DefaultBackCardImage from '../../../assets/Image/foldBack.png';
 
 export default function FoldedCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -44,11 +46,51 @@ export default function FoldedCustomisableCard({
     generatedQrImageLink:
       'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
   });
+  const [errorResponse, setErrorResponse] = useState({
+    message: '',
+    status: false,
+  });
 
   const frontImageRef = useRef(null);
   const backImageRef = useRef(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Generate default image for the face URL and back URL of the custom card.
+    const generateDefaultScreenshotImage = async (image, cardImagePosition) => {
+      try {
+        const response = await fetch(image);
+        const blob = await response.blob();
+        const filename = 'default-screenshot.png';
+        const screenshotImageFile = new File([blob], filename, {
+          type: blob.type,
+        });
+
+        if (cardImagePosition === 'frontImage') {
+          setFrontImageDetails((prevFrontImageDetails) => {
+            return {
+              ...prevFrontImageDetails,
+              screenshotImageFile,
+            };
+          });
+        }
+        if (cardImagePosition === 'backImage') {
+          setBackImageDetails((prevBackImageDetails) => {
+            return {
+              ...prevBackImageDetails,
+              screenshotImageFile,
+            };
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching the default image:', error);
+      }
+    };
+
+    generateDefaultScreenshotImage(DefaultFrontCardImage, 'frontImage');
+    generateDefaultScreenshotImage(DefaultBackCardImage, 'backImage');
+  }, []);
 
   useEffect(() => {
     console.clear();
@@ -253,8 +295,13 @@ export default function FoldedCustomisableCard({
   const handleFinishEditingButton = async () => {
     try {
       const isPdfUploaded = await uploadPdfRequest();
-      if (!isPdfUploaded) return alert('Unable to upload the PDF.');
       setCheckTitleDuplicacyModalOpen(true);
+      if (!isPdfUploaded) {
+        return setErrorResponse({
+          message: 'Unable to upload the PDF.',
+          status: true,
+        });
+      }
     } catch (err) {
       throw err;
     }
@@ -262,9 +309,19 @@ export default function FoldedCustomisableCard({
 
   const handleCustomCardSaveButton = async () => {
     const isDuplicateTitle = await checkForDuplicateTitle();
-    if (isDuplicateTitle) return alert('Card name already exists. 😔');
+    if (isDuplicateTitle) {
+      return setErrorResponse({
+        message: 'Card Name Already in Use. Please Choose a Unique Name. 😔',
+        status: true,
+      });
+    }
     const isCustomCardSaved = await saveCustomCard();
-    if (!isCustomCardSaved) return alert('Unable to save the custom card.');
+    if (!isCustomCardSaved) {
+      return setErrorResponse({
+        message: 'Unable to save the custom card.',
+        status: true,
+      });
+    }
     // Convert product title to a handle name as per handle name's convention.
     // Remove whitespace or special characters at the beginning
     let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, '');
@@ -561,15 +618,27 @@ export default function FoldedCustomisableCard({
   ) : (
     <section>
       {checkTitleDuplicacyModalOpen && (
-        <Modal cancelLink={() => setCheckTitleDuplicacyModalOpen(false)}>
+        <Modal
+          cancelLink={() => {
+            setErrorResponse({message: '', status: false});
+            setCheckTitleDuplicacyModalOpen(false);
+          }}
+        >
           <div>
             <div>
               <p className="bg-[#deebf7] h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold">
                 Name your card and save it.
               </p>
             </div>
+            <div className="h-4 mt-2 flex justify-start items-center">
+              {errorResponse.status && (
+                <span className="text-[red] text-xs">
+                  {errorResponse.message}
+                </span>
+              )}
+            </div>
             <input
-              className="w-full mt-5 border-black border-solid border-2 outline-none focus:outline-none"
+              className="w-full mt-3 border-black border-solid border-2 outline-none focus:outline-none"
               type="text"
               onChange={(e) => setCustomCardTitle(e.target.value)}
             ></input>
