@@ -254,11 +254,11 @@ export default function FoldedCustomisableCard({
     if (isDuplicateTitle) return alert('Card name already exists. 😔');
     const isCustomCardSaved = await saveCustomCard();
     if (!isCustomCardSaved) return alert('Unable to save the custom card.');
-    // Convert product title to a handle name as per handle name's convention. 
-    // Remove whitespace or special characters at the beginning 
-    let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, "");
+    // Convert product title to a handle name as per handle name's convention.
+    // Remove whitespace or special characters at the beginning
+    let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, '');
     // Replace all remaining whitespace or special characters with a single hyphen
-    handleName = handleName.replace(/[^a-zA-Z0-9]+/g, "-");
+    handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
     // Making the title to lowercase
     handleName = handleName.toLowerCase();
     navigate(`/custom/${handleName}`);
@@ -436,7 +436,7 @@ export default function FoldedCustomisableCard({
           metafields: [
             {
               key: 'qrImage',
-              value: `${qr.generatedQrImageLink}`,
+              value: qr.isQrAdded ? `${qr.generatedQrImageLink}` : '',
               value_type: 'string',
               namespace: 'is_customised',
             },

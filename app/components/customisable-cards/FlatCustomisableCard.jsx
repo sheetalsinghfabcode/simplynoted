@@ -648,7 +648,7 @@ export default function FlatCustomisableCard({
           metafields: [
             {
               key: 'qrImage',
-              value: `${qr.generatedQrImageLink}`,
+              value: qr.isQrAdded ? `${qr.generatedQrImageLink}` : '',
               value_type: 'string',
               namespace: 'is_customised',
             },
