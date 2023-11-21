@@ -22,7 +22,7 @@ const Accordion = ({
   const [errors, setErrors] = useState({});
   const [savedCard, setSavedCart] = useState([]);
   const [showStripeCard, setShowStripeCard] = useState(false);
-  const [custmerID, setCustomertID] = useState('');
+  const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
 
   let customerid, fullName, userEmail;
@@ -54,7 +54,7 @@ const Accordion = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${custmerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -75,8 +75,12 @@ const Accordion = ({
         },
       );
       const json = await res.json();
+      if(json){
+      await paymentPurchase(id)
+
+      }
       console.log(json, 'createCustomerId Response');
-      await addNewCreditCard(id, json.stripeCustomerId);
+      // await addNewCreditCard(id, json.stripeCustomerId);
       // }
     } catch (error) {
       setloader(false);
@@ -87,7 +91,7 @@ const Accordion = ({
   async function addNewCreditCard(paymentID, stripeCustomerId) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${custmerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -162,20 +166,17 @@ const Accordion = ({
     (country) => country.country === formData.address.country,
   );
 
-  const payLoad = {
-    paymentMethodId: 'pm_1OEUvDKwXDGuBPYA4GvHHRvC',
-    packageDiscount: '70.1',
-    packageQuantity: '10000',
-    packagePrice: '16300',
-    description: 'business - 10,000 cards',
-    packageProduct: '40694774333545',
-    subscriptionProduct: '40690998050921',
-  };
-
-  console.log('savedCard', savedCard);
-
-  const paymentPurchase = () => {
-    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerid}`;
+  const paymentPurchase = (id) => {
+    const payLoad = {
+      paymentMethodId: id,
+      packageDiscount: '70.1',
+      packageQuantity: '10000',
+      packagePrice: '16300',
+      description: 'business - 10,000 cards',
+      packageProduct: '40694774333545',
+      subscriptionProduct: '40690998050921',
+    };
+    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
@@ -377,7 +378,9 @@ const Accordion = ({
                         className="border-y border-solid border-[#000] p-[1rem] mt-1 mb-2 flex justify-between "
                       >
                         <div className="flex justify-start items-center text-[14px] font-bold">
-                          <input type="radio" name="action" className="mr-2" />
+                          <input type="radio"
+                          onChange={()=>setPaymentMethodId(item.paymentId)}
+                          name="action" className="mr-2" />
                           <span className="mr-[17rem] tracking-wide">
                             **********{item.cardLast4Number}
                           </span>
@@ -429,6 +432,7 @@ const Accordion = ({
 
                     <button
                       type="submit"
+                      onClick={()=>paymentPurchase(paymentMethodId)}
                       className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
                     >
                       Complete Purchase

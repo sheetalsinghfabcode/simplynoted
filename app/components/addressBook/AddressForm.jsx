@@ -85,7 +85,6 @@ const AddressForm = ({customerID}) => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log('response', response);
           setLoader(false);
           setAddressForm(false);
           return response.json(); // Parse the response JSON if it's a successful response
@@ -138,7 +137,7 @@ const AddressForm = ({customerID}) => {
         className={`container relative mx-auto p-4`}
       >
         {loader && (
-          <div className="absolute top-[50%] left-[50%]">
+          <div className="absolute z-[50] top-[50%] left-[50%]">
             <CircularLoader
             title="Adding Address"
             color="#ef6e6e" />

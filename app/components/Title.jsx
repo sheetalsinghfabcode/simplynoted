@@ -2,7 +2,7 @@ import React from 'react';
 import DynamicButton from './DynamicButton';
 import {useNavigate} from '@remix-run/react';
 
-const DynamicTitle = ({title, title2, dynamicButton}) => {
+const DynamicTitle = ({title, title2, dynamicButton,text,setOrderHisory}) => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   return (
@@ -12,9 +12,11 @@ const DynamicTitle = ({title, title2, dynamicButton}) => {
           <div>
             <DynamicButton
               className="bg-[#EF6E6E]  w-full max-w-[150px]"
-              text="Go Back"
+              text={text ? text : "Go Back"}
               backArrow={true}
-              onClickFunction={goBack}
+            onClickFunction={()=>{
+              goBack() 
+            }}
             />
           </div>
         )}

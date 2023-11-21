@@ -24,6 +24,7 @@ export function AddressBookProvider({ children }) {
   const [headerFontSize, setHeaderFontSize] = useState(16);
   const [selectedColor, setSelectedColor] = useState('#000');
   const [cartCountVal, setCartCountVal] = useState(0)
+  const [orderHistory,setOrderHistory] = useState(false)
 
   return (
     <AddressBookContext.Provider
@@ -69,7 +70,9 @@ export function AddressBookProvider({ children }) {
         backScale,
         setBackScale,
         cartCountVal,
-        setCartCountVal
+        setCartCountVal,
+        orderHistory,
+        setOrderHistory
       }}
     >
       {children}

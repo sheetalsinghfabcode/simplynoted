@@ -54,7 +54,6 @@ export function AccountDetails({customer}) {
   useEffect(() => {
     apiKey = localStorage.getItem('apiKey');
 
-    console.log('apiKey ', apiKey);
   }, [key,loader]);
 
   return (

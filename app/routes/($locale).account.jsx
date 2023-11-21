@@ -26,6 +26,7 @@ import {usePrefixPathWithLocale} from '~/lib/utils';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 import Profile from '~/components/Profile';
+import { useAddressBook } from '~/components/AddressBookContext';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
@@ -110,16 +111,13 @@ function Account({customer, heading, featuredData}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
 
+
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const [orderHistory, setOrderHistory] = useState(false);
-  const [accountDetail, setAccountDetail] = useState(true);
+  const {orderHistory, setOrderHistory} = useAddressBook()
+  const [accountDetail, setAccountDetail] = useState(!orderHistory ? true: false);
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
-
-
- 
-
   useEffect(() => {
     getSavedCards();
   }, []);
