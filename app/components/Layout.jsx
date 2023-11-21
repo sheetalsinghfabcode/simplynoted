@@ -235,7 +235,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 
 function DesktopHeader({ isHome, menu, openCart, title }) {
 
-  const {cartCountVal,setCartCountVal} = useAddressBook();
+  const {cartCountVal,setCartCountVal} = useAddressBook()??0;
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);

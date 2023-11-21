@@ -32,6 +32,7 @@ export function MessageWriting({
   fontFamilyName,
   metafields,
   editFontSize,
+  qrValue
 }) {
   //   console.log(EditMess, 'EditMess');
  const {setAddressForm,addressForm,loadAddress,addresses,
@@ -66,16 +67,16 @@ export function MessageWriting({
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
   const remainSign = maxSignCount - name2.length;
-  console.log(addresses, 'address');
-  console.log(selectedCheckboxes, 'selectedCheckboxes');
+  // console.log(addresses, 'address');
+  // console.log(selectedCheckboxes, 'selectedCheckboxes');
 
   function gettingCheckBoxAddress() {
     const data = addresses.filter((item) =>
       selectedCheckboxes.includes(item._id),
     );
-    console.log(data, 'gettingCheckBoxAddress');
+    // console.log(data, 'gettingCheckBoxAddress');
     setFileData(data);
-    console.log(fileData, '******fileData******');
+    // console.log(fileData, '******fileData******');
   }
   useEffect(() => {
     gettingCheckBoxAddress();
@@ -138,7 +139,7 @@ export function MessageWriting({
           }
           obj.msgData = subName;
         });
-        console.log(fileData, 'fileData');
+        // console.log(fileData, 'fileData');
         reqField = {
           msg: name,
           signOffText: name2,
@@ -167,14 +168,14 @@ export function MessageWriting({
         top: 0,
         behavior: 'smooth', // Make the scroll behavior smooth
       });
-      console.log(name, 'namefield');
+      // console.log(name, 'namefield');
     }
   }
-  console.log(fileData, '******+++++++******');
+  // console.log(fileData, '******+++++++******');
 
   function onSelectFromAddressBook() {
    
-    console.log(fileData);
+    // console.log(fileData);
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
@@ -211,7 +212,7 @@ export function MessageWriting({
           }
           obj.msgData = subName;
         });
-        console.log(fileData, 'fileData');
+        // console.log(fileData, 'fileData');
         reqField = {
           msg: name,
           signOffText: name2,
@@ -296,10 +297,13 @@ function onClickOfContinue(){
       } else {
         return (
           <div
-            className={`flex h-[50px] w-[100%] bg-red max-w-[600px] justify-${metafields.header.justifyContent} m-2`}
+            className={`flex h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
             style={{
               fontFamily: metafields.header.fontType,
               fontSize: metafields.header.fontSize,
+              textAlign:metafields.header.textAlign,
+              justifyContent:metafields.header.justifyContent,
+              flexDirection:metafields.header.flexDirection
             }}
           >
             {metafields.header.data}
@@ -310,6 +314,8 @@ function onClickOfContinue(){
   }
 
   function ShowFooterComp() {
+    console.log(qrValue);
+
     if (typeof metafields.footer.data == 'string') {
       if (
         metafields.footer.data.startsWith('http://') ||
@@ -326,13 +332,21 @@ function onClickOfContinue(){
       } else {
         return (
           <div
-            className={`flex h-[100px] w-[100%] bg-red max-w-[600px] justify-${metafields.footer.justifyContent} `}
-            style={{
+            className={`flex h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
+            
+          >
+            <span className={`flex `} style={{
               fontFamily: metafields.footer.fontType,
               fontSize: metafields.footer.fontSize,
-            }}
-          >
-            {metafields.footer.data}
+              textAlign:metafields.footer.textAlign,
+              justifyContent:metafields.footer.justifyContent,
+              flexDirection:metafields.footer.flexDirection,
+              width:'100%',
+              maxWidth:qrValue?"93%":'100%'
+            }}> {metafields.footer.data}</span>
+            {qrValue &&
+            <img src={qrValue} className='h-[50px] w-[50px] absolute  right-[10px] bottom-[10px]'/>
+          }
           </div>
         );
       }
@@ -349,7 +363,7 @@ function onClickOfContinue(){
   }
 
   async function processInput() {
-    console.log('processInput');
+    // console.log('processInput');
     mainMessageBox.style.fontSize = '50px'; // Default font size
     resize_to_fit();
   }
@@ -375,7 +389,7 @@ function onClickOfContinue(){
       reader.onload = (e) => {
         const csvData = e.target.result;
         let jsonData = csvToJson(csvData);
-        console.log(jsonData, 'jsonData^^^^^^^^^^^^^^^^^');
+        // console.log(jsonData, 'jsonData^^^^^^^^^^^^^^^^^');
 
         const cleanedArray = jsonData.map((obj) => {
           const cleanedObj = {};
@@ -389,7 +403,7 @@ function onClickOfContinue(){
           return cleanedObj;
         });
 
-        console.log(cleanedArray, 'cleaned Array');
+        // console.log(cleanedArray, 'cleaned Array');
         let ab = cleanedArray.map((item) => {
           const newData = {...item};
           // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
@@ -397,7 +411,7 @@ function onClickOfContinue(){
           return newData;
         });
 
-        console.log(ab, 'fiteredDatat,=========');
+        // console.log(ab, 'fiteredDatat,=========');
         setSelectedFile(file); // Update the selected file state
         setFileData(ab);
       };
@@ -437,7 +451,7 @@ function onClickOfContinue(){
       setTimeout(() => setIsOpen2(false), 3000);
       return;
     } else {
-      console.log(fileData.length, '=====');
+      // console.log(fileData.length, '=====');
       setLenCsvData(fileData.length);
     }
     let reqField = [
@@ -454,7 +468,7 @@ function onClickOfContinue(){
 
     for (let index = 0; index < fileData.length; index++) {
       const obj = fileData[index];
-      console.log(obj['First Name'], 'Name data');
+      // console.log(obj['First Name'], 'Name data');
       const emptyKeys = [];
       const numkeys = [];
       let targetField = 'First Name';
@@ -468,7 +482,7 @@ function onClickOfContinue(){
 
       if (alphabetPattern.test(obj[targetField]) == false) {
         errMsg.push(`'${targetField}' at row ${index} includes a number.`);
-        console.log(`Index: ${index}, '${targetField}' includes a number.`);
+        // console.log(`Index: ${index}, '${targetField}' includes a number.`);
       }
       if (
         obj[countryCheck] === 'USA' ||
@@ -519,7 +533,7 @@ function onClickOfContinue(){
     setErrorVal(errMsg);
     setUsAddress(usCount);
     setnonUsAddress(nonUSCount);
-    console.log(replacedMsg, 'replacedMsg');
+    // console.log(replacedMsg, 'replacedMsg');
     if (found) {
       console.log(`Found  in the array.`);
     } else {
@@ -531,7 +545,7 @@ function onClickOfContinue(){
   async function uploadCsvFileOnClick() {
     try {
       setLoader(true);
-      console.log('uploadCsvFile OnClick');
+      // console.log('uploadCsvFile OnClick');
 
       const res = await fetch(
         'https://api.simplynoted.com/api/orders/bulk-orders-upload-s3',
@@ -548,7 +562,7 @@ function onClickOfContinue(){
       );
       const json = await res.json();
       setCsvFile(json.result);
-      console.log(json, 'CSV UPLOAD DATA ---------------');
+      // console.log(json, 'CSV UPLOAD DATA ---------------');
       if (json.result) {
         setShowNextBtn(true);
         setLoader(false);
@@ -589,7 +603,7 @@ function onClickOfContinue(){
       setaiText(json.message);
       setLoader(false);
 
-      console.log(json.message, 'AiGenrated Response____________');
+      // console.log(json.message, 'AiGenrated Response____________');
     } catch (error) {
       setLoader(false);
       console.log(error, 'error at Ai generated message ');
@@ -618,7 +632,7 @@ function onClickOfContinue(){
     // console.log(savedMsg?.msg);
   }, []);
   async function firstNameBtn(data) {
-    console.log(data);
+    // console.log(data);
     if (remainingWord > data.length) {
       setCheckCharCount(false);
       setName((prevString) => prevString + data);
@@ -653,9 +667,9 @@ function onClickOfContinue(){
       <div className="mainDivForBox flex gap-10">
         <div
           id="outer"
-          className="outerr h-[500px] w-[100%] bg-white max-w-[600px] relative"
+          className="outerr h-[450px] w-[100%] bg-white max-w-[600px] relative"
         >
-          {metafields.header && <ShowHeaderComp />}
+          {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
           <div
             className="outerSec h-[250px] w-[100%] bg-white max-h-[250px]"
             ref={ref2}
@@ -663,7 +677,7 @@ function onClickOfContinue(){
             <div
               id="messageBoxID"
               ref={ref1}
-              className="output m-5 text-[#0040ac]"
+              className="output mx-5 text-[#0040ac]"
               style={{
                 fontFamily: fontFamilyName
                   ? fontFamilyName
@@ -696,7 +710,7 @@ function onClickOfContinue(){
               {name2}
             </div>
           </div>
-          {metafields.footer && <ShowFooterComp />}
+          {metafields && metafields.isFooterIncluded && <ShowFooterComp />}
         </div>
         <div className="textAreaView w-[600px]">
           <textarea
