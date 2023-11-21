@@ -44,19 +44,19 @@ import DynamicButton from '~/components/DynamicButton';
 import foldBack from '../../assets/Image/foldBack.png'
 import flatCardImg from '../../assets/Image/flatCustomImg.png'
 import CircularLoader from '~/components/CircularLoder';
-export async function loader({params,context}) {
+export async function loader({params, context}) {
   const {productHandle} = params;
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
-  })
+  });
   // console.log(params,"-----");
   const shippingData = await context.storefront.query(ShippingMethod, {
     variables: {},
-  })
+  });
   return json({
     productHandle,
     data,
-    shippingData
+    shippingData,
   });
 }
 let parameterValue;
@@ -83,10 +83,10 @@ export default function CustomProducts() {
   const [fontFamilyName, setFontFamily] = useState('');
   const [metafields, setMetafields] = useState([]);
   const [customProductData, setCustomProductData] = useState('');
-  const [imageShow,setImageShow] = useState(0)
-  const [customFontName,setCustomFontName] = useState('')
-  const [locationValue,setLocationValue] = useState(false)
-  const [qrValue,setQrValue] = useState([])
+  const [imageShow, setImageShow] = useState(0);
+  const [customFontName, setCustomFontName] = useState('');
+  const [locationValue, setLocationValue] = useState(false);
+  const [qrValue, setQrValue] = useState([]);
 
   if (typeof window !== 'undefined') {
     const urlParams = new URLSearchParams(window?.location.search);
@@ -94,22 +94,20 @@ export default function CustomProducts() {
     // console.log(parameterValue,"---000000");
   }
 
-    // useEffect(() => {
-    //   let result =  product.id.replace(/[^0-9]/g,"");
-    //        getMetaFields(result)
-    //   }, []);
-     
+  // useEffect(() => {
+  //   let result =  product.id.replace(/[^0-9]/g,"");
+  //        getMetaFields(result)
+  //   }, []);
 
   useEffect(() => {
-    
     getProductDetails();
   }, []);
-  useEffect(()=>{
-    if(customProductData){
-      let result =  customProductData.id.replace(/[^0-9]/g,"");
-      getMetaFields(result)
+  useEffect(() => {
+    if (customProductData) {
+      let result = customProductData.id.replace(/[^0-9]/g, '');
+      getMetaFields(result);
     }
-  },[customProductData])
+  }, [customProductData]);
   async function getProductDetails() {
     try {
       const res = await fetch(
@@ -125,35 +123,36 @@ export default function CustomProducts() {
   }
   async function getMetaFields(id) {
     try {
-      const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`
+      const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`;
       const data = await fetch(queryEndPoint, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          "productId": id
-      })
+          productId: id,
+        }),
       });
       const json = await data.json();
-      let extractedData = json.result.metafields[0].value
-      let extractMetafield = JSON.parse(extractedData)
-      console.log(extractMetafield,"extractMetafield");
-      setMetafields(extractMetafield)
-      let key = "is_customised"
-      let key2 = "qrImage"
-      let qrData = json.result.metafields[1]
-      let newData = json.result.metafields
-      let dataAfterChecking = newData.filter((item) => key.includes(item.namespace) && key2.includes(item.key))
-      console.log(dataAfterChecking[0].value,"filter QR Data");
-      if(qrData.namespace == "is_customised"){
-      setQrValue(dataAfterChecking[0].value)
+      let extractedData = json.result.metafields[0].value;
+      let extractMetafield = JSON.parse(extractedData);
+      console.log(extractMetafield, 'extractMetafield');
+      setMetafields(extractMetafield);
+      let key = 'is_customised';
+      let key2 = 'qrImage';
+      let qrData = json.result.metafields[1];
+      let newData = json.result.metafields;
+      let dataAfterChecking = newData.filter(
+        (item) => key.includes(item.namespace) && key2.includes(item.key),
+      );
+      console.log(dataAfterChecking[0].value, 'filter QR Data');
+      if (qrData.namespace == 'is_customised') {
+        setQrValue(dataAfterChecking[0].value);
       }
     } catch (error) {
-      console.error(error, "shopify");
+      console.error(error, 'shopify');
     }
     // debugger;
-
   }
   const customStyles = {
     content: {
@@ -174,14 +173,15 @@ export default function CustomProducts() {
   };
   useEffect(() => {
     localStorage.removeItem('reqFielddInCart');
-    setLocationValue(true)
+    setLocationValue(true);
   }, [datafornav.pathname]);
   return (
-    <>
-    {customProductData.length === 0  && metafields.length === 0 &&
-             <CircularLoader color="#ef6e6e" />
-
-    }
+    <div className='relative'>
+      {customProductData.length === 0 && metafields.length === 0 && (
+        <div className='z-[50] absolute top-[40%] left-[50%]'>
+        <CircularLoader color="#ef6e6e" />
+        </div>
+      )}
       {productshow ? (
         <>
           <DynamicButton
@@ -190,72 +190,82 @@ export default function CustomProducts() {
             backArrow={true}
             onClickFunction={goBack}
           />
-          <Section className="px-0 md:px-8 ">
+          <Section className={`px-0 md:px-8  ${ customProductData.length === 0 && metafields.length === 0 && "opacity-40"} `}>
             <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2">
               <div
                 className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 w-full`}
               >
                 <div className="md:col-span-2  aspect-square snap-center relative flex items-center justify-center overflow-clip rounded-[0.25rem] bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[400px]">
-                  {customProductData  && metafields && metafields.cardType == "folded5x7" && (
+                  {customProductData &&
+                    metafields &&
+                    metafields.cardType == 'folded5x7' && (
+                      <img
+                        src={
+                          customProductData.images.length
+                            ? customProductData.images[imageShow].originalSrc
+                            : foldBack
+                        }
+                        className="object-contain w-[550px] h-[400px] fadeIn w-full"
+                      />
+                    )}
+                  {customProductData && metafields.cardType !== 'folded5x7' && (
                     <img
-                      src={customProductData.images.length? customProductData.images[imageShow].originalSrc : foldBack}
+                      src={
+                        customProductData.images.length
+                          ? customProductData.images[imageShow].originalSrc
+                          : flatCardImg
+                      }
                       className="object-contain w-[550px] h-[400px] fadeIn w-full"
                     />
-                  )
-                  }
-                {customProductData &&  metafields.cardType !== "folded5x7" &&
-                <img
-                      src={customProductData.images.length? customProductData.images[imageShow].originalSrc : flatCardImg}
-                      className="object-contain w-[550px] h-[400px] fadeIn w-full"
-                    />
-                  }
-                
+                  )}
                 </div>
-                {customProductData && customProductData.images.length > 1 && metafields && metafields.cardType == "folded5x7" &&
-                <div className='flex w-[35rem]'>
-                    <DynamicButton
-                     className="bg-[#1b5299] m-5 ml-[32px] w-full "
-                     text="VIEW CARD FRONT"
-                     onClickFunction={()=>setImageShow(0)}
-
-                    />
-                    <DynamicButton
-                     className="bg-[#EF6E6E] m-5 ml-[32px] w-full "
-                     text="VIEW CARD BACK"
-                     onClickFunction={()=>setImageShow(1)}
-                    />
-                </div>
-                }
+                {customProductData &&
+                  customProductData.images.length > 1 &&
+                  metafields &&
+                  metafields.cardType == 'folded5x7' && (
+                    <div className="flex w-[35rem]">
+                      <DynamicButton
+                        className="bg-[#1b5299] m-5 ml-[32px] w-full "
+                        text="VIEW CARD FRONT"
+                        onClickFunction={() => setImageShow(0)}
+                      />
+                      <DynamicButton
+                        className="bg-[#EF6E6E] m-5 ml-[32px] w-full "
+                        text="VIEW CARD BACK"
+                        onClickFunction={() => setImageShow(1)}
+                      />
+                    </div>
+                  )}
               </div>
-              {customProductData &&
-              <ProductInfo
-                title={customProductData?.title}
-                product={customProductData}
-                show={show}
-                setShow={setShow}
-                setShowBox={setShowBox}
-                editFontFamily={editFontFamily}
-                setFontFamily={setFontFamily}
-                setCustomFontName={setCustomFontName}
-              />
-            }
+              {customProductData && (
+                <ProductInfo
+                  title={customProductData?.title}
+                  product={customProductData}
+                  show={show}
+                  setShow={setShow}
+                  setShowBox={setShowBox}
+                  editFontFamily={editFontFamily}
+                  setFontFamily={setFontFamily}
+                  setCustomFontName={setCustomFontName}
+                />
+              )}
             </div>
-            {locationValue &&
-            <MessageWriting
-              show={show}
-              selectedFile={selectedFile}
-              setSelectedFile={setSelectedFile}
-              setShowBox={setShowBox}
-              setProductShow={setProductShow}
-              EditMess={EditMess}
-              editEndMess={editEndMess}
-              editFontFamily={editFontFamily}
-              editFontSize={editFontSize}
-              fontFamilyName={fontFamilyName}
-              metafields={metafields}
-              qrValue={qrValue}
-            />
-          }
+            {locationValue && (
+              <MessageWriting
+                show={show}
+                selectedFile={selectedFile}
+                setSelectedFile={setSelectedFile}
+                setShowBox={setShowBox}
+                setProductShow={setProductShow}
+                EditMess={EditMess}
+                editEndMess={editEndMess}
+                editFontFamily={editFontFamily}
+                editFontSize={editFontSize}
+                fontFamilyName={fontFamilyName}
+                metafields={metafields}
+                qrValue={qrValue}
+              />
+            )}
           </Section>
           <Modal
             isOpen={modalIsOpen2}
@@ -281,7 +291,7 @@ export default function CustomProducts() {
           customFontName={customFontName}
         />
       )}
-    </>
+    </div>
   );
 }
 
@@ -313,7 +323,7 @@ const GiftProduct = `#graphql
     }
     }
 
-  `
+  `;
 
 const ShippingMethod = `#graphql
 query
@@ -334,4 +344,4 @@ query
       }
     }
   }
-}`
+}`;

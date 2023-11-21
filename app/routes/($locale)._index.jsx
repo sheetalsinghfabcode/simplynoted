@@ -30,7 +30,6 @@ export async function loader({params, context}) {
     variables: {handle: 'freestyle'},
   });
 
-
   const seo = seoPayload.home();
 
   return defer({
@@ -66,9 +65,7 @@ export async function loader({params, context}) {
       },
     }),
     contentfulBanner: context.storefront.query(CONTENTFUL_BANNER_QUERY, {
-      variables: {
-      
-      },
+      variables: {},
     }),
     tertiaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
@@ -97,73 +94,14 @@ export default function Homepage() {
   // TODO: skeletons vs placeholders
   const skeletons = getHeroPlaceholder([{}, {}, {}]);
 
-
-  
-
   return (
     <>
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
-      <Home contentfulBanner={contentfulBanner}/>
-      <Notes/>
-<CanvasDesign/>
-
-
-      {/* {featuredProducts && (
-        <Suspense>
-          <Await resolve={featuredProducts}>
-            {({products}) => {
-              if (!products?.nodes) return <></>;
-              return (
-                <ProductSwimlane
-                  products={products}
-                  title="Featured Products"
-                  count={4}
-                />
-              );
-            }}
-          </Await>
-        </Suspense>
-      )} */}
-
-      {/* {secondaryHero && (
-        <Suspense fallback={<Hero {...skeletons[1]} />}>
-          <Await resolve={secondaryHero}>
-            {({hero}) => {
-              if (!hero) return <></>;
-              return <Hero {...hero} />;
-            }}
-          </Await>
-        </Suspense>
-      )} */}
-
-      {/* {featuredCollections && (
-        <Suspense>
-          <Await resolve={featuredCollections}>
-            {({collections}) => {
-              if (!collections?.nodes) return <></>;
-              return (
-                <FeaturedCollections
-                  collections={collections}
-                  title="Collections"
-                />
-              );
-            }}
-          </Await>
-        </Suspense>
-      )} */}
-
-      {/* {tertiaryHero && (
-        <Suspense fallback={<Hero {...skeletons[2]} />}>
-          <Await resolve={tertiaryHero}>
-            {({hero}) => {
-              if (!hero) return <></>;
-              return <Hero {...hero} />;
-            }}
-          </Await>
-        </Suspense>
-      )} */}
+      <Home contentfulBanner={contentfulBanner} />
+      <Notes />
+      <CanvasDesign />
     </>
   );
 }
@@ -196,7 +134,6 @@ const COLLECTION_CONTENT_FRAGMENT = `#graphql
   }
   ${MEDIA_FRAGMENT}
 `;
-
 
 const HOMEPAGE_SEO_QUERY = `#graphql
   query seoCollectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
@@ -258,7 +195,6 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
   }
 `;
 
-
 export const CONTENTFUL_BANNER_QUERY = `#graphql
 query {
   bannerCollection{
@@ -274,4 +210,4 @@ query {
     }
   }
 }
-`
+`;

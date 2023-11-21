@@ -21,6 +21,7 @@ const ContactTable = ({
   ProdcuctSide,
   continueBtn,
   setFilteredAddresses,
+  serErrorContent 
 }) => {
   const {loadAddress, setLoadAddress, addresses} = useAddressBook();
   const [selectedType, setSelectedType] = useState('all');

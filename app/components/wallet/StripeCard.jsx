@@ -26,6 +26,7 @@ const StripeCard = ({
   paymentPurchase,
   handlePurchaseCard,
   addCreditModal,
+  updateCard
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
@@ -42,12 +43,10 @@ const StripeCard = ({
     if (!error) {
       try {
         const {id} = paymentMethod;
-         if (id && !savedCard && !addCreditModal) {
+        if (id && !savedCard && !addCreditModal && !updateCard) {
           createCustomerId(id);
-        }
-        else {
+        } else  {
           handlePurchaseCard(id);
-
         }
 
         console.log(id, 'stripeID');
@@ -68,9 +67,11 @@ const StripeCard = ({
           type="submit"
           className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
         >
-          {savedCard && savedCard.length > 0 && (addCreditModal ? 'Add Card' : 'Update Card')}
+          {savedCard &&
+            savedCard.length > 0 &&
+            ((addCreditModal && !updateCard) ? 'Add Card' : 'Update Card')}
 
-          {(!savedCard || savedCard.length===0) && 'Complete Purcase'}
+          {(!savedCard || savedCard.length === 0) && 'Complete Purchase'}
         </button>
       </div>
     </form>

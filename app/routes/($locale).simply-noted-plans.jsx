@@ -42,6 +42,9 @@ export default function SimplyNoted() {
   const [walletPayment, setWalletPayment] = useState(false);
   const [finalPrice, setFinalPrice] = useState(null);
   const [loader, setloader] = useState(true);
+  const [packageProduct,setPackageProduct] = useState("")
+  const [subscriptionProduct,setSubscriptionProduct] = useState("")
+
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -75,6 +78,7 @@ export default function SimplyNoted() {
       });
     return () => {};
   }, []);
+
 
   return (
     <div className='w-full relative max-w-[1440px] mx-auto px-[16px]'>
@@ -112,6 +116,9 @@ export default function SimplyNoted() {
             amount={amount}
             setSubscription={setSubscription}
             stripeCollection={stripeCollection}
+            setPackageProduct={setPackageProduct}
+            setSubscriptionProduct={setSubscriptionProduct}
+            
           />
         )}
         {walletPurcase && (
@@ -133,7 +140,12 @@ export default function SimplyNoted() {
             setWalletPurchase={setWalletPurchase}
             setWalletPayment={setWalletPayment}
             finalPrice={finalPrice}
+            selectedPlan={selectedPlan}
+            amount={amount}
+            subscription={subscription}
             StripeKey={StripeKey}
+            subscriptionProduct={subscriptionProduct}
+            packageProduct={packageProduct}
           />
         )}
       </div>
@@ -149,6 +161,7 @@ const Wallet = `#graphql
       products(first:6){
         edges{
           node{
+            id
             title
             description
             metafields(identifiers:[
@@ -169,6 +182,7 @@ const Wallet = `#graphql
             variants(first:10){
               edges{
                 node{
+                  id
                   metafields(identifiers:[
                     {namespace: "custom", key: "variant_title"},
                     {namespace: "custom", key: "card_amount"},

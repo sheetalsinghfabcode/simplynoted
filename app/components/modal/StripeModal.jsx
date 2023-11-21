@@ -15,7 +15,9 @@ const StripeModal = ({
   cancelText,
   StripeKey,
   addCreditModal,
-  handlePurchaseCard
+  handlePurchaseCard,
+  updateCard
+
 }) => {
   const stripe = loadStripe(`${StripeKey}`);
 
@@ -51,7 +53,7 @@ const StripeModal = ({
           </div>
         )}
           <Elements stripe={stripe}>
-            <StripeCard handlePurchaseCard={handlePurchaseCard} addCreditModal={addCreditModal}/>
+            <StripeCard updateCard={updateCard} handlePurchaseCard={handlePurchaseCard} addCreditModal={addCreditModal}/>
           </Elements>
            
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>

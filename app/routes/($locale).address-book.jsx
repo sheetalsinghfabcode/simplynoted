@@ -113,6 +113,7 @@ export default function AddressBook() {
                     openModal={openModal}
                     filteredAddresses={filteredAddresses}
                     editAddress={editAddress}
+                    serErrorContent={serErrorContent}
                     setSelectedAddress={setSelectedAddress}
                     setSelectedCheckboxes={setSelectedCheckboxes}
                     selectedCheckboxes={selectedCheckboxes}
