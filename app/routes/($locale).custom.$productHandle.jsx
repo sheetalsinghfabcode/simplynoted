@@ -197,7 +197,7 @@ export default function CustomProducts() {
                 <div className="md:col-span-2  aspect-square snap-center relative flex items-center justify-center overflow-clip rounded-[0.25rem] bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[400px]">
                   {customProductData && (
                     <img
-                      src={customProductData.images? customProductData.images[imageShow]?.originalSrc : foldBack}
+                      src={customProductData.images? customProductData.images[imageShow].originalSrc : foldBack}
                       className="object-contain w-[550px] h-[400px] fadeIn w-full"
                     />
                   )}
