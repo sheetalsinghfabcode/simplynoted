@@ -53,21 +53,32 @@ export default function customisableCard() {
   const [customerId, setCustomerId] = useState(null);
   const [isFlatCardType, setIsFlatCardType] = useState(true);
   const [isCardTypeSelectionPage, setIsCardTypeSelectionPage] = useState(true);
-  
-  // This state contains selected variant option
-  const [getSelectedProductVariant, setGetSelectedProductVariant] =
-    useState(shopifyCustomisableCardProduct.product.variants.edges[0].node.title);
+  // To get rid of the modal glitch for split seconds on initial render.
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
-  useEffect(() => setCustomerId(localStorage.getItem('customerId')), []);
+  // This state contains selected variant option
+  const [getSelectedProductVariant, setGetSelectedProductVariant] = useState(
+    shopifyCustomisableCardProduct.product.variants.edges[0].node.title,
+  );
+
+  useEffect(() => {
+    const storedCustomerId = localStorage.getItem('customerId');
+    console.log('Stored Customer ID:', storedCustomerId);
+    setCustomerId(storedCustomerId);
+    setIsInitialRender(false);
+  }, []);
+
   return (
     <>
-      <LoginModal
-        show={!customerId}
-        title="Create a Card"
-        confirmText="Login"
-        cancelText="Register"
-        hasCancelIcon={false}
-      />
+      {!isInitialRender && !customerId && (
+        <LoginModal
+          show={!customerId}
+          title="Create a Card"
+          confirmText="Login"
+          cancelText="Register"
+          hasCancelIcon={false}
+        />
+      )}
       {isCardTypeSelectionPage ? (
         <CardTypeSelection
           isFlatCardType={isFlatCardType}
