@@ -313,7 +313,7 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                         <div>Send A Card</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
-                            <Link to="/collecti1ons/best-sellers">
+                            <Link to="/collections/best-sellers">
                               {' '}
                               <li> Cards</li>
                             </Link>

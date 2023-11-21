@@ -42,6 +42,7 @@ import {AddCart} from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
 import foldBack from '../../assets/Image/foldBack.png'
+import flatCardImg from '../../assets/Image/flatCustomImg.webp'
 import CircularLoader from '~/components/CircularLoder';
 export async function loader({params,context}) {
   const {productHandle} = params;
@@ -61,7 +62,7 @@ export async function loader({params,context}) {
 let parameterValue;
 export default function CustomProducts() {
   const {productHandle, shippingData, data} = useLoaderData();
-  console.log(productHandle, '------productHandle');
+  // console.log(productHandle, '------productHandle');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
@@ -85,6 +86,7 @@ export default function CustomProducts() {
   const [imageShow,setImageShow] = useState(0)
   const [customFontName,setCustomFontName] = useState('')
   const [locationValue,setLocationValue] = useState(false)
+  const [qrValue,setQrValue] = useState([])
 
   if (typeof window !== 'undefined') {
     const urlParams = new URLSearchParams(window?.location.search);
@@ -134,10 +136,19 @@ export default function CustomProducts() {
       })
       });
       const json = await data.json();
-      let y = json.result.metafields[0].value
-      let extractMetafield = JSON.parse(y)
-      console.log(extractMetafield,")))))))))s");
+      let extractedData = json.result.metafields[0].value
+      let extractMetafield = JSON.parse(extractedData)
+      console.log(extractMetafield,"extractMetafield");
       setMetafields(extractMetafield)
+      let key = "is_customised"
+      let key2 = "qrImage"
+      let qrData = json.result.metafields[1]
+      let newData = json.result.metafields
+      let dataAfterChecking = newData.filter((item) => key.includes(item.namespace) && key2.includes(item.key))
+      console.log(dataAfterChecking[0].value,"filter QR Data");
+      if(qrData.namespace == "is_customised"){
+      setQrValue(dataAfterChecking[0].value)
+      }
     } catch (error) {
       console.error(error, "shopify");
     }
@@ -167,7 +178,7 @@ export default function CustomProducts() {
   }, [datafornav.pathname]);
   return (
     <>
-    {customProductData.length === 0  &&
+    {customProductData.length === 0  && metafields.length === 0 &&
              <CircularLoader color="#ef6e6e" />
 
     }
@@ -184,28 +195,37 @@ export default function CustomProducts() {
               <div
                 className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 w-full`}
               >
-                <div className="md:col-span-2  aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[400px]">
-                  {customProductData && (
+                <div className="md:col-span-2  aspect-square snap-center relative flex items-center justify-center overflow-clip rounded-[0.25rem] bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[400px]">
+                  {customProductData  && metafields && metafields.cardType == "folded5x7" && (
                     <img
-                      src={customProductData.images? customProductData.images[imageShow]?.originalSrc : foldBack}
-                      className="object-cover w-[550px] h-[400px ] aspect-square fadeIn"
+                      src={customProductData.images.length? customProductData.images[imageShow].originalSrc : foldBack}
+                      className="object-contain w-[550px] h-[400px] fadeIn w-full"
                     />
-                  )}
+                  )
+                  }
+                {customProductData &&  metafields.cardType !== "folded5x7" &&
+                <img
+                      src={customProductData.images.length? customProductData.images[imageShow].originalSrc : flatCardImg}
+                      className="object-contain w-[550px] h-[400px] fadeIn w-full"
+                    />
+                  }
+                
                 </div>
-
+                {customProductData && customProductData.images.length > 1 && metafields && metafields.cardType == "folded5x7" &&
                 <div className='flex w-[35rem]'>
                     <DynamicButton
                      className="bg-[#1b5299] m-5 ml-[32px] w-full "
-                     text="VIEW CART FRONT"
+                     text="VIEW CARD FRONT"
                      onClickFunction={()=>setImageShow(0)}
 
                     />
                     <DynamicButton
                      className="bg-[#EF6E6E] m-5 ml-[32px] w-full "
-                     text="VIEW CART BACK"
+                     text="VIEW CARD BACK"
                      onClickFunction={()=>setImageShow(1)}
                     />
                 </div>
+                }
               </div>
               {customProductData &&
               <ProductInfo
@@ -233,6 +253,7 @@ export default function CustomProducts() {
               editFontSize={editFontSize}
               fontFamilyName={fontFamilyName}
               metafields={metafields}
+              qrValue={qrValue}
             />
           }
           </Section>
