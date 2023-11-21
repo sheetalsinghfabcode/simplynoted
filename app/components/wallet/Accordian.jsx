@@ -12,6 +12,12 @@ const Accordion = ({
   finalPrice,
   setWalletPurchase,
   setWalletPayment,
+  subscription,
+  amount,
+  selectedPlan,
+  packageProduct,
+  subscriptionProduct
+
 }) => {
   const stripe = loadStripe(StripeKey);
 
@@ -26,6 +32,10 @@ const Accordion = ({
   const [paymentMethodId, setPaymentMethodId] = useState('');
 
   let customerid, fullName, userEmail;
+
+  let productId = packageProduct.replace(/[^0-9]/g, '');
+  let variantId = subscriptionProduct.replace(/[^0-9]/g, '');
+  
 
   const toggleBilling = () => {
     setIsBillingOpen(!isBillingOpen);
@@ -166,16 +176,43 @@ const Accordion = ({
     (country) => country.country === formData.address.country,
   );
 
+
+
+  function extractDiscountAndCardsInfo(str) {
+    // Regular expressions to extract discount and card numbers
+    const discountRegex = /(\d+)% Discount/;
+    const cardsRegex = /(\d+) Standard Cards/;
+  
+    // Extracting discount percentage
+    const discountMatch = str.match(discountRegex);
+    const discount = discountMatch ? parseInt(discountMatch[1]) : null;
+  
+    // Extracting number of cards
+    const cardsMatch = str.match(cardsRegex);
+    const cards = cardsMatch ? parseInt(cardsMatch[1]) : null;
+  
+    return {
+      discount: discount,
+      cards: cards
+    };
+  }
+  
+  // Example usage:
+  const { discount, cards } = extractDiscountAndCardsInfo(selectedPlan);
+
   const paymentPurchase = (id) => {
     const payLoad = {
       paymentMethodId: id,
-      packageDiscount: '70.1',
-      packageQuantity: '10000',
-      packagePrice: '16300',
-      description: 'business - 10,000 cards',
-      packageProduct: '40694774333545',
-      subscriptionProduct: '40690998050921',
+      packageDiscount: discount,
+      packageQuantity: cards,
+      packagePrice: amount,
+      description: selectedPlan,
+      packageProduct: productId,
+      subscriptionProduct: variantId,
     };
+
+
+    console.log("payLoad",payLoad)
     const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
@@ -192,6 +229,10 @@ const Accordion = ({
         return response.json();
       })
       .then((data) => {
+        localStorage.setItem(
+          'packageDiscount',
+          JSON.stringify(discount),
+        );
         // Handle the response data here
         console.log('Success:', data);
       })
@@ -201,8 +242,7 @@ const Accordion = ({
       });
   };
 
-  const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+ 
 
   return (
     <div className="w-full max-w-[1440px] mt-[24px] mx-auto px-[24px]">

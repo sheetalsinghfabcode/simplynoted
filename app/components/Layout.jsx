@@ -233,25 +233,33 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({ isHome, menu, openCart, title }) {
-
-  const {cartCountVal,setCartCountVal} = useAddressBook() 
+function DesktopHeader({isHome, menu, openCart, title}) {
+  const {cartCountVal, setCartCountVal} = useAddressBook();
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
-  const [loader,setLoader] =  useState(false)
+  const [loader, setLoader] = useState(false);
+  const [customerId, setCustomerId] = useState(null);
 
-  useEffect(()=>{
-    let calculatedCartCount = (localStorage.getItem('mydata')) ? JSON.parse(localStorage.getItem('mydata')) : [];
-    localStorage.setItem('cartCount',JSON.stringify(calculatedCartCount.length))
-    let totalCartCount = (localStorage.getItem('cartCount')) ?JSON.parse(localStorage.getItem('cartCount')):0
-    setCartCountVal(totalCartCount)
-  },[])
-  function CreateCardCheck(){
-   if(typeof window !== 'undefined'){
-    let id = localStorage.getItem('customerId');
-    if(id){
-      return(
+
+  useEffect(() => {
+    let calculatedCartCount = localStorage.getItem('mydata')
+      ? JSON.parse(localStorage.getItem('mydata'))
+      : [];
+    localStorage.setItem(
+      'cartCount',
+      JSON.stringify(calculatedCartCount.length),
+    );
+    let totalCartCount = localStorage.getItem('cartCount')
+      ? JSON.parse(localStorage.getItem('cartCount'))
+      : 0;
+    setCartCountVal(totalCartCount);
+  }, []);
+  function CreateCardCheck() {
+    if (typeof window !== 'undefined') {
+      let id = localStorage.getItem('customerId');
+      if (id) {
+        return (
           <Link to="/customise-your-card">
             <li>Create a Card</li>
           </Link>
@@ -266,6 +274,13 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
     }
   }
 
+
+  useEffect(() => {
+    const storedCustomerId = localStorage.getItem('customerId');
+    if (storedCustomerId) {
+      setCustomerId(storedCustomerId);
+    }
+  }, []);
   const params = useParams();
   const {y} = useWindowScroll();
   return (
@@ -296,9 +311,13 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
           <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-bold tracking-tight">
             {(menu?.items || []).map((item) => {
               if (
-                ['Send a Card', 'Integrations', 'Pricing', 'Learn','Business'].includes(
-                  item.title,
-                )
+                [
+                  'Send a Card',
+                  'Integrations',
+                  'Pricing',
+                  'Learn',
+                  'Business',
+                ].includes(item.title)
               ) {
                 return (
                   <div
@@ -391,10 +410,10 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
                             <Link to="/blog">
-                            <li>Blog.</li>
+                              <li>Blog.</li>
                             </Link>
                             <Link to="/tutorials">
-                            <li>Tutorials</li>
+                              <li>Tutorials</li>
                             </Link>
                             <a href="https://www.youtube.com/@simplynoted">
                             <li>Videos</li>
@@ -434,38 +453,39 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
-              {cartCountVal && cartCountVal > 0?
-               <> 
-             <Link to="/carts">
-
-              <div className='bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]'>
-              <span className='text-[white]'>{cartCountVal?cartCountVal:''}</span>
-              </div>
-               <img
-              src={CartShopify}
-              alt="cart-icon"
-              style={{
-                width: '32px',
-                height: '29px',
-                marginTop: '-11px',
-              }}
-            />
-            </Link>
+            {cartCountVal && cartCountVal > 0 ? (
+              <>
+                <Link to="/carts">
+                  <div className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]">
+                    <span className="text-[white]">
+                      {cartCountVal ? cartCountVal : ''}
+                    </span>
+                  </div>
+                  <img
+                    src={CartShopify}
+                    alt="cart-icon"
+                    style={{
+                      width: '32px',
+                      height: '29px',
+                      marginTop: '-11px',
+                    }}
+                  />
+                </Link>
               </>
-              : 
+            ) : (
               <Link to="/carts">
-               <img
-              src={CartShopify}
-              alt="cart-icon"
-              style={{
-                width: '32px',
-                height: '29px',
-                marginTop: '-11px',
-              }}
-            />
-            </Link>
-              }
-           
+                <img
+                  src={CartShopify}
+                  alt="cart-icon"
+                  style={{
+                    width: '32px',
+                    height: '29px',
+                    marginTop: '-11px',
+                  }}
+                />
+              </Link>
+            )}
+
             {/* <span className="tooltiptext">Cart</span> */}
           </div>
 
@@ -481,10 +501,10 @@ function DesktopHeader({ isHome, menu, openCart, title }) {
             Account →
           </Link> */}
           <DynamicButton
-            text=" Account →"
+            text={customerId ? 'Acccount  →' : 'Sign in →'}
             className="login-button"
             onClickFunction={() => {
-              navigate("/account")
+              navigate('/account');
             }}
           />
 

@@ -10,6 +10,8 @@ const WalletPlans = ({
   setWalletPurchase,
   setSubscription,
   stripeCollection,
+  setSubscriptionProduct,
+  setPackageProduct,
   amount,
 }) => {
   const handleRadioChange = (event) => {
@@ -34,6 +36,9 @@ const WalletPlans = ({
       setAmount(stripeCollection.stripe?.packageQuantity || 0); // Set the amount
     }
   }, [stripeCollection]);
+
+
+  
 
 
   return (
@@ -86,6 +91,9 @@ const WalletPlans = ({
                     <div
                       onClick={() => {
                         setSubscription(subscriptionMetafield?.value || 0);
+                        setSubscriptionProduct(product.node.id)
+                        setPackageProduct(variant.node.id)
+                        
                         setAmount((variant.node.price.amount) || 0);
                         handleRadioChange({
                           target: {

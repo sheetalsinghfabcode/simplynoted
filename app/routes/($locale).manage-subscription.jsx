@@ -35,6 +35,7 @@ const ManageSubscription = () => {
   const [addCreditModal, setAddCreditModal] = useState(false);
   const [forUpdateData, setForUpdateData] = useState(false);
   const [defaultCard, setDefaultCard] = useState(false);
+  const [updateCard,setUpdateCard] = useState(false)
 
 
   console.log("paymentId",paymentId)
@@ -203,8 +204,6 @@ const ManageSubscription = () => {
   const makeDefaultCard = () => {
     setLoader(true);
     const url = `https://api.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
-    console.log("paymentId",paymentId)
-
 
     fetch(url, {
       method: 'PUT',
@@ -340,7 +339,6 @@ const ManageSubscription = () => {
     }
   }
 
-  console.log('stripeCollection', stripeCollection);
 
   return (
     <>
@@ -397,7 +395,7 @@ const ManageSubscription = () => {
         title={addCreditModal ? 'Add Credit Card' : 'Update Credit Card'}
         // confirmText="Update"
         StripeKey={StripeKey}
-        
+        updateCard={updateCard}
         addCreditModal={addCreditModal}
         handlePurchaseCard={handlePurchaseCard}
       />
@@ -614,6 +612,7 @@ const ManageSubscription = () => {
                                       setAddCreditModal(false);
                                       setPaymentId(item.paymentId);
                                       setUpdateModal(true);
+                                      setUpdateCard(true)
                                     }}
                                   />
                                 ) : (
