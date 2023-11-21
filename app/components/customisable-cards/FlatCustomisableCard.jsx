@@ -6,6 +6,7 @@ import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import CustomCheckbox from '../CustomCheckbox';
+import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.webp';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -73,12 +74,41 @@ export default function FlatCustomisableCard({
     generatedQrImageLink:
       'https://api.qrserver.com/v1/create-qr-code/?size=48x48&data=simplynoted',
   });
+  const [errorResponse, setErrorResponse] = useState({
+    message: '',
+    status: false,
+  });
 
   const frontImageRef = useRef(null);
   const backHeaderImageRef = useRef(null);
   const backFooterImageRef = useRef(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Generate default image for the face URL of the custom card.
+    const generateDefaultScreenshotImage = async () => {
+      try {
+        const response = await fetch(DefaultFrontCardImage);
+        const blob = await response.blob();
+        const filename = 'default-screenshot.png';
+        const frontDefaultImageFile = new File([blob], filename, {
+          type: blob.type,
+        });
+        setFrontImageDetails((prevFrontImageDetails) => {
+          return {
+            ...prevFrontImageDetails,
+            screenshotImageFile: frontDefaultImageFile,
+          };
+        });
+      } catch (error) {
+        console.error('Error fetching the default image:', error);
+      }
+    };
+
+    generateDefaultScreenshotImage();
+    console.log({frontImageDetails});
+  }, []);
 
   useEffect(() => {
     console.log({
@@ -93,7 +123,10 @@ export default function FlatCustomisableCard({
     const generateScreenshot = async () => {
       try {
         // Image file present, generating screenshot.
-        if (selectedCardPage === 'Card Front' && frontImageDetails.isImageSelected) {
+        if (
+          selectedCardPage === 'Card Front' &&
+          frontImageDetails.isImageSelected
+        ) {
           const trimmedDiv = document.getElementById('frontTrimmedDiv');
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
@@ -321,7 +354,7 @@ export default function FlatCustomisableCard({
         zoom: 1,
         isColoredImage: true,
         isLongImage: false,
-        isImageSelected: false
+        isImageSelected: false,
       });
     }
 
@@ -499,8 +532,13 @@ export default function FlatCustomisableCard({
   const handleFinishEditingButton = async () => {
     try {
       const isPdfUploaded = await uploadPdfRequest();
-      if (!isPdfUploaded) return alert('Unable to upload the PDF.');
       setCheckTitleDuplicacyModalOpen(true);
+      if (!isPdfUploaded) {
+        return setErrorResponse({
+          message: 'Unable to upload the PDF.',
+          status: true,
+        });
+      }
     } catch (err) {
       throw err;
     }
@@ -576,14 +614,24 @@ export default function FlatCustomisableCard({
 
   const handleCustomCardSaveButton = async () => {
     const isDuplicateTitle = await checkForDuplicateTitle();
-    if (isDuplicateTitle) return alert('Card name already exists. 😔');
+    if (isDuplicateTitle) {
+      return setErrorResponse({
+        message: 'Card name already exists. 😔',
+        status: true,
+      });
+    }
     const isCustomCardSaved = await saveCustomCard();
-    if (!isCustomCardSaved) return alert('Unable to save the custom card.');
-    // Convert product title to a handle name as per handle name's convention. 
-    // Remove whitespace or special characters at the beginning 
-    let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, "");
+    if (!isCustomCardSaved) {
+      return setErrorResponse({
+        message: 'Unable to save the custom card.',
+        status: true,
+      });
+    }
+    // Convert product title to a handle name as per handle name's convention.
+    // Remove whitespace or special characters at the beginning
+    let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, '');
     // Replace all remaining whitespace or special characters with a single hyphen
-    handleName = handleName.replace(/[^a-zA-Z0-9]+/g, "-");
+    handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
     // Making the title to lowercase
     handleName = handleName.toLowerCase();
     navigate(`/custom/${handleName}`);
@@ -781,15 +829,27 @@ export default function FlatCustomisableCard({
   ) : (
     <section>
       {checkTitleDuplicacyModalOpen && (
-        <Modal cancelLink={() => setCheckTitleDuplicacyModalOpen(false)}>
+        <Modal
+          cancelLink={() => {
+            setErrorResponse({message: '', status: false});
+            setCheckTitleDuplicacyModalOpen(false);
+          }}
+        >
           <div>
             <div>
               <p className="bg-[#deebf7] h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold">
                 Name your card and save it.
               </p>
             </div>
+            <div className="h-4 mt-2 flex justify-start items-center">
+              {errorResponse.status && (
+                <span className="text-[red] text-xs">
+                  {errorResponse.message}
+                </span>
+              )}
+            </div>
             <input
-              className="w-full mt-5 border-black border-solid border-2 outline-none focus:outline-none"
+              className="w-full mt-3 border-black border-solid border-2 outline-none focus:outline-none"
               type="text"
               onChange={(e) => setCustomCardTitle(e.target.value)}
             ></input>
