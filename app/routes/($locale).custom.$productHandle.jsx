@@ -42,7 +42,7 @@ import {AddCart} from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
 import foldBack from '../../assets/Image/foldBack.png'
-import flatCardImg from '../../assets/Image/flatCustomImg.webp'
+import flatCardImg from '../../assets/Image/flatCustomImg.png'
 import CircularLoader from '~/components/CircularLoder';
 export async function loader({params,context}) {
   const {productHandle} = params;
