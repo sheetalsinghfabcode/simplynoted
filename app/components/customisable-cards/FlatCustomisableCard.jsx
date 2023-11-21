@@ -17,6 +17,7 @@ export default function FlatCustomisableCard({
     useState(false);
   const [selectedCardPage, setSelectedCardPage] = useState('Card Front');
   const [frontImageDetails, setFrontImageDetails] = useState({
+    isImageSelected: false,
     imageFile: null,
     screenshotImageFile: null,
     zoom: 1,
@@ -92,7 +93,7 @@ export default function FlatCustomisableCard({
     const generateScreenshot = async () => {
       try {
         // Image file present, generating screenshot.
-        if (selectedCardPage === 'Card Front') {
+        if (selectedCardPage === 'Card Front' && frontImageDetails.isImageSelected) {
           const trimmedDiv = document.getElementById('frontTrimmedDiv');
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
@@ -215,6 +216,7 @@ export default function FlatCustomisableCard({
             return {
               ...prevFrontImageDetails,
               imageFile: URL.createObjectURL(chosenFile),
+              isImageSelected: true,
               isLongImage,
             };
           });
@@ -319,6 +321,7 @@ export default function FlatCustomisableCard({
         zoom: 1,
         isColoredImage: true,
         isLongImage: false,
+        isImageSelected: false
       });
     }
 
