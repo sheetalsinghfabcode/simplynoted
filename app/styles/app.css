@@ -1453,7 +1453,7 @@ body {
 .robot {
   position: absolute;
   z-index: -1;
-  width:28%;
+  width: 28%;
   left: 37.5rem;
 }
 
@@ -1471,9 +1471,8 @@ body {
 }
 .robot-gif {
   max-width: 500px;
-  width:55%;
+  width: 55%;
   display: inline;
- 
 }
 .robot-gif2 {
   max-width: 500px;
@@ -1588,107 +1587,6 @@ body {
   text-align: center;
 }
 
-/* Media Query */
-@media only screen and (max-width: 1326px) {
-  .robot-gif{
-    width:auto;
-  }
-.robot{
-  width:24%;
-  left:35rem;
-}
-}
-
-@media only screen and (max-width: 1200px) {
-  .dropdown-content {
-    top: 24px;
-    width: 12rem;
-  }
-  .dropdown-list {
-    padding: 22px 20px;
-  }
-  .swiper-company {
-    margin-right: 80px;
-  }
-  
-}
-@media only screen and (max-width: 1024px) {
-  .handwritten-notice h3 {
-    font-size: 30px;
-  }
-  .logo-simplinoted {
-    display: none;
-  }
-  .thankyou_img {
-    display: block;
-    position: absolute;
-    width: 35%;
-    margin-left: 26rem;
-    margin-top: 6rem;
-    z-index: 1;
-  }
-  .cars-killer {
-    position: static;
-    margin-top: 42px;
-    width: 38%;
-    margin-left: 14rem;
-  }
-  .start-writing-button,
-  .request-a-button {
-    font-size: 13px;
-    margin-bottom: 10px;
-    margin-right: 0px;
-    min-width: 170px;
-    min-height: 46px;
-    font-weight: normal;
-  }
-  .scale-starting {
-    font-size: 14px;
-    padding-top: 10px;
-  }
-}
-@media only screen and (max-width: 768px) {
-  .btn1 {
-    width: 58%;
-    margin-left: 5rem;
-  }
-  .btn3 {
-    font-size: 11px;
-    margin-top: 10px;
-    width: 60%;
-    margin-left: 5rem;
-    margin-bottom: 30px;
-  }
-  .input_email {
-    width: 54%;
-  }
-  .bottom_background {
-    margin-right: 0px;
-  }
-  .swiper-button-prev,
-  .swiper-button-next {
-    background-color: #ef6e6e;
-    background-size: 20px;
-    border-radius: 50%;
-  }
-  .thankyou_img {
-    width: 55%;
-    margin-top: 5rem;
-    margin-left: 9rem;
-  }
-  .cars-killer {
-    width: 60%;
-    margin-left: 2rem;
-  }
-  .handwritten-notice h3 {
-    font-size: 20px;
-    margin-right: 0px;
-  }
-  .data_card {
-    margin: 0 25px;
-    height: 77%;
-  }
-}
 
 .btnShadow {
   box-shadow: 5px 8px 15px rgb(0 0 0 / 40%);
@@ -2323,5 +2221,294 @@ body {
   transition-delay:10s; */
 
   transition: all 0.35s 1s;
+}
 
+
+/******************* Partner-referral ****************************/
+.wrap-referral-form {
+  background: url('../../assets/Image/form-bg.webp') no-repeat;
+  background-size: 100% 100%;
+  width: 900px;
+  height: auto;
+  display: flex;
+  padding: 20px;
+  align-items: start;
+  flex-direction: row;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0px 0px 35px rgba(0,0,0,.2));
+  -webkit-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
+  -moz-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
+}
+
+.wrap-referral-form input,
+.wrap-referral-form select {
+  background: 0 0;
+  border: none;
+  color: #3d3d3d;
+  font-size: 13px;;
+}
+
+.wrap-referral-form input:focus,
+.wrap-referral-form select:focus {
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.wrap-referral-form ::placeholder {
+  color: rgb(50, 50, 50);
+  opacity: 1;
+  font-size: 13px;
+} 
+.wrap-referral-form  select option {
+  background: 0 0;
+  background-color: #1f3469;
+}
+
+.top-underline {
+  width:100%;
+  padding-bottom: 15px;
+  position: relative;
+  text-align: left;
+  margin: 1.5%;
+ 
+}
+
+.top-underline:after {
+  content: '  ';
+  position: absolute;
+  bottom: -10px;
+  left: -8px;
+  width: 100%;
+  background: url('../../assets/Image/form-field-underline-long.svg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  height:5px;
+}
+
+.underline-heading {
+  display: flex;
+  flex-wrap: wrap;
+  
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.underline-text {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  box-sizing: border-box;
+  width: 47%;
+  padding-bottom: 15px;
+  position: relative;
+  text-align: left;
+  margin: 1.5%;
+}
+
+.underline-text:after {
+  content: '  ';
+  color: #1f3469;
+  position: absolute;
+  bottom: -10px;
+  left: -8px;
+  width: 100%;
+  background: url('../../assets/Image/form-field-underline.svg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  height:5px;
+}
+.referral-button{
+  overflow: visible;
+  padding: 24px 65px;
+  background: url('../../assets//Image/signup-background.svg') !important ;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  text-transform: uppercase;
+  font-weight: 700 ;
+  font-size: 15px !important;
+  cursor: pointer ;
+  border: none;
+  color: #fff !important;
+}
+
+/******************* signup-partner ****************************/
+.signup-overview{
+  background-image: url('../../assets//Image/signup-overview-bg.webp');
+  background-size: contain;
+  width: 466px;
+  height: 503px;
+  display: block;
+  filter: drop-shadow(0px 0px 35px rgba(0,0,0,.2));
+  -webkit-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
+  -moz-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  margin: 30px auto;
+  max-width: 100%;
+  background-repeat: no-repeat;
+}
+
+.signup-title{
+  font-size: 24px;
+    background-image: url('../../assets//Image/signup-overview-title-bg.png');
+    padding: 8px;
+    width: 433px;
+    height: 82px;
+    text-align: center;
+    background-repeat: no-repeat;
+    color: #001a5f;
+    background-size: contain;
+    margin-top: 30px;
+    max-width: 100%;
+}
+
+.signup-row{
+  margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    background-color: #f4f4f4;
+    padding: 5px 10px;
+}
+.signup-underline{
+  background: url('../../assets/Image/signup-underline.png') no-repeat;
+  background-position: bottom center;
+    background-size:40%;
+    padding-bottom: 10px!important;
+}
+
+.programm-list{
+  padding-bottom: 30px;
+    font-size:18px;
+    color: #262626;
+    font-weight: 500;
+    position: relative;
+    list-style-type: none;
+    padding-right: 25px;
+}
+.programm-list::before{
+  content: '.';
+  color:#000;
+    left:-12px;
+    font-size:2em;
+    position: relative;
+}
+/* Media Query */
+@media only screen and (max-width: 1326px) {
+  .robot-gif {
+    width: auto;
+  }
+  .robot {
+    width: 24%;
+    left: 35rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .dropdown-content {
+    top: 24px;
+    width: 12rem;
+  }
+  .dropdown-list {
+    padding: 22px 20px;
+  }
+  .swiper-company {
+    margin-right: 80px;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .handwritten-notice h3 {
+    font-size: 30px;
+  }
+  .logo-simplinoted {
+    display: none;
+  }
+  .thankyou_img {
+    display: block;
+    position: absolute;
+    width: 35%;
+    margin-left: 26rem;
+    margin-top: 6rem;
+    z-index: 1;
+  }
+  .cars-killer {
+    position: static;
+    margin-top: 42px;
+    width: 38%;
+    margin-left: 14rem;
+  }
+  .start-writing-button,
+  .request-a-button {
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-right: 0px;
+    min-width: 170px;
+    min-height: 46px;
+    font-weight: normal;
+  }
+  .scale-starting {
+    font-size: 14px;
+    padding-top: 10px;
+  }
+  .underline-heading {
+    display:block
+  }
+  .underline-text {
+    width:100%;
+  }
+  .wrap-referral-form{
+    width:570px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .btn1 {
+    width: 58%;
+    margin-left: 5rem;
+  }
+  .btn3 {
+    font-size: 11px;
+    margin-top: 10px;
+    width: 60%;
+    margin-left: 5rem;
+    margin-bottom: 30px;
+  }
+  .input_email {
+    width: 54%;
+  }
+  .bottom_background {
+    margin-right: 0px;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-color: #ef6e6e;
+    background-size: 20px;
+    border-radius: 50%;
+  }
+  .thankyou_img {
+    width: 55%;
+    margin-top: 5rem;
+    margin-left: 9rem;
+  }
+  .cars-killer {
+    width: 60%;
+    margin-left: 2rem;
+  }
+  .handwritten-notice h3 {
+    font-size: 20px;
+    margin-right: 0px;
+  }
+  .data_card {
+    margin: 0 25px;
+    height: 77%;
+  }
 }
