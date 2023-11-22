@@ -86,6 +86,15 @@ export default function FlatCustomisableCard({
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!isLoading) return;
+    window.addEventListener('scroll', function () {
+      window.scrollTo(0, 0);
+    });
+    const body = document.body;
+    body.style.overflow = 'hidden';
+  }, [isLoading]);
+
+  useEffect(() => {
     // Generate default image for the face URL of the custom card.
     if (frontImageDetails.isImageSelected) return;
     const generateDefaultScreenshotImage = async () => {
@@ -828,12 +837,16 @@ export default function FlatCustomisableCard({
     );
   };
 
-  return isLoading ? (
-    <div className="min-h-screen flex justify-center items-center">
-      <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
-    </div>
-  ) : (
-    <section>
+  return (
+    <section className="relative">
+      {isLoading && (
+        <div
+          style={{zIndex: 999}}
+          className="min-h-screen w-full absolute top-[-10px] flex justify-center items-center bg-transparent backdrop-filter backdrop-blur"
+        >
+          <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
+        </div>
+      )}
       {checkTitleDuplicacyModalOpen && (
         <Modal
           cancelLink={() => {
