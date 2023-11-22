@@ -22,7 +22,10 @@ const Card=()=>{
     return(
         <>
         <div>
-           
+           <div className="flex w-[90%] mx-auto">
+            
+    <div class="swiper-button-prev relative my-auto"><img src={prev} className="w-[25px]" alt="" /></div>
+    
         <Swiper
       modules={[Navigation,Pagination]}
       direction={'horizontal'}
@@ -54,7 +57,7 @@ const Card=()=>{
                    
                         
                   <SwiperSlide>
-                  <div className="data_card bg-white md:mx-56 sm:mx-[133px]  text-center mt-5">
+                  <div className="data_card bg-white  text-center mt-5 w-[82%] mx-auto">
         <div className="m-auto w-full pt-5 md:pt-20">
             <img src={data.img} alt="" className="w-[100px] mt-1 text-center inline"></img>
         </div>
@@ -75,10 +78,11 @@ const Card=()=>{
         })}
       
     </Swiper>
-<div className="md:mb-0 mb-20">
-    <div class="swiper-button-prev cursor-pointer absolute md:mt-[-16rem] sm:mt-[-3rem] md:ml-[9rem]  sm:ml-[17rem]  "><img src={prev} className="w-[25px]" alt="" /></div>
-<div class="swiper-button-next cursor-pointer absolute md:mt-[-16rem]   sm:mt-[-3rem]  xl:ml-[73rem] lg:ml-[55rem] md:ml-[50rem]"><img src={next} className="w-[25px]" alt="" /></div>
-</div>   
+    
+<div class=" swiper-button-next relative my-auto"><img src={next} className="w-[25px]" alt="" /></div>
+
+</div>
+
 
 
       <div className="ml-[-20rem]">

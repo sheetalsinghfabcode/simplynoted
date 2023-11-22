@@ -332,7 +332,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                         <div>Send A Card</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
-                            <Link to="/collections/best-sellers">
+                            <Link to="/collecti1ons/best-sellers">
                               {' '}
                               <li> Cards</li>
                             </Link>
@@ -416,7 +416,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                               <li>Tutorials</li>
                             </Link>
                             <a href="https://www.youtube.com/@simplynoted">
-                            <li>Videos</li>
+                              <li>Videos</li>
                             </a>
                             <Link to="/faq">
                               <li>F.A.Q.</li>
@@ -427,8 +427,10 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                     ) : null}
 
                     {item.title === 'Business' ? (
-                      <Link to="/business"><div className='navitems'>Bussiness</div></Link>
-                    ):null}
+                      <Link to="/business">
+                        <div className="navitems">Bussiness</div>
+                      </Link>
+                    ) : null}
 
                     {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
                   </div>
@@ -743,9 +745,15 @@ function FooterMenu({menu}) {
             <img src={footerlogo} alt=""></img>
           </div>
           <div className="flex mt-5">
+            <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
             <img className="w-14 m-1" src={linkdin} alt=""></img>
+            </a>
+            <a href="#">
             <img className="w-14 m-1" src={fb} alt=""></img>
+            </a>
+            <a href="#">
             <img className="w-14 m-1" src={twitter} alt=""></img>
+            </a>
           </div>
         </div>
         <div className="gap-x-6 mx-32 my-10 md:mx-16 md:my-20  text-white">
@@ -805,7 +813,7 @@ function FooterMenu({menu}) {
 
           <div className="mt-24 text-white">
             <div className="text-xl font-semibold">Email</div>
-            <div>support@simplynoted.com</div>
+            <div><a href="mailto:support@simplynoted.com">support@simplynoted.com</a></div>
           </div>
         </div>
 

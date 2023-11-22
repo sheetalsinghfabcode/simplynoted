@@ -1,34 +1,35 @@
 import FaqAccordion from '~/components/FaqAccordion';
-import faq_underline from '../../assets/Image/faq-underline.png';
+import underline from '../../assets/Image/faq-underline.png';
 
 const Faq = () => {
   return (
     <>
       <div className="mt-10">
-        <h1 className="text-[#1b5299] text-center text-5xl font-karla leading-10 font-medium pb-5 tracking-wide mx-2">
+        <h1 className="text-[#001a5f] text-center text-5xl font-karla leading-10 font-medium pb-5 tracking-wide mx-2">
           Simply Noted FAQs
         </h1>
         <div className="flex justify-center">
           <img
             className="md:w-[33%] w-[73%] mb-[33px]"
-            src={faq_underline}
+            src={underline}
             alt="menu-underline"
           />
         </div>
 
         <FaqAccordion
           title="Do you have have business pricing / offer custom orders?"
-          className="tab-content">
-            <span>
-          Yes we do! Orders up-to 5,000 can be placed online with our normal
+          className="tab-content"
+        >
+          <span>
+            Yes we do! Orders up-to 5,000 can be placed online with our normal
             pricing. For larger orders or custom orders please reach out to us
             at support@simplynoted.com."
-            </span>
+          </span>
         </FaqAccordion>
 
         <FaqAccordion
           title="What type of card / paper can you write on?"
-          className="tab-content" 
+          className="tab-content"
         >
           <span>
             We are proud to offer the most flexibility in the industry by giving
@@ -37,7 +38,7 @@ const Faq = () => {
             envelope sizes. By default we use 5x7 (10x7 fold over) stationary &
             A7 envelopes. To place a custom order please reach out to us at
             support@simplynoted.com.
-            </span>
+          </span>
         </FaqAccordion>
 
         <FaqAccordion

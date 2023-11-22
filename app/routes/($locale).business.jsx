@@ -253,7 +253,8 @@ const Business = () => {
                             </div>
                             <DynamicButton
                               onClickFunction={() =>
-                                navigate('/collections/best-sellers')
+                                (window.location.href =
+                                  'https://share.hsforms.com/1C6vknLo8RZONgXjDQhc0GQ39obb')
                               }
                               text="START INTEGRATE"
                               className="business-btn
@@ -287,12 +288,12 @@ const Business = () => {
                               access to our Zapier App today!{' '}
                             </div>
                             <DynamicButton
-                              // onClickFunction={() =>
-                              //   navigate('/collections/best-sellers')
-                              // }
+                              onClickFunction={() =>
+                                (window.location.href =
+                                  'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/')
+                              }
                               text="START INTEGRATE"
-                              className="business-btn
-                    "
+                              className="business-btn"
                             />
                           </div>
                         </div>
@@ -322,12 +323,12 @@ const Business = () => {
                               encourage customer loyalty.
                             </div>
                             <DynamicButton
-                              // onClickFunction={() =>
-                              //   navigate('/collections/best-sellers')
-                              // }
+                              onClickFunction={() =>
+                                (window.location.href =
+                                  'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/')
+                              }
                               text="START INTEGRATE"
-                              className="business-btn
-                    "
+                              className="business-btn"
                             />
                           </div>
                         </div>
@@ -381,12 +382,12 @@ const Business = () => {
                               with an optional gift card.
                             </div>
                             <DynamicButton
-                              // onClickFunction={() =>
-                              //   navigate('/collections/best-sellers')
-                              // }
+                              onClickFunction={() =>
+                                (window.location.href =
+                                  'https://share.hsforms.com/1C6vknLo8RZONgXjDQhc0GQ39obb')
+                              }
                               text="START INTEGRATE"
-                              className="business-btn
- "
+                              className="business-btn"
                             />
                           </div>
                         </div>

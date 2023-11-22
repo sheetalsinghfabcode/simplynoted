@@ -58,7 +58,6 @@ const AboutUs = () => {
                 <a
                   className="bg-[#1b5299] md:text-[20px]  text-[16px] pt-[2px] pb-[5px] px-[10px] hover:text-white"
                   href="https://www.youtube.com/@simplynoted"
-                  target="_blank"
                 >
                   Learn more
                 </a>
