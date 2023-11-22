@@ -41,8 +41,8 @@ import {MessageWriting} from '~/components/products/MessageWrite';
 import {AddCart} from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
-import foldBack from '../../assets/Image/foldBack.png'
-import flatCardImg from '../../assets/Image/flatCustomImg.png'
+import foldBack from '../../assets/Image/foldBack.png';
+import flatCardImg from '../../assets/Image/flatCustomImg.png';
 import CircularLoader from '~/components/CircularLoder';
 export async function loader({params, context}) {
   const {productHandle} = params;
@@ -175,6 +175,7 @@ export default function CustomProducts() {
     localStorage.removeItem('reqFielddInCart');
     setLocationValue(true);
   }, [datafornav.pathname]);
+  console.log(imageShow,"imageShow");
   return (
     <div className='relative'>
       {customProductData.length === 0 && metafields.length === 0 && (
@@ -224,16 +225,26 @@ export default function CustomProducts() {
                   metafields &&
                   metafields.cardType == 'folded5x7' && (
                     <div className="flex w-[35rem]">
-                      <DynamicButton
-                        className="bg-[#1b5299] m-5 ml-[32px] w-full "
-                        text="VIEW CARD FRONT"
-                        onClickFunction={() => setImageShow(0)}
-                      />
-                      <DynamicButton
-                        className="bg-[#EF6E6E] m-5 ml-[32px] w-full "
-                        text="VIEW CARD BACK"
-                        onClickFunction={() => setImageShow(1)}
-                      />
+                      <button
+                        style={{
+                          backgroundColor:
+                            imageShow == '0' ? '#001a5f' : '#ef6e6e',
+                        }}
+                        className={`bg-[#1b5299] m-5 ml-[32px] w-full p-2 text-[#fff]`}
+                        onClick={() => setImageShow(0)}
+                      >
+                        VIEW CARD FRONT
+                      </button>
+                      <button
+                        style={{
+                          backgroundColor:
+                             imageShow == '1' ? '#001a5f' : '#ef6e6e',
+                        }}
+                        className="bg-[#EF6E6E] m-5 ml-[32px] w-full p-2 text-[#fff]"
+                        onClick={() => setImageShow(1)}
+                      >
+                        VIEW CARD BACK
+                      </button>
                     </div>
                   )}
               </div>
