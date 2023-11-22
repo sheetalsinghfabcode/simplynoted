@@ -430,6 +430,7 @@ export default function FoldedCustomisableCard({
       formData.append('transformBack', backImageDetails.zoom);
       formData.append('cardType', 'folded5x7');
       formData.append('name', `customer-${customerId}--`);
+      qr.isQrAdded && formData.append('QR', qr.inputText);
 
       const options = {
         method: 'POST',
@@ -787,9 +788,9 @@ export default function FoldedCustomisableCard({
                   style={{
                     zIndex: '-30',
                     transform: isRotationAnimationApplied
-                      ? 'rotateY(-180deg)'
+                      ? 'rotateY(360deg)'
                       : 'rotateY(0deg)',
-                    transition: 'transform .8s',
+                    transition: 'transform 1.2s',
                   }}
                 >
                   {(selectedCardPage === 'Card Front' && (
@@ -800,7 +801,7 @@ export default function FoldedCustomisableCard({
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(-180deg)'
+                            ? 'rotateY(360deg)'
                             : 'rotateY(0deg)',
                         }}
                       ></div>
@@ -810,7 +811,7 @@ export default function FoldedCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(-180deg)'
+                            ? 'rotateY(360deg)'
                             : 'rotateY(0deg)',
                         }}
                       >
@@ -837,7 +838,7 @@ export default function FoldedCustomisableCard({
                         className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
                         style={{
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(-180deg)'
+                            ? 'rotateY(360deg)'
                             : 'rotateY(0deg)',
                         }}
                       >
@@ -864,7 +865,7 @@ export default function FoldedCustomisableCard({
                             background: 'transparent',
                             zIndex: '-10',
                             transform: isRotationAnimationApplied
-                              ? 'rotateY(-180deg)'
+                              ? 'rotateY(360deg)'
                               : 'rotateY(0deg)',
                           }}
                         ></div>
@@ -874,8 +875,8 @@ export default function FoldedCustomisableCard({
                           style={{
                             zIndex: '-20',
                             transform: isRotationAnimationApplied
-                              ? 'rotateY(-180deg)'
-                              : 'rotateY( 0deg)',
+                              ? 'rotateY(360deg)'
+                              : 'rotateY(0deg)',
                           }}
                         >
                           {backImageDetails.imageFile && (
@@ -972,6 +973,7 @@ export default function FoldedCustomisableCard({
                         />
                         <input
                           type="file"
+                          accept="image/png, image/jpeg"
                           className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                           onChange={handleImageFileInsertion}
                           ref={frontImageRef}
@@ -988,6 +990,7 @@ export default function FoldedCustomisableCard({
                         />
                         <input
                           type="file"
+                          accept="image/png, image/jpeg"
                           className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                           onChange={handleImageFileInsertion}
                           ref={backImageRef}

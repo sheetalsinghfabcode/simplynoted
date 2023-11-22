@@ -32,7 +32,7 @@ export default function CardTypeSelection({
           <div className="flex flex-col justify-center  items-center">
             <div className="flex justify-center h-[88px] mt-8 mb-4 gap-5 w-full">
               <div
-                className="pl-3 pr-3 flex justify-center items-center flex-1"
+                className="pl-3 pr-3 flex justify-center items-center flex-1 cursor-pointer"
                 style={{
                   backgroundColor: isFlatCardType
                     ? 'rgb(239, 110, 110)'
@@ -47,7 +47,7 @@ export default function CardTypeSelection({
                 />
               </div>
               <div
-                className="pr-3 pl-3 flex justify-center items-center flex-1"
+                className="pr-3 pl-3 flex justify-center items-center flex-1 cursor-pointer"
                 style={{
                   backgroundColor: isFlatCardType
                     ? 'white'
