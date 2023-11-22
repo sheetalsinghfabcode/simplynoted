@@ -3,13 +3,9 @@ import AddressForm from '../components/addressBook/AddressForm';
 import EditAddressForm from '../components/addressBook/EditAddressForm';
 import Instruction from '~/components/modal/Instruction';
 import {useNavigate} from '@remix-run/react';
-import Loader from '../components/modal/Loader';
-import DynamicButton from '~/components/DynamicButton';
 import ContactTable from '~/components/addressBook/ContactTable';
-import ErrorModal from '../components/modal/ErrorModal';
 import {useAddressBook} from '~/components/AddressBookContext';
 import DynamicTitle from '~/components/Title';
-import CircularLoader from '~/components/CircularLoder';
 
 let customerID;
 
@@ -27,14 +23,9 @@ export default function AddressBook() {
     setSelectedAddress,
   } = useAddressBook();
 
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [fileData, setFileData] = useState([]);
-  const [searchText, setSearchText] = useState('');
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
-  const [errorModal, setErrorModal] = useState(false);
-  const [errorContent, serErrorContent] = useState([]);
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -76,78 +67,59 @@ export default function AddressBook() {
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
 
-
-
   return (
-    <>
-      <div className="bg-[#e0e9f8] relative w-full max-w-[1440px] mx-auto px-[20px]">
-      
-      {
-        errorModal ? (
-          <ErrorModal
-            title="Uploaded Error!"
-            isOpen={errorModal}
-            onRequestClose={() => setErrorModal(false)}
-            content={errorContent}
-          />
-        ) : (
-          <>
-            <div className={`w-full max-w-[1440px]  mx-auto`}>
-              <DynamicTitle dynamicButton title={'Address Book'} />
-              {!addressForm && !selectedAddress && (
-                <div className="w-full">
-              
-                  <Instruction
-                    isOpen={isModalOpen}
-                    title="INSTRUCTIONS FOR BULK UPLOAD"
-                    closeModal={closeModal}
-                    instructions={[
-                      'Download the bulk upload template (csv)',
-                      'Complete a row for each address you wish to add',
-                      'Upload your completed file in .csv format',
-                    ]}
-                    table={true}
-                  />
-                  <ContactTable
-                    customerID={customerID}
-                    openModal={openModal}
-                    filteredAddresses={filteredAddresses}
-                    editAddress={editAddress}
-                    serErrorContent={serErrorContent}
-                    setSelectedAddress={setSelectedAddress}
-                    setSelectedCheckboxes={setSelectedCheckboxes}
-                    selectedCheckboxes={selectedCheckboxes}
-                    setFilteredAddresses={setFilteredAddresses}
-                    setAddressForm={setAddressForm}
-                  />
-                </div>
-              )}
-              {addressForm && (
-                <div className="w-full max-w-[1440px] px-[20px] mx-auto">
-                  <AddressForm
-                    customerID={customerID}
-                    setAddressForm={setAddressForm}
-                    setEditAddress={setEditAddress}
-                  />
-                </div>
-              )}
-              {selectedAddress && (
-                <div className="w-full max-w-[1440px] px-[20px] mx-auto">
-                  <EditAddressForm
-                    customerID={customerID}
-                    selectedAddress={selectedAddress}
-                    setSelectedAddress={setSelectedAddress}
-                    setEditAddress={setEditAddress}
-                    setAddressForm={setAddressForm}
-                    loadAddress={loadAddress}
-                    setLoadAddress={setLoadAddress}
-                  />
-                </div>
-              )}
-            </div>
-          </>
+    <div className="bg-[#e0e9f8] relative w-full max-w-[1440px] mx-auto px-[20px]">
+      <div className={`w-full max-w-[1440px]  mx-auto`}>
+        <DynamicTitle dynamicButton title={'Address Book'} />
+        {!addressForm && !selectedAddress && (
+          <div className="w-full">
+            <Instruction
+              isOpen={isModalOpen}
+              title="INSTRUCTIONS FOR BULK UPLOAD"
+              closeModal={closeModal}
+              instructions={[
+                'Download the bulk upload template (csv)',
+                'Complete a row for each address you wish to add',
+                'Upload your completed file in .csv format',
+              ]}
+              table={true}
+            />
+            <ContactTable
+              customerID={customerID}
+              openModal={openModal}
+              filteredAddresses={filteredAddresses}
+              editAddress={editAddress}
+              setSelectedAddress={setSelectedAddress}
+              setSelectedCheckboxes={setSelectedCheckboxes}
+              selectedCheckboxes={selectedCheckboxes}
+              setFilteredAddresses={setFilteredAddresses}
+              setAddressForm={setAddressForm}
+            />
+          </div>
+        )}
+        {addressForm && (
+          <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+            <AddressForm
+              customerID={customerID}
+              setAddressForm={setAddressForm}
+              setEditAddress={setEditAddress}
+            />
+          </div>
+        )}
+        {selectedAddress && (
+          <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+            <EditAddressForm
+              customerID={customerID}
+              selectedAddress={selectedAddress}
+              setSelectedAddress={setSelectedAddress}
+              setEditAddress={setEditAddress}
+              setAddressForm={setAddressForm}
+              loadAddress={loadAddress}
+              setLoadAddress={setLoadAddress}
+            />
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

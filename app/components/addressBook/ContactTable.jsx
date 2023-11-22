@@ -1,13 +1,12 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import {useTable, usePagination} from 'react-table';
-import Loader from '../modal/Loader';
 import edit from '../../../assets/Image/edit.png';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import {useAddressBook} from '../AddressBookContext';
 import CheckBox from '../../components/CheckBox';
 import CircularLoader from '../CircularLoder';
 import DynamicButton from '../DynamicButton';
-import CustomCheckbox from '../CustomCheckbox';
+import ErrorModal from '../modal/ErrorModal';
 
 const ContactTable = ({
   customerID,
@@ -21,7 +20,6 @@ const ContactTable = ({
   ProdcuctSide,
   continueBtn,
   setFilteredAddresses,
-  serErrorContent 
 }) => {
   const {loadAddress, setLoadAddress, addresses} = useAddressBook();
   const [selectedType, setSelectedType] = useState('all');
@@ -31,8 +29,9 @@ const ContactTable = ({
   const [fileData, setFileData] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [updateLoader, setupdateLoader] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [errorContent, serErrorContent] = useState([]);
 
-  const [isChecked, setIsChecked] = useState(false);
 
   let data = filteredAddresses;
 
@@ -389,6 +388,17 @@ const ContactTable = ({
 
 
   return (
+
+    <>
+         {
+        errorModal ? (
+          <ErrorModal
+            title="Uploaded Error!"
+            isOpen={errorModal}
+            onRequestClose={() => setErrorModal(false)}
+            content={errorContent}
+          />
+        ) : (
     <div className="w-full max-w-[100%] overflow-x-auto">
       <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
         <input
@@ -618,6 +628,8 @@ const ContactTable = ({
         cancelText="Cancel"
       />
     </div>
+ )}
+    </>
   );
 };
 
