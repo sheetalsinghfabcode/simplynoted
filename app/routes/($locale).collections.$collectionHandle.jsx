@@ -154,7 +154,7 @@ export default function Collection() {
   let myColletionData = myCollection.collection.products
   myColletionData = myColletionData.nodes.filter(item => item.productType != 'customisable card')
   // console.log(handleLinkData.collections.edges,"handleLinkData.collections.edges");
-  let mainTags = ["thank-you","birthday","anniversary","business","congratulations","holidays","just-because","customisable-cards"]
+  let mainTags = ["best-sellers","thank-you","birthday","anniversary","business","congratulations","holidays","just-because","customisable-cards"]
   let filterTag = handleLinkData.collections.edges
   const data = filterTag.filter((item)=> mainTags.includes(item.node.handle))
   // console.log(data,"filtereTag Data");

@@ -592,6 +592,7 @@ export default function FlatCustomisableCard({
       formData.append('transformBack', null);
       formData.append('cardType', 'flat5x7');
       formData.append('name', `customer-${customerId}--`);
+      qr.isQrAdded && formData.append('QR', qr.inputText);
 
       const options = {
         method: 'POST',
@@ -994,9 +995,9 @@ export default function FlatCustomisableCard({
                   style={{
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
                     transform: isRotationAnimationApplied
-                      ? 'rotateY(-180deg)'
+                      ? 'rotateY(360deg)'
                       : 'rotateY(0deg)',
-                    transition: 'transform .8s',
+                    transition: 'transform 1.2s',
                   }}
                   onMouseOver={() => setIsMouseHoveredOnContainer(true)}
                   onMouseOut={() => setIsMouseHoveredOnContainer(false)}
@@ -1009,7 +1010,7 @@ export default function FlatCustomisableCard({
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(-180deg)'
+                            ? 'rotateY(360deg)'
                             : 'rotateY(0deg)',
                         }}
                       ></div>
@@ -1019,7 +1020,7 @@ export default function FlatCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(-180deg)'
+                            ? 'rotateY(360deg)'
                             : 'rotateY(0deg)',
                         }}
                       >
@@ -1048,12 +1049,12 @@ export default function FlatCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(-180deg)'
+                            ? 'rotateY(360deg)'
                             : 'rotateY(0deg)',
                         }}
                       >
                         <div
-                          className={`flex h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
+                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
                             headerFooterVisibility.isHeaderVisible
                               ? 'block '
                               : 'hidden '
@@ -1070,10 +1071,11 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${headerData.fontFamily} max-w-[434px] overflow-hidden`}
+                            className={`font-${headerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap`}
                             style={{
                               fontSize: `${headerData.fontSize}px`,
                               color: `${headerData.fontColor}`,
+                              maxWidth: '434px',
                             }}
                           >
                             {!headerData.isImageSelected &&
@@ -1102,7 +1104,7 @@ export default function FlatCustomisableCard({
                           <span>Your custom message text will be here...</span>
                         </div>
                         <div
-                          className={`flex h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
+                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
                             headerFooterVisibility.isFooterVisible
                               ? 'block '
                               : 'hidden '
@@ -1119,10 +1121,11 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${footerData.fontFamily} max-w-[434px] overflow-hidden`}
+                            className={`font-${footerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap`}
                             style={{
                               fontSize: `${footerData.fontSize}px`,
                               color: `${footerData.fontColor}`,
+                              maxWidth: `${qr.isQrAdded ? '375px' : '434px'}`,
                             }}
                           >
                             {!footerData.isImageSelected &&
@@ -1131,7 +1134,9 @@ export default function FlatCustomisableCard({
                           {(footerData.isImageSelected || qr.isQrAdded) && (
                             <div
                               id="backFooterImageDiv"
-                              className="h-[45px] w-[60px] overflow-hidden"
+                              className={`h-[45px] ${
+                                qr.isQrAdded ? 'w-[20px] ml-3 ' : 'w-[60px]'
+                              } overflow-hidden`}
                             >
                               <img
                                 src={
@@ -1143,7 +1148,7 @@ export default function FlatCustomisableCard({
                                   footerData.isColoredImage
                                     ? 'grayscale-0'
                                     : 'grayscale'
-                                }`}
+                                } ${qr.isQrAdded && 'absolute right-1 pb-1'}`}
                                 style={{transform: `scale(${footerData.zoom})`}}
                                 alt="Selected footer image"
                                 draggable="false"
@@ -1193,6 +1198,7 @@ export default function FlatCustomisableCard({
                   {selectedCardPage === 'Card Front' && (
                     <input
                       type="file"
+                      accept="image/png, image/jpeg"
                       ref={frontImageRef}
                       className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                       onChange={handleImageFileInsertion}
@@ -1571,6 +1577,7 @@ export default function FlatCustomisableCard({
 
                           <input
                             type="file"
+                            accept="image/png, image/jpeg"
                             ref={backHeaderImageRef}
                             className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                             onChange={handleImageFileInsertion}
@@ -1587,6 +1594,7 @@ export default function FlatCustomisableCard({
                           />
                           <input
                             type="file"
+                            accept="image/png, image/jpeg"
                             className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                             onChange={handleImageFileInsertion}
                           />
