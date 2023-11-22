@@ -13,6 +13,7 @@ import AiImage from '../../../assets/Image/aiImage.avif';
 import {useLocation} from '@remix-run/react';
 import { useStateContext } from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
+import ConfirmationModal from '../modal/ConfirmationModal';
 
 let mainMessageBox,
   signOffTextBox,
@@ -61,6 +62,8 @@ export function MessageWriting({
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
+  const [addNewTem,setAddNewTem] = useState(false)
+  const [tempVal,setTempVal] = useState('')
 
   const [bulkFileCount,setBulkFileCount] = useState(0)
   const maxMessCount = 450;
@@ -663,6 +666,50 @@ function onClickOfContinue(){
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
+
+  function onTemplateVal(event){
+    const value = event.target.value;
+    setTempVal(value)
+  }
+
+  async function addNewTemplateFunc(){
+    try {
+      const res = await fetch(`https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`, {
+        method: 'POST',
+        body: JSON.stringify({templateName:tempVal,
+          customMessage:name}),
+      })
+      const json = await res.json()
+      if(json){
+        setAddNewTem(false)
+      }
+      console.log(json,"addNewTemplateFunc");
+    } catch (error) {
+      console.log(error,"add new Template");
+    }
+  }
+  function AddNewTemplate(){
+    return(
+      <div className='w-[29rem] m-[2rem]'>
+        <div>
+        <h1 className='text-[28px] text-[#001a5f] font-karla'>NEW TEMPLATE</h1>
+        </div>
+        <div>
+        <input type="text"  value={tempVal} onChange={onTemplateVal}/>
+        </div>
+        <div>
+        <DynamicButton
+        className="bg-[#1b5299] text-[14px] mb-6 w-[9rem] mt-4"
+        onClickFunction={()=>addNewTemplateFunc()}
+        text="Save template"/>
+        <DynamicButton
+        className="bg-[gray] text-[14px] mb-6 w-[9rem]"
+        text="Cancel"
+        onClickFunction={()=>setAddNewTem(false)}/>
+        </div>
+      </div>
+    )
+  }
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -725,6 +772,14 @@ function onClickOfContinue(){
             data-gtm-form-interact-field-id="0"
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
+          <div className='flex justify-between mt-[1rem]'>
+            <div>
+            <span className='font-bold text-[#1b5299] cursor-pointer' onClick={()=>setAddNewTem(true)}>Save As New Message Template</span>
+            </div>
+            <div>
+            <span className='font-bold text-[#1b5299] cursor-pointer'>Load Saved Message Template</span>
+            </div>
+          </div>
           <br />
           {checkCharCount && (
             <span className="text-[red] font-bold">
@@ -1018,6 +1073,12 @@ function onClickOfContinue(){
           />
         }
       />
+      <Instruction
+      isOpen={addNewTem}
+      title=""
+      closeModal={()=>setAddNewTem(false)}
+      table={false}
+      body={<AddNewTemplate/>}/>
       <LoginModal
         title={' Add Card'}
         show={loginModal}

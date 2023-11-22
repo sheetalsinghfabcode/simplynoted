@@ -7,7 +7,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    width: '100%',
+    // width: '100%',
     transform: 'translate(-50%, -50%)',
     maxWidth: '80%', // Add your desired width here
     maxHeight:'70vh'
