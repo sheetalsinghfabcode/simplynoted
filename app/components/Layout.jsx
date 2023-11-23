@@ -239,8 +239,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [customerId, setCustomerId] = useState(null);
-
+  const [customerId, setCustomerId] = useState('');              
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
@@ -275,12 +274,10 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   }
 
 
-  useEffect(() => {
-    const storedCustomerId = localStorage.getItem('customerId');
-    if (storedCustomerId) {
-      setCustomerId(storedCustomerId);
-    }
-  }, []);
+ 
+
+
+
   const params = useParams();
   const {y} = useWindowScroll();
   return (
@@ -503,7 +500,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             Account →
           </Link> */}
           <DynamicButton
-            text={'Acccount  →'}
+            text= {storedCustomerId ? 'Account →' : 'Sign →'}
             className="login-button"
             onClickFunction={() => {
               navigate('/account');

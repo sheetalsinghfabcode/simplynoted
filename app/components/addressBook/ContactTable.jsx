@@ -7,6 +7,7 @@ import CheckBox from '../../components/CheckBox';
 import CircularLoader from '../CircularLoder';
 import DynamicButton from '../DynamicButton';
 import ErrorModal from '../modal/ErrorModal';
+import CustomCheckbox from '../CustomCheckbox'; 
 
 const ContactTable = ({
   customerID,
@@ -173,7 +174,7 @@ const ContactTable = ({
         accessor: 'anniversary',
       },
     ],
-    [],
+    [selectedCheckboxes],
   );
 
   const {

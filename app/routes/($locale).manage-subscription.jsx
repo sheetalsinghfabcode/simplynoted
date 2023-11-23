@@ -38,7 +38,6 @@ const ManageSubscription = () => {
   const [updateCard,setUpdateCard] = useState(false)
 
 
-  console.log("paymentId",paymentId)
 
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
@@ -65,7 +64,6 @@ const ManageSubscription = () => {
 
 
   useEffect(() => {
-    console.log('Component mount');
     // Define the API URL
     setLoader(true);
     const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
@@ -88,7 +86,6 @@ const ManageSubscription = () => {
         setLoader(false);
       });
     return () => {
-      console.log('Component Unmount');
     };
   }, []);
 
@@ -317,9 +314,7 @@ const ManageSubscription = () => {
   const subscriptionEndDate = stripeCollection.stripe?.subscriptionEndDate;
   if (subscriptionEndDate) {
     formattedDateString = formatDateString(subscriptionEndDate);
-  } else {
-    console.log('Subscription end date not available.');
-  }
+  } 
 
   async function getSavedCards(Id) {
     try {
@@ -449,7 +444,7 @@ const ManageSubscription = () => {
                         </span>
                         <span className="text-[20px] !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
-                            'canceled' || !stripeCollection.error
+                            'canceled' && !stripeCollection.error
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
                         </span>

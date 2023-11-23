@@ -1,6 +1,4 @@
 import DynamicButton from '../../components/DynamicButton';
-import {useState, useEffect} from 'react';
-import {Link} from '../../components/Link';
 import {useNavigate} from '@remix-run/react';
 
 const data = [

@@ -9,6 +9,7 @@ const WalletPurchase = ({
   WalletData,
   setWalletPayment,
   setFinalPrice,
+  subscriptionTitle,
 }) => {
   const subscriptionPrice =
     subscription !== 0 ? subscription?.split('/')[0].replace('$', '') : '0';
@@ -24,7 +25,7 @@ const WalletPurchase = ({
       <div className="max-w-[750px] mx-auto p-[50px] border border-solid border-[#ef6e6e]">
         <div className="flex justify-center">
           <DynamicButton
-            text={`${WalletData ? 'Team' : 'Free'} Plan Packages`}
+            text={`${subscriptionTitle ? subscriptionTitle : 'Free'} Plan Packages`}
             className="!bg-[#EF6E6E] uppercase text-[22px]"
           />
         </div>

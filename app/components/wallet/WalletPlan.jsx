@@ -13,6 +13,8 @@ const WalletPlans = ({
   setSubscriptionProduct,
   setPackageProduct,
   amount,
+  setSubscriptionTitle,
+  setSubscriptionPriceId
 }) => {
   const handleRadioChange = (event) => {
     setSelectedPlan(event.target.value);
@@ -36,10 +38,6 @@ const WalletPlans = ({
       setAmount(stripeCollection.stripe?.packageQuantity || 0); // Set the amount
     }
   }, [stripeCollection]);
-
-
-  
-
 
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
@@ -79,6 +77,10 @@ const WalletPlans = ({
                   const amountMetafield = variant.node.metafields.find(
                     (metafield) => metafield?.key === 'card_amount',
                   );
+                  const subscriptionPriceId = product.node.metafields.find(
+                    (metafield) => metafield?.key === "strip_link",
+
+                  )
 
                   const subscriptionMetafield = product.node.metafields.find(
                     (metafield) =>
@@ -87,14 +89,16 @@ const WalletPlans = ({
                         stripeCollection.stripe?.subscription,
                   );
 
+
                   return (
                     <div
                       onClick={() => {
                         setSubscription(subscriptionMetafield?.value || 0);
                         setSubscriptionProduct(product.node.id)
                         setPackageProduct(variant.node.id)
-                        
+                        setSubscriptionTitle(product.node.title)
                         setAmount((variant.node.price.amount) || 0);
+                        setSubscriptionPriceId(subscriptionPriceId?.value)
                         handleRadioChange({
                           target: {
                             value: `${variant.node.title} ${titleMetafield?.value}`,
