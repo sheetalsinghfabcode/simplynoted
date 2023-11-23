@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BiSolidChevronLeft } from "react-icons/bi";
 import { useNavigate } from '@remix-run/react';
 import DynamicButton from '../DynamicButton';
-import { useAddressBook } from '~/components/AddressBookContext';
+import { useStateContext } from '~/context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import Loader from '../modal/Loader';
 import { Modal } from '../Modal'
@@ -24,7 +24,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         setEditAddress,
         selectedAddress,
         setSelectedAddress,
-    } = useAddressBook();
+    } = useStateContext();
     console.log(editOrderValue, 'editOrderValue');
     const [returnAddress, setReturnAddress] = useState([])
     const [recipientAddress, setRecipientAddress] = useState([])

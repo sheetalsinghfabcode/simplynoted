@@ -24,7 +24,7 @@ import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
-import {AddressBookProvider} from './components/AddressBookContext';
+import {StateContextProvider} from './context/StateContext';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
@@ -87,7 +87,7 @@ export default function App() {
   useAnalytics(hasUserConsent);
 
   return (
-    <AddressBookProvider>
+    <StateContextProvider>
       <html lang={locale.language}>
         <head>
           <meta charSet="utf-8" />
@@ -110,7 +110,7 @@ export default function App() {
           <LiveReload nonce={nonce} />
         </body>
       </html>
-    </AddressBookProvider>
+    </StateContextProvider>
   );
 }
 

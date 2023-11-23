@@ -11,7 +11,7 @@ import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
 import {useLocation} from '@remix-run/react';
-import { useAddressBook } from '../AddressBookContext';
+import { useStateContext } from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 
 let mainMessageBox,
@@ -36,7 +36,7 @@ export function MessageWriting({
 }) {
   //   console.log(EditMess, 'EditMess');
  const {setAddressForm,addressForm,loadAddress,addresses,
-    setAddresses} =  useAddressBook()
+    setAddresses} =  useStateContext()
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');

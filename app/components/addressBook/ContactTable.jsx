@@ -2,7 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import {useTable, usePagination} from 'react-table';
 import edit from '../../../assets/Image/edit.png';
 import ConfirmationModal from '../modal/ConfirmationModal';
-import {useAddressBook} from '../AddressBookContext';
+import {useStateContext} from '../../context/StateContext';
 import CheckBox from '../../components/CheckBox';
 import CircularLoader from '../CircularLoder';
 import DynamicButton from '../DynamicButton';
@@ -22,7 +22,7 @@ const ContactTable = ({
   continueBtn,
   setFilteredAddresses,
 }) => {
-  const {loadAddress, setLoadAddress, addresses} = useAddressBook();
+  const {loadAddress, setLoadAddress, addresses} = useStateContext();
   const [selectedType, setSelectedType] = useState('all');
   const [loader, setLoader] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
