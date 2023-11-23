@@ -196,7 +196,7 @@ export default function CustomProducts() {
               <div
                 className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 w-full`}
               >
-                <div className="md:col-span-2  aspect-square snap-center relative flex items-center justify-center overflow-clip rounded-[0.25rem] bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[400px]">
+                <div className="md:col-span-2  aspect-square snap-center relative flex items-center justify-center overflow-clip rounded-[0.25rem] bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[386px]">
                   {customProductData &&
                     metafields &&
                     metafields.cardType == 'folded5x7' && (

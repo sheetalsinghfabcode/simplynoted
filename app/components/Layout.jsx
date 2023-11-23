@@ -234,12 +234,12 @@ function DesktopHeader({isHome, menu}) {
     setCartCountVal: () => {},
   };
 
-  const {cartCountVal, setCartCountVal} = stateContext;
+  const {cartCountVal, setCartCountVal, customerId, isInitialRender} =
+    stateContext;
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [customerId, setCustomerId] = useState('');
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
@@ -253,31 +253,6 @@ function DesktopHeader({isHome, menu}) {
       ? JSON.parse(localStorage.getItem('cartCount'))
       : 0;
     setCartCountVal(totalCartCount);
-  }, []);
-  function CreateCardCheck() {
-    if (typeof window !== 'undefined') {
-      let id = localStorage.getItem('customerId');
-      if (id) {
-        return (
-          <Link to="/customise-your-card">
-            <li>Create a Card</li>
-          </Link>
-        );
-      } else {
-        return (
-          <div>
-            <li onClick={() => setLoginModal(true)}>Create a Card</li>
-          </div>
-        );
-      }
-    }
-  }
-
-  useEffect(() => {
-    const storedCustomerId = localStorage.getItem('customerId');
-    setCustomerId(storedCustomerId);
-    console.log('storedCustomerId', storedCustomerId);
-    console.log('customerId', customerId);
   }, []);
 
   const params = useParams();
@@ -335,7 +310,17 @@ function DesktopHeader({isHome, menu}) {
                               {' '}
                               <li> Cards</li>
                             </Link>
-                            <CreateCardCheck />
+                            {customerId ? (
+                              <Link to="/customise-your-card">
+                                <li>Create a Card</li>
+                              </Link>
+                            ) : (
+                              <div>
+                                <li onClick={() => setLoginModal(true)}>
+                                  Create a Card
+                                </li>
+                              </div>
+                            )}
                             <Link to="/collections/birthday">
                               <li>Birthday Automation</li>
                             </Link>
@@ -499,13 +484,19 @@ function DesktopHeader({isHome, menu}) {
             }
           />
 
-          <DynamicButton
-            text={'Account →'}
-            className="login-button"
-            onClickFunction={() => {
-              navigate('/account');
-            }}
-          />
+          {isInitialRender ? (
+            <div className="h-6 w-6">
+              <CircularLoader color="#ef6e6e" height="20px" width="20px" />
+            </div>
+          ) : (
+            <DynamicButton
+              text={customerId ? 'Account →' : 'Sign in →'}
+              className="login-button"
+              onClickFunction={() => {
+                navigate('/account/login');
+              }}
+            />
+          )}
         </div>
       </header>
       <LoginModal
