@@ -502,7 +502,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             Account →
           </Link> */}
           <DynamicButton
-            text={customerId ? 'Account →' : 'Sign →'}
+            text={'Account →'}
             className="login-button"
             onClickFunction={() => {
               navigate('/account');
