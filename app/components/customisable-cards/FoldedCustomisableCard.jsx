@@ -24,6 +24,7 @@ export default function FoldedCustomisableCard({
   const [frontImageDetails, setFrontImageDetails] = useState({
     isImageSelected: false,
     imageFile: null,
+    blackAndWhiteImageFile: null,
     screenshotImageFile: null,
     zoom: 1,
     isColoredImage: true,
@@ -32,6 +33,7 @@ export default function FoldedCustomisableCard({
   const [backImageDetails, setBackImageDetails] = useState({
     isImageSelected: false,
     imageFile: null,
+    blackAndWhiteImageFile: null,
     screenshotImageFile: null,
     zoom: 1,
     isColoredImage: true,
@@ -55,6 +57,21 @@ export default function FoldedCustomisableCard({
   const backImageRef = useRef(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      window.scrollTo(0, 0);
+    };
+    if (isLoading) {
+      window.addEventListener('scroll', scrollHandler);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
+  }, [isLoading]);
 
   useEffect(() => {
     // Generate default image for the face URL and back URL of the custom card.
@@ -96,16 +113,6 @@ export default function FoldedCustomisableCard({
   }, [frontImageDetails.isImageSelected, backImageDetails.isImageSelected]);
 
   useEffect(() => {
-    if (!isLoading) return;
-    window.addEventListener('scroll', function () {
-      window.scrollTo(0, 0);
-    });
-    const body = document.body;
-    body.style.overflow = 'hidden';
-  }, [isLoading]);
-
-  useEffect(() => {
-    console.clear();
     let trimmedDiv;
     // To Store the actual value instead of a promise inside screenshotUrl object key.
     const generateScreenshot = async () => {
@@ -116,6 +123,16 @@ export default function FoldedCustomisableCard({
           frontImageDetails.isImageSelected
         ) {
           trimmedDiv = document.getElementById('frontTrimmedDiv');
+          // Wait for the image to be fully loaded for the timing issue.
+          await new Promise((resolve) => {
+            const image = trimmedDiv.querySelector('img');
+            if (image.complete) {
+              resolve();
+            } else {
+              image.onload = resolve;
+            }
+          });
+
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
           );
@@ -132,6 +149,16 @@ export default function FoldedCustomisableCard({
           backImageDetails.isImageSelected
         ) {
           trimmedDiv = document.getElementById('backTrimmedDiv');
+          // Wait for the image to be fully loaded for the timing issue.
+          await new Promise((resolve) => {
+            const image = trimmedDiv.querySelector('img');
+            if (image.complete) {
+              resolve();
+            } else {
+              image.onload = resolve;
+            }
+          });
+
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
           );
@@ -152,10 +179,13 @@ export default function FoldedCustomisableCard({
     console.log({frontImageDetails, backImageDetails});
   }, [
     frontImageDetails.imageFile,
-    backImageDetails.imageFile,
+    frontImageDetails.blackAndWhiteImageFile,
     frontImageDetails.zoom,
-    backImageDetails.zoom,
     frontImageDetails.isColoredImage,
+
+    backImageDetails.imageFile,
+    backImageDetails.blackAndWhiteImageFile,
+    backImageDetails.zoom,
     backImageDetails.isColoredImage,
   ]);
 
@@ -172,8 +202,6 @@ export default function FoldedCustomisableCard({
     try {
       const canvas = await html2canvas(element);
       const dataUrl = canvas.toDataURL('image/png');
-
-      console.log(`${selectedCardPage} Screenshot URL: `, dataUrl);
 
       // Convert the URL to a file
       let arr = dataUrl.split(','),
@@ -194,6 +222,54 @@ export default function FoldedCustomisableCard({
     }
   }
 
+  async function convertToBlackAndWhiteImageBlobUrl(imageUrl) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous'; // Enable cross-origin resource sharing (CORS) if needed
+      img.src = imageUrl;
+
+      img.onload = function () {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Draw the image onto the canvas
+        ctx.drawImage(img, 0, 0);
+
+        // Get the image data
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        // Convert each pixel to grayscale
+        for (let i = 0; i < data.length; i += 4) {
+          const average = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          data[i] = average;
+          data[i + 1] = average;
+          data[i + 2] = average;
+        }
+
+        // Put the modified image data back onto the canvas
+        ctx.putImageData(imageData, 0, 0);
+
+        // Create a Blob from the canvas data
+        canvas.toBlob(
+          (blob) => {
+            // Create a short URL for the Blob
+            const blobUrl = URL.createObjectURL(blob);
+            resolve(blobUrl);
+          },
+          'image/png',
+          1, // Quality parameter for PNG, can be adjusted
+        );
+      };
+
+      img.onerror = function (error) {
+        reject(error);
+      };
+    });
+  }
+
   const handleImageFileInsertion = (event) => {
     const chosenFile = event.target.files[0];
     if (!chosenFile) return;
@@ -202,13 +278,16 @@ export default function FoldedCustomisableCard({
 
     reader.onload = (e) => {
       const img = new Image();
-      img.onload = () => {
+      img.onload = async () => {
         const imageWidth = img.width;
         const imageHeight = img.height;
 
         const aspectRatio = imageWidth / imageHeight;
         // If image is long
         const isLongImage = aspectRatio < 0.9 ? true : false;
+        const blackAndWhiteImageFile = await convertToBlackAndWhiteImageBlobUrl(
+          URL.createObjectURL(chosenFile),
+        );
 
         if (selectedCardPage === 'Card Front') {
           setFrontImageDetails((prevFrontImageDetails) => {
@@ -216,6 +295,7 @@ export default function FoldedCustomisableCard({
               ...prevFrontImageDetails,
               imageFile: URL.createObjectURL(chosenFile),
               isImageSelected: true,
+              blackAndWhiteImageFile,
               isLongImage,
             };
           });
@@ -227,6 +307,7 @@ export default function FoldedCustomisableCard({
               ...prevBackImageDetails,
               imageFile: URL.createObjectURL(chosenFile),
               isImageSelected: true,
+              blackAndWhiteImageFile,
               isLongImage,
             };
           });
@@ -828,15 +909,16 @@ export default function FoldedCustomisableCard({
                             : 'rotateY(0deg)',
                         }}
                       >
-                        {frontImageDetails.imageFile && (
+                        {(frontImageDetails.imageFile ||
+                          frontImageDetails.blackAndWhiteImageFile) && (
                           <img
-                            src={frontImageDetails.imageFile}
-                            alt="Selected front card image file"
-                            className={`object-contain h-full ${
+                            src={
                               frontImageDetails.isColoredImage
-                                ? 'grayscale-0'
-                                : 'grayscale'
-                            }`}
+                                ? frontImageDetails.imageFile
+                                : frontImageDetails.blackAndWhiteImageFile
+                            }
+                            alt="Selected front card image file"
+                            className="object-contain h-full"
                             draggable="false"
                             style={{
                               transform: `scale(${frontImageDetails.zoom})`,
@@ -892,15 +974,16 @@ export default function FoldedCustomisableCard({
                               : 'rotateY(0deg)',
                           }}
                         >
-                          {backImageDetails.imageFile && (
+                          {(backImageDetails.imageFile ||
+                            backImageDetails.blackAndWhiteImageFile) && (
                             <img
-                              src={backImageDetails.imageFile}
-                              alt="Selected back card image file"
-                              className={`object-contain h-full ${
+                              src={
                                 backImageDetails.isColoredImage
-                                  ? 'grayscale-0'
-                                  : 'grayscale'
-                              }`}
+                                  ? backImageDetails.imageFile
+                                  : backImageDetails.blackAndWhiteImageFile
+                              }
+                              alt="Selected back card image file"
+                              className="object-contain h-full"
                               draggable="false"
                               style={{
                                 transform: `scale(${backImageDetails.zoom})`,
@@ -1013,7 +1096,8 @@ export default function FoldedCustomisableCard({
                   </div>
                   <div className="h-[200px]">
                     {selectedCardPage === 'Card Front' &&
-                      frontImageDetails.imageFile && (
+                      (frontImageDetails.imageFile ||
+                        frontImageDetails.blackAndWhiteImageFile) && (
                         <div className="flex flex-col gap-8">
                           <div className="flex flex-col">
                             <span>Resize image</span>
@@ -1046,7 +1130,6 @@ export default function FoldedCustomisableCard({
                                 value="colored"
                                 checked={frontImageDetails.isColoredImage}
                                 onChange={handleImageColorChange}
-                                defaultChecked
                               />
                               &nbsp;Color
                             </label>
@@ -1062,7 +1145,8 @@ export default function FoldedCustomisableCard({
                       )}
 
                     {selectedCardPage === 'Card Back' &&
-                      backImageDetails.imageFile && (
+                      (backImageDetails.imageFile ||
+                        backImageDetails.blackAndWhiteImageFile) && (
                         <div className="flex flex-col gap-8">
                           <div className="flex flex-col">
                             <span>Resize image</span>
@@ -1095,7 +1179,6 @@ export default function FoldedCustomisableCard({
                                 value="colored"
                                 checked={backImageDetails.isColoredImage}
                                 onChange={handleImageColorChange}
-                                defaultChecked
                               />
                               &nbsp;Color
                             </label>

@@ -20,6 +20,7 @@ export default function FlatCustomisableCard({
   const [frontImageDetails, setFrontImageDetails] = useState({
     isImageSelected: false,
     imageFile: null,
+    blackAndWhiteImageFile: null,
     screenshotImageFile: null,
     zoom: 1,
     isColoredImage: true,
@@ -86,12 +87,18 @@ export default function FlatCustomisableCard({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoading) return;
-    window.addEventListener('scroll', function () {
+    const scrollHandler = () => {
       window.scrollTo(0, 0);
-    });
-    const body = document.body;
-    body.style.overflow = 'hidden';
+    };
+    if (isLoading) {
+      window.addEventListener('scroll', scrollHandler);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
   }, [isLoading]);
 
   useEffect(() => {
@@ -137,6 +144,16 @@ export default function FlatCustomisableCard({
           frontImageDetails.isImageSelected
         ) {
           const trimmedDiv = document.getElementById('frontTrimmedDiv');
+          // Wait for the image to be fully loaded for the timing issue.
+          await new Promise((resolve) => {
+            const image = trimmedDiv.querySelector('img');
+            if (image.complete) {
+              resolve();
+            } else {
+              image.onload = resolve;
+            }
+          });
+
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
           );
@@ -147,39 +164,16 @@ export default function FlatCustomisableCard({
             };
           });
         }
-        if (
-          selectedCardPage === 'Card Back' &&
-          observingData.isHeader &&
-          headerData.isImageSelected
-        ) {
-          const backHeaderImageDiv =
-            document.getElementById('backHeaderImageDiv');
-          const screenshotImageFile = await generateTrimmedImageScreenshotFile(
-            backHeaderImageDiv,
-          );
-          setHeaderData((prevHeaderData) => {
-            return {
-              ...prevHeaderData,
-              imageFile: screenshotImageFile,
-            };
-          });
-        }
       } catch (error) {
         console.error('Error generating screenshot:', error);
       }
     };
-
     generateScreenshot();
   }, [
     frontImageDetails.imageFile,
-    frontImageDetails.zoom,
+    frontImageDetails.blackAndWhiteImageFile,
     frontImageDetails.isColoredImage,
-    headerData.imageUrl,
-    headerData.zoom,
-    headerData.isColoredImage,
-    footerData.imageUrl,
-    footerData.zoom,
-    footerData.isColoredImage,
+    frontImageDetails.zoom,
   ]);
 
   useEffect(() => {
@@ -195,9 +189,6 @@ export default function FlatCustomisableCard({
     try {
       const canvas = await html2canvas(element);
       const dataUrl = canvas.toDataURL('image/png');
-
-      console.log(`${selectedCardPage} Screenshot URL: `, dataUrl);
-
       return dataUrlToFile(dataUrl);
     } catch (error) {
       console.error('Error generating a screenshot file:', error);
@@ -219,6 +210,54 @@ export default function FlatCustomisableCard({
     let filename = 'screenshot.png';
 
     return new File([u8arr], filename, {type: mime});
+  }
+
+  async function convertToBlackAndWhiteImageBlobUrl(imageUrl) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous'; // Enable cross-origin resource sharing (CORS) if needed
+      img.src = imageUrl;
+
+      img.onload = function () {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Draw the image onto the canvas
+        ctx.drawImage(img, 0, 0);
+
+        // Get the image data
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        // Convert each pixel to grayscale
+        for (let i = 0; i < data.length; i += 4) {
+          const average = (data[i] + data[i + 1] + data[i + 2]) / 3;
+          data[i] = average;
+          data[i + 1] = average;
+          data[i + 2] = average;
+        }
+
+        // Put the modified image data back onto the canvas
+        ctx.putImageData(imageData, 0, 0);
+
+        // Create a Blob from the canvas data
+        canvas.toBlob(
+          (blob) => {
+            // Create a short URL for the Blob
+            const blobUrl = URL.createObjectURL(blob);
+            resolve(blobUrl);
+          },
+          'image/png',
+          1, // Quality parameter for PNG, can be adjusted
+        );
+      };
+
+      img.onerror = function (error) {
+        reject(error);
+      };
+    });
   }
 
   const handleCardPageSelectionButton = (event) => {
@@ -245,13 +284,16 @@ export default function FlatCustomisableCard({
 
     reader.onload = (e) => {
       const img = new Image();
-      img.onload = () => {
+      img.onload = async () => {
         const imageWidth = img.width;
         const imageHeight = img.height;
 
         const aspectRatio = imageWidth / imageHeight;
         // If image is long
         const isLongImage = aspectRatio < 0.9 ? true : false;
+        const blackAndWhiteImageFile = await convertToBlackAndWhiteImageBlobUrl(
+          URL.createObjectURL(chosenFile),
+        );
 
         if (selectedCardPage === 'Card Front') {
           setFrontImageDetails((prevFrontImageDetails) => {
@@ -259,6 +301,7 @@ export default function FlatCustomisableCard({
               ...prevFrontImageDetails,
               imageFile: URL.createObjectURL(chosenFile),
               isImageSelected: true,
+              blackAndWhiteImageFile,
               isLongImage,
             };
           });
@@ -359,6 +402,7 @@ export default function FlatCustomisableCard({
       frontImageRef.current.value = '';
       setFrontImageDetails({
         imageFile: null,
+        blackAndWhiteImageFile: null,
         screenshotUrl: null,
         zoom: 1,
         isColoredImage: true,
@@ -1037,15 +1081,16 @@ export default function FlatCustomisableCard({
                             : 'rotateY(0deg)',
                         }}
                       >
-                        {frontImageDetails.imageFile && (
+                        {(frontImageDetails.imageFile ||
+                          frontImageDetails.blackAndWhiteImageFile) && (
                           <img
-                            src={frontImageDetails.imageFile}
-                            alt="Selected front card image file"
-                            className={`object-contain h-full ${
+                            src={
                               frontImageDetails.isColoredImage
-                                ? 'grayscale-0'
-                                : 'grayscale'
-                            }`}
+                                ? frontImageDetails.imageFile
+                                : frontImageDetails.blackAndWhiteImageFile
+                            }
+                            alt="Selected front card image file"
+                            className="object-contain h-full"
                             draggable="false"
                             style={{
                               transform: `scale(${frontImageDetails.zoom})`,
@@ -1220,7 +1265,8 @@ export default function FlatCustomisableCard({
                 </div>
                 <div className="h-[200px]">
                   {selectedCardPage === 'Card Front' &&
-                    frontImageDetails.imageFile && (
+                    (frontImageDetails.imageFile ||
+                      frontImageDetails.blackAndWhiteImageFile) && (
                       <div className="flex flex-col gap-8">
                         <div className="flex flex-col">
                           <span>Resize image</span>
@@ -1253,7 +1299,6 @@ export default function FlatCustomisableCard({
                               value="colored"
                               onChange={handleImageColorChange}
                               checked={frontImageDetails.isColoredImage}
-                              defaultChecked
                             />
                             &nbsp;Color
                           </label>
@@ -1657,7 +1702,6 @@ export default function FlatCustomisableCard({
                                   name="isImageColored"
                                   value="colored"
                                   onChange={handleImageColorChange}
-                                  defaultChecked
                                   checked={
                                     observingData.isHeader
                                       ? headerData.isColoredImage
