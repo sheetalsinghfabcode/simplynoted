@@ -72,7 +72,6 @@ export default function SimplyNoted() {
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
         setStripeCollection(data);
         setloader(false);
       })
@@ -81,9 +80,6 @@ export default function SimplyNoted() {
       });
     return () => {};
   }, []);
-
-
-  console.log("WalletData",WalletData)
 
 
   return (

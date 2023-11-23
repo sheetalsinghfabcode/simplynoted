@@ -224,7 +224,6 @@ const ContactTable = ({
       setSelectedCheckboxes(updatedSelected);
     }
   };
-
   function csvToJson(csv) {
     var lines = csv.split('\n');
     var result = [];
