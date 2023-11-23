@@ -114,7 +114,7 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setOrderHistory} = useStateContext()
+  const {orderHistory, setOrderHistory,setCustomerId} = useStateContext()
   const [accountDetail, setAccountDetail] = useState(!orderHistory ? true: false);
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -144,6 +144,8 @@ function Account({customer, heading, featuredData}) {
   const remove = () => {
     if (typeof window !== 'undefined' && customer) {
       localStorage.removeItem('customerId');
+      setCustomerId(null)
+
       localStorage.removeItem('SNFirstName');
       localStorage.removeItem('SnEmail');
       localStorage.removeItem('apiKey');
@@ -159,6 +161,8 @@ function Account({customer, heading, featuredData}) {
   } else if (data == false) {
     if (typeof window !== 'undefined' && customer) {
       localStorage.setItem('customerId', result);
+      setCustomerId(result)
+
       localStorage.setItem(
         'SNFullName',
         `${customer.firstName + customer.lastName}`,
