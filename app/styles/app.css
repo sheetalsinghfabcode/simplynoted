@@ -2054,6 +2054,17 @@ body {
   .wrap-referral-form{
     width:570px;
   }
+  .btn1 {
+    width:50%;
+    height:50px;;
+    
+  }
+  .btn3 {
+    font-size: 11px;
+  
+    width: 60%;
+    height: 90%;
+  }
 }
 @media only screen and (max-width: 768px) {
   .btn1 {

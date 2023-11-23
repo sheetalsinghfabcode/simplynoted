@@ -130,7 +130,7 @@ const Card=()=>{
     </div>
 
    <div className="bg-white text-center mt-[-11rem] mb-[-12px] ">
-   <div className="xl:w-[43rem] md:w-[40rem] w-[100%] xl:ml-[22rem] md:ml-[17rem] pt-60">
+   <div className="md:w-[50%] w-[100%] flex flex-wrap overflow-hidden mx-auto  pt-60">
     <img className='w-full' src={pen} alt="LogoSimplinotedpic"  /> 
     </div>
     <div className="md:text-4xl text-3xlfont-bold text-[#001A5F]">Get your first card FREE!</div>
@@ -151,9 +151,9 @@ const Card=()=>{
    </div>
         </div>
 
-        <div className="bottom_background mt-3 relative xl:w-[103%] md:w-[104%] sm:(w-[100%] h-[100%])">
-            <div className="pt-10 md:flex   justify-center">
-                <h3 className="md:text-4xl text-[26px] font-bold md:m-20 ml-28 mt-5">Ready to start writing?</h3>
+        <div className="bottom_background mt-3 relative xl:w-[103%] md:w-[103.9%]  overflow-x-hidden">
+            <div className="pt-10 md:flex grid  justify-center">
+                <h3 className="lg:text-4xl md:text-2xl  text-[26px] font-bold md:m-20 ml-28 mt-5">Ready to start writing?</h3>
            
             <div className=" flex flex-col md:flex-row text-white md:m-20 mx-10 mt-10">
             <DynamicButton
