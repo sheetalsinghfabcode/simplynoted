@@ -640,7 +640,7 @@ function Footer({menu}) {
       )}
       {/* <CountrySelector /> */}
       <div
-        className={` bg-[#2c3b68] h-[45px] flex pl-[6px] pt-[10px] text-base`}
+        className={` bg-[#2c3b68] h-[45px] flex pl-[6px] pt-[10px] md:justify-normal  justify-center`}
       >
         &copy;Simply Noted {new Date().getFullYear()}.All Rights Reserved
       </div>
@@ -711,34 +711,36 @@ function FooterMenu({menu}) {
       ))} */}
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
-      <div className="row block md:flex justify-center gap-[50px] ">
-        <div className="gap-x-6 md:my-20 md:mr-24 md:ml-3 ml-24">
-          <div className="w-48 pt-10 md:pt-0">
+      <div className="grid md:flex justify-evenly gap-[40px] md:text-left text-center pt-[50px] pb-[30px]">
+       
+        <div className="mx-auto">
+          <div className="lg:w-48 w-28 pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
           <div className="flex mt-5">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-              <img className="w-14 m-1" src={linkdin} alt=""></img>
+            <img className="lg:w-14 w-7 m-1" src={linkdin} alt=""></img>
             </a>
             <a href="#">
-              <img className="w-14 m-1" src={fb} alt=""></img>
+            <img className="lg:w-14 w-7 m-1" src={fb} alt=""></img>
             </a>
             <a href="#">
-              <img className="w-14 m-1" src={twitter} alt=""></img>
+            <img className="lg:w-14 w-7 m-1" src={twitter} alt=""></img>
             </a>
           </div>
         </div>
-        <div className="gap-x-6 mx-32 my-10 md:mx-16 md:my-20  text-white">
+        <div className="  text-white md:text-left text-center">
           <div className="text-xl font-semibold">Quick Links </div>
+          <div className='text-center md:ml-0 ml-[104px]'>
           {(menu?.items || []).map((item) => (
             <section key={item.id} className={styles.section}>
               <Disclosure>
                 {({open}) => (
                   <>
-                    <Disclosure.Button className="text-left md:cursor-default">
+                    <Disclosure.Button className="md:text-left text-center md:cursor-default">
                       <Link to={item.to}>
                         <Heading
-                          className="flex justify-between !font-base leading-loose hover:text-white"
+                          className="flex justify-between  !font-base leading-loose hover:text-white"
                           size="lead"
                           as="h3"
                         >
@@ -774,16 +776,17 @@ function FooterMenu({menu}) {
             </section>
           ))}
         </div>
-        <div className="gap-x-6 text-white md:ml-20 md:mr-10 md:my-20 mx-10">
+        </div>
+        <div className=" text-white ">
           <div>
             <div className="text-xl   font-semibold">Address</div>
-            <div>
-              5025 S Ash Ave Suite B16 Tempe AZ<br></br>
+            <div className='w-[99%]'>
+              5025 S Ash Ave Suite B16 Tempe AZ
               85282
             </div>
           </div>
 
-          <div className="mt-24 text-white">
+          <div className="md:mt-24 mt-[40px] text-white">
             <div className="text-xl font-semibold">Email</div>
             <div>
               <a href="mailto:support@simplynoted.com">
@@ -793,12 +796,13 @@ function FooterMenu({menu}) {
           </div>
         </div>
 
-        <div className="gap-x-6 mr-20 my-20 text-white">
+        <div className=" text-white">
           <div className="text-xl font-semibold">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>
         </div>
       </div>
+     
     </>
   );
 }
