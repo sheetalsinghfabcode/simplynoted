@@ -6,6 +6,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import DynamicButton from '../DynamicButton';
 import Loader from '../modal/Loader';
 import {useNavigate} from '@remix-run/react';
+import CircularLoader from '../CircularLoder';
 
 const Accordion = ({
   StripeKey,
@@ -16,15 +17,16 @@ const Accordion = ({
   amount,
   selectedPlan,
   packageProduct,
-  subscriptionProduct
-
+  subscriptionProduct,
+  subscriptionTitle,
+  subscriptionPriceId,
 }) => {
   const stripe = loadStripe(StripeKey);
 
   const [isBillingOpen, setIsBillingOpen] = useState(true);
   const [isCardInfoOpen, setIsCardInfoOpen] = useState(false);
   const [loader, setloader] = useState(false);
-  const [newCardAdded, setNewCardAdded] = useState(false);
+  const [paymentLoader, setPaymentLoader] = useState(false);
   const [errors, setErrors] = useState({});
   const [savedCard, setSavedCart] = useState([]);
   const [showStripeCard, setShowStripeCard] = useState(false);
@@ -35,7 +37,6 @@ const Accordion = ({
 
   let productId = packageProduct.replace(/[^0-9]/g, '');
   let variantId = subscriptionProduct.replace(/[^0-9]/g, '');
-  
 
   const toggleBilling = () => {
     setIsBillingOpen(!isBillingOpen);
@@ -46,6 +47,9 @@ const Accordion = ({
     setIsCardInfoOpen(!isCardInfoOpen);
     setIsBillingOpen(false);
   };
+
+
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -84,11 +88,7 @@ const Accordion = ({
           }),
         },
       );
-      const json = await res.json();
-      if(json){
-      await paymentPurchase(id)
-
-      }
+    
       console.log(json, 'createCustomerId Response');
       // await addNewCreditCard(id, json.stripeCustomerId);
       // }
@@ -98,31 +98,6 @@ const Accordion = ({
     }
   }
 
-  async function addNewCreditCard(paymentID, stripeCustomerId) {
-    try {
-      const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            paymentMethodId: paymentID,
-            stripeCustomerId: stripeCustomerId,
-          }),
-        },
-      );
-      const jsonData = await res.json();
-      console.log(jsonData, 'addNewCard');
-      setNewCardAdded(true);
-      setShowCardBox(false);
-      setloader(false);
-    } catch (error) {
-      setloader(false);
-      console.log(error, 'addNewCreditCard ------');
-    }
-  }
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
@@ -145,7 +120,7 @@ const Accordion = ({
     getSavedCards(customerid);
     formData.name = fullName;
     formData.email = userEmail;
-  }, [newCardAdded]);
+  }, []);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -176,31 +151,74 @@ const Accordion = ({
     (country) => country.country === formData.address.country,
   );
 
-
-
   function extractDiscountAndCardsInfo(str) {
     // Regular expressions to extract discount and card numbers
-    const discountRegex = /(\d+)% Discount/;
-    const cardsRegex = /(\d+) Standard Cards/;
+    const discountRegex = /(\d*\.?\d+)% Discount/;
+    const cardsRegex = /([\d,]+) Standard Cards/;
   
     // Extracting discount percentage
     const discountMatch = str.match(discountRegex);
-    const discount = discountMatch ? parseInt(discountMatch[1]) : null;
+    const discount = discountMatch ? parseFloat(discountMatch[1]) : null;
   
     // Extracting number of cards
     const cardsMatch = str.match(cardsRegex);
-    const cards = cardsMatch ? parseInt(cardsMatch[1]) : null;
+    let cards = null;
+    if (cardsMatch) {
+      cards = parseInt(cardsMatch[1].replace(/,/g, ''), 10);
+    }
+  
+    // Convert discount and cards to strings
+    const discountAsString = discount !== null ? discount.toString() : null;
+    const cardsAsString = cards !== null ? cards.toString() : null;
   
     return {
-      discount: discount,
-      cards: cards
+      discount: discountAsString,
+      cards: cardsAsString,
     };
   }
-  
-  // Example usage:
-  const { discount, cards } = extractDiscountAndCardsInfo(selectedPlan);
 
-  const paymentPurchase = (id) => {
+  // Example usage:
+  const {discount, cards} = extractDiscountAndCardsInfo(selectedPlan);
+
+
+
+  const createSubscription = async (id) => {
+    try {
+      setPaymentLoader(true);
+      const payLoad = {
+        subscriptionPriceId: subscriptionPriceId,
+        subscriptionName: subscriptionTitle,
+      };
+  
+      console.log('payLoad', payLoad);
+      const apiUrl = `https://api.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
+  
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payLoad),
+      });
+     
+      const data = await response.json();
+      if(data){
+       paymentPurchase(id,data);
+      }
+      setPaymentLoader(false);
+      // Handle the response data here
+      console.log('Success:', data);
+    } catch (error) {
+      // Handle errors here
+      console.error('Error:', error);
+    }
+  };
+
+
+  
+
+  const paymentPurchase = (id,savePaymentData) => {
+    setPaymentLoader(true);
     const payLoad = {
       paymentMethodId: id,
       packageDiscount: discount,
@@ -211,8 +229,7 @@ const Accordion = ({
       subscriptionProduct: variantId,
     };
 
-
-    console.log("payLoad",payLoad)
+    console.log('payLoad', payLoad);
     const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
@@ -229,10 +246,54 @@ const Accordion = ({
         return response.json();
       })
       .then((data) => {
-        localStorage.setItem(
-          'packageDiscount',
-          JSON.stringify(discount),
-        );
+        localStorage.setItem('packageDiscount', JSON.stringify(discount));
+        setPaymentLoader(false);
+        // Handle the response data here
+        console.log('Success:', data);
+        if(data){
+          paymentSave(savePaymentData)
+        }
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error('Error:', error);
+      });
+  };
+
+  const paymentSave = (data) => {
+    setPaymentLoader(true);
+    const payLoad = {
+      subscriptionId: data.subscriptionId,
+      subscriptionName: subscriptionTitle,
+      isSubscriptionOnly: true,
+      packageDiscount: String(discount), 
+      packageQuantity: String(cards), 
+      packagePrice: String(amount),
+      isAutorenew: true,
+      subscriptionStartDate: data.subscriptionStartDate,
+      subscriptionEndDate: data.subscriptionEndDate,
+      subscriptionStatus: data.status,
+    };
+
+    console.log('payLoad', payLoad);
+    const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payLoad),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setPaymentLoader(false);
+        navigate('/manage-subscription')
         // Handle the response data here
         console.log('Success:', data);
       })
@@ -241,8 +302,6 @@ const Accordion = ({
         console.error('Error:', error);
       });
   };
-
- 
 
   return (
     <div className="w-full max-w-[1440px] mt-[24px] mx-auto px-[24px]">
@@ -255,6 +314,9 @@ const Accordion = ({
           setWalletPayment(false);
         }}
       />
+      {paymentLoader && (
+        <CircularLoader title="Processing your payment securely. Please wait a moment." />
+      )}
 
       {loader ? (
         <Loader loaderMessage="Adding Card Details" />
@@ -418,9 +480,12 @@ const Accordion = ({
                         className="border-y border-solid border-[#000] p-[1rem] mt-1 mb-2 flex justify-between "
                       >
                         <div className="flex justify-start items-center text-[14px] font-bold">
-                          <input type="radio"
-                          onChange={()=>setPaymentMethodId(item.paymentId)}
-                          name="action" className="mr-2" />
+                          <input
+                            type="radio"
+                            onChange={() => setPaymentMethodId(item.paymentId)}
+                            name="action"
+                            className="mr-2"
+                          />
                           <span className="mr-[17rem] tracking-wide">
                             **********{item.cardLast4Number}
                           </span>
@@ -472,7 +537,9 @@ const Accordion = ({
 
                     <button
                       type="submit"
-                      onClick={()=>paymentPurchase(paymentMethodId)}
+                      onClick={() => {
+                        createSubscription(paymentMethodId)
+                      }}
                       className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
                     >
                       Complete Purchase

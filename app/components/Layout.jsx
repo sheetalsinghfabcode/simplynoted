@@ -239,8 +239,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [customerId, setCustomerId] = useState(null);
-
+  const [customerId, setCustomerId] = useState('');
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
@@ -274,13 +273,13 @@ function DesktopHeader({isHome, menu, openCart, title}) {
     }
   }
 
-
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
-    if (storedCustomerId) {
-      setCustomerId(storedCustomerId);
-    }
+        setCustomerId(storedCustomerId)
+        console.log("storedCustomerId",storedCustomerId)
+        console.log("customerId",customerId)
   }, []);
+
   const params = useParams();
   const {y} = useWindowScroll();
   return (
@@ -503,7 +502,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
             Account →
           </Link> */}
           <DynamicButton
-            text={'Acccount  →'}
+            text={customerId ? 'Account →' : 'Sign →'}
             className="login-button"
             onClickFunction={() => {
               navigate('/account');
@@ -746,13 +745,13 @@ function FooterMenu({menu}) {
           </div>
           <div className="flex mt-5">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-            <img className="w-14 m-1" src={linkdin} alt=""></img>
+              <img className="w-14 m-1" src={linkdin} alt=""></img>
             </a>
             <a href="#">
-            <img className="w-14 m-1" src={fb} alt=""></img>
+              <img className="w-14 m-1" src={fb} alt=""></img>
             </a>
             <a href="#">
-            <img className="w-14 m-1" src={twitter} alt=""></img>
+              <img className="w-14 m-1" src={twitter} alt=""></img>
             </a>
           </div>
         </div>
@@ -813,7 +812,11 @@ function FooterMenu({menu}) {
 
           <div className="mt-24 text-white">
             <div className="text-xl font-semibold">Email</div>
-            <div><a href="mailto:support@simplynoted.com">support@simplynoted.com</a></div>
+            <div>
+              <a href="mailto:support@simplynoted.com">
+                support@simplynoted.com
+              </a>
+            </div>
           </div>
         </div>
 

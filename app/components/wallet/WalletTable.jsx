@@ -1,6 +1,4 @@
 import DynamicButton from '../../components/DynamicButton';
-import {useState, useEffect} from 'react';
-import {Link} from '../../components/Link';
 import {useNavigate} from '@remix-run/react';
 
 const data = [
@@ -107,7 +105,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
 
-  console.log('subscriptionType', subscriptionType);
 
   const pricingPlans = [
     {

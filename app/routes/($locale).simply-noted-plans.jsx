@@ -44,6 +44,9 @@ export default function SimplyNoted() {
   const [loader, setloader] = useState(true);
   const [packageProduct,setPackageProduct] = useState("")
   const [subscriptionProduct,setSubscriptionProduct] = useState("")
+  const [subscriptionTitle,setSubscriptionTitle] = useState("")
+  const [subscriptionPriceId,setSubscriptionPriceId] = useState("")
+
 
 
   const navigate = useNavigate();
@@ -69,7 +72,6 @@ export default function SimplyNoted() {
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
         setStripeCollection(data);
         setloader(false);
       })
@@ -118,6 +120,8 @@ export default function SimplyNoted() {
             stripeCollection={stripeCollection}
             setPackageProduct={setPackageProduct}
             setSubscriptionProduct={setSubscriptionProduct}
+            setSubscriptionTitle={setSubscriptionTitle}
+            setSubscriptionPriceId={setSubscriptionPriceId}
             
           />
         )}
@@ -129,6 +133,7 @@ export default function SimplyNoted() {
             selectedPlan={selectedPlan}
             finalPrice={finalPrice}
             setFinalPrice={setFinalPrice}
+            subscriptionTitle={subscriptionTitle}
             WalletData={WalletData}
             subscription={subscription}
             setWalletPayment={setWalletPayment}
@@ -141,11 +146,13 @@ export default function SimplyNoted() {
             setWalletPayment={setWalletPayment}
             finalPrice={finalPrice}
             selectedPlan={selectedPlan}
+            subscriptionTitle={subscriptionTitle}
             amount={amount}
             subscription={subscription}
             StripeKey={StripeKey}
             subscriptionProduct={subscriptionProduct}
             packageProduct={packageProduct}
+            subscriptionPriceId={subscriptionPriceId}
           />
         )}
       </div>
