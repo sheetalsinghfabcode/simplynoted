@@ -873,6 +873,11 @@ nav a {
   display: block;
 }
 
+.font-bold {
+  font-weight: 500 !important;
+  letter-spacing: 0px;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;

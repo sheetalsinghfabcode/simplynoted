@@ -494,9 +494,7 @@ function DesktopHeader({isHome, menu}) {
                 'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-          {/* <Link to="/account" className="text-black font-bold">
-            Account →
-          </Link> */}
+         
           <DynamicButton
             text={'Account →'}
             className="login-button"
@@ -504,31 +502,6 @@ function DesktopHeader({isHome, menu}) {
               navigate('/account');
             }}
           />
-
-          {/* <Form
-          method="get"
-          action={params.locale ? `/${params.locale}/search` : '/search'}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-          >
-            <IconSearch />
-          </button>
-        </Form> */}
-          {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
         </div>
       </header>
       <LoginModal
