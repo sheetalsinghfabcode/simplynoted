@@ -44,7 +44,6 @@ import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 
-
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
 
@@ -230,7 +229,12 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu}) {
-  const {cartCountVal, setCartCountVal} = useStateContext();
+  const stateContext = useStateContext() || {
+    cartCountVal: 0,
+    setCartCountVal: () => {},
+  };
+
+  const {cartCountVal, setCartCountVal} = stateContext;
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
@@ -271,9 +275,9 @@ function DesktopHeader({isHome, menu}) {
 
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
-        setCustomerId(storedCustomerId)
-        console.log("storedCustomerId",storedCustomerId)
-        console.log("customerId",customerId)
+    setCustomerId(storedCustomerId);
+    console.log('storedCustomerId', storedCustomerId);
+    console.log('customerId', customerId);
   }, []);
 
   const params = useParams();
@@ -327,7 +331,7 @@ function DesktopHeader({isHome, menu}) {
                         <div>Send A Card</div>
                         <div className="dropdown-content">
                           <ul className="dropdown-list">
-                            <Link to="/collecti1ons/best-sellers">
+                            <Link to="/collections/best-sellers">
                               {' '}
                               <li> Cards</li>
                             </Link>
@@ -450,7 +454,7 @@ function DesktopHeader({isHome, menu}) {
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
-            {cartCountVal && cartCountVal > 0 ? (
+            {cartCountVal && cartCountVal !== undefined ? (
               <>
                 <Link to="/carts">
                   <div className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]">
@@ -494,7 +498,7 @@ function DesktopHeader({isHome, menu}) {
                 'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-         
+
           <DynamicButton
             text={'Account →'}
             className="login-button"
