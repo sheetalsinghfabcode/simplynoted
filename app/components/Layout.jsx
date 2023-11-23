@@ -40,14 +40,10 @@ import {
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
 import {useCartFetchers} from '~/hooks/useCartFetchers';
-import ConfirmationModal from './modal/ConfirmationModal';
 import LoginModal from './modal/LoginModal';
-import Loader from './modal/Loader';
-import {useAddressBook} from '../components/AddressBookContext';
+import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
-import {useLocation} from '@remix-run/react';
 
-let customerid;
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -233,8 +229,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({isHome, menu, openCart, title}) {
-  const {cartCountVal, setCartCountVal} = useAddressBook();
+function DesktopHeader({isHome, menu}) {
+  const {cartCountVal, setCartCountVal} = useStateContext();
 
   const navigate = useNavigate();
   const [loginModal, setLoginModal] = useState(false);
@@ -307,7 +303,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               className="xl:w-full lg:w-[80%]"
             />
           </Link>
-          <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-bold tracking-tight">
+          <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-medium tracking-tight">
             {(menu?.items || []).map((item) => {
               if (
                 [
@@ -498,9 +494,7 @@ function DesktopHeader({isHome, menu, openCart, title}) {
                 'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
             }
           />
-          {/* <Link to="/account" className="text-black font-bold">
-            Account →
-          </Link> */}
+         
           <DynamicButton
             text={'Account →'}
             className="login-button"
@@ -508,31 +502,6 @@ function DesktopHeader({isHome, menu, openCart, title}) {
               navigate('/account');
             }}
           />
-
-          {/* <Form
-          method="get"
-          action={params.locale ? `/${params.locale}/search` : '/search'}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button
-            type="submit"
-            className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
-          >
-            <IconSearch />
-          </button>
-        </Form> */}
-          {/* <AccountLink className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5" /> */}
         </div>
       </header>
       <LoginModal

@@ -2,12 +2,11 @@ import React, {useState, useEffect} from 'react';
 import location from '../../../location.json';
 import DateInput from '../addressBook/DateInput';
 import DynamicButton from '../DynamicButton';
-import {useAddressBook} from '../AddressBookContext';
-import Loader from '../modal/Loader';
+import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
 
 const AddressForm = ({customerID}) => {
-  const {setAddressForm, setEditAddress, setLoadAddress} = useAddressBook();
+  const {setAddressForm, setEditAddress} = useStateContext();
 
   const [formData, setFormData] = useState({
     firstName: '',

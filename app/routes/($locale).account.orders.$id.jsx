@@ -9,7 +9,7 @@ import {Link, Heading, PageHeader, Text} from '~/components';
 import DynamicTitle from '~/components/Title';
 import DynamicButton from '~/components/DynamicButton';
 import {useNavigate} from '@remix-run/react';
-import {useAddressBook} from '~/components/AddressBookContext';
+import {useStateContext} from '~/context/StateContext';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -66,8 +66,8 @@ export async function loader({request, context, params}) {
 
 export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
-  const navigate = useNavigate();
-  const {setOrderHistory} = useAddressBook();
+  
+  const {setOrderHistory} = useStateContext();
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">

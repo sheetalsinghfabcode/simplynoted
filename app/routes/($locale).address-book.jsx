@@ -4,7 +4,7 @@ import EditAddressForm from '../components/addressBook/EditAddressForm';
 import Instruction from '~/components/modal/Instruction';
 import {useNavigate} from '@remix-run/react';
 import ContactTable from '~/components/addressBook/ContactTable';
-import {useAddressBook} from '~/components/AddressBookContext';
+import {useStateContext} from '~/context/StateContext';
 import DynamicTitle from '~/components/Title';
 
 let customerID;
@@ -21,14 +21,14 @@ export default function AddressBook() {
     setEditAddress,
     selectedAddress,
     setSelectedAddress,
-  } = useAddressBook();
+  } = useStateContext();
 
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+  
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
     if (!customerID) {

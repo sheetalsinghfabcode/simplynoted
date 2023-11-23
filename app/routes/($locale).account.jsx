@@ -26,7 +26,7 @@ import {usePrefixPathWithLocale} from '~/lib/utils';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 import Profile from '~/components/Profile';
-import { useAddressBook } from '~/components/AddressBookContext';
+import { useStateContext } from '~/context/StateContext';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
@@ -114,7 +114,7 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setOrderHistory} = useAddressBook()
+  const {orderHistory, setOrderHistory} = useStateContext()
   const [accountDetail, setAccountDetail] = useState(!orderHistory ? true: false);
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);

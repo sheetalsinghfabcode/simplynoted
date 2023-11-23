@@ -16,7 +16,7 @@ import DynamicTitle from '../components/Title';
 import Del from '../../assets/Image/del2.png'
 import CircularLoader from '~/components/CircularLoder';
 import EditICon from '../../assets/Image/editIcon.png'
-import { useAddressBook } from '~/components/AddressBookContext';
+import { useStateContext } from '~/context/StateContext';
 let storedDataString, storedDataArray
 
 export async function loader({ context, request }) {
@@ -40,7 +40,7 @@ export async function loader({ context, request }) {
 }
 
 export default function AddCartFunc() {
-    const { setCartCountVal, cartCountVal } = useAddressBook();
+    const { setCartCountVal, cartCountVal } = useStateContext();
 
     const { data, postalData, StripeKey } = useLoaderData()
     // console.log(formData,'-----------');
