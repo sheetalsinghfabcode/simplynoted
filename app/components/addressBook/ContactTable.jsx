@@ -32,7 +32,6 @@ const ContactTable = ({
   const [errorModal, setErrorModal] = useState(false);
   const [errorContent, serErrorContent] = useState([]);
 
-
   let data = filteredAddresses;
 
   const handleTypeChange = (e) => {
@@ -53,7 +52,6 @@ const ContactTable = ({
       }
     });
   };
-
 
   const handleDeleteSelected = () => {
     setLoader(true);
@@ -202,17 +200,29 @@ const ContactTable = ({
     usePagination, // Use the pagination plugin
   );
 
-  const allSelected =
-    page.length > 0 && selectedCheckboxes?.length === page.length;
+  const allSelected = page.length > 0 &&  page.every((row) => selectedCheckboxes.includes(row.original._id));
 
   const handleSelectAll = () => {
-    if (allSelected) {
-      setSelectedCheckboxes([]);
+    const currentPageIds = page.map((value) => value.original._id);
+    const allSelectedIds = [...selectedCheckboxes];
+
+    const currentPageSelected = currentPageIds.every((id) =>
+      allSelectedIds.includes(id),
+    );
+
+    if (currentPageSelected) {
+      // Deselect all from the current page
+      setSelectedCheckboxes(
+        allSelectedIds.filter((id) => !currentPageIds.includes(id)),
+      );
     } else {
-      setSelectedCheckboxes(page.map((value) => value.original._id));
+      // Select all from the current page and merge with existing selection
+      const updatedSelected = Array.from(
+        new Set([...allSelectedIds, ...currentPageIds]),
+      );
+      setSelectedCheckboxes(updatedSelected);
     }
   };
-
 
   function csvToJson(csv) {
     var lines = csv.split('\n');
@@ -269,7 +279,7 @@ const ContactTable = ({
       setFilteredAddresses(addresses);
     }
   };
-  
+
   const uploadDataToAPI = async (data) => {
     setupdateLoader(true);
     const modifiedData = {};
@@ -386,249 +396,259 @@ const ContactTable = ({
     }, [1000]);
   }, []);
 
-
   return (
-
     <>
-         {
-        errorModal ? (
-          <ErrorModal
-            title="Uploaded Error!"
-            isOpen={errorModal}
-            onRequestClose={() => setErrorModal(false)}
-            content={errorContent}
-          />
-        ) : (
-    <div className="w-full max-w-[100%] overflow-x-auto">
-      <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
-        <input
-          type="text"
-          placeholder="Search Addresses..."
-          value={searchText}
-          onChange={handleSearchInputChange}
-          className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+      {errorModal ? (
+        <ErrorModal
+          title="Uploaded Error!"
+          isOpen={errorModal}
+          onRequestClose={() => setErrorModal(false)}
+          content={errorContent}
         />
-        <div className="flex">
-          <div className={`border-[1px] border-dashed border-[#000] py-[5px]`}>
-            <div className="flex flex-col">
-              <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
-                Bulk Address Upload
-              </h2>
-              <input
-                onChange={handleFileChange}
-                type="file"
-                accept=".csv"
-                className="p-[10px] cursor-pointer"
-              />
-              <a
-                href="https://api.simplynoted.com/docs/bulk-template"
-                className="text-[14px] px-[10px] font-bold underline"
-              >
-                Download bulk address template
-              </a>
-              <span
-                onClick={openModal}
-                className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
-              >
-                {' '}
-                View Instructions
-              </span>
-            </div>
-            {selectedFile && (
-              <DynamicButton
-                text="Upload"
-                className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
-                onClickFunction={() => handleUploadClick()}
-              />
-            )}
-          </div>
-          <div className="flex items-end justify-end ml-[10px] ">
-            <DynamicButton
-              className="bg-[#1b5299]"
-              text="+ New Address"
-              onClickFunction={() => setAddressForm(true)}
+      ) : (
+        <div className="w-full max-w-[100%] overflow-x-auto">
+          <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
+            <input
+              type="text"
+              placeholder="Search Addresses..."
+              value={searchText}
+              onChange={handleSearchInputChange}
+              className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
-          </div>
-        </div>
-      </div>
-
-      {!editAddress && (
-        <>
-          <div className="flex gap-[16px] items-center mb-[14px]">
-            {selectedCheckboxes &&
-              selectedCheckboxes.length > 0 &&
-              !ProdcuctSide && (
-                <button
-                  onClick={() => setDeleteModal(true)}
-                  className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
-                >
-                  Delete Selected
-                </button>
-              )}
-            <span className="text-black text-[14px] font-bold">
-              Number of address selected : {selectedCheckboxes?.length}
-            </span>
-          </div>
-          {ProdcuctSide && (
-            <div>
-              <button
-                className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
-                onClick={continueBtn}
+            <div className="flex">
+              <div
+                className={`border-[1px] border-dashed border-[#000] py-[5px]`}
               >
-                Continue
-              </button>
+                <div className="flex flex-col">
+                  <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                    Bulk Address Upload
+                  </h2>
+                  <input
+                    onChange={handleFileChange}
+                    type="file"
+                    accept=".csv"
+                    className="p-[10px] cursor-pointer"
+                  />
+                  <a
+                    href="https://api.simplynoted.com/docs/bulk-template"
+                    className="text-[14px] px-[10px] font-bold underline"
+                  >
+                    Download bulk address template
+                  </a>
+                  <span
+                    onClick={openModal}
+                    className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
+                  >
+                    {' '}
+                    View Instructions
+                  </span>
+                </div>
+                {selectedFile && (
+                  <DynamicButton
+                    text="Upload"
+                    className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
+                    onClickFunction={() => handleUploadClick()}
+                  />
+                )}
+              </div>
+              <div className="flex items-end justify-end ml-[10px] ">
+                <DynamicButton
+                  className="bg-[#1b5299]"
+                  text="+ New Address"
+                  onClickFunction={() => setAddressForm(true)}
+                />
+              </div>
             </div>
-          )}
-          {/* Your table rendering code here... */}
-          <table
-            className="w-full overflow-auto max-w-[100%]"
-            {...getTableProps()}
-          >
-            <thead>
-              {headerGroups.map((headerGroup) => (
-                <tr {...headerGroup.getHeaderGroupProps()}>
-                  {headerGroup.headers.map((column) => (
-                    <th
-                      {...column.getHeaderProps()}
-                      className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f] border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
+          </div>
+
+          {!editAddress && (
+            <>
+              <div className="flex gap-[16px] items-center mb-[14px]">
+                {selectedCheckboxes &&
+                  selectedCheckboxes.length > 0 &&
+                  !ProdcuctSide && (
+                    <button
+                      onClick={() => setDeleteModal(true)}
+                      className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
                     >
-                      {column.id === 'type' ? (
-                        <div className="flex items-center relative type-select">
-                          <select
-                            className="bg-transparent w-[10px] text-white border-none outline-none appearance-none  absolute inset-y-0 right-0"
-                            onChange={handleTypeChange}
-                            value={selectedType}
-                          >
-                            <option className="text-black" value="all">
-                              all
-                            </option>
-                            <option className="text-black" value="recipient">
-                              Recipient
-                            </option>
-                            <option className="text-black" value="return">
-                              Sender
-                            </option>
-                          </select>
-                          <span className="">Type</span>
-                          <div className="absolute top-[2px] right-0 left-[41px] h-full flex items-center  pointer-events-none">
-                            <svg
-                              className="w-4 h-4 text-white fill-current"
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 20 20"
-                            >
-                              <path d="M10 12l-6-6h12z" />
-                            </svg>
-                          </div>
-                        </div>
-                      ) : column.id === '_id' ? (
-                        <CheckBox
-                          onChange={handleSelectAll}
-                          checked={allSelected}
-                          className={`cursor-pointer ${
-                            data.length === 0 && '!bg-white'
-                          }`}
-                        />
-                      ) : (
-                        column.render('Header')
-                      )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            {!updateLoader && (
-              <tbody {...getTableBodyProps()}>
-                {page.map((row) => {
-                  prepareRow(row);
-                  return (
-                    <tr
-                      {...row.getRowProps()}
-                      className={`text-center font-bold ${
-                        row.index % 2 === 0 ? 'bg-[#f1f7fc]' : 'bg-[#96bee3]'
-                      }`}
-                    >
-                      {row.cells.map((cell) => (
-                        <td
-                          {...cell.getCellProps()}
-                          className="border border-solid border-black p-[10px] text-center"
+                      Delete Selected
+                    </button>
+                  )}
+                <span className="text-black text-[14px] font-bold">
+                  Number of address selected : {selectedCheckboxes?.length}
+                </span>
+              </div>
+              {ProdcuctSide && (
+                <div>
+                  <button
+                    className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                    onClick={continueBtn}
+                  >
+                    Continue
+                  </button>
+                </div>
+              )}
+              {/* Your table rendering code here... */}
+              <table
+                className="w-full overflow-auto max-w-[100%]"
+                {...getTableProps()}
+              >
+                <thead>
+                  {headerGroups.map((headerGroup) => (
+                    <tr {...headerGroup.getHeaderGroupProps()}>
+                      {headerGroup.headers.map((column) => (
+                        <th
+                          {...column.getHeaderProps()}
+                          className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f] border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
                         >
-                          {cell.render('Cell')}
-                        </td>
+                          {column.id === 'type' ? (
+                            <div className="flex items-center relative type-select">
+                              <select
+                                className="bg-transparent w-[10px] text-white border-none outline-none appearance-none  absolute inset-y-0 right-0"
+                                onChange={handleTypeChange}
+                                value={selectedType}
+                              >
+                                <option className="text-black" value="all">
+                                  all
+                                </option>
+                                <option
+                                  className="text-black"
+                                  value="recipient"
+                                >
+                                  Recipient
+                                </option>
+                                <option className="text-black" value="return">
+                                  Sender
+                                </option>
+                              </select>
+                              <span className="">Type</span>
+                              <div className="absolute top-[2px] right-0 left-[41px] h-full flex items-center  pointer-events-none">
+                                <svg
+                                  className="w-4 h-4 text-white fill-current"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M10 12l-6-6h12z" />
+                                </svg>
+                              </div>
+                            </div>
+                          ) : column.id === '_id' ? (
+                            <CheckBox
+                              onChange={handleSelectAll}
+                              checked={allSelected}
+                              className={`cursor-pointer ${
+                                data.length === 0 && '!bg-white'
+                              }`}
+                            />
+                          ) : (
+                            column.render('Header')
+                          )}
+                        </th>
                       ))}
                     </tr>
-                  );
-                })}
-              </tbody>
-            )}
-          </table>
-          {updateLoader && (
-            <div className="flex justify-center items-center mt-[24px]">
-              <CircularLoader title="Loading Address Book" color="#ef6e6e" />
-            </div>
-          )}
+                  ))}
+                </thead>
+                {!updateLoader && (
+                  <tbody {...getTableBodyProps()}>
+                    {page.map((row) => {
+                      prepareRow(row);
+                      return (
+                        <tr
+                          {...row.getRowProps()}
+                          className={`text-center font-bold ${
+                            row.index % 2 === 0
+                              ? 'bg-[#f1f7fc]'
+                              : 'bg-[#96bee3]'
+                          }`}
+                        >
+                          {row.cells.map((cell) => (
+                            <td
+                              {...cell.getCellProps()}
+                              className="border border-solid border-black p-[10px] text-center"
+                            >
+                              {cell.render('Cell')}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                )}
+              </table>
+              {updateLoader && (
+                <div className="flex justify-center items-center mt-[24px]">
+                  <CircularLoader
+                    title="Loading Address Book"
+                    color="#ef6e6e"
+                  />
+                </div>
+              )}
 
-          {page.length === 0 && !updateLoader && (
-            <div className="text-center text-[24px] font-bold mt-[20px] text-[#001a5f]">
-              No Address Found
-            </div>
+              {page.length === 0 && !updateLoader && (
+                <div className="text-center text-[24px] font-bold mt-[20px] text-[#001a5f]">
+                  No Address Found
+                </div>
+              )}
+              {page && page.length > 0 && !updateLoader && (
+                <div className="pagination">
+                  <div>
+                    <button
+                      onClick={() => gotoPage(0)}
+                      disabled={!canPreviousPage}
+                    >
+                      {'<<'}
+                    </button>{' '}
+                    <button
+                      onClick={() => {
+                        previousPage();
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth', // Make the scroll behavior smooth
+                        });
+                      }}
+                      disabled={!canPreviousPage}
+                    >
+                      {'<'}
+                    </button>{' '}
+                    <button
+                      onClick={() => {
+                        nextPage();
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth', // Make the scroll behavior smooth
+                        });
+                      }}
+                      disabled={!canNextPage}
+                    >
+                      {'>'}
+                    </button>{' '}
+                    <button
+                      onClick={() => gotoPage(pageCount - 1)}
+                      disabled={!canNextPage}
+                    >
+                      {'>>'}
+                    </button>{' '}
+                  </div>
+                  <div>
+                    Page{' '}
+                    <strong>
+                      {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
+                  </div>
+                </div>
+              )}
+            </>
           )}
-          {page && page.length > 0 && !updateLoader && (
-            <div className="pagination">
-              <div>
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                  {'<<'}
-                </button>{' '}
-                <button
-                  onClick={() => {
-                    previousPage();
-                    window.scrollTo({
-                      top: 0,
-                      behavior: 'smooth', // Make the scroll behavior smooth
-                    });
-                  }}
-                  disabled={!canPreviousPage}
-                >
-                  {'<'}
-                </button>{' '}
-                <button
-                  onClick={() => {
-                    nextPage();
-                    window.scrollTo({
-                      top: 0,
-                      behavior: 'smooth', // Make the scroll behavior smooth
-                    });
-                  }}
-                  disabled={!canNextPage}
-                >
-                  {'>'}
-                </button>{' '}
-                <button
-                  onClick={() => gotoPage(pageCount - 1)}
-                  disabled={!canNextPage}
-                >
-                  {'>>'}
-                </button>{' '}
-              </div>
-              <div>
-                Page{' '}
-                <strong>
-                  {pageIndex + 1} of {pageOptions.length}
-                </strong>{' '}
-              </div>
-            </div>
-          )}
-        </>
+          <ConfirmationModal
+            show={deleteModal}
+            onCancel={() => setDeleteModal(false)}
+            onConfirm={handleDeleteSelected}
+            message="Are you sure you want to delete all selected records? This action cannot be undone."
+            confirmText="Delete"
+            cancelText="Cancel"
+          />
+        </div>
       )}
-      <ConfirmationModal
-        show={deleteModal}
-        onCancel={() => setDeleteModal(false)}
-        onConfirm={handleDeleteSelected}
-        message="Are you sure you want to delete all selected records? This action cannot be undone."
-        confirmText="Delete"
-        cancelText="Cancel"
-      />
-    </div>
- )}
     </>
   );
 };
