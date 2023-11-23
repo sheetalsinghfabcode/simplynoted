@@ -770,7 +770,7 @@ function FooterMenu({menu}) {
                           size="lead"
                           as="h3"
                         >
-                          {/* {item.title} */}
+                          {item.title}
                           {item?.items?.length > 0 && (
                             <span className="md:hidden">
                               <IconCaret direction={open ? 'up' : 'down'} />
