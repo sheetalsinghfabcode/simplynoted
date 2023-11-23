@@ -1,7 +1,8 @@
 import {useLoaderData} from '@remix-run/react';
 import {defer} from '@remix-run/server-runtime';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useNavigate} from '@remix-run/react';
+import CircularLoader from '~/components/CircularLoder';
 
 export async function loader({context}) {
   const blog = await context.storefront.query(BlogData, {
@@ -16,86 +17,155 @@ export async function loader({context}) {
 export default function blog() {
   const {blog} = useLoaderData();
   const [activeButton, setActiveButton] = useState('articles');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [loader, setLoader] = useState(false);
+  const itemsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredArticles = blog.blog.articles.edges.filter((article) =>
+    article.node.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedArticles = filteredArticles.slice(startIndex, endIndex);
+
+  useEffect(() => {
+    setLoader(true);
+    if (filteredArticles && filteredArticles.length > 0) {
+      setLoader(false);
+    }
+  }, []);
+
+  useEffect(() => {}, [currentPage, filteredArticles]);
 
   const navigate = useNavigate();
 
   const handleButtonClick = (buttonType) => {
     setActiveButton(buttonType);
+    setCurrentPage(1);
   };
 
+  const handleLoadMore = () => {
+    setCurrentPage((nextPage) => nextPage + 1);
+  };
+  const handlePrevMore = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
   console.log(
     'blog',
     blog.blog.articles.edges.map((index) => index.node.title),
   );
 
+  console.log('endIndex', endIndex);
+  console.log("startIndex",startIndex)
+  console.log("currentPage",currentPage)
+
   return (
-    <div>
-      <div className="">
-        <div className="flex justify-center text-[59px] mt-[39px] text-blue-800 font-bold">
-          Simply Noted 101
-        </div>
+    <div className="">
+      <div className="flex justify-center text-[59px] mt-[39px] text-blue-800 font-bold">
+        Simply Noted 101
+      </div>
 
-        <div className="flex justify-center">
-          <img
-            className="mt-[21px]"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-          />
-        </div>
+      <div className="flex justify-center">
+        <img
+          className="mt-[21px]"
+          src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+        />
+      </div>
 
-        <div className="blog-page-button flex gap-10 justify-center mt-[32px]">
-          <button
-            className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] bg-red-500 text-white`}
-            type="button"
-            onClick={() => {
-              handleButtonClick('articles');
-              navigate('/blog');
-            }}
-          >
-            Articles
-          </button>
-          <button
-            className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] ${
-              activeButton === 'tutorials' ? 'bg-red-500 text-white' : ''
-            }`}
-            type="button"
-            onClick={() => {
-              handleButtonClick('tutorials');
-              navigate('/tutorials');
-            }}
-          >
-            Tutorials
-          </button>
-        </div>
+      <div className="blog-page-button flex gap-10 justify-center mt-[32px]">
+        <button
+          className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] bg-red-500 text-white`}
+          type="button"
+          onClick={() => {
+            handleButtonClick('articles');
+            navigate('/blog');
+          }}
+        >
+          Articles
+        </button>
+        <button
+          className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] ${
+            activeButton === 'tutorials' ? 'bg-red-500 text-white' : ''
+          }`}
+          type="button"
+          onClick={() => {
+            handleButtonClick('tutorials');
+            navigate('/tutorials');
+          }}
+        >
+          Tutorials
+        </button>
+      </div>
 
-        <div className="flex justify-center">
-          <input
-            className="min-w-[453px] h-[57px] mt-[40px]"
-            type="text"
-            placeholder="Search"
-          ></input>
-        </div>
-        <div className="flex justify-center gap-1">
-          <div
-            className="flex gap-4 flex-wrap justify-center items-start mt-[100px]"
-            style={{maxWidth: '793px'}}
-          >
-            {blog.blog.articles.edges.map((index) => (
-              <div
-                className="flex flex-col mr-4 bg-white text-black"
-                style={{maxWidth: '363px'}}
-              >
-                <div className="flex-1">
-                  <img
-                    src={index.node.image.url}
-                    className="h-full object-cover"
-                  />
+      <div className="flex justify-center">
+        <input
+          className="min-w-[453px] h-[57px] mt-[40px]"
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        ></input>
+      </div>
+      <div className="flex justify-center gap-1">
+        <div
+          className="flex gap-4 flex-wrap justify-center items-start mt-[100px]"
+          style={{maxWidth: '793px'}}
+        >
+          {loader ? (
+            <CircularLoader color="#ef6e6e" />
+          ) : (
+            <>
+              {paginatedArticles.length > 0 ? (
+                paginatedArticles.map((article) => (
+                  <div
+                    key={article.node.id}
+                    className="flex flex-col mr-4 bg-white text-black"
+                    style={{maxWidth: '363px'}}
+                  >
+                    <div className="flex-1">
+                      <img
+                        src={article.node.image.url}
+                        className="h-full object-cover"
+                        alt={article.node.title}
+                      />
+                    </div>
+                    <div className="mt-2 flex-1 p-3 text-black text-2xl font-bold">
+                      {article.node.title}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="font-medium text-2xl font-cursive text-blue">
+                  No Blog Blog Found
                 </div>
-                <div className=" mt-2 flex-1 p-3 text-black text-2xl font-bold">
-                  {index.node.title}
-                </div>
+              )}
+
+              <div className="flex justify-center gap-12 mt-4">
+                <button
+                  className={`bg-blue-500 text-white w-[123px]  p-2 ${
+                    currentPage === 1 ? 'cursor-not-allowed opacity-50' : ''
+                  }`}
+                  onClick={handlePrevMore}
+                  disabled={currentPage === 1}
+                >
+                  Prev.
+                </button>
+                <button
+                  className={`bg-blue-500 text-white w-[123px]  p-2 ${
+                   endIndex===42
+                      ? 'cursor-not-allowed opacity-50'
+                      : ''
+                  }`}
+                  disabled={endIndex===42}
+                  onClick={handleLoadMore}
+                >
+                  Next.
+                </button>
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
       </div>
     </div>

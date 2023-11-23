@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 function roicalculator() {
   const [inputValue, setInputValue] = useState(0);
 
+
   const handleChange = (event) => {
     const newValue = event.target.value;
     setInputValue(newValue);
@@ -33,6 +34,13 @@ function roicalculator() {
                 type="range"
                 id="myRange"
               ></input>
+              <div class="input-header">
+                <h4>Cards Sent</h4>
+                <p id="cards-sent-label" class="text-right">
+                  0
+                </p>
+                <input id="cards-sent-range" type="range" name="points" min="0" max="100000" value="10000" onchange="calculate();" oninput="outputInput();"></input>
+              </div>
             </div>
           </div>
           <div className="roi-right-cont border h-[646px] w-2/5 bg-gray-200">
