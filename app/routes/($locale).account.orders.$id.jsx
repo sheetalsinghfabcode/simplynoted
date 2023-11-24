@@ -66,13 +66,16 @@ export async function loader({request, context, params}) {
 
 export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
-  
+
+  console.log('lineItems', lineItems);
+  console.log('order', order);
+
   const {setOrderHistory} = useStateContext();
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
       <DynamicTitle
-      text="Back to Order"
+        text="Back to Order"
         dynamicButton
         setOrderHistory={setOrderHistory(true)}
         title={'Order Detail'}
@@ -117,152 +120,162 @@ export default function OrderRoute() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {lineItems.map((lineItem) => (
-                  <tr key={lineItem.variant.id}>
-                    <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
-                      <div className="flex gap-6">
-                        <Link
-                          to={`/products/${lineItem.variant.product.handle}`}
-                        >
-                          {lineItem?.variant?.image && (
-                            <div className="w-24 card-image aspect-square">
-                              <img
-                                src={lineItem.variant.image.src}
-                                width="450px"
-                                height="450px"
-                                alt="order-image"
-                              />
-                            </div>
-                          )}
-                        </Link>
-                        <div className="flex-col justify-center hidden lg:flex">
-                          <Text as="p">{lineItem.title}</Text>
-                          <Text size="fine" className="mt-1" as="p">
-                            {lineItem.variant.title}
-                          </Text>
+                {lineItems &&
+                  lineItems.length > 0 &&
+                  lineItems.map((lineItem) => (
+                    <tr key={lineItem.variant?.id}>
+                      <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
+                        <div className="flex gap-6">
+                          <Link
+                            to={`/products/${lineItem.variant?.product.handle}`}
+                          >
+                            {lineItem?.variant?.image && (
+                              <div className="w-24 card-image aspect-square">
+                                <img
+                                  src={lineItem.variant.image.src}
+                                  width="450px"
+                                  height="450px"
+                                  alt="order-image"
+                                />
+                              </div>
+                            )}
+                          </Link>
+                          <div className="flex-col justify-center hidden lg:flex">
+                            <Text as="p">{lineItem?.title}</Text>
+                            <Text size="fine" className="mt-1" as="p">
+                              {lineItem.variant?.title}
+                            </Text>
+                          </div>
+                          <dl className="grid">
+                            <dt className="sr-only">Product</dt>
+                            <dd className="truncate lg:hidden">
+                              <Heading size="copy" format as="h3">
+                                {lineItem?.title}
+                              </Heading>
+                              <Text size="fine" className="mt-1">
+                                {lineItem.variant?.title}
+                              </Text>
+                            </dd>
+                            <dt className="sr-only">Price</dt>
+                            <dd className="truncate sm:hidden">
+                              <Text size="fine" className="mt-4">
+                                {/* <Money data={lineItem.variant?.price || 0} /> */}
+                              </Text>
+                            </dd>
+                            <dt className="sr-only">Quantity</dt>
+                            <dd className="truncate sm:hidden">
+                              <Text className="mt-1" size="fine">
+                                Qty: {lineItem?.quantity}
+                              </Text>
+                            </dd>
+                          </dl>
                         </div>
-                        <dl className="grid">
-                          <dt className="sr-only">Product</dt>
-                          <dd className="truncate lg:hidden">
-                            <Heading size="copy" format as="h3">
-                              {lineItem.title}
-                            </Heading>
-                            <Text size="fine" className="mt-1">
-                              {lineItem.variant.title}
-                            </Text>
-                          </dd>
-                          <dt className="sr-only">Price</dt>
-                          <dd className="truncate sm:hidden">
-                            <Text size="fine" className="mt-4">
-                              <Money data={lineItem.variant.price} />
-                            </Text>
-                          </dd>
-                          <dt className="sr-only">Quantity</dt>
-                          <dd className="truncate sm:hidden">
-                            <Text className="mt-1" size="fine">
-                              Qty: {lineItem.quantity}
-                            </Text>
-                          </dd>
-                        </dl>
-                      </div>
-                    </td>
-                    <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
-                      <Money data={lineItem.variant.price} />
-                    </td>
-                    <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
-                      {lineItem.quantity}
-                    </td>
-                    <td className="px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
-                      <Text>
-                        <Money data={lineItem.discountedTotalPrice} />
-                      </Text>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      {/* <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        <Money data={lineItem.variant?.price } />
+                      </td> */}
+                      <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        {lineItem?.quantity}
+                      </td>
+                      {/* <td className="px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        <Text>
+                          <Money data={lineItem?.discountedTotalPrice || 0} />
+                        </Text>
+                      </td> */}
+                    </tr>
+                  ))}
               </tbody>
-              <tfoot>
-                {((discountValue && discountValue.amount) ||
-                  discountPercentage) && (
+
+              {lineItems && lineItems.length > 0 && (
+                <tfoot>
+                  {((discountValue &&
+                    discountValue.amount &&
+                    discountValue?.amount) ||
+                    discountPercentage) && (
+                    <tr>
+                      <th
+                        scope="row"
+                        colSpan={3}
+                        className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
+                      >
+                        <Text>Discounts</Text>
+                      </th>
+                      <th
+                        scope="row"
+                        className="pt-6 pr-3 font-normal text-left sm:hidden"
+                      >
+                        <Text>Discounts</Text>
+                      </th>
+                      <td className="pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3">
+                        {discountPercentage ? (
+                          <span className="text-sm">
+                            -{discountPercentage}% OFF
+                          </span>
+                        ) : (
+                          discountValue && (
+                            0
+                            // <Money data={(discountValue && discountValue) || 0} />
+                          )
+                        )}
+                      </td>
+                    </tr>
+                  )}
                   <tr>
                     <th
                       scope="row"
                       colSpan={3}
                       className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                     >
-                      <Text>Discounts</Text>
+                      <Text>Subtotal</Text>
                     </th>
                     <th
                       scope="row"
                       className="pt-6 pr-3 font-normal text-left sm:hidden"
                     >
-                      <Text>Discounts</Text>
+                      <Text>Subtotal</Text>
                     </th>
-                    <td className="pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3">
-                      {discountPercentage ? (
-                        <span className="text-sm">
-                          -{discountPercentage}% OFF
-                        </span>
-                      ) : (
-                        discountValue && <Money data={discountValue} />
-                      )}
+                    <td className="pt-6 pl-3 pr-4 text-right md:pr-3">
+                      {/* <Money data={order?.subtotalPriceV2 || 0} /> */}
                     </td>
                   </tr>
-                )}
-                <tr>
-                  <th
-                    scope="row"
-                    colSpan={3}
-                    className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
-                  >
-                    <Text>Subtotal</Text>
-                  </th>
-                  <th
-                    scope="row"
-                    className="pt-6 pr-3 font-normal text-left sm:hidden"
-                  >
-                    <Text>Subtotal</Text>
-                  </th>
-                  <td className="pt-6 pl-3 pr-4 text-right md:pr-3">
-                    <Money data={order.subtotalPriceV2} />
-                  </td>
-                </tr>
-                <tr>
-                  <th
-                    scope="row"
-                    colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
-                  >
-                    Tax
-                  </th>
-                  <th
-                    scope="row"
-                    className="pt-4 pr-3 font-normal text-left sm:hidden"
-                  >
-                    <Text>Tax</Text>
-                  </th>
-                  <td className="pt-4 pl-3 pr-4 text-right md:pr-3">
-                    <Money data={order.totalTaxV2} />
-                  </td>
-                </tr>
-                <tr>
-                  <th
-                    scope="row"
-                    colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-semibold text-right sm:table-cell md:pl-0"
-                  >
-                    Total
-                  </th>
-                  <th
-                    scope="row"
-                    className="pt-4 pr-3 font-semibold text-left sm:hidden"
-                  >
-                    <Text>Total</Text>
-                  </th>
-                  <td className="pt-4 pl-3 pr-4 font-semibold text-right md:pr-3">
-                    <Money data={order.totalPriceV2} />
-                  </td>
-                </tr>
-              </tfoot>
+                  <tr>
+                    <th
+                      scope="row"
+                      colSpan={3}
+                      className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
+                    >
+                      Tax
+                    </th>
+                    <th
+                      scope="row"
+                      className="pt-4 pr-3 font-normal text-left sm:hidden"
+                    >
+                      <Text>Tax</Text>
+                    </th>
+                    <td className="pt-4 pl-3 pr-4 text-right md:pr-3">
+                      {/* <Money data={order?.totalTaxV2 || 0} /> */}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th
+                      scope="row"
+                      colSpan={3}
+                      className="hidden pt-4 pl-6 pr-3 font-semibold text-right sm:table-cell md:pl-0"
+                    >
+                      Total
+                    </th>
+                    <th
+                      scope="row"
+                      className="pt-4 pr-3 font-semibold text-left sm:hidden"
+                    >
+                      <Text>Total</Text>
+                    </th>
+                    <td className="pt-4 pl-3 pr-4 font-semibold text-right md:pr-3">
+                      {/* <Money data={order?.totalPriceV2 || 0} /> */}
+                    </td>
+                  </tr>
+                </tfoot>
+              )}
             </table>
             <div className="sticky border-none text-[18px] font-karla top-nav md:my-8">
               <Heading size="copy" className="font-semibold " as="h3">

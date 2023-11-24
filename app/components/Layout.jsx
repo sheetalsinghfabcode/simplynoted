@@ -419,7 +419,7 @@ function DesktopHeader({isHome, menu}) {
 
                     {item.title === 'Business' ? (
                       <Link to="/business">
-                        <div className="navitems">Bussiness</div>
+                        <div className="navitems">Business</div>
                       </Link>
                     ) : null}
 
@@ -492,7 +492,7 @@ function DesktopHeader({isHome, menu}) {
           />
 
           {(isInitialRender || isAccountLoader) ? (
-            <div className="h-6 w-6">
+            <div className="h-6 w-6 lg:min-w-[110px]">
               <CircularLoader color="#ef6e6e" height="20px" width="20px" />
             </div>
           ) : (
