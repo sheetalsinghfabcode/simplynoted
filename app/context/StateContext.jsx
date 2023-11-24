@@ -12,6 +12,7 @@ export function StateContextProvider({children}) {
   const [cartCountVal, setCartCountVal] = useState(0);
   const [customerId, setCustomerId] = useState(null);
   const [isInitialRender, setIsInitialRender] = useState(true);
+  const [isAccountLoader,setIsAccountLoader] = useState(false)
 
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
@@ -55,6 +56,8 @@ export function StateContextProvider({children}) {
         customerId,
         setCustomerId,
         isInitialRender,
+        isAccountLoader,
+        setIsAccountLoader
       }}
     >
       {children}

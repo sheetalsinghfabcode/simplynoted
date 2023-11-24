@@ -1,5 +1,4 @@
 import DynamicButton from '../../components/DynamicButton';
-import {useNavigate} from '@remix-run/react';
 
 const data = [
   {
@@ -88,23 +87,22 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       stripeCollection &&
       stripeCollection.stripe?.subscriptionStatus !== 'canceled'
     ) {
-      const subscription = stripeCollection.stripe?.subscription || 'free';
-      if (subscription === 'team') {
+      const subscription = stripeCollection.stripe?.subscription || 'Free';
+      if (subscription === 'Team') {
         return 'team';
-      } else if (subscription === 'business') {
+      } else if (subscription === 'Business') {
         return 'business';
       }
     }
-    return 'free';
+    return 'Free';
   };
-
-  const navigate = useNavigate();
 
   const subscriptionType = getSubscriptionType(stripeCollection);
   const subscribeTeam = subscriptionType === 'team';
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
 
+  console.log('', subscribeTeam);
 
   const pricingPlans = [
     {
@@ -139,14 +137,16 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     },
   ];
 
-
   return (
     <div className="w-full max-w-[1440px] p-[20px] mx-auto">
       <table className="mx-auto table bg-white">
         <thead>
           <tr className="h-[120px]">
             <th className="text-center py-4 px-10"></th>
-            {pricingPlans.slice(0).reverse().map((plan, index) => (
+            {pricingPlans
+              .slice(0)
+              .reverse()
+              .map((plan, index) => (
                 <th key={index} className="text-center py-4 px-10">
                   <span className="text-lg text-[#000] uppercase block">
                     {plan.name}
@@ -198,7 +198,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
           ))}
         </tbody>
       </table>
-    
     </div>
   );
 };

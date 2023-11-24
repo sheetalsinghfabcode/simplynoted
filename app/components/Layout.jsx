@@ -4,6 +4,7 @@ import {
   Await,
   useMatches,
   useNavigate,
+  useLocation
 } from '@remix-run/react';
 import {useState, useRef, Suspense, useEffect, useMemo} from 'react';
 import {useWindowScroll} from 'react-use';
@@ -87,7 +88,6 @@ function Header({title, menu}) {
   // toggle cart drawer when adding to cart
   useEffect(() => {
     let aa = localStorage.getItem('cartCount');
-    // console.log(aa,"sssssssss");
     if (isCartOpen || !addToCartFetchers.length) return;
     openCart();
   }, [addToCartFetchers, isCartOpen, openCart]);
@@ -234,12 +234,19 @@ function DesktopHeader({isHome, menu}) {
     setCartCountVal: () => {},
   };
 
-  const {cartCountVal, setCartCountVal, customerId, isInitialRender} =
-    stateContext;
+  const {
+    cartCountVal,
+    setCartCountVal,
+    customerId,
+    isInitialRender,
+    isAccountLoader,
+    setIsAccountLoader,
+  } = stateContext;
 
   const navigate = useNavigate();
+  const pathname = useLocation()
+
   const [loginModal, setLoginModal] = useState(false);
-  const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
@@ -484,7 +491,7 @@ function DesktopHeader({isHome, menu}) {
             }
           />
 
-          {isInitialRender ? (
+          {(isInitialRender || isAccountLoader) ? (
             <div className="h-6 w-6">
               <CircularLoader color="#ef6e6e" height="20px" width="20px" />
             </div>
@@ -493,6 +500,9 @@ function DesktopHeader({isHome, menu}) {
               text={customerId ? 'Account →' : 'Sign in →'}
               className="login-button"
               onClickFunction={() => {
+                if (customerId && pathname.pathname !== '/account') {
+                  setIsAccountLoader(true);
+                }
                 navigate('/account/login');
               }}
             />
@@ -508,11 +518,6 @@ function DesktopHeader({isHome, menu}) {
         cancelText="Register"
         cross={true}
       />
-      {loader && pathname !== '/account' && (
-        <div className="min-h-screen flex justify-center items-center">
-          <CircularLoader color={'#ef6e6e'} title="Loading Address Page..." />
-        </div>
-      )}
     </>
   );
 }
@@ -703,77 +708,75 @@ function FooterMenu({menu}) {
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
       <div className="grid md:flex justify-evenly gap-[40px] md:text-left text-center pt-[50px] pb-[30px]">
-       
         <div className="mx-auto">
           <div className="lg:w-48 w-28 pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
           <div className="flex mt-5">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-            <img className="lg:w-14 w-7 m-1" src={linkdin} alt=""></img>
+              <img className="lg:w-14 w-7 m-1" src={linkdin} alt=""></img>
             </a>
             <a href="#">
-            <img className="lg:w-14 w-7 m-1" src={fb} alt=""></img>
+              <img className="lg:w-14 w-7 m-1" src={fb} alt=""></img>
             </a>
             <a href="#">
-            <img className="lg:w-14 w-7 m-1" src={twitter} alt=""></img>
+              <img className="lg:w-14 w-7 m-1" src={twitter} alt=""></img>
             </a>
           </div>
         </div>
         <div className="  text-white md:text-left text-center">
           <div className="text-xl font-semibold">Quick Links </div>
-          <div className='text-center md:ml-0 ml-[104px]'>
-          {(menu?.items || []).map((item) => (
-            <section key={item.id} className={styles.section}>
-              <Disclosure>
-                {({open}) => (
-                  <>
-                    <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                      <Link to={item.to}>
-                        <Heading
-                          className="flex justify-between  !font-base leading-loose hover:text-white"
-                          size="lead"
-                          as="h3"
+          <div className="text-center md:ml-0 ml-[104px]">
+            {(menu?.items || []).map((item) => (
+              <section key={item.id} className={styles.section}>
+                <Disclosure>
+                  {({open}) => (
+                    <>
+                      <Disclosure.Button className="md:text-left text-center md:cursor-default">
+                        <Link to={item.to}>
+                          <Heading
+                            className="flex justify-between  !font-base leading-loose hover:text-white"
+                            size="lead"
+                            as="h3"
+                          >
+                            {item.title}
+                            {item?.items?.length > 0 && (
+                              <span className="md:hidden">
+                                <IconCaret direction={open ? 'up' : 'down'} />
+                              </span>
+                            )}
+                          </Heading>
+                        </Link>
+                      </Disclosure.Button>
+                      {item?.items?.length > 0 ? (
+                        <div
+                          className={`${
+                            open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                          } overflow-hidden transition-all duration-300`}
                         >
-                          {item.title}
-                          {item?.items?.length > 0 && (
-                            <span className="md:hidden">
-                              <IconCaret direction={open ? 'up' : 'down'} />
-                            </span>
-                          )}
-                        </Heading>
-                      </Link>
-                    </Disclosure.Button>
-                    {item?.items?.length > 0 ? (
-                      <div
-                        className={`${
-                          open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                        } overflow-hidden transition-all duration-300`}
-                      >
-                        <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
-                          <Disclosure.Panel static>
-                            <nav className={styles.nav}>
-                              {item.items.map((subItem) => (
-                                <FooterLink key={subItem.id} item={subItem} />
-                              ))}
-                            </nav>
-                          </Disclosure.Panel>
-                        </Suspense>
-                      </div>
-                    ) : null}
-                  </>
-                )}
-              </Disclosure>
-            </section>
-          ))}
-        </div>
+                          <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
+                            <Disclosure.Panel static>
+                              <nav className={styles.nav}>
+                                {item.items.map((subItem) => (
+                                  <FooterLink key={subItem.id} item={subItem} />
+                                ))}
+                              </nav>
+                            </Disclosure.Panel>
+                          </Suspense>
+                        </div>
+                      ) : null}
+                    </>
+                  )}
+                </Disclosure>
+              </section>
+            ))}
+          </div>
         </div>
         <div className=" text-white ">
           <div>
             <div className="text-xl   font-semibold">Address</div>
-            <div className='w-[99%]'>
-              5025 S Ash Ave Suite B16 Tempe AZ
-              85282
+            <div className="w-[99%]">
+              5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>
           </div>
 
@@ -793,7 +796,6 @@ function FooterMenu({menu}) {
           <div>9:00am - 5:00pm MST</div>
         </div>
       </div>
-     
     </>
   );
 }

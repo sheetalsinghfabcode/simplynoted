@@ -58,6 +58,8 @@ const StripeCard = ({
     }
   };
 
+  console.log("savedCard",savedCard)
+
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-[500px]">
       <CardElement options={CARD_OPTIONS} className="m-5" />

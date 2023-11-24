@@ -33,8 +33,6 @@ export function AccountDetails({customer}) {
         setLoader(false);
 
         setKey(data.result);
-        // Process the data received from the API
-        console.log('Response data:', data);
       } else {
         // Handle errors here
         console.error('Error:', response.statusText);
