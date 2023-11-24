@@ -718,12 +718,7 @@ export default function FoldedCustomisableCard({
   const GoBackButton = () => {
     return (
       <div
-        className="button-tomato text-white inline flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
-        style={{
-          position: 'absolute',
-          top: '0',
-          left: '15rem',
-        }}
+        className="absolute top-0 left-0 button-tomato text-white inline flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
         onClick={() => setIsCardTypeSelectionPage(true)}
       >
         <FaArrowLeft /> &nbsp; GO BACK
@@ -732,7 +727,7 @@ export default function FoldedCustomisableCard({
   };
 
   return (
-    <section className="relative">
+    <section>
       {isLoading && (
         <div
           style={{zIndex: 999}}
@@ -885,9 +880,11 @@ export default function FoldedCustomisableCard({
         </Modal>
       )}
       <div className="relative mt-3">
-        <GoBackButton />
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-20">
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5">
           <div className="flex flex-col justify-start items-center flex-1 ml-7 min-h-[560px]">
+            <div className="min-w-[500px] flex-1 relative">
+              <GoBackButton />
+            </div>
             <span className="text-2xl mb-2">
               Custom Folded {selectedCardPage}
             </span>
