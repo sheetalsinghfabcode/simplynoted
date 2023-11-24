@@ -227,7 +227,7 @@ export default function FoldedCustomisableCard({
     }
   }
 
-  async function convertToBlackAndWhiteImageBlobUrl(imageUrl) {
+  async function getBlackAndWhiteImageBlobUrl(imageUrl) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.crossOrigin = 'anonymous'; // Enable cross-origin resource sharing (CORS) if needed
@@ -290,7 +290,7 @@ export default function FoldedCustomisableCard({
         const aspectRatio = imageWidth / imageHeight;
         // If image is long
         const isLongImage = aspectRatio < 0.9 ? true : false;
-        const blackAndWhiteImageFile = await convertToBlackAndWhiteImageBlobUrl(
+        const blackAndWhiteImageFile = await getBlackAndWhiteImageBlobUrl(
           URL.createObjectURL(chosenFile),
         );
 
@@ -524,7 +524,7 @@ export default function FoldedCustomisableCard({
       formData.append('isLongImage', frontImageDetails.isLongImage);
       formData.append('isLongImageBack', backImageDetails.isLongImage);
       formData.append('transformFace', '1');
-      formData.append('transformBack', backImageDetails.zoom);
+      formData.append('transformBack', '1');
       formData.append('cardType', 'folded5x7');
       formData.append('name', `customer-${customerId}--`);
       qr.isQrAdded && formData.append('QR', qr.inputText);
@@ -718,7 +718,12 @@ export default function FoldedCustomisableCard({
   const GoBackButton = () => {
     return (
       <div
-        className="button-tomato text-white inline flex justify-center items-center absolute top-0 left-3 p-3 font-semibold cursor-pointer text-xs"
+        className="button-tomato text-white inline flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '15rem',
+        }}
         onClick={() => setIsCardTypeSelectionPage(true)}
       >
         <FaArrowLeft /> &nbsp; GO BACK
@@ -881,7 +886,7 @@ export default function FoldedCustomisableCard({
       )}
       <div className="relative mt-3">
         <GoBackButton />
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-10">
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-20">
           <div className="flex flex-col justify-start items-center flex-1 ml-7 min-h-[560px]">
             <span className="text-2xl mb-2">
               Custom Folded {selectedCardPage}
