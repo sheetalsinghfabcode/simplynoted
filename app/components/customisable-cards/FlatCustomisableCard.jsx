@@ -168,6 +168,40 @@ export default function FlatCustomisableCard({
             };
           });
         }
+        if (
+          selectedCardPage === 'Card Back' &&
+          observingData.isHeader &&
+          headerData.isImageSelected
+        ) {
+          const backHeaderImageDiv =
+            document.getElementById('backHeaderImageDiv');
+          const screenshotImageFile = await generateTrimmedImageScreenshotFile(
+            backHeaderImageDiv,
+          );
+          setHeaderData((prevHeaderData) => {
+            return {
+              ...prevHeaderData,
+              imageFile: screenshotImageFile,
+            };
+          });
+        }
+        if (
+          selectedCardPage === 'Card Back' &&
+          observingData.isFooter &&
+          footerData.isImageSelected
+        ) {
+          const backFooterImageDiv =
+            document.getElementById('backFooterImageDiv');
+          const screenshotImageFile = await generateTrimmedImageScreenshotFile(
+            backFooterImageDiv,
+          );
+          setFooterData((prevFooterData) => {
+            return {
+              ...prevFooterData,
+              imageFile: screenshotImageFile,
+            };
+          });
+        }
       } catch (error) {
         console.error('Error generating screenshot:', error);
       }
@@ -178,6 +212,10 @@ export default function FlatCustomisableCard({
     frontImageDetails.blackAndWhiteImageFile,
     frontImageDetails.isColoredImage,
     frontImageDetails.zoom,
+    headerData.isImageSelected,
+    headerData.zoom,
+    footerData.isImageSelected,
+    footerData.zoom,
   ]);
 
   useEffect(() => {
@@ -217,7 +255,7 @@ export default function FlatCustomisableCard({
     return new File([u8arr], filename, {type: mime});
   }
 
-  async function convertToBlackAndWhiteImageBlobUrl(imageUrl) {
+  async function getBlackAndWhiteImageBlobUrl(imageUrl) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.crossOrigin = 'anonymous'; // Enable cross-origin resource sharing (CORS) if needed
@@ -296,7 +334,7 @@ export default function FlatCustomisableCard({
         const aspectRatio = imageWidth / imageHeight;
         // If image is long
         const isLongImage = aspectRatio < 0.9 ? true : false;
-        const blackAndWhiteImageFile = await convertToBlackAndWhiteImageBlobUrl(
+        const blackAndWhiteImageFile = await getBlackAndWhiteImageBlobUrl(
           URL.createObjectURL(chosenFile),
         );
 
@@ -615,7 +653,7 @@ export default function FlatCustomisableCard({
         fontType: headerData.fontFamily,
         fontSize: headerData.fontSize,
         fontColor: headerData.fontColor,
-        zoom: headerData.zoom,
+        zoom: '1',
         isColored: headerData.isColoredImage,
         height: 50,
       };
@@ -627,7 +665,7 @@ export default function FlatCustomisableCard({
         fontType: footerData.fontFamily,
         fontSize: footerData.fontSize,
         fontColor: footerData.fontColor,
-        zoom: footerData.zoom,
+        zoom: '1',
         isColored: footerData.isColoredImage,
         height: 50,
       };
@@ -642,8 +680,14 @@ export default function FlatCustomisableCard({
           : null,
       );
       formData.append('backImage', null);
-      formData.append('headerImage', headerData.imageFile);
-      formData.append('footerImage', footerData.imageFile);
+      formData.append(
+        'headerImage',
+        headerData.isImageSelected ? headerData.imageFile : null,
+      );
+      formData.append(
+        'footerImage',
+        footerData.isImageSelected ? footerData.imageFile : null,
+      );
 
       formData.append('isLongImage', frontImageDetails.isLongImage);
       formData.append('isLongImageBack', null);
@@ -884,7 +928,12 @@ export default function FlatCustomisableCard({
   const GoBackButton = () => {
     return (
       <div
-        className="button-tomato text-white inline flex justify-center items-center absolute top-0 left-3 p-3 font-semibold cursor-pointer text-xs"
+        className="button-tomato text-white inline flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '15rem',
+        }}
         onClick={() => setIsCardTypeSelectionPage(true)}
       >
         <FaArrowLeft /> &nbsp; GO BACK
@@ -1048,7 +1097,7 @@ export default function FlatCustomisableCard({
 
       <div className="relative mt-3">
         <GoBackButton />
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-10">
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 pt-20">
           <div
             className="flex flex-col justify-start items-center flex-1 ml-7"
             style={{minHeight: '564px'}}
@@ -1156,7 +1205,7 @@ export default function FlatCustomisableCard({
                           {headerData.isImageSelected && (
                             <div
                               id="backHeaderImageDiv"
-                              className="h-[45px] w-[60px] overflow-hidden"
+                              className="flex justify-center h-[45px] w-[60px] overflow-hidden"
                             >
                               <img
                                 src={headerData.imageUrl}
@@ -1206,9 +1255,9 @@ export default function FlatCustomisableCard({
                           {(footerData.isImageSelected || qr.isQrAdded) && (
                             <div
                               id="backFooterImageDiv"
-                              className={`h-[45px] ${
+                              className={`h-[45px] flex justify-center overflow-hidden ${
                                 qr.isQrAdded ? 'w-[20px] ml-3 ' : 'w-[60px]'
-                              } overflow-hidden`}
+                              }`}
                             >
                               <img
                                 src={
