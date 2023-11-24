@@ -14,6 +14,7 @@ export default function FoldedCustomisableCard({
   customerId,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
   const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
     useState(false);
   const [checkTitleDuplicacyModalOpen, setCheckTitleDuplicacyModalOpen] =
@@ -62,16 +63,17 @@ export default function FoldedCustomisableCard({
     const scrollHandler = () => {
       window.scrollTo(0, 0);
     };
-    if (isLoading) {
+    if (isScrollerRemoved) {
       window.addEventListener('scroll', scrollHandler);
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflowY = 'auto';
+      window.removeEventListener('scroll', scrollHandler);
     }
     return () => {
       window.removeEventListener('scroll', scrollHandler);
     };
-  }, [isLoading]);
+  }, [isScrollerRemoved]);
 
   useEffect(() => {
     // Generate default image for the face URL and back URL of the custom card.
@@ -415,6 +417,7 @@ export default function FoldedCustomisableCard({
         status: true,
       });
     }
+    setIsScrollerRemoved(false);
     // Convert product title to a handle name as per handle name's convention.
     // Remove whitespace or special characters at the beginning
     let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, '');
@@ -483,6 +486,7 @@ export default function FoldedCustomisableCard({
   async function uploadPdfRequest() {
     try {
       setIsLoading(true);
+      setIsScrollerRemoved(true);
       const formData = new FormData();
       const commonHeaderFooterPayload = {
         data: '',
@@ -534,6 +538,7 @@ export default function FoldedCustomisableCard({
 
       if (data.ok) {
         setIsLoading(false);
+        setIsScrollerRemoved(false);
         const response = await data.json();
         setS3ImageUrls(response.result);
         return true;
@@ -549,6 +554,7 @@ export default function FoldedCustomisableCard({
   async function checkForDuplicateTitle() {
     try {
       setIsLoading(true);
+      setIsScrollerRemoved(true);
 
       const options = {
         method: 'POST',
@@ -567,6 +573,7 @@ export default function FoldedCustomisableCard({
       if (response.ok) {
         const data = await response.json();
         setIsLoading(false);
+        setIsScrollerRemoved(false);
         return data.result.count === 0 ? false : true;
       } else {
         return false;
@@ -580,6 +587,7 @@ export default function FoldedCustomisableCard({
   async function saveCustomCard() {
     try {
       setIsLoading(true);
+      setIsScrollerRemoved(true);
 
       const formData = new FormData();
 
