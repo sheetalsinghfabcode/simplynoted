@@ -707,82 +707,84 @@ function FooterMenu({menu}) {
       ))} */}
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
-      <div className="grid md:flex justify-evenly gap-[40px] md:text-left text-center pt-[50px] pb-[30px]">
-        <div className="mx-auto">
-          <div className="lg:w-48 w-28 pt-10 md:pt-0">
+      <div className="grid md:flex justify-evenly gap-[40px] lg:text-[16px] md:text-[12px] text-[17px] md:text-left text-center pt-[50px] pb-[30px] mx-auto w-[88%] ">
+       
+        <div className="md:mx-0 mx-auto">
+          <div className="lg:w-48 md:w-28 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
-          <div className="flex mt-5">
+          <div className="flex mt-5 sm:w-full  w-[84%] ">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-              <img className="lg:w-14 w-7 m-1" src={linkdin} alt=""></img>
+            <img className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[31px]" src={linkdin} alt=""></img>
             </a>
             <a href="#">
-              <img className="lg:w-14 w-7 m-1" src={fb} alt=""></img>
+            <img className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1" src={fb} alt=""></img>
             </a>
             <a href="#">
-              <img className="lg:w-14 w-7 m-1" src={twitter} alt=""></img>
+            <img className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1" src={twitter} alt=""></img>
             </a>
           </div>
         </div>
-        <div className="  text-white md:text-left text-center">
-          <div className="text-xl font-semibold">Quick Links </div>
-          <div className="text-center md:ml-0 ml-[104px]">
-            {(menu?.items || []).map((item) => (
-              <section key={item.id} className={styles.section}>
-                <Disclosure>
-                  {({open}) => (
-                    <>
-                      <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                        <Link to={item.to}>
-                          <Heading
-                            className="flex justify-between  !font-base leading-loose hover:text-white"
-                            size="lead"
-                            as="h3"
-                          >
-                            {item.title}
-                            {item?.items?.length > 0 && (
-                              <span className="md:hidden">
-                                <IconCaret direction={open ? 'up' : 'down'} />
-                              </span>
-                            )}
-                          </Heading>
-                        </Link>
-                      </Disclosure.Button>
-                      {item?.items?.length > 0 ? (
-                        <div
-                          className={`${
-                            open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                          } overflow-hidden transition-all duration-300`}
+        <div className="  text-white md:text-left text-center  ">
+          <div className="lg:text-xl md:text-[18px] text-[22px] font-semibold">Quick Links </div>
+          <div className='text-center md:w-full w-[66%] md:ml-0 ml-auto'>
+          {(menu?.items || []).map((item) => (
+            <section key={item.id} className={styles.section}>
+              <Disclosure>
+                {({open}) => (
+                  <>
+                    <Disclosure.Button className="md:text-left text-center md:cursor-default">
+                      <Link to={item.to}>
+                        <Heading
+                          className="flex justify-between  !font-base leading-loose hover:text-white"
+                          size="lead"
+                          as="h3"
                         >
-                          <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
-                            <Disclosure.Panel static>
-                              <nav className={styles.nav}>
-                                {item.items.map((subItem) => (
-                                  <FooterLink key={subItem.id} item={subItem} />
-                                ))}
-                              </nav>
-                            </Disclosure.Panel>
-                          </Suspense>
-                        </div>
-                      ) : null}
-                    </>
-                  )}
-                </Disclosure>
-              </section>
-            ))}
-          </div>
+                          {item.title}
+                          {item?.items?.length > 0 && (
+                            <span className="md:hidden">
+                              <IconCaret direction={open ? 'up' : 'down'} />
+                            </span>
+                          )}
+                        </Heading>
+                      </Link>
+                    </Disclosure.Button>
+                    {item?.items?.length > 0 ? (
+                      <div
+                        className={`${
+                          open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                        } overflow-hidden transition-all duration-300`}
+                      >
+                        <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
+                          <Disclosure.Panel static>
+                            <nav className={styles.nav}>
+                              {item.items.map((subItem) => (
+                                <FooterLink key={subItem.id} item={subItem} />
+                              ))}
+                            </nav>
+                          </Disclosure.Panel>
+                        </Suspense>
+                      </div>
+                    ) : null}
+                  </>
+                )}
+              </Disclosure>
+            </section>
+          ))}
+        </div>
         </div>
         <div className=" text-white ">
           <div>
-            <div className="text-xl   font-semibold">Address</div>
-            <div className="w-[99%]">
-              5025 S Ash Ave Suite B16 Tempe AZ 85282
+            <div className="lg:text-xl text-[16px]  font-semibold">Address</div>
+            <div className='w-[99%] '>
+              5025 S Ash Ave Suite B16 Tempe AZ
+              85282
             </div>
           </div>
 
           <div className="md:mt-24 mt-[40px] text-white">
-            <div className="text-xl font-semibold">Email</div>
-            <div>
+            <div className="lg:text-xl text-[16px] font-semibold">Email</div>
+            <div className=''>
               <a href="mailto:support@simplynoted.com">
                 support@simplynoted.com
               </a>
@@ -790,12 +792,14 @@ function FooterMenu({menu}) {
           </div>
         </div>
 
-        <div className=" text-white">
-          <div className="text-xl font-semibold">Hours</div>
+        <div className=" text-white ">
+          <div className="lg:text-xl text-[16px] font-semibold">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>
         </div>
       </div>
+     
     </>
   );
 }
+
