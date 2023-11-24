@@ -7,7 +7,7 @@ import CheckBox from '../../components/CheckBox';
 import CircularLoader from '../CircularLoder';
 import DynamicButton from '../DynamicButton';
 import ErrorModal from '../modal/ErrorModal';
-import CustomCheckbox from '../CustomCheckbox'; 
+import CustomCheckbox from '../CustomCheckbox';
 
 const ContactTable = ({
   customerID,
@@ -33,7 +33,11 @@ const ContactTable = ({
   const [errorModal, setErrorModal] = useState(false);
   const [errorContent, serErrorContent] = useState([]);
 
-  let data = filteredAddresses;
+  let data = filteredAddresses.sort((a, b) => {
+    const dateA = new Date(a.created);
+    const dateB = new Date(b.created);
+    return dateB - dateA; // Sorting in decending order (newest first)
+  });
 
   const handleTypeChange = (e) => {
     setSelectedCheckboxes([]);
@@ -201,7 +205,9 @@ const ContactTable = ({
     usePagination, // Use the pagination plugin
   );
 
-  const allSelected = page.length > 0 &&  page.every((row) => selectedCheckboxes.includes(row.original._id));
+  const allSelected =
+    page.length > 0 &&
+    page.every((row) => selectedCheckboxes.includes(row.original._id));
 
   const handleSelectAll = () => {
     const currentPageIds = page.map((value) => value.original._id);
@@ -224,6 +230,7 @@ const ContactTable = ({
       setSelectedCheckboxes(updatedSelected);
     }
   };
+
   function csvToJson(csv) {
     var lines = csv.split('\n');
     var result = [];
@@ -393,7 +400,7 @@ const ContactTable = ({
     setupdateLoader(true);
     setTimeout(() => {
       setupdateLoader(false);
-    }, [1000]);
+    }, [2000]);
   }, []);
 
   return (

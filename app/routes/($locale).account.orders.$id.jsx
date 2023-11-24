@@ -67,9 +67,6 @@ export async function loader({request, context, params}) {
 export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
 
-  console.log('lineItems', lineItems);
-  console.log('order', order);
-
   const {setOrderHistory} = useStateContext();
 
   return (

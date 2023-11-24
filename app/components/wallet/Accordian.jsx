@@ -13,7 +13,6 @@ const Accordion = ({
   finalPrice,
   setWalletPurchase,
   setWalletPayment,
-  subscription,
   amount,
   selectedPlan,
   packageProduct,
@@ -120,6 +119,9 @@ const Accordion = ({
     formData.name = fullName;
     formData.email = userEmail;
   }, []);
+
+
+
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -264,7 +266,6 @@ const Accordion = ({
       subscriptionStatus: data.status,
     };
 
-    console.log('payLoad', payLoad);
     const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
@@ -291,6 +292,18 @@ const Accordion = ({
         console.error('Error:', error);
       });
   };
+
+
+  const setFirstPaymentId = () => {
+    if (savedCard && savedCard.length > 0) {
+      setPaymentMethodId(savedCard[0].paymentId); // Set the first payment ID
+    }
+  };
+  
+  // Calling the function to set the first payment ID when the component renders
+  useEffect(() => {
+    setFirstPaymentId();
+  }, [savedCard]); // Run when savedCard changes
 
   return (
     <div className="w-full  relative max-w-[1440px] mt-[24px] mx-auto px-[24px]">
@@ -479,7 +492,7 @@ const Accordion = ({
                           type="radio"
                           onChange={() => setPaymentMethodId(item.paymentId)}
                           name="action"
-                          checked={i === 0}
+                          checked={paymentMethodId === item.paymentId}
                           className="mr-2"
                         />
                         <span className="mr-[17rem] tracking-wide">

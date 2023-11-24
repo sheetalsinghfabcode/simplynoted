@@ -215,7 +215,7 @@ function Account({customer, heading, featuredData}) {
           />
         </Form>
       </div>
-      <div className="flex gap-[20px]">
+      <div className="flex gap-[20px] flex-wrap">
         <DynamicButton
           text="Account detail"
           className={`flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
