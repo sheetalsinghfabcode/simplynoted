@@ -77,7 +77,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
         setPaymentHistory(data);
         setLoader(false);
       })
@@ -102,7 +101,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
         setLoader(false);
       })
       .catch((error) => {
@@ -127,7 +125,6 @@ const ManageSubscription = () => {
         setLoader(false);
         setAutoModal(false);
         setRestartAutoNew(false);
-        console.log('data', data);
         setLoader(false);
       })
       .catch((error) => {
@@ -154,7 +151,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
         setDeleteModal(false);
         setLoader(false);
         setForUpdateData(true);
@@ -185,7 +181,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data, 'updateData');
         setLoader(false);
         setForUpdateData(true);
         setUpdateModal(false);
@@ -217,7 +212,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data, 'updateData');
         setLoader(false);
         setDefaultCard(false);
         // Handle the response data if needed
@@ -252,7 +246,6 @@ const ManageSubscription = () => {
         },
       );
       const jsonData = await res.json();
-      console.log(jsonData, 'addNewCard');
       // setNewCardAdded(true);
       // setShowCardBox(false);
       setLoader(false);
@@ -260,14 +253,12 @@ const ManageSubscription = () => {
       setUpdateModal(false);
     } catch (error) {
       setLoader(false);
-      console.log(error, 'addNewCreditCard ------');
     }
   }
 
 
 
   useEffect(() => {
-    console.log('Component mount');
     setLoader(true);
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
@@ -281,7 +272,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
         setStripeCollection(data);
         setLoader(false);
       })
@@ -292,7 +282,6 @@ const ManageSubscription = () => {
     getSavedCards(customerID);
 
     return () => {
-      console.log('Component Unmount');
     };
   }, [forUpdateData,defaultCard,addCreditModal,deleteModal,updateModal]);
 
@@ -323,13 +312,11 @@ const ManageSubscription = () => {
         `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
-      console.log(json, 'creditCard Details');
       if (json) {
         setSavedCard(json.payments);
         setLoader(false);
       }
     } catch (error) {
-      console.log(error, 'error at credit Card');
       setLoader(false);
     }
   }

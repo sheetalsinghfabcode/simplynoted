@@ -114,11 +114,14 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setOrderHistory,setCustomerId} = useStateContext()
+  const {orderHistory, setOrderHistory,setCustomerId ,setIsAccountLoader} = useStateContext()
   const [accountDetail, setAccountDetail] = useState(!orderHistory ? true: false);
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
   useEffect(() => {
+    if(customer){
+      setIsAccountLoader(false)
+    }
     getSavedCards();
   }, []);
 
@@ -178,10 +181,7 @@ function Account({customer, heading, featuredData}) {
         `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
       );
       const json = await res.json();
-      console.log(json, 'creditCard Details');
-      // if (json) {
-      // setSavedCart(json.payments)
-      // }
+   
       if (json.stripe) {
         localStorage.setItem(
           'packageDiscount',

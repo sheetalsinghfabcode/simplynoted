@@ -333,11 +333,7 @@ export default function AddCartFunc() {
                                   <button
                                     className="bg-[#EF6E6E] text-[#fff] p-2"
                                     onClick={() => {
-                                      if (customerId) {
-                                        OpenModalFunc2(index);
-                                      } else {
-                                        setLoginModal(true);
-                                      }
+                                      OpenModalFunc2(index);
                                     }}
                                   >
                                     PREVIEW YOUR CUSTOM MESSAGE
@@ -387,11 +383,7 @@ export default function AddCartFunc() {
                                     className="bg-[#ef6e6e] w-full"
                                     text="Add Gift Card"
                                     onClickFunction={() => {
-                                      if (customerId) {
-                                        OpenModalFunc(index);
-                                      } else {
-                                        setLoginModal(true);
-                                      }
+                                      OpenModalFunc(index);
                                     }}
                                   />
                                 </div>
@@ -402,11 +394,7 @@ export default function AddCartFunc() {
                                   className="bg-[#1b5299] w-full"
                                   text="EDIT ORDER"
                                   onClickFunction={() => {
-                                    if (customerId) {
-                                      editOrderData(index);
-                                    } else {
-                                      setLoginModal(true);
-                                    }
+                                    editOrderData(index);
                                   }}
                                 />
                               </div>
@@ -415,11 +403,7 @@ export default function AddCartFunc() {
                                   className="bg-[#E30000] w-full"
                                   text="DELETE ORDER"
                                   onClickFunction={() => {
-                                    if (customerId) {
-                                      ConfirmDeleteOrder(index);
-                                    } else {
-                                      setLoginModal(true);
-                                    }
+                                    ConfirmDeleteOrder(index);
                                   }}
                                 />
                               </div>
@@ -479,11 +463,7 @@ export default function AddCartFunc() {
                                   className="bg-[#E30000] w-full"
                                   text="DELETE CARD"
                                   onClickFunction={() => {
-                                    if (customerId) {
-                                      confirmCardDel(index);
-                                    } else {
-                                      setLoginModal(true);
-                                    }
+                                    confirmCardDel(index);
                                   }}
                                 />
                               </div>
@@ -827,10 +807,7 @@ export default function AddCartFunc() {
                             <button
                               className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla"
                               onClick={() => {
-                                if (customerId) {
-                                  clearCartBtn();
-                                }
-                                setLoginModal(true);
+                                clearCartBtn();
                               }}
                             >
                               <img
