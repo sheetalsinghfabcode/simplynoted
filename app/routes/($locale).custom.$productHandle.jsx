@@ -206,7 +206,7 @@ export default function CustomProducts() {
                             ? customProductData.images[imageShow].originalSrc
                             : foldBack
                         }
-                        className="object-contain w-[550px] h-[400px] fadeIn w-full"
+                        className="object-contain w-[550px] fadeIn w-full"
                       />
                     )}
                   {customProductData && metafields.cardType !== 'folded5x7' && (

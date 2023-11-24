@@ -137,6 +137,8 @@ export default function FlatCustomisableCard({
   }, [observingData, headerData, footerData, qr]);
 
   useEffect(() => {
+    // To stop the lateral inversion of the image to be screenshotted.
+    setIsRotationAnimationApplied(false);
     // To Store the actual value instead of a promise inside screenshotUrl object key.
     const generateScreenshot = async () => {
       try {
@@ -189,7 +191,8 @@ export default function FlatCustomisableCard({
 
   async function generateTrimmedImageScreenshotFile(element) {
     try {
-      const canvas = await html2canvas(element);
+      // Scale to improve the quality of the image
+      const canvas = await html2canvas(element, {scale: 2});
       const dataUrl = canvas.toDataURL('image/png');
       return dataUrlToFile(dataUrl);
     } catch (error) {
@@ -644,7 +647,7 @@ export default function FlatCustomisableCard({
 
       formData.append('isLongImage', frontImageDetails.isLongImage);
       formData.append('isLongImageBack', null);
-      formData.append('transformFace', frontImageDetails.zoom);
+      formData.append('transformFace', '1');
       formData.append('transformBack', null);
       formData.append('cardType', 'flat5x7');
       formData.append('name', `customer-${customerId}--`);
@@ -679,7 +682,7 @@ export default function FlatCustomisableCard({
     const isDuplicateTitle = await checkForDuplicateTitle();
     if (isDuplicateTitle) {
       return setErrorResponse({
-        message: 'Card name already exists. 😔',
+        message: 'Card name already exists.',
         status: true,
       });
     }
@@ -1056,13 +1059,14 @@ export default function FlatCustomisableCard({
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="h-[350px] min-w-[500px] bg-white relative overflow-hidden"
+                  className="min-w-[500px] bg-white relative overflow-hidden"
                   style={{
+                    height: '378px',
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
                     transform: isRotationAnimationApplied
-                      ? 'rotateY(360deg)'
+                      ? 'rotateY(-180deg)'
                       : 'rotateY(0deg)',
-                    transition: 'transform 1.2s',
+                    transition: 'transform 0.8s',
                   }}
                   onMouseOver={() => setIsMouseHoveredOnContainer(true)}
                   onMouseOut={() => setIsMouseHoveredOnContainer(false)}
@@ -1070,22 +1074,24 @@ export default function FlatCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px] border-2 border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center items-center m-auto inset-0 w-[480px] border-2 border-dashed border-[#ff0000]"
                         style={{
+                          height: '358px',
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(360deg)'
+                            ? 'rotateY(-180deg)'
                             : 'rotateY(0deg)',
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
+                        className="absolute flex justify-center items-center m-auto inset-0 w-[480px]"
                         id="frontTrimmedDiv"
                         style={{
+                          height: '358px',
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(360deg)'
+                            ? 'rotateY(-180deg)'
                             : 'rotateY(0deg)',
                         }}
                       >
@@ -1115,7 +1121,7 @@ export default function FlatCustomisableCard({
                         style={{
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
-                            ? 'rotateY(360deg)'
+                            ? 'rotateY(-180deg)'
                             : 'rotateY(0deg)',
                         }}
                       >
