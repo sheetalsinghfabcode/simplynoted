@@ -1,5 +1,5 @@
 import DynamicButton from '../DynamicButton';
-import React, {useState, useEffect} from 'react';
+import { useEffect} from 'react';
 
 const WalletPlans = ({
   WalletData,

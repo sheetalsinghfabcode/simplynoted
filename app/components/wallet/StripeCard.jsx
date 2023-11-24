@@ -19,11 +19,8 @@ const CARD_OPTIONS = {
 };
 
 const StripeCard = ({
-  setPaymentMethodId,
   createCustomerId,
   savedCard,
-  setloader,
-  paymentPurchase,
   handlePurchaseCard,
   addCreditModal,
   updateCard
@@ -58,7 +55,6 @@ const StripeCard = ({
     }
   };
 
-  console.log("savedCard",savedCard)
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-[500px]">
@@ -68,15 +64,14 @@ const StripeCard = ({
           type="submit"
           className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
         >
-          {savedCard &&
-            savedCard.length > 0 &&
-            ((addCreditModal && !updateCard) ? 'Add Card' : 'Update Card')}
 
-          {(!savedCard || savedCard.length === 0) && 'Complete Purchase'}
+            {(addCreditModal && !updateCard) ? 'Add Card' : 'Update Card'}
+
+          {/* {(!savedCard || savedCard.length === 0) && 'Complete Purchase'} */}
         </button>
       </div>
     </form>
-  );
+  ); 
 };
 
 export default StripeCard;

@@ -43,9 +43,6 @@ export default function tutorials() {
     blog.blog.articles.edges.map((index) => index.node.title),
   );
 
-
-  console.log("loader",loader)
-
   return (
     <div>
       <div className="">

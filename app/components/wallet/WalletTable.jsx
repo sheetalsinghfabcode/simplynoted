@@ -102,7 +102,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
 
-
   const pricingPlans = [
     {
       name: 'Enterprise',
@@ -145,30 +144,35 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
             {pricingPlans
               .slice(0)
               .reverse()
-              .map((plan, index) => (
-                <th key={index} className="text-center py-4 px-10">
-                  <span className="text-lg text-[#000] uppercase block">
-                    {plan.name}
-                  </span>
-                  <span className="text-sm text-[#000] leading-[150%] block">
-                    As low as
-                  </span>
-                  <span className="text-2xl font-bold text-[#000] block">
-                    {plan.price}
-                  </span>
-                  <span className="text-sm text-[#000] leading-[150%] block">
-                    per card
-                  </span>
-
-                  <DynamicButton
-                    onClickFunction={plan.onClick}
-                    className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
-                    text={plan.buttonText}
-                  />
-                </th>
-              ))}
+              .map((plan, index) => {
+                // if (plan.name === 'Enterprise' || subscriptionType === 'business' || (subscriptionType === 'team' && plan.name !== 'Free')) {
+                return (
+                  <th key={index} className="text-center py-4 px-10">
+                    <span className="text-lg text-[#000] uppercase block">
+                      {plan.name}
+                    </span>
+                    <span className="text-sm text-[#000] leading-[150%] block">
+                      As low as
+                    </span>
+                    <span className="text-2xl font-bold text-[#000] block">
+                      {plan.price}
+                    </span>
+                    <span className="text-sm text-[#000] leading-[150%] block">
+                      per card
+                    </span>
+                    <DynamicButton
+                      onClickFunction={plan.onClick}
+                      className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
+                      text={plan.buttonText}
+                    />
+                  </th>
+                );
+                // }
+                // return null;
+              })}
           </tr>
         </thead>
+
         <tbody>
           {data.map((item, index) => (
             <tr

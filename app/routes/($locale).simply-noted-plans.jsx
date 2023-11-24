@@ -44,13 +44,15 @@ export default function SimplyNoted() {
   const [loader, setloader] = useState(true);
   const [packageProduct,setPackageProduct] = useState("")
   const [subscriptionProduct,setSubscriptionProduct] = useState("")
-  const [subscriptionTitle,setSubscriptionTitle] = useState("")
   const [subscriptionPriceId,setSubscriptionPriceId] = useState("")
-
-
-
+  const [subscriptionTitle, setSubscriptionTitle] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedSubscriptionTitle = localStorage.getItem('subscriptionName');
+      return storedSubscriptionTitle ? storedSubscriptionTitle : 'Free';
+    }
+    return 'Free'; // Fallback if localStorage is not available
+  });
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -81,6 +83,8 @@ export default function SimplyNoted() {
     return () => {};
   }, []);
 
+
+  console.log("stripeCollection",stripeCollection)
 
   return (
     <div className='w-full relative max-w-[1440px] mx-auto px-[16px]'>
