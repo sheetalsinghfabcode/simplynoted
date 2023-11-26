@@ -150,26 +150,27 @@ const Card=()=>{
     </div>
    </div>
         </div>
-
-        <div className="bottom_background mt-3 relative xl:w-[103%] md:w-[103.9%]  overflow-x-hidden">
+<div className="w-full overflow-hidden">
+        <div className="bottom_background mt-3 relative  overflow-x-hidden">
             <div className="pt-10 md:flex grid  justify-center">
-                <h3 className="lg:text-4xl md:text-2xl  text-[26px] font-bold md:m-20 ml-28 mt-5">Ready to start writing?</h3>
+                <h3 className="lg:text-4xl md:text-2xl  text-[26px] font-bold md:my-20 md:mx-[2rem] ml-28 mt-5">Ready to start writing?</h3>
            
-            <div className=" flex flex-col md:flex-row text-white md:m-20 mx-10 mt-10">
+            <div className=" flex flex-col md:flex-row text-white md:my-[4rem]  md:mx-[2rem] mx-10 mt-10">
             <DynamicButton
                     text="REQUEST SAMPLE"
-                    className="btn1"
+                    className="req-btn"
                      onClickFunction={()=>window.location.href=("https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb")}
                 
             />
             <DynamicButton
                     text="SCHEDULE A DEMO"
-                    className="btn3"
+                    className="sch-btn"
                      onClickFunction={()=>window.location.href=("https://meetings.hubspot.com/rick24")}
                 
             />
               
             </div>
+</div>
 </div>
         </div>
         </>

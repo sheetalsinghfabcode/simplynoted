@@ -30,13 +30,12 @@ const Notes = () => {
     <>
       <div className="container-indent bg-[#324879] flex items-center justify-center">
         <div className="container">
-          <div className="block-title text-xl font-bold md:text-3xl">
-            <h1 className="tt-title  text-center pt-20 text-white">
+          <div className="block-title text-xl font-bold md:text-3xl text-center text-white py-10">
+  
               Real Pen.Real Ink.
-            </h1>
-            <div className="tt-description text-center pt-1 text-white">
+            <br/>
               Real Impressions.
-            </div>
+            
           </div>
           </div>
          
