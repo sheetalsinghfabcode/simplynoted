@@ -92,16 +92,24 @@ const ContactTable = ({
     if (selectedType === 'all') {
       return filteredAddresses;
     } else {
-      return filteredAddresses.filter(
-        (address) => address.type === selectedType,
-      );
+      return filteredAddresses.filter((address) => {
+        const addressType = address.type.toLowerCase();
+        if (selectedType === 'return') {
+          return addressType === 'sender' || addressType === 'return';
+        } else {
+          return addressType === selectedType;
+        }
+      });
     }
   };
+  
 
   data = useMemo(
     () => filterAddressesByType(),
     [selectedType, filteredAddresses],
   );
+
+  console.log("filteredAddresses",filteredAddresses)
 
   const columns = React.useMemo(
     () => [

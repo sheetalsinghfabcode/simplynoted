@@ -45,7 +45,7 @@ export function AccountDetails({customer}) {
 
   useEffect(() => {
     generateApiKey();
-  }, []);
+  }, [customerID]);
 
   let apiKey;
 
