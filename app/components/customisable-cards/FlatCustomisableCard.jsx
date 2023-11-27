@@ -1719,67 +1719,106 @@ export default function FlatCustomisableCard({
                     </div>
                     <div className="flex flex-col gap-8 ">
                       <div className="min-h-[150px] w-1/2">
-                        {((headerData.imageFile && headerData.imageUrl) ||
-                          (footerData.imageFile && footerData.imageUrl)) && (
-                          <>
-                            <div className="flex flex-col mb-3 mt-3">
-                              <span>Resize image</span>
-                              <input
-                                type="range"
-                                min="0.3"
-                                max="1"
-                                step="0.1"
-                                value={
-                                  observingData.isHeader
-                                    ? headerData.zoom
-                                    : footerData.zoom
-                                }
-                                onChange={handleZoomSliderChange}
-                              />
-                            </div>
-                            <div className="flex justify-start items-center gap-5">
-                              <label htmlFor="bw-radio-btn">
+                        {observingData.isHeader &&
+                          headerData.imageFile &&
+                          headerData.imageUrl && (
+                            <>
+                              <div className="flex flex-col mb-3 mt-3">
+                                <span>Resize image</span>
                                 <input
-                                  id="bw-radio-btn"
-                                  name="isImageColored"
-                                  type="radio"
-                                  value="grayscale"
-                                  checked={
-                                    observingData.isHeader
-                                      ? !headerData.isColoredImage
-                                      : !footerData.isColoredImage
-                                  }
-                                  onChange={handleImageColorChange}
+                                  type="range"
+                                  min="0.3"
+                                  max="1"
+                                  step="0.1"
+                                  value={headerData.zoom}
+                                  onChange={handleZoomSliderChange}
                                 />
-                                &nbsp;B/W
-                              </label>
-                              <label htmlFor="colored-radio-btn">
+                              </div>
+                              <div className="flex justify-start items-center gap-5">
+                                <label htmlFor="bw-radio-btn">
+                                  <input
+                                    id="bw-radio-btn"
+                                    name="isImageColored"
+                                    type="radio"
+                                    value="grayscale"
+                                    checked={!headerData.isColoredImage}
+                                    onChange={handleImageColorChange}
+                                  />
+                                  &nbsp;B/W
+                                </label>
+                                <label htmlFor="colored-radio-btn">
+                                  <input
+                                    id="colored-radio-btn"
+                                    type="radio"
+                                    name="isImageColored"
+                                    value="colored"
+                                    onChange={handleImageColorChange}
+                                    checked={headerData.isColoredImage}
+                                  />
+                                  &nbsp;Color
+                                </label>
+                              </div>
+                              <div className="h-[40px] mt-5">
+                                <button
+                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
+                                  type="button"
+                                  onClick={handleSelectedImageReset}
+                                >
+                                  Remove image
+                                </button>
+                              </div>
+                            </>
+                          )}
+                        {observingData.isFooter &&
+                          footerData.imageFile &&
+                          footerData.imageUrl && (
+                            <>
+                              <div className="flex flex-col mb-3 mt-3">
+                                <span>Resize image</span>
                                 <input
-                                  id="colored-radio-btn"
-                                  type="radio"
-                                  name="isImageColored"
-                                  value="colored"
-                                  onChange={handleImageColorChange}
-                                  checked={
-                                    observingData.isHeader
-                                      ? headerData.isColoredImage
-                                      : footerData.isColoredImage
-                                  }
+                                  type="range"
+                                  min="0.3"
+                                  max="1"
+                                  step="0.1"
+                                  value={footerData.zoom}
+                                  onChange={handleZoomSliderChange}
                                 />
-                                &nbsp;Color
-                              </label>
-                            </div>
-                            <div className="h-[40px] mt-5">
-                              <button
-                                className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
-                                type="button"
-                                onClick={handleSelectedImageReset}
-                              >
-                                Remove image
-                              </button>
-                            </div>
-                          </>
-                        )}
+                              </div>
+                              <div className="flex justify-start items-center gap-5">
+                                <label htmlFor="bw-radio-btn">
+                                  <input
+                                    id="bw-radio-btn"
+                                    name="isImageColored"
+                                    type="radio"
+                                    value="grayscale"
+                                    checked={!footerData.isColoredImage}
+                                    onChange={handleImageColorChange}
+                                  />
+                                  &nbsp;B/W
+                                </label>
+                                <label htmlFor="colored-radio-btn">
+                                  <input
+                                    id="colored-radio-btn"
+                                    type="radio"
+                                    name="isImageColored"
+                                    value="colored"
+                                    onChange={handleImageColorChange}
+                                    checked={footerData.isColoredImage}
+                                  />
+                                  &nbsp;Color
+                                </label>
+                              </div>
+                              <div className="h-[40px] mt-5">
+                                <button
+                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
+                                  type="button"
+                                  onClick={handleSelectedImageReset}
+                                >
+                                  Remove image
+                                </button>
+                              </div>
+                            </>
+                          )}
                       </div>
                     </div>
 
