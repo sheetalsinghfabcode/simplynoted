@@ -1718,7 +1718,7 @@ export default function FlatCustomisableCard({
                       )}
                     </div>
                     <div className="flex flex-col gap-8 ">
-                      <div className="min-h-[130px] w-1/2">
+                      <div className="min-h-[150px] w-1/2">
                         {((headerData.imageFile && headerData.imageUrl) ||
                           (footerData.imageFile && footerData.imageUrl)) && (
                           <>
@@ -1769,16 +1769,18 @@ export default function FlatCustomisableCard({
                                 &nbsp;Color
                               </label>
                             </div>
+                            <div className="h-[40px] mt-5">
+                              <button
+                                className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
+                                type="button"
+                                onClick={handleSelectedImageReset}
+                              >
+                                Remove image
+                              </button>
+                            </div>
                           </>
                         )}
                       </div>
-                      <button
-                        className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
-                        type="button"
-                        onClick={handleSelectedImageReset}
-                      >
-                        Remove image
-                      </button>
                     </div>
 
                     <div
