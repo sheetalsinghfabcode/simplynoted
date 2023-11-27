@@ -139,7 +139,42 @@ const Swipers = () => {
           </Swiper>
         </div>
 
-        <div></div>
+        {/* <div className='columns-2'>
+      
+              <img className="w-full" src={Fairway} alt="LogoSimplinotedpic" />{' '}
+            
+              <img
+                className="w-full"
+                src={Mariott}
+                alt="LogoSimplinotedpic"
+              />
+           
+              <img className="w-full" src={Ncca} alt="LogoSimplinotedpic" />
+            
+              <img
+                className="w-full"
+                src={Ford}
+                alt="LogoSimplinotedpic"
+              />
+           
+              <img className="w-full" src={Edward} alt="LogoSimplinotedpic" />
+        
+              <img
+                className="w-full"
+                src={Ronald}
+                alt="LogoSimplinotedpic"
+              />
+            
+              <img className="w-full" src={kw} alt="LogoSimplinotedpic" />
+           
+              <img
+                className="w-full  mt-[-13px]"
+                src={tesla}
+                alt="LogoSimplinotedpic"
+              />
+            
+
+        </div> */}
       </div>
     </>
   );

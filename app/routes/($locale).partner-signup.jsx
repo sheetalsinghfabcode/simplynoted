@@ -6,8 +6,8 @@ const Partner_signup = () => {
   return (
     <>
       <div className="mt-8 w-full mx-auto flex justify-center">
-        <div className="relative flex flex-wrap justify-center w-full mx-auto gap-[50px] ">
-          <div className="w-[40%] text-left mt-5">
+        <div className="relative grid lg:flex flex-wrap justify-center w-[90%] mx-auto gap-[50px] ">
+          <div className="lg:w-[40%] w-full text-left mt-5">
             <h1 className="text-[#001a5f] text-center md:text-3xl text-xl font-karla tracking-tight pb-[6px] mx-2">
               Signup for the <hr />
               <span className="font-beauty ml-2 md:text-6xl text-3xl font-extrabold">
@@ -44,24 +44,20 @@ const Partner_signup = () => {
               </div>
             </div>
           </div>
-          <div className="w-[40%] text-left mt-5">
-            <div className="inline-flex z-[-1] absolute">
+          <div className="lg:w-[40%] w-full  text-left mt-5 mr-auto xl:ml-auto ml-0">
+            <div className="lg:inline-flex z-[-1]  hidden absolute">
               <img
-                className="z-1 absolute w-[63%] ml-[-175px] mt-[28px]"
+                className="z-1  w-full ml-[-146px] mt-[100px]"
                 src={robot4}
                 alt="robot-4"
               ></img>
-              <img
-                className="z-[-1] w-[90%] relative overflow-x-hidden mt-[28rem] ml-[13rem] "
-                src={signup_card}
-                alt="signup-card"
-              ></img>
+             
             </div>
 
-            <div className="wrap-sample-form">
+            <div className="wrap-sample-form-sign ">
               <form className="hubForm" data-hs-cf-bound="true">
                 <div className="mt-[3rem] text-[30px] text-center text-white leading-8">
-                  Request a Writing Sample Packet
+                Start Earning Today
                 </div>
                 <div className="row">
                   <div className="white-underline">
@@ -168,13 +164,14 @@ const Partner_signup = () => {
                 />
               </form>
             </div>
+        
           </div>
 
 
           <div className='pt-[60ox] relative flex flex-wrap mx-[-10px] justify-center '>
             <div>
-                <h2 className='text-[#001a5f] text-center md:text-2xl text-xl font-karla mb-10 signup-underline'>Program Benefits</h2>
-                <ul className='columns-2'>
+                <h2 className='text-[#001a5f] text-center text-4xl  font-karla mb-10 signup-underline'>Program Benefits</h2>
+                <ul className='md:columns-2 columns-1'>
                     <li className='programm-list' >Support Sales & Marketing Programs</li>
                     <li className='programm-list'>Define Joint Business Opportunities</li>
                     <li className='programm-list'>Provide Product and Technical Expertise</li>
