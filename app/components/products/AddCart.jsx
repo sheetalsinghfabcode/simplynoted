@@ -215,8 +215,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         locationForShipMethod: formData ? formData : '',
         shippingDataCost: selectShipMode ? selectShipMode.node.price.amount : '',
         fontSizeMsg:cartDataReq?.fontSize,
-        customFontName:customFontName?customFontName: "Select Custom Font"
-        
+        customFontName:customFontName?customFontName: "Select Custom Font",
+        lineHeight:cartDataReq?.lineHeight,
+        signOffLineHeight:cartDataReq?.signOffLineHeight,
+        signOffFontSize:cartDataReq?.signOffFontSize
     }
 
     let keyUpdate1 = 'messageData'
@@ -233,6 +235,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     let keyUpdate12 = 'giftCardPriceTitle'
     let keyUpdate13 = 'fontSizeMsg'
     let keyUpdate14 = 'customFontName'
+    let keyUpdate15 = 'lineHeight'
+    let keyUpdate16 = 'signOffLineHeight'
+    let keyUpdate17 = 'signOffFontSize'
     function onClickAddCart() {
         setLoader(true);
         if (editOrderValue?.index >= 0) {
@@ -253,6 +258,10 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                 storedData[editOrderValue.index][keyUpdate12] = cardPriceTitle && stateCheckCart ? cardPriceTitle : null
                 storedData[editOrderValue.index][keyUpdate13] = cartDataReq ? cartDataReq?.fontSize: editOrderValue?.data.fontSizeMsg;
                 storedData[editOrderValue.index][keyUpdate14] = customFontName ? customFontName : 'Select custom Font';
+                storedData[editOrderValue.index][keyUpdate15] = cartDataReq ? cartDataReq?.lineHeight: editOrderValue?.data.lineHeight;
+                storedData[editOrderValue.index][keyUpdate16] = cartDataReq ? cartDataReq?.signOffLineHeight: editOrderValue?.data.signOffLineHeight;
+                storedData[editOrderValue.index][keyUpdate17] = cartDataReq ? cartDataReq?.signOffFontSize: editOrderValue?.data.signOffFontSize;
+
 
             }
             localStorage.setItem('mydata', JSON.stringify(storedData));

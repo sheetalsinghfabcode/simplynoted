@@ -7,7 +7,7 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    width: '100%',
+    // width: '100%',
     transform: 'translate(-50%, -50%)',
     maxWidth: '80%', // Add your desired width here
     maxHeight:'70vh'
@@ -33,9 +33,11 @@ function Instruction({isOpen, closeModal,title,instructions,table,body}) {
         >
           &times;
         </span>
-        <h2 className="text-[#001a5f] font-bold text-[30px] text-center mb-4">
+        {title &&
+        <h2 className="text-[#001a5f] font-bold text-[30px] text-center mb-4 p-[2rem]">
         {title}
         </h2>
+        }
         <div className='w-full'>
           {body}
         </div>
