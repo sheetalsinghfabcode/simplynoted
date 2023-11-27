@@ -35,6 +35,7 @@ export function MessageWriting({
   metafields,
   editFontSize,
   qrValue,
+  editLineHeight
 }) {
   //   console.log(EditMess, 'EditMess');
  const {setAddressForm,addressForm,loadAddress,addresses,
@@ -57,7 +58,7 @@ export function MessageWriting({
   const [nonusAddress, setnonUsAddress] = useState(null);
   const [instructionModal, setInstructionModal] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [fontSize, setFontSize] = useState('');
+  const [fontSize, setFontSize] = useState(editFontSize?editFontSize:'');
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
@@ -70,6 +71,9 @@ export function MessageWriting({
   const [bulkFileCount, setBulkFileCount] = useState(0);
   const [errorTemplate,setErrorTemplate] = useState(false)
   const [onDelTemp,setOnDelTemp] = useState(false)
+  const [lineHeight,setLineHeight] = useState(editLineHeight?editLineHeight:'')
+  const [signOffFontSize,setSignOffFontSize] = useState('')
+  const [signOffLineHeight,setSignOffLineHeight] = useState('')
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -156,6 +160,9 @@ export function MessageWriting({
           nonUsCount: nonusAddress,
           bulkCsvData: fileData,
           fontSize: fontSize,
+          lineHeight:lineHeight,
+          signOffFontSize: fontSize > signOffFontSize ? signOffFontSize : fontSize,
+          signOffLineHeight: lineHeight > signOffLineHeight ?signOffLineHeight : lineHeight
         };
       } else {
         reqField = {
@@ -167,6 +174,9 @@ export function MessageWriting({
           nonUsCount: nonusAddress,
           bulkCsvData: fileData ? fileData : null,
           fontSize: fontSize,
+          lineHeight:lineHeight,
+          signOffFontSize: fontSize > signOffFontSize ? signOffFontSize : fontSize,
+          signOffLineHeight: lineHeight > signOffLineHeight ?signOffLineHeight : lineHeight
         };
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
@@ -228,6 +238,7 @@ export function MessageWriting({
           nonUsCount: nonUsAdd,
           bulkCsvData: fileData,
           fontSize: fontSize,
+          lineHeight:lineHeight
         };
       } else {
         alert("you haven't added Address");
@@ -308,6 +319,7 @@ export function MessageWriting({
               textAlign: metafields.header.textAlign,
               justifyContent: metafields.header.justifyContent,
               flexDirection: metafields.header.flexDirection,
+              color:metafields.header.fontColor
             }}
           >
             {metafields.header.data}
@@ -328,7 +340,7 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex h-[50px]  m-2`}
+            className={`flex  h-[50px]  m-2`}
             style={{justifyContent: metafields.footer.justifyContent}}
           >
             <Image className={`!w-20`} src={metafields.footer.data} />
@@ -337,7 +349,7 @@ export function MessageWriting({
       } else {
         return (
           <div
-            className={`flex h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
+            className={`flex items-start overflow-hidden justify-center h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
           >
             <span
               className={`flex `}
@@ -347,8 +359,10 @@ export function MessageWriting({
                 textAlign: metafields.footer.textAlign,
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
+                color:metafields.footer.fontColor,
                 width: '100%',
                 maxWidth: qrValue ? '93%' : '100%',
+                
               }}
             >
               {' '}
@@ -369,9 +383,13 @@ export function MessageWriting({
   }
   function resize_to_fit() {
     let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
+    let lineHeight = window.getComputedStyle(mainMessageBox).lineHeight;
     mainMessageBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
-    signOffTextBox.style.fontSize = mainMessageBox.style.fontSize;
+    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
+    // signOffTextBox.style.fontSize = mainMessageBox.style.fontSize;
+    // signOffTextBox.style.lineHeight = mainMessageBox.style.lineHeight;
     setFontSize(mainMessageBox.style.fontSize);
+    setLineHeight(mainMessageBox.style.lineHeight)
     if (mainMessageBox.clientHeight >= messageBocContainer.clientHeight) {
       resize_to_fit();
     }
@@ -380,12 +398,17 @@ export function MessageWriting({
   async function processInput() {
     // console.log('processInput');
     mainMessageBox.style.fontSize = '50px'; // Default font size
+    mainMessageBox.style.lineHeight = '50px';
     resize_to_fit();
   }
 
   function resize_to_fit2() {
     let fontSize = window.getComputedStyle(signOffTextBox).fontSize;
+    let lineHeight = window.getComputedStyle(signOffTextBox).lineHeight;
     signOffTextBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
+    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
+    setSignOffFontSize(signOffTextBox.style.fontSize)
+    setSignOffLineHeight(signOffTextBox.style.lineHeight)
     if (signOffTextBox.clientHeight >= signOffBocContainer.clientHeight) {
       resize_to_fit2();
     }
@@ -393,6 +416,7 @@ export function MessageWriting({
 
   async function processInput2() {
     signOffTextBox.style.fontSize = '50px'; // Default font size
+    signOffTextBox.style.lineHeight = '50px';
     resize_to_fit2();
   }
 
@@ -645,6 +669,11 @@ export function MessageWriting({
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
+    setName2(savedMsg?savedMsg.signOffText:editEndMess ? editEndMess : '')
+    setFontSize(savedMsg? savedMsg.fontSize:editFontSize?editFontSize:'')
+    setLineHeight(savedMsg? savedMsg.lineHeight:editLineHeight?editLineHeight:'')
+    setSignOffFontSize(savedMsg ? savedMsg.signOffFontSize:'')
+    setSignOffLineHeight(savedMsg ? savedMsg.signOffLineHeight:'')
     setTempVal(ref4.current?.value);
     console.log(ref4.current, 'OOOOOOOO');
 
@@ -808,7 +837,7 @@ useEffect(()=>{
       <div className="mainDivForBox flex gap-10">
         <div
           id="outer"
-          className="outerr h-[450px] w-[100%] bg-white max-w-[600px] relative"
+          className="outerr h-[480px] w-[100%] bg-white max-w-[600px] relative"
         >
           {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
           <div
@@ -825,7 +854,8 @@ useEffect(()=>{
                   : editFontFamily
                   ? editFontFamily
                   : 'tarzan',
-                fontSize: editFontSize ? editFontSize : '50px',
+                fontSize: fontSize ? fontSize : '50px',
+                lineHeight:lineHeight?lineHeight:'50px'
               }}
             >
               {name ? name : 'Enter your custom message here...'}
@@ -838,14 +868,15 @@ useEffect(()=>{
             <div
               id="signOffText"
               ref={ref3}
-              className="output2 text-[#0040ac]"
+              className="output2 text-[#0040ac] max-w-[300px]"
               style={{
                 fontFamily: fontFamilyName
                   ? fontFamilyName
                   : editFontFamily
                   ? editFontFamily
                   : 'tarzan',
-                fontSize: editFontSize ? editFontSize : '50px',
+                fontSize: fontSize > signOffFontSize ? signOffFontSize :fontSize?fontSize: '50px',
+                lineHeight:lineHeight > signOffLineHeight?signOffLineHeight:lineHeight ? lineHeight:'50px'
               }}
             >
               {name2}

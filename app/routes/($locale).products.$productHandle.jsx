@@ -158,6 +158,7 @@ export default function Product() {
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
   let editFontSize = datafornav.state?.data.fontSizeMsg
   let editCustomFontFamily = datafornav.state?.data.customFontName
+  let editLineHeight = datafornav.state?.data.lineHeight
 
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
@@ -257,7 +258,8 @@ export default function Product() {
             <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
               setShowBox={setShowBox} setProductShow={setProductShow}
               EditMess={EditMess} editEndMess={editEndMess}
-              editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}/>
+              editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}
+              editLineHeight={editLineHeight}/>
             }
               </Section>
 
