@@ -35,7 +35,9 @@ export function MessageWriting({
   metafields,
   editFontSize,
   qrValue,
-  editLineHeight
+  editLineHeight,
+  editSignOffLineHeight,
+  editSignOffFontSize
 }) {
   //   console.log(EditMess, 'EditMess');
  const {setAddressForm,addressForm,loadAddress,addresses,
@@ -72,8 +74,8 @@ export function MessageWriting({
   const [errorTemplate,setErrorTemplate] = useState(false)
   const [onDelTemp,setOnDelTemp] = useState(false)
   const [lineHeight,setLineHeight] = useState(editLineHeight?editLineHeight:'')
-  const [signOffFontSize,setSignOffFontSize] = useState('')
-  const [signOffLineHeight,setSignOffLineHeight] = useState('')
+  const [signOffFontSize,setSignOffFontSize] = useState(editSignOffFontSize?editSignOffFontSize:'')
+  const [signOffLineHeight,setSignOffLineHeight] = useState(editSignOffLineHeight?editSignOffLineHeight:'')
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -312,7 +314,7 @@ export function MessageWriting({
       } else {
         return (
           <div
-            className={`flex h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
+            className={`flex overflow-hidden items-start h-[50px] w-[100%]  px-[2rem]`}
             style={{
               fontFamily: metafields.header.fontType,
               fontSize: metafields.header.fontSize,
@@ -349,7 +351,7 @@ export function MessageWriting({
       } else {
         return (
           <div
-            className={`flex items-start overflow-hidden justify-center h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
+            className={`flex items-start overflow-hidden justify-center h-[50px] w-[100%] px-[2rem]`}
           >
             <span
               className={`flex `}
@@ -672,8 +674,8 @@ export function MessageWriting({
     setName2(savedMsg?savedMsg.signOffText:editEndMess ? editEndMess : '')
     setFontSize(savedMsg? savedMsg.fontSize:editFontSize?editFontSize:'')
     setLineHeight(savedMsg? savedMsg.lineHeight:editLineHeight?editLineHeight:'')
-    setSignOffFontSize(savedMsg ? savedMsg.signOffFontSize:'')
-    setSignOffLineHeight(savedMsg ? savedMsg.signOffLineHeight:'')
+    setSignOffFontSize(savedMsg ? savedMsg.signOffFontSize:editSignOffFontSize?editSignOffFontSize:'')
+    setSignOffLineHeight(savedMsg ? savedMsg.signOffLineHeight:editSignOffLineHeight?editSignOffLineHeight:'')
     setTempVal(ref4.current?.value);
     console.log(ref4.current, 'OOOOOOOO');
 

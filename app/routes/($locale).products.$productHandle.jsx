@@ -159,6 +159,8 @@ export default function Product() {
   let editFontSize = datafornav.state?.data.fontSizeMsg
   let editCustomFontFamily = datafornav.state?.data.customFontName
   let editLineHeight = datafornav.state?.data.lineHeight
+  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight
+  let editSignOffFontSize = datafornav.state?.data.signOffFontSize
 
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
@@ -259,7 +261,7 @@ export default function Product() {
               setShowBox={setShowBox} setProductShow={setProductShow}
               EditMess={EditMess} editEndMess={editEndMess}
               editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}
-              editLineHeight={editLineHeight}/>
+              editLineHeight={editLineHeight} editSignOffFontSize={editSignOffFontSize} editSignOffLineHeight={editSignOffLineHeight}/>
             }
               </Section>
 
