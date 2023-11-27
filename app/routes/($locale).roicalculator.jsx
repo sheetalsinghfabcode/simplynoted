@@ -1,170 +1,350 @@
-import React, {useState} from 'react';
+import RoiLeadingArrowImage from '../../assets/Image/roi-leading-arrow.webp';
+import RoiRobotImage from '../../assets/Image/roi-robot.webp';
 
-function roicalculator() {
-  const [inputValue, setInputValue] = useState(0);
-
-
-  const handleChange = (event) => {
-    const newValue = event.target.value;
-    setInputValue(newValue);
-  };
+export default function RoiCalculator() {
   return (
-    <div>
-      <div className="max-w-full m-[73px] h-[814px] bg-white">
-        <div className="mt-[19px] flex justify-center">
-          <img
-            className="mt-[16px]"
-            src="https://simplynoted.com/cdn/shop/files/calculator-underline.png"
-          />
-        </div>
-        <br />
-        <div className="left-right-main-cont flex justify-around">
-          <div className="roi-left-cont h-[646px] w-2/5">
-            <div className="">
-              <h2 className="">
-                Adjust the sliders below to calculate your ROI
-              </h2>
-            </div>
-            <div className="input-feild">
-              <input
-                onChange={handleChange}
-                min="0.000"
-                max="100,000"
-                value={inputValue}
-                type="range"
-                id="myRange"
-              ></input>
-              <div class="input-header">
-                <h4>Cards Sent</h4>
-                <p id="cards-sent-label" class="text-right">
-                  0
-                </p>
-                <input id="cards-sent-range" type="range" name="points" min="0" max="100000" value="10000" onchange="calculate();" oninput="outputInput();"></input>
+    <>
+      <section className="roi-calculator-section-1">
+        <div className="roi-container">
+          <div className="simply-noted-marketing">
+            <div className="mt-0 mb-[100px]">
+              <h3 className="category-heading"></h3>
+              <h3 className="category-heading-mobile"></h3>
+              <div className="roi-container">
+                <div className="mt-0">
+                  <div className="roi-container">
+                    <div className="roi-calculator mb-[100px]">
+                      <div className="roi-calculator-input-wrapper">
+                        <div className="input-holders">
+                          <div className="roi-small-heading">
+                            Adjust the sliders below to calculate your ROI
+                          </div>
+                          <div className="input-holder">
+                            <div className="input-header">
+                              <h4>Cards Sent</h4>
+                              <p
+                                id="cards-sent-label"
+                                className="roi-text-right"
+                              >
+                                10,000
+                              </p>
+                            </div>
+                            <input
+                              id="cards-sent-range"
+                              type="range"
+                              name="points"
+                              min="0"
+                              max="100000"
+                              value="10000"
+                              onchange="calculate();"
+                              oninput="outputInput();"
+                            />
+                          </div>
+                          <div className="input-holder">
+                            <div className="input-header">
+                              <h4>Response Rate</h4>
+                              <p
+                                id="response-rate-label"
+                                className="roi-text-right"
+                              >
+                                8%
+                              </p>
+                            </div>
+                            <input
+                              id="response-rate-range"
+                              type="range"
+                              name="points"
+                              min="0.5"
+                              max="100"
+                              value="8"
+                              onchange="calculate();"
+                              oninput="outputInput();"
+                            />
+                          </div>
+                          <div className="input-holder">
+                            <div className="input-header">
+                              <h4>Demo/Lead %</h4>
+                              <p
+                                id="demo-lead-label"
+                                className="roi-text-right"
+                              >
+                                75%
+                              </p>
+                            </div>
+                            <input
+                              id="demo-lead-range"
+                              type="range"
+                              name="points"
+                              min="0"
+                              max="100"
+                              value="75"
+                              onchange="calculate();"
+                              oninput="outputInput();"
+                            />
+                          </div>
+                          <div className="input-holder">
+                            <div className="input-header">
+                              <h4>Demo Show Up Rate</h4>
+                              <p
+                                id="demo-show-label"
+                                className="roi-text-right"
+                              >
+                                75%
+                              </p>
+                            </div>
+                            <input
+                              id="demo-show-range"
+                              type="range"
+                              name="points"
+                              min="0"
+                              max="100"
+                              value="75"
+                              onchange="calculate();"
+                              oninput="outputInput();"
+                            />
+                          </div>
+                          <div className="input-holder">
+                            <div className="input-header">
+                              <h4>Demo Close Rate</h4>
+                              <p
+                                id="demo-close-label"
+                                className="roi-text-right"
+                              >
+                                50%
+                              </p>
+                            </div>
+                            <input
+                              id="demo-close-range"
+                              type="range"
+                              name="points"
+                              min="0"
+                              max="100"
+                              value="50"
+                              onchange="calculate();"
+                              oninput="outputInput();"
+                            />
+                          </div>
+                          <div className="input-holder">
+                            <div className="input-header">
+                              <h4>Avg. Sale Value</h4>
+                              <p
+                                id="average-customer-label"
+                                className="roi-text-right"
+                              >
+                                $5,000
+                              </p>
+                            </div>
+                            <input
+                              id="average-customer-range"
+                              type="range"
+                              name="points"
+                              min="0"
+                              max="100000"
+                              value="5000"
+                              onchange="calculate();"
+                              oninput="outputInput();"
+                            />
+                          </div>
+                        </div>
+                        <div className="roi-leading-arrow">
+                          <img
+                            className="align-middle"
+                            src={RoiLeadingArrowImage}
+                            alt="leading arrow image"
+                          />
+                        </div>
+                      </div>
+                      <div className="roi-calculator-output-wrapper">
+                        <div className="roiNumbers">
+                          <div className="output-holders">
+                            <div className="roi-diveder-line"></div>
+                            <h2>ROI Breakdown</h2>
+                            <div className="roi-small-heading"></div>
+                            <div className="output-holder">
+                              <div className="output-item">
+                                <h4>Simply Noted Budget</h4>
+                                <h4
+                                  id="nasted-budget-output"
+                                  className="roi-text-right"
+                                >
+                                  $21,500
+                                </h4>
+                              </div>
+                              <div className="output-item">
+                                <p>Cards Sent</p>
+                                <p
+                                  id="cards-sent-output"
+                                  className="roi-text-right"
+                                >
+                                  10,000
+                                </p>
+                              </div>
+                              <div className="output-item">
+                                <p>Cost Per Contact Hit By Simply Noted</p>
+                                <p
+                                  id="cost-contact-output"
+                                  className="roi-text-right"
+                                >
+                                  $2.15
+                                </p>
+                              </div>
+                            </div>
+                            <div className="output-holder">
+                              <div className="output-item">
+                                <h4>Response Rate</h4>
+                                <h4
+                                  id="response-rate-output"
+                                  className="roi-text-right"
+                                >
+                                  8.5%
+                                </h4>
+                              </div>
+                              <div className="output-item">
+                                <p>Cost Per Lead</p>
+                                <p
+                                  id="cost-lead-output"
+                                  className="roi-text-right"
+                                >
+                                  $25.29
+                                </p>
+                              </div>
+                            </div>
+                            <div className="output-holder">
+                              <div className="output-item">
+                                <h4>Demo Lead %</h4>
+                                <h4
+                                  id="demo-lead-output"
+                                  className="roi-text-right"
+                                >
+                                  75%
+                                </h4>
+                              </div>
+                              <div className="output-item">
+                                <p>Cost Per Demo</p>
+                                <p
+                                  id="cost-demo-output"
+                                  className="roi-text-right"
+                                >
+                                  $33.73
+                                </p>
+                              </div>
+                            </div>
+                            <div className="output-holder">
+                              <div className="output-item">
+                                <h4>Demo Show Up Rate %</h4>
+                                <h4
+                                  id="demo-show-output"
+                                  className="roi-text-right"
+                                >
+                                  75%
+                                </h4>
+                              </div>
+                            </div>
+                            <div className="output-holder">
+                              <div className="output-item">
+                                <h4>Demo Close Rate</h4>
+                                <h4
+                                  id="demo-close-output"
+                                  className="roi-text-right"
+                                >
+                                  50%
+                                </h4>
+                              </div>
+                              <div className="output-item">
+                                <p>Total Close Deals</p>
+                                <p
+                                  id="total-close-output"
+                                  className="roi-text-right"
+                                >
+                                  239.06
+                                </p>
+                              </div>
+                              <div className="output-item">
+                                <p>
+                                  Sales Rep Commission (% of Gross Contribution)
+                                </p>
+                                <p
+                                  id="sales-commissiom-output"
+                                  className="roi-text-right"
+                                >
+                                  10%
+                                </p>
+                              </div>
+                              <div className="output-item">
+                                <p>CPA (Conversion w/ Commission)</p>
+                                <p
+                                  id="cpa-conv-output"
+                                  className="roi-text-right"
+                                >
+                                  $500.00
+                                </p>
+                              </div>
+                              <div className="output-item">
+                                <p>CPA (Total: Cost + Commission)</p>
+                                <p
+                                  id="cpa-total-output"
+                                  className="roi-text-right"
+                                >
+                                  $589.93
+                                </p>
+                              </div>
+                            </div>
+                            <div
+                              className="output-holder"
+                              style={{paddingBottom: '20px'}}
+                            >
+                              <div className="output-item">
+                                <h4>Average Customer Sale Value</h4>
+                                <h4
+                                  id="avg-customer-output"
+                                  className="roi-text-right"
+                                >
+                                  $5,000
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="roi-totals">
+                            <div className="output-holder mb-2">
+                              <div className="output-item">
+                                <h4>ROI (Percentage)</h4>
+                                <h4
+                                  id="roi-percentage-output"
+                                  className="roi-text-right"
+                                >
+                                  5459.59%
+                                </h4>
+                              </div>
+                            </div>
+                            <div className="output-holder">
+                              <div className="output-item">
+                                <h4>ROI (Total Sales)</h4>
+                                <h4
+                                  id="roi-total-output"
+                                  className="roi-text-right"
+                                >
+                                  $1,195,312.5
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="roi-right-cont border h-[646px] w-2/5 bg-gray-200">
-            <div className="roi-breakdown m-[12px]">
-              <h1 className="text-[28px] font-extrabold text-blue-900">
-                ROI Breakdown
-              </h1>
-              <div className="first-value">
-                <div className="flex justify-between mt-[18px]">
-                  <span className="font-bold text-lg">Simply Noted Budget</span>
-                  <p>${inputValue}</p>
-                </div>
-              </div>
-              <div className="sec-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>Cards Sent</span>
-                  <p>0</p>
-                </div>
-              </div>
-              <div className="third-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>Cost Per Contact Hit By Simply Noted</span>
-                  <p>$3.25</p>
-                </div>
-              </div>
-              <div className="fourth-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span className="font-bold text-lg">Response Rate</span>
-                  <p>0.5%</p>
-                </div>
-              </div>
-              <div className="fifth-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>CCost Per Lead</span>
-                  <p>$650.00</p>
-                </div>
-              </div>
-              <div className="sixth-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span className="font-bold text-lg">Demo Lead %</span>
-                  <p>100%</p>
-                </div>
-              </div>
-              <div className="seventh-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>Cost Per Demo</span>
-                  <p>$650.00</p>
-                </div>
-              </div>
-              <div className="eigth-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span className="font-bold text-lg">Demo Show Up Rate %</span>
-                  <p>100%</p>
-                </div>
-              </div>
-              <div className="ninth-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span className="font-bold text-lg">Demo Close Rate</span>
-                  <p>0%</p>
-                </div>
-              </div>
-              <div className="tenth-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>Total Close Deals</span>
-                  <p>0.00</p>
-                </div>
-              </div>
-              <div className="eleventh-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>TSales Rep Commission (% of Gross Contribution)</span>
-                  <p>10%</p>
-                </div>
-              </div>
-              <div className="twelve-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>CPA (Conversion w/ Commission)</span>
-                  <p>$500.00</p>
-                </div>
-              </div>
-              <div className="thirteen-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span>CPA (Total: Cost + Commission)</span>
-                  <p>$Infinity</p>
-                </div>
-              </div>
-              <div className="fourteen-value">
-                <div className="flex justify-between mt-[9px]">
-                  <span className="font-bold text-lg">
-                    Average Customer Sale Value
-                  </span>
-                  <p>$5,000</p>
-                </div>
-              </div>
-              <div className="roi-total mt-[20px]">
-                <div className="flex justify-between">
-                  <div className="text-white font-medium text-[19px]">
-                    ROI (Percentage)
-                  </div>
-                  <div className="">6540.63%</div>
-                </div>
-                <div className="flex justify-between">
-                  <div className="text-white font-medium text-[19px]">
-                    ROI (Total Sales)
-                  </div>
-                  <div className="">$11,953,125</div>
-                </div>
-              </div>
-            </div>
+          <div className="roi-robot-cont">
+            <img
+              className="align-middle"
+              src={RoiRobotImage}
+              alt="Roi robot image"
+            />
           </div>
         </div>
-      </div>
-      <div className="roi-images relative right-[-24px]">
-        <img src="https://simplynoted.com/cdn/shop/files/calculator-callout.png" />
-        <button
-          className="integrate-button absolute right-[350px] top-[127px] h-[46px] w-[247px]  p-[12px] bg-rose-500"
-          type="button"
-        ></button>
-        <button
-          className="integrate-button border-2 border-white absolute right-[83px] top-[127px] h-[46px] w-[247px]  p-[12px]"
-          type="button"
-        ></button>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
-
-export default roicalculator;

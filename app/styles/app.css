@@ -2156,3 +2156,199 @@ margin-left: 0px;
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
 }
+
+/********************************************* ROI CALCULATOR **********************************************************/
+.roi-calculator-section-1 {
+  margin: 40px auto;
+}
+
+.roi-container {
+  position: relative;
+  width: 100%;
+  max-width: 1450px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.simply-noted-marketing {
+  background-image: url('../../assets/Image/roi-page-bg.webp');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 1176px;
+  height: 930px;
+  padding-top: 10px;
+  position: relative;
+  z-index: 3;
+  margin-top: 0 !important;
+}
+
+.category-heading {
+  background: url('../../assets/Image/roi-underline.png') no-repeat;
+  background-position: bottom center;
+  color: #001a5f;
+  font-family: Karla, sans-serif;
+  font-size: 50px !important;
+  font-weight: 700 !important;
+  letter-spacing: -2.07px !important;
+  line-height: 64px !important;
+  margin-bottom: 20px;
+  padding-bottom: 10px !important;
+  text-align: center;
+  text-transform: inherit;
+}
+
+.category-heading-mobile {
+  background: url(/cdn/shop/files/roi-line-mobile.png) no-repeat;
+  background-position: bottom center;
+  font-size: 30px !important;
+  line-height: 1 !important;
+  margin-bottom: 60px !important;
+  color: #001a5f;
+  font-family: Karla,sans-serif;
+  font-size: 50px!important;
+  font-weight: 700!important;
+  letter-spacing: -2.07px!important;
+  line-height: 64px!important;
+  margin-bottom: 20px;
+  padding-bottom: 10px!important;
+  text-align: center;
+  text-transform: inherit;
+  display: none;
+}
+
+.roi-calculator {
+  display: flex;
+  overflow: visible;
+  position: relative;
+}
+
+.roi-calculator-input-wrapper {
+  height: auto;
+  width: 50%;
+  background-color: transparent;
+  padding: 0;
+  color: #000;
+  box-sizing: border-box;
+  float: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.roi-leading-arrow {
+  position: absolute;
+  bottom: -120px;
+  right: -130px;
+  z-index: -1;
+}
+
+.input-holders {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+}
+
+.roi-small-heading {
+  font-size: 16px;
+  margin: 10px auto;
+  color: #777;
+}
+
+.input-holder {
+  margin-bottom: 10px;
+}
+
+.input-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roi-text-right {
+  font-size: 20px;
+  font-weight: 700;
+  color: #001a5f;
+}
+
+.simply-noted-marketing input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 380px;
+  background: 0 0;
+}
+
+.roi-calculator-output-wrapper {
+  height: auto;
+  width: 50%;
+  background-color: transparent;
+  padding: 0;
+  box-sizing: border-box;
+  float: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  justify-content: start;
+}
+
+.output-holders {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  background-color: #f8f8f8;
+  max-width: 100%;
+  padding: 20px 20px 0;
+  border-radius: 10px 10px 25px 25px;
+  position: relative;
+  width: 499px;
+  overflow: hidden;
+}
+
+.roi-diveder-line {
+  position: absolute;
+  background-image: url("../../assets/Image/roi-breakdown-line.png");
+  display: block;
+  width: 10px;
+  height: 100%;
+  background-repeat: no-repeat;
+  right: 100px;
+  top: 120px;
+}
+
+.output-holder {
+  margin-bottom: 10px;
+}
+
+.output-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roi-totals {
+  background-image: url("../../assets/Image/roi-red-bg.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 499px;
+  height: 110px;
+  padding: 20px;
+  position: absolute;
+  margin-top: -20px;
+}
+
+.roi-robot-cont {
+  position: absolute;
+  right: -50px;
+  top: 200px;
+  z-index: 1;
+}
+
