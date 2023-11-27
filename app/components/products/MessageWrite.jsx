@@ -14,7 +14,8 @@ import {useLocation} from '@remix-run/react';
 import { useStateContext } from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
-
+import TickImg from '../../../assets/Image/check-mark.png'
+import Del from '../../../assets/Image/delete.png'
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -33,7 +34,7 @@ export function MessageWriting({
   fontFamilyName,
   metafields,
   editFontSize,
-  qrValue
+  qrValue,
 }) {
   //   console.log(EditMess, 'EditMess');
  const {setAddressForm,addressForm,loadAddress,addresses,
@@ -62,10 +63,13 @@ export function MessageWriting({
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const [filteredAddresses, setFilteredAddresses] = useState([addresses]);
-  const [addNewTem,setAddNewTem] = useState(false)
-  const [tempVal,setTempVal] = useState('')
-
-  const [bulkFileCount,setBulkFileCount] = useState(0)
+  const [addNewTem, setAddNewTem] = useState(false);
+  const [loadTemModal, setLoadTemModal] = useState(false);
+  const [tempVal, setTempVal] = useState('');
+  const [loadTempData,setloadTempData] = useState([])
+  const [bulkFileCount, setBulkFileCount] = useState(0);
+  const [errorTemplate,setErrorTemplate] = useState(false)
+  const [onDelTemp,setOnDelTemp] = useState(false)
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -177,14 +181,13 @@ export function MessageWriting({
   // console.log(fileData, '******+++++++******');
 
   function onSelectFromAddressBook() {
-   
     // console.log(fileData);
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
       setInstructionModal(true);
     } else {
-        let reqField,
+      let reqField,
         usCountAdd = 0,
         nonUsAdd = 0;
       if (fileData.length) {
@@ -226,9 +229,8 @@ export function MessageWriting({
           bulkCsvData: fileData,
           fontSize: fontSize,
         };
-      }
-      else{
-        alert("you haven't added Address")
+      } else {
+        alert("you haven't added Address");
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
       setProductShow(false);
@@ -237,12 +239,11 @@ export function MessageWriting({
         behavior: 'smooth', // Make the scroll behavior smooth
       });
     }
-   
   }
-function onClickOfContinue(){
+  function onClickOfContinue() {
     setModalForAddressBook(false);
-    setBulkFileCount(fileData.length)
-}
+    setBulkFileCount(fileData.length);
+  }
 
   function AfterUpload() {
     if (selectedFile) {
@@ -304,9 +305,9 @@ function onClickOfContinue(){
             style={{
               fontFamily: metafields.header.fontType,
               fontSize: metafields.header.fontSize,
-              textAlign:metafields.header.textAlign,
-              justifyContent:metafields.header.justifyContent,
-              flexDirection:metafields.header.flexDirection
+              textAlign: metafields.header.textAlign,
+              justifyContent: metafields.header.justifyContent,
+              flexDirection: metafields.header.flexDirection,
             }}
           >
             {metafields.header.data}
@@ -317,7 +318,8 @@ function onClickOfContinue(){
   }
 
   function ShowFooterComp() {
-    console.log(qrValue,"qrValu");
+    console.log(qrValue, 'qrValu');
+    console.log(metafields,"metafieldssssssssssss");
 
     if (typeof metafields.footer.data == 'string') {
       if (
@@ -336,21 +338,30 @@ function onClickOfContinue(){
         return (
           <div
             className={`flex h-[50px] w-[100%] bg-red max-w-[600px] px-[2rem]`}
-            
           >
-            <span className={`flex `} style={{
-              fontFamily: metafields.footer.fontType,
-              fontSize: metafields.footer.fontSize,
-              textAlign:metafields.footer.textAlign,
-              justifyContent:metafields.footer.justifyContent,
-              flexDirection:metafields.footer.flexDirection,
-              width:'100%',
-              maxWidth:qrValue?"93%":'100%'
-            }}> {metafields.footer.data}</span>
-            {qrValue && qrValue.length ?
-            <img src={qrValue} className='h-[50px] w-[50px] absolute  right-[10px] bottom-[10px]'/>
-            :''
-          }
+            <span
+              className={`flex `}
+              style={{
+                fontFamily: metafields.footer.fontType,
+                fontSize: metafields.footer.fontSize,
+                textAlign: metafields.footer.textAlign,
+                justifyContent: metafields.footer.justifyContent,
+                flexDirection: metafields.footer.flexDirection,
+                width: '100%',
+                maxWidth: qrValue ? '93%' : '100%',
+              }}
+            >
+              {' '}
+              {metafields.footer.data}
+            </span>
+            {qrValue && qrValue.length ? (
+              <img
+                src={qrValue}
+                className="h-[50px] w-[50px] absolute  right-[10px] bottom-[10px]"
+              />
+            ) : (
+              ''
+            )}
           </div>
         );
       }
@@ -625,6 +636,7 @@ function onClickOfContinue(){
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const ref3 = useRef(null);
+  const ref4 = useRef(null);
   useEffect(() => {
     mainMessageBox = ref1.current;
     signOffTextBox = ref3.current;
@@ -633,6 +645,9 @@ function onClickOfContinue(){
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
+    setTempVal(ref4.current?.value);
+    console.log(ref4.current, 'OOOOOOOO');
+
     // console.log(savedMsg?.msg);
   }, []);
   async function firstNameBtn(data) {
@@ -662,54 +677,132 @@ function onClickOfContinue(){
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [addressForm,loadAddress]);
+  }, [addressForm, loadAddress]);
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
 
-  function onTemplateVal(event){
-    const value = event.target.value;
-    setTempVal(value)
-  }
-
-  async function addNewTemplateFunc(){
+  
+  async function addNewTemplateFunc() {
+    
     try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`, {
-        method: 'POST',
-        body: JSON.stringify({templateName:tempVal,
-          customMessage:name}),
-      })
-      const json = await res.json()
-      if(json){
-        setAddNewTem(false)
+      const formData = new FormData()
+      formData.append("templateName",ref4.current?.value)
+      formData.append("customMessage",name)
+      if (!customerid) {
+        setLoginModal(true);
       }
-      console.log(json,"addNewTemplateFunc");
+      else if(name.length === 0 || ref4.current?.value.length === 0){
+        setErrorTemplate(true);
+      } else{
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
+      const json = await res.json();
+      if (json) {
+        setAddNewTem(false);
+      }
+      console.log(json, 'addNewTemplateFunc');
+    }
     } catch (error) {
-      console.log(error,"add new Template");
+      console.log(error, 'add new Template');
     }
   }
-  function AddNewTemplate(){
-    return(
-      <div className='w-[29rem] m-[2rem]'>
+  function AddNewTemplate() {
+    return (
+      <div className="w-[29rem] m-[2rem]">
         <div>
-        <h1 className='text-[28px] text-[#001a5f] font-karla'>NEW TEMPLATE</h1>
+          <h1 className="text-[28px] text-[#001a5f] font-karla">
+            NEW TEMPLATE
+          </h1>
         </div>
         <div>
-        <input type="text"  value={tempVal} onChange={onTemplateVal}/>
+          <input type="text" ref={ref4} value={tempVal} />
         </div>
+       {errorTemplate &&  <span className='text-[red] font-karla'>Please Check the Value is empty</span>}
         <div>
-        <DynamicButton
-        className="bg-[#1b5299] text-[14px] mb-6 w-[9rem] mt-4"
-        onClickFunction={()=>addNewTemplateFunc()}
-        text="Save template"/>
-        <DynamicButton
-        className="bg-[gray] text-[14px] mb-6 w-[9rem]"
-        text="Cancel"
-        onClickFunction={()=>setAddNewTem(false)}/>
+          <DynamicButton
+            className="bg-[#1b5299] text-[14px] mb-6 w-[9rem] mt-4"
+            onClickFunction={() => addNewTemplateFunc()}
+            text="Save template"
+          />
+          <DynamicButton
+            className="bg-[gray] text-[14px] mb-6 w-[9rem]"
+            text="Cancel"
+            onClickFunction={() => setAddNewTem(false)}
+          />
         </div>
       </div>
-    )
+    );
   }
+  async function SavedTemp(){
+    try {
+      const res = await fetch(`https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`)
+      const json = await res.json()
+      setloadTempData(json.result)
+      // setLoadTemModal(true)
+    } catch (error) {
+      console.log(error,"savedTemp");
+    }
+  }
+  function LoadTemplate(){    
+    return (
+      <>
+      <div className=" w-[29rem] m-[2rem]">
+      <div>
+        <h1 className="text-[28px] text-[#001a5f] font-karla">
+          SELECT TEMPLATE
+        </h1>
+      </div>
+      {/* <div>
+        <input type="text" ref={ref4}/>
+      </div> */}
+      <div className='flex justify-between'>
+        <span>Template Name</span>
+        <span>Actions</span>
+      </div>
+      {loadTempData && loadTempData.map((item)=>
+      <div className='border border-black-600 px-[10px] items-center w-full flex'>
+        <div className='w-full'>{item.templateName}</div>
+        <div className='w-full flex items-center gap-[11px] justify-end'>
+          <img src={TickImg} className='w-[8%] h-[5%] cursor-pointer'onClick={()=>setLoadedTemVal(item.customMessage)}/>
+          <img src={Del} className='w-[8%] h-[5%] cursor-pointer' onClick={()=>deleteTemp(item._id)}/>
+        </div>
+      </div>
+      )}
+      <div>
+      </div>
+    </div>
+      </>
+    );
+  }
+  function setLoadedTemVal(val){
+    setName(val)
+    setLoadTemModal(false)
+  }
+
+  async function deleteTemp(val){
+    try {
+      const formData = new FormData()
+      formData.append("templateId", val)
+      const res = await fetch(`https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,{
+        method: "POST",
+        body:formData
+      })
+      const json = await res.json()
+      console.log(json,"delte Temp response");
+      setOnDelTemp(!onDelTemp)
+    } catch (error) {
+      console.log(error,"delete Template");
+    }
+  }
+useEffect(()=>{
+  SavedTemp()
+},[onDelTemp])
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -772,12 +865,20 @@ function onClickOfContinue(){
             data-gtm-form-interact-field-id="0"
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
-          <div className='flex justify-between mt-[1rem]'>
+          <div className="flex justify-between mt-[1rem]">
             <div>
-            <span className='font-bold text-[#1b5299] cursor-pointer' onClick={()=>setAddNewTem(true)}>Save As New Message Template</span>
+              <span
+                className="font-bold text-[#1b5299] cursor-pointer"
+                onClick={() => setAddNewTem(true)}
+              >
+                Save As New Message Template
+              </span>
             </div>
             <div>
-            <span className='font-bold text-[#1b5299] cursor-pointer'>Load Saved Message Template</span>
+              <span className="font-bold text-[#1b5299] cursor-pointer"
+              onClick={() =>SavedTemp() && setLoadTemModal(true)}>
+                Load Saved Message Template
+              </span>
             </div>
           </div>
           <br />
@@ -834,11 +935,19 @@ function onClickOfContinue(){
             </>
           )}
           <div className="flex mt-5">
-            <div className='flex'>
-            <img src={AiImage} className='w-[20%] h-[40%] cursor-pointer' onClick={() => setIsOpen(true)}/>
-            <span className="cursor-pointer font-karla text-[#1b5299]" onClick={() => setIsOpen(true)}>
-              Try our <span className='text-[red]'>New</span> AI Assistant to <br /> help write your message
-            </span>
+            <div className="flex">
+              <img
+                src={AiImage}
+                className="w-[20%] h-[40%] cursor-pointer"
+                onClick={() => setIsOpen(true)}
+              />
+              <span
+                className="cursor-pointer font-karla text-[#1b5299]"
+                onClick={() => setIsOpen(true)}
+              >
+                Try our <span className="text-[red]">New</span> AI Assistant to{' '}
+                <br /> help write your message
+              </span>
             </div>
             <textarea
               type="text"
@@ -853,12 +962,15 @@ function onClickOfContinue(){
             ></textarea>
             <br />
           </div>
-          <div className='flex justify-end mr-[3.9rem] mt-[1rem]'>
+          <div className="flex justify-end mr-[3.9rem] mt-[1rem]">
             <div>
-            <span className='font-karla text-[#1b5299]'>Optional Sign Off / Signature</span> <br />
-            <span className="charLeft">
-            {remainSign} characters remaining
-          </span>
+              <span className="font-karla text-[#1b5299]">
+                Optional Sign Off / Signature
+              </span>{' '}
+              <br />
+              <span className="charLeft">
+                {remainSign} characters remaining
+              </span>
             </div>
           </div>
           {show && (
@@ -870,82 +982,81 @@ function onClickOfContinue(){
                 </text>
               </div>
               <div className="flex gap-4">
-                {bulkFileCount && bulkFileCount>0?
-                <div className="custom_testing pointer-events-none opacity-40">
-                <div>
-                  <h3 className="font-bold">Bulk Address Upload</h3>
-                </div>
-                {bulkUploadDiv && !showNextBtn ? (
-                  <div>
+                {bulkFileCount && bulkFileCount > 0 ? (
+                  <div className="custom_testing pointer-events-none opacity-40">
                     <div>
-                      <input
-                        type="file"
-                        name="file"
-                        accept=".csv"
-                        className="upload-input"
-                        onChange={(e) => handleFileChange(e)}
-                      />
+                      <h3 className="font-bold">Bulk Address Upload</h3>
                     </div>
+                    {bulkUploadDiv && !showNextBtn ? (
+                      <div>
+                        <div>
+                          <input
+                            type="file"
+                            name="file"
+                            accept=".csv"
+                            className="upload-input"
+                            onChange={(e) => handleFileChange(e)}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                    <p>
+                      {' '}
+                      Download the
+                      <a
+                        href="https://api.simplynoted.com/docs/bulk-template"
+                        className="text-[blue]"
+                      >
+                        {' '}
+                        Bulk Order Template
+                      </a>{' '}
+                    </p>
+                    <AfterUpload />
                   </div>
                 ) : (
-                  ''
-                )}
-                <p>
-                  {' '}
-                  Download the
-                  <a
-                    href="https://api.simplynoted.com/docs/bulk-template"
-                    className="text-[blue]"
-                  >
-                    {' '}
-                    Bulk Order Template
-                  </a>{' '}
-                </p>
-                <AfterUpload />
-              </div>
-              :
-              <>
-           
-              <div className="custom_testing">
-                {loader ? <CircularLoader  color="#ef6e6e"/>:
-                <>
-                <div>
-                    <h3 className="font-bold">Bulk Address Upload</h3>
-                  </div>
-                  {bulkUploadDiv && !showNextBtn ? (
-                    <div>
-                      <div>
-                        <input
-                          type="file"
-                          name="file"
-                          accept=".csv"
-                          className="upload-input"
-                          onChange={(e) => handleFileChange(e)}
-                        />
-                      </div>
+                  <>
+                    <div className="custom_testing">
+                      {loader ? (
+                        <CircularLoader color="#ef6e6e" />
+                      ) : (
+                        <>
+                          <div>
+                            <h3 className="font-bold">Bulk Address Upload</h3>
+                          </div>
+                          {bulkUploadDiv && !showNextBtn ? (
+                            <div>
+                              <div>
+                                <input
+                                  type="file"
+                                  name="file"
+                                  accept=".csv"
+                                  className="upload-input"
+                                  onChange={(e) => handleFileChange(e)}
+                                />
+                              </div>
+                            </div>
+                          ) : (
+                            ''
+                          )}
+                          <p>
+                            {' '}
+                            Download the
+                            <a
+                              href="https://api.simplynoted.com/docs/bulk-template"
+                              className="text-[blue]"
+                            >
+                              {' '}
+                              Bulk Order Template
+                            </a>{' '}
+                          </p>
+                          <AfterUpload />
+                        </>
+                      )}
                     </div>
-                  ) : (
-                    ''
-                  )}
-                  <p>
-                    {' '}
-                    Download the
-                    <a
-                      href="https://api.simplynoted.com/docs/bulk-template"
-                      className="text-[blue]"
-                    >
-                      {' '}
-                      Bulk Order Template
-                    </a>{' '}
-                  </p>
-                  <AfterUpload /></>}
-                  
-
-                </div>
-                
-                </>
-
-                }
+                  </>
+                )}
                 <span className="flex items-center font-bold">OR</span>
                 <div className="m-auto">
                   <DynamicButton
@@ -953,22 +1064,24 @@ function onClickOfContinue(){
                     text="Select from Address Book"
                     onClickFunction={() => setModalForAddressBook(true)}
                   />
-                  {bulkFileCount && bulkFileCount>0?
-                  <DynamicButton
-                  className="bg-[#1b5299] text-[14px] w-full"
-                  text="Next"
-                  onClickFunction={() => onSelectFromAddressBook()}
-                />:
-                <DynamicButton
-                    className="bg-[#697ba6] text-[14px] w-full"
-                    text="Next"
-                    onClickFunction={() => ''}
-                  />
-                  }
-                  {bulkFileCount && bulkFileCount>0 ?
-                  <span> Number of Bulk Address: {bulkFileCount}</span>
-                  :''
-                  }
+                  {bulkFileCount && bulkFileCount > 0 ? (
+                    <DynamicButton
+                      className="bg-[#1b5299] text-[14px] w-full"
+                      text="Next"
+                      onClickFunction={() => onSelectFromAddressBook()}
+                    />
+                  ) : (
+                    <DynamicButton
+                      className="bg-[#697ba6] text-[14px] w-full"
+                      text="Next"
+                      onClickFunction={() => ''}
+                    />
+                  )}
+                  {bulkFileCount && bulkFileCount > 0 ? (
+                    <span> Number of Bulk Address: {bulkFileCount}</span>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
             </>
@@ -1058,27 +1171,37 @@ function onClickOfContinue(){
         title=""
         closeModal={closeSelectAddressModal}
         table={false}
-        body={ addressForm?
-            <AddressForm customerID={customerid}/>
-            :
-          <ContactTable
-            customerID={customerid}
-            filteredAddresses={filteredAddresses}
-            setSelectedCheckboxes={setSelectedCheckboxes}
-            selectedCheckboxes={selectedCheckboxes}
-            ProdcuctSide={ProdcuctSide}
-            setAddressForm={setAddressForm}
-            continueBtn={onClickOfContinue}
-            setFilteredAddresses={setFilteredAddresses}
-          />
+        body={
+          addressForm ? (
+            <AddressForm customerID={customerid} />
+          ) : (
+            <ContactTable
+              customerID={customerid}
+              filteredAddresses={filteredAddresses}
+              setSelectedCheckboxes={setSelectedCheckboxes}
+              selectedCheckboxes={selectedCheckboxes}
+              ProdcuctSide={ProdcuctSide}
+              setAddressForm={setAddressForm}
+              continueBtn={onClickOfContinue}
+              setFilteredAddresses={setFilteredAddresses}
+            />
+          )
         }
       />
       <Instruction
-      isOpen={addNewTem}
-      title=""
-      closeModal={()=>setAddNewTem(false)}
-      table={false}
-      body={<AddNewTemplate/>}/>
+        isOpen={addNewTem}
+        title=""
+        closeModal={() => setAddNewTem(false)}
+        table={false}
+        body={<AddNewTemplate />}
+      />
+      <Instruction
+        isOpen={loadTemModal}
+        title=""
+        closeModal={() => setLoadTemModal(false)}
+        table={false}
+        body={<LoadTemplate />}
+      />
       <LoginModal
         title={' Add Card'}
         show={loginModal}

@@ -33,9 +33,11 @@ function Instruction({isOpen, closeModal,title,instructions,table,body}) {
         >
           &times;
         </span>
-        <h2 className="text-[#001a5f] font-bold text-[30px] text-center mb-4">
+        {title &&
+        <h2 className="text-[#001a5f] font-bold text-[30px] text-center mb-4 p-[2rem]">
         {title}
         </h2>
+        }
         <div className='w-full'>
           {body}
         </div>
