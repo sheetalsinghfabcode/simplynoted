@@ -63,18 +63,18 @@ export default function blog() {
 
   return (
     <div className="">
-      <div className="flex justify-center text-[59px] mt-[39px] text-blue-800 font-bold">
+      <div className="flex justify-center sm:text-[59px] text-[30px] mt-[39px] text-blue-800 font-bold">
         Simply Noted 101
       </div>
 
       <div className="flex justify-center">
         <img
-          className="mt-[21px]"
+          className="mt-[21px] sm:w-auto w-[50%]"
           src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
         />
       </div>
 
-      <div className="blog-page-button flex gap-10 justify-center mt-[32px]">
+      <div className="blog-page-button sm:flex grid gap-10 justify-center mt-[32px]">
         <button
           className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] bg-red-500 text-white`}
           type="button"
@@ -101,7 +101,7 @@ export default function blog() {
 
       <div className="flex justify-center">
         <input
-          className="min-w-[453px] h-[57px] mt-[40px]"
+          className="sm:min-w-[453px] sm:h-[57px] min-w-[80%]  h-100%  mt-[40px]"
           type="text"
           placeholder="Search"
           value={searchQuery}
