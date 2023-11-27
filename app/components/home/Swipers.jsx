@@ -9,114 +9,138 @@ import Edward from '../../../assets/Image/Edward.png';
 import Ronald from '../../../assets/Image/Ronald.png';
 import kw from '../../../assets/Image/Kw.png';
 import tesla from '../../../assets/Image/Tesla.png';
- 
+
 import {Autoplay} from 'swiper/modules';
- 
+
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
- 
+
 import 'swiper/css';
- 
+
 const Swipers = () => {
   return (
     <>
-      <div className="md:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 mb-16">
-        Companies we've worked with
+      <div className="my-8">
+        <div className="md:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 mb-16">
+          Companies we've worked with
+        </div>
+        <div className="ml-5 mr-10">
+          <Swiper
+            modules={[Autoplay]}
+            direction={'horizontal'}
+            spaceBetween={20}
+            slidesPerView={7}
+            loop={true}
+            breakpoints={{
+              280: {
+                slidesPerView: 3,
+              },
+              768: {
+                spaceBetween: 10,
+                slidesPerView: 4,
+              },
+              1024: {
+                spaceBetween: 10,
+                slidesPerView: 4,
+              },
+              1075: {
+                slidesPerView: 6,
+              },
+              1280: {
+                slidesPerView: 7,
+              },
+            }}
+            autoplay={{
+              delay: 3000,
+              pauseOnMouseEnter: true,
+              disableOnInteraction: false,
+            }}
+            className="swiper-company md:block hidden"
+          >
+            <SwiperSlide>
+              <img className="w-[85%]" src={Fairway} alt="LogoSimplinotedpic" />{' '}
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[72%] mt-[-2px]"
+                src={Mariott}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-[80%]" src={Ncca} alt="LogoSimplinotedpic" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[78%] mt-[-2px]"
+                src={Ford}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-[80%]" src={Edward} alt="LogoSimplinotedpic" />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <img
+                className="w-[75%] mt-[-6px] "
+                src={Ronald}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-[65%]" src={kw} alt="LogoSimplinotedpic" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[90%]  mt-[-13px]"
+                src={tesla}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <img
+                className="w-[72%] mt-[-2px]"
+                src={Mariott}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-[80%]" src={Ncca} alt="LogoSimplinotedpic" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[78%] mt-[-2px]"
+                src={Ford}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-[80%]" src={Edward} alt="LogoSimplinotedpic" />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <img
+                className="w-[75%] mt-[-6px] "
+                src={Ronald}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                className="w-[90%]  mt-[-13px]"
+                src={tesla}
+                alt="LogoSimplinotedpic"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+
+        <div></div>
       </div>
-      <div className="ml-5 mr-10">
-        <Swiper
-          modules={[Autoplay]}
-          direction={'horizontal'}
-          spaceBetween={20}
-          slidesPerView={7}
-          loop={true}
-          breakpoints={{
-            280: {
-              slidesPerView: 3,
-            },
-            768: {
-              spaceBetween: 10,
-              slidesPerView: 4,
-            },
-            1024: {
-              spaceBetween: 10,
-              slidesPerView: 4,
-            },
-            1075: {
-              slidesPerView: 6,
-            },
-            1280: {
-              slidesPerView: 7,
-            },
-          }}
-          autoplay={{
-            delay: 3000,
-            pauseOnMouseEnter: true,
-            disableOnInteraction: false,
-          }}
-          className="swiper-company"
-        >
-          <SwiperSlide>
-            <img className="w-full" src={Fairway} alt="LogoSimplinotedpic" />{' '}
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-10px] ml-5">
-            <img
-              className="w-[64%] h-[66%]"
-              src={Mariott}
-              alt="LogoSimplinotedpic"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[84%]" src={Ncca} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className="relative top-[-10px]">
-            <img className="w-[90%]" src={Ford} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[80%]" src={Edward} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-27px]">
-            <img className="w-[90%]" src={Ronald} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-10px]">
-            <img className="w-[70%]" src={kw} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-15px] ml-[-20px]">
-            <img className="w-full" src={tesla} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-full" src={Fairway} alt="LogoSimplinotedpic" />{' '}
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-10px] ml-5">
-            <img
-              className="w-[64%] h-[66%]"
-              src={Mariott}
-              alt="LogoSimplinotedpic"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[84%]" src={Ncca} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className="relative top-[-10px]">
-            <img className="w-[90%]" src={Ford} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[80%]" src={Edward} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-27px]">
-            <img className="w-[90%]" src={Ronald} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-10px]">
-            <img className="w-[70%]" src={kw} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide className=" relative top-[-15px] ml-[-20px]">
-            <img className="w-full" src={tesla} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-     
     </>
   );
 };
