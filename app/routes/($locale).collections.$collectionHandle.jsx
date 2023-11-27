@@ -284,22 +284,22 @@ console.log(error);
           <DynamicTitle title={"Simply Noted"} title2={"cards"} />
           <Section>
             <div className='gap-2 flex justify-between'>
-              <div className='gap-2 flex'>
+              <div className='gap-2 lg:flex grid'>
                 <DynamicButton
-                  className="btnShadow bg-[#1b5299] w-[200px] text-[#fff] p-2 "
+                  className="btnShadow bg-[#1b5299] h-[50px] md:text-[14px] text-[12px]  w-[200px] text-[#fff] p-2 "
                   text="Create A Custom Card"
                   onClickFunction={CreateCustomCard}
                 />
                 <br />
                 <DynamicButton
-                  className="btnShadow bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+                  className="btnShadow bg-[#EF6E6E] h-[50px] w-[200px] md:text-[14px] text-[12px] text-[#fff] p-2"
                   text="View My Custom Card"
                   onClickFunction={() => customisedCard()}
                 />
               </div>
-              <div className='flex gap-5 justify-end items-center selectArrow'>
-                <h2 className='text-l '>Choose a card from our collection: </h2>
-                <select name="" id="" className='!border-none text-[#508ee3]' onChange={(e) => changeHandle(e.target.value)}>
+              <div className=' lg:flex grid gap-5 justify-end items-center selectArrow'>
+                <h2 className=' sm:text-l text-[13px]'>Choose a card from our collection: </h2>
+                <select name="" id="" className='!border-none sm:w-[244px] w-[151px] text-[#508ee3]' onChange={(e) => changeHandle(e.target.value)}>
                   <option className='w-full' selected disabled>{collectionHandle} </option>
 
                    {data && data.map((item) =>

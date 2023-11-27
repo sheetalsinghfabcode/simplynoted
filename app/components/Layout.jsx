@@ -20,6 +20,7 @@ import DynamicButton from './DynamicButton';
 import top from '../../assets/Image/top.png';
 import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
+
 import {
   Drawer,
   useDrawer,
@@ -45,8 +46,13 @@ import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 
+
+let customerid;
+
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
+
+
 
   return (
     <>
@@ -85,7 +91,6 @@ function Header({title, menu}) {
 
   const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);
 
-  // toggle cart drawer when adding to cart
   useEffect(() => {
     let aa = localStorage.getItem('cartCount');
     if (isCartOpen || !addToCartFetchers.length) return;
@@ -100,13 +105,24 @@ function Header({title, menu}) {
       )}
       <DesktopHeader
         isHome={isHome}
-        title={title}
+        title={
+          <div>
+            <img src="http://localhost:3000/build/_assets/simply-noted-logo-SVKACL4I.avif" />
+          </div>
+        }
         menu={menu}
         openCart={openCart}
       />
       <MobileHeader
         isHome={isHome}
-        title={title}
+        title={
+          <div>
+            <img
+              className="w-[100px]"
+              src="http://localhost:3000/build/_assets/simply-noted-logo-SVKACL4I.avif"
+            />
+          </div>
+        }
         openCart={openCart}
         openMenu={openMenu}
       />
@@ -141,21 +157,152 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 }
 
 function MenuMobileNav({menu, onClose}) {
+  console.log('menu', menu);
   return (
     <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
       {/* Top level menu items */}
       {(menu?.items || []).map((item) => (
         <span key={item.id} className="block">
           <Link
-            to={item.to}
+            to= {item.to===("/pages/business" || "/about-us") && item.to}  
             target={item.target}
-            onClick={onClose}
+            onClick={ item.to===("/pages/business" || "/about-us") && onClose}
             className={({isActive}) =>
               isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
             }
           >
-            <Text as="span" size="copy">
-              {item.title}
+            <Text as="span" size="copy"> 
+            {item.title === 'Business' ? (
+                      <Link to="/business">
+                        <div className="">Bussiness</div>
+                      </Link>
+                    ) : null}
+              {item.title === ''}
+              {item.title === 'Send a Card' ? (
+                <>
+                   <div className="dropdown">
+                    <div>Send A Card</div>
+                       <div className="dropdown-content">
+                       <ul 
+                       onClick={onClose}
+                       className="">
+                         <Link to="/collections/best-sellers">
+                           <li>Cards</li>
+                         </Link>
+                         {customerId ? (
+                              <Link to="/customise-your-card">
+                                <li>Create a Card</li>
+                              </Link>
+                            ) : (
+                              <div>
+                                <li onClick={() => setLoginModal(true)}>
+                                  Create a Card
+                                </li>
+                              </div>
+                            )}
+                         <Link to="/collections/birthday">
+                           <li>Birthday Automation</li>
+                         </Link>
+                         <Link to="/collections/gift-cards">
+                           <li>Gift Cards </li>
+                         </Link>
+                       </ul>
+                     </div> 
+                  </div>
+                </>
+              ) : (
+                <>
+                </>
+              )}
+                 {item.title === 'Integrations' ? (
+                      <div className="dropdown">
+                        <div>Integrations</div>
+                        <div className="dropdown-content">
+                          <ul 
+                      onClick={onClose}
+                          
+                          className="dropdown-list">
+                            <Link to="/zapier">
+                              {' '}
+                              <li> Zapier</li>
+                            </Link>
+                            <Link to="/shopify">
+                              {' '}
+                              <li> Shopify</li>
+                            </Link>
+                            <Link to="/salesforce">
+                              {' '}
+                              <li> Salesforce</li>{' '}
+                            </Link>
+                            <Link to="/apidocs">
+                              {' '}
+                              <li> API</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                   ) : null}
+               {item.title === 'Pricing' ? (
+                      <div className="dropdown">
+                        <div>Pricing</div>
+                        <div className="dropdown-content">
+                          <ul 
+                      onClick={onClose}
+                          
+                          className="dropdown-list">
+                            <Link to="/price">
+                              <li>Credit Packages</li>
+                            </Link>
+                            <Link to="#">
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  window.location.href =
+                                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
+                                  return false;
+                                }}
+                              >
+                                {' '}
+                                Get a Custom Quote
+                              </button>
+                            </Link>
+                            <Link to="/roicalculator">
+                              {' '}
+                              <li>ROI Calculator</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                   ) : null}
+               {item.title === 'Learn' ? (
+                      <div className="dropdown">
+                        <div>Learn</div>
+                        <div className="dropdown-content">
+                          <ul                           
+                          className="dropdown-list">
+                            <Link to="/blog">
+                              <li
+                              onClick={onClose} 
+                              >Blog.</li>
+                            </Link>
+                            <Link to="/tutorials">
+                              <li    onClick={onClose}>Tutorials</li>
+                            </Link>
+                            <a href="https://www.youtube.com/@simplynoted">
+                              <li>Videos</li>
+                            </a>
+                            <Link to="/faq">
+                              <li>F.A.Q.</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                   ) : null}
+                  {item.title === 'About Us' ? (
+                      <Link onClick={onClose} to="/about-us">
+                        <div className="">About Us</div>
+                      </Link>
+                    ) : null}
             </Text>
           </Link>
         </span>
@@ -163,7 +310,6 @@ function MenuMobileNav({menu, onClose}) {
     </nav>
   );
 }
-
 function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
@@ -174,7 +320,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       role="banner"
       className={`${
         isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`}
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-white leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -192,7 +338,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             type="submit"
             className="relative flex items-center justify-center w-8 h-8"
           >
-            <IconSearch />
+            {/* <IconSearch /> */}
           </button>
           <Input
             className={
@@ -207,7 +353,6 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           />
         </Form>
       </div>
-
       <Link
         className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
         to="/"
@@ -238,15 +383,16 @@ function DesktopHeader({isHome, menu}) {
     cartCountVal,
     setCartCountVal,
     customerId,
+    setCustomerId,
     isInitialRender,
     isAccountLoader,
     setIsAccountLoader,
+    loginModal,
+    setLoginModal
   } = stateContext;
 
   const navigate = useNavigate();
   const pathname = useLocation()
-
-  const [loginModal, setLoginModal] = useState(false);
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
@@ -261,6 +407,7 @@ function DesktopHeader({isHome, menu}) {
       : 0;
     setCartCountVal(totalCartCount);
   }, []);
+
 
   const params = useParams();
   const {y} = useWindowScroll();
@@ -315,19 +462,12 @@ function DesktopHeader({isHome, menu}) {
                           <ul className="dropdown-list">
                             <Link to="/collections/best-sellers">
                               {' '}
-                              <li> Cards</li>
+                              <li>Cards</li>
                             </Link>
-                            {customerId ? (
                               <Link to="/customise-your-card">
+                               {' '}
                                 <li>Create a Card</li>
-                              </Link>
-                            ) : (
-                              <div>
-                                <li onClick={() => setLoginModal(true)}>
-                                  Create a Card
-                                </li>
-                              </div>
-                            )}
+                              </Link>                  
                             <Link to="/collections/birthday">
                               <li>Birthday Automation</li>
                             </Link>
@@ -339,7 +479,6 @@ function DesktopHeader({isHome, menu}) {
                         </div>
                       </div>
                     ) : null}
-
                     {item.title === 'Integrations' ? (
                       <div className="dropdown">
                         <div>Integrations</div>
@@ -707,84 +846,82 @@ function FooterMenu({menu}) {
       ))} */}
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
-      <div className="grid md:flex justify-evenly gap-[40px] lg:text-[16px] md:text-[12px] text-[17px] md:text-left text-center pt-[50px] pb-[30px] mx-auto w-[88%] ">
-       
-        <div className="md:mx-0 mx-auto">
-          <div className="lg:w-48 md:w-28 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
+      <div className="grid md:flex justify-evenly gap-[40px] md:text-left text-center pt-[50px] pb-[30px]">
+        <div className="mx-auto">
+          <div className="lg:w-48 w-28 pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
-          <div className="flex mt-5 sm:w-full  w-[84%] ">
+          <div className="flex mt-5">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-            <img className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[31px]" src={linkdin} alt=""></img>
+              <img className="w-14 m-1" src={linkdin} alt=""></img>
             </a>
             <a href="#">
-            <img className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1" src={fb} alt=""></img>
+              <img className="w-14 m-1" src={fb} alt=""></img>
             </a>
             <a href="#">
-            <img className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1" src={twitter} alt=""></img>
+              <img className="w-14 m-1" src={twitter} alt=""></img>
             </a>
           </div>
         </div>
-        <div className="  text-white md:text-left text-center  ">
-          <div className="lg:text-xl md:text-[18px] text-[22px] font-semibold">Quick Links </div>
-          <div className='text-center md:w-full w-[66%] md:ml-0 ml-auto'>
-          {(menu?.items || []).map((item) => (
-            <section key={item.id} className={styles.section}>
-              <Disclosure>
-                {({open}) => (
-                  <>
-                    <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                      <Link to={item.to}>
-                        <Heading
-                          className="flex justify-between  !font-base leading-loose hover:text-white"
-                          size="lead"
-                          as="h3"
+        <div className="  text-white md:text-left text-center">
+          <div className="text-xl font-semibold">Quick Links </div>
+          <div className="text-center md:ml-0 ml-[104px]">
+            {(menu?.items || []).map((item) => (
+              <section key={item.id} className={styles.section}>
+                <Disclosure>
+                  {({open}) => (
+                    <>
+                      <Disclosure.Button className="md:text-left text-center md:cursor-default">
+                        <Link to={item.to}>
+                          <Heading
+                            className="flex justify-between  !font-base leading-loose hover:text-white"
+                            size="lead"
+                            as="h3"
+                          >
+                            {item.title}
+                            {item?.items?.length > 0 && (
+                              <span className="md:hidden">
+                                <IconCaret direction={open ? 'up' : 'down'} />
+                              </span>
+                            )}
+                          </Heading>
+                        </Link>
+                      </Disclosure.Button>
+                      {item?.items?.length > 0 ? (
+                        <div
+                          className={`${
+                            open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                          } overflow-hidden transition-all duration-300`}
                         >
-                          {item.title}
-                          {item?.items?.length > 0 && (
-                            <span className="md:hidden">
-                              <IconCaret direction={open ? 'up' : 'down'} />
-                            </span>
-                          )}
-                        </Heading>
-                      </Link>
-                    </Disclosure.Button>
-                    {item?.items?.length > 0 ? (
-                      <div
-                        className={`${
-                          open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                        } overflow-hidden transition-all duration-300`}
-                      >
-                        <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
-                          <Disclosure.Panel static>
-                            <nav className={styles.nav}>
-                              {item.items.map((subItem) => (
-                                <FooterLink key={subItem.id} item={subItem} />
-                              ))}
-                            </nav>
-                          </Disclosure.Panel>
-                        </Suspense>
-                      </div>
-                    ) : null}
-                  </>
-                )}
-              </Disclosure>
-            </section>
-          ))}
-        </div>
+                          <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
+                            <Disclosure.Panel static>
+                              <nav className={styles.nav}>
+                                {item.items.map((subItem) => (
+                                  <FooterLink key={subItem.id} item={subItem} />
+                                ))}
+                              </nav>
+                            </Disclosure.Panel>
+                          </Suspense>
+                        </div>
+                      ) : null}
+                    </>
+                  )}
+                </Disclosure>
+              </section>
+            ))}
+          </div>
         </div>
         <div className=" text-white ">
           <div>
-            <div className="lg:text-xl text-[16px]  font-semibold">Address</div>
-            <div className='w-[99%] '>
-              5025 S Ash Ave Suite B16 Tempe AZ
-              85282
+            <div className="text-xl   font-semibold">Address</div>
+            <div className="w-[99%]">
+              5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>
           </div>
 
           <div className="md:mt-24 mt-[40px] text-white">
-            <div className="lg:text-xl text-[16px] font-semibold">Email</div>
-            <div className=''>
+            <div className="text-xl font-semibold">Email</div>
+            <div>
               <a href="mailto:support@simplynoted.com">
                 support@simplynoted.com
               </a>
@@ -792,14 +929,12 @@ function FooterMenu({menu}) {
           </div>
         </div>
 
-        <div className=" text-white ">
-          <div className="lg:text-xl text-[16px] font-semibold">Hours</div>
+        <div className=" text-white">
+          <div className="text-xl font-semibold">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>
         </div>
       </div>
-     
     </>
   );
 }
-
