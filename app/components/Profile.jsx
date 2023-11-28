@@ -2,6 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import DynamicButton from './DynamicButton';
 import CircularLoader from './CircularLoder';
+import { json } from '@shopify/remix-oxygen';
+import { useStateContext } from '~/context/StateContext';
 
 const Profile = ({
   customer,
@@ -15,6 +17,8 @@ const Profile = ({
   const [activeTab, setActiveTab] = useState('account'); // 'account' or 'security'
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
+
+  const {setFullName,setUserEmail} = useStateContext();
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
@@ -33,6 +37,7 @@ const Profile = ({
     country: '',
     zip: '',
   });
+
 
   const [securityDetails, setSecurityDetails] = useState({
     newPassword: '',
@@ -101,20 +106,27 @@ const Profile = ({
         const jsonResponse = await response.json();
 
         if (jsonResponse.updated) {
-          // Perform further actions with the response if needed
-          setProfile(false);
-
-          // setLoader(false);
-          setAccountDetail(true);
+          debugger
+        localStorage.setItem('SnEmail', accountDetails.email);
+        localStorage.setItem('SNFullName', JSON.stringify(`${accountDetails.firstName || ''} ${ accountDetails.lastName || ''}`));
+      
+          setTimeout(() =>{
+            setUserEmail(accountDetails.email)
+            setFullName(`${accountDetails.firstName || ''} ${ accountDetails.lastName || ''}`)
+            setProfile(false);
+            setLoader(false);
+            setAccountDetail(true);
+          },[1000])
+        
         }
       } else {
         // Handle errors if the response is not OK
-        // setLoader(false);
+        setLoader(false);
         console.error('Error updating user profile:', response.statusText);
       }
     } catch (error) {
       // Handle network errors or exceptions
-      // setLoader(false);
+      setLoader(false);
       console.error('Error:', error);
     }
   };

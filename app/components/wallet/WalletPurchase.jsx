@@ -6,7 +6,6 @@ const WalletPurchase = ({
   amount,
   selectedPlan,
   subscription,
-  WalletData,
   setWalletPayment,
   setFinalPrice,
   subscriptionTitle,

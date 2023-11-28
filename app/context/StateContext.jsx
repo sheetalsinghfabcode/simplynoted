@@ -13,6 +13,46 @@ export function StateContextProvider({children}) {
   const [customerId, setCustomerId] = useState(null);
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isAccountLoader,setIsAccountLoader] = useState(false)
+  const [subscription, setSubscription] = useState(0);
+  const [fullName,setFullName] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedFullName = localStorage.getItem('SNFullName');
+      return storedFullName ? storedFullName : "";
+    }
+    return null; // Fallback if localStorage is not available
+  });
+  const [userEmail,setUserEmail] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedUserEmail = localStorage.getItem('SnEmail');
+      return storedUserEmail ? storedUserEmail : "";
+    }
+    return null; // Fallback if localStorage is not available
+  });
+
+  const [selectedPlan, setSelectedPlan] =  useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedSelectedPlan = localStorage.getItem('selectedPlan');
+      return storedSelectedPlan ? storedSelectedPlan : null;
+    }
+    return null; // Fallback if localStorage is not available
+  });
+  const [amount, setAmount] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedAmount = localStorage.getItem('amount');
+      return storedAmount ? storedAmount : 0;
+    }
+    return null; // Fallback if localStorage is not available
+  });
+  const [packageProduct,setPackageProduct] = useState("")
+  const [subscriptionProduct,setSubscriptionProduct] = useState("")
+  const [subscriptionPriceId,setSubscriptionPriceId] = useState("")
+  const [subscriptionTitle, setSubscriptionTitle] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedSubscriptionTitle = localStorage.getItem('subscriptionName');
+      return storedSubscriptionTitle ? storedSubscriptionTitle : 'Free';
+    }
+    return 'Free'; // Fallback if localStorage is not available
+  });
 
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
@@ -57,7 +97,25 @@ export function StateContextProvider({children}) {
         setCustomerId,
         isInitialRender,
         isAccountLoader,
-        setIsAccountLoader
+        setIsAccountLoader,
+        subscription,
+        setSubscription,
+        selectedPlan,
+        setSelectedPlan,
+        amount,
+        setAmount,
+        packageProduct,
+        setPackageProduct,
+        subscriptionProduct,
+        setSubscriptionProduct,
+        subscriptionPriceId,
+        setSubscriptionPriceId,
+        subscriptionTitle,
+        setSubscriptionTitle,
+        fullName,
+        setFullName,
+        userEmail,
+        setUserEmail
       }}
     >
       {children}

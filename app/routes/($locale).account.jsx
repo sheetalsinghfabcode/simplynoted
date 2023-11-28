@@ -118,12 +118,14 @@ function Account({customer, heading, featuredData}) {
   const [accountDetail, setAccountDetail] = useState(!orderHistory ? true: false);
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
+
   useEffect(() => {
     if(customer){
       setIsAccountLoader(false)
     }
     getSavedCards();
-  }, []);
+  }, [loader]);
+
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
@@ -254,6 +256,7 @@ function Account({customer, heading, featuredData}) {
       {accountDetail && (
         <AccountDetails 
         loader={loader}
+        setLoader={setLoader}
         
         accountDetail={accountDetail} customer={customer} />
       )}
@@ -264,6 +267,8 @@ function Account({customer, heading, featuredData}) {
           customer={customer}
           result={result}
           loader={loader}
+          accountDetails={accountDetail}
+
           setLoader={setLoader}
         />
       )}

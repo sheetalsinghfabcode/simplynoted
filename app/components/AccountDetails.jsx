@@ -2,12 +2,13 @@ import {Link} from '~/components';
 import DynamicButton from './DynamicButton';
 import {useEffect, useState} from 'react';
 import CircularLoader from './CircularLoder';
+import {useStateContext} from '~/context/StateContext';
 
-export function AccountDetails({customer}) {
+export function AccountDetails({customer, loader, setLoader, accountDetail}) {
   const {firstName, lastName, email, phone, id} = customer;
 
   const [key, setKey] = useState('');
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const [handleGenerateClick, setHandleGenerateClick] = useState(false);
 
   const customerID = customer.id.replace(/[^0-9]/g, '');
@@ -47,12 +48,20 @@ export function AccountDetails({customer}) {
     generateApiKey();
   }, [customerID]);
 
-  let apiKey;
+  const [apiKey, setApiKey] = useState('');
+
+  const {fullName, setFullName, userEmail, setUserEmail} = useStateContext();
 
   useEffect(() => {
-    apiKey = localStorage.getItem('apiKey');
+    const storedApiKey = localStorage.getItem('apiKey');
+    const storedFullName = localStorage.getItem('SNFullName');
+    const storedUserEmail = localStorage.getItem('SnEmail');
 
-  }, [key,loader]);
+    setApiKey(storedApiKey || '');
+    setFullName(storedFullName || '');
+    setUserEmail(storedUserEmail || '');
+  }, []);
+
 
   return (
     <>
@@ -62,11 +71,7 @@ export function AccountDetails({customer}) {
           {/* Name */}
           <div className="flex mb-4">
             <div className="w-1/4 text-sm text-gray-600">Name:</div>
-            <p className="w-3/4 text-[16px] font-semibold">
-              {firstName || lastName
-                ? `${firstName || ''} ${lastName || ''}`
-                : 'Add name'}
-            </p>
+            <p className="w-3/4 text-[16px] font-semibold">{fullName}</p>
           </div>
 
           {/* Phone */}
@@ -78,7 +83,7 @@ export function AccountDetails({customer}) {
           {/* Email */}
           <div className="flex mb-4">
             <div className="w-1/4 text-sm text-gray-600">Email address:</div>
-            <p className="w-3/4 text-[16px]  font-semibold">{email}</p>
+            <p className="w-3/4 text-[16px]  font-semibold">{userEmail}</p>
           </div>
 
           {/* Password */}
@@ -94,7 +99,7 @@ export function AccountDetails({customer}) {
               className="px-4 py-2 bg-[#1b52b1] text-white  text-sm font-semibold hover:bg-[#1b52b1] focus:outline-none"
               onClick={() => {
                 setHandleGenerateClick(true);
-                generateApiKey()
+                generateApiKey();
               }}
             >
               Generate

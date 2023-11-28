@@ -64,7 +64,8 @@ export default function AddressBook() {
   }, [addressForm, selectedAddress, editAddress, loadAddress]);
 
   useEffect(() => {
-    if (addresses) setFilteredAddresses(addresses);
+    if (addresses)
+     setFilteredAddresses(addresses);
   }, [addresses]);
 
   return (
