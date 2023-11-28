@@ -83,7 +83,8 @@ export function MessageWriting({
     editSignOffLineHeight ? editSignOffLineHeight : '',
   );
   const [searchData, setsearchData] = useState(null);
-const[stateForFilter,setStateForFilter] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -394,9 +395,9 @@ const[stateForFilter,setStateForFilter] = useState(false)
       }
     }
   }
-  
+
   useEffect(() => {
-    if(!mainMessageBox) return;
+    if (!mainMessageBox) return;
     const resizeObserver = new ResizeObserver(processCustomMessageInput);
     if(!document.body.contains(mainMessageBox)) return;
     resizeObserver.observe(mainMessageBox);
@@ -405,7 +406,7 @@ const[stateForFilter,setStateForFilter] = useState(false)
   }, [mainMessageBox]);
 
   useEffect(() => {
-    if(!signOffTextBox) return;
+    if (!signOffTextBox) return;
     const resizeObserver = new ResizeObserver(processSignOffInput);
     if(!document.body.contains(signOffTextBox)) return;
     resizeObserver.observe(signOffTextBox);
@@ -413,24 +414,26 @@ const[stateForFilter,setStateForFilter] = useState(false)
     return () => resizeObserver.disconnect();
   }, [signOffTextBox]);
 
- function processCustomMessageInput() {
-    mainMessageBox.style.fontSize = '50px'; 
+  function processCustomMessageInput() {
+    mainMessageBox.style.fontSize = '50px';
     mainMessageBox.style.lineHeight = '50px';
-    resize_to_fit(messageBocContainer, mainMessageBox, "customTextResizing");
+    resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
   function processSignOffInput() {
-    signOffTextBox.style.fontSize = '50px'; 
+    signOffTextBox.style.fontSize = '50px';
     signOffTextBox.style.lineHeight = '50px';
-    resize_to_fit(signOffBocContainer, signOffTextBox, "signOffResizing");
+    resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-    const isOverflowing = innerContainer.clientHeight >= outerContainer.clientHeight;
+    const isOverflowing =
+      innerContainer.clientHeight >= outerContainer.clientHeight;
     console.log({isOverflowing});
     if (!innerContainer || !outerContainer || !isOverflowing) return;
-    
-    const heightDifference = innerContainer.clientHeight - outerContainer.clientHeight;
+
+    const heightDifference =
+      innerContainer.clientHeight - outerContainer.clientHeight;
 
     let fontSizeDecrement = 1;
     let lineHeightDecrement = 1;
@@ -443,20 +446,22 @@ const[stateForFilter,setStateForFilter] = useState(false)
       lineHeightDecrement = 5;
     }
 
-
     const fontSize = window.getComputedStyle(innerContainer).fontSize;
     const lineHeight = window.getComputedStyle(innerContainer).lineHeight;
-    innerContainer.style.fontSize = parseFloat(fontSize) - fontSizeDecrement + 'px';
-    innerContainer.style.lineHeight = parseFloat(lineHeight) - lineHeightDecrement + 'px';
-    if (resizeSelection === "customTextResizing") {
+    innerContainer.style.fontSize =
+      parseFloat(fontSize) - fontSizeDecrement + 'px';
+    innerContainer.style.lineHeight =
+      parseFloat(lineHeight) - lineHeightDecrement + 'px';
+    if (resizeSelection === 'customTextResizing') {
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
-    } else if (resizeSelection === "signOffResizing") {
+    } else if (resizeSelection === 'signOffResizing') {
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
     // console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
-    if(isOverflowing) resize_to_fit(outerContainer, innerContainer, resizeSelection);
+    if (isOverflowing)
+      resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
   const handleFileChange = (event) => {
@@ -707,7 +712,7 @@ const[stateForFilter,setStateForFilter] = useState(false)
     signOffTextBox = ref3.current;
     messageBocContainer = ref2.current;
     signOffBocContainer = ref.current;
-    loadTempDataFilter = ref5.current?.value
+    loadTempDataFilter = ref5.current?.value;
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
@@ -835,38 +840,28 @@ const[stateForFilter,setStateForFilter] = useState(false)
       const json = await res.json();
       setloadTempData(json.result);
       // setLoadTemModal(true)
-      console.log(json.result,")))))))))");
+      console.log(json.result, ')))))))))');
     } catch (error) {
       console.log(error, 'savedTemp');
     }
   }
   const filteredList = (loadTempData, searchData) => {
-    console.log(searchData,"searchData");
-    return loadTempData
-        .filter(dataobj => bySearch(dataobj, searchData));
+    console.log(searchData, 'searchData');
+    return loadTempData.filter((dataobj) => bySearch(dataobj, searchData));
+  };
 
-};
-
-const bySearch = (dataobj, searchData) => {
+  const bySearch = (dataobj, searchData) => {
     // console.log(Object.values(dataobj),'+++++++++++++++');
     if (searchData) {
-        return Object.values(dataobj).some(field =>
-            // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
-            field.toString().toLowerCase().includes(searchData.toLowerCase()))
+      return Object.values(dataobj).some((field) =>
+        // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
+        field.toString().toLowerCase().includes(searchData.toLowerCase()),
+      );
     } else return dataobj;
-
-};
-  function changeLoadTempHandler(e){
-    console.log(e.target.value);
-    console.log(ref5.current?.value,"ref5");
-    loadTempDataFilter = ref5.current?.value
-    setsearchData(e.target.value)
-  }
-  function setStateForFIlter(){
-    setsearchData(ref5.current?.value)
-  }
+  };
+  
   function LoadTemplate() {
-  const [searchData, setsearchData] = useState(null);
+    const [searchData, setsearchData] = useState(null);
 
     return (
       <>
@@ -877,14 +872,20 @@ const bySearch = (dataobj, searchData) => {
             </h1>
           </div>
           <div>
-        <input type="text" className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla' placeholder='search Template...' ref={ref5} onChange={(e)=>setsearchData(e.target.value)}/>
-      </div>
+            <input
+              type="text"
+              className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla"
+              placeholder="search Template..."
+              ref={ref5}
+              onChange={(e) => setsearchData(e.target.value)}
+            />
+          </div>
           <div className="flex justify-between">
             <span>Template Name</span>
             <span>Actions</span>
           </div>
           {loadTempData &&
-            filteredList(loadTempData,searchData).map((item) => (
+            filteredList(loadTempData, searchData).map((item) => (
               <div className="border border-black-600 px-[10px] items-center w-full flex">
                 <div className="w-full">{item.templateName}</div>
                 <div className="w-full flex items-center gap-[11px] justify-end">
@@ -929,6 +930,12 @@ const bySearch = (dataobj, searchData) => {
       console.log(error, 'delete Template');
     }
   }
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
   useEffect(() => {
     SavedTemp();
   }, [onDelTemp]);
@@ -1006,26 +1013,26 @@ const bySearch = (dataobj, searchData) => {
             data-gtm-form-interact-field-id="0"
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
-          {customerid &&
-          <div className="flex justify-between mt-[1rem]">
-            <div>
-              <span
-                className="font-bold text-[#1b5299] cursor-pointer"
-                onClick={() => setAddNewTem(true)}
-              >
-                Save As New Message Template
-              </span>
+          {customerid && (
+            <div className="flex justify-between mt-[1rem]">
+              <div>
+                <span
+                  className="font-bold text-[#1b5299] cursor-pointer"
+                  onClick={() => setAddNewTem(true)}
+                >
+                  Save As New Message Template
+                </span>
+              </div>
+              <div>
+                <span
+                  className="font-bold text-[#1b5299] cursor-pointer"
+                  onClick={() => SavedTemp() && setLoadTemModal(true)}
+                >
+                  Load Saved Message Template
+                </span>
+              </div>
             </div>
-            <div>
-              <span
-                className="font-bold text-[#1b5299] cursor-pointer"
-                onClick={() => SavedTemp() && setLoadTemModal(true)}
-              >
-                Load Saved Message Template
-              </span>
-            </div>
-          </div>
-          }
+          )}
           <br />
           {checkCharCount && (
             <span className="text-[red] font-bold">
@@ -1158,6 +1165,9 @@ const bySearch = (dataobj, searchData) => {
                         Bulk Order Template
                       </a>{' '}
                     </p>
+                    <p onClick={openModal} className="underline underline-offset-1 cursor-pointer">
+                      View bulk upload instructions
+                    </p>
                     <AfterUpload />
                   </div>
                 ) : (
@@ -1196,6 +1206,10 @@ const bySearch = (dataobj, searchData) => {
                               Bulk Order Template
                             </a>{' '}
                           </p>
+                          <p onClick={openModal} className="underline underline-offset-1 cursor-pointer">
+                            View bulk upload instructions
+                          </p>
+
                           <AfterUpload />
                         </>
                       )}
@@ -1332,6 +1346,17 @@ const bySearch = (dataobj, searchData) => {
             />
           )
         }
+      />
+      <Instruction
+        isOpen={isModalOpen}
+        title="INSTRUCTIONS FOR BULK UPLOAD"
+        closeModal={closeModal}
+        instructions={[
+          'Download the bulk upload template (csv)',
+          'Complete a row for each address you wish to add',
+          'Upload your completed file in .csv format',
+        ]}
+        table={true}
       />
       <Instruction
         isOpen={addNewTem}
