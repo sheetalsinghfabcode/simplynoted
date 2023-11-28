@@ -189,7 +189,7 @@ export default function shopify() {
 
         <div className="xl:w-[70%] lg:w-[60%] relative overflow-x-clip  w-full">
           <img
-            className="lg:absolute relative xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
+            className="lg:absolute relative 2xl:left-[30px] xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
           />
         </div>
@@ -207,14 +207,14 @@ export default function shopify() {
       {/* third */}
 
       <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
-        <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
+        <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="  text-[28px] font-karla text-[#001A5F]">
               Send one or send{' '}
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-10 ">
             Simply Noted integrates with your software and will do bulk sends in
             just a few minutes of your time.
           </p>
@@ -241,9 +241,9 @@ export default function shopify() {
           </div>
         </div>
 
-        <div className="xl:w-[70%] lg:w-[60%] relative overflow-x-clip  w-full">
+        <div className="xl:w-[60%] lg:w-[60%] relative overflow-x-clip  w-full">
           <img
-            className="lg:absolute relative xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
+            className="lg:absolute relative xl:max-w-[910px] lg:max-w-[725px] mx-auto overflow-hidden "
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
           />
         </div>
@@ -257,33 +257,37 @@ export default function shopify() {
 
 
 
-      <div className="flex flex-row items-center justify-center h-screen">
-        <div className='absolute ml-[-65rem] mt-[-19rem]'>
-        <img className="mx-auto mb-6" src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556" alt="shopify" />
-        </div>
+      <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto">
+        
         <div className="banner-detail text-center">
-          <img className="mx-auto mb-6" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/1024px-Shopify_logo_2018.svg_564a8f8d-db80-41ef-b750-3fddbe29354c.png?v=1612111934" alt="shopify" />
-          <h1 className="text-6xl flex text-white flex-col items-center font-karla">
+       
+        <img className="lg:block absolute hidden left-0 mt-[-18rem]" src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556" alt="shopify" />
+      
+          <img className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] " src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/1024px-Shopify_logo_2018.svg_564a8f8d-db80-41ef-b750-3fddbe29354c.png?v=1612111934" alt="shopify" />
+          <img className="lg:block hidden absolute mt-[100px] right-0 " src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087" alt="shopify" />
+          <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
             Integrate with Shopify
-            <div className="button-tutorial-now mt-10 text-xl p-[12px] flex gap-12">
+            <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
             <DynamicButton
                     text="INTEGRATE NOW"
-                    className="req-btn"
+                    className="req-btn !ml-0 md:w-50%  !w-full"
                      onClickFunction={()=>window.location.href=("https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb")}
                 
             />
             <DynamicButton
                     text="SCHEDULE A DEMO"
-                    className="sch-btn"
+                    className="sch-btn !ml-0 md:w-50% !w-full"
                      onClickFunction={()=>window.location.href=("https://meetings.hubspot.com/rick24")}
                 
             />
+
             </div>
-          </h1>
+          </div>
+          
+        
+       
         </div>
-        <div className='absolute mr-[-57rem] mt-[48px] overflow-x-hidden'>
-        <img className="mx-auto mr-[-4rem] " src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087" alt="shopify" />
-        </div>
+       
       </div>
     </div>
   );

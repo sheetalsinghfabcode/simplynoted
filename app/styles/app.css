@@ -2123,7 +2123,9 @@ margin-left: 0px;
     padding-bottom:0px;
       font-size:15px;
   }
-
+.banner-detail{
+  background-size: 62% 81%;
+}
 }
 @media only screen and (max-width:500px) {
 .signup-overview{
