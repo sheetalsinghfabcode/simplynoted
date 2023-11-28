@@ -398,6 +398,7 @@ const[stateForFilter,setStateForFilter] = useState(false)
   useEffect(() => {
     if(!mainMessageBox) return;
     const resizeObserver = new ResizeObserver(processCustomMessageInput);
+    if(!document.body.contains(mainMessageBox)) return;
     resizeObserver.observe(mainMessageBox);
 
     return () => resizeObserver.disconnect();
@@ -406,6 +407,7 @@ const[stateForFilter,setStateForFilter] = useState(false)
   useEffect(() => {
     if(!signOffTextBox) return;
     const resizeObserver = new ResizeObserver(processSignOffInput);
+    if(!document.body.contains(signOffTextBox)) return;
     resizeObserver.observe(signOffTextBox);
 
     return () => resizeObserver.disconnect();
