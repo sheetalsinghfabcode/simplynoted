@@ -2199,6 +2199,7 @@ margin-left: 0px;
   font-weight: 700 !important;
   letter-spacing: -2.07px !important;
   line-height: 64px !important;
+  margin-top: 40px;
   margin-bottom: 20px;
   padding-bottom: 10px !important;
   text-align: center;
@@ -2217,6 +2218,7 @@ margin-left: 0px;
   font-weight: 700!important;
   letter-spacing: -2.07px!important;
   line-height: 64px!important;
+  margin-top: 40px;
   margin-bottom: 20px;
   padding-bottom: 10px!important;
   text-align: center;
@@ -2286,7 +2288,29 @@ margin-left: 0px;
   -webkit-appearance: none;
   margin: 10px 0;
   width: 380px;
-  background: 0 0;
+  height: 34px;
+  background:rgb(186,182,206);
+  border-radius: 25px;
+  position: relative;
+}
+
+/* Styling for the slider thumb */
+.simply-noted-marketing input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 34px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Adjust the color of the thumb on Mozilla Firefox */
+.simply-noted-marketing input[type="range"]::-moz-range-thumb {
+  width: 30px;
+  height: 34px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .roi-calculator-output-wrapper {

@@ -1,7 +1,105 @@
+import {useEffect, useState} from 'react';
 import RoiLeadingArrowImage from '../../assets/Image/roi-leading-arrow.webp';
 import RoiRobotImage from '../../assets/Image/roi-robot.webp';
 
 export default function RoiCalculator() {
+  const [inputValues, setInputValues] = useState({
+    cardsSent: 10000,
+    responseRate: 8.5,
+    demoLead: 75,
+    demoShow: 75,
+    demoClose: 50,
+    averageCustomer: 5000,
+  });
+
+  const [outputValues, setOutputValues] = useState({
+    costsPerContact: 2.15,
+    simplyNotedBudget: 21500,
+    costsPerLead: 25.29,
+    costsPerDemo: 33.73,
+    totalClosedDeals: 239.06,
+    CPAcom: 500.0,
+    CPAtotal: 589.93,
+    ROItotal: 1195312.5,
+    ROIpercentage: 5459.59,
+  });
+
+  function prettyFormatNumber(inputString) {
+    inputString = inputString.toString();
+    return inputString.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  useEffect(() => {
+    // Costs per contact
+    let costsPerContact = 0;
+    if (Number(inputValues.cardsSent) > 249999) {
+      costsPerContact = 1.55;
+    } else if (Number(inputValues.cardsSent) > 49999) {
+      costsPerContact = 1.8;
+    } else if (Number(inputValues.cardsSent) > 9999) {
+      costsPerContact = 2.15;
+    } else if (Number(inputValues.cardsSent) > 4999) {
+      costsPerContact = 2.3;
+    } else if (Number(inputValues.cardsSent) > 2999) {
+      costsPerContact = 2.55;
+    } else if (Number(inputValues.cardsSent) > 1999) {
+      costsPerContact = 2.8;
+    } else if (Number(inputValues.cardsSent) > 999) {
+      costsPerContact = 3.0;
+    } else {
+      costsPerContact = 3.25;
+    }
+
+    // Simply Noted Budget
+    let simplyNotedBudget = Number(inputValues.cardsSent) * costsPerContact;
+
+    // Costs per lead
+    let costsPerLead =
+      (costsPerContact / Number(inputValues.responseRate)) * 100;
+
+    // Costs per demo
+    let costsPerDemo = (costsPerLead / Number(inputValues.demoLead)) * 100;
+
+    // Total closed Deals
+    let totalClosedDeals =
+      Number(inputValues.cardsSent) *
+      (Number(inputValues.responseRate) / 100) *
+      (Number(inputValues.demoLead) / 100) *
+      (Number(inputValues.demoShow) / 100) *
+      (Number(inputValues.demoClose) / 100);
+
+    // CPA
+    let CPA =
+      Number(costsPerDemo) /
+      (Number(inputValues.demoShow) / 100) /
+      (Number(inputValues.demoClose) / 100);
+
+    // CPA (conv w/ commission)
+    let CPAcom = Number(inputValues.averageCustomer) * 0.1;
+
+    // CPA (total)
+    let CPAtotal = CPAcom + CPA;
+
+    // ROI (total sales)
+    let ROItotal = totalClosedDeals * Number(inputValues.averageCustomer);
+
+    // ROI (percentage)
+    let ROIpercentage =
+      ((ROItotal - simplyNotedBudget) / simplyNotedBudget) * 100;
+
+    setOutputValues({
+      costsPerContact,
+      simplyNotedBudget,
+      costsPerLead,
+      costsPerDemo,
+      totalClosedDeals,
+      CPAcom,
+      CPAtotal,
+      ROItotal,
+      ROIpercentage,
+    });
+  }, [inputValues]);
+
   return (
     <>
       <section className="roi-calculator-section-1">
@@ -22,127 +120,141 @@ export default function RoiCalculator() {
                           <div className="input-holder">
                             <div className="input-header">
                               <h4>Cards Sent</h4>
-                              <p
-                                id="cards-sent-label"
-                                className="roi-text-right"
-                              >
-                                10,000
+                              <p className="roi-text-right">
+                                {inputValues.cardsSent}
                               </p>
                             </div>
                             <input
-                              id="cards-sent-range"
                               type="range"
                               name="points"
                               min="0"
                               max="100000"
-                              value="10000"
-                              onchange="calculate();"
-                              oninput="outputInput();"
+                              value={inputValues.cardsSent}
+                              onChange={(event) => {
+                                setInputValues((prevInputValues) => {
+                                  return {
+                                    ...prevInputValues,
+                                    cardsSent: event.target.value,
+                                  };
+                                });
+                              }}
                             />
                           </div>
                           <div className="input-holder">
                             <div className="input-header">
                               <h4>Response Rate</h4>
-                              <p
-                                id="response-rate-label"
-                                className="roi-text-right"
-                              >
-                                8%
+                              <p className="roi-text-right">
+                                {`${inputValues.responseRate}%`}
                               </p>
                             </div>
                             <input
-                              id="response-rate-range"
                               type="range"
                               name="points"
                               min="0.5"
                               max="100"
-                              value="8"
-                              onchange="calculate();"
-                              oninput="outputInput();"
+                              value={inputValues.responseRate}
+                              onChange={(event) => {
+                                setInputValues((prevInputValues) => {
+                                  return {
+                                    ...prevInputValues,
+                                    responseRate: event.target.value,
+                                  };
+                                });
+                              }}
                             />
                           </div>
                           <div className="input-holder">
                             <div className="input-header">
                               <h4>Demo/Lead %</h4>
-                              <p
-                                id="demo-lead-label"
-                                className="roi-text-right"
-                              >
-                                75%
+                              <p className="roi-text-right">
+                                {`${inputValues.demoLead}%`}
                               </p>
                             </div>
                             <input
-                              id="demo-lead-range"
                               type="range"
                               name="points"
                               min="0"
                               max="100"
-                              value="75"
-                              onchange="calculate();"
-                              oninput="outputInput();"
+                              value={inputValues.demoLead}
+                              onChange={(event) => {
+                                setInputValues((prevInputValues) => {
+                                  return {
+                                    ...prevInputValues,
+                                    demoLead: event.target.value,
+                                  };
+                                });
+                              }}
                             />
                           </div>
                           <div className="input-holder">
                             <div className="input-header">
                               <h4>Demo Show Up Rate</h4>
-                              <p
-                                id="demo-show-label"
-                                className="roi-text-right"
-                              >
-                                75%
+                              <p className="roi-text-right">
+                                {`${inputValues.demoShow}%`}
                               </p>
                             </div>
                             <input
-                              id="demo-show-range"
                               type="range"
                               name="points"
                               min="0"
                               max="100"
-                              value="75"
-                              onchange="calculate();"
-                              oninput="outputInput();"
+                              value={inputValues.demoShow}
+                              onChange={(event) => {
+                                setInputValues((prevInputValues) => {
+                                  return {
+                                    ...prevInputValues,
+                                    demoShow: event.target.value,
+                                  };
+                                });
+                              }}
                             />
                           </div>
                           <div className="input-holder">
                             <div className="input-header">
                               <h4>Demo Close Rate</h4>
-                              <p
-                                id="demo-close-label"
-                                className="roi-text-right"
-                              >
-                                50%
+                              <p className="roi-text-right">
+                                {`${inputValues.demoClose}%`}
                               </p>
                             </div>
                             <input
-                              id="demo-close-range"
                               type="range"
                               name="points"
                               min="0"
                               max="100"
-                              value="50"
-                              onchange="calculate();"
-                              oninput="outputInput();"
+                              value={inputValues.demoClose}
+                              onChange={(event) => {
+                                setInputValues((prevInputValues) => {
+                                  return {
+                                    ...prevInputValues,
+                                    demoClose: event.target.value,
+                                  };
+                                });
+                              }}
                             />
                           </div>
                           <div className="input-holder">
                             <div className="input-header">
                               <h4>Avg. Sale Value</h4>
-                              <p
-                                id="average-customer-label"
-                                className="roi-text-right"
-                              >
-                                $5,000
+                              <p className="roi-text-right">
+                                {`$${prettyFormatNumber(
+                                  Number(inputValues.averageCustomer),
+                                )}`}
                               </p>
                             </div>
                             <input
-                              id="average-customer-range"
                               type="range"
                               name="points"
                               min="0"
                               max="100000"
-                              value="5000"
-                              onchange="calculate();"
-                              oninput="outputInput();"
+                              value={inputValues.averageCustomer}
+                              onChange={(event) => {
+                                setInputValues((prevInputValues) => {
+                                  return {
+                                    ...prevInputValues,
+                                    averageCustomer: event.target.value,
+                                  };
+                                });
+                              }}
                             />
                           </div>
                         </div>
@@ -163,129 +275,92 @@ export default function RoiCalculator() {
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Simply Noted Budget</h4>
-                                <h4
-                                  id="nasted-budget-output"
-                                  className="roi-text-right"
-                                >
-                                  $21,500
+                                <h4 className="roi-text-right">
+                                  {`$${prettyFormatNumber(
+                                    Number(
+                                      outputValues.simplyNotedBudget.toFixed(2),
+                                    ),
+                                  )}`}
                                 </h4>
                               </div>
                               <div className="output-item">
                                 <p>Cards Sent</p>
-                                <p
-                                  id="cards-sent-output"
-                                  className="roi-text-right"
-                                >
-                                  10,000
+                                <p className="roi-text-right">
+                                  {prettyFormatNumber(inputValues.cardsSent)}
                                 </p>
                               </div>
                               <div className="output-item">
                                 <p>Cost Per Contact Hit By Simply Noted</p>
-                                <p
-                                  id="cost-contact-output"
-                                  className="roi-text-right"
-                                >
-                                  $2.15
+                                <p className="roi-text-right">
+                                  {`$${outputValues.costsPerContact}`}
                                 </p>
                               </div>
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Response Rate</h4>
-                                <h4
-                                  id="response-rate-output"
-                                  className="roi-text-right"
-                                >
-                                  8.5%
+                                <h4 className="roi-text-right">
+                                  {`${inputValues.responseRate}%`}
                                 </h4>
                               </div>
                               <div className="output-item">
                                 <p>Cost Per Lead</p>
-                                <p
-                                  id="cost-lead-output"
-                                  className="roi-text-right"
-                                >
-                                  $25.29
+                                <p className="roi-text-right">
+                                  {`$${outputValues.costsPerLead.toFixed(2)}`}
                                 </p>
                               </div>
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Demo Lead %</h4>
-                                <h4
-                                  id="demo-lead-output"
-                                  className="roi-text-right"
-                                >
-                                  75%
+                                <h4 className="roi-text-right">
+                                  {`${inputValues.demoLead}%`}
                                 </h4>
                               </div>
                               <div className="output-item">
                                 <p>Cost Per Demo</p>
-                                <p
-                                  id="cost-demo-output"
-                                  className="roi-text-right"
-                                >
-                                  $33.73
+                                <p className="roi-text-right">
+                                  {`$${outputValues.costsPerDemo.toFixed(2)}`}
                                 </p>
                               </div>
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Demo Show Up Rate %</h4>
-                                <h4
-                                  id="demo-show-output"
-                                  className="roi-text-right"
-                                >
-                                  75%
+                                <h4 className="roi-text-right">
+                                  {`${inputValues.demoShow}%`}
                                 </h4>
                               </div>
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Demo Close Rate</h4>
-                                <h4
-                                  id="demo-close-output"
-                                  className="roi-text-right"
-                                >
-                                  50%
+                                <h4 className="roi-text-right">
+                                  {`${inputValues.demoClose}%`}
                                 </h4>
                               </div>
                               <div className="output-item">
                                 <p>Total Close Deals</p>
-                                <p
-                                  id="total-close-output"
-                                  className="roi-text-right"
-                                >
-                                  239.06
+                                <p className="roi-text-right">
+                                  {outputValues.totalClosedDeals.toFixed(2)}
                                 </p>
                               </div>
                               <div className="output-item">
                                 <p>
                                   Sales Rep Commission (% of Gross Contribution)
                                 </p>
-                                <p
-                                  id="sales-commissiom-output"
-                                  className="roi-text-right"
-                                >
-                                  10%
-                                </p>
+                                <p className="roi-text-right">10%</p>
                               </div>
                               <div className="output-item">
                                 <p>CPA (Conversion w/ Commission)</p>
-                                <p
-                                  id="cpa-conv-output"
-                                  className="roi-text-right"
-                                >
-                                  $500.00
+                                <p className="roi-text-right">
+                                  {`$${outputValues.CPAcom.toFixed(2)}`}
                                 </p>
                               </div>
                               <div className="output-item">
                                 <p>CPA (Total: Cost + Commission)</p>
-                                <p
-                                  id="cpa-total-output"
-                                  className="roi-text-right"
-                                >
-                                  $589.93
+                                <p className="roi-text-right">
+                                  {`$${outputValues.CPAtotal.toFixed(2)}`}
                                 </p>
                               </div>
                             </div>
@@ -295,11 +370,10 @@ export default function RoiCalculator() {
                             >
                               <div className="output-item">
                                 <h4>Average Customer Sale Value</h4>
-                                <h4
-                                  id="avg-customer-output"
-                                  className="roi-text-right"
-                                >
-                                  $5,000
+                                <h4 className="roi-text-right">
+                                  {`$${prettyFormatNumber(
+                                    inputValues.averageCustomer,
+                                  )}`}
                                 </h4>
                               </div>
                             </div>
@@ -308,22 +382,18 @@ export default function RoiCalculator() {
                             <div className="output-holder mb-2">
                               <div className="output-item">
                                 <h4>ROI (Percentage)</h4>
-                                <h4
-                                  id="roi-percentage-output"
-                                  className="roi-text-right"
-                                >
-                                  5459.59%
+                                <h4 className="roi-text-right">
+                                  {`${outputValues.ROIpercentage.toFixed(2)}%`}
                                 </h4>
                               </div>
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>ROI (Total Sales)</h4>
-                                <h4
-                                  id="roi-total-output"
-                                  className="roi-text-right"
-                                >
-                                  $1,195,312.5
+                                <h4 className="roi-text-right">
+                                  {`${prettyFormatNumber(
+                                    Number(outputValues.ROItotal.toFixed(2)),
+                                  )}`}
                                 </h4>
                               </div>
                             </div>
