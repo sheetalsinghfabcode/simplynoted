@@ -396,11 +396,10 @@ export function MessageWriting({
     if (!mainMessageBox) {
       return;
     }
-    console.log('111111111');
     let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
     let lineHeight = window.getComputedStyle(mainMessageBox).lineHeight;
-    mainMessageBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
-    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
+    mainMessageBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
+    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
     // signOffTextBox.style.fontSize = mainMessageBox.style.fontSize;
     // signOffTextBox.style.lineHeight = mainMessageBox.style.lineHeight;
     setFontSize(mainMessageBox.style.fontSize);
@@ -411,9 +410,11 @@ export function MessageWriting({
     }
   }
   useEffect(() => {
-    console.log(fontFamilyName,"fontFamilyName");
     processInput();
   }, [name, fontFamilyName]);
+  useEffect(() => {
+    processInput2();
+  }, [name2, fontFamilyName]);
 
   async function processInput() {
     // console.log('processInput');
@@ -423,10 +424,13 @@ export function MessageWriting({
   }
 
   function resize_to_fit2() {
+    if (!signOffTextBox) {
+      return;
+    }
     let fontSize = window.getComputedStyle(signOffTextBox).fontSize;
     let lineHeight = window.getComputedStyle(signOffTextBox).lineHeight;
-    signOffTextBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
-    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
+    signOffTextBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
+    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
     setSignOffFontSize(signOffTextBox.style.fontSize);
     setSignOffLineHeight(signOffTextBox.style.lineHeight);
     if (signOffTextBox.clientHeight >= signOffBocContainer.clientHeight) {
@@ -675,7 +679,7 @@ export function MessageWriting({
   }
   async function onchnageOfRegardBox(data) {
     setName2(data);
-    processInput2();
+    // processInput2();
   }
   const ref = useRef(null);
   const ref1 = useRef(null);
