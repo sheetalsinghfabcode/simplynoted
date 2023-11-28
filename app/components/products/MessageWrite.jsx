@@ -392,13 +392,41 @@ export function MessageWriting({
       }
     }
   }
+  
+  useEffect(() => {
+    if(!mainMessageBox) return;
+    const resizeObserver = new ResizeObserver(processCustomMessageInput);
+    resizeObserver.observe(mainMessageBox);
 
-  function resize_to_fit() {
-    const isOverflowing = mainMessageBox.clientHeight >= messageBocContainer.clientHeight;
+    return () => resizeObserver.disconnect();
+  }, [mainMessageBox]);
+
+  useEffect(() => {
+    if(!signOffTextBox) return;
+    const resizeObserver = new ResizeObserver(processSignOffInput);
+    resizeObserver.observe(signOffTextBox);
+
+    return () => resizeObserver.disconnect();
+  }, [signOffTextBox]);
+
+ function processCustomMessageInput() {
+    mainMessageBox.style.fontSize = '50px'; 
+    mainMessageBox.style.lineHeight = '50px';
+    resize_to_fit(messageBocContainer, mainMessageBox, "customTextResizing");
+  }
+
+  function processSignOffInput() {
+    signOffTextBox.style.fontSize = '50px'; 
+    signOffTextBox.style.lineHeight = '50px';
+    resize_to_fit(signOffBocContainer, signOffTextBox, "signOffResizing");
+  }
+
+  function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
+    const isOverflowing = innerContainer.clientHeight >= outerContainer.clientHeight;
     console.log({isOverflowing});
-    if (!mainMessageBox || !isOverflowing) return;
+    if (!innerContainer || !outerContainer || !isOverflowing) return;
     
-    const heightDifference = mainMessageBox.clientHeight - messageBocContainer.clientHeight;
+    const heightDifference = innerContainer.clientHeight - outerContainer.clientHeight;
 
     let fontSizeDecrement = 1;
     let lineHeightDecrement = 1;
@@ -412,63 +440,19 @@ export function MessageWriting({
     }
 
 
-    let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
-    let lineHeight = window.getComputedStyle(mainMessageBox).lineHeight;
-    mainMessageBox.style.fontSize = parseFloat(fontSize) - fontSizeDecrement + 'px';
-    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - fontSizeDecrement + 'px';
-    // signOffTextBox.style.fontSize = mainMessageBox.style.fontSize;
-    // signOffTextBox.style.lineHeight = mainMessageBox.style.lineHeight;
-    setFontSize(mainMessageBox.style.fontSize);
-    setLineHeight(mainMessageBox.style.lineHeight);
-    console.log(mainMessageBox.clientHeight,messageBocContainer.clientHeight,"heights");
-    if(isOverflowing) resize_to_fit();
-  }
-
-  function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        func.apply(this, args);
-      }, delay);
-    };
-  }
-  
-  useEffect(() => {
-    if(!mainMessageBox) return;
-    const debouncedResizeToFit = debounce(processInput, 300);
-    const resizeObserver = new ResizeObserver(debouncedResizeToFit);
-    resizeObserver.observe(mainMessageBox);
-
-    return () => resizeObserver.disconnect();
-  }, [mainMessageBox]);
-
-  async function processInput() {
-    // console.log('processInput');
-    mainMessageBox.style.fontSize = '50px'; // Default font size
-    mainMessageBox.style.lineHeight = '50px';
-    resize_to_fit();
-  }
-
-  function resize_to_fit2() {
-    if (!signOffTextBox) {
-      return;
+    const fontSize = window.getComputedStyle(innerContainer).fontSize;
+    const lineHeight = window.getComputedStyle(innerContainer).lineHeight;
+    innerContainer.style.fontSize = parseFloat(fontSize) - fontSizeDecrement + 'px';
+    innerContainer.style.lineHeight = parseFloat(lineHeight) - lineHeightDecrement + 'px';
+    if (resizeSelection === "customTextResizing") {
+      setFontSize(innerContainer.style.fontSize);
+      setLineHeight(innerContainer.style.lineHeight);
+    } else if (resizeSelection === "signOffResizing") {
+      setSignOffFontSize(signOffTextBox.style.fontSize);
+      setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
-    let fontSize = window.getComputedStyle(signOffTextBox).fontSize;
-    let lineHeight = window.getComputedStyle(signOffTextBox).lineHeight;
-    signOffTextBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
-    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
-    setSignOffFontSize(signOffTextBox.style.fontSize);
-    setSignOffLineHeight(signOffTextBox.style.lineHeight);
-    if (signOffTextBox.clientHeight >= signOffBocContainer.clientHeight) {
-      resize_to_fit2();
-    }
-  }
-
-  async function processInput2() {
-    signOffTextBox.style.fontSize = '50px'; // Default font size
-    signOffTextBox.style.lineHeight = '50px';
-    resize_to_fit2();
+    console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
+    if(isOverflowing) resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
   const handleFileChange = (event) => {
