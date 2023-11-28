@@ -84,7 +84,7 @@ export default function CustomProducts() {
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
   const [errorVal, setErrorVal] = useState([]);
-  const [fontFamilyName, setFontFamily] = useState('');
+  const [fontFamilyName, setFontFamily] = useState('tarzan');
   const [metafields, setMetafields] = useState([]);
   const [customProductData, setCustomProductData] = useState('');
   const [imageShow, setImageShow] = useState(0);
