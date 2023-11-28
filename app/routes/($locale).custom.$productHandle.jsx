@@ -72,6 +72,10 @@ export default function CustomProducts() {
   let editFontFamily = datafornav.state?.data.fontFamily;
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length;
   let editFontSize = datafornav.state?.data.fontSizeMsg;
+  let editCustomFontFamily = datafornav.state?.data.customFontName
+  let editLineHeight = datafornav.state?.data.lineHeight
+  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight
+  let editSignOffFontSize = datafornav.state?.data.signOffFontSize
   const [show, setShow] = useState(
     showBulkOnEdit || parameterValue == 'Bulk' ? true : false,
   );
@@ -258,6 +262,7 @@ export default function CustomProducts() {
                   editFontFamily={editFontFamily}
                   setFontFamily={setFontFamily}
                   setCustomFontName={setCustomFontName}
+                  editCustomFontFamily={editCustomFontFamily}
                 />
               )}
             </div>
@@ -275,6 +280,7 @@ export default function CustomProducts() {
                 fontFamilyName={fontFamilyName}
                 metafields={metafields}
                 qrValue={qrValue}
+                editLineHeight={editLineHeight} editSignOffFontSize={editSignOffFontSize} editSignOffLineHeight={editSignOffLineHeight}
               />
             )}
           </Section>
