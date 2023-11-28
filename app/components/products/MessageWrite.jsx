@@ -1004,6 +1004,7 @@ const bySearch = (dataobj, searchData) => {
             data-gtm-form-interact-field-id="0"
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
+          {customerid &&
           <div className="flex justify-between mt-[1rem]">
             <div>
               <span
@@ -1022,6 +1023,7 @@ const bySearch = (dataobj, searchData) => {
               </span>
             </div>
           </div>
+          }
           <br />
           {checkCharCount && (
             <span className="text-[red] font-bold">
