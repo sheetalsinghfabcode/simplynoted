@@ -74,17 +74,7 @@ export default function AddressBook() {
         <DynamicTitle dynamicButton title={'Address Book'} />
         {!addressForm && !selectedAddress && (
           <div className="w-full">
-            <Instruction
-              isOpen={isModalOpen}
-              title="INSTRUCTIONS FOR BULK UPLOAD"
-              closeModal={closeModal}
-              instructions={[
-                'Download the bulk upload template (csv)',
-                'Complete a row for each address you wish to add',
-                'Upload your completed file in .csv format',
-              ]}
-              table={true}
-            />
+            
             <ContactTable
               customerID={customerID}
               openModal={openModal}

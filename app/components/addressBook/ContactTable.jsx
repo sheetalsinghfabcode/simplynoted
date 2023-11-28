@@ -8,6 +8,7 @@ import CircularLoader from '../CircularLoder';
 import DynamicButton from '../DynamicButton';
 import ErrorModal from '../modal/ErrorModal';
 import CustomCheckbox from '../CustomCheckbox';
+import Instruction from '../modal/Instruction';
 
 const ContactTable = ({
   customerID,
@@ -16,7 +17,6 @@ const ContactTable = ({
   setSelectedCheckboxes,
   setSelectedAddress,
   selectedCheckboxes,
-  openModal,
   setAddressForm,
   ProdcuctSide,
   continueBtn,
@@ -32,6 +32,7 @@ const ContactTable = ({
   const [updateLoader, setupdateLoader] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
   const [errorContent, serErrorContent] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
@@ -218,7 +219,9 @@ const ContactTable = ({
     },
     usePagination, // Use the pagination plugin
   );
-
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
   const allSelected =
     page.length > 0 &&
     page.every((row) => selectedCheckboxes.includes(row.original._id));
@@ -428,7 +431,9 @@ const ContactTable = ({
       }, 4000);
     }
   };
-
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       {errorModal ? (
@@ -683,6 +688,17 @@ const ContactTable = ({
             confirmText="Delete"
             cancelText="Cancel"
           />
+          <Instruction
+              isOpen={isModalOpen}
+              title="INSTRUCTIONS FOR BULK UPLOAD"
+              closeModal={closeModal}
+              instructions={[
+                'Download the bulk upload template (csv)',
+                'Complete a row for each address you wish to add',
+                'Upload your completed file in .csv format',
+              ]}
+              table={true}
+            />
         </div>
       )}
     </>

@@ -52,13 +52,10 @@ const StripeCardComp = ({setPaymentMethodId,AddCreditCard}) => {
       className="w-full max-w-[500px] mx-auto mt-[20px] "
     >
       <CardElement options={CARD_OPTIONS} className="m-5 " />
-      <DynamicButton
-        text="Update"
-        onClickFunction=""
-        className="bg-[#EF6E6E] text-[#fff] p-2 flex justify-center mx-auto w-full max-w-[240px] rounded mt-[10px] "
-        type="submit"
-      >
-      </DynamicButton>
+      <button
+          type="submit"
+          className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
+        >Add Card</button>
     </form>
   );
 };

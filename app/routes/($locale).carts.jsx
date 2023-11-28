@@ -151,6 +151,10 @@ export default function AddCartFunc() {
     setUpdateGift(!updateGift);
     localStorage.removeItem('mydata');
     setClearCartModal(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Make the scroll behavior smooth
+    });
   }
 
   function ConfirmDeleteOrder(index) {
@@ -712,7 +716,7 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className="max-w-[100%] mt-10">
                                   <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                    Shipping Methods
+                                  {item.shippingData?.node.title}
                                   </h3>
                                   <br />
                                   <br />
@@ -814,7 +818,7 @@ export default function AddCartFunc() {
                                 src={Del}
                                 className="w-[20px] h-[20px] m-auto cursor-pointer text-[white] mr-1"
                               />
-                              CLEAR SHOPING CART
+                              CLEAR SHOPPING CART
                             </button>
                           </div>
                         </div>
