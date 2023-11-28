@@ -21,6 +21,7 @@ let mainMessageBox,
   messageBocContainer,
   signOffBocContainer,
   customerid,
+  loadTempDataFilter,
   savedMsg;
 export function MessageWriting({
   show,
@@ -39,7 +40,6 @@ export function MessageWriting({
   editSignOffLineHeight,
   editSignOffFontSize,
 }) {
-  //   console.log(EditMess, 'EditMess');
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
   let ProdcuctSide = true;
@@ -82,20 +82,17 @@ export function MessageWriting({
   const [signOffLineHeight, setSignOffLineHeight] = useState(
     editSignOffLineHeight ? editSignOffLineHeight : '',
   );
+  const [searchData, setsearchData] = useState(null);
+const[stateForFilter,setStateForFilter] = useState(false)
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
   const remainSign = maxSignCount - name2.length;
-  // console.log(addresses, 'address');
-  // console.log(selectedCheckboxes, 'selectedCheckboxes');
-
   function gettingCheckBoxAddress() {
     const data = addresses.filter((item) =>
       selectedCheckboxes.includes(item._id),
     );
-    // console.log(data, 'gettingCheckBoxAddress');
     setFileData(data);
-    // console.log(fileData, '******fileData******');
   }
   useEffect(() => {
     gettingCheckBoxAddress();
@@ -122,7 +119,6 @@ export function MessageWriting({
   }
   function closeSelectAddressModal() {
     setModalForAddressBook(false);
-    // setSelectedCheckboxes([]);
   }
 
   function onCancelCSVUpload() {
@@ -200,7 +196,6 @@ export function MessageWriting({
       // console.log(name, 'namefield');
     }
   }
-  // console.log(fileData, '******+++++++******');
 
   function onSelectFromAddressBook() {
     // console.log(fileData);
@@ -325,16 +320,23 @@ export function MessageWriting({
         return (
           <div
             className={`flex overflow-hidden items-start h-[50px] w-[100%]  px-[2rem] m-2`}
-            style={{
-              fontFamily: metafields.header.fontType,
-              fontSize: metafields.header.fontSize,
-              textAlign: metafields.header.textAlign,
-              justifyContent: metafields.header.justifyContent,
-              flexDirection: metafields.header.flexDirection,
-              color: metafields.header.fontColor,
-            }}
           >
-            {metafields.header.data}
+            <span
+              className={`flex `}
+              style={{
+                fontFamily: metafields.footer.fontType,
+                fontSize: metafields.footer.fontSize,
+                textAlign: metafields.footer.textAlign,
+                justifyContent: metafields.footer.justifyContent,
+                flexDirection: metafields.footer.flexDirection,
+                color: metafields.footer.fontColor,
+                width: '100%',
+                maxWidth: qrValue ? '93%' : '100%',
+              }}
+            >
+              {' '}
+              {metafields.header.data}
+            </span>
           </div>
         );
       }
@@ -451,7 +453,7 @@ export function MessageWriting({
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
-    console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
+    // console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
     if(isOverflowing) resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
@@ -697,11 +699,13 @@ export function MessageWriting({
   const ref2 = useRef(null);
   const ref3 = useRef(null);
   const ref4 = useRef(null);
+  const ref5 = useRef(null);
   useEffect(() => {
     mainMessageBox = ref1.current;
     signOffTextBox = ref3.current;
     messageBocContainer = ref2.current;
     signOffBocContainer = ref.current;
+    loadTempDataFilter = ref5.current?.value
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
@@ -829,11 +833,39 @@ export function MessageWriting({
       const json = await res.json();
       setloadTempData(json.result);
       // setLoadTemModal(true)
+      console.log(json.result,")))))))))");
     } catch (error) {
       console.log(error, 'savedTemp');
     }
   }
+  const filteredList = (loadTempData, searchData) => {
+    console.log(searchData,"searchData");
+    return loadTempData
+        .filter(dataobj => bySearch(dataobj, searchData));
+
+};
+
+const bySearch = (dataobj, searchData) => {
+    // console.log(Object.values(dataobj),'+++++++++++++++');
+    if (searchData) {
+        return Object.values(dataobj).some(field =>
+            // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
+            field.toString().toLowerCase().includes(searchData.toLowerCase()))
+    } else return dataobj;
+
+};
+  function changeLoadTempHandler(e){
+    console.log(e.target.value);
+    console.log(ref5.current?.value,"ref5");
+    loadTempDataFilter = ref5.current?.value
+    setsearchData(e.target.value)
+  }
+  function setStateForFIlter(){
+    setsearchData(ref5.current?.value)
+  }
   function LoadTemplate() {
+  const [searchData, setsearchData] = useState(null);
+
     return (
       <>
         <div className=" w-[29rem] m-[2rem]">
@@ -842,15 +874,15 @@ export function MessageWriting({
               SELECT TEMPLATE
             </h1>
           </div>
-          {/* <div>
-        <input type="text" ref={ref4}/>
-      </div> */}
+          <div>
+        <input type="text" className='w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla' placeholder='search Template...' ref={ref5} onChange={(e)=>setsearchData(e.target.value)}/>
+      </div>
           <div className="flex justify-between">
             <span>Template Name</span>
             <span>Actions</span>
           </div>
           {loadTempData &&
-            loadTempData.map((item) => (
+            filteredList(loadTempData,searchData).map((item) => (
               <div className="border border-black-600 px-[10px] items-center w-full flex">
                 <div className="w-full">{item.templateName}</div>
                 <div className="w-full flex items-center gap-[11px] justify-end">
