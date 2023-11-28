@@ -342,8 +342,8 @@ export function MessageWriting({
   }
 
   function ShowFooterComp() {
-    console.log(qrValue, 'qrValu');
-    console.log(metafields, 'metafieldssssssssssss');
+    console.log({qrValue});
+    console.log({metafields});
 
     if (typeof metafields.footer.data == 'string') {
       if (
@@ -392,29 +392,56 @@ export function MessageWriting({
       }
     }
   }
+
   function resize_to_fit() {
-    if (!mainMessageBox) {
-      return;
+    const isOverflowing = mainMessageBox.clientHeight >= messageBocContainer.clientHeight;
+    console.log({isOverflowing});
+    if (!mainMessageBox || !isOverflowing) return;
+    
+    const heightDifference = mainMessageBox.clientHeight - messageBocContainer.clientHeight;
+
+    let fontSizeDecrement = 1;
+    let lineHeightDecrement = 1;
+
+    if (heightDifference > 1000) {
+      fontSizeDecrement = 7;
+      lineHeightDecrement = 7;
+    } else if (heightDifference > 500) {
+      fontSizeDecrement = 5;
+      lineHeightDecrement = 5;
     }
+
+
     let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
     let lineHeight = window.getComputedStyle(mainMessageBox).lineHeight;
-    mainMessageBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
-    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
+    mainMessageBox.style.fontSize = parseFloat(fontSize) - fontSizeDecrement + 'px';
+    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - fontSizeDecrement + 'px';
     // signOffTextBox.style.fontSize = mainMessageBox.style.fontSize;
     // signOffTextBox.style.lineHeight = mainMessageBox.style.lineHeight;
     setFontSize(mainMessageBox.style.fontSize);
     setLineHeight(mainMessageBox.style.lineHeight);
     console.log(mainMessageBox.clientHeight,messageBocContainer.clientHeight,"heights");
-    if (mainMessageBox.clientHeight >= messageBocContainer.clientHeight) {
-      resize_to_fit();
-    }
+    if(isOverflowing) resize_to_fit();
   }
+
+  function debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  }
+  
   useEffect(() => {
-    processInput();
-  }, [name, fontFamilyName]);
-  useEffect(() => {
-    processInput2();
-  }, [name2, fontFamilyName]);
+    if(!mainMessageBox) return;
+    const debouncedResizeToFit = debounce(processInput, 300);
+    const resizeObserver = new ResizeObserver(debouncedResizeToFit);
+    resizeObserver.observe(mainMessageBox);
+
+    return () => resizeObserver.disconnect();
+  }, [mainMessageBox]);
 
   async function processInput() {
     // console.log('processInput');
