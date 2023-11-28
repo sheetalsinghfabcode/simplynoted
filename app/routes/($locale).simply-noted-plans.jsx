@@ -1,16 +1,14 @@
 import {defer} from '@shopify/remix-oxygen';
-import {useLoaderData, Await} from '@remix-run/react';
+import {useLoaderData, useNavigate} from '@remix-run/react';
 import WalletTable from '../components/wallet/WalletTable';
 import {useState, useEffect} from 'react';
 import WalletPlan from '~/components/wallet/WalletPlan';
 import WalletPurchase from '../components/wallet/WalletPurchase';
-import {WalletPayment} from '~/components/WalletPayment';
 import Accordion from '~/components/wallet/Accordian';
-import Loader from '~/components/modal/Loader';
-import {useNavigate} from '@remix-run/react';
-import DynamicButton from '~/components/DynamicButton';
 import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
+
+import {useStateContext} from '~/context/StateContext';
 
 export async function loader({context}) {
   const StripeKey = context.env.STRIPE_KEY;
@@ -36,22 +34,31 @@ export default function SimplyNoted() {
   const [stripeCollection, setStripeCollection] = useState([]);
   const [walletPlan, setWalletPlan] = useState(false);
   const [walletPurcase, setWalletPurchase] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [amount, setAmount] = useState(0);
-  const [subscription, setSubscription] = useState(0);
+  // const [selectedPlan, setSelectedPlan] = useState(null);
+  // const [amount, setAmount] = useState(0);
+  // const [subscription, setSubscription] = useState(0);
   const [walletPayment, setWalletPayment] = useState(false);
   const [finalPrice, setFinalPrice] = useState(null);
   const [loader, setloader] = useState(true);
-  const [packageProduct,setPackageProduct] = useState("")
-  const [subscriptionProduct,setSubscriptionProduct] = useState("")
-  const [subscriptionPriceId,setSubscriptionPriceId] = useState("")
-  const [subscriptionTitle, setSubscriptionTitle] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const storedSubscriptionTitle = localStorage.getItem('subscriptionName');
-      return storedSubscriptionTitle ? storedSubscriptionTitle : 'Free';
-    }
-    return 'Free'; // Fallback if localStorage is not available
-  });
+ 
+  const {
+    selectedPlan,
+    setSelectedPlan,
+    amount,
+    setAmount,
+    subscription,
+    setSubscription,
+    packageProduct,
+    setPackageProduct,
+    subscriptionProduct,
+    setSubscriptionProduct,
+    subscriptionPriceId,
+    setSubscriptionPriceId,
+    subscriptionTitle,
+    setSubscriptionTitle
+
+  } = useStateContext();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -83,22 +90,16 @@ export default function SimplyNoted() {
     return () => {};
   }, []);
 
-
   return (
-    <div className='w-full relative max-w-[1440px] mx-auto px-[16px]'>
-       {loader && (
-          <div className="absolute top-[20%] z-[50] left-[50%]">
-            <CircularLoader
-            title="Loading Plans"
-            color="#ef6e6e" />
-          </div>
-        )}
-    
+    <div className="w-full relative max-w-[1440px] mx-auto px-[16px]">
+      {loader && (
+        <div className="absolute top-[20%] z-[50] left-[50%]">
+          <CircularLoader title="Loading Plans" color="#ef6e6e" />
+        </div>
+      )}
+
       {!walletPlan && !walletPurcase && !walletPayment && (
-        <DynamicTitle
-          dynamicButton
-          title={'Simply Noted Plans'}
-        />
+        <DynamicTitle dynamicButton title={'Simply Noted Plans'} />
       )}
       <div className={`${loader && 'opacity-40'}`}>
         {!walletPlan && !walletPurcase && !walletPayment && (
@@ -124,7 +125,6 @@ export default function SimplyNoted() {
             setSubscriptionProduct={setSubscriptionProduct}
             setSubscriptionTitle={setSubscriptionTitle}
             setSubscriptionPriceId={setSubscriptionPriceId}
-            
           />
         )}
         {walletPurcase && (

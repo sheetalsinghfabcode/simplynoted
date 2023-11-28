@@ -3,23 +3,29 @@ import DynamicButton from '~/components/DynamicButton';
 import WalletAccordion from '~/components/WalletAccordion';
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
 let firstName, lastName, email, customerID;
-import {Link, useNavigate} from '@remix-run/react';
-import Loader from '~/components/modal/Loader';
+import {useNavigate} from '@remix-run/react';
 import StripeModal from '~/components/modal/StripeModal';
 import {useLoaderData} from '@remix-run/react';
 import {defer} from '@shopify/remix-oxygen';
 import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
+import PackageModal from '~/components/wallet/PackageModal';
+import PurchaseModal from '~/components/wallet/PurchaseModal';
+import Accordion from '~/components/wallet/Accordian';
 
 export async function loader({context, request}) {
   const StripeKey = context.env.STRIPE_KEY;
+  const WalletData = await context.storefront.query(Wallet, {
+    variants: {},
+  });
 
   return defer({
     StripeKey,
+    WalletData,
   });
 }
 const ManageSubscription = () => {
-  const {StripeKey} = useLoaderData();
+  const {StripeKey, WalletData} = useLoaderData();
   const [firstNameChar, setFirstNameChar] = useState('');
   const [lastNameChar, setLastNameChar] = useState('');
   const [stripeCollection, setStripeCollection] = useState([]);
@@ -35,6 +41,9 @@ const ManageSubscription = () => {
   const [forUpdateData, setForUpdateData] = useState(false);
   const [defaultCard, setDefaultCard] = useState(false);
   const [updateCard, setUpdateCard] = useState(false);
+  const [packageModal, setPackageModal] = useState(false);
+  const [purchaseModal, setPurchaseModal] = useState(false);
+  const [showAccordion,setShowAccordion] = useState(false)
 
   const [loader, setLoader] = useState({
     paymentHistory: false,
@@ -50,7 +59,6 @@ const ManageSubscription = () => {
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -117,6 +125,9 @@ const ManageSubscription = () => {
           ...prevLoader,
           stopSubscription: false,
         }));
+        localStorage.removeItem('selectedPlan');
+        localStorage.removeItem('subscriptionName');
+        localStorage.removeItem('amount');
         setCancelSubscription(false);
       })
       .catch((error) => {
@@ -316,6 +327,23 @@ const ManageSubscription = () => {
 
   let formattedDateString;
 
+  const getSubscriptionType = (stripeCollection) => {
+    if (
+      stripeCollection &&
+      stripeCollection.stripe?.subscriptionStatus !== 'canceled'
+    ) {
+      const subscription = stripeCollection.stripe?.subscription || 'Free';
+      if (subscription === 'Team') {
+        return 'team';
+      } else if (subscription === 'Business') {
+        return 'business';
+      }
+    }
+    return 'Free';
+  };
+
+  let subscriptionTitle = getSubscriptionType(stripeCollection);
+
   function formatDateString(inputDateString) {
     const options = {
       weekday: 'short',
@@ -350,8 +378,46 @@ const ManageSubscription = () => {
     }
   }
 
+  const filteredWalletData = WalletData.collection.products.edges.filter(
+    (product) => {
+      return (
+        product.node.title.toLowerCase() === subscriptionTitle?.toLowerCase()
+      );
+    },
+  );
+
   return (
     <>
+      <PackageModal
+        show={packageModal}
+        onConfirm={() => {
+          setPackageModal(false);
+          setPurchaseModal(true)
+        }}
+        setPurchaseModal={setPurchaseModal}
+        onCancel={() => setPackageModal(false)}
+        filteredWalletData={filteredWalletData}
+        stripeCollection={stripeCollection}
+        confirmText="Add to cart"
+      />
+      <PurchaseModal
+        show={purchaseModal}
+        onCancel={() => {
+          setPurchaseModal(false);
+          setPackageModal(true);
+          setShowAccordion(true)
+        }}
+        filteredWalletData={filteredWalletData}
+        stripeCollection={stripeCollection}
+        cancelText="Prev"
+        confirmText="Contine To Checkout"
+      />
+      {showAccordion &&
+      
+      <Accordion
+      />
+}
+
       <ConfirmationModal
         show={deleteModal}
         onConfirm={handleDeleteSelected}
@@ -575,7 +641,7 @@ const ManageSubscription = () => {
                         Update
                       </span>
                       <DynamicButton
-                        onClickFunction={() => navigate('/simply-noted-plans')}
+                        onClickFunction={() => setPackageModal(true)}
                         text={
                           stripeCollection.stripe?.balance !== 0 &&
                           !stripeCollection.error
@@ -718,3 +784,57 @@ const ManageSubscription = () => {
 };
 
 export default ManageSubscription;
+
+const Wallet = `#graphql
+  query
+  {
+    collection(id: "gid://shopify/Collection/271625027689"){
+      title
+      products(first:6){
+        edges{
+          node{
+            id
+            title
+            description
+            metafields(identifiers:[
+               {namespace:"custom", key: "product_title"}
+                    {namespace:"custom", key: "strip_year_link"}
+                    {namespace:"custom", key: "pay_as_you_go"}
+                    {namespace:"custom", key: "pricing"}
+                    {namespace:"custom", key: "pricing_yearly"}
+                    {namespace:"custom", key: "subscription_plan_price"}
+                    {namespace:"custom", key: "subscription_plan_price_yearly"}
+                    {namespace:"custom", key: "strip_link"}
+                    {namespace:"custom", key: "subscription_plan_price_monthly"}
+              
+            ]){
+              value
+              key
+            }
+            variants(first:10){
+              edges{
+                node{
+                  id
+                  metafields(identifiers:[
+                    {namespace: "custom", key: "variant_title"},
+                    {namespace: "custom", key: "card_amount"},
+                    {namespace: "custom", key: "description"},
+                   ]){
+                     value
+                     key
+                   }
+                  title
+                  price
+                  {
+                    amount
+                  }
+                }
+              }
+            }
+         
+            
+          }
+        }
+      }
+    }
+  }`;

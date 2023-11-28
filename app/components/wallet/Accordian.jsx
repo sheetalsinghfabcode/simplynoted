@@ -240,6 +240,8 @@ const Accordion = ({
       })
       .then((data) => {
         localStorage.setItem('packageDiscount', JSON.stringify(discount));
+        localStorage.setItem('selectedPlan', selectedPlan)
+        localStorage.setItem('amount', amount);
         // Handle the response data here
         console.log('Success:', data);
         if (data) {

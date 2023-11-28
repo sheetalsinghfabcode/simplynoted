@@ -102,14 +102,22 @@ const ContactTable = ({
       });
     }
   };
-  
+
+  useEffect(() => {
+    setupdateLoader(true);
+    if (filteredAddresses && filteredAddresses.length > 0) {
+      setTimeout(() => {
+        setupdateLoader(false);
+      },[2000]);
+    }
+  }, []);
 
   data = useMemo(
     () => filterAddressesByType(),
     [selectedType, filteredAddresses],
   );
 
-  console.log("filteredAddresses",filteredAddresses)
+  console.log('filteredAddresses', filteredAddresses);
 
   const columns = React.useMemo(
     () => [
@@ -296,7 +304,6 @@ const ContactTable = ({
   };
 
   const uploadDataToAPI = async (data) => {
-    setupdateLoader(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -336,7 +343,6 @@ const ContactTable = ({
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
-        setupdateLoader(false);
         'Successful response data:', responseData.result;
       } else {
         throw new Error('Network response was not ok');
@@ -403,13 +409,6 @@ const ContactTable = ({
       }, [4000]);
     }
   };
-
-  useEffect(() => {
-    setupdateLoader(true);
-    setTimeout(() => {
-      setupdateLoader(false);
-    }, [2000]);
-  }, []);
 
   return (
     <>
@@ -599,11 +598,7 @@ const ContactTable = ({
                 </div>
               )}
 
-              {page.length === 0 && !updateLoader && (
-                <div className="text-center text-[24px] font-bold mt-[20px] text-[#001a5f]">
-                  No Address Found
-                </div>
-              )}
+          
               {page && page.length > 0 && !updateLoader && (
                 <div className="pagination">
                   <div>
