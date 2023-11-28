@@ -14,6 +14,21 @@ export function StateContextProvider({children}) {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isAccountLoader,setIsAccountLoader] = useState(false)
   const [subscription, setSubscription] = useState(0);
+  const [fullName,setFullName] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedFullName = localStorage.getItem('SNFullName');
+      return storedFullName ? storedFullName : "";
+    }
+    return null; // Fallback if localStorage is not available
+  });
+  const [userEmail,setUserEmail] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedUserEmail = localStorage.getItem('SnEmail');
+      return storedUserEmail ? storedUserEmail : "";
+    }
+    return null; // Fallback if localStorage is not available
+  });
+
   const [selectedPlan, setSelectedPlan] =  useState(() => {
     if (typeof window !== 'undefined') {
       const storedSelectedPlan = localStorage.getItem('selectedPlan');
@@ -96,8 +111,11 @@ export function StateContextProvider({children}) {
         subscriptionPriceId,
         setSubscriptionPriceId,
         subscriptionTitle,
-        setSubscriptionTitle
-
+        setSubscriptionTitle,
+        fullName,
+        setFullName,
+        userEmail,
+        setUserEmail
       }}
     >
       {children}

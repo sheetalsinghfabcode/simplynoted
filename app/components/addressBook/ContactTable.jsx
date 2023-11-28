@@ -108,7 +108,7 @@ const ContactTable = ({
     if (filteredAddresses && filteredAddresses.length > 0) {
       setTimeout(() => {
         setupdateLoader(false);
-      },[2000]);
+      }, [2000]);
     }
   }, []);
 
@@ -116,8 +116,6 @@ const ContactTable = ({
     () => filterAddressesByType(),
     [selectedType, filteredAddresses],
   );
-
-  console.log('filteredAddresses', filteredAddresses);
 
   const columns = React.useMemo(
     () => [
@@ -304,6 +302,7 @@ const ContactTable = ({
   };
 
   const uploadDataToAPI = async (data) => {
+    setLoader(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -343,11 +342,19 @@ const ContactTable = ({
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
+        setLoader(false);
+
         'Successful response data:', responseData.result;
       } else {
+        setSelectedFile(null);
+        setLoader(false);
+
         throw new Error('Network response was not ok');
       }
     } catch (error) {
+      setSelectedFile(null);
+      setLoader(false);
+
       console.log('Error uploading data:', error);
       throw error;
     }
@@ -368,13 +375,24 @@ const ContactTable = ({
       'Postal Code',
       'Email',
     ];
+
     const errors = [];
 
     const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
-    for (let i = 0; i < fileData.length; i++) {
-      const data = fileData[i];
+    const cleanedData = fileData.map((entry) => {
+      const cleanedEntry = {};
+      Object.keys(entry).forEach((key) => {
+        const cleanedKey = key.replace(/"/g, ''); // Remove double quotes from keys
+        const cleanedValue = entry[key].replace(/"/g, ''); // Remove double quotes from values
+        cleanedEntry[cleanedKey] = cleanedValue;
+      });
+      return cleanedEntry;
+    });
+
+    for (let i = 0; i < cleanedData.length; i++) {
+      const data = cleanedData[i];
       const missingFields = [];
 
       for (const field of requiredFields) {
@@ -386,7 +404,7 @@ const ContactTable = ({
           }
         } else if (field === 'Email') {
           if (!emailPattern.test(data[field])) {
-            missingFields.push(`${field} is not a valid `);
+            missingFields.push(`${field} is not a valid email`);
           }
         }
       }
@@ -403,10 +421,11 @@ const ContactTable = ({
     if (errors.length > 0) {
       serErrorContent(errors);
       setErrorModal(true);
+      setSelectedFile(null);
       setTimeout(() => {
         setErrorModal(false);
         serErrorContent([]);
-      }, [4000]);
+      }, 4000);
     }
   };
 
@@ -562,7 +581,7 @@ const ContactTable = ({
                     </tr>
                   ))}
                 </thead>
-                {!updateLoader && (
+                {!updateLoader && !loader && (
                   <tbody {...getTableBodyProps()}>
                     {page.map((row) => {
                       prepareRow(row);
@@ -597,9 +616,16 @@ const ContactTable = ({
                   />
                 </div>
               )}
+              {loader && (
+                <div className="flex justify-center items-center mt-[24px]">
+                  <CircularLoader
+                    title="Updaing Address Book"
+                    color="#ef6e6e"
+                  />
+                </div>
+              )}
 
-          
-              {page && page.length > 0 && !updateLoader && (
+              {page && page.length > 0 && !updateLoader && !loader && (
                 <div className="pagination">
                   <div>
                     <button

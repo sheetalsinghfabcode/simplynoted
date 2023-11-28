@@ -34,8 +34,8 @@ const Accordion = ({
 
   let customerid, fullName, userEmail;
 
-  let productId = packageProduct.replace(/[^0-9]/g, '');
-  let variantId = subscriptionProduct.replace(/[^0-9]/g, '');
+  let productId = packageProduct?.replace(/[^0-9]/g, '');
+  let variantId = subscriptionProduct?.replace(/[^0-9]/g, '');
 
   const toggleBilling = () => {
     setIsBillingOpen(!isBillingOpen);
@@ -165,7 +165,7 @@ const Accordion = ({
     const cardsMatch = str.match(cardsRegex);
     let cards = null;
     if (cardsMatch) {
-      cards = parseInt(cardsMatch[1].replace(/,/g, ''), 10);
+      cards = parseInt(cardsMatch[1]?.replace(/,/g, ''), 10);
     }
 
     // Convert discount and cards to strings
