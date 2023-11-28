@@ -425,8 +425,8 @@ export function MessageWriting({
   function resize_to_fit2() {
     let fontSize = window.getComputedStyle(signOffTextBox).fontSize;
     let lineHeight = window.getComputedStyle(signOffTextBox).lineHeight;
-    signOffTextBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
-    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
+    signOffTextBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
+    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
     setSignOffFontSize(signOffTextBox.style.fontSize);
     setSignOffLineHeight(signOffTextBox.style.lineHeight);
     if (signOffTextBox.clientHeight >= signOffBocContainer.clientHeight) {
@@ -639,6 +639,7 @@ export function MessageWriting({
   }
   async function onInsetClick() {
     mainMessageBox.style.fontSize = '20px';
+    mainMessageBox.style.lineHeight = '20px';
 
     setName(aiText);
     setIsOpen(false);
