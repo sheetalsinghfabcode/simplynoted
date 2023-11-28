@@ -85,7 +85,7 @@ const CanvasDesign = () => {
           <DynamicButton
             text="TUTORIALS"
             className="btn2 w-[85%] mt-5"
-            onClickFunction={() => navigate('/blogs/news')}
+            onClickFunction={() => navigate('/blogs')}
           />
         </div>
 
