@@ -11,11 +11,11 @@ import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
 import {useLocation} from '@remix-run/react';
-import { useStateContext } from '../../context/StateContext';
+import {useStateContext} from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
-import TickImg from '../../../assets/Image/check-mark.png'
-import Del from '../../../assets/Image/delete.png'
+import TickImg from '../../../assets/Image/check-mark.png';
+import Del from '../../../assets/Image/delete.png';
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -37,11 +37,11 @@ export function MessageWriting({
   qrValue,
   editLineHeight,
   editSignOffLineHeight,
-  editSignOffFontSize
+  editSignOffFontSize,
 }) {
   //   console.log(EditMess, 'EditMess');
- const {setAddressForm,addressForm,loadAddress,addresses,
-    setAddresses} =  useStateContext()
+  const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
+    useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -60,7 +60,7 @@ export function MessageWriting({
   const [nonusAddress, setnonUsAddress] = useState(null);
   const [instructionModal, setInstructionModal] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [fontSize, setFontSize] = useState(editFontSize?editFontSize:'');
+  const [fontSize, setFontSize] = useState(editFontSize ? editFontSize : '');
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
@@ -69,13 +69,19 @@ export function MessageWriting({
   const [addNewTem, setAddNewTem] = useState(false);
   const [loadTemModal, setLoadTemModal] = useState(false);
   const [tempVal, setTempVal] = useState('');
-  const [loadTempData,setloadTempData] = useState([])
+  const [loadTempData, setloadTempData] = useState([]);
   const [bulkFileCount, setBulkFileCount] = useState(0);
-  const [errorTemplate,setErrorTemplate] = useState(false)
-  const [onDelTemp,setOnDelTemp] = useState(false)
-  const [lineHeight,setLineHeight] = useState(editLineHeight?editLineHeight:'')
-  const [signOffFontSize,setSignOffFontSize] = useState(editSignOffFontSize?editSignOffFontSize:'')
-  const [signOffLineHeight,setSignOffLineHeight] = useState(editSignOffLineHeight?editSignOffLineHeight:'')
+  const [errorTemplate, setErrorTemplate] = useState(false);
+  const [onDelTemp, setOnDelTemp] = useState(false);
+  const [lineHeight, setLineHeight] = useState(
+    editLineHeight ? editLineHeight : '',
+  );
+  const [signOffFontSize, setSignOffFontSize] = useState(
+    editSignOffFontSize ? editSignOffFontSize : '',
+  );
+  const [signOffLineHeight, setSignOffLineHeight] = useState(
+    editSignOffLineHeight ? editSignOffLineHeight : '',
+  );
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -162,9 +168,11 @@ export function MessageWriting({
           nonUsCount: nonusAddress,
           bulkCsvData: fileData,
           fontSize: fontSize,
-          lineHeight:lineHeight,
-          signOffFontSize: fontSize > signOffFontSize ? signOffFontSize : fontSize,
-          signOffLineHeight: lineHeight > signOffLineHeight ?signOffLineHeight : lineHeight
+          lineHeight: lineHeight,
+          signOffFontSize:
+            fontSize > signOffFontSize ? signOffFontSize : fontSize,
+          signOffLineHeight:
+            lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
         };
       } else {
         reqField = {
@@ -176,9 +184,11 @@ export function MessageWriting({
           nonUsCount: nonusAddress,
           bulkCsvData: fileData ? fileData : null,
           fontSize: fontSize,
-          lineHeight:lineHeight,
-          signOffFontSize: fontSize > signOffFontSize ? signOffFontSize : fontSize,
-          signOffLineHeight: lineHeight > signOffLineHeight ?signOffLineHeight : lineHeight
+          lineHeight: lineHeight,
+          signOffFontSize:
+            fontSize > signOffFontSize ? signOffFontSize : fontSize,
+          signOffLineHeight:
+            lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
         };
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
@@ -240,7 +250,7 @@ export function MessageWriting({
           nonUsCount: nonUsAdd,
           bulkCsvData: fileData,
           fontSize: fontSize,
-          lineHeight:lineHeight
+          lineHeight: lineHeight,
         };
       } else {
         alert("you haven't added Address");
@@ -314,14 +324,14 @@ export function MessageWriting({
       } else {
         return (
           <div
-            className={`flex overflow-hidden items-start h-[50px] w-[100%]  px-[2rem]`}
+            className={`flex overflow-hidden items-start h-[50px] w-[100%]  px-[2rem] m-2`}
             style={{
               fontFamily: metafields.header.fontType,
               fontSize: metafields.header.fontSize,
               textAlign: metafields.header.textAlign,
               justifyContent: metafields.header.justifyContent,
               flexDirection: metafields.header.flexDirection,
-              color:metafields.header.fontColor
+              color: metafields.header.fontColor,
             }}
           >
             {metafields.header.data}
@@ -333,7 +343,7 @@ export function MessageWriting({
 
   function ShowFooterComp() {
     console.log(qrValue, 'qrValu');
-    console.log(metafields,"metafieldssssssssssss");
+    console.log(metafields, 'metafieldssssssssssss');
 
     if (typeof metafields.footer.data == 'string') {
       if (
@@ -361,10 +371,9 @@ export function MessageWriting({
                 textAlign: metafields.footer.textAlign,
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
-                color:metafields.footer.fontColor,
+                color: metafields.footer.fontColor,
                 width: '100%',
                 maxWidth: qrValue ? '93%' : '100%',
-                
               }}
             >
               {' '}
@@ -384,18 +393,27 @@ export function MessageWriting({
     }
   }
   function resize_to_fit() {
+    if (!mainMessageBox) {
+      return;
+    }
+    console.log('111111111');
     let fontSize = window.getComputedStyle(mainMessageBox).fontSize;
     let lineHeight = window.getComputedStyle(mainMessageBox).lineHeight;
-    mainMessageBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
-    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
+    mainMessageBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
+    mainMessageBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
     // signOffTextBox.style.fontSize = mainMessageBox.style.fontSize;
     // signOffTextBox.style.lineHeight = mainMessageBox.style.lineHeight;
     setFontSize(mainMessageBox.style.fontSize);
-    setLineHeight(mainMessageBox.style.lineHeight)
+    setLineHeight(mainMessageBox.style.lineHeight);
+    console.log(mainMessageBox.clientHeight,messageBocContainer.clientHeight,"heights");
     if (mainMessageBox.clientHeight >= messageBocContainer.clientHeight) {
       resize_to_fit();
     }
   }
+  useEffect(() => {
+    console.log(fontFamilyName,"fontFamilyName");
+    processInput();
+  }, [name, fontFamilyName]);
 
   async function processInput() {
     // console.log('processInput');
@@ -407,10 +425,10 @@ export function MessageWriting({
   function resize_to_fit2() {
     let fontSize = window.getComputedStyle(signOffTextBox).fontSize;
     let lineHeight = window.getComputedStyle(signOffTextBox).lineHeight;
-    signOffTextBox.style.fontSize = parseFloat(fontSize) - 3 + 'px';
-    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 3 + 'px';
-    setSignOffFontSize(signOffTextBox.style.fontSize)
-    setSignOffLineHeight(signOffTextBox.style.lineHeight)
+    signOffTextBox.style.fontSize = parseFloat(fontSize) - 1 + 'px';
+    signOffTextBox.style.lineHeight = parseFloat(lineHeight) - 1 + 'px';
+    setSignOffFontSize(signOffTextBox.style.fontSize);
+    setSignOffLineHeight(signOffTextBox.style.lineHeight);
     if (signOffTextBox.clientHeight >= signOffBocContainer.clientHeight) {
       resize_to_fit2();
     }
@@ -621,6 +639,7 @@ export function MessageWriting({
   }
   async function onInsetClick() {
     mainMessageBox.style.fontSize = '20px';
+    mainMessageBox.style.lineHeight = '20px';
 
     setName(aiText);
     setIsOpen(false);
@@ -652,7 +671,7 @@ export function MessageWriting({
   }
   async function onChnageNameVal(nameData) {
     setName(nameData);
-    processInput();
+    // processInput();
   }
   async function onchnageOfRegardBox(data) {
     setName2(data);
@@ -671,11 +690,27 @@ export function MessageWriting({
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
-    setName2(savedMsg?savedMsg.signOffText:editEndMess ? editEndMess : '')
-    setFontSize(savedMsg? savedMsg.fontSize:editFontSize?editFontSize:'')
-    setLineHeight(savedMsg? savedMsg.lineHeight:editLineHeight?editLineHeight:'')
-    setSignOffFontSize(savedMsg ? savedMsg.signOffFontSize:editSignOffFontSize?editSignOffFontSize:'')
-    setSignOffLineHeight(savedMsg ? savedMsg.signOffLineHeight:editSignOffLineHeight?editSignOffLineHeight:'')
+    setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
+    setFontSize(
+      savedMsg ? savedMsg.fontSize : editFontSize ? editFontSize : '',
+    );
+    setLineHeight(
+      savedMsg ? savedMsg.lineHeight : editLineHeight ? editLineHeight : '',
+    );
+    setSignOffFontSize(
+      savedMsg
+        ? savedMsg.signOffFontSize
+        : editSignOffFontSize
+        ? editSignOffFontSize
+        : '',
+    );
+    setSignOffLineHeight(
+      savedMsg
+        ? savedMsg.signOffLineHeight
+        : editSignOffLineHeight
+        ? editSignOffLineHeight
+        : '',
+    );
     setTempVal(ref4.current?.value);
     console.log(ref4.current, 'OOOOOOOO');
 
@@ -713,32 +748,29 @@ export function MessageWriting({
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
 
-  
   async function addNewTemplateFunc() {
-    
     try {
-      const formData = new FormData()
-      formData.append("templateName",ref4.current?.value)
-      formData.append("customMessage",name)
+      const formData = new FormData();
+      formData.append('templateName', ref4.current?.value);
+      formData.append('customMessage', name);
       if (!customerid) {
         setLoginModal(true);
-      }
-      else if(name.length === 0 || ref4.current?.value.length === 0){
+      } else if (name.length === 0 || ref4.current?.value.length === 0) {
         setErrorTemplate(true);
-      } else{
-      const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
-        {
-          method: 'POST',
-          body: formData,
-        },
-      );
-      const json = await res.json();
-      if (json) {
-        setAddNewTem(false);
+      } else {
+        const res = await fetch(
+          `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+          {
+            method: 'POST',
+            body: formData,
+          },
+        );
+        const json = await res.json();
+        if (json) {
+          setAddNewTem(false);
+        }
+        console.log(json, 'addNewTemplateFunc');
       }
-      console.log(json, 'addNewTemplateFunc');
-    }
     } catch (error) {
       console.log(error, 'add new Template');
     }
@@ -754,7 +786,11 @@ export function MessageWriting({
         <div>
           <input type="text" ref={ref4} value={tempVal} />
         </div>
-       {errorTemplate &&  <span className='text-[red] font-karla'>Please Check the Value is empty</span>}
+        {errorTemplate && (
+          <span className="text-[red] font-karla">
+            Please Check the Value is empty
+          </span>
+        )}
         <div>
           <DynamicButton
             className="bg-[#1b5299] text-[14px] mb-6 w-[9rem] mt-4"
@@ -770,70 +806,83 @@ export function MessageWriting({
       </div>
     );
   }
-  async function SavedTemp(){
+  async function SavedTemp() {
     try {
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`)
-      const json = await res.json()
-      setloadTempData(json.result)
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+      );
+      const json = await res.json();
+      setloadTempData(json.result);
       // setLoadTemModal(true)
     } catch (error) {
-      console.log(error,"savedTemp");
+      console.log(error, 'savedTemp');
     }
   }
-  function LoadTemplate(){    
+  function LoadTemplate() {
     return (
       <>
-      <div className=" w-[29rem] m-[2rem]">
-      <div>
-        <h1 className="text-[28px] text-[#001a5f] font-karla">
-          SELECT TEMPLATE
-        </h1>
-      </div>
-      {/* <div>
+        <div className=" w-[29rem] m-[2rem]">
+          <div>
+            <h1 className="text-[28px] text-[#001a5f] font-karla">
+              SELECT TEMPLATE
+            </h1>
+          </div>
+          {/* <div>
         <input type="text" ref={ref4}/>
       </div> */}
-      <div className='flex justify-between'>
-        <span>Template Name</span>
-        <span>Actions</span>
-      </div>
-      {loadTempData && loadTempData.map((item)=>
-      <div className='border border-black-600 px-[10px] items-center w-full flex'>
-        <div className='w-full'>{item.templateName}</div>
-        <div className='w-full flex items-center gap-[11px] justify-end'>
-          <img src={TickImg} className='w-[8%] h-[5%] cursor-pointer'onClick={()=>setLoadedTemVal(item.customMessage)}/>
-          <img src={Del} className='w-[8%] h-[5%] cursor-pointer' onClick={()=>deleteTemp(item._id)}/>
+          <div className="flex justify-between">
+            <span>Template Name</span>
+            <span>Actions</span>
+          </div>
+          {loadTempData &&
+            loadTempData.map((item) => (
+              <div className="border border-black-600 px-[10px] items-center w-full flex">
+                <div className="w-full">{item.templateName}</div>
+                <div className="w-full flex items-center gap-[11px] justify-end">
+                  <img
+                    src={TickImg}
+                    className="w-[8%] h-[5%] cursor-pointer"
+                    onClick={() => setLoadedTemVal(item.customMessage)}
+                  />
+                  <img
+                    src={Del}
+                    className="w-[8%] h-[5%] cursor-pointer"
+                    onClick={() => deleteTemp(item._id)}
+                  />
+                </div>
+              </div>
+            ))}
+          <div></div>
         </div>
-      </div>
-      )}
-      <div>
-      </div>
-    </div>
       </>
     );
   }
-  function setLoadedTemVal(val){
-    setName(val)
-    setLoadTemModal(false)
+  function setLoadedTemVal(val) {
+    setName(val);
+    setLoadTemModal(false);
   }
 
-  async function deleteTemp(val){
+  async function deleteTemp(val) {
     try {
-      const formData = new FormData()
-      formData.append("templateId", val)
-      const res = await fetch(`https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,{
-        method: "POST",
-        body:formData
-      })
-      const json = await res.json()
-      console.log(json,"delte Temp response");
-      setOnDelTemp(!onDelTemp)
+      const formData = new FormData();
+      formData.append('templateId', val);
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
+      const json = await res.json();
+      console.log(json, 'delte Temp response');
+      setOnDelTemp(!onDelTemp);
     } catch (error) {
-      console.log(error,"delete Template");
+      console.log(error, 'delete Template');
     }
   }
-useEffect(()=>{
-  SavedTemp()
-},[onDelTemp])
+  useEffect(() => {
+    SavedTemp();
+  }, [onDelTemp]);
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -857,7 +906,7 @@ useEffect(()=>{
                   ? editFontFamily
                   : 'tarzan',
                 fontSize: fontSize ? fontSize : '50px',
-                lineHeight:lineHeight?lineHeight:'50px'
+                lineHeight: lineHeight ? lineHeight : '50px',
               }}
             >
               {name ? name : 'Enter your custom message here...'}
@@ -877,8 +926,18 @@ useEffect(()=>{
                   : editFontFamily
                   ? editFontFamily
                   : 'tarzan',
-                fontSize: fontSize > signOffFontSize ? signOffFontSize :fontSize?fontSize: '50px',
-                lineHeight:lineHeight > signOffLineHeight?signOffLineHeight:lineHeight ? lineHeight:'50px'
+                fontSize:
+                  fontSize > signOffFontSize
+                    ? signOffFontSize
+                    : fontSize
+                    ? fontSize
+                    : '50px',
+                lineHeight:
+                  lineHeight > signOffLineHeight
+                    ? signOffLineHeight
+                    : lineHeight
+                    ? lineHeight
+                    : '50px',
               }}
             >
               {name2}
@@ -908,8 +967,10 @@ useEffect(()=>{
               </span>
             </div>
             <div>
-              <span className="font-bold text-[#1b5299] cursor-pointer"
-              onClick={() =>SavedTemp() && setLoadTemModal(true)}>
+              <span
+                className="font-bold text-[#1b5299] cursor-pointer"
+                onClick={() => SavedTemp() && setLoadTemModal(true)}
+              >
                 Load Saved Message Template
               </span>
             </div>
