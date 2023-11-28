@@ -5,12 +5,12 @@ const Faq = () => {
   return (
     <>
       <div className="mt-10">
-        <h1 className="text-[#001a5f] text-center text-5xl font-karla leading-10 font-medium pb-5 tracking-wide mx-2">
+        <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla leading-10 font-medium pb-5 tracking-wide mx-2">
           Simply Noted FAQs
         </h1>
         <div className="flex justify-center">
           <img
-            className="md:w-[33%] w-[73%] mb-[33px]"
+            className="md:w-auto sm:w-[40%] w-[50%] mb-[33px]"
             src={underline}
             alt="menu-underline"
           />
