@@ -4,7 +4,7 @@ import {
   Await,
   useMatches,
   useNavigate,
-  useLocation
+  useLocation,
 } from '@remix-run/react';
 import {useState, useRef, Suspense, useEffect, useMemo} from 'react';
 import {useWindowScroll} from 'react-use';
@@ -46,13 +46,10 @@ import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 
-
-let customerid;
+let customerId;
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
-
-
 
   return (
     <>
@@ -158,156 +155,177 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 
 function MenuMobileNav({menu, onClose}) {
   console.log('menu', menu);
+  const [show, setShow] = useState(false);
+  const [showSendCard, setShowSendCard] = useState(false);
+  const [showPricing, setShowPricing] = useState(false);
+  const [showLearn, setShowLearn] = useState(false);
+
+
+  const handleChangeLearn = () => {
+    setShowLearn(!showLearn);
+  };
+
+  const handleChangePricing = () => {
+    setShowPricing(!showPricing);
+  };
+
+  const handleChangeSendCard = () => {
+    setShowSendCard(!showSendCard);
+  };
+
+  const handleChange = () => {
+    setShow(!show);
+
+  };
   return (
-    <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12 sm:py-8">
-      {/* Top level menu items */}
-      {(menu?.items || []).map((item) => (
-        <span key={item.id} className="block">
-          <Link
-            to= {item.to===("/pages/business" || "/about-us") && item.to}  
-            target={item.target}
-            onClick={ item.to===("/pages/business" || "/about-us") && onClose}
-            className={({isActive}) =>
-              isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
-            }
-          >
-            <Text as="span" size="copy"> 
-            {item.title === 'Business' ? (
-                      <Link to="/business">
-                        <div className="">Bussiness</div>
-                      </Link>
-                    ) : null}
-              {item.title === ''}
-              {item.title === 'Send a Card' ? (
-                <>
-                   <div className="dropdown">
-                    <div>Send A Card</div>
-                       <div className="dropdown-content">
-                       <ul 
-                       onClick={onClose}
-                       className="">
-                         <Link to="/collections/best-sellers">
-                           <li>Cards</li>
-                         </Link>
-                         {customerId ? (
-                              <Link to="/customise-your-card">
-                                <li>Create a Card</li>
-                              </Link>
-                            ) : (
-                              <div>
-                                <li onClick={() => setLoginModal(true)}>
-                                  Create a Card
-                                </li>
-                              </div>
-                            )}
-                         <Link to="/collections/birthday">
-                           <li>Birthday Automation</li>
-                         </Link>
-                         <Link to="/collections/gift-cards">
-                           <li>Gift Cards </li>
-                         </Link>
-                       </ul>
-                     </div> 
+    <div className="">
+      <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12  sm:py-8">
+        {/* Top level menu items */}
+        {(menu?.items || []).map((item) => (
+          <span key={item.id} className="">
+            <Link
+              to={item.to === ('/pages/business' || '/about-us') && item.to}
+              target={item.target}
+              onClick={
+                item.to === ('/pages/business' || '/about-us') && onClose
+              }
+              // className={({isActive}) =>
+              //   isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+              // }
+            >
+              <Text as="span" size="copy">
+                {item.title === 'Business' ? (
+                  <Link to="/business">
+                    <div className="">Bussiness</div>
+                  </Link>
+                ) : null}
+                {item.title === ''}
+                {item.title === 'Send a Card' ? (
+                  <>
+                    <div className="">
+                      <div className="" onClick={handleChangeSendCard} style={{ fontWeight: showSendCard ? 'bold' : 'normal' }}>
+                        Send A Card
+                      </div>
+                      {showSendCard && (
+                        <div className="">
+                          <ul onClick={onClose} className='text-thin' style={{ color: 'red' }}>
+                            <Link to="/collections/best-sellers">
+                              <li>Cards</li>
+                            </Link>
+                            <Link to="/customise-your-card">
+                              <li>Create a Card</li>
+                            </Link>
+                            <Link to="/collections/birthday">
+                              <li>Birthday Automation</li>
+                            </Link>
+                            <Link to="/collections/gift-cards">
+                              <li>Gift Cards </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
+                {item.title === 'Integrations' ? (
+                  <div className=''>
+                  <div className="" onClick={handleChange} style={{ fontWeight: show ? 'bold' : 'normal'}}>
+                    <div>Integrations</div>
+                    </div>
+                    {show && (
+                      <div>
+                        <ul onClick={onClose} className='integration-color' style={{ color: 'red' }}>
+                          <Link to="/zapier">
+                            {' '}
+                            <li className='mt-[-21px]'>Zapier</li>
+                          </Link>
+                          <Link to="/shopify">
+                            {' '}
+                            <li className='mt-[-21px]'>Shopify</li>
+                          </Link>
+                          <Link to="/salesforce">
+                            {' '}
+                            <li className='mt-[-21px]'>Salesforce</li>{' '}
+                          </Link>
+                          <Link to="/apidocs">
+                            {' '}
+                            <li className='mt-[-21px]'>API</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                </>
-              ) : (
-                <>
-                </>
-              )}
-                 {item.title === 'Integrations' ? (
-                      <div className="dropdown">
-                        <div>Integrations</div>
-                        <div className="dropdown-content">
-                          <ul 
-                      onClick={onClose}
-                          
-                          className="dropdown-list">
-                            <Link to="/zapier">
+                ) : null}
+                {item.title === 'Pricing' ? (
+                  <div className="">
+                    <div className="" onClick={handleChangePricing} style={{ fontWeight: showPricing ? 'bold' : 'normal'}}>
+                      Pricing
+                    </div>
+                    {showPricing && (
+                      <div className="">
+                        <ul onClick={onClose} className='text-thin' style={{ color: 'red' }}>
+                          <Link to="/price">
+                            <li>Credit Packages</li>
+                          </Link>
+                          <Link to="#">
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                window.location.href =
+                                  'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
+                                return false;
+                              }}
+                            >
                               {' '}
-                              <li> Zapier</li>
-                            </Link>
-                            <Link to="/shopify">
-                              {' '}
-                              <li> Shopify</li>
-                            </Link>
-                            <Link to="/salesforce">
-                              {' '}
-                              <li> Salesforce</li>{' '}
-                            </Link>
-                            <Link to="/apidocs">
-                              {' '}
-                              <li> API</li>
-                            </Link>
-                          </ul>
-                        </div>
+                              Get a Custom Quote
+                            </button>
+                          </Link>
+                          <Link to="/roicalculator">
+                            {' '}
+                            <li>ROI Calculator</li>
+                          </Link>
+                        </ul>
                       </div>
-                   ) : null}
-               {item.title === 'Pricing' ? (
-                      <div className="dropdown">
-                        <div>Pricing</div>
-                        <div className="dropdown-content">
-                          <ul 
-                      onClick={onClose}
-                          
-                          className="dropdown-list">
-                            <Link to="/price">
-                              <li>Credit Packages</li>
-                            </Link>
-                            <Link to="#">
-                              <button
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  window.location.href =
-                                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
-                                  return false;
-                                }}
-                              >
-                                {' '}
-                                Get a Custom Quote
-                              </button>
-                            </Link>
-                            <Link to="/roicalculator">
-                              {' '}
-                              <li>ROI Calculator</li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                   ) : null}
-               {item.title === 'Learn' ? (
-                      <div className="dropdown">
-                        <div>Learn</div>
-                        <div className="dropdown-content">
-                          <ul                           
-                          className="dropdown-list">
-                            <Link to="/blog">
-                              <li
-                              onClick={onClose} 
-                              >Blog.</li>
-                            </Link>
-                            <Link to="/tutorials">
-                              <li    onClick={onClose}>Tutorials</li>
-                            </Link>
-                            <a href="https://www.youtube.com/@simplynoted">
-                              <li>Videos</li>
-                            </a>
-                            <Link to="/faq">
-                              <li>F.A.Q.</li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                   ) : null}
-                  {item.title === 'About Us' ? (
-                      <Link onClick={onClose} to="/about-us">
-                        <div className="">About Us</div>
-                      </Link>
-                    ) : null}
-            </Text>
-          </Link>
-        </span>
-      ))}
-    </nav>
+                    )}
+                  </div>
+                ) : null}
+                {item.title === 'Learn' ? (
+                  <div className="">
+                    <div className="" onClick={handleChangeLearn} style={{ fontWeight: showLearn ? 'bold' : 'normal'}} >
+                      Learn
+                    </div>
+                    {showLearn &&
+                    <div className="">
+                      <ul onClick={onClose} className="text-thin"style={{ color: 'red' }}>
+                        <Link to="/blog">
+                          <li onClick={onClose}>Blog.</li>
+                        </Link>
+                        <Link to="/tutorials">
+                          <li onClick={onClose}>Tutorials</li>
+                        </Link>
+                        <a href="https://www.youtube.com/@simplynoted">
+                          <li>Videos</li>
+                        </a>
+                        <Link to="/faq">
+                          <li>F.A.Q.</li>
+                        </Link>
+                      </ul>
+                    </div>}
+                  </div>
+                ) : null}
+                {item.title === 'About Us' ? (
+                  <Link onClick={onClose} to="/about-us">
+                    <div className="">About Us</div>
+                  </Link>
+                ) : null}
+              </Text>
+            </Link>
+          </span>
+        ))}
+      </nav>
+    </div>
   );
 }
 function MobileHeader({title, isHome, openCart, openMenu}) {
@@ -334,13 +352,13 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
           action={params.locale ? `/${params.locale}/search` : '/search'}
           className="items-center gap-2 sm:flex"
         >
-          <button
+          {/* <button
             type="submit"
             className="relative flex items-center justify-center w-8 h-8"
           >
             {/* <IconSearch /> */}
-          </button>
-          <Input
+          {/* </button> */} 
+          {/* <Input
             className={
               isHome
                 ? 'focus:border-contrast/20 dark:focus:border-primary/20'
@@ -350,7 +368,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             variant="minisearch"
             placeholder="Search"
             name="q"
-          />
+          /> */}
         </Form>
       </div>
       <Link
@@ -388,11 +406,11 @@ function DesktopHeader({isHome, menu}) {
     isAccountLoader,
     setIsAccountLoader,
     loginModal,
-    setLoginModal
+    setLoginModal,
   } = stateContext;
 
   const navigate = useNavigate();
-  const pathname = useLocation()
+  const pathname = useLocation();
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
@@ -407,7 +425,6 @@ function DesktopHeader({isHome, menu}) {
       : 0;
     setCartCountVal(totalCartCount);
   }, []);
-
 
   const params = useParams();
   const {y} = useWindowScroll();
@@ -464,10 +481,10 @@ function DesktopHeader({isHome, menu}) {
                               {' '}
                               <li>Cards</li>
                             </Link>
-                              <Link to="/customise-your-card">
-                               {' '}
-                                <li>Create a Card</li>
-                              </Link>                  
+                            <Link to="/customise-your-card">
+                              {' '}
+                              <li>Create a Card</li>
+                            </Link>
                             <Link to="/collections/birthday">
                               <li>Birthday Automation</li>
                             </Link>
@@ -630,7 +647,7 @@ function DesktopHeader({isHome, menu}) {
             }
           />
 
-          {(isInitialRender || isAccountLoader) ? (
+          {isInitialRender || isAccountLoader ? (
             <div className="h-6 w-6 lg:min-w-[110px]">
               <CircularLoader color="#ef6e6e" height="20px" width="20px" />
             </div>
@@ -847,83 +864,95 @@ function FooterMenu({menu}) {
       {/* 
 <div className="bg-[#2d4271]  text-white"> */}
       <div className="grid md:flex justify-evenly gap-[40px] lg:text-[16px] md:text-[12px] text-[17px] md:text-left text-center pt-[50px] pb-[30px] mx-auto w-[88%] ">
-       
         <div className="md:mx-0 mx-auto">
           <div className="lg:w-48 md:w-28 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
           <div className="flex mt-5 sm:w-full  w-[84%] ">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-            <img className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[31px]" src={linkdin} alt=""></img>
+              <img
+                className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[31px]"
+                src={linkdin}
+                alt=""
+              ></img>
             </a>
             <a href="#">
-            <img className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1" src={fb} alt=""></img>
+              <img
+                className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1"
+                src={fb}
+                alt=""
+              ></img>
             </a>
             <a href="#">
-            <img className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1" src={twitter} alt=""></img>
+              <img
+                className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1"
+                src={twitter}
+                alt=""
+              ></img>
             </a>
           </div>
         </div>
         <div className="  text-white md:text-left text-center  ">
-          <div className="lg:text-xl md:text-[18px] text-[22px] font-semibold">Quick Links </div>
-          <div className='text-center md:w-full w-[66%] md:ml-0 ml-auto'>
-          {(menu?.items || []).map((item) => (
-            <section key={item.id} className={styles.section}>
-              <Disclosure>
-                {({open}) => (
-                  <>
-                    <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                      <Link to={item.to}>
-                        <Heading
-                          className="flex justify-between  !font-base leading-loose hover:text-white"
-                          size="lead"
-                          as="h3"
+          <div className="lg:text-xl md:text-[18px] text-[22px] font-semibold">
+            Quick Links{' '}
+          </div>
+          <div className="text-center md:w-full w-[66%] md:ml-0 ml-auto">
+            {(menu?.items || []).map((item) => (
+              <section key={item.id} className={styles.section}>
+                <Disclosure>
+                  {({open}) => (
+                    <>
+                      <Disclosure.Button className="md:text-left text-center md:cursor-default">
+                        <Link to={item.to}>
+                          <Heading
+                            className="flex justify-between  !font-base leading-loose hover:text-white"
+                            size="lead"
+                            as="h3"
+                          >
+                            {item.title}
+                            {item?.items?.length > 0 && (
+                              <span className="md:hidden">
+                                <IconCaret direction={open ? 'up' : 'down'} />
+                              </span>
+                            )}
+                          </Heading>
+                        </Link>
+                      </Disclosure.Button>
+                      {item?.items?.length > 0 ? (
+                        <div
+                          className={`${
+                            open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
+                          } overflow-hidden transition-all duration-300`}
                         >
-                          {item.title}
-                          {item?.items?.length > 0 && (
-                            <span className="md:hidden">
-                              <IconCaret direction={open ? 'up' : 'down'} />
-                            </span>
-                          )}
-                        </Heading>
-                      </Link>
-                    </Disclosure.Button>
-                    {item?.items?.length > 0 ? (
-                      <div
-                        className={`${
-                          open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                        } overflow-hidden transition-all duration-300`}
-                      >
-                        <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
-                          <Disclosure.Panel static>
-                            <nav className={styles.nav}>
-                              {item.items.map((subItem) => (
-                                <FooterLink key={subItem.id} item={subItem} />
-                              ))}
-                            </nav>
-                          </Disclosure.Panel>
-                        </Suspense>
-                      </div>
-                    ) : null}
-                  </>
-                )}
-              </Disclosure>
-            </section>
-          ))}
-        </div>
+                          <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
+                            <Disclosure.Panel static>
+                              <nav className={styles.nav}>
+                                {item.items.map((subItem) => (
+                                  <FooterLink key={subItem.id} item={subItem} />
+                                ))}
+                              </nav>
+                            </Disclosure.Panel>
+                          </Suspense>
+                        </div>
+                      ) : null}
+                    </>
+                  )}
+                </Disclosure>
+              </section>
+            ))}
+          </div>
         </div>
         <div className=" text-white ">
           <div>
             <div className="lg:text-xl text-[16px]  font-semibold">Address</div>
-            <div className='w-[99%] '>
-              5025 S Ash Ave Suite B16 Tempe AZ
-              85282
+            <div className="w-[99%] ">
+              5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>
           </div>
 
           <div className="md:mt-24 mt-[40px] text-white">
             <div className="lg:text-xl text-[16px] font-semibold">Email</div>
-            <div className=''>
+            <div className="">
               <a href="mailto:support@simplynoted.com">
                 support@simplynoted.com
               </a>

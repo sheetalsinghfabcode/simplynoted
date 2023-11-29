@@ -18,7 +18,7 @@ export default function RoiCalculator() {
     costsPerLead: 25.29,
     costsPerDemo: 33.73,
     totalClosedDeals: 239.06,
-    CPAcom: 500.0,
+    CPAcom: 500.0,  
     CPAtotal: 589.93,
     ROItotal: 1195312.5,
     ROIpercentage: 5459.59,
