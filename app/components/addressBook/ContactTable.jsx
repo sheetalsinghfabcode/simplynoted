@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useMemo, useRef} from 'react';
 import {useTable, usePagination} from 'react-table';
 import edit from '../../../assets/Image/edit.png';
 import ConfirmationModal from '../modal/ConfirmationModal';
@@ -60,6 +60,8 @@ const ContactTable = ({
   };
 
   const handleDeleteSelected = () => {
+    setDeleteModal(false);
+
     setLoader(true);
     const url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
 
@@ -77,10 +79,11 @@ const ContactTable = ({
         return response.json();
       })
       .then((data) => {
+        setTimeout(() => {
+          setLoader(false);
+        }, [1000]);
         // Handle the response data if needed
-        setLoader(false);
         setSelectedCheckboxes([]);
-        setDeleteModal(false);
         setLoadAddress(!loadAddress);
       })
       .catch((error) => {
@@ -119,81 +122,82 @@ const ContactTable = ({
   );
 
   const columns = React.useMemo(
-    () => [
-      {
-        Header: 'check',
-        accessor: '_id',
-        Cell: ({row}) => (
-          <CheckBox
-            onChange={(e) => handleCheckboxChange(e, row)}
-            value={row.original._id}
-            checked={selectedCheckboxes.includes(row.original._id)}
-          />
-        ),
-      },
-      !continueBtn && {
-        Header: 'Edit',
-        accessor: 'id',
-        Cell: ({ row }) => (
-          <img
-            src={edit}
-            className="w-[20px] h-[20px] m-auto cursor-pointer"
-            onClick={() => setSelectedAddress(row.original)}
-          />
-        ),
-      },
-    
-      {
-        Header: 'Type',
-        accessor: 'type',
-        Cell: ({row}) =>
-          row.original.type === 'return' ? 'Sender' : row.original.type,
-      },
-      {
-        Header: 'first Name',
-        accessor: 'firstName',
-      },
-      {
-        Header: 'last Name',
-        accessor: 'lastName',
-      },
-      {
-        Header: 'business Name',
-        accessor: 'businessName',
-      },
-      {
-        Header: 'address 1',
-        accessor: 'address1',
-      },
-      {
-        Header: 'address 2',
-        accessor: 'address2',
-      },
-      {
-        Header: 'city',
-        accessor: 'city',
-      },
-      {
-        Header: 'state',
-        accessor: 'state',
-      },
-      {
-        Header: 'postal code',
-        accessor: 'zip',
-      },
-      {
-        Header: 'country',
-        accessor: 'country',
-      },
-      {
-        Header: 'birthday',
-        accessor: 'birthday',
-      },
-      {
-        Header: 'anniversary',
-        accessor: 'anniversary',
-      },
-    ].filter(Boolean),
+    () =>
+      [
+        {
+          Header: 'check',
+          accessor: '_id',
+          Cell: ({row}) => (
+            <CheckBox
+              onChange={(e) => handleCheckboxChange(e, row)}
+              value={row.original._id}
+              checked={selectedCheckboxes.includes(row.original._id)}
+            />
+          ),
+        },
+        !continueBtn && {
+          Header: 'Edit',
+          accessor: 'id',
+          Cell: ({row}) => (
+            <img
+              src={edit}
+              className="w-[20px] h-[20px] m-auto cursor-pointer"
+              onClick={() => setSelectedAddress(row.original)}
+            />
+          ),
+        },
+
+        {
+          Header: 'Type',
+          accessor: 'type',
+          Cell: ({row}) =>
+            row.original.type === 'return' ? 'Sender' : row.original.type,
+        },
+        {
+          Header: 'first Name',
+          accessor: 'firstName',
+        },
+        {
+          Header: 'last Name',
+          accessor: 'lastName',
+        },
+        {
+          Header: 'business Name',
+          accessor: 'businessName',
+        },
+        {
+          Header: 'address 1',
+          accessor: 'address1',
+        },
+        {
+          Header: 'address 2',
+          accessor: 'address2',
+        },
+        {
+          Header: 'city',
+          accessor: 'city',
+        },
+        {
+          Header: 'state',
+          accessor: 'state',
+        },
+        {
+          Header: 'postal code',
+          accessor: 'zip',
+        },
+        {
+          Header: 'country',
+          accessor: 'country',
+        },
+        {
+          Header: 'birthday',
+          accessor: 'birthday',
+        },
+        {
+          Header: 'anniversary',
+          accessor: 'anniversary',
+        },
+      ].filter(Boolean),
     [selectedCheckboxes],
   );
 
@@ -273,25 +277,25 @@ const ContactTable = ({
     return result;
   }
 
-  let file ;
+  let file = useRef(null);
 
   const handleFileChange = (event) => {
-     file = event.target.files[0];
+    file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-  
+
       reader.onload = (e) => {
         const csvData = e.target.result;
         const jsonData = csvToJson(csvData);
         setSelectedFile(file);
         setFileData(jsonData);
-  
+
         // Set the 'file' variable to null after using it
       };
       reader.readAsText(file);
     }
   };
-  
+
   const handleSearchInputChange = (event) => {
     const value = event.target.value;
     setSearchText(value);
@@ -317,7 +321,7 @@ const ContactTable = ({
     for (let key in data) {
       const modifiedKey = key?.replace(/"/g, '');
 
-      modifiedData[modifiedKey] = data[key].replace(/"/g, '');
+      modifiedData[modifiedKey] = data[key]?.replace(/"/g, '');
     }
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
 
@@ -352,23 +356,60 @@ const ContactTable = ({
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
         setLoader(false);
-        file= null
+        file.current.value = '';
 
         'Successful response data:', responseData.result;
       } else {
         setSelectedFile(null);
         setLoader(false);
-        file=null
+        file.current.value = '';
         throw new Error('Network response was not ok');
       }
     } catch (error) {
       setSelectedFile(null);
       setLoader(false);
-      file=null
+      file.current.value = '';
       console.log('Error uploading data:', error);
       throw error;
     }
   };
+  function checkCSVFormat(data) {
+    const requiredFormat = [
+      'Type',
+      'First Name',
+      'Last Name',
+      'Address',
+      '',
+      'City',
+      'State/Province',
+      'Country',
+      'Postal Code',
+      'Phone',
+      'Email',
+      'Company',
+      'Birthday',
+      'Anniversary',
+      'Custom 1',
+      'Custom 2',
+      'Custom 3',
+      'Address 2',
+    ];
+
+    if (data.length === 0) {
+      return false; // Empty CSV
+    }
+
+    const headerRow = data[0]; // Assuming the first row is the header
+
+    // Check if headerRow matches the required format
+    for (let i = 0; i < requiredFormat.length; i++) {
+      if (headerRow[i] !== requiredFormat[i]) {
+        return false; // Invalid format
+      }
+    }
+
+    return true; // Format matches
+  }
 
   const handleUploadClick = async () => {
     if (fileData.length === 0) {
@@ -391,11 +432,25 @@ const ContactTable = ({
     const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
+    // Function to check if fileData matches the required CSV format
+    const isValidCSVFormat = checkCSVFormat(fileData);
+
+    if (!isValidCSVFormat) {
+      setErrorModal(true)
+      serErrorContent([
+        "The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again."])
+      console.error('Invalid CSV format');
+      setTimeout(() => {
+        setErrorModal(false)
+      },[3000])
+      return;
+    }
+
     const cleanedData = fileData.map((entry) => {
       const cleanedEntry = {};
       Object.keys(entry).forEach((key) => {
-        const cleanedKey = key.replace(/"/g, ''); // Remove double quotes from keys
-        const cleanedValue = entry[key].replace(/"/g, ''); // Remove double quotes from values
+        const cleanedKey = key?.replace(/"/g, ''); // Remove double quotes from keys
+        const cleanedValue = entry[key]?.replace(/"/g, ''); // Remove double quotes from values
         cleanedEntry[cleanedKey] = cleanedValue;
       });
       return cleanedEntry;
@@ -442,7 +497,6 @@ const ContactTable = ({
     setIsModalOpen(false);
   };
 
-  console.log("selectedFile",file)
   return (
     <>
       {errorModal ? (
@@ -474,6 +528,7 @@ const ContactTable = ({
                     onChange={handleFileChange}
                     type="file"
                     accept=".csv"
+                    ref={file}
                     className="p-[10px] cursor-pointer"
                   />
                   <a
@@ -698,16 +753,16 @@ const ContactTable = ({
             cancelText="Cancel"
           />
           <Instruction
-              isOpen={isModalOpen}
-              title="INSTRUCTIONS FOR BULK UPLOAD"
-              closeModal={closeModal}
-              instructions={[
-                'Download the bulk upload template (csv)',
-                'Complete a row for each address you wish to add',
-                'Upload your completed file in .csv format',
-              ]}
-              table={true}
-            />
+            isOpen={isModalOpen}
+            title="INSTRUCTIONS FOR BULK UPLOAD"
+            closeModal={closeModal}
+            instructions={[
+              'Download the bulk upload template (csv)',
+              'Complete a row for each address you wish to add',
+              'Upload your completed file in .csv format',
+            ]}
+            table={true}
+          />
         </div>
       )}
     </>

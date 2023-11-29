@@ -3,7 +3,6 @@ import location from '../../../location.json';
 import DateInput from '../addressBook/DateInput';
 import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
-import Loader from '../modal/Loader';
 import CircularLoader from '../CircularLoder';
 
 const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
@@ -119,17 +118,18 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     }
   };
 
+
   return (
     <div className="container mx-auto p-4 bg-[#e2ecf6]">
       {loader && (
         <div className="absolute z-[50] top-[50%] left-[50%]">
-          <CircularLoader 
-          title="Updating Address Book..."
-          color="#ef6e6e" />
+          <CircularLoader title="Updating Address Book..." color="#ef6e6e" />
         </div>
       )}
       <div
-        className={`bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ${loader && 'opacity-40'}`}
+        className={`bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ${
+          loader && 'opacity-40'
+        }`}
       >
         <div className="flex justify-between items-center mb-[16px]">
           <h2 className="text-left text-[#001a5f] font-bold text-[34px] leading-[44px]">
@@ -388,8 +388,17 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               value={selectedAddress.type}
               onChange={handleChange}
             >
-              <option>Recipient</option>
-              <option>Sender</option>
+              {selectedAddress.type === 'return' ? (
+                <>
+                  <option>Sender</option>
+                  <option>Recipient</option>
+                </>
+              ) : (
+                <>
+                  <option>Recipient</option>
+                  <option>Sender</option>
+                </>
+              )}
               {/* Add other types if needed */}
             </select>
           </div>
