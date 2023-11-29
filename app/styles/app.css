@@ -1977,7 +1977,263 @@ body {
     position: relative;
 }
 
+/********************************************* ROI CALCULATOR **********************************************************/
+.roi-calculator-section-1 {
+  margin: 40px auto;
+}
 
+.roi-container {
+  position: relative;
+  width: 100%;
+  max-width: 1450px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.simply-noted-marketing {
+  background-image: url('../../assets/Image/roi-page-bg.webp');
+  background-size:100% 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  width:81%;
+  padding: 28px;
+  height:878px;
+  padding-top: 10px;
+  position: relative;
+  z-index:3;
+  margin-top: 0 !important;
+  padding: 70px 10px 10px 10px;
+}
+
+.category-heading {
+  background: url('../../assets/Image/roi-underline.png') no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  color: #001a5f;
+  font-family: Karla, sans-serif;
+  font-size: 50px !important;
+  font-weight: 700 !important;
+  letter-spacing: -2.07px !important;
+  line-height: 64px !important;
+  margin-bottom: 20px;
+  padding-bottom: 10px !important;
+  text-align: center;
+  text-transform: inherit;
+  width:70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.category-heading-mobile {
+  background: url(/cdn/shop/files/roi-line-mobile.png) no-repeat;
+  background-position: bottom center;
+  font-size: 30px !important;
+  line-height: 1 !important;
+  margin-bottom: 60px !important;
+  color: #001a5f;
+  font-family: Karla,sans-serif;
+  font-size: 50px!important;
+  font-weight: 700!important;
+  letter-spacing: -2.07px!important;
+  line-height: 64px!important;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 10px!important;
+  text-align: center;
+  text-transform: inherit;
+  display: none;
+}
+
+.roi-calculator {
+  display: flex;
+  overflow:visible;
+  position: relative;
+  gap: 50px;
+}
+
+.roi-calculator-input-wrapper {
+  height: auto;
+  width: 50%;
+  background-color: transparent;
+  padding: 0;
+  color: #000;
+  box-sizing: border-box;
+  float: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.roi-leading-arrow {
+  position: absolute;
+  bottom: -109px;
+  right: -130px;
+  z-index: -1;
+}
+
+.input-holders {
+  height: 100%;
+  width:70%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+}
+
+.roi-small-heading {
+  font-size: 13px;
+  margin: 10px auto;
+  color: #777;
+}
+
+.input-holder{
+  margin-bottom:5px;
+}
+
+.input-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-header h4 {
+  font-size:18px;
+  font-weight: 700;
+  color: #001a5f;
+}
+.roi-text-num{
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+.roi-text-right{
+  color: #001a5f;
+ 
+}
+.simply-noted-marketing input[type=range] {
+  -webkit-appearance: none;
+  margin:5px 0;
+  width:100%;
+  height: 34px;
+  background:rgb(186,182,206);
+  border-radius: 25px;
+  position: relative;
+}
+
+/* Styling for the slider thumb */
+.simply-noted-marketing input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 34px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Adjust the color of the thumb on Mozilla Firefox */
+.simply-noted-marketing input[type="range"]::-moz-range-thumb {
+  width: 30px;
+  height: 34px;
+  background: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.roi-calculator-output-wrapper {
+  height: auto;
+  width: 50%;
+  background-color: transparent;
+  padding: 0;
+  box-sizing: border-box;
+  float: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  justify-content: start;
+}
+
+.output-holders {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: start;
+  background-color: #f8f8f8;
+  max-width: 100%;
+  padding: 20px 20px 0;
+  border-radius: 10px 10px 25px 25px;
+  position: relative;
+  width:100%;
+  overflow: hidden;
+}
+.output-holder{
+  margin-bottom:0px;
+}
+.output-holders h2{
+  text-align: center;
+  font-size: 22px;
+  color: #001a5f;
+  font-family:'Karla';
+}
+.roi-diveder-line {
+  position: absolute;
+  background-image: url("../../assets/Image/roi-breakdown-line.png");
+  display: block;
+  width: 10px;
+  height: 100%;
+  background-repeat: no-repeat;
+  right:80px;
+  top: 97px;
+}
+
+
+
+.output-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.output-item{
+  font-family: 'Karla';
+    color: black;
+}
+.output-item p{
+  font-size: 10px;
+  
+}
+.roiNumbers{
+  width: 85%;
+}
+.roi-totals {
+  background-image: url("../../assets/Image/roi-red-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  height: 110px;
+  padding: 20px;
+  position: relative;
+ 
+  margin-bottom: 22px;
+}
+
+.roi-robot-cont {
+  position: absolute;
+  right:10px;
+  top: 282px;
+  z-index: 1;
+  width:32%;
+}
+
+.roi-total-head,.roi-total-value{
+  color: white;
+  font-size:18px;
+  font-family:none;
+}
 
 
 /* Media Query */
@@ -2077,6 +2333,33 @@ body {
 width:75%;
 margin-left: 0px;
   }
+  .simply-noted-marketing{
+    width: 85%;
+    z-index:-1;
+    background-image: none;
+    margin-left:auto;
+    margin-right: auto;
+    background-color: white;
+    height: 100%;
+   }
+   .roi-calculator{
+    display: grid;
+    margin-left:auto;
+    margin-right: auto;
+   }
+   .roi-leading-arrow{
+   display: none;
+   }
+   .roi-calculator-output-wrapper{
+    width: 100%;
+    justify-content: center;
+   }
+   .roi-robot-cont{
+    display: none;
+   }
+   .roi-calculator-input-wrapper{
+      width: 100%;
+   }
 }
 @media only screen and (max-width: 768px) {
   .req-btn{
@@ -2126,12 +2409,28 @@ margin-left: 0px;
 .banner-detail{
   background-size: 62% 81%;
 }
+.roiNumbers{
+  width: 100%;
 }
+.input-holders{
+  width: 100%;
+}
+}
+
 @media only screen and (max-width:500px) {
 .signup-overview{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.simply-noted-marketing{
+  width:100%;
+
+}
+.roi-calculator-input-wrapper{
+  width:100%;
+  justify-content: flex-start;
 }
 }
 .sidebar::-webkit-scrollbar {
@@ -2150,224 +2449,5 @@ margin-left: 0px;
 .sidebar {
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
-}
-
-/********************************************* ROI CALCULATOR **********************************************************/
-.roi-calculator-section-1 {
-  margin: 40px auto;
-}
-
-.roi-container {
-  position: relative;
-  width: 100%;
-  max-width: 1450px;
-  padding-right: 10px;
-  padding-left: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.simply-noted-marketing {
-  background-image: url('../../assets/Image/roi-page-bg.webp');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 1176px;
-  height: 930px;
-  padding-top: 10px;
-  position: relative;
-  z-index: 3;
-  margin-top: 0 !important;
-}
-
-.category-heading {
-  background: url('../../assets/Image/roi-underline.png') no-repeat;
-  background-position: bottom center;
-  color: #001a5f;
-  font-family: Karla, sans-serif;
-  font-size: 50px !important;
-  font-weight: 700 !important;
-  letter-spacing: -2.07px !important;
-  line-height: 64px !important;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  padding-bottom: 10px !important;
-  text-align: center;
-  text-transform: inherit;
-}
-
-.category-heading-mobile {
-  background: url(/cdn/shop/files/roi-line-mobile.png) no-repeat;
-  background-position: bottom center;
-  font-size: 30px !important;
-  line-height: 1 !important;
-  margin-bottom: 60px !important;
-  color: #001a5f;
-  font-family: Karla,sans-serif;
-  font-size: 50px!important;
-  font-weight: 700!important;
-  letter-spacing: -2.07px!important;
-  line-height: 64px!important;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  padding-bottom: 10px!important;
-  text-align: center;
-  text-transform: inherit;
-  display: none;
-}
-
-.roi-calculator {
-  display: flex;
-  overflow: visible;
-  position: relative;
-}
-
-.roi-calculator-input-wrapper {
-  height: auto;
-  width: 50%;
-  background-color: transparent;
-  padding: 0;
-  color: #000;
-  box-sizing: border-box;
-  float: none;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  display: flex;
-  justify-content: center;
-  position: relative;
-}
-
-.roi-leading-arrow {
-  position: absolute;
-  bottom: -120px;
-  right: -130px;
-  z-index: -1;
-}
-
-.input-holders {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: start;
-}
-
-.roi-small-heading {
-  font-size: 16px;
-  margin: 10px auto;
-  color: #777;
-}
-
-.input-holder {
-  margin-bottom: 10px;
-}
-
-.input-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.roi-text-right {
-  font-size: 20px;
-  font-weight: 700;
-  color: #001a5f;
-}
-
-.simply-noted-marketing input[type=range] {
-  -webkit-appearance: none;
-  margin: 10px 0;
-  width: 380px;
-  height: 34px;
-  background:rgb(186,182,206);
-  border-radius: 25px;
-  position: relative;
-}
-
-/* Styling for the slider thumb */
-.simply-noted-marketing input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 30px;
-  height: 34px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* Adjust the color of the thumb on Mozilla Firefox */
-.simply-noted-marketing input[type="range"]::-moz-range-thumb {
-  width: 30px;
-  height: 34px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.roi-calculator-output-wrapper {
-  height: auto;
-  width: 50%;
-  background-color: transparent;
-  padding: 0;
-  box-sizing: border-box;
-  float: none;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  display: flex;
-  justify-content: start;
-}
-
-.output-holders {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: start;
-  background-color: #f8f8f8;
-  max-width: 100%;
-  padding: 20px 20px 0;
-  border-radius: 10px 10px 25px 25px;
-  position: relative;
-  width: 499px;
-  overflow: hidden;
-}
-
-.roi-diveder-line {
-  position: absolute;
-  background-image: url("../../assets/Image/roi-breakdown-line.png");
-  display: block;
-  width: 10px;
-  height: 100%;
-  background-repeat: no-repeat;
-  right: 100px;
-  top: 120px;
-}
-
-.output-holder {
-  margin-bottom: 10px;
-}
-
-.output-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.roi-totals {
-  background-image: url("../../assets/Image/roi-red-bg.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 499px;
-  height: 110px;
-  padding: 20px;
-  position: absolute;
-  margin-top: -20px;
-}
-
-.roi-robot-cont {
-  position: absolute;
-  right: -50px;
-  top: 200px;
-  z-index: 1;
 }
 
