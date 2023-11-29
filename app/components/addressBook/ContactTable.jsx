@@ -373,42 +373,32 @@ const ContactTable = ({
       throw error;
     }
   };
-  function checkCSVFormat(data) {
-    const requiredFormat = [
-      'Type',
-      'First Name',
-      'Last Name',
-      'Address',
-      '',
-      'City',
-      'State/Province',
-      'Country',
-      'Postal Code',
-      'Phone',
-      'Email',
-      'Company',
-      'Birthday',
-      'Anniversary',
-      'Custom 1',
-      'Custom 2',
-      'Custom 3',
-      'Address 2',
-    ];
 
-    if (data.length === 0) {
-      return false; // Empty CSV
+
+  function cleanHeaders(headerRow) {
+    const cleanedHeaders = {};
+    for (const key in headerRow) {
+      cleanedHeaders[key.replace(/"/g, '').trim()] = headerRow[key].replace(/"/g, '').trim();
     }
-
-    const headerRow = data[0]; // Assuming the first row is the header
-
-    // Check if headerRow matches the required format
-    for (let i = 0; i < requiredFormat.length; i++) {
-      if (headerRow[i] !== requiredFormat[i]) {
-        return false; // Invalid format
+    return cleanedHeaders;
+  }
+  
+  function checkCSVFormat(headerRow, requiredHeaders) {
+    const headerKeys = Object.keys(headerRow);
+    const missingHeaders = [];
+  
+    for (let i = 0; i < requiredHeaders.length; i++) {
+      const requiredHeader = requiredHeaders[i];
+      const headerKey = headerKeys[i];
+      
+      if (!headerKey || headerKey !== requiredHeader) {
+        missingHeaders.push(requiredHeader);
       }
     }
-
-    return true; // Format matches
+  
+    const isValidFormat = missingHeaders.length === 0;
+  
+    return { isValidFormat, missingHeaders };
   }
 
   const handleUploadClick = async () => {
@@ -427,22 +417,46 @@ const ContactTable = ({
       'Email',
     ];
 
+    const requiredHeaders = [
+      'Type',
+      'First Name',
+      'Last Name',
+      'Address',
+      'Address 2',
+      'City',
+      'State/Province',
+      'Country',
+      'Postal Code',
+      'Phone',
+      'Email',
+      'Company',
+      'Birthday',
+      'Anniversary',
+      'Custom 1',
+      'Custom 2',
+      'Custom 3'
+    ];  
+
     const errors = [];
 
     const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
     // Function to check if fileData matches the required CSV format
-    const isValidCSVFormat = checkCSVFormat(fileData);
+ 
+    const cleanedHeaders = cleanHeaders(fileData[0]);
 
-    if (!isValidCSVFormat) {
-      setErrorModal(true)
+    const { isValidFormat, missingHeaders } = checkCSVFormat(cleanedHeaders, requiredHeaders);
+  
+    if (!isValidFormat) {
+      setErrorModal(true);
+      setSelectedFile(null);
       serErrorContent([
-        "The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again."])
-      console.error('Invalid CSV format');
+        "The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again."
+      ]);
       setTimeout(() => {
-        setErrorModal(false)
-      },[3000])
+        setErrorModal(false);
+      }, 3000);
       return;
     }
 
