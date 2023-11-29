@@ -2,8 +2,8 @@
 import React, {useState, useEffect} from 'react';
 import DynamicButton from './DynamicButton';
 import CircularLoader from './CircularLoder';
-import { json } from '@shopify/remix-oxygen';
-import { useStateContext } from '~/context/StateContext';
+import {json} from '@shopify/remix-oxygen';
+import {useStateContext} from '~/context/StateContext';
 
 const Profile = ({
   customer,
@@ -18,7 +18,7 @@ const Profile = ({
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
 
-  const {setFullName,setUserEmail} = useStateContext();
+  const {setFullName, setUserEmail} = useStateContext();
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
@@ -29,7 +29,7 @@ const Profile = ({
     firstName: customer.firstName,
     lastName: customer.lastName,
     email: customer.email,
-    phone: '',
+    phone: customer.phone,
     address1: '',
     address2: '',
     city: '',
@@ -100,23 +100,36 @@ const Profile = ({
           body: JSON.stringify(payload),
         },
       );
+      const jsonResponse = await response.json();
+      if(jsonResponse?.errors &&  jsonResponse?.errors.phone){
+        setError(jsonResponse?.errors.phone[0])
+      }
 
       if (response.ok) {
         // Request was successful
-        const jsonResponse = await response.json();
 
         if (jsonResponse.updated) {
-        localStorage.setItem('SnEmail', accountDetails.email);
-        localStorage.setItem('SNFullName', `${accountDetails.firstName || ''} ${accountDetails.lastName ? accountDetails.lastName + ' ' : ''}`)
-      
-          setTimeout(() =>{
-            setUserEmail(accountDetails.email)
-            setFullName(`${accountDetails.firstName || ''} ${accountDetails.lastName ? accountDetails.lastName + ' ' : ''}`)
+          localStorage.setItem('SnEmail', accountDetails.email);
+          localStorage.setItem('phone', accountDetails.phone);
+
+          localStorage.setItem(
+            'SNFullName',
+            `${accountDetails.firstName || ''} ${
+              accountDetails.lastName ? accountDetails.lastName + ' ' : ''
+            }`,
+          );
+
+          setTimeout(() => {
+            setUserEmail(accountDetails.email);
+            setFullName(
+              `${accountDetails.firstName || ''} ${
+                accountDetails.lastName ? accountDetails.lastName + ' ' : ''
+              }`,
+            );
             setProfile(false);
             setLoader(false);
             setAccountDetail(true);
-          },[1000])
-        
+          }, [1000]);
         }
       } else {
         // Handle errors if the response is not OK
@@ -188,6 +201,7 @@ const Profile = ({
 
   const switchToTab = (tabName) => {
     setActiveTab(tabName);
+    setError(null)
   };
 
   return (
@@ -270,6 +284,7 @@ const Profile = ({
                 type="text"
                 id="email"
                 name="email"
+                disabled
                 value={accountDetails.email}
                 onChange={handleAccountInputChange}
                 className="border border-gray-300 rounded-md px-3 py-2 w-full"
@@ -279,6 +294,7 @@ const Profile = ({
               <label htmlFor="phone" className="block mb-1 font-semibold">
                 Phone Number (with area code)
               </label>
+            
               <input
                 type="text"
                 id="phone"
@@ -287,6 +303,12 @@ const Profile = ({
                 onChange={handleAccountInputChange}
                 className="border border-gray-300 rounded-md px-3 py-2 w-full"
               />
+                {error && (
+              <span className="text-[16px] text-[#ef6e6e] font-semibold">
+                {' '}
+                Error: {error}
+              </span>
+            )}
             </div>
 
             <div className="mb-4 flex flex-wrap -mx-3">

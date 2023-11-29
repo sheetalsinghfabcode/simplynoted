@@ -532,7 +532,7 @@ const ManageSubscription = () => {
                           My Plan
                         </span>
                         <span className="text-[20px] !font-bold text-[#ef6e6e] uppercase">
-                          {stripeCollection && stripeCollection.length >0 && stripeCollection.stripe?.subscriptionStatus !==
+                          {stripeCollection  && stripeCollection.stripe?.subscriptionStatus !==
                             'canceled' && !stripeCollection.error
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
@@ -607,8 +607,7 @@ const ManageSubscription = () => {
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
-                      {stripeCollection && stripeCollection.length > 0 
-                      && stripeCollection.stripe?.balance !== 0 &&
+                      {stripeCollection &&  stripeCollection.stripe?.balance !== 0 &&
                       !stripeCollection.error ? (
                         <span className="text-[20px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==

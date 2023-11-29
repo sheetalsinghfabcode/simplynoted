@@ -8,7 +8,6 @@ export function OrderCard({order}) {
   const [legacyOrderId, key] = order.id.split('/').pop().split('?');
   const lineItems = flattenConnection(order?.lineItems);
 
-  console.log("order",order)
 
   return (
     <li className="grid text-center border rounded">
