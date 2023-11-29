@@ -291,7 +291,7 @@ export default function AddCartFunc() {
               cartData.reciverAddress?.country?.toLowerCase() == undefined
             ? postPrice * cartData.csvFileLen
             : postPrice2 * cartData.csvFileLen) +
-          cartData.shippingDataCost * 1),
+         (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
       0,
     );
     console.log(prices, 'pricesssss');
@@ -372,7 +372,7 @@ export default function AddCartFunc() {
                                   Subtotal:
                                 </span>
                                 <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  $ {item.price * item.csvFileLen}
+                                  $ {(item.price * item.csvFileLen).toFixed(2)}
                                 </span>
                               </div>
                             </div>
@@ -456,7 +456,7 @@ export default function AddCartFunc() {
                                     Subtotal:
                                   </span>
                                   <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                    $ {item.giftCardPrice * item.csvFileLen}
+                                    $ {(item.giftCardPrice * item.csvFileLen).toFixed(2)}
                                   </span>
                                 </div>
                               </div>
@@ -521,7 +521,7 @@ export default function AddCartFunc() {
                                         Subtotal:
                                       </span>
                                       <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {postPrice2 * item.nonUSCount}
+                                        $ {(postPrice2 * item.nonUSCount).toFixed(2)}
                                       </span>
                                     </div>
                                   </div>
@@ -572,7 +572,7 @@ export default function AddCartFunc() {
                                         Subtotal:
                                       </span>
                                       <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {postPrice * item.usCount}
+                                        $ {(postPrice * item.usCount).toFixed(2)}
                                       </span>
                                     </div>
                                   </div>
@@ -645,7 +645,7 @@ export default function AddCartFunc() {
                                         Subtotal:
                                       </span>
                                       <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {postPrice * item.csvFileLen}
+                                        $ {(postPrice * item.csvFileLen).toFixed(2)}
                                       </span>
                                     </div>
                                   </div>
@@ -695,7 +695,7 @@ export default function AddCartFunc() {
                                       </span>
                                       <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
                                         {' '}
-                                        ${postPrice2 * item.csvFileLen}
+                                        ${(postPrice2 * item.csvFileLen).toFixed(2)}
                                       </span>
                                     </div>
                                   </div>
@@ -707,7 +707,7 @@ export default function AddCartFunc() {
                         )}
                         <div className="w-full h-[1px] bg-[black]"></div>
 
-                        {item.shippingData && item.shippingMethodImage && (
+                        {item.shippingData && item.shippingMethodImage && item.isShippidata && (
                           <div className="flex">
                             <div className="w-[36rem]">
                               <div className="flex m-5">
@@ -716,7 +716,7 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className="max-w-[100%] mt-10">
                                   <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                  {item.shippingData?.node.title}
+                                    {item.shippingData?.node.title}
                                   </h3>
                                   <br />
                                   <br />
@@ -766,9 +766,9 @@ export default function AddCartFunc() {
                                 <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
                                   {' '}
                                   Subtotal: ${' '}
-                                  {item.price * item.csvFileLen +
+                                  {(item.price * item.csvFileLen +
                                     item.giftCardPrice * item.csvFileLen +
-                                    item.shippingDataCost * 1 +
+                                    (item.isShippidata?item.shippingDataCost * 1:0) +
                                     (item.usCount || item.nonUSCount
                                       ? postPrice * item.usCount +
                                         postPrice2 * item.nonUSCount
@@ -795,7 +795,7 @@ export default function AddCartFunc() {
                                         item.reciverAddress?.country?.toLowerCase() ==
                                           undefined
                                       ? postPrice * item.csvFileLen
-                                      : postPrice2 * item.csvFileLen)}
+                                      : postPrice2 * item.csvFileLen)).toFixed(2)}
                                 </h3>
                               </div>
                             </div>
@@ -862,6 +862,10 @@ export default function AddCartFunc() {
                               onClick={() => {
                                 if (customerId) {
                                   setShowCartPage(false);
+                                  window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth', // Make the scroll behavior smooth
+                                  });
                                 } else {
                                   setLoginModal(true);
                                 }
@@ -875,6 +879,18 @@ export default function AddCartFunc() {
                       </div>
                     </div>
                   )}
+                  <div className="w-[73rem] m-auto mt-10 mb-10">
+                    <div className="p-[30px] bg-[#FFF6F6] w-[50%]">
+                      <h3 className='text-[30px] font-karla text-[#1b5299]'>NOTE</h3>
+                      <p className='text-[#000] font-karla'>Add special instructions for your order...</p>
+                      <textarea
+                        name=""
+                        id="cart-note"
+                        cols="30"
+                        rows="4"
+                      ></textarea>
+                    </div>
+                  </div>
                 </>
               </>
             ) : (
