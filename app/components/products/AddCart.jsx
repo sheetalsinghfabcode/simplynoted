@@ -30,7 +30,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     const [recipientAddress, setRecipientAddress] = useState([])
     const [selectedItem, setSelectedItem] = useState(editOrderValue?.data ? editOrderValue.data.reciverAddress : null);
     const [selectedItem2, setSelectedItem2] = useState(editOrderValue?.data ? editOrderValue.data.senderAddress : null);
-    const [selectShipMode, setSelectShipMode] = useState(editOrderValue?.data ? editOrderValue.data.shippingData : null)
+    const [selectShipMode, setSelectShipMode] = useState(editOrderValue?.data? editOrderValue.data.shippingData:'')
     const [searchData, setsearchData] = useState(null);
     const [searchData2, setsearchData2] = useState(null);
     const [cardVal, setCardVal] = useState('')
@@ -218,7 +218,8 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         customFontName:customFontName?customFontName: "Select Custom Font",
         lineHeight:cartDataReq?.lineHeight,
         signOffLineHeight:cartDataReq?.signOffLineHeight,
-        signOffFontSize:cartDataReq?.signOffFontSize
+        signOffFontSize:cartDataReq?.signOffFontSize,
+        isShippidata:show?show:false
     }
 
     let keyUpdate1 = 'messageData'
@@ -238,6 +239,13 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     let keyUpdate15 = 'lineHeight'
     let keyUpdate16 = 'signOffLineHeight'
     let keyUpdate17 = 'signOffFontSize'
+    let keyUpdate18 = 'csvFileLen'
+    let keyUpdate19 = 'csvBulkData'
+    let keyUpdate20 = 'csvFileURL'
+    let keyUpdate21 = 'usCount'
+    let keyUpdate22 = 'nonUSCount'
+    let keyUpdate23 = 'shippingMethodImage'
+    let keyUpdate24 = 'isShippidata'
     function onClickAddCart() {
         setLoader(true);
         if (editOrderValue?.index >= 0) {
@@ -261,8 +269,13 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                 storedData[editOrderValue.index][keyUpdate15] = cartDataReq ? cartDataReq?.lineHeight: editOrderValue?.data.lineHeight;
                 storedData[editOrderValue.index][keyUpdate16] = cartDataReq ? cartDataReq?.signOffLineHeight: editOrderValue?.data.signOffLineHeight;
                 storedData[editOrderValue.index][keyUpdate17] = cartDataReq ? cartDataReq?.signOffFontSize: editOrderValue?.data.signOffFontSize;
-
-
+                storedData[editOrderValue.index][keyUpdate18] = cartDataReq ? cartDataReq?.csvFileLen: editOrderValue?.data.csvFileLen;
+                storedData[editOrderValue.index][keyUpdate19] = cartDataReq ? cartDataReq?.bulkCsvData: editOrderValue?.data.bulkCsvData;
+                storedData[editOrderValue.index][keyUpdate20] = cartDataReq ? cartDataReq?.csvFileBulk: editOrderValue?.data.csvFileBulk;
+                storedData[editOrderValue.index][keyUpdate21] = cartDataReq ? cartDataReq?.usCount: editOrderValue?.data.usCount;
+                storedData[editOrderValue.index][keyUpdate22] = cartDataReq ? cartDataReq?.nonUsCount: editOrderValue?.data.nonUsCount;
+                storedData[editOrderValue.index][keyUpdate23] = selectShipMode ? shippingData.featuredImage.url : '';
+                storedData[editOrderValue.index][keyUpdate24] = show?show:false;
             }
             localStorage.setItem('mydata', JSON.stringify(storedData));
             localStorage.removeItem('reqFielddInCart')
@@ -432,7 +445,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                                             <input
                                                             className='mr-2'
                                                                 value={item}
-                                                                checked={selectShipMode?.node.title === item.node.title}
+                                                                checked={ selectShipMode && selectShipMode?.node.title === item.node.title}
                                                                 type="radio"
                                                                 onChange={() => handleBoxoNShipping(item)}
                                                             />
