@@ -43,6 +43,13 @@ export function StateContextProvider({children}) {
     }
     return null; // Fallback if localStorage is not available
   });
+  const [phoneNumber, setPhoneNumber] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const phone = localStorage.getItem('phone');
+      return phone ? phone : null;
+    }
+    return null; // Fallback if localStorage is not available
+  });
   const [packageProduct,setPackageProduct] = useState("")
   const [subscriptionProduct,setSubscriptionProduct] = useState("")
   const [subscriptionPriceId,setSubscriptionPriceId] = useState("")
@@ -115,7 +122,9 @@ export function StateContextProvider({children}) {
         fullName,
         setFullName,
         userEmail,
-        setUserEmail
+        setUserEmail,
+        phoneNumber,
+        setPhoneNumber,
       }}
     >
       {children}

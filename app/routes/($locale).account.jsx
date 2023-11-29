@@ -160,6 +160,7 @@ function Account({customer, heading, featuredData}) {
       localStorage.removeItem('selectedPlan');
       localStorage.removeItem('subscriptionName');
       localStorage.removeItem('amount');
+      localStorage.removeItem('phone');
 
       localStorage.removeItem('firstName', customer.firstName);
       localStorage.removeItem('lastName', customer.lastName);
@@ -190,13 +191,11 @@ function Account({customer, heading, featuredData}) {
         );
         localStorage.setItem(
           'subscriptionName',
-          JSON.stringify(
             json.stripe.subscription ? json.stripe.subscription : 'Free',
-          ),
         );
       } else {
         localStorage.setItem('packageDiscount', JSON.stringify(0));
-        localStorage.setItem('subscriptionName', JSON.stringify('Free'));
+        localStorage.setItem('subscriptionName',('Free'));
       }
     } catch (error) {
       console.log(error, 'error at credit Card');

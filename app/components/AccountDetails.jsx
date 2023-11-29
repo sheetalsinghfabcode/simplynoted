@@ -48,18 +48,18 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
     generateApiKey();
   }, [customerID]);
 
-  const [apiKey, setApiKey] = useState('');
 
-  const {fullName, setFullName, userEmail, setUserEmail} = useStateContext();
+  const {fullName, setFullName, userEmail, setUserEmail, phoneNumber ,setPhoneNumber} = useStateContext();
+
 
   useEffect(() => {
-    const storedApiKey = localStorage.getItem('apiKey');
     const storedFullName = localStorage.getItem('SNFullName');
     const storedUserEmail = localStorage.getItem('SnEmail');
+     const  phoneNumber = localStorage.getItem('phone');
 
-    setApiKey(storedApiKey || '');
     setFullName(storedFullName || '');
     setUserEmail(storedUserEmail || '');
+    setPhoneNumber(phoneNumber)
   }, []);
 
 
@@ -77,7 +77,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
           {/* Phone */}
           <div className="flex mb-4">
             <div className="w-1/4 text-sm text-gray-600">Phone:</div>
-            <p className="w-3/4 text-[16px]  font-semibold">{phone}</p>
+            <p className="w-3/4 text-[16px]  font-semibold">{ phoneNumber ? phoneNumber : phone }</p>
           </div>
 
           {/* Email */}
