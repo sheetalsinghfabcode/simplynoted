@@ -9,8 +9,6 @@ const PurchaseModal = ({
 
 const {selectedPlan,amount} = useStateContext()
 
-
-
     return (
       <div
         className={`${

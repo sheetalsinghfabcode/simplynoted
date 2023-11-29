@@ -40,7 +40,7 @@ const PackageModal = ({
           <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[10px]">
             <span className="text-[14px] font-normal font-karla text-center">
               {' '}
-              {stripeCollection &&
+              {stripeCollection && stripeCollection.length> 0 &&
               stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                 ? stripeCollection.stripe?.subscription
                 : 'Free'}{' '}
@@ -49,21 +49,22 @@ const PackageModal = ({
             <span className="text-[14px] font-normal font-karla text-center">
               {' '}
               Your current Prepaid Package:{' '}
+              {stripeCollection && stripeCollection.length > 0 ?
               <span className="text-[14px] font-karla font-normal ">
                 {stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                   ? stripeCollection.stripe?.subscription
                   : 'Free'}{' '}
                 - {stripeCollection.stripe?.packageQuantity} cards -
                 {stripeCollection.stripe?.packageDiscount}% DISCOUNT
-              </span>
-            </span>
+              </span> : <span>None</span> }
+            </span> 
             <span className="text-[14px] font-normal font-karla text-center">
               {' '}
-              Balance: ${stripeCollection.stripe?.balance}
+              Balance: ${stripeCollection.stripe?.balance ? stripeCollection.stripe?.balance: 0.00}
             </span>
           </div>
           <h3 className="text-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto  font-semibold">
-            {stripeCollection &&
+            {stripeCollection && stripeCollection.length >0 &&
             stripeCollection.stripe?.subscriptionStatus !== 'canceled'
               ? stripeCollection.stripe?.subscription
               : 'Free'}{' '}

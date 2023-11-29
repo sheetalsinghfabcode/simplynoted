@@ -71,7 +71,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
           {/* Name */}
           <div className="flex mb-4">
             <div className="w-1/4 text-sm text-gray-600">Name:</div>
-            <p className="w-3/4 text-[16px] font-semibold">{fullName}</p>
+            <p className="w-3/4 text-[16px] font-semibold">{fullName ? fullName : `${firstName || ''} ${lastName ? lastName + ' ' : ''}`}</p>
           </div>
 
           {/* Phone */}

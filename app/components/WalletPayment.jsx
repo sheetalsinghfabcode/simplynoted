@@ -44,13 +44,11 @@ export function WalletPayment({ setShowCartPage, StripeKey,totalPrize }) {
     function closeModal() {
         setShowCardBox(false)
     }
-  
-  
+
     async function getSavedCards(Id) {
         try {
             const res = await fetch(`https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`)
             const json = await res.json()
-            console.log(json, 'creditCard Details');
             if (json) {
                 setSavedCart(json.payments)
             }

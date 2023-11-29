@@ -273,10 +273,11 @@ const ContactTable = ({
     return result;
   }
 
+  let file ;
+
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
+     file = event.target.files[0];
     if (file) {
-      console.log("file", file);
       const reader = new FileReader();
   
       reader.onload = (e) => {
@@ -286,7 +287,6 @@ const ContactTable = ({
         setFileData(jsonData);
   
         // Set the 'file' variable to null after using it
-        event.target.value = null; // Reset the input value to allow re-selecting the same file
       };
       reader.readAsText(file);
     }
@@ -352,18 +352,19 @@ const ContactTable = ({
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
         setLoader(false);
+        file= null
 
         'Successful response data:', responseData.result;
       } else {
         setSelectedFile(null);
         setLoader(false);
-
+        file=null
         throw new Error('Network response was not ok');
       }
     } catch (error) {
       setSelectedFile(null);
       setLoader(false);
-
+      file=null
       console.log('Error uploading data:', error);
       throw error;
     }
@@ -441,7 +442,7 @@ const ContactTable = ({
     setIsModalOpen(false);
   };
 
-  console.log("selectedFile",selectedFile)
+  console.log("selectedFile",file)
   return (
     <>
       {errorModal ? (

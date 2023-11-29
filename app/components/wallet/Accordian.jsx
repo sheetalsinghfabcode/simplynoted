@@ -100,7 +100,6 @@ const Accordion = ({
         `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
-      console.log(json, 'creditCard Details');
       if (json) {
         setSavedCart(json.payments);
       }
@@ -153,11 +152,11 @@ const Accordion = ({
     const cardsRegex = /([\d,]+) Standard Cards/;
 
     // Extracting discount percentage
-    const discountMatch = str.match(discountRegex);
+    const discountMatch = str?.match(discountRegex);
     const discount = discountMatch ? parseFloat(discountMatch[1]) : null;
 
     // Extracting number of cards
-    const cardsMatch = str.match(cardsRegex);
+    const cardsMatch = str?.match(cardsRegex);
     let cards = null;
     if (cardsMatch) {
       cards = parseInt(cardsMatch[1]?.replace(/,/g, ''), 10);
