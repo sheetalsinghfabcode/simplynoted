@@ -4,7 +4,6 @@ import StripeCard from './StripeCard';
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import DynamicButton from '../DynamicButton';
-import Loader from '../modal/Loader';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
 
@@ -87,7 +86,6 @@ const Accordion = ({
         },
       );
 
-      console.log(json, 'createCustomerId Response');
       // await addNewCreditCard(id, json.stripeCustomerId);
       // }
     } catch (error) {
@@ -119,9 +117,6 @@ const Accordion = ({
     formData.name = fullName;
     formData.email = userEmail;
   }, []);
-
-
-
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -201,6 +196,7 @@ const Accordion = ({
 
       const data = await response.json();
       if (data) {
+        
         paymentPurchase(id, data);
       }
       // Handle the response data here
@@ -240,7 +236,7 @@ const Accordion = ({
       })
       .then((data) => {
         localStorage.setItem('packageDiscount', JSON.stringify(discount));
-        localStorage.setItem('selectedPlan', selectedPlan)
+        localStorage.setItem('selectedPlan', selectedPlan);
         localStorage.setItem('amount', amount);
         // Handle the response data here
         console.log('Success:', data);
@@ -295,13 +291,12 @@ const Accordion = ({
       });
   };
 
-
   const setFirstPaymentId = () => {
     if (savedCard && savedCard.length > 0) {
       setPaymentMethodId(savedCard[0].paymentId); // Set the first payment ID
     }
   };
-  
+
   // Calling the function to set the first payment ID when the component renders
   useEffect(() => {
     setFirstPaymentId();
@@ -511,7 +506,9 @@ const Accordion = ({
                     <div>
                       <button
                         className="bg-[#1b5299] w-[200px] text-[#fff] p-2 rounded"
-                        onClick={() => setShowStripeCard(!showStripeCard)}
+                        onClick={() => {
+                          setShowStripeCard(!showStripeCard);
+                        }}
                       >
                         Add New Card
                       </button>
@@ -535,7 +532,7 @@ const Accordion = ({
                 <div>Total</div>
                 <div>${finalPrice}</div>
               </div>
-              {savedCard && (
+              { savedCard && savedCard.length > 0}
                 <div className="flex justify-between  w-full gap-[10px] items-center my-[16px]">
                   <DynamicButton
                     text="Previous"
@@ -550,14 +547,13 @@ const Accordion = ({
                     type="submit"
                     onClick={() => {
                       setPaymentLoader(true);
-                      createSubscription(paymentMethodId);
+                      createSubscription(paymentMethodId)
                     }}
                     className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
                   >
                     Complete Purchase
                   </button>
                 </div>
-              )}
               <div className=" border-2 text-[12px] bg-white text-left p-[10px] border-solid border-[#324879]">
                 <span>
                   Custom cards and international postage may cost extra. You
