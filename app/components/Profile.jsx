@@ -177,24 +177,26 @@ const Profile = ({
           '',
       );
       if (error) {
-        // setLoader(false);
+        setLoader(false);
       }
       if (jsonResponse.customer) {
         setProfile(false);
-        // setLoader(false);
+        setLoader(false);
 
         setAccountDetail(true);
       }
 
       if (response.ok) {
-        // setLoader(false);
+        setLoader(false);
         // Request was successful
       } else {
+        setLoader(false)
         // Handle errors if the response is not OK
         console.error('Error updating user profile:', response);
       }
     } catch (error) {
       // Handle network errors or exceptions
+      setLoader(false)
       console.error('Error:', error);
     }
   };

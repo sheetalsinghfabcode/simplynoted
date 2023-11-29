@@ -33,7 +33,7 @@ const ErrorModal = ({isOpen, onRequestClose, title, content}) => {
           {title}
         </h2>
         <ul>
-          {content.map((errorMessage, index) => (
+          { content && content.length > 0  && content?.map((errorMessage, index) => (
             <li className="text-center text-black text-[16px]" key={index}>
               {errorMessage}
             </li>
