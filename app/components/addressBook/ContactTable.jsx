@@ -131,10 +131,10 @@ const ContactTable = ({
           />
         ),
       },
-      {
+      !continueBtn && {
         Header: 'Edit',
         accessor: 'id',
-        Cell: ({row}) => (
+        Cell: ({ row }) => (
           <img
             src={edit}
             className="w-[20px] h-[20px] m-auto cursor-pointer"
@@ -142,6 +142,7 @@ const ContactTable = ({
           />
         ),
       },
+    
       {
         Header: 'Type',
         accessor: 'type',
@@ -192,7 +193,7 @@ const ContactTable = ({
         Header: 'anniversary',
         accessor: 'anniversary',
       },
-    ],
+    ].filter(Boolean),
     [selectedCheckboxes],
   );
 
@@ -275,17 +276,22 @@ const ContactTable = ({
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      console.log("file", file);
       const reader = new FileReader();
-
+  
       reader.onload = (e) => {
         const csvData = e.target.result;
         const jsonData = csvToJson(csvData);
         setSelectedFile(file);
         setFileData(jsonData);
+  
+        // Set the 'file' variable to null after using it
+        event.target.value = null; // Reset the input value to allow re-selecting the same file
       };
       reader.readAsText(file);
     }
   };
+  
   const handleSearchInputChange = (event) => {
     const value = event.target.value;
     setSearchText(value);
@@ -434,6 +440,8 @@ const ContactTable = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  console.log("selectedFile",selectedFile)
   return (
     <>
       {errorModal ? (

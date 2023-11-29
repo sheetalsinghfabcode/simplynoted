@@ -140,12 +140,22 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       <table className="mx-auto table bg-white">
         <thead>
           <tr className="h-[120px]">
-            <th className="text-center py-4 px-10"></th>
+            <th className="text-center py-4 lg:min-w-[260px] px-10"></th>
             {pricingPlans
               .slice(0)
               .reverse()
               .map((plan, index) => {
-                // if (plan.name === 'Enterprise' || subscriptionType === 'business' || (subscriptionType === 'team' && plan.name !== 'Free')) {
+                let renderButton = true;
+
+                if (
+                  subscribeBusiness &&
+                  (plan.name === 'Team' || plan.name === 'Free')
+                ) {
+                  renderButton = false; // Don't render buttons for Team or Free if subscribeBusiness is true
+                } else if (subscribeTeam && plan.name === 'Free') {
+                  renderButton = false; // Don't render Free button if subscribeTeam is true
+                }
+
                 return (
                   <th key={index} className="text-center py-4 px-10">
                     <span className="text-lg text-[#000] uppercase block">
@@ -160,15 +170,18 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                     <span className="text-sm text-[#000] leading-[150%] block">
                       per card
                     </span>
-                    <DynamicButton
-                      onClickFunction={plan.onClick}
-                      className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
-                      text={plan.buttonText}
-                    />
+                    {/* ... Plan details */}
+                    {renderButton ? (
+                      <DynamicButton
+                        onClickFunction={plan.onClick}
+                        className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
+                        text={plan.buttonText}
+                      />
+                    ) : (
+                      <span></span>
+                    )}
                   </th>
                 );
-                // }
-                // return null;
               })}
           </tr>
         </thead>
