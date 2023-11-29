@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import RoiLeadingArrowImage from '../../assets/Image/roi-leading-arrow.webp';
 import RoiRobotImage from '../../assets/Image/roi-robot.webp';
-
+import DynamicButton from '~/components/DynamicButton';
 export default function RoiCalculator() {
   const [inputValues, setInputValues] = useState({
     cardsSent: 10000,
@@ -275,7 +275,7 @@ export default function RoiCalculator() {
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Simply Noted Budget</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className="roi-text-num">
                                   {`$${prettyFormatNumber(
                                     Number(
                                       outputValues.simplyNotedBudget.toFixed(2),
@@ -299,7 +299,7 @@ export default function RoiCalculator() {
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Response Rate</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className="roi-text-num">
                                   {`${inputValues.responseRate}%`}
                                 </h4>
                               </div>
@@ -313,7 +313,7 @@ export default function RoiCalculator() {
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Demo Lead %</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className="roi-text-num">
                                   {`${inputValues.demoLead}%`}
                                 </h4>
                               </div>
@@ -327,7 +327,7 @@ export default function RoiCalculator() {
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Demo Show Up Rate %</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className="roi-text-num">
                                   {`${inputValues.demoShow}%`}
                                 </h4>
                               </div>
@@ -335,7 +335,7 @@ export default function RoiCalculator() {
                             <div className="output-holder">
                               <div className="output-item">
                                 <h4>Demo Close Rate</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className="roi-text-num">
                                   {`${inputValues.demoClose}%`}
                                 </h4>
                               </div>
@@ -346,7 +346,7 @@ export default function RoiCalculator() {
                                 </p>
                               </div>
                               <div className="output-item">
-                                <p>
+                                <p className='w-[78%]'>
                                   Sales Rep Commission (% of Gross Contribution)
                                 </p>
                                 <p className="roi-text-right">10%</p>
@@ -370,7 +370,7 @@ export default function RoiCalculator() {
                             >
                               <div className="output-item">
                                 <h4>Average Customer Sale Value</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className="roi-text-num">
                                   {`$${prettyFormatNumber(
                                     inputValues.averageCustomer,
                                   )}`}
@@ -381,16 +381,16 @@ export default function RoiCalculator() {
                           <div className="roi-totals">
                             <div className="output-holder mb-2">
                               <div className="output-item">
-                                <h4>ROI (Percentage)</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className='roi-total-head'>ROI (Percentage)</h4>
+                                <h4 className="roi-total-value">
                                   {`${outputValues.ROIpercentage.toFixed(2)}%`}
                                 </h4>
                               </div>
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
-                                <h4>ROI (Total Sales)</h4>
-                                <h4 className="roi-text-right">
+                                <h4 className='roi-total-head' >ROI (Total Sales)</h4>
+                                <h4 className="roi-total-value">
                                   {`${prettyFormatNumber(
                                     Number(outputValues.ROItotal.toFixed(2)),
                                   )}`}
@@ -414,6 +414,33 @@ export default function RoiCalculator() {
             />
           </div>
         </div>
+        
+      <div className="lg:w-full md:w-[90%] mx-auto overflow-hidden relative">
+        
+        <div className="banner-detail text-center relative w-[70%] mx-auto !h-[302px]">
+       
+       
+          <img className="lg:block hidden absolute mt-[-217px] right-[-268px] w-[42%] flex-row " src="https://simplynoted.com/cdn/shop/files/calculator-pens.png?v=16934020513361355499" alt="shopify" />
+         <div></div>
+         <div className="md:flex-row flex-col mx-auto w-full">
+            <DynamicButton
+                    text=""
+                    className="req-btn "
+                  
+            />
+            <DynamicButton
+                    text=""
+                    className="sch-btn"
+     
+                
+            />
+</div>
+            </div>
+          </div>
+          
+        
+       
+  
       </section>
     </>
   );
