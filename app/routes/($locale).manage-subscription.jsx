@@ -12,6 +12,7 @@ import CircularLoader from '~/components/CircularLoder';
 import PackageModal from '~/components/wallet/PackageModal';
 import PurchaseModal from '~/components/wallet/PurchaseModal';
 import Accordion from '~/components/wallet/Accordian';
+import PaymentModal from '~/components/wallet/PaymentModal';
 
 export async function loader({context, request}) {
   const StripeKey = context.env.STRIPE_KEY;
@@ -43,7 +44,7 @@ const ManageSubscription = () => {
   const [updateCard, setUpdateCard] = useState(false);
   const [packageModal, setPackageModal] = useState(false);
   const [purchaseModal, setPurchaseModal] = useState(false);
-  const [showAccordion,setShowAccordion] = useState(false)
+  const [showAccordion, setShowAccordion] = useState(false);
 
   const [loader, setLoader] = useState({
     paymentHistory: false,
@@ -386,13 +387,20 @@ const ManageSubscription = () => {
     },
   );
 
+  function prettyFormatNumber(inputString) {
+    inputString = inputString?.toString();
+    return inputString?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  console.log('stripeCollection', stripeCollection);
+
   return (
     <>
       <PackageModal
         show={packageModal}
         onConfirm={() => {
           setPackageModal(false);
-          setPurchaseModal(true)
+          setPurchaseModal(true);
         }}
         setPurchaseModal={setPurchaseModal}
         onCancel={() => setPackageModal(false)}
@@ -400,23 +408,23 @@ const ManageSubscription = () => {
         stripeCollection={stripeCollection}
         confirmText="Add to cart"
       />
+      <PaymentModal show={showAccordion} />
+
       <PurchaseModal
         show={purchaseModal}
         onCancel={() => {
           setPurchaseModal(false);
           setPackageModal(true);
-          setShowAccordion(true)
+        }}
+        onConfirm={() => {
+          setPurchaseModal(false);
+          setShowAccordion(true);
         }}
         filteredWalletData={filteredWalletData}
         stripeCollection={stripeCollection}
         cancelText="Prev"
         confirmText="Contine To Checkout"
       />
-      {showAccordion &&
-      
-      <Accordion
-      />
-}
 
       <ConfirmationModal
         show={deleteModal}
@@ -511,7 +519,7 @@ const ManageSubscription = () => {
                     <span className="text-[24px] lg:text-[46px] !font-bold text-[#ef6e6e] uppercase">
                       $
                       {!stripeCollection.error
-                        ? stripeCollection.stripe?.balance
+                        ? prettyFormatNumber(stripeCollection.stripe?.balance)
                         : 0.0}
                     </span>
                   </div>
@@ -524,13 +532,13 @@ const ManageSubscription = () => {
                           My Plan
                         </span>
                         <span className="text-[20px] !font-bold text-[#ef6e6e] uppercase">
-                          {stripeCollection.stripe?.subscriptionStatus !==
+                          {stripeCollection && stripeCollection.length >0 && stripeCollection.stripe?.subscriptionStatus !==
                             'canceled' && !stripeCollection.error
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
                         </span>
                       </div>
-                      {stripeCollection.stripe?.subscriptionStatus !==
+                      { stripeCollection.stripe?.subscriptionStatus && stripeCollection.stripe?.subscriptionStatus !==
                         'canceled' &&
                         !stripeCollection.error && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px]">
@@ -555,6 +563,7 @@ const ManageSubscription = () => {
                             navigate('/simply-noted-plans')
                           }
                           text={
+                            stripeCollection.stripe?.subscriptionStatus  &&
                             stripeCollection.stripe?.subscriptionStatus !==
                               'canceled' && !stripeCollection.error
                               ? 'Change Plan'
@@ -598,7 +607,8 @@ const ManageSubscription = () => {
                       <span className="text-[16px] text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
-                      {stripeCollection.stripe?.balance !== 0 &&
+                      {stripeCollection && stripeCollection.length > 0 
+                      && stripeCollection.stripe?.balance !== 0 &&
                       !stripeCollection.error ? (
                         <span className="text-[20px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==

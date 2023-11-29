@@ -156,6 +156,10 @@ function Account({customer, heading, featuredData}) {
       localStorage.removeItem('apiKey');
       localStorage.removeItem('packageDiscount');
       localStorage.removeItem('subscriptionName');
+      localStorage.removeItem('SNFullName');
+      localStorage.removeItem('selectedPlan');
+      localStorage.removeItem('subscriptionName');
+      localStorage.removeItem('amount');
 
       localStorage.removeItem('firstName', customer.firstName);
       localStorage.removeItem('lastName', customer.lastName);
@@ -167,11 +171,6 @@ function Account({customer, heading, featuredData}) {
     if (typeof window !== 'undefined' && customer) {
       localStorage.setItem('customerId', result);
       setCustomerId(result)
-
-      localStorage.setItem(
-        'SNFullName',
-        `${customer.firstName + customer.lastName}`,
-      );
       localStorage.setItem('SnEmail', customer.email);
       localStorage.setItem('firstName', customer.firstName);
       localStorage.setItem('lastName', customer.lastName);

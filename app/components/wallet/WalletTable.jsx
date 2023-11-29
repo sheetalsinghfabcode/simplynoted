@@ -129,8 +129,8 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     {
       name: 'Free',
       price: pricePerCard[0],
-      buttonText: subscribeFree ? 'Purchase Package' : 'Upgrade',
-      buttonColor: subscribeFree ? '#1b5299' : '#ef6e6e',
+      buttonText: 'Purchase Package',
+      buttonColor: '#1b5299',
       onClick: () => setWalletPlan(true),
     },
   ];
@@ -157,7 +157,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                 }
 
                 return (
-                  <th key={index} className="text-center py-4 px-10">
+                  <th key={index} className="text-center lg:min-w-[260px] py-4 px-10">
                     <span className="text-lg text-[#000] uppercase block">
                       {plan.name}
                     </span>

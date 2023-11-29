@@ -106,13 +106,12 @@ const Profile = ({
         const jsonResponse = await response.json();
 
         if (jsonResponse.updated) {
-          debugger
         localStorage.setItem('SnEmail', accountDetails.email);
-        localStorage.setItem('SNFullName', JSON.stringify(`${accountDetails.firstName || ''} ${ accountDetails.lastName || ''}`));
+        localStorage.setItem('SNFullName', `${accountDetails.firstName || ''} ${accountDetails.lastName ? accountDetails.lastName + ' ' : ''}`)
       
           setTimeout(() =>{
             setUserEmail(accountDetails.email)
-            setFullName(`${accountDetails.firstName || ''} ${ accountDetails.lastName || ''}`)
+            setFullName(`${accountDetails.firstName || ''} ${accountDetails.lastName ? accountDetails.lastName + ' ' : ''}`)
             setProfile(false);
             setLoader(false);
             setAccountDetail(true);
