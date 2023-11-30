@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import DynamicButton from '../DynamicButton';
+import {useLocation} from '@remix-run/react';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
@@ -23,7 +24,7 @@ const StripeCard = ({
   savedCard,
   handlePurchaseCard,
   addCreditModal,
-  updateCard
+  updateCard,
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
@@ -42,7 +43,7 @@ const StripeCard = ({
         const {id} = paymentMethod;
         if (id && !savedCard && !addCreditModal && !updateCard) {
           createCustomerId(id);
-        } else  {
+        } else {
           handlePurchaseCard(id);
         }
 
@@ -55,23 +56,25 @@ const StripeCard = ({
     }
   };
 
+  const pathname = useLocation();
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-[500px]">
       <CardElement options={CARD_OPTIONS} className="m-5" />
-      <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
-        <button
-          type="submit"
-          className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
-        >
+      {pathname.pathname === '/manage-subscription' && (
+        <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
+          <button
+            type="submit"
+            className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
+          >
+            {addCreditModal  ? 'Add Card' : 'Update Card'}
 
-            {(addCreditModal && !updateCard) ? 'Add Card' : 'Update Card'}
-
-          {/* {(!savedCard || savedCard.length === 0) && 'Complete Purchase'} */}
-        </button>
-      </div>
+            {/* {(!savedCard || savedCard.length === 0) && 'Complete Purchase'} */}
+          </button>
+        </div>
+      )}
     </form>
-  ); 
+  );
 };
 
 export default StripeCard;

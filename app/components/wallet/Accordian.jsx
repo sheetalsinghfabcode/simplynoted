@@ -61,9 +61,8 @@ const Accordion = ({
     paymentMethodId: '',
   });
 
-  async function createCustomerId(id) {
+  async function createCustomerId(id,paymentMethodId) {
     try {
-      setloader(true);
       const res = await fetch(
         `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
@@ -86,10 +85,8 @@ const Accordion = ({
         },
       );
 
-      // await addNewCreditCard(id, json.stripeCustomerId);
-      // }
+     await  createSubscription(paymentMethodId)
     } catch (error) {
-      setloader(false);
       console.log(error, 'error on CreateCard');
     }
   }
@@ -182,7 +179,6 @@ const Accordion = ({
         subscriptionName: subscriptionTitle,
       };
 
-      console.log('payLoad', payLoad);
       const apiUrl = `https://api.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
       const response = await fetch(apiUrl, {
@@ -217,7 +213,6 @@ const Accordion = ({
       subscriptionProduct: variantId,
     };
 
-    console.log('payLoad', payLoad);
     const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
@@ -546,7 +541,7 @@ const Accordion = ({
                     type="submit"
                     onClick={() => {
                       setPaymentLoader(true);
-                      createSubscription(paymentMethodId)
+                      createCustomerId(paymentMethodId)
                     }}
                     className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
                   >

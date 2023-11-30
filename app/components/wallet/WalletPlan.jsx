@@ -1,5 +1,5 @@
 import DynamicButton from '../DynamicButton';
-import { useEffect} from 'react';
+import {useEffect} from 'react';
 
 const WalletPlans = ({
   WalletData,
@@ -14,7 +14,7 @@ const WalletPlans = ({
   setPackageProduct,
   amount,
   setSubscriptionTitle,
-  setSubscriptionPriceId
+  setSubscriptionPriceId,
 }) => {
   const handleRadioChange = (event) => {
     setSelectedPlan(event.target.value);
@@ -38,6 +38,9 @@ const WalletPlans = ({
       setAmount(stripeCollection.stripe?.packageQuantity || 0); // Set the amount
     }
   }, [stripeCollection]);
+
+  console.log('stripeCollection', stripeCollection?.stripe.subscription);
+  console.log('amount', amount);
 
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
@@ -78,9 +81,8 @@ const WalletPlans = ({
                     (metafield) => metafield?.key === 'card_amount',
                   );
                   const subscriptionPriceId = product.node.metafields.find(
-                    (metafield) => metafield?.key === "strip_link",
-
-                  )
+                    (metafield) => metafield?.key === 'strip_link',
+                  );
 
                   const subscriptionMetafield = product.node.metafields.find(
                     (metafield) =>
@@ -89,16 +91,19 @@ const WalletPlans = ({
                         stripeCollection.stripe?.subscription,
                   );
 
-
                   return (
                     <div
                       onClick={() => {
-                        setSubscription(subscriptionMetafield?.value || 0);
-                        setSubscriptionProduct(product.node.id)
-                        setPackageProduct(variant.node.id)
-                        setSubscriptionTitle(product.node.title)
-                        setAmount((variant.node.price.amount) || 0);
-                        setSubscriptionPriceId(subscriptionPriceId?.value)
+                        if (
+                       
+                          stripeCollection.stripe.subscription !== product.node.title) {
+                          setSubscription(subscriptionMetafield?.value || 0);
+                        }
+                        setSubscriptionProduct(product.node.id);
+                        setPackageProduct(variant.node.id);
+                        setSubscriptionTitle(product.node.title);
+                        setAmount(variant.node.price.amount || 0);
+                        setSubscriptionPriceId(subscriptionPriceId?.value);
                         handleRadioChange({
                           target: {
                             value: `${variant.node.title} ${titleMetafield?.value}`,
@@ -137,7 +142,7 @@ const WalletPlans = ({
                           )}
                         {amountMetafield?.value && (
                           <span className="text-[14px] font-medium">
-                            ${(variant.node.price.amount)}
+                            ${variant.node.price.amount}
                           </span>
                         )}
                       </div>

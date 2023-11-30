@@ -389,8 +389,13 @@ const ManageSubscription = () => {
 
   function prettyFormatNumber(inputString) {
     inputString = inputString?.toString();
-    return inputString?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  }
+    if (!isNaN(parseFloat(inputString))) {
+        let number = parseFloat(inputString)?.toFixed(2);
+        return number?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    return inputString; // Return as is if not a valid number
+}
+
 
   console.log('stripeCollection', stripeCollection);
 
