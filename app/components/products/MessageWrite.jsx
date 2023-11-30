@@ -42,6 +42,7 @@ export function MessageWriting({
 }) {
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
+    console.log(metafields,"metafieldsmetafieldsmetafieldsmetafields");
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -86,18 +87,16 @@ export function MessageWriting({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stateCheckCart, setStateCheckCart] = useState(false)
   const [isAddressUploadSuccess,setIsAddressUploadSuccess] = useState(false)
+  const [getMetafields,setgetMetafield] = useState(metafields?metafields:'')
   const [metafieldsHeader,setMetafieldsHeader] = useState(false)
   const [metafieldsFooter,setMetafieldsFooter] = useState(false)
-  // console.log(metafields.header,'metafields.header.data');
-  // if(metafields.header){
-  //   if(metafields.header.data){
-  //     setMetafieldsHeader(true)
-  //   }
-  //   if(metafields.footer.data){
-  //     setMetafieldsFooter(true)
-  //   }
-  //   console.log(metafields.header.data,"xxxxxxxxxxxxx");
-  // }
+  console.log(metafieldsHeader,metafieldsFooter,"metafiled header footer");
+ useEffect(()=>{
+  setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
+  setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
+
+ },[metafields])
+ const [height,setHeight] = useState(metafieldsFooter && metafieldsHeader?200:metafieldsHeader || metafieldsFooter ? 250:100)
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -325,7 +324,7 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex h-[50px]  m-2`}
+            className={`flex h-[48px]  mt-2`}
             style={{justifyContent: metafields.header.justifyContent}}
           >
             <Image className={`!w-20`} src={metafields.header.data} />
@@ -334,17 +333,17 @@ export function MessageWriting({
       } else {
         return (
           <div
-            className={`flex overflow-hidden items-start h-[50px] w-[100%]  px-[2rem] m-2`}
+            className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2`}
           >
             <span
               className={`flex `}
               style={{
-                fontFamily: metafields.footer.fontType,
-                fontSize: metafields.footer.fontSize,
-                textAlign: metafields.footer.textAlign,
-                justifyContent: metafields.footer.justifyContent,
-                flexDirection: metafields.footer.flexDirection,
-                color: metafields.footer.fontColor,
+                fontFamily: metafields.header.fontType,
+                fontSize: metafields.header.fontSize,
+                textAlign: metafields.header.textAlign,
+                justifyContent: metafields.header.justifyContent,
+                flexDirection: metafields.header.flexDirection,
+                color: metafields.header.fontColor,
                 width: '100%',
                 maxWidth: qrValue ? '93%' : '100%',
               }}
@@ -369,7 +368,7 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex  h-[50px]  m-2`}
+            className={`flex  h-[48px]`}
             style={{justifyContent: metafields.footer.justifyContent}}
           >
             <Image className={`!w-20`} src={metafields.footer.data} />
@@ -378,7 +377,7 @@ export function MessageWriting({
       } else {
         return (
           <div
-            className={`flex items-start overflow-hidden justify-center h-[50px] w-[100%] px-[2rem]`}
+            className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem]`}
           >
             <span
               className={`flex `}
@@ -1015,18 +1014,18 @@ export function MessageWriting({
     SavedTemp();
   }, [onDelTemp]);
   console.log(name2.length,"name2.length");
-  let height = '400px'
   return (
     <>
       <div className="mainDivForBox flex gap-10">
         <div
           id="outer"
-          className="outerr h-[400px] w-[100%] bg-white max-w-[600px] relative"
+          className="outerr h-[380px] w-[100%] bg-white max-w-[600px] relative"
         >
           {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
           <div
-            className="outerSec h-[200px] w-[100%] bg-white " 
+            className={`outerSec w-[100%] bg-white mt-1`}
             ref={ref2}
+            style={{height:metafieldsFooter && metafieldsHeader?'210px':metafieldsHeader || metafieldsFooter ? '260px':'300px'}}
           >
             <div
               id="messageBoxID"
@@ -1047,7 +1046,7 @@ export function MessageWriting({
           </div>
           {/* {name2.length>0 && */}
           <div
-            className={`secDiv h-[70px] w-[100%] max-w-[300px] ml-auto bg-white `} 
+            className={`secDiv h-[60px] w-[100%] max-w-[300px] ml-auto bg-white `} 
             ref={ref}
           >
             <div
