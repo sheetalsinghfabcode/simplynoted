@@ -574,7 +574,7 @@ const apidocs = () => {
           {selectedSection === 'USERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-               <span>3.</span> USERS
+               <span className='text-blue-500'>3.</span> USERS
               </h2>
               ``{' '}
             </div>
