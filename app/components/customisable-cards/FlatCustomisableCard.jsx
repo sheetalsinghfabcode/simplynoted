@@ -146,16 +146,6 @@ export default function FlatCustomisableCard({
           frontImageDetails.isImageSelected
         ) {
           const trimmedDiv = document.getElementById('frontTrimmedDiv');
-          // Wait for the image to be fully loaded for the timing issue.
-          await new Promise((resolve) => {
-            const image = trimmedDiv.querySelector('img');
-            if (image.complete) {
-              resolve();
-            } else {
-              image.onload = resolve;
-            }
-          });
-
           const screenshotImageFile = await generateTrimmedImageScreenshotFile(
             trimmedDiv,
           );
@@ -227,6 +217,16 @@ export default function FlatCustomisableCard({
 
   async function generateTrimmedImageScreenshotFile(element) {
     try {
+      // Wait for the image to be fully loaded for the timing issue.
+      await new Promise((resolve) => {
+        const image = element.querySelector('img');
+        if (image.complete) {
+          resolve();
+        } else {
+          image.onload = resolve;
+        }
+      });
+
       const dataUrl = await domtoimage.toPng(element, {
         width: element.offsetWidth,
         height: element.offsetHeight,
