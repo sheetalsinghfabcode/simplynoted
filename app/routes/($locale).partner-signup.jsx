@@ -7,7 +7,7 @@ const Partner_signup = () => {
     <>
       <div className="mt-8 w-full mx-auto flex justify-center">
         <div className="relative grid lg:flex flex-wrap justify-center w-[90%] mx-auto gap-[50px] ">
-          <div className="lg:w-[40%] w-full text-left mt-5">
+          <div className="lg:w-[40%] w-[90%] lg:mx-0 mx-auto relative text-left mt-5">
             <h1 className="text-[#001a5f] text-center md:text-3xl text-xl font-karla tracking-tight pb-[6px] mx-2">
               Signup for the <hr />
               <span className="font-beauty ml-2 md:text-6xl text-3xl font-extrabold">

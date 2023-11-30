@@ -23,7 +23,7 @@ const Swipers = () => {
   return (
     <>
       <div className="my-8">
-        <div className="md:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 mb-16">
+        <div className="sm:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 mb-16">
           Companies we've worked with
         </div>
         <div className="ml-5 mr-10">
@@ -139,42 +139,67 @@ const Swipers = () => {
           </Swiper>
         </div>
 
-        {/* <div className='columns-2'>
-      
-              <img className="w-full" src={Fairway} alt="LogoSimplinotedpic" />{' '}
-            
-              <img
-                className="w-full"
-                src={Mariott}
-                alt="LogoSimplinotedpic"
-              />
-           
-              <img className="w-full" src={Ncca} alt="LogoSimplinotedpic" />
-            
-              <img
-                className="w-full"
-                src={Ford}
-                alt="LogoSimplinotedpic"
-              />
-           
-              <img className="w-full" src={Edward} alt="LogoSimplinotedpic" />
-        
-              <img
-                className="w-full"
-                src={Ronald}
-                alt="LogoSimplinotedpic"
-              />
-            
-              <img className="w-full" src={kw} alt="LogoSimplinotedpic" />
-           
-              <img
-                className="w-full  mt-[-13px]"
-                src={tesla}
-                alt="LogoSimplinotedpic"
-              />
-            
+        <div className="md:hidden  w-[80%] ml-auto block text-center">
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={Fairway}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
 
-        </div> */}
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={Mariott}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
+
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={Ncca}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
+
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={Ford}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
+
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={Edward}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
+
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={Ronald}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
+
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img className="w-[60%] h-auto" src={kw} alt="LogoSimplinotedpic" />{' '}
+          </span>
+
+          <span className="inline-block  w-[49%] mb-[20px]">
+            <img
+              className="w-[60%] h-auto"
+              src={tesla}
+              alt="LogoSimplinotedpic"
+            />{' '}
+          </span>
+        </div>
       </div>
     </>
   );

@@ -18,7 +18,7 @@ export default function RoiCalculator() {
     costsPerLead: 25.29,
     costsPerDemo: 33.73,
     totalClosedDeals: 239.06,
-    CPAcom: 500.0,  
+    CPAcom: 500.0,
     CPAtotal: 589.93,
     ROItotal: 1195312.5,
     ROIpercentage: 5459.59,
@@ -346,7 +346,7 @@ export default function RoiCalculator() {
                                 </p>
                               </div>
                               <div className="output-item">
-                                <p className='w-[78%]'>
+                                <p className="w-[78%]">
                                   Sales Rep Commission (% of Gross Contribution)
                                 </p>
                                 <p className="roi-text-right">10%</p>
@@ -381,7 +381,9 @@ export default function RoiCalculator() {
                           <div className="roi-totals">
                             <div className="output-holder mb-2">
                               <div className="output-item">
-                                <h4 className='roi-total-head'>ROI (Percentage)</h4>
+                                <h4 className="roi-total-head">
+                                  ROI (Percentage)
+                                </h4>
                                 <h4 className="roi-total-value">
                                   {`${outputValues.ROIpercentage.toFixed(2)}%`}
                                 </h4>
@@ -389,7 +391,9 @@ export default function RoiCalculator() {
                             </div>
                             <div className="output-holder">
                               <div className="output-item">
-                                <h4 className='roi-total-head' >ROI (Total Sales)</h4>
+                                <h4 className="roi-total-head">
+                                  ROI (Total Sales)
+                                </h4>
                                 <h4 className="roi-total-value">
                                   {`${prettyFormatNumber(
                                     Number(outputValues.ROItotal.toFixed(2)),
@@ -415,32 +419,47 @@ export default function RoiCalculator() {
           </div>
         </div>
         
-      <div className="lg:w-full md:w-[90%] mx-auto overflow-hidden relative">
-        
-        <div className="banner-detail text-center relative w-[70%] mx-auto !h-[302px]">
-       
-       
-          <img className="lg:block hidden absolute mt-[-217px] right-[-268px] w-[42%] flex-row " src="https://simplynoted.com/cdn/shop/files/calculator-pens.png?v=16934020513361355499" alt="shopify" />
-         <div></div>
-         <div className="md:flex-row flex-col mx-auto w-full">
-            <DynamicButton
-                    text=""
-                    className="req-btn "
-                  
+        <div className="relative overflow-hidden">
+        <img
+              className="lg:block hidden absolute mt-[-288px] right-[-426px] w-[45%] flex-row "
+              src="https://simplynoted.com/cdn/shop/files/calculator-pens.png?v=16934020513361355499"
+              alt="shopify"
             />
-            <DynamicButton
-                    text=""
-                    className="sch-btn"
-     
-                
-            />
-</div>
+          <div className="banner-detail-roi flex justify-center  lg:w-full mx-auto md:w-[84%]">
+            
+            
+          <div className=" flex flex-col md:flex-row md:my-[8rem] w-[35%] lg:mb-0 m-auto  md:mt-[7.5rem] lg:absolute relative lg:ml-[30rem] ">
+                <DynamicButton text=" " className="req-btn md:ml-0 sm:ml-[3rem] !ml-[2rem] w-full" />
+                <DynamicButton text=" " className="sch-btn md:ml-0 sm:ml-[3rem] !ml-[2rem] w-full" />
+              
             </div>
           </div>
-          
-        
-       
-  
+        </div> 
+        <div className='bg-[#324879] text-white mt-20'>
+       <div className='relative m-w-[1450px]'>
+        <div className='flex flex-wrap lg:justify-between justify-center relative  pl-[40px]'>
+          <div className='relative w-[28%]'>
+            <div className='mt-[117px] lg:mb-0 mb-[38px]'>
+              <img src="https://simplynoted.com/cdn/shop/files/underline-2-img.png" className="lg:w-60% w-full" alt=""/>
+
+              <ul className='leading-6 mt-[20px]'>
+                <li className='roi-dots'></li>
+                <li className='roi-dots'></li>
+                <li className='roi-dots'></li>
+                <li className='roi-dots'></li>
+                <li className='roi-dots'></li>
+                <li className='roi-dots'></li>
+              </ul>
+            </div>
+          </div>
+          <div className='lg:flex hidden relative h-[562px] w-[61%]'>
+            <div className='overflow-x-hidden absolute'>
+              <img className='w-full ml-[252px]' src="https://simplynoted.com/cdn/shop/files/calculator-envelopes.png?v=1609436079&94441" alt="roi-img"/>
+            </div>
+          </div>
+        </div>
+       </div>
+       </div>
       </section>
     </>
   );

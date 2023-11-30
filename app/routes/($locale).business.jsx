@@ -146,8 +146,8 @@ const Business = () => {
                         />
                       </div>
                       <div className="white-underline">
-                        <select name="volume" id="">
-                          <option value="Expected Volume">
+                        <select className='!text-[12px]' name="volume" id="">
+                          <option  value="Expected Volume">
                             Expected Volume
                           </option>
                           <option value="100-500">100-500</option>
