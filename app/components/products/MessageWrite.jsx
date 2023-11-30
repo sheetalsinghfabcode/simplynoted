@@ -96,7 +96,6 @@ export function MessageWriting({
   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
 
  },[metafields])
- const [height,setHeight] = useState(metafieldsFooter && metafieldsHeader?200:metafieldsHeader || metafieldsFooter ? 250:100)
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -416,7 +415,7 @@ export function MessageWriting({
     resizeObserver.observe(mainMessageBox);
 
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [mainMessageBox]);
 
   useEffect(() => {
     if (!signOffTextBox) return;
@@ -425,7 +424,7 @@ export function MessageWriting({
     resizeObserver.observe(signOffTextBox);
 
     return () => resizeObserver.disconnect();
-  }, []);
+  }, [signOffTextBox]);
 
   function processCustomMessageInput() {
     mainMessageBox.style.fontSize = '50px';
