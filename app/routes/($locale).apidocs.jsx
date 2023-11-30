@@ -119,7 +119,7 @@ const apidocs = () => {
               }`}
             >
               <button value="API ENDPOINTS" onClick={handleSectionChange}>
-                API ENDPOINTS
+                <span className='text-blue-500'>1.</span>API ENDPOINTS
               </button>
             </li>
             <li
@@ -130,7 +130,7 @@ const apidocs = () => {
               }`}
             >
               <button value="AUTHENTICATION" onClick={handleSectionChange}>
-                AUTHENTICATION
+                <span className='text-blue-500'>2.</span>AUTHENTICATION
               </button>
             </li>
             <li
@@ -141,17 +141,18 @@ const apidocs = () => {
               }`}
             >
               <button value="Retrieve Auth Token" onClick={handleSectionChange}>
-                Retrieve Auth Token
+                <span className='text-blue-500'>2.1.</span>Retrieve Auth Token
               </button>
             </li>
 
             <li
               className={`${
-                selectedSection === 'USERS' ? 'bg-slate-300 p-2 font-bold' : ''
+                selectedSection === 'USERS' ? 'bg-slate-300 p-2 font-bold' 
+                : ''
               }`}
             >
               <button value="USERS" onClick={handleSectionChange}>
-                USERS
+                <span className='text-blue-500'>3.</span>USERS
               </button>
             </li>
             <li
@@ -162,7 +163,7 @@ const apidocs = () => {
               }`}
             >
               <button value="Create A User" onClick={handleSectionChange}>
-                Create A User
+               <span className='text-blue-500'>3.1.</span> Create A User
               </button>
             </li>
             <li
@@ -177,7 +178,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                PRODUCTS
+                <span className='text-blue-500'>4.</span>PRODUCTS
               </button>
             </li>
             <li
@@ -192,7 +193,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Get Standard Cards
+               <span className='text-blue-500'>4.1.</span> Get Standard Cards
               </button>
             </li>
             <li
@@ -207,7 +208,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Get All Custom Cards
+              <span className='text-blue-500'>4.2.</span>  Get All Custom Cards
               </button>
             </li>
             <li
@@ -222,7 +223,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Get Specific Custom Cards
+               <span className='text-blue-500'>4.3.</span> Get Specific Custom Cards
               </button>
             </li>
             <li
@@ -237,7 +238,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Create Custom Card
+              <span className='text-blue-500'>4.4.</span>  Create Custom Card
               </button>
             </li>
             <li
@@ -252,7 +253,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Modify Custom Card
+               <span className='text-blue-500'>4.5.</span> Modify Custom Card
               </button>
             </li>
             <li
@@ -267,7 +268,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Delete Custom Cards
+               <span className='text-blue-500'>4.6.</span> Delete Custom Cards
               </button>
             </li>
             <li
@@ -280,7 +281,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                ORDERS
+               <span className='text-blue-500'>5.</span> ORDERS
               </button>
             </li>
             <ol>
@@ -296,7 +297,7 @@ const apidocs = () => {
                   type="button"
                   onClick={handleSectionChange}
                 >
-                  Create An Order
+                 <span className='text-blue-500'>5.1</span> Create An Order
                 </button>
               </li>
               <li
@@ -311,7 +312,7 @@ const apidocs = () => {
                   type="button"
                   onClick={handleSectionChange}
                 >
-                  Get Orders
+                 <span className='text-blue-500'>5.2.</span> Get Orders
                 </button>
               </li>
             </ol>
@@ -328,7 +329,7 @@ const apidocs = () => {
                 onClick={handleSectionChange}
               >
                 {' '}
-                TEMPLATES
+              <span className='text-blue-500'>6.</span>  TEMPLATES
               </button>
             </li>
             <li
@@ -343,7 +344,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Create A Message Template
+                <span className='text-blue-500'>6.1.</span>Create A Message Template
               </button>
             </li>
             <li
@@ -358,7 +359,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Retrieve All Message Templates
+              <span className='text-blue-500'>6.2.</span>  Retrieve All Message Templates
               </button>
             </li>
             <li
@@ -373,7 +374,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Retrieve A Single Template
+               <span className='text-blue-500'>6.3.</span> Retrieve A Single Template
               </button>
             </li>
             <li
@@ -388,7 +389,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Update A Template
+               <span className='text-blue-500'>6.4.</span> Update A Template
               </button>
             </li>
             <li
@@ -403,7 +404,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                ADDRESSES
+               <span className='text-blue-500'>7.</span> ADDRESSES
               </button>
             </li>
             <li
@@ -418,7 +419,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Create An Address
+               <span className='text-blue-500'>7.1.</span> Create An Address
               </button>
             </li>
 
@@ -434,7 +435,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Retrieve All Addresses
+               <span className='text-blue-500'>7.2.</span> Retrieve All Addresses
               </button>
             </li>
 
@@ -450,7 +451,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Retrieve A Single Address
+               <span className='text-blue-500'>7.3</span> Retrieve A Single Address
               </button>
             </li>
             <li
@@ -465,7 +466,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Update A Address
+              <span className='text-blue-500'>7.4.</span>  Update A Address
               </button>
             </li>
 
@@ -481,7 +482,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                Delete A Single Address
+              <span className='text-blue-500'>7.5.</span>  Delete A Single Address
               </button>
             </li>
             <li
@@ -496,7 +497,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                AVAILABLE HANDWRITING STYLES
+                <span className='text-blue-500'>8.</span>AVAILABLE HANDWRITING STYLES
               </button>
             </li>
             <li
@@ -511,7 +512,7 @@ const apidocs = () => {
                 onClick={handleSectionChange}
                 type="button"
               >
-                Examples
+               <span className='text-blue-500'>8.1.</span> Examples
               </button>
             </li>
           </ol>
@@ -520,7 +521,7 @@ const apidocs = () => {
           {selectedSection === 'API ENDPOINTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-                1.API ENDPOINTS
+               <span className='text-blue-500'></span> 1.API ENDPOINTS
               </h2>
               <div className="text-sm">
                 <p className=" mb-[7px] ml-[8px] font-thin mt-[23px]">
@@ -551,14 +552,14 @@ const apidocs = () => {
           {selectedSection === 'AUTHENTICATION' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                2. AUTHENTICATION
+               <span className='text-blue-500'>2.</span> AUTHENTICATION
               </h2>
             </div>
           )}
           {selectedSection === 'Retrieve Auth Token' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                2.1. Retrieve Auth Token
+               <span className='text-blue-500'>2.1.</span> Retrieve Auth Token
               </h2>
               <p className="mt-12px text-sm font-thin m-[8px]">
                 <span className="font-bold"> Description:</span> Simply Noted
@@ -573,7 +574,7 @@ const apidocs = () => {
           {selectedSection === 'USERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                3. USERS
+               <span className='text-blue-500'>3.</span> USERS
               </h2>
               ``{' '}
             </div>
@@ -581,7 +582,7 @@ const apidocs = () => {
           {selectedSection === 'Create A User' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                3.1. Create A User
+               <span className='text-blue-500'>3.1.</span> Create A User
               </h2>
               <p className="ml-[8px] text-sm font-thin">
                 <span className="font-bold">Description:</span> Users are
@@ -597,7 +598,7 @@ const apidocs = () => {
           {selectedSection === 'PRODUCTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                4. PRODUCTS
+                <span className='text-blue-500'>4.</span> PRODUCTS
               </h2>
             </div>
           )}
@@ -605,7 +606,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  4.1. Get Standard Cards
+                 <span className='text-blue-500'> 4.1.</span> Get Standard Cards
                 </h2>
                 <p className="mt-[7px] ml-[8px] text-sm font-thin">
                   <span className="font-bold ">Description:</span>This endpoint
@@ -694,7 +695,7 @@ const apidocs = () => {
           {selectedSection === 'Get All Custom Cards' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                4.2. Get All Custom Cards
+                <span className='text-blue-500'>4.2.</span> Get All Custom Cards
               </h2>
               <div className="leading-[2.25rem] text-sm font-thin">
                 <p className="ml-[8px]">Endpoint: /customProducts</p>
@@ -712,7 +713,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  4.3. Get Specific Custom Cards
+                  <span className='text-blue-500'>4.3.</span>Get Specific Custom Cards
                 </h2>
               </div>
               <div className="leading-[2.25rem] text-sm ml-[9px] font-thin">
@@ -734,7 +735,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  4.4. Create Custom Card
+                 <span className='text-blue-500'>4.4.</span> Create Custom Card
                 </h2>
                 <div className="leading-[2.25rem] ml-[9px] text-sm font-thin">
                   <p>
@@ -986,7 +987,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-                  4.5. Modify Custom Card
+                  <span className='text-blue-500'>4.5.</span> Modify Custom Card
                 </h2>
                 <div className="leading-[2.5rem]  ml-[9px] text-sm">
                   <p>
@@ -1216,7 +1217,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
-                  4.6.Delete Custom Cards
+                  <spna>4.6.</spna>Delete Custom Cards
                 </h2>
                 <div className="leading-[2.5rem] text-sm mt-[12px]">
                   <p className="ml-[9px]">
@@ -1271,7 +1272,7 @@ const apidocs = () => {
           {selectedSection === 'ORDERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-                5. ORDERS
+              <span className='text-blue-500'>5.</span> ORDERS
               </h2>
             </div>
           )}
@@ -1279,7 +1280,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
-                  5.1. Create An Order
+                  <span className='text-blue-500'>5.1.</span> Create An Order
                 </h2>
                 <div className="leading-[2.5rem] text-sm ml-[9px]">
                   <p>
@@ -3451,7 +3452,7 @@ const apidocs = () => {
           )}
           {selectedSection === 'Examples' && (
             <div class="">
-              <h3 className="text-[40px]">
+              <h3 className="text-lg">
                 <span className="font-italic text-blue-500">8.1.</span> Examples
               </h3>
               <p className="mt-[7px] font-thin">
