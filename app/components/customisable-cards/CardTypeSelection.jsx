@@ -24,7 +24,7 @@ export default function CardTypeSelection({
           />
         </div>
       </div>
-      <div className="flex items-start justify-start ml-10 mb-10 flex-1">
+      <div className="md:flex items-start justify-start flex items-center  justify-center ml-10 mb-10 flex-1">
         <div className="flex flex-col h-[300px] w-[273px] mr-7">
           <span className="font-semibold text-center">
             Start by selecting the size and style of card you want to create.

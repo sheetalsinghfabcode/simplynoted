@@ -1051,7 +1051,7 @@ export default function FoldedCustomisableCard({
             <div
               className={` ${
                 qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-              } w-[200px] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5`}
+              } w-[200px] cursor-pointer border border-solid md:ml-[0px] ml-[36px] border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5`}
               onClick={handleQrSelectionButton}
             >
               <div>
@@ -1074,7 +1074,7 @@ export default function FoldedCustomisableCard({
             <div className="flex flex-col justify-between items-center gap-5 min-h-[330px] min-w-[240px] ">
               {!(selectedCardPage === 'Card Inside') && (
                 <>
-                  <div className="relative w-[60px] h-[50px]">
+                  <div className="relative md:ml-[0px] ml-[-108px] w-[60px] h-[50px]">
                     {selectedCardPage === 'Card Front' && (
                       <>
                         <img
@@ -1150,7 +1150,7 @@ export default function FoldedCustomisableCard({
                             </label>
                           </div>
                           <button
-                            className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] font-bold"
+                            className="bg-[#1b5299] border-none  text-white text-sm outline-none text-center h-[40px] font-bold"
                             type="button"
                             onClick={handleSelectedImageReset}
                           >
@@ -1211,7 +1211,7 @@ export default function FoldedCustomisableCard({
                   {selectedCardPage === 'Card Back' && (
                     <button
                       type="button"
-                      className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center w-full font-semibold"
+                      className="bg-[#1b5299] h-[40px] border-none md:ml-[0px] ml-[62px] text-white text-sm outline-none text-center w-full font-semibold"
                       onClick={handleFinishEditingButton}
                     >
                       Finish Editing

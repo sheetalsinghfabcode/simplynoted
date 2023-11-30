@@ -17,12 +17,13 @@ function Icon({children, className, fill = 'currentColor', stroke, ...props}) {
 
 export function IconMenu(props) {
   return (
-    <Icon {...props} stroke={props.stroke || 'currentColor'}>
-      <title>Menu</title>
-      <line x1="3" y1="6.375" x2="17" y2="6.375" strokeWidth="1.25" />
-      <line x1="3" y1="10.375" x2="17" y2="10.375" strokeWidth="1.25" />
-      <line x1="3" y1="14.375" x2="17" y2="14.375" strokeWidth="1.25" />
-    </Icon>
+ <Icon {...props} stroke={props.stroke || 'currentColor'} style={{ backgroundColor: '#ef6e6e' }}>
+  <title>Menu</title>
+  <line x1="3" y1="6.375" x2="17" y2="6.375" strokeWidth="1.25" stroke="white" />
+  <line x1="3" y1="10.375" x2="17" y2="10.375" strokeWidth="1.25" stroke="white" />
+  <line x1="3" y1="14.375" x2="17" y2="14.375" strokeWidth="1.25" stroke="white" />
+</Icon>
+
   );
 }
 

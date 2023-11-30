@@ -1309,7 +1309,7 @@ export default function FlatCustomisableCard({
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-between items-start gap-5 min-h-[330px] min-w-[240px] flex-1">
+          <div className="flex flex-col justify-between md:ml-[0px] ml-[47px] items-start gap-5 min-h-[330px] min-w-[240px] flex-1">
             {selectedCardPage === 'Card Front' && (
               <>
                 <div className="relative w-[60px] h-[50px]">

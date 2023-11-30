@@ -8,13 +8,17 @@ export default function Salesforce() {
   return (
     <section>
       <div className="flex justify-center items-center">
-        <div className="flex mt-10" style={{maxWidth: '90%'}}>
+        <div className="lg:flex grid
+         mt-10" style={{maxWidth: '90%'}}>
           {/* first div left side */}
           <div className="flex-1 p-3 mr-10">
+            <div className='lg:text-left text-center'>
             <span className="text-white text-xs bg-[#ef6e6e] px-2 rounded">
               COMING SOON
             </span>
-            <div className="text-6xl font-bold" style={{lineHeight: '0.75'}}>
+            </div>
+            <div className='lg:flex text-left text-center'>
+            <div className="text-[35px] font-bold" style={{lineHeight: '0.75'}}>
               Salesforce{' '}
               <span
                 style={{fontFamily: 'Beauty, Handwriting', fontSize: '200%'}}
@@ -23,6 +27,8 @@ export default function Salesforce() {
               </span>{' '}
               Integration
             </div>
+            </div>
+            <div className='lg:flex justify-start	 justify-center'>
             <div className="font-light mt-10 mr-10 max-w-[500px]">
               We go as far as to design the type of slant, spacing and stroke
               variability that goes into a unique personalized font. We can
@@ -30,6 +36,8 @@ export default function Salesforce() {
               loose spacing and much more depending on what your unique style
               is.
             </div>
+            </div>
+
             <div className="flex justify-start items-center gap-2 mt-5 mb-5">
               <button
                 className="text-white p-2 bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold"

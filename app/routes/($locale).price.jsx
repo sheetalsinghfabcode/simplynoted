@@ -20,7 +20,7 @@ export default function price() {
             complete send.
           </h3>
         </div>
-        <div className="credits-card  mt-[100px] pl-[10px] pr-[10px]">
+        {/* <div className="credits-card  mt-[100px] pl-[10px] pr-[10px]">
           <div className="table-credits w-[1245px] relative">
             <img
               className="main-cont border border-b-0"
@@ -124,7 +124,7 @@ export default function price() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
         </div>
         <div className="arrow-down flex  justify-center">
           <img
@@ -142,12 +142,12 @@ export default function price() {
           <div className="left-cont">
             <h2>Simply Noted features & pricing</h2>
             <div className=" Customizable-ntegrations flex">
-              <div className="real-pen-notice">
+              <div className="real-pen-notice md:w-[235px] w-[127px]">
                 <div class="circle-percentage">100%</div>
-                <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold md:text-17 text-[8px] tracking-tight leading-6">
                   Real Pen-written notes & envelopes
                 </p>
-                <a href="#" className="absolute left-[60px] bottom-[36px]">
+                <a href="#" className="absolute left-[60px]  md:ml-[0px] ml-[-31px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>

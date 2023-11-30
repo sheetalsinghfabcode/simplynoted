@@ -208,7 +208,7 @@ function MenuMobileNav({menu, onClose}) {
                       </div>
                       {showSendCard && (
                         <div className="">
-                          <ul onClick={onClose} className='text-thin' style={{ color: 'red' }}>
+                          <ul onClick={onClose} className='text-thin' style={{ color: 'black' }}>
                             <Link to="/collections/best-sellers">
                               <li>Cards</li>
                             </Link>
@@ -236,10 +236,10 @@ function MenuMobileNav({menu, onClose}) {
                     </div>
                     {show && (
                       <div>
-                        <ul onClick={onClose} className='integration-color' style={{ color: 'red' }}>
+                        <ul onClick={onClose} className='integration-color' style={{ color: 'black' }}>
                           <Link to="/zapier">
                             {' '}
-                            <li className='mt-[-21px]'>Zapier</li>
+                            <li className={`mt-[-21px] ${show === 'Zapier' ? 'selected' : 'green'}}`}>Zapier</li>
                           </Link>
                           <Link to="/shopify">
                             {' '}
@@ -265,7 +265,7 @@ function MenuMobileNav({menu, onClose}) {
                     </div>
                     {showPricing && (
                       <div className="">
-                        <ul onClick={onClose} className='text-thin' style={{ color: 'red' }}>
+                        <ul onClick={onClose} className='text-thin' style={{ color: 'black' }}>
                           <Link to="/price">
                             <li>Credit Packages</li>
                           </Link>
@@ -278,8 +278,7 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              {' '}
-                              Get a Custom Quote
+                             <li>Get a Custom Quote</li> 
                             </button>
                           </Link>
                           <Link to="/roicalculator">
@@ -298,7 +297,7 @@ function MenuMobileNav({menu, onClose}) {
                     </div>
                     {showLearn &&
                     <div className="">
-                      <ul onClick={onClose} className="text-thin"style={{ color: 'red' }}>
+                      <ul onClick={onClose} className="text-thin"style={{ color: 'black' }}>
                         <Link to="/blog">
                           <li onClick={onClose}>Blog.</li>
                         </Link>
@@ -343,7 +342,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       <div className="flex items-center justify-start w-full gap-4">
         <button
           onClick={openMenu}
-          className="relative flex items-center justify-center w-8 h-8"
+          className="relative flex color-white bg-ef6e6e items-center justify-center w-8 h-8"
         >
           <IconMenu />
         </button>
