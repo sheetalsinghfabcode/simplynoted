@@ -84,7 +84,20 @@ export function MessageWriting({
   );
   const [searchData, setsearchData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [stateCheckCart, setStateCheckCart] = useState(false)
+  const [isAddressUploadSuccess,setIsAddressUploadSuccess] = useState(false)
+  const [metafieldsHeader,setMetafieldsHeader] = useState(false)
+  const [metafieldsFooter,setMetafieldsFooter] = useState(false)
+  // console.log(metafields.header,'metafields.header.data');
+  // if(metafields.header){
+  //   if(metafields.header.data){
+  //     setMetafieldsHeader(true)
+  //   }
+  //   if(metafields.footer.data){
+  //     setMetafieldsFooter(true)
+  //   }
+  //   console.log(metafields.header.data,"xxxxxxxxxxxxx");
+  // }
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -132,6 +145,7 @@ export function MessageWriting({
       setInstructionModal(true);
     } else {
       let reqField;
+
       if (fileData.length) {
         fileData.map((obj) => {
           let subName = name;
@@ -399,20 +413,20 @@ export function MessageWriting({
   useEffect(() => {
     if (!mainMessageBox) return;
     const resizeObserver = new ResizeObserver(processCustomMessageInput);
-    if(!document.body.contains(mainMessageBox)) return;
+    if (!document.body.contains(mainMessageBox)) return;
     resizeObserver.observe(mainMessageBox);
 
     return () => resizeObserver.disconnect();
-  }, [mainMessageBox]);
+  }, []);
 
   useEffect(() => {
     if (!signOffTextBox) return;
     const resizeObserver = new ResizeObserver(processSignOffInput);
-    if(!document.body.contains(signOffTextBox)) return;
+    if (!document.body.contains(signOffTextBox)) return;
     resizeObserver.observe(signOffTextBox);
 
     return () => resizeObserver.disconnect();
-  }, [signOffTextBox]);
+  }, []);
 
   function processCustomMessageInput() {
     mainMessageBox.style.fontSize = '50px';
@@ -487,16 +501,18 @@ export function MessageWriting({
         });
 
         // console.log(cleanedArray, 'cleaned Array');
-        let ab = cleanedArray.map((item) => {
-          const newData = {...item};
-          // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
-          delete newData['"Type"'];
-          return newData;
-        });
+        // let ab = cleanedArray.map((item) => {
+        //   console.log(item);
+        //   const newData = {...item};
+        //   console.log(newData["Type"]);
+        //   // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
+        //   delete newData['"Type"'];
+        //   return newData;
+        // });
 
-        // console.log(ab, 'fiteredDatat,=========');
+        console.log(cleanedArray, 'fiteredDatat,=========');
         setSelectedFile(file); // Update the selected file state
-        setFileData(ab);
+        setFileData(cleanedArray);
       };
       reader.readAsText(file);
     }
@@ -611,11 +627,18 @@ export function MessageWriting({
         setIsOpen2(true);
         setTimeout(() => setIsOpen2(false), 3000);
         found = true;
+      } else {
+        if(stateCheckCart){
+          await uploadDataToAPI(obj);
+        }
       }
     }
     setErrorVal(errMsg);
     setUsAddress(usCount);
     setnonUsAddress(nonUSCount);
+    if(stateCheckCart){
+      setIsAddressUploadSuccess(!isAddressUploadSuccess)
+    }
     // console.log(replacedMsg, 'replacedMsg');
     if (found) {
       console.log(`Found  in the array.`);
@@ -655,6 +678,58 @@ export function MessageWriting({
       setLoader(false);
     }
   }
+  const uploadDataToAPI = async (data) => {
+    setLoader(true);
+
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: data['First Name'] || '',
+          lastName: data['Last Name'] || '',
+          businessName: data.Company || '',
+          address1: data.Address || '',
+          address2: data['Address 2'] || '',
+          city: data.City || '',
+          state: data['State/Province'] || '',
+          zip: data['Postal Code'] || '',
+          country: data.Country || 'USA',
+          type: data.Type
+            ? data.Type.toLowerCase() === 'sender'
+              ? 'return'
+              : 'recipient'
+            : 'recipient',
+          birthday: data.Birthday || '',
+          anniversary: data.Anniversary || '',
+        }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        // setLoadAddress(!loadAddress);
+        // setSelectedFile(null);
+        // setLoader(false);
+
+        console.log('Successful response data:', responseData.result);
+        setLoader(false);
+      } else {
+        // setSelectedFile(null);
+        setLoader(false);
+
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      // setSelectedFile(null);
+      setLoader(false);
+
+      console.log('Error uploading data:', error);
+      throw error;
+    }
+  };
   async function onCancl() {
     setIsOpen(false);
     setValToGen(null);
@@ -769,7 +844,7 @@ export function MessageWriting({
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [addressForm, loadAddress]);
+  }, [addressForm, loadAddress,isAddressUploadSuccess]);
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
@@ -859,7 +934,7 @@ export function MessageWriting({
       );
     } else return dataobj;
   };
-  
+
   function LoadTemplate() {
     const [searchData, setsearchData] = useState(null);
 
@@ -939,16 +1014,18 @@ export function MessageWriting({
   useEffect(() => {
     SavedTemp();
   }, [onDelTemp]);
+  console.log(name2.length,"name2.length");
+  let height = '400px'
   return (
     <>
       <div className="mainDivForBox flex gap-10">
         <div
           id="outer"
-          className="outerr h-[480px] w-[100%] bg-white max-w-[600px] relative"
+          className="outerr h-[400px] w-[100%] bg-white max-w-[600px] relative"
         >
-          {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
+          {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
           <div
-            className="outerSec h-[250px] w-[100%] bg-white max-h-[250px]"
+            className="outerSec h-[200px] w-[100%] bg-white " 
             ref={ref2}
           >
             <div
@@ -968,8 +1045,9 @@ export function MessageWriting({
               {name ? name : 'Enter your custom message here...'}
             </div>
           </div>
+          {/* {name2.length>0 && */}
           <div
-            className="secDiv  h-[100px] w-[100%] max-w-[300px] ml-auto bg-white"
+            className={`secDiv h-[70px] w-[100%] max-w-[300px] ml-auto bg-white `} 
             ref={ref}
           >
             <div
@@ -999,7 +1077,8 @@ export function MessageWriting({
               {name2}
             </div>
           </div>
-          {metafields && metafields.isFooterIncluded && <ShowFooterComp />}
+          {/* } */}
+          {metafields && metafields.isFooterIncluded && metafields.footer.data && <ShowFooterComp />}
         </div>
         <div className="textAreaView w-[600px]">
           <textarea
@@ -1136,6 +1215,12 @@ export function MessageWriting({
               <div className="flex gap-4">
                 {bulkFileCount && bulkFileCount > 0 ? (
                   <div className="custom_testing pointer-events-none opacity-40">
+                    <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
+                      <input type="checkbox" />
+                      <label htmlFor="">
+                        Add all addresses to address book
+                      </label>
+                    </div>
                     <div>
                       <h3 className="font-bold">Bulk Address Upload</h3>
                     </div>
@@ -1165,7 +1250,10 @@ export function MessageWriting({
                         Bulk Order Template
                       </a>{' '}
                     </p>
-                    <p onClick={openModal} className="underline underline-offset-1 cursor-pointer">
+                    <p
+                      onClick={openModal}
+                      className="underline underline-offset-1 cursor-pointer"
+                    >
                       View bulk upload instructions
                     </p>
                     <AfterUpload />
@@ -1177,6 +1265,12 @@ export function MessageWriting({
                         <CircularLoader color="#ef6e6e" />
                       ) : (
                         <>
+                          <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
+                            <input type="checkbox" checked={stateCheckCart}  onClick={() => setStateCheckCart(!stateCheckCart)}/>
+                            <label htmlFor="">
+                              Add all addresses to address book
+                            </label>
+                          </div>
                           <div>
                             <h3 className="font-bold">Bulk Address Upload</h3>
                           </div>
@@ -1206,7 +1300,10 @@ export function MessageWriting({
                               Bulk Order Template
                             </a>{' '}
                           </p>
-                          <p onClick={openModal} className="underline underline-offset-1 cursor-pointer">
+                          <p
+                            onClick={openModal}
+                            className="underline underline-offset-1 cursor-pointer"
+                          >
                             View bulk upload instructions
                           </p>
 

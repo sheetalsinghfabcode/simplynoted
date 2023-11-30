@@ -21,7 +21,7 @@ import LoginModal from '~/components/modal/LoginModal';
 let storedDataString, storedDataArray;
 
 export async function loader({context, request}) {
-  const StripeKey = context.env.STRIPE_KEY;
+  const StripeKey = "pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz";
 
   // console.log(StripeKey,'eeee');
   const data = await context.storefront.query(GiftProduct, {
@@ -274,6 +274,14 @@ export default function AddCartFunc() {
         sum +
         (cartData.price * cartData.csvFileLen +
           cartData.giftCardPrice * cartData.csvFileLen +
+         ( ( cartData.shippingData && cartData.shippingData.node?.title ==
+            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed' ||
+            cartData.shippingData && cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards Only' ||
+              cartData.shippingData &&  cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped' ||
+              cartData.shippingData && cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ?0:
           (cartData.usCount || cartData.nonUSCount
             ? postPrice * cartData.usCount + postPrice2 * cartData.nonUSCount
             : cartData.reciverAddress?.country === 'USA' ||
@@ -290,8 +298,8 @@ export default function AddCartFunc() {
                 'united states of america' ||
               cartData.reciverAddress?.country?.toLowerCase() == undefined
             ? postPrice * cartData.csvFileLen
-            : postPrice2 * cartData.csvFileLen) +
-         (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
+            : postPrice2 * cartData.csvFileLen)) +
+          (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
       0,
     );
     console.log(prices, 'pricesssss');
@@ -456,7 +464,10 @@ export default function AddCartFunc() {
                                     Subtotal:
                                   </span>
                                   <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                    $ {(item.giftCardPrice * item.csvFileLen).toFixed(2)}
+                                    ${' '}
+                                    {(
+                                      item.giftCardPrice * item.csvFileLen
+                                    ).toFixed(2)}
                                   </span>
                                 </div>
                               </div>
@@ -477,287 +488,315 @@ export default function AddCartFunc() {
                         {item.giftCardName && (
                           <div className="w-full h-[1px] bg-[black]"></div>
                         )}
-
-                        {item.usCount || item.nonUSCount ? (
+                        
+                        {( item.shippingData && item.shippingData.node?.title ==
+                          'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed' ||
+                          item.shippingData && item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards Only' ||
+                            item.shippingData &&  item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped' ||
+                            item.shippingData && item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ?'':(
                           <>
-                            {item.nonUSCount && item.nonUSCount ? (
-                              <div className="flex">
-                                <div className="w-[36rem] ml-2">
-                                  <div className="flex m-5">
-                                    <div className="max-w-[20%] m-5">
-                                      <img src={postImage} alt="" />
+                            {item.usCount || item.nonUSCount ? (
+                              <>
+                                {item.nonUSCount && item.nonUSCount ? (
+                                  <div className="flex">
+                                    <div className="w-[36rem] ml-2">
+                                      <div className="flex m-5">
+                                        <div className="max-w-[20%] m-5">
+                                          <img src={postImage} alt="" />
+                                        </div>
+                                        <div className="max-w-[100%] mt-10">
+                                          <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                                            Postal {postTitle2}
+                                          </h3>
+                                          <br />
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="max-w-[100%] mt-10">
-                                      <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                        Postal {postTitle2}
-                                      </h3>
-                                      <br />
+                                    <div className="w-[18rem] gap-5 flex items-center">
+                                      <div className="m-6 w-[16rem]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Price:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            $ {postPrice2}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Quantity:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            {item.nonUSCount}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Subtotal:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            ${' '}
+                                            {(
+                                              postPrice2 * item.nonUSCount
+                                            ).toFixed(2)}
+                                          </span>
+                                        </div>
+                                      </div>
                                     </div>
+                                    <div class="w-[19rem] m-4 flex justify-center items-center"></div>
                                   </div>
-                                </div>
-                                <div className="w-[18rem] gap-5 flex items-center">
-                                  <div className="m-6 w-[16rem]">
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Price:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {postPrice2}
-                                      </span>
+                                ) : (
+                                  ''
+                                )}
+                                {item.usCount && (
+                                  <div className="flex">
+                                    <div className="w-[36rem] ml-2">
+                                      <div className="flex m-5">
+                                        <div className="max-w-[20%] m-5">
+                                          <img src={postImage} alt="" />
+                                        </div>
+                                        <div className="max-w-[100%] mt-10">
+                                          <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                                            Postal {postTitle}
+                                          </h3>
+                                          <br />
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Quantity:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        {item.nonUSCount}
-                                      </span>
+                                    <div className="w-[18rem] gap-5 flex items-center">
+                                      <div className="m-6 w-[16rem]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Price:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            $ {postPrice}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Quantity:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            {item.usCount}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Subtotal:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            ${' '}
+                                            {(postPrice * item.usCount).toFixed(
+                                              2,
+                                            )}
+                                          </span>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Subtotal:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {(postPrice2 * item.nonUSCount).toFixed(2)}
-                                      </span>
-                                    </div>
+                                    <div class="w-[19rem] m-4 flex justify-center items-center"></div>
                                   </div>
-                                </div>
-                                <div class="w-[19rem] m-4 flex justify-center items-center"></div>
-                              </div>
+                                )}
+                              </>
                             ) : (
-                              ''
-                            )}
-                            {item.usCount && (
-                              <div className="flex">
-                                <div className="w-[36rem] ml-2">
-                                  <div className="flex m-5">
-                                    <div className="max-w-[20%] m-5">
-                                      <img src={postImage} alt="" />
+                              <>
+                                {item.reciverAddress?.country === 'USA' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  '' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  ' ' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'u.s.a' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'u.s' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'usa' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'us' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'america' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'united states' ||
+                                item.reciverAddress?.country?.toLowerCase() ===
+                                  'united states of america' ||
+                                item.reciverAddress?.country?.toLowerCase() ==
+                                  undefined ? (
+                                  <div className="flex">
+                                    <div className="w-[36rem]">
+                                      <div className="flex m-5">
+                                        <div className="max-w-[20%] m-5">
+                                          <img src={postImage} alt="" />
+                                        </div>
+                                        <div className="max-w-[100%] mt-10">
+                                          <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                                            Postal {postTitle}
+                                          </h3>
+                                          <br />
+                                          <br />
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="max-w-[100%] mt-10">
-                                      <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                        Postal {postTitle}
-                                      </h3>
-                                      <br />
+                                    <div className="w-[18rem] gap-5 flex items-center">
+                                      <div className="m-6 w-[16rem]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Price:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            $ {postPrice}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Quantity:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            {item.csvFileLen}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Subtotal:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            ${' '}
+                                            {(
+                                              postPrice * item.csvFileLen
+                                            ).toFixed(2)}
+                                          </span>
+                                        </div>
+                                      </div>
                                     </div>
+                                    <div class="w-[19rem] m-4 flex justify-center items-center"></div>
                                   </div>
-                                </div>
-                                <div className="w-[18rem] gap-5 flex items-center">
-                                  <div className="m-6 w-[16rem]">
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Price:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {postPrice}
-                                      </span>
+                                ) : (
+                                  <div className="flex">
+                                    <div className="w-[36rem]">
+                                      <div className="flex m-5">
+                                        <div className="max-w-[20%] m-5">
+                                          <img src={postImage} alt="" />
+                                        </div>
+                                        <div className="max-w-[100%] mt-10">
+                                          <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                                            Postal{postTitle2}
+                                          </h3>
+                                          <br />
+                                          <br />
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Quantity:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        {item.usCount}
-                                      </span>
+                                    <div className="w-[18rem] gap-5 flex items-center">
+                                      <div className="m-6 w-[16rem]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Price:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            ${postPrice2}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Quantity:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            {item.csvFileLen}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Subtotal:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            $
+                                            {(
+                                              postPrice2 * item.csvFileLen
+                                            ).toFixed(2)}
+                                          </span>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Subtotal:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {(postPrice * item.usCount).toFixed(2)}
-                                      </span>
-                                    </div>
+                                    <div class="w-[19rem] m-4 flex justify-center items-center"></div>
                                   </div>
-                                </div>
-                                <div class="w-[19rem] m-4 flex justify-center items-center"></div>
-                              </div>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            {item.reciverAddress?.country === 'USA' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              '' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              ' ' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'u.s.a' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'u.s' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'usa' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'us' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'america' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'united states' ||
-                            item.reciverAddress?.country?.toLowerCase() ===
-                              'united states of america' ||
-                            item.reciverAddress?.country?.toLowerCase() ==
-                              undefined ? (
-                              <div className="flex">
-                                <div className="w-[36rem]">
-                                  <div className="flex m-5">
-                                    <div className="max-w-[20%] m-5">
-                                      <img src={postImage} alt="" />
-                                    </div>
-                                    <div className="max-w-[100%] mt-10">
-                                      <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                        Postal {postTitle}
-                                      </h3>
-                                      <br />
-                                      <br />
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="w-[18rem] gap-5 flex items-center">
-                                  <div className="m-6 w-[16rem]">
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Price:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {postPrice}
-                                      </span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Quantity:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        {item.csvFileLen}
-                                      </span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Subtotal:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {(postPrice * item.csvFileLen).toFixed(2)}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="w-[19rem] m-4 flex justify-center items-center"></div>
-                              </div>
-                            ) : (
-                              <div className="flex">
-                                <div className="w-[36rem]">
-                                  <div className="flex m-5">
-                                    <div className="max-w-[20%] m-5">
-                                      <img src={postImage} alt="" />
-                                    </div>
-                                    <div className="max-w-[100%] mt-10">
-                                      <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                        Postal{postTitle2}
-                                      </h3>
-                                      <br />
-                                      <br />
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="w-[18rem] gap-5 flex items-center">
-                                  <div className="m-6 w-[16rem]">
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Price:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        ${postPrice2}
-                                      </span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Quantity:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        {item.csvFileLen}
-                                      </span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        Subtotal:
-                                      </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        {' '}
-                                        ${(postPrice2 * item.csvFileLen).toFixed(2)}
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="w-[19rem] m-4 flex justify-center items-center"></div>
-                              </div>
+                                )}
+                              </>
                             )}
                           </>
                         )}
                         <div className="w-full h-[1px] bg-[black]"></div>
 
-                        {item.shippingData && item.shippingMethodImage && item.isShippidata && (
-                          <div className="flex">
-                            <div className="w-[36rem]">
-                              <div className="flex m-5">
-                                <div className="max-w-[20%] m-5">
-                                  <img src={item.shippingMethodImage} alt="" />
-                                </div>
-                                <div className="max-w-[100%] mt-10">
-                                  <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                    {item.shippingData?.node.title}
-                                  </h3>
-                                  <br />
-                                  <br />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="w-[18rem] gap-5 flex items-center">
-                              <div className="m-6 w-[16rem]">
-                                <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    Price:
-                                  </span>{' '}
-                                  <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                    $ {item.shippingDataCost}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    Quantity:
-                                  </span>
-                                  <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                    1
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    Subtotal:
-                                  </span>{' '}
-                                  <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    $ {item.shippingDataCost * 1}
-                                  </span>
+                        {item.shippingData &&
+                          item.shippingMethodImage &&
+                          item.isShippidata && (
+                            <div className="flex">
+                              <div className="w-[36rem]">
+                                <div className="flex m-5">
+                                  <div className="max-w-[20%] m-5">
+                                    <img
+                                      src={item.shippingMethodImage}
+                                      alt=""
+                                    />
+                                  </div>
+                                  <div className="max-w-[100%] mt-10">
+                                    <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                                      {item.shippingData?.node.title}
+                                    </h3>
+                                    <br />
+                                    <br />
+                                  </div>
                                 </div>
                               </div>
+                              <div className="w-[18rem] gap-5 flex items-center">
+                                <div className="m-6 w-[16rem]">
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                      {' '}
+                                      Price:
+                                    </span>{' '}
+                                    <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                      $ {item.shippingDataCost}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                      {' '}
+                                      Quantity:
+                                    </span>
+                                    <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                      1
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                      {' '}
+                                      Subtotal:
+                                    </span>{' '}
+                                    <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                      {' '}
+                                      $ {item.shippingDataCost * 1}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="w-[19rem] m-4 flex justify-center items-center"></div>
                             </div>
-                            <div class="w-[19rem] m-4 flex justify-center items-center"></div>
-                          </div>
-                        )}
+                          )}
                         <div className="flex">
                           <div className="w-[36rem]"></div>
                           <div className="w-[18rem] gap-5">
@@ -766,36 +805,49 @@ export default function AddCartFunc() {
                                 <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
                                   {' '}
                                   Subtotal: ${' '}
-                                  {(item.price * item.csvFileLen +
+                                  {(
+                                    item.price * item.csvFileLen +
                                     item.giftCardPrice * item.csvFileLen +
-                                    (item.isShippidata?item.shippingDataCost * 1:0) +
-                                    (item.usCount || item.nonUSCount
-                                      ? postPrice * item.usCount +
-                                        postPrice2 * item.nonUSCount
-                                      : item.reciverAddress?.country ===
-                                          'USA' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          '' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          ' ' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'u.s.a' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'u.s' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'usa' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'us' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'america' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'united states' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
-                                          'united states of america' ||
-                                        item.reciverAddress?.country?.toLowerCase() ==
-                                          undefined
-                                      ? postPrice * item.csvFileLen
-                                      : postPrice2 * item.csvFileLen)).toFixed(2)}
+                                    (item.isShippidata
+                                      ? item.shippingDataCost * 1
+                                      : 0) +
+                                     ( ( item.shippingData && item.shippingData.node?.title ==
+                                        'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed' ||
+                                        item.shippingData && item.shippingData.node?.title ==
+                                          'Ship Cards in Bulk - Cards Only' ||
+                                          item.shippingData &&  item.shippingData.node?.title ==
+                                          'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped' ||
+                                          item.shippingData && item.shippingData.node?.title ==
+                                          'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ?0:
+                                          (item.usCount || item.nonUSCount
+                                            ? postPrice * item.usCount +
+                                              postPrice2 * item.nonUSCount
+                                            : item.reciverAddress?.country ===
+                                                'USA' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                '' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                ' ' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'u.s.a' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'u.s' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'usa' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'us' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'america' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'united states' ||
+                                              item.reciverAddress?.country?.toLowerCase() ===
+                                                'united states of america' ||
+                                              item.reciverAddress?.country?.toLowerCase() ==
+                                                undefined
+                                            ? postPrice * item.csvFileLen
+                                            : postPrice2 * item.csvFileLen) )
+                                   
+                                  ).toFixed(2)}
                                 </h3>
                               </div>
                             </div>
@@ -881,8 +933,12 @@ export default function AddCartFunc() {
                   )}
                   <div className="w-[73rem] m-auto mt-10 mb-10">
                     <div className="p-[30px] bg-[#FFF6F6] w-[50%]">
-                      <h3 className='text-[30px] font-karla text-[#1b5299]'>NOTE</h3>
-                      <p className='text-[#000] font-karla'>Add special instructions for your order...</p>
+                      <h3 className="text-[30px] font-karla text-[#1b5299]">
+                        NOTE
+                      </h3>
+                      <p className="text-[#000] font-karla">
+                        Add special instructions for your order...
+                      </p>
                       <textarea
                         name=""
                         id="cart-note"
