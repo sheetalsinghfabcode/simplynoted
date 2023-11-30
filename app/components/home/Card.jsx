@@ -16,15 +16,17 @@ import Card3 from"../../../assets/Image/Card3.webp";
 import DynamicButton from "../DynamicButton";
 import { useNavigate } from "@remix-run/react";
 import pen from'../../../assets/Image/pen-img.webp';
+import swiper_arrow_left from '../../../assets/Image/swiper-arrow-left.png';
+import swiper_arrow_right from '../../../assets/Image/swiper-arrow-right.png';
 const Card=()=>{
   const Navigate=useNavigate();
 
     return(
         <>
         <div>
-           <div className="flex w-[90%] mx-auto">
+           <div className="flex md:flex-row flex-col w-[76%] mx-auto">
             
-    <div class="swiper-button-prev relative my-auto"><img src={prev} className="w-[25px]" alt="" /></div>
+    <div class="swiper-button-prev relative my-auto md:block hidden"><img src={prev} className="w-[25px]" alt="" /></div>
     
         <Swiper
       modules={[Navigation,Pagination]}
@@ -57,7 +59,7 @@ const Card=()=>{
                    
                         
                   <SwiperSlide>
-                  <div className="data_card bg-white  text-center mt-5 w-[82%] mx-auto">
+                  <div className="data_card bg-white  text-center mt-5 w-[88%] mx-auto">
         <div className="m-auto w-full pt-5 md:pt-20">
             <img src={data.img} alt="" className="w-[100px] mt-1 text-center inline"></img>
         </div>
@@ -79,8 +81,13 @@ const Card=()=>{
       
     </Swiper>
     
-<div class=" swiper-button-next relative my-auto"><img src={next} className="w-[25px]" alt="" /></div>
+<div class="swiper-button-next relative my-auto md:block hidden"><img src={next} className="w-[25px]" alt="" /></div>
 
+{/* mobile */}
+<div className="md:hidden flex w-[50%] mx-auto justify-between mt-[-4rem] mb-[6rem] relative">
+ <div class="swiper-button-prev  "><img src={swiper_arrow_left} className="w-[20px] pr-[4px]" alt="" /></div>
+  <div class="swiper-button-next "><img src={swiper_arrow_right} className="w-[20px] pl-[4px]" alt="" /></div>
+  </div>
 </div>
 
 
@@ -172,6 +179,7 @@ const Card=()=>{
             </div>
 </div>
 </div>
+
         </div>
         </>
     )

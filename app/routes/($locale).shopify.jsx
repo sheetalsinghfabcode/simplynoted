@@ -167,7 +167,7 @@ export default function shopify() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[45%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
@@ -181,7 +181,7 @@ export default function shopify() {
           </div>
         </div>
         <div className="lg:hidden block mb-10">
-          <div className=" sm:text-[46px]  text-[32px] font-karla text-[#001A5F]">
+          <div className=" sm:text-[46px] text-center  text-[32px] font-karla text-[#001A5F]">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
@@ -221,7 +221,7 @@ export default function shopify() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[45%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
@@ -235,7 +235,7 @@ export default function shopify() {
           </div>
         </div>
         <div className="lg:hidden block mb-10">
-          <div className="sm:text-[46px]  text-[32px] font-karla text-[#001A5F]">
+          <div className="sm:text-[46px]  text-center text-[32px] font-karla text-[#001A5F]">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
@@ -243,7 +243,7 @@ export default function shopify() {
 
         <div className="xl:w-[60%] lg:w-[60%] relative overflow-x-clip  w-full">
           <img
-            className="lg:absolute relative xl:max-w-[910px] lg:max-w-[725px] mx-auto overflow-hidden "
+            className="lg:absolute relative xl:max-w-[800px] lg:max-w-[725px] mx-auto  "
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
           />
         </div>

@@ -1126,6 +1126,7 @@ body {
 .swiper-company {
   margin-left: 1px 20px;
 }
+
 .navitem-active {
   color: #ef6e6e;
   background: url(../../assets/Image/menu-underline.png) no-repeat;
@@ -1485,7 +1486,16 @@ body {
   flex-direction: column;
   text-align: center;
 }
-
+.banner-detail-roi{
+  background-image: url('https://simplynoted.com/cdn/shop/files/calculator-callout.png');
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  
+  height:307px;
+  background-repeat: no-repeat;
+ 
+}
 .roi-total {
   background-image: url('https://simplynoted.com/cdn/shop/files/roi-bg.png');
   background-size: contain;
@@ -1512,6 +1522,14 @@ body {
   background: #203569;
 }
 
+
+.roi-dots:before {
+  content: ".";
+  color: white;
+  left: 4px;
+  font-size: 4em;
+  position: relative;
+}
 /******************* SALESFORCE FORM STYLES ****************************/
 .wrap-business-banner {
   -webkit-text-size-adjust: 100%;
@@ -1544,7 +1562,7 @@ body {
   top: -25px;
 }
 
-.wrap-business-form {
+.wrap-business-form,.wrap-business-form-salesforce {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   font-family: 'Karla', sans-serif;
@@ -1656,7 +1674,7 @@ body {
   margin-left: -10px;
 }
 
-.white-underline {
+.white-underline,.white-underline-salesforce {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   font-family: 'Karla', sans-serif;
@@ -1672,7 +1690,7 @@ body {
   margin: 1.5%;
 }
 
-.white-underline:after {
+.white-underline:after,.white-underline-salesforce:after {
   content: '_';
   color: #1f3469;
   position: absolute;
@@ -1942,7 +1960,7 @@ body {
     color: #001a5f;
     background-size: contain;
     margin-top: 30px;
-    max-width: 100%;
+    width: 100%;
 }
 
 .signup-row{
@@ -2202,7 +2220,7 @@ body {
     color: black;
 }
 .output-item p{
-  font-size: 10px;
+  font-size: 12px;
   
 }
 .roiNumbers{
@@ -2310,6 +2328,9 @@ body {
   .wrap-referral-form{
     width:570px;
   }
+  .wrap-business-form-salesforce{
+    width: 100%;
+  }
   .req-btn {
     width:50%;
     height:50px;;
@@ -2360,6 +2381,9 @@ margin-left: 0px;
    .roi-calculator-input-wrapper{
       width: 100%;
    }
+   .white-underline-salesforce{
+    width: 100%;
+   }
 }
 @media only screen and (max-width: 768px) {
   .req-btn{
@@ -2382,7 +2406,7 @@ margin-left: 0px;
   .swiper-button-prev,
   .swiper-button-next {
     background-color: #ef6e6e;
-    background-size: 20px;
+    padding:7px;
     border-radius: 50%;
   }
   .thankyou_img {
@@ -2415,8 +2439,10 @@ margin-left: 0px;
 .input-holders{
   width: 100%;
 }
+.banner-detail-roi{
+ background-size:57% 80%;
 }
-
+}
 @media only screen and (max-width:500px) {
 .signup-overview{
   width: 100%;
