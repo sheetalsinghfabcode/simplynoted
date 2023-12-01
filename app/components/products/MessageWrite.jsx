@@ -1120,16 +1120,12 @@ export function MessageWriting({
                   ? editFontFamily
                   : 'tarzan',
                 fontSize:
-                  fontSize > signOffFontSize
+                   signOffFontSize
                     ? signOffFontSize
-                    : fontSize
-                    ? fontSize
                     : '50px',
                 lineHeight:
-                  lineHeight > signOffLineHeight
+                   signOffLineHeight
                     ? signOffLineHeight
-                    : lineHeight
-                    ? lineHeight
                     : '50px',
               }}
             >
