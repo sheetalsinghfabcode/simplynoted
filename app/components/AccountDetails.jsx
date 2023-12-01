@@ -48,55 +48,81 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
     generateApiKey();
   }, [customerID]);
 
-
-  const {fullName, setFullName, userEmail, setUserEmail, phoneNumber ,setPhoneNumber} = useStateContext();
-
+  const {
+    fullName,
+    setFullName,
+    userEmail,
+    setUserEmail,
+    phoneNumber,
+    setPhoneNumber,
+  } = useStateContext();
 
   useEffect(() => {
     const storedFullName = localStorage.getItem('SNFullName');
     const storedUserEmail = localStorage.getItem('SnEmail');
-     const  phoneNumber = localStorage.getItem('phone');
+    const phoneNumber = localStorage.getItem('phone');
 
     setFullName(storedFullName || '');
     setUserEmail(storedUserEmail || '');
-    setPhoneNumber(phoneNumber)
+    setPhoneNumber(phoneNumber);
   }, []);
-
 
   return (
     <>
       <div className="container mx-auto px-4 py-8">
-        <h3 className="text-2xl font-bold mb-6">Account Details</h3>
+        <h3 className=" md:text-2xl text-[15px] font-bold mb-6">
+          Account Details
+        </h3>
         <div className="bg-white font-karla shadow-md rounded-lg p-6">
           {/* Name */}
           <div className="flex mb-4">
-            <div className="w-1/4 text-sm text-gray-600">Name:</div>
-            <p className="w-3/4 text-[16px] font-semibold">{fullName ? fullName : `${firstName || ''} ${lastName ? lastName + ' ' : ''}`}</p>
+            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+              Name:
+            </div>
+            <p className="w-3/4 md:text-[16px] text-[12px] font-semibold">
+              {fullName
+                ? fullName
+                : `${firstName || ''} ${lastName ? lastName + ' ' : ''}`}
+            </p>
           </div>
 
           {/* Phone */}
           <div className="flex mb-4">
-            <div className="w-1/4 text-sm text-gray-600">Phone:</div>
-            <p className="w-3/4 text-[16px]  font-semibold">{ phoneNumber ? phoneNumber : phone }</p>
+            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+              Phone:
+            </div>
+            <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
+              {phone}
+            </p>
           </div>
 
           {/* Email */}
           <div className="flex mb-4">
-            <div className="w-1/4 text-sm text-gray-600">Email address:</div>
-            <p className="w-3/4 text-[16px]  font-semibold">{userEmail}</p>
+            <div className="w-1/4 md:text-sm text-[12px] text-sm text-gray-600">
+              Email address:
+            </div>
+            <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
+              {email}
+            </p>
           </div>
 
           {/* Password */}
           <div className="flex mb-4">
-            <div className="w-1/4 text-sm text-gray-600">Password:</div>
-            <p className="w-3/4 text-[16px]  font-semibold">**************</p>
+            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+              Password:
+            </div>
+            <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
+              **************
+            </p>
           </div>
 
           {/* API Key */}
           <div className="flex mb-4 items-center">
-            <div className="w-1/4 text-sm text-gray-600 ">API Key:</div>
+            <div className="w-1/4 md:text-sm text-[12px] text-gray-600 ">
+              API Key:
+            </div>
             <button
-              className="px-4 py-2 bg-[#1b52b1] text-white  text-sm font-semibold hover:bg-[#1b52b1] focus:outline-none"
+              className="px-4 py-2 bg-[#1b52b1] text-white  md:text-sm text-[12px] font-semibold hover:bg-[#1b52b1] focus:outline-none"
               onClick={() => {
                 setHandleGenerateClick(true);
                 generateApiKey();
@@ -107,7 +133,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
           </div>
 
           <div className="flex mb-4">
-            <div className="w-1/4 text-sm text-gray-600">
+          <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
               Generated API Key:
             </div>
             {handleGenerateClick && (

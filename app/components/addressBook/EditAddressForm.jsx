@@ -132,12 +132,12 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         }`}
       >
         <div className="flex justify-between items-center mb-[16px]">
-          <h2 className="text-left text-[#001a5f] font-bold text-[34px] leading-[44px]">
+          <h2 className="text-left text-[#001a5f] md:text-[19px] text-[12px] font-bold text-[34px] leading-[44px]">
             Edit Address
           </h2>
           <div className="flex gap-[10px]">
             <DynamicButton
-              className="bg-[#ef6e6e] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
+              className="bg-[#ef6e6e] md:text-[16px] text-[12px] md:h-[60px] h-[35px]  w-full xl:min-w-[180px] max-w-[170px] "
               text="Cancel"
               onClickFunction={() => {
                 setAddressForm(false);
@@ -145,7 +145,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               }}
             />
             <DynamicButton
-              className="bg-[#1b5299] whitespace-nowrap  h-[60px] w-full xl:min-w-[180px] max-w-[200px]"
+              className="bg-[#1b5299] whitespace-nowrap  md:text-[16px] text-[12px]  md:h-[60px] h-[35px] w-full xl:min-w-[180px] max-w-[200px]"
               text="Update Address"
               onClickFunction={updateAddress}
             />
