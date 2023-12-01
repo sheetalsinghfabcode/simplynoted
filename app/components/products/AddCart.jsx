@@ -346,7 +346,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
        
                 <>
                     <DynamicButton
-                        className="bg-[#EF6E6E] m-5 w-full max-w-[150px]"
+                        className="bg-[#EF6E6E] m-5 w-full max-w-[130px]"
                         text="Go Back"
                         onClickFunction={() => setProductShow(true)}
                         backArrow={true} />

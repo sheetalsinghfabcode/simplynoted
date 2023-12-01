@@ -521,21 +521,21 @@ const ContactTable = ({
           content={errorContent}
         />
       ) : (
-        <div className="w-full max-w-[100%] overflow-x-auto">
+        <div className="w-full max-w-[100%]">
           <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
             <input
               type="text"
               placeholder="Search Addresses..."
               value={searchText}
               onChange={handleSearchInputChange}
-              className="w-full max-w-[400px] py-[5px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+              className="w-full max-w-[400px] py-[5px]  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
-            <div className="flex">
+             <div className="md:flex grid self-center">
               <div
-                className={`border-[1px] border-dashed border-[#000] py-[5px]`}
+                className={`border-[1px]  md:w-[310px] w-[280px]  border-dashed border-[#000] py-[5px]`}
               >
                 <div className="flex flex-col">
-                  <h2 className="font-bold text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                  <h2 className="font-bold md:text-[16px] text-[12px] text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
                     Bulk Address Upload
                   </h2>
                   <input
@@ -547,13 +547,13 @@ const ContactTable = ({
                   />
                   <a
                     href="https://api.simplynoted.com/docs/bulk-template"
-                    className="text-[14px] px-[10px] font-bold underline"
+                    className="md:text-[14px] text-[12px] px-[10px] font-bold underline"
                   >
                     Download bulk address template
                   </a>
                   <span
                     onClick={openModal}
-                    className="font-bold text-[14px] text-black px-[10px] cursor-pointer underline"
+                    className="font-bold text-[14px] md:text-[14px] text-[12px] text-black px-[10px] cursor-pointer underline"
                   >
                     {' '}
                     View Instructions
@@ -567,9 +567,9 @@ const ContactTable = ({
                   />
                 )}
               </div>
-              <div className="flex items-end justify-end ml-[10px] ">
+              <div className="flex md:items-end justify-center md:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299]"
+                  className="bg-[#1b5299] md:w-[88px] w-[232px] text-[11px]"
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />
@@ -585,7 +585,7 @@ const ContactTable = ({
                   !ProdcuctSide && (
                     <button
                       onClick={() => setDeleteModal(true)}
-                      className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                      className="text-white bg-[#FF0000] border border-solid md:text-[16px] text-[12px]  font-bold py-[3px] px-[16px]"
                     >
                       Delete Selected
                     </button>
@@ -605,8 +605,9 @@ const ContactTable = ({
                 </div>
               )}
               {/* Your table rendering code here... */}
+              <div className='overflow-auto'>
               <table
-                className="w-full overflow-auto max-w-[100%]"
+                className=" overflow-auto md:min-w-full w-[59px]"
                 {...getTableProps()}
               >
                 <thead>
@@ -615,8 +616,8 @@ const ContactTable = ({
                       {headerGroup.headers.map((column) => (
                         <th
                           {...column.getHeaderProps()}
-                          className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f] border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
-                        >
+                          className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f]  border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
+                          >
                           {column.id === 'type' ? (
                             <div className="flex items-center relative type-select">
                               <select
@@ -691,6 +692,7 @@ const ContactTable = ({
                   </tbody>
                 )}
               </table>
+              </div>
               {updateLoader && (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader

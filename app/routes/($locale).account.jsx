@@ -204,21 +204,22 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[20px]">
-      <div className="flex justify-between items-center">
-        <DynamicTitle title="Account" />
+      <div className="flex justify-between items-center md:ml-[0px] ml-[123px] md:mt-[0px] mt-[9px]">
+        <DynamicTitle  title="Account" 
+        />
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
-            className="text-primary/50 bg-[#EF6E6E]"
+            className="text-primary/50 bg-[#EF6E6E]  md:text-[15px] text-[8px]"
             text="Log Out"
             onClickFunction={() => setData(true)}
           />
         </Form>
       </div>
-      <div className="flex gap-[20px] flex-wrap">
+      <div className="flex gap-[20px]  md:ml-[0px] ml-[21px] flex-wrap">
         <DynamicButton
           text="Account detail"
-          className={`flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
+          className={`flex justity-center md:h-[39px] h-[36px] items-center md:text-[15px] text-[10px] border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
             accountDetail
               ? 'bg-[#1b5299] !text-white'
               : 'bg-transparent !text-[#1b5299]'
@@ -228,7 +229,7 @@ function Account({customer, heading, featuredData}) {
         <DynamicButton
           text="Order History"
           onClickFunction={() => handleOrderHistoryClick()}
-          className={`border-2 flex justity-center items-center border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299]   ${
+          className={`border-2 flex justity-center items-center md:h-[39px] h-[36px] w-[143px] md:text-[15px] text-[10px] border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299]   ${
             orderHistory
               ? 'bg-[#1b5299] !text-white'
               : 'bg-transparent !text-[#1b5299]'
@@ -237,16 +238,16 @@ function Account({customer, heading, featuredData}) {
         <DynamicButton
           text="View Addresses"
           onClickFunction={() => navigate('/address-book')}
-          className={`flex justity-center items-center  border-2 border-solid h-[40px] hover:bg-[#1b5299]  hover:!text-white !px-[29px]  uppercase border-[#1b5299] !text-[#1b5299]  `}
+          className={`flex justity-center items-center md:text-[15px] text-[10px]  md:h-[39px] h-[36px] border-2 border-solid h-[40px] hover:bg-[#1b5299]  hover:!text-white !px-[29px]  uppercase border-[#1b5299] !text-[#1b5299]  `}
         />
         <DynamicButton
           text="Manage Plan"
-          className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+          className="flex justity-center items-center w-[143px] border-2 border-solid md:h-[39px] h-[36px] md:text-[15px] text-[10px] h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
           onClickFunction={() => navigate('/manage-subscription')}
         />
         <DynamicButton
           text="Edit Profile"
-          className="flex justity-center items-center border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
+          className="flex justity-center items-center w-[143px] border-2 border-solid md:h-[39px] h-[36px] md:text-[15px] text-[10px] h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
           onClickFunction={() => handleProfile()}
         />
       </div>

@@ -60,9 +60,9 @@ export function OrderCard({order}) {
                 }`}
               >
                 <DynamicButton
-                className="bg-[#ef6e6e] font-semibold max-w-[156px] w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
-
-                text={statusMessage(order.fulfillmentStatus)} />
+                  className="bg-[#001a5f] font-semibold w-[100%] md:text-[16px] text-[12px] text-[#fff] py-[14px] px-[8px] font-karla"
+                  text="View Details"
+                />
                
               </span>
             </dd>

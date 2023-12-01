@@ -38,7 +38,6 @@ const Profile = ({
     zip: '',
   });
 
-
   const [securityDetails, setSecurityDetails] = useState({
     newPassword: '',
     confirmPassword: '',
@@ -101,8 +100,8 @@ const Profile = ({
         },
       );
       const jsonResponse = await response.json();
-      if(jsonResponse?.errors &&  jsonResponse?.errors.phone){
-        setError(jsonResponse?.errors.phone[0])
+      if (jsonResponse?.errors && jsonResponse?.errors.phone) {
+        setError(jsonResponse?.errors.phone[0]);
       }
 
       if (response.ok) {
@@ -190,20 +189,20 @@ const Profile = ({
         setLoader(false);
         // Request was successful
       } else {
-        setLoader(false)
+        setLoader(false);
         // Handle errors if the response is not OK
         console.error('Error updating user profile:', response);
       }
     } catch (error) {
       // Handle network errors or exceptions
-      setLoader(false)
+      setLoader(false);
       console.error('Error:', error);
     }
   };
 
   const switchToTab = (tabName) => {
     setActiveTab(tabName);
-    setError(null)
+    setError(null);
   };
 
   return (
@@ -219,14 +218,14 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white shadow-md rounded-lg p-6 w-full max-w-[60%] mx-auto mt-[40px] ${
+        className={`bg-white shadow-md rounded-lg p-6 w-full md:max-w-[60%] max-w-[93%] mx-auto mt-[40px] ${
           loader && 'opacity-50'
         } `}
       >
         <div className="flex w-full mb-4">
           <button
             onClick={() => switchToTab('account')}
-            className={`px-4 py-2 mr-4 w-full border border-solid border-[#1b52b1] font-karla ${
+            className={`px-4 py-2 mr-4 w-full border md:text-[18px] md:h-[53px] h-[39px] text-[12px] border-solid border-[#1b52b1]  font-karla ${
               activeTab === 'account'
                 ? 'bg-[#1b52b1] text-white'
                 : 'bg-white text-[#1b52b1]'
@@ -236,7 +235,7 @@ const Profile = ({
           </button>
           <button
             onClick={() => switchToTab('security')}
-            className={`px-4 py-2  w-full border border-solid border-[#1b52b1] font-karla  ${
+            className={`px-4 py-2 border md:text-[18px] text-[12px] md:h-[53px] h-[39px]  w-full border border-solid border-[#1b52b1] font-karla  ${
               activeTab === 'security'
                 ? 'bg-[#1b52b1] text-white'
                 : 'bg-white text-[#1b52b1]'
@@ -250,7 +249,7 @@ const Profile = ({
           <form onSubmit={handleSubmit} className="">
             <div className="mb-4 flex flex-wrap -mx-3">
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="firstName" className="block mb-1 font-semibold">
+              <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   First Name
                 </label>
                 <input
@@ -259,11 +258,12 @@ const Profile = ({
                   name="firstName"
                   value={accountDetails.firstName}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
+
                 />
               </div>
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="firstName" className="block mb-1 font-semibold">
+              <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Last Name
                 </label>
                 <input
@@ -272,14 +272,14 @@ const Profile = ({
                   name="lastName"
                   value={accountDetails.lastName}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
                 {/* Other Account Details Fields */}
               </div>
             </div>
 
             <div className="mb-4">
-              <label htmlFor="email" className="block mb-1 font-semibold">
+            <label htmlFor="email" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                 Email
               </label>
               <input
@@ -289,33 +289,33 @@ const Profile = ({
                 name="email"
                 value={accountDetails.email}
                 onChange={handleAccountInputChange}
-                className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="phone" className="block mb-1 font-semibold">
+            <label htmlFor="phone" className="block md:text-[16px] text-[12px]  mb-1 font-semibold">
                 Phone Number (with area code)
               </label>
-            
+
               <input
                 type="text"
                 id="phone"
                 name="phone"
                 value={accountDetails.phone}
                 onChange={handleAccountInputChange}
-                className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
               />
-                {error && (
-              <span className="text-[16px] text-[#ef6e6e] font-semibold">
-                {' '}
-                Error: {error}
-              </span>
-            )}
+              {error && (
+                <span className="text-[16px] text-[#ef6e6e] font-semibold">
+                  {' '}
+                  Error: {error}
+                </span>
+              )}
             </div>
 
             <div className="mb-4 flex flex-wrap -mx-3">
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="address1" className="block mb-1 font-semibold">
+                <label htmlFor="address1" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Address 1
                 </label>
                 <input
@@ -324,11 +324,11 @@ const Profile = ({
                   name="address1"
                   value={accountDetails.address1}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
               </div>
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="firstName" className="block mb-1 font-semibold">
+              <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Address 2
                 </label>
                 <input
@@ -337,13 +337,13 @@ const Profile = ({
                   name="address2"
                   value={accountDetails.address2}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
               </div>
             </div>
             <div className="mb-4 flex flex-wrap -mx-3">
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="city" className="block mb-1 font-semibold">
+                <label htmlFor="city" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   City
                 </label>
                 <input
@@ -352,11 +352,11 @@ const Profile = ({
                   name="city"
                   value={accountDetails.city}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
               </div>
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="state" className="block mb-1 font-semibold">
+                <label htmlFor="state" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   State
                 </label>
                 <input
@@ -365,13 +365,13 @@ const Profile = ({
                   name="state"
                   value={accountDetails.state}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md  px-3 py-2 w-full"
                 />
               </div>
             </div>
             <div className="mb-4 flex flex-wrap -mx-3">
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="firstName" className="block mb-1 font-semibold">
+                <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Country
                 </label>
                 <input
@@ -380,11 +380,11 @@ const Profile = ({
                   name="country"
                   value={accountDetails.country}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
               </div>
               <div className="w-1/2 px-3 mb-6">
-                <label htmlFor="zip" className="block mb-1 font-semibold">
+                <label htmlFor="zip" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Zip
                 </label>
                 <input
@@ -393,7 +393,7 @@ const Profile = ({
                   name="zip"
                   value={accountDetails.zip}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
               </div>
             </div>
@@ -412,7 +412,7 @@ const Profile = ({
               <div className="mb-4">
                 <label
                   htmlFor="newPassword"
-                  className="block mb-1 font-semibold"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
                 >
                   New Password
                 </label>
@@ -422,14 +422,14 @@ const Profile = ({
                   name="newPassword"
                   value={securityDetails.newPassword}
                   onChange={handleSecurityInputChange}
-                  className="border border-gray-300 rounded-md px-3 py-2 w-full"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-full"
                 />
               </div>
 
               <div className="mb-8">
                 <label
                   htmlFor="confirmPassword"
-                  className="block mb-1 font-semibold"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
                 >
                   Confirm Password
                 </label>
@@ -455,7 +455,7 @@ const Profile = ({
                 updateUserPassword();
               }
             }}
-            className="bg-[#ef6e6e] text-white font-bold cursor-pointer font-karla h-[50px] mx-auto w-full max-w-[350px]"
+            className="bg-[#ef6e6e] text-white font-bold value={securityDetails.newPassword} cursor-pointer font-karla h-[50px] mx-auto w-full max-w-[350px]"
             text={
               activeTab === 'account' ? 'Update Profile' : 'Update Password'
             }
