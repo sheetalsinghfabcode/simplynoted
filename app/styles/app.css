@@ -327,7 +327,7 @@ nav a {
   width: 50%;
 }
 .output {
-  word-break: break-all;
+  /* word-break: break-all; */
   word-wrap: break-word;
   white-space: pre-wrap;
 }

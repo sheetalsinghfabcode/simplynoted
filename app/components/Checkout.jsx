@@ -9,7 +9,7 @@ import Loader from './modal/Loader';
 import DynamicTitle from './Title';
 export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
     const stripe = loadStripe(`${StripeKey}`);
-    let customerid, fullName, userEmail
+    let customerid, fullName, userEmail,firstName,lastName
     const [showWallet, setShowWallet] = useState(true)
     const [showCardDetail, setShowCardDetail] = useState(false)
     const [showCardBox, setShowCardBox] = useState(false)
@@ -61,16 +61,16 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    name: formData.name || '',
-                    email: formData.email || '',
-                    address: {
-                        line1: formData.address.line1 || '',
-                        line2: formData.address.line2 || '',
-                        city: formData.address.city || '',
-                        state: formData.address.state || '',
-                        country: formData.address.country || 'USA',
-                    },
-                    paymentMethodId: id || ''
+                    name:formData.name || '',
+                    email:formData.email || '',
+                    
+                        'address[line1]': formData.address.line1 || '',
+                        'address[line2]' : formData.address.line2 || '',
+                        'address[city]': formData.address.city || '',
+                        'address[state]':formData.address.state || '',
+                        'address[country]' : formData.address.country || ''
+                    ,
+                    paymentMethodId:id || ''
                 }),
             })
             const json = await res.json()
@@ -125,9 +125,11 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
         customerid = localStorage.getItem('customerId')
         fullName = localStorage.getItem('SNFullName')
         userEmail = localStorage.getItem('SnEmail')
+        firstName = localStorage.getItem('firstName')
+         lastName = localStorage.getItem('lastName')
         setCustomertID(customerid)
         getSavedCards(customerid)
-        formData.name = fullName
+        formData.name = fullName ? fullName : firstName + " " + lastName
         formData.email = userEmail
     }, [newCardAdded])
     
