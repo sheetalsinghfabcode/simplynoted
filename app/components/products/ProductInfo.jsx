@@ -250,7 +250,7 @@ export function ProductInfo({
           <div>
             <Text>Optional shipping date</Text>
             <br />
-            <input type="date" className="cursor-pointer" />
+            <input type="date" className="cursor-pointer" min={new Date().toISOString().split('T')[0]}/>
           </div>
         </div>
         {/* Product page Data Vieew */}

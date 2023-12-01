@@ -22,7 +22,8 @@ let mainMessageBox,
   signOffBocContainer,
   customerid,
   loadTempDataFilter,
-  savedMsg;
+  savedMsg,
+  boxHeight;
 export function MessageWriting({
   show,
   selectedFile,
@@ -42,7 +43,7 @@ export function MessageWriting({
 }) {
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
-    console.log(metafields,"metafieldsmetafieldsmetafieldsmetafields");
+  console.log(metafields, 'metafieldsmetafieldsmetafieldsmetafields');
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -85,17 +86,19 @@ export function MessageWriting({
   );
   const [searchData, setsearchData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [stateCheckCart, setStateCheckCart] = useState(false)
-  const [isAddressUploadSuccess,setIsAddressUploadSuccess] = useState(false)
-  const [getMetafields,setgetMetafield] = useState(metafields?metafields:'')
-  const [metafieldsHeader,setMetafieldsHeader] = useState(false)
-  const [metafieldsFooter,setMetafieldsFooter] = useState(false)
-  console.log(metafieldsHeader,metafieldsFooter,"metafiled header footer");
- useEffect(()=>{
-  setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
-  setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
+  const [stateCheckCart, setStateCheckCart] = useState(false);
+  const [isAddressUploadSuccess, setIsAddressUploadSuccess] = useState(false);
+  const [getMetafields, setgetMetafield] = useState(
+    metafields ? metafields : '',
+  );
+  const [metafieldsHeader, setMetafieldsHeader] = useState(false);
+  const [metafieldsFooter, setMetafieldsFooter] = useState(false);
+  console.log(metafieldsHeader, metafieldsFooter, 'metafiled header footer');
+  //  useEffect(()=>{
+  //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
+  //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
 
- },[metafields])
+  //  },[metafields])
   const maxMessCount = 450;
   const remainingWord = maxMessCount - name.length;
   const maxSignCount = 50;
@@ -331,9 +334,7 @@ export function MessageWriting({
         );
       } else {
         return (
-          <div
-            className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2`}
-          >
+          <div className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2`}>
             <span
               className={`flex `}
               style={{
@@ -407,32 +408,64 @@ export function MessageWriting({
       }
     }
   }
+  function debounce(func, timeout = 300) {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+      }, timeout);
+    };
+  }
 
   useEffect(() => {
-    if (!mainMessageBox) return;
-    const resizeObserver = new ResizeObserver(processCustomMessageInput);
+    if(name.length>0){
+    const debouncedCallback = debounce(processCustomMessageInput);
+    // const resizeObserver = new ResizeObserver(debouncedCallback);
+    debouncedCallback()
     if (!document.body.contains(mainMessageBox)) return;
-    resizeObserver.observe(mainMessageBox);
-
-    return () => resizeObserver.disconnect();
-  }, [mainMessageBox]);
+    // resizeObserver.observe(mainMessageBox);
+    // return () => resizeObserver.disconnect();
+  }
+  }, [name,fontFamilyName]);
 
   useEffect(() => {
-    if (!signOffTextBox) return;
-    const resizeObserver = new ResizeObserver(processSignOffInput);
+    if(name2.length>0){
+    const debouncedCallback = debounce(processSignOffInput);
+    // const resizeObserver = new ResizeObserver(debouncedCallback);
+    debouncedCallback()
     if (!document.body.contains(signOffTextBox)) return;
-    resizeObserver.observe(signOffTextBox);
+    // resizeObserver.observe(signOffTextBox);
 
-    return () => resizeObserver.disconnect();
-  }, [signOffTextBox]);
+    // return () => resizeObserver.disconnect();
+  }
+  }, [name2, fontFamilyName]);
 
+  async function onChnageNameVal(nameData) {
+    setName(nameData);
+    // processInput();
+  }
+  console.log(name2.length,"name2.length");
+
+  async function onchnageOfRegardBox(data) {
+  console.log(name2.length,"name2.length OnchanegCall");
+
+    setName2(data);
+    const debouncFunc = debounce(processCustomMessageInput);
+    if(name2.length == '0' || name2.length == '1'){
+      debouncFunc();
+    }
+    // processInput2();
+  }
   function processCustomMessageInput() {
+    if (!mainMessageBox) return;
     mainMessageBox.style.fontSize = '50px';
     mainMessageBox.style.lineHeight = '50px';
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
   function processSignOffInput() {
+    if (!signOffTextBox) return;
     signOffTextBox.style.fontSize = '50px';
     signOffTextBox.style.lineHeight = '50px';
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
@@ -626,7 +659,7 @@ export function MessageWriting({
         setTimeout(() => setIsOpen2(false), 3000);
         found = true;
       } else {
-        if(stateCheckCart){
+        if (stateCheckCart) {
           await uploadDataToAPI(obj);
         }
       }
@@ -634,8 +667,8 @@ export function MessageWriting({
     setErrorVal(errMsg);
     setUsAddress(usCount);
     setnonUsAddress(nonUSCount);
-    if(stateCheckCart){
-      setIsAddressUploadSuccess(!isAddressUploadSuccess)
+    if (stateCheckCart) {
+      setIsAddressUploadSuccess(!isAddressUploadSuccess);
     }
     // console.log(replacedMsg, 'replacedMsg');
     if (found) {
@@ -766,14 +799,7 @@ export function MessageWriting({
       console.log(error, 'error at Ai generated message ');
     }
   }
-  async function onChnageNameVal(nameData) {
-    setName(nameData);
-    // processInput();
-  }
-  async function onchnageOfRegardBox(data) {
-    setName2(data);
-    // processInput2();
-  }
+  
   const ref = useRef(null);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -842,7 +868,7 @@ export function MessageWriting({
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [addressForm, loadAddress,isAddressUploadSuccess]);
+  }, [addressForm, loadAddress, isAddressUploadSuccess]);
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
@@ -1012,7 +1038,7 @@ export function MessageWriting({
   useEffect(() => {
     SavedTemp();
   }, [onDelTemp]);
-  console.log(name2.length,"name2.length");
+  console.log(name2.length, 'name2.length');
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -1020,11 +1046,45 @@ export function MessageWriting({
           id="outer"
           className="outerr h-[380px] w-[100%] bg-white max-w-[600px] relative"
         >
-          {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
+          {metafields &&
+            metafields.isHeaderIncluded &&
+            metafields.header.data && <ShowHeaderComp />}
           <div
             className={`outerSec w-[100%] bg-white mt-1`}
             ref={ref2}
-            style={{height:metafieldsFooter && metafieldsHeader?'210px':metafieldsHeader || metafieldsFooter ? '260px':'300px'}}
+            style={{
+              height:
+                metafields.footer &&
+                metafields.header &&
+                metafields.footer.data &&
+                metafields.header.data &&
+                name2.length > 0
+                  ? '210px'
+                  : (metafields.footer &&
+                      metafields.header &&
+                      metafields.footer.data &&
+                      metafields.footer &&
+                      metafields.header &&
+                      metafields.header.data) ||
+                    (metafields.footer &&
+                      metafields.header &&
+                      metafields.footer.data &&
+                      name2.length > 0) ||
+                    (metafields.footer &&
+                      metafields.header &&
+                      metafields.header.data &&
+                      name2.length > 0)
+                  ? '258px'
+                  : (metafields.footer &&
+                      metafields.header &&
+                      metafields.footer.data) ||
+                    (metafields.footer &&
+                      metafields.header &&
+                      metafields.header.data) ||
+                    name2.length > 0
+                  ? '310px'
+                  : '370px',
+            }}
           >
             <div
               id="messageBoxID"
@@ -1045,8 +1105,9 @@ export function MessageWriting({
           </div>
           {/* {name2.length>0 && */}
           <div
-            className={`secDiv h-[60px] w-[100%] max-w-[300px] ml-auto bg-white `} 
+            className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto bg-white `}
             ref={ref}
+            style={{display: name2.length > 0 ? 'block' : 'none'}}
           >
             <div
               id="signOffText"
@@ -1076,7 +1137,9 @@ export function MessageWriting({
             </div>
           </div>
           {/* } */}
-          {metafields && metafields.isFooterIncluded && metafields.footer.data && <ShowFooterComp />}
+          {metafields &&
+            metafields.isFooterIncluded &&
+            metafields.footer.data && <ShowFooterComp />}
         </div>
         <div className="textAreaView w-[600px]">
           <textarea
@@ -1264,7 +1327,11 @@ export function MessageWriting({
                       ) : (
                         <>
                           <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
-                            <input type="checkbox" checked={stateCheckCart}  onClick={() => setStateCheckCart(!stateCheckCart)}/>
+                            <input
+                              type="checkbox"
+                              checked={stateCheckCart}
+                              onClick={() => setStateCheckCart(!stateCheckCart)}
+                            />
                             <label htmlFor="">
                               Add all addresses to address book
                             </label>
