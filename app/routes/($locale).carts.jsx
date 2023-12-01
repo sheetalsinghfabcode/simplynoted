@@ -317,33 +317,33 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div className="w-[73rem]  bg-[white] m-auto mt-10 mb-10">
-                        <div className="flex">
-                          <div className="w-[36rem]">
-                            <div className="flex m-5">
-                              <div className="max-w-[20%] m-5">
+                      <div className="w-[85%]  bg-[white] m-auto mt-10 mb-10">
+                        <div className="flex w-[100%] flex-wrap ">
+                          <div className="md:w-[44%] w-full items-center relative flex ml-0 m-auto">
+                            <div className="flex w-full justify-evenly">
+                              <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
                                 <img src={item.productImg} alt="" />
                               </div>
-                              <div className="max-w-[100%]">
-                                <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                              <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] text-[14px] lg:tracking-[0.5px] tracking-0">
                                   {item.productTitle}
                                 </h3>
-                                <br />
-                                <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] text-[14px] lg:tracking-[1.5px] tracking-0">
                                   {' '}
                                   Sender
                                 </span>
                                 :
-                                <span className=" text-[black] text-[16px] tracking-[1.5px]">
+                                <span className=" text-[black]  md:text-[14px] text-[12px] lg:tracking-[1.5px] tracking-0">
                                   {' '}
                                   {item.senderAddress.address1},
                                   {item.senderAddress.city},
                                   {item.senderAddress.state},
                                   {item.senderAddress.country}
                                 </span>
-                                <div className="buttonDiv pr-5 mt-2">
+                                <div className="buttonDiv mt-2">
                                   <button
-                                    className="bg-[#EF6E6E] text-[#fff] p-2"
+                                    className="bg-[#EF6E6E] text-[#fff]  p-[5px]  lg:text-[14px] text-[11px] "
                                     onClick={() => {
                                       OpenModalFunc2(index);
                                     }}
@@ -355,44 +355,44 @@ export default function AddCartFunc() {
                             </div>
                           </div>
 
-                          <div className="w-[18rem] gap-5 flex items-center">
-                            <div className="m-6 w-[16rem]">
+                          <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                            <div className="w-[100%]">
                               <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                   {' '}
                                   Price:
                                 </span>
-                                <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                   $ {item.price}
                                 </span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                   {' '}
                                   Quantity:
                                 </span>
-                                <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                   {item.csvFileLen}
                                 </span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                   Subtotal:
                                 </span>
-                                <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                   $ {(item.price * item.csvFileLen).toFixed(2)}
                                 </span>
                               </div>
                             </div>
                           </div>
-                          <div className="w-[19rem] m-4 flex justify-center">
+                          <div className="md:w-[20%] w-[44%] my-4 ml-4 flex justify-center">
                             <div>
                               {item.giftCardName !== null ? (
                                 ''
                               ) : (
                                 <div className="buttonDiv pr-5 m-2">
                                   <DynamicButton
-                                    className="bg-[#ef6e6e] w-full"
+                                    className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px]"
                                     text="Add Gift Card"
                                     onClickFunction={() => {
                                       OpenModalFunc(index);
@@ -403,7 +403,7 @@ export default function AddCartFunc() {
 
                               <div className="buttonDiv pr-5 m-2">
                                 <DynamicButton
-                                  className="bg-[#1b5299] w-full"
+                                  className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px]"
                                   text="EDIT ORDER"
                                   onClickFunction={() => {
                                     editOrderData(index);
@@ -412,7 +412,7 @@ export default function AddCartFunc() {
                               </div>
                               <div className="buttonDiv pr-5 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full"
+                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px]"
                                   text="DELETE ORDER"
                                   onClickFunction={() => {
                                     ConfirmDeleteOrder(index);
@@ -423,47 +423,49 @@ export default function AddCartFunc() {
                           </div>
                         </div>
                         <div className="w-full h-[1px] bg-[black]"></div>
+
+
                         {item.giftCardName && (
-                          <div className="flex">
-                            <div className="w-[36rem]">
-                              <div className="flex m-5">
-                                <div className="max-w-[20%] m-5">
+                          <div className="flex w-[100%] flex-wrap ">
+                          <div className="md:w-[44%] w-full items-center relative flex ml-0 m-auto">
+                            <div className="flex w-full justify-evenly">
+                              <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+            
                                   <img src={item.giftCardImg} alt="" />
                                 </div>
-                                <div className="max-w-[100%] mt-10">
-                                  <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
+                                <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] text-[14px] lg:tracking-[0.5px] tracking-0">
                                     {item.giftCardName}
                                   </h3>
-                                  <br />
+                                  
                                 </div>
                               </div>
                             </div>
-                            <div className="w-[18rem] gap-5 flex items-center">
-                              <div className="m-6 w-[16rem]">
-                                <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    Price:
-                                  </span>
-                                  <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                            <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                            <div className="w-[100%]">
+                              <div className="flex justify-between">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                  {' '}
+                                  Price:
+                                </span>
+                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     $ {item.giftCardPrice}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    Quantity:
-                                  </span>
-                                  <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                  {' '}
+                                  Quantity:
+                                </span>
+                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     {item.csvFileLen}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                    {' '}
-                                    Subtotal:
-                                  </span>
-                                  <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                  Subtotal:
+                                </span>
+                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     ${' '}
                                     {(
                                       item.giftCardPrice * item.csvFileLen
@@ -475,7 +477,7 @@ export default function AddCartFunc() {
                             <div className="w-[19rem] m-4 flex justify-center items-center">
                               <div className="buttonDiv pr-5 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full"
+                                  className="bg-[#E30000] w-full  lg:text-[14px] md:text-[12px]"
                                   text="DELETE CARD"
                                   onClickFunction={() => {
                                     confirmCardDel(index);
@@ -856,7 +858,7 @@ export default function AddCartFunc() {
                       </div>
                     ))}
                   {totalPrize && (
-                    <div className="w-[73rem]  bg-[#FFF6F6] m-auto mt-10 mb-10">
+                    <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
                       <div className="flex p-2 ">
                         <div className="w-[25rem] flex items-center">
                           <div className="buttonDiv pr-5 m-2">
@@ -931,7 +933,7 @@ export default function AddCartFunc() {
                       </div>
                     </div>
                   )}
-                  <div className="w-[73rem] m-auto mt-10 mb-10">
+                  <div className="w-[85%] m-auto mt-10 mb-10">
                     <div className="p-[30px] bg-[#FFF6F6] w-[50%]">
                       <h3 className="text-[30px] font-karla text-[#1b5299]">
                         NOTE
@@ -941,6 +943,7 @@ export default function AddCartFunc() {
                       </p>
                       <textarea
                         name=""
+                        className='w-[85%]'
                         id="cart-note"
                         cols="30"
                         rows="4"
