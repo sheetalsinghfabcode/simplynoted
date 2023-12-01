@@ -36,13 +36,13 @@ export default function Salesforce() {
             </div>
             <div className="flex lg:justify-start justify-center flex-wrap items-center gap-2 mt-5 mb-5 relative ">
               <button
-                className="text-white p-2 bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold text-[15px]"
+                className="text-white p-2 bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold text-[13px]"
                 type="button"
               >
                 CONNECT USING OUR PROCESS BUILDER
               </button>
               <span className="lg:block hidden font-karla  text-[#001a5f] underline ml-5 text-xl">or</span>
-              <img className='lg:block hidden absolute right-[83px] top-[23px] w-[21%]' src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-1.png?v=1609453677&94441" alt="arrow" />
+              <img className='lg:block hidden relative right-[4px] top-[38px] w-[21%]' src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-1.png?v=1609453677&94441" alt="arrow" />
             </div>
             </div>
 
