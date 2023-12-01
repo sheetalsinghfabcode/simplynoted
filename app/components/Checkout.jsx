@@ -7,9 +7,10 @@ import { Modal } from './Modal'
 import location from '../../location.json'
 import Loader from './modal/Loader';
 import DynamicTitle from './Title';
+
 export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
     const stripe = loadStripe(`${StripeKey}`);
-    let customerid, fullName, userEmail,firstName,lastName
+    let customerid, fullName, userEmail , firstName , lastName;
     const [showWallet, setShowWallet] = useState(true)
     const [showCardDetail, setShowCardDetail] = useState(false)
     const [showCardBox, setShowCardBox] = useState(false)
@@ -125,7 +126,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
         customerid = localStorage.getItem('customerId')
         fullName = localStorage.getItem('SNFullName')
         userEmail = localStorage.getItem('SnEmail')
-        firstName = localStorage.getItem('firstName')
+         firstName = localStorage.getItem('firstName')
          lastName = localStorage.getItem('lastName')
         setCustomertID(customerid)
         getSavedCards(customerid)

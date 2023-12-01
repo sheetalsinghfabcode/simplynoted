@@ -195,7 +195,7 @@ function MenuMobileNav({menu, onClose}) {
             >
               <Text as="span" size="copy">
                 {item.title === 'Business' ? (
-                  <Link to="/business">
+                  <Link to="/business-page">
                     <div className="">Bussiness</div>
                   </Link>
                 ) : null}
@@ -573,7 +573,7 @@ function DesktopHeader({isHome, menu}) {
                     ) : null}
 
                     {item.title === 'Business' ? (
-                      <Link to="/business">
+                      <Link to="/business-page">
                         <div className="navitems">Business</div>
                       </Link>
                     ) : null}

@@ -23,7 +23,9 @@ const StripeCard = ({
   createCustomerId,
   savedCard,
   handlePurchaseCard,
+  addNewCreditCard,
   addCreditModal,
+  showStripeCard,
   updateCard,
 }) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
@@ -42,8 +44,14 @@ const StripeCard = ({
       try {
         const {id} = paymentMethod;
         if (id && !savedCard && !addCreditModal && !updateCard) {
+          debugger
           createCustomerId(id);
+        } else if 
+        (showStripeCard) {
+          debugger
+          addNewCreditCard(id)
         } else {
+          debugger
           handlePurchaseCard(id);
         }
 
@@ -61,18 +69,18 @@ const StripeCard = ({
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-[500px]">
       <CardElement options={CARD_OPTIONS} className="m-5" />
-      {pathname.pathname === '/manage-subscription' && (
-        <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
-          <button
-            type="submit"
-            className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
-          >
-            {addCreditModal  ? 'Add Card' : 'Update Card'}
-
-            {/* {(!savedCard || savedCard.length === 0) && 'Complete Purchase'} */}
-          </button>
-        </div>
-      )}
+      <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
+        <button
+          type="submit"
+          className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
+        >
+          {showStripeCard || addCreditModal
+            ? 'Add Card'
+            : pathname.pathname === '/simply-noted-plans'
+            ? 'Complete Purchase'
+            : 'Update Card'}{' '}
+        </button>
+      </div>
     </form>
   );
 };

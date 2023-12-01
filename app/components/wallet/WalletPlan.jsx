@@ -39,9 +39,6 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
-  console.log('stripeCollection', stripeCollection?.stripe.subscription);
-  console.log('amount', amount);
-
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
       <DynamicButton
@@ -91,12 +88,13 @@ const WalletPlans = ({
                         stripeCollection.stripe?.subscription,
                   );
 
+
                   return (
+
                     <div
                       onClick={() => {
                         if (
-                       
-                          stripeCollection.stripe.subscription !== product.node.title) {
+                          stripeCollection.stripe?.subscription !== product.node.title ) {
                           setSubscription(subscriptionMetafield?.value || 0);
                         }
                         setSubscriptionProduct(product.node.id);
