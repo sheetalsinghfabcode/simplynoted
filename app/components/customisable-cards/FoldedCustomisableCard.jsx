@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import {useNavigate} from '@remix-run/react';
-import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
 import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import {FaArrowLeft} from 'react-icons/fa';
@@ -194,16 +194,8 @@ export default function FoldedCustomisableCard({
         }
       });
 
-      const dataUrl = await domtoimage.toPng(element, {
-        width: element.offsetWidth,
-        height: element.offsetHeight,
-        style: {
-          margin: '0',
-          padding: '0',
-          border: '0',
-          boxSizing: 'border-box',
-        },
-      });
+      const canvas = await html2canvas(element);
+      const dataUrl = canvas.toDataURL('image/png');
 
       // Convert the URL to a file
       let arr = dataUrl.split(','),

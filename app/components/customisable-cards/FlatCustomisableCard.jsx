@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from '@remix-run/react';
 import {FaArrowLeft} from 'react-icons/fa';
-import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
 import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
@@ -227,16 +227,10 @@ export default function FlatCustomisableCard({
         }
       });
 
-      const dataUrl = await domtoimage.toPng(element, {
-        width: element.offsetWidth,
-        height: element.offsetHeight,
-        style: {
-          margin: '0',
-          padding: '0',
-          border: '0',
-          boxSizing: 'border-box',
-        },
-      });
+      // Scale to improve the quality of the image
+      const canvas = await html2canvas(element, {scale: 2});
+      const dataUrl = canvas.toDataURL('image/png');
+
       return dataUrlToFile(dataUrl);
     } catch (error) {
       console.error('Error generating a screenshot file:', error);
