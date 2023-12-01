@@ -77,7 +77,7 @@ export default function CustomProducts() {
   let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight
   let editSignOffFontSize = datafornav.state?.data.signOffFontSize
   const [show, setShow] = useState(
-    showBulkOnEdit || parameterValue == 'Bulk' ? true : false,
+    showBulkOnEdit || datafornav.search == "?select=Bulk" ? true : false,
   );
   const [productshow, setProductShow] = useState(true);
   const [modalIsOpen2, setIsOpen2] = useState(false);
