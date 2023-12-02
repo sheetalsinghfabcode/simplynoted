@@ -45,17 +45,24 @@ const ManageSubscription = () => {
   const [packageModal, setPackageModal] = useState(false);
   const [purchaseModal, setPurchaseModal] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
+  const [loader, setLoader] = useState(false);
 
-  const [loader, setLoader] = useState({
-    paymentHistory: false,
-    stopSubscription: false,
-    stopAutoRenew: false,
-    deleteCard: false,
-    updatePaymentMethod: false,
-    addNewPaymentMethod: false,
-    defaultCreditCard: false,
-    // ... other API endpoints
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    address: {
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      country: 'USA',
+    },
+    paymentMethodId: '',
   });
+
+  console.log("stripeCollection",stripeCollection);
+
 
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
@@ -257,13 +264,52 @@ const ManageSubscription = () => {
       });
   };
 
+  async function createCustomerId(id) {
+    try {
+      setLoader(true);
+
+      const requestData = {
+        name: formData.name || '',
+        email: formData.email || '',
+        'address[line1]': formData.address.line1 || '',
+        'address[line2]': formData.address.line2 || '',
+        'address[city]': formData.address.city || '',
+        'address[state]': formData.address.state || '',
+        'address[country]': formData.address.country || '',
+        paymentMethodId: id || '',
+      };
+
+
+      const res = await fetch(
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
+        },
+      );
+      const json = await res.json();
+      console.log('API Response:', json); // Log the entire API response
+      
+      setLoader(false);
+    } catch (error) {
+      setLoader(false);
+      console.log('Error on CreateCard:', error);
+    }
+  }
+
   function handlePurchaseCard(id) {
-    if (addCreditModal) {
+    if (!savedCard || savedCard?.length === 0) {
+      createCustomerId(id);
+    } else if (addCreditModal) {
       addNewCreditCard(id);
     } else {
       updateCreditCard(id);
     }
   }
+
   async function addNewCreditCard(paymentID) {
     try {
       setLoader(true);
@@ -280,8 +326,8 @@ const ManageSubscription = () => {
         },
       );
       const jsonData = await res.json();
-      // setNewCardAdded(true);
-      // setShowCardBox(false);
+
+
       setTimeout(() => {
         setLoader(false);
         setForUpdateData(true);
@@ -390,14 +436,11 @@ const ManageSubscription = () => {
   function prettyFormatNumber(inputString) {
     inputString = inputString?.toString();
     if (!isNaN(parseFloat(inputString))) {
-        let number = parseFloat(inputString)?.toFixed(2);
-        return number?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      let number = parseFloat(inputString)?.toFixed(2);
+      return number?.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
     return inputString; // Return as is if not a valid number
-}
-
-
-  console.log('stripeCollection', stripeCollection);
+  }
 
   return (
     <>
@@ -479,11 +522,14 @@ const ManageSubscription = () => {
         loader={loader}
         show={updateModal}
         updateModal={updateModal}
+        savedCard={savedCard}
         onConfirm={updateCreditCard}
         onCancel={() => setUpdateModal(false)}
         title={addCreditModal ? 'Add Credit Card' : 'Update Credit Card'}
         // confirmText="Update"
         StripeKey={StripeKey}
+        formData={formData}
+        setFormData={setFormData}
         updateCard={updateCard}
         addCreditModal={addCreditModal}
         handlePurchaseCard={handlePurchaseCard}
@@ -543,8 +589,9 @@ const ManageSubscription = () => {
                             : 'Free'}
                         </span>
                       </div>
-                      { stripeCollection.stripe?.subscriptionStatus && stripeCollection.stripe?.subscriptionStatus !==
-                        'canceled' &&
+                      {stripeCollection.stripe?.subscriptionStatus &&
+                        stripeCollection.stripe?.subscriptionStatus !==
+                          'canceled' &&
                         !stripeCollection.error && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px]">
                             <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
@@ -568,9 +615,10 @@ const ManageSubscription = () => {
                             navigate('/simply-noted-plans')
                           }
                           text={
-                            stripeCollection.stripe?.subscriptionStatus  &&
+                            stripeCollection.stripe?.subscriptionStatus &&
                             stripeCollection.stripe?.subscriptionStatus !==
-                              'canceled' && !stripeCollection.error
+                              'canceled' &&
+                            !stripeCollection.error
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
@@ -612,14 +660,15 @@ const ManageSubscription = () => {
                     <span className=" md:text-[16px] md:mr-[0px] mr-[46px] text-[12px] md:w-[0px] w-[149px] text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
-                      {stripeCollection &&  stripeCollection.stripe?.balance !== 0 &&
+                      {stripeCollection &&
+                      stripeCollection.stripe?.balance !== 0 &&
                       !stripeCollection.error ? (
                         <span className="md:text-[20px] text-[12px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled'
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}{' '}
-                          - {stripeCollection.stripe?.packageQuantity} cards -
+                          - {stripeCollection.stripe?.packageQuantity} cards -{' '}
                           {stripeCollection.stripe?.packageDiscount}% DISCOUNT
                         </span>
                       ) : (

@@ -194,12 +194,35 @@ function Account({customer, heading, featuredData}) {
           'subscriptionName',
           json.stripe.subscription ? json.stripe.subscription : 'Free',
         );
+        localStorage.setItem(
+          'subscriptionPriceId',
+            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+        );
+        localStorage.setItem(
+          'subscriptionPriceId',
+            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+        );
+        localStorage.setItem(
+          'subscriptionPriceId',
+            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+        );
+        localStorage.setItem(
+          'subscriptionPriceId',
+            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+        );
+        localStorage.setItem(
+          'subscriptionPriceId',
+            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+        );
+        localStorage.setItem(
+          'subscriptionPriceId',
+            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+        );
       } else {
         localStorage.setItem('packageDiscount', JSON.stringify(0));
         localStorage.setItem('subscriptionName', 'Free');
       }
     } catch (error) {
-      console.log(error, 'error at credit Card');
     }
   }
 

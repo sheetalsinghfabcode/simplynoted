@@ -20,7 +20,6 @@ const WalletPurchase = ({
   setFinalPrice(total);
 
 
-  console.log("subscriptionPrice",subscriptionPrice)
 
   return (
     <div className="w-full max-w-[1366px] mx-auto px-[20px] py-[40px] bg-white">

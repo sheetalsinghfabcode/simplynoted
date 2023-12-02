@@ -34,9 +34,6 @@ export default function SimplyNoted() {
   const [stripeCollection, setStripeCollection] = useState([]);
   const [walletPlan, setWalletPlan] = useState(false);
   const [walletPurcase, setWalletPurchase] = useState(false);
-  // const [selectedPlan, setSelectedPlan] = useState(null);
-  // const [amount, setAmount] = useState(0);
-  // const [subscription, setSubscription] = useState(0);
   const [walletPayment, setWalletPayment] = useState(false);
   const [finalPrice, setFinalPrice] = useState(null);
   const [loader, setloader] = useState(true);
@@ -150,6 +147,7 @@ export default function SimplyNoted() {
             selectedPlan={selectedPlan}
             subscriptionTitle={subscriptionTitle}
             amount={amount}
+            stripePayments ={stripeCollection.payments}
             subscription={subscription}
             StripeKey={StripeKey}
             subscriptionProduct={subscriptionProduct}

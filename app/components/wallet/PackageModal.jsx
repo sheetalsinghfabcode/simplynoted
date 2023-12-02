@@ -41,7 +41,7 @@ const PackageModal = ({
           <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[10px]">
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               {' '}
-              {stripeCollection  &&
+              {stripeCollection  && stripeCollection.stripe?.subscriptionStatus &&
               stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                 ? stripeCollection.stripe?.subscription
                 : 'Free'}{' '}

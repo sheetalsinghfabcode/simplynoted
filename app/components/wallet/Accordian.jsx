@@ -18,6 +18,7 @@ const Accordion = ({
   subscriptionProduct,
   subscriptionTitle,
   subscriptionPriceId,
+  stripePayments,
 }) => {
   const stripe = loadStripe(StripeKey);
 
@@ -61,8 +62,9 @@ const Accordion = ({
     paymentMethodId: '',
   });
 
-  async function createCustomerId(id,paymentMethodId) {
+  async function createCustomerId(id) {
     try {
+      setloader(true);
       const res = await fetch(
         `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
@@ -73,24 +75,51 @@ const Accordion = ({
           body: JSON.stringify({
             name: formData.name || '',
             email: formData.email || '',
-            address: {
-              line1: formData.address.line1 || '',
-              line2: formData.address.line2 || '',
-              city: formData.address.city || '',
-              state: formData.address.state || '',
-              country: formData.address.country || 'USA',
-            },
+            'address[line1]': formData.address.line1 || '',
+            'address[line2]': formData.address.line2 || '',
+            'address[city]': formData.address.city || '',
+            'address[state]': formData.address.state || '',
+            'address[country]': formData.address.country || '',
             paymentMethodId: id || '',
           }),
         },
       );
-
-     await  createSubscription(paymentMethodId)
+      const json = await res.json();
+      if (json) {
+        await createSubscription(id);
+      }
     } catch (error) {
-      console.log(error, 'error on CreateCard');
+      setloader(false);
     }
   }
 
+  async function addNewCreditCard(paymentID) {
+    debugger
+    try {
+      setloader(true);
+      const res = await fetch(
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            paymentMethodId: paymentID,
+          }),
+        },
+      );
+      const jsonData = await res.json();
+      debugger
+
+      setTimeout(() => {
+        setloader(false);
+        setShowStripeCard(!showStripeCard);
+      }, [500]);
+    } catch (error) {
+      setloader(false);
+    }
+  }
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
@@ -101,18 +130,20 @@ const Accordion = ({
         setSavedCart(json.payments);
       }
     } catch (error) {
-      console.log(error, 'error at credit Card');
     }
   }
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     fullName = localStorage.getItem('SNFullName');
     userEmail = localStorage.getItem('SnEmail');
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+
     setCustomertID(customerid);
     getSavedCards(customerid);
-    formData.name = fullName;
+    formData.name = fullName ? fullName : firstName + ' ' + lastName;
     formData.email = userEmail;
-  }, []);
+  }, [showStripeCard]);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -191,11 +222,9 @@ const Accordion = ({
 
       const data = await response.json();
       if (data) {
-        
         paymentPurchase(id, data);
       }
       // Handle the response data here
-      console.log('Success:', data);
     } catch (error) {
       // Handle errors here
       console.error('Error:', error);
@@ -205,8 +234,8 @@ const Accordion = ({
   const paymentPurchase = (id, savePaymentData) => {
     const payLoad = {
       paymentMethodId: id,
-      packageDiscount: discount,
-      packageQuantity: cards,
+      packageDiscount: Number(discount),
+      packageQuantity: Number(cards),
       packagePrice: amount,
       description: selectedPlan,
       packageProduct: productId,
@@ -233,7 +262,6 @@ const Accordion = ({
         localStorage.setItem('selectedPlan', selectedPlan);
         localStorage.setItem('amount', amount);
         // Handle the response data here
-        console.log('Success:', data);
         if (data) {
           paymentSave(savePaymentData);
         }
@@ -277,7 +305,6 @@ const Accordion = ({
         setPaymentLoader(false);
         navigate('/manage-subscription');
         // Handle the response data here
-        console.log('Success:', data);
       })
       .catch((error) => {
         // Handle errors here
@@ -509,14 +536,20 @@ const Accordion = ({
                     </div>
                   </div>
                 )}
+                {loader && (
+                  <CircularLoader title="Adding Card.." color="#ef6e6e" />
+                )}
                 {(!savedCard || showStripeCard) && (
                   <div className="p-4">
                     <StripeCard
+                      addNewCreditCard={addNewCreditCard}
                       setPaymentMethodId={setPaymentMethodId}
                       createCustomerId={createCustomerId}
                       savedCard={savedCard}
                       paymentPurchase={paymentPurchase}
+                      stripePayments={stripePayments}
                       setloader={setloader}
+                      showStripeCard={showStripeCard}
                     />
                   </div>
                 )}
@@ -526,7 +559,7 @@ const Accordion = ({
                 <div>Total</div>
                 <div>${finalPrice}</div>
               </div>
-              { savedCard && savedCard.length > 0}
+              {stripePayments && stripePayments.length > 0 && (
                 <div className="flex justify-between  w-full gap-[10px] items-center my-[16px]">
                   <DynamicButton
                     text="Previous"
@@ -536,18 +569,18 @@ const Accordion = ({
                     }}
                     className="!bg-[#EF6E6E] w-full !rounded-0 !py-[16px] !px-[30px] max-w-[190px]"
                   />
-
                   <button
                     type="submit"
                     onClick={() => {
                       setPaymentLoader(true);
-                      createCustomerId(paymentMethodId)
+                      createSubscription(paymentMethodId);
                     }}
                     className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
                   >
                     Complete Purchase
                   </button>
                 </div>
+              )}
               <div className=" border-2 text-[12px] bg-white text-left p-[10px] border-solid border-[#324879]">
                 <span>
                   Custom cards and international postage may cost extra. You
