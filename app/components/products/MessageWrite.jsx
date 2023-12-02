@@ -1038,7 +1038,29 @@ export function MessageWriting({
   useEffect(() => {
     SavedTemp();
   }, [onDelTemp]);
-  console.log(name2.length, 'name2.length');
+
+  function OpenAddTemplateBox(){
+    if(!customerid){
+      setLoginModal(true);
+
+    }else{
+      setAddNewTem(true)
+    }
+  }
+  function OpenLoadTemp(){
+    if(!customerid){
+      setLoginModal(true);
+    } else{
+      SavedTemp() && setLoadTemModal(true)
+    }
+  }
+  function OpenAddressBookModal(){
+    if(!customerid){
+      setLoginModal(true);
+    }else{
+      setModalForAddressBook(true)
+    }
+  }
   return (
     <>
       <div className="mainDivForBox flex gap-10">
@@ -1149,12 +1171,12 @@ export function MessageWriting({
             data-gtm-form-interact-field-id="0"
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
-          {customerid && (
+          {/* {customerid && ( */}
             <div className="flex justify-between mt-[1rem]">
               <div>
                 <span
                   className="font-bold text-[#1b5299] cursor-pointer"
-                  onClick={() => setAddNewTem(true)}
+                  onClick={() => OpenAddTemplateBox()}
                 >
                   Save As New Message Template
                 </span>
@@ -1162,13 +1184,13 @@ export function MessageWriting({
               <div>
                 <span
                   className="font-bold text-[#1b5299] cursor-pointer"
-                  onClick={() => SavedTemp() && setLoadTemModal(true)}
+                  onClick={() => OpenLoadTemp()}
                 >
                   Load Saved Message Template
                 </span>
               </div>
             </div>
-          )}
+          {/* )} */}
           <br />
           {checkCharCount && (
             <span className="text-[red] font-bold">
@@ -1379,7 +1401,7 @@ export function MessageWriting({
                   <DynamicButton
                     className="bg-[#1b5299] text-[14px] mb-6 w-full"
                     text="Select from Address Book"
-                    onClickFunction={() => setModalForAddressBook(true)}
+                    onClickFunction={() => OpenAddressBookModal()}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
@@ -1531,7 +1553,7 @@ export function MessageWriting({
         body={<LoadTemplate />}
       />
       <LoginModal
-        title={' Add Card'}
+        title={' Add'}
         show={loginModal}
         setLoginModal={setLoginModal}
         onCancel={() => setLoginModal(false)}
