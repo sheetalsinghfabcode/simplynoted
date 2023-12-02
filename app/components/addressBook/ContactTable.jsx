@@ -594,7 +594,7 @@ const ContactTable = ({
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
-              {ProdcuctSide && (
+              {ProdcuctSide && selectedCheckboxes.length > 0 && (
                 <div>
                   <button
                     className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"

@@ -42,10 +42,10 @@ export function ProductInfo({
     setStandardFontVal(e);
   }
 
-  async function customFontFamily() {
+  async function customFontFamily(id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/fonts/getMyFonts/6232622891113`,
+        `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
       );
       const json = await res.json();
       // console.log(json.data);
