@@ -20,9 +20,9 @@ export default function FlatCustomisableCard({
   const [selectedCardPage, setSelectedCardPage] = useState('Card Front');
   const [frontImageDetails, setFrontImageDetails] = useState({
     isImageSelected: false,
-    imageFile: null,
-    blackAndWhiteImageFile: null,
-    screenshotImageFile: null,
+    imageBlobUrl: null,
+    blackAndWhiteImageBlobUrl: null,
+    selectedImageFile: null,
     zoom: 1,
     isColoredImage: true,
     isLongImage: false,
@@ -45,7 +45,7 @@ export default function FlatCustomisableCard({
     fontColor: '#000',
     zoom: 1,
     isImageSelected: false,
-    imageUrl: '',
+    imageBlobUrl: '',
     imageFile: null,
     isColoredImage: true,
   });
@@ -57,7 +57,7 @@ export default function FlatCustomisableCard({
     fontColor: '#000',
     zoom: 1,
     isImageSelected: false,
-    imageUrl: '',
+    imageBlobUrl: '',
     imageFile: null,
     isColoredImage: true,
   });
@@ -86,6 +86,126 @@ export default function FlatCustomisableCard({
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log({
+      qr,
+      frontImageDetails,
+      backImageDetails: {observingData, headerData, footerData},
+    });
+  }, [observingData, frontImageDetails, headerData, footerData, qr]);
+
+  // TODO: Remove commented code when no longer needed
+  // useEffect(() => {
+  //   // To stop the lateral inversion of the image to be screenshotted.
+  //   setIsRotationAnimationApplied(false);
+  //   // To Store the actual value instead of a promise inside screenshotUrl object key.
+  //   const generateScreenshot = async () => {
+  //     try {
+  //       // Image file present, generating screenshot.
+  //       if (
+  //         selectedCardPage === 'Card Front' &&
+  //         frontImageDetails.isImageSelected
+  //       ) {
+  //         const trimmedDiv = document.getElementById('frontTrimmedDiv');
+  //         const screenshotImageFile = await generateTrimmedImageScreenshotFile(
+  //           trimmedDiv,
+  //         );
+  //         setFrontImageDetails((prevFrontImageDetails) => {
+  //           return {
+  //             ...prevFrontImageDetails,
+  //             screenshotImageFile,
+  //           };
+  //         });
+  //       }
+  //       if (
+  //         selectedCardPage === 'Card Back' &&
+  //         observingData.isHeader &&
+  //         headerData.isImageSelected
+  //       ) {
+  //         const backHeaderImageDiv =
+  //           document.getElementById('backHeaderImageDiv');
+  //         const screenshotImageFile = await generateTrimmedImageScreenshotFile(
+  //           backHeaderImageDiv,
+  //         );
+  //         ((prevHeaderData) => {
+  //           return {
+  //             ...prevHeaderData,
+  //             imageFile: screenshotImageFile,
+  //           };
+  //         });
+  //       }
+  //       if (
+  //         selectedCardPage === 'Card Back' &&
+  //         observingData.isFooter &&
+  //         footerData.isImageSelected
+  //       ) {
+  //         const backFooterImageDiv =
+  //           document.getElementById('backFooterImageDiv');
+  //         const screenshotImageFile = await generateTrimmedImageScreenshotFile(
+  //           backFooterImageDiv,
+  //         );
+  //         setFooterData((prevFooterData) => {
+  //           return {
+  //             ...prevFooterData,
+  //             imageFile: screenshotImageFile,
+  //           };
+  //         });
+  //       }
+  //     } catch (error) {
+  //       console.error('Error generating screenshot:', error);
+  //     }
+  //   };
+  //   generateScreenshot();
+  // }, [
+  //   frontImageDetails.imageBlobUrl,
+  //   frontImageDetails.blackAndWhiteImageBlobUrl,
+  //   frontImageDetails.isColoredImage,
+  //   frontImageDetails.zoom,
+  //   headerData.isImageSelected,
+  //   headerData.zoom,
+  //   footerData.isImageSelected,
+  //   footerData.zoom,
+  // ]);
+
+  // async function generateTrimmedImageScreenshotFile(element) {
+  //   try {
+  //     // Wait for the image to be fully loaded for the timing issue.
+  //     await new Promise((resolve) => {
+  //       const image = element.querySelector('img');
+  //       if (image.complete) {
+  //         resolve();
+  //       } else {
+  //         image.onload = resolve;
+  //       }
+  //     });
+
+  //     // Scale to improve the quality of the image
+  //     const canvas = await html2canvas(element, {scale: 2});
+  //     const dataUrl = canvas.toDataURL('image/png');
+
+  //     return dataUrlToFile(dataUrl);
+  //   } catch (error) {
+  //     console.error('Error generating a screenshot file:', error);
+  //   }
+  // }
+
+  // // Convert the URL to a file
+  // function dataUrlToFile(dataUrl) {
+  //   let arr = dataUrl.split(','),
+  //     mime = arr[0].match(/:(.*?);/)[1],
+  //     bstr = atob(arr[1]),
+  //     n = bstr.length,
+  //     u8arr = new Uint8Array(n);
+
+  //   while (n--) {
+  //     u8arr[n] = bstr.charCodeAt(n);
+  //   }
+
+  //   let filename = 'screenshot.png';
+
+  //   return new File([u8arr], filename, {type: mime});
+  // }
+
+  useEffect(() => {
     const scrollHandler = () => {
       window.scrollTo(0, 0);
     };
@@ -100,112 +220,7 @@ export default function FlatCustomisableCard({
       window.removeEventListener('scroll', scrollHandler);
     };
   }, [isScrollerRemoved]);
-
-  useEffect(() => {
-    // Generate default image for the face URL of the custom card.
-    if (frontImageDetails.isImageSelected) return;
-    const generateDefaultScreenshotImage = async () => {
-      try {
-        const response = await fetch(DefaultFrontCardImage);
-        const blob = await response.blob();
-        const filename = 'default-screenshot.png';
-        const frontDefaultImageFile = new File([blob], filename, {
-          type: blob.type,
-        });
-        setFrontImageDetails((prevFrontImageDetails) => {
-          return {
-            ...prevFrontImageDetails,
-            screenshotImageFile: frontDefaultImageFile,
-          };
-        });
-      } catch (error) {
-        console.error('Error fetching the default image:', error);
-      }
-    };
-
-    generateDefaultScreenshotImage();
-  }, [frontImageDetails.isImageSelected]);
-
-  useEffect(() => {
-    console.log({
-      qr,
-      frontImageDetails,
-      backImageDetails: {observingData, headerData, footerData},
-    });
-  }, [observingData, headerData, footerData, qr]);
-
-  useEffect(() => {
-    // To stop the lateral inversion of the image to be screenshotted.
-    setIsRotationAnimationApplied(false);
-    // To Store the actual value instead of a promise inside screenshotUrl object key.
-    const generateScreenshot = async () => {
-      try {
-        // Image file present, generating screenshot.
-        if (
-          selectedCardPage === 'Card Front' &&
-          frontImageDetails.isImageSelected
-        ) {
-          const trimmedDiv = document.getElementById('frontTrimmedDiv');
-          const screenshotImageFile = await generateTrimmedImageScreenshotFile(
-            trimmedDiv,
-          );
-          setFrontImageDetails((prevFrontImageDetails) => {
-            return {
-              ...prevFrontImageDetails,
-              screenshotImageFile,
-            };
-          });
-        }
-        if (
-          selectedCardPage === 'Card Back' &&
-          observingData.isHeader &&
-          headerData.isImageSelected
-        ) {
-          const backHeaderImageDiv =
-            document.getElementById('backHeaderImageDiv');
-          const screenshotImageFile = await generateTrimmedImageScreenshotFile(
-            backHeaderImageDiv,
-          );
-          setHeaderData((prevHeaderData) => {
-            return {
-              ...prevHeaderData,
-              imageFile: screenshotImageFile,
-            };
-          });
-        }
-        if (
-          selectedCardPage === 'Card Back' &&
-          observingData.isFooter &&
-          footerData.isImageSelected
-        ) {
-          const backFooterImageDiv =
-            document.getElementById('backFooterImageDiv');
-          const screenshotImageFile = await generateTrimmedImageScreenshotFile(
-            backFooterImageDiv,
-          );
-          setFooterData((prevFooterData) => {
-            return {
-              ...prevFooterData,
-              imageFile: screenshotImageFile,
-            };
-          });
-        }
-      } catch (error) {
-        console.error('Error generating screenshot:', error);
-      }
-    };
-    generateScreenshot();
-  }, [
-    frontImageDetails.imageFile,
-    frontImageDetails.blackAndWhiteImageFile,
-    frontImageDetails.isColoredImage,
-    frontImageDetails.zoom,
-    headerData.isImageSelected,
-    headerData.zoom,
-    footerData.isImageSelected,
-    footerData.zoom,
-  ]);
-
+  
   useEffect(() => {
     setQr((prevQrValues) => {
       return {
@@ -215,43 +230,110 @@ export default function FlatCustomisableCard({
     });
   }, [qr.inputText]);
 
-  async function generateTrimmedImageScreenshotFile(element) {
-    try {
-      // Wait for the image to be fully loaded for the timing issue.
-      await new Promise((resolve) => {
-        const image = element.querySelector('img');
-        if (image.complete) {
-          resolve();
-        } else {
-          image.onload = resolve;
+  useEffect(() => {
+    const generateImageFiles = async () => {
+      try {
+        let imageFile;
+        if (selectedCardPage === 'Card Front') {
+          if (frontImageDetails.isImageSelected) {
+            const selectedBlobUrl = frontImageDetails.isColoredImage
+              ? frontImageDetails.imageBlobUrl
+              : frontImageDetails.blackAndWhiteImageFile;
+            imageFile = await blobUrlToFileObject(
+              selectedBlobUrl,
+              `${customerId}-flat-front-image`,
+            );
+
+            setFrontImageDetails((prevFrontImageDetails) => {
+              return {
+                ...prevFrontImageDetails,
+                selectedImageFile: imageFile,
+              };
+            });
+          } else {
+            const response = await fetch(DefaultFrontCardImage);
+            const blob = await response.blob();
+            const filename = 'default-screenshot.png';
+            const frontDefaultImageFile = new File([blob], filename, {
+              type: blob.type,
+            });
+            setFrontImageDetails((prevFrontImageDetails) => {
+              return {
+                ...prevFrontImageDetails,
+                selectedImageFile: frontDefaultImageFile,
+              };
+            });
+          }
         }
-      });
 
-      // Scale to improve the quality of the image
-      const canvas = await html2canvas(element, {scale: 2});
-      const dataUrl = canvas.toDataURL('image/png');
+        if (
+          selectedCardPage === 'Card Back' &&
+          observingData.isHeader &&
+          headerData.isImageSelected
+        ) {
+          imageFile = await blobUrlToFileObject(
+            headerData.imageBlobUrl,
+            `${customerId}-header-image`,
+          );
+          setHeaderData((prevHeaderData) => {
+            return {
+              ...prevHeaderData,
+              imageFile,
+            };
+          });
+        }
 
-      return dataUrlToFile(dataUrl);
+        if (
+          selectedCardPage === 'Card Back' &&
+          observingData.isFooter &&
+          footerData.isImageSelected
+        ) {
+          imageFile = await blobUrlToFileObject(
+            footerData.imageBlobUrl,
+            `${customerId}-flat-front-image`,
+          );
+          setFooterData((prevFooterData) => {
+            return {
+              ...prevFooterData,
+              imageFile,
+            };
+          });
+        }
+      } catch (err) {
+        console.error('Failed to generate image files', err);
+      }
+    };
+    generateImageFiles();
+  }, [
+    frontImageDetails.isImageSelected,
+    frontImageDetails.isColoredImage,
+    headerData.isImageSelected,
+    footerData.isImageSelected,
+  ]);
+
+  async function blobUrlToFileObject(blobUrl, fileName = 'image') {
+    try {
+      // Fetch the blob URL to get the image data
+      const response = await fetch(blobUrl);
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch blob URL: ${response.status} ${response.statusText}`,
+        );
+      }
+
+      // Convert the response data to a blob
+      const blob = await response.blob();
+
+      // Create a File object with the blob
+      const fileObject = new File([blob], `${fileName}.jpg`, {type: blob.type});
+
+      return fileObject;
     } catch (error) {
-      console.error('Error generating a screenshot file:', error);
+      console.error(
+        `Error converting blob URL to file object: ${error.message}`,
+      );
+      return null;
     }
-  }
-
-  // Convert the URL to a file
-  function dataUrlToFile(dataUrl) {
-    let arr = dataUrl.split(','),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
-
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-
-    let filename = 'screenshot.png';
-
-    return new File([u8arr], filename, {type: mime});
   }
 
   async function getBlackAndWhiteImageBlobUrl(imageUrl) {
@@ -333,7 +415,7 @@ export default function FlatCustomisableCard({
         const aspectRatio = imageWidth / imageHeight;
         // If image is long
         const isLongImage = aspectRatio < 0.9 ? true : false;
-        const blackAndWhiteImageFile = await getBlackAndWhiteImageBlobUrl(
+        const blackAndWhiteImageBlobUrl = await getBlackAndWhiteImageBlobUrl(
           URL.createObjectURL(chosenFile),
         );
 
@@ -341,9 +423,9 @@ export default function FlatCustomisableCard({
           setFrontImageDetails((prevFrontImageDetails) => {
             return {
               ...prevFrontImageDetails,
-              imageFile: URL.createObjectURL(chosenFile),
+              imageBlobUrl: URL.createObjectURL(chosenFile),
               isImageSelected: true,
-              blackAndWhiteImageFile,
+              blackAndWhiteImageBlobUrl,
               isLongImage,
             };
           });
@@ -354,7 +436,7 @@ export default function FlatCustomisableCard({
             return {
               ...prevHeaderData,
               customText: '',
-              imageUrl: URL.createObjectURL(chosenFile),
+              imageBlobUrl: URL.createObjectURL(chosenFile),
               imageFile: URL.createObjectURL(chosenFile),
               isImageSelected: true,
             };
@@ -366,7 +448,7 @@ export default function FlatCustomisableCard({
             return {
               ...prevFooterData,
               customText: '',
-              imageUrl: URL.createObjectURL(chosenFile),
+              imageBlobUrl: URL.createObjectURL(chosenFile),
               imageFile: URL.createObjectURL(chosenFile),
               isImageSelected: true,
             };
@@ -443,9 +525,9 @@ export default function FlatCustomisableCard({
     if (selectedCardPage === 'Card Front') {
       frontImageRef.current.value = '';
       setFrontImageDetails({
-        imageFile: null,
-        blackAndWhiteImageFile: null,
-        screenshotUrl: null,
+        imageBlobUrl: null,
+        blackAndWhiteImageBlobUrl: null,
+        selectedImageFile: null,
         zoom: 1,
         isColoredImage: true,
         isLongImage: false,
@@ -461,7 +543,7 @@ export default function FlatCustomisableCard({
           customText: headerData.isImageSelected
             ? ''
             : prevHeaderData.customText,
-          imageUrl: '',
+          imageBlobUrl: '',
           imageFile: null,
           isImageSelected: false,
         };
@@ -476,7 +558,7 @@ export default function FlatCustomisableCard({
           customText: footerData.isImageSelected
             ? ''
             : prevFooterData.customText,
-          imageUrl: '',
+          imageBlobUrl: '',
           imageFile: null,
           isImageSelected: false,
         };
@@ -492,7 +574,7 @@ export default function FlatCustomisableCard({
           customText: event.target.value,
           isImageSelected: false,
           imageFile: null,
-          imageUrl: '',
+          imageBlobUrl: '',
         };
       });
     }
@@ -503,7 +585,7 @@ export default function FlatCustomisableCard({
           customText: event.target.value,
           isImageSelected: false,
           imageFile: null,
-          imageUrl: '',
+          imageBlobUrl: '',
         };
       });
     }
@@ -652,7 +734,7 @@ export default function FlatCustomisableCard({
         fontType: headerData.fontFamily,
         fontSize: headerData.fontSize,
         fontColor: headerData.fontColor,
-        zoom: '1',
+        zoom: headerData.zoom,
         isColored: headerData.isColoredImage,
         height: 50,
       };
@@ -664,7 +746,7 @@ export default function FlatCustomisableCard({
         fontType: footerData.fontFamily,
         fontSize: footerData.fontSize,
         fontColor: footerData.fontColor,
-        zoom: '1',
+        zoom: footerData.zoom,
         isColored: footerData.isColoredImage,
         height: 50,
       };
@@ -675,22 +757,16 @@ export default function FlatCustomisableCard({
       formData.append(
         'faceImage',
         frontImageDetails.isImageSelected
-          ? frontImageDetails.screenshotImageFile
+          ? frontImageDetails.selectedImageFile
           : null,
       );
       formData.append('backImage', null);
-      formData.append(
-        'headerImage',
-        headerData.isImageSelected ? headerData.imageFile : null,
-      );
-      formData.append(
-        'footerImage',
-        footerData.isImageSelected ? footerData.imageFile : null,
-      );
+      formData.append('headerImage', headerData.imageFile);
+      formData.append('footerImage', footerData.imageFile);
 
       formData.append('isLongImage', frontImageDetails.isLongImage);
       formData.append('isLongImageBack', null);
-      formData.append('transformFace', '1');
+      formData.append('transformFace', frontImageDetails.zoom);
       formData.append('transformBack', null);
       formData.append('cardType', 'flat5x7');
       formData.append('name', `customer-${customerId}--`);
@@ -738,11 +814,12 @@ export default function FlatCustomisableCard({
     }
     setIsScrollerRemoved(false);
     // Convert product title to a handle name as per handle name's convention.
-    // Remove whitespace or special characters at the beginning
-    let handleName = customCardTitle.replace(/^[^a-zA-Z0-9]+/, '');
-    // Replace all remaining whitespace or special characters with a single hyphen
+    let handleName = customCardTitle.trim();
+    // Remove special characters from the beginning and the end.
+    handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
+    // Replace all remaining whitespace or special characters with a single hyphen.
     handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
-    // Making the title to lowercase
+    // Making the title to lowercase.
     handleName = handleName.toLowerCase();
     navigate(`/custom/${handleName}`);
   };
@@ -887,7 +964,7 @@ export default function FlatCustomisableCard({
           pdfURL: s3ImageUrls.pdfUrl,
         },
         s3ImageUrls: s3ImageUrls,
-        featuredImage: frontImageDetails.screenshotImageFile,
+        featuredImage: frontImageDetails.selectedImageFile,
       };
 
       formData.append('product', JSON.stringify(payload.product));
@@ -1089,7 +1166,7 @@ export default function FlatCustomisableCard({
         </Modal>
       )}
 
-      <div className="relative mt-3">
+      <div className="relative mt-3" style={{marginTop: '-3rem'}}>
         <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5">
           <div
             className="flex flex-col justify-start items-center flex-1 ml-7"
@@ -1140,13 +1217,13 @@ export default function FlatCustomisableCard({
                             : 'rotateY(0deg)',
                         }}
                       >
-                        {(frontImageDetails.imageFile ||
-                          frontImageDetails.blackAndWhiteImageFile) && (
+                        {(frontImageDetails.imageBlobUrl ||
+                          frontImageDetails.blackAndWhiteImageBlobUrl) && (
                           <img
                             src={
                               frontImageDetails.isColoredImage
-                                ? frontImageDetails.imageFile
-                                : frontImageDetails.blackAndWhiteImageFile
+                                ? frontImageDetails.imageBlobUrl
+                                : frontImageDetails.blackAndWhiteImageBlobUrl
                             }
                             alt="Selected front card image file"
                             className="object-contain h-full"
@@ -1204,7 +1281,7 @@ export default function FlatCustomisableCard({
                               className="flex justify-center h-[45px] w-[60px] overflow-hidden"
                             >
                               <img
-                                src={headerData.imageUrl}
+                                src={headerData.imageBlobUrl}
                                 className={`object-contain h-full ${
                                   headerData.isColoredImage
                                     ? 'grayscale-0'
@@ -1259,7 +1336,7 @@ export default function FlatCustomisableCard({
                                 src={
                                   qr.isQrAdded
                                     ? qr.generatedQrImageLink
-                                    : footerData.imageUrl
+                                    : footerData.imageBlobUrl
                                 }
                                 className={`object-contain h-full ${
                                   footerData.isColoredImage
@@ -1303,7 +1380,10 @@ export default function FlatCustomisableCard({
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-between md:ml-[0px] ml-[47px] items-start gap-5 min-h-[330px] min-w-[240px] flex-1">
+          <div
+            className="flex flex-col justify-between md:ml-[0px] ml-[47px] items-start gap-5 min-h-[330px] min-w-[240px] flex-1"
+            style={{marginTop: '9rem'}}
+          >
             {selectedCardPage === 'Card Front' && (
               <>
                 <div className="relative w-[60px] h-[50px]">
@@ -1324,8 +1404,8 @@ export default function FlatCustomisableCard({
                 </div>
                 <div className="h-[200px]">
                   {selectedCardPage === 'Card Front' &&
-                    (frontImageDetails.imageFile ||
-                      frontImageDetails.blackAndWhiteImageFile) && (
+                    (frontImageDetails.imageBlobUrl ||
+                      frontImageDetails.blackAndWhiteImageBlobUrl) && (
                       <div className="flex flex-col gap-8">
                         <div className="flex flex-col">
                           <span>Resize image</span>
@@ -1722,7 +1802,7 @@ export default function FlatCustomisableCard({
                       <div className="min-h-[150px] w-1/2">
                         {observingData.isHeader &&
                           headerData.imageFile &&
-                          headerData.imageUrl && (
+                          headerData.imageBlobUrl && (
                             <>
                               <div className="flex flex-col mb-3 mt-3">
                                 <span>Resize image</span>
@@ -1772,7 +1852,7 @@ export default function FlatCustomisableCard({
                           )}
                         {observingData.isFooter &&
                           footerData.imageFile &&
-                          footerData.imageUrl && (
+                          footerData.imageBlobUrl && (
                             <>
                               <div className="flex flex-col mb-3 mt-3">
                                 <span>Resize image</span>
