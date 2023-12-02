@@ -8,11 +8,10 @@ export function OrderCard({order}) {
   const [legacyOrderId, key] = order.id.split('/').pop().split('?');
   const lineItems = flattenConnection(order?.lineItems);
 
-
   return (
     <li className="grid text-center border rounded">
       <Link
-        className="grid items-center gap-4 p-4 md:gap-6 md:p-6 md:grid-cols-2"
+        className=" flex md:grid items-center justify-center gap-4 p-4 md:gap-6 md:p-6  md:grid-cols-2"
         to={`/account/orders/${legacyOrderId}?${key}`}
         prefetch="intent"
       >
@@ -32,7 +31,7 @@ export function OrderCard({order}) {
             !lineItems[0].variant?.image && 'md:col-span-2'
           }`}
         >
-          <Heading as="h3" format size="copy">
+          <Heading as="h3" format className='items-center' size="copy">
             {lineItems.length > 1
               ? `${lineItems[0].title} +${lineItems.length - 1} more`
               : lineItems[0].title}
@@ -51,32 +50,17 @@ export function OrderCard({order}) {
               </Text>
             </dd>
             <dt className="sr-only">Fulfillment Status</dt>
-            <dd className="">
-              <span
-                className={`px-3 py-1 text-xs font-medium rounded-full ${
-                  order.fulfillmentStatus === 'FULFILLED'
-                    ? 'bg-green-100 text-green-800'
-                    : 'bg-primary/5 text-primary/50'
-                }`}
-              >
-                <DynamicButton
-                  className="bg-[#001a5f] font-semibold w-[100%] md:text-[16px] text-[12px] text-[#fff] py-[14px] px-[8px] font-karla"
-                  text="View Details"
-                />
-               
-              </span>
-            </dd>
           </dl>
         </div>
       </Link>
       <div className="self-end border-t">
         <Link
-          className="block w-full p-2 text-center"
+          className=" flex justify-center block w-full p-2 text-center"
           to={`/account/orders/${legacyOrderId}?${key}`}
           prefetch="intent"
         >
           <DynamicButton
-            className="bg-[#001a5f] font-semibold w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
+            className="bg-[#001a5f] font-semibold md:w-[100%] w-[62%] md:text-sm text-[12px] text-[#fff] py-[14px] px-[8px] font-karla"
             text="View Details"
           />
           {/* <Text color="subtle" className="ml-3">
@@ -86,6 +70,7 @@ export function OrderCard({order}) {
       </div>
     </li>
   );
+  c;
 }
 
 export const ORDER_CARD_FRAGMENT = `#graphql

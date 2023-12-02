@@ -26,7 +26,7 @@ import {usePrefixPathWithLocale} from '~/lib/utils';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 import Profile from '~/components/Profile';
-import { useStateContext } from '~/context/StateContext';
+import {useStateContext} from '~/context/StateContext';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
@@ -111,21 +111,22 @@ function Account({customer, heading, featuredData}) {
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
 
-
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setOrderHistory,setCustomerId ,setIsAccountLoader} = useStateContext()
-  const [accountDetail, setAccountDetail] = useState(!orderHistory ? true: false);
+  const {orderHistory, setOrderHistory, setCustomerId, setIsAccountLoader} =
+    useStateContext();
+  const [accountDetail, setAccountDetail] = useState(
+    !orderHistory ? true : false,
+  );
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
-    if(customer){
-      setIsAccountLoader(false)
+    if (customer) {
+      setIsAccountLoader(false);
     }
     getSavedCards();
   }, [loader]);
-
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
@@ -149,7 +150,7 @@ function Account({customer, heading, featuredData}) {
   const remove = () => {
     if (typeof window !== 'undefined' && customer) {
       localStorage.removeItem('customerId');
-      setCustomerId(null)
+      setCustomerId(null);
 
       localStorage.removeItem('SNFirstName');
       localStorage.removeItem('SnEmail');
@@ -171,7 +172,7 @@ function Account({customer, heading, featuredData}) {
   } else if (data == false) {
     if (typeof window !== 'undefined' && customer) {
       localStorage.setItem('customerId', result);
-      setCustomerId(result)
+      setCustomerId(result);
       localStorage.setItem('SnEmail', customer.email);
       localStorage.setItem('firstName', customer.firstName);
       localStorage.setItem('lastName', customer.lastName);
@@ -183,7 +184,7 @@ function Account({customer, heading, featuredData}) {
         `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
       );
       const json = await res.json();
-   
+
       if (json.stripe) {
         localStorage.setItem(
           'packageDiscount',
@@ -191,11 +192,11 @@ function Account({customer, heading, featuredData}) {
         );
         localStorage.setItem(
           'subscriptionName',
-            json.stripe.subscription ? json.stripe.subscription : 'Free',
+          json.stripe.subscription ? json.stripe.subscription : 'Free',
         );
       } else {
         localStorage.setItem('packageDiscount', JSON.stringify(0));
-        localStorage.setItem('subscriptionName',('Free'));
+        localStorage.setItem('subscriptionName', 'Free');
       }
     } catch (error) {
       console.log(error, 'error at credit Card');
@@ -205,8 +206,7 @@ function Account({customer, heading, featuredData}) {
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[20px]">
       <div className="flex justify-between items-center md:ml-[0px] ml-[123px] md:mt-[0px] mt-[9px]">
-        <DynamicTitle  title="Account" 
-        />
+        <DynamicTitle title="Account" />
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
@@ -253,11 +253,12 @@ function Account({customer, heading, featuredData}) {
       </div>
       {orders && orderHistory && <AccountOrderHistory orders={orders} />}
       {accountDetail && (
-        <AccountDetails 
-        loader={loader}
-        setLoader={setLoader}
-        
-        accountDetail={accountDetail} customer={customer} />
+        <AccountDetails
+          loader={loader}
+          setLoader={setLoader}
+          accountDetail={accountDetail}
+          customer={customer}
+        />
       )}
       {profile && (
         <Profile
@@ -267,7 +268,6 @@ function Account({customer, heading, featuredData}) {
           result={result}
           loader={loader}
           accountDetails={accountDetail}
-
           setLoader={setLoader}
         />
       )}
@@ -298,7 +298,7 @@ function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
       <div className="grid w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
-        <h2 className=" text-[18px] font-karla font-semibold lg:text-[22px]">
+        <h2 className=" text-[18px] md:text-left text-center font-karla font-semibold lg:text-[22px]">
           Order History
         </h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}

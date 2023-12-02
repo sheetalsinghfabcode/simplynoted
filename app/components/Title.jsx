@@ -21,7 +21,7 @@ const DynamicTitle = ({title, title2, dynamicButton,text,setOrderHisory}) => {
           </div>
         )}
         <div className="flex items-center justify-center w-full">
-        <h2 className="titleImage text-[20px] md:text-[35px] lg:text-[50px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[10px]">            
+        <h2 className="titleImage md:text-[20px] text-[12px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[10px]">            
         {title}
             <span className="font-beauty text-[35px] md:text-[50px] lg:text-[80px] ">
               {title2}
