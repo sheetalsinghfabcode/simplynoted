@@ -132,19 +132,19 @@ const AddressForm = ({customerID}) => {
 
   return (
     <>
-      <div
-        className={`container relative mx-auto p-4`}
-      >
+      <div className={`container relative mx-auto md:p-4 p-0`}>
         {loader && (
           <div className="absolute z-[50] top-[50%] left-[50%]">
-            <CircularLoader
-            title="Adding Address"
-            color="#ef6e6e" />
+            <CircularLoader title="Adding Address" color="#ef6e6e" />
           </div>
         )}
-        <div className={`bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4   ${loader && 'opacity-40'}`}>
+        <div
+          className={`bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4   ${
+            loader && 'opacity-40'
+          }`}
+        >
           <div className="flex justify-between items-center mb-[16px]">
-            <h2 className="text-left text-[#001a5f] font-bold text-[34px] leading-[44px]">
+            <h2 className="text-left text-[#001a5f] font-bold md:text-[34px] text-[12px] leading-[44px]">
               New Address
             </h2>
             <div className="flex gap-[10px]">
@@ -166,13 +166,13 @@ const AddressForm = ({customerID}) => {
           <div className="mb-4 flex flex-wrap -mx-3">
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="firstName"
               >
                 First Name
               </label>
               <input
-                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.firstName ? 'border-red-500' : ''
                 }`}
                 id="firstName"
@@ -191,13 +191,13 @@ const AddressForm = ({customerID}) => {
             </div>
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="lastName"
               >
                 Last Name
               </label>
               <input
-                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded w-full md:text-[14px] text-[12px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.lastName ? 'border-red-500' : ''
                 }`}
                 id="lastName"
@@ -215,61 +215,63 @@ const AddressForm = ({customerID}) => {
               )}
             </div>
           </div>
-          <div className="mb-4 flex flex-wrap -mx-3">
-            <div className="w-1/2 px-3 mb-6">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="businessName"
-              >
-                Business Name (Optional)
-              </label>
-              <input
-                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="businessName"
-                name="businessName"
-                type="text"
-                placeholder="Business Name"
-                value={formData.businessName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="w-1/2 px-3 mb-6">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="postalCode"
-              >
-                Postal Code
-              </label>
-              <input
-                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                  errors.postalCode ? 'border-red-500' : ''
-                }`}
-                id="postalCode"
-                required
-                name="postalCode"
-                type="number"
-                placeholder="Postal Code"
-                value={formData.postalCode}
-                onChange={handleChange}
-              />
-              {errors.postalCode && (
-                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
-                  {errors.postalCode}
-                </p>
-              )}
+          <div className="md:flex items-center">
+            <div className="mb-4 flex flex-wrap -mx-3">
+              <div className="w-1/2 px-3 mb-6">
+                <label
+                  className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                  htmlFor="businessName"
+                >
+                  Business Name (Optional)
+                </label>
+                <input
+                  className="appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  id="businessName"
+                  name="businessName"
+                  type="text"
+                  placeholder="Business Name"
+                  value={formData.businessName}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="w-1/2 px-3 mb-6">
+                <label
+                  className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                  htmlFor="postalCode"
+                >
+                  Postal Code
+                </label>
+                <input
+                  className={`appearance-none border rounded w-full md:text-[14px] text-[12px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                    errors.postalCode ? 'border-red-500' : ''
+                  }`}
+                  id="postalCode"
+                  required
+                  name="postalCode"
+                  type="number"
+                  placeholder="Postal Code"
+                  value={formData.postalCode}
+                  onChange={handleChange}
+                />
+                {errors.postalCode && (
+                  <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                    {errors.postalCode}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
 
-          <div className="mb-4 flex flex-wrap -mx-3">
+          <div className="mb-4  flex flex-wrap -mx-3">
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700  md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="address1"
               >
                 Address 1
               </label>
               <input
-                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.address1 ? 'border-red-500' : ''
                 }`}
                 id="address1"
@@ -289,13 +291,13 @@ const AddressForm = ({customerID}) => {
 
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="address2"
               >
                 Address 2 (Optional)
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="address2"
                 name="address2"
                 type="text"
@@ -309,13 +311,13 @@ const AddressForm = ({customerID}) => {
           <div className="mb-4 flex flex-wrap -mx-3">
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="city"
               >
                 City
               </label>
               <input
-                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.city ? 'border-red-500' : ''
                 }`}
                 id="city"
@@ -334,7 +336,7 @@ const AddressForm = ({customerID}) => {
             </div>
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700  md:text-sm text-[12px] font-bold mb-2"
                 htmlFor="state"
               >
                 State/Province
@@ -343,7 +345,7 @@ const AddressForm = ({customerID}) => {
                 onChange={handleChange}
                 value={formData.state}
                 name="state"
-                className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                className={`appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                   errors.state ? 'border-red-500' : ''
                 }`}
                 id="state"
@@ -367,7 +369,7 @@ const AddressForm = ({customerID}) => {
           <div className="mb-4 flex flex-wrap -mx-3">
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="country"
               >
                 Country
@@ -378,7 +380,7 @@ const AddressForm = ({customerID}) => {
                 itemID="country"
                 name="country"
                 id="country"
-                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full md:text-sm text-[12px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               >
                 {location.countries.map((country) => (
                   <option key={country.country} value={country.country}>
@@ -389,13 +391,13 @@ const AddressForm = ({customerID}) => {
             </div>
             <div className="w-1/2 px-3 mb-6">
               <label
-                className="block text-gray-700 text-sm font-bold mb-2"
+                className="block text-gray-700 md:text-sm text-[12px] font-bold mb-2"
                 htmlFor="type"
               >
                 Type
               </label>
               <select
-                className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="type"
                 name="type"
                 value={formData.type}
@@ -413,6 +415,7 @@ const AddressForm = ({customerID}) => {
               <DateInput
                 fieldType="birthday"
                 label="Birthday"
+                className="md:text-sm text-[10px]"
                 value={formData.birthday}
                 onChange={(value) =>
                   handleChange({target: {name: 'birthday', value}})
@@ -423,6 +426,7 @@ const AddressForm = ({customerID}) => {
               <DateInput
                 fieldType="anniversary"
                 label="Anniversary"
+                className="md:text-sm text-[10px]"
                 value={formData.anniversary}
                 onChange={(value) =>
                   handleChange({target: {name: 'anniversary', value}})
@@ -432,7 +436,7 @@ const AddressForm = ({customerID}) => {
           </div>
           <div className="text-center">
             <DynamicButton
-              className="bg-[#1b5299] whitespace-nowrap text-center w-full max-w-[200px]  h-[60px] "
+              className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] text-center w-full max-w-[200px]  md:h-[60px] h-[41px "
               text="Save Address"
               onClickFunction={saveAddress}
             />

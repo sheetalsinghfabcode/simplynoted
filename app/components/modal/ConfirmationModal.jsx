@@ -36,7 +36,7 @@ const ConfirmationModal = ({
             </button>
             <button
               onClick={onCancel}
-              className="bg-transparent uppercase text-[12px] border border-solid border-[#ef6e6e] text-[#ef6e6e] whitespace-nowrap tracking-normal uppercase w-full min-h-[48px] max-h- max-w-[400px] min-w-[175px] text-center hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4"
+              className="bg-transparent uppercase md:text-[12px] text-[9px] border border-solid border-[#ef6e6e] text-[#ef6e6e] whitespace-nowrap tracking-normal uppercase w-full min-h-[48px] max-h- max-w-[400px] min-w-[175px] text-center hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4"
             >
               {cancelText}
             </button>

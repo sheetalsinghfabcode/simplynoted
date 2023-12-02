@@ -736,7 +736,7 @@ const ManageSubscription = () => {
                             setUpdateModal(true);
                           }}
                           text="Add Credit Card"
-                          className={`bbg-[#001a5f] text-white flex md:ml-[0px] ml-[14px] ${
+                          className={`bg-[#001a5f] text-white  md:text-[15px] text-[12px] flex md:ml-[0px] ml-[14px] ${
                             savedCard === 0 ? 'justify-start' : 'justify-end'
                           }  mt-[10px]`}
                         />

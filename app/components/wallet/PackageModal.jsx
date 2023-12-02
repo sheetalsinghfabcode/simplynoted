@@ -39,7 +39,7 @@ const PackageModal = ({
         </span>
         <div className="modal-content ptt-4  px-6">
           <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[10px]">
-            <span className="text-[14px] font-normal font-karla text-center">
+            <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               {' '}
               {stripeCollection  &&
               stripeCollection.stripe?.subscriptionStatus !== 'canceled'
@@ -47,11 +47,11 @@ const PackageModal = ({
                 : 'Free'}{' '}
               Prepaid Packages
             </span>
-            <span className="text-[14px] font-normal font-karla text-center">
+            <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               {' '}
               Your current Prepaid Package:{' '}
               {stripeCollection  ?
-              <span className="text-[14px] font-karla font-normal ">
+              <span className="md:text-[14px] text-[12px] font-karla font-normal ">
                 {stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                   ? stripeCollection.stripe?.subscription
                   : 'Free'}{' '}
@@ -59,19 +59,19 @@ const PackageModal = ({
                 {stripeCollection.stripe?.packageDiscount}% DISCOUNT
               </span> : <span>None</span> }
             </span> 
-            <span className="text-[14px] font-normal font-karla text-center">
+            <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               {' '}
               Balance: ${stripeCollection.stripe?.balance ? stripeCollection.stripe?.balance: 0.00}
             </span>
           </div>
-          <h3 className="text-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto  font-semibold">
+          <h3 className="md:text-[20px] text-[12px] mt-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto  font-semibold">
             {stripeCollection &&
             stripeCollection.stripe?.subscriptionStatus !== 'canceled'
               ? stripeCollection.stripe?.subscription
               : 'Free'}{' '}
             Prepaid Packages
           </h3>
-          <h4 className="text-[16px] text-[#001a5f] text-center">
+          <h4 className="md:text-[16px] text-[12px] text-[#001a5f] text-center">
             Select Prepaid Package
           </h4>
         </div>
@@ -144,7 +144,7 @@ const PackageModal = ({
                           >
                             <input
                               type="radio"
-                              className="mt-[4px]"
+                              className="mt-[4px] md:h-[15px] h-[10px] md:w-[15px] w-[10px]"
                               value={`${variant.node.title} ${titleMetafield?.value}`}
                               checked={
                                 selectedPlan ===
@@ -152,18 +152,18 @@ const PackageModal = ({
                               }
                             />
 
-                            <div className="flex flex-col gap-[8px]">
+                            <div className="flex flex-col gap-[8px] md:mr-[0px] mr-[19px]">
                               <div className="flex gap-[6px] items-start">
-                                <span className="text-[15px] font-bold">
+                                <span className=" md:text-[15px] text-[12px] font-bold">
                                   {titleMetafield?.value}
                                 </span>
-                                <span className="text-[15px] font-bold">
+                                <span className="md:text-[15px] text-[12px] font-bold">
                                   {variant.node.title}
                                 </span>
                               </div>
                               {descriptionMetafield?.value &&
                                 variant.node.price.amount !== '0.0' && (
-                                  <span className="text-[14px] font-medium">
+                                  <span className="md:text-[14px] text-[12px] font-medium">
                                     {descriptionMetafield
                                       ? JSON.parse(descriptionMetafield?.value)
                                           .children[0].children[0]?.value
@@ -171,7 +171,7 @@ const PackageModal = ({
                                   </span>
                                 )}
                               {amountMetafield?.value && (
-                                <span className="text-[14px] text-left font-medium">
+                                <span className="md:text-[14px] text-[12px] text-left font-medium">
                                   ${variant.node.price.amount}
                                 </span>
                               )}

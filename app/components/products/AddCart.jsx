@@ -351,7 +351,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                         onClickFunction={() => setProductShow(true)}
                         backArrow={true} />
                     {addressForm && (
-                        <div className="w-full  max-w-[1440px] px-[20px] mx-auto">
+                        <div className="md:w-full w-[113%]  max-w-[1440px] px-[20px] mx-auto">
                             <AddressForm
                                 customerID={customerid}
                                 setAddressForm={setAddressForm}

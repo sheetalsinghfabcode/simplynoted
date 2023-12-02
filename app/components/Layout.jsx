@@ -712,6 +712,8 @@ function CartCount({isHome, openCart}) {
 function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
+  const navigate = useNavigate();
+
   const BadgeCounter = useMemo(
     () => (
       <>
@@ -732,7 +734,7 @@ function Badge({openCart, dark, count}) {
 
   return isHydrated ? (
     <button
-      onClick={openCart}
+      onClick={()=>navigate('/carts')}
       className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
     >
       {BadgeCounter}
