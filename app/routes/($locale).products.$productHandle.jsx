@@ -164,7 +164,7 @@ export default function Product() {
 
   const { media, title, vendor, descriptionHtml } = product;
   const { shippingPolicy, refundPolicy } = shop;
-  const [show, setShow] = useState(showBulkOnEdit || parameterValue == "Bulk" ? true : false);
+  const [show, setShow] = useState(showBulkOnEdit || datafornav.search == "?select=Bulk" ? true : false);
   const [productshow, setProductShow] = useState(true)
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true)
@@ -175,7 +175,7 @@ export default function Product() {
   const [customFontName,setCustomFontName] = useState('')
   const [locationValue,setLocationValue] = useState(false)
 
-
+console.log(datafornav.search,"87877878787");
   if (typeof window !== 'undefined') {
 
     const urlParams = new URLSearchParams(window?.location.search);
