@@ -7,7 +7,7 @@ const PurchaseModal = ({
     cancelText,
   }) => {
 
-const {selectedPlan,amount} = useStateContext()
+const {selectedPlan,amount,packageProduct,subscriptionProduct,subscriptionTitle,subscriptionPriceId} = useStateContext()
 
     return (
       <div

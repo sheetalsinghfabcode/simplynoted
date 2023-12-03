@@ -52,7 +52,14 @@ export function StateContextProvider({children}) {
   });
   const [packageProduct,setPackageProduct] = useState("")
   const [subscriptionProduct,setSubscriptionProduct] = useState("")
-  const [subscriptionPriceId,setSubscriptionPriceId] = useState("")
+  const [subscriptionPriceId,setSubscriptionPriceId] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const subscriptionPriceId = localStorage.getItem('subscriptionPriceId');
+      return subscriptionPriceId ? subscriptionPriceId : null;
+    }
+    return null; // Fallback if localStorage is not available
+  });
+
   const [subscriptionTitle, setSubscriptionTitle] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedSubscriptionTitle = localStorage.getItem('subscriptionName');
