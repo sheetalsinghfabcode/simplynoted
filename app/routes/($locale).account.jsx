@@ -152,6 +152,7 @@ function Account({customer, heading, featuredData}) {
       localStorage.removeItem('customerId');
       setCustomerId(null);
 
+      localStorage.removeItem('subscriptionPriceId');
       localStorage.removeItem('SNFirstName');
       localStorage.removeItem('SnEmail');
       localStorage.removeItem('apiKey');
@@ -194,36 +195,16 @@ function Account({customer, heading, featuredData}) {
           'subscriptionName',
           json.stripe.subscription ? json.stripe.subscription : 'Free',
         );
+
         localStorage.setItem(
           'subscriptionPriceId',
-            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
-        );
-        localStorage.setItem(
-          'subscriptionPriceId',
-            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
-        );
-        localStorage.setItem(
-          'subscriptionPriceId',
-            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
-        );
-        localStorage.setItem(
-          'subscriptionPriceId',
-            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
-        );
-        localStorage.setItem(
-          'subscriptionPriceId',
-            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
-        );
-        localStorage.setItem(
-          'subscriptionPriceId',
-            json.stripe.subscriptionPriceId && json.stripe.subscriptionPriceId,
+          json.stripe.subscriptionId && json.stripe.subscriptionId,
         );
       } else {
         localStorage.setItem('packageDiscount', JSON.stringify(0));
         localStorage.setItem('subscriptionName', 'Free');
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 
   return (

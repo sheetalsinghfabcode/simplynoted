@@ -6,6 +6,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
+import { useStateContext } from '~/context/StateContext';
 
 const Accordion = ({
   StripeKey,
@@ -21,13 +22,12 @@ const Accordion = ({
   stripePayments,
 }) => {
   const stripe = loadStripe(StripeKey);
-
   const [isBillingOpen, setIsBillingOpen] = useState(true);
   const [isCardInfoOpen, setIsCardInfoOpen] = useState(false);
   const [loader, setloader] = useState(false);
   const [paymentLoader, setPaymentLoader] = useState(false);
   const [errors, setErrors] = useState({});
-  const [savedCard, setSavedCart] = useState([]);
+  const [savedCard, setSavedCard] = useState([]);
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
@@ -94,7 +94,6 @@ const Accordion = ({
   }
 
   async function addNewCreditCard(paymentID) {
-    debugger
     try {
       setloader(true);
       const res = await fetch(
@@ -110,7 +109,6 @@ const Accordion = ({
         },
       );
       const jsonData = await res.json();
-      debugger
 
       setTimeout(() => {
         setloader(false);
@@ -127,7 +125,7 @@ const Accordion = ({
       );
       const json = await res.json();
       if (json) {
-        setSavedCart(json.payments);
+        setSavedCard(json.payments);
       }
     } catch (error) {
     }
@@ -222,7 +220,7 @@ const Accordion = ({
 
       const data = await response.json();
       if (data) {
-        paymentPurchase(id, data);
+        (id, data);
       }
       // Handle the response data here
     } catch (error) {

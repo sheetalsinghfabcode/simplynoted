@@ -64,7 +64,7 @@ const StripeModal = ({
           ...prev.address,
           [name.substring(8)]: value,
         },
-        paymentMethodId: paymentMethodId ? paymentMethodId : '',
+        // paymentMethodId: paymentMethodId ? paymentMethodId : '',
       }));
     } else {
       // It's not part of the address object, update it directly

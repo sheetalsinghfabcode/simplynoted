@@ -44,14 +44,11 @@ const StripeCard = ({
       try {
         const {id} = paymentMethod;
         if (id && !savedCard && !addCreditModal && !updateCard) {
-          debugger
           createCustomerId(id);
         } else if 
         (showStripeCard) {
-          debugger
           addNewCreditCard(id)
         } else {
-          debugger
           handlePurchaseCard(id);
         }
 

@@ -47,7 +47,6 @@ const ManageSubscription = () => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [loader, setLoader] = useState(false);
 
-  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,8 +60,7 @@ const ManageSubscription = () => {
     paymentMethodId: '',
   });
 
-  console.log("stripeCollection",stripeCollection);
-
+  console.log('stripeCollection', stripeCollection);
 
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
@@ -87,7 +85,6 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    setLoader(true);
     const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
 
     // Make a GET request to the API
@@ -100,11 +97,10 @@ const ManageSubscription = () => {
       })
       .then((data) => {
         setPaymentHistory(data);
-        setLoader(false);
+     
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        setLoader(false);
       });
     return () => {};
   }, []);
@@ -279,7 +275,6 @@ const ManageSubscription = () => {
         paymentMethodId: id || '',
       };
 
-
       const res = await fetch(
         `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
@@ -292,7 +287,7 @@ const ManageSubscription = () => {
       );
       const json = await res.json();
       console.log('API Response:', json); // Log the entire API response
-      
+
       setLoader(false);
     } catch (error) {
       setLoader(false);
@@ -326,7 +321,6 @@ const ManageSubscription = () => {
         },
       );
       const jsonData = await res.json();
-
 
       setTimeout(() => {
         setLoader(false);
@@ -456,7 +450,11 @@ const ManageSubscription = () => {
         stripeCollection={stripeCollection}
         confirmText="Add to cart"
       />
-      <PaymentModal show={showAccordion} />
+      <PaymentModal 
+      StripeKey={StripeKey}
+      setShowAccordion={setShowAccordion}
+      setPurchaseModal={setPurchaseModal}
+      show={showAccordion} />
 
       <PurchaseModal
         show={purchaseModal}
@@ -471,7 +469,7 @@ const ManageSubscription = () => {
         filteredWalletData={filteredWalletData}
         stripeCollection={stripeCollection}
         cancelText="Prev"
-        confirmText="Contine To Checkout"
+        confirmText="Continue To Checkout"
       />
 
       <ConfirmationModal
@@ -548,7 +546,7 @@ const ManageSubscription = () => {
                 {lastNameChar}
               </div>
               <div className="mt-[20px]">
-              <div className=" md:text-[20px] text-[15px] text-[#001a5f] font-bold">
+                <div className=" md:text-[20px] text-[15px] text-[#001a5f] font-bold">
                   <span className="mr-[4px]">{firstName}</span>
                   {lastName}
                 </div>
@@ -564,7 +562,7 @@ const ManageSubscription = () => {
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
-                  <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                    <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                       wallet balance
                     </span>
                     <span className="md:text-[24px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
@@ -583,8 +581,10 @@ const ManageSubscription = () => {
                           My Plan
                         </span>
                         <span className="md:text-[20px] text-[12px  ] !font-bold text-[#ef6e6e] uppercase">
-                          {stripeCollection  && stripeCollection.stripe?.subscriptionStatus !==
-                            'canceled' && !stripeCollection.error
+                          {stripeCollection &&
+                          stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled' &&
+                          !stripeCollection.error
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
                         </span>
@@ -602,12 +602,12 @@ const ManageSubscription = () => {
                                 setCancelSubscription(true)
                               }
                               text="Cancel Plan"
-                              className="!bg-[#ef6e6e] md:text-[14px] text-[12px] md:max-w-[190px] min-w-[3px] uppercase min-w-[190px]"
+                              className="!bg-[#ef6e6e] md:text-[16px] text-[12px] md:max-w-[190px]  uppercase min-w-[190px]"
                             />
                           </div>
                         )}
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                      <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                        <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                           CHANGE PLAN
                         </span>
                         <DynamicButton
@@ -622,7 +622,7 @@ const ManageSubscription = () => {
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
-                          className="!bg-[#001a5f] md:text-[20px] text-[12px] md:max-w-[190px] min-w-[19px] uppercase md:min-w-[190px] min-w-[3px]"
+                          className="!bg-[#001a5f] md:text-[16px] text-[12px] md:max-w-[190px] min-w-[19px] uppercase md:min-w-[190px] min-w-[3px]"
                         />
                       </div>
 
@@ -657,7 +657,7 @@ const ManageSubscription = () => {
                   </WalletAccordion>
                   <WalletAccordion title="PREPAID PACKAGE">
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                    <span className=" md:text-[16px] md:mr-[0px] mr-[46px] text-[12px] md:w-[0px] w-[149px] text-[#001a5f] font-karla font-normal uppercase">
+                      <span className=" md:text-[16px] md:mr-[0px] mr-[46px] text-[12px] md:w-[0px] w-[149px] text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
                       {stripeCollection &&
@@ -700,7 +700,7 @@ const ManageSubscription = () => {
                       </div>
                     )}
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                    <span className=" md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                      <span className=" md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                         Update
                       </span>
                       <DynamicButton
@@ -719,7 +719,7 @@ const ManageSubscription = () => {
                     <div className="flex flex-col items-start">
                       {savedCard && savedCard.length > 0 && (
                         <span className=" md:text-[16px]  text-[12px] text-[#001a5f] font-karla font-normal p-[5px] text-left  uppercase">
-                        Saved Cards
+                          Saved Cards
                         </span>
                       )}
                       <div className=" text-[#001a5f] bg-[#fff5f5] font-karla text-left md:text-[16px] text-[12px] !font-semibold w-full p-[5px] border-b border-solid border-[#e6edf8]">
@@ -735,7 +735,7 @@ const ManageSubscription = () => {
                               }  md:flex justify-between grid justify-center`}
                             >
                               <div className="flex justify-start items-center text-[14px] font-bold">
-                              <span className="mr-[1rem]  md:text-[13px] text-[12px] tracking-wide">
+                                <span className="mr-[1rem]  md:text-[13px] text-[12px] tracking-wide">
                                   **********{item.cardLast4Number}
                                 </span>
                                 <span>
@@ -793,7 +793,7 @@ const ManageSubscription = () => {
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">
-                  <table className="md:min-w-full min-w-[50%] divide-y divide-gray-200">
+                    <table className="md:min-w-full min-w-[50%] divide-y divide-gray-200">
                       <thead>
                         <tr>
                           {header.map((column, index) => (
@@ -827,7 +827,7 @@ const ManageSubscription = () => {
                                 $ {payment.amount}
                               </td>
                               <td className="flex justify-center p-[11px] text-center">
-                              <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase md:text-[12px] text-[9px] md:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
+                                <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase md:text-[12px] text-[9px] md:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
                                   {payment.status && 'Paid'}
                                 </td>
                               </td>
