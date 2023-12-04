@@ -171,12 +171,12 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
         {loader?<Loader/>:
             <>
             <div className="'w-full h-full gap-2 mt-8 mb-8">
-                <div className='pb-[80px]'>
+                <div className='lg:pb-[80px]'>
                 <DynamicTitle title={'PAYMENT'}/>
 
                 </div>
-                <div className='w-[100%] flex mr-2 ml-2 gap-8  justify-center'>
-                    <div className='p-5 bg-white max-w-[42%] w-full rounded-xl'>
+                <div className='w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center'>
+                    <div className='p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl'>
                         <div className='border border-solid border-[#e6edf8] p-3 mt-3'>
                             <div className=''>
                                 <input type="radio" name="action" onChange={() => showWalletBtn()} /> USE WALLET
@@ -227,7 +227,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                             <button className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex" onClick={() => setShowCartPage(true)} > <HiArrowLongLeft className='text-2xl mr-2 ' />GO BACK TO CART  </button>
                         </div>
                     </div>
-                    <div className=' max-w-[35%] w-full'>
+                    <div className='lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto'>
                         <div className='p-5 bg-white  rounded-xl h-[155px]'>
                             <h1 className='text-left font-bold text-2xl'>ORDER SUMMARY</h1>
                             <text className='flex justify-between items-center m-3'>Subtotal <span>${totalPrize}</span></text>
