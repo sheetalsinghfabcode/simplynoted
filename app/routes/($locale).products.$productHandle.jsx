@@ -245,10 +245,10 @@ console.log(datafornav.search,"87877878787");
         backArrow={true}
         onClickFunction={goBack}/>
           <Section className="px-0 md:px-8 ">
-            <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2">
+            <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px] ">
               <ProductGallery
                 media={media.nodes}
-                className="w-full"
+                className=""
               />
               <ProductInfo title={title} product={product} 
               show={show} setShow={setShow} setShowBox={setShowBox}

@@ -14,7 +14,7 @@ export default function Salesforce() {
           <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
             <div >
             <div className='lg:block hidden'>
-          <div className="text-white text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl">
+          <div className="text-white text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
               COMING SOON
             </div>
             <div className="text-[44px] font-karla  text-[#001a5f]" style={{lineHeight: '0.75'}}>
@@ -49,7 +49,7 @@ export default function Salesforce() {
             {/* first div form */}
             <div className='lg:flex grid  justify-center'>
             <div className='lg:hidden inline-block text-center'>
-          <div className="text-white inline-block text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl">
+          <div className="text-white inline-block text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl lg:mb-0  mb-[14px]">
               COMING SOON
             </div>
             <div className="text-[44px] font-karla  text-[#001a5f]" style={{lineHeight: '0.75'}}>

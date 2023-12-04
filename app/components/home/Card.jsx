@@ -59,7 +59,7 @@ const Card=()=>{
                    
                         
                   <SwiperSlide>
-                  <div className="data_card bg-white  text-center mt-5 w-[88%] mx-auto">
+                  <div className="data_card bg-white  text-center mt-5 w-[88%] mx-auto ">
         <div className="m-auto w-full pt-5 md:pt-20">
             <img src={data.img} alt="" className="w-[100px] mt-1 text-center inline"></img>
         </div>
@@ -84,7 +84,7 @@ const Card=()=>{
 <div class="swiper-button-next relative my-auto md:block hidden"><img src={next} className="w-[25px]" alt="" /></div>
 
 {/* mobile */}
-<div className="md:hidden flex w-[50%] mx-auto justify-between mt-[-4rem] mb-[6rem] relative">
+<div className="md:hidden flex w-[50%] mx-auto justify-between  mb-[4rem] sm:mt-[-65px] mt-[-95px] relative">
  <div class="swiper-button-prev  "><img src={swiper_arrow_left} className="w-[20px] pr-[4px]" alt="" /></div>
   <div class="swiper-button-next "><img src={swiper_arrow_right} className="w-[20px] pl-[4px]" alt="" /></div>
   </div>
