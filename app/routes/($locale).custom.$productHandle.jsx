@@ -179,7 +179,7 @@ export default function CustomProducts() {
     localStorage.removeItem('reqFielddInCart');
     setLocationValue(true);
   }, [datafornav.pathname]);
-  console.log(imageShow,"imageShow");
+  console.log(metafields.back,"metafields.back.zoom");
   return (
     <div className='relative'>
       {customProductData.length === 0 && metafields.length === 0 && (
@@ -205,6 +205,7 @@ export default function CustomProducts() {
                     metafields &&
                     metafields.cardType == 'folded5x7' && (
                       <img
+                      style={{transform:`scale(${imageShow == 0 ?metafields.face && metafields.face.zoom:metafields.back && metafields.back.zoom})`}}
                         src={
                           customProductData.images.length
                             ? customProductData.images[imageShow].originalSrc
@@ -213,8 +214,11 @@ export default function CustomProducts() {
                         className="object-contain w-[550px] fadeIn w-full h-full"
                       />
                     )}
+                    {/* {metafields && metafields.face.zoom}------ */}
                   {customProductData && metafields.cardType !== 'folded5x7' && (
+                    
                     <img
+                    style={{transform:`scale(${imageShow == 0 ?metafields.face && metafields.face.zoom:metafields.back && metafields.back.zoom})`}}
                       src={
                         customProductData.images.length
                           ? customProductData.images[imageShow].originalSrc
