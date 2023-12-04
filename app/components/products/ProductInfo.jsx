@@ -75,10 +75,10 @@ export function ProductInfo({
     // setFont('select')
   }
   return (
-    <div className="sticky md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ml-[-1.5rem]">
+    <div className="flex justify-center md:w-[40%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
         <div className="grid gap-2">
-          <Heading as="h1" className="whitespace-normal">
+          <Heading as="h1" className="whitespace-normal xl:text-[38px] md:text-[23px] sm:text-[34px] text-[30px]">
             {title}
           </Heading>
           {offPrice>0?
@@ -92,7 +92,7 @@ export function ProductInfo({
           {/* {vendor && (
                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                      )} */}
-          <div className="buttonClass flex justify-start mt-[2rem]">
+          <div className="buttonClass flex justify-start md:mt-[1rem] mt-0">
             <div className="buttonDiv pr-5">
               <button
                 style={{backgroundColor: show ? '#ef6e6e' : '#001a5f'}}
@@ -113,15 +113,15 @@ export function ProductInfo({
             </div>
           </div>
 
-          <div className="selectOtion mb-5 flex mt-[2rem] gap-[2rem]">
-            <div className="w-[192px]">
-              <Text className="text-sm w-[100px]">
+          <div className="selectOtion mb-5 flex md:mt-[1rem] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
+            <div className="lg:w-[47%] w-[42%]">
+              <Text className="lg:text-sm text-[13px] w-[100px]">
                 Standard Handwriting Style
               </Text>
               <br />
               <select
                 id="font"
-                className="cursor-pointer"
+                className="cursor-pointer xl:text-[18px] text-[14px] md:w-auto w-full"
                 value={standardFontVal}
                 onChange={(e) => setFont(e.target.value)}
                 placeholder="aaaa"
@@ -219,12 +219,12 @@ export function ProductInfo({
                 </option>
               </select>
             </div>
-            <div>
-              <Text className="text-sm">Custom Handwriting Style</Text>
+            <div className='md:w-[45%] w-[42%]'>
+              <Text className="lg:text-sm text-[13px]">Custom Handwriting Style</Text>
               <br />
               <select
                 id="Coustomfont text-sm "
-                className="cursor-pointer"
+                className="cursor-pointer text-[12px] md:w-auto w-full"
                 value={customFontVal}
                 onChange={(e) => getCustomFont(e.target.value)}
               >

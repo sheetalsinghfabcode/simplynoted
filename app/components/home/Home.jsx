@@ -33,7 +33,7 @@ export default function Home({contentfulBanner}) {
                     text="REQUEST A SAMPLE"
                     className="request-a-button"
                     onClickFunction={()=>window.open("https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb", "_blank")}
-                   
+                    
          />
          </div>
          </div>

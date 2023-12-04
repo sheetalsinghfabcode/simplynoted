@@ -1063,10 +1063,10 @@ export function MessageWriting({
   }
   return (
     <>
-      <div className="mainDivForBox flex gap-10">
+      <div className="mainDivForBox flex md:flex-row flex-col md:gap-[75px] w-full gap-5">
         <div
           id="outer"
-          className="outerr h-[380px] w-[100%] bg-white max-w-[600px] relative"
+          className="outerr h-[380px] md:w-[48%] w-[90%] bg-white relative md:mx-0 mx-auto"
         >
           {metafields &&
             metafields.isHeaderIncluded &&
@@ -1159,7 +1159,7 @@ export function MessageWriting({
             metafields.isFooterIncluded &&
             metafields.footer.data && <ShowFooterComp />}
         </div>
-        <div className="textAreaView w-[600px]">
+        <div className="textAreaView md:w-[45%] w-[90%] md:mx-0 mx-auto">
           <textarea
             type="text"
             id="example-one-input"
@@ -1172,7 +1172,7 @@ export function MessageWriting({
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
           {/* {customerid && ( */}
-            <div className="flex justify-between mt-[1rem]">
+            <div className="flex justify-between md:text-[13px] sm:text-[16px] text-[14px]">
               <div>
                 <span
                   className="font-bold text-[#1b5299] cursor-pointer"
@@ -1244,35 +1244,35 @@ export function MessageWriting({
               </button>
             </>
           )}
-          <div className="flex mt-5">
-            <div className="flex">
+          <div className="flex w-full justify-between">
+            <div className="flex w-[50%]">
               <img
                 src={AiImage}
-                className="w-[20%] h-[40%] cursor-pointer"
+                className="w-[20%] h-[30%] cursor-pointer lg:mt-0 mt-[-12px]"
                 onClick={() => setIsOpen(true)}
               />
               <span
-                className="cursor-pointer font-karla text-[#1b5299]"
+                className="cursor-pointer font-karla text-[#1b5299] lg:text-[13px] md:text-[11px] sm:text-[16px] text-[12px]"
                 onClick={() => setIsOpen(true)}
               >
                 Try our <span className="text-[red]">New</span> AI Assistant to{' '}
                 <br /> help write your message
               </span>
             </div>
+            <div className='w-[45%]'>
             <textarea
               type="text"
               value={name2}
               v-model="keyword"
               id="example-one-input2"
-              className="inputText2 h-[100px] w-[50%] rounded-[6px] p-[7px]"
+              className="inputText2 h-[100px] !w-full rounded-[6px] p-[7px]"
               maxlength="50"
               onChange={(e) => onchnageOfRegardBox(e.target.value)}
               placeholder="Enter here..."
               data-gtm-form-interact-field-id="0"
             ></textarea>
             <br />
-          </div>
-          <div className="flex justify-end mr-[3.9rem] mt-[1rem]">
+            <div className="flex ">
             <div>
               <span className="font-karla text-[#1b5299]">
                 Optional Sign Off / Signature
@@ -1283,17 +1283,19 @@ export function MessageWriting({
               </span>
             </div>
           </div>
+          </div>
+          </div>
           {show && (
             <>
-              <div className="w-[263px] mt-10 font-bold">
+              <div className="w-[50%] flex justify-start font-bold">
                 <text>
                   As of july5,2023, we have upgraded the bulk order
                   template.Please download the new template below
                 </text>
               </div>
-              <div className="flex gap-4">
+              <div className="flex w-full flex-wrap">
                 {bulkFileCount && bulkFileCount > 0 ? (
-                  <div className="custom_testing pointer-events-none opacity-40">
+                  <div className="custom_testing pointer-events-none opacity-40 !w-[56%]">
                     <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
                       <input type="checkbox" />
                       <label htmlFor="">
@@ -1397,21 +1399,21 @@ export function MessageWriting({
                   </>
                 )}
                 <span className="flex items-center font-bold">OR</span>
-                <div className="m-auto">
+                <div className="m-auto w-[33%]">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[14px] mb-6 w-full"
+                    className="bg-[#1b5299] text-[11px] mb-6 w-full"
                     text="Select from Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
-                      className="bg-[#1b5299] text-[14px] w-full"
+                      className="bg-[#1b5299] text-[11px] w-full"
                       text="Next"
                       onClickFunction={() => onSelectFromAddressBook()}
                     />
                   ) : (
                     <DynamicButton
-                      className="bg-[#697ba6] text-[14px] w-full"
+                      className="bg-[#697ba6] text-[11px] w-full"
                       text="Next"
                       onClickFunction={() => ''}
                     />

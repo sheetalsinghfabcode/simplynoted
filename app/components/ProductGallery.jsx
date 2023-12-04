@@ -12,7 +12,7 @@ export function ProductGallery({media, className}) {
 
   return (
     <div
-      className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 ${className}`}
+      className={`swimlane md:flex hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full md:mb-0 sm:mb-[-14rem] mb-[-10rem] ${className}`}
     >
       {media.map((med, i) => {
         const isFirst = i === 0;
@@ -27,7 +27,7 @@ export function ProductGallery({media, className}) {
         const style = [
           isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
           isFirst || isFourth ? '' : 'md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[386px]',
+          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[600px] md:h-[386px] h-[56%] w-full',
         ].join(' ');
 
         return (
