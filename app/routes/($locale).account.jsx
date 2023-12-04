@@ -214,7 +214,7 @@ function Account({customer, heading, featuredData}) {
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
-            className="text-primary/50 bg-[#EF6E6E]  md:text-[15px] text-[8px]"
+            className="text-primary/50 bg-[#EF6E6E] md:mb-[0px] mb-[74px]  md:text-[15px] text-[8px]"
             text="Log Out"
             onClickFunction={() => setData(true)}
           />
@@ -301,7 +301,7 @@ function Account({customer, heading, featuredData}) {
 function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
-      <div className="grid w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
+      <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
         <h2 className=" text-[18px] md:text-left text-center font-karla font-semibold lg:text-[22px]">
           Order History
         </h2>
@@ -315,16 +315,18 @@ function EmptyOrders() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className='md:grid grid place-items-center'>
       <span className=" font-karla  text-[16px] font-medium">
         You haven&apos;t placed any orders yet.
       </span>
       <div className="w-48 mt-[12px]">
+        <div className='md:itmes-center'>
         <DynamicButton
           text="Start Shopping"
           onClickFunction={() => navigate('/collections/best-sellers')}
           className="bg-[#ef6e6e] font-semibold max-w-[340px] w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
         />
+        </div>
       </div>
     </div>
   );

@@ -140,7 +140,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       <table className="mx-auto table bg-white">
         <thead>
           <tr className="h-[120px]">
-            <th className="text-center py-4 lg:min-w-[260px] px-10"></th>
+            <th className="text-center py-4  px-10"></th>
             {pricingPlans
               .slice(0)
               .reverse()
@@ -157,7 +157,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                 }
 
                 return (
-                  <th key={index} className="text-center lg:min-w-[260px] py-4 px-10">
+                  <th key={index} className="text-center  py-4 px-10">
                     <span className="text-lg text-[#000] uppercase block">
                       {plan.name}
                     </span>

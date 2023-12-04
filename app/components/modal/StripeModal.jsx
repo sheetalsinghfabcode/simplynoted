@@ -87,7 +87,7 @@ const StripeModal = ({
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="modal-container relative bg-white w-11/12 md:max-w-[40%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container relative bg-white md:max-w-[508px] w-[330px] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <span
           className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
           onClick={onCancel}
@@ -96,7 +96,7 @@ const StripeModal = ({
         </span>
         <div className="modal-content py-4  px-6">
           <div className="modal-header">
-            <h3 className="text-[29px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
+            <h3 className="md:text-[29px] text-[14px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
               {title}
             </h3>
           </div>

@@ -30,7 +30,7 @@ const PackageModal = ({
         show ? 'block' : 'hidden'
       } fixed top-[5rem] left-[50%] h-full translate-x-[-50%] overflow-y-auto flex items-center  justify-center z-50`}
     >
-      <div className="modal-container relative bg-white w-11/12 h-full md:max-w-[640px] mx-auto py-[18px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container relative bg-white w-11/12 h-full md:max-w-[640px] w-[329px] mx-auto py-[18px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <span
           onClick={onCancel}
           className="absolute cursor-pointer !leading-[0] right-0 top-[20px]  text-[40px]"
@@ -152,7 +152,7 @@ const PackageModal = ({
                               }
                             />
 
-                            <div className="flex flex-col gap-[8px] md:mr-[0px] mr-[19px]">
+                            <div className="flex flex-col gap-[8px]">
                               <div className="flex gap-[6px] items-start">
                                 <span className=" md:text-[15px] text-[12px] font-bold">
                                   {titleMetafield?.value}

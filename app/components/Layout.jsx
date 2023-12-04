@@ -20,6 +20,8 @@ import DynamicButton from './DynamicButton';
 import top from '../../assets/Image/top.png';
 import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
+import arrow_rights from '../../assets/Image/arrow-right-faq.png';
+import arrow_down from '../../assets/Image/arrow-down.png';
 
 import {
   Drawer,
@@ -203,8 +205,13 @@ function MenuMobileNav({menu, onClose}) {
                 {item.title === 'Send a Card' ? (
                   <>
                     <div className="">
-                      <div className="" onClick={handleChangeSendCard} style={{ fontWeight: showSendCard ? 'bold' : 'normal' }}>
+                      <div className="flex justify-between items-center" onClick={handleChangeSendCard} style={{ fontWeight: showSendCard ? 'bold' : 'normal' }}>
                         Send A Card
+                        {showSendCard ? (
+                          <img className='h-[12px]' src={arrow_down} alt=''/> 
+                             ):(
+                              <img className='h-[12px]' src={arrow_rights} alt=""/>
+                              )}
                       </div>
                       {showSendCard && (
                         <div className="">
@@ -231,9 +238,14 @@ function MenuMobileNav({menu, onClose}) {
                 )}
                 {item.title === 'Integrations' ? (
                   <div className=''>
-                  <div className="" onClick={handleChange} style={{ fontWeight: show ? 'bold' : 'normal'}}>
-                    <div>Integrations</div>
-                    </div>
+                  <div className="flex justify-between items-center" onClick={handleChange} style={{ fontWeight: show ? 'bold' : 'normal'}}>
+                    Integrations
+                   {show ? (
+                   <img className='h-[12px]' src={arrow_down} alt=''/> 
+                   ):(
+                    <img className='h-[12px]' src={arrow_rights} alt=""/>
+                   )}  
+                  </div>
                     {show && (
                       <div>
                         <ul onClick={onClose} className='integration-color' style={{ color: 'black' }}>
@@ -260,8 +272,13 @@ function MenuMobileNav({menu, onClose}) {
                 ) : null}
                 {item.title === 'Pricing' ? (
                   <div className="">
-                    <div className="" onClick={handleChangePricing} style={{ fontWeight: showPricing ? 'bold' : 'normal'}}>
+                    <div className="flex justify-between items-center" onClick={handleChangePricing} style={{ fontWeight: showPricing ? 'bold' : 'normal'}}>
                       Pricing
+                      {showPricing ? (
+                     <img className='h-[12px]' src={arrow_down} alt=''/>     
+                      ):(
+                     <img className='h-[12px]' src={arrow_rights} alt=""/>
+                      )}
                     </div>
                     {showPricing && (
                       <div className="">
@@ -292,8 +309,13 @@ function MenuMobileNav({menu, onClose}) {
                 ) : null}
                 {item.title === 'Learn' ? (
                   <div className="">
-                    <div className="" onClick={handleChangeLearn} style={{ fontWeight: showLearn ? 'bold' : 'normal'}} >
+                    <div className="flex justify-between items-center" onClick={handleChangeLearn} style={{ fontWeight: showLearn ? 'bold' : 'normal'}} >
                       Learn
+                      {showLearn ? (
+                     <img className='h-[12px]' src={arrow_down} alt=''/>     
+                      ):(
+                     <img className='h-[12px]' src={arrow_rights} alt=""/>
+                      )}
                     </div>
                     {showLearn &&
                     <div className="">
@@ -316,7 +338,7 @@ function MenuMobileNav({menu, onClose}) {
                 ) : null}
                 {item.title === 'About Us' ? (
                   <Link onClick={onClose} to="/about-us">
-                    <div className="">About Us</div>
+                    About Us
                   </Link>
                 ) : null}
               </Text>

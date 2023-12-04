@@ -305,8 +305,8 @@ export default function Collection() {
       </PageHeader> */}
         <DynamicTitle title={'Simply Noted'} title2={'cards'} />
         <Section>
-          <div className="gap-2 flex justify-between">
-            <div className="gap-2 lg:flex grid">
+          <div className="gap-2 md:flex md:justify-between grid justify-none">
+            <div className="gap-2 : md:flex flex justify-center">
               <DynamicButton
                 className="btnShadow bg-[#1b5299] h-[50px] md:text-[14px] text-[12px]  w-[200px] text-[#fff] p-2 "
                 text="Create A Custom Card"
@@ -314,21 +314,15 @@ export default function Collection() {
               />
               <br />
               <DynamicButton
-                className="btnShadow bg-[#EF6E6E] h-[50px] w-[200px] md:text-[14px] text-[12px] text-[#fff] p-2"
-                text="View My Custom Card"
+                  className="btnShadow bg-[#EF6E6E] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"
+                  text="View My Custom Card"
                 onClickFunction={() => customisedCard()}
               />
             </div>
-            <div className=" lg:flex grid gap-5 justify-end items-center selectArrow">
-              <h2 className=" sm:text-l text-[13px]">
-                Choose a card from our collection:{' '}
-              </h2>
-              <select
-                name=""
-                id=""
-                className="!border-none sm:w-[244px] w-[151px] text-[#508ee3]"
-                onChange={(e) => changeHandle(e.target.value)}
-              >
+            </div>
+            <div className=' lg:flex md:grid flex  gap-5 md:justify-end justify-center items-center selectArrow md:mt-[0px] mt-[15px]'>
+            <h2 className=' sm:text-l text-[12px]'>Choose a card from our collection: </h2>
+            <select name="" id="" className='!border-none sm:w-[244px] w-[151px] text-[#508ee3]' onChange={(e) => changeHandle(e.target.value)}>
                 <option className="w-full" selected disabled>
                   {collectionHandle}{' '}
                 </option>
@@ -339,7 +333,6 @@ export default function Collection() {
                   ))}
               </select>
             </div>
-          </div>
 
           <div className="mt-[24px]">
             {myColletionData.length === 0 && !checkState && (
@@ -520,7 +513,7 @@ const COLLECTION_QUERY = `#graphql
             count
             input
           }
-        }
+        }mCard
         nodes {
           ...ProductCard
         }

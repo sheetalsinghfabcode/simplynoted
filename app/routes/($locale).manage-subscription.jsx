@@ -657,7 +657,7 @@ const ManageSubscription = () => {
                   </WalletAccordion>
                   <WalletAccordion title="PREPAID PACKAGE">
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                      <span className=" md:text-[16px] md:mr-[0px] mr-[46px] text-[12px] md:w-[0px] w-[149px] text-[#001a5f] font-karla font-normal uppercase">
+                    <span className=" md:text-[16px] lg:pl-[0px] pl-[9px] md:mr-[0px] mr-[46px] text-[12px]  text-[#001a5f] font-karla font-normal uppercase">
                         PREPAID PACKAGE
                       </span>
                       {stripeCollection &&
@@ -700,7 +700,7 @@ const ManageSubscription = () => {
                       </div>
                     )}
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                      <span className=" md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                    <span className=" md:text-[16px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-normal uppercase">
                         Update
                       </span>
                       <DynamicButton
@@ -711,9 +711,10 @@ const ManageSubscription = () => {
                             ? 'Change Package'
                             : 'Buy Package'
                         }
-                        className="!bg-[#001a5f] md:text-[15px] text-[12px] md:mr-[0px] mr-[10px] font-karla max-w-[190px] uppercase md:min-w-[190px] min-w-[2px]"
+                        className="!bg-[#001a5f] md:text-[15px] text-[12px] font-karla max-w-[190px] uppercase md:min-w-[190px] min-w-[2px]"
                       />
                     </div>
+                
                   </WalletAccordion>
                   <WalletAccordion title="STORED PAYMENT METHOD">
                     <div className="flex flex-col items-start">
@@ -785,11 +786,11 @@ const ManageSubscription = () => {
                             setUpdateModal(true);
                           }}
                           text="Add Credit Card"
-                          className={`bg-[#001a5f] text-white  md:text-[15px] text-[12px] flex md:ml-[0px] ml-[14px] ${
+                          className={`bg-[#001a5f] text-white  md:text-[15px] text-[12px] flex${
                             savedCard === 0 ? 'justify-start' : 'justify-end'
                           }  mt-[10px]`}
                         />
-                      </div>
+                      </div>  
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">

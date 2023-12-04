@@ -1166,13 +1166,13 @@ export default function FlatCustomisableCard({
         </Modal>
       )}
 
-      <div className="relative mt-3" style={{marginTop: '-3rem'}}>
+      <div className="relative md:mt-3" style={{marginTop: '-3rem'}}>
         <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5">
           <div
             className="flex flex-col justify-start items-center flex-1 ml-7"
             style={{minHeight: '564px'}}
           >
-            <div className="min-w-[500px] flex-1 relative">
+            <div className="min-w-[500px] md:mt-[58px] mt-[63px] md:ml-[0px] ml-[51px] flex-1 relative">
               <GoBackButton />
             </div>
             <span className="text-2xl mb-2">
@@ -1181,7 +1181,7 @@ export default function FlatCustomisableCard({
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="min-w-[500px] bg-white relative overflow-hidden"
+                  className="md:min-w-[500px] w-[350px] bg-white relative overflow-hidden"
                   style={{
                     height: '378px',
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
@@ -1196,7 +1196,7 @@ export default function FlatCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 w-[480px] border-2 border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center items-center m-auto inset-0 md:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
                         style={{
                           height: '358px',
                           background: 'transparent',
@@ -1207,7 +1207,7 @@ export default function FlatCustomisableCard({
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 w-[480px]"
+                        className="absolute flex justify-center items-center m-auto inset-0 md:w-[480px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
                           height: '358px',
@@ -1381,8 +1381,8 @@ export default function FlatCustomisableCard({
             </div>
           </div>
           <div
-            className="flex flex-col justify-between md:ml-[0px] ml-[47px] items-start gap-5 min-h-[330px] min-w-[240px] flex-1"
-            style={{marginTop: '9rem'}}
+            className="flex flex-col justify-between md:items-left items-center md:mt-[9rem] mt-[0px] md:ml-[0px] ml-[47px] items-start gap-5 min-h-[330px] min-w-[240px] flex-1"
+            // style={{marginTop: '9rem'}}
           >
             {selectedCardPage === 'Card Front' && (
               <>
@@ -1406,7 +1406,7 @@ export default function FlatCustomisableCard({
                   {selectedCardPage === 'Card Front' &&
                     (frontImageDetails.imageBlobUrl ||
                       frontImageDetails.blackAndWhiteImageBlobUrl) && (
-                      <div className="flex flex-col gap-8">
+                      <div className="flex flex-col gap-8 md:mt-[0px] mt-[-60px]">
                         <div className="flex flex-col">
                           <span>Resize image</span>
                           <input
