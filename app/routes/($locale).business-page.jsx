@@ -35,24 +35,24 @@ const Business = () => {
     <>
       <div>
         <div className="mt-5">
-          <div className="w-[100%] px-[10px]  ">
+          <div className="w-[100%] pl-[10px]  ">
             <div className="relative w-full overflow-hidden lg:flex grid flex-wrap">
               <img
                 className="absolute lg:block hidden ml-[24.2rem] w-[515px] mt-[7.06rem] z-[-1]"
                 src={business_curve}
                 alt="business line"
               />
-              <div className="lg:w-[30%] lg:ml-[12rem] lg:mr-0 w-[40%] ml-auto mr-auto text-left mt-5">
-                <div className="text-[44px] text-[#001A5F] font-karla font-extrabold">
+              <div className="lg:w-[30%] lg:ml-[12rem] lg:mr-0 md:w-[40%] w-[55%] ml-auto mr-auto text-left mt-5">
+                <div className="flex lg:flex-col flex-row md:text-[44px] sm:text-[40px] text-[33px] text-[#001A5F] font-karla font-extrabold">
                   <div className="">
                     You{' '}
-                    <span className="font-beauty ml-2 text-8xl font-extrabold">
+                    <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] sm:text-[50px] text-[38px] font-extrabold">
                       type
                     </span>{' '}
                   </div>
-                  <div className="mt-[-30px]">
+                  <div className="lg:mt-[-30px]">
                     We
-                    <span className="font-beauty text-8xl ml-2 font-extrabold">
+                    <span className="font-beauty lg:text-8xl md:text-[60px] sm:text-[50px] text-[38px] ml-2 font-extrabold">
                       write
                     </span>
                   </div>
@@ -68,7 +68,7 @@ const Business = () => {
                     alt="Letter"
                   />
                   <img
-                    className="md:absolute md:ml-[-150px] md:mt-[10rem]  md:w-[245px] sm:ml-[-22rem] ml-[-15rem] relative h-auto  mt-[8rem] w-[200px] z-1"
+                    className="md:absolute md:ml-[-150px] md:mt-[10rem]  md:w-[245px] sm:ml-[-27rem] ml-[-20rem] relative h-auto  mt-[8rem] w-[200px] z-1"
                     src={rice_elmore}
                     alt=""
                   />
@@ -79,7 +79,7 @@ const Business = () => {
                   />
                 </div>
               </div>
-              <div className="lg:w-[50%] lg:block flex justify-center w-full text-left lg:mt-5 mt-16 ml-auto">
+              <div className="lg:w-[50%] lg:block flex justify-center w-full text-left lg:mt-5 md:mt-24 mt-16 ml-auto">
                 <div className="lg:inline-flex z-[-1] absolute hidden">
                   <img
                     className="z-1 relative w-[100%] ml-[-147px] mt-[97px]"
@@ -146,8 +146,8 @@ const Business = () => {
                         />
                       </div>
                       <div className="white-underline">
-                        <select className='!text-[12px]' name="volume" id="">
-                          <option  value="Expected Volume">
+                        <select className="!text-[13px]" name="volume" id="">
+                          <option value="Expected Volume">
                             Expected Volume
                           </option>
                           <option value="100-500">100-500</option>
@@ -192,9 +192,9 @@ const Business = () => {
                       </div>
                     </div>
 
-                    <div className="white-underline !w-[90%]">
+                    <div className="white-underline !w-[100%]">
                       <input
-                        className="!w-full"
+                        className="!w-full !px-0"
                         type="text"
                         name="company"
                         placeholder="How did you hear about us?"
@@ -203,7 +203,7 @@ const Business = () => {
 
                     <input
                       type="submit"
-                      value="SIGN UP"
+                      value="REQUEST SAMPLE"
                       className="sample-request"
                       id="Form-submit"
                     />
@@ -508,7 +508,7 @@ const Business = () => {
                   </div>
 
                   <div style={integrated === 'zapier' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] text-[30px] font-bold leading-4 mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold leading-4 mt-[20px] mb-[20px">
                       Zapier Integration
                     </div>
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
@@ -526,7 +526,7 @@ const Business = () => {
                     />
                   </div>
                   <div style={integrated === 'shopify' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] text-[30px] font-bold leading-4 mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f] md:text-[30px] sm:text-[20px] text-[18px] font-bold leading-4 mt-[20px] mb-[20px">
                       Leverage Zapier to Integrate with Shopify
                     </div>
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
@@ -548,7 +548,7 @@ const Business = () => {
                     <DynamicButton className="business-btn lg:w-[37%] h-[50px] lg:!text-[17px] text-[14px] w-[45%] " />
                   </div>
                   <div style={integrated === 'api' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] text-[30px] font-bold leading-4 mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f]  md:text-[30px] sm:text-[20px] text-[18px] font-bold leading-4 mt-[20px] mb-[20px">
                       Access our Open RESTful API
                     </div>
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
@@ -576,7 +576,6 @@ const Business = () => {
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
-                        
                         <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0">
                           Fully{' '}
                           <span className="font-beauty text-7xl mr-2 font-extrabold">
@@ -602,19 +601,18 @@ const Business = () => {
                             />
                             <div className="card-lorem lg:block hidden">
                               <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                              Custom Request
+                                Custom Request
                               </div>
                               <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
-                              Create Your Own Card
+                                Create Your Own Card
                               </div>
                               <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                              Simply Noted offers a wide array of cards to
+                                Simply Noted offers a wide array of cards to
                                 choose from and a powerful custom create a card
                                 tool. Over 95% of our clients are businesses and
                                 use their own or create custom stationery.
                               </div>
                               <DynamicButton
-                               
                                 text="Create a Card"
                                 className="business-btn
                     "
@@ -638,19 +636,18 @@ const Business = () => {
                             />
                             <div className="card-lorem lg:block hidden">
                               <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                              Gift Cards & Inserts
+                                Gift Cards & Inserts
                               </div>
                               <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
-                              Add Business Cards & Inserts
+                                Add Business Cards & Inserts
                               </div>
                               <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                              Simply Noted makes it easy to add your business
+                                Simply Noted makes it easy to add your business
                                 cards and desired inserts. Just simply contact
                                 us and we will house your items in our warehouse
                                 to be added as needed.
                               </div>
                               <DynamicButton
-                                
                                 text="START SENDING"
                                 className="business-btn"
                               />
@@ -676,22 +673,19 @@ const Business = () => {
                                 Add Gift Cards
                               </div>
                               <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                              Simply Noted makes it easy to send gift cards
+                                Simply Noted makes it easy to send gift cards
                                 from your favorite stores with each order. From
                                 $5 Starbucks cards to $100 Visas, there's a gift
                                 card to match any budget.
                               </div>
                               <DynamicButton
-                               
-                               text="START SENDING"
+                                text="START SENDING"
                                 className="business-btn"
                               />
                             </div>
                           </div>
                         </div>
                       </div>
-
-                     
 
                       {/* custom_card*/}
                       <div
@@ -706,20 +700,20 @@ const Business = () => {
                             />
                             <div className="card-lorem lg:block hidden">
                               <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                              Custom request Integration
+                                Custom request Integration
                               </div>
                               <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
                                 Lorem ipsum
                               </div>
                               <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                              Lorem ipsum dolor sit amet, consetetur
+                                Lorem ipsum dolor sit amet, consetetur
                                 sadipscing elitr, sed diam nonumy eirmod tempor
                                 invidunt ut labore et dolore magna aliquyam
                                 erat, sed diam voluptua. At vero eos et accusam
                                 et justo duo dolores et ea rebum.
                               </div>
                               <DynamicButton
-                               
+
                                 text="START INTEGRATE"
                                 className="business-btn"
                               />
@@ -730,13 +724,6 @@ const Business = () => {
                     </div>
                   </div>
                 </div>
-
-
-
-               
-
-                 
-
 
                 <div className="lg:w-[30%] w-[84%]  lg:ml-0 ml-auto mr-auto lg:mr-0 text-center">
                   <div className="lg:block hidden wrap-integrate relative z-[1] font-beauty">
@@ -756,7 +743,7 @@ const Business = () => {
                   </div>
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
-                  <div
+                    <div
                       className="click-link lg:w-[30%] lg:mt-0 mt-7 w-[70px] h-[70px] bg-white p-[10px] rounded-full  cursor-pointer lg:text-[14px] text-[12px]"
                       style={
                         customizable === 'create_card' ? {color: '#7F00FF'} : {}
@@ -795,7 +782,6 @@ const Business = () => {
                     >
                       Custom Request
                     </div>
-                 
                   </div>
                 </div>
                 <div className="lg:hidden flex justify-center text-[14px]">
@@ -815,302 +801,63 @@ const Business = () => {
                       Create Your Own Card
                     </div>
                     <div className="text-[#9c9a9a] sm:text-[16px] text-[12px] leading-5 mt-[20px] mb-[25px]">
-                    Simply Noted offers a wide array of cards to
-                                choose from and a powerful custom create a card
-                                tool. Over 95% of our clients are businesses and
-                                use their own or create custom stationery.
+                      Simply Noted offers a wide array of cards to choose from
+                      and a powerful custom create a card tool. Over 95% of our
+                      clients are businesses and use their own or create custom
+                      stationery.
                     </div>
                     <DynamicButton
-                     
                       text="Create a Card"
                       className="business-btn lg:w-[37%] h-[50px] lg:!text-[17px] text-[14px] w-[45%] "
                     />
                   </div>
 
                   <div style={customizable === 'business_card' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] text-[30px] font-bold leading-4 mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold leading-4 mt-[20px] mb-[20px">
                       Add Business Cards & Inserts
                     </div>
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
-                    Simply Noted makes it easy to add your business
-                                cards and desired inserts. Just simply contact
-                                us and we will house your items in our warehouse
-                                to be added as needed.
+                      Simply Noted makes it easy to add your business cards and
+                      desired inserts. Just simply contact us and we will house
+                      your items in our warehouse to be added as needed.
                     </div>
                     <DynamicButton
-                     
                       text="START SENDING"
                       className="business-btn lg:w-[37%] h-[50px] lg:!text-[17px] text-[14px] w-[45%]"
                     />
                   </div>
                   <div style={customizable === 'gift_card' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] text-[30px] font-bold leading-4 mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f] md:text-[30px] sm:text-[20px] text-[18px] font-bold leading-4 mt-[20px] mb-[20px">
                       Add Gift Cards
                     </div>
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
-                    Simply Noted makes it easy to send gift cards
-                                from your favorite stores with each order. From
-                                $5 Starbucks cards to $100 Visas, there's a gift
-                                card to match any budget.
+                      Simply Noted makes it easy to send gift cards from your
+                      favorite stores with each order. From $5 Starbucks cards
+                      to $100 Visas, there's a gift card to match any budget.
                     </div>
                     <DynamicButton
-                     
                       text="START SENDING"
                       className="business-btn "
                     />
                   </div>
-                  
+
                   <div style={customizable === 'custom_card' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] text-[30px] font-bold leading-4 mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold leading-4 mt-[20px] mb-[20px">
                       Lorem ipsum
                     </div>
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
-                    Lorem ipsum dolor sit amet, consetetur
-                                sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore et dolore magna aliquyam
-                                erat, sed diam voluptua. At vero eos et accusam
-                                et justo duo dolores et ea rebum.
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                      sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                      magna aliquyam erat, sed diam voluptua. At vero eos et
+                      accusam et justo duo dolores et ea rebum.
                     </div>
                     <DynamicButton
-                     
                       text="START SENDING"
                       className="business-btn lg:w-[37%] h-[50px] lg:!text-[17px] text-[14px] w-[45%]"
                     />
                   </div>
                 </div>
               </div>
-
-
-
-              {/* <div className="flex flex-wrap flex-row-reverse mt-14">
-                <div className="w-[70%] text-right">
-                  <div className="inline-flex relative">
-                    <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
-                      <div className="text-center">
-                        <div className="text-5xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0">
-                          Fully{' '}
-                          <span className="font-beauty text-7xl mr-2 font-extrabold">
-                            Customizable
-                          </span>
-                        </div>
-                        <img
-                          className="absolute w-[7.5%] inline ml-[6.5rem] mt-[-2.5rem] curve-line"
-                          src={curve}
-                          alt="curve"
-                        ></img>
-                      </div>
-
-                      //  Create a card  
-                      <div
-                        style={customizable === 'create_card' ? BLOCK : NONE}
-                      >
-                        <div className="relative">
-                          <div className="relative">
-                            <img
-                              className="max-w-100%"
-                              src={message_area}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Custom Request
-                              </div>
-                              <div className="text-[#001a5f] text-[26px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Create Your Own Card
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Simply Noted offers a wide array of cards to
-                                choose from and a powerful custom create a card
-                                tool. Over 95% of our clients are businesses and
-                                use their own or create custom stationery.
-                              </div>
-                              <DynamicButton
-                                // onClickFunction={() =>
-                                //   navigate('/collections/best-sellers')
-                                // }
-                                text="Create a Card"
-                                className="business-btn
-                    "
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      // business_card 
-
-                      <div
-                        style={customizable === 'business_card' ? BLOCK : NONE}
-                      >
-                        <div className="relative">
-                          <div className="relative">
-                            <img
-                              className="max-w-100%"
-                              src={bizcard}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Gift Cards & Inserts
-                              </div>
-                              <div className="text-[#001a5f] text-[26px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Add Business Cards & Inserts
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Simply Noted makes it easy to add your business
-                                cards and desired inserts. Just simply contact
-                                us and we will house your items in our warehouse
-                                to be added as needed.
-                              </div>
-                              <DynamicButton
-                                // onClickFunction={() =>
-                                //   navigate('/collections/best-sellers')
-                                // }
-                                text="START SENDING"
-                                className="business-btn
-                    "
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      // gift_card 
-                      <div style={customizable === 'gift_card' ? BLOCK : NONE}>
-                        <div className="relative">
-                          <div className="relative">
-                            <img
-                              className="max-w-100%"
-                              src={giftcard}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Gift Cards
-                              </div>
-                              <div className="text-[#001a5f] text-[17px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Add Gift Cards
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Simply Noted makes it easy to send gift cards
-                                from your favorite stores with each order. From
-                                $5 Starbucks cards to $100 Visas, there's a gift
-                                card to match any budget.
-                              </div>
-                              <DynamicButton
-                                // onClickFunction={() =>
-                                //   navigate('/collections/best-sellers')
-                                // }
-                                text="START SENDING"
-                                className="business-btn
-                    "
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      // custom_card
-                      <div
-                        style={customizable === 'custom_card' ? BLOCK : NONE}
-                      >
-                        <div className="relative">
-                          <div className="relative">
-                            <img
-                              className="max-w-100%"
-                              src={custom}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Custom request Integration
-                              </div>
-                              <div className="text-[#001a5f] text-[26px] font-bold leading-4 mt-[20px] mb-[20px]">
-                                Lorem ipsum
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Lorem ipsum dolor sit amet, consetetur
-                                sadipscing elitr, sed diam nonumy eirmod tempor
-                                invidunt ut labore et dolore magna aliquyam
-                                erat, sed diam voluptua. At vero eos et accusam
-                                et justo duo dolores et ea rebum.
-                              </div>
-                              <DynamicButton
-                                // onClickFunction={() =>
-                                //   navigate('/collections/best-sellers')
-                                // }
-
-                                text="START INTEGRATE"
-                                className="business-btn "
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-[30%] text-center">
-                  <div className="wrap-integrate relative z-[1] font-beauty">
-                    Click these to learn more
-                  </div>
-                  <div className="item-center flex flex-col">
-                    <img
-                      className="w-[10%] ml-[60px]"
-                      src={business_arrow}
-                      alt="business_arrow"
-                    />
-                    <img
-                      className="h-[70%] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
-                      src={business_line}
-                      alt="business_line"
-                    />{' '}
-                  </div>
-
-                  <div className="ml-[40px]">
-                    <div
-                      className="click-link w-[30%] bg-white p-[10px] rounded-full mb-7 cursor-pointer"
-                      style={
-                        customizable === 'create_card' ? {color: '#7F00FF'} : {}
-                      }
-                      onClick={() => setCustomizable('create_card')}
-                    >
-                      Create a Card
-                    </div>
-                    <div
-                      className="click-link w-[30%] bg-white p-[10px] my-7 rounded-full cursor-pointer"
-                      style={
-                        customizable === 'business_card'
-                          ? {color: '#7F00FF'}
-                          : {}
-                      }
-                      onClick={() => setCustomizable('business_card')}
-                    >
-                      Business Card
-                    </div>
-                    <div
-                      className="click-link w-[30%] bg-white p-[13px] my-7 rounded-full cursor-pointer"
-                      style={
-                        customizable === 'gift_card' ? {color: '#7F00FF'} : {}
-                      }
-                      onClick={() => setCustomizable('gift_card')}
-                    >
-                      Gift Card
-                    </div>
-
-                    <div
-                      className="click-link w-[30%] bg-white p-[10px] my-7 rounded-full cursor-pointer"
-                      style={
-                        customizable === 'custom_card' ? {color: '#7F00FF'} : {}
-                      }
-                      onClick={() => setCustomizable('custom_card')}
-                    >
-                      Custom Request
-                    </div>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
