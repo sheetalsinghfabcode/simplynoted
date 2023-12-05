@@ -358,8 +358,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
     <header
       role="banner"
       className={`${
-        isHome ? 'bg-primary' : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#deeaf6] leading-none gap-4 px-4 md:px-8`}
+        isHome ? 'bg-primary' : ' bg-contrast/80 text-primary'
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#dde8f7]  leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
