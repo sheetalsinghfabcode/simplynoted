@@ -536,17 +536,26 @@ const ManageSubscription = () => {
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
           <DynamicTitle
             dynamicButton
-            title={'Manage Plans and Prepaid Packages'}
+            // title={'Manage Plans and Prepaid Packages'}
           />
+          <div className='flex justify-center'>
+          <h2 className='mt-[-22px]  text-[18px] font-bold text-[#001a5f]  font-sans'>Manage Plans and Prepaid Packages</h2>
+          </div>
+          <div className='flex justify-center text-center mt-[12px] mb-[27px]'>
+          <img
+            className="w-[100px]"
+            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+          ></img>
+          </div>
 
-          <div className="flex flex-col md:flex-row w-full max-w-[1440px] gap-[30px] items-start">
-            <div className="w-full md:w-[30%]  bg-white p-[20px] text-center">
+          <div className="flex flex-col lg:flex-row w-full max-w-[1440px] gap-[30px] items-start">
+            <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
               <div className="user-name">
                 {firstNameChar}
                 {lastNameChar}
               </div>
               <div className="mt-[20px]">
-                <div className=" md:text-[20px] text-[15px] text-[#001a5f] font-bold">
+                <div className=" lg:text-[20px] text-[15px] text-[#001a5f] font-bold">
                   <span className="mr-[4px]">{firstName}</span>
                   {lastName}
                 </div>
@@ -556,16 +565,16 @@ const ManageSubscription = () => {
               </div>
             </div>
 
-            <div className="w-full md:w-[70%] bg-white  p-[20px] text-center">
+            <div className="w-full md:w-[100%] bg-white  p-[20px] text-center">
               {loader ? (
                 <CircularLoader title="Loading Manage Plans" color="#ef6e6e" />
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
-                    <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                    <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                       wallet balance
                     </span>
-                    <span className="md:text-[24px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
+                    <span className="lg:text-[24px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
                       $
                       {!stripeCollection.error
                         ? prettyFormatNumber(stripeCollection.stripe?.balance)
@@ -577,10 +586,10 @@ const ManageSubscription = () => {
                   <WalletAccordion accordion={true} title="Plan">
                     <div className="p-[15px] mb-[15px] border border-solid border-[#e6edf8]">
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className="md:text-[16px] text-[12px] text-[#001a5f] font-bold uppercase">
+                        <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-bold uppercase">
                           My Plan
                         </span>
-                        <span className="md:text-[20px] text-[12px  ] !font-bold text-[#ef6e6e] uppercase">
+                        <span className="lg:text-[20px] text-[12px  ] !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection &&
                           stripeCollection.stripe?.subscriptionStatus !==
                             'canceled' &&
@@ -594,7 +603,7 @@ const ManageSubscription = () => {
                           'canceled' &&
                         !stripeCollection.error && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                            <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                            <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                               CHANGE STATUS
                             </span>
                             <DynamicButton
@@ -602,12 +611,12 @@ const ManageSubscription = () => {
                                 setCancelSubscription(true)
                               }
                               text="Cancel Plan"
-                              className="!bg-[#ef6e6e] md:text-[16px] text-[12px] md:max-w-[190px]  uppercase min-w-[190px]"
+                              className="!bg-[#ef6e6e] lg:text-[16px] text-[12px] lg:max-w-[190px]  uppercase min-w-[190px]"
                             />
                           </div>
                         )}
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                        <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                           CHANGE PLAN
                         </span>
                         <DynamicButton
@@ -622,7 +631,7 @@ const ManageSubscription = () => {
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
-                          className="!bg-[#001a5f] md:text-[16px] text-[12px] md:max-w-[190px] min-w-[19px] uppercase md:min-w-[190px] min-w-[3px]"
+                          className="!bg-[#001a5f] lg:text-[16px] text-[12px] md:max-w-[190px] min-w-[19px] uppercase lg:min-w-[190px] min-w-[3px]"
                         />
                       </div>
 
@@ -631,7 +640,7 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled' ? (
                             <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                              <span className="md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                                 PLAN RENEWAL DATE
                               </span>
                               <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
@@ -639,11 +648,11 @@ const ManageSubscription = () => {
                               </span>
                             </div>
                           ) : (
-                            <div className="flex justify-between items-center md:gap-[15px] gap-[36px] py-[10px]">
-                              <span className="md:text-[16px] text-[12px] md:text-center text-left text-[#001a5f] font-karla font-normal uppercase">
+                            <div className="lg:flex grid justify-between items-left  md:gap-[15px] gap-[36px] py-[10px]">
+                              <span className="lg:text-[16px] text-[12px] text-left text-[#001a5f] font-karla font-normal uppercase">
                                 SUBSCRIPTION CANCELLATION DATE
                               </span>
-                              <span className="text-[12px] md:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="text-[12px] lg:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
                                 {
                                   stripeCollection.stripe
                                     ?.subscriptionCancelledAt
@@ -657,13 +666,13 @@ const ManageSubscription = () => {
                   </WalletAccordion>
                   <WalletAccordion title="PREPAID PACKAGE">
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                    <span className=" md:text-[16px] lg:pl-[0px] pl-[9px] md:mr-[0px] mr-[46px] text-[12px]  text-[#001a5f] font-karla font-normal uppercase">
-                        PREPAID PACKAGE
+                    <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[9px] lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-normal uppercase">
+                        PREPAID PACKAGE 
                       </span>
                       {stripeCollection &&
                       stripeCollection.stripe?.balance !== 0 &&
                       !stripeCollection.error ? (
-                        <span className="md:text-[20px] text-[12px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                        <span className="lg:text-[20px] text-[12px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled'
                             ? stripeCollection.stripe?.subscription
@@ -672,14 +681,14 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.packageDiscount}% DISCOUNT
                         </span>
                       ) : (
-                        <span className=" md:text-[20px] text-[13px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                        <span className=" lg:text-[20px] text-[13px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           No Package
                         </span>
                       )}
                     </div>
                     {!stripeCollection.error && (
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className=" md:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                        <span className=" lg:text-[16px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-normal uppercase">
                           AUTO RENEW
                         </span>
                         <DynamicButton
@@ -695,12 +704,12 @@ const ManageSubscription = () => {
                               ? 'Stop Auto Renew'
                               : 'Restart Auto Renew'
                           }
-                          className="!bg-[#ef6e6e] md:mr-[0px] mr-[11px] max-w-[190px] md:!text-[14px] !text-[11px] whitespace-nowrap uppercase md:min-w-[190px] min-w-[2px]"
+                          className="!bg-[#ef6e6e]  max-w-[190px] lg:!text-[14px] !text-[11px] whitespace-nowrap uppercase md:min-w-[190px] min-w-[2px]"
                         />
                       </div>
                     )}
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                    <span className=" md:text-[16px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-normal uppercase">
+                    <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-normal uppercase">
                         Update
                       </span>
                       <DynamicButton
@@ -711,7 +720,7 @@ const ManageSubscription = () => {
                             ? 'Change Package'
                             : 'Buy Package'
                         }
-                        className="!bg-[#001a5f] md:text-[15px] text-[12px] font-karla max-w-[190px] uppercase md:min-w-[190px] min-w-[2px]"
+                        className="!bg-[#001a5f] lg:text-[15px] text-[12px] font-karla max-w-[190px] uppercase lg:min-w-[190px] min-w-[2px]"
                       />
                     </div>
                 
@@ -719,11 +728,11 @@ const ManageSubscription = () => {
                   <WalletAccordion title="STORED PAYMENT METHOD">
                     <div className="flex flex-col items-start">
                       {savedCard && savedCard.length > 0 && (
-                        <span className=" md:text-[16px]  text-[12px] text-[#001a5f] font-karla font-normal p-[5px] text-left  uppercase">
+                        <span className=" lg:text-[16px]  text-[12px] text-[#001a5f] font-karla font-normal p-[5px] text-left  uppercase">
                           Saved Cards
                         </span>
                       )}
-                      <div className=" text-[#001a5f] bg-[#fff5f5] font-karla text-left md:text-[16px] text-[12px] !font-semibold w-full p-[5px] border-b border-solid border-[#e6edf8]">
+                      <div className=" text-[#001a5f] bg-[#fff5f5] font-karla text-left lg:text-[16px] text-[12px] !font-semibold w-full p-[5px] border-b border-solid border-[#e6edf8]">
                         DEFAULT CARD
                       </div>
                       <div className="w-full">
@@ -733,7 +742,7 @@ const ManageSubscription = () => {
                               key={i}
                               className={`p-[1rem] ${
                                 i === 0 && 'bg-[#fff5f5]'
-                              }  md:flex justify-between grid justify-center`}
+                              }  lg:flex justify-between grid justify-center`}
                             >
                               <div className="flex justify-start items-center text-[14px] font-bold">
                                 <span className="mr-[1rem]  md:text-[13px] text-[12px] tracking-wide">
@@ -743,11 +752,11 @@ const ManageSubscription = () => {
                                   {item.cardExpMonth}/{item.cardExpYear}
                                 </span>
                               </div>
-                              <div className="flex md:mt-[12px] mt-[12px] gap-[16px] items-center">
+                              <div className="flex lg:mt-[12px] mt-[12px] gap-[16px] items-center">
                                 {i === 0 ? (
                                   <DynamicButton
                                     text="Update Card"
-                                    className="bg-[#ef6e6e] text-white md:text-[17px] text-[12px]"
+                                    className="bg-[#ef6e6e] text-white lg:text-[17px] text-[12px]"
                                     onClickFunction={() => {
                                       setAddCreditModal(false);
                                       setPaymentId(item.paymentId);
@@ -759,7 +768,7 @@ const ManageSubscription = () => {
                                   <div className="flex items-center gap-[16px]">
                                     <DynamicButton
                                       text="Make Default"
-                                      className="bg-[#ef6e6e] text-white md:text-[17px] text-[12px]"
+                                      className="bg-[#ef6e6e] text-white lg:text-[17px] text-[12px]"
                                       onClickFunction={() => {
                                         setPaymentId(item.paymentId);
                                         setDefaultCard(true);
@@ -786,7 +795,7 @@ const ManageSubscription = () => {
                             setUpdateModal(true);
                           }}
                           text="Add Credit Card"
-                          className={`bg-[#001a5f] text-white  md:text-[15px] text-[12px] flex${
+                          className={`bg-[#001a5f] text-white  lg:text-[15px] text-[12px] flex${
                             savedCard === 0 ? 'justify-start' : 'justify-end'
                           }  mt-[10px]`}
                         />
@@ -794,7 +803,7 @@ const ManageSubscription = () => {
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">
-                    <table className="md:min-w-full min-w-[50%] divide-y divide-gray-200">
+                    <table className="lg:min-w-full min-w-[50%] divide-y divide-gray-200">
                       <thead>
                         <tr>
                           {header.map((column, index) => (
@@ -818,17 +827,17 @@ const ManageSubscription = () => {
                               <td className="text-[#1b5299] p-[11px]">
                                 {i + 1}
                               </td>
-                              <td className=" text-[#1b5299] p-[11px] md:text-[14px] text-[9px] font-karla !font-bold uppercase">
+                              <td className=" text-[#1b5299] p-[11px] lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
                                 {payment.description}
                               </td>
                               <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
                                 {payment.date}
                               </td>
-                              <td className=" text-[#1b5299] p-[11px] font-karla md:text-[14px] text-[9px] !font-bold uppercase">
+                              <td className=" text-[#1b5299] p-[11px] font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
                                 $ {payment.amount}
                               </td>
                               <td className="flex justify-center p-[11px] text-center">
-                                <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase md:text-[12px] text-[9px] md:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
+                                <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase lg:text-[12px] text-[9px] lg:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
                                   {payment.status && 'Paid'}
                                 </td>
                               </td>

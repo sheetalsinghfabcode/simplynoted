@@ -7,7 +7,7 @@ import {
   getPaginationVariables,
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
-
+ 
 import {
   PageHeader,
   Section,
@@ -30,19 +30,19 @@ import Loader from '~/components/modal/Loader';
 import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
 export const headers = routeHeaders;
-
+ 
 export async function loader({params, request, context}) {
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 8,
   });
   const variables = getPaginationVariables(request, {pageBy: 10});
-
+ 
   const {collectionHandle} = params;
   const handleLinkData = await context.storefront.query(HANDLE_QUERY, {
     variables: {},
   });
   invariant(collectionHandle, 'Missing collectionHandle param');
-
+ 
   const searchParams = new URL(request.url).searchParams;
   const knownFilters = ['productVendor', 'productType'];
   const available = 'available';
@@ -50,7 +50,7 @@ export async function loader({params, request, context}) {
   const {sortKey, reverse} = getSortValuesFromParam(searchParams.get('sort'));
   const filters = [];
   const appliedFilters = [];
-
+ 
   for (const [key, value] of searchParams.entries()) {
     if (available === key) {
       filters.push({available: value === 'true'});
@@ -70,7 +70,7 @@ export async function loader({params, request, context}) {
       appliedFilters.push({label: val, urlParam: {key, value}});
     }
   }
-
+ 
   // Builds min and max price filter since we can't stack them separately into
   // the filters array. See price filters limitations:
   // https://shopify.dev/custom-storefronts/products-collections/filter-products#limitations
@@ -94,7 +94,7 @@ export async function loader({params, request, context}) {
       price,
     });
   }
-
+ 
   const {collection, collections} = await context.storefront.query(
     COLLECTION_QUERY,
     {
@@ -117,9 +117,9 @@ export async function loader({params, request, context}) {
   if (!collection) {
     throw new Response('collection', {status: 404});
   }
-
+ 
   const seo = seoPayload.collection({collection, url: request.url});
-
+ 
   return json({
     myCollection,
     collection,
@@ -175,7 +175,7 @@ export default function Collection() {
   ];
   let filterTag = handleLinkData.collections.edges;
   const data = filterTag.filter((item) => mainTags.includes(item.node.handle));
-
+ 
   useEffect(() => {
     if (locationRef.pathname !== '/collections/customisable-cards') {
       console.log(locationRef.pathname,"locationRef.pathname");
@@ -183,7 +183,7 @@ export default function Collection() {
     }
     // console.log('______________----------');
   }, [locationRef.pathname]);
-
+ 
   console.log(collectionHandle, 'collectionHandle', locationRef.pathname);
   async function changeHandle(e) {
     setLoader(true);
@@ -198,11 +198,11 @@ export default function Collection() {
       setLoader(false);
     }
   }
-
+ 
   function CreateCustomCard() {
     try {
       setLoader(true);
-
+ 
       if (customerid) {
         navigate('/customise-your-card');
         setLoader(false);
@@ -214,7 +214,7 @@ export default function Collection() {
       console.log(error);
     }
   }
-
+ 
   async function customisedCard() {
     try {
       setLoader(true);
@@ -251,7 +251,7 @@ export default function Collection() {
       console.log(error, 'customiseCard---');
     }
   }
-
+ 
   function CustomeCard() {
     console.log(addingProductsData, '99999999');
     return (
@@ -265,7 +265,7 @@ export default function Collection() {
                 product={product}
                 offPrice={offPrice}
                 productPrice={product.variants[0].price}
-
+ 
                 // loading={getImageLoadingPriority(i)}
               />
             </>
@@ -308,32 +308,38 @@ export default function Collection() {
           <div className="gap-2 md:flex md:justify-between grid justify-none">
             <div className="gap-2 : md:flex flex justify-center">
               <DynamicButton
-                className="btnShadow bg-[#1b5299] h-[50px] md:text-[14px] text-[12px]  w-[200px] text-[#fff] p-2 "
-                text="Create A Custom Card"
+                  className="btnShadow bg-[#EF6E6E] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"                text="Create A Custom Card"
                 onClickFunction={CreateCustomCard}
               />
               <br />
               <DynamicButton
-                  className="btnShadow bg-[#EF6E6E] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"
-                  text="View My Custom Card"
+                className="btnShadow bg-[#EF6E6E] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"
+                text="View My Custom Card"
                 onClickFunction={() => customisedCard()}
               />
             </div>
-            </div>
-            <div className=' lg:flex md:grid flex  gap-5 md:justify-end justify-center items-center selectArrow md:mt-[0px] mt-[15px]'>
-            <h2 className=' sm:text-l text-[12px]'>Choose a card from our collection: </h2>
-            <select name="" id="" className='!border-none sm:w-[244px] w-[151px] text-[#508ee3]' onChange={(e) => changeHandle(e.target.value)}>
+            <div className='lg:flex md:grid flex  gap-5 md:justify-end justify-center items-center selectArrow md:mt-[0px] mt-[15px]'>             
+             <h2 className="sm:text-l text-[13px]">
+                Choose a card from our collection:{' '}
+              </h2>
+              <select
+                name=""
+                id=""
+                className="!border-none sm:w-[244px] w-[151px] text-[#508ee3]"
+                onChange={(e) => changeHandle(e.target.value)}
+              >
                 <option className="w-full" selected disabled>
                   {collectionHandle}{' '}
                 </option>
-
+ 
                 {data &&
                   data.map((item) => (
                     <option value={item.node.handle}>{item.node.handle}</option>
                   ))}
               </select>
             </div>
-
+          </div>
+ 
           <div className="mt-[24px]">
             {myColletionData.length === 0 && !checkState && (
               <CircularLoader color="#ef6e6e" />
@@ -406,7 +412,7 @@ export default function Collection() {
                   />
                 ))}
               </Grid>
-
+ 
               <div className="flex items-center justify-center mt-6">
                 <Button as={NextLink} variant="secondary" width="full">
                   {isLoading ? 'Loading...' : 'Load more products'}
@@ -437,7 +443,7 @@ export default function Collection() {
     </>
   );
 }
-
+ 
 const MY_COLLECTION = `#graphql
 query
 CollectionDetails(
@@ -462,10 +468,10 @@ collection(handle:$handle) {
   }
   ${PRODUCT_CARD_FRAGMENT}
  `;
-
+ 
 const COLLECTION_QUERY = `#graphql
-  query 
-  
+  query
+ 
   CollectionDetails(
     $handle: String!
     $country: CountryCode
@@ -513,7 +519,7 @@ const COLLECTION_QUERY = `#graphql
             count
             input
           }
-        }mCard
+        }
         nodes {
           ...ProductCard
         }
@@ -537,7 +543,7 @@ const COLLECTION_QUERY = `#graphql
   }
   ${PRODUCT_CARD_FRAGMENT}
 `;
-
+ 
 const HANDLE_QUERY = `#graphql
 query
 {
@@ -549,7 +555,7 @@ query
     }
   }
 }`;
-
+ 
 function getSortValuesFromParam(sortParam) {
   switch (sortParam) {
     case 'price-high-low':
@@ -584,3 +590,4 @@ function getSortValuesFromParam(sortParam) {
       };
   }
 }
+ 
