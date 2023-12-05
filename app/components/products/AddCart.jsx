@@ -30,7 +30,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     const [recipientAddress, setRecipientAddress] = useState([])
     const [selectedItem, setSelectedItem] = useState(editOrderValue?.data ? editOrderValue.data.reciverAddress : null);
     const [selectedItem2, setSelectedItem2] = useState(editOrderValue?.data ? editOrderValue.data.senderAddress : null);
-    const [selectShipMode, setSelectShipMode] = useState(editOrderValue?.data? editOrderValue.data.shippingData:'')
+    const [selectShipMode, setSelectShipMode] = useState(editOrderValue?.data? editOrderValue.data.shippingData:shippingData.variants.edges[0])
     const [searchData, setsearchData] = useState(null);
     const [searchData2, setsearchData2] = useState(null);
     const [cardVal, setCardVal] = useState('')
@@ -58,6 +58,18 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
     });
     const [checkSelAddress, setCheckSelAddress] = useState(false)
     const [stateCheckCart, setStateCheckCart] = useState(true)
+    const [reqFields,setReqFields] = useState(false)
+
+    // const setFirstShippingMethod = () => {
+    //     if(shippingData){
+    //         console.log(shippingData,"shippingData");
+    //         setSelectShipMode()
+    //     }
+    // }
+
+    // useEffect(()=>{
+    //     setFirstShippingMethod();
+    // },[])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -82,7 +94,6 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
             [name]: '',
         }));
     };
-    console.log(formData, 'formData');
     const selectedCountry = location.countries.find(
         (country) => country.country === formData.country,
     );
@@ -333,8 +344,12 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         setShowShipAddress(false)
     }
     function OnSaveClickShipAddress() {
-        setSaveShip(true)
-        setShowShipAddress(false)
+        if(formData.address1 && formData.city && formData.country && formData.firstName && formData.lastName && formData.postalCode &&  formData.state){
+            setSaveShip(true)
+            setShowShipAddress(false)
+        }else{
+            setReqFields(true)
+        }
     }
     return (
         <div className='relative'>
@@ -528,9 +543,14 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                     {showShipAddress &&
                         <Modal children={
                             <div className='w-[100%] border border-solid border-black p-3 mt-3'>
+                                {reqFields && 
+                                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                                Please add all fields with * that are Mandatory
+                              </p>
+                                }
                                 <div className='grid-rows-2 flex gap-3'>
                                     <div>
-                                        <label htmlFor="">First Name</label>
+                                        <label htmlFor="">First Name*</label>
                                         <input
                                             type="text"
                                             id="firstName"
@@ -538,10 +558,11 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                             placeholder="firstName"
                                             value={formData.firstName}
                                             onChange={(e) => handleChange(e)}
-                                            className='mt-2 border border-solid border-black p-3 w-[100%]' />
+                                            className='mt-2 border border-solid border-black p-3 w-[100%]' 
+                                            />
                                     </div>
                                     <div>
-                                        <label htmlFor="">Last Name</label>
+                                        <label htmlFor="">Last Name*</label>
                                         <input
                                             id="lastName"
                                             name="lastName"
@@ -553,7 +574,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                     </div>
                                 </div>
                                 <div className='mt-2'>
-                                    <label htmlFor="" className=''>Address1</label>
+                                    <label htmlFor="" className=''>Address1*</label>
                                     <input
                                         id="address1"
                                         name="address1"
@@ -579,7 +600,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                 </div>
                                 <div className='grid-rows-2 flex gap-3'>
                                     <div>
-                                        <label htmlFor="">City</label>
+                                        <label htmlFor="">City*</label>
                                         <input
                                             type="text"
                                             id="city"
@@ -590,7 +611,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                             className='mt-2 border border-solid border-black p-3 w-[100%]' />
                                     </div>
                                     <div>
-                                        <label htmlFor="">Postal Code</label>
+                                        <label htmlFor="">Postal Code*</label>
                                         <input
                                             id="postalCode"
                                             name="postalCode"
@@ -607,7 +628,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                             className="block text-gray-700 text-sm font-bold mb-2"
                                             htmlFor="country"
                                         >
-                                            Country
+                                            Country*
                                         </label>
                                         <select
                                             onChange={(e) => handleChange(e)}
@@ -629,7 +650,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                             className="block text-gray-700 text-sm font-bold mb-2"
                                             htmlFor="country"
                                         >
-                                            State
+                                            State*
                                         </label>
                                         <select
                                             onChange={(e) => handleChange(e)}

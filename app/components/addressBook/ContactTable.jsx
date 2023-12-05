@@ -34,6 +34,7 @@ const ContactTable = ({
   const [errorContent, serErrorContent] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  console.log(addresses,"addresses");
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
     const dateB = new Date(b.created);
