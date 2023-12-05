@@ -325,7 +325,7 @@ export default function AddCartFunc() {
                                 <img src={item.productImg} alt="" />
                               </div>
                               <div className="max-w-[100%] m-auto md:mt-auto mt-[27px]">
-                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] md:text-[14px] sm:text-[28px] text-[18px] lg:tracking-[0.5px] tracking-0">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] md:text-[14px] sm:text-[20px] text-[18px] lg:tracking-[0.5px] tracking-0">
                                   {item.productTitle}
                                 </h3>
                                 

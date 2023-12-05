@@ -308,7 +308,7 @@ export default function Collection() {
           <div className="gap-2 md:flex md:justify-between grid justify-none">
             <div className="gap-2 : md:flex flex justify-center">
               <DynamicButton
-                  className="btnShadow bg-[#EF6E6E] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"                text="Create A Custom Card"
+                  className="btnShadow bg-[#001a5f] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"                text="Create A Custom Card"
                 onClickFunction={CreateCustomCard}
               />
               <br />
