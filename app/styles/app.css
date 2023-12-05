@@ -2410,10 +2410,7 @@ margin-left: 0px;
     padding:7px;
     border-radius: 50%;
   }
-  .carts-button{
-    padding-left:3rem;
-    padding-right:3rem;
-  }
+ 
   .thankyou_img {
     width: 55%;
     margin-top: 5rem;
@@ -2452,12 +2449,7 @@ margin-left: 0px;
 }
 }
 
-@media only screen and (max-width:600px) {
-.carts-button{
-  padding-left:2rem;
-  padding-right:2rem;
-}
-}
+
 @media only screen and (max-width:500px) {
 .signup-overview{
   width: 100%;

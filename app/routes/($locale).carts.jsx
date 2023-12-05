@@ -392,7 +392,7 @@ export default function AddCartFunc() {
                               ) : (
                                 <div className="buttonDiv md:pr-5 pr-0 m-2">
                                   <DynamicButton
-                                    className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px] carts-button"
+                                    className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px] "
                                     text="Add Gift Card"
                                     onClickFunction={() => {
                                       OpenModalFunc(index);
@@ -403,7 +403,7 @@ export default function AddCartFunc() {
 
                               <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px] carts-button"
+                                  className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px]"
                                   text="EDIT ORDER"
                                   onClickFunction={() => {
                                     editOrderData(index);
@@ -412,7 +412,7 @@ export default function AddCartFunc() {
                               </div>
                               <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] carts-button"
+                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] "
                                   text="DELETE ORDER"
                                   onClickFunction={() => {
                                     ConfirmDeleteOrder(index);
@@ -477,7 +477,7 @@ export default function AddCartFunc() {
                             <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
                             <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] carts-button"
+                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] "
                                   text="DELETE CARD"
                                   onClickFunction={() => {
                                     confirmCardDel(index);
