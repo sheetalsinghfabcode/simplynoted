@@ -509,7 +509,7 @@ function DesktopHeader({isHome, menu}) {
                             <Link to="/collections/birthday">
                               <li>Birthday Automation</li>
                             </Link>
-                            <Link to="collections/gift-cards">
+                            <Link to="/gift-cards">
                               {' '}
                               <li>Gift Cards </li>
                             </Link>
@@ -839,11 +839,19 @@ function FooterLink({item}) {
   );
 }
 
+
 function FooterMenu({menu}) {
   const styles = {
     section: 'grid gap-4',
     nav: 'grid gap-2 pb-6',
   };
+
+  function removePagesFromString(str) {
+    // return str?.replace('/pages' && '/policies', '');
+    return str.replace(/\/(pages|policies)/, '');
+}
+
+  console.log("menu",menu);
 
   return (
     <>
@@ -926,7 +934,7 @@ function FooterMenu({menu}) {
                   {({open}) => (
                     <>
                       <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                        <Link to={item.to}>
+                        <Link to= {removePagesFromString(item.to)}>
                           <Heading
                             className="flex justify-between  !font-base leading-loose hover:text-white"
                             size="lead"
