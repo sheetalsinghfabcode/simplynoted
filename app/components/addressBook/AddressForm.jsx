@@ -143,13 +143,13 @@ const AddressForm = ({customerID}) => {
             loader && 'opacity-40'
           }`}
         >
-          <div className="flex justify-between items-center mb-[16px]">
+          <div className="lg:flex grid justify-between items-center mb-[16px]">
             <h2 className="text-left text-[#001a5f] font-bold md:text-[34px] text-[12px] leading-[44px]">
               New Address
             </h2>
             <div className="flex gap-[10px]">
               <DynamicButton
-                className="bg-[#ef6e6e] md:text-[16px] text-[12px] md:h-[60px] h-[39px] w-full xl:min-w-[180px] max-w-[170px] "
+                className="bg-[#ef6e6e] md:text-[16px] text-[12px] lg:h-[41px] h-[33px] w-full lg:min-w-[180px] w-[140px] "
                 text="Cancel"
                 onClickFunction={() => {
                   setAddressForm(false);
@@ -157,14 +157,14 @@ const AddressForm = ({customerID}) => {
                 }}
               />
               <DynamicButton
-                className="bg-[#1b5299] whitespace-nowrap md:text-[16px] text-[12px] md:h-[60px]  w-full xl:min-w-[180px] max-w-[200px]"
+                className="bg-[#1b5299] whitespace-nowrap md:text-[16px] text-[12px] lg:h-[41px] h-[33px] w-full xl:min-w-[180px] max-w-[200px]"
                 text="Save Address"
                 onClickFunction={saveAddress}
               />
             </div>
           </div>
           <div className="mb-4 flex flex-wrap -mx-3">
-            <div className="w-1/2 px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="firstName"
@@ -189,7 +189,7 @@ const AddressForm = ({customerID}) => {
                 </p>
               )}
             </div>
-            <div className="w-1/2 px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="lastName"
@@ -215,9 +215,9 @@ const AddressForm = ({customerID}) => {
               )}
             </div>
           </div>
-          <div className="md:flex items-center">
-            <div className="mb-4 flex flex-wrap -mx-3">
-              <div className="w-1/2 px-3 mb-6">
+          <div className="md: items-center">
+            <div className="flex flex-wrap -mx-3">
+              <div className="md:w-1/2 w-[100%] px-3 mb-6">
                 <label
                   className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                   htmlFor="businessName"
@@ -234,7 +234,7 @@ const AddressForm = ({customerID}) => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="w-1/2 px-3 mb-6">
+              <div className="md:w-1/2 w-[100%] px-3 mb-6">
                 <label
                   className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                   htmlFor="postalCode"
@@ -262,8 +262,8 @@ const AddressForm = ({customerID}) => {
             </div>
           </div>
 
-          <div className="mb-4  flex flex-wrap -mx-3">
-            <div className="w-1/2 px-3 mb-6">
+          <div className="flex flex-wrap -mx-3">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700  md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="address1"
@@ -289,7 +289,7 @@ const AddressForm = ({customerID}) => {
               )}
             </div>
 
-            <div className="w-1/2 px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="address2"
@@ -308,8 +308,8 @@ const AddressForm = ({customerID}) => {
             </div>
           </div>
 
-          <div className="mb-4 flex flex-wrap -mx-3">
-            <div className="w-1/2 px-3 mb-6">
+          <div className="flex flex-wrap -mx-3">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="city"
@@ -334,7 +334,7 @@ const AddressForm = ({customerID}) => {
                 </p>
               )}
             </div>
-            <div className="w-1/2 px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700  md:text-sm text-[12px] font-bold mb-2"
                 htmlFor="state"
@@ -366,8 +366,8 @@ const AddressForm = ({customerID}) => {
             </div>
           </div>
 
-          <div className="mb-4 flex flex-wrap -mx-3">
-            <div className="w-1/2 px-3 mb-6">
+          <div className="flex flex-wrap -mx-3">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="country"
@@ -389,7 +389,7 @@ const AddressForm = ({customerID}) => {
                 ))}
               </select>
             </div>
-            <div className="w-1/2 px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px] font-bold mb-2"
                 htmlFor="type"
@@ -410,8 +410,8 @@ const AddressForm = ({customerID}) => {
             </div>
           </div>
 
-          <div className="mb-4 flex flex-wrap -mx-3">
-            <div className="w-1/2 px-3 mb-6">
+          <div className="flex flex-wrap -mx-3">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <DateInput
                 fieldType="birthday"
                 label="Birthday"
@@ -422,7 +422,7 @@ const AddressForm = ({customerID}) => {
                 }
               />
             </div>
-            <div className="w-1/2 px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <DateInput
                 fieldType="anniversary"
                 label="Anniversary"
@@ -434,9 +434,9 @@ const AddressForm = ({customerID}) => {
               />
             </div>
           </div>
-          <div className="text-center">
+          <div className="lg:flex  flex justify-center text-center">
             <DynamicButton
-              className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] text-center w-full max-w-[200px]  md:h-[60px] h-[41px "
+              className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] text-center w-full max-w-[200px]  md:h-[45px] h-[33px]"
               text="Save Address"
               onClickFunction={saveAddress}
             />

@@ -14,7 +14,7 @@ function WalletAccordion({title, children,className, accordion = false}) {
         className={`flex justify-between items-center cursor-pointer w-full min-h-[40px] uppercase py-[5px] ${className}`}
         onClick={toggleAccordion}
       >
-         <span className="md:text-[18px] text-[13px] font-karla text-[#001a5f] !font-bold uppercase pl-4">
+         <span className="lg:text-[18px] text-[13px] font-karla text-[#001a5f] !font-bold uppercase pl-4">
           {title}
         </span>
         <img

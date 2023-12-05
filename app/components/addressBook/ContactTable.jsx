@@ -523,15 +523,15 @@ const ContactTable = ({
         />
       ) : (
         <div className="w-full max-w-[100%]">
-          <div className="flex flex-col lg:flex-row gap-y-[40px] lg:gap-y-[10px] justify-between items-center">
+          <div className="flex flex-col lg:flex-row gap-y-[40px] gap-y-[25px] justify-between items-center">
             <input
               type="text"
               placeholder="Search Addresses..."
               value={searchText}
               onChange={handleSearchInputChange}
-              className="w-full max-w-[400px] py-[5px]  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+              className="w-full max-w-[400px] py-[5px] lg:order-none order-2  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
-             <div className="md:flex grid self-center">
+             <div className="lg:flex grid self-center">
               <div
                 className={`border-[1px]  md:w-[310px] w-[280px]  border-dashed border-[#000] py-[5px]`}
               >
@@ -568,9 +568,9 @@ const ContactTable = ({
                   />
                 )}
               </div>
-              <div className="flex md:items-end justify-center md:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+              <div className="flex md:items-end justify-center lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299] md:w-[88px] w-[232px] text-[11px]"
+                  className="bg-[#1b5299] lg:w-[88px] w-[232px] text-[11px]"
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />
@@ -591,7 +591,7 @@ const ContactTable = ({
                       Delete Selected
                     </button>
                   )}
-                <span className="text-black text-[14px] font-bold">
+                <span className="text-black text-[14px] lg:mt-[0px] mt-[12px]]font-bold">
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>

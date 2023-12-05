@@ -60,7 +60,7 @@ export function OrderCard({order}) {
           prefetch="intent"
         >
           <DynamicButton
-            className="bg-[#001a5f] font-semibold md:w-[100%] w-[62%] md:text-sm text-[12px] text-[#fff] py-[14px] px-[8px] font-karla"
+            className="bg-[#001a5f] font-semibold md:w-[100%] w-[319px] md:text-sm text-[12px] text-[#fff] py-[14px] px-[8px] font-karla"
             text="View Details"
           />
           {/* <Text color="subtle" className="ml-3">
