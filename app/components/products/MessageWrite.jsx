@@ -232,6 +232,9 @@ export function MessageWriting({
           if (obj['lastName']) {
             subName = subName.replace(/\[Last Name\]/g, obj['lastName']);
           }
+          if (obj['businessName']) {
+            subName = subName.replace(/\[Company\]/g, obj['businessName']);
+          }
           if (
             obj['country'] === 'USA' ||
             obj['country'].toLowerCase() === '' ||
