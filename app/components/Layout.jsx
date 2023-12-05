@@ -225,7 +225,7 @@ function MenuMobileNav({menu, onClose}) {
                             <Link to="/collections/birthday">
                               <li>Birthday Automation</li>
                             </Link>
-                            <Link to="/collections/gift-cards">
+                            <Link to="/gift-cards">
                               <li>Gift Cards </li>
                             </Link>
                           </ul>

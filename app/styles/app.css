@@ -2355,6 +2355,9 @@ body {
 width:75%;
 margin-left: 0px;
   }
+  .custom_testing{
+ width: 89%;
+  }
   .simply-noted-marketing{
     width: 85%;
     z-index:-1;
@@ -2447,9 +2450,15 @@ margin-left: 0px;
 .banner-detail-roi{
  background-size:57% 80%;
 }
+.custom_testing{
+  width:52%;
+   }
 }
-
-
+@media only screen and (max-width:511px) {
+  .custom_testing{
+    width: 80%;
+     }
+    }
 @media only screen and (max-width:500px) {
 .signup-overview{
   width: 100%;
@@ -2461,6 +2470,7 @@ margin-left: 0px;
   width:100%;
 
 }
+
 .roi-calculator-input-wrapper{
   width:100%;
   justify-content: flex-start;

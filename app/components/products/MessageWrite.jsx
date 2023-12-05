@@ -1247,22 +1247,22 @@ export function MessageWriting({
               </button>
             </>
           )}
-          <div className="flex w-full justify-between">
-            <div className="flex w-[50%]">
+          <div className="flex w-full justify-between lg:mt-[10px] mt-[20px] md:flex-row flex-col">
+            <div className="flex md:w-[50%]  w-full">
               <img
                 src={AiImage}
-                className="w-[20%] h-[30%] cursor-pointer lg:mt-0 mt-[-12px]"
+                className="md:w-[20%] w-[12%] h-[30%] cursor-pointer lg:mt-0 sm:mt-[-12px] mt-0"
                 onClick={() => setIsOpen(true)}
               />
               <span
-                className="cursor-pointer font-karla text-[#1b5299] lg:text-[13px] md:text-[11px] sm:text-[16px] text-[12px]"
+                className="cursor-pointer font-karla text-[#1b5299] lg:text-[13px] md:text-[11px] text-[16px] "
                 onClick={() => setIsOpen(true)}
               >
                 Try our <span className="text-[red]">New</span> AI Assistant to{' '}
                 <br /> help write your message
               </span>
             </div>
-            <div className='w-[45%]'>
+            <div className='md:w-[45%] w-full md:mt-0 mt-[10px]'>
             <textarea
               type="text"
               value={name2}
@@ -1290,15 +1290,15 @@ export function MessageWriting({
           </div>
           {show && (
             <>
-              <div className="w-[50%] flex justify-start font-bold">
+              <div className="lg:w-[50%] w-[100%] flex justify-start font-bold md:mt-[10px] mt-[25px]">
                 <text>
                   As of july5,2023, we have upgraded the bulk order
                   template.Please download the new template below
                 </text>
               </div>
-              <div className="flex w-full flex-wrap">
+              <div className="flex w-full flex-wrap gap-[10px]">
                 {bulkFileCount && bulkFileCount > 0 ? (
-                  <div className="custom_testing pointer-events-none opacity-40 !w-[56%]">
+                  <div className="custom_testing pointer-events-none opacity-40 ">
                     <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
                       <input type="checkbox" />
                       <label htmlFor="">
@@ -1402,9 +1402,9 @@ export function MessageWriting({
                   </>
                 )}
                 <span className="flex items-center font-bold">OR</span>
-                <div className="m-auto w-[33%]">
+                <div className="m-auto sm:w-[33%] w-[80%] grid ">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[11px] mb-6 w-full"
+                    className="bg-[#1b5299] text-[11px] md:mb-6 mb-2 w-full"
                     text="Select from Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
