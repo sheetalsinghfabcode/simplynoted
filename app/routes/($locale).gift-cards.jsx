@@ -3,10 +3,10 @@ const Gift_card = () => {
     <>
       <div className="mt-5">
         <div className="p-[30px] w-[100%] max-w-[1400px] mx-auto">
-          <h1 className="text-[50px] leading-10 pb-[17px] tracking-wide text-center font-karla text-[#001a5f] ">
+          <h1 className="sm:text-[50px] text-[42px] leading-10 pb-[17px] tracking-wide text-center font-karla text-[#001a5f] ">
             Gift Cards
             </h1>
-            <p className="text-[#001a5f] lg:text-center text-justify md:w-[60%] w-[90%] my-0 mx-auto text-[16px] text-bold font-karla">
+            <p className="text-[#001a5f] lg:text-center text-justify md:w-[60%] w-[90%] my-0 mx-auto md:text-[16px] sm:text-[14px] text-[12px] text-bold font-karla">
               Send any of these gift cards along with your handwritten cards to
               make a lasting impression on your recipients! You can add gift
               cards during the card order process. Gift cards are also available
