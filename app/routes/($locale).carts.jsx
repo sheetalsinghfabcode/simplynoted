@@ -321,20 +321,20 @@ export default function AddCartFunc() {
                         <div className="flex w-[100%] flex-wrap ">
                           <div className="md:w-[44%] w-full items-center relative flex ml-0 m-auto">
                             <div className="flex w-full justify-evenly">
-                              <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+                              <div className="sm:max-w-[20%] max-w-[23%] md:m-5 mt-[30px] mx-auto">
                                 <img src={item.productImg} alt="" />
                               </div>
-                              <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] text-[14px] lg:tracking-[0.5px] tracking-0">
+                              <div className="max-w-[100%] m-auto md:mt-auto mt-[27px]">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] md:text-[14px] sm:text-[28px] text-[18px] lg:tracking-[0.5px] tracking-0">
                                   {item.productTitle}
                                 </h3>
                                 
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] text-[14px] lg:tracking-[1.5px] tracking-0">
+                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] sm:text-[18px] text-[14px] lg:tracking-[1.5px] tracking-0">
                                   {' '}
                                   Sender
                                 </span>
                                 :
-                                <span className=" text-[black]  md:text-[14px] text-[12px] lg:tracking-[1.5px] tracking-0">
+                                <span className=" text-[black]  lg:text-[14px] md:text-[12px] sm:text-[16px] text-[12px] lg:tracking-[1.5px] tracking-0">
                                   {' '}
                                   {item.senderAddress.address1},
                                   {item.senderAddress.city},
@@ -343,7 +343,7 @@ export default function AddCartFunc() {
                                 </span>
                                 <div className="buttonDiv mt-2">
                                   <button
-                                    className="bg-[#EF6E6E] text-[#fff]  p-[5px]  lg:text-[14px] text-[11px] "
+                                    className="bg-[#EF6E6E] text-[#fff]  p-[5px]  lg:text-[14px] md:text-[9px] sm:text-[14px] text-[11px] "
                                     onClick={() => {
                                       OpenModalFunc2(index);
                                     }}
@@ -355,7 +355,7 @@ export default function AddCartFunc() {
                             </div>
                           </div>
 
-                          <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                          <div className="md:w-[25%] sm:w-[80%] w-[85%] md:m-0 m-auto justify-between flex items-center md:mt-0 mt-[20px]">
                             <div className="w-[100%]">
                               <div className="flex justify-between">
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -385,14 +385,14 @@ export default function AddCartFunc() {
                               </div>
                             </div>
                           </div>
-                          <div className="md:w-[20%] w-[44%] my-4 ml-4 flex justify-center">
-                            <div>
+                          <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
+                            <div className='flex md:flex-col sm:flex-row flex-col'>
                               {item.giftCardName !== null ? (
                                 ''
                               ) : (
-                                <div className="buttonDiv pr-5 m-2">
+                                <div className="buttonDiv md:pr-5 pr-0 m-2">
                                   <DynamicButton
-                                    className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px]"
+                                    className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px] carts-button"
                                     text="Add Gift Card"
                                     onClickFunction={() => {
                                       OpenModalFunc(index);
@@ -401,18 +401,18 @@ export default function AddCartFunc() {
                                 </div>
                               )}
 
-                              <div className="buttonDiv pr-5 m-2">
+                              <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px]"
+                                  className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px] carts-button"
                                   text="EDIT ORDER"
                                   onClickFunction={() => {
                                     editOrderData(index);
                                   }}
                                 />
                               </div>
-                              <div className="buttonDiv pr-5 m-2">
+                              <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px]"
+                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] carts-button"
                                   text="DELETE ORDER"
                                   onClickFunction={() => {
                                     ConfirmDeleteOrder(index);
@@ -429,7 +429,7 @@ export default function AddCartFunc() {
                           <div className="flex w-[100%] flex-wrap ">
                           <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                             <div className="flex w-full justify-evenly">
-                              <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+                              <div className="sm:max-w-[20%] max-w-[23%] md:m-5 mt-[30px] mx-auto">
             
                                   <img src={item.giftCardImg} alt="" />
                                 </div>
@@ -441,7 +441,7 @@ export default function AddCartFunc() {
                                 </div>
                               </div>
                             </div>
-                            <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                            <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
                             <div className="w-[100%]">
                               <div className="flex justify-between">
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -474,10 +474,10 @@ export default function AddCartFunc() {
                                 </div>
                               </div>
                             </div>
-                            <div className="md:w-[20%] w-[44%] my-4 ml-4 flex justify-center">
-                              <div className="buttonDiv pr-5 m-2">
+                            <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
+                            <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full  lg:text-[14px] md:text-[12px]"
+                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] carts-button"
                                   text="DELETE CARD"
                                   onClickFunction={() => {
                                     confirmCardDel(index);
@@ -506,7 +506,7 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap ">
                                   <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                     <div className="flex w-full justify-evenly">
-                                      <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+                                      <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                     
                                           <img src={postImage} alt="" />
                                         </div>
@@ -518,7 +518,7 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
                             <div className="w-[100%]">
                               <div className="flex justify-between">
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -561,7 +561,7 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap ">
                                   <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                     <div className="flex w-full justify-evenly">
-                                      <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+                                    <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                                           <img src={postImage} alt="" />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
@@ -572,7 +572,7 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
                             <div className="w-[100%]">
                               <div className="flex justify-between">
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -637,7 +637,7 @@ export default function AddCartFunc() {
                                     <div className="flex w-[100%] flex-wrap ">
                                     <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                       <div className="flex w-full justify-evenly">
-                                        <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+                                      <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                                             <img src={postImage} alt="" />
                                           </div>
                                           <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
@@ -648,7 +648,7 @@ export default function AddCartFunc() {
                                           </div>
                                         </div>
                                       </div>
-                                      <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                                      <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
                               <div className="w-[100%]">
                                 <div className="flex justify-between">
                                   <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -743,7 +743,7 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap ">
                                   <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                     <div className="flex w-full justify-evenly">
-                                      <div className="max-w-[20%] md:m-5 mt-[30px] mx-auto">
+                                    <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                                           <img src={postImage} alt="" />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
@@ -754,7 +754,7 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
                             <div className="w-[100%]">
                               <div className="flex justify-between">
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -859,7 +859,7 @@ export default function AddCartFunc() {
                             <div className="flex w-[100%] flex-wrap ">
                                   <div className="md:w-[50%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[15px]">
                                     <div className="flex w-full justify-evenly">
-                                      <div className="max-w-[13%] md:m-5 mt-[20px] mx-auto">
+                                      <div className="sm:max-w-[13%] max-w-[20%] md:m-5 mt-[20px] mx-auto">
                                       <img
                                       src={item.shippingMethodImage}
                                       alt=""
@@ -873,7 +873,7 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[35%] w-[45%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:w-[25%] sm:w-[80%] w-[85%] md:m-0 m-auto justify-between flex items-center">
                             <div className="w-[100%]">
                               <div className="flex justify-between">
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -1022,25 +1022,25 @@ export default function AddCartFunc() {
                     ))}
                   {totalPrize && (
                     <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
-                      <div className="flex p-2 flex-wrap justify-evenly ">
-                        <div className="sm:w-[33%] w-[50%] flex items-center">
+                      <div className="flex p-2 flex-wrap justify-evenly md:gap-0 gap-[10px]">
+                        <div className="md:w-[33%] sm:w-[47%] w-[100%] flex items-center justify-center ">
                           <div className="buttonDiv pr-5 m-2">
                             <button
-                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla lg:text-[16px] sm:text-[12px] text-[10px]"
+                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla lg:text-[16px] md:text-[12px] text-[10px]"
                               onClick={() => {
                                 clearCartBtn();
                               }}
                             >
                               <img
                                 src={Del}
-                                className="w-[20px] h-[20px] m-auto cursor-pointer text-[white] mr-1"
+                                className="md:w-[20px] md:h-[20px] w-[14px] h-[14px] m-auto cursor-pointer text-[white] mr-1"
                               />
                               CLEAR SHOPPING CART
                             </button>
                           </div>
                         </div>
-                        <div className="sm:w-[30%] w-[50%] flex items-center">
-                          <div className="mt-2 lg:text-2xl md:text-[14px] sm:text-[12px] text-[16px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
+                        <div className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center justify-center">
+                          <div className="mt-2 lg:text-2xl  sm:text-[16px] text-[20px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
                             <span className='md:mr-[2px]'>
                              
                                 GRAND TOTAL
@@ -1053,7 +1053,7 @@ export default function AddCartFunc() {
                               </span>
                           </div>
                         </div>
-                        <div className="sm:w-[30%] w-full flex justify-end mr-1">
+                        <div className="md:w-[30%] sm:w-[77%] w-full  mr-1 flex sm:justify-start justify-center">
                           <div className="">
                             <div className='lg:text-[18px] text-[12px]'>
                               <input
@@ -1073,7 +1073,7 @@ export default function AddCartFunc() {
                             </div>
                             <button
                               disabled={!agree}
-                              className="bg-[#EF6E6E] w-[100%] text-[#fff] p-2  flex justify-center mt-2"
+                              className="bg-[#EF6E6E] lg:w-[100%] w-auto lg:text-[16px] text-[14px] text-[#fff] p-2  flex justify-center mt-2"
                               onClick={() => {
                                 if (customerId) {
                                   setShowCartPage(false);
@@ -1114,9 +1114,9 @@ export default function AddCartFunc() {
                 </>
               </>
             ) : (
-              <div className="w-[73rem]  m-auto mt-[4rem] mb-10 flex justify-center">
+              <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
                 <div>
-                  <h3 className="text-[black] font-karla text-[40px]">
+                  <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
                     YOUR CART IS EMPTY!
                   </h3>
                   <div className="flex justify-center">
