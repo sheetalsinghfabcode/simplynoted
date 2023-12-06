@@ -352,7 +352,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
         }
     }
     return (
-        <div className='relative'>
+        <div className='relative md:w-[95%] w-[85%] mx-auto'>
            {loader && (
           <div className="absolute top-[50%] left-[50%]">
             <CircularLoader color="#ef6e6e" />
@@ -361,12 +361,12 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
        
                 <>
                     <DynamicButton
-                        className="bg-[#EF6E6E] m-5 w-full max-w-[130px]"
+                        className="bg-[#EF6E6E] my-5 w-full max-w-[130px] ml-[-6px]"
                         text="Go Back"
                         onClickFunction={() => setProductShow(true)}
                         backArrow={true} />
                     {addressForm && (
-                        <div className="md:w-full w-[113%]  max-w-[1440px] px-[20px] mx-auto">
+                        <div className="md:w-full w-[100%]  max-w-[1440px] ">
                             <AddressForm
                                 customerID={customerid}
                                 setAddressForm={setAddressForm}
@@ -375,12 +375,12 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                         </div>
                     )}
                     {!addressForm &&
-                        <div className={`w-full h-full gap-2 m-[2rem] ${loader && 'opacity-40'}`}>
-                            <div className='row flex mr-2 ml-2 gap-4'>
-                                <div className='col-6 w-[47%] '>
+                        <div className={`w-[100%] h-full gap-2 my-[2rem]  ${loader && 'opacity-40'}`}>
+                            <div className='row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between'>
+                                <div className='col-6 md:w-[47%] w-full '>
                                     <div className=' bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
                                         <div className='address-data'>
-                                            <h3 className='text-2xl mt-4 mb-4 font-karla'>Your Info (return/sender address)</h3>
+                                            <h3 className='sm:text-2xl text-[19px] mt-4 mb-4 font-karla'>Your Info (return/sender address)</h3>
                                             <DynamicButton
                                                 className="bg-[#1b5299]"
                                                 text="+ New Address"
@@ -404,7 +404,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                         </div>
                                     </div>
                                 </div>
-                                <div className='col-6 w-[47%]'>
+                                <div className='col-6 md:w-[47%] w-full'>
                                     <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto'>
                                         <div className='address-data'>
                                             <h3 className='text-2xl font-karla mt-4 mb-4'>Recipient address</h3>
@@ -447,9 +447,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                 </div>
 
                             </div>
-                            <div className='row flex mr-2 ml-2 gap-4 mt-10'>
+                            <div className='row flex mr-2 ml-2 gap-4 mt-10 justify-between'>
                                 {show &&
-                                    <div className='col-6 w-[47%] mt-10'>
+                                    <div className='col-6 md:w-[47%] w-full mt-10'>
                                         <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto '>
                                             <h3 className='text-2xl font-karla mt-4 mb-4'>{shippingData?.title}</h3>
 
@@ -473,9 +473,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                         </div>
                                     </div>}
 
-                                <div className='col-6 w-[47%]'>
+                                <div className='col-6 md:w-[47%] w-full'>
                                     <div className='bg-[white] max-h-[600px] p-[20px] overflow-y-auto mt-10'>
-                                        <div className='address-data'>
+                                        <div className='address-data p-[10px]'>
                                             <h3 className='text-2xl font-karla mt-6 mb-6'>Add a Gift Card</h3>
                                             <div className='row flex mr-2 ml-2 '>
                                                 <div className='col-4 mt-4 font-karla w-[190px]'>Select Gift Card:</div>
@@ -521,7 +521,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                 </div>
                             }
                             <div className='row flex mt-4'>
-                                <div className='buttonDiv pr-5 m-2'>
+                                <div className='buttonDiv pr-5 my-2'>
                                     <DynamicButton
                                         className="bg-[#1b5299]"
                                         text="Add To Cart"

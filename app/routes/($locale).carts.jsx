@@ -188,7 +188,7 @@ export default function AddCartFunc() {
 
   const customStyles = {
     content: {
-      top: '60%',
+      top: '40%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
@@ -196,9 +196,27 @@ export default function AddCartFunc() {
       transform: 'translate(-50%, -50%)',
       maxWidth: '620px',
       background: '#FFF6F6',
-      width: '100%',
+      width: '90%',
       padding: '30px',
       maxHeight: '500px',
+      zIndex: '2',
+      position: 'relative',
+    },
+  };
+  const customStyles2 = {
+    content: {
+    
+      top: '40%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      maxWidth: '620px',
+      background: '#FFF6F6',
+      width: '90%',
+      padding: '30px',
+    height:'40%',
       zIndex: '2',
       position: 'relative',
     },
@@ -325,7 +343,7 @@ export default function AddCartFunc() {
                                 <img src={item.productImg} alt="" />
                               </div>
                               <div className="max-w-[100%] m-auto md:mt-auto mt-[27px]">
-                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] md:text-[14px] sm:text-[20px] text-[18px] lg:tracking-[0.5px] tracking-0">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[18px] md:text-[14px] sm:text-[20px] text-[14px] lg:tracking-[0.5px] tracking-0">
                                   {item.productTitle}
                                 </h3>
                                 
@@ -1163,7 +1181,7 @@ export default function AddCartFunc() {
               <h2 className="font-bold text-2xl w-[600px] text-center">
                 Add a Gift Card
               </h2>
-              <BsXCircle className="" onClick={() => setIsOpen(false)} />
+              <BsXCircle className="w-[30%]" onClick={() => setIsOpen(false)} />
             </div>
             <div className="address-data">
               <div className="row  mr-2 ml-2 ">
@@ -1209,7 +1227,7 @@ export default function AddCartFunc() {
                   )}
                 </div>
               </div>
-              <div className="buttonDiv pr-5 items-center">
+              <div className="buttonDiv pr-5 items-center mt-[20px]">
                 <button
                   className="bg-[#001a5f] text-[#fff] p-2 rounded "
                   onClick={() => updateValueInArray(cardVal)}
@@ -1221,21 +1239,16 @@ export default function AddCartFunc() {
           </Modal>
           <Modal
             isOpen={modalIsOpen2}
-            style={customStyles}
+            style={customStyles2}
             contentLabel="Example Modal"
           >
             {bulkAddress.length ? (
               <>
                 <BsXCircle
-                  className="absolute right-10 cursor-pointer"
+                  className="absolute right-0 cursor-pointer w-[28%]"
                   onClick={() => closeModal()}
                 />
-                <button
-                  onClick={handlePrevClick}
-                  className="absolute top-[130px]"
-                >
-                  Previous
-                </button>
+              
                 {bulkAddress &&
                   bulkAddress.map((item, index) => (
                     <div>
@@ -1252,12 +1265,30 @@ export default function AddCartFunc() {
                           {item['City'] || item.city},
                           {item['State/Province'] || item.state}
                         </text>
-                        <h2 className="font-bold text-2xl w-[600px] text-center mt-3">
+                        <h2 className="font-bold text-2xl w-full text-center mt-3">
                           Your Custom Message
                         </h2>
-                        <div className="w-[400px] items-center bg-[#fff] h-full mt-5 ml-[70px] p-[10px] ">
+                        <div className='my-7 mr-5 relative flex justify-between'>
+                          <div>
+                        <button
+                  onClick={handlePrevClick}
+                  className="absolute "
+                >
+                  Previous
+                </button>
+                </div>
+                <div>
+                <button
+                  className="absolute "
+                  onClick={handleNextClick}
+                >
+                  Next
+                </button>
+                </div>
+                        </div>
+                        <div className="w-full items-center bg-[#fff]  mt-5  p-[10px] h-auto ">
                           <text
-                            className=" w-[600px]"
+                            className=" w-full"
                             style={{fontFamily: msgFont}}
                           >
                             {' '}
@@ -1265,7 +1296,7 @@ export default function AddCartFunc() {
                           </text>
                           <br />
                           <text
-                            className=" text-center w-[600px] ml-10"
+                            className=" text-center w-full ml-10"
                             style={{fontFamily: msgFont}}
                           >
                             {msglastText}
@@ -1277,17 +1308,12 @@ export default function AddCartFunc() {
                       </div>
                     </div>
                   ))}
-                <button
-                  className="absolute right-10 bottom-[95px]"
-                  onClick={handleNextClick}
-                >
-                  Next
-                </button>
+               
               </>
             ) : (
               <>
                 <div className="flex">
-                  <div className="w-[600px]">
+                  <div className="w-full">
                     <text className=" text-xl text-center">
                       Recipient: {reciverAddress.firstName},
                       {reciverAddress.address1},{reciverAddress.city},
@@ -1296,16 +1322,16 @@ export default function AddCartFunc() {
                   </div>
 
                   <BsXCircle
-                    className="cursor-pointer"
+                    className="cursor-pointer w-[28%]"
                     onClick={() => closeModal()}
                   />
                 </div>
-                <h2 className="font-bold text-2xl w-[600px] text-center mt-3">
+                <h2 className="font-bold text-2xl w-full text-center mt-3">
                   Your Custom Message
                 </h2>
-                <div className="w-[400px] items-center bg-[#fff] h-full mt-5 ml-[70px] p-[10px]">
+                <div className="w-full items-center bg-[#fff] h-auto mt-5  p-[10px]">
                   <text
-                    className="text-2xl w-[600px]"
+                    className="text-2xl w-full"
                     style={{fontFamily: msgFont}}
                   >
                     {' '}
@@ -1313,7 +1339,7 @@ export default function AddCartFunc() {
                   </text>
                   <br />
                   <text
-                    className="text-2xl text-center w-[600px] ml-10"
+                    className="text-2xl text-center w-full ml-10"
                     style={{fontFamily: msgFont}}
                   >
                     {msglastText}
