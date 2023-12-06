@@ -950,13 +950,13 @@ export default function FoldedCustomisableCard({
           </div>
         </Modal>
       )}
-      <div className="relative md:mt-3" style={{marginTop: '-3rem'}}>
+      <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
         <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 lg:flex-row flex-col">
           <div
-            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 w-[95%]"
+            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 "
             style={{minHeight: '564px'}}
           >
-            <div className="w-full md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
+            <div className="sm:min-w-[500px] min-w-[347px] md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
               <GoBackButton />
             </div>
             <span className="text-2xl mb-2  mt-[60px]">
@@ -965,7 +965,7 @@ export default function FoldedCustomisableCard({
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="min-w-[320px] bg-white relative overflow-hidden"
+                  className="sm:min-w-[500px] w-[350px] bg-white relative overflow-hidden"
                   style={{
                     height: '378px',
                     zIndex: '-30',
@@ -978,7 +978,7 @@ export default function FoldedCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 w-[300px] border-2 border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
                         style={{
                           height: '358px',
                           background: 'transparent',
@@ -1045,7 +1045,7 @@ export default function FoldedCustomisableCard({
                     (selectedCardPage === 'Card Back' && (
                       <>
                         <div
-                          className="absolute flex justify-center items-center m-auto inset-0 w-[300px] border-2 border-dashed border-[#ff0000]"
+                          className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
                           style={{
                             height: '358px',
                             background: 'transparent',
@@ -1190,7 +1190,7 @@ export default function FoldedCustomisableCard({
                     {selectedCardPage === 'Card Front' &&
                       (frontImageDetails.imageBlobUrl ||
                         frontImageDetails.blackAndWhiteImageBlobUrl) && (
-                        <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-8 ">
                           <div className="flex flex-col">
                             <span>Resize image</span>
                             <input
@@ -1239,7 +1239,7 @@ export default function FoldedCustomisableCard({
                     {selectedCardPage === 'Card Back' &&
                       (backImageDetails.imageBlobUrl ||
                         backImageDetails.blackAndWhiteImageBlobUrl) && (
-                        <div className="flex flex-col gap-8">
+                        <div className="flex flex-col gap-8 ">
                           <div className="flex flex-col">
                             <span>Resize image</span>
                             <input
