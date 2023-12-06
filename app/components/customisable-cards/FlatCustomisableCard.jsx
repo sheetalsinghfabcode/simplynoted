@@ -1004,7 +1004,7 @@ export default function FlatCustomisableCard({
   const GoBackButton = () => {
     return (
       <div
-        className="absolute top-0 left-0 button-tomato text-white inline flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
+        className="absolute top-0 left-0 button-tomato text-white  flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
         onClick={() => setIsCardTypeSelectionPage(true)}
       >
         <FaArrowLeft /> &nbsp; GO BACK
@@ -1167,21 +1167,21 @@ export default function FlatCustomisableCard({
       )}
 
       <div className="relative md:mt-3" style={{marginTop: '-3rem'}}>
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5">
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 lg:flex-row flex-col">
           <div
-            className="flex flex-col justify-start items-center flex-1 ml-7"
+            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 w-[95%]"
             style={{minHeight: '564px'}}
           >
-            <div className="min-w-[500px] md:mt-[58px] mt-[63px] md:ml-[0px] ml-[51px] flex-1 relative">
+            <div className="w-full md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
               <GoBackButton />
             </div>
-            <span className="text-2xl mb-2">
+            <span className="text-2xl mb-2 md:mt-0 mt-[4rem]">
               Custom Flat {selectedCardPage}
             </span>
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="md:min-w-[500px] w-[350px] bg-white relative overflow-hidden"
+                  className="md:min-w-[500px] sm:w-[450px] w-[350px] bg-white relative overflow-hidden"
                   style={{
                     height: '378px',
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
@@ -1196,7 +1196,7 @@ export default function FlatCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 md:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center items-center m-auto inset-0 md:w-[480px] sm:w-[430px] w-[330px] border-2 border-dashed border-[#ff0000]"
                         style={{
                           height: '358px',
                           background: 'transparent',
@@ -1381,7 +1381,7 @@ export default function FlatCustomisableCard({
             </div>
           </div>
           <div
-            className="flex flex-col justify-between md:items-left items-center md:mt-[9rem] mt-[0px] md:ml-[0px] ml-[47px] items-start gap-5 min-h-[330px] min-w-[240px] flex-1"
+            className="flex flex-col justify-between md:items-left items-baseline lg:mt-[9rem] mt-[30px] md:ml-[0px] ml-[47px]  gap-5 min-h-[330px] min-w-[240px] flex-1"
             // style={{marginTop: '9rem'}}
           >
             {selectedCardPage === 'Card Front' && (
@@ -1510,7 +1510,7 @@ export default function FlatCustomisableCard({
                     Footer
                   </button>
                 </div>
-                <div className="flex min-h-[330px] w-full">
+                <div className="flex min-h-[330px] w-full sm:flex-row flex-col">
                   <div className="flex flex-1">
                     <div className="flex flex-col">
                       <label htmlFor="custom-text">
@@ -1762,7 +1762,7 @@ export default function FlatCustomisableCard({
                       </label>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 ml-10">
+                  <div className="flex flex-col flex-1 sm:ml-10 ml-0">
                     <div className="relative mt-5 w-[60px] h-[50px]">
                       {observingData.isHeader && (
                         <>
