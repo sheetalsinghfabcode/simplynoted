@@ -648,7 +648,7 @@ const apidocs = () => {
                 <h3 className="mt-[19px]">
                   <b>Returns on success:</b>
                 </h3>
-                <pre className="leading-[1.25rem]	 text-xs bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="leading-6	 text-xs bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result" [<br />
@@ -697,7 +697,7 @@ const apidocs = () => {
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
                 <span className='text-blue-500'>4.2.</span> Get All Custom Cards
               </h2>
-              <div className="leading-[2.25rem] text-sm font-thin">
+              <div className="leading-[1.25rem] text-sm font-thin">
                 <p className="ml-[8px]">Endpoint: /customProducts</p>
                 <p className="ml-[8px]">
                   Get-https://api.simplynoted.com/api/customProducts?offset=0
@@ -716,7 +716,7 @@ const apidocs = () => {
                   <span className='text-blue-500'>4.3.</span>Get Specific Custom Cards
                 </h2>
               </div>
-              <div className="leading-[2.25rem] text-sm ml-[9px] font-thin">
+              <div className="leading-[1.25rem] text-sm ml-[9px] font-thin">
                 <p>
                   This procedure returns details on one or more custom cards.
                 </p>
@@ -737,7 +737,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
                  <span className='text-blue-500'>4.4.</span> Create Custom Card
                 </h2>
-                <div className="leading-[2.25rem] ml-[9px] text-sm font-thin">
+                <div className="leading-[1.25rem] ml-[9px] text-sm font-thin">
                   <p>
                     <b>Note:</b>The old endpoint, /createcustomcard, and its
                     associated endpoint, /uploadPDF, have been replaced with a
@@ -748,7 +748,7 @@ const apidocs = () => {
                     endpoint /modifycard, which will allow you to call an
                     existing flat custom card,
                   </p>
-                  <p className="mt-[20px] ml-[9px]">
+                  <p className="mt-[20px]">
                     <b>Description:</b> This endpoint creates a new Custom Card
                     and returns card details.
                   </p>
@@ -876,7 +876,7 @@ const apidocs = () => {
                   Return on Success:
                 </h2>
               </div>
-              <pre className="leading-[1.25rem] text-xs	 bg-gray-200 p-[22px] overflow-hidden">
+              <pre className="leading-6 text-xs	 bg-gray-200 p-[22px] overflow-hidden">
                 &#123; <br />
                 "result": &#123;
                 <br />
@@ -989,7 +989,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
                   <span className='text-blue-500'>4.5.</span> Modify Custom Card
                 </h2>
-                <div className="leading-[2.5rem]  ml-[9px] text-sm">
+                <div className="leading-[1.5rem]  ml-[9px] text-sm">
                   <p>
                     <b>Description:</b> This endpoint creates and saves a new
                     modified Custom Card and returns card details.
@@ -1106,7 +1106,7 @@ const apidocs = () => {
                   Returns on success:
                 </h2>
               </div>
-              <pre className="leading-[1.25rem]  text-xs p-[22px] bg-gray-200  mt-7px">
+              <pre className="leading-6	 text-xs p-[22px] bg-gray-200  mt-7px">
                 &#123;
                 <br />
                 "result": &#123;
@@ -1181,7 +1181,7 @@ const apidocs = () => {
                     Example
                   </h2>
                 </div>
-                <pre className="leading-[1.25rem]	 text-xs bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="leading-6	text-xs bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "cardName": "Happy Birthday",
@@ -1219,7 +1219,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
                   <spna>4.6.</spna>Delete Custom Cards
                 </h2>
-                <div className="leading-[2.5rem] text-sm mt-[12px]">
+                <div className="leading-[1.5rem] text-sm mt-[12px]">
                   <p className="ml-[9px]">
                     DELETE -
                     /delete-custom-card?productId=7072904347753,7073022279785,123456789000
@@ -1253,7 +1253,7 @@ const apidocs = () => {
                   Response Sample
                 </h2>
               </div>
-              <pre className="leading-[1.25rem] text-sm  p-[22px] bg-gray-200  mt-7px">
+              <pre className="leading-6	 text-sm  p-[22px] bg-gray-200  mt-7px">
                 &#123;
                 <br />
                 "result": <br />
@@ -1282,7 +1282,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
                   <span className='text-blue-500'>5.1.</span> Create An Order
                 </h2>
-                <div className="leading-[2.5rem] text-sm ml-[9px]">
+                <div className="leading-[1.5rem] text-sm ml-[9px]">
                   <p>
                     <b>Description:</b> This endpoint creates and saves a new
                     modified Custom Card and returns card details.
@@ -1634,7 +1634,7 @@ const apidocs = () => {
               <h2 className="text-[#001a5f]  font-karla text-lg mt-[23px] font-bold ml-2">
                 Returns on success:
               </h2>
-              <pre className="text-xs p-[22px] bg-gray-200 text-sm  mt-7px overflow-hidden">
+              <pre className="text-xs p-[22px] leading-6 bg-gray-200 text-sm  mt-7px overflow-hidden">
                 &#123;
                 <br />
                 "result": &#123;
@@ -2316,7 +2316,7 @@ const apidocs = () => {
                   <span className="text-blue-500"> 6.1.</span>Create A Message
                   Template
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint creates a Template. If any
                     required properties are missing an error will be returned.
@@ -2392,7 +2392,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result": &#123;
@@ -2423,11 +2423,10 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Example:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
-                  &#123; "productId": "4460979552361",
+                <pre className="text-sm leading-6	  bg-gray-200 p-[22px] overflow-hidden">
+                  &#123; <br />"productId": "4460979552361",
                   <br /> "handwritingStyle": "Tarzan",
                   <br /> "customMessage": "This is my custom message"
-                  <br />
                   <br />
                   &#125v;
                 </pre>
@@ -2441,7 +2440,7 @@ const apidocs = () => {
                   <span className="text-blue-500">6.2.</span>Retrieve All
                   Message Templates
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint gets all Message
                     Templates.
@@ -2483,7 +2482,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-xs text-sm bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-xs leading-6	 text-sm bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result": [<br />
@@ -2540,7 +2539,7 @@ const apidocs = () => {
                   <span className="text-blue-500"> 6.3.</span> Retrieve A Single
                   Template
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint gets a single Template.
                   </p>
@@ -2600,7 +2599,7 @@ const apidocs = () => {
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 Returns on success:
               </h2>
-              <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+              <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                 &#123;
                 <br />
                 "result": &#123;
@@ -2630,7 +2629,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f] text-lg  font-karla text-lg  font-bold ml-2">
                   <span className="text-blue-500"> 6.4.</span> Update A Template
                 </h2>
-                <div className="leading-[2.5rem] text-sm mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] text-sm mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint updates a Template. If any
                     required properties are missing an error will be returned
@@ -2725,7 +2724,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result":&#123;
@@ -2747,7 +2746,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Example:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123; "productId": "4392452522089",
                   <br /> "handwritingStyle": "Stitch",
                   <br /> "customMessage": "This is my custom message"
@@ -2769,7 +2768,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f]  font-karla text-lg font-bold ml-2">
                   <span className="text-blue-500">7.1.</span>Create An Address
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b>This endpoint creates an Address. If any
                     required properties are missing an error will be returned.
@@ -2888,7 +2887,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result": &#123;
@@ -2923,7 +2922,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Example:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	  bg-gray-200 p-[22px] overflow-hidden">
                   &#123; "firstName": "Johnny",
                   <br />
                   "lastName": "Appleseed",
@@ -2956,7 +2955,7 @@ const apidocs = () => {
                   <span className="text-blue-500">7.2.</span> Retrieve All
                   Addresses
                 </h2>
-                <div className="leading-[2.5rem] text-xs mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] text-xs mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b>This endpoint gets all Addresses.
                   </p>
@@ -3023,7 +3022,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result": [<br />
@@ -3067,7 +3066,7 @@ const apidocs = () => {
                   <span className="text-blue-500"> 7.3. </span>Retrieve A Single
                   Address
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint gets a single Template.
                   </p>
@@ -3128,7 +3127,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result": &#123;
@@ -3171,7 +3170,7 @@ const apidocs = () => {
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
                   <span className="text-blue-500">7.4. </span>Update An Address
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint updates an address. If any
                     required properties are missing an error will be returned.
@@ -3306,8 +3305,8 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
-                  &#123; "result": &#123;
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
+                  &#123; <br />"result":<br /> &#123;
                   <br />
                   "_id": "5ea1101e9680607558e3ff77",
                   <br />
@@ -3331,7 +3330,7 @@ const apidocs = () => {
                   <br />
                   "type": "return"
                   <br />
-                  &#125; "errors": []
+                  &#125;<br /> "errors": <br/>[]
                   <br />
                   &#125;
                 </pre>
@@ -3340,8 +3339,8 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Example:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
-                  &#123; "firstName": "Johnny",
+                <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
+                  &#123; <br />"firstName":<br /> "Johnny",
                   <br />
                   "lastName": "Appleseed",
                   <br />
@@ -3373,7 +3372,7 @@ const apidocs = () => {
                   <span className="text-blue-500">7.5.</span> Delete A Single
                   Address
                 </h2>
-                <div className="leading-[2.5rem] mt-[21px] ml-[9px]">
+                <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
                   <p className="text-xs">
                     <b>Description:</b> This endpoint gets a single Template.
                   </p>
@@ -3427,7 +3426,7 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-sm  bg-gray-200 p-[22px] overflow-hidden">
+                <pre className="text-sm leading-6	  bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
                   "result": &#123;

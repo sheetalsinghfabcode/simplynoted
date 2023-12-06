@@ -965,7 +965,7 @@ export default function FoldedCustomisableCard({
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="sm:min-w-[500px] w-[350px] bg-white relative overflow-hidden"
+                  className="min-w-[320px] bg-white relative overflow-hidden"
                   style={{
                     height: '378px',
                     zIndex: '-30',
@@ -978,7 +978,7 @@ export default function FoldedCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center items-center m-auto inset-0 w-[300px] border-2 border-dashed border-[#ff0000]"
                         style={{
                           height: '358px',
                           background: 'transparent',
@@ -1045,7 +1045,7 @@ export default function FoldedCustomisableCard({
                     (selectedCardPage === 'Card Back' && (
                       <>
                         <div
-                          className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
+                          className="absolute flex justify-center items-center m-auto inset-0 w-[300px] border-2 border-dashed border-[#ff0000]"
                           style={{
                             height: '358px',
                             background: 'transparent',

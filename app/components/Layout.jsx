@@ -161,7 +161,7 @@ function MenuMobileNav({menu, onClose}) {
   const [showSendCard, setShowSendCard] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
   const [showLearn, setShowLearn] = useState(false);
-
+  // const [loginModal, setLoginModal] = useState(false);
 
   const handleChangeLearn = () => {
     setShowLearn(!showLearn);
@@ -175,12 +175,14 @@ function MenuMobileNav({menu, onClose}) {
     setShowSendCard(!showSendCard);
   };
 
-    const handleChange = () => {
-      setShow(!show);
-
-    };
-    return (
-      <div className="">
+  const handleChange = () => {
+    setShow(!show);
+  };
+  // const handleCreateCardClick = () => {
+  //   setLoginModal(true);
+  // };
+  return (
+    <div className="">
       <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12  sm:py-8">
         {/* Top level menu items */}
         {(menu?.items || []).map((item) => (
@@ -205,23 +207,47 @@ function MenuMobileNav({menu, onClose}) {
                 {item.title === 'Send a Card' ? (
                   <>
                     <div className="">
-                      <div className="flex justify-between items-center" onClick={handleChangeSendCard} style={{ fontWeight: showSendCard ? 'bold' : 'normal' }}>
+                      <div
+                        className="flex justify-between items-center"
+                        onClick={handleChangeSendCard}
+                        style={{fontWeight: showSendCard ? 'bold' : 'normal'}}
+                      >
                         Send A Card
                         {showSendCard ? (
-                          <img className='h-[12px]' src={arrow_down} alt=''/> 
-                             ):(
-                              <img className='h-[12px]' src={arrow_rights} alt=""/>
-                              )}
+                          <img className="h-[12px]" src={arrow_down} alt="" />
+                        ) : (
+                          <img className="h-[12px]" src={arrow_rights} alt="" />
+                        )}
                       </div>
                       {showSendCard && (
                         <div className="">
-                          <ul onClick={onClose} className='text-thin' style={{ color: 'black' }}>
+                          <ul
+                            onClick={onClose}
+                            className="text-thin"
+                            style={{color: 'black'}}
+                          >
                             <Link to="/collections/best-sellers">
                               <li>Cards</li>
                             </Link>
-                            <Link to="/customise-your-card">
+                            <Link
+                              to="/customise-your-card"
+                              // onClick={handleCreateCardClick}
+                            >
                               <li>Create a Card</li>
                             </Link>
+                            {/* {loginModal && (
+                              <>
+                                <LoginModal
+                                  title={' Create a Card'}
+                                  show={loginModal}
+                                  setLoginModal={setLoginModal}
+                                  onCancel={() => setLoginModal(false)}
+                                  confirmText="Login"
+                                  cancelText="Register"
+                                  cross={true}
+                                />
+                              </>
+                            )} */}
                             <Link to="/collections/birthday">
                               <li>Birthday Automation</li>
                             </Link>
@@ -237,33 +263,47 @@ function MenuMobileNav({menu, onClose}) {
                   <></>
                 )}
                 {item.title === 'Integrations' ? (
-                  <div className=''>
-                  <div className="flex justify-between items-center" onClick={handleChange} style={{ fontWeight: show ? 'bold' : 'normal'}}>
-                    Integrations
-                   {show ? (
-                   <img className='h-[12px]' src={arrow_down} alt=''/> 
-                   ):(
-                    <img className='h-[12px]' src={arrow_rights} alt=""/>
-                   )}  
-                  </div>
+                  <div className="">
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChange}
+                      style={{fontWeight: show ? 'bold' : 'normal'}}
+                    >
+                      Integrations
+                      {show ? (
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
+                      )}
+                    </div>
                     {show && (
                       <div>
-                        <ul onClick={onClose} className='integration-color' style={{ color: 'black' }}>
+                        <ul
+                          onClick={onClose}
+                          className="integration-color"
+                          style={{color: 'black'}}
+                        >
                           <Link to="/zapier">
                             {' '}
-                            <li className={`mt-[-21px] ${show === 'Zapier' ? 'selected' : 'green'}}`}>Zapier</li>
+                            <li
+                              className={`mt-[-21px] ${
+                                show === 'Zapier' ? 'selected' : 'green'
+                              }}`}
+                            >
+                              Zapier
+                            </li>
                           </Link>
                           <Link to="/shopify">
                             {' '}
-                            <li className='mt-[-21px]'>Shopify</li>
+                            <li className="mt-[-21px]">Shopify</li>
                           </Link>
                           <Link to="/salesforce">
                             {' '}
-                            <li className='mt-[-21px]'>Salesforce</li>{' '}
+                            <li className="mt-[-21px]">Salesforce</li>{' '}
                           </Link>
                           <Link to="/apidocs">
                             {' '}
-                            <li className='mt-[-21px]'>API</li>
+                            <li className="mt-[-21px]">API</li>
                           </Link>
                         </ul>
                       </div>
@@ -272,17 +312,25 @@ function MenuMobileNav({menu, onClose}) {
                 ) : null}
                 {item.title === 'Pricing' ? (
                   <div className="">
-                    <div className="flex justify-between items-center" onClick={handleChangePricing} style={{ fontWeight: showPricing ? 'bold' : 'normal'}}>
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChangePricing}
+                      style={{fontWeight: showPricing ? 'bold' : 'normal'}}
+                    >
                       Pricing
                       {showPricing ? (
-                     <img className='h-[12px]' src={arrow_down} alt=''/>     
-                      ):(
-                     <img className='h-[12px]' src={arrow_rights} alt=""/>
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
                       )}
                     </div>
                     {showPricing && (
                       <div className="">
-                        <ul onClick={onClose} className='text-thin' style={{ color: 'black' }}>
+                        <ul
+                          onClick={onClose}
+                          className="text-thin"
+                          style={{color: 'black'}}
+                        >
                           <Link to="/price">
                             <li>Credit Packages</li>
                           </Link>
@@ -295,7 +343,7 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                             <li>Get a Custom Quote</li> 
+                              <li>Get a Custom Quote</li>
                             </button>
                           </Link>
                           <Link to="/roicalculator">
@@ -309,31 +357,40 @@ function MenuMobileNav({menu, onClose}) {
                 ) : null}
                 {item.title === 'Learn' ? (
                   <div className="">
-                    <div className="flex justify-between items-center" onClick={handleChangeLearn} style={{ fontWeight: showLearn ? 'bold' : 'normal'}} >
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChangeLearn}
+                      style={{fontWeight: showLearn ? 'bold' : 'normal'}}
+                    >
                       Learn
                       {showLearn ? (
-                     <img className='h-[12px]' src={arrow_down} alt=''/>     
-                      ):(
-                     <img className='h-[12px]' src={arrow_rights} alt=""/>
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
                       )}
                     </div>
-                    {showLearn &&
-                    <div className="">
-                      <ul onClick={onClose} className="text-thin"style={{ color: 'black' }}>
-                        <Link to="/blog">
-                          <li onClick={onClose}>Blog.</li>
-                        </Link>
-                        <Link to="/tutorials">
-                          <li onClick={onClose}>Tutorials</li>
-                        </Link>
-                        <a href="https://www.youtube.com/@simplynoted">
-                          <li>Videos</li>
-                        </a>
-                        <Link to="/faq">
-                          <li>F.A.Q.</li>
-                        </Link>
-                      </ul>
-                    </div>}
+                    {showLearn && (
+                      <div className="">
+                        <ul
+                          onClick={onClose}
+                          className="text-thin"
+                          style={{color: 'black'}}
+                        >
+                          <Link to="/blog">
+                            <li onClick={onClose}>Blog.</li>
+                          </Link>
+                          <Link to="/tutorials">
+                            <li onClick={onClose}>Tutorials</li>
+                          </Link>
+                          <a href="https://www.youtube.com/@simplynoted">
+                            <li>Videos</li>
+                          </a>
+                          <Link to="/faq">
+                            <li>F.A.Q.</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 ) : null}
                 {item.title === 'About Us' ? (
@@ -358,8 +415,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
     <header
       role="banner"
       className={`${
-        isHome ? 'bg-primary' : ' bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#dde8f7]  leading-none gap-4 px-4 md:px-8`}
+        isHome ? '' : ' bg-contrast/80 text-primary'
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#dee9f8]  leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
         <button
@@ -378,7 +435,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
             className="relative flex items-center justify-center w-8 h-8"
           >
             {/* <IconSearch /> */}
-          {/* </button> */} 
+          {/* </button> */}
           {/* <Input
             className={
               isHome
@@ -756,7 +813,7 @@ function Badge({openCart, dark, count}) {
 
   return isHydrated ? (
     <button
-      onClick={()=>navigate('/carts')}
+      onClick={() => navigate('/carts')}
       className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
     >
       {BadgeCounter}
@@ -839,7 +896,6 @@ function FooterLink({item}) {
   );
 }
 
-
 function FooterMenu({menu}) {
   const styles = {
     section: 'grid gap-4',
@@ -849,9 +905,9 @@ function FooterMenu({menu}) {
   function removePagesFromString(str) {
     // return str?.replace('/pages' && '/policies', '');
     return str.replace(/\/(pages|policies)/, '');
-}
+  }
 
-  console.log("menu",menu);
+  console.log('menu', menu);
 
   return (
     <>
@@ -934,7 +990,7 @@ function FooterMenu({menu}) {
                   {({open}) => (
                     <>
                       <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                        <Link to= {removePagesFromString(item.to)}>
+                        <Link to={removePagesFromString(item.to)}>
                           <Heading
                             className="flex justify-between  !font-base leading-loose hover:text-white"
                             size="lead"
