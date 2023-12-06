@@ -209,7 +209,7 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[20px]">
-      <div className="flex justify-between items-center md:ml-[0px] ml-[123px] md:mt-[0px] mt-[9px]">
+      <div className="flex justify-between items-center md:mt-[0px] mt-[9px]">
         <DynamicTitle title="Account" />
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
@@ -220,7 +220,7 @@ function Account({customer, heading, featuredData}) {
           />
         </Form>
       </div>
-      <div className="flex gap-[20px]  md:ml-[0px] ml-[21px] flex-wrap">
+      <div className="flex gap-[20px]  lg:ml-[0px] md:ml-[160px] ml-[27px] flex-wrap">
         <DynamicButton
           text="Account detail"
           className={`flex justity-center md:h-[39px] h-[36px] items-center md:text-[15px] text-[10px] border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
@@ -302,7 +302,7 @@ function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
       <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
-        <h2 className=" text-[18px] md:text-left text-center font-karla font-semibold lg:text-[22px]">
+        <h2 className=" text-[18px] md:text-center text-center font-karla font-semibold lg:text-[22px]">
           Order History
         </h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}

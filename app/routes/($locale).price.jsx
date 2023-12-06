@@ -138,11 +138,11 @@ export default function price() {
             100% Price Transparency
           </h1>
         </div>
-        <div className="sec-Transparency-cont flex justify-around">
+        <div className="sec-Transparency-cont">
           <div className="left-cont">
             <h2>Simply Noted features & pricing</h2>
             <div className=" Customizable-ntegrations flex">
-              <div className="real-pen-notice md:w-[235px] w-[127px]">
+              <div className="real-pen-notice ">
                 <div class="circle-percentage">100%</div>
                 <p className="text-blue-900 text-center font-bold md:text-17 text-[8px] tracking-tight leading-6">
                   Real Pen-written notes & envelopes
@@ -159,7 +159,7 @@ export default function price() {
                   />
                 </div>
                 <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
-                  Fully Customizable Designs & Handwriting
+                  Fully Customizable Designs
                 </p>
                 <a href="#" className="absolute left-[60px] bottom-[36px]">
                   Learn More →
