@@ -144,10 +144,10 @@ const AddressForm = ({customerID}) => {
           }`}
         >
           <div className="lg:flex grid justify-between items-center mb-[16px]">
-            <h2 className="text-left text-[#001a5f] font-bold md:text-[34px] text-[12px] leading-[44px]">
+            <h2 className="text-left text-[#001a5f] font-bold md:text-[34px] text-[24px] leading-[44px]">
               New Address
             </h2>
-            <div className="flex gap-[10px]">
+            <div className="flex gap-[10px] lg:mt-0 mt-[12px]">
               <DynamicButton
                 className="bg-[#ef6e6e] md:text-[16px] text-[12px] lg:h-[41px] h-[33px] w-full lg:min-w-[180px] w-[140px] "
                 text="Cancel"

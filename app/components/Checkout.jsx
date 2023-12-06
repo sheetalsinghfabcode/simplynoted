@@ -210,10 +210,12 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                                             </div>
                                         </div>
                                     )}
-                                    <div className='savedCard flex items-start justify-between'>
-                                        <input type="radio" name="action" id="" className='mt-2' />
-                                        <label htmlFor="">Use Saved Credit Card</label>
+                                    <div className='savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4'>
                                         <div>
+                                        <input type="radio" name="action" id="" className='' />
+                                        <label htmlFor="">Use Saved Credit Card</label>
+                                        </div>
+                                        <div className='sm:mt-0 mt-[10px]'>
                                             <button className='bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded' onClick={() => onpenAddCardModal()}>Add New Card</button>
                                         </div>
                                     </div>
@@ -243,8 +245,8 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
             {showCardBox &&
                 <Modal children={<Elements stripe={stripe}>
                     {!savedCard &&
-                    <div className='w-[100%] border border-solid border-black p-3 mt-3'>
-                        <div className='grid-rows-2 flex gap-3'>
+                    <div className='w-[100%] border border-solid border-black p-3 mt-7'>
+                        <div className='grid-rows-2 flex gap-3 md:flex-row flex-col'>
                             <div>
                                 <label htmlFor="">Full Name</label>
                                 <input
@@ -308,7 +310,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                                 className='mt-2 border border-solid border-black p-3 w-[100%]' />
 
                         </div>
-                        <div className='grid-rows-2 flex gap-3'>
+                        <div className='grid-rows-2 flex gap-3 md:flex-row flex-col'>
                             <div>
                                 <label
                                     className="block text-gray-700 text-sm font-bold mb-2"
@@ -355,7 +357,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                                         ))}
                                 </select>
                                 {errors.state && (
-                                    <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                                    <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic ">
                                         {errors.state}
                                     </p>
                                 )}

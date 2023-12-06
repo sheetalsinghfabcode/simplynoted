@@ -2,7 +2,7 @@ import Modal from 'react-modal';
 
 const customStyles = {
   content: {
-    top: '55%',
+    top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
@@ -26,6 +26,7 @@ function Instruction({isOpen, closeModal,title,instructions,table,body}) {
       shouldCloseOnOverlayClick={false}
       contentLabel="CSV Instruction Modal"
     >
+      <div className=''>
       <div className="relative">
         <span
           className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
@@ -41,7 +42,7 @@ function Instruction({isOpen, closeModal,title,instructions,table,body}) {
         <div className='w-full'>
           {body}
         </div>
-        <p className="!text-[#000] font-medium text-[14px] font-medium leading-[160%]">
+        <p className="!text-[#000] font-medium text-[14px]  leading-[160%]">
         {instructions && instructions.map((instruction, index) => (
             <li key={index}>{instruction}</li>
           ))}
@@ -178,6 +179,7 @@ function Instruction({isOpen, closeModal,title,instructions,table,body}) {
             </tbody>
           </table>}
         </div>
+      </div>
       </div>
     </Modal>
   );
