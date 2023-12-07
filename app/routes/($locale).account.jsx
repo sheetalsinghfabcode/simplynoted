@@ -209,12 +209,12 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[20px]">
-      <div className="flex justify-between items-center md:mt-[0px] mt-[9px]">
-        <DynamicTitle title="Account" />
+      <div className="flex lg:justify-between justify-center items-center lg:gap[0px] gap-[151px] md:mt-[0px] mt-[9px]">
+        <DynamicTitle title="Account" />  
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
-            className="text-primary/50 bg-[#EF6E6E] md:mb-[0px] mb-[74px]  md:text-[15px] text-[8px]"
+            className="text-primary/50 bg-[#EF6E6E] md:text-[15px] text-[8px]"
             text="Log Out"
             onClickFunction={() => setData(true)}
           />

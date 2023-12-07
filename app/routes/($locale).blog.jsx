@@ -74,7 +74,7 @@ export default function blog() {
         />
       </div>
 
-      <div className="blog-page-button sm:flex grid gap-10 justify-center mt-[32px]">
+      <div className="blog-page-button sm:flex grid gap-[13px] justify-center mt-[32px]">
         <button
           className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] bg-red-500 text-white`}
           type="button"

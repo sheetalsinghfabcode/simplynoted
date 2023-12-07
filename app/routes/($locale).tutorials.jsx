@@ -56,7 +56,7 @@ export default function tutorials() {
             src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
           />
         </div>
-        <div className="blog-page-button sm:flex grid gap-10 justify-center mt-[32px]">
+        <div className="blog-page-button sm:flex grid gap-[13px] justify-center mt-[32px]">
           <button
             className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px]`}
             type="button"
