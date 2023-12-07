@@ -247,8 +247,8 @@ const Profile = ({
 
         {activeTab === 'account' && (
           <form onSubmit={handleSubmit} className="">
-            <div className="mb-4 flex flex-wrap -mx-3">
-              <div className="w-[100px] px-3 mb-6">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+              <div className="px-3 mb-6">
               <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   First Name
                 </label>
@@ -258,11 +258,11 @@ const Profile = ({
                   name="firstName"
                   value={accountDetails.firstName}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 md:w-[100%]"
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
 
                 />
               </div>
-              <div className="w-[100px] px-3 mb-6">
+              <div className="px-3 mb-6">
               <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Last Name
                 </label>
@@ -313,8 +313,8 @@ const Profile = ({
               )}
             </div>
 
-            <div className="mb-4 flex flex-wrap -mx-3">
-              <div className="w-[100px] px-3 mb-6">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+              <div className="px-3 mb-6">
                 <label htmlFor="address1" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Address 1
                 </label>
@@ -327,7 +327,7 @@ const Profile = ({
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
               </div>
-              <div className="w-[100px] px-3 mb-6">
+              <div className="px-3 mb-6">
               <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Address 2
                 </label>
@@ -341,8 +341,8 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 flex flex-wrap -mx-3">
-              <div className="w-[100px] px-3 mb-6">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+              <div className="px-3 mb-6">
                 <label htmlFor="city" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   City
                 </label>
@@ -369,8 +369,8 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 flex flex-wrap -mx-3">
-              <div className="w-[100px] px-3 mb-6">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+              <div className="px-3 mb-6">
                 <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Country
                 </label>
@@ -383,7 +383,7 @@ const Profile = ({
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
               </div>
-              <div className="w-[100px] px-3 mb-6">
+              <div className="px-3 mb-6">
                 <label htmlFor="zip" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
                   Zip
                 </label>

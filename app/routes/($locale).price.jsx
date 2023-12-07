@@ -126,101 +126,102 @@ export default function price() {
           </div>
         </div> */}
         </div>
-        <div className="arrow-down flex  justify-center">
+        <div className="arrow-down flex justify-center">
           <img
-            className="arrow-down-line"
+            className="md:h-[321px] h-[123px]"
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/pricing-arrow-1.png?v=1611263366"
             alt="arrow-down"
           />
-        </div>
+        </div>  
         <div className="Transparency-cont">
-          <h1 className="text-#001a5f text-6xl font-extrabold tracking-wide leading-tight pb-10 text-center">
+          <h1 className="text-#001a5f lg:text-6xl text-[24px]  font-extrabold tracking-wide leading-tight pb-10 text-center">
             100% Price Transparency
           </h1>
         </div>
-        <div className="sec-Transparency-cont">
+        <div className="sec-Transparency-cont lg:flex grid justify-center">
           <div className="left-cont">
+            <div className=' flex justify-center text-[21px] mb-[29px] font-600 color-[#1e40af]'>
             <h2>Simply Noted features & pricing</h2>
-            <div className=" Customizable-ntegrations flex">
-              <div className="real-pen-notice ">
+            </div>
+            <div className=" Customizable-ntegrations grid md:grid-cols-3 grid-cols-2 md:gap-[23px] gap-[30px]">
+              <div className="real-pen-notice w-[100%] ">
                 <div class="circle-percentage">100%</div>
-                <p className="text-blue-900 text-center font-bold md:text-17 text-[8px] tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Real Pen-written notes & envelopes
                 </p>
                 <a href="#" className="absolute left-[60px]  md:ml-[0px] ml-[-31px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>
-              <div className="real-pen-notice">
+              <div className="real-pen-notice w-[100%]">
                 <div class="circle-percentage">
                   <img
                     className="card-icon"
                     src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/bxs-customize.svg?v=1611260469"
                   />
                 </div>
-                <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Fully Customizable Designs
                 </p>
-                <a href="#" className="absolute left-[60px] bottom-[36px]">
+                <a href="#" className="absolute left-[41px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>
-              <div className="real-pen-notice">
+              <div className="real-pen-notice w-[100%]">
                 <div class="circle-percentage">
                   <img
                     className="card-icon"
                     src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/gears.svg?v=1611260469"
                   />
                 </div>
-                <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Unlimited Integrations
                 </p>
-                <a href ="#" className="absolute left-[60px] bottom-[36px]">
+                <a href ="#" className="absolute left-[41px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>
-            </div>
-            <div className="Transparent-Campaigns flex">
-              <div className="real-pen-notice">
+                <div className="real-pen-notice w-[100%]">
                 <div class="circle-percentage">
                   <img
                     className="custom-icon"
                     src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/mailbox2.svg?v=1611260469"
                   />
                 </div>
-                <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Custom Campaigns
                 </p>
-                <a href ="#" className="absolute left-[60px] bottom-[36px]">
+                <a href ="#" className="absolute left-[41px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>
-              <div className="real-pen-notice">
+              <div className="real-pen-notice w-[100%]">
                 <div class="circle-percentage">
                   <img
                     className="card-icon"
                     src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/card-giftcard.svg?v=1611260469"
                   />
                 </div>
-                <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Gift-card Add-ons
                 </p>
-                <a href="#" className="absolute left-[60px] bottom-[36px]">
+                <a href="#" className="absolute left-[41px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>
-              <div className="real-pen-notice">
+              <div className="real-pen-notice w-[100%]">
                 <div class="circle-percentage">100%</div>
-                <p className="text-blue-900 text-center font-bold text-17 tracking-tight leading-6">
+                <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Transparent Pricing
                 </p>
-                <a href="#" className="absolute left-[60px] bottom-[36px]">
+                <a href="#" className="absolute left-[41px] bottom-[36px]">
                   Learn More →
                 </a>
               </div>
+            
             </div>
           </div>
-          <div className="right-cont relative">
+          <div className="right-cont relative p-[58px]">
             <div className='amount flex justify-center gap-8'>
               <div className='text-red-200'>Amount</div>
               <div className='text-red-200'>Price per unit</div>
@@ -230,49 +231,49 @@ export default function price() {
               <div className='text-center text-xs w-[63px]'>Standard Cards</div>
               <div className='text-center text-xs'>Custom Cards</div>
             </div>
-            <img className='w-[285px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center text-sm gap-[51px] mt-[14px]'>
               <div>1-99</div>
               <div>$3.25</div>
               <div>$3.75</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center text-sm gap-[51px] mt-[14px]'>
               <div>100-249</div>
               <div>$3.15</div>
               <div>$3.65</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center text-sm gap-[51px] mt-[14px]'>
               <div>250-499</div>
               <div>$3.00</div>
               <div>$3.50</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center text-sm gap-[51px] mt-[14px]'>
               <div>500-999</div>
               <div>$2.85</div>
               <div>$3.35</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center text-sm gap-[51px] mt-[14px]'>
               <div>1000-2499</div>
               <div>$2.70</div>
               <div>$3.20</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center text-sm gap-[51px] mt-[14px]'>
               <div>2500 +</div>
               <div>$2.55</div>
               <div>$3.05</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <div className='flex justify-center gap-[15px] text-sm mt-[14px]'>
               <div>10,000+</div>
               <div>Contact Us</div>
               <div>Contact Us</div>
             </div>
-            <img className='w-[285px] mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
+            <img className='w-full mt-[12px]' src="https://simplynoted.com/cdn/shop/files/pricing-table-underline.png"/>
             <p className='text-center text-sm mt-[12px]'>*Prices do not include postage</p>
             <button className='bg-rose-500 mt-[12px] p-[11px] text-white w-full' type="button">START ORDER</button>
            </div> 

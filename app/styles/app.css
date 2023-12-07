@@ -1327,7 +1327,7 @@ body {
   height: 235px;
   padding: 30px 30px;
   position: relative;
-  width: 176px;
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1343,11 +1343,7 @@ body {
     padding: 15px 5px;
   }
 
-  .real-pen-notice {
-    height: 180px;
-    padding: 20px 20px;
-    width: 170px;
-  }
+
 }
 .real-pen-notice .p {
   color: #001a5f;
@@ -1355,7 +1351,6 @@ body {
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 24px;
-  padding: 0;
   text-align: center;
 }
 
@@ -1386,7 +1381,6 @@ body {
   background-image: url('https://simplynoted.com/cdn/shop/files/pricing-form-bg.png');
   background-size: 100% 100%;
   color: #fff;
-  padding: 62px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -1407,7 +1401,7 @@ body {
   }
 
   .right-cont {
-    padding: 20px;
+   
   }
 }
 
