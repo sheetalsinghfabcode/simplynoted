@@ -179,7 +179,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                     <div className='p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl'>
                         <div className='border border-solid border-[#e6edf8] p-3 mt-3'>
                             <div className=''>
-                                <input type="radio" name="action" onChange={() => showWalletBtn()} /> USE WALLET
+                                <input type="radio" name="action" onChange={() => showWalletBtn()} />&nbsp; USE WALLET
                             </div>
                             <div className='w-[100%] h-[1px] bg-[black]'></div>
                             {showWallet &&
@@ -200,20 +200,25 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                                         <text className='text-xs font-bold'>CARD DETAILS</text>
                                     </div>
                                     {savedCard && savedCard.map((item) =>
-                                        <div className='border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between '>
+                                        <div className='border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between flex'>
 
-                                            <div className='flex justify-start items-center text-xs font-bold'>
+                                            <div className='flex justify-between items-center text-xs font-bold'>
+                                                
                                                 <input type='radio' name='action' className='mr-2' />
-                                                <span className='mr-[17rem] tracking-wide'>**********{item.cardLast4Number}</span>
+                                                <span className=' tracking-wide'>**********{item.cardLast4Number}</span>
+                                                </div>
+
+                                                <div>
                                                 <span>{item.cardExpMonth}/{item.cardExpYear}
                                                 </span>
-                                            </div>
+                                                </div>
+                                            
                                         </div>
                                     )}
                                     <div className='savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4'>
                                         <div>
                                         <input type="radio" name="action" id="" className='' />
-                                        <label htmlFor="">Use Saved Credit Card</label>
+                                        <label htmlFor="">&nbsp;Use Saved Credit Card</label>
                                         </div>
                                         <div className='sm:mt-0 mt-[10px]'>
                                             <button className='bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded' onClick={() => onpenAddCardModal()}>Add New Card</button>

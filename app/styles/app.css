@@ -2286,16 +2286,16 @@ body {
   .thankyou_img {
     display: block;
     position: absolute;
-    width: 35%;
-    margin-left: 26rem;
-    margin-top: 6rem;
+    width: 30%;
+    margin-left: 25rem;
+    margin-top: 8rem;
     z-index: 1;
   }
   .cars-killer {
     position: static;
     margin-top: 42px;
-    width: 38%;
-    margin-left: 14rem;
+    width: 32%;
+    margin-left: 16rem;
   }
   .start-writing-button,
   .request-a-button {
@@ -2401,18 +2401,18 @@ margin-left: 0px;
   .swiper-button-prev,
   .swiper-button-next {
     background-color: #ef6e6e;
-    padding:7px;
+    padding:8px;
     border-radius: 50%;
   }
  
   .thankyou_img {
-    width: 55%;
-    margin-top: 5rem;
-    margin-left: 9rem;
+    width: 41%;
+    margin-top:8rem;
+    margin-left:18rem;
   }
   .cars-killer {
-    width: 60%;
-    margin-left: 2rem;
+    width: 45%;
+    margin-left: 7rem;
   }
   .handwritten-notice h3 {
     font-size: 20px;
@@ -2422,7 +2422,7 @@ margin-left: 0px;
     width: 100%;
   }
   .data_card {
-    margin: 0 25px;
+    margin: 0 31px;
     height: 77%;
   }
   .programm-list{
@@ -2430,7 +2430,7 @@ margin-left: 0px;
       font-size:15px;
   }
 .banner-detail{
-  background-size: 62% 81%;
+  background-size: 81% 85%;
 }
 .roiNumbers{
   width: 100%;
@@ -2449,6 +2449,29 @@ margin-left: 0px;
   .custom_testing{
     width: 80%;
      }
+     .data_card {
+      margin: 0px;
+     
+    }
+    .thankyou_img {
+      width: 41%;
+      margin-top:6rem;
+      margin-left:12rem;
+    }
+    .cars-killer {
+      width: 45%;
+      margin-left:4rem;
+    }
+    .wrap-sample-form{
+      width:90%;
+     padding: 10px;
+        }
+        .wrap-business-form-salesforce{
+          padding: 10px;
+        }
+        .form-title{
+          font-size: 12px;
+        }
     }
 @media only screen and (max-width:500px) {
 .signup-overview{

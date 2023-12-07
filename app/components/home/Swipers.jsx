@@ -23,7 +23,7 @@ const Swipers = () => {
   return (
     <>
       <div className="my-8">
-        <div className="sm:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 mb-16">
+        <div className="sm:text-3xl text-xl font-bold text-[#001A5F] text-center mt-20 md:mb-16 mb-5">
           Companies we've worked with
         </div>
         <div className="ml-5 mr-10">
@@ -139,7 +139,7 @@ const Swipers = () => {
           </Swiper>
         </div>
 
-        <div className="md:hidden  w-[80%] ml-auto block text-center">
+        <div className="md:hidden w-[84%] ml-auto block text-center">
           <span className="inline-block  w-[49%] mb-[20px]">
             <img
               className="w-[60%] h-auto"

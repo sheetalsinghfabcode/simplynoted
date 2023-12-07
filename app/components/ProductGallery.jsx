@@ -8,48 +8,47 @@ export function ProductGallery({media, className}) {
   if (!media.length) {
     return null;
   }
-  console.log(media,"media");
-
+  let imageVar = [];
+  imageVar.push(media[0]);
   return (
     <div
       className={`swimlane md:flex hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full md:mb-0 sm:mb-[-14rem] mb-[-10rem] ${className}`}
     >
-      {media.map((med, i) => {
-        const isFirst = i === 0;
-        const isFourth = i === 3;
-        const isFullWidth = i % 3 === 0;
+      {imageVar &&
+        imageVar.map((med, i) => {
+          const isFirst = i === 0;
+          const isFourth = i === 3;
+          const isFullWidth = i % 3 === 0;
+          const image =
+            med.__typename === 'MediaImage'
+              ? {...med.image, altText: med.alt || 'Product image'}
+              : null;
+          const style = [
+            isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
+            isFirst || isFourth ? '' : 'md:aspect-[4/5]',
+            'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[600px] md:h-[386px] h-[56%] w-full',
+          ].join(' ');
 
-        const image =
-          med.__typename === 'MediaImage'
-            ? {...med.image, altText: med.alt || 'Product image'}
-            : null;
-            console.log(image,"image");
-        const style = [
-          isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
-          isFirst || isFourth ? '' : 'md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[600px] md:h-[386px] h-[56%] w-full',
-        ].join(' ');
+          return (
+            <div className={style} key={med.id || image?.id}>
+              {image && (
+                <Image
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  data={image}
+                  aspectRatio={!isFirst && !isFourth ? '4/5' : undefined}
+                  sizes={
+                    isFirst || isFourth
+                      ? '(min-width: 48em) 60vw, 90vw'
+                      : '(min-width: 48em) 30vw, 90vw'
+                  }
+                  className="object-cover w-[550px] h-[400px] aspect-square fadeIn"
+                />
+              )}
 
-        return (
-          <div className={style} key={med.id || image?.id}>
-            {image && (
-              <Image
-                loading={i === 0 ? 'eager' : 'lazy'}
-                data={image}
-                aspectRatio={!isFirst && !isFourth ? '4/5' : undefined}
-                sizes={
-                  isFirst || isFourth
-                    ? '(min-width: 48em) 60vw, 90vw'
-                    : '(min-width: 48em) 30vw, 90vw'
-                }
-                className="object-cover w-[550px] h-[400px] aspect-square fadeIn"
-              />
-            )}
-
-            {!image && <CircularLoader color="#ef6e6e"/>}
-          </div>
-        );
-      })}
+              {!image && <CircularLoader color="#ef6e6e" />}
+            </div>
+          );
+        })}
     </div>
   );
 }

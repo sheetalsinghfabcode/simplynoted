@@ -209,7 +209,7 @@ export default function Salesforce() {
         <div className="xl:w-[70%] lg:w-[60%] relative overflow-x-clip  w-full">
           <img
             className="lg:absolute relative 2xl:left-[30px] xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
-            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
+            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-1.png?v=1611260653"
           />
         </div>
       </div>
@@ -282,7 +282,7 @@ export default function Salesforce() {
       <h2 class="text-[#001a5f] text-center text-4xl  font-karla mb-10 signup-underline">Integration Feature</h2>
       </div>
       <div className='lg:flex justify-center grid'>
-        <div className='mt-14'>
+        <div className='md:mt-14 mt-0'>
         <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-1.png?v=1611260064"/>
         <h2 className='w-[271px] text-center'>Our team of handwriting robots will help you engage with vast audiences.</h2>
         </div>
@@ -302,7 +302,7 @@ export default function Salesforce() {
       </div>
    
 
-      <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto">
+      <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto mt-[70px]">
         
         <div className="banner-detail text-center">
        
@@ -311,16 +311,16 @@ export default function Salesforce() {
           <img className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] " src={SalesforceIcon} alt="shopify" />
          
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
-            Integrate with Zapier
+          Salesforce Deep Integration
             <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
             <DynamicButton
-                    text="INTEGRATE NOW"
+                    text="JOIN WAITLIST"
                     className="req-btn !ml-0 md:w-50%  !w-full"
                      onClickFunction={()=>window.location.href=("https://zapier.com/apps/simply-noted/integrations")}
                 
             />
             <DynamicButton
-                    text="VIEW ALL INTEGRATION"
+                    text="USE PROCESS BUILDER"
                     className="sch-btn !ml-0 md:w-50% !w-full"
                      onClickFunction={()=>window.location.href=("https://zapier.com/apps")}
                 

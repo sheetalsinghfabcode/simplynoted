@@ -43,16 +43,16 @@ const Business = () => {
                 alt="business line"
               />
               <div className="lg:w-[30%] lg:ml-[12rem] lg:mr-0 md:w-[40%] w-[55%] ml-auto mr-auto text-left mt-5">
-                <div className="flex lg:flex-col flex-row md:text-[44px] sm:text-[40px] text-[33px] text-[#001A5F] font-karla font-extrabold">
+                <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold">
                   <div className="">
                     You{' '}
-                    <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] sm:text-[50px] text-[38px] font-extrabold">
+                    <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
                       type
                     </span>{' '}
                   </div>
-                  <div className="lg:mt-[-30px]">
+                  <div className="lg:mt-[-30px] ml-[7px]">
                     We
-                    <span className="font-beauty lg:text-8xl md:text-[60px] sm:text-[50px] text-[38px] ml-2 font-extrabold">
+                    <span className="font-beauty lg:text-8xl md:text-[60px] text-[50px]  ml-2 font-extrabold">
                       write
                     </span>
                   </div>
@@ -68,12 +68,12 @@ const Business = () => {
                     alt="Letter"
                   />
                   <img
-                    className="md:absolute md:ml-[-150px] md:mt-[10rem]  md:w-[245px] sm:ml-[-27rem] ml-[-20rem] relative h-auto  mt-[8rem] w-[200px] z-1"
+                    className="md:absolute md:ml-[-150px] md:mt-[10rem]  md:w-[245px] sm:ml-[-25rem] ml-[-16rem] relative h-auto  mt-[8rem] w-[170px] z-1"
                     src={rice_elmore}
                     alt=""
                   />
                   <img
-                    className="md:absolute relative md:ml-[12rem] mt-[8rem] md:w-[235px] sm:ml-[4rem] ml-[1rem] w-[215px] mt z-1"
+                    className="md:absolute relative md:ml-[12rem] mt-[8rem] md:w-[235px] sm:ml-[4rem] ml-[1rem] w-[160px] mt z-1"
                     src={amazon_card}
                     alt=""
                   />
@@ -95,7 +95,7 @@ const Business = () => {
 
                 <div className="wrap-sample-form">
                   <form className="hubForm" data-hs-cf-bound="true">
-                    <div className="mt-[3rem] text-[28px] text-center text-white leading-8">
+                    <div className="mt-[3rem] sm:text-[28px] text-[18px] text-center text-white leading-8">
                       Request a Writing Sample Packet
                     </div>
                     <div className="row">
@@ -218,9 +218,9 @@ const Business = () => {
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
-                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0">
+                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3  mb-6">
                           Integrate{' '}
-                          <span className="font-beauty text-7xl mr-2 font-extrabold">
+                          <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
                             and
                           </span>
                           Automate
@@ -417,7 +417,7 @@ const Business = () => {
                     />{' '}
                   </div>
 
-                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
+                  <div className="md:ml-[50px] ml-0 lg:flex-col flex flex-row">
                     <img
                       className="click-link lg:w-[30%] w-[65px] bg-white p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
                       style={
@@ -576,9 +576,9 @@ const Business = () => {
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
-                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0">
+                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3 mb-6">
                           Fully{' '}
-                          <span className="font-beauty text-7xl mr-2 font-extrabold">
+                          <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
                             Customizable
                           </span>
                         </div>

@@ -24,26 +24,28 @@ const Card=()=>{
     return(
         <>
         <div>
-           <div className="flex md:flex-row flex-col w-[76%] mx-auto">
+           <div className="flex md:flex-row flex-col sm:w-[76%] w-[80%] mx-auto">
             
-    <div class="swiper-button-prev relative my-auto md:block hidden"><img src={prev} className="w-[25px]" alt="" /></div>
+    <div class="swiper-button-prev relative my-auto md:block hidden"><img src={prev} className="w-[25px] cursor-pointer" alt="" /></div>
     
         <Swiper
-      modules={[Navigation,Pagination]}
+      modules={[Navigation,Pagination,A11y]}
+      allowTouchMove={false}
       direction={'horizontal'}
       breakpoints={{
         1024:{
-           slidesPerView:1
+           slidesPerView:1,
+           allowTouchMove: false
         },
        768: {
          spaceBetween:10,
          slidesPerView:1,
-        
+         allowTouchMove: false
        }
      }}
       spaceBetween={30}
       slidesPerView={1}
-     
+    
     loop={true}
     navigation={  {                     //navigation(arrows)
         nextEl: ".swiper-button-next",
@@ -59,11 +61,11 @@ const Card=()=>{
                    
                         
                   <SwiperSlide>
-                  <div className="data_card bg-white  text-center mt-5 w-[88%] mx-auto ">
+                  <div className="data_card bg-white  text-center mt-5 sm:w-[88%] w-full mx-auto ">
         <div className="m-auto w-full pt-5 md:pt-20">
-            <img src={data.img} alt="" className="w-[100px] mt-1 text-center inline"></img>
+            <img src={data.img} alt="" className="w-[100px] mt-1 text-center inline "></img>
         </div>
-        <div className="pt-5 pb-5  text-center text-sm md:px-24 px-16 text-[#696969] tracking-normal">
+        <div className="pt-5 pb-5  md:text-center text-justify text-sm md:px-24 sm:px-16 px-[35px] text-[#696969] tracking-normal">
    {data.description}
                 </div>
                 <div className="text-black pb-32 font-bold">
@@ -81,12 +83,12 @@ const Card=()=>{
       
     </Swiper>
     
-<div class="swiper-button-next relative my-auto md:block hidden"><img src={next} className="w-[25px]" alt="" /></div>
+<div class="swiper-button-next relative my-auto md:block hidden"><img src={next} className="w-[25px] cursor-pointer" alt="" /></div>
 
 {/* mobile */}
 <div className="md:hidden flex w-[50%] mx-auto justify-between  mb-[4rem] sm:mt-[-65px] mt-[-95px] relative">
- <div class="swiper-button-prev  "><img src={swiper_arrow_left} className="w-[20px] pr-[4px]" alt="" /></div>
-  <div class="swiper-button-next "><img src={swiper_arrow_right} className="w-[20px] pl-[4px]" alt="" /></div>
+ <div class="swiper-button-prev  "><img src={swiper_arrow_left} className="w-[20px] pr-[4px] cursor-pointer" alt="" /></div>
+  <div class="swiper-button-next "><img src={swiper_arrow_right} className="w-[20px] pl-[4px] cursor-pointer" alt="" /></div>
   </div>
 </div>
 
@@ -137,11 +139,11 @@ const Card=()=>{
     </div>
 
    <div className="bg-white text-center mt-[-11rem] mb-[-12px] ">
-   <div className="md:w-[50%] w-[100%] flex flex-wrap overflow-hidden mx-auto  pt-60">
+   <div className="md:w-[50%] sm:w-[100%]  w=[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
     <img className='w-full' src={pen} alt="LogoSimplinotedpic"  /> 
     </div>
     <div className="md:text-4xl text-3xlfont-bold text-[#001A5F]">Get your first card FREE!</div>
-    <div className="text-xl pt-4 text-[#696969]">Join our email list and receive your first card free.</div>
+    <div className="sm:text-xl text-[16px] pt-4 text-[#696969]">Join our email list and receive your first card free.</div>
 
     <div className="pt-10 pb-10 text-center">
         <form>
@@ -160,9 +162,9 @@ const Card=()=>{
 <div className="w-full overflow-hidden">
         <div className="bottom_background mt-3 relative  overflow-x-hidden">
             <div className="pt-10 md:flex grid  justify-center">
-                <h3 className="lg:text-4xl md:text-2xl  text-[26px] font-bold md:my-20 md:mx-[2rem] ml-28 mt-5">Ready to start writing?</h3>
+                <h3 className="lg:text-4xl md:text-2xl  text-[26px] font-bold md:my-20 md:mx-[2rem] ml-[4rem] mt-5">Ready to start writing?</h3>
            
-            <div className=" flex flex-col md:flex-row text-white md:my-[4rem]  md:mx-[2rem] mx-10 mt-10">
+            <div className=" flex flex-col md:flex-row text-white md:my-[4rem]  md:mx-[2rem] mr-10 ml-auto mt-10">
             <DynamicButton
                     text="REQUEST SAMPLE"
                     className="req-btn"

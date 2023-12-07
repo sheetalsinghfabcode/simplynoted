@@ -22,7 +22,7 @@ import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
 import arrow_rights from '../../assets/Image/arrow-right-faq.png';
 import arrow_down from '../../assets/Image/arrow-down.png';
-
+import nav_logo from "../../assets/Image/simply-noted-navlogo.avif";
 import {
   Drawer,
   useDrawer,
@@ -106,7 +106,7 @@ function Header({title, menu}) {
         isHome={isHome}
         title={
           <div>
-            <img src="http://localhost:3000/build/_assets/simply-noted-logo-SVKACL4I.avif" />
+            <img src={nav_logo}/>
           </div>
         }
         menu={menu}
@@ -117,8 +117,8 @@ function Header({title, menu}) {
         title={
           <div>
             <img
-              className="w-[100px]"
-              src="http://localhost:3000/build/_assets/simply-noted-logo-SVKACL4I.avif"
+              className="w-[100px] max-w-full"
+              src={nav_logo}
             />
           </div>
         }
@@ -958,7 +958,7 @@ function FooterMenu({menu}) {
           <div className="flex mt-5 sm:w-full  w-[84%] ">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
               <img
-                className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[31px]"
+                className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[25px]"
                 src={linkdin}
                 alt=""
               ></img>

@@ -1288,7 +1288,7 @@ export default function FoldedCustomisableCard({
                   {selectedCardPage === 'Card Back' && (
                     <button
                       type="button"
-                      className="bg-[#1b5299] h-[40px] border-none md:ml-[0px] ml-[62px] text-white text-sm outline-none text-center w-full font-semibold"
+                      className="bg-[#1b5299] h-[40px] border-none ml-[0px]  text-white text-sm outline-none text-center w-full font-semibold"
                       onClick={handleFinishEditingButton}
                     >
                       Finish Editing

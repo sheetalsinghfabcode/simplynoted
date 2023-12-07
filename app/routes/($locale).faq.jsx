@@ -5,7 +5,7 @@ const Faq = () => {
   return (
     <>
       <div className="mt-10">
-        <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla leading-10 font-medium pb-5 tracking-wide mx-2">
+        <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla leading-10 font-medium md:pb-5 pb-[4px] tracking-wide mx-2">
           Simply Noted FAQs
         </h1>
         <div className="flex justify-center">
