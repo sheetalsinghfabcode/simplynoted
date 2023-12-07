@@ -586,7 +586,7 @@ const ContactTable = ({
                   !ProdcuctSide && (
                     <button
                       onClick={() => setDeleteModal(true)}
-                      className="text-white bg-[#FF0000] border border-solid md:text-[16px] text-[12px]  font-bold py-[3px] px-[16px]"
+                      className="text-white bg-[#FF0000] border border-solid md:text-[16px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
                     >
                       Delete Selected
                     </button>

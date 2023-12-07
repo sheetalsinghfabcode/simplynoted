@@ -1570,6 +1570,7 @@ body {
   width: 532px;
   max-width: 100%;
   z-index: 2;
+  padding:20px;
 }
 
 .form-title {
