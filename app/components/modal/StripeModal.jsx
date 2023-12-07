@@ -100,7 +100,7 @@ const StripeModal = ({
               {title}
             </h3>
           </div>
-          <div className="modal-body mt-[12px]">
+          <div className="modal-body h-240px mt-[12px]">
             {loader && (
               <div className="flex items-center justify-center">
                 <div className="absolute inset-0 bg-white opacity-50 z-40"></div>
@@ -112,7 +112,7 @@ const StripeModal = ({
 
             {!savedCard && (
               <div className="w-[100%] border border-solid border-black p-3 mt-3">
-                <div className="md:grid-rows-2 grid flex gap-3">
+                <div className="grid-rows-2 md:flex grid gap-3">
                   <div>
                     <label htmlFor="">Full Name</label>
                     <input
@@ -189,7 +189,7 @@ const StripeModal = ({
                     </p>
                   )}
                 </div>
-                <div className="md:grid-rows-2 grid flex gap-3">
+                <div className="grid-rows-2 md:flex grid gap-3">
                   <div className='w-full'>
                     <label
                       className="block text-gray-700 text-sm font-bold mb-2"
@@ -253,9 +253,6 @@ const StripeModal = ({
             </Elements>
               </div>
             )}
-
-      
-
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>
           </div>
           <div className="modal-footer w-full flex justify-center items-center gap-[12px] mt-[20px]"></div>
