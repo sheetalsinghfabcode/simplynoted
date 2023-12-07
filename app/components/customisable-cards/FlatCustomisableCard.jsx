@@ -1166,13 +1166,13 @@ export default function FlatCustomisableCard({
         </Modal>
       )}
 
-      <div className="relative md:mt-3" style={{marginTop: '-3rem'}}>
+      <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
         <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 lg:flex-row flex-col">
           <div
-            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 w-[95%]"
+            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 "
             style={{minHeight: '564px'}}
           >
-            <div className="w-full md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
+            <div className="sm:min-w-[500px] min-w-[347px] md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
               <GoBackButton />
             </div>
             <span className="text-2xl mb-2 md:mt-0 mt-[4rem]">

@@ -339,7 +339,7 @@ export default function AddCartFunc() {
                         <div className="flex w-[100%] flex-wrap ">
                           <div className="md:w-[44%] w-full items-center relative flex ml-0 m-auto">
                             <div className="flex w-full justify-evenly">
-                              <div className="sm:max-w-[20%] max-w-[23%] md:m-5 mt-[30px] mx-auto">
+                              <div className="max-w-[20%]  md:m-5 mt-[30px] mx-auto">
                                 <img src={item.productImg} alt="" />
                               </div>
                               <div className="max-w-[100%] m-auto md:mt-auto mt-[27px]">
@@ -408,7 +408,7 @@ export default function AddCartFunc() {
                               {item.giftCardName !== null ? (
                                 ''
                               ) : (
-                                <div className="buttonDiv md:pr-5 pr-0 m-2">
+                                <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
                                   <DynamicButton
                                     className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px] "
                                     text="Add Gift Card"
@@ -419,7 +419,7 @@ export default function AddCartFunc() {
                                 </div>
                               )}
 
-                              <div className="buttonDiv md:pr-5 pr-0 m-2">
+                              <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
                                 <DynamicButton
                                   className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px]"
                                   text="EDIT ORDER"
@@ -428,7 +428,7 @@ export default function AddCartFunc() {
                                   }}
                                 />
                               </div>
-                              <div className="buttonDiv md:pr-5 pr-0 m-2">
+                              <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
                                 <DynamicButton
                                   className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] "
                                   text="DELETE ORDER"
@@ -1040,11 +1040,11 @@ export default function AddCartFunc() {
                     ))}
                   {totalPrize && (
                     <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
-                      <div className="flex p-2 flex-wrap justify-evenly md:gap-0 gap-[10px]">
+                      <div className="flex p-5 flex-wrap justify-evenly md:gap-0 gap-[10px]">
                         <div className="md:w-[33%] sm:w-[47%] w-[100%] flex items-center justify-center ">
                           <div className="buttonDiv pr-5 m-2">
                             <button
-                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla lg:text-[16px] md:text-[12px] text-[10px]"
+                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla lg:text-[16px] text-[11px] "
                               onClick={() => {
                                 clearCartBtn();
                               }}
@@ -1058,7 +1058,7 @@ export default function AddCartFunc() {
                           </div>
                         </div>
                         <div className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center justify-center">
-                          <div className="mt-2 lg:text-2xl  sm:text-[16px] text-[20px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
+                          <div className="mt-2 lg:text-2xl  sm:text-[15px] text-[20px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
                             <span className='md:mr-[2px]'>
                              
                                 GRAND TOTAL
@@ -1071,7 +1071,7 @@ export default function AddCartFunc() {
                               </span>
                           </div>
                         </div>
-                        <div className="md:w-[30%] sm:w-[77%] w-full  mr-1 flex sm:justify-start justify-center">
+                        <div className="md:w-[30%] sm:w-[80%] w-full  mr-1 flex sm:justify-end justify-center">
                           <div className="">
                             <div className='lg:text-[18px] text-[12px]'>
                               <input

@@ -195,12 +195,14 @@ export default function CustomProducts() {
             backArrow={true}
             onClickFunction={goBack}
           />
-          <Section className={`px-0 md:px-8  ${ customProductData.length === 0 && metafields.length === 0 && "opacity-40"} `}>
-            <div className="grid items-start md:gap-6 lg:gap-5 md:grid-cols-2">
+          <Section className={`px-0 md:px-8
+           ${ customProductData.length === 0 && metafields.length === 0 && "opacity-40"} `}>
+            <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px]">
               <div
-                className={`swimlane md:grid-flow-row hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 w-full`}
+                className={`swimlane md:flex hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full md:mb-0 sm:mb-[-14rem] mb-[-10rem]`}
               >
-                <div className="md:col-span-2  aspect-square snap-center relative flex items-center justify-center overflow-clip rounded-[0.25rem] bg-white dark:bg-contrast/10 w-mobileGallery md:w-[550px] md:h-[386px]">
+                <div className="md:aspect-[4/5]',
+          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[600px] md:h-[386px] h-[56%] w-full">
                   {customProductData &&
                     metafields &&
                     metafields.cardType == 'folded5x7' && (
@@ -211,7 +213,7 @@ export default function CustomProducts() {
                             ? customProductData.images[imageShow].originalSrc
                             : foldBack
                         }
-                        className="object-contain w-[550px] fadeIn w-full h-full"
+                        className="object-contain  fadeIn md:w-[600px] md:h-[386px] h-[56%] w-full"
                       />
                     )}
                     {/* {metafields && metafields.face.zoom}------ */}
