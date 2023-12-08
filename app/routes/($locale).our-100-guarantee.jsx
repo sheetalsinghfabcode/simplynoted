@@ -1,15 +1,11 @@
 import React from 'react';
-
+import DynamicTitle from '~/components/Title';
 function our100guarntee() {
   return (
     <div>
     <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
       <div className="">
-      <p className=" mt-[54px] sm:text-[25px] text-[16px] text-center text-[#001a5f]"> OUR 100% SATISFACTION GUARANTEE</p>
-          <img
-            className="w-[17rem] mt-3 mx-auto"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-          ></img>
+      <DynamicTitle dynamicButton title="OUR 100% SATISFACTION GUARANTEE" className={'mt-[20px]  !text-[18px]'} />  
         
         <div className="sm: text-[12px]">
           <p className="mt-[25px] ">

@@ -1175,7 +1175,7 @@ export function MessageWriting({
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
           {/* {customerid && ( */}
-            <div className="flex justify-between md:text-[13px] sm:text-[16px] text-[14px]">
+            <div className="flex justify-between md:text-[13px] sm:text-[16px] text-[14px] mt-[15px]">
               <div>
                 <span
                   className="font-bold text-[#1b5299] cursor-pointer"
@@ -1200,7 +1200,7 @@ export function MessageWriting({
               you don't have enough character remaining
             </span>
           )}
-          <br />
+      
           {show && (
             <>
               <button

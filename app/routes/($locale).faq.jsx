@@ -1,20 +1,12 @@
 import FaqAccordion from '~/components/FaqAccordion';
 import underline from '../../assets/Image/faq-underline.png';
+import DynamicTitle from '~/components/Title';
 
 const Faq = () => {
   return (
     <>
-      <div className="mt-10">
-        <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla leading-10 font-medium md:pb-5 pb-[4px] tracking-wide mx-2">
-          Simply Noted FAQs
-        </h1>
-        <div className="flex justify-center">
-          <img
-            className="md:w-auto sm:w-[40%] w-[50%] mb-[33px]"
-            src={underline}
-            alt="menu-underline"
-          />
-        </div>
+      <div className="mt-10 mx-8">
+      <DynamicTitle dynamicButton title="Simply Noted FAQs" className={'mt-[20px] md:text-[42px] text-[32px]'} />
 
         <FaqAccordion
           title="Do you have have business pricing / offer custom orders?"

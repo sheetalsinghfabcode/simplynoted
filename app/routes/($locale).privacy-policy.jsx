@@ -1,15 +1,13 @@
 import React from 'react';
-
+import DynamicTitle from '../components/Title';
 export default function privacypolicy() {
   return (
     <div>
       <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
         <div className="">
-          <p className=" mt-[54px] text-[31px] text-center text-[#001a5f]">Privacy policy</p>
-          <img
-            className="w-40 mt-3 mx-auto"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-          ></img>
+        <DynamicTitle dynamicButton title="Privacy policy" />  
+          
+         
 
 <div className="sm:text-[14px] text-[12px]">
 

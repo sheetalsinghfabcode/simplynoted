@@ -1257,14 +1257,17 @@ export default function AddCartFunc() {
                         style={{
                           display: index === currentIndex ? 'block' : 'none',
                         }}
+                        className='mt-[10px]'
                       >
-                        <text className=" text-xl text-center">
+                       
+                        <text className=" text-xl text-center ">
                           Recipient: {item['First Name'] || item.firstName},
                           {item['Last Name'] || item.lastName},
                           {item['Address'] || item.address1},
                           {item['City'] || item.city},
                           {item['State/Province'] || item.state}
                         </text>
+                        
                         <h2 className="font-bold text-2xl w-full text-center mt-3">
                           Your Custom Message
                         </h2>
@@ -1313,8 +1316,8 @@ export default function AddCartFunc() {
             ) : (
               <>
                 <div className="flex">
-                  <div className="w-full">
-                    <text className=" text-xl text-center">
+                  <div className="w-full mt-[10px]">
+                    <text className=" text-xl text-center ">
                       Recipient: {reciverAddress.firstName},
                       {reciverAddress.address1},{reciverAddress.city},
                       {reciverAddress.country}

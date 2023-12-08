@@ -10,7 +10,7 @@ function FaqAccordion({title, children, className, accordion = false}) {
   };
 
   return (
-    <div className="mx-8 faq-accordion">
+    <div className=" faq-accordion">
       <div
         className={`flex justify-between gap-[10px] items-center cursor-pointer w-full min-h-[40px] font-karla  py-[5px] ${className}`}
         onClick={toggleAccordion}

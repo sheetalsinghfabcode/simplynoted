@@ -48,13 +48,13 @@ export default function ShopifyCustomCardProductDetails({
     <section
       className={`${
         hasScrolledYAxis
-          ? 'fixed flex justify-center items-center h-[75px] w-full text-white bottom-0 left-0 bg-[#0f0f0f]'
+          ? 'fixed flex justify-center md:flex-row flex-col items-center md:h-[75px] h-[27%] gap-[30px] w-full text-white bottom-0 left-0 bg-[#0f0f0f]'
           : 'hidden'
       }`}
       style={{zIndex: 999}}
     >
-      <div className="w-1/2 flex gap-4">
-        <div className="h-[50px] w-[72px]">
+      <div className="md:w-1/2 w-[80%] flex gap-4 justify-between md:justify-start">
+        <div className="h-[50px] md:w-[72px] w-[66px]">
           <img
             src={isFlatCardType ? FlatBlankCanvasImage : FoldedBlankCanvasImage}
             alt="Shopify custom card blank canvas image."
@@ -71,7 +71,7 @@ export default function ShopifyCustomCardProductDetails({
 
       <select
         id="variants"
-        className="bg-[#414141] text-white p-2 w-[380px] rounded-md outline-none border-none focus:ring-0"
+        className="bg-[#414141] text-white p-2 md:w-[380px] w-[85%] rounded-md outline-none border-none focus:ring-0"
         value={selectedCustomProductVariant}
         onChange={(e) => setSelectedCustomProductVariant(e.target.value)}
       >

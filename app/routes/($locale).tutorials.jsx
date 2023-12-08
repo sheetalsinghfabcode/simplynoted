@@ -3,6 +3,7 @@ import {defer} from '@remix-run/server-runtime';
 import {useEffect, useState} from 'react';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '~/components/CircularLoder';
+import DynamicTitle from '~/components/Title';
 
 export async function loader({context}) {
   const blog = await context.storefront.query(tutorialsData, {
@@ -44,17 +45,8 @@ export default function tutorials() {
 
   return (
     <div>
-      <div className="">
-        <div className="flex justify-center sm:text-[59px] text-[30px] mt-[39px] text-blue-800 font-bold">
-          Simply Noted 101
-        </div>
-
-        <div className="flex justify-center">
-          <img
-            className="mt-[21px] sm:w-auto w-[50%]"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-          />
-        </div>
+      <div className="px-5">
+      <DynamicTitle dynamicButton title="Simply Noted 101" className={'mt-[20px] md:text-[45px] text-[38px]'} />
         <div className="blog-page-button sm:flex grid gap-[13px] justify-center mt-[32px]">
           <button
             className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px]`}
