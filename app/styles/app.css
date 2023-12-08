@@ -1144,7 +1144,7 @@ body {
 .titleImage {
   background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
   background-position: center bottom !important;
-  background-size: 80% !important;
+  background-size: 100% !important;
 }
 
 /* .navbar-item:hover{
@@ -1160,6 +1160,7 @@ body {
 }
 .button-top {
   position: fixed;
+  z-index:10;
   padding: 1rem 1rem;
   font-size: 20px;
   bottom: 40px;
@@ -2347,7 +2348,7 @@ margin-left: 0px;
   }
   .simply-noted-marketing{
     width: 85%;
-    z-index:-1;
+  
     background-image: none;
     margin-left:auto;
     margin-right: auto;
@@ -2381,12 +2382,22 @@ margin-left: 0px;
     width:67%;
     margin-left: 5rem;
   }
+  .wrap-sample-form-sign{
+    width:93%;
+    padding: 10px;
+  }
   .sch-btn {
     font-size: 11px;
     margin-top: 10px;
     width: 70%;
     margin-left: 5rem;
     margin-bottom: 30px;
+  }
+  .signup-overview{
+    background-size: 100% 83%;
+    height: 585px;
+    margin-bottom: 0px;
+    width: 100%;
   }
   .input_email {
     width: 54%;
@@ -2449,6 +2460,9 @@ margin-left: 0px;
       margin: 0px;
      
     }
+    .signup-title {
+background-image: none;
+    }
     .thankyou_img {
       width: 41%;
       margin-top:6rem;
@@ -2470,11 +2484,7 @@ margin-left: 0px;
         }
     }
 @media only screen and (max-width:500px) {
-.signup-overview{
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 .simply-noted-marketing{
   width:100%;

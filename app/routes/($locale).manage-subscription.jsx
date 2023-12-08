@@ -534,19 +534,8 @@ const ManageSubscription = () => {
       />
       <>
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
-          <DynamicTitle
-            dynamicButton
-            // title={'Manage Plans and Prepaid Packages'}
-          />
-          <div className='flex justify-center'>
-          <h2 className='mt-[-22px]  text-[18px] font-bold text-[#001a5f]  font-sans'>Manage Plans and Prepaid Packages</h2>
-          </div>
-          <div className='flex justify-center text-center mt-[12px] mb-[27px]'>
-          <img
-            className="w-[100px]"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-          ></img>
-          </div>
+         
+         <DynamicTitle dynamicButton title="Manage Plans and Prepaid Packages" className={'mt-[15px] !text-[20px] '} />
 
           <div className="flex flex-col lg:flex-row w-full max-w-[1440px] gap-[30px] items-start">
             <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">

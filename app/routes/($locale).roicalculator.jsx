@@ -131,6 +131,7 @@ export default function RoiCalculator() {
                               max="100000"
                               value={inputValues.cardsSent}
                               onChange={(event) => {
+                                console.log('Slider Value:', event.target.value);
                                 setInputValues((prevInputValues) => {
                                   return {
                                     ...prevInputValues,
@@ -269,7 +270,7 @@ export default function RoiCalculator() {
                       <div className="roi-calculator-output-wrapper">
                         <div className="roiNumbers">
                           <div className="output-holders">
-                            <div className="roi-diveder-line"></div>
+                            {/* <div className="roi-diveder-line"></div> */}
                             <h2>ROI Breakdown</h2>
                             <div className="roi-small-heading"></div>
                             <div className="output-holder">

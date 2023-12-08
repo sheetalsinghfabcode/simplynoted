@@ -17,7 +17,7 @@ import linkdin from '../../assets/Image/Linkdin.svg';
 import fb from '../../assets/Image/fb.png';
 import twitter from '../../assets/Image/twitter.png';
 import DynamicButton from './DynamicButton';
-import top from '../../assets/Image/top.png';
+import top from '../../assets/Image/upward-arrow.png';
 import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
 import arrow_rights from '../../assets/Image/arrow-right-faq.png';
@@ -911,45 +911,7 @@ function FooterMenu({menu}) {
 
   return (
     <>
-      {/* {(menu?.items || []).map((item) => (
-        <section key={item.id} className={styles.section}>
-          <Disclosure>
-            {({open}) => (
-              <>
-                <Disclosure.Button className="text-left md:cursor-default">
-                  <Heading className="flex justify-between" size="lead" as="h3">
-                    {item.title}
-                    {item?.items?.length > 0 && (
-                      <span className="md:hidden">
-                        <IconCaret direction={open ? 'up' : 'down'} />
-                      </span>
-                    )}
-                  </Heading>
-                </Disclosure.Button>
-                {item?.items?.length > 0 ? (
-                  <div
-                    className={`${
-                      open ? `max-h-48 h-fit` : `max-h-0 md:max-h-fit`
-                    } overflow-hidden transition-all duration-300`}
-                  >
-                    <Suspense data-comment="This suspense fixes a hydration bug in Disclosure.Panel with static prop">
-                      <Disclosure.Panel static>
-                        <nav className={styles.nav}>
-                          {item.items.map((subItem) => (
-                            <FooterLink key={subItem.id} item={subItem} />
-                          ))}
-                        </nav>
-                      </Disclosure.Panel>
-                    </Suspense>
-                  </div>
-                ) : null}
-              </>
-            )}
-          </Disclosure>
-        </section>
-      ))} */}
-      {/* 
-<div className="bg-[#2d4271]  text-white"> */}
+     
       <div className="grid md:flex justify-evenly gap-[40px] lg:text-[16px] md:text-[12px] text-[17px] md:text-left text-center pt-[50px] pb-[30px] mx-auto w-[88%] ">
         <div className="md:mx-0 mx-auto">
           <div className="lg:w-48 md:w-28 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">

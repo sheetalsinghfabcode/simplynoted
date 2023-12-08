@@ -989,7 +989,7 @@ export default function FoldedCustomisableCard({
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 w-[480px]"
+                        className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px]"
                         id="frontTrimmedDiv"
                         style={{
                           height: '358px',
@@ -1020,7 +1020,7 @@ export default function FoldedCustomisableCard({
                   )) ||
                     (selectedCardPage === 'Card Inside' && (
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 h-[330px] w-[480px]"
+                        className="absolute flex justify-center items-center  text-center m-auto inset-0 h-[330px] sm:w-[480px] w-[330px]"
                         style={{
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -1056,7 +1056,7 @@ export default function FoldedCustomisableCard({
                           }}
                         ></div>
                         <div
-                          className="absolute flex justify-center items-center m-auto inset-0 w-[480px]"
+                          className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px]"
                           id="backTrimmedDiv"
                           style={{
                             height: '358px',

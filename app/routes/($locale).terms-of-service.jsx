@@ -1,24 +1,18 @@
 import React from 'react';
-
+import DynamicTitle from '~/components/Title';
 export default function Termsofser() {
   return (
     <div>
-      <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
+      <div className="flex justify-center md:w-[45%] mx-auto sm:w-[65%] w-[85%]">
         <div className="">
-          <p className=" mt-[54px] text-[31px] text-center text-[#001a5f]">
-            Terms of Services
-          </p>
-          <img
-            className="w-40 mt-3 mx-auto"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-          ></img>
+        <DynamicTitle dynamicButton title="Terms of service" className="mt-[20px]" />  
 
           <div className="sm:text-[14px] text-[12px] flex flex-col items-center">
-            <div className="md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className="w-[100%]  text-justify">
               <p className="mt-[25px] font-medium ">TERMS OF SERVICE</p>
               <p className="mt-[25px]  ">----</p>
             </div>
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">OVERVIEW</p>
               <p className="mt-[25px] ">
                 This website is operated by Simply Noted. Throughout the site,
@@ -65,7 +59,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 1 - ONLINE STORE TERMS
               </p>
@@ -97,7 +91,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 2 - GENERAL CONDITIONS
               </p>
@@ -126,7 +120,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 3 - ACCURACY, COMPLETENESS AND TIMELINESS OF INFORMATION
               </p>
@@ -149,7 +143,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 4 - MODIFICATIONS TO THE SERVICE AND PRICES
               </p>
@@ -168,7 +162,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 5 - PRODUCTS OR SERVICES
               </p>
@@ -203,7 +197,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 6 - ACCURACY OF BILLING AND ACCOUNT INFORMATION
               </p>
@@ -233,7 +227,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 7 - OPTIONAL TOOLS
               </p>
@@ -262,7 +256,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 8 - THIRD-PARTY LINKS
               </p>
@@ -290,7 +284,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 9 - USER COMMENTS, FEEDBACK AND OTHER SUBMISSIONS
               </p>
@@ -330,7 +324,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 10 - PERSONAL INFORMATION
               </p>
@@ -340,7 +334,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 11 - ERRORS, INACCURACIES AND OMISSIONS
               </p>
@@ -366,7 +360,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 12 - PROHIBITED USES
               </p>
@@ -396,7 +390,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 13 - DISCLAIMER OF WARRANTIES; LIMITATION OF LIABILITY
               </p>
@@ -448,7 +442,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 14 - INDEMNIFICATION
               </p>
@@ -464,7 +458,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 15 - SEVERABILITY
               </p>
@@ -479,7 +473,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 16 - TERMINATION
               </p>
@@ -504,7 +498,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 17 - ENTIRE AGREEMENT
               </p>
@@ -528,7 +522,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 18 - GOVERNING LAW
               </p>
@@ -540,7 +534,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 19 - CHANGES TO TERMS OF SERVICE
               </p>
@@ -559,7 +553,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 20 - ORDER ACCURACY
               </p>
@@ -573,7 +567,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 21 - CHANGES TO ORDERS
               </p>
@@ -586,7 +580,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
                 SECTION 22. PREPAID PACKAGES VALIDITY AND TERM
               </p>
@@ -601,7 +595,7 @@ export default function Termsofser() {
               </p>
             </div>
 
-            <div className=" md:w-[31%] sm:w-[62%] w-[80%] text-justify">
+            <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
               SECTION 23 - CONTACT INFORMATION
               </p>

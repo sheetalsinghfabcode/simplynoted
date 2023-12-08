@@ -1,6 +1,6 @@
 import {set} from 'js-cookie';
 import {useState} from 'react';
-
+import DynamicTitle from '~/components/Title';
 const apidocs = () => {
   const [selectedSection, setSelectedSection] = useState('Get Standard Cards');
 
@@ -96,14 +96,9 @@ const apidocs = () => {
 
   return (
     <div className="">
-      <div className="p-[40px]">
-        <h1 className="text-[50px] pb-[30px] font-karla text-center mt-[33px] font-extrabold leading-6">
-          API Docs
-          <div className="flex justify-center mt-[25px] h-[11px]">
-            <img src="https://simplynoted.com/cdn/shop/files/menu-underline.png" />
-          </div>
-        </h1>
-        <p className="text-[#001a5f] max-w-[40rem] font-bold mb-[28px] mt-[21px]  text-[20px] text-center mx-auto">
+      <div className="sm:px-[40px] px-[30px]">
+      <DynamicTitle dynamicButton title="API Docs" className={' !text-[42px]'} />  
+        <p className="text-[#001a5f] max-w-[40rem] font-bold mb-[28px] mt-[21px]  text-[20px] sm:text-center text-justify mx-auto">
           By using this API you will have full access to the same range of
           features found in our apps and website.
         </p>

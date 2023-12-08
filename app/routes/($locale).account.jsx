@@ -208,9 +208,9 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1344px] mx-auto px-[20px]">
-      <div className="flex lg:justify-between justify-center items-center lg:gap[0px] gap-[151px] md:mt-[0px] mt-[9px]">
-        <DynamicTitle title="Account" />  
+    <div className="w-full max-w-[1344px] mx-auto px-[30px]">
+      <div className="flex justify-between mx-[24px] items-center lg:gap[0px] gap-[151px] md:mt-[0px] mt-[9px]">
+        <DynamicTitle title="Account" className="!text-[24px]" />  
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
@@ -220,7 +220,7 @@ function Account({customer, heading, featuredData}) {
           />
         </Form>
       </div>
-      <div className="flex gap-[20px]  lg:ml-[0px] justify-center flex-wrap">
+      <div className="flex gap-[20px]   ml-[24px] flex-wrap">
         <DynamicButton
           text="Account detail"
           className={`flex justity-center md:h-[39px] h-[36px] items-center md:text-[15px] text-[10px] border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
