@@ -178,7 +178,7 @@ export default function Login() {
             <p className="align-baseline text-sm mt-6">
               New to {shopName}? &nbsp;
               <Link className="text-xs inline underline" to="/account/register">
-             create an account
+             Create an account
               </Link>
             </p>
             <Link

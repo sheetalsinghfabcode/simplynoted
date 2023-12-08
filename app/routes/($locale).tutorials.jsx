@@ -100,7 +100,7 @@ export default function tutorials() {
                   filteredArticles.map((article) => (
                     <div
                       key={article.node.id}
-                      className="flex flex-col mr-4 bg-white text-black"
+                      className="flex flex-col  bg-white text-black"
                       style={{maxWidth: '363px'}}
                     >
                       <div className="flex-1">

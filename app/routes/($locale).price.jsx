@@ -14,8 +14,8 @@ export default function price() {
           </p>
         </div>
         <div className="Credit Packs text-center">
-          <h1 className="text-blue-800 font-semibold text-6xl">Credit Packs</h1>
-          <h3 className=" mt-[18px] text-gray-700 font-thin text-[19px] text-center ">
+          <h1 className="text-blue-800 font-semibold lg:text-6xl text-[26px]">Credit Packs</h1>
+          <h3 className=" mt-[18px] text-gray-700 font-thin lg:text-[19px] text-[15px] text-center ">
             Save time and money by pre purchasing credits. 1 credit equates to 1
             complete send.
           </h3>

@@ -101,7 +101,7 @@ export default function blog() {
 
       <div className="flex justify-center">
         <input
-          className="sm:min-w-[453px] sm:h-[57px] min-w-[80%]  h-100%  mt-[40px]"
+          className="sm:min-w-[453px] sm:h-[57px] min-w-[80%]  h-100%  md:mt-[40px] mt-[33px]"
           type="text"
           placeholder="Search"
           value={searchQuery}
@@ -121,7 +121,7 @@ export default function blog() {
                 paginatedArticles.map((article) => (
                   <div
                     key={article.node.id}
-                    className="flex flex-col mr-4 bg-white text-black"
+                    className="flex flex-col  bg-white text-black"
                     style={{maxWidth: '363px'}}
                   >
                     <div className="flex-1">

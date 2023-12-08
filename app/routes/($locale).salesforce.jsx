@@ -17,7 +17,7 @@ export default function Salesforce() {
           <div className="text-white text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
               COMING SOON
             </div>
-            <div className="text-[44px] font-karla  text-[#001a5f]" style={{lineHeight: '0.75'}}>
+            <div className="lg:text-[44px] text-[35px] font-karla  text-[#001a5f]" style={{lineHeight: '0.75'}}>
               Salesforce{' '}
               <span
                 style={{fontFamily: 'Beauty, Handwriting', fontSize: '200%'}}
