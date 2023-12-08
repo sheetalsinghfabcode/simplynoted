@@ -258,9 +258,9 @@ export default function Zapier() {
        
         <img className="lg:block absolute hidden left-0 mt-[-18rem]" src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556" alt="shopify" />
       
-          <img className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] " src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="shopify" />
+          <img className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-13rem] " src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="shopify" />
           <img className="lg:block hidden absolute mt-[100px] right-0 " src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087" alt="shopify" />
-          <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
+          <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
             Integrate with Zapier
             <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
             <DynamicButton

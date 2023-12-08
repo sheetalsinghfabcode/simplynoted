@@ -1081,7 +1081,7 @@ export default function AddCartFunc() {
                               />
                               <text >
                                 {' '}
-                                I agree with{' '}
+                                &nbsp;I agree with{' '}
                                 <span className="underline decoration-solid">
                                   <a href="/policies/terms-of-service">
                                     Terms of service
@@ -1113,7 +1113,7 @@ export default function AddCartFunc() {
                     </div>
                   )}
                   <div className="w-[85%] m-auto mt-10 mb-10">
-                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[75%]">
+                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%]">
                       <h3 className="text-[30px] font-karla text-[#1b5299]">
                         NOTE
                       </h3>

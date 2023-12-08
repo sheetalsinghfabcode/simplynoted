@@ -199,10 +199,10 @@ export default function CustomProducts() {
            ${ customProductData.length === 0 && metafields.length === 0 && "opacity-40"} `}>
             <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px]">
               <div
-                className={`swimlane md:flex hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full md:mb-0 sm:mb-[-14rem] mb-[-10rem]`}
+                className={`swimlane flex flex-col hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full mb-0 `}
               >
                 <div className="md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10 w-mobileGallery md:w-[600px] md:h-[386px] h-[56%] w-full">
+          'aspect-square snap-center card-image bg-white dark:bg-contrast/10  md:w-[92%] md:h-[386px] h-[100%] w-full ">
                   {customProductData &&
                     metafields &&
                     metafields.cardType == 'folded5x7' && (
@@ -213,7 +213,7 @@ export default function CustomProducts() {
                             ? customProductData.images[imageShow].originalSrc
                             : foldBack
                         }
-                        className="object-contain  fadeIn md:w-[600px] md:h-[386px] h-[56%] w-full"
+                        className="object-contain  fadeIn md:w-[583px] md:h-[386px] h-full w-full"
                       />
                     )}
                     {/* {metafields && metafields.face.zoom}------ */}
@@ -226,7 +226,7 @@ export default function CustomProducts() {
                           ? customProductData.images[imageShow].originalSrc
                           : flatCardImg
                       }
-                      className="object-contain w-[550px] h-[400px] fadeIn w-full"
+                      className="object-contain  fadeIn  md:w-[583px] md:h-[386px] h-full w-full"
                     />
                   )}
                 </div>
@@ -234,13 +234,13 @@ export default function CustomProducts() {
                   customProductData.images.length > 1 &&
                   metafields &&
                   metafields.cardType == 'folded5x7' && (
-                    <div className="flex w-[35rem]">
+                    <div className="flex md:w-[92%] w-full gap-[10px]">
                       <button
                         style={{
                           backgroundColor:
                             imageShow == '0' ? '#001a5f' : '#ef6e6e',
                         }}
-                        className={`bg-[#1b5299] m-5 ml-[32px] w-full p-2 text-[#fff]`}
+                        className={`bg-[#1b5299]  w-full p-2 text-[#fff]`}
                         onClick={() => setImageShow(0)}
                       >
                         VIEW CARD FRONT
@@ -250,7 +250,7 @@ export default function CustomProducts() {
                           backgroundColor:
                              imageShow == '1' ? '#001a5f' : '#ef6e6e',
                         }}
-                        className="bg-[#EF6E6E] m-5 ml-[32px] w-full p-2 text-[#fff]"
+                        className="bg-[#EF6E6E]   w-full p-2 text-[#fff]"
                         onClick={() => setImageShow(1)}
                       >
                         VIEW CARD BACK

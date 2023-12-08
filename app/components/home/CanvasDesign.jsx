@@ -62,8 +62,8 @@ const CanvasDesign = () => {
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
-          <div className="  text-3xl font-karla text-[#001A5F]">
+        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center ">
+          <div className="  text-3xl font-karla text-[#001A5F] mb-7">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
@@ -136,9 +136,9 @@ const CanvasDesign = () => {
 
  {/* mobile view */}
  <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
-          <div className="  text-3xl font-karla text-[#001A5F]">
+          <div className="  text-3xl font-karla text-[#001A5F] mb-7 ">
           Unlimited card{' '}
-            <span className="font-beauty text-6xl font-bold">optionss</span>
+            <span className="font-beauty text-6xl font-bold">options</span>
           </div>
           <div className="w-full">
             <video className="w-full" autoPlay loop muted>
@@ -204,7 +204,7 @@ const CanvasDesign = () => {
 
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
-          <div className="  text-3xl font-karla text-[#001A5F]">
+          <div className="  text-3xl font-karla text-[#001A5F] mb-7">
             Gift cards &{' '}
             <span className="font-beauty text-6xl font-bold">inserts</span>
           </div>
