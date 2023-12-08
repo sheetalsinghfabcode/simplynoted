@@ -24,7 +24,6 @@ export default function tutorials() {
     article.node.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -117,7 +116,7 @@ export default function tutorials() {
                   ))
                 ) : (
                   <div className="font-medium text-2xl  text-blue">
-                   <h1 className='font-cursive'> No Blog Toturials Found</h1>
+                    <h1 className="font-cursive"> No Blog Toturials Found</h1>
                   </div>
                 )}
               </>

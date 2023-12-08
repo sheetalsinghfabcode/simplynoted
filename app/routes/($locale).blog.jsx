@@ -58,8 +58,8 @@ export default function blog() {
   );
 
   console.log('endIndex', endIndex);
-  console.log("startIndex",startIndex)
-  console.log("currentPage",currentPage)
+  console.log('startIndex', startIndex);
+  console.log('currentPage', currentPage);
 
   return (
     <div className="">
@@ -138,7 +138,7 @@ export default function blog() {
                 ))
               ) : (
                 <div className="font-medium text-2xl font-cursive text-blue">
-                  No Blog Blog Found
+                  No Blog Found
                 </div>
               )}
 
@@ -154,11 +154,9 @@ export default function blog() {
                 </button>
                 <button
                   className={`bg-blue-500 text-white w-[123px]  p-2 ${
-                   endIndex===42
-                      ? 'cursor-not-allowed opacity-50'
-                      : ''
+                    endIndex === 42 ? 'cursor-not-allowed opacity-50' : ''
                   }`}
-                  disabled={endIndex===42}
+                  disabled={endIndex === 42}
                   onClick={handleLoadMore}
                 >
                   Next.

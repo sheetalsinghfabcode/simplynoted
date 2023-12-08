@@ -834,7 +834,7 @@ export default function FoldedCustomisableCard({
             ></input>
             <br />
             <button
-              className="bg-[#1b5299] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5"
+              className="bg-[#1b5299] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[100%] h-[43px] mt-5"
               type="button"
               onClick={handleCustomCardSaveButton}
             >

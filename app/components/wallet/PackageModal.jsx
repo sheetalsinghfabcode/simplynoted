@@ -82,7 +82,7 @@ const PackageModal = ({
               filteredWalletData.map((product, index) => (
                 <div
                   key={product.node.title}
-                  className={`col-span-1 p-[20px] ${
+                  className={`col-span-1 p-[11px] ${
                     (stripeCollection?.error &&
                       product.node.title === 'Free') ||
                     product.node.title.toLowerCase() ===

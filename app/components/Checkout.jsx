@@ -251,7 +251,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                 <Modal children={<Elements stripe={stripe}>
                     {!savedCard &&
                     <div className='w-[100%] border border-solid border-black p-3 mt-7'>
-                        <div className='grid-rows-2 flex gap-3 md:flex-row flex-col'>
+                        <div className='lg:grid-rows-2 grid  flex gap-3 md:flex-row flex-col'>
                             <div>
                                 <label htmlFor="">Full Name</label>
                                 <input
@@ -315,7 +315,7 @@ export function CheckoutData({ setShowCartPage, StripeKey,totalPrize }) {
                                 className='mt-2 border border-solid border-black p-3 w-[100%]' />
 
                         </div>
-                        <div className='grid-rows-2 flex gap-3 md:flex-row flex-col'>
+                        <div className='lg:grid-rows-2 grid flex gap-3 md:flex-row flex-col'>
                             <div>
                                 <label
                                     className="block text-gray-700 text-sm font-bold mb-2"

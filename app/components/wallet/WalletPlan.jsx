@@ -48,11 +48,11 @@ const WalletPlans = ({
         className="!bg-[#EF6E6E] mb-[18px]"
       />
 
-      <div className="grid grid-cols-3 mx-auto gap-[20px]">
+      <div className=" lg:flex grid mx-auto gap-[20px]">
         {WalletData.collection.products.edges.map((product, index) => (
           <div
             key={product.node.title}
-            className={`col-span-1 p-[20px] ${
+            className={`col-span-1 p-[11px] ${
               (stripeCollection?.error && product.node.title === 'Free') ||
               product.node.title.toLowerCase() ===
                 stripeCollection.stripe?.subscription
