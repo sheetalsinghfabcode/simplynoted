@@ -137,9 +137,10 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
 
   return (
     <div className="w-full max-w-[1440px] p-[20px] mx-auto">
+      <div className='overflow-auto'>
       <table className="mx-auto table bg-white">
         <thead>
-          <tr className="h-[120px]">
+          <tr className="h-[120px] overflow-auto">
             <th className="text-center py-4  px-10"></th>
             {pricingPlans
               .slice(0)
@@ -214,6 +215,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

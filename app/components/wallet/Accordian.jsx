@@ -356,7 +356,7 @@ const Accordion = ({
         <div className="border rounded">
           {isBillingOpen && (
             <div className="w-full max-w-[650px]  mx-auto border border-solid border-black p-3 mt-3">
-              <div className="grid-rows-2 flex gap-3">
+              <div className="grid-rows-2 lg:flex grid gap-3">
                 <div className="w-full">
                   <label htmlFor="">Full Name</label>
                   <input
@@ -428,7 +428,7 @@ const Accordion = ({
                   className="mt-2 border border-solid border-black p-3 w-[100%]"
                 />
               </div>
-              <div className="grid-rows-2 flex gap-3">
+              <div className="grid-rows-2 lg:flex grid gap-3">
                 <div className="w-full">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"

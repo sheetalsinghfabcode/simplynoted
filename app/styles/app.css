@@ -466,12 +466,8 @@ nav a {
     width: 100%;
   }
 
-  .table thead {
-    display: none; /* Hide the table header on narrow screens */
-  }
-
   .table tbody {
-    display: block;
+    /* display: block; */
     width: 100%;
   }
 

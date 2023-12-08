@@ -149,7 +149,7 @@ export default function price() {
                 <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Real Pen-written notes & envelopes
                 </p>
-                <a href="#" className="absolute left-[60px]  md:ml-[0px] ml-[-31px] bottom-[36px]">
+                <a href="#" className="absolute lg:left-[60px] left-[54px]  md:ml-[0px] lg:ml-[-31px] ml-[0px] lg:bottom-[36px] bottom-[56px]">
                   Learn More →
                 </a>
               </div>
@@ -163,7 +163,7 @@ export default function price() {
                 <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Fully Customizable Designs
                 </p>
-                <a href="#" className="absolute left-[41px] bottom-[36px]">
+                <a href="#" className="absolute lg:left-[41px] left-[61px] lg:bottom-[36px] bottom-[58px]">
                   Learn More →
                 </a>
               </div>
@@ -177,7 +177,7 @@ export default function price() {
                 <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Unlimited Integrations
                 </p>
-                <a href ="#" className="absolute left-[41px] bottom-[36px]">
+                <a href ="#" className="absolute lg:left-[41px] left-[52px] lg:bottom-[36px] bottom-[59px]">
                   Learn More →
                 </a>
               </div>
@@ -191,7 +191,7 @@ export default function price() {
                 <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Custom Campaigns
                 </p>
-                <a href ="#" className="absolute left-[41px] bottom-[36px]">
+                <a href ="#" className="absolute lg:left-[41px] left-[57px] lg:bottom-[36px] bottom-[62px]">
                   Learn More →
                 </a>
               </div>
@@ -205,7 +205,7 @@ export default function price() {
                 <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Gift-card Add-ons
                 </p>
-                <a href="#" className="absolute left-[41px] bottom-[36px]">
+                <a href="#" className="absolute lg:left-[41px] left-[53px] lg:bottom-[36px] bottom-[59px]">
                   Learn More →
                 </a>
               </div>
@@ -214,7 +214,7 @@ export default function price() {
                 <p className="text-blue-900 text-center font-bold lg:text-[13px] text-[12px] tracking-tight leading-6">
                   Transparent Pricing
                 </p>
-                <a href="#" className="absolute left-[41px] bottom-[36px]">
+                <a href="#" className="absolute lg:left-[41px] left-[58px] lg:bottom-[36px] bottom-[59px]">
                   Learn More →
                 </a>
               </div>

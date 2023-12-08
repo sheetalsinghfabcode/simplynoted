@@ -16,7 +16,7 @@ export function Modal({children, cancelLink}) {
           <div
             className="relative flex-1 px-4 pt-5 pb-4 overflow-hidden text-left transition-all 
             transform rounded shadow-xl
-              sm:my-12 sm:flex-none sm:w-full sm:max-w-[600px] sm:p-6 bg-[#FFF6F6]"
+              sm:my-12 sm:flex-none sm:w-full md:max-w-[600px] max-w-[447px]  sm:p-6 bg-[#FFF6F6]"
             role="button"
             onClick={(e) => {
               e.stopPropagation();
@@ -26,14 +26,14 @@ export function Modal({children, cancelLink}) {
             }}
             tabIndex={0}
           >
-            <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
+            <div className="absolute top-0 right-0  pt-4 pr-4 sm:block">
               <button
                 // to={cancelLink}
                 onClick={cancelLink}
                 className="p-4 -m-4 transition text-primary hover:text-primary/50"
               >
-                <IconClose aria-label="Close panel" />
-              </button>
+                <IconClose className="md:mr-[-12px] mr-[-16px] mt-[-34px]" aria-label="Close panel" />
+              </button> 
             </div>
             {children}
           </div>

@@ -22,7 +22,7 @@ const WalletPurchase = ({
 
 
   return (
-    <div className="w-full max-w-[1366px] mx-auto px-[20px] py-[40px] bg-white">
+    <div className="max-w-[1366px] mx-auto px-[20px] mt-[72px] py-[40px] ml-[14px] mr-[14px] bg-white">
       <div className="max-w-[750px] mx-auto p-[50px] border border-solid border-[#ef6e6e]">
         <div className="flex justify-center">
           <DynamicButton
@@ -48,10 +48,10 @@ const WalletPurchase = ({
           <span>${subscription === 'Always Free' ? amount : total}</span>
         </div>
 
-        <div className="flex justify-between items-center mt-[24px]">
+        <div className=" lg:flex grid lg:justify-between justify-center lg:gap-[0px] gap-[12px] items-center mt-[24px]">
           <DynamicButton
             text="Go Back"
-            className="!bg-[#EF6E6E] font-karla w-full max-w-[150px] uppercase text-[16px] "
+            className="!bg-[#EF6E6E] font-karla w-full  uppercase text-[16px]"
             onClickFunction={() => {
               setWalletPurchase(false);
               setWalletPlan(true);
