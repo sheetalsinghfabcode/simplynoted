@@ -159,23 +159,25 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
 
                 return (
                   <th key={index} className="text-center  py-4 px-10">
-                    <span className="text-lg text-[#000] uppercase block">
+                    <div className='sm:none flex text-center sm:items-center items-center gap-[5px]'>
+                    <span className="sm:text-lg text-[12px] text-[#000] uppercase block">
                       {plan.name}
                     </span>
-                    <span className="text-sm text-[#000] leading-[150%] block">
+                    <span className="sm:text-lg text-[12px] sm:w-[89px] w-[75px] text-[#000] leading-[150%] block">
                       As low as
                     </span>
-                    <span className="text-2xl font-bold text-[#000] block">
+                    <span className="sm:text-lg text-[12px] sm:w-[70px] w-[61px] font-bold text-[#000] block">
                       {plan.price}
                     </span>
-                    <span className="text-sm text-[#000] leading-[150%] block">
+                    <span className="sm:text-lg text-[12px] sm:w-[70px] w-[55px] text-[#000] leading-[150%] block">
                       per card
                     </span>
+                    </div>
                     {/* ... Plan details */}
                     {renderButton ? (
                       <DynamicButton
                         onClickFunction={plan.onClick}
-                        className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] rounded-full h-[40px] px-6`}
+                        className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] w-full rounded-full h-[40px] px-6`}
                         text={plan.buttonText}
                       />
                     ) : (

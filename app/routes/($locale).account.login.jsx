@@ -89,9 +89,9 @@ export default function Login() {
     }
   }
   return (
-    <div className="flex justify-center mt-12 mb-24 px-4">
+    <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
       <div className="max-w-md w-full"> 
-        <h1 className="  name text-4xl text-blue-900">Sign in</h1>
+        <h1 className="name text-4xl text-blue-900">Sign in</h1>
         <img className='mt-2 w-32' src='https://simplynoted.com/cdn/shop/files/menu-underline.png'/>
         <p className='mt-[12px] text-black text-opacity-80 text-xs'>If you have an account with us, please log in.</p>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
@@ -174,7 +174,7 @@ export default function Login() {
               Sign in
             </button>
           </div>
-          <div className="md:flex grid justify-between items-center mt-8 border-t border-gray-300">
+          <div className="md:flex grid justify-between items-center sm:mt-8 mt-4 border-t border-gray-300">
             <p className="align-baseline text-sm mt-6">
               New to {shopName}? &nbsp;
               <Link className="text-xs inline underline" to="/account/register">

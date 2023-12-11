@@ -6,7 +6,7 @@ const DynamicTitle = ({title, title2, dynamicButton,text,setOrderHisory,classNam
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   return (
-    <div className="flex justify-center items-center mt-[2.5rem] mb-[3rem]">
+    <div className="flex justify-center items-center sm:mt-[2.5rem] mb-[1rem]  sm:mb-[3rem] mb-[1rem]">
       <div className="grid items-center w-full">
         {dynamicButton && (
           <div>

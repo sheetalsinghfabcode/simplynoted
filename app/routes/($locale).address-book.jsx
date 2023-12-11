@@ -71,7 +71,7 @@ export default function AddressBook() {
 
   return (
     <div className="bg-[#e0e9f8] relative w-full max-w-[1440px] mx-auto px-[20px]">
-      <div className={`w-full max-w-[1440px]  mx-auto`}>
+      <div className={`w-full max-w-[1440px] sm:mt-[0px] mt-[20px]  mx-auto`}>
         <DynamicTitle dynamicButton title={'Address Book'} />
         {!addressForm && !selectedAddress && (
           <div className="w-full">
