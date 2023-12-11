@@ -95,7 +95,7 @@ export default function Register() {
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
   return (
-    <div className="flex justify-center mt-12 mb-24 px-4">
+    <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
       <div className="max-w-md w-full">
         <h1 className="text-4xl block text-blue-900 text-2xl">Create an Account.</h1>
         <img className='w-64 mt-3'src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/>
@@ -103,7 +103,7 @@ export default function Register() {
         <Form 
           method="post"
           noValidate
-          className="pt-6 pb-8 mt-4 mb-4 space-y-3"
+          className="pt-6 pb-8 mt-4 mb-[-175px] space-y-3"
         >
           {actionData?.formError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">

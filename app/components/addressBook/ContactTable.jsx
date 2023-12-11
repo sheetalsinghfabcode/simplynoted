@@ -580,7 +580,7 @@ const ContactTable = ({
 
           {!editAddress && (
             <>
-              <div className="flex gap-[16px] items-center mb-[14px]">
+              <div className="flex gap-[16px] items-center sm:mt-[0px] mt-[12px] mb-[14px]">
                 {selectedCheckboxes &&
                   selectedCheckboxes.length > 0 &&
                   !ProdcuctSide && (

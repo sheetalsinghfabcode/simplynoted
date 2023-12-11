@@ -66,7 +66,7 @@ export default function blog() {
     <div className="px-5">
      <DynamicTitle dynamicButton title="Simply Noted 101" className={'mt-[20px] md:text-[45px] text-[38px]'} />
 
-      <div className="blog-page-button sm:flex grid gap-[13px] justify-center mt-[32px]">
+      <div className="blog-page-button sm:flex flex gap-[13px] justify-center mt-[32px]">
         <button
           className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] bg-red-500 text-white`}
           type="button"
@@ -102,7 +102,7 @@ export default function blog() {
       </div>
       <div className="flex justify-center gap-1">
         <div
-          className="flex gap-4 flex-wrap justify-center items-start mt-[100px]"
+          className="flex gap-4 flex-wrap justify-center items-start mb-[-40px] mt-[40px]"
           style={{maxWidth: '793px'}}
         >
           {loader ? (

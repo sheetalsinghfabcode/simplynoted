@@ -20,14 +20,13 @@ const {selectedPlan,amount,packageProduct,subscriptionProduct,subscriptionTitle,
         <div className="modal-container bg-white w-11/12 md:max-w-[60%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
           <div className="modal-content py-4  px-6">
           
-          <div className="flex justify-between items-center mt-[10px] text-[16px] font-medium text-[#001a5f]">
-          <span>Selected Prepaid Package: {selectedPlan} </span>
-          <span>${parseFloat(amount).toFixed(2) || 0}</span>
+          <div className="flex justify-between items-center mt-[10px]  text-[#001a5f]">
+          <span className="">Selected Prepaid Package: {selectedPlan} </span>
+          <span className="">${parseFloat(amount).toFixed(2) || 0}</span>
         </div>
-
-        <div className="flex justify-between items-center py-[10px] mt-[10px] border-y border-solid border-[#cfcfcf] text-[16px] font-medium text-[#001a5f]">
-          <span>Total</span>
-          <span>${parseFloat(amount).toFixed(2)}</span>
+        <div className="flex justify-between items-center py-[10px] mt-[10px] border-y border-solid border-[#cfcfcf]   text-[#001a5f]">
+          <span className="">Total</span>
+          <span className="">${parseFloat(amount).toFixed(2)}</span>
           </div>
             <div className="modal-footer w-full flex justify-center items-center gap-[12px] mt-[20px]">
            

@@ -223,7 +223,7 @@ function MenuMobileNav({menu, onClose}) {
                         <div className="">
                           <ul
                             onClick={onClose}
-                            className="text-thin"
+                            className="text-thin ml-[8px]"
                             style={{color: 'black'}}
                           >
                             <Link to="/collections/best-sellers">
@@ -280,7 +280,7 @@ function MenuMobileNav({menu, onClose}) {
                       <div>
                         <ul
                           onClick={onClose}
-                          className="integration-color"
+                          className="integration-color ml-[8px]"
                           style={{color: 'black'}}
                         >
                           <Link to="/zapier">
@@ -328,7 +328,7 @@ function MenuMobileNav({menu, onClose}) {
                       <div className="">
                         <ul
                           onClick={onClose}
-                          className="text-thin"
+                          className="text-thin ml-[8px]"
                           style={{color: 'black'}}
                         >
                           <Link to="/price">
@@ -373,7 +373,7 @@ function MenuMobileNav({menu, onClose}) {
                       <div className="">
                         <ul
                           onClick={onClose}
-                          className="text-thin"
+                          className="text-thin ml-[8px]"
                           style={{color: 'black'}}
                         >
                           <Link to="/blog">

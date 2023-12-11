@@ -48,7 +48,7 @@ const WalletPurchase = ({
           <span>${subscription === 'Always Free' ? amount : total}</span>
         </div>
 
-        <div className=" lg:flex grid lg:justify-between justify-center lg:gap-[0px] gap-[12px] items-center mt-[24px]">
+        <div className=" lg:flex grid lg:justify-between justify-center lg:gap-[11px] gap-[12px] items-center mt-[24px]">
           <DynamicButton
             text="Go Back"
             className="!bg-[#EF6E6E] font-karla w-full  uppercase text-[16px]"
@@ -64,7 +64,7 @@ const WalletPurchase = ({
               setWalletPurchase(false);
               setWalletPayment(true);
             }}
-            className="!bg-[#EF6E6E] font-karla uppercase text-[16px]"
+            className="!bg-[#EF6E6E] font-karla w-full uppercase text-[16px]"
           />
         </div>
       </div>
