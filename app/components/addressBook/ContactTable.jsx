@@ -523,7 +523,7 @@ const ContactTable = ({
         />
       ) : (
         <div className="w-full max-w-[100%]">
-          <div className="flex flex-col lg:flex-row gap-y-[40px] gap-y-[25px] justify-between items-center">
+          <div className="flex flex-col lg:flex-row gap-y-[4px] gap-y-[25px] justify-between items-center">
             <input
               type="text"
               placeholder="Search Addresses..."
@@ -533,7 +533,7 @@ const ContactTable = ({
             />
              <div className="lg:flex grid self-center">
               <div
-                className={`border-[1px]  md:w-[310px] w-[280px]  border-dashed border-[#000] py-[5px]`}
+                className={`border-[1px]  md:w-[310px] sm:w-[280px] w-full  border-dashed border-[#000] py-[5px]`}
               >
                 <div className="flex flex-col">
                   <h2 className="font-bold md:text-[16px] text-[12px] text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
@@ -570,7 +570,7 @@ const ContactTable = ({
               </div>
               <div className="flex md:items-end justify-center lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299] lg:w-[88px] w-[232px] text-[11px]"
+                  className="bg-[#1b5299]  md:w-[232px] w-full text-[11px]"
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />

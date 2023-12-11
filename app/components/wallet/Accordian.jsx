@@ -6,7 +6,9 @@ import {loadStripe} from '@stripe/stripe-js';
 import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
-import { useStateContext } from '~/context/StateContext';
+import {useStateContext} from '~/context/StateContext';
+import arrow_rights from '../../../assets/Image/arrow-right-faq.png';
+import arrow_down from '../../../assets/Image/arrow-down.png';
 
 const Accordion = ({
   StripeKey,
@@ -127,8 +129,7 @@ const Accordion = ({
       if (json) {
         setSavedCard(json.payments);
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   }
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
@@ -220,7 +221,7 @@ const Accordion = ({
 
       const data = await response.json();
       if (data) {
-        (id, data);
+        id, data;
       }
       // Handle the response data here
     } catch (error) {
@@ -351,7 +352,13 @@ const Accordion = ({
           onClick={toggleBilling}
         >
           <span className="font-semibold">Billing Address</span>
-          <span className="mr-2">{isBillingOpen ? '▼' : '►'}</span>
+          <span className="mr-2">
+            {isBillingOpen ? (
+              <img className="h-[12px]" src={arrow_down} alt="" />
+            ) : (
+              <img className="h-[12px]" src={arrow_rights} alt="" />
+            )}
+          </span>
         </div>
         <div className="border rounded">
           {isBillingOpen && (
@@ -492,7 +499,13 @@ const Accordion = ({
             onClick={toggleCardInfo}
           >
             <span className="font-semibold">Credit Card Information</span>
-            <span className="mr-2">{isCardInfoOpen ? '▼' : '►'}</span>
+            <span className="mr-2">
+              {isCardInfoOpen ? (
+                <img className="h-[12px]" src={arrow_down} alt="" />
+              ) : (
+                <img className="h-[12px]" src={arrow_rights} alt="" />
+              )}
+            </span>
           </div>
           {isCardInfoOpen && (
             <>

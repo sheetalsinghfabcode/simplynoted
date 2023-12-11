@@ -361,7 +361,13 @@ const {selectedPlan,amount,packageProduct,subscriptionProduct,subscriptionTitle,
                 onClick={toggleBilling}
               >
                 <span className="font-semibold">Billing Address</span>
-                <span className="mr-2">{isBillingOpen ? '▼' : '►'}</span>
+                <span className="mr-2">{isBillingOpen ? (
+ <></>
+                ) : (
+<></>
+                )} 
+                
+             </span>
               </div>
               <div className="border rounded">
                 {isBillingOpen && (
