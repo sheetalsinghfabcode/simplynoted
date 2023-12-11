@@ -512,7 +512,7 @@ const apidocs = () => {
             </li>
           </ol>
         </div>
-        <div className=" sidebar h-[500px] overflow-y-scroll border-1 border-solid w-[70%] p-[12px]">
+        <div className=" sidebar h-[500px] overflow-y-scroll border-1  border-solid w-[70%] p-[12px]">
           {selectedSection === 'API ENDPOINTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
@@ -646,39 +646,38 @@ const apidocs = () => {
                 <pre className="leading-6	 text-xs bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
-                  "result" [<br />
+                  &nbsp; "result" [<br />
                   &#123;
                   <br />
-                  "id": '4392451768425',
+                  &nbsp; "id": '4392451768425',
                   <br />
-                  "title": "Cactus Thank you",
+                  &nbsp; "title": "Cactus Thank you",
                   <br />
-                  "image":
-                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
+                  &nbsp; "image": "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
                   <br />
                   &#125;,
                   <br />
                   &#123;
                   <br />
-                  "id": '4392452522089',
+                  &nbsp; "id": '4392452522089',
                   <br />
-                  "title": "Cactus Thanks So Much",
+                  &nbsp; "title": "Cactus Thanks So Much",
                   <br />
-                  "image":
+                  &nbsp; "image":
                   "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thanks-So-Much.jpg?v=1574659363"
                   <br />
                   &#125;,
                   <br />
                   &#123;
                   <br />
-                  "id": '4442013139049',
+                  &nbsp; "id": '4442013139049',
                   <br />
-                  "title": "Dark Red Holiday Card",
+                  &nbsp; "title": "Dark Red Holiday Card",
                   <br />
-                  "image":
+                  &nbsp; "image":
                   "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Red.HolidayCard.jpg?v=1576524937"
                   <br />
-                  &#125; ],
+                  &#125;<br />],
                   <br />
                   "errors": []
                   <br />
@@ -873,67 +872,68 @@ const apidocs = () => {
               </div>
               <pre className="leading-6 text-xs	 bg-gray-200 p-[22px] overflow-hidden">
                 &#123; <br />
-                "result": &#123;
+                &nbsp; "result": &#123;
                 <br />
-                "product":
+                &nbsp;  &nbsp; "product":&#123;
                 <br />
-                "id": 7046027575401, <br />
-                "title": "Testing Cards", <br />
-                "body_html": null, <br />
-                "vendor": "SimplyNoted", <br />
-                "product_type": "customisable card", <br />
-                "created_at": "2023-09-13T06:22:28-07:00", <br />
-                "handle": "testing-cards", <br />
-                "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                "published_at": "2023-09-13T06:22:28-07:00", <br />
-                "template_suffix": null, <br />
-                "published_scope": "web", <br />
-                "tags": "customise_card", <br />
-                "status": "active", <br />
-                "admin_graphql_api_id": "gid://shopify/Product/7046027575401”,{' '}
+                &nbsp;  &nbsp; "id": 7046027575401, <br />
+                &nbsp;  &nbsp; "title": "Testing Cards", <br />
+                &nbsp; &nbsp;  "body_html": null, <br />
+                &nbsp; &nbsp;  "vendor": "SimplyNoted", <br />
+                &nbsp; &nbsp;  "product_type": "customisable card", <br />
+                &nbsp; &nbsp;  "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; &nbsp;  "handle": "testing-cards", <br />
+                &nbsp; &nbsp;  "updated_at": "2023-09-13T06:22:29-07:00", <br />
+                &nbsp; &nbsp;  "published_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; &nbsp;  "template_suffix": null, <br />
+                &nbsp; &nbsp;  "published_scope": "web", <br />
+                &nbsp; &nbsp;  "tags": "customise_card", <br />
+                &nbsp; &nbsp;  "status": "active", <br />
+                &nbsp; &nbsp;  "admin_graphql_api_id": "gid://shopify/Product/7046027575401”,{' '}
                 <br />
-                "images": [ <br />
-                &#123; "id": 30856642232425, <br />
-                "product_id": 7046027575401,
+                &nbsp;  &#125;<br />
+                &nbsp;"images": [ <br />
+                &nbsp;   &#123;<br /> 
+                &nbsp;     "id": 30856642232425, <br />
+                &nbsp;     "product_id": 7046027575401,
                 <br />
-                "position": 1, <br />
-                "created_at": "2023-09-13T06:22:28-07:00", <br />
-                "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                "alt": "front_img", <br />
-                "width": 495,
+                &nbsp;     "position": 1, <br />
+                &nbsp;     "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;     "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;     "alt": "front_img", <br />
+                &nbsp;     "width": 495,
                 <br />
-                "height": 350,
+                &nbsp;     "height": 350,
                 <br />
-                "src":
+                &nbsp;     "src":
                 "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",
                 <br />
-                "variant_ids": [], <br />
-                "admin_graphql_api_id":
-                "gid://shopify/ProductImage/30856642232425" <br />
-                &#125; ], <br />
-                "image": &#123; <br />
-                "id": 30856642232425,
+                &nbsp;     "variant_ids": [], <br />
+                &nbsp;     "admin_graphql_api_id":
+                &nbsp;     "gid://shopify/ProductImage/30856642232425" <br />
+                &nbsp;    &#125; <br />
+                  &nbsp;  ], <br />
+                &nbsp; "image": &#123; <br />
+                &nbsp;    "id": 30856642232425,
                 <br />
-                "product_id": 7046027575401, <br />
-                "position": 1, <br />
-                "created_at": "2023-09-13T06:22:28-07:00", <br />
-                "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                "alt": "front_img", <br />
-                "width": 495, <br />
-                "height": 350, <br />
-                "src":
+                &nbsp;    "product_id": 7046027575401, <br />
+                &nbsp;    "position": 1, <br />
+                &nbsp;    "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;    "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;    "alt": "front_img", <br />
+                &nbsp;    "width": 495, <br />
+                &nbsp;    "height": 350, <br />
+                &nbsp;    "src":
                 "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",{' '}
                 <br />
-                "variant_ids": [], "admin_graphql_api_id":
-                "gid://shopify/ProductImage/30856642232425" <br />
-                &#125;
-                <br /> &#125;
-                <br /> &#125;
+                &nbsp;    "variant_ids": [], "admin_graphql_api_id":
+                &nbsp;    "gid://shopify/ProductImage/30856642232425"
+                &nbsp;         <br /> &#125;
+          
                 <br />
                 "errors": [] <br />
-                &#125;
-              </pre>
-
+                 &#125;
+                </pre>
               <div className="mt-[7px]">
                 <h2 className="text-[#001a5f] font-karla  mt-[13px] font-bold ml-2">
                   Error:
@@ -1101,70 +1101,71 @@ const apidocs = () => {
                   Returns on success:
                 </h2>
               </div>
-              <pre className="leading-6	 text-xs p-[22px] bg-gray-200  mt-7px">
+              <pre className="leading-6	lg:w-full w-[619px] text-xs p-[22px] bg-gray-200  mt-7px">
                 &#123;
                 <br />
-                "result": &#123;
+                &nbsp; "result": &#123;
                 <br />
-                "product": &#123; <br />
-                "id": 70460275754
+                &nbsp;    "product": &#123; <br />
+                &nbsp;      "id": 70460275754
                 <br />
-                "title": "Testing Cards", <br />
-                "body_html": null, <br />
-                "vendor": "SimplyNoted", <br />
-                "product_type": "customisable card", <br />
-                "created_at": "2023-09-13T06:22:28-07:00", <br />
-                "handle": "testing-cards", <br />
-                "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                "published_at": "2023-09-13T06:22:28-07:00", <br />
-                "template_suffix": null, <br />
-                "published_scope": "web", <br />
-                "tags": "customise_card", <br />
-                "status": "active", <br />
-                "admin_graphql_api_id": "gid://shopify/Product/7046027575401",{' '}
+                &nbsp;      "title": "Testing Cards", <br />
+                &nbsp;      "body_html": null, <br />
+                &nbsp;      "vendor": "SimplyNoted", <br />
+                &nbsp;      "product_type": "customisable card", <br />
+                &nbsp;      "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;      "handle": "testing-cards", <br />
+                &nbsp;      "updated_at": "2023-09-13T06:22:29-07:00", <br />
+                &nbsp;      "published_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;      "template_suffix": null, <br />
+                &nbsp;      "published_scope": "web", <br />
+                &nbsp;      "tags": "customise_card", <br />
+                &nbsp;      "status": "active", <br />
+                &nbsp;      "admin_graphql_api_id":"gid://shopify/Product/7046027575401",{' '}
                 <br />
-                "variants": &#123;
+                &nbsp;   "variants": &#123;
                 <br />
-                &#123;
+                &nbsp;       &#123;
                 <br />
-                "id": 40730910490729, <br />
-                "product_id": 7046027575401, <br />
-                "title": "2 - 500", <br />
-                "price": "4.35", <br />
-                "sku": "", <br />
-                "position": 1, <br />
-                "inventory_policy": "deny", <br />
-                "compare_at_price": null, <br />
-                "fulfillment_service": "manual", <br />
-                "inventory_management": null, <br />
-                "option1": "2 - 500", <br />
-                "option2": null, <br />
-                "option3": null, <br />
-                "created_at": "2023-09-13T06:22:28-07:00", <br />
-                "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                "taxable": true, <br />
-                "barcode": null, <br />
-                "grams": 0, <br />
-                "image_id": null, <br />
-                "weight": 0, <br />
-                "weight_unit": "lb", <br />
-                "inventory_item_id": 42829245382761, <br />
-                "inventory_quantity": 0, <br />
-                "old_inventory_quantity": 0, <br />
-                "requires_shipping": true, <br />
-                "admin_graphql_api_id":
-                "gid://shopify/ProductVariant/40730910490729" <br />
-                &#125; <br />
-                &#123;
+                &nbsp;         "id": 40730910490729, <br />
+                &nbsp;         "product_id": 7046027575401, <br />
+                &nbsp;         "title": "2 - 500", <br />
+                &nbsp;         "price": "4.35", <br />
+                &nbsp;         "sku": "", <br />
+                &nbsp;         "position": 1, <br />
+                &nbsp;         "inventory_policy": "deny", <br />
+                &nbsp;         "compare_at_price": null, <br />
+                &nbsp;         "fulfillment_service": "manual", <br />
+                &nbsp;         "inventory_management": null, <br />
+                &nbsp;         "option1": "2 - 500", <br />
+                &nbsp;         "option2": null, <br />
+                &nbsp;         "option3": null, <br />
+                &nbsp;         "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;         "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;         "taxable": true, <br />
+                &nbsp;         "barcode": null, <br />
+                &nbsp;         "grams": 0, <br />
+                &nbsp;         "image_id": null, <br />
+                &nbsp;         "weight": 0, <br />
+                &nbsp;         "weight_unit": "lb", <br />
+                &nbsp;         "inventory_item_id": 42829245382761, <br />
+                &nbsp;         "inventory_quantity": 0, <br />
+                &nbsp;         "old_inventory_quantity": 0, <br />
+                &nbsp;         "requires_shipping": true, <br />
+                &nbsp;         "admin_graphql_api_id":<br/>
+                &nbsp;         "gid://shopify/ProductVariant/40730910490729" <br />
+                &nbsp;    &#125; <br />
+                &nbsp;      &#123;
                 <br />
-                "id": 40730910523497, <br />
-                "product_id": 7046027575401, <br />
-                "created_at": "2023-09-13T06:22:28-07:00", <br />
-                "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                "inventory_item_id": 42829245415529, <br />
-                "admin_graphql_api_id":
-                "gid://shopify/ProductVariant/40730910523497" <br />
-                &#125; "errors": []
+                &nbsp;         "id": 40730910523497, <br />
+                &nbsp;         "product_id": 7046027575401, <br />
+                &nbsp;         "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;         "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp;         "inventory_item_id": 42829245415529, <br />
+                &nbsp;         "admin_graphql_api_id":<br />
+                &nbsp;         "gid://shopify/ProductVariant/40730910523497" <br />
+                &nbsp;     &#125; <br />
+                &nbsp;   "errors": []
                 <br />
                 &#125;
                 <br />
@@ -1179,29 +1180,29 @@ const apidocs = () => {
                 <pre className="leading-6	text-xs bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
-                  "cardName": "Happy Birthday",
-                  <br /> "cardType": "flat5x7",
+                  &nbsp;  "cardName": "Happy Birthday",<br />
+                  &nbsp;  "cardType": "flat5x7",
                   <br />
-                  "frontImage": ,<br /> "isHeaderIncluded": true,
-                  <br /> "isFooterIncluded": true,
-                  <br /> "header": &#123;
-                  <br /> "isImage": true
-                  <br /> &#125; <br />
-                  "footer": &#123;
+                  &nbsp;  "frontImage": ,<br />
+                  &nbsp;  "isFooterIncluded": true,<br />
+                  &nbsp;  "header": &#123;<br />
+                  &nbsp;  "isImage": true
+          <br /> &#125; <br />
+                  &nbsp; "footer": &#123;
                   <br />
-                  "data": "Yours Sincerely", <br />
-                  "textAlign": "left", <br />
-                  "justifyContent": "center", <br />
-                  "flexDirection": "column", <br />
-                  "fontType": "Trebuchet MS", <br />
-                  "fontSize": 20, <br />
-                  "fontColor": "rgb(0, 0, 255)", <br />
-                  "zoom": "1", <br />
-                  "isImage": false <br />
+                  &nbsp;    "data": "Yours Sincerely", <br />
+                  &nbsp;    "textAlign": "left", <br />
+                  &nbsp;    "justifyContent": "center", <br />
+                  &nbsp;    "flexDirection": "column", <br />
+                  &nbsp;    "fontType": "Trebuchet MS", <br />
+                  &nbsp;    "fontSize": 20, <br />
+                  &nbsp;    "fontColor": "rgb(0, 0, 255)", <br />
+                  &nbsp;    "zoom": "1", <br />
+                  &nbsp;    "isImage": false <br />
                   &#125; <br />
-                  "headerImage": , <br />
-                  "footerImage": , <br />
-                  "backImage": , <br />
+                  &nbsp;    "headerImage": , <br />
+                  &nbsp;    "footerImage": , <br />
+                  &nbsp;    "backImage": , <br />
                   &#125;
                   <br />
                 </pre>
@@ -1251,15 +1252,15 @@ const apidocs = () => {
               <pre className="leading-6	 text-sm  p-[22px] bg-gray-200  mt-7px">
                 &#123;
                 <br />
-                "result": <br />
-                "successfulDeletions": [ <br />
-                "7072904347753", <br />
-                "7073022279785" <br />
+                &nbsp;   "result": <br />
+                &nbsp;     "successfulDeletions": [ <br />
+                &nbsp;     "7072904347753", <br />
+                &nbsp;     "7073022279785" <br />
                 ], <br />
-                "failedDeletions": [ <br />
-                123456789000 <br />
+                &nbsp; "failedDeletions": [ <br />
+                &nbsp;     "123456789000" <br />
                 ] <br />
-                "errors": [] <br />
+                &nbsp;  "errors": [] <br />
                 &#125;
               </pre>
             </div>
@@ -2390,28 +2391,28 @@ const apidocs = () => {
                 <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
-                  "result": &#123;
+                  &nbsp; "result": &#123;
                   <br />
-                  "_id": "5e1b61a80d9234514cb1e983a",
+                  &nbsp; "_id": "5e1b61a80d9234514cb1e983a",
                   <br />
-                  "productId": "4460979552361",
+                  &nbsp; "productId": "4460979552361",
                   <br />
-                  "handwritingStyle": "Tarzan",
+                  &nbsp; "handwritingStyle": "Tarzan",
                   <br />
-                  "customMessage": "This is my custom message",
+                  &nbsp; "customMessage": "This is my custom message",
                   <br />
-                  "ownerId": "5e1a6f1d63458234017a962a3",
+                  &nbsp; "ownerId": "5e1a6f1d63458234017a962a3",
                   <br />
-                  "updated": "2020-01-01T00:00:00.000Z",
+                  &nbsp; "updated": "2020-01-01T00:00:00.000Z",
                   <br />
-                  "created": "2020-01-01T00:00:00.000Z",
+                  &nbsp; "created": "2020-01-01T00:00:00.000Z",
                   <br />
-                  "__v": 0<br />
+                  &nbsp; "__v": 0<br />
                   &#125;
                   <br />
                   "errors": []
                   <br />
-                  &#125v;
+                  &#125;
                 </pre>
               </div>
               <div>
@@ -2419,11 +2420,14 @@ const apidocs = () => {
                   Example:
                 </h2>
                 <pre className="text-sm leading-6	  bg-gray-200 p-[22px] overflow-hidden">
-                  &#123; <br />"productId": "4460979552361",
-                  <br /> "handwritingStyle": "Tarzan",
-                  <br /> "customMessage": "This is my custom message"
+                  &#123; <br />
+                  &nbsp; "productId": "4460979552361",
+                  <br /> 
+                  &nbsp; "handwritingStyle": "Tarzan",
+                  <br /> 
+                  &nbsp; "customMessage": "This is my custom message"
                   <br />
-                  &#125v;
+                  &#125;
                 </pre>
               </div>
             </div>
@@ -2483,43 +2487,43 @@ const apidocs = () => {
                   "result": [<br />
                   &#123;
                   <br />
-                  "_id": "5e1b5123fe1a7f10021c2b04",
+                  &nbsp;  "_id": "5e1b5123fe1a7f10021c2b04",
                   <br />
-                  "productId": "4460979552361",
+                  &nbsp;  "productId": "4460979552361",
                   <br />
-                  "handwritingStyle": "Tarzan",
+                  &nbsp;  "handwritingStyle": "Tarzan",
                   <br />
-                  "customMessage": "This is my custom message",
+                  &nbsp;  "customMessage": "This is my custom message",
                   <br />
-                  "ownerId": "5e1a6f1d616d871237a962a3",
+                  &nbsp;  "ownerId": "5e1a6f1d616d871237a962a3",
                   <br />
-                  "updated": "2020-01-12T18:00:25.020Z",
+                  &nbsp;  "updated": "2020-01-12T18:00:25.020Z",
                   <br />
-                  "created": "2020-01-12T18:00:25.020Z",
+                  &nbsp;  "created": "2020-01-12T18:00:25.020Z",
                   <br />
-                  "__v": 0<br />
+                  &nbsp;  "__v": 0<br />
                   &#125;
                   <br />
                   &#123;
                   <br />
-                  "_id": "5e1b61a80d92f711231e983a",
+                  &nbsp;  "_id": "5e1b61a80d92f711231e983a",
                   <br />
-                  "productId": "4460979552361",
+                  &nbsp;  "productId": "4460979552361",
                   <br />
-                  "handwritingStyle": "Tarzan",
+                  &nbsp;  "handwritingStyle": "Tarzan",
                   <br />
-                  "customMessage": "This is my custom message 2",
+                  &nbsp;  "customMessage": "This is my custom message 2",
                   <br />
-                  "ownerId": "5e1a6f1d616d871237a962a3",
+                  &nbsp;  "ownerId": "5e1a6f1d616d871237a962a3",
                   <br />
-                  "updated": "2020-01-12T18:12:56.945Z",
+                  &nbsp;  "updated": "2020-01-12T18:12:56.945Z",
                   <br />
-                  "created": "2020-01-12T18:12:56.945Z",
+                  &nbsp;  "created": "2020-01-12T18:12:56.945Z",
                   <br />
-                  "__v": 0<br />
+                  &nbsp;  "__v": 0<br />
                   &#125;
                   <br />
-                  ], "errors": []
+                  ],<br /> "errors": []
                   <br />
                   &#125;
                   <br />
