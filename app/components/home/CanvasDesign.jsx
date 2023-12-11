@@ -63,7 +63,7 @@ const CanvasDesign = () => {
 
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center ">
-          <div className="  text-3xl font-karla text-[#001A5F] mb-7">
+          <div className="  text-3xl font-karla text-[#001A5F] mb-5">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
@@ -72,19 +72,19 @@ const CanvasDesign = () => {
               <source src={First} type="video/webm"></source>
             </video>
           </div>
-          <div className="text-left mt-10 texts">
+          <div className="text-justify mt-5 !leading-7 texts">
             Simply Noteds platform makes sending 1,000s of real penwritten notes
             as quick and easy as sending just 1. It has never been easier to
             scale your personal touch and leave lasting impressions!
           </div>
           <DynamicButton
             text="START WRITTING"
-            className="btn1 w-[85%]"
+            className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
           <DynamicButton
             text="TUTORIALS"
-            className="btn2 w-[85%] mt-5"
+            className="btn2 w-full mt-5"
             onClickFunction={() => navigate('/blogs')}
           />
         </div>
@@ -136,7 +136,7 @@ const CanvasDesign = () => {
 
  {/* mobile view */}
  <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
-          <div className="  text-3xl font-karla text-[#001A5F] mb-7 ">
+          <div className="  text-3xl font-karla text-[#001A5F] mb-5 ">
           Unlimited card{' '}
             <span className="font-beauty text-6xl font-bold">options</span>
           </div>
@@ -145,7 +145,7 @@ const CanvasDesign = () => {
               <source src={First} type="video/webm"></source>
             </video>
           </div>
-          <div className="texts text-left mt-5">
+          <div className="texts text-justify !leading-7 mt-5">
           Use our cards, send us yours or design your own! Simply Noted
               offers a wide array of cards to choose from and a powerful custom
               create a card tool. Over 95% of our clients are businesses and use
@@ -153,7 +153,7 @@ const CanvasDesign = () => {
           </div>
           <DynamicButton
             text="OUR CARDS"
-            className="btn1 w-[85%]"
+            className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
           
@@ -204,7 +204,7 @@ const CanvasDesign = () => {
 
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
-          <div className="  text-3xl font-karla text-[#001A5F] mb-7">
+          <div className="  text-3xl font-karla text-[#001A5F] mb-5">
             Gift cards &{' '}
             <span className="font-beauty text-6xl font-bold">inserts</span>
           </div>
@@ -213,14 +213,14 @@ const CanvasDesign = () => {
               <source src={Third} type="video/webm"></source>
             </video>
           </div>
-          <div className="texts text-left mt-5">
+          <div className="texts text-justify !leading-7 mt-5">
             Simply Noted makes it easy to send gift cards from your favorite
             stores with each order. From $5 Starbucks cards to $100 Visas,
             there's a gift card to match any budget.
           </div>
           <DynamicButton
             text="START WRITTING"
-            className="btn1 w-[85%]"
+            className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
          

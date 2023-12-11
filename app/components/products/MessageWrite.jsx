@@ -1402,7 +1402,7 @@ export function MessageWriting({
                   </>
                 )}
                 <span className="flex items-center font-bold">OR</span>
-                <div className="m-auto sm:w-[33%] w-[80%] grid ">
+                <div className="m-auto sm:w-[33%] w-full grid ">
                   <DynamicButton
                     className="bg-[#1b5299] text-[11px] md:mb-6 mb-2 w-full"
                     text="Select from Address Book"

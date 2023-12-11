@@ -1167,7 +1167,7 @@ export default function FlatCustomisableCard({
       )}
 
       <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 lg:flex-row flex-col">
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap  lg:flex-row flex-col">
           <div
             className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 "
             style={{minHeight: '564px'}}
@@ -1175,7 +1175,7 @@ export default function FlatCustomisableCard({
             <div className="sm:min-w-[500px] min-w-[347px] md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
               <GoBackButton />
             </div>
-            <span className="text-2xl mb-2 md:mt-0 mt-[4rem]">
+            <span className="text-2xl mb-2 md:mt-[45px] mt-[4rem]">
               Custom Flat {selectedCardPage}
             </span>
             <div>
@@ -1381,12 +1381,13 @@ export default function FlatCustomisableCard({
             </div>
           </div>
           <div
-            className="flex flex-col justify-between md:items-left items-baseline lg:mt-[9rem] mt-[30px] md:ml-[0px] ml-[47px]  gap-5 min-h-[330px] min-w-[240px] flex-1"
+            className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[9rem] mt-[30px]  lg:ml-[47px]  mx-auto gap-5  flex-1 sm:w-[50%] w-[80%]"
             // style={{marginTop: '9rem'}}
+          
           >
             {selectedCardPage === 'Card Front' && (
               <>
-                <div className="relative w-[60px] h-[50px]">
+                <div className="relative w-[60px] h-[50px] lg:mt-[-9rem] mt-0 ">
                   <img
                     src={AddImageIcon}
                     alt="Add image file icon"
@@ -1402,7 +1403,7 @@ export default function FlatCustomisableCard({
                     />
                   )}
                 </div>
-                <div className="h-[200px]">
+                <div className="h-auto mt-[40px]">
                   {selectedCardPage === 'Card Front' &&
                     (frontImageDetails.imageBlobUrl ||
                       frontImageDetails.blackAndWhiteImageBlobUrl) && (
@@ -1482,8 +1483,8 @@ export default function FlatCustomisableCard({
                   </div>
                 </div>
                 <div
-                  className="flex justify-between items-center text-white gap-1 "
-                  style={{width: '75%'}}
+                  className="flex justify-between items-center text-white gap-1 lg:w-[90%]  w-[100%] "
+                
                 >
                   <button
                     className={`${
@@ -1510,9 +1511,9 @@ export default function FlatCustomisableCard({
                     Footer
                   </button>
                 </div>
-                <div className="flex min-h-[330px] w-full sm:flex-row flex-col">
-                  <div className="flex flex-1">
-                    <div className="flex flex-col">
+                <div className="flex min-h-[330px]  sm:flex-row flex-col items-center sm:w-auto w-[100%]">
+                  <div className="flex flex-1 sm:w-[50%] w-[95%]">
+                    <div className="flex flex-col w-full">
                       <label htmlFor="custom-text">
                         <span className="font-semibold">
                           {observingData.isHeader
@@ -1522,6 +1523,7 @@ export default function FlatCustomisableCard({
                         <br />
                         <input
                           id="custom-text"
+                          className='w-full'
                           type="text"
                           placeholder={`Enter ${
                             observingData.isHeader ? 'header' : 'footer'
@@ -1599,7 +1601,7 @@ export default function FlatCustomisableCard({
                         <br />
                         <select
                           id="font-family-selection"
-                          className="min-w-[207px]"
+                          className="w-full"
                           value={
                             observingData.isHeader
                               ? headerData.fontFamily
@@ -1724,7 +1726,7 @@ export default function FlatCustomisableCard({
                         <br />
                         <select
                           id="font-size-selection"
-                          className="min-w-[200px]"
+                          className="w-full"
                           onChange={handleFontSizeChange}
                           value={
                             observingData.isHeader
@@ -1745,6 +1747,7 @@ export default function FlatCustomisableCard({
                         <br />
                         <select
                           id="font-color-selection"
+                          className='w-full'
                           onChange={handleFontColorChange}
                           value={
                             observingData.isHeader
@@ -1762,7 +1765,7 @@ export default function FlatCustomisableCard({
                       </label>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 sm:ml-10 ml-0">
+                  <div className="flex flex-col flex-1 sm:ml-[38px] ml-0">
                     <div className="relative mt-5 w-[60px] h-[50px]">
                       {observingData.isHeader && (
                         <>
@@ -1799,7 +1802,7 @@ export default function FlatCustomisableCard({
                       )}
                     </div>
                     <div className="flex flex-col gap-8 ">
-                      <div className="min-h-[150px] w-1/2">
+                      <div className="h-auto w-1/2">
                         {observingData.isHeader &&
                           headerData.imageFile &&
                           headerData.imageBlobUrl && (
@@ -1841,7 +1844,7 @@ export default function FlatCustomisableCard({
                               </div>
                               <div className="h-[40px] mt-5">
                                 <button
-                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
+                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-full font-bold"
                                   type="button"
                                   onClick={handleSelectedImageReset}
                                 >

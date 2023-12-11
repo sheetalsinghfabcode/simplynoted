@@ -5,7 +5,7 @@ import DynamicTitle from '~/components/Title';
 const Faq = () => {
   return (
     <>
-      <div className="mt-10 mx-8">
+      <div className="sm:mt-10 mt-7 mx-8">
       <DynamicTitle dynamicButton title="Simply Noted FAQs" className={'mt-[20px] md:text-[42px] text-[32px]'} />
 
         <FaqAccordion

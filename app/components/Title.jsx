@@ -6,7 +6,7 @@ const DynamicTitle = ({title, title2, dynamicButton,text,setOrderHisory,classNam
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   return (
-    <div className="flex justify-center items-center sm:mt-[2.5rem] mb-[1rem]  sm:mb-[3rem] mb-[1rem]">
+    <div className="flex justify-center items-center sm:mt-[2.5rem] sm:mb-[3rem] mt-[1rem] mb-[1rem]">
       <div className="grid items-center w-full">
         {dynamicButton && (
           <div>
@@ -20,7 +20,7 @@ const DynamicTitle = ({title, title2, dynamicButton,text,setOrderHisory,classNam
             />
           </div>
         )}
-        <div className="flex items-center justify-center w-full sm:mt-0 mt-[15px]">
+        <div className="flex items-center justify-center w-full sm:mt-0 mt-[10px]">
         <h2 className={`titleImage md:text-[30px] text-[28px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[10px] ${className} `}>            
         {title}
             <span className="font-beauty text-[60px] md:text-[70px] lg:text-[80px] ">

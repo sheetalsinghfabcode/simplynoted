@@ -8,7 +8,7 @@ export default function Salesforce() {
   return (
     <section>
       <div className="flex justify-center items-center">
-        <div className="lg:flex-row flex-col flex  mt-10" style={{maxWidth: '90%'}}>
+        <div className="lg:flex-row flex-col flex  sm:mt-10 mt-5" style={{maxWidth: '90%'}}>
         
           {/* first div left side */}
           <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
@@ -27,7 +27,7 @@ export default function Salesforce() {
               Integration
             </div>
             </div>
-            <div className="font-light mt-[14px] lg:w-[83%] w-full lg:text-left text-center text-[17px]">
+            <div className="font-light mt-[14px] lg:w-[83%] w-full lg:text-left sm:text-center text-justify text-[17px]">
               We go as far as to design the type of slant, spacing and stroke
               variability that goes into a unique personalized font. We can
               control everything from the slant of the lettering, tight spacing,
@@ -178,7 +178,7 @@ export default function Salesforce() {
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 ">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua.
@@ -199,7 +199,7 @@ export default function Salesforce() {
             />
           </div>
         </div>
-        <div className="lg:hidden block mb-10">
+        <div className="lg:hidden block sm:mb-10 mb-7">
           <div className=" sm:text-[46px] text-center  text-[32px] font-karla text-[#001A5F]">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
@@ -236,7 +236,7 @@ export default function Salesforce() {
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-7 ">
           Send one or send thousands
           </p>
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
@@ -255,7 +255,7 @@ export default function Salesforce() {
             />
           </div>
         </div>
-        <div className="lg:hidden block mb-10">
+        <div className="lg:hidden block sm:mb-10 mb-7">
           <div className="sm:text-[46px] text-center text-[32px] font-karla text-[#001A5F]">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
