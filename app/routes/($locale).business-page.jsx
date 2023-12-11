@@ -30,6 +30,77 @@ const Business = () => {
   const [customizable, setCustomizable] = useState('create_card');
   const BLOCK = {display: 'block'};
   const NONE = {display: 'none'};
+  const [formData, setFormData] = useState({
+   first_name:'',
+   last_name:'',
+ company:'',
+ phone:'',
+    email: '',
+    volume:'',
+    address:'',
+    city:'',
+    state:'',
+    zip:'',
+    information:'',
+  });
+
+  const handleChange = (e) => {
+ 
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  
+  }
+
+  function handleInput(event) {
+    const inputValue = event.target.value;
+    
+    const numericValue = inputValue.replace(/\D/g, '');
+    event.target.value = numericValue;
+  }
+
+  const handleSubmit=async(e)=>{
+    e.preventDefault();
+    try{
+      const form= new FormData();
+      for(const key in formData){
+        form.append(key,formData[key])
+      }
+      
+const url="https://hooks.zapier.com/hooks/catch/4135261/ollrgfc/"
+  
+const options = {
+  method: 'POST', 
+  body: form,
+};
+
+
+const response=await fetch(url, options)
+  if(response.ok){
+    console.log("Form Data sent successfully");
+     setFormData({
+      first_name:'',
+      last_name:'',
+    company:'',
+    phone:'',
+       email: '',
+       volume:'',
+       address:'',
+       city:'',
+       state:'',
+       zip:'',
+       information:'',
+     });
+  }else{
+    console.log("Failed to send data");
+  }
+} 
+  catch(error){
+    console.error('Error:', error);
+  }
+    }
+
+  
+
 
   return (
     <>
@@ -94,25 +165,31 @@ const Business = () => {
                 </div>
 
                 <div className="wrap-sample-form">
-                  <form className="hubForm" data-hs-cf-bound="true">
+                  <form className="hubForm" data-hs-cf-bound="true" onSubmit={handleSubmit}>
                     <div className="mt-[3rem] sm:text-[28px] text-[18px] text-center text-white leading-8">
                       Request a Writing Sample Packet
                     </div>
                     <div className="row">
                       <div className="white-underline">
                         <input
-                          required=""
+                          required
                           type="text"
-                          name="first-name"
+                          name="first_name"
+                          value={formData.first_name}
                           placeholder="First Name"
+                          onChange={handleChange}
+                          id="fname"
                         />
                       </div>
                       <div className="white-underline">
                         <input
-                          required=""
+                          required
                           type="text"
-                          name="last-name"
+                          name="last_name"
                           placeholder="Last Name"
+                          value={formData.last_name}
+                          id="lname"
+                          onChange={handleChange}
                         />
                       </div>
                     </div>
@@ -120,18 +197,27 @@ const Business = () => {
                     <div className="row">
                       <div className="white-underline">
                         <input
+                        required
                           type="text"
                           name="company"
                           placeholder="Company"
+                          value={formData.company}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="white-underline">
                         <input
-                          required=""
+                          required
                           type="tel"
                           name="phone"
+                          pattern="\d{10}"
+                          maxLength="10"
+                          value={formData.phone}
+                        
+                          onChange={handleChange}
+                          onInput={handleInput}
                           placeholder="Phone Number"
-                          id=""
+                          id="phoneInput"
                         />
                       </div>
                     </div>
@@ -139,15 +225,17 @@ const Business = () => {
                     <div className="row">
                       <div className="white-underline">
                         <input
-                          required=""
+                          required
                           type="email"
-                          name="email-address"
+                          name="email"
                           placeholder="Email"
+                          value={formData.email}
+                          onChange={handleChange}
                         />
                       </div>
                       <div className="white-underline">
-                        <select className="!text-[13px]" name="volume" id="">
-                          <option value="Expected Volume">
+                        <select required className="!text-[13px]" name="volume" id=""  onChange={handleChange}>
+                          <option  value={formData.volume} disabled selected hidden>
                             Expected Volume
                           </option>
                           <option value="100-500">100-500</option>
@@ -162,41 +250,55 @@ const Business = () => {
                       <div className="white-underline">
                         <input
                           type="text"
-                          name="Street Address"
+                          name="address"
+                          value={formData.address}
                           placeholder="Street Address"
+                          onChange={handleChange}
+                          required
                         />
                       </div>
                       <div className="white-underline">
                         <input
-                          required=""
-                          type="tel"
-                          name="City"
+                          required
+                          type="text"
+                          name="city"
+                          value={formData.city}
+                          onChange={handleChange}
                           placeholder="City"
                           id=""
+                          
                         />
                       </div>
                     </div>
 
                     <div className="row">
                       <div className="white-underline">
-                        <input type="text" name="State" placeholder="State" />
+                        <input type="text" name="state" value={formData.state} onChange={handleChange} placeholder="State" required />
                       </div>
                       <div className="white-underline">
                         <input
-                          required=""
-                          type="tel"
-                          name="Zip"
+                          required
+                          type="text"
+                          name="zip"
+                          value={formData.zip}
+                          pattern="\d{5}"
+                          maxlength="5"
                           placeholder="Zip"
-                          id=""
+                          id="zip"
+                          onChange={handleChange}
+                          onInput={handleInput}
                         />
                       </div>
                     </div>
 
                     <div className="white-underline !w-[100%]">
                       <input
+                      required
                         className="!w-full !px-0"
                         type="text"
-                        name="company"
+                        name="information"
+                        onChange={handleChange}
+                        value={formData.information}
                         placeholder="How did you hear about us?"
                       />
                     </div>
@@ -206,6 +308,7 @@ const Business = () => {
                       value="REQUEST SAMPLE"
                       className="sample-request"
                       id="Form-submit"
+                     
                     />
                   </form>
                 </div>
