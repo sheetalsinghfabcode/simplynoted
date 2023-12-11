@@ -16,7 +16,7 @@ import 'swiper/css/autoplay';
 export default function Zapier() {
   return (
     <div>
-      <div className="flex flex-wrap mt-[71px] justify-center mx-auto w-[90%]">
+      <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
         <div className="lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="zapier" />
@@ -24,7 +24,7 @@ export default function Zapier() {
             Zapier Integration
             </h2>
           </div>
-          <p className="lg:text-[18px] text-[20px] text-black font-light  w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[18px] text-[20px] text-black font-light  w-[100%] leading-8 lg:mt-0 mt-7  lg:text-justify sm:text-center text-justify">
           Integrate and automate sending real handwritten notes from 2,500+ softwares instantly. Request access to our Zapier App today!
           </p>
           <DynamicButton
@@ -33,10 +33,10 @@ export default function Zapier() {
                 "https://zapier.com/apps/simply-noted/integrations")
             }
             text="INTEGRATE NOW"
-            className="btn1 lg:mt-5 mt-10 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
+            className="btn1 !mt-5 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
           />
         </div>
-        <div className="lg:hidden block mb-10">
+        <div className="lg:hidden block sm:mb-10 mb-7">
           <img className="mx-auto" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="shopify" />
           <h2 className="sm:text-[46px]  text-[32px] font-normal font-karla text-[#001A5F]">
           Zapier Integration
@@ -50,7 +50,7 @@ export default function Zapier() {
         </div>
       </div>
 
-      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 mt-[74px]">
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[74px] mt-[40px]">
         <Swiper
           modules={[Autoplay]}
           direction={'horizontal'}
@@ -153,7 +153,7 @@ export default function Zapier() {
             Instantly Integrate With 1,000s of Applications
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
           Start your trigger by finding your app in the Zapier database
           </p>
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
@@ -176,7 +176,7 @@ export default function Zapier() {
             />
           </div>
         </div>
-        <div className="lg:hidden block mb-10 mt-10">
+        <div className="lg:hidden block sm:mb-10 mb-7 mt-10">
           <div className=" sm:text-[30px] text-center text-[32px] font-karla text-[#001A5F]">
           Instantly Integrate With 1,000s of Applications
           </div>
@@ -209,7 +209,7 @@ export default function Zapier() {
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
             Simply Noted integrates with your software and will do bulk sends in
             just a few minutes of your time.
           </p>

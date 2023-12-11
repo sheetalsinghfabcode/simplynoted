@@ -420,7 +420,7 @@ export default function RoiCalculator() {
           </div>
         </div>
         
-        <div className="relative overflow-hidden">
+        {/* <div className="relative overflow-hidden">
         <img
               className="lg:block hidden absolute mt-[-288px] right-[-426px] w-[45%] flex-row "
               src="https://simplynoted.com/cdn/shop/files/calculator-pens.png?v=16934020513361355499"
@@ -460,7 +460,7 @@ export default function RoiCalculator() {
           </div>
         </div>
        </div>
-       </div>
+       </div> */}
       </section>
     </>
   );

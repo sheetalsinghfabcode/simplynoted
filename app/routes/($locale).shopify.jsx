@@ -17,7 +17,7 @@ import 'swiper/css/autoplay';
 export default function shopify() {
   return (
     <div>
-      <div className="flex flex-wrap mt-[71px] justify-center mx-auto w-[90%]">
+      <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
         <div className="lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <img src={ShopifyIcon} alt="shopify" />
@@ -25,7 +25,7 @@ export default function shopify() {
               Shopify Integration
             </h2>
           </div>
-          <p className="lg:text-[18px] text-[20px] text-black font-light xl:w-[94%] w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[18px] text-[20px] text-black font-light xl:w-[94%] w-[100%] sm:leading-8 leading-6 lg:mt-0 mt-7  lg:text-justify sm:text-center text-justify">
             Delight your customers with automated real handwritten notes from
             your Shopify store. A personalized handwritten note makes the
             customer experience so much more memorable, and is a great way to
@@ -38,10 +38,10 @@ export default function shopify() {
                 'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
             }
             text="INTEGRATE NOW"
-            className="btn1 lg:mt-5 mt-10 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
+            className="btn1  !mt-5 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
           />
         </div>
-        <div className="lg:hidden block mb-10">
+        <div className="lg:hidden block sm:mb-10 mb-6">
           <img className="mx-auto" src={ShopifyIcon} alt="shopify" />
           <h2 className="sm:text-[46px]  text-[32px] font-normal font-karla text-[#001A5F]">
             Shopify Integration
@@ -55,7 +55,7 @@ export default function shopify() {
         </div>
       </div>
 
-      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 mt-[74px]">
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[74px] mt-[40px]">
         <Swiper
           modules={[Autoplay]}
           direction={'horizontal'}
@@ -159,7 +159,7 @@ export default function shopify() {
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
             nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
             erat, sed diam voluptua.
@@ -214,7 +214,7 @@ export default function shopify() {
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-10 ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
             Simply Noted integrates with your software and will do bulk sends in
             just a few minutes of your time.
           </p>

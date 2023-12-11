@@ -520,7 +520,7 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                     {formData?.firstName}, {formData?.lastName}, {formData?.address1}, {formData?.city}, {formData?.state}, {formData?.country}
                                 </div>
                             }
-                            <div className='row flex mt-4'>
+                            <div className='row flex mt-4 md:w-[53%] w-full'>
                                 <div className='buttonDiv pr-5 my-2'>
                                     <DynamicButton
                                         className="bg-[#1b5299]"
@@ -530,9 +530,9 @@ export function AddCart({ show, setProductShow, data, productData, editOrderValu
                                     />
                                 </div>
                                 {selectShipMode && selectShipMode.node.price.amount !== "0.0" &&
-                                    <div className='buttonDiv pr-5 m-2'>
+                                    <div className='buttonDiv pr-5 my-2'>
                                         <DynamicButton
-                                            className="bg-[#1b5299]"
+                                            className="bg-[#1b5299] text-[12px]"
                                             text="Enter the shipping address for the package"
                                             onClickFunction={() => onpenAddCardModal()}
                                         />

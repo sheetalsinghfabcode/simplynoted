@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <>
       <div className="md:max-w-full max-w-[400px] md:mr-auto mx-auto">
-        <div className="mt-10">
+        <div className="sm:mt-10 mt-7">
           <div className="m-auto max-w-[900px] px-[15px] ">
             <div className="video-text ">
               <h2 className="text-center capitalize md:text-[37px] text-[28px] text-[#001a5f] font-karla">
