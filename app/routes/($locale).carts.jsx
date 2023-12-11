@@ -1041,23 +1041,23 @@ export default function AddCartFunc() {
                   {totalPrize && (
                     <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
                       <div className="flex p-5 flex-wrap justify-evenly md:gap-0 gap-[10px]">
-                        <div className="md:w-[33%] sm:w-[47%] w-[100%] flex items-center justify-center ">
-                          <div className="buttonDiv pr-5 m-2">
+                        <div className="md:w-[33%] sm:w-[47%] w-[55%] flex items-center justify-center ">
+                          <div className="buttonDiv sm:pr-5 m-2 lg:text-[16px] sm:text-[11px] text-[8px]">
                             <button
-                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla lg:text-[16px] text-[11px] "
+                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla "
                               onClick={() => {
                                 clearCartBtn();
                               }}
                             >
                               <img
                                 src={Del}
-                                className="md:w-[20px] md:h-[20px] w-[14px] h-[14px] m-auto cursor-pointer text-[white] mr-1"
+                                className="md:w-[20px] md:h-[20px] w-[14px] h-[14px] m-auto cursor-pointer text-[white] mr-1 "
                               />
                               CLEAR SHOPPING CART
                             </button>
                           </div>
                         </div>
-                        <div className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center justify-center">
+                        <div className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center sm:justify-center justify-start sm:order-none order-[-1]">
                           <div className="mt-2 lg:text-2xl  sm:text-[15px] text-[20px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
                             <span className='md:mr-[2px]'>
                              
@@ -1071,9 +1071,9 @@ export default function AddCartFunc() {
                               </span>
                           </div>
                         </div>
-                        <div className="md:w-[30%] sm:w-[80%] w-full  mr-1 flex sm:justify-end justify-center">
+                        <div className="md:w-[30%] sm:w-[80%] w-auto  mr-1 flex justify-end ">
                           <div className="">
-                            <div className='lg:text-[18px] text-[12px]'>
+                            <div className='lg:text-[18px] text-[12px] sm:flex hidden'>
                               <input
                                 type="checkbox"
                                 onClick={() => setAgree(!agree)}
@@ -1109,6 +1109,22 @@ export default function AddCartFunc() {
                             </button>
                           </div>
                         </div>
+                        <div className='text-[9px] sm:hidden flex justify-end w-full'>
+                              <input
+                                type="checkbox"
+                                onClick={() => setAgree(!agree)}
+                                checked={agree}
+                              />
+                              <text >
+                                {' '}
+                                &nbsp;I agree with{' '}
+                                <span className="underline decoration-solid">
+                                  <a href="/policies/terms-of-service">
+                                    Terms of service
+                                  </a>
+                                </span>
+                              </text>
+                            </div>
                       </div>
                     </div>
                   )}

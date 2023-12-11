@@ -1765,7 +1765,7 @@ export default function FlatCustomisableCard({
                       </label>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 sm:ml-[38px] ml-0">
+                  <div className="flex sm:flex-col flex-row flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-center">
                     <div className="relative mt-5 w-[60px] h-[50px]">
                       {observingData.isHeader && (
                         <>
@@ -1801,8 +1801,8 @@ export default function FlatCustomisableCard({
                         </>
                       )}
                     </div>
-                    <div className="flex flex-col gap-8 ">
-                      <div className="h-auto w-1/2">
+                    <div className="flex sm:flex-col flex-col sm:items-baseline items-center gap-8  sm:w-full w-[45%]">
+                      <div className="h-auto sm:w-1/2 w-[90%] sm:ml-0 ml-[33px]">
                         {observingData.isHeader &&
                           headerData.imageFile &&
                           headerData.imageBlobUrl && (
@@ -1818,7 +1818,7 @@ export default function FlatCustomisableCard({
                                   onChange={handleZoomSliderChange}
                                 />
                               </div>
-                              <div className="flex justify-start items-center gap-5">
+                              <div className="flex justify-start items-center sm:gap-5 gap-2">
                                 <label htmlFor="bw-radio-btn">
                                   <input
                                     id="bw-radio-btn"
@@ -1842,7 +1842,7 @@ export default function FlatCustomisableCard({
                                   &nbsp;Color
                                 </label>
                               </div>
-                              <div className="h-[40px] mt-5">
+                              <div className="h-[40px] sm:mt-5 mt-2">
                                 <button
                                   className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-full font-bold"
                                   type="button"
@@ -1894,7 +1894,7 @@ export default function FlatCustomisableCard({
                               </div>
                               <div className="h-[40px] mt-5">
                                 <button
-                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-1/2 font-bold"
+                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-full font-bold"
                                   type="button"
                                   onClick={handleSelectedImageReset}
                                 >
@@ -1909,7 +1909,7 @@ export default function FlatCustomisableCard({
                     <div
                       className={` ${
                         qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-                      } w-[200px] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10`}
+                      } sm:w-[200px] w-[65%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10`}
                       onClick={handleQrSelectionButton}
                     >
                       <div>

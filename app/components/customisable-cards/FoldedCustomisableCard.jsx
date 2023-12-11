@@ -1148,7 +1148,7 @@ export default function FoldedCustomisableCard({
                 </span>
               </div>
             </div>
-            <div className="flex flex-col justify-between items-center gap-5 min-h-[330px] min-w-[240px] ">
+            <div className="flex flex-col justify-between items-center gap-5 min-w-[240px] ">
               {!(selectedCardPage === 'Card Inside') && (
                 <>
                   <div className="relative md:ml-[0px] ml-[-108px] w-[60px] h-[50px]">
@@ -1186,7 +1186,7 @@ export default function FoldedCustomisableCard({
                       </>
                     )}
                   </div>
-                  <div className="h-[200px]">
+                  <div className="h-auto">
                     {selectedCardPage === 'Card Front' &&
                       (frontImageDetails.imageBlobUrl ||
                         frontImageDetails.blackAndWhiteImageBlobUrl) && (
