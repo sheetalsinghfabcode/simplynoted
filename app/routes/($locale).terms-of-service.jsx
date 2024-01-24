@@ -5,7 +5,11 @@ export default function Termsofser() {
     <div>
       <div className="flex justify-center md:w-[45%] mx-auto sm:w-[65%] w-[85%]">
         <div className="">
-        <DynamicTitle dynamicButton title="Terms of service" className="mt-[20px]" />  
+          <DynamicTitle
+            dynamicButton
+            title="Terms of service"
+            className="mt-[20px]"
+          />
 
           <div className="sm:text-[14px] text-[12px] flex flex-col items-center">
             <div className="w-[100%]  text-justify">
@@ -597,10 +601,11 @@ export default function Termsofser() {
 
             <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">
-              SECTION 23 - CONTACT INFORMATION
+                SECTION 23 - CONTACT INFORMATION
               </p>
               <p className="mt-[25px] ">
-              Questions about the Terms of Service should be sent to us at support@simplynoted.com.
+                Questions about the Terms of Service should be sent to us at
+                support@simplynoted.com.
               </p>
             </div>
           </div>

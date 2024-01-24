@@ -134,7 +134,7 @@ export default function shopify() {
           </SwiperSlide>
         </Swiper>
       </div>
-      
+
       <div className="lg:flex lg:mt-0 mt-8 hidden gap-[30px] flex-wrap items-center overflow-hidden">
         <img
           className="card-image-shopify"
@@ -150,7 +150,7 @@ export default function shopify() {
           />
         </div>
       </div>
-{/* second */}
+      {/* second */}
       <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
@@ -194,8 +194,6 @@ export default function shopify() {
           />
         </div>
       </div>
-
-
 
       <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6">
         <img
@@ -255,39 +253,45 @@ export default function shopify() {
         />
       </div>
 
-
-
       <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto">
-        
         <div className="banner-detail text-center">
-       
-        <img className="lg:block absolute hidden left-0 mt-[-18rem]" src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556" alt="shopify" />
-      
-          <img className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-13rem] " src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/1024px-Shopify_logo_2018.svg_564a8f8d-db80-41ef-b750-3fddbe29354c.png?v=1612111934" alt="shopify" />
-          <img className="lg:block hidden absolute mt-[100px] right-0 " src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087" alt="shopify" />
+          <img
+            className="lg:block absolute hidden left-0 mt-[-18rem]"
+            src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+            alt="shopify"
+          />
+
+          <img
+            className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-13rem] "
+            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/1024px-Shopify_logo_2018.svg_564a8f8d-db80-41ef-b750-3fddbe29354c.png?v=1612111934"
+            alt="shopify"
+          />
+          <img
+            className="lg:block hidden absolute mt-[100px] right-0 "
+            src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+            alt="shopify"
+          />
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
             Integrate with Shopify
             <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
-            <DynamicButton
-                    text="INTEGRATE NOW"
-                    className="req-btn !ml-0 md:w-50%  !w-full"
-                     onClickFunction={()=>window.location.href=("https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb")}
-                
-            />
-            <DynamicButton
-                    text="SCHEDULE A DEMO"
-                    className="sch-btn !ml-0 md:w-50% !w-full"
-                     onClickFunction={()=>window.location.href=("https://meetings.hubspot.com/rick24")}
-                
-            />
-
+              <DynamicButton
+                text="INTEGRATE NOW"
+                className="req-btn !ml-0 md:w-50%  !w-full"
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
+                }
+              />
+              <DynamicButton
+                text="SCHEDULE A DEMO"
+                className="sch-btn !ml-0 md:w-50% !w-full"
+                onClickFunction={() =>
+                  (window.location.href = 'https://meetings.hubspot.com/rick24')
+                }
+              />
             </div>
           </div>
-          
-        
-       
         </div>
-       
       </div>
     </div>
   );

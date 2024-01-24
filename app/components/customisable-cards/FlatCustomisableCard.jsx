@@ -220,7 +220,7 @@ export default function FlatCustomisableCard({
       window.removeEventListener('scroll', scrollHandler);
     };
   }, [isScrollerRemoved]);
-  
+
   useEffect(() => {
     setQr((prevQrValues) => {
       return {
@@ -1123,7 +1123,7 @@ export default function FlatCustomisableCard({
 
             <div className="h-[100px]">
               <img
-                class="object-contain h-full"
+                className="object-contain h-full"
                 src={qr.generatedQrImageLink}
               />
             </div>
@@ -1383,7 +1383,6 @@ export default function FlatCustomisableCard({
           <div
             className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[9rem] mt-[30px]  lg:ml-[47px]  mx-auto gap-5  flex-1 sm:w-[50%] w-[80%]"
             // style={{marginTop: '9rem'}}
-          
           >
             {selectedCardPage === 'Card Front' && (
               <>
@@ -1482,10 +1481,7 @@ export default function FlatCustomisableCard({
                     />
                   </div>
                 </div>
-                <div
-                  className="flex justify-between items-center text-white gap-1 lg:w-[90%]  w-[100%] "
-                
-                >
+                <div className="flex justify-between items-center text-white gap-1 lg:w-[90%]  w-[100%] ">
                   <button
                     className={`${
                       observingData.isHeader
@@ -1523,7 +1519,7 @@ export default function FlatCustomisableCard({
                         <br />
                         <input
                           id="custom-text"
-                          className='w-full'
+                          className="w-full"
                           type="text"
                           placeholder={`Enter ${
                             observingData.isHeader ? 'header' : 'footer'
@@ -1747,7 +1743,7 @@ export default function FlatCustomisableCard({
                         <br />
                         <select
                           id="font-color-selection"
-                          className='w-full'
+                          className="w-full"
                           onChange={handleFontColorChange}
                           value={
                             observingData.isHeader

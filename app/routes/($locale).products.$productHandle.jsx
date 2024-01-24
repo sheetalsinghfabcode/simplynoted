@@ -1,7 +1,7 @@
-import { useRef, Suspense } from 'react';
-import { Disclosure, Listbox } from '@headlessui/react';
-import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await, useLocation,useNavigate, } from '@remix-run/react';
+import {useRef, Suspense} from 'react';
+import {Disclosure, Listbox} from '@headlessui/react';
+import {defer, json, redirect} from '@shopify/remix-oxygen';
+import {useLoaderData, Await, useLocation, useNavigate} from '@remix-run/react';
 
 import {
   AnalyticsPageType,
@@ -28,34 +28,33 @@ import {
   AddToCartButton,
   Button,
 } from '~/components';
-import { getExcerpt } from '~/lib/utils';
-import { seoPayload } from '~/lib/seo.server';
-import { routeHeaders } from '~/data/cache';
-import { MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT } from '~/data/fragments';
-import { useState, useEffect } from 'react';
-import { BiSolidChevronLeft } from "react-icons/bi";
-import { BsXCircle } from "react-icons/bs";
+import {getExcerpt} from '~/lib/utils';
+import {seoPayload} from '~/lib/seo.server';
+import {routeHeaders} from '~/data/cache';
+import {MEDIA_FRAGMENT, PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
+import {useState, useEffect} from 'react';
+import {BiSolidChevronLeft} from 'react-icons/bi';
+import {BsXCircle} from 'react-icons/bs';
 import Modal from 'react-modal';
-import { MessageWriting } from '~/components/products/MessageWrite';
-import { AddCart } from '~/components/products/AddCart';
-import {ProductInfo} from '../components/products/ProductInfo'
+import {MessageWriting} from '~/components/products/MessageWrite';
+import {AddCart} from '~/components/products/AddCart';
+import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
-
 
 export const headers = routeHeaders;
 
-export async function loader({ params, request, context }) {
-  const { productHandle } = params;
+export async function loader({params, request, context}) {
+  const {productHandle} = params;
   invariant(productHandle, 'Missing productHandle param, check route filename');
   const selectedOptions = getSelectedProductOptions(request);
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
-  })
+  });
 
   const shippingData = await context.storefront.query(ShippingMethod, {
     variables: {},
-  })
-  const { shop, product } = await context.storefront.query(PRODUCT_QUERY, {
+  });
+  const {shop, product} = await context.storefront.query(PRODUCT_QUERY, {
     variables: {
       handle: productHandle,
       selectedOptions,
@@ -67,11 +66,10 @@ export async function loader({ params, request, context }) {
   //   throw new Response('product', { status: 404 });
   // }
 
-  //this condition is commented by me(ayush) for removing the params from url  
+  //this condition is commented by me(ayush) for removing the params from url
   // if (!product.selectedVariant) {
   //   return redirectToFirstVariant({ product, request });
   // }
-
 
   // In order to show which variants are available in the UI, we need to query
   // all of them. But there might be a *lot*, so instead separate the variants
@@ -93,9 +91,8 @@ export async function loader({ params, request, context }) {
   // Investigate if we can avoid the redirect for product pages with no search params for first variant
 
   const firstVariant = product.variants.nodes[0];
-  const selectedVariant = product.selectedVariant == null ? firstVariant : firstVariant;
-
-
+  const selectedVariant =
+    product.selectedVariant == null ? firstVariant : firstVariant;
 
   const productAnalytics = {
     productGid: product.id,
@@ -127,13 +124,10 @@ export async function loader({ params, request, context }) {
       totalValue: parseFloat(selectedVariant.price.amount),
     },
     seo,
-
   });
-
 }
 
-
-function redirectToFirstVariant({ product, request }) {
+function redirectToFirstVariant({product, request}) {
   const searchParams = new URLSearchParams(new URL(request.url).search);
   const firstVariant = product.variants.nodes[0];
   for (const option of firstVariant.selectedOptions) {
@@ -142,77 +136,74 @@ function redirectToFirstVariant({ product, request }) {
   throw redirect(`/products/${product.handle}?${searchParams.toString()}`, 302);
 }
 
-
 let parameterValue;
 export default function Product() {
-
-  const { product, shop, recommended, variants, data, shippingData } = useLoaderData();
-  console.log(product,"----++++_++_-");
-  const navigate = useNavigate()
-  const goBack = () => navigate(-1)
+  const {product, shop, recommended, variants, data, shippingData} =
+    useLoaderData();
+  // console.log(product, '----++++_++_-');
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
   const datafornav = useLocation();
-  let EditMess = datafornav.state?.data?.messageData
-  let editEndMess = datafornav.state?.data.endText
-  let editOrderValue = datafornav.state
-  let editFontFamily = datafornav.state?.data.fontFamily
-  let showBulkOnEdit = datafornav.state?.data.csvBulkData.length
-  let editFontSize = datafornav.state?.data.fontSizeMsg
-  let editCustomFontFamily = datafornav.state?.data.customFontName
-  let editLineHeight = datafornav.state?.data.lineHeight
-  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight
-  let editSignOffFontSize = datafornav.state?.data.signOffFontSize
+  let EditMess = datafornav.state?.data?.messageData;
+  let editEndMess = datafornav.state?.data.endText;
+  let editOrderValue = datafornav.state;
+  let editFontFamily = datafornav.state?.data.fontFamily;
+  let showBulkOnEdit = datafornav.state?.data.csvBulkData.length;
+  let editFontSize = datafornav.state?.data.fontSizeMsg;
+  let editCustomFontFamily = datafornav.state?.data.customFontName;
+  let editLineHeight = datafornav.state?.data.lineHeight;
+  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
+  let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
 
-  const { media, title, vendor, descriptionHtml } = product;
-  const { shippingPolicy, refundPolicy } = shop;
-  const [show, setShow] = useState(showBulkOnEdit || datafornav.search == "?select=Bulk" ? true : false);
-  const [productshow, setProductShow] = useState(true)
+  const {media, title, vendor, descriptionHtml} = product;
+  const {shippingPolicy, refundPolicy} = shop;
+  const [show, setShow] = useState(
+    showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
+  );
+  const [productshow, setProductShow] = useState(true);
   const [modalIsOpen2, setIsOpen2] = useState(false);
-  const [showBox, setShowBox] = useState(true)
+  const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
   const [errorVal, setErrorVal] = useState([]);
-  const [fontFamilyName,setFontFamily] = useState('tarzan')
-  const [metafields,setMetafields] = useState([])
-  const [customFontName,setCustomFontName] = useState('')
-  const [locationValue,setLocationValue] = useState(false)
+  const [fontFamilyName, setFontFamily] = useState('tarzan');
+  const [metafields, setMetafields] = useState([]);
+  const [customFontName, setCustomFontName] = useState('');
+  const [locationValue, setLocationValue] = useState(false);
 
-console.log(datafornav.search,"87877878787");
+  // console.log(datafornav.search, '87877878787');
   if (typeof window !== 'undefined') {
-
     const urlParams = new URLSearchParams(window?.location.search);
-     parameterValue = urlParams.get('select');
+    parameterValue = urlParams.get('select');
     // console.log(parameterValue,"---000000");
   }
 
   useEffect(() => {
-    let result =  product.id.replace(/[^0-9]/g,"");
-         getMetaFields(result)
-    }, []);
-    async function getMetaFields(id) {
-      try {
-        const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`
-        const data = await fetch(queryEndPoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            "productId": id
-        })
-        });
-        const json = await data.json();
-        let y = json.result.metafields[0].value
-        let extractMetafield = JSON.parse(y)
-        setMetafields(extractMetafield)
-      } catch (error) {
-        console.error(error, "shopify");
-      }
-      // debugger;
-   
+    let result = product.id.replace(/[^0-9]/g, '');
+    getMetaFields(result);
+  }, []);
+  async function getMetaFields(id) {
+    try {
+      const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`;
+      const data = await fetch(queryEndPoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId: id,
+        }),
+      });
+      const json = await data.json();
+      let y = json.result.metafields[0].value;
+      let extractMetafield = JSON.parse(y);
+      setMetafields(extractMetafield);
+    } catch (error) {
+      console.error(error, 'shopify');
     }
+    // debugger;
+  }
 
- 
   const customStyles = {
-
     content: {
       top: '60%',
       left: '50%',
@@ -226,44 +217,58 @@ console.log(datafornav.search,"87877878787");
       padding: '30px',
       maxHeight: '500px',
       zIndex: '2',
-      position: 'relative'
+      position: 'relative',
     },
-
   };
   useEffect(() => {
-    localStorage.removeItem('reqFielddInCart')
-    console.log(datafornav.pathname,'0000000000')
-    setLocationValue(true)
+    localStorage.removeItem('reqFielddInCart');
+    // console.log(datafornav.pathname, '0000000000');
+    setLocationValue(true);
   }, [datafornav.pathname]);
   return (
     <>
-      {productshow ?
+      {productshow ? (
         <>
-        <DynamicButton 
-        className="bg-[#EF6E6E] m-5 ml-[32px] w-full max-w-[150px]"
-        text="Go Back"
-        backArrow={true}
-        onClickFunction={goBack}/>
+          <DynamicButton
+            className="bg-[#EF6E6E] m-5 ml-[32px] w-full max-w-[150px]"
+            text="Go Back"
+            backArrow={true}
+            onClickFunction={goBack}
+          />
           <Section className="px-0 md:px-8 ">
             <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px] ">
-              <ProductGallery
-                media={media.nodes}
-                className=""
+              <ProductGallery media={media.nodes} className="" />
+              <ProductInfo
+                title={title}
+                product={product}
+                show={show}
+                setShow={setShow}
+                setShowBox={setShowBox}
+                editFontFamily={editFontFamily}
+                setFontFamily={setFontFamily}
+                setCustomFontName={setCustomFontName}
+                editCustomFontFamily={editCustomFontFamily}
               />
-              <ProductInfo title={title} product={product} 
-              show={show} setShow={setShow} setShowBox={setShowBox}
-               editFontFamily={editFontFamily} setFontFamily={setFontFamily}
-               setCustomFontName={setCustomFontName}
-               editCustomFontFamily={editCustomFontFamily}/>
             </div>
-            {locationValue &&
-            <MessageWriting show={show} selectedFile={selectedFile} setSelectedFile={setSelectedFile}
-              setShowBox={setShowBox} setProductShow={setProductShow}
-              EditMess={EditMess} editEndMess={editEndMess}
-              editFontFamily={editFontFamily} editFontSize={editFontSize} fontFamilyName={fontFamilyName} metafields={metafields}
-              editLineHeight={editLineHeight} editSignOffFontSize={editSignOffFontSize} editSignOffLineHeight={editSignOffLineHeight}/>
-            }
-              </Section>
+            {locationValue && (
+              <MessageWriting
+                show={show}
+                selectedFile={selectedFile}
+                setSelectedFile={setSelectedFile}
+                setShowBox={setShowBox}
+                setProductShow={setProductShow}
+                EditMess={EditMess}
+                editEndMess={editEndMess}
+                editFontFamily={editFontFamily}
+                editFontSize={editFontSize}
+                fontFamilyName={fontFamilyName}
+                metafields={metafields}
+                editLineHeight={editLineHeight}
+                editSignOffFontSize={editSignOffFontSize}
+                editSignOffLineHeight={editSignOffLineHeight}
+              />
+            )}
+          </Section>
 
           {/* <Suspense fallback={<Skeleton className="" />}>
             <Await
@@ -282,22 +287,25 @@ console.log(datafornav.search,"87877878787");
             style={customStyles}
             contentLabel="Example Modal"
           >
-            {errorVal.map((item) =>
+            {errorVal.map((item) => (
               <div>{item}</div>
-            )}
+            ))}
           </Modal>
         </>
-        :
-        <AddCart show={show} setProductShow={setProductShow}
-          data={data} productData={product.variants.nodes[0]}
+      ) : (
+        <AddCart
+          show={show}
+          setProductShow={setProductShow}
+          data={data}
+          productData={product.variants.nodes[0]}
           editOrderValue={editOrderValue}
-          shippingData={shippingData?.product} 
+          shippingData={shippingData?.product}
           fontFamilyName={fontFamilyName}
-          customFontName={customFontName}/>
-      }
+          customFontName={customFontName}
+        />
+      )}
     </>
   );
-
 }
 
 // export function ProductForm({ variants }) {
@@ -473,12 +481,10 @@ console.log(datafornav.search,"87877878787");
 //   );
 // }
 
-
-
-function ProductDetail({ title, content, learnMore }) {
+function ProductDetail({title, content, learnMore}) {
   return (
     <Disclosure key={title} as="div" className="grid w-full gap-2">
-      {({ open }) => (
+      {({open}) => (
         <>
           <Disclosure.Button className="text-left">
             <div className="flex justify-between">
@@ -496,7 +502,7 @@ function ProductDetail({ title, content, learnMore }) {
           <Disclosure.Panel className={'pb-4 pt-2 grid gap-2'}>
             <div
               className="prose dark:prose-invert"
-              dangerouslySetInnerHTML={{ __html: content }}
+              dangerouslySetInnerHTML={{__html: content}}
             />
             {learnMore && (
               <div className="">
@@ -514,8 +520,6 @@ function ProductDetail({ title, content, learnMore }) {
     </Disclosure>
   );
 }
-
-
 
 const PRODUCT_VARIANT_FRAGMENT = `#graphql
   fragment ProductVariantFragment on ProductVariant {
@@ -553,7 +557,6 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
   }
 
 `;
-
 
 const PRODUCT_QUERY = `#graphql
   query Product(
@@ -614,8 +617,6 @@ const PRODUCT_QUERY = `#graphql
   ${PRODUCT_VARIANT_FRAGMENT}
 `;
 
-
-
 const VARIANTS_QUERY = `#graphql
   query variants(
     $country: CountryCode
@@ -633,8 +634,6 @@ const VARIANTS_QUERY = `#graphql
   ${PRODUCT_VARIANT_FRAGMENT}
 
 `;
-
-
 
 // const RECOMMENDED_PRODUCTS_QUERY = `#graphql
 //   query productRecommendations(
@@ -655,7 +654,6 @@ const VARIANTS_QUERY = `#graphql
 //   ${PRODUCT_CARD_FRAGMENT}
 
 // `;
-
 
 const GiftProduct = `#graphql
   query
@@ -685,7 +683,7 @@ const GiftProduct = `#graphql
     }
     }
 
-  `
+  `;
 
 const ShippingMethod = `#graphql
 query
@@ -706,7 +704,7 @@ query
       }
     }
   }
-}`
+}`;
 
 // async function getRecommendedProducts(storefront, productId) {
 //   const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {

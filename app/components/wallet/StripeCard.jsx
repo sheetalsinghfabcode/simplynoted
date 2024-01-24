@@ -45,19 +45,18 @@ const StripeCard = ({
         const {id} = paymentMethod;
         if (id && !savedCard && !addCreditModal && !updateCard) {
           createCustomerId(id);
-        } else if 
-        (showStripeCard) {
-          addNewCreditCard(id)
+        } else if (showStripeCard) {
+          addNewCreditCard(id);
         } else {
           handlePurchaseCard(id);
         }
 
-        console.log(id, 'stripeID');
+        console.log('Stripe ID: ', id);
       } catch (error) {
-        console.log(error, 'stripe error');
+        console.error(error, 'stripe error');
       }
     } else {
-      console.log(error.message);
+      console.error(error.message);
     }
   };
 

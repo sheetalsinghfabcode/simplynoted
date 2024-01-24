@@ -1,19 +1,19 @@
 // Function to update a specific key's value in an array of objects
 function updateValueInArray(array, index, keyToUpdate, newValue) {
-    // Check if the index is valid
-    if (index >= 0 && index < array.length) {
-        // Update the key's value
-        array[index][keyToUpdate] = newValue;
-    }
+  // Check if the index is valid
+  if (index >= 0 && index < array.length) {
+    // Update the key's value
+    array[index][keyToUpdate] = newValue;
+  }
 }
 
 // Function to delete a specific key from an object in an array
 function deleteKeyInArray(array, index, keyToDelete) {
-    // Check if the index is valid
-    if (index >= 0 && index < array.length) {
-        // Delete the key from the object
-        delete array[index][keyToDelete];
-    }
+  // Check if the index is valid
+  if (index >= 0 && index < array.length) {
+    // Delete the key from the object
+    delete array[index][keyToDelete];
+  }
 }
 
 // Example usage:

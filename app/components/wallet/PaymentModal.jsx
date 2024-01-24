@@ -19,8 +19,14 @@ const PaymentModal = ({
   confirmText,
   cancelText,
 }) => {
-
-const {selectedPlan,amount,packageProduct,subscriptionProduct,subscriptionTitle,subscriptionPriceId} = useStateContext()
+  const {
+    selectedPlan,
+    amount,
+    packageProduct,
+    subscriptionProduct,
+    subscriptionTitle,
+    subscriptionPriceId,
+  } = useStateContext();
 
   const stripe = loadStripe(StripeKey);
   const [isBillingOpen, setIsBillingOpen] = useState(true);
@@ -216,7 +222,6 @@ const {selectedPlan,amount,packageProduct,subscriptionProduct,subscriptionTitle,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payLoad),
-        
       });
 
       const data = await response.json();
@@ -361,13 +366,7 @@ const {selectedPlan,amount,packageProduct,subscriptionProduct,subscriptionTitle,
                 onClick={toggleBilling}
               >
                 <span className="font-semibold">Billing Address</span>
-                <span className="mr-2">{isBillingOpen ? (
- <></>
-                ) : (
-<></>
-                )} 
-                
-             </span>
+                <span className="mr-2">{isBillingOpen ? <></> : <></>}</span>
               </div>
               <div className="border rounded">
                 {isBillingOpen && (

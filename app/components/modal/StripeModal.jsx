@@ -17,8 +17,7 @@ const StripeModal = ({
   handlePurchaseCard,
   updateCard,
   formData,
-  setFormData
-  
+  setFormData,
 }) => {
   const stripe = loadStripe(`${StripeKey}`);
 
@@ -190,7 +189,7 @@ const StripeModal = ({
                   )}
                 </div>
                 <div className="grid-rows-2 md:flex grid gap-3">
-                  <div className='w-full'>
+                  <div className="w-full">
                     <label
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="country"
@@ -212,8 +211,7 @@ const StripeModal = ({
                       ))}
                     </select>
                   </div>
-                  <div className='w-full'>
-
+                  <div className="w-full">
                     <label
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="country"
@@ -245,12 +243,12 @@ const StripeModal = ({
                   </div>
                 </div>
                 <Elements stripe={stripe}>
-              <StripeCard
-                updateCard={updateCard}
-                handlePurchaseCard={handlePurchaseCard}
-                addCreditModal={addCreditModal}
-              />
-            </Elements>
+                  <StripeCard
+                    updateCard={updateCard}
+                    handlePurchaseCard={handlePurchaseCard}
+                    addCreditModal={addCreditModal}
+                  />
+                </Elements>
               </div>
             )}
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>

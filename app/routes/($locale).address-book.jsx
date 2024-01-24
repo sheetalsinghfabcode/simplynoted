@@ -28,7 +28,7 @@ export default function AddressBook() {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
     if (!customerID) {
@@ -45,7 +45,6 @@ export default function AddressBook() {
   };
 
   useEffect(() => {
-
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
     // Make a GET request to the API
@@ -65,8 +64,7 @@ export default function AddressBook() {
   }, [addressForm, selectedAddress, editAddress, loadAddress]);
 
   useEffect(() => {
-    if (addresses)
-     setFilteredAddresses(addresses);
+    if (addresses) setFilteredAddresses(addresses);
   }, [addresses]);
 
   return (
@@ -75,7 +73,6 @@ export default function AddressBook() {
         <DynamicTitle dynamicButton title={'Address Book'} />
         {!addressForm && !selectedAddress && (
           <div className="w-full">
-            
             <ContactTable
               customerID={customerID}
               openModal={openModal}

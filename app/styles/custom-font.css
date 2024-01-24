@@ -10,7 +10,6 @@
   font-weight: 400;
   font-style: italic;
   src: url('./fonts/IBMPlexSerif-TextItalic.woff2') format('woff2');
-  
 }
 @font-face {
   font-family: 'Tarzan';
@@ -18,11 +17,9 @@
   font-weight: 700;
   font-style: italic;
   src: url('./fonts/Tarzan.ttf') format('ttf');
-
 }
 
 @font-face {
-
   font-family: 'GT-America-Extended-Regular';
 
   src: url('/src/fonts/GT-America-Extended-Regular.woff') format('woff');
@@ -31,6 +28,5 @@
 
   font-style: normal;
 
-  font-display: swap;
-
+  font-display: swap;
 }

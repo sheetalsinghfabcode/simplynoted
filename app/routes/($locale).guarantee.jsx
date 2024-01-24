@@ -24,7 +24,9 @@ function Guarantee() {
             without any need for inquiries.{' '}
           </p>
           <div className="font-light text-justify">
-            <h1 className="mt-[30px] font-medium text-blue-900">Our Commitment: </h1>
+            <h1 className="mt-[30px] font-medium text-blue-900">
+              Our Commitment:{' '}
+            </h1>
             <ul>
               <li className="mt-[12px] text-[14px]">
                 We commit to delivering the highest quality prints using the
@@ -94,7 +96,9 @@ function Guarantee() {
             <p>select "85282 Phoenix AZ" as the origin on this page.</p>
           </div>
           <div className="font-light text-justify">
-            <h1 className="mt-[30px] font-medium text-blue-900">Further Resources:</h1>
+            <h1 className="mt-[30px] font-medium text-blue-900">
+              Further Resources:
+            </h1>
             <ul>
               <li className="mt-[12px] text-[14px]">
                 For comprehensive information about our services and how we
@@ -110,17 +114,18 @@ function Guarantee() {
             <h1 className="mt-[30px] font-medium text-blue-900">Contact Us:</h1>
             <ul>
               <li className="mt-[12px] text-[14px]">
-              Should you have any questions, concerns, or need clarification regarding our
+                Should you have any questions, concerns, or need clarification
+                regarding our
               </li>
               <li className="text-[14px]">
-              100% Satisfaction Guarantee, please do not hesitate to reach out to our
+                100% Satisfaction Guarantee, please do not hesitate to reach out
+                to our
               </li>
               <li>
-              dedicated support team at support@simplynoted.com. Your feedback is
+                dedicated support team at support@simplynoted.com. Your feedback
+                is
               </li>
-              <li>
-              invaluable and vital to our continuous improvement. 
-              </li>
+              <li>invaluable and vital to our continuous improvement.</li>
             </ul>
           </div>
         </div>

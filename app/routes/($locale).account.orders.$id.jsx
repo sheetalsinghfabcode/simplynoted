@@ -120,16 +120,16 @@ export default function OrderRoute() {
                       <tr key={lineItem.variant?.id}>
                         <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
                           <div className="flex gap-6">
-                                {lineItem?.variant?.image && (
-                                  <div className="w-24 card-image aspect-square">
-                                    <img
-                                      src={lineItem.variant.image.src}
-                                      width={96}
-                                      height={96}
-                                      alt={lineItem?.title || 'Product Image'}
-                                    />
-                                  </div>
-                                )}
+                            {lineItem?.variant?.image && (
+                              <div className="w-24 card-image aspect-square">
+                                <img
+                                  src={lineItem.variant.image.src}
+                                  width={96}
+                                  height={96}
+                                  alt={lineItem?.title || 'Product Image'}
+                                />
+                              </div>
+                            )}
                             <div className="flex-col justify-center hidden lg:flex">
                               <Text as="p">
                                 {lineItem?.title || 'Untitled Product'}

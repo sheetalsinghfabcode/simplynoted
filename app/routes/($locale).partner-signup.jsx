@@ -51,13 +51,12 @@ const Partner_signup = () => {
                 src={robot4}
                 alt="robot-4"
               ></img>
-             
             </div>
 
             <div className="wrap-sample-form-sign ">
               <form className="hubForm" data-hs-cf-bound="true">
                 <div className="mt-[3rem] text-[30px] text-center text-white leading-8">
-                Start Earning Today
+                  Start Earning Today
                 </div>
                 <div className="row">
                   <div className="white-underline">
@@ -164,23 +163,33 @@ const Partner_signup = () => {
                 />
               </form>
             </div>
-        
           </div>
 
-
-          <div className='pt-[60ox] relative flex flex-wrap mx-[-10px] justify-center '>
+          <div className="pt-[60ox] relative flex flex-wrap mx-[-10px] justify-center ">
             <div>
-                <h2 className='text-[#001a5f] text-center text-4xl  font-karla mb-10 signup-underline'>Program Benefits</h2>
-                <ul className='md:columns-2 columns-1'>
-                    <li className='programm-list' >Support Sales & Marketing Programs</li>
-                    <li className='programm-list'>Define Joint Business Opportunities</li>
-                    <li className='programm-list'>Provide Product and Technical Expertise</li>
-                    <li className='programm-list'>Training and Development Activities</li>
-                    <li className='programm-list'>Access to our API </li>
-                    <li className='programm-list'>Automate with our Zapier Integration</li>
-                    <li className='programm-list'>Commissions Paid Monthly</li>
-                    <li className='programm-list'>Contract Discounts</li>
-                </ul>
+              <h2 className="text-[#001a5f] text-center text-4xl  font-karla mb-10 signup-underline">
+                Program Benefits
+              </h2>
+              <ul className="md:columns-2 columns-1">
+                <li className="programm-list">
+                  Support Sales & Marketing Programs
+                </li>
+                <li className="programm-list">
+                  Define Joint Business Opportunities
+                </li>
+                <li className="programm-list">
+                  Provide Product and Technical Expertise
+                </li>
+                <li className="programm-list">
+                  Training and Development Activities
+                </li>
+                <li className="programm-list">Access to our API </li>
+                <li className="programm-list">
+                  Automate with our Zapier Integration
+                </li>
+                <li className="programm-list">Commissions Paid Monthly</li>
+                <li className="programm-list">Contract Discounts</li>
+              </ul>
             </div>
           </div>
         </div>

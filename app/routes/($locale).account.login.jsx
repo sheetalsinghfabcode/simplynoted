@@ -83,23 +83,24 @@ export default function Login() {
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
-  async function setVar(){
-    if(typeof window !== 'undefined'){
-      localStorage.setItem('resultVar','result')
+  async function setVar() {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('resultVar', 'result');
     }
   }
   return (
     <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
-      <div className="max-w-md w-full"> 
+      <div className="max-w-md w-full">
         <h1 className="name text-4xl text-blue-900">Sign in</h1>
-        <img className='mt-2 w-32' src='https://simplynoted.com/cdn/shop/files/menu-underline.png'/>
-        <p className='mt-[12px] text-black text-opacity-80 text-xs'>If you have an account with us, please log in.</p>
+        <img
+          className="mt-2 w-32"
+          src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
+        />
+        <p className="mt-[12px] text-black text-opacity-80 text-xs">
+          If you have an account with us, please log in.
+        </p>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form
-          method="post"
-          noValidate
-          className="pb-8 mt-4 mb-4 space-y-3"
-        >
+        <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
           {actionData?.formError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
               <p className="m-4 text-s text-contrast">{actionData.formError}</p>
@@ -132,7 +133,9 @@ export default function Login() {
           </div>
           <div>
             <input
-              className={`mb-1 h-12 ${getInputStyleClasses(nativePasswordError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(
+                nativePasswordError,
+              )}`}
               id="password"
               name="password"
               type="password"
@@ -166,7 +169,8 @@ export default function Login() {
             )}
           </div>
           <div className="flex items-center justify-between">
-            <button onClick={()=>setVar()}
+            <button
+              onClick={() => setVar()}
               className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}
@@ -178,7 +182,7 @@ export default function Login() {
             <p className="align-baseline text-sm mt-6">
               New to {shopName}? &nbsp;
               <Link className="text-xs inline underline" to="/account/register">
-             Create an account
+                Create an account
               </Link>
             </p>
             <Link

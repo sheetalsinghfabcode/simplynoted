@@ -34,7 +34,7 @@ const ContactTable = ({
   const [errorContent, serErrorContent] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(addresses,"addresses");
+  // console.log(addresses, 'addresses');
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
     const dateB = new Date(b.created);
@@ -370,36 +370,37 @@ const ContactTable = ({
       setSelectedFile(null);
       setLoader(false);
       file.current.value = '';
-      console.log('Error uploading data:', error);
+      console.error('Error uploading data:', error);
       throw error;
     }
   };
 
-
   function cleanHeaders(headerRow) {
     const cleanedHeaders = {};
     for (const key in headerRow) {
-      cleanedHeaders[key.replace(/"/g, '').trim()] = headerRow[key].replace(/"/g, '').trim();
+      cleanedHeaders[key.replace(/"/g, '').trim()] = headerRow[key]
+        .replace(/"/g, '')
+        .trim();
     }
     return cleanedHeaders;
   }
-  
+
   function checkCSVFormat(headerRow, requiredHeaders) {
     const headerKeys = Object.keys(headerRow);
     const missingHeaders = [];
-  
+
     for (let i = 0; i < requiredHeaders.length; i++) {
       const requiredHeader = requiredHeaders[i];
       const headerKey = headerKeys[i];
-      
+
       if (!headerKey || headerKey !== requiredHeader) {
         missingHeaders.push(requiredHeader);
       }
     }
-  
+
     const isValidFormat = missingHeaders.length === 0;
-  
-    return { isValidFormat, missingHeaders };
+
+    return {isValidFormat, missingHeaders};
   }
 
   const handleUploadClick = async () => {
@@ -435,8 +436,8 @@ const ContactTable = ({
       'Anniversary',
       'Custom 1',
       'Custom 2',
-      'Custom 3'
-    ];  
+      'Custom 3',
+    ];
 
     const errors = [];
 
@@ -444,16 +445,19 @@ const ContactTable = ({
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
     // Function to check if fileData matches the required CSV format
- 
+
     const cleanedHeaders = cleanHeaders(fileData[0]);
 
-    const { isValidFormat, missingHeaders } = checkCSVFormat(cleanedHeaders, requiredHeaders);
-  
+    const {isValidFormat, missingHeaders} = checkCSVFormat(
+      cleanedHeaders,
+      requiredHeaders,
+    );
+
     if (!isValidFormat) {
       setErrorModal(true);
       setSelectedFile(null);
       serErrorContent([
-        "The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again."
+        'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
       ]);
       setTimeout(() => {
         setErrorModal(false);
@@ -531,7 +535,7 @@ const ContactTable = ({
               onChange={handleSearchInputChange}
               className="w-full max-w-[400px] py-[5px] lg:order-none order-2  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
-             <div className="lg:flex grid self-center">
+            <div className="lg:flex grid self-center">
               <div
                 className={`border-[1px]  md:w-[310px] sm:w-[280px] w-full  border-dashed border-[#000] py-[5px]`}
               >
@@ -606,93 +610,93 @@ const ContactTable = ({
                 </div>
               )}
               {/* Your table rendering code here... */}
-              <div className='overflow-auto'>
-              <table
-                className=" overflow-auto md:min-w-full w-[59px]"
-                {...getTableProps()}
-              >
-                <thead>
-                  {headerGroups.map((headerGroup) => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
-                      {headerGroup.headers.map((column) => (
-                        <th
-                          {...column.getHeaderProps()}
-                          className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f]  border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
+              <div className="overflow-auto">
+                <table
+                  className=" overflow-auto md:min-w-full w-[59px]"
+                  {...getTableProps()}
+                >
+                  <thead>
+                    {headerGroups.map((headerGroup) => (
+                      <tr {...headerGroup.getHeaderGroupProps()}>
+                        {headerGroup.headers.map((column) => (
+                          <th
+                            {...column.getHeaderProps()}
+                            className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f]  border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
                           >
-                          {column.id === 'type' ? (
-                            <div className="flex items-center relative type-select">
-                              <select
-                                className="bg-transparent w-[10px] text-white border-none outline-none appearance-none  absolute inset-y-0 right-0"
-                                onChange={handleTypeChange}
-                                value={selectedType}
-                              >
-                                <option className="text-black" value="all">
-                                  all
-                                </option>
-                                <option
-                                  className="text-black"
-                                  value="recipient"
+                            {column.id === 'type' ? (
+                              <div className="flex items-center relative type-select">
+                                <select
+                                  className="bg-transparent w-[10px] text-white border-none outline-none appearance-none  absolute inset-y-0 right-0"
+                                  onChange={handleTypeChange}
+                                  value={selectedType}
                                 >
-                                  Recipient
-                                </option>
-                                <option className="text-black" value="return">
-                                  Sender
-                                </option>
-                              </select>
-                              <span className="">Type</span>
-                              <div className="absolute top-[2px] right-0 left-[41px] h-full flex items-center  pointer-events-none">
-                                <svg
-                                  className="w-4 h-4 text-white fill-current"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M10 12l-6-6h12z" />
-                                </svg>
+                                  <option className="text-black" value="all">
+                                    all
+                                  </option>
+                                  <option
+                                    className="text-black"
+                                    value="recipient"
+                                  >
+                                    Recipient
+                                  </option>
+                                  <option className="text-black" value="return">
+                                    Sender
+                                  </option>
+                                </select>
+                                <span className="">Type</span>
+                                <div className="absolute top-[2px] right-0 left-[41px] h-full flex items-center  pointer-events-none">
+                                  <svg
+                                    className="w-4 h-4 text-white fill-current"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                  >
+                                    <path d="M10 12l-6-6h12z" />
+                                  </svg>
+                                </div>
                               </div>
-                            </div>
-                          ) : column.id === '_id' ? (
-                            <CheckBox
-                              onChange={handleSelectAll}
-                              checked={allSelected}
-                              className={`cursor-pointer ${
-                                data.length === 0 && '!bg-white'
-                              }`}
-                            />
-                          ) : (
-                            column.render('Header')
-                          )}
-                        </th>
-                      ))}
-                    </tr>
-                  ))}
-                </thead>
-                {!updateLoader && !loader && (
-                  <tbody {...getTableBodyProps()}>
-                    {page.map((row) => {
-                      prepareRow(row);
-                      return (
-                        <tr
-                          {...row.getRowProps()}
-                          className={`text-center font-bold ${
-                            row.index % 2 === 0
-                              ? 'bg-[#f1f7fc]'
-                              : 'bg-[#96bee3]'
-                          }`}
-                        >
-                          {row.cells.map((cell) => (
-                            <td
-                              {...cell.getCellProps()}
-                              className="border border-solid border-black p-[10px] text-center"
-                            >
-                              {cell.render('Cell')}
-                            </td>
-                          ))}
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                )}
-              </table>
+                            ) : column.id === '_id' ? (
+                              <CheckBox
+                                onChange={handleSelectAll}
+                                checked={allSelected}
+                                className={`cursor-pointer ${
+                                  data.length === 0 && '!bg-white'
+                                }`}
+                              />
+                            ) : (
+                              column.render('Header')
+                            )}
+                          </th>
+                        ))}
+                      </tr>
+                    ))}
+                  </thead>
+                  {!updateLoader && !loader && (
+                    <tbody {...getTableBodyProps()}>
+                      {page.map((row) => {
+                        prepareRow(row);
+                        return (
+                          <tr
+                            {...row.getRowProps()}
+                            className={`text-center font-bold ${
+                              row.index % 2 === 0
+                                ? 'bg-[#f1f7fc]'
+                                : 'bg-[#96bee3]'
+                            }`}
+                          >
+                            {row.cells.map((cell) => (
+                              <td
+                                {...cell.getCellProps()}
+                                className="border border-solid border-black p-[10px] text-center"
+                              >
+                                {cell.render('Cell')}
+                              </td>
+                            ))}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  )}
+                </table>
               </div>
               {updateLoader && (
                 <div className="flex justify-center items-center mt-[24px]">

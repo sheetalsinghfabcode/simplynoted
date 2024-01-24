@@ -22,7 +22,7 @@ import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
 import arrow_rights from '../../assets/Image/arrow-right-faq.png';
 import arrow_down from '../../assets/Image/arrow-down.png';
-import nav_logo from "../../assets/Image/simply-noted-navlogo.avif";
+import nav_logo from '../../assets/Image/simply-noted-navlogo.avif';
 import {
   Drawer,
   useDrawer,
@@ -106,7 +106,7 @@ function Header({title, menu}) {
         isHome={isHome}
         title={
           <div>
-            <img src={nav_logo}/>
+            <img src={nav_logo} />
           </div>
         }
         menu={menu}
@@ -116,10 +116,7 @@ function Header({title, menu}) {
         isHome={isHome}
         title={
           <div>
-            <img
-              className="w-[100px] max-w-full"
-              src={nav_logo}
-            />
+            <img className="w-[100px] max-w-full" src={nav_logo} />
           </div>
         }
         openCart={openCart}
@@ -156,7 +153,7 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 }
 
 function MenuMobileNav({menu, onClose}) {
-  console.log('menu', menu);
+  // console.log('menu', menu);
   const [show, setShow] = useState(false);
   const [showSendCard, setShowSendCard] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
@@ -733,6 +730,7 @@ function DesktopHeader({isHome, menu}) {
             <DynamicButton
               text={customerId ? 'Account →' : 'Sign in →'}
               className="login-button"
+              onHoverColorEnabled={false}
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
                   setIsAccountLoader(true);
@@ -907,11 +905,10 @@ function FooterMenu({menu}) {
     return str.replace(/\/(pages|policies)/, '');
   }
 
-  console.log('menu', menu);
+  // console.log('menu', menu);
 
   return (
     <>
-     
       <div className="grid md:flex justify-evenly gap-[40px] lg:text-[16px] md:text-[12px] text-[17px] md:text-left text-center pt-[50px] pb-[30px] mx-auto w-[88%] ">
         <div className="md:mx-0 mx-auto">
           <div className="lg:w-48 md:w-28 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">

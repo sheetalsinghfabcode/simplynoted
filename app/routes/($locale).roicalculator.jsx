@@ -131,7 +131,10 @@ export default function RoiCalculator() {
                               max="100000"
                               value={inputValues.cardsSent}
                               onChange={(event) => {
-                                console.log('Slider Value:', event.target.value);
+                                // console.log(
+                                //   'Slider Value:',
+                                //   event.target.value,
+                                // );
                                 setInputValues((prevInputValues) => {
                                   return {
                                     ...prevInputValues,
@@ -419,7 +422,7 @@ export default function RoiCalculator() {
             />
           </div>
         </div>
-        
+
         {/* <div className="relative overflow-hidden">
         <img
               className="lg:block hidden absolute mt-[-288px] right-[-426px] w-[45%] flex-row "

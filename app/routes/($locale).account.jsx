@@ -210,7 +210,7 @@ function Account({customer, heading, featuredData}) {
   return (
     <div className="w-full max-w-[1344px] mx-auto px-[30px]">
       <div className="flex justify-between mx-[24px] items-center lg:gap[0px] gap-[151px] md:mt-[0px] mt-[9px]">
-        <DynamicTitle title="Account" className="!text-[24px]" />  
+        <DynamicTitle title="Account" className="!text-[24px]" />
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
@@ -315,17 +315,17 @@ function EmptyOrders() {
   const navigate = useNavigate();
 
   return (
-    <div className='md:grid grid place-items-center'>
+    <div className="md:grid grid place-items-center">
       <span className=" font-karla  text-[16px] font-medium">
         You haven&apos;t placed any orders yet.
       </span>
       <div className="w-48 mt-[12px]">
-        <div className='md:itmes-center'>
-        <DynamicButton
-          text="Start Shopping"
-          onClickFunction={() => navigate('/collections/best-sellers')}
-          className="bg-[#ef6e6e] font-semibold max-w-[340px] w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
-        />
+        <div className="md:itmes-center">
+          <DynamicButton
+            text="Start Shopping"
+            onClickFunction={() => navigate('/collections/best-sellers')}
+            className="bg-[#ef6e6e] font-semibold max-w-[340px] w-[100%] text-[#fff] py-[14px] px-[8px] font-karla"
+          />
         </div>
       </div>
     </div>

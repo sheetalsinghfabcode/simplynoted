@@ -178,13 +178,13 @@ export default function Collection() {
 
   useEffect(() => {
     if (locationRef.pathname !== '/collections/customisable-cards') {
-      console.log(locationRef.pathname, 'locationRef.pathname');
+      // console.log(locationRef.pathname, 'locationRef.pathname');
       setCheckState(false);
     }
     // console.log('______________----------');
   }, [locationRef.pathname]);
 
-  console.log(collectionHandle, 'collectionHandle', locationRef.pathname);
+  // console.log(collectionHandle, 'collectionHandle', locationRef.pathname);
   async function changeHandle(e) {
     setLoader(true);
     setHandleName(e);
@@ -211,7 +211,7 @@ export default function Collection() {
         setLoader(false);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -225,8 +225,8 @@ export default function Collection() {
         );
         const json = await res.json();
         let myData = await json.result.products;
-        console.log(json.result);
-        console.log(offSetVal, 'newOffset');
+        // console.log(json.result);
+        // console.log(offSetVal, 'newOffset');
         setCheckState(true);
         if (addingProductsData.length > 0) {
           setAddingProd(addingProductsData.concat(myData));
@@ -248,12 +248,12 @@ export default function Collection() {
         setLoader(false);
       }
     } catch (error) {
-      console.log(error, 'customiseCard---');
+      console.error(error, 'customiseCard---');
     }
   }
 
   function CustomeCard() {
-    console.log(addingProductsData, '99999999');
+    // console.log(addingProductsData, '99999999');
     return (
       <>
         {addingProductsData &&

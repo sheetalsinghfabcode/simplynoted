@@ -53,18 +53,22 @@ export default function blog() {
   const handlePrevMore = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
-  console.log(
-    'blog',
-    blog.blog.articles.edges.map((index) => index.node.title),
-  );
+  // console.log(
+  //   'blog',
+  //   blog.blog.articles.edges.map((index) => index.node.title),
+  // );
 
-  console.log('endIndex', endIndex);
-  console.log('startIndex', startIndex);
-  console.log('currentPage', currentPage);
+  // console.log('endIndex', endIndex);
+  // console.log('startIndex', startIndex);
+  // console.log('currentPage', currentPage);
 
   return (
     <div className="px-5">
-     <DynamicTitle dynamicButton title="Simply Noted 101" className={'mt-[20px] md:text-[45px] text-[38px]'} />
+      <DynamicTitle
+        dynamicButton
+        title="Simply Noted 101"
+        className={'mt-[20px] md:text-[45px] text-[38px]'}
+      />
 
       <div className="blog-page-button sm:flex flex gap-[13px] justify-center mt-[32px]">
         <button

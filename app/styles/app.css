@@ -35,7 +35,6 @@
   }
 }
 
-
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
@@ -255,10 +254,7 @@ nav a {
   font-weight: 500;
   margin-left: 80px;
 }
-*
-
-
-  .request-a-button {
+* .request-a-button {
   background: #1b5299;
   min-width: 250px;
   text-transform: uppercase;
@@ -386,7 +382,7 @@ nav a {
   border: solid 2px black;
   padding: 15px;
   margin-top: 15px;
-  width:56%;
+  width: 56%;
   max-width: 375px;
 }
 .addFirstnameBtn {
@@ -396,7 +392,6 @@ nav a {
   border-radius: 4px;
   margin-bottom: 8px;
 }
-
 
 /* For mobile devices or narrow screens */
 @media (max-width: 768px) {
@@ -436,8 +431,6 @@ nav a {
     border-radius: 4px;
     margin-bottom: 8px;
   }
-
- 
 }
 
 @font-face {
@@ -674,7 +667,6 @@ nav a {
   src: url('./fonts/Ultra.ttf') format('truetype');
 }
 
-
 /* Pagination container */
 .pagination {
   display: flex;
@@ -772,7 +764,7 @@ nav a {
   rotate: -7deg;
   margin-top: -21px;
   position: absolute;
-  right:27px;
+  right: 27px;
   top: 141px;
 }
 .thankyou_img {
@@ -896,7 +888,6 @@ nav a {
   visibility: visible;
 }
 
-
 .button-tomato {
   background-color: #ef6e6e;
 }
@@ -904,7 +895,6 @@ nav a {
 .button-blue {
   background-color: #1b5299;
 }
-
 
 body {
   overflow-x: hidden;
@@ -919,7 +909,6 @@ body {
   position: absolute;
   margin-top: 83px;
 }
-
 
 .dark {
   color: darkslategray;
@@ -936,8 +925,6 @@ body {
   margin-top: 88px;
 }
 
-
-
 .pagination {
   display: flex;
   justify-content: center;
@@ -946,7 +933,6 @@ body {
   flex-direction: column;
   gap: 20px;
 }
-
 
 /* Pagination buttons */
 .pagination button {
@@ -981,7 +967,8 @@ body {
   --tw-ring-color: transparent;
   opacity: 0 !important;
 }
-.btn1,.req-btn {
+.btn1,
+.req-btn {
   padding: 20px 30px;
   margin-top: 7px;
   background: #ef6e6e;
@@ -993,8 +980,8 @@ body {
   margin-right: 15px;
   border-radius: 0px;
 }
-.btn1:hover ,
-.req-btn:hover{
+.btn1:hover,
+.req-btn:hover {
   border-radius: 0px;
   background-color: #1b5299;
 }
@@ -1069,7 +1056,8 @@ body {
   overflow-x: hidden;
 }
 
-.btn3 ,.sch-btn{
+.btn3,
+.sch-btn {
   background: url(../../assets/Image/button-white.webp) no-repeat;
   background-size: 100% 100%;
   display: inline-block;
@@ -1160,7 +1148,7 @@ body {
 }
 .button-top {
   position: fixed;
-  z-index:10;
+  z-index: 10;
   padding: 1rem 1rem;
   font-size: 20px;
   bottom: 40px;
@@ -1169,7 +1157,6 @@ body {
   color: #fff;
   text-align: center;
 }
-
 
 .btnShadow {
   box-shadow: 5px 8px 15px rgb(0 0 0 / 40%);
@@ -1339,8 +1326,6 @@ body {
     width: 50px;
     padding: 15px 5px;
   }
-
-
 }
 .real-pen-notice .p {
   color: #001a5f;
@@ -1354,8 +1339,6 @@ body {
 .card-icon {
   position: absolute;
   max-height: 34px;
-  
-  
 }
 
 .custom-icon {
@@ -1386,8 +1369,6 @@ body {
     line-height: 20px;
   }
 
-
-
   .custom-icon {
     max-height: 20px;
     padding-left: 8px;
@@ -1398,7 +1379,6 @@ body {
   }
 
   .right-cont {
-   
   }
 }
 
@@ -1425,8 +1405,6 @@ body {
   padding: 25px 20px;
   font-size: 20px;
 }
-
-
 
 .Delight-customers {
   font-size: 19px;
@@ -1472,15 +1450,14 @@ body {
   flex-direction: column;
   text-align: center;
 }
-.banner-detail-roi{
+.banner-detail-roi {
   background-image: url('https://simplynoted.com/cdn/shop/files/calculator-callout.png');
   background-size: contain;
   background-position: center;
   width: 100%;
-  
-  height:307px;
+
+  height: 307px;
   background-repeat: no-repeat;
- 
 }
 .roi-total {
   background-image: url('https://simplynoted.com/cdn/shop/files/roi-bg.png');
@@ -1508,9 +1485,8 @@ body {
   background: #203569;
 }
 
-
 .roi-dots:before {
-  content: ".";
+  content: '.';
   color: white;
   left: 4px;
   font-size: 4em;
@@ -1548,7 +1524,8 @@ body {
   top: -25px;
 }
 
-.wrap-business-form,.wrap-business-form-salesforce {
+.wrap-business-form,
+.wrap-business-form-salesforce {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   font-family: 'Karla', sans-serif;
@@ -1567,7 +1544,7 @@ body {
   width: 532px;
   max-width: 100%;
   z-index: 2;
-  padding:20px;
+  padding: 20px;
 }
 
 .form-title {
@@ -1662,7 +1639,8 @@ body {
   margin-left: -10px;
 }
 
-.white-underline,.white-underline-salesforce {
+.white-underline,
+.white-underline-salesforce {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   font-family: 'Karla', sans-serif;
@@ -1678,7 +1656,8 @@ body {
   margin: 1.5%;
 }
 
-.white-underline:after,.white-underline-salesforce:after {
+.white-underline:after,
+.white-underline-salesforce:after {
   content: '_';
   color: #1f3469;
   position: absolute;
@@ -1757,7 +1736,8 @@ body {
 }
 
 /******************* SALESFORCE FORM STYLES ****************************/
-.wrap-sample-form,.wrap-sample-form-sign{
+.wrap-sample-form,
+.wrap-sample-form-sign {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   font-family: 'Karla', sans-serif;
@@ -1802,7 +1782,6 @@ body {
   transition: all 0.35s 1s;
 }
 
-
 /******************* Partner-referral ****************************/
 .wrap-referral-form {
   background: url('../../assets/Image/form-bg.webp') no-repeat;
@@ -1816,9 +1795,9 @@ body {
   justify-content: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: drop-shadow(0px 0px 35px rgba(0,0,0,.2));
-  -webkit-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
-  -moz-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
+  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
 }
 
 .wrap-referral-form input,
@@ -1826,7 +1805,7 @@ body {
   background: 0 0;
   border: none;
   color: #3d3d3d;
-  font-size: 13px;;
+  font-size: 13px;
 }
 
 .wrap-referral-form input:focus,
@@ -1841,19 +1820,18 @@ body {
   color: rgb(50, 50, 50);
   opacity: 1;
   font-size: 13px;
-} 
-.wrap-referral-form  select option {
+}
+.wrap-referral-form select option {
   background: 0 0;
   background-color: #1f3469;
 }
 
 .top-underline {
-  width:100%;
+  width: 100%;
   padding-bottom: 15px;
   position: relative;
   text-align: left;
   margin: 1.5%;
- 
 }
 
 .top-underline:after {
@@ -1864,14 +1842,14 @@ body {
   width: 100%;
   background: url('../../assets/Image/form-field-underline-long.svg');
   background-repeat: no-repeat;
-  background-size:cover;
-  height:5px;
+  background-size: cover;
+  height: 5px;
 }
 
 .underline-heading {
   display: flex;
   flex-wrap: wrap;
-  
+
   margin-right: -10px;
   margin-left: -10px;
 }
@@ -1900,10 +1878,10 @@ body {
   width: 100%;
   background: url('../../assets/Image/form-field-underline.svg');
   background-repeat: no-repeat;
-  background-size:cover;
-  height:5px;
+  background-size: cover;
+  height: 5px;
 }
-.referral-button{
+.referral-button {
   overflow: visible;
   padding: 24px 65px;
   background: url('../../assets//Image/signup-background.svg') !important ;
@@ -1911,23 +1889,23 @@ body {
   background-repeat: no-repeat !important;
   background-size: contain !important;
   text-transform: uppercase;
-  font-weight: 700 ;
+  font-weight: 700;
   font-size: 15px !important;
-  cursor: pointer ;
+  cursor: pointer;
   border: none;
   color: #fff !important;
 }
 
 /******************* signup-partner ****************************/
-.signup-overview{
+.signup-overview {
   background-image: url('../../assets//Image/signup-overview-bg.webp');
   background-size: contain;
   width: 466px;
   height: 503px;
   display: block;
-  filter: drop-shadow(0px 0px 35px rgba(0,0,0,.2));
-  -webkit-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
-  -moz-filter: drop-shadow(0px 0px 35px rgba(0,0,0,0.2));
+  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -1937,50 +1915,50 @@ body {
   background-repeat: no-repeat;
 }
 
-.signup-title{
+.signup-title {
   font-size: 24px;
-    background-image: url('../../assets//Image/signup-overview-title-bg.png');
-    padding: 8px;
-    width: 433px;
-    height: 82px;
-    text-align: center;
-    background-repeat: no-repeat;
-    color: #001a5f;
-    background-size: contain;
-    margin-top: 30px;
-    width: 100%;
+  background-image: url('../../assets//Image/signup-overview-title-bg.png');
+  padding: 8px;
+  width: 433px;
+  height: 82px;
+  text-align: center;
+  background-repeat: no-repeat;
+  color: #001a5f;
+  background-size: contain;
+  margin-top: 30px;
+  width: 100%;
 }
 
-.signup-row{
+.signup-row {
   margin: 13px auto;
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    background-color: #f4f4f4;
-    padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  background-color: #f4f4f4;
+  padding: 5px 10px;
 }
-.signup-underline{
+.signup-underline {
   background: url('../../assets/Image/signup-underline.png') no-repeat;
   background-position: bottom center;
-   
-    padding-bottom: 10px!important;
+
+  padding-bottom: 10px !important;
 }
 
-.programm-list{
-  padding-bottom:15px;
-    font-size:18px;
-    color: #262626;
-    font-weight: 500;
-    position: relative;
-    list-style-type: none;
-    padding-right: 25px;
+.programm-list {
+  padding-bottom: 15px;
+  font-size: 18px;
+  color: #262626;
+  font-weight: 500;
+  position: relative;
+  list-style-type: none;
+  padding-right: 25px;
 }
-.programm-list::before{
+.programm-list::before {
   content: '.';
-  color:#000;
-    left:-12px;
-    font-size:2em;
-    position: relative;
+  color: #000;
+  left: -12px;
+  font-size: 2em;
+  position: relative;
 }
 
 /********************************************* ROI CALCULATOR **********************************************************/
@@ -2000,15 +1978,15 @@ body {
 
 .simply-noted-marketing {
   background-image: url('../../assets/Image/roi-page-bg.webp');
-  background-size:100% 95%;
+  background-size: 100% 95%;
   background-position: center;
   background-repeat: no-repeat;
-  width:81%;
+  width: 81%;
   padding: 28px;
-  height:878px;
+  height: 878px;
   padding-top: 10px;
   position: relative;
-  z-index:3;
+  z-index: 3;
   margin-top: 0 !important;
   padding: 70px 10px 10px 10px;
 }
@@ -2027,7 +2005,7 @@ body {
   padding-bottom: 10px !important;
   text-align: center;
   text-transform: inherit;
-  width:70%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -2039,14 +2017,14 @@ body {
   line-height: 1 !important;
   margin-bottom: 60px !important;
   color: #001a5f;
-  font-family: Karla,sans-serif;
-  font-size: 50px!important;
-  font-weight: 700!important;
-  letter-spacing: -2.07px!important;
-  line-height: 64px!important;
+  font-family: Karla, sans-serif;
+  font-size: 50px !important;
+  font-weight: 700 !important;
+  letter-spacing: -2.07px !important;
+  line-height: 64px !important;
   margin-top: 40px;
   margin-bottom: 20px;
-  padding-bottom: 10px!important;
+  padding-bottom: 10px !important;
   text-align: center;
   text-transform: inherit;
   display: none;
@@ -2054,7 +2032,7 @@ body {
 
 .roi-calculator {
   display: flex;
-  overflow:visible;
+  overflow: visible;
   position: relative;
   gap: 50px;
 }
@@ -2083,7 +2061,7 @@ body {
 
 .input-holders {
   height: 100%;
-  width:70%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -2096,8 +2074,8 @@ body {
   color: #777;
 }
 
-.input-holder{
-  margin-bottom:5px;
+.input-holder {
+  margin-bottom: 5px;
 }
 
 .input-header {
@@ -2106,31 +2084,30 @@ body {
   align-items: center;
 }
 .input-header h4 {
-  font-size:18px;
+  font-size: 18px;
   font-weight: 700;
   color: #001a5f;
 }
-.roi-text-num{
+.roi-text-num {
   font-size: 20px;
   font-weight: 700;
   color: #000;
 }
-.roi-text-right{
+.roi-text-right {
   color: #001a5f;
- 
 }
-.simply-noted-marketing input[type=range] {
+.simply-noted-marketing input[type='range'] {
   -webkit-appearance: none;
-  margin:5px 0;
-  width:100%;
+  margin: 5px 0;
+  width: 100%;
   height: 34px;
-  background:rgb(186,182,206);
+  background: rgb(186, 182, 206);
   border-radius: 25px;
   position: relative;
 }
 
 /* Styling for the slider thumb */
-.simply-noted-marketing input[type="range"]::-webkit-slider-thumb {
+.simply-noted-marketing input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 30px;
   height: 34px;
@@ -2140,7 +2117,7 @@ body {
 }
 
 /* Adjust the color of the thumb on Mozilla Firefox */
-.simply-noted-marketing input[type="range"]::-moz-range-thumb {
+.simply-noted-marketing input[type='range']::-moz-range-thumb {
   width: 30px;
   height: 34px;
   background: #ffffff;
@@ -2172,30 +2149,28 @@ body {
   padding: 20px 20px 0;
   border-radius: 10px 10px 25px 25px;
   position: relative;
-  width:100%;
+  width: 100%;
   overflow: hidden;
 }
-.output-holder{
-  margin-bottom:0px;
+.output-holder {
+  margin-bottom: 0px;
 }
-.output-holders h2{
+.output-holders h2 {
   text-align: center;
   font-size: 22px;
   color: #001a5f;
-  font-family:'Karla';
+  font-family: 'Karla';
 }
 .roi-diveder-line {
   position: absolute;
-  background-image: url("../../assets/Image/roi-breakdown-line.png");
+  background-image: url('../../assets/Image/roi-breakdown-line.png');
   display: block;
   width: 10px;
   height: 100%;
   background-repeat: no-repeat;
-  right:80px;
+  right: 80px;
   top: 97px;
 }
-
-
 
 .output-item {
   display: flex;
@@ -2203,44 +2178,43 @@ body {
   align-items: center;
 }
 
-.output-item{
+.output-item {
   font-family: 'Karla';
-    color: black;
+  color: black;
 }
-.output-item p{
+.output-item p {
   font-size: 12px;
-  
 }
-.roiNumbers{
+.roiNumbers {
   width: 85%;
 }
 .roi-totals {
-  background-image: url("../../assets/Image/roi-red-bg.png");
+  background-image: url('../../assets/Image/roi-red-bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+
   height: 110px;
   padding: 20px;
   position: relative;
- 
+
   margin-bottom: 22px;
 }
 
 .roi-robot-cont {
   position: absolute;
-  right:10px;
+  right: 10px;
   top: 282px;
   z-index: 1;
-  width:32%;
+  width: 32%;
 }
 
-.roi-total-head,.roi-total-value{
+.roi-total-head,
+.roi-total-value {
   color: white;
-  font-size:18px;
-  font-family:none;
+  font-size: 18px;
+  font-family: none;
 }
-
 
 /* Media Query */
 @media only screen and (max-width: 1326px) {
@@ -2264,12 +2238,12 @@ body {
   .swiper-company {
     margin-right: 80px;
   }
-  .signup-row{
+  .signup-row {
     margin: 10px auto;
   }
 }
-@media only screen and (max-width: 1124px){
-  .signup-row{
+@media only screen and (max-width: 1124px) {
+  .signup-row {
     margin: 5px auto;
   }
 }
@@ -2308,82 +2282,81 @@ body {
     padding-top: 10px;
   }
   .underline-heading {
-    display:block
+    display: block;
   }
   .underline-text {
-    width:100%;
+    width: 100%;
   }
-  .wrap-referral-form{
-    width:570px;
+  .wrap-referral-form {
+    width: 570px;
   }
-  .wrap-business-form-salesforce{
+  .wrap-business-form-salesforce {
     width: 100%;
   }
   .req-btn {
-    width:50%;
-    height:50px;;
-    
+    width: 50%;
+    height: 50px;
   }
   .sch-btn {
     font-size: 11px;
-  
+
     width: 60%;
     height: 90%;
   }
-  .signup-row{
+  .signup-row {
     margin: 13px auto;
   }
-  .wrap-sample-form-sign{
+  .wrap-sample-form-sign {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
   }
-  .wrap-sample-form{
-width:75%;
-margin-left: 0px;
+  .wrap-sample-form {
+    width: 75%;
+    margin-left: 0px;
   }
-  .custom_testing{
+  .custom_testing {
     margin-bottom: 10px;
- width: 89%;
+    width: 89%;
   }
-  .simply-noted-marketing{
+  .simply-noted-marketing {
     width: 85%;
-  
+
     background-image: none;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
     background-color: white;
     height: 100%;
-   }
-   .roi-calculator{
+  }
+  .roi-calculator {
     display: grid;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
-   }
-   .roi-leading-arrow{
-   display: none;
-   }
-   .roi-calculator-output-wrapper{
+  }
+  .roi-leading-arrow {
+    display: none;
+  }
+  .roi-calculator-output-wrapper {
     width: 100%;
     justify-content: center;
-   }
-   .roi-robot-cont{
+  }
+  .roi-robot-cont {
     display: none;
-   }
-   .roi-calculator-input-wrapper{
-      width: 100%;
-   }
-   .white-underline-salesforce{
+  }
+  .roi-calculator-input-wrapper {
     width: 100%;
-   }
+  }
+  .white-underline-salesforce {
+    width: 100%;
+  }
 }
 @media only screen and (max-width: 768px) {
-  .req-btn{
-    width:67%;
+  .req-btn {
+    width: 67%;
     margin-left: 5rem;
   }
-  .wrap-sample-form-sign{
-    width:93%;
+  .wrap-sample-form-sign {
+    width: 93%;
     padding: 10px;
   }
   .sch-btn {
@@ -2393,7 +2366,7 @@ margin-left: 0px;
     margin-left: 5rem;
     margin-bottom: 30px;
   }
-  .signup-overview{
+  .signup-overview {
     background-size: 100% 83%;
     height: 585px;
     margin-bottom: 0px;
@@ -2408,14 +2381,14 @@ margin-left: 0px;
   .swiper-button-prev,
   .swiper-button-next {
     background-color: #ef6e6e;
-    padding:8px;
+    padding: 8px;
     border-radius: 50%;
   }
- 
+
   .thankyou_img {
     width: 41%;
-    margin-top:8rem;
-    margin-left:18rem;
+    margin-top: 8rem;
+    margin-left: 18rem;
   }
   .cars-killer {
     width: 45%;
@@ -2425,76 +2398,72 @@ margin-left: 0px;
     font-size: 20px;
     margin-right: 0px;
   }
-  .white-underline{
+  .white-underline {
     width: 100%;
   }
   .data_card {
     margin: 0 31px;
     height: 77%;
   }
-  .programm-list{
-    padding-bottom:0px;
-      font-size:15px;
+  .programm-list {
+    padding-bottom: 0px;
+    font-size: 15px;
   }
-.banner-detail{
-  background-size: 81% 85%;
+  .banner-detail {
+    background-size: 81% 85%;
+  }
+  .roiNumbers {
+    width: 100%;
+  }
+  .input-holders {
+    width: 100%;
+  }
+  .banner-detail-roi {
+    background-size: 57% 80%;
+  }
+  .custom_testing {
+    width: 52%;
+  }
 }
-.roiNumbers{
-  width: 100%;
-}
-.input-holders{
-  width: 100%;
-}
-.banner-detail-roi{
- background-size:57% 80%;
-}
-.custom_testing{
-  width:52%;
-   }
-}
-@media only screen and (max-width:511px) {
-  .custom_testing{
+@media only screen and (max-width: 511px) {
+  .custom_testing {
     width: 80%;
-     }
-     .data_card {
-      margin: 0px;
-     
-    }
-    .signup-title {
-background-image: none;
-    }
-    .thankyou_img {
-      width: 41%;
-      margin-top:6rem;
-      margin-left:12rem;
-    }
-    .cars-killer {
-      width: 45%;
-      margin-left:4rem;
-    }
-    .wrap-sample-form{
-      width:90%;
-     padding: 10px;
-        }
-        .wrap-business-form-salesforce{
-          padding: 10px;
-        }
-        .form-title{
-          font-size: 12px;
-        }
-    }
-@media only screen and (max-width:500px) {
-
-
-.simply-noted-marketing{
-  width:100%;
-
+  }
+  .data_card {
+    margin: 0px;
+  }
+  .signup-title {
+    background-image: none;
+  }
+  .thankyou_img {
+    width: 41%;
+    margin-top: 6rem;
+    margin-left: 12rem;
+  }
+  .cars-killer {
+    width: 45%;
+    margin-left: 4rem;
+  }
+  .wrap-sample-form {
+    width: 90%;
+    padding: 10px;
+  }
+  .wrap-business-form-salesforce {
+    padding: 10px;
+  }
+  .form-title {
+    font-size: 12px;
+  }
 }
+@media only screen and (max-width: 500px) {
+  .simply-noted-marketing {
+    width: 100%;
+  }
 
-.roi-calculator-input-wrapper{
-  width:100%;
-  justify-content: flex-start;
-}
+  .roi-calculator-input-wrapper {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 .sidebar::-webkit-scrollbar {
   width: 5px;

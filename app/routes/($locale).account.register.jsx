@@ -1,13 +1,13 @@
-import { redirect, json } from '@shopify/remix-oxygen';
-import { Form, useActionData } from '@remix-run/react';
-import { useState } from 'react';
+import {redirect, json} from '@shopify/remix-oxygen';
+import {Form, useActionData} from '@remix-run/react';
+import {useState} from 'react';
 
-import { getInputStyleClasses } from '~/lib/utils';
-import { Link } from '~/components';
+import {getInputStyleClasses} from '~/lib/utils';
+import {Link} from '~/components';
 
-import { doLogin } from './($locale).account.login';
+import {doLogin} from './($locale).account.login';
 
-export async function loader({ context, params }) {
+export async function loader({context, params}) {
   const customerAccessToken = await context.session.get('customerAccessToken');
 
   if (customerAccessToken) {
@@ -17,16 +17,16 @@ export async function loader({ context, params }) {
   return new Response(null);
 }
 
-const badRequest = (data) => json(data, { status: 400 });
+const badRequest = (data) => json(data, {status: 400});
 
-export const action = async ({ request, context, params }) => {
-  const { session, storefront } = context;
+export const action = async ({request, context, params}) => {
+  const {session, storefront} = context;
   const formData = await request.formData();
 
   const email = formData.get('email');
   const password = formData.get('password');
-  const firstName = formData.get('name')
-  const lastName = formData.get("last Name")
+  const firstName = formData.get('name');
+  const lastName = formData.get('last Name');
 
   if (
     !email ||
@@ -46,7 +46,7 @@ export const action = async ({ request, context, params }) => {
   try {
     const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
       variables: {
-        input: { email, password, firstName, lastName,},
+        input: {email, password, firstName, lastName},
       },
     });
 
@@ -57,7 +57,7 @@ export const action = async ({ request, context, params }) => {
       throw new Error(data?.customerCreate?.customerUserErrors.join(', '));
     }
 
-    const customerAccessToken = await doLogin(context, { email, password });
+    const customerAccessToken = await doLogin(context, {email, password});
     session.set('customerAccessToken', customerAccessToken);
 
     return redirect(params.locale ? `${params.locale}/account` : '/account', {
@@ -84,7 +84,7 @@ export const action = async ({ request, context, params }) => {
 };
 
 export const meta = () => {
-  return [{ title: 'Register' }];
+  return [{title: 'Register'}];
 };
 
 export default function Register() {
@@ -97,10 +97,15 @@ export default function Register() {
   return (
     <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl block text-blue-900 text-2xl">Create an Account.</h1>
-        <img className='w-64 mt-3'src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/>
+        <h1 className="text-4xl block text-blue-900 text-2xl">
+          Create an Account.
+        </h1>
+        <img
+          className="w-64 mt-3"
+          src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+        />
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form 
+        <Form
           method="post"
           noValidate
           className="pt-6 pb-8 mt-4 mb-[-175px] space-y-3"
@@ -137,7 +142,9 @@ export default function Register() {
           </div>
           <div>
             <input
-              className={`mb-1 h-12 ${getInputStyleClasses(nativeFirstNameError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(
+                nativeFirstNameError,
+              )}`}
               id="name"
               name="name"
               type="name"
@@ -157,12 +164,16 @@ export default function Register() {
               }}
             />
             {nativeFirstNameError && (
-              <p className="text-red-500 text-xs">{nativeFirstNameError} &nbsp;</p>
+              <p className="text-red-500 text-xs">
+                {nativeFirstNameError} &nbsp;
+              </p>
             )}
           </div>
           <div>
             <input
-              className={`mb-1 h-12 ${getInputStyleClasses(nativeLastNameError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(
+                nativeLastNameError,
+              )}`}
               id="last name"
               name="last Name"
               type="name"
@@ -182,12 +193,16 @@ export default function Register() {
               }}
             />
             {nativeLastNameError && (
-              <p className="text-red-500 text-xs">{nativeLastNameError} &nbsp;</p>
+              <p className="text-red-500 text-xs">
+                {nativeLastNameError} &nbsp;
+              </p>
             )}
           </div>
           <div>
             <input
-              className={`mb-1 h-12 ${getInputStyleClasses(nativePasswordError)}`}
+              className={`mb-1 h-12 ${getInputStyleClasses(
+                nativePasswordError,
+              )}`}
               id="password"
               name="password"
               type="password"
@@ -220,12 +235,19 @@ export default function Register() {
               </p>
             )}
           </div>
-         
+
           <div className="flex items-center justify-between">
             <button
               className=" shadow-custom  shadow-lg h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
-              disabled={!!(nativePasswordError || nativeEmailError || nativeFirstNameError || nativeLastNameError)}
+              disabled={
+                !!(
+                  nativePasswordError ||
+                  nativeEmailError ||
+                  nativeFirstNameError ||
+                  nativeLastNameError
+                )
+              }
             >
               Create Account
             </button>

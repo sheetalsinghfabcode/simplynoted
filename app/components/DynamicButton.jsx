@@ -1,5 +1,5 @@
 import {FaArrowLeft} from 'react-icons/fa';
-import { AiOutlineLogout } from "react-icons/ai";
+import {AiOutlineLogout} from 'react-icons/ai';
 const DynamicButton = ({
   className,
   text,
@@ -7,7 +7,8 @@ const DynamicButton = ({
   disabled,
   type,
   backArrow,
-  logoutIcon
+  logoutIcon,
+  onHoverColorEnabled = true,
 }) => {
   return (
     <>
@@ -15,10 +16,12 @@ const DynamicButton = ({
         onClick={onClickFunction}
         disabled={disabled}
         type={type}
-        className={`text-white font-bold py-2 px-4 flex items-center justify-center gap-[6px] bg-#001a5f-500 hover:bg-sky-700 tracking-[1px] focus:outline-none focus:shadow-outline whitespace-nowrap  ${className}`}
+        className={`text-white font-bold py-2 px-4 flex items-center justify-center gap-[6px] bg-#001a5f-500 ${
+          onHoverColorEnabled && 'hover:bg-sky-700'
+        } tracking-[1px] focus:outline-none focus:shadow-outline whitespace-nowrap  ${className}`}
       >
         {backArrow && <FaArrowLeft />}
-        {logoutIcon && <AiOutlineLogout/>}
+        {logoutIcon && <AiOutlineLogout />}
         {text}
       </button>
     </>

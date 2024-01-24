@@ -1,6 +1,4 @@
-
-const Checkbox = ({ label, checked, onChange,value }) => {
-  
+const Checkbox = ({label, checked, onChange, value}) => {
   return (
     <label className="flex items-center space-x-2">
       <input

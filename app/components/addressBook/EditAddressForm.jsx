@@ -69,7 +69,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     })
       .then((response) => {
         if (response.ok) {
-          console.log('response', response);
+          // console.log('response', response);
           setSelectedAddress(null);
           setLoader(false);
           return response.json(); // Parse the response JSON if it's a successful response
@@ -117,7 +117,6 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       uploadDataToAPI();
     }
   };
-
 
   return (
     <div className="container mx-auto p-4 bg-[#e2ecf6]">

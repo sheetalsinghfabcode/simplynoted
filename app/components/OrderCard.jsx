@@ -31,7 +31,7 @@ export function OrderCard({order}) {
             !lineItems[0].variant?.image && 'md:col-span-2'
           }`}
         >
-          <Heading as="h3" format className='items-center' size="copy">
+          <Heading as="h3" format className="items-center" size="copy">
             {lineItems.length > 1
               ? `${lineItems[0].title} +${lineItems.length - 1} more`
               : lineItems[0].title}

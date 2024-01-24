@@ -6,7 +6,11 @@ const Faq = () => {
   return (
     <>
       <div className="sm:mt-10 mt-7 mx-8">
-      <DynamicTitle dynamicButton title="Simply Noted FAQs" className={'mt-[20px] md:text-[42px] text-[32px]'} />
+        <DynamicTitle
+          dynamicButton
+          title="Simply Noted FAQs"
+          className={'mt-[20px] md:text-[42px] text-[32px]'}
+        />
 
         <FaqAccordion
           title="Do you have have business pricing / offer custom orders?"

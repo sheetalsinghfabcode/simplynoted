@@ -31,76 +31,69 @@ const Business = () => {
   const BLOCK = {display: 'block'};
   const NONE = {display: 'none'};
   const [formData, setFormData] = useState({
-   first_name:'',
-   last_name:'',
- company:'',
- phone:'',
+    first_name: '',
+    last_name: '',
+    company: '',
+    phone: '',
     email: '',
-    volume:'',
-    address:'',
-    city:'',
-    state:'',
-    zip:'',
-    information:'',
+    volume: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    information: '',
   });
 
   const handleChange = (e) => {
- 
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  
-  }
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
+  };
 
   function handleInput(event) {
     const inputValue = event.target.value;
-    
+
     const numericValue = inputValue.replace(/\D/g, '');
     event.target.value = numericValue;
   }
 
-  const handleSubmit=async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const form= new FormData();
-      for(const key in formData){
-        form.append(key,formData[key])
+    try {
+      const form = new FormData();
+      for (const key in formData) {
+        form.append(key, formData[key]);
       }
-      
-const url="https://hooks.zapier.com/hooks/catch/4135261/ollrgfc/"
-  
-const options = {
-  method: 'POST', 
-  body: form,
-};
 
+      const url = 'https://hooks.zapier.com/hooks/catch/4135261/ollrgfc/';
 
-const response=await fetch(url, options)
-  if(response.ok){
-    console.log("Form Data sent successfully");
-     setFormData({
-      first_name:'',
-      last_name:'',
-    company:'',
-    phone:'',
-       email: '',
-       volume:'',
-       address:'',
-       city:'',
-       state:'',
-       zip:'',
-       information:'',
-     });
-  }else{
-    console.log("Failed to send data");
-  }
-} 
-  catch(error){
-    console.error('Error:', error);
-  }
+      const options = {
+        method: 'POST',
+        body: form,
+      };
+
+      const response = await fetch(url, options);
+      if (response.ok) {
+        console.log('Form Data sent successfully');
+        setFormData({
+          first_name: '',
+          last_name: '',
+          company: '',
+          phone: '',
+          email: '',
+          volume: '',
+          address: '',
+          city: '',
+          state: '',
+          zip: '',
+          information: '',
+        });
+      } else {
+        console.error('Failed to send data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
-
-  
-
+  };
 
   return (
     <>
@@ -165,7 +158,11 @@ const response=await fetch(url, options)
                 </div>
 
                 <div className="wrap-sample-form">
-                  <form className="hubForm" data-hs-cf-bound="true" onSubmit={handleSubmit}>
+                  <form
+                    className="hubForm"
+                    data-hs-cf-bound="true"
+                    onSubmit={handleSubmit}
+                  >
                     <div className="mt-[3rem] sm:text-[28px] text-[18px] text-center text-white leading-8">
                       Request a Writing Sample Packet
                     </div>
@@ -197,7 +194,7 @@ const response=await fetch(url, options)
                     <div className="row">
                       <div className="white-underline">
                         <input
-                        required
+                          required
                           type="text"
                           name="company"
                           placeholder="Company"
@@ -213,7 +210,6 @@ const response=await fetch(url, options)
                           pattern="\d{10}"
                           maxLength="10"
                           value={formData.phone}
-                        
                           onChange={handleChange}
                           onInput={handleInput}
                           placeholder="Phone Number"
@@ -234,8 +230,19 @@ const response=await fetch(url, options)
                         />
                       </div>
                       <div className="white-underline">
-                        <select required className="!text-[13px]" name="volume" id=""  onChange={handleChange}>
-                          <option  value={formData.volume} disabled selected hidden>
+                        <select
+                          required
+                          className="!text-[13px]"
+                          name="volume"
+                          id=""
+                          onChange={handleChange}
+                        >
+                          <option
+                            value={formData.volume}
+                            disabled
+                            selected
+                            hidden
+                          >
                             Expected Volume
                           </option>
                           <option value="100-500">100-500</option>
@@ -266,14 +273,20 @@ const response=await fetch(url, options)
                           onChange={handleChange}
                           placeholder="City"
                           id=""
-                          
                         />
                       </div>
                     </div>
 
                     <div className="row">
                       <div className="white-underline">
-                        <input type="text" name="state" value={formData.state} onChange={handleChange} placeholder="State" required />
+                        <input
+                          type="text"
+                          name="state"
+                          value={formData.state}
+                          onChange={handleChange}
+                          placeholder="State"
+                          required
+                        />
                       </div>
                       <div className="white-underline">
                         <input
@@ -293,7 +306,7 @@ const response=await fetch(url, options)
 
                     <div className="white-underline !w-[100%]">
                       <input
-                      required
+                        required
                         className="!w-full !px-0"
                         type="text"
                         name="information"
@@ -308,7 +321,6 @@ const response=await fetch(url, options)
                       value="REQUEST SAMPLE"
                       className="sample-request"
                       id="Form-submit"
-                     
                     />
                   </form>
                 </div>
@@ -816,7 +828,6 @@ const response=await fetch(url, options)
                                 et justo duo dolores et ea rebum.
                               </div>
                               <DynamicButton
-
                                 text="START INTEGRATE"
                                 className="business-btn"
                               />

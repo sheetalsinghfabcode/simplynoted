@@ -13,7 +13,7 @@ export function ProductCard({
   loading,
   onClick,
   quickAdd,
-  offPrice
+  offPrice,
 }) {
   let cardLabel;
   const [productPrice, setproductPrice] = useState('');
@@ -38,7 +38,7 @@ export function ProductCard({
     brand: product.vendor,
     price: firstVariant.price.amount,
     quantity: 1,
-  };  
+  };
   return (
     <div className="flex flex-col gap-2 bg-[white]">
       {/* <h2>Helloo{product.title}</h2> */}
@@ -75,11 +75,18 @@ export function ProductCard({
               {product.title}
             </Text>
             <Text className="flex w-full justify-center gap-4">
-              {offPrice>0?
-              <span className='text-[red]'><span className='line-through text-[black]'> ${price.amount}</span> $ {(price.amount - (price.amount * offPrice)/100).toFixed(2)}</span>
-              :
-              <span className='text-[red]'>$ {price.amount}</span>
-              }
+              {offPrice > 0 ? (
+                <span className="text-[red]">
+                  <span className="line-through text-[black]">
+                    {' '}
+                    ${price.amount}
+                  </span>{' '}
+                  ${' '}
+                  {(price.amount - (price.amount * offPrice) / 100).toFixed(2)}
+                </span>
+              ) : (
+                <span className="text-[red]">$ {price.amount}</span>
+              )}
               {/* <Money withoutTrailingZeros data={price} /> */}
               {/* {isDiscounted(price, compareAtPrice) && (
                   <CompareAtPrice

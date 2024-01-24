@@ -59,100 +59,6 @@ export default function FoldedCustomisableCard({
 
   const navigate = useNavigate();
 
-  // TODO: Remove commented code when no longer needed
-  // useEffect(() => {
-  //   // To stop the lateral inversion of the image to be screenshotted.
-  //   setIsRotationAnimationApplied(false);
-  //   let trimmedDiv;
-  //   // To Store the actual value instead of a promise inside screenshotUrl object key.
-  //   const generateScreenshot = async () => {
-  //     try {
-  //       // Image file present, generating screenshot.
-  //       if (
-  //         selectedCardPage === 'Card Front' &&
-  //         frontImageDetails.isImageSelected
-  //       ) {
-  //         trimmedDiv = document.getElementById('frontTrimmedDiv');
-  //         const screenshotImageFile = await generateTrimmedImageScreenshotFile(
-  //           trimmedDiv,
-  //         );
-  //         setFrontImageDetails((prevFrontImageDetails) => {
-  //           return {
-  //             ...prevFrontImageDetails,
-  //             screenshotImageFile,
-  //           };
-  //         });
-  //       }
-
-  //       if (
-  //         selectedCardPage === 'Card Back' &&
-  //         backImageDetails.isImageSelected
-  //       ) {
-  //         trimmedDiv = document.getElementById('backTrimmedDiv');
-  //         const screenshotImageFile = await generateTrimmedImageScreenshotFile(
-  //           trimmedDiv,
-  //         );
-  //         setBackImageDetails((prevBackImageDetails) => {
-  //           return {
-  //             ...prevBackImageDetails,
-  //             screenshotImageFile,
-  //           };
-  //         });
-  //       }
-  //     } catch (error) {
-  //       console.error('Error generating screenshot:', error);
-  //     }
-  //   };
-
-  //   generateScreenshot();
-
-  //   console.log({frontImageDetails, backImageDetails});
-  // }, [
-  //   frontImageDetails.imageBlobUrl,
-  //   frontImageDetails.blackAndWhiteImageBlobUrl,
-  //   frontImageDetails.zoom,
-  //   frontImageDetails.isColoredImage,
-
-  //   backImageDetails.imageBlobUrl,
-  //   backImageDetails.blackAndWhiteImageBlobUrl,
-  //   backImageDetails.zoom,
-  //   backImageDetails.isColoredImage,
-  // ]);
-
-  // async function generateTrimmedImageScreenshotFile(element) {
-  //   try {
-  //     // Wait for the image to be fully loaded for the timing issue.
-  //     await new Promise((resolve) => {
-  //       const image = element.querySelector('img');
-  //       if (image.complete) {
-  //         resolve();
-  //       } else {
-  //         image.onload = resolve;
-  //       }
-  //     });
-
-  //     const canvas = await html2canvas(element);
-  //     const dataUrl = canvas.toDataURL('image/png');
-
-  //     // Convert the URL to a file
-  //     let arr = dataUrl.split(','),
-  //       mime = arr[0].match(/:(.*?);/)[1],
-  //       bstr = atob(arr[1]),
-  //       n = bstr.length,
-  //       u8arr = new Uint8Array(n);
-
-  //     while (n--) {
-  //       u8arr[n] = bstr.charCodeAt(n);
-  //     }
-
-  //     let filename = 'screenshot.png';
-
-  //     return new File([u8arr], filename, {type: mime});
-  //   } catch (error) {
-  //     console.error('Error generating a screenshot file:', error);
-  //   }
-  // }
-
   useEffect(() => {
     const scrollHandler = () => {
       window.scrollTo(0, 0);
@@ -908,7 +814,7 @@ export default function FoldedCustomisableCard({
 
             <div className="h-[100px]">
               <img
-                class="object-contain h-full"
+                className="object-contain h-full"
                 src={qr.generatedQrImageLink}
               />
             </div>
@@ -1027,7 +933,7 @@ export default function FoldedCustomisableCard({
                             : 'rotateY(0deg)',
                         }}
                       >
-                        <div class="relative w-full h-full">
+                        <div className="relative w-full h-full">
                           <span className="p-8 font-pinocchio">
                             Your custom message text will be here...
                           </span>

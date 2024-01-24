@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function FaqAccordion({title, children,className, accordion = false}) {
+function FaqAccordion({title, children, className, accordion = false}) {
   const [isExpanded, setIsExpanded] = useState(accordion);
 
   const toggleAccordion = () => {
@@ -8,7 +8,7 @@ function FaqAccordion({title, children,className, accordion = false}) {
   };
 
   return (
-    <div >
+    <div>
       <div
         className={`flex justify-between items-center cursor-pointer w-full min-h-[40px] uppercase py-[5px] ${className}`}
         onClick={toggleAccordion}

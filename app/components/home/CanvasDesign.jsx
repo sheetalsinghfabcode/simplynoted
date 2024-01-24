@@ -91,8 +91,7 @@ const CanvasDesign = () => {
 
         {/* Second */}
         <div className="md:flex hidden lg:justify-start  justify-center flex-wrap w-full my-10  gap-[57px] ">
-        <div className="lg:w-[60%] w-[73%] mx-auto lg:mx-0  lg:mb-0 mb-[190px] flex flex-wrap   mt-5  lg:overflow-hidden overflow-visible  justify-start">
-            
+          <div className="lg:w-[60%] w-[73%] mx-auto lg:mx-0  lg:mb-0 mb-[190px] flex flex-wrap   mt-5  lg:overflow-hidden overflow-visible  justify-start">
             <div className="text-right absolute w-[67%]">
               <video
                 className="max-w-[500px]  absolute overflow-hidden"
@@ -113,13 +112,13 @@ const CanvasDesign = () => {
           </div>
           <div className="lg:w-[30%] w-[74%] lg:mx-0  mt-[60px] lg:text-left text-center data-background">
             <div className="xl:text-3xl lg:text-2xl md:text-3xl font-karla lg:text-left lg:mt-0 md:mt-[15rem] text-center  text-[#001A5F]">
-            Unlimited card{' '}
+              Unlimited card{' '}
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 options
               </span>
             </div>
             <div className="texts mt-5 text-justify">
-            Use our cards, send us yours or design your own! Simply Noted
+              Use our cards, send us yours or design your own! Simply Noted
               offers a wide array of cards to choose from and a powerful custom
               create a card tool. Over 95% of our clients are businesses and use
               their own custom stationery.
@@ -129,15 +128,13 @@ const CanvasDesign = () => {
               className="btn1"
               onClickFunction={() => navigate('/collections/best-sellers')}
             />
-           
           </div>
-          
         </div>
 
- {/* mobile view */}
- <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
+        {/* mobile view */}
+        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5 ">
-          Unlimited card{' '}
+            Unlimited card{' '}
             <span className="font-beauty text-6xl font-bold">options</span>
           </div>
           <div className="w-full">
@@ -146,19 +143,17 @@ const CanvasDesign = () => {
             </video>
           </div>
           <div className="texts text-justify !leading-7 mt-5">
-          Use our cards, send us yours or design your own! Simply Noted
-              offers a wide array of cards to choose from and a powerful custom
-              create a card tool. Over 95% of our clients are businesses and use
-              their own custom stationery.
+            Use our cards, send us yours or design your own! Simply Noted offers
+            a wide array of cards to choose from and a powerful custom create a
+            card tool. Over 95% of our clients are businesses and use their own
+            custom stationery.
           </div>
           <DynamicButton
             text="OUR CARDS"
             className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
-          
         </div>
-
 
         {/* Third */}
 
@@ -223,7 +218,6 @@ const CanvasDesign = () => {
             className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
-         
         </div>
       </div>
     </>

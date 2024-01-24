@@ -63,7 +63,7 @@ export default function customisableCard() {
 
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
-    console.log('Stored Customer ID:', storedCustomerId);
+    // console.log('Stored Customer ID:', storedCustomerId);
     setCustomerId(storedCustomerId);
     setIsInitialRender(false);
   }, []);

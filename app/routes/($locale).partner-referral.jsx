@@ -21,8 +21,7 @@ const Partner_referral = () => {
         <div className="flex justify-center mt-[30px] lg:mx-auto mx-[30px]">
           <div className="wrap-referral-form">
             <form className="w-[90%] m-0 flex-row flex-wrap pb-[60px]">
-
-              <div className='mt-10'>
+              <div className="mt-10">
                 <div className="underline-heading">
                   <div className="top-underline">
                     <h3 className=" text-[#001a5f] text-2xl font-karla">
@@ -81,11 +80,11 @@ const Partner_referral = () => {
                 </div>
               </div>
 
-              <div className='mt-10'>
+              <div className="mt-10">
                 <div className="underline-heading">
                   <div className="top-underline">
                     <h3 className=" text-[#001a5f] text-2xl font-karla">
-                    Referral Information
+                      Referral Information
                     </h3>
                   </div>
                 </div>
@@ -138,26 +137,24 @@ const Partner_referral = () => {
                     />
                   </div>
                   <div className="underline-text">
-                        <select name="volume" id="">
-                          <option value="Expected Volume">
-                            Expected Volume
-                          </option>
-                          <option value="100-500">100-500</option>
-                          <option value="501-999">501-999</option>
-                          <option value="1,000-2,499">1,000-2,499</option>
-                          <option value="2,500+">2,500+</option>
-                        </select>
-                      </div>
+                    <select name="volume" id="">
+                      <option value="Expected Volume">Expected Volume</option>
+                      <option value="100-500">100-500</option>
+                      <option value="501-999">501-999</option>
+                      <option value="1,000-2,499">1,000-2,499</option>
+                      <option value="2,500+">2,500+</option>
+                    </select>
+                  </div>
                 </div>
 
-<div className='text-center mt-10 text-white'>
-                <input
-                      type="submit"
-                      value="Submit"
-                      className="referral-button"
-                      id="Form-submit"
-                    />
-</div>
+                <div className="text-center mt-10 text-white">
+                  <input
+                    type="submit"
+                    value="Submit"
+                    className="referral-button"
+                    id="Form-submit"
+                  />
+                </div>
               </div>
             </form>
           </div>

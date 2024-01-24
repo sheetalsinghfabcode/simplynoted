@@ -97,7 +97,11 @@ const apidocs = () => {
   return (
     <div className="">
       <div className="sm:px-[40px] px-[30px]">
-      <DynamicTitle dynamicButton title="API Docs" className={' !text-[42px]'} />  
+        <DynamicTitle
+          dynamicButton
+          title="API Docs"
+          className={' !text-[42px]'}
+        />
         <p className="text-[#001a5f] max-w-[40rem] font-bold mb-[28px] mt-[21px]  text-[20px] sm:text-center text-justify mx-auto">
           By using this API you will have full access to the same range of
           features found in our apps and website.
@@ -114,7 +118,7 @@ const apidocs = () => {
               }`}
             >
               <button value="API ENDPOINTS" onClick={handleSectionChange}>
-                <span className='text-blue-500'>1.</span>API ENDPOINTS
+                <span className="text-blue-500">1.</span>API ENDPOINTS
               </button>
             </li>
             <li
@@ -125,7 +129,7 @@ const apidocs = () => {
               }`}
             >
               <button value="AUTHENTICATION" onClick={handleSectionChange}>
-                <span className='text-blue-500'>2.</span>AUTHENTICATION
+                <span className="text-blue-500">2.</span>AUTHENTICATION
               </button>
             </li>
             <li
@@ -136,18 +140,17 @@ const apidocs = () => {
               }`}
             >
               <button value="Retrieve Auth Token" onClick={handleSectionChange}>
-                <span className='text-blue-500'>2.1.</span>Retrieve Auth Token
+                <span className="text-blue-500">2.1.</span>Retrieve Auth Token
               </button>
             </li>
 
             <li
               className={`${
-                selectedSection === 'USERS' ? 'bg-slate-300 p-2 font-bold' 
-                : ''
+                selectedSection === 'USERS' ? 'bg-slate-300 p-2 font-bold' : ''
               }`}
             >
               <button value="USERS" onClick={handleSectionChange}>
-                <span className='text-blue-500'>3.</span>USERS
+                <span className="text-blue-500">3.</span>USERS
               </button>
             </li>
             <li
@@ -158,7 +161,7 @@ const apidocs = () => {
               }`}
             >
               <button value="Create A User" onClick={handleSectionChange}>
-               <span className='text-blue-500'>3.1.</span> Create A User
+                <span className="text-blue-500">3.1.</span> Create A User
               </button>
             </li>
             <li
@@ -173,7 +176,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span className='text-blue-500'>4.</span>PRODUCTS
+                <span className="text-blue-500">4.</span>PRODUCTS
               </button>
             </li>
             <li
@@ -188,7 +191,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>4.1.</span> Get Standard Cards
+                <span className="text-blue-500">4.1.</span> Get Standard Cards
               </button>
             </li>
             <li
@@ -203,7 +206,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-              <span className='text-blue-500'>4.2.</span>  Get All Custom Cards
+                <span className="text-blue-500">4.2.</span> Get All Custom Cards
               </button>
             </li>
             <li
@@ -218,7 +221,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>4.3.</span> Get Specific Custom Cards
+                <span className="text-blue-500">4.3.</span> Get Specific Custom
+                Cards
               </button>
             </li>
             <li
@@ -233,7 +237,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-              <span className='text-blue-500'>4.4.</span>  Create Custom Card
+                <span className="text-blue-500">4.4.</span> Create Custom Card
               </button>
             </li>
             <li
@@ -248,7 +252,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>4.5.</span> Modify Custom Card
+                <span className="text-blue-500">4.5.</span> Modify Custom Card
               </button>
             </li>
             <li
@@ -263,7 +267,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>4.6.</span> Delete Custom Cards
+                <span className="text-blue-500">4.6.</span> Delete Custom Cards
               </button>
             </li>
             <li
@@ -276,7 +280,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>5.</span> ORDERS
+                <span className="text-blue-500">5.</span> ORDERS
               </button>
             </li>
             <ol>
@@ -292,7 +296,7 @@ const apidocs = () => {
                   type="button"
                   onClick={handleSectionChange}
                 >
-                 <span className='text-blue-500'>5.1</span> Create An Order
+                  <span className="text-blue-500">5.1</span> Create An Order
                 </button>
               </li>
               <li
@@ -307,7 +311,7 @@ const apidocs = () => {
                   type="button"
                   onClick={handleSectionChange}
                 >
-                 <span className='text-blue-500'>5.2.</span> Get Orders
+                  <span className="text-blue-500">5.2.</span> Get Orders
                 </button>
               </li>
             </ol>
@@ -324,7 +328,7 @@ const apidocs = () => {
                 onClick={handleSectionChange}
               >
                 {' '}
-              <span className='text-blue-500'>6.</span>  TEMPLATES
+                <span className="text-blue-500">6.</span> TEMPLATES
               </button>
             </li>
             <li
@@ -339,7 +343,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span className='text-blue-500'>6.1.</span>Create A Message Template
+                <span className="text-blue-500">6.1.</span>Create A Message
+                Template
               </button>
             </li>
             <li
@@ -354,7 +359,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-              <span className='text-blue-500'>6.2.</span>  Retrieve All Message Templates
+                <span className="text-blue-500">6.2.</span> Retrieve All Message
+                Templates
               </button>
             </li>
             <li
@@ -369,7 +375,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>6.3.</span> Retrieve A Single Template
+                <span className="text-blue-500">6.3.</span> Retrieve A Single
+                Template
               </button>
             </li>
             <li
@@ -384,7 +391,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>6.4.</span> Update A Template
+                <span className="text-blue-500">6.4.</span> Update A Template
               </button>
             </li>
             <li
@@ -399,7 +406,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>7.</span> ADDRESSES
+                <span className="text-blue-500">7.</span> ADDRESSES
               </button>
             </li>
             <li
@@ -414,7 +421,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>7.1.</span> Create An Address
+                <span className="text-blue-500">7.1.</span> Create An Address
               </button>
             </li>
 
@@ -430,7 +437,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>7.2.</span> Retrieve All Addresses
+                <span className="text-blue-500">7.2.</span> Retrieve All
+                Addresses
               </button>
             </li>
 
@@ -446,7 +454,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-               <span className='text-blue-500'>7.3</span> Retrieve A Single Address
+                <span className="text-blue-500">7.3</span> Retrieve A Single
+                Address
               </button>
             </li>
             <li
@@ -461,7 +470,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-              <span className='text-blue-500'>7.4.</span>  Update A Address
+                <span className="text-blue-500">7.4.</span> Update A Address
               </button>
             </li>
 
@@ -477,7 +486,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-              <span className='text-blue-500'>7.5.</span>  Delete A Single Address
+                <span className="text-blue-500">7.5.</span> Delete A Single
+                Address
               </button>
             </li>
             <li
@@ -492,7 +502,8 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span className='text-blue-500'>8.</span>AVAILABLE HANDWRITING STYLES
+                <span className="text-blue-500">8.</span>AVAILABLE HANDWRITING
+                STYLES
               </button>
             </li>
             <li
@@ -507,7 +518,7 @@ const apidocs = () => {
                 onClick={handleSectionChange}
                 type="button"
               >
-               <span className='text-blue-500'>8.1.</span> Examples
+                <span className="text-blue-500">8.1.</span> Examples
               </button>
             </li>
           </ol>
@@ -516,7 +527,7 @@ const apidocs = () => {
           {selectedSection === 'API ENDPOINTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-               <span className='text-blue-500'></span> 1.API ENDPOINTS
+                <span className="text-blue-500"></span> 1.API ENDPOINTS
               </h2>
               <div className="text-sm">
                 <p className=" mb-[7px] ml-[8px] font-thin mt-[23px]">
@@ -547,14 +558,14 @@ const apidocs = () => {
           {selectedSection === 'AUTHENTICATION' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-               <span className='text-blue-500'>2.</span> AUTHENTICATION
+                <span className="text-blue-500">2.</span> AUTHENTICATION
               </h2>
             </div>
           )}
           {selectedSection === 'Retrieve Auth Token' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-               <span className='text-blue-500'>2.1.</span> Retrieve Auth Token
+                <span className="text-blue-500">2.1.</span> Retrieve Auth Token
               </h2>
               <p className="mt-12px text-sm font-thin m-[8px]">
                 <span className="font-bold"> Description:</span> Simply Noted
@@ -569,7 +580,7 @@ const apidocs = () => {
           {selectedSection === 'USERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-               <span className='text-blue-500'>3.</span> USERS
+                <span className="text-blue-500">3.</span> USERS
               </h2>
               ``{' '}
             </div>
@@ -577,7 +588,7 @@ const apidocs = () => {
           {selectedSection === 'Create A User' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-               <span className='text-blue-500'>3.1.</span> Create A User
+                <span className="text-blue-500">3.1.</span> Create A User
               </h2>
               <p className="ml-[8px] text-sm font-thin">
                 <span className="font-bold">Description:</span> Users are
@@ -593,7 +604,7 @@ const apidocs = () => {
           {selectedSection === 'PRODUCTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                <span className='text-blue-500'>4.</span> PRODUCTS
+                <span className="text-blue-500">4.</span> PRODUCTS
               </h2>
             </div>
           )}
@@ -601,7 +612,8 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                 <span className='text-blue-500'> 4.1.</span> Get Standard Cards
+                  <span className="text-blue-500"> 4.1.</span> Get Standard
+                  Cards
                 </h2>
                 <p className="mt-[7px] ml-[8px] text-sm font-thin">
                   <span className="font-bold ">Description:</span>This endpoint
@@ -618,24 +630,24 @@ const apidocs = () => {
               <h2 className="text-[#001a5f] font-karla text-sm mt-[61px] font-bold ml-2">
                 Headers
               </h2>
-              <table class="w-2/4	 text-sm text-thin table-auto">
+              <table className="w-2/4	 text-sm text-thin table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">$Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">$Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
@@ -653,7 +665,8 @@ const apidocs = () => {
                   <br />
                   &nbsp; "title": "Cactus Thank you",
                   <br />
-                  &nbsp; "image": "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
+                  &nbsp; "image":
+                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
                   <br />
                   &#125;,
                   <br />
@@ -677,7 +690,9 @@ const apidocs = () => {
                   &nbsp; "image":
                   "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Red.HolidayCard.jpg?v=1576524937"
                   <br />
-                  &#125;<br />],
+                  &#125;
+                  <br />
+                  ],
                   <br />
                   "errors": []
                   <br />
@@ -689,7 +704,7 @@ const apidocs = () => {
           {selectedSection === 'Get All Custom Cards' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                <span className='text-blue-500'>4.2.</span> Get All Custom Cards
+                <span className="text-blue-500">4.2.</span> Get All Custom Cards
               </h2>
               <div className="leading-[1.25rem] text-sm font-thin">
                 <p className="ml-[8px]">Endpoint: /customProducts</p>
@@ -707,7 +722,8 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  <span className='text-blue-500'>4.3.</span>Get Specific Custom Cards
+                  <span className="text-blue-500">4.3.</span>Get Specific Custom
+                  Cards
                 </h2>
               </div>
               <div className="leading-[1.25rem] text-sm ml-[9px] font-thin">
@@ -729,7 +745,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                 <span className='text-blue-500'>4.4.</span> Create Custom Card
+                  <span className="text-blue-500">4.4.</span> Create Custom Card
                 </h2>
                 <div className="leading-[1.25rem] ml-[9px] text-sm font-thin">
                   <p>
@@ -757,87 +773,87 @@ const apidocs = () => {
               <h2 className="text-[#001a5f] font-karla  mt-[61px] font-bold ml-2">
                 Headers
               </h2>
-              <table class="w-2/4 text-sm	 table-auto">
+              <table className="w-2/4 text-sm	 table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">$Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">$Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <div>
                 <h2>Body:</h2>
               </div>
-              <table class="min-w-full text-sm table-auto">
+              <table className="min-w-full text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4"></td>
-                    <td class="border p-4">$Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4"></td>
+                    <td className="border p-4">$Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">cardName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> "Happy Birthday"</td>
+                    <td className="border p-4">cardName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> "Happy Birthday"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">cardType</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> “flat5x7” / “folded5x7”</td>
+                    <td className="border p-4">cardType</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> “flat5x7” / “folded5x7”</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">frontImage</td>
-                    <td class="border p-4">File</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">.</td>
+                    <td className="border p-4">frontImage</td>
+                    <td className="border p-4">File</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">.</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">isHeaderIncluded</td>
-                    <td class="border p-4"> Boolean</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">True</td>
+                    <td className="border p-4">isHeaderIncluded</td>
+                    <td className="border p-4"> Boolean</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">True</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">isFooterIncluded</td>
-                    <td class="border p-4"> Boolean</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">True</td>
+                    <td className="border p-4">isFooterIncluded</td>
+                    <td className="border p-4"> Boolean</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">True</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">header</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> sImage": true</td>
+                    <td className="border p-4">header</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> sImage": true</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">footer</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">
+                    <td className="border p-4">footer</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">
                       "data": "Yours Sincerely","textAlign":
                       "left","justifyContent": "center","flexDirection":
                       "column","fontType": "Courier New","fontSize":
@@ -846,22 +862,22 @@ const apidocs = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">headerImage</td>
-                    <td class="border p-4">File</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"></td>
+                    <td className="border p-4">headerImage</td>
+                    <td className="border p-4">File</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"></td>
                   </tr>
                   <tr>
-                    <td class="border p-4">footerImage</td>
-                    <td class="border p-4">File</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"></td>
+                    <td className="border p-4">footerImage</td>
+                    <td className="border p-4">File</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"></td>
                   </tr>
                   <tr>
-                    <td class="border p-4">backImage</td>
-                    <td class="border p-4">File</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">.</td>
+                    <td className="border p-4">backImage</td>
+                    <td className="border p-4">File</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">.</td>
                   </tr>
                 </tbody>
               </table>
@@ -874,101 +890,102 @@ const apidocs = () => {
                 &#123; <br />
                 &nbsp; "result": &#123;
                 <br />
-                &nbsp;  &nbsp; "product":&#123;
+                &nbsp; &nbsp; "product":&#123;
                 <br />
-                &nbsp;  &nbsp; "id": 7046027575401, <br />
-                &nbsp;  &nbsp; "title": "Testing Cards", <br />
-                &nbsp; &nbsp;  "body_html": null, <br />
-                &nbsp; &nbsp;  "vendor": "SimplyNoted", <br />
-                &nbsp; &nbsp;  "product_type": "customisable card", <br />
-                &nbsp; &nbsp;  "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; &nbsp;  "handle": "testing-cards", <br />
-                &nbsp; &nbsp;  "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                &nbsp; &nbsp;  "published_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; &nbsp;  "template_suffix": null, <br />
-                &nbsp; &nbsp;  "published_scope": "web", <br />
-                &nbsp; &nbsp;  "tags": "customise_card", <br />
-                &nbsp; &nbsp;  "status": "active", <br />
-                &nbsp; &nbsp;  "admin_graphql_api_id": "gid://shopify/Product/7046027575401”,{' '}
+                &nbsp; &nbsp; "id": 7046027575401, <br />
+                &nbsp; &nbsp; "title": "Testing Cards", <br />
+                &nbsp; &nbsp; "body_html": null, <br />
+                &nbsp; &nbsp; "vendor": "SimplyNoted", <br />
+                &nbsp; &nbsp; "product_type": "customisable card", <br />
+                &nbsp; &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; &nbsp; "handle": "testing-cards", <br />
+                &nbsp; &nbsp; "updated_at": "2023-09-13T06:22:29-07:00", <br />
+                &nbsp; &nbsp; "published_at": "2023-09-13T06:22:28-07:00",{' '}
                 <br />
-                &nbsp;  &#125;<br />
+                &nbsp; &nbsp; "template_suffix": null, <br />
+                &nbsp; &nbsp; "published_scope": "web", <br />
+                &nbsp; &nbsp; "tags": "customise_card", <br />
+                &nbsp; &nbsp; "status": "active", <br />
+                &nbsp; &nbsp; "admin_graphql_api_id":
+                "gid://shopify/Product/7046027575401”, <br />
+                &nbsp; &#125;
+                <br />
                 &nbsp;"images": [ <br />
-                &nbsp;   &#123;<br /> 
-                &nbsp;     "id": 30856642232425, <br />
-                &nbsp;     "product_id": 7046027575401,
+                &nbsp; &#123;
                 <br />
-                &nbsp;     "position": 1, <br />
-                &nbsp;     "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;     "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;     "alt": "front_img", <br />
-                &nbsp;     "width": 495,
+                &nbsp; "id": 30856642232425, <br />
+                &nbsp; "product_id": 7046027575401,
                 <br />
-                &nbsp;     "height": 350,
+                &nbsp; "position": 1, <br />
+                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "alt": "front_img", <br />
+                &nbsp; "width": 495,
                 <br />
-                &nbsp;     "src":
+                &nbsp; "height": 350,
+                <br />
+                &nbsp; "src":
                 "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",
                 <br />
-                &nbsp;     "variant_ids": [], <br />
-                &nbsp;     "admin_graphql_api_id":
-                &nbsp;     "gid://shopify/ProductImage/30856642232425" <br />
-                &nbsp;    &#125; <br />
-                  &nbsp;  ], <br />
+                &nbsp; "variant_ids": [], <br />
+                &nbsp; "admin_graphql_api_id": &nbsp;
+                "gid://shopify/ProductImage/30856642232425" <br />
+                &nbsp; &#125; <br />
+                &nbsp; ], <br />
                 &nbsp; "image": &#123; <br />
-                &nbsp;    "id": 30856642232425,
+                &nbsp; "id": 30856642232425,
                 <br />
-                &nbsp;    "product_id": 7046027575401, <br />
-                &nbsp;    "position": 1, <br />
-                &nbsp;    "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;    "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;    "alt": "front_img", <br />
-                &nbsp;    "width": 495, <br />
-                &nbsp;    "height": 350, <br />
-                &nbsp;    "src":
+                &nbsp; "product_id": 7046027575401, <br />
+                &nbsp; "position": 1, <br />
+                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "alt": "front_img", <br />
+                &nbsp; "width": 495, <br />
+                &nbsp; "height": 350, <br />
+                &nbsp; "src":
                 "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",{' '}
                 <br />
-                &nbsp;    "variant_ids": [], "admin_graphql_api_id":
-                &nbsp;    "gid://shopify/ProductImage/30856642232425"
-                &nbsp;         <br /> &#125;
-          
+                &nbsp; "variant_ids": [], "admin_graphql_api_id": &nbsp;
+                "gid://shopify/ProductImage/30856642232425" &nbsp; <br /> &#125;
                 <br />
                 "errors": [] <br />
-                 &#125;
-                </pre>
+                &#125;
+              </pre>
               <div className="mt-[7px]">
                 <h2 className="text-[#001a5f] font-karla  mt-[13px] font-bold ml-2">
                   Error:
                 </h2>
               </div>
               <div>
-                <table class="min-w-full text-xs table-auto">
+                <table className="min-w-full text-xs table-auto">
                   <thead>
                     <tr>
-                      <td class="border p-4">Status</td>
-                      <td class="border p-4">Errors</td>
+                      <td className="border p-4">Status</td>
+                      <td className="border p-4">Errors</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="border p-4">400</td>
-                      <td class="border p-4">
+                      <td className="border p-4">400</td>
+                      <td className="border p-4">
                         cardType, cardName & frontImage are required fields
                       </td>
                     </tr>
                     <tr>
-                      <td class="border p-4">400</td>
-                      <td class="border p-4">
+                      <td className="border p-4">400</td>
+                      <td className="border p-4">
                         headerImage is required when header has isImage true
                       </td>
                     </tr>
                     <tr>
-                      <td class="border p-4">400</td>
-                      <td class="border p-4">
+                      <td className="border p-4">400</td>
+                      <td className="border p-4">
                         footerImage is required when footer has isImage true
                       </td>
                     </tr>
                     <tr>
-                      <td class="border p-4">400</td>
-                      <td class="border p-4">
+                      <td className="border p-4">400</td>
+                      <td className="border p-4">
                         For flat cardType, isHeaderIncluded, isFooterIncluded,
                         header, and footer are required fields
                       </td>
@@ -982,7 +999,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-                  <span className='text-blue-500'>4.5.</span> Modify Custom Card
+                  <span className="text-blue-500">4.5.</span> Modify Custom Card
                 </h2>
                 <div className="leading-[1.5rem]  ml-[9px] text-sm">
                   <p>
@@ -1018,9 +1035,9 @@ const apidocs = () => {
                       <td className="border p-4">Yes</td>
                     </tr>
                     <tr>
-                      <td class="border p-4">Authorization</td>
+                      <td className="border p-4">Authorization</td>
                       <td className="border p-4">Bearer TOKEN_HERE</td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1030,51 +1047,51 @@ const apidocs = () => {
                   Body:
                 </h2>
               </div>
-              <table class="min-w-full text-sm table-auto">
+              <table className="min-w-full text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Key</td>
-                    <td class="border p-4">Type/Values</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Key</td>
+                    <td className="border p-4">Type/Values</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">CoriginalCustomCardID</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4"> Yes</td>
-                    <td class="border p-4">7046020595817</td>
+                    <td className="border p-4">CoriginalCustomCardID</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4"> Yes</td>
+                    <td className="border p-4">7046020595817</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">cardName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> "Happy Birthday Modified 1a"</td>
+                    <td className="border p-4">cardName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> "Happy Birthday Modified 1a"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">sHeaderIncluded</td>
-                    <td class="border p-4"> Boolean</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> True</td>
+                    <td className="border p-4">sHeaderIncluded</td>
+                    <td className="border p-4"> Boolean</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> True</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">isFooterIncluded</td>
-                    <td class="border p-4">Boolean</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">true</td>
+                    <td className="border p-4">isFooterIncluded</td>
+                    <td className="border p-4">Boolean</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">true</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Header</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"isImage": true</td>
+                    <td className="border p-4">Header</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"isImage": true</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">footer</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">
+                    <td className="border p-4">footer</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">
                       "data": "Yours Sincerely","textAlign":
                       "left","justifyContent": "center","flexDirection":
                       "column","fontType": "Courier New","fontSize":
@@ -1083,16 +1100,16 @@ const apidocs = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">headerImage</td>
-                    <td class="border p-4">File</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"></td>
+                    <td className="border p-4">headerImage</td>
+                    <td className="border p-4">File</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"></td>
                   </tr>
                   <tr>
-                    <td class="border p-4">footerImage</td>
-                    <td class="border p-4">File</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"></td>
+                    <td className="border p-4">footerImage</td>
+                    <td className="border p-4">File</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"></td>
                   </tr>
                 </tbody>
               </table>
@@ -1106,66 +1123,69 @@ const apidocs = () => {
                 <br />
                 &nbsp; "result": &#123;
                 <br />
-                &nbsp;    "product": &#123; <br />
-                &nbsp;      "id": 70460275754
+                &nbsp; "product": &#123; <br />
+                &nbsp; "id": 70460275754
                 <br />
-                &nbsp;      "title": "Testing Cards", <br />
-                &nbsp;      "body_html": null, <br />
-                &nbsp;      "vendor": "SimplyNoted", <br />
-                &nbsp;      "product_type": "customisable card", <br />
-                &nbsp;      "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;      "handle": "testing-cards", <br />
-                &nbsp;      "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                &nbsp;      "published_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;      "template_suffix": null, <br />
-                &nbsp;      "published_scope": "web", <br />
-                &nbsp;      "tags": "customise_card", <br />
-                &nbsp;      "status": "active", <br />
-                &nbsp;      "admin_graphql_api_id":"gid://shopify/Product/7046027575401",{' '}
+                &nbsp; "title": "Testing Cards", <br />
+                &nbsp; "body_html": null, <br />
+                &nbsp; "vendor": "SimplyNoted", <br />
+                &nbsp; "product_type": "customisable card", <br />
+                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "handle": "testing-cards", <br />
+                &nbsp; "updated_at": "2023-09-13T06:22:29-07:00", <br />
+                &nbsp; "published_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "template_suffix": null, <br />
+                &nbsp; "published_scope": "web", <br />
+                &nbsp; "tags": "customise_card", <br />
+                &nbsp; "status": "active", <br />
+                &nbsp;
+                "admin_graphql_api_id":"gid://shopify/Product/7046027575401",{' '}
                 <br />
-                &nbsp;   "variants": &#123;
+                &nbsp; "variants": &#123;
                 <br />
-                &nbsp;       &#123;
+                &nbsp; &#123;
                 <br />
-                &nbsp;         "id": 40730910490729, <br />
-                &nbsp;         "product_id": 7046027575401, <br />
-                &nbsp;         "title": "2 - 500", <br />
-                &nbsp;         "price": "4.35", <br />
-                &nbsp;         "sku": "", <br />
-                &nbsp;         "position": 1, <br />
-                &nbsp;         "inventory_policy": "deny", <br />
-                &nbsp;         "compare_at_price": null, <br />
-                &nbsp;         "fulfillment_service": "manual", <br />
-                &nbsp;         "inventory_management": null, <br />
-                &nbsp;         "option1": "2 - 500", <br />
-                &nbsp;         "option2": null, <br />
-                &nbsp;         "option3": null, <br />
-                &nbsp;         "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;         "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;         "taxable": true, <br />
-                &nbsp;         "barcode": null, <br />
-                &nbsp;         "grams": 0, <br />
-                &nbsp;         "image_id": null, <br />
-                &nbsp;         "weight": 0, <br />
-                &nbsp;         "weight_unit": "lb", <br />
-                &nbsp;         "inventory_item_id": 42829245382761, <br />
-                &nbsp;         "inventory_quantity": 0, <br />
-                &nbsp;         "old_inventory_quantity": 0, <br />
-                &nbsp;         "requires_shipping": true, <br />
-                &nbsp;         "admin_graphql_api_id":<br/>
-                &nbsp;         "gid://shopify/ProductVariant/40730910490729" <br />
-                &nbsp;    &#125; <br />
-                &nbsp;      &#123;
+                &nbsp; "id": 40730910490729, <br />
+                &nbsp; "product_id": 7046027575401, <br />
+                &nbsp; "title": "2 - 500", <br />
+                &nbsp; "price": "4.35", <br />
+                &nbsp; "sku": "", <br />
+                &nbsp; "position": 1, <br />
+                &nbsp; "inventory_policy": "deny", <br />
+                &nbsp; "compare_at_price": null, <br />
+                &nbsp; "fulfillment_service": "manual", <br />
+                &nbsp; "inventory_management": null, <br />
+                &nbsp; "option1": "2 - 500", <br />
+                &nbsp; "option2": null, <br />
+                &nbsp; "option3": null, <br />
+                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "taxable": true, <br />
+                &nbsp; "barcode": null, <br />
+                &nbsp; "grams": 0, <br />
+                &nbsp; "image_id": null, <br />
+                &nbsp; "weight": 0, <br />
+                &nbsp; "weight_unit": "lb", <br />
+                &nbsp; "inventory_item_id": 42829245382761, <br />
+                &nbsp; "inventory_quantity": 0, <br />
+                &nbsp; "old_inventory_quantity": 0, <br />
+                &nbsp; "requires_shipping": true, <br />
+                &nbsp; "admin_graphql_api_id":
                 <br />
-                &nbsp;         "id": 40730910523497, <br />
-                &nbsp;         "product_id": 7046027575401, <br />
-                &nbsp;         "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;         "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp;         "inventory_item_id": 42829245415529, <br />
-                &nbsp;         "admin_graphql_api_id":<br />
-                &nbsp;         "gid://shopify/ProductVariant/40730910523497" <br />
-                &nbsp;     &#125; <br />
-                &nbsp;   "errors": []
+                &nbsp; "gid://shopify/ProductVariant/40730910490729" <br />
+                &nbsp; &#125; <br />
+                &nbsp; &#123;
+                <br />
+                &nbsp; "id": 40730910523497, <br />
+                &nbsp; "product_id": 7046027575401, <br />
+                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
+                &nbsp; "inventory_item_id": 42829245415529, <br />
+                &nbsp; "admin_graphql_api_id":
+                <br />
+                &nbsp; "gid://shopify/ProductVariant/40730910523497" <br />
+                &nbsp; &#125; <br />
+                &nbsp; "errors": []
                 <br />
                 &#125;
                 <br />
@@ -1180,29 +1200,32 @@ const apidocs = () => {
                 <pre className="leading-6	text-xs bg-gray-200 p-[22px] overflow-hidden">
                   &#123;
                   <br />
-                  &nbsp;  "cardName": "Happy Birthday",<br />
-                  &nbsp;  "cardType": "flat5x7",
+                  &nbsp; "cardName": "Happy Birthday",
                   <br />
-                  &nbsp;  "frontImage": ,<br />
-                  &nbsp;  "isFooterIncluded": true,<br />
-                  &nbsp;  "header": &#123;<br />
-                  &nbsp;  "isImage": true
-          <br /> &#125; <br />
+                  &nbsp; "cardType": "flat5x7",
+                  <br />
+                  &nbsp; "frontImage": ,<br />
+                  &nbsp; "isFooterIncluded": true,
+                  <br />
+                  &nbsp; "header": &#123;
+                  <br />
+                  &nbsp; "isImage": true
+                  <br /> &#125; <br />
                   &nbsp; "footer": &#123;
                   <br />
-                  &nbsp;    "data": "Yours Sincerely", <br />
-                  &nbsp;    "textAlign": "left", <br />
-                  &nbsp;    "justifyContent": "center", <br />
-                  &nbsp;    "flexDirection": "column", <br />
-                  &nbsp;    "fontType": "Trebuchet MS", <br />
-                  &nbsp;    "fontSize": 20, <br />
-                  &nbsp;    "fontColor": "rgb(0, 0, 255)", <br />
-                  &nbsp;    "zoom": "1", <br />
-                  &nbsp;    "isImage": false <br />
+                  &nbsp; "data": "Yours Sincerely", <br />
+                  &nbsp; "textAlign": "left", <br />
+                  &nbsp; "justifyContent": "center", <br />
+                  &nbsp; "flexDirection": "column", <br />
+                  &nbsp; "fontType": "Trebuchet MS", <br />
+                  &nbsp; "fontSize": 20, <br />
+                  &nbsp; "fontColor": "rgb(0, 0, 255)", <br />
+                  &nbsp; "zoom": "1", <br />
+                  &nbsp; "isImage": false <br />
                   &#125; <br />
-                  &nbsp;    "headerImage": , <br />
-                  &nbsp;    "footerImage": , <br />
-                  &nbsp;    "backImage": , <br />
+                  &nbsp; "headerImage": , <br />
+                  &nbsp; "footerImage": , <br />
+                  &nbsp; "backImage": , <br />
                   &#125;
                   <br />
                 </pre>
@@ -1226,21 +1249,21 @@ const apidocs = () => {
                   </p>
                 </div>
               </div>
-              <table class="min-w-full mt-[5px] text-sm table-auto">
+              <table className="min-w-full mt-[5px] text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Method</td>
-                    <td class="border p-4">URL</td>
-                    <td class="border p-4">Parameters</td>
+                    <td className="border p-4">Method</td>
+                    <td className="border p-4">URL</td>
+                    <td className="border p-4">Parameters</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">DELETE</td>
-                    <td class="border p-4">
+                    <td className="border p-4">DELETE</td>
+                    <td className="border p-4">
                       /delete-custom-card?productId=7072904347753,7073022279785,123456789000
                     </td>
-                    <td class="border p-4">productId - productId contains</td>
+                    <td className="border p-4">productId - productId contains</td>
                   </tr>
                 </tbody>
               </table>
@@ -1252,15 +1275,15 @@ const apidocs = () => {
               <pre className="leading-6	 text-sm  p-[22px] bg-gray-200  mt-7px">
                 &#123;
                 <br />
-                &nbsp;   "result": <br />
-                &nbsp;     "successfulDeletions": [ <br />
-                &nbsp;     "7072904347753", <br />
-                &nbsp;     "7073022279785" <br />
+                &nbsp; "result": <br />
+                &nbsp; "successfulDeletions": [ <br />
+                &nbsp; "7072904347753", <br />
+                &nbsp; "7073022279785" <br />
                 ], <br />
                 &nbsp; "failedDeletions": [ <br />
-                &nbsp;     "123456789000" <br />
+                &nbsp; "123456789000" <br />
                 ] <br />
-                &nbsp;  "errors": [] <br />
+                &nbsp; "errors": [] <br />
                 &#125;
               </pre>
             </div>
@@ -1268,7 +1291,7 @@ const apidocs = () => {
           {selectedSection === 'ORDERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-              <span className='text-blue-500'>5.</span> ORDERS
+                <span className="text-blue-500">5.</span> ORDERS
               </h2>
             </div>
           )}
@@ -1276,7 +1299,7 @@ const apidocs = () => {
             <div>
               <div>
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
-                  <span className='text-blue-500'>5.1.</span> Create An Order
+                  <span className="text-blue-500">5.1.</span> Create An Order
                 </h2>
                 <div className="leading-[1.5rem] text-sm ml-[9px]">
                   <p>
@@ -1296,24 +1319,24 @@ const apidocs = () => {
                   Headers:
                 </h2>
               </div>
-              <table class="w-2/4 text-sm	 table-auto">
+              <table className="w-2/4 text-sm	 table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">$Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">$Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
@@ -1322,80 +1345,80 @@ const apidocs = () => {
                   Body:
                 </h2>
               </div>
-              <table class="min-w-full text-sm table-auto">
+              <table className="min-w-full text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">productId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">$Yes</td>
-                    <td class="border p-4">"4392452522089"</td>
+                    <td className="border p-4">productId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">$Yes</td>
+                    <td className="border p-4">"4392452522089"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">giftVariantId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">
+                    <td className="border p-4">giftVariantId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">
                       "39532031672425" (Note: See below for more)
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> "john@simplynoted.com"</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> "john@simplynoted.com"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">handwritingStyle </td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> "Tarzan"</td>
+                    <td className="border p-4">handwritingStyle </td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> "Tarzan"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">customMessage</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">
+                    <td className="border p-4">customMessage</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">
                       "This is my custom message.Use a hard return for a new
                       line."
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">signoff</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4"> No</td>
-                    <td class="border p-4"> "Yours Sincerely,David"</td>
+                    <td className="border p-4">signoff</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4"> No</td>
+                    <td className="border p-4"> "Yours Sincerely,David"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">AshippingDate</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"01/01/2020"</td>
+                    <td className="border p-4">AshippingDate</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"01/01/2020"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">returnAddressId</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"> "ID_OF_RETURN_ADDRESS"</td>
+                    <td className="border p-4">returnAddressId</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"> "ID_OF_RETURN_ADDRESS"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">returnAddress</td>
-                    <td class="border p-4"> Object Return Object</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">See Below</td>
+                    <td className="border p-4">returnAddress</td>
+                    <td className="border p-4"> Object Return Object</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">See Below</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">recipientData</td>
-                    <td class="border p-4"> Array Recipient Object</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">See Below</td>
+                    <td className="border p-4">recipientData</td>
+                    <td className="border p-4"> Array Recipient Object</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">See Below</td>
                   </tr>
                 </tbody>
               </table>
@@ -1404,102 +1427,102 @@ const apidocs = () => {
                   Recipient Object:
                 </h2>
               </div>
-              <table class="min-w-full text-sm table-auto">
+              <table className="min-w-full text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Key</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Key</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">FirstName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">$Yes</td>
-                    <td class="border p-4">"John"</td>
+                    <td className="border p-4">FirstName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">$Yes</td>
+                    <td className="border p-4">"John"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">LastName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4"> Yes</td>
-                    <td class="border p-4">"Appleseed"</td>
+                    <td className="border p-4">LastName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4"> Yes</td>
+                    <td className="border p-4">"Appleseed"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Email</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"john@simplynoted.com"</td>
+                    <td className="border p-4">Email</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"john@simplynoted.com"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Phone</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"> "+15555551234"</td>
+                    <td className="border p-4">Phone</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"> "+15555551234"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Address</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">
+                    <td className="border p-4">Address</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">
                       "This is my custom message.Use a hard return for a new
                       line."
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Address 2</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4"> No</td>
-                    <td class="border p-4">"Suite 100"</td>
+                    <td className="border p-4">Address 2</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4"> No</td>
+                    <td className="border p-4">"Suite 100"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">City</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Metropolis"</td>
+                    <td className="border p-4">City</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Metropolis"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">State</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Smallville"</td>
+                    <td className="border p-4">State</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Smallville"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Country</td>
-                    <td class="border p-4"> String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"USA"</td>
+                    <td className="border p-4">Country</td>
+                    <td className="border p-4"> String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"USA"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Zip</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"12345"</td>
+                    <td className="border p-4">Zip</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"12345"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Company</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"ACME, Inc."</td>
+                    <td className="border p-4">Company</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"ACME, Inc."</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Custom 1</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"My custom value"</td>
+                    <td className="border p-4">Custom 1</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"My custom value"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Custom 2 </td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"Another Ccustom value"</td>
+                    <td className="border p-4">Custom 2 </td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"Another Ccustom value"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Custom 3</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"And A third"</td>
+                    <td className="border p-4">Custom 3</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"And A third"</td>
                   </tr>
                 </tbody>
               </table>
@@ -1524,106 +1547,106 @@ const apidocs = () => {
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 Body:
               </h2>
-              <table class="min-w-full text-sm table-auto">
+              <table className="min-w-full text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Key</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Key</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">productId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"4392452522089"</td>
+                    <td className="border p-4">productId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"4392452522089"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">giftVariantId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">
+                    <td className="border p-4">giftVariantId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">
                       "39532031672425" (Note: See below for more)
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">handwritingStyle</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Tarzan"</td>
+                    <td className="border p-4">handwritingStyle</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Tarzan"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">customMessage </td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">
+                    <td className="border p-4">customMessage </td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">
                       "This is my custom message. Use a hard return for a new
                       line."
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">signoff</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"Yours Sincerely, David"</td>
+                    <td className="border p-4">signoff</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"Yours Sincerely, David"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">giftVariantId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">
+                    <td className="border p-4">giftVariantId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">
                       "39532031672425" (Note: See below for more)
                     </td>
                   </tr>
                   <tr>
-                    <td class="border p-4">shippingDate</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"01/01/2020"</td>
+                    <td className="border p-4">shippingDate</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"01/01/2020"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">returnAddressId </td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"ID_OF_RETURN_ADDRESS"</td>
+                    <td className="border p-4">returnAddressId </td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"ID_OF_RETURN_ADDRESS"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">returnAddress</td>
-                    <td class="border p-4">Object Return Object</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> See Below</td>
+                    <td className="border p-4">returnAddress</td>
+                    <td className="border p-4">Object Return Object</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> See Below</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">recipientData </td>
-                    <td class="border p-4">Array Recipient Object</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> See Below</td>
+                    <td className="border p-4">recipientData </td>
+                    <td className="border p-4">Array Recipient Object</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> See Below</td>
                   </tr>
                 </tbody>
               </table>
@@ -2328,24 +2351,24 @@ const apidocs = () => {
               <h2 className="font-karla  text-lg mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4  text-sm table-auto">
+              <table className="w-2/4  text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json </td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json </td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
@@ -2353,33 +2376,33 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Body:
                 </h2>
-                <table class="w-2/4  text-sm table-auto">
+                <table className="w-2/4  text-sm table-auto">
                   <thead>
                     <tr>
-                      <td class="border p-4">Key</td>
-                      <td class="border p-4">Type</td>
-                      <td class="border p-4">Required?</td>
-                      <td class="border p-4">Example</td>
+                      <td className="border p-4">Key</td>
+                      <td className="border p-4">Type</td>
+                      <td className="border p-4">Required?</td>
+                      <td className="border p-4">Example</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="border p-4">productId</td>
-                      <td class="border p-4">String</td>
-                      <td class="border p-4">Yes</td>
-                      <td class="border p-4">"4392452522089"</td>
+                      <td className="border p-4">productId</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">"4392452522089"</td>
                     </tr>
                     <tr>
-                      <td class="border p-4">handwritingStyle </td>
-                      <td class="border p-4">String</td>
-                      <td class="border p-4">Yes</td>
-                      <td class="border p-4">"Tarzan"</td>
+                      <td className="border p-4">handwritingStyle </td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">"Tarzan"</td>
                     </tr>
                     <tr>
-                      <td class="border p-4">customMessage </td>
-                      <td class="border p-4">String</td>
-                      <td class="border p-4">Yes</td>
-                      <td class="border p-4">"This is my custom message"</td>
+                      <td className="border p-4">customMessage </td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">"This is my custom message"</td>
                     </tr>
                   </tbody>
                 </table>
@@ -2422,9 +2445,9 @@ const apidocs = () => {
                 <pre className="text-sm leading-6	  bg-gray-200 p-[22px] overflow-hidden">
                   &#123; <br />
                   &nbsp; "productId": "4460979552361",
-                  <br /> 
+                  <br />
                   &nbsp; "handwritingStyle": "Tarzan",
-                  <br /> 
+                  <br />
                   &nbsp; "customMessage": "This is my custom message"
                   <br />
                   &#125;
@@ -2455,24 +2478,24 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                   Headers:
                 </h2>
-                <table class="w-2/4  text-sm table-auto">
+                <table className="w-2/4  text-sm table-auto">
                   <thead>
                     <tr>
-                      <td class="border p-4">Name</td>
-                      <td class="border p-4">Value</td>
-                      <td class="border p-4">Required?</td>
+                      <td className="border p-4">Name</td>
+                      <td className="border p-4">Value</td>
+                      <td className="border p-4">Required?</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="border p-4">Content-Type</td>
-                      <td class="border p-4">application/json </td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Content-Type</td>
+                      <td className="border p-4">application/json </td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                     <tr>
-                      <td class="border p-4">Authorization</td>
-                      <td class="border p-4">Bearer TOKEN_HERE </td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Authorization</td>
+                      <td className="border p-4">Bearer TOKEN_HERE </td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                   </tbody>
                 </table>
@@ -2487,43 +2510,44 @@ const apidocs = () => {
                   "result": [<br />
                   &#123;
                   <br />
-                  &nbsp;  "_id": "5e1b5123fe1a7f10021c2b04",
+                  &nbsp; "_id": "5e1b5123fe1a7f10021c2b04",
                   <br />
-                  &nbsp;  "productId": "4460979552361",
+                  &nbsp; "productId": "4460979552361",
                   <br />
-                  &nbsp;  "handwritingStyle": "Tarzan",
+                  &nbsp; "handwritingStyle": "Tarzan",
                   <br />
-                  &nbsp;  "customMessage": "This is my custom message",
+                  &nbsp; "customMessage": "This is my custom message",
                   <br />
-                  &nbsp;  "ownerId": "5e1a6f1d616d871237a962a3",
+                  &nbsp; "ownerId": "5e1a6f1d616d871237a962a3",
                   <br />
-                  &nbsp;  "updated": "2020-01-12T18:00:25.020Z",
+                  &nbsp; "updated": "2020-01-12T18:00:25.020Z",
                   <br />
-                  &nbsp;  "created": "2020-01-12T18:00:25.020Z",
+                  &nbsp; "created": "2020-01-12T18:00:25.020Z",
                   <br />
-                  &nbsp;  "__v": 0<br />
+                  &nbsp; "__v": 0<br />
                   &#125;
                   <br />
                   &#123;
                   <br />
-                  &nbsp;  "_id": "5e1b61a80d92f711231e983a",
+                  &nbsp; "_id": "5e1b61a80d92f711231e983a",
                   <br />
-                  &nbsp;  "productId": "4460979552361",
+                  &nbsp; "productId": "4460979552361",
                   <br />
-                  &nbsp;  "handwritingStyle": "Tarzan",
+                  &nbsp; "handwritingStyle": "Tarzan",
                   <br />
-                  &nbsp;  "customMessage": "This is my custom message 2",
+                  &nbsp; "customMessage": "This is my custom message 2",
                   <br />
-                  &nbsp;  "ownerId": "5e1a6f1d616d871237a962a3",
+                  &nbsp; "ownerId": "5e1a6f1d616d871237a962a3",
                   <br />
-                  &nbsp;  "updated": "2020-01-12T18:12:56.945Z",
+                  &nbsp; "updated": "2020-01-12T18:12:56.945Z",
                   <br />
-                  &nbsp;  "created": "2020-01-12T18:12:56.945Z",
+                  &nbsp; "created": "2020-01-12T18:12:56.945Z",
                   <br />
-                  &nbsp;  "__v": 0<br />
+                  &nbsp; "__v": 0<br />
                   &#125;
                   <br />
-                  ],<br /> "errors": []
+                  ],
+                  <br /> "errors": []
                   <br />
                   &#125;
                   <br />
@@ -2553,45 +2577,45 @@ const apidocs = () => {
               <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla  mt-[13px] font-bold ml-2">
                 URL Parameters:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Parameter</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Parameter</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">templateId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"5e1b5123fe1a7f10021c2b04"</td>
+                    <td className="border p-4">templateId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"5e1b5123fe1a7f10021c2b04"</td>
                   </tr>
                 </tbody>
               </table>
@@ -2644,78 +2668,78 @@ const apidocs = () => {
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type </td>
-                    <td class="border p-4">application/json </td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type </td>
+                    <td className="border p-4">application/json </td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                 URL Parameters:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Parameter</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Parameter</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">templateId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"5e1b5123fe1a7f10021c2b04"</td>
+                    <td className="border p-4">templateId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"5e1b5123fe1a7f10021c2b04"</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 Body:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Key</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Key</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">productId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"4392452522089"</td>
+                    <td className="border p-4">productId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"4392452522089"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">handwritingStyle</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Stitch"</td>
+                    <td className="border p-4">handwritingStyle</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Stitch"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">customMessage</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"This is my custom message"</td>
+                    <td className="border p-4">customMessage</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"This is my custom message"</td>
                   </tr>
                 </tbody>
               </table>
@@ -2786,99 +2810,99 @@ const apidocs = () => {
               <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type </td>
-                    <td class="border p-4">application/json </td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type </td>
+                    <td className="border p-4">application/json </td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Key</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Key</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">firstName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Johnny"</td>
+                    <td className="border p-4">firstName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Johnny"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">lastName</td>
-                    <td class="border p-4">String </td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Appleseed"</td>
+                    <td className="border p-4">lastName</td>
+                    <td className="border p-4">String </td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Appleseed"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Appleseed"</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Appleseed"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">businessName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"ACME Inc"</td>
+                    <td className="border p-4">businessName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"ACME Inc"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">address1</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"123 S Maple Street"</td>
+                    <td className="border p-4">address1</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"123 S Maple Street"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">address2 </td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4"> "Unit 123"</td>
+                    <td className="border p-4">address2 </td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4"> "Unit 123"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">city</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Metropolis"</td>
+                    <td className="border p-4">city</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Metropolis"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">state</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Texas"</td>
+                    <td className="border p-4">state</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Texas"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">zip</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"12345"</td>
+                    <td className="border p-4">zip</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"12345"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">country</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"United States"</td>
+                    <td className="border p-4">country</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"United States"</td>
                   </tr>
                 </tbody>
               </table>
@@ -2913,7 +2937,8 @@ const apidocs = () => {
                   <br />
                   "type": "return"
                   <br />
-                  &#125;<br />
+                  &#125;
+                  <br />
                   &#125;
                 </pre>
               </div>
@@ -2971,24 +2996,24 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Headers:
                 </h2>
-                <table class="w-2/4 text-sm table-auto">
+                <table className="w-2/4 text-sm table-auto">
                   <thead>
                     <tr>
-                      <td class="border p-4">Name</td>
-                      <td class="border p-4">Value</td>
-                      <td class="border p-4">Required?</td>
+                      <td className="border p-4">Name</td>
+                      <td className="border p-4">Value</td>
+                      <td className="border p-4">Required?</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="border p-4">Content-Type </td>
-                      <td class="border p-4">application/json</td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Content-Type </td>
+                      <td className="border p-4">application/json</td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                     <tr>
-                      <td class="border p-4">Authorization</td>
-                      <td class="border p-4">Bearer TOKEN_HERE</td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Authorization</td>
+                      <td className="border p-4">Bearer TOKEN_HERE</td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                   </tbody>
                 </table>
@@ -2999,21 +3024,21 @@ const apidocs = () => {
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 URL Parameters:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Parameter</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Parameter</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">type</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">"return" OR "recipient"</td>
-                    <td class="border p-4">No</td>
+                    <td className="border p-4">type</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">"return" OR "recipient"</td>
+                    <td className="border p-4">No</td>
                   </tr>
                 </tbody>
               </table>
@@ -3080,45 +3105,45 @@ const apidocs = () => {
               <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                 Headers:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">Authorization</td>
-                    <td class="border p-4">Bearer TOKEN_HERE</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Authorization</td>
+                    <td className="border p-4">Bearer TOKEN_HERE</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                 URL Parameters:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Parameter</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Parameter</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">addressId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"5ea1101e9680607558e3ff77"</td>
+                    <td className="border p-4">addressId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"5ea1101e9680607558e3ff77"</td>
                   </tr>
                 </tbody>
               </table>
@@ -3184,24 +3209,24 @@ const apidocs = () => {
                 <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
                   Headers:
                 </h2>
-                <table class="w-2/4 text-sm table-auto">
+                <table className="w-2/4 text-sm table-auto">
                   <thead>
                     <tr>
-                      <td class="border p-4">Name</td>
-                      <td class="border p-4">Value</td>
-                      <td class="border p-4">Required?</td>
+                      <td className="border p-4">Name</td>
+                      <td className="border p-4">Value</td>
+                      <td className="border p-4">Required?</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="border p-4">Content-Type </td>
-                      <td class="border p-4">application/json </td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Content-Type </td>
+                      <td className="border p-4">application/json </td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                     <tr>
-                      <td class="border p-4">Authorization</td>
-                      <td class="border p-4">Bearer TOKEN_HERE</td>
-                      <td class="border p-4">Yes</td>
+                      <td className="border p-4">Authorization</td>
+                      <td className="border p-4">Bearer TOKEN_HERE</td>
+                      <td className="border p-4">Yes</td>
                     </tr>
                   </tbody>
                 </table>
@@ -3209,94 +3234,94 @@ const apidocs = () => {
               <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                 URL Parameters:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Parameter</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Parameter</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">addressId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"5ea1101e9680607558e3ff77"</td>
+                    <td className="border p-4">addressId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"5ea1101e9680607558e3ff77"</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla  mt-[13px] font-bold ml-2">Body:</h2>
-              <table class="w-2/4 text-xs table-auto">
+              <table className="w-2/4 text-xs table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Key</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Key</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">firstName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Johnny"</td>
+                    <td className="border p-4">firstName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Johnny"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">lastName</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Appleseed"</td>
+                    <td className="border p-4">lastName</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Appleseed"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">businessName </td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">No</td>
-                    <td class="border p-4">"ACME Inc"</td>
+                    <td className="border p-4">businessName </td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">No</td>
+                    <td className="border p-4">"ACME Inc"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">addressId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"123 S Maple Street"</td>
+                    <td className="border p-4">addressId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"123 S Maple Street"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">addressId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Unit 123"</td>
+                    <td className="border p-4">addressId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Unit 123"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">city</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Metropolis"</td>
+                    <td className="border p-4">city</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Metropolis"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">state</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"Texas"</td>
+                    <td className="border p-4">state</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"Texas"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">zip</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"12345"</td>
+                    <td className="border p-4">zip</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"12345"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">country</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"United States"</td>
+                    <td className="border p-4">country</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"United States"</td>
                   </tr>
                   <tr>
-                    <td class="border p-4">type</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4"> "recipient" OR "return"</td>
+                    <td className="border p-4">type</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4"> "recipient" OR "return"</td>
                   </tr>
                 </tbody>
               </table>
@@ -3305,7 +3330,9 @@ const apidocs = () => {
                   Returns on success:
                 </h2>
                 <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
-                  &#123; <br />"result":<br /> &#123;
+                  &#123; <br />
+                  "result":
+                  <br /> &#123;
                   <br />
                   "_id": "5ea1101e9680607558e3ff77",
                   <br />
@@ -3329,7 +3356,9 @@ const apidocs = () => {
                   <br />
                   "type": "return"
                   <br />
-                  &#125;<br /> "errors": <br/>[]
+                  &#125;
+                  <br /> "errors": <br />
+                  []
                   <br />
                   &#125;
                 </pre>
@@ -3339,7 +3368,9 @@ const apidocs = () => {
                   Example:
                 </h2>
                 <pre className="text-sm leading-6	 bg-gray-200 p-[22px] overflow-hidden">
-                  &#123; <br />"firstName":<br /> "Johnny",
+                  &#123; <br />
+                  "firstName":
+                  <br /> "Johnny",
                   <br />
                   "lastName": "Appleseed",
                   <br />
@@ -3384,40 +3415,40 @@ const apidocs = () => {
                 </div>
               </div>
               <h2 className="font-karla  mt-[13px] font-bold ml-2">Headers:</h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Name</td>
-                    <td class="border p-4">Value</td>
-                    <td class="border p-4">Required?</td>
+                    <td className="border p-4">Name</td>
+                    <td className="border p-4">Value</td>
+                    <td className="border p-4">Required?</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">Content-Type</td>
-                    <td class="border p-4">application/json</td>
-                    <td class="border p-4">Yes</td>
+                    <td className="border p-4">Content-Type</td>
+                    <td className="border p-4">application/json</td>
+                    <td className="border p-4">Yes</td>
                   </tr>
                 </tbody>
               </table>
               <h2 className="font-karla text-lg mt-[13px] font-bold ml-2">
                 URL Parameters:
               </h2>
-              <table class="w-2/4 text-sm table-auto">
+              <table className="w-2/4 text-sm table-auto">
                 <thead>
                   <tr>
-                    <td class="border p-4">Parameter</td>
-                    <td class="border p-4">Type</td>
-                    <td class="border p-4">Required?</td>
-                    <td class="border p-4">Example</td>
+                    <td className="border p-4">Parameter</td>
+                    <td className="border p-4">Type</td>
+                    <td className="border p-4">Required?</td>
+                    <td className="border p-4">Example</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td class="border p-4">addressId</td>
-                    <td class="border p-4">String</td>
-                    <td class="border p-4">Yes</td>
-                    <td class="border p-4">"5ea1101e9680607558e3ff77"</td>
+                    <td className="border p-4">addressId</td>
+                    <td className="border p-4">String</td>
+                    <td className="border p-4">Yes</td>
+                    <td className="border p-4">"5ea1101e9680607558e3ff77"</td>
                   </tr>
                 </tbody>
               </table>
@@ -3449,7 +3480,7 @@ const apidocs = () => {
             </div>
           )}
           {selectedSection === 'Examples' && (
-            <div class="">
+            <div className="">
               <h3 className="text-lg">
                 <span className="font-italic text-blue-500">8.1.</span> Examples
               </h3>

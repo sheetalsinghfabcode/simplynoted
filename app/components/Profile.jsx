@@ -249,7 +249,10 @@ const Profile = ({
           <form onSubmit={handleSubmit} className="">
             <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
-              <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="firstName"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   First Name
                 </label>
                 <input
@@ -259,11 +262,13 @@ const Profile = ({
                   value={accountDetails.firstName}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-
                 />
               </div>
               <div className="px-3 mb-6">
-              <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="firstName"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   Last Name
                 </label>
                 <input
@@ -279,7 +284,10 @@ const Profile = ({
             </div>
 
             <div className="mb-4">
-            <label htmlFor="email" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+              <label
+                htmlFor="email"
+                className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+              >
                 Email
               </label>
               <input
@@ -293,7 +301,10 @@ const Profile = ({
               />
             </div>
             <div className="mb-4">
-            <label htmlFor="phone" className="block md:text-[16px] text-[12px]  mb-1 font-semibold">
+              <label
+                htmlFor="phone"
+                className="block md:text-[16px] text-[12px]  mb-1 font-semibold"
+              >
                 Phone Number (with area code)
               </label>
 
@@ -315,7 +326,10 @@ const Profile = ({
 
             <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
-                <label htmlFor="address1" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="address1"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   Address 1
                 </label>
                 <input
@@ -328,7 +342,10 @@ const Profile = ({
                 />
               </div>
               <div className="px-3 mb-6">
-              <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="firstName"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   Address 2
                 </label>
                 <input
@@ -343,7 +360,10 @@ const Profile = ({
             </div>
             <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
-                <label htmlFor="city" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="city"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   City
                 </label>
                 <input
@@ -356,7 +376,10 @@ const Profile = ({
                 />
               </div>
               <div className="px-3 mb-6">
-                <label htmlFor="state" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="state"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   State
                 </label>
                 <input
@@ -371,7 +394,10 @@ const Profile = ({
             </div>
             <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
-                <label htmlFor="firstName" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="firstName"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   Country
                 </label>
                 <input
@@ -384,7 +410,10 @@ const Profile = ({
                 />
               </div>
               <div className="px-3 mb-6">
-                <label htmlFor="zip" className="block mb-1 md:text-[16px] text-[12px] font-semibold">
+                <label
+                  htmlFor="zip"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
                   Zip
                 </label>
                 <input

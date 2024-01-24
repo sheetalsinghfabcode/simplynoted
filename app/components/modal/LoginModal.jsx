@@ -48,7 +48,7 @@ const LoginModal = ({
               text={confirmText}
               onClickFunction={() => {
                 navigate('/account/login');
-                onCancel()
+                onCancel();
               }}
               className="text-white bg-[#ef6e6e]"
             />

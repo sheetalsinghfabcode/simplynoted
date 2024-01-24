@@ -2,12 +2,11 @@ import React from 'react';
 import DynamicTitle from '~/components/Title';
 export default function refundpolicy() {
   return (
-    <div> 
+    <div>
       <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
         <div className=" ">
-        <DynamicTitle dynamicButton title="Refund policy" />  
+          <DynamicTitle dynamicButton title="Refund policy" />
           <div className="sm:text-[14px] text-[12px]">
-
             <p className="mt-[25px] font-medium">RETURNS</p>
             <p className="mt-[25px] ">30-Day Return Guarantee</p>
             <p className="mt-[25px] ">
@@ -30,16 +29,14 @@ export default function refundpolicy() {
               Some types of goods are exempt from being returned. These include:
             </p>
             <p className="mt-[25px]  ">- Gift cards</p>
-            <p
-              className="">- Promotional Sales or Special Discounts.</p>
-           <p className="" >- Personalized or custom-made items</p>
-           <p className=""
-            >
-              - Downloadable software products
-            </p>
+            <p className="">- Promotional Sales or Special Discounts.</p>
+            <p className="">- Personalized or custom-made items</p>
+            <p className="">- Downloadable software products</p>
             <p className="">- Clearance or discounted/sale items</p>
 
-            <p className="mt-[25px]  text-[14px] font-medium">How to Initiate a Return</p>
+            <p className="mt-[25px]  text-[14px] font-medium">
+              How to Initiate a Return
+            </p>
             <p className="mt-[25px]  ">
               1. **Contact Us**: Before sending back the item, contact our
               Customer Service team

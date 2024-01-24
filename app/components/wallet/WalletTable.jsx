@@ -137,86 +137,86 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
 
   return (
     <div className="w-full max-w-[1440px] p-[20px] mx-auto">
-      <div className='overflow-auto'>
-      <table className="mx-auto table bg-white">
-        <thead>
-          <tr className="h-[120px] overflow-auto">
-            <th className="text-center py-4  px-10"></th>
-            {pricingPlans
-              .slice(0)
-              .reverse()
-              .map((plan, index) => {
-                let renderButton = true;
+      <div className="overflow-auto">
+        <table className="mx-auto table bg-white">
+          <thead>
+            <tr className="h-[120px] overflow-auto">
+              <th className="text-center py-4  px-10"></th>
+              {pricingPlans
+                .slice(0)
+                .reverse()
+                .map((plan, index) => {
+                  let renderButton = true;
 
-                if (
-                  subscribeBusiness &&
-                  (plan.name === 'Team' || plan.name === 'Free')
-                ) {
-                  renderButton = false; // Don't render buttons for Team or Free if subscribeBusiness is true
-                } else if (subscribeTeam && plan.name === 'Free') {
-                  renderButton = false; // Don't render Free button if subscribeTeam is true
-                }
+                  if (
+                    subscribeBusiness &&
+                    (plan.name === 'Team' || plan.name === 'Free')
+                  ) {
+                    renderButton = false; // Don't render buttons for Team or Free if subscribeBusiness is true
+                  } else if (subscribeTeam && plan.name === 'Free') {
+                    renderButton = false; // Don't render Free button if subscribeTeam is true
+                  }
 
-                return (
-                  <th key={index} className="text-center  py-4 px-10">
-                    <div className='sm:none flex text-center sm:items-center items-center gap-[5px]'>
-                    <span className="sm:text-lg text-[12px] text-[#000] uppercase block">
-                      {plan.name}
-                    </span>
-                    <span className="sm:text-lg text-[12px] sm:w-[89px] w-[75px] text-[#000] leading-[150%] block">
-                      As low as
-                    </span>
-                    <span className="sm:text-lg text-[12px] sm:w-[70px] w-[61px] font-bold text-[#000] block">
-                      {plan.price}
-                    </span>
-                    <span className="sm:text-lg text-[12px] sm:w-[70px] w-[55px] text-[#000] leading-[150%] block">
-                      per card
-                    </span>
-                    </div>
-                    {/* ... Plan details */}
-                    {renderButton ? (
-                      <DynamicButton
-                        onClickFunction={plan.onClick}
-                        className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] w-full rounded-full h-[40px] px-6`}
-                        text={plan.buttonText}
+                  return (
+                    <th key={index} className="text-center  py-4 px-10">
+                      <div className="sm:none flex text-center sm:items-center items-center gap-[5px]">
+                        <span className="sm:text-lg text-[12px] text-[#000] uppercase block">
+                          {plan.name}
+                        </span>
+                        <span className="sm:text-lg text-[12px] sm:w-[89px] w-[75px] text-[#000] leading-[150%] block">
+                          As low as
+                        </span>
+                        <span className="sm:text-lg text-[12px] sm:w-[70px] w-[61px] font-bold text-[#000] block">
+                          {plan.price}
+                        </span>
+                        <span className="sm:text-lg text-[12px] sm:w-[70px] w-[55px] text-[#000] leading-[150%] block">
+                          per card
+                        </span>
+                      </div>
+                      {/* ... Plan details */}
+                      {renderButton ? (
+                        <DynamicButton
+                          onClickFunction={plan.onClick}
+                          className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] w-full rounded-full h-[40px] px-6`}
+                          text={plan.buttonText}
+                        />
+                      ) : (
+                        <span></span>
+                      )}
+                    </th>
+                  );
+                })}
+            </tr>
+          </thead>
+
+          <tbody>
+            {data.map((item, index) => (
+              <tr
+                className="text-[#001a5f] text-sm border-t border-[#ddd] last:border-b"
+                key={index}
+              >
+                <td className="py-4 pl-6">{item.feature}</td>
+                {Array.from({length: pricingPlans.length}).map((_, i) => (
+                  <td key={i} className="text-center">
+                    {index < (i + 1) * 5 ? (
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
+                        className="w-[18px] h-[16px] mx-auto"
+                        alt="tick"
                       />
                     ) : (
-                      <span></span>
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
+                        className="w-[18px] h-[16px] mx-auto"
+                        alt="remove"
+                      />
                     )}
-                  </th>
-                );
-              })}
-          </tr>
-        </thead>
-
-        <tbody>
-          {data.map((item, index) => (
-            <tr
-              className="text-[#001a5f] text-sm border-t border-[#ddd] last:border-b"
-              key={index}
-            >
-              <td className="py-4 pl-6">{item.feature}</td>
-              {Array.from({length: pricingPlans.length}).map((_, i) => (
-                <td key={i} className="text-center">
-                  {index < (i + 1) * 5 ? (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                      className="w-[18px] h-[16px] mx-auto"
-                      alt="tick"
-                    />
-                  ) : (
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
-                      className="w-[18px] h-[16px] mx-auto"
-                      alt="remove"
-                    />
-                  )}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

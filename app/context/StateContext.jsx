@@ -12,24 +12,24 @@ export function StateContextProvider({children}) {
   const [cartCountVal, setCartCountVal] = useState(0);
   const [customerId, setCustomerId] = useState(null);
   const [isInitialRender, setIsInitialRender] = useState(true);
-  const [isAccountLoader,setIsAccountLoader] = useState(false)
+  const [isAccountLoader, setIsAccountLoader] = useState(false);
   const [subscription, setSubscription] = useState(0);
-  const [fullName,setFullName] = useState(() => {
+  const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedFullName = localStorage.getItem('SNFullName');
-      return storedFullName ? storedFullName : "";
+      return storedFullName ? storedFullName : '';
     }
     return null; // Fallback if localStorage is not available
   });
-  const [userEmail,setUserEmail] = useState(() => {
+  const [userEmail, setUserEmail] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedUserEmail = localStorage.getItem('SnEmail');
-      return storedUserEmail ? storedUserEmail : "";
+      return storedUserEmail ? storedUserEmail : '';
     }
     return null; // Fallback if localStorage is not available
   });
 
-  const [selectedPlan, setSelectedPlan] =  useState(() => {
+  const [selectedPlan, setSelectedPlan] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedSelectedPlan = localStorage.getItem('selectedPlan');
       return storedSelectedPlan ? storedSelectedPlan : null;
@@ -50,9 +50,9 @@ export function StateContextProvider({children}) {
     }
     return null; // Fallback if localStorage is not available
   });
-  const [packageProduct,setPackageProduct] = useState("")
-  const [subscriptionProduct,setSubscriptionProduct] = useState("")
-  const [subscriptionPriceId,setSubscriptionPriceId] = useState(() => {
+  const [packageProduct, setPackageProduct] = useState('');
+  const [subscriptionProduct, setSubscriptionProduct] = useState('');
+  const [subscriptionPriceId, setSubscriptionPriceId] = useState(() => {
     if (typeof window !== 'undefined') {
       const subscriptionPriceId = localStorage.getItem('subscriptionPriceId');
       return subscriptionPriceId ? subscriptionPriceId : null;

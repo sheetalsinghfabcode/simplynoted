@@ -32,8 +32,11 @@ export function Modal({children, cancelLink}) {
                 onClick={cancelLink}
                 className="p-4 -m-4 transition text-primary hover:text-primary/50"
               >
-                <IconClose className="md:mr-[-12px] mr-[-16px] mt-[-34px]" aria-label="Close panel" />
-              </button> 
+                <IconClose
+                  className="md:mr-[-12px] mr-[-16px] mt-[-34px]"
+                  aria-label="Close panel"
+                />
+              </button>
             </div>
             {children}
           </div>

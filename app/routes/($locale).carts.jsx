@@ -21,7 +21,8 @@ import LoginModal from '~/components/modal/LoginModal';
 let storedDataString, storedDataArray;
 
 export async function loader({context, request}) {
-  const StripeKey = "pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz";
+  const StripeKey =
+    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
 
   // console.log(StripeKey,'eeee');
   const data = await context.storefront.query(GiftProduct, {
@@ -111,7 +112,7 @@ export default function AddCartFunc() {
   let keyToUpdate2 = 'giftCardImg';
   let keyToUpdate3 = 'giftCardPrice';
   function updateValueInArray(index) {
-    console.log(index);
+    // console.log(index);
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -127,7 +128,7 @@ export default function AddCartFunc() {
   function deleteKeyInArray(index) {
     setUpdateGift(!updateGift);
 
-    console.log(index);
+    // console.log(index);
 
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -158,7 +159,7 @@ export default function AddCartFunc() {
   }
 
   function ConfirmDeleteOrder(index) {
-    console.log(index);
+    // console.log(index);
     setDelOrderIndex(index);
     setDeleteModal(true);
   }
@@ -168,7 +169,7 @@ export default function AddCartFunc() {
     // if (index >= 0 && index < cartData.length) {
     // Delete the order
     cartData.splice(index, 1);
-    console.log(cartData, 'deleteOrder');
+    // console.log(cartData, 'deleteOrder');
 
     // delete cartData[index];
     // }
@@ -180,7 +181,7 @@ export default function AddCartFunc() {
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
     let data = cartData[index];
-    console.log(data, 'data---');
+    // console.log(data, 'data---');
     let ab = cartData[index].productGetUrl;
     navigate(`${ab}`, {state: {data: data, index: index}});
   }
@@ -205,7 +206,6 @@ export default function AddCartFunc() {
   };
   const customStyles2 = {
     content: {
-    
       top: '40%',
       left: '50%',
       right: 'auto',
@@ -216,7 +216,7 @@ export default function AddCartFunc() {
       background: '#FFF6F6',
       width: '90%',
       padding: '30px',
-    height:'40%',
+      height: '40%',
       zIndex: '2',
       position: 'relative',
     },
@@ -230,11 +230,11 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
   async function OpenModalFunc2(item) {
-    console.log(item);
+    // console.log(item);
     setIsOpen2(true);
     // setCardVal(item)
     if (cartData[item].csvBulkData.length) {
-      console.log('bulkAddress');
+      // console.log('bulkAddress');
       setBulkAddress(cartData[item].csvBulkData);
       setMsgFont(cartData[item].fontFamily);
       setMsgShow(cartData[item].messageData);
@@ -247,24 +247,24 @@ export default function AddCartFunc() {
     }
   }
   const cardvalFunc = async (item) => {
-    console.log(item, 'cardVal-----');
+    // console.log(item, 'cardVal-----');
     let selCardName = data.collection.products.edges[item].node;
-    console.log(selCardName, 'selCardName--');
+    // console.log(selCardName, 'selCardName--');
     setCardName(selCardName.title);
     setCardImage(selCardName.featuredImage.url);
     // console.log(cardName,'cardName-----');
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
-    console.log(
-      arrCardPrice[0].node.price.amount,
-      '---------abababababaababab',
-    );
+    // console.log(
+    //   arrCardPrice[0].node.price.amount,
+    //   '---------abababababaababab',
+    // );
     let firstPrice = arrCardPrice[0].node.price.amount;
     setCardPrice(firstPrice);
     setCardPriceVal(arrCardPrice);
     // await AfterCardSel(ab)
   };
   const priceValFunc = async (item) => {
-    console.log(item, 'PriceVAl');
+    // console.log(item, 'PriceVAl');
     setCardPrice(item);
   };
   function closeModal() {
@@ -292,15 +292,20 @@ export default function AddCartFunc() {
         sum +
         (cartData.price * cartData.csvFileLen +
           cartData.giftCardPrice * cartData.csvFileLen +
-         ( ( cartData.shippingData && cartData.shippingData.node?.title ==
-            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed' ||
-            cartData.shippingData && cartData.shippingData.node?.title ==
-              'Ship Cards in Bulk - Cards Only' ||
-              cartData.shippingData &&  cartData.shippingData.node?.title ==
-              'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped' ||
-              cartData.shippingData && cartData.shippingData.node?.title ==
-              'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ?0:
-          (cartData.usCount || cartData.nonUSCount
+          ((cartData.shippingData &&
+            cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards Only') ||
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
+            ? 0
+            : cartData.usCount || cartData.nonUSCount
             ? postPrice * cartData.usCount + postPrice2 * cartData.nonUSCount
             : cartData.reciverAddress?.country === 'USA' ||
               cartData.reciverAddress?.country?.toLowerCase() === '' ||
@@ -316,11 +321,11 @@ export default function AddCartFunc() {
                 'united states of america' ||
               cartData.reciverAddress?.country?.toLowerCase() == undefined
             ? postPrice * cartData.csvFileLen
-            : postPrice2 * cartData.csvFileLen)) +
+            : postPrice2 * cartData.csvFileLen) +
           (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
       0,
     );
-    console.log(prices, 'pricesssss');
+    // console.log(prices, 'pricesssss');
     setTotalPrize(prices);
   }
   return (
@@ -346,7 +351,6 @@ export default function AddCartFunc() {
                                 <h3 className="text-[#1b5299] font-karla lg:text-[18px] md:text-[14px] sm:text-[20px] text-[14px] lg:tracking-[0.5px] tracking-0">
                                   {item.productTitle}
                                 </h3>
-                                
                                 <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] sm:text-[18px] text-[14px] lg:tracking-[1.5px] tracking-0">
                                   {' '}
                                   Sender
@@ -404,7 +408,7 @@ export default function AddCartFunc() {
                             </div>
                           </div>
                           <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
-                            <div className='flex md:flex-col sm:flex-row flex-col'>
+                            <div className="flex md:flex-col sm:flex-row flex-col">
                               {item.giftCardName !== null ? (
                                 ''
                               ) : (
@@ -442,48 +446,45 @@ export default function AddCartFunc() {
                         </div>
                         <div className="w-full h-[1px] bg-[black]"></div>
 
-
                         {item.giftCardName && (
                           <div className="flex w-[100%] flex-wrap ">
-                          <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                            <div className="flex w-full justify-evenly">
-                              <div className="sm:max-w-[20%] max-w-[23%] md:m-5 mt-[30px] mx-auto">
-            
+                            <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
+                              <div className="flex w-full justify-evenly">
+                                <div className="sm:max-w-[20%] max-w-[23%] md:m-5 mt-[30px] mx-auto">
                                   <img src={item.giftCardImg} alt="" />
                                 </div>
                                 <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+                                  <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
                                     {item.giftCardName}
                                   </h3>
-                                  
                                 </div>
                               </div>
                             </div>
                             <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                            <div className="w-[100%]">
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  {' '}
-                                  Price:
-                                </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                              <div className="w-[100%]">
+                                <div className="flex justify-between">
+                                  <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                    {' '}
+                                    Price:
+                                  </span>
+                                  <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     $ {item.giftCardPrice}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  {' '}
-                                  Quantity:
-                                </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                  <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                    {' '}
+                                    Quantity:
+                                  </span>
+                                  <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     {item.csvFileLen}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  Subtotal:
-                                </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                  <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                    Subtotal:
+                                  </span>
+                                  <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     ${' '}
                                     {(
                                       item.giftCardPrice * item.csvFileLen
@@ -493,7 +494,7 @@ export default function AddCartFunc() {
                               </div>
                             </div>
                             <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
-                            <div className="buttonDiv md:pr-5 pr-0 m-2">
+                              <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
                                   className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] "
                                   text="DELETE CARD"
@@ -508,38 +509,42 @@ export default function AddCartFunc() {
                         {item.giftCardName && (
                           <div className="w-full h-[1px] bg-[black]"></div>
                         )}
-                        
-                        {( item.shippingData && item.shippingData.node?.title ==
-                          'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed' ||
-                          item.shippingData && item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards Only' ||
-                            item.shippingData &&  item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped' ||
-                            item.shippingData && item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ?'':(
+
+                        {(item.shippingData &&
+                          item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                        (item.shippingData &&
+                          item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards Only') ||
+                        (item.shippingData &&
+                          item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+                        (item.shippingData &&
+                          item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ? (
+                          ''
+                        ) : (
                           <>
                             {item.usCount || item.nonUSCount ? (
                               <>
                                 {item.nonUSCount && item.nonUSCount ? (
                                   <div className="flex w-[100%] flex-wrap ">
-                                  <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                    <div className="flex w-full justify-evenly">
-                                      <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
-                    
+                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
+                                      <div className="flex w-full justify-evenly">
+                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                                           <img src={postImage} alt="" />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
                                             Postal {postTitle2}
                                           </h3>
-                                        
                                         </div>
                                       </div>
                                     </div>
                                     <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                            <div className="w-[100%]">
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      <div className="w-[100%]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Price:
                                           </span>
@@ -548,16 +553,16 @@ export default function AddCartFunc() {
                                           </span>
                                         </div>
                                         <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Quantity:
-                                            </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                          </span>
+                                          <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {item.nonUSCount}
                                           </span>
                                         </div>
                                         <div className="flex justify-between">
-                                        <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                          <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Subtotal:
                                           </span>
@@ -567,33 +572,32 @@ export default function AddCartFunc() {
                                               postPrice2 * item.nonUSCount
                                             ).toFixed(2)}
                                           </span>
-                                      </div>
+                                        </div>
                                       </div>
                                     </div>
-                                    <div class="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
+                                    <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
                                 ) : (
                                   ''
                                 )}
                                 {item.usCount && (
                                   <div className="flex w-[100%] flex-wrap ">
-                                  <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                    <div className="flex w-full justify-evenly">
-                                    <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
+                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
+                                      <div className="flex w-full justify-evenly">
+                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                                           <img src={postImage} alt="" />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
                                             Postal {postTitle}
                                           </h3>
-                                          
                                         </div>
                                       </div>
                                     </div>
                                     <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                            <div className="w-[100%]">
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      <div className="w-[100%]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Price:
                                           </span>
@@ -602,7 +606,7 @@ export default function AddCartFunc() {
                                           </span>
                                         </div>
                                         <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Quantity:
                                           </span>
@@ -624,7 +628,7 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
+                                    <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
                                 )}
                               </>
@@ -651,61 +655,56 @@ export default function AddCartFunc() {
                                   'united states of america' ||
                                 item.reciverAddress?.country?.toLowerCase() ==
                                   undefined ? (
- 
-                                    <div className="flex w-[100%] flex-wrap ">
+                                  <div className="flex w-[100%] flex-wrap ">
                                     <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                       <div className="flex w-full justify-evenly">
-                                      <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
-                                            <img src={postImage} alt="" />
-                                          </div>
-                                          <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                  <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
-                                              Postal {postTitle}
-                                            </h3>
-                                            
-                                          </div>
+                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
+                                          <img src={postImage} alt="" />
+                                        </div>
+                                        <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
+                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+                                            Postal {postTitle}
+                                          </h3>
                                         </div>
                                       </div>
-                                      <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                              <div className="w-[100%]">
-                                <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                              {' '}
-                                              Price:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              $ {postPrice}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                  <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                              {' '}
-                                              Quantity:
-                                            </span>
-                                            <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {item.csvFileLen}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                              {' '}
-                                              Subtotal:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                             ${' '}
-                                            {(
-                                               postPrice * item.csvFileLen
-                                            ).toFixed(2)}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                     </div>
-                                    
-
-
-
+                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                                      <div className="w-[100%]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            {' '}
+                                            Price:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            $ {postPrice}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            {' '}
+                                            Quantity:
+                                          </span>
+                                          <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            {item.csvFileLen}
+                                          </span>
+                                        </div>
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            {' '}
+                                            Subtotal:
+                                          </span>
+                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                            ${' '}
+                                            {(
+                                              postPrice * item.csvFileLen
+                                            ).toFixed(2)}
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
+                                  </div>
+                                ) : (
                                   // <div className="flex">
                                   //   <div className="w-[36rem]">
                                   //     <div className="flex m-5">
@@ -755,41 +754,39 @@ export default function AddCartFunc() {
                                   //       </div>
                                   //     </div>
                                   //   </div>
-                                  //   <div class="w-[19rem] m-4 flex justify-center items-center"></div>
+                                  //   <div className="w-[19rem] m-4 flex justify-center items-center"></div>
                                   // </div>
-                                ) : (
                                   <div className="flex w-[100%] flex-wrap ">
-                                  <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                    <div className="flex w-full justify-evenly">
-                                    <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
+                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
+                                      <div className="flex w-full justify-evenly">
+                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
                                           <img src={postImage} alt="" />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
-                                Postal{postTitle2}
+                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+                                            Postal{postTitle2}
                                           </h3>
-                                          
                                         </div>
                                       </div>
                                     </div>
                                     <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                            <div className="w-[100%]">
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      <div className="w-[100%]">
+                                        <div className="flex justify-between">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Price:
                                           </span>
                                           <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                          ${postPrice2}
+                                            ${postPrice2}
                                           </span>
                                         </div>
                                         <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                             {' '}
                                             Quantity:
                                           </span>
                                           <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                          {item.csvFileLen}
+                                            {item.csvFileLen}
                                           </span>
                                         </div>
                                         <div className="flex justify-between">
@@ -798,19 +795,16 @@ export default function AddCartFunc() {
                                             Subtotal:
                                           </span>
                                           <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                          $
-                                           {(
+                                            $
+                                            {(
                                               postPrice2 * item.csvFileLen
                                             ).toFixed(2)}
                                           </span>
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
+                                    <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
-
-
-                                  
 
                                   // <div className="flex">
                                   //   <div className="w-[36rem]">
@@ -862,7 +856,7 @@ export default function AddCartFunc() {
                                   //       </div>
                                   //     </div>
                                   //   </div>
-                                  //   <div class="w-[19rem] m-4 flex justify-center items-center"></div>
+                                  //   <div className="w-[19rem] m-4 flex justify-center items-center"></div>
                                   // </div>
                                 )}
                               </>
@@ -875,58 +869,54 @@ export default function AddCartFunc() {
                           item.shippingMethodImage &&
                           item.isShippidata && (
                             <div className="flex w-[100%] flex-wrap ">
-                                  <div className="md:w-[50%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[15px]">
-                                    <div className="flex w-full justify-evenly">
-                                      <div className="sm:max-w-[13%] max-w-[20%] md:m-5 mt-[20px] mx-auto">
-                                      <img
+                              <div className="md:w-[50%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[15px]">
+                                <div className="flex w-full justify-evenly">
+                                  <div className="sm:max-w-[13%] max-w-[20%] md:m-5 mt-[20px] mx-auto">
+                                    <img
                                       src={item.shippingMethodImage}
                                       alt=""
                                     />
-                                        </div>
-                                        <div className="sm:max-w-[100%] max-w-[46%] m-auto md:mt-auto sm:mt-[40px] mt-[20px]">
-                                <h3 className="text-[#1b5299] font-karla sm:text-[18px] text-[16px] lg:tracking-[0.5px] tracking-0">
-                                {item.shippingData?.node.title}
-                                          </h3>
-                                          
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="md:w-[25%] sm:w-[80%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                            <div className="w-[100%]">
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {' '}
-                                            Price:
-                                          </span>
-                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                          $ {item.shippingDataCost}
-                                          </span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {' '}
-                                            Quantity:
-                                          </span>
-                                          <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                         1
-                                          </span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                          <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                            {' '}
-                                            Subtotal:
-                                          </span>
-                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                          $ {item.shippingDataCost * 1}
-                                          </span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
-
-
-
+                                  <div className="sm:max-w-[100%] max-w-[46%] m-auto md:mt-auto sm:mt-[40px] mt-[20px]">
+                                    <h3 className="text-[#1b5299] font-karla sm:text-[18px] text-[16px] lg:tracking-[0.5px] tracking-0">
+                                      {item.shippingData?.node.title}
+                                    </h3>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="md:w-[25%] sm:w-[80%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                                <div className="w-[100%]">
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      {' '}
+                                      Price:
+                                    </span>
+                                    <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                      $ {item.shippingDataCost}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      {' '}
+                                      Quantity:
+                                    </span>
+                                    <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      1
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                      {' '}
+                                      Subtotal:
+                                    </span>
+                                    <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                      $ {item.shippingDataCost * 1}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
+                            </div>
 
                             // <div className="flex">
                             //   <div className="w-[36rem]">
@@ -978,65 +968,64 @@ export default function AddCartFunc() {
                             //       </div>
                             //     </div>
                             //   </div>
-                            //   <div class="w-[19rem] m-4 flex justify-center items-center"></div>
+                            //   <div className="w-[19rem] m-4 flex justify-center items-center"></div>
                             // </div>
-
                           )}
                         <div className="flex w-full relative mx-auto justify-center ">
-                  
-                            <div className="m-6">
-                              
-                                <h3 className="text-[#1b5299] font-karla sm:text-[18px] text-[16px] tracking-[1.5px]">
-                                  {' '}
-                                  Subtotal: ${' '}
-                                  {(
-                                    item.price * item.csvFileLen +
-                                    item.giftCardPrice * item.csvFileLen +
-                                    (item.isShippidata
-                                      ? item.shippingDataCost * 1
-                                      : 0) +
-                                     ( ( item.shippingData && item.shippingData.node?.title ==
-                                        'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed' ||
-                                        item.shippingData && item.shippingData.node?.title ==
-                                          'Ship Cards in Bulk - Cards Only' ||
-                                          item.shippingData &&  item.shippingData.node?.title ==
-                                          'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped' ||
-                                          item.shippingData && item.shippingData.node?.title ==
-                                          'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ?0:
-                                          (item.usCount || item.nonUSCount
-                                            ? postPrice * item.usCount +
-                                              postPrice2 * item.nonUSCount
-                                            : item.reciverAddress?.country ===
-                                                'USA' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                '' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                ' ' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'u.s.a' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'u.s' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'usa' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'us' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'america' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'united states' ||
-                                              item.reciverAddress?.country?.toLowerCase() ===
-                                                'united states of america' ||
-                                              item.reciverAddress?.country?.toLowerCase() ==
-                                                undefined
-                                            ? postPrice * item.csvFileLen
-                                            : postPrice2 * item.csvFileLen) )
-                                   
-                                  ).toFixed(2)}
-                                </h3>
-                              </div>
-                            </div>
+                          <div className="m-6">
+                            <h3 className="text-[#1b5299] font-karla sm:text-[18px] text-[16px] tracking-[1.5px]">
+                              {' '}
+                              Subtotal: ${' '}
+                              {(
+                                item.price * item.csvFileLen +
+                                item.giftCardPrice * item.csvFileLen +
+                                (item.isShippidata
+                                  ? item.shippingDataCost * 1
+                                  : 0) +
+                                ((item.shippingData &&
+                                  item.shippingData.node?.title ==
+                                    'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                                (item.shippingData &&
+                                  item.shippingData.node?.title ==
+                                    'Ship Cards in Bulk - Cards Only') ||
+                                (item.shippingData &&
+                                  item.shippingData.node?.title ==
+                                    'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+                                (item.shippingData &&
+                                  item.shippingData.node?.title ==
+                                    'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
+                                  ? 0
+                                  : item.usCount || item.nonUSCount
+                                  ? postPrice * item.usCount +
+                                    postPrice2 * item.nonUSCount
+                                  : item.reciverAddress?.country === 'USA' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      '' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      ' ' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'u.s.a' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'u.s' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'usa' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'us' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'america' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'united states' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
+                                      'united states of america' ||
+                                    item.reciverAddress?.country?.toLowerCase() ==
+                                      undefined
+                                  ? postPrice * item.csvFileLen
+                                  : postPrice2 * item.csvFileLen)
+                              ).toFixed(2)}
+                            </h3>
                           </div>
-                        
+                        </div>
+                      </div>
                     ))}
                   {totalPrize && (
                     <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
@@ -1059,27 +1048,19 @@ export default function AddCartFunc() {
                         </div>
                         <div className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center sm:justify-center justify-start sm:order-none order-[-1]">
                           <div className="mt-2 lg:text-2xl  sm:text-[15px] text-[20px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
-                            <span className='md:mr-[2px]'>
-                             
-                                GRAND TOTAL
-                             
-                              </span>
-                          <span>
-                             
-                                ${totalPrize.toFixed(2)}
-                             
-                              </span>
+                            <span className="md:mr-[2px]">GRAND TOTAL</span>
+                            <span>${totalPrize.toFixed(2)}</span>
                           </div>
                         </div>
                         <div className="md:w-[30%] sm:w-[80%] w-auto  mr-1 flex justify-end ">
                           <div className="">
-                            <div className='lg:text-[18px] text-[12px] sm:flex hidden'>
+                            <div className="lg:text-[18px] text-[12px] sm:flex hidden">
                               <input
                                 type="checkbox"
                                 onClick={() => setAgree(!agree)}
                                 checked={agree}
                               />
-                              <text >
+                              <text>
                                 {' '}
                                 &nbsp;I agree with{' '}
                                 <span className="underline decoration-solid">
@@ -1109,22 +1090,22 @@ export default function AddCartFunc() {
                             </button>
                           </div>
                         </div>
-                        <div className='text-[9px] sm:hidden flex justify-end w-full'>
-                              <input
-                                type="checkbox"
-                                onClick={() => setAgree(!agree)}
-                                checked={agree}
-                              />
-                              <text >
-                                {' '}
-                                &nbsp;I agree with{' '}
-                                <span className="underline decoration-solid">
-                                  <a href="/policies/terms-of-service">
-                                    Terms of service
-                                  </a>
-                                </span>
-                              </text>
-                            </div>
+                        <div className="text-[9px] sm:hidden flex justify-end w-full">
+                          <input
+                            type="checkbox"
+                            onClick={() => setAgree(!agree)}
+                            checked={agree}
+                          />
+                          <text>
+                            {' '}
+                            &nbsp;I agree with{' '}
+                            <span className="underline decoration-solid">
+                              <a href="/policies/terms-of-service">
+                                Terms of service
+                              </a>
+                            </span>
+                          </text>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -1138,7 +1119,7 @@ export default function AddCartFunc() {
                       </p>
                       <textarea
                         name=""
-                        className='w-[85%]'
+                        className="w-[85%]"
                         id="cart-note"
                         cols="30"
                         rows="4"
@@ -1264,7 +1245,7 @@ export default function AddCartFunc() {
                   className="absolute right-0 cursor-pointer w-[28%]"
                   onClick={() => closeModal()}
                 />
-              
+
                 {bulkAddress &&
                   bulkAddress.map((item, index) => (
                     <div>
@@ -1273,9 +1254,8 @@ export default function AddCartFunc() {
                         style={{
                           display: index === currentIndex ? 'block' : 'none',
                         }}
-                        className='mt-[10px]'
+                        className="mt-[10px]"
                       >
-                       
                         <text className=" text-xl text-center ">
                           Recipient: {item['First Name'] || item.firstName},
                           {item['Last Name'] || item.lastName},
@@ -1283,27 +1263,27 @@ export default function AddCartFunc() {
                           {item['City'] || item.city},
                           {item['State/Province'] || item.state}
                         </text>
-                        
+
                         <h2 className="font-bold text-2xl w-full text-center mt-3">
                           Your Custom Message
                         </h2>
-                        <div className='my-7 mr-5 relative flex justify-between'>
+                        <div className="my-7 mr-5 relative flex justify-between">
                           <div>
-                        <button
-                  onClick={handlePrevClick}
-                  className="absolute "
-                >
-                  Previous
-                </button>
-                </div>
-                <div>
-                <button
-                  className="absolute "
-                  onClick={handleNextClick}
-                >
-                  Next
-                </button>
-                </div>
+                            <button
+                              onClick={handlePrevClick}
+                              className="absolute "
+                            >
+                              Previous
+                            </button>
+                          </div>
+                          <div>
+                            <button
+                              className="absolute "
+                              onClick={handleNextClick}
+                            >
+                              Next
+                            </button>
+                          </div>
                         </div>
                         <div className="w-full items-center bg-[#fff]  mt-5  p-[10px] h-auto ">
                           <text
@@ -1327,7 +1307,6 @@ export default function AddCartFunc() {
                       </div>
                     </div>
                   ))}
-               
               </>
             ) : (
               <>

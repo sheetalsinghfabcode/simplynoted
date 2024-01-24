@@ -25,7 +25,7 @@ export function ProductInfo({
   setCustomFontName,
   editCustomFontFamily,
 }) {
-  console.log(product, 'product');
+  console.log({product});
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
@@ -63,7 +63,7 @@ export function ProductInfo({
   }, []);
 
   function getCustomFont(val) {
-    console.log(val, 'getcustom val');
+    // console.log(val, 'getcustom val');
     setFontFamily(val);
     setCustomFontVal(val);
     setStandardFontVal('Select Standard Font');
@@ -78,15 +78,30 @@ export function ProductInfo({
     <div className="flex justify-center md:w-[40%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
         <div className="grid gap-2">
-          <Heading as="h1" className="whitespace-normal xl:text-[38px] md:text-[23px] sm:text-[34px] text-[30px]">
+          <Heading
+            as="h1"
+            className="whitespace-normal xl:text-[38px] md:text-[23px] sm:text-[34px] text-[30px]"
+          >
             {title}
           </Heading>
-          {offPrice>0?
-              <span className='text-[30px] text-[#1b5299] leading-[47px] font-karla'><span className='line-through text-[black] text-[30px] leading-[47px] font-karla'> ${product?.variants.nodes[0].price.amount}</span> $ {(product?.variants.nodes[0].price.amount - (product?.variants.nodes[0].price.amount * offPrice)/100).toFixed(2)}</span>
-              :
-              <span className='text-[30px] text-[#1b5299] leading-[47px] font-karla'>$ {product?.variants.nodes[0].price.amount}</span>
-              }         
-               {/* <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
+          {offPrice > 0 ? (
+            <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
+              <span className="line-through text-[black] text-[30px] leading-[47px] font-karla">
+                {' '}
+                ${product?.variants.nodes[0].price.amount}
+              </span>{' '}
+              ${' '}
+              {(
+                product?.variants.nodes[0].price.amount -
+                (product?.variants.nodes[0].price.amount * offPrice) / 100
+              ).toFixed(2)}
+            </span>
+          ) : (
+            <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
+              $ {product?.variants.nodes[0].price.amount}
+            </span>
+          )}
+          {/* <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
             $ {product?.variants.nodes[0].price.amount}
           </span> */}
           {/* {vendor && (
@@ -219,8 +234,10 @@ export function ProductInfo({
                 </option>
               </select>
             </div>
-            <div className='md:w-[45%] w-[42%]'>
-              <Text className="lg:text-sm text-[13px]">Custom Handwriting Style</Text>
+            <div className="md:w-[45%] w-[42%]">
+              <Text className="lg:text-sm text-[13px]">
+                Custom Handwriting Style
+              </Text>
               <br />
               <select
                 id="Coustomfont text-sm "
@@ -250,7 +267,11 @@ export function ProductInfo({
           <div>
             <Text>Optional shipping date</Text>
             <br />
-            <input type="date" className="cursor-pointer" min={new Date().toISOString().split('T')[0]}/>
+            <input
+              type="date"
+              className="cursor-pointer"
+              min={new Date().toISOString().split('T')[0]}
+            />
           </div>
         </div>
         {/* Product page Data Vieew */}

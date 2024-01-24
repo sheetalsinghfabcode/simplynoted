@@ -18,7 +18,7 @@ const CARD_OPTIONS = {
   },
 };
 
-const StripeCardComp = ({setPaymentMethodId,AddCreditCard}) => {
+const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
   // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
   const elements = useElements();
@@ -27,23 +27,23 @@ const StripeCardComp = ({setPaymentMethodId,AddCreditCard}) => {
     event.preventDefault();
 
     const {error, paymentMethod} = await stripe.createPaymentMethod({
-        type: "card",
-        card: elements.getElement(CardElement)
-    })
-  
-  if(!error) {
-    try {
-        const {id} =  paymentMethod
-        if(id){
-          setPaymentMethodId(id)
-          AddCreditCard(id)
+      type: 'card',
+      card: elements.getElement(CardElement),
+    });
+
+    if (!error) {
+      try {
+        const {id} = paymentMethod;
+        if (id) {
+          setPaymentMethodId(id);
+          AddCreditCard(id);
         }
-        console.log(id, 'stripeID');
+        // console.log(id, 'stripeID');
       } catch (error) {
-        console.log(error, 'stripe error');
+        console.error(error, 'stripe error');
       }
     } else {
-      console.log(error.message);
+      console.error(error.message);
     }
   };
   return (
@@ -53,9 +53,11 @@ const StripeCardComp = ({setPaymentMethodId,AddCreditCard}) => {
     >
       <CardElement options={CARD_OPTIONS} className="m-5 " />
       <button
-          type="submit"
-          className="!bg-[#EF6E6E] text-white md:!text-[16px] !text-[13px]  w-full !rounded-0 md:max-w-[300px] max-w-[220px] p-[10px]"
-        >Add Card</button>
+        type="submit"
+        className="!bg-[#EF6E6E] text-white md:!text-[16px] !text-[13px]  w-full !rounded-0 md:max-w-[300px] max-w-[220px] p-[10px]"
+      >
+        Add Card
+      </button>
     </form>
   );
 };

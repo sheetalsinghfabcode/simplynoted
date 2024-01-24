@@ -72,12 +72,12 @@ export default function CustomProducts() {
   let editFontFamily = datafornav.state?.data.fontFamily;
   let showBulkOnEdit = datafornav.state?.data.csvBulkData.length;
   let editFontSize = datafornav.state?.data.fontSizeMsg;
-  let editCustomFontFamily = datafornav.state?.data.customFontName
-  let editLineHeight = datafornav.state?.data.lineHeight
-  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight
-  let editSignOffFontSize = datafornav.state?.data.signOffFontSize
+  let editCustomFontFamily = datafornav.state?.data.customFontName;
+  let editLineHeight = datafornav.state?.data.lineHeight;
+  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
+  let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
   const [show, setShow] = useState(
-    showBulkOnEdit || datafornav.search == "?select=Bulk" ? true : false,
+    showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
   const [productshow, setProductShow] = useState(true);
   const [modalIsOpen2, setIsOpen2] = useState(false);
@@ -118,11 +118,11 @@ export default function CustomProducts() {
         `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
       );
       const json = await res.json();
-      console.log(json, 'productData');
+      // console.log(json, 'productData');
       setCustomProductData(json.result);
       // getMetaFields(json.result)
     } catch (error) {
-      console.log(error, 'productError');
+      console.error(error, 'productError');
     }
   }
   async function getMetaFields(id) {
@@ -140,7 +140,7 @@ export default function CustomProducts() {
       const json = await data.json();
       let extractedData = json.result.metafields[0].value;
       let extractMetafield = JSON.parse(extractedData);
-      console.log(extractMetafield, 'extractMetafield');
+      // console.log(extractMetafield, 'extractMetafield');
       setMetafields(extractMetafield);
       let key = 'is_customised';
       let key2 = 'qrImage';
@@ -149,7 +149,7 @@ export default function CustomProducts() {
       let dataAfterChecking = newData.filter(
         (item) => key.includes(item.namespace) && key2.includes(item.key),
       );
-      console.log(dataAfterChecking[0].value, 'filter QR Data');
+      // console.log(dataAfterChecking[0].value, 'filter QR Data');
       if (qrData.namespace == 'is_customised') {
         setQrValue(dataAfterChecking[0].value);
       }
@@ -179,12 +179,12 @@ export default function CustomProducts() {
     localStorage.removeItem('reqFielddInCart');
     setLocationValue(true);
   }, [datafornav.pathname]);
-  console.log(metafields.back,"metafields.back.zoom");
+  // console.log(metafields.back, 'metafields.back.zoom');
   return (
-    <div className='relative'>
+    <div className="relative">
       {customProductData.length === 0 && metafields.length === 0 && (
-        <div className='z-[50] absolute top-[40%] left-[50%]'>
-        <CircularLoader color="#ef6e6e" />
+        <div className="z-[50] absolute top-[40%] left-[50%]">
+          <CircularLoader color="#ef6e6e" />
         </div>
       )}
       {productshow ? (
@@ -195,19 +195,33 @@ export default function CustomProducts() {
             backArrow={true}
             onClickFunction={goBack}
           />
-          <Section className={`px-0 md:px-8
-           ${ customProductData.length === 0 && metafields.length === 0 && "opacity-40"} `}>
+          <Section
+            className={`px-0 md:px-8
+           ${
+             customProductData.length === 0 &&
+             metafields.length === 0 &&
+             'opacity-40'
+           } `}
+          >
             <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px]">
               <div
                 className={`swimlane flex flex-col hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full mb-0 `}
               >
-                <div className="md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10  md:w-[92%] md:h-[386px] h-[100%] w-full ">
+                <div
+                  className="md:aspect-[4/5]',
+          'aspect-square snap-center card-image bg-white dark:bg-contrast/10  md:w-[92%] md:h-[386px] h-[100%] w-full "
+                >
                   {customProductData &&
                     metafields &&
                     metafields.cardType == 'folded5x7' && (
                       <img
-                      style={{transform:`scale(${imageShow == 0 ?metafields.face && metafields.face.zoom:metafields.back && metafields.back.zoom})`}}
+                        style={{
+                          transform: `scale(${
+                            imageShow == 0
+                              ? metafields.face && metafields.face.zoom
+                              : metafields.back && metafields.back.zoom
+                          })`,
+                        }}
                         src={
                           customProductData.images.length
                             ? customProductData.images[imageShow].originalSrc
@@ -216,11 +230,16 @@ export default function CustomProducts() {
                         className="object-contain  fadeIn md:w-[583px] md:h-[386px] h-full w-full"
                       />
                     )}
-                    {/* {metafields && metafields.face.zoom}------ */}
+                  {/* {metafields && metafields.face.zoom}------ */}
                   {customProductData && metafields.cardType !== 'folded5x7' && (
-                    
                     <img
-                    style={{transform:`scale(${imageShow == 0 ?metafields.face && metafields.face.zoom:metafields.back && metafields.back.zoom})`}}
+                      style={{
+                        transform: `scale(${
+                          imageShow == 0
+                            ? metafields.face && metafields.face.zoom
+                            : metafields.back && metafields.back.zoom
+                        })`,
+                      }}
                       src={
                         customProductData.images.length
                           ? customProductData.images[imageShow].originalSrc
@@ -248,7 +267,7 @@ export default function CustomProducts() {
                       <button
                         style={{
                           backgroundColor:
-                             imageShow == '1' ? '#001a5f' : '#ef6e6e',
+                            imageShow == '1' ? '#001a5f' : '#ef6e6e',
                         }}
                         className="bg-[#EF6E6E]   w-full p-2 text-[#fff]"
                         onClick={() => setImageShow(1)}
@@ -286,7 +305,9 @@ export default function CustomProducts() {
                 fontFamilyName={fontFamilyName}
                 metafields={metafields}
                 qrValue={qrValue}
-                editLineHeight={editLineHeight} editSignOffFontSize={editSignOffFontSize} editSignOffLineHeight={editSignOffLineHeight}
+                editLineHeight={editLineHeight}
+                editSignOffFontSize={editSignOffFontSize}
+                editSignOffLineHeight={editSignOffLineHeight}
               />
             )}
           </Section>

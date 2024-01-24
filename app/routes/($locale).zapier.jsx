@@ -19,27 +19,35 @@ export default function Zapier() {
       <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
         <div className="lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
-            <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="zapier" />
+            <img
+              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
+              alt="zapier"
+            />
             <h2 className="xl:text-[46px] text-[32px] font-normal text-[#001A5F]">
-            Zapier Integration
+              Zapier Integration
             </h2>
           </div>
           <p className="lg:text-[18px] text-[20px] text-black font-light  w-[100%] leading-8 lg:mt-0 mt-7  lg:text-justify sm:text-center text-justify">
-          Integrate and automate sending real handwritten notes from 2,500+ softwares instantly. Request access to our Zapier App today!
+            Integrate and automate sending real handwritten notes from 2,500+
+            softwares instantly. Request access to our Zapier App today!
           </p>
           <DynamicButton
             onClickFunction={() =>
               (window.location.href =
-                "https://zapier.com/apps/simply-noted/integrations")
+                'https://zapier.com/apps/simply-noted/integrations')
             }
             text="INTEGRATE NOW"
             className="btn1 !mt-5 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
           />
         </div>
         <div className="lg:hidden block sm:mb-10 mb-7">
-          <img className="mx-auto" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="shopify" />
+          <img
+            className="mx-auto"
+            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
+            alt="shopify"
+          />
           <h2 className="sm:text-[46px]  text-[32px] font-normal font-karla text-[#001A5F]">
-          Zapier Integration
+            Zapier Integration
           </h2>
         </div>
         <div className="lg:w-[60%] w-full">
@@ -129,7 +137,7 @@ export default function Zapier() {
           </SwiperSlide>
         </Swiper>
       </div>
-      
+
       <div className="lg:flex lg:mt-0 mt-8 hidden gap-[30px] flex-wrap items-center overflow-hidden">
         <img
           className="card-image-shopify"
@@ -145,16 +153,16 @@ export default function Zapier() {
           />
         </div>
       </div>
-{/* second */}
+      {/* second */}
       <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="  text-[28px] font-karla text-[#001A5F]">
-            Instantly Integrate With 1,000s of Applications
+              Instantly Integrate With 1,000s of Applications
             </div>
           </div>
           <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
-          Start your trigger by finding your app in the Zapier database
+            Start your trigger by finding your app in the Zapier database
           </p>
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
@@ -162,23 +170,21 @@ export default function Zapier() {
               className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
-                  "https://zapier.com/apps/simply-noted/integrations")
+                  'https://zapier.com/apps/simply-noted/integrations')
               }
             />
             <DynamicButton
               text="TUTORIALS"
               className="btn2 lg:w-[50%] md:w-[26%] text-[15px] mt-5"
               onClickFunction={() =>
-                (window.location.href =
-              "https://simplynoted.com/blogs/news")
-            }
-             
+                (window.location.href = 'https://simplynoted.com/blogs/news')
+              }
             />
           </div>
         </div>
         <div className="lg:hidden block sm:mb-10 mb-7 mt-10">
           <div className=" sm:text-[30px] text-center text-[32px] font-karla text-[#001A5F]">
-          Instantly Integrate With 1,000s of Applications
+            Instantly Integrate With 1,000s of Applications
           </div>
         </div>
 
@@ -189,8 +195,6 @@ export default function Zapier() {
           />
         </div>
       </div>
-
-
 
       <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6">
         <img
@@ -219,7 +223,7 @@ export default function Zapier() {
               className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
-                  "https://zapier.com/apps/simply-noted/integrations")
+                  'https://zapier.com/apps/simply-noted/integrations')
               }
             />
             <DynamicButton
@@ -250,39 +254,45 @@ export default function Zapier() {
         />
       </div>
 
-
-
       <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto">
-        
         <div className="banner-detail text-center">
-       
-        <img className="lg:block absolute hidden left-0 mt-[-18rem]" src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556" alt="shopify" />
-      
-          <img className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-13rem] " src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" alt="shopify" />
-          <img className="lg:block hidden absolute mt-[100px] right-0 " src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087" alt="shopify" />
+          <img
+            className="lg:block absolute hidden left-0 mt-[-18rem]"
+            src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+            alt="shopify"
+          />
+
+          <img
+            className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-13rem] "
+            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
+            alt="shopify"
+          />
+          <img
+            className="lg:block hidden absolute mt-[100px] right-0 "
+            src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+            alt="shopify"
+          />
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
             Integrate with Zapier
             <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
-            <DynamicButton
-                    text="INTEGRATE NOW"
-                    className="req-btn !ml-0 md:w-50%  !w-full"
-                     onClickFunction={()=>window.location.href=("https://zapier.com/apps/simply-noted/integrations")}
-                
-            />
-            <DynamicButton
-                    text="VIEW ALL INTEGRATION"
-                    className="sch-btn !ml-0 md:w-50% !w-full"
-                     onClickFunction={()=>window.location.href=("https://zapier.com/apps")}
-                
-            />
-
+              <DynamicButton
+                text="INTEGRATE NOW"
+                className="req-btn !ml-0 md:w-50%  !w-full"
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
+              />
+              <DynamicButton
+                text="VIEW ALL INTEGRATION"
+                className="sch-btn !ml-0 md:w-50% !w-full"
+                onClickFunction={() =>
+                  (window.location.href = 'https://zapier.com/apps')
+                }
+              />
             </div>
           </div>
-          
-        
-       
         </div>
-       
       </div>
     </div>
   );

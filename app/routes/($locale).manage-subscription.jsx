@@ -60,7 +60,7 @@ const ManageSubscription = () => {
     paymentMethodId: '',
   });
 
-  console.log('stripeCollection', stripeCollection);
+  // console.log('stripeCollection', stripeCollection);
 
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
@@ -97,7 +97,6 @@ const ManageSubscription = () => {
       })
       .then((data) => {
         setPaymentHistory(data);
-     
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -286,7 +285,7 @@ const ManageSubscription = () => {
         },
       );
       const json = await res.json();
-      console.log('API Response:', json); // Log the entire API response
+      // console.log('API Response:', json); // Log the entire API response
 
       setLoader(false);
     } catch (error) {
@@ -450,11 +449,12 @@ const ManageSubscription = () => {
         stripeCollection={stripeCollection}
         confirmText="Add to cart"
       />
-      <PaymentModal 
-      StripeKey={StripeKey}
-      setShowAccordion={setShowAccordion}
-      setPurchaseModal={setPurchaseModal}
-      show={showAccordion} />
+      <PaymentModal
+        StripeKey={StripeKey}
+        setShowAccordion={setShowAccordion}
+        setPurchaseModal={setPurchaseModal}
+        show={showAccordion}
+      />
 
       <PurchaseModal
         show={purchaseModal}
@@ -534,8 +534,11 @@ const ManageSubscription = () => {
       />
       <>
         <div className="w-full max-w-[1440px] mx-auto px-[20px]">
-         
-         <DynamicTitle dynamicButton title="Manage Plans and Prepaid Packages" className={'mt-[15px] !text-[20px] '} />
+          <DynamicTitle
+            dynamicButton
+            title="Manage Plans and Prepaid Packages"
+            className={'mt-[15px] !text-[20px] '}
+          />
 
           <div className="flex flex-col lg:flex-row w-full max-w-[1440px] gap-[30px] items-start">
             <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
@@ -655,8 +658,8 @@ const ManageSubscription = () => {
                   </WalletAccordion>
                   <WalletAccordion title="PREPAID PACKAGE">
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                    <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[9px] lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-normal uppercase">
-                        PREPAID PACKAGE 
+                      <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[9px] lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-normal uppercase">
+                        PREPAID PACKAGE
                       </span>
                       {stripeCollection &&
                       stripeCollection.stripe?.balance !== 0 &&
@@ -698,7 +701,7 @@ const ManageSubscription = () => {
                       </div>
                     )}
                     <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                    <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-normal uppercase">
+                      <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-normal uppercase">
                         Update
                       </span>
                       <DynamicButton
@@ -712,7 +715,6 @@ const ManageSubscription = () => {
                         className="!bg-[#001a5f] lg:text-[15px] text-[12px] font-karla max-w-[190px] uppercase lg:min-w-[190px] min-w-[2px]"
                       />
                     </div>
-                
                   </WalletAccordion>
                   <WalletAccordion title="STORED PAYMENT METHOD">
                     <div className="flex flex-col items-start">
@@ -788,7 +790,7 @@ const ManageSubscription = () => {
                             savedCard === 0 ? 'justify-start' : 'justify-end'
                           }  mt-[10px]`}
                         />
-                      </div>  
+                      </div>
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">

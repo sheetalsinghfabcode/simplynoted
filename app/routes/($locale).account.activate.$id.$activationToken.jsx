@@ -126,7 +126,7 @@ export default function Activate() {
 
   return (
     <div className="flex justify-center my-24 px-4">
-       <div className="max-w-md w-full">
+      <div className="max-w-md w-full">
         <h1 className="text-4xl">Activate Account.</h1>
         <p className="mt-4">Create your password to activate your account.</p>
         <Form
@@ -210,7 +210,7 @@ export default function Activate() {
             </button>
           </div>
         </Form>
-      </div> 
+      </div>
     </div>
   );
 }

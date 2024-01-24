@@ -88,13 +88,13 @@ const WalletPlans = ({
                         stripeCollection.stripe?.subscription,
                   );
 
-
                   return (
-
                     <div
                       onClick={() => {
                         if (
-                          stripeCollection.stripe?.subscription !== product.node.title ) {
+                          stripeCollection.stripe?.subscription !==
+                          product.node.title
+                        ) {
                           setSubscription(subscriptionMetafield?.value || 0);
                         }
                         setSubscriptionProduct(product.node.id);

@@ -17,11 +17,36 @@ function Icon({children, className, fill = 'currentColor', stroke, ...props}) {
 
 export function IconMenu(props) {
   return (
-    <Icon {...props} stroke={props.stroke || 'currentColor'} style={{backgroundColor:'#ef6e6e'}}>
+    <Icon
+      {...props}
+      stroke={props.stroke || 'currentColor'}
+      style={{backgroundColor: '#ef6e6e'}}
+    >
       <title>Menu</title>
-      <line x1="3" y1="6.375" x2="17" y2="6.375" strokeWidth="1.25" stroke='white'/>
-      <line x1="3" y1="10.375" x2="17" y2="10.375" strokeWidth="1.25" stroke='white' />
-      <line x1="3" y1="14.375" x2="17" y2="14.375" strokeWidth="1.25" stroke='white' />
+      <line
+        x1="3"
+        y1="6.375"
+        x2="17"
+        y2="6.375"
+        strokeWidth="1.25"
+        stroke="white"
+      />
+      <line
+        x1="3"
+        y1="10.375"
+        x2="17"
+        y2="10.375"
+        strokeWidth="1.25"
+        stroke="white"
+      />
+      <line
+        x1="3"
+        y1="14.375"
+        x2="17"
+        y2="14.375"
+        strokeWidth="1.25"
+        stroke="white"
+      />
     </Icon>
   );
 }
@@ -114,7 +139,6 @@ export function IconCaret({
 }
 
 export function IconSelect(props) {
-  
   return (
     <Icon {...props}>
       <title>Select</title>
@@ -158,8 +182,8 @@ export function IconLogin(props) {
 export function IconAccount(props) {
   return (
     <Icon {...props}>
-      <title>Account</title> 
-       <path
+      <title>Account</title>
+      <path
         fillRule="evenodd"
         d="M9.9998 12.625c-1.9141 0-3.6628.698-5.0435 1.8611C3.895 13.2935 3.25 11.7221 3.25 10c0-3.728 3.022-6.75 6.75-6.75 3.7279 0 6.75 3.022 6.75 6.75 0 1.7222-.645 3.2937-1.7065 4.4863-1.3807-1.1632-3.1295-1.8613-5.0437-1.8613ZM10 18c-2.3556 0-4.4734-1.0181-5.9374-2.6382C2.7806 13.9431 2 12.0627 2 10c0-4.4183 3.5817-8 8-8s8 3.5817 8 8-3.5817 8-8 8Zm0-12.5c-1.567 0-2.75 1.394-2.75 3s1.183 3 2.75 3 2.75-1.394 2.75-3-1.183-3-2.75-3Z"
       />

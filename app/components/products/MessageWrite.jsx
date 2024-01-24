@@ -43,7 +43,7 @@ export function MessageWriting({
 }) {
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
-  console.log(metafields, 'metafieldsmetafieldsmetafieldsmetafields');
+  console.log({metafields});
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -93,7 +93,7 @@ export function MessageWriting({
   );
   const [metafieldsHeader, setMetafieldsHeader] = useState(false);
   const [metafieldsFooter, setMetafieldsFooter] = useState(false);
-  console.log(metafieldsHeader, metafieldsFooter, 'metafiled header footer');
+  console.log({metafieldsHeader, metafieldsFooter});
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -422,40 +422,40 @@ export function MessageWriting({
   }
 
   useEffect(() => {
-    if(name.length>0){
-    const debouncedCallback = debounce(processCustomMessageInput);
-    // const resizeObserver = new ResizeObserver(debouncedCallback);
-    debouncedCallback()
-    if (!document.body.contains(mainMessageBox)) return;
-    // resizeObserver.observe(mainMessageBox);
-    // return () => resizeObserver.disconnect();
-  }
-  }, [name,fontFamilyName]);
+    if (name.length > 0) {
+      const debouncedCallback = debounce(processCustomMessageInput);
+      // const resizeObserver = new ResizeObserver(debouncedCallback);
+      debouncedCallback();
+      if (!document.body.contains(mainMessageBox)) return;
+      // resizeObserver.observe(mainMessageBox);
+      // return () => resizeObserver.disconnect();
+    }
+  }, [name, fontFamilyName]);
 
   useEffect(() => {
-    if(name2.length>0){
-    const debouncedCallback = debounce(processSignOffInput);
-    // const resizeObserver = new ResizeObserver(debouncedCallback);
-    debouncedCallback()
-    if (!document.body.contains(signOffTextBox)) return;
-    // resizeObserver.observe(signOffTextBox);
+    if (name2.length > 0) {
+      const debouncedCallback = debounce(processSignOffInput);
+      // const resizeObserver = new ResizeObserver(debouncedCallback);
+      debouncedCallback();
+      if (!document.body.contains(signOffTextBox)) return;
+      // resizeObserver.observe(signOffTextBox);
 
-    // return () => resizeObserver.disconnect();
-  }
+      // return () => resizeObserver.disconnect();
+    }
   }, [name2, fontFamilyName]);
 
   async function onChnageNameVal(nameData) {
     setName(nameData);
     // processInput();
   }
-  console.log(name2.length,"name2.length");
+  console.log(name2.length, 'name2.length');
 
   async function onchnageOfRegardBox(data) {
-  console.log(name2.length,"name2.length OnchanegCall");
+    console.log(name2.length, 'name2.length OnchanegCall');
 
     setName2(data);
     const debouncFunc = debounce(processCustomMessageInput);
-    if(name2.length == '0' || name2.length == '1'){
+    if (name2.length == '0' || name2.length == '1') {
       debouncFunc();
     }
     // processInput2();
@@ -708,7 +708,7 @@ export function MessageWriting({
         setLoader(false);
       }
     } catch (error) {
-      console.log(error, 'file upload error');
+      console.error(error, 'file upload error');
       setLoader(false);
     }
   }
@@ -748,7 +748,7 @@ export function MessageWriting({
         // setSelectedFile(null);
         // setLoader(false);
 
-        console.log('Successful response data:', responseData.result);
+        // console.log('Successful response data:', responseData.result);
         setLoader(false);
       } else {
         // setSelectedFile(null);
@@ -760,7 +760,7 @@ export function MessageWriting({
       // setSelectedFile(null);
       setLoader(false);
 
-      console.log('Error uploading data:', error);
+      console.error('Error uploading data:', error);
       throw error;
     }
   };
@@ -799,10 +799,10 @@ export function MessageWriting({
       // console.log(json.message, 'AiGenrated Response____________');
     } catch (error) {
       setLoader(false);
-      console.log(error, 'error at Ai generated message ');
+      console.error(error, 'error at Ai generated message ');
     }
   }
-  
+
   const ref = useRef(null);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -840,7 +840,7 @@ export function MessageWriting({
         : '',
     );
     setTempVal(ref4.current?.value);
-    console.log(ref4.current, 'OOOOOOOO');
+    // console.log(ref4.current, 'OOOOOOOO');
 
     // console.log(savedMsg?.msg);
   }, []);
@@ -897,10 +897,10 @@ export function MessageWriting({
         if (json) {
           setAddNewTem(false);
         }
-        console.log(json, 'addNewTemplateFunc');
+        // console.log(json, 'addNewTemplateFunc');
       }
     } catch (error) {
-      console.log(error, 'add new Template');
+      console.error(error, 'add new Template');
     }
   }
   function AddNewTemplate() {
@@ -942,13 +942,13 @@ export function MessageWriting({
       const json = await res.json();
       setloadTempData(json.result);
       // setLoadTemModal(true)
-      console.log(json.result, ')))))))))');
+      // console.log(json.result, ')))))))))');
     } catch (error) {
-      console.log(error, 'savedTemp');
+      console.error(error, 'savedTemp');
     }
   }
   const filteredList = (loadTempData, searchData) => {
-    console.log(searchData, 'searchData');
+    // console.log(searchData, 'searchData');
     return loadTempData.filter((dataobj) => bySearch(dataobj, searchData));
   };
 
@@ -1026,10 +1026,10 @@ export function MessageWriting({
         },
       );
       const json = await res.json();
-      console.log(json, 'delte Temp response');
+      // console.log(json, 'delte Temp response');
       setOnDelTemp(!onDelTemp);
     } catch (error) {
-      console.log(error, 'delete Template');
+      console.error(error, 'delete Template');
     }
   }
   const closeModal = () => {
@@ -1042,26 +1042,25 @@ export function MessageWriting({
     SavedTemp();
   }, [onDelTemp]);
 
-  function OpenAddTemplateBox(){
-    if(!customerid){
+  function OpenAddTemplateBox() {
+    if (!customerid) {
       setLoginModal(true);
-
-    }else{
-      setAddNewTem(true)
+    } else {
+      setAddNewTem(true);
     }
   }
-  function OpenLoadTemp(){
-    if(!customerid){
+  function OpenLoadTemp() {
+    if (!customerid) {
       setLoginModal(true);
-    } else{
-      SavedTemp() && setLoadTemModal(true)
+    } else {
+      SavedTemp() && setLoadTemModal(true);
     }
   }
-  function OpenAddressBookModal(){
-    if(!customerid){
+  function OpenAddressBookModal() {
+    if (!customerid) {
       setLoginModal(true);
-    }else{
-      setModalForAddressBook(true)
+    } else {
+      setModalForAddressBook(true);
     }
   }
   return (
@@ -1144,14 +1143,8 @@ export function MessageWriting({
                   : editFontFamily
                   ? editFontFamily
                   : 'tarzan',
-                fontSize:
-                   signOffFontSize
-                    ? signOffFontSize
-                    : '50px',
-                lineHeight:
-                   signOffLineHeight
-                    ? signOffLineHeight
-                    : '50px',
+                fontSize: signOffFontSize ? signOffFontSize : '50px',
+                lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
               }}
             >
               {name2}
@@ -1175,24 +1168,24 @@ export function MessageWriting({
           ></textarea>
           <span className="charLeft">{remainingWord} characters remaining</span>
           {/* {customerid && ( */}
-            <div className="flex justify-between md:text-[13px] sm:text-[16px] text-[14px] mt-[15px]">
-              <div>
-                <span
-                  className="font-bold text-[#1b5299] cursor-pointer"
-                  onClick={() => OpenAddTemplateBox()}
-                >
-                  Save As New Message Template
-                </span>
-              </div>
-              <div>
-                <span
-                  className="font-bold text-[#1b5299] cursor-pointer"
-                  onClick={() => OpenLoadTemp()}
-                >
-                  Load Saved Message Template
-                </span>
-              </div>
+          <div className="flex justify-between md:text-[13px] sm:text-[16px] text-[14px] mt-[15px]">
+            <div>
+              <span
+                className="font-bold text-[#1b5299] cursor-pointer"
+                onClick={() => OpenAddTemplateBox()}
+              >
+                Save As New Message Template
+              </span>
             </div>
+            <div>
+              <span
+                className="font-bold text-[#1b5299] cursor-pointer"
+                onClick={() => OpenLoadTemp()}
+              >
+                Load Saved Message Template
+              </span>
+            </div>
+          </div>
           {/* )} */}
           <br />
           {checkCharCount && (
@@ -1200,7 +1193,7 @@ export function MessageWriting({
               you don't have enough character remaining
             </span>
           )}
-      
+
           {show && (
             <>
               <button
@@ -1262,31 +1255,31 @@ export function MessageWriting({
                 <br /> help write your message
               </span>
             </div>
-            <div className='md:w-[45%] w-full md:mt-0 mt-[10px]'>
-            <textarea
-              type="text"
-              value={name2}
-              v-model="keyword"
-              id="example-one-input2"
-              className="inputText2 h-[100px] !w-full rounded-[6px] p-[7px]"
-              maxlength="50"
-              onChange={(e) => onchnageOfRegardBox(e.target.value)}
-              placeholder="Enter here..."
-              data-gtm-form-interact-field-id="0"
-            ></textarea>
-            <br />
-            <div className="flex ">
-            <div>
-              <span className="font-karla text-[#1b5299]">
-                Optional Sign Off / Signature
-              </span>{' '}
+            <div className="md:w-[45%] w-full md:mt-0 mt-[10px]">
+              <textarea
+                type="text"
+                value={name2}
+                v-model="keyword"
+                id="example-one-input2"
+                className="inputText2 h-[100px] !w-full rounded-[6px] p-[7px]"
+                maxlength="50"
+                onChange={(e) => onchnageOfRegardBox(e.target.value)}
+                placeholder="Enter here..."
+                data-gtm-form-interact-field-id="0"
+              ></textarea>
               <br />
-              <span className="charLeft">
-                {remainSign} characters remaining
-              </span>
+              <div className="flex ">
+                <div>
+                  <span className="font-karla text-[#1b5299]">
+                    Optional Sign Off / Signature
+                  </span>{' '}
+                  <br />
+                  <span className="charLeft">
+                    {remainSign} characters remaining
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
           </div>
           {show && (
             <>
