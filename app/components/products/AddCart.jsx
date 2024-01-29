@@ -295,11 +295,13 @@ export function AddCart({
   let keyUpdate22 = 'nonUSCount';
   let keyUpdate23 = 'shippingMethodImage';
   let keyUpdate24 = 'isShippidata';
+
   function onClickAddCart() {
     setLoader(true);
     if (editOrderValue?.index >= 0) {
       const storedData = JSON.parse(localStorage.getItem('mydata'));
       console.log(storedData, 'storedData');
+
       if (
         editOrderValue.index >= 0 &&
         editOrderValue.index < storedData.length
@@ -659,17 +661,17 @@ export function AddCart({
                           </select>
                         )}
                       </div>
-                    </div>
-                    <div>
-                      <input
-                        type="checkbox"
-                        id=""
-                        name=""
-                        value=""
-                        onClick={() => setStateCheckCart(!stateCheckCart)}
-                        checked={cardPriceTitle && stateCheckCart}
-                      />
-                      <text className="ml-3 font-karla">Add Gift Card</text>
+                      <div>
+                        <input
+                          type="checkbox"
+                          id=""
+                          name=""
+                          value=""
+                          onClick={() => setStateCheckCart(!stateCheckCart)}
+                          checked={cardPriceTitle && stateCheckCart}
+                        />
+                        <text className="ml-3 mt-[6px] font-karla">Add Gift Card</text>
+                      </div>
                     </div>
                   </div>
                 </div>

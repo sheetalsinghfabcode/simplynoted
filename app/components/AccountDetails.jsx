@@ -141,7 +141,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
                 {loader ? (
                   <CircularLoader color="#ef6e6e" />
                 ) : (
-                  <p className="w-3/4 text-[14px] font-semibold break-all">
+                  <p className="w-3/4 md:text-[14px] text-[11px] font-semibold break-all">
                     {key}
                   </p>
                 )}

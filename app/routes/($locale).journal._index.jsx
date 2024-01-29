@@ -43,6 +43,8 @@ export const loader = async ({request, context: {storefront}}) => {
 };
 
 export default function Journals() {
+
+  console.log("Hiiii");
   const {articles} = useLoaderData();
 
   return (

@@ -144,7 +144,7 @@ const AddressForm = ({customerID}) => {
           }`}
         >
           <div className="lg:flex grid justify-between items-center mb-[16px]">
-            <h2 className="text-left text-[#001a5f] font-bold md:text-[34px] text-[24px] leading-[44px]">
+            <h2 className=" text-left text-[#001a5f] font-bold md:text-[34px] text-[24px] leading-[43px]">
               New Address
             </h2>
             <div className="flex gap-[10px] lg:mt-0 mt-[12px]">

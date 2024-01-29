@@ -535,7 +535,7 @@ const ContactTable = ({
               onChange={handleSearchInputChange}
               className="w-full max-w-[400px] py-[5px] lg:order-none order-2  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
-            <div className="lg:flex grid self-center">
+            <div className="lg:flex grid self-center gap-[7px]">
               <div
                 className={`border-[1px]  md:w-[310px] sm:w-[280px] w-full  border-dashed border-[#000] py-[5px]`}
               >

@@ -22,7 +22,7 @@ export default function Home({contentfulBanner}) {
             <h2 className="scale-starting">
               Send real handwritten notes, at scale.
               <span>
-                <b>Starting at $3.25</b>
+                <b> Go Unlimited, Only $0.97 </b>
               </span>
             </h2>
           </div>

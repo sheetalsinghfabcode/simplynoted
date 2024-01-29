@@ -36,6 +36,7 @@ export function ProductInfo({
     setSelectedFile('');
     setShowBox(true);
   }
+
   function setFont(e) {
     setCustomFontVal('Select Custom Font');
     setFontFamily(e);
@@ -54,6 +55,7 @@ export function ProductInfo({
       console.error(error, 'customfontError');
     }
   }
+
   useEffect(() => {
     let customerid = localStorage.getItem('customerId');
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
@@ -74,6 +76,7 @@ export function ProductInfo({
     // }
     // setFont('select')
   }
+  
   return (
     <div className="flex justify-center md:w-[40%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">

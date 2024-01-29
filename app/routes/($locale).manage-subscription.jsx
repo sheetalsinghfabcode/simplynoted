@@ -556,8 +556,7 @@ const ManageSubscription = () => {
                 </div>
               </div>
             </div>
-
-            <div className="w-full md:w-[100%] bg-white  p-[20px] text-center">
+            <div className="w-full bg-white p-[20px] text-center">
               {loader ? (
                 <CircularLoader title="Loading Manage Plans" color="#ef6e6e" />
               ) : (
@@ -664,7 +663,7 @@ const ManageSubscription = () => {
                       {stripeCollection &&
                       stripeCollection.stripe?.balance !== 0 &&
                       !stripeCollection.error ? (
-                        <span className="lg:text-[20px] text-[12px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                        <span className="lg:text-[20px] text-[9px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled'
                             ? stripeCollection.stripe?.subscription
@@ -673,7 +672,7 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.packageDiscount}% DISCOUNT
                         </span>
                       ) : (
-                        <span className=" lg:text-[20px] text-[13px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                        <span className=" lg:text-[20px] text-[13px] md:mr-[-28px] mr-[1px]  font-karla w-[30%] !font-bold text-[#ef6e6e] uppercase">
                           No Package
                         </span>
                       )}
