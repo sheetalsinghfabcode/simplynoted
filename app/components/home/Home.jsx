@@ -5,20 +5,43 @@ import thankyou from '../../../assets/Image/thankyou.png';
 import {Button} from '../Button';
 import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
+import {TypeAnimation} from 'react-type-animation';
 
 export default function Home({contentfulBanner}) {
   const Navigate = useNavigate();
   return (
     <div>
-      <div className="sec-section">
-        <div className="text-center">
+      <div className="sec-section relative lg:flex inline-block w-full overflow-x-clip lg:mt-7">
+        <div className="text-center w-full">
           <div className="handwritten-notice">
-            <h3 className="inline-block">
-              Send Real Handwritten Notes <br></br>
-              to your____________
-            </h3>
+          <h3 className="inline-block">
+      <div className="lg:w-[80%] sm:w-[98%] w-[95%] relative">
+        <span>Send Real Handwritten Notes to your</span>
+        <TypeAnimation
+            sequence={[
+              'customers',
+              1000,
+              'clients',
+              1000,
+              'donors',
+              1000,
+              'prospects',
+              1000,
+            ]}
+            wrapper="span"
+            speed={30}
+            className='text-[30px] inline-block absolute lg:mt-[15px] lg:ml-[25px] ml-[15px]'
+          
+            repeat={Infinity}
+          />
+           <span className="absolute bottom-0 border-b-2 border-[#001A5F] w-[32%]"></span>
+      </div>
+      {/* <div>
+          <div className="absolute bottom-0 border-b-4 border-[#001A5F] w-[20%]"></div></div> */}
+    </h3>
           </div>
-          <div className="lg:mt-0 mt-[120px]">
+          <div className='grid lg:gap-[20px] gap-[4px] mt-[25px]'>
+          <div className="lg:order-none order-1">
             <h2 className="scale-starting">
               Send real handwritten notes, at scale.
               <span>
@@ -26,7 +49,7 @@ export default function Home({contentfulBanner}) {
               </span>
             </h2>
           </div>
-          <div className="lg:inline-flex mx-auto  lg:mt-[40px]  lg:ml-0 mt-[-136px] w-fit relative">
+          <div className="lg:inline-flex mx-auto  w-fit relative">
             <div>
               <DynamicButton
                 text="START WRITTING!"
@@ -46,6 +69,7 @@ export default function Home({contentfulBanner}) {
                 }
               />
             </div>
+          </div>
           </div>
         </div>
         <img

@@ -526,13 +526,13 @@ const Business = () => {
                       alt="business_arrow"
                     />
                     <img
-                      className="h-[96%] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
+                      className="h-[455px] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />{' '}
                   </div>
 
-                  <div className="md:ml-[50px] ml-0 lg:flex-col flex flex-row">
+                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
                     <img
                       className="click-link lg:w-[30%] w-[65px] bg-white p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
                       style={
@@ -850,7 +850,7 @@ const Business = () => {
                       alt="business_arrow"
                     />
                     <img
-                      className="h-[69%] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
+                      className="h-[350px] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />{' '}

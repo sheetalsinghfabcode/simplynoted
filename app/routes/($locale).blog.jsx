@@ -5,6 +5,7 @@ import {useNavigate} from '@remix-run/react';
 import CircularLoader from '~/components/CircularLoder';
 import DynamicTitle from '~/components/Title';
 
+
 export async function loader({context}) {
   const blog = await context.storefront.query(BlogData, {
     variants: {},
@@ -17,6 +18,7 @@ export async function loader({context}) {
 
 export default function blog() {
   const {blog} = useLoaderData();
+  console.log(blog,"blog")
   const [activeButton, setActiveButton] = useState('articles');
   const [searchQuery, setSearchQuery] = useState('');
   const [loader, setLoader] = useState(false);
@@ -128,14 +130,14 @@ export default function blog() {
                       <div className="mt-2 flex-1 p-3 text-black text-2xl font-bold">
                         {article.node.title}
                       </div>
-                      {selectedArticleId === article.node.id && (
+                      {/* {selectedArticleId === article.node.id && (
                         <div
                           className="collection-descrition"
                           dangerouslySetInnerHTML={{
                             __html: article.node.contentHtml,
                           }}
                         />
-                      )}
+                      )} */}
                     </div>
                   ))
                 ) : (

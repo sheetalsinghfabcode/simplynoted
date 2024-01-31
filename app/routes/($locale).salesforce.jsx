@@ -16,11 +16,11 @@ export default function Salesforce() {
           <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
             <div>
               <div className="lg:block hidden">
-                <div className="text-white text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
+                <div className="text-white text-center text-[12px] p-[3px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
                   COMING SOON
                 </div>
                 <div
-                  className="lg:text-[44px] text-[35px] font-karla  text-[#001a5f]"
+                  className="lg:text-[50px] text-[35px] font-karla  text-[#001a5f]"
                   style={{lineHeight: '0.75'}}
                 >
                   Salesforce{' '}
@@ -35,7 +35,7 @@ export default function Salesforce() {
                   Integration
                 </div>
               </div>
-              <div className="font-light mt-[14px] lg:w-[83%] w-full lg:text-left sm:text-center text-justify text-[17px]">
+              <div className=" mt-[14px] lg:w-[83%]  font-light w-full lg:text-left sm:text-center text-justify text-[19px]">
                 We go as far as to design the type of slant, spacing and stroke
                 variability that goes into a unique personalized font. We can
                 control everything from the slant of the lettering, tight
@@ -44,12 +44,12 @@ export default function Salesforce() {
               </div>
               <div className="flex lg:justify-start justify-center flex-wrap items-center gap-2 mt-5 mb-5 relative ">
                 <button
-                  className="text-white p-2 bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold text-[13px]"
+                  className="text-white p-2 bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold text-[15px]"
                   type="button"
                 >
                   CONNECT USING OUR PROCESS BUILDER
                 </button>
-                <span className="lg:block hidden font-karla  text-[#001a5f] underline ml-5 text-xl">
+                <span className="lg:block hidden font-karla  text-[#001a5f] underline ml-5 text-2xl">
                   or
                 </span>
                 <img
@@ -63,7 +63,7 @@ export default function Salesforce() {
             {/* first div form */}
             <div className="lg:flex grid  justify-center">
               <div className="lg:hidden inline-block text-center">
-                <div className="text-white inline-block text-center text-[12px] p-[2px] bg-[#ef6e6e] w-[104px] rounded-3xl lg:mb-0  mb-[14px]">
+                <div className="text-white inline-block text-center text-[12px] p-[4px] bg-[#ef6e6e] w-[104px] rounded-3xl lg:mb-0  mb-[14px]">
                   COMING SOON
                 </div>
                 <div
@@ -172,8 +172,8 @@ export default function Salesforce() {
             </div>
           </div>
           {/* first div right side */}
-          <div className="flex-1 p-3 flex flex-col gap-5 justify-center items-center">
-            <div className="text-2xl mb-10 font-karla  text-[#001a5f]">
+          <div className="lg:block hidden flex-1 p-3 flex flex-col gap-5  items-center mt-28">
+            <div className="text-3xl mb-10 font-karla  text-[#001a5f]">
               Current Salesforce Workflow
             </div>
             <div className="">

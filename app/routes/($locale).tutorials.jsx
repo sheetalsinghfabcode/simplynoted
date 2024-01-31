@@ -19,7 +19,7 @@ export default function tutorials() {
   const {blog} = useLoaderData();
   const [activeButton, setActiveButton] = useState('articles');
   const [loader, setLoader] = useState(false);
-
+console.log(blog,"tutorial")
   const [searchQuery, setSearchQuery] = useState('');
   const filteredArticles = blog.blog.articles.edges.filter((article) =>
     article.node.title.toLowerCase().includes(searchQuery.toLowerCase()),

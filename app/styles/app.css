@@ -186,10 +186,8 @@ a.active {
 }
 .request-button {
   background: rgb(239, 110, 110);
-  min-width: 203px;
   text-transform: uppercase;
   padding: 12px;
-  min-height: 52px;
   cursor: pointer;
   color: white;
   border-radius: none;
@@ -241,13 +239,7 @@ nav a {
   margin-top: 55px;
   position: relative;
 }
-.handwritten-notice h3 {
-  font-size: 45px;
-  color: #001a5f;
-  font-weight: 500;
-  margin-top: -31px;
-  margin-right: -78px;
-}
+
 .handwritten-notice p {
   font-size: 45px;
   color: #001a5f;
@@ -277,7 +269,7 @@ nav a {
 }
 
 .dropdown-list {
-  padding: 30px 40px;
+  padding: 35px 42px;
 }
 .dropdown-list li:hover {
   color: gray;
@@ -710,23 +702,13 @@ nav a {
   --tw-ring-color: transparent;
 }
 
-.request-button {
-  background: rgb(239, 110, 110);
-  min-width: 203px;
-  text-transform: uppercase;
-  padding: 12px;
-  min-height: 52px;
-  cursor: pointer;
-  color: white;
-}
+
 .dropdown > div {
   cursor: pointer;
   margin-bottom: 4px;
 }
 
-.request-button:hover {
-  background-color: #001a5f;
-}
+
 a:hover {
   color: #0056b3;
 }
@@ -753,19 +735,22 @@ nav a {
   gap: 1.25rem;
 }
 .logo-simplinoted {
-  width: 23%;
+  width: 300px;
   rotate: -5deg;
   max-height: 241px;
-  position: absolute;
-  top: 157px;
+  position: relative;
+  left: -10px;
+  top:50px;
+  order: -1;
 }
 .cars-killer {
-  width: 24%;
+  width: 295px;
   rotate: -7deg;
   margin-top: -21px;
-  position: absolute;
-  right: 27px;
-  top: 141px;
+  position: relative;
+  right:35px;
+  top:0;
+
 }
 .thankyou_img {
   width: 23%;
@@ -838,27 +823,35 @@ nav a {
 .dropdown > div {
   cursor: pointer;
 }
-
+.dropdown:hover{
+  background: url(../../assets/Image/menu-underline.png) no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+}
 .dropdown-content {
-  display: none;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
   position: absolute;
   background-color: #f9f9f9;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   left: 60%;
-  transform: translateX(-50%);
-  top: 28px;
-  color: #9c9a9a;
-  font-size: 14px;
+  transform: translateX(-30%);
+  color: #777777;
+  font-size: 15px;
   letter-spacing: 0.1px;
   font-weight: lighter;
-  width: 17rem;
-  margin-left: 45px;
+  width: 19rem;
+  line-height: 25px;
+  transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.dropdown-content.show {
+  opacity: 1;
+  height: auto;
 }
+
 
 .font-bold {
   font-weight: 500 !important;
@@ -1003,9 +996,9 @@ body {
 }
 .texts {
   color: #707070;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: normal;
-  line-height: 34px;
+  line-height: 30px;
   margin-bottom: 20px;
 }
 .btn2 {
@@ -2241,6 +2234,13 @@ body {
   .signup-row {
     margin: 10px auto;
   }
+  .cars-killer{
+    width: 245px;
+    right: 0px;
+  }
+  .handwritten-notice h3 {
+    font-size: 40px;
+  }
 }
 @media only screen and (max-width: 1124px) {
   .signup-row {
@@ -2248,8 +2248,11 @@ body {
   }
 }
 @media only screen and (max-width: 1024px) {
+  .texts{
+    font-size: 18px;
+  }
   .handwritten-notice h3 {
-    font-size: 30px;
+    font-size: 40px;
   }
   .logo-simplinoted {
     display: none;
@@ -2395,7 +2398,7 @@ body {
     margin-left: 7rem;
   }
   .handwritten-notice h3 {
-    font-size: 20px;
+    font-size: 32px;
     margin-right: 0px;
   }
   .white-underline {

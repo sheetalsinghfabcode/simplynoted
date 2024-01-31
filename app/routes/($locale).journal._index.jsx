@@ -46,7 +46,7 @@ export default function Journals() {
 
   console.log("Hiiii");
   const {articles} = useLoaderData();
-
+console.log(articles,"articles")
   return (
     <>
       <PageHeader heading={BLOG_HANDLE} />
@@ -67,6 +67,7 @@ export default function Journals() {
 }
 
 function ArticleCard({blogHandle, article, loading}) {
+  console.log(article,"article")
   return (
     <li key={article.id}>
       <Link to={`/${blogHandle}/${article.handle}`}>

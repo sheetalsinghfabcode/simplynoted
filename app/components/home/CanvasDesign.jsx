@@ -16,15 +16,15 @@ const CanvasDesign = () => {
     <>
       <div className="mt-10px">
         {/* First */}
-        <div className="md:flex hidden justify-end  flex-wrap mx-auto w-full mt-6 gap-[10px] ">
-          <div className="lg:w-[30%] w-[74%] lg:mx-0 mx-auto ml-auto my-10 lg:order-none order-2 data-background lg:text-left text-center">
-            <div className="xl:text-3xl lg:text-2xl md:text-3xl font-karla lg:text-left text-center text-[#001A5F]">
+        <div className="md:flex hidden justify-end  flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
+          <div className="lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-10 lg:order-none order-2 data-background text-left">
+            <div className="text-4xl  font-karla text-left  text-[#001A5F] ">
               Send one or send{' '}
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 thousands
               </span>
             </div>
-            <div className="texts mt-5 text-justify">
+            <div className="texts mt-3 lg:text-left text-justify lg:w-[94%] w-full">
               Simply Noteds platform makes sending 1,000s of real penwritten
               notes as quick and easy as sending just 1. It has never been
               easier to scale your personal touch and leave lasting impressions!
@@ -40,17 +40,17 @@ const CanvasDesign = () => {
               onClickFunction={() => navigate('/blogs/news')}
             />
           </div>
-          <div className="lg:w-[60%] w-[100%] lg:mx-0 mx-auto  lg:mb-0 mb-[190px] flex flex-wrap  lg:pl-[46px] pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start ">
-            <div className="z-[-1] w-[33%] text-left relative ">
+          <div className="lg:w-[60%] w-[80%] lg:mx-0 mx-auto  flex flex-wrap  xl:pl-[190px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start ">
+            <div className="z-[-1] lg:w-[33%] w-[40%] text-left relative ">
               <img
                 className="w-full  h-full  lg:h-[90%]  lg:ml-[52px] ml-[68px] relative z-[1]"
                 src={robot1}
                 alt="LogoSimplinotedpic"
               />
             </div>
-            <div className="text-right relative w-[67%]">
+            <div className="text-right relative lg:w-[67%] w-[55%]">
               <video
-                className="max-w-[500px]  absolute overflow-hidden"
+                className="lg:max-w-[465px] max-w-[430px] relative overflow-hidden"
                 autoPlay
                 loop
                 muted
@@ -62,7 +62,7 @@ const CanvasDesign = () => {
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center ">
+        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5">
             Send one or send{' '}
             <span className="font-beauty text-6xl font-bold">thousands</span>
@@ -90,11 +90,11 @@ const CanvasDesign = () => {
         </div>
 
         {/* Second */}
-        <div className="md:flex hidden lg:justify-start  justify-center flex-wrap w-full my-10  gap-[57px] ">
-          <div className="lg:w-[60%] w-[73%] mx-auto lg:mx-0  lg:mb-0 mb-[190px] flex flex-wrap   mt-5  lg:overflow-hidden overflow-visible  justify-start">
-            <div className="text-right absolute w-[67%]">
+        <div className="md:flex hidden lg:justify-start relative justify-center flex-wrap w-full my-10  lg:gap-[50px] gap-[30px]">
+          <div className="lg:w-[60%] w-[80%] mx-auto lg:mx-0 relative flex flex-wrap  lg:p-[10px] mt-5  lg:overflow-hidden overflow-visible  justify-start">
+            <div className="text-right relative w-[67%]">
               <video
-                className="max-w-[500px]  absolute overflow-hidden"
+                className="max-w-[435px]  relative overflow-hidden"
                 autoPlay
                 loop
                 muted
@@ -102,7 +102,7 @@ const CanvasDesign = () => {
                 <source src={Second} type="video/webm"></source>
               </video>
             </div>
-            <div className="z-[-1] w-[26%] text-left absolute ml-[27rem] ">
+            <div className="z-[-1] lg:w-[40%] w-[50%] text-left absolute ml-[23rem] ">
               <img
                 className="w-full  h-full  mt-[20px]  relative z-[1]"
                 src={robot2}
@@ -110,14 +110,14 @@ const CanvasDesign = () => {
               />
             </div>
           </div>
-          <div className="lg:w-[30%] w-[74%] lg:mx-0  mt-[60px] lg:text-left text-center data-background">
-            <div className="xl:text-3xl lg:text-2xl md:text-3xl font-karla lg:text-left lg:mt-0 md:mt-[15rem] text-center  text-[#001A5F]">
+          <div className="lg:w-[33%] w-[80%] lg:mx-0 lg:mt-[60px] text-left  data-background">
+            <div className="text-4xl  font-karla text-left    text-[#001A5F]">
               Unlimited card{' '}
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 options
               </span>
             </div>
-            <div className="texts mt-5 text-justify">
+            <div className="texts mt-3 lg:text-left text-justify lg:w-[98%] w-full">
               Use our cards, send us yours or design your own! Simply Noted
               offers a wide array of cards to choose from and a powerful custom
               create a card tool. Over 95% of our clients are businesses and use
@@ -157,15 +157,15 @@ const CanvasDesign = () => {
 
         {/* Third */}
 
-        <div className="md:flex hidden justify-end  flex-wrap mx-auto w-full mt-24 gap-[10px] ">
-          <div className="lg:w-[30%] w-[74%] lg:mx-0 mx-auto ml-auto mt-[60px] lg:order-none order-2 data-background lg:text-left text-center">
-            <div className="xl:text-3xl lg:text-2xl md:text-3xl font-karla lg:text-left text-center text-[#001A5F]">
+        <div className="md:flex hidden justify-end  flex-wrap mx-auto w-full  gap-[10px]  ">
+          <div className="lg:w-[35%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
+            <div className="text-3xl  font-karla text-left  text-[#001A5F]">
               Gift cards &
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 inserts
               </span>
             </div>
-            <div className="texts mt-5 text-justify">
+            <div className="texts mt-3 lg:text-left text-justify lg:w-[98%] w-full">
               Simply Noted makes it easy to send gift cards from your favorite
               stores with each order. From $5 Starbucks cards to $100 Visas,
               there's a gift card to match any budget.
@@ -176,17 +176,17 @@ const CanvasDesign = () => {
               className="btn1"
             />
           </div>
-          <div className="lg:w-[60%] w-[100%] lg:mx-0 mx-auto  lg:mb-0 mb-[190px] flex flex-wrap  lg:pl-[46px] pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
-            <div className="z-[-1] w-[33%] text-left relative ">
+          <div className="lg:w-[60%] w-[80%] lg:mx-0 mx-auto relative  flex flex-wrap  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
+            <div className="z-[-1] lg:w-[33%] w-[40%] text-left relative ">
               <img
                 className="w-full  h-full lg:top-0 lg-top-0  top-[30px]  lg:ml-[52px] ml-[68px] relative z-[1]"
                 src={robot3}
                 alt="LogoSimplinotedpic"
               />
             </div>
-            <div className="text-right relative w-[67%]">
+            <div className="text-right relative lg:w-[67%] w-[55%]">
               <video
-                className="max-w-[500px]  absolute overflow-hidden"
+                className="lg:max-w-[465px] max-w-[430px] relative overflow-hidden"
                 autoPlay
                 loop
                 muted

@@ -467,6 +467,18 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu}) {
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const handleDropdownEnter = (dropdownId) => {
+    setActiveDropdown(dropdownId);
+  };
+
+  const handleDropdownLeave = () => {
+    setActiveDropdown(null);
+  };
+  const handleItemClick = () => {
+    setActiveDropdown(null);
+  }
   const stateContext = useStateContext() || {
     cartCountVal: 0,
     setCartCountVal: () => {},
@@ -513,9 +525,9 @@ function DesktopHeader({isHome, menu}) {
             : 'bg-contrast/80 text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-12 py-8`}
+        } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
       >
-        <div className="flex xl:gap-12 lg:gap-1 items-center">
+        <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
             {/* {title} */}
             <img
@@ -528,14 +540,17 @@ function DesktopHeader({isHome, menu}) {
               className="xl:w-full lg:w-[80%]"
             />
           </Link>
-          <nav className="flex xl:gap-8 lg:gap-3 text-[#001A5F] xl:text-base lg:text-[14px] text-17 pb-0 xl:leading-1 lg:leading-5 font-medium tracking-tight">
+        </div>
+        <div>
+          <nav className="flex xl:gap-4 lg:gap-2 text-[#001A5F] text-[18px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight">
             {(menu?.items || []).map((item) => {
               if (
                 [
-                  'Send a Card',
+                  'Order',
                   'Integrations',
                   'Pricing',
-                  'Learn',
+                  'About',
+                  'Account',
                   'Business',
                 ].includes(item.title)
               ) {
@@ -547,36 +562,14 @@ function DesktopHeader({isHome, menu}) {
                       isActive ? 'navitem-active' : 'navitems'
                     }
                   >
-                    {item.title === 'Send a Card' ? (
-                      <div className="dropdown">
-                        <div>Send A Card</div>
-                        <div className="dropdown-content">
-                          <ul className="dropdown-list">
-                            <Link to="/collections/best-sellers">
-                              {' '}
-                              <li>Cards</li>
-                            </Link>
-                            <Link to="/customise-your-card">
-                              {' '}
-                              <li>Create a Card</li>
-                            </Link>
-                            <Link to="/collections/birthday">
-                              <li>Birthday Automation</li>
-                            </Link>
-                            <Link to="/gift-cards">
-                              {' '}
-                              <li>Gift Cards </li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                    ) : null}
                     {item.title === 'Integrations' ? (
-                      <div className="dropdown">
-                        <div>Integrations</div>
-                        <div className="dropdown-content">
-                          <ul className="dropdown-list">
-                            <Link to="/zapier">
+                      <div className="dropdown"  onMouseEnter={() => handleDropdownEnter('integrations')}
+                      onMouseLeave={handleDropdownLeave}
+            >
+                        <div className='font-[600]'>Integrations</div>
+                        <div className={`dropdown-content ${activeDropdown === 'integrations' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
+                            <Link to="/zapier" >
                               {' '}
                               <li> Zapier</li>
                             </Link>
@@ -597,10 +590,12 @@ function DesktopHeader({isHome, menu}) {
                       </div>
                     ) : null}
                     {item.title === 'Pricing' ? (
-                      <div className="dropdown">
-                        <div>Pricing</div>
-                        <div className="dropdown-content">
-                          <ul className="dropdown-list">
+                      <div className="dropdown" onMouseEnter={() => handleDropdownEnter('pricing')}
+                      onMouseLeave={handleDropdownLeave}
+            >
+                        <div className='font-[600]'>Pricing</div>
+                        <div className={`dropdown-content ${activeDropdown === 'pricing' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
                             <Link to="/price">
                               <li>Credit Packages</li>
                             </Link>
@@ -626,13 +621,15 @@ function DesktopHeader({isHome, menu}) {
                       </div>
                     ) : null}
 
-                    {item.title === 'Learn' ? (
-                      <div className="dropdown">
-                        <div>Learn</div>
-                        <div className="dropdown-content">
-                          <ul className="dropdown-list">
-                            <Link to="/blog">
-                              <li>Blog.</li>
+                    {item.title === 'About' ? (
+                      <div className="dropdown" onMouseEnter={() => handleDropdownEnter('about')}
+                      onMouseLeave={handleDropdownLeave}
+            >
+                        <div className='font-[600]'>About</div>
+                        <div className={`dropdown-content ${activeDropdown === 'about' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
+                            <Link to="/about-us">
+                              <li>About Us</li>
                             </Link>
                             <Link to="/tutorials">
                               <li>Tutorials</li>
@@ -640,6 +637,10 @@ function DesktopHeader({isHome, menu}) {
                             <a href="https://www.youtube.com/@simplynoted">
                               <li>Videos</li>
                             </a>
+                            <Link to="/blog">
+                              <li>Blog.</li>
+                            </Link>
+
                             <Link to="/faq">
                               <li>F.A.Q.</li>
                             </Link>
@@ -647,10 +648,58 @@ function DesktopHeader({isHome, menu}) {
                         </div>
                       </div>
                     ) : null}
-
+                     {item.title === 'Account' ? (
+                       <div className="dropdown" onMouseEnter={() => handleDropdownEnter('account')}
+                       onMouseLeave={handleDropdownLeave}
+             >
+                        <div className='font-[600]'>Account</div>
+                        <div className={`dropdown-content ${activeDropdown === 'account' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
+                            <Link to="/account">
+                              <li>Account Details</li>
+                            </Link>
+                            <Link to="/manage-subscription">
+                              <li>Manage Plans</li>
+                            </Link>
+                            <Link to="/tutorials">
+                              <li>Order History</li>
+                            </Link>
+                            <Link to="/address-book">
+                              <li>Address Book</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
+                    {item.title === 'Order' ? (
+                       <div className="dropdown" onMouseEnter={() => handleDropdownEnter('order')}
+                       onMouseLeave={handleDropdownLeave}
+             >
+                        <div className='font-[600]'>Order</div>
+                        <div className={`dropdown-content ${activeDropdown === 'order' ? 'show' : ''}`} >
+                          <ul className="dropdown-list" onClick={handleItemClick}>
+                            <Link to="/collections/best-sellers">
+                              {' '}
+                              <li>Cards</li>
+                            </Link>
+                            <Link to="/customise-your-card">
+                              {' '}
+                              <li>Create a Card</li>
+                            </Link>
+                            <Link to="/collections/birthday">
+                              <li>Birthday Automation</li>
+                            </Link>
+                            <Link to="/gift-cards">
+                              {' '}
+                              <li>Gift Cards </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
                     {item.title === 'Business' ? (
                       <Link to="/business-page">
-                        <div className="navitems">Business</div>
+                        <div className="navitems font-[600]">Business</div>
                       </Link>
                     ) : null}
 
@@ -853,7 +902,7 @@ function Footer({menu}) {
       role="contentinfo"
       //   className={`block min-h-[25rem] items-start grid-flow-row w-full gap-2 md:px-8 lg:px-12 md:gap-8 lg:gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-${itemsCount}
       //  bg-[#2d4271] dark:text-primary text-contrast overflow-hidden`}
-      className={`bg-[#2d4271] text-white p-0  font-karla`}
+      className={`bg-[#2d4271] text-white p-0  `}
     >
       <FooterMenu menu={menu} />
       {/* <ScrolltoTop/> */}
@@ -909,42 +958,42 @@ function FooterMenu({menu}) {
 
   return (
     <>
-      <div className="grid md:flex justify-evenly gap-[40px] lg:text-[16px] md:text-[12px] text-[17px] md:text-left text-center pt-[50px] pb-[30px] mx-auto w-[88%] ">
+      <div className="grid md:flex  xl:gap-[120px] lg:gap-[75px] gap-[40px] md:text-[16px]  text-[18px] md:text-left text-center md:pt-[70px] pt-[20px] pb-[30px] mx-auto w-[98%] ">
         <div className="md:mx-0 mx-auto">
-          <div className="lg:w-48 md:w-28 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
+          <div className="lg:w-52 md:w-40 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
-          <div className="flex mt-5 sm:w-full  w-[84%] ">
+          <div className="flex mt-5 sm:w-[90%] w-[38%] sm:mx-0 mx-auto justify-between">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
               <img
-                className="lg:w-14 md:w-7 sm:w-14 w-[30%] m-1 sm:ml-0 ml-auto sm:mr-0 mr-[25px]"
+                className="lg:w-[50px] md:w-[40px] w-14  "
                 src={linkdin}
                 alt=""
               ></img>
             </a>
             <a href="#">
               <img
-                className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1"
+                className="lg:w-[53px] md:w-[45px] w-14  "
                 src={fb}
                 alt=""
               ></img>
             </a>
             <a href="#">
               <img
-                className="lg:w-14 md:w-7 sm:w-14 w-[65%] m-1"
+                className="lg:w-[55px] md:w-[47px] w-14  "
                 src={twitter}
                 alt=""
               ></img>
             </a>
           </div>
         </div>
-        <div className="  text-white md:text-left text-center  ">
-          <div className="lg:text-xl md:text-[18px] text-[22px] font-semibold">
+        <div className="  text-white md:text-left text-center grid justify-center ">
+          <div className="lg:text-xl md:text-[18px] text-[22px] font-bold ">
             Quick Links{' '}
           </div>
-          <div className="text-center md:w-full w-[66%] md:ml-0 ml-auto">
+          <div className="md:text-left text-center">
             {(menu?.items || []).map((item) => (
-              <section key={item.id} className={styles.section}>
+              <section key={item.id}>
                 <Disclosure>
                   {({open}) => (
                     <>
@@ -990,14 +1039,14 @@ function FooterMenu({menu}) {
         </div>
         <div className=" text-white ">
           <div>
-            <div className="lg:text-xl text-[16px]  font-semibold">Address</div>
+            <div className="lg:text-xl text-[16px] font-bold ">Address</div>
             <div className="w-[99%] ">
               5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>
           </div>
 
           <div className="md:mt-24 mt-[40px] text-white">
-            <div className="lg:text-xl text-[16px] font-semibold">Email</div>
+            <div className="lg:text-xl text-[16px] font-bold ">Email</div>
             <div className="">
               <a href="mailto:support@simplynoted.com">
                 support@simplynoted.com
@@ -1007,7 +1056,7 @@ function FooterMenu({menu}) {
         </div>
 
         <div className=" text-white ">
-          <div className="lg:text-xl text-[16px] font-semibold">Hours</div>
+          <div className="lg:text-xl text-[16px] font-bold">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>
         </div>
