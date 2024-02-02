@@ -291,7 +291,7 @@ export default function Collection() {
   }, [offSetVal]);
   return (
     <>
-      <>
+<div className='md:p-5 p-3'>
         {/* <PageHeader heading={collection.title}>
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
@@ -304,29 +304,29 @@ export default function Collection() {
         )}
       </PageHeader> */}
         <DynamicTitle title={'Simply Noted'} title2={'cards'} />
-        <Section>
-          <div className="gap-2 md:flex md:justify-between grid justify-none">
-            <div className="gap-2 : md:flex flex justify-center">
+        
+          <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">
+            <div className="xl:gap-2 gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
               <DynamicButton
-                className="btnShadow bg-[#001a5f] md:h-[49px] h-[44px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2 hover:bg-#001a5f-700"
+                className="btnShadow bg-[#001a5f] md:h-[55px] h-[44px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2 hover:bg-[#001a5f]"
                 text="Create A Custom Card"
                 onClickFunction={CreateCustomCard}
               />
-              <br />
+             
               <DynamicButton
-                className="btnShadow bg-[#EF6E6E] md:h-[50px] h-[45px] md:w-[200px] w-[168px] md:text-[14px] text-[12px] text-[#fff] p-2"
+                className="btnShadow bg-[#EF6E6E] md:h-[55px] h-[45px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2"
                 text="View My Custom Card"
                 onClickFunction={() => customisedCard()}
               />
             </div>
-            <div className="lg:flex md:grid flex  gap-5 md:justify-end justify-center items-center selectArrow md:mt-[0px] mt-[15px]">
-              <h2 className="sm:text-l text-[13px]">
+            <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center items-center selectArrow sm:mt-[0px] mt-[15px]">
+              <h2 className="md:text-[24px] text-[18px] text-[#001a5f]">
                 Choose a card from our collection:{' '}
               </h2>
               <select
                 name=""
                 id=""
-                className="!border-none sm:w-[244px] w-[151px] text-[#508ee3]"
+                className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px]"
                 onChange={(e) => changeHandle(e.target.value)}
               >
                 <option className="w-full" selected disabled>
@@ -423,7 +423,7 @@ export default function Collection() {
           )}
         </Pagination> */}
           {/* </SortFilter> */}
-        </Section>
+       
         <LoginModal
           title={' Check your Custom Card'}
           show={loginModal}
@@ -440,8 +440,8 @@ export default function Collection() {
           confirmText="Login"
           cancelText="Register"
         />
+        </div>
       </>
-    </>
   );
 }
 

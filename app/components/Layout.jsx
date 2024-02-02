@@ -55,7 +55,7 @@ export function Layout({children, layout}) {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen ">
+      <div className="flex flex-col  ">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -262,7 +262,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
     <header
       role="banner"
       className={`${
-        isHome ? '' : ' bg-contrast/80 text-primary'
+        isHome ? '' : 'bg-contrast/80 text-primary'
       } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#dde8f7]  leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
@@ -372,10 +372,10 @@ function DesktopHeader({isHome, menu}) {
         className={`${
           isHome
             ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
-            : 'bg-contrast/80 text-primary'
+            : ' text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
+        } hidden h-nav lg:flex items-center lg-text-white  transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -400,7 +400,6 @@ function DesktopHeader({isHome, menu}) {
                   'Integrations',
                   'Pricing',
                   'About',
-                  'Account',
                   'Business',
                 ].includes(item.title)
               ) {
@@ -525,38 +524,7 @@ function DesktopHeader({isHome, menu}) {
                         </div>
                       </div>
                     ) : null}
-                    {item.title === 'Account' ? (
-                      <div
-                        className="dropdown"
-                        onMouseEnter={() => handleDropdownEnter('account')}
-                        onMouseLeave={handleDropdownLeave}
-                      >
-                        <div className="font-[600]">Account</div>
-                        <div
-                          className={`dropdown-content ${
-                            activeDropdown === 'account' ? 'show' : ''
-                          }`}
-                        >
-                          <ul
-                            className="dropdown-list"
-                            onClick={handleItemClick}
-                          >
-                            <Link to="/account">
-                              <li>Account Details</li>
-                            </Link>
-                            <Link to="/manage-subscription">
-                              <li>Manage Plans</li>
-                            </Link>
-                            <Link to="/tutorials">
-                              <li>Order History</li>
-                            </Link>
-                            <Link to="/address-book">
-                              <li>Address Book</li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                    ) : null}
+                    
                     {item.title === 'Order' ? (
                       <div
                         className="dropdown"

@@ -335,7 +335,10 @@ export default function AddCartFunc() {
           <div className="w-full h-full gap-2 mt-8">
             {cartData && cartData.length > 0 ? (
               <>
-                <DynamicTitle title={'SHOPPING CART'} />
+                <DynamicTitle
+                  title={'SHOPPING CART'}
+                  className="md:text-[40px] text-[24px]"
+                />
                 <>
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
@@ -1029,11 +1032,14 @@ export default function AddCartFunc() {
                     ))}
                   {totalPrize && (
                     <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
-                      <div className="flex p-5 flex-wrap justify-evenly md:gap-0 gap-[10px]">
-                        <div className="md:w-[33%] sm:w-[47%] w-[55%] flex items-center justify-center ">
-                          <div className="buttonDiv sm:pr-5 m-2 lg:text-[16px] sm:text-[11px] text-[8px]">
+                      <div
+                        className="flex p-5 flex-wrap justify-evenly md:gap-0 gap-[10px]"
+                        style={{border: '3px solid #1b5299'}}
+                      >
+                        <div className="md:w-[33%] sm:w-[47%] w-[55%] flex items-center ">
+                          <div className="buttonDiv sm:pr-5 m-2 lg:text-[15px] sm:text-[11px] text-[8px]">
                             <button
-                              className="bg-[#E30000] text-[#fff] p-2 flex tracking-[1.5px] font-karla "
+                              className="bg-[#1b5299] text-[#fff] p-3 flex  rounded "
                               onClick={() => {
                                 clearCartBtn();
                               }}
@@ -1046,15 +1052,16 @@ export default function AddCartFunc() {
                             </button>
                           </div>
                         </div>
-                        <div className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center sm:justify-center justify-start sm:order-none order-[-1]">
-                          <div className="mt-2 lg:text-2xl  sm:text-[15px] text-[20px] text-[#1b5299] font-karla  mr-4 tracking-[1.5px]">
-                            <span className="md:mr-[2px]">GRAND TOTAL</span>
-                            <span>${totalPrize.toFixed(2)}</span>
-                          </div>
+                        <div
+                          className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center   sm:order-none order-[-1]
+                         lg:text-[30px]  sm:text-[15px] text-[20px] text-[#1b5299] font-karla   justify-between"
+                        >
+                          <span className="md:mr-[2px]">GRAND TOTAL</span>
+                          <span>${totalPrize.toFixed(2)}</span>
                         </div>
                         <div className="md:w-[30%] sm:w-[80%] w-auto  mr-1 flex justify-end ">
                           <div className="">
-                            <div className="lg:text-[18px] text-[12px] sm:flex hidden">
+                            <div className="lg:text-[18px] text-[12px] sm:flex hidden items-center">
                               <input
                                 type="checkbox"
                                 onClick={() => setAgree(!agree)}
@@ -1110,7 +1117,8 @@ export default function AddCartFunc() {
                     </div>
                   )}
                   <div className="w-[85%] m-auto mt-10 mb-10">
-                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%]">
+                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%]"
+                    style={{border: '3px solid #1b5299'}}>
                       <h3 className="text-[30px] font-karla text-[#1b5299]">
                         NOTE
                       </h3>
@@ -1119,7 +1127,7 @@ export default function AddCartFunc() {
                       </p>
                       <textarea
                         name=""
-                        className="w-[85%]"
+                        className="w-[85%] border-none"
                         id="cart-note"
                         cols="30"
                         rows="4"

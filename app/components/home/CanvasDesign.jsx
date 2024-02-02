@@ -1,4 +1,4 @@
-import react from 'react';
+import react,{useEffect} from 'react';
 import First from '../../../assets/Video/First.mp4';
 import Second from '../../../assets/Video/Second.mp4';
 import Third from '../../../assets/Video/Third.mp4';
@@ -10,6 +10,7 @@ import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 
 const CanvasDesign = () => {
+ 
   const navigate = useNavigate();
 
   return (

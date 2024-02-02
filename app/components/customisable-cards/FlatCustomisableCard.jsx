@@ -1381,7 +1381,7 @@ export default function FlatCustomisableCard({
             </div>
           </div>
           <div
-            className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[9rem] mt-[30px]  lg:ml-[47px]  mx-auto gap-5  flex-1 sm:w-[50%] w-[80%]"
+            className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[3rem] mt-[30px]  lg:ml-[47px]  sm:ml-7 gap-5  flex-1 lg:w-[50%] md:w-[500px] sm:w-[445px] w-[350px]"
             // style={{marginTop: '9rem'}}
           >
             {selectedCardPage === 'Card Front' && (
@@ -1507,8 +1507,8 @@ export default function FlatCustomisableCard({
                     Footer
                   </button>
                 </div>
-                <div className="flex min-h-[330px]  sm:flex-row flex-col items-center sm:w-auto w-[100%]">
-                  <div className="flex flex-1 sm:w-[50%] w-[95%]">
+                <div className="flex min-h-[330px]  sm:flex-row flex-col items-center lg:w-auto w-[100%] ">
+                  <div className="flex flex-1 sm:w-[50%] w-[100%] ">
                     <div className="flex flex-col w-full">
                       <label htmlFor="custom-text">
                         <span className="font-semibold">
@@ -1905,7 +1905,7 @@ export default function FlatCustomisableCard({
                     <div
                       className={` ${
                         qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-                      } sm:w-[200px] w-[65%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10`}
+                      } sm:w-[200px] w-[100%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10`}
                       onClick={handleQrSelectionButton}
                     >
                       <div>
@@ -1930,7 +1930,7 @@ export default function FlatCustomisableCard({
                 <div className="flex">
                   <button
                     type="button"
-                    className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center w-[250px] font-semibold"
+                    className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center sm:w-[250px] w-[350px] font-semibold"
                     onClick={handleFinishEditingButton}
                   >
                     Finish Editing

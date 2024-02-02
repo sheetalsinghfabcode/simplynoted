@@ -31,7 +31,7 @@ export default function Home({contentfulBanner}) {
             wrapper="span"
             speed={30}
             className='text-[30px] inline-block absolute lg:mt-[15px] lg:ml-[25px] ml-[15px]'
-          
+            
             repeat={Infinity}
           />
            <span className="absolute bottom-0 border-b-2 border-[#001A5F] w-[32%]"></span>

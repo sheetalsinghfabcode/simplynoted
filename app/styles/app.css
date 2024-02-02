@@ -1125,7 +1125,7 @@ body {
 .titleImage {
   background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
   background-position: center bottom !important;
-  background-size: 100% !important;
+  background-size: 52% !important;
 }
 
 /* .navbar-item:hover{
@@ -2369,11 +2369,17 @@ body {
     margin-left: 5rem;
     margin-bottom: 30px;
   }
+  .titleImage {
+    background: none !important;
+  }
   .signup-overview {
     background-size: 100% 83%;
     height: 585px;
     margin-bottom: 0px;
     width: 100%;
+  }
+  .selectArrow select{
+background-size: 4% !important;
   }
   .input_email {
     width: 54%;

@@ -48,12 +48,12 @@ export default function ShopifyCustomCardProductDetails({
     <section
       className={`${
         hasScrolledYAxis
-          ? 'fixed flex justify-center md:flex-row flex-col items-center md:h-[75px] h-[27%] gap-[30px] w-full text-white bottom-0 left-0 bg-[#0f0f0f]'
+          ? 'fixed flex justify-evenly md:flex-row flex-col items-center md:h-[75px] h-[20%] md:p-0 p-[10px] md:gap-[30px]  w-full text-white bottom-0 left-0 bg-[#0f0f0f]'
           : 'hidden'
       }`}
       style={{zIndex: 999}}
     >
-      <div className="md:w-1/2 w-[80%] flex gap-4 justify-between md:justify-start">
+      <div className="lg:w-1/2 md:w-[35%] w-[80%] flex gap-4 justify-between md:justify-start">
         <div className="h-[50px] md:w-[72px] w-[66px]">
           <img
             src={isFlatCardType ? FlatBlankCanvasImage : FoldedBlankCanvasImage}
@@ -71,7 +71,7 @@ export default function ShopifyCustomCardProductDetails({
 
       <select
         id="variants"
-        className="bg-[#414141] text-white p-2 md:w-[380px] w-[85%] rounded-md outline-none border-none focus:ring-0"
+        className="bg-[#414141] text-white p-2 md:w-[380px] w-[82%] rounded-md outline-none border-none focus:ring-0"
         value={selectedCustomProductVariant}
         onChange={(e) => setSelectedCustomProductVariant(e.target.value)}
       >

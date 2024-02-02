@@ -241,7 +241,6 @@ async function getLayoutData({storefront, env}) {
           - /collections/all -> /products
       */
   const customPrefixes = {BLOG: '', CATALOG: 'products'};
-
   const headerMenu = data?.headerMenu
     ? parseMenu(
         data.headerMenu,
@@ -250,7 +249,7 @@ async function getLayoutData({storefront, env}) {
         customPrefixes,
       )
     : undefined;
-
+  
   const footerMenu = data?.footerMenu
     ? parseMenu(
         data.footerMenu,
