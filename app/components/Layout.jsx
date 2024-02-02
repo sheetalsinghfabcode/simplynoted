@@ -22,7 +22,11 @@ import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
 import arrow_rights from '../../assets/Image/arrow-right-faq.png';
 import arrow_down from '../../assets/Image/arrow-down.png';
+// import ArrowUp from '../../assets/Image/arrow-up.png';
+// import ArrowDown from '../../assets/Image/arrow-down.png';
+import RightArrow from "../../assets/Image/arrow-down.png";
 import nav_logo from '../../assets/Image/simply-noted-navlogo.avif';
+
 import {
   Drawer,
   useDrawer,
@@ -40,6 +44,7 @@ import {
   Cart,
   CartLoading,
   Link,
+  
 } from '~/components';
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
@@ -52,10 +57,16 @@ let customerId;
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
+  const [arrowDown, setArrowDown] =useState(false);
+
+
+  const handleShow = () =>{
+    setArrowDown(!arrowDown);
+  }
 
   return (
     <>
-      <div className="flex flex-col  ">
+      <div className="flex flex-col min-h-screen ">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -115,7 +126,7 @@ function Header({title, menu}) {
       <MobileHeader
         isHome={isHome}
         title={
-          <div>
+          <div className='h-[16px] w-[121px]'>
             <img className="w-[100px] max-w-full" src={nav_logo} />
           </div>
         }
@@ -153,102 +164,255 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 }
 
 function MenuMobileNav({menu, onClose}) {
+  // console.log('menu', menu);
+  const [show, setShow] = useState(false);
+  const [showSendCard, setShowSendCard] = useState(false);
+  const [showPricing, setShowPricing] = useState(false);
+  const [showLearn, setShowLearn] = useState(false);
+  // const [loginModal, setLoginModal] = useState(false);
 
-  const [showDropdown, setShowDropdown] = useState(null);
-
-  const handleDropdownToggle = (itemId) => {
-
-    setTimeout(() => {
-      setShowDropdown(showDropdown === itemId ? null : itemId);
-    }, 100);
-
+  const handleChangeLearn = () => {
+    setShowLearn(!showLearn);
   };
 
+  const handleChangePricing = () => {
+    setShowPricing(!showPricing);
+  };
+
+  const handleChangeSendCard = () => {
+    setShowSendCard(!showSendCard);
+  };
+
+  const handleChange = () => {
+    setShow(!show);
+  };
+  // const handleCreateCardClick = () => {
+  //   setLoginModal(true);
+  // };
+
   console.log("menu",menu);
-
-
+  
   return (
     <div className="">
       <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12  sm:py-8">
-       
-        <>
-          {(menu?.items || []).map((item) => (
-            <span
-              key={item.id}
-              className=""
-              onClick={() => setShowDropdown(null)}
+        {/* Top level menu items */}
+        {(menu?.items || []).map((item) => (
+          <span key={item.id} className="">
+            <Link
+              to={item.to === ('/pages/business' || '/about-us') && item.to}
+              target={item.target}
+              onClick={
+                item.to === ('/pages/business' || '/about-us') && onClose
+              }
+              // className={({isActive}) =>
+              //   isActive ? 'pb-1 border-b -mb-px' : 'pb-1'
+              // }
             >
-              <Link
-                // to={item.to}
-                // target={item.target}
-                onClick={() => item.to }
-              >
-                <Text as="span" size="copy">
-                  {item.items.length > 0 ? (
-                    <>
-                      <div className="">
-                        <div
-                          className="flex justify-between items-center"
-                          onClick={() => handleDropdownToggle(item.id)}
-                          style={{
-                            fontWeight:
-                              showDropdown === item.id ? 'bold' : 'normal',
-                          }}
-                        >
-                          {item.title}
-                          {showDropdown === item.id ? (
-                            <img className="h-[12px]" src={arrow_down} alt="" />
-                          ) : (
-                            <img
-                              className="h-[12px]"
-                              src={arrow_rights}
-                              alt=""
-                            />
-                          )}
-                        </div>
-                        {showDropdown === item.id && item.items && (
-                          <div className="">
-                            <ul
-                              // onClick={onClose}
-                              className={`${
-                                item.items.length > 0
-                                  ? 'text-thin'
-                                  : 'integration-color'
-                              } ml-[8px]`}
-                              style={{color: 'black'}}
-                            >
-                              {item.items.map((subItem) => (
-                                <Link key={subItem.id} onClick={onClose} to={subItem.to} >
-                                  <li
-                                    className={` py-[4px] ${
-                                      showDropdown === subItem.id
-                                        ? 'selected'
-                                        : ''
-                                    }`}
-                                  >
-                                    {subItem.title}
-                                  </li>
-                                </Link>
-                              ))}
-                            </ul>
-                          </div>
+              <Text as="span" size="copy">
+                {item.title === 'Business' ? (
+                  <Link to="/business-page">
+                    <div className="">Bussiness</div>
+                  </Link>
+                ) : null}
+                {item.title === ''}
+                {item.title === 'Order' ? (
+                  <>
+                    <div className="">
+                      <div
+                        className="flex justify-between mt-[-16px] items-center"
+                        onClick={handleChangeSendCard}
+                        style={{fontWeight: showSendCard ? 'bold' : 'normal'}}
+                      >
+                       Order
+                        {showSendCard ? (
+                          <img className="h-[12px]" src={arrow_down} alt="" />
+                        ) : (
+                          <img className="h-[12px]" src={arrow_rights} alt="" />
                         )}
                       </div>
-                    </>
-                  ) : null}
-                  {item.items.length === 0 && (
-                    <div className="">
-                      <Link to={item.to}>
-                        <div onClick={onClose} className="">{item.title}</div>
-                      </Link>
+                      {showSendCard && (
+                        <div className="">
+                          <ul
+                            onClick={onClose}
+                            className="text-thin ml-[8px]"
+                            style={{color: 'black'}}
+                          >
+                            <Link to="/collections/best-sellers">
+                              <li>Cards</li>
+                            </Link>
+                            <Link
+                              to="/customise-your-card"
+                              // onClick={handleCreateCardClick}
+                            >
+                              <li>Create a Card</li>
+                            </Link>
+                            {/* {loginModal && (
+                              <>
+                                <LoginModal
+                                  title={' Create a Card'}
+                                  show={loginModal}
+                                  setLoginModal={setLoginModal}
+                                  onCancel={() => setLoginModal(false)}
+                                  confirmText="Login"
+                                  cancelText="Register"
+                                  cross={true}
+                                />
+                              </>
+                            )} */}
+                            <Link to="/collections/birthday">
+                              <li>Birthday Automation</li>
+                            </Link>
+                            <Link to="/gift-cards">
+                              <li>Gift Cards </li>
+                            </Link>
+                          </ul>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </Text>
-              </Link>
-            </span>
-          ))}
-        </>
-        
+                  </>
+                ) : (
+                  <></>
+                )}
+               
+                {item.title === 'Integrations' ? (
+                  <div className="">
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChange}
+                      style={{fontWeight: show ? 'bold' : 'normal'}}
+                    >
+                      Integrations
+                      {show ? (
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
+                      )}
+                    </div>
+                    {show && (
+                      <div>
+                        <ul
+                          onClick={onClose}
+                          className="integration-color ml-[8px]"
+                          style={{color: 'black'}}
+                        >
+                          <Link to="/zapier-integration">
+                            <li
+                              className={`mt-[-21px] ${
+                                show === 'Zapier' ? 'selected' : 'green'
+                              }}`}
+                            >
+                              Zapier
+                            </li>
+                          </Link>
+                          <Link to="/shopify-integration">
+                            {' '}
+                            <li className="mt-[-21px]">Shopify</li>
+                          </Link>
+                          <Link to="/salesforce">
+                            {' '}
+                            <li className="mt-[-21px]">Salesforce</li>{' '}
+                          </Link>
+                          <Link to="/api-automation ">
+                            {' '}
+                            <li className="mt-[-21px]">API</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : null}
+                {item.title === 'Pricing' ? (
+                  <div className="">
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChangePricing}
+                      style={{fontWeight: showPricing ? 'bold' : 'normal'}}
+                    >
+                      Pricing
+                      {showPricing ? (
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
+                      )}
+                    </div>
+                    {showPricing && (
+                      <div className="">
+                        <ul
+                          onClick={onClose}
+                          className="text-thin ml-[8px]"
+                          style={{color: 'black'}}
+                        >
+                          {/* <Link to="/price">
+                            <li>Credit Packages</li>
+                          </Link> */}
+                          <Link to="#">
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                window.location.href =
+                                  'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
+                                return false;
+                              }}
+                            >
+                              <li>Get a Custom Quote</li>
+                            </button>
+                          </Link>
+                          <Link to="/roicalculator">
+                            {' '}
+                            <li>ROI Calculator</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : null}
+                {item.title === 'Learn' ? (
+                  <div className="">
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChangeLearn}
+                      style={{fontWeight: showLearn ? 'bold' : 'normal'}}
+                    >
+                      Learn
+                      {showLearn ? (
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
+                      )}
+                    </div>
+                    {showLearn && (
+                      <div className="">
+                        <ul
+                          onClick={onClose}
+                          className="text-thin ml-[8px]"
+                          style={{color: 'black'}}
+                        >
+                          <Link to="/blog">
+                            <li onClick={onClose}>Blog.</li>
+                          </Link>
+                          <Link to="/tutorials">
+                            <li onClick={onClose}>Tutorials</li>
+                          </Link>
+                          <a href="https://www.youtube.com/@simplynoted">
+                            <li>Videos</li>
+                          </a>
+                          <Link to="/faq">
+                            <li>F.A.Q.</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : null}
+                {item.title === 'About Us' ? (
+                  <Link onClick={onClose} to="/about-us">
+                    About Us
+                  </Link>
+                ) : null}
+              </Text>
+            </Link>
+          </span>
+        ))}
       </nav>
     </div>
   );
@@ -262,16 +426,21 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
     <header
       role="banner"
       className={`${
-        isHome ? '' : 'bg-contrast/80 text-primary'
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#dde8f7]  leading-none gap-4 px-4 md:px-8`}
+        isHome ? '' : ''
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8]  leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
-        <button
-          onClick={openMenu}
-          className="relative flex color-white bg-ef6e6e items-center justify-center w-8 h-8"
+      <Link
+        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+        to="/"
+      >
+      <Heading
+          className="font-bold text-center leading-none"
+          as={isHome ? 'h1' : 'h2'}
         >
-          <IconMenu />
-        </button>
+          {title}
+        </Heading>
+        </Link>
         <Form
           method="get"
           action={params.locale ? `/${params.locale}/search` : '/search'}
@@ -300,18 +469,24 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
         className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
         to="/"
       >
-        <Heading
+        {/* <Heading
           className="font-bold text-center leading-none"
           as={isHome ? 'h1' : 'h2'}
         >
           {title}
-        </Heading>
+        </Heading> */}
       </Link>
 
       <div className="flex items-center justify-end w-full gap-4">
-        <AccountLink className="relative flex items-center justify-center w-8 h-8" />
+        {/* <AccountLink className="relative flex items-center justify-center w-8 h-8" /> */}
         <CartCount isHome={isHome} openCart={openCart} />
       </div>
+      <button
+          onClick={openMenu}
+          className="relative flex color-white bg-ef6e6e items-center justify-center w-8 h-8"
+        >
+          <IconMenu />
+        </button>
     </header>
   );
 }
@@ -328,7 +503,7 @@ function DesktopHeader({isHome, menu}) {
   };
   const handleItemClick = () => {
     setActiveDropdown(null);
-  };
+  }
   const stateContext = useStateContext() || {
     cartCountVal: 0,
     setCartCountVal: () => {},
@@ -372,10 +547,10 @@ function DesktopHeader({isHome, menu}) {
         className={`${
           isHome
             ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
-            : ' text-primary'
+            : 'bg-contrast/80 text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-nav lg:flex items-center lg-text-white  transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
+        } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -392,7 +567,7 @@ function DesktopHeader({isHome, menu}) {
           </Link>
         </div>
         <div>
-          <nav className="flex xl:gap-4 lg:gap-2 text-[#001A5F] text-[18px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight">
+          <nav className="flex xl:gap-[43px] lg:gap-2 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight">
             {(menu?.items || []).map((item) => {
               if (
                 [
@@ -400,6 +575,7 @@ function DesktopHeader({isHome, menu}) {
                   'Integrations',
                   'Pricing',
                   'About',
+                  'Account',
                   'Business',
                 ].includes(item.title)
               ) {
@@ -412,60 +588,46 @@ function DesktopHeader({isHome, menu}) {
                     }
                   >
                     {item.title === 'Integrations' ? (
-                      <div
-                        className="dropdown"
-                        onMouseEnter={() => handleDropdownEnter('integrations')}
-                        onMouseLeave={handleDropdownLeave}
-                      >
-                        <div className="font-[600]">Integrations</div>
-                        <div
-                          className={`dropdown-content ${
-                            activeDropdown === 'integrations' ? 'show' : ''
-                          }`}
-                        >
-                          <ul
-                            className="dropdown-list"
-                            onClick={handleItemClick}
-                          >
-                            <Link to="/pages/zapier-integration">
+                      <div className="dropdown"  onMouseEnter={() => handleDropdownEnter('integrations')}
+                      onMouseLeave={handleDropdownLeave}
+            >  
+                        <div className='flex items-baseline gap-[7px]'>
+                        <div className='font-[600]'>Integrations</div>
+                        <div> <img className='w-[12px]' src={RightArrow} /></div>
+                        </div>
+                        <div className={`dropdown-content ${activeDropdown === 'integrations' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
+                            <Link to="/zapier-integration">
                               {' '}
                               <li> Zapier</li>
                             </Link>
-                            <Link to="/shopify">
+                            <Link to="/shopify-integration">
                               {' '}
                               <li> Shopify</li>
                             </Link>
-                            <Link to="/pages/salesforce">
+                            <Link to="/salesforce">
                               {' '}
                               <li> Salesforce</li>{' '}
                             </Link>
-                            <Link to="/pages/api-automation">
+                            <Link to="/api-automation">
                               {' '}
-                              <li>API</li>
+                              <li> API</li>
                             </Link>
                           </ul>
                         </div>
                       </div>
                     ) : null}
                     {item.title === 'Pricing' ? (
-                      <div
-                        className="dropdown"
-                        onMouseEnter={() => handleDropdownEnter('pricing')}
-                        onMouseLeave={handleDropdownLeave}
-                      >
-                        <div className="font-[600]">Pricing</div>
-                        <div
-                          className={`dropdown-content ${
-                            activeDropdown === 'pricing' ? 'show' : ''
-                          }`}
-                        >
-                          <ul
-                            className="dropdown-list"
-                            onClick={handleItemClick}
-                          >
-                            <Link to="/price">
-                              <li>Credit Packages</li>
-                            </Link>
+                      <div className="dropdown" onMouseEnter={() => handleDropdownEnter('pricing')}
+                      onMouseLeave={handleDropdownLeave}
+            > 
+                         <div className='flex items-baseline gap-[7px]'>
+                        <div className='font-[600]'>Pricing</div>
+                        <div> <img className='w-[12px]' src={RightArrow} /></div>
+                        </div>
+
+                        <div className={`dropdown-content ${activeDropdown === 'pricing' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
                             <Link to="#">
                               <button
                                 onClick={(e) => {
@@ -489,21 +651,15 @@ function DesktopHeader({isHome, menu}) {
                     ) : null}
 
                     {item.title === 'About' ? (
-                      <div
-                        className="dropdown"
-                        onMouseEnter={() => handleDropdownEnter('about')}
-                        onMouseLeave={handleDropdownLeave}
-                      >
-                        <div className="font-[600]">About</div>
-                        <div
-                          className={`dropdown-content ${
-                            activeDropdown === 'about' ? 'show' : ''
-                          }`}
-                        >
-                          <ul
-                            className="dropdown-list"
-                            onClick={handleItemClick}
-                          >
+                      <div className="dropdown" onMouseEnter={() => handleDropdownEnter('about')}
+                      onMouseLeave={handleDropdownLeave}
+            >
+                        <div className='flex items-baseline gap-[7px]'>
+                        <div className='font-[600]'>About</div>
+                        <div> <img className='w-[12px]' src={RightArrow} /></div>
+                         </div>
+                        <div className={`dropdown-content ${activeDropdown === 'about' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
                             <Link to="/about-us">
                               <li>About Us</li>
                             </Link>
@@ -524,23 +680,40 @@ function DesktopHeader({isHome, menu}) {
                         </div>
                       </div>
                     ) : null}
-                    
+                     {item.title === 'Account' ? (
+                       <div className="dropdown" onMouseEnter={() => handleDropdownEnter('account')}
+                       onMouseLeave={handleDropdownLeave}
+             >
+                        <div className='font-[600]'>Account</div>
+                        <div className={`dropdown-content ${activeDropdown === 'account' ? 'show' : ''}`}>
+                          <ul className="dropdown-list" onClick={handleItemClick}>
+                            <Link to="/account">
+                              <li>Account Details</li>
+                            </Link>
+                            <Link to="/manage-subscription">
+                              <li>Manage Plans</li>
+                            </Link>
+                            <Link to="/tutorials">
+                              <li>Order History</li>
+                            </Link>
+                            <Link to="/address-book">
+                              <li>Address Book</li>
+                            </Link>
+                          </ul>
+                        </div>
+                      </div>
+                    ) : null}
                     {item.title === 'Order' ? (
-                      <div
-                        className="dropdown"
-                        onMouseEnter={() => handleDropdownEnter('order')}
-                        onMouseLeave={handleDropdownLeave}
-                      >
-                        <div className="font-[600]">Order</div>
-                        <div
-                          className={`dropdown-content ${
-                            activeDropdown === 'order' ? 'show' : ''
-                          }`}
-                        >
-                          <ul
-                            className="dropdown-list"
-                            onClick={handleItemClick}
-                          >
+                       <div className="dropdown" onMouseEnter={() => handleDropdownEnter('order')}
+                       onMouseLeave={handleDropdownLeave}
+             >
+                        <div className='flex items-baseline gap-[7px]'>
+                        <div className='font-[600]'>Order</div>
+                        <div> <img className='w-[12px]' src={RightArrow} /></div>
+                        </div>
+                         
+                        <div className={`dropdown-content ${activeDropdown === 'order' ? 'show' : ''}`} >
+                          <ul className="dropdown-list" onClick={handleItemClick}>
                             <Link to="/collections/best-sellers">
                               {' '}
                               <li>Cards</li>
@@ -561,7 +734,7 @@ function DesktopHeader({isHome, menu}) {
                       </div>
                     ) : null}
                     {item.title === 'Business' ? (
-                      <Link to="/pages/business">
+                      <Link to="/business-page">
                         <div className="navitems font-[600]">Business</div>
                       </Link>
                     ) : null}
@@ -702,6 +875,7 @@ function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
   const navigate = useNavigate();
+
 
   const BadgeCounter = useMemo(
     () => (

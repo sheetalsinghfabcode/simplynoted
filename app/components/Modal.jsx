@@ -16,7 +16,7 @@ export function Modal({children, cancelLink}) {
           <div
             className="relative flex-1 px-4 pt-5 pb-4 overflow-hidden text-left transition-all 
             transform rounded shadow-xl
-              sm:my-12 sm:flex-none sm:w-full md:max-w-[600px] max-w-[447px]  sm:p-6 bg-[#FFF6F6]"
+              sm:my-12 sm:flex-none sm:w-full md:max-w-[600px] max-w-[447px] mb-[247px] sm:p-6 bg-[#FFF6F6]"
             role="button"
             onClick={(e) => {
               e.stopPropagation();

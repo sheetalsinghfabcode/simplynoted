@@ -30,6 +30,7 @@ const Business = () => {
   const [customizable, setCustomizable] = useState('create_card');
   const BLOCK = {display: 'block'};
   const NONE = {display: 'none'};
+  
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',

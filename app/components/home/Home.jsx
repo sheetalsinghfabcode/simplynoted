@@ -15,9 +15,9 @@ export default function Home({contentfulBanner}) {
         <div className="text-center w-full">
           <div className="handwritten-notice">
           <h3 className="inline-block">
-      <div className="lg:w-[80%] sm:w-[98%] w-[95%] relative">
-        <span>Send Real Handwritten Notes to your</span>
-        <TypeAnimation
+      <div className=" flex justify-center">
+        <span className='md:text-[70px] w-[81%] text-[37px]'>Send Real Handwritten Notes to your</span>
+        {/* <TypeAnimation
             sequence={[
               'customers',
               1000,
@@ -33,8 +33,8 @@ export default function Home({contentfulBanner}) {
             className='text-[30px] inline-block absolute lg:mt-[15px] lg:ml-[25px] ml-[15px]'
             
             repeat={Infinity}
-          />
-           <span className="absolute bottom-0 border-b-2 border-[#001A5F] w-[32%]"></span>
+          /> */}
+           {/* <span className="absolute bottom-[28px] border-b-2 border-[#001A5F] ml-[12px] w-[24%]"></span> */}
       </div>
       {/* <div>
           <div className="absolute bottom-0 border-b-4 border-[#001A5F] w-[20%]"></div></div> */}
@@ -45,22 +45,23 @@ export default function Home({contentfulBanner}) {
             <h2 className="scale-starting">
               Send real handwritten notes, at scale.
               <span>
-                <b> Go Unlimited, Only $0.97 </b>
+                <b className=''> Go Unlimited, Only $0.97 </b>
               </span>
             </h2>
           </div>
-          <div className="lg:inline-flex mx-auto  w-fit relative">
+          <div className="lg:inline-flex gap-[16px] mx-auto w-[100%]  w-fit relative">
             <div>
               <DynamicButton
                 text="START WRITTING!"
-                className="start-writing-button"
+                className="start-writing-button w-[100%]"
                 onClickFunction={() => Navigate('/collections/best-sellers')}
               />
             </div>
+
             <div>
               <DynamicButton
                 text="REQUEST A SAMPLE"
-                className="request-a-button"
+                className="request-a-button w-[100%]"
                 onClickFunction={() =>
                   window.open(
                     'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb',
@@ -69,6 +70,7 @@ export default function Home({contentfulBanner}) {
                 }
               />
             </div>
+            
           </div>
           </div>
         </div>
