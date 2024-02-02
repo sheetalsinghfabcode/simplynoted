@@ -31,6 +31,15 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     },
     paymentMethodId: '',
   });
+  const [discountCouponCode, setDiscountCouponCode] = useState({
+    payloadValue: '',
+    oldTriedPayloadValue: '',
+    apiDiscountResponse: {},
+  });
+  const [prices, setPrices] = useState({
+    subtotalPrice: totalPrize,
+    totalPrice: totalPrize,
+  });
   const [errors, setErrors] = useState({});
 
   function showWalletBtn() {
@@ -52,6 +61,29 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
       createCustomerId(id);
     }
   }
+
+  useEffect(() => {
+    if (discountCouponCode.apiDiscountResponse?.discountedAmount) {
+      const newtotalPrice =
+        prices.subtotalPrice -
+        discountCouponCode.apiDiscountResponse?.discountedAmount;
+      setPrices((prevPrices) => {
+        return {
+          ...prevPrices,
+          totalPrice: newtotalPrice,
+        };
+      });
+    } else if (discountCouponCode.apiDiscountResponse?.message) {
+      setTimeout(() => {
+        setDiscountCouponCode((prevDiscountCouponCode) => {
+          return {
+            ...prevDiscountCouponCode,
+            apiDiscountResponse: null,
+          };
+        });
+      }, 3000);
+    }
+  }, [discountCouponCode.apiDiscountResponse]);
 
   async function createCustomerId(id) {
     try {
@@ -127,6 +159,40 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
       console.error(error, 'error at credit Card');
     }
   }
+
+  async function handleApplyDiscountCoupon() {
+    try {
+      if (
+        discountCouponCode.apiDiscountResponse &&
+        discountCouponCode.payloadValue ===
+          discountCouponCode.oldTriedPayloadValue
+      ) {
+        return 'Already used API with the same value.';
+      }
+      let res = await fetch(
+        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${custmerID}`,
+      );
+      const data = await res.json();
+      if (res.ok && data) {
+        setDiscountCouponCode((prevDiscountCouponCode) => {
+          return {
+            ...prevDiscountCouponCode,
+            oldTriedPayloadValue: discountCouponCode.payloadValue,
+            apiDiscountResponse: data.result,
+          };
+        });
+      }
+    } catch (err) {
+      console.error('Failed to apply discount code: ', err);
+      setDiscountCouponCode((prevDiscountCouponCode) => {
+        return {
+          ...prevDiscountCouponCode,
+          apiDiscountResponse: {message: 'Unable to apply discount code.'},
+        };
+      });
+    }
+  }
+
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     fullName = localStorage.getItem('SNFullName');
@@ -182,45 +248,61 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
               <DynamicTitle title={'PAYMENT'} />
             </div>
             <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
-              <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl">
-                <div className="border border-solid border-[#e6edf8] p-3 mt-3">
-                  <div className="">
+              <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold">
+                <div className="border border-solid border-[#e6edf8] m-3 rounded-tl-lg rounded-tr-lg">
+                  <div
+                    className={`p-3 text-sm cursor-pointer rounded-tl-lg rounded-tr-lg ${
+                      showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
+                    }`}
+                    onClick={showWalletBtn}
+                  >
                     <input
+                      className="cursor-pointer"
                       type="radio"
                       name="action"
-                      onChange={() => showWalletBtn()}
+                      checked={showWallet}
+                      style={{boxShadow: 'none'}}
                     />
-                    &nbsp; USE WALLET
+                    &emsp; USE WALLET
                   </div>
-                  <div className="w-[100%] h-[1px] bg-[black]"></div>
+                  <hr />
                   {showWallet && (
-                    <div>
-                      <div className="border border-solid border-[#e6edf8] p-3 mt-3">
-                        <text className="flex justify-between items-center text-l font-bold">
-                          {' '}
-                          WALLET BALANCE <span>$10000</span>
-                        </text>
+                    <div className="p-3">
+                      <div className="border border-solid border-[#e6edf8] p-2 pl-4 pr-5 mb-3">
+                        <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
+                          <span className="flex-1">WALLET BALANCE </span>
+                          <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
+                            ${Number(10000).toLocaleString()}
+                          </span>
+                        </span>
                       </div>
                     </div>
                   )}
-
-                  <div className="mt-3">
+                  <hr />
+                  <div
+                    className={`p-3 cursor-pointer text-sm ${
+                      showWallet ? '' : 'bg-[#ef6e6e] bg-opacity-25'
+                    }`}
+                    onClick={cardDetailBtn}
+                  >
                     <input
                       type="radio"
+                      className="cursor-pointer"
                       name="action"
-                      onChange={() => cardDetailBtn()}
-                    />{' '}
-                    USE CREDIT CARD
+                      checked={!showWallet}
+                      style={{boxShadow: 'none'}}
+                    />
+                    &emsp; USE CREDIT CARD
                   </div>
                   {showCardDetail && (
-                    <div>
+                    <div className="p-3">
                       <div className="mt-2">
-                        <text className="text-l font-bold">
-                          {' '}
+                        <div className="text-lg font-bold">
                           CREDIT CARD INFORMATION
-                        </text>
-                        <br />
-                        <text className="text-xs font-bold">CARD DETAILS</text>
+                        </div>
+                        <div className="text-base font-bold mt-2">
+                          Card Details
+                        </div>
                       </div>
                       {savedCard &&
                         savedCard.map((item) => (
@@ -229,7 +311,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                               <input
                                 type="radio"
                                 name="action"
-                                className="mr-2"
+                                className="mr-2 cursor-pointer"
                               />
                               <span className=" tracking-wide">
                                 **********{item.cardLast4Number}
@@ -244,14 +326,17 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                           </div>
                         ))}
                       <div className="savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4">
-                        <div>
+                        <div className="text-sm flex items-center">
                           <input
                             type="radio"
                             name="action"
-                            id=""
-                            className=""
+                            id="saved-credit-card"
+                            className="cursor-pointer"
+                            style={{boxShadow: 'none'}}
                           />
-                          <label htmlFor="">&nbsp;Use Saved Credit Card</label>
+                          <label htmlFor="saved-credit-card">
+                            &nbsp;Use Saved Credit Card
+                          </label>
                         </div>
                         <div className="sm:mt-0 mt-[10px]">
                           <button
@@ -262,37 +347,92 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                           </button>
                         </div>
                       </div>
+                      <div className="w-[100%] h-[1px] border border-t-black mt-5"></div>
                     </div>
                   )}
                 </div>
 
-                <div className="mt-2">
+                <div className="mt-2 flex justify-center">
                   <button
-                    className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded flex"
+                    className="bg-[#EF6E6E] w-[200px] text-[#fff] p-4 mt-6 mb-3 rounded flex"
                     onClick={() => setShowCartPage(true)}
                   >
                     {' '}
                     <HiArrowLongLeft className="text-2xl mr-2 " />
-                    GO BACK TO CART{' '}
+                    GO BACK TO CART
                   </button>
                 </div>
               </div>
               <div className="lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto">
-                <div className="p-5 bg-white  rounded-xl h-[155px]">
+                <div className="p-5 bg-white  rounded-xl">
                   <h1 className="text-left font-bold text-2xl">
                     ORDER SUMMARY
                   </h1>
-                  <text className="flex justify-between items-center m-3">
-                    Subtotal <span>${totalPrize}</span>
-                  </text>
+                  <span className="flex justify-between items-center mt-3 mb-3">
+                    <span className="font-medium">Subtotal</span>
+                    <span>${prices.subtotalPrice}</span>
+                  </span>
+                  {discountCouponCode.apiDiscountResponse?.value && (
+                    <span className="flex justify-between items-center mt-3 mb-6">
+                      <span>
+                        <span className="mr-2 font-medium">Order Discount</span>
+                        <span className="text-xs font-medium bg-[#ef6e6e] bg-opacity-25 rounded p-1">
+                          {discountCouponCode.oldTriedPayloadValue}
+                        </span>
+                      </span>
+                      <span>
+                        -$
+                        {
+                          discountCouponCode.apiDiscountResponse
+                            .discountedAmount
+                        }
+                      </span>
+                    </span>
+                  )}
                   <div className="w-full h-[1px] bg-black"></div>
-                  <text className="flex justify-between items-center m-3 font-bold">
-                    Total <span>${totalPrize}</span>
-                  </text>
+                  <span className="flex justify-between items-center mt-3 mb-3 font-bold">
+                    Total <span>${prices.totalPrice}</span>
+                  </span>
+                  <div className="font-bold">
+                    <span>If you have a discount code, enter it here:</span>
+                    <div
+                      className="flex gap-2 justify-start items-stretch mt-3"
+                      style={{maxWidth: '90%'}}
+                    >
+                      <input
+                        className="flex-2 w-full rounded text-sm"
+                        type="text"
+                        value={discountCouponCode.payloadValue}
+                        placeholder="Discount code"
+                        onChange={(e) =>
+                          setDiscountCouponCode((prevDiscountCouponCode) => {
+                            return {
+                              ...prevDiscountCouponCode,
+                              payloadValue: e.target.value,
+                            };
+                          })
+                        }
+                      />
+                      <button
+                        onClick={handleApplyDiscountCoupon}
+                        className="flex-1 bg-[#EF6E6E] w-full justify-center text-[#fff] p-2 pr-5 pl-5 rounded flex font-bold"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                    {discountCouponCode.apiDiscountResponse?.message && (
+                      <div
+                        className="mt-5 bg-[#ffd4d4] bg-opacity-25 border border-[#EF6E6E] p-2 text-xs"
+                        style={{maxWidth: '90%'}}
+                      >
+                        {discountCouponCode.apiDiscountResponse.message}
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <div className="mt-2">
-                  <button className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-2 rounded flex">
-                    PURCHASE{' '}
+                  <button className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold">
+                    PURCHASE
                   </button>
                 </div>
               </div>
