@@ -158,6 +158,8 @@ export default function AddCartFunc() {
     });
   }
 
+  console.log("postalData",postalData);
+
   function ConfirmDeleteOrder(index) {
     // console.log(index);
     setDelOrderIndex(index);
@@ -708,57 +710,7 @@ export default function AddCartFunc() {
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
                                 ) : (
-                                  // <div className="flex">
-                                  //   <div className="w-[36rem]">
-                                  //     <div className="flex m-5">
-                                  //       <div className="max-w-[20%] m-5">
-                                  //         <img src={postImage} alt="" />
-                                  //       </div>
-                                  //       <div className="max-w-[100%] mt-10">
-                                  //         <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                  //           Postal {postTitle}
-                                  //         </h3>
-                                  //         <br />
-                                  //         <br />
-                                  //       </div>
-                                  //     </div>
-                                  //   </div>
-                                  //   <div className="w-[18rem] gap-5 flex items-center">
-                                  //     <div className="m-6 w-[16rem]">
-                                  //       <div className="flex justify-between">
-                                  //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           Price:
-                                  //         </span>
-                                  //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  //           $ {postPrice}
-                                  //         </span>
-                                  //       </div>
-                                  //       <div className="flex justify-between">
-                                  //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           Quantity:
-                                  //         </span>
-                                  //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  //           {item.csvFileLen}
-                                  //         </span>
-                                  //       </div>
-                                  //       <div className="flex justify-between">
-                                  //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           Subtotal:
-                                  //         </span>
-                                  //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  //           ${' '}
-                                  //           {(
-                                  //             postPrice * item.csvFileLen
-                                  //           ).toFixed(2)}
-                                  //         </span>
-                                  //       </div>
-                                  //     </div>
-                                  //   </div>
-                                  //   <div className="w-[19rem] m-4 flex justify-center items-center"></div>
-                                  // </div>
+                             
                                   <div className="flex w-[100%] flex-wrap ">
                                     <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                       <div className="flex w-full justify-evenly">
@@ -807,60 +759,7 @@ export default function AddCartFunc() {
                                       </div>
                                     </div>
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
-                                  </div>
-
-                                  // <div className="flex">
-                                  //   <div className="w-[36rem]">
-                                  //     <div className="flex m-5">
-                                  //       <div className="max-w-[20%] m-5">
-                                  //         <img src={postImage} alt="" />
-                                  //       </div>
-                                  //       <div className="max-w-[100%] mt-10">
-                                  //         <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                                  //           Postal{postTitle2}
-                                  //         </h3>
-                                  //         <br />
-                                  //         <br />
-                                  //       </div>
-                                  //     </div>
-                                  //   </div>
-                                  //   <div className="w-[18rem] gap-5 flex items-center">
-                                  //     <div className="m-6 w-[16rem]">
-                                  //       <div className="flex justify-between">
-                                  //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           Price:
-                                  //         </span>
-                                  //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  //           ${postPrice2}
-                                  //         </span>
-                                  //       </div>
-                                  //       <div className="flex justify-between">
-                                  //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           Quantity:
-                                  //         </span>
-                                  //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  //           {item.csvFileLen}
-                                  //         </span>
-                                  //       </div>
-                                  //       <div className="flex justify-between">
-                                  //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           Subtotal:
-                                  //         </span>
-                                  //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                  //           {' '}
-                                  //           $
-                                  //           {(
-                                  //             postPrice2 * item.csvFileLen
-                                  //           ).toFixed(2)}
-                                  //         </span>
-                                  //       </div>
-                                  //     </div>
-                                  //   </div>
-                                  //   <div className="w-[19rem] m-4 flex justify-center items-center"></div>
-                                  // </div>
+                                  </div>                                
                                 )}
                               </>
                             )}
@@ -920,59 +819,6 @@ export default function AddCartFunc() {
                               </div>
                               <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                             </div>
-
-                            // <div className="flex">
-                            //   <div className="w-[36rem]">
-                            //     <div className="flex m-5">
-                            //       <div className="max-w-[20%] m-5">
-                            //         <img
-                            //           src={item.shippingMethodImage}
-                            //           alt=""
-                            //         />
-                            //       </div>
-                            //       <div className="max-w-[100%] mt-10">
-                            //         <h3 className="text-[#1b5299] font-karla text-[18px] tracking-[1.5px]">
-                            //           {item.shippingData?.node.title}
-                            //         </h3>
-                            //         <br />
-                            //         <br />
-                            //       </div>
-                            //     </div>
-                            //   </div>
-                            //   <div className="w-[18rem] gap-5 flex items-center">
-                            //     <div className="m-6 w-[16rem]">
-                            //       <div className="flex justify-between">
-                            //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                            //           {' '}
-                            //           Price:
-                            //         </span>{' '}
-                            //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                            //           $ {item.shippingDataCost}
-                            //         </span>
-                            //       </div>
-                            //       <div className="flex justify-between">
-                            //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                            //           {' '}
-                            //           Quantity:
-                            //         </span>
-                            //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                            //           1
-                            //         </span>
-                            //       </div>
-                            //       <div className="flex justify-between">
-                            //         <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
-                            //           {' '}
-                            //           Subtotal:
-                            //         </span>{' '}
-                            //         <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                            //           {' '}
-                            //           $ {item.shippingDataCost * 1}
-                            //         </span>
-                            //       </div>
-                            //     </div>
-                            //   </div>
-                            //   <div className="w-[19rem] m-4 flex justify-center items-center"></div>
-                            // </div>
                           )}
                         <div className="flex w-full relative mx-auto justify-center ">
                           <div className="m-6">
