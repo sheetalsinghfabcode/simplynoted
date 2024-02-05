@@ -74,7 +74,7 @@ const StripeCard = ({
             ? 'Add Card'
             : pathname.pathname === '/simply-noted-plans'
             ? 'Complete Purchase'
-            : 'Update Card'}{' '}
+            : 'Update Card'}
         </button>
       </div>
     </form>

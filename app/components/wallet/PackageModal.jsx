@@ -23,7 +23,6 @@ const PackageModal = ({
     setSelectedPlan(event.target.value);
   };
 
-
   return (
     <div
       className={`${
@@ -40,35 +39,39 @@ const PackageModal = ({
         <div className="modal-content ptt-4  px-6">
           <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[10px]">
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
-              {' '}
-              {stripeCollection  && stripeCollection.stripe?.subscriptionStatus &&
+              {stripeCollection &&
+              stripeCollection.stripe?.subscriptionStatus &&
               stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                 ? stripeCollection.stripe?.subscription
-                : 'Free'}{' '}
+                : 'Free'}
               Prepaid Packages
             </span>
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
-              {' '}
-              Your current Prepaid Package:{' '}
-              {stripeCollection  ?
-              <span className="md:text-[14px] text-[12px] font-karla font-normal ">
-                {stripeCollection.stripe?.subscriptionStatus !== 'canceled'
-                  ? stripeCollection.stripe?.subscription
-                  : 'Free'}{' '}
-                - {stripeCollection.stripe?.packageQuantity} cards -
-                {stripeCollection.stripe?.packageDiscount}% DISCOUNT
-              </span> : <span>None</span> }
-            </span> 
+              Your current Prepaid Package:
+              {stripeCollection ? (
+                <span className="md:text-[14px] text-[12px] font-karla font-normal ">
+                  {stripeCollection.stripe?.subscriptionStatus !== 'canceled'
+                    ? stripeCollection.stripe?.subscription
+                    : 'Free'}
+                  - {stripeCollection.stripe?.packageQuantity} cards -
+                  {stripeCollection.stripe?.packageDiscount}% DISCOUNT
+                </span>
+              ) : (
+                <span>None</span>
+              )}
+            </span>
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
-              {' '}
-              Balance: ${stripeCollection.stripe?.balance ? stripeCollection.stripe?.balance: 0.00}
+              Balance: $
+              {stripeCollection.stripe?.balance
+                ? stripeCollection.stripe?.balance
+                : 0.0}
             </span>
           </div>
           <h3 className="md:text-[20px] text-[12px] mt-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto  font-semibold">
             {stripeCollection &&
             stripeCollection.stripe?.subscriptionStatus !== 'canceled'
               ? stripeCollection.stripe?.subscription
-              : 'Free'}{' '}
+              : 'Free'}
             Prepaid Packages
           </h3>
           <h4 className="md:text-[16px] text-[12px] text-[#001a5f] text-center">

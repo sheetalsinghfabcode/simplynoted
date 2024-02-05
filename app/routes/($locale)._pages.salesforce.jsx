@@ -23,7 +23,7 @@ export default function Salesforce() {
                   className="lg:text-[50px] text-[35px] font-karla  text-[#001a5f]"
                   style={{lineHeight: '0.75'}}
                 >
-                  Salesforce{' '}
+                  Salesforce
                   <span
                     style={{
                       fontFamily: 'Beauty, Handwriting',
@@ -31,7 +31,7 @@ export default function Salesforce() {
                     }}
                   >
                     Deep
-                  </span>{' '}
+                  </span>
                   Integration
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function Salesforce() {
                   className="text-[44px] font-karla  text-[#001a5f]"
                   style={{lineHeight: '0.75'}}
                 >
-                  Salesforce{' '}
+                  Salesforce
                   <span
                     style={{
                       fontFamily: 'Beauty, Handwriting',
@@ -78,7 +78,7 @@ export default function Salesforce() {
                     }}
                   >
                     Deep
-                  </span>{' '}
+                  </span>
                   Integration
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function Salesforce() {
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="  text-[28px] font-karla text-[#001A5F]">
-              Send one or send{' '}
+              Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function Salesforce() {
         </div>
         <div className="lg:hidden block sm:mb-10 mb-7">
           <div className=" sm:text-[46px] text-center  text-[32px] font-karla text-[#001A5F]">
-            Send one or send{' '}
+            Send one or send
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
         </div>
@@ -254,7 +254,7 @@ export default function Salesforce() {
         <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="  text-[28px] font-karla text-[#001A5F]">
-              Send one or send{' '}
+              Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function Salesforce() {
         </div>
         <div className="lg:hidden block sm:mb-10 mb-7">
           <div className="sm:text-[46px] text-center text-[32px] font-karla text-[#001A5F]">
-            Send one or send{' '}
+            Send one or send
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
         </div>

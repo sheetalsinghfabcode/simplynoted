@@ -60,7 +60,7 @@ const Swipers = () => {
             className="swiper-company md:block hidden"
           >
             <SwiperSlide>
-              <img className="w-[85%]" src={Fairway} alt="LogoSimplinotedpic" />{' '}
+              <img className="w-[85%]" src={Fairway} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
@@ -145,7 +145,7 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={Fairway}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
@@ -153,7 +153,7 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={Mariott}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
@@ -161,7 +161,7 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={Ncca}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
@@ -169,7 +169,7 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={Ford}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
@@ -177,7 +177,7 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={Edward}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
@@ -185,11 +185,11 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={Ronald}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
-            <img className="w-[60%] h-auto" src={kw} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[60%] h-auto" src={kw} alt="LogoSimplinotedpic" />
           </span>
 
           <span className="inline-block  w-[49%] mb-[20px]">
@@ -197,7 +197,7 @@ const Swipers = () => {
               className="w-[60%] h-auto"
               src={tesla}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </span>
         </div>
       </div>

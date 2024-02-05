@@ -171,7 +171,6 @@ export default function Activate() {
             />
             {nativePasswordError && (
               <p className="text-red-500 text-xs">
-                {' '}
                 {nativePasswordError} &nbsp;
               </p>
             )}
@@ -196,7 +195,6 @@ export default function Activate() {
             />
             {nativePasswordConfirmError && (
               <p className="text-red-500 text-xs">
-                {' '}
                 {nativePasswordConfirmError} &nbsp;
               </p>
             )}

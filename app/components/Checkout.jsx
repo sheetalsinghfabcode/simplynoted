@@ -357,7 +357,6 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                     className="bg-[#EF6E6E] w-[200px] text-[#fff] p-4 mt-6 mb-3 rounded flex"
                     onClick={() => setShowCartPage(true)}
                   >
-                    {' '}
                     <HiArrowLongLeft className="text-2xl mr-2 " />
                     GO BACK TO CART
                   </button>

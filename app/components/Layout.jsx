@@ -24,7 +24,7 @@ import arrow_rights from '../../assets/Image/arrow-right-faq.png';
 import arrow_down from '../../assets/Image/arrow-down.png';
 // import ArrowUp from '../../assets/Image/arrow-up.png';
 // import ArrowDown from '../../assets/Image/arrow-down.png';
-import RightArrow from "../../assets/Image/arrow-down.png";
+import RightArrow from '../../assets/Image/arrow-down.png';
 import nav_logo from '../../assets/Image/simply-noted-navlogo.avif';
 
 import {
@@ -44,7 +44,6 @@ import {
   Cart,
   CartLoading,
   Link,
-  
 } from '~/components';
 import {useIsHomePath} from '~/lib/utils';
 import {useIsHydrated} from '~/hooks/useIsHydrated';
@@ -57,12 +56,11 @@ let customerId;
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
-  const [arrowDown, setArrowDown] =useState(false);
+  const [arrowDown, setArrowDown] = useState(false);
 
-
-  const handleShow = () =>{
+  const handleShow = () => {
     setArrowDown(!arrowDown);
-  }
+  };
 
   return (
     <>
@@ -126,7 +124,7 @@ function Header({title, menu}) {
       <MobileHeader
         isHome={isHome}
         title={
-          <div className='h-[16px] w-[121px]'>
+          <div className="h-[16px] w-[121px]">
             <img className="w-[100px] max-w-full" src={nav_logo} />
           </div>
         }
@@ -190,8 +188,8 @@ function MenuMobileNav({menu, onClose}) {
   //   setLoginModal(true);
   // };
 
-  console.log("menu",menu);
-  
+  console.log('menu', menu);
+
   return (
     <div className="">
       <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12  sm:py-8">
@@ -223,7 +221,7 @@ function MenuMobileNav({menu, onClose}) {
                         onClick={handleChangeSendCard}
                         style={{fontWeight: showSendCard ? 'bold' : 'normal'}}
                       >
-                       Order
+                        Order
                         {showSendCard ? (
                           <img className="h-[12px]" src={arrow_down} alt="" />
                         ) : (
@@ -273,7 +271,7 @@ function MenuMobileNav({menu, onClose}) {
                 ) : (
                   <></>
                 )}
-               
+
                 {item.title === 'Integrations' ? (
                   <div className="">
                     <div
@@ -305,15 +303,12 @@ function MenuMobileNav({menu, onClose}) {
                             </li>
                           </Link>
                           <Link to="/shopify-integration">
-                            {' '}
                             <li className="mt-[-21px]">Shopify</li>
                           </Link>
                           <Link to="/salesforce">
-                            {' '}
-                            <li className="mt-[-21px]">Salesforce</li>{' '}
+                            <li className="mt-[-21px]">Salesforce</li>
                           </Link>
                           <Link to="/api-automation ">
-                            {' '}
                             <li className="mt-[-21px]">API</li>
                           </Link>
                         </ul>
@@ -358,7 +353,6 @@ function MenuMobileNav({menu, onClose}) {
                             </button>
                           </Link>
                           <Link to="/roicalculator">
-                            {' '}
                             <li>ROI Calculator</li>
                           </Link>
                         </ul>
@@ -427,19 +421,19 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       role="banner"
       className={`${
         isHome ? '' : ''
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8]  leading-none gap-4 px-4 md:px-8`}
+      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4 px-4 md:px-8`}
     >
       <div className="flex items-center justify-start w-full gap-4">
-      <Link
-        className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
-        to="/"
-      >
-      <Heading
-          className="font-bold text-center leading-none"
-          as={isHome ? 'h1' : 'h2'}
+        <Link
+          className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+          to="/"
         >
-          {title}
-        </Heading>
+          <Heading
+            className="font-bold text-center leading-none"
+            as={isHome ? 'h1' : 'h2'}
+          >
+            {title}
+          </Heading>
         </Link>
         <Form
           method="get"
@@ -482,11 +476,11 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
         <CartCount isHome={isHome} openCart={openCart} />
       </div>
       <button
-          onClick={openMenu}
-          className="relative flex color-white bg-ef6e6e items-center justify-center w-8 h-8"
-        >
-          <IconMenu />
-        </button>
+        onClick={openMenu}
+        className="relative flex color-white bg-ef6e6e items-center justify-center w-8 h-8"
+      >
+        <IconMenu />
+      </button>
     </header>
   );
 }
@@ -503,7 +497,7 @@ function DesktopHeader({isHome, menu}) {
   };
   const handleItemClick = () => {
     setActiveDropdown(null);
-  }
+  };
   const stateContext = useStateContext() || {
     cartCountVal: 0,
     setCartCountVal: () => {},
@@ -544,13 +538,16 @@ function DesktopHeader({isHome, menu}) {
     <>
       <header
         role="banner"
+        style={{
+          height: '84px',
+        }}
         className={`${
           isHome
             ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
             : 'bg-contrast/80 text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-nav lg:flex items-center lg-text-white  sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
+        } hidden h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -566,199 +563,229 @@ function DesktopHeader({isHome, menu}) {
             />
           </Link>
         </div>
-        <div>
-          <nav className="flex xl:gap-[43px] lg:gap-2 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight">
-            {(menu?.items || []).map((item) => {
-              if (
-                [
-                  'Order',
-                  'Integrations',
-                  'Pricing',
-                  'About',
-                  'Account',
-                  'Business',
-                ].includes(item.title)
-              ) {
-                return (
-                  <div
-                    key={item.id}
-                    prefetch="intent"
-                    className={({isActive}) =>
-                      isActive ? 'navitem-active' : 'navitems'
-                    }
-                  >
-                    {item.title === 'Integrations' ? (
-                      <div className="dropdown"  onMouseEnter={() => handleDropdownEnter('integrations')}
+        <div
+          style={{fontSize: '17px'}}
+          className="flex xl:gap-[43px] lg:gap-2 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
+        >
+          {(menu?.items || []).map((item) => {
+            if (
+              [
+                'Order',
+                'Integrations',
+                'Pricing',
+                'About',
+                'Account',
+                'Business',
+              ].includes(item.title)
+            ) {
+              return (
+                <div
+                  key={item.id}
+                  prefetch="intent"
+                  className={({isActive}) =>
+                    isActive ? 'navitem-active' : 'navitems'
+                  }
+                >
+                  {item.title === 'Integrations' ? (
+                    <div
+                      className="dropdown navitems"
+                      onMouseEnter={() => handleDropdownEnter('integrations')}
                       onMouseLeave={handleDropdownLeave}
-            >  
-                        <div className='flex items-baseline gap-[7px]'>
-                        <div className='font-[600]'>Integrations</div>
-                        <div> <img className='w-[12px]' src={RightArrow} /></div>
-                        </div>
-                        <div className={`dropdown-content ${activeDropdown === 'integrations' ? 'show' : ''}`}>
-                          <ul className="dropdown-list" onClick={handleItemClick}>
-                            <Link to="/zapier-integration">
-                              {' '}
-                              <li> Zapier</li>
-                            </Link>
-                            <Link to="/shopify-integration">
-                              {' '}
-                              <li> Shopify</li>
-                            </Link>
-                            <Link to="/salesforce">
-                              {' '}
-                              <li> Salesforce</li>{' '}
-                            </Link>
-                            <Link to="/api-automation">
-                              {' '}
-                              <li> API</li>
-                            </Link>
-                          </ul>
+                    >
+                      <div className="flex items-baseline gap-[7px]">
+                        <div className="font-[600]">Integrations</div>
+                        <div>
+                          <img className="w-[12px]" src={RightArrow} />
                         </div>
                       </div>
-                    ) : null}
-                    {item.title === 'Pricing' ? (
-                      <div className="dropdown" onMouseEnter={() => handleDropdownEnter('pricing')}
+                      <div
+                        className={`dropdown-content ${
+                          activeDropdown === 'integrations' ? 'show' : ''
+                        }`}
+                      >
+                        <ul className="dropdown-list" onClick={handleItemClick}>
+                          <Link to="/zapier-integration">
+                            <li> Zapier</li>
+                          </Link>
+                          <Link to="/shopify-integration">
+                            <li> Shopify</li>
+                          </Link>
+                          <Link to="/salesforce">
+                            <li> Salesforce</li>
+                          </Link>
+                          <Link to="/api-automation">
+                            <li> API</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                  {item.title === 'Pricing' ? (
+                    <div
+                      className="dropdown navitems"
+                      onMouseEnter={() => handleDropdownEnter('pricing')}
                       onMouseLeave={handleDropdownLeave}
-            > 
-                         <div className='flex items-baseline gap-[7px]'>
-                        <div className='font-[600]'>Pricing</div>
-                        <div> <img className='w-[12px]' src={RightArrow} /></div>
-                        </div>
-
-                        <div className={`dropdown-content ${activeDropdown === 'pricing' ? 'show' : ''}`}>
-                          <ul className="dropdown-list" onClick={handleItemClick}>
-                            <Link to="#">
-                              <button
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  window.location.href =
-                                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
-                                  return false;
-                                }}
-                              >
-                                {' '}
-                                Get a Custom Quote
-                              </button>
-                            </Link>
-                            <Link to="/roicalculator">
-                              {' '}
-                              <li>ROI Calculator</li>
-                            </Link>
-                          </ul>
+                    >
+                      <div className="flex items-baseline gap-[7px]">
+                        <div className="font-[600]">Pricing</div>
+                        <div>
+                          <img className="w-[12px]" src={RightArrow} />
                         </div>
                       </div>
-                    ) : null}
 
-                    {item.title === 'About' ? (
-                      <div className="dropdown" onMouseEnter={() => handleDropdownEnter('about')}
+                      <div
+                        className={`dropdown-content ${
+                          activeDropdown === 'pricing' ? 'show' : ''
+                        }`}
+                      >
+                        <ul className="dropdown-list" onClick={handleItemClick}>
+                          <Link to="#">
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                window.location.href =
+                                  'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
+                                return false;
+                              }}
+                            >
+                              Get a Custom Quote
+                            </button>
+                          </Link>
+                          <Link to="/roicalculator">
+                            <li>ROI Calculator</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {item.title === 'About' ? (
+                    <div
+                      className="dropdown navitems"
+                      onMouseEnter={() => handleDropdownEnter('about')}
                       onMouseLeave={handleDropdownLeave}
-            >
-                        <div className='flex items-baseline gap-[7px]'>
-                        <div className='font-[600]'>About</div>
-                        <div> <img className='w-[12px]' src={RightArrow} /></div>
-                         </div>
-                        <div className={`dropdown-content ${activeDropdown === 'about' ? 'show' : ''}`}>
-                          <ul className="dropdown-list" onClick={handleItemClick}>
-                            <Link to="/about-us">
-                              <li>About Us</li>
-                            </Link>
-                            <Link to="/tutorials">
-                              <li>Tutorials</li>
-                            </Link>
-                            <a href="https://www.youtube.com/@simplynoted">
-                              <li>Videos</li>
-                            </a>
-                            <Link to="/blog">
-                              <li>Blog.</li>
-                            </Link>
+                    >
+                      <div className="flex items-baseline gap-[7px]">
+                        <div className="font-[600]">About</div>
+                        <div>
+                          <img className="w-[12px]" src={RightArrow} />
+                        </div>
+                      </div>
+                      <div
+                        className={`dropdown-content ${
+                          activeDropdown === 'about' ? 'show' : ''
+                        }`}
+                      >
+                        <ul className="dropdown-list" onClick={handleItemClick}>
+                          <Link to="/about-us">
+                            <li>About Us</li>
+                          </Link>
+                          <Link to="/tutorials">
+                            <li>Tutorials</li>
+                          </Link>
+                          <a href="https://www.youtube.com/@simplynoted">
+                            <li>Videos</li>
+                          </a>
+                          <Link to="/blog">
+                            <li>Blog.</li>
+                          </Link>
 
-                            <Link to="/faq">
-                              <li>F.A.Q.</li>
-                            </Link>
-                          </ul>
+                          <Link to="/faq">
+                            <li>F.A.Q.</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                  {item.title === 'Account' ? (
+                    <div
+                      className="dropdown navitems"
+                      onMouseEnter={() => handleDropdownEnter('account')}
+                      onMouseLeave={handleDropdownLeave}
+                    >
+                      <div className="font-[600]">Account</div>
+                      <div
+                        className={`dropdown-content ${
+                          activeDropdown === 'account' ? 'show' : ''
+                        }`}
+                      >
+                        <ul className="dropdown-list" onClick={handleItemClick}>
+                          <Link to="/account">
+                            <li>Account Details</li>
+                          </Link>
+                          <Link to="/manage-subscription">
+                            <li>Manage Plans</li>
+                          </Link>
+                          <Link to="/tutorials">
+                            <li>Order History</li>
+                          </Link>
+                          <Link to="/address-book">
+                            <li>Address Book</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                  {item.title === 'Order' ? (
+                    <div
+                      className="dropdown navitems "
+                      onMouseEnter={() => handleDropdownEnter('order')}
+                      onMouseLeave={handleDropdownLeave}
+                    >
+                      <div className="flex items-baseline gap-[7px]">
+                        <div className="font-[600]">Order</div>
+                        <div>
+                          <img className="w-[12px]" src={RightArrow} />
                         </div>
                       </div>
-                    ) : null}
-                     {item.title === 'Account' ? (
-                       <div className="dropdown" onMouseEnter={() => handleDropdownEnter('account')}
-                       onMouseLeave={handleDropdownLeave}
-             >
-                        <div className='font-[600]'>Account</div>
-                        <div className={`dropdown-content ${activeDropdown === 'account' ? 'show' : ''}`}>
-                          <ul className="dropdown-list" onClick={handleItemClick}>
-                            <Link to="/account">
-                              <li>Account Details</li>
-                            </Link>
-                            <Link to="/manage-subscription">
-                              <li>Manage Plans</li>
-                            </Link>
-                            <Link to="/tutorials">
-                              <li>Order History</li>
-                            </Link>
-                            <Link to="/address-book">
-                              <li>Address Book</li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                    ) : null}
-                    {item.title === 'Order' ? (
-                       <div className="dropdown" onMouseEnter={() => handleDropdownEnter('order')}
-                       onMouseLeave={handleDropdownLeave}
-             >
-                        <div className='flex items-baseline gap-[7px]'>
-                        <div className='font-[600]'>Order</div>
-                        <div> <img className='w-[12px]' src={RightArrow} /></div>
-                        </div>
-                         
-                        <div className={`dropdown-content ${activeDropdown === 'order' ? 'show' : ''}`} >
-                          <ul className="dropdown-list" onClick={handleItemClick}>
-                            <Link to="/collections/best-sellers">
-                              {' '}
-                              <li>Cards</li>
-                            </Link>
-                            <Link to="/customise-your-card">
-                              {' '}
-                              <li>Create a Card</li>
-                            </Link>
-                            <Link to="/collections/birthday">
-                              <li>Birthday Automation</li>
-                            </Link>
-                            <Link to="/gift-cards">
-                              {' '}
-                              <li>Gift Cards </li>
-                            </Link>
-                          </ul>
-                        </div>
-                      </div>
-                    ) : null}
-                    {item.title === 'Business' ? (
-                      <Link to="/business-page">
-                        <div className="navitems font-[600]">Business</div>
-                      </Link>
-                    ) : null}
 
-                    {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
-                  </div>
-                );
-              } else {
-                return (
-                  <Link
-                    key={item.id}
-                    to={item.to}
-                    target={item.target}
-                    prefetch="intent"
-                    className={({isActive}) =>
-                      isActive ? 'navitem-active' : 'navitems'
-                    }
-                  >
-                    {item.title}
-                  </Link>
-                );
-              }
-            })}
-          </nav>
+                      <div
+                        className={`dropdown-content ${
+                          activeDropdown === 'order' ? 'show' : ''
+                        }`}
+                      >
+                        <ul className="dropdown-list" onClick={handleItemClick}>
+                          <Link to="/collections/best-sellers">
+                            <li>Cards</li>
+                          </Link>
+                          <Link to="/customise-your-card">
+                            <li>Create a Card</li>
+                          </Link>
+                          <Link to="/collections/birthday">
+                            <li>Birthday Automation</li>
+                          </Link>
+                          <Link to="/gift-cards">
+                            <li>Gift Cards </li>
+                          </Link>
+                        </ul>
+                      </div>
+                    </div>
+                  ) : null}
+                  {item.title === 'Business' ? (
+                    <Link to="/business-page">
+                      <div className="navitems  font-[600]">Business</div>
+                    </Link>
+                  ) : null}
+
+                  {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
+                </div>
+              );
+            } else {
+              return (
+                <Link
+                  key={item.id}
+                  to={item.to}
+                  target={item.target}
+                  prefetch="intent"
+                  className={({isActive}) =>
+                    isActive ? 'navitem-active' : 'navitems'
+                  }
+                >
+                  {item.title}
+                </Link>
+              );
+            }
+          })}
         </div>
         <div className="flex items-center gap-1">
           <div className="tooltip">
@@ -875,7 +902,6 @@ function Badge({openCart, dark, count}) {
   const isHydrated = useIsHydrated();
 
   const navigate = useNavigate();
-
 
   const BadgeCounter = useMemo(
     () => (
@@ -1026,7 +1052,7 @@ function FooterMenu({menu}) {
         </div>
         <div className="  text-white md:text-left text-center grid justify-center ">
           <div className="lg:text-xl md:text-[18px] text-[22px] font-bold ">
-            Quick Links{' '}
+            Quick Links
           </div>
           <div className="md:text-left text-center">
             {(menu?.items || []).map((item) => (

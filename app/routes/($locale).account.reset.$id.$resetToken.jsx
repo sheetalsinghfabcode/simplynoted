@@ -168,7 +168,6 @@ export default function Reset() {
             />
             {nativePasswordError && (
               <p className="text-red-500 text-xs">
-                {' '}
                 {nativePasswordError} &nbsp;
               </p>
             )}
@@ -193,7 +192,6 @@ export default function Reset() {
             />
             {nativePasswordConfirmError && (
               <p className="text-red-500 text-xs">
-                {' '}
                 {nativePasswordConfirmError} &nbsp;
               </p>
             )}

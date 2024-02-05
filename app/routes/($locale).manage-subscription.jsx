@@ -667,8 +667,8 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled'
                             ? stripeCollection.stripe?.subscription
-                            : 'Free'}{' '}
-                          - {stripeCollection.stripe?.packageQuantity} cards -{' '}
+                            : 'Free'}
+                          - {stripeCollection.stripe?.packageQuantity} cards -
                           {stripeCollection.stripe?.packageDiscount}% DISCOUNT
                         </span>
                       ) : (

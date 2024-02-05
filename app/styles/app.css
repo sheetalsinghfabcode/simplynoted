@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import 'react-datepicker/dist/react-datepicker';
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
 
 /* Tokens */
 :root {
@@ -73,6 +74,11 @@ shop-pay-button {
 
 html {
   scroll-padding-top: 10rem;
+  font-family: 'Karla', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 22px;
+  color: #1e1e1e;
 }
 
 model-viewer::part(default-progress-mask) {
@@ -282,12 +288,8 @@ nav a {
   line-height: 25px;
   transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
   margin-top: 0;
-  width:30%
+  width: 30%;
 }
-
-
-
-
 
 .dropdown > div {
   cursor: pointer;
@@ -727,12 +729,10 @@ nav a {
   --tw-ring-color: transparent;
 }
 
-
 .dropdown > div {
   cursor: pointer;
   margin-bottom: 4px;
 }
-
 
 a:hover {
   color: #0056b3;
@@ -765,7 +765,7 @@ nav a {
   max-height: 241px;
   position: relative;
   left: -10px;
-  top:50px;
+  top: 50px;
   order: -1;
 }
 .cars-killer {
@@ -773,9 +773,8 @@ nav a {
   rotate: -7deg;
   margin-top: -21px;
   position: relative;
-  right:35px;
-  top:0;
-
+  right: 35px;
+  top: 0;
 }
 .thankyou_img {
   width: 23%;
@@ -876,7 +875,6 @@ nav a {
   opacity: 1;
   height: auto;
 }
-
 
 .font-bold {
   font-weight: 500 !important;
@@ -1134,15 +1132,18 @@ body {
   background: url(../../assets/Image/menu-underline.png) no-repeat;
   background-position: bottom;
   background-size: 100%;
-} 
+}
+.navitems {
+  padding-bottom: 8px;
+}
 .navitems:hover {
-  color: #30038b !important;
+  color: #3d3eb7 !important;
   background: url(../../assets/Image/menu-underline.png) no-repeat;
   background-position: bottom;
   background-size: 105% 15%;
 }
 .navitems:target {
-  color: #30038b !important;
+  color: #3d3eb7 !important;
   background: url(../../assets/Image/menu-underline.png) no-repeat;
   background-position: bottom;
   background-size: 105% 10%;
@@ -2259,7 +2260,7 @@ body {
   .signup-row {
     margin: 10px auto;
   }
-  .cars-killer{
+  .cars-killer {
     width: 245px;
     right: 0px;
   }
@@ -2273,7 +2274,7 @@ body {
   }
 }
 @media only screen and (max-width: 1024px) {
-  .texts{
+  .texts {
     font-size: 18px;
   }
   .handwritten-notice h3 {
@@ -2403,8 +2404,8 @@ body {
     margin-bottom: 0px;
     width: 100%;
   }
-  .selectArrow select{
-background-size: 4% !important;
+  .selectArrow select {
+    background-size: 4% !important;
   }
   .input_email {
     width: 54%;

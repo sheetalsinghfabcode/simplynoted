@@ -60,28 +60,28 @@ const Notes = () => {
           }}
         >
           <SwiperSlide>
-            <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
           </SwiperSlide>
         </Swiper>
       </div>

@@ -5,7 +5,7 @@ const Partner_referral = () => {
     <>
       <div className="mt-10">
         <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla tracking-tight pb-[6px] mx-2">
-          Submit a{' '}
+          Submit a
           <span className="font-beauty ml-2 md:text-8xl text-6xl font-extrabold">
             referral
           </span>

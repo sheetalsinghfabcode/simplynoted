@@ -78,11 +78,9 @@ export function ProductCard({
               {offPrice > 0 ? (
                 <span className="text-[red]">
                   <span className="line-through text-[black]">
-                    {' '}
                     ${price.amount}
-                  </span>{' '}
-                  ${' '}
-                  {(price.amount - (price.amount * offPrice) / 100).toFixed(2)}
+                  </span>
+                  ${(price.amount - (price.amount * offPrice) / 100).toFixed(2)}
                 </span>
               ) : (
                 <span className="text-[red]">$ {price.amount}</span>

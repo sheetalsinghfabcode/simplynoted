@@ -11,7 +11,7 @@ const Partner_signup = () => {
             <h1 className="text-[#001a5f] text-center md:text-3xl text-xl font-karla tracking-tight pb-[6px] mx-2">
               Signup for the <hr />
               <span className="font-beauty ml-2 text-6xl  !leading-7 font-extrabold">
-                partner{' '}
+                partner
               </span>
               Program
             </h1>
