@@ -21,59 +21,59 @@ function Guarantee() {
             If, by any chance, you find yourself less than thrilled with your
             notes or the service you've received, please do not hesitate to
             reach out to us. Our devoted team will promptly process your refund
-            without any need for inquiries.{' '}
+            without any need for inquiries.
           </p>
           <div className="font-light text-justify">
             <h1 className="mt-[30px] font-medium text-blue-900">
-              Our Commitment:{' '}
+              Our Commitment:
             </h1>
             <ul>
               <li className="mt-[12px] text-[14px]">
                 We commit to delivering the highest quality prints using the
-                images you provide, all on premium paper.{' '}
+                images you provide, all on premium paper.
               </li>
               <li className="text-[14px]">
                 Our notes will be exquisitely crafted to capture the genuine
-                essence of handwritten correspondence.{' '}
+                essence of handwritten correspondence.
               </li>
               <li className="text-[14px]">
                 Standard orders will be processed with efficiency within our
                 specified 1-2 business day timeframe (weekends and holidays
-                excluded).{' '}
+                excluded).
               </li>
               <li className="text-[14px]">
                 We will meticulously ensure that the right card is placed inside
-                the correct envelope, complete with the appropriate insert.{' '}
+                the correct envelope, complete with the appropriate insert.
               </li>
             </ul>
           </div>
           <div className="font-light text-justify">
             <h1 className="mt-[30px] font-medium text-blue-900">
-              What We Do Not Assume Responsibility For:{' '}
+              What We Do Not Assume Responsibility For:
             </h1>
             <ul>
               <li className="mt-[12px] text-[14px]">
                 While we strive to identify errors during processing, Simply
-                Noted cannot be{' '}
+                Noted cannot be
               </li>
               <li className="text-[14px]">
                 held accountable for spelling and grammatical errors provided by
-                you, or any{' '}
+                you, or any
               </li>
               <li className="text-[14px]">
-                errors related to recipient/sender addresses provided by you.{' '}
+                errors related to recipient/sender addresses provided by you.
               </li>
             </ul>
           </div>
           <div className="font-light text-justify">
             <h1 className="mt-[30px] font-medium text-blue-900">
               Additionally, please take note that Simply Noted cannot be held
-              responsible for:{' '}
+              responsible for:
             </h1>
             <ul>
               <li className="mt-[12px] text-[14px]">
                 WLost, stolen, bounced or delayed mail during transit. Once your
-                stamped item{' '}
+                stamped item
               </li>
               <li className="text-[14px]">
                 is handed over to the United States Postal Service, we no longer

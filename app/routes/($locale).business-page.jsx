@@ -109,10 +109,10 @@ const Business = () => {
               <div className="lg:w-[30%] lg:ml-[12rem] lg:mr-0 md:w-[40%] w-[55%] ml-auto mr-auto text-left mt-5">
                 <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold">
                   <div className="">
-                    You{' '}
+                    You
                     <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
                       type
-                    </span>{' '}
+                    </span>
                   </div>
                   <div className="lg:mt-[-30px] ml-[7px]">
                     We
@@ -334,7 +334,7 @@ const Business = () => {
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
                         <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3  mb-6">
-                          Integrate{' '}
+                          Integrate
                           <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
                             and
                           </span>
@@ -403,7 +403,7 @@ const Business = () => {
                               <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
                                 Integrate and automate sending real handwritten
                                 notes from 2,500+ softwares instantly. Request
-                                access to our Zapier App today!{' '}
+                                access to our Zapier App today!
                               </div>
                               <DynamicButton
                                 onClickFunction={() =>
@@ -529,7 +529,7 @@ const Business = () => {
                       className="h-[455px] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
                       src={business_line}
                       alt="business_line"
-                    />{' '}
+                    />
                   </div>
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
@@ -629,7 +629,7 @@ const Business = () => {
                     <div className="text-[#9c9a9a] text-[16px] leading-5 mt-[20px] mb-[25px]">
                       Integrate and automate sending real handwritten notes from
                       2,500+ softwares instantly. Request access to our Zapier
-                      App today!{' '}
+                      App today!
                     </div>
                     <DynamicButton
                       onClickFunction={() =>
@@ -692,7 +692,7 @@ const Business = () => {
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
                         <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3 mb-6">
-                          Fully{' '}
+                          Fully
                           <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
                             Customizable
                           </span>
@@ -853,7 +853,7 @@ const Business = () => {
                       className="h-[350px] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
                       src={business_line}
                       alt="business_line"
-                    />{' '}
+                    />
                   </div>
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">

@@ -9,7 +9,6 @@ const AboutUs = () => {
           <div className="m-auto max-w-[900px] px-[15px] ">
             <div className="video-text ">
               <h2 className="text-center capitalize md:text-[37px] text-[28px] text-[#001a5f] font-karla">
-                {' '}
                 Meet Simply Noted
               </h2>
               <img

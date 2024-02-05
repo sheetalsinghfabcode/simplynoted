@@ -88,52 +88,52 @@ export default function Zapier() {
           }}
         >
           <SwiperSlide>
-            <img className="w-[90%]" src={ac_blue} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={ac_blue} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[60%]" src={shopifys} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[60%]" src={shopifys} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide className="!mr-[-60px]">
             <img
               className="w-[36%] mt-[-13px]"
               src={hubspot}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={zoho} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={zoho} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
             <img
               className="w-[40%]"
               src={salesforce}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={amazon} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={amazon} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={sheet} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={sheet} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
             <img
               className="w-[90%]"
               src={click_funnel}
               alt="LogoSimplinotedpic"
-            />{' '}
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={esty} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={esty} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={ac_blue} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={ac_blue} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[60%]" src={shopifys} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[60%]" src={shopifys} alt="LogoSimplinotedpic" />
           </SwiperSlide>
           <SwiperSlide>
-            <img className="w-[90%]" src={zoho} alt="LogoSimplinotedpic" />{' '}
+            <img className="w-[90%]" src={zoho} alt="LogoSimplinotedpic" />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -209,7 +209,7 @@ export default function Zapier() {
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="  text-[28px] font-karla text-[#001A5F]">
-              Send one or send{' '}
+              Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
@@ -235,7 +235,7 @@ export default function Zapier() {
         </div>
         <div className="lg:hidden block mb-10">
           <div className="sm:text-[46px] text-center text-[32px] font-karla text-[#001A5F]">
-            Send one or send{' '}
+            Send one or send
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
         </div>

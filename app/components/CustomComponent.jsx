@@ -41,10 +41,9 @@ export function CustomComponent({product, offPrice, productPrice}) {
                   {offPrice > 0 ? (
                     <span className="text-[red]">
                       <span className="line-through text-[black]">
-                        {' '}
                         ${productPrice}
-                      </span>{' '}
-                      ${' '}
+                      </span>
+                      $
                       {(productPrice - (productPrice * offPrice) / 100).toFixed(
                         2,
                       )}

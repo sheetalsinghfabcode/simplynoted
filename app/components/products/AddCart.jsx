@@ -494,7 +494,7 @@ export function AddCart({
                             onChange={() => handleCheckboxChange2(item)}
                           />
                           <span className="font-karla ml-2">
-                            {item.firstName} {item.lastName}, {item.city},{' '}
+                            {item.firstName} {item.lastName}, {item.city},
                             {item.state}, {item.zip}, {item.country}
                           </span>
                         </div>
@@ -543,7 +543,7 @@ export function AddCart({
                               />
 
                               <span className="font-karla ml-2">
-                                {item.firstName} {item.lastName}, {item.city},{' '}
+                                {item.firstName} {item.lastName}, {item.city},
                                 {item.state}, {item.zip}, {item.country}
                               </span>
                             </div>
@@ -617,7 +617,7 @@ export function AddCart({
                             selected
                             disabled
                           >
-                            {cardName ? cardName : 'Select Gift Card'}{' '}
+                            {cardName ? cardName : 'Select Gift Card'}
                           </option>
                           {data.collection.products.edges.map((item, i) => (
                             <option className="font-karla" value={i}>
@@ -670,7 +670,9 @@ export function AddCart({
                           onClick={() => setStateCheckCart(!stateCheckCart)}
                           checked={cardPriceTitle && stateCheckCart}
                         />
-                        <text className="ml-3 mt-[6px] font-karla">Add Gift Card</text>
+                        <text className="ml-3 mt-[6px] font-karla">
+                          Add Gift Card
+                        </text>
                       </div>
                     </div>
                   </div>
@@ -680,9 +682,8 @@ export function AddCart({
 
             {onSaveShip && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
-                {formData?.firstName}, {formData?.lastName},{' '}
-                {formData?.address1}, {formData?.city}, {formData?.state},{' '}
-                {formData?.country}
+                {formData?.firstName}, {formData?.lastName},{formData?.address1}
+                , {formData?.city}, {formData?.state},{formData?.country}
               </div>
             )}
             <div className="row flex mt-4 md:w-[53%] w-full">
@@ -722,7 +723,7 @@ export function AddCart({
                       type="text"
                       id="firstName"
                       name="firstName"
-                      placeholder="firstName"
+                      placeholder="First Name"
                       value={formData.firstName}
                       onChange={(e) => handleChange(e)}
                       className="mt-2 border border-solid border-black p-3 w-[100%]"
@@ -734,7 +735,7 @@ export function AddCart({
                       id="lastName"
                       name="lastName"
                       type="text"
-                      placeholder="lastName"
+                      placeholder="Last Name"
                       value={formData.lastName}
                       onChange={(e) => handleChange(e)}
                       className="mt-2 border border-solid border-black p-3 w-[100%]"
@@ -777,7 +778,7 @@ export function AddCart({
                       type="text"
                       id="city"
                       name="city"
-                      placeholder="city"
+                      placeholder="City"
                       value={formData.city}
                       onChange={(e) => handleChange(e)}
                       className="mt-2 border border-solid border-black p-3 w-[100%]"
@@ -789,7 +790,7 @@ export function AddCart({
                       id="postalCode"
                       name="postalCode"
                       type="number"
-                      placeholder="postalCode"
+                      placeholder="Postal Code"
                       value={formData.postalCode}
                       onChange={(e) => handleChange(e)}
                       className="mt-2 border border-solid border-black p-3 w-[100%]"

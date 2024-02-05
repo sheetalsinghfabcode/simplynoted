@@ -327,7 +327,6 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                {' '}
                 <span className="text-blue-500">6.</span> TEMPLATES
               </button>
             </li>
@@ -582,7 +581,7 @@ const apidocs = () => {
               <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
                 <span className="text-blue-500">3.</span> USERS
               </h2>
-              ``{' '}
+              ``
             </div>
           )}
           {selectedSection === 'Create A User' && (
@@ -595,7 +594,6 @@ const apidocs = () => {
                 created through the Simply Noted website.
                 <br /> To create an account go to
                 <span className="text-blue">
-                  {' '}
                   https://simplynoted.com/account/register.
                 </span>
               </p>
@@ -900,7 +898,7 @@ const apidocs = () => {
                 &nbsp; &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
                 &nbsp; &nbsp; "handle": "testing-cards", <br />
                 &nbsp; &nbsp; "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                &nbsp; &nbsp; "published_at": "2023-09-13T06:22:28-07:00",{' '}
+                &nbsp; &nbsp; "published_at": "2023-09-13T06:22:28-07:00",
                 <br />
                 &nbsp; &nbsp; "template_suffix": null, <br />
                 &nbsp; &nbsp; "published_scope": "web", <br />
@@ -943,7 +941,7 @@ const apidocs = () => {
                 &nbsp; "width": 495, <br />
                 &nbsp; "height": 350, <br />
                 &nbsp; "src":
-                "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",{' '}
+                "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",
                 <br />
                 &nbsp; "variant_ids": [], "admin_graphql_api_id": &nbsp;
                 "gid://shopify/ProductImage/30856642232425" &nbsp; <br /> &#125;
@@ -1067,7 +1065,10 @@ const apidocs = () => {
                     <td className="border p-4">cardName</td>
                     <td className="border p-4">String</td>
                     <td className="border p-4">Yes</td>
-                    <td className="border p-4"> "Happy Birthday Modified 1a"</td>
+                    <td className="border p-4">
+                      {' '}
+                      "Happy Birthday Modified 1a"
+                    </td>
                   </tr>
                   <tr>
                     <td className="border p-4">sHeaderIncluded</td>
@@ -1139,7 +1140,7 @@ const apidocs = () => {
                 &nbsp; "tags": "customise_card", <br />
                 &nbsp; "status": "active", <br />
                 &nbsp;
-                "admin_graphql_api_id":"gid://shopify/Product/7046027575401",{' '}
+                "admin_graphql_api_id":"gid://shopify/Product/7046027575401",
                 <br />
                 &nbsp; "variants": &#123;
                 <br />
@@ -1263,7 +1264,9 @@ const apidocs = () => {
                     <td className="border p-4">
                       /delete-custom-card?productId=7072904347753,7073022279785,123456789000
                     </td>
-                    <td className="border p-4">productId - productId contains</td>
+                    <td className="border p-4">
+                      productId - productId contains
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -1538,7 +1541,7 @@ const apidocs = () => {
                 account.
               </p>
               <p className="mt-[7px] ml-[9px] text-sm">
-                <b>Endpoint:</b>{' '}
+                <b>Endpoint:</b>
                 /orders/customer/?offset=0&status=any&fulfillment_status=shipped
               </p>
               <p className="mt-[7px] ml-[9px] text-sm">
@@ -1660,7 +1663,7 @@ const apidocs = () => {
                 <br />
                 "orders": [ <br />
                 &#123; "id": 5465230180457, <br />
-                "admin_graphql_api_id": "gid://shopify/Order/5465230180457",{' '}
+                "admin_graphql_api_id": "gid://shopify/Order/5465230180457",
                 <br />
                 "app_id": 3648771, <br />
                 "browser_ip": "127.0.0.1", <br />
@@ -1668,7 +1671,7 @@ const apidocs = () => {
                 "moreOrders": true <br />
                 IF moreOrders is true, then call the API again with the
                 nextOffset value <br />
-                IF moreOrders is false, there are no further orders to fetch.{' '}
+                IF moreOrders is false, there are no further orders to fetch.
                 <br />
                 Returns on success: <br />
                 "result":
@@ -1678,7 +1681,7 @@ const apidocs = () => {
                 &#123;
                 <br />
                 "id": 5465230180457, <br />
-                "admin_graphql_api_id": "gid://shopify/Order/5465230180457",{' '}
+                "admin_graphql_api_id": "gid://shopify/Order/5465230180457",
                 <br />
                 "app_id": 3648771, <br />
                 "browser_ip": "127.0.0.1", <br />
@@ -1942,7 +1945,7 @@ const apidocs = () => {
                 <br />
                 "marketing_opt_in_level": "single_opt_in", <br />
                 "tax_exemptions": [], <br />
-                "admin_graphql_api_id": "gid://shopify/Customer/6232622891113",{' '}
+                "admin_graphql_api_id": "gid://shopify/Customer/6232622891113",
                 <br />
                 "default_address": &#123; <br />
                 "id": 8262169165929,
@@ -2051,7 +2054,7 @@ const apidocs = () => {
                 <br />
                 "name": "recipient_upload", <br />
                 "value":
-                "https://simply-noted-recipients.s3.amazonaws.com/643bb5a900870f1f2478dc69_1695703154110.csv"{' '}
+                "https://simply-noted-recipients.s3.amazonaws.com/643bb5a900870f1f2478dc69_1695703154110.csv"
                 <br />
                 &#123;
                 <br />
@@ -2154,7 +2157,7 @@ const apidocs = () => {
                 <br />
                 &#123;
                 <br />
-                "shop_money": "amount": "3.25", "currency_code": "USD" &#125;{' '}
+                "shop_money": "amount": "3.25", "currency_code": "USD" &#125;
                 <br />
                 &#123;
                 <br />
@@ -2198,7 +2201,7 @@ const apidocs = () => {
                 &#123;
                 <br />
                 "id": 13453403422825, <br />
-                "admin_graphql_api_id": "gid://shopify/LineItem/13453403422825",{' '}
+                "admin_graphql_api_id": "gid://shopify/LineItem/13453403422825",
                 <br />
                 "fulfillable_quantity": 1, <br />
                 "fulfillment_service": "manual", <br />
@@ -2287,7 +2290,7 @@ const apidocs = () => {
                 &#125; ] <br />
                 &#123; <br />
                 "id": 13453403455593, <br />
-                "admin_graphql_api_id": "gid://shopify/LineItem/13453403455593",{' '}
+                "admin_graphql_api_id": "gid://shopify/LineItem/13453403455593",
                 <br />
                 "fulfillable_quantity": 1, <br />
                 "fulfillment_service": "manual", <br />
@@ -2402,7 +2405,9 @@ const apidocs = () => {
                       <td className="border p-4">customMessage </td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
-                      <td className="border p-4">"This is my custom message"</td>
+                      <td className="border p-4">
+                        "This is my custom message"
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -3189,7 +3194,6 @@ const apidocs = () => {
           )}
           {selectedSection === 'Update A Address' && (
             <div>
-              {' '}
               <div>
                 <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
                   <span className="text-blue-500">7.4. </span>Update An Address
@@ -3474,7 +3478,7 @@ const apidocs = () => {
           {selectedSection === 'AVAILABLE HANDWRITING STYLES' && (
             <div>
               <h3 className="">
-                <span className="font-italic text-lg text-blue-500">8</span>{' '}
+                <span className="font-italic text-lg text-blue-500">8</span>
                 AVAILABLE HANDWRITING STYLES
               </h3>
             </div>

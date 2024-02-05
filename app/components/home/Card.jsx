@@ -138,24 +138,24 @@ const Card = () => {
             }}
           >
             <SwiperSlide>
-              <img className="w-full" src={Card1} alt="LogoSimplinotedpic" />{' '}
+              <img className="w-full" src={Card1} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
                 className="lg:w-[30%] w-full lg:absolute lg:mt-[-3rem]"
                 src={Card2}
                 alt="LogoSimplinotedpic"
-              />{' '}
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="w-full" src={Card3} alt="LogoSimplinotedpic" />{' '}
+              <img className="w-full" src={Card3} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
                 className="w-[90%] lg:mt-[-1rem]"
                 src={Card2}
                 alt="LogoSimplinotedpic"
-              />{' '}
+              />
             </SwiperSlide>
           </Swiper>
         </div>

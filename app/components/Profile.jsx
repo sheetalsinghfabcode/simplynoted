@@ -318,7 +318,6 @@ const Profile = ({
               />
               {error && (
                 <span className="text-[16px] text-[#ef6e6e] font-semibold">
-                  {' '}
                   Error: {error}
                 </span>
               )}
@@ -433,7 +432,6 @@ const Profile = ({
           <>
             {error && (
               <span className="text-[16px] text-[#ef6e6e] font-semibold">
-                {' '}
                 Error: {error}
               </span>
             )}

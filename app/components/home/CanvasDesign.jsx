@@ -1,4 +1,4 @@
-import react,{useEffect} from 'react';
+import react, {useEffect} from 'react';
 import First from '../../../assets/Video/First.mp4';
 import Second from '../../../assets/Video/Second.mp4';
 import Third from '../../../assets/Video/Third.mp4';
@@ -10,7 +10,6 @@ import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 
 const CanvasDesign = () => {
- 
   const navigate = useNavigate();
 
   return (
@@ -20,7 +19,7 @@ const CanvasDesign = () => {
         <div className="md:flex hidden justify-end  flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
           <div className="lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-10 lg:order-none order-2 data-background text-left">
             <div className="text-4xl  font-karla text-left  text-[#001A5F] ">
-              Send one or send{' '}
+              Send one or send
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 thousands
               </span>
@@ -65,7 +64,7 @@ const CanvasDesign = () => {
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5">
-            Send one or send{' '}
+            Send one or send
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
           <div className="w-full">
@@ -113,7 +112,7 @@ const CanvasDesign = () => {
           </div>
           <div className="lg:w-[33%] w-[80%] lg:mx-0 lg:mt-[60px] text-left  data-background">
             <div className="text-4xl  font-karla text-left    text-[#001A5F]">
-              Unlimited card{' '}
+              Unlimited card
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 options
               </span>
@@ -135,7 +134,7 @@ const CanvasDesign = () => {
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5 ">
-            Unlimited card{' '}
+            Unlimited card
             <span className="font-beauty text-6xl font-bold">options</span>
           </div>
           <div className="w-full">
@@ -201,7 +200,7 @@ const CanvasDesign = () => {
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5">
-            Gift cards &{' '}
+            Gift cards &
             <span className="font-beauty text-6xl font-bold">inserts</span>
           </div>
           <div className="w-full">

@@ -19,7 +19,6 @@ export default function privacypolicy() {
             </p>
 
             <p className="mt-[25px] font-medium  ">
-              {' '}
               PERSONAL INFORMATION WE COLLECT
             </p>
             <p className="mt-[25px]  ">
@@ -189,7 +188,7 @@ export default function privacypolicy() {
               advertising works,
               <br /> you can visit the Network Advertising Initiative’s (“NAI”)
               educational page at
-              <br />{' '}
+              <br />
               http://www.networkadvertising.org/understanding-online-advertising/how-
               <br />
               does-it-work.
@@ -229,7 +228,7 @@ export default function privacypolicy() {
               your information in order to fulfill contracts we might have with
               you (for <br /> example if you make an order through the Site), or
               otherwise to pursue our <br /> legitimate business interests
-              listed above. Additionally, please note that your <br />{' '}
+              listed above. Additionally, please note that your <br />
               information will be transferred outside of Europe, including to
               Canada and <br /> the United States.
             </p>

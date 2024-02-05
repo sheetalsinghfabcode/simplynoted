@@ -351,7 +351,6 @@ export function MessageWriting({
                 maxWidth: qrValue ? '93%' : '100%',
               }}
             >
-              {' '}
               {metafields.header.data}
             </span>
           </div>
@@ -395,7 +394,6 @@ export function MessageWriting({
                 maxWidth: qrValue ? '93%' : '100%',
               }}
             >
-              {' '}
               {metafields.footer.data}
             </span>
             {qrValue && qrValue.length ? (
@@ -1251,7 +1249,7 @@ export function MessageWriting({
                 className="cursor-pointer font-karla text-[#1b5299] lg:text-[13px] md:text-[11px] text-[16px] "
                 onClick={() => setIsOpen(true)}
               >
-                Try our <span className="text-[red]">New</span> AI Assistant to{' '}
+                Try our <span className="text-[red]">New</span> AI Assistant to
                 <br /> help write your message
               </span>
             </div>
@@ -1272,7 +1270,7 @@ export function MessageWriting({
                 <div>
                   <span className="font-karla text-[#1b5299]">
                     Optional Sign Off / Signature
-                  </span>{' '}
+                  </span>
                   <br />
                   <span className="charLeft">
                     {remainSign} characters remaining
@@ -1317,15 +1315,13 @@ export function MessageWriting({
                       ''
                     )}
                     <p>
-                      {' '}
                       Download the
                       <a
                         href="https://api.simplynoted.com/docs/bulk-template"
                         className="text-[blue]"
                       >
-                        {' '}
                         Bulk Order Template
-                      </a>{' '}
+                      </a>
                     </p>
                     <p
                       onClick={openModal}
@@ -1371,15 +1367,13 @@ export function MessageWriting({
                             ''
                           )}
                           <p>
-                            {' '}
                             Download the
                             <a
                               href="https://api.simplynoted.com/docs/bulk-template"
                               className="text-[blue]"
                             >
-                              {' '}
                               Bulk Order Template
-                            </a>{' '}
+                            </a>
                           </p>
                           <p
                             onClick={openModal}

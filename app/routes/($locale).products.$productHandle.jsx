@@ -450,7 +450,7 @@ export default function Product() {
 //                   as="span"
 //                   className="flex items-center justify-center gap-2"
 //                 >
-//                   <span>Add to Cart</span> <span>·</span>{' '}
+//                   <span>Add to Cart</span> <span>·</span>
 //                   <Money
 //                     withoutTrailingZeros
 //                     data={selectedVariant?.price}

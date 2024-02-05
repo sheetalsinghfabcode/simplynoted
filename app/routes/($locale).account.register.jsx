@@ -230,7 +230,6 @@ export default function Register() {
             />
             {nativePasswordError && (
               <p className="text-red-500 text-xs">
-                {' '}
                 {nativePasswordError} &nbsp;
               </p>
             )}

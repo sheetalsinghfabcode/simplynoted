@@ -76,7 +76,7 @@ export function ProductInfo({
     // }
     // setFont('select')
   }
-  
+
   return (
     <div className="flex justify-center md:w-[40%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
@@ -90,10 +90,9 @@ export function ProductInfo({
           {offPrice > 0 ? (
             <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
               <span className="line-through text-[black] text-[30px] leading-[47px] font-karla">
-                {' '}
                 ${product?.variants.nodes[0].price.amount}
-              </span>{' '}
-              ${' '}
+              </span>
+              $
               {(
                 product?.variants.nodes[0].price.amount -
                 (product?.variants.nodes[0].price.amount * offPrice) / 100

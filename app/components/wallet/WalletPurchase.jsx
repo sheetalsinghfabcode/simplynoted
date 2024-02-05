@@ -33,14 +33,13 @@ const WalletPurchase = ({
         <div className="flex justify-between items-center mt-[10px]  text-[#001a5f]">
           <span className="md:text-[16px] text-[12px]">Plan Amount</span>
           <span className="md:text-[16px] text-[12px]">
-            {' '}
             ${subscription === 'Always Free' || 0 ? 0 : subscriptionPrice}
           </span>
         </div>
 
         <div className="flex justify-between items-center mt-[10px]  text-[#001a5f]">
           <span className="md:text-[16px] text-[12px]">
-            Selected Prepaid Package: {selectedPlan}{' '}
+            Selected Prepaid Package: {selectedPlan}
           </span>
           <span className="md:text-[16px] text-[12px]">${amount || 0}</span>
         </div>

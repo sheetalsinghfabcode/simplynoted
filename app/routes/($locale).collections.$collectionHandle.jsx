@@ -291,7 +291,7 @@ export default function Collection() {
   }, [offSetVal]);
   return (
     <>
-<div className='md:p-5 p-3'>
+      <div className="md:p-5 p-3">
         {/* <PageHeader heading={collection.title}>
         {collection?.description && (
           <div className="flex items-baseline justify-between w-full">
@@ -304,77 +304,77 @@ export default function Collection() {
         )}
       </PageHeader> */}
         <DynamicTitle title={'Simply Noted'} title2={'cards'} />
-        
-          <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">
-            <div className="xl:gap-2 gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
-              <DynamicButton
-                className="btnShadow bg-[#001a5f] md:h-[55px] h-[44px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2 hover:bg-[#001a5f]"
-                text="Create A Custom Card"
-                onClickFunction={CreateCustomCard}
-              />
-             
-              <DynamicButton
-                className="btnShadow bg-[#EF6E6E] md:h-[55px] h-[45px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2"
-                text="View My Custom Card"
-                onClickFunction={() => customisedCard()}
-              />
-            </div>
-            <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center items-center selectArrow sm:mt-[0px] mt-[15px]">
-              <h2 className="md:text-[24px] text-[18px] text-[#001a5f]">
-                Choose a card from our collection:{' '}
-              </h2>
-              <select
-                name=""
-                id=""
-                className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px]"
-                onChange={(e) => changeHandle(e.target.value)}
-              >
-                <option className="w-full" selected disabled>
-                  {collectionHandle}{' '}
-                </option>
 
-                {data &&
-                  data.map((item) => (
-                    <option value={item.node.handle}>{item.node.handle}</option>
+        <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">
+          <div className="xl:gap-2 gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
+            <DynamicButton
+              className="btnShadow bg-[#001a5f] md:h-[55px] h-[44px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2 hover:bg-[#001a5f]"
+              text="Create A Custom Card"
+              onClickFunction={CreateCustomCard}
+            />
+
+            <DynamicButton
+              className="btnShadow bg-[#EF6E6E] md:h-[55px] h-[45px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2"
+              text="View My Custom Card"
+              onClickFunction={() => customisedCard()}
+            />
+          </div>
+          <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center items-center selectArrow sm:mt-[0px] mt-[15px]">
+            <h2 className="md:text-[24px] text-[18px] text-[#001a5f]">
+              Choose a card from our collection:
+            </h2>
+            <select
+              name=""
+              id=""
+              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px]"
+              onChange={(e) => changeHandle(e.target.value)}
+            >
+              <option className="w-full" selected disabled>
+                {collectionHandle}
+              </option>
+
+              {data &&
+                data.map((item) => (
+                  <option value={item.node.handle}>{item.node.handle}</option>
+                ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-[24px]">
+          {myColletionData.length === 0 && !checkState && (
+            <CircularLoader color="#ef6e6e" />
+          )}
+          <Grid layout="products">
+            {!checkState ? (
+              <>
+                {myColletionData &&
+                  myColletionData.map((product, i) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      loading={getImageLoadingPriority(i)}
+                      offPrice={offPrice}
+                    />
                   ))}
-              </select>
+              </>
+            ) : (
+              <>
+                <CustomeCard />
+              </>
+            )}
+          </Grid>
+          {loadMore && collectionHandle == 'customisable-cards' && (
+            <div className="flex justify-center mt-[2rem]">
+              <DynamicButton
+                className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
+                text="Load More"
+                onClickFunction={() => loadMoreCustomData()}
+              />
             </div>
-          </div>
-
-          <div className="mt-[24px]">
-            {myColletionData.length === 0 && !checkState && (
-              <CircularLoader color="#ef6e6e" />
-            )}
-            <Grid layout="products">
-              {!checkState ? (
-                <>
-                  {myColletionData &&
-                    myColletionData.map((product, i) => (
-                      <ProductCard
-                        key={product.id}
-                        product={product}
-                        loading={getImageLoadingPriority(i)}
-                        offPrice={offPrice}
-                      />
-                    ))}
-                </>
-              ) : (
-                <>
-                  <CustomeCard />
-                </>
-              )}
-            </Grid>
-            {loadMore && collectionHandle == 'customisable-cards' && (
-              <div className="flex justify-center mt-[2rem]">
-                <DynamicButton
-                  className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
-                  text="Load More"
-                  onClickFunction={() => loadMoreCustomData()}
-                />
-              </div>
-            )}
-          </div>
-          {/* <Pagination connection={collection.products}>
+          )}
+        </div>
+        {/* <Pagination connection={collection.products}>
           {({ nodes, isLoading, PreviousLink, NextLink }) => (
             <>
               <div className='gap-4'>
@@ -422,8 +422,8 @@ export default function Collection() {
             </>
           )}
         </Pagination> */}
-          {/* </SortFilter> */}
-       
+        {/* </SortFilter> */}
+
         <LoginModal
           title={' Check your Custom Card'}
           show={loginModal}
@@ -440,8 +440,8 @@ export default function Collection() {
           confirmText="Login"
           cancelText="Register"
         />
-        </div>
-      </>
+      </div>
+    </>
   );
 }
 

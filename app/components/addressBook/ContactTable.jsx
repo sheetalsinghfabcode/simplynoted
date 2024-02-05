@@ -560,7 +560,6 @@ const ContactTable = ({
                     onClick={openModal}
                     className="font-bold text-[14px] md:text-[14px] text-[12px] text-black px-[10px] cursor-pointer underline"
                   >
-                    {' '}
                     View Instructions
                   </span>
                 </div>
@@ -723,7 +722,7 @@ const ContactTable = ({
                       disabled={!canPreviousPage}
                     >
                       {'<<'}
-                    </button>{' '}
+                    </button>
                     <button
                       onClick={() => {
                         previousPage();
@@ -735,7 +734,7 @@ const ContactTable = ({
                       disabled={!canPreviousPage}
                     >
                       {'<'}
-                    </button>{' '}
+                    </button>
                     <button
                       onClick={() => {
                         nextPage();
@@ -747,19 +746,19 @@ const ContactTable = ({
                       disabled={!canNextPage}
                     >
                       {'>'}
-                    </button>{' '}
+                    </button>
                     <button
                       onClick={() => gotoPage(pageCount - 1)}
                       disabled={!canNextPage}
                     >
                       {'>>'}
-                    </button>{' '}
+                    </button>
                   </div>
                   <div>
-                    Page{' '}
+                    Page
                     <strong>
                       {pageIndex + 1} of {pageOptions.length}
-                    </strong>{' '}
+                    </strong>
                   </div>
                 </div>
               )}
