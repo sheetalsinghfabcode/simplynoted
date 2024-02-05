@@ -41,6 +41,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     totalPrice: totalPrize,
   });
   const [errors, setErrors] = useState({});
+  const [walletBalance,setWalletBalance] = useState('')
 
   function showWalletBtn() {
     setShowWallet(true);
@@ -154,6 +155,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
       // console.log(json, 'creditCard Details');
       if (json) {
         setSavedCart(json.payments);
+        setWalletBalance(json.stripe)
       }
     } catch (error) {
       console.error(error, 'error at credit Card');
@@ -272,7 +274,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                         <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
                           <span className="flex-1">WALLET BALANCE </span>
                           <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
-                            ${Number(10000).toLocaleString()}
+                          ${walletBalance && walletBalance.balance?walletBalance.balance:''}
                           </span>
                         </span>
                       </div>

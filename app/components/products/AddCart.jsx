@@ -98,6 +98,7 @@ export function AddCart({
   const [checkSelAddress, setCheckSelAddress] = useState(false);
   const [stateCheckCart, setStateCheckCart] = useState(true);
   const [reqFields, setReqFields] = useState(false);
+  const [offPrice, setOffPrice] = useState('');
 
   // const setFirstShippingMethod = () => {
   //     if(shippingData){
@@ -233,6 +234,8 @@ export function AddCart({
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
+    let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
+    setOffPrice(discountedCount);
     console.log(cartDataReq, 'cartDataReq');
     setMesgtext(cartDataReq.msg);
     getRecipient();
@@ -242,7 +245,7 @@ export function AddCart({
   let arrOfObj = {
     productTitle: productData.product.title ? productData.product.title : null,
     variant_id: productData.id,
-    price: productData.price.amount,
+    price: offPrice > 0?(productData.price.amount -(productData.price.amount * offPrice) / 100).toFixed(2):productData.price.amount,
     productImg: productData.image.url,
     senderAddress: selectedItem2,
     reciverAddress: selectedItem,

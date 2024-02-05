@@ -1362,7 +1362,7 @@ export default function AddCartFunc() {
         <CheckoutData
           setShowCartPage={setShowCartPage}
           StripeKey={StripeKey}
-          totalPrize={totalPrize}
+          totalPrize={totalPrize.toFixed(2)}
         />
       )}
 
