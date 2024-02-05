@@ -46,7 +46,7 @@ export function CheckoutData({
     totalPrice: totalPrize,
   });
   const [errors, setErrors] = useState({});
-  const [walletBalance,setWalletBalance] = useState('')
+  const [walletBalance, setWalletBalance] = useState('');
 
   function showWalletBtn() {
     setShowWallet(true);
@@ -95,7 +95,7 @@ export function CheckoutData({
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${id}`,
         {
           method: 'POST',
           headers: {
@@ -141,6 +141,7 @@ export function CheckoutData({
         },
       );
       const jsonData = await res.json();
+      
       // console.log(jsonData, 'addNewCard');
       setNewCardAdded(true);
       setShowCardBox(false);
@@ -159,7 +160,7 @@ export function CheckoutData({
       // console.log(json, 'creditCard Details');
       if (json) {
         setSavedCart(json.payments);
-        setWalletBalance(json.stripe)
+        setWalletBalance(json.stripe);
       }
     } catch (error) {
       console.error(error, 'error at credit Card');
@@ -236,6 +237,8 @@ export function CheckoutData({
     }));
   };
 
+  
+
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.address.country,
   );
@@ -243,6 +246,17 @@ export function CheckoutData({
   function onpenAddCardModal() {
     setShowCardBox(true);
   }
+
+  const setFirstPaymentId = () => {
+    if (savedCard && savedCard.length > 0) {
+      setPaymentMethodId(savedCard[0].paymentId); // Set the first payment ID
+    }
+  };
+
+  // Calling the function to set the first payment ID when the component renders
+  useEffect(() => {
+    setFirstPaymentId();
+  }, [savedCard]); // Run when savedCard changes
 
   async function paymentPurchase() {
     try {
@@ -304,7 +318,7 @@ export function CheckoutData({
                 gift_id: '39532033146985',
                 recipient_id: item.reciverAddress._id,
                 recipient_fullName: recieverFullName,
-                recipient_businessName: item.reciverAddressbusinessName,
+                recipient_businessName: item.reciverAddress.businessName,
                 recipient_address1: item.reciverAddress.address1,
                 recipient_address2: item.reciverAddress.address2,
                 recipient_city: item.reciverAddress.city,
@@ -329,11 +343,13 @@ export function CheckoutData({
 
         cartTotal: prices.totalPrice,
         wallet: showWallet,
-        paymentMethodKey: !showWalletBtn && 'pm_1O5pFsKwXDGuBPYASKQzhx0j',
-        discountCode: discountCouponCode.payloadValue,
-        discountValue: discountCouponCode.apiDiscountResponse.value,
-        discountValueType: discountCouponCode.apiDiscountResponse.value_type,
+        paymentMethodKey: !showWalletBtn && paymentMethodId,
+        discountCode: discountCouponCode?.payloadValue,
+        discountValue: discountCouponCode?.apiDiscountResponse.value,
+        discountValueType: discountCouponCode?.apiDiscountResponse.value_type,
       };
+
+      console.log("payload",payload);
 
       const res = await fetch(
         `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
@@ -355,6 +371,7 @@ export function CheckoutData({
   console.log('discountCouponCode', discountCouponCode);
   console.log('prices', prices);
   console.log('savedCard', savedCard);
+  console.log('paymentMethodId', paymentMethodId);
 
   return (
     <>
@@ -391,7 +408,10 @@ export function CheckoutData({
                         <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
                           <span className="flex-1">WALLET BALANCE </span>
                           <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
-                          ${walletBalance && walletBalance.balance?walletBalance.balance:''}
+                            $
+                            {walletBalance && walletBalance.balance
+                              ? walletBalance.balance
+                              : ''}
                           </span>
                         </span>
                       </div>
@@ -408,7 +428,7 @@ export function CheckoutData({
                       type="radio"
                       className="cursor-pointer"
                       name="action"
-                      checked={!showWallet}
+                      checked={showCardDetail}
                       style={{boxShadow: 'none'}}
                     />
                     &emsp; USE CREDIT CARD
@@ -426,11 +446,15 @@ export function CheckoutData({
                       {savedCard &&
                         savedCard.map((item) => (
                           <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between flex">
-                            <div className="flex justify-between items-center text-xs font-bold">
+                            <div
+                              onClick={() => setPaymentMethodId(item.paymentId)}
+                              className="flex justify-between cursor-pointer items-center text-xs font-bold"
+                            >
                               <input
+                                checked={paymentMethodId === item.paymentId}
                                 type="radio"
                                 style={{boxShadow: 'none'}}
-                                name="action"
+                                name="stipe-action"
                                 className="mr-2 cursor-pointer"
                               />
                               <span className=" tracking-wide">
@@ -449,7 +473,8 @@ export function CheckoutData({
                         <div className="text-sm flex items-center">
                           <input
                             type="radio"
-                            name="action"
+                            name="saved-action"
+                            checked
                             id="saved-credit-card"
                             className="cursor-pointer"
                             style={{boxShadow: 'none'}}
@@ -510,7 +535,7 @@ export function CheckoutData({
                   )}
                   <div className="w-full h-[1px] bg-black"></div>
                   <span className="flex justify-between items-center mt-3 mb-3 font-bold">
-                    Total <span>${prices.totalPrice}</span>
+                    Total <span>${Number(prices.totalPrice)?.toFixed(2)}</span>
                   </span>
                   <div className="font-bold">
                     <span>If you have a discount code, enter it here:</span>
