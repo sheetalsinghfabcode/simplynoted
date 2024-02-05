@@ -2,7 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 @import 'react-datepicker/dist/react-datepicker';
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-SemiBold.ttf);
+  font-weight: 600;
+}
 
 /* Tokens */
 :root {
@@ -265,6 +290,17 @@ nav a {
 .robot-gif {
   margin-top: -37px;
 }
+
+.navbar-cart-icon {
+  width: 25px;
+  height: 29px;
+  margin-top: -29px;
+  color: #1e1e1e;
+}
+.navbar-cart-icon:hover {
+  color: #1b5299;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -281,14 +317,14 @@ nav a {
   left: 60%;
   transform: translateX(-30%);
   color: #777777;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.1px;
   font-weight: lighter;
   width: 19rem;
   line-height: 25px;
   transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
   margin-top: 0;
-  width: 30%;
+  width: 25%;
 }
 
 .dropdown > div {

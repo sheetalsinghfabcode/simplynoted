@@ -527,7 +527,7 @@ const Business = () => {
                       alt="business_arrow"
                     />
                     <img
-                      className="h-[455px] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
+                      className="h-[455px] xl:ml-[5%] lg:ml-[7%] absolute mt-[91px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />
