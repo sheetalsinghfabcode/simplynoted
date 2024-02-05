@@ -1360,6 +1360,7 @@ export default function AddCartFunc() {
         </>
       ) : (
         <CheckoutData
+        cartData={cartData}
           setShowCartPage={setShowCartPage}
           StripeKey={StripeKey}
           totalPrize={totalPrize.toFixed(2)}
