@@ -11,7 +11,7 @@ export default function Home({contentfulBanner}) {
   const Navigate = useNavigate();
   return (
     <div>
-      <div className="sec-section relative lg:flex inline-block w-full overflow-x-clip lg:mt-7">
+      <div className="sec-section relative lg:flex inline-block w-full overflow-x-clip lg:mt-10">
         <div className="text-center w-full">
           <div className="handwritten-notice">
             <h3 className="inline-block">
