@@ -8,7 +8,12 @@ import location from '../../location.json';
 import Loader from './modal/Loader';
 import DynamicTitle from './Title';
 
-export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
+export function CheckoutData({
+  setShowCartPage,
+  StripeKey,
+  totalPrize,
+  cartData,
+}) {
   const stripe = loadStripe(`${StripeKey}`);
   let customerid, fullName, userEmail, firstName, lastName;
   const [showWallet, setShowWallet] = useState(true);
@@ -17,7 +22,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
   const [savedCard, setSavedCart] = useState([]);
   const [paymentMethodId, setPaymentMethodId] = useState('');
   const [newCardAdded, setNewCardAdded] = useState(false);
-  const [custmerID, setCustomertID] = useState('');
+  const [customerID, setCustomertID] = useState('');
   const [loader, setloader] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -90,7 +95,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${custmerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -99,7 +104,6 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
           body: JSON.stringify({
             name: formData.name || '',
             email: formData.email || '',
-
             'address[line1]': formData.address.line1 || '',
             'address[line2]': formData.address.line2 || '',
             'address[city]': formData.address.city || '',
@@ -125,7 +129,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${custmerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -172,7 +176,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
         return 'Already used API with the same value.';
       }
       let res = await fetch(
-        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${custmerID}`,
+        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       );
       const data = await res.json();
       if (res.ok && data) {
@@ -239,6 +243,119 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
   function onpenAddCardModal() {
     setShowCardBox(true);
   }
+
+  async function paymentPurchase() {
+    try {
+      const formData = new FormData();
+      const payload = {
+        billingAddress: {
+          firstName: 'Pradeep',
+          lastName: 'singh',
+          email: 'fabprojectmanager@gmail.com',
+          address: 'test',
+          apartment: 'test',
+          city: 'test',
+          country: 'US',
+          state: 'Florida',
+        },
+        cartNote: '',
+        cartItems:
+          cartData &&
+          cartData?.map((item) => {
+            let senderFullName =
+              item.senderAddress.firstName + ' ' + item.senderAddress.lastName;
+            let recieverFullName =
+              item.reciverAddress.firstName +
+              ' ' +
+              item.reciverAddress.lastName;
+            console.log('item', item);
+            return {
+              productTitle: item.productTitle,
+              variant_id: item.variant_id,
+              productUrlGet: item.productGetUrl,
+              productPrice: item.price,
+              productUrl:
+                'https://simplynoted.com/collections/best-sellers/products/cactus-thank-you',
+              qyt: 1,
+              proImage: item.productImg,
+              properties: {
+                bulk_shipping_address: '\n  \n  \n',
+                selectedText: 'Single Card',
+                font_family: item.fontFamily,
+                custom_message: item.messageData,
+                font_size: '60px',
+                font_size_cust_card: '60px',
+                line_ht_cust_card: '60px',
+                signoff: item.endText,
+                custom_font: '',
+                font_selection: item.fontFamily,
+                recipient_upload: 'Not Applicable',
+                ship_date: '',
+                sender_fullName: senderFullName,
+                sender_address1: item.senderAddress.address1,
+                sender_address2: item.senderAddress.address2,
+                sender_city: item.senderAddress.city,
+                sender_state: item.senderAddress.state,
+                sender_zip: item.senderAddress.zip,
+                sender_country: item.senderAddress.country,
+                sender_id: item.senderAddress._id,
+                gift_card_ID: '1696942729953',
+                uqId: '1696942729953',
+                gift_id: '39532033146985',
+                recipient_id: item.reciverAddress._id,
+                recipient_fullName: recieverFullName,
+                recipient_businessName: item.reciverAddressbusinessName,
+                recipient_address1: item.reciverAddress.address1,
+                recipient_address2: item.reciverAddress.address2,
+                recipient_city: item.reciverAddress.city,
+                recipient_state: item.reciverAddress.state,
+                recipient_zip: item.reciverAddress.zip,
+                recipient_country: item.reciverAddress.country,
+              },
+              additionalProducts: {
+                postageUS: {
+                  id: 40677547769961,
+                  url: '/products/postage',
+                  qyt: 1,
+                },
+                giftCard: {
+                  id: '39532033146985',
+                  url: '/products/visa-gift-card_new',
+                  qyt: 1,
+                },
+              },
+            };
+          }),
+
+        cartTotal: prices.totalPrice,
+        wallet: showWallet,
+        paymentMethodKey: !showWalletBtn && 'pm_1O5pFsKwXDGuBPYASKQzhx0j',
+        discountCode: discountCouponCode.payloadValue,
+        discountValue: discountCouponCode.apiDiscountResponse.value,
+        discountValueType: discountCouponCode.apiDiscountResponse.value_type,
+      };
+
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: payload,
+        },
+      );
+      const json = await res.json();
+    } catch (error) {
+      console.error(error, 'error on CreateCard');
+    }
+  }
+
+  console.log('cartData', cartData);
+  console.log('discountCouponCode', discountCouponCode);
+  console.log('prices', prices);
+  console.log('savedCard', savedCard);
+
   return (
     <>
       {loader ? (
@@ -432,7 +549,10 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <button className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold">
+                  <button
+                    onClick={paymentPurchase}
+                    className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
+                  >
                     PURCHASE
                   </button>
                 </div>
