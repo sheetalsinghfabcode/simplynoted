@@ -429,6 +429,7 @@ export function CheckoutData({
                             <div className="flex justify-between items-center text-xs font-bold">
                               <input
                                 type="radio"
+                                style={{boxShadow: 'none'}}
                                 name="action"
                                 className="mr-2 cursor-pointer"
                               />
