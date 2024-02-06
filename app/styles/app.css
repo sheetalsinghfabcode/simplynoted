@@ -330,12 +330,14 @@ nav a {
 .dropdown > div {
   cursor: pointer;
 }
-
 .dropdown-list {
   padding: 35px 42px;
 }
+.dropdown-list li {
+  font-weight: 300;
+}
 .dropdown-list li:hover {
-  color: gray;
+  color: #1b5299;
 }
 
 .tooltip {

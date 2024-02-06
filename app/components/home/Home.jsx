@@ -37,8 +37,9 @@ export default function Home({contentfulBanner}) {
                 />
                 <span className="absolute bottom-[28px] border-b-2 border-[#001A5F] ml-[12px] w-[24%]"></span>
               </div>
-              {/* <div>
-          <div className="absolute bottom-0 border-b-4 border-[#001A5F] w-[20%]"></div></div> */}
+              <div>
+                <div className="absolute bottom-0 border-b-4 border-[#001A5F] w-[20%]"></div>
+              </div>
             </h3>
           </div>
           <div className="grid lg:gap-[20px] gap-[4px] mt-[25px]">

@@ -122,7 +122,11 @@ function Header({title, menu}) {
         isHome={isHome}
         title={
           <div style={{minWidth: '170px'}}>
-            <img className="max-w-full" src={nav_logo} style={{margin: '13px 20px 0 0px'}} />
+            <img
+              className="max-w-full"
+              src={nav_logo}
+              style={{margin: '13px 20px 0 0px'}}
+            />
           </div>
         }
         openCart={openCart}
@@ -681,7 +685,7 @@ function DesktopHeader({isHome, menu}) {
                                 return false;
                               }}
                             >
-                              Get a Custom Quote
+                              <li> Get a Custom Quote </li>
                             </button>
                           </Link>
                           <Link to="/roicalculator">
@@ -864,9 +868,14 @@ function DesktopHeader({isHome, menu}) {
             </div>
           ) : (
             <DynamicButton
-              style={{fontSize: '17px', padding: '10px', paddingTop: '13px'}}
+              style={{
+                fontSize: '17px',
+                padding: '10px',
+                paddingTop: '13px',
+                fontWeight: '600 !important',
+              }}
               text={customerId ? 'Account →' : 'Sign in →'}
-              className="login-button font-semibold"
+              className="login-button"
               onHoverColorEnabled={false}
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
