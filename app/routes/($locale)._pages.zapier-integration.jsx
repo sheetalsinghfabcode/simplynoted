@@ -16,7 +16,7 @@ import 'swiper/css/autoplay';
 export default function Zapier() {
   return (
     <div>
-      <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
+      <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto w-[90%]">
         <div className="lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <img
@@ -34,8 +34,8 @@ export default function Zapier() {
             Integrate and automate sending real handwritten notes from 2,500+
             softwares instantly. Request access to our Zapier App today!
           </p>
-          <div className="absolute mt-[34px]">
-            <div className="z-10 flex justify-center">
+          <div className='flex justify-center lg:justify-start md:justify-center mt-[16px]'>
+            <div className="INTEGRATE flex justify-center">
               {' '}
               {/* Higher z-index for top div */}
               <DynamicButton
@@ -46,20 +46,12 @@ export default function Zapier() {
                 text="INTEGRATE NOW"
                 className="mt-[6px] text-[16px] font-bold"
               />
-            </div>
-            <div className="z-[-1] relative top-[-56px]">
-              {' '}
-              {/* Lower z-index for bottom div */}
-              <img
-                src="https://simplynoted.com/cdn/shop/files/Group_460.svg"
-                alt="Some description"
-              />
-            </div>
+          </div>
           </div>
         </div>
         <div className="lg:hidden block sm:mb-10 mb-[2.5rem]">
           <img
-            className="mx-auto"
+            className="mx-auto mb-[12px]"
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
             alt="shopify"
           />
@@ -75,7 +67,7 @@ export default function Zapier() {
         </div>
       </div>
 
-      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[130px] mt-[141px]">
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[130px] mt-[50px]">
         <Swiper
           modules={[Autoplay]}
           direction={'horizontal'}
@@ -184,11 +176,11 @@ export default function Zapier() {
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
-              <p className='color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]'>
-              Instantly Integrate With 
+              <p className="color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]">
+                Instantly Integrate With
               </p>
-              <p className='color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]'>
-              1,000s of Applications
+              <p className="color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]">
+                1,000s of Applications
               </p>
             </div>
           </div>
@@ -198,7 +190,7 @@ export default function Zapier() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[17px] md:text-[14px]  lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')
@@ -239,7 +231,10 @@ export default function Zapier() {
       <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
-            <div className="  text-[28px] font-karla text-[#001A5F]">
+            <div
+              style={{fontSize: '49px', fontWeight: 500}}
+              className="text-[#001A5F]"
+            >
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
@@ -251,7 +246,7 @@ export default function Zapier() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[17px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')
@@ -259,7 +254,7 @@ export default function Zapier() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2 lg:w-[50%] md:w-[26%] text-[15px] mt-5"
+              className="btn2 lg:w-[50%] md:w-[26%] text-[17px] mt-5"
               onClickFunction={() => navigate('/blogs')}
             />
           </div>
@@ -304,7 +299,7 @@ export default function Zapier() {
             alt="shopify"
           />
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
-            Integrate with Zapier
+            <div className='mb-[12px]'>Integrate with Zapier</div>
             <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
               <DynamicButton
                 text="INTEGRATE NOW"

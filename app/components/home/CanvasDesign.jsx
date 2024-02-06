@@ -18,7 +18,7 @@ const CanvasDesign = () => {
         {/* First */}
         <div className="md:flex hidden justify-end  flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
           <div className="lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-10 lg:order-none order-2 data-background text-left">
-            <div className="text-4xl  font-karla text-left  text-[#001A5F] ">
+            <div className="text-4xl text-custom font-custom  text-left  text-[#001A5F] ">
               Send one or send
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 thousands
