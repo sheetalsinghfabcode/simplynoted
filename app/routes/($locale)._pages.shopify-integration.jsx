@@ -55,7 +55,7 @@ export default function shopify() {
         </div>
       </div>
 
-      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[74px] mt-[40px]">
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[139px] mt-[40px]">
         <Swiper
           modules={[Autoplay]}
           direction={'horizontal'}
@@ -195,7 +195,7 @@ export default function shopify() {
         </div>
       </div>
 
-      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6">
+      <div className=" mt-[105px]">
         <img
           className="simplinoted-card-image"
           src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
