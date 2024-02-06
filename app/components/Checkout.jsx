@@ -8,7 +8,13 @@ import location from '../../location.json';
 import Loader from './modal/Loader';
 import DynamicTitle from './Title';
 
-export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
+export function CheckoutData({
+  setShowCartPage,
+  StripeKey,
+  totalPrize,
+  cartData,
+  cartNote
+}) {
   const stripe = loadStripe(`${StripeKey}`);
   let customerid, fullName, userEmail, firstName, lastName;
   const [showWallet, setShowWallet] = useState(true);
@@ -17,8 +23,9 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
   const [savedCard, setSavedCart] = useState([]);
   const [paymentMethodId, setPaymentMethodId] = useState('');
   const [newCardAdded, setNewCardAdded] = useState(false);
-  const [custmerID, setCustomertID] = useState('');
+  const [customerID, setCustomertID] = useState('');
   const [loader, setloader] = useState(false);
+  const [customerInformation, setCustomerInformation] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -41,7 +48,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     totalPrice: totalPrize,
   });
   const [errors, setErrors] = useState({});
-  const [walletBalance,setWalletBalance] = useState('')
+  const [walletBalance, setWalletBalance] = useState('');
 
   function showWalletBtn() {
     setShowWallet(true);
@@ -90,7 +97,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${custmerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${id}`,
         {
           method: 'POST',
           headers: {
@@ -99,7 +106,6 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
           body: JSON.stringify({
             name: formData.name || '',
             email: formData.email || '',
-
             'address[line1]': formData.address.line1 || '',
             'address[line2]': formData.address.line2 || '',
             'address[city]': formData.address.city || '',
@@ -110,12 +116,9 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
         },
       );
       const json = await res.json();
-      // console.log(json, 'createCustomerId Response');
-      // await addNewCreditCard(id, json.stripeCustomerId)
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
-      // }
     } catch (error) {
       setloader(false);
       console.error(error, 'error on CreateCard');
@@ -125,7 +128,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${custmerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -137,7 +140,6 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
         },
       );
       const jsonData = await res.json();
-      // console.log(jsonData, 'addNewCard');
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
@@ -152,10 +154,10 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
         `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
-      // console.log(json, 'creditCard Details');
       if (json) {
+        setCustomerInformation(json.customer)
         setSavedCart(json.payments);
-        setWalletBalance(json.stripe)
+        setWalletBalance(json.stripe);
       }
     } catch (error) {
       console.error(error, 'error at credit Card');
@@ -172,7 +174,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
         return 'Already used API with the same value.';
       }
       let res = await fetch(
-        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${custmerID}`,
+        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       );
       const data = await res.json();
       if (res.ok && data) {
@@ -232,13 +234,155 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
     }));
   };
 
+  
+
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.address.country,
   );
-  // console.log(formData, 'formData');
   function onpenAddCardModal() {
     setShowCardBox(true);
   }
+
+  const setFirstPaymentId = () => {
+    if (savedCard && savedCard.length > 0) {
+      setPaymentMethodId(savedCard[0].paymentId); // Set the first payment ID
+    }
+  };
+
+  // Calling the function to set the first payment ID when the component renders
+  useEffect(() => {
+    setFirstPaymentId();
+  }, [savedCard]); // Run when savedCard changes
+
+  function separateFullName(fullName) {
+    // Split the full name into an array of words
+    let nameArray = fullName?.split(' ');
+
+    // Extract the first name (first element of the array)
+    let firstName = nameArray && nameArray[0];
+
+    // Extract the last name (join the remaining elements of the array with a space)
+    let lastName = nameArray?.slice(1).join(' ');
+
+    // Return an object with firstName and lastName properties
+    return {
+        firstName: firstName,
+        lastName: lastName
+    };
+}
+
+// Example usage:
+let name = customerInformation?.name;
+let separatedNames = separateFullName(name);
+
+
+  async function paymentPurchase() {
+    try {
+      const formData = new FormData();
+      const payload = {
+        billingAddress: {
+          firstName: separatedNames?.firstName,
+          lastName: separatedNames?.lastName,
+          email: customerInformation?.email,
+          address: customerInformation.address?.line1,
+          apartment: customerInformation.address?.line2,
+          city: customerInformation.address?.city,
+          country: customerInformation.address?.country,
+          state: customerInformation.address?.state,
+        },
+        cartNote: cartNote ? cartNote : "",
+        cartItems:
+          cartData &&
+          cartData?.map((item) => {
+            let senderFullName =
+              item.senderAddress.firstName + ' ' + item.senderAddress.lastName;
+            let recieverFullName =
+              item.reciverAddress.firstName +
+              ' ' +
+              item.reciverAddress.lastName;
+            return {
+              productTitle: item.productTitle,
+              variant_id: item.variant_id,
+              productUrlGet: item.productGetUrl,
+              productPrice: item.price,
+              productUrl:
+                'https://simplynoted.com/collections/best-sellers/products/cactus-thank-you',
+              qyt: 1,
+              proImage: item.productImg,
+              properties: {
+                bulk_shipping_address: '\n  \n  \n',
+                selectedText: 'Single Card',
+                font_family: item.fontFamily,
+                custom_message: item.messageData,
+                font_size: '60px',
+                font_size_cust_card: '60px',
+                line_ht_cust_card: '60px',
+                signoff: item.endText,
+                custom_font: '',
+                font_selection: item.fontFamily,
+                recipient_upload: 'Not Applicable',
+                ship_date: '',
+                sender_fullName: senderFullName,
+                sender_address1: item.senderAddress.address1,
+                sender_address2: item.senderAddress.address2,
+                sender_city: item.senderAddress.city,
+                sender_state: item.senderAddress.state,
+                sender_zip: item.senderAddress.zip,
+                sender_country: item.senderAddress.country,
+                sender_id: item.senderAddress._id,
+                gift_card_ID: '1696942729953',
+                uqId: '1696942729953',
+                gift_id: '39532033146985',
+                recipient_id: item.reciverAddress._id,
+                recipient_fullName: recieverFullName,
+                recipient_businessName: item.reciverAddress.businessName,
+                recipient_address1: item.reciverAddress.address1,
+                recipient_address2: item.reciverAddress.address2,
+                recipient_city: item.reciverAddress.city,
+                recipient_state: item.reciverAddress.state,
+                recipient_zip: item.reciverAddress.zip,
+                recipient_country: item.reciverAddress.country,
+              },
+              additionalProducts: {
+                postageUS: {
+                  id: 40677547769961,
+                  url: '/products/postage',
+                  qyt: 1,
+                },
+                giftCard: {
+                  id: '39532033146985',
+                  url: '/products/visa-gift-card_new',
+                  qyt: 1,
+                },
+              },
+            };
+          }),
+
+        cartTotal: prices?.totalPrice,
+        wallet: showWallet,
+        paymentMethodKey: !showWallet && paymentMethodId,
+        discountCode: discountCouponCode?.payloadValue,
+        discountValue: discountCouponCode?.apiDiscountResponse?.value ? discountCouponCode.apiDiscountResponse.value : "",
+        discountValueType: discountCouponCode?.apiDiscountResponse?.value_type ? discountCouponCode.apiDiscountResponse.value_type : "",
+      };
+
+
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: payload,
+        },
+      );
+      const json = await res.json();
+    } catch (error) {
+      console.error(error, 'error on CreateCard');
+    }
+  }
+
   return (
     <>
       {loader ? (
@@ -274,7 +418,10 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                         <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
                           <span className="flex-1">WALLET BALANCE </span>
                           <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
-                          ${walletBalance && walletBalance.balance?walletBalance.balance:''}
+                            $
+                            {walletBalance && walletBalance.balance
+                              ? walletBalance.balance
+                              : ''}
                           </span>
                         </span>
                       </div>
@@ -291,7 +438,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                       type="radio"
                       className="cursor-pointer"
                       name="action"
-                      checked={!showWallet}
+                      checked={showCardDetail}
                       style={{boxShadow: 'none'}}
                     />
                     &emsp; USE CREDIT CARD
@@ -309,10 +456,15 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                       {savedCard &&
                         savedCard.map((item) => (
                           <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between flex">
-                            <div className="flex justify-between items-center text-xs font-bold">
+                            <div
+                              onClick={() => setPaymentMethodId(item.paymentId)}
+                              className="flex justify-between cursor-pointer items-center text-xs font-bold"
+                            >
                               <input
+                                checked={paymentMethodId === item.paymentId}
                                 type="radio"
-                                name="action"
+                                style={{boxShadow: 'none'}}
+                                name="stipe-action"
                                 className="mr-2 cursor-pointer"
                               />
                               <span className=" tracking-wide">
@@ -331,7 +483,8 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                         <div className="text-sm flex items-center">
                           <input
                             type="radio"
-                            name="action"
+                            name="saved-action"
+                            checked
                             id="saved-credit-card"
                             className="cursor-pointer"
                             style={{boxShadow: 'none'}}
@@ -392,7 +545,7 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                   )}
                   <div className="w-full h-[1px] bg-black"></div>
                   <span className="flex justify-between items-center mt-3 mb-3 font-bold">
-                    Total <span>${prices.totalPrice}</span>
+                    Total <span>${Number(prices.totalPrice)?.toFixed(2)}</span>
                   </span>
                   <div className="font-bold">
                     <span>If you have a discount code, enter it here:</span>
@@ -432,7 +585,10 @@ export function CheckoutData({setShowCartPage, StripeKey, totalPrize}) {
                   </div>
                 </div>
                 <div className="mt-2">
-                  <button className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold">
+                  <button
+                    onClick={paymentPurchase}
+                    className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
+                  >
                     PURCHASE
                   </button>
                 </div>
