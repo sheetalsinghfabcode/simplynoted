@@ -140,7 +140,6 @@ export function CheckoutData({
         },
       );
       const jsonData = await res.json();
-
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
@@ -235,6 +234,8 @@ export function CheckoutData({
     }));
   };
 
+  
+
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.address.country,
   );
@@ -274,7 +275,6 @@ export function CheckoutData({
 let name = customerInformation?.name;
 let separatedNames = separateFullName(name);
 
-console.log("cartNote",cartNote);
 
   async function paymentPurchase() {
     try {
@@ -300,7 +300,6 @@ console.log("cartNote",cartNote);
               item.reciverAddress.firstName +
               ' ' +
               item.reciverAddress.lastName;
-            console.log('item', item);
             return {
               productTitle: item.productTitle,
               variant_id: item.variant_id,
@@ -367,7 +366,6 @@ console.log("cartNote",cartNote);
         discountValueType: discountCouponCode?.apiDiscountResponse?.value_type ? discountCouponCode.apiDiscountResponse.value_type : "",
       };
 
-      console.log('payload', payload);
 
       const res = await fetch(
         `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
@@ -384,8 +382,6 @@ console.log("cartNote",cartNote);
       console.error(error, 'error on CreateCard');
     }
   }
-
-  console.log('cartData', cartData);
 
   return (
     <>
