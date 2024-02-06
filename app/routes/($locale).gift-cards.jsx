@@ -7,16 +7,17 @@ const Gift_card = () => {
           <DynamicTitle
             dynamicButton
             title="Gift Cards"
-            className={'mt-[10px] !text-[42px]'}
           />
-          <p className="text-[#001a5f] lg:text-center text-justify md:w-[60%] w-[100%] my-[0px] mx-auto md:text-[16px] sm:text-[14px] text-[12px] text-bold font-karla">
+            <div className='w-full flex text-center'>
+          <p className="text-[#001a5f] w-[800px] my-[0px] mx-auto  text-[16px]  font-semibold ">
             Send any of these gift cards along with your handwritten cards to
             make a lasting impression on your recipients! You can add gift cards
             during the card order process. Gift cards are also available through
             our API and Zapier interfaces.
           </p>
+          </div>
           <div className="flex mt-[50px] justify-between lg:flex-row flex-col lg:items-left items-center">
-            <div className="grid lg:grid-cols-3 .grid-cols-1 gap-[30px] lg:w-[60%] md:w-[30%] sm:w-[40%] w-[60%]">
+            <div className="grid lg:grid-cols-3 .grid-cols-1 gap-[30px] lg:w-[90%] md:w-[30%] sm:w-[40%] w-[80%]">
               <div className="grid">
                 <div>
                   <img
@@ -26,10 +27,10 @@ const Gift_card = () => {
                   />
                 </div>
                 <div className="font-karla pt-[10px]">
-                  <span className=" text-[22px] text-bold text-black">
+                  <span className="text-[22px] font-extrabold text-black">
                     Starbucks Gift Card
                   </span>
-                  <p className=" text-[15px] text-medium">
+                  <p className=" text-[14px] font-medium">
                     Choose from $5, $10, $25, $50.
                     <b />
                     $2.95 processing fee added to each card.
@@ -46,10 +47,10 @@ const Gift_card = () => {
                   />
                 </div>
                 <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] text-bold text-black">
+                  <span className="text-[22px] font-extrabold text-black">
                     Amazon Gift Card
                   </span>
-                  <p className="text-[15px] text-medium">
+                  <p className="text-[15px] font-medium">
                     Choose from $10, $25, $50.
                     <b />
                     $2.95 processing fee added to each card.
@@ -66,10 +67,10 @@ const Gift_card = () => {
                   />
                 </div>
                 <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] text-bold text-black">
+                  <span className="text-[22px] font-extrabold text-black">
                     Visa Gift Card
                   </span>
-                  <p className=" text-[15px] text-medium">
+                  <p className=" text-[15px] font-medium">
                     Choose from $25, $50,$100.
                     <b />
                     $2.95 processing fee added to each card.
@@ -86,10 +87,10 @@ const Gift_card = () => {
                   />
                 </div>
                 <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] text-bold text-black">
+                  <span className="text-[22px] font-extrabold text-black">
                     Home Depot Gift Card
                   </span>
-                  <p className=" text-[15px] text-medium">
+                  <p className=" text-[15px] font-medium">
                     Choose from $25, $50, $100, $20.
                     <b />
                     $2.95 processing fee added to each card.
@@ -106,10 +107,10 @@ const Gift_card = () => {
                   />
                 </div>
                 <div className="font-karla pt-[10px]">
-                  <span className=" text-[22px] text-bold text-black">
+                  <span className=" text-[22px] font-extrabold text-black">
                     Lowe's Gift Card
                   </span>
-                  <p className=" text-[15px] text-medium">
+                  <p className=" text-[15px] font-medium">
                     Choose from $25, $50, $100, $200.
                     <b />
                     $2.95 processing fee added to each card.

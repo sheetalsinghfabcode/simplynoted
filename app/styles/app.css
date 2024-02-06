@@ -914,10 +914,10 @@ nav a {
   height: auto;
 }
 
-.font-bold {
+/* .font-bold {
   font-weight: 500 !important;
   letter-spacing: 0px;
-}
+} */
 
 .tooltip {
   position: relative;
@@ -1230,7 +1230,7 @@ body {
 
 .selectArrow select {
   background-image: url(../../assets/Image/Polygon_13.svg) !important;
-  background-size: 6% !important;
+  background-size: 5% !important;
 }
 
 /*********************************LOGIN-MODAL-PAGE********************************/
@@ -2027,8 +2027,14 @@ body {
   position: relative;
 }
 
+.titleImage {
+  background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
+  background-position: center bottom !important;
+  background-size: 95% !important;
+}
+
 /********************************************* ROI CALCULATOR **********************************************************/
-.roi-calculator-section-1 {
+/* .roi-calculator-section-1 {
   margin: 40px auto;
 }
 
@@ -2172,7 +2178,7 @@ body {
   position: relative;
 }
 
-/* Styling for the slider thumb */
+
 .simply-noted-marketing input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 30px;
@@ -2182,7 +2188,6 @@ body {
   cursor: pointer;
 }
 
-/* Adjust the color of the thumb on Mozilla Firefox */
 .simply-noted-marketing input[type='range']::-moz-range-thumb {
   width: 30px;
   height: 34px;
@@ -2280,7 +2285,7 @@ body {
   color: white;
   font-size: 18px;
   font-family: none;
-}
+} */
 
 /* Media Query */
 @media only screen and (max-width: 1326px) {
@@ -2451,9 +2456,7 @@ body {
     margin-bottom: 0px;
     width: 100%;
   }
-  .selectArrow select {
-    background-size: 4% !important;
-  }
+ 
   .input_email {
     width: 54%;
   }

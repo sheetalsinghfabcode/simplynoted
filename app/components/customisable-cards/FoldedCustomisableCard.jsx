@@ -695,7 +695,7 @@ export default function FoldedCustomisableCard({
   const GoBackButton = () => {
     return (
       <div
-        className="absolute top-0 left-0 button-tomato text-white inline flex justify-center items-center p-3 font-semibold cursor-pointer text-xs"
+        className="absolute top-0 left-0 button-tomato text-white  flex justify-center items-center p-[10px] text-[12px] font-semibold cursor-pointer"
         onClick={() => setIsCardTypeSelectionPage(true)}
       >
         <FaArrowLeft /> &nbsp; GO BACK
@@ -857,23 +857,23 @@ export default function FoldedCustomisableCard({
         </Modal>
       )}
       <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap gap-5 lg:flex-row flex-col">
+        <div className="min-h-[553px] flex justify-center items-center flex-wrap lg:gap-0 gap-5 lg:flex-row flex-col">
           <div
-            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 "
+            className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%]"
             style={{minHeight: '564px'}}
           >
-            <div className="sm:min-w-[500px] min-w-[347px] md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
+            <div className="lg:min-w-[465px] lg:w-auto md:w-[93%] w-[97%] md:mt-[45px] mt-[63px] ml-[0px]  flex-1 relative">
               <GoBackButton />
             </div>
-            <span className="text-2xl mb-2  mt-[60px]">
+            <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[85px] mt-[4rem]">
               Custom Folded {selectedCardPage}
             </span>
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="sm:min-w-[500px] w-[350px] bg-white relative overflow-hidden"
+                  className="md:min-w-[465px] sm:w-[450px] w-[350px] sm:h-[400px] h-[340px] bg-white relative overflow-hidden"
                   style={{
-                    height: '378px',
+                  
                     zIndex: '-30',
                     transform: isRotationAnimationApplied
                       ? 'rotateY(-180deg)'
@@ -884,9 +884,9 @@ export default function FoldedCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                         style={{
-                          height: '358px',
+                    
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
@@ -895,10 +895,10 @@ export default function FoldedCustomisableCard({
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px]"
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
-                          height: '358px',
+                         
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -951,9 +951,9 @@ export default function FoldedCustomisableCard({
                     (selectedCardPage === 'Card Back' && (
                       <>
                         <div
-                          className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px] border-2 border-dashed border-[#ff0000]"
+                          className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                           style={{
-                            height: '358px',
+                           
                             background: 'transparent',
                             zIndex: '-10',
                             transform: isRotationAnimationApplied
@@ -962,10 +962,10 @@ export default function FoldedCustomisableCard({
                           }}
                         ></div>
                         <div
-                          className="absolute flex justify-center items-center m-auto inset-0 sm:w-[480px] w-[330px]"
+                          className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px]"
                           id="backTrimmedDiv"
                           style={{
-                            height: '358px',
+                            
                             zIndex: '-20',
                             transform: isRotationAnimationApplied
                               ? 'rotateY(-180deg)'
@@ -993,10 +993,10 @@ export default function FoldedCustomisableCard({
                     ))}
                 </div>
               </div>
-              <div className="flex gap-4 w-full mt-2">
+              <div className="flex gap-4 w-full mt-3">
                 <button
                   value="Card Front"
-                  className={`flex-1 p-2 text-white font-bold ${
+                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${
                     selectedCardPage === 'Card Front'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -1007,7 +1007,7 @@ export default function FoldedCustomisableCard({
                 </button>
                 <button
                   value="Card Inside"
-                  className={`flex-1 p-2 text-white font-bold ${
+                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${
                     selectedCardPage === 'Card Inside'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -1018,7 +1018,7 @@ export default function FoldedCustomisableCard({
                 </button>
                 <button
                   value="Card Back"
-                  className={`flex-1 p-2 text-white font-bold ${
+                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${
                     selectedCardPage === 'Card Back'
                       ? 'button-blue'
                       : 'button-tomato'
@@ -1030,11 +1030,11 @@ export default function FoldedCustomisableCard({
               </div>
             </div>
           </div>
-          <div className="flex flex-col justify-center items-start gap-8 flex-1 lg:mt-[10rem] mt-[10px]">
+          <div className="flex flex-col justify-center items-start gap-8 flex-1 lg:mt-[12rem] mt-[10px] lg:mb-auto">
             <div
               className={` ${
                 qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-              } w-[200px] cursor-pointer border border-solid md:ml-[0px] ml-[36px] border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5`}
+              } w-[200px] cursor-pointer border border-solid  border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5`}
               onClick={handleQrSelectionButton}
             >
               <div>
@@ -1046,15 +1046,15 @@ export default function FoldedCustomisableCard({
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold">
+                <span className="font-extrabold text-[16px]">
                   {qr.isQrAdded ? 'Remove QR Code' : 'Add QR Code'}
                 </span>
-                <span className="text-xs font-bold">
+                <span className="text-[14px] font-normal">
                   &#40;to inside of card&#41;
                 </span>
               </div>
             </div>
-            <div className="flex flex-col justify-between items-center gap-5 min-w-[240px] ">
+            <div className="flex flex-col justify-between md:items-start items-baseline gap-5 min-w-[240px] ">
               {!(selectedCardPage === 'Card Inside') && (
                 <>
                   <div className="relative md:ml-[0px] ml-[-108px] w-[60px] h-[50px]">
@@ -1194,7 +1194,7 @@ export default function FoldedCustomisableCard({
                   {selectedCardPage === 'Card Back' && (
                     <button
                       type="button"
-                      className="bg-[#1b5299] h-[40px] border-none ml-[0px]  text-white text-sm outline-none text-center w-full font-semibold"
+                      className="bg-[#1b5299] h-[40px] border-none ml-[0px]  text-white text-[14px]  outline-none text-center w-[85%] font-semibold"
                       onClick={handleFinishEditingButton}
                     >
                       Finish Editing

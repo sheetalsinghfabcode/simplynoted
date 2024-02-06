@@ -23,7 +23,7 @@ export default function CustomCheckbox({label, isChecked, onChange, value}) {
           </svg>
         )}
       </div>
-      <span className="ml-2 font-semibold text-sm">{label}</span>
+      <span className="ml-2 font-bold text-[14px]">{label}</span>
     </label>
   );
 }
