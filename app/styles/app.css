@@ -1062,12 +1062,42 @@ body {
   line-height: 30px;
   margin-bottom: 20px;
 }
+/* global.css */
+
+/* global.css */
+
+.INTEGRATE {
+  position: relative;
+  width: 100%; 
+  max-width: 203px; 
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.INTEGRATE::after {
+  content: '';
+  background-image: url('https://simplynoted.com/cdn/shop/files/Group_460.svg');
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+/* Your existing DynamicButton styles */
+
+
 .btn2 {
   background: url(../../assets/Image/button-blue.png) no-repeat;
   background-size: 100% 100%;
   color: #001a5f;
   display: inline-block;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 16px;
   padding: 26px 56px;
@@ -1178,6 +1208,11 @@ body {
   transition: color 700ms;
 }
 
+.font-aggressive {
+  font-family: 'Your-Aggressive-Font-Family', sans-serif;
+  font-weight: 900;
+}
+
 .navitems::after {
   content: '';
   position: absolute;
@@ -1199,7 +1234,6 @@ body {
 .navitems:hover {
   color: #3d3eb7 !important;
 }
-
 
 /* .navbar-item:hover{
   background: url(../../assets/Image/menu-underline.png) no-repeat;
