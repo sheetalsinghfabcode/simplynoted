@@ -914,10 +914,10 @@ nav a {
   height: auto;
 }
 
-.font-bold {
+/* .font-bold {
   font-weight: 500 !important;
   letter-spacing: 0px;
-}
+} */
 
 .tooltip {
   position: relative;
@@ -1230,7 +1230,7 @@ body {
 
 .selectArrow select {
   background-image: url(../../assets/Image/Polygon_13.svg) !important;
-  background-size: 6% !important;
+  background-size: 5% !important;
 }
 
 /*********************************LOGIN-MODAL-PAGE********************************/
@@ -2451,9 +2451,7 @@ body {
     margin-bottom: 0px;
     width: 100%;
   }
-  .selectArrow select {
-    background-size: 4% !important;
-  }
+ 
   .input_email {
     width: 54%;
   }

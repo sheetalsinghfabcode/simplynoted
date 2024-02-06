@@ -14,9 +14,9 @@ export default function CardTypeSelection({
   };
 
   return (
-    <section className="flex lg:flex-row flex-col justify-center items-center  lg:mt-10 mt-16 flex-wrap xl:gap-28  lg:gap-[6rem] gap-5 lg:mx-auto xl:w-[75%] lg:w-[85%] w-full">
+    <section className="flex lg:flex-row flex-col justify-center items-center  lg:mt-[4rem] mt-16 flex-wrap xl:gap-28  lg:gap-[6rem] gap-5 lg:mx-auto xl:max-w-[1000px] w-[95%]">
       <div className="md:flex hidden items-center justify-center flex-1 ">
-        <div className="md:w-[495px] w-[328px] h-[350px] ">
+        <div className="lg:w-[540px] w-[485px] h-[350px] ">
           <img
             src={isFlatCardType ? FlatBlankCanvasImage : FoldedBlankCanvasImage}
             alt="Selected blank canvas image on card selection"
@@ -24,13 +24,13 @@ export default function CardTypeSelection({
           />
         </div>
       </div>
-      <div className="md:flex  lg:justify-start justify-center flex  flex-1">
-        <div className="flex flex-col h-[300px] w-[273px]">
-          <span className="font-semibold text-center text-[17px] text-black">
+      <div className="md:flex  justify-center flex  flex-1">
+        <div className="flex flex-col h-[300px] w-[300px]">
+          <span className=" text-center text-[17px] text-black font-bold">
             Start by selecting the size and style of card you want to create.
           </span>
           <div className="flex flex-col justify-center  items-center">
-            <div className="flex justify-center h-[88px] mt-8 mb-4 gap-5 w-full">
+            <div className="flex justify-center h-[88px] mt-8 mb-4  w-[90%]">
               <div
                 className="pl-3 pr-3 flex justify-center items-center flex-1 cursor-pointer"
                 style={{
@@ -63,7 +63,7 @@ export default function CardTypeSelection({
               </div>
             </div>
             <button
-              className="w-full bg-[#1b5299] text-white cursor-pointer pt-4 pb-4 flex justify-center items-center"
+              className="w-full bg-[#1b5299] text-white cursor-pointer font-normal text-[14px] pt-4 pb-4 flex justify-center items-center"
               onClick={handleCardTypeSelectionButton}
             >
               NEXT

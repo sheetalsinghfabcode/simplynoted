@@ -305,15 +305,15 @@ export default function Collection() {
         <DynamicTitle title={'Simply Noted'} title2={'cards'} />
 
         <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">
-          <div className="xl:gap-2 gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
+          <div className="gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
             <DynamicButton
-              className="btnShadow bg-[#001a5f] md:h-[55px] h-[44px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2 hover:bg-[#001a5f]"
+              className="btnShadow bg-[#001a5f] px-[20px] py-[16px] text-[16px]  text-[#fff]  hover:bg-[#1B5299]"
               text="Create A Custom Card"
               onClickFunction={CreateCustomCard}
             />
 
             <DynamicButton
-              className="btnShadow bg-[#EF6E6E] md:h-[55px] h-[45px] md:w-[220px] w-[270px] md:text-[18px] text-[12px] text-[#fff] p-2"
+              className="btnShadow bg-[#EF6E6E] px-[20px] py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]"
               text="View My Custom Card"
               onClickFunction={() => customisedCard()}
             />
@@ -325,7 +325,7 @@ export default function Collection() {
             <select
               name=""
               id=""
-              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px]"
+              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px] text-[18px] font-normal"
               onChange={(e) => changeHandle(e.target.value)}
             >
               <option className="w-full" selected disabled>
@@ -340,7 +340,7 @@ export default function Collection() {
           </div>
         </div>
 
-        <div className="mt-[24px]">
+        <div className="mt-[32px]">
           {myColletionData.length === 0 && !checkState && (
             <CircularLoader color="#ef6e6e" />
           )}
