@@ -2027,8 +2027,14 @@ body {
   position: relative;
 }
 
+.titleImage {
+  background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
+  background-position: center bottom !important;
+  background-size: 95% !important;
+}
+
 /********************************************* ROI CALCULATOR **********************************************************/
-.roi-calculator-section-1 {
+/* .roi-calculator-section-1 {
   margin: 40px auto;
 }
 
@@ -2172,7 +2178,7 @@ body {
   position: relative;
 }
 
-/* Styling for the slider thumb */
+
 .simply-noted-marketing input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 30px;
@@ -2182,7 +2188,6 @@ body {
   cursor: pointer;
 }
 
-/* Adjust the color of the thumb on Mozilla Firefox */
 .simply-noted-marketing input[type='range']::-moz-range-thumb {
   width: 30px;
   height: 34px;
@@ -2280,7 +2285,7 @@ body {
   color: white;
   font-size: 18px;
   font-family: none;
-}
+} */
 
 /* Media Query */
 @media only screen and (max-width: 1326px) {

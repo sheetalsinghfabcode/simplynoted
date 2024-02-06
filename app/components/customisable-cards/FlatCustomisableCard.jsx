@@ -1029,9 +1029,9 @@ export default function FlatCustomisableCard({
             setCheckTitleDuplicacyModalOpen(false);
           }}
         >
-          <div>
+          <div className='p-[35px]'>
             <div>
-              <p className="bg-[#deebf7] h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold">
+              <p className="bg-[#deebf7] h-[55px] text-[20px] flex justify-center items-center text-black border-2 border-solid border-[#526fa1] font-bold">
                 Name your card and save it.
               </p>
             </div>
@@ -1042,19 +1042,22 @@ export default function FlatCustomisableCard({
                 </span>
               )}
             </div>
+            <div className='flex justify-between mt-3'>
             <input
-              className="w-full mt-3 border-black border-solid border-2 outline-none focus:outline-none"
+              className="min-w-[219px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none"
               type="text"
+              placeholder="Card Name"
               onChange={(e) => setCustomCardTitle(e.target.value)}
             ></input>
             <br />
             <button
-              className="bg-[#1b5299] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[100%] h-[43px] mt-5"
+              className="bg-[#1b5299] text-[14px] font-normal border-none text-white  outline-none p-1 px-8  h-[45px] "
               type="button"
               onClick={handleCustomCardSaveButton}
             >
               SAVE CARD
             </button>
+            </div>
           </div>
         </Modal>
       )}
@@ -1169,21 +1172,21 @@ export default function FlatCustomisableCard({
       <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
         <div className="min-h-[553px] flex justify-center items-center flex-wrap  lg:flex-row flex-col">
           <div
-            className="flex flex-col justify-start items-center flex-1 sm:ml-7 ml-0 "
+            className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "
             style={{minHeight: '564px'}}
           >
-            <div className="sm:min-w-[465px] min-w-[347px] md:mt-[58px] mt-[63px] ml-[0px]  flex-1 relative">
+            <div className="lg:min-w-[465px] lg:w-auto md:w-[93%] w-[97%] md:mt-[45px] mt-[63px] ml-[0px]  flex-1 relative">
               <GoBackButton />
             </div>
-            <span className="text-[30px] text-[#333] font-normal mb-2 md:mt-[60px] mt-[4rem]">
+            <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[65px] mt-[4rem]">
               Custom Flat {selectedCardPage}
             </span>
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="md:min-w-[465px] sm:w-[450px] w-[350px] bg-white relative overflow-hidden"
+                  className="md:min-w-[465px] sm:w-[450px] sm:h-[400px] h-[340px] w-[350px] bg-white relative overflow-hidden"
                   style={{
-                    height: '400px',
+                  
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
                     transform: isRotationAnimationApplied
                       ? 'rotateY(-180deg)'
@@ -1196,9 +1199,9 @@ export default function FlatCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                         style={{
-                          height: '380px',
+                        
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
@@ -1207,10 +1210,10 @@ export default function FlatCustomisableCard({
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center items-center m-auto inset-0 md:w-[445px] w-[330px] "
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
-                          height: '380px',
+                         
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -1265,7 +1268,7 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${headerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap`}
+                            className={`font-${headerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap items-center flex`}
                             style={{
                               fontSize: `${headerData.fontSize}px`,
                               color: `${headerData.fontColor}`,
@@ -1315,7 +1318,7 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${footerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap`}
+                            className={`font-${footerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap items-center flex`}
                             style={{
                               fontSize: `${footerData.fontSize}px`,
                               color: `${footerData.fontColor}`,
@@ -1509,9 +1512,9 @@ export default function FlatCustomisableCard({
                 </div>
                 <div className="flex min-h-[330px]  sm:flex-row flex-col items-center lg:w-auto w-[100%] ">
                   <div className="flex flex-1 sm:w-[50%] w-[100%] ">
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-full text-[14px] text-black font-medium">
                       <label htmlFor="custom-text">
-                        <span className="font-bold text-[14px]">
+                        <span className="font-bold">
                           {observingData.isHeader
                             ? 'Header Text'
                             : 'Footer Text'}
@@ -1930,7 +1933,7 @@ export default function FlatCustomisableCard({
                 <div className="flex">
                   <button
                     type="button"
-                    className="bg-[#1b5299] h-[40px] border-none text-white text-sm outline-none text-center sm:w-[250px] w-[350px] font-semibold"
+                    className="bg-[#1b5299] h-[40px] border-none text-white text-[14px] outline-none text-center sm:w-[250px] w-[350px] font-semibold"
                     onClick={handleFinishEditingButton}
                   >
                     Finish Editing
