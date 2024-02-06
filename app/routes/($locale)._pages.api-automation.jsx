@@ -2,7 +2,7 @@ import {set} from 'js-cookie';
 import {useState} from 'react';
 import DynamicTitle from '~/components/Title';
 const apidocs = () => {
-  const [selectedSection, setSelectedSection] = useState('Get Standard Cards');
+  const [selectedSection, setSelectedSection] = useState('PRODUCTS');
 
   const handleSectionChange = (event) => {
     event.preventDefault();
@@ -19,30 +19,30 @@ const apidocs = () => {
       case 'USERS':
         setSelectedSection('USERS');
         break;
-      case 'Create A User':
-        setSelectedSection('Create A User');
-        break;
+      // case 'Create A User':
+      //   setSelectedSection('Create A User');
+      //   break;
       case 'PRODUCTS':
         setSelectedSection('PRODUCTS');
         break;
-      case 'Get Standard Cards':
-        setSelectedSection('Get Standard Cards');
-        break;
-      case 'Get All Custom Cards':
-        setSelectedSection('Get All Custom Cards');
-        break;
-      case 'Get Specific Custom Cards':
-        setSelectedSection('Get Specific Custom Cards');
-        break;
-      case 'Create Custom Card':
-        setSelectedSection('Create Custom Card');
-        break;
-      case 'Modify Custom Card':
-        setSelectedSection('Modify Custom Card');
-        break;
-      case 'Delete Custom Cards':
-        setSelectedSection('Delete Custom Cards');
-        break;
+      // case 'Get Standard Cards':
+      //   setSelectedSection('Get Standard Cards');
+      //   break;
+      // case 'Get All Custom Cards':
+      //   setSelectedSection('Get All Custom Cards');
+      //   break;
+      // case 'Get Specific Custom Cards':
+      //   setSelectedSection('Get Specific Custom Cards');
+      //   break;
+      // case 'Create Custom Card':
+      //   setSelectedSection('Create Custom Card');
+      //   break;
+      // case 'Modify Custom Card':
+      //   setSelectedSection('Modify Custom Card');
+      //   break;
+      // case 'Delete Custom Cards':
+      //   setSelectedSection('Delete Custom Cards');
+      //   break;
       case 'ORDERS':
         setSelectedSection('ORDERS');
         break;
@@ -109,7 +109,7 @@ const apidocs = () => {
       </div>
       <div className="flex  md:gap-[20px] mt-5 mx-5">
         <div className="w-[30%]">
-          <ol className="sidebar h-[500px] overflow-y-scroll border-1 border-solid border-gray-300 bg-white text-[10px] text-[#696969] leading-[1.5rem] font-bold py-[10px] pl-[10px] pr-[10px] mx-5p-[20px] sticky border border-solid border-[#ddd]">
+          <ol className="sidebar h-[500px] overflow-y-scroll border-1 border-solid border-gray-300 bg-white text-[14px] text-[#696969] leading-[3.5rem] font-bold py-[10px] pl-[10px] pr-[10px] mx-5p-[20px] sticky border border-solid border-[#ddd]">
             <li
               className={`${
                 selectedSection === 'API ENDPOINTS'
@@ -118,7 +118,7 @@ const apidocs = () => {
               }`}
             >
               <button value="API ENDPOINTS" onClick={handleSectionChange}>
-                <span className="text-blue-500">1.</span>API ENDPOINTS
+                <span className="text-blue-500">1.</span> API ENDPOINTS
               </button>
             </li>
             <li
@@ -129,7 +129,7 @@ const apidocs = () => {
               }`}
             >
               <button value="AUTHENTICATION" onClick={handleSectionChange}>
-                <span className="text-blue-500">2.</span>AUTHENTICATION
+                <span className="text-blue-500">2.</span> AUTHENTICATION
               </button>
             </li>
             <li
@@ -140,7 +140,7 @@ const apidocs = () => {
               }`}
             >
               <button value="Retrieve Auth Token" onClick={handleSectionChange}>
-                <span className="text-blue-500">2.1.</span>Retrieve Auth Token
+                <span className="text-blue-500">2.1.</span> Retrieve Auth Token
               </button>
             </li>
 
@@ -150,10 +150,10 @@ const apidocs = () => {
               }`}
             >
               <button value="USERS" onClick={handleSectionChange}>
-                <span className="text-blue-500">3.</span>USERS
+                <span className="text-blue-500">3.</span> USERS
               </button>
             </li>
-            <li
+            {/* <li
               className={`${
                 selectedSection === 'Create A User'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -163,7 +163,7 @@ const apidocs = () => {
               <button value="Create A User" onClick={handleSectionChange}>
                 <span className="text-blue-500">3.1.</span> Create A User
               </button>
-            </li>
+            </li> */}
             <li
               className={`${
                 selectedSection === 'PRODUCTS'
@@ -176,10 +176,10 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span className="text-blue-500">4.</span>PRODUCTS
+                <span className="text-blue-500">4.</span> PRODUCTS
               </button>
             </li>
-            <li
+            {/* <li
               className={`${
                 selectedSection === 'Get Standard Cards'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -193,8 +193,8 @@ const apidocs = () => {
               >
                 <span className="text-blue-500">4.1.</span> Get Standard Cards
               </button>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className={`${
                 selectedSection === 'Get All Custom Cards'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -208,8 +208,8 @@ const apidocs = () => {
               >
                 <span className="text-blue-500">4.2.</span> Get All Custom Cards
               </button>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className={`${
                 selectedSection === 'Get Specific Custom Cards'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -224,8 +224,8 @@ const apidocs = () => {
                 <span className="text-blue-500">4.3.</span> Get Specific Custom
                 Cards
               </button>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className={`${
                 selectedSection === 'Create Custom Card'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -239,8 +239,8 @@ const apidocs = () => {
               >
                 <span className="text-blue-500">4.4.</span> Create Custom Card
               </button>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className={`${
                 selectedSection === 'Modify Custom Card'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -254,8 +254,8 @@ const apidocs = () => {
               >
                 <span className="text-blue-500">4.5.</span> Modify Custom Card
               </button>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className={`${
                 selectedSection === 'Delete Custom Cards'
                   ? 'bg-slate-300 p-2 font-bold'
@@ -269,7 +269,7 @@ const apidocs = () => {
               >
                 <span className="text-blue-500">4.6.</span> Delete Custom Cards
               </button>
-            </li>
+            </li> */}
             <li
               className={`${
                 selectedSection === 'ORDERS' ? 'bg-slate-300 p-2 font-bold' : ''
@@ -342,7 +342,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span className="text-blue-500">6.1.</span>Create A Message
+                <span className="text-blue-500">6.1.</span> Create A Message
                 Template
               </button>
             </li>
@@ -501,7 +501,7 @@ const apidocs = () => {
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span className="text-blue-500">8.</span>AVAILABLE HANDWRITING
+                <span className="text-blue-500">8.</span> AVAILABLE HANDWRITING
                 STYLES
               </button>
             </li>
@@ -525,10 +525,10 @@ const apidocs = () => {
         <div className=" sidebar h-[500px] overflow-y-scroll border-1  border-solid w-[70%] p-[12px]">
           {selectedSection === 'API ENDPOINTS' && (
             <div>
-              <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-                <span className="text-blue-500"></span> 1.API ENDPOINTS
+              <h2 className="text-[#001a5f] font-karla  font-bold ml-2 text-[33px] font-Tiempos">
+                <span className="text-blue-500"></span> 1. API ENDPOINTS
               </h2>
-              <div className="text-sm">
+              <div className="text-[16px] leading-[27px] color-[black]">
                 <p className=" mb-[7px] ml-[8px] font-thin mt-[23px]">
                   The production API can be found at:
                   <a href="https://simplynoted.com/pages/api-automation">
@@ -556,741 +556,743 @@ const apidocs = () => {
           )}
           {selectedSection === 'AUTHENTICATION' && (
             <div>
-              <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
+              <h2 className="text-[#001a5f] font-karla   font-bold ml-2 text-[33px]  font-Tiempos">
                 <span className="text-blue-500">2.</span> AUTHENTICATION
               </h2>
             </div>
           )}
           {selectedSection === 'Retrieve Auth Token' && (
             <div>
-              <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
+              <h2 className="text-[#001a5f] font-karla font-bold ml-2 text-[33px]">
                 <span className="text-blue-500">2.1.</span> Retrieve Auth Token
               </h2>
-              <p className="mt-12px text-sm font-thin m-[8px]">
-                <span className="font-bold"> Description:</span> Simply Noted
-                uses API keys as bearer tokens to allow access to the API. You
-                can get your API key from <br />  page under "Account Details".
-                Simply Noted expects for the API key to be included in all API
-                requests to the server in a header that looks like the
-                following: Authorization: Bear
-              </p>
+              <div className="">
+                <p className="mt-12px text-[16px] leading-[27px] color-[black] mt-[17px]  font-thin m-[8px]">
+                  <span className="font-bold"> Description:</span> Simply Noted
+                  uses API keys as bearer tokens to allow access to the API. You
+                  can get your API key from <br />  page under "Account
+                  Details". Simply Noted expects for the API key to be included
+                  in all API requests to the server in a header that looks like
+                  the following: Authorization: Bear
+                </p>
+              </div>
             </div>
           )}
           {selectedSection === 'USERS' && (
             <div>
-              <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
+              <h2 className="text-[#001a5f] font-karla   font-bold ml-2 text-[33px]  font-Tiempos">
                 <span className="text-blue-500">3.</span> USERS
               </h2>
-              ``
+              <div className="mt-[55px]">
+                <h2 className="text-[#001a5f] font-karla   font-bold ml-2 text-[33px]  font-sans">
+                  <span className="text-blue-500">3.1.</span> Create A User
+                </h2>
+                <p className="ml-[8px] text-[16px] mt-[17px] leading-[27px] color-[black] font-thin">
+                  <span className="font-bold">Description:</span> Users are
+                  created through the Simply Noted website.
+                  <br /> To create an account go to
+                  <span className="text-blue">
+                    https://simplynoted.com/account/register.
+                  </span>
+                </p>
+              </div>
             </div>
           )}
-          {selectedSection === 'Create A User' && (
-            <div>
-              <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                <span className="text-blue-500">3.1.</span> Create A User
-              </h2>
-              <p className="ml-[8px] text-sm font-thin">
-                <span className="font-bold">Description:</span> Users are
-                created through the Simply Noted website.
-                <br /> To create an account go to
-                <span className="text-blue">
-                  https://simplynoted.com/account/register.
-                </span>
-              </p>
-            </div>
-          )}
+
           {selectedSection === 'PRODUCTS' && (
             <div>
-              <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
+              <h2 className="text-[#001a5f] font-karla text-[33px]  font-Tiempos  font-bold ml-2">
                 <span className="text-blue-500">4.</span> PRODUCTS
               </h2>
-            </div>
-          )}
-          {selectedSection === 'Get Standard Cards' && (
-            <div>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  <span className="text-blue-500"> 4.1.</span> Get Standard
-                  Cards
-                </h2>
-                <p className="mt-[7px] ml-[8px] text-sm font-thin">
-                  <span className="font-bold ">Description:</span>This endpoint
-                  gets all standard cards and returns the id, title, and image
-                  URL.
-                </p>
-                <p className="mt-[7px] ml-[8px] text-sm font-thin">
-                  <span className="font-bold">Endpoint:</span> /products
-                </p>
-                <p className="mt-[7px] ml-[8px] text-sm font-thin">
-                  <span className="font-bold">Method:</span> GET
-                </p>
-              </div>
-              <h2 className="text-[#001a5f] font-karla text-sm mt-[61px] font-bold ml-2">
-                Headers
-              </h2>
-              <table className="w-2/4	 text-sm text-thin table-auto">
-                <thead>
-                  <tr>
-                    <td className="border p-4">Name</td>
-                    <td className="border p-4">Value</td>
-                    <td className="border p-4">Required?</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-4">Content-Type</td>
-                    <td className="border p-4">application/json</td>
-                    <td className="border p-4">$Yes</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">Authorization</td>
-                    <td className="border p-4">Bearer TOKEN_HERE</td>
-                    <td className="border p-4">Yes</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <h3 className="mt-[19px]">
-                  <b>Returns on success:</b>
-                </h3>
-                <pre className="leading-6	 text-xs bg-gray-200 p-[22px] overflow-hidden">
-                  &#123;
-                  <br />
-                  &nbsp; "result" [<br />
-                  &#123;
-                  <br />
-                  &nbsp; "id": '4392451768425',
-                  <br />
-                  &nbsp; "title": "Cactus Thank you",
-                  <br />
-                  &nbsp; "image":
-                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
-                  <br />
-                  &#125;,
-                  <br />
-                  &#123;
-                  <br />
-                  &nbsp; "id": '4392452522089',
-                  <br />
-                  &nbsp; "title": "Cactus Thanks So Much",
-                  <br />
-                  &nbsp; "image":
-                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thanks-So-Much.jpg?v=1574659363"
-                  <br />
-                  &#125;,
-                  <br />
-                  &#123;
-                  <br />
-                  &nbsp; "id": '4442013139049',
-                  <br />
-                  &nbsp; "title": "Dark Red Holiday Card",
-                  <br />
-                  &nbsp; "image":
-                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Red.HolidayCard.jpg?v=1576524937"
-                  <br />
-                  &#125;
-                  <br />
-                  ],
-                  <br />
-                  "errors": []
-                  <br />
-                  &#125;
-                </pre>
-              </div>
-            </div>
-          )}
-          {selectedSection === 'Get All Custom Cards' && (
-            <div>
-              <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                <span className="text-blue-500">4.2.</span> Get All Custom Cards
-              </h2>
-              <div className="leading-[1.25rem] text-sm font-thin">
-                <p className="ml-[8px]">Endpoint: /customProducts</p>
-                <p className="ml-[8px]">
-                  Get-https://api.simplynoted.com/api/customProducts?offset=0
-                </p>
-                <p className="ml-[8px]">
-                  This endpoint will retrieve a list of custom cards, returning
-                  up to 200 cards for each call.
-                </p>
-              </div>
-            </div>
-          )}
-          {selectedSection === 'Get Specific Custom Cards' && (
-            <div>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  <span className="text-blue-500">4.3.</span>Get Specific Custom
-                  Cards
-                </h2>
-              </div>
-              <div className="leading-[1.25rem] text-sm ml-[9px] font-thin">
-                <p>
-                  This procedure returns details on one or more custom cards.
-                </p>
-                <p>
-                  Example:
-                  /customProducts?productIds=7036997894249,7036977578089,7036976889961
-                </p>
-                <p>
-                  Where the IDs are existing custom card IDs separated by
-                  commas.
-                </p>
-              </div>
-            </div>
-          )}
-          {selectedSection === 'Create Custom Card' && (
-            <div>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg  font-bold ml-2">
-                  <span className="text-blue-500">4.4.</span> Create Custom Card
-                </h2>
-                <div className="leading-[1.25rem] ml-[9px] text-sm font-thin">
-                  <p>
-                    <b>Note:</b>The old endpoint, /createcustomcard, and its
-                    associated endpoint, /uploadPDF, have been replaced with a
-                    single new endpoint: /createcard. The old endpoints will
-                    remain usable until November 1, 2023, at which point they
-                    will be retired. We strongly recommend you switch to the new
-                    endpoint, /createcard. As well, we have released a new
-                    endpoint /modifycard, which will allow you to call an
-                    existing flat custom card,
+              <div className="mt-[55px]">
+                <div>
+                  <h2 className="text-[#001a5f] font-karla  text-[33px]  font-Tiempos  font-bold ml-2">
+                    <span className="text-blue-500"> 4.1.</span> Get Standard
+                    Cards
+                  </h2>
+                  <p className="mt-[17px] text-[16px] mt-[22px] leading-[27px] color-[black] ml-[8px] font-thin">
+                    <span className="font-bold ">Description:</span>This
+                    endpoint gets all standard cards and returns the id, title,
+                    and image URL.
                   </p>
-                  <p className="mt-[20px]">
-                    <b>Description:</b> This endpoint creates a new Custom Card
-                    and returns card details.
+                  <p className="mt-[7px] ml-[8px] font-thin text-[16px] mt-[22px] leading-[27px] color-[black]">
+                    <span className="font-bold">Endpoint:</span> /products
                   </p>
-                  <p>
-                    <b>Endpoint:</b> /createCard
-                  </p>
-                  <p>
-                    <b>Method:</b> POST
+                  <p className="mt-[7px] ml-[8px] text-[16px] mt-[22px] leading-[27px] color-[black] font-thin">
+                    <span className="font-bold">Method:</span> GET
                   </p>
                 </div>
-              </div>
-              <h2 className="text-[#001a5f] font-karla  mt-[61px] font-bold ml-2">
-                Headers
-              </h2>
-              <table className="w-2/4 text-sm	 table-auto">
-                <thead>
-                  <tr>
-                    <td className="border p-4">Name</td>
-                    <td className="border p-4">Value</td>
-                    <td className="border p-4">Required?</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-4">Content-Type</td>
-                    <td className="border p-4">application/json</td>
-                    <td className="border p-4">$Yes</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">Authorization</td>
-                    <td className="border p-4">Bearer TOKEN_HERE</td>
-                    <td className="border p-4">Yes</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <h2>Body:</h2>
-              </div>
-              <table className="min-w-full text-sm table-auto">
-                <thead>
-                  <tr>
-                    <td className="border p-4">Name</td>
-                    <td className="border p-4">Value</td>
-                    <td className="border p-4">Required?</td>
-                    <td className="border p-4">Example</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-4">Content-Type</td>
-                    <td className="border p-4">application/json</td>
-                    <td className="border p-4"></td>
-                    <td className="border p-4">$Yes</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">cardName</td>
-                    <td className="border p-4">String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4"> "Happy Birthday"</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">cardType</td>
-                    <td className="border p-4">String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4"> “flat5x7” / “folded5x7”</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">frontImage</td>
-                    <td className="border p-4">File</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">.</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">isHeaderIncluded</td>
-                    <td className="border p-4"> Boolean</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">True</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">isFooterIncluded</td>
-                    <td className="border p-4"> Boolean</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">True</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">header</td>
-                    <td className="border p-4">String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4"> sImage": true</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">footer</td>
-                    <td className="border p-4">String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">
-                      "data": "Yours Sincerely","textAlign":
-                      "left","justifyContent": "center","flexDirection":
-                      "column","fontType": "Courier New","fontSize":
-                      30,"fontColor": "rgb(255, 0, 0)","zoom": "1","isImage":
-                      false
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">headerImage</td>
-                    <td className="border p-4">File</td>
-                    <td className="border p-4">No</td>
-                    <td className="border p-4"></td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">footerImage</td>
-                    <td className="border p-4">File</td>
-                    <td className="border p-4">No</td>
-                    <td className="border p-4"></td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">backImage</td>
-                    <td className="border p-4">File</td>
-                    <td className="border p-4">No</td>
-                    <td className="border p-4">.</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <h2 className="text-[#001a5f] font-karla  mt-[13px] font-bold ml-2">
-                  Return on Success:
-                </h2>
-              </div>
-              <pre className="leading-6 text-xs	 bg-gray-200 p-[22px] overflow-hidden">
-                &#123; <br />
-                &nbsp; "result": &#123;
-                <br />
-                &nbsp; &nbsp; "product":&#123;
-                <br />
-                &nbsp; &nbsp; "id": 7046027575401, <br />
-                &nbsp; &nbsp; "title": "Testing Cards", <br />
-                &nbsp; &nbsp; "body_html": null, <br />
-                &nbsp; &nbsp; "vendor": "SimplyNoted", <br />
-                &nbsp; &nbsp; "product_type": "customisable card", <br />
-                &nbsp; &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; &nbsp; "handle": "testing-cards", <br />
-                &nbsp; &nbsp; "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                &nbsp; &nbsp; "published_at": "2023-09-13T06:22:28-07:00",
-                <br />
-                &nbsp; &nbsp; "template_suffix": null, <br />
-                &nbsp; &nbsp; "published_scope": "web", <br />
-                &nbsp; &nbsp; "tags": "customise_card", <br />
-                &nbsp; &nbsp; "status": "active", <br />
-                &nbsp; &nbsp; "admin_graphql_api_id":
-                "gid://shopify/Product/7046027575401”, <br />
-                &nbsp; &#125;
-                <br />
-                &nbsp;"images": [ <br />
-                &nbsp; &#123;
-                <br />
-                &nbsp; "id": 30856642232425, <br />
-                &nbsp; "product_id": 7046027575401,
-                <br />
-                &nbsp; "position": 1, <br />
-                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "alt": "front_img", <br />
-                &nbsp; "width": 495,
-                <br />
-                &nbsp; "height": 350,
-                <br />
-                &nbsp; "src":
-                "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",
-                <br />
-                &nbsp; "variant_ids": [], <br />
-                &nbsp; "admin_graphql_api_id": &nbsp;
-                "gid://shopify/ProductImage/30856642232425" <br />
-                &nbsp; &#125; <br />
-                &nbsp; ], <br />
-                &nbsp; "image": &#123; <br />
-                &nbsp; "id": 30856642232425,
-                <br />
-                &nbsp; "product_id": 7046027575401, <br />
-                &nbsp; "position": 1, <br />
-                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "alt": "front_img", <br />
-                &nbsp; "width": 495, <br />
-                &nbsp; "height": 350, <br />
-                &nbsp; "src":
-                "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",
-                <br />
-                &nbsp; "variant_ids": [], "admin_graphql_api_id": &nbsp;
-                "gid://shopify/ProductImage/30856642232425" &nbsp; <br /> &#125;
-                <br />
-                "errors": [] <br />
-                &#125;
-              </pre>
-              <div className="mt-[7px]">
-                <h2 className="text-[#001a5f] font-karla  mt-[13px] font-bold ml-2">
-                  Error:
-                </h2>
-              </div>
-              <div>
-                <table className="min-w-full text-xs table-auto">
-                  <thead>
-                    <tr>
-                      <td className="border p-4">Status</td>
-                      <td className="border p-4">Errors</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border p-4">400</td>
-                      <td className="border p-4">
-                        cardType, cardName & frontImage are required fields
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border p-4">400</td>
-                      <td className="border p-4">
-                        headerImage is required when header has isImage true
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border p-4">400</td>
-                      <td className="border p-4">
-                        footerImage is required when footer has isImage true
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border p-4">400</td>
-                      <td className="border p-4">
-                        For flat cardType, isHeaderIncluded, isFooterIncluded,
-                        header, and footer are required fields
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-          {selectedSection === 'Modify Custom Card' && (
-            <div>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
-                  <span className="text-blue-500">4.5.</span> Modify Custom Card
-                </h2>
-                <div className="leading-[1.5rem]  ml-[9px] text-sm">
-                  <p>
-                    <b>Description:</b> This endpoint creates and saves a new
-                    modified Custom Card and returns card details.
-                  </p>
-                  <p>
-                    <b>Endpoint:</b> /modifyCard
-                  </p>
-                  <p>
-                    <b>Method:</b> POST
-                  </p>
-                </div>
-              </div>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg mt-[13px] font-bold ml-2">
+                <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
                   Headers:
                 </h2>
-              </div>
-              <div>
-                <table className="w-2/4 text-sm table-auto">
+                <table className="w-2/4	 text-sm text-thin table-auto">
                   <thead>
-                    <tr>
+                    <tr className="text-[15px]">
                       <td className="border p-4">Name</td>
                       <td className="border p-4">Value</td>
                       <td className="border p-4">Required?</td>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr className="text-[14px]">
                       <td className="border p-4">Content-Type</td>
                       <td className="border p-4">application/json</td>
-                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">$Yes</td>
                     </tr>
-                    <tr>
+                    <tr className="text-[14px]">
                       <td className="border p-4">Authorization</td>
                       <td className="border p-4">Bearer TOKEN_HERE</td>
                       <td className="border p-4">Yes</td>
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div>
-                <h2 className="text-[#001a5f] font-karla  text-lg mt-[13px] font-bold ml-2">
-                  Body:
-                </h2>
-              </div>
-              <table className="min-w-full text-sm table-auto">
-                <thead>
-                  <tr>
-                    <td className="border p-4">Key</td>
-                    <td className="border p-4">Type/Values</td>
-                    <td className="border p-4">Required?</td>
-                    <td className="border p-4">Example</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-4">CoriginalCustomCardID</td>
-                    <td className="border p-4">String</td>
-                    <td className="border p-4"> Yes</td>
-                    <td className="border p-4">7046020595817</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">cardName</td>
-                    <td className="border p-4">String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">
-                      {' '}
-                      "Happy Birthday Modified 1a"
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">sHeaderIncluded</td>
-                    <td className="border p-4"> Boolean</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4"> True</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">isFooterIncluded</td>
-                    <td className="border p-4">Boolean</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">true</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">Header</td>
-                    <td className="border p-4"> String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">"isImage": true</td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">footer</td>
-                    <td className="border p-4"> String</td>
-                    <td className="border p-4">Yes</td>
-                    <td className="border p-4">
-                      "data": "Yours Sincerely","textAlign":
-                      "left","justifyContent": "center","flexDirection":
-                      "column","fontType": "Courier New","fontSize":
-                      30,"fontColor": "rgb(255, 0, 0)","zoom": "1","isImage":
-                      false
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">headerImage</td>
-                    <td className="border p-4">File</td>
-                    <td className="border p-4">No</td>
-                    <td className="border p-4"></td>
-                  </tr>
-                  <tr>
-                    <td className="border p-4">footerImage</td>
-                    <td className="border p-4">File</td>
-                    <td className="border p-4">No</td>
-                    <td className="border p-4"></td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg  mt-[13px] font-bold ml-2">
-                  Returns on success:
-                </h2>
-              </div>
-              <pre className="leading-6	lg:w-full w-[619px] text-xs p-[22px] bg-gray-200  mt-7px">
-                &#123;
-                <br />
-                &nbsp; "result": &#123;
-                <br />
-                &nbsp; "product": &#123; <br />
-                &nbsp; "id": 70460275754
-                <br />
-                &nbsp; "title": "Testing Cards", <br />
-                &nbsp; "body_html": null, <br />
-                &nbsp; "vendor": "SimplyNoted", <br />
-                &nbsp; "product_type": "customisable card", <br />
-                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "handle": "testing-cards", <br />
-                &nbsp; "updated_at": "2023-09-13T06:22:29-07:00", <br />
-                &nbsp; "published_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "template_suffix": null, <br />
-                &nbsp; "published_scope": "web", <br />
-                &nbsp; "tags": "customise_card", <br />
-                &nbsp; "status": "active", <br />
-                &nbsp;
-                "admin_graphql_api_id":"gid://shopify/Product/7046027575401",
-                <br />
-                &nbsp; "variants": &#123;
-                <br />
-                &nbsp; &#123;
-                <br />
-                &nbsp; "id": 40730910490729, <br />
-                &nbsp; "product_id": 7046027575401, <br />
-                &nbsp; "title": "2 - 500", <br />
-                &nbsp; "price": "4.35", <br />
-                &nbsp; "sku": "", <br />
-                &nbsp; "position": 1, <br />
-                &nbsp; "inventory_policy": "deny", <br />
-                &nbsp; "compare_at_price": null, <br />
-                &nbsp; "fulfillment_service": "manual", <br />
-                &nbsp; "inventory_management": null, <br />
-                &nbsp; "option1": "2 - 500", <br />
-                &nbsp; "option2": null, <br />
-                &nbsp; "option3": null, <br />
-                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "taxable": true, <br />
-                &nbsp; "barcode": null, <br />
-                &nbsp; "grams": 0, <br />
-                &nbsp; "image_id": null, <br />
-                &nbsp; "weight": 0, <br />
-                &nbsp; "weight_unit": "lb", <br />
-                &nbsp; "inventory_item_id": 42829245382761, <br />
-                &nbsp; "inventory_quantity": 0, <br />
-                &nbsp; "old_inventory_quantity": 0, <br />
-                &nbsp; "requires_shipping": true, <br />
-                &nbsp; "admin_graphql_api_id":
-                <br />
-                &nbsp; "gid://shopify/ProductVariant/40730910490729" <br />
-                &nbsp; &#125; <br />
-                &nbsp; &#123;
-                <br />
-                &nbsp; "id": 40730910523497, <br />
-                &nbsp; "product_id": 7046027575401, <br />
-                &nbsp; "created_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "updated_at": "2023-09-13T06:22:28-07:00", <br />
-                &nbsp; "inventory_item_id": 42829245415529, <br />
-                &nbsp; "admin_graphql_api_id":
-                <br />
-                &nbsp; "gid://shopify/ProductVariant/40730910523497" <br />
-                &nbsp; &#125; <br />
-                &nbsp; "errors": []
-                <br />
-                &#125;
-                <br />
-                &#125;
-              </pre>
-              <div>
                 <div>
-                  <h2 className="text-[#001a5f] font-karla text-lg  mt-[13px] font-bold ml-2">
-                    Example
+                  <h3 className="mt-[19px] font-karla  mb-[7px] text-[23px]">
+                    <b>Returns on success:</b>
+                  </h3>
+                  <pre className="leading-6 text-14 color-[black] bg-[#f7f7f7] p-[22px] font-bold overflow-hidden">
+                    &#123;
+                    <br />
+                    &nbsp; "result" [<br />
+                    &#123;
+                    <br />
+                    &nbsp; "id": '4392451768425',
+                    <br />
+                    &nbsp; "title": "Cactus Thank you",
+                    <br />
+                    &nbsp; "image":
+                    "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
+                    <br />
+                    &#125;,
+                    <br />
+                    &#123;
+                    <br />
+                    &nbsp; "id": '4392452522089',
+                    <br />
+                    &nbsp; "title": "Cactus Thanks So Much",
+                    <br />
+                    &nbsp; "image":
+                    "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thanks-So-Much.jpg?v=1574659363"
+                    <br />
+                    &#125;,
+                    <br />
+                    &#123;
+                    <br />
+                    &nbsp; "id": '4442013139049',
+                    <br />
+                    &nbsp; "title": "Dark Red Holiday Card",
+                    <br />
+                    &nbsp; "image":
+                    "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Red.HolidayCard.jpg?v=1576524937"
+                    <br />
+                    &#125;
+                    <br />
+                    ],
+                    <br />
+                    "errors": []
+                    <br />
+                    &#125;
+                  </pre>
+                </div>
+              </div>
+              <div className="mt-[55px]">
+                <h2 className="text-[#001a5f] font-karla  text-[33px]  font-Tiempos  font-bold ml-2">
+                  <span className="text-blue-500">4.2.</span> Get All Custom
+                  Cards
+                </h2>
+                <div className="leading-[1.25rem] text-[16px] mt-[22px] leading-[27px] color-[black] font-thin">
+                  <p className="ml-[8px]">Endpoint: /customProducts</p>
+                  <p className="ml-[8px]">
+                    Get-https://api.simplynoted.com/api/customProducts?offset=0
+                  </p>
+                  <p className="ml-[8px]">
+                    This endpoint will retrieve a list of custom cards,
+                    returning up to 200 cards for each call.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-[55px]">
+                <div>
+                  <h2 className="text-[#001a5f] font-karla  text-[33px] font-Tiempos font-bold ml-2">
+                    <span className="text-blue-500">4.3.</span>Get Specific
+                    Custom Cards
                   </h2>
                 </div>
-                <pre className="leading-6	text-xs bg-gray-200 p-[22px] overflow-hidden">
+                <div className="leading-[1.25rem] text-[16px] mt-[22px] leading-[27px] ml-[9px] font-thin">
+                  <p>
+                    This procedure returns details on one or more custom cards.
+                  </p>
+                  <p>
+                    Example:
+                    /customProducts?productIds=7036997894249,7036977578089,7036976889961
+                  </p>
+                  <p>
+                    Where the IDs are existing custom card IDs separated by
+                    commas.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-[55px]">
+                <div>
+                  <h2 className="text-[#001a5f] font-karla  text-[33px] font-Tiempos font-bold ml-2">
+                    <span className="text-blue-500">4.4.</span> Create Custom
+                    Card
+                  </h2>
+                  <div className="leading-[29px] text-[16px] mt-[22px] ml-[9px] font-thin">
+                    <p>
+                      <b>Note:</b>The old endpoint, /createcustomcard, and its
+                      associated endpoint, /uploadPDF, have been replaced with a
+                      single new endpoint: /createcard. The old endpoints will
+                      remain usable until November 1, 2023, at which point they
+                      will be retired. We strongly recommend you switch to the
+                      new endpoint, /createcard. As well, we have released a new
+                      endpoint /modifycard, which will allow you to call an
+                      existing flat custom card,
+                    </p>
+                    <p className="mt-[20px]">
+                      <b>Description:</b> This endpoint creates a new Custom
+                      Card and returns card details.
+                    </p>
+                    <p>
+                      <b>Endpoint:</b> /createCard
+                    </p>
+                    <p>
+                      <b>Method:</b> POST
+                    </p>
+                  </div>
+                </div>
+                <h2 className="text-[black] font-karla  mb-[7px] text-[23px]   mt-[61px] font-bold ml-2">
+                  Headers
+                </h2>
+                <table className="w-2/4 text-sm	 table-auto">
+                  <thead>
+                    <tr className="text-[15px]">
+                      <td className="border p-4">Name</td>
+                      <td className="border p-4">Value</td>
+                      <td className="border p-4">Required?</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">Content-Type</td>
+                      <td className="border p-4">application/json</td>
+                      <td className="border p-4">$Yes</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">Authorization</td>
+                      <td className="border p-4">Bearer TOKEN_HERE</td>
+                      <td className="border p-4">Yes</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                  <h2>Body:</h2>
+                </div>
+                <table className="min-w-full text-sm table-auto">
+                  <thead>
+                    <tr className="text-[15px]">
+                      <td className="border p-4">Name</td>
+                      <td className="border p-4">Value</td>
+                      <td className="border p-4">Required?</td>
+                      <td className="border p-4">Example</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">Content-Type</td>
+                      <td className="border p-4">application/json</td>
+                      <td className="border p-4"></td>
+                      <td className="border p-4">$Yes</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">cardName</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4"> "Happy Birthday"</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">cardType</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4"> “flat5x7” / “folded5x7”</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">frontImage</td>
+                      <td className="border p-4">File</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">.</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">isHeaderIncluded</td>
+                      <td className="border p-4"> Boolean</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">True</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">isFooterIncluded</td>
+                      <td className="border p-4"> Boolean</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">True</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">header</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4"> sImage": true</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">footer</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">
+                        "data": "Yours Sincerely","textAlign":
+                        "left","justifyContent": "center","flexDirection":
+                        "column","fontType": "Courier New","fontSize":
+                        30,"fontColor": "rgb(255, 0, 0)","zoom": "1","isImage":
+                        false
+                      </td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">headerImage</td>
+                      <td className="border p-4">File</td>
+                      <td className="border p-4">No</td>
+                      <td className="border p-4"></td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">footerImage</td>
+                      <td className="border p-4">File</td>
+                      <td className="border p-4">No</td>
+                      <td className="border p-4"></td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">backImage</td>
+                      <td className="border p-4">File</td>
+                      <td className="border p-4">No</td>
+                      <td className="border p-4">.</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <h2 className="mt-[19px] font-karla font-bold  mb-[7px] text-[23px]">
+                    Return on Success:
+                  </h2>
+                </div>
+                <pre className="leading-7 text-14 color-[black] bg-[#f7f7f7] p-[22px] font-bold overflow-hidden">
+                  &#123; <br />
+                  &nbsp; "result": &#123; <br />
+                  &nbsp; &nbsp; "product": &#123; <br />
+                  &nbsp; &nbsp; &nbsp; "id": 7046027575401, <br />
+                  &nbsp; &nbsp; &nbsp; "title": "Testing Cards", <br />
+                  &nbsp; &nbsp; &nbsp; "body_html": null, <br />
+                  &nbsp; &nbsp; &nbsp; "vendor": "SimplyNoted", <br />
+                  &nbsp; &nbsp; &nbsp; "product_type": "customisable card",{' '}
+                  <br />
+                  &nbsp; &nbsp; &nbsp; "created_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "handle": "testing-cards", <br />
+                  &nbsp; &nbsp; &nbsp; "updated_at":
+                  "2023-09-13T06:22:29-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "published_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "template_suffix": null, <br />
+                  &nbsp; &nbsp; &nbsp; "published_scope": "web", <br />
+                  &nbsp; &nbsp; &nbsp; "tags": "customise_card", <br />
+                  &nbsp; &nbsp; &nbsp; "status": "active", <br />
+                  &nbsp; &nbsp; &nbsp; "admin_graphql_api_id":
+                  "gid://shopify/Product/7046027575401”, <br />
+                  &nbsp; &nbsp; &#125; <br />
+                  &nbsp; &nbsp; "images": [ <br />
+                  &nbsp; &nbsp; &nbsp; &#123; <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "id": 30856642232425, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "product_id": 7046027575401,{' '}
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "position": 1, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "created_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "updated_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "alt": "front_img", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "width": 495, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "height": 350, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "src":
+                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",{' '}
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "variant_ids": [], <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "admin_graphql_api_id":
+                  "gid://shopify/ProductImage/30856642232425" <br />
+                  &nbsp; &nbsp; &nbsp; &#125; <br />
+                  &nbsp; &nbsp; ], <br />
+                  &nbsp; &nbsp; "image": &#123; <br />
+                  &nbsp; &nbsp; &nbsp; "id": 30856642232425, <br />
+                  &nbsp; &nbsp; &nbsp; "product_id": 7046027575401, <br />
+                  &nbsp; &nbsp; &nbsp; "position": 1, <br />
+                  &nbsp; &nbsp; &nbsp; "created_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "updated_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "alt": "front_img", <br />
+                  &nbsp; &nbsp; &nbsp; "width": 495, <br />
+                  &nbsp; &nbsp; &nbsp; "height": 350, <br />
+                  &nbsp; &nbsp; &nbsp; "src":
+                  "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348",{' '}
+                  <br />
+                  &nbsp; &nbsp; &nbsp; "variant_ids": [],
+                  "admin_graphql_api_id":
+                  "gid://shopify/ProductImage/30856642232425" <br />
+                  &nbsp; &nbsp; &#125; <br />
+                  &nbsp; "errors": [] <br />
+                  &#125;
+                </pre>
+
+                <div className="mt-[7px]">
+                  <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                    Error:
+                  </h2>
+                </div>
+                <div>
+                  <table className="min-w-full text-xs table-auto">
+                    <thead>
+                      <tr className="text-[15px]">
+                        <td className="border p-4">Status</td>
+                        <td className="border p-4">Errors</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="text-[14px]">
+                        <td className="border p-4">400</td>
+                        <td className="border p-4">
+                          cardType, cardName & frontImage are required fields
+                        </td>
+                      </tr>
+                      <tr className="text-[14px]">
+                        <td className="border p-4">400</td>
+                        <td className="border p-4">
+                          headerImage is required when header has isImage true
+                        </td>
+                      </tr>
+                      <tr className="text-[14px]">
+                        <td className="border p-4">400</td>
+                        <td className="border p-4">
+                          footerImage is required when footer has isImage true
+                        </td>
+                      </tr>
+                      <tr className="text-[14px]">
+                        <td className="border p-4">400</td>
+                        <td className="border p-4">
+                          For flat cardType, isHeaderIncluded, isFooterIncluded,
+                          header, and footer are required fields
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="mt-[55px]">
+                <div>
+                  <h2 className="text-[#001a5f] font-karla text-[33px] font-bold ml-2">
+                    <span className="text-blue-500">4.5.</span> Modify Custom
+                    Card
+                  </h2>
+                  <div className="leading-[1.5rem]  ml-[9px] text-sm">
+                    <p className="mt-[17px] text-[16px] mt-[16px] leading-[27px] color-[black] font-thin">
+                      <b>Description:</b> This endpoint creates and saves a new
+                      modified Custom Card and returns card details.
+                    </p>
+                    <p className="mt-[17px] text-[16px] mt-[16px] leading-[27px] color-[black]  font-thin">
+                      <b>Endpoint:</b> /modifyCard
+                    </p>
+                    <p className="mt-[17px] text-[16px] mt-[16px] leading-[27px] color-[black]  font-thin">
+                      <b>Method:</b> POST
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                    Headers:
+                  </h2>
+                </div>
+                <div>
+                  <table className="w-2/4 text-sm table-auto">
+                    <thead>
+                      <tr className="text-[15px]">
+                        <td className="border p-4">Name</td>
+                        <td className="border p-4">Value</td>
+                        <td className="border p-4">Required?</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="text-[14px]">
+                        <td className="border p-4">Content-Type</td>
+                        <td className="border p-4">application/json</td>
+                        <td className="border p-4">Yes</td>
+                      </tr>
+                      <tr className="text-[14px]">
+                        <td className="border p-4">Authorization</td>
+                        <td className="border p-4">Bearer TOKEN_HERE</td>
+                        <td className="border p-4">Yes</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+                  <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                    Body:
+                  </h2>
+                </div>
+                <table className="min-w-full text-sm table-auto">
+                  <thead>
+                    <tr className="text-[15px]">
+                      <td className="border p-4">Key</td>
+                      <td className="border p-4">Type/Values</td>
+                      <td className="border p-4">Required?</td>
+                      <td className="border p-4">Example</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">CoriginalCustomCardID</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4"> Yes</td>
+                      <td className="border p-4">7046020595817</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">cardName</td>
+                      <td className="border p-4">String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">
+                        {' '}
+                        "Happy Birthday Modified 1a"
+                      </td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">sHeaderIncluded</td>
+                      <td className="border p-4"> Boolean</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4"> True</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">isFooterIncluded</td>
+                      <td className="border p-4">Boolean</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">true</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">Header</td>
+                      <td className="border p-4"> String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">"isImage": true</td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">footer</td>
+                      <td className="border p-4"> String</td>
+                      <td className="border p-4">Yes</td>
+                      <td className="border p-4">
+                        "data": "Yours Sincerely","textAlign":
+                        "left","justifyContent": "center","flexDirection":
+                        "column","fontType": "Courier New","fontSize":
+                        30,"fontColor": "rgb(255, 0, 0)","zoom": "1","isImage":
+                        false
+                      </td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">headerImage</td>
+                      <td className="border p-4">File</td>
+                      <td className="border p-4">No</td>
+                      <td className="border p-4"></td>
+                    </tr>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">footerImage</td>
+                      <td className="border p-4">File</td>
+                      <td className="border p-4">No</td>
+                      <td className="border p-4"></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                    Returns on success:
+                  </h2>
+                </div>
+                <pre className="leading-7 text-14 text-black bg-gray-100 p-4 font-bold overflow-x-auto">
                   &#123;
                   <br />
-                  &nbsp; "cardName": "Happy Birthday",
+                  &nbsp; "result": &#123;
                   <br />
-                  &nbsp; "cardType": "flat5x7",
+                  &nbsp; &nbsp; "product": &#123; <br />
+                  &nbsp; &nbsp; &nbsp; "id": 70460275754, <br />
+                  &nbsp; &nbsp; &nbsp; "title": "Testing Cards", <br />
+                  &nbsp; &nbsp; &nbsp; "body_html": null, <br />
+                  &nbsp; &nbsp; &nbsp; "vendor": "SimplyNoted", <br />
+                  &nbsp; &nbsp; &nbsp; "product_type": "customizable card",{' '}
                   <br />
-                  &nbsp; "frontImage": ,<br />
-                  &nbsp; "isFooterIncluded": true,
+                  &nbsp; &nbsp; &nbsp; "created_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "handle": "testing-cards", <br />
+                  &nbsp; &nbsp; &nbsp; "updated_at":
+                  "2023-09-13T06:22:29-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "published_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; "template_suffix": null, <br />
+                  &nbsp; &nbsp; &nbsp; "published_scope": "web", <br />
+                  &nbsp; &nbsp; &nbsp; "tags": "customise_card", <br />
+                  &nbsp; &nbsp; &nbsp; "status": "active", <br />
+                  &nbsp; &nbsp; &nbsp; "admin_graphql_api_id":
+                  "gid://shopify/Product/7046027575401", <br />
+                  &nbsp; &nbsp; &nbsp; "variants": &#123; <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &#123; <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "id": 40730910490729, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "product_id": 7046027575401,{' '}
                   <br />
-                  &nbsp; "header": &#123;
+                  &nbsp; &nbsp; &nbsp; &nbsp; "title": "2 - 500", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "price": "4.35", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "sku": "", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "position": 1, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "inventory_policy": "deny", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "compare_at_price": null, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "fulfillment_service": "manual",{' '}
                   <br />
-                  &nbsp; "isImage": true
-                  <br /> &#125; <br />
-                  &nbsp; "footer": &#123;
+                  &nbsp; &nbsp; &nbsp; &nbsp; "inventory_management": null,{' '}
                   <br />
-                  &nbsp; "data": "Yours Sincerely", <br />
-                  &nbsp; "textAlign": "left", <br />
-                  &nbsp; "justifyContent": "center", <br />
-                  &nbsp; "flexDirection": "column", <br />
-                  &nbsp; "fontType": "Trebuchet MS", <br />
-                  &nbsp; "fontSize": 20, <br />
-                  &nbsp; "fontColor": "rgb(0, 0, 255)", <br />
-                  &nbsp; "zoom": "1", <br />
-                  &nbsp; "isImage": false <br />
-                  &#125; <br />
-                  &nbsp; "headerImage": , <br />
-                  &nbsp; "footerImage": , <br />
-                  &nbsp; "backImage": , <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "option1": "2 - 500", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "option2": null, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "option3": null, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "created_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "updated_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "taxable": true, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "barcode": null, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "grams": 0, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "image_id": null, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "weight": 0, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "weight_unit": "lb", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "inventory_item_id":
+                  42829245382761, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "inventory_quantity": 0, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "old_inventory_quantity": 0,{' '}
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "requires_shipping": true, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "admin_graphql_api_id":
+                  "gid://shopify/ProductVariant/40730910490729" <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &#125; <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &#123; <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "id": 40730910523497, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "product_id": 7046027575401,{' '}
+                  <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "created_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "updated_at":
+                  "2023-09-13T06:22:28-07:00", <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "inventory_item_id":
+                  42829245415529, <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; "admin_graphql_api_id":
+                  "gid://shopify/ProductVariant/40730910523497" <br />
+                  &nbsp; &nbsp; &nbsp; &nbsp; &#125; <br />
+                  &nbsp; &nbsp; &nbsp; &#125; <br />
+                  &nbsp; &nbsp; &nbsp; "errors": [] <br />
+                  &nbsp; &nbsp; &#125; <br />
                   &#125;
+                </pre>
+
+                <div>
+                  <div>
+                    <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                      Example
+                    </h2>
+                  </div>
+                  <pre className="leading-7 text-14   bg-[#f7f7f7] p-4 overflow-hidden">
+                    &#123;
+                    <br />
+                    &nbsp; "cardName": "Happy Birthday",
+                    <br />
+                    &nbsp; "cardType": "flat5x7",
+                    <br />
+                    &nbsp; "frontImage": null, <br />
+                    &nbsp; "isFooterIncluded": true,
+                    <br />
+                    &nbsp; "header": &#123;
+                    <br />
+                    &nbsp; &nbsp; "isImage": true
+                    <br /> &#125; <br />
+                    &nbsp; "footer": &#123;
+                    <br />
+                    &nbsp; &nbsp; "data": "Yours Sincerely", <br />
+                    &nbsp; &nbsp; "textAlign": "left", <br />
+                    &nbsp; &nbsp; "justifyContent": "center", <br />
+                    &nbsp; &nbsp; "flexDirection": "column", <br />
+                    &nbsp; &nbsp; "fontType": "Trebuchet MS", <br />
+                    &nbsp; &nbsp; "fontSize": 20, <br />
+                    &nbsp; &nbsp; "fontColor": "rgb(0, 0, 255)", <br />
+                    &nbsp; &nbsp; "zoom": "1", <br />
+                    &nbsp; &nbsp; "isImage": false <br />
+                    &nbsp; &#125; <br />
+                    &nbsp; "headerImage": null, <br />
+                    &nbsp; "footerImage": null, <br />
+                    &nbsp; "backImage": null, <br />
+                    &#125;
+                    <br />
+                  </pre>
+                </div>
+              </div>
+              <div className="mt-[55px]">
+                <div>
+                  <h2 className="text-[#001a5f]  font-karla text-[33px]  font-bold ml-2">
+                    <spna>4.6.</spna>Delete Custom Cards
+                  </h2>
+                  <div className="leading-[1.5rem] text-sm mt-[12px]">
+                    <p className="mt-[17px] text-[16px] mt-[16px] leading-[27px] color-[black]  font-thin">
+                      DELETE -
+                      /delete-custom-card?productId=7072904347753,7073022279785,123456789000
+                    </p>
+                    <p className="mt-[17px] text-[16px] mt-[16px] leading-[27px] color-[black]  font-thin">
+                      This endpoint can be used to delete one or more custom
+                      cards belonging to the user.
+                    </p>
+                  </div>
+                </div>
+                <table className="min-w-full mt-[5px] text-sm table-auto">
+                  <thead>
+                    <tr className='text-[15px]'> 
+                      <td className="border p-4">Method</td>
+                      <td className="border p-4">URL</td>
+                      <td className="border p-4">Parameters</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className='text-[14px]'>
+                      <td className="border p-4">DELETE</td>
+                      <td className="border p-4">
+                        /delete-custom-card?productId=7072904347753,7073022279785,123456789000
+                      </td>
+                      <td className="border p-4">
+                        productId - productId contains
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <h2 className="text-[#001a5f] font-karla text-lg  mt-[13px] font-bold ml-2">
+                    Response Sample
+                  </h2>
+                </div>
+                <pre className="leading-6	 text-sm  p-[22px] bg-gray-200  mt-7px">
+                  &#123;
                   <br />
+                  &nbsp; "result": <br />
+                  &nbsp; "successfulDeletions": [ <br />
+                  &nbsp; "7072904347753", <br />
+                  &nbsp; "7073022279785" <br />
+                  ], <br />
+                  &nbsp; "failedDeletions": [ <br />
+                  &nbsp; "123456789000" <br />
+                  ] <br />
+                  &nbsp; "errors": [] <br />
+                  &#125;
                 </pre>
               </div>
             </div>
           )}
-          {selectedSection === 'Delete Custom Cards' && (
-            <div>
-              <div>
-                <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
-                  <spna>4.6.</spna>Delete Custom Cards
-                </h2>
-                <div className="leading-[1.5rem] text-sm mt-[12px]">
-                  <p className="ml-[9px]">
-                    DELETE -
-                    /delete-custom-card?productId=7072904347753,7073022279785,123456789000
-                  </p>
-                  <p className="ml-[9px]">
-                    This endpoint can be used to delete one or more custom cards
-                    belonging to the user.
-                  </p>
-                </div>
-              </div>
-              <table className="min-w-full mt-[5px] text-sm table-auto">
-                <thead>
-                  <tr>
-                    <td className="border p-4">Method</td>
-                    <td className="border p-4">URL</td>
-                    <td className="border p-4">Parameters</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border p-4">DELETE</td>
-                    <td className="border p-4">
-                      /delete-custom-card?productId=7072904347753,7073022279785,123456789000
-                    </td>
-                    <td className="border p-4">
-                      productId - productId contains
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <h2 className="text-[#001a5f] font-karla text-lg  mt-[13px] font-bold ml-2">
-                  Response Sample
-                </h2>
-              </div>
-              <pre className="leading-6	 text-sm  p-[22px] bg-gray-200  mt-7px">
-                &#123;
-                <br />
-                &nbsp; "result": <br />
-                &nbsp; "successfulDeletions": [ <br />
-                &nbsp; "7072904347753", <br />
-                &nbsp; "7073022279785" <br />
-                ], <br />
-                &nbsp; "failedDeletions": [ <br />
-                &nbsp; "123456789000" <br />
-                ] <br />
-                &nbsp; "errors": [] <br />
-                &#125;
-              </pre>
-            </div>
-          )}
+
           {selectedSection === 'ORDERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-lg font-bold ml-2">
@@ -1653,7 +1655,7 @@ const apidocs = () => {
                   </tr>
                 </tbody>
               </table>
-              <h2 className="text-[#001a5f]  font-karla text-lg mt-[23px] font-bold ml-2">
+              <h2 className="mt-[19px] font-karla  mb-[7px] text-[23px]">
                 Returns on success:
               </h2>
               <pre className="text-xs p-[22px] leading-6 bg-gray-200 text-sm  mt-7px overflow-hidden">

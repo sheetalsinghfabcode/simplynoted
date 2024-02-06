@@ -28,23 +28,36 @@ export default function Zapier() {
             </h2>
           </div>
           <p
-            className="lg:text-[18px] text-[20px] text-black font-light w-[100%] leading-8 lg:mt-[26px] mt-7 lg:text-justify sm:text-center text-justify"
-            style={{fontWeight: '100'}}
+            className="lg:text-[18px] text-[20px] text-black font-light w-[100%] leading-8 lg:mt-[26px] mt-7 w-[97%] lg:text-justify sm:text-center text-justify"
+            style={{fontWeight: '100', color: '#1e1e1e'}}
           >
             Integrate and automate sending real handwritten notes from 2,500+
             softwares instantly. Request access to our Zapier App today!
           </p>
-
-          <DynamicButton
-            onClickFunction={() =>
-              (window.location.href =
-                'https://zapier.com/apps/simply-noted/integrations')
-            }
-            text="INTEGRATE NOW"
-            className="btn1 !mt-5 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
-          />
+          <div className="absolute mt-[34px]">
+            <div className="z-10 flex justify-center">
+              {' '}
+              {/* Higher z-index for top div */}
+              <DynamicButton
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
+                text="INTEGRATE NOW"
+                className="mt-[6px] text-[16px] font-bold"
+              />
+            </div>
+            <div className="z-[-1] relative top-[-56px]">
+              {' '}
+              {/* Lower z-index for bottom div */}
+              <img
+                src="https://simplynoted.com/cdn/shop/files/Group_460.svg"
+                alt="Some description"
+              />
+            </div>
+          </div>
         </div>
-        <div className="lg:hidden block sm:mb-10 mb-7">
+        <div className="lg:hidden block sm:mb-10 mb-[2.5rem]">
           <img
             className="mx-auto"
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
@@ -62,7 +75,7 @@ export default function Zapier() {
         </div>
       </div>
 
-      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[74px] mt-[40px]">
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[130px] mt-[141px]">
         <Swiper
           modules={[Autoplay]}
           direction={'horizontal'}
@@ -104,9 +117,11 @@ export default function Zapier() {
               alt="LogoSimplinotedpic"
             />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[90%]" src={zoho} alt="LogoSimplinotedpic" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img
               className="w-[40%]"
@@ -114,12 +129,15 @@ export default function Zapier() {
               alt="LogoSimplinotedpic"
             />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[90%]" src={amazon} alt="LogoSimplinotedpic" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[90%]" src={sheet} alt="LogoSimplinotedpic" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img
               className="w-[90%]"
@@ -127,15 +145,19 @@ export default function Zapier() {
               alt="LogoSimplinotedpic"
             />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[90%]" src={esty} alt="LogoSimplinotedpic" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[90%]" src={ac_blue} alt="LogoSimplinotedpic" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[60%]" src={shopifys} alt="LogoSimplinotedpic" />
           </SwiperSlide>
+
           <SwiperSlide>
             <img className="w-[90%]" src={zoho} alt="LogoSimplinotedpic" />
           </SwiperSlide>
@@ -148,11 +170,11 @@ export default function Zapier() {
           src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
         />
         <div className="mt-[-71px]">
-          <p className="max-w-[287px] mx-auto text-center font-light text-lg relative">
+          <p className="max-w-[324px] mx-auto ml-[-53px] text-[19px] text-center font-light  relative">
             Send pen written notes automatically from your favorite CRM
           </p>
           <img
-            className="left-[80px] "
+            className="left-[240px] absolute"
             src="https://simplynoted.com/cdn/shop/files/zapier-arrow.png?v=17017241910886262831"
           />
         </div>
@@ -161,8 +183,13 @@ export default function Zapier() {
       <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
-            <div className="  text-[28px] font-karla text-[#001A5F]">
-              Instantly Integrate With 1,000s of Applications
+            <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
+              <p className='color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]'>
+              Instantly Integrate With 
+              </p>
+              <p className='color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]'>
+              1,000s of Applications
+              </p>
             </div>
           </div>
           <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
@@ -186,7 +213,7 @@ export default function Zapier() {
             />
           </div>
         </div>
-        <div className="lg:hidden block sm:mb-10 mb-7 mt-10">
+        <div className="lg:hidden block sm:mb-10 mb-7 leading-[46px] mt-10">
           <div className=" sm:text-[30px] text-center text-[32px] font-karla text-[#001A5F]">
             Instantly Integrate With 1,000s of Applications
           </div>
@@ -200,7 +227,7 @@ export default function Zapier() {
         </div>
       </div>
 
-      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6">
+      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6 mt-[105px]">
         <img
           className="simplinoted-card-image"
           src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"

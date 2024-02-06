@@ -1197,11 +1197,7 @@ body {
 .navitems:hover {
   color: #3d3eb7 !important;
 }
-.titleImage {
-  background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
-  background-position: center bottom !important;
-  background-size: 52% !important;
-}
+
 
 /* .navbar-item:hover{
   background: url(../../assets/Image/menu-underline.png) no-repeat;
