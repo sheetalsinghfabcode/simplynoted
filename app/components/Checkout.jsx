@@ -13,6 +13,7 @@ export function CheckoutData({
   StripeKey,
   totalPrize,
   cartData,
+  cartNote
 }) {
   const stripe = loadStripe(`${StripeKey}`);
   let customerid, fullName, userEmail, firstName, lastName;
@@ -24,6 +25,7 @@ export function CheckoutData({
   const [newCardAdded, setNewCardAdded] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [loader, setloader] = useState(false);
+  const [customerInformation, setCustomerInformation] = useState([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -114,12 +116,9 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
-      // console.log(json, 'createCustomerId Response');
-      // await addNewCreditCard(id, json.stripeCustomerId)
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
-      // }
     } catch (error) {
       setloader(false);
       console.error(error, 'error on CreateCard');
@@ -141,8 +140,7 @@ export function CheckoutData({
         },
       );
       const jsonData = await res.json();
-      
-      // console.log(jsonData, 'addNewCard');
+
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
@@ -157,8 +155,8 @@ export function CheckoutData({
         `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
-      // console.log(json, 'creditCard Details');
       if (json) {
+        setCustomerInformation(json.customer)
         setSavedCart(json.payments);
         setWalletBalance(json.stripe);
       }
@@ -237,12 +235,9 @@ export function CheckoutData({
     }));
   };
 
-  
-
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.address.country,
   );
-  // console.log(formData, 'formData');
   function onpenAddCardModal() {
     setShowCardBox(true);
   }
@@ -258,21 +253,44 @@ export function CheckoutData({
     setFirstPaymentId();
   }, [savedCard]); // Run when savedCard changes
 
+  function separateFullName(fullName) {
+    // Split the full name into an array of words
+    let nameArray = fullName?.split(' ');
+
+    // Extract the first name (first element of the array)
+    let firstName = nameArray && nameArray[0];
+
+    // Extract the last name (join the remaining elements of the array with a space)
+    let lastName = nameArray?.slice(1).join(' ');
+
+    // Return an object with firstName and lastName properties
+    return {
+        firstName: firstName,
+        lastName: lastName
+    };
+}
+
+// Example usage:
+let name = customerInformation?.name;
+let separatedNames = separateFullName(name);
+
+console.log("cartNote",cartNote);
+
   async function paymentPurchase() {
     try {
       const formData = new FormData();
       const payload = {
         billingAddress: {
-          firstName: 'Pradeep',
-          lastName: 'singh',
-          email: 'fabprojectmanager@gmail.com',
-          address: 'test',
-          apartment: 'test',
-          city: 'test',
-          country: 'US',
-          state: 'Florida',
+          firstName: separatedNames?.firstName,
+          lastName: separatedNames?.lastName,
+          email: customerInformation?.email,
+          address: customerInformation.address?.line1,
+          apartment: customerInformation.address?.line2,
+          city: customerInformation.address?.city,
+          country: customerInformation.address?.country,
+          state: customerInformation.address?.state,
         },
-        cartNote: '',
+        cartNote: cartNote ? cartNote : "",
         cartItems:
           cartData &&
           cartData?.map((item) => {
@@ -341,15 +359,15 @@ export function CheckoutData({
             };
           }),
 
-        cartTotal: prices.totalPrice,
+        cartTotal: prices?.totalPrice,
         wallet: showWallet,
-        paymentMethodKey: !showWalletBtn && paymentMethodId,
+        paymentMethodKey: !showWallet && paymentMethodId,
         discountCode: discountCouponCode?.payloadValue,
-        discountValue: discountCouponCode?.apiDiscountResponse.value,
-        discountValueType: discountCouponCode?.apiDiscountResponse.value_type,
+        discountValue: discountCouponCode?.apiDiscountResponse?.value ? discountCouponCode.apiDiscountResponse.value : "",
+        discountValueType: discountCouponCode?.apiDiscountResponse?.value_type ? discountCouponCode.apiDiscountResponse.value_type : "",
       };
 
-      console.log("payload",payload);
+      console.log('payload', payload);
 
       const res = await fetch(
         `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
@@ -368,10 +386,6 @@ export function CheckoutData({
   }
 
   console.log('cartData', cartData);
-  console.log('discountCouponCode', discountCouponCode);
-  console.log('prices', prices);
-  console.log('savedCard', savedCard);
-  console.log('paymentMethodId', paymentMethodId);
 
   return (
     <>

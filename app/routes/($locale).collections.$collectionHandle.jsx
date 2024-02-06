@@ -191,7 +191,6 @@ export default function Collection() {
     if (e == 'customisable-cards') {
       customisedCard();
       setLoader(false);
-      // debugger;
     } else {
       navigate(`/collections/${e}`);
       setCheckState(false);

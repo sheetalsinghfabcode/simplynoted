@@ -75,6 +75,7 @@ export default function AddCartFunc() {
   const [totalPrize, setTotalPrize] = useState('');
   const [agree, setAgree] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [cartNote, setCartNote] = useState('');
 
   useEffect(() => {
     storedDataString = localStorage.getItem('mydata')
@@ -158,7 +159,7 @@ export default function AddCartFunc() {
     });
   }
 
-  console.log("postalData",postalData);
+  console.log('postalData', postalData);
 
   function ConfirmDeleteOrder(index) {
     // console.log(index);
@@ -710,7 +711,6 @@ export default function AddCartFunc() {
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
                                 ) : (
-                             
                                   <div className="flex w-[100%] flex-wrap ">
                                     <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
                                       <div className="flex w-full justify-evenly">
@@ -759,7 +759,7 @@ export default function AddCartFunc() {
                                       </div>
                                     </div>
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
-                                  </div>                                
+                                  </div>
                                 )}
                               </>
                             )}
@@ -963,8 +963,10 @@ export default function AddCartFunc() {
                     </div>
                   )}
                   <div className="w-[85%] m-auto mt-10 mb-10">
-                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%]"
-                    style={{border: '3px solid #1b5299'}}>
+                    <div
+                      className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%]"
+                      style={{border: '3px solid #1b5299'}}
+                    >
                       <h3 className="text-[30px] font-karla text-[#1b5299]">
                         NOTE
                       </h3>
@@ -976,6 +978,8 @@ export default function AddCartFunc() {
                         className="w-[85%] border-none"
                         id="cart-note"
                         cols="30"
+                        onChange={(e) => setCartNote(e.target.value)}
+                        value={cartNote}
                         rows="4"
                       ></textarea>
                     </div>
@@ -1206,7 +1210,8 @@ export default function AddCartFunc() {
         </>
       ) : (
         <CheckoutData
-        cartData={cartData}
+          cartNote={cartNote && cartNote}
+          cartData={cartData}
           setShowCartPage={setShowCartPage}
           StripeKey={StripeKey}
           totalPrize={totalPrize.toFixed(2)}

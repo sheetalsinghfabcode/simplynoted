@@ -156,7 +156,6 @@ export default function CustomProducts() {
     } catch (error) {
       console.error(error, 'shopify');
     }
-    // debugger;
   }
   const customStyles = {
     content: {
