@@ -9,9 +9,7 @@ import {
 import {useState, useRef, Suspense, useEffect, useMemo} from 'react';
 import {useWindowScroll} from 'react-use';
 import {Disclosure} from '@headlessui/react';
-import {CartForm, Image} from '@shopify/hydrogen';
-import LogoShopify from '../../assets/Image/simply-noted-logo.avif';
-import CartShopify from '../../assets/Image/cart_icon.png';
+import {CartForm} from '@shopify/hydrogen';
 import footerlogo from '../../assets/Image/logo-footer.webp';
 import linkdin from '../../assets/Image/Linkdin.svg';
 import fb from '../../assets/Image/fb.png';
@@ -22,10 +20,9 @@ import Swipers from './home/Swipers';
 import Card from '~/components/home/Card';
 import arrow_rights from '../../assets/Image/arrow-right-faq.png';
 import arrow_down from '../../assets/Image/arrow-down.png';
-// import ArrowUp from '../../assets/Image/arrow-up.png';
-// import ArrowDown from '../../assets/Image/arrow-down.png';
-import RightArrow from '../../assets/Image/arrow-down.png';
 import nav_logo from '../../assets/Image/simply-noted-navlogo.avif';
+import {IoIosArrowDown} from 'react-icons/io';
+import {HiOutlineShoppingBag} from 'react-icons/hi2';
 
 import {
   Drawer,
@@ -124,8 +121,8 @@ function Header({title, menu}) {
       <MobileHeader
         isHome={isHome}
         title={
-          <div className="h-[16px] w-[121px]">
-            <img className="w-[100px] max-w-full" src={nav_logo} />
+          <div style={{minWidth: '170px'}}>
+            <img className="max-w-full" src={nav_logo} style={{margin: '13px 20px 0 0px'}} />
           </div>
         }
         openCart={openCart}
@@ -414,16 +411,25 @@ function MenuMobileNav({menu, onClose}) {
 function MobileHeader({title, isHome, openCart, openMenu}) {
   // useHeaderStyleFix(containerStyle, setContainerStyle, isHome);
 
+  const stateContext = useStateContext() || {
+    cartCountVal: 0,
+    setCartCountVal: () => {},
+  };
+
+  const {cartCountVal} = stateContext;
   const params = useParams();
 
   return (
     <header
       role="banner"
+      style={{
+        paddingTop: '30px',
+      }}
       className={`${
         isHome ? '' : ''
       } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4 px-4 md:px-8`}
     >
-      <div className="flex items-center justify-start w-full gap-4">
+      <div className="flex items-center justify-start h-full w-full gap-4">
         <Link
           className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
           to="/"
@@ -473,11 +479,37 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 
       <div className="flex items-center justify-end w-full gap-4">
         {/* <AccountLink className="relative flex items-center justify-center w-8 h-8" /> */}
-        <CartCount isHome={isHome} openCart={openCart} />
+        {/* <CartCount isHome={isHome} openCart={openCart} /> */}
+        <div className="tooltip mb-2" style={{transition: 'all 700ms'}}>
+          {cartCountVal && cartCountVal !== undefined ? (
+            <>
+              <Link to="/carts">
+                <div
+                  className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
+                  style={{marginLeft: '22px', marginBottom: '16px'}}
+                >
+                  <span className="text-[white]">
+                    {cartCountVal ? cartCountVal : ''}
+                  </span>
+                </div>
+                <HiOutlineShoppingBag className="navbar-cart-icon" />
+              </Link>
+            </>
+          ) : (
+            <Link to="/carts">
+              {/* This div is just for aligning the cart icon */}
+              <div
+                className="w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
+                style={{marginLeft: '22px', marginBottom: '16px'}}
+              ></div>
+              <HiOutlineShoppingBag className="navbar-cart-icon" />
+            </Link>
+          )}
+        </div>
       </div>
       <button
         onClick={openMenu}
-        className="relative flex color-white bg-ef6e6e items-center justify-center w-8 h-8"
+        className="relative flex color-white bg-ef6e6e items-center justify-center"
       >
         <IconMenu />
       </button>
@@ -540,6 +572,8 @@ function DesktopHeader({isHome, menu}) {
         role="banner"
         style={{
           height: '84px',
+          padding: '40px',
+          marginTop: '10px',
         }}
         className={`${
           isHome
@@ -547,25 +581,26 @@ function DesktopHeader({isHome, menu}) {
             : 'bg-contrast/80 text-primary'
         } ${
           !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
+        } hidden pt-4 h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
             {/* {title} */}
             <img
-              src={LogoShopify}
+              src={nav_logo}
               style={{
                 position: 'relative',
                 height: 'auto',
-                marginleft: '-10px',
+                marginLeft: '-10px',
+                minWidth: '170px',
               }}
-              className="xl:w-full lg:w-[80%]"
+              className="xl:w-full lg:w-[80%] mr-5"
             />
           </Link>
         </div>
         <div
           style={{fontSize: '17px'}}
-          className="flex xl:gap-[43px] lg:gap-2 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
+          className="flex items-start gap-8 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
         >
           {(menu?.items || []).map((item) => {
             if (
@@ -588,15 +623,13 @@ function DesktopHeader({isHome, menu}) {
                 >
                   {item.title === 'Integrations' ? (
                     <div
-                      className="dropdown navitems"
+                      className="dropdown"
                       onMouseEnter={() => handleDropdownEnter('integrations')}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="flex items-baseline gap-[7px]">
+                      <div className="flex navitems items-center gap-[7px]">
                         <div className="font-[600]">Integrations</div>
-                        <div>
-                          <img className="w-[12px]" src={RightArrow} />
-                        </div>
+                        <IoIosArrowDown />
                       </div>
                       <div
                         className={`dropdown-content ${
@@ -622,14 +655,14 @@ function DesktopHeader({isHome, menu}) {
                   ) : null}
                   {item.title === 'Pricing' ? (
                     <div
-                      className="dropdown navitems"
+                      className="dropdown"
                       onMouseEnter={() => handleDropdownEnter('pricing')}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="flex items-baseline gap-[7px]">
+                      <div className="flex navitems items-center gap-[7px]">
                         <div className="font-[600]">Pricing</div>
                         <div>
-                          <img className="w-[12px]" src={RightArrow} />
+                          <IoIosArrowDown />
                         </div>
                       </div>
 
@@ -661,14 +694,14 @@ function DesktopHeader({isHome, menu}) {
 
                   {item.title === 'About' ? (
                     <div
-                      className="dropdown navitems"
+                      className="dropdown"
                       onMouseEnter={() => handleDropdownEnter('about')}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="flex items-baseline gap-[7px]">
+                      <div className="flex navitems items-center gap-[7px]">
                         <div className="font-[600]">About</div>
                         <div>
-                          <img className="w-[12px]" src={RightArrow} />
+                          <IoIosArrowDown />
                         </div>
                       </div>
                       <div
@@ -699,11 +732,11 @@ function DesktopHeader({isHome, menu}) {
                   ) : null}
                   {item.title === 'Account' ? (
                     <div
-                      className="dropdown navitems"
+                      className="dropdown"
                       onMouseEnter={() => handleDropdownEnter('account')}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="font-[600]">Account</div>
+                      <div className="font-[600] navitems">Account</div>
                       <div
                         className={`dropdown-content ${
                           activeDropdown === 'account' ? 'show' : ''
@@ -728,14 +761,14 @@ function DesktopHeader({isHome, menu}) {
                   ) : null}
                   {item.title === 'Order' ? (
                     <div
-                      className="dropdown navitems "
+                      className="dropdown"
                       onMouseEnter={() => handleDropdownEnter('order')}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="flex items-baseline gap-[7px]">
+                      <div className="flex navitems items-center gap-[7px]">
                         <div className="font-[600]">Order</div>
                         <div>
-                          <img className="w-[12px]" src={RightArrow} />
+                          <IoIosArrowDown />
                         </div>
                       </div>
 
@@ -787,47 +820,38 @@ function DesktopHeader({isHome, menu}) {
             }
           })}
         </div>
-        <div className="flex items-center gap-1">
-          <div className="tooltip">
+        <div className="flex items-start gap-1 mt-1 ml-4">
+          <div className="tooltip mb-8" style={{transition: 'all 700ms'}}>
             {cartCountVal && cartCountVal !== undefined ? (
               <>
                 <Link to="/carts">
-                  <div className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center ml-[1rem]">
+                  <div
+                    className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
+                    style={{marginLeft: '22px', marginBottom: '16px'}}
+                  >
                     <span className="text-[white]">
                       {cartCountVal ? cartCountVal : ''}
                     </span>
                   </div>
-                  <img
-                    src={CartShopify}
-                    alt="cart-icon"
-                    style={{
-                      width: '32px',
-                      height: '29px',
-                      marginTop: '-11px',
-                    }}
-                  />
+                  <HiOutlineShoppingBag className="navbar-cart-icon" />
                 </Link>
               </>
             ) : (
               <Link to="/carts">
-                <img
-                  src={CartShopify}
-                  alt="cart-icon"
-                  style={{
-                    width: '32px',
-                    height: '29px',
-                    marginTop: '-11px',
-                  }}
-                />
+                {/* This div is just for aligning the cart icon */}
+                <div
+                  className="w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
+                  style={{marginLeft: '22px', marginBottom: '16px'}}
+                ></div>
+                <HiOutlineShoppingBag className="navbar-cart-icon" />
               </Link>
             )}
-
-            {/* <span className="tooltiptext">Cart</span> */}
           </div>
 
           <DynamicButton
+            style={{padding: '9px 23px', fontWeight: '700 !important'}}
             text="REQUEST A SAMPLE"
-            className="request-button"
+            className="request-button text-lg"
             onClickFunction={() =>
               (window.location.href =
                 'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
@@ -840,8 +864,9 @@ function DesktopHeader({isHome, menu}) {
             </div>
           ) : (
             <DynamicButton
+              style={{fontSize: '17px', padding: '10px', paddingTop: '13px'}}
               text={customerId ? 'Account →' : 'Sign in →'}
-              className="login-button"
+              className="login-button font-semibold"
               onHoverColorEnabled={false}
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
@@ -1012,11 +1037,6 @@ function FooterMenu({menu}) {
     nav: 'grid gap-2 pb-6',
   };
 
-  function removePagesFromString(str) {
-    // return str?.replace('/pages' && '/policies', '');
-    return str.replace(/\/(pages|policies)/, '');
-  }
-
   // console.log('menu', menu);
 
   return (
@@ -1061,7 +1081,7 @@ function FooterMenu({menu}) {
                   {({open}) => (
                     <>
                       <Disclosure.Button className="md:text-left text-center md:cursor-default">
-                        <Link to={removePagesFromString(item.to)}>
+                        <Link to={item.to}>
                           <Heading
                             className="flex justify-between  !font-base leading-loose hover:text-white"
                             size="lead"

@@ -3,9 +3,9 @@ import DynamicTitle from '~/components/Title';
 export default function refundpolicy() {
   return (
     <div>
-      <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
-        <div className=" ">
-          <DynamicTitle dynamicButton title="Refund policy" />
+      <div className="ml-[50px]">
+        <DynamicTitle dynamicButton title="Refund policy" />
+        <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
           <div className="sm:text-[14px] text-[12px]">
             <p className="mt-[25px] font-medium">RETURNS</p>
             <p className="mt-[25px] ">30-Day Return Guarantee</p>

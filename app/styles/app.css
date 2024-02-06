@@ -2,7 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 @import 'react-datepicker/dist/react-datepicker';
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-ExtraLight.ttf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-Light.ttf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: Karla;
+  src: url(./fonts/Karla-SemiBold.ttf);
+  font-weight: 600;
+}
 
 /* Tokens */
 :root {
@@ -221,7 +246,6 @@ nav a {
 
 .login-button {
   color: rgb(0, 0, 0);
-  font-weight: 500;
   margin-right: -14px;
 }
 .login-button:hover {
@@ -265,6 +289,18 @@ nav a {
 .robot-gif {
   margin-top: -37px;
 }
+
+.navbar-cart-icon {
+  width: 25px;
+  height: 29px;
+  margin-top: -29px;
+  color: #1e1e1e;
+  transition: all 700ms;
+}
+.navbar-cart-icon:hover {
+  color: #1b5299;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -281,14 +317,14 @@ nav a {
   left: 60%;
   transform: translateX(-30%);
   color: #777777;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 0.1px;
   font-weight: lighter;
   width: 19rem;
   line-height: 25px;
   transition: opacity 0.4s ease-in-out, height 0.3s ease-in-out;
   margin-top: 0;
-  width: 30%;
+  width: 25%;
 }
 
 .dropdown > div {
@@ -1135,18 +1171,31 @@ body {
 }
 .navitems {
   padding-bottom: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: color 700ms;
 }
+
+.navitems::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 100%;
+  margin-top: 20px;
+  background: url(../../assets/Image/menu-underline.png) no-repeat;
+  background-size: 100% 15%;
+  transition: width 400ms;
+  z-index: -1;
+}
+.navitems:hover::after {
+  width: 100%;
+}
+
 .navitems:hover {
   color: #3d3eb7 !important;
-  background: url(../../assets/Image/menu-underline.png) no-repeat;
-  background-position: bottom;
-  background-size: 105% 15%;
-}
-.navitems:target {
-  color: #3d3eb7 !important;
-  background: url(../../assets/Image/menu-underline.png) no-repeat;
-  background-position: bottom;
-  background-size: 105% 10%;
 }
 .titleImage {
   background: url(../../assets/Image/underline-2-img.png) no-repeat !important;

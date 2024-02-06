@@ -23,14 +23,18 @@ export default function Zapier() {
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
               alt="zapier"
             />
-            <h2 className="xl:text-[46px] text-[32px] font-normal text-[#001A5F]">
+            <h2 className="xl:text-[46px] text-[32px] mt-[26px] font-normal text-[#001A5F]">
               Zapier Integration
             </h2>
           </div>
-          <p className="lg:text-[18px] text-[20px] text-black font-light  w-[100%] leading-8 lg:mt-0 mt-7  lg:text-justify sm:text-center text-justify">
+          <p
+            className="lg:text-[18px] text-[20px] text-black font-light w-[100%] leading-8 lg:mt-[26px] mt-7 lg:text-justify sm:text-center text-justify"
+            style={{fontWeight: '100'}}
+          >
             Integrate and automate sending real handwritten notes from 2,500+
             softwares instantly. Request access to our Zapier App today!
           </p>
+
           <DynamicButton
             onClickFunction={() =>
               (window.location.href =
