@@ -53,14 +53,16 @@ export default function AddCartFunc() {
   const [cardPriceVal, setCardPriceVal] = useState([]);
   const [cardPrice, setCardPrice] = useState('');
   const [cardName, setCardName] = useState('');
+  const [giftCardId,setGiftCardId] = useState('')
   const [cardVal, setCardVal] = useState('');
   const [cardImg, setCardImage] = useState('');
   const [postTitle, setPostTitle] = useState('');
+  const [postalId,setPostalId] = useState("")
+  const [postalId2,setPostalId2] = useState("")
   const [postTitle2, setPostTitle2] = useState('');
   const [postPrice, setPostPrice] = useState('');
   const [postPrice2, setPostPrice2] = useState('');
   const [postImage, setPostImage] = useState('');
-  const [senderAddress, setSenderAddress] = useState('');
   const [msgShow, setMsgShow] = useState('');
   const [msgFont, setMsgFont] = useState('');
   const [msglastText, setMsglastText] = useState('');
@@ -98,12 +100,16 @@ export default function AddCartFunc() {
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
+    let postalID = postalData.product.variants.edges[0].node.id
+    let postalID2 = postalData.product.variants.edges[1].node.id
     let postalrate = postalData.product.variants.edges[0].node.price.amount;
     let postalTit2 = postalData.product.variants.edges[1].node.title;
     let postalrate2 = postalData.product.variants.edges[1].node.price.amount;
     let postalImag = postalData.product.variants.edges[1].node.image;
     setPostTitle(postalTit);
     setPostTitle2(postalTit2);
+    setPostalId(postalID.match(/\d+/g).join(""))
+    setPostalId2(postalID2.match(/\d+/g).join(""))
     setPostPrice(postalrate);
     setPostPrice2(postalrate2);
     setPostImage(postalImag.url);
@@ -112,6 +118,7 @@ export default function AddCartFunc() {
   let keyToUpdate1 = 'giftCardName';
   let keyToUpdate2 = 'giftCardImg';
   let keyToUpdate3 = 'giftCardPrice';
+  let keyToUpdate4 = 'giftCardId'
   function updateValueInArray(index) {
     // console.log(index);
     setUpdateGift(!updateGift);
@@ -121,6 +128,7 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate1] = cardName;
       cartData[index][keyToUpdate2] = cardImg;
       cartData[index][keyToUpdate3] = cardPrice;
+      cartData[index][keyToUpdate4] = giftCardId
     }
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
@@ -137,6 +145,7 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate1] = null;
       cartData[index][keyToUpdate2] = null;
       cartData[index][keyToUpdate3] = null;
+      cartData[index][keyToUpdate4] = null;
     }
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setDeleteCardModal(false);
@@ -249,10 +258,13 @@ export default function AddCartFunc() {
       setMsglastText(cartData[item].endText);
     }
   }
+
+  console.log("data",data);
   const cardvalFunc = async (item) => {
-    // console.log(item, 'cardVal-----');
+    console.log(item, 'cardVal-----');
     let selCardName = data.collection.products.edges[item].node;
-    // console.log(selCardName, 'selCardName--');
+    
+    console.log(selCardName, 'selCardName--');
     setCardName(selCardName.title);
     setCardImage(selCardName.featuredImage.url);
     // console.log(cardName,'cardName-----');
@@ -262,6 +274,7 @@ export default function AddCartFunc() {
     //   '---------abababababaababab',
     // );
     let firstPrice = arrCardPrice[0].node.price.amount;
+    setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(""))
     setCardPrice(firstPrice);
     setCardPriceVal(arrCardPrice);
     // await AfterCardSel(ab)
@@ -1258,9 +1271,11 @@ export default function AddCartFunc() {
         <CheckoutData
           cartNote={cartNote && cartNote}
           cartData={cartData}
+          postalId={postalId}
+          postalId2={postalId2}
           setShowCartPage={setShowCartPage}
           StripeKey={StripeKey}
-          totalPrize={totalPrize.toFixed(2)}
+          totalPrize={Number(totalPrize).toFixed(2)}
         />
       )}
 
@@ -1293,6 +1308,7 @@ const GiftProduct = `#graphql
             variants(first:10){
               edges{
                 node{
+                  id
                   title
                   price{
                     amount
@@ -1312,9 +1328,11 @@ const PostalProduct = `#graphql
   {
     product(id:"gid://shopify/Product/7032044912745"){
       title
+      onlineStoreUrl
       variants(first:10){
         edges{
           node{
+            id
             title
             image{
                 url

@@ -40,9 +40,7 @@ export default function AddressBook() {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+
 
   useEffect(() => {
     // Define the API URL

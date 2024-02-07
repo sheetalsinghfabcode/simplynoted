@@ -198,7 +198,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                 <td className="py-4 pl-6">{item.feature}</td>
                 {Array.from({length: pricingPlans.length}).map((_, i) => (
                   <td key={i} className="text-center">
-                    {index < (i + 1) * 5 ? (
+                    {index < (i + 1) * 17 ? (
                       <img
                         src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
                         className="w-[18px] h-[16px] mx-auto"

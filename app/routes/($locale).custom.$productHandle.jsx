@@ -353,6 +353,7 @@ const GiftProduct = `#graphql
             variants(first:10){
               edges{
                 node{
+                  id
                   title
                   price{
                     amount

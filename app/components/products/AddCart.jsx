@@ -62,10 +62,12 @@ export function AddCart({
   const [cardPrice, setCardPrice] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardPrice : '',
   );
+
+  const [giftCardId,setGiftCardId] = useState(
+    editOrderValue?.data ? editOrderValue.data.giftCardId : ''
+  )
   const [MsgText, setMesgtext] = useState('');
   const [loader, setLoader] = useState(false);
-  const [componentHide, setComponentHide] = useState(false);
-  const [enterShippingAddress, setEnterShippingAddress] = useState('');
   const [showShipAddress, setShowShipAddress] = useState(false);
   const [errors, setErrors] = useState({});
   const [onSaveShip, setSaveShip] = useState(false);
@@ -100,17 +102,6 @@ export function AddCart({
   const [reqFields, setReqFields] = useState(false);
   const [offPrice, setOffPrice] = useState('');
 
-  // const setFirstShippingMethod = () => {
-  //     if(shippingData){
-  //         console.log(shippingData,"shippingData");
-  //         setSelectShipMode()
-  //     }
-  // }
-
-  // useEffect(()=>{
-  //     setFirstShippingMethod();
-  // },[])
-
   const handleChange = (e) => {
     const {name, value} = e.target;
     if (name === 'country') {
@@ -137,7 +128,6 @@ export function AddCart({
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.country,
   );
-  console.log(fontFamilyName, 'fontFamilyName');
   function onNewAddressClick() {
     setAddressForm(true);
   }
@@ -150,11 +140,9 @@ export function AddCart({
         `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
       );
       const json = await res.json();
-      // console.log(json, 'getRecipient Response____________');
       setRecipientAddress(json.result);
       setLoader(false);
     } catch (error) {
-      console.log(error, 'Recipient error--------');
       setLoader(false);
     }
   }
@@ -166,11 +154,9 @@ export function AddCart({
         `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
       );
       const json = await res.json();
-      // console.log(json, 'getRecipient Response____________');
       setReturnAddress(json.result);
       setLoader(false);
     } catch (error) {
-      console.log(error, 'Recipient error--------');
       setLoader(false);
     }
   }
@@ -182,30 +168,25 @@ export function AddCart({
   };
   const handleBoxoNShipping = (item) => {
     setSelectShipMode(item);
-    console.log(item, 'shipping Data');
   };
   const filteredList = (recipientAddress, searchData) => {
     return recipientAddress.filter((dataobj) => bySearch(dataobj, searchData));
   };
 
   const bySearch = (dataobj, searchData) => {
-    // console.log(Object.values(dataobj),'+++++++++++++++');
     if (searchData) {
       return Object.values(dataobj).some((field) =>
-        // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
         field.toString().toLowerCase().includes(searchData.toLowerCase()),
       );
     } else return dataobj;
   };
 
   const filteredForSender = (returnAddress, searchData2) => {
-    console.log(searchData2, 'searchData2');
     return returnAddress.filter((dataobj) => searchBy(dataobj, searchData2));
   };
   const searchBy = (dataobj, searchData2) => {
     if (searchData2) {
       return Object.values(dataobj).some((field) =>
-        // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!')
         field.toString().toLowerCase().includes(searchData2.toLowerCase()),
       );
     } else return dataobj;
@@ -216,18 +197,20 @@ export function AddCart({
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
+    console.log("arrCardPrice",arrCardPrice);
+    setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(""))
+
     let firstPrice = arrCardPrice[0].node.price.amount;
     setCardPrice(firstPrice);
     setCardPriceTitle(arrCardPrice[0].node.title);
-    console.log(cardPrice, '----cardPrice=--', firstPrice);
     setCardPriceVal(arrCardPrice);
   };
+
+  console.log("cardVal",cardVal);
+
   const priceValFunc = async (item) => {
-    console.log(cardPriceVal[item].node.price, 'ooooooo');
     let priceAmount = cardPriceVal[item].node.price.amount;
     let priceTitle = cardPriceVal[item].node.title;
-    console.log(priceTitle, 'cardPriceVal', priceAmount);
-    console.log(item, 'priceValue');
     setCardPrice(priceAmount);
     setCardPriceTitle(priceTitle);
   };
@@ -236,7 +219,6 @@ export function AddCart({
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
-    console.log(cartDataReq, 'cartDataReq');
     setMesgtext(cartDataReq.msg);
     getRecipient();
     getReturn();
@@ -250,6 +232,7 @@ export function AddCart({
     senderAddress: selectedItem2,
     reciverAddress: selectedItem,
     giftCardName: cardName && stateCheckCart ? cardName : null,
+    giftCardId : giftCardId && stateCheckCart ? giftCardId : null,
     giftCardImg: cardImg && stateCheckCart ? cardImg : null,
     giftCardPrice: cardPrice && stateCheckCart ? cardPrice : null,
     giftCardPriceTitle: cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
@@ -298,12 +281,12 @@ export function AddCart({
   let keyUpdate22 = 'nonUSCount';
   let keyUpdate23 = 'shippingMethodImage';
   let keyUpdate24 = 'isShippidata';
+  let keyUpdate25 = 'giftCardId';
 
   function onClickAddCart() {
     setLoader(true);
     if (editOrderValue?.index >= 0) {
       const storedData = JSON.parse(localStorage.getItem('mydata'));
-      console.log(storedData, 'storedData');
 
       if (
         editOrderValue.index >= 0 &&
@@ -318,6 +301,8 @@ export function AddCart({
           cardImg && stateCheckCart ? cardImg : null;
         storedData[editOrderValue.index][keyUpdate5] =
           cardName && stateCheckCart ? cardName : null;
+          storedData[editOrderValue.index][keyUpdate25] =
+          giftCardId && stateCheckCart ? giftCardId : null;
         storedData[editOrderValue.index][keyUpdate6] =
           cardPrice && stateCheckCart ? cardPrice : null;
         storedData[editOrderValue.index][keyUpdate7] = cartDataReq?.signOffText
@@ -377,7 +362,6 @@ export function AddCart({
     } else {
       if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
         const existingDataString = localStorage.getItem('mydata');
-        console.log('cartDataReq');
         let existingDataArray = [];
         if (existingDataString) {
           existingDataArray = JSON.parse(existingDataString);
@@ -392,7 +376,6 @@ export function AddCart({
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
         const existingDataString = localStorage.getItem('mydata');
-        console.log('=-=existingDataString=-=-');
         let existingDataArray = [];
         if (existingDataString) {
           existingDataArray = JSON.parse(existingDataString);
@@ -437,6 +420,9 @@ export function AddCart({
       setReqFields(true);
     }
   }
+
+  console.log("data",data);
+
   return (
     <div className="relative md:w-[95%] w-[85%] mx-auto">
       {loader && (

@@ -14,6 +14,10 @@ export function StateContextProvider({children}) {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isAccountLoader, setIsAccountLoader] = useState(false);
   const [subscription, setSubscription] = useState(0);
+  const [managePlan,setManagePlan] = useState(false)
+
+
+
   const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedFullName = localStorage.getItem('SNFullName');
@@ -132,6 +136,8 @@ export function StateContextProvider({children}) {
         setUserEmail,
         phoneNumber,
         setPhoneNumber,
+        managePlan,
+        setManagePlan
       }}
     >
       {children}

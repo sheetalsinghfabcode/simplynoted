@@ -64,6 +64,14 @@ export function ProductInfo({
     customFontFamily(customerid);
   }, []);
 
+  useEffect(() => {
+    if (show) {
+      localStorage.setItem('selectedOrderPurchaseQuantity', 'Bulk Purchase');
+    } else {
+      localStorage.setItem('selectedOrderPurchaseQuantity', 'Single Card');
+    }
+  }, [show]);
+
   function getCustomFont(val) {
     // console.log(val, 'getcustom val');
     setFontFamily(val);

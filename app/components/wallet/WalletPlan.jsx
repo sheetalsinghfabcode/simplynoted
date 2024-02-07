@@ -39,6 +39,9 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
+
+
+
   return (
     <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
       <DynamicButton
@@ -92,8 +95,7 @@ const WalletPlans = ({
                     <div
                       onClick={() => {
                         if (
-                          stripeCollection.stripe?.subscription !==
-                          product.node.title
+                         (stripeCollection.stripe?.subscription !== product.node.title || stripeCollection.stripe?.subscriptionStatus !== "canceled")
                         ) {
                           setSubscription(subscriptionMetafield?.value || 0);
                         }

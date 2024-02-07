@@ -69,7 +69,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
   return (
     <>
-      <div className="container px-4 py-8">
+      <div className="container px-4 ">
         <h3 className=" md:text-2xl text-[15px] font-bold mb-6">
           Account Details
         </h3>

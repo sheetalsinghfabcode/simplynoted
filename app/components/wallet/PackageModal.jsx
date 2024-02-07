@@ -29,7 +29,7 @@ const PackageModal = ({
         show ? 'block' : 'hidden'
       } fixed top-[5rem] left-[50%] h-full translate-x-[-50%] overflow-y-auto flex items-center  justify-center z-50`}
     >
-      <div className="modal-container relative bg-[#dde8f9] w-11/12 h-full md:max-w-[640px] w-[329px] mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container relative bg-[#dde8f9] w-11/12 h-full max-w-[80%] md:max-w-[40%] w-full mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <span
           onClick={onCancel}
           className="absolute cursor-pointer !leading-[0] right-0 top-[20px]  text-[40px]"

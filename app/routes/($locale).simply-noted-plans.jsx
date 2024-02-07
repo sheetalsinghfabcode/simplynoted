@@ -86,6 +86,8 @@ export default function SimplyNoted() {
     return () => {};
   }, []);
 
+  console.log("stripeCollection",stripeCollection);
+
   return (
     <div className="w-full relative max-w-[1440px] mx-auto">
       {loader && (
