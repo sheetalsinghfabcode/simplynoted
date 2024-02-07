@@ -2085,6 +2085,41 @@ body {
   position: relative;
 }
 
+.titleImage {
+  background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
+  background-position: center bottom !important;
+  background-size: 95% !important;
+}
+.item_block_left::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: calc(100% - 20px);
+  background-color: #aaa;
+  left: 0;
+}
+
+.item_block_middle::before{
+  content: "";
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: calc(100% - 30px);
+    background-color: #aaa;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.item_block_right::before{
+  content: "";
+    position: absolute;
+    bottom: 0;
+    height: 1px;
+    width: calc(100% - 15px);
+    background-color: #aaa;
+    right: 0;
+}
 /********************************************* ROI CALCULATOR **********************************************************/
 .roi-calculator-section-1 {
   margin: 40px auto;
