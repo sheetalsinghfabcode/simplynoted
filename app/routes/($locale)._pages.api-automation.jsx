@@ -86,22 +86,23 @@ const apidocs = () => {
   return (
     <div className="">
       <div className="sm:px-[40px] px-[30px]">
-        <div className='ml-[-22px]'>
-        <DynamicTitle
-          dynamicButton
-          title="API Docs"
-          className={' !text-[42px]'}
-        />
-        <div className='flex justify-center'>
-        <img src="	https://simplynoted.com/cdn/shop/files/menu-underline.png"/>
-        </div>
+        <div className="ml-[-22px]">
+          <DynamicTitle
+            dynamicButton
+            title="API Docs"
+            className={' !text-[42px]'}
+          />
         </div>
         <p
           style={{fontFamily: 'karla'}}
           className="text-[#001a5f] leading-[30px] max-w-[40rem] mt-[-22px] font-bold mb-[28px] mt-[21px] text-[21px] sm:text-center text-justify mx-auto"
-        > 
-        <div className='w-[100%]'><p>By using this API you will have full access to the same range of
-     features found in our apps and website.</p></div>
+        >
+          <div className="w-[100%]">
+            <p>
+              By using this API you will have full access to the same range of
+              features found in our apps and website.
+            </p>
+          </div>
         </p>
       </div>
       <div className="flex  md:gap-[20px] mt-[70px] mx-5">
@@ -320,23 +321,24 @@ const apidocs = () => {
               </button>
             </li> */}
             <li
-              className={`${
-                selectedSection === 'ORDERS' ? ' font-bold' : ''
-              }`}
+              className={`${selectedSection === 'ORDERS' ? ' font-bold' : ''}`}
             >
               <button
-            className={`text-${
-              selectedSection === 'ORDERS' ? 'blue-500' : 'text-blue-500'
-            }`}
+                className={`text-${
+                  selectedSection === 'ORDERS' ? 'blue-500' : 'text-blue-500'
+                }`}
                 value="ORDERS"
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span  className={`text-${
-                    selectedSection === 'ORDERS'
-                      ? 'blue-500'
-                      : 'text-blue-500'
-                  }`}>5.</span> ORDERS
+                <span
+                  className={`text-${
+                    selectedSection === 'ORDERS' ? 'blue-500' : 'text-blue-500'
+                  }`}
+                >
+                  5.
+                </span>{' '}
+                ORDERS
               </button>
             </li>
             <ol>
@@ -465,18 +467,23 @@ const apidocs = () => {
               }`}
             >
               <button
-               className={`text-${
-                selectedSection === 'ADDRESSES' ? 'blue-500' : 'text-blue-500'
-              }`}
+                className={`text-${
+                  selectedSection === 'ADDRESSES' ? 'blue-500' : 'text-blue-500'
+                }`}
                 value="ADDRESSES"
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span   className={`text-${
+                <span
+                  className={`text-${
                     selectedSection === 'ADDRESSES'
                       ? 'blue-500'
                       : 'text-blue-500'
-                  }`}>7.</span> ADDRESSES
+                  }`}
+                >
+                  7.
+                </span>{' '}
+                ADDRESSES
               </button>
             </li>
             {/* <li
@@ -563,23 +570,31 @@ const apidocs = () => {
 
             <li
               className={`${
-                selectedSection === 'AVAILABLE HANDWRITING STYLES' ? ' font-bold' : ''
+                selectedSection === 'AVAILABLE HANDWRITING STYLES'
+                  ? ' font-bold'
+                  : ''
               }`}
             >
               <button
-               className={`text-${
-                selectedSection === 'AVAILABLE HANDWRITING STYLES' ? 'blue-500' : 'text-blue-500'
-              }`}
+                className={`text-${
+                  selectedSection === 'AVAILABLE HANDWRITING STYLES'
+                    ? 'blue-500'
+                    : 'text-blue-500'
+                }`}
                 value="AVAILABLE HANDWRITING STYLES"
                 type="button"
                 onClick={handleSectionChange}
               >
-                <span  className={`text-${
+                <span
+                  className={`text-${
                     selectedSection === 'AVAILABLE HANDWRITING STYLES'
                       ? 'blue-500'
                       : 'text-blue-500'
-                  }`}>8.</span> AVAILABLE HANDWRITING
-                STYLES
+                  }`}
+                >
+                  8.
+                </span>{' '}
+                AVAILABLE HANDWRITING STYLES
               </button>
             </li>
             {/* <li
@@ -1612,50 +1627,50 @@ const apidocs = () => {
                 </table>
               </div>
               <div>
-                <h2 className="text-[#001a5f]  font-karla text-lg  font-bold ml-2">
+                <h2 className="text-[#001a5f] font-karla mt-[40px] text-[33px] font-bold ml-2">
                   <span className="text-blue-500">5.2.</span> Get Orders
                 </h2>
-                <p className="mt-[21px]  ml-[9px] text-sm">
+                <p className="mt-[17px] text-[16px] mt-[18px] leading-[27px] color-[black]  font-thin">
                   <b>Description:</b> This endpoint gets all orders in the
                   account.
                 </p>
-                <p className="mt-[7px] ml-[9px] text-sm">
+                <p className="mt-[17px] text-[16px] mt-[15px] leading-[27px] color-[black]  font-thin">
                   <b>Endpoint:</b>
                   /orders/customer/?offset=0&status=any&fulfillment_status=shipped
                 </p>
-                <p className="mt-[7px] ml-[9px] text-sm">
+                <p className="mt-[17px] text-[16px] mt-[15px] leading-[27px] color-[black]  font-thin">
                   <b>Method:</b> GET
                 </p>
-                <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
+                <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
                   Headers:
                 </h2>
                 <table className="w-2/4 text-sm table-auto">
                   <thead>
-                    <tr>
+                    <tr className='text-[15px]'>  
                       <td className="border p-4">Name</td>
                       <td className="border p-4">Value</td>
                       <td className="border p-4">Required?</td>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">Content-Type</td>
                       <td className="border p-4">application/json</td>
                       <td className="border p-4">Yes</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">Authorization</td>
                       <td className="border p-4">Bearer TOKEN_HERE</td>
                       <td className="border p-4">Yes</td>
                     </tr>
                   </tbody>
                 </table>
-                <h2 className="font-karla text-lg  mt-[13px] font-bold ml-2">
+                <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
                   Body:
                 </h2>
                 <table className="min-w-full text-sm table-auto">
                   <thead>
-                    <tr>
+                    <tr className='text-[15px]'>
                       <td className="border p-4">Key</td>
                       <td className="border p-4">Type</td>
                       <td className="border p-4">Required?</td>
@@ -1663,13 +1678,13 @@ const apidocs = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">productId</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
                       <td className="border p-4">"4392452522089"</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">giftVariantId</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
@@ -1677,13 +1692,13 @@ const apidocs = () => {
                         "39532031672425" (Note: See below for more)
                       </td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">handwritingStyle</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
                       <td className="border p-4">"Tarzan"</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">customMessage </td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
@@ -1692,13 +1707,13 @@ const apidocs = () => {
                         line."
                       </td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">signoff</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
                       <td className="border p-4">"Yours Sincerely, David"</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">giftVariantId</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
@@ -1706,25 +1721,25 @@ const apidocs = () => {
                         "39532031672425" (Note: See below for more)
                       </td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">shippingDate</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
                       <td className="border p-4">"01/01/2020"</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">returnAddressId </td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
                       <td className="border p-4">"ID_OF_RETURN_ADDRESS"</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">returnAddress</td>
                       <td className="border p-4">Object Return Object</td>
                       <td className="border p-4">Yes</td>
                       <td className="border p-4"> See Below</td>
                     </tr>
-                    <tr>
+                    <tr className='text-[14px]'>
                       <td className="border p-4">recipientData </td>
                       <td className="border p-4">Array Recipient Object</td>
                       <td className="border p-4">Yes</td>
@@ -3558,8 +3573,8 @@ const apidocs = () => {
           {selectedSection === 'AVAILABLE HANDWRITING STYLES' && (
             <div>
               <h3 className="">
-                <span className="font-italic text-lg text-blue-500">8</span>
-                AVAILABLE HANDWRITING STYLES
+                <span className="ftext-[#001a5f] font-karla  font-bold ml-2 text-[33px] font-Tiempos">8</span>
+                 AVAILABLE HANDWRITING STYLES
               </h3>
               <div className=" mt-[55px]">
                 <h3 className="text-lg">
