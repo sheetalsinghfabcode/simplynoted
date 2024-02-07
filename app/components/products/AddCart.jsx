@@ -489,8 +489,8 @@ export function AddCart({
                     </div>
                     {filteredForSender(returnAddress, searchData2).map(
                       (item) => (
-                        <div className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] ">
-                          <input
+                        <div className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] cursor-pointer" onClick={() => handleCheckboxChange2(item)}>
+                          <input className='cursor-pointer'
                             type="checkbox"
                             value={item}
                             checked={selectedItem2?._id === item._id}
@@ -536,8 +536,8 @@ export function AddCart({
                         </div>
                         {filteredList(recipientAddress, searchData).map(
                           (item, index) => (
-                            <div className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] ">
-                              <input
+                            <div className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] cursor-pointer" onClick={() => handleCheckboxChange(item)}>
+                              <input className='cursor-pointer'
                                 type="checkbox"
                                 value={item}
                                 checked={selectedItem?._id === item._id}
@@ -664,7 +664,7 @@ export function AddCart({
                           </select>
                         )}
                       </div>
-                      <div>
+                      <div className='ml-[10px]'>
                         <input
                           type="checkbox"
                           id=""

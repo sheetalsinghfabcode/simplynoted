@@ -346,11 +346,11 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div className="w-[85%]  bg-[white] m-auto mt-10 mb-10">
+                      <div className="w-[85%] bg-[white] m-auto mt-10 mb-10 p-10 rounded-[10px]">
                         <div className="flex w-[100%] flex-wrap ">
-                          <div className="md:w-[44%] w-full items-center relative flex ml-0 m-auto">
-                            <div className="flex w-full justify-evenly">
-                              <div className="max-w-[20%]  md:m-5 mt-[30px] mx-auto">
+                          <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:border-r-[1px] md:border-[#AAA]">
+                            <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
+                              <div className="max-w-[33%]  md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">
                                 <img src={item.productImg} alt="" />
                               </div>
                               <div className="max-w-[100%] m-auto md:mt-auto mt-[27px]">
@@ -371,7 +371,7 @@ export default function AddCartFunc() {
                                 </span>
                                 <div className="buttonDiv mt-2">
                                   <button
-                                    className="bg-[#EF6E6E] text-[#fff]  p-[5px]  lg:text-[14px] md:text-[9px] sm:text-[14px] text-[11px] "
+                                    className="bg-[#EF6E6E] text-[#fff]  p-[15px] rounded-[10px] lg:text-[14px] md:text-[9px] sm:text-[14px] text-[11px] "
                                     onClick={() => {
                                       OpenModalFunc2(index);
                                     }}
@@ -383,90 +383,8 @@ export default function AddCartFunc() {
                             </div>
                           </div>
 
-                          <div className="md:w-[25%] sm:w-[80%] w-[85%] md:m-0 m-auto justify-between flex items-center md:mt-0 mt-[20px]">
-                            <div className="w-[100%]">
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  {' '}
-                                  Price:
-                                </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  $ {item.price}
-                                </span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  {' '}
-                                  Quantity:
-                                </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  {item.csvFileLen}
-                                </span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  Subtotal:
-                                </span>
-                                <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                  $ {(item.price * item.csvFileLen).toFixed(2)}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
-                            <div className="flex md:flex-col sm:flex-row flex-col">
-                              {item.giftCardName !== null ? (
-                                ''
-                              ) : (
-                                <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
-                                  <DynamicButton
-                                    className="bg-[#ef6e6e] w-full lg:text-[14px] md:text-[12px] "
-                                    text="Add Gift Card"
-                                    onClickFunction={() => {
-                                      OpenModalFunc(index);
-                                    }}
-                                  />
-                                </div>
-                              )}
-
-                              <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
-                                <DynamicButton
-                                  className="bg-[#1b5299] w-full lg:text-[14px] md:text-[12px]"
-                                  text="EDIT ORDER"
-                                  onClickFunction={() => {
-                                    editOrderData(index);
-                                  }}
-                                />
-                              </div>
-                              <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
-                                <DynamicButton
-                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] "
-                                  text="DELETE ORDER"
-                                  onClickFunction={() => {
-                                    ConfirmDeleteOrder(index);
-                                  }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-full h-[1px] bg-[black]"></div>
-
-                        {item.giftCardName && (
-                          <div className="flex w-[100%] flex-wrap ">
-                            <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                              <div className="flex w-full justify-evenly">
-                                <div className="sm:max-w-[20%] max-w-[23%] md:m-5 mt-[30px] mx-auto">
-                                  <img src={item.giftCardImg} alt="" />
-                                </div>
-                                <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
-                                  <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
-                                    {item.giftCardName}
-                                  </h3>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                          <div className="md:max-w-[30%] w-[100%] sm:w-[80%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:mt-0 mt-[20px] md:border-r-[1px] md:border-[#AAA]">
+                            <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
                               <div className="w-[100%]">
                                 <div className="flex justify-between">
                                   <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -474,7 +392,7 @@ export default function AddCartFunc() {
                                     Price:
                                   </span>
                                   <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                    $ {item.giftCardPrice}
+                                    $ {item.price}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
@@ -492,17 +410,118 @@ export default function AddCartFunc() {
                                   </span>
                                   <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
                                     ${' '}
-                                    {(
-                                      item.giftCardPrice * item.csvFileLen
-                                    ).toFixed(2)}
+                                    {(item.price * item.csvFileLen).toFixed(2)}
                                   </span>
                                 </div>
                               </div>
                             </div>
-                            <div className="md:w-[20%]  sm:w-full w-[85%] my-4 md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
+                          </div>
+                          <div className="md:w-[20%] md:border-b-[1px] md:border-[#AAA] sm:w-full w-[85%]  md:ml-4 md:mr-0  mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
+                            <div className="flex md:flex-col sm:flex-row flex-col">
+                              {item.giftCardName !== null ? (
+                                ''
+                              ) : (
+                                <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
+                                  <DynamicButton
+                                    className="bg-[#ef6e6e] rounded-[10px] py-[12px] px-[20px] w-full lg:text-[14px] md:text-[12px] "
+                                    text="Add Gift Card"
+                                    onClickFunction={() => {
+                                      OpenModalFunc(index);
+                                    }}
+                                  />
+                                </div>
+                              )}
+
+                              <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
+                                <DynamicButton
+                                  className="bg-[#1b5299] rounded-[10px] py-[12px] px-[20px] w-full lg:text-[14px] md:text-[12px]"
+                                  text="EDIT ORDER"
+                                  onClickFunction={() => {
+                                    editOrderData(index);
+                                  }}
+                                />
+                              </div>
+                              <div className="buttonDiv md:pr-5 pr-0 m-[0.2rem]">
+                                <DynamicButton
+                                  className="bg-[#E30000] rounded-[10px] py-[12px] px-[20px] w-full lg:text-[14px] md:text-[12px] "
+                                  text="DELETE ORDER"
+                                  onClickFunction={() => {
+                                    ConfirmDeleteOrder(index);
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* <div className="w-full h-[1px] bg-[black]"></div> */}
+
+                        {item.giftCardName && (
+                          <div className="flex w-[100%] flex-wrap ">
+                            <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:border-r-[1px] md:border-[#AAA] md:mb-0 mb-[20px]">
+                              <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
+                                <div className="max-w-[33%] md:m-5 mt-[30px] mx-auto">
+                                  <img
+                                    src={item.giftCardImg}
+                                    alt=""
+                                    className="w-[100px] h-[100px] object-contain"
+                                  />
+                                </div>
+                                <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
+                                  <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] sm:text-[18px] text-[14px] lg:tracking-[1.5px] tracking-0">
+                                    {' '}
+                                    Gift Card
+                                  </span>
+                                  :
+                                  <span className=" text-[black]  lg:text-[14px] md:text-[12px] sm:text-[16px] text-[12px] lg:tracking-[1.5px] tracking-0">
+                                    {''}
+                                    {item.giftCardName}
+                                  </span>
+                                  {/* <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+
+                                  Gift Card: {item.giftCardName}
+                                  </h3> */}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="md:max-w-[30%] w-[100%] sm:w-[75%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:border-r-[1px] md:border-[#AAA]">
+                              <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
+                                <div className="w-[100%]">
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      {' '}
+                                      Price:
+                                    </span>
+                                    <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      $ {item.giftCardPrice}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      {' '}
+                                      Quantity:
+                                    </span>
+                                    <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      {item.csvFileLen}
+                                    </span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      Subtotal:
+                                    </span>
+                                    <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      ${' '}
+                                      {(
+                                        item.giftCardPrice * item.csvFileLen
+                                      ).toFixed(2)}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="md:w-[20%] md:border-b-[1px] md:border-[#AAA] sm:w-full w-[85%]  md:ml-4 md:mr-0 items-center mx-auto sm:flex-row flex-col flex-wrap flex justify-center">
                               <div className="buttonDiv md:pr-5 pr-0 m-2">
                                 <DynamicButton
-                                  className="bg-[#E30000] w-full lg:text-[14px] md:text-[12px] "
+                                  className="bg-[#E30000] rounded-[10px] py-[12px] px-[20px] w-full lg:text-[14px] md:text-[12px] "
                                   text="DELETE CARD"
                                   onClickFunction={() => {
                                     confirmCardDel(index);
@@ -512,9 +531,9 @@ export default function AddCartFunc() {
                             </div>
                           </div>
                         )}
-                        {item.giftCardName && (
+                        {/* {item.giftCardName && (
                           <div className="w-full h-[1px] bg-[black]"></div>
-                        )}
+                        )} */}
 
                         {(item.shippingData &&
                           item.shippingData.node?.title ==
@@ -535,10 +554,14 @@ export default function AddCartFunc() {
                               <>
                                 {item.nonUSCount && item.nonUSCount ? (
                                   <div className="flex w-[100%] flex-wrap ">
-                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                      <div className="flex w-full justify-evenly">
-                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
-                                          <img src={postImage} alt="" />
+                                    <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:mb-0 mb-[20px] md:border-r-[1px] md:border-[#AAA]">
+                                      <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
+                                        <div className="md:max-w-[33%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
+                                          <img
+                                            src={postImage}
+                                            alt=""
+                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                          />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
                                           <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
@@ -547,37 +570,39 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
-                                      <div className="w-[100%]">
-                                        <div className="flex justify-between">
-                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {' '}
-                                            Price:
-                                          </span>
-                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                            $ {postPrice2}
-                                          </span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                          <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {' '}
-                                            Quantity:
-                                          </span>
-                                          <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {item.nonUSCount}
-                                          </span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                          <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                            {' '}
-                                            Subtotal:
-                                          </span>
-                                          <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                            ${' '}
-                                            {(
-                                              postPrice2 * item.nonUSCount
-                                            ).toFixed(2)}
-                                          </span>
+                                    <div className="md:max-w-[30%] w-[100%] sm:w-[75%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:border-r-[1px] md:border-[#AAA]">
+                                      <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
+                                        <div className="w-[100%]">
+                                          <div className="flex justify-between">
+                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                              {' '}
+                                              Price:
+                                            </span>
+                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                              $ {postPrice2}
+                                            </span>
+                                          </div>
+                                          <div className="flex justify-between">
+                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                              {' '}
+                                              Quantity:
+                                            </span>
+                                            <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                              {item.nonUSCount}
+                                            </span>
+                                          </div>
+                                          <div className="flex justify-between">
+                                            <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                              {' '}
+                                              Subtotal:
+                                            </span>
+                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                              ${' '}
+                                              {(
+                                                postPrice2 * item.nonUSCount
+                                              ).toFixed(2)}
+                                            </span>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
@@ -588,10 +613,14 @@ export default function AddCartFunc() {
                                 )}
                                 {item.usCount && (
                                   <div className="flex w-[100%] flex-wrap ">
-                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                      <div className="flex w-full justify-evenly">
-                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
-                                          <img src={postImage} alt="" />
+                                    <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:mb-0 mb-[20px] md:border-r-[1px] md:border-[#AAA]">
+                                      <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
+                                        <div className="md:max-w-[33%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
+                                          <img
+                                            src={postImage}
+                                            alt=""
+                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                          />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
                                           <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
@@ -600,7 +629,8 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:max-w-[30%] w-[100%] sm:w-[75%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:border-r-[1px] md:border-[#AAA]">
+                                    <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
                                       <div className="w-[100%]">
                                         <div className="flex justify-between">
                                           <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -633,6 +663,7 @@ export default function AddCartFunc() {
                                           </span>
                                         </div>
                                       </div>
+                                      </div>
                                     </div>
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
@@ -662,10 +693,14 @@ export default function AddCartFunc() {
                                 item.reciverAddress?.country?.toLowerCase() ==
                                   undefined ? (
                                   <div className="flex w-[100%] flex-wrap ">
-                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                      <div className="flex w-full justify-evenly">
-                                        <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
-                                          <img src={postImage} alt="" />
+                                    <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:mb-0 mb-[20px] md:border-r-[1px] md:border-[#AAA]">
+                                      <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
+                                        <div className="md:max-w-[33%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
+                                          <img
+                                            src={postImage}
+                                            alt=""
+                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                          />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
                                           <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
@@ -674,7 +709,8 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:max-w-[30%] w-[100%] sm:w-[75%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:border-r-[1px] md:border-[#AAA]">
+                                    <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
                                       <div className="w-[100%]">
                                         <div className="flex justify-between">
                                           <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -707,15 +743,20 @@ export default function AddCartFunc() {
                                           </span>
                                         </div>
                                       </div>
+                                      </div>
                                     </div>
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
                                 ) : (
                                   <div className="flex w-[100%] flex-wrap ">
-                                    <div className="md:w-[41%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[20px]">
-                                      <div className="flex w-full justify-evenly">
+                                    <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:mb-0 mb-[20px] md:border-r-[1px] md:border-[#AAA]">
+                                      <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
                                         <div className="md:max-w-[28%] max-w-[25%] md:m-[7px] mt-[30px] mr-auto ml-[27px]">
-                                          <img src={postImage} alt="" />
+                                          <img
+                                            src={postImage}
+                                            alt=""
+                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                          />
                                         </div>
                                         <div className="max-w-[100%] m-auto md:mt-auto mt-[40px]">
                                           <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
@@ -724,7 +765,8 @@ export default function AddCartFunc() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="md:w-[25%] sm:w-[75%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                                    <div className="md:max-w-[30%] w-[100%] sm:w-[75%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:border-r-[1px] md:border-[#AAA]">
+                                    <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
                                       <div className="w-[100%]">
                                         <div className="flex justify-between">
                                           <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -757,6 +799,7 @@ export default function AddCartFunc() {
                                           </span>
                                         </div>
                                       </div>
+                                      </div>
                                     </div>
                                     <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
                                   </div>
@@ -765,18 +808,19 @@ export default function AddCartFunc() {
                             )}
                           </>
                         )}
-                        <div className="w-full h-[1px] bg-[black]"></div>
+                        {/* <div className="w-full h-[1px] bg-[black]"></div> */}
 
                         {item.shippingData &&
                           item.shippingMethodImage &&
                           item.isShippidata && (
                             <div className="flex w-[100%] flex-wrap ">
-                              <div className="md:w-[50%] w-full items-center relative flex ml-0 m-auto md:mb-0 mb-[15px]">
-                                <div className="flex w-full justify-evenly">
-                                  <div className="sm:max-w-[13%] max-w-[20%] md:m-5 mt-[20px] mx-auto">
+                              <div className="md:max-w-[48%] w-[100%] items-center relative flex ml-0 m-auto md:mb-0 mb-[15px] md:border-r-[1px] md:border-[#AAA]">
+                                <div className="flex w-[95%] justify-evenly md:border-b-[1px] md:border-[#AAA]">
+                                  <div className="max-w-[33%] md:m-5 mt-[20px] mx-auto">
                                     <img
                                       src={item.shippingMethodImage}
                                       alt=""
+                                      className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                     />
                                   </div>
                                   <div className="sm:max-w-[100%] max-w-[46%] m-auto md:mt-auto sm:mt-[40px] mt-[20px]">
@@ -786,7 +830,8 @@ export default function AddCartFunc() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="md:w-[25%] sm:w-[80%] w-[85%] md:m-0 m-auto justify-between flex items-center">
+                              <div className="md:max-w-[30%] w-[100%] sm:w-[80%] w-[85%] md:m-0 m-auto pr-[7px] justify-between flex items-center md:border-r-[1px] md:border-[#AAA]">
+                              <div className="w-[100%] h-[100%] flex items-center md:border-b-[1px] md:border-[#AAA]">
                                 <div className="w-[100%]">
                                   <div className="flex justify-between">
                                     <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
@@ -815,6 +860,7 @@ export default function AddCartFunc() {
                                       $ {item.shippingDataCost * 1}
                                     </span>
                                   </div>
+                                </div>
                                 </div>
                               </div>
                               <div className="md:w-[20%] w-0 my-4 ml-4 flex justify-center"></div>
