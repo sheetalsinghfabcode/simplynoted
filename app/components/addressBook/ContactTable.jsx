@@ -526,21 +526,24 @@ const ContactTable = ({
           content={errorContent}
         />
       ) : (
-        <div className="w-full max-w-[100%]">
-          <div className="flex flex-col lg:flex-row gap-y-[4px] gap-y-[25px] justify-between items-center">
+        <div className="w-[92%] mx-auto max-w-[100%]">
+          <div className="flex flex-col lg:flex-row  gap-y-[25px] justify-between items-center">
+            <div className=' mt-[30px] block'>
+              <span className='font-bold text-[29px] text-[#001a5f] mb-3'>ADDRESS BOOK</span>
             <input
               type="text"
               placeholder="Search Addresses..."
               value={searchText}
               onChange={handleSearchInputChange}
-              className="w-full max-w-[400px] py-[5px] lg:order-none order-2  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+              className="w-full max-w-[400px] py-[5px]  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
+            </div>
             <div className="lg:flex grid self-center gap-[7px]">
               <div
-                className={`border-[1px]  md:w-[310px] sm:w-[280px] w-full  border-dashed border-[#000] py-[5px]`}
+                className={`  md:w-[310px] sm:w-[280px] w-full border-2 border-solid border-[#000] py-[5px]`}
               >
                 <div className="flex flex-col">
-                  <h2 className="font-bold md:text-[16px] text-[12px] text-[16px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                  <h2 className="font-bold md:text-[16px] text-[12px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
                     Bulk Address Upload
                   </h2>
                   <input
@@ -558,7 +561,7 @@ const ContactTable = ({
                   </a>
                   <span
                     onClick={openModal}
-                    className="font-bold text-[14px] md:text-[14px] text-[12px] text-black px-[10px] cursor-pointer underline"
+                    className="font-bold  md:text-[14px] text-[12px] text-black px-[10px] cursor-pointer underline"
                   >
                     View Instructions
                   </span>
@@ -573,7 +576,7 @@ const ContactTable = ({
               </div>
               <div className="flex md:items-end justify-center lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299]  md:w-[232px] w-full text-[11px]"
+                  className="bg-[#1b5299]  md:w-[232px] w-full text-[14px] font-normal "
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />

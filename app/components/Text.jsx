@@ -121,6 +121,8 @@ export function Section({
   );
 
   return (
+    <div className='m-auto'>
+      <div className='global-max-width-handler'>
     <Component {...props} className={styles}>
       {heading && (
         <Heading size="lead" className={padding === 'y' ? paddings['x'] : ''}>
@@ -129,6 +131,8 @@ export function Section({
       )}
       {children}
     </Component>
+    </div>
+    </div>
   );
 }
 

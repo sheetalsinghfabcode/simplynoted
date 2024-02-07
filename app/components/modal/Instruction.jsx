@@ -29,13 +29,13 @@ function Instruction({isOpen, closeModal, title, instructions, table, body}) {
       <div className="">
         <div className="relative">
           <span
-            className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
+            className="absolute cursor-pointer !leading-[0] right-[10px] text-[40px]"
             onClick={closeModal}
           >
             &times;
           </span>
           {title && (
-            <h2 className="text-[#001a5f] font-bold text-[30px] text-center mb-4 p-[2rem]">
+            <h2 className="text-[#001a5f] font-bold sm:text-[30px] text-[20px] text-center mb-4 p-[2rem]">
               {title}
             </h2>
           )}
