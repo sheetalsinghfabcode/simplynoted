@@ -228,14 +228,14 @@ export default function Product() {
     <>
       {productshow ? (
         <>
+          <Section className="sm:w-[90%] w-full mx-auto !p-3 md:mt-0 mt-[20px]">
           <DynamicButton
-            className="bg-[#EF6E6E] m-5 ml-[32px] w-full max-w-[150px]"
+            className="bg-[#EF6E6E] w-full max-w-[150px]"
             text="Go Back"
             backArrow={true}
             onClickFunction={goBack}
           />
-          <Section className="px-0 md:px-8 ">
-            <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px] ">
+            <div className="flex flex-wrap md:flex-row flex-col w-full xl:gap-[40px] gap-[20px] md:mt-0 mt-[15px]">
               <ProductGallery media={media.nodes} className="" />
               <ProductInfo
                 title={title}

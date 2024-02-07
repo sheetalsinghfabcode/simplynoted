@@ -9,7 +9,7 @@ const Gift_card = () => {
             title="Gift Cards"
           />
             <div className='w-full flex text-center'>
-          <p className="text-[#001a5f] w-[800px] my-[0px] mx-auto  text-[16px]  font-semibold ">
+          <p className="text-[#001a5f] w-[800px] my-[0px] mx-auto sm:text-[17px] text-[16px]  font-semibold ">
             Send any of these gift cards along with your handwritten cards to
             make a lasting impression on your recipients! You can add gift cards
             during the card order process. Gift cards are also available through
@@ -21,16 +21,16 @@ const Gift_card = () => {
               <div className="grid">
                 <div>
                   <img
-                    className="p-0 m-0 h-auto static"
+                    className="p-0 m-0 h-auto static w-full"
                     src="https://simplynoted.com/cdn/shop/products/238-2382973_gift-card-starbucks-starbucks-gift-card-10_db5e45a6-bddf-4566-8228-e53482cc35a2.png?v=1650636251"
                     alt="gift-card"
                   />
                 </div>
-                <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] font-extrabold text-black">
+                <div className="pt-5 text-[#000]">
+                  <span className="text-[22px] font-extrabold">
                     Starbucks Gift Card
                   </span>
-                  <p className=" text-[14px] font-medium">
+                  <p className="pt-2.5 text-[15px] font-medium">
                     Choose from $5, $10, $25, $50.
                     <b />
                     $2.95 processing fee added to each card.
@@ -41,16 +41,16 @@ const Gift_card = () => {
               <div className="grid">
                 <div>
                   <img
-                    className="p-0 m-0 h-auto static"
+                    className="p-0 m-0 h-auto static w-full"
                     src="https://simplynoted.com/cdn/shop/files/anazongift_26a84f17-c3d0-487e-ac1f-88689acd71ea.png?v=1697814234"
                     alt="gift-card"
                   />
                 </div>
-                <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] font-extrabold text-black">
+                <div className="pt-5 text-[#000]">
+                  <span className="text-[22px] font-extrabold">
                     Amazon Gift Card
                   </span>
-                  <p className="text-[15px] font-medium">
+                  <p className="pt-2.5 text-[15px] font-medium">
                     Choose from $10, $25, $50.
                     <b />
                     $2.95 processing fee added to each card.
@@ -61,16 +61,16 @@ const Gift_card = () => {
               <div className="grid">
                 <div>
                   <img
-                    className="p-0 m-0 h-auto static"
+                    className="p-0 m-0 h-auto static w-full"
                     src="https://simplynoted.com/cdn/shop/products/visaa_d0ecd136-50ad-4d86-b46e-c2cf128b1226.jpg?v=1650637201"
                     alt="gift-card"
                   />
                 </div>
-                <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] font-extrabold text-black">
+                <div className="pt-5 text-[#000]">
+                  <span className="text-[22px] font-extrabold">
                     Visa Gift Card
                   </span>
-                  <p className=" text-[15px] font-medium">
+                  <p className="pt-2.5 text-[15px] font-medium">
                     Choose from $25, $50,$100.
                     <b />
                     $2.95 processing fee added to each card.
@@ -81,16 +81,16 @@ const Gift_card = () => {
               <div className="grid">
                 <div>
                   <img
-                    className="p-0 m-0 h-auto static"
+                    className="p-0 m-0 h-auto static w-full"
                     src="https://simplynoted.com/cdn/shop/products/Home-Depot-Gift-Card_5f2d0c10-03b8-4c53-97ab-4c7e3ff70557.png?v=1650639127"
                     alt="gift-card"
                   />
                 </div>
-                <div className="font-karla pt-[10px]">
-                  <span className="text-[22px] font-extrabold text-black">
+                <div className="pt-5 text-[#000]">
+                  <span className="text-[22px] font-extrabold">
                     Home Depot Gift Card
                   </span>
-                  <p className=" text-[15px] font-medium">
+                  <p className="pt-2.5 text-[15px] font-medium">
                     Choose from $25, $50, $100, $20.
                     <b />
                     $2.95 processing fee added to each card.
@@ -101,16 +101,16 @@ const Gift_card = () => {
               <div className="grid">
                 <div>
                   <img
-                    className="p-0 m-0 h-auto static"
+                    className="p-0 m-0 h-auto static w-full"
                     src="https://simplynoted.com/cdn/shop/products/lowes_ba63fd48-039b-4a8c-9b55-8f89bf18286a.jpg?v=1650635129"
                     alt="gift-card"
                   />
                 </div>
-                <div className="font-karla pt-[10px]">
-                  <span className=" text-[22px] font-extrabold text-black">
+                <div className="pt-5 text-[#000]">
+                  <span className=" text-[22px] font-extrabold ">
                     Lowe's Gift Card
                   </span>
-                  <p className=" text-[15px] font-medium">
+                  <p className="pt-2.5 text-[15px] font-medium">
                     Choose from $25, $50, $100, $200.
                     <b />
                     $2.95 processing fee added to each card.

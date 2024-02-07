@@ -78,18 +78,18 @@ export function ProductInfo({
   }
 
   return (
-    <div className="flex justify-center md:w-[40%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
+    <div className="flex justify-center md:w-[46%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
-        <div className="grid gap-2">
+        <div className="grid gap-2.5">
           <Heading
             as="h1"
-            className="whitespace-normal xl:text-[38px] md:text-[23px] sm:text-[34px] text-[30px]"
+            className="whitespace-normal xl:text-[30px] md:text-[23px] sm:text-[34px] leading-10 text-[30px] font-semibold text-[#191919]"
           >
             {title}
           </Heading>
           {offPrice > 0 ? (
-            <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
-              <span className="line-through text-[black] text-[30px] leading-[47px] font-karla">
+            <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
+              <span className="line-through text-[black] text-[30px] leading-[40px] ">
                 ${product?.variants.nodes[0].price.amount}
               </span>
               $
@@ -99,7 +99,7 @@ export function ProductInfo({
               ).toFixed(2)}
             </span>
           ) : (
-            <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
+            <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
               $ {product?.variants.nodes[0].price.amount}
             </span>
           )}
@@ -109,11 +109,11 @@ export function ProductInfo({
           {/* {vendor && (
                    <Text className={'opacity-50 font-medium'}>{vendor}</Text>
                      )} */}
-          <div className="buttonClass flex justify-start md:mt-[1rem] mt-0">
+          <div className="buttonClass flex justify-start ">
             <div className="buttonDiv pr-5">
               <button
                 style={{backgroundColor: show ? '#ef6e6e' : '#001a5f'}}
-                className="bg-[#001a5f] text-[#fff] p-2 rounded "
+                className="bg-[#001a5f] text-[#fff] p-3 rounded text-[20px] font-normal"
                 onClick={() => singleBtnCLick()}
               >
                 Single Card
@@ -122,7 +122,7 @@ export function ProductInfo({
             <div className="gap-2">
               <button
                 style={{backgroundColor: show ? '#001a5f' : '#ef6e6e'}}
-                className="bg-[#ef6e6e] text-[#fff] p-2 rounded "
+                className="bg-[#ef6e6e] text-[#fff] p-3 rounded text-[20px] font-normal"
                 onClick={() => setShow(true)}
               >
                 Bulk Purchase
@@ -130,15 +130,15 @@ export function ProductInfo({
             </div>
           </div>
 
-          <div className="selectOtion mb-5 flex md:mt-[1rem] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
+          <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
             <div className="lg:w-[47%] w-[42%]">
-              <Text className="lg:text-sm text-[13px] w-[100px]">
+              <Text className="font-bold w-[100px]">
                 Standard Handwriting Style
               </Text>
               <br />
               <select
                 id="font"
-                className="cursor-pointer xl:text-[18px] text-[14px] md:w-auto w-full"
+                className="cursor-pointer font-light md:w-[85%] rounded border-1 border-black w-full"
                 value={standardFontVal}
                 onChange={(e) => setFont(e.target.value)}
                 placeholder="aaaa"
@@ -236,19 +236,19 @@ export function ProductInfo({
                 </option>
               </select>
             </div>
-            <div className="md:w-[45%] w-[42%]">
-              <Text className="lg:text-sm text-[13px]">
+            <div className="md:w-[45%] w-[42%] text-[#1e1e1e] text-[14px] ">
+              <Text className="font-bold">
                 Custom Handwriting Style
               </Text>
               <br />
               <select
-                id="Coustomfont text-sm "
-                className="cursor-pointer text-[12px] md:w-auto w-full"
+                id="Coustomfont  "
+                className="cursor-pointer font-light md:w-[85%] rounded-md border-1 border-black w-full"
                 value={customFontVal}
                 onChange={(e) => getCustomFont(e.target.value)}
               >
                 <option
-                  className="text-sm"
+                  className=""
                   value={customFontVal}
                   selected
                   disabled
@@ -266,12 +266,12 @@ export function ProductInfo({
               </select>
             </div>
           </div>
-          <div>
+          <div className='font-bold'>
             <Text>Optional shipping date</Text>
             <br />
             <input
               type="date"
-              className="cursor-pointer"
+              className="cursor-pointer font-light"
               min={new Date().toISOString().split('T')[0]}
             />
           </div>

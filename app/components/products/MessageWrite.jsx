@@ -1063,10 +1063,10 @@ export function MessageWriting({
   }
   return (
     <>
-      <div className="mainDivForBox flex md:flex-row flex-col md:gap-[75px] w-full gap-5">
+      <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5">
         <div
           id="outer"
-          className="outerr h-[380px] md:w-[48%] w-[90%] bg-white relative md:mx-0 mx-auto"
+          className="outerr  h-[380px] md:w-[48%] w-[90%] md:max-w-[575px] bg-white relative md:mx-0 mx-auto"
         >
           {metafields &&
             metafields.isHeaderIncluded &&
@@ -1159,17 +1159,17 @@ export function MessageWriting({
             id="example-one-input"
             value={name}
             placeholder="Enter your custom message text here..."
-            className="inputText h-[200px] w-[100%] rounded-[6px] p-[7px] "
+            className="inputText h-[200px] md:max-w-[520px] rounded-[6px] p-[7px] text-black font-normal "
             maxlength="450"
             onChange={(e) => onChnageNameVal(e.target.value)}
             data-gtm-form-interact-field-id="0"
           ></textarea>
-          <span className="charLeft">{remainingWord} characters remaining</span>
+          <span className="charLeft text-black">{remainingWord} characters remaining</span>
           {/* {customerid && ( */}
-          <div className="flex justify-between md:text-[13px] sm:text-[16px] text-[14px] mt-[15px]">
+          <div className="flex justify-between font-bold text-[#1b5299] text-[14px] mt-[10px]">
             <div>
               <span
-                className="font-bold text-[#1b5299] cursor-pointer"
+                className=" cursor-pointer"
                 onClick={() => OpenAddTemplateBox()}
               >
                 Save As New Message Template
@@ -1177,7 +1177,7 @@ export function MessageWriting({
             </div>
             <div>
               <span
-                className="font-bold text-[#1b5299] cursor-pointer"
+                className=" cursor-pointer"
                 onClick={() => OpenLoadTemp()}
               >
                 Load Saved Message Template
@@ -1185,7 +1185,7 @@ export function MessageWriting({
             </div>
           </div>
           {/* )} */}
-          <br />
+        
           {checkCharCount && (
             <span className="text-[red] font-bold">
               you don't have enough character remaining
@@ -1195,42 +1195,42 @@ export function MessageWriting({
           {show && (
             <>
               <button
-                className="addFirstnameBtn p-2 m-2"
+                className="addFirstnameBtn "
                 value={'[First Name]'}
                 onClick={(e) => firstNameBtn(e.target.value)}
               >
                 First Name
               </button>
               <button
-                className="addFirstnameBtn p-2 m-2"
+                className="addFirstnameBtn "
                 value={'[Last Name]'}
                 onClick={(e) => firstNameBtn(e.target.value)}
               >
                 Last Name
               </button>
               <button
-                className="addFirstnameBtn p-2 m-2"
+                className="addFirstnameBtn "
                 value={'[Company]'}
                 onClick={(e) => firstNameBtn(e.target.value)}
               >
                 Company
               </button>
               <button
-                className="addFirstnameBtn p-2 m-2"
+                className="addFirstnameBtn "
                 value={'[Custom 1]'}
                 onClick={(e) => firstNameBtn(e.target.value)}
               >
                 Custom 1
               </button>
               <button
-                className="addFirstnameBtn p-2 m-2"
+                className="addFirstnameBtn"
                 value={'[Custom 2]'}
                 onClick={(e) => firstNameBtn(e.target.value)}
               >
                 Custom 2
               </button>
               <button
-                className="addFirstnameBtn p-2 m-2"
+                className="addFirstnameBtn"
                 value={'[Custom 3]'}
                 onClick={(e) => firstNameBtn(e.target.value)}
               >
@@ -1238,7 +1238,7 @@ export function MessageWriting({
               </button>
             </>
           )}
-          <div className="flex w-full justify-between lg:mt-[10px] mt-[20px] md:flex-row flex-col">
+          <div className="flex w-full justify-between md:mt-[8px] mt-[20px] md:flex-row flex-col">
             <div className="flex md:w-[50%]  w-full">
               <img
                 src={AiImage}
@@ -1246,7 +1246,7 @@ export function MessageWriting({
                 onClick={() => setIsOpen(true)}
               />
               <span
-                className="cursor-pointer font-karla text-[#1b5299] lg:text-[13px] md:text-[11px] text-[16px] "
+                className="cursor-pointer font-bold text-[#1b5299]  md:text-[14px] text-[16px] "
                 onClick={() => setIsOpen(true)}
               >
                 Try our <span className="text-[red]">New</span> AI Assistant to
@@ -1259,16 +1259,16 @@ export function MessageWriting({
                 value={name2}
                 v-model="keyword"
                 id="example-one-input2"
-                className="inputText2 h-[100px] !w-full rounded-[6px] p-[7px]"
+                className="inputText2 h-[100px] !w-full rounded-[6px] p-[7px] border-2 border-dotted border-[#1b5299]"
                 maxlength="50"
                 onChange={(e) => onchnageOfRegardBox(e.target.value)}
-                placeholder="Enter here..."
+               
                 data-gtm-form-interact-field-id="0"
               ></textarea>
               <br />
               <div className="flex ">
                 <div>
-                  <span className="font-karla text-[#1b5299]">
+                  <span className="font-karla text-[#1b5299] text-[14px] font-bold">
                     Optional Sign Off / Signature
                   </span>
                   <br />
@@ -1281,13 +1281,13 @@ export function MessageWriting({
           </div>
           {show && (
             <>
-              <div className="lg:w-[50%] w-[100%] flex justify-start font-bold md:mt-[10px] mt-[25px]">
+              {/* <div className="lg:w-[50%] w-[100%] flex justify-start font-bold md:mt-[10px] mt-[25px]">
                 <text>
                   As of july5,2023, we have upgraded the bulk order
                   template.Please download the new template below
                 </text>
-              </div>
-              <div className="flex w-full flex-wrap gap-[10px]">
+              </div> */}
+              <div className="flex w-full flex-wrap gap-[10px] text-black sm:justify-start justify-center">
                 {bulkFileCount && bulkFileCount > 0 ? (
                   <div className="custom_testing pointer-events-none opacity-40 ">
                     <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
@@ -1333,26 +1333,29 @@ export function MessageWriting({
                   </div>
                 ) : (
                   <>
-                    <div className="custom_testing">
+                    <div className="custom_testing text-black">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
                       ) : (
                         <>
-                          <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
+                         
+                          <div>
+                            <h3 className="font-bold text-[16px] ">Bulk Address Upload</h3>
+                          </div>
+                          {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
+                          <div className="bg-[#dbdbdb] px-[8px] py-[5px] flex items-center mt-3 border-[1px] border-[REBECCAPURPLE] text-[14px] text-black font-bold">
                             <input
                               type="checkbox"
+                              className=' border-[1px] border-black'
                               checked={stateCheckCart}
                               onClick={() => setStateCheckCart(!stateCheckCart)}
-                            />
+                            />&nbsp;
                             <label htmlFor="">
                               Add all addresses to address book
                             </label>
                           </div>
-                          <div>
-                            <h3 className="font-bold">Bulk Address Upload</h3>
-                          </div>
                           {bulkUploadDiv && !showNextBtn ? (
-                            <div>
+                            <div className='mt-3'>
                               <div>
                                 <input
                                   type="file"
@@ -1366,18 +1369,18 @@ export function MessageWriting({
                           ) : (
                             ''
                           )}
-                          <p>
-                            Download the
+                          <>
+                           
                             <a
                               href="https://api.simplynoted.com/docs/bulk-template"
-                              className="text-[blue]"
+                              className="underline  text-[14px] font-normal "
                             >
-                              Bulk Order Template
+                              Download the Bulk Order Template
                             </a>
-                          </p>
+                          </>
                           <p
                             onClick={openModal}
-                            className="underline underline-offset-1 cursor-pointer"
+                            className="underline underline-offset-1 cursor-pointer text-[14px] font-normal hover:text-blue-600"
                           >
                             View bulk upload instructions
                           </p>
@@ -1388,22 +1391,22 @@ export function MessageWriting({
                     </div>
                   </>
                 )}
-                <span className="flex items-center font-bold">OR</span>
-                <div className="m-auto sm:w-[33%] w-full grid ">
+                <span className="flex items-center font-bold text-[18px]">OR</span>
+                <div className="m-auto sm:w-[33%] w-full grid text-[13px] font-bold">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[11px] md:mb-6 mb-2 w-full"
+                    className="bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-2 w-full"
                     text="Select from Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
-                      className="bg-[#1b5299] text-[11px] w-full"
+                      className="bg-[#1b5299] px-[10px] py-[16px] w-full"
                       text="Next"
                       onClickFunction={() => onSelectFromAddressBook()}
                     />
                   ) : (
                     <DynamicButton
-                      className="bg-[#697ba6] text-[11px] w-full"
+                      className="bg-[#697ba6] px-[10px] py-[16px] w-full"
                       text="Next"
                       onClickFunction={() => ''}
                     />
@@ -1420,7 +1423,7 @@ export function MessageWriting({
           {!show && (
             <div className="bg-[#1b5299] h-[50px] text-center mt-10">
               <button
-                className="text-[#fff] items-center justify-center mt-3 w-full"
+                className="text-[#fff] items-center h-[50px] font-normal text-[14px] justify-center  w-full"
                 onClick={() => checkUserLogged()}
               >
                 Next

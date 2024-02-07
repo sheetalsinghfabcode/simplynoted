@@ -215,6 +215,11 @@ a.active {
     }
   }
 }
+
+.global-max-width-handler{
+  max-width:1400px;
+  margin: auto;
+}
 .request-button {
   background: rgb(239, 110, 110);
   text-transform: uppercase;
@@ -370,7 +375,7 @@ nav a {
   padding: 5px 10px;
 }
 #example-one-input2 {
-  height: 100px;
+  height: 90px;
   width: 56%;
   border-radius: 6px;
   padding: 5px 10px;
@@ -448,6 +453,10 @@ nav a {
   border: 0;
   border-radius: 4px;
   margin-bottom: 8px;
+  padding:8px;
+  font-size: 14px;
+  margin: 5px;
+  font-weight: 400;
 }
 
 /* For mobile devices or narrow screens */
@@ -473,11 +482,6 @@ nav a {
     transition: all 0.5s ease-in-out;
   }
   .custom_testing {
-    background-color: #f1f1f1;
-    border: solid 2px #aaa;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 15px;
     width: 100%;
     max-width: 375px;
   }
@@ -2546,7 +2550,7 @@ body {
 }
 @media only screen and (max-width: 511px) {
   .custom_testing {
-    width: 80%;
+    width:100%;
   }
   .data_card {
     margin: 0px;
