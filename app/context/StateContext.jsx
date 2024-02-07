@@ -15,6 +15,7 @@ export function StateContextProvider({children}) {
   const [isAccountLoader, setIsAccountLoader] = useState(false);
   const [subscription, setSubscription] = useState(0);
   const [managePlan,setManagePlan] = useState(false)
+  const [addressBook,setAddressBook] = useState(false)
 
 
 
@@ -137,7 +138,9 @@ export function StateContextProvider({children}) {
         phoneNumber,
         setPhoneNumber,
         managePlan,
-        setManagePlan
+        setManagePlan,
+        addressBook,
+        setAddressBook
       }}
     >
       {children}

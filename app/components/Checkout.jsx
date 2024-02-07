@@ -203,10 +203,7 @@ export function CheckoutData({
   useEffect(()=>{
   selectedText = localStorage.getItem("selectedOrderPurchaseQuantity")
   setSelectedOrderPurchaseQuantity(selectedText)
-  console.log("selectedText",selectedText);
   },[])
-  console.log("selectedText",selectedOrderPurchaseQuantity);
-
 
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
@@ -283,11 +280,7 @@ export function CheckoutData({
   let name = customerInformation?.name;
   let separatedNames = separateFullName(name);
 
-
-  console.log("prices",prices?.totalPrice)
-
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2)
-
 
   async function paymentPurchase() {
     try {
@@ -400,8 +393,6 @@ export function CheckoutData({
       formData.append('discountValue', JSON.stringify(payload.discountValue));
       formData.append('discountValueType', JSON.stringify(payload.discountValueType));
 
-      console.log('payload', payload);
-      debugger
 
       const res = await fetch(
         `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,

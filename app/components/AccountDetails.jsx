@@ -70,13 +70,13 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
   return (
     <>
       <div className="container px-4 ">
-        <h3 className=" md:text-2xl text-[15px] font-bold mb-6">
+        <h3 className=" md:text-2xl text-[15px] font-bold my-6">
           Account Details
         </h3>
         <div className="bg-white font-karla shadow-md rounded-lg p-6">
           {/* Name */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
               Name:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px] font-semibold">
@@ -88,7 +88,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* Phone */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
               Phone:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -108,7 +108,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* Password */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
               Password:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -118,7 +118,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* API Key */}
           <div className="flex mb-4 items-center">
-            <div className="w-1/4 md:text-sm text-[12px] text-gray-600 ">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600 ">
               API Key:
             </div>
             <button
@@ -133,7 +133,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
           </div>
 
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
               Generated API Key:
             </div>
             {handleGenerateClick && (

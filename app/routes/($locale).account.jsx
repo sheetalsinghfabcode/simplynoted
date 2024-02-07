@@ -32,6 +32,9 @@ import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
 import DynamicButton from '~/components/DynamicButton';
 import DynamicTitle from '~/components/Title';
+import AddressBook from './($locale).address-book';
+import ManageSubscription from './($locale).manage-subscription';
+import { fetchWalletData } from '~/utils/graphqlUtils';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -41,6 +44,15 @@ export async function loader({request, context, params}) {
   const isAuthenticated = Boolean(customerAccessToken);
   const loginPath = locale ? `/${locale}/account/login` : '/account/login';
   const isAccountPage = /^\/account\/?$/.test(pathname);
+
+  const StripeKey = context.env.STRIPE_KEY;
+  let WalletData;
+  try {
+    WalletData = await fetchWalletData(context);
+  } catch (error) {
+    console.error('Error fetching wallet data:', error);
+    throw error;
+  }
 
   if (!isAuthenticated) {
     if (isAccountPage) {
@@ -64,6 +76,8 @@ export async function loader({request, context, params}) {
       customer,
       heading,
       featuredData: getFeaturedData(context.storefront),
+      StripeKey,
+      WalletData,
     },
     {
       headers: {
@@ -113,8 +127,16 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setOrderHistory, setCustomerId, setIsAccountLoader} =
-    useStateContext();
+  const {
+    orderHistory,
+    setOrderHistory,
+    setCustomerId,
+    setIsAccountLoader,
+    managePlan,
+    setManagePlan,
+    addressBook,
+    setAddressBook,
+  } = useStateContext();
   const [accountDetail, setAccountDetail] = useState(
     !orderHistory ? true : false,
   );
@@ -130,20 +152,43 @@ function Account({customer, heading, featuredData}) {
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
+    setManagePlan(false)
     setOrderHistory(false);
     setProfile(false);
+    setAddressBook(false)
   };
 
   const handleOrderHistoryClick = () => {
     setOrderHistory(true);
+    setManagePlan(false)
     setAccountDetail(false);
     setProfile(false);
+    setAddressBook(false)
   };
+  const handleManagePlan = () => {
+    setManagePlan(true)
+    setOrderHistory(false);
+    setAccountDetail(false);
+    setProfile(false);
+    setAddressBook(false)
+  };
+
+
 
   const handleProfile = () => {
     setProfile(true);
+    setManagePlan(false)
+    setAddressBook(false);
     setOrderHistory(false);
     setAccountDetail(false);
+  };
+
+  const handleAddressBook = () => {
+    setOrderHistory(false);
+    setAccountDetail(false);
+    setManagePlan(false)
+    setProfile(false);
+    setAddressBook(true);
   };
 
   let result = customer.id.replace(/[^0-9]/g, '');
@@ -208,9 +253,35 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1344px] mx-auto px-[30px]">
-      <div className="flex justify-between mx-[24px] items-center lg:gap[0px] gap-[151px] md:mt-[0px] mt-[9px]">
-        <DynamicTitle title="Account" className="!text-[24px]" />
+    <div className="w-full max-w-[1444px] mx-auto px-[30px]">
+      <div className="flex  justify-between py-[30px] items-center">
+        <div className="flex gap-[16px] ml-6 flex-wrap  ">
+          <DynamicButton
+            text="Account Detail"
+            className={`tab-button ${accountDetail ? 'active-tab' : ''}`}
+            onClickFunction={() => handleAccountDetailClick()}
+          />
+          <DynamicButton
+            text="Order History"
+            className={`tab-button ${orderHistory ? 'active-tab' : ''}`}
+            onClickFunction={() => handleOrderHistoryClick()}
+          />
+          <DynamicButton
+            text="View Addresses"
+            className={`tab-button ${addressBook ? 'active-tab' : ''}`}
+            onClickFunction={() => handleAddressBook()}
+          />
+          <DynamicButton
+            text="Manage Plan"
+            className={`tab-button ${managePlan ? 'active-tab' : ''}`}
+            onClickFunction={() => handleManagePlan()}
+          />
+          <DynamicButton
+            text="Edit Profile"
+            className={`tab-button ${profile ? 'active-tab' : ''}`}
+            onClickFunction={() => handleProfile()}
+          />
+        </div>
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
@@ -220,41 +291,7 @@ function Account({customer, heading, featuredData}) {
           />
         </Form>
       </div>
-      <div className="flex gap-[20px]   ml-[24px] flex-wrap">
-        <DynamicButton
-          text="Account detail"
-          className={`flex justity-center md:h-[39px] h-[36px] items-center md:text-[15px] text-[10px] border-2 border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299]   ${
-            accountDetail
-              ? 'bg-[#1b5299] !text-white'
-              : 'bg-transparent !text-[#1b5299]'
-          } `}
-          onClickFunction={() => handleAccountDetailClick()}
-        />
-        <DynamicButton
-          text="Order History"
-          onClickFunction={() => handleOrderHistoryClick()}
-          className={`border-2 flex justity-center items-center md:h-[39px] h-[36px] w-[143px] md:text-[15px] text-[10px] border-solid h-[40px] hover:bg-[#1b5299] hover:!text-white   uppercase border-[#1b5299]   ${
-            orderHistory
-              ? 'bg-[#1b5299] !text-white'
-              : 'bg-transparent !text-[#1b5299]'
-          }`}
-        />
-        <DynamicButton
-          text="View Addresses"
-          onClickFunction={() => navigate('/address-book')}
-          className={`flex justity-center items-center md:text-[15px] text-[10px]  md:h-[39px] h-[36px] border-2 border-solid h-[40px] hover:bg-[#1b5299]  hover:!text-white !px-[29px]  uppercase border-[#1b5299] !text-[#1b5299]  `}
-        />
-        <DynamicButton
-          text="Manage Plan"
-          className="flex justity-center items-center w-[143px] border-2 border-solid md:h-[39px] h-[36px] md:text-[15px] text-[10px] h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
-          onClickFunction={() => navigate('/manage-subscription')}
-        />
-        <DynamicButton
-          text="Edit Profile"
-          className="flex justity-center items-center w-[143px] border-2 border-solid md:h-[39px] h-[36px] md:text-[15px] text-[10px] h-[40px] hover:bg-[#1b5299] hover:!text-white !px-[29px] uppercase border-[#1b5299] !text-[#1b5299]  bg-transparent"
-          onClickFunction={() => handleProfile()}
-        />
-      </div>
+
       {orders && orderHistory && <AccountOrderHistory orders={orders} />}
       {accountDetail && (
         <AccountDetails
@@ -276,6 +313,9 @@ function Account({customer, heading, featuredData}) {
         />
       )}
 
+      {addressBook && <AddressBook />}
+
+      {managePlan && <ManageSubscription/>}
     </div>
   );
 }
@@ -284,7 +324,7 @@ function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
       <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
-        <h2 className=" text-[18px] md:text-center text-center font-karla font-semibold lg:text-[22px]">
+        <h2 className=" text-[18px] md:text-center md:pb-[16px] text-center font-karla font-semibold lg:text-[32px]">
           Order History
         </h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
@@ -316,7 +356,7 @@ function EmptyOrders() {
 
 function Orders({orders}) {
   return (
-    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3">
+    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false md:grid-cols-3">
       {orders.map((order) => (
         <OrderCard order={order} key={order.id} />
       ))}
@@ -400,3 +440,59 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
+
+
+
+const Wallet = `#graphql
+  query
+  {
+    collection(id: "gid://shopify/Collection/271625027689"){
+      title
+      products(first:6){
+        edges{
+          node{
+            id
+            title
+            description
+            metafields(identifiers:[
+               {namespace:"custom", key: "product_title"}
+                    {namespace:"custom", key: "strip_year_link"}
+                    {namespace:"custom", key: "pay_as_you_go"}
+                    {namespace:"custom", key: "pricing"}
+                    {namespace:"custom", key: "pricing_yearly"}
+                    {namespace:"custom", key: "subscription_plan_price"}
+                    {namespace:"custom", key: "subscription_plan_price_yearly"}
+                    {namespace:"custom", key: "strip_link"}
+                    {namespace:"custom", key: "subscription_plan_price_monthly"}
+              
+            ]){
+              value
+              key
+            }
+            variants(first:10){
+              edges{
+                node{
+                  id
+                  metafields(identifiers:[
+                    {namespace: "custom", key: "variant_title"},
+                    {namespace: "custom", key: "card_amount"},
+                    {namespace: "custom", key: "description"},
+                   ]){
+                     value
+                     key
+                   }
+                  title
+                  price
+                  {
+                    amount
+                  }
+                }
+              }
+            }
+         
+            
+          }
+        }
+      }
+    }
+  }`;

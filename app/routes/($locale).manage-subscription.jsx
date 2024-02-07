@@ -13,13 +13,11 @@ import PackageModal from '~/components/wallet/PackageModal';
 import PurchaseModal from '~/components/wallet/PurchaseModal';
 import Accordion from '~/components/wallet/Accordian';
 import PaymentModal from '~/components/wallet/PaymentModal';
+import { fetchWalletData } from '~/utils/graphqlUtils';
 
-export async function loader({context, request}) {
+export async function loader({ context }) {
   const StripeKey = context.env.STRIPE_KEY;
-  const WalletData = await context.storefront.query(Wallet, {
-    variants: {},
-  });
-
+  const WalletData = await fetchWalletData(context);
   return defer({
     StripeKey,
     WalletData,
@@ -533,14 +531,14 @@ const ManageSubscription = () => {
         handlePurchaseCard={handlePurchaseCard}
       />
       <>
-        <div className="w-full max-w-[1440px] mx-auto px-[20px]">
+        <div className="w-full max-w-[1640px] mx-auto px-[20px]">
           <DynamicTitle
             dynamicButton
             title="Manage Plans and Prepaid Packages"
             className={'mt-[15px] !text-[20px] '}
           />
 
-          <div className="flex flex-col lg:flex-row w-full max-w-[1440px] gap-[30px] items-start">
+          <div className="flex flex-col lg:flex-row w-full max-w-[1640px] gap-[30px] items-start">
             <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
               <div className="user-name">
                 {firstNameChar}
@@ -848,56 +846,3 @@ const ManageSubscription = () => {
 
 export default ManageSubscription;
 
-const Wallet = `#graphql
-  query
-  {
-    collection(id: "gid://shopify/Collection/271625027689"){
-      title
-      products(first:6){
-        edges{
-          node{
-            id
-            title
-            description
-            metafields(identifiers:[
-               {namespace:"custom", key: "product_title"}
-                    {namespace:"custom", key: "strip_year_link"}
-                    {namespace:"custom", key: "pay_as_you_go"}
-                    {namespace:"custom", key: "pricing"}
-                    {namespace:"custom", key: "pricing_yearly"}
-                    {namespace:"custom", key: "subscription_plan_price"}
-                    {namespace:"custom", key: "subscription_plan_price_yearly"}
-                    {namespace:"custom", key: "strip_link"}
-                    {namespace:"custom", key: "subscription_plan_price_monthly"}
-              
-            ]){
-              value
-              key
-            }
-            variants(first:10){
-              edges{
-                node{
-                  id
-                  metafields(identifiers:[
-                    {namespace: "custom", key: "variant_title"},
-                    {namespace: "custom", key: "card_amount"},
-                    {namespace: "custom", key: "description"},
-                   ]){
-                     value
-                     key
-                   }
-                  title
-                  price
-                  {
-                    amount
-                  }
-                }
-              }
-            }
-         
-            
-          }
-        }
-      }
-    }
-  }`;

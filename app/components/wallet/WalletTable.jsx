@@ -136,7 +136,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   ];
 
   return (
-    <div className="w-full max-w-[1440px] p-[20px] mx-auto">
+    <div className="w-full max-w-[1640px] p-[20px] mx-auto">
       <div className="overflow-auto">
         <table className="mx-auto table bg-white">
           <thead>

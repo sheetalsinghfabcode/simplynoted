@@ -206,7 +206,7 @@ const Profile = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative">
       {loader && (
         <div className="z-50 absolute top-[50%] left-[50%]">
           <CircularLoader
@@ -218,7 +218,7 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white shadow-md rounded-lg p-6 w-full max-[640px] mx-auto  ${
+        className={`bg-white shadow-md rounded-lg p-6 w-full md:max-w-[60%] max-w-[93%] mx-auto mt-[40px] ${
           loader && 'opacity-50'
         } `}
       >
@@ -247,7 +247,7 @@ const Profile = ({
 
         {activeTab === 'account' && (
           <form onSubmit={handleSubmit} className="">
-            <div className="mb-4 lg:grid grid-cols-2 grid flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="firstName"
@@ -282,10 +282,8 @@ const Profile = ({
                 {/* Other Account Details Fields */}
               </div>
             </div>
-            <div className="mb-4 lg:grid sm:grid-cols-2 grid flex-wrap -mx-3">
 
-
-            <div className="px-3 mb-6">
+            <div className="mb-4">
               <label
                 htmlFor="email"
                 className="block mb-1 md:text-[16px] text-[12px] font-semibold"
@@ -302,7 +300,7 @@ const Profile = ({
                 className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
               />
             </div>
-            <div className="px-3 mb-6">
+            <div className="mb-4">
               <label
                 htmlFor="phone"
                 className="block md:text-[16px] text-[12px]  mb-1 font-semibold"
@@ -324,9 +322,8 @@ const Profile = ({
                 </span>
               )}
             </div>
-            </div>
 
-            <div className="mb-4 lg:grid grid grid-cols-2  flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="address1"
@@ -360,7 +357,7 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 lg:grid grid grid-cols-2 flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="city"
@@ -394,7 +391,7 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 lg:grid grid grid-cols-2 flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="firstName"
@@ -439,7 +436,6 @@ const Profile = ({
               </span>
             )}
             <form onSubmit={handleSubmit}>
-              <div className='grid grid-cols-1 md:grid-cols-2'>
               <div className="mb-4">
                 <label
                   htmlFor="newPassword"
@@ -473,8 +469,6 @@ const Profile = ({
                   className="border border-gray-300 rounded-md px-3 py-2 w-[100%]"
                 />
               </div>
-              </div>
-
             </form>
           </>
         )}
@@ -488,7 +482,7 @@ const Profile = ({
                 updateUserPassword();
               }
             }}
-            className="bg-[#ef6e6e] text-white font-bold cursor-pointer font-karla h-[50px] md:max-w-[35%] mx-auto w-[100%]"
+            className="bg-[#ef6e6e] text-white font-bold value={securityDetails.newPassword} cursor-pointer font-karla h-[50px] mx-auto w-[100%]"
             text={
               activeTab === 'account' ? 'Update Profile' : 'Update Password'
             }
