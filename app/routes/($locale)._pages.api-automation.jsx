@@ -1,8 +1,131 @@
 import {set} from 'js-cookie';
 import {useState} from 'react';
 import DynamicTitle from '~/components/Title';
+
 const apidocs = () => {
   const [selectedSection, setSelectedSection] = useState('PRODUCTS');
+
+  const JSONResponses = {
+    products: {
+      getStandardCardsResponse: {
+        result: [
+          {
+            id: 4392451768425,
+            title: 'Cactus Thank you',
+            image:
+              'https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292',
+          },
+          {
+            id: 4392452522089,
+            title: 'Cactus Thanks So Much',
+            image:
+              'https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thanks-So-Much.jpg?v=1574659363',
+          },
+          {
+            id: 4442013139049,
+            title: 'Dark Red Holiday Card',
+            image:
+              'https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Red.HolidayCard.jpg?v=1576524937',
+          },
+        ],
+        errors: [],
+      },
+      getAllCustomCardsResponse: {
+        result: {
+          products: [
+            {
+              id: 7050968727657,
+              title: 'double click',
+              image:
+                'https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1696329730810.png?v=1696329732',
+              type: 'customisable card',
+              createdAt: '2023-10-03T03:42:12-07:00',
+              updatedAt: '2023-10-03T03:42:13-07:00',
+            },
+          ],
+          nextOffset: 200,
+          moreProducts: true,
+        },
+        errors: [],
+      },
+      createCustomCard: {
+        result: {
+          product: {
+            id: 7046027575401,
+            title: 'Testing Cards',
+            body_html: null,
+            vendor: 'SimplyNoted',
+            product_type: 'customisable card',
+            created_at: '2023-09-13T06:22:28-07:00',
+            handle: 'testing-cards',
+            updated_at: '2023-09-13T06:22:29-07:00',
+            published_at: '2023-09-13T06:22:28-07:00',
+            template_suffix: null,
+            published_scope: 'web',
+            tags: 'customise_card',
+            status: 'active',
+            admin_graphql_api_id: 'gid://shopify/Product/7046027575401',
+            images: [
+              {
+                id: 30856642232425,
+                product_id: 7046027575401,
+                position: 1,
+                created_at: '2023-09-13T06:22:28-07:00',
+                updated_at: '2023-09-13T06:22:28-07:00',
+                alt: 'front_img',
+                width: 495,
+                height: 350,
+                src: 'https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348',
+                variant_ids: [],
+                admin_graphql_api_id:
+                  'gid://shopify/ProductImage/30856642232425',
+              },
+            ],
+            image: {
+              id: 30856642232425,
+              product_id: 7046027575401,
+              position: 1,
+              created_at: '2023-09-13T06:22:28-07:00',
+              updated_at: '2023-09-13T06:22:28-07:00',
+              alt: 'front_img',
+              width: 495,
+              height: 350,
+              src: 'https://cdn.shopify.com/s/files/1/0275/6457/2777/products/1694611344453.jpg?v=1694611348',
+              variant_ids: [],
+              admin_graphql_api_id: 'gid://shopify/ProductImage/30856642232425',
+            },
+          },
+        },
+        errors: [],
+      },
+      createCustomCard1: {
+        cardName: 'Happy Birthday',
+        cardType: 'flat5x7',
+        frontImage: '1',
+        isHeaderIncluded: true,
+        isFooterIncluded: true,
+        header: {
+          isImage: true,
+        },
+
+        footer: {
+          data: 'Yours Sincerely',
+          textAlign: 'left',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          fontType: 'Trebuchet MS',
+          fontSize: 20,
+          fontColor: 'rgb(0, 0, 255)',
+          zoom: '1',
+          isImage: false,
+        },
+
+        headerImage: '',
+        footerImage: '',
+        backImage: '',
+      },
+    },
+  };
 
   const handleSectionChange = (event) => {
     event.preventDefault();
@@ -623,7 +746,7 @@ const apidocs = () => {
           {selectedSection === 'API ENDPOINTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla  font-bold ml-2 text-[33px] font-Tiempos">
-                <span className="text-blue-500"></span> 1. API ENDPOINTS
+                <span className="text-blue-500"> 1.</span> API ENDPOINTS
               </h2>
               <div className="text-[16px] leading-[27px] color-[black]">
                 <p className=" mb-[7px] ml-[8px] font-thin mt-[23px]">
@@ -674,7 +797,6 @@ const apidocs = () => {
               </div>
             </div>
           )}
-
           {selectedSection === 'USERS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla   font-bold ml-2 text-[33px]  font-Tiempos">
@@ -747,49 +869,15 @@ const apidocs = () => {
                   <h3 className="mt-[19px] font-karla  mb-[7px] text-[23px]">
                     <b>Returns on success:</b>
                   </h3>
-                  <pre className="leading-6 text-14 color-[black] bg-[#f7f7f7] p-[22px] font-bold overflow-hidden">
-                    &#123;
-                    <br />
-                    &nbsp; "result" [<br />
-                    &#123;
-                    <br />
-                    &nbsp; "id": '4392451768425',
-                    <br />
-                    &nbsp; "title": "Cactus Thank you",
-                    <br />
-                    &nbsp; "image":
-                    "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thank-You.jpg?v=1574659292"
-                    <br />
-                    &#125;,
-                    <br />
-                    &#123;
-                    <br />
-                    &nbsp; "id": '4392452522089',
-                    <br />
-                    &nbsp; "title": "Cactus Thanks So Much",
-                    <br />
-                    &nbsp; "image":
-                    "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Cactus-Thanks-So-Much.jpg?v=1574659363"
-                    <br />
-                    &#125;,
-                    <br />
-                    &#123;
-                    <br />
-                    &nbsp; "id": '4442013139049',
-                    <br />
-                    &nbsp; "title": "Dark Red Holiday Card",
-                    <br />
-                    &nbsp; "image":
-                    "https://cdn.shopify.com/s/files/1/0275/6457/2777/products/Red.HolidayCard.jpg?v=1576524937"
-                    <br />
-                    &#125;
-                    <br />
-                    ],
-                    <br />
-                    "errors": []
-                    <br />
-                    &#125;
+                  <div>
+                  <pre className='bg-[#f7f7f7] p-[28px]'>
+                    {JSON.stringify(
+                      JSONResponses.products.getStandardCardsResponse,
+                      null,
+                      2,
+                    )}
                   </pre>
+                  </div>
                 </div>
               </div>
               <div className="mt-[55px]">
@@ -807,6 +895,41 @@ const apidocs = () => {
                     returning up to 200 cards for each call.
                   </p>
                 </div>
+                <table className="w-[100%]	 text-sm text-thin table-auto">
+                  <thead>
+                    <tr className="text-[15px]">
+                      <td className="border p-4">Method</td>
+                      <td className="border p-4">URL</td>
+                      <td className="border p-4"> Parameters</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="text-[14px]">
+                      <td className="border p-4">GET</td>
+                      <td className="border p-4">
+                        https://api.simplynoted.com/api/customProducts?offset=0
+                      </td>
+                      <td className="border p-4">
+                        offset – Default/Initial value = 0. You will get the
+                        next offset value, if any, in response as nextOffset if
+                        moreProducts is true. If moreProducts is false,
+                        nextOffset will not be returned.
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <h2 className="text-[black] ml-[-2px] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                  Response Sample
+                </h2>
+              </div>
+              <div className="bg-[#f7f7f7] p-[28px]">
+                <pre>
+                  {JSON.stringify(
+                    JSONResponses.products.getAllCustomCardsResponse,
+                    null,
+                    2,
+                  )}
+                </pre>
               </div>
               <div className="mt-[55px]">
                 <div>
@@ -970,11 +1093,12 @@ const apidocs = () => {
                   </tbody>
                 </table>
                 <div>
-                  <h2 className="mt-[19px] font-karla font-bold  mb-[7px] text-[23px]">
+                  <h2 className="mt-[19px] ml-[-2px] font-karla font-bold  mb-[7px] text-[23px]">
                     Return on Success:
                   </h2>
                 </div>
-                <pre className="leading-7 text-14 color-[black] bg-[#f7f7f7] p-[22px] font-bold overflow-hidden">
+
+                {/* <pre className="leading-7 text-14 color-[black] bg-[#f7f7f7] p-[22px] font-bold overflow-hidden">
                   &#123; <br />
                   &nbsp; "result": &#123; <br />
                   &nbsp; &nbsp; "product": &#123; <br />
@@ -1039,10 +1163,31 @@ const apidocs = () => {
                   &nbsp; &nbsp; &#125; <br />
                   &nbsp; "errors": [] <br />
                   &#125;
+                </pre> */}
+                <div className="bg-[#f7f7f7] p-[28px]">
+                  <pre>
+                    {JSON.stringify(
+                      JSONResponses.products.createCustomCard,
+                      null,
+                      2,
+                    )}
+                  </pre>
+                </div>
+                <div className="text-[black] font-karla  ml-[-2px] mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                  <h2>Example</h2>
+                </div>
+                <div className='bg-[#f7f7f7] p-[28px]'>
+                <pre>
+                  {JSON.stringify(
+                    JSONResponses.products.createCustomCard1,
+                    null,
+                    2,
+                  )}
                 </pre>
+                </div>
 
                 <div className="mt-[7px]">
-                  <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
+                  <h2 className="text-[black] font-karla ml-[-2px]  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
                     Error:
                   </h2>
                 </div>
@@ -1210,7 +1355,7 @@ const apidocs = () => {
                     Returns on success:
                   </h2>
                 </div>
-                <pre className="leading-7 text-14 text-black bg-gray-100 p-4 font-bold overflow-x-auto">
+                {/* <pre className="leading-7 text-14 text-black bg-gray-100 p-4 font-bold overflow-x-auto">
                   &#123;
                   <br />
                   &nbsp; "result": &#123;
@@ -1289,8 +1434,7 @@ const apidocs = () => {
                   &nbsp; &nbsp; &nbsp; "errors": [] <br />
                   &nbsp; &nbsp; &#125; <br />
                   &#125;
-                </pre>
-
+                </pre> */}
                 <div>
                   <div>
                     <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
@@ -1334,7 +1478,8 @@ const apidocs = () => {
               <div className="mt-[55px]">
                 <div>
                   <h2 className="text-[#001a5f]  font-karla text-[33px]  font-bold ml-2">
-                    <spna>4.6.</spna>Delete Custom Cards
+                    <spna className="font-italic text-blue-500">4.6.</spna>{' '}
+                    Delete Custom Cards
                   </h2>
                   <div className="leading-[1.5rem] text-sm mt-[12px]">
                     <p className="mt-[17px] text-[16px] mt-[16px] leading-[27px] color-[black]  font-thin">
@@ -1646,19 +1791,19 @@ const apidocs = () => {
                 </h2>
                 <table className="w-2/4 text-sm table-auto">
                   <thead>
-                    <tr className='text-[15px]'>  
+                    <tr className="text-[15px]">
                       <td className="border p-4">Name</td>
                       <td className="border p-4">Value</td>
                       <td className="border p-4">Required?</td>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">Content-Type</td>
                       <td className="border p-4">application/json</td>
                       <td className="border p-4">Yes</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">Authorization</td>
                       <td className="border p-4">Bearer TOKEN_HERE</td>
                       <td className="border p-4">Yes</td>
@@ -1670,7 +1815,7 @@ const apidocs = () => {
                 </h2>
                 <table className="min-w-full text-sm table-auto">
                   <thead>
-                    <tr className='text-[15px]'>
+                    <tr className="text-[15px]">
                       <td className="border p-4">Key</td>
                       <td className="border p-4">Type</td>
                       <td className="border p-4">Required?</td>
@@ -1678,13 +1823,13 @@ const apidocs = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">productId</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
                       <td className="border p-4">"4392452522089"</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">giftVariantId</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
@@ -1692,13 +1837,13 @@ const apidocs = () => {
                         "39532031672425" (Note: See below for more)
                       </td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">handwritingStyle</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
                       <td className="border p-4">"Tarzan"</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">customMessage </td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">Yes</td>
@@ -1707,13 +1852,13 @@ const apidocs = () => {
                         line."
                       </td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">signoff</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
                       <td className="border p-4">"Yours Sincerely, David"</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">giftVariantId</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
@@ -1721,25 +1866,25 @@ const apidocs = () => {
                         "39532031672425" (Note: See below for more)
                       </td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">shippingDate</td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
                       <td className="border p-4">"01/01/2020"</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">returnAddressId </td>
                       <td className="border p-4">String</td>
                       <td className="border p-4">No</td>
                       <td className="border p-4">"ID_OF_RETURN_ADDRESS"</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">returnAddress</td>
                       <td className="border p-4">Object Return Object</td>
                       <td className="border p-4">Yes</td>
                       <td className="border p-4"> See Below</td>
                     </tr>
-                    <tr className='text-[14px]'>
+                    <tr className="text-[14px]">
                       <td className="border p-4">recipientData </td>
                       <td className="border p-4">Array Recipient Object</td>
                       <td className="border p-4">Yes</td>
@@ -1747,16 +1892,17 @@ const apidocs = () => {
                     </tr>
                   </tbody>
                 </table>
-                <h2 className="mt-[19px] font-karla  mb-[7px] text-[23px]">
+                <h2 className="text-[black] font-karla  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
                   Returns on success:
                 </h2>
-                <pre className="text-xs p-[22px] leading-6 bg-gray-200 text-sm  mt-7px overflow-hidden">
+                <pre className="leading-7 text-14 color-[black] bg-[#f7f7f7] p-[22px] font-bold overflow-hidden">
                   &#123;
                   <br />
                   "result": &#123;
                   <br />
                   "orders": [ <br />
-                  &#123; "id": 5465230180457, <br />
+                  &#123; <br />
+                  "id": 5465230180457, <br />
                   "admin_graphql_api_id": "gid://shopify/Order/5465230180457",
                   <br />
                   "app_id": 3648771, <br />
@@ -3572,110 +3718,110 @@ const apidocs = () => {
 
           {selectedSection === 'AVAILABLE HANDWRITING STYLES' && (
             <div>
-              <h3 className="">
-                <span className="ftext-[#001a5f] font-karla  font-bold ml-2 text-[33px] font-Tiempos">8</span>
-                 AVAILABLE HANDWRITING STYLES
+              <h3 className="ftext-[#001a5f] font-karla  font-bold ml-2 text-[33px] font-Tiempos">
+                <span className="font-italic text-blue-500">8. </span> AVAILABLE
+                HANDWRITING STYLES
               </h3>
               <div className=" mt-[55px]">
-                <h3 className="text-lg">
+                <h3 className="ftext-[#001a5f] font-karla mt-[16px]  font-bold ml-2 text-[33px] font-Tiempos">
                   <span className="font-italic text-blue-500">8.1.</span>{' '}
                   Examples
                 </h3>
-                <p className="mt-[7px] font-thin">
+                <p className="mt-[7px] ml-[8px] font-thin text-[16px] mt-[22px] leading-[27px] color-[black]">
                   <strong>Description:</strong> Below you can preview the
                   available handwriting styles that can be leveraged by the API.
                 </p>
-                <p className="mt-[7px]">
+                <p className="mt-[7px] ml-[8px] font-thin text-[16px] mt-[22px] leading-[27px] color-[black]">
                   <strong>Tarzan:</strong>
                 </p>
                 <p className="Tarzan text-[77px] mt-[54px] font-tarzan">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Stitch:</strong>
                 </p>
                 <p className="Stitch  text-[67px] mt-[54px] font-stitch">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Pinocchio:</strong>
                 </p>
                 <p className="Pinocchio text-[28px] mt-[54px] font-pinocchio">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Simba:</strong>
                 </p>
                 <p className="Simba text-[76px] mt-[54px] font-simba">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Roo:</strong>
                 </p>
                 <p className="Roo text-[37px] mt-[54px] font-roo">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Nemo:</strong>
                 </p>
                 <p className="Nemo text-[41px] mt-[54px] font-nemo">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Lumiere:</strong>
                 </p>
                 <p className="Lumiere text-[84px] mt-[54px] font-lumiere">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Kaa:</strong>
                 </p>
                 <p className="Kaa text-[44px] mt-[54px] font-kaa">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Dumbo:</strong>
                 </p>
                 <p className="Dumbo text-[80px] mt-[54px] font-dumbo">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Bolt:</strong>
                 </p>
                 <p className="Bolt  text-[41px] mt-[54px] font-bolt">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Belle:</strong>
                 </p>
                 <p className="Belle text-[110px] mt-[54px] font-belle">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Cinderella:</strong>
                 </p>
                 <p className="Cinderella text-[82px] mt-[54px] font-cinderella">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Hercules:</strong>
                 </p>
                 <p className="Hercules text-[100px] mt-[54px] font-hercules">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Merlin:</strong>
                 </p>
                 <p className="Merlin text-[51px] mt-[54px] font-merlin">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Rapunzel:</strong>
                 </p>
                 <p className="Rapunzel text-[80px] mt-[54px] font-rapunzel">
                   The quick brown fox jumps over the lazy dog
                 </p>
-                <p>
+                <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
                   <strong>Scar:</strong>
                 </p>
                 <p className="Scar text-[65px]mt-[54px] font-scar">
