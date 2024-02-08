@@ -525,19 +525,19 @@ const ContactTable = ({
           content={errorContent}
         />
       ) : (
-        <div className="w-[92%] mx-auto max-w-[100%]">
-          <div className="flex flex-col  gap-y-[25px] justify-between items-center">
-            <div className=' mt-[35px] block'>
-              <span className='font-bold text-[29px] text-[#001a5f] mb-3'>ADDRESS BOOK</span>
+        <div className="w-full mx-auto max-w-[100%]">
+              <h2 className='font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8'>ADDRESS BOOK</h2>
+          <div className="flex flex-col md:flex-row gap-y-[25px] justify-between items-center md:items-end mb-[16px]">
+            <div className='w-full max-w-[400px]'>
             <input
-              type="text"
+              type="text" 
               placeholder="Search Addresses..."
               value={searchText}
               onChange={handleSearchInputChange}
-              className="w-full max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+              className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
             </div>
-            <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center w-full">
+            <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
               <div
                 className={`md:w-[310px]  w-full border-2 border-solid border-[#000] py-[5px]`}
               >
@@ -573,7 +573,7 @@ const ContactTable = ({
                   />
                 )}
               </div>
-              <div className="flex items-end justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+              <div className="flex items-center  md:items-end justify-center md:justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
                 <DynamicButton
                   className="bg-[#1b5299] px-[50px] py-[14px] text-[14px] font-normal "
                   text="+ New Address"
@@ -687,7 +687,7 @@ const ContactTable = ({
                             {row.cells.map((cell) => (
                               <td
                                 {...cell.getCellProps()}
-                                className="border border-solid border-black p-[10px] text-center"
+                                className="border border-solid border-black p-[8px] text-center"
                               >
                                 {cell.render('Cell')}
                               </td>

@@ -534,13 +534,8 @@ const ManageSubscription = () => {
       />
       <>
         <div className="w-full max-w-[1640px] mx-auto px-[20px]">
-          {/* <DynamicTitle
-            title="Manage Plans and Prepaid Packages"
-            className={'mt-[15px] !text-[20px] '}
-          /> */}
-
-          <div className="flex flex-col lg:flex-row w-full max-w-[1640px] gap-[30px] items-start">
-            <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
+          <div className="flex flex-col lg:flex-row w-full  gap-[30px] items-start">
+            {/* <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
               <div className="user-name">
                 {firstNameChar}
                 {lastNameChar}
@@ -554,7 +549,7 @@ const ManageSubscription = () => {
                   {email}
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="w-full bg-white p-[20px] text-center">
               {loader ? (
                 <CircularLoader title="Loading Manage Plans" color="#ef6e6e" />
