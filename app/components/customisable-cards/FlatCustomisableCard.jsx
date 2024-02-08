@@ -1031,27 +1031,27 @@ export default function FlatCustomisableCard({
         >
           <div className='p-[35px]'>
             <div>
-              <p className="bg-[#deebf7] h-[55px] text-[20px] flex justify-center items-center text-black border-2 border-solid border-[#526fa1] font-bold">
+              <p className="bg-[#deebf7] h-[55px] lg:text-[20px] text-[14px] flex justify-center items-center text-black border-2 border-solid border-[#526fa1] font-bold">
                 Name your card and save it.
               </p>
             </div>
             <div className="h-4 mt-2 flex justify-start items-center">
               {errorResponse.status && (
-                <span className="text-[red] text-xs">
+                <span className="text-[red] text-[14px]">
                   {errorResponse.message}
                 </span>
               )}
             </div>
-            <div className='flex justify-between mt-3'>
+            <div className='flex lg:flex-row flex-col justify-between gap-2 mt-3'>
             <input
-              className="min-w-[219px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none"
+              className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none"
               type="text"
               placeholder="Card Name"
               onChange={(e) => setCustomCardTitle(e.target.value)}
             ></input>
-            <br />
+          
             <button
-              className="bg-[#1b5299] text-[14px] font-normal border-none text-white  outline-none p-1 px-8  h-[45px] "
+              className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[45px] "
               type="button"
               onClick={handleCustomCardSaveButton}
             >
