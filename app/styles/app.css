@@ -216,8 +216,8 @@ a.active {
   }
 }
 
-.global-max-width-handler{
-  max-width:1400px;
+.global-max-width-handler {
+  max-width: 1400px;
   margin: auto;
 }
 .request-button {
@@ -271,16 +271,10 @@ nav a {
 
 .handwritten-notice {
   text-align: center;
-  margin-top: 55px;
-  position: relative;
+  color: #001a5f;
+  line-height: 40px;
 }
 
-.handwritten-notice p {
-  font-size: 45px;
-  color: #001a5f;
-  font-weight: 500;
-  margin-left: 80px;
-}
 * .request-a-button {
   background: #1b5299;
   min-width: 250px;
@@ -453,7 +447,7 @@ nav a {
   border: 0;
   border-radius: 4px;
   margin-bottom: 8px;
-  padding:8px;
+  padding: 8px;
   font-size: 14px;
   margin: 5px;
   font-weight: 400;
@@ -827,16 +821,24 @@ nav a {
 }
 
 .handwritten-notice {
-  text-align: center;
   margin-top: 55px;
-  position: relative;
 }
 .handwritten-notice h3 {
   font-size: 45px;
   color: #001a5f;
-  font-weight: 500;
-  margin-top: -31px;
-  margin-right: -78px;
+}
+.typewriter-effect {
+  margin-left: 49px;
+}
+.typewriter-bottom-line {
+  position: relative;
+  height: 15px;
+  width: 240px;
+  display: inline-block;
+  border-bottom: 2px solid #001a5f;
+  background: #e2ebf8;
+  overflow: hidden;
+  z-index: -1;
 }
 .handwritten-notice p {
   font-size: 45px;
@@ -859,6 +861,7 @@ nav a {
   cursor: pointer;
   color: #fff;
   font-size: 19px;
+  font-weight: 300 !important;
 }
 .start-writing-button:hover {
   background-color: #1b5299;
@@ -868,7 +871,7 @@ nav a {
   min-width: 250px;
   border-radius: 0px;
   text-transform: uppercase;
-
+  font-weight: 300 !important;
   min-height: 64px;
   cursor: pointer;
   color: #fff;
@@ -1072,8 +1075,8 @@ body {
 
 .INTEGRATE {
   position: relative;
-  width: 100%; 
-  max-width: 203px; 
+  width: 100%;
+  max-width: 203px;
   height: 56px;
   display: flex;
   align-items: center;
@@ -1094,7 +1097,6 @@ body {
 }
 
 /* Your existing DynamicButton styles */
-
 
 .btn2 {
   background: url(../../assets/Image/button-blue.png) no-repeat;
@@ -2394,7 +2396,7 @@ body {
     margin-right: 0px;
     min-width: 170px;
     min-height: 46px;
-    font-weight: normal;
+    font-weight: 300 !important;
   }
   .scale-starting {
     font-size: 14px;
@@ -2494,7 +2496,7 @@ body {
     margin-bottom: 0px;
     width: 100%;
   }
- 
+
   .input_email {
     width: 54%;
   }
@@ -2550,7 +2552,7 @@ body {
 }
 @media only screen and (max-width: 511px) {
   .custom_testing {
-    width:100%;
+    width: 100%;
   }
   .data_card {
     margin: 0px;
