@@ -510,6 +510,9 @@ export function MessageWriting({
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
+
+ 
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {

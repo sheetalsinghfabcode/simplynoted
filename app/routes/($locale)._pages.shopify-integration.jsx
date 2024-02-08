@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ShopifyIcon from '../../assets/Image/shopify-log.png';
 import ac_blue from '../../assets/Image/ac-blue-orb.png';
 import shopifys from '../../assets/Image/shopify-log.png';
@@ -15,13 +15,19 @@ import DynamicButton from '~/components/DynamicButton';
 import 'swiper/css/autoplay';
 
 export default function shopify() {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+   
+    setAnimate(true);
+  }, []);
   return (
     <div>
       <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
-        <div className="lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center">
+        <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center`}>
           <div className="lg:block hidden">
-            <img src={ShopifyIcon} alt="shopify" />
-            <h2 className="xl:text-[46px] text-[32px] font-normal text-[#001A5F]">
+            <img className='mb-[25px]' src={ShopifyIcon} alt="shopify" />
+            <h2 className="xl:text-[46px] mb-[25px] text-[32px] font-normal text-[#001A5F]">
               Shopify Integration
             </h2>
           </div>
@@ -32,14 +38,20 @@ export default function shopify() {
             build lasting relationships and increase lifetime value of your
             customers.
           </p>
-          <DynamicButton
-            onClickFunction={() =>
-              (window.location.href =
-                'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
-            }
-            text="INTEGRATE NOW"
-            className="btn1  !mt-5 xl:w-[45%] lg:w-[52%] md:w-[35%] w-[50%] text-[16px]"
-          />
+          <div className='flex justify-center lg:justify-start md:justify-center mt-[16px]'>
+            <div className="INTEGRATE flex justify-center">
+              {' '}
+              {/* Higher z-index for top div */}
+              <DynamicButton
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
+                text="INTEGRATE NOW"
+                className="mt-[6px] text-[16px] font-bold"
+              />
+          </div>
+          </div>
         </div>
         <div className="lg:hidden block sm:mb-10 mb-6">
           <img className="mx-auto" src={ShopifyIcon} alt="shopify" />
@@ -47,7 +59,7 @@ export default function shopify() {
             Shopify Integration
           </h2>
         </div>
-        <div className="lg:w-[65%] w-full">
+        <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[65%] w-full`}>
           <img
             className="w-full"
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Group_854.png?v=1611976470"
@@ -154,7 +166,7 @@ export default function shopify() {
       <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
-            <div className="  text-[28px] font-karla text-[#001A5F]">
+            <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
@@ -167,7 +179,7 @@ export default function shopify() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:w-[100%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[16px] md:text-[14px] text-[16px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
@@ -175,13 +187,13 @@ export default function shopify() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2 lg:w-[50%] md:w-[26%] text-[15px] mt-5"
+              className="btn2 lg:w-[100%] md:w-[26%] text-[15px] mt-5"
               onClickFunction={() => navigate('/blogs')}
             />
           </div>
         </div>
         <div className="lg:hidden block mb-10">
-          <div className=" sm:text-[46px] text-center  text-[32px] font-karla text-[#001A5F]">
+          <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
             Send one or send
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
@@ -207,7 +219,7 @@ export default function shopify() {
       <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
-            <div className="  text-[28px] font-karla text-[#001A5F]">
+            <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
@@ -219,7 +231,7 @@ export default function shopify() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:w-[100%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[16px] md:text-[14px] text-[16px] lg:h-[10%]  h-full mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
@@ -227,13 +239,13 @@ export default function shopify() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2 lg:w-[50%] md:w-[26%] text-[15px] mt-5"
+              className="btn2 lg:w-[100%] md:w-[26%] text-[15px] mt-5"
               onClickFunction={() => navigate('/blogs')}
             />
           </div>
         </div>
         <div className="lg:hidden block mb-10">
-          <div className="sm:text-[46px]  text-center text-[32px] font-karla text-[#001A5F]">
+          <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
             Send one or send
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>

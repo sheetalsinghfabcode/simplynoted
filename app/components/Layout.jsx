@@ -772,7 +772,7 @@ function DesktopHeader({isHome, menu}) {
                       </div>
 
                       <div
-                        className={`dropdown-content show ${
+                        className={`dropdown-content ${
                           activeDropdown === 'order' ? 'show' : ''
                         }`}
                       >

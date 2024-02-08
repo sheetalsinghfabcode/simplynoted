@@ -136,7 +136,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   ];
 
   return (
-    <div className="w-full max-w-[1440px] p-[20px] mx-auto">
+    <div className="w-full max-w-[1640px] p-[20px] mx-auto">
       <div className="overflow-auto">
         <table className="mx-auto table bg-white">
           <thead>
@@ -198,7 +198,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                 <td className="py-4 pl-6">{item.feature}</td>
                 {Array.from({length: pricingPlans.length}).map((_, i) => (
                   <td key={i} className="text-center">
-                    {index < (i + 1) * 5 ? (
+                    {index < (i + 1) * 17 ? (
                       <img
                         src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
                         className="w-[18px] h-[16px] mx-auto"

@@ -13,10 +13,12 @@ export function CheckoutData({
   StripeKey,
   totalPrize,
   cartData,
-  cartNote
+  cartNote,
+  postalId,
+  postalId2,
 }) {
   const stripe = loadStripe(`${StripeKey}`);
-  let customerid, fullName, userEmail, firstName, lastName;
+  let customerid, fullName, userEmail, firstName, lastName , selectedText ;
   const [showWallet, setShowWallet] = useState(true);
   const [showCardDetail, setShowCardDetail] = useState(false);
   const [showCardBox, setShowCardBox] = useState(false);
@@ -26,6 +28,7 @@ export function CheckoutData({
   const [customerID, setCustomertID] = useState('');
   const [loader, setloader] = useState(false);
   const [customerInformation, setCustomerInformation] = useState([]);
+  const [selectedOrderPurchaseQuantity,setSelectedOrderPurchaseQuantity] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -155,7 +158,7 @@ export function CheckoutData({
       );
       const json = await res.json();
       if (json) {
-        setCustomerInformation(json.customer)
+        setCustomerInformation(json.customer);
         setSavedCart(json.payments);
         setWalletBalance(json.stripe);
       }
@@ -197,6 +200,11 @@ export function CheckoutData({
     }
   }
 
+  useEffect(()=>{
+  selectedText = localStorage.getItem("selectedOrderPurchaseQuantity")
+  setSelectedOrderPurchaseQuantity(selectedText)
+  },[])
+
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     fullName = localStorage.getItem('SNFullName');
@@ -234,8 +242,6 @@ export function CheckoutData({
     }));
   };
 
-  
-
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.address.country,
   );
@@ -266,19 +272,22 @@ export function CheckoutData({
 
     // Return an object with firstName and lastName properties
     return {
-        firstName: firstName,
-        lastName: lastName
+      firstName: firstName,
+      lastName: lastName,
     };
-}
+  }
 
-// Example usage:
-let name = customerInformation?.name;
-let separatedNames = separateFullName(name);
+  let name = customerInformation?.name;
+  let separatedNames = separateFullName(name);
 
+  const totalPrice = Number(prices?.totalPrice)?.toFixed(2)
 
   async function paymentPurchase() {
     try {
       const formData = new FormData();
+
+      const postageUSCountries = ['USA', 'US', 'United States', 'United States of America', 'America'];
+
       const payload = {
         billingAddress: {
           firstName: separatedNames?.firstName,
@@ -290,81 +299,99 @@ let separatedNames = separateFullName(name);
           country: customerInformation.address?.country,
           state: customerInformation.address?.state,
         },
-        cartNote: cartNote ? cartNote : "",
+        cartNote: cartNote ? cartNote : '',
         cartItems:
           cartData &&
-          cartData?.map((item) => {
+          cartData.map((item) => {
             let senderFullName =
-              item.senderAddress.firstName + ' ' + item.senderAddress.lastName;
-            let recieverFullName =
-              item.reciverAddress.firstName +
+              item.senderAddress?.firstName + ' ' + item.senderAddress?.lastName;
+            let receiverFullName =
+              item.reciverAddress?.firstName +
               ' ' +
-              item.reciverAddress.lastName;
+              item.reciverAddress?.lastName;
+            let giftCard = null;
+            if (item.giftCardName) {
+              giftCard = {
+                id: item.giftCardId, // Add a unique identifier for the gift card
+                url:
+                  '/products/' +
+                  item.giftCardName.replace(/ /g, '-').toLowerCase(), // URL based on gift card name
+                qyt: 1,
+              };
+            }
+
+            const isPostageUSCountry = postageUSCountries.includes(item.reciverAddress?.country);
             return {
               productTitle: item.productTitle,
-              variant_id: item.variant_id,
+              variant_id: item.variant_id.match(/\d+/g).join(""),
               productUrlGet: item.productGetUrl,
-              productPrice: item.price,
-              productUrl:
-                'https://simplynoted.com/collections/best-sellers/products/cactus-thank-you',
+              productPrice: `$${item.price}`,
               qyt: 1,
-              proImage: item.productImg,
               properties: {
                 bulk_shipping_address: '\n  \n  \n',
-                selectedText: 'Single Card',
+                selectedText: selectedOrderPurchaseQuantity && selectedOrderPurchaseQuantity,
                 font_family: item.fontFamily,
                 custom_message: item.messageData,
                 font_size: '60px',
                 font_size_cust_card: '60px',
                 line_ht_cust_card: '60px',
-                signoff: item.endText,
-                custom_font: '',
-                font_selection: item.fontFamily,
-                recipient_upload: 'Not Applicable',
+                signoff: item?.endText,
+                custom_font: item?.customFontName,
+                font_selection: item?.fontFamily,
+                recipient_upload:   "Not Applicable :",
                 ship_date: '',
-                sender_fullName: senderFullName,
-                sender_address1: item.senderAddress.address1,
-                sender_address2: item.senderAddress.address2,
-                sender_city: item.senderAddress.city,
-                sender_state: item.senderAddress.state,
-                sender_zip: item.senderAddress.zip,
-                sender_country: item.senderAddress.country,
-                sender_id: item.senderAddress._id,
-                gift_card_ID: '1696942729953',
-                uqId: '1696942729953',
-                gift_id: '39532033146985',
-                recipient_id: item.reciverAddress._id,
-                recipient_fullName: recieverFullName,
-                recipient_businessName: item.reciverAddress.businessName,
-                recipient_address1: item.reciverAddress.address1,
-                recipient_address2: item.reciverAddress.address2,
-                recipient_city: item.reciverAddress.city,
-                recipient_state: item.reciverAddress.state,
-                recipient_zip: item.reciverAddress.zip,
-                recipient_country: item.reciverAddress.country,
+                sender_fullName: senderFullName && senderFullName,
+                sender_address1: item.senderAddress?.address1,
+                sender_address2: item.senderAddress?.address2,
+                sender_city: item.senderAddress?.city,
+                sender_state: item.senderAddress?.state,
+                sender_zip: item.senderAddress?.zip,
+                sender_country: item.senderAddress?.country,
+                sender_id: item.senderAddress?._id,
+                gift_card_ID: giftCard ? giftCard.id : '', 
+                uqId: giftCard ? giftCard.id : '', 
+                gift_id: giftCard ? giftCard.id : '', 
+                recipient_id: item?.reciverAddress?._id,
+                recipient_fullName: receiverFullName && receiverFullName,
+                recipient_businessName: item?.reciverAddress?.businessName,
+                recipient_address1: item?.reciverAddress?.address1,
+                recipient_address2: item?.reciverAddress?.address2,
+                recipient_city: item?.reciverAddress?.city,
+                recipient_state: item?.reciverAddress?.state,
+                recipient_zip: item?.reciverAddress?.zip,
+                recipient_country: item?.reciverAddress?.country,
               },
               additionalProducts: {
+                ...(giftCard && {giftCard}),
                 postageUS: {
-                  id: 40677547769961,
+                  id: isPostageUSCountry ? postalId : postalId2,
                   url: '/products/postage',
-                  qyt: 1,
-                },
-                giftCard: {
-                  id: '39532033146985',
-                  url: '/products/visa-gift-card_new',
                   qyt: 1,
                 },
               },
             };
           }),
 
-        cartTotal: prices?.totalPrice,
+        cartTotal: Number(totalPrice),
         wallet: showWallet,
         paymentMethodKey: !showWallet && paymentMethodId,
-        discountCode: discountCouponCode?.payloadValue,
-        discountValue: discountCouponCode?.apiDiscountResponse?.value ? discountCouponCode.apiDiscountResponse.value : "",
-        discountValueType: discountCouponCode?.apiDiscountResponse?.value_type ? discountCouponCode.apiDiscountResponse.value_type : "",
+        discountCode: discountCouponCode?.oldTriedPayloadValue,
+        discountValue: discountCouponCode?.apiDiscountResponse?.value
+          ? discountCouponCode?.apiDiscountResponse?.value
+          : '',
+        discountValueType: discountCouponCode?.apiDiscountResponse?.value_type
+          ? discountCouponCode?.apiDiscountResponse?.value_type
+          : '',
       };
+
+      formData.append('billingAddress', JSON.stringify(payload.billingAddress));
+      formData.append('cartNote', JSON.stringify(payload.cartNote));
+      formData.append('cartItems', JSON.stringify(payload.cartItems));
+      formData.append('wallet', JSON.stringify(payload.wallet));
+      formData.append('paymentMethodKey', JSON.stringify(payload.paymentMethodKey));
+      formData.append('discountCode', JSON.stringify(payload.discountCode));
+      formData.append('discountValue', JSON.stringify(payload.discountValue));
+      formData.append('discountValueType', JSON.stringify(payload.discountValueType));
 
 
       const res = await fetch(
@@ -374,10 +401,11 @@ let separatedNames = separateFullName(name);
           headers: {
             'Content-Type': 'application/json',
           },
-          body: payload,
+          body: formData,
         },
       );
       const json = await res.json();
+      debugger
     } catch (error) {
       console.error(error, 'error on CreateCard');
     }

@@ -329,14 +329,12 @@ nav a {
 .dropdown > div {
   cursor: pointer;
 }
+
 .dropdown-list {
   padding: 35px 42px;
 }
-.dropdown-list li {
-  font-weight: 300;
-}
 .dropdown-list li:hover {
-  color: #1b5299;
+  color: gray;
 }
 
 .tooltip {
@@ -369,7 +367,7 @@ nav a {
   padding: 5px 10px;
 }
 #example-one-input2 {
-  height: 90px;
+  height: 100px;
   width: 56%;
   border-radius: 6px;
   padding: 5px 10px;
@@ -476,6 +474,11 @@ nav a {
     transition: all 0.5s ease-in-out;
   }
   .custom_testing {
+    background-color: #f1f1f1;
+    border: solid 2px #aaa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 15px;
     width: 100%;
     max-width: 375px;
   }
@@ -921,10 +924,10 @@ nav a {
   height: auto;
 }
 
-/* .font-bold {
+.font-bold {
   font-weight: 500 !important;
   letter-spacing: 0px;
-} */
+}
 
 .tooltip {
   position: relative;
@@ -1083,11 +1086,26 @@ body {
   justify-content: center;
 }
 
+ /* tailwind.css */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-out;
+}
+
+
 .INTEGRATE::after {
   content: '';
   background-image: url('https://simplynoted.com/cdn/shop/files/Group_460.svg');
-  background-size: cover; /* Adjust as needed */
-  background-position: center; /* Adjust as needed */
+  background-size: cover; 
+  background-position: center; 
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1270,7 +1288,7 @@ body {
 
 .selectArrow select {
   background-image: url(../../assets/Image/Polygon_13.svg) !important;
-  background-size: 5% !important;
+  background-size: 6% !important;
 }
 
 /*********************************LOGIN-MODAL-PAGE********************************/
@@ -2067,14 +2085,8 @@ body {
   position: relative;
 }
 
-.titleImage {
-  background: url(../../assets/Image/underline-2-img.png) no-repeat !important;
-  background-position: center bottom !important;
-  background-size: 95% !important;
-}
-
 /********************************************* ROI CALCULATOR **********************************************************/
-/* .roi-calculator-section-1 {
+.roi-calculator-section-1 {
   margin: 40px auto;
 }
 
@@ -2218,7 +2230,7 @@ body {
   position: relative;
 }
 
-
+/* Styling for the slider thumb */
 .simply-noted-marketing input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 30px;
@@ -2228,6 +2240,7 @@ body {
   cursor: pointer;
 }
 
+/* Adjust the color of the thumb on Mozilla Firefox */
 .simply-noted-marketing input[type='range']::-moz-range-thumb {
   width: 30px;
   height: 34px;
@@ -2325,7 +2338,7 @@ body {
   color: white;
   font-size: 18px;
   font-family: none;
-} */
+}
 
 /* Media Query */
 @media only screen and (max-width: 1326px) {
@@ -2496,7 +2509,6 @@ body {
     margin-bottom: 0px;
     width: 100%;
   }
-
   .input_email {
     width: 54%;
   }
@@ -2607,3 +2619,35 @@ body {
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
 }
+
+/* Account Page Tab Css  */
+
+.tab-button {
+  min-width: 143px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  border-bottom: 2px solid transparent; /* Default border color */
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.8s, color 0.8s;
+  outline: none  !important;
+}
+
+.tab-button.active-tab {
+  border-color: #1b5299;
+  color: #1b5299;
+}
+
+.tab-button:hover {
+  color: #1b5299;
+  border-color: #1b5299; 
+  border-bottom-width: 1px solid transparent; /* Default border color */
+
+  transition: border-width 0.3s ease-in-out; /* Smooth transition */
+}
+
+

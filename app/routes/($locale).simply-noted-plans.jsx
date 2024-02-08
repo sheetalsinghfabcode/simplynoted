@@ -11,7 +11,7 @@ import CircularLoader from '~/components/CircularLoder';
 import {useStateContext} from '~/context/StateContext';
 
 export async function loader({context}) {
-  const StripeKey = context.env.STRIPE_KEY;
+  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });
@@ -86,8 +86,10 @@ export default function SimplyNoted() {
     return () => {};
   }, []);
 
+  console.log("stripeCollection",stripeCollection);
+
   return (
-    <div className="w-full relative max-w-[1440px] mx-auto">
+    <div className="w-full relative max-w-[1640px] mx-auto">
       {loader && (
         <div className="absolute top-[20%] z-[50] left-[50%]">
           <CircularLoader title="Loading Plans" color="#ef6e6e" />

@@ -247,7 +247,7 @@ const Profile = ({
 
         {activeTab === 'account' && (
           <form onSubmit={handleSubmit} className="">
-            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="firstName"
@@ -283,47 +283,49 @@ const Profile = ({
               </div>
             </div>
 
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block mb-1 md:text-[16px] text-[12px] font-semibold"
-              >
-                Email
-              </label>
-              <input
-                type="text"
-                id="email"
-                disabled
-                name="email"
-                value={accountDetails.email}
-                onChange={handleAccountInputChange}
-                className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                htmlFor="phone"
-                className="block md:text-[16px] text-[12px]  mb-1 font-semibold"
-              >
-                Phone Number (with area code)
-              </label>
+            <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
+              <div className="px-3 mb-6">
+                <label
+                  htmlFor="email"
+                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                >
+                  Email
+                </label>
+                <input
+                  type="text"
+                  id="email"
+                  disabled
+                  name="email"
+                  value={accountDetails.email}
+                  onChange={handleAccountInputChange}
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                />
+              </div>
+              <div className="px-3 mb-6">
+                <label
+                  htmlFor="phone"
+                  className="block md:text-[16px] text-[12px]  mb-1 font-semibold"
+                >
+                  Phone Number (with area code)
+                </label>
 
-              <input
-                type="text"
-                id="phone"
-                name="phone"
-                value={accountDetails.phone}
-                onChange={handleAccountInputChange}
-                className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-              />
-              {error && (
-                <span className="text-[16px] text-[#ef6e6e] font-semibold">
-                  Error: {error}
-                </span>
-              )}
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  value={accountDetails.phone}
+                  onChange={handleAccountInputChange}
+                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                />
+                {error && (
+                  <span className="text-[16px] text-[#ef6e6e] font-semibold">
+                    Error: {error}
+                  </span>
+                )}
+              </div>
             </div>
 
-            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid grid-cols-1 md:grid-cols-2 flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="address1"
@@ -357,7 +359,7 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid grid-cols-1 md:grid-cols-2 flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="city"
@@ -391,7 +393,7 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 lg:grid grid flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
                 <label
                   htmlFor="firstName"

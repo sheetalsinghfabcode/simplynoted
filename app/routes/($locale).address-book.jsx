@@ -40,9 +40,7 @@ export default function AddressBook() {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+
 
   useEffect(() => {
     // Define the API URL
@@ -68,9 +66,9 @@ export default function AddressBook() {
   }, [addresses]);
 
   return (
-    <div className="bg-[#e0e9f8] relative w-full max-w-[1440px] mx-auto px-[20px]">
-      <div className={`w-full max-w-[1440px] sm:mt-[0px] mt-[20px]  mx-auto`}>
-        <DynamicTitle dynamicButton title={'Address Book'} />
+    <div className="bg-[#e0e9f8] relative w-full max-w-[1640px] mx-auto px-[20px] pt-[20px]">
+      <div className={`w-full max-w-[1640px] sm:mt-[0px] mt-[20px]  mx-auto`}>
+        {/* <DynamicTitle dynamicButton title={'Address Book'} /> */}
         {!addressForm && !selectedAddress && (
           <div className="w-full">
             <ContactTable
@@ -87,7 +85,7 @@ export default function AddressBook() {
           </div>
         )}
         {addressForm && (
-          <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+          <div className="w-full max-w-[1640px] px-[20px] mx-auto">
             <AddressForm
               customerID={customerID}
               setAddressForm={setAddressForm}
@@ -96,7 +94,7 @@ export default function AddressBook() {
           </div>
         )}
         {selectedAddress && (
-          <div className="w-full max-w-[1440px] px-[20px] mx-auto">
+          <div className="w-full max-w-[1640px] px-[20px] mx-auto">
             <EditAddressForm
               customerID={customerID}
               selectedAddress={selectedAddress}

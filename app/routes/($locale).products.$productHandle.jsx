@@ -634,25 +634,6 @@ const VARIANTS_QUERY = `#graphql
 
 `;
 
-// const RECOMMENDED_PRODUCTS_QUERY = `#graphql
-//   query productRecommendations(
-//     $productId: ID!
-//     $count: Int
-//     $country: CountryCode
-//     $language: LanguageCode
-//   ) @inContext(country: $country, language: $language) {
-//     recommended: productRecommendations(productId: $productId) {
-//       ...ProductCard
-//     }
-//     additional: products(first: $count, sortKey: BEST_SELLING) {
-//       nodes {
-//         ...ProductCard
-//       }
-//     }
-//   }
-//   ${PRODUCT_CARD_FRAGMENT}
-
-// `;
 
 const GiftProduct = `#graphql
   query
@@ -669,6 +650,7 @@ const GiftProduct = `#graphql
             variants(first:10){
               edges{
                 node{
+                  id
                   title
                   price{
                     amount
