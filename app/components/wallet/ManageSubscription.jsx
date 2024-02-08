@@ -16,7 +16,7 @@ import PaymentModal from '~/components/wallet/PaymentModal';
 import { fetchWalletData } from '~/utils/graphqlUtils';
 
 export async function loader({ context }) {
-  const StripeKey = context.env.STRIPE_KEY;
+  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   const WalletData = await fetchWalletData(context);
   return defer({
     StripeKey,
@@ -433,6 +433,8 @@ const ManageSubscription = () => {
     return inputString; // Return as is if not a valid number
   }
 
+  console.log("StripeKey",StripeKey);
+
   return (
     <>
       <PackageModal
@@ -532,11 +534,10 @@ const ManageSubscription = () => {
       />
       <>
         <div className="w-full max-w-[1640px] mx-auto px-[20px]">
-          <DynamicTitle
-            dynamicButton
+          {/* <DynamicTitle
             title="Manage Plans and Prepaid Packages"
             className={'mt-[15px] !text-[20px] '}
-          />
+          /> */}
 
           <div className="flex flex-col lg:flex-row w-full max-w-[1640px] gap-[30px] items-start">
             <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
@@ -560,7 +561,7 @@ const ManageSubscription = () => {
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
-                    <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                    <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                       wallet balance
                     </span>
                     <span className="lg:text-[24px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
@@ -592,7 +593,7 @@ const ManageSubscription = () => {
                           'canceled' &&
                         !stripeCollection.error && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                            <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                            <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                               CHANGE STATUS
                             </span>
                             <DynamicButton
@@ -605,7 +606,7 @@ const ManageSubscription = () => {
                           </div>
                         )}
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                        <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                           CHANGE PLAN
                         </span>
                         <DynamicButton
@@ -629,7 +630,7 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled' ? (
                             <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                              <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
                                 PLAN RENEWAL DATE
                               </span>
                               <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">

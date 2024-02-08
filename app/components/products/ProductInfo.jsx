@@ -284,42 +284,6 @@ export function ProductInfo({
             />
           </div>
         </div>
-        {/* Product page Data Vieew */}
-        {/* <Suspense fallback={<ProductForm variants={[]} />}>
-                 <Await
-                 errorElement="There was a problem loading related products"
-                  resolve={variants}
-                  >
-                  {(resp) => (
-                    <ProductForm
-                      variants={resp.product?.variants.nodes || []}
-                    />
-                   )}
-                 </Await>
-                 </Suspense> */}
-        {/* Return and Policy button */}
-        {/* <div className="grid gap-4 py-4">
-                  {descriptionHtml && (
-                  <ProductDetail
-                    title="Product Details"
-                   content={descriptionHtml}
-                   />
-                  )}
-                  {shippingPolicy?.body && (
-                  <ProductDetail
-                  title="Shipping"
-                   content={getExcerpt(shippingPolicy.body)}
-                   learnMore={`/policies/${shippingPolicy.handle}`}
-                  />
-                  )}
-                  {refundPolicy?.body && (
-                 <ProductDetail
-                   title="Returns"
-                   content={getExcerpt(refundPolicy.body)}
-                   learnMore={`/policies/${refundPolicy.handle}`}
-                  />
-                  )}
-                 </div> */}
       </section>
     </div>
   );

@@ -11,7 +11,7 @@ import CircularLoader from '~/components/CircularLoder';
 import {useStateContext} from '~/context/StateContext';
 
 export async function loader({context}) {
-  const StripeKey = context.env.STRIPE_KEY;
+  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });

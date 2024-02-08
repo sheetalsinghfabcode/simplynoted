@@ -33,8 +33,9 @@ import {doLogout} from './($locale).account.logout';
 import DynamicButton from '~/components/DynamicButton';
 import DynamicTitle from '~/components/Title';
 import AddressBook from './($locale).address-book';
-import ManageSubscription from './($locale).manage-subscription';
-import { fetchWalletData } from '~/utils/graphqlUtils';
+import {fetchWalletData} from '~/utils/graphqlUtils';
+import ManageSubscription from '../components/wallet/ManageSubscription';
+import CircularLoader from '~/components/CircularLoder';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -45,7 +46,7 @@ export async function loader({request, context, params}) {
   const loginPath = locale ? `/${locale}/account/login` : '/account/login';
   const isAccountPage = /^\/account\/?$/.test(pathname);
 
-  const StripeKey = context.env.STRIPE_KEY;
+  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   let WalletData;
   try {
     WalletData = await fetchWalletData(context);
@@ -152,32 +153,30 @@ function Account({customer, heading, featuredData}) {
 
   const handleAccountDetailClick = () => {
     setAccountDetail(true);
-    setManagePlan(false)
+    setManagePlan(false);
     setOrderHistory(false);
     setProfile(false);
-    setAddressBook(false)
+    setAddressBook(false);
   };
 
   const handleOrderHistoryClick = () => {
     setOrderHistory(true);
-    setManagePlan(false)
+    setManagePlan(false);
     setAccountDetail(false);
     setProfile(false);
-    setAddressBook(false)
+    setAddressBook(false);
   };
   const handleManagePlan = () => {
-    setManagePlan(true)
+    setManagePlan(true);
     setOrderHistory(false);
     setAccountDetail(false);
     setProfile(false);
-    setAddressBook(false)
+    setAddressBook(false);
   };
-
-
 
   const handleProfile = () => {
     setProfile(true);
-    setManagePlan(false)
+    setManagePlan(false);
     setAddressBook(false);
     setOrderHistory(false);
     setAccountDetail(false);
@@ -186,7 +185,7 @@ function Account({customer, heading, featuredData}) {
   const handleAddressBook = () => {
     setOrderHistory(false);
     setAccountDetail(false);
-    setManagePlan(false)
+    setManagePlan(false);
     setProfile(false);
     setAddressBook(true);
   };
@@ -253,9 +252,9 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1444px] mx-auto px-[30px]">
-      <div className="flex  justify-between py-[30px] items-center">
-        <div className="flex gap-[16px] ml-6 flex-wrap  ">
+    <div className="w-full max-w-[1640px] mx-auto px-[30px]">
+      <div className="flex  justify-between py-[30px] items-start sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-[16px] ml-6 flex-wrap  ">
           <DynamicButton
             text="Account Detail"
             className={`tab-button ${accountDetail ? 'active-tab' : ''}`}
@@ -285,7 +284,7 @@ function Account({customer, heading, featuredData}) {
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
-            className="text-primary/50 bg-[#EF6E6E] md:text-[15px] text-[8px]"
+            className="text-primary/50 bg-[#EF6E6E] m-4 sm:m-0 md:text-[15px] text-[8px]"
             text="Log Out"
             onClickFunction={() => setData(true)}
           />
@@ -315,7 +314,10 @@ function Account({customer, heading, featuredData}) {
 
       {addressBook && <AddressBook />}
 
-      {managePlan && <ManageSubscription/>}
+      {managePlan && (
+        <ManageSubscription
+        />
+      )}
     </div>
   );
 }
@@ -324,9 +326,6 @@ function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
       <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
-        <h2 className=" text-[18px] md:text-center md:pb-[16px] text-center font-karla font-semibold lg:text-[32px]">
-          Order History
-        </h2>
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
@@ -440,8 +439,6 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
-
-
 
 const Wallet = `#graphql
   query
