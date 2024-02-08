@@ -1502,8 +1502,7 @@ body {
     gap: 15px;
   }
 
-  .right-cont {
-  }
+ 
 }
 
 /************************************About Us*****************************/
@@ -2671,6 +2670,9 @@ body {
 
 /* Account Page Tab Css  */
 
+/* CSS */
+
+/* Styles for the tab buttons */
 .tab-button {
   min-width: 143px;
   height: 40px;
@@ -2687,8 +2689,8 @@ body {
 }
 
 .tab-button.active-tab {
-  border-color: #1b5299;
-  color: #1b5299;
+  border-color: #001a5f;
+  color: #001a5f;
 }
 
 .tab-button:hover {
@@ -2698,5 +2700,3 @@ body {
 
   transition: border-width 0.3s ease-in-out; /* Smooth transition */
 }
-
-

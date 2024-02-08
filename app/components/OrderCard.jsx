@@ -9,7 +9,7 @@ export function OrderCard({order}) {
   const lineItems = flattenConnection(order?.lineItems);
 
   return (
-    <li className="grid text-center border rounded">
+    <li className="grid text-center border border-solid border-[#001a5f] rounded">
       <Link
         className=" flex md:grid items-center justify-center gap-4 p-4 md:gap-6 md:p-6  md:grid-cols-2"
         to={`/account/orders/${legacyOrderId}?${key}`}
@@ -36,16 +36,16 @@ export function OrderCard({order}) {
               ? `${lineItems[0].title} +${lineItems.length - 1} more`
               : lineItems[0].title}
           </Heading>
-          <dl className="grid grid-gap-1">
-            <dt className="sr-only">Order ID</dt>
+          <dl className="grid grid-cols-2 grid-gap-1">
+            <dt className='text-[12px] md:text-[14px]'>Order ID</dt>
             <dd>
-              <Text size="fine" color="subtle">
+              <Text  className='text-[12px] md:text-[14px]' color="subtle">
                 Order No. {order.orderNumber}
               </Text>
             </dd>
-            <dt className="sr-only">Order Date</dt>
+            <dt className='text-[12px] md:text-[14px]'>Order Date</dt>
             <dd>
-              <Text size="fine" color="subtle">
+              <Text className='text-[12px] md:text-[14px]'>
                 {new Date(order.processedAt).toDateString()}
               </Text>
             </dd>

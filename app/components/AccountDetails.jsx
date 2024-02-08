@@ -8,7 +8,6 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
   const {firstName, lastName, email, phone, id} = customer;
 
   const [key, setKey] = useState('');
-  // const [loader, setLoader] = useState(false);
   const [handleGenerateClick, setHandleGenerateClick] = useState(false);
 
   const customerID = customer.id.replace(/[^0-9]/g, '');
@@ -31,14 +30,15 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('apiKey', data.result);
-        setLoader(false);
-
+        setLoader(false)
         setKey(data.result);
       } else {
+        setLoader(false)
         // Handle errors here
         console.error('Error:', response.statusText);
       }
     } catch (error) {
+      setLoader(false)
       // Handle network errors or exceptions
       console.error('Error:', error);
     }
@@ -76,7 +76,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
         <div className="bg-white font-karla shadow-md rounded-lg p-6">
           {/* Name */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Name:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px] font-semibold">
@@ -88,7 +88,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* Phone */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Phone:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -98,7 +98,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* Email */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px] text-sm text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px] text-sm text-black font-normal ">
               Email address:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -108,7 +108,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* Password */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Password:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -118,9 +118,10 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
           {/* API Key */}
           <div className="flex mb-4 items-center">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600 ">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal ">
               API Key:
             </div>
+            <div className='w-3/4'>
             <button
               className="px-4 py-2 bg-[#1b52b1] text-white  md:text-sm text-[12px] font-semibold hover:bg-[#1b52b1] focus:outline-none"
               onClick={() => {
@@ -130,16 +131,19 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
             >
               Generate
             </button>
+            </div>
           </div>
 
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-gray-600">
+            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Generated API Key:
             </div>
             {handleGenerateClick && (
               <>
                 {loader ? (
+                  <div className='w-3/4'>
                   <CircularLoader color="#ef6e6e" />
+                  </div>
                 ) : (
                   <p className="w-3/4 md:text-[14px] text-[11px] font-semibold break-all">
                     {key}

@@ -46,7 +46,8 @@ export async function loader({request, context, params}) {
   const loginPath = locale ? `/${locale}/account/login` : '/account/login';
   const isAccountPage = /^\/account\/?$/.test(pathname);
 
-  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+  const StripeKey =
+    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   let WalletData;
   try {
     WalletData = await fetchWalletData(context);
@@ -143,6 +144,13 @@ function Account({customer, heading, featuredData}) {
   );
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
+
+  const [activeTab, setActiveTab] = useState(1);
+
+  const tabs = [
+    {id: 1, title: 'Account Detalis', content: 'Content of Tab 1'},
+    {id: 2, title: 'Security', content: 'Content of Tab 2'},
+  ];
 
   useEffect(() => {
     if (customer) {
@@ -252,72 +260,87 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1640px] mx-auto px-[30px]">
+    <div className="w-full max-w-[1840px] mx-auto ">
       <div className="flex  justify-between py-[30px] items-start sm:items-center">
-        <div className="flex flex-col sm:flex-row gap-[16px] ml-6 flex-wrap  ">
+        <div className="flex flex-col sm:flex-row gap-[16px]  flex-wrap  ">
           <DynamicButton
-            text="Account Detail"
-            className={`tab-button ${accountDetail ? 'active-tab' : ''}`}
+            text="Account Details"
+            className={`tab-button !px-0  ${accountDetail ? 'active-tab' : ''}`}
             onClickFunction={() => handleAccountDetailClick()}
           />
           <DynamicButton
             text="Order History"
-            className={`tab-button ${orderHistory ? 'active-tab' : ''}`}
+            className={`tab-button !px-0 ${orderHistory ? 'active-tab' : ''}`}
             onClickFunction={() => handleOrderHistoryClick()}
           />
           <DynamicButton
             text="View Addresses"
-            className={`tab-button ${addressBook ? 'active-tab' : ''}`}
+            className={`tab-button !px-0 ${addressBook ? 'active-tab' : ''}`}
             onClickFunction={() => handleAddressBook()}
           />
           <DynamicButton
             text="Manage Plan"
-            className={`tab-button ${managePlan ? 'active-tab' : ''}`}
+            className={`tab-button !px-0 ${managePlan ? 'active-tab' : ''}`}
             onClickFunction={() => handleManagePlan()}
           />
           <DynamicButton
             text="Edit Profile"
-            className={`tab-button ${profile ? 'active-tab' : ''}`}
+            className={`tab-button !px-0 ${profile ? 'active-tab' : ''}`}
             onClickFunction={() => handleProfile()}
           />
         </div>
+      
         <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
           <DynamicButton
             logoutIcon
-            className="text-primary/50 bg-[#EF6E6E] m-4 sm:m-0 md:text-[15px] text-[8px]"
+            className="text-primary/50 bg-[#EF6E6E] mt-1 sm:mt-0 md:text-[15px] text-[8px]"
             text="Log Out"
             onClickFunction={() => setData(true)}
           />
         </Form>
       </div>
 
-      {orders && orderHistory && <AccountOrderHistory orders={orders} />}
-      {accountDetail && (
-        <AccountDetails
-          loader={loader}
-          setLoader={setLoader}
-          accountDetail={accountDetail}
-          customer={customer}
-        />
-      )}
-      {profile && (
-        <Profile
-          setProfile={setProfile}
-          setAccountDetail={setAccountDetail}
-          customer={customer}
-          result={result}
-          loader={loader}
-          accountDetails={accountDetail}
-          setLoader={setLoader}
-        />
-      )}
-
-      {addressBook && <AddressBook />}
-
-      {managePlan && (
-        <ManageSubscription
-        />
-      )}
+      <div className="flex flex-col lg:flex-row w-full  gap-[30px] items-start">
+        <div className="w-full lg:w-[25%] bg-white p-[20px] text-center">
+          <div className="user-name">
+            {customer.firstName?.charAt(0)}
+            {customer.lastName?.charAt(0)}
+          </div>
+          <div className="mt-[20px]">
+            <div className=" lg:text-[20px] text-[15px] text-[#001a5f] font-bold">
+              <span className="mr-[4px]">{customer?.firstName}</span>
+              {customer?.lastName}
+            </div>
+            <div className="mt-[5px] md:text-[16px] text-[12px] text-[#001a5f] font-bold">
+              {customer?.email}
+            </div>
+          </div>
+        </div>
+        <div className="w-full lg:w-[75%] bg-white p-[20px] text-center">
+          {orders && orderHistory && <AccountOrderHistory orders={orders} />}
+          {accountDetail && (
+            <AccountDetails
+              loader={loader}
+              setLoader={setLoader}
+              accountDetail={accountDetail}
+              customer={customer}
+            />
+          )}
+          {profile && (
+            <Profile
+              setProfile={setProfile}
+              setAccountDetail={setAccountDetail}
+              customer={customer}
+              result={result}
+              loader={loader}
+              accountDetails={accountDetail}
+              setLoader={setLoader}
+            />
+          )}
+          {addressBook && <AddressBook />}
+          {managePlan && <ManageSubscription />}
+        </div>
+      </div>
     </div>
   );
 }
@@ -325,7 +348,7 @@ function Account({customer, heading, featuredData}) {
 function AccountOrderHistory({orders}) {
   return (
     <div className="mt-6">
-      <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6  md:p-8 lg:p-12">
+      <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6 md:p-8 ">
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
@@ -439,57 +462,3 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
-
-const Wallet = `#graphql
-  query
-  {
-    collection(id: "gid://shopify/Collection/271625027689"){
-      title
-      products(first:6){
-        edges{
-          node{
-            id
-            title
-            description
-            metafields(identifiers:[
-               {namespace:"custom", key: "product_title"}
-                    {namespace:"custom", key: "strip_year_link"}
-                    {namespace:"custom", key: "pay_as_you_go"}
-                    {namespace:"custom", key: "pricing"}
-                    {namespace:"custom", key: "pricing_yearly"}
-                    {namespace:"custom", key: "subscription_plan_price"}
-                    {namespace:"custom", key: "subscription_plan_price_yearly"}
-                    {namespace:"custom", key: "strip_link"}
-                    {namespace:"custom", key: "subscription_plan_price_monthly"}
-              
-            ]){
-              value
-              key
-            }
-            variants(first:10){
-              edges{
-                node{
-                  id
-                  metafields(identifiers:[
-                    {namespace: "custom", key: "variant_title"},
-                    {namespace: "custom", key: "card_amount"},
-                    {namespace: "custom", key: "description"},
-                   ]){
-                     value
-                     key
-                   }
-                  title
-                  price
-                  {
-                    amount
-                  }
-                }
-              }
-            }
-         
-            
-          }
-        }
-      }
-    }
-  }`;

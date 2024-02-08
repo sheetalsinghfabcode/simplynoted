@@ -61,7 +61,7 @@ export function Layout({children, layout}) {
 
   return (
     <>
-      <div className="flex flex-col md:min-h-screen min-h-0 ">
+      <div className="flex flex-col md:min-h-screen min-h-0 w-full max-w-[1740px] mx-auto px-[30px]  ">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -770,7 +770,6 @@ function DesktopHeader({isHome, menu}) {
                           <IoIosArrowDown />
                         </div>
                       </div>
-
                       <div
                         className={`dropdown-content ${
                           activeDropdown === 'order' ? 'show' : ''
