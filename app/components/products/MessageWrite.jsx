@@ -1069,7 +1069,7 @@ export function MessageWriting({
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5">
         <div
           id="outer"
-          className="outerr  h-[380px] md:w-[48%] w-[90%] md:max-w-[575px] bg-white relative md:mx-0 mx-auto"
+          className="outerr  h-[380px] md:w-[48%] w-[90%] sm:max-w-[575px] md:min-w-0 min-w-[375px] max-w-[435px] bg-white relative md:mx-0 mx-auto"
         >
           {metafields &&
             metafields.isHeaderIncluded &&
@@ -1162,12 +1162,12 @@ export function MessageWriting({
             id="example-one-input"
             value={name}
             placeholder="Enter your custom message text here..."
-            className="inputText h-[200px] md:max-w-[545px] rounded-[6px] p-[7px] text-black font-normal "
+            className="inputText h-[200px] sm:max-w-[545px] max-w-[430px] md:min-w-0 min-w-[400px] rounded-[6px] p-[7px] text-black font-normal "
             maxlength="450"
             onChange={(e) => onChnageNameVal(e.target.value)}
             data-gtm-form-interact-field-id="0"
           ></textarea>
-          <span className="charLeft text-black">{remainingWord} characters remaining</span>
+          <span className="charLeft text-black flex">{remainingWord} characters remaining</span>
           {/* {customerid && ( */}
           <div className="flex justify-between font-bold text-[#1b5299] text-[14px] mt-[10px]">
             <div>

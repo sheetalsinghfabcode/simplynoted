@@ -544,11 +544,11 @@ export function AddCart({
                 </div>
               </div>
             </div>
-            <div className="row flex mr-2 ml-2 gap-4 mt-10 justify-end">
+            <div className={`row flex mr-2 ml-2 gap-4 mt-10 ${show ? "justify-between":"justify-end"}`}>
               {show && (
-                <div className="col-6 md:w-[47%] w-full mt-10 bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                <div className="col-6 md:w-[49%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
                   <div className="max-h-[600px] p-[20px] overflow-y-auto ">
-                    <h3 className="sm:text-[26px] text-[14px] font-karla my-8">
+                    <h3 className="sm:text-[30px] text-[14px] font-bold my-8">
                       {shippingData?.title}
                     </h3>
 
@@ -570,13 +570,13 @@ export function AddCart({
                               onChange={() => handleBoxoNShipping(item)}
                             />
                             <label
-                              className="font-karla"
+                              className="font-medium sm:text-[16px] text-[14px]"
                               for="Mail-Individual-Cards-Normally-(default)"
                             >
                               {item?.node.title}
                             </label>
                           </div>
-                          <div className="custom_variant_price font-karla">
+                          <div className="custom_variant_price font-medium sm:text-[16px] text-[14px]">
                             ${item?.node.price.amount}
                           </div>
                         </div>
@@ -586,10 +586,10 @@ export function AddCart({
                 </div>
               )}
 
-              <div className="col-6 md:w-[47%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
-                <div className="max-h-[600px] p-[20px] overflow-y-auto mt-10 px-[20px] py-[10px]">
+              <div className="col-6 md:w-[49%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                <div className="max-h-[600px] p-[20px] overflow-y-auto mt-10 ">
                   <div className="address-data">
-                    <h3 className="sm:text-[26px] text-[18px] font-bold mb-5">
+                    <h3 className="sm:text-[30px] text-[18px] font-bold mb-5">
                       Add a Gift Card
                     </h3>
                     <div className="row flex text-[14px] justify-between p-[10px]">
@@ -653,6 +653,7 @@ export function AddCart({
                           </select>
                         )}
                       </div>
+                      </div>
                       <div className=' '>
                         <input
                           type="checkbox"
@@ -666,7 +667,7 @@ export function AddCart({
                           Add Gift Card
                         </text>
                       </div>
-                    </div>
+                  
                   </div>
                 </div>
               </div>
@@ -678,27 +679,27 @@ export function AddCart({
                 , {formData?.city}, {formData?.state},{formData?.country}
               </div>
             )}
-            <div className="row flex mt-4 md:w-[53%] w-full">
-              <div className="buttonDiv pr-5 my-2">
+            <div className="row flex mt-4 relative right-[-17px] w-full justify-end font-normal text-[14px]">
+              <div className="buttonDiv my-2">
                 <DynamicButton
-                  className="bg-[#1b5299]"
-                  text="Add To Cart"
+                  className="bg-[#1b5299] opacity-65 px-8 py-4"
+                  text="ADD TO CART"
                   // disabled={!agree}
                   onClickFunction={() => onClickAddCart()}
                 />
               </div>
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
-                <div className="buttonDiv pr-5 my-2">
+                <div className="buttonDiv my-2">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[12px]"
+                    className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4"
                     text="Enter the shipping address for the package"
                     onClickFunction={() => onpenAddCardModal()}
                   />
                 </div>
               )}
             </div>
-          
-          </div>
+            </div>
+        
         )}
         {showShipAddress && (
           <Modal
