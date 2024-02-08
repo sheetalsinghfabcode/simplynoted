@@ -2615,7 +2615,7 @@ const apidocs = () => {
               <div className="mt-[55px]">
                 <div>
                   <h2 className="text-[#001a5f] font-karla text-[33px]  font-Tiempos  font-bold ml-2">
-                    <span className="text-blue-500"> 6.1.</span>Create A Message
+                    <span className="text-blue-500"> 6.1.</span> Create A Message
                     Template
                   </h2>
                   <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
@@ -2725,7 +2725,7 @@ const apidocs = () => {
               <div className="mt-[55px]">
                 <div>
                   <h2 className="text-[#001a5f] font-karla text-[33px]  font-Tiempos  font-bold ml-2">
-                    <span className="text-blue-500">6.2.</span>Retrieve All
+                    <span className="text-blue-500">6.2.</span> Retrieve All
                     Message Templates
                   </h2>
                   <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
