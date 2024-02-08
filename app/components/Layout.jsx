@@ -574,11 +574,6 @@ function DesktopHeader({isHome, menu}) {
     <>
       <header
         role="banner"
-        style={{
-          height: '84px',
-          padding: '40px',
-          marginTop: '10px',
-        }}
         className={`${
           isHome
             ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
@@ -777,7 +772,7 @@ function DesktopHeader({isHome, menu}) {
                       </div>
 
                       <div
-                        className={`dropdown-content ${
+                        className={`dropdown-content show ${
                           activeDropdown === 'order' ? 'show' : ''
                         }`}
                       >
@@ -1016,9 +1011,9 @@ function Footer({menu}) {
       )}
       {/* <CountrySelector /> */}
       <div
-        className={` bg-[#2c3b68] h-[45px] flex pl-[6px] pt-[10px] md:justify-normal  justify-center`}
+        className={` bg-[#2c3b68] h-[45px] flex pl-[6px] pt-[10px] text-lg justify-center`}
       >
-        &copy;Simply Noted {new Date().getFullYear()}.All Rights Reserved
+        &copy; Simply Noted {new Date().getFullYear()}. All Rights Reserved
       </div>
     </div>
   );
@@ -1050,7 +1045,7 @@ function FooterMenu({menu}) {
 
   return (
     <>
-      <div className="grid md:flex  xl:gap-[120px] lg:gap-[75px] gap-[40px] md:text-[16px]  text-[18px] md:text-left text-center md:pt-[70px] pt-[20px] pb-[30px] mx-auto w-[98%] ">
+      <div className="grid md:flex justify-center xl:gap-[120px] lg:gap-[75px] gap-[40px] md:text-[16px]  text-[18px] md:text-left text-center md:pt-[70px] pt-[20px] pb-[30px] mx-auto w-[98%] ">
         <div className="md:mx-0 mx-auto">
           <div className="lg:w-52 md:w-40 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
