@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ac_blue from '../../assets/Image/ac-blue-orb.png';
 import shopifys from '../../assets/Image/shopify-log.png';
 import hubspot from '../../assets/Image/Hubspot.png';
@@ -14,10 +14,16 @@ import DynamicButton from '~/components/DynamicButton';
 import 'swiper/css/autoplay';
 
 export default function Zapier() {
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+   
+    setAnimate(true);
+  }, []);
   return (
     <div>
       <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto w-[90%]">
-        <div className="lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center">
+        <div className= {`w-full ${animate ? 'fade-in' : ''} lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center`}>
           <div className="lg:block hidden">
             <img
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
@@ -59,7 +65,7 @@ export default function Zapier() {
             Zapier Integration
           </h2>
         </div>
-        <div className="lg:w-[60%] w-full">
+        <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[60%] w-full`}>
           <img
             className="w-full"
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-laptop-1.png?v=1611259837"

@@ -1,8 +1,10 @@
-import {set} from 'js-cookie';
-import {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import DynamicTitle from '~/components/Title';
 
 const apidocs = () => {
+  const [animate, setAnimate] = useState(false);
+
+
   const [selectedSection, setSelectedSection] = useState('PRODUCTS');
 
   const JSONResponses = {
@@ -457,9 +459,12 @@ const apidocs = () => {
         break;
     }
   };
-
+  useEffect(() => {
+   
+    setAnimate(true);
+  }, []);
   return (
-    <div className="">
+    <div className={`w-full ${animate ? 'fade-in' : ''}`}>
       <div className="sm:px-[40px] px-[30px]">
         <div className="ml-[-22px]">
           <DynamicTitle
@@ -694,9 +699,9 @@ const apidocs = () => {
                 AVAILABLE HANDWRITING STYLES
               </button>
             </li>
+            
           </ol>
         </div>
-
         <div className=" sidebar h-[500px] overflow-y-scroll border-1  border-solid w-[80%] p-[12px]">
           {selectedSection === 'API ENDPOINTS' && (
             <div>
@@ -781,7 +786,6 @@ const apidocs = () => {
               </div>
             </div>
           )}
-
           {selectedSection === 'PRODUCTS' && (
             <div>
               <h2 className="text-[#001a5f] font-karla text-[33px]  font-Tiempos  font-bold ml-2">
