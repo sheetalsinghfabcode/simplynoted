@@ -2408,10 +2408,23 @@ body {
     font-size: 40px;
   }
 }
+@media only screen and (max-width: 1119px) {
+.item_block_middle::before{
+  opacity:0;
+}
+.item_block_left::before{
+  opacity: 0;
+}
+.item_block_right::before{
+  opacity: 0;
+}
+
+}
 @media only screen and (max-width: 1124px) {
   .signup-row {
     margin: 5px auto;
   }
+
 }
 @media only screen and (max-width: 1024px) {
   .texts {
@@ -2431,6 +2444,7 @@ body {
     margin-top: 8rem;
     z-index: 1;
   }
+
   .cars-killer {
     position: static;
     margin-top: 42px;
