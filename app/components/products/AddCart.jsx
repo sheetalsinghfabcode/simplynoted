@@ -468,35 +468,35 @@ export function AddCart({
             }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between">
-              <div className="col-6 md:w-[47%] w-full ">
-                <div className=" bg-[white] max-h-[600px] p-[20px] overflow-y-auto">
+              <div className="col-6 md:w-[49%] w-full bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
-                    <h3 className="sm:text-2xl text-[19px] mt-4 mb-4 font-karla">
+                    <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
                       Your Info (return/sender address)
                     </h3>
                     <DynamicButton
-                      className="bg-[#1b5299]"
+                      className="bg-[#1b5299] text-[14px] font-normal px-[15px] py-2.5 "
                       text="+ New Address"
                       onClickFunction={() => onNewAddressClick()}
                     />
                     <div>
                       <input
                         type="text "
-                        className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla"
+                        className="w-full rounded-xl p-3 mt-4 border-2 border-[#aaa] text-black font-normal "
                         onChange={(e) => setsearchData2(e.target.value)}
                         placeholder="Search Addresses..."
                       />
                     </div>
                     {filteredForSender(returnAddress, searchData2).map(
                       (item) => (
-                        <div className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] cursor-pointer" onClick={() => handleCheckboxChange2(item)}>
-                          <input className='cursor-pointer'
+                        <div className="w-full rounded p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center" onClick={() => handleCheckboxChange2(item)}>
+                          <input className='cursor-pointer border-2 border-black'
                             type="checkbox"
                             value={item}
                             checked={selectedItem2?._id === item._id}
                             onChange={() => handleCheckboxChange2(item)}
                           />
-                          <span className="font-karla ml-2">
+                          <span className="font-karla ml-4">
                             {item.firstName} {item.lastName}, {item.city},
                             {item.state}, {item.zip}, {item.country}
                           </span>
@@ -506,15 +506,15 @@ export function AddCart({
                   </div>
                 </div>
               </div>
-              <div className="col-6 md:w-[47%] w-full">
-                <div className="bg-[white] max-h-[600px] p-[20px] overflow-y-auto">
+              <div className="col-6 md:w-[49%] w-full bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
-                    <h3 className="text-2xl font-karla mt-4 mb-4">
+                    <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
                       Recipient address
                     </h3>
                     {show ? (
                       <div>
-                        <text className="font-karla">
+                        <text className="sm:text-[16px] text-[14px]">
                           Recipient addresses were specified in your bulk order
                           upload.
                         </text>
@@ -522,22 +522,22 @@ export function AddCart({
                     ) : (
                       <>
                         <DynamicButton
-                          className="bg-[#1b5299]"
+                          className="bg-[#1b5299] text-[14px] font-normal px-[15px] py-2.5 "
                           text="+ New Address"
                           onClickFunction={() => setAddressForm(true)}
                         />
                         <div>
                           <input
                             type="text "
-                            className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla"
+                            className="w-full rounded-xl p-3 mt-4 border-2 border-[#aaa] text-black font-normal"
                             onChange={(e) => setsearchData(e.target.value)}
                             placeholder="Search Addresses..."
                           />
                         </div>
                         {filteredList(recipientAddress, searchData).map(
                           (item, index) => (
-                            <div className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] cursor-pointer" onClick={() => handleCheckboxChange(item)}>
-                              <input className='cursor-pointer'
+                            <div className="w-full rounded p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer" onClick={() => handleCheckboxChange(item)}>
+                              <input className='cursor-pointer border-2 border-black'
                                 type="checkbox"
                                 value={item}
                                 checked={selectedItem?._id === item._id}
@@ -545,7 +545,7 @@ export function AddCart({
                                 // ref={refRec}
                               />
 
-                              <span className="font-karla ml-2">
+                              <span className="font-karla ml-4">
                                 {item.firstName} {item.lastName}, {item.city},
                                 {item.state}, {item.zip}, {item.country}
                               </span>
@@ -558,11 +558,11 @@ export function AddCart({
                 </div>
               </div>
             </div>
-            <div className="row flex mr-2 ml-2 gap-4 mt-10 justify-between">
+            <div className="row flex mr-2 ml-2 gap-4 mt-10 justify-end">
               {show && (
-                <div className="col-6 md:w-[47%] w-full mt-10">
-                  <div className="bg-[white] max-h-[600px] p-[20px] overflow-y-auto ">
-                    <h3 className="text-2xl font-karla mt-4 mb-4">
+                <div className="col-6 md:w-[47%] w-full mt-10 bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                  <div className="max-h-[600px] p-[20px] overflow-y-auto ">
+                    <h3 className="sm:text-[26px] text-[14px] font-karla my-8">
                       {shippingData?.title}
                     </h3>
 
@@ -600,19 +600,19 @@ export function AddCart({
                 </div>
               )}
 
-              <div className="col-6 md:w-[47%] w-full">
-                <div className="bg-[white] max-h-[600px] p-[20px] overflow-y-auto mt-10">
-                  <div className="address-data p-[10px]">
-                    <h3 className="text-2xl font-karla mt-6 mb-6">
+              <div className="col-6 md:w-[47%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                <div className="max-h-[600px] p-[20px] overflow-y-auto mt-10 px-[20px] py-[10px]">
+                  <div className="address-data">
+                    <h3 className="sm:text-[26px] text-[18px] font-bold mb-5">
                       Add a Gift Card
                     </h3>
-                    <div className="row flex mr-2 ml-2 ">
-                      <div className="col-4 mt-4 font-karla w-[190px]">
+                    <div className="row flex text-[14px] justify-between p-[10px]">
+                      <div className="col-4 mt-4 font-bold ">
                         Select Gift Card:
                       </div>
-                      <div className="col-8 mt-3 pr-0 w-[370px]">
+                      <div className="col-8 mt-3 pr-0 w-[60%]">
                         <select
-                          className="w-full font-karla bg-[#e8e8ea3d]"
+                          className="w-full font-karla font-normal text-black border-none"
                           onChange={(e) => cardvalFunc(e.target.value)}
                         >
                           <option
@@ -630,17 +630,19 @@ export function AddCart({
                         </select>
                       </div>
                     </div>
-                    <div className="row flex mr-2 ml-2 ">
-                      <div className="col-4 mt-4 font-karla w-[190px]">
+                    <div className="row flex text-[14px] justify-between p-[10px]">
+                      <div className="col-4 mt-4 font-bold ">
                         Select Gift Price:
                       </div>
-                      <div className="col-8 mt-3 pr-0 w-[370px]">
+                      <div className="col-8 mt-3 pr-0 w-[60%]">
+                      
                         {cardPrice ? (
                           // <div>heelooo</div>
                           <select
                             name=""
                             id=""
-                            className="w-full font-karla bg-[#e8e8ea3d]"
+            
+                              className="w-full font-karla font-normal text-black border-none"
                             onChange={(e) => priceValFunc(e.target.value)}
                           >
                             <option selected disabled className="font-karla">
@@ -656,7 +658,8 @@ export function AddCart({
                           <select
                             name=""
                             id=""
-                            className="font-karla bg-[#e8e8ea3d]"
+                    
+                          className="w-full font-karla font-normal text-black border-none"
                           >
                             <option value="" className="font-karla">
                               {'Price Card'}
@@ -664,7 +667,7 @@ export function AddCart({
                           </select>
                         )}
                       </div>
-                      <div className='ml-[10px]'>
+                      <div className=' '>
                         <input
                           type="checkbox"
                           id=""
@@ -673,7 +676,7 @@ export function AddCart({
                           onClick={() => setStateCheckCart(!stateCheckCart)}
                           checked={cardPriceTitle && stateCheckCart}
                         />
-                        <text className="ml-3 mt-[6px] font-karla">
+                        <text className="ml-3 mt-[6px] text-[14px] font-bold">
                           Add Gift Card
                         </text>
                       </div>
@@ -681,7 +684,7 @@ export function AddCart({
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
 
             {onSaveShip && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
@@ -708,6 +711,7 @@ export function AddCart({
                 </div>
               )}
             </div>
+          
           </div>
         )}
         {showShipAddress && (

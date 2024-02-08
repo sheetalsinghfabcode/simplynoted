@@ -1159,7 +1159,7 @@ export function MessageWriting({
             id="example-one-input"
             value={name}
             placeholder="Enter your custom message text here..."
-            className="inputText h-[200px] md:max-w-[520px] rounded-[6px] p-[7px] text-black font-normal "
+            className="inputText h-[200px] md:max-w-[545px] rounded-[6px] p-[7px] text-black font-normal "
             maxlength="450"
             onChange={(e) => onChnageNameVal(e.target.value)}
             data-gtm-form-interact-field-id="0"

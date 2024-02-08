@@ -527,23 +527,23 @@ const ContactTable = ({
         />
       ) : (
         <div className="w-[92%] mx-auto max-w-[100%]">
-          <div className="flex flex-col lg:flex-row  gap-y-[25px] justify-between items-center">
-            <div className=' mt-[30px] block'>
+          <div className="flex flex-col  gap-y-[25px] justify-between items-center">
+            <div className=' mt-[35px] block'>
               <span className='font-bold text-[29px] text-[#001a5f] mb-3'>ADDRESS BOOK</span>
             <input
               type="text"
               placeholder="Search Addresses..."
               value={searchText}
               onChange={handleSearchInputChange}
-              className="w-full max-w-[400px] py-[5px]  md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+              className="w-full max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
             />
             </div>
-            <div className="lg:flex grid self-center gap-[7px]">
+            <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center w-full">
               <div
-                className={`  md:w-[310px] sm:w-[280px] w-full border-2 border-solid border-[#000] py-[5px]`}
+                className={`md:w-[310px]  w-full border-2 border-solid border-[#000] py-[5px]`}
               >
                 <div className="flex flex-col">
-                  <h2 className="font-bold md:text-[16px] text-[12px] px-[10px] pt-[10px] leading-[120%] text-[#333]">
+                  <h2 className="font-bold md:text-[16px] text-[12px] px-[12px] pt-[10px] leading-[120%] text-[#333]">
                     Bulk Address Upload
                   </h2>
                   <input
@@ -555,13 +555,13 @@ const ContactTable = ({
                   />
                   <a
                     href="https://api.simplynoted.com/docs/bulk-template"
-                    className="md:text-[14px] text-[12px] px-[10px] font-bold underline"
+                    className="md:text-[14px] text-[12px] px-[12px] font-bold underline"
                   >
                     Download bulk address template
                   </a>
                   <span
                     onClick={openModal}
-                    className="font-bold  md:text-[14px] text-[12px] text-black px-[10px] cursor-pointer underline"
+                    className="font-bold  md:text-[14px] text-[12px] px-[12px] cursor-pointer underline"
                   >
                     View Instructions
                   </span>
@@ -574,9 +574,9 @@ const ContactTable = ({
                   />
                 )}
               </div>
-              <div className="flex md:items-end justify-center lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+              <div className="flex items-end justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299]  md:w-[232px] w-full text-[14px] font-normal "
+                  className="bg-[#1b5299] px-[50px] py-[14px] text-[14px] font-normal "
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />
@@ -597,7 +597,7 @@ const ContactTable = ({
                       Delete Selected
                     </button>
                   )}
-                <span className="text-black text-[14px] lg:mt-[0px] mt-[12px]]font-bold">
+                <span className="text-black text-[14px] lg:mt-[0px] mt-[12px] font-bold">
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>

@@ -728,24 +728,27 @@ export default function FoldedCustomisableCard({
             </div>
             <div className="h-4 mt-2 flex justify-start items-center">
               {errorResponse.status && (
-                <span className="text-[red] text-xs">
+                <span className="text-[red] text-[14px]">
                   {errorResponse.message}
                 </span>
               )}
             </div>
+            <div className='flex lg:flex-row flex-col justify-between gap-2 mt-3'>
             <input
-              className="w-full mt-3 border-black border-solid border-2 outline-none focus:outline-none"
+              className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none"
               type="text"
+              placeholder="Card Name"
               onChange={(e) => setCustomCardTitle(e.target.value)}
             ></input>
-            <br />
+          
             <button
-              className="bg-[#1b5299] border-none text-white text-sm outline-none p-1 pl-8 pr-8 min-w-[100%] h-[43px] mt-5"
+              className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[45px] "
               type="button"
               onClick={handleCustomCardSaveButton}
             >
               SAVE CARD
             </button>
+            </div>
           </div>
         </Modal>
       )}

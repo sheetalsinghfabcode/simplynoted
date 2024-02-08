@@ -202,9 +202,9 @@ export default function CustomProducts() {
              'opacity-40'
            } `}
           >
-            <div className="flex flex-wrap md:flex-row flex-col w-full gap-[30px]">
+            <div className="flex flex-wrap md:flex-row flex-col w-full lg:gap-[10px] gap-[30px]">
               <div
-                className={`swimlane flex flex-col hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[52%] w-full mb-0 `}
+                className={`swimlane flex flex-col hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[50%] w-full mb-0 `}
               >
                 <div
                   className="md:aspect-[4/5]',
