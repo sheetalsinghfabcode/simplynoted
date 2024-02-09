@@ -526,18 +526,27 @@ const ContactTable = ({
         />
       ) : (
         <div className="w-full mx-auto max-w-[100%]">
-              <h2 className='font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8'>ADDRESS BOOK</h2>
+          <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8">
+            ADDRESS BOOK
+          </h2>
           <div className="flex flex-col md:flex-row gap-y-[25px] justify-between items-center md:items-end mb-[16px]">
-            <div className='w-full max-w-[400px]'>
-            <input
-              type="text" 
-              placeholder="Search Addresses..."
-              value={searchText}
-              onChange={handleSearchInputChange}
-              className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
-            />
+            <div className="w-full max-w-[400px]">
+              <input
+                type="text"
+                placeholder="Search Addresses..."
+                value={searchText}
+                onChange={handleSearchInputChange}
+                className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+              />
             </div>
-            <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
+            <div className="flex justify-center items-center gap-y-[16px] md:gap-y-[24px]">
+              <div className="flex flex-col">
+                <h2 className='text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla '>Bulk Address Upload </h2>
+                <h4 className='text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] leading-[157.14%]'>Watch Tutorial Video</h4>
+              </div>
+            </div>
+
+            {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
               <div
                 className={`md:w-[310px]  w-full border-2 border-solid border-[#000] py-[5px]`}
               >
@@ -580,7 +589,7 @@ const ContactTable = ({
                   onClickFunction={() => setAddressForm(true)}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
 
           {!editAddress && (
@@ -612,55 +621,41 @@ const ContactTable = ({
               )}
               {/* Your table rendering code here... */}
               <div className="overflow-auto">
-                <table
-                  className=" overflow-auto md:min-w-full w-[59px]"
-                  {...getTableProps()}
-                >
+                <table className="overflow-auto min-w-full">
                   <thead>
                     {headerGroups.map((headerGroup) => (
                       <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
                           <th
                             {...column.getHeaderProps()}
-                            className="text-center whitespace-nowrap uppercase text-white !tracking-[1.2px] bg-[#001a5f]  border border-solid border-[#001a5f] text-[14px] font-bold p-[10px]"
+                            className="text-center whitespace-nowrap uppercase text-gray-900 bg-gray-200 border border-gray-300 text-sm font-semibold py-2 px-4"
                           >
                             {column.id === 'type' ? (
                               <div className="flex items-center relative type-select">
                                 <select
-                                  className="bg-transparent w-[10px] text-white border-none outline-none appearance-none  absolute inset-y-0 right-0"
+                                  className="bg-transparent text-gray-900 border-none outline-none appearance-none absolute inset-y-0 right-0 pr-3"
                                   onChange={handleTypeChange}
                                   value={selectedType}
                                 >
-                                  <option className="text-black" value="all">
-                                    all
-                                  </option>
-                                  <option
-                                    className="text-black"
-                                    value="recipient"
-                                  >
-                                    Recipient
-                                  </option>
-                                  <option className="text-black" value="return">
-                                    Sender
-                                  </option>
+                                  <option value="all">All</option>
+                                  <option value="recipient">Recipient</option>
+                                  <option value="return">Sender</option>
                                 </select>
-                                <span className="">Type</span>
-                                <div className="absolute top-[2px] right-0 left-[41px] h-full flex items-center  pointer-events-none">
-                                  <svg
-                                    className="w-4 h-4 text-white fill-current"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                  >
-                                    <path d="M10 12l-6-6h12z" />
-                                  </svg>
-                                </div>
+                                <span className="mr-1">Type</span>
+                                <svg
+                                  className="w-4 h-4 text-gray-600 fill-current"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M10 12l-6-6h12z" />
+                                </svg>
                               </div>
                             ) : column.id === '_id' ? (
                               <CheckBox
                                 onChange={handleSelectAll}
                                 checked={allSelected}
                                 className={`cursor-pointer ${
-                                  data.length === 0 && '!bg-white'
+                                  data.length === 0 && 'bg-white'
                                 }`}
                               />
                             ) : (
@@ -672,22 +667,22 @@ const ContactTable = ({
                     ))}
                   </thead>
                   {!updateLoader && !loader && (
-                    <tbody {...getTableBodyProps()}>
+                    <tbody>
                       {page.map((row) => {
                         prepareRow(row);
                         return (
                           <tr
                             {...row.getRowProps()}
-                            className={`text-center font-bold ${
+                            className={`text-center font-semibold ${
                               row.index % 2 === 0
-                                ? 'bg-[#f1f7fc]'
-                                : 'bg-[#96bee3]'
+                                ? 'bg-gray-100'
+                                : 'bg-gray-200'
                             }`}
                           >
                             {row.cells.map((cell) => (
                               <td
                                 {...cell.getCellProps()}
-                                className="border border-solid border-black p-[8px] text-center"
+                                className="border border-gray-300 py-2 px-4"
                               >
                                 {cell.render('Cell')}
                               </td>
@@ -699,6 +694,7 @@ const ContactTable = ({
                   )}
                 </table>
               </div>
+
               {updateLoader && (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader

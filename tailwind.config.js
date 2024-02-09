@@ -18,6 +18,7 @@ export default {
         lg: '70em',
         xl: '80em',
         '2xl': '96em',
+        '3xl': '134em',
         'sm-max': {max: '48em'},
         'sm-only': {min: '32em', max: '48em'},
         'md-only': {min: '48em', max: '64em'},
@@ -98,5 +99,8 @@ export default {
       },
     },
   },
-  plugins: [formsPlugin, typographyPlugin],
+  plugins: [
+    formsPlugin,
+     typographyPlugin
+    ],
 };

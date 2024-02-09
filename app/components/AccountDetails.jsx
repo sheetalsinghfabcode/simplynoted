@@ -69,10 +69,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
   return (
     <>
-      <div className="container px-4 ">
-        <h3 className=" md:text-2xl text-[15px] font-bold my-6">
-          Account Details
-        </h3>
+      <div className="container mx-auto px-4 ">
         <div className="bg-white font-karla shadow-md rounded-lg p-6">
           {/* Name */}
           <div className="flex mb-4">

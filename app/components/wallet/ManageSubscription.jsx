@@ -25,8 +25,6 @@ export async function loader({ context }) {
 }
 const ManageSubscription = () => {
   const {StripeKey, WalletData} = useLoaderData();
-  const [firstNameChar, setFirstNameChar] = useState('');
-  const [lastNameChar, setLastNameChar] = useState('');
   const [stripeCollection, setStripeCollection] = useState([]);
   const [cancelSubscription, setCancelSubscription] = useState(false);
   const [savedCard, setSavedCard] = useState([]);
@@ -77,8 +75,6 @@ const ManageSubscription = () => {
     email = localStorage.getItem('SnEmail');
     customerID = localStorage.getItem('customerId');
 
-    setLastNameChar(lastName.charAt(0));
-    setFirstNameChar(firstName.charAt(0));
   }, []);
 
   useEffect(() => {
@@ -535,22 +531,7 @@ const ManageSubscription = () => {
       <>
         <div className="w-full max-w-[1640px] mx-auto px-[20px]">
           <div className="flex flex-col lg:flex-row w-full  gap-[30px] items-start">
-            {/* <div className="w-full lg:w-[30%]  bg-white p-[20px] text-center">
-              <div className="user-name">
-                {firstNameChar}
-                {lastNameChar}
-              </div>
-              <div className="mt-[20px]">
-                <div className=" lg:text-[20px] text-[15px] text-[#001a5f] font-bold">
-                  <span className="mr-[4px]">{firstName}</span>
-                  {lastName}
-                </div>
-                <div className="mt-[5px] md:text-[16px] text-[12px] text-[#001a5f] font-bold">
-                  {email}
-                </div>
-              </div>
-            </div> */}
-            <div className="w-full bg-white p-[20px] text-center">
+            <div className="w-full bg-white  text-center">
               {loader ? (
                 <CircularLoader title="Loading Manage Plans" color="#ef6e6e" />
               ) : (
