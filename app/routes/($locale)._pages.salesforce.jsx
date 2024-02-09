@@ -3,7 +3,7 @@ import SalesforceFormBgImage02 from '../../assets/Image/salesforce-form-bg-2.web
 import SalesforceFormStampImage from '../../assets/Image/salesforce-form-stamp.avif';
 import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 export default function Salesforce() {
   const [animate, setAnimate] = useState(false);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ShopifyIcon from '../../assets/Image/shopify-log.png';
 import ac_blue from '../../assets/Image/ac-blue-orb.png';
 import shopifys from '../../assets/Image/shopify-log.png';
@@ -22,6 +22,7 @@ export default function shopify() {
     setAnimate(true);
   }, []);
   return (
+
     <div>
       <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
         <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center`}>

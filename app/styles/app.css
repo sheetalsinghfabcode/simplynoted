@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import 'react-datepicker/dist/react-datepicker';
+@import url('https://fonts.googleapis.com/css2?family=Tiempos:wght@700&display=swap');
 
 @font-face {
   font-family: Karla;
@@ -220,6 +221,11 @@ a.active {
   max-width: 1400px;
   margin: auto;
 }
+
+.font-tiempos {
+  font-family: Tiempos, 'serif';
+}
+
 .request-button {
   background: rgb(239, 110, 110);
   text-transform: uppercase;
@@ -1077,14 +1083,14 @@ body {
 .INTEGRATE {
   position: relative;
   width: 100%;
-  max-width: 203px;
-  height: 56px;
+  max-width: 256px;
+  height: 69px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
- /* tailwind.css */
+/* tailwind.css */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1098,12 +1104,11 @@ body {
   animation: fadeIn 1.5s ease-out;
 }
 
-
 .INTEGRATE::after {
   content: '';
   background-image: url('https://simplynoted.com/cdn/shop/files/Group_460.svg');
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -2664,6 +2669,9 @@ body {
 .sidebar {
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
+  border-right-width: 1px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Account Page Tab Css  */
@@ -2683,7 +2691,7 @@ body {
   text-transform: uppercase;
   cursor: pointer;
   transition: border-color 0.8s, color 0.8s;
-  outline: none  !important;
+  outline: none !important;
 }
 
 .tab-button.active-tab {
@@ -2693,7 +2701,7 @@ body {
 
 .tab-button:hover {
   color: #1b5299;
-  border-color: #1b5299; 
+  border-color: #1b5299;
   border-bottom-width: 1px solid transparent; /* Default border color */
 
   transition: border-width 0.3s ease-in-out; /* Smooth transition */
