@@ -487,7 +487,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
         <div className="tooltip mb-2" style={{transition: 'all 700ms'}}>
           {cartCountVal && cartCountVal !== undefined ? (
             <>
-              <Link to="/carts">
+              <Link to="/cart">
                 <div
                   className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
                   style={{marginLeft: '22px', marginBottom: '16px'}}
@@ -500,7 +500,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
               </Link>
             </>
           ) : (
-            <Link to="/carts">
+            <Link to="/cart">
               {/* This div is just for aligning the cart icon */}
               <div
                 className="w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
@@ -822,7 +822,7 @@ function DesktopHeader({isHome, menu}) {
           <div className="tooltip mb-8" style={{transition: 'all 700ms'}}>
             {cartCountVal && cartCountVal !== undefined ? (
               <>
-                <Link to="/carts">
+                <Link to="/cart">
                   <div
                     className="bg-[#1b5299] w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
                     style={{marginLeft: '22px', marginBottom: '16px'}}
@@ -835,7 +835,7 @@ function DesktopHeader({isHome, menu}) {
                 </Link>
               </>
             ) : (
-              <Link to="/carts">
+              <Link to="/cart">
                 {/* This div is just for aligning the cart icon */}
                 <div
                   className="w-[20px] h-[20px] rounded-[20px] flex justify-center items-center text-xs"
@@ -951,7 +951,7 @@ function Badge({openCart, dark, count}) {
 
   return isHydrated ? (
     <button
-      onClick={() => navigate('/carts')}
+      onClick={() => navigate('/cart')}
       className="relative flex items-center justify-center w-8 h-8 focus:ring-primary/5"
     >
       {BadgeCounter}

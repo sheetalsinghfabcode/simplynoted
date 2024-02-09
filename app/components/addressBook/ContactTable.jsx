@@ -8,6 +8,8 @@ import CircularLoader from '../CircularLoder';
 import DynamicButton from '../DynamicButton';
 import ErrorModal from '../modal/ErrorModal';
 import Instruction from '../modal/Instruction';
+import chooseFile from '../../../assets/Image/choose-file.svg';
+import {useLocation} from '@remix-run/react';
 
 const ContactTable = ({
   customerID,
@@ -32,8 +34,10 @@ const ContactTable = ({
   const [errorModal, setErrorModal] = useState(false);
   const [errorContent, serErrorContent] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uploadBulkAddress, setUploadBulkAddress] = useState(false);
 
-  // console.log(addresses, 'addresses');
+  const pathName = useLocation();
+
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
     const dateB = new Date(b.created);
@@ -526,27 +530,90 @@ const ContactTable = ({
         />
       ) : (
         <div className="w-full mx-auto max-w-[100%]">
-          <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8">
-            ADDRESS BOOK
-          </h2>
-          <div className="flex flex-col md:flex-row gap-y-[25px] justify-between items-center md:items-end mb-[16px]">
+          {pathName.pathname !== '/account' && (
+            <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8">
+              ADDRESS BOOK
+            </h2>
+          )}
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 my-8">
             <div className="w-full max-w-[400px]">
               <input
                 type="text"
                 placeholder="Search Addresses..."
                 value={searchText}
                 onChange={handleSearchInputChange}
-                className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-black rounded-[8px]"
+                className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-[#001A5F] rounded-[8px]"
               />
             </div>
-            <div className="flex justify-center items-center gap-y-[16px] md:gap-y-[24px]">
-              <div className="flex flex-col">
-                <h2 className='text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla '>Bulk Address Upload </h2>
-                <h4 className='text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] leading-[157.14%]'>Watch Tutorial Video</h4>
+            <div className="flex items-end gap-[40px]">
+              <div className="flex items-center justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+                <DynamicButton
+                  className="bg-[#EF6E6E] px-[50px] py-[14px] text-[14px] font-normal "
+                  text="Upload Bulk Address"
+                  onClickFunction={() => setUploadBulkAddress(!uploadBulkAddress)}
+                />
+              </div>
+
+              <div className="flex items-center justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+                <DynamicButton
+                  className="bg-[#1b5299] px-[50px] py-[14px] text-[14px] font-normal "
+                  text="+ New Address"
+                  onClickFunction={() => setAddressForm(true)}
+                />
               </div>
             </div>
+          </div>
 
-            {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
+          {uploadBulkAddress && (
+            <div className="flex flex-col justify-center items-start">
+              <div className="flex flex-col items-start gap-[4px]">
+                <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
+                  Bulk Address Upload{' '}
+                </h2>
+                <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] leading-[157.14%]">
+                  Watch Tutorial <span className="underline">Video</span>
+                </h4>
+              </div>
+
+              <div className="flex flex-col justify-center mt-[16px] mb-[8px] items-center border-2 border-dashed min-h-[100px] md:min-w-[240px] border-[#1B5299]">
+                <label
+                  htmlFor="fileInput"
+                  className=" flex flex-col items-center cursor-pointer"
+                >
+                  <input
+                    id="fileInput"
+                    onChange={handleFileChange}
+                    type="file"
+                    accept=".csv"
+                    ref={file}
+                    className="hidden"
+                  />
+                  <img
+                    className="h-[43px] w-[43px]"
+                    src={chooseFile}
+                    alt="choose-file"
+                  />
+                  <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[16px] leading-[22px]">
+                    Choose File
+                  </h4>
+                </label>
+              </div>
+
+              <a
+                className="text-[#000] text-[14px] leading-[22px] font-karla font-bold"
+                href="https://api.simplynoted.com/docs/bulk-template"
+              >
+                Download bulk address template
+              </a>
+              <span
+                onClick={openModal}
+                className="font-bold text-[#000]  md:text-[14px] text-[12px] leading-[22px] font-karla font-bold cursor-pointer underline"
+              >
+                View bulk upload instructions.
+              </span>
+            </div>
+          )}
+          {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
               <div
                 className={`md:w-[310px]  w-full border-2 border-solid border-[#000] py-[5px]`}
               >
@@ -590,7 +657,6 @@ const ContactTable = ({
                 />
               </div>
             </div> */}
-          </div>
 
           {!editAddress && (
             <>

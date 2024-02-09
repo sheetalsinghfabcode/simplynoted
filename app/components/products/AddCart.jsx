@@ -357,7 +357,7 @@ export function AddCart({
       }
       localStorage.setItem('mydata', JSON.stringify(storedData));
       localStorage.removeItem('reqFielddInCart');
-      navigate('/carts');
+      navigate('/cart');
       setLoader(false);
     } else {
       if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
@@ -372,7 +372,7 @@ export function AddCart({
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
 
-        navigate('/carts');
+        navigate('/cart');
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
         const existingDataString = localStorage.getItem('mydata');
@@ -386,7 +386,7 @@ export function AddCart({
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
 
-        navigate('/carts');
+        navigate('/cart');
         setLoader(false);
       } else {
         setCheckSelAddress(true);

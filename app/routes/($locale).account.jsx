@@ -349,22 +349,30 @@ function Account({customer, heading, featuredData}) {
         />
         <DynamicButton
           text="Order History"
-          className={`tab-button !px-0 ${orderHistory ? 'active-tab' : ''}`}
+          className={`tab-button !px-0 ${
+            orderHistory && !accountDetail ? 'active-tab' : ''
+          }`}
           onClickFunction={() => handleOrderHistoryClick()}
         />
         <DynamicButton
           text="View Addresses"
-          className={`tab-button !px-0 ${addressBook ? 'active-tab' : ''}`}
+          className={`tab-button !px-0 ${
+            addressBook && !accountDetail ? 'active-tab' : ''
+          }`}
           onClickFunction={() => handleAddressBook()}
         />
         <DynamicButton
           text="Manage Plan"
-          className={`tab-button !px-0 ${managePlan ? 'active-tab' : ''}`}
+          className={`tab-button !px-0 ${
+            managePlan && !accountDetail ? 'active-tab' : ''
+          }`}
           onClickFunction={() => handleManagePlan()}
         />
         <DynamicButton
           text="Edit Profile"
-          className={`tab-button !px-0 ${profile ? 'active-tab' : ''}`}
+          className={`tab-button !px-0 ${
+            profile && !accountDetail ? 'active-tab' : ''
+          }`}
           onClickFunction={() => handleProfile()}
         />
       </div>
