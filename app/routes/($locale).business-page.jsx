@@ -23,11 +23,13 @@ import giftcard from '../../assets/Image/giftcard.webp';
 import custom from '../../assets/Image/custom.webp';
 import mobile_curve from '../../assets/Image/business-arrow-curve-mobile.png';
 import DynamicButton from '~/components/DynamicButton';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 const Business = () => {
   const [integrated, setIntegrated] = useState('salesforce');
   const [customizable, setCustomizable] = useState('create_card');
+const [animate, setAnimate] = useState(false);
+
   const BLOCK = {display: 'block'};
   const NONE = {display: 'none'};
   const [formData, setFormData] = useState({
@@ -95,26 +97,31 @@ const Business = () => {
     }
   };
 
+  useEffect(() => {
+   
+    setAnimate(true)
+  }, []);
+
   return (
     <>
-      <div>
+      <div className='w-full max-w-[100%]'>
         <div className="mt-5">
           <div className="w-[100%] pl-[10px]  ">
             <div className="relative w-full overflow-hidden lg:flex grid flex-wrap">
               <img
-                className="absolute lg:block hidden ml-[24.2rem] w-[515px] mt-[7.06rem] z-[-1]"
+                className="absolute lg:block hidden ml-[26.2rem] w-[519px] mt-[6.06rem] z-[-1]"
                 src={business_curve}
                 alt="business line"
               />
               <div className="lg:w-[30%] lg:ml-[12rem] lg:mr-0 md:w-[40%] w-[55%] ml-auto mr-auto text-left mt-5">
                 <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold">
-                  <div className="">
+                  <div className="text-42px">
                     You
                     <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
                       type
                     </span>
                   </div>
-                  <div className="lg:mt-[-30px] ml-[7px]">
+                  <div className="lg:mt-[-30px] text-[42px] ml-[7px]">
                     We
                     <span className="font-beauty lg:text-8xl md:text-[60px] text-[50px]  ml-2 font-extrabold">
                       write
@@ -151,7 +158,7 @@ const Business = () => {
                     alt="robot-4"
                   ></img>
                   <img
-                    className="z-[-1] w-[100%] ml-[20rem] h-[128%] absolute overflow-x-hidden mt-[6rem]  "
+                    className="z-[-1] w-[100%] ml-[22rem] absolute overflow-x-hidden mt-[14rem]  "
                     src={kw_letter}
                     alt="kw-letter"
                   ></img>
@@ -333,29 +340,33 @@ const Business = () => {
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
-                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3  mb-6">
+                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-[2.75rem]  mb-6">
                           Integrate
                           <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
                             and
                           </span>
                           Automate
                         </div>
+                        <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                         <img
-                          className="lg:inline hidden absolute w-[9%]  ml-[12rem] mt-[-2.5rem] curve-line"
+                          className="lg:inline hidden absolute w-[10%]  ml-[11rem] mt-[-4.5rem] curve-line"
                           src={curve}
-                          alt="curve"
+                          alt="curve" 
                         ></img>
+                        </div>
                       </div>
 
                       {/* SLIDE - SALES FORCE  */}
                       <div style={integrated === 'salesforce' ? BLOCK : NONE}>
                         <div className="relative">
-                          <div className="relative">
+                          <div className="relative"> 
+                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                             <img
                               className="max-w-100%"
                               src={business_saleforce}
                               alt="bussiness image"
                             />
+                         
                             <div className="card-lorem lg:block hidden">
                               <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
                                 Salesforce Integration
@@ -379,6 +390,7 @@ const Business = () => {
                     "
                               />
                             </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -388,6 +400,7 @@ const Business = () => {
                       <div style={integrated === 'zapier' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
+                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                             <img
                               className="max-w-100%"
                               src={business_zapier}
@@ -414,6 +427,7 @@ const Business = () => {
                                 className="business-btn"
                               />
                             </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -422,6 +436,7 @@ const Business = () => {
                       <div style={integrated === 'shopify' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
+                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                             <img
                               className="max-w-100%"
                               src={business_shopify}
@@ -449,6 +464,7 @@ const Business = () => {
                                 className="business-btn"
                               />
                             </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -457,11 +473,13 @@ const Business = () => {
                       <div style={integrated === 'hubspot' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
+                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                             <img
                               className="max-w-100%"
                               src={business_integrated}
                               alt="bussiness image"
                             />
+                            </div>
                             <div className="card-lorem lg:block hidden">
                               <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center"></div>
                               <div className="text-[#001a5f] text-[26px] font-bold leading-4 mt-[20px] mb-[20px]"></div>
@@ -481,6 +499,7 @@ const Business = () => {
                       <div style={integrated === 'api' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
+                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                             <img
                               className="max-w-100%"
                               src={business_feature}
@@ -508,6 +527,7 @@ const Business = () => {
                                 className="business-btn"
                               />
                             </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -520,16 +540,18 @@ const Business = () => {
                     Click these to learn more
                   </div>
                   <div className="lg:flex hidden item-center flex-col">
+                  <div className={`w-full ${animate ? 'fade-in' : ''}`}>
                     <img
                       className="w-[10%] ml-[65px]"
                       src={business_arrow}
                       alt="business_arrow"
                     />
                     <img
-                      className="h-[455px] xl:ml-[6%] lg:ml-[7%] absolute mt-[82px] z-[-1]"
+                      className="h-[455px] xl:ml-[6%] lg:ml-[79px] absolute mt-[30px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />
+                  </div>
                   </div>
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
@@ -691,14 +713,14 @@ const Business = () => {
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]">
                       <div className="text-center">
-                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3 mb-6">
+                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-[2.75rem] mb-6">
                           Fully
                           <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
                             Customizable
                           </span>
                         </div>
                         <img
-                          className="lg:inline hidden absolute w-[7.5%]  ml-[6.5rem] mt-[-2.5rem] curve-line"
+                          className="lg:inline hidden absolute w-[9.5%]  ml-[5.5rem] mt-[-4.5rem] curve-line"
                           src={curve}
                           alt="curve"
                         ></img>

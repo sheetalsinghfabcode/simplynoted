@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ShopifyIcon from '../../assets/Image/shopify-log.png';
 import ac_blue from '../../assets/Image/ac-blue-orb.png';
 import shopifys from '../../assets/Image/shopify-log.png';
@@ -22,6 +22,7 @@ export default function shopify() {
     setAnimate(true);
   }, []);
   return (
+
     <div>
       <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
         <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center`}>
@@ -54,14 +55,14 @@ export default function shopify() {
           </div>
         </div>
         <div className="lg:hidden block sm:mb-10 mb-6">
-          <img className="mx-auto" src={ShopifyIcon} alt="shopify" />
+          <img className="mx-auto mb-[17px] mt-[21px]" src={ShopifyIcon} alt="shopify" />
           <h2 className="sm:text-[46px]  text-[32px] font-normal font-karla text-[#001A5F]">
             Shopify Integration
           </h2>
         </div>
         <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[65%] w-full`}>
           <img
-            className="w-full"
+            className="w-full mt-[15px]"
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Group_854.png?v=1611976470"
           />
         </div>

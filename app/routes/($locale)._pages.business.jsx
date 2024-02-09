@@ -109,13 +109,13 @@ const Business = () => {
               />
               <div className="lg:w-[30%] lg:ml-[12rem] lg:mr-0 md:w-[40%] w-[55%] ml-auto mr-auto text-left mt-5">
                 <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold">
-                  <div className="">
+                  <div className="text-[42px]">
                     You
                     <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
                       type
                     </span>
                   </div>
-                  <div className="lg:mt-[-30px] ml-[7px]">
+                  <div className="lg:mt-[-30px] text-[42px] ml-[7px]">
                     We
                     <span className="font-beauty lg:text-8xl md:text-[60px] text-[50px]  ml-2 font-extrabold">
                       write
@@ -152,7 +152,7 @@ const Business = () => {
                     alt="robot-4"
                   ></img>
                   <img
-                    className="z-[-1] w-[100%] ml-[20rem] h-[128%] absolute overflow-x-hidden mt-[6rem]  "
+                    className="z-[-1] w-[100%] ml-[20rem] absolute overflow-x-hidden mt-[6rem]  "
                     src={kw_letter}
                     alt="kw-letter"
                   ></img>

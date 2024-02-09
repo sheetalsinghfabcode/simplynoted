@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import ac_blue from '../../assets/Image/ac-blue-orb.png';
 import shopifys from '../../assets/Image/shopify-log.png';
 import hubspot from '../../assets/Image/Hubspot.png';
@@ -17,32 +17,35 @@ export default function Zapier() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-   
     setAnimate(true);
   }, []);
   return (
     <div>
       <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto w-[90%]">
-        <div className= {`w-full ${animate ? 'fade-in' : ''} lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center`}>
+        <div
+          className={`w-full ${
+            animate ? 'fade-in' : ''
+          } lg:w-2/5 lg:order-none order-2 w-full lg:text-left text-center`}
+        >
           <div className="lg:block hidden">
             <img
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
               alt="zapier"
+              className=""
             />
             <h2 className="xl:text-[46px] text-[32px] mt-[26px] font-normal text-[#001A5F]">
               Zapier Integration
             </h2>
           </div>
           <p
-            className="lg:text-[18px] text-[20px] text-black font-light w-[100%] leading-8 lg:mt-[26px] mt-7 w-[97%] lg:text-justify sm:text-center text-justify"
+            className="lg:text-[18px] text-[20px] text-black font-light w-full leading-8 lg:mt-[26px] mt-7 lg:text-left sm:text-center text-center"
             style={{fontWeight: '100', color: '#1e1e1e'}}
           >
             Integrate and automate sending real handwritten notes from 2,500+
             softwares instantly. Request access to our Zapier App today!
           </p>
-          <div className='flex justify-center lg:justify-start md:justify-center mt-[16px]'>
+          <div className="flex justify-center lg:justify-start md:justify-center mt-[16px]">
             <div className="INTEGRATE flex justify-center">
-              {' '}
               {/* Higher z-index for top div */}
               <DynamicButton
                 onClickFunction={() =>
@@ -52,9 +55,10 @@ export default function Zapier() {
                 text="INTEGRATE NOW"
                 className="mt-[6px] text-[16px] font-bold"
               />
-          </div>
+            </div>
           </div>
         </div>
+
         <div className="lg:hidden block sm:mb-10 mb-[2.5rem]">
           <img
             className="mx-auto mb-[12px]"
@@ -305,7 +309,7 @@ export default function Zapier() {
             alt="shopify"
           />
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
-            <div className='mb-[12px]'>Integrate with Zapier</div>
+            <div className="mb-[12px]">Integrate with Zapier</div>
             <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
               <DynamicButton
                 text="INTEGRATE NOW"

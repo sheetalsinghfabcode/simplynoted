@@ -3,7 +3,7 @@ import SalesforceFormBgImage02 from '../../assets/Image/salesforce-form-bg-2.web
 import SalesforceFormStampImage from '../../assets/Image/salesforce-form-stamp.avif';
 import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 export default function Salesforce() {
   const [animate, setAnimate] = useState(false);
@@ -52,7 +52,7 @@ export default function Salesforce() {
                 </div>
                 <div className="flex lg:justify-start justify-center flex-wrap items-center gap-2 mt-5 mb-5 relative ">
                   <button
-                    className="text-white p-2 bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold text-[15px]"
+                    className="text-white p-[17px] text-[17px] bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold"
                     type="button"
                   >
                     CONNECT USING OUR PROCESS BUILDER
@@ -204,7 +204,7 @@ export default function Salesforce() {
         <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
-              <div className="  text-[28px] font-karla text-[#001A5F]">
+              <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
                 <span className="font-beauty text-6xl font-bold">
                   thousands
@@ -219,7 +219,7 @@ export default function Salesforce() {
             <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+                className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[16px] md:text-[14px] text-[16px] lg:h-[10%]  h-full mt-[35px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
@@ -233,7 +233,7 @@ export default function Salesforce() {
             </div>
           </div>
           <div className="lg:hidden block sm:mb-10 mb-7">
-            <div className=" sm:text-[46px] text-center  text-[32px] font-karla text-[#001A5F]">
+            <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
@@ -263,7 +263,7 @@ export default function Salesforce() {
         <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0   mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
           <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
-              <div className="  text-[37px] font-weight-700 font-karla text-[#001A5F]">
+              <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
                 <span className="font-beauty text-6xl font-bold">
                   thousands
@@ -276,7 +276,7 @@ export default function Salesforce() {
             <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[13px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+                className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[16px] md:text-[14px] text-[16px] lg:h-[10%]  h-full mt-[35px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -284,13 +284,13 @@ export default function Salesforce() {
               />
               <DynamicButton
                 text="TUTORIALS"
-                className="btn2 lg:w-[50%] md:w-[26%] text-[15px] mt-5"
+                className="btn2 lg:w-[50%] md:w-[26%] text-[16px] mt-5"
                 onClickFunction={() => navigate('/blogs')}
               />
             </div>
           </div>
           <div className="lg:hidden block sm:mb-10 mb-7">
-            <div className="sm:text-[46px] text-center text-[32px] font-karla text-[#001A5F]">
+            <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
