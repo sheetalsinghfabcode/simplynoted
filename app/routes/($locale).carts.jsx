@@ -13,11 +13,11 @@ import DynamicButton from '~/components/DynamicButton';
 import {HiArrowLongRight} from 'react-icons/hi2';
 import {CheckoutData} from '../components/Checkout';
 import DynamicTitle from '../components/Title';
-import Del from '../../assets/Image/del2.png';
 import CircularLoader from '~/components/CircularLoder';
-import EditICon from '../../assets/Image/editIcon.png';
 import {useStateContext} from '~/context/StateContext';
+import { RiDeleteBin6Line } from "react-icons/ri";
 import LoginModal from '~/components/modal/LoginModal';
+
 let storedDataString, storedDataArray;
 
 export async function loader({context, request}) {
@@ -349,7 +349,7 @@ export default function AddCartFunc() {
     <>
       {showCartPage ? (
         <>
-          <div className="w-full h-full gap-2 mt-16">
+          <div className="w-full h-full gap-2 md:mt-16 sm:mt-[5rem] mt16">
             {cartData && cartData.length > 0 ? (
               <>
                 <DynamicTitle
@@ -360,26 +360,26 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div className="w-[85%] bg-[white] m-auto mt-10 mb-10 p-[12px] rounded-[10px]">
+                      <div className="sm:w-[85%] w-full bg-[white] m-auto mt-10 mb-10 p-[12px] rounded-[10px]">
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                            <div className="flex w-full justify-start ">
-                              <div className="lg:max-w-[33%] sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                            <div className="flex w-full justify-start sm:flex-row flex-col">
+                              <div className="lg:max-w-[33%] sm:max-w-[22%] min-w-[80px] md:m-5 sm:m-3 mx-auto w-[50%] sm:mt-[30px] mt-4 rounded-[10px] overflow-hidden">
                                 <img src={item.productImg} alt="" />
                               </div>
-                              <div className="max-w-[100%] mt-[30px] font-bold flex flex-col xl:gap-[16px] lg:gap-[5px]">
-                                <h3 className="text-[#1b5299] font-karla lg:text-[20px] md:text-[18px] text-[14px] ">
+                              <div className="mt-[30px] mt-3 font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] text-[22px] font-bold">
                                   {item.productTitle}
                                 </h3>
-                                <div className="flex flex-wrap">
-                                  <span className="font-karla text-[#1b5299] md:text-[16px] text-[14px]  ">
+                                <div className="flex flex-wrap ">
+                                  <span className="font-karla text-[#1b5299] sm:text-[16px] text-[18px] font-bold ">
                                     {' '}
                                     Sender:
                                   </span>
                                   <span className=" text-[black] font-normal inline-flex ml-[10px] md:text-[16px] text-[14px] ">
                                     {' '}
                                     {item.senderAddress.address1}
-                                    <br />
+                                    <br className='sm:block hidden'/>
                                     {item.senderAddress.city},
                                     {item.senderAddress.state}
                                     {item.senderAddress.zip},
@@ -388,7 +388,7 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className="buttonDiv mt-2">
                                   <button
-                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] lg:text-[14px] sm:text-[12px] text-[10px]"
+                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] text-[14px] sm:w-auto w-full"
                                     onClick={() => {
                                       OpenModalFunc2(index);
                                     }}
@@ -400,9 +400,9 @@ export default function AddCartFunc() {
                             </div>
                           </div>
 
-                          <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                          <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] sm:py-[15px] py-[20px] px-[20px] justify-between flex items-center ">
                             <div className="w-[100%] h-[100%] flex items-center ">
-                              <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
+                              <div className="w-[100%] text-[16px] font-bold">
                                 <div className="flex justify-between ">
                                   <span className="text-[#1b5299] ">
                                     {' '}
@@ -440,7 +440,7 @@ export default function AddCartFunc() {
                               ) : (
                                 <div className="buttonDiv  m-[0.2rem]">
                                   <DynamicButton
-                                    className="bg-[#ef6e6e] rounded-[10px] md:py-[14px]  py-[10px] px-[20px] w-full md:text-[14px] text-[12px] font-bold"
+                                    className="bg-[#ef6e6e] rounded-[10px] md:py-[14px]  py-[10px] md:px-[20px] px-[12px] w-full md:text-[14px] text-[12px] font-bold"
                                     text="ADD GIFT CARD"
                                     onClickFunction={() => {
                                       OpenModalFunc(index);
@@ -451,7 +451,7 @@ export default function AddCartFunc() {
 
                               <div className="buttonDiv  m-[0.2rem]">
                                 <DynamicButton
-                                  className="bg-[#1b5299] rounded-[10px] md:py-[14px] py-[10px] px-[20px] w-full md:text-[14px] text-[12px] font-bold"
+                                  className="bg-[#1b5299] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  w-full md:text-[14px] text-[12px] font-bold"
                                   text="EDIT ORDER"
                                   onClickFunction={() => {
                                     editOrderData(index);
@@ -460,7 +460,7 @@ export default function AddCartFunc() {
                               </div>
                               <div className="buttonDiv m-[0.2rem]">
                                 <DynamicButton
-                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] px-[20px] w-full md:text-[14px] text-[12px] font-bold"
+                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  w-full md:text-[14px] text-[12px] font-bold"
                                   text="DELETE ORDER"
                                   onClickFunction={() => {
                                     ConfirmDeleteOrder(index);
@@ -883,11 +883,16 @@ export default function AddCartFunc() {
                               <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
                             </div>
                           )}
-                        <div className="flex w-full relative mx-auto justify-center">
-                          <div className="m-6">
-                            <h3 className="text-[#1b5299] font-karla sm:text-[20px] text-[16px] font-bold">
-                              {' '}
-                              Subtotal: ${' '}
+                        <div className="flex w-[100%] flex-wrap ">
+                              <div className="md:max-w-[50%] w-[100%] items-center relative flex">
+                        {""}
+                                    </div>
+                                  
+                                    <div className="lg:max-w-[30%] w-full lg:border-none border-t-[1px] border-[#AAA] relative  md:py-[15px] py-[8px] px-[20px] justify-between flex items-center text-[#1b5299] font-karla text-[20px] font-bold flex  justify-between">
+                          
+                              <div>  SUBTOTAL: </div>
+                        <div>${' '}
+                            
                               {(
                                 item.price * item.csvFileLen +
                                 item.giftCardPrice * item.csvFileLen +
@@ -934,43 +939,44 @@ export default function AddCartFunc() {
                                   ? postPrice * item.csvFileLen
                                   : postPrice2 * item.csvFileLen)
                               ).toFixed(2)}
-                            </h3>
+                              </div>
+                              
+                              </div>
+                              <div className="lg:w-[20%] relative  w-full flex-wrap flex "></div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
+                        
+                    
                     ))}
                   {totalPrize && (
-                    <div className="w-[85%]  bg-[#FFF6F6] m-auto mt-10 mb-10">
+                    <div className="sm:w-[85%] w-full bg-[#FFF6F6] m-auto mt-10 mb-10">
                       <div
-                        className="flex p-5 flex-wrap justify-evenly md:gap-0 gap-[10px]"
-                        style={{border: '3px solid #1b5299'}}
+                        className="flex lg:p-3 p-5 flex-wrap justify-evenly lg:gap-0 gap-[15px] border-2 border-[#1b5299]"
+                        
                       >
-                        <div className="md:w-[33%] sm:w-[47%] w-[55%] flex items-center ">
-                          <div className="buttonDiv sm:pr-5 m-2 lg:text-[15px] sm:text-[11px] text-[8px]">
+                        <div className="lg:w-[25%] md:w-[35%] sm:w-[47%] w-full flex lg:items-center items-end sm:justify-start justify-center">
+                          <div className="buttonDiv m-2 md:text-[14px] sm:text-[9px] font-bold sm:w-full w-[77%]">
                             <button
-                              className="bg-[#1b5299] text-[#fff] p-3 flex  rounded "
+                              className="bg-[#1b5299] text-[#fff] p-3 flex  rounded gap-2.5 w-full sm:justify-start justify-center"
                               onClick={() => {
                                 clearCartBtn();
                               }}
                             >
-                              <img
-                                src={Del}
-                                className="md:w-[20px] md:h-[20px] w-[14px] h-[14px] m-auto cursor-pointer text-[white] mr-1 "
-                              />
+                              <RiDeleteBin6Line  className='text-white text-[20px]'/>
                               CLEAR SHOPPING CART
                             </button>
                           </div>
                         </div>
                         <div
-                          className="md:w-[30%] sm:w-[45%] w-[100%] flex items-center   sm:order-none order-[-1]
-                         lg:text-[30px]  sm:text-[15px] text-[20px] text-[#1b5299] font-karla   justify-between"
+                          className="lg:w-[45%]  w-[100%] flex items-center  lg:order-none order-[-1]
+                         md:text-[30px] sm:text-[28px] text-[24px] text-[#1b5299] font-karla font-bold  lg:justify-around justify-evenly"
                         >
                           <span className="md:mr-[2px]">GRAND TOTAL</span>
                           <span>${totalPrize.toFixed(2)}</span>
                         </div>
-                        <div className="md:w-[30%] sm:w-[80%] w-auto  mr-1 flex justify-end ">
+                        <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
                           <div className="">
-                            <div className="lg:text-[18px] text-[12px] sm:flex hidden items-center">
+                            <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
                               <input
                                 type="checkbox"
                                 onClick={() => setAgree(!agree)}
@@ -978,7 +984,7 @@ export default function AddCartFunc() {
                               />
                               <text>
                                 {' '}
-                                &nbsp;I agree with{' '}
+                                I agree with{' '}
                                 <span className="underline decoration-solid">
                                   <a href="/policies/terms-of-service">
                                     Terms of service
@@ -988,7 +994,7 @@ export default function AddCartFunc() {
                             </div>
                             <button
                               disabled={!agree}
-                              className="bg-[#EF6E6E] lg:w-[100%] w-auto lg:text-[16px] text-[14px] text-[#fff] p-2  flex justify-center mt-2"
+                              className="bg-[#EF6E6E] w-[100%]  lg:text-[16px] text-[14px] text-[#fff] p-[12px] rounded border-[1px] border-[#000] font-bold flex justify-center mt-2"
                               onClick={() => {
                                 if (customerId) {
                                   setShowCartPage(false);
@@ -1006,7 +1012,7 @@ export default function AddCartFunc() {
                             </button>
                           </div>
                         </div>
-                        <div className="text-[9px] sm:hidden flex justify-end w-full">
+                        {/* <div className="text-[9px] sm:hidden flex justify-end w-full">
                           <input
                             type="checkbox"
                             onClick={() => setAgree(!agree)}
@@ -1021,29 +1027,30 @@ export default function AddCartFunc() {
                               </a>
                             </span>
                           </text>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   )}
-                  <div className="w-[85%] m-auto mt-10 mb-10">
+                  <div className="sm:w-[85%] w-full m-auto mt-10 mb-10">
                     <div
-                      className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%]"
-                      style={{border: '3px solid #1b5299'}}
+                      className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%] border-2 border-[#1b5299] rounded"
+            
                     >
-                      <h3 className="text-[30px] font-karla text-[#1b5299]">
+                      <h3 className="text-[30px] font-bold text-[#1b5299]">
                         NOTE
                       </h3>
-                      <p className="text-[#000] font-karla">
+                      <p className="text-[#000] font-normal text-[14px] py-5 ">
                         Add special instructions for your order...
                       </p>
                       <textarea
                         name=""
-                        className="w-[85%] border-none"
+                        className="border-none w-full"
                         id="cart-note"
                         cols="30"
+                        rows="10"
                         onChange={(e) => setCartNote(e.target.value)}
                         value={cartNote}
-                        rows="4"
+                      
                       ></textarea>
                     </div>
                   </div>
