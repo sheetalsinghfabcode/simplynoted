@@ -218,7 +218,7 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white  rounded-lg p-6 w-full sm:max-w-[60%] md:max-w-[80%] max-w-[93%] mx-auto mt-[40px] ${
+        className={`bg-white  rounded-lg p-6 w-full  md:max-w-[80%] max-w-[93%] mx-auto md:mt-[40px] ${
           loader && 'opacity-50'
         } `}
       >
@@ -235,7 +235,7 @@ const Profile = ({
             </button>
             <button
               onClick={() => switchToTab('security')}
-              className={`mr-4 px-4 py-4 w-full rounded-t-lg font-karla ${
+              className={`px-4 py-4 w-full rounded-t-lg font-karla ${
                 activeTab === 'security'
                   ? 'bg-[#001a5f] text-white'
                   : 'bg-gray-300 text-gray-700'
@@ -486,7 +486,7 @@ const Profile = ({
                 updateUserPassword();
               }
             }}
-            className="bg-[#ef6e6e] text-white font-bold max-w-[60%] cursor-pointer font-karla h-[50px] mx-auto w-[100%]"
+            className="bg-[#ef6e6e] text-white font-bold sm:max-w-[40%] 2xl:max-w-[60%] cursor-pointer font-karla h-[50px] mx-auto w-[100%]"
             text={
               activeTab === 'account' ? 'Update Profile' : 'Update Password'
             }

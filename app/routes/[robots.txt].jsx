@@ -21,7 +21,7 @@ Disallow: /cart
 Disallow: /orders
 Disallow: /checkouts/
 Disallow: /checkout
-Disallow: /carts
+Disallow: /cart
 Disallow: /account
 ${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ''}
 
@@ -29,7 +29,7 @@ ${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ''}
 User-agent: adsbot-google
 Disallow: /checkouts/
 Disallow: /checkout
-Disallow: /carts
+Disallow: /cart
 Disallow: /orders
 
 User-agent: Pinterest
