@@ -9,7 +9,7 @@ const APIOptionsSelector = () => {
     <div className="w-[20%]">
       <ol className="sidebar h-[500px]  border-1 border-solid border-gray-300  text-[14px] text-[#696969] leading-[3.5rem] font-bold py-[10px] pl-[10px] pr-[10px] mx-5p-[20px] sticky border-solid border-[#ddd]">
         <li
-          className={`w-[43%] ${
+          className={`w-[56%] ${
             selectedSection === 'API ENDPOINTS' ? ' font-bold' : ''
           } `}
         >
@@ -180,7 +180,7 @@ const APIOptionsSelector = () => {
         </li>
 
         <li
-          className={`w-[88%]${
+          className={`w-[100%]${
             selectedSection === 'AVAILABLE HANDWRITING STYLES'
               ? ' font-bold'
               : ''
