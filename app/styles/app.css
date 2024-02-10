@@ -95,6 +95,7 @@ shop-pay-button {
     background-attachment: fixed;
     background-position: center -50px;
     background-color: #dfebf9;
+    background-size: cover;
   }
 }
 
@@ -218,7 +219,7 @@ a.active {
 }
 
 .global-max-width-handler {
-  max-width: 1400px;
+  max-width: 1920px;
   margin: auto;
 }
 

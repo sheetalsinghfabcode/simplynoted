@@ -61,7 +61,7 @@ export function Layout({children, layout}) {
 
   return (
     <>
-      <div className="flex flex-col md:min-h-screen min-h-0 w-full max-w-[1740px] mx-auto px-[30px]  ">
+      <div className="flex flex-col md:min-h-screen min-h-0 w-full">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -189,8 +189,6 @@ function MenuMobileNav({menu, onClose}) {
   //   setLoginModal(true);
   // };
 
-  console.log('menu', menu);
-
   return (
     <div className="">
       <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12  sm:py-8">
@@ -210,7 +208,7 @@ function MenuMobileNav({menu, onClose}) {
               <Text as="span" size="copy">
                 {item.title === 'Business' ? (
                   <Link to="/business-page">
-                    <div className="">Bussiness</div>
+                    <div classNhame="">Business</div>
                   </Link>
                 ) : null}
                 {item.title === ''}
@@ -566,9 +564,9 @@ function DesktopHeader({isHome, menu}) {
       ? JSON.parse(localStorage.getItem('cartCount'))
       : 0;
     setCartCountVal(totalCartCount);
+    console.log({menu});
   }, []);
 
-  const params = useParams();
   const {y} = useWindowScroll();
   return (
     <>
