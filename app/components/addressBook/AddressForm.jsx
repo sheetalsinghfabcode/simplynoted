@@ -5,7 +5,7 @@ import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
 
-const AddressForm = ({customerID}) => {
+const AddressForm = ({customerID, defaultOption}) => {
   const {setAddressForm, setEditAddress} = useStateContext();
 
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const AddressForm = ({customerID}) => {
     state: '',
     postalCode: '',
     country: 'USA',
-    type: '',
+    type: defaultOption,
     birthday: '',
     anniversary: '',
   });
@@ -403,9 +403,19 @@ const AddressForm = ({customerID}) => {
                 value={formData.type}
                 onChange={handleChange}
               >
-                <option>Recipient</option>
-                <option>Sender</option>
-                {/* Add other types if needed */}
+                {defaultOption === 'recipient' ? (
+                  <>
+                    {' '}
+                    (<option>Recipient</option>
+                    <option>Sender</option>){' '}
+                  </>
+                ) : (
+                  <>
+                    {' '}
+                    <option>Sender</option>
+                    <option>Recipient</option>
+                  </>
+                )}
               </select>
             </div>
           </div>

@@ -535,7 +535,7 @@ const ContactTable = ({
               ADDRESS BOOK
             </h2>
           )}
-          <div className="flex flex-col md:flex-row justify-between items-start gap-8 my-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 my-8">
             <div className="w-full max-w-[400px]">
               <input
                 type="text"

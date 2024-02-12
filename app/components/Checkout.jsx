@@ -18,7 +18,7 @@ export function CheckoutData({
   postalId2,
 }) {
   const stripe = loadStripe(`${StripeKey}`);
-  let customerid, fullName, userEmail, firstName, lastName , selectedText ;
+  let customerid, fullName, userEmail, firstName, lastName, selectedText;
   const [showWallet, setShowWallet] = useState(true);
   const [showCardDetail, setShowCardDetail] = useState(false);
   const [showCardBox, setShowCardBox] = useState(false);
@@ -28,7 +28,8 @@ export function CheckoutData({
   const [customerID, setCustomertID] = useState('');
   const [loader, setloader] = useState(false);
   const [customerInformation, setCustomerInformation] = useState([]);
-  const [selectedOrderPurchaseQuantity,setSelectedOrderPurchaseQuantity] = useState('')
+  const [selectedOrderPurchaseQuantity, setSelectedOrderPurchaseQuantity] =
+    useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -100,7 +101,7 @@ export function CheckoutData({
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${id}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -119,10 +120,12 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
+      debugger
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
     } catch (error) {
+      debugger
       setloader(false);
       console.error(error, 'error on CreateCard');
     }
@@ -157,6 +160,7 @@ export function CheckoutData({
         `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
+      debugger
       if (json) {
         setCustomerInformation(json.customer);
         setSavedCart(json.payments);
@@ -200,10 +204,10 @@ export function CheckoutData({
     }
   }
 
-  useEffect(()=>{
-  selectedText = localStorage.getItem("selectedOrderPurchaseQuantity")
-  setSelectedOrderPurchaseQuantity(selectedText)
-  },[])
+  useEffect(() => {
+    selectedText = localStorage.getItem('selectedOrderPurchaseQuantity');
+    setSelectedOrderPurchaseQuantity(selectedText);
+  }, []);
 
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
@@ -280,13 +284,24 @@ export function CheckoutData({
   let name = customerInformation?.name;
   let separatedNames = separateFullName(name);
 
-  const totalPrice = Number(prices?.totalPrice)?.toFixed(2)
+  const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
+
+  console.log('cartData', cartData);
 
   async function paymentPurchase() {
     try {
-      const formData = new FormData();
 
-      const postageUSCountries = ['USA', 'US', 'United States', 'United States of America', 'America'];
+      const postageUSCountries = [
+        'USA',
+        'US',
+        'United States',
+        'United States of America',
+        'America',
+        'u.s',
+        'us',
+        'usa',
+        'u.s.a',
+      ];
 
       const payload = {
         billingAddress: {
@@ -304,7 +319,9 @@ export function CheckoutData({
           cartData &&
           cartData.map((item) => {
             let senderFullName =
-              item.senderAddress?.firstName + ' ' + item.senderAddress?.lastName;
+              item.senderAddress?.firstName +
+              ' ' +
+              item.senderAddress?.lastName;
             let receiverFullName =
               item.reciverAddress?.firstName +
               ' ' +
@@ -320,25 +337,31 @@ export function CheckoutData({
               };
             }
 
-            const isPostageUSCountry = postageUSCountries.includes(item.reciverAddress?.country);
+            const isPostageUSCountry = postageUSCountries.includes(
+              item.reciverAddress?.country,
+            );
             return {
               productTitle: item.productTitle,
-              variant_id: item.variant_id.match(/\d+/g).join(""),
+              variant_id: item.variant_id.match(/\d+/g).join(''),
               productUrlGet: item.productGetUrl,
               productPrice: `$${item.price}`,
               qyt: 1,
               properties: {
                 bulk_shipping_address: '\n  \n  \n',
-                selectedText: selectedOrderPurchaseQuantity && selectedOrderPurchaseQuantity,
+                selectedText:
+                  selectedOrderPurchaseQuantity &&
+                  selectedOrderPurchaseQuantity,
                 font_family: item.fontFamily,
                 custom_message: item.messageData,
-                font_size: '60px',
-                font_size_cust_card: '60px',
-                line_ht_cust_card: '60px',
+                font_size: item.fontSizeMsg ? item.fontSizeMsg : '50px',
+                font_size_cust_card: item.fontSizeMsg
+                  ? item.fontSizeMsg
+                  : '50px',
+                line_ht_cust_card: item.lineHeight ? item.lineHeight : '50px',
                 signoff: item?.endText,
                 custom_font: item?.customFontName,
                 font_selection: item?.fontFamily,
-                recipient_upload:   "Not Applicable :",
+                recipient_upload: 'Not Applicable :',
                 ship_date: '',
                 sender_fullName: senderFullName && senderFullName,
                 sender_address1: item.senderAddress?.address1,
@@ -348,9 +371,9 @@ export function CheckoutData({
                 sender_zip: item.senderAddress?.zip,
                 sender_country: item.senderAddress?.country,
                 sender_id: item.senderAddress?._id,
-                gift_card_ID: giftCard ? giftCard.id : '', 
-                uqId: giftCard ? giftCard.id : '', 
-                gift_id: giftCard ? giftCard.id : '', 
+                gift_card_ID: giftCard ? giftCard.id : '',
+                uqId: giftCard ? giftCard.id : '',
+                gift_id: giftCard ? giftCard.id : '',
                 recipient_id: item?.reciverAddress?._id,
                 recipient_fullName: receiverFullName && receiverFullName,
                 recipient_businessName: item?.reciverAddress?.businessName,
@@ -384,16 +407,7 @@ export function CheckoutData({
           : '',
       };
 
-      formData.append('billingAddress', JSON.stringify(payload.billingAddress));
-      formData.append('cartNote', JSON.stringify(payload.cartNote));
-      formData.append('cartItems', JSON.stringify(payload.cartItems));
-      formData.append('wallet', JSON.stringify(payload.wallet));
-      formData.append('paymentMethodKey', JSON.stringify(payload.paymentMethodKey));
-      formData.append('discountCode', JSON.stringify(payload.discountCode));
-      formData.append('discountValue', JSON.stringify(payload.discountValue));
-      formData.append('discountValueType', JSON.stringify(payload.discountValueType));
-
-
+ 
       const res = await fetch(
         `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
         {
@@ -401,11 +415,15 @@ export function CheckoutData({
           headers: {
             'Content-Type': 'application/json',
           },
-          body: formData,
+          body: JSON.stringify(payload),
         },
       );
-      const json = await res.json();
       debugger
+
+      console.log('payload', payload);
+      const json = await res.json();
+
+      console.log("json",json);
     } catch (error) {
       console.error(error, 'error on CreateCard');
     }

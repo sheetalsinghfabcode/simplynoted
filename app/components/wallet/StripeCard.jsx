@@ -72,7 +72,7 @@ const StripeCard = ({
         >
           {showStripeCard || addCreditModal
             ? 'Add Card'
-            : pathname.pathname === '/simply-noted-plans'
+            : (pathname.pathname === '/simply-noted-plans' || pathname.pathname === "/account")
             ? 'Complete Purchase'
             : 'Update Card'}
         </button>

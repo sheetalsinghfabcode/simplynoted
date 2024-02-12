@@ -21,7 +21,6 @@ export const loader = async ({request, context: {storefront}}) => {
     },
   });
 
-  // console.log("collections>>>",collections)
 
   const seo = seoPayload.listCollections({
     collections,

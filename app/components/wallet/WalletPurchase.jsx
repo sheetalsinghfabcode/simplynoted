@@ -19,7 +19,6 @@ const WalletPurchase = ({
       : parseFloat(amount).toFixed(2);
   setFinalPrice(total);
 
-  console.log("subscriptionPrice",subscriptionPrice);
 
   return (
     <div className="max-w-[1366px] mx-auto px-[20px] mt-[72px] py-[40px] ml-[14px] mr-[14px] bg-white">
