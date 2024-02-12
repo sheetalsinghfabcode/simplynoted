@@ -90,11 +90,11 @@ shop-pay-button {
 
   body {
     @apply border-primary/10 bg-contrast text-primary/90 antialiased;
-    background-image: url('https://simplynoted.com/cdn/shop/files/bg-business-header.jpg');
+    /* background-image: url('https://simplynoted.com/cdn/shop/files/bg-business-header.jpg'); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center -50px;
-    background-color: #dfebf9;
+    background-color: #fff;
     background-size: cover;
   }
 }
@@ -218,9 +218,29 @@ a.active {
   }
 }
 
+input[type='date']::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+input[type='checkbox'] {
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
 .global-max-width-handler {
-  max-width: 1920px;
+  max-width: 1480px;
   margin: auto;
+  padding: 0 30px 0;
 }
 
 .font-tiempos {
@@ -254,14 +274,6 @@ nav a {
 }
 .shadow-darkHeader {
   --tw-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0) !important;
-}
-
-.login-button {
-  color: rgb(0, 0, 0);
-  margin-right: -14px;
-}
-.login-button:hover {
-  color: #001a5f;
 }
 .gap-1 {
   gap: 1.25rem;
@@ -437,14 +449,6 @@ nav a {
   border-radius: 5px;
   margin-top: 10px;
   transition: all 0.5s ease-in-out;
-}
-.custom_testing {
-  /* background-color: #f1f1f1; */
-  border: solid 2px black;
-  padding: 15px;
-  margin-top: 15px;
-  width: 56%;
-  max-width: 375px;
 }
 .addFirstnameBtn {
   background: #1b5299;
@@ -930,8 +934,8 @@ nav a {
   opacity: 1;
   height: auto;
 }
-button[disabled]{
-  opacity:.7;
+button[disabled] {
+  opacity: 0.7;
 }
 
 .tooltip {
@@ -1505,8 +1509,6 @@ body {
   .amount {
     gap: 15px;
   }
-
- 
 }
 
 /************************************About Us*****************************/
@@ -2093,8 +2095,8 @@ body {
   background-position: center bottom !important;
   background-size: 95% !important;
 }
-.item_block_left::before{
-  content: "";
+.item_block_left::before {
+  content: '';
   position: absolute;
   bottom: 0;
   height: 1px;
@@ -2103,25 +2105,25 @@ body {
   left: 0;
 }
 
-.item_block_middle::before{
-  content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    width: calc(100% - 30px);
-    background-color: #aaa;
-    left: 50%;
-    transform: translate(-50%);
+.item_block_middle::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: calc(100% - 30px);
+  background-color: #aaa;
+  left: 50%;
+  transform: translate(-50%);
 }
 
-.item_block_right::before{
-  content: "";
-    position: absolute;
-    bottom: 0;
-    height: 1px;
-    width: calc(100% - 15px);
-    background-color: #aaa;
-    right: 0;
+.item_block_right::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: calc(100% - 15px);
+  background-color: #aaa;
+  right: 0;
 }
 /********************************************* ROI CALCULATOR **********************************************************/
 .roi-calculator-section-1 {
@@ -2412,22 +2414,20 @@ body {
   }
 }
 @media only screen and (max-width: 1119px) {
-.item_block_middle::before{
-  opacity:0;
-}
-.item_block_left::before{
-  opacity: 0;
-}
-.item_block_right::before{
-  opacity: 0;
-}
-
+  .item_block_middle::before {
+    opacity: 0;
+  }
+  .item_block_left::before {
+    opacity: 0;
+  }
+  .item_block_right::before {
+    opacity: 0;
+  }
 }
 @media only screen and (max-width: 1124px) {
   .signup-row {
     margin: 5px auto;
   }
-
 }
 @media only screen and (max-width: 1024px) {
   .texts {

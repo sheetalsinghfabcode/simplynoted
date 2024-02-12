@@ -427,11 +427,11 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       }}
       className={`${
         isHome ? '' : ''
-      } flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4 px-4 md:px-8`}
+      } global-max-width-handler flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4`}
     >
-      <div className="flex items-center justify-start h-full w-full gap-4">
+      <div className="flex items-center justify-start h-full w-full gap-4 ">
         <Link
-          className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
+          className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-start flex-grow w-full h-full"
           to="/"
         >
           <Heading
@@ -575,8 +575,8 @@ function DesktopHeader({isHome, menu}) {
             ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
             : 'bg-contrast/80 text-primary'
         } ${
-          !isHome && y > 50 && ' shadow-lightHeader'
-        } hidden pt-4 h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1 px-[20px]`}
+          !isHome && y > 50 ? 'shadow-lightHeader' : ''
+        } hidden global-max-width-handler pt-4 h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -586,7 +586,6 @@ function DesktopHeader({isHome, menu}) {
               style={{
                 position: 'relative',
                 height: 'auto',
-                marginLeft: '-10px',
                 minWidth: '170px',
               }}
               className="xl:w-full lg:w-[80%] mr-5"
@@ -595,7 +594,7 @@ function DesktopHeader({isHome, menu}) {
         </div>
         <div
           style={{fontSize: '17px'}}
-          className="flex items-start gap-8 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
+          className="flex items-start ml-16 gap-8 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
         >
           {(menu?.items || []).map((item) => {
             if (
@@ -814,7 +813,7 @@ function DesktopHeader({isHome, menu}) {
             }
           })}
         </div>
-        <div className="flex items-start gap-1 mt-1 ml-4">
+        <div className="flex items-start gap-1 mt-1">
           <div className="tooltip mb-8" style={{transition: 'all 700ms'}}>
             {cartCountVal && cartCountVal !== undefined ? (
               <>
@@ -858,14 +857,8 @@ function DesktopHeader({isHome, menu}) {
             </div>
           ) : (
             <DynamicButton
-              style={{
-                fontSize: '17px',
-                padding: '10px',
-                paddingTop: '13px',
-                fontWeight: '600 !important',
-              }}
               text={customerId ? 'Account →' : 'Sign in →'}
-              className="login-button"
+              className="!font-semibold p-[10px] text-[17px] pt-[13px] !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
