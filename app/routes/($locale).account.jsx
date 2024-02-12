@@ -260,7 +260,7 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1840px] mx-auto ">
+    <div className="w-full max-w-[1840px] px-[30px] mx-auto ">
       <div className="flex  justify-between py-[30px] items-start sm:items-center">
         <nav class="flex" aria-label="Breadcrumb">
           <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
@@ -403,7 +403,7 @@ function Account({customer, heading, featuredData}) {
               customer={customer}
             />
           )}
-          {profile && (
+          {profile && !accountDetail && (
             <Profile
               setProfile={setProfile}
               setAccountDetail={setAccountDetail}
@@ -414,8 +414,8 @@ function Account({customer, heading, featuredData}) {
               setLoader={setLoader}
             />
           )}
-          {addressBook && <AddressBook />}
-          {managePlan && <ManageSubscription />}
+          {addressBook && !accountDetail && <AddressBook />}
+          {managePlan && !accountDetail && <ManageSubscription />}
         </div>
       </div>
     </div>

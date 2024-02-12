@@ -163,12 +163,10 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 }
 
 function MenuMobileNav({menu, onClose}) {
-  // console.log('menu', menu);
   const [show, setShow] = useState(false);
   const [showSendCard, setShowSendCard] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
   const [showLearn, setShowLearn] = useState(false);
-  // const [loginModal, setLoginModal] = useState(false);
 
   const handleChangeLearn = () => {
     setShowLearn(!showLearn);
@@ -564,8 +562,8 @@ function DesktopHeader({isHome, menu}) {
       ? JSON.parse(localStorage.getItem('cartCount'))
       : 0;
     setCartCountVal(totalCartCount);
-    console.log({menu});
   }, []);
+
 
   const {y} = useWindowScroll();
   return (
@@ -872,8 +870,10 @@ function DesktopHeader({isHome, menu}) {
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
                   setIsAccountLoader(true);
-                }
-                navigate('/account/login');
+                  navigate('/account');
+                } else if (!customerId) {
+                  navigate('account/login');
+                } 
               }}
             />
           )}
@@ -1038,7 +1038,6 @@ function FooterMenu({menu}) {
     nav: 'grid gap-2 pb-6',
   };
 
-  // console.log('menu', menu);
 
   return (
     <>

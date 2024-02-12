@@ -1,6 +1,6 @@
 import {json, redirect} from '@shopify/remix-oxygen';
-import {Form, useActionData, useLoaderData} from '@remix-run/react';
-import {useState} from 'react';
+import {Form, useActionData, useLoaderData, useNavigate} from '@remix-run/react';
+import {useEffect, useState} from 'react';
 
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
@@ -82,12 +82,16 @@ export default function Login() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
+  const navigate = useNavigate()
 
   async function setVar() {
     if (typeof window !== 'undefined') {
       localStorage.setItem('resultVar', 'result');
     }
   }
+
+
+
   return (
     <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
       <div className="max-w-md w-full">

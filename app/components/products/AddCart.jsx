@@ -32,7 +32,7 @@ export function AddCart({
     selectedAddress,
     setSelectedAddress,
   } = useStateContext();
-  console.log(editOrderValue, 'editOrderValue');
+
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -50,6 +50,7 @@ export function AddCart({
   const [searchData2, setsearchData2] = useState(null);
   const [cardVal, setCardVal] = useState('');
   const [cardPriceVal, setCardPriceVal] = useState([]);
+
   const [cardPriceTitle, setCardPriceTitle] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardPriceTitle : '',
   );
@@ -63,9 +64,9 @@ export function AddCart({
     editOrderValue?.data ? editOrderValue.data.giftCardPrice : '',
   );
 
-  const [giftCardId,setGiftCardId] = useState(
-    editOrderValue?.data ? editOrderValue.data.giftCardId : ''
-  )
+  const [giftCardId, setGiftCardId] = useState(
+    editOrderValue?.data ? editOrderValue.data.giftCardId : '',
+  );
   const [MsgText, setMesgtext] = useState('');
   const [loader, setLoader] = useState(false);
   const [showShipAddress, setShowShipAddress] = useState(false);
@@ -101,6 +102,12 @@ export function AddCart({
   const [stateCheckCart, setStateCheckCart] = useState(true);
   const [reqFields, setReqFields] = useState(false);
   const [offPrice, setOffPrice] = useState('');
+
+  const [defaultOption, setDefaultOption] = useState(null);
+
+  const handleButtonClick = (option) => {
+    setDefaultOption(option);
+  };
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -197,8 +204,8 @@ export function AddCart({
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
-    console.log("arrCardPrice",arrCardPrice);
-    setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(""))
+    console.log('arrCardPrice', arrCardPrice);
+    setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
 
     let firstPrice = arrCardPrice[0].node.price.amount;
     setCardPrice(firstPrice);
@@ -206,7 +213,6 @@ export function AddCart({
     setCardPriceVal(arrCardPrice);
   };
 
-  console.log("cardVal",cardVal);
 
   const priceValFunc = async (item) => {
     let priceAmount = cardPriceVal[item].node.price.amount;
@@ -227,12 +233,18 @@ export function AddCart({
   let arrOfObj = {
     productTitle: productData.product.title ? productData.product.title : null,
     variant_id: productData.id,
-    price: offPrice > 0?(productData.price.amount -(productData.price.amount * offPrice) / 100).toFixed(2):productData.price.amount,
+    price:
+      offPrice > 0
+        ? (
+            productData.price.amount -
+            (productData.price.amount * offPrice) / 100
+          ).toFixed(2)
+        : productData.price.amount,
     productImg: productData.image.url,
     senderAddress: selectedItem2,
     reciverAddress: selectedItem,
     giftCardName: cardName && stateCheckCart ? cardName : null,
-    giftCardId : giftCardId && stateCheckCart ? giftCardId : null,
+    giftCardId: giftCardId && stateCheckCart ? giftCardId : null,
     giftCardImg: cardImg && stateCheckCart ? cardImg : null,
     giftCardPrice: cardPrice && stateCheckCart ? cardPrice : null,
     giftCardPriceTitle: cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
@@ -301,7 +313,7 @@ export function AddCart({
           cardImg && stateCheckCart ? cardImg : null;
         storedData[editOrderValue.index][keyUpdate5] =
           cardName && stateCheckCart ? cardName : null;
-          storedData[editOrderValue.index][keyUpdate25] =
+        storedData[editOrderValue.index][keyUpdate25] =
           giftCardId && stateCheckCart ? giftCardId : null;
         storedData[editOrderValue.index][keyUpdate6] =
           cardPrice && stateCheckCart ? cardPrice : null;
@@ -421,8 +433,6 @@ export function AddCart({
     }
   }
 
-  console.log("data",data);
-
   return (
     <div className="relative md:w-[95%] w-[85%] mx-auto">
       {loader && (
@@ -441,6 +451,7 @@ export function AddCart({
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm
+            defaultOption={defaultOption}
               customerID={customerid}
               setAddressForm={setAddressForm}
               setEditAddress={setEditAddress}
@@ -463,7 +474,10 @@ export function AddCart({
                     <DynamicButton
                       className="bg-[#1b5299] text-[14px] font-normal px-[15px] py-2.5 "
                       text="+ New Address"
-                      onClickFunction={() => onNewAddressClick()}
+                      onClickFunction={() => {
+                        handleButtonClick('sender');
+                        onNewAddressClick();
+                      }}
                     />
                     <div>
                       <input
@@ -475,8 +489,12 @@ export function AddCart({
                     </div>
                     {filteredForSender(returnAddress, searchData2).map(
                       (item) => (
-                        <div className="w-full rounded p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center" onClick={() => handleCheckboxChange2(item)}>
-                          <input className='cursor-pointer border-2 border-black'
+                        <div
+                          className="w-full rounded p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center"
+                          onClick={() => handleCheckboxChange2(item)}
+                        >
+                          <input
+                            className="cursor-pointer border-2 border-black"
                             type="checkbox"
                             value={item}
                             checked={selectedItem2?._id === item._id}
@@ -510,7 +528,10 @@ export function AddCart({
                         <DynamicButton
                           className="bg-[#1b5299] text-[14px] font-normal px-[15px] py-2.5 "
                           text="+ New Address"
-                          onClickFunction={() => setAddressForm(true)}
+                          onClickFunction={() => {
+                            handleButtonClick('recipient');
+                            setAddressForm(true);
+                          }}
                         />
                         <div>
                           <input
@@ -522,8 +543,12 @@ export function AddCart({
                         </div>
                         {filteredList(recipientAddress, searchData).map(
                           (item, index) => (
-                            <div className="w-full rounded p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer" onClick={() => handleCheckboxChange(item)}>
-                              <input className='cursor-pointer border-2 border-black'
+                            <div
+                              className="w-full rounded p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer"
+                              onClick={() => handleCheckboxChange(item)}
+                            >
+                              <input
+                                className="cursor-pointer border-2 border-black"
                                 type="checkbox"
                                 value={item}
                                 checked={selectedItem?._id === item._id}
@@ -544,7 +569,11 @@ export function AddCart({
                 </div>
               </div>
             </div>
-            <div className={`row flex mr-2 ml-2 gap-4 mt-10 ${show ? "justify-between":"justify-end"}`}>
+            <div
+              className={`row flex mr-2 ml-2 gap-4 mt-10 ${
+                show ? 'justify-between' : 'justify-end'
+              }`}
+            >
               {show && (
                 <div className="col-6 md:w-[49%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
                   <div className="max-h-[600px] p-[20px] overflow-y-auto ">
@@ -621,14 +650,12 @@ export function AddCart({
                         Select Gift Price:
                       </div>
                       <div className="col-8 mt-3 pr-0 w-[60%]">
-                      
                         {cardPrice ? (
                           // <div>heelooo</div>
                           <select
                             name=""
                             id=""
-            
-                              className="w-full font-karla font-normal text-black border-none"
+                            className="w-full font-karla font-normal text-black border-none"
                             onChange={(e) => priceValFunc(e.target.value)}
                           >
                             <option selected disabled className="font-karla">
@@ -644,8 +671,7 @@ export function AddCart({
                           <select
                             name=""
                             id=""
-                    
-                          className="w-full font-karla font-normal text-black border-none"
+                            className="w-full font-karla font-normal text-black border-none"
                           >
                             <option value="" className="font-karla">
                               {'Price Card'}
@@ -653,25 +679,24 @@ export function AddCart({
                           </select>
                         )}
                       </div>
-                      </div>
-                      <div className=' '>
-                        <input
-                          type="checkbox"
-                          id=""
-                          name=""
-                          value=""
-                          onClick={() => setStateCheckCart(!stateCheckCart)}
-                          checked={cardPriceTitle && stateCheckCart}
-                        />
-                        <text className="ml-3 mt-[6px] text-[14px] font-bold">
-                          Add Gift Card
-                        </text>
-                      </div>
-                  
+                    </div>
+                    <div className=" ">
+                      <input
+                        type="checkbox"
+                        id=""
+                        name=""
+                        value=""
+                        onClick={() => setStateCheckCart(!stateCheckCart)}
+                        checked={cardPriceTitle && stateCheckCart}
+                      />
+                      <text className="ml-3 mt-[6px] text-[14px] font-bold">
+                        Add Gift Card
+                      </text>
+                    </div>
                   </div>
                 </div>
               </div>
-              </div>
+            </div>
 
             {onSaveShip && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
@@ -698,8 +723,7 @@ export function AddCart({
                 </div>
               )}
             </div>
-            </div>
-        
+          </div>
         )}
         {showShipAddress && (
           <Modal

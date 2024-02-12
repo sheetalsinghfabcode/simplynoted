@@ -429,7 +429,6 @@ const ManageSubscription = () => {
     return inputString; // Return as is if not a valid number
   }
 
-  console.log("StripeKey",StripeKey);
 
   return (
     <>
@@ -636,7 +635,7 @@ const ManageSubscription = () => {
                         PREPAID PACKAGE
                       </span>
                       {stripeCollection &&
-                      stripeCollection.stripe?.balance !== 0 &&
+                      stripeCollection.stripe?.balance !== 0 && !stripeCollection?.stripe?.manual &&
                       !stripeCollection.error ? (
                         <span className="lg:text-[20px] text-[9px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
@@ -652,7 +651,7 @@ const ManageSubscription = () => {
                         </span>
                       )}
                     </div>
-                    {!stripeCollection.error && (
+                    {!stripeCollection.error && !stripeCollection?.stripe?.manual && (
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
                         <span className=" lg:text-[16px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-normal uppercase">
                           AUTO RENEW
@@ -682,7 +681,7 @@ const ManageSubscription = () => {
                         onClickFunction={() => setPackageModal(true)}
                         text={
                           stripeCollection.stripe?.balance !== 0 &&
-                          !stripeCollection.error
+                          !stripeCollection.error && !stripeCollection?.stripe?.manual
                             ? 'Change Package'
                             : 'Buy Package'
                         }

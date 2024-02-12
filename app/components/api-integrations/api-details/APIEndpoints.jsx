@@ -20,10 +20,10 @@ const APIEndpoints = () => {
           The test API can be found at:
           <a
             className="text-blue-500"
-            href="https://testapi.simplynoted.com/api "
+            href="https://api.simplynoted.com/api "
           >
             <span className="text-red">
-              https://testapi.simplynoted.com/api
+              https://api.simplynoted.com/api
             </span>
           </a>
         </p>

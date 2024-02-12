@@ -259,7 +259,6 @@ export default function AddCartFunc() {
     }
   }
 
-  console.log("data",data);
   const cardvalFunc = async (item) => {
     console.log(item, 'cardVal-----');
     let selCardName = data.collection.products.edges[item].node;
