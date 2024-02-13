@@ -67,12 +67,12 @@ function Products() {
               <span className="text-blue-500">4.2.</span> Get All Custom Cards
             </h2>
             <div className="leading-[1.25rem] text-[16px] mt-[22px] leading-[27px] color-[black] font-thin">
-              <p className="">Endpoint: /customProducts</p>
-              <p className=" text-blue-500">
-                Get-https://api.simplynoted.com/api/customProducts?offset=0
+              <p className=""><span className="font-bold">Endpoint:</span> /customProducts</p>
+              <p className="">
+                <span className="font-bold">Get-https:</span> //api.simplynoted.com/api/customProducts?offset=0
               </p>
               <p className="">
-                This endpoint will retrieve a list of custom cards, returning up
+                <span className="font-bold">This endpoint</span> will retrieve a list of custom cards, returning up
                 to 200 cards for each call.
               </p>
             </div>
@@ -493,7 +493,7 @@ function Products() {
           <div className="mt-[55px]">
             <div>
               <h2 className="text-[#001a5f]  font-tiempos md:text-[33px] text-[27px] font-bold ml-2">
-                <spna className="font-italic text-blue-500">4.6.</spna> Delete
+                <span className="font-italic text-blue-500">4.6.</span> Delete
                 Custom Cards
               </h2>
               <div className="leading-[1.5rem] text-sm mt-[12px]">

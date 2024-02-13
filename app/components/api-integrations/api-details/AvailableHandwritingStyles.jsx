@@ -11,8 +11,8 @@ function AvailableHandwritingStyles() {
         <span className="font-italic text-blue-500">8.1.</span> Examples
       </h3>
       <div className="mt-[14px]">
-        <p className="mt-[7px] ml-[8px] font-thin text-[22px] mt-[27px] leading-[27px] color-[black]">
-          <strong>Description:</strong> Below you can preview the
+        <p className="mt-[7px] ml-[8px] font-thin text-[16px] mt-[35px] leading-[27px] color-[black]">
+          <span className="font-bold">Description:</span> Below you can preview the
           available handwriting styles that can be leveraged by the API.
         </p>
       </div>

@@ -99,7 +99,7 @@ const APIOptionsSelector = () => {
           value="AVAILABLE HANDWRITING STYLES"
           onClick={handleSectionChange}
           className={`hover:text-blue-700 ${
-            selectedSection === '  AVAILABLE HANDWRITING STYLES'
+            selectedSection === 'AVAILABLE HANDWRITING STYLES'
               ? 'font-bold'
               : ''
           }`}
@@ -114,7 +114,7 @@ const APIOptionsSelector = () => {
           value="AVAILABLE HANDWRITING STYLES"
           onClick={handleSectionChange}
           className={`hover:text-blue-700 ${
-            selectedSection === '  AVAILABLE HANDWRITING STYLES'
+            selectedSection === 'AVAILABLE HANDWRITING STYLES'
               ? 'font-bold'
               : ''
           }`}
@@ -124,31 +124,6 @@ const APIOptionsSelector = () => {
         </button>
       </div>
       </div>
-      {/* <div class="space-y-4">
-<div className={`w-full md:w-[56%] ${selectedSection === 'API ENDPOINTS' ? 'font-bold' : ''}`}>
-  <button
-    className={`text-${selectedSection === 'API ENDPOINTS' ? 'blue-700' : 'text-blue-700'}
-                cursor-pointer hover:text-blue-700`}
-    onClick={handleSectionChange}
-    value="API ENDPOINTS"
-  >
-    <span className={`text-${selectedSection === 'API ENDPOINTS' ? 'blue-700' : 'text-blue-700'}
-                    cursor-pointer`}
-    >
-      1.
-    </span>{' '}
-    API ENDPOINTS
-  </button>
-</div>
-
-  <div class="line-height-[1.5]">AUTHENTICATION</div>
-  <div class="line-height-[1.8]">USERS</div>
-  <div class="line-height-[2]">PRODUCTS</div>
-  <div class="line-height-[2.2]">ORDERS</div>
-  <div class="line-height-[2.5]">TEMPLATES</div>
-  <div class="line-height-[2.5]">ADDRESSES</div>
-  <div class="line-height-[2.8]">AVAILABLE</div>
-</div> */}
     </div>
   );
 };
