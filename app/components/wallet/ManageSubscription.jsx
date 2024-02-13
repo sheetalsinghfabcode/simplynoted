@@ -536,10 +536,10 @@ const ManageSubscription = () => {
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
-                    <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                    <span className="lg:text-[15px] text-[12px] text-[#001a5f] font-karla font-bold uppercase">
                       wallet balance
                     </span>
-                    <span className="lg:text-[24px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
+                    <span className="lg:text-[35px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
                       $
                       {!stripeCollection.error
                         ? prettyFormatNumber(stripeCollection.stripe?.balance)
@@ -551,7 +551,7 @@ const ManageSubscription = () => {
                   <WalletAccordion accordion={true} title="Plan">
                     <div className="p-[15px] mb-[15px] border border-solid border-[#e6edf8]">
                       <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className="lg:text-[16px] text-[12px] text-[#001a5f] font-bold uppercase">
+                        <span className="lg:text-[15px] text-[12px] text-[#001a5f] font-bold uppercase">
                           My Plan
                         </span>
                         <span className="lg:text-[20px] text-[12px  ] !font-bold text-[#ef6e6e] uppercase">
