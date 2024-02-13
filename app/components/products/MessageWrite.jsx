@@ -16,6 +16,10 @@ import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import TickImg from '../../../assets/Image/check-mark.png';
 import Del from '../../../assets/Image/delete.png';
+import calendarIcon from '../../../assets/Image/calendar.png';
+import {Text} from '../Text';
+import {FaYoutube} from 'react-icons/fa';
+
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -40,6 +44,9 @@ export function MessageWriting({
   editLineHeight,
   editSignOffLineHeight,
   editSignOffFontSize,
+  setFontFamily,
+  setCustomFontName,
+  editCustomFontFamily,
 }) {
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
@@ -93,6 +100,9 @@ export function MessageWriting({
   );
   const [metafieldsHeader, setMetafieldsHeader] = useState(false);
   const [metafieldsFooter, setMetafieldsFooter] = useState(false);
+  const [customFonts, setCustomFonts] = useState([]);
+  const [standardFontVal, setStandardFontVal] = useState('');
+  const [customFontVal, setCustomFontVal] = useState('');
   console.log({metafieldsHeader, metafieldsFooter});
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
@@ -509,9 +519,6 @@ export function MessageWriting({
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
-
-
- 
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -1064,118 +1071,206 @@ export function MessageWriting({
       setModalForAddressBook(true);
     }
   }
+  function setFont(e) {
+    setCustomFontVal('Select Custom Font');
+    setFontFamily(e);
+    setStandardFontVal(e);
+  }
   return (
     <>
-      <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5">
+      <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
         <div
-          id="outer"
-          className="outerr  h-[380px] md:w-[48%] w-[90%] sm:max-w-[575px] md:min-w-0 min-w-[375px] max-w-[435px] bg-white relative md:mx-0 mx-auto"
+          className={`relative md:w-[45%] w-full md:h-[1068px] ${
+            show ? 'lg:h-[985px]' : 'lg:h-[810px]'
+          }`}
         >
-          {metafields &&
-            metafields.isHeaderIncluded &&
-            metafields.header.data && <ShowHeaderComp />}
           <div
-            className={`outerSec w-[100%] bg-white mt-1`}
-            ref={ref2}
-            style={{
-              height:
-                metafields.footer &&
-                metafields.header &&
-                metafields.footer.data &&
-                metafields.header.data &&
-                name2.length > 0
-                  ? '210px'
-                  : (metafields.footer &&
-                      metafields.header &&
-                      metafields.footer.data &&
-                      metafields.footer &&
-                      metafields.header &&
-                      metafields.header.data) ||
-                    (metafields.footer &&
-                      metafields.header &&
-                      metafields.footer.data &&
-                      name2.length > 0) ||
-                    (metafields.footer &&
-                      metafields.header &&
-                      metafields.header.data &&
-                      name2.length > 0)
-                  ? '258px'
-                  : (metafields.footer &&
-                      metafields.header &&
-                      metafields.footer.data) ||
-                    (metafields.footer &&
-                      metafields.header &&
-                      metafields.header.data) ||
-                    name2.length > 0
-                  ? '310px'
-                  : '370px',
-            }}
+            className={`textAreaView  md:mx-0 mx-auto bg-[#FAFAFA] p-4 md:absolute -top-[90px] ${
+              show ? 'md:pb-[30rem]' : 'md:pb-[15rem]'
+            }`}
           >
-            <div
-              id="messageBoxID"
-              ref={ref1}
-              className="output mx-5 text-[#0040ac]"
-              style={{
-                fontFamily: fontFamilyName
-                  ? fontFamilyName
-                  : editFontFamily
-                  ? editFontFamily
-                  : 'tarzan',
-                fontSize: fontSize ? fontSize : '50px',
-                lineHeight: lineHeight ? lineHeight : '50px',
-              }}
-            >
-              {name ? name : 'Enter your custom message here...'}
+            <div className="flex flex-col items-start lg:flex-row lg:items-center gap-[8px] 3xl:gap-[15px] text-center mb-2">
+              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[14px] flex-1 w-full text-left">
+                <span> Standard Handwriting Style</span>
+                <select
+                  id="font"
+                  className="cursor-pointer font-light rounded border-0 border-black w-full"
+                  value={standardFontVal}
+                  onChange={(e) => setFont(e.target.value)}
+                  placeholder="aaaa"
+                >
+                  <option value={standardFontVal} selected disabled>
+                    {standardFontVal
+                      ? standardFontVal
+                      : editFontFamily && !editCustomFontFamily
+                      ? editFontFamily
+                      : 'Select Handwriting Style'}
+                  </option>
+                  {editFontFamily && editFontFamily !== 'tarzan' && (
+                    <option value="tarzan" className={`font-tarzan`}>
+                      Tarzan
+                    </option>
+                  )}
+                  <option value="tarzan" className={`font-tarzan`}>
+                    Tarzan
+                  </option>
+                  <option value="stitch" className={`font-stitch`}>
+                    Stitch
+                  </option>
+                  <option value="simba" className={`font-simba`}>
+                    Simba
+                  </option>
+                  <option value="roo" className={`font-roo`}>
+                    Roo
+                  </option>
+                  <option value="nimo" className={`font-nimo`}>
+                    Nimo
+                  </option>
+                  <option value="lumiere" className={`font-lumiere`}>
+                    Lumiere
+                  </option>
+                  <option value="kaa" className={`font-kaa`}>
+                    Kaa
+                  </option>
+                  <option value="kaaNew" className={`font-kaaNew`}>
+                    KaaNew
+                  </option>
+                  <option value="dumbo" className={`font-dumbo`}>
+                    Dumbo
+                  </option>
+                  <option value="donald" className={`font-donald`}>
+                    Donald
+                  </option>
+                  <option value="aladdin" className={`font-aladdin`}>
+                    Aladdin
+                  </option>
+                  <option value="belle" className={`font-belle`}>
+                    Belle
+                  </option>
+                  <option value="boo" className={`font-boo`}>
+                    Boo
+                  </option>
+                  <option value="cinderella" className={`font-cinderella`}>
+                    Cinderella
+                  </option>
+                  <option value="copper" className={`font-copper`}>
+                    Copper
+                  </option>
+                  <option value="jasmine" className={`font-jasmine`}>
+                    Jasmine
+                  </option>
+                  <option value="merlin" className={`font-merlin`}>
+                    Merlin
+                  </option>
+                  <option value="goofy" className={`font-goofy`}>
+                    Goofy
+                  </option>
+                  <option value="hercules" className={`font-hercules`}>
+                    Hercules
+                  </option>
+                  <option value="rafiki" className={`font-rafiki`}>
+                    Rafiki
+                  </option>
+                  <option value="rapunzel" className={`font-rapunzel`}>
+                    Rapunzel
+                  </option>
+                  <option value="ratigan" className={`font-ratigan`}>
+                    Ratigan
+                  </option>
+                  <option value="sarabi" className={`font-sarabi`}>
+                    Sarabi
+                  </option>
+                  <option value="scar" className={`font-scar`}>
+                    Scar
+                  </option>
+                  <option value="triton" className={`font-triton`}>
+                    Triton
+                  </option>
+                  <option value="woody" className={`font-woody`}>
+                    Woody
+                  </option>
+                </select>
+              </div>
+              <div className="font-bold sm:text-[12px] md:text-[10px] text-left xl:text-[14px] flex-1 w-full self-end">
+                <span>Custom Handwriting Style</span>
+                <select
+                  id="Coustomfont"
+                  className="cursor-pointer font-light rounded border-0 border-black w-full"
+                  value={customFontVal}
+                  onChange={(e) => getCustomFont(e.target.value)}
+                >
+                  <option className="" value={customFontVal} selected disabled>
+                    {customFontVal
+                      ? customFontVal
+                      : editCustomFontFamily
+                      ? editCustomFontFamily
+                      : 'Select Custom Font'}
+                  </option>
+                  {customFonts &&
+                    customFonts.map((item) => (
+                      <option value={item.fontName}>{item.fontName}</option>
+                    ))}
+                </select>
+              </div>
+              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[14px] flex-1 w-full text-left self-end">
+                <span>Optional shipping date</span>
+                <div className="flex">
+                  <input
+                    type="date"
+                    className="cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl"
+                    min={new Date().toISOString().split('T')[0]}
+                  />
+                  <img
+                    src={calendarIcon}
+                    className="rounded-tr rounded-br"
+                    alt="calendar"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-          {/* {name2.length>0 && */}
-          <div
-            className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto bg-white `}
-            ref={ref}
-            style={{display: name2.length > 0 ? 'block' : 'none'}}
-          >
-            <div
-              id="signOffText"
-              ref={ref3}
-              className="output2 text-[#0040ac] max-w-[300px]"
-              style={{
-                fontFamily: fontFamilyName
-                  ? fontFamilyName
-                  : editFontFamily
-                  ? editFontFamily
-                  : 'tarzan',
-                fontSize: signOffFontSize ? signOffFontSize : '50px',
-                lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
-              }}
-            >
-              {name2}
+            <div className="mb-7 text-sm">
+              <span className="text-[#001A5F] font-medium">
+                Contact Us &nbsp;
+              </span>
+              <span className="text-[#737373]">
+                to find out how to add your own custom handwriting fonts.
+              </span>
             </div>
-          </div>
-          {/* } */}
-          {metafields &&
-            metafields.isFooterIncluded &&
-            metafields.footer.data && <ShowFooterComp />}
-        </div>
-        <div className="textAreaView md:w-[45%] w-[90%] md:mx-0 mx-auto">
-          <textarea
-            type="text"
-            id="example-one-input"
-            value={name}
-            placeholder="Enter your custom message text here..."
-            className="inputText h-[200px] sm:max-w-[545px] max-w-[430px] md:min-w-0 min-w-[400px] rounded-[6px] p-[7px] text-black font-normal "
-            maxlength="450"
-            onChange={(e) => onChnageNameVal(e.target.value)}
-            data-gtm-form-interact-field-id="0"
-          ></textarea>
-          <span className="charLeft text-black flex">{remainingWord} characters remaining</span>
-          {/* {customerid && ( */}
-          <div className="flex justify-between font-bold text-[#1b5299] text-[14px] mt-[10px]">
-            <div>
+            <textarea
+              type="text"
+              id="example-one-input"
+              value={name}
+              placeholder="Enter your custom message text here..."
+              className="border-dashed resize-none h-[200px] rounded-[6px] p-[7px] text-black font-normal "
+              maxlength="450"
+              onChange={(e) => onChnageNameVal(e.target.value)}
+              data-gtm-form-interact-field-id="0"
+            ></textarea>
+            <span className="text-[#737373] flex">
+              {remainingWord} characters remaining
+            </span>
+            {/* {customerid && ( */}
+            <div className="flex w-full items-center">
+              <img
+                src={AiImage}
+                className="h-[35px] cursor-pointer  mt-3 mb-5"
+                onClick={() => setIsOpen(true)}
+              />
+              <span
+                className="cursor-pointer font-bold text-[#836FE5]  md:text-[14px] text-[16px] underline"
+                onClick={() => setIsOpen(true)}
+              >
+                <span className="text-[red]">Try our</span> New AI Message
+                Assistant
+              </span>
+            </div>
+            {/* <div className="flex justify-between font-bold text-[#1b5299] text-[14px] mt-[10px]">
+            <div className='border-1'>
               <span
                 className=" cursor-pointer"
                 onClick={() => OpenAddTemplateBox()}
               >
-                Save As New Message Template
+                Save New Template
               </span>
             </div>
             <div>
@@ -1183,114 +1278,219 @@ export function MessageWriting({
                 className=" cursor-pointer"
                 onClick={() => OpenLoadTemp()}
               >
-                Load Saved Message Template
+                Load Save Template
               </span>
             </div>
-          </div>
-          {/* )} */}
-        
-          {checkCharCount && (
-            <span className="text-[red] font-bold">
-              you don't have enough character remaining
-            </span>
-          )}
+          </div> */}
+            {/* )} */}
 
-          {show && (
-            <>
-              <button
-                className="addFirstnameBtn "
-                value={'[First Name]'}
-                onClick={(e) => firstNameBtn(e.target.value)}
-              >
-                First Name
-              </button>
-              <button
-                className="addFirstnameBtn "
-                value={'[Last Name]'}
-                onClick={(e) => firstNameBtn(e.target.value)}
-              >
-                Last Name
-              </button>
-              <button
-                className="addFirstnameBtn "
-                value={'[Company]'}
-                onClick={(e) => firstNameBtn(e.target.value)}
-              >
-                Company
-              </button>
-              <button
-                className="addFirstnameBtn "
-                value={'[Custom 1]'}
-                onClick={(e) => firstNameBtn(e.target.value)}
-              >
-                Custom 1
-              </button>
-              <button
-                className="addFirstnameBtn"
-                value={'[Custom 2]'}
-                onClick={(e) => firstNameBtn(e.target.value)}
-              >
-                Custom 2
-              </button>
-              <button
-                className="addFirstnameBtn"
-                value={'[Custom 3]'}
-                onClick={(e) => firstNameBtn(e.target.value)}
-              >
-                Custom 3
-              </button>
-            </>
-          )}
-          <div className="flex w-full justify-between md:mt-[8px] mt-[20px] md:flex-row flex-col">
-            <div className="flex md:w-[50%]  w-full">
-              <img
-                src={AiImage}
-                className="md:w-[20%] w-[12%] h-[30%] cursor-pointer lg:mt-0 sm:mt-[-12px] mt-0"
-                onClick={() => setIsOpen(true)}
-              />
-              <span
-                className="cursor-pointer font-bold text-[#1b5299]  md:text-[14px] text-[16px] "
-                onClick={() => setIsOpen(true)}
-              >
-                Try our <span className="text-[red]">New</span> AI Assistant to
-                <br /> help write your message
+            {checkCharCount && (
+              <span className="text-[red] font-bold">
+                you don't have enough character remaining
               </span>
-            </div>
-            <div className="md:w-[45%] w-full md:mt-0 mt-[10px]">
-              <textarea
-                type="text"
-                value={name2}
-                v-model="keyword"
-                id="example-one-input2"
-                className="inputText2 h-[100px] !w-full rounded-[6px] p-[7px] border-2 border-dotted border-[#1b5299]"
-                maxlength="50"
-                onChange={(e) => onchnageOfRegardBox(e.target.value)}
-               
-                data-gtm-form-interact-field-id="0"
-              ></textarea>
-              <br />
-              <div className="flex ">
-                <div>
-                  <span className="font-karla text-[#1b5299] text-[14px] font-bold">
-                    Optional Sign Off / Signature
-                  </span>
-                  <br />
-                  <span className="charLeft">
-                    {remainSign} characters remaining
-                  </span>
+            )}
+
+            {show && (
+              <div className="mb-5">
+                <button
+                  className="addFirstnameBtn "
+                  value={'[First Name]'}
+                  onClick={(e) => firstNameBtn(e.target.value)}
+                >
+                  First Name
+                </button>
+                <button
+                  className="addFirstnameBtn "
+                  value={'[Last Name]'}
+                  onClick={(e) => firstNameBtn(e.target.value)}
+                >
+                  Last Name
+                </button>
+                <button
+                  className="addFirstnameBtn "
+                  value={'[Company]'}
+                  onClick={(e) => firstNameBtn(e.target.value)}
+                >
+                  Company
+                </button>
+                <button
+                  className="addFirstnameBtn "
+                  value={'[Custom 1]'}
+                  onClick={(e) => firstNameBtn(e.target.value)}
+                >
+                  Custom 1
+                </button>
+                <button
+                  className="addFirstnameBtn"
+                  value={'[Custom 2]'}
+                  onClick={(e) => firstNameBtn(e.target.value)}
+                >
+                  Custom 2
+                </button>
+                <button
+                  className="addFirstnameBtn"
+                  value={'[Custom 3]'}
+                  onClick={(e) => firstNameBtn(e.target.value)}
+                >
+                  Custom 3
+                </button>
+              </div>
+            )}
+            <div className="flex w-full justify-between xl:flex-row flex-col ">
+              <div className="flex flex-col justify-between gap-2">
+                <div className="flex justify-between font-bold text-[#1b5299] text-[14px] gap-[20px] items-start xl:mr-3">
+                  <button
+                    className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2"
+                    onClick={() => OpenAddTemplateBox()}
+                  >
+                    Save New Template
+                  </button>
+                  <button
+                    className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2"
+                    onClick={() => OpenLoadTemp()}
+                  >
+                    Load Save Template
+                  </button>
+                </div>
+                <div className="flex flex-col font-medium">
+                  <div className="mb-[7px]">Refer & Earn: Click to Join!</div>
+                  <div className="mb-[7px]">
+                    Upgrade To Unlimited $0.97 Notes
+                  </div>
+                  <div>Need Help? Contact Support Here</div>
+                </div>
+              </div>
+              <div className="xl:w-[40%] w-full xl:mt-0 mt-[10px]">
+                <textarea
+                  type="text"
+                  value={name2}
+                  v-model="keyword"
+                  id="example-one-input2"
+                  className="inputText2 resize-none h-[100px] !w-full rounded-[6px] p-[7px] border-2 border-dotted border-[#1b5299]"
+                  maxlength="50"
+                  onChange={(e) => onchnageOfRegardBox(e.target.value)}
+                  data-gtm-form-interact-field-id="0"
+                ></textarea>
+                <br />
+                <div className="flex ">
+                  <div>
+                    <span className="font-karla text-[#1b5299] text-[14px] font-bold">
+                      Optional Sign Off / Signature
+                    </span>
+                    <br />
+                    <span className="text-[#737373]">
+                      {remainSign} characters remaining
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex flex-col sm:w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0">
+          <div
+            id="outer"
+            className="outerr shadow-lg h-[380px] bg-white relative md:mx-0"
+          >
+            {metafields &&
+              metafields.isHeaderIncluded &&
+              metafields.header.data && <ShowHeaderComp />}
+            <div
+              className={`outerSec w-[100%] bg-white mt-1`}
+              ref={ref2}
+              style={{
+                height:
+                  metafields.footer &&
+                  metafields.header &&
+                  metafields.footer.data &&
+                  metafields.header.data &&
+                  name2.length > 0
+                    ? '210px'
+                    : (metafields.footer &&
+                        metafields.header &&
+                        metafields.footer.data &&
+                        metafields.footer &&
+                        metafields.header &&
+                        metafields.header.data) ||
+                      (metafields.footer &&
+                        metafields.header &&
+                        metafields.footer.data &&
+                        name2.length > 0) ||
+                      (metafields.footer &&
+                        metafields.header &&
+                        metafields.header.data &&
+                        name2.length > 0)
+                    ? '258px'
+                    : (metafields.footer &&
+                        metafields.header &&
+                        metafields.footer.data) ||
+                      (metafields.footer &&
+                        metafields.header &&
+                        metafields.header.data) ||
+                      name2.length > 0
+                    ? '310px'
+                    : '370px',
+              }}
+            >
+              <div
+                id="messageBoxID"
+                ref={ref1}
+                className="output mx-5 text-[#0040ac]"
+                style={{
+                  fontFamily: fontFamilyName
+                    ? fontFamilyName
+                    : editFontFamily
+                    ? editFontFamily
+                    : 'tarzan',
+                  fontSize: fontSize ? fontSize : '50px',
+                  lineHeight: lineHeight ? lineHeight : '50px',
+                }}
+              >
+                {name ? name : 'Enter your custom message here...'}
+              </div>
+            </div>
+            {/* {name2.length>0 && */}
+            <div
+              className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto bg-white `}
+              ref={ref}
+              style={{display: name2.length > 0 ? 'block' : 'none'}}
+            >
+              <div
+                id="signOffText"
+                ref={ref3}
+                className="output2 text-[#0040ac] max-w-[300px]"
+                style={{
+                  fontFamily: fontFamilyName
+                    ? fontFamilyName
+                    : editFontFamily
+                    ? editFontFamily
+                    : 'tarzan',
+                  fontSize: signOffFontSize ? signOffFontSize : '50px',
+                  lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
+                }}
+              >
+                {name2}
+              </div>
+            </div>
+            {/* } */}
+            {metafields &&
+              metafields.isFooterIncluded &&
+              metafields.footer.data && <ShowFooterComp />}
+          </div>
+          <div className="text-[#737373] text-sm mt-3">
+            Preview doesn't do the quality justice, See the real writing magic
+            there.
+          </div>
+
           {show && (
-            <>
+            <div className="mt-3">
               {/* <div className="lg:w-[50%] w-[100%] flex justify-start font-bold md:mt-[10px] mt-[25px]">
                 <text>
                   As of july5,2023, we have upgraded the bulk order
                   template.Please download the new template below
                 </text>
               </div> */}
-              <div className="flex w-full flex-wrap gap-[10px] text-black sm:justify-start justify-center">
+              <div className="flex flex-col w-full flex-wrap gap-[10px] text-black items-center">
                 {bulkFileCount && bulkFileCount > 0 ? (
                   <div className="custom_testing pointer-events-none opacity-40 ">
                     <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
@@ -1299,8 +1499,11 @@ export function MessageWriting({
                         Add all addresses to address book
                       </label>
                     </div>
-                    <div>
-                      <h3 className="font-bold">Bulk Address Upload</h3>
+                    <div className="flex items-center gap-[10px]">
+                      <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
+                      <span className="underline text-[#1B5299] font-bold">
+                        Bulk Upload Tutorial Video
+                      </span>
                     </div>
                     {bulkUploadDiv && !showNextBtn ? (
                       <div>
@@ -1335,30 +1538,20 @@ export function MessageWriting({
                     <AfterUpload />
                   </div>
                 ) : (
-                  <>
-                    <div className="custom_testing text-black">
+                  <div className="w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] text-black font-normal flex justify-center">
+                    <div className="w-[50%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
                       ) : (
                         <>
-                         
-                          <div>
-                            <h3 className="font-bold text-[16px] ">Bulk Address Upload</h3>
-                          </div>
-                          {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                          <div className="bg-[#dbdbdb] px-[8px] py-[5px] flex items-center mt-3 border-[1px] border-[REBECCAPURPLE] text-[14px] text-black font-bold">
-                            <input
-                              type="checkbox"
-                              className=' border-[1px] border-black'
-                              checked={stateCheckCart}
-                              onClick={() => setStateCheckCart(!stateCheckCart)}
-                            />&nbsp;
-                            <label htmlFor="">
-                              Add all addresses to address book
-                            </label>
+                          <div className="flex items-center gap-[10px]">
+                            <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
+                            <span className="underline text-[#1B5299] font-bold">
+                              Bulk Upload Tutorial Video
+                            </span>
                           </div>
                           {bulkUploadDiv && !showNextBtn ? (
-                            <div className='mt-3'>
+                            <div className="mt-3">
                               <div>
                                 <input
                                   type="file"
@@ -1373,7 +1566,6 @@ export function MessageWriting({
                             ''
                           )}
                           <>
-                           
                             <a
                               href="https://api.simplynoted.com/docs/bulk-template"
                               className="underline  text-[14px] font-normal "
@@ -1387,23 +1579,44 @@ export function MessageWriting({
                           >
                             View bulk upload instructions
                           </p>
-
+                          {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
+                          <div className="bg-[#E5E5E5] p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                            <input
+                              type="checkbox"
+                              className=" border-[1px] border-[#E5E5E5] outline-none border-none"
+                              checked={stateCheckCart}
+                              onClick={() => setStateCheckCart(!stateCheckCart)}
+                            />
+                            &nbsp;
+                            <label htmlFor="">
+                              Add all addresses to address book
+                            </label>
+                          </div>
                           <AfterUpload />
                         </>
                       )}
                     </div>
-                  </>
+                  </div>
                 )}
-                <span className="flex items-center font-bold text-[18px]">OR</span>
-                <div className="m-auto sm:w-[33%] w-full grid text-[13px] font-bold">
+                <span className="flex items-center font-bold text-[#737373] text-[18px]">
+                  Or
+                </span>
+                <div className="m-auto w-full grid text-[13px] font-bold">
                   <DynamicButton
                     className="bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-2 w-full"
-                    text="Select from Address Book"
+                    text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
+                  />
+                  <DynamicButton
+                    className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-2 w-full"
+                    text="Buy Leads (Mailing List)"
+                    onClickFunction={() => {
+                      console.log('Yet to be completed!!');
+                    }}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
-                      className="bg-[#1b5299] px-[10px] py-[16px] w-full"
+                      className="bg-[#001a5f] px-[10px] py-[16px] w-full"
                       text="Next"
                       onClickFunction={() => onSelectFromAddressBook()}
                     />
@@ -1421,10 +1634,10 @@ export function MessageWriting({
                   )}
                 </div>
               </div>
-            </>
+            </div>
           )}
           {!show && (
-            <div className="bg-[#1b5299] h-[50px] text-center mt-10">
+            <div className="bg-[#001a5f] h-[50px] text-center mt-10">
               <button
                 className="text-[#fff] items-center h-[50px] font-normal text-[14px] justify-center  w-full"
                 onClick={() => checkUserLogged()}

@@ -12,7 +12,7 @@ export function ProductGallery({media, className}) {
   imageVar.push(media[0]);
   return (
     <div
-      className={`swimlane md:flex hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full md:justify-start justify-center ${className}`}
+      className={`swimlane md:flex hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full justify-center ${className}`}
     >
       {imageVar &&
         imageVar.map((med, i) => {
@@ -26,7 +26,7 @@ export function ProductGallery({media, className}) {
           const style = [
             isFullWidth ? 'md:col-span-2' : 'md:col-span-1',
             isFirst || isFourth ? '' : 'md:aspect-[4/5]',
-            'aspect-square snap-center card-image bg-white dark:bg-contrast/10  md:w-[575px] md:h-[340px]  w-full',
+            'aspect-square snap-center card-image bg-white dark:bg-contrast/10  md:w-[544px] md:h-[307px]  w-full',
           ].join(' ');
 
           return (

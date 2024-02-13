@@ -228,15 +228,20 @@ export default function Product() {
     <>
       {productshow ? (
         <>
-          <Section className="sm:w-[90%] w-full mx-auto !p-3 md:mt-0 mt-[20px]">
-          <DynamicButton
+          <Section className="w-full mt-[20px] !p-0">
+            {/* <DynamicButton
             className="bg-[#EF6E6E] w-full max-w-[150px]"
             text="Go Back"
             backArrow={true}
             onClickFunction={goBack}
-          />
-            <div className="flex flex-wrap md:flex-row flex-col w-full xl:gap-[40px] gap-[20px] md:mt-0 mt-[15px]">
-              <ProductGallery media={media.nodes} className="" />
+          /> */}
+            {/* <Heading
+            as="h1"
+            className="whitespace-normal xl:text-[30px] md:text-[23px] sm:text-[34px] leading-10 text-[30px] font-semibold text-[#191919]"
+          >
+            {title}
+          </Heading> */}
+            <div className="flex flex-wrap md:flex-row md:justify-between flex-col w-full xl:gap-[40px] gap-[20px] md:mt-0 mt-[15px]">
               <ProductInfo
                 title={title}
                 product={product}
@@ -248,6 +253,7 @@ export default function Product() {
                 setCustomFontName={setCustomFontName}
                 editCustomFontFamily={editCustomFontFamily}
               />
+              <ProductGallery media={media.nodes} className="" />
             </div>
             {locationValue && (
               <MessageWriting
@@ -265,6 +271,9 @@ export default function Product() {
                 editLineHeight={editLineHeight}
                 editSignOffFontSize={editSignOffFontSize}
                 editSignOffLineHeight={editSignOffLineHeight}
+                setFontFamily={setFontFamily}
+                setCustomFontName={setCustomFontName}
+                editCustomFontFamily={editCustomFontFamily}
               />
             )}
           </Section>
@@ -633,7 +642,6 @@ const VARIANTS_QUERY = `#graphql
   ${PRODUCT_VARIANT_FRAGMENT}
 
 `;
-
 
 const GiftProduct = `#graphql
   query

@@ -13,6 +13,7 @@ import {
   Heading,
   Button,
 } from '../Text';
+import {FaYoutube} from 'react-icons/fa';
 
 export function ProductInfo({
   title,
@@ -78,56 +79,41 @@ export function ProductInfo({
     setCustomFontVal(val);
     setStandardFontVal('Select Standard Font');
     setCustomFontName(val);
-
-    // if(val){
-    // refVal.current.valueOf = "Standard Font"
-    // }
-    // setFont('select')
   }
 
   return (
-    <div className="flex justify-center md:w-[46%] w-[90%] md:mx-0 mx-auto flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
+    <div className="flex justify-center md:w-[46%] w-[90%] md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
         <div className="grid gap-2.5">
           <Heading
             as="h1"
-            className="whitespace-normal xl:text-[30px] md:text-[23px] sm:text-[34px] leading-10 text-[30px] font-semibold text-[#191919]"
+            className="whitespace-normal xl:text-[36px] md:text-[29px] sm:text-[34px] leading-10 text-[30px] font-semibold text-[#191919]"
           >
             {title}
           </Heading>
-          {offPrice > 0 ? (
-            <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
-              <span className="line-through text-[black] text-[30px] leading-[40px] ">
-                ${product?.variants.nodes[0].price.amount}
+          <div>
+            {offPrice > 0 ? (
+              <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
+                <span className="line-through text-[black] text-[30px] leading-[40px] ">
+                  ${product?.variants.nodes[0].price.amount}
+                </span>
+                &nbsp;$
+                {(
+                  product?.variants.nodes[0].price.amount -
+                  (product?.variants.nodes[0].price.amount * offPrice) / 100
+                ).toFixed(2)}
               </span>
-              $
-              {(
-                product?.variants.nodes[0].price.amount -
-                (product?.variants.nodes[0].price.amount * offPrice) / 100
-              ).toFixed(2)}
-            </span>
-          ) : (
-            <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
-              $ {product?.variants.nodes[0].price.amount}
-            </span>
-          )}
-          {/* <span className="text-[30px] text-[#1b5299] leading-[47px] font-karla">
-            $ {product?.variants.nodes[0].price.amount}
-          </span> */}
-          {/* {vendor && (
-                   <Text className={'opacity-50 font-medium'}>{vendor}</Text>
-                     )} */}
-          <div className="buttonClass flex justify-start ">
-            <div className="buttonDiv pr-5">
-              <button
-                style={{backgroundColor: show ? '#ef6e6e' : '#001a5f'}}
-                className="bg-[#001a5f] text-[#fff] p-3 rounded text-[20px] font-normal"
-                onClick={() => singleBtnCLick()}
-              >
-                Single Card
-              </button>
+            ) : (
+              <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
+                $ {product?.variants.nodes[0].price.amount}
+              </span>
+            )}
+            <div className="text-[#737373] font-medium text:xs md:text-base">
+              Save Now - Go Unlimited - $0.97 / Note
             </div>
-            <div className="gap-2">
+          </div>
+          <div className="buttonClass flex justify-start mt-3 mb-3">
+            <div className="gap-2 pr-5">
               <button
                 style={{backgroundColor: show ? '#001a5f' : '#ef6e6e'}}
                 className="bg-[#ef6e6e] text-[#fff] p-3 rounded text-[20px] font-normal"
@@ -136,9 +122,24 @@ export function ProductInfo({
                 Bulk Purchase
               </button>
             </div>
+            <div className="buttonDiv">
+              <button
+                style={{backgroundColor: show ? '#ef6e6e' : '#001a5f'}}
+                className="bg-[#001a5f] text-[#fff] p-3 md:pl-8 md:pr-8 rounded text-[20px] font-normal"
+                onClick={() => singleBtnCLick()}
+              >
+                Single Card
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center gap-[10px]">
+            <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
+            <a className="underline text-[#1B5299] font-bold">
+              Watch Tutorial Video
+            </a>
           </div>
 
-          <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
+          {/* <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
             <div className="lg:w-[47%] w-[42%]">
               <Text className="font-bold w-[100px]">
                 Standard Handwriting Style
@@ -163,7 +164,6 @@ export function ProductInfo({
                     Tarzan
                   </option>
                 )}
-                {/* <option value="pinocchio" className={`font-pinocchio`}>Pinocchio</option> */}
                 <option value="tarzan" className={`font-tarzan`}>
                   Tarzan
                 </option>
@@ -282,7 +282,7 @@ export function ProductInfo({
               className="cursor-pointer font-light"
               min={new Date().toISOString().split('T')[0]}
             />
-          </div>
+          </div> */}
         </div>
       </section>
     </div>
