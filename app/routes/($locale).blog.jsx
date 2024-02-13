@@ -198,7 +198,7 @@ console.log(journalArticles,'+++++++++++++');
                     <Link
                       to={`/journal/news/${article.handle}`}
                       key={article.id}
-                      className="flex flex-col bg-white text-black hover:text-black"
+                      className="flex flex-col bg-white shadow-lg text-black hover:text-black"
                       style={{maxWidth: '363px'}}
                     >
                       <div className="flex-1">
