@@ -16,12 +16,12 @@ function CardComponent({ imgSrc, title, description, buttonText, showDownloadBut
           {description}
         </p>
         {showDownloadButton && (
-          <p className="text-[#265594] text-[14px] leading-[22px] font-normal underline" onClick={onDownload}>
+          <p className="text-[#265594] cursor-pointer text-[14px] leading-[22px] font-normal underline" onClick={onDownload}>
             {downloadButtonText}
           </p>
         )}
       </div>
-      <button onClick={onClick} className="flex text-center bg-[#192C6A] text-white items-start w-full max-w-[100px] p-[10px] gap-[10px] rounded-[8px]">
+      <button onClick={onClick} className="flex bg-[#192C6A] mt-auto text-white items-center justify-center w-full max-w-[100px] p-[10px] gap-[10px] rounded-[8px]">
         {buttonText}
       </button>
     </div>

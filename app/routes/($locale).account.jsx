@@ -37,7 +37,10 @@ import {fetchWalletData} from '~/utils/graphqlUtils';
 import ManageSubscription from '../components/wallet/ManageSubscription';
 import CircularLoader from '~/components/CircularLoder';
 import sendcard from '../../assets/Image/send-card.png';
+import help from '../../assets/Image/help.png';
+import customOrder from '../../assets/Image/custom-order.png';
 import CardComponent from '~/components/account/CardComponent';
+import automate from '../../assets/Image/automate.png';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -267,10 +270,8 @@ function Account({customer, heading, featuredData}) {
     } catch (error) {}
   }
 
-  console.log('activeTab', activeTab);
-
   return (
-    <div className="w-full max-w-[1340px] bg-[#fff] px-[30px] mx-auto ">
+    <div className="w-full max-w-[1280px] bg-[#fff] px-[30px] mx-auto ">
       <div className=" flex flex-col p-[40px] gap-[48px]">
         <div className="flex gap-[24px] max-w-[400px] items-start">
           <div class="user-name-account">
@@ -291,32 +292,38 @@ function Account({customer, heading, featuredData}) {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-[23px] w-full">
-          <div className="flex flex-col w-full md:w-[25%] gap-[24px]">
-            {tabs &&
-              tabs.length > 0 &&
-              tabs?.map((tab, i) => (
-                <div
-                  onClick={() => {
-                    if (activeTab !== 3 || activeTab !== 6) {
-                      setActiveTab(i);
-                    } else if (activeTab === 3) {
-                      navigate('https://meetings.hubspot.com/rick24');
-                    } else if (activeTab === 6) {
-                      navigate('https://simplynoted.leaddyno.com/');
-                    }
-                  }}
-                  className={`text-[16px] leading-[19.36px] cursor-pointer font-semibold ${
-                    activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
-                  }  `}
-                  key={i}
-                >
-                  {tab}
-                </div>
-              ))}
+          <div className="flex flex-col w-full md:w-[20%] lg:w-[25%] gap-[24px]">
+            <>
+              {tabs &&
+                tabs.length > 0 &&
+                tabs?.map((tab, i) => (
+                  <div
+                    onClick={() => {
+                      if (activeTab !== 3 || activeTab !== 6) {
+                        setActiveTab(i);
+                      } else if (activeTab === 3) {
+                        navigate('https://meetings.hubspot.com/rick24');
+                      } else if (activeTab === 6) {
+                        navigate('https://simplynoted.leaddyno.com/');
+                      }
+                    }}
+                    className={`text-[16px] leading-[19.36px] cursor-pointer font-semibold ${
+                      activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
+                    }  `}
+                    key={i}
+                  >
+                    {tab}
+                  </div>
+                ))}
+            </>
+            <div className="border borders-solid border-[#DBDBDE]"></div>
+            <div className=" text-[16px] leading-[19.36px] font-normal text-[#FF5555]">
+              Delete Account
+            </div>
           </div>
-          <div className=" w-full md:w-[75%]">
+          <div className=" w-full md:w-[80%] lg:w-[75%]">
             {activeTab === 0 && (
-              <div className="flex gap-[32px] p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+              <div className="flex gap-[32px] flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
@@ -327,13 +334,13 @@ function Account({customer, heading, featuredData}) {
                 />
 
                 <CardComponent
-                  imgSrc={sendcard}
+                  imgSrc={customOrder}
                   title="Custom Order"
                   description="Tailored to yours Needs: Custom Orders Welcome!"
                   buttonText="Get Started"
                 />
                 <CardComponent
-                  imgSrc={sendcard}
+                  imgSrc={automate}
                   title="Automate"
                   description="Automate your campaigns with our API or Zapier App"
                   buttonText="Get Started"
@@ -341,10 +348,10 @@ function Account({customer, heading, featuredData}) {
                   downloadButtonText="Generate API Key"
                 />
                 <CardComponent
-                  imgSrc={sendcard}
-                  title="Send Cards"
+                  imgSrc={help}
+                  title="Get Help"
                   description="Need Help? Schedule a call with Us Today!"
-                  buttonText="Get Started"
+                  buttonText="See Tutorials"
                   showDownloadButton={true}
                   downloadButtonText="See Tutorials"
                 />
