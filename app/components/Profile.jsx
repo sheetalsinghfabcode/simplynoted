@@ -218,7 +218,7 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white  rounded-lg p-6 w-full w-full mx-auto md:mt-[40px] ${
+        className={`bg-white  rounded-lg md:p-6 w-full w-full mx-auto  ${
           loader && 'opacity-50'
         } `}
       >
@@ -304,7 +304,7 @@ const Profile = ({
               <div className="px-3 mb-6">
                 <label
                   htmlFor="phone"
-                  className="block md:text-[16px] text-[12px]  mb-1 font-semibold"
+                  className="block md:text-[16px] whitespace-nowrap text-[12px]  mb-1 font-semibold"
                 >
                   Phone Number (with area code)
                 </label>

@@ -2,6 +2,7 @@ import {flattenConnection, Image} from '@shopify/hydrogen';
 import {Heading, Text, Link} from '~/components';
 import {statusMessage} from '~/lib/utils';
 import DynamicButton from './DynamicButton';
+import placeholderImage from "../../assets/Image/product-placeholder.png"
 
 export function OrderCard({order}) {
   if (!order?.id) return null;
@@ -9,13 +10,13 @@ export function OrderCard({order}) {
   const lineItems = flattenConnection(order?.lineItems);
 
   return (
-    <li className="grid text-center border border-solid border-[#001a5f] rounded">
+    <li className="grid text-center">
       <Link
         className=" flex md:grid items-center justify-center gap-4 p-4 md:gap-6 md:p-6  md:grid-cols-2"
         to={`/account/orders/${legacyOrderId}?${key}`}
         prefetch="intent"
       >
-        {lineItems[0].variant?.image && (
+        {lineItems[0].variant?.image ? (
           <div className="card-image aspect-square bg-primary/5">
             <Image
               width={168}
@@ -23,6 +24,14 @@ export function OrderCard({order}) {
               className="w-full fadeIn cover"
               alt={lineItems[0].variant?.image?.altText ?? 'Order image'}
               src={lineItems[0].variant?.image.url}
+            />
+          </div>
+        ) : (
+          <div className="card-image aspect-square bg-primary/5">
+            <img
+              className="w-[168px] h-[168px] fadeIn cover"
+              src={placeholderImage || ''}
+              alt="placeholder"
             />
           </div>
         )}
@@ -37,15 +46,15 @@ export function OrderCard({order}) {
               : lineItems[0].title}
           </Heading>
           <dl className="grid grid-cols-2 grid-gap-1">
-            <dt className='text-[12px] md:text-[14px]'>Order ID</dt>
+            {/* <dt className="text-[12px] md:text-[14px]">Order ID</dt> */}
             <dd>
-              <Text  className='text-[12px] md:text-[14px]' color="subtle">
+              <Text className="text-[12px] md:text-[14px]" color="subtle">
                 Order No. {order.orderNumber}
               </Text>
             </dd>
-            <dt className='text-[12px] md:text-[14px]'>Order Date</dt>
+            {/* <dt className="text-[12px] md:text-[14px]">Order Date</dt> */}
             <dd>
-              <Text className='text-[12px] md:text-[14px]'>
+              <Text className="text-[12px] md:text-[14px]">
                 {new Date(order.processedAt).toDateString()}
               </Text>
             </dd>

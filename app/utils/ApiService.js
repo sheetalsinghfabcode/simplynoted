@@ -1,4 +1,4 @@
-const BASE_URL = 'https://testapi.simplynoted.com';
+const BASE_URL = 'https://api.simplynoted.com';
 
 async function addAuthorizationHeader(config) {
     const apiKey = localStorage.getItem('apiKey');

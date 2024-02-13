@@ -130,6 +130,9 @@ export default function Authenticated() {
 }
 
 function Account({customer, heading, featuredData}) {
+
+
+
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
 
@@ -153,6 +156,8 @@ function Account({customer, heading, featuredData}) {
 
   const [activeTab, setActiveTab] = useState(0);
 
+  let customerFullName ;
+
   const tabs = [
     'General',
     'Book a Demo',
@@ -169,45 +174,6 @@ function Account({customer, heading, featuredData}) {
     }
     getSavedCards();
   }, [loader]);
-
-  const handleAccountDetailClick = () => {
-    setAccountDetail(true);
-    setManagePlan(false);
-    setOrderHistory(false);
-    setProfile(false);
-    setAddressBook(false);
-  };
-
-  const handleOrderHistoryClick = () => {
-    setOrderHistory(true);
-    setManagePlan(false);
-    setAccountDetail(false);
-    setProfile(false);
-    setAddressBook(false);
-  };
-  const handleManagePlan = () => {
-    setManagePlan(true);
-    setOrderHistory(false);
-    setAccountDetail(false);
-    setProfile(false);
-    setAddressBook(false);
-  };
-
-  const handleProfile = () => {
-    setProfile(true);
-    setManagePlan(false);
-    setAddressBook(false);
-    setOrderHistory(false);
-    setAccountDetail(false);
-  };
-
-  const handleAddressBook = () => {
-    setOrderHistory(false);
-    setAccountDetail(false);
-    setManagePlan(false);
-    setProfile(false);
-    setAddressBook(true);
-  };
 
   let result = customer.id.replace(/[^0-9]/g, '');
   const remove = () => {
@@ -272,7 +238,7 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <div className="w-full max-w-[1480px] bg-[#fff] px-[20px] sm:px-[30px] mx-auto ">
-      <div className=" flex flex-col p-[20px] pt-[40px] sm:p-[40px] gap-[48px]">
+      <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg::p-[40px] gap-[48px]">
         <div className="flex gap-[12px] flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
           <div class="user-name-account">
             {customer.firstName?.charAt(0)}
@@ -300,13 +266,16 @@ function Account({customer, heading, featuredData}) {
                   <div>
                     {i === 1 || i === 5 ? (
                       <a
+                        target="_blank"
                         href={
                           i === 1
                             ? 'https://meetings.hubspot.com/rick24'
                             : 'https://simplynoted.leaddyno.com'
                         }
-                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer font-semibold ${
-                          activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
+                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
+                          activeTab === i
+                            ? 'text-[#0D0C22] font-bold'
+                            : 'text-[#6E6D7A] font-semibold'
                         }  `}
                         key={i}
                       >
@@ -317,8 +286,10 @@ function Account({customer, heading, featuredData}) {
                         onClick={() => {
                           setActiveTab(i);
                         }}
-                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer font-semibold ${
-                          activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
+                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
+                          activeTab === i
+                            ? 'text-[#0D0C22] font-bold'
+                            : 'text-[#6E6D7A] font-semibold'
                         }  `}
                         key={i}
                       >
@@ -335,11 +306,19 @@ function Account({customer, heading, featuredData}) {
             >
               <button
                 onClick={() => setData(true)}
-                className="text-[16px] hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
+                className="text-[16px] hover:underline cursor-pointer leading-[19.36px] font-bold text-[#FF5555]"
               >
                 Log Out
               </button>
             </Form>
+          </div>
+          <div className="hidden">
+            <AccountDetails
+              loader={loader}
+              setLoader={setLoader}
+              accountDetail={accountDetail}
+              customer={customer}
+            />
           </div>
 
           <div className=" w-full md:w-[80%]">
