@@ -35,6 +35,7 @@ import DynamicTitle from '~/components/Title';
 import AddressBook from './($locale).address-book';
 import {fetchWalletData} from '~/utils/graphqlUtils';
 import ManageSubscription from '../components/wallet/ManageSubscription';
+import tutorials from './($locale).tutorials';
 import CircularLoader from '~/components/CircularLoder';
 import sendcard from '../../assets/Image/send-card.png';
 import help from '../../assets/Image/help.png';
@@ -154,7 +155,6 @@ function Account({customer, heading, featuredData}) {
 
   const tabs = [
     'General',
-    'Create a card',
     'Book a Demo',
     'Order History',
     'Address Book',
@@ -271,62 +271,76 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1280px] bg-[#fff] px-[30px] mx-auto ">
-      <div className=" flex flex-col p-[40px] gap-[48px]">
-        <div className="flex gap-[24px] max-w-[400px] items-start">
+    <div className="w-full max-w-[1480px] bg-[#fff] px-[20px] sm:px-[30px] mx-auto ">
+      <div className=" flex flex-col p-[20px] pt-[40px] sm:p-[40px] gap-[48px]">
+        <div className="flex gap-[12px] flex-col md:flex-row md:gap-[24px] w-full md:max-w-[400px] items-center justify-center md:items-start">
           <div class="user-name-account">
             {customer.firstName?.charAt(0)}
             {customer.lastName?.charAt(0)}
           </div>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-center md:items-start">
             <h4 className="text-[16px] md:text-[20px] leading-[145%] text-[#0D0C22] font-normal ">
               {customer?.firstName ? customer.firstName + ' ' : ''}
               {customer?.lastName ? customer.lastName : ''}
             </h4>
             <span
-              onClick={() => setActiveTab(7)}
-              className="text-[14px] text-[#6E6D7A] leading-[18.2px] font-normal "
+              onClick={() => setActiveTab(6)}
+              className="text-[14px] cursor-pointer hover:text-[#0D0C22] hover:underline  decoration-[#0D0C22] text-[#6E6D7A] leading-[18.2px] font-normal "
             >
               Update your username and manage your account
             </span>
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-[23px] w-full">
-          <div className="flex flex-col w-full md:w-[20%] lg:w-[25%] gap-[24px]">
+          <div className="flex flex-col items-center md:items-start w-full md:w-[20%] gap-[24px]">
             <>
               {tabs &&
                 tabs.length > 0 &&
                 tabs?.map((tab, i) => (
-                  <div
-                    onClick={() => {
-                      if (activeTab !== 3 || activeTab !== 6) {
-                        setActiveTab(i);
-                      } else if (activeTab === 3) {
-                        navigate('https://meetings.hubspot.com/rick24');
-                      } else if (activeTab === 6) {
-                        navigate('https://simplynoted.leaddyno.com/');
-                      }
-                    }}
-                    className={`text-[16px] leading-[19.36px] cursor-pointer font-semibold ${
-                      activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
-                    }  `}
-                    key={i}
-                  >
-                    {tab}
+                  <div>
+                    {i === 1 || i === 5 ? (
+                      <a
+                        href={
+                          i === 1
+                            ? 'https://meetings.hubspot.com/rick24'
+                            : 'https://simplynoted.leaddyno.com'
+                        }
+                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer font-semibold ${
+                          activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
+                        }  `}
+                        key={i}
+                      >
+                        {tab}
+                      </a>
+                    ) : (
+                      <span
+                        onClick={() => {
+                          setActiveTab(i);
+                        }}
+                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer font-semibold ${
+                          activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
+                        }  `}
+                        key={i}
+                      >
+                        {tab}
+                      </span>
+                    )}
                   </div>
                 ))}
             </>
-            <div className="border borders-solid border-[#DBDBDE]"></div>
-            <div className=" text-[16px] leading-[19.36px] font-normal text-[#FF5555]">
+            <div className="border w-full max-w-[200px] border-solid border-[#DBDBDE]"></div>
+            {/* <div className=" text-[16px] leading-[19.36px] font-normal text-[#FF5555]">
               Delete Account
-            </div>
+            </div> */}
           </div>
-          <div className=" w-full md:w-[80%] lg:w-[75%]">
+
+          <div className=" w-full md:w-[80%]">
             {activeTab === 0 && (
-              <div className="flex gap-[32px] flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+              <div className="flex gap-[32px] justify-center sm:justify-normal flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
+                  onDownload={()=>navigate("/collections/best-sellers")}
                   description="Send a card to one or more people by starting here"
                   buttonText="Send Now"
                   showDownloadButton={true}
@@ -357,12 +371,14 @@ function Account({customer, heading, featuredData}) {
                 />
               </div>
             )}
-            {activeTab === 3 && <AccountOrderHistory orders={orders} />}
 
-            {activeTab === 4 && <AddressBook />}
 
-            {activeTab === 5 && <ManageSubscription />}
-            {activeTab === 7 && (
+            {activeTab === 2 && <AccountOrderHistory orders={orders} />}
+
+            {activeTab === 3 && <AddressBook />}
+
+            {activeTab === 4 && <ManageSubscription />}
+            {activeTab === 6 && (
               <Profile
                 setProfile={setProfile}
                 setAccountDetail={setAccountDetail}
