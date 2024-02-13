@@ -1693,7 +1693,7 @@ export function MessageWriting({
           <div className="buttonClass flex justify-start">
             <div className="buttonDiv pr-5">
               <button
-                className="bg-[#001a5f] text-[#fff] p-2 rounded "
+                className="bg-[#001a5f] text-[#fff] p-2 rounded"
                 onClick={() => onInsetClick()}
               >
                 Insert
@@ -1714,13 +1714,14 @@ export function MessageWriting({
         isOpen={instructionModal}
         title="Text Can not be Empty"
         closeModal={closeModalInt}
-        table={false}
+        button={true}
+        image={true}
       />
       <Instruction
         isOpen={modalForAddressBook}
         title=""
         closeModal={closeSelectAddressModal}
-        table={false}
+       
         body={
           addressForm ? (
             <AddressForm customerID={customerid} />

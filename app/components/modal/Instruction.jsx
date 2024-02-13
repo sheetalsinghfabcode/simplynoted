@@ -17,7 +17,17 @@ const customStyles = {
   },
 };
 
-function Instruction({isOpen, closeModal, title, instructions, table, body}) {
+function Instruction({
+  isOpen,
+  closeModal,
+  title,
+  close = false,
+  button = false,
+  instructions,
+  table,
+  image,
+  body,
+}) {
   return (
     <Modal
       isOpen={isOpen}
@@ -28,17 +38,36 @@ function Instruction({isOpen, closeModal, title, instructions, table, body}) {
     >
       <div className="">
         <div className="relative">
-          <span
-            className="absolute cursor-pointer !leading-[0] right-[10px] text-[40px]"
-            onClick={closeModal}
-          >
-            &times;
-          </span>
+          {close && (
+            <span
+              className="absolute cursor-pointer !leading-[0] right-[10px] text-[40px]"
+              onClick={closeModal}
+            >
+              &times;
+            </span>
+          )}
+          {image && (
+            <div className='flex justify-center'>
+              <img className='w-[15%]' src="https://100dayscss.com/codepen/alert.png"/>
+              </div>
+          )}
           {title && (
-            <h2 className="text-[#001a5f] font-bold sm:text-[30px] text-[20px] text-center mb-4 p-[2rem]">
+            <h2 className="text-gray-500 font-bold sm:text-3xl text-2xl text-center p-[15px]">
               {title}
             </h2>
           )}
+          <div className="flex justify-center">
+            {button && (
+              <button
+                type="button"
+                onClick={closeModal}
+                className="bg-red-500 hover:bg-#ef6e6e-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                style={{width: '100%'}}
+              >
+                Close
+              </button>
+            )}
+          </div>
           <div className="w-full">{body}</div>
           <p className="!text-[#000] font-medium text-[14px]  leading-[160%]">
             {instructions &&
@@ -46,28 +75,31 @@ function Instruction({isOpen, closeModal, title, instructions, table, body}) {
                 <li key={index}>{instruction}</li>
               ))}
           </p>
-          <div className="bg-white   mt-[20px] text-black overflow-popup rounded-lg overflow-hidden">
-            {table && (
-              <table className="w-full font-medium text-[14px] text-[#000] px-[10x]">
-                <thead clasName="">
-                  <tr className="text-left">
-                    <th className="border border-solid border-black py-2 px-4">
-                      Field Name
-                    </th>
-                    <th className="border border-solid border-black py-2 px-4">
-                      Notes
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
+          <div className="bg-white mt-20 text-black rounded-lg overflow-hidden">
+  {table && (
+    <div className="overflow-x-auto">
+      <table className="w-full table-auto border-collapse">
+        <thead className='bg-blue-800 text-white'>
+          <tr className="text-left bg-gray-200">
+            <th className="border border-solid border-black py-2 px-4 font-bold">
+              Field Name
+            </th>
+            <th className="border border-solid border-black py-2 px-4 font-bold">
+              Notes
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="border border-solid border-black py-2 px-4">
+              Type*
+            </td>
+            <td className="border border-solid border-black py-2 px-4">
+              “Sender” or “Recipient”
+            </td>
+          </tr>
+          <tr>
                     <td className="border border-solid border-black py-2 px-4">
-                      Type*
-                    </td>
-                    <td className="border border-solid border-black py-2 px-4">
-                      “Sender” or “Recipient”
-                    </td>
-                  </tr>
                   <tr>
                     <td className="border border-solid border-black py-2 px-4">
                       First Name*
@@ -152,8 +184,6 @@ function Instruction({isOpen, closeModal, title, instructions, table, body}) {
                       name@company.com
                     </td>
                   </tr>
-                  <tr>
-                    <td className="border border-solid border-black py-2 px-4">
                       Company
                     </td>
                     <td className="border border-solid border-black py-2 px-4">
@@ -177,10 +207,11 @@ function Instruction({isOpen, closeModal, title, instructions, table, body}) {
                       Text
                     </td>
                   </tr>
-                </tbody>
-              </table>
-            )}
-          </div>
+        </tbody>
+      </table>
+    </div>
+  )}
+</div>
         </div>
       </div>
     </Modal>
@@ -188,3 +219,9 @@ function Instruction({isOpen, closeModal, title, instructions, table, body}) {
 }
 
 export default Instruction;
+
+
+
+
+
+

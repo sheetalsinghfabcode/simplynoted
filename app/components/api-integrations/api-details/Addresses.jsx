@@ -1,16 +1,14 @@
-import React from 'react'
 import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
-
 
 function Addresses() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px] font-tiempos ">
+    <h2 className="text-[#001a5f] font-tiempos md:mt-[0px] mt-[37px]  font-bold ml-2 md:text-[33px] text-[20px] font-tiempos ">
       <span className="text-blue-500">7.</span> ADDRESSES
     </h2>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
           <span className="text-blue-500">7.1.</span> Create An Address
         </h2>
         <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
@@ -156,7 +154,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px] font-tiempos  ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos  ">
           <span className="text-blue-500">7.2.</span> Retrieve All
           Addresses
         </h2>
@@ -235,7 +233,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
           <span className="text-blue-500"> 7.3. </span> Retrieve A Single
           Address
         </h2>
@@ -313,7 +311,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
           <span className="text-blue-500">7.4.</span> Update An Address
         </h2>
         <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
@@ -480,7 +478,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
           <span className="text-blue-500">7.5.</span> Delete A Single
           Address
         </h2>

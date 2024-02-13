@@ -1,14 +1,14 @@
-import React from 'react'
+import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 
 function Orders() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos text-[33px] font-bold ml-2">
+    <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] md:mt-[0px] mt-[37px] font-bold ml-2">
       <span className="text-blue-500">5.</span> ORDERS
     </h2>
     <div>
       <div>
-        <h2 className="text-[#001a5f] font-tiempos mt-[40px] text-[33px] font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos mt-[40px] md:text-[33px] text-[27px] font-bold ml-2">
           <span className="text-blue-500">5.1.</span> Create An Order
         </h2>
         <div className="leading-[1.5rem] text-sm ml-[9px]">
@@ -502,7 +502,7 @@ function Orders() {
       </div>
     </div>
     <div>
-      <h2 className="text-[#001a5f] font-tiempos mt-[40px] text-[33px] font-bold ml-2">
+      <h2 className="text-[#001a5f] font-tiempos mt-[40px] md:text-[33px] text-[27px] font-bold ml-2">
         <span className="text-blue-500">5.2.</span> Get Orders
       </h2>
       <p className="mt-[17px] text-[16px] mt-[18px] leading-[27px] color-[black]  font-thin">

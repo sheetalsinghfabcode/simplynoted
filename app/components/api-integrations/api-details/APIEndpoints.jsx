@@ -1,9 +1,8 @@
-import React from 'react';
 
 const APIEndpoints = () => {
   return (
     <div>
-      <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 text-[33px]">
+      <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px]">
         <span className="text-blue-500"> 1.</span> API ENDPOINTS
       </h2>
       <div className="text-[16px] leading-[27px] color-[black]">
