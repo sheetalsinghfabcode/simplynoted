@@ -389,13 +389,13 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             >
               {selectedAddress.type === 'return' ? (
                 <>
-                  <option>Sender</option>
-                  <option>Recipient</option>
+                  <option value={'sender'}>Sender</option>
+                  <option value={'recipient'}>Recipient</option>
                 </>
               ) : (
                 <>
-                  <option>Recipient</option>
-                  <option>Sender</option>
+                  <option value={'recipient'}>Recipient</option>
+                  <option value={'sender'}>Sender</option>
                 </>
               )}
               {/* Add other types if needed */}

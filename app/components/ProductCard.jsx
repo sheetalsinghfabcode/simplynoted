@@ -40,7 +40,7 @@ export function ProductCard({
     quantity: 1,
   };
   return (
-    <div className="flex flex-col gap-2 bg-[white]">
+    <div className="flex flex-col gap-2 bg-[white] shadow-lg">
       {/* <h2>Helloo{product.title}</h2> */}
       <Link
         onClick={onClick}

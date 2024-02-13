@@ -824,6 +824,7 @@ export function MessageWriting({
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
+    customFontFamily(customerid);
     setFontSize(
       savedMsg ? savedMsg.fontSize : editFontSize ? editFontSize : '',
     );
@@ -1078,6 +1079,25 @@ export function MessageWriting({
     setFontFamily(e);
     setStandardFontVal(e);
   }
+  async function customFontFamily(id) {
+    try {
+      const res = await fetch(
+        `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
+      );
+      const json = await res.json();
+      // console.log(json.data);
+      setCustomFonts(json.data);
+    } catch (error) {
+      console.error(error, 'customfontError');
+    }
+  }
+  function getCustomFont(val) {
+    // console.log(val, 'getcustom val');
+    setFontFamily(val);
+    setCustomFontVal(val);
+    setStandardFontVal('Select Standard Font');
+    setCustomFontName(val);
+  }
   return (
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
@@ -1203,7 +1223,7 @@ export function MessageWriting({
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                 >
-                  <option className="" value={customFontVal} selected disabled>
+                  <option value={customFontVal} selected disabled>
                     {customFontVal
                       ? customFontVal
                       : editCustomFontFamily
@@ -1241,7 +1261,7 @@ export function MessageWriting({
               value={name}
               placeholder="Enter your custom message text here..."
               className="border-dashed resize-none h-[200px] rounded-[6px] p-[7px] text-black font-normal "
-              maxlength="450"
+              maxLength="450"
               onChange={(e) => onChnageNameVal(e.target.value)}
               data-gtm-form-interact-field-id="0"
             ></textarea>
@@ -1366,7 +1386,7 @@ export function MessageWriting({
                   v-model="keyword"
                   id="example-one-input2"
                   className="inputText2 resize-none h-[100px] !w-full rounded-[6px] p-[7px] border-2 border-dotted border-[#1b5299]"
-                  maxlength="50"
+                  maxLength="50"
                   onChange={(e) => onchnageOfRegardBox(e.target.value)}
                   data-gtm-form-interact-field-id="0"
                 ></textarea>

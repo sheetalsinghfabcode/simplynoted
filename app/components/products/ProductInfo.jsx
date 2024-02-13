@@ -14,6 +14,8 @@ import {
   Button,
 } from '../Text';
 import {FaYoutube} from 'react-icons/fa';
+import Instruction from '../modal/Instruction';
+import { VideoTutorial } from '../VideoTutorial';
 
 export function ProductInfo({
   title,
@@ -31,7 +33,11 @@ export function ProductInfo({
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
+  const [videoBtn,setVideoBtn] = useState(false)
 
+   function CloseVideoComp(){
+    setVideoBtn(false)
+  }
   async function singleBtnCLick() {
     setShow(false);
     setSelectedFile('');
@@ -132,13 +138,17 @@ export function ProductInfo({
               </button>
             </div>
           </div>
-          <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-[10px]" onClick={()=>setVideoBtn(true)}>
             <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
             <a className="underline text-[#1B5299] font-bold">
               Watch Tutorial Video
             </a>
           </div>
-
+          <Instruction
+          isOpen={videoBtn}
+          body={<VideoTutorial/>}
+          close={true}
+          closeModal={CloseVideoComp}/>
           {/* <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
             <div className="lg:w-[47%] w-[42%]">
               <Text className="font-bold w-[100px]">

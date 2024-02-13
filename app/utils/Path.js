@@ -12,5 +12,6 @@ export const API_PATH = {
     ADD_NEW_CARD:'stripe/add-new-payment-method?customerId=',
     GET_DISCOUNT_COUPON:'api/storefront/shopify/coupon-details?code=',
     PURCHASE_API:'api/storefront/wallet-order?customerId=',
-    GENRATE_API_KEY:'api/storefront/apiKeys?customerId='
+    GENRATE_API_KEY:'api/storefront/apiKeys?customerId=',
+    GET_RECIPIENT_ADDRESS:'api/storefront/addresses?customerId='
 }

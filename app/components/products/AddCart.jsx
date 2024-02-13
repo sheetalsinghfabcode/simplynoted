@@ -8,6 +8,8 @@ import {Modal} from '../Modal';
 import location from '../../../location.json';
 import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
+import { getApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
 
 let customerid, cartDataReq;
 export function AddCart({
@@ -143,9 +145,10 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
-      );
+      const res = await getApi(`${API_PATH}${customerid}&type=recipient`)
+      // fetch(
+      //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
+      // );
       const json = await res.json();
       setRecipientAddress(json.result);
       setLoader(false);
@@ -157,9 +160,10 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
-      );
+      const res = await getApi(`${API_PATH}${customerid}&type=return`)
+      // fetch(
+      //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
+      // );
       const json = await res.json();
       setReturnAddress(json.result);
       setLoader(false);

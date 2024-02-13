@@ -328,7 +328,7 @@ export default function Collection() {
             <select
               name=""
               id=""
-              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px] text-[18px] font-normal"
+              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
               <option className="w-full" selected disabled>
