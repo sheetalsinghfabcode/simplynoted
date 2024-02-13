@@ -839,6 +839,7 @@ const ContactTable = ({
           <Instruction
             isOpen={isModalOpen}
             title="INSTRUCTIONS FOR BULK UPLOAD"
+            close={true}
             closeModal={closeModal}
             instructions={[
               'Download the bulk upload template (csv)',

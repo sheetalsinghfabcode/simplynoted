@@ -3,7 +3,7 @@ import DynamicTitle from '~/components/Title';
 
 const APIHeader = () => {
   return (
-    <div className="sm:px-[40px] px-[30px]">
+    <div className="sm:px-[40px] md:mt-[0px] mt-[20px] px-[30px]">
       <div className="ml-[-22px]">
         <DynamicTitle
           dynamicButton

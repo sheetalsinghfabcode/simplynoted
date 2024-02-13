@@ -1,14 +1,14 @@
-import React from 'react'
+import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 
 function Templates() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos text-[33px]  font-tiempos   font-bold ml-2">
+    <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] md:mt-[0px] mt-[37px]  font-tiempos   font-bold ml-2">
       <span className="text-blue-500">6.</span> TEMPLATES
     </h2>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos text-[33px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[20px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500"> 6.1.</span> Create A Message
           Template
         </h2>
@@ -115,7 +115,7 @@ function Templates() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos text-[33px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500">6.2.</span> Retrieve All Message
           Templates
         </h2>
@@ -173,7 +173,7 @@ function Templates() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos text-[33px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500"> 6.3.</span> Retrieve A Single
           Template
         </h2>
@@ -249,7 +249,7 @@ function Templates() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos text-[33px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500"> 6.4.</span> Update A Template
         </h2>
         <div className="leading-[1.5rem] text-sm mt-[21px] ml-[9px]">

@@ -1,15 +1,14 @@
-import React from 'react'
 import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 
 function Products() {
   return (
     <div>
-          <h2 className="text-[#001a5f] font-tiempos text-[33px]  font-tiempos   font-bold ml-2">
+          <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] md:mt-[0px] mt-[37px]  font-tiempos   font-bold ml-2">
             <span className="text-blue-500">4.</span> PRODUCTS
           </h2>
           <div className="mt-[55px]">
             <div>
-              <h2 className="text-[#001a5f] font-tiempos  text-[33px]  font-tiempos   font-bold ml-2">
+              <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
                 <span className="text-blue-500"> 4.1.</span> Get Standard Cards
               </h2>
               <p className="mt-[17px] text-[16px] mt-[22px] leading-[27px] color-[black] ml-[8px] font-thin">
@@ -64,20 +63,20 @@ function Products() {
             </div>
           </div>
           <div className="mt-[55px]">
-            <h2 className="text-[#001a5f] font-tiempos  text-[33px]  font-tiempos   font-bold ml-2">
+            <h2 className="text-[#001a5f] font-tiempos  md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
               <span className="text-blue-500">4.2.</span> Get All Custom Cards
             </h2>
             <div className="leading-[1.25rem] text-[16px] mt-[22px] leading-[27px] color-[black] font-thin">
-              <p className="ml-[8px]">Endpoint: /customProducts</p>
-              <p className="ml-[8px] text-blue-500">
+              <p className="">Endpoint: /customProducts</p>
+              <p className=" text-blue-500">
                 Get-https://api.simplynoted.com/api/customProducts?offset=0
               </p>
-              <p className="ml-[8px]">
+              <p className="">
                 This endpoint will retrieve a list of custom cards, returning up
                 to 200 cards for each call.
               </p>
             </div>
-            <table className="w-[100%]	 text-sm text-thin table-auto">
+            <table className="w-[100%] mt-[10px]	 text-sm text-thin table-auto">
               <thead>
                 <tr className="text-[15px]">
                   <td className="border p-4">Method</td>
@@ -115,7 +114,7 @@ function Products() {
           </div>
           <div className="mt-[55px]">
             <div>
-              <h2 className="text-[#001a5f] font-tiempos  text-[33px] font-tiempos  font-bold ml-2">
+              <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] font-tiempos  font-bold ml-2">
                 <span className="text-blue-500">4.3.</span> Get Specific Custom
                 Cards
               </h2>
@@ -133,7 +132,7 @@ function Products() {
           </div>
           <div className="mt-[55px]">
             <div>
-              <h2 className="text-[#001a5f] font-tiempos  text-[33px] font-tiempos  font-bold ml-2">
+              <h2 className="text-[#001a5f] font-tiempos  md:text-[33px] text-[27px] font-tiempos  font-bold ml-2">
                 <span className="text-blue-500">4.4.</span> Create Custom Card
               </h2>
               <div className="leading-[29px] text-[16px] mt-[22px] ml-[9px] font-thin">
@@ -343,7 +342,7 @@ function Products() {
           </div>
           <div className="mt-[55px]">
             <div>
-              <h2 className="text-[#001a5f] font-tiempos text-[33px] font-bold ml-2">
+              <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] font-bold ml-2">
                 <span className="text-blue-500">4.5.</span> Modify Custom Card
               </h2>
               <div className="leading-[1.5rem]  ml-[9px] text-sm">
@@ -493,7 +492,7 @@ function Products() {
           </div>
           <div className="mt-[55px]">
             <div>
-              <h2 className="text-[#001a5f]  font-tiempos text-[33px]  font-bold ml-2">
+              <h2 className="text-[#001a5f]  font-tiempos md:text-[33px] text-[27px] font-bold ml-2">
                 <spna className="font-italic text-blue-500">4.6.</spna> Delete
                 Custom Cards
               </h2>
