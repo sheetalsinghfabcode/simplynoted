@@ -1,0 +1,10 @@
+/* To fix the overlap of absolute div on bulk purchase */
+@media screen and (max-width: 1310px) {
+  .textarea-cont-bulk {
+    padding-bottom: 18rem;
+  }
+}
+
+.textarea-cont-single {
+  padding-bottom: 11rem;
+}

@@ -19,6 +19,7 @@ import Del from '../../../assets/Image/delete.png';
 import calendarIcon from '../../../assets/Image/calendar.png';
 import {Text} from '../Text';
 import {FaYoutube} from 'react-icons/fa';
+import {FiUploadCloud} from 'react-icons/fi';
 
 let mainMessageBox,
   signOffTextBox,
@@ -296,35 +297,33 @@ export function MessageWriting({
     if (selectedFile) {
       setShowBox(false);
       return (
-        <div className="">
-          <div>
-            {showNextBtn ? (
-              <>
-                <div className=" h-[50px] text-center mt-5 flex mb-2">
-                  <button
-                    className="bg-[#1b5299] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
-                    onClick={() => checkUserLogged()}
-                  >
-                    Next
-                  </button>
-                  <button
-                    className="bg-[#ef6e6e] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
-                    onClick={() => onCancelCSVUpload()}
-                  >
-                    Cancel
-                  </button>
-                </div>
-                <text> Number of recipient Uploaded:{lenCsvData}</text>
-              </>
-            ) : (
-              <button
-                className="bg-[#ef6e6e] text-[#fff] p-2 rounded"
-                onClick={() => uploadCsvFile()}
-              >
-                Upload
-              </button>
-            )}
-          </div>
+        <div className="w-full">
+          {showNextBtn ? (
+            <>
+              <div className=" h-[50px] text-center mt-5 flex mb-2">
+                <button
+                  className="bg-[#1b5299] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
+                  onClick={() => checkUserLogged()}
+                >
+                  Next
+                </button>
+                <button
+                  className="bg-[#ef6e6e] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
+                  onClick={() => onCancelCSVUpload()}
+                >
+                  Cancel
+                </button>
+              </div>
+              <text> Number of recipient Uploaded:{lenCsvData}</text>
+            </>
+          ) : (
+            <button
+              className="bg-[#ef6e6e] text-[#fff] p-2 rounded w-full"
+              onClick={() => uploadCsvFile()}
+            >
+              Upload
+            </button>
+          )}
         </div>
       );
     } else {
@@ -1085,8 +1084,10 @@ export function MessageWriting({
           }`}
         >
           <div
-            className={`textAreaView  md:mx-0 mx-auto bg-[#FAFAFA] p-4 md:absolute -top-[90px] ${
-              show ? 'md:pb-[30rem]' : 'md:pb-[15rem]'
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-4 md:absolute -top-[90px] ${
+              show
+                ? 'md:pb-[35rem] textarea-cont-bulk'
+                : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
             <div className="flex flex-col items-start lg:flex-row lg:items-center gap-[8px] 3xl:gap-[15px] text-center mb-2">
@@ -1094,7 +1095,7 @@ export function MessageWriting({
                 <span> Standard Handwriting Style</span>
                 <select
                   id="font"
-                  className="cursor-pointer font-light rounded border-0 border-black w-full"
+                  className="highlight-none cursor-pointer font-light rounded border-0 border-black w-full"
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
@@ -1195,7 +1196,7 @@ export function MessageWriting({
                 <span>Custom Handwriting Style</span>
                 <select
                   id="Coustomfont"
-                  className="cursor-pointer font-light rounded border-0 border-black w-full"
+                  className="highlight-none cursor-pointer font-light rounded border-0 border-black w-full"
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                 >
@@ -1217,7 +1218,7 @@ export function MessageWriting({
                 <div className="flex">
                   <input
                     type="date"
-                    className="cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl"
+                    className="highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl"
                     min={new Date().toISOString().split('T')[0]}
                   />
                   <img
@@ -1507,25 +1508,23 @@ export function MessageWriting({
                     </div>
                     {bulkUploadDiv && !showNextBtn ? (
                       <div>
-                        <div>
+                        <label className="cursor-pointer text-[18px] font-semibold">
+                          Click to upload or drag and drop
                           <input
                             type="file"
                             name="file"
                             accept=".csv"
-                            className="upload-input"
+                            className="upload-input hidden"
                             onChange={(e) => handleFileChange(e)}
                           />
-                        </div>
+                        </label>
                       </div>
                     ) : (
                       ''
                     )}
-                    <p>
+                    <p className="text-[#1B5299]">
                       Download the
-                      <a
-                        href="https://api.simplynoted.com/docs/bulk-template"
-                        className="text-[blue]"
-                      >
+                      <a href="https://api.simplynoted.com/docs/bulk-template">
                         Bulk Order Template
                       </a>
                     </p>
@@ -1538,12 +1537,15 @@ export function MessageWriting({
                     <AfterUpload />
                   </div>
                 ) : (
-                  <div className="w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] text-black font-normal flex justify-center">
+                  <div className="w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center">
                     <div className="w-[50%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
                       ) : (
                         <>
+                          <div className="rounded-full p-3 bg-[#E6E6E6] text-[20px]">
+                            <FiUploadCloud />
+                          </div>
                           <div className="flex items-center gap-[10px]">
                             <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
                             <span className="underline text-[#1B5299] font-bold">
@@ -1552,15 +1554,16 @@ export function MessageWriting({
                           </div>
                           {bulkUploadDiv && !showNextBtn ? (
                             <div className="mt-3">
-                              <div>
+                              <label className="cursor-pointer text-[18px] font-semibold">
+                                Click to upload or drag and drop
                                 <input
                                   type="file"
                                   name="file"
                                   accept=".csv"
-                                  className="upload-input"
+                                  className="upload-input hidden"
                                   onChange={(e) => handleFileChange(e)}
                                 />
-                              </div>
+                              </label>
                             </div>
                           ) : (
                             ''
@@ -1568,14 +1571,14 @@ export function MessageWriting({
                           <>
                             <a
                               href="https://api.simplynoted.com/docs/bulk-template"
-                              className="underline  text-[14px] font-normal "
+                              className="underline  text-[14px] font-normal text-[#1B5299]"
                             >
                               Download the Bulk Order Template
                             </a>
                           </>
                           <p
                             onClick={openModal}
-                            className="underline underline-offset-1 cursor-pointer text-[14px] font-normal hover:text-blue-600"
+                            className="underline underline-offset-1 cursor-pointer text-[14px] text-[#1B5299] font-normal hover:text-blue-600"
                           >
                             View bulk upload instructions
                           </p>

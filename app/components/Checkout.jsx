@@ -449,11 +449,10 @@ export function CheckoutData({
                     onClick={showWalletBtn}
                   >
                     <input
-                      className="cursor-pointer"
+                      className="cursor-pointer highlight-none"
                       type="radio"
                       name="action"
                       checked={showWallet}
-                      style={{boxShadow: 'none'}}
                     />
                     &emsp; USE WALLET
                   </div>
@@ -482,10 +481,9 @@ export function CheckoutData({
                   >
                     <input
                       type="radio"
-                      className="cursor-pointer"
+                      className="cursor-pointer highlight-none"
                       name="action"
                       checked={showCardDetail}
-                      style={{boxShadow: 'none'}}
                     />
                     &emsp; USE CREDIT CARD
                   </div>
@@ -509,9 +507,8 @@ export function CheckoutData({
                               <input
                                 checked={paymentMethodId === item.paymentId}
                                 type="radio"
-                                style={{boxShadow: 'none'}}
                                 name="stipe-action"
-                                className="mr-2 cursor-pointer"
+                                className="mr-2 cursor-pointer highlight-none"
                               />
                               <span className=" tracking-wide">
                                 **********{item.cardLast4Number}
@@ -532,8 +529,7 @@ export function CheckoutData({
                             name="saved-action"
                             checked
                             id="saved-credit-card"
-                            className="cursor-pointer"
-                            style={{boxShadow: 'none'}}
+                            className="cursor-pointer highlight-none"
                           />
                           <label htmlFor="saved-credit-card">
                             &nbsp;Use Saved Credit Card

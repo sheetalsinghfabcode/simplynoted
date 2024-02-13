@@ -243,6 +243,10 @@ input[type='checkbox'] {
   padding: 0 30px 0;
 }
 
+.highlight-none {
+  box-shadow: none;
+}
+
 .font-tiempos {
   font-family: Tiempos, 'serif';
 }
