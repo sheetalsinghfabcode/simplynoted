@@ -253,7 +253,7 @@ export default function Product() {
                 setCustomFontName={setCustomFontName}
                 editCustomFontFamily={editCustomFontFamily}
               />
-              <ProductGallery media={media.nodes} className="" />
+              <ProductGallery media={media.nodes} />
             </div>
             {locationValue && (
               <MessageWriting

@@ -12,7 +12,7 @@ export function ProductGallery({media, className}) {
   imageVar.push(media[0]);
   return (
     <div
-      className={`swimlane md:flex hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full justify-center ${className}`}
+      className={`swimlane md:flex hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full max-h-[400px] justify-center ${className}`}
     >
       {imageVar &&
         imageVar.map((med, i) => {
