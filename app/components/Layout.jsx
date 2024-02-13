@@ -572,8 +572,8 @@ function DesktopHeader({isHome, menu}) {
         role="banner"
         className={`${
           isHome
-            ? ' dark:bg-contrast/60 text-contrast !relative dark:text-primary shadow-darkHeader '
-            : 'bg-contrast/80 text-primary'
+            ? '  text-contrast !relative dark:text-primary shadow-darkHeader '
+            : 'text-primary'
         } ${
           !isHome && y > 50 ? 'shadow-lightHeader' : ''
         } hidden global-max-width-handler pt-4 h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1`}

@@ -36,6 +36,11 @@ import AddressBook from './($locale).address-book';
 import {fetchWalletData} from '~/utils/graphqlUtils';
 import ManageSubscription from '../components/wallet/ManageSubscription';
 import CircularLoader from '~/components/CircularLoder';
+import sendcard from '../../assets/Image/send-card.png';
+import help from '../../assets/Image/help.png';
+import customOrder from '../../assets/Image/custom-order.png';
+import CardComponent from '~/components/account/CardComponent';
+import automate from '../../assets/Image/automate.png';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -145,11 +150,17 @@ function Account({customer, heading, featuredData}) {
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
 
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
-    {id: 1, title: 'Account Detalis', content: 'Content of Tab 1'},
-    {id: 2, title: 'Security', content: 'Content of Tab 2'},
+    'General',
+    'Create a card',
+    'Book a Demo',
+    'Order History',
+    'Address Book',
+    'Manage Plans',
+    'Affiliate Program',
+    'Edit Profile',
   ];
 
   useEffect(() => {
@@ -260,162 +271,109 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1840px] px-[30px] mx-auto ">
-      <div className="flex  justify-between py-[30px] items-start sm:items-center">
-        <nav class="flex" aria-label="Breadcrumb">
-          <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-            <li class="inline-flex items-center">
-              <a
-                href="#"
-                class="inline-flex items-center text-[16px] font-medium text-black hover:text-[#001a5f] "
-              >
-                <svg
-                  class="w-3 h-3 me-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                </svg>
-                Home
-              </a>
-            </li>
-            <li>
-              <div class="flex items-center">
-                <svg
-                  class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                <a
-                  href="#"
-                  class="ms-1 text-[16px] font-medium text-black hover:text-[#001a5f] md:ms-2 dark:text-gray-400 dark:hover:text-white"
-                >
-                  Projects
-                </a>
-              </div>
-            </li>
-            <li aria-current="page">
-              <div class="flex items-center">
-                <svg
-                  class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                <span class="ms-1 text-[16px] font-medium text-black md:ms-2 hover:text-[#001a5f]">
-                  Flowbite
-                </span>
-              </div>
-            </li>
-          </ol>
-        </nav>
-
-        <Form method="post" action={usePrefixPathWithLocale('/account/logout')}>
-          <DynamicButton
-            logoutIcon
-            className="text-primary/50 bg-[#EF6E6E] mt-1 sm:mt-0 md:text-[15px] text-[8px]"
-            text="Log Out"
-            onClickFunction={() => setData(true)}
-          />
-        </Form>
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-[16px] pb-[16px] items-center justify-center  flex-wrap  ">
-        <DynamicButton
-          text="Account Details"
-          className={`tab-button !px-0  ${accountDetail ? 'active-tab' : ''}`}
-          onClickFunction={() => handleAccountDetailClick()}
-        />
-        <DynamicButton
-          text="Order History"
-          className={`tab-button !px-0 ${
-            orderHistory && !accountDetail ? 'active-tab' : ''
-          }`}
-          onClickFunction={() => handleOrderHistoryClick()}
-        />
-        <DynamicButton
-          text="View Addresses"
-          className={`tab-button !px-0 ${
-            addressBook && !accountDetail ? 'active-tab' : ''
-          }`}
-          onClickFunction={() => handleAddressBook()}
-        />
-        <DynamicButton
-          text="Manage Plan"
-          className={`tab-button !px-0 ${
-            managePlan && !accountDetail ? 'active-tab' : ''
-          }`}
-          onClickFunction={() => handleManagePlan()}
-        />
-        <DynamicButton
-          text="Edit Profile"
-          className={`tab-button !px-0 ${
-            profile && !accountDetail ? 'active-tab' : ''
-          }`}
-          onClickFunction={() => handleProfile()}
-        />
-      </div>
-
-      <div class="flex flex-col lg:flex-row w-full gap-[30px] items-start">
-        <div class="w-full lg:w-[25%] bg-white p-[20px] text-center">
-          <div class="user-name">
+    <div className="w-full max-w-[1280px] bg-[#fff] px-[30px] mx-auto ">
+      <div className=" flex flex-col p-[40px] gap-[48px]">
+        <div className="flex gap-[24px] max-w-[400px] items-start">
+          <div class="user-name-account">
             {customer.firstName?.charAt(0)}
             {customer.lastName?.charAt(0)}
           </div>
-          <div class="mt-[20px]">
-            <div class="lg:text-[20px] text-[15px] text-[#001a5f] font-bold">
-              <span class="mr-[4px]">{customer?.firstName}</span>
-              {customer?.lastName}
-            </div>
-            <div class="mt-[5px] md:text-[16px] text-[12px] text-[#001a5f] font-bold">
-              {customer?.email}
-            </div>
+          <div className="flex flex-col items-start">
+            <h4 className="text-[16px] md:text-[20px] leading-[145%] text-[#0D0C22] font-normal ">
+              {customer?.firstName ? customer.firstName + ' ' : ''}
+              {customer?.lastName ? customer.lastName : ''}
+            </h4>
+            <span
+              onClick={() => setActiveTab(7)}
+              className="text-[14px] text-[#6E6D7A] leading-[18.2px] font-normal "
+            >
+              Update your username and manage your account
+            </span>
           </div>
         </div>
-        <div class="w-full lg:w-[75%] bg-white p-[20px] text-center">
-          {orders && orderHistory && <AccountOrderHistory orders={orders} />}
-          {accountDetail && (
-            <AccountDetails
-              loader={loader}
-              setLoader={setLoader}
-              accountDetail={accountDetail}
-              customer={customer}
-            />
-          )}
-          {profile && !accountDetail && (
-            <Profile
-              setProfile={setProfile}
-              setAccountDetail={setAccountDetail}
-              customer={customer}
-              result={result}
-              loader={loader}
-              accountDetails={accountDetail}
-              setLoader={setLoader}
-            />
-          )}
-          {addressBook && !accountDetail && <AddressBook />}
-          {managePlan && !accountDetail && <ManageSubscription />}
+        <div className="flex flex-col md:flex-row gap-[23px] w-full">
+          <div className="flex flex-col w-full md:w-[20%] lg:w-[25%] gap-[24px]">
+            <>
+              {tabs &&
+                tabs.length > 0 &&
+                tabs?.map((tab, i) => (
+                  <div
+                    onClick={() => {
+                      if (activeTab !== 3 || activeTab !== 6) {
+                        setActiveTab(i);
+                      } else if (activeTab === 3) {
+                        navigate('https://meetings.hubspot.com/rick24');
+                      } else if (activeTab === 6) {
+                        navigate('https://simplynoted.leaddyno.com/');
+                      }
+                    }}
+                    className={`text-[16px] leading-[19.36px] cursor-pointer font-semibold ${
+                      activeTab === i ? 'text-[#0D0C22]' : 'text-[#6E6D7A]'
+                    }  `}
+                    key={i}
+                  >
+                    {tab}
+                  </div>
+                ))}
+            </>
+            <div className="border borders-solid border-[#DBDBDE]"></div>
+            <div className=" text-[16px] leading-[19.36px] font-normal text-[#FF5555]">
+              Delete Account
+            </div>
+          </div>
+          <div className=" w-full md:w-[80%] lg:w-[75%]">
+            {activeTab === 0 && (
+              <div className="flex gap-[32px] flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+                <CardComponent
+                  imgSrc={sendcard}
+                  title="Send Cards"
+                  description="Send a card to one or more people by starting here"
+                  buttonText="Send Now"
+                  showDownloadButton={true}
+                  downloadButtonText="Download Bulk Template"
+                />
+
+                <CardComponent
+                  imgSrc={customOrder}
+                  title="Custom Order"
+                  description="Tailored to yours Needs: Custom Orders Welcome!"
+                  buttonText="Get Started"
+                />
+                <CardComponent
+                  imgSrc={automate}
+                  title="Automate"
+                  description="Automate your campaigns with our API or Zapier App"
+                  buttonText="Get Started"
+                  showDownloadButton={true}
+                  downloadButtonText="Generate API Key"
+                />
+                <CardComponent
+                  imgSrc={help}
+                  title="Get Help"
+                  description="Need Help? Schedule a call with Us Today!"
+                  buttonText="See Tutorials"
+                  showDownloadButton={true}
+                  downloadButtonText="See Tutorials"
+                />
+              </div>
+            )}
+            {activeTab === 3 && <AccountOrderHistory orders={orders} />}
+
+            {activeTab === 4 && <AddressBook />}
+
+            {activeTab === 5 && <ManageSubscription />}
+            {activeTab === 7 && (
+              <Profile
+                setProfile={setProfile}
+                setAccountDetail={setAccountDetail}
+                customer={customer}
+                result={result}
+                loader={loader}
+                accountDetails={accountDetail}
+                setLoader={setLoader}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

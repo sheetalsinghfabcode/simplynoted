@@ -218,7 +218,7 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white  rounded-lg p-6 w-full  md:max-w-[80%] max-w-[93%] mx-auto md:mt-[40px] ${
+        className={`bg-white  rounded-lg p-6 w-full w-full mx-auto md:mt-[40px] ${
           loader && 'opacity-50'
         } `}
       >
