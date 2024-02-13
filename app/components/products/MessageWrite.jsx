@@ -913,32 +913,37 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <div className="w-[29rem] m-[2rem]">
-        <div>
-          <h1 className="text-[28px] text-[#001a5f] font-karla">
-            NEW TEMPLATE
-          </h1>
-        </div>
-        <div>
-          <input type="text" ref={ref4} value={tempVal} />
-        </div>
-        {errorTemplate && (
-          <span className="text-[red] font-karla">
-            Please Check the Value is empty
-          </span>
-        )}
-        <div>
-          <DynamicButton
-            className="bg-[#1b5299] text-[14px] mb-6 w-[9rem] mt-4"
-            onClickFunction={() => addNewTemplateFunc()}
-            text="Save template"
-          />
-          <DynamicButton
-            className="bg-[gray] text-[14px] mb-6 w-[9rem]"
-            text="Cancel"
-            onClickFunction={() => setAddNewTem(false)}
-          />
-        </div>
+      <div>
+        <h1 className="text-2xl text-blue-800 font-karla">
+          NEW TEMPLATE
+        </h1>
       </div>
+      <div>
+        <input
+          type="text"
+          ref={ref4}
+          value={tempVal}
+          className="border border-gray-300 p-2 rounded-md w-full"
+        />
+      </div>
+      {errorTemplate && (
+        <span className="text-red-500 font-karla">
+          Please check that the value is not empty
+        </span>
+      )}
+      <div>
+        <DynamicButton
+          className="bg-blue-700 text-base w-36 mt-4"
+          onClickFunction={() => addNewTemplateFunc()}
+          text="Save template"
+        />
+        <DynamicButton
+          className="bg-gray-400 text-base w-36"
+          text="Cancel"
+          onClickFunction={() => setAddNewTem(false)}
+        />
+      </div>
+    </div>
     );
   }
   async function SavedTemp() {
@@ -1720,11 +1725,11 @@ export function MessageWriting({
         button={true}
         image={true}
       />
+
       <Instruction
         isOpen={modalForAddressBook}
         title=""
         closeModal={closeSelectAddressModal}
-       
         body={
           addressForm ? (
             <AddressForm customerID={customerid} />
@@ -1742,6 +1747,7 @@ export function MessageWriting({
           )
         }
       />
+
       <Instruction
         isOpen={isModalOpen}
         title="INSTRUCTIONS FOR BULK UPLOAD"
@@ -1753,6 +1759,7 @@ export function MessageWriting({
         ]}
         table={true}
       />
+
       <Instruction
         isOpen={addNewTem}
         title=""
@@ -1760,6 +1767,7 @@ export function MessageWriting({
         table={false}
         body={<AddNewTemplate />}
       />
+
       <Instruction
         isOpen={loadTemModal}
         title=""
@@ -1767,6 +1775,7 @@ export function MessageWriting({
         table={false}
         body={<LoadTemplate />}
       />
+
       <LoginModal
         title={' Add'}
         show={loginModal}
@@ -1775,6 +1784,7 @@ export function MessageWriting({
         confirmText="Login"
         cancelText="Register"
       />
+
       <ErrorModal
         title="Uploaded Error!"
         isOpen={modalIsOpen2}

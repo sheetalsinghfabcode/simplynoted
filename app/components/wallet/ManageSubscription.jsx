@@ -13,10 +13,11 @@ import PackageModal from '~/components/wallet/PackageModal';
 import PurchaseModal from '~/components/wallet/PurchaseModal';
 import Accordion from '~/components/wallet/Accordian';
 import PaymentModal from '~/components/wallet/PaymentModal';
-import { fetchWalletData } from '~/utils/graphqlUtils';
+import {fetchWalletData} from '~/utils/graphqlUtils';
 
-export async function loader({ context }) {
-  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+export async function loader({context}) {
+  const StripeKey =
+    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   const WalletData = await fetchWalletData(context);
   return defer({
     StripeKey,
@@ -74,7 +75,6 @@ const ManageSubscription = () => {
     lastName = localStorage.getItem('lastName');
     email = localStorage.getItem('SnEmail');
     customerID = localStorage.getItem('customerId');
-
   }, []);
 
   useEffect(() => {
@@ -429,7 +429,6 @@ const ManageSubscription = () => {
     return inputString; // Return as is if not a valid number
   }
 
-
   return (
     <>
       <PackageModal
@@ -539,7 +538,7 @@ const ManageSubscription = () => {
                     <span className="lg:text-[15px] text-[12px] text-[#001a5f] font-karla font-bold uppercase">
                       wallet balance
                     </span>
-                    <span className="lg:text-[35px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
+                    <span className="lg:text-[46px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
                       $
                       {!stripeCollection.error
                         ? prettyFormatNumber(stripeCollection.stripe?.balance)
@@ -547,11 +546,10 @@ const ManageSubscription = () => {
                     </span>
                   </div>
                   <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]"></div>
-
                   <WalletAccordion accordion={true} title="Plan">
-                    <div className="p-[15px] mb-[15px] border border-solid border-[#e6edf8]">
-                      <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className="lg:text-[15px] text-[12px] text-[#001a5f] font-bold uppercase">
+                    <div className="p-[8px] mb-[15px]">
+                      <div className="flex justify-between items-center gap-[15px] py-[10px]  border-b border-solid border-[#e6edf8]">
+                        <span className="lg:text-[14px] text-[12px] text-[#001a5f] font-semibold uppercase">
                           My Plan
                         </span>
                         <span className="lg:text-[20px] text-[12px  ] !font-bold text-[#ef6e6e] uppercase">
@@ -568,7 +566,7 @@ const ManageSubscription = () => {
                           'canceled' &&
                         !stripeCollection.error && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                            <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                            <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
                               CHANGE STATUS
                             </span>
                             <DynamicButton
@@ -580,8 +578,8 @@ const ManageSubscription = () => {
                             />
                           </div>
                         )}
-                      <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                      <div className="flex justify-between items-center mt-[4px] gap-[15px] py-[10px]  border-b border-solid border-[#e6edf8]">
+                        <span className="lg:text-[14px] text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
                           CHANGE PLAN
                         </span>
                         <DynamicButton
@@ -596,7 +594,7 @@ const ManageSubscription = () => {
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
-                          className="!bg-[#001a5f] lg:text-[16px] text-[12px] md:max-w-[190px] min-w-[19px] uppercase lg:min-w-[190px] min-w-[3px]"
+                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
                         />
                       </div>
 
@@ -614,7 +612,7 @@ const ManageSubscription = () => {
                             </div>
                           ) : (
                             <div className="lg:flex grid justify-between items-left  md:gap-[15px] gap-[36px] py-[10px]">
-                              <span className="lg:text-[16px] text-[12px] text-left text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="lg:text-[14px] text-[12px] text-left text-[#001a5f] font-karla font-semibold uppercase">
                                 SUBSCRIPTION CANCELLATION DATE
                               </span>
                               <span className="text-[12px] lg:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
@@ -629,13 +627,16 @@ const ManageSubscription = () => {
                       )}
                     </div>
                   </WalletAccordion>
-                  <WalletAccordion title="PREPAID PACKAGE">
-                    <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                      <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[9px] lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-normal uppercase">
+                  <WalletAccordion accordion={false} title="PREPAID PACKAGE">
+                  <div className="p-[8px] mb-[15px]">
+
+                    <div className="flex justify-between py-[10px] border-b border-solid border-[#e6edf8]">
+                      <span className=" lg:text-[14px] text-[12px]  lg:pl-[0px] pl-[9px]  lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-bold uppercase">
                         PREPAID PACKAGE
                       </span>
                       {stripeCollection &&
-                      stripeCollection.stripe?.balance !== 0 && !stripeCollection?.stripe?.manual &&
+                      stripeCollection.stripe?.balance !== 0 &&
+                      !stripeCollection?.stripe?.manual &&
                       !stripeCollection.error ? (
                         <span className="lg:text-[20px] text-[9px] font-karla !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection.stripe?.subscriptionStatus !==
@@ -651,45 +652,49 @@ const ManageSubscription = () => {
                         </span>
                       )}
                     </div>
-                    {!stripeCollection.error && !stripeCollection?.stripe?.manual && (
-                      <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                        <span className=" lg:text-[16px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-normal uppercase">
-                          AUTO RENEW
-                        </span>
-                        <DynamicButton
-                          onClickFunction={() => {
-                            if (stripeCollection.stripe?.isAutorenew) {
-                              setAutoModal(true);
-                            } else {
-                              setRestartAutoNew(true);
+                    {!stripeCollection.error &&
+                      !stripeCollection?.stripe?.manual && (
+                        <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
+                          <span className=" lg:text-[14px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-bold uppercase">
+                            AUTO RENEW
+                          </span>
+                          <DynamicButton
+                            onClickFunction={() => {
+                              if (stripeCollection.stripe?.isAutorenew) {
+                                setAutoModal(true);
+                              } else {
+                                setRestartAutoNew(true);
+                              }
+                            }}
+                            text={
+                              stripeCollection.stripe?.isAutorenew
+                                ? 'Stop Auto Renew'
+                                : 'Restart Auto Renew'
                             }
-                          }}
-                          text={
-                            stripeCollection.stripe?.isAutorenew
-                              ? 'Stop Auto Renew'
-                              : 'Restart Auto Renew'
-                          }
-                          className="!bg-[#ef6e6e]  max-w-[190px] lg:!text-[14px] !text-[11px] whitespace-nowrap uppercase md:min-w-[190px] min-w-[2px]"
-                        />
-                      </div>
-                    )}
-                    <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                      <span className=" lg:text-[16px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-normal uppercase">
+                            className="!bg-[#4bb543]  max-w-[190px] lg:!text-[12px]  !text-[11px] whitespace-nowrap rounded-[9px] h-[45px] uppercase md:min-w-[190px] min-w-[2px]"
+                          />
+                        </div>
+                      )}
+                    <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
+                      <span className=" lg:text-[14px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-bold uppercase">
                         Update
                       </span>
                       <DynamicButton
                         onClickFunction={() => setPackageModal(true)}
                         text={
                           stripeCollection.stripe?.balance !== 0 &&
-                          !stripeCollection.error && !stripeCollection?.stripe?.manual
+                          !stripeCollection.error &&
+                          !stripeCollection?.stripe?.manual
                             ? 'Change Package'
                             : 'Buy Package'
                         }
-                        className="!bg-[#001a5f] lg:text-[15px] text-[12px] font-karla max-w-[190px] uppercase lg:min-w-[190px] min-w-[2px]"
+                        className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] font-karla max-w-[190px] uppercase h-[45px] lg:min-w-[190px] min-w-[2px]"
                       />
+                    </div>
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="STORED PAYMENT METHOD">
+                  <div className="p-[8px] mb-[15px]">
                     <div className="flex flex-col items-start">
                       {savedCard && savedCard.length > 0 && (
                         <span className=" lg:text-[16px]  text-[12px] text-[#001a5f] font-karla font-normal p-[5px] text-left  uppercase">
@@ -720,7 +725,7 @@ const ManageSubscription = () => {
                                 {i === 0 ? (
                                   <DynamicButton
                                     text="Update Card"
-                                    className="bg-[#ef6e6e] text-white lg:text-[17px] text-[12px]"
+                                    className="bg-[#ef6e6e] rounded-[9px] text-white lg:text-[13px] text-[12px]"
                                     onClickFunction={() => {
                                       setAddCreditModal(false);
                                       setPaymentId(item.paymentId);
@@ -759,14 +764,16 @@ const ManageSubscription = () => {
                             setUpdateModal(true);
                           }}
                           text="Add Credit Card"
-                          className={`bg-[#001a5f] text-white  lg:text-[15px] text-[12px] flex${
+                          className={`bg-[#001a5f] text-white rounded-[9px]   lg:text-[14px] text-[12px] flex${
                             savedCard === 0 ? 'justify-start' : 'justify-end'
                           }  mt-[10px]`}
                         />
                       </div>
                     </div>
+                    </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">
+                  <div className="p-[8px] mb-[15px]">
                     <table className="lg:min-w-full min-w-[50%] divide-y divide-gray-200">
                       <thead>
                         <tr>
@@ -809,6 +816,7 @@ const ManageSubscription = () => {
                           ))}
                       </tbody>
                     </table>
+                    </div>
                   </WalletAccordion>
                 </>
               )}
@@ -821,4 +829,3 @@ const ManageSubscription = () => {
 };
 
 export default ManageSubscription;
-
