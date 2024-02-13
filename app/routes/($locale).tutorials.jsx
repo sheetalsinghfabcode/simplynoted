@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '~/components/CircularLoder';
 import DynamicTitle from '~/components/Title';
+import {Link} from '~/components';
 
 export async function loader({context}) {
   const blog = await context.storefront.query(tutorialsData, {
@@ -46,13 +47,13 @@ export default function tutorials() {
     <div>
       <div className="px-5">
         <DynamicTitle
-          dynamicButton
+          // dynamicButton
           title="Simply Noted 101"
           className={'mt-[20px] md:text-[45px] text-[38px]'}
         />
         <div className="blog-page-button sm:flex flex gap-[13px] justify-center mt-[32px]">
           <button
-            className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px]`}
+            className={`border border-[#508ee3] w-[205px] py-[15px] bg-white text-black`}
             type="button"
             onClick={() => {
               handleButtonClick('articles');
@@ -62,7 +63,7 @@ export default function tutorials() {
             Articles
           </button>
           <button
-            className={`border border-black p-[8px] pl-[51px] w-[205px] pr-[49px] bg-red-500 text-white`}
+            className={`border border-[#508ee3] w-[205px] py-[15px] bg-[#508ee3] text-white`}
             type="button"
             onClick={() => {
               handleButtonClick('tutorials');
@@ -74,9 +75,9 @@ export default function tutorials() {
         </div>
         <div className="flex justify-center">
           <input
-            className="sm:min-w-[453px] sm:h-[57px] min-w-[80%]  h-100%  mt-[40px]"
+            className="sm:min-w-[453px] sm:h-[57px] min-w-[80%]  h-100%  mt-[40px] border border-[#508ee3] rounded-[10px]"
             type="text"
-            placeholder="Search"
+            placeholder="Search....."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           ></input>
@@ -92,9 +93,10 @@ export default function tutorials() {
               <>
                 {filteredArticles.length > 0 ? (
                   filteredArticles.map((article) => (
-                    <div
+                    <Link
+                    to={`/journal/video/${article.node.handle}`}
                       key={article.node.id}
-                      className="flex flex-col  bg-white text-black"
+                      className="flex flex-col  bg-white text-black hover:text-black"
                       style={{maxWidth: '363px'}}
                     >
                       <div className="flex-1">
@@ -104,10 +106,26 @@ export default function tutorials() {
                           alt={article.node.title}
                         />
                       </div>
-                      <div className="mt-2 flex-1 p-3 text-black text-2xl font-bold">
-                        {article.node.title}
+                      <div className="p-[30px]">
+                        <div className="mt-2 flex-1 text-black text-[22px] font-bold leading-[30px] hover:text-[#2267d8]">
+                          {article.node.title}
+                        </div>
+                        <div
+                          className="collection-descrition text-[18px] leading-[30px]"
+                          dangerouslySetInnerHTML={{
+                            __html: article.node.seo.description,
+                          }}
+                        />
+                        <p className="text-[18px] mt-[16px] text-[#ef6e6e] font-bold underline">
+                          <Link
+                            className="hover:text-[#ef6e6e]"
+                            to={`/journal/video/${article.node.handle}`}
+                          >
+                            Click here to read full article
+                          </Link>
+                        </p>
                       </div>
-                    </div>
+                    </Link>
                   ))
                 ) : (
                   <div className="font-medium text-2xl  text-blue">
@@ -140,6 +158,10 @@ const tutorialsData = `#graphql
             title
             contentHtml
             publishedAt
+            handle
+            seo{
+              description
+            }
           }
         }
       }
