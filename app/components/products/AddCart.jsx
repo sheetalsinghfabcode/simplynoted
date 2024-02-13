@@ -686,7 +686,7 @@ export function AddCart({
                       <input
                         type="checkbox"
                         id=""
-                        className={`${cardName.length === 0 ? "cursor-not-allowed" : "cursor-pointer"}`}
+                        className={`${cardPriceTitle  ? "cursor-pointer" : "cursor-not-allowed"}`}
                         name=""
                         value=""
                         onClick={() => setStateCheckCart(!stateCheckCart)}
