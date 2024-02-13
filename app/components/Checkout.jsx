@@ -7,6 +7,8 @@ import {Modal} from './Modal';
 import location from '../../location.json';
 import Loader from './modal/Loader';
 import DynamicTitle from './Title';
+import { getApi, postApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
 
 export function CheckoutData({
   setShowCartPage,
@@ -100,32 +102,40 @@ export function CheckoutData({
   async function createCustomerId(id) {
     try {
       setloader(true);
-      const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name || '',
-            email: formData.email || '',
-            'address[line1]': formData.address.line1 || '',
-            'address[line2]': formData.address.line2 || '',
-            'address[city]': formData.address.city || '',
-            'address[state]': formData.address.state || '',
-            'address[country]': formData.address.country || '',
-            paymentMethodId: id || '',
-          }),
-        },
-      );
+      const res = await postApi(`${API_PATH.CREATE_STRIPE_CUSTOMER}${customerID}`, {
+        name: formData.name || '',
+        email: formData.email || '',
+        'address[line1]': formData.address.line1 || '',
+        'address[line2]': formData.address.line2 || '',
+        'address[city]': formData.address.city || '',
+        'address[state]': formData.address.state || '',
+        'address[country]': formData.address.country || '',
+        paymentMethodId: id || '',
+      })
+      // fetch(
+      //   `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       name: formData.name || '',
+      //       email: formData.email || '',
+      //       'address[line1]': formData.address.line1 || '',
+      //       'address[line2]': formData.address.line2 || '',
+      //       'address[city]': formData.address.city || '',
+      //       'address[state]': formData.address.state || '',
+      //       'address[country]': formData.address.country || '',
+      //       paymentMethodId: id || '',
+      //     }),
+      //   },
+      // );
       const json = await res.json();
-      debugger
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
     } catch (error) {
-      debugger
       setloader(false);
       console.error(error, 'error on CreateCard');
     }
@@ -133,18 +143,19 @@ export function CheckoutData({
   async function addNewCreditCard(paymentID) {
     try {
       setloader(true);
-      const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            paymentMethodId: paymentID,
-          }),
-        },
-      );
+      const res = await postApi(`${API_PATH.ADD_NEW_CARD}${customerID}`,{paymentMethodId: paymentID})
+      // fetch(
+      //   `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       paymentMethodId: paymentID,
+      //     }),
+      //   },
+      // );
       const jsonData = await res.json();
       setNewCardAdded(true);
       setShowCardBox(false);
@@ -156,11 +167,11 @@ export function CheckoutData({
   }
   async function getSavedCards(Id) {
     try {
-      const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
-      );
+      const res = await getApi(`${API_PATH.GET_STRIPE_CUSTOMER_DATA}${Id}`)
+      // fetch(
+      //   `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+      // );
       const json = await res.json();
-      debugger
       if (json) {
         setCustomerInformation(json.customer);
         setSavedCart(json.payments);
@@ -180,10 +191,13 @@ export function CheckoutData({
       ) {
         return 'Already used API with the same value.';
       }
-      let res = await fetch(
-        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
-      );
+      let res = await 
+      getApi(`${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`)
+      //  fetch(
+      //   `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
+      // );
       const data = await res.json();
+      console.log(data,"--1111");
       if (res.ok && data) {
         setDiscountCouponCode((prevDiscountCouponCode) => {
           return {
@@ -408,16 +422,17 @@ export function CheckoutData({
       };
 
  
-      const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        },
-      );
+      const res = await postApi(`${API_PATH.PURCHASE_API}${customerID}`,payload)
+      // fetch(
+      //   `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify(payload),
+      //   },
+      // );
       debugger
 
       console.log('payload', payload);

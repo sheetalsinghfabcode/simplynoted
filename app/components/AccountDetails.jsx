@@ -3,6 +3,8 @@ import DynamicButton from './DynamicButton';
 import {useEffect, useState} from 'react';
 import CircularLoader from './CircularLoder';
 import {useStateContext} from '~/context/StateContext';
+import { postApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
 
 export function AccountDetails({customer, loader, setLoader, accountDetail}) {
   const {firstName, lastName, email, phone, id} = customer;
@@ -17,7 +19,9 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
       setLoader(true);
     }
     try {
-      const response = await fetch(
+      const response = await 
+      // postApi(`${API_PATH.GENRATE_API_KEY}${customerID}`,'')
+      fetch(
         `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`,
         {
           method: 'POST',
