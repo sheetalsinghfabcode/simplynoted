@@ -234,7 +234,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
 input[type='checkbox'] {
   box-shadow: none;
   outline: none;
-  border: none;
+  color: #ef6e6e;
+  height: 1.3rem;
+  width: 1.3rem;
+  border: 1px solid#737373;
+}
+
+input[type=checkbox]:focus {
+  --tw-ring-offset-width: 0
 }
 
 .global-max-width-handler {
