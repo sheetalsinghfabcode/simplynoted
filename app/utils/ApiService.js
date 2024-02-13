@@ -21,11 +21,10 @@ export async function postApi(path, data) {
   console.log(path, data);
   const url = `${BASE_URL}/${path}`;
   const headers = await addAuthorizationHeader();
-
   return fetch(url, { method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-  }, headers, body: JSON.stringify(data) });
+  }, body: JSON.stringify(data) });
 }
 export async function postApi1(path, data) {
   console.log(path, data);

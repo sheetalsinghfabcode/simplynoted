@@ -19,7 +19,7 @@ export function CustomComponent({product, offPrice, productPrice}) {
       {loader ? (
         <Loader loaderMessage="Loading Custom Products" />
       ) : (
-        <div className="flex flex-col gap-2 bg-[white]">
+        <div className="flex flex-col gap-2 bg-[white] shadow-lg">
           <Link to={`/custom/${product.handle}`} prefetch="intent">
             <div className={clsx('grid gap-4')}>
               <div className="card-image aspect-[4/5] bg-primary/5">

@@ -29,6 +29,8 @@ import LoginModal from '~/components/modal/LoginModal';
 import Loader from '~/components/modal/Loader';
 import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
+import { getApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -219,9 +221,10 @@ export default function Collection() {
       setLoader(true);
       if (customerid) {
         navigate(`/collections/customisable-cards`);
-        const res = await fetch(
-          `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
-        );
+        const res = await getApi(`${API_PATH.GET_CUSTOM_CARDS}${customerid}&offset=${offSetVal}`)
+        // fetch(
+        //   `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
+        // );
         const json = await res.json();
         let myData = await json.result.products;
         // console.log(json.result);
@@ -325,7 +328,7 @@ export default function Collection() {
             <select
               name=""
               id=""
-              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px] text-[18px] font-normal"
+              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
               <option className="w-full" selected disabled>

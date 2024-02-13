@@ -296,7 +296,7 @@ const Business = () => {
                           name="zip"
                           value={formData.zip}
                           pattern="\d{5}"
-                          maxlength="5"
+                          maxLength="5"
                           placeholder="Zip"
                           id="zip"
                           onChange={handleChange}

@@ -44,6 +44,8 @@ import DynamicButton from '~/components/DynamicButton';
 import foldBack from '../../assets/Image/foldBack.png';
 import flatCardImg from '../../assets/Image/flatCustomImg.png';
 import CircularLoader from '~/components/CircularLoder';
+import { getApi, postApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
 export async function loader({params, context}) {
   const {productHandle} = params;
   const data = await context.storefront.query(GiftProduct, {
@@ -114,9 +116,10 @@ export default function CustomProducts() {
   }, [customProductData]);
   async function getProductDetails() {
     try {
-      const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
-      );
+      const res = await getApi(`${API_PATH.GET_HANDLE_NAME}${productHandle}`)
+      // fetch(
+      //   `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
+      // );
       const json = await res.json();
       // console.log(json, 'productData');
       setCustomProductData(json.result);
@@ -128,15 +131,17 @@ export default function CustomProducts() {
   async function getMetaFields(id) {
     try {
       const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`;
-      const data = await fetch(queryEndPoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          productId: id,
-        }),
-      });
+      const data = await postApi(API_PATH.GET_METAFIELDS, {productId: id})
+      //  fetch(queryEndPoint, {
+      //   method: 'POST',
+      //   body: JSON.stringify({
+      //     productId: id,
+      //   }),
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+      console.log("++++++++++++",id);
       const json = await data.json();
       let extractedData = json.result.metafields[0].value;
       let extractMetafield = JSON.parse(extractedData);
