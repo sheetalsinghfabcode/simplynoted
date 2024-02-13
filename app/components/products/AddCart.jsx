@@ -433,6 +433,8 @@ export function AddCart({
     }
   }
 
+  console.log("cardName",cardName);
+
   return (
     <div className="relative md:w-[95%] w-[85%] mx-auto">
       {loader && (
@@ -684,6 +686,7 @@ export function AddCart({
                       <input
                         type="checkbox"
                         id=""
+                        className={`${cardName.length === 0 ? "cursor-not-allowed" : "cursor-pointer"}`}
                         name=""
                         value=""
                         onClick={() => setStateCheckCart(!stateCheckCart)}
@@ -894,6 +897,8 @@ export function AddCart({
         <Instruction
           isOpen={checkSelAddress}
           title="Please Select Address"
+          button={true}
+          image={true}
           closeModal={closeSelAddressModal}
           table={false}
         />

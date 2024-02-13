@@ -273,7 +273,7 @@ function Account({customer, heading, featuredData}) {
   return (
     <div className="w-full max-w-[1480px] bg-[#fff] px-[20px] sm:px-[30px] mx-auto ">
       <div className=" flex flex-col p-[20px] pt-[40px] sm:p-[40px] gap-[48px]">
-        <div className="flex gap-[12px] flex-col md:flex-row md:gap-[24px] w-full md:max-w-[400px] items-center justify-center md:items-start">
+        <div className="flex gap-[12px] flex-col md:flex-row md:gap-[24px] w-full items-center justify-start md:items-start max-w-[388px]">
           <div class="user-name-account">
             {customer.firstName?.charAt(0)}
             {customer.lastName?.charAt(0)}
@@ -329,9 +329,17 @@ function Account({customer, heading, featuredData}) {
                 ))}
             </>
             <div className="border w-full max-w-[200px] border-solid border-[#DBDBDE]"></div>
-            {/* <div className=" text-[16px] leading-[19.36px] font-normal text-[#FF5555]">
-              Delete Account
-            </div> */}
+            <Form
+              method="post"
+              action={usePrefixPathWithLocale('/account/logout')}
+            >
+              <button
+                onClick={() => setData(true)}
+                className="text-[16px] hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
+              >
+                Log Out
+              </button>
+            </Form>
           </div>
 
           <div className=" w-full md:w-[80%]">
@@ -340,7 +348,7 @@ function Account({customer, heading, featuredData}) {
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
-                  onDownload={()=>navigate("/collections/best-sellers")}
+                  onDownload={() => navigate('/collections/best-sellers')}
                   description="Send a card to one or more people by starting here"
                   buttonText="Send Now"
                   showDownloadButton={true}
@@ -371,7 +379,6 @@ function Account({customer, heading, featuredData}) {
                 />
               </div>
             )}
-
 
             {activeTab === 2 && <AccountOrderHistory orders={orders} />}
 
