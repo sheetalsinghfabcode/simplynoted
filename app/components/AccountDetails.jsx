@@ -13,7 +13,9 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const generateApiKey = async () => {
+    if (handleGenerateClick) {
       setLoader(true);
+    }
     try {
       const response = await fetch(
         `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`,
@@ -27,17 +29,24 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
 
       if (response.ok) {
         const data = await response.json();
+        localStorage.setItem('apiKey', data.result);
         setLoader(false)
         setKey(data.result);
       } else {
         setLoader(false)
+        // Handle errors here
+        console.error('Error:', response.statusText);
       }
     } catch (error) {
       setLoader(false)
+      // Handle network errors or exceptions
+      console.error('Error:', error);
     }
   };
 
-
+  useEffect(() => {
+    generateApiKey();
+  }, [customerID]);
 
   const {
     fullName,
@@ -113,6 +122,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
             <button
               className="px-4 py-2 bg-[#1b52b1] text-white  md:text-sm text-[12px] font-semibold hover:bg-[#1b52b1] focus:outline-none"
               onClick={() => {
+                setHandleGenerateClick(true);
                 generateApiKey();
               }}
             >
@@ -125,6 +135,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
             <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Generated API Key:
             </div>
+            {handleGenerateClick && (
               <>
                 {loader ? (
                   <div className='w-3/4'>
@@ -136,6 +147,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
                   </p>
                 )}
               </>
+            )}
           </div>
         </div>
       </div>
