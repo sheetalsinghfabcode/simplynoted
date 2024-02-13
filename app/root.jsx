@@ -22,6 +22,7 @@ import favicon from '../public/favicon.svg';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
+import productStyles from './styles/products.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {StateContextProvider} from './context/StateContext';
@@ -44,6 +45,7 @@ export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
 export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
+    {rel: 'stylesheet', href: productStyles},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -249,7 +251,7 @@ async function getLayoutData({storefront, env}) {
         customPrefixes,
       )
     : undefined;
-  
+
   const footerMenu = data?.footerMenu
     ? parseMenu(
         data.footerMenu,
