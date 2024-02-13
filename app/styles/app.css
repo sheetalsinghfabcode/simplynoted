@@ -218,19 +218,6 @@ a.active {
   }
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
-  background: transparent;
-  bottom: 0;
-  color: transparent;
-  cursor: pointer;
-  height: auto;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: auto;
-}
-
 input[type='checkbox'] {
   box-shadow: none;
   outline: none;
@@ -251,6 +238,10 @@ input[type=checkbox]:focus {
 }
 
 .highlight-none {
+  box-shadow: none;
+}
+
+.highlight-none:focus {
   box-shadow: none;
 }
 
@@ -390,18 +381,6 @@ nav a {
   visibility: visible;
 }
 
-#example-one-input {
-  height: 200px;
-  width: 100%;
-  border-radius: 6px;
-  padding: 5px 10px;
-}
-#example-one-input2 {
-  height: 100px;
-  width: 56%;
-  border-radius: 6px;
-  padding: 5px 10px;
-}
 #customText {
   margin: 10px;
   width: 50%;

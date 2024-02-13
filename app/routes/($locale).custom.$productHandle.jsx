@@ -188,12 +188,6 @@ export default function CustomProducts() {
       )}
       {productshow ? (
         <>
-          <DynamicButton
-            className="bg-[#EF6E6E] m-5 ml-[32px] w-full max-w-[150px]"
-            text="Go Back"
-            backArrow={true}
-            onClickFunction={goBack}
-          />
           <Section
             className={`px-0 md:px-8
            ${
@@ -202,13 +196,26 @@ export default function CustomProducts() {
              'opacity-40'
            } `}
           >
-            <div className="flex flex-wrap md:flex-row flex-col w-full lg:gap-[10px] gap-[30px]">
+            <div className="flex flex-wrap md:flex-row flex-col w-full lg:gap-[10px] gap-[30px] justify-between">
+              {customProductData && (
+                <ProductInfo
+                  title={customProductData?.title}
+                  product={customProductData}
+                  show={show}
+                  setShow={setShow}
+                  setShowBox={setShowBox}
+                  editFontFamily={editFontFamily}
+                  setFontFamily={setFontFamily}
+                  setCustomFontName={setCustomFontName}
+                  editCustomFontFamily={editCustomFontFamily}
+                />
+              )}
               <div
-                className={`swimlane flex flex-col hiddenScroll md:p-0 md:overflow-x-auto md:grid-cols-2 md:w-[50%] w-full mb-0 `}
+                
+                className={`swimlane flex flex-col hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full max-h-[400px] justify-center items-end`}
               >
                 <div
-                  className="md:aspect-[4/5]',
-          'aspect-square snap-center card-image bg-white dark:bg-contrast/10  md:w-[92%] md:h-[386px] h-[100%] w-full "
+                  className="product-image-cont card-image self-center bg-white dark:bg-contrast/10"
                 >
                   {customProductData &&
                     metafields &&
@@ -226,7 +233,7 @@ export default function CustomProducts() {
                             ? customProductData.images[imageShow].originalSrc
                             : foldBack
                         }
-                        className="object-contain  fadeIn md:w-[583px] md:h-[386px] h-full w-full"
+                        className="!object-contain fadeIn h-full w-full"
                       />
                     )}
                   {/* {metafields && metafields.face.zoom}------ */}
@@ -244,7 +251,7 @@ export default function CustomProducts() {
                           ? customProductData.images[imageShow].originalSrc
                           : flatCardImg
                       }
-                      className="object-contain  fadeIn  md:w-[583px] md:h-[386px] h-full w-full"
+                      className="object-contain fadeIn h-full w-full"
                     />
                   )}
                 </div>
@@ -252,43 +259,24 @@ export default function CustomProducts() {
                   customProductData.images.length > 1 &&
                   metafields &&
                   metafields.cardType == 'folded5x7' && (
-                    <div className="flex md:w-[92%] w-full gap-[10px]">
-                      <button
-                        style={{
-                          backgroundColor:
-                            imageShow == '0' ? '#001a5f' : '#ef6e6e',
-                        }}
-                        className={`bg-[#1b5299]  w-full p-2 text-[#fff]`}
-                        onClick={() => setImageShow(0)}
-                      >
-                        VIEW CARD FRONT
-                      </button>
-                      <button
-                        style={{
-                          backgroundColor:
-                            imageShow == '1' ? '#001a5f' : '#ef6e6e',
-                        }}
-                        className="bg-[#EF6E6E]   w-full p-2 text-[#fff]"
-                        onClick={() => setImageShow(1)}
-                      >
-                        VIEW CARD BACK
-                      </button>
+                    <div className="flex w-full gap-[10px]">
+                      <DynamicButton
+                        className={`${
+                          imageShow == '0' ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
+                        } w-[100%] text-[#fff] py-[14px] px-[8px] font-normal text-base rounded`}
+                        text="VIEW CARD FRONT"
+                        onClickFunction={() => setImageShow(0)}
+                      />
+                      <DynamicButton
+                        className={`${
+                          imageShow == '1' ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
+                        } w-[100%] text-[#fff] py-[14px] px-[8px] font-normal text-base rounded`}
+                        text="VIEW CARD BACK"
+                        onClickFunction={() => setImageShow(1)}
+                      />
                     </div>
                   )}
               </div>
-              {customProductData && (
-                <ProductInfo
-                  title={customProductData?.title}
-                  product={customProductData}
-                  show={show}
-                  setShow={setShow}
-                  setShowBox={setShowBox}
-                  editFontFamily={editFontFamily}
-                  setFontFamily={setFontFamily}
-                  setCustomFontName={setCustomFontName}
-                  editCustomFontFamily={editCustomFontFamily}
-                />
-              )}
             </div>
             {locationValue && (
               <MessageWriting

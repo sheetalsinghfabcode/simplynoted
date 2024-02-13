@@ -348,7 +348,7 @@ export function MessageWriting({
         return (
           <div className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2`}>
             <span
-              className={`flex `}
+              className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.header.fontType,
                 fontSize: metafields.header.fontSize,
@@ -356,7 +356,6 @@ export function MessageWriting({
                 justifyContent: metafields.header.justifyContent,
                 flexDirection: metafields.header.flexDirection,
                 color: metafields.header.fontColor,
-                width: '100%',
                 maxWidth: qrValue ? '93%' : '100%',
               }}
             >
@@ -391,7 +390,7 @@ export function MessageWriting({
             className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem]`}
           >
             <span
-              className={`flex `}
+              className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.footer.fontType,
                 fontSize: metafields.footer.fontSize,
@@ -399,7 +398,6 @@ export function MessageWriting({
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
                 color: metafields.footer.fontColor,
-                width: '100%',
                 maxWidth: qrValue ? '93%' : '100%',
               }}
             >
@@ -1096,7 +1094,7 @@ export function MessageWriting({
             }`}
           >
             <div className="flex flex-col items-start lg:flex-row lg:items-center gap-[8px] 3xl:gap-[15px] text-center mb-2">
-              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[14px] flex-1 w-full text-left">
+              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[13px] flex-1 w-full text-left">
                 <span> Standard Handwriting Style</span>
                 <select
                   id="font"
@@ -1197,7 +1195,7 @@ export function MessageWriting({
                   </option>
                 </select>
               </div>
-              <div className="font-bold sm:text-[12px] md:text-[10px] text-left xl:text-[14px] flex-1 w-full self-end">
+              <div className="font-bold sm:text-[12px] md:text-[10px] text-left xl:text-[13px] flex-1 w-full self-end">
                 <span>Custom Handwriting Style</span>
                 <select
                   id="Coustomfont"
@@ -1218,18 +1216,13 @@ export function MessageWriting({
                     ))}
                 </select>
               </div>
-              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[14px] flex-1 w-full text-left self-end">
+              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[13px] flex-1 w-full text-left self-end">
                 <span>Optional shipping date</span>
-                <div className="flex">
+                <div className="flex relative">
                   <input
                     type="date"
-                    className="highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl"
+                    className="calendar-input highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl"
                     min={new Date().toISOString().split('T')[0]}
-                  />
-                  <img
-                    src={calendarIcon}
-                    className="rounded-tr rounded-br"
-                    alt="calendar"
                   />
                 </div>
               </div>
@@ -1393,7 +1386,7 @@ export function MessageWriting({
             </div>
           </div>
         </div>
-        <div className="flex flex-col sm:w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0">
+        <div className="flex flex-col w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0">
           <div
             id="outer"
             className="outerr shadow-lg h-[380px] bg-white relative md:mx-0"
@@ -1457,7 +1450,7 @@ export function MessageWriting({
             </div>
             {/* {name2.length>0 && */}
             <div
-              className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto bg-white `}
+              className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
               ref={ref}
               style={{display: name2.length > 0 ? 'block' : 'none'}}
             >
