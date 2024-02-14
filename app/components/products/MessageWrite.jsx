@@ -20,7 +20,8 @@ import calendarIcon from '../../../assets/Image/calendar.png';
 import {Text} from '../Text';
 import {FaYoutube} from 'react-icons/fa';
 import {FiUploadCloud} from 'react-icons/fi';
-import { RxCross2 } from "react-icons/rx";
+import {RxCross2} from 'react-icons/rx';
+import {VideoTutorial} from '../VideoTutorial';
 
 let mainMessageBox,
   signOffTextBox,
@@ -105,6 +106,8 @@ export function MessageWriting({
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
+  const [videoBtn, setVideoBtn] = useState(false);
+
   console.log({metafieldsHeader, metafieldsFooter});
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
@@ -911,48 +914,48 @@ export function MessageWriting({
     }
   }
   function AddNewTemplate() {
-    return (       
+    return (
       <div>
         <div className="flex justify-end ">
-        <DynamicButton
-          className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
-          onClickFunction={() => setAddNewTem(false)}
-          text="X"
-        />
+          <DynamicButton
+            className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
+            onClickFunction={() => setAddNewTem(false)}
+            text="X"
+          />
         </div>
-      <div className="w-[29rem] m-[2rem]">
-      <div>
-        <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
-          NEW TEMPLATE
-        </h1>
-      </div>  
-      <div>
-        <input
-          type="text"
-          ref={ref4}
-          value={tempVal}
-          className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
-        />
+        <div className="w-[29rem] m-[2rem]">
+          <div>
+            <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
+              NEW TEMPLATE
+            </h1>
+          </div>
+          <div>
+            <input
+              type="text"
+              ref={ref4}
+              value={tempVal}
+              className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
+            />
+          </div>
+          {errorTemplate && (
+            <span className="text-red-500 font-karla">
+              Please check that the value is not empty
+            </span>
+          )}
+          <div className="flex justify-center gap-[17px] mt-[18px] items-center">
+            <DynamicButton
+              className="bg-[#1b5299]                                                                                                                                                                                                                                                                                                                                                                                                      ] w-full h-[40px]  w-36"
+              onClickFunction={() => addNewTemplateFunc()}
+              text="Save template"
+            />
+            <DynamicButton
+              className="bg-gray-400 w-full h-[40px]  w-36"
+              text="Cancel"
+              onClickFunction={() => setAddNewTem(false)}
+            />
+          </div>
+        </div>
       </div>
-      {errorTemplate && (
-        <span className="text-red-500 font-karla">
-          Please check that the value is not empty
-        </span>
-      )}
-      <div className="flex justify-center gap-[17px] mt-[18px] items-center">
-        <DynamicButton
-          className="bg-[#1b5299]                                                                                                                                                                                                                                                                                                                                                                                                      ] w-full h-[40px]  w-36"
-          onClickFunction={() => addNewTemplateFunc()}
-          text="Save template"
-        />
-        <DynamicButton
-          className="bg-gray-400 w-full h-[40px]  w-36"
-          text="Cancel"
-          onClickFunction={() => setAddNewTem(false)}
-        />
-      </div>
-    </div>
-    </div>
     );
   }
   async function SavedTemp() {
@@ -988,8 +991,7 @@ export function MessageWriting({
 
     return (
       <>
-        <div className="flex justify-end ">
-        </div>
+        <div className="flex justify-end "></div>
         <div className=" w-[29rem] m-[2rem]">
           <div>
             <h1 className="text-[34px] text-[#001a5f] font-bold font-karla">
@@ -1012,21 +1014,23 @@ export function MessageWriting({
           {loadTempData &&
             filteredList(loadTempData, searchData).map((item) => (
               <div className="p-3">
-              <div className="border border-black-600 px-[10px] h-[42px] items-center w-full flex">
-                <div className="w-full font-font-semibold mt-[10px] text-[14px]">{item.templateName}</div>
-                <div className="w-full flex items-center gap-[11px] justify-end">
-                  <img
-                    src={TickImg}
-                    className="w-[12%] h-[5%] cursor-pointer"
-                    onClick={() => setLoadedTemVal(item.customMessage)}
-                  />
-                  <img
-                    src={Del}
-                    className="w-[12%] h-[5%] cursor-pointer"
-                    onClick={() => deleteTemp(item._id)}
-                  />
+                <div className="border border-black-600 px-[10px] h-[42px] items-center w-full flex">
+                  <div className="w-full font-font-semibold mt-[10px] text-[14px]">
+                    {item.templateName}
+                  </div>
+                  <div className="w-full flex items-center gap-[11px] justify-end">
+                    <img
+                      src={TickImg}
+                      className="w-[12%] h-[5%] cursor-pointer"
+                      onClick={() => setLoadedTemVal(item.customMessage)}
+                    />
+                    <img
+                      src={Del}
+                      className="w-[12%] h-[5%] cursor-pointer"
+                      onClick={() => deleteTemp(item._id)}
+                    />
+                  </div>
                 </div>
-              </div>
               </div>
             ))}
           <div></div>
@@ -1287,11 +1291,11 @@ export function MessageWriting({
             <div className="flex w-full items-center">
               <img
                 src={AiImage}
-                className="h-[35px] cursor-pointer  mt-3 mb-5"
+                className="h-[35px] cursor-pointer  mt-3 mb-3 lg:mb-5"
                 onClick={() => setIsOpen(true)}
               />
               <span
-                className="cursor-pointer font-bold text-[#836FE5]  md:text-[14px] text-[16px] underline"
+                className="cursor-pointer font-bold text-[#836FE5] text-[12px] md:text-[14px] lg:mb-[7px] underline"
                 onClick={() => setIsOpen(true)}
               >
                 <span className="text-[red]">Try our</span> New AI Message
@@ -1372,7 +1376,7 @@ export function MessageWriting({
             )}
             <div className="flex w-full justify-between xl:flex-row flex-col ">
               <div className="flex flex-col justify-between gap-2">
-                <div className="flex justify-between font-bold text-[#1b5299] text-[14px] gap-[20px] items-start xl:mr-3">
+                <div className="flex justify-between font-bold text-[#1b5299] text-[12px] md:text-[14px] gap-[20px] items-start xl:mr-3 mb-2">
                   <button
                     className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2"
                     onClick={() => OpenAddTemplateBox()}
@@ -1380,7 +1384,7 @@ export function MessageWriting({
                     Save New Template
                   </button>
                   <button
-                    className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2"
+                    className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2 sm:text-[12px] "
                     onClick={() => OpenLoadTemp()}
                   >
                     Load Save Template
@@ -1421,10 +1425,14 @@ export function MessageWriting({
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0">
+        <div
+          className={`flex flex-col w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0  relative ${
+            show ? 'h-[940px]' : 'h-[370px] '
+          }`}
+        >
           <div
             id="outer"
-            className="outerr shadow-lg h-[380px] bg-white relative md:mx-0"
+            className="outerr shadow-lg h-[380px] bg-white absolute top-0 right-0 left-0 bottom-0 md:mx-0"
           >
             {metafields &&
               metafields.isHeaderIncluded &&
@@ -1517,7 +1525,8 @@ export function MessageWriting({
           </div>
 
           {show && (
-            <div className="mt-3">
+            // This margin is similar to the height of the absolute div above this
+            <div className="mt-[370px]">
               {/* <div className="lg:w-[50%] w-[100%] flex justify-start font-bold md:mt-[10px] mt-[25px]">
                 <text>
                   As of july5,2023, we have upgraded the bulk order
@@ -1533,9 +1542,15 @@ export function MessageWriting({
                         Add all addresses to address book
                       </label>
                     </div>
-                    <div className="flex items-center gap-[10px]">
-                      <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
-                      <span className="underline text-[#1B5299] font-bold">
+                    <div
+                      className="flex items-center gap-[10px]"
+                      onClick={() => setVideoBtn(true)}
+                    >
+                      <div className="relative mb-1">
+                        <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
+                        <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
+                      </div>
+                      <span className="underline text-[#1B5299] font-bold cursor-pointer">
                         Bulk Upload Tutorial Video
                       </span>
                     </div>
@@ -1571,7 +1586,7 @@ export function MessageWriting({
                   </div>
                 ) : (
                   <div className="w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center">
-                    <div className="w-[50%] flex flex-col gap-3 justify-center items-center">
+                    <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
                       ) : (
@@ -1579,9 +1594,15 @@ export function MessageWriting({
                           <div className="rounded-full p-3 bg-[#E6E6E6] text-[20px]">
                             <FiUploadCloud />
                           </div>
-                          <div className="flex items-center gap-[10px]">
-                            <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
-                            <span className="underline text-[#1B5299] font-bold">
+                          <div
+                            className="flex items-center gap-[10px]"
+                            onClick={() => setVideoBtn(true)}
+                          >
+                            <div className="relative mb-1">
+                              <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
+                              <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
+                            </div>
+                            <span className="underline text-[#1B5299] font-bold cursor-pointer">
                               Bulk Upload Tutorial Video
                             </span>
                           </div>
@@ -1672,6 +1693,14 @@ export function MessageWriting({
               </div>
             </div>
           )}
+          <Instruction
+            isOpen={videoBtn}
+            body={<VideoTutorial />}
+            close={true}
+            closeModal={() => {
+              setVideoBtn(false);
+            }}
+          />
           {!show && (
             <div className="bg-[#001a5f] h-[50px] text-center mt-10">
               <button
@@ -1797,10 +1826,8 @@ export function MessageWriting({
       />
 
       <Instruction
-      
         isOpen={loadTemModal}
         close={true}
-      
         title=""
         closeModal={() => setLoadTemModal(false)}
         table={false}

@@ -2574,6 +2574,7 @@ body {
   .swiper-button-next {
     background-color: #ef6e6e;
     padding: 8px;
+    padding-left: 8px;
     border-radius: 50%;
   }
 
