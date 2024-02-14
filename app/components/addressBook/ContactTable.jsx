@@ -10,6 +10,8 @@ import ErrorModal from '../modal/ErrorModal';
 import Instruction from '../modal/Instruction';
 import chooseFile from '../../../assets/Image/choose-file.svg';
 import {useLocation} from '@remix-run/react';
+import { VideoTutorial } from '../VideoTutorial';
+
 
 const ContactTable = ({
   customerID,
@@ -35,9 +37,9 @@ const ContactTable = ({
   const [errorContent, serErrorContent] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [uploadBulkAddress, setUploadBulkAddress] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   const pathName = useLocation();
-
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
     const dateB = new Date(b.created);
@@ -535,28 +537,88 @@ const ContactTable = ({
               ADDRESS BOOK
             </h2>
           )}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 my-8">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 my-8">
             <div className="w-full max-w-[400px]">
               <input
                 type="text"
                 placeholder="Search Addresses..."
                 value={searchText}
                 onChange={handleSearchInputChange}
-                className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-[#001A5F] rounded-[8px]"
+                className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-[#001A5F]"
               />
             </div>
-            <div className="flex items-end gap-[40px]">
-              <div className="flex items-center justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+            <div className="tab:flex grid md:items-end  items-center md:gap-[40px]">
+              <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#EF6E6E] px-[50px] py-[14px] text-[14px] font-normal "
+                  className="bg-[#EF6E6E] px-[50px] py-[14px] w-[190px] h-[45px] text-[14px] font-normal "
                   text="Upload Bulk Address"
-                  onClickFunction={() => setUploadBulkAddress(!uploadBulkAddress)}
+                  onClickFunction={() =>
+                    setUploadBulkAddress(!uploadBulkAddress)
+                  }
                 />
               </div>
 
-              <div className="flex items-center justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
+              {uploadBulkAddress && (
+                <div
+                  className="absolute right-[165px] top-[57px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[25%] mx-auto ring-black ring-opacity-5 focus:outline-none"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <div className="flex flex-col justify-center items-start p-4">
+                    <div className="flex flex-col items-start gap-[4px]">
+                      <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
+                        Bulk Address Upload{' '}
+                      </h2>
+                      <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] cursor-pointer leading-[157.14%]"
+                      onClick={() => setShowVideo(true)}
+                      >
+                        Watch Tutorial <span className="underline">Video</span>
+                      </h4>
+                    </div>
+                    <div className="flex flex-col justify-center mt-[16px] mb-[8px] items-center border-2 border-dashed max-w-[100%] w-[100%] min-h-[100px] border-[#1B5299]">
+                      <label
+                        htmlFor="fileInput"
+                        className="flex flex-col items-center cursor-pointer"
+                      >
+                        <input
+                          id="fileInput"
+                          onChange={handleFileChange}
+                          type="file"
+                          accept=".csv"
+                          ref={file}
+                          className="hidden"
+                        />
+                        <img
+                          className="h-[43px] w-[43px]"
+                          src={chooseFile}
+                          alt="choose-file"
+                        />
+                        <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[16px] leading-[22px]">
+                          Choose File
+                        </h4>
+                      </label>
+                    </div>
+
+                    <a
+                      className="text-[#000] text-[14px] leading-[22px] font-karla font-bold"
+                      href="https://api.simplynoted.com/docs/bulk-template"
+                    >
+                      Download bulk address template
+                    </a>
+                    <span
+                      onClick={openModal}
+                      className="font-bold text-[#000] md:text-[14px] text-[12px] leading-[22px] font-karla font-bold cursor-pointer underline"
+                    >
+                      View bulk upload instructions.
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299] px-[50px] py-[14px] text-[14px] font-normal "
+                  className="bg-[#1b5299] px-[50px] w-[190px] h-[45px] py-[14px] text-[14px] font-normal "
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />
@@ -564,55 +626,6 @@ const ContactTable = ({
             </div>
           </div>
 
-          {uploadBulkAddress && (
-            <div className="flex flex-col justify-center items-start">
-              <div className="flex flex-col items-start gap-[4px]">
-                <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
-                  Bulk Address Upload{' '}
-                </h2>
-                <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] leading-[157.14%]">
-                  Watch Tutorial <span className="underline">Video</span>
-                </h4>
-              </div>
-
-              <div className="flex flex-col justify-center mt-[16px] mb-[8px] items-center border-2 border-dashed min-h-[100px] md:min-w-[240px] border-[#1B5299]">
-                <label
-                  htmlFor="fileInput"
-                  className=" flex flex-col items-center cursor-pointer"
-                >
-                  <input
-                    id="fileInput"
-                    onChange={handleFileChange}
-                    type="file"
-                    accept=".csv"
-                    ref={file}
-                    className="hidden"
-                  />
-                  <img
-                    className="h-[43px] w-[43px]"
-                    src={chooseFile}
-                    alt="choose-file"
-                  />
-                  <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[16px] leading-[22px]">
-                    Choose File
-                  </h4>
-                </label>
-              </div>
-
-              <a
-                className="text-[#000] text-[14px] leading-[22px] font-karla font-bold"
-                href="https://api.simplynoted.com/docs/bulk-template"
-              >
-                Download bulk address template
-              </a>
-              <span
-                onClick={openModal}
-                className="font-bold text-[#000]  md:text-[14px] text-[12px] leading-[22px] font-karla font-bold cursor-pointer underline"
-              >
-                View bulk upload instructions.
-              </span>
-            </div>
-          )}
           {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
               <div
                 className={`md:w-[310px]  w-full border-2 border-solid border-[#000] py-[5px]`}
@@ -671,7 +684,7 @@ const ContactTable = ({
                       Delete Selected
                     </button>
                   )}
-                <span className="text-black text-[14px] lg:mt-[0px] mt-[12px] font-bold">
+                <span className="text-black text-[13px] lg:mt-[0px] mt-[12px] font-bold">
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
@@ -687,19 +700,23 @@ const ContactTable = ({
               )}
               {/* Your table rendering code here... */}
               <div className="overflow-auto">
-                <table className="overflow-auto min-w-full">
-                  <thead>
+                <table className="overflow-auto min-w-full bg-gray-200 text-black">
+                  <thead className="bg-[#0D0C22] text-[white] text-[14px] font-bold">
                     {headerGroups.map((headerGroup) => (
                       <tr {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map((column) => (
                           <th
                             {...column.getHeaderProps()}
-                            className="text-center whitespace-nowrap uppercase text-gray-900 bg-gray-200 border border-gray-300 text-sm font-semibold py-2 px-4"
+                            className={`text-center whitespace-nowrap uppercase ${
+                              column.id === 'type'
+                                ? 'bg-gray-300'
+                                : 'bg-gray-200'
+                            }text-sm font-semibold py-2 px-4`}
                           >
                             {column.id === 'type' ? (
                               <div className="flex items-center relative type-select">
                                 <select
-                                  className="bg-transparent text-gray-900 border-none outline-none appearance-none absolute inset-y-0 right-0 pr-3"
+                                  className="bg-transparent text-black border-none outline-none appearance-none absolute inset-y-0 right-0 pr-3"
                                   onChange={handleTypeChange}
                                   value={selectedType}
                                 >
@@ -709,7 +726,7 @@ const ContactTable = ({
                                 </select>
                                 <span className="mr-1">Type</span>
                                 <svg
-                                  className="w-4 h-4 text-gray-600 fill-current"
+                                  className="w-4 h-4 text-white fill-current"
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 20 20"
                                 >
@@ -734,21 +751,19 @@ const ContactTable = ({
                   </thead>
                   {!updateLoader && !loader && (
                     <tbody>
-                      {page.map((row) => {
+                      {page.map((row, index) => {
                         prepareRow(row);
                         return (
                           <tr
                             {...row.getRowProps()}
                             className={`text-center font-semibold ${
-                              row.index % 2 === 0
-                                ? 'bg-gray-100'
-                                : 'bg-gray-200'
+                              index % 2 === 0 ? 'bg-white' : 'bg-white'
                             }`}
                           >
                             {row.cells.map((cell) => (
                               <td
                                 {...cell.getCellProps()}
-                                className="border border-gray-300 py-2 px-4"
+                                className="border border-[#EFEFF2] py-2 px-4 whitespace-nowrap"
                               >
                                 {cell.render('Cell')}
                               </td>
@@ -850,6 +865,11 @@ const ContactTable = ({
           />
         </div>
       )}
+   <Instruction
+      isOpen={showVideo}
+      body={<VideoTutorial/>}
+      close={true}
+      closeModal={() => setShowVideo(false)}/>
     </>
   );
 };
