@@ -20,6 +20,7 @@ import calendarIcon from '../../../assets/Image/calendar.png';
 import {Text} from '../Text';
 import {FaYoutube} from 'react-icons/fa';
 import {FiUploadCloud} from 'react-icons/fi';
+import { RxCross2 } from "react-icons/rx";
 
 let mainMessageBox,
   signOffTextBox,
@@ -910,19 +911,27 @@ export function MessageWriting({
     }
   }
   function AddNewTemplate() {
-    return (
+    return (       
+      <div>
+        <div className="flex justify-end ">
+        <DynamicButton
+          className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
+          onClickFunction={() => setAddNewTem(false)}
+          text="X"
+        />
+        </div>
       <div className="w-[29rem] m-[2rem]">
       <div>
-        <h1 className="text-2xl text-blue-800 font-karla">
+        <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
           NEW TEMPLATE
         </h1>
-      </div>
+      </div>  
       <div>
         <input
           type="text"
           ref={ref4}
           value={tempVal}
-          className="border border-gray-300 p-2 rounded-md w-full"
+          className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
         />
       </div>
       {errorTemplate && (
@@ -930,18 +939,19 @@ export function MessageWriting({
           Please check that the value is not empty
         </span>
       )}
-      <div>
+      <div className="flex justify-center gap-[17px] mt-[18px] items-center">
         <DynamicButton
-          className="bg-blue-700 text-base w-36 mt-4"
+          className="bg-[#1b5299]                                                                                                                                                                                                                                                                                                                                                                                                      ] w-full h-[40px]  w-36"
           onClickFunction={() => addNewTemplateFunc()}
           text="Save template"
         />
         <DynamicButton
-          className="bg-gray-400 text-base w-36"
+          className="bg-gray-400 w-full h-[40px]  w-36"
           text="Cancel"
           onClickFunction={() => setAddNewTem(false)}
         />
       </div>
+    </div>
     </div>
     );
   }
@@ -978,41 +988,45 @@ export function MessageWriting({
 
     return (
       <>
+        <div className="flex justify-end ">
+        </div>
         <div className=" w-[29rem] m-[2rem]">
           <div>
-            <h1 className="text-[28px] text-[#001a5f] font-karla">
+            <h1 className="text-[34px] text-[#001a5f] font-bold font-karla">
               SELECT TEMPLATE
             </h1>
           </div>
           <div>
             <input
               type="text"
-              className="w-full rounded p-3 mt-4 bg-[#e8e8ea3d] font-karla"
-              placeholder="search Template..."
+              className="w-full rounded p-3 text-[15px] mt-4 bg-[#e8e8ea3d] font-karla"
+              placeholder="Search Template..."
               ref={ref5}
               onChange={(e) => setsearchData(e.target.value)}
             />
           </div>
-          <div className="flex justify-between">
-            <span>Template Name</span>
-            <span>Actions</span>
+          <div className="flex mt-[12px] justify-between">
+            <span className="font-bold text-[15px]">Template Name</span>
+            <span className="font-bold text-[15px]">Actions</span>
           </div>
           {loadTempData &&
             filteredList(loadTempData, searchData).map((item) => (
-              <div className="border border-black-600 px-[10px] items-center w-full flex">
-                <div className="w-full">{item.templateName}</div>
+              <div className="p-3">
+              <div className="border border-black-600 px-[10px] h-[42px] items-center w-full flex">
+                <div className="w-full font-font-semibold mt-[10px] text-[14px]">{item.templateName}</div>
                 <div className="w-full flex items-center gap-[11px] justify-end">
                   <img
                     src={TickImg}
-                    className="w-[8%] h-[5%] cursor-pointer"
+                    className="w-[12%] h-[5%] cursor-pointer"
                     onClick={() => setLoadedTemVal(item.customMessage)}
                   />
                   <img
                     src={Del}
-                    className="w-[8%] h-[5%] cursor-pointer"
+                    className="w-[12%] h-[5%] cursor-pointer"
                     onClick={() => deleteTemp(item._id)}
                   />
                 </div>
+              </div>
               </div>
             ))}
           <div></div>
@@ -1045,6 +1059,7 @@ export function MessageWriting({
   }
   const closeModal = () => {
     setIsModalOpen(false);
+    setLoginModal(false);
   };
   const openModal = () => {
     setIsModalOpen(true);
@@ -1782,7 +1797,10 @@ export function MessageWriting({
       />
 
       <Instruction
+      
         isOpen={loadTemModal}
+        close={true}
+      
         title=""
         closeModal={() => setLoadTemModal(false)}
         table={false}
