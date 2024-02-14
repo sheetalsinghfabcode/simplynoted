@@ -237,7 +237,7 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full global-max-width-handler  bg-[#fff]  mx-auto ">
+    <div className="w-full  ">
       <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
         <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
           <div class="user-name-account">
@@ -257,7 +257,7 @@ function Account({customer, heading, featuredData}) {
             </span>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-[23px] w-full">
+        <div className="flex flex-col global-max-width-handler  bg-[#fff]  mx-auto items-center md:items-start md:flex-row gap-[23px] w-full">
           <div className="flex flex-col items-center md:items-start w-full md:w-[20%] max-w-[200px] font-inter gap-[24px]">
             <>
               {tabs &&
@@ -321,9 +321,9 @@ function Account({customer, heading, featuredData}) {
             />
           </div>
 
-          <div className=" w-full max-w-[972.09px] md:w-[80%]">
+          <div className=" w-full xl:max-w-[972.09px] md:w-[80%]">
             {activeTab === 0 && (
-              <div className="flex gap-[32px] font-inter justify-center sm:justify-normal flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+              <div className=" grid md:grid-cols-2 lg:grid-cols-3 2xl:flex gap-[32px] font-inter justify-center sm:justify-normal 2xl:flex-wrap 2xl:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
@@ -333,7 +333,6 @@ function Account({customer, heading, featuredData}) {
                   showDownloadButton={true}
                   downloadButtonText="Download Bulk Template"
                   onDownload={() => window.open("https://api.simplynoted.com/docs/bulk-template", '_self')}
-
                 />
 
                 <CardComponent
@@ -359,11 +358,11 @@ function Account({customer, heading, featuredData}) {
                   title="Get Help"
                   description="Need Help? Schedule a call with Us Today!"
                   buttonText="Get Started"
+                  showBorder={false}
                   onClick={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
                   onDownload={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
                   showDownloadButton={true}
                   downloadButtonText="See Tutorials"
-                  showBorder={false}
                 />
               </div>
             )}
