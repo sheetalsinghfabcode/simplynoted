@@ -7,7 +7,7 @@ export function NotFound({type = 'page'}) {
   const description = `We couldn’t find the ${type} you’re looking for. Try checking the URL or heading back to the home page.`;
 
   return (
-    <>
+    <div>
       <PageHeader heading={heading}>
         <Text width="narrow" as="p">
           {description}
@@ -17,6 +17,6 @@ export function NotFound({type = 'page'}) {
         </Button>
       </PageHeader>
       <FeaturedSection />
-    </>
+    </div>
   );
 }

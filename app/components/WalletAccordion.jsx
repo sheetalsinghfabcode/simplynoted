@@ -26,8 +26,8 @@ function WalletAccordion({title, children, className,  accordion = false}) {
         />
       </div>
       <div
-        className={`overflow-hidden transition-max-h max-h-0 ${
-          isExpanded ? 'max-h-screen' : ''
+        className={`overflow-hidden  ${
+          isExpanded ? 'max-h-screen transition-max-h duration-800 ease-in-out' : 'transition-max-h max-h-0'
         }`}
       >
         <div className="bg-white border-b-2 border-solid border-[#e6edf8] p-[8px] border border-solid border-[#e6edf8]">{children}</div>

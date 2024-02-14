@@ -2,7 +2,7 @@ import {flattenConnection, Image} from '@shopify/hydrogen';
 import {Heading, Text, Link} from '~/components';
 import {statusMessage} from '~/lib/utils';
 import DynamicButton from './DynamicButton';
-import placeholderImage from "../../assets/Image/product-placeholder.png"
+import placeholderImage from '../../assets/Image/product-placeholder.png';
 
 export function OrderCard({order}) {
   if (!order?.id) return null;
@@ -10,7 +10,7 @@ export function OrderCard({order}) {
   const lineItems = flattenConnection(order?.lineItems);
 
   return (
-    <li className="grid text-center">
+    <li className="grid text-center shadow-lg">
       <Link
         className=" flex md:grid items-center justify-center gap-4 p-4 md:gap-6 md:p-6  md:grid-cols-2"
         to={`/account/orders/${legacyOrderId}?${key}`}
@@ -69,12 +69,9 @@ export function OrderCard({order}) {
           prefetch="intent"
         >
           <DynamicButton
-            className="bg-[#001a5f] font-semibold md:w-[100%] w-[319px] md:text-sm text-[12px] text-[#fff] py-[14px] px-[8px] font-karla"
+            className=" bg-[#001a5f] px-[16px] w-full py-[12px] text-[16px]  text-[#fff]  hover:bg-[#EF6E6E]"
             text="View Details"
           />
-          {/* <Text color="subtle" className="ml-3">
-            View Details
-          </Text> */}
         </Link>
       </div>
     </li>

@@ -291,6 +291,9 @@ export default function Collection() {
       customisedCard();
     }
   }, [offSetVal]);
+
+
+  console.log("data",data);
   return (
     <>
       <div className="md:p-5 p-3">
@@ -328,16 +331,16 @@ export default function Collection() {
             <select
               name=""
               id=""
-              className="!border-none md:w-[244px] w-[270px] text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
+              className="!border-none md:w-[244px] w-[270px] capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
-              <option className="w-full" selected disabled>
+              <option className="w-full " selected disabled>
                 {collectionHandle}
               </option>
 
               {data &&
                 data.map((item) => (
-                  <option value={item.node.handle}>{item.node.handle}</option>
+                  <option className='capitalize' value={item.node.handle}>{item.node.handle}</option>
                 ))}
             </select>
           </div>

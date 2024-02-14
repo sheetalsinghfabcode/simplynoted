@@ -238,7 +238,7 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <div className="w-full max-w-[1480px] bg-[#fff] px-[20px] sm:px-[30px] mx-auto ">
-      <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg::p-[40px] gap-[48px]">
+      <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
         <div className="flex gap-[12px] flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
           <div class="user-name-account">
             {customer.firstName?.charAt(0)}
@@ -327,11 +327,13 @@ function Account({customer, heading, featuredData}) {
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
-                  onDownload={() => navigate('/collections/best-sellers')}
+                  onClick={() => navigate('/collections/best-sellers')}
                   description="Send a card to one or more people by starting here"
                   buttonText="Send Now"
                   showDownloadButton={true}
                   downloadButtonText="Download Bulk Template"
+                  onDownload={() => window.open("https://api.simplynoted.com/docs/bulk-template", '_self')}
+
                 />
 
                 <CardComponent
@@ -339,12 +341,16 @@ function Account({customer, heading, featuredData}) {
                   title="Custom Order"
                   description="Tailored to yours Needs: Custom Orders Welcome!"
                   buttonText="Get Started"
+                  onClick={()=>navigate("/customise-your-card")}
+
+
                 />
                 <CardComponent
                   imgSrc={automate}
                   title="Automate"
                   description="Automate your campaigns with our API or Zapier App"
                   buttonText="Get Started"
+                  onClick={()=>navigate("/zapier-integration")}
                   showDownloadButton={true}
                   downloadButtonText="Generate API Key"
                 />
@@ -353,8 +359,11 @@ function Account({customer, heading, featuredData}) {
                   title="Get Help"
                   description="Need Help? Schedule a call with Us Today!"
                   buttonText="See Tutorials"
+                  onClick={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
+                  onDownload={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
                   showDownloadButton={true}
                   downloadButtonText="See Tutorials"
+                  showBorder={false}
                 />
               </div>
             )}
@@ -384,11 +393,11 @@ function Account({customer, heading, featuredData}) {
 
 function AccountOrderHistory({orders}) {
   return (
-    <div className="mt-6 custom-scrollbar">
-      <div className="md:grid  grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
-        {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
-      </div>
-    </div>
+    <div class="mt-6 custom-scrollbar">
+  <div class="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
+    {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
+  </div>
+</div>
   );
 }
 
@@ -415,7 +424,7 @@ function EmptyOrders() {
 
 function Orders({orders}) {
   return (
-    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false md:grid-cols-3">
+    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 md:grid-cols-2 lg:grid-cols-3">
       {orders.map((order) => (
         <OrderCard order={order} key={order.id} />
       ))}

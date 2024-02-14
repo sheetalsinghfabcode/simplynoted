@@ -978,6 +978,7 @@ export default function AddCartFunc() {
                             <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
                               <input
                                 type="checkbox"
+                                className='cursor-pointer'
                                 onClick={() => setAgree(!agree)}
                                 checked={agree}
                               />
