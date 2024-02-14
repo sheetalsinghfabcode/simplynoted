@@ -22,9 +22,9 @@ function CardComponent({ imgSrc, title, description, buttonText, showDownloadBut
       )}
     </div>
     {showBorder &&
-    <div className="md:absolute hidden right-0 top-0 bottom-0 w-[1px] bg-[#DDDDDD]"/>}
+    <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-[#DDDDDD]"/>}
     <button onClick={onClick} className="flex bg-[#192C6A] mt-auto text-white items-center justify-center w-full max-w-[100px] p-[10px] gap-[10px] rounded-[8px]">
-      {buttonText}
+      <span className='text-[14px] leading-[22px] font-semibold'>{buttonText}</span>
     </button>
   </div>
   

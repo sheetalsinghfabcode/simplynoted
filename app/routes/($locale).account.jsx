@@ -237,9 +237,9 @@ function Account({customer, heading, featuredData}) {
   }
 
   return (
-    <div className="w-full max-w-[1480px] bg-[#fff] px-[20px] sm:px-[30px] mx-auto ">
+    <div className="w-full global-max-width-handler  bg-[#fff]  mx-auto ">
       <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
-        <div className="flex gap-[12px] flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
+        <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
           <div class="user-name-account">
             {customer.firstName?.charAt(0)}
             {customer.lastName?.charAt(0)}
@@ -258,7 +258,7 @@ function Account({customer, heading, featuredData}) {
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-[23px] w-full">
-          <div className="flex flex-col items-center md:items-start w-full md:w-[20%] gap-[24px]">
+          <div className="flex flex-col items-center md:items-start w-full md:w-[20%] max-w-[200px] font-inter gap-[24px]">
             <>
               {tabs &&
                 tabs.length > 0 &&
@@ -274,8 +274,8 @@ function Account({customer, heading, featuredData}) {
                         }
                         className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
                           activeTab === i
-                            ? 'text-[#0D0C22] font-bold'
-                            : 'text-[#6E6D7A] font-semibold'
+                            ? 'text-[#0D0C22] font-semibold'
+                            : 'text-[#6E6D7A] font-normal'
                         }  `}
                         key={i}
                       >
@@ -288,8 +288,8 @@ function Account({customer, heading, featuredData}) {
                         }}
                         className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
                           activeTab === i
-                            ? 'text-[#0D0C22] font-bold'
-                            : 'text-[#6E6D7A] font-semibold'
+                            ? 'text-[#0D0C22] font-semibold'
+                            : 'text-[#6E6D7A] font-normal'
                         }  `}
                         key={i}
                       >
@@ -299,14 +299,14 @@ function Account({customer, heading, featuredData}) {
                   </div>
                 ))}
             </>
-            <div className="border w-full max-w-[200px] border-solid border-[#DBDBDE]"></div>
+            <div className="border w-full max-w-[199.53px] border-solid border-[#DBDBDE]"></div>
             <Form
               method="post"
               action={usePrefixPathWithLocale('/account/logout')}
             >
               <button
                 onClick={() => setData(true)}
-                className="text-[16px] hover:underline cursor-pointer leading-[19.36px] font-bold text-[#FF5555]"
+                className="text-[16px] hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
               >
                 Log Out
               </button>
@@ -321,9 +321,9 @@ function Account({customer, heading, featuredData}) {
             />
           </div>
 
-          <div className=" w-full md:w-[80%]">
+          <div className=" w-full max-w-[972.09px] md:w-[80%]">
             {activeTab === 0 && (
-              <div className="flex gap-[32px] justify-center sm:justify-normal flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+              <div className="flex gap-[32px] font-inter justify-center sm:justify-normal flex-wrap lg:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
@@ -358,7 +358,7 @@ function Account({customer, heading, featuredData}) {
                   imgSrc={help}
                   title="Get Help"
                   description="Need Help? Schedule a call with Us Today!"
-                  buttonText="See Tutorials"
+                  buttonText="Get Started"
                   onClick={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
                   onDownload={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
                   showDownloadButton={true}

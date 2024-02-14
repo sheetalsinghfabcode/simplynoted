@@ -3,6 +3,7 @@
 @tailwind utilities;
 @import 'react-datepicker/dist/react-datepicker';
 @import url('https://fonts.googleapis.com/css2?family=Tiempos:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 @font-face {
   font-family: Karla;
@@ -234,7 +235,7 @@ input[type=checkbox]:focus {
 .global-max-width-handler {
   max-width: 1480px;
   margin: auto;
-  padding: 0 30px 0;
+  padding: 0 80px 0;
 }
 
 .highlight-none {
@@ -247,6 +248,9 @@ input[type=checkbox]:focus {
 
 .font-tiempos {
   font-family: Tiempos, 'serif';
+}
+.font-inter {
+  font-family: "Inter", sans-serif;
 }
 
 .request-button {
@@ -1205,7 +1209,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
   border-radius: 24px;
   margin: 0 auto;
