@@ -35,7 +35,7 @@ import DynamicTitle from '~/components/Title';
 import AddressBook from './($locale).address-book';
 import {fetchWalletData} from '~/utils/graphqlUtils';
 import ManageSubscription from '../components/wallet/ManageSubscription';
-import tutorials from './($locale).tutorials';
+// import tutorials from './($locale).tutorials';
 import CircularLoader from '~/components/CircularLoder';
 import sendcard from '../../assets/Image/send-card.png';
 import help from '../../assets/Image/help.png';
@@ -263,7 +263,7 @@ function Account({customer, heading, featuredData}) {
               {tabs &&
                 tabs.length > 0 &&
                 tabs?.map((tab, i) => (
-                  <div>
+                  <div key={i}>
                     {i === 1 || i === 5 ? (
                       <a
                         target="_blank"

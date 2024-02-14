@@ -57,7 +57,7 @@ export default function tutorials() {
             type="button"
             onClick={() => {
               handleButtonClick('articles');
-              navigate('/blog');
+              navigate('/news');
             }}
           >
             Articles
@@ -67,7 +67,7 @@ export default function tutorials() {
             type="button"
             onClick={() => {
               handleButtonClick('tutorials');
-              navigate('/tutorials');
+              navigate('/Video');
             }}
           >
             Tutorials
@@ -96,7 +96,7 @@ export default function tutorials() {
                     <Link
                     to={`/journal/video/${article.node.handle}`}
                       key={article.node.id}
-                      className="flex flex-col  bg-white text-black hover:text-black"
+                      className="flex flex-col  bg-white text-black hover:text-black shadow-lg"
                       style={{maxWidth: '363px'}}
                     >
                       <div className="flex-1">

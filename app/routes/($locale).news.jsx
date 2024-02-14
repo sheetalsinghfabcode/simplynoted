@@ -156,7 +156,7 @@ console.log(journalArticles,'+++++++++++++');
             type="button"
             onClick={() => {
               handleButtonClick('articles');
-              navigate('/blog');
+              navigate('/news');
             }}
           >
             Articles
@@ -168,7 +168,7 @@ console.log(journalArticles,'+++++++++++++');
             type="button"
             onClick={() => {
               handleButtonClick('tutorials');
-              navigate('/tutorials');
+              navigate('/Video');
             }}
           >
             Tutorials

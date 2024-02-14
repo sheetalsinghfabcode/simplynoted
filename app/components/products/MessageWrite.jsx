@@ -20,8 +20,8 @@ import calendarIcon from '../../../assets/Image/calendar.png';
 import {Text} from '../Text';
 import {FaYoutube} from 'react-icons/fa';
 import {FiUploadCloud} from 'react-icons/fi';
-import {RxCross2} from 'react-icons/rx';
 import {VideoTutorial} from '../VideoTutorial';
+import { RxCross2 } from "react-icons/rx";
 
 let mainMessageBox,
   signOffTextBox,
@@ -280,6 +280,10 @@ export function MessageWriting({
           bulkCsvData: fileData,
           fontSize: fontSize,
           lineHeight: lineHeight,
+          signOffFontSize:
+            fontSize > signOffFontSize ? signOffFontSize : fontSize,
+          signOffLineHeight:
+            lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
         };
       } else {
         alert("you haven't added Address");
@@ -915,47 +919,47 @@ export function MessageWriting({
   }
   function AddNewTemplate() {
     return (
+      <>
+      <div className="flex justify-end ">
+        <DynamicButton
+          className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
+          onClickFunction={() => setAddNewTem(false)}
+          text="X"
+        />
+        </div>
+      <div className="w-[29rem] m-[2rem]">
       <div>
-        <div className="flex justify-end ">
-          <DynamicButton
-            className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
-            onClickFunction={() => setAddNewTem(false)}
-            text="X"
-          />
-        </div>
-        <div className="w-[29rem] m-[2rem]">
-          <div>
-            <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
-              NEW TEMPLATE
-            </h1>
-          </div>
-          <div>
-            <input
-              type="text"
-              ref={ref4}
-              value={tempVal}
-              className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
-            />
-          </div>
-          {errorTemplate && (
-            <span className="text-red-500 font-karla">
-              Please check that the value is not empty
-            </span>
-          )}
-          <div className="flex justify-center gap-[17px] mt-[18px] items-center">
-            <DynamicButton
-              className="bg-[#1b5299]                                                                                                                                                                                                                                                                                                                                                                                                      ] w-full h-[40px]  w-36"
-              onClickFunction={() => addNewTemplateFunc()}
-              text="Save template"
-            />
-            <DynamicButton
-              className="bg-gray-400 w-full h-[40px]  w-36"
-              text="Cancel"
-              onClickFunction={() => setAddNewTem(false)}
-            />
-          </div>
-        </div>
+        <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
+          NEW TEMPLATE
+        </h1>
       </div>
+      <div>
+        <input
+          type="text"
+          ref={ref4}
+          value={tempVal}
+          className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
+        />
+      </div>
+      {errorTemplate && (
+        <span className="text-red-500 font-karla">
+          Please check that the value is not empty
+        </span>
+      )}
+      <div className="flex justify-center gap-[17px] mt-[18px] items-center">
+        <DynamicButton
+          className="bg-[#1b5299] w-full h-[40px] text-base w-36"
+          onClickFunction={() => addNewTemplateFunc()}
+          text="Save template"
+        />
+        <DynamicButton
+          className="bg-gray-400 w-full h-[40px] w-36"
+          text="Cancel"
+          onClickFunction={() => setAddNewTem(false)}
+        />
+      </div>
+    </div>
+    </>
     );
   }
   async function SavedTemp() {
@@ -1008,7 +1012,7 @@ export function MessageWriting({
             />
           </div>
           <div className="flex mt-[12px] justify-between">
-            <span className="font-bold text-[15px]">Template Name</span>
+          <span className="font-bold text-[15px]">Template Name</span>
             <span className="font-bold text-[15px]">Actions</span>
           </div>
           {loadTempData &&
@@ -1063,7 +1067,7 @@ export function MessageWriting({
   }
   const closeModal = () => {
     setIsModalOpen(false);
-    setLoginModal(false);
+    setLoginModal(false)
   };
   const openModal = () => {
     setIsModalOpen(true);
