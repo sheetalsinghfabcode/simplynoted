@@ -2674,7 +2674,7 @@ body {
 .sidebar {
   scrollbar-color: #888 #f1f1f1;
   scrollbar-width: thin;
-  border-right-width: 1px;
+  border-right-width: 2px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -2722,11 +2722,11 @@ body {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px; /* Width of vertical scrollbar */
+  width: 2px; /* Width of vertical scrollbar */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f0f0f0; /* Color of scrollbar track */
+  background: transparent; /* Color of scrollbar track */
   border-radius: 20px; /* Rounded corners of scrollbar track */
 }
 

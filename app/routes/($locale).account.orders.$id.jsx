@@ -8,6 +8,7 @@ import DynamicTitle from '~/components/Title';
 
 import {statusMessage} from '~/lib/utils';
 import {Link, Heading, PageHeader, Text} from '~/components';
+import DynamicButton from '~/components/DynamicButton';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -68,25 +69,28 @@ export default function OrderRoute() {
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
-      <DynamicTitle
-        text="Back to Order"
-        dynamicButton
-        setOrderHistory={setOrderHistory(true)}
-        title={'Order Detail'}
-      />
+      <div className="mt-[30px]">
+        <DynamicTitle
+          setOrderHistory={setOrderHistory(true)}
+          title={'Order Detail'}
+        />
+      </div>
 
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
         <div>
-          <Text as="h3" size="lead">
+          <h4 className="text-[14px] mb-2 md:text-[18px] lg:text-[20px] font-semibold text-[#000]">
             Order No. {order.name}
-          </Text>
-          <Text className="mt-2" as="p">
+          </h4>
+          <span
+            className="mt-2 text-[#141414e6] text-[14px] md:text-[16px] font-semibold "
+            as="p"
+          >
             Placed on {new Date(order.processedAt).toDateString()}
-          </Text>
+          </span>
           <div className="grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200">
             <table className="min-w-full my-8 divide-y divide-gray-300 md:col-span-3">
               <thead>
-                <tr className="align-baseline ">
+                <tr className="align-baseline text-[16px] xl:text-[18px] font-semibold ">
                   <th
                     scope="col"
                     className="pb-4 pl-0 pr-3 font-semibold text-left"
@@ -130,54 +134,83 @@ export default function OrderRoute() {
                                 />
                               </div>
                             )}
-                            <div className="flex-col justify-center hidden lg:flex">
-                              <Text as="p">
+                            <div className="flex-col text-[14px] justify-center hidden lg:flex">
+                              <p className="text-[16px] text-[#141414e6] font-medium">
                                 {lineItem?.title || 'Untitled Product'}
-                              </Text>
-                              <Text size="fine" className="mt-1" as="p">
+                              </p>
+                              <p className="mt-1 text-[16px] text-[#141414e6] font-medium">
                                 {lineItem?.variant?.title || 'Untitled Variant'}
-                              </Text>
+                              </p>
                             </div>
                             <dl className="grid">
-                              <dt className="sr-only">Product</dt>
+                              <dt className="text-[16px] text-[#141414e6] hidden font-medium">
+                                Product
+                              </dt>
                               <dd className="truncate lg:hidden">
-                                <Heading size="copy" format as="h3">
+                                <Heading
+                                  size="copy"
+                                  className="text-[16px] text-[#141414e6] font-medium"
+                                  format
+                                  as="h3"
+                                >
                                   {lineItem?.title || 'Untitled Product'}
                                 </Heading>
-                                <Text size="fine" className="mt-1">
+                                <Text
+                                  size="fine"
+                                  className="mt-1 text-[16px] text-[#141414e6] font-medium"
+                                >
                                   {lineItem?.variant?.title ||
                                     'Untitled Variant'}
                                 </Text>
                               </dd>
-                              <dt className="sr-only">Price</dt>
+                              <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
+                                Price
+                              </dt>
                               <dd className="truncate sm:hidden">
-                                <Text size="fine" className="mt-4">
+                                <span
+                                  size="fine"
+                                  className="mt-4 text-[16px] text-[#141414e6] font-medium"
+                                >
                                   {lineItem?.variant?.price && (
-                                    <Money data={lineItem.variant.price} />
+                                    <Money
+                                      className="text-[16px] text-[#141414e6] font-medium"
+                                      data={lineItem.variant.price}
+                                    />
                                   )}
-                                </Text>
+                                </span>
                               </dd>
-                              <dt className="sr-only">Quantity</dt>
+                              <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
+                                Quantity
+                              </dt>
                               <dd className="truncate sm:hidden">
-                                <Text className="mt-1" size="fine">
+                                <span
+                                  className="mt-1 text-[16px] text-[#141414e6] font-medium"
+                                  size="fine"
+                                >
                                   Qty: {lineItem.quantity}
-                                </Text>
+                                </span>
                               </dd>
                             </dl>
                           </div>
                         </td>
                         <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
                           {lineItem?.variant?.price && (
-                            <Money data={lineItem.variant.price} />
+                            <Money
+                              className="text-[16px] text-[#141414e6] font-medium"
+                              data={lineItem.variant.price}
+                            />
                           )}
                         </td>
-                        <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        <td className="hidden px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
                           {lineItem.quantity}
                         </td>
-                        <td className="px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        <td className="px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
                           <Text>
                             {lineItem?.discountedTotalPrice && (
-                              <Money data={lineItem.discountedTotalPrice} />
+                              <Money
+                                className="text-[16px] text-[#141414e6] font-medium"
+                                data={lineItem.discountedTotalPrice}
+                              />
                             )}
                           </Text>
                         </td>
@@ -194,23 +227,32 @@ export default function OrderRoute() {
                     <th
                       scope="row"
                       colSpan={3}
-                      className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
+                      className="hidden  pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                     >
-                      <Text>Discounts</Text>
+                      <span className="text-[16px] text-[#141414e6] font-medium">
+                        Discounts
+                      </span>
                     </th>
                     <th
                       scope="row"
                       className="pt-6 pr-3 font-normal text-left sm:hidden"
                     >
-                      <Text>Discounts</Text>
+                      <span className="text-[16px] text-[#141414e6] font-medium">
+                        Discounts
+                      </span>
                     </th>
                     <td className="pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3">
                       {discountPercentage ? (
-                        <span className="text-sm">
+                        <span className="text-[16px] text-[#141414e6] font-medium">
                           -{discountPercentage}% OFF
                         </span>
                       ) : (
-                        discountValue && <Money data={discountValue} />
+                        discountValue && (
+                          <Money
+                            className="text-[16px] text-[#141414e6] font-medium"
+                            data={discountValue}
+                          />
+                        )
                       )}
                     </td>
                   </tr>
@@ -221,23 +263,30 @@ export default function OrderRoute() {
                     colSpan={3}
                     className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
-                    <Text>Subtotal</Text>
+                    <h6 className="text-[18px] text-[#141414e6] font-semibold">
+                      Subtotal
+                    </h6>
                   </th>
                   <th
                     scope="row"
                     className="pt-6 pr-3 font-normal text-left sm:hidden"
                   >
-                    <Text>Subtotal</Text>
+                    <h6 className="text-[18px] text-[#141414e6] font-semibold">
+                      Subtotal
+                    </h6>
                   </th>
-                  <td className="pt-6 pl-3 pr-4 text-right md:pr-3">
-                    <Money data={order.subtotalPriceV2} />
+                  <td className="pt-6 pl-3 pr-4 text-[16px] text-[#141414e6] font-medium  text-right md:pr-3">
+                    <Money
+                      className="text-[16px] text-[#141414e6] font-medium"
+                      data={order.subtotalPriceV2}
+                    />
                   </td>
                 </tr>
                 <tr>
                   <th
                     scope="row"
                     colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
+                    className="hidden pt-4 text-[18px] text-[#141414e6] font-semibold  pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
                     Tax
                   </th>
@@ -245,17 +294,22 @@ export default function OrderRoute() {
                     scope="row"
                     className="pt-4 pr-3 font-normal text-left sm:hidden"
                   >
-                    <Text>Tax</Text>
+                    <h6 className="text-[18px] text-[#141414e6] font-semibold">
+                      Tax
+                    </h6>
                   </th>
                   <td className="pt-4 pl-3 pr-4 text-right md:pr-3">
-                    <Money data={order.totalTaxV2} />
+                    <Money
+                      className="text-[16px] text-[#141414e6] font-medium"
+                      data={order.totalTaxV2}
+                    />
                   </td>
                 </tr>
                 <tr>
                   <th
                     scope="row"
                     colSpan={3}
-                    className="hidden pt-4 pl-6 pr-3 font-semibold text-right sm:table-cell md:pl-0"
+                    className="hidden pt-4 pl-6 pr-3 text-[18px] text-[#141414e6]  font-semibold text-right sm:table-cell md:pl-0"
                   >
                     Total
                   </th>
@@ -263,16 +317,25 @@ export default function OrderRoute() {
                     scope="row"
                     className="pt-4 pr-3 font-semibold text-left sm:hidden"
                   >
-                    <Text>Total</Text>
+                    <h6 className="text-[18px] text-[#141414e6] font-semibold">
+                      Total
+                    </h6>
                   </th>
-                  <td className="pt-4 pl-3 pr-4 font-semibold text-right md:pr-3">
-                    <Money data={order.totalPriceV2} />
+                  <td className="pt-4 pl-3 pr-4  text-right md:pr-3">
+                    <Money
+                      className="text-[16px] text-[#141414e6] font-medium"
+                      data={order.totalPriceV2}
+                    />
                   </td>
                 </tr>
               </tfoot>
             </table>
             <div className="sticky border-none top-nav md:my-8">
-              <Heading size="copy" className="font-semibold" as="h3">
+              <Heading
+                size="copy"
+                className="font-semibold text-[20px] text-[#141414e6] "
+                as="h3"
+              >
                 Shipping Address
               </Heading>
               {order?.shippingAddress ? (
@@ -287,7 +350,12 @@ export default function OrderRoute() {
                   {order?.shippingAddress?.formatted ? (
                     order.shippingAddress.formatted.map((line) => (
                       <li key={line}>
-                        <Text>{line}</Text>
+                        <Text
+                          className="text-[16px] text-[#141414e6]"
+                          font-semibold
+                        >
+                          {line}
+                        </Text>
                       </li>
                     ))
                   ) : (
@@ -295,23 +363,22 @@ export default function OrderRoute() {
                   )}
                 </ul>
               ) : (
-                <p className="mt-3">No shipping address defined</p>
+                <p className="mt-3 text-[14px] text-[#141414e6] font-medium">
+                  No shipping address defined
+                </p>
               )}
-              <Heading size="copy" className="mt-8 font-semibold" as="h3">
+              <Heading
+                size="copy"
+                className="mt-8 mb-4 font-semibold  text-[20px] text-[#141414e6] "
+                as="h3"
+              >
                 Status
               </Heading>
-              <div
-                className={clsx(
-                  `mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto`,
-                  order.fulfillmentStatus === 'FULFILLED'
-                    ? 'bg-green-100 text-green-800'
-                    : 'bg-primary/20 text-primary/50',
-                )}
-              >
-                <Text size="fine">
-                  {statusMessage(order.fulfillmentStatus)}
-                </Text>
-              </div>
+
+              <DynamicButton
+                className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
+                text={statusMessage(order.fulfillmentStatus)}
+              />
             </div>
           </div>
         </div>

@@ -49,15 +49,9 @@ import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 
-let customerId;
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
-  const [arrowDown, setArrowDown] = useState(false);
-
-  const handleShow = () => {
-    setArrowDown(!arrowDown);
-  };
 
   return (
     <>
@@ -566,6 +560,7 @@ function DesktopHeader({isHome, menu}) {
 
 
   const {y} = useWindowScroll();
+
   return (
     <>
       <header
