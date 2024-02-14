@@ -1240,12 +1240,12 @@ body {
   background-position: bottom;
   background-size: 100%;
 }
-.navitems {
+/* .navitems {
   padding-bottom: 8px;
   position: relative;
   overflow: hidden;
   transition: color 700ms;
-}
+} */
 
 .font-aggressive {
   font-family: 'Your-Aggressive-Font-Family', sans-serif;

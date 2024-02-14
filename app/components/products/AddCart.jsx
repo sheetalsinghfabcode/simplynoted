@@ -145,7 +145,7 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await getApi(`${API_PATH}${customerid}&type=recipient`)
+      const res = await getApi(`${API_PATH.GET_ADDRESS}${customerid}&type=recipient`)
       // fetch(
       //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
       // );
@@ -160,7 +160,7 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await getApi(`${API_PATH}${customerid}&type=return`)
+      const res = await getApi(`${API_PATH.GET_ADDRESS}${customerid}&type=return`)
       // fetch(
       //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
       // );
@@ -227,6 +227,7 @@ export function AddCart({
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
+    console.log("**********",cartDataReq);
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
     setMesgtext(cartDataReq.msg);

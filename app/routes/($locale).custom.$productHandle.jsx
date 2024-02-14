@@ -116,10 +116,11 @@ export default function CustomProducts() {
   }, [customProductData]);
   async function getProductDetails() {
     try {
-      const res = await getApi(`${API_PATH.GET_HANDLE_NAME}${productHandle}`)
-      // fetch(
-      //   `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
-      // );
+      const res = await 
+      // getApi(`${API_PATH.GET_HANDLE_NAME}${productHandle}`)
+      fetch(
+        `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
+      );
       const json = await res.json();
       // console.log(json, 'productData');
       setCustomProductData(json.result);
@@ -131,16 +132,17 @@ export default function CustomProducts() {
   async function getMetaFields(id) {
     try {
       const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`;
-      const data = await postApi(API_PATH.GET_METAFIELDS, {productId: id})
-      //  fetch(queryEndPoint, {
-      //   method: 'POST',
-      //   body: JSON.stringify({
-      //     productId: id,
-      //   }),
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      // });
+      const data = await 
+      // postApi(API_PATH.GET_METAFIELDS, {productId: id})
+       fetch(queryEndPoint, {
+        method: 'POST',
+        body: JSON.stringify({
+          productId: id,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       console.log("++++++++++++",id);
       const json = await data.json();
       let extractedData = json.result.metafields[0].value;

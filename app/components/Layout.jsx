@@ -23,6 +23,7 @@ import arrow_down from '../../assets/Image/arrow-down.png';
 import nav_logo from '../../assets/Image/simply-noted-navlogo.avif';
 import {IoIosArrowDown} from 'react-icons/io';
 import {HiOutlineShoppingBag} from 'react-icons/hi2';
+import {AnimatePresence, motion} from 'framer-motion';
 
 import {
   Drawer,
@@ -421,7 +422,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       }}
       className={`${
         isHome ? '' : ''
-      } global-max-width-handler flex lg:hidden items-center h-nav relative backdrop-blur-lg z-40 top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4`}
+      } global-max-width-handler flex lg:hidden items-center h-nav relative z-20 backdrop-blur-lg top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4`}
     >
       <div className="flex items-center justify-start h-full w-full gap-4 ">
         <Link
@@ -517,7 +518,6 @@ function DesktopHeader({isHome, menu}) {
   const handleDropdownEnter = (dropdownId) => {
     setActiveDropdown(dropdownId);
   };
-
   const handleDropdownLeave = () => {
     setActiveDropdown(null);
   };
@@ -558,7 +558,6 @@ function DesktopHeader({isHome, menu}) {
     setCartCountVal(totalCartCount);
   }, []);
 
-
   const {y} = useWindowScroll();
 
   return (
@@ -571,7 +570,7 @@ function DesktopHeader({isHome, menu}) {
             : 'text-primary'
         } ${
           !isHome && y > 50 ? 'shadow-lightHeader' : ''
-        } hidden global-max-width-handler pt-4 h-nav lg:flex items-center lg-text-white bg-transparent transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1`}
+        } hidden global-max-width-handler pt-4 h-nav lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -592,220 +591,278 @@ function DesktopHeader({isHome, menu}) {
           className="flex items-start ml-16 gap-8 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
         >
           {(menu?.items || []).map((item) => {
-            if (
-              [
-                'Order',
-                'Integrations',
-                'Pricing',
-                'About',
-                'Account',
-                'Business',
-              ].includes(item.title)
-            ) {
-              return (
+            return (
+              <div
+                key={item.id}
+                prefetch="intent"
+                className={`${({isActive}) =>
+                  isActive ? 'navitem-active' : 'navitems'}`}
+              >
                 <div
-                  key={item.id}
-                  prefetch="intent"
-                  className={({isActive}) =>
-                    isActive ? 'navitem-active' : 'navitems'
-                  }
+                  className="dropdown"
+                  // onMouseEnter={() => handleDropdownEnter('integrations')}
+                  // onMouseLeave={handleDropdownLeave}
                 >
-                  {item.title === 'Integrations' ? (
-                    <div
-                      className="dropdown"
-                      onMouseEnter={() => handleDropdownEnter('integrations')}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div className="flex navitems items-center gap-[7px]">
-                        <div className="font-[600]">Integrations</div>
-                        <IoIosArrowDown />
-                      </div>
-                      <div
-                        className={`dropdown-content ${
-                          activeDropdown === 'integrations' ? 'show' : ''
-                        }`}
-                      >
-                        <ul className="dropdown-list" onClick={handleItemClick}>
-                          <Link to="/zapier-integration">
-                            <li> Zapier</li>
-                          </Link>
-                          <Link to="/shopify-integration">
-                            <li> Shopify</li>
-                          </Link>
-                          <Link to="/salesforce">
-                            <li> Salesforce</li>
-                          </Link>
-                          <Link to="/api-automation">
-                            <li> API</li>
-                          </Link>
-                        </ul>
-                      </div>
-                    </div>
-                  ) : null}
-                  {item.title === 'Pricing' ? (
-                    <div
-                      className="dropdown"
-                      onMouseEnter={() => handleDropdownEnter('pricing')}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div className="flex navitems items-center gap-[7px]">
-                        <div className="font-[600]">Pricing</div>
-                        <div>
-                          <IoIosArrowDown />
-                        </div>
-                      </div>
-
-                      <div
-                        className={`dropdown-content ${
-                          activeDropdown === 'pricing' ? 'show' : ''
-                        }`}
-                      >
-                        <ul className="dropdown-list" onClick={handleItemClick}>
-                          <Link to="#">
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault();
-                                window.location.href =
-                                  'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
-                                return false;
-                              }}
-                            >
-                              <li> Get a Custom Quote </li>
-                            </button>
-                          </Link>
-                          <Link to="/roicalculator">
-                            <li>ROI Calculator</li>
-                          </Link>
-                        </ul>
-                      </div>
-                    </div>
-                  ) : null}
-
-                  {item.title === 'About' ? (
-                    <div
-                      className="dropdown"
-                      onMouseEnter={() => handleDropdownEnter('about')}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div className="flex navitems items-center gap-[7px]">
-                        <div className="font-[600]">About</div>
-                        <div>
-                          <IoIosArrowDown />
-                        </div>
-                      </div>
-                      <div
-                        className={`dropdown-content ${
-                          activeDropdown === 'about' ? 'show' : ''
-                        }`}
-                      >
-                        <ul className="dropdown-list" onClick={handleItemClick}>
-                          <Link to="/about-us">
-                            <li>About Us</li>
-                          </Link>
-                          <Link to="/tutorials">
-                            <li>Tutorials</li>
-                          </Link>
-                          <a href="https://www.youtube.com/@simplynoted">
-                            <li>Videos</li>
-                          </a>
-                          <Link to="/blog">
-                            <li>Blog.</li>
-                          </Link>
-
-                          <Link to="/faq">
-                            <li>F.A.Q.</li>
-                          </Link>
-                        </ul>
-                      </div>
-                    </div>
-                  ) : null}
-                  {item.title === 'Account' ? (
-                    <div
-                      className="dropdown"
-                      onMouseEnter={() => handleDropdownEnter('account')}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div className="font-[600] navitems">Account</div>
-                      <div
-                        className={`dropdown-content ${
-                          activeDropdown === 'account' ? 'show' : ''
-                        }`}
-                      >
-                        <ul className="dropdown-list" onClick={handleItemClick}>
-                          <Link to="/account">
-                            <li>Account Details</li>
-                          </Link>
-                          <Link to="/manage-subscription">
-                            <li>Manage Plans</li>
-                          </Link>
-                          <Link to="/tutorials">
-                            <li>Order History</li>
-                          </Link>
-                          <Link to="/address-book">
-                            <li>Address Book</li>
-                          </Link>
-                        </ul>
-                      </div>
-                    </div>
-                  ) : null}
-                  {item.title === 'Order' ? (
-                    <div
-                      className="dropdown"
-                      onMouseEnter={() => handleDropdownEnter('order')}
-                      onMouseLeave={handleDropdownLeave}
-                    >
-                      <div className="flex navitems items-center gap-[7px]">
-                        <div className="font-[600]">Order</div>
-                        <div>
-                          <IoIosArrowDown />
-                        </div>
-                      </div>
-                      <div
-                        className={`dropdown-content ${
-                          activeDropdown === 'order' ? 'show' : ''
-                        }`}
-                      >
-                        <ul className="dropdown-list" onClick={handleItemClick}>
-                          <Link to="/collections/best-sellers">
-                            <li>Cards</li>
-                          </Link>
-                          <Link to="/customise-your-card">
-                            <li>Create a Card</li>
-                          </Link>
-                          <Link to="/collections/birthday">
-                            <li>Birthday Automation</li>
-                          </Link>
-                          <Link to="/gift-cards">
-                            <li>Gift Cards </li>
-                          </Link>
-                        </ul>
-                      </div>
-                    </div>
-                  ) : null}
-                  {item.title === 'Business' ? (
-                    <Link to="/business-page">
-                      <div className="navitems  font-[600]">Business</div>
-                    </Link>
-                  ) : null}
-
-                  {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
+                  <div className="font-[600] flex navitems items-center gap-[7px]">
+                    {item.items.length>0?
+                  <FlyoutLink FlyoutContent={PricingContent} data={item.items}>{item.title}</FlyoutLink>
+                  :<Link to={item.to}>{item.title}</Link>
+                    }
+                {item.items && item.items.length>0 &&  <IoIosArrowDown />}
+                  </div>
+                  {/* <div className="font-[600]">{item.title}</div> */}
                 </div>
-              );
-            } else {
-              return (
-                <Link
-                  key={item.id}
-                  to={item.to}
-                  target={item.target}
-                  prefetch="intent"
-                  className={({isActive}) =>
-                    isActive ? 'navitem-active' : 'navitems'
-                  }
-                >
-                  {item.title}
-                </Link>
-              );
-            }
+              </div>
+            );
+            // if (
+            //   [
+            //     'Order',
+            //     'Integrations',
+            //     'Pricing',
+            //     'About',
+            //     'Account',
+            //     'Business',
+            //   ].includes(item.title)
+            // ) {
+            //   return (
+            //     <div
+            //       key={item.id}
+            //       prefetch="intent"
+            //       className={`${({isActive}) =>
+            //         isActive ? 'navitem-active' : 'navitems'}`}
+            //     >
+            //       {item.title === 'Integrations' ? (
+            //         <div
+            //           className="dropdown"
+            //           onMouseEnter={() => handleDropdownEnter('integrations')}
+            //           onMouseLeave={handleDropdownLeave}
+            //         >
+            //           <div className="font-[600] flex navitems items-center gap-[7px]">
+            //             <FlyoutLink FlyoutContent={PricingContent} data={[{title:'Zapier',url:'/shopify-integration'},
+            //             {title:'Shopify',url:'/shopify-integration'},
+            //             {title:'Salesforce',url:'/Salesforce'},
+            //             {title:'API',url:'/api-automation'}]}>
+            //             Integrations
+            //             </FlyoutLink>
+            //             {/* <div className="font-[600]">Integrations</div> */}
+            //             <IoIosArrowDown />
+            //           </div>
+            //           {/* <div
+            //             className={`dropdown-content w-64 bg-white p-6 shadow-xl ${
+            //               activeDropdown === 'integrations' ? 'show' : ''
+            //             }`}
+            //           >
+            //             <ul
+            //               className="mb-3 space-y-3"
+            //               onClick={handleItemClick}
+            //             >
+            //               <Link to="/zapier-integration">
+            //                 <li className="block text-sm hover:underline">
+            //                   {' '}
+            //                   Zapier
+            //                 </li>
+            //               </Link>
+            //               <Link to="/shopify-integration">
+            //                 <li className="block text-sm hover:underline">
+            //                   {' '}
+            //                   Shopify
+            //                 </li>
+            //               </Link>
+            //               <Link to="/salesforce">
+            //                 <li className="block text-sm hover:underline">
+            //                   {' '}
+            //                   Salesforce
+            //                 </li>
+            //               </Link>
+            //               <Link to="/api-automation">
+            //                 <li className="block text-sm hover:underline">
+            //                   {' '}
+            //                   API
+            //                 </li>
+            //               </Link>
+            //             </ul>
+            //           </div> */}
+            //         </div>
+            //       ) : null}
+            //       {item.title === 'Pricing' ? (
+            //         <div
+            //           className="dropdown"
+            //           onMouseEnter={() => handleDropdownEnter('pricing')}
+            //           onMouseLeave={handleDropdownLeave}
+            //         >
+            //           <div className="font-[600] flex navitems items-center gap-[7px]">
+            //           <FlyoutLink FlyoutContent={PricingContent} data={[{title:'Get a Custom Quote',url:'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb'},
+            //             {title:'ROI Calculator',url:'/roicalculator'}]}>
+            //             Pricing
+            //             </FlyoutLink>
+            //             {/* <div className="font-[600]">Pricing</div> */}
+            //             <div>
+            //               <IoIosArrowDown />
+            //             </div>
+            //           </div>
+            //           {/* <div
+            //             className={`dropdown-content ${
+            //               activeDropdown === 'pricing' ? 'show' : ''
+            //             }`}
+            //           >
+            //             <ul className="dropdown-list" onClick={handleItemClick}>
+            //               <Link to="#">
+            //                 <button
+            //                   onClick={(e) => {
+            //                     e.preventDefault();
+            //                     window.location.href =
+            //                       'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
+            //                     return false;
+            //                   }}
+            //                 >
+            //                   <li> Get a Custom Quote </li>
+            //                 </button>
+            //               </Link>
+            //               <Link to="/roicalculator">
+            //                 <li>ROI Calculator</li>
+            //               </Link>
+            //             </ul>
+            //           </div> */}
+            //         </div>
+            //       ) : null}
+
+            //       {item.title === 'About' ? (
+            //         <div
+            //           className="dropdown"
+            //           onMouseEnter={() => handleDropdownEnter('about')}
+            //           onMouseLeave={handleDropdownLeave}
+            //         >
+            //           <div className="font-[600] flex navitems items-center gap-[7px]">
+            //           <FlyoutLink FlyoutContent={PricingContent} data={[{title:'About Us',url:'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb'},
+            //             {title:'Tutorials',url:'/tutorials'},
+            //             {title:'Videos',url:'https://www.youtube.com/@simplynoted'},
+            //             {title:'Blog.',url:'/blog'},
+            //             {title:'F.A.Q.',url:'/faq'}]}>
+            //             About
+            //             </FlyoutLink>
+            //             {/* <div className="font-[600]">About</div> */}
+            //             <div>
+            //               <IoIosArrowDown />
+            //             </div>
+            //           </div>
+            //           {/* <div
+            //             className={`dropdown-content ${
+            //               activeDropdown === 'about' ? 'show' : ''
+            //             }`}
+            //           >
+            //             <ul className="dropdown-list" onClick={handleItemClick}>
+            //               <Link to="/about-us">
+            //                 <li>About Us</li>
+            //               </Link>
+            //               <Link to="/tutorials">
+            //                 <li>Tutorials</li>
+            //               </Link>
+            //               <a href="https://www.youtube.com/@simplynoted">
+            //                 <li>Videos</li>
+            //               </a>
+            //               <Link to="/blog">
+            //                 <li>Blog.</li>
+            //               </Link>
+
+            //               <Link to="/faq">
+            //                 <li>F.A.Q.</li>
+            //               </Link>
+            //             </ul>
+            //           </div> */}
+            //         </div>
+            //       ) : null}
+            //       {item.title === 'Account' ? (
+            //         <div
+            //           className="dropdown"
+            //           onMouseEnter={() => handleDropdownEnter('account')}
+            //           onMouseLeave={handleDropdownLeave}
+            //         >
+            //           <div className="font-[600] navitems">Account</div>
+            //           <div
+            //             className={`dropdown-content ${
+            //               activeDropdown === 'account' ? 'show' : ''
+            //             }`}
+            //           >
+            //             <ul className="dropdown-list" onClick={handleItemClick}>
+            //               <Link to="/account">
+            //                 <li>Account Details</li>
+            //               </Link>
+            //               <Link to="/manage-subscription">
+            //                 <li>Manage Plans</li>
+            //               </Link>
+            //               <Link to="/tutorials">
+            //                 <li>Order History</li>
+            //               </Link>
+            //               <Link to="/address-book">
+            //                 <li>Address Book</li>
+            //               </Link>
+            //             </ul>
+            //           </div>
+            //         </div>
+            //       ) : null}
+            //       {item.title === 'Order' ? (
+            //         <div
+            //           className="dropdown"
+            //           onMouseEnter={() => handleDropdownEnter('order')}
+            //           onMouseLeave={handleDropdownLeave}
+            //         >
+            //           <div className="font-[600] flex navitems items-center gap-[7px]">
+            //           <FlyoutLink FlyoutContent={PricingContent} data={[{title:'Cards',url:'/collections/best-sellers'},
+            //             {title:'Create a Card',url:'/customise-your-card'},
+            //             {title:'Birthday Automation',url:'collections/birthday'},
+            //             {title:'Gift Cards.',url:'/gift-cards'}]}>
+            //             Order
+            //             </FlyoutLink>
+            //             {/* <div className="font-[600]">Order</div> */}
+            //             <div>
+            //               <IoIosArrowDown />
+            //             </div>
+            //           </div>
+            //           {/* <div
+            //             className={`dropdown-content ${
+            //               activeDropdown === 'order' ? 'show' : ''
+            //             }`}
+            //           >
+            //             <ul className="dropdown-list" onClick={handleItemClick}>
+            //               <Link to="/collections/best-sellers">
+            //                 <li>Cards</li>
+            //               </Link>
+            //               <Link to="/customise-your-card">
+            //                 <li>Create a Card</li>
+            //               </Link>
+            //               <Link to="/collections/birthday">
+            //                 <li>Birthday Automation</li>
+            //               </Link>
+            //               <Link to="/gift-cards">
+            //                 <li>Gift Cards </li>
+            //               </Link>
+            //             </ul>
+            //           </div> */}
+            //         </div>
+            //       ) : null}
+            //       {item.title === 'Business' ? (
+            //         <Link to="/business-page">
+            //           <div className="font-[600]">Business</div>
+            //         </Link>
+            //       ) : null}
+
+            //       {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
+            //     </div>
+            //   );
+            // } else {
+            //   return (
+            //     <Link
+            //       key={item.id}
+            //       to={item.to}
+            //       target={item.target}
+            //       prefetch="intent"
+            //       className={`${({isActive}) =>
+            //         isActive ? 'navitem-active' : 'navitems'}`}
+            //     >
+            //       {item.title}
+            //     </Link>
+            //   );
+            // }
           })}
         </div>
         <div className="flex items-start gap-1 mt-1">
@@ -835,25 +892,14 @@ function DesktopHeader({isHome, menu}) {
               </Link>
             )}
           </div>
-
-          <DynamicButton
-            style={{padding: '9px 23px', fontWeight: '700 !important'}}
-            text="REQUEST A SAMPLE"
-            className="request-button text-lg"
-            onClickFunction={() =>
-              (window.location.href =
-                'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
-            }
-          />
-
           {isInitialRender || isAccountLoader ? (
             <div className="h-6 w-6 lg:min-w-[110px]">
               <CircularLoader color="#ef6e6e" height="20px" width="20px" />
             </div>
           ) : (
             <DynamicButton
-              text={customerId ? 'Account →' : 'Sign in →'}
-              className="!font-semibold p-[10px] text-[17px] pt-[13px] !text-black hover:!text-[#001a5f]"
+              text={customerId ? 'Account' : 'Login'}
+              className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-[17px] !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
@@ -861,10 +907,19 @@ function DesktopHeader({isHome, menu}) {
                   navigate('/account');
                 } else if (!customerId) {
                   navigate('account/login');
-                } 
+                }
               }}
             />
           )}
+          <DynamicButton
+            // style={{padding: '11px 20px 10px 20px', fontWeight: '700 !important'}}
+            text="REQUEST A SAMPLE"
+            className="request-button text-lg rounded h-[44px] font-bold px-[20px] py-[10px]"
+            onClickFunction={() =>
+              (window.location.href =
+                'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
+            }
+          />
         </div>
       </header>
       <LoginModal
@@ -880,15 +935,67 @@ function DesktopHeader({isHome, menu}) {
   );
 }
 
+const FlyoutLink = ({children, href, FlyoutContent, data}) => {
+  const [open, setOpen] = useState(false);
+  const showFlyout = FlyoutContent && open;
+  return (
+    <div
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      className="relative w-fit h-fit"
+    >
+      <a href={href} className="relative text-[##001a5f]">
+        {children}
+        <span
+          style={{
+            transform: showFlyout ? 'scaleX(1)' : 'scaleX(0)',
+          }}
+          className="absolute -bottom-2 -left-2 -right-2 h-1 origin-left scale-x-0 rounded-full"
+        />
+      </a>
+      <AnimatePresence>
+        {showFlyout && (
+          <motion.div
+            initial={{opacity: 0, y: 15}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 15}}
+            style={{translateX: '-50%'}}
+            transition={{duration: 0.3, ease: 'easeOut'}}
+            className="absolute left-1/2 top-12 bg-white text-black"
+          >
+            <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
+            <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
+            <FlyoutContent props={data} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const PricingContent = ({props}) => {
+  return (
+    <div className="w-64 bg-wheat p-6 shadow-xl">
+      {props.map((item) => (
+        <div className="mb-3 space-y-3 ">
+          <Link to={item.to} className="block text-sm hover:underline font-[400]">
+            {item.title}
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 function AccountLink({className}) {
   const [root] = useMatches();
   const isLoggedIn = root.data?.isLoggedIn;
   return isLoggedIn ? (
-    <Link to="/account" className={className}>
+    <Link to="/account" className={`${className}`}>
       <IconAccount />
     </Link>
   ) : (
-    <Link to="/account/login" className={className}>
+    <Link to="/account/login" className={`${className}`}>
       <IconLogin />
     </Link>
   );
@@ -1025,7 +1132,6 @@ function FooterMenu({menu}) {
     section: 'grid gap-4',
     nav: 'grid gap-2 pb-6',
   };
-
 
   return (
     <>
