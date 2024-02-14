@@ -111,7 +111,7 @@ export function ProductInfo({
               </span>
             ) : (
               <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
-                $ {product?.variants.nodes[0].price.amount}
+                ${product?.variants.nodes[0].price.amount}
               </span>
             )}
             <div className="text-[#737373] font-medium text:xs md:text-base">
@@ -122,7 +122,7 @@ export function ProductInfo({
             <div className="gap-2 pr-5">
               <button
                 style={{backgroundColor: show ? '#001a5f' : '#ef6e6e'}}
-                className="bg-[#ef6e6e] text-[#fff] p-3 rounded text-[20px] font-normal"
+                className="bg-[#ef6e6e] text-[#fff] p-3 rounded sm:text-[15px] md:text-[20px] font-normal"
                 onClick={() => setShow(true)}
               >
                 Bulk Purchase
@@ -131,7 +131,7 @@ export function ProductInfo({
             <div className="buttonDiv">
               <button
                 style={{backgroundColor: show ? '#ef6e6e' : '#001a5f'}}
-                className="bg-[#001a5f] text-[#fff] p-3 md:pl-8 md:pr-8 rounded text-[20px] font-normal"
+                className="bg-[#001a5f] text-[#fff] p-3 md:pl-8 md:pr-8 rounded sm:text-[15px] md:text-[20px] font-normal"
                 onClick={() => singleBtnCLick()}
               >
                 Single Card
@@ -139,8 +139,11 @@ export function ProductInfo({
             </div>
           </div>
           <div className="flex items-center gap-[10px]" onClick={()=>setVideoBtn(true)}>
-            <FaYoutube className="underline text-[18px] self-start text-[#1B5299] font-bold" />
-            <a className="underline text-[#1B5299] font-bold">
+            <div className="relative mb-1">
+              <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
+              <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
+            </div>
+            <a className="underline text-[#1B5299] font-bold cursor-pointer">
               Watch Tutorial Video
             </a>
           </div>
