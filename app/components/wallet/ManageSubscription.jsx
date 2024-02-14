@@ -79,7 +79,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -103,7 +103,7 @@ const ManageSubscription = () => {
       ...prevLoader,
       stopSubscription: true,
     }));
-    const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -138,7 +138,7 @@ const ManageSubscription = () => {
 
   const handleAutoRewnew = () => {
     setLoader(true);
-    const apiUrl = `https://testapi.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -164,7 +164,7 @@ const ManageSubscription = () => {
 
   const handleDeleteSelected = () => {
     setLoader(true);
-    const url = `https://testapi.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -194,7 +194,7 @@ const ManageSubscription = () => {
 
   const updateCreditCard = (id) => {
     setLoader(true);
-    const url = `https://testapi.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -224,7 +224,7 @@ const ManageSubscription = () => {
 
   const makeDefaultCard = () => {
     setLoader(true);
-    const url = `https://testapi.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
 
     fetch(url, {
       method: 'PUT',
@@ -269,7 +269,7 @@ const ManageSubscription = () => {
       };
 
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -302,7 +302,7 @@ const ManageSubscription = () => {
     try {
       setLoader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -327,7 +327,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
     setLoader(true);
 
     // Make a GET request to the API
@@ -400,7 +400,7 @@ const ManageSubscription = () => {
     try {
       setLoader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -429,7 +429,7 @@ const ManageSubscription = () => {
     return inputString; // Return as is if not a valid number
   }
 
-  console.log("stripeCollection",stripeCollection);
+  console.log('stripeCollection', stripeCollection);
 
   return (
     <>
@@ -544,8 +544,7 @@ const ManageSubscription = () => {
                       $
                       {stripeCollection.stripe?.balance
                         ? prettyFormatNumber(stripeCollection.stripe?.balance)
-                        : "0.00"}
-
+                        : '0.00'}
                     </span>
                   </div>
                   <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]"></div>
@@ -631,194 +630,193 @@ const ManageSubscription = () => {
                     </div>
                   </WalletAccordion>
                   <WalletAccordion accordion={false} title="PREPAID PACKAGE">
-                  <div className="p-[8px] mb-[15px]">
-
-                    <div className="flex justify-between py-[10px] border-b border-solid border-[#e6edf8]">
-                      <span className=" lg:text-[14px] text-[12px]  lg:pl-[0px] pl-[9px]  lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-bold uppercase">
-                        PREPAID PACKAGE
-                      </span>
-                      {stripeCollection &&
-                      stripeCollection.stripe?.balance !== 0 &&
-                      !stripeCollection?.stripe?.manual &&
-                      !stripeCollection.error ? (
-                        <span className="lg:text-[20px] text-[9px] font-karla !font-bold text-[#ef6e6e] uppercase">
-                          {stripeCollection.stripe?.subscriptionStatus !==
-                          'canceled'
-                            ? stripeCollection.stripe?.subscription
-                            : 'Free'}
-                          - {stripeCollection.stripe?.packageQuantity} cards -
-                          {stripeCollection.stripe?.packageDiscount}% DISCOUNT
+                    <div className="p-[8px] mb-[15px]">
+                      <div className="flex justify-between py-[10px] border-b border-solid border-[#e6edf8]">
+                        <span className=" lg:text-[14px] text-[12px]  lg:pl-[0px] pl-[9px]  lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-bold uppercase">
+                          PREPAID PACKAGE
                         </span>
-                      ) : (
-                        <span className=" lg:text-[20px] text-[13px] md:mr-[-28px] mr-[1px]  font-karla w-[30%] !font-bold text-[#ef6e6e] uppercase">
-                          No Package
-                        </span>
-                      )}
-                    </div>
-                    {!stripeCollection.error &&
-                      !stripeCollection?.stripe?.manual && (
-                        <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
-                          <span className=" lg:text-[14px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-bold uppercase">
-                            AUTO RENEW
+                        {stripeCollection &&
+                        stripeCollection.stripe?.balance !== 0 &&
+                        !stripeCollection?.stripe?.manual &&
+                        !stripeCollection.error ? (
+                          <span className="lg:text-[20px] text-[9px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                            {stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled'
+                              ? stripeCollection.stripe?.subscription
+                              : 'Free'}
+                            - {stripeCollection.stripe?.packageQuantity} cards -
+                            {stripeCollection.stripe?.packageDiscount}% DISCOUNT
                           </span>
-                          <DynamicButton
-                            onClickFunction={() => {
-                              if (stripeCollection.stripe?.isAutorenew) {
-                                setAutoModal(true);
-                              } else {
-                                setRestartAutoNew(true);
-                              }
-                            }}
-                            text={
-                              stripeCollection.stripe?.isAutorenew
-                                ? 'Stop Auto Renew'
-                                : 'Restart Auto Renew'
-                            }
-                            className="!bg-[#4bb543]  max-w-[190px] lg:!text-[12px]  !text-[11px] whitespace-nowrap rounded-[9px] h-[45px] uppercase md:min-w-[190px] min-w-[2px]"
-                          />
-                        </div>
-                      )}
-                    <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
-                      <span className=" lg:text-[14px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-bold uppercase">
-                        Update
-                      </span>
-                      <DynamicButton
-                        onClickFunction={() => setPackageModal(true)}
-                        text={
-                          stripeCollection.stripe?.balance !== 0 &&
-                          !stripeCollection.error &&
-                          !stripeCollection?.stripe?.manual
-                            ? 'Change Package'
-                            : 'Buy Package'
-                        }
-                        className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] font-karla max-w-[190px] uppercase h-[45px] lg:min-w-[190px] min-w-[2px]"
-                      />
-                    </div>
-                    </div>
-                  </WalletAccordion>
-                  <WalletAccordion title="STORED PAYMENT METHOD">
-                  <div className="p-[8px] mb-[15px]">
-                    <div className="flex flex-col items-start">
-                      {savedCard && savedCard.length > 0 && (
-                        <span className=" lg:text-[16px]  text-[12px] text-[#001a5f] font-karla font-normal p-[5px] text-left  uppercase">
-                          Saved Cards
-                        </span>
-                      )}
-                      <div className=" text-[#001a5f] bg-[#fff5f5] font-karla text-left lg:text-[16px] text-[12px] !font-semibold w-full p-[5px] border-b border-solid border-[#e6edf8]">
-                        DEFAULT CARD
+                        ) : (
+                          <span className=" lg:text-[20px] text-[13px] md:mr-[-28px] mr-[1px]  font-karla w-[30%] !font-bold text-[#ef6e6e] uppercase">
+                            No Package
+                          </span>
+                        )}
                       </div>
-                      <div className="w-full">
-                        {savedCard &&
-                          savedCard.map((item, i) => (
-                            <div
-                              key={i}
-                              className={`p-[1rem] ${
-                                i === 0 && 'bg-[#fff5f5]'
-                              }  lg:flex justify-between grid justify-center`}
-                            >
-                              <div className="flex justify-start items-center text-[14px] font-bold">
-                                <span className="mr-[1rem]  md:text-[13px] text-[12px] tracking-wide">
-                                  **********{item.cardLast4Number}
-                                </span>
-                                <span>
-                                  {item.cardExpMonth}/{item.cardExpYear}
-                                </span>
-                              </div>
-                              <div className="flex lg:mt-[12px] mt-[12px] gap-[16px] items-center">
-                                {i === 0 ? (
-                                  <DynamicButton
-                                    text="Update Card"
-                                    className="bg-[#ef6e6e] rounded-[9px] text-white lg:text-[13px] text-[12px]"
-                                    onClickFunction={() => {
-                                      setAddCreditModal(false);
-                                      setPaymentId(item.paymentId);
-                                      setUpdateModal(true);
-                                      setUpdateCard(true);
-                                    }}
-                                  />
-                                ) : (
-                                  <div className="flex items-center gap-[16px]">
-                                    <DynamicButton
-                                      text="Make Default"
-                                      className="bg-[#ef6e6e] text-white lg:text-[17px] text-[12px]"
-                                      onClickFunction={() => {
-                                        setPaymentId(item.paymentId);
-                                        setDefaultCard(true);
-                                      }}
-                                    />
-
-                                    <img
-                                      onClick={() => {
-                                        setPaymentId(item.paymentId);
-                                        setDeleteModal(true);
-                                      }}
-                                      src="https://simplynoted.com/cdn/shop/files/delete.png"
-                                      className="w-[20px] h-[20px] cursor-pointer"
-                                    />
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-
+                      {!stripeCollection.error &&
+                        !stripeCollection?.stripe?.manual && (
+                          <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
+                            <span className=" lg:text-[14px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-bold uppercase">
+                              AUTO RENEW
+                            </span>
+                            <DynamicButton
+                              onClickFunction={() => {
+                                if (stripeCollection.stripe?.isAutorenew) {
+                                  setAutoModal(true);
+                                } else {
+                                  setRestartAutoNew(true);
+                                }
+                              }}
+                              text={
+                                stripeCollection.stripe?.isAutorenew
+                                  ? 'Stop Auto Renew'
+                                  : 'Restart Auto Renew'
+                              }
+                              className="!bg-[#4bb543]  max-w-[190px] lg:!text-[12px]  !text-[11px] whitespace-nowrap rounded-[9px] h-[45px] uppercase md:min-w-[190px] min-w-[2px]"
+                            />
+                          </div>
+                        )}
+                      <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
+                        <span className=" lg:text-[14px] text-[12px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-bold uppercase">
+                          Update
+                        </span>
                         <DynamicButton
-                          onClickFunction={() => {
-                            setAddCreditModal(true);
-                            setUpdateModal(true);
-                          }}
-                          text="Add Credit Card"
-                          className={`bg-[#001a5f] text-white rounded-[9px]   lg:text-[14px] text-[12px] flex${
-                            savedCard === 0 ? 'justify-start' : 'justify-end'
-                          }  mt-[10px]`}
+                          onClickFunction={() => setPackageModal(true)}
+                          text={
+                            stripeCollection.stripe?.balance !== 0 &&
+                            !stripeCollection.error &&
+                            !stripeCollection?.stripe?.manual
+                              ? 'Change Package'
+                              : 'Buy Package'
+                          }
+                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] font-karla max-w-[190px] uppercase h-[45px] lg:min-w-[190px] min-w-[2px]"
                         />
                       </div>
                     </div>
+                  </WalletAccordion>
+                  <WalletAccordion title="STORED PAYMENT METHOD">
+                    <div className="p-[8px] mb-[15px]">
+                      <div className="flex flex-col items-start">
+                        {savedCard && savedCard.length > 0 && (
+                          <span className=" lg:text-[16px]  text-[12px] text-[#001a5f] font-karla font-normal p-[5px] text-left  uppercase">
+                            Saved Cards
+                          </span>
+                        )}
+                        <div className=" text-[#001a5f] bg-[#fff5f5] font-karla text-left lg:text-[16px] p-[12px] text-[12px] h-[45px] !font-semibold w-full  border-b border-solid border-[#e6edf8]">
+                          DEFAULT CARD
+                        </div>
+                        <div className="w-full">
+                          {savedCard &&
+                            savedCard.map((item, i) => (
+                              <div
+                                key={i}
+                                className={`p-[1rem] ${
+                                  i === 0 && 'bg-[#fff5f5]'
+                                }  lg:flex justify-between grid justify-center`}
+                              >
+                                <div className="flex justify-start items-center text-[14px] font-bold">
+                                  <span className="mr-[1rem]  md:text-[13px] text-[12px] tracking-wide">
+                                    **********{item.cardLast4Number}
+                                  </span>
+                                  <span>
+                                    {item.cardExpMonth}/{item.cardExpYear}
+                                  </span>
+                                </div>
+                                <div className="flex lg:mt-[12px] mt-[12px] gap-[16px] items-center">
+                                  {i === 0 ? (
+                                    <DynamicButton
+                                      text="Update Card"
+                                      className="bg-[#ef6e6e] rounded-[9px] w-[190px] h-[45px] text-white lg:text-[13px] text-[12px]"
+                                      onClickFunction={() => {
+                                        setAddCreditModal(false);
+                                        setPaymentId(item.paymentId);
+                                        setUpdateModal(true);
+                                        setUpdateCard(true);
+                                      }}
+                                    />
+                                  ) : (
+                                    <div className="flex items-center gap-[16px]">
+                                      <DynamicButton
+                                        text="Make Default"
+                                        className="bg-[#ef6e6e] text-white w-[190px] rounded-[9px] h-[45px] lg:text-[13px] text-[12px]"
+                                        onClickFunction={() => {
+                                          setPaymentId(item.paymentId);
+                                          setDefaultCard(true);
+                                        }}
+                                      />
+
+                                      <img
+                                        onClick={() => {
+                                          setPaymentId(item.paymentId);
+                                          setDeleteModal(true);
+                                        }}
+                                        src="https://simplynoted.com/cdn/shop/files/delete.png"
+                                        className="w-[20px] h-[20px] cursor-pointer"
+                                      />
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+
+                          <DynamicButton
+                            onClickFunction={() => {
+                              setAddCreditModal(true);
+                              setUpdateModal(true);
+                            }}
+                            text="Add Credit Card"
+                            className={`bg-[#001a5f] text-white rounded-[9px] w-[190px] h-[45px]  lg:text-[13px] text-[12px] flex${
+                              savedCard === 0 ? 'justify-start' : 'justify-end'
+                            }  mt-[10px]`}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">
-                  <div className="p-[8px] mb-[15px]">
-                    <table className="lg:min-w-full min-w-[50%] divide-y divide-gray-200">
-                      <thead>
-                        <tr>
-                          {header.map((column, index) => (
-                            <th
-                              key={index}
-                              className="bg-[#001a5f] py-[15px] px-[10px] uppercase md:text-[15px] text-[9px] text-white font-bold"
-                            >
-                              {column}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {paymentHistory &&
-                          paymentHistory.length > 0 &&
-                          paymentHistory.map((payment, i) => (
-                            <tr
-                              className=" border-b border-solid border-[#e9e7e7]"
-                              key={i}
-                            >
-                              <td className="text-[#1b5299] p-[11px]">
-                                {i + 1}
-                              </td>
-                              <td className=" text-[#1b5299] p-[11px] lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
-                                {payment.description}
-                              </td>
-                              <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
-                                {payment.date}
-                              </td>
-                              <td className=" text-[#1b5299] p-[11px] font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
-                                $ {payment.amount}
-                              </td>
-                              <td className="flex justify-center p-[11px] text-center">
-                                <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase lg:text-[12px] text-[9px] lg:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
-                                  {payment.status && 'Paid'}
+                    <div className="p-[8px] mb-[15px]">
+                      <table className="lg:min-w-full min-w-[50%] divide-y divide-gray-200">
+                        <thead>
+                          <tr>
+                            {header.map((column, index) => (
+                              <th
+                                key={index}
+                                className="bg-[#001a5f] py-[15px] px-[10px] uppercase md:text-[15px] text-[9px] text-white font-bold"
+                              >
+                                {column}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {paymentHistory &&
+                            paymentHistory.length > 0 &&
+                            paymentHistory.map((payment, i) => (
+                              <tr
+                                className=" border-b border-solid border-[#e9e7e7]"
+                                key={i}
+                              >
+                                <td className="text-[#1b5299] p-[11px]">
+                                  {i + 1}
                                 </td>
-                              </td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
+                                <td className=" text-[#1b5299] p-[11px] lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
+                                  {payment.description}
+                                </td>
+                                <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
+                                  {payment.date}
+                                </td>
+                                <td className=" text-[#1b5299] p-[11px] font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
+                                  $ {payment.amount}
+                                </td>
+                                <td className="flex justify-center p-[11px] text-center">
+                                  <td className="rounded-[50px] mt-[5px] min-h-[22px] !font-bold uppercase lg:text-[12px] text-[9px] lg:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
+                                    {payment.status && 'Paid'}
+                                  </td>
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
                     </div>
                   </WalletAccordion>
                 </>
