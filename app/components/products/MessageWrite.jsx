@@ -107,6 +107,7 @@ export function MessageWriting({
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
+  const [dragAndDropBorderColor, setDragAndDropBorderColor] = useState('');
 
   console.log({metafieldsHeader, metafieldsFooter});
   //  useEffect(()=>{
@@ -152,6 +153,7 @@ export function MessageWriting({
   }
 
   function onCancelCSVUpload() {
+    dragAndDropBorderColor("#525252");
     setShowNextBtn(false);
   }
   async function checkUserLogged() {
@@ -308,25 +310,25 @@ export function MessageWriting({
         <div className="w-full">
           {showNextBtn ? (
             <>
-              <div className=" h-[50px] text-center mt-5 flex mb-2">
+              <div className="text-center mt-5 flex flex-col mb-2">
                 <button
-                  className="bg-[#1b5299] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
+                  className="bg-[#1b5299] text-[#fff] items-center mb-2 justify-center p-4 h-[50px] font-roboto text-base font-bold"
                   onClick={() => checkUserLogged()}
                 >
                   Next
                 </button>
                 <button
-                  className="bg-[#ef6e6e] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
+                  className="bg-[#ef6e6e] text-[#fff] items-center justify-center p-4 h-[50px] font-roboto text-base font-bold"
                   onClick={() => onCancelCSVUpload()}
                 >
                   Cancel
                 </button>
               </div>
-              <text> Number of recipient Uploaded:{lenCsvData}</text>
+              <text> Number of recipient Uploaded: {lenCsvData}</text>
             </>
           ) : (
             <button
-              className="bg-[#ef6e6e] text-[#fff] p-2 rounded w-full"
+              className="bg-[#ef6e6e] text-[#fff] p-2 font-roboto text-base font-bold w-full"
               onClick={() => uploadCsvFile()}
             >
               Upload
@@ -563,6 +565,7 @@ export function MessageWriting({
       };
       reader.readAsText(file);
     }
+    setDragAndDropBorderColor('#ef6e6e');
   };
   function csvToJson(csv) {
     var lines = csv.split('\n');
@@ -1594,7 +1597,23 @@ export function MessageWriting({
                     <AfterUpload />
                   </div>
                 ) : (
-                  <div className="w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center">
+                  <div
+                    className={`w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center border-[${dragAndDropBorderColor}]`}
+                    onDragOver={(event) => event.preventDefault()}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      const file = event.dataTransfer.files[0];
+                      if (file && file.type === 'text/csv') {
+                        handleFileChange({target: {files: [file]}});
+                      }
+                    }}
+                    onDragEnter={() => {
+                      setDragAndDropBorderColor('#ef6e6e');
+                    }}
+                    onDragLeave={() => {
+                      setDragAndDropBorderColor('');
+                    }}
+                  >
                     <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
