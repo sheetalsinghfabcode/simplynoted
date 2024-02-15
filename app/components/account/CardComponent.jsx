@@ -25,8 +25,8 @@ function CardComponent({ imgSrc, title, description, buttonText, showDownloadBut
     {showBorder &&
     <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-[#DDDDDD]"/>}
     </div>
-    <button onClick={onClick} className="flex bg-[#192C6A] mt-auto text-white items-center justify-center w-full max-w-[100px] p-[10px] gap-[10px] rounded-[8px]">
-      <span className='text-[14px] leading-[22px] font-semibold'>{buttonText}</span>
+    <button onClick={onClick} className="flex bg-[#192C6A] hover:bg-[#EF6E6E] mt-auto text-white items-center justify-center w-full max-w-[100px] p-[10px] gap-[10px] rounded-[8px]">
+      <span className='text-[14px]  leading-[22px] font-semibold'>{buttonText}</span>
     </button>
   </div>
   

@@ -251,7 +251,7 @@ function Account({customer, heading, featuredData}) {
             </h4>
             <span
               onClick={() => setActiveTab(6)}
-              className="text-[14px] cursor-pointer hover:text-[#0D0C22] hover:underline  decoration-[#0D0C22] text-[#6E6D7A] leading-[18.2px] font-normal "
+              className="text-[14px] cursor-pointer hover:text-[#0D0C22] text-center md:text-left hover:underline  decoration-[#0D0C22] text-[#6E6D7A] leading-[18.2px] font-normal "
             >
               Update your username and manage your account
             </span>
