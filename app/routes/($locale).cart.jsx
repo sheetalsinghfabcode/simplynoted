@@ -387,7 +387,7 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className="buttonDiv mt-2">
                                   <button
-                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] text-[14px] sm:w-auto w-full"
+                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] font-inter text-xs sm:w-auto w-full"
                                     onClick={() => {
                                       OpenModalFunc2(index);
                                     }}

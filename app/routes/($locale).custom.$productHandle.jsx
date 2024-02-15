@@ -222,7 +222,7 @@ export default function CustomProducts() {
                 className={`swimlane flex flex-col hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full max-h-[400px] justify-center items-end`}
               >
                 <div
-                  className="product-image-cont card-image self-center bg-white dark:bg-contrast/10"
+                  className="product-image-cont card-image self-center bg-white dark:bg-contrast/10 sm:w-[356px] sm:h-[200px]  md:w-[544px] md:h-[307px]  w-full"
                 >
                   {customProductData &&
                     metafields &&
@@ -246,13 +246,13 @@ export default function CustomProducts() {
                   {/* {metafields && metafields.face.zoom}------ */}
                   {customProductData && metafields.cardType !== 'folded5x7' && (
                     <img
-                      style={{
-                        transform: `scale(${
-                          imageShow == 0
-                            ? metafields.face && metafields.face.zoom
-                            : metafields.back && metafields.back.zoom
-                        })`,
-                      }}
+                      // style={{
+                      //   transform: `scale(${
+                      //     imageShow == 0
+                      //       ? metafields.face && metafields.face.zoom
+                      //       : metafields.back && metafields.back.zoom
+                      //   })`,
+                      // }}
                       src={
                         customProductData.images.length
                           ? customProductData.images[imageShow].originalSrc

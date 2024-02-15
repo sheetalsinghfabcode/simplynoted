@@ -14,13 +14,13 @@ export async function getApi(path, data) {
   const url = `${BASE_URL}/${path}`;
 //   const headers = await addAuthorizationHeader();
   
-  return fetch(url, { method: 'GET' });
+  return await fetch(url, { method: 'GET' });
 }
 
 export async function postApi(path, data) {
   console.log(path, data);
   const url = `${BASE_URL}/${path}`;
-  const headers = await addAuthorizationHeader();
+  // const headers = await addAuthorizationHeader();
   return fetch(url, { method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -31,5 +31,5 @@ export async function postApi1(path, data) {
   const url = `${BASE_URL}/${path}`;
 //   const headers = await addAuthorizationHeader();
 
-  return fetch(url, { method: 'POST',  body: data });
+  return await fetch(url, { method: 'POST',  body: data });
 }

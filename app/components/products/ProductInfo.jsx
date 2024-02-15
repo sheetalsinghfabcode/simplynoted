@@ -15,7 +15,8 @@ import {
 } from '../Text';
 import {FaYoutube} from 'react-icons/fa';
 import Instruction from '../modal/Instruction';
-import { VideoTutorial } from '../VideoTutorial';
+import {VideoTutorial} from '../VideoTutorial';
+import DynamicButton from '../DynamicButton';
 
 export function ProductInfo({
   title,
@@ -33,10 +34,10 @@ export function ProductInfo({
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
-  const [videoBtn,setVideoBtn] = useState(false)
+  const [videoBtn, setVideoBtn] = useState(false);
 
-   function CloseVideoComp(){
-    setVideoBtn(false)
+  function CloseVideoComp() {
+    setVideoBtn(false);
   }
   async function singleBtnCLick() {
     setShow(false);
@@ -90,17 +91,17 @@ export function ProductInfo({
   return (
     <div className="flex justify-center md:w-[46%] w-[90%] md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
-        <div className="grid gap-2.5">
+        <div className="grid">
           <Heading
             as="h1"
-            className="whitespace-normal xl:text-[36px] md:text-[29px] sm:text-[34px] leading-10 text-[30px] font-semibold text-[#191919]"
+            className="mb-[5px] whitespace-normal text-[26px] leading-10 sm:font-semibold md:font-bold text-[#010101] font-inter"
           >
             {title}
           </Heading>
           <div>
             {offPrice > 0 ? (
-              <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
-                <span className="line-through text-[black] text-[30px] leading-[40px] ">
+              <span className="text-[30px] text-[#4D679F] leading-[40px] font-bold">
+                <span className="line-through text-[black] font-bold leading-[40px] ">
                   ${product?.variants.nodes[0].price.amount}
                 </span>
                 &nbsp;$
@@ -110,48 +111,48 @@ export function ProductInfo({
                 ).toFixed(2)}
               </span>
             ) : (
-              <span className="text-[30px] text-[#1b5299] leading-[40px] font-medium">
+              <span className="text-[#4D679F] leading-[40px] font-bold">
                 ${product?.variants.nodes[0].price.amount}
               </span>
             )}
-            <div className="text-[#737373] font-medium text:xs md:text-base">
+            <div className="text-[#737373] font-normal text:xs mb-[6px]">
               Save Now - Go Unlimited - $0.97 / Note
             </div>
           </div>
-          <div className="buttonClass flex justify-start mt-3 mb-3">
-            <div className="gap-2 pr-5">
-              <button
-                style={{backgroundColor: show ? '#001a5f' : '#ef6e6e'}}
-                className="bg-[#ef6e6e] text-[#fff] p-3 rounded sm:text-[15px] md:text-[20px] font-normal"
-                onClick={() => setShow(true)}
-              >
-                Bulk Purchase
-              </button>
-            </div>
-            <div className="buttonDiv">
-              <button
-                style={{backgroundColor: show ? '#ef6e6e' : '#001a5f'}}
-                className="bg-[#001a5f] text-[#fff] p-3 md:pl-8 md:pr-8 rounded sm:text-[15px] md:text-[20px] font-normal"
-                onClick={() => singleBtnCLick()}
-              >
-                Single Card
-              </button>
-            </div>
+          <div className="flex justify-start mt-3 mb-3">
+            <DynamicButton
+              className={`${
+                show ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
+              } w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base mr-[16px] font-roboto quantitybutton`}
+              text="Bulk Purchase"
+              onClickFunction={() => setShow(true)}
+            />
+            <DynamicButton
+              className={`${
+                show ? 'bg-[#ef6e6e]' : 'bg-[#001a5f]'
+              } w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base font-roboto quantitybutton`}
+              text="Single Card"
+              onClickFunction={() => singleBtnCLick()}
+            />
           </div>
-          <div className="flex items-center gap-[10px]" onClick={()=>setVideoBtn(true)}>
-            <div className="relative mb-1">
+          <div
+            className="flex items-center gap-[10px] mt-[9px]"
+            onClick={() => setVideoBtn(true)}
+          >
+            <div className="relative mb-[1.5px]">
               <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
               <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
             </div>
-            <a className="underline text-[#1B5299] font-bold cursor-pointer">
+            <a className="underline text-[#1B5299] text-base font-bold cursor-pointer">
               Watch Tutorial Video
             </a>
           </div>
           <Instruction
-          isOpen={videoBtn}
-          body={<VideoTutorial/>}
-          close={true}
-          closeModal={CloseVideoComp}/>
+            isOpen={videoBtn}
+            body={<VideoTutorial />}
+            close={true}
+            closeModal={CloseVideoComp}
+          />
           {/* <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
             <div className="lg:w-[47%] w-[42%]">
               <Text className="font-bold w-[100px]">
