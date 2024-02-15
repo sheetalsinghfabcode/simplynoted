@@ -5,16 +5,16 @@
   color: transparent;
   cursor: pointer;
   position: absolute;
-  right: -3px;
+  right: 0px;
   top: 0;
-  width: 33px;
-  height: 31px;
+  width: 36px;
+  height: 40px;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
 #example-one-input {
-  min-height: 200px;
+  min-height: 301px;
   height: auto;
   width: 100%;
   border-radius: 6px;
@@ -25,6 +25,33 @@
   width: 56%;
   border-radius: 6px;
   padding: 5px 10px;
+}
+
+.textarea-cont-single {
+  padding-bottom: 11rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1400px) {
+  .textarea-cont-single,
+  .textarea-cont-bulk {
+    width: auto;
+  }
+  .texting-relative-cont-single,
+  .texting-relative-cont-bulk {
+    flex: 1;
+  }
+  .texting-relative-cont-single {
+    height: 1014px;
+  }
+  .texting-relative-cont-bulk {
+    height: 1242px;
+  }
+  .quantitybutton {
+    width: auto;
+  }
+  .templateButton {
+    font-size: 12px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
@@ -38,8 +65,4 @@
   .textarea-cont-bulk {
     padding-bottom: 17rem;
   }
-}
-
-.textarea-cont-single {
-  padding-bottom: 11rem;
 }

@@ -1044,14 +1044,14 @@ export default function FlatCustomisableCard({
             </div>
             <div className='flex lg:flex-row flex-col justify-between gap-2 mt-3'>
             <input
-              className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none"
+              className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1"
               type="text"
               placeholder="Card Name"
               onChange={(e) => setCustomCardTitle(e.target.value)}
             ></input>
           
             <button
-              className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[45px] "
+              className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] "
               type="button"
               onClick={handleCustomCardSaveButton}
             >
@@ -1102,7 +1102,7 @@ export default function FlatCustomisableCard({
             </label>
             <br />
             <button
-              className="bg-[#ef6e6e] border-none text-white outline-none p-1 pl-8 pr-8 min-w-[554px] h-[43px] mt-5 font-bold"
+              className="bg-[#ef6e6e] border-none text-white outline-none p-1 pl-8 pr-8 w-full h-[43px] mt-5 font-bold"
               type="button"
               onClick={handleQrCodeCreation}
             >

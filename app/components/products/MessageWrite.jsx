@@ -21,7 +21,7 @@ import {Text} from '../Text';
 import {FaYoutube} from 'react-icons/fa';
 import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
-import { RxCross2 } from "react-icons/rx";
+import {RxCross2} from 'react-icons/rx';
 
 let mainMessageBox,
   signOffTextBox,
@@ -107,6 +107,7 @@ export function MessageWriting({
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
+  const [dragAndDropBorderColor, setDragAndDropBorderColor] = useState('');
 
   console.log({metafieldsHeader, metafieldsFooter});
   //  useEffect(()=>{
@@ -152,6 +153,7 @@ export function MessageWriting({
   }
 
   function onCancelCSVUpload() {
+    dragAndDropBorderColor("#525252");
     setShowNextBtn(false);
   }
   async function checkUserLogged() {
@@ -308,25 +310,25 @@ export function MessageWriting({
         <div className="w-full">
           {showNextBtn ? (
             <>
-              <div className=" h-[50px] text-center mt-5 flex mb-2">
+              <div className="text-center mt-5 flex flex-col mb-2">
                 <button
-                  className="bg-[#1b5299] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
+                  className="bg-[#1b5299] text-[#fff] items-center mb-2 justify-center p-4 h-[50px] font-roboto text-base font-bold"
                   onClick={() => checkUserLogged()}
                 >
                   Next
                 </button>
                 <button
-                  className="bg-[#ef6e6e] text-[#fff] items-center justify-center m-3 w-[40%] p-4 h-[50px]"
+                  className="bg-[#ef6e6e] text-[#fff] items-center justify-center p-4 h-[50px] font-roboto text-base font-bold"
                   onClick={() => onCancelCSVUpload()}
                 >
                   Cancel
                 </button>
               </div>
-              <text> Number of recipient Uploaded:{lenCsvData}</text>
+              <text> Number of recipient Uploaded: {lenCsvData}</text>
             </>
           ) : (
             <button
-              className="bg-[#ef6e6e] text-[#fff] p-2 rounded w-full"
+              className="bg-[#ef6e6e] text-[#fff] p-2 font-roboto text-base font-bold w-full"
               onClick={() => uploadCsvFile()}
             >
               Upload
@@ -563,6 +565,7 @@ export function MessageWriting({
       };
       reader.readAsText(file);
     }
+    setDragAndDropBorderColor('#ef6e6e');
   };
   function csvToJson(csv) {
     var lines = csv.split('\n');
@@ -920,46 +923,46 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <>
-      <div className="flex justify-end ">
-        <DynamicButton
-          className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
-          onClickFunction={() => setAddNewTem(false)}
-          text="X"
-        />
+        <div className="flex justify-end ">
+          <DynamicButton
+            className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
+            onClickFunction={() => setAddNewTem(false)}
+            text="X"
+          />
         </div>
-      <div className="w-[29rem] m-[2rem]">
-      <div>
-        <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
-          NEW TEMPLATE
-        </h1>
-      </div>
-      <div>
-        <input
-          type="text"
-          ref={ref4}
-          value={tempVal}
-          className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
-        />
-      </div>
-      {errorTemplate && (
-        <span className="text-red-500 font-karla">
-          Please check that the value is not empty
-        </span>
-      )}
-      <div className="flex justify-center gap-[17px] mt-[18px] items-center">
-        <DynamicButton
-          className="bg-[#1b5299] w-full h-[40px] text-base w-36"
-          onClickFunction={() => addNewTemplateFunc()}
-          text="Save template"
-        />
-        <DynamicButton
-          className="bg-gray-400 w-full h-[40px] w-36"
-          text="Cancel"
-          onClickFunction={() => setAddNewTem(false)}
-        />
-      </div>
-    </div>
-    </>
+        <div className="w-[29rem] m-[2rem]">
+          <div>
+            <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
+              NEW TEMPLATE
+            </h1>
+          </div>
+          <div>
+            <input
+              type="text"
+              ref={ref4}
+              value={tempVal}
+              className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
+            />
+          </div>
+          {errorTemplate && (
+            <span className="text-red-500 font-karla">
+              Please check that the value is not empty
+            </span>
+          )}
+          <div className="flex justify-center gap-[17px] mt-[18px] items-center">
+            <DynamicButton
+              className="bg-[#1b5299] w-full h-[40px] text-base w-36"
+              onClickFunction={() => addNewTemplateFunc()}
+              text="Save template"
+            />
+            <DynamicButton
+              className="bg-gray-400 w-full h-[40px] w-36"
+              text="Cancel"
+              onClickFunction={() => setAddNewTem(false)}
+            />
+          </div>
+        </div>
+      </>
     );
   }
   async function SavedTemp() {
@@ -1012,7 +1015,7 @@ export function MessageWriting({
             />
           </div>
           <div className="flex mt-[12px] justify-between">
-          <span className="font-bold text-[15px]">Template Name</span>
+            <span className="font-bold text-[15px]">Template Name</span>
             <span className="font-bold text-[15px]">Actions</span>
           </div>
           {loadTempData &&
@@ -1067,7 +1070,7 @@ export function MessageWriting({
   }
   const closeModal = () => {
     setIsModalOpen(false);
-    setLoginModal(false)
+    setLoginModal(false);
   };
   const openModal = () => {
     setIsModalOpen(true);
@@ -1125,23 +1128,25 @@ export function MessageWriting({
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
         <div
-          className={`relative md:w-[45%] w-full md:h-[1068px] ${
-            show ? 'lg:h-[985px]' : 'lg:h-[810px]'
+          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
+            show
+              ? 'lg:h-[1110px] texting-relative-cont-bulk'
+              : 'lg:h-[714px] texting-relative-cont-single'
           }`}
         >
           <div
-            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-4 md:absolute -top-[90px] ${
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${
               show
                 ? 'md:pb-[35rem] textarea-cont-bulk'
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-            <div className="flex flex-col items-start lg:flex-row lg:items-center gap-[8px] 3xl:gap-[15px] text-center mb-2">
-              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[13px] flex-1 w-full text-left">
+            <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+              <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left">
                 <span> Standard Handwriting Style</span>
                 <select
                   id="font"
-                  className="highlight-none cursor-pointer font-light rounded border-0 border-black w-full"
+                  className="h-[40px] highlight-none cursor-pointer font-light rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
@@ -1151,98 +1156,98 @@ export function MessageWriting({
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
                       ? editFontFamily
-                      : 'Select Handwriting Style'}
+                      : 'Tarzan'}
                   </option>
                   {editFontFamily && editFontFamily !== 'tarzan' && (
-                    <option value="tarzan" className={`font-tarzan`}>
+                    <option value="Tarzan" className={`font-tarzan`}>
                       Tarzan
                     </option>
                   )}
-                  <option value="tarzan" className={`font-tarzan`}>
-                    Tarzan
-                  </option>
-                  <option value="stitch" className={`font-stitch`}>
+                  <option value="Stitch" className={`font-stitch`}>
                     Stitch
                   </option>
-                  <option value="simba" className={`font-simba`}>
+                  <option value="Tarzan" className={`font-tarzan`}>
+                    Tarzan
+                  </option>
+                  <option value="Simba" className={`font-simba`}>
                     Simba
                   </option>
-                  <option value="roo" className={`font-roo`}>
+                  <option value="Roo" className={`font-roo`}>
                     Roo
                   </option>
-                  <option value="nimo" className={`font-nimo`}>
+                  <option value="Nimo" className={`font-nimo`}>
                     Nimo
                   </option>
-                  <option value="lumiere" className={`font-lumiere`}>
+                  <option value="Lumiere" className={`font-lumiere`}>
                     Lumiere
                   </option>
-                  <option value="kaa" className={`font-kaa`}>
+                  <option value="Kaa" className={`font-kaa`}>
                     Kaa
                   </option>
-                  <option value="kaaNew" className={`font-kaaNew`}>
+                  <option value="KaaNew" className={`font-kaaNew`}>
                     KaaNew
                   </option>
                   <option value="dumbo" className={`font-dumbo`}>
                     Dumbo
                   </option>
-                  <option value="donald" className={`font-donald`}>
+                  <option value="Donald" className={`font-donald`}>
                     Donald
                   </option>
-                  <option value="aladdin" className={`font-aladdin`}>
+                  <option value="Aladdin" className={`font-aladdin`}>
                     Aladdin
                   </option>
-                  <option value="belle" className={`font-belle`}>
+                  <option value="Belle" className={`font-belle`}>
                     Belle
                   </option>
-                  <option value="boo" className={`font-boo`}>
+                  <option value="Boo" className={`font-boo`}>
                     Boo
                   </option>
-                  <option value="cinderella" className={`font-cinderella`}>
+                  <option value="Cinderella" className={`font-cinderella`}>
                     Cinderella
                   </option>
-                  <option value="copper" className={`font-copper`}>
+                  <option value="Copper" className={`font-copper`}>
                     Copper
                   </option>
-                  <option value="jasmine" className={`font-jasmine`}>
+                  <option value="Jasmine" className={`font-jasmine`}>
                     Jasmine
                   </option>
-                  <option value="merlin" className={`font-merlin`}>
+                  <option value="Merlin" className={`font-merlin`}>
                     Merlin
                   </option>
-                  <option value="goofy" className={`font-goofy`}>
+                  <option value="Goofy" className={`font-goofy`}>
                     Goofy
                   </option>
-                  <option value="hercules" className={`font-hercules`}>
+                  <option value="Hercules" className={`font-hercules`}>
                     Hercules
                   </option>
-                  <option value="rafiki" className={`font-rafiki`}>
+                  <option value="Rafiki" className={`font-rafiki`}>
                     Rafiki
                   </option>
-                  <option value="rapunzel" className={`font-rapunzel`}>
+                  <option value="Rapunzel" className={`font-rapunzel`}>
                     Rapunzel
                   </option>
-                  <option value="ratigan" className={`font-ratigan`}>
+                  <option value="Ratigan" className={`font-ratigan`}>
                     Ratigan
                   </option>
-                  <option value="sarabi" className={`font-sarabi`}>
+                  <option value="Sarabi" className={`font-sarabi`}>
                     Sarabi
                   </option>
-                  <option value="scar" className={`font-scar`}>
+                  <option value="Scar" className={`font-scar`}>
                     Scar
                   </option>
-                  <option value="triton" className={`font-triton`}>
+                  <option value="Triton" className={`font-triton`}>
                     Triton
                   </option>
-                  <option value="woody" className={`font-woody`}>
+                  <option value="Woody" className={`font-woody`}>
                     Woody
                   </option>
                 </select>
               </div>
-              <div className="font-bold sm:text-[12px] md:text-[10px] text-left xl:text-[13px] flex-1 w-full self-end">
+              <div className="h-[73px] xl:max-w-[178px] flex flex-col justify-between font-inter font-semibold text-[14px] text-left flex-1 w-full self-end">
                 <span>Custom Handwriting Style</span>
                 <select
                   id="Coustomfont"
-                  className="highlight-none cursor-pointer font-light rounded border-0 border-black w-full"
+                  className="h-[40px] highlight-none cursor-pointer font-light rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                 >
@@ -1259,18 +1264,18 @@ export function MessageWriting({
                     ))}
                 </select>
               </div>
-              <div className="font-bold sm:text-[12px] md:text-[10px] xl:text-[13px] flex-1 w-full text-left self-end">
+              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left self-end">
                 <span>Optional shipping date</span>
                 <div className="flex relative">
                   <input
                     type="date"
-                    className="calendar-input highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl"
+                    className="h-[40px] calendar-input highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     min={new Date().toISOString().split('T')[0]}
                   />
                 </div>
               </div>
             </div>
-            <div className="mb-7 text-sm">
+            <div className="mb-[24px] text-sm font-inter text-xs">
               <span className="text-[#001A5F] font-medium">
                 Contact Us &nbsp;
               </span>
@@ -1283,23 +1288,23 @@ export function MessageWriting({
               id="example-one-input"
               value={name}
               placeholder="Enter your custom message text here..."
-              className="border-dashed resize-none h-[200px] rounded-[6px] p-[7px] text-black font-normal "
+              className="border-dashed resize-none h-[301px] rounded p-[7px] text-black font-normal "
               maxLength="450"
               onChange={(e) => onChnageNameVal(e.target.value)}
               data-gtm-form-interact-field-id="0"
             ></textarea>
-            <span className="text-[#737373] flex">
+            <span className="text-[#737373] flex font-inter text-xs">
               {remainingWord} characters remaining
             </span>
             {/* {customerid && ( */}
-            <div className="flex w-full items-center">
+            <div className="flex w-full items-center h-[30px] mt-[24px] mb-[24px] font-inter gap-[4px]">
               <img
                 src={AiImage}
                 className="h-[35px] cursor-pointer  mt-3 mb-3 lg:mb-5"
                 onClick={() => setIsOpen(true)}
               />
               <span
-                className="cursor-pointer font-bold text-[#836FE5] text-[12px] md:text-[14px] lg:mb-[7px] underline"
+                className="cursor-pointer font-bold text-[#836FE5] text-[14px] lg:mb-[7px] underline"
                 onClick={() => setIsOpen(true)}
               >
                 <span className="text-[red]">Try our</span> New AI Message
@@ -1333,44 +1338,44 @@ export function MessageWriting({
             )}
 
             {show && (
-              <div className="mb-5">
+              <div className="mb-[24px] flex flex-wrap">
                 <button
-                  className="addFirstnameBtn "
+                  className="addFirstnameBtn flex items-center h-[28px]"
                   value={'[First Name]'}
                   onClick={(e) => firstNameBtn(e.target.value)}
                 >
                   First Name
                 </button>
                 <button
-                  className="addFirstnameBtn "
+                  className="addFirstnameBtn flex items-center h-[28px]"
                   value={'[Last Name]'}
                   onClick={(e) => firstNameBtn(e.target.value)}
                 >
                   Last Name
                 </button>
                 <button
-                  className="addFirstnameBtn "
+                  className="addFirstnameBtn flex items-center h-[28px]"
                   value={'[Company]'}
                   onClick={(e) => firstNameBtn(e.target.value)}
                 >
                   Company
                 </button>
                 <button
-                  className="addFirstnameBtn "
+                  className="addFirstnameBtn flex items-center h-[28px]"
                   value={'[Custom 1]'}
                   onClick={(e) => firstNameBtn(e.target.value)}
                 >
                   Custom 1
                 </button>
                 <button
-                  className="addFirstnameBtn"
+                  className="addFirstnameBtn flex items-center h-[28px]"
                   value={'[Custom 2]'}
                   onClick={(e) => firstNameBtn(e.target.value)}
                 >
                   Custom 2
                 </button>
                 <button
-                  className="addFirstnameBtn"
+                  className="addFirstnameBtn flex items-center h-[28px]"
                   value={'[Custom 3]'}
                   onClick={(e) => firstNameBtn(e.target.value)}
                 >
@@ -1379,27 +1384,31 @@ export function MessageWriting({
               </div>
             )}
             <div className="flex w-full justify-between xl:flex-row flex-col ">
-              <div className="flex flex-col justify-between gap-2">
+              <div className="flex flex-col justify-between gap-[24px]">
                 <div className="flex justify-between font-bold text-[#1b5299] text-[12px] md:text-[14px] gap-[20px] items-start xl:mr-3 mb-2">
                   <button
-                    className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2"
+                    className="templateButton cursor-pointer border border-[#1b5299] rounded-[5px] p-2 h-[44px]"
                     onClick={() => OpenAddTemplateBox()}
                   >
                     Save New Template
                   </button>
                   <button
-                    className="cursor-pointer border border-[#1b5299] rounded-[5px] p-2 sm:text-[12px] "
+                    className="templateButton cursor-pointer border border-[#1b5299] rounded-[5px] p-2 h-[44px]"
                     onClick={() => OpenLoadTemp()}
                   >
                     Load Save Template
                   </button>
                 </div>
-                <div className="flex flex-col font-medium">
-                  <div className="mb-[7px]">Refer & Earn: Click to Join!</div>
-                  <div className="mb-[7px]">
+                <div className="flex flex-col">
+                  <div className="h-[26px] font-roboto font-bold text-base">
+                    Refer & Earn: Click to Join!
+                  </div>
+                  <div className="h-[26px] font-roboto font-bold text-base">
                     Upgrade To Unlimited $0.97 Notes
                   </div>
-                  <div>Need Help? Contact Support Here</div>
+                  <div className="h-[26px] font-roboto font-bold text-base">
+                    Need Help? Contact Support Here
+                  </div>
                 </div>
               </div>
               <div className="xl:w-[40%] w-full xl:mt-0 mt-[10px]">
@@ -1408,7 +1417,7 @@ export function MessageWriting({
                   value={name2}
                   v-model="keyword"
                   id="example-one-input2"
-                  className="inputText2 resize-none h-[100px] !w-full rounded-[6px] p-[7px] border-2 border-dotted border-[#1b5299]"
+                  className="inputText2 resize-none h-[100px] !w-full rounded p-[7px] border-2 border-dotted border-[#1b5299]"
                   maxLength="50"
                   onChange={(e) => onchnageOfRegardBox(e.target.value)}
                   data-gtm-form-interact-field-id="0"
@@ -1420,7 +1429,7 @@ export function MessageWriting({
                       Optional Sign Off / Signature
                     </span>
                     <br />
-                    <span className="text-[#737373]">
+                    <span className="text-[#1E1E1E] font-inter font-bold text-sm">
                       {remainSign} characters remaining
                     </span>
                   </div>
@@ -1430,9 +1439,9 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`flex flex-col w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0  relative ${
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0  relative  ${
             show ? 'h-[940px]' : 'h-[370px] '
-          }`}
+          } mb-[200px] md:mb-[0px]`}
         >
           <div
             id="outer"
@@ -1487,7 +1496,7 @@ export function MessageWriting({
                     ? fontFamilyName
                     : editFontFamily
                     ? editFontFamily
-                    : 'tarzan',
+                    : 'great vibes',
                   fontSize: fontSize ? fontSize : '50px',
                   lineHeight: lineHeight ? lineHeight : '50px',
                 }}
@@ -1523,14 +1532,13 @@ export function MessageWriting({
               metafields.isFooterIncluded &&
               metafields.footer.data && <ShowFooterComp />}
           </div>
-          <div className="text-[#737373] text-sm mt-3">
+          // This margin is similar to the height of the absolute div above this
+          <div className="text-[#737373] text-sm mt-[392px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
             there.
           </div>
-
           {show && (
-            // This margin is similar to the height of the absolute div above this
-            <div className="mt-[370px]">
+            <div>
               {/* <div className="lg:w-[50%] w-[100%] flex justify-start font-bold md:mt-[10px] mt-[25px]">
                 <text>
                   As of july5,2023, we have upgraded the bulk order
@@ -1550,7 +1558,7 @@ export function MessageWriting({
                       className="flex items-center gap-[10px]"
                       onClick={() => setVideoBtn(true)}
                     >
-                      <div className="relative mb-1">
+                      <div className="relative mb-[1.5px]">
                         <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
                         <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
                       </div>
@@ -1589,20 +1597,36 @@ export function MessageWriting({
                     <AfterUpload />
                   </div>
                 ) : (
-                  <div className="w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center">
+                  <div
+                    className={`w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center border-[${dragAndDropBorderColor}]`}
+                    onDragOver={(event) => event.preventDefault()}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      const file = event.dataTransfer.files[0];
+                      if (file && file.type === 'text/csv') {
+                        handleFileChange({target: {files: [file]}});
+                      }
+                    }}
+                    onDragEnter={() => {
+                      setDragAndDropBorderColor('#ef6e6e');
+                    }}
+                    onDragLeave={() => {
+                      setDragAndDropBorderColor('');
+                    }}
+                  >
                     <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
                       ) : (
                         <>
-                          <div className="rounded-full p-3 bg-[#E6E6E6] text-[20px]">
+                          <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
                             <FiUploadCloud />
                           </div>
                           <div
                             className="flex items-center gap-[10px]"
                             onClick={() => setVideoBtn(true)}
                           >
-                            <div className="relative mb-1">
+                            <div className="relative mb-[1.5px]">
                               <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
                               <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
                             </div>
@@ -1662,14 +1686,14 @@ export function MessageWriting({
                 <span className="flex items-center font-bold text-[#737373] text-[18px]">
                   Or
                 </span>
-                <div className="m-auto w-full grid text-[13px] font-bold">
+                <div className="m-auto w-full grid font-bold">
                   <DynamicButton
-                    className="bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-2 w-full"
+                    className="bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   <DynamicButton
-                    className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-2 w-full"
+                    className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Buy Leads (Mailing List)"
                     onClickFunction={() => {
                       console.log('Yet to be completed!!');
@@ -1677,13 +1701,13 @@ export function MessageWriting({
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
-                      className="bg-[#001a5f] px-[10px] py-[16px] w-full"
+                      className="bg-[#001a5f] px-[10px] py-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                       text="Next"
                       onClickFunction={() => onSelectFromAddressBook()}
                     />
                   ) : (
                     <DynamicButton
-                      className="bg-[#697ba6] px-[10px] py-[16px] w-full"
+                      className="bg-[#697ba6] px-[10px] py-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                       text="Next"
                       onClickFunction={() => ''}
                     />
@@ -1706,9 +1730,9 @@ export function MessageWriting({
             }}
           />
           {!show && (
-            <div className="bg-[#001a5f] h-[50px] text-center mt-10">
+            <div className="bg-[#001a5f] h-[50px] text-center">
               <button
-                className="text-[#fff] items-center h-[50px] font-normal text-[14px] justify-center  w-full"
+                className="text-[#fff] items-center h-[50px] font-normal text-base justify-center w-full font-roboto h-[44px]"
                 onClick={() => checkUserLogged()}
               >
                 Next
