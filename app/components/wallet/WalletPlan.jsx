@@ -39,23 +39,13 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
-
-
-
   return (
-    <div className="w-full p-[20px] mx-auto my-[16px] max-w-[1396px]">
-      <DynamicButton
-        text="Go Back"
-        backArrow={true}
-        onClickFunction={() => setWalletPlan(false)}
-        className="!bg-[#EF6E6E] mb-[18px]"
-      />
-
-      <div className=" lg:flex grid mx-auto gap-[20px]">
+    <div className="w-full p-[40px]  font-karla  mx-auto my-[16px] ">
+      <div className=" lg:flex grid bg-[#fdedf2] max-w-[1396px] mx-auto gap-[20px]">
         {WalletData.collection.products.edges.map((product, index) => (
           <div
             key={product.node.title}
-            className={`col-span-1 p-[11px] ${
+            className={`col-span-1 p-[20px] ${
               (stripeCollection?.error && product.node.title === 'Free') ||
               product.node.title.toLowerCase() ===
                 stripeCollection.stripe?.subscription
@@ -65,7 +55,7 @@ const WalletPlans = ({
           >
             <DynamicButton
               text={`${product.node.title} PLAN PREPAID PACKAGES`}
-              className="bg-[#EF6E6E] text-[18px] 2xl:text-[20px] w-full mb-[24px]  uppercase mx-auto whitespace-nowrap text-center"
+              className="bg-[#EF6E6E] text-[18px] rounded-[5px] py-[12px] px-[20px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]  uppercase mx-auto whitespace-nowrap text-center"
             />
             <div className="flex flex-col gap-[16px]">
               {product.node.variants.edges
@@ -95,7 +85,10 @@ const WalletPlans = ({
                     <div
                       onClick={() => {
                         if (
-                         (stripeCollection.stripe?.subscription !== product.node.title || stripeCollection.stripe?.subscriptionStatus !== "canceled")
+                          stripeCollection.stripe?.subscription !==
+                            product.node.title ||
+                          stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled'
                         ) {
                           setSubscription(subscriptionMetafield?.value || 0);
                         }
@@ -110,7 +103,7 @@ const WalletPlans = ({
                           },
                         });
                       }}
-                      className="flex justify-start p-[20px] cursor-pointer items-start gap-[16px] border border-solid border-black rounded-[10px]"
+                      className="flex justify-start p-[20px] bg-white cursor-pointer items-start gap-[16px] border border-solid border-black rounded-[10px]"
                     >
                       <input
                         type="radio"
@@ -123,7 +116,7 @@ const WalletPlans = ({
                       />
 
                       <div className="flex flex-col gap-[8px]">
-                        <div className="flex gap-[6px] items-start">
+                        <div className="flex gap-[6px] text-[#001a5f]  items-start">
                           <span className="text-[15px] font-bold">
                             {titleMetafield?.value}
                           </span>
@@ -149,7 +142,7 @@ const WalletPlans = ({
                     </div>
                   );
                 })}
-              <span className="text-[14px] mt-[16px] font-medium">
+              <span className="text-[14px] leading-1.3 text-[#000] mt-[16px] font-medium">
                 {product.node.description}
               </span>
             </div>
@@ -157,10 +150,10 @@ const WalletPlans = ({
         ))}
       </div>
 
-      <div className="mt-[30px] flex w-full items-center justify-between gap-[50px]">
-        <div className="w-full max-w-[810px]">
+      <div className="mt-[30px] bg-white flex w-full items-center justify-between gap-[50px]">
+        <div className="w-full text-[#000] max-w-[810px]">
           <span>
-            Custom cards and international postage may cost extra. You will
+            *Custom cards and international postage may cost extra. You will
             receive the same level of discount on custom cards.
           </span>
           <br />

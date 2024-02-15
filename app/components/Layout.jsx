@@ -865,8 +865,8 @@ function DesktopHeader({isHome, menu}) {
             // }
           })}
         </div>
-        <div className="flex items-start gap-1 mt-1">
-          <div className="tooltip mb-8" style={{transition: 'all 700ms'}}>
+        <div className="flex items-center gap-1">
+          <div className="tooltip" style={{transition: 'all 700ms'}}>
             {cartCountVal && cartCountVal !== undefined ? (
               <>
                 <Link to="/cart">

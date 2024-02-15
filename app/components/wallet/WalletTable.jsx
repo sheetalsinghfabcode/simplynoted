@@ -219,6 +219,77 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
         </table>
       </div>
     </div>
+    // <div className=" w-full max-w-[1366px] mx-auto bg-white ">
+    //   <table className=''>
+    //     <tr className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-5' >
+    //       <th className='hidden md:block '></th>
+    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
+    //         <span className="text-[#000] text-[18px] font-bold text-center ">
+    //           Free
+    //         </span>
+    //         <span className="">As Low as</span>
+    //         <span className="">$1.95</span>
+    //         <span className="">per Card</span>
+    //         <DynamicButton
+    //           text="Purchase Package"
+    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
+    //         />
+    //         Company
+    //       </th>
+    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
+    //         <span className="text-[#000] text-[18px] font-bold text-center ">
+    //           Free
+    //         </span>
+    //         <span className="">As Low as</span>
+    //         <span className="">$1.95</span>
+    //         <span className="">per Card</span>
+    //         <DynamicButton
+    //           text="Purchase Package"
+    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
+    //         />
+    //         Company
+    //       </th>
+    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
+    //         <span className="text-[#000] text-[18px] font-bold text-center ">
+    //           Free
+    //         </span>
+    //         <span className="">As Low as</span>
+    //         <span className="">$1.95</span>
+    //         <span className="">per Card</span>
+    //         <DynamicButton
+    //           text="Purchase Package"
+    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
+    //         />
+    //         Company
+    //       </th>
+    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
+    //         <span className="text-[#000] text-[18px] font-bold text-center ">
+    //           Free
+    //         </span> 
+    //         <span className="">As Low as</span>
+    //         <span className="">$1.95</span>
+    //         <span className="">per Card</span>
+    //         <DynamicButton
+    //           text="Purchase Package"
+    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
+    //         />
+    //         Company
+    //       </th>
+    //     </tr>
+    //     <tr>
+    //       <td>Alfreds Futterkiste</td>
+    //       <td>Maria Anders</td>
+    //       <td>Germany</td>
+    //       <td>Germany</td>
+    //       <td>Germany</td>
+    //     </tr>
+    //     <tr>
+    //       <td>Centro comercial Moctezuma</td>
+    //       <td>Francisco Chang</td>
+    //       <td>Mexico</td>
+    //     </tr>
+    //   </table>
+    // </div>
   );
 };
 
