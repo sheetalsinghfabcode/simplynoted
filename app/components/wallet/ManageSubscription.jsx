@@ -79,7 +79,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -103,7 +103,7 @@ const ManageSubscription = () => {
       ...prevLoader,
       stopSubscription: true,
     }));
-    const apiUrl = `https://api.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -138,7 +138,7 @@ const ManageSubscription = () => {
 
   const handleAutoRewnew = () => {
     setLoader(true);
-    const apiUrl = `https://api.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -164,7 +164,7 @@ const ManageSubscription = () => {
 
   const handleDeleteSelected = () => {
     setLoader(true);
-    const url = `https://api.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
+    const url = `https://testapi.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -194,7 +194,7 @@ const ManageSubscription = () => {
 
   const updateCreditCard = (id) => {
     setLoader(true);
-    const url = `https://api.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
+    const url = `https://testapi.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -224,7 +224,7 @@ const ManageSubscription = () => {
 
   const makeDefaultCard = () => {
     setLoader(true);
-    const url = `https://api.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
+    const url = `https://testapi.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
 
     fetch(url, {
       method: 'PUT',
@@ -269,7 +269,7 @@ const ManageSubscription = () => {
       };
 
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://testapi.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -302,7 +302,7 @@ const ManageSubscription = () => {
     try {
       setLoader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -327,7 +327,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
     setLoader(true);
 
     // Make a GET request to the API
@@ -400,7 +400,7 @@ const ManageSubscription = () => {
     try {
       setLoader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {

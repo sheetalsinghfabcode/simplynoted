@@ -81,10 +81,14 @@ export default function SimplyNoted() {
         setloader(false);
       })
       .catch((error) => {
+        setloader(false);
+
         console.error('Error fetching data:', error);
       });
     return () => {};
   }, []);
+
+  console.log("subscriptionTitle",subscriptionTitle);
 
 
   return (
@@ -95,9 +99,7 @@ export default function SimplyNoted() {
         </div>
       )}
 
-      {!walletPlan && !walletPurcase && !walletPayment && (
-        <DynamicTitle dynamicButton title={'Simply Noted Plans'} />
-      )}
+        <DynamicTitle  title={'Simply Noted Plans'} />
       <div className={`${loader && 'opacity-40'}`}>
         {!walletPlan && !walletPurcase && !walletPayment && (
           <WalletTable
