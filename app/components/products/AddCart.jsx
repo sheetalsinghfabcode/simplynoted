@@ -715,7 +715,7 @@ export function AddCart({
             <div className="row flex mt-4 relative right-[-17px] w-full justify-end font-normal text-[14px]">
               <div className="buttonDiv my-2">
                 <DynamicButton
-                  className="bg-[#1b5299] opacity-65 px-8 py-4"
+                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4"
                   text="ADD TO CART"
                   // disabled={!agree}
                   onClickFunction={() => onClickAddCart()}

@@ -560,7 +560,7 @@ const ContactTable = ({
 
               {uploadBulkAddress && (
                 <div
-                  className="absolute right-[165px] top-[57px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[25%] mx-auto ring-black ring-opacity-5 focus:outline-none"
+                  className="absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-5 focus:outline-none"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
