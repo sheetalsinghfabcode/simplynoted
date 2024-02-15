@@ -81,7 +81,10 @@ const data = [
   },
 ];
 
-const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
+
+
+
+const WalletTable = ({ pricePerCard, setWalletPlan, stripeCollection }) => {
   const getSubscriptionType = (stripeCollection) => {
     if (
       stripeCollection &&
@@ -104,20 +107,12 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
 
   const pricingPlans = [
     {
-      name: 'Enterprise',
-      price: 'Contact Us',
-      buttonText: 'Contact Us',
-      buttonColor: '#ef6e6e',
-      onClick: () =>
-        window.open('https://meetings.hubspot.com/rick24', '_blank'),
-    },
-
-    {
-      name: 'Business',
-      price: pricePerCard[2],
-      buttonText: subscribeBusiness ? 'Purchase Package' : 'Upgrade',
-      buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
+      name: 'Free',
+      price: pricePerCard[0],
+      buttonText: 'Purchase Package',
+      buttonColor: '#1b5299',
       onClick: () => setWalletPlan(true),
+      features: ['Discounts / Savings', 'Reccomended for', 'Global Leading Technology', /* add features as needed */],
     },
     {
       name: 'Team',
@@ -125,171 +120,66 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       buttonText: subscribeTeam ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeTeam ? '#1b5299' : '#ef6e6e',
       onClick: () => setWalletPlan(true),
+      features: ['Discounts / Savings', 'Global Leading Technology', /* add features as needed */],
     },
     {
-      name: 'Free',
-      price: pricePerCard[0],
-      buttonText: 'Purchase Package',
-      buttonColor: '#1b5299',
+      name: 'Business',
+      price: pricePerCard[2],
+      buttonText: subscribeBusiness ? 'Purchase Package' : 'Upgrade',
+      buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
       onClick: () => setWalletPlan(true),
+      features: ['Discounts / Savings', 'Global Leading Technology', 'Reccomended for', /* add features as needed */],
+    },
+    {
+      name: 'Enterprise',
+      price: 'Contact Us',
+      buttonText: 'Contact Us',
+      buttonColor: '#ef6e6e',
+      onClick: () =>
+        window.open('https://meetings.hubspot.com/rick24', '_blank'),
+      features: ['Discounts / Savings', 'Global Leading Technology', 'Reccomended for', /* add features as needed */],
     },
   ];
 
   return (
-    <div className="w-full max-w-[1640px] p-[20px] mx-auto">
-      <div className="overflow-auto">
-        <table className="mx-auto table bg-white">
-          <thead>
-            <tr className="h-[120px] overflow-auto">
-              <th className="text-center py-4  px-10"></th>
-              {pricingPlans
-                .slice(0)
-                .reverse()
-                .map((plan, index) => {
-                  let renderButton = true;
-
-                  if (
-                    subscribeBusiness &&
-                    (plan.name === 'Team' || plan.name === 'Free')
-                  ) {
-                    renderButton = false; // Don't render buttons for Team or Free if subscribeBusiness is true
-                  } else if (subscribeTeam && plan.name === 'Free') {
-                    renderButton = false; // Don't render Free button if subscribeTeam is true
-                  }
-
-                  return (
-                    <th key={index} className="text-center  py-4 px-10">
-                      <div className="sm:none flex text-center sm:items-center items-center gap-[5px]">
-                        <span className="sm:text-lg text-[12px] text-[#000] uppercase block">
-                          {plan.name}
-                        </span>
-                        <span className="sm:text-lg text-[12px] sm:w-[89px] w-[75px] text-[#000] leading-[150%] block">
-                          As low as
-                        </span>
-                        <span className="sm:text-lg text-[12px] sm:w-[70px] w-[61px] font-bold text-[#000] block">
-                          {plan.price}
-                        </span>
-                        <span className="sm:text-lg text-[12px] sm:w-[70px] w-[55px] text-[#000] leading-[150%] block">
-                          per card
-                        </span>
-                      </div>
-                      {/* ... Plan details */}
-                      {renderButton ? (
-                        <DynamicButton
-                          onClickFunction={plan.onClick}
-                          className={`bg-[${plan.buttonColor}] mt-4 xl:min-w-[180px] w-full rounded-full h-[40px] px-6`}
-                          text={plan.buttonText}
-                        />
-                      ) : (
-                        <span></span>
-                      )}
-                    </th>
-                  );
-                })}
-            </tr>
-          </thead>
-
-          <tbody>
-            {data.map((item, index) => (
-              <tr
-                className="text-[#001a5f] text-sm border-t border-[#ddd] last:border-b"
-                key={index}
-              >
-                <td className="py-4 pl-6">{item.feature}</td>
-                {Array.from({length: pricingPlans.length}).map((_, i) => (
-                  <td key={i} className="text-center">
-                    {index < (i + 1) * 17 ? (
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
-                        className="w-[18px] h-[16px] mx-auto"
-                        alt="tick"
-                      />
-                    ) : (
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
-                        className="w-[18px] h-[16px] mx-auto"
-                        alt="remove"
-                      />
-                    )}
-                  </td>
-                ))}
-              </tr>
+    <>
+      <div className="max-w-[1640px] mx-auto p-4">
+        <div className="overflow-x-auto">
+          <div className="grid grid-cols-5 border-b border-gray-200">
+            <div className="py-2 px-4 min-w-[190px]"></div>
+            {pricingPlans.map((plan, index) => (
+              <div key={index} className="py-2 px-4 min-w-[190px] flex flex-col text-center">
+                <div className="flex flex-col font-karla py-[10px] px-[20px] flex-row-reverse items-center">
+                  <span className="text-[18px] font-bold text-[#000] uppercase">{plan.name}</span>
+                  <span className="text-[14px] text-[#000] font-bold">As low as</span>
+                  <div className="text-[36px] text-[#000] font-bold">{plan.price}</div>
+                  <span className="text-[16px] text-[#000] font-bold">per card</span>
+                </div>
+                <DynamicButton
+                  onClickFunction={plan.onClick}
+                  className={`bg-[${plan.buttonColor}] mt-2 rounded-full px-4 h-8`}
+                  text={plan.buttonText}
+                />
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+          {data.map((item, index) => (
+            <div key={index} className="grid grid-cols-5 items-center border-b border-gray-200 py-2 pl-4">
+              <span className="font-bold col-span-1">{item.feature}</span>
+              {pricingPlans.map((plan, i) => (
+                <div key={i} className="text-center col-span-1">
+                  {index < (i + 1) * 17 ? (
+                    <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941" className="w-4 h-4 mx-auto" alt="tick" />
+                  ) : (
+                    <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149" className="w-4 h-4 mx-auto" alt="remove" />
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-    // <div className=" w-full max-w-[1366px] mx-auto bg-white ">
-    //   <table className=''>
-    //     <tr className='grid grid-cols-1 md:grid-cols-2  xl:grid-cols-5' >
-    //       <th className='hidden md:block '></th>
-    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
-    //         <span className="text-[#000] text-[18px] font-bold text-center ">
-    //           Free
-    //         </span>
-    //         <span className="">As Low as</span>
-    //         <span className="">$1.95</span>
-    //         <span className="">per Card</span>
-    //         <DynamicButton
-    //           text="Purchase Package"
-    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
-    //         />
-    //         Company
-    //       </th>
-    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
-    //         <span className="text-[#000] text-[18px] font-bold text-center ">
-    //           Free
-    //         </span>
-    //         <span className="">As Low as</span>
-    //         <span className="">$1.95</span>
-    //         <span className="">per Card</span>
-    //         <DynamicButton
-    //           text="Purchase Package"
-    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
-    //         />
-    //         Company
-    //       </th>
-    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
-    //         <span className="text-[#000] text-[18px] font-bold text-center ">
-    //           Free
-    //         </span>
-    //         <span className="">As Low as</span>
-    //         <span className="">$1.95</span>
-    //         <span className="">per Card</span>
-    //         <DynamicButton
-    //           text="Purchase Package"
-    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
-    //         />
-    //         Company
-    //       </th>
-    //       <th className="flex flex-col font-karla text-center py-[10px] px-[20px] min-h-[190px]">
-    //         <span className="text-[#000] text-[18px] font-bold text-center ">
-    //           Free
-    //         </span> 
-    //         <span className="">As Low as</span>
-    //         <span className="">$1.95</span>
-    //         <span className="">per Card</span>
-    //         <DynamicButton
-    //           text="Purchase Package"
-    //           className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
-    //         />
-    //         Company
-    //       </th>
-    //     </tr>
-    //     <tr>
-    //       <td>Alfreds Futterkiste</td>
-    //       <td>Maria Anders</td>
-    //       <td>Germany</td>
-    //       <td>Germany</td>
-    //       <td>Germany</td>
-    //     </tr>
-    //     <tr>
-    //       <td>Centro comercial Moctezuma</td>
-    //       <td>Francisco Chang</td>
-    //       <td>Mexico</td>
-    //     </tr>
-    //   </table>
-    // </div>
+    </>
   );
 };
 

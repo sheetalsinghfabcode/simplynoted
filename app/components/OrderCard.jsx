@@ -76,7 +76,6 @@ export function OrderCard({order}) {
       </div>
     </li>
   );
-  c;
 }
 
 export const ORDER_CARD_FRAGMENT = `#graphql
