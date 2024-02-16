@@ -270,7 +270,7 @@ export default function Collection() {
                 product={product}
                 offPrice={offPrice}
                 productPrice={product.variants[0].price}
-
+                customerId={customerid}
                 // loading={getImageLoadingPriority(i)}
               />
             </>

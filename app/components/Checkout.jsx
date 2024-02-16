@@ -7,8 +7,9 @@ import {Modal} from './Modal';
 import location from '../../location.json';
 import Loader from './modal/Loader';
 import DynamicTitle from './Title';
-import { getApi, postApi } from '~/utils/ApiService';
-import { API_PATH } from '~/utils/Path';
+import {getApi, postApi} from '~/utils/ApiService';
+import {API_PATH} from '~/utils/Path';
+import DynamicButton from './DynamicButton';
 
 export function CheckoutData({
   setShowCartPage,
@@ -55,7 +56,7 @@ export function CheckoutData({
   });
   const [errors, setErrors] = useState({});
   const [walletBalance, setWalletBalance] = useState('');
-
+  const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   function showWalletBtn() {
     setShowWallet(true);
     setShowCardDetail(false);
@@ -102,16 +103,19 @@ export function CheckoutData({
   async function createCustomerId(id) {
     try {
       setloader(true);
-      const res = await postApi(`${API_PATH.CREATE_STRIPE_CUSTOMER}${customerID}`, {
-        name: formData.name || '',
-        email: formData.email || '',
-        'address[line1]': formData.address.line1 || '',
-        'address[line2]': formData.address.line2 || '',
-        'address[city]': formData.address.city || '',
-        'address[state]': formData.address.state || '',
-        'address[country]': formData.address.country || '',
-        paymentMethodId: id || '',
-      })
+      const res = await postApi(
+        `${API_PATH.CREATE_STRIPE_CUSTOMER}${customerID}`,
+        {
+          name: formData.name || '',
+          email: formData.email || '',
+          'address[line1]': formData.address.line1 || '',
+          'address[line2]': formData.address.line2 || '',
+          'address[city]': formData.address.city || '',
+          'address[state]': formData.address.state || '',
+          'address[country]': formData.address.country || '',
+          paymentMethodId: id || '',
+        },
+      );
       // fetch(
       //   `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
       //   {
@@ -143,7 +147,9 @@ export function CheckoutData({
   async function addNewCreditCard(paymentID) {
     try {
       setloader(true);
-      const res = await postApi(`${API_PATH.ADD_NEW_CARD}${customerID}`,{paymentMethodId: paymentID})
+      const res = await postApi(`${API_PATH.ADD_NEW_CARD}${customerID}`, {
+        paymentMethodId: paymentID,
+      });
       // fetch(
       //   `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
       //   {
@@ -167,7 +173,7 @@ export function CheckoutData({
   }
   async function getSavedCards(Id) {
     try {
-      const res = await getApi(`${API_PATH.GET_STRIPE_CUSTOMER_DATA}${Id}`)
+      const res = await getApi(`${API_PATH.GET_STRIPE_CUSTOMER_DATA}${Id}`);
       // fetch(
       //   `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       // );
@@ -191,13 +197,14 @@ export function CheckoutData({
       ) {
         return 'Already used API with the same value.';
       }
-      let res = await 
-      getApi(`${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`)
+      let res = await getApi(
+        `${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
+      );
       //  fetch(
       //   `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       // );
       const data = await res.json();
-      console.log(data,"--1111");
+      console.log(data, '--1111');
       if (res.ok && data) {
         setDiscountCouponCode((prevDiscountCouponCode) => {
           return {
@@ -304,7 +311,7 @@ export function CheckoutData({
 
   async function paymentPurchase() {
     try {
-
+      setPurchaseCompleted(true);
       const postageUSCountries = [
         'USA',
         'US',
@@ -319,14 +326,24 @@ export function CheckoutData({
 
       const payload = {
         billingAddress: {
-          firstName: separatedNames?.firstName,
-          lastName: separatedNames?.lastName,
-          email: customerInformation?.email,
-          address: customerInformation.address?.line1,
-          apartment: customerInformation.address?.line2,
-          city: customerInformation.address?.city,
-          country: customerInformation.address?.country,
-          state: customerInformation.address?.state,
+          firstName: separatedNames?.firstName ? separatedNames?.firstName : '',
+          lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
+          email: customerInformation?.email ? customerInformation?.email : '',
+          address: customerInformation?.address?.line1
+            ? customerInformation.address?.line1
+            : '',
+          apartment: customerInformation?.address?.line2
+            ? customerInformation.address?.line2
+            : '',
+          city: customerInformation?.address?.city
+            ? customerInformation.address?.city
+            : '',
+          country: customerInformation?.address?.country
+            ? customerInformation.address?.country
+            : '',
+          state: customerInformation?.address?.state
+            ? customerInformation.address?.state
+            : '',
         },
         cartNote: cartNote ? cartNote : '',
         cartItems:
@@ -342,26 +359,89 @@ export function CheckoutData({
               item.reciverAddress?.lastName;
             let giftCard = null;
             if (item.giftCardName) {
+              let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
               giftCard = {
                 id: item.giftCardId, // Add a unique identifier for the gift card
-                url:
-                  '/products/' +
-                  item.giftCardName.replace(/ /g, '-').toLowerCase(), // URL based on gift card name
+                url: giftProdUrl, // URL based on gift card name
+                qyt: item.csvFileLen,
+              };
+            }
+            let shipping = null;
+            if (item.isShippidata) {
+              let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
+              shipping = {
+                id: item.shippingData.node.id.match(/\d+/g).join(''),
+                url: shippingUrl,
                 qyt: 1,
               };
             }
+            let postageUS = null;
+            let postageNonUS = null;
+            if (
+              (item.shippingData &&
+                item.shippingData.node.title ==
+                  'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+              (item.shippingData &&
+                item.shippingData.node.title ==
+                  'Ship Cards in Bulk - Cards Only') ||
+              (item.shippingData &&
+                item.shippingData.node.title ==
+                  'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+              (item.shippingData &&
+                item.shippingData.node.title ==
+                  'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
+            ) {
+              postageUS = null;
+              postageNonUS = null;
+            } else if (item.reciverAddress) {
+              const isPostageUSCountry = postageUSCountries.includes(
+                item.reciverAddress?.country,
+              );
+              isPostageUSCountry
+                ? (postageUS = {
+                    id: postalId,
+                    url: '/products/postage',
+                    qyt: 1,
+                  })
+                : (postageNonUS = {
+                    id: postalId2,
+                    url: '/products/postage',
+                    qyt: 1,
+                  });
+            } else {
+              if (item.usCount) {
+                postageUS = {
+                  id: postalId,
+                  url: '/products/postage',
+                  qyt: item.usCount,
+                };
+              }
+              if (item.nonUSCount) {
+                postageNonUS = {
+                  id: postalId2,
+                  url: 'products/postage',
+                  qyt: item.nonUSCount,
+                };
+              }
+            }
 
-            const isPostageUSCountry = postageUSCountries.includes(
-              item.reciverAddress?.country,
-            );
             return {
               productTitle: item.productTitle,
-              variant_id: item.variant_id.match(/\d+/g).join(''),
+              variant_id: item.variant_id,
               productUrlGet: item.productGetUrl,
               productPrice: `$${item.price}`,
-              qyt: 1,
+              qyt: item.csvFileLen,
               properties: {
-                bulk_shipping_address: '\n  \n  \n',
+                bulk_shipping_address: item.locationForShipMethod
+                  ? item.locationForShipMethod.firstName +
+                    item.locationForShipMethod.lastName +
+                    item.locationForShipMethod.address1 +
+                    item.locationForShipMethod.address2 +
+                    item.locationForShipMethod.city +
+                    item.locationForShipMethod.state +
+                    item.locationForShipMethod.country +
+                    item.locationForShipMethod.postalCode
+                  : '',
                 selectedText:
                   selectedOrderPurchaseQuantity &&
                   selectedOrderPurchaseQuantity,
@@ -375,7 +455,9 @@ export function CheckoutData({
                 signoff: item?.endText,
                 custom_font: item?.customFontName,
                 font_selection: item?.fontFamily,
-                recipient_upload: 'Not Applicable :',
+                recipient_upload: item?.csvFileURL
+                  ? item.csvFileURL
+                  : 'Not Applicable :',
                 ship_date: '',
                 sender_fullName: senderFullName && senderFullName,
                 sender_address1: item.senderAddress?.address1,
@@ -400,11 +482,24 @@ export function CheckoutData({
               },
               additionalProducts: {
                 ...(giftCard && {giftCard}),
-                postageUS: {
-                  id: isPostageUSCountry ? postalId : postalId2,
-                  url: '/products/postage',
-                  qyt: 1,
-                },
+                ...(shipping && {shipping}),
+                ...(postageUS && {postageUS}),
+                ...(postageNonUS && {postageNonUS}),
+                // postageUS: {
+                //   id: postalId ,
+                //   url: '/products/postage',
+                //   qyt: 0,
+                // },
+                // PostageNonUs:{
+                //   id:postalId2,
+                //   url: '/products/postage',
+                //   qyt:0
+                // },
+                //   shipping: {
+                //     id: "40647526121577",
+                //     url: "/products/shipping-methods",
+                //     qyt: 1
+                // }
               },
             };
           }),
@@ -421,24 +516,29 @@ export function CheckoutData({
           : '',
       };
 
- 
-      const res = await postApi(`${API_PATH.PURCHASE_API}${customerID}`,payload)
-      // fetch(
-      //   `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
-      //   {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify(payload),
-      //   },
+      const res = await
+      // postApi(
+      //   `${API_PATH.PURCHASE_API}${customerID}`,
+      //   payload,
       // );
-      debugger
-
+      fetch(
+        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        },
+      );
       console.log('payload', payload);
       const json = await res.json();
 
-      console.log("json",json);
+      console.log('json', json);
+      if (json.resut) {
+        localStorage.setItem("mydata", "[]");
+        setPurchaseCompleted(true);
+      }
     } catch (error) {
       console.error(error, 'error on CreateCard');
     }
@@ -450,208 +550,232 @@ export function CheckoutData({
         <Loader />
       ) : (
         <>
-          <div className="'w-full h-full gap-2 mt-8 mb-8">
-            <div className="lg:pb-[80px]">
-              <DynamicTitle title={'PAYMENT'} />
-            </div>
-            <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
-              <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold">
-                <div className="border border-solid border-[#e6edf8] m-3 rounded-tl-lg rounded-tr-lg">
-                  <div
-                    className={`p-3 text-sm cursor-pointer rounded-tl-lg rounded-tr-lg ${
-                      showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
-                    }`}
-                    onClick={showWalletBtn}
-                  >
-                    <input
-                      className="cursor-pointer highlight-none"
-                      type="radio"
-                      name="action"
-                      checked={showWallet}
-                    />
-                    &emsp; USE WALLET
-                  </div>
-                  <hr />
-                  {showWallet && (
-                    <div className="p-3">
-                      <div className="border border-solid border-[#e6edf8] p-2 pl-4 pr-5 mb-3">
-                        <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
-                          <span className="flex-1">WALLET BALANCE </span>
-                          <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
-                            $
-                            {walletBalance && walletBalance.balance
-                              ? walletBalance.balance
-                              : ''}
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                  <hr />
-                  <div
-                    className={`p-3 cursor-pointer text-sm ${
-                      showWallet ? '' : 'bg-[#ef6e6e] bg-opacity-25'
-                    }`}
-                    onClick={cardDetailBtn}
-                  >
-                    <input
-                      type="radio"
-                      className="cursor-pointer highlight-none"
-                      name="action"
-                      checked={showCardDetail}
-                    />
-                    &emsp; USE CREDIT CARD
-                  </div>
-                  {showCardDetail && (
-                    <div className="p-3">
-                      <div className="mt-2">
-                        <div className="text-lg font-bold">
-                          CREDIT CARD INFORMATION
-                        </div>
-                        <div className="text-base font-bold mt-2">
-                          Card Details
-                        </div>
-                      </div>
-                      {savedCard &&
-                        savedCard.map((item) => (
-                          <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between flex">
-                            <div
-                              onClick={() => setPaymentMethodId(item.paymentId)}
-                              className="flex justify-between cursor-pointer items-center text-xs font-bold"
-                            >
-                              <input
-                                checked={paymentMethodId === item.paymentId}
-                                type="radio"
-                                name="stipe-action"
-                                className="mr-2 cursor-pointer highlight-none"
-                              />
-                              <span className=" tracking-wide">
-                                **********{item.cardLast4Number}
-                              </span>
-                            </div>
-
-                            <div>
-                              <span>
-                                {item.cardExpMonth}/{item.cardExpYear}
-                              </span>
-                            </div>
-                          </div>
-                        ))}
-                      <div className="savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4">
-                        <div className="text-sm flex items-center">
-                          <input
-                            type="radio"
-                            name="saved-action"
-                            checked
-                            id="saved-credit-card"
-                            className="cursor-pointer highlight-none"
-                          />
-                          <label htmlFor="saved-credit-card">
-                            &nbsp;Use Saved Credit Card
-                          </label>
-                        </div>
-                        <div className="sm:mt-0 mt-[10px]">
-                          <button
-                            className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded"
-                            onClick={() => onpenAddCardModal()}
-                          >
-                            Add New Card
-                          </button>
-                        </div>
-                      </div>
-                      <div className="w-[100%] h-[1px] border border-t-black mt-5"></div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="mt-2 flex justify-center">
-                  <button
-                    className="bg-[#EF6E6E] w-[200px] text-[#fff] p-4 mt-6 mb-3 rounded flex"
-                    onClick={() => setShowCartPage(true)}
-                  >
-                    <HiArrowLongLeft className="text-2xl mr-2 " />
-                    GO BACK TO CART
-                  </button>
-                </div>
+          {!purchaseCompleted ? (
+            <div className="'w-full h-full gap-2 mt-8 mb-8">
+              <div className="lg:pb-[80px]">
+                <DynamicTitle title={'PAYMENT'} />
               </div>
-              <div className="lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto">
-                <div className="p-5 bg-white  rounded-xl">
-                  <h1 className="text-left font-bold text-2xl">
-                    ORDER SUMMARY
-                  </h1>
-                  <span className="flex justify-between items-center mt-3 mb-3">
-                    <span className="font-medium">Subtotal</span>
-                    <span>${prices.subtotalPrice}</span>
-                  </span>
-                  {discountCouponCode.apiDiscountResponse?.value && (
-                    <span className="flex justify-between items-center mt-3 mb-6">
-                      <span>
-                        <span className="mr-2 font-medium">Order Discount</span>
-                        <span className="text-xs font-medium bg-[#ef6e6e] bg-opacity-25 rounded p-1">
-                          {discountCouponCode.oldTriedPayloadValue}
-                        </span>
-                      </span>
-                      <span>
-                        -$
-                        {
-                          discountCouponCode.apiDiscountResponse
-                            .discountedAmount
-                        }
-                      </span>
-                    </span>
-                  )}
-                  <div className="w-full h-[1px] bg-black"></div>
-                  <span className="flex justify-between items-center mt-3 mb-3 font-bold">
-                    Total <span>${Number(prices.totalPrice)?.toFixed(2)}</span>
-                  </span>
-                  <div className="font-bold">
-                    <span>If you have a discount code, enter it here:</span>
+              <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
+                <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold">
+                  <div className="border border-solid border-[#e6edf8] m-3 rounded-tl-lg rounded-tr-lg">
                     <div
-                      className="flex gap-2 justify-start items-stretch mt-3"
-                      style={{maxWidth: '90%'}}
+                      className={`p-3 text-sm cursor-pointer rounded-tl-lg rounded-tr-lg ${
+                        showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
+                      }`}
+                      onClick={showWalletBtn}
                     >
                       <input
-                        className="flex-2 w-full rounded text-sm"
-                        type="text"
-                        value={discountCouponCode.payloadValue}
-                        placeholder="Discount code"
-                        onChange={(e) =>
-                          setDiscountCouponCode((prevDiscountCouponCode) => {
-                            return {
-                              ...prevDiscountCouponCode,
-                              payloadValue: e.target.value,
-                            };
-                          })
-                        }
+                        className="cursor-pointer highlight-none"
+                        type="radio"
+                        name="action"
+                        checked={showWallet}
                       />
-                      <button
-                        onClick={handleApplyDiscountCoupon}
-                        className="flex-1 bg-[#EF6E6E] w-full justify-center text-[#fff] p-2 pr-5 pl-5 rounded flex font-bold"
-                      >
-                        Apply
-                      </button>
+                      &emsp; USE WALLET
                     </div>
-                    {discountCouponCode.apiDiscountResponse?.message && (
-                      <div
-                        className="mt-5 bg-[#ffd4d4] bg-opacity-25 border border-[#EF6E6E] p-2 text-xs"
-                        style={{maxWidth: '90%'}}
-                      >
-                        {discountCouponCode.apiDiscountResponse.message}
+                    <hr />
+                    {showWallet && (
+                      <div className="p-3">
+                        <div className="border border-solid border-[#e6edf8] p-2 pl-4 pr-5 mb-3">
+                          <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
+                            <span className="flex-1">WALLET BALANCE </span>
+                            <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
+                              $
+                              {walletBalance && walletBalance.balance
+                                ? walletBalance.balance
+                                : '0'}
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                    <hr />
+                    <div
+                      className={`p-3 cursor-pointer text-sm ${
+                        showWallet ? '' : 'bg-[#ef6e6e] bg-opacity-25'
+                      }`}
+                      onClick={cardDetailBtn}
+                    >
+                      <input
+                        type="radio"
+                        className="cursor-pointer highlight-none"
+                        name="action"
+                        checked={showCardDetail}
+                      />
+                      &emsp; USE CREDIT CARD
+                    </div>
+                    {showCardDetail && (
+                      <div className="p-3">
+                        <div className="mt-2">
+                          <div className="text-lg font-bold">
+                            CREDIT CARD INFORMATION
+                          </div>
+                          <div className="text-base font-bold mt-2">
+                            Card Details
+                          </div>
+                        </div>
+                        {savedCard &&
+                          savedCard.map((item) => (
+                            <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between flex">
+                              <div
+                                onClick={() =>
+                                  setPaymentMethodId(item.paymentId)
+                                }
+                                className="flex justify-between cursor-pointer items-center text-xs font-bold"
+                              >
+                                <input
+                                  checked={paymentMethodId === item.paymentId}
+                                  type="radio"
+                                  name="stipe-action"
+                                  className="mr-2 cursor-pointer highlight-none"
+                                />
+                                <span className=" tracking-wide">
+                                  **********{item.cardLast4Number}
+                                </span>
+                              </div>
+
+                              <div>
+                                <span>
+                                  {item.cardExpMonth}/{item.cardExpYear}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        <div className="savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4">
+                          <div className="text-sm flex items-center">
+                            <input
+                              type="radio"
+                              name="saved-action"
+                              checked
+                              id="saved-credit-card"
+                              className="cursor-pointer highlight-none"
+                            />
+                            <label htmlFor="saved-credit-card">
+                              &nbsp;Use Saved Credit Card
+                            </label>
+                          </div>
+                          <div className="sm:mt-0 mt-[10px]">
+                            <button
+                              className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded"
+                              onClick={() => onpenAddCardModal()}
+                            >
+                              Add New Card
+                            </button>
+                          </div>
+                        </div>
+                        <div className="w-[100%] h-[1px] border border-t-black mt-5"></div>
                       </div>
                     )}
                   </div>
+
+                  <div className="mt-2 flex justify-center">
+                    <button
+                      className="bg-[#EF6E6E] w-[200px] text-[#fff] p-4 mt-6 mb-3 rounded flex"
+                      onClick={() => setShowCartPage(true)}
+                    >
+                      <HiArrowLongLeft className="text-2xl mr-2 " />
+                      GO BACK TO CART
+                    </button>
+                  </div>
                 </div>
-                <div className="mt-2">
-                  <button
-                    onClick={paymentPurchase}
-                    className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
-                  >
-                    PURCHASE
-                  </button>
+                <div className="lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto">
+                  <div className="p-5 bg-white  rounded-xl">
+                    <h1 className="text-left font-bold text-2xl">
+                      ORDER SUMMARY
+                    </h1>
+                    <span className="flex justify-between items-center mt-3 mb-3">
+                      <span className="font-medium">Subtotal</span>
+                      <span>${prices.subtotalPrice}</span>
+                    </span>
+                    {discountCouponCode.apiDiscountResponse?.value && (
+                      <span className="flex justify-between items-center mt-3 mb-6">
+                        <span>
+                          <span className="mr-2 font-medium">
+                            Order Discount
+                          </span>
+                          <span className="text-xs font-medium bg-[#ef6e6e] bg-opacity-25 rounded p-1">
+                            {discountCouponCode.oldTriedPayloadValue}
+                          </span>
+                        </span>
+                        <span>
+                          -$
+                          {
+                            discountCouponCode.apiDiscountResponse
+                              .discountedAmount
+                          }
+                        </span>
+                      </span>
+                    )}
+                    <div className="w-full h-[1px] bg-black"></div>
+                    <span className="flex justify-between items-center mt-3 mb-3 font-bold">
+                      Total{' '}
+                      <span>${Number(prices.totalPrice)?.toFixed(2)}</span>
+                    </span>
+                    <div className="font-bold">
+                      <span>If you have a discount code, enter it here:</span>
+                      <div
+                        className="flex gap-2 justify-start items-stretch mt-3"
+                        style={{maxWidth: '90%'}}
+                      >
+                        <input
+                          className="flex-2 w-full rounded text-sm"
+                          type="text"
+                          value={discountCouponCode.payloadValue}
+                          placeholder="Discount code"
+                          onChange={(e) =>
+                            setDiscountCouponCode((prevDiscountCouponCode) => {
+                              return {
+                                ...prevDiscountCouponCode,
+                                payloadValue: e.target.value,
+                              };
+                            })
+                          }
+                        />
+                        <button
+                          onClick={handleApplyDiscountCoupon}
+                          className="flex-1 bg-[#EF6E6E] w-full justify-center text-[#fff] p-2 pr-5 pl-5 rounded flex font-bold"
+                        >
+                          Apply
+                        </button>
+                      </div>
+                      {discountCouponCode.apiDiscountResponse?.message && (
+                        <div
+                          className="mt-5 bg-[#ffd4d4] bg-opacity-25 border border-[#EF6E6E] p-2 text-xs"
+                          style={{maxWidth: '90%'}}
+                        >
+                          {discountCouponCode.apiDiscountResponse.message}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="mt-2">
+                    <button
+                      onClick={paymentPurchase}
+                      className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
+                    >
+                      PURCHASE
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ) : (
+              <div className='w-full h-full gap-2 mt-8 mb-8'>
+                 <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
+                <div>
+                  <h3 className="text-[black] font-karla sm:text-[40px] text-[24px] mb-4">
+                  Thank you for your order!
+                  </h3>
+                  <div className="flex justify-center">
+                    <DynamicButton
+                      className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
+                      text="CONTINUE SHOPPING"
+                      onClickFunction={() => continueShopping()}
+                    />
+                  </div>
+                </div>
+              </div>
+              </div>
+          )}
           {showCardBox && (
             <Modal
               children={

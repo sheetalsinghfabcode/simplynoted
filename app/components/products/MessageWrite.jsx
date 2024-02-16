@@ -123,7 +123,13 @@ export function MessageWriting({
     const data = addresses.filter((item) =>
       selectedCheckboxes.includes(item._id),
     );
-    setFileData(data);
+    const modifiedData = data.map((item) => {
+      // Specify the fields you want to remove from each object
+      const { _id, shopifyId, created,updated,__v, ...newObject } = item;
+      return newObject;
+    });
+    console.log(modifiedData,"data onclick from addressbook");
+    setFileData(modifiedData);
   }
   useEffect(() => {
     gettingCheckBoxAddress();
@@ -230,14 +236,15 @@ export function MessageWriting({
     }
   }
 
-  function onSelectFromAddressBook() {
-    // console.log(fileData);
+async function onSelectFromAddressBook() {
+    // console.log(fileData,"file Data");
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
       setInstructionModal(true);
     } else {
-      let reqField,
+  const csvFileURL =   await  uploadCsvFileOnClick()
+            let reqField,
         usCountAdd = 0,
         nonUsAdd = 0;
       if (fileData.length) {
@@ -271,11 +278,10 @@ export function MessageWriting({
           }
           obj.msgData = subName;
         });
-        // console.log(fileData, 'fileData');
         reqField = {
           msg: name,
           signOffText: name2,
-          csvFileBulk: csvFile ? csvFile : null,
+          csvFileBulk: csvFileURL ? csvFileURL : null,
           csvFileLen: fileData ? fileData.length : '1',
           usCount: usCountAdd,
           nonUsCount: nonUsAdd,
@@ -719,11 +725,15 @@ export function MessageWriting({
         },
       );
       const json = await res.json();
+      
       setCsvFile(json.result);
+      
       // console.log(json, 'CSV UPLOAD DATA ---------------');
       if (json.result) {
         setShowNextBtn(true);
         setLoader(false);
+      return json.result
+
       }
     } catch (error) {
       console.error(error, 'file upload error');

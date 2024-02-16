@@ -29,7 +29,7 @@ export function ProductInfo({
   setCustomFontName,
   editCustomFontFamily,
 }) {
-  console.log({product});
+  console.log(product,"product data ");
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');

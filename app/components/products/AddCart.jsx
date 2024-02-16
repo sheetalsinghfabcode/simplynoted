@@ -8,8 +8,8 @@ import {Modal} from '../Modal';
 import location from '../../../location.json';
 import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
-import { getApi } from '~/utils/ApiService';
-import { API_PATH } from '~/utils/Path';
+import {getApi, postApi} from '~/utils/ApiService';
+import {API_PATH} from '~/utils/Path';
 
 let customerid, cartDataReq;
 export function AddCart({
@@ -21,6 +21,7 @@ export function AddCart({
   shippingData,
   fontFamilyName,
   customFontName,
+  variantsVal,
 }) {
   const {
     addresses,
@@ -34,7 +35,7 @@ export function AddCart({
     selectedAddress,
     setSelectedAddress,
   } = useStateContext();
-
+console.log("Gift cards data",data);
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -59,6 +60,7 @@ export function AddCart({
   const [cardName, setCardName] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardName : '',
   );
+  const [giftCardUrl,setGiftCardUrl] = useState(editOrderValue?.data ? editOrderValue.data.giftCardProdUrl : '')
   const [cardImg, setCardImg] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardImg : '',
   );
@@ -104,9 +106,71 @@ export function AddCart({
   const [stateCheckCart, setStateCheckCart] = useState(true);
   const [reqFields, setReqFields] = useState(false);
   const [offPrice, setOffPrice] = useState('');
+  const [updatedPrice, setUpdatedPrice] = useState('');
 
   const [defaultOption, setDefaultOption] = useState(null);
+  const [variantID, setVariantID] = useState('');
+  const [apiVariantID, setApiVariantID] = useState('')
+  const [isInitialRender,setIsInitialRender] = useState(true)
+const [finalPrice,setFinalPrice] = useState('')
+  useEffect(() => {
+    setIsInitialRender(false)
+    let selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
+    let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
+    setOffPrice(discountedCount);
+    // if (discountedCount > 0) {
+    //   console.log(discountedCount, offPrice, '-------------');
+    //   setUpdatedPrice(
+    //     (
+    //       productData.price.amount -
+    //       (productData.price.amount * discountedCount) / 100
+    //     ).toFixed(2),
+    //   );
+    // }
+    // Replace with your desired value
+    if (selectedOrder == 'Single Card') {
+      setVariantID(productData.id);
+    } else {
+      const variants = variantsVal.variants.nodes;
+      const targetValue = cartDataReq?.csvFileLen;
+      const matchedVariant = findMatchingVariant(variants, targetValue);
+      if (matchedVariant) {
+        console.log('Matched Variant:', matchedVariant);
+        setVariantID(matchedVariant);
+        if (discountedCount > 0) {
+        setUpdatedPrice( (
+          finalPrice -
+          (finalPrice * discountedCount) / 100
+        ).toFixed(2))
+        }
+      } else {
+        console.log('No matching variant found.');
+      }
+    }
+  }, []);
+  const findMatchingVariant = (variants, targetValue) => {
+    let matchedVariant = null;
+    for (let i = 0; i < variants.length; i++) {
+      const variant = variants[i];
+      const quantityRange = variant.title;
+      let lastValue = parseInt(quantityRange.split(' -')[1]);
+      if (!isNaN(lastValue) && lastValue >= targetValue) {
+  
+        matchedVariant = variant.id;
+        setFinalPrice(variant.price.amount)
+        break; // Exit the loop when a match is found
+      } else if (quantityRange.includes('+')) {
+        lastValue = parseInt(quantityRange.split('+')[0]);
+        if (!isNaN(lastValue) && lastValue < targetValue) {
+          matchedVariant = variant.id;
+          break; // Exit the loop when a match is found
+        }
+      }
+    }
 
+    return matchedVariant;
+  };
+console.log(finalPrice,"finalllllll********");
   const handleButtonClick = (option) => {
     setDefaultOption(option);
   };
@@ -145,7 +209,9 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await getApi(`${API_PATH.GET_ADDRESS}${customerid}&type=recipient`)
+      const res = await getApi(
+        `${API_PATH.GET_ADDRESS}${customerid}&type=recipient`,
+      );
       // fetch(
       //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
       // );
@@ -160,7 +226,9 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await getApi(`${API_PATH.GET_ADDRESS}${customerid}&type=return`)
+      const res = await getApi(
+        `${API_PATH.GET_ADDRESS}${customerid}&type=return`,
+      );
       // fetch(
       //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
       // );
@@ -207,6 +275,7 @@ export function AddCart({
     let selCardName = data.collection.products.edges[item].node;
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
+    setGiftCardUrl(selCardName.onlineStoreUrl)
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
     console.log('arrCardPrice', arrCardPrice);
     setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
@@ -217,7 +286,6 @@ export function AddCart({
     setCardPriceVal(arrCardPrice);
   };
 
-
   const priceValFunc = async (item) => {
     let priceAmount = cardPriceVal[item].node.price.amount;
     let priceTitle = cardPriceVal[item].node.title;
@@ -227,24 +295,33 @@ export function AddCart({
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
-    console.log("**********",cartDataReq);
+    console.log('**********', cartDataReq);
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
+    if (discountedCount > 0) {
+      console.log(discountedCount, offPrice, '-------------');
+      setUpdatedPrice(
+        (
+          productData.price.amount -
+          (productData.price.amount * discountedCount) / 100
+        ).toFixed(2),
+      );
+    }
     setMesgtext(cartDataReq.msg);
     getRecipient();
     getReturn();
   }, [addressForm]);
+  useEffect(()=>{
+    console.log(isInitialRender,"------");
+    if(!isInitialRender){
+      onClickAddCart()
+    }
+  },[apiVariantID])
   const navigate = useNavigate();
   let arrOfObj = {
     productTitle: productData.product.title ? productData.product.title : null,
-    variant_id: productData.id,
-    price:
-      offPrice > 0
-        ? (
-            productData.price.amount -
-            (productData.price.amount * offPrice) / 100
-          ).toFixed(2)
-        : productData.price.amount,
+    variant_id: apiVariantID?apiVariantID:variantID,
+    price: offPrice > 0 ? updatedPrice : productData.price.amount,
     productImg: productData.image.url,
     senderAddress: selectedItem2,
     reciverAddress: selectedItem,
@@ -253,6 +330,7 @@ export function AddCart({
     giftCardImg: cardImg && stateCheckCart ? cardImg : null,
     giftCardPrice: cardPrice && stateCheckCart ? cardPrice : null,
     giftCardPriceTitle: cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
+    giftCardProdUrl:giftCardUrl && stateCheckCart?giftCardUrl:null,
     messageData: MsgText,
     fontFamily: fontFamilyName ? fontFamilyName : 'tarzan',
     productGetUrl: window?.location.pathname,
@@ -264,6 +342,7 @@ export function AddCart({
     csvBulkData: cartDataReq?.bulkCsvData,
     shippingData: selectShipMode ? selectShipMode : '',
     shippingMethodImage: selectShipMode ? shippingData.featuredImage.url : '',
+    shippingMethodProdUrl:selectShipMode ? shippingData.onlineStoreUrl:'',
     locationForShipMethod: formData ? formData : '',
     shippingDataCost: selectShipMode ? selectShipMode.node.price.amount : '',
     fontSizeMsg: cartDataReq?.fontSize,
@@ -299,6 +378,10 @@ export function AddCart({
   let keyUpdate23 = 'shippingMethodImage';
   let keyUpdate24 = 'isShippidata';
   let keyUpdate25 = 'giftCardId';
+  let keyUpdate26 = "giftCardProdUrl";
+  let keyUpdate27 = "shippingMethodProdUrl"
+
+  console.log(productData, 'product data inside new discounted cards');
 
   function onClickAddCart() {
     setLoader(true);
@@ -309,6 +392,7 @@ export function AddCart({
         editOrderValue.index >= 0 &&
         editOrderValue.index < storedData.length
       ) {
+
         storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg
           ? cartDataReq?.msg
           : editOrderValue?.data.messageData;
@@ -320,6 +404,8 @@ export function AddCart({
           cardName && stateCheckCart ? cardName : null;
         storedData[editOrderValue.index][keyUpdate25] =
           giftCardId && stateCheckCart ? giftCardId : null;
+        storedData[editOrderValue.index][keyUpdate26] =
+          giftCardUrl && stateCheckCart ? giftCardUrl : null;
         storedData[editOrderValue.index][keyUpdate6] =
           cardPrice && stateCheckCart ? cardPrice : null;
         storedData[editOrderValue.index][keyUpdate7] = cartDataReq?.signOffText
@@ -370,6 +456,9 @@ export function AddCart({
         storedData[editOrderValue.index][keyUpdate23] = selectShipMode
           ? shippingData.featuredImage.url
           : '';
+        storedData[editOrderValue.index][keyUpdate27] = selectShipMode
+          ? shippingData.onlineStoreUrl
+          : '';
         storedData[editOrderValue.index][keyUpdate24] = show ? show : false;
       }
       localStorage.setItem('mydata', JSON.stringify(storedData));
@@ -378,9 +467,11 @@ export function AddCart({
       setLoader(false);
     } else {
       if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
+
         const existingDataString = localStorage.getItem('mydata');
         let existingDataArray = [];
         if (existingDataString) {
+  
           existingDataArray = JSON.parse(existingDataString);
           localStorage.removeItem('mydata');
         }
@@ -392,6 +483,7 @@ export function AddCart({
         navigate('/cart');
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
+
         const existingDataString = localStorage.getItem('mydata');
         let existingDataArray = [];
         if (existingDataString) {
@@ -400,9 +492,9 @@ export function AddCart({
         }
         existingDataArray.push(arrOfObj);
         const updatedDataString = JSON.stringify(existingDataArray);
+
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
-
         navigate('/cart');
         setLoader(false);
       } else {
@@ -438,8 +530,53 @@ export function AddCart({
     }
   }
 
-  console.log("cardName",cardName);
+  console.log('cardName', cardName);
 
+  function onClickOFAddCartBtn(){
+    if(offPrice>0){
+      console.log("have subscription");
+      newDiscountedCard()
+    } else{
+      console.log("do not have subscription");
+      onClickAddCart()
+    }
+  }
+  async function newDiscountedCard() {
+    try {
+
+      let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
+
+      const res = await fetch(
+        'https://api.simplynoted.com/api/new-discounted-card',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization:
+              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
+          },
+          body: JSON.stringify({
+            quantity: 1,
+            title: productData.product.title,
+            tags: tagsData,
+            featuredImage: productData.image.url,
+            price: updatedPrice,
+          }),
+        },
+      );
+      const json = await res.json();
+      if(json.result){
+
+        setApiVariantID(json.result.product.variants[0].id)
+        console.log(json.result.product.variants[0].id,"json.result.product.variants[0].id");
+
+      }
+
+      console.log('json', json);
+    } catch (error) {
+      console.log(error, 'error in new discounted adding');
+    }
+  }
   return (
     <div className="relative md:w-[95%] w-[85%] mx-auto">
       {loader && (
@@ -458,7 +595,7 @@ export function AddCart({
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm
-            defaultOption={defaultOption}
+              defaultOption={defaultOption}
               customerID={customerid}
               setAddressForm={setAddressForm}
               setEditAddress={setEditAddress}
@@ -691,7 +828,11 @@ export function AddCart({
                       <input
                         type="checkbox"
                         id=""
-                        className={`${cardPriceTitle  ? "cursor-pointer" : "cursor-not-allowed"}`}
+                        className={`${
+                          cardPriceTitle
+                            ? 'cursor-pointer'
+                            : 'cursor-not-allowed'
+                        }`}
                         name=""
                         value=""
                         onClick={() => setStateCheckCart(!stateCheckCart)}
@@ -718,7 +859,7 @@ export function AddCart({
                   className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4"
                   text="ADD TO CART"
                   // disabled={!agree}
-                  onClickFunction={() => onClickAddCart()}
+                  onClickFunction={() => onClickOFAddCartBtn()}
                 />
               </div>
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
