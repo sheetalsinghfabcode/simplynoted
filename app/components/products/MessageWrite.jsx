@@ -153,7 +153,7 @@ export function MessageWriting({
   }
 
   function onCancelCSVUpload() {
-    dragAndDropBorderColor("#525252");
+    dragAndDropBorderColor('#525252');
     setShowNextBtn(false);
   }
   async function checkUserLogged() {
@@ -307,7 +307,7 @@ export function MessageWriting({
     if (selectedFile) {
       setShowBox(false);
       return (
-        <div className="w-full">
+        <div className="w-full text-center">
           {showNextBtn ? (
             <>
               <div className="text-center mt-5 flex flex-col mb-2">
@@ -324,7 +324,9 @@ export function MessageWriting({
                   Cancel
                 </button>
               </div>
-              <text> Number of recipient Uploaded: {lenCsvData}</text>
+              <text className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
+                Number of recipient Uploaded: {lenCsvData}
+              </text>
             </>
           ) : (
             <button
@@ -1533,7 +1535,7 @@ export function MessageWriting({
               metafields.footer.data && <ShowFooterComp />}
           </div>
           // This margin is similar to the height of the absolute div above this
-          <div className="text-[#737373] text-sm mt-[392px] mb-[44px]">
+          <div className="text-[#737373] text-sm mt-[365px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
             there.
           </div>
@@ -1547,54 +1549,90 @@ export function MessageWriting({
               </div> */}
               <div className="flex flex-col w-full flex-wrap gap-[10px] text-black items-center">
                 {bulkFileCount && bulkFileCount > 0 ? (
-                  <div className="custom_testing pointer-events-none opacity-40 ">
-                    <div className="bg-[#dbdbdb] px-[8px] py-[5px]">
-                      <input type="checkbox" />
-                      <label htmlFor="">
-                        Add all addresses to address book
-                      </label>
+                  <div
+                    className={`custom_testing  pointer-events-none opacity-40 w-full min-h-[200px] p-4 border border-dashed border-[#525252] rounded-[6px] p-[7px] pt-[24px] pb-[24px] text-black font-normal flex justify-center border-[${dragAndDropBorderColor}]`}
+                    onDragOver={(event) => event.preventDefault()}
+                    onDrop={(event) => {
+                      event.preventDefault();
+                      const file = event.dataTransfer.files[0];
+                      if (file && file.type === 'text/csv') {
+                        handleFileChange({target: {files: [file]}});
+                      }
+                    }}
+                    onDragEnter={() => {
+                      setDragAndDropBorderColor('#ef6e6e');
+                    }}
+                    onDragLeave={() => {
+                      setDragAndDropBorderColor('');
+                    }}
+                  >
+                    <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
+                      {loader ? (
+                        <CircularLoader color="#ef6e6e" />
+                      ) : (
+                        <>
+                          <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
+                            <FiUploadCloud />
+                          </div>
+                          <div
+                            className="flex items-center gap-[10px]"
+                            onClick={() => setVideoBtn(true)}
+                          >
+                            <div className="relative mb-[1.5px]">
+                              <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
+                              <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
+                            </div>
+                            <span className="underline text-[#1B5299] font-bold cursor-pointer">
+                              Bulk Upload Tutorial Video
+                            </span>
+                          </div>
+                          {bulkUploadDiv && !showNextBtn ? (
+                            <div className="mt-3">
+                              <label className="cursor-pointer text-[18px] font-semibold">
+                                Click to upload or drag and drop
+                                <input
+                                  type="file"
+                                  name="file"
+                                  accept=".csv"
+                                  className="upload-input hidden"
+                                  onChange={(e) => handleFileChange(e)}
+                                />
+                              </label>
+                            </div>
+                          ) : (
+                            ''
+                          )}
+                          <>
+                            <a
+                              href="https://api.simplynoted.com/docs/bulk-template"
+                              className="underline  text-[14px] font-normal text-[#1B5299]"
+                            >
+                              Download the Bulk Order Template
+                            </a>
+                          </>
+                          <p
+                            onClick={openModal}
+                            className="underline underline-offset-1 cursor-pointer text-[14px] text-[#1B5299] font-normal hover:text-blue-600"
+                          >
+                            View bulk upload instructions
+                          </p>
+                          {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
+                          <div className="bg-[#E5E5E5] p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                            <input
+                              type="checkbox"
+                              className=" border-[1px] border-[#E5E5E5] outline-none border-none"
+                              checked={stateCheckCart}
+                              onClick={() => setStateCheckCart(!stateCheckCart)}
+                            />
+                            &nbsp;
+                            <label htmlFor="">
+                              Add all addresses to address book
+                            </label>
+                          </div>
+                          <AfterUpload />
+                        </>
+                      )}
                     </div>
-                    <div
-                      className="flex items-center gap-[10px]"
-                      onClick={() => setVideoBtn(true)}
-                    >
-                      <div className="relative mb-[1.5px]">
-                        <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
-                        <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
-                      </div>
-                      <span className="underline text-[#1B5299] font-bold cursor-pointer">
-                        Bulk Upload Tutorial Video
-                      </span>
-                    </div>
-                    {bulkUploadDiv && !showNextBtn ? (
-                      <div>
-                        <label className="cursor-pointer text-[18px] font-semibold">
-                          Click to upload or drag and drop
-                          <input
-                            type="file"
-                            name="file"
-                            accept=".csv"
-                            className="upload-input hidden"
-                            onChange={(e) => handleFileChange(e)}
-                          />
-                        </label>
-                      </div>
-                    ) : (
-                      ''
-                    )}
-                    <p className="text-[#1B5299]">
-                      Download the
-                      <a href="https://api.simplynoted.com/docs/bulk-template">
-                        Bulk Order Template
-                      </a>
-                    </p>
-                    <p
-                      onClick={openModal}
-                      className="underline underline-offset-1 cursor-pointer"
-                    >
-                      View bulk upload instructions
-                    </p>
-                    <AfterUpload />
                   </div>
                 ) : (
                   <div
@@ -1713,7 +1751,10 @@ export function MessageWriting({
                     />
                   )}
                   {bulkFileCount && bulkFileCount > 0 ? (
-                    <span> Number of Bulk Address: {bulkFileCount}</span>
+                    <span className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
+                      {' '}
+                      Number of Bulk Address: {bulkFileCount}
+                    </span>
                   ) : (
                     ''
                   )}

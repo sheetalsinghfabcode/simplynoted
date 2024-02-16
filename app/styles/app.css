@@ -247,14 +247,9 @@ input[type='checkbox']:focus {
 
 @media (max-width: 48em) {
   .global-max-width-handler {
-    padding: 0 16px 0; 
+    padding: 0 16px 0;
   }
 }
-
-
-
-
-
 
 .highlight-none {
   box-shadow: none;
@@ -313,12 +308,6 @@ nav a {
 }
 .bg-contrast {
   background-color: none !important;
-}
-
-.handwritten-notice {
-  text-align: center;
-  color: #001a5f;
-  line-height: 40px;
 }
 
 * .request-a-button {
@@ -824,23 +813,6 @@ nav a {
 .gap-1 {
   gap: 1.25rem;
 }
-.logo-simplinoted {
-  width: 300px;
-  rotate: -5deg;
-  max-height: 241px;
-  position: relative;
-  left: -10px;
-  top: 50px;
-  order: -1;
-}
-.cars-killer {
-  width: 295px;
-  rotate: -7deg;
-  margin-top: -21px;
-  position: relative;
-  right: 35px;
-  top: 0;
-}
 .thankyou_img {
   width: 23%;
   display: none;
@@ -849,19 +821,12 @@ nav a {
   background-color: none !important;
 }
 
-.handwritten-notice {
-  margin-top: 55px;
-}
-.handwritten-notice h3 {
-  font-size: 45px;
-  color: #001a5f;
-}
 .typewriter-effect {
   margin-left: 49px;
 }
 .typewriter-bottom-line {
   position: relative;
-  height: 15px;
+  height: 40px;
   width: 240px;
   display: inline-block;
   border-bottom: 2px solid #001a5f;
@@ -869,12 +834,7 @@ nav a {
   overflow: hidden;
   z-index: -1;
 }
-.handwritten-notice p {
-  font-size: 45px;
-  color: #001a5f;
-  font-weight: 500;
-  margin-left: 80px;
-}
+
 .scale-starting {
   font-size: 21px;
   margin-top: 12px;
@@ -1278,7 +1238,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: -9px;
   width: 0%;
   height: 100%;
   margin-top: 20px;
@@ -1292,7 +1252,7 @@ body {
 }
 
 .navitems:hover {
-  color: #3d3eb7 !important;
+  color: #ef6e6e !important;
 }
 
 /* .navbar-item:hover{
@@ -2437,9 +2397,6 @@ body {
     width: 245px;
     right: 0px;
   }
-  .handwritten-notice h3 {
-    font-size: 40px;
-  }
 }
 @media only screen and (max-width: 1119px) {
   .item_block_middle::before {
@@ -2460,12 +2417,6 @@ body {
 @media only screen and (max-width: 1024px) {
   .texts {
     font-size: 18px;
-  }
-  .handwritten-notice h3 {
-    font-size: 40px;
-  }
-  .logo-simplinoted {
-    display: none;
   }
   .thankyou_img {
     display: block;
@@ -2612,10 +2563,7 @@ body {
     width: 45%;
     margin-left: 7rem;
   }
-  .handwritten-notice h3 {
-    font-size: 32px;
-    margin-right: 0px;
-  }
+
   .white-underline {
     width: 100%;
   }

@@ -50,7 +50,6 @@ import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 
-
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
 
@@ -564,13 +563,13 @@ function DesktopHeader({isHome, menu}) {
     <>
       <header
         role="banner"
-        className={`${
+        className={`h-[72px] ${
           isHome
             ? '  text-contrast !relative dark:text-primary shadow-darkHeader '
             : 'text-primary'
         } ${
           !isHome && y > 50 ? 'shadow-lightHeader' : ''
-        } hidden global-max-width-handler pt-4 h-nav lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 justify-between w-full leading-none xl:gap-8 lg:gap-1`}
+        } hidden global-max-width-handler pt-4 h-nav lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 gap-[124px] w-full leading-none font-roboto font-semibold text-base`}
       >
         <div className="flex  items-center">
           <Link className="font-bold" to="/" prefetch="intent">
@@ -588,7 +587,7 @@ function DesktopHeader({isHome, menu}) {
         </div>
         <div
           style={{fontSize: '17px'}}
-          className="flex items-start ml-16 gap-8 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
+          className="flex items-center h-[44.7px] gap-8 text-[#001A5F] text-[19px]  pb-0 xl:leading-1 lg:leading-5  tracking-tight"
         >
           {(menu?.items || []).map((item) => {
             return (
@@ -603,12 +602,22 @@ function DesktopHeader({isHome, menu}) {
                   // onMouseEnter={() => handleDropdownEnter('integrations')}
                   // onMouseLeave={handleDropdownLeave}
                 >
-                  <div className="font-[600] flex navitems items-center gap-[7px]">
-                    {item.items.length>0?
-                  <FlyoutLink FlyoutContent={PricingContent} data={item.items}>{item.title}</FlyoutLink>
-                  :<Link to={item.to}>{item.title}</Link>
-                    }
-                {item.items && item.items.length>0 &&  <IoIosArrowDown />}
+                  <div className="font-[600] flex navitems items-center gap-[7px] text-[#001a5f] hover:text-[#EF6E6E]">
+                    {item.items.length > 0 ? (
+                      <FlyoutLink
+                        FlyoutContent={PricingContent}
+                        data={item.items}
+                      >
+                        {item.title}
+                      </FlyoutLink>
+                    ) : (
+                      <Link to={item.to}>
+                        <span className="hover:text-[#EF6E6E]">
+                          {item.title}
+                        </span>
+                      </Link>
+                    )}
+                    {/* {item.items && item.items.length > 0 && <IoIosArrowDown />} */}
                   </div>
                   {/* <div className="font-[600]">{item.title}</div> */}
                 </div>
@@ -899,7 +908,7 @@ function DesktopHeader({isHome, menu}) {
           ) : (
             <DynamicButton
               text={customerId ? 'Account' : 'Login'}
-              className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-[17px] !text-black hover:!text-[#001a5f]"
+              className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-base !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
                 if (customerId && pathname.pathname !== '/account') {
@@ -914,7 +923,7 @@ function DesktopHeader({isHome, menu}) {
           <DynamicButton
             // style={{padding: '11px 20px 10px 20px', fontWeight: '700 !important'}}
             text="REQUEST A SAMPLE"
-            className="request-button text-lg rounded h-[44px] font-bold px-[20px] py-[10px]"
+            className="request-button text-base rounded h-[44px] font-semibold px-[20px] py-[10px]"
             onClickFunction={() =>
               (window.location.href =
                 'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
@@ -942,9 +951,9 @@ const FlyoutLink = ({children, href, FlyoutContent, data}) => {
     <div
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
-      className="relative w-fit h-fit"
+      className="relative w-fit h-fit text-[#001a5f] hover:text-[#EF6E6E]"
     >
-      <a href={href} className="relative text-[##001a5f]">
+      <a href={href} className="relative  text-[#001a5f] hover:text-[#EF6E6E]">
         {children}
         <span
           style={{
@@ -978,7 +987,10 @@ const PricingContent = ({props}) => {
     <div className="w-64 bg-wheat p-6 shadow-xl">
       {props.map((item) => (
         <div className="mb-3 space-y-3 ">
-          <Link to={item.to} className="block text-sm hover:underline font-[400]">
+          <Link
+            to={item.to}
+            className="block text-sm hover:underline font-[400]"
+          >
             {item.title}
           </Link>
         </div>
