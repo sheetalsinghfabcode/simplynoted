@@ -9,9 +9,11 @@ import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
 
 import {useStateContext} from '~/context/StateContext';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export async function loader({context}) {
-  const StripeKey ='pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+  const StripeKey =
+    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });
@@ -88,8 +90,6 @@ export default function SimplyNoted() {
     return () => {};
   }, []);
 
-  console.log("subscriptionTitle",subscriptionTitle);
-
 
   return (
     <div className=" w-full global-max-width-handler ">
@@ -98,8 +98,9 @@ export default function SimplyNoted() {
           <CircularLoader title="Loading Plans" color="#ef6e6e" />
         </div>
       )}
-
-        <DynamicTitle  title={'Simply Noted Plans'} />
+      <div className='flex px-[16px] md:px-[40px] justify-start items-center'>
+        <DynamicTitle className="" title={'Simply Noted Plans'} />
+      </div>
       <div className={`${loader && 'opacity-40'}`}>
         {!walletPlan && !walletPurcase && !walletPayment && (
           <WalletTable

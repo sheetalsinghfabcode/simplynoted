@@ -142,7 +142,7 @@ console.log(journalArticles,'+++++++++++++');
   };
 
   return (
-    <>
+    <div className='global-max-width-handler'>
       <div className="px-5">
         <DynamicTitle
           // dynamicButton
@@ -261,7 +261,7 @@ console.log(journalArticles,'+++++++++++++');
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -14,11 +14,10 @@ export default function Salesforce() {
 
   return (
     <section>
-      <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-        <div className="flex justify-center items-center">
+      <div className={`w-full global-max-width-handler ${animate ? 'fade-in' : ''}`}>
+        <div className="flex px-[16px] md:px-[40px]  items-center">
           <div
             className="lg:flex-row flex-col flex  sm:mt-10 mt-5"
-            style={{maxWidth: '90%'}}
           >
             {/* first div left side */}
             <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
@@ -201,7 +200,7 @@ export default function Salesforce() {
           />
         </div>
         {/* second */}
-        <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
+        <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto  ">
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">

@@ -2,14 +2,14 @@ import React from 'react';
 import DynamicTitle from '~/components/Title';
 function our100guarntee() {
   return (
-    <div>
+    <div className='global-max-width-handler'>
       <div className="ml-[50px]">
         <DynamicTitle
           dynamicButton
           title="OUR 100% SATISFACTION GUARANTEE"
           className={'mt-[20px]  !text-[18px]'}
         />
-        <div className="flex justify-center md:w-full mx-auto sm:w-[90%] w-[85%]">
+        <div className="flex justify-center md:w-full mx-auto ">
           <div className="sm: text-[12px]">
             <p className="mt-[25px] ">
               At Simply Noted, your satisfaction is our paramount concern. We

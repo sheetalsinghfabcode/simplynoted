@@ -4,7 +4,7 @@ import automate_scale from '../../assets/Image/about-img.webp';
 const AboutUs = () => {
   return (
     <>
-      <div className="md:max-w-full max-w-[400px] md:mr-auto mx-auto">
+      <div className="md:max-w-full max-w-[400px] global-max-width-handler md:mr-auto ">
         <div className="sm:mt-10 mt-7">
           <div className="m-auto max-w-[900px] px-[15px] ">
             <div className="video-text ">

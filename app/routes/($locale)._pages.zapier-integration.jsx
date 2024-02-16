@@ -20,8 +20,8 @@ export default function Zapier() {
     setAnimate(true);
   }, []);
   return (
-    <div>
-      <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto w-[90%]">
+    <div className='global-max-width-handler'>
+      <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto px-[16px] md:px-[40px] ">
         <div
           className={`w-full ${
             animate ? 'fade-in' : ''
@@ -182,7 +182,7 @@ export default function Zapier() {
         </div>
       </div>
       {/* second */}
-      <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
+      <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto ">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">

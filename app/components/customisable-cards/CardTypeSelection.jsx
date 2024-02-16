@@ -14,7 +14,7 @@ export default function CardTypeSelection({
   };
 
   return (
-    <section className="flex lg:flex-row flex-col justify-center items-center  lg:mt-[4rem] mt-16 flex-wrap xl:gap-28  lg:gap-[6rem] gap-5 lg:mx-auto xl:max-w-[1000px] w-[95%]">
+    <section className="flex lg:flex-row flex-col global-max-width-handler justify-center items-center  lg:mt-[4rem] mt-16 flex-wrap xl:gap-28  lg:gap-[6rem] gap-5 ">
       <div className="md:flex hidden items-center justify-center flex-1 ">
         <div className="lg:w-[540px] w-[485px] h-[350px] ">
           <img

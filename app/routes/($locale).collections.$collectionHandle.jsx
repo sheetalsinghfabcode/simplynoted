@@ -7,6 +7,7 @@ import {
   getPaginationVariables,
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 import {
   PageHeader,
@@ -29,8 +30,8 @@ import LoginModal from '~/components/modal/LoginModal';
 import Loader from '~/components/modal/Loader';
 import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
-import { getApi } from '~/utils/ApiService';
-import { API_PATH } from '~/utils/Path';
+import {getApi} from '~/utils/ApiService';
+import {API_PATH} from '~/utils/Path';
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -221,7 +222,9 @@ export default function Collection() {
       setLoader(true);
       if (customerid) {
         navigate(`/collections/customisable-cards`);
-        const res = await getApi(`${API_PATH.GET_CUSTOM_CARDS}${customerid}&offset=${offSetVal}`)
+        const res = await getApi(
+          `${API_PATH.GET_CUSTOM_CARDS}${customerid}&offset=${offSetVal}`,
+        );
         // fetch(
         //   `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
         // );
@@ -292,23 +295,16 @@ export default function Collection() {
     }
   }, [offSetVal]);
 
-
-  console.log("data",data);
   return (
     <>
-      <div className="md:p-5 p-3">
-        {/* <PageHeader heading={collection.title}>
-        {collection?.description && (
-          <div className="flex items-baseline justify-between w-full">
-            <div>
-              <Text format width="narrow" as="p" className="inline-block">
-                {collection.description}
-              </Text>
-            </div>
-          </div>
-        )}
-      </PageHeader> */}
-        <DynamicTitle title={'Simply Noted'} title2={'cards'} className="!pb-[15px]"/>
+      <div className="global-max-width-handler">
+       
+     
+        <DynamicTitle
+          title={'Simply Noted'}
+          title2={'cards'}
+          className="!pb-[15px]"
+        />
 
         <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">
           <div className="gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
@@ -340,7 +336,9 @@ export default function Collection() {
 
               {data &&
                 data.map((item) => (
-                  <option className='capitalize' value={item.node.handle}>{item.node.handle}</option>
+                  <option className="capitalize" value={item.node.handle}>
+                    {item.node.handle}
+                  </option>
                 ))}
             </select>
           </div>

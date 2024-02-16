@@ -2734,3 +2734,8 @@ body {
   height: 100%;
   cursor: pointer;
 }
+
+.breadcrumb {
+  position: relative;
+  z-index: 999;
+}
