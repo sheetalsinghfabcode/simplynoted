@@ -10,8 +10,7 @@ import ErrorModal from '../modal/ErrorModal';
 import Instruction from '../modal/Instruction';
 import chooseFile from '../../../assets/Image/choose-file.svg';
 import {useLocation} from '@remix-run/react';
-import { VideoTutorial } from '../VideoTutorial';
-
+import {VideoTutorial} from '../VideoTutorial';
 
 const ContactTable = ({
   customerID,
@@ -570,8 +569,9 @@ const ContactTable = ({
                       <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
                         Bulk Address Upload{' '}
                       </h2>
-                      <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] cursor-pointer leading-[157.14%]"
-                      onClick={() => setShowVideo(true)}
+                      <h4
+                        className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] cursor-pointer leading-[157.14%]"
+                        onClick={() => setShowVideo(true)}
                       >
                         Watch Tutorial <span className="underline">Video</span>
                       </h4>
@@ -688,16 +688,16 @@ const ContactTable = ({
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
-              {ProdcuctSide && selectedCheckboxes.length > 0 && (
-                <div>
+              <div className="h-[37px]">
+                {ProdcuctSide && selectedCheckboxes.length > 0 && (
                   <button
-                    className="text-white bg-[#FF0000] border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                    className="text-white bg-[#ef6e6e] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
                     onClick={continueBtn}
                   >
                     Continue
                   </button>
-                </div>
-              )}
+                )}
+              </div>
               {/* Your table rendering code here... */}
               <div className="overflow-auto">
                 <table className="overflow-auto min-w-full bg-gray-200 text-black">
@@ -865,11 +865,12 @@ const ContactTable = ({
           />
         </div>
       )}
-   <Instruction
-      isOpen={showVideo}
-      body={<VideoTutorial/>}
-      close={true}
-      closeModal={() => setShowVideo(false)}/>
+      <Instruction
+        isOpen={showVideo}
+        body={<VideoTutorial />}
+        close={true}
+        closeModal={() => setShowVideo(false)}
+      />
     </>
   );
 };

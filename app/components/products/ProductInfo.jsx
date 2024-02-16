@@ -111,7 +111,7 @@ export function ProductInfo({
                 ).toFixed(2)}
               </span>
             ) : (
-              <span className="text-[#4D679F] leading-[40px] font-bold">
+              <span className="text-[30px] text-[#4D679F] leading-[40px] font-bold">
                 ${product?.variants.nodes[0].price.amount}
               </span>
             )}
