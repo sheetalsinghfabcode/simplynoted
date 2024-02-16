@@ -3,7 +3,7 @@ import underline from '../../assets/Image/faq-underline.png';
 const Partner_referral = () => {
   return (
     <>
-      <div className="mt-10">
+      <div className="mt-10 global-max-width-handler">
         <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla tracking-tight pb-[6px] mx-2">
           Submit a
           <span className="font-beauty ml-2 md:text-8xl text-6xl font-extrabold">

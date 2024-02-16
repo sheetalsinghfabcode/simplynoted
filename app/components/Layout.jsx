@@ -90,11 +90,17 @@ function Header({title, menu}) {
 
   const addToCartFetchers = useCartFetchers(CartForm.ACTIONS.LinesAdd);
 
+  const pathname = useLocation();
+
   useEffect(() => {
     let aa = localStorage.getItem('cartCount');
     if (isCartOpen || !addToCartFetchers.length) return;
     openCart();
   }, [addToCartFetchers, isCartOpen, openCart]);
+
+  useEffect(() => {
+    localStorage.removeItem('previousPage');
+  }, []);
 
   return (
     <>
@@ -112,6 +118,7 @@ function Header({title, menu}) {
         menu={menu}
         openCart={openCart}
       />
+      {/* {pathname.pathname !== '/' && <Breadcrumbs />} */}
       <MobileHeader
         isHome={isHome}
         title={
@@ -571,7 +578,12 @@ function DesktopHeader({isHome, menu}) {
           !isHome && y > 50 ? 'shadow-lightHeader' : ''
         } hidden global-max-width-handler pt-4 h-nav lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 gap-[124px] w-full leading-none font-roboto font-semibold text-base`}
       >
-        <div className="flex  items-center">
+        <div
+          onClick={() => {
+            localStorage.removeItem('previousPage');
+          }}
+          className="flex  items-center"
+        >
           <Link className="font-bold" to="/" prefetch="intent">
             {/* {title} */}
             <img
@@ -623,255 +635,6 @@ function DesktopHeader({isHome, menu}) {
                 </div>
               </div>
             );
-            // if (
-            //   [
-            //     'Order',
-            //     'Integrations',
-            //     'Pricing',
-            //     'About',
-            //     'Account',
-            //     'Business',
-            //   ].includes(item.title)
-            // ) {
-            //   return (
-            //     <div
-            //       key={item.id}
-            //       prefetch="intent"
-            //       className={`${({isActive}) =>
-            //         isActive ? 'navitem-active' : 'navitems'}`}
-            //     >
-            //       {item.title === 'Integrations' ? (
-            //         <div
-            //           className="dropdown"
-            //           onMouseEnter={() => handleDropdownEnter('integrations')}
-            //           onMouseLeave={handleDropdownLeave}
-            //         >
-            //           <div className="font-[600] flex navitems items-center gap-[7px]">
-            //             <FlyoutLink FlyoutContent={PricingContent} data={[{title:'Zapier',url:'/shopify-integration'},
-            //             {title:'Shopify',url:'/shopify-integration'},
-            //             {title:'Salesforce',url:'/Salesforce'},
-            //             {title:'API',url:'/api-automation'}]}>
-            //             Integrations
-            //             </FlyoutLink>
-            //             {/* <div className="font-[600]">Integrations</div> */}
-            //             <IoIosArrowDown />
-            //           </div>
-            //           {/* <div
-            //             className={`dropdown-content w-64 bg-white p-6 shadow-xl ${
-            //               activeDropdown === 'integrations' ? 'show' : ''
-            //             }`}
-            //           >
-            //             <ul
-            //               className="mb-3 space-y-3"
-            //               onClick={handleItemClick}
-            //             >
-            //               <Link to="/zapier-integration">
-            //                 <li className="block text-sm hover:underline">
-            //                   {' '}
-            //                   Zapier
-            //                 </li>
-            //               </Link>
-            //               <Link to="/shopify-integration">
-            //                 <li className="block text-sm hover:underline">
-            //                   {' '}
-            //                   Shopify
-            //                 </li>
-            //               </Link>
-            //               <Link to="/salesforce">
-            //                 <li className="block text-sm hover:underline">
-            //                   {' '}
-            //                   Salesforce
-            //                 </li>
-            //               </Link>
-            //               <Link to="/api-automation">
-            //                 <li className="block text-sm hover:underline">
-            //                   {' '}
-            //                   API
-            //                 </li>
-            //               </Link>
-            //             </ul>
-            //           </div> */}
-            //         </div>
-            //       ) : null}
-            //       {item.title === 'Pricing' ? (
-            //         <div
-            //           className="dropdown"
-            //           onMouseEnter={() => handleDropdownEnter('pricing')}
-            //           onMouseLeave={handleDropdownLeave}
-            //         >
-            //           <div className="font-[600] flex navitems items-center gap-[7px]">
-            //           <FlyoutLink FlyoutContent={PricingContent} data={[{title:'Get a Custom Quote',url:'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb'},
-            //             {title:'ROI Calculator',url:'/roicalculator'}]}>
-            //             Pricing
-            //             </FlyoutLink>
-            //             {/* <div className="font-[600]">Pricing</div> */}
-            //             <div>
-            //               <IoIosArrowDown />
-            //             </div>
-            //           </div>
-            //           {/* <div
-            //             className={`dropdown-content ${
-            //               activeDropdown === 'pricing' ? 'show' : ''
-            //             }`}
-            //           >
-            //             <ul className="dropdown-list" onClick={handleItemClick}>
-            //               <Link to="#">
-            //                 <button
-            //                   onClick={(e) => {
-            //                     e.preventDefault();
-            //                     window.location.href =
-            //                       'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb';
-            //                     return false;
-            //                   }}
-            //                 >
-            //                   <li> Get a Custom Quote </li>
-            //                 </button>
-            //               </Link>
-            //               <Link to="/roicalculator">
-            //                 <li>ROI Calculator</li>
-            //               </Link>
-            //             </ul>
-            //           </div> */}
-            //         </div>
-            //       ) : null}
-
-            //       {item.title === 'About' ? (
-            //         <div
-            //           className="dropdown"
-            //           onMouseEnter={() => handleDropdownEnter('about')}
-            //           onMouseLeave={handleDropdownLeave}
-            //         >
-            //           <div className="font-[600] flex navitems items-center gap-[7px]">
-            //           <FlyoutLink FlyoutContent={PricingContent} data={[{title:'About Us',url:'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb'},
-            //             {title:'Tutorials',url:'/tutorials'},
-            //             {title:'Videos',url:'https://www.youtube.com/@simplynoted'},
-            //             {title:'Blog.',url:'/blog'},
-            //             {title:'F.A.Q.',url:'/faq'}]}>
-            //             About
-            //             </FlyoutLink>
-            //             {/* <div className="font-[600]">About</div> */}
-            //             <div>
-            //               <IoIosArrowDown />
-            //             </div>
-            //           </div>
-            //           {/* <div
-            //             className={`dropdown-content ${
-            //               activeDropdown === 'about' ? 'show' : ''
-            //             }`}
-            //           >
-            //             <ul className="dropdown-list" onClick={handleItemClick}>
-            //               <Link to="/about-us">
-            //                 <li>About Us</li>
-            //               </Link>
-            //               <Link to="/tutorials">
-            //                 <li>Tutorials</li>
-            //               </Link>
-            //               <a href="https://www.youtube.com/@simplynoted">
-            //                 <li>Videos</li>
-            //               </a>
-            //               <Link to="/blog">
-            //                 <li>Blog.</li>
-            //               </Link>
-
-            //               <Link to="/faq">
-            //                 <li>F.A.Q.</li>
-            //               </Link>
-            //             </ul>
-            //           </div> */}
-            //         </div>
-            //       ) : null}
-            //       {item.title === 'Account' ? (
-            //         <div
-            //           className="dropdown"
-            //           onMouseEnter={() => handleDropdownEnter('account')}
-            //           onMouseLeave={handleDropdownLeave}
-            //         >
-            //           <div className="font-[600] navitems">Account</div>
-            //           <div
-            //             className={`dropdown-content ${
-            //               activeDropdown === 'account' ? 'show' : ''
-            //             }`}
-            //           >
-            //             <ul className="dropdown-list" onClick={handleItemClick}>
-            //               <Link to="/account">
-            //                 <li>Account Details</li>
-            //               </Link>
-            //               <Link to="/manage-subscription">
-            //                 <li>Manage Plans</li>
-            //               </Link>
-            //               <Link to="/tutorials">
-            //                 <li>Order History</li>
-            //               </Link>
-            //               <Link to="/address-book">
-            //                 <li>Address Book</li>
-            //               </Link>
-            //             </ul>
-            //           </div>
-            //         </div>
-            //       ) : null}
-            //       {item.title === 'Order' ? (
-            //         <div
-            //           className="dropdown"
-            //           onMouseEnter={() => handleDropdownEnter('order')}
-            //           onMouseLeave={handleDropdownLeave}
-            //         >
-            //           <div className="font-[600] flex navitems items-center gap-[7px]">
-            //           <FlyoutLink FlyoutContent={PricingContent} data={[{title:'Cards',url:'/collections/best-sellers'},
-            //             {title:'Create a Card',url:'/customise-your-card'},
-            //             {title:'Birthday Automation',url:'collections/birthday'},
-            //             {title:'Gift Cards.',url:'/gift-cards'}]}>
-            //             Order
-            //             </FlyoutLink>
-            //             {/* <div className="font-[600]">Order</div> */}
-            //             <div>
-            //               <IoIosArrowDown />
-            //             </div>
-            //           </div>
-            //           {/* <div
-            //             className={`dropdown-content ${
-            //               activeDropdown === 'order' ? 'show' : ''
-            //             }`}
-            //           >
-            //             <ul className="dropdown-list" onClick={handleItemClick}>
-            //               <Link to="/collections/best-sellers">
-            //                 <li>Cards</li>
-            //               </Link>
-            //               <Link to="/customise-your-card">
-            //                 <li>Create a Card</li>
-            //               </Link>
-            //               <Link to="/collections/birthday">
-            //                 <li>Birthday Automation</li>
-            //               </Link>
-            //               <Link to="/gift-cards">
-            //                 <li>Gift Cards </li>
-            //               </Link>
-            //             </ul>
-            //           </div> */}
-            //         </div>
-            //       ) : null}
-            //       {item.title === 'Business' ? (
-            //         <Link to="/business-page">
-            //           <div className="font-[600]">Business</div>
-            //         </Link>
-            //       ) : null}
-
-            //       {/* ... (other dropdown menus for 'Pricing' and 'Learn') */}
-            //     </div>
-            //   );
-            // } else {
-            //   return (
-            //     <Link
-            //       key={item.id}
-            //       to={item.to}
-            //       target={item.target}
-            //       prefetch="intent"
-            //       className={`${({isActive}) =>
-            //         isActive ? 'navitem-active' : 'navitems'}`}
-            //     >
-            //       {item.title}
-            //     </Link>
-            //   );
-            // }
           })}
         </div>
         <div className="flex items-center gap-1">

@@ -13,7 +13,7 @@ const DynamicTitle = ({
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   return (
-    <div className="flex justify-center items-center  my-[1rem]">
+    <div className="flex justify-center items-center mx-auto  my-[1rem]">
       <div className="grid items-center w-full">
         {dynamicButton && (
           <div>

@@ -23,8 +23,8 @@ export default function shopify() {
   }, []);
   return (
 
-    <div>
-      <div className="flex flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto w-[90%]">
+    <div className='global-max-width-handler'>
+      <div className="flex px-[16px] md:px-[40px] flex-wrap sm:mt-[71px] mt-[27px] justify-center mx-auto">
         <div className={`w-full ${animate ? 'fade-in' : ''} lg:w-[35%] lg:order-none order-2 w-full lg:text-left text-center`}>
           <div className="lg:block hidden">
             <img className='mb-[25px]' src={ShopifyIcon} alt="shopify" />
@@ -164,7 +164,7 @@ export default function shopify() {
         </div>
       </div>
       {/* second */}
-      <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto w-[90%]">
+      <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto ">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">

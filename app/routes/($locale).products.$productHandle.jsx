@@ -40,6 +40,7 @@ import {MessageWriting} from '~/components/products/MessageWrite';
 import {AddCart} from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
+import Breadcrumbs from '~/components/Breadcrumbs';
 
 export const headers = routeHeaders;
 
@@ -226,6 +227,7 @@ export default function Product() {
   }, [datafornav.pathname]);
   return (
     <>
+
       {productshow ? (
         <>
           <Section className="w-full mt-[20px] !p-0">

@@ -54,8 +54,8 @@ export default function AllProducts() {
   const {products} = useLoaderData();
 
   return (
-    <>
-      <PageHeader heading="All Products" variant="allCollections" />
+    <div>
+      <PageHeader  heading="All Products" variant="allCollections" />
       <Section>
         <Pagination connection={products}>
           {({nodes, isLoading, NextLink, PreviousLink}) => {
@@ -85,7 +85,7 @@ export default function AllProducts() {
           }}
         </Pagination>
       </Section>
-    </>
+    </div>
   );
 }
 

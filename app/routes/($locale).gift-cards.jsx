@@ -2,7 +2,7 @@ import DynamicTitle from '~/components/Title';
 const Gift_card = () => {
   return (
     <>
-      <div className="mt-5">
+      <div className="mt-5 global-max-width-handler">
         <div className="px-[30px] w-[100%]  mx-auto">
           <DynamicTitle
             dynamicButton

@@ -345,7 +345,7 @@ export default function AddCartFunc() {
   }
 
   return (
-    <>
+    <div className='global-max-width-handler'>
       {showCartPage ? (
         <>
           <div className="w-full h-full gap-2 md:mt-16 sm:mt-[5rem] mt16">
@@ -359,7 +359,7 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div className="sm:w-[85%] w-full bg-[white] m-auto mt-10 mb-10 p-[12px] rounded-[10px]">
+                      <div className="w-full bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[12px] rounded-[10px]">
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                             <div className="flex w-full justify-start sm:flex-row flex-col">
@@ -1299,7 +1299,7 @@ export default function AddCartFunc() {
         cancelText="Register"
         cross={true}
       />
-    </>
+    </div>
   );
 }
 

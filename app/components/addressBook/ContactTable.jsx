@@ -17,6 +17,7 @@ const ContactTable = ({
   filteredAddresses,
   editAddress,
   setSelectedCheckboxes,
+  closeIcon,
   setSelectedAddress,
   selectedCheckboxes,
   setAddressForm,
@@ -530,12 +531,13 @@ const ContactTable = ({
           content={errorContent}
         />
       ) : (
-        <div className="w-full mx-auto max-w-[100%]">
+        <div className="w-full mx-auto relative max-w-[100%]">
           {pathName.pathname !== '/account' && (
             <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8">
               ADDRESS BOOK
             </h2>
           )}
+
           <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 my-8">
             <div className="w-full max-w-[400px]">
               <input

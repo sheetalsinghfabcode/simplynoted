@@ -1855,6 +1855,7 @@ export function MessageWriting({
       <Instruction
         isOpen={modalForAddressBook}
         title=""
+        close={true}
         closeModal={closeSelectAddressModal}
         body={
           addressForm ? (
