@@ -271,48 +271,88 @@ function MenuMobileNav({menu, onClose}) {
                 )}
 
                 {item.title === 'Integrations' ? (
+                  // <div className="">
+                  //   <div
+                  //     className="flex justify-between items-center"
+                  //     onClick={handleChange}
+                  //     style={{fontWeight: show ? 'bold' : 'normal'}}
+                  //   >
+                  //     Integrations
+                  //     {show ? (
+                  //       <img className="h-[12px]" src={arrow_down} alt="" />
+                  //     ) : (
+                  //       <img className="h-[12px]" src={arrow_rights} alt="" />
+                  //     )}
+                  //   </div>
+                  //   {show && (
+                  //     <div>
+                  //       <ul
+                  //         onClick={onClose}
+                  //         className="integration-color ml-[8px]"
+                  //         style={{color: 'black'}}
+                  //       >
+                  //         <Link to="/zapier-integration">
+                  //           <li
+                  //             className={`mt-[-21px] ${
+                  //               show === 'Zapier' ? 'selected' : 'green'
+                  //             }}`}
+                  //           >
+                  //             Zapier
+                  //           </li>
+                  //         </Link>
+                  //         <Link to="/shopify-integration">
+                  //           <li className="mt-[-21px]">Shopify</li>
+                  //         </Link>
+                  //         <Link to="/salesforce">
+                  //           <li className="mt-[-21px]">Salesforce</li>
+                  //         </Link>
+                  //         <Link to="/api-automation ">
+                  //           <li className="mt-[-21px]">API</li>
+                  //         </Link>
+                  //       </ul>
+                  //     </div>
+                  //   )}
+                  // </div>
                   <div className="">
-                    <div
-                      className="flex justify-between items-center"
-                      onClick={handleChange}
-                      style={{fontWeight: show ? 'bold' : 'normal'}}
-                    >
-                      Integrations
-                      {show ? (
-                        <img className="h-[12px]" src={arrow_down} alt="" />
-                      ) : (
-                        <img className="h-[12px]" src={arrow_rights} alt="" />
-                      )}
-                    </div>
-                    {show && (
-                      <div>
-                        <ul
-                          onClick={onClose}
-                          className="integration-color ml-[8px]"
-                          style={{color: 'black'}}
-                        >
-                          <Link to="/zapier-integration">
-                            <li
-                              className={`mt-[-21px] ${
-                                show === 'Zapier' ? 'selected' : 'green'
-                              }}`}
-                            >
-                              Zapier
-                            </li>
-                          </Link>
-                          <Link to="/shopify-integration">
-                            <li className="mt-[-21px]">Shopify</li>
-                          </Link>
-                          <Link to="/salesforce">
-                            <li className="mt-[-21px]">Salesforce</li>
-                          </Link>
-                          <Link to="/api-automation ">
-                            <li className="mt-[-21px]">API</li>
-                          </Link>
-                        </ul>
-                      </div>
+                  <div
+                    className="flex justify-between items-center"
+                    onClick={handleChange}
+                    style={{fontWeight: show ? 'bold' : 'normal'}}
+                  >
+                    Integrations
+                    {show ? (
+                      <img className="h-[12px]" src={arrow_down} alt="" />
+                    ) : (
+                      <img className="h-[12px]" src={arrow_rights} alt="" />
                     )}
                   </div>
+                  {show && (
+                    <div className="">
+                      <ul
+                        onClick={onClose}
+                        className="text-thin ml-[8px]"
+                        style={{color: 'black'}}
+                      >
+                        {/* <Link to="/price">
+                          <li>Credit Packages</li>
+                        </Link> */}
+                        <Link to="/zapier-integration">
+                          <li>Zapier</li>
+                        </Link>
+                        <Link to="/shopify-integration">
+                          <li>Shopify</li>
+                        </Link>
+                        <Link to="/salesforce">
+                          <li>Sales</li>
+                        </Link>
+                        <Link to="/api-automation">
+                          <li>Api</li>
+                        </Link>
+                        
+                      </ul>
+                    </div>
+                  )}
+                </div>
                 ) : null}
                 {item.title === 'Pricing' ? (
                   <div className="">
@@ -428,7 +468,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       }}
       className={`${
         isHome ? '' : ''
-      } global-max-width-handler flex lg:hidden items-center h-nav relative z-20 backdrop-blur-lg top-0 justify-between w-full bg-[#e2ebf8] bg-transparent leading-none gap-4`}
+      } global-max-width-handler flex lg:hidden items-center h-nav relative z-20 backdrop-blur-lg top-0 justify-between w-full bg-white leading-none gap-4`}
     >
       <div className="flex items-center justify-start h-full w-full gap-4 ">
         <Link

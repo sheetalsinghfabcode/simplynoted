@@ -342,6 +342,7 @@ const GiftProduct = `#graphql
         edges{
           node{
             title
+            onlineStoreUrl
             featuredImage{
               url
             }
@@ -369,12 +370,14 @@ query
 {
   product(id:"gid://shopify/Product/7027299254377"){
     title
+    onlineStoreUrl
     featuredImage{
       url
     }
     variants(first:10){
       edges{
         node{
+          id
           title
           price
           {

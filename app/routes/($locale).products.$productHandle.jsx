@@ -141,7 +141,7 @@ let parameterValue;
 export default function Product() {
   const {product, shop, recommended, variants, data, shippingData} =
     useLoaderData();
-  // console.log(product, '----++++_++_-');
+  console.log(product, '----++++_++_-');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
@@ -255,7 +255,7 @@ export default function Product() {
                 setCustomFontName={setCustomFontName}
                 editCustomFontFamily={editCustomFontFamily}
               />
-              <ProductGallery media={media.nodes} />
+              <ProductGallery media={media.nodes} className="" />
             </div>
             {locationValue && (
               <MessageWriting
@@ -312,6 +312,7 @@ export default function Product() {
           shippingData={shippingData?.product}
           fontFamilyName={fontFamilyName}
           customFontName={customFontName}
+          variantsVal={product}
         />
       )}
     </>
@@ -598,7 +599,7 @@ const PRODUCT_QUERY = `#graphql
           ...Media
         }
       }
-      variants(first: 1) {
+      variants(first: 6) {
         nodes {
           ...ProductVariantFragment
         }
@@ -654,6 +655,7 @@ const GiftProduct = `#graphql
         edges{
           node{
             title
+            onlineStoreUrl
             featuredImage{
               url
             }
@@ -681,12 +683,14 @@ query
 {
   product(id:"gid://shopify/Product/7027299254377"){
     title
+    onlineStoreUrl
     featuredImage{
       url
     }
     variants(first:10){
       edges{
         node{
+          id
           title
           price
           {

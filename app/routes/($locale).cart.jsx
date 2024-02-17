@@ -24,7 +24,6 @@ export async function loader({context, request}) {
   const StripeKey =
     'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
 
-  // console.log(StripeKey,'eeee');
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
   });
@@ -54,6 +53,7 @@ export default function AddCartFunc() {
   const [cardPrice, setCardPrice] = useState('');
   const [cardName, setCardName] = useState('');
   const [giftCardId,setGiftCardId] = useState('')
+  const [giftProdUrl,setGiftProdUrl] = useState('')
   const [cardVal, setCardVal] = useState('');
   const [cardImg, setCardImage] = useState('');
   const [postTitle, setPostTitle] = useState('');
@@ -119,6 +119,7 @@ export default function AddCartFunc() {
   let keyToUpdate2 = 'giftCardImg';
   let keyToUpdate3 = 'giftCardPrice';
   let keyToUpdate4 = 'giftCardId'
+  let keyToUpdate5 = 'giftCardProdUrl'
   function updateValueInArray(index) {
     // console.log(index);
     setUpdateGift(!updateGift);
@@ -129,6 +130,7 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate2] = cardImg;
       cartData[index][keyToUpdate3] = cardPrice;
       cartData[index][keyToUpdate4] = giftCardId
+      cartData[index][keyToUpdate5] = giftProdUrl
     }
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
@@ -260,12 +262,11 @@ export default function AddCartFunc() {
   }
 
   const cardvalFunc = async (item) => {
-    console.log(item, 'cardVal-----');
     let selCardName = data.collection.products.edges[item].node;
     
-    console.log(selCardName, 'selCardName--');
     setCardName(selCardName.title);
     setCardImage(selCardName.featuredImage.url);
+    setGiftProdUrl(selCardName.onlineStoreUrl)
     // console.log(cardName,'cardName-----');
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
     // console.log(
@@ -1312,6 +1313,7 @@ const GiftProduct = `#graphql
       products(first:10){
         edges{
           node{
+            onlineStoreUrl
             title
             featuredImage{
               url
