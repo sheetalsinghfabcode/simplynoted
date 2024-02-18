@@ -2112,6 +2112,10 @@ body {
   background-color: #aaa;
   right: 0;
 }
+
+.shadow-inset-custom {
+  box-shadow: 0 0 4px inset rgba(120, 120, 120, 0.8);
+}
 /********************************************* ROI CALCULATOR **********************************************************/
 .roi-calculator-section-1 {
   margin: 40px auto;
@@ -2505,6 +2509,7 @@ body {
   .white-underline-salesforce {
     width: 100%;
   }
+
 }
 @media only screen and (max-width: 768px) {
   .req-btn {
@@ -2580,6 +2585,7 @@ body {
   .custom_testing {
     width: 100%;
   }
+
   .data_card {
     margin: 0px;
   }
