@@ -16,8 +16,8 @@ const CanvasDesign = () => {
     <>
       <div className="mt-10px">
         {/* First */}
-        <div className="global-max-width-handler md:flex hidden justify-center flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
-          <div className="lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-10 lg:order-none order-2 data-background text-left">
+        <div className="global-max-width-handler md:flex flex-col lg:flex-row hidden justify-between flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
+          <div className="flex-1 lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-10 lg:order-none order-2 data-background text-left">
             <div className="text-4xl text-custom font-custom font-semibold text-left  text-[#001A5F] ">
               Send one or send &nbsp;
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
@@ -40,21 +40,12 @@ const CanvasDesign = () => {
               onClickFunction={() => navigate('/blogs/news')}
             />
           </div>
-          <div className="lg:w-[60%] w-[80%] lg:mx-0 mx-auto  flex flex-wrap  xl:pl-[190px] h-[350px] pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start ">
-            <div className="z-[-1] lg:w-[33%] w-[40%] text-left relative h-[300px]">
-              <img
-                className="w-full  h-full  lg:h-[90%]  lg:ml-[52px] ml-[68px] relative z-[1]"
-                src={robot1}
-                alt="LogoSimplinotedpic"
-              />
+          <div className="flex-1">
+            <div className="flex relative justify-end mt-[30px]">
+            <div className="z-[-1] w-[414px] text-left absolute -left-[87px] lg:-left-[31px]">
+              <img className="" src={robot1} alt="LogoSimplinotedpic" />
             </div>
-            <div className="text-right relative lg:w-[67%] w-[55%]">
-              <video
-                className="lg:max-w-[465px] max-w-[430px] relative overflow-hidden"
-                autoPlay
-                loop
-                muted
-              >
+              <video className="w-[401px] overflow-hidden" autoPlay loop muted>
                 <source src={First} type="video/webm"></source>
               </video>
             </div>
@@ -64,7 +55,7 @@ const CanvasDesign = () => {
         {/* mobile view */}
         <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5">
-            Send one or send
+            Send one or send &nbsp;
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
           <div className="w-full">
@@ -90,8 +81,8 @@ const CanvasDesign = () => {
         </div>
 
         {/* Second */}
-        <div className="global-max-width-handler md:flex hidden lg:justify-center relative justify-center flex-wrap w-full my-10  lg:gap-[50px] gap-[30px]">
-          <div className="lg:w-[60%] w-[80%] mx-auto lg:mx-0 relative flex flex-wrap  lg:p-[10px] mt-5  lg:overflow-hidden overflow-visible  justify-start">
+        <div className="global-max-width-handler md:flex hidden lg:justify-between relative justify-center flex-wrap w-full my-10  lg:gap-[50px] gap-[30px]">
+          <div className="lg:w-[60%] w-[80%] mx-auto lg:mx-0 relative flex flex-wrap  lg:p-[10px] mt-[50px] lg:overflow-hidden overflow-visible  justify-start">
             <div className="text-right relative w-[67%]">
               <video
                 className="max-w-[435px]  relative overflow-hidden"
@@ -101,10 +92,8 @@ const CanvasDesign = () => {
               >
                 <source src={Second} type="video/webm"></source>
               </video>
-            </div>
-            <div className="z-[-1] lg:w-[40%] w-[50%] text-left absolute ml-[23rem] ">
               <img
-                className="w-full  h-full  mt-[20px]  relative z-[1]"
+                className="absolute top-0 -right-[74%] lg:-right-[53%] -z-[1]"
                 src={robot2}
                 alt="LogoSimplinotedpic"
               />
@@ -157,7 +146,7 @@ const CanvasDesign = () => {
 
         {/* Third */}
 
-        <div className="global-max-width-handler md:flex hidden justify-center  flex-wrap mx-auto w-full  gap-[10px]  ">
+        <div className="global-max-width-handler md:flex hidden justify-between  flex-wrap mx-auto w-full  gap-[10px]  ">
           <div className="lg:w-[35%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
             <div className="text-3xl  font-bold text-left  text-[#001A5F]">
               Gift cards & &nbsp;
@@ -176,15 +165,14 @@ const CanvasDesign = () => {
               className="btn1"
             />
           </div>
-          <div className="lg:w-[60%] w-[80%] lg:mx-0 mx-auto relative  flex flex-wrap  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
-            <div className="z-[-1] lg:w-[33%] w-[40%] text-left relative h-[300px]">
+
+          <div className="lg:w-[60%] lg:mx-0 mx-auto relative flex flex-wrap justify-end w-full  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
+            <div className="text-right relative lg:w-[67%] w-[60%]">
               <img
-                className="w-full  h-full lg:top-0 lg-top-0  top-[30px]  lg:ml-[52px] ml-[68px] relative z-[1]"
+                className="absolute -top-[12px] -left-[377px] lg:top-[30px] lg:-left-[300px]"
                 src={robot3}
                 alt="LogoSimplinotedpic"
               />
-            </div>
-            <div className="text-right relative lg:w-[67%] w-[55%]">
               <video
                 className="lg:max-w-[465px] max-w-[430px] relative overflow-hidden"
                 autoPlay
