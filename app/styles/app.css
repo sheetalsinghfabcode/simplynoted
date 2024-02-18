@@ -31,6 +31,10 @@
   src: url(./fonts/Karla-SemiBold.ttf);
   font-weight: 600;
 }
+@font-face {
+  font-family: 'Al-dente';
+  src: url(./fonts/Al-dente.ttf) format(truetype);
+}
 
 /* Tokens */
 :root {
@@ -813,26 +817,26 @@ nav a {
 .gap-1 {
   gap: 1.25rem;
 }
-.thankyou_img {
-  width: 23%;
-  display: none;
-}
+
 .bg-contrast {
   background-color: none !important;
 }
 
 .typewriter-effect {
   margin-left: 49px;
+  color: #001a5f;
 }
 .typewriter-bottom-line {
   position: relative;
-  height: 40px;
-  width: 240px;
+  height: 45px;
+  width: 229px;
   display: inline-block;
   border-bottom: 2px solid #001a5f;
   background: #e2ebf8;
   overflow: hidden;
+  font-weight: bold;
   z-index: -1;
+  letter-spacing: 4px;
 }
 
 .scale-starting {
@@ -850,7 +854,7 @@ nav a {
   cursor: pointer;
   color: #fff;
   font-size: 19px;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
 }
 .start-writing-button:hover {
   background-color: #1b5299;
@@ -1196,13 +1200,8 @@ body {
   margin: 0 auto;
 }
 
-.video-home {
-  width: 100%;
-  margin-top: 10px;
-  position: static;
-}
 .input_email {
-  width: 38%;
+  width: 51%;
   height: 56px;
   border: 2px solid gray;
   color: gray;
@@ -2418,14 +2417,6 @@ body {
   .texts {
     font-size: 18px;
   }
-  .thankyou_img {
-    display: block;
-    position: absolute;
-    width: 30%;
-    margin-left: 25rem;
-    margin-top: 8rem;
-    z-index: 1;
-  }
 
   .cars-killer {
     position: static;
@@ -2440,7 +2431,7 @@ body {
     margin-right: 0px;
     min-width: 170px;
     min-height: 46px;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
   }
   .scale-starting {
     font-size: 14px;
@@ -2553,12 +2544,6 @@ body {
     padding-left: 8px;
     border-radius: 50%;
   }
-
-  .thankyou_img {
-    width: 41%;
-    margin-top: 8rem;
-    margin-left: 18rem;
-  }
   .cars-killer {
     width: 45%;
     margin-left: 7rem;
@@ -2600,11 +2585,6 @@ body {
   }
   .signup-title {
     background-image: none;
-  }
-  .thankyou_img {
-    width: 41%;
-    margin-top: 6rem;
-    margin-left: 12rem;
   }
   .cars-killer {
     width: 45%;
@@ -2713,18 +2693,17 @@ body {
   background-color: #555; /* Color of scrollbar thumb on hover */
 }
 
-
-.plan-input-radio input[type=radio]:checked {
+.plan-input-radio input[type='radio']:checked {
   border: 1px solid #324879;
   border-radius: 10px;
   background-color: #ef6e6e;
 }
-.plan-input-radio input[type=radio]{
+.plan-input-radio input[type='radio'] {
   border: 1px solid #324879;
   border-radius: 10px;
 }
 
-.plan-input-radioinput[type=radio]{
+.plan-input-radioinput[type='radio'] {
   opacity: 1;
   z-index: 2;
   position: absolute;

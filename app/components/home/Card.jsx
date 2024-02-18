@@ -164,28 +164,28 @@ const Card = () => {
           <div className="md:w-[50%] sm:w-[100%]  w=[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
             <img className="w-full" src={pen} alt="LogoSimplinotedpic" />
           </div>
-          <div className="md:text-4xl text-3xlfont-bold text-[#001A5F]">
-            Get your first card FREE!
-          </div>
-          <div className="sm:text-xl text-[16px] pt-4 text-[#696969]">
-            Join our email list and receive your first card free.
-          </div>
-
-          <div className="pt-10 pb-10 text-center">
-            <form>
-              <div className="flex justify-center">
-                <input
-                  type="email"
-                  className="input_email"
-                  placeholder="Enter your email address"
-                />
-                <DynamicButton
-                  text="SUBSCRIBE"
-                  className="subscribe"
-                  onClickFunction={() => Navigate('/blogs/news')}
-                />
+          <div className="flex flex-col flex-wrap gap-2 pt-[20px] pb-[20px] md:pt-0 md:pb-0 md:h-[120px] md:flex-row md:justify-around items-center bg-black">
+            <div className="text-white flex flex-col flex-1">
+              <div className="md:text-4xl text-3xl font-bold">
+                Get your first card FREE!
               </div>
-            </form>
+              <div className="text-[16px]">
+                Join our email list and receive your first card free.
+              </div>
+            </div>
+
+            <div className="flex justify-center items-center text-center flex-1 w-full">
+              <input
+                type="email"
+                className="input_email"
+                placeholder="Enter your email address"
+              />
+              <DynamicButton
+                text="SUBSCRIBE"
+                className="subscribe"
+                onClickFunction={() => Navigate('/blogs/news')}
+              />
+            </div>
           </div>
         </div>
       </div>
