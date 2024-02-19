@@ -5,14 +5,15 @@ const mockProducts = {
 };
 
 export function ProductSwimlane({
-  title = 'Featured Products',
   products = mockProducts,
   count = 12,
   ...props
 }) {
   return (
-    <Section heading={title} padding="y" {...props}>
-      <div className="swimlane hiddenScroll md:pb-8 md:scroll-px-8 lg:scroll-px-12 md:px-8 lg:px-12">
+    <div className='w-[95%] mx-auto mt-[40px]'>
+      <div className='sm:text-[28px] text-[22px] font-bold pl-[1.5rem]'>Featured Products</div>
+
+      <div className="swimlane mt-[25px]">
         {products.nodes.map((product) => (
           <ProductCard
             product={product}
@@ -21,6 +22,6 @@ export function ProductSwimlane({
           />
         ))}
       </div>
-    </Section>
+    </div>
   );
 }
