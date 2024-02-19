@@ -112,11 +112,8 @@ export default function FoldedCustomisableCard({
           }
         }
 
-        if (
-          selectedCardPage === 'Card Back' &&
-          backImageDetails.isImageSelected
-        ) {
-          if (frontImageDetails.isImageSelected) {
+        if (selectedCardPage === 'Card Back') {
+          if (backImageDetails.isImageSelected) {
             const selectedBlobUrl = backImageDetails.isColoredImage
               ? backImageDetails.imageBlobUrl
               : backImageDetails.blackAndWhiteImageBlobUrl;
@@ -132,7 +129,7 @@ export default function FoldedCustomisableCard({
               };
             });
           } else {
-            generateDefaultScreenshotImage(DefaultFrontCardImage, 'front-mage');
+            generateDefaultScreenshotImage(DefaultBackCardImage, 'back-image');
           }
         }
       } catch (err) {
@@ -253,6 +250,8 @@ export default function FoldedCustomisableCard({
   const handleImageFileInsertion = (event) => {
     const chosenFile = event.target.files[0];
     if (!chosenFile) return;
+
+    handleSelectedImageReset();
 
     const reader = new FileReader();
 
@@ -733,21 +732,21 @@ export default function FoldedCustomisableCard({
                 </span>
               )}
             </div>
-            <div className='flex lg:flex-row flex-col justify-between gap-2 mt-3'>
-            <input
-              className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1"
-              type="text"
-              placeholder="Card Name"
-              onChange={(e) => setCustomCardTitle(e.target.value)}
-            ></input>
-          
-            <button
-              className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] "
-              type="button"
-              onClick={handleCustomCardSaveButton}
-            >
-              SAVE CARD
-            </button>
+            <div className="flex lg:flex-row flex-col justify-between gap-2 mt-3">
+              <input
+                className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1"
+                type="text"
+                placeholder="Card Name"
+                onChange={(e) => setCustomCardTitle(e.target.value)}
+              ></input>
+
+              <button
+                className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] "
+                type="button"
+                onClick={handleCustomCardSaveButton}
+              >
+                SAVE CARD
+              </button>
             </div>
           </div>
         </Modal>
@@ -876,7 +875,6 @@ export default function FoldedCustomisableCard({
                 <div
                   className="md:min-w-[465px] sm:w-[450px] w-[350px] sm:h-[400px] h-[340px] bg-white relative overflow-hidden"
                   style={{
-                  
                     zIndex: '-30',
                     transform: isRotationAnimationApplied
                       ? 'rotateY(-180deg)'
@@ -889,7 +887,6 @@ export default function FoldedCustomisableCard({
                       <div
                         className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                         style={{
-                    
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
@@ -901,7 +898,6 @@ export default function FoldedCustomisableCard({
                         className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
-                         
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -956,7 +952,6 @@ export default function FoldedCustomisableCard({
                         <div
                           className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                           style={{
-                           
                             background: 'transparent',
                             zIndex: '-10',
                             transform: isRotationAnimationApplied
@@ -968,7 +963,6 @@ export default function FoldedCustomisableCard({
                           className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px]"
                           id="backTrimmedDiv"
                           style={{
-                            
                             zIndex: '-20',
                             transform: isRotationAnimationApplied
                               ? 'rotateY(-180deg)'
