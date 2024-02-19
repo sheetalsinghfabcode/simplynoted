@@ -10,6 +10,7 @@ import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
 import Home from '~/components/home/Home';
 import Notes from '~/components/home/Notes';
+import DraggableCanvas from '~/components/home/DraggableCanvas';
 import CanvasDesign from '~/components/home/CanvasDesign';
 
 export const headers = routeHeaders;
@@ -100,6 +101,7 @@ export default function Homepage() {
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
       <Home contentfulBanner={contentfulBanner} />
+      <DraggableCanvas />
       <Notes />
       <CanvasDesign />
     </>

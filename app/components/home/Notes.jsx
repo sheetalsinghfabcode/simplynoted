@@ -26,66 +26,55 @@ import 'swiper/css';
 
 const Notes = () => {
   return (
-    <>
-      <div className="container-indent bg-[#324879] flex items-center justify-center">
-        <div className="container">
-          <div className="block-title text-xl font-bold md:text-3xl text-center text-white py-10">
-            Real Pen.Real Ink.
-            <br />
-            Real Impressions.
-          </div>
-        </div>
-      </div>
-      <div className="mt-6 ml-[-20rem]">
-        <Swiper
-          modules={[Autoplay]}
-          direction={'horizontal'}
-          spaceBetween={1}
-          slidesPerView={4}
-          loop={true}
-          breakpoints={{
-            768: {
-              spaceBetween: 10,
-              slidesPerView: 2.5,
-            },
-            1024: {
-              spaceBetween: 10,
-              slidesPerView: 3.5,
-            },
-          }}
-          autoplay={{
-            delay: 1000,
-            pauseOnMouseEnter: true,
-            disableOnInteraction: false,
-          }}
-        >
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
-    </>
+    <div className="mt-6 ml-[-20rem]">
+      <Swiper
+        modules={[Autoplay]}
+        direction={'horizontal'}
+        spaceBetween={1}
+        slidesPerView={4}
+        loop={true}
+        breakpoints={{
+          768: {
+            spaceBetween: 10,
+            slidesPerView: 2.5,
+          },
+          1024: {
+            spaceBetween: 10,
+            slidesPerView: 3.5,
+          },
+        }}
+        autoplay={{
+          delay: 1000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        }}
+      >
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note1} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note3} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-[90%]" src={Note2} alt="LogoSimplinotedpic" />
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };
 
