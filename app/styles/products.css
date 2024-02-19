@@ -1,4 +1,5 @@
-.calendar-input::-webkit-calendar-picker-indicator {
+.calendar-input::-webkit-calendar-picker-indicator,
+.calendar-input::-webkit-inner-spin-button {
   background: url('../../assets/Image/calendar.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -64,5 +65,20 @@
 @media screen and (max-width: 1310px) {
   .textarea-cont-bulk {
     padding-bottom: 17rem;
+  }
+}
+
+/* To prevent overflowing on screens smaller than 400 */
+@media screen and (max-width: 400px) {
+  .purchase-btn-cont {
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+  .bulk-purchase-btn {
+    width: 110%;
+    margin-right: 0;
+  }
+  .single-purchase-btn {
+    width: 110%;
   }
 }
