@@ -1,5 +1,16 @@
 import React from 'react';
 import DynamicTitle from '~/components/Title';
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  let policy = {
+    title:"Refund policy"
+  }
+  const seo = seoPayload.policy({policy, url: request.url});
+  return defer({
+    seo,
+  });
+}
 export default function refundpolicy() {
   return (
     <div className='global-max-width-handler'>

@@ -5,14 +5,19 @@ import {useNavigate} from '@remix-run/react';
 import CircularLoader from '~/components/CircularLoder';
 import DynamicTitle from '~/components/Title';
 import {Link} from '~/components';
+import { seoPayload } from '~/lib/seo.server';
 
-export async function loader({context}) {
+export async function loader({request,context}) {
   const blog = await context.storefront.query(tutorialsData, {
     variants: {},
   });
+  console.log(blog,"------");
+  const seo = seoPayload.Video({blog, url: request.url});
 
   return defer({
+    seo,
     blog,
+    
   });
 }
 
@@ -142,7 +147,10 @@ const tutorialsData = `#graphql
     blog(handle: "video") {
       id
       title
- 
+      seo {
+        title
+        description
+      }
       articles(first: 42) {
         edges {
           node {
@@ -155,6 +163,7 @@ const tutorialsData = `#graphql
             publishedAt
             handle
             seo{
+              title
               description
             }
           }

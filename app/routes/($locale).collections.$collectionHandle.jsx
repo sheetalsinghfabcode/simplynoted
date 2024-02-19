@@ -120,7 +120,7 @@ export async function loader({params, request, context}) {
   if (!collection) {
     throw new Response('collection', {status: 404});
   }
-
+console.log(collection,"-----collection----");
   const seo = seoPayload.collection({collection, url: request.url});
 
   return json({

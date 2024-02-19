@@ -6,14 +6,18 @@ import CardTypeSelection from '~/components/customisable-cards/CardTypeSelection
 import FlatCustomisableCard from '~/components/customisable-cards/FlatCustomisableCard';
 import FoldedCustomisableCard from '~/components/customisable-cards/FoldedCustomisableCard';
 import ShopifyCustomCardProductDetails from '~/components/customisable-cards/ShopifyCustomCardProductDetails';
+import { seoPayload } from '~/lib/seo.server';
 
-export async function loader({context}) {
+export async function loader({context,request}) {
   const customisableCardProductQuery = `#graphql
   query {
     product(handle:"customise-your-card"){
       title
       featuredImage{
         url
+      }
+      seo{
+        title
       }
       vendor
       tags
@@ -45,7 +49,10 @@ export async function loader({context}) {
     customisableCardProductQuery,
     {variable: {}},
   );
-  return defer({shopifyCustomisableCardProduct});
+  const {product} = shopifyCustomisableCardProduct
+  console.log(product.title,"customisableCardProductQuery");
+  const seo = seoPayload.Create_Custom({product,url:request.url})
+  return defer({shopifyCustomisableCardProduct,seo});
 }
 
 export default function customisableCard() {

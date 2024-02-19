@@ -49,6 +49,7 @@ import {useCartFetchers} from '~/hooks/useCartFetchers';
 import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
+import Breadcrumbs from './Breadcrumbs';
 
 export function Layout({children, layout}) {
   const {headerMenu, footerMenu} = layout;
@@ -118,7 +119,7 @@ function Header({title, menu}) {
         menu={menu}
         openCart={openCart}
       />
-      {/* {pathname.pathname !== '/' && <Breadcrumbs />} */}
+      {pathname.pathname !== '/' && <Breadcrumbs />}
       <MobileHeader
         isHome={isHome}
         title={

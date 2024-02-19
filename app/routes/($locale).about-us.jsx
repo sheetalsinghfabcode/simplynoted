@@ -1,6 +1,18 @@
 import about_underline from '../../assets/Image/about-underline.png';
 import machine from '../../assets/Image/unnamed.webp';
 import automate_scale from '../../assets/Image/about-img.webp';
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(About_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 const AboutUs = () => {
   return (
     <>
@@ -85,3 +97,14 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+const About_GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/97390100585"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`
