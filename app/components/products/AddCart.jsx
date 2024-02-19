@@ -14,7 +14,6 @@ import {API_PATH} from '~/utils/Path';
 let customerid, cartDataReq;
 export function AddCart({
   show,
-  setProductShow,
   data,
   productData,
   editOrderValue,
@@ -32,6 +31,8 @@ export function AddCart({
     setAddressForm,
     editAddress,
     setEditAddress,
+    setProductShow,
+    setShowSelectAddress,
     selectedAddress,
     setSelectedAddress,
   } = useStateContext();
@@ -570,12 +571,7 @@ export function AddCart({
       )}
 
       <>
-        <DynamicButton
-          className="bg-[#EF6E6E] my-5 w-full max-w-[130px] ml-[-6px]"
-          text="Go Back"
-          onClickFunction={() => setProductShow(true)}
-          backArrow={true}
-        />
+   
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm

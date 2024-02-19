@@ -5,7 +5,6 @@ const Gift_card = () => {
       <div className="mt-5 global-max-width-handler">
         <div className="px-[30px] w-[100%]  mx-auto">
           <DynamicTitle
-            dynamicButton
             title="Gift Cards"
           />
             <div className='w-full flex text-center'>

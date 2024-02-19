@@ -6,7 +6,7 @@ const BreadCrumb = () => {
 
   return (
     <nav aria-label="breadcrumb">
-      <ol className="breadcrumb w-[30%]">
+      <ol className="breadcrumb w-[35%]">
         {paths.map((path, index) => {
           const url = `/${paths.slice(0, index + 1).join('/')}`;
           const isLast = index === paths.length - 1;

@@ -19,7 +19,6 @@ const Faq = () => {
     <>
       <div className="global-max-width-handler">
         <DynamicTitle
-          dynamicButton
           title="Simply Noted FAQs"
           className={'mt-[20px] md:text-[42px] text-[32px] !pb-[15px]'}
         />

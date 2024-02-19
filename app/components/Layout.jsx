@@ -103,6 +103,13 @@ function Header({title, menu}) {
     localStorage.removeItem('previousPage');
   }, []);
 
+
+  const {showSelectAddress} = useStateContext();
+
+  console.log("showSelectAddress",showSelectAddress);
+
+
+
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
@@ -119,7 +126,14 @@ function Header({title, menu}) {
         menu={menu}
         openCart={openCart}
       />
-      {pathname.pathname !== '/' && <Breadcrumbs />}
+      <div className="px-[16px] md:px-[40x] lg:px-[80px] ">
+        {pathname.pathname !== '/' && pathname.pathname !== '/cart' && (
+          <Breadcrumbs
+          additionalBreadcrumbs={ showSelectAddress ? ['Select Address'] : [] }
+          />
+        )}
+      </div>
+
       <MobileHeader
         isHome={isHome}
         title={
@@ -315,45 +329,44 @@ function MenuMobileNav({menu, onClose}) {
                   //   )}
                   // </div>
                   <div className="">
-                  <div
-                    className="flex justify-between items-center"
-                    onClick={handleChange}
-                    style={{fontWeight: show ? 'bold' : 'normal'}}
-                  >
-                    Integrations
-                    {show ? (
-                      <img className="h-[12px]" src={arrow_down} alt="" />
-                    ) : (
-                      <img className="h-[12px]" src={arrow_rights} alt="" />
-                    )}
-                  </div>
-                  {show && (
-                    <div className="">
-                      <ul
-                        onClick={onClose}
-                        className="text-thin ml-[8px]"
-                        style={{color: 'black'}}
-                      >
-                        {/* <Link to="/price">
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChange}
+                      style={{fontWeight: show ? 'bold' : 'normal'}}
+                    >
+                      Integrations
+                      {show ? (
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
+                      )}
+                    </div>
+                    {show && (
+                      <div className="">
+                        <ul
+                          onClick={onClose}
+                          className="text-thin ml-[8px]"
+                          style={{color: 'black'}}
+                        >
+                          {/* <Link to="/price">
                           <li>Credit Packages</li>
                         </Link> */}
-                        <Link to="/zapier-integration">
-                          <li>Zapier</li>
-                        </Link>
-                        <Link to="/shopify-integration">
-                          <li>Shopify</li>
-                        </Link>
-                        <Link to="/salesforce">
-                          <li>Sales</li>
-                        </Link>
-                        <Link to="/api-automation">
-                          <li>Api</li>
-                        </Link>
-                        
-                      </ul>
-                    </div>
-                  )}
-                </div>
+                          <Link to="/zapier-integration">
+                            <li>Zapier</li>
+                          </Link>
+                          <Link to="/shopify-integration">
+                            <li>Shopify</li>
+                          </Link>
+                          <Link to="/salesforce">
+                            <li>Sales</li>
+                          </Link>
+                          <Link to="/api-automation">
+                            <li>Api</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 ) : null}
                 {item.title === 'Pricing' ? (
                   <div className="">
@@ -574,6 +587,7 @@ function DesktopHeader({isHome, menu}) {
   const stateContext = useStateContext() || {
     cartCountVal: 0,
     setCartCountVal: () => {},
+    
   };
 
   const {
@@ -590,6 +604,8 @@ function DesktopHeader({isHome, menu}) {
 
   const navigate = useNavigate();
   const pathname = useLocation();
+
+  console.log('pathname', pathname);
 
   useEffect(() => {
     let calculatedCartCount = localStorage.getItem('mydata')
