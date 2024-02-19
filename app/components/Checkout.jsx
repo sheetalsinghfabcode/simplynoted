@@ -458,7 +458,7 @@ export function CheckoutData({
                 recipient_upload: item?.csvFileURL
                   ? item.csvFileURL
                   : 'Not Applicable :',
-                ship_date: '',
+                ship_date: item?.optionalShipDate?item.optionalShipDate:'',
                 sender_fullName: senderFullName && senderFullName,
                 sender_address1: item.senderAddress?.address1,
                 sender_address2: item.senderAddress?.address2,

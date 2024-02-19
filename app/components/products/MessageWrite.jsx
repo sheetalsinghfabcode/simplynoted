@@ -30,7 +30,8 @@ let mainMessageBox,
   customerid,
   loadTempDataFilter,
   savedMsg,
-  boxHeight;
+  boxHeight,
+  isOverflowing;
 export function MessageWriting({
   show,
   selectedFile,
@@ -50,10 +51,10 @@ export function MessageWriting({
   setFontFamily,
   setCustomFontName,
   editCustomFontFamily,
+  editShippingDate,
 }) {
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
-  console.log({metafields});
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -108,8 +109,10 @@ export function MessageWriting({
   const [customFontVal, setCustomFontVal] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
   const [dragAndDropBorderColor, setDragAndDropBorderColor] = useState('');
-
-  console.log({metafieldsHeader, metafieldsFooter});
+  const [fontLoad, setFontLoad] = useState(false);
+  const [shippingDate, setShippingDate] = useState(
+    editShippingDate ? editShippingDate : '',
+  );
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -125,10 +128,9 @@ export function MessageWriting({
     );
     const modifiedData = data.map((item) => {
       // Specify the fields you want to remove from each object
-      const { _id, shopifyId, created,updated,__v, ...newObject } = item;
+      const {_id, shopifyId, created, updated, __v, ...newObject} = item;
       return newObject;
     });
-    console.log(modifiedData,"data onclick from addressbook");
     setFileData(modifiedData);
   }
   useEffect(() => {
@@ -193,7 +195,6 @@ export function MessageWriting({
           }
           obj.msgData = subName;
         });
-        // console.log(fileData, 'fileData');
         reqField = {
           msg: name,
           signOffText: name2,
@@ -208,6 +209,7 @@ export function MessageWriting({
             fontSize > signOffFontSize ? signOffFontSize : fontSize,
           signOffLineHeight:
             lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
+          ship_date: shippingDate,
         };
       } else {
         reqField = {
@@ -224,6 +226,7 @@ export function MessageWriting({
             fontSize > signOffFontSize ? signOffFontSize : fontSize,
           signOffLineHeight:
             lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
+          ship_date: shippingDate,
         };
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
@@ -236,15 +239,15 @@ export function MessageWriting({
     }
   }
 
-async function onSelectFromAddressBook() {
+  async function onSelectFromAddressBook() {
     // console.log(fileData,"file Data");
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
       setInstructionModal(true);
     } else {
-  const csvFileURL =   await  uploadCsvFileOnClick()
-            let reqField,
+      const csvFileURL = await uploadCsvFileOnClick();
+      let reqField,
         usCountAdd = 0,
         nonUsAdd = 0;
       if (fileData.length) {
@@ -292,6 +295,7 @@ async function onSelectFromAddressBook() {
             fontSize > signOffFontSize ? signOffFontSize : fontSize,
           signOffLineHeight:
             lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
+          ship_date: shippingDate,
         };
       } else {
         alert("you haven't added Address");
@@ -386,9 +390,6 @@ async function onSelectFromAddressBook() {
   }
 
   function ShowFooterComp() {
-    console.log({qrValue});
-    console.log({metafields});
-
     if (typeof metafields.footer.data == 'string') {
       if (
         metafields.footer.data.startsWith('http://') ||
@@ -438,6 +439,7 @@ async function onSelectFromAddressBook() {
     let timer;
     return (...args) => {
       clearTimeout(timer);
+
       timer = setTimeout(() => {
         func.apply(this, args);
       }, timeout);
@@ -471,11 +473,8 @@ async function onSelectFromAddressBook() {
     setName(nameData);
     // processInput();
   }
-  console.log(name2.length, 'name2.length');
 
   async function onchnageOfRegardBox(data) {
-    console.log(name2.length, 'name2.length OnchanegCall');
-
     setName2(data);
     const debouncFunc = debounce(processCustomMessageInput);
     if (name2.length == '0' || name2.length == '1') {
@@ -485,22 +484,22 @@ async function onSelectFromAddressBook() {
   }
   function processCustomMessageInput() {
     if (!mainMessageBox) return;
-    mainMessageBox.style.fontSize = '50px';
-    mainMessageBox.style.lineHeight = '50px';
+    mainMessageBox.style.fontSize = '34px';
+    mainMessageBox.style.lineHeight = '34px';
+    // debugger
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
   function processSignOffInput() {
     if (!signOffTextBox) return;
-    signOffTextBox.style.fontSize = '50px';
-    signOffTextBox.style.lineHeight = '50px';
+    signOffTextBox.style.fontSize = '34px';
+    signOffTextBox.style.lineHeight = '34px';
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-    const isOverflowing =
-      innerContainer.clientHeight >= outerContainer.clientHeight;
-    console.log({isOverflowing});
+    isOverflowing = innerContainer.clientHeight >= outerContainer.clientHeight;
+    // console.log({isOverflowing});
     if (!innerContainer || !outerContainer || !isOverflowing) return;
 
     const heightDifference =
@@ -530,6 +529,8 @@ async function onSelectFromAddressBook() {
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
+    // setFontLoad(false)
+
     // console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
@@ -556,18 +557,6 @@ async function onSelectFromAddressBook() {
 
           return cleanedObj;
         });
-
-        // console.log(cleanedArray, 'cleaned Array');
-        // let ab = cleanedArray.map((item) => {
-        //   console.log(item);
-        //   const newData = {...item};
-        //   console.log(newData["Type"]);
-        //   // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
-        //   delete newData['"Type"'];
-        //   return newData;
-        // });
-
-        console.log(cleanedArray, 'fiteredDatat,=========');
         setSelectedFile(file); // Update the selected file state
         setFileData(cleanedArray);
       };
@@ -725,15 +714,14 @@ async function onSelectFromAddressBook() {
         },
       );
       const json = await res.json();
-      
+
       setCsvFile(json.result);
-      
+
       // console.log(json, 'CSV UPLOAD DATA ---------------');
       if (json.result) {
         setShowNextBtn(true);
         setLoader(false);
-      return json.result
-
+        return json.result;
       }
     } catch (error) {
       console.error(error, 'file upload error');
@@ -845,6 +833,13 @@ async function onSelectFromAddressBook() {
     loadTempDataFilter = ref5.current?.value;
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
+    setShippingDate(
+      savedMsg
+        ? savedMsg.optionalShipDate
+        : editShippingDate
+        ? editShippingDate
+        : '',
+    );
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
     customFontFamily(customerid);
@@ -1115,6 +1110,7 @@ async function onSelectFromAddressBook() {
   function setFont(e) {
     setCustomFontVal('Select Custom Font');
     setFontFamily(e);
+    // setFontLoad(true)
     setStandardFontVal(e);
   }
   async function customFontFamily(id) {
@@ -1158,7 +1154,7 @@ async function onSelectFromAddressBook() {
                 <span> Standard Handwriting Style</span>
                 <select
                   id="font"
-                  className="h-[40px] highlight-none cursor-pointer font-light rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
@@ -1259,7 +1255,7 @@ async function onSelectFromAddressBook() {
                 <span>Custom Handwriting Style</span>
                 <select
                   id="Coustomfont"
-                  className="h-[40px] highlight-none cursor-pointer font-light rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                 >
@@ -1281,8 +1277,10 @@ async function onSelectFromAddressBook() {
                 <div className="flex relative">
                   <input
                     type="date"
-                    className="h-[40px] calendar-input highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+                    className="h-[40px] calendar-input highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     min={new Date().toISOString().split('T')[0]}
+                    onChange={(e) => setShippingDate(e.target.value)}
+                    value={shippingDate}
                   />
                 </div>
               </div>
@@ -1455,97 +1453,101 @@ async function onSelectFromAddressBook() {
             show ? 'h-[940px]' : 'h-[370px] '
           } mb-[200px] md:mb-[0px]`}
         >
-          <div
-            id="outer"
-            className="outerr shadow-lg h-[380px] bg-white absolute top-0 right-0 left-0 bottom-0 md:mx-0"
-          >
-            {metafields &&
-              metafields.isHeaderIncluded &&
-              metafields.header.data && <ShowHeaderComp />}
+          {isOverflowing ? (
+            <Loader loaderMessage="Message Fonts loads" />
+          ) : (
             <div
-              className={`outerSec w-[100%] bg-white mt-1`}
-              ref={ref2}
-              style={{
-                height:
-                  metafields.footer &&
-                  metafields.header &&
-                  metafields.footer.data &&
-                  metafields.header.data &&
-                  name2.length > 0
-                    ? '210px'
-                    : (metafields.footer &&
-                        metafields.header &&
-                        metafields.footer.data &&
-                        metafields.footer &&
-                        metafields.header &&
-                        metafields.header.data) ||
-                      (metafields.footer &&
-                        metafields.header &&
-                        metafields.footer.data &&
-                        name2.length > 0) ||
-                      (metafields.footer &&
-                        metafields.header &&
-                        metafields.header.data &&
-                        name2.length > 0)
-                    ? '258px'
-                    : (metafields.footer &&
-                        metafields.header &&
-                        metafields.footer.data) ||
-                      (metafields.footer &&
-                        metafields.header &&
-                        metafields.header.data) ||
-                      name2.length > 0
-                    ? '310px'
-                    : '370px',
-              }}
+              id="outer"
+              className="outerr shadow-lg h-[301px] bg-white absolute pt-[16px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
+              {metafields &&
+                metafields.isHeaderIncluded &&
+                metafields.header.data && <ShowHeaderComp />}
               <div
-                id="messageBoxID"
-                ref={ref1}
-                className="output mx-5 text-[#0040ac]"
+                className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
+                ref={ref2}
                 style={{
-                  fontFamily: fontFamilyName
-                    ? fontFamilyName
-                    : editFontFamily
-                    ? editFontFamily
-                    : 'great vibes',
-                  fontSize: fontSize ? fontSize : '50px',
-                  lineHeight: lineHeight ? lineHeight : '50px',
+                  height:
+                    metafields.footer &&
+                    metafields.header &&
+                    metafields.footer.data &&
+                    metafields.header.data &&
+                    name2.length > 0
+                      ? '131px'
+                      : (metafields.footer &&
+                          metafields.header &&
+                          metafields.footer.data &&
+                          metafields.footer &&
+                          metafields.header &&
+                          metafields.header.data) ||
+                        (metafields.footer &&
+                          metafields.header &&
+                          metafields.footer.data &&
+                          name2.length > 0) ||
+                        (metafields.footer &&
+                          metafields.header &&
+                          metafields.header.data &&
+                          name2.length > 0)
+                      ? '179px'
+                      : (metafields.footer &&
+                          metafields.header &&
+                          metafields.footer.data) ||
+                        (metafields.footer &&
+                          metafields.header &&
+                          metafields.header.data) ||
+                        name2.length > 0
+                      ? '231px'
+                      : '291px',
                 }}
               >
-                {name ? name : 'Enter your custom message here...'}
+                <div
+                  id="messageBoxID"
+                  ref={ref1}
+                  className="output pl-[20px] pr-[20px] text-[#0040ac]"
+                  style={{
+                    fontFamily: fontFamilyName
+                      ? fontFamilyName
+                      : editFontFamily
+                      ? editFontFamily
+                      : 'great vibes',
+                    fontSize: fontSize ? fontSize : '34px',
+                    lineHeight: lineHeight ? lineHeight : '50px',
+                  }}
+                >
+                  {name ? name : 'Enter your custom message here...'}
+                </div>
               </div>
-            </div>
-            {/* {name2.length>0 && */}
-            <div
-              className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
-              ref={ref}
-              style={{display: name2.length > 0 ? 'block' : 'none'}}
-            >
+              {/* {name2.length>0 && */}
               <div
-                id="signOffText"
-                ref={ref3}
-                className="output2 text-[#0040ac] max-w-[300px]"
-                style={{
-                  fontFamily: fontFamilyName
-                    ? fontFamilyName
-                    : editFontFamily
-                    ? editFontFamily
-                    : 'tarzan',
-                  fontSize: signOffFontSize ? signOffFontSize : '50px',
-                  lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
-                }}
+                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
+                ref={ref}
+                style={{display: name2.length > 0 ? 'block' : 'none'}}
               >
-                {name2}
+                <div
+                  id="signOffText"
+                  ref={ref3}
+                  className="output2 text-[#0040ac] max-w-[300px]"
+                  style={{
+                    fontFamily: fontFamilyName
+                      ? fontFamilyName
+                      : editFontFamily
+                      ? editFontFamily
+                      : 'tarzan',
+                    fontSize: signOffFontSize ? signOffFontSize : '50px',
+                    lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
+                  }}
+                >
+                  {name2}
+                </div>
               </div>
+              {/* } */}
+              {metafields &&
+                metafields.isFooterIncluded &&
+                metafields.footer.data && <ShowFooterComp />}
             </div>
-            {/* } */}
-            {metafields &&
-              metafields.isFooterIncluded &&
-              metafields.footer.data && <ShowFooterComp />}
-          </div>
+          )}
           // This margin is similar to the height of the absolute div above this
-          <div className="text-[#737373] text-sm mt-[365px] mb-[44px]">
+          <div className="text-[#737373] text-sm mt-[287px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
             there.
           </div>
@@ -1588,11 +1590,19 @@ async function onSelectFromAddressBook() {
                             className="flex items-center gap-[10px]"
                             onClick={() => setVideoBtn(true)}
                           >
-                            <div className="relative mb-[1.5px]">
-                              <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
-                              <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
-                            </div>
-                            <span className="underline text-[#1B5299] font-bold cursor-pointer">
+                            <svg
+                              width="20"
+                              height="17"
+                              viewBox="0 0 20 17"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19.75 16.2002C19.75 16.3991 19.671 16.5899 19.5303 16.7305C19.3897 16.8712 19.1989 16.9502 19 16.9502H1C0.801088 16.9502 0.610322 16.8712 0.46967 16.7305C0.329018 16.5899 0.25 16.3991 0.25 16.2002C0.25 16.0013 0.329018 15.8105 0.46967 15.6699C0.610322 15.5292 0.801088 15.4502 1 15.4502H19C19.1989 15.4502 19.3897 15.5292 19.5303 15.6699C19.671 15.8105 19.75 16.0013 19.75 16.2002ZM19.75 1.9502V12.4502C19.75 12.848 19.592 13.2296 19.3107 13.5109C19.0294 13.7922 18.6478 13.9502 18.25 13.9502H1.75C1.35218 13.9502 0.970644 13.7922 0.68934 13.5109C0.408035 13.2296 0.25 12.848 0.25 12.4502V1.9502C0.25 1.55237 0.408035 1.17084 0.68934 0.889535C0.970644 0.608231 1.35218 0.450195 1.75 0.450195H18.25C18.6478 0.450195 19.0294 0.608231 19.3107 0.889535C19.592 1.17084 19.75 1.55237 19.75 1.9502ZM13.375 7.2002C13.375 7.07397 13.3431 6.94979 13.2823 6.83918C13.2215 6.72856 13.1337 6.63507 13.0272 6.56738L8.90219 3.94238C8.78881 3.87035 8.65816 3.83009 8.5239 3.82581C8.38964 3.82153 8.25669 3.85338 8.13895 3.91805C8.02121 3.98272 7.923 4.07782 7.85458 4.19342C7.78616 4.30901 7.75004 4.44087 7.75 4.5752V9.8252C7.75004 9.95952 7.78616 10.0914 7.85458 10.207C7.923 10.3226 8.02121 10.4177 8.13895 10.4823C8.25669 10.547 8.38964 10.5789 8.5239 10.5746C8.65816 10.5703 8.78881 10.53 8.90219 10.458L13.0272 7.83301C13.1337 7.76532 13.2215 7.67183 13.2823 7.56122C13.3431 7.4506 13.375 7.32642 13.375 7.2002Z"
+                                fill="#1B5299"
+                              />
+                            </svg>
+                            <span className="underline text-[16px] text-[#1B5299] font-bold cursor-pointer">
                               Bulk Upload Tutorial Video
                             </span>
                           </div>
@@ -1674,11 +1684,19 @@ async function onSelectFromAddressBook() {
                             className="flex items-center gap-[10px]"
                             onClick={() => setVideoBtn(true)}
                           >
-                            <div className="relative mb-[1.5px]">
-                              <FaYoutube className="underline text-[15px] self-start text-[#1B5299] font-bold" />
-                              <hr className="absolute border-[#1B5299] bottom-0 left-0 right-0" />
-                            </div>
-                            <span className="underline text-[#1B5299] font-bold cursor-pointer">
+                            <svg
+                              width="20"
+                              height="17"
+                              viewBox="0 0 20 17"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M19.75 16.2002C19.75 16.3991 19.671 16.5899 19.5303 16.7305C19.3897 16.8712 19.1989 16.9502 19 16.9502H1C0.801088 16.9502 0.610322 16.8712 0.46967 16.7305C0.329018 16.5899 0.25 16.3991 0.25 16.2002C0.25 16.0013 0.329018 15.8105 0.46967 15.6699C0.610322 15.5292 0.801088 15.4502 1 15.4502H19C19.1989 15.4502 19.3897 15.5292 19.5303 15.6699C19.671 15.8105 19.75 16.0013 19.75 16.2002ZM19.75 1.9502V12.4502C19.75 12.848 19.592 13.2296 19.3107 13.5109C19.0294 13.7922 18.6478 13.9502 18.25 13.9502H1.75C1.35218 13.9502 0.970644 13.7922 0.68934 13.5109C0.408035 13.2296 0.25 12.848 0.25 12.4502V1.9502C0.25 1.55237 0.408035 1.17084 0.68934 0.889535C0.970644 0.608231 1.35218 0.450195 1.75 0.450195H18.25C18.6478 0.450195 19.0294 0.608231 19.3107 0.889535C19.592 1.17084 19.75 1.55237 19.75 1.9502ZM13.375 7.2002C13.375 7.07397 13.3431 6.94979 13.2823 6.83918C13.2215 6.72856 13.1337 6.63507 13.0272 6.56738L8.90219 3.94238C8.78881 3.87035 8.65816 3.83009 8.5239 3.82581C8.38964 3.82153 8.25669 3.85338 8.13895 3.91805C8.02121 3.98272 7.923 4.07782 7.85458 4.19342C7.78616 4.30901 7.75004 4.44087 7.75 4.5752V9.8252C7.75004 9.95952 7.78616 10.0914 7.85458 10.207C7.923 10.3226 8.02121 10.4177 8.13895 10.4823C8.25669 10.547 8.38964 10.5789 8.5239 10.5746C8.65816 10.5703 8.78881 10.53 8.90219 10.458L13.0272 7.83301C13.1337 7.76532 13.2215 7.67183 13.2823 7.56122C13.3431 7.4506 13.375 7.32642 13.375 7.2002Z"
+                                fill="#1B5299"
+                              />
+                            </svg>
+                            <span className="underline text-[16px] text-[#1B5299] font-bold cursor-pointer">
                               Bulk Upload Tutorial Video
                             </span>
                           </div>
