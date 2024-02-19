@@ -155,7 +155,8 @@ export default function Product() {
   let editLineHeight = datafornav.state?.data.lineHeight;
   let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
   let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
-
+  let editShippingDate = datafornav.state?.data.optionalShipDate
+console.log(editShippingDate,"editShippingDate");
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const [show, setShow] = useState(
@@ -272,6 +273,7 @@ export default function Product() {
                 metafields={metafields}
                 editLineHeight={editLineHeight}
                 editSignOffFontSize={editSignOffFontSize}
+                editShippingDate={editShippingDate}
                 editSignOffLineHeight={editSignOffLineHeight}
                 setFontFamily={setFontFamily}
                 setCustomFontName={setCustomFontName}

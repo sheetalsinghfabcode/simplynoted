@@ -78,6 +78,7 @@ export default function CustomProducts() {
   let editLineHeight = datafornav.state?.data.lineHeight;
   let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
   let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
+  let editShippingDate = datafornav.state?.data.optionalShipDate
   const [show, setShow] = useState(
     showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
@@ -86,7 +87,7 @@ export default function CustomProducts() {
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
   const [errorVal, setErrorVal] = useState([]);
-  const [fontFamilyName, setFontFamily] = useState('tarzan');
+  const [fontFamilyName, setFontFamily] = useState();
   const [metafields, setMetafields] = useState([]);
   const [customProductData, setCustomProductData] = useState('');
   const [imageShow, setImageShow] = useState(0);
@@ -287,21 +288,24 @@ export default function CustomProducts() {
             </div>
             {locationValue && (
               <MessageWriting
-                show={show}
-                selectedFile={selectedFile}
-                setSelectedFile={setSelectedFile}
-                setShowBox={setShowBox}
-                setProductShow={setProductShow}
-                EditMess={EditMess}
-                editEndMess={editEndMess}
-                editFontFamily={editFontFamily}
-                editFontSize={editFontSize}
-                fontFamilyName={fontFamilyName}
-                metafields={metafields}
-                qrValue={qrValue}
-                editLineHeight={editLineHeight}
-                editSignOffFontSize={editSignOffFontSize}
-                editSignOffLineHeight={editSignOffLineHeight}
+              show={show}
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
+              setShowBox={setShowBox}
+              setProductShow={setProductShow}
+              EditMess={EditMess}
+              editEndMess={editEndMess}
+              editFontFamily={editFontFamily}
+              editFontSize={editFontSize}
+              fontFamilyName={fontFamilyName}
+              metafields={metafields}
+              editLineHeight={editLineHeight}
+              editSignOffFontSize={editSignOffFontSize}
+              editShippingDate={editShippingDate}
+              editSignOffLineHeight={editSignOffLineHeight}
+              setFontFamily={setFontFamily}
+              setCustomFontName={setCustomFontName}
+              editCustomFontFamily={editCustomFontFamily}
               />
             )}
           </Section>

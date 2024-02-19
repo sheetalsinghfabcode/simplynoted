@@ -351,6 +351,7 @@ console.log(finalPrice,"finalllllll********");
     signOffLineHeight: cartDataReq?.signOffLineHeight,
     signOffFontSize: cartDataReq?.signOffFontSize,
     isShippidata: show ? show : false,
+    optionalShipDate:cartDataReq?.ship_date
   };
 
   let keyUpdate1 = 'messageData';
@@ -380,6 +381,7 @@ console.log(finalPrice,"finalllllll********");
   let keyUpdate25 = 'giftCardId';
   let keyUpdate26 = "giftCardProdUrl";
   let keyUpdate27 = "shippingMethodProdUrl"
+  let keyUpdate28 = "optionalShipDate"
 
   console.log(productData, 'product data inside new discounted cards');
 
@@ -458,6 +460,9 @@ console.log(finalPrice,"finalllllll********");
           : '';
         storedData[editOrderValue.index][keyUpdate27] = selectShipMode
           ? shippingData.onlineStoreUrl
+          : '';
+        storedData[editOrderValue.index][keyUpdate28] = cartDataReq
+          ? cartDataReq.ship_date
           : '';
         storedData[editOrderValue.index][keyUpdate24] = show ? show : false;
       }

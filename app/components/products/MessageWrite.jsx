@@ -30,7 +30,8 @@ let mainMessageBox,
   customerid,
   loadTempDataFilter,
   savedMsg,
-  boxHeight;
+  boxHeight,
+ isOverflowing
 export function MessageWriting({
   show,
   selectedFile,
@@ -50,10 +51,10 @@ export function MessageWriting({
   setFontFamily,
   setCustomFontName,
   editCustomFontFamily,
+  editShippingDate
 }) {
   const {setAddressForm, addressForm, loadAddress, addresses, setAddresses} =
     useStateContext();
-  console.log({metafields});
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -108,8 +109,8 @@ export function MessageWriting({
   const [customFontVal, setCustomFontVal] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
   const [dragAndDropBorderColor, setDragAndDropBorderColor] = useState('');
-
-  console.log({metafieldsHeader, metafieldsFooter});
+  const [fontLoad,setFontLoad] = useState(false)
+  const [shippingDate,setShippingDate] = useState(editShippingDate?editShippingDate:'')
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -128,7 +129,6 @@ export function MessageWriting({
       const { _id, shopifyId, created,updated,__v, ...newObject } = item;
       return newObject;
     });
-    console.log(modifiedData,"data onclick from addressbook");
     setFileData(modifiedData);
   }
   useEffect(() => {
@@ -193,7 +193,6 @@ export function MessageWriting({
           }
           obj.msgData = subName;
         });
-        // console.log(fileData, 'fileData');
         reqField = {
           msg: name,
           signOffText: name2,
@@ -208,6 +207,7 @@ export function MessageWriting({
             fontSize > signOffFontSize ? signOffFontSize : fontSize,
           signOffLineHeight:
             lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
+            ship_date:shippingDate
         };
       } else {
         reqField = {
@@ -224,6 +224,7 @@ export function MessageWriting({
             fontSize > signOffFontSize ? signOffFontSize : fontSize,
           signOffLineHeight:
             lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
+            ship_date:shippingDate
         };
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
@@ -292,6 +293,7 @@ async function onSelectFromAddressBook() {
             fontSize > signOffFontSize ? signOffFontSize : fontSize,
           signOffLineHeight:
             lineHeight > signOffLineHeight ? signOffLineHeight : lineHeight,
+            ship_date:shippingDate
         };
       } else {
         alert("you haven't added Address");
@@ -386,8 +388,6 @@ async function onSelectFromAddressBook() {
   }
 
   function ShowFooterComp() {
-    console.log({qrValue});
-    console.log({metafields});
 
     if (typeof metafields.footer.data == 'string') {
       if (
@@ -438,9 +438,11 @@ async function onSelectFromAddressBook() {
     let timer;
     return (...args) => {
       clearTimeout(timer);
+
       timer = setTimeout(() => {
         func.apply(this, args);
       }, timeout);
+
     };
   }
 
@@ -471,10 +473,8 @@ async function onSelectFromAddressBook() {
     setName(nameData);
     // processInput();
   }
-  console.log(name2.length, 'name2.length');
 
   async function onchnageOfRegardBox(data) {
-    console.log(name2.length, 'name2.length OnchanegCall');
 
     setName2(data);
     const debouncFunc = debounce(processCustomMessageInput);
@@ -487,6 +487,7 @@ async function onSelectFromAddressBook() {
     if (!mainMessageBox) return;
     mainMessageBox.style.fontSize = '50px';
     mainMessageBox.style.lineHeight = '50px';
+    // debugger
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
@@ -498,9 +499,9 @@ async function onSelectFromAddressBook() {
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-    const isOverflowing =
+     isOverflowing =
       innerContainer.clientHeight >= outerContainer.clientHeight;
-    console.log({isOverflowing});
+    // console.log({isOverflowing});
     if (!innerContainer || !outerContainer || !isOverflowing) return;
 
     const heightDifference =
@@ -512,9 +513,11 @@ async function onSelectFromAddressBook() {
     if (heightDifference > 1000) {
       fontSizeDecrement = 7;
       lineHeightDecrement = 7;
+
     } else if (heightDifference > 500) {
       fontSizeDecrement = 5;
       lineHeightDecrement = 5;
+
     }
 
     const fontSize = window.getComputedStyle(innerContainer).fontSize;
@@ -530,6 +533,8 @@ async function onSelectFromAddressBook() {
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
+    // setFontLoad(false)
+
     // console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
@@ -556,18 +561,6 @@ async function onSelectFromAddressBook() {
 
           return cleanedObj;
         });
-
-        // console.log(cleanedArray, 'cleaned Array');
-        // let ab = cleanedArray.map((item) => {
-        //   console.log(item);
-        //   const newData = {...item};
-        //   console.log(newData["Type"]);
-        //   // console.log(Object.keys(newData),'OOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
-        //   delete newData['"Type"'];
-        //   return newData;
-        // });
-
-        console.log(cleanedArray, 'fiteredDatat,=========');
         setSelectedFile(file); // Update the selected file state
         setFileData(cleanedArray);
       };
@@ -845,6 +838,7 @@ async function onSelectFromAddressBook() {
     loadTempDataFilter = ref5.current?.value;
     customerid = localStorage.getItem('customerId');
     savedMsg = JSON.parse(localStorage.getItem('reqFielddInCart'));
+    setShippingDate(savedMsg?savedMsg.optionalShipDate:editShippingDate?editShippingDate:'')
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
     customFontFamily(customerid);
@@ -1115,6 +1109,7 @@ async function onSelectFromAddressBook() {
   function setFont(e) {
     setCustomFontVal('Select Custom Font');
     setFontFamily(e);
+    // setFontLoad(true)
     setStandardFontVal(e);
   }
   async function customFontFamily(id) {
@@ -1283,6 +1278,8 @@ async function onSelectFromAddressBook() {
                     type="date"
                     className="h-[40px] calendar-input highlight-none cursor-pointer font-light w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     min={new Date().toISOString().split('T')[0]}
+                    onChange={(e)=>setShippingDate(e.target.value)}
+                    value={shippingDate}
                   />
                 </div>
               </div>
@@ -1455,15 +1452,18 @@ async function onSelectFromAddressBook() {
             show ? 'h-[940px]' : 'h-[370px] '
           } mb-[200px] md:mb-[0px]`}
         >
+          {isOverflowing?
+        <Loader loaderMessage="Message Fonts loads" />
+          :
           <div
             id="outer"
-            className="outerr shadow-lg h-[380px] bg-white absolute top-0 right-0 left-0 bottom-0 md:mx-0"
+            className="outerr shadow-lg h-[301px] bg-white absolute top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
           >
             {metafields &&
               metafields.isHeaderIncluded &&
               metafields.header.data && <ShowHeaderComp />}
             <div
-              className={`outerSec w-[100%] bg-white mt-1`}
+              className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
               ref={ref2}
               style={{
                 height:
@@ -1472,7 +1472,7 @@ async function onSelectFromAddressBook() {
                   metafields.footer.data &&
                   metafields.header.data &&
                   name2.length > 0
-                    ? '210px'
+                    ? '131px'
                     : (metafields.footer &&
                         metafields.header &&
                         metafields.footer.data &&
@@ -1487,7 +1487,7 @@ async function onSelectFromAddressBook() {
                         metafields.header &&
                         metafields.header.data &&
                         name2.length > 0)
-                    ? '258px'
+                    ? '179px'
                     : (metafields.footer &&
                         metafields.header &&
                         metafields.footer.data) ||
@@ -1495,14 +1495,14 @@ async function onSelectFromAddressBook() {
                         metafields.header &&
                         metafields.header.data) ||
                       name2.length > 0
-                    ? '310px'
-                    : '370px',
+                    ? '231px'
+                    : '291px',
               }}
             >
               <div
                 id="messageBoxID"
                 ref={ref1}
-                className="output mx-5 text-[#0040ac]"
+                className="output p-[5px] text-[#0040ac]"
                 style={{
                   fontFamily: fontFamilyName
                     ? fontFamilyName
@@ -1544,6 +1544,8 @@ async function onSelectFromAddressBook() {
               metafields.isFooterIncluded &&
               metafields.footer.data && <ShowFooterComp />}
           </div>
+          }
+          
           // This margin is similar to the height of the absolute div above this
           <div className="text-[#737373] text-sm mt-[365px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
