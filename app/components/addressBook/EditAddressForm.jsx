@@ -119,7 +119,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
   };
 
   return (
-    <div className="container mx-auto p-4 bg-[#e2ecf6]">
+    <div className="container mx-auto  bg-[#e2ecf6]">
       {loader && (
         <div className="absolute z-[50] top-[50%] left-[50%]">
           <CircularLoader title="Updating Address Book..." color="#ef6e6e" />
@@ -130,13 +130,13 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           loader && 'opacity-40'
         }`}
       >
-        <div className="flex justify-between items-center mb-[16px]">
+        <div className="md:flex grid md:justify-between justify-normal items-center mb-[16px]">
           <h2 className="text-left text-[#001a5f] md:text-[19px] text-[12px] font-bold text-[34px] leading-[44px]">
             Edit Address
           </h2>
-          <div className="flex gap-[10px]">
+          <div className="md:flex grid gap-[10px]">
             <DynamicButton
-              className="bg-[#ef6e6e] md:text-[16px] text-[12px] md:h-[60px] h-[35px]  w-full xl:min-w-[180px] max-w-[170px] "
+              className="bg-[#ef6e6e] md:text-[14px] text-[12px] !h-[45px]  w-full  xl:min-w-[180px] max-w-[100%] "
               text="Cancel"
               onClickFunction={() => {
                 setAddressForm(false);
@@ -144,14 +144,14 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               }}
             />
             <DynamicButton
-              className="bg-[#1b5299] whitespace-nowrap  md:text-[16px] text-[12px]  md:h-[60px] h-[35px] w-full xl:min-w-[180px] max-w-[200px]"
+              className="bg-[#1b5299] whitespace-nowrap  md:text-[14px] text-[12px]  !h-[45px] w-full xl:min-w-[180px] max-w-[100%]"
               text="Update Address"
               onClickFunction={updateAddress}
             />
           </div>
         </div>
-        <div className="mb-4 flex flex-wrap -mx-3">
-          <div className="w-1/2 px-3 mb-6">
+        <div className="mb-4 md:flex grid  -mx-3">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="firstName"
@@ -176,7 +176,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               </p>
             )}
           </div>
-          <div className="w-1/2 px-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="lastName"
@@ -202,8 +202,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
         </div>
-        <div className="mb-4 flex flex-wrap -mx-3">
-          <div className="w-1/2 px-3 mb-6">
+        <div className="mb-4 md:flex grid -mx-3">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="businessName"
@@ -220,7 +220,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               onChange={handleChange}
             />
           </div>
-          <div className="w-1/2 px-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="postalCode"
@@ -246,8 +246,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
         </div>
-        <div className="mb-4 flex flex-wrap -mx-3">
-          <div className="w-1/2 px-3 mb-6">
+        <div className="mb-4 md:flex grid -mx-3">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="address1"
@@ -273,7 +273,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
 
-          <div className="w-1/2 px-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="address2"
@@ -292,8 +292,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           </div>
         </div>
 
-        <div className="mb-4 flex flex-wrap -mx-3">
-          <div className="w-1/2 px-3 mb-6">
+        <div className="mb-4 md:flex grid -mx-3">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="city"
@@ -318,7 +318,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               </p>
             )}
           </div>
-          <div className="w-1/2 px-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="state"
@@ -350,8 +350,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           </div>
         </div>
 
-        <div className="mb-4 flex flex-wrap -mx-3">
-          <div className="w-1/2 px-3 mb-6">
+        <div className="mb-4 md:flex grid -mx-3">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="country"
@@ -373,7 +373,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               ))}
             </select>
           </div>
-          <div className="w-1/2 px-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="type"
@@ -403,8 +403,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           </div>
         </div>
 
-        <div className="mb-4 flex flex-wrap -mx-3">
-          <div className="w-1/2 px-3 mb-6">
+        <div className="mb-4 md:flex grid -mx-3">
+          <div className="w-full px-3 mb-6">
             <DateInput
               fieldType="birthday"
               label="Birthday"
@@ -414,7 +414,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               }
             />
           </div>
-          <div className="w-1/2 px-3 mb-6">
+          <div className="w-full px-3 mb-6">
             <DateInput
               fieldType="anniversary"
               label="Anniversary"
@@ -427,7 +427,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         </div>
         <div className="text-center">
           <DynamicButton
-            className="bg-[#1b5299] whitespace-nowrap text-center w-full max-w-[200px]  h-[60px] "
+            className="bg-[#1b5299] whitespace-nowrap !h-[45px] text-center w-full max-w-[200px]  h-[60px] "
             text="Update Address"
             onClickFunction={updateAddress}
           />

@@ -203,7 +203,7 @@ export default function Salesforce() {
         <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto  ">
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
-              <div className="xl:text-[37px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
+              <div className="xl:text-[36px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
                 <span className="font-beauty text-6xl font-bold">
                   thousands

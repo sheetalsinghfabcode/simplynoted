@@ -8,6 +8,9 @@ import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
 import {useStateContext} from '~/context/StateContext';
+import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
+
 
 const PaymentModal = ({
   show,
@@ -331,13 +334,12 @@ const PaymentModal = ({
     <div
       className={`${
         show ? 'block' : 'hidden'
-      } fixed inset-0 overflow-y-auto flex items-center justify-center z-50`}
+      } fixed inset-0  flex items-center justify-center z-50`}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
-
-      <div className="modal-container bg-white w-11/12 md:max-w-[60%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
-        <div className="modal-content py-4  px-6">
-          <div className="w-full  relative max-w-[1440px] mt-[24px] mx-auto px-[24px]">
+      <div className="modal-container bg-[#fff6f6] md:w-full w-[97%] mx-auto md:max-w-[645px]   rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+        <div className="modal-content overflow-y-auto h-[450px] py-4  px-6">
+          <div className="w-full  relative mt-[24px] mx-auto">
             <DynamicButton
               className="bg-[#EF6E6E]  w-full max-w-[150px]"
               text="Go Back"
@@ -357,23 +359,29 @@ const PaymentModal = ({
             )}
 
             <div
-              className={`w-full ${
+              className={` ${
                 paymentLoader && 'opacity-40'
-              }  p-[20px] max-w-[640px] mx-auto`}
+              }  p-[20px] mt-[20px] border border-solid border-black max-w-[693px] mx-auto`}
             >
               <div
-                className="flex items-center justify-between p-4 cursor-pointer bg-gray-200"
+                className="flex items-center justify-between cursor-pointer"
                 onClick={toggleBilling}
               >
-                <span className="font-semibold">Billing Address</span>
-                <span className="mr-2">{isBillingOpen ? <></> : <></>}</span>
+                <span className="font-bold text-[red] md:text-[20px] text-[17px] text-[#001a5f]">
+                  Billing Address
+                </span>
+                <span className="mr-2">{isBillingOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
               </div>
-              <div className="border rounded">
-                {isBillingOpen && (
-                  <div className="w-full max-w-[650px]  mx-auto border border-solid border-black p-3 mt-3">
-                    <div className="grid-rows-2 flex gap-3">
+               <div className={`overflow-hidden
+                ${isBillingOpen ? "max-h-[800px] transition-max-height" : "max-h-0"}
+               `}>
+              <div className="rounded">
+                  <div className="w-full max-w-[650px]  mx-auto  p-3 mt-3">
+                    <div className="md:flex grid md:gap-3 gap-0">
                       <div className="w-full">
-                        <label htmlFor="">Full Name</label>
+                        <label className="font-bold" htmlFor="">
+                          Full Name
+                        </label>
                         <input
                           type="text"
                           id="firstName"
@@ -386,7 +394,9 @@ const PaymentModal = ({
                         />
                       </div>
                       <div className="w-full">
-                        <label htmlFor="">Email</label>
+                        <label className="font-bold" htmlFor="">
+                          Email
+                        </label>
                         <input
                           id="email"
                           disabled
@@ -400,7 +410,7 @@ const PaymentModal = ({
                       </div>
                     </div>
                     <div className="mt-2">
-                      <label htmlFor="" className="">
+                      <label className="font-bold" htmlFor="">
                         Address
                       </label>
                       <input
@@ -415,7 +425,7 @@ const PaymentModal = ({
                       />
                     </div>
                     <div className="mt-2">
-                      <label htmlFor="" className="">
+                      <label htmlFor="" className="font-bold">
                         Apartment,suite,etc
                       </label>
                       <input
@@ -429,7 +439,7 @@ const PaymentModal = ({
                       />
                     </div>
                     <div className="mt-2">
-                      <label htmlFor="" className="">
+                      <label htmlFor="" className="font-bold">
                         City
                       </label>
                       <input
@@ -443,10 +453,10 @@ const PaymentModal = ({
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
                     </div>
-                    <div className="grid-rows-2 flex gap-3">
+                    <div className="md:flex grid  md:gap-3 gap-0">
                       <div className="w-full">
                         <label
-                          className="block text-gray-700 text-sm font-bold mb-2"
+                          className="block font-bold text-gray-700 font-bold mb-2"
                           htmlFor="country"
                         >
                           Country
@@ -471,7 +481,7 @@ const PaymentModal = ({
                       </div>
                       <div className="w-full">
                         <label
-                          className="block text-gray-700 text-sm font-bold mb-2"
+                          className="block text-gray-700 font-bold font-bold mb-2"
                           htmlFor="state"
                         >
                           State
@@ -501,27 +511,33 @@ const PaymentModal = ({
                       </div>
                     </div>
                   </div>
-                )}
               </div>
+               </div>
+                <div className="border-b border-solid border-black mt-[12px]"></div>
 
-              <div className="mt-4 border rounded">
+              <div className="mt-4">
                 <div
-                  className="flex items-center justify-between p-4 cursor-pointer bg-gray-200"
+                  className="flex items-center justify-between cursor-pointer"
                   onClick={toggleCardInfo}
                 >
-                  <span className="font-semibold">Credit Card Information</span>
-                  <span className="mr-2">{isCardInfoOpen ? '▼' : '►'}</span>
+                  <span className="font-bold md:text-[20px] text-[17px] text-[#001a5f]">
+                    Credit Card Information
+                  </span> 
+                  <span className="mr-2">{isCardInfoOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
                 </div>
-                {isCardInfoOpen && (
+             
+               <div className={`overflow-hidden 
+                 ${isCardInfoOpen ?"max-h-[800px] transition-max-height" : "max-h-0"}
+               `}>
                   <>
                     <Elements stripe={stripe}>
                       {savedCard &&
                         savedCard.map((item, i) => (
                           <div
                             key={i}
-                            className="border-y border-solid border-[#000] p-[1rem] mt-1 mb-2 flex justify-between "
+                            className="bg-[white] border-[#000] mt-[15px] border border-solid border-black p-[1rem] mt-1 mb-2 flex justify-between "
                           >
-                            <div className="flex justify-start items-center text-[14px] font-bold">
+                            <div className="flex justify-start gap-[3px]  items-center text-[14px] font-bold">
                               <input
                                 type="radio"
                                 onChange={() =>
@@ -531,9 +547,9 @@ const PaymentModal = ({
                                 checked={paymentMethodId === item.paymentId}
                                 className="mr-2"
                               />
-                              <span className="mr-[17rem] tracking-wide">
-                                **********{item.cardLast4Number}
-                              </span>
+                              <span className="tracking-wide">
+                                ********** {item.cardLast4Number}
+                              </span>{' '}
                               <span>
                                 {item.cardExpMonth}/{item.cardExpYear}
                               </span>
@@ -544,12 +560,13 @@ const PaymentModal = ({
                         <div className="savedCard flex items-start justify-between mb-[12px]">
                           <div>
                             <button
-                              className="bg-[#1b5299] w-[200px] text-[#fff] p-2 rounded"
+                            
+                              className="bg-[#1b5299] font-bold h-[45px] w-[200px] mt-[13px] text-[#fff] p-2 rounded"
                               onClick={() => {
                                 setShowStripeCard(!showStripeCard);
                               }}
                             >
-                              Add New Card
+                           Add New Card
                             </button>
                           </div>
                         </div>
@@ -573,32 +590,34 @@ const PaymentModal = ({
                     </Elements>
 
                     <div className="flex justify-between font-bold   text-[#001a5f] border-y border-[#cfcfcf] p-[10px] items-center w-full">
-                      <div>Total</div>
-                      <div>${amount}</div>
+                      <div className="text-[15px]">Total</div>
+                      <div className="text-[15px]">${amount}</div>
                     </div>
                     {savedCard && savedCard.length > 0 && (
-                      <div className="flex justify-between  w-full gap-[10px] items-center my-[16px]">
+                      <div className="md:flex grid md:justify-between justify-normal  w-full gap-[10px] items-center my-[16px]">
                         <DynamicButton
                           text="Previous"
                           onClickFunction={() => {
                             setWalletPurchase(true);
                             setWalletPayment(false);
                           }}
-                          className="!bg-[#EF6E6E] w-full !rounded-0 !py-[16px] !px-[30px] max-w-[190px]"
+                          className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                         />
-                        <button
-                          type="submit"
+                        <DynamicButton
+                          text="Complete Purchase"
                           onClick={() => {
                             setPaymentLoader(true);
                             createSubscription(paymentMethodId);
                           }}
-                          className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
-                        >
-                          Complete Purchase
-                        </button>
+                          className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
+                        ></DynamicButton>
                       </div>
                     )}
-                    <div className=" border-2 text-[12px] bg-white text-left p-[10px] border-solid border-[#324879]">
+                
+                  </>
+               </div>
+              </div>
+              <div className=" border-2 text-[12px] bg-white text-left p-[10px] mt-[12px] border-solid border-[#324879]">
                       <span>
                         Custom cards and international postage may cost extra.
                         You will receive the same level of discount on custom
@@ -615,13 +634,12 @@ const PaymentModal = ({
                         from your Account area.
                       </span>
                     </div>
-                  </>
-                )}
-              </div>
+
             </div>
           </div>
         </div>
       </div>
+
     </div>
   );
 };

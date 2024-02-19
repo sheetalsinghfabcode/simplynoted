@@ -36,6 +36,11 @@
   src: url(./fonts/Al-dente.ttf) format(truetype);
 }
 
+.transition-max-height {
+  transition: max-height 2s ease-in-out;
+}
+ 
+
 /* Tokens */
 :root {
   --color-primary: 20 20 20; /* Text, buttons, etc. */

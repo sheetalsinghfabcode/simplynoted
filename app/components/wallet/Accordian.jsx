@@ -360,8 +360,10 @@ const Accordion = ({
             )}
           </span>
         </div>
+        <div className={`overflow-hidden transition-max-height 
+         ${isBillingOpen ? "max-h[800px]" : "max-h-0"}
+        `}>
         <div className="border rounded">
-          {isBillingOpen && (
             <div className="w-full max-w-[650px]  mx-auto border border-solid border-black p-3 mt-3">
               <div className="grid-rows-2 lg:flex grid gap-3">
                 <div className="w-full">
@@ -490,7 +492,7 @@ const Accordion = ({
                 </div>
               </div>
             </div>
-          )}
+        </div>
         </div>
 
         <div className="mt-4 border rounded">
@@ -592,6 +594,8 @@ const Accordion = ({
                   </button>
                 </div>
               )}
+            </>
+          )}
               <div className=" border-2 text-[12px] bg-white text-left p-[10px] border-solid border-[#324879]">
                 <span>
                   Custom cards and international postage may cost extra. You
@@ -607,8 +611,6 @@ const Accordion = ({
                   package can be changed later from your Account area.
                 </span>
               </div>
-            </>
-          )}
         </div>
       </div>
     </div>
