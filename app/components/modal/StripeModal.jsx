@@ -86,16 +86,16 @@ const StripeModal = ({
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="modal-container p-[15px] relative bg-white w-full max-w-[80%] md:max-w-[35%] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container p-[15px] relative bg-[#fff6f6] w-full max-w-[80%]  md:max-w-[500px] mx-auto rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <span
           className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
           onClick={onCancel}
         >
           &times;
         </span>
-        <div className="modal-content py-4  px-6 h-[395px]">
+        <div className="modal-content py-4   px-6 h-[395px]">
           <div className="modal-header">
-            <h3 className="md:text-[29px] text-[14px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
+            <h3 className="md:text-[29px] text-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
               {title}
             </h3>
           </div>
@@ -111,9 +111,9 @@ const StripeModal = ({
 
             {!savedCard && (
               <div className="w-[100%] border border-solid border-black p-3 mt-3">
-                <div className="grid-rows-2 md:flex grid gap-3">
+                <div className="grid-rows-2  grid gap-3">
                   <div>
-                    <label htmlFor="">Full Name</label>
+                    <label className='font-bold' htmlFor="">Full Name</label>
                     <input
                       type="text"
                       id="firstName"
@@ -126,7 +126,7 @@ const StripeModal = ({
                     />
                   </div>
                   <div>
-                    <label htmlFor="">Email</label>
+                    <label className='font-bold' htmlFor="">Email</label>
                     <input
                       id="email"
                       disabled
@@ -140,7 +140,7 @@ const StripeModal = ({
                   </div>
                 </div>
                 <div className="mt-2">
-                  <label htmlFor="" className="">
+                  <label className="font-bold" htmlFor="">
                     Address
                   </label>
                   <input
@@ -155,7 +155,7 @@ const StripeModal = ({
                   />
                 </div>
                 <div className="mt-2">
-                  <label htmlFor="" className="">
+                  <label htmlFor="" className="font-bold">
                     Apartment,suite,etc
                   </label>
                   <input
@@ -169,7 +169,7 @@ const StripeModal = ({
                   />
                 </div>
                 <div className="mt-2">
-                  <label htmlFor="" className="">
+                  <label htmlFor="" className="font-bold">
                     City
                   </label>
                   <input
@@ -188,10 +188,10 @@ const StripeModal = ({
                     </p>
                   )}
                 </div>
-                <div className="grid-rows-2 md:flex grid gap-3">
+                <div className="md:flex grid md:gap-[35px] gap-0 mt-[8px]">
                   <div className="w-full">
                     <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
+                      className="block text-gray-700 font-bold mb-2"
                       htmlFor="country"
                     >
                       Country
@@ -213,7 +213,7 @@ const StripeModal = ({
                   </div>
                   <div className="w-full">
                     <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
+                      className="block text-gray-700  font-bold mb-2"
                       htmlFor="country"
                     >
                       Country
@@ -222,7 +222,7 @@ const StripeModal = ({
                       onChange={(e) => handleChange(e)}
                       value={formData.address.state}
                       name="address.state"
-                      className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                      className={`appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                         errors.state ? 'border-red-500' : ''
                       }`}
                       id="state"

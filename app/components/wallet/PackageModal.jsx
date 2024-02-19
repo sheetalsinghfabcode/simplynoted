@@ -31,7 +31,7 @@ const PackageModal = ({
       } fixed top-[7px] left-[50%] h-full translate-x-[-50%] w-full  flex items-center  justify-center z-50`}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
-      <div className="modal-container relative  px-6 bg-[#fff6f6] md:h-[640px] h-[582px] w-full h-full lg:max-w-[45%] max-w-[73%]  w-full mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-container relative  px-6 bg-[#fff6f6] md:h-[640px] h-[582px] w-full h-full lg:max-w-[45%] max-w-[88%]  w-full mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
         <span
           onClick={onCancel}
           className="absolute cursor-pointer !leading-[0] right-0 top-[20px]  text-[40px]"
@@ -39,7 +39,7 @@ const PackageModal = ({
           &times;
         </span>
         <div className="modal-content  text-center items-center ">
-          <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[10px]">
+          <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[5px]">
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               {stripeCollection &&
               stripeCollection.stripe?.subscriptionStatus &&
@@ -87,14 +87,7 @@ const PackageModal = ({
               filteredWalletData.map((product, index) => (
                 <div
                   key={product.node.title}
-                  className={`col-span-1 ${
-                    (stripeCollection?.error &&
-                      product.node.title === 'Free') ||
-                    product.node.title.toLowerCase() ===
-                      stripeCollection.stripe?.subscription
-                      ? 'bg-[#F7B7B7]'
-                      : ''
-                  }`}
+                  className={`col-span-1`}
                 >
                   <div className="flex flex-col mt-[15px] gap-[16px]">
                     {product.node.variants.edges

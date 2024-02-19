@@ -675,13 +675,13 @@ const ContactTable = ({
 
           {!editAddress && (
             <>
-              <div className="flex gap-[16px] items-center sm:mt-[0px] mt-[12px] mb-[14px]">
+              <div className="md:flex grid  md:gap-[16px] gap-0 items-center sm:mt-[0px] mb-[14px]">
                 {selectedCheckboxes &&
                   selectedCheckboxes.length > 0 &&
                   !ProdcuctSide && (
                     <button
                       onClick={() => setDeleteModal(true)}
-                      className="text-white bg-[#FF0000] border border-solid md:text-[16px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
+                      className="text-white bg-[#FF0000] h-[45px] border border-solid md:text-[16px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
                     >
                       Delete Selected
                     </button>
@@ -690,7 +690,7 @@ const ContactTable = ({
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
-              <div className="h-[37px]">
+              <div className="md:h-[37px] h-0">
                 {ProdcuctSide && selectedCheckboxes.length > 0 && (
                   <button
                     className="text-white bg-[#ef6e6e] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"

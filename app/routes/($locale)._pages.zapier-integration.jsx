@@ -186,10 +186,10 @@ export default function Zapier() {
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
-              <p className="color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]">
+              <p className="color-[#001a5f] text-[38px] font-bold pb-[25px] w-[112%]">
                 Instantly Integrate With
               </p>
-              <p className="color-[#001a5f] text-[40px] font-bold pb-[25px] w-[112%]">
+              <p className="color-[#001a5f] text-[38px] font-bold pb-[25px] w-[112%]">
                 1,000s of Applications
               </p>
             </div>
@@ -242,7 +242,7 @@ export default function Zapier() {
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div
-              style={{fontSize: '49px', fontWeight: 500}}
+              style={{fontSize: '46px', fontWeight: 500}}
               className="text-[#001A5F]"
             >
               Send one or send
