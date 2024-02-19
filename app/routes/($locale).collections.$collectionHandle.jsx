@@ -164,7 +164,6 @@ export default function Collection() {
   myColletionData = myColletionData.nodes.filter(
     (item) => item.productType != 'customisable card',
   );
-  // console.log(handleLinkData.collections.edges,"handleLinkData.collections.edges");
   let mainTags = [
     'best-sellers',
     'thank-you',
@@ -181,13 +180,9 @@ export default function Collection() {
 
   useEffect(() => {
     if (locationRef.pathname !== '/collections/customisable-cards') {
-      // console.log(locationRef.pathname, 'locationRef.pathname');
       setCheckState(false);
     }
-    // console.log('______________----------');
   }, [locationRef.pathname]);
-
-  // console.log(collectionHandle, 'collectionHandle', locationRef.pathname);
   async function changeHandle(e) {
     setLoader(true);
     setHandleName(e);
@@ -230,8 +225,6 @@ export default function Collection() {
         // );
         const json = await res.json();
         let myData = await json.result.products;
-        // console.log(json.result);
-        // console.log(offSetVal, 'newOffset');
         setCheckState(true);
         if (addingProductsData.length > 0) {
           setAddingProd(addingProductsData.concat(myData));
@@ -258,7 +251,6 @@ export default function Collection() {
   }
 
   function CustomeCard() {
-    // console.log(addingProductsData, '99999999');
     return (
       <>
         {addingProductsData &&
@@ -298,8 +290,6 @@ export default function Collection() {
   return (
     <>
       <div className="global-max-width-handler">
-       
-     
         <DynamicTitle
           title={'Simply Noted'}
           title2={'cards'}

@@ -204,7 +204,7 @@ export function CheckoutData({
       //   `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       // );
       const data = await res.json();
-      console.log(data, '--1111');
+
       if (res.ok && data) {
         setDiscountCouponCode((prevDiscountCouponCode) => {
           return {
@@ -306,8 +306,6 @@ export function CheckoutData({
   let separatedNames = separateFullName(name);
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
-
-  console.log('cartData', cartData);
 
   async function paymentPurchase() {
     try {
@@ -516,8 +514,7 @@ export function CheckoutData({
           : '',
       };
 
-      const res = await
-      // postApi(
+      const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,
       // );
@@ -531,12 +528,9 @@ export function CheckoutData({
           body: JSON.stringify(payload),
         },
       );
-      console.log('payload', payload);
       const json = await res.json();
-
-      console.log('json', json);
       if (json.resut) {
-        localStorage.setItem("mydata", "[]");
+        localStorage.setItem('mydata', '[]');
         setPurchaseCompleted(true);
       }
     } catch (error) {
@@ -573,21 +567,27 @@ export function CheckoutData({
                       &emsp; USE WALLET
                     </div>
                     <hr />
-                    {showWallet && (
-                      <div className="p-3">
-                        <div className="border border-solid border-[#e6edf8] p-2 pl-4 pr-5 mb-3">
-                          <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
-                            <span className="flex-1">WALLET BALANCE </span>
-                            <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
-                              $
-                              {walletBalance && walletBalance.balance
-                                ? walletBalance.balance
-                                : '0'}
-                            </span>
+
+                    <div
+                      className={`overflow-hidden  ${
+                        showWallet
+                          ? 'max-h-[1000px] transition-max-height'
+                          : 'max-h-0'
+                      }`}
+                    >
+                      <div className="border border-solid border-[#e6edf8] p-5 pl-4 pr-5 mb-3">
+                        <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
+                          <span className="flex-1">WALLET BALANCE </span>
+                          <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
+                            $
+                            {walletBalance && walletBalance.balance
+                              ? walletBalance.balance
+                              : '0'}
                           </span>
-                        </div>
+                        </span>
                       </div>
-                    )}
+                    </div>
+
                     <hr />
                     <div
                       className={`p-3 cursor-pointer text-sm ${
@@ -603,9 +603,16 @@ export function CheckoutData({
                       />
                       &emsp; USE CREDIT CARD
                     </div>
-                    {showCardDetail && (
+
+                    <div
+                      className={`overflow-hidden ${
+                        showCardDetail
+                          ? 'max-h-[1000px] transition-max-height '
+                          : 'max-h-0'
+                      }`}
+                    >
                       <div className="p-3">
-                        <div className="mt-2">
+                        <div className="mt-2 ">
                           <div className="text-lg font-bold">
                             CREDIT CARD INFORMATION
                           </div>
@@ -615,7 +622,7 @@ export function CheckoutData({
                         </div>
                         {savedCard &&
                           savedCard.map((item) => (
-                            <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2 flex justify-between flex">
+                            <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2  justify-between flex">
                               <div
                                 onClick={() =>
                                   setPaymentMethodId(item.paymentId)
@@ -664,7 +671,7 @@ export function CheckoutData({
                         </div>
                         <div className="w-[100%] h-[1px] border border-t-black mt-5"></div>
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   <div className="mt-2 flex justify-center">
@@ -759,11 +766,11 @@ export function CheckoutData({
               </div>
             </div>
           ) : (
-              <div className='w-full h-full gap-2 mt-8 mb-8'>
-                 <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
+            <div className="w-full h-full gap-2 mt-8 mb-8">
+              <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
                 <div>
                   <h3 className="text-[black] font-karla sm:text-[40px] text-[24px] mb-4">
-                  Thank you for your order!
+                    Thank you for your order!
                   </h3>
                   <div className="flex justify-center">
                     <DynamicButton
@@ -774,7 +781,7 @@ export function CheckoutData({
                   </div>
                 </div>
               </div>
-              </div>
+            </div>
           )}
           {showCardBox && (
             <Modal
@@ -782,7 +789,7 @@ export function CheckoutData({
                 <Elements stripe={stripe}>
                   {!savedCard && (
                     <div className="w-[100%] border border-solid border-black p-3 mt-7">
-                      <div className="lg:grid-rows-2 grid  flex gap-3 md:flex-row flex-col">
+                      <div className="lg:grid-rows-2 grid gap-3 ">
                         <div>
                           <label htmlFor="">Full Name</label>
                           <input
@@ -854,7 +861,7 @@ export function CheckoutData({
                           className="mt-2 border border-solid border-black p-3 w-[100%]"
                         />
                       </div>
-                      <div className="lg:grid-rows-2 grid flex gap-3 md:flex-row flex-col">
+                      <div className="lg:grid-rows-2 grid  gap-3 ">
                         <div>
                           <label
                             className="block text-gray-700 text-sm font-bold mb-2"

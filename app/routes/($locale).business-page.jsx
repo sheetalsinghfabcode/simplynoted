@@ -28,7 +28,7 @@ import {useState, useEffect} from 'react';
 const Business = () => {
   const [integrated, setIntegrated] = useState('salesforce');
   const [customizable, setCustomizable] = useState('create_card');
-const [animate, setAnimate] = useState(false);
+  const [animate, setAnimate] = useState(false);
 
   const BLOCK = {display: 'block'};
   const NONE = {display: 'none'};
@@ -75,7 +75,6 @@ const [animate, setAnimate] = useState(false);
 
       const response = await fetch(url, options);
       if (response.ok) {
-        console.log('Form Data sent successfully');
         setFormData({
           first_name: '',
           last_name: '',
@@ -98,13 +97,12 @@ const [animate, setAnimate] = useState(false);
   };
 
   useEffect(() => {
-   
-    setAnimate(true)
+    setAnimate(true);
   }, []);
 
   return (
     <>
-      <div className='w-full max-w-[100%]'>
+      <div className="w-full max-w-[100%]">
         <div className="mt-5">
           <div className="w-[100%] pl-[10px]  ">
             <div className="relative w-full overflow-hidden lg:flex grid flex-wrap">
@@ -348,48 +346,51 @@ const [animate, setAnimate] = useState(false);
                           Automate
                         </div>
                         <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                        <img
-                          className="lg:inline hidden absolute w-[10%]  ml-[11rem] mt-[-4.5rem] curve-line"
-                          src={curve}
-                          alt="curve" 
-                        ></img>
+                          <img
+                            className="lg:inline hidden absolute w-[10%]  ml-[11rem] mt-[-4.5rem] curve-line"
+                            src={curve}
+                            alt="curve"
+                          ></img>
                         </div>
                       </div>
 
                       {/* SLIDE - SALES FORCE  */}
                       <div style={integrated === 'salesforce' ? BLOCK : NONE}>
                         <div className="relative">
-                          <div className="relative"> 
-                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                            <img
-                              className="max-w-100%"
-                              src={business_saleforce}
-                              alt="bussiness image"
-                            />
-                         
-                            <div className="card-lorem lg:block hidden">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Salesforce Integration
-                              </div>
-                              <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Salesforce Integration
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Leverage Salesforce Process Builder and easily
-                                automate sending real penwritten notes based off
-                                activities such as new customer, anniversary, or
-                                after hitting predetermined milestones.
-                              </div>
-                              <DynamicButton
-                                onClickFunction={() =>
-                                  (window.location.href =
-                                    'https://share.hsforms.com/1C6vknLo8RZONgXjDQhc0GQ39obb')
-                                }
-                                text="START INTEGRATE"
-                                className="business-btn
-                    "
+                          <div className="relative">
+                            <div
+                              className={`w-full ${animate ? 'fade-in' : ''}`}
+                            >
+                              <img
+                                className="max-w-100%"
+                                src={business_saleforce}
+                                alt="bussiness image"
                               />
-                            </div>
+
+                              <div className="card-lorem lg:block hidden">
+                                <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
+                                  Salesforce Integration
+                                </div>
+                                <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
+                                  Salesforce Integration
+                                </div>
+                                <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
+                                  Leverage Salesforce Process Builder and easily
+                                  automate sending real penwritten notes based
+                                  off activities such as new customer,
+                                  anniversary, or after hitting predetermined
+                                  milestones.
+                                </div>
+                                <DynamicButton
+                                  onClickFunction={() =>
+                                    (window.location.href =
+                                      'https://share.hsforms.com/1C6vknLo8RZONgXjDQhc0GQ39obb')
+                                  }
+                                  text="START INTEGRATE"
+                                  className="business-btn
+                    "
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -400,33 +401,36 @@ const [animate, setAnimate] = useState(false);
                       <div style={integrated === 'zapier' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
-                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                            <img
-                              className="max-w-100%"
-                              src={business_zapier}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem lg:block hidden">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Zapier Integration
-                              </div>
-                              <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Zapier Integration
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Integrate and automate sending real handwritten
-                                notes from 2,500+ softwares instantly. Request
-                                access to our Zapier App today!
-                              </div>
-                              <DynamicButton
-                                onClickFunction={() =>
-                                  (window.location.href =
-                                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/')
-                                }
-                                text="START INTEGRATE"
-                                className="business-btn"
+                            <div
+                              className={`w-full ${animate ? 'fade-in' : ''}`}
+                            >
+                              <img
+                                className="max-w-100%"
+                                src={business_zapier}
+                                alt="bussiness image"
                               />
-                            </div>
+                              <div className="card-lorem lg:block hidden">
+                                <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
+                                  Zapier Integration
+                                </div>
+                                <div className="text-[#001a5f] text-[20px] font-bold leading-4 mt-[20px] mb-[20px">
+                                  Zapier Integration
+                                </div>
+                                <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
+                                  Integrate and automate sending real
+                                  handwritten notes from 2,500+ softwares
+                                  instantly. Request access to our Zapier App
+                                  today!
+                                </div>
+                                <DynamicButton
+                                  onClickFunction={() =>
+                                    (window.location.href =
+                                      'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/')
+                                  }
+                                  text="START INTEGRATE"
+                                  className="business-btn"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -436,34 +440,36 @@ const [animate, setAnimate] = useState(false);
                       <div style={integrated === 'shopify' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
-                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                            <img
-                              className="max-w-100%"
-                              src={business_shopify}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem lg:block hidden">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Shopify Integration
-                              </div>
-                              <div className="text-[#001a5f] text-[16px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Leverage Zapier to Integrate with Shopify
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Automatically send welcome new customers notes
-                                to your customers. We recommend sending a
-                                discount code or a personalized product
-                                recommendation to encourage customer loyalty.
-                              </div>
-                              <DynamicButton
-                                onClickFunction={() =>
-                                  (window.location.href =
-                                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/')
-                                }
-                                text="START INTEGRATE"
-                                className="business-btn"
+                            <div
+                              className={`w-full ${animate ? 'fade-in' : ''}`}
+                            >
+                              <img
+                                className="max-w-100%"
+                                src={business_shopify}
+                                alt="bussiness image"
                               />
-                            </div>
+                              <div className="card-lorem lg:block hidden">
+                                <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
+                                  Shopify Integration
+                                </div>
+                                <div className="text-[#001a5f] text-[16px] font-bold leading-4 mt-[20px] mb-[20px">
+                                  Leverage Zapier to Integrate with Shopify
+                                </div>
+                                <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
+                                  Automatically send welcome new customers notes
+                                  to your customers. We recommend sending a
+                                  discount code or a personalized product
+                                  recommendation to encourage customer loyalty.
+                                </div>
+                                <DynamicButton
+                                  onClickFunction={() =>
+                                    (window.location.href =
+                                      'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/')
+                                  }
+                                  text="START INTEGRATE"
+                                  className="business-btn"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -473,12 +479,14 @@ const [animate, setAnimate] = useState(false);
                       <div style={integrated === 'hubspot' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
-                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                            <img
-                              className="max-w-100%"
-                              src={business_integrated}
-                              alt="bussiness image"
-                            />
+                            <div
+                              className={`w-full ${animate ? 'fade-in' : ''}`}
+                            >
+                              <img
+                                className="max-w-100%"
+                                src={business_integrated}
+                                alt="bussiness image"
+                              />
                             </div>
                             <div className="card-lorem lg:block hidden">
                               <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center"></div>
@@ -499,34 +507,36 @@ const [animate, setAnimate] = useState(false);
                       <div style={integrated === 'api' ? BLOCK : NONE}>
                         <div className="relative">
                           <div className="relative">
-                          <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                            <img
-                              className="max-w-100%"
-                              src={business_feature}
-                              alt="bussiness image"
-                            />
-                            <div className="card-lorem lg:block hidden">
-                              <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
-                                Api Integration
-                              </div>
-                              <div className="text-[#001a5f] text-[16px] font-bold leading-4 mt-[20px] mb-[20px">
-                                Access our Open RESTful API
-                              </div>
-                              <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
-                                Add the Simply Noted API to your app, website or
-                                software. Using this api, you can send cards to
-                                users in the handwriting style of your choice,
-                                with an optional gift card.
-                              </div>
-                              <DynamicButton
-                                onClickFunction={() =>
-                                  (window.location.href =
-                                    'https://share.hsforms.com/1C6vknLo8RZONgXjDQhc0GQ39obb')
-                                }
-                                text="START INTEGRATE"
-                                className="business-btn"
+                            <div
+                              className={`w-full ${animate ? 'fade-in' : ''}`}
+                            >
+                              <img
+                                className="max-w-100%"
+                                src={business_feature}
+                                alt="bussiness image"
                               />
-                            </div>
+                              <div className="card-lorem lg:block hidden">
+                                <div className="bg-[#001a5f] rounded-3xl text-white inline-block text-[12px] leading-6 py-[6px] px-[20px] text-center">
+                                  Api Integration
+                                </div>
+                                <div className="text-[#001a5f] text-[16px] font-bold leading-4 mt-[20px] mb-[20px">
+                                  Access our Open RESTful API
+                                </div>
+                                <div className="text-[#9c9a9a] text-[10px] leading-5 mt-[20px] mb-[25px]">
+                                  Add the Simply Noted API to your app, website
+                                  or software. Using this api, you can send
+                                  cards to users in the handwriting style of
+                                  your choice, with an optional gift card.
+                                </div>
+                                <DynamicButton
+                                  onClickFunction={() =>
+                                    (window.location.href =
+                                      'https://share.hsforms.com/1C6vknLo8RZONgXjDQhc0GQ39obb')
+                                  }
+                                  text="START INTEGRATE"
+                                  className="business-btn"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -540,18 +550,18 @@ const [animate, setAnimate] = useState(false);
                     Click these to learn more
                   </div>
                   <div className="lg:flex hidden item-center flex-col">
-                  <div className={`w-full ${animate ? 'fade-in' : ''}`}>
-                    <img
-                      className="w-[10%] ml-[65px]"
-                      src={business_arrow}
-                      alt="business_arrow"
-                    />
-                    <img
-                      className="h-[455px] xl:ml-[6%] lg:ml-[79px] absolute mt-[30px] z-[-1]"
-                      src={business_line}
-                      alt="business_line"
-                    />
-                  </div>
+                    <div className={`w-full ${animate ? 'fade-in' : ''}`}>
+                      <img
+                        className="w-[10%] ml-[65px]"
+                        src={business_arrow}
+                        alt="business_arrow"
+                      />
+                      <img
+                        className="h-[455px] xl:ml-[6%] lg:ml-[79px] absolute mt-[30px] z-[-1]"
+                        src={business_line}
+                        alt="business_line"
+                      />
+                    </div>
                   </div>
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">

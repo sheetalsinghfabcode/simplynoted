@@ -57,8 +57,6 @@ const ManageSubscription = () => {
     paymentMethodId: '',
   });
 
-  // console.log('stripeCollection', stripeCollection);
-
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
   const navigate = useNavigate();
@@ -279,8 +277,6 @@ const ManageSubscription = () => {
         },
       );
       const json = await res.json();
-      // console.log('API Response:', json); // Log the entire API response
-
       setLoader(false);
     } catch (error) {
       setLoader(false);
@@ -428,8 +424,6 @@ const ManageSubscription = () => {
     }
     return inputString; // Return as is if not a valid number
   }
-
-  console.log('stripeCollection', stripeCollection);
 
   return (
     <>

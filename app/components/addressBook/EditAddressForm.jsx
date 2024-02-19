@@ -69,7 +69,6 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     })
       .then((response) => {
         if (response.ok) {
-          // console.log('response', response);
           setSelectedAddress(null);
           setLoader(false);
           return response.json(); // Parse the response JSON if it's a successful response

@@ -1,6 +1,6 @@
 import {json} from '@shopify/remix-oxygen';
 import {useLoaderData} from '@remix-run/react';
-import {Image,flattenConnection} from '@shopify/hydrogen';
+import {Image, flattenConnection} from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
 
 import {PageHeader, Section} from '~/components';
@@ -19,19 +19,16 @@ export const links = () => {
 
 export async function loader({request, params, context}) {
   const {language, country} = context.storefront.i18n;
-  console.log(params,"params@@@@");
-  const journalhandle = params.journalHandle
-  const type = params.type
-  console.log(journalhandle,"0000000");
+  const journalhandle = params.journalHandle;
+  const type = params.type;
   invariant(journalhandle, 'Missing journal handle');
 
   const {blog} = await context.storefront.query(BlogData, {
     variables: {
       blogHandle: type,
-      handle:journalhandle
+      handle: journalhandle,
     },
   });
-// console.log('$$$$',blog);
   if (!blog?.articleByHandle) {
     throw new Response(null, {status: 404});
   }
@@ -48,7 +45,6 @@ export async function loader({request, params, context}) {
   // });
 
   const article = blog.articleByHandle;
-// console.log(article);
   // const formattedDate = new Intl.DateTimeFormat(`${language}-${country}`, {
   //   year: 'numeric',
   //   month: 'long',
@@ -57,12 +53,11 @@ export async function loader({request, params, context}) {
 
   const seo = seoPayload.article({article, url: request.url});
 
-  return json({article,seo,journalhandle,type});
+  return json({article, seo, journalhandle, type});
 }
 
 export default function Article() {
   const {article, formattedDate} = useLoaderData();
-  // console.log("@@@@",articles);
   const {title, image, contentHtml, author} = article;
 
   return (
@@ -74,7 +69,7 @@ export default function Article() {
         </span>
       </PageHeader> */}
       <div className="px-[5%]">
-      <DynamicTitle
+        <DynamicTitle
           dynamicButton
           title={title}
           className={'mt-[15px] !text-[20px] '}
@@ -93,7 +88,7 @@ export default function Article() {
             className="my-[2rem] article"
           />
         </div>
-        </div>
+      </div>
     </>
   );
 }

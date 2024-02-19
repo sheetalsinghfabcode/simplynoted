@@ -5,42 +5,42 @@ import {useEffect, useState} from 'react';
 import Loader from './modal/Loader';
 import DynamicButton from './DynamicButton';
 import {getProductPlaceholder} from '~/lib/placeholders';
-import { RiDeleteBin6Line } from "react-icons/ri";
+import {RiDeleteBin6Line} from 'react-icons/ri';
 import ConfirmationModal from './modal/ConfirmationModal';
 
-export function CustomComponent({product, offPrice, productPrice,customerId}) {
+export function CustomComponent({product, offPrice, productPrice, customerId}) {
   const [loader, setLoader] = useState(false);
-  const [stateval,setStateval] = useState('')
-  const [showDeleteICon,setShowDeleteICon] = useState(false)
+  const [stateval, setStateval] = useState('');
+  const [showDeleteICon, setShowDeleteICon] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [valOfProdId,setValOfProdId] = useState(null)
-  function deleteOrderBtn(id){
-    setDeleteModal(true)
-    setValOfProdId(id)
+  const [valOfProdId, setValOfProdId] = useState(null);
+  function deleteOrderBtn(id) {
+    setDeleteModal(true);
+    setValOfProdId(id);
   }
-  async function deleteCustomCardAPI(id){
+  async function deleteCustomCardAPI(id) {
     try {
       // setLoader(true)
-      const res = await fetch(`https://api.simplynoted.com/api/customizedCard/deleteProduct?customerId=${customerId}`,{
-      method:"POST",
-      headers:{
-        'Content-Type': 'application/json',
-      },
-      body:JSON.stringify({productId:id})
-    })
-    
-    const json = await res.json()
-    if(json.result){
+      const res = await fetch(
+        `https://api.simplynoted.com/api/customizedCard/deleteProduct?customerId=${customerId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({productId: id}),
+        },
+      );
 
-      setDeleteModal(false)
-      setStateval(id)
-      // setLoader(false)
-    }
-    console.log(json,"************");
+      const json = await res.json();
+      if (json.result) {
+        setDeleteModal(false);
+        setStateval(id);
+        // setLoader(false)
+      }
     } catch (error) {
-      console.log(error,"delete customCard ");
+      console.log(error, 'delete customCard ');
     }
-    
   }
   // const cardProduct = product?.variants ? product : getProductPlaceholder();
   // if (!cardProduct?.variants?.nodes?.length) return null;
@@ -52,8 +52,13 @@ export function CustomComponent({product, offPrice, productPrice,customerId}) {
       {loader ? (
         <Loader loaderMessage="Loading Custom Products" />
       ) : (
-        <div className={`flex flex-col gap-2 bg-[white] ${product.id === Number(stateval) && "hidden"} shadow-lg relative`} onMouseEnter={() => setShowDeleteICon(true)}
-        onMouseLeave={() => setShowDeleteICon(false)}>
+        <div
+          className={`flex flex-col gap-2 bg-[white] ${
+            product.id === Number(stateval) && 'hidden'
+          } shadow-lg relative`}
+          onMouseEnter={() => setShowDeleteICon(true)}
+          onMouseLeave={() => setShowDeleteICon(false)}
+        >
           <Link to={`/custom/${product.handle}`} prefetch="intent">
             <div className={clsx('grid gap-4')}>
               <div className="card-image aspect-[4/5] bg-primary/5">
@@ -112,12 +117,15 @@ export function CustomComponent({product, offPrice, productPrice,customerId}) {
               />
             </Link>
           </div>
-          {showDeleteICon &&
-          <div className='hover:visible absolute w-[32px] h-[32px] p-[5px] border rounded-[15px] bg-white right-0 cursor-pointer' onClick={()=>deleteOrderBtn(product.id)}>
-          <RiDeleteBin6Line color='#3062a3' className='text-[20px]'/>
-          </div>
-        }
-        <ConfirmationModal
+          {showDeleteICon && (
+            <div
+              className="hover:visible absolute w-[32px] h-[32px] p-[5px] border rounded-[15px] bg-white right-0 cursor-pointer"
+              onClick={() => deleteOrderBtn(product.id)}
+            >
+              <RiDeleteBin6Line color="#3062a3" className="text-[20px]" />
+            </div>
+          )}
+          <ConfirmationModal
             show={deleteModal}
             onCancel={() => setDeleteModal(false)}
             onConfirm={() => deleteCustomCardAPI(valOfProdId)}
@@ -126,7 +134,6 @@ export function CustomComponent({product, offPrice, productPrice,customerId}) {
             cancelText="Cancel"
           />
         </div>
-        
       )}
     </>
   );

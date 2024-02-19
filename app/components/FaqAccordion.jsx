@@ -1,8 +1,7 @@
-import {useState} from 'react';
-import arrow_rights from '../../assets/Image/arrow-right-faq.png';
-import arrow_down from '../../assets/Image/arrow-down.png';
+import { useState } from 'react';
+import { IoIosArrowForward } from "react-icons/io";
 
-function FaqAccordion({title, children, className, accordion = false}) {
+function FaqAccordion({ title, children, className, accordion = false }) {
   const [isExpanded, setIsExpanded] = useState(accordion);
 
   const toggleAccordion = () => {
@@ -10,35 +9,30 @@ function FaqAccordion({title, children, className, accordion = false}) {
   };
 
   return (
-    <div className=" faq-accordion">
+    <div className="faq-accordion">
       <div
-        className={`flex justify-between gap-[10px] items-center cursor-pointer w-full min-h-[40px] font-karla  py-[5px] ${className}`}
+        className={`cursor-pointer  min-h-[40px] ${className}`}
         onClick={toggleAccordion}
       >
-        <span className="md:text-[20px] text-[15px] font-karla text-black !font-bold ">
-          {title}
-        </span>
-        <span className="flex justify-center mr-[20px] mt-[-15px]">
-          {isExpanded ? (
-            <img
-              className="sm:w-[1.2%] w-[2%] absolute"
-              src={arrow_down}
-              alt="arrow_down"
-            />
-          ) : (
-            <img
-              className="sm:w-[1.2%] w-[2%] absolute"
-              src={arrow_rights}
-              alt="right-arrow"
-            />
-          )}
-        </span>
+        <div className='flex w-full justify-between gap-[10px] items-center font-karla py-[5px]'>
+          <span className="md:text-[20px] text-[15px] font-karla text-black font-bold">
+            {title}
+          </span>
+          <span className="flex justify-center mr-[20px]">
+              <IoIosArrowForward className={`relative text-[20px] ${ isExpanded ? 'rotate-90' : ''} transition-all`} />
+          </span>
+        </div>
       </div>
-      {isExpanded && (
-        <div className="md:text-[16px] text-[12px] bg-white px-[1.3rem] pt-4 pb-5 faq-transition">
+
+      <div
+          className={`overflow-hidden  ${
+            isExpanded ? 'max-h-[1000px] transition-max-height' : 'max-h-0'
+          }`}
+      >
+        <div className="px-[1.5rem] py-5 bg-white sm:text-[14px] text-[12px]">
           {children}
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -2,7 +2,6 @@ const BASE_URL = 'https://api.simplynoted.com';
 
 async function addAuthorizationHeader(config) {
     const apiKey = localStorage.getItem('apiKey');
-//   console.log(apiKey, 'aaaaxxxxxx', config.url);
   if (apiKey) {
     config.headers['Authorization'] = 'Bearer ' + apiKey;
     config.headers['Cache-Control'] = 'no-cache';
@@ -18,7 +17,6 @@ export async function getApi(path, data) {
 }
 
 export async function postApi(path, data) {
-  console.log(path, data);
   const url = `${BASE_URL}/${path}`;
   // const headers = await addAuthorizationHeader();
   return fetch(url, { method: 'POST',
@@ -27,7 +25,6 @@ export async function postApi(path, data) {
   }, body: JSON.stringify(data) });
 }
 export async function postApi1(path, data) {
-  console.log(path, data);
   const url = `${BASE_URL}/${path}`;
 //   const headers = await addAuthorizationHeader();
 

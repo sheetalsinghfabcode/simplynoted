@@ -9,12 +9,12 @@ const Faq = () => {
         <DynamicTitle
           dynamicButton
           title="Simply Noted FAQs"
-          className={'mt-[20px] md:text-[42px] text-[32px]'}
+          className={'mt-[20px] md:text-[42px] text-[32px] !pb-[15px]'}
         />
-
+<div className='shadow-custom-faq md:mt-14 mt-4 w-[95%] mx-auto'>
         <FaqAccordion
           title="Do you have have business pricing / offer custom orders?"
-          className="tab-content"
+          className="tab-content "
         >
           <span>
             Yes we do! Orders up-to 5,000 can be placed online with our normal
@@ -301,6 +301,7 @@ const Faq = () => {
             we will redo and send them at no charge.
           </span>
         </FaqAccordion>
+      </div>
       </div>
     </>
   );

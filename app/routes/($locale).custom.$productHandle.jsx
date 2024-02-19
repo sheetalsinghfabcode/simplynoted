@@ -51,7 +51,6 @@ export async function loader({params, context}) {
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
   });
-  // console.log(params,"-----");
   const shippingData = await context.storefront.query(ShippingMethod, {
     variables: {},
   });
@@ -64,7 +63,6 @@ export async function loader({params, context}) {
 let parameterValue;
 export default function CustomProducts() {
   const {productHandle, shippingData, data} = useLoaderData();
-  // console.log(productHandle, '------productHandle');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
@@ -98,7 +96,6 @@ export default function CustomProducts() {
   if (typeof window !== 'undefined') {
     const urlParams = new URLSearchParams(window?.location.search);
     parameterValue = urlParams.get('select');
-    // console.log(parameterValue,"---000000");
   }
 
   // useEffect(() => {
@@ -123,7 +120,6 @@ export default function CustomProducts() {
         `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
       );
       const json = await res.json();
-      // console.log(json, 'productData');
       setCustomProductData(json.result);
       // getMetaFields(json.result)
     } catch (error) {
@@ -144,11 +140,9 @@ export default function CustomProducts() {
           'Content-Type': 'application/json',
         },
       });
-      console.log("++++++++++++",id);
       const json = await data.json();
       let extractedData = json.result.metafields[0].value;
       let extractMetafield = JSON.parse(extractedData);
-      // console.log(extractMetafield, 'extractMetafield');
       setMetafields(extractMetafield);
       let key = 'is_customised';
       let key2 = 'qrImage';
@@ -157,7 +151,6 @@ export default function CustomProducts() {
       let dataAfterChecking = newData.filter(
         (item) => key.includes(item.namespace) && key2.includes(item.key),
       );
-      // console.log(dataAfterChecking[0].value, 'filter QR Data');
       if (qrData.namespace == 'is_customised') {
         setQrValue(dataAfterChecking[0].value);
       }
@@ -186,7 +179,6 @@ export default function CustomProducts() {
     localStorage.removeItem('reqFielddInCart');
     setLocationValue(true);
   }, [datafornav.pathname]);
-  // console.log(metafields.back, 'metafields.back.zoom');
   return (
     <div className="relative">
       {customProductData.length === 0 && metafields.length === 0 && (

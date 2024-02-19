@@ -28,7 +28,6 @@ const StripeCard = ({
   showStripeCard,
   updateCard,
 }) => {
-  // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -50,8 +49,6 @@ const StripeCard = ({
         } else {
           handlePurchaseCard(id);
         }
-
-        console.log('Stripe ID: ', id);
       } catch (error) {
         console.error(error, 'stripe error');
       }
@@ -72,7 +69,8 @@ const StripeCard = ({
         >
           {showStripeCard || addCreditModal
             ? 'Add Card'
-            : (pathname.pathname === '/simply-noted-plans' || pathname.pathname === "/account")
+            : pathname.pathname === '/simply-noted-plans' ||
+              pathname.pathname === '/account'
             ? 'Complete Purchase'
             : 'Update Card'}
         </button>

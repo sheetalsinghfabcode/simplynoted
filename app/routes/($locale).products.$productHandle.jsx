@@ -141,7 +141,6 @@ let parameterValue;
 export default function Product() {
   const {product, shop, recommended, variants, data, shippingData} =
     useLoaderData();
-  console.log(product, '----++++_++_-');
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
@@ -172,11 +171,9 @@ console.log(editShippingDate,"editShippingDate");
   const [customFontName, setCustomFontName] = useState('');
   const [locationValue, setLocationValue] = useState(false);
 
-  // console.log(datafornav.search, '87877878787');
   if (typeof window !== 'undefined') {
     const urlParams = new URLSearchParams(window?.location.search);
     parameterValue = urlParams.get('select');
-    // console.log(parameterValue,"---000000");
   }
 
   useEffect(() => {
@@ -223,12 +220,10 @@ console.log(editShippingDate,"editShippingDate");
   };
   useEffect(() => {
     localStorage.removeItem('reqFielddInCart');
-    // console.log(datafornav.pathname, '0000000000');
     setLocationValue(true);
   }, [datafornav.pathname]);
   return (
     <>
-
       {productshow ? (
         <>
           <Section className="w-full mt-[20px] !p-0">

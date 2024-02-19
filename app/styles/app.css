@@ -1513,6 +1513,7 @@ body {
   object-fit: cover;
 }
 
+
 /************************************F.A.Q.*****************************/
 
 .tab-content {
@@ -1892,16 +1893,16 @@ body {
   transition: transform 0.2s;
 }
 .faq-accordion:hover {
-  transform: scale(1.01);
+  transform: scale(1.005);
   box-shadow: 2px 2px 2px rgb(0 0 0 / 40%);
 }
 
-.faq-transition {
-  /* transition:height 10s ease-in-out;
-  transition-delay:10s; */
-
-  transition: all 0.35s 1s;
+.transition-max-height {
+  transition: max-height 2s ease-in-out;
 }
+
+
+
 
 /******************* Partner-referral ****************************/
 .wrap-referral-form {
@@ -2120,6 +2121,10 @@ body {
 
 .shadow-inset-custom {
   box-shadow: 0 0 4px inset rgba(120, 120, 120, 0.8);
+}
+
+.shadow-custom-faq {
+  box-shadow: 0 0 4px  rgba(120, 120, 120, 0.8);
 }
 /********************************************* ROI CALCULATOR **********************************************************/
 .roi-calculator-section-1 {

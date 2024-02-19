@@ -559,9 +559,13 @@ const ContactTable = ({
                 />
               </div>
 
-              {uploadBulkAddress && (
+   
                 <div
-                  className="absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-5 focus:outline-none"
+                  className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-5 focus:outline-none
+                  overflow-hidden  ${
+                    uploadBulkAddress ? 'max-h-[500px] transition-max-h duration-1000 ease-in-out' : 'max-h-0'
+                  }
+                  `}
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
@@ -610,13 +614,13 @@ const ContactTable = ({
                     </a>
                     <span
                       onClick={openModal}
-                      className="font-bold text-[#000] md:text-[14px] text-[12px] leading-[22px] font-karla font-bold cursor-pointer underline"
+                      className="font-bold text-[#000] md:text-[14px] text-[12px] leading-[22px] font-karla cursor-pointer underline"
                     >
                       View bulk upload instructions.
                     </span>
                   </div>
                 </div>
-              )}
+             
 
               <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton

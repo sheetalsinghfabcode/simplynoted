@@ -235,12 +235,10 @@ export function MessageWriting({
         top: 0,
         behavior: 'smooth', // Make the scroll behavior smooth
       });
-      // console.log(name, 'namefield');
     }
   }
 
   async function onSelectFromAddressBook() {
-    // console.log(fileData,"file Data");
     if (!customerid) {
       setLoginModal(true);
     } else if (name.length == 0) {
@@ -529,9 +527,6 @@ export function MessageWriting({
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
-    // setFontLoad(false)
-
-    // console.log(innerContainer.clientHeight, outerContainer.clientHeight,"heights");
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
@@ -544,7 +539,6 @@ export function MessageWriting({
       reader.onload = (e) => {
         const csvData = e.target.result;
         let jsonData = csvToJson(csvData);
-        // console.log(jsonData, 'jsonData^^^^^^^^^^^^^^^^^');
 
         const cleanedArray = jsonData.map((obj) => {
           const cleanedObj = {};
@@ -597,7 +591,6 @@ export function MessageWriting({
       setTimeout(() => setIsOpen2(false), 3000);
       return;
     } else {
-      // console.log(fileData.length, '=====');
       setLenCsvData(fileData.length);
     }
     let reqField = [
@@ -614,7 +607,6 @@ export function MessageWriting({
 
     for (let index = 0; index < fileData.length; index++) {
       const obj = fileData[index];
-      // console.log(obj['First Name'], 'Name data');
       const emptyKeys = [];
       const numkeys = [];
       let targetField = 'First Name';
@@ -628,7 +620,6 @@ export function MessageWriting({
 
       if (alphabetPattern.test(obj[targetField]) == false) {
         errMsg.push(`'${targetField}' at row ${index} includes a number.`);
-        // console.log(`Index: ${index}, '${targetField}' includes a number.`);
       }
       if (
         obj[countryCheck] === 'USA' ||
@@ -651,9 +642,6 @@ export function MessageWriting({
         errMsg.push(
           `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
         );
-        console.log(
-          `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
-        );
         // setIsOpen2(true)
         // setTimeout(() => setIsOpen2(false), 3000)
       }
@@ -661,10 +649,6 @@ export function MessageWriting({
       if (emptyKeys.length > 0) {
         errMsg.push(
           ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
-        );
-        console.log(
-          `Index: ${index}, Empty Keys: [${emptyKeys.join(', ')}]`,
-          numkeys,
         );
         // setIsOpen2(true)
         // setTimeout(() => setIsOpen2(false), 3000)
@@ -686,11 +670,8 @@ export function MessageWriting({
     if (stateCheckCart) {
       setIsAddressUploadSuccess(!isAddressUploadSuccess);
     }
-    // console.log(replacedMsg, 'replacedMsg');
     if (found) {
-      console.log(`Found  in the array.`);
     } else {
-      console.log(` not found in the array.`);
       uploadCsvFileOnClick();
       // checkUserLogged()
     }
@@ -698,7 +679,6 @@ export function MessageWriting({
   async function uploadCsvFileOnClick() {
     try {
       setLoader(true);
-      // console.log('uploadCsvFile OnClick');
 
       const res = await fetch(
         'https://api.simplynoted.com/api/orders/bulk-orders-upload-s3',
@@ -717,7 +697,6 @@ export function MessageWriting({
 
       setCsvFile(json.result);
 
-      // console.log(json, 'CSV UPLOAD DATA ---------------');
       if (json.result) {
         setShowNextBtn(true);
         setLoader(false);
@@ -764,7 +743,6 @@ export function MessageWriting({
         // setSelectedFile(null);
         // setLoader(false);
 
-        // console.log('Successful response data:', responseData.result);
         setLoader(false);
       } else {
         // setSelectedFile(null);
@@ -811,8 +789,6 @@ export function MessageWriting({
       const json = await res.json();
       setaiText(json.message);
       setLoader(false);
-
-      // console.log(json.message, 'AiGenrated Response____________');
     } catch (error) {
       setLoader(false);
       console.error(error, 'error at Ai generated message ');
@@ -864,12 +840,8 @@ export function MessageWriting({
         : '',
     );
     setTempVal(ref4.current?.value);
-    // console.log(ref4.current, 'OOOOOOOO');
-
-    // console.log(savedMsg?.msg);
   }, []);
   async function firstNameBtn(data) {
-    // console.log(data);
     if (remainingWord > data.length) {
       setCheckCharCount(false);
       setName((prevString) => prevString + data);
@@ -890,7 +862,6 @@ export function MessageWriting({
       })
       .then((data) => {
         setAddresses(data.result);
-        // console.log(data.result, 'data.result');
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -921,7 +892,6 @@ export function MessageWriting({
         if (json) {
           setAddNewTem(false);
         }
-        // console.log(json, 'addNewTemplateFunc');
       }
     } catch (error) {
       console.error(error, 'add new Template');
@@ -958,12 +928,12 @@ export function MessageWriting({
           )}
           <div className="flex justify-center gap-[17px] mt-[18px] items-center">
             <DynamicButton
-              className="bg-[#1b5299] w-full h-[40px] text-base w-36"
+              className="bg-[#1b5299] w-full h-[40px] text-base"
               onClickFunction={() => addNewTemplateFunc()}
               text="Save template"
             />
             <DynamicButton
-              className="bg-gray-400 w-full h-[40px] w-36"
+              className="bg-gray-400 w-full h-[40px]"
               text="Cancel"
               onClickFunction={() => setAddNewTem(false)}
             />
@@ -980,21 +950,17 @@ export function MessageWriting({
       const json = await res.json();
       setloadTempData(json.result);
       // setLoadTemModal(true)
-      // console.log(json.result, ')))))))))');
     } catch (error) {
       console.error(error, 'savedTemp');
     }
   }
   const filteredList = (loadTempData, searchData) => {
-    // console.log(searchData, 'searchData');
     return loadTempData.filter((dataobj) => bySearch(dataobj, searchData));
   };
 
   const bySearch = (dataobj, searchData) => {
-    // console.log(Object.values(dataobj),'+++++++++++++++');
     if (searchData) {
       return Object.values(dataobj).some((field) =>
-        // console.log(s,'!!!!!!!!!!!!!!!!!!!!!!');
         field.toString().toLowerCase().includes(searchData.toLowerCase()),
       );
     } else return dataobj;
@@ -1069,7 +1035,7 @@ export function MessageWriting({
         },
       );
       const json = await res.json();
-      // console.log(json, 'delte Temp response');
+
       setOnDelTemp(!onDelTemp);
     } catch (error) {
       console.error(error, 'delete Template');
@@ -1119,14 +1085,13 @@ export function MessageWriting({
         `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
       );
       const json = await res.json();
-      // console.log(json.data);
+
       setCustomFonts(json.data);
     } catch (error) {
       console.error(error, 'customfontError');
     }
   }
   function getCustomFont(val) {
-    // console.log(val, 'getcustom val');
     setFontFamily(val);
     setCustomFontVal(val);
     setStandardFontVal('Select Standard Font');
@@ -1285,7 +1250,7 @@ export function MessageWriting({
                 </div>
               </div>
             </div>
-            <div className="mb-[24px] text-sm font-inter text-xs">
+            <div className="mb-[24px]  font-inter text-xs">
               <span className="text-[#001A5F] font-medium">
                 Contact Us &nbsp;
               </span>
@@ -1449,7 +1414,7 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`mt-[11px] flex flex-col w-full md:w-[48%] w-[90%] sm:max-w-[702px] md:min-w-0  relative  ${
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${
             show ? 'h-[940px]' : 'h-[370px] '
           } mb-[200px] md:mb-[0px]`}
         >
@@ -1761,9 +1726,7 @@ export function MessageWriting({
                   <DynamicButton
                     className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Buy Leads (Mailing List)"
-                    onClickFunction={() => {
-                      console.log('Yet to be completed!!');
-                    }}
+                    onClickFunction={() => {}}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton

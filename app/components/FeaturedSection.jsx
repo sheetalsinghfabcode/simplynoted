@@ -17,7 +17,6 @@ export function FeaturedSection() {
   if (!data) return null;
 
   const {featuredCollections, featuredProducts} = data;
-  console.log(featuredProducts,"featured")
   return (
     <>
       {featuredCollections.nodes.length < 2 && (
