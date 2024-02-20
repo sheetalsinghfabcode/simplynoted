@@ -367,13 +367,13 @@ const PaymentModal = ({
                 className="flex items-center justify-between cursor-pointer"
                 onClick={toggleBilling}
               >
-                <span className="font-bold text-[red] md:text-[20px] text-[17px] text-[#001a5f]">
+                <span className="font-bold  md:text-[20px] text-[17px] text-[#001a5f]">
                   Billing Address
                 </span>
                 <span className="mr-2">{isBillingOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
               </div>
-               <div className={`overflow-hidden
-                ${isBillingOpen ? "max-h-[800px] transition-max-height" : "max-h-0"}
+               <div className={`overflow-hidden transition-max-height
+                ${isBillingOpen ? "max-h-[800px]" : "max-h-0"}
                `}>
               <div className="rounded">
                   <div className="w-full max-w-[650px]  mx-auto  p-3 mt-3">
@@ -526,8 +526,8 @@ const PaymentModal = ({
                   <span className="mr-2">{isCardInfoOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
                 </div>
              
-               <div className={`overflow-hidden 
-                 ${isCardInfoOpen ?"max-h-[800px] transition-max-height" : "max-h-0"}
+               <div className={`overflow-hidden transition-max-height 
+                 ${isCardInfoOpen ?"max-h-[800px]" : "max-h-0"}
                `}>
                   <>
                     <Elements stripe={stripe}>
