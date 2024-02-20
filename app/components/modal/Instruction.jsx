@@ -1,4 +1,5 @@
 import Modal from 'react-modal';
+import {ImCross} from 'react-icons/im';
 
 const customStyles = {
   content: {
@@ -38,13 +39,23 @@ function Instruction({
     >
       <div className="">
         <div className="relative">
-          {close && (
+          {/* {close && (
             <span
               className="absolute cursor-pointer !leading-[0] right-[10px] text-[40px]"
               onClick={closeModal}
             >
               &times;
             </span>
+          )} */}
+          {close && (
+           <div className="absolute top-[35px] right-[-7px] top-[24px] sm:block">
+                    <span
+                      onClick={closeModal}
+                      className="transition text-primary "
+                    >
+                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                    </span>
+                  </div>
           )}
           {image && (
             <div className="flex justify-center">

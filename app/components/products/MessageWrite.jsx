@@ -22,6 +22,7 @@ import {FaYoutube} from 'react-icons/fa';
 import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
 import {RxCross2} from 'react-icons/rx';
+import {ImCross} from 'react-icons/im';
 
 let mainMessageBox,
   signOffTextBox,
@@ -901,14 +902,7 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <>
-        <div className="flex justify-end ">
-          <DynamicButton
-            className="bg-[#EF6E6E] hover:bg-[#1b5299] text-[23px] text-[white]"
-            onClickFunction={() => setAddNewTem(false)}
-            text="X"
-          />
-        </div>
-        <div className="w-[29rem] m-[2rem]">
+        <div className=" w-[700px] m-[2rem]">
           <div>
             <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
               NEW TEMPLATE
@@ -972,10 +966,10 @@ export function MessageWriting({
 
     return (
       <>
-        <div className="flex justify-end "></div>
-        <div className=" w-[29rem] m-[2rem]">
+        <div className="flex justify-end"></div>
+        <div className="w-[100%] max-w-[500px]">
           <div>
-            <h1 className="text-[34px] text-[#001a5f] font-bold font-karla">
+            <h1 className="md:text-[34px] text-[23px] text-[#001a5f] font-bold font-karla">
               SELECT TEMPLATE
             </h1>
           </div>
@@ -994,8 +988,8 @@ export function MessageWriting({
           </div>
           {loadTempData &&
             filteredList(loadTempData, searchData).map((item) => (
-              <div className="p-3">
-                <div className="border border-black-600 px-[10px] h-[42px] items-center w-full flex">
+              <div className="">
+                <div className="border border-black-600 mt-[12px] mb-[12px] px-[10px] h-[42px] items-center w-full flex">
                   <div className="w-full font-font-semibold mt-[10px] text-[14px]">
                     {item.templateName}
                   </div>
@@ -1780,18 +1774,28 @@ export function MessageWriting({
         contentLabel="Example Modal"
       >
         <div className="flex">
-          <h2 className="font-bold text-xl w-[600px]">AI Message Assistant</h2>
-          <BsXCircle className="" onClick={() => onCancl()} />
+          <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
+            AI Message Assistant
+          </h2>
+          {/* <BsXCircle className="" onClick={() => onCancl()} /> */}
+          <div className="absolute top-[35px] right-0  pr-8 sm:block">
+            <button
+              onClick={() => onCancl()}
+              className="transition text-primary "
+            >
+              <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+            </button>
+          </div>
         </div>
-        <div>
-          <text className=" text-[#999999]">
+        <div className="mt-[12px]">
+          <text className="text-[black]">
             Type in words or a phrase to use our AI Assistant to
             <br /> help generate a great message
           </text>
         </div>
         <div>
           {loader ? (
-            <div className="h-[300px] flex justify-center items-center border-dashed border border-[#999999]">
+            <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
               <CircularLoader color="#ef6e6e" />
             </div>
           ) : (

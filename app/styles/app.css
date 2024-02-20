@@ -40,7 +40,6 @@
   transition: max-height 1s ease-in-out;
 }
  
-
 /* Tokens */
 :root {
   --color-primary: 20 20 20; /* Text, buttons, etc. */
@@ -1026,15 +1025,12 @@ body {
 }
 .btn1,
 .req-btn {
-  padding: 20px 30px;
   margin-top: 7px;
   background: #ef6e6e;
   color: white;
   display: inline-block;
   font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
-  margin-right: 15px;
   border-radius: 0px;
 }
 .btn1:hover,
@@ -1115,8 +1111,6 @@ body {
   display: inline-block;
   font-size: 18px;
   font-weight: 600;
-  line-height: 16px;
-  padding: 26px 56px;
 }
 .robot {
   position: absolute;
@@ -1163,9 +1157,7 @@ body {
   display: inline-block;
   font-size: 16px;
   font-weight: 600;
-  line-height: 16px;
   color: white;
-  padding: 26px 35px;
   cursor: pointer;
 }
 
@@ -1663,8 +1655,6 @@ body {
   background-size: 100% 100%;
   margin-top: 0;
   margin-bottom: 3vw;
-  width: 532px;
-  max-width: 100%;
   z-index: 2;
   padding: 20px;
 }
@@ -2460,18 +2450,9 @@ body {
   .wrap-referral-form {
     width: 570px;
   }
-  .wrap-business-form-salesforce {
-    width: 100%;
-  }
-  .req-btn {
-    width: 50%;
-    height: 50px;
-  }
+
   .sch-btn {
     font-size: 11px;
-
-    width: 60%;
-    height: 90%;
   }
   .signup-row {
     margin: 13px auto;

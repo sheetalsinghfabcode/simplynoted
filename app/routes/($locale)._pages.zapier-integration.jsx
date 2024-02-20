@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import ac_blue from '../../assets/Image/ac-blue-orb.png';
 import shopifys from '../../assets/Image/shopify-log.png';
 import hubspot from '../../assets/Image/Hubspot.png';
@@ -30,6 +30,7 @@ export default function Zapier() {
   useEffect(() => {
     setAnimate(true);
   }, []);
+
   return (
     <div className='global-max-width-handler'>
       <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto px-[16px] md:px-[40px] ">
@@ -193,25 +194,25 @@ export default function Zapier() {
         </div>
       </div>
       {/* second */}
-      <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto ">
+      <div className="flex flex-wrap justify-center pr-[40px] pl-[40px] ml-auto lg:mr-0 mr-auto ">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
-              <p className="color-[#001a5f] text-[38px] font-bold pb-[25px] w-[112%]">
+              <p className="color-[#001a5f] text-[38px] font-bold pb-[25px] w-[450%]">
                 Instantly Integrate With
               </p>
-              <p className="color-[#001a5f] text-[38px] font-bold pb-[25px] w-[112%]">
+              <p className="color-[#001a5f] text-[38px] font-bold pb-[25px] w-[450%]">
                 1,000s of Applications
               </p>
             </div>
           </div>
-          <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
+          <p className="lg:text-[20px] text-[18px] text-black font-light leading-8 lg:mt-0 mt-7 lg:text-justify sm:text-center text-justify ">
             Start your trigger by finding your app in the Zapier database
           </p>
-          <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
+          <div className="lg:flex-row flex-col flex lg:items-left items-center gap-[12px] lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[17px] md:text-[14px]  lg:h-[10%]  h-full mt-[35px]"
+              className="btn1 lg:!text-[17px] w-[200px]  md:text-[14px] h-[50px]  mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')
@@ -219,7 +220,7 @@ export default function Zapier() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2 lg:w-[50%] md:w-[26%] text-[15px] mt-5"
+              className="btn2 lg:!text-[17px] w-[200px] md:text-[14px] h-[55px] items-center text-center"
               onClickFunction={() =>
                 (window.location.href = 'https://simplynoted.com/blogs/news')
               }
@@ -264,10 +265,10 @@ export default function Zapier() {
             Simply Noted integrates with your software and will do bulk sends in
             just a few minutes of your time.
           </p>
-          <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
+          <div className="lg:flex-row flex-col gap-[12px] flex lg:items-left items-center lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[17px] md:text-[14px] text-[12px] lg:h-[10%]  h-full mt-[35px]"
+              className="btn1  lg:!text-[17px] w-[200px]  md:text-[14px] h-[50px]  mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')
@@ -275,9 +276,9 @@ export default function Zapier() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2 lg:w-[50%] md:w-[26%] text-[17px] mt-5"
+              className="btn2  lg:!text-[17px] w-[200px] md:text-[14px] h-[55px] items-center text-center"
               onClickFunction={() => navigate('/blogs')}
-            />
+            />  
           </div>
         </div>
         <div className="lg:hidden block mb-10">
@@ -321,10 +322,27 @@ export default function Zapier() {
           />
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
             <div className="mb-[12px]">Integrate with Zapier</div>
-            <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
+            <div className=" flex flex-col md:flex-row text-white  gap-[12px]  md:mx-[2rem] mr-10 ml-auto">
               <DynamicButton
+                text="REQUEST SAMPLE"
+                className="req-btn h-[45px]"
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
+                }
+              />
+              <DynamicButton
+                text="SCHEDULE A DEMO"
+                className="sch-btn h-[55px]"
+                onClickFunction={() =>
+                  (window.location.href = 'https://meetings.hubspot.com/rick24')
+                }
+              />
+            </div>
+          
+              {/* <DynamicButton
                 text="INTEGRATE NOW"
-                className="req-btn !ml-0 md:w-50%  !w-full"
+                className="btn1 !w-full lg:!text-[17px] md:text-[14px] text-[12px] lg:h-[82%]  h-full mt-[35px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -336,8 +354,7 @@ export default function Zapier() {
                 onClickFunction={() =>
                   (window.location.href = 'https://zapier.com/apps')
                 }
-              />
-            </div>
+              /> */}
           </div>
         </div>
       </div>
