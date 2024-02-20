@@ -65,7 +65,7 @@ const StripeCard = ({
       <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
         <button
           type="submit"
-          className="!bg-[#EF6E6E] text-white h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
+          className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
         >
           {showStripeCard || addCreditModal
             ? 'Add Card'

@@ -7,16 +7,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   const [previousPage, setPreviousPage] = useState(null);
   const pathnames = location.pathname.split('/').filter((x) => x);
 
-  const {setProductShow, setWalletPlan, setWalletPurchase,setWalletPayment, setIsCardTypeSelectionPage} =
-    useStateContext();
-
-  useEffect(() => {
-    setIsCardTypeSelectionPage(true);
-    setProductShow(true);
-    setWalletPlan(false);
-    setWalletPayment(false)
-    setWalletPurchase(false)
-  }, [location.pathname]);
+  const {setShowSelectAddress,setProductShow} = useStateContext();
 
   useEffect(() => {
     const prevPage = localStorage.getItem('previousPage');
@@ -26,22 +17,22 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     localStorage.setItem('previousPage', location.pathname);
   }, [location.pathname]);
 
-  let ab = ['collections', 'pages', 'policies'];
+  let ab = ['collections', 'pages'];
 
   return (
-    <div className="breadcrumb inline-block ">
+    <div className="breadcrumb inline-block text-[#010101] capitalize font-medium ">
       <nav
-        className="flex px-5 py-3 text-gray-700 border  border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+        className="flex px-5 py-3  border  border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Breadcrumb"
       >
         <ol className="inline-flex whitespace-nowrap items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <Link
               to="/"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              className="inline-flex items-center text-sm font-medium  hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
             >
               <svg
-                className="w-3 h-3 me-2.5"
+                className="w-3 h-3 mb-[2px] me-2.5"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -49,7 +40,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
               >
                 <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
               </svg>
-              Home
+            <span>Home</span>  
             </Link>
           </li>
           {previousPage &&
@@ -58,7 +49,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
               <li>
                 <div className="flex items-center">
                   <svg
-                    className="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 "
+                    className="rtl:rotate-180 block w-3 h-3 mx-1  "
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -74,7 +65,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                   </svg>
                   <Link
                     to={previousPage}
-                    className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+                    className="ms-1 text-sm font-medium  hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
                   >
                     {previousPage.split('/').pop()}
                   </Link>
@@ -88,54 +79,51 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
             const isLast = index === pathnames.length - 1;
 
             return (
-              <>
-                {!location.pathname.includes('orders') && (
-                  <li
-                    onClick={() => {
-                      setWalletPlan(false);
-                      setIsCardTypeSelectionPage(true);
-                      setProductShow(true);
-                    }}
-                    key={breadcrumbPath}
-                    className="inline-flex items-center"
+              <li
+                onClick={() =>
+                  
+                  {
+                    setProductShow(true)
+                    setShowSelectAddress(false)}
+                  }
+                key={breadcrumbPath}
+                className="inline-flex items-center"
+              >
+                <svg
+                  className="rtl:rotate-180 mb-[1px]  w-3 h-3 mx-1 "
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 6 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 9 4-4-4-4"
+                  />
+                </svg>
+                {isLast && additionalBreadcrumbs ? (
+                  <Link
+                    to={breadcrumbPath}
+                    className="inline-flex whitespace-nowrap items-center text-sm font-medium  hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                   >
-                    <svg
-                      className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 6 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m1 9 4-4-4-4"
-                      />
-                    </svg>
-                    {isLast && additionalBreadcrumbs && !/\d/.test(name) ? (
-                      <Link
-                        to={breadcrumbPath}
-                        className="inline-flex whitespace-nowrap items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-                      >
-                        {name}
-                      </Link>
-                    ) : (
-                      <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                        {name}
-                      </span>
-                    )}
-                  </li>
+                    {name}
+                  </Link>
+                ) : (
+                  <span className="ms-1 text-sm font-normal  md:ms-2 dark:text-gray-400">
+                    {name}
+                  </span>
                 )}
-              </>
+              </li>
             );
           })}
-          {additionalBreadcrumbs &&
+          {additionalBreadcrumbs && additionalBreadcrumbs.length > 0 &&
             additionalBreadcrumbs.map((breadcrumb, index) => (
               <>
                 <svg
-                  className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400"
+                  className="rtl:rotate-180  w-3 h-3 mx-1 "
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -150,7 +138,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                   />
                 </svg>
                 <li key={index} className="inline-flex items-center">
-                  <span className="ms-1 text-sm font-medium text-gray-700 dark:text-gray-400">
+                  <span className="ms-1 text-sm font-medium  dark:text-gray-400">
                     {breadcrumb}
                   </span>
                 </li>
