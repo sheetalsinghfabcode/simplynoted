@@ -20,7 +20,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   let ab = ['collections', 'pages'];
 
   return (
-    <div className="breadcrumb inline-block flex">
+    <div className="breadcrumb inline-block ">
       <nav
         className="flex px-5 py-3 text-gray-700 border  border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Breadcrumb"
