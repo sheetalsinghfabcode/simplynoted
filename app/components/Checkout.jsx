@@ -554,10 +554,10 @@ export function CheckoutData({
                 <DynamicTitle title={'PAYMENT'} />
               </div>
               <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
-                <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold">
-                  <div className="border border-solid border-[#e6edf8] m-3 rounded-tl-lg rounded-tr-lg">
+                <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold shadow-outer-custom">
+                  <div className="border border-solid border-[#e6edf8] sm:m-3 rounded-tl-lg rounded-tr-lg">
                     <div
-                      className={`p-3 text-sm cursor-pointer rounded-tl-lg rounded-tr-lg ${
+                      className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg ${
                         showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
                       }`}
                       onClick={showWalletBtn}
@@ -573,16 +573,16 @@ export function CheckoutData({
                     <hr />
 
                     <div
-                      className={`overflow-hidden  ${
-                        showWallet
-                          ? 'max-h-[1000px] transition-max-height'
-                          : 'max-h-0'
-                      }`}
+                     className={`overflow-hidden  ${
+                      showWallet
+                        ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s]  '
+                        : 'max-h-0 transition-max-h ease-in-out duration-700'
+                    }`}
                     >
-                      <div className="border border-solid border-[#e6edf8] p-5 pl-4 pr-5 mb-3">
-                        <span className="flex justify-between items-center text-sm text-[#001a5f] font-bold">
-                          <span className="flex-1">WALLET BALANCE </span>
-                          <span className="flex-1 text-3xl md:text-4xl text-[#ef6e6e] font-black text-right">
+                      <div className="border border-solid border-[#e6edf8] sm:p-[20px] p-[10px] sm:m-[15px] m-[7px]">
+                        <span className="flex justify-between items-center text-[#001a5f] flex-wrap">
+                          <span className="flex-1 sm:text-[15px] text-[11px] font-bold">WALLET BALANCE </span>
+                          <span className="flex-1 sm:text-[46px] text-[16px] text-[#ef6e6e] font-black text-right">
                             $
                             {walletBalance && walletBalance.balance
                               ? walletBalance.balance
@@ -594,7 +594,7 @@ export function CheckoutData({
 
                     <hr />
                     <div
-                      className={`p-3 cursor-pointer text-sm ${
+                      className={`p-3 cursor-pointer text-[15px] font-bold ${
                         showWallet ? '' : 'bg-[#ef6e6e] bg-opacity-25'
                       }`}
                       onClick={cardDetailBtn}
@@ -609,15 +609,15 @@ export function CheckoutData({
                     </div>
 
                     <div
-                      className={`overflow-hidden ${
+                      className={`overflow-hidden  ${
                         showCardDetail
-                          ? 'max-h-[1000px] transition-max-height '
-                          : 'max-h-0'
+                          ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s] '
+                          : 'max-h-0 transition-max-h ease-in-out duration-700'
                       }`}
                     >
                       <div className="p-3">
                         <div className="mt-2 ">
-                          <div className="text-lg font-bold">
+                          <div className="sm:text-[20px] text-base font-bold">
                             CREDIT CARD INFORMATION
                           </div>
                           <div className="text-base font-bold mt-2">
@@ -631,7 +631,7 @@ export function CheckoutData({
                                 onClick={() =>
                                   setPaymentMethodId(item.paymentId)
                                 }
-                                className="flex justify-between cursor-pointer items-center text-xs font-bold"
+                                className="flex justify-between cursor-pointer items-center text-[14px] font-bold"
                               >
                                 <input
                                   checked={paymentMethodId === item.paymentId}
@@ -652,7 +652,7 @@ export function CheckoutData({
                             </div>
                           ))}
                         <div className="savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4">
-                          <div className="text-sm flex items-center">
+                          <div className="text-base font-normal flex items-center">
                             <input
                               type="radio"
                               name="saved-action"
@@ -688,22 +688,22 @@ export function CheckoutData({
                     </button>
                   </div>
                 </div>
-                <div className="lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto">
-                  <div className="p-5 bg-white  rounded-xl">
-                    <h1 className="text-left font-bold text-2xl">
+                <div className="lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto ">
+                  <div className="p-5 bg-white  rounded-xl shadow-outer-custom">
+                    <h1 className="text-left font-bold sm:text-[30px] text-[26px]">
                       ORDER SUMMARY
                     </h1>
-                    <span className="flex justify-between items-center mt-3 mb-3">
+                    <span className="flex justify-between items-center mt-3 mb-3 text-base">
                       <span className="font-medium">Subtotal</span>
                       <span>${prices.subtotalPrice}</span>
                     </span>
                     {discountCouponCode.apiDiscountResponse?.value && (
                       <span className="flex justify-between items-center mt-3 mb-6">
                         <span>
-                          <span className="mr-2 font-medium">
+                          <span className="mr-2 font-medium text-base">
                             Order Discount
                           </span>
-                          <span className="text-xs font-medium bg-[#ef6e6e] bg-opacity-25 rounded p-1">
+                          <span className="text-base font-medium bg-[#ef6e6e] bg-opacity-25 rounded p-1">
                             {discountCouponCode.oldTriedPayloadValue}
                           </span>
                         </span>
@@ -717,11 +717,11 @@ export function CheckoutData({
                       </span>
                     )}
                     <div className="w-full h-[1px] bg-black"></div>
-                    <span className="flex justify-between items-center mt-3 mb-3 font-bold">
+                    <span className="flex justify-between items-center mt-3 mb-3 font-bold text-base">
                       Total{' '}
                       <span>${Number(prices.totalPrice)?.toFixed(2)}</span>
                     </span>
-                    <div className="font-bold">
+                    <div className="font-bold text-base">
                       <span>If you have a discount code, enter it here:</span>
                       <div
                         className="flex gap-2 justify-start items-stretch mt-3"

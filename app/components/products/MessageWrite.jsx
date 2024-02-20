@@ -902,9 +902,10 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <>
-        <div className=" w-[100%]">
+       
+        <div className="sm:w-[29rem] w-full  p-[2rem] flex-col flex-wrap ">
           <div>
-            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
+            <h1 className="sm:text-[34px] text-[26px] text-[#001a5f] font-bold text-center font-karla">
               NEW TEMPLATE
             </h1>
           </div>
@@ -921,7 +922,7 @@ export function MessageWriting({
               Please check that the value is not empty
             </span>
           )}
-          <div className="flex justify-center gap-[17px] mt-[18px] items-center">
+          <div className="flex justify-center sm:gap-[17px] gap-3 mt-[18px] items-center sm:flex-row flex-col">
             <DynamicButton
               className="bg-[#1b5299] w-full h-[40px] text-base"
               onClickFunction={() => addNewTemplateFunc()}

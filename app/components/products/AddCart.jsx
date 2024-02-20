@@ -573,11 +573,11 @@ export function AddCart({
         )}
         {!addressForm && (
           <div
-            className={`w-[100%] h-full gap-2 my-[2rem]  ${
+            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
               loader && 'opacity-40'
             }`}
           >
-            <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between">
+            <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
               <div className="col-6 md:w-[49%] w-full shadow-md rounded">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
@@ -683,7 +683,7 @@ export function AddCart({
               </div>
             </div>
             <div
-              className={`row flex mr-2 ml-2 gap-4 mt-10 ${
+              className={`row flex mr-2 ml-2 gap-4 mt-10 w-full ${
                 show ? 'justify-between' : 'justify-end'
               }`}
             >
@@ -822,10 +822,10 @@ export function AddCart({
                 , {formData?.city}, {formData?.state},{formData?.country}
               </div>
             )}
-            <div className="row flex mt-4 relative right-[-17px] w-full justify-end font-normal text-[14px]">
-              <div className="buttonDiv my-2">
+            <div className={`row flex mt-4 relative w-full ${(selectShipMode && selectShipMode.node.price.amount !== '0.0') ?"justify-between" :"justify-end"} font-normal text-[14px]`}>
+              <div className="buttonDiv my-2 order-2">
                 <DynamicButton
-                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4"
+                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
                   text="ADD TO CART"
                   // disabled={!agree}
                   onClickFunction={() => onClickOFAddCartBtn()}
@@ -834,7 +834,7 @@ export function AddCart({
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4"
+                    className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4 sm:w-full w-[90%]"
                     text="Enter the shipping address for the package"
                     onClickFunction={() => onpenAddCardModal()}
                   />

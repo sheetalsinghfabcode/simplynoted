@@ -59,9 +59,9 @@ const Card = () => {
               prevEl: '.swiper-button-prev',
             }}
           >
-            {stockData.map((data, key) => {
+            {stockData.map((data, index) => {
               return (
-                <div key={key}>
+                <div key={index}>
                   <SwiperSlide>
                     <div className="data_card bg-white  text-center mt-5 sm:w-[88%] w-full mx-auto ">
                       <div className="m-auto w-full pt-5 md:pt-20">

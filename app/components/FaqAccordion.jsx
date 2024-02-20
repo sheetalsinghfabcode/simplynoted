@@ -19,14 +19,14 @@ function FaqAccordion({ title, children, className, accordion = false }) {
             {title}
           </span>
           <span className="flex justify-center mr-[20px]">
-              <IoIosArrowForward className={`relative text-[20px] ${ isExpanded ? 'rotate-90' : ''} transition-all`} />
+              <IoIosArrowForward className={`relative text-[20px] icon-transition transform ${ isExpanded ? 'rotate-90' : ''} `} />
           </span>
         </div>
       </div>
 
       <div
-          className={`overflow-hidden  ${
-            isExpanded ? 'max-h-[1000px] transition-max-height' : 'max-h-0'
+          className={`overflow-hidden transition-max-height ${
+            isExpanded ? 'max-h-[1000px] ' : 'max-h-0 closing'
           }`}
       >
         <div className="px-[1.5rem] py-5 bg-white sm:text-[14px] text-[12px]">

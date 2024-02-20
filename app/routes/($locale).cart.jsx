@@ -354,7 +354,7 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom">
+                      <div key={index} className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom">
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                             <div className="flex w-full justify-start sm:flex-row flex-col">
@@ -1115,7 +1115,7 @@ export default function AddCartFunc() {
                     >
                       <option className="w-full"> Select Gift Card</option>
                       {data.collection.products.edges.map((item, i) => (
-                        <option value={i}>{item.node.title}</option>
+                        <option value={i} key={item.id}>{item.node.title}</option>
                       ))}
                     </select>
                   </div>
@@ -1134,7 +1134,7 @@ export default function AddCartFunc() {
                         onChange={(e) => priceValFunc(e.target.value)}
                       >
                         {cardPriceVal.map((item) => (
-                          <option value={item.node.price.amount}>
+                          <option value={item.node.price.amount} key={item.id}>
                             {item.node.title}
                           </option>
                         ))}

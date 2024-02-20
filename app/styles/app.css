@@ -35,10 +35,6 @@
   font-family: 'Al-dente';
   src: url(./fonts/Al-dente.ttf) format(truetype);
 }
-
-.transition-max-height {
-  transition: max-height 1s ease-in-out;
-}
  
 /* Tokens */
 :root {
@@ -1888,12 +1884,16 @@ body {
 }
 
 .transition-max-height {
-  transition: max-height 2s ease-in-out;
+  transition: max-height 1.5s ease-in-out;
 }
 
+.transition-max-height.closing {
+  transition-duration: 0.6s; 
+}
 
-
-
+.icon-transition{
+    transition:transform 0.5s ease-in-out;
+}
 /******************* Partner-referral ****************************/
 .wrap-referral-form {
   background: url('../../assets/Image/form-bg.webp') no-repeat;
@@ -2113,8 +2113,8 @@ body {
   box-shadow: 0 0 4px inset rgba(120, 120, 120, 0.8);
 }
 
-.shadow-custom-faq {
-  box-shadow: 0 0 4px  rgba(120, 120, 120, 0.8);
+.shadow-outer-custom {
+  box-shadow: 0 0 3px  rgba(120, 120, 120, 0.8);
 }
 /********************************************* ROI CALCULATOR **********************************************************/
 .roi-calculator-section-1 {
