@@ -25,7 +25,19 @@ import mobile_curve from '../../assets/Image/business-arrow-curve-mobile.png';
 import DynamicButton from '~/components/DynamicButton';
 import {useState} from 'react';
 
-const Business = () => {
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(BUSSINESS_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
+export default function bussniess(){
   const [integrated, setIntegrated] = useState('salesforce');
   const [customizable, setCustomizable] = useState('create_card');
   const BLOCK = {display: 'block'};
@@ -980,4 +992,15 @@ const Business = () => {
   );
 };
 
-export default Business;
+const BUSSINESS_GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/47162753129"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`
+// export default Business;

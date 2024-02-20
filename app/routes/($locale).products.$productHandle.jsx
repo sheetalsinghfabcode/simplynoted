@@ -41,6 +41,7 @@ import {AddCart} from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
 import Breadcrumbs from '~/components/Breadcrumbs';
+import { useStateContext } from '~/context/StateContext';
 
 export const headers = routeHeaders;
 
@@ -161,7 +162,8 @@ console.log(editShippingDate,"editShippingDate");
   const [show, setShow] = useState(
     showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
-  const [productshow, setProductShow] = useState(true);
+  
+  const {productshow,setProductShow} = useStateContext()
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');

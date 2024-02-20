@@ -166,7 +166,7 @@ function collectionJsonLd({url, collection}) {
 
 function collection({collection, url}) {
   return {
-    title: collection?.seo?.title,
+    title: collection?.title,
     description: truncate(
       collection?.seo?.description ?? collection?.description ?? '',
     ),
@@ -258,12 +258,27 @@ function blog({blog, url}) {
     },
   };
 }
+function Video({blog, url}) {
+  return {
+    title: blog?.seo?.title?blog?.seo?.title:'Tutorial-SimplyNoted',
+    description: truncate(blog?.seo?.description || ''),
+    titleTemplate: '%s | Tutorial',
+    url,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: blog?.seo?.title || blog?.title || '',
+      description: blog?.seo?.description || '',
+      url,
+    },
+  };
+}
 
 function page({page, url}) {
   return {
     description: truncate(page?.seo?.description || ''),
     title: page?.seo?.title ?? page?.title,
-    titleTemplate: '%s | Page',
+    titleTemplate: '%s | SimplyNoted',
     url,
     jsonLd: {
       '@context': 'https://schema.org',
@@ -277,12 +292,13 @@ function policy({policy, url}) {
   return {
     description: truncate(policy?.body ?? ''),
     title: policy?.title,
-    titleTemplate: '%s | Policy',
+    titleTemplate: '%s | SimplyNoted',
     url,
   };
 }
 
 function policies({policies, url}) {
+  console.log(policies);
   const origin = new URL(url).origin;
   const itemListElement = policies.filter(Boolean).map((policy, index) => {
     return {
@@ -312,6 +328,32 @@ function policies({policies, url}) {
     ],
   };
 }
+function cart() {
+  return {
+    title: 'Your Shopping Cart',
+    titleTemplate: '%s | SimplyNoted',
+    description: 'The best place to buy snowboarding products',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Cart page',
+    },
+  };
+}
+function Create_Custom({product,url}){
+  console.log(product,"create");
+  return {
+    description: truncate(product?.seo?.description || ''),
+    title: product?.title ?? product?.title,
+    titleTemplate: '%s | SimplyNoted',
+    url,
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: product.title,
+    },
+  };
+}
 
 export const seoPayload = {
   article,
@@ -324,6 +366,9 @@ export const seoPayload = {
   policy,
   product,
   root,
+  Video,
+  cart,
+  Create_Custom,
 };
 
 /**

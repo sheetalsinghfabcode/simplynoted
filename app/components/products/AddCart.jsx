@@ -14,7 +14,6 @@ import {API_PATH} from '~/utils/Path';
 let customerid, cartDataReq;
 export function AddCart({
   show,
-  setProductShow,
   data,
   productData,
   editOrderValue,
@@ -32,6 +31,8 @@ export function AddCart({
     setAddressForm,
     editAddress,
     setEditAddress,
+    setProductShow,
+    setShowSelectAddress,
     selectedAddress,
     setSelectedAddress,
   } = useStateContext();
@@ -570,12 +571,7 @@ export function AddCart({
       )}
 
       <>
-        <DynamicButton
-          className="bg-[#EF6E6E] my-5 w-full max-w-[130px] ml-[-6px]"
-          text="Go Back"
-          onClickFunction={() => setProductShow(true)}
-          backArrow={true}
-        />
+   
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm
@@ -593,7 +589,7 @@ export function AddCart({
             }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between">
-              <div className="col-6 md:w-[49%] w-full bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+              <div className="col-6 md:w-[49%] w-full shadow-md rounded">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
@@ -618,7 +614,7 @@ export function AddCart({
                     {filteredForSender(returnAddress, searchData2).map(
                       (item) => (
                         <div
-                          className="w-full rounded p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center"
+                          className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center"
                           onClick={() => handleCheckboxChange2(item)}
                         >
                           <input
@@ -638,7 +634,7 @@ export function AddCart({
                   </div>
                 </div>
               </div>
-              <div className="col-6 md:w-[49%] w-full bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+              <div className="col-6 md:w-[49%] w-full shadow-md rounded">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
@@ -672,7 +668,7 @@ export function AddCart({
                         {filteredList(recipientAddress, searchData).map(
                           (item, index) => (
                             <div
-                              className="w-full rounded p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer"
+                              className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer"
                               onClick={() => handleCheckboxChange(item)}
                             >
                               <input
@@ -703,7 +699,7 @@ export function AddCart({
               }`}
             >
               {show && (
-                <div className="col-6 md:w-[49%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+                <div className="col-6 md:w-[49%] w-full  shadow-md rounded">
                   <div className="max-h-[600px] p-[20px] overflow-y-auto ">
                     <h3 className="sm:text-[30px] text-[14px] font-bold my-8">
                       {shippingData?.title}
@@ -743,7 +739,7 @@ export function AddCart({
                 </div>
               )}
 
-              <div className="col-6 md:w-[49%] w-full  bg-[#f1f1f1]  border-2 border-[#aaaaaa] rounded-xl">
+              <div className="col-6 md:w-[49%] w-full  shadow-md rounded">
                 <div className="max-h-[600px] p-[20px] overflow-y-auto mt-10 ">
                   <div className="address-data">
                     <h3 className="sm:text-[30px] text-[18px] font-bold mb-5">

@@ -1,13 +1,24 @@
 import FaqAccordion from '~/components/FaqAccordion';
 import underline from '../../assets/Image/faq-underline.png';
 import DynamicTitle from '~/components/Title';
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(API_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 
 const Faq = () => {
   return (
     <>
       <div className="global-max-width-handler">
         <DynamicTitle
-          dynamicButton
           title="Simply Noted FAQs"
           className={'mt-[20px] md:text-[42px] text-[32px] !pb-[15px]'}
         />
@@ -308,3 +319,14 @@ const Faq = () => {
 };
 
 export default Faq;
+const API_GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/48360259689"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`

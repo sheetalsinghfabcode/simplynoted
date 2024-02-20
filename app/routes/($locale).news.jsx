@@ -23,23 +23,24 @@ export async function loader({request, context: {storefront}}) {
   const searchParams = new URLSearchParams(new URL(request.url).search);
   const cursor = searchParams.get('cursor') ?? undefined;
   const action = searchParams.get('action') === 'prev' ? true : false;
-  const {blog} = action
-    ? await storefront.query(BLOGS_QUERY_PREV, {
-        variables: {
-          pageBy: PAGINATION_SIZE,
-          cursor: cursor,
-          blogHandle: BLOG_HANDLE,
-          language,
-        },
-      })
-    : await storefront.query(BLOGS_QUERY_NEXT, {
-        variables: {
-          pageBy: PAGINATION_SIZE,
-          cursor: cursor,
-          blogHandle: BLOG_HANDLE,
-          language,
-        },
-      });
+  // console.log(variables, '++++++++++');
+  const {blog} =  action
+  ? await storefront.query(BLOGS_QUERY_PREV, {
+      variables: {
+        pageBy: PAGINATION_SIZE,
+        cursor: cursor,
+        blogHandle: BLOG_HANDLE,
+        language,
+      },
+    })
+  : await storefront.query(BLOGS_QUERY_NEXT, {
+      variables: {
+        pageBy: PAGINATION_SIZE,
+        cursor: cursor,
+        blogHandle: BLOG_HANDLE,
+        language,
+      },
+    });
 
   if (!blog?.articles) {
     throw new Response('Not found', {status: 404});
@@ -200,20 +201,20 @@ export default function blog() {
                       className="flex flex-col bg-white shadow-lg text-black hover:text-black"
                       style={{maxWidth: '363px'}}
                     >
-                      <div className="flex-1">
+                      <div className="flex-1 ">
                         <img
                           onClick={() => handleShowData(article.node.id)}
                           src={article.image.url}
-                          className="h-full object-cover"
+                          className="h-[250px] w-[100%]"
                           alt={article.title}
                         />
                       </div>
-                      <div className="p-[30px]">
-                        <div className="mt-2 flex-1 text-black text-[22px] font-bold leading-[30px] hover:text-[#2267d8]">
+                      <div className="p-[30px] ">
+                        <div className="mt-2 flex-1 text-black text-[22px] font-bold leading-[30px] hover:text-[#2267d8] line-clamp-2">
                           {article.title}
                         </div>
                         <div
-                          className="collection-descrition text-[18px] leading-[30px]"
+                          className="collection-descrition text-[18px] leading-[30px] line-clamp-5"
                           dangerouslySetInnerHTML={{
                             __html: article.seo.description,
                           }}

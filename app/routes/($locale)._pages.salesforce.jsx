@@ -4,6 +4,18 @@ import SalesforceFormStampImage from '../../assets/Image/salesforce-form-stamp.a
 import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
 import {useEffect, useState} from 'react';
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 
 export default function Salesforce() {
   const [animate, setAnimate] = useState(false);
@@ -382,3 +394,14 @@ export default function Salesforce() {
     </section>
   );
 }
+const Shopify_GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/73125494889"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`

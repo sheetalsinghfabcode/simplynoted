@@ -18,6 +18,7 @@ import CircularLoader from '~/components/CircularLoder';
 import {useStateContext} from '~/context/StateContext';
 import {RiDeleteBin6Line} from 'react-icons/ri';
 import LoginModal from '~/components/modal/LoginModal';
+import {seoPayload} from '~/lib/seo.server';
 
 let storedDataString, storedDataArray;
 
@@ -33,10 +34,12 @@ export async function loader({context, request}) {
   });
   // const formData = new FormData()
   // formData.append("name","ayush")
+  const seo = seoPayload.cart()
   return defer({
     data,
     postalData,
     StripeKey,
+    seo
   });
 }
 

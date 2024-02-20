@@ -2,6 +2,18 @@ import underline from '../../assets/Image/faq-underline.png';
 import robot4 from '../../assets/Image/Robot-4.webp';
 import signup_card from '../../assets/Image/signup-envelopes.webp';
 import DynamicButton from '~/components/DynamicButton';
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 const Partner_signup = () => {
   return (
     <>
@@ -199,3 +211,14 @@ const Partner_signup = () => {
 };
 
 export default Partner_signup;
+const GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/73125462121"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`

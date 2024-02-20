@@ -14,9 +14,10 @@ export function StateContextProvider({children}) {
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [isAccountLoader, setIsAccountLoader] = useState(false);
   const [subscription, setSubscription] = useState(0);
-  const [managePlan,setManagePlan] = useState(false)
-  const [addressBook,setAddressBook] = useState(false)
-
+  const [managePlan, setManagePlan] = useState(false);
+  const [addressBook, setAddressBook] = useState(false);
+  const [showSelectAddress, setShowSelectAddress] = useState(false);
+  const [productshow, setProductShow] = useState(true);
 
 
   const [fullName, setFullName] = useState(() => {
@@ -140,7 +141,11 @@ export function StateContextProvider({children}) {
         managePlan,
         setManagePlan,
         addressBook,
-        setAddressBook
+        setAddressBook,
+        showSelectAddress,
+        setShowSelectAddress,
+        productshow,
+        setProductShow
       }}
     >
       {children}

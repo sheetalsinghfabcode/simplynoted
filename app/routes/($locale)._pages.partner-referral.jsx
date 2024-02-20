@@ -1,4 +1,16 @@
 import underline from '../../assets/Image/faq-underline.png';
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 
 const Partner_referral = () => {
   return (
@@ -165,3 +177,14 @@ const Partner_referral = () => {
 };
 
 export default Partner_referral;
+const GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/73125429353"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`

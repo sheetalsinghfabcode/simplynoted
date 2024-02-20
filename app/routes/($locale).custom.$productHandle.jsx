@@ -46,6 +46,7 @@ import flatCardImg from '../../assets/Image/flatCustomImg.png';
 import CircularLoader from '~/components/CircularLoder';
 import { getApi, postApi } from '~/utils/ApiService';
 import { API_PATH } from '~/utils/Path';
+import { useStateContext } from '~/context/StateContext';
 export async function loader({params, context}) {
   const {productHandle} = params;
   const data = await context.storefront.query(GiftProduct, {
@@ -80,7 +81,7 @@ export default function CustomProducts() {
   const [show, setShow] = useState(
     showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
-  const [productshow, setProductShow] = useState(true);
+  const {productshow, setProductShow} = useStateContext()
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');

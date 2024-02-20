@@ -12,7 +12,18 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay} from 'swiper/modules';
 import DynamicButton from '~/components/DynamicButton';
 import 'swiper/css/autoplay';
-
+import {defer} from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
+export async function loader({request,context}){
+  const {page} = await context.storefront.query(Zapier_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 export default function Zapier() {
   const [animate, setAnimate] = useState(false);
 
@@ -333,3 +344,14 @@ export default function Zapier() {
     </div>
   );
 }
+const Zapier_GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/73125298281"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`
