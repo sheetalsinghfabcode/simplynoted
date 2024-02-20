@@ -155,9 +155,6 @@ function Account({customer, heading, featuredData}) {
   ];
 
 
-  console.log("acountTabName",acountTabName);
-  console.log("activeTab",activeTab);
-
   useEffect(() => {
     if (customer) {
       setIsAccountLoader(false);
