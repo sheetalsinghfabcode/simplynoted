@@ -22,20 +22,8 @@ export function AddCart({
   customFontName,
   variantsVal,
 }) {
-  const {
-    addresses,
-    setAddresses,
-    loadAddress,
-    setLoadAddress,
-    addressForm,
-    setAddressForm,
-    editAddress,
-    setEditAddress,
-    setProductShow,
-    setShowSelectAddress,
-    selectedAddress,
-    setSelectedAddress,
-  } = useStateContext();
+  const {addressForm, setAddressForm, setEditAddress} =
+    useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -167,7 +155,7 @@ export function AddCart({
 
     return matchedVariant;
   };
- 
+
   const handleButtonClick = (option) => {
     setDefaultOption(option);
   };
@@ -344,7 +332,7 @@ export function AddCart({
     signOffLineHeight: cartDataReq?.signOffLineHeight,
     signOffFontSize: cartDataReq?.signOffFontSize,
     isShippidata: show ? show : false,
-    optionalShipDate:cartDataReq?.ship_date
+    optionalShipDate: cartDataReq?.ship_date,
   };
 
   let keyUpdate1 = 'messageData';
@@ -372,9 +360,9 @@ export function AddCart({
   let keyUpdate23 = 'shippingMethodImage';
   let keyUpdate24 = 'isShippidata';
   let keyUpdate25 = 'giftCardId';
-  let keyUpdate26 = "giftCardProdUrl";
-  let keyUpdate27 = "shippingMethodProdUrl"
-  let keyUpdate28 = "optionalShipDate"
+  let keyUpdate26 = 'giftCardProdUrl';
+  let keyUpdate27 = 'shippingMethodProdUrl';
+  let keyUpdate28 = 'optionalShipDate';
 
   console.log(productData, 'product data inside new discounted cards');
 
@@ -461,6 +449,7 @@ export function AddCart({
       localStorage.setItem('mydata', JSON.stringify(storedData));
       localStorage.removeItem('reqFielddInCart');
       navigate('/cart');
+
       setLoader(false);
     } else {
       if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
@@ -524,7 +513,6 @@ export function AddCart({
     }
   }
 
-
   function onClickOFAddCartBtn() {
     if (offPrice > 0) {
       newDiscountedCard();
@@ -573,7 +561,6 @@ export function AddCart({
       )}
 
       <>
-   
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm

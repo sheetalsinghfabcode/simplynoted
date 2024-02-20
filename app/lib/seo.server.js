@@ -35,7 +35,7 @@ function home() {
   return {
     title: 'Home',
     titleTemplate: '%s | SimplyNoted',
-    description: 'The best place to buy snowboarding products',
+    description: 'Simply Noted writes handwritten notes, letters, thank you notes, and cards using robots with real penmanship. Ideal for all businesses.',
     robots: {
       noIndex: false,
       noFollow: false,

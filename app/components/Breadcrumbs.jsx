@@ -7,7 +7,16 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   const [previousPage, setPreviousPage] = useState(null);
   const pathnames = location.pathname.split('/').filter((x) => x);
 
-  const {setShowSelectAddress,setProductShow} = useStateContext();
+  const {setProductShow, setWalletPlan, setWalletPurchase,setWalletPayment, setIsCardTypeSelectionPage} =
+    useStateContext();
+
+  useEffect(() => {
+    setIsCardTypeSelectionPage(true);
+    setProductShow(true);
+    setWalletPlan(false);
+    setWalletPayment(false)
+    setWalletPurchase(false)
+  }, [location.pathname]);
 
   useEffect(() => {
     const prevPage = localStorage.getItem('previousPage');
@@ -17,7 +26,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     localStorage.setItem('previousPage', location.pathname);
   }, [location.pathname]);
 
-  let ab = ['collections', 'pages'];
+  let ab = ['collections', 'pages', 'policies'];
 
   return (
     <div className="breadcrumb inline-block ">
@@ -79,44 +88,47 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
             const isLast = index === pathnames.length - 1;
 
             return (
-              <li
-                onClick={() =>
-                  
-                  {
-                    setProductShow(true)
-                    setShowSelectAddress(false)}
-                  }
-                key={breadcrumbPath}
-                className="inline-flex items-center"
-              >
-                <svg
-                  className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                {isLast && additionalBreadcrumbs ? (
-                  <Link
-                    to={breadcrumbPath}
-                    className="inline-flex whitespace-nowrap items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              <>
+                {!location.pathname.includes('orders') && (
+                  <li
+                    onClick={() => {
+                      setWalletPlan(false);
+                      setIsCardTypeSelectionPage(true);
+                      setProductShow(true);
+                    }}
+                    key={breadcrumbPath}
+                    className="inline-flex items-center"
                   >
-                    {name}
-                  </Link>
-                ) : (
-                  <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
-                    {name}
-                  </span>
+                    <svg
+                      className="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m1 9 4-4-4-4"
+                      />
+                    </svg>
+                    {isLast && additionalBreadcrumbs && !/\d/.test(name) ? (
+                      <Link
+                        to={breadcrumbPath}
+                        className="inline-flex whitespace-nowrap items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                      >
+                        {name}
+                      </Link>
+                    ) : (
+                      <span className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                        {name}
+                      </span>
+                    )}
+                  </li>
                 )}
-              </li>
+              </>
             );
           })}
           {additionalBreadcrumbs &&

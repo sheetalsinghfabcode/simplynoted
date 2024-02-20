@@ -889,16 +889,7 @@ export default function FlatCustomisableCard({
     }));
   };
 
-  const GoBackButton = () => {
-    return (
-      <div
-        className="absolute top-0 left-0 button-tomato text-white  flex justify-center items-center p-[10px] text-[12px] font-semibold cursor-pointer"
-        onClick={() => setIsCardTypeSelectionPage(true)}
-      >
-        <FaArrowLeft /> &nbsp; GO BACK
-      </div>
-    );
-  };
+
 
   return (
     <section>
@@ -1063,9 +1054,7 @@ export default function FlatCustomisableCard({
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "
             style={{minHeight: '564px'}}
           >
-            <div className="lg:min-w-[465px] lg:w-auto md:w-[93%] w-[97%] md:mt-[45px] mt-[63px] ml-[0px]  flex-1 relative">
-              <GoBackButton />
-            </div>
+           
             <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[65px] mt-[4rem]">
               Custom Flat {selectedCardPage}
             </span>

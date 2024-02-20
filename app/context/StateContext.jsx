@@ -16,8 +16,15 @@ export function StateContextProvider({children}) {
   const [subscription, setSubscription] = useState(0);
   const [managePlan, setManagePlan] = useState(false);
   const [addressBook, setAddressBook] = useState(false);
-  const [showSelectAddress, setShowSelectAddress] = useState(false);
   const [productshow, setProductShow] = useState(true);
+  const [accountTabName,setAccountTabName] = useState("")
+  const [activeTab, setActiveTab] = useState(0);
+  const [walletPlan, setWalletPlan] = useState(false);
+  const [isCardTypeSelectionPage, setIsCardTypeSelectionPage] = useState(true);
+  const [walletPurcase, setWalletPurchase] = useState(false);
+  const [walletPayment, setWalletPayment] = useState(false);
+
+
 
 
   const [fullName, setFullName] = useState(() => {
@@ -142,10 +149,20 @@ export function StateContextProvider({children}) {
         setManagePlan,
         addressBook,
         setAddressBook,
-        showSelectAddress,
-        setShowSelectAddress,
         productshow,
-        setProductShow
+        setProductShow,
+        accountTabName,
+        setAccountTabName,
+        activeTab,
+        setActiveTab,
+        walletPlan,
+        setWalletPlan,
+        isCardTypeSelectionPage,
+        setIsCardTypeSelectionPage,
+        walletPurcase,
+        setWalletPurchase,
+        walletPayment,
+        setWalletPayment
       }}
     >
       {children}

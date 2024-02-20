@@ -261,7 +261,6 @@ console.log(editShippingDate,"editShippingDate");
                 selectedFile={selectedFile}
                 setSelectedFile={setSelectedFile}
                 setShowBox={setShowBox}
-                setProductShow={setProductShow}
                 EditMess={EditMess}
                 editEndMess={editEndMess}
                 editFontFamily={editFontFamily}
@@ -304,7 +303,6 @@ console.log(editShippingDate,"editShippingDate");
       ) : (
         <AddCart
           show={show}
-          setProductShow={setProductShow}
           data={data}
           productData={product.variants.nodes[0]}
           editOrderValue={editOrderValue}

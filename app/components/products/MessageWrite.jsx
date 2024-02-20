@@ -37,7 +37,7 @@ export function MessageWriting({
   selectedFile,
   setSelectedFile,
   setShowBox,
-  setProductShow,
+  
   EditMess,
   editEndMess,
   editFontFamily,
@@ -53,7 +53,7 @@ export function MessageWriting({
   editCustomFontFamily,
   editShippingDate,
 }) {
-  const {setAddressForm, addressForm, loadAddress, addresses, setAddresses,setShowSelectAddress} =
+  const {setAddressForm, addressForm, loadAddress, addresses, setAddresses,setProductShow} =
     useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -231,7 +231,6 @@ export function MessageWriting({
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
       setProductShow(false);
-      setShowSelectAddress(true)
       
       window.scrollTo({
         top: 0,
@@ -302,7 +301,6 @@ export function MessageWriting({
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
       setProductShow(false);
-      setShowSelectAddress(true)
       window.scrollTo({
         top: 0,
         behavior: 'smooth', // Make the scroll behavior smooth

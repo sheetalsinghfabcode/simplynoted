@@ -285,7 +285,6 @@ export default function CustomProducts() {
               selectedFile={selectedFile}
               setSelectedFile={setSelectedFile}
               setShowBox={setShowBox}
-              setProductShow={setProductShow}
               EditMess={EditMess}
               editEndMess={editEndMess}
               editFontFamily={editFontFamily}
@@ -317,7 +316,6 @@ export default function CustomProducts() {
       ) : (
         <AddCart
           show={show}
-          setProductShow={setProductShow}
           data={data}
           productData={customProductData.variants.nodes[0]}
           editOrderValue={editOrderValue}
