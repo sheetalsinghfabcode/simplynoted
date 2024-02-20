@@ -101,6 +101,7 @@ export default function App() {
         </head>
         <body>
           <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1475.0.min.js"></script>
+          <script src="https://js.stripe.com/v3/"></script>
           <Layout
             key={`${locale.language}-${locale.country}`}
             layout={data.layout}
