@@ -19,7 +19,6 @@ const CARD_OPTIONS = {
 };
 
 const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
-  // console.log(setPaymentMethodId,'setStripeId',setNewCardAdded);
   const stripe = useStripe();
   const elements = useElements();
 
@@ -34,12 +33,11 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
     if (!error) {
       try {
         const {id} = paymentMethod;
-        debugger
+        debugger;
         if (id) {
           setPaymentMethodId(id);
           AddCreditCard(id);
         }
-        console.log(id, 'stripeID');
       } catch (error) {
         console.error(error, 'stripe error');
       }

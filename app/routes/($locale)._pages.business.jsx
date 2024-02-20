@@ -74,7 +74,6 @@ const Business = () => {
 
       const response = await fetch(url, options);
       if (response.ok) {
-        console.log('Form Data sent successfully');
         setFormData({
           first_name: '',
           last_name: '',

@@ -789,7 +789,7 @@ const PricingContent = ({props}) => {
   return (
     <div className="w-64 bg-wheat p-6 shadow-xl">
       {props.map((item) => (
-        <div className="mb-3 space-y-3 ">
+        <div key={item.id} className="mb-3 space-y-3 ">
           <Link
             to={item.to}
             className="block text-sm hover:underline font-[400]"

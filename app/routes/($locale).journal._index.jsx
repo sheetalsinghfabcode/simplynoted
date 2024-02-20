@@ -25,8 +25,6 @@ export const loader = async ({request, context: {storefront}}) => {
   // const variables = getPaginationVariables(request, {
   //   pageBy: 4,
   // });
-  console.log(cursor, action, '------------');
-  // console.log("variables",variables);
   const {blog} = action
     ? await storefront.query(BLOGS_QUERY_PREV, {
         variables: {
@@ -44,7 +42,6 @@ export const loader = async ({request, context: {storefront}}) => {
           language,
         },
       });
-  console.log('blog@@@@', blog);
   if (!blog?.articles) {
     throw new Response('Not found', {status: 404});
   }
@@ -67,7 +64,6 @@ export const loader = async ({request, context: {storefront}}) => {
 };
 
 export default function Journals() {
-  // console.log('Hiiii');
   const {articles, blog, pageInfo} = useLoaderData();
   const [endCursor, setEndCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(false);
@@ -101,7 +97,6 @@ export default function Journals() {
     setStartCursor(fetcher.data.pageInfo.startCursor);
     setJournalArticles(fetcher.data.articles);
   }, [fetcher.data]);
-  // console.log(blog, 'articles');
   return (
     <>
       {/* <PageHeader heading={BLOG_HANDLE} /> */}
@@ -140,7 +135,6 @@ export default function Journals() {
 }
 
 function ArticleCard({blogHandle, article, loading}) {
-  // console.log(article, 'article');
   return (
     <li key={article.id}>
       <Link to={`/journal/${blogHandle}/${article.handle}`}>

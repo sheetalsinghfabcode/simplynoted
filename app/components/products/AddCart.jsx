@@ -35,7 +35,6 @@ export function AddCart({
     selectedAddress,
     setSelectedAddress,
   } = useStateContext();
-console.log("Gift cards data",data);
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -60,7 +59,9 @@ console.log("Gift cards data",data);
   const [cardName, setCardName] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardName : '',
   );
-  const [giftCardUrl,setGiftCardUrl] = useState(editOrderValue?.data ? editOrderValue.data.giftCardProdUrl : '')
+  const [giftCardUrl, setGiftCardUrl] = useState(
+    editOrderValue?.data ? editOrderValue.data.giftCardProdUrl : '',
+  );
   const [cardImg, setCardImg] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardImg : '',
   );
@@ -110,11 +111,11 @@ console.log("Gift cards data",data);
 
   const [defaultOption, setDefaultOption] = useState(null);
   const [variantID, setVariantID] = useState('');
-  const [apiVariantID, setApiVariantID] = useState('')
-  const [isInitialRender,setIsInitialRender] = useState(true)
-const [finalPrice,setFinalPrice] = useState('')
+  const [apiVariantID, setApiVariantID] = useState('');
+  const [isInitialRender, setIsInitialRender] = useState(true);
+  const [finalPrice, setFinalPrice] = useState('');
   useEffect(() => {
-    setIsInitialRender(false)
+    setIsInitialRender(false);
     let selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
@@ -135,16 +136,12 @@ const [finalPrice,setFinalPrice] = useState('')
       const targetValue = cartDataReq?.csvFileLen;
       const matchedVariant = findMatchingVariant(variants, targetValue);
       if (matchedVariant) {
-        console.log('Matched Variant:', matchedVariant);
         setVariantID(matchedVariant);
         if (discountedCount > 0) {
-        setUpdatedPrice( (
-          finalPrice -
-          (finalPrice * discountedCount) / 100
-        ).toFixed(2))
+          setUpdatedPrice(
+            (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
+          );
         }
-      } else {
-        console.log('No matching variant found.');
       }
     }
   }, []);
@@ -155,9 +152,8 @@ const [finalPrice,setFinalPrice] = useState('')
       const quantityRange = variant.title;
       let lastValue = parseInt(quantityRange.split(' -')[1]);
       if (!isNaN(lastValue) && lastValue >= targetValue) {
-  
         matchedVariant = variant.id;
-        setFinalPrice(variant.price.amount)
+        setFinalPrice(variant.price.amount);
         break; // Exit the loop when a match is found
       } else if (quantityRange.includes('+')) {
         lastValue = parseInt(quantityRange.split('+')[0]);
@@ -170,7 +166,7 @@ const [finalPrice,setFinalPrice] = useState('')
 
     return matchedVariant;
   };
-console.log(finalPrice,"finalllllll********");
+ 
   const handleButtonClick = (option) => {
     setDefaultOption(option);
   };
@@ -275,9 +271,8 @@ console.log(finalPrice,"finalllllll********");
     let selCardName = data.collection.products.edges[item].node;
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
-    setGiftCardUrl(selCardName.onlineStoreUrl)
+    setGiftCardUrl(selCardName.onlineStoreUrl);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
-    console.log('arrCardPrice', arrCardPrice);
     setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
 
     let firstPrice = arrCardPrice[0].node.price.amount;
@@ -295,11 +290,9 @@ console.log(finalPrice,"finalllllll********");
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
-    console.log('**********', cartDataReq);
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
     if (discountedCount > 0) {
-      console.log(discountedCount, offPrice, '-------------');
       setUpdatedPrice(
         (
           productData.price.amount -
@@ -311,16 +304,15 @@ console.log(finalPrice,"finalllllll********");
     getRecipient();
     getReturn();
   }, [addressForm]);
-  useEffect(()=>{
-    console.log(isInitialRender,"------");
-    if(!isInitialRender){
-      onClickAddCart()
+  useEffect(() => {
+    if (!isInitialRender) {
+      onClickAddCart();
     }
-  },[apiVariantID])
+  }, [apiVariantID]);
   const navigate = useNavigate();
   let arrOfObj = {
     productTitle: productData.product.title ? productData.product.title : null,
-    variant_id: apiVariantID?apiVariantID:variantID,
+    variant_id: apiVariantID ? apiVariantID : variantID,
     price: offPrice > 0 ? updatedPrice : productData.price.amount,
     productImg: productData.image.url,
     senderAddress: selectedItem2,
@@ -330,7 +322,7 @@ console.log(finalPrice,"finalllllll********");
     giftCardImg: cardImg && stateCheckCart ? cardImg : null,
     giftCardPrice: cardPrice && stateCheckCart ? cardPrice : null,
     giftCardPriceTitle: cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
-    giftCardProdUrl:giftCardUrl && stateCheckCart?giftCardUrl:null,
+    giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
     messageData: MsgText,
     fontFamily: fontFamilyName ? fontFamilyName : 'tarzan',
     productGetUrl: window?.location.pathname,
@@ -342,7 +334,7 @@ console.log(finalPrice,"finalllllll********");
     csvBulkData: cartDataReq?.bulkCsvData,
     shippingData: selectShipMode ? selectShipMode : '',
     shippingMethodImage: selectShipMode ? shippingData.featuredImage.url : '',
-    shippingMethodProdUrl:selectShipMode ? shippingData.onlineStoreUrl:'',
+    shippingMethodProdUrl: selectShipMode ? shippingData.onlineStoreUrl : '',
     locationForShipMethod: formData ? formData : '',
     shippingDataCost: selectShipMode ? selectShipMode.node.price.amount : '',
     fontSizeMsg: cartDataReq?.fontSize,
@@ -394,7 +386,6 @@ console.log(finalPrice,"finalllllll********");
         editOrderValue.index >= 0 &&
         editOrderValue.index < storedData.length
       ) {
-
         storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg
           ? cartDataReq?.msg
           : editOrderValue?.data.messageData;
@@ -472,11 +463,9 @@ console.log(finalPrice,"finalllllll********");
       setLoader(false);
     } else {
       if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
-
         const existingDataString = localStorage.getItem('mydata');
         let existingDataArray = [];
         if (existingDataString) {
-  
           existingDataArray = JSON.parse(existingDataString);
           localStorage.removeItem('mydata');
         }
@@ -488,7 +477,6 @@ console.log(finalPrice,"finalllllll********");
         navigate('/cart');
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
-
         const existingDataString = localStorage.getItem('mydata');
         let existingDataArray = [];
         if (existingDataString) {
@@ -535,20 +523,16 @@ console.log(finalPrice,"finalllllll********");
     }
   }
 
-  console.log('cardName', cardName);
 
-  function onClickOFAddCartBtn(){
-    if(offPrice>0){
-      console.log("have subscription");
-      newDiscountedCard()
-    } else{
-      console.log("do not have subscription");
-      onClickAddCart()
+  function onClickOFAddCartBtn() {
+    if (offPrice > 0) {
+      newDiscountedCard();
+    } else {
+      onClickAddCart();
     }
   }
   async function newDiscountedCard() {
     try {
-
       let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
 
       const res = await fetch(
@@ -570,14 +554,9 @@ console.log(finalPrice,"finalllllll********");
         },
       );
       const json = await res.json();
-      if(json.result){
-
-        setApiVariantID(json.result.product.variants[0].id)
-        console.log(json.result.product.variants[0].id,"json.result.product.variants[0].id");
-
+      if (json.result) {
+        setApiVariantID(json.result.product.variants[0].id);
       }
-
-      console.log('json', json);
     } catch (error) {
       console.log(error, 'error in new discounted adding');
     }

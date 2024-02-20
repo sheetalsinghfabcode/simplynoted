@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await } from '@remix-run/react';
+import React, {useEffect, useState} from 'react';
+import {defer, json, redirect} from '@shopify/remix-oxygen';
+import {useLoaderData, Await} from '@remix-run/react';
 import Modal from 'react-modal';
-import { BsXCircle } from 'react-icons/bs';
-import { ImCross } from "react-icons/im";
-import { useNavigate } from '@remix-run/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import {BsXCircle} from 'react-icons/bs';
+import {ImCross} from 'react-icons/im';
+import {useNavigate} from '@remix-run/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation} from 'swiper';
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
 import DynamicButton from '~/components/DynamicButton';
 // import { RiDeleteBin5Line } from "react-icons/Ri";
-import { HiArrowLongRight } from 'react-icons/hi2';
-import { CheckoutData } from '../components/Checkout';
+import {HiArrowLongRight} from 'react-icons/hi2';
+import {CheckoutData} from '../components/Checkout';
 import DynamicTitle from '../components/Title';
 import CircularLoader from '~/components/CircularLoder';
-import { useStateContext } from '~/context/StateContext';
-import { RiDeleteBin6Line } from "react-icons/ri";
+import {useStateContext} from '~/context/StateContext';
+import {RiDeleteBin6Line} from 'react-icons/ri';
 import LoginModal from '~/components/modal/LoginModal';
 
 let storedDataString, storedDataArray;
 
-export async function loader({ context, request }) {
+export async function loader({context, request}) {
   const StripeKey =
     'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
 
@@ -31,7 +31,6 @@ export async function loader({ context, request }) {
   const postalData = await context.storefront.query(PostalProduct, {
     variants: {},
   });
-  //   console.log(data,'cartData');
   // const formData = new FormData()
   // formData.append("name","ayush")
   return defer({
@@ -42,10 +41,9 @@ export async function loader({ context, request }) {
 }
 
 export default function AddCartFunc() {
-  const { setCartCountVal, customerId } = useStateContext();
+  const {setCartCountVal, customerId} = useStateContext();
 
-  const { data, postalData, StripeKey } = useLoaderData();
-  // console.log(formData,'-----------');
+  const {data, postalData, StripeKey} = useLoaderData();
   const [cartData, setCartData] = useState([]);
   const [updateGift, setUpdateGift] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -53,13 +51,13 @@ export default function AddCartFunc() {
   const [cardPriceVal, setCardPriceVal] = useState([]);
   const [cardPrice, setCardPrice] = useState('');
   const [cardName, setCardName] = useState('');
-  const [giftCardId, setGiftCardId] = useState('')
-  const [giftProdUrl, setGiftProdUrl] = useState('')
+  const [giftCardId, setGiftCardId] = useState('');
+  const [giftProdUrl, setGiftProdUrl] = useState('');
   const [cardVal, setCardVal] = useState('');
   const [cardImg, setCardImage] = useState('');
   const [postTitle, setPostTitle] = useState('');
-  const [postalId, setPostalId] = useState("")
-  const [postalId2, setPostalId2] = useState("")
+  const [postalId, setPostalId] = useState('');
+  const [postalId2, setPostalId2] = useState('');
   const [postTitle2, setPostTitle2] = useState('');
   const [postPrice, setPostPrice] = useState('');
   const [postPrice2, setPostPrice2] = useState('');
@@ -102,28 +100,26 @@ export default function AddCartFunc() {
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
-    let postalID = postalData.product.variants.edges[0].node.id
-    let postalID2 = postalData.product.variants.edges[1].node.id
+    let postalID = postalData.product.variants.edges[0].node.id;
+    let postalID2 = postalData.product.variants.edges[1].node.id;
     let postalrate = postalData.product.variants.edges[0].node.price.amount;
     let postalTit2 = postalData.product.variants.edges[1].node.title;
     let postalrate2 = postalData.product.variants.edges[1].node.price.amount;
     let postalImag = postalData.product.variants.edges[1].node.image;
     setPostTitle(postalTit);
     setPostTitle2(postalTit2);
-    setPostalId(postalID.match(/\d+/g).join(""))
-    setPostalId2(postalID2.match(/\d+/g).join(""))
+    setPostalId(postalID.match(/\d+/g).join(''));
+    setPostalId2(postalID2.match(/\d+/g).join(''));
     setPostPrice(postalrate);
     setPostPrice2(postalrate2);
     setPostImage(postalImag.url);
-    // console.log(typeof (postalrate), '2@@@@@');
   }
   let keyToUpdate1 = 'giftCardName';
   let keyToUpdate2 = 'giftCardImg';
   let keyToUpdate3 = 'giftCardPrice';
-  let keyToUpdate4 = 'giftCardId'
-  let keyToUpdate5 = 'giftCardProdUrl'
+  let keyToUpdate4 = 'giftCardId';
+  let keyToUpdate5 = 'giftCardProdUrl';
   function updateValueInArray(index) {
-    // console.log(index);
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -131,8 +127,8 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate1] = cardName;
       cartData[index][keyToUpdate2] = cardImg;
       cartData[index][keyToUpdate3] = cardPrice;
-      cartData[index][keyToUpdate4] = giftCardId
-      cartData[index][keyToUpdate5] = giftProdUrl
+      cartData[index][keyToUpdate4] = giftCardId;
+      cartData[index][keyToUpdate5] = giftProdUrl;
     }
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
@@ -140,9 +136,6 @@ export default function AddCartFunc() {
   }
   function deleteKeyInArray(index) {
     setUpdateGift(!updateGift);
-
-    // console.log(index);
-
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
       // Delete the key from the object
@@ -172,10 +165,7 @@ export default function AddCartFunc() {
     });
   }
 
-  console.log('postalData', postalData);
-
   function ConfirmDeleteOrder(index) {
-    // console.log(index);
     setDelOrderIndex(index);
     setDeleteModal(true);
   }
@@ -185,8 +175,6 @@ export default function AddCartFunc() {
     // if (index >= 0 && index < cartData.length) {
     // Delete the order
     cartData.splice(index, 1);
-    // console.log(cartData, 'deleteOrder');
-
     // delete cartData[index];
     // }
     localStorage.setItem('mydata', JSON.stringify(cartData));
@@ -197,12 +185,10 @@ export default function AddCartFunc() {
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
     let data = cartData[index];
-    // console.log(data, 'data---');
     let ab = cartData[index].productGetUrl;
-    navigate(`${ab}`, { state: { data: data, index: index } });
+    navigate(`${ab}`, {state: {data: data, index: index}});
   }
   const navigate = useNavigate();
-
 
   const customStyles = {
     overlay: {
@@ -223,9 +209,8 @@ export default function AddCartFunc() {
       border: 'none',
       borderRadius: '8px',
       boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.5)',
-    }
+    },
   };
-
 
   const customStyles2 = {
     overlay: {
@@ -240,13 +225,13 @@ export default function AddCartFunc() {
       maxWidth: '780px',
       width: '90%',
       padding: '30px',
-      
+
       zIndex: '10000',
       background: '#fff6f6',
       border: 'none',
       borderRadius: '8px',
       boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.5)',
-    }
+    },
   };
 
   function continueShopping() {
@@ -257,12 +242,9 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
   async function OpenModalFunc2(item) {
-    
-    console.log(cartData[item],"itemss");
     setIsOpen2(true);
     // setCardVal(item)
     if (cartData[item].csvBulkData.length) {
-      // console.log('bulkAddress');
       setBulkAddress(cartData[item].csvBulkData);
       setMsgFont(cartData[item].fontFamily);
       setMsgFontSize(cartData[item].fontSizeMsg);
@@ -282,21 +264,15 @@ export default function AddCartFunc() {
 
     setCardName(selCardName.title);
     setCardImage(selCardName.featuredImage.url);
-    setGiftProdUrl(selCardName.onlineStoreUrl)
-    // console.log(cardName,'cardName-----');
+    setGiftProdUrl(selCardName.onlineStoreUrl);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
-    // console.log(
-    //   arrCardPrice[0].node.price.amount,
-    //   '---------abababababaababab',
-    // );
     let firstPrice = arrCardPrice[0].node.price.amount;
-    setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(""))
+    setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
     setCardPrice(firstPrice);
     setCardPriceVal(arrCardPrice);
     // await AfterCardSel(ab)
   };
   const priceValFunc = async (item) => {
-    // console.log(item, 'PriceVAl');
     setCardPrice(item);
   };
   function closeModal() {
@@ -326,43 +302,42 @@ export default function AddCartFunc() {
           cartData.giftCardPrice * cartData.csvFileLen +
           ((cartData.shippingData &&
             cartData.shippingData.node?.title ==
-            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-            (cartData.shippingData &&
-              cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards Only') ||
-            (cartData.shippingData &&
-              cartData.shippingData.node?.title ==
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-            (cartData.shippingData &&
-              cartData.shippingData.node?.title ==
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
             ? 0
             : cartData.usCount || cartData.nonUSCount
-              ? postPrice * cartData.usCount + postPrice2 * cartData.nonUSCount
-              : cartData.reciverAddress?.country === 'USA' ||
-                cartData.reciverAddress?.country?.toLowerCase() === '' ||
-                cartData.reciverAddress?.country?.toLowerCase() === ' ' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'u.s.a' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'u.s' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'usa' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'us' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'america' ||
-                cartData.reciverAddress?.country?.toLowerCase() ===
+            ? postPrice * cartData.usCount + postPrice2 * cartData.nonUSCount
+            : cartData.reciverAddress?.country === 'USA' ||
+              cartData.reciverAddress?.country?.toLowerCase() === '' ||
+              cartData.reciverAddress?.country?.toLowerCase() === ' ' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'u.s.a' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'u.s' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'usa' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'us' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'america' ||
+              cartData.reciverAddress?.country?.toLowerCase() ===
                 'united states' ||
-                cartData.reciverAddress?.country?.toLowerCase() ===
+              cartData.reciverAddress?.country?.toLowerCase() ===
                 'united states of america' ||
-                cartData.reciverAddress?.country?.toLowerCase() == undefined
-                ? postPrice * cartData.csvFileLen
-                : postPrice2 * cartData.csvFileLen) +
+              cartData.reciverAddress?.country?.toLowerCase() == undefined
+            ? postPrice * cartData.csvFileLen
+            : postPrice2 * cartData.csvFileLen) +
           (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
       0,
     );
-    // console.log(prices, 'pricesssss');
     setTotalPrize(prices);
   }
 
   return (
-    <div className='global-max-width-handler'>
+    <div className="global-max-width-handler">
       {showCartPage ? (
         <>
           <div className="w-full h-full gap-2 mt-14">
@@ -383,7 +358,7 @@ export default function AddCartFunc() {
                               <div className="lg:max-w-[33%] sm:max-w-[22%] min-w-[80px] md:m-5 sm:m-3 mx-auto w-[50%] sm:mt-[30px] mt-4 rounded-[10px] overflow-hidden">
                                 <img src={item.productImg} alt="" />
                               </div>
-                              <div className="mt-[30px] mt-3 font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
+                              <div className="mt-[30px] font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
                                 <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] text-[22px] font-bold">
                                   {item.productTitle}
                                 </h3>
@@ -395,7 +370,7 @@ export default function AddCartFunc() {
                                   <span className=" text-[black] font-normal inline-flex ml-[10px] md:text-[16px] text-[12px] ">
                                     {' '}
                                     {item.senderAddress.address1}
-                                    <br className='sm:block hidden' />
+                                    <br className="sm:block hidden" />
                                     {item.senderAddress.city},
                                     {item.senderAddress.state}
                                     {item.senderAddress.zip},
@@ -570,15 +545,15 @@ export default function AddCartFunc() {
 
                         {(item.shippingData &&
                           item.shippingData.node?.title ==
-                          'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                          (item.shippingData &&
-                            item.shippingData.node?.title ==
+                            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                        (item.shippingData &&
+                          item.shippingData.node?.title ==
                             'Ship Cards in Bulk - Cards Only') ||
-                          (item.shippingData &&
-                            item.shippingData.node?.title ==
+                        (item.shippingData &&
+                          item.shippingData.node?.title ==
                             'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                          (item.shippingData &&
-                            item.shippingData.node?.title ==
+                        (item.shippingData &&
+                          item.shippingData.node?.title ==
                             'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ? (
                           ''
                         ) : (
@@ -705,25 +680,25 @@ export default function AddCartFunc() {
                             ) : (
                               <>
                                 {item.reciverAddress?.country === 'USA' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   '' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   ' ' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'u.s.a' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'u.s' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'usa' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'us' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'america' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'united states' ||
-                                  item.reciverAddress?.country?.toLowerCase() ===
+                                item.reciverAddress?.country?.toLowerCase() ===
                                   'united states of america' ||
-                                  item.reciverAddress?.country?.toLowerCase() ==
+                                item.reciverAddress?.country?.toLowerCase() ==
                                   undefined ? (
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
@@ -901,14 +876,13 @@ export default function AddCartFunc() {
                           )}
                         <div className="flex w-[100%] flex-wrap ">
                           <div className="md:max-w-[50%] w-[100%] items-center relative flex">
-                            {""}
+                            {''}
                           </div>
 
-                          <div className="lg:max-w-[30%] w-full lg:border-none border-t-[1px] border-[#AAA] relative  md:py-[15px] py-[8px] px-[20px] justify-between flex items-center text-[#1b5299] font-karla text-[20px] font-bold flex  justify-between">
-
-                            <div>  SUBTOTAL: </div>
-                            <div>${' '}
-
+                          <div className="lg:max-w-[30%] w-full lg:border-none border-t-[1px] border-[#AAA] relative  md:py-[15px] py-[8px] px-[20px]  items-center text-[#1b5299] font-karla text-[20px] font-bold flex  justify-between">
+                            <div> SUBTOTAL: </div>
+                            <div>
+                              ${' '}
                               {(
                                 item.price * item.csvFileLen +
                                 item.giftCardPrice * item.csvFileLen +
@@ -917,59 +891,53 @@ export default function AddCartFunc() {
                                   : 0) +
                                 ((item.shippingData &&
                                   item.shippingData.node?.title ==
-                                  'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                                  (item.shippingData &&
-                                    item.shippingData.node?.title ==
+                                    'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                                (item.shippingData &&
+                                  item.shippingData.node?.title ==
                                     'Ship Cards in Bulk - Cards Only') ||
-                                  (item.shippingData &&
-                                    item.shippingData.node?.title ==
+                                (item.shippingData &&
+                                  item.shippingData.node?.title ==
                                     'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                                  (item.shippingData &&
-                                    item.shippingData.node?.title ==
+                                (item.shippingData &&
+                                  item.shippingData.node?.title ==
                                     'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
                                   ? 0
                                   : item.usCount || item.nonUSCount
-                                    ? postPrice * item.usCount +
+                                  ? postPrice * item.usCount +
                                     postPrice2 * item.nonUSCount
-                                    : item.reciverAddress?.country === 'USA' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                  : item.reciverAddress?.country === 'USA' ||
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       '' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       ' ' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'u.s.a' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'u.s' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'usa' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'us' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'america' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'united states' ||
-                                      item.reciverAddress?.country?.toLowerCase() ===
+                                    item.reciverAddress?.country?.toLowerCase() ===
                                       'united states of america' ||
-                                      item.reciverAddress?.country?.toLowerCase() ==
+                                    item.reciverAddress?.country?.toLowerCase() ==
                                       undefined
-                                      ? postPrice * item.csvFileLen
-                                      : postPrice2 * item.csvFileLen)
+                                  ? postPrice * item.csvFileLen
+                                  : postPrice2 * item.csvFileLen)
                               ).toFixed(2)}
                             </div>
-
                           </div>
                           <div className="lg:w-[20%] relative  w-full flex-wrap flex "></div>
                         </div>
                       </div>
-
-
                     ))}
                   {totalPrize && (
                     <div className="w-[90%] bg-[#FFF6F6] m-auto mt-10 mb-10">
-                      <div
-                        className="flex lg:p-3 p-5 flex-wrap justify-evenly lg:gap-0 gap-[15px] border-2 border-[#1b5299]"
-
-                      >
+                      <div className="flex lg:p-3 p-5 flex-wrap justify-evenly lg:gap-0 gap-[15px] border-2 border-[#1b5299]">
                         <div className="lg:w-[25%] md:w-[35%] sm:w-[47%] w-full flex lg:items-center items-end sm:justify-start justify-center">
                           <div className="buttonDiv m-2 sm:text-[14px] font-bold sm:w-[82%] w-[77%]">
                             <button
@@ -978,7 +946,7 @@ export default function AddCartFunc() {
                                 clearCartBtn();
                               }}
                             >
-                              <RiDeleteBin6Line className='text-white text-[20px]' />
+                              <RiDeleteBin6Line className="text-white text-[20px]" />
                               CLEAR SHOPPING CART
                             </button>
                           </div>
@@ -995,7 +963,7 @@ export default function AddCartFunc() {
                             <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
                               <input
                                 type="checkbox"
-                                className='cursor-pointer'
+                                className="cursor-pointer"
                                 onClick={() => setAgree(!agree)}
                                 checked={agree}
                               />
@@ -1049,10 +1017,7 @@ export default function AddCartFunc() {
                     </div>
                   )}
                   <div className="w-[90%] m-auto mt-10 mb-10">
-                    <div
-                      className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%] border-2 border-[#1b5299] rounded"
-
-                    >
+                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%] border-2 border-[#1b5299] rounded">
                       <h3 className="text-[30px] font-bold text-[#1b5299]">
                         NOTE
                       </h3>
@@ -1067,7 +1032,6 @@ export default function AddCartFunc() {
                         rows="10"
                         onChange={(e) => setCartNote(e.target.value)}
                         value={cartNote}
-
                       ></textarea>
                     </div>
                   </div>
@@ -1121,7 +1085,6 @@ export default function AddCartFunc() {
             contentLabel="Example Modal"
             ariaHideApp={false}
           >
-
             <div className="flex justify-center">
               <h2 className="font-bold text-[30px] text-[#333] leading-10  mt-3 text-center">
                 Add a Gift Card
@@ -1133,12 +1096,11 @@ export default function AddCartFunc() {
                   className="transition text-primary "
                 >
                   <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] font-extrabold" />
-
                 </button>
               </div>
             </div>
             <div className="address-data">
-              <div className='flex justify-between md:mt-4 md:flex-row flex-col'>
+              <div className="flex justify-between md:mt-4 md:flex-row flex-col">
                 <div className="md:w-[45%] w-full mr-2 ml-2 ">
                   <div className="col-4 mt-4 font-bold text-[16px]">
                     Select Gift Card:
@@ -1176,7 +1138,11 @@ export default function AddCartFunc() {
                       </select>
                     ) : (
                       // <AfterCardSel />
-                      <select name="" id="" className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10">
+                      <select
+                        name=""
+                        id=""
+                        className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
+                      >
                         <option value="">Price Card</option>
                       </select>
                     )}
@@ -1192,8 +1158,6 @@ export default function AddCartFunc() {
                 </button>
               </div>
             </div>
-
-
           </Modal>
 
           <Modal
@@ -1201,9 +1165,8 @@ export default function AddCartFunc() {
             style={customStyles2}
             className="sm:h-fit h-auto fixed overflow-auto"
             contentLabel="Example Modal"
-           
           >
-            <div className='text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto '>
+            <div className="text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto ">
               {bulkAddress.length ? (
                 <>
                   <div className="absolute top-[35px] right-0  pr-8 sm:block">
@@ -1214,7 +1177,6 @@ export default function AddCartFunc() {
                       <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </button>
                   </div>
-
 
                   {bulkAddress &&
                     bulkAddress.map((item, index) => (
@@ -1227,11 +1189,14 @@ export default function AddCartFunc() {
                           className="mt-[10px]"
                         >
                           <text className=" text-center ">
-                            Recipient:<span className='ml-2 font-normal'> {item['First Name'] || item.firstName},
-                            {item['Last Name'] || item.lastName},
-                            {item['Address'] || item.address1},
-                            {item['City'] || item.city},
-                            {item['State/Province'] || item.state}
+                            Recipient:
+                            <span className="ml-2 font-normal">
+                              {' '}
+                              {item['First Name'] || item.firstName},
+                              {item['Last Name'] || item.lastName},
+                              {item['Address'] || item.address1},
+                              {item['City'] || item.city},
+                              {item['State/Province'] || item.state}
                             </span>
                           </text>
 
@@ -1240,26 +1205,21 @@ export default function AddCartFunc() {
                           </h2>
                           <div className="my-7 mr-5 relative flex justify-between">
                             <div>
-                              <button
-                                onClick={handlePrevClick}
-                              
-                              >
+                              <button onClick={handlePrevClick}>
                                 Previous
                               </button>
                             </div>
                             <div>
-                              <button
-                               
-                                onClick={handleNextClick}
-                              >
-                                Next
-                              </button>
+                              <button onClick={handleNextClick}>Next</button>
                             </div>
                           </div>
                           <div className="w-full items-center bg-[#fff] overflow-auto mt-5  p-[20px] h-auto ">
                             <text
                               className=" w-full"
-                              style={{ fontFamily: msgFont ,fontSize: msgFontSize || '30px'}}
+                              style={{
+                                fontFamily: msgFont,
+                                fontSize: msgFontSize || '30px',
+                              }}
                             >
                               {' '}
                               {item.msgData}
@@ -1267,13 +1227,21 @@ export default function AddCartFunc() {
                             <br />
                             <text
                               className=" text-center w-full ml-10"
-                              style={{ fontFamily: msgFont ,fontSize: msgFontSize || '30px'}}
+                              style={{
+                                fontFamily: msgFont,
+                                fontSize: msgFontSize || '30px',
+                              }}
                             >
                               {msglastText}
                             </text>
                           </div>
-                          <div className='mt-[24px]'>
-                          <text>Font:  <span className="font-normal ml-2">{msgFont}</span> </text>
+                          <div className="mt-[24px]">
+                            <text>
+                              Font:{' '}
+                              <span className="font-normal ml-2">
+                                {msgFont}
+                              </span>{' '}
+                            </text>
                           </div>
                         </div>
                       </div>
@@ -1284,9 +1252,10 @@ export default function AddCartFunc() {
                   <div className="flex">
                     <div className="w-full mt-[10px]">
                       <text className=" text-center ">
-                      Recipient:  <span className="font-normal">{reciverAddress.firstName},
-                        {reciverAddress.address1},{reciverAddress.city},
-                        {reciverAddress.country}
+                        Recipient:{' '}
+                        <span className="font-normal">
+                          {reciverAddress.firstName},{reciverAddress.address1},
+                          {reciverAddress.city},{reciverAddress.country}
                         </span>
                       </text>
                     </div>
@@ -1305,7 +1274,10 @@ export default function AddCartFunc() {
                   <div className="w-full items-center bg-[#fff] h-auto mt-5 overflow-auto p-[20px]">
                     <text
                       className=" w-full"
-                      style={{ fontFamily: msgFont ,fontSize: msgFontSize || '30px'}}
+                      style={{
+                        fontFamily: msgFont,
+                        fontSize: msgFontSize || '30px',
+                      }}
                     >
                       {' '}
                       {msgShow}
@@ -1313,13 +1285,18 @@ export default function AddCartFunc() {
                     <br />
                     <text
                       className="text-center w-full ml-10"
-                      style={{ fontFamily: msgFont ,fontSize: msgFontSize || '30px'}}
+                      style={{
+                        fontFamily: msgFont,
+                        fontSize: msgFontSize || '30px',
+                      }}
                     >
                       {msglastText}
                     </text>
                   </div>
-                  <div className='mt-[24px]'>
-                    <text>Font:  <span className="font-normal ml-2">{msgFont}</span> </text>
+                  <div className="mt-[24px]">
+                    <text>
+                      Font: <span className="font-normal ml-2">{msgFont}</span>{' '}
+                    </text>
                   </div>
                 </>
               )}

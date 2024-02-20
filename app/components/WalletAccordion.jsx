@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import arrowdown from '../../assets/Image/arrow-down.png';
+import { IoIosArrowUp } from "react-icons/io";
 
 function WalletAccordion({title, children, className,  accordion = false}) {
   const [isExpanded, setIsExpanded] = useState(accordion);
@@ -18,19 +18,16 @@ function WalletAccordion({title, children, className,  accordion = false}) {
         <span className="lg:text-[16px] text-[13px] font-karla text-[#001a5f] !font-bold uppercase">
           {title}
         </span>
-        <img
-          className={`w-[12px] h-[12px] transform -translate-y-1/2 transition-transform ${
-            isExpanded ? 'rotate-180' : ''
-          }`}
-          src={arrowdown}
-        />
+        <span className="flex justify-center mr-[20px]">
+        <IoIosArrowUp className={`relative text-[16px] ${ isExpanded ? 'rotate-180' : ''} transition-all`} />
+          </span>
       </div>
       <div
         className={`overflow-hidden  ${
-          isExpanded ? 'max-h-screen transition-max-h duration-800 ease-in-out' : 'transition-max-h max-h-0'
+          isExpanded ? 'max-h-[1000px] transition-max-height' : 'max-h-0'
         }`}
       >
-        <div className="bg-white border-b-2 border-solid border-[#e6edf8] p-[8px] border border-solid border-[#e6edf8]">{children}</div>
+        <div className="bg-white border-b-2 border-solid border-[#e6edf8] p-[8px] border ">{children}</div>
       </div>
     </div>
   );

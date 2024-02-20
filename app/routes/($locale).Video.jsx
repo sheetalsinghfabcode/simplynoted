@@ -38,11 +38,6 @@ export default function tutorials() {
     setActiveButton(buttonType);
   };
 
-  // console.log(
-  //   'blog',
-  //   blog.blog.articles.edges.map((index) => index.node.title),
-  // );
-
   return (
     <div className='global-max-width-handler'>
       <div className="px-5">

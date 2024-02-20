@@ -5,8 +5,13 @@ import {useNavigate} from '@remix-run/react';
 import CircularLoader from '~/components/CircularLoder';
 import DynamicTitle from '~/components/Title';
 import {Link} from '~/components';
-import {Image, Pagination, flattenConnection, getPaginationVariables} from '@shopify/hydrogen';
-import { seoPayload } from '~/lib/seo.server';
+import {
+  Image,
+  Pagination,
+  flattenConnection,
+  getPaginationVariables,
+} from '@shopify/hydrogen';
+import {seoPayload} from '~/lib/seo.server';
 import {json} from '@shopify/remix-oxygen';
 
 const PAGINATION_SIZE = 6;
@@ -18,45 +23,43 @@ export async function loader({request, context: {storefront}}) {
   const searchParams = new URLSearchParams(new URL(request.url).search);
   const cursor = searchParams.get('cursor') ?? undefined;
   const action = searchParams.get('action') === 'prev' ? true : false;
-  // console.log(variables, '++++++++++');
-  const {blog} =  action
-  ? await storefront.query(BLOGS_QUERY_PREV, {
-      variables: {
-        pageBy: PAGINATION_SIZE,
-        cursor: cursor,
-        blogHandle: BLOG_HANDLE,
-        language,
-      },
-    })
-  : await storefront.query(BLOGS_QUERY_NEXT, {
-      variables: {
-        pageBy: PAGINATION_SIZE,
-        cursor: cursor,
-        blogHandle: BLOG_HANDLE,
-        language,
-      },
-    });
-console.log('blog@@@@', blog);
+  const {blog} = action
+    ? await storefront.query(BLOGS_QUERY_PREV, {
+        variables: {
+          pageBy: PAGINATION_SIZE,
+          cursor: cursor,
+          blogHandle: BLOG_HANDLE,
+          language,
+        },
+      })
+    : await storefront.query(BLOGS_QUERY_NEXT, {
+        variables: {
+          pageBy: PAGINATION_SIZE,
+          cursor: cursor,
+          blogHandle: BLOG_HANDLE,
+          language,
+        },
+      });
 
-if (!blog?.articles) {
-  throw new Response('Not found', {status: 404});
-}
+  if (!blog?.articles) {
+    throw new Response('Not found', {status: 404});
+  }
 
-const articles = flattenConnection(blog.articles).map((article) => {
-  const {publishedAt} = article;
-  return {
-    ...article,
-    publishedAt: new Intl.DateTimeFormat(`${language}-${country}`, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(new Date(publishedAt)),
-  };
-});
-const pageInfo = blog.articles.pageInfo;
-const seo = seoPayload.blog({blog, url: request.url});
+  const articles = flattenConnection(blog.articles).map((article) => {
+    const {publishedAt} = article;
+    return {
+      ...article,
+      publishedAt: new Intl.DateTimeFormat(`${language}-${country}`, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }).format(new Date(publishedAt)),
+    };
+  });
+  const pageInfo = blog.articles.pageInfo;
+  const seo = seoPayload.blog({blog, url: request.url});
 
-return json({articles, seo, blog, pageInfo});
+  return json({articles, seo, blog, pageInfo});
 }
 
 export default function blog() {
@@ -71,18 +74,14 @@ export default function blog() {
   const onNextPage = () => {
     if (hasNextPage) {
       fetcher.load(`${isLocation.pathname}?cursor=${endCursor}&action=next`);
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }
-
   };
   const onPrevPage = () => {
     if (hasPreviousPage) {
       fetcher.load(`${isLocation.pathname}?cursor=${startCursor}&action=prev`);
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }
-
   };
   useEffect(() => {
     setEndCursor(pageInfo.endCursor);
@@ -98,18 +97,18 @@ export default function blog() {
     setHasPreviousPage(fetcher.data.pageInfo.hasPreviousPage);
     setStartCursor(fetcher.data.pageInfo.startCursor);
     setJournalArticles(fetcher.data.articles);
-  }, [fetcher.data]);  
-  console.log(blog, 'blog');
+  }, [fetcher.data]);
   const [activeButton, setActiveButton] = useState('articles');
   const [searchQuery, setSearchQuery] = useState('');
   const [loader, setLoader] = useState(false);
   const [selectedArticleId, setSelectedArticleId] = useState(null);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
-console.log(journalArticles,'+++++++++++++');
-  const filteredArticles = journalArticles && journalArticles.filter((article) =>
-    article.title.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  const filteredArticles =
+    journalArticles &&
+    journalArticles.filter((article) =>
+      article.title.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -142,7 +141,7 @@ console.log(journalArticles,'+++++++++++++');
   };
 
   return (
-    <div className='global-max-width-handler'>
+    <div className="global-max-width-handler">
       <div className="px-5">
         <DynamicTitle
           // dynamicButton

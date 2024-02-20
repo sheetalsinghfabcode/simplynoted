@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { defer } from '@remix-run/server-runtime';
-import { useLoaderData } from '@remix-run/react';
+import React, {useEffect, useState} from 'react';
+import {defer} from '@remix-run/server-runtime';
+import {useLoaderData} from '@remix-run/react';
 
-export async function loader({ context }) {
+export async function loader({context}) {
   const blogDetail = await context.storefront.query(BlogDataDetail, {
     variants: {},
   });
@@ -12,8 +12,8 @@ export async function loader({ context }) {
   });
 }
 
-const BlogDetail = ({ filteredArticles }) => {
-  const { BlogDetail } = useLoaderData();
+const BlogDetail = ({filteredArticles}) => {
+  const {BlogDetail} = useLoaderData();
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
@@ -21,8 +21,6 @@ const BlogDetail = ({ filteredArticles }) => {
       setLoader(false);
     }
   }, [filteredArticles.articles.edges]);
-
-  console.log(filteredArticles, 'blogDetail');
 
   return (
     <div>
@@ -33,7 +31,7 @@ const BlogDetail = ({ filteredArticles }) => {
             {/* Render your article content here */}
             <h2>{article.node.title}</h2>
             <img src={article.node.image.url} alt={article.node.title} />
-            <div dangerouslySetInnerHTML={{ __html: article.node.contentHtml }} />
+            <div dangerouslySetInnerHTML={{__html: article.node.contentHtml}} />
           </div>
         ))
       ) : (

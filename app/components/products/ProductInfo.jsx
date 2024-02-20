@@ -29,7 +29,6 @@ export function ProductInfo({
   setCustomFontName,
   editCustomFontFamily,
 }) {
-  console.log(product, 'product data ');
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
@@ -57,7 +56,6 @@ export function ProductInfo({
         `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
       );
       const json = await res.json();
-      // console.log(json.data);
       setCustomFonts(json.data);
     } catch (error) {
       console.error(error, 'customfontError');
@@ -81,7 +79,6 @@ export function ProductInfo({
   }, [show]);
 
   function getCustomFont(val) {
-    // console.log(val, 'getcustom val');
     setFontFamily(val);
     setCustomFontVal(val);
     setStandardFontVal('Select Standard Font');
