@@ -331,15 +331,7 @@ const Accordion = ({
 
   return (
     <div className="w-full  relative max-w-[1440px] mt-[24px] mx-auto px-[24px]">
-      <DynamicButton
-        className="bg-[#EF6E6E]  w-full max-w-[150px]"
-        text="Go Back"
-        backArrow={true}
-        onClickFunction={() => {
-          setWalletPurchase(true);
-          setWalletPayment(false);
-        }}
-      />
+   
       {paymentLoader && (
         <div className="absolute z-[50] top-[50%] left-[50%]">
           <CircularLoader

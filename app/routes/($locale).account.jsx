@@ -130,33 +130,19 @@ export default function Authenticated() {
 }
 
 function Account({customer, heading, featuredData}) {
-
-
-
   const orders = flattenConnection(customer.orders);
   const addresses = flattenConnection(customer.addresses);
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {
-    orderHistory,
-    setOrderHistory,
-    setCustomerId,
-    setIsAccountLoader,
-    managePlan,
-    setManagePlan,
-    addressBook,
-    setAddressBook,
-  } = useStateContext();
+  const {orderHistory, setCustomerId, setIsAccountLoader, acountTabName, setAccountTabName,activeTab,setActiveTab} =
+    useStateContext();
   const [accountDetail, setAccountDetail] = useState(
     !orderHistory ? true : false,
   );
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
 
-  const [activeTab, setActiveTab] = useState(0);
-
-  let customerFullName ;
 
   const tabs = [
     'General',
@@ -167,6 +153,10 @@ function Account({customer, heading, featuredData}) {
     'Affiliate Program',
     'Edit Profile',
   ];
+
+
+  console.log("acountTabName",acountTabName);
+  console.log("activeTab",activeTab);
 
   useEffect(() => {
     if (customer) {
@@ -284,7 +274,10 @@ function Account({customer, heading, featuredData}) {
                     ) : (
                       <span
                         onClick={() => {
-                          setActiveTab(i);
+                          {
+                            setAccountTabName(tab);
+                            setActiveTab(i);
+                          }
                         }}
                         className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
                           activeTab === i
@@ -332,7 +325,12 @@ function Account({customer, heading, featuredData}) {
                   buttonText="Send Now"
                   showDownloadButton={true}
                   downloadButtonText="Download Bulk Template"
-                  onDownload={() => window.open("https://api.simplynoted.com/docs/bulk-template", '_self')}
+                  onDownload={() =>
+                    window.open(
+                      'https://api.simplynoted.com/docs/bulk-template',
+                      '_self',
+                    )
+                  }
                 />
 
                 <CardComponent
@@ -340,16 +338,14 @@ function Account({customer, heading, featuredData}) {
                   title="Custom Order"
                   description="Tailored to yours Needs: Custom Orders Welcome!"
                   buttonText="Get Started"
-                  onClick={()=>navigate("/customise-your-card")}
-
-
+                  onClick={() => navigate('/customise-your-card')}
                 />
                 <CardComponent
                   imgSrc={automate}
                   title="Automate"
                   description="Automate your campaigns with our API or Zapier App"
                   buttonText="Get Started"
-                  onClick={()=>navigate("/zapier-integration")}
+                  onClick={() => navigate('/zapier-integration')}
                   showDownloadButton={true}
                   downloadButtonText="Generate API Key"
                 />
@@ -359,8 +355,12 @@ function Account({customer, heading, featuredData}) {
                   description="Need Help? Schedule a call with Us Today!"
                   buttonText="Get Started"
                   showBorder={false}
-                  onClick={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
-                  onDownload={() => window.open("https://meetings.hubspot.com/rick24", '_blank')}
+                  onClick={() =>
+                    window.open('https://meetings.hubspot.com/rick24', '_blank')
+                  }
+                  onDownload={() =>
+                    window.open('https://meetings.hubspot.com/rick24', '_blank')
+                  }
                   showDownloadButton={true}
                   downloadButtonText="See Tutorials"
                 />
@@ -393,10 +393,10 @@ function Account({customer, heading, featuredData}) {
 function AccountOrderHistory({orders}) {
   return (
     <div class="mt-6 custom-scrollbar">
-  <div class="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
-    {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
-  </div>
-</div>
+      <div class="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
+        {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
+      </div>
+    </div>
   );
 }
 

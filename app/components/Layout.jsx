@@ -103,11 +103,14 @@ function Header({title, menu}) {
     localStorage.removeItem('previousPage');
   }, []);
 
-
-  const {showSelectAddress} = useStateContext();
-
-  console.log("showSelectAddress",showSelectAddress);
-
+  const {
+    productshow,
+    accountTabName,
+    walletPlan,
+    isCardTypeSelectionPage,
+    walletPurchase,
+    walletPayment,
+  } = useStateContext();
 
 
   return (
@@ -126,13 +129,6 @@ function Header({title, menu}) {
         menu={menu}
         openCart={openCart}
       />
-      <div className="px-[16px] md:px-[40x] lg:px-[80px] ">
-        {pathname.pathname !== '/' && pathname.pathname !== '/cart' && (
-          <Breadcrumbs
-          additionalBreadcrumbs={ showSelectAddress ? ['Select Address'] : [] }
-          />
-        )}
-      </div>
 
       <MobileHeader
         isHome={isHome}
@@ -148,6 +144,27 @@ function Header({title, menu}) {
         openCart={openCart}
         openMenu={openMenu}
       />
+      <div className="global-max-width-handler !m-0 ">
+        {pathname.pathname !== '/' &&
+          pathname.pathname !== '/cart' &&
+          pathname.pathname !== '/account/login' &&
+          pathname.pathname !== '/account/register' && (
+            <Breadcrumbs
+              additionalBreadcrumbs={
+                !productshow
+                  ? ['Select Address']
+                  : pathname.pathname.includes('/account')
+                  ? [accountTabName]
+                  : !isCardTypeSelectionPage &&
+                    pathname.pathname === '/customise-your-card'
+                  ? ['Create Custom Card']
+                  : walletPlan
+                  ? ['Wallet Table']
+                  : null
+              }
+            />
+          )}
+      </div>
     </>
   );
 }
@@ -482,7 +499,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
       }}
       className={`${
         isHome ? '' : ''
-      } global-max-width-handler flex lg:hidden items-center h-nav relative z-20 backdrop-blur-lg top-0 justify-between w-full bg-white leading-none gap-4`}
+      } global-max-width-handler pb-[40px] sm:pb-[30px] flex lg:hidden items-center h-nav relative z-20 backdrop-blur-lg top-0 justify-between w-full bg-white leading-none gap-4`}
     >
       <div className="flex items-center justify-start h-full w-full gap-4 ">
         <Link
@@ -573,18 +590,8 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 }
 
 function DesktopHeader({isHome, menu}) {
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const [isInitialRender, setIsInitialRender] = useState(true);
 
-  const handleDropdownEnter = (dropdownId) => {
-    setActiveDropdown(dropdownId);
-  };
-  const handleDropdownLeave = () => {
-    setActiveDropdown(null);
-  };
-  const handleItemClick = () => {
-    setActiveDropdown(null);
-  };
   const stateContext = useStateContext() || {
     cartCountVal: 0,
     setCartCountVal: () => {},
@@ -600,13 +607,15 @@ function DesktopHeader({isHome, menu}) {
     isAccountLoader,
     setIsAccountLoader,
     loginModal,
+    setWalletPlan,
+    setWalletPayment,
+    setWalletPurchase,
     setLoginModal,
   } = stateContext;
 
   const navigate = useNavigate();
   const pathname = useLocation();
 
-  console.log('pathname', pathname);
 
   useEffect(() => {
     setIsInitialRender(false);
@@ -663,6 +672,11 @@ function DesktopHeader({isHome, menu}) {
           {(menu?.items || []).map((item) => {
             return (
               <div
+              onClick={() =>{
+                setWalletPayment(false)
+                setWalletPlan(false)
+                setWalletPurchase(false)
+              }}
                 key={item.id}
                 prefetch="intent"
                 className={`${({isActive}) =>

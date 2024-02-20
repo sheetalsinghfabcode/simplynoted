@@ -16,9 +16,8 @@ function our100guarntee() {
     <div className='global-max-width-handler'>
       <div className="ml-[50px]">
         <DynamicTitle
-          dynamicButton
           title="OUR 100% SATISFACTION GUARANTEE"
-          className={'mt-[20px]  !text-[18px]'}
+          className={'!text-[18px]'}
         />
         <div className="flex justify-center md:w-full mx-auto ">
           <div className="sm: text-[12px]">

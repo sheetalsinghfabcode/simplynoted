@@ -7,6 +7,7 @@ import FlatCustomisableCard from '~/components/customisable-cards/FlatCustomisab
 import FoldedCustomisableCard from '~/components/customisable-cards/FoldedCustomisableCard';
 import ShopifyCustomCardProductDetails from '~/components/customisable-cards/ShopifyCustomCardProductDetails';
 import { seoPayload } from '~/lib/seo.server';
+import { useStateContext } from '~/context/StateContext';
 
 export async function loader({context,request}) {
   const customisableCardProductQuery = `#graphql
@@ -59,7 +60,7 @@ export default function customisableCard() {
   const {shopifyCustomisableCardProduct} = useLoaderData();
   const [customerId, setCustomerId] = useState(null);
   const [isFlatCardType, setIsFlatCardType] = useState(true);
-  const [isCardTypeSelectionPage, setIsCardTypeSelectionPage] = useState(true);
+  const {isCardTypeSelectionPage, setIsCardTypeSelectionPage} = useStateContext();
   // To get rid of the modal glitch for split seconds on initial render.
   const [isInitialRender, setIsInitialRender] = useState(true);
 

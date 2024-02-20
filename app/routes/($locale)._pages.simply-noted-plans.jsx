@@ -34,9 +34,6 @@ export default function SimplyNoted() {
   );
 
   const [stripeCollection, setStripeCollection] = useState([]);
-  const [walletPlan, setWalletPlan] = useState(false);
-  const [walletPurcase, setWalletPurchase] = useState(false);
-  const [walletPayment, setWalletPayment] = useState(false);
   const [finalPrice, setFinalPrice] = useState(null);
   const [loader, setloader] = useState(true);
 
@@ -55,6 +52,12 @@ export default function SimplyNoted() {
     setSubscriptionPriceId,
     subscriptionTitle,
     setSubscriptionTitle,
+    walletPlan,
+    setWalletPlan,
+    walletPurcase,
+    setWalletPurchase,
+    walletPayment,
+    setWalletPayment
   } = useStateContext();
 
   const navigate = useNavigate();
