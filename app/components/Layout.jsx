@@ -574,6 +574,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
 
 function DesktopHeader({isHome, menu}) {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   const handleDropdownEnter = (dropdownId) => {
     setActiveDropdown(dropdownId);
@@ -595,7 +596,7 @@ function DesktopHeader({isHome, menu}) {
     setCartCountVal,
     customerId,
     setCustomerId,
-    isInitialRender,
+    // isInitialRender,
     isAccountLoader,
     setIsAccountLoader,
     loginModal,
@@ -608,6 +609,7 @@ function DesktopHeader({isHome, menu}) {
   console.log('pathname', pathname);
 
   useEffect(() => {
+    setIsInitialRender(false);
     let calculatedCartCount = localStorage.getItem('mydata')
       ? JSON.parse(localStorage.getItem('mydata'))
       : [];

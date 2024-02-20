@@ -23,7 +23,7 @@ const Accordion = ({
   subscriptionPriceId,
   stripePayments,
 }) => {
-  const stripe = loadStripe(StripeKey);
+  const stripe = Stripe(StripeKey);
   const [isBillingOpen, setIsBillingOpen] = useState(true);
   const [isCardInfoOpen, setIsCardInfoOpen] = useState(false);
   const [loader, setloader] = useState(false);
@@ -99,7 +99,7 @@ const Accordion = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -123,7 +123,7 @@ const Accordion = ({
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -207,7 +207,7 @@ const Accordion = ({
       const payLoad = {
         subscriptionPriceId: subscriptionPriceId,
         subscriptionName: subscriptionTitle,
-      };
+      }; 
 
       const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
@@ -220,8 +220,15 @@ const Accordion = ({
       });
 
       const data = await response.json();
-      if (data) {
-        id, data;
+      
+      if (data.redirectUrl) {
+        setloader(false)
+        setPaymentLoader(false)
+        const result =await stripe.confirmCardPayment(data.client_secret)
+        console.log(result,"stripe result");
+      if(result?.error){
+        console.log("error in payment purchase");
+      }
       }
       // Handle the response data here
     } catch (error) {
@@ -241,7 +248,7 @@ const Accordion = ({
       subscriptionProduct: variantId,
     };
 
-    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
@@ -285,7 +292,7 @@ const Accordion = ({
       subscriptionStatus: data.status,
     };
 
-    const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',

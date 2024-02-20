@@ -534,6 +534,7 @@ export function AddCart({
   }
   async function newDiscountedCard() {
     try {
+      setLoader(true)
       let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
 
       const res = await fetch(
@@ -557,6 +558,7 @@ export function AddCart({
       const json = await res.json();
       if (json.result) {
         setApiVariantID(json.result.product.variants[0].id);
+        setLoader(false)
       }
     } catch (error) {
       console.log(error, 'error in new discounted adding');
@@ -749,7 +751,7 @@ export function AddCart({
                       <div className="col-4 mt-4 font-bold ">
                         Select Gift Card:
                       </div>
-                      <div className="col-8 mt-3 pr-0 w-[60%]">
+                      <div className="col-8 mt-3 pr-0 w-[60%] border-b-[1px] border-[#e8e1e1]">
                         <select
                           className="w-full font-karla font-normal text-black border-none"
                           onChange={(e) => cardvalFunc(e.target.value)}
@@ -773,7 +775,7 @@ export function AddCart({
                       <div className="col-4 mt-4 font-bold ">
                         Select Gift Price:
                       </div>
-                      <div className="col-8 mt-3 pr-0 w-[60%]">
+                      <div className="col-8 mt-3 pr-0 w-[60%] border-b-[1px] border-[#e8e1e1]">
                         {cardPrice ? (
                           // <div>heelooo</div>
                           <select

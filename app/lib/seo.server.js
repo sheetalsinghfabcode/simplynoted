@@ -298,7 +298,6 @@ function policy({policy, url}) {
 }
 
 function policies({policies, url}) {
-  console.log(policies);
   const origin = new URL(url).origin;
   const itemListElement = policies.filter(Boolean).map((policy, index) => {
     return {
@@ -341,7 +340,6 @@ function cart() {
   };
 }
 function Create_Custom({product,url}){
-  console.log(product,"create");
   return {
     description: truncate(product?.seo?.description || ''),
     title: product?.title ?? product?.title,
