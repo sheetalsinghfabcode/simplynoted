@@ -1,8 +1,8 @@
 import React from 'react';
 import CardKiller from '../../../assets/Image/Card_Keller_kwlegacy.webp';
 import LogoSimplinoted from '../../../assets/Image/Your_Logo_simplinoted.webp';
+import WorkingRobots from '../../../assets/Video/working-robots.webm';
 import thankyou from '../../../assets/Image/thankyou.png';
-import {Button} from '../Button';
 import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import {TypeAnimation} from 'react-type-animation';
@@ -11,7 +11,7 @@ export default function Home({contentfulBanner}) {
   const Navigate = useNavigate();
   return (
     <div className="sm-only:mt-[35px]">
-      <div className="flex flex-col tab:flex-row justify-center tab:justify-between items-center gap-[25px]">
+      <div className="flex flex-col tab:flex-row justify-center tab:justify-between items-center gap-[25px] overflow-hidden">
         {/* LEFT IMAGE  */}
         <div>
           <img
@@ -21,7 +21,7 @@ export default function Home({contentfulBanner}) {
           />
         </div>
         {/* MIDDLE SECTION  */}
-        <div className="flex flex-col flex-wrap justify-center items-center text-[34px] max-w-[75vw] gap-5">
+        <div className="flex flex-col flex-wrap justify-center items-center text-[34px] 2xl:text-[38px] max-w-[75vw] gap-5">
           <span className="text-center leading-[45px] font-bold text-[#001a5f]">
             Send Real Handwritten Notes to your
           </span>
@@ -44,6 +44,14 @@ export default function Home({contentfulBanner}) {
             />
           </div>
           <div className="flex flex-col mt-[20px]">
+            <div className="flex flex-col justify-center tab:flex-row text-[15px] font-normal leading-[25px] -tracking-[0.65px] text-center mb-[10px]">
+              <span className="whitespace-nowrap">
+                Send real handwritten notes, at scale.
+              </span>
+              <span className="font-bold whitespace-nowrap">
+                &nbsp; Go Unlimited, Only $0.97
+              </span>
+            </div>
             <div className="flex flex-col md:flex-row">
               <DynamicButton
                 text="START WRITTING!"
@@ -61,14 +69,6 @@ export default function Home({contentfulBanner}) {
                   )
                 }
               />
-            </div>
-            <div className="flex flex-col justify-center tab:flex-row text-[15px] font-normal leading-[25px] -tracking-[0.65px] text-center mt-[10px]">
-              <span className="whitespace-nowrap">
-                Send real handwritten notes, at scale.
-              </span>
-              <span className="font-bold whitespace-nowrap">
-                &nbsp; Go Unlimited, Only $0.97
-              </span>
             </div>
           </div>
         </div>
@@ -88,10 +88,7 @@ export default function Home({contentfulBanner}) {
       </div>
 
       <video className="mt-[10px]" autoPlay loop muted>
-        <source
-          src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/robots.webm?v=1650939452"
-          type="video/webm"
-        ></source>
+        <source src={WorkingRobots} type="video/webm"></source>
       </video>
     </div>
   );
