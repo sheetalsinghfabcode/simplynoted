@@ -896,7 +896,7 @@ export function CheckoutData({
                             className="block text-gray-700 text-sm font-bold mb-2"
                             htmlFor="country"
                           >
-                            Country
+                            State
                           </label>
                           <select
                             onChange={(e) => handleChange(e)}

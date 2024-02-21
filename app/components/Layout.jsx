@@ -738,7 +738,7 @@ function DesktopHeader({isHome, menu}) {
             )}
           </div>
           {isInitialRender || isAccountLoader ? (
-            <div className="h-6 w-6 lg:min-w-[110px]">
+            <div className="h-6 w-6 lg:min-w-[88.3px]">
               <CircularLoader color="#ef6e6e" height="20px" width="20px" />
             </div>
           ) : (

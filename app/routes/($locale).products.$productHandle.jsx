@@ -41,7 +41,7 @@ import {AddCart} from '~/components/products/AddCart';
 import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
 import Breadcrumbs from '~/components/Breadcrumbs';
-import { useStateContext } from '~/context/StateContext';
+import {useStateContext} from '~/context/StateContext';
 
 export const headers = routeHeaders;
 
@@ -155,15 +155,15 @@ export default function Product() {
   let editLineHeight = datafornav.state?.data.lineHeight;
   let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
   let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
-  let editShippingDate = datafornav.state?.data.optionalShipDate
-console.log(editShippingDate,"editShippingDate");
+  let editShippingDate = datafornav.state?.data.optionalShipDate;
+  console.log(editShippingDate, 'editShippingDate');
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const [show, setShow] = useState(
     showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
-  
-  const {productshow,setProductShow} = useStateContext()
+
+  const {productshow, setProductShow} = useStateContext();
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
@@ -228,7 +228,11 @@ console.log(editShippingDate,"editShippingDate");
     <>
       {productshow ? (
         <>
-          <Section className="w-full mt-[20px] !p-0">
+          <Section
+            className={`w-full mt-[20px] !p-0 ${
+              show ? '!max-h-[1365px]' : '!max-h-[1135px]'
+            }`}
+          >
             {/* <DynamicButton
             className="bg-[#EF6E6E] w-full max-w-[150px]"
             text="Go Back"
