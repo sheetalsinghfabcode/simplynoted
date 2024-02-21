@@ -71,7 +71,7 @@ export default function SimplyNoted() {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)

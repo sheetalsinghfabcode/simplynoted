@@ -92,7 +92,7 @@ function Instruction({
           <div className="bg-white mt-20 text-black rounded-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full table-auto border-collapse">
-                  <thead className="bg-blue-800 text-white">
+                  <thead className="bg-blue-800 text-black">
                     <tr className="text-left bg-gray-200">
                       <th className="border border-solid border-black py-2 px-4 font-bold">
                         Field Name

@@ -101,7 +101,7 @@ export default function Authenticated() {
   const matches = useMatches();
 
   // routes that export handle { renderInModal: true }
-  const renderOutletInModal = matches.some((match) => {
+  const renderOutletInModal = matches?.some((match) => {
     return match?.handle?.renderInModal;
   });
 

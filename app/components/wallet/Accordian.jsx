@@ -64,6 +64,9 @@ const Accordion = ({
     paymentMethodId: '',
   });
 
+
+  console.log("stripePayments",stripePayments);
+
   async function createCustomerId(id) {
     try {
       setloader(true);

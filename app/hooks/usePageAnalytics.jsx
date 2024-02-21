@@ -9,7 +9,7 @@ export function usePageAnalytics({hasUserConsent}) {
   return useMemo(() => {
     const data = {};
 
-    matches.forEach((event) => {
+    matches?.forEach((event) => {
       const eventData = event?.data;
       if (eventData) {
         eventData['analytics'] && Object.assign(data, eventData['analytics']);

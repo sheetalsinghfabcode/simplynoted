@@ -144,7 +144,7 @@ function Header({title, menu}) {
         openCart={openCart}
         openMenu={openMenu}
       />
-      <div className="global-max-width-handler !m-0 ">
+      <div className="global-max-width-handler !my-0 w-full !pt-[40px] sm:!pt-[20px] md:!pt-0 ">
         {pathname.pathname !== '/' &&
           pathname.pathname !== '/cart' &&
           pathname.pathname !== '/account/login' &&
@@ -644,7 +644,7 @@ function DesktopHeader({isHome, menu}) {
             : 'text-primary'
         } ${
           !isHome && y > 50 ? 'shadow-lightHeader' : ''
-        } hidden global-max-width-handler pt-4 h-nav lg:mb-[10px] lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 gap-[124px] w-full leading-none font-roboto font-semibold text-base`}
+        } hidden global-max-width-handler pt-4 h-nav lg:mb-[10px] lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 gap-[60px] xl:gap-[124px] w-full leading-none font-roboto font-semibold text-base`}
       >
         <div
           onClick={() => {
@@ -696,7 +696,7 @@ function DesktopHeader({isHome, menu}) {
                         {item.title}
                       </FlyoutLink>
                     ) : (
-                      <Link to={item.to}>
+                      <Link to="/pages/business-page">
                         <span className="hover:text-[#EF6E6E]">
                           {item.title}
                         </span>

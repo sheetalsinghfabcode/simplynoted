@@ -32,19 +32,19 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     localStorage.setItem('previousPage', location.pathname);
   }, [location.pathname]);
 
-  let ab = ['collections', 'pages'];
+  let ab = ['collections', 'pages','policies'];
 
   return (
     <div className="breadcrumb inline-block text-[#010101] capitalize font-medium ">
       <nav
-        className="flex px-5 py-3  border  border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+        className="flex px-2 sm:px-5 py-3  border  border-gray-200 rounded-lg bg-gray-50 "
         aria-label="Breadcrumb"
       >
-        <ol className="inline-flex whitespace-nowrap items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+        <ol className="inline-flex sm:whitespace-nowrap items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
           <li className="inline-flex items-center">
             <Link
               to="/"
-              className="inline-flex items-center text-sm font-medium  hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              className="inline-flex items-center text-xs sm:text-sm font-medium  hover:text-blue-600 "
             >
               <svg
                 className="w-3 h-3 mb-[2px] me-2.5"
@@ -80,7 +80,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                   </svg>
                   <Link
                     to={previousPage}
-                    className="ms-1 text-sm font-medium  hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+                    className="ms-1 text-xs sm:text-sm font-medium  hover:text-blue-600 md:ms-2 "
                   >
                     {previousPage.split('/').pop()}
                   </Link>
@@ -122,12 +122,12 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                 {isLast && additionalBreadcrumbs ? (
                   <Link
                     to={breadcrumbPath}
-                    className="inline-flex whitespace-nowrap items-center text-sm font-medium  hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                    className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 "
                   >
                     {name}
                   </Link>
                 ) : (
-                  <span className="ms-1 text-sm font-normal  md:ms-2 dark:text-gray-400">
+                  <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 ">
                     {name}
                   </span>
                 )}
@@ -154,7 +154,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                   />
                 </svg>
                 <li key={index} className="inline-flex items-center">
-                  <span className="ms-1 text-sm font-medium  dark:text-gray-400">
+                  <span className="ms-1 text-xs sm:text-sm font-medium">
                     {breadcrumb}
                   </span>
                 </li>
