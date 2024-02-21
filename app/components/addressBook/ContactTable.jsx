@@ -548,7 +548,7 @@ const ContactTable = ({
                 className="w-full md:max-w-[250px] lg:max-w-[400px] py-[5px] text-black md:text-[15px] text-[12px] px-[10px] h-[45px] border border-solid border-[#001A5F]"
               />
             </div>
-            <div className="tab:flex grid md:items-end  items-center md:gap-[40px]">
+            <div className="tab:flex grid md:items-end  items-center md:gap-[10px]">
               <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton
                   className="bg-[#EF6E6E] px-[50px] py-[14px] w-[190px] h-[45px] text-[14px] font-normal "
@@ -561,7 +561,7 @@ const ContactTable = ({
 
    
                 <div
-                  className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-5 focus:outline-none
+                  className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
                   overflow-hidden  ${
                     uploadBulkAddress ? 'max-h-[500px] transition-max-h duration-1000 ease-in-out' : 'max-h-0'
                   }
@@ -685,7 +685,7 @@ const ContactTable = ({
                   !ProdcuctSide && (
                     <button
                       onClick={() => setDeleteModal(true)}
-                      className="text-white bg-[#FF0000] h-[45px] border border-solid md:text-[16px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
+                      className="text-white bg-[#ef6e6e] h-[45px] border border-solid md:text-[16px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
                     >
                       Delete Selected
                     </button>
@@ -706,7 +706,7 @@ const ContactTable = ({
               </div>
               {/* Your table rendering code here... */}
               <div className="overflow-auto">
-                <table className="overflow-auto min-w-full bg-gray-200 text-black">
+                <table className="min-w-full bg-gray-200 text-black overflow-auto">
                   <thead className="bg-[#0D0C22] text-[white] text-[14px] font-bold">
                     {headerGroups.map((headerGroup,index) => (
                       <tr {...headerGroup.getHeaderGroupProps()} key={index}>

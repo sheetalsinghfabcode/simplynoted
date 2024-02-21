@@ -35,7 +35,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   let ab = ['collections', 'pages','policies'];
 
   return (
-    <div className="breadcrumb inline-block text-[#010101] capitalize font-medium ">
+    <div className="breadcrumb inline-block pt-[39px] text-[#010101] capitalize font-medium ">
       <nav
         className="flex px-2 sm:px-5 py-3  border  border-gray-200 rounded-lg bg-gray-50 "
         aria-label="Breadcrumb"

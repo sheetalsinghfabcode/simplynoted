@@ -12,6 +12,8 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     maxWidth: '80%', // Add your desired width here
     maxHeight: '70vh',
+    width: '600px',
+    height: '233px',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
@@ -49,7 +51,7 @@ function Instruction({
             </span>
           )} */}
           {close && (
-           <div className="absolute top-[35px] right-[-7px] top-[24px] sm:block">
+           <div className="absolute top-[35px] right-[5px] top-[27px] sm:block">
                     <span
                       onClick={closeModal}
                       className="transition text-primary "

@@ -303,7 +303,7 @@ export default function Salesforce() {
             </div>
           </div>
           <div className="lg:hidden block sm:mb-10 mb-7">
-            <div className="xl:text-[36px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
+            <div className="xl:text-[36px] mb-[12px] text-[32px] text-center font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
@@ -383,7 +383,7 @@ export default function Salesforce() {
                 />
                 <DynamicButton
                   text="USE PROCESS BUILDER"
-                  className="btn2 lg:!text-[17px] whitespace-pre-line w-[200px] md:text-[14px] h-[55px] items-center text-center"
+                  className="sch-btn lg:!text-[17px] whitespace-pre-line w-[200px] md:text-[14px] h-[55px] text-[white] items-center text-center"
                   onClickFunction={() =>
                     (window.location.href = 'https://zapier.com/apps')
                   }

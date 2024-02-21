@@ -590,7 +590,7 @@ const ManageSubscription = () => {
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
-                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] h-[45px] uppercase lg:min-w-[190px] min-w-[3px]"
+                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] md:h-[45px] h-[32px] uppercase lg:min-w-[190px] min-w-[3px]"
                         />
                       </div>
 
@@ -683,7 +683,7 @@ const ManageSubscription = () => {
                               ? 'Change Package'
                               : 'Buy Package'
                           }
-                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] font-karla max-w-[190px] uppercase h-[45px] lg:min-w-[190px] min-w-[2px]"
+                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] font-karla max-w-[190px] uppercase md:h-[45px] h-[32px] lg:min-w-[190px] min-w-[2px]"
                         />
                       </div>
                     </div>
@@ -696,7 +696,7 @@ const ManageSubscription = () => {
                             Saved Cards
                           </span>
                         )}
-                        <div className=" text-[#001a5f] bg-[#fff5f5] font-karla text-left lg:text-[16px] p-[12px] text-[12px] h-[45px] !font-semibold w-full  border-b border-solid border-[#e6edf8]">
+                        <div className="text-[#001a5f] bg-[#fff5f5] font-karla text-left lg:text-[16px] p-[12px] text-[12px] md:h-[45px] h-[32px] !font-semibold w-full  border-b border-solid border-[#e6edf8]">
                           DEFAULT CARD
                         </div>
                         <div className="w-full">
@@ -720,7 +720,7 @@ const ManageSubscription = () => {
                                   {i === 0 ? (
                                     <DynamicButton
                                       text="Update Card"
-                                      className="bg-[#ef6e6e] rounded-[9px] w-[190px] h-[45px] text-white lg:text-[13px] text-[12px]"
+                                      className="bg-[#ef6e6e] rounded-[9px] w-[190px] md:h-[45px] h-[32px] text-white lg:text-[13px] text-[12px]"
                                       onClickFunction={() => {
                                         setAddCreditModal(false);
                                         setPaymentId(item.paymentId);
@@ -732,7 +732,7 @@ const ManageSubscription = () => {
                                     <div className="flex items-center gap-[16px]">
                                       <DynamicButton
                                         text="Make Default"
-                                        className="bg-[#ef6e6e] text-white w-[190px] rounded-[9px] h-[45px] lg:text-[13px] text-[12px]"
+                                        className="bg-[#ef6e6e] text-white w-[190px] rounded-[9px] md:h-[45px] h-[32px] lg:text-[13px] text-[12px]"
                                         onClickFunction={() => {
                                           setPaymentId(item.paymentId);
                                           setDefaultCard(true);

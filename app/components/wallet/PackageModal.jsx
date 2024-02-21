@@ -30,8 +30,8 @@ const PackageModal = ({
         show ? 'block' : 'hidden'
       } fixed top-[7px] left-[50%] h-full translate-x-[-50%] w-full  flex items-center  justify-center z-50`}
     >
-      <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
-      <div className="modal-container relative  px-6 bg-[#fff6f6] md:h-[640px] h-[582px] w-full h-full lg:max-w-[45%] max-w-[88%]  w-full mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
+      <div className="modal-overlay absolute inset-[-7px] bg-black opacity-50"></div>
+      <div className="modal-container relative  px-6 bg-[white] lg:max-w-[45%] max-w-[88%]  w-full h-[90%] mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-auto">
         {/* <div className="absolute top-[35px] right-0  pr-8 sm:block">
                 <button
                   onClick={onCancel}
@@ -89,7 +89,7 @@ const PackageModal = ({
           </h4>
         </div>
         <div className="modal-body ">
-          <div className="text-[20px] w-full max-w-[633px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold">
+          <div className="text-[20px] w-full  mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold">
             {filteredWalletData &&
               filteredWalletData.length > 0 &&
               filteredWalletData.map((product, index) => (
