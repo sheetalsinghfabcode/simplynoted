@@ -2110,7 +2110,7 @@ body {
 }
 
 .shadow-inset-custom {
-  box-shadow: 0 0 4px inset rgba(120, 120, 120, 0.8);
+  box-shadow: 0 0 3px inset rgba(120, 120, 120, 0.8);
 }
 
 .shadow-outer-custom {

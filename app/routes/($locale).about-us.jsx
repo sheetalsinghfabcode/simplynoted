@@ -40,8 +40,8 @@ const AboutUs = () => {
                     height="720"
                     src="https://www.youtube.com/embed/E_tcBL0zw2E?autoplay=1&controls=0&loop=1&playsinline=1&mute=0"
                     title="Simply Noted Company Introduction 2023"
-                    frameborder="0"
-                    allowfullscreen
+                    // frameborder="0"
+                    // allowfullscreen
                   >
                     #document
                   </iframe>

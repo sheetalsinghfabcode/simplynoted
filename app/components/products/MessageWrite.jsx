@@ -334,9 +334,9 @@ export function MessageWriting({
                   Cancel
                 </button>
               </div>
-              <text className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
+              <span className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
                 Number of recipient Uploaded: {lenCsvData}
-              </text>
+              </span>
             </>
           ) : (
             <button
@@ -988,8 +988,8 @@ export function MessageWriting({
             <span className="font-bold text-[15px]">Actions</span>
           </div>
           {loadTempData &&
-            filteredList(loadTempData, searchData).map((item) => (
-              <div className="">
+            filteredList(loadTempData, searchData).map((item,index) => (
+              <div className="" key={index}>
                 <div className="border border-black-600 mt-[12px] mb-[12px] px-[10px] h-[42px] items-center w-full flex">
                   <div className="w-full font-font-semibold mt-[10px] text-[14px]">
                     {item.templateName}
@@ -1120,7 +1120,7 @@ export function MessageWriting({
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
                 >
-                  <option value={standardFontVal} selected disabled>
+                  <option value={standardFontVal} disabled>
                     {standardFontVal
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
@@ -1220,7 +1220,7 @@ export function MessageWriting({
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                 >
-                  <option value={customFontVal} selected disabled>
+                  <option value={customFontVal}  disabled>
                     {customFontVal
                       ? customFontVal
                       : editCustomFontFamily
@@ -1228,8 +1228,8 @@ export function MessageWriting({
                       : 'Select Custom Font'}
                   </option>
                   {customFonts &&
-                    customFonts.map((item) => (
-                      <option value={item.fontName}>{item.fontName}</option>
+                    customFonts.map((item,index) => (
+                      <option key={index} value={item.fontName}>{item.fontName}</option>
                     ))}
                 </select>
               </div>

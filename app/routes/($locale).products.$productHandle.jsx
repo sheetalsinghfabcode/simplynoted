@@ -155,8 +155,8 @@ export default function Product() {
   let editLineHeight = datafornav.state?.data.lineHeight;
   let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
   let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
-  let editShippingDate = datafornav.state?.data.optionalShipDate;
-  console.log(editShippingDate, 'editShippingDate');
+  let editShippingDate = datafornav.state?.data.optionalShipDate
+
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const [show, setShow] = useState(
@@ -199,7 +199,7 @@ export default function Product() {
       let extractMetafield = JSON.parse(y);
       setMetafields(extractMetafield);
     } catch (error) {
-      console.error(error, 'shopify');
+    
     }
   }
 
@@ -298,9 +298,10 @@ export default function Product() {
             // onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal"
+            ariaHideApp={false}
           >
-            {errorVal.map((item) => (
-              <div>{item}</div>
+            {errorVal.map((item,index) => (
+              <div key={index}>{item}</div>
             ))}
           </Modal>
         </>

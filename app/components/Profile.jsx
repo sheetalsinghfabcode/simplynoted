@@ -218,7 +218,7 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white  rounded-lg md:p-6 w-full w-full mx-auto  ${
+        className={`bg-white  rounded-lg md:p-6 w-full  mx-auto  ${
           loader && 'opacity-50'
         } `}
       >
@@ -259,7 +259,7 @@ const Profile = ({
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={accountDetails.firstName}
+                  value={accountDetails.firstName || ""}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -275,7 +275,7 @@ const Profile = ({
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={accountDetails.lastName}
+                  value={accountDetails.lastName ||""}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -296,7 +296,7 @@ const Profile = ({
                   id="email"
                   disabled
                   name="email"
-                  value={accountDetails.email}
+                  value={accountDetails.email || ""}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -313,7 +313,7 @@ const Profile = ({
                   type="text"
                   id="phone"
                   name="phone"
-                  value={accountDetails.phone}
+                  value={accountDetails.phone || ""}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />

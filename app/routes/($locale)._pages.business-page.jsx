@@ -248,11 +248,12 @@ export default function bussniess(){
                           name="volume"
                           id=""
                           onChange={handleChange}
+                          value={formData.volume}
                         >
                           <option
-                            value={formData.volume}
+                            value=""
                             disabled
-                            selected
+                            
                             hidden
                           >
                             Expected Volume

@@ -230,13 +230,12 @@ const Accordion = ({
         setloader(false);
         setPaymentLoader(false);
         const result = await stripe.confirmCardPayment(data.client_secret);
-        console.log(result, 'stripe result');
+       
         if (result?.error) {
-          debugger;
-          console.log('error in payment purchase');
+        
         } else {
           paymentSave(data, json);
-          debugger;
+          
         }
       }
       // Handle the response data here
@@ -245,7 +244,7 @@ const Accordion = ({
       console.error('Error:', error);
     } finally {
       setPaymentLoader(false);
-      debugger;
+      
     }
   };
 

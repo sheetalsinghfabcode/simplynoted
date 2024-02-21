@@ -44,7 +44,7 @@ const WalletPlans = ({
 <div className="flex flex-col md:flex-row overflow-auto">
   {WalletData.collection.products.edges.map((product, index) => (
     <div
-      key={product.node.title}
+      key={index}
       className={`flex-1 p-[20px] ${
         (stripeCollection?.error && product.node.title === 'Free') ||
         product.node.title.toLowerCase() ===
@@ -60,7 +60,7 @@ const WalletPlans = ({
       <div className="flex flex-col gap-[16px]">
         {product.node.variants.edges
           .filter((variant) => variant.node.title !== 'Subscription')
-          .map((variant) => {
+          .map((variant,index) => {
             const titleMetafield = variant.node.metafields.find(
               (metafield) => metafield?.key === 'variant_title',
             );
@@ -83,6 +83,7 @@ const WalletPlans = ({
 
             return (
               <div
+              key={index}
                 onClick={() => {
                   if (
                     stripeCollection.stripe?.subscription !==
@@ -109,7 +110,7 @@ const WalletPlans = ({
                   type="radio"
                   className="mt-[4px]"
                   value={`${variant.node.title} ${titleMetafield?.value}`}
-                  checked={
+                  defaultChecked={
                     selectedPlan ===
                     `${variant.node.title} ${titleMetafield?.value}`
                   }

@@ -93,13 +93,16 @@ const PackageModal = ({
             {filteredWalletData &&
               filteredWalletData.length > 0 &&
               filteredWalletData.map((product, index) => (
-                <div key={product.node.title} className={`col-span-1`}>
+                <div
+                  key={index}
+                  className={`col-span-1`}
+                >
                   <div className="flex flex-col mt-[15px] gap-[16px]">
                     {product.node.variants.edges
                       .filter(
                         (variant) => variant.node.title !== 'Subscription',
                       )
-                      .map((variant) => {
+                      .map((variant,index) => {
                         const titleMetafield = variant.node.metafields.find(
                           (metafield) => metafield?.key === 'variant_title',
                         );
@@ -126,6 +129,7 @@ const PackageModal = ({
 
                         return (
                           <div
+                          key={index}
                             onClick={() => {
                               setSubscription(
                                 subscriptionMetafield?.value || 0,
@@ -149,7 +153,7 @@ const PackageModal = ({
                               type="radio"
                               className="mt-[4px] md:h-[15px] h-[10px] md:w-[15px] w-[10px]"
                               value={`${variant.node.title} ${titleMetafield?.value}`}
-                              checked={
+                              defaultChecked={
                                 selectedPlan ===
                                 `${variant.node.title} ${titleMetafield?.value}`
                               }

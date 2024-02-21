@@ -120,7 +120,7 @@ export async function loader({params, request, context}) {
   if (!collection) {
     throw new Response('collection', {status: 404});
   }
-console.log(collection,"-----collection----");
+
   const seo = seoPayload.collection({collection, url: request.url});
 
   return json({
@@ -254,11 +254,11 @@ export default function Collection() {
     return (
       <>
         {addingProductsData &&
-          addingProductsData.map((product, i) => (
+          addingProductsData.map((product, index) => (
             <>
               {/* <h2>Hello</h2> */}
               <CustomComponent
-                key={product.id}
+                key={index}
                 product={product}
                 offPrice={offPrice}
                 productPrice={product.variants[0].price}
@@ -320,13 +320,13 @@ export default function Collection() {
               className="!border-none md:w-[244px] w-[270px] capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
-              <option className="w-full " selected disabled>
+              <option className="w-full " disabled>
                 {collectionHandle}
               </option>
 
               {data &&
-                data.map((item) => (
-                  <option className="capitalize" value={item.node.handle}>
+                data.map((item,index) => (
+                  <option className="capitalize" value={item.node.handle} key={index} >
                     {item.node.handle}
                   </option>
                 ))}
@@ -344,7 +344,7 @@ export default function Collection() {
                 {myColletionData &&
                   myColletionData.map((product, i) => (
                     <ProductCard
-                      key={product.id}
+                      key={i}
                       product={product}
                       loading={getImageLoadingPriority(i)}
                       offPrice={offPrice}

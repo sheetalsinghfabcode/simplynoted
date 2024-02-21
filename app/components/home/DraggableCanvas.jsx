@@ -63,11 +63,11 @@ const DraggableCanvas = () => {
 
   useEffect(() => {
     const handleReleasingEvent = () => {
-      console.log('mouse stopped moving');
+     
       setIsDragging(false);
     };
     const handleMovementEvent = (e) => {
-      console.log('mouse is moving');
+      
       updateClip(e.clientX);
       if (hoveredBackground.isHoveredOnParent) {
         setIsHoveredBackground((prevHoveredValues) => {

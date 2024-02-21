@@ -61,8 +61,7 @@ const Card = () => {
           >
             {stockData.map((data, index) => {
               return (
-                <div key={index}>
-                  <SwiperSlide>
+                  <SwiperSlide key={data.img}>
                     <div className="data_card bg-white  text-center mt-5 sm:w-[88%] w-full mx-auto ">
                       <div className="m-auto w-full pt-5 md:pt-20">
                         <img
@@ -81,7 +80,7 @@ const Card = () => {
                       </div>
                     </div>
                   </SwiperSlide>
-                </div>
+              
               );
             })}
           </Swiper>

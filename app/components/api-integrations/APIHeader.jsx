@@ -10,14 +10,14 @@ const APIHeader = () => {
           className={' !text-[42px]'}
         />
       </div>
-      <p className="text-[#001a5f] leading-[30px] max-w-[40rem]  font-bold mb-[28px] text-[21px] sm:text-center text-justify mx-auto">
+      <div className="text-[#001a5f] leading-[30px] max-w-[40rem]  font-bold mb-[28px] text-[21px] sm:text-center text-justify mx-auto">
         <div className="w-[100%]">
           <p>
             By using this API you will have full access to the same range of
             features found in our apps and website.
           </p>
         </div>
-      </p>
+      </div>
     </div>
   );
 };

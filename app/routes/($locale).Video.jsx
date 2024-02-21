@@ -11,7 +11,7 @@ export async function loader({request,context}) {
   const blog = await context.storefront.query(tutorialsData, {
     variants: {},
   });
-  console.log(blog,"------");
+ 
   const seo = seoPayload.Video({blog, url: request.url});
 
   return defer({
@@ -117,12 +117,12 @@ export default function tutorials() {
                           }}
                         />
                         <p className="text-[18px] mt-[16px] text-[#ef6e6e] font-bold underline">
-                          <Link
+                          <span
                             className="hover:text-[#ef6e6e]"
-                            to={`/journal/video/${article.node.handle}`}
+                            // to={`/journal/video/${article.node.handle}`}
                           >
                             Click here to read full article
-                          </Link>
+                          </span>
                         </p>
                       </div>
                     </Link>

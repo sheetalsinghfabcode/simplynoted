@@ -184,10 +184,13 @@ function Account({customer, heading, featuredData}) {
       localStorage.removeItem('lastName', customer.lastName);
     }
   };
+
+  useEffect(()=>{
   if (data == true) {
     remove();
   } else if (data == false) {
-    if (typeof window !== 'undefined' && customer) {
+    if (customer && typeof window !== 'undefined' ) {
+      console.log("result",result)
       localStorage.setItem('customerId', result);
       setCustomerId(result);
       localStorage.setItem('SnEmail', customer.email);
@@ -195,6 +198,7 @@ function Account({customer, heading, featuredData}) {
       localStorage.setItem('lastName', customer.lastName);
     }
   }
+}, [data, customer, result]);
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
@@ -227,7 +231,7 @@ function Account({customer, heading, featuredData}) {
     <div className="w-full global-max-width-handler ">
       <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
         <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
-          <div class="user-name-account">
+          <div className="user-name-account">
             {customer.firstName?.charAt(0)}
             {customer.lastName?.charAt(0)}
           </div>
@@ -389,8 +393,8 @@ function Account({customer, heading, featuredData}) {
 
 function AccountOrderHistory({orders}) {
   return (
-    <div class="mt-6 custom-scrollbar">
-      <div class="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
+    <div className="mt-6 custom-scrollbar">
+      <div className="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>

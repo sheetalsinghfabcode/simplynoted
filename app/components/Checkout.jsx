@@ -567,6 +567,7 @@ export function CheckoutData({
                         type="radio"
                         name="action"
                         checked={showWallet}
+                        onChange={(e) => setShowWallet(e.target.checked)}
                       />
                       &emsp; USE WALLET
                     </div>
@@ -604,6 +605,7 @@ export function CheckoutData({
                         className="cursor-pointer highlight-none"
                         name="action"
                         checked={showCardDetail}
+                        onChange={(e) => setShowCardDetail(e.target.checked)}
                       />
                       &emsp; USE CREDIT CARD
                     </div>
@@ -626,7 +628,7 @@ export function CheckoutData({
                         </div>
                         {savedCard &&
                           savedCard.map((item) => (
-                            <div className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2  justify-between flex">
+                            <div key={item.id} className="border border-solid border-[#e6edf8] p-2 mt-1 mb-2  justify-between flex">
                               <div
                                 onClick={() =>
                                   setPaymentMethodId(item.paymentId)
@@ -638,6 +640,7 @@ export function CheckoutData({
                                   type="radio"
                                   name="stipe-action"
                                   className="mr-2 cursor-pointer highlight-none"
+                               
                                 />
                                 <span className=" tracking-wide">
                                   **********{item.cardLast4Number}
@@ -656,9 +659,9 @@ export function CheckoutData({
                             <input
                               type="radio"
                               name="saved-action"
-                              checked
+                              defaultChecked
                               id="saved-credit-card"
-                              className="cursor-pointer highlight-none"
+                              className="cursor-pointer highlight-none" 
                             />
                             <label htmlFor="saved-credit-card">
                               &nbsp;Use Saved Credit Card
