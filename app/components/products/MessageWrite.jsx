@@ -23,7 +23,7 @@ import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
 import {RxCross2} from 'react-icons/rx';
 import {ImCross} from 'react-icons/im';
-
+import {Modal as ModalComp} from '../Modal'
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -902,9 +902,9 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <>
-        <div className=" w-[700px] m-[2rem]">
+        <div className=" w-[100%]">
           <div>
-            <h1 className="text-[34px] text-[#001a5f] font-bold text-center font-karla">
+            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
               NEW TEMPLATE
             </h1>
           </div>
@@ -969,7 +969,7 @@ export function MessageWriting({
         <div className="flex justify-end"></div>
         <div className="w-[100%] max-w-[500px]">
           <div>
-            <h1 className="md:text-[34px] text-[23px] text-[#001a5f] font-bold font-karla">
+            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold font-karla">
               SELECT TEMPLATE
             </h1>
           </div>
@@ -1418,7 +1418,7 @@ export function MessageWriting({
           ) : (
             <div
               id="outer"
-              className="outerr shadow-lg h-[301px] bg-white absolute pt-[16px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+              className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
               {metafields &&
                 metafields.isHeaderIncluded &&
@@ -1463,7 +1463,7 @@ export function MessageWriting({
                 <div
                   id="messageBoxID"
                   ref={ref1}
-                  className="output pl-[20px] pr-[20px] text-[#0040ac]"
+                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
                   style={{
                     fontFamily: fontFamilyName
                       ? fontFamilyName
@@ -1768,78 +1768,69 @@ export function MessageWriting({
           )}
         </div>
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <div className="flex">
-          <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
-            AI Message Assistant
-          </h2>
-          {/* <BsXCircle className="" onClick={() => onCancl()} /> */}
-          <div className="absolute top-[35px] right-0  pr-8 sm:block">
-            <button
-              onClick={() => onCancl()}
-              className="transition text-primary "
-            >
-              <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
-            </button>
-          </div>
+      
+      {modalIsOpen &&
+      <ModalComp
+      children={<div className='w-[100%]'>
+      <div className="flex">
+      <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
+        AI Message Assistant
+      </h2>
+    </div>
+    <div className="mt-[12px]">
+      <text className="text-[black]">
+        Type in words or a phrase to use our AI Assistant to
+        <br /> help generate a great message
+      </text>
+    </div>
+    <div>
+      {loader ? (
+        <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
+          <CircularLoader color="#ef6e6e" />
         </div>
-        <div className="mt-[12px]">
-          <text className="text-[black]">
-            Type in words or a phrase to use our AI Assistant to
-            <br /> help generate a great message
-          </text>
+      ) : (
+        <textarea
+          type="text"
+          id="aiTextArea"
+          value={aiText ? aiText : valToGen}
+          onChange={(e) => setValToGen(e.target.value)}
+          placeholder="Example: Message for Birthday"
+          maxLength="450"
+        ></textarea>
+      )}
+    </div>
+    {!aiText ? (
+      <div className="ai-generate">
+        <button
+          id="generate-msg"
+          disabled=""
+          onClick={() => aiGenrateMess()}
+        >
+          Generate Message
+        </button>
+      </div>
+    ) : (
+      <div className="buttonClass flex justify-start">
+        <div className="buttonDiv pr-5">
+          <button
+            className="bg-[#001a5f] text-[#fff] p-2 rounded"
+            onClick={() => onInsetClick()}
+          >
+            Insert
+          </button>
         </div>
-        <div>
-          {loader ? (
-            <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
-              <CircularLoader color="#ef6e6e" />
-            </div>
-          ) : (
-            <textarea
-              type="text"
-              id="aiTextArea"
-              value={aiText ? aiText : valToGen}
-              onChange={(e) => setValToGen(e.target.value)}
-              placeholder="Example: Message for Birthday"
-              maxLength="450"
-            ></textarea>
-          )}
+        <div className="gap-2">
+          <button
+            className="bg-[#f0f0f0] text-[black] p-2 rounded "
+            onClick={() => onCancl()}
+          >
+            Cancel
+          </button>
         </div>
-        {!aiText ? (
-          <div className="ai-generate">
-            <button
-              id="generate-msg"
-              disabled=""
-              onClick={() => aiGenrateMess()}
-            >
-              Generate Message
-            </button>
-          </div>
-        ) : (
-          <div className="buttonClass flex justify-start">
-            <div className="buttonDiv pr-5">
-              <button
-                className="bg-[#001a5f] text-[#fff] p-2 rounded"
-                onClick={() => onInsetClick()}
-              >
-                Insert
-              </button>
-            </div>
-            <div className="gap-2">
-              <button
-                className="bg-[#f0f0f0] text-[black] p-2 rounded "
-                onClick={() => onCancl()}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )}
-      </Modal>
+      </div>
+    )}</div>}
+      cancelLink={onCancl}
+      />}
       <Instruction
         isOpen={instructionModal}
         title="Text Can not be Empty"
@@ -1882,23 +1873,29 @@ export function MessageWriting({
         ]}
         table={true}
       />
-
-      <Instruction
+      {addNewTem &&
+      <ModalComp
+      children={<AddNewTemplate/>}
+       cancelLink={()=>setAddNewTem(false)}/>}
+      {/* <Instruction
         isOpen={addNewTem}
         title=""
         closeModal={() => setAddNewTem(false)}
         table={false}
         body={<AddNewTemplate />}
-      />
-
-      <Instruction
+      /> */}
+      {loadTemModal &&
+      <ModalComp children={<LoadTemplate/>}
+      cancelLink={()=> setLoadTemModal(false)}/>
+    }
+      {/* <Instruction
         isOpen={loadTemModal}
         close={true}
         title=""
         closeModal={() => setLoadTemModal(false)}
         table={false}
         body={<LoadTemplate />}
-      />
+      /> */}
 
       <LoginModal
         title={' Add'}
