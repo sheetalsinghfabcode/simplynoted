@@ -88,7 +88,7 @@ const Accordion = ({
       );
       const json = await res.json();
       if (json) {
-        await createSubscription(id);
+        await createSubscription(json);
       }
     } catch (error) {
       setloader(false);
@@ -202,12 +202,12 @@ const Accordion = ({
   // Example usage:
   const {discount, cards} = extractDiscountAndCardsInfo(selectedPlan);
 
-  const createSubscription = async (id) => {
+  const createSubscription = async (json) => {
     try {
       const payLoad = {
         subscriptionPriceId: subscriptionPriceId,
         subscriptionName: subscriptionTitle,
-      }; 
+      };
 
       const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
@@ -220,26 +220,35 @@ const Accordion = ({
       });
 
       const data = await response.json();
-      
+
+      debugger;
+
       if (data.redirectUrl) {
-        setloader(false)
-        setPaymentLoader(false)
-        const result =await stripe.confirmCardPayment(data.client_secret)
-        console.log(result,"stripe result");
-      if(result?.error){
-        console.log("error in payment purchase");
-      }
+        setloader(false);
+        setPaymentLoader(false);
+        const result = await stripe.confirmCardPayment(data.client_secret);
+        console.log(result, 'stripe result');
+        if (result?.error) {
+          debugger;
+          console.log('error in payment purchase');
+        } else {
+          paymentSave(data, json);
+          debugger;
+        }
       }
       // Handle the response data here
     } catch (error) {
       // Handle errors here
       console.error('Error:', error);
+    } finally {
+      setPaymentLoader(false);
+      debugger;
     }
   };
 
-  const paymentPurchase = (id, savePaymentData) => {
+  const paymentPurchase = (data, json) => {
     const payLoad = {
-      paymentMethodId: id,
+      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
@@ -247,6 +256,7 @@ const Accordion = ({
       packageProduct: productId,
       subscriptionProduct: variantId,
     };
+    debugger;
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
@@ -258,6 +268,7 @@ const Accordion = ({
       body: JSON.stringify(payLoad),
     })
       .then((response) => {
+        debugger;
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -269,16 +280,18 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          paymentSave(savePaymentData);
+          console.log('data', data);
+          debugger;
         }
       })
+
       .catch((error) => {
         // Handle errors here
         console.error('Error:', error);
       });
   };
 
-  const paymentSave = (data) => {
+  const paymentSave = (data, json) => {
     const payLoad = {
       subscriptionId: data.subscriptionId,
       subscriptionName: subscriptionTitle,
@@ -308,8 +321,11 @@ const Accordion = ({
         return response.json();
       })
       .then((data) => {
+        console.log('data', data);
+        debugger;
         setPaymentLoader(false);
-        navigate('/manage-subscription');
+        paymentPurchase(data, json);
+        debugger;
         // Handle the response data here
       })
       .catch((error) => {
@@ -331,7 +347,6 @@ const Accordion = ({
 
   return (
     <div className="w-full  relative max-w-[1440px] mt-[24px] mx-auto px-[24px]">
-   
       {paymentLoader && (
         <div className="absolute z-[50] top-[50%] left-[50%]">
           <CircularLoader
@@ -491,7 +506,7 @@ const Accordion = ({
                 </div>
               </div>
             </div>
-        </div>
+          </div>
         </div>
         <div className="border-b border-solid border-black mt-[12px]"></div>
         <div className="mt-4  rounded">

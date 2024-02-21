@@ -570,7 +570,7 @@ const ManageSubscription = () => {
                                 setCancelSubscription(true)
                               }
                               text="Cancel Plan"
-                              className="!bg-[#ef6e6e] lg:text-[16px] text-[12px] lg:max-w-[190px]  uppercase min-w-[190px]"
+                              className="!bg-[#ef6e6e]  rounded-[9px] md:max-w-[190px]  h-[45px] lg:text-[16px] text-[12px] lg:max-w-[190px]  uppercase min-w-[190px]"
                             />
                           </div>
                         )}
