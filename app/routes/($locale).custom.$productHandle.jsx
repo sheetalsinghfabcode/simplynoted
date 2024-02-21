@@ -195,7 +195,9 @@ export default function CustomProducts() {
              customProductData.length === 0 &&
              metafields.length === 0 &&
              'opacity-40'
-           } `}
+           } ${
+            show ? '!max-h-[1460px]' : '!max-h-[1135px]'
+          }`}
           >
             <div className="flex flex-wrap md:flex-row flex-col w-full lg:gap-[10px] gap-[30px] justify-between">
               {customProductData && (
