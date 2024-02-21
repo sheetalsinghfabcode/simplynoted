@@ -344,13 +344,13 @@ const Accordion = ({
       <div
         className={`w-full ${
           paymentLoader && 'opacity-40'
-        }  p-[20px] max-w-[640px] mx-auto`}
+        }  p-[20px]  border border-solid border-black max-w-[640px] mx-auto`}
       >
         <div
-          className="flex items-center justify-between p-4 cursor-pointer bg-gray-200"
+          className="flex items-center justify-between cursor-pointer"
           onClick={toggleBilling}
         >
-          <span className="font-semibold">Billing Address</span>
+          <span className="font-bold  md:text-[20px] text-[17px] text-[#001a5f]">Billing Address</span>
           <span className="mr-2">
             {isBillingOpen ? (
               <img className="h-[12px]" src={arrow_down} alt="" />
@@ -359,14 +359,14 @@ const Accordion = ({
             )}
           </span>
         </div>
-        <div className={`overflow-hidden transition-max-height 
-         ${isBillingOpen ? "max-h[800px]" : "max-h-0"}
+        <div className={`overflow-hidden
+         ${isBillingOpen ? "max-h-[800px] transition-max-height " : "max-h-0"}
         `}>
-        <div className="border rounded">
-            <div className="w-full max-w-[650px]  mx-auto border border-solid border-black p-3 mt-3">
+        <div className="rounded">
+            <div className="w-full max-w-[650px]  mx-auto p-3 mt-3">
               <div className="grid-rows-2 lg:flex grid gap-3">
                 <div className="w-full">
-                  <label htmlFor="">Full Name</label>
+                  <label className='font-bold' htmlFor="">Full Name</label>
                   <input
                     type="text"
                     id="firstName"
@@ -379,7 +379,7 @@ const Accordion = ({
                   />
                 </div>
                 <div className="w-full">
-                  <label htmlFor="">Email</label>
+                  <label className='font-bold' htmlFor="">Email</label>
                   <input
                     id="email"
                     disabled
@@ -393,7 +393,7 @@ const Accordion = ({
                 </div>
               </div>
               <div className="mt-2">
-                <label htmlFor="" className="">
+                <label htmlFor="" className="font-bold">
                   Address
                 </label>
                 <input
@@ -408,7 +408,7 @@ const Accordion = ({
                 />
               </div>
               <div className="mt-2">
-                <label htmlFor="" className="">
+                <label htmlFor="" className="font-bold">
                   Apartment,suite,etc
                 </label>
                 <input
@@ -422,7 +422,7 @@ const Accordion = ({
                 />
               </div>
               <div className="mt-2">
-                <label htmlFor="" className="">
+                <label htmlFor="" className="font-bold">
                   City
                 </label>
                 <input
@@ -493,13 +493,13 @@ const Accordion = ({
             </div>
         </div>
         </div>
-
-        <div className="mt-4 border rounded">
+        <div className="border-b border-solid border-black mt-[12px]"></div>
+        <div className="mt-4  rounded">
           <div
-            className="flex items-center justify-between p-4 cursor-pointer bg-gray-200"
+            className="flex items-center justify-between  cursor-pointer"
             onClick={toggleCardInfo}
           >
-            <span className="font-semibold">Credit Card Information</span>
+            <span className="font-bold md:text-[20px] text-[17px] text-[#001a5f]">Credit Card Information</span>
             <span className="mr-2">
               {isCardInfoOpen ? (
                 <img className="h-[12px]" src={arrow_down} alt="" />
@@ -508,7 +508,9 @@ const Accordion = ({
               )}
             </span>
           </div>
-          {isCardInfoOpen && (
+          <div className={`overflow-hidden
+            ${isCardInfoOpen ? 'max-h-[800px] transition-max-height' : 'max-h-0' }
+          `}>
             <>
               <Elements stripe={stripe}>
                 {savedCard &&
@@ -572,14 +574,14 @@ const Accordion = ({
                 <div>${finalPrice}</div>
               </div>
               {stripePayments && stripePayments.length > 0 && (
-                <div className="flex justify-between  w-full gap-[10px] items-center my-[16px]">
+                <div className="md:flex grid md:justify-between justify-normal  w-full gap-[10px] items-center my-[16px]">
                   <DynamicButton
                     text="Previous"
                     onClickFunction={() => {
                       setWalletPurchase(true);
                       setWalletPayment(false);
                     }}
-                    className="!bg-[#EF6E6E] w-full !rounded-0 !py-[16px] !px-[30px] max-w-[190px]"
+                    className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                   />
                   <button
                     type="submit"
@@ -587,15 +589,17 @@ const Accordion = ({
                       setPaymentLoader(true);
                       createSubscription(paymentMethodId);
                     }}
-                    className="!bg-[#EF6E6E] text-white  w-full !rounded-0 !py-[16px] !px-[30px] max-w-[300px] "
+                    className="!bg-[#1b5299] w-full !h-[45px] text-[white] font-bold !rounded-0  !px-[30px]"
                   >
                     Complete Purchase
                   </button>
                 </div>
               )}
             </>
-          )}
-              <div className=" border-2 text-[12px] bg-white text-left p-[10px] border-solid border-[#324879]">
+
+      
+          </div>
+              <div className=" border-2 text-[12px] mt-[15px] bg-white text-left p-[10px] border-solid border-[#324879]">
                 <span>
                   Custom cards and international postage may cost extra. You
                   will receive the same level of discount on custom cards.

@@ -215,14 +215,14 @@ export default function Salesforce() {
         <div className="flex flex-wrap justify-center ml-auto pr-[40px] pl-[40px] lg:mr-0 mr-auto  ">
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
-              <div className="xl:text-[36px] mb-[12px] text-center text-[32px] font-bold text-[#001A5F]">
+              <div className="xl:text-[32px] mb-[12px] text-center text-[32px] font-bold text-[#001A5F]">
                 Send one or send
                 <span className="font-beauty text-6xl font-bold">
                   thousands
                 </span>
               </div>
             </div>
-            <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[138%] w-[100%] leading-8 lg:mt-0 mt-7 ">
+            <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[550] w-[100%] leading-8 lg:mt-0 mt-7 ">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua.
@@ -260,7 +260,7 @@ export default function Salesforce() {
           </div>
         </div>
 
-        <div className="lg:flex hidden overflow-hidden justify-between max-w 5/6  mb-[64px]">
+        <div className="lg:flex hidden overflow-hidden justify-between mt-[30px] max-w 5/6  mb-[64px]">
           <img
             className="h-[466px] ml-[-188px]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
@@ -276,7 +276,7 @@ export default function Salesforce() {
         <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0   mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
           <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
-              <div className="xl:text-[36px] text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">
+              <div className="xl:text-[36px] md:text-left text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
                 <span className="font-beauty text-6xl font-bold">
                   thousands
@@ -286,10 +286,10 @@ export default function Salesforce() {
             <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-7 ">
               Send one or send thousands
             </p>
-            <div className="lg:flex-row flex-col flex lg:items-left items-center lg:mt-0 mt-5">
+            <div className="lg:flex-row flex-col gap-[10px] flex lg:items-left items-center lg:mt-0 mt-5">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="btn1 lg:w-[45%] lg:mt-6 md:w-[26%] sm:w-[38%] w-[50%] lg:!text-[16px] md:text-[14px] text-[16px] lg:h-[10%]  h-full mt-[35px]"
+                className="btn1 lg:!text-[17px] w-[200px]  md:text-[14px] h-[50px]  mt-[35px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -297,7 +297,7 @@ export default function Salesforce() {
               />
               <DynamicButton
                 text="TUTORIALS"
-                className="btn2 lg:w-[50%] md:w-[26%] text-[16px] mt-5"
+                className="btn2 lg:!text-[17px] w-[200px] md:text-[14px] h-[55px] items-center text-center"
                 onClickFunction={() => navigate('/blogs')}
               />
             </div>
@@ -375,7 +375,7 @@ export default function Salesforce() {
               <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
                 <DynamicButton
                   text="JOIN WAITLIST"
-                  className="req-btn !ml-0 md:w-50%  !w-full"
+                  className="btn1 lg:!text-[17px] w-[200px]  md:text-[14px] h-[50px]  mt-[35px]"
                   onClickFunction={() =>
                     (window.location.href =
                       'https://zapier.com/apps/simply-noted/integrations')
@@ -383,7 +383,7 @@ export default function Salesforce() {
                 />
                 <DynamicButton
                   text="USE PROCESS BUILDER"
-                  className="sch-btn !ml-0 md:w-50% !w-full"
+                  className="btn2 lg:!text-[17px] whitespace-pre-line w-[200px] md:text-[14px] h-[55px] items-center text-center"
                   onClickFunction={() =>
                     (window.location.href = 'https://zapier.com/apps')
                   }
