@@ -26,7 +26,7 @@ import 'swiper/css';
 
 const Notes = () => {
   return (
-    <div className="mt-6 ml-[-20rem]">
+    <div className="mt-[-8.5rem] ml-[-20rem]">
       <Swiper
         modules={[Autoplay]}
         direction={'horizontal'}

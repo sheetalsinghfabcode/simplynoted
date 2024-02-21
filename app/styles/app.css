@@ -2664,6 +2664,64 @@ body {
 
 /* custom scroll bar css  */
 
+    .twentytwenty-handle::before {
+      content: '';
+      position: absolute;
+      bottom: 50%;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 0 white, 0 0 12px rgba(51, 51, 51, 0.5);
+      /* Add browser-specific box shadow properties if needed */
+    }
+    .twentytwenty-handle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      margin-top: 19px;
+      box-shadow: 0 3px 0 white, 0 0 12px rgba(51, 51, 51, 0.5);
+      /* Add browser-specific box shadow properties if needed */
+    }
+     .twentytwenty-handle:before {
+      width: 3px;
+      height: 9999px;
+      left: 50%;
+      margin-left: -1.5px;
+    background-color: white;}
+     .twentytwenty-handle:after {
+      width: 3px;
+      height: 9999px;
+      left: 50%;
+      margin-left: -1.5px;
+    background-color: white;}
+
+    .real-text.arrow-left:before {
+      height: 42px;
+      width: 72px;
+      content: " ";
+      background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-left.png?v=1602786113);
+      position: absolute;
+      left: 70%;
+      top: 115%;
+  }
+  .real-text.arrow-right:before {
+    height: 44px;
+    width: 71px;
+    content: " ";
+    background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-right.png?v=1602786113);
+    position: absolute;
+    left: 10%;
+    top: 115%;
+}
+.tt-block-title::after {
+  content: "";
+  background: url(https://simplynoted.com/cdn/shop/files/line-real-pen.png) no-repeat;
+  bottom: 70px!important;
+  display: block;
+  height: 10px;
+  left: 27%;
+  position: relative;
+  width: 100%;
+  top: 15px;
+}
 .custom-scrollbar {
   overflow-y: auto;
   height: 600px;
