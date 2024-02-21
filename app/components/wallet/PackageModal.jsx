@@ -1,5 +1,6 @@
 import DynamicButton from '../DynamicButton';
 import {useStateContext} from '~/context/StateContext';
+import {ImCross} from 'react-icons/im';
 const PackageModal = ({
   show,
   onCancel,
@@ -24,7 +25,6 @@ const PackageModal = ({
   };
 
   return (
-    
     <div
       className={`${
         show ? 'block' : 'hidden'
@@ -32,12 +32,20 @@ const PackageModal = ({
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
       <div className="modal-container relative  px-6 bg-[#fff6f6] md:h-[640px] h-[582px] w-full h-full lg:max-w-[45%] max-w-[88%]  w-full mx-auto py-[18px] pt-[45px] rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
-        <span
-          onClick={onCancel}
-          className="absolute cursor-pointer !leading-[0] right-0 top-[20px]  text-[40px]"
-        >
-          &times;
-        </span>
+        {/* <div className="absolute top-[35px] right-0  pr-8 sm:block">
+                <button
+                  onClick={onCancel}
+                  className="transition text-primary "
+                >
+                  <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] font-extrabold" />
+                </button>
+              </div> */}
+
+        <div className="absolute top-[35px] right-0  pr-8 sm:block">
+          <button onClick={onCancel} className="transition text-primary ">
+            <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+          </button>
+        </div>
         <div className="modal-content  text-center items-center ">
           <div className="flex flex-col p-[15px] text-center !bg-[#324879] rounded-[15px] text-[#fff] gap-[5px]">
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
@@ -46,7 +54,7 @@ const PackageModal = ({
               stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                 ? stripeCollection.stripe?.subscription
                 : 'FREE'}{' '}
-               Prepaid Packages
+              Prepaid Packages
             </span>
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               Your current Prepaid Package:
@@ -74,21 +82,18 @@ const PackageModal = ({
             stripeCollection.stripe?.subscriptionStatus !== 'canceled'
               ? stripeCollection.stripe?.subscription
               : 'FREE'}{' '}
-             Prepaid Packages
+            Prepaid Packages
           </h3>
           <h4 className="md:text-[16px] text-[12px] font-bold mt-[8px] mb-[2px] text-[#001a5f] text-center">
             Select Prepaid Package
-          </h4> 
+          </h4>
         </div>
         <div className="modal-body ">
           <div className="text-[20px] w-full max-w-[633px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold">
             {filteredWalletData &&
               filteredWalletData.length > 0 &&
               filteredWalletData.map((product, index) => (
-                <div
-                  key={product.node.title}
-                  className={`col-span-1`}
-                >
+                <div key={product.node.title} className={`col-span-1`}>
                   <div className="flex flex-col mt-[15px] gap-[16px]">
                     {product.node.variants.edges
                       .filter(
@@ -192,13 +197,13 @@ const PackageModal = ({
         </div>
 
         <div className=" mt-[10px] border-2 text-[12px] bg-white  text-left p-[10px] border-solid border-[#324879]">
-          <span className='text-[12px] font-semibold color-[black]'>
+          <span className="text-[12px] font-semibold color-[black]">
             Custom cards and international postage may cost extra. You will
             receive the same level of discount on custom cards.
           </span>
           <br />
           <br />
-          <span className='text-[12px] font-semibold color-[black]'>
+          <span className="text-[12px] font-semibold color-[black]">
             By making this purchase, you agree to allow us to automatically
             renew your prepaid package when your balance drops below $100 and to
             renew your subscription at the end of your subscription period. Both
