@@ -207,6 +207,7 @@ export default function AddCartFunc() {
       width: '90%',
       padding: '30px',
       height: 'fit-content',
+      maxHeight: '80%',
       zIndex: '10000',
       background: '#FFFFFF',
       border: 'none',
@@ -215,27 +216,7 @@ export default function AddCartFunc() {
     },
   };
 
-  const customStyles2 = {
-    overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      zIndex: '9999',
-    },
-    content: {
-      top: '50%',
-      left: '50%',
-      bottom: '0',
-      transform: 'translate(-50%, -50%)',
-      maxWidth: '780px',
-      width: '90%',
-      padding: '30px',
 
-      zIndex: '10000',
-      background: '#fff6f6',
-      border: 'none',
-      borderRadius: '8px',
-      boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.5)',
-    },
-  };
 
   function continueShopping() {
     navigate('/collections/best-sellers');
@@ -354,7 +335,7 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom">
+                      <div key={index} className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom">
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                             <div className="flex w-full justify-start sm:flex-row flex-col">
@@ -939,8 +920,8 @@ export default function AddCartFunc() {
                       </div>
                     ))}
                   {totalPrize && (
-                    <div className="w-[90%] bg-[#FFF6F6] m-auto mt-10 mb-10">
-                      <div className="flex lg:p-3 p-5 flex-wrap justify-evenly lg:gap-0 gap-[15px] border-2 border-[#1b5299]">
+                    <div className="w-[90%] bg-white m-auto mt-10 mb-10">
+                      <div className="flex lg:p-3 p-5 flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
                         <div className="lg:w-[25%] md:w-[35%] sm:w-[47%] w-full flex lg:items-center items-end sm:justify-start justify-center">
                           <div className="buttonDiv m-2 sm:text-[14px] font-bold sm:w-[82%] w-[77%]">
                             <button
@@ -967,10 +948,10 @@ export default function AddCartFunc() {
                               <input
                                 type="checkbox"
                                 className="cursor-pointer"
-                                onClick={() => setAgree(!agree)}
+                                onChange={() => setAgree(!agree)}
                                 checked={agree}
                               />
-                              <text>
+                              <span>
                                 {' '}
                                 I agree with{' '}
                                 <span className="underline decoration-solid">
@@ -978,7 +959,7 @@ export default function AddCartFunc() {
                                     Terms of service
                                   </a>
                                 </span>
-                              </text>
+                              </span>
                             </div>
                             <button
                               disabled={!agree}
@@ -1020,7 +1001,7 @@ export default function AddCartFunc() {
                     </div>
                   )}
                   <div className="w-[90%] m-auto mt-10 mb-10">
-                    <div className="p-[30px] bg-[#FFF6F6] md:w-[50%] w-[100%] border-2 border-[#1b5299] rounded">
+                    <div className="p-[30px] bg-white md:w-[50%] w-[100%] shadow-inset-custom rounded-[10px]">
                       <h3 className="text-[30px] font-bold text-[#1b5299]">
                         NOTE
                       </h3>
@@ -1029,7 +1010,7 @@ export default function AddCartFunc() {
                       </p>
                       <textarea
                         name=""
-                        className="border-none w-full"
+                        className="rounded w-full border-[#787878cc] border-[1px]"
                         id="cart-note"
                         cols="30"
                         rows="10"
@@ -1098,7 +1079,7 @@ export default function AddCartFunc() {
                   onClick={() => setIsOpen(false)}
                   className="transition text-primary "
                 >
-                  <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] font-extrabold" />
+                   <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                 </button>
               </div>
             </div>
@@ -1115,7 +1096,7 @@ export default function AddCartFunc() {
                     >
                       <option className="w-full"> Select Gift Card</option>
                       {data.collection.products.edges.map((item, i) => (
-                        <option value={i}>{item.node.title}</option>
+                        <option value={i} key={i}>{item.node.title}</option>
                       ))}
                     </select>
                   </div>
@@ -1133,8 +1114,8 @@ export default function AddCartFunc() {
                         className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
                         onChange={(e) => priceValFunc(e.target.value)}
                       >
-                        {cardPriceVal.map((item) => (
-                          <option value={item.node.price.amount}>
+                        {cardPriceVal.map((item,index) => (
+                          <option value={item.node.price.amount} key={index}>
                             {item.node.title}
                           </option>
                         ))}
@@ -1165,9 +1146,10 @@ export default function AddCartFunc() {
 
           <Modal
             isOpen={modalIsOpen2}
-            style={customStyles2}
+            style={customStyles}
             className="sm:h-fit h-auto fixed overflow-auto"
             contentLabel="Example Modal"
+            ariaHideApp={false}
           >
             <div className="text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto ">
               {bulkAddress.length ? (
@@ -1177,7 +1159,7 @@ export default function AddCartFunc() {
                       onClick={() => closeModal()}
                       className="transition text-primary "
                     >
-                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </button>
                   </div>
 
@@ -1191,7 +1173,7 @@ export default function AddCartFunc() {
                           }}
                           className="mt-[10px]"
                         >
-                          <text className=" text-center ">
+                          <span className=" text-center ">
                             Recipient:
                             <span className="ml-2 font-normal">
                               {' '}
@@ -1201,7 +1183,7 @@ export default function AddCartFunc() {
                               {item['City'] || item.city},
                               {item['State/Province'] || item.state}
                             </span>
-                          </text>
+                          </span>
 
                           <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-center mt-3 leading-10">
                             Your Custom Message
@@ -1216,8 +1198,8 @@ export default function AddCartFunc() {
                               <button onClick={handleNextClick}>Next</button>
                             </div>
                           </div>
-                          <div className="w-full items-center bg-[#fff] overflow-auto mt-5  p-[20px] h-auto ">
-                            <text
+                          <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-auto mt-5  p-[20px] h-auto ">
+                            <span
                               className=" w-full"
                               style={{
                                 fontFamily: msgFont,
@@ -1226,25 +1208,25 @@ export default function AddCartFunc() {
                             >
                               {' '}
                               {item.msgData}
-                            </text>
+                            </span>
                             <br />
-                            <text
-                              className=" text-center w-full ml-10"
+                            <span
+                              className="text-center w-full ml-10"
                               style={{
                                 fontFamily: msgFont,
                                 fontSize: msgFontSize || '30px',
                               }}
                             >
                               {msglastText}
-                            </text>
+                            </span>
                           </div>
                           <div className="mt-[24px]">
-                            <text>
+                            <span>
                               Font:{' '}
                               <span className="font-normal ml-2">
                                 {msgFont}
                               </span>{' '}
-                            </text>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -1254,13 +1236,13 @@ export default function AddCartFunc() {
                 <>
                   <div className="flex">
                     <div className="w-full mt-[10px]">
-                      <text className=" text-center ">
+                      <span className=" text-center ">
                         Recipient:{' '}
                         <span className="font-normal">
                           {reciverAddress.firstName},{reciverAddress.address1},
                           {reciverAddress.city},{reciverAddress.country}
                         </span>
-                      </text>
+                      </span>
                     </div>
                     <div className="absolute top-[35px] right-0  pr-8 sm:block">
                       <button
@@ -1271,11 +1253,11 @@ export default function AddCartFunc() {
                       </button>
                     </div>
                   </div>
-                  <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-center mt-3 leading-10">
+                  <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-left mt-5 leading-10">
                     Your Custom Message
                   </h2>
-                  <div className="w-full items-center bg-[#fff] h-auto mt-5 overflow-auto p-[20px]">
-                    <text
+                  <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  h-auto mt-5 overflow-auto p-[20px]">
+                    <span
                       className=" w-full"
                       style={{
                         fontFamily: msgFont,
@@ -1284,9 +1266,9 @@ export default function AddCartFunc() {
                     >
                       {' '}
                       {msgShow}
-                    </text>
+                    </span>
                     <br />
-                    <text
+                    <span
                       className="text-center w-full ml-10"
                       style={{
                         fontFamily: msgFont,
@@ -1294,12 +1276,12 @@ export default function AddCartFunc() {
                       }}
                     >
                       {msglastText}
-                    </text>
+                    </span>
                   </div>
                   <div className="mt-[24px]">
-                    <text>
+                    <span>
                       Font: <span className="font-normal ml-2">{msgFont}</span>{' '}
-                    </text>
+                    </span>
                   </div>
                 </>
               )}

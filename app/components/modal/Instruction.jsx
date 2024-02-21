@@ -36,6 +36,7 @@ function Instruction({
       style={customStyles}
       shouldCloseOnOverlayClick={false}
       contentLabel="CSV Instruction Modal"
+      ariaHideApp={false}
     >
       <div className="">
         <div className="relative">

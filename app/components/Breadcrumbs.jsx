@@ -1,5 +1,5 @@
 import {Link, useLocation} from '@remix-run/react';
-import {useEffect, useState} from 'react';
+import {Fragment, useEffect, useState} from 'react';
 import {useStateContext} from '~/context/StateContext';
 
 const Breadcrumbs = ({additionalBreadcrumbs}) => {
@@ -101,7 +101,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                   setProductShow(true);
                   setShowSelectAddress(false);
                 }}
-                key={breadcrumbPath}
+                key={index}
                 className="inline-flex items-center"
               >
                 <svg
@@ -137,7 +137,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
           {additionalBreadcrumbs &&
             additionalBreadcrumbs.length > 0 &&
             additionalBreadcrumbs.map((breadcrumb, index) => (
-              <>
+              <Fragment key={index}>
                 <svg
                   className="rtl:rotate-180  w-3 h-3 mx-1 "
                   aria-hidden="true"
@@ -153,12 +153,12 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     d="m1 9 4-4-4-4"
                   />
                 </svg>
-                <li key={index} className="inline-flex items-center">
+                <li className="inline-flex items-center">
                   <span className="ms-1 text-xs sm:text-sm font-medium">
                     {breadcrumb}
                   </span>
                 </li>
-              </>
+              </Fragment>
             ))}
         </ol>
       </nav>

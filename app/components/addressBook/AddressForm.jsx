@@ -149,7 +149,7 @@ const AddressForm = ({customerID, defaultOption}) => {
             </h2>
             <div className="flex gap-[10px] lg:mt-0 mt-[12px]">
               <DynamicButton
-                className="bg-[#ef6e6e] md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full lg:min-w-[190px] w-[140px] "
+                className="bg-[#ef6e6e] md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full lg:min-w-[190px]  "
                 text="Cancel"
                 onClickFunction={() => {
                   setAddressForm(false);

@@ -102,7 +102,6 @@ export default function blog() {
   const [activeButton, setActiveButton] = useState('articles');
   const [searchQuery, setSearchQuery] = useState('');
   const [loader, setLoader] = useState(false);
-  const [selectedArticleId, setSelectedArticleId] = useState(null);
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const filteredArticles =
@@ -137,9 +136,7 @@ export default function blog() {
   const handlePrevMore = () => {
     setCurrentPage((prevPage) => prevPage - 1);
   };
-  const handleShowData = (articleId) => {
-    setSelectedArticleId(articleId);
-  };
+ 
 
   return (
     <div className="global-max-width-handler">
@@ -203,7 +200,7 @@ export default function blog() {
                     >
                       <div className="flex-1 ">
                         <img
-                          onClick={() => handleShowData(article.node.id)}
+                          
                           src={article.image.url}
                           className="h-[250px] w-[100%]"
                           alt={article.title}
@@ -220,13 +217,13 @@ export default function blog() {
                           }}
                         />
                         <p className="text-[18px] mt-[16px] text-[#ef6e6e] font-bold underline">
-                          <Link
+                          <span
                             className="hover:text-[#ef6e6e]"
-                            to={`/journal/news/${article.handle}`}
+                            // to={`/journal/news/${article.handle}`}
                             val={'News'}
                           >
                             Click here to read full article
-                          </Link>
+                          </span>
                         </p>
                       </div>
                     </Link>

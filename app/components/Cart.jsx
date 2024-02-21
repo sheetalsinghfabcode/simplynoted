@@ -218,7 +218,7 @@ function CartLineItem({line}) {
 
           <div className="grid pb-2">
             {(merchandise?.selectedOptions || []).map((option) => (
-              <Text color="subtle" key={option.name}>
+              <Text color="subtle" key={option.id}>
                 {option.name}: {option.value}
               </Text>
             ))}

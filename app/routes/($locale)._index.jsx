@@ -65,9 +65,9 @@ export async function loader({params, context}) {
         language,
       },
     }),
-    contentfulBanner: context.storefront.query(CONTENTFUL_BANNER_QUERY, {
-      variables: {},
-    }),
+    // contentfulBanner: context.storefront.query(CONTENTFUL_BANNER_QUERY, {
+    //   variables: {},
+    // }),
     tertiaryHero: context.storefront.query(COLLECTION_HERO_QUERY, {
       variables: {
         handle: 'winter-2022',
@@ -100,7 +100,7 @@ export default function Homepage() {
       {primaryHero && (
         <Hero {...primaryHero} height="full" top loading="eager" />
       )}
-      <Home contentfulBanner={contentfulBanner} />
+      <Home />
       <DraggableCanvas />
       <Notes />
       <CanvasDesign />
@@ -197,19 +197,19 @@ export const FEATURED_COLLECTIONS_QUERY = `#graphql
   }
 `;
 
-export const CONTENTFUL_BANNER_QUERY = `#graphql
-query {
-  bannerCollection{
-    items{
-      title
-      subTitle
-      roboVideo{
-        url
-      }
-      bannerImage{
-        url
-      }
-    }
-  }
-}
-`;
+// export const CONTENTFUL_BANNER_QUERY = `#graphql
+// query {
+//   bannerCollection{
+//     items{
+//       title
+//       subTitle
+//       roboVideo{
+//         url
+//       }
+//       bannerImage{
+//         url
+//       }
+//     }
+//   }
+// }
+// `;

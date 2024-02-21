@@ -22,7 +22,7 @@ const Faq = () => {
           title="Simply Noted FAQs"
           className={'mt-[20px] md:text-[42px] text-[32px] !pb-[15px]'}
         />
-<div className='shadow-custom-faq md:mt-14 mt-4 w-[95%] mx-auto'>
+<div className='shadow-outer-custom md:mt-14 mt-4 w-[95%] mx-auto'>
         <FaqAccordion
           title="Do you have have business pricing / offer custom orders?"
           className="tab-content "

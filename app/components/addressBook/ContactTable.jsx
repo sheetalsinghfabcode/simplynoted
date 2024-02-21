@@ -708,10 +708,11 @@ const ContactTable = ({
               <div className="overflow-auto">
                 <table className="overflow-auto min-w-full bg-gray-200 text-black">
                   <thead className="bg-[#0D0C22] text-[white] text-[14px] font-bold">
-                    {headerGroups.map((headerGroup) => (
-                      <tr {...headerGroup.getHeaderGroupProps()}>
-                        {headerGroup.headers.map((column) => (
+                    {headerGroups.map((headerGroup,index) => (
+                      <tr {...headerGroup.getHeaderGroupProps()} key={index}>
+                        {headerGroup.headers.map((column,index) => (
                           <th
+                          key={index}
                             {...column.getHeaderProps()}
                             className={`text-center whitespace-nowrap uppercase ${
                               column.id === 'type'
@@ -761,15 +762,18 @@ const ContactTable = ({
                         prepareRow(row);
                         return (
                           <tr
+                          key={index}
                             {...row.getRowProps()}
                             className={`text-center font-semibold ${
                               index % 2 === 0 ? 'bg-white' : 'bg-white'
                             }`}
+                           
                           >
-                            {row.cells.map((cell) => (
+                            {row.cells.map((cell,index) => (
                               <td
                                 {...cell.getCellProps()}
                                 className="border border-[#EFEFF2] py-2 px-4 whitespace-nowrap"
+                                key={index}
                               >
                                 {cell.render('Cell')}
                               </td>

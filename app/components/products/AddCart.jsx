@@ -364,7 +364,7 @@ export function AddCart({
   let keyUpdate27 = 'shippingMethodProdUrl';
   let keyUpdate28 = 'optionalShipDate';
 
-  console.log(productData, 'product data inside new discounted cards');
+ 
 
   function onClickAddCart() {
     setLoader(true);
@@ -573,11 +573,11 @@ export function AddCart({
         )}
         {!addressForm && (
           <div
-            className={`w-[100%] h-full gap-2 my-[2rem]  ${
+            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
               loader && 'opacity-40'
             }`}
           >
-            <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between">
+            <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
               <div className="col-6 md:w-[49%] w-full shadow-md rounded">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
@@ -601,8 +601,9 @@ export function AddCart({
                       />
                     </div>
                     {filteredForSender(returnAddress, searchData2).map(
-                      (item) => (
+                      (item,index) => (
                         <div
+                        key={index}
                           className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center"
                           onClick={() => handleCheckboxChange2(item)}
                         >
@@ -631,10 +632,10 @@ export function AddCart({
                     </h3>
                     {show ? (
                       <div>
-                        <text className="sm:text-[16px] text-[14px]">
+                        <span className="sm:text-[16px] text-[14px]">
                           Recipient addresses were specified in your bulk order
                           upload.
-                        </text>
+                        </span>
                       </div>
                     ) : (
                       <>
@@ -657,6 +658,7 @@ export function AddCart({
                         {filteredList(recipientAddress, searchData).map(
                           (item, index) => (
                             <div
+                            key={index}
                               className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer"
                               onClick={() => handleCheckboxChange(item)}
                             >
@@ -683,7 +685,7 @@ export function AddCart({
               </div>
             </div>
             <div
-              className={`row flex mr-2 ml-2 gap-4 mt-10 ${
+              className={`row flex mr-2 ml-2 gap-4 mt-10 w-full ${
                 show ? 'justify-between' : 'justify-end'
               }`}
             >
@@ -699,7 +701,7 @@ export function AddCart({
                       id="shipping-options"
                     >
                       {shippingData?.variants.edges.map((item, index) => (
-                        <div>
+                        <div key={index}>
                           <div>
                             <input
                               className="mr-2"
@@ -745,13 +747,13 @@ export function AddCart({
                         >
                           <option
                             className="w-full font-karla"
-                            selected
+                           
                             disabled
                           >
                             {cardName ? cardName : 'Select Gift Card'}
                           </option>
                           {data.collection.products.edges.map((item, i) => (
-                            <option className="font-karla" value={i}>
+                            <option className="font-karla" value={i} key={i}>
                               {item.node.title}
                             </option>
                           ))}
@@ -771,11 +773,11 @@ export function AddCart({
                             className="w-full font-karla font-normal text-black border-none"
                             onChange={(e) => priceValFunc(e.target.value)}
                           >
-                            <option selected disabled className="font-karla">
+                            <option  disabled className="font-karla">
                               {cardPriceTitle}
                             </option>
                             {cardPriceVal.map((item, i) => (
-                              <option className="font-karla" value={i}>
+                              <option className="font-karla" value={i} key={i}>
                                 {item.node.title}
                               </option>
                             ))}
@@ -804,12 +806,12 @@ export function AddCart({
                         }`}
                         name=""
                         value=""
-                        onClick={() => setStateCheckCart(!stateCheckCart)}
+                        onChange={() => setStateCheckCart(!stateCheckCart)}
                         checked={cardPriceTitle && stateCheckCart}
                       />
-                      <text className="ml-3 mt-[6px] text-[14px] font-bold">
+                      <span className="ml-3 mt-[6px] text-[14px] font-bold">
                         Add Gift Card
-                      </text>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -822,10 +824,10 @@ export function AddCart({
                 , {formData?.city}, {formData?.state},{formData?.country}
               </div>
             )}
-            <div className="row flex mt-4 relative right-[-17px] w-full justify-end font-normal text-[14px]">
-              <div className="buttonDiv my-2">
+            <div className={`row flex mt-4 relative w-full ${(selectShipMode && selectShipMode.node.price.amount !== '0.0') ?"justify-between" :"justify-end"} font-normal text-[14px]`}>
+              <div className="buttonDiv my-2 order-2">
                 <DynamicButton
-                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4"
+                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
                   text="ADD TO CART"
                   // disabled={!agree}
                   onClickFunction={() => onClickOFAddCartBtn()}
@@ -834,7 +836,7 @@ export function AddCart({
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4"
+                    className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4 sm:w-full w-[90%]"
                     text="Enter the shipping address for the package"
                     onClickFunction={() => onpenAddCardModal()}
                   />
@@ -949,8 +951,8 @@ export function AddCart({
                       id="country"
                       className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     >
-                      {location.countries.map((country) => (
-                        <option key={country.country} value={country.country}>
+                      {location.countries.map((country,index) => (
+                        <option key={index} value={country.country}>
                           {country.country}
                         </option>
                       ))}
@@ -974,8 +976,8 @@ export function AddCart({
                     >
                       <option value="">Select a state</option>
                       {selectedCountry &&
-                        selectedCountry.states.map((state) => (
-                          <option key={state} value={state}>
+                        selectedCountry.states.map((state,index) => (
+                          <option key={index} value={state}>
                             {state}
                           </option>
                         ))}

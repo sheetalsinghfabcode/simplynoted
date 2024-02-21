@@ -51,7 +51,7 @@ export async function loader({context,request}) {
     {variable: {}},
   );
   const {product} = shopifyCustomisableCardProduct
-  console.log(product.title,"customisableCardProductQuery");
+  
   const seo = seoPayload.Create_Custom({product,url:request.url})
   return defer({shopifyCustomisableCardProduct,seo});
 }

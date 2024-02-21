@@ -7,7 +7,7 @@ import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import {TypeAnimation} from 'react-type-animation';
 
-export default function Home({contentfulBanner}) {
+export default function Home() {
   const Navigate = useNavigate();
   return (
     <div className="sm-only:mt-[35px]">

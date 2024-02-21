@@ -156,7 +156,7 @@ export default function CustomProducts() {
         setQrValue(dataAfterChecking[0].value);
       }
     } catch (error) {
-      console.error(error, 'shopify');
+      
     }
   }
   const customStyles = {
@@ -310,8 +310,8 @@ export default function CustomProducts() {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            {errorVal.map((item) => (
-              <div>{item}</div>
+            {errorVal.map((item,index) => (
+              <div key={index}>{item}</div>
             ))}
           </Modal>
         </>
