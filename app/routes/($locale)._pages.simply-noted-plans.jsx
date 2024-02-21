@@ -94,6 +94,9 @@ export default function SimplyNoted() {
   }, []);
 
 
+  console.log("stripeCollection",stripeCollection);
+
+
   return (
     <div className=" w-full global-max-width-handler ">
       {loader && (
