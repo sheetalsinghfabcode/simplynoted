@@ -230,7 +230,7 @@ export default function Product() {
         <>
           <Section
             className={`w-full mt-[20px] !p-0 ${
-              show ? '!max-h-[1365px]' : '!max-h-[1135px]'
+              show ? '!max-h-[1460px]' : '!max-h-[1135px]'
             }`}
           >
             {/* <DynamicButton
