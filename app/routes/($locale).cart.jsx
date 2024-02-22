@@ -1027,7 +1027,7 @@ export default function AddCartFunc() {
                   <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
                     YOUR CART IS EMPTY!
                   </h3>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center mt-[8px]">
                     <DynamicButton
                       className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
                       text="CONTINUE SHOPPING"

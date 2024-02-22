@@ -2699,7 +2699,7 @@ body {
 
 .breadcrumb {
   position: relative;
-  z-index: 9;
+  z-index: 1;
 }
 
 /**************custom-box-shadow********************/

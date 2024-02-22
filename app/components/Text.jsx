@@ -122,7 +122,7 @@ export function Section({
 
   return (
     <div className="m-auto">
-      <div className="global-max-width-handler">
+      <div className="global-max-width-handler ">
         <Component {...props} className={styles}>
           {heading && (
             <Heading

@@ -80,7 +80,6 @@ const StripeModal = ({
     (country) => country.country === formData.address.country,
   );
 
-  console.log("savedCard",savedCard)
 
   return (
     <div

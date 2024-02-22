@@ -602,8 +602,8 @@ function DesktopHeader({isHome, menu}) {
     cartCountVal,
     setCartCountVal,
     customerId,
-    setCustomerId,
-    // isInitialRender,
+    setActiveTab,
+    setAccountTabName,
     isAccountLoader,
     setIsAccountLoader,
     loginModal,
@@ -747,6 +747,8 @@ function DesktopHeader({isHome, menu}) {
               className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-base !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
+                setActiveTab(0)
+                setAccountTabName("General")
                 if (customerId && pathname.pathname !== '/account') {
                   setIsAccountLoader(true);
                   navigate('/account');

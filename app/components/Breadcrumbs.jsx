@@ -103,7 +103,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
             const isLast = index === pathnames.length - 1;
 
             return (
-              <>
+              <Fragment key={index}>
                 <li
                   onClick={() => {
                     setWalletPlan(false);
@@ -111,7 +111,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     setProductShow(true);
                     setShowSelectAddress(false);
                   }}
-                  key={index}
+                  
                   className="inline-flex items-center"
                 >
                   <svg
@@ -142,7 +142,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     </span>
                   )}
                 </li>
-              </>
+              </Fragment>
             );
           })}
 
