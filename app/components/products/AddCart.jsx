@@ -225,14 +225,19 @@ export function AddCart({
     }
   }
   const handleCheckboxChange = (item) => {
-    setSelectedItem(item);
+    setSelectedItem(prevItem => prevItem === item ? null : item);
   };
   const handleCheckboxChange2 = (item) => {
-    setSelectedItem2(item);
+    setSelectedItem2(prevItem => prevItem === item ? null : item);
   };
+  
   const handleBoxoNShipping = (item) => {
-    setSelectShipMode(item);
+    setSelectShipMode(prevMode => prevMode === item ? null : item);
   };
+
+  console.log("selectedItem",selectedItem);
+  console.log("selectedItem2",selectedItem2);
+  
   const filteredList = (recipientAddress, searchData) => {
     return recipientAddress.filter((dataobj) => bySearch(dataobj, searchData));
   };

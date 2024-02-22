@@ -353,12 +353,12 @@ export default function AddCartFunc() {
                                   </span>
                                   <span className=" text-[black] font-normal inline-flex ml-[10px] md:text-[16px] text-[12px] ">
                                     {' '}
-                                    {item.senderAddress.address1}
+                                    {item.senderAddress?.address1}
                                     <br className="sm:block hidden" />
-                                    {item.senderAddress.city},
-                                    {item.senderAddress.state}
-                                    {item.senderAddress.zip},
-                                    {item.senderAddress.country}
+                                    {item.senderAddress?.city},
+                                    {item.senderAddress?.state}
+                                    {item.senderAddress?.zip},
+                                    {item.senderAddress?.country}
                                   </span>
                                 </div>
                                 <div className="buttonDiv mt-2">
