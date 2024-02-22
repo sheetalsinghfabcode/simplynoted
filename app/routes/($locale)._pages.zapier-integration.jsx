@@ -325,7 +325,7 @@ export default function Zapier() {
             <div className=" flex flex-col md:flex-row text-white  gap-[12px]  md:mx-[2rem] mr-10 ml-auto">
               <DynamicButton
                 text="REQUEST SAMPLE"
-                className="req-btn h-[45px]"
+                className="req-btn w-[200px] h-[45px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
@@ -333,7 +333,7 @@ export default function Zapier() {
               />
               <DynamicButton
                 text="SCHEDULE A DEMO"
-                className="sch-btn h-[55px]"
+                className="sch-btn text-[white] w-[200px] h-[55px]"
                 onClickFunction={() =>
                   (window.location.href = 'https://meetings.hubspot.com/rick24')
                 }

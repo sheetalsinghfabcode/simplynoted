@@ -53,7 +53,7 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
       <CardElement options={CARD_OPTIONS} className="m-5 " />
       <button
         type="submit"
-        className="!bg-[#EF6E6E] text-white md:!text-[16px] !text-[13px]  w-full !rounded-0 md:max-w-[300px] max-w-[220px] p-[10px]"
+        className="!bg-[#EF6E6E] text-white md:!text-[16px] font-bold !text-[13px] font-bold  w-full !rounded-0 md:max-w-[300px] max-w-[220px] p-[10px]"
       >
         Add Card
       </button>

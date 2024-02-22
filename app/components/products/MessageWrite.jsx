@@ -968,13 +968,13 @@ export function MessageWriting({
     return (
       <>
         <div className="flex justify-end"></div>
-        <div className="w-[100%] max-w-[500px]">
+        <div className="w-[100%]">
           <div>
             <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold font-karla">
               SELECT TEMPLATE
             </h1>
           </div>
-          <div>
+          <div className='mt-[30px]'>
             <input
               type="text"
               className="w-full rounded p-3 text-[15px] mt-4 bg-[#e8e8ea3d] font-karla"

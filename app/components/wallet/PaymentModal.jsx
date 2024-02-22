@@ -337,8 +337,8 @@ const PaymentModal = ({
       } fixed inset-0  flex items-center justify-center z-50`}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
-      <div className="modal-container bg-[#fff6f6] md:w-full w-[97%] mx-auto md:max-w-[645px]   rounded shadow-lg z-50 rounded-[10px] overflow-y-auto">
-        <div className="modal-content overflow-y-auto h-[450px] py-4  px-6">
+      <div className="modal-container bg-[white] md:w-full w-[97%] mx-auto md:max-w-[645px] h-[90%]  rounded shadow-lg z-50 rounded-[10px] overflow-auto">
+        <div className="modal-content h-[550px] py-4  px-6">
           <div className="w-full  relative mt-[24px] mx-auto">
             <DynamicButton
               className="bg-[#EF6E6E]  w-full max-w-[150px]"
@@ -372,8 +372,8 @@ const PaymentModal = ({
                 </span>
                 <span className="mr-2">{isBillingOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
               </div>
-               <div className={`overflow-hidden transition-max-height
-                ${isBillingOpen ? "max-h-[800px]" : "max-h-0"}
+               <div className={`overflow-hidden 
+                ${isBillingOpen ? "max-h-[800px] transition-max-height" : "max-h-0"}
                `}>
               <div className="rounded">
                   <div className="w-full max-w-[650px]  mx-auto  p-3 mt-3">
@@ -526,8 +526,8 @@ const PaymentModal = ({
                   <span className="mr-2">{isCardInfoOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
                 </div>
              
-               <div className={`overflow-hidden transition-max-height 
-                 ${isCardInfoOpen ?"max-h-[800px]" : "max-h-0"}
+               <div className={`overflow-hidden  
+                 ${isCardInfoOpen ?"max-h-[800px] transition-max-height" : "max-h-0"}
                `}>
                   <>
                     <Elements stripe={stripe}>

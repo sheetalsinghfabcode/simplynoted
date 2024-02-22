@@ -679,8 +679,8 @@ function DesktopHeader({isHome, menu}) {
               }}
                 key={item.id}
                 prefetch="intent"
-                className={`${({isActive}) =>
-                  isActive ? 'navitem-active' : 'navitems'}`}
+                // className={`${({isActive}) =>
+                //   isActive ? 'navitem-active' : 'navitems'}`}
               >
                 <div
                   className="dropdown"

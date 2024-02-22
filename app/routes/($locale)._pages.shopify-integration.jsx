@@ -195,7 +195,7 @@ export default function shopify() {
         </div>
       </div>
       {/* second */}
-      <div className="flex flex-wrap justify-center  pr-[40px] pl-[40px] ml-auto lg:mr-0 mr-auto ">
+      <div className="flex flex-wrap justify-center ml-auto lg:mr-0 mr-auto ">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
@@ -251,7 +251,7 @@ export default function shopify() {
 
       {/* third */}
 
-      <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto pr-[40px] lg:mt-0 mt-8">
+      <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  lg:mt-0 mt-8">
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div
@@ -321,10 +321,10 @@ export default function shopify() {
           />
           <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
             <div className="mb-[12px]">Integrate with Zapier</div>
-            <div className=" flex flex-col md:flex-row text-white  gap-[12px]  md:mx-[2rem] mr-10 ml-auto">
+            <div className=" flex flex-col md:flex-row text-white  gap-[12px]   md:mx-[2rem] mr-10 ml-auto">
               <DynamicButton
                 text="REQUEST SAMPLE"
-                className="req-btn"
+                className="req-btn !h-[45px] w-[200px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
@@ -332,7 +332,7 @@ export default function shopify() {
               />
               <DynamicButton
                 text="SCHEDULE A DEMO"
-                className="sch-btn w-[200px] h-[55px]"
+                className="sch-btn w-[200px] !h-[55px] w-[200px]"
                 onClickFunction={() =>
                   (window.location.href = 'https://meetings.hubspot.com/rick24')
                 }

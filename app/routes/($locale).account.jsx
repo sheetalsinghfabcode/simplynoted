@@ -393,8 +393,8 @@ function Account({customer, heading, featuredData}) {
 
 function AccountOrderHistory({orders}) {
   return (
-    <div className="mt-6 custom-scrollbar">
-      <div className="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
+    <div class="mt-6 overflow-auto">
+      <div class="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
@@ -424,7 +424,7 @@ function EmptyOrders() {
 
 function Orders({orders}) {
   return (
-    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 md:grid-cols-2 overflow-auto h-[500px] lg:grid-cols-3">
       {orders.map((order) => (
         <OrderCard order={order} key={order.id} />
       ))}
