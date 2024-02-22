@@ -41,7 +41,7 @@ const PackageModal = ({
                 </button>
               </div> */}
 
-        <div className="absolute top-[35px] right-0  pr-8 sm:block">
+        <div className="absolute top-[45px] right-0  pr-8 sm:block">
           <button onClick={onCancel} className="transition text-primary ">
             <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
           </button>

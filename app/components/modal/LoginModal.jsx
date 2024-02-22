@@ -1,5 +1,6 @@
 import DynamicButton from '../DynamicButton';
 import {Link, useNavigate} from '@remix-run/react';
+import {ImCross} from 'react-icons/im';
 
 const LoginModal = ({
   show,
@@ -22,12 +23,17 @@ const LoginModal = ({
 
       <div className="modal-container relative bg-white w-11/12 md:max-w-[60%] mx-auto rounded sm:mt-[0px] mt-[-410px] shadow-lg z-50 rounded-[10px] overflow-y-auto">
         {hasCancelIcon && (
-          <span
-            className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
-            onClick={onCancel}
-          >
-            &times;
-          </span>
+          // <span
+          //   className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
+          //
+          // >
+          //   &times;
+          // </span>
+          <div className="absolute top-[35px] right-0  pr-8 sm:block">
+            <button onClick={onCancel} className="transition text-primary ">
+              <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+            </button>
+          </div>
         )}
         <div className="modal-content py-4  px-6">
           <div className="modal-header">

@@ -26,7 +26,7 @@ export default function Salesforce() {
 
   return (
     <section>
-      <div className={`w-full global-max-width-handler ${animate ? 'fade-in' : ''}`}>
+      <div className={`w-full ${animate ? 'fade-in' : ''}`}>
         <div className="flex px-[16px] md:px-[40px]  items-center">
           <div
             className="lg:flex-row flex-col flex  sm:mt-10 mt-5"
@@ -215,7 +215,7 @@ export default function Salesforce() {
         <div className="flex flex-wrap justify-center ml-auto pr-[40px] pl-[40px] lg:mr-0 mr-auto  ">
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
-              <div className="xl:text-[32px] mb-[12px] text-center text-[32px] font-bold text-[#001A5F]">
+              <div className="xl:text-[32px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
                 <span className="font-beauty text-6xl font-bold">
                   thousands
@@ -252,7 +252,7 @@ export default function Salesforce() {
             </div>
           </div>
 
-          <div className="xl:w-[70%] lg:w-[60%] relative overflow-x-clip  w-full">
+          <div className="lg:w-[60%] relative overflow-x-clip  w-full">
             <img
               className="lg:absolute relative 2xl:left-[30px] xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-1.png?v=1611260653"
@@ -273,7 +273,7 @@ export default function Salesforce() {
 
         {/* third */}
 
-        <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0   mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
+        <div className="flex flex-wrap flex-row-reverse justify-center mr-auto  ml-auto  w-[90%] mt-8">
           <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[36px] md:text-left text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">

@@ -163,7 +163,7 @@ const Card = () => {
           <div className="md:w-[50%] sm:w-[100%]  w=[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
             <img className="w-full" src={pen} alt="LogoSimplinotedpic" />
           </div>
-          <div className="flex flex-col flex-wrap gap-2 pt-[20px] pb-[20px] md:pt-0 md:pb-0 md:h-[120px] md:flex-row md:justify-around items-center bg-black">
+          <div className="flex flex-col flex-wrap gap-2 pt-[20px] pb-[20px] md:pt-0 md:pb-0 md:h-[120px] md:flex-row md:justify-around items-center bg-[#1b3064]">
             <div className="text-white flex flex-col flex-1">
               <div className="md:text-4xl text-3xl font-bold">
                 Get your first card FREE!
@@ -195,10 +195,10 @@ const Card = () => {
               Ready to start writing?
             </h3>
 
-            <div className=" flex flex-col md:flex-row text-white md:my-[4rem]  md:mx-[2rem] mr-10 ml-auto mt-10">
+            <div className=" flex flex-col md:flex-row text-white md:my-[4rem] gap-[20px]  md:mx-[2rem] mr-10 ml-auto mt-10">
               <DynamicButton
                 text="REQUEST SAMPLE"
-                className="req-btn"
+                className="req-btn  !h-[45px] !w-[200px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
@@ -206,7 +206,7 @@ const Card = () => {
               />
               <DynamicButton
                 text="SCHEDULE A DEMO"
-                className="sch-btn"
+                className="sch-btn !h-[55px] !w-[200px]"
                 onClickFunction={() =>
                   (window.location.href = 'https://meetings.hubspot.com/rick24')
                 }

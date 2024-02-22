@@ -26,7 +26,7 @@ export function Modal({children, cancelLink}) {
             }}
             tabIndex={0}
           >
-            <div className="absolute top-[28px] right-0  pr-8 sm:block">
+            <div className="absolute top-[52px] right-0  pr-8 sm:block">
               <button
                 // to={cancelLink}
                 onClick={cancelLink}
