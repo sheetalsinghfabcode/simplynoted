@@ -442,7 +442,8 @@ nav a {
 
 #aiTextArea {
   font-size: 18px;
-  height: 300px;
+  min-height: 200px;
+  max-height: 300px;
   line-height: 1.52rem;
   width: 100%;
   border: 1px dashed #999999;
