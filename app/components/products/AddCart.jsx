@@ -714,7 +714,7 @@ export function AddCart({
                             />
                             <label
                               className="font-medium sm:text-[16px] text-[14px]"
-                              for="Mail-Individual-Cards-Normally-(default)"
+                              htmlFor="Mail-Individual-Cards-Normally-(default)"
                             >
                               {item?.node.title}
                             </label>

@@ -1602,7 +1602,7 @@ export function MessageWriting({
                               type="checkbox"
                               className=" border-[1px] border-[#E5E5E5] outline-none border-none"
                               checked={stateCheckCart}
-                              onClick={() => setStateCheckCart(!stateCheckCart)}
+                              onChange={() => setStateCheckCart(!stateCheckCart)}
                             />
                             &nbsp;
                             <label htmlFor="">
@@ -1696,7 +1696,7 @@ export function MessageWriting({
                               type="checkbox"
                               className=" border-[1px] border-[#E5E5E5] outline-none border-none"
                               checked={stateCheckCart}
-                              onClick={() => setStateCheckCart(!stateCheckCart)}
+                              onChange={() => setStateCheckCart(!stateCheckCart)}
                             />
                             &nbsp;
                             <label htmlFor="">

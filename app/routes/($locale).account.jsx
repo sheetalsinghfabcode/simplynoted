@@ -190,7 +190,6 @@ function Account({customer, heading, featuredData}) {
     remove();
   } else if (data == false) {
     if (customer && typeof window !== 'undefined' ) {
-      console.log("result",result)
       localStorage.setItem('customerId', result);
       setCustomerId(result);
       localStorage.setItem('SnEmail', customer.email);

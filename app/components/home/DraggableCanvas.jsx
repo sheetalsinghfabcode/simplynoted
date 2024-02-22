@@ -106,9 +106,9 @@ const DraggableCanvas = () => {
         {/* side divs with canvas  */}
         <div className="w-full relative flex justify-center">
           <div className="hidden lg:block absolute text-[18px] text-[white] top-[-8%]">
-            <div class="">
-              <span class="pr-[130px]">SimplyNoted</span>{' '}
-              <span class="absolute left-[138px]">Typed</span>
+            <div className="">
+              <span className="pr-[130px]">SimplyNoted</span>{' '}
+              <span className="absolute left-[138px]">Typed</span>
             </div>
           </div>
           <div className="hidden lg:block absolute left-[-3%] text-[18px] text-[white] top-[-6%] w-[250px] real-text arrow-left">

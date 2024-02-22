@@ -65,8 +65,6 @@ const Accordion = ({
   });
 
 
-  console.log("stripePayments",stripePayments);
-
   async function createCustomerId(id) {
     try {
       setloader(true);
@@ -279,7 +277,7 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          console.log('data', data);
+          
         }
       })
 
@@ -319,7 +317,7 @@ const Accordion = ({
         return response.json();
       })
       .then((data) => {
-        console.log('data', data);
+        
         setPaymentLoader(false);
         paymentPurchase(data, json);
         // Handle the response data here
