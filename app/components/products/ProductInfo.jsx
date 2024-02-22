@@ -86,7 +86,7 @@ export function ProductInfo({
   }
 
   return (
-    <div className="flex justify-center md:w-[46%] w-[90%] md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
+    <div className="flex justify-center md:w-[46%] w-[90%]  md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
         <div className="grid">
           <Heading

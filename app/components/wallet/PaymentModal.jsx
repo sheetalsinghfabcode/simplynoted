@@ -131,7 +131,7 @@ const PaymentModal = ({
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -249,7 +249,7 @@ const PaymentModal = ({
       subscriptionProduct: variantId,
     };
 
-    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
@@ -293,7 +293,7 @@ const PaymentModal = ({
       subscriptionStatus: data.status,
     };
 
-    const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',

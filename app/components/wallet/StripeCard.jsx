@@ -67,7 +67,7 @@ const StripeCard = ({
     type="submit"
     className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
   >
-    {(!showStripeCard && !addCreditModal)  ? 'Update Card' : (showStripeCard || addCreditModal ? 'Add Card' : (pathname.pathname === '/simply-noted-plans' || pathname.pathname === '/account' ? 'Complete Purchase' : 'Update Card'))}
+    {(!showStripeCard && !addCreditModal  && savedCard )  ? 'Update Card' : (showStripeCard || addCreditModal ? 'Add Card' : (pathname.pathname === '/simply-noted-plans' || pathname.pathname === '/account' ? 'Complete Purchase' : 'Update Card'))}
   </button>
 </div>
 
