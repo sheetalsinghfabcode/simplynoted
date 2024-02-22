@@ -62,7 +62,7 @@ const Card = () => {
             {stockData.map((data, index) => {
               return (
                   <SwiperSlide key={data.img}>
-                    <div className="data_card bg-white  text-center mt-5 sm:w-[88%] w-full mx-auto ">
+                    <div className="data_card shadow-inset-custom text-center mt-5 sm:w-[88%] w-full mx-auto ">
                       <div className="m-auto w-full pt-5 md:pt-20">
                         <img
                           src={data.img}
@@ -111,6 +111,7 @@ const Card = () => {
         <div className="ml-[-20rem]">
           <Swiper
             direction={'horizontal'}
+            allowTouchMove={false}
             spaceBetween={10}
             slidesPerView={3.5}
             breakpoints={{

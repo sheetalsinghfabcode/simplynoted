@@ -20,7 +20,7 @@ const Faq = () => {
       <div className="global-max-width-handler">
         <DynamicTitle
           title="Simply Noted FAQs"
-          className={'mt-[20px] md:text-[42px] text-[32px] !pb-[15px]'}
+          className={'mt-[20px] md:text-[42px] text-[32px] '}
         />
 <div className='shadow-outer-custom md:mt-14 mt-4 w-[95%] mx-auto'>
         <FaqAccordion
