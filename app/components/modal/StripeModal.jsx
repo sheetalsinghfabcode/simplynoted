@@ -5,6 +5,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import location from 'location.json';
 import {useState, useEffect} from 'react';
+import {ImCross} from 'react-icons/im';
 
 const StripeModal = ({
   loader,
@@ -90,12 +91,11 @@ const StripeModal = ({
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
       <div className="modal-container py-[15px] px-[24px]  relative bg-[white] w-full max-w-[80%] max-h-[90%]  md:max-w-[568px] mx-auto rounded shadow-lg shadow-lg z-50 overflow-auto">
-        <span
-          className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
-          onClick={onCancel}
-        >
-          &times;
-        </span>
+         <div className="absolute top-[35px] right-0  pr-8 sm:block">
+            <button onClick={onCancel} className="transition text-primary ">
+              <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+            </button>
+          </div>
         <div className="modal-content p ">
           <div className="modal-header">
             <h3 className="md:text-[29px] text-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">

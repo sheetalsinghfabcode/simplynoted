@@ -13,8 +13,8 @@ import {Autoplay} from 'swiper/modules';
 import DynamicButton from '~/components/DynamicButton';
 import 'swiper/css/autoplay';
 import {defer} from '@remix-run/server-runtime';
-import { seoPayload } from '~/lib/seo.server';
-export async function loader({request,context}){
+import {seoPayload} from '~/lib/seo.server';
+export async function loader({request, context}) {
   const {page} = await context.storefront.query(Zapier_GRAPH_QL, {
     variants: {},
   });
@@ -22,7 +22,8 @@ export async function loader({request,context}){
   return defer({
     seo,
     page,
-  });``
+  });
+  ``;
 }
 export default function Zapier() {
   const [animate, setAnimate] = useState(false);
@@ -193,7 +194,7 @@ export default function Zapier() {
           />
         </div>
       </div>
-      {/* second */}
+
       <div className="flex flex-wrap justify-center  ml-auto lg:mr-0 mr-auto ">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
@@ -212,7 +213,7 @@ export default function Zapier() {
           <div className="lg:flex-row flex-col flex lg:items-left items-center gap-[12px] lg:mt-0 mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1 lg:!text-[17px] w-[200px]  md:text-[14px] h-[50px]  mt-[35px]"
+              className="btn1 lg:!text-[17px] w-[247px] max-w-[247px]  md:text-[14px] h-[54px]  mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')
@@ -220,7 +221,7 @@ export default function Zapier() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2 lg:!text-[17px] w-[200px] md:text-[14px] h-[55px] items-center text-center"
+              className="btn2 lg:!text-[17px] w-[247px] max-w-[247px] md:text-[14px] !h-[69px] items-center text-center"
               onClickFunction={() =>
                 (window.location.href = 'https://simplynoted.com/blogs/news')
               }
@@ -235,22 +236,20 @@ export default function Zapier() {
 
         <div className="lg:w-[58%] relative overflow-x-clip  w-full">
           <img
-            className="lg:absolute relative 2xl:left-[30px] xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
+            className="lg:absolute relative 2xl:left-[56px] xl:max-w-[975px] lg:max-w-[725px] mx-auto overflow-hidden "
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
           />
         </div>
       </div>
 
-      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6 mt-[105px]">
+      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6 mt-[137px] mb-[123px]">
         <img
           className="simplinoted-card-image"
           src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
         />
       </div>
 
-      {/* third */}
-
-      <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  w-[90%] lg:mt-0 mt-8">
+      <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  w-[95%] lg:mt-0 mt-8">
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div
@@ -278,7 +277,7 @@ export default function Zapier() {
               text="TUTORIALS"
               className="btn2  lg:!text-[17px] w-[200px] md:text-[14px] h-[55px] items-center text-center"
               onClickFunction={() => navigate('/blogs')}
-            />  
+            />
           </div>
         </div>
         <div className="lg:hidden block mb-10">
@@ -290,17 +289,20 @@ export default function Zapier() {
 
         <div className="xl:w-[60%] lg:w-[60%] relative overflow-x-clip  w-full">
           <img
-            className="lg:absolute relative xl:max-w-[800px] lg:max-w-[725px] mx-auto  "
+            className="lg:absolute relative xl:max-w-[975px] lg:max-w-[725px] mx-auto  "
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
           />
         </div>
       </div>
+      <div className=''>
       <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6">
         <img
           className="simplinoted-card-image"
           src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
         />
       </div>
+      </div>
+
 
       <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto">
         <div className="banner-detail text-center">
@@ -339,7 +341,6 @@ export default function Zapier() {
                 }
               />
             </div>
-            
           </div>
         </div>
       </div>
@@ -356,4 +357,4 @@ const Zapier_GRAPH_QL = `#graphql
       description
     }
   }
-}`
+}`;
