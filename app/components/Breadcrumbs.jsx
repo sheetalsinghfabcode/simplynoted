@@ -111,7 +111,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     setProductShow(true);
                     setShowSelectAddress(false);
                   }}
-                  key={breadcrumbPath}
+                  key={index}
                   className="inline-flex items-center"
                 >
                   <svg
