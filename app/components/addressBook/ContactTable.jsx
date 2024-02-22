@@ -535,7 +535,7 @@ const ContactTable = ({
       ) : (
         <div className="w-full mx-auto relative max-w-[100%]">
           {pathName.pathname !== '/account' && (
-            <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f] mb-8">
+            <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f]">
               ADDRESS BOOK
             </h2>
           )}
@@ -689,7 +689,7 @@ const ContactTable = ({
                   !ProdcuctSide && (
                     <button
                       onClick={() => setDeleteModal(true)}
-                      className="text-white bg-[#ef6e6e] h-[45px] border border-solid md:text-[16px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
+                      className="text-white bg-[#ef6e6e] h-[45px] w-[200px] border border-solid md:text-[13px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
                     >
                       Delete Selected
                     </button>
@@ -865,8 +865,8 @@ const ContactTable = ({
           />
           <Instruction
             isOpen={isModalOpen}
-            title="INSTRUCTIONS FOR BULK UPLOAD"
             close={true}
+            title="INSTRUCTIONS FOR BULK UPLOAD"
             closeModal={closeModal}
             instructions={[
               'Download the bulk upload template (csv)',

@@ -12,11 +12,10 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     maxWidth: '80%', // Add your desired width here
     maxHeight: '70vh',
-    width: '600px',
-    height: '233px',
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    zIndex: '50'
   },
 };
 
@@ -51,12 +50,12 @@ function Instruction({
             </span>
           )} */}
           {close && (
-           <div className="absolute top-[35px] right-[5px] top-[27px] sm:block">
+           <div className="absolute top-[35px] right-[1px] top-[36px] sm:block">
                     <span
                       onClick={closeModal}
                       className="transition text-primary "
                     >
-                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </span>
                   </div>
           )}

@@ -32,7 +32,7 @@ export function Modal({children, cancelLink}) {
                 onClick={cancelLink}
                 className="transition text-primary hover:text-primary/50"
               >
-                 <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                 <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
               </button>
             </div>
             {children}

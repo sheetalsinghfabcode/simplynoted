@@ -1866,6 +1866,7 @@ export function MessageWriting({
         isOpen={isModalOpen}
         title="INSTRUCTIONS FOR BULK UPLOAD"
         closeModal={closeModal}
+        close={true}
         instructions={[
           'Download the bulk upload template (csv)',
           'Complete a row for each address you wish to add',
