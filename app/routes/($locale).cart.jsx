@@ -206,7 +206,7 @@ export default function AddCartFunc() {
       maxWidth: '780px',
       width: '90%',
       padding: '30px',
-      height: 'fit-content',
+      // height: 'fit-content',
       maxHeight: '80%',
       zIndex: '10000',
       background: '#FFFFFF',
