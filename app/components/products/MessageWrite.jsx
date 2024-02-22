@@ -404,7 +404,7 @@ export function MessageWriting({
             className={`flex  h-[48px]`}
             style={{justifyContent: metafields.footer.justifyContent}}
           >
-            <Image className={`!w-20`} src={metafields.footer.data} />
+            <img className={`!w-20`} src={metafields.footer.data} />
           </div>
         );
       } else {
