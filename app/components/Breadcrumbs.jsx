@@ -13,7 +13,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     setIsCardTypeSelectionPage,
     setWalletPlan,
     setWalletPayment,
-    setWalletPurchase
+    setWalletPurchase,
   } = useStateContext();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     localStorage.setItem('previousPage', location.pathname);
   }, [location.pathname]);
 
-  let ab = ['collections', 'pages','policies'];
+  let ab = ['collections', 'pages', 'policies'];
 
   return (
     <div className="breadcrumb inline-block pt-[39px] text-[#010101] capitalize font-medium ">
@@ -89,51 +89,63 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
             )}
           {pathnames.map((name, index) => {
             let breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
-            if (['collections', 'products', 'pages', 'policies'].includes(name))
-              return null; // Skip collections and products
+            if (
+              ['collections', 'products', 'pages', 'policies'].includes(name)
+            ) {
+              return null; // Skip collections, products, etc.
+            }
+            if (location.pathname.includes('orders')) {
+              if (location.pathname.includes('orders') && /\d/.test(location.pathname) && name.split(' ').filter((item, index, arr) => arr.indexOf(item) === index).length === 1) {
+                return null; // Skip rendering breadcrumbs for paths containing "orders" with a number and where the name appears only once
+              }
+              
+            }
             const isLast = index === pathnames.length - 1;
 
             return (
-              <li
-                onClick={() => {
-                  setWalletPlan(false)
-                  setIsCardTypeSelectionPage(true)
-                  setProductShow(true);
-                  setShowSelectAddress(false);
-                }}
-                key={index}
-                className="inline-flex items-center"
-              >
-                <svg
-                  className="rtl:rotate-180 mb-[1px]  w-3 h-3 mx-1 "
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 6 10"
+              <>
+                <li
+                  onClick={() => {
+                    setWalletPlan(false);
+                    setIsCardTypeSelectionPage(true);
+                    setProductShow(true);
+                    setShowSelectAddress(false);
+                  }}
+                  key={breadcrumbPath}
+                  className="inline-flex items-center"
                 >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m1 9 4-4-4-4"
-                  />
-                </svg>
-                {isLast && additionalBreadcrumbs ? (
-                  <Link
-                    to={breadcrumbPath}
-                    className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 "
+                  <svg
+                    className="rtl:rotate-180 mb-[1px]  w-3 h-3 mx-1 "
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 6 10"
                   >
-                    {name}
-                  </Link>
-                ) : (
-                  <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 ">
-                    {name}
-                  </span>
-                )}
-              </li>
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m1 9 4-4-4-4"
+                    />
+                  </svg>
+                  {isLast && additionalBreadcrumbs ? (
+                    <Link
+                      to={breadcrumbPath}
+                      className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 "
+                    >
+                      {name}
+                    </Link>
+                  ) : (
+                    <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 ">
+                      {name}
+                    </span>
+                  )}
+                </li>
+              </>
             );
           })}
+
           {additionalBreadcrumbs &&
             additionalBreadcrumbs.length > 0 &&
             additionalBreadcrumbs.map((breadcrumb, index) => (

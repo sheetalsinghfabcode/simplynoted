@@ -33,7 +33,6 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
     if (!error) {
       try {
         const {id} = paymentMethod;
-        debugger;
         if (id) {
           setPaymentMethodId(id);
           AddCreditCard(id);

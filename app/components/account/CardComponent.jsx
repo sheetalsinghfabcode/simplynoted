@@ -21,7 +21,7 @@ function CardComponent({ imgSrc, title, description, buttonText, showDownloadBut
         </p>
       )}
     </div>
-    <div className='hidden lg:block'>
+    <div className='hidden xl:block'>
     {showBorder &&
     <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-[#DDDDDD]"/>}
     </div>

@@ -365,7 +365,6 @@ export function AddCart({
   let keyUpdate28 = 'optionalShipDate';
 
  
-
   function onClickAddCart() {
     setLoader(true);
     if (editOrderValue?.index >= 0) {

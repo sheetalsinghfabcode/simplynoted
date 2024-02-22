@@ -68,7 +68,7 @@ export default function OrderRoute() {
   const {setOrderHistory} = useStateContext();
 
   return (
-    <div className=" w-full global-max-width-handler">
+    <div className=" w-full max-w-[1440px] px-[24] mx-auto">
       <div className="mt-[30px]">
         <DynamicTitle
           setOrderHistory={setOrderHistory(true)}
