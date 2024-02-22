@@ -218,7 +218,7 @@ const Profile = ({
         </div>
       )}
       <div
-        className={`bg-white  rounded-lg md:p-6 w-full  mx-auto  ${
+        className={`bg-white  rounded-lg md:p-6 w-full  mx-auto custom-box-shadow  ${
           loader && 'opacity-50'
         } `}
       >

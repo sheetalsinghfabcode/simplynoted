@@ -22,7 +22,7 @@ export async function loader({request,context}){
   return defer({
     seo,
     page,
-  });
+  });``
 }
 export default function Zapier() {
   const [animate, setAnimate] = useState(false);
@@ -32,12 +32,12 @@ export default function Zapier() {
   }, []);
 
   return (
-    <div className='global-max-width-handler'>
+    <div>
       <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto px-[16px] md:px-[40px] ">
         <div
           className={`w-full ${
             animate ? 'fade-in' : ''
-          } lg:w-2/5 lg:order-none order-2 w-full lg:text-left text-center`}
+          } lg:w-2/5 lg:order-none order-2 w-full pl-[35px] lg:text-left text-center`}
         >
           <div className="lg:block hidden">
             <img
@@ -194,7 +194,7 @@ export default function Zapier() {
         </div>
       </div>
       {/* second */}
-      <div className="flex flex-wrap justify-center pr-[40px] pl-[40px] ml-auto lg:mr-0 mr-auto ">
+      <div className="flex flex-wrap justify-center  ml-auto lg:mr-0 mr-auto ">
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
@@ -233,7 +233,7 @@ export default function Zapier() {
           </div>
         </div>
 
-        <div className="xl:w-[70%] lg:w-[60%] relative overflow-x-clip  w-full">
+        <div className="lg:w-[58%] relative overflow-x-clip  w-full">
           <img
             className="lg:absolute relative 2xl:left-[30px] xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
             src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
@@ -339,22 +339,7 @@ export default function Zapier() {
                 }
               />
             </div>
-          
-              {/* <DynamicButton
-                text="INTEGRATE NOW"
-                className="btn1 !w-full lg:!text-[17px] md:text-[14px] text-[12px] lg:h-[82%]  h-full mt-[35px]"
-                onClickFunction={() =>
-                  (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
-                }
-              />
-              <DynamicButton
-                text="VIEW ALL INTEGRATION"
-                className="sch-btn !ml-0 md:w-50% !w-full"
-                onClickFunction={() =>
-                  (window.location.href = 'https://zapier.com/apps')
-                }
-              /> */}
+            
           </div>
         </div>
       </div>

@@ -547,7 +547,7 @@ const ManageSubscription = () => {
                         <span className="lg:text-[14px] text-[12px] text-[#001a5f] font-semibold uppercase">
                           My Plan
                         </span>
-                        <span className="lg:text-[20px] text-[12px  ] !font-bold text-[#ef6e6e] uppercase">
+                        <span className="lg:text-[20px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection &&
                           stripeCollection.stripe?.subscriptionStatus !==
                             'canceled' &&
@@ -560,8 +560,8 @@ const ManageSubscription = () => {
                         stripeCollection.stripe?.subscriptionStatus !==
                           'canceled' &&
                         !stripeCollection.error && (
-                          <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                            <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
+                          <div className="flex justify-between  border-b border-solid border-[#e6edf8] items-center gap-[15px] py-[10px]">
+                            <span className="lg:text-[14px] text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
                               CHANGE STATUS
                             </span>
                             <DynamicButton
@@ -569,7 +569,7 @@ const ManageSubscription = () => {
                                 setCancelSubscription(true)
                               }
                               text="Cancel Plan"
-                              className="!bg-[#ef6e6e]  rounded-[9px] md:max-w-[190px]  h-[45px] lg:text-[16px] text-[12px] lg:max-w-[190px]  uppercase min-w-[190px]"
+                              className="!bg-[#ef6e6e]  rounded-[9px] md:max-w-[190px]  md:h-[45px] h-[32px] lg:text-[13px] text-[12px] lg:max-w-[190px]  uppercase min-w-[190px]"
                             />
                           </div>
                         )}
@@ -598,10 +598,10 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled' ? (
                             <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                              <span className="lg:text-[18px] text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="lg:text-[14px] text-[12px]  text-[#001a5f] font-karla font-semibold uppercase">
                                 PLAN RENEWAL DATE
                               </span>
-                              <span className="text-[12px] text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="md:text-[20px] text-[12px] text-[#ef6e6e] font-karla font-bold uppercase">
                                 {formattedDateString}
                               </span>
                             </div>
@@ -665,7 +665,7 @@ const ManageSubscription = () => {
                                   ? 'Stop Auto Renew'
                                   : 'Restart Auto Renew'
                               }
-                              className="!bg-[#4bb543]  max-w-[190px] lg:!text-[12px]  !text-[11px] whitespace-nowrap rounded-[9px] h-[45px] uppercase md:min-w-[190px] min-w-[2px]"
+                              className="!bg-[#4bb543]  max-w-[190px] lg:!text-[13px]  !text-[12px] whitespace-nowrap rounded-[9px] md:h-[45px] h-[32px] uppercase md:min-w-[190px] min-w-[2px]"
                             />
                           </div>
                         )}
@@ -705,7 +705,7 @@ const ManageSubscription = () => {
                                 key={i}
                                 className={`p-[1rem] ${
                                   i === 0 && 'bg-[#fff5f5]'
-                                }  lg:flex justify-between grid justify-center`}
+                                }  lg:flex justify-between border-b border-solid border-[#e6edf8] grid justify-center`}
                               >
                                 <div className="flex justify-start items-center text-[14px] font-bold">
                                   <span className="mr-[1rem]  md:text-[13px] text-[12px] tracking-wide">
