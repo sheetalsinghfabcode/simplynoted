@@ -114,6 +114,7 @@ export function MessageWriting({
   const [shippingDate, setShippingDate] = useState(
     editShippingDate ? editShippingDate : '',
   );
+  const [disableSelectAddressBtn,setDisableSelectAddressBtn] = useState(false)
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -165,6 +166,7 @@ export function MessageWriting({
     setDragAndDropBorderColor('#525252');
     setShowNextBtn(false);
     setSelectedFile('')
+    setDisableSelectAddressBtn(false)
   }
   async function checkUserLogged() {
     if (!customerid) {
@@ -576,6 +578,7 @@ export function MessageWriting({
       }
       result.push(obj);
     }
+    setDisableSelectAddressBtn(true)
     return result;
   }
   async function uploadCsvFile() {
@@ -903,9 +906,9 @@ export function MessageWriting({
     return (
       <>
        
-        <div className="sm:w-[29rem] w-full  p-[2rem] flex-col flex-wrap ">
+        <div className="w-[100%]">
           <div>
-            <h1 className="sm:text-[34px] text-[26px] text-[#001a5f] font-bold text-center font-karla">
+            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
               NEW TEMPLATE
             </h1>
           </div>
@@ -967,7 +970,6 @@ export function MessageWriting({
 
     return (
       <>
-        <div className="flex"></div>
         <div className="w-[100%]">
           <div>
             <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold font-karla text-center">
@@ -1304,7 +1306,7 @@ export function MessageWriting({
 
             {checkCharCount && (
               <span className="text-[red] font-bold">
-                you don't have enough character remaining
+                You don't have enough character remaining
               </span>
             )}
 
@@ -1711,7 +1713,8 @@ export function MessageWriting({
                 </span>
                 <div className="m-auto w-full grid font-bold">
                   <DynamicButton
-                    className="bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
+                  disabled={disableSelectAddressBtn}
+                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${disableSelectAddressBtn && 'opacity-40'}`}
                     text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
@@ -1768,7 +1771,7 @@ export function MessageWriting({
       
       {modalIsOpen &&
       <ModalComp
-      children={<div className='w-[100%]'>
+      children={<div className='w-[100%] h-[80'>
       <div className="flex">
       <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
         AI Message Assistant
@@ -1792,7 +1795,7 @@ export function MessageWriting({
           value={aiText ? aiText : valToGen}
           onChange={(e) => setValToGen(e.target.value)}
           placeholder="Example: Message for Birthday"
-          maxLength="450"
+          maxLength="250"
         ></textarea>
       )}
     </div>
@@ -1802,6 +1805,7 @@ export function MessageWriting({
           id="generate-msg"
           disabled=""
           onClick={() => aiGenrateMess()}
+          className='w-full'
         >
           Generate Message
         </button>

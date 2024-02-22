@@ -746,7 +746,7 @@ export function AddCart({
                         >
                           <option
                             className="w-full font-karla"
-                           
+                            selected
                             disabled
                           >
                             {cardName ? cardName : 'Select Gift Card'}
@@ -772,7 +772,7 @@ export function AddCart({
                             className="w-full font-karla font-normal text-black border-none"
                             onChange={(e) => priceValFunc(e.target.value)}
                           >
-                            <option  disabled className="font-karla">
+                            <option selected disabled className="font-karla">
                               {cardPriceTitle}
                             </option>
                             {cardPriceVal.map((item, i) => (

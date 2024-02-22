@@ -233,8 +233,8 @@ const CanvasDesign = () => {
             Leveraging our RESTful API or Zapier app Simply Noted can integrate to your favorite software and automate your handwritten outreach. 
             </div>
             <DynamicButton
-              onClickFunction={() => navigate('/collections/best-sellers')}
-              text="START WRITING"
+              onClickFunction={() => navigate('/pages/business-page')}
+              text="VIEW ALL INTEGRATIONS"
               className="btn1"
             />
           </div>
