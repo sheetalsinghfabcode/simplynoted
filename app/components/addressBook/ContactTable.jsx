@@ -521,6 +521,8 @@ const ContactTable = ({
     setIsModalOpen(false);
   };
 
+
+  
   return (
     <>
       {errorModal ? (
@@ -570,7 +572,9 @@ const ContactTable = ({
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
-                  <div className="flex flex-col justify-center items-start p-4">
+                  <div
+                  
+                  className="flex flex-col justify-center items-start p-4">
                     <div className="flex flex-col items-start gap-[4px]">
                       <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
                         Bulk Address Upload{' '}
@@ -694,16 +698,14 @@ const ContactTable = ({
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
-              <div className="md:h-[37px] h-0">
                 {ProdcuctSide && selectedCheckboxes.length > 0 && (
                   <button
-                    className="text-white bg-[#ef6e6e] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                    className="text-white bg-[#EF6E6E] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
                     onClick={continueBtn}
                   >
                     Continue
                   </button>
                 )}
-              </div>
               {/* Your table rendering code here... */}
               <div className="overflow-auto">
                 <table className="min-w-full bg-gray-200 text-black overflow-auto">

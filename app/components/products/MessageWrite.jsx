@@ -486,7 +486,6 @@ export function MessageWriting({
     if (!mainMessageBox) return;
     mainMessageBox.style.fontSize = '34px';
     mainMessageBox.style.lineHeight = '34px';
-    // debugger
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 

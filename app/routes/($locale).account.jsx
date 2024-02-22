@@ -317,7 +317,7 @@ function Account({customer, heading, featuredData}) {
 
           <div className=" w-full  md:w-[80%]">
             {activeTab === 0 && (
-              <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] lg:grid-cols-3 2xl:flex gap-[32px] font-inter justify-center sm:justify-normal 2xl:flex-wrap 2xl:flex-nowrap p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+              <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"
@@ -508,3 +508,6 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
+
+
+

@@ -339,7 +339,6 @@ const ManageSubscription = () => {
         setLoader(false);
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
         setLoader(false);
       });
     getSavedCards(customerID);

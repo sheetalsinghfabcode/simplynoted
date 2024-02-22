@@ -224,7 +224,6 @@ const Accordion = ({
 
       const data = await response.json();
 
-      debugger;
 
       if (data.redirectUrl) {
         setloader(false);
@@ -258,7 +257,6 @@ const Accordion = ({
       packageProduct: productId,
       subscriptionProduct: variantId,
     };
-    debugger;
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
@@ -270,7 +268,6 @@ const Accordion = ({
       body: JSON.stringify(payLoad),
     })
       .then((response) => {
-        debugger;
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -283,7 +280,6 @@ const Accordion = ({
         // Handle the response data here
         if (data) {
           console.log('data', data);
-          debugger;
         }
       })
 
@@ -324,10 +320,8 @@ const Accordion = ({
       })
       .then((data) => {
         console.log('data', data);
-        debugger;
         setPaymentLoader(false);
         paymentPurchase(data, json);
-        debugger;
         // Handle the response data here
       })
       .catch((error) => {
