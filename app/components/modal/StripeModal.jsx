@@ -90,14 +90,14 @@ const StripeModal = ({
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="modal-container p-[15px] h-[90%] relative bg-[white] w-full max-w-[80%]  md:max-w-[568px] mx-auto rounded shadow-lg shadow-lg z-50 overflow-auto">
+      <div className="modal-container py-[15px] px-[24px]  relative bg-[white] w-full max-w-[80%] max-h-[90%]  md:max-w-[568px] mx-auto rounded shadow-lg shadow-lg z-50 overflow-auto">
         <span
           className="absolute cursor-pointer !leading-[0] right-[10px] top-[20px]  text-[40px]"
           onClick={onCancel}
         >
           &times;
         </span>
-        <div className="modal-content py-4   px-6 ">
+        <div className="modal-content p ">
           <div className="modal-header">
             <h3 className="md:text-[29px] text-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
               {title}
@@ -114,7 +114,7 @@ const StripeModal = ({
             )}
 
             <>
-              <div className="w-[100%] border border-solid border-black p-3 mt-3">
+              <div className="w-[100%] mt-3">
                 {!savedCard && (
                   <>
 
