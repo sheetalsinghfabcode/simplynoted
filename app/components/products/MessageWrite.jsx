@@ -366,7 +366,7 @@ export function MessageWriting({
             className={`flex h-[48px]  mt-2`}
             style={{justifyContent: metafields.header.justifyContent}}
           >
-            <Image className={`!w-20 headerImage`} src={metafields.header.data} />
+            <img className={`!w-20 headerImage`} src={metafields.header.data} />
           </div>
         );
       } else if (metafields.header.data){
