@@ -289,7 +289,7 @@ export function AddCart({
         ).toFixed(2),
       );
     }
-    setMesgtext(cartDataReq.msg);
+    setMesgtext(cartDataReq?.msg);
     getRecipient();
     getReturn();
   }, [addressForm]);

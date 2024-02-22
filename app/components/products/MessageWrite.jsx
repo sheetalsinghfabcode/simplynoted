@@ -162,8 +162,9 @@ export function MessageWriting({
   }
 
   function onCancelCSVUpload() {
-    dragAndDropBorderColor('#525252');
+    setDragAndDropBorderColor('#525252');
     setShowNextBtn(false);
+    setSelectedFile('')
   }
   async function checkUserLogged() {
     if (!customerid) {
@@ -930,7 +931,7 @@ export function MessageWriting({
             <DynamicButton
               className="bg-gray-400 w-full h-[40px]"
               text="Cancel"
-              onClickFunction={() => setAddNewTem(false)}
+              onClickFunction={() => setAddNewTem(false) && setErrorTemplate(false)}
             />
           </div>
         </div>
@@ -966,10 +967,10 @@ export function MessageWriting({
 
     return (
       <>
-        <div className="flex justify-end"></div>
+        <div className="flex"></div>
         <div className="w-[100%]">
           <div>
-            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold font-karla">
+            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold font-karla text-center">
               SELECT TEMPLATE
             </h1>
           </div>
@@ -1413,9 +1414,6 @@ export function MessageWriting({
             show ? 'h-[940px]' : 'h-[370px] '
           } mb-[200px] md:mb-[0px]`}
         >
-          {isOverflowing ? (
-            <Loader loaderMessage="Message Fonts loads" />
-          ) : (
             <div
               id="outer"
               className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
@@ -1505,8 +1503,7 @@ export function MessageWriting({
                 metafields.isFooterIncluded &&
                 metafields.footer.data && <ShowFooterComp />}
             </div>
-          )}
-          // This margin is similar to the height of the absolute div above this
+          {/* // This margin is similar to the height of the absolute div above this */}
           <div className="text-[#737373] text-sm mt-[287px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
             there.

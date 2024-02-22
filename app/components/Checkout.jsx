@@ -541,7 +541,9 @@ export function CheckoutData({
       console.error(error, 'error on CreateCard');
     }
   }
-
+  function continueShopping() {
+    navigate('/collections/best-sellers');
+  }
   return (
     <>
       {loader ? (

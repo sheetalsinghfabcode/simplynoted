@@ -8,7 +8,10 @@ import robot3 from '../../../assets/Image/robot3.webp';
 import DynamicButton from '../DynamicButton';
 
 import {useNavigate} from '@remix-run/react';
-
+import Arrow1 from '../../../assets/Image/FirstArrow.gif'
+import Arrow2 from '../../../assets/Image/SecondArrow.gif'
+import Arrow3 from '../../../assets/Image/ThirdArrow.gif'
+import ShopifyPhoto from '../../../assets/Image/ShopifyPhoto.gif'
 const CanvasDesign = () => {
   const navigate = useNavigate();
 
@@ -16,8 +19,8 @@ const CanvasDesign = () => {
     <>
       <div className="mt-10px">
         {/* First */}
-        <div className="global-max-width-handler md:flex flex-col lg:flex-row hidden justify-between flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
-          <div className="flex-1 lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-10 lg:order-none order-2 data-background text-left">
+        <div className="global-max-width-handler relative md:flex flex-col lg:flex-row hidden justify-between flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[] ">
+          <div className="flex-1 lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-[6rem] lg:order-none order-2 data-background text-left">
             <div className="text-4xl text-custom font-custom font-semibold text-left  text-[#001A5F] ">
               Send one or send &nbsp;
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
@@ -30,26 +33,27 @@ const CanvasDesign = () => {
               easier to scale your personal touch and leave lasting impressions!
             </div>
             <DynamicButton
-              text="START WRITTING"
-              className="btn1"
+              text="START WRITING"
+              className="btn1 mr-[30px]"
               onClickFunction={() => navigate('/collections/best-sellers')}
             />
             <DynamicButton
               text="TUTORIALS"
               className="btn2"
-              onClickFunction={() => navigate('/blogs/news')}
+              onClickFunction={() => navigate('/Video')}
             />
           </div>
           <div className="flex-1">
             <div className="flex relative justify-end mt-[30px]">
-            <div className="z-[-1] w-[414px] text-left absolute -left-[87px] lg:-left-[31px]">
+            <div className="z-[1] w-[414px] text-left absolute left-[-87px] lg:left-[-111px] xl:left-[-35px]">
               <img className="" src={robot1} alt="LogoSimplinotedpic" />
             </div>
-              <video className="w-[401px] overflow-hidden" autoPlay loop muted>
+              <video className="z-[2] w-[401px] overflow-hidden" autoPlay loop muted>
                 <source src={First} type="video/webm"></source>
               </video>
             </div>
           </div>
+          <img src={Arrow1} className='hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[158px] lg:left-[263px] z-[-1] xl:top-[90px] xl:h-[474px] xl:left-[227px]'/>
         </div>
 
         {/* mobile view */}
@@ -69,14 +73,14 @@ const CanvasDesign = () => {
             scale your personal touch and leave lasting impressions!
           </div>
           <DynamicButton
-            text="START WRITTING"
+            text="START WRITING"
             className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
           <DynamicButton
             text="TUTORIALS"
             className="btn2 w-full mt-5"
-            onClickFunction={() => navigate('/blogs')}
+            onClickFunction={() => navigate('/Video')}
           />
         </div>
 
@@ -118,6 +122,8 @@ const CanvasDesign = () => {
               onClickFunction={() => navigate('/collections/best-sellers')}
             />
           </div>
+          <img src={Arrow2} className='hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[158px] lg:left-[263px] z-[-1] xl:top-[90px] xl:h-[434px] xl:left-[227px]'/>
+
         </div>
 
         {/* mobile view */}
@@ -146,7 +152,7 @@ const CanvasDesign = () => {
 
         {/* Third */}
 
-        <div className="global-max-width-handler md:flex hidden justify-between  flex-wrap mx-auto w-full  gap-[10px]  ">
+        <div className="global-max-width-handler relative md:flex hidden justify-between  flex-wrap mx-auto w-full  gap-[10px]  ">
           <div className="lg:w-[35%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
             <div className="text-3xl  font-bold text-left  text-[#001A5F]">
               Gift cards & &nbsp;
@@ -161,13 +167,13 @@ const CanvasDesign = () => {
             </div>
             <DynamicButton
               onClickFunction={() => navigate('/collections/best-sellers')}
-              text="START WRITTING"
+              text="START WRITING"
               className="btn1"
             />
           </div>
 
           <div className="lg:w-[60%] lg:mx-0 mx-auto relative flex flex-wrap justify-end w-full  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
-            <div className="text-right relative lg:w-[67%] w-[60%]">
+            <div className="text-right relative lg:w-[67%] w-[60%] border-b-[1px]">
               <img
                 className="absolute -top-[12px] -left-[377px] lg:top-[30px] lg:-left-[300px]"
                 src={robot3}
@@ -183,6 +189,8 @@ const CanvasDesign = () => {
               </video>
             </div>
           </div>
+          <img src={Arrow3} className='hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[293px] lg:left-[252px] z-[-1] xl:top-[212px] xl:h-[486px] xl:left-[252px]'/>
+
         </div>
 
         {/* mobile view */}
@@ -202,10 +210,34 @@ const CanvasDesign = () => {
             there's a gift card to match any budget.
           </div>
           <DynamicButton
-            text="START WRITTING"
+            text="START WRITING"
             className="btn1 w-full"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
+        </div>
+
+        {/* {Fourth } */}
+        <div className="global-max-width-handler lg:!mt-[8rem] xl:!mt-[10.5rem] relative md:flex hidden justify-between mx-auto w-full  gap-[10px] items-center">
+        <div className=" lg:max-w-[50%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
+            <img src={ShopifyPhoto} className=''/>
+          </div>
+          <div className="lg:max-w-[50%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
+            <div className="text-3xl  font-bold text-left  text-[#001A5F]">
+            Integrate &nbsp;
+              <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
+              and
+              </span>
+               automate &nbsp;
+            </div>
+            <div className="texts mt-3 lg:text-left text-justify lg:w-[98%] w-full">
+            Leveraging our RESTful API or Zapier app Simply Noted can integrate to your favorite software and automate your handwritten outreach. 
+            </div>
+            <DynamicButton
+              onClickFunction={() => navigate('/collections/best-sellers')}
+              text="START WRITING"
+              className="btn1"
+            />
+          </div>
         </div>
       </div>
     </>

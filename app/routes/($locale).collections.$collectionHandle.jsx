@@ -249,6 +249,9 @@ export default function Collection() {
       console.error(error, 'customiseCard---');
     }
   }
+  function continueShopping() {
+    navigate('/customise-your-card');
+  }
 
   function CustomeCard() {
     return (
@@ -357,6 +360,24 @@ export default function Collection() {
               </>
             )}
           </Grid>
+          {collectionHandle == 'customisable-cards' && addingProductsData && addingProductsData.length == 0 && checkState &&
+          <>
+          <div className="w-full h-full gap-2 mt-8 mb-8">
+                <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
+                  <div>
+                    <h3 className="text-[black] font-karla sm:text-[40px] text-[24px] mb-4">
+                      You don't have any custom card!
+                    </h3>
+                    <div className="flex justify-center">
+                      <DynamicButton
+                        className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
+                        text="CREATE ONE"
+                        onClickFunction={() => continueShopping()}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div></>}
           {loadMore && collectionHandle == 'customisable-cards' && (
             <div className="flex justify-center mt-[2rem]">
               <DynamicButton
