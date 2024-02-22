@@ -110,10 +110,11 @@ const WalletPlans = ({
                   type="radio"
                   className="mt-[4px]"
                   value={`${variant.node.title} ${titleMetafield?.value}`}
-                  defaultChecked={
+                  checked={
                     selectedPlan ===
                     `${variant.node.title} ${titleMetafield?.value}`
                   }
+                  onChange={()=>''}
                 />
 
                 <div className="flex flex-col gap-[8px]">

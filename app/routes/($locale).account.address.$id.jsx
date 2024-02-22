@@ -288,8 +288,9 @@ export default function EditAddress() {
               type="checkbox"
               name="defaultAddress"
               id="defaultAddress"
-              defaultChecked={defaultAddress?.id === address?.id}
+              checked={defaultAddress?.id === address?.id}
               className="border-gray-500 rounded-sm cursor-pointer border-1"
+              
             />
             <label
               className="inline-block ml-2 text-sm cursor-pointer"

@@ -60,7 +60,6 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
     phoneNumber,
     setPhoneNumber,
   } = useStateContext();
-
   useEffect(() => {
     const storedFullName = localStorage.getItem('SNFullName');
     const storedUserEmail = localStorage.getItem('SnEmail');

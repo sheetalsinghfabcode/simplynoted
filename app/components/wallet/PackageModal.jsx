@@ -153,10 +153,11 @@ const PackageModal = ({
                               type="radio"
                               className="mt-[4px] md:h-[15px] h-[10px] md:w-[15px] w-[10px]"
                               value={`${variant.node.title} ${titleMetafield?.value}`}
-                              defaultChecked={
+                              checked={
                                 selectedPlan ===
                                 `${variant.node.title} ${titleMetafield?.value}`
                               }
+                              onChange={()=>''}
                             />
 
                             <div className="flex flex-col gap-[8px]">

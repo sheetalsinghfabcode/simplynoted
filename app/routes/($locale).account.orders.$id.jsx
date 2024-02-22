@@ -9,6 +9,7 @@ import DynamicTitle from '~/components/Title';
 import {statusMessage} from '~/lib/utils';
 import {Link, Heading, PageHeader, Text} from '~/components';
 import DynamicButton from '~/components/DynamicButton';
+import { Fragment, useEffect } from 'react';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -67,11 +68,14 @@ export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
   const {setOrderHistory} = useStateContext();
 
+  useEffect(()=>{
+    setOrderHistory(true)
+  },[])
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
       <div className="mt-[30px]">
         <DynamicTitle
-          setOrderHistory={setOrderHistory(true)}
+          
           title={'Order Detail'}
         />
       </div>
@@ -118,10 +122,10 @@ export default function OrderRoute() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {lineItems.map((lineItem) => (
-                  <>
+                {lineItems.map((lineItem,index) => (
+                  <Fragment key={index}>
                     {lineItem.variant?.id && (
-                      <tr key={lineItem.variant?.id}>
+                      <tr >
                         <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
                           <div className="flex gap-6">
                             {lineItem?.variant?.image && (
@@ -216,7 +220,7 @@ export default function OrderRoute() {
                         </td>
                       </tr>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
 
@@ -348,8 +352,8 @@ export default function OrderRoute() {
                     </Text>
                   </li>
                   {order?.shippingAddress?.formatted ? (
-                    order.shippingAddress.formatted.map((line) => (
-                      <li key={line}>
+                    order.shippingAddress.formatted.map((line,index) => (
+                      <li key={index}>
                         <Text
                           className="text-[16px] text-[#141414e6]"
                           font-semibold

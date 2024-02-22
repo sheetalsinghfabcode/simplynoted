@@ -22,7 +22,7 @@ import {PRODUCT_CARD_FRAGMENT} from '~/data/fragments';
 import {routeHeaders} from '~/data/cache';
 import {seoPayload} from '~/lib/seo.server';
 import {getImageLoadingPriority} from '~/lib/const';
-import {useEffect, useState, useRef} from 'react';
+import {useEffect, useState, useRef, Fragment} from 'react';
 import {useNavigate} from '@remix-run/react';
 import DynamicButton from '~/components/DynamicButton';
 import {CustomComponent} from '~/components/CustomComponent';
@@ -255,7 +255,7 @@ export default function Collection() {
       <>
         {addingProductsData &&
           addingProductsData.map((product, index) => (
-            <>
+            <Fragment key={index}>
               {/* <h2>Hello</h2> */}
               <CustomComponent
                 key={index}
@@ -265,7 +265,7 @@ export default function Collection() {
                 customerId={customerid}
                 // loading={getImageLoadingPriority(i)}
               />
-            </>
+            </Fragment>
           ))}
       </>
     );
