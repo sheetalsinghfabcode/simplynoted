@@ -129,7 +129,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                       d="m1 9 4-4-4-4"
                     />
                   </svg>
-                  {isLast && additionalBreadcrumbs ? (
+                  {((isLast && additionalBreadcrumbs) || location.pathname.includes("orders")) ? (
                     <Link
                       to={breadcrumbPath}
                       className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 "
