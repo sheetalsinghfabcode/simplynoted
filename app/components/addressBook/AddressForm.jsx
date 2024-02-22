@@ -41,17 +41,43 @@ const AddressForm = ({customerID, defaultOption}) => {
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '',
       }));
+    } else if (name === 'birthday' || name === 'anniversary') {
+      // Additional check for birthday and anniversary fields
+      const currentDate = new Date();
+      const selectedDate = new Date(value);
+      if (selectedDate > currentDate) {
+        // If selected date is in the future, set it to an empty string
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} cannot be in the future`,
+        }));
+        setFormData({
+          ...formData,
+          [name]: '', // Resetting the date value
+        });
+      } else {
+        // If selected date is valid, update the form data
+        setFormData({
+          ...formData,
+          [name]: value,
+        });
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: '',
+        }));
+      }
     } else {
       setFormData({
         ...formData,
         [name]: value,
       });
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: '',
+      }));
     }
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: '',
-    }));
   };
+  
 
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.country,
@@ -99,6 +125,12 @@ const AddressForm = ({customerID, defaultOption}) => {
         throw error;
       });
   };
+
+
+  function containsOnlyNumbers(str) {
+    return /^\d+$/.test(str);
+  }
+  
   const validateForm = () => {
     const newErrors = {};
 
@@ -121,6 +153,11 @@ const AddressForm = ({customerID, defaultOption}) => {
     if (!formData.postalCode) {
       newErrors.postalCode = 'Postal Code is required';
     }
+    if   ( formData.postalCode &&  !containsOnlyNumbers(formData.postalCode)){
+      newErrors.postalCode = 'Invalid postal code format';
+
+    }
+
 
     setErrors(newErrors);
 
@@ -251,7 +288,7 @@ const AddressForm = ({customerID, defaultOption}) => {
                   id="postalCode"
                   required
                   name="postalCode"
-                  type="number"
+                  type="text"
                   placeholder="Postal Code"
                   value={formData.postalCode}
                   onChange={handleChange}

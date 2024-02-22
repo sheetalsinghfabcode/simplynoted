@@ -225,30 +225,19 @@ export function AddCart({
     }
   }
   const handleCheckboxChange = (item) => {
-    setSelectedItem(prevSelectedItem => {
-      // If the current item is already selected, unselect it
-      if (prevSelectedItem && prevSelectedItem._id === item._id) {
-        return null;
-      } else {
-        return item;
-      }
-    });
+    setSelectedItem(prevItem => prevItem === item ? null : item);
   };
-  
   const handleCheckboxChange2 = (item) => {
-    setSelectedItem2(prevSelectedItem => {
-      // If the current item is already selected, unselect it
-      if (prevSelectedItem && prevSelectedItem._id === item._id) {
-        return null;
-      } else {
-        return item;
-      }
-    });
+    setSelectedItem2(prevItem => prevItem === item ? null : item);
   };
   
   const handleBoxoNShipping = (item) => {
-    setSelectShipMode(item);
+    setSelectShipMode(prevMode => prevMode === item ? null : item);
   };
+
+  console.log("selectedItem",selectedItem);
+  console.log("selectedItem2",selectedItem2);
+  
   const filteredList = (recipientAddress, searchData) => {
     return recipientAddress.filter((dataobj) => bySearch(dataobj, searchData));
   };
@@ -260,8 +249,6 @@ export function AddCart({
       );
     } else return dataobj;
   };
-
-  console.log("cardName",cardName);
 
   const filteredForSender = (returnAddress, searchData2) => {
     return returnAddress.filter((dataobj) => searchBy(dataobj, searchData2));
