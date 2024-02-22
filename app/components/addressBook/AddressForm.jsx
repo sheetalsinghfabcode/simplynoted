@@ -4,6 +4,7 @@ import DateInput from '../addressBook/DateInput';
 import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
+import {  useLocation } from '@remix-run/react';
 
 const AddressForm = ({customerID, defaultOption}) => {
   const {setAddressForm, setEditAddress} = useStateContext();
@@ -25,6 +26,8 @@ const AddressForm = ({customerID, defaultOption}) => {
 
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
+
+  const pathname = useLocation()
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -139,8 +142,8 @@ const AddressForm = ({customerID, defaultOption}) => {
           </div>
         )}
         <div
-          className={`bg-white custom-box-shadow rounded px-8 pt-6 pb-8 mb-4   ${
-            loader && 'opacity-40'
+          className={`bg-white custom-box-shadow rounded px-8 pt-6  pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
+            loader && 'opacity-40' 
           }`}
         >
           <div className="lg:flex grid justify-between items-center mb-[16px]">
