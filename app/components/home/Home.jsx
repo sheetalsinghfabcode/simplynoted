@@ -54,7 +54,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col md:flex-row">
               <DynamicButton
-                text="START WRITTING!"
+                text="START WRITING!"
                 className="start-writing-button md:mr-[10px] w-[100%]"
                 onClickFunction={() => Navigate('/collections/best-sellers')}
               />
