@@ -1141,9 +1141,10 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${headerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap items-center flex`}
+                            className={`overflow-hidden h-[50px] whitespace-nowrap items-center flex`}
                             style={{
                               fontSize: `${headerData.fontSize}px`,
+                              fontFamily: headerData.fontFamily,
                               color: `${headerData.fontColor}`,
                               maxWidth: '434px',
                             }}
@@ -1191,8 +1192,9 @@ export default function FlatCustomisableCard({
                           }`}
                         >
                           <div
-                            className={`font-${footerData.fontFamily} overflow-hidden h-[50px] whitespace-nowrap items-center flex`}
+                            className={`overflow-hidden h-[50px] p-[12px] whitespace-nowrap items-center flex`}
                             style={{
+                              fontFamily: footerData.fontFamily,
                               fontSize: `${footerData.fontSize}px`,
                               color: `${footerData.fontColor}`,
                               maxWidth: `${qr.isQrAdded ? '375px' : '434px'}`,
@@ -1487,113 +1489,68 @@ export default function FlatCustomisableCard({
                           onChange={handleFontFamilyChange}
                         >
                           <option
-                            value="pinocchio"
-                            className={`font-pinocchio`}
+                            value="Arial"
+                            style={{fontFamily: 'Arial'}}
+                            className={`font-arial`}
                           >
-                            Pinocchio
+                            Arial
                           </option>
-
-                          <option value="tarzan" className={`font-tarzan`}>
-                            Tarzan
-                          </option>
-
-                          <option value="stitch" className={`font-stitch`}>
-                            Stitch
-                          </option>
-
-                          <option value="simba" className={`font-simba`}>
-                            Simba
-                          </option>
-
-                          <option value="roo" className={`font-roo`}>
-                            Roo
-                          </option>
-
-                          <option value="nimo" className={`font-nimo`}>
-                            Nimo
-                          </option>
-
-                          <option value="lumiere" className={`font-lumiere`}>
-                            Lumiere
-                          </option>
-
-                          <option value="kaaNew" className={`font-kaaNew`}>
-                            KaaNew
-                          </option>
-
-                          <option value="dumbo" className={`font-dumbo`}>
-                            Dumbo
-                          </option>
-
-                          <option value="donald" className={`font-donald`}>
-                            Donald
-                          </option>
-
-                          <option value="aladdin" className={`font-aladdin`}>
-                            Aladdin
-                          </option>
-
-                          <option value="belle" className={`font-belle`}>
-                            Belle
-                          </option>
-
-                          <option value="boo" className={`font-boo`}>
-                            Boo
-                          </option>
-
                           <option
-                            value="cinderella"
-                            className={`font-cinderella`}
+                            value="Comic Sans MS"
+                            style={{fontFamily: 'Comic Sans MS'}}
                           >
-                            Cinderella
+                            Comic Sans Ms
                           </option>
-
-                          <option value="copper" className={`font-copper`}>
-                            Copper
+                          <option
+                            value="Arial Black"
+                            style={{fontFamily: 'Arial Black'}}
+                          >
+                            Arial Black
                           </option>
-
-                          <option value="jasmine" className={`font-jasmine`}>
-                            Jasmine
+                          <option
+                            value="Arial Narrow"
+                            style={{fontFamily: 'Arial Black'}}
+                          >
+                            Arial Narrow
                           </option>
-
-                          <option value="merlin" className={`font-merlin`}>
-                            Merlin
+                          <option
+                            value="Courier New"
+                            style={{fontFamily: 'Courier New'}}
+                          >
+                            Courier New
                           </option>
-
-                          <option value="goofy" className={`font-goofy`}>
-                            Goofy
+                          <option
+                            value="CImpact"
+                            style={{fontFamily: 'Impact'}}
+                          >
+                            Impact
                           </option>
-
-                          <option value="hercules" className={`font-hercules`}>
-                            Hercules
+                          <option
+                            value="Rockwell"
+                            style={{fontFamily: 'Rockwell'}}
+                          >
+                            Rockwell
                           </option>
-
-                          <option value="rafiki" className={`font-rafiki`}>
-                            Rafiki
+                          <option value="Tahoma" style={{fontFamily: 'Tahoma'}}>
+                            Tahoma
                           </option>
-
-                          <option value="rapunzel" className={`font-rapunzel`}>
-                            Rapunzel
+                          <option
+                            value="Times New Roman"
+                            style={{fontFamily: 'Times New Roman'}}
+                          >
+                            Times New Roman
                           </option>
-
-                          <option value="ratigan" className={`font-ratigan`}>
-                            Ratigan
+                          <option
+                            value="Trebuchet MS"
+                            style={{fontFamily: 'Trebuchet MS'}}
+                          >
+                            Trebuchet MS
                           </option>
-
-                          <option value="sarabi" className={`font-sarabi`}>
-                            Sarabi
-                          </option>
-
-                          <option value="scar" className={`font-scar`}>
-                            Scar
-                          </option>
-
-                          <option value="triton" className={`font-triton`}>
-                            Triton
-                          </option>
-
-                          <option value="woody" className={`font-woody`}>
-                            Woody
+                          <option
+                            value="Verdana"
+                            style={{fontFamily: 'Verdana'}}
+                          >
+                            Verdana
                           </option>
                         </select>
                       </label>
