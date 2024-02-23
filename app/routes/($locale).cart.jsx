@@ -206,8 +206,8 @@ export default function AddCartFunc() {
       maxWidth: '780px',
       width: '90%',
       padding: '30px',
-      // height: 'fit-content',
-      maxHeight: '80%',
+      height: 'fit-content',
+      maxHeight: '65%',
       zIndex: '10000',
       background: '#FFFFFF',
       border: 'none',
@@ -1079,7 +1079,7 @@ export default function AddCartFunc() {
                   onClick={() => setIsOpen(false)}
                   className="transition text-primary "
                 >
-                   <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                   <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                 </button>
               </div>
             </div>
@@ -1159,7 +1159,7 @@ export default function AddCartFunc() {
                       onClick={() => closeModal()}
                       className="transition text-primary "
                     >
-                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </button>
                   </div>
 
@@ -1249,7 +1249,7 @@ export default function AddCartFunc() {
                         onClick={() => closeModal()}
                         className="transition text-primary "
                       >
-                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                       </button>
                     </div>
                   </div>

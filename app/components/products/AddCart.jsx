@@ -587,7 +587,7 @@ export function AddCart({
             }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
-              <div className="col-6 md:w-[49%] w-full shadow-md rounded">
+              <div className="col-6 md:w-[49%] w-full rounded h-fit shadow-outer-custom ">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
@@ -633,7 +633,7 @@ export function AddCart({
                   </div>
                 </div>
               </div>
-              <div className="col-6 md:w-[49%] w-full shadow-md rounded">
+              <div className="col-6 md:w-[49%] w-full shadow-outer-custom rounded h-fit">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
@@ -741,7 +741,7 @@ export function AddCart({
                 </div>
               )}
 
-              <div className="col-6 md:w-[49%] w-full  shadow-md rounded">
+              <div className="col-6 md:w-[49%] w-full  shadow-outer-custom  rounded">
                 <div className="max-h-[600px] p-[20px] overflow-y-auto mt-10 ">
                   <div className="address-data">
                     <h3 className="sm:text-[30px] text-[18px] font-bold mb-5">
@@ -806,7 +806,7 @@ export function AddCart({
                         )}
                       </div>
                     </div>
-                    <div className=" ">
+                    <div className="mt-[20px]">
                       <input
                         type="checkbox"
                         id=""

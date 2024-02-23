@@ -11,7 +11,7 @@ export default function Home() {
   const Navigate = useNavigate();
   return (
     <div className="sm-only:mt-[35px]">
-      <div className="flex flex-col tab:flex-row justify-center tab:justify-between items-center gap-[25px] overflow-hidden">
+      <div className="flex 2xl:items-start items-center flex-col tab:flex-row justify-center tab:justify-between items-center gap-[25px] overflow-hidden">
         {/* LEFT IMAGE  */}
         <div>
           <img
@@ -21,7 +21,7 @@ export default function Home() {
           />
         </div>
         {/* MIDDLE SECTION  */}
-        <div className="flex flex-col flex-wrap justify-center items-center text-[34px] 2xl:text-[38px] max-w-[75vw] gap-5">
+        <div className="flex flex-col flex-wrap justify-center items-center text-[34px] 2xl:text-[38px] max-w-[75vw] gap-5 2xl:mt-[50px]">
           <span className="text-center leading-[45px] font-bold text-[#001a5f]">
             Send Real Handwritten Notes to your
           </span>
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </div>
 
-      <video className="mt-[10px]" autoPlay loop muted>
+      <video className="mt-[10px] w-full" autoPlay loop muted>
         <source src={WorkingRobots} type="video/webm"></source>
       </video>
     </div>
