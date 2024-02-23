@@ -182,11 +182,11 @@ const AddressForm = ({customerID, defaultOption}) => {
           </div>
         )}
         <div
-          className={`bg-white custom-box-shadow rounded px-8 pt-6  pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
+          className={`bg-white  rounded px-8 pt-6  pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
             loader && 'opacity-40' 
           }`}
         >
-          <div className="lg:flex grid justify-between items-center mb-[16px]">
+          <div className="lg:flex grid justify-between gap-[90px] items-center mb-[16px]">
             <h2 className=" text-left text-[#001a5f] font-bold md:text-[34px] text-[24px] leading-[43px]">
               New Address
             </h2>
@@ -206,7 +206,7 @@ const AddressForm = ({customerID, defaultOption}) => {
               />
             </div>
           </div>
-          <div className="mb-4 flex flex-wrap -mx-3">
+          <div className="mb-4 flex mt-[30px] flex-wrap -mx-3">
             <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"

@@ -14,6 +14,8 @@ import DynamicButton from '~/components/DynamicButton';
 import 'swiper/css/autoplay';
 import {defer} from '@remix-run/server-runtime';
 import {seoPayload} from '~/lib/seo.server';
+import CanvasOne from "../../assets/Video/canvas-first.gif";
+import CanvasTow from "../../assets/Video/canvas-sec.gif";
 export async function loader({request, context}) {
   const {page} = await context.storefront.query(Zapier_GRAPH_QL, {
     variants: {},
@@ -33,7 +35,7 @@ export default function Zapier() {
   }, []);
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto px-[16px] md:px-[40px] ">
         <div
           className={`w-full ${
@@ -195,7 +197,10 @@ export default function Zapier() {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center  ml-auto lg:mr-0 mr-auto ">
+      <div className="flex flex-wrap relative justify-center  ml-auto lg:mr-0 mr-auto ">
+        <div className='absolute top-[383px] z-[-12] right-[406px]'>
+          <img className='w-[1023px]' src={CanvasOne} alt="Computer man" />
+        </div>
         <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div className="text-[28px] color-[#001a5f]  font-karla text-[#001A5F]">
@@ -249,7 +254,10 @@ export default function Zapier() {
         />
       </div>
 
-      <div className="flex flex-wrap flex-row-reverse justify-center lg:ml-0  mr-auto  ml-auto  w-[95%] lg:mt-0 mt-8">
+      <div className="flex flex-wrap flex-row-reverse relative justify-center lg:ml-0  mr-auto  ml-auto  w-[95%] lg:mt-0 mt-8">
+        <div className='absolute top-[346px] z-[-12]'>
+      <img className='w-[1023px]' src={CanvasTow} alt="Computer man" />
+        </div>
         <div className="lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
           <div className="lg:block hidden">
             <div
@@ -294,81 +302,41 @@ export default function Zapier() {
           />
         </div>
       </div>
-      <div className=''>
-      <div className="lg:flex hidden overflow-hidden pt-[221px] justify-end max-w 5/6">
-        <img
-          className="simplinoted-card-image"
-          src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
-        />
-      </div>
-      </div>
-
-
-      {/* <div className="flex flex-row items-center justify-center lg:w-full pt-[221px] md:w-[90%] mx-auto">
-        <div className="banner-detail text-center">
+      <div className="">
+        <div className="lg:flex hidden overflow-hidden pt-[221px] justify-end max-w 5/6">
           <img
-            className="lg:block absolute hidden left-[30px] mt-[-18rem]"
-            src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
-            alt="shopify"
+            className="simplinoted-card-image"
+            src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
           />
-
-          <img
-            className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-13rem] "
-            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
-            alt="shopify"
-          />
-          <img
-            className="lg:block hidden absolute mt-[100px] right-0 "
-            src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
-            alt="shopify"
-          />
-          <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[80px] flex text-white flex-col items-center font-karla">
-            <div className="mb-[12px]">Integrate with Zapier</div>
-            <div className=" flex flex-col md:flex-row text-white  gap-[12px]  md:mx-[2rem] mr-10 ml-auto">
-              <DynamicButton
-                text="REQUEST SAMPLE"
-                className="req-btn w-[247px] h-[54px]"
-                onClickFunction={() =>
-                  (window.location.href =
-                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
-                }
-              />
-              <DynamicButton
-                text="SCHEDULE A DEMO"
-                className="sch-btn text-[white] w-[247px] !h-[69px]"
-                onClickFunction={() =>
-                  (window.location.href = 'https://meetings.hubspot.com/rick24')
-                }
-              />
-            </div>
-          </div>
         </div>
-      </div> */}
-      <div className='w-full flex justify-center text-center'>
-        <div className='banner-detail relative w-[90rem]'>
-           <div className='absolute right-[-198px] top-[-36px]'>
-           <img
-            className="lg:block hidden"
-            src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
-            alt="shopify"
-          />
-           </div>
-           <div className='absolute left-[-98px] top-[-91px]'>
-           <img
-            className="lg:block hidden"
-            src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
-            alt="shopify"
-          />
-           </div>
-           <div>
-          <img
-            className=""
-            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
-            alt="shopify"
-          />
-           </div>
-           <div className="">
-            <div className="mb-[12px] text-[44px] mt-[21px] mb-[29px] font-bold text-[white]">Integrate with Zapier</div>
+      </div>
+      <div className="w-full flex justify-center text-center">
+        <div className="banner-detail relative w-[90rem]">
+          <div className="absolute right-[-198px] top-[-36px]">
+            <img
+              className="lg:block hidden"
+              src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+              alt="shopify"
+            />
+          </div>
+          <div className="absolute left-[-98px] top-[-91px]">
+            <img
+              className="lg:block hidden"
+              src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+              alt="shopify"
+            />
+          </div>
+          <div>
+            <img
+              className=""
+              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
+              alt="shopify"
+            />
+          </div>
+          <div className="">
+            <div className="mb-[12px] text-[44px] mt-[21px] mb-[29px] font-bold text-[white]">
+              Integrate with Zapier
+            </div>
             <div className="flex gap-[12px]">
               <DynamicButton
                 text="REQUEST SAMPLE"
@@ -389,7 +357,6 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
