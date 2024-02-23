@@ -110,8 +110,6 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       buttonColor: '#1b5299',
       tickCount: 17,
       firstTwoFeaturesText: ['0% - 40% OFF', 'Lite Users'],
-
-
       onClick: () => setWalletPlan(true),
       features: [
         'Discounts / Savings',

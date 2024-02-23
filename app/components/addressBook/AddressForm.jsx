@@ -29,8 +29,12 @@ const AddressForm = ({customerID, defaultOption}) => {
 
   const pathname = useLocation()
 
+
+  console.log("birthday",formData.birthday)
+  console.log("anniversary",formData.anniversary)
+
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -41,12 +45,11 @@ const AddressForm = ({customerID, defaultOption}) => {
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '',
       }));
-    } else if (name === 'birthday' || name === 'anniversary') {
-      // Additional check for birthday and anniversary fields
+    }
+    else if (name === 'birthday' || name === 'anniversary') {
       const currentDate = new Date();
-      const selectedDate = new Date(value);
+      const selectedDate = new Date(value); // Convert value to Date object
       if (selectedDate > currentDate) {
-        // If selected date is in the future, set it to an empty string
         setErrors((prevErrors) => ({
           ...prevErrors,
           [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} cannot be in the future`,
@@ -56,10 +59,9 @@ const AddressForm = ({customerID, defaultOption}) => {
           [name]: '', // Resetting the date value
         });
       } else {
-        // If selected date is valid, update the form data
         setFormData({
           ...formData,
-          [name]: value,
+          [name]: selectedDate, // Store as Date object
         });
         setErrors((prevErrors) => ({
           ...prevErrors,
@@ -77,6 +79,7 @@ const AddressForm = ({customerID, defaultOption}) => {
       }));
     }
   };
+  
   
 
   const selectedCountry = location.countries.find(
@@ -153,11 +156,11 @@ const AddressForm = ({customerID, defaultOption}) => {
     if (!formData.postalCode) {
       newErrors.postalCode = 'Postal Code is required';
     }
-    if   ( formData.postalCode &&  !containsOnlyNumbers(formData.postalCode)){
+  
+    // Validate postal code format
+    if (formData.postalCode && !/^\d+$/.test(formData.postalCode)) {
       newErrors.postalCode = 'Invalid postal code format';
-
     }
-
 
     setErrors(newErrors);
 
@@ -288,7 +291,7 @@ const AddressForm = ({customerID, defaultOption}) => {
                   id="postalCode"
                   required
                   name="postalCode"
-                  type="text"
+                  type="number"
                   placeholder="Postal Code"
                   value={formData.postalCode}
                   onChange={handleChange}

@@ -26,13 +26,13 @@ export function Modal({children, cancelLink}) {
             }}
             tabIndex={0}
           >
-            <div className="absolute top-[52px] right-0  pr-8 sm:block">
+            <div className="absolute top-[2px] right-0  pr-8 sm:block">
               <button
                 // to={cancelLink}
                 onClick={cancelLink}
                 className="transition text-primary hover:text-primary/50"
               >
-                 <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                 <ImCross className="md:mr-[-12px] mr-[-16px]  text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
               </button>
             </div>
             {children}
