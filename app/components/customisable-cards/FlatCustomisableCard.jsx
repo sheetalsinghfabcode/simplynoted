@@ -1174,7 +1174,7 @@ export default function FlatCustomisableCard({
                           <span>Your custom message text will be here...</span>
                         </div>
                         <div
-                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
+                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center gap-[25px] ${
                             headerFooterVisibility.isFooterVisible
                               ? 'block '
                               : 'hidden '

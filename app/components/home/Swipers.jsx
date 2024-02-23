@@ -64,7 +64,7 @@ const Swipers = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[72%] mt-[-2px]"
+                className="w-[72%]"
                 src={Mariott}
                 alt="LogoSimplinotedpic"
               />
@@ -74,7 +74,7 @@ const Swipers = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[78%] mt-[-2px]"
+                className="w-[78%]"
                 src={Ford}
                 alt="LogoSimplinotedpic"
               />
@@ -85,7 +85,7 @@ const Swipers = () => {
 
             <SwiperSlide>
               <img
-                className="w-[75%] mt-[-6px] "
+                className="w-[75%] "
                 src={Ronald}
                 alt="LogoSimplinotedpic"
               />
@@ -95,7 +95,7 @@ const Swipers = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[90%]  mt-[-13px]"
+                className="w-[90%] "
                 src={tesla}
                 alt="LogoSimplinotedpic"
               />
@@ -103,7 +103,7 @@ const Swipers = () => {
 
             <SwiperSlide>
               <img
-                className="w-[72%] mt-[-2px]"
+                className="w-[72%]"
                 src={Mariott}
                 alt="LogoSimplinotedpic"
               />
@@ -113,7 +113,7 @@ const Swipers = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[78%] mt-[-2px]"
+                className="w-[78%]"
                 src={Ford}
                 alt="LogoSimplinotedpic"
               />
@@ -124,14 +124,14 @@ const Swipers = () => {
 
             <SwiperSlide>
               <img
-                className="w-[75%] mt-[-6px] "
+                className="w-[75%] "
                 src={Ronald}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[90%]  mt-[-13px]"
+                className="w-[90%]"
                 src={tesla}
                 alt="LogoSimplinotedpic"
               />

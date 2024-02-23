@@ -20,14 +20,16 @@ const AboutUs = () => {
         <div className="sm:mt-10 mt-7">
           <div className="m-auto max-w-[900px] px-[15px] ">
             <div className="video-text ">
-              <h2 className="text-center capitalize md:text-[37px] text-[28px] text-[#001a5f] font-karla">
+              <div className='justify-center items-center grid'>
+              <h2 className="text-center font-bold capitalize text-[37px]  text-[#001a5f] font-karla">
                 Meet Simply Noted
               </h2>
               <img
-                className="md:w-[40%] md:ml-[16rem] ml-[3rem] w-[73%]"
+                className="w-[350px]  mt-5"
                 src={about_underline}
                 alt="about-underline"
               />
+              </div>
               <p className="text-center max-w-[30rem] mt-[10px] mx-auto md:text-[18px] text-[14px] leading-5 pb-[30px] text-[#696969]">
                 Simply Noted enhances customer relationships through the unique
                 power of authentic handwritten notes

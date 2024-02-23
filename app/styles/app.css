@@ -1146,6 +1146,7 @@ body {
 
 .swiper-wrapper {
   display: inline-flex;
+  align-items: center;
 }
 .swiper {
   width: 100%;

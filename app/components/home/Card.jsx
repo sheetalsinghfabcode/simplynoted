@@ -142,7 +142,7 @@ const Card = () => {
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="lg:w-[30%] w-full lg:absolute lg:mt-[-3rem]"
+                className="lg:w-[88%] w-full  "
                 src={Card2}
                 alt="LogoSimplinotedpic"
               />

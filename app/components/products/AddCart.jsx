@@ -587,7 +587,7 @@ export function AddCart({
             }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
-              <div className="col-6 md:w-[49%] w-full shadow-md rounded">
+              <div className="col-6 md:w-[49%] w-full shadow-md rounded h-fit">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
@@ -633,7 +633,7 @@ export function AddCart({
                   </div>
                 </div>
               </div>
-              <div className="col-6 md:w-[49%] w-full shadow-md rounded">
+              <div className="col-6 md:w-[49%] w-full shadow-md rounded h-fit">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
