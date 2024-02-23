@@ -122,7 +122,6 @@ export default function CustomProducts() {
       );
       const json = await res.json();
       setCustomProductData(json.result);
-      console.log(json.result,"custom image data");
       // getMetaFields(json.result)
     } catch (error) {
       console.error(error, 'productError');
@@ -143,7 +142,6 @@ export default function CustomProducts() {
         },
       });
       const json = await data.json();
-      console.log(json.result,"json.result");
       let extractedData = json.result.metafields[0].value;
       let extractMetafield = JSON.parse(extractedData);
       setMetafields(extractMetafield);
@@ -154,7 +152,6 @@ export default function CustomProducts() {
       let dataAfterChecking = newData.filter(
         (item) => key.includes(item.namespace) && key2.includes(item.key),
       );
-      console.log("dataAfterChecking",dataAfterChecking);
       if (qrData.namespace == 'is_customised') {
         setQrValue(dataAfterChecking[0].value);
       }

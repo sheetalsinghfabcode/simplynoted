@@ -363,18 +363,18 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex h-[48px]  mt-2`}
+            className={`flex h-[48px]  mt-2 aaa`}
             style={{ justifyContent: metafields.header.justifyContent }}
           >
-            <img className={`!w-20 headerImage`} src={metafields.header.data} />
+            <img  className={`!w-20 headerImage ${metafields.header.isColored? 'grayscale-0' : 'grayscale'}`} src={metafields.header.data} />
           </div>
         );
       } else if (metafields.header.data){
         return (
         
-          <div className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2`}>
+          <div className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2 aaa`}>
             <span
-              className={`flex w-full h-full`}
+              className={`flex w-full h-full aaaa`}
               style={{
                 fontFamily: metafields.header.fontType,
                 fontSize: metafields.header.fontSize,
@@ -401,19 +401,20 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex  h-[48px]`}
+            className={`flex  h-[48px] bb`}
             style={{ justifyContent: metafields.footer.justifyContent }}
           >
-            <img className={`!w-20`} src={metafields.footer.data} />
+            <img className={`!w-20 ${metafields.footer.isColored? 'grayscale-0' : 'grayscale'}`} src={metafields.footer.data} />
           </div>
         );
-      } else {
+      }
+       else {
         return (
           <div
-            className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem]`}
+            className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem] bbb`}
           >
             <span
-              className={`flex w-full h-full`}
+              className={`flex w-full h-full bbb`}
               style={{
                 fontFamily: metafields.footer.fontType,
                 fontSize: metafields.footer.fontSize,
@@ -1520,9 +1521,9 @@ export function MessageWriting({
                 metafields.isFooterIncluded &&<ShowFooterComp />}
             </div>
             {/* } */}
-            {metafields &&
+            {/* {metafields &&
               metafields.isFooterIncluded &&
-              metafields.footer.data && <ShowFooterComp />}
+              metafields.footer.data && <ShowFooterComp />} */}
           </div>
           {/* // This margin is similar to the height of the absolute div above this */}
           <div className="text-[#737373] text-sm mt-[287px] mb-[44px]">

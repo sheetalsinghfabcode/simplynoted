@@ -126,7 +126,7 @@ export default function FlatCustomisableCard({
           if (frontImageDetails.isImageSelected) {
             const selectedBlobUrl = frontImageDetails.isColoredImage
               ? frontImageDetails.imageBlobUrl
-              : frontImageDetails.blackAndWhiteImageFile;
+              : frontImageDetails.blackAndWhiteImageBlobUrl;
             imageFile = await blobUrlToFileObject(
               selectedBlobUrl,
               `${customerId}-flat-front-image`,
