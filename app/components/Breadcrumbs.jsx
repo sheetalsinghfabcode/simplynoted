@@ -8,7 +8,6 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   const pathnames = location.pathname.split('/').filter((x) => x);
 
   const {
-    setShowSelectAddress,
     setProductShow,
     setIsCardTypeSelectionPage,
     setWalletPlan,
@@ -90,7 +89,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
           {pathnames.map((name, index) => {
             let breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
             if (
-              ['collections', 'products', 'pages', 'policies'].includes(name)
+              ['collections', 'products', 'pages', 'policies','custom'].includes(name)
             ) {
               return null; // Skip collections, products, etc.
             }
@@ -109,7 +108,6 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     setWalletPlan(false);
                     setIsCardTypeSelectionPage(true);
                     setProductShow(true);
-                    setShowSelectAddress(false);
                   }}
                   
                   className="inline-flex items-center"

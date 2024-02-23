@@ -1,6 +1,6 @@
 import {IconClose, Link} from '~/components';
 import {ImCross} from 'react-icons/im';
-
+ 
 export function Modal({children, cancelLink}) {
   return (
     <div
@@ -14,7 +14,7 @@ export function Modal({children, cancelLink}) {
       <div className="fixed inset-0 z-50">
         <div className="flex items-center justify-center mx-auto sm:w-full w-[90%] h-[80%] p-4 text-center sm:p-0">
           <div
-            className="max-h-[80%] mt-[10rem] w-fit relative flex-1 px-4 pt-5 pb-4 overflow-auto text-left transition-all 
+            className="max-h-[80%] mt-[10rem] w-fit relative flex-1 px-4 pt-5 pb-4 overflow-auto text-left transition-all
             transform rounded shadow-xl
               my-auto sm:flex-none sm:w-full md:max-w-[40vw] max-w-[447px] sm:p-6 bg-white"
             role="button"
@@ -26,13 +26,13 @@ export function Modal({children, cancelLink}) {
             }}
             tabIndex={0}
           >
-            <div className="absolute top-[52px] right-0  pr-8 sm:block">
+            <div className="absolute top-[2px] right-0  pr-8 sm:block">
               <button
                 // to={cancelLink}
                 onClick={cancelLink}
                 className="transition text-primary hover:text-primary/50"
               >
-                 <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                 <ImCross className="md:mr-[-12px] mr-[-16px]  text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
               </button>
             </div>
             {children}

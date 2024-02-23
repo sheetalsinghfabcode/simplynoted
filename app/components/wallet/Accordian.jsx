@@ -34,6 +34,8 @@ const Accordion = ({
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
 
+  const {setActiveTab,setAccountTabName} = useStateContext();
+
   let customerid, fullName, userEmail;
 
   let productId = packageProduct?.replace(/[^0-9]/g, '');
@@ -225,22 +227,21 @@ const Accordion = ({
 
       if (data.redirectUrl) {
         setloader(false);
-        setPaymentLoader(false);
         const result = await stripe.confirmCardPayment(data.client_secret);
        
         if (result?.error) {
         
-        } else {
-          paymentSave(data, json);
-          
-        }
+        } 
+      }
+      else {
+        paymentSave(data, json);
+        
       }
       // Handle the response data here
     } catch (error) {
       // Handle errors here
       console.error('Error:', error);
     } finally {
-      setPaymentLoader(false);
       
     }
   };
@@ -277,12 +278,17 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          
+          navigate('/account')
+          setActiveTab(4)
+          setAccountTabName("Manage Plans")
+          setPaymentLoader(false)
+          console.log("",data);
         }
       })
 
       .catch((error) => {
         // Handle errors here
+        
         console.error('Error:', error);
       });
   };
@@ -318,7 +324,6 @@ const Accordion = ({
       })
       .then((data) => {
         
-        setPaymentLoader(false);
         paymentPurchase(data, json);
         // Handle the response data here
       })

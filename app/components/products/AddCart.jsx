@@ -225,10 +225,10 @@ export function AddCart({
     }
   }
   const handleCheckboxChange = (item) => {
-    setSelectedItem(prevItem => prevItem === item ? null : item);
+    setSelectedItem(item);
   };
   const handleCheckboxChange2 = (item) => {
-    setSelectedItem2(prevItem => prevItem === item ? null : item);
+    setSelectedItem2(item);
   };
   
   const handleBoxoNShipping = (item) => {
@@ -701,30 +701,32 @@ export function AddCart({
                     </h3>
 
                     <div
-                      className="shipping-methods grid grid-cols-2 gap-2"
+                      className="shipping-methods grid grid-cols-1 sm:grid-cols-2 gap-x-[14px] gap-y-[8px]"
                       id="shipping-options"
                     >
                       {shippingData?.variants.edges.map((item, index) => (
-                        <div key={index}>
-                          <div>
+                        <div
+                        onClick={() => handleBoxoNShipping(item)}
+                        className='flex flex-col gap-[6px] cursor-pointer'
+                        key={index}>
+                          <div className=''>
                             <input
-                              className="mr-2"
+                              className="mr-2 cursor-pointer"
                               value={item}
                               checked={
                                 selectShipMode &&
                                 selectShipMode?.node.title === item.node.title
                               }
                               type="radio"
-                              onChange={() => handleBoxoNShipping(item)}
                             />
                             <label
-                              className="font-medium sm:text-[16px] text-[14px]"
+                              className="font-medium cursor-pointer sm:text-[16px] text-[14px]"
                               htmlFor="Mail-Individual-Cards-Normally-(default)"
                             >
                               {item?.node.title}
                             </label>
                           </div>
-                          <div className="custom_variant_price font-medium sm:text-[16px] text-[14px]">
+                          <div className="custom_variant_price cursor-pointer font-medium sm:text-[16px] text-[14px]">
                             ${item?.node.price.amount}
                           </div>
                         </div>
@@ -822,7 +824,7 @@ export function AddCart({
               </div>
             </div>
 
-            {onSaveShip && (
+            {((onSaveShip && selectShipMode &&  selectShipMode.node.price.amount !== '0.0') || (editOrderValue?.data?.locationForShipMethod && editOrderValue?.node?.price?.amount !== '0.0' )) && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
                 {formData?.firstName}, {formData?.lastName},{formData?.address1}
                 , {formData?.city}, {formData?.state},{formData?.country}
@@ -841,7 +843,7 @@ export function AddCart({
                 <div className="buttonDiv my-2">
                   <DynamicButton
                     className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4 sm:w-full w-[90%]"
-                    text="Enter the shipping address for the package"
+                    text= { (onSaveShip || editOrderValue?.data )  ? "Change Shipping Address": "Enter the shipping address for the package"}
                     onClickFunction={() => onpenAddCardModal()}
                   />
                 </div>
@@ -858,7 +860,7 @@ export function AddCart({
                     Please add all fields with * that are Mandatory
                   </p>
                 )}
-                <div className="grid-rows-2 flex gap-3">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="">First Name*</label>
                     <input
@@ -884,7 +886,8 @@ export function AddCart({
                     />
                   </div>
                 </div>
-                <div className="mt-2">
+                <div className="grid grid-cols-2 gap-4">
+                <div className="mt-2 ">
                   <label htmlFor="" className="">
                     Address1*
                   </label>
@@ -913,7 +916,8 @@ export function AddCart({
                     className="mt-2 border border-solid border-black p-3 w-[100%]"
                   />
                 </div>
-                <div className="grid-rows-2 flex gap-3">
+                </div>
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="">City*</label>
                     <input
@@ -939,7 +943,7 @@ export function AddCart({
                     />
                   </div>
                 </div>
-                <div className="grid-rows-2 flex gap-3">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label
                       className="block text-gray-700 text-sm font-bold mb-2"
@@ -993,17 +997,17 @@ export function AddCart({
                     )}
                   </div>
                 </div>
-                <div className="grid-rows-2 flex gap-[10rem] mt-5">
+                <div className="flex items-center justify-center mt-[24px] gap-[8px]">
                   <div>
                     <DynamicButton
-                      className="bg-[#ef6e6e] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
+                      className="bg-[#ef6e6e] h-[40px] w-full  "
                       text="Cancel"
                       onClickFunction={() => closeModal()}
                     />
                   </div>
                   <div>
                     <DynamicButton
-                      className="bg-[#1b5299] h-[60px] w-full xl:min-w-[180px] max-w-[170px] "
+                      className="bg-[#1b5299] h-[40px] w-full  "
                       text="Save Address"
                       onClickFunction={() => OnSaveClickShipAddress()}
                     />
