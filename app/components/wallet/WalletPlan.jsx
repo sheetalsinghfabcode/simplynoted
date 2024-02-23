@@ -138,7 +138,7 @@ const WalletPlans = ({
                     )}
                   {amountMetafield?.value && (
                     <span className="text-[14px] font-medium">
-                      ${variant.node.price.amount}
+                    ${variant.node.price.amount}
                     </span>
                   )}
                 </div>

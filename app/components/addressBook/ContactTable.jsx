@@ -295,6 +295,7 @@ const ContactTable = ({
         const jsonData = csvToJson(csvData);
         setSelectedFile(file);
         setFileData(jsonData);
+        setUploadBulkAddress(false);
 
         // Set the 'file' variable to null after using it
       };
@@ -383,9 +384,9 @@ const ContactTable = ({
   function cleanHeaders(headerRow) {
     const cleanedHeaders = {};
     for (const key in headerRow) {
-      cleanedHeaders[key.replace(/"/g, '').trim()] = headerRow[key]
-        .replace(/"/g, '')
-        .trim();
+      cleanedHeaders[key?.replace(/"/g, '')?.trim()] = headerRow[key]
+        ?.replace(/"/g, '')
+        ?.trim();
     }
     return cleanedHeaders;
   }
@@ -521,8 +522,30 @@ const ContactTable = ({
     setIsModalOpen(false);
   };
 
+  const uploadBulkAddressRef = useRef(null);
+  const clickUploadBulkAddress = useRef(null);
 
-  
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        clickUploadBulkAddress.current &&
+        !clickUploadBulkAddress.current.contains(event.target)
+      ) {
+        setUploadBulkAddress(false);
+      } else if (
+        clickUploadBulkAddress.current &&
+        !clickUploadBulkAddress.current.contains(event.target)
+      ) {
+        setUploadBulkAddress(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [uploadBulkAddressRef, clickUploadBulkAddress]);
+
   return (
     <>
       {errorModal ? (
@@ -551,80 +574,82 @@ const ContactTable = ({
               />
             </div>
             <div className="tab:flex grid md:items-end  items-center md:gap-[10px]">
-              <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
+              <div
+                ref={clickUploadBulkAddress}
+                className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]"
+              >
                 <DynamicButton
                   className="bg-[#EF6E6E] px-[50px] py-[14px] w-[190px] h-[45px] text-[14px] font-normal "
                   text="Upload Bulk Address"
-                  onClickFunction={() =>
-                    setUploadBulkAddress(!uploadBulkAddress)
-                  }
+                  onClickFunction={(event) => {
+                    setUploadBulkAddress(!uploadBulkAddress);
+                  }}
                 />
               </div>
 
-   
-                <div
-                  className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
+              <div
+                ref={uploadBulkAddressRef}
+                className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
                   overflow-hidden  ${
-                    uploadBulkAddress ? 'max-h-[500px] transition-max-h duration-1000 ease-in-out' : 'max-h-0'
+                    uploadBulkAddress
+                      ? 'max-h-[500px] transition-max-h duration-1000 ease-in-out'
+                      : 'max-h-0'
                   }
                   `}
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="options-menu"
-                >
-                  <div
-                  
-                  className="flex flex-col justify-center items-start p-4">
-                    <div className="flex flex-col items-start gap-[4px]">
-                      <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
-                        Bulk Address Upload{' '}
-                      </h2>
-                      <h4
-                        className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] cursor-pointer leading-[157.14%]"
-                        onClick={() => setShowVideo(true)}
-                      >
-                        Watch Tutorial <span className="underline">Video</span>
-                      </h4>
-                    </div>
-                    <div className="flex flex-col justify-center mt-[16px] mb-[8px] items-center border-2 border-dashed max-w-[100%] w-[100%] min-h-[100px] border-[#1B5299]">
-                      <label
-                        htmlFor="fileInput"
-                        className="flex flex-col items-center cursor-pointer"
-                      >
-                        <input
-                          id="fileInput"
-                          onChange={handleFileChange}
-                          type="file"
-                          accept=".csv"
-                          ref={file}
-                          className="hidden"
-                        />
-                        <img
-                          className="h-[43px] w-[43px]"
-                          src={chooseFile}
-                          alt="choose-file"
-                        />
-                        <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[16px] leading-[22px]">
-                          Choose File
-                        </h4>
-                      </label>
-                    </div>
-
-                    <a
-                      className="text-[#000] text-[14px] leading-[22px] font-karla font-bold"
-                      href="https://api.simplynoted.com/docs/bulk-template"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                <div className="flex flex-col justify-center items-start p-4">
+                  <div className="flex flex-col items-start gap-[4px]">
+                    <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
+                      Bulk Address Upload{' '}
+                    </h2>
+                    <h4
+                      className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[14px] cursor-pointer leading-[157.14%]"
+                      onClick={() => setShowVideo(true)}
                     >
-                      Download bulk address template
-                    </a>
-                    <span
-                      onClick={openModal}
-                      className="font-bold text-[#000] md:text-[14px] text-[12px] leading-[22px] font-karla cursor-pointer underline"
-                    >
-                      View bulk upload instructions.
-                    </span>
+                      Watch Tutorial <span className="underline">Video</span>
+                    </h4>
                   </div>
+                  <div className="flex flex-col justify-center mt-[16px] mb-[8px] items-center border-2 border-dashed max-w-[100%] w-[100%] min-h-[100px] border-[#1B5299]">
+                    <label
+                      htmlFor="fileInput"
+                      className="flex flex-col items-center cursor-pointer"
+                    >
+                      <input
+                        id="fileInput"
+                        onChange={handleFileChange}
+                        type="file"
+                        accept=".csv"
+                        ref={file}
+                        className="hidden"
+                      />
+                      <img
+                        className="h-[43px] w-[43px]"
+                        src={chooseFile}
+                        alt="choose-file"
+                      />
+                      <h4 className="text-[#001A5F] text-[12px] font-bold font-karla md:text-[16px] leading-[22px]">
+                        Choose File
+                      </h4>
+                    </label>
+                  </div>
+
+                  <a
+                    className="text-[#000] text-[14px] leading-[22px] font-karla font-bold"
+                    href="https://api.simplynoted.com/docs/bulk-template"
+                  >
+                    Download bulk address template
+                  </a>
+                  <span
+                    onClick={openModal}
+                    className="font-bold text-[#000] md:text-[14px] text-[12px] leading-[22px] font-karla cursor-pointer underline"
+                  >
+                    View bulk upload instructions.
+                  </span>
                 </div>
-             
+              </div>
 
               <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton
@@ -634,6 +659,15 @@ const ContactTable = ({
                 />
               </div>
             </div>
+          </div>
+          <div className="flex justify-end">
+            {selectedFile && (
+              <DynamicButton
+                text="Upload"
+                className="bg-[#ef6e6e] w-full max-w-[240px] h-[45px] !mt-[10px] !ml-[10px] "
+                onClickFunction={() => handleUploadClick()}
+              />
+            )}
           </div>
 
           {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
@@ -698,23 +732,23 @@ const ContactTable = ({
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
-                {ProdcuctSide && selectedCheckboxes.length > 0 && (
-                  <button
-                    className="text-white bg-[#EF6E6E] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
-                    onClick={continueBtn}
-                  >
-                    Continue
-                  </button>
-                )}
+              {ProdcuctSide && selectedCheckboxes.length > 0 && (
+                <button
+                  className="text-white bg-[#EF6E6E] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                  onClick={continueBtn}
+                >
+                  Continue
+                </button>
+              )}
               {/* Your table rendering code here... */}
               <div className="overflow-auto">
                 <table className="min-w-full bg-gray-200 text-black overflow-auto">
                   <thead className="bg-[#0D0C22] text-[white] text-[14px] font-bold">
-                    {headerGroups.map((headerGroup,index) => (
+                    {headerGroups.map((headerGroup, index) => (
                       <tr {...headerGroup.getHeaderGroupProps()} key={index}>
-                        {headerGroup.headers.map((column,index) => (
+                        {headerGroup.headers.map((column, index) => (
                           <th
-                          key={index}
+                            key={index}
                             {...column.getHeaderProps()}
                             className={`text-center whitespace-nowrap uppercase ${
                               column.id === 'type'
@@ -764,14 +798,13 @@ const ContactTable = ({
                         prepareRow(row);
                         return (
                           <tr
-                          key={index}
+                            key={index}
                             {...row.getRowProps()}
                             className={`text-center font-semibold ${
                               index % 2 === 0 ? 'bg-white' : 'bg-white'
                             }`}
-                           
                           >
-                            {row.cells.map((cell,index) => (
+                            {row.cells.map((cell, index) => (
                               <td
                                 {...cell.getCellProps()}
                                 className="border border-[#EFEFF2] py-2 px-4 whitespace-nowrap"

@@ -135,14 +135,20 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setCustomerId, setIsAccountLoader, acountTabName, setAccountTabName,activeTab,setActiveTab} =
-    useStateContext();
+  const {
+    orderHistory,
+    setCustomerId,
+    setIsAccountLoader,
+    acountTabName,
+    setAccountTabName,
+    activeTab,
+    setActiveTab,
+  } = useStateContext();
   const [accountDetail, setAccountDetail] = useState(
     !orderHistory ? true : false,
   );
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
-
 
   const tabs = [
     'General',
@@ -152,8 +158,8 @@ function Account({customer, heading, featuredData}) {
     'Manage Plans',
     'Affiliate Program',
     'Edit Profile',
+    'Profile',
   ];
-
 
   useEffect(() => {
     if (customer) {
@@ -185,23 +191,23 @@ function Account({customer, heading, featuredData}) {
     }
   };
 
-  useEffect(()=>{
-  if (data == true) {
-    remove();
-  } else if (data == false) {
-    if (customer && typeof window !== 'undefined' ) {
-      localStorage.setItem('customerId', result);
-      setCustomerId(result);
-      localStorage.setItem('SnEmail', customer.email);
-      localStorage.setItem('firstName', customer.firstName);
-      localStorage.setItem('lastName', customer.lastName);
+  useEffect(() => {
+    if (data == true) {
+      remove();
+    } else if (data == false) {
+      if (customer && typeof window !== 'undefined') {
+        localStorage.setItem('customerId', result);
+        setCustomerId(result);
+        localStorage.setItem('SnEmail', customer.email);
+        localStorage.setItem('firstName', customer.firstName);
+        localStorage.setItem('lastName', customer.lastName);
+      }
     }
-  }
-}, [data, customer, result]);
+  }, [data, customer, result]);
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
+        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${result}`,
       );
       const json = await res.json();
 
@@ -305,14 +311,7 @@ function Account({customer, heading, featuredData}) {
               </button>
             </Form>
           </div>
-          <div className="hidden">
-            <AccountDetails
-              loader={loader}
-              setLoader={setLoader}
-              accountDetail={accountDetail}
-              customer={customer}
-            />
-          </div>
+          <div className="hidden"></div>
 
           <div className=" w-full  md:w-[80%]">
             {activeTab === 0 && (
@@ -358,9 +357,7 @@ function Account({customer, heading, featuredData}) {
                   onClick={() =>
                     window.open('https://meetings.hubspot.com/rick24', '_blank')
                   }
-                  onDownload={() =>
-                    window.open('https://meetings.hubspot.com/rick24', '_blank')
-                  }
+                  onDownload={() => navigate('/Video')}
                   showDownloadButton={true}
                   downloadButtonText="See Tutorials"
                 />
@@ -381,6 +378,15 @@ function Account({customer, heading, featuredData}) {
                 loader={loader}
                 accountDetails={accountDetail}
                 setLoader={setLoader}
+              />
+            )}
+
+            {activeTab === 7 && (
+              <AccountDetails
+                loader={loader}
+                setLoader={setLoader}
+                accountDetail={accountDetail}
+                customer={customer}
               />
             )}
           </div>
@@ -507,6 +513,3 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
-
-
-

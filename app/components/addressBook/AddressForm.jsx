@@ -45,8 +45,7 @@ const AddressForm = ({customerID, defaultOption}) => {
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '',
       }));
-    }
-    else if (name === 'birthday' || name === 'anniversary') {
+    } else if (name === 'birthday' || name === 'anniversary') {
       const currentDate = new Date();
       const selectedDate = new Date(value); // Convert value to Date object
       if (selectedDate > currentDate) {
@@ -68,6 +67,22 @@ const AddressForm = ({customerID, defaultOption}) => {
           [name]: '',
         }));
       }
+    } else if (name === 'postalCode') {
+      if (!/^\d+$/.test(value)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: 'Invalid postal code format',
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: '',
+        }));
+      }
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
     } else {
       setFormData({
         ...formData,
@@ -136,7 +151,7 @@ const AddressForm = ({customerID, defaultOption}) => {
   
   const validateForm = () => {
     const newErrors = {};
-
+  
     // Check required fields and set error messages if empty
     if (!formData.firstName) {
       newErrors.firstName = 'First Name is required';
@@ -161,17 +176,29 @@ const AddressForm = ({customerID, defaultOption}) => {
     if (formData.postalCode && !/^\d+$/.test(formData.postalCode)) {
       newErrors.postalCode = 'Invalid postal code format';
     }
-
+  
+    // Validate date format
+    const currentDate = new Date();
+    if (formData.birthday && new Date(formData.birthday) > currentDate) {
+      newErrors.birthday = 'Birthday cannot be in the future';
+    }
+    if (formData.anniversary && new Date(formData.anniversary) > currentDate) {
+      newErrors.anniversary = 'Anniversary cannot be in the future';
+    }
+  
     setErrors(newErrors);
-
+  
     return Object.keys(newErrors).length === 0;
   };
+  
 
   const saveAddress = () => {
     if (validateForm()) {
       uploadDataToAPI();
     }
   };
+
+  console.log("errors",errors);
 
   return (
     <>
@@ -291,7 +318,7 @@ const AddressForm = ({customerID, defaultOption}) => {
                   id="postalCode"
                   required
                   name="postalCode"
-                  type="number"
+                  type="text"
                   placeholder="Postal Code"
                   value={formData.postalCode}
                   onChange={handleChange}

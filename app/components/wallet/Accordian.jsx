@@ -7,8 +7,9 @@ import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
 import {useStateContext} from '~/context/StateContext';
-import arrow_rights from '../../../assets/Image/arrow-right-faq.png';
+import arrow_ups from '../../../assets/Image/arrow-up.png'
 import arrow_down from '../../../assets/Image/arrow-down.png';
+import SuccessfullLoader from '../SucessfullLoader';
 
 const Accordion = ({
   StripeKey,
@@ -33,6 +34,7 @@ const Accordion = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
+  const [paymentSuccessFullMessage,setPaymentSuccessFullMessage] = useState(false)
 
   const {setActiveTab,setAccountTabName} = useStateContext();
 
@@ -278,11 +280,15 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          navigate('/account')
-          setActiveTab(4)
-          setAccountTabName("Manage Plans")
-          setPaymentLoader(false)
-          console.log("",data);
+          setPaymentSuccessFullMessage(true)
+          setTimeout(() => {
+            setPaymentSuccessFullMessage(false)
+            navigate('/account')
+            setActiveTab(4)
+            setAccountTabName("Manage Plans")
+            setPaymentLoader(false)
+          },[])
+         
         }
       })
 
@@ -347,13 +353,19 @@ const Accordion = ({
   return (
     <div className="w-full  relative max-w-[1440px] mt-[24px] mx-auto px-[24px]">
       {paymentLoader && (
-        <div className="absolute z-[50] top-[50%] left-[50%]">
+        <div className="absolute z-[50] top-[50%] left-[30%]">
           <CircularLoader
             title="Processing your payment securely. Please wait a moment."
             color="#ef6e6e"
           />
         </div>
       )}
+
+      {paymentSuccessFullMessage && 
+      <SuccessfullLoader
+      successfullMessage="Payment Sucessfully Completed"
+      />
+      }
 
       <div
         className={`w-full ${
@@ -366,10 +378,10 @@ const Accordion = ({
         >
           <span className="font-bold  md:text-[20px] text-[17px] text-[#001a5f]">Billing Address</span>
           <span className="mr-2">
-            {isBillingOpen ? (
+            {!isBillingOpen ? (
               <img className="h-[12px]" src={arrow_down} alt="" />
             ) : (
-              <img className="h-[12px]" src={arrow_rights} alt="" />
+              <img className="h-[21px]" src={arrow_ups} alt="" />
             )}
           </span>
         </div>
@@ -515,10 +527,10 @@ const Accordion = ({
           >
             <span className="font-bold md:text-[20px] text-[17px] text-[#001a5f]">Credit Card Information</span>
             <span className="mr-2">
-              {isCardInfoOpen ? (
+              {!isCardInfoOpen ? (
                 <img className="h-[12px]" src={arrow_down} alt="" />
               ) : (
-                <img className="h-[12px]" src={arrow_rights} alt="" />
+                <img className="h-[21px]" src={arrow_ups} alt="" />
               )}
             </span>
           </div>

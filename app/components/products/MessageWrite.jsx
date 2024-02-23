@@ -1266,9 +1266,10 @@ export function MessageWriting({
               <span className="text-[#001A5F] font-medium">
                 Contact Us &nbsp;
               </span>
-              <span className="text-[#737373]">
+              <a href="https://meetings.hubspot.com/rick24"  target="_self"
+              className="text-[#737373]">
                 to find out how to add your own custom handwriting fonts.
-              </span>
+              </a>
             </div>
             }
             <textarea

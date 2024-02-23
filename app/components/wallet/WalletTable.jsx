@@ -133,7 +133,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     {
       name: 'Business',
       price: pricePerCard[2],
-      tickCount: 22,
+      tickCount: 23,
       firstTwoFeaturesText: ['60% - 70% OFF', '1000+ Cards/mo'],
       buttonText: subscribeBusiness ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
@@ -150,7 +150,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       firstTwoFeaturesText: ['> 70% OFF', '10000+ Cards/mo'],
       buttonText: 'Contact Us',
       buttonColor: '#ef6e6e',
-      tickCount: 28,
+      tickCount: 29,
 
       onClick: () =>
         window.open('https://meetings.hubspot.com/rick24', '_blank'),
