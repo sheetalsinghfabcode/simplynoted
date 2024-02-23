@@ -175,12 +175,14 @@ export default function Collection() {
     'just-because',
     'customisable-cards',
   ];
+  console.log(addingProductsData.length,"------length of custom card array");
   let filterTag = handleLinkData.collections.edges;
   const data = filterTag.filter((item) => mainTags.includes(item.node.handle));
 
   useEffect(() => {
     if (locationRef.pathname !== '/collections/customisable-cards') {
       setCheckState(false);
+      setAddingProd([]);
     }
   }, [locationRef.pathname]);
   async function changeHandle(e) {
@@ -191,6 +193,7 @@ export default function Collection() {
       setLoader(false);
     } else {
       navigate(`/collections/${e}`);
+      setAddingProd([]);
       setCheckState(false);
       setLoader(false);
     }
@@ -323,7 +326,7 @@ export default function Collection() {
               className="!border-none md:w-[244px] w-[270px] capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
-              <option className="w-full " disabled>
+              <option className="w-full "selected disabled>
                 {collectionHandle}
               </option>
 
