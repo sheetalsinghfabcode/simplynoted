@@ -122,6 +122,7 @@ export default function CustomProducts() {
       );
       const json = await res.json();
       setCustomProductData(json.result);
+      console.log(json.result,"custom image data");
       // getMetaFields(json.result)
     } catch (error) {
       console.error(error, 'productError');
@@ -327,6 +328,7 @@ export default function CustomProducts() {
           shippingData={shippingData?.product}
           fontFamilyName={fontFamilyName}
           customFontName={customFontName}
+          variantsVal={customProductData}
         />
       )}
     </div>

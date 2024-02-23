@@ -121,6 +121,7 @@ export function AddCart({
     if (selectedOrder == 'Single Card') {
       setVariantID(productData.id);
     } else {
+      console.log(variantsVal,"variants of prices");
       const variants = variantsVal.variants.nodes;
       const targetValue = cartDataReq?.csvFileLen;
       const matchedVariant = findMatchingVariant(variants, targetValue);
