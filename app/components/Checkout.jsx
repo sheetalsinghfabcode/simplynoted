@@ -10,6 +10,8 @@ import DynamicTitle from './Title';
 import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import DynamicButton from './DynamicButton';
+import { useStateContext } from '~/context/StateContext';
+
 
 export function CheckoutData({
   setShowCartPage,
@@ -57,6 +59,7 @@ export function CheckoutData({
   const [errors, setErrors] = useState({});
   const [walletBalance, setWalletBalance] = useState('');
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
+  const {setCartCountVal} = useStateContext()
   function showWalletBtn() {
     setShowWallet(true);
     setShowCardDetail(false);
@@ -313,7 +316,6 @@ export function CheckoutData({
 
   async function paymentPurchase() {
     try {
-      setPurchaseCompleted(true);
       const postageUSCountries = [
         'USA',
         'US',
@@ -517,13 +519,14 @@ export function CheckoutData({
           ? discountCouponCode?.apiDiscountResponse?.value_type
           : '',
       };
-
+      console.log(payload);
+debugger
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,
       // );
       fetch(
-        `https://testapi.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -533,8 +536,11 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
-      if (json.resut) {
+      console.log(json.result,"----rresult data");
+      if (json) {
+        setCartCountVal(0)
         localStorage.setItem('mydata', '[]');
+        // localStorage.removeItem('cartCount')
         setPurchaseCompleted(true);
       }
     } catch (error) {

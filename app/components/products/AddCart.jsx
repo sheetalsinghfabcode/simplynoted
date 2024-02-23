@@ -119,23 +119,24 @@ export function AddCart({
     // }
     // Replace with your desired value
     if (selectedOrder == 'Single Card') {
-      setVariantID(productData.id);
+      setVariantID(productData.id.match(/\d+/g).join(''));
+      setFinalPrice((productData?.price?.amount -(productData?.price?.amount * discountedCount)/100).toFixed(2))
     } else {
-      console.log(variantsVal,"variants of prices");
       const variants = variantsVal.variants.nodes;
       const targetValue = cartDataReq?.csvFileLen;
-      const matchedVariant = findMatchingVariant(variants, targetValue);
+      const matchedVariant = findMatchingVariant(variants, targetValue,discountedCount);
       if (matchedVariant) {
         setVariantID(matchedVariant);
-        if (discountedCount > 0) {
-          setUpdatedPrice(
-            (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
-          );
-        }
+        setUpdatedPrice(finalPrice)
+        // if (discountedCount > 0) {
+        //   setUpdatedPrice(
+        //     (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
+        //   );
+        // }
       }
     }
   }, []);
-  const findMatchingVariant = (variants, targetValue) => {
+  const findMatchingVariant = (variants, targetValue,discount) => {
     let matchedVariant = null;
     for (let i = 0; i < variants.length; i++) {
       const variant = variants[i];
@@ -143,7 +144,11 @@ export function AddCart({
       let lastValue = parseInt(quantityRange.split(' -')[1]);
       if (!isNaN(lastValue) && lastValue >= targetValue) {
         matchedVariant = variant.id;
-        setFinalPrice(variant.price.amount);
+        if(discount>0){
+          setFinalPrice((variant.price.amount-(variant.price.amount * discount)/100).toFixed(2))
+        } else {
+          setFinalPrice(variant.price.amount);
+        }
         break; // Exit the loop when a match is found
       } else if (quantityRange.includes('+')) {
         lastValue = parseInt(quantityRange.split('+')[0]);
@@ -236,8 +241,6 @@ export function AddCart({
     setSelectShipMode(prevMode => prevMode === item ? null : item);
   };
 
-  console.log("selectedItem",selectedItem);
-  console.log("selectedItem2",selectedItem2);
   
   const filteredList = (recipientAddress, searchData) => {
     return recipientAddress.filter((dataobj) => bySearch(dataobj, searchData));
@@ -287,14 +290,14 @@ export function AddCart({
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
-    if (discountedCount > 0) {
-      setUpdatedPrice(
-        (
-          productData.price.amount -
-          (productData.price.amount * discountedCount) / 100
-        ).toFixed(2),
-      );
-    }
+    // if (discountedCount > 0) {
+    //   setUpdatedPrice(
+    //     (
+    //       productData.price.amount -
+    //       (productData.price.amount * discountedCount) / 100
+    //     ).toFixed(2),
+    //   );
+    // }
     setMesgtext(cartDataReq?.msg);
     getRecipient();
     getReturn();
@@ -304,12 +307,13 @@ export function AddCart({
       onClickAddCart();
     }
   }, [apiVariantID]);
+
   const navigate = useNavigate();
   let arrOfObj = {
-    productTitle: productData.product.title ? productData.product.title : null,
+    productTitle: productData?.product?.title ? productData.product.title : null,
     variant_id: apiVariantID ? apiVariantID : variantID,
-    price: offPrice > 0 ? updatedPrice : productData.price.amount,
-    productImg: productData.image.url,
+    price: finalPrice ? finalPrice : productData?.price?.amount,
+    productImg: productData?.image?.url,
     senderAddress: selectedItem2,
     reciverAddress: selectedItem,
     giftCardName: cardName && stateCheckCart ? cardName : null,
@@ -319,7 +323,7 @@ export function AddCart({
     giftCardPriceTitle: cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
     giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
     messageData: MsgText,
-    fontFamily: fontFamilyName ? fontFamilyName : 'tarzan',
+    fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
     productGetUrl: window?.location.pathname,
     endText: cartDataReq?.signOffText,
     csvFileURL: cartDataReq?.csvFileBulk,
@@ -544,7 +548,7 @@ export function AddCart({
             title: productData.product.title,
             tags: tagsData,
             featuredImage: productData.image.url,
-            price: updatedPrice,
+            price: finalPrice,
           }),
         },
       );

@@ -129,7 +129,7 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
             show={deleteModal}
             onCancel={() => setDeleteModal(false)}
             onConfirm={() => deleteCustomCardAPI(valOfProdId)}
-            message="Are you sure you want to delete this order."
+            message="Are you sure you want to delete this order?"
             confirmText="Delete"
             cancelText="Cancel"
           />

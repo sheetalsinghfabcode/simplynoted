@@ -1259,6 +1259,7 @@ export function MessageWriting({
                 </div>
               </div>
             </div>
+            {!customFonts &&
             <div className="mb-[24px]  font-inter text-xs">
               <span className="text-[#001A5F] font-medium">
                 Contact Us &nbsp;
@@ -1267,6 +1268,7 @@ export function MessageWriting({
                 to find out how to add your own custom handwriting fonts.
               </span>
             </div>
+            }
             <textarea
               type="text"
               id="example-one-input"
@@ -1526,7 +1528,7 @@ export function MessageWriting({
               metafields.footer.data && <ShowFooterComp />} */}
           </div>
           {/* // This margin is similar to the height of the absolute div above this */}
-          <div className="text-[#737373] text-sm mt-[287px] mb-[44px]">
+          <div className="text-[#737373] text-sm mt-[306px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
             there.
           </div>

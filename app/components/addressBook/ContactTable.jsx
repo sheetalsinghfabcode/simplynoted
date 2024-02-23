@@ -859,7 +859,7 @@ const ContactTable = ({
             show={deleteModal}
             onCancel={() => setDeleteModal(false)}
             onConfirm={handleDeleteSelected}
-            message="Are you sure you want to delete all selected records? This action cannot be undone."
+            message="Are you sure you want to delete all selected records? This action cannot be undone?"
             confirmText="Delete"
             cancelText="Cancel"
           />
