@@ -296,7 +296,7 @@ export default function Collection() {
         <DynamicTitle
           title={'Simply Noted'}
           title2={'cards'}
-          className="!pb-[15px]"
+          className=""
         />
 
         <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">

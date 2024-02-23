@@ -72,7 +72,7 @@ export default function Article() {
         <DynamicTitle
           dynamicButton
           title={title}
-          className={'mt-[15px] !text-[20px] '}
+          className={'mt-[15px] !text-[22px] '}
         />
         <div>
           {image && (
@@ -83,10 +83,12 @@ export default function Article() {
               loading="eager"
             />
           )}
-          <div
-            dangerouslySetInnerHTML={{__html: contentHtml}}
-            className="my-[2rem] article"
-          />
+          {contentHtml && (
+            <div
+              dangerouslySetInnerHTML={{__html: contentHtml && contentHtml}}
+              className="my-[2rem] article"
+            />
+          )}
         </div>
       </div>
     </>
@@ -124,32 +126,4 @@ const BlogData = `#graphql
       }
     }
   }`;
-const ARTICLE_QUERY = `#graphql
-  query ArticleDetails(
-    $language: LanguageCode
-    $blogHandle: String!
-    $articleHandle: String!
-  ) @inContext(language: $language) {
-    blog(handle: $blogHandle) {
-      articleByHandle(handle: $articleHandle) {
-        title
-        contentHtml
-        publishedAt
-        author: authorV2 {
-          name
-        }
-        image {
-          id
-          altText
-          url
-          width
-          height
-        }
-        seo {
-          description
-          title
-        }
-      }
-    }
-  }
-`;
+

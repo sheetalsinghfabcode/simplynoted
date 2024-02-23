@@ -28,19 +28,19 @@ const CanvasDesign = () => {
               </span>
             </div>
             <div className="texts mt-3 lg:text-left text-justify lg:w-[94%] w-full">
-              Simply Noteds platform makes sending 1,000s of real penwritten
+              Simply Noted platform makes sending 1,000s of real penwritten
               notes as quick and easy as sending just 1. It has never been
               easier to scale your personal touch and leave lasting impressions!
             </div>
             <DynamicButton
               text="START WRITING"
-              className="btn1 mr-[30px]"
+              className="btn1 text-sm py-[20px] px-[30px]"
               onClickFunction={() => navigate('/collections/best-sellers')}
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2"
-              onClickFunction={() => navigate('/Video')}
+              className="btn2 py-[18px] px-[40px] ml-[15px]"
+              onClickFunction={() => navigate('/blogs/news')}
             />
           </div>
           <div className="flex-1">
@@ -74,13 +74,13 @@ const CanvasDesign = () => {
           </div>
           <DynamicButton
             text="START WRITING"
-            className="btn1 w-full"
+            className="btn1 w-full text-sm py-[20px] px-[30px]"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
           <DynamicButton
             text="TUTORIALS"
-            className="btn2 w-full mt-5"
-            onClickFunction={() => navigate('/Video')}
+            className="btn2 w-full mt-5 py-[18px] px-[40px]"
+            onClickFunction={() => navigate('/blogs')}
           />
         </div>
 
@@ -118,7 +118,7 @@ const CanvasDesign = () => {
             </div>
             <DynamicButton
               text="OUR CARDS"
-              className="btn1"
+              className="btn1 text-sm py-[20px] px-[30px]"
               onClickFunction={() => navigate('/collections/best-sellers')}
             />
           </div>
@@ -145,7 +145,7 @@ const CanvasDesign = () => {
           </div>
           <DynamicButton
             text="OUR CARDS"
-            className="btn1 w-full"
+            className="btn1 w-full text-sm py-[20px] px-[30px]"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
         </div>
@@ -168,7 +168,7 @@ const CanvasDesign = () => {
             <DynamicButton
               onClickFunction={() => navigate('/collections/best-sellers')}
               text="START WRITING"
-              className="btn1"
+              className="btn1 text-sm py-[20px] px-[30px]"
             />
           </div>
 
@@ -211,7 +211,7 @@ const CanvasDesign = () => {
           </div>
           <DynamicButton
             text="START WRITING"
-            className="btn1 w-full"
+            className="btn1 w-full text-sm py-[20px] px-[30px]"
             onClickFunction={() => navigate('/collections/best-sellers')}
           />
         </div>

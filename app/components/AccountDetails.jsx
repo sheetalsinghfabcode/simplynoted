@@ -102,7 +102,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
               Email address:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
-              {userEmail}
+              {email ? email : userEmail}
             </p>
           </div>
 

@@ -1,29 +1,29 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Modal from 'react-modal';
-import {BsXCircle} from 'react-icons/bs';
+import { BsXCircle } from 'react-icons/bs';
 import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
-import {Image} from '@shopify/hydrogen';
+import { Image } from '@shopify/hydrogen';
 import LoginModal from '../modal/LoginModal';
 import DynamicButton from '../DynamicButton';
 import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
-import {useLocation} from '@remix-run/react';
-import {useStateContext} from '../../context/StateContext';
+import { useLocation } from '@remix-run/react';
+import { useStateContext } from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import TickImg from '../../../assets/Image/check-mark.png';
 import Del from '../../../assets/Image/delete.png';
-import calendarIcon from '../../../assets/Image/calendar.png';
-import {Text} from '../Text';
-import {FaYoutube} from 'react-icons/fa';
-import {FiUploadCloud} from 'react-icons/fi';
-import {VideoTutorial} from '../VideoTutorial';
-import {RxCross2} from 'react-icons/rx';
-import {ImCross} from 'react-icons/im';
-import {Modal as ModalComp} from '../Modal'
+import calender_icon from '../../../assets/Image/calendar.png';
+import { Text } from '../Text';
+import { FaYoutube } from 'react-icons/fa';
+import { FiUploadCloud } from 'react-icons/fi';
+import { VideoTutorial } from '../VideoTutorial';
+import { RxCross2 } from 'react-icons/rx';
+import { ImCross } from 'react-icons/im';
+import { Modal as ModalComp } from '../Modal'
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -38,7 +38,7 @@ export function MessageWriting({
   selectedFile,
   setSelectedFile,
   setShowBox,
-  
+
   EditMess,
   editEndMess,
   editFontFamily,
@@ -54,7 +54,7 @@ export function MessageWriting({
   editCustomFontFamily,
   editShippingDate,
 }) {
-  const {setAddressForm, addressForm, loadAddress, addresses, setAddresses,setProductShow} =
+  const { setAddressForm, addressForm, loadAddress, addresses, setAddresses, setProductShow } =
     useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -114,7 +114,7 @@ export function MessageWriting({
   const [shippingDate, setShippingDate] = useState(
     editShippingDate ? editShippingDate : '',
   );
-  const [disableSelectAddressBtn,setDisableSelectAddressBtn] = useState(false)
+  const [disableSelectAddressBtn, setDisableSelectAddressBtn] = useState(false)
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -130,7 +130,7 @@ export function MessageWriting({
     );
     const modifiedData = data.map((item) => {
       // Specify the fields you want to remove from each object
-      const {_id, shopifyId, created, updated, __v, ...newObject} = item;
+      const { _id, shopifyId, created, updated, __v, ...newObject } = item;
       return newObject;
     });
     setFileData(modifiedData);
@@ -235,7 +235,7 @@ export function MessageWriting({
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
       setProductShow(false);
-      
+
       window.scrollTo({
         top: 0,
         behavior: 'smooth', // Make the scroll behavior smooth
@@ -364,7 +364,7 @@ export function MessageWriting({
         return (
           <div
             className={`flex h-[48px]  mt-2`}
-            style={{justifyContent: metafields.header.justifyContent}}
+            style={{ justifyContent: metafields.header.justifyContent }}
           >
             <img className={`!w-20 headerImage`} src={metafields.header.data} />
           </div>
@@ -402,7 +402,7 @@ export function MessageWriting({
         return (
           <div
             className={`flex  h-[48px]`}
-            style={{justifyContent: metafields.footer.justifyContent}}
+            style={{ justifyContent: metafields.footer.justifyContent }}
           >
             <img className={`!w-20`} src={metafields.footer.data} />
           </div>
@@ -795,7 +795,7 @@ export function MessageWriting({
           Authorization:
             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
         },
-        body: JSON.stringify({msg: valToGen}),
+        body: JSON.stringify({ msg: valToGen }),
       });
 
       const json = await res.json();
@@ -825,8 +825,8 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.optionalShipDate
         : editShippingDate
-        ? editShippingDate
-        : '',
+          ? editShippingDate
+          : '',
     );
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
@@ -841,15 +841,15 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.signOffFontSize
         : editSignOffFontSize
-        ? editSignOffFontSize
-        : '',
+          ? editSignOffFontSize
+          : '',
     );
     setSignOffLineHeight(
       savedMsg
         ? savedMsg.signOffLineHeight
         : editSignOffLineHeight
-        ? editSignOffLineHeight
-        : '',
+          ? editSignOffLineHeight
+          : '',
     );
     setTempVal(ref4.current?.value);
   }, []);
@@ -912,7 +912,7 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <>
-       
+
         <div className="w-[100%]">
           <div>
             <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
@@ -997,7 +997,7 @@ export function MessageWriting({
             <span className="font-bold text-[15px]">Actions</span>
           </div>
           {loadTempData &&
-            filteredList(loadTempData, searchData).map((item,index) => (
+            filteredList(loadTempData, searchData).map((item, index) => (
               <div className="" key={index}>
                 <div className="border border-black-600 mt-[12px] mb-[12px] px-[10px] h-[42px] items-center w-full flex">
                   <div className="w-full font-font-semibold mt-[10px] text-[14px]">
@@ -1106,18 +1106,16 @@ export function MessageWriting({
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
         <div
-          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
-            show
+          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${show
               ? 'lg:h-[1110px] texting-relative-cont-bulk'
               : 'lg:h-[714px] texting-relative-cont-single'
-          }`}
+            }`}
         >
           <div
-            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${
-              show
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${show
                 ? 'md:pb-[35rem] textarea-cont-bulk'
                 : 'md:pb-[15rem] textarea-cont-single'
-            }`}
+              }`}
           >
             <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left">
@@ -1133,8 +1131,8 @@ export function MessageWriting({
                     {standardFontVal
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
-                      ? editFontFamily
-                      : 'Tarzan'}
+                        ? editFontFamily
+                        : 'Tarzan'}
                   </option>
                   {editFontFamily && editFontFamily !== 'tarzan' && (
                     <option value="Tarzan" className={`font-tarzan`}>
@@ -1229,15 +1227,15 @@ export function MessageWriting({
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                 >
-                  <option value={customFontVal}  disabled>
+                  <option value={customFontVal} disabled>
                     {customFontVal
                       ? customFontVal
                       : editCustomFontFamily
-                      ? editCustomFontFamily
-                      : 'Select Custom Font'}
+                        ? editCustomFontFamily
+                        : 'Select Custom Font'}
                   </option>
                   {customFonts &&
-                    customFonts.map((item,index) => (
+                    customFonts.map((item, index) => (
                       <option key={index} value={item.fontName}>{item.fontName}</option>
                     ))}
                 </select>
@@ -1246,12 +1244,17 @@ export function MessageWriting({
                 <span>Optional shipping date</span>
                 <div className="flex relative">
                   <input
+                   
                     type="date"
                     className="h-[40px] calendar-input highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     min={new Date().toISOString().split('T')[0]}
-                    onChange={(e) => setShippingDate(e.target.value)}
+                    onChange={(e) => {
+                      setShippingDate(e.target.value);
+                      e.target.blur()
+                    }}
                     value={shippingDate}
                   />
+                 
                 </div>
               </div>
             </div>
@@ -1419,10 +1422,16 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${
-            show ? 'h-[940px]' : 'h-[370px] '
-          } mb-[200px] md:mb-[0px]`}
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${show ? 'h-[940px]' : 'h-[370px] '
+            } mb-[200px] md:mb-[0px]`}
         >
+          <div
+            id="outer"
+            className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+          >
+            {metafields &&
+              metafields.isHeaderIncluded &&
+              metafields.header.data && <ShowHeaderComp />}
             <div
               id="outer"
               className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
@@ -1439,64 +1448,64 @@ export function MessageWriting({
                     metafields.footer.data &&
                     metafields.header.data &&
                     name2.length > 0
-                      ? '131px'
-                      : (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data &&
-                          metafields.footer &&
-                          metafields.header &&
-                          metafields.header.data) ||
-                        (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data &&
-                          name2.length > 0) ||
-                        (metafields.footer &&
-                          metafields.header &&
-                          metafields.header.data &&
-                          name2.length > 0)
+                    ? '131px'
+                    : (metafields.footer &&
+                      metafields.header &&
+                      metafields.footer.data &&
+                      metafields.footer &&
+                      metafields.header &&
+                      metafields.header.data) ||
+                      (metafields.footer &&
+                        metafields.header &&
+                        metafields.footer.data &&
+                        name2.length > 0) ||
+                      (metafields.footer &&
+                        metafields.header &&
+                        metafields.header.data &&
+                        name2.length > 0)
                       ? '179px'
                       : (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data) ||
+                        metafields.header &&
+                        metafields.footer.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data) ||
                         name2.length > 0
-                      ? '231px'
-                      : '291px',
-                }}
-              >
-                <div
-                  id="messageBoxID"
-                  ref={ref1}
-                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
-                  style={{
-                    fontFamily: fontFamilyName
-                      ? fontFamilyName
-                      : editFontFamily
+                        ? '231px'
+                        : '291px',
+              }}
+            >
+              <div
+                id="messageBoxID"
+                ref={ref1}
+                className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
+                style={{
+                  fontFamily: fontFamilyName
+                    ? fontFamilyName
+                    : editFontFamily
                       ? editFontFamily
                       : 'great vibes',
-                    fontSize: fontSize ? fontSize : '34px',
-                    lineHeight: lineHeight ? lineHeight : '50px',
-                  }}
-                >
-                  {name ? name : 'Enter your custom message here...'}
-                </div>
-              </div>
-              {/* {name2.length>0 && */}
-              <div
-                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
-                ref={ref}
-                style={{display: name2.length > 0 ? 'block' : 'none'}}
+                  fontSize: fontSize ? fontSize : '34px',
+                  lineHeight: lineHeight ? lineHeight : '50px',
+                }}
               >
-                <div
-                  id="signOffText"
-                  ref={ref3}
-                  className="output2 text-[#0040ac] max-w-[300px]"
-                  style={{
-                    fontFamily: fontFamilyName
-                      ? fontFamilyName
-                      : editFontFamily
+                {name ? name : 'Enter your custom message here...'}
+              </div>
+            </div>
+            {/* {name2.length>0 && */}
+            <div
+              className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
+              ref={ref}
+              style={{ display: name2.length > 0 ? 'block' : 'none' }}
+            >
+              <div
+                id="signOffText"
+                ref={ref3}
+                className="output2 text-[#0040ac] max-w-[300px]"
+                style={{
+                  fontFamily: fontFamilyName
+                    ? fontFamilyName
+                    : editFontFamily
                       ? editFontFamily
                       : 'great vibes',
                     fontSize: signOffFontSize ? signOffFontSize : '50px',
@@ -1510,6 +1519,11 @@ export function MessageWriting({
               {metafields &&
                 metafields.isFooterIncluded &&<ShowFooterComp />}
             </div>
+            {/* } */}
+            {metafields &&
+              metafields.isFooterIncluded &&
+              metafields.footer.data && <ShowFooterComp />}
+          </div>
           {/* // This margin is similar to the height of the absolute div above this */}
           <div className="text-[#737373] text-sm mt-[287px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
@@ -1532,7 +1546,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({target: {files: [file]}});
+                        handleFileChange({ target: { files: [file] } });
                       }
                     }}
                     onDragEnter={() => {
@@ -1626,7 +1640,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({target: {files: [file]}});
+                        handleFileChange({ target: { files: [file] } });
                       }
                     }}
                     onDragEnter={() => {
@@ -1718,7 +1732,7 @@ export function MessageWriting({
                 </span>
                 <div className="m-auto w-full grid font-bold">
                   <DynamicButton
-                  disabled={disableSelectAddressBtn}
+                    disabled={disableSelectAddressBtn}
                     className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${disableSelectAddressBtn && 'opacity-40'}`}
                     text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
@@ -1726,7 +1740,7 @@ export function MessageWriting({
                   <DynamicButton
                     className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Buy Leads (Mailing List)"
-                    onClickFunction={() => {}}
+                    onClickFunction={() => { }}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
@@ -1773,70 +1787,70 @@ export function MessageWriting({
           )}
         </div>
       </div>
-      
+
       {modalIsOpen &&
-      <ModalComp
-      children={<div className='w-[100%] h-[80'>
-      <div className="flex">
-      <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
-        AI Message Assistant
-      </h2>
-    </div>
-    <div className="mt-[12px]">
-      <text className="text-[black]">
-        Type in words or a phrase to use our AI Assistant to
-        <br /> help generate a great message
-      </text>
-    </div>
-    <div>
-      {loader ? (
-        <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
-          <CircularLoader color="#ef6e6e" />
-        </div>
-      ) : (
-        <textarea
-          type="text"
-          id="aiTextArea"
-          value={aiText ? aiText : valToGen}
-          onChange={(e) => setValToGen(e.target.value)}
-          placeholder="Example: Message for Birthday"
-          maxLength="250"
-        ></textarea>
-      )}
-    </div>
-    {!aiText ? (
-      <div className="ai-generate">
-        <button
-          id="generate-msg"
-          disabled=""
-          onClick={() => aiGenrateMess()}
-          className='w-full'
-        >
-          Generate Message
-        </button>
-      </div>
-    ) : (
-      <div className="buttonClass flex justify-start">
-        <div className="buttonDiv pr-5">
-          <button
-            className="bg-[#001a5f] text-[#fff] p-2 rounded"
-            onClick={() => onInsetClick()}
-          >
-            Insert
-          </button>
-        </div>
-        <div className="gap-2">
-          <button
-            className="bg-[#f0f0f0] text-[black] p-2 rounded "
-            onClick={() => onCancl()}
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
-    )}</div>}
-      cancelLink={onCancl}
-      />}
+        <ModalComp
+          children={<div className='w-[100%] h-[80'>
+            <div className="flex">
+              <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
+                AI Message Assistant
+              </h2>
+            </div>
+            <div className="mt-[12px]">
+              <text className="text-[black]">
+                Type in words or a phrase to use our AI Assistant to
+                <br /> help generate a great message
+              </text>
+            </div>
+            <div>
+              {loader ? (
+                <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
+                  <CircularLoader color="#ef6e6e" />
+                </div>
+              ) : (
+                <textarea
+                  type="text"
+                  id="aiTextArea"
+                  value={aiText ? aiText : valToGen}
+                  onChange={(e) => setValToGen(e.target.value)}
+                  placeholder="Example: Message for Birthday"
+                  maxLength="250"
+                ></textarea>
+              )}
+            </div>
+            {!aiText ? (
+              <div className="ai-generate">
+                <button
+                  id="generate-msg"
+                  disabled=""
+                  onClick={() => aiGenrateMess()}
+                  className='w-full'
+                >
+                  Generate Message
+                </button>
+              </div>
+            ) : (
+              <div className="buttonClass flex justify-start">
+                <div className="buttonDiv pr-5">
+                  <button
+                    className="bg-[#001a5f] text-[#fff] p-2 rounded"
+                    onClick={() => onInsetClick()}
+                  >
+                    Insert
+                  </button>
+                </div>
+                <div className="gap-2">
+                  <button
+                    className="bg-[#f0f0f0] text-[black] p-2 rounded "
+                    onClick={() => onCancl()}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}</div>}
+          cancelLink={onCancl}
+        />}
       <Instruction
         isOpen={instructionModal}
         title="Text Can not be Empty"
@@ -1881,9 +1895,9 @@ export function MessageWriting({
         table={true}
       />
       {addNewTem &&
-      <ModalComp
-      children={<AddNewTemplate/>}
-       cancelLink={()=>setAddNewTem(false)}/>}
+        <ModalComp
+          children={<AddNewTemplate />}
+          cancelLink={() => setAddNewTem(false)} />}
       {/* <Instruction
         isOpen={addNewTem}
         title=""
@@ -1892,9 +1906,9 @@ export function MessageWriting({
         body={<AddNewTemplate />}
       /> */}
       {loadTemModal &&
-      <ModalComp children={<LoadTemplate/>}
-      cancelLink={()=> setLoadTemModal(false)}/>
-    }
+        <ModalComp children={<LoadTemplate />}
+          cancelLink={() => setLoadTemModal(false)} />
+      }
       {/* <Instruction
         isOpen={loadTemModal}
         close={true}
