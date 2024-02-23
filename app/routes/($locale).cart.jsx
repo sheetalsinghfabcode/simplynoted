@@ -1265,7 +1265,7 @@ export default function AddCartFunc() {
                       }}
                     >
                       {' '}
-                      {msgShow}
+                      {msgShow.replace(/\/n/g, "\n")}
                     </span>
                     <br />
                     <span
