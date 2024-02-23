@@ -12,6 +12,7 @@ import {API_PATH} from '~/utils/Path';
 import DynamicButton from './DynamicButton';
 import { useStateContext } from '~/context/StateContext';
 
+import {Link} from '~/components';
 
 export function CheckoutData({
   setShowCartPage,
@@ -562,14 +563,15 @@ debugger
                 <DynamicTitle title={'PAYMENT'} />
               </div>
               <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
-                <div className="p-5 bg-white lg:max-w-[42%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold shadow-outer-custom">
+                <div className="p-5 bg-white lg:max-w-[48%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold shadow-outer-custom">
                   <div className="border border-solid border-[#e6edf8] sm:m-3 rounded-tl-lg rounded-tr-lg">
                     <div
-                      className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg ${
+                      className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg flex justify-between ${
                         showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
                       }`}
                       onClick={showWalletBtn}
                     >
+                      <div>
                       <input
                         className="cursor-pointer highlight-none"
                         type="radio"
@@ -578,6 +580,12 @@ debugger
                         onChange={(e) => setShowWallet(e.target.checked)}
                       />
                       &emsp; USE WALLET
+                      </div>
+                      <div>
+                        <Link to="/simply-noted-plans">
+                          <span className='text-sm font-bold underline pointer-cursor hover:text-[#0056b3'>Get huge discounts with our Plans and Packages</span>
+                        </Link>
+                      </div>
                     </div>
                     <hr />
 
@@ -585,7 +593,7 @@ debugger
                      className={`overflow-hidden  ${
                       showWallet
                         ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s]  '
-                        : 'max-h-0 transition-max-h ease-in-out duration-700'
+                        : 'max-h-0 transition-max-h ease-in-out duration-0'
                     }`}
                     >
                       <div className="border border-solid border-[#e6edf8] sm:p-[20px] p-[10px] sm:m-[15px] m-[7px]">
@@ -803,10 +811,10 @@ debugger
               children={
                 <Elements stripe={stripe}>
                   {!savedCard && (
-                    <div className="w-[100%] border border-solid border-black p-3 mt-7">
+                    <div className="w-[100%] p-3">
                       <div className="lg:grid-rows-2 grid gap-3 ">
                         <div>
-                          <label htmlFor="">Full Name</label>
+                          <label htmlFor="" className='text-gray-700 text-sm font-bold mb-2'>Full Name</label>
                           <input
                             type="text"
                             id="firstName"
@@ -819,7 +827,7 @@ debugger
                           />
                         </div>
                         <div>
-                          <label htmlFor="">Email</label>
+                          <label htmlFor="" className='text-gray-700 text-sm font-bold mb-2'>Email</label>
                           <input
                             id="email"
                             disabled
@@ -833,7 +841,7 @@ debugger
                         </div>
                       </div>
                       <div className="mt-2">
-                        <label htmlFor="" className="">
+                        <label htmlFor="" className='text-gray-700 text-sm font-bold mb-2'>
                           Address
                         </label>
                         <input
@@ -848,7 +856,7 @@ debugger
                         />
                       </div>
                       <div className="mt-2">
-                        <label htmlFor="" className="">
+                        <label htmlFor="" className="text-gray-700 text-sm font-bold mb-2">
                           Apartment,suite,etc
                         </label>
                         <input
@@ -862,7 +870,7 @@ debugger
                         />
                       </div>
                       <div className="mt-2">
-                        <label htmlFor="" className="">
+                        <label htmlFor="" className="text-gray-700 text-sm font-bold mb-2">
                           City
                         </label>
                         <input

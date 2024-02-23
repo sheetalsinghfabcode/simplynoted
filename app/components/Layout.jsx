@@ -988,27 +988,27 @@ function FooterMenu({menu}) {
     <>
       <div className="grid md:flex justify-center xl:gap-[120px] lg:gap-[75px] gap-[40px] md:text-[16px]  text-[18px] md:text-left text-center md:pt-[70px] pt-[20px] pb-[30px] mx-auto w-[98%] ">
         <div className="md:mx-0 mx-auto">
-          <div className="lg:w-52 md:w-40 sm:w-48 w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
+          <div className="lg:w-[200px] sm:w-[165px] w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
-          <div className="flex mt-5 sm:w-[90%] w-[38%] sm:mx-0 mx-auto justify-between">
+          <div className="flex mt-5 sm:w-full  w-[50%] sm:mx-0 mx-auto gap-[10px] justify-center">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
               <img
-                className="lg:w-[50px] md:w-[40px] w-14  "
+                className="w-[55px] h-[55px]"
                 src={linkdin}
                 alt=""
               ></img>
             </a>
             <a href="#">
               <img
-                className="lg:w-[53px] md:w-[45px] w-14  "
+                className="w-[55px] h-[55px] "
                 src={fb}
                 alt=""
               ></img>
             </a>
             <a href="#">
               <img
-                className="lg:w-[55px] md:w-[47px] w-14  "
+                className="w-[55px] h-[55px] ml-[-3px]"
                 src={twitter}
                 alt=""
               ></img>

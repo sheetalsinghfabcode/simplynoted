@@ -382,7 +382,8 @@ export function MessageWriting({
                 justifyContent: metafields.header.justifyContent,
                 flexDirection: metafields.header.flexDirection,
                 color: metafields.header.fontColor,
-                maxWidth: qrValue ? '93%' : '100%',
+                maxWidth: (qrValue && qrValue.length) ? '90%' : '100%',
+                overflow:'hidden'
               }}
             >
               {metafields.header.data}
@@ -422,7 +423,8 @@ export function MessageWriting({
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
                 color: metafields.footer.fontColor,
-                maxWidth: qrValue ? '93%' : '100%',
+                maxWidth: (qrValue && qrValue.length) ? '90%' : '100%',
+                overflow:'hidden'
               }}
             >
               {metafields.footer.data}
@@ -1761,7 +1763,7 @@ export function MessageWriting({
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <span className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
                       {' '}
-                      Number of Bulk Address: {bulkFileCount}
+                      Number of addresses selected: {bulkFileCount}
                     </span>
                   ) : (
                     ''
