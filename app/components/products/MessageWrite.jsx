@@ -366,11 +366,12 @@ export function MessageWriting({
             className={`flex h-[48px]  mt-2`}
             style={{justifyContent: metafields.header.justifyContent}}
           >
-            <Image className={`!w-20`} src={metafields.header.data} />
+            <img className={`!w-20 headerImage`} src={metafields.header.data} />
           </div>
         );
-      } else {
+      } else if (metafields.header.data){
         return (
+        
           <div className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2`}>
             <span
               className={`flex w-full h-full`}
@@ -403,7 +404,7 @@ export function MessageWriting({
             className={`flex  h-[48px]`}
             style={{justifyContent: metafields.footer.justifyContent}}
           >
-            <Image className={`!w-20`} src={metafields.footer.data} />
+            <img className={`!w-20`} src={metafields.footer.data} />
           </div>
         );
       } else {
@@ -489,6 +490,8 @@ export function MessageWriting({
     if (!mainMessageBox) return;
     mainMessageBox.style.fontSize = '34px';
     mainMessageBox.style.lineHeight = '34px';
+    setFontSize('34px')
+    setLineHeight('34px')
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
@@ -496,6 +499,8 @@ export function MessageWriting({
     if (!signOffTextBox) return;
     signOffTextBox.style.fontSize = '34px';
     signOffTextBox.style.lineHeight = '34px';
+    setSignOffFontSize('34px')
+    setSignOffLineHeight('34px')
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
@@ -525,9 +530,11 @@ export function MessageWriting({
     innerContainer.style.lineHeight =
       parseFloat(lineHeight) - lineHeightDecrement + 'px';
     if (resizeSelection === 'customTextResizing') {
+      console.log(innerContainer.style.fontSize,"MainBox------");
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
     } else if (resizeSelection === 'signOffResizing') {
+      console.log(signOffTextBox.style.fontSize,"------");
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
@@ -1421,8 +1428,7 @@ export function MessageWriting({
               className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
               {metafields &&
-                metafields.isHeaderIncluded &&
-                metafields.header.data && <ShowHeaderComp />}
+                metafields.isHeaderIncluded &&<ShowHeaderComp />}
               <div
                 className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
                 ref={ref2}
@@ -1492,7 +1498,7 @@ export function MessageWriting({
                       ? fontFamilyName
                       : editFontFamily
                       ? editFontFamily
-                      : 'tarzan',
+                      : 'great vibes',
                     fontSize: signOffFontSize ? signOffFontSize : '50px',
                     lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
                   }}
@@ -1502,8 +1508,7 @@ export function MessageWriting({
               </div>
               {/* } */}
               {metafields &&
-                metafields.isFooterIncluded &&
-                metafields.footer.data && <ShowFooterComp />}
+                metafields.isFooterIncluded &&<ShowFooterComp />}
             </div>
           {/* // This margin is similar to the height of the absolute div above this */}
           <div className="text-[#737373] text-sm mt-[287px] mb-[44px]">

@@ -1406,6 +1406,9 @@ body {
   -webkit-border-radius: 20px;
   margin-top: -51px;
 }
+.headerImage{
+  -webkit-backface-visibility: hidden;
+}
 
 .circle-percentage {
   background: #ef6e6e;
