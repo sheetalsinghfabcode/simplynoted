@@ -1042,7 +1042,7 @@ export default function AddCartFunc() {
             show={deleteModal}
             onCancel={() => setDeleteModal(false)}
             onConfirm={() => deleteOrder(deleteOrderIndex)}
-            message="Are you sure you want to delete this order."
+            message="Are you sure you want to delete this order?"
             confirmText="Delete"
             cancelText="Cancel"
           />
@@ -1050,7 +1050,7 @@ export default function AddCartFunc() {
             show={deleteCardModal}
             onCancel={() => setDeleteCardModal(false)}
             onConfirm={() => deleteKeyInArray(delCardIndex)}
-            message="Are you sure you want to delete Gift Card."
+            message="Are you sure you want to delete Gift Card?"
             confirmText="Delete"
             cancelText="Cancel"
           />
@@ -1058,7 +1058,7 @@ export default function AddCartFunc() {
             show={clearCartModal}
             onCancel={() => setClearCartModal(false)}
             onConfirm={() => clearCart()}
-            message="Are you sure you want to clear your Cart?."
+            message="Are you sure you want to clear your Cart?"
             confirmText="Delete"
             cancelText="Cancel"
           />

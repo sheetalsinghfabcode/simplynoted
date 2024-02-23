@@ -195,9 +195,7 @@ export default function CustomProducts() {
              customProductData.length === 0 &&
              metafields.length === 0 &&
              'opacity-40'
-           } ${
-            show ? '!max-h-[1460px]' : '!max-h-[1135px]'
-          }`}
+           } `}
           >
             <div className="flex flex-wrap md:flex-row flex-col w-full lg:gap-[10px] gap-[30px] justify-between">
               {customProductData && (
@@ -320,7 +318,7 @@ export default function CustomProducts() {
         <AddCart
           show={show}
           data={data}
-          productData={customProductData.variants.nodes[0]}
+          productData={ customProductData?.variants ? customProductData.variants.nodes[0]:''}
           editOrderValue={editOrderValue}
           shippingData={shippingData?.product}
           fontFamilyName={fontFamilyName}
