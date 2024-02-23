@@ -33,7 +33,7 @@ export default function Zapier() {
   }, []);
 
   return (
-    <div>
+    <div className='w-full'>
       <div className="flex flex-wrap sm:mt-[71px] mt-[50px] justify-center mx-auto px-[16px] md:px-[40px] ">
         <div
           className={`w-full ${
@@ -242,7 +242,7 @@ export default function Zapier() {
         </div>
       </div>
 
-      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6 mt-[137px] mb-[123px]">
+      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6 mt-[250px] mb-[20px]">
         <img
           className="simplinoted-card-image"
           src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
@@ -264,10 +264,10 @@ export default function Zapier() {
             Simply Noted integrates with your software and will do bulk sends in
             just a few minutes of your time.
           </p>
-          <div className="lg:flex-row flex-col gap-[12px] flex lg:items-left items-center lg:mt-0 mt-5">
+          <div className="lg:flex-row flex-col gap-[12px] flex lg:items-left items-center lg:mt-[15px] mt-5">
             <DynamicButton
               text="INTEGRATE NOW"
-              className="btn1  lg:!text-[17px] w-[200px]  md:text-[14px] h-[50px]  mt-[35px]"
+              className="btn1  lg:!text-[17px] w-[247px]  md:text-[14px] h-[54px]  mt-[35px]"
               onClickFunction={() =>
                 (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')
@@ -275,7 +275,7 @@ export default function Zapier() {
             />
             <DynamicButton
               text="TUTORIALS"
-              className="btn2  lg:!text-[17px] w-[200px] md:text-[14px] h-[55px] items-center text-center"
+              className="btn2  lg:!text-[17px] w-[247px] md:text-[14px] !h-[69px] items-center text-center"
               onClickFunction={() => navigate('/blogs')}
             />
           </div>
@@ -295,7 +295,7 @@ export default function Zapier() {
         </div>
       </div>
       <div className=''>
-      <div className="lg:flex hidden overflow-hidden justify-end max-w 5/6">
+      <div className="lg:flex hidden overflow-hidden pt-[221px] justify-end max-w 5/6">
         <img
           className="simplinoted-card-image"
           src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
@@ -304,10 +304,10 @@ export default function Zapier() {
       </div>
 
 
-      <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto">
+      {/* <div className="flex flex-row items-center justify-center lg:w-full pt-[221px] md:w-[90%] mx-auto">
         <div className="banner-detail text-center">
           <img
-            className="lg:block absolute hidden left-0 mt-[-18rem]"
+            className="lg:block absolute hidden left-[30px] mt-[-18rem]"
             src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
             alt="shopify"
           />
@@ -327,7 +327,7 @@ export default function Zapier() {
             <div className=" flex flex-col md:flex-row text-white  gap-[12px]  md:mx-[2rem] mr-10 ml-auto">
               <DynamicButton
                 text="REQUEST SAMPLE"
-                className="req-btn w-[200px] h-[45px]"
+                className="req-btn w-[247px] h-[54px]"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
@@ -335,7 +335,52 @@ export default function Zapier() {
               />
               <DynamicButton
                 text="SCHEDULE A DEMO"
-                className="sch-btn text-[white] w-[200px] h-[55px]"
+                className="sch-btn text-[white] w-[247px] !h-[69px]"
+                onClickFunction={() =>
+                  (window.location.href = 'https://meetings.hubspot.com/rick24')
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div> */}
+      <div className='w-full flex justify-center text-center'>
+        <div className='banner-detail relative w-[90rem]'>
+           <div className='absolute right-[-198px] top-[-36px]'>
+           <img
+            className="lg:block hidden"
+            src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+            alt="shopify"
+          />
+           </div>
+           <div className='absolute left-[-98px] top-[-91px]'>
+           <img
+            className="lg:block hidden"
+            src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+            alt="shopify"
+          />
+           </div>
+           <div>
+          <img
+            className=""
+            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
+            alt="shopify"
+          />
+           </div>
+           <div className="">
+            <div className="mb-[12px] text-[44px] mt-[21px] mb-[29px] font-bold text-[white]">Integrate with Zapier</div>
+            <div className="flex gap-[12px]">
+              <DynamicButton
+                text="REQUEST SAMPLE"
+                className="req-btn w-[247px] h-[54px]"
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
+                }
+              />
+              <DynamicButton
+                text="SCHEDULE A DEMO"
+                className="sch-btn text-[white] w-[247px] !h-[69px]"
                 onClickFunction={() =>
                   (window.location.href = 'https://meetings.hubspot.com/rick24')
                 }
@@ -344,6 +389,7 @@ export default function Zapier() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

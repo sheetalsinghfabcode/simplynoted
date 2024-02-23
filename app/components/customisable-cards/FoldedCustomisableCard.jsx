@@ -697,8 +697,7 @@ export default function FoldedCustomisableCard({
       <div
         className="absolute top-0 left-0 button-tomato text-white  flex justify-center items-center p-[10px] text-[12px] font-semibold cursor-pointer"
         onClick={() => setIsCardTypeSelectionPage(true)}
-      >
-      </div>
+      ></div>
     );
   };
 
@@ -864,7 +863,6 @@ export default function FoldedCustomisableCard({
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%]"
             style={{minHeight: '564px'}}
           >
-           
             <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[85px] mt-[4rem]">
               Custom Folded {selectedCardPage}
             </span>
@@ -1055,11 +1053,17 @@ export default function FoldedCustomisableCard({
                   <div className="relative md:ml-[0px] ml-[-108px] w-[60px] h-[50px]">
                     {selectedCardPage === 'Card Front' && (
                       <>
-                        <img
-                          src={AddImageIcon}
-                          alt="Add image file icon"
-                          draggable="false"
-                        />
+                        <div className="flex flex-col gap-[3px]">
+                          <img
+                            src={AddImageIcon}
+                            alt="Add image file icon"
+                            draggable="false"
+                          />
+                          <div className="font-bold text-[14px] whitespace-nowrap">
+                            Add Image
+                          </div>
+                        </div>
+
                         <input
                           type="file"
                           accept="image/png, image/jpeg"
