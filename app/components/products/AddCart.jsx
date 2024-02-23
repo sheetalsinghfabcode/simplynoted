@@ -709,7 +709,7 @@ export function AddCart({
                         onClick={() => handleBoxoNShipping(item)}
                         className='flex flex-col gap-[6px] cursor-pointer'
                         key={index}>
-                          <div className='flex flex-col gap-[4px]'>
+                          <div className=''>
                             <input
                               className="mr-2 cursor-pointer"
                               value={item}
