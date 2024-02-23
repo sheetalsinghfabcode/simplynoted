@@ -891,8 +891,6 @@ export default function FlatCustomisableCard({
     }));
   };
 
-
-
   return (
     <section>
       {isLoading && (
@@ -910,7 +908,7 @@ export default function FlatCustomisableCard({
             setCheckTitleDuplicacyModalOpen(false);
           }}
         >
-          <div className='p-[35px]'>
+          <div className="p-[35px]">
             <div>
               <p className="bg-[#deebf7] h-[55px] lg:text-[20px] text-[14px] flex justify-center items-center text-black border-2 border-solid border-[#526fa1] font-bold">
                 Name your card and save it.
@@ -923,21 +921,21 @@ export default function FlatCustomisableCard({
                 </span>
               )}
             </div>
-            <div className='flex lg:flex-row flex-col justify-between gap-2 mt-3'>
-            <input
-              className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1"
-              type="text"
-              placeholder="Card Name"
-              onChange={(e) => setCustomCardTitle(e.target.value)}
-            ></input>
-          
-            <button
-              className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] "
-              type="button"
-              onClick={handleCustomCardSaveButton}
-            >
-              SAVE CARD
-            </button>
+            <div className="flex lg:flex-row flex-col justify-between gap-2 mt-3">
+              <input
+                className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1"
+                type="text"
+                placeholder="Card Name"
+                onChange={(e) => setCustomCardTitle(e.target.value)}
+              ></input>
+
+              <button
+                className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] "
+                type="button"
+                onClick={handleCustomCardSaveButton}
+              >
+                SAVE CARD
+              </button>
             </div>
           </div>
         </Modal>
@@ -1056,7 +1054,6 @@ export default function FlatCustomisableCard({
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "
             style={{minHeight: '564px'}}
           >
-           
             <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[65px] mt-[4rem]">
               Custom Flat {selectedCardPage}
             </span>
@@ -1065,7 +1062,6 @@ export default function FlatCustomisableCard({
                 <div
                   className="md:min-w-[465px] sm:w-[450px] sm:h-[400px] h-[340px] w-[350px] bg-white relative overflow-hidden"
                   style={{
-                  
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
                     transform: isRotationAnimationApplied
                       ? 'rotateY(-180deg)'
@@ -1080,7 +1076,6 @@ export default function FlatCustomisableCard({
                       <div
                         className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                         style={{
-                        
                           background: 'transparent',
                           zIndex: '-10',
                           transform: isRotationAnimationApplied
@@ -1092,7 +1087,6 @@ export default function FlatCustomisableCard({
                         className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
-                         
                           zIndex: '-20',
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -1268,12 +1262,17 @@ export default function FlatCustomisableCard({
           >
             {selectedCardPage === 'Card Front' && (
               <>
-                <div className="relative w-[60px] h-[50px] lg:mt-[-9rem] mt-0 ">
-                  <img
-                    src={AddImageIcon}
-                    alt="Add image file icon"
-                    draggable="false"
-                  />
+                <div className="relative flex w-[70px] h-[50px] lg:mt-[-9rem] mt-0 ">
+                  <div className="flex flex-col gap-[3px]">
+                    <img
+                      src={AddImageIcon}
+                      alt="Add image file icon"
+                      draggable="false"
+                    />
+                    <div className="font-bold text-[14px] whitespace-nowrap">
+                      Add Image
+                    </div>
+                  </div>
                   {selectedCardPage === 'Card Front' && (
                     <input
                       type="file"
@@ -1284,7 +1283,7 @@ export default function FlatCustomisableCard({
                     />
                   )}
                 </div>
-                <div className="h-auto mt-[40px]">
+                <div className="h-[160px] mt-[40px]">
                   {selectedCardPage === 'Card Front' &&
                     (frontImageDetails.imageBlobUrl ||
                       frontImageDetails.blackAndWhiteImageBlobUrl) && (
@@ -1645,7 +1644,7 @@ export default function FlatCustomisableCard({
                   </div>
                   <div className="flex sm:flex-col flex-row flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-center">
                     <div className="relative mt-5 w-[60px] h-[50px]">
-                      {observingData.isHeader && (
+                      {observingData.isHeader && !qr.isQrAdded && (
                         <>
                           <img
                             src={AddImageIcon}
@@ -1680,10 +1679,11 @@ export default function FlatCustomisableCard({
                       )}
                     </div>
                     <div className="flex sm:flex-col flex-col sm:items-baseline items-center gap-8  sm:w-full w-[45%]">
-                      <div className="h-auto sm:w-1/2 w-[90%] sm:ml-0 ml-[33px]">
+                      <div className="h-[160px] sm:w-1/2 w-[90%] sm:ml-0 ml-[33px]">
                         {observingData.isHeader &&
                           headerData.imageFile &&
-                          headerData.imageBlobUrl && (
+                          headerData.imageBlobUrl &&
+                          !qr.isQrAdded && (
                             <>
                               <div className="flex flex-col mb-3 mt-3">
                                 <span>Resize image</span>

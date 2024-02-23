@@ -846,7 +846,7 @@ const ContactTable = ({
                     </button>
                   </div>
                   <div>
-                    Page
+                    Page{' '}
                     <strong>
                       {pageIndex + 1} of {pageOptions.length}
                     </strong>

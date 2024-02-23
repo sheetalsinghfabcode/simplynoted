@@ -15,7 +15,7 @@ const customStyles = {
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    zIndex: '50'
+    zIndex: '50',
   },
 };
 
@@ -50,14 +50,11 @@ function Instruction({
             </span>
           )} */}
           {close && (
-           <div className="absolute top-[35px] right-[1px] top-[36px] sm:block">
-                    <span
-                      onClick={closeModal}
-                      className="transition text-primary "
-                    >
-                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
-                    </span>
-                  </div>
+            <div className="absolute top-[35px] right-[1px] top-[36px] sm:block">
+              <span onClick={closeModal} className="transition text-primary ">
+                <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+              </span>
+            </div>
           )}
           {image && (
             <div className="flex justify-center">
@@ -68,7 +65,7 @@ function Instruction({
             </div>
           )}
           {title && (
-            <h2 className="text-gray-500 font-bold sm:text-3xl text-2xl text-center p-[15px]">
+            <h2 className="text-[#001a5f] font-bold sm:text-3xl text-2xl text-center p-[15px]">
               {title}
             </h2>
           )}
@@ -90,12 +87,13 @@ function Instruction({
               instructions.map((instruction, index) => (
                 <li key={index}>{instruction}</li>
               ))}
-          </p>{table &&
-          <div className="bg-white mt-20 text-black rounded-lg overflow-hidden">
+          </p>
+          {table && (
+            <div className="bg-white mt-[2rem] text-black rounded-lg overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full table-auto border-collapse">
-                  <thead className="bg-blue-800 text-black">
-                    <tr className="text-left bg-gray-200">
+                  <thead className="bg-blue-800 text-white">
+                    <tr className="text-left bg-black">
                       <th className="border border-solid border-black py-2 px-4 font-bold">
                         Field Name
                       </th>
@@ -110,95 +108,96 @@ function Instruction({
                         Type*
                       </td>
                       <td className="border border-solid border-black py-2 px-4">
-                        “Sender” or “Recipient”
+                        "Sender" or "Recipient"
                       </td>
                     </tr>
                     <tr>
                       <td className="border border-solid border-black py-2 px-4">
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            First Name*
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Text
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Last Name*
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Text
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Address*
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Numbers + Text
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Address 2
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Numbers + Text
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4"></td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Text
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            State/Province*
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Please use full names for US States (E.g.,
-                            California, not CA)
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Postal Code*
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            For US addresses, 5 digits are required. For non-US
-                            addresses, any postal code may be used.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Country*
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            If no country is provided, USA is assumed. USA, US,
-                            U.S., U.S.A, United States, and United States of
-                            America are all acceptable for US addresses. US
-                            postage rates apply for US addresses. Non-US postage
-                            rates apply for all other countries.
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Phone
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            E.g., (801) 444-4444 or 999.222.2222
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="border border-solid border-black py-2 px-4">
-                            Email
-                          </td>
-                          <td className="border border-solid border-black py-2 px-4">
-                            name@company.com
-                          </td>
-                        </tr>
+                        First Name*
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Text
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Last Name*
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Text
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Address*
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Numbers + Text
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Address 2
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Numbers + Text
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4"></td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Text
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        State/Province*
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Please use full names for US States (E.g., California,
+                        not CA)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Postal Code*
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        For US addresses, 5 digits are required. For non-US
+                        addresses, any postal code may be used.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Country*
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        If no country is provided, USA is assumed. USA, US,
+                        U.S., U.S.A, United States, and United States of America
+                        are all acceptable for US addresses. US postage rates
+                        apply for US addresses. Non-US postage rates apply for
+                        all other countries.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Phone
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        E.g., (801) 444-4444 or 999.222.2222
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Email
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        name@company.com
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td className="border border-solid border-black py-2 px-4">
                         Company
                       </td>
                       <td className="border border-solid border-black py-2 px-4">
@@ -225,7 +224,8 @@ function Instruction({
                   </tbody>
                 </table>
               </div>
-          </div>}
+            </div>
+          )}
         </div>
       </div>
     </Modal>
