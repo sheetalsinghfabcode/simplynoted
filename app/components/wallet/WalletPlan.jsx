@@ -39,6 +39,10 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
+  function formatNumberWithCommas(number) {
+    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
+
   return (
 <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
 <div className="flex flex-col md:flex-row overflow-auto">
@@ -80,6 +84,8 @@ const WalletPlans = ({
                 product.node.title.toLowerCase() !==
                   stripeCollection.stripe?.subscription,
             );
+
+            console.log("Variant Price",Number(variant.node.price.amount).toFixed(2) , typeof(variant.node.price.amount));
 
             return (
               <div
@@ -138,7 +144,7 @@ const WalletPlans = ({
                     )}
                   {amountMetafield?.value && (
                     <span className="text-[14px] font-medium">
-                    ${variant.node.price.amount}
+                    ${formatNumberWithCommas(Number(variant.node.price.amount))}
                     </span>
                   )}
                 </div>
