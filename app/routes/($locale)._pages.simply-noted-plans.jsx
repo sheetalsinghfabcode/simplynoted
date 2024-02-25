@@ -96,11 +96,11 @@ export default function SimplyNoted() {
 
   return (
     <div className=" w-full global-max-width-handler ">
-      {loader && (
+      {/* {loader && (
         <div className="absolute top-[20%] z-[50] left-[50%]">
           <CircularLoader title="Loading Plans" color="#ef6e6e" />
         </div>
-      )}
+      )} */}
       <div className='flex px-[16px] md:px-[40px] justify-start items-center'>
         <DynamicTitle className="" title={'Simply Noted Plans'} />
       </div>

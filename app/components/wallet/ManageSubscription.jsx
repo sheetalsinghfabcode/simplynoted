@@ -44,6 +44,8 @@ const ManageSubscription = () => {
   const [showAccordion, setShowAccordion] = useState(false);
   const [loader, setLoader] = useState(false);
 
+  console.log('paymentHistory', paymentHistory);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -77,7 +79,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -423,6 +425,39 @@ const ManageSubscription = () => {
     }
     return inputString; // Return as is if not a valid number
   }
+
+// Function to format date
+function formatDate(date) {
+  // Get the user's preferred language
+  let userLanguage = navigator.language || navigator.userLanguage;
+
+  // Get the user's time zone dynamically
+  let userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  let options = {
+      weekday: 'short',
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZoneName: 'short',
+      timeZone: userTimeZone // Set the time zone dynamically
+  };
+
+  return new Intl.DateTimeFormat('en-IN', options).format(date);
+}
+
+// Get the current date
+let currentDate = new Date();
+
+// Format the current date based on the user's location
+let formattedDate = formatDate(currentDate);
+
+// Display the formatted date
+console.log("Formatted date based on user's location:", formattedDate);
+
 
   return (
     <>
@@ -793,10 +828,10 @@ const ManageSubscription = () => {
                                   {i + 1}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
-                                  {payment.description}
+                                  {payment.description ? payment.description : null}
                                 </td>
                                 <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
-                                  {payment.date}
+                                {formatDate(payment.created*1000)}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
                                   $ {payment.amount}

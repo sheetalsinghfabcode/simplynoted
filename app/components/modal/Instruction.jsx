@@ -52,7 +52,7 @@ function Instruction({
           {close && (
             <div className="absolute top-[35px] right-[1px] top-[36px] sm:block">
               <span onClick={closeModal} className="transition text-primary ">
-                <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                <ImCross className="md:mr-[-12px] cursor-pointer mr-[-16px] mt-[-51px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
               </span>
             </div>
           )}
@@ -81,7 +81,7 @@ function Instruction({
               </button>
             )}
           </div>
-          <div className="w-full">{body}</div>
+          <div className="w-full break-all">{body}</div>
           <p className="!text-[#000] font-medium text-[14px]  leading-[160%]">
             {instructions &&
               instructions.map((instruction, index) => (

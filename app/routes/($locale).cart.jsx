@@ -19,6 +19,7 @@ import {useStateContext} from '~/context/StateContext';
 import {RiDeleteBin6Line} from 'react-icons/ri';
 import LoginModal from '~/components/modal/LoginModal';
 import {seoPayload} from '~/lib/seo.server';
+import SuccessfullLoader from '~/components/SucessfullLoader';
 
 let storedDataString, storedDataArray;
 
@@ -34,12 +35,12 @@ export async function loader({context, request}) {
   });
   // const formData = new FormData()
   // formData.append("name","ayush")
-  const seo = seoPayload.cart()
+  const seo = seoPayload.cart();
   return defer({
     data,
     postalData,
     StripeKey,
-    seo
+    seo,
   });
 }
 
@@ -81,6 +82,7 @@ export default function AddCartFunc() {
   const [agree, setAgree] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
+  const [sucessfullLoader, setSuccessfullLoader] = useState(false);
 
   useEffect(() => {
     storedDataString = localStorage.getItem('mydata')
@@ -123,6 +125,8 @@ export default function AddCartFunc() {
   let keyToUpdate4 = 'giftCardId';
   let keyToUpdate5 = 'giftCardProdUrl';
   function updateValueInArray(index) {
+    setSuccessfullLoader(true);
+    setOperation("updateValue");
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -135,9 +139,16 @@ export default function AddCartFunc() {
     }
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
-    setIsOpen(false);
+    setTimeout(() => {
+      setIsOpen(false);
+    }, [100]);
+    setTimeout(() => {
+      setSuccessfullLoader(false);
+    }, 2000);
   }
   function deleteKeyInArray(index) {
+    setSuccessfullLoader(true);
+    setOperation("deleteKey");
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -147,8 +158,13 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate3] = null;
       cartData[index][keyToUpdate4] = null;
     }
+    setTimeout(() => {
+      setSuccessfullLoader(false);
+    }, 2000);
     localStorage.setItem('mydata', JSON.stringify(cartData));
-    setDeleteCardModal(false);
+    setTimeout(() => {
+      setDeleteCardModal(false);
+    }, 100);
   }
   function confirmCardDel(index) {
     setDeleteCardModal(true);
@@ -174,6 +190,8 @@ export default function AddCartFunc() {
   }
 
   function deleteOrder(index) {
+    setSuccessfullLoader(true);
+    setOperation("deleteOrder"); 
     setUpdateGift(!updateGift);
     // if (index >= 0 && index < cartData.length) {
     // Delete the order
@@ -183,6 +201,9 @@ export default function AddCartFunc() {
     localStorage.setItem('mydata', JSON.stringify(cartData));
     localStorage.setItem('cartCount', JSON.stringify(cartData.length));
     setDeleteModal(false);
+    setTimeout(() => {
+      setSuccessfullLoader(false);
+    }, 2000);
   }
 
   function editOrderData(index) {
@@ -215,8 +236,6 @@ export default function AddCartFunc() {
       boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.5)',
     },
   };
-
-
 
   function continueShopping() {
     navigate('/collections/best-sellers');
@@ -265,6 +284,8 @@ export default function AddCartFunc() {
     setIsOpen2(false);
   }
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [operation, setOperation] = useState(null);
+
 
   const handlePrevClick = () => {
     if (currentIndex > 0) {
@@ -335,7 +356,10 @@ export default function AddCartFunc() {
                   {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
                   {cartData &&
                     cartData.map((item, index) => (
-                      <div key={index} className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom">
+                      <div
+                        key={index}
+                        className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom"
+                      >
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                             <div className="flex w-full justify-start sm:flex-row flex-col">
@@ -1062,6 +1086,21 @@ export default function AddCartFunc() {
             confirmText="Delete"
             cancelText="Cancel"
           />
+  {sucessfullLoader && (
+  <SuccessfullLoader
+    successfullMessage={
+      operation === "deleteOrder"
+        ? 'Deleting Order...'
+        : operation === "updateValue"
+          ? 'Adding Gift Card...'
+          : operation === "deleteKey"
+            ? 'Deleting Gift Card ...'
+            : 'Processing...'
+    }
+  />
+)}
+
+
 
           <Modal
             isOpen={modalIsOpen}
@@ -1079,7 +1118,7 @@ export default function AddCartFunc() {
                   onClick={() => setIsOpen(false)}
                   className="transition text-primary "
                 >
-                   <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                  <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                 </button>
               </div>
             </div>
@@ -1096,7 +1135,9 @@ export default function AddCartFunc() {
                     >
                       <option className="w-full"> Select Gift Card</option>
                       {data.collection.products.edges.map((item, i) => (
-                        <option value={i} key={i}>{item.node.title}</option>
+                        <option value={i} key={i}>
+                          {item.node.title}
+                        </option>
                       ))}
                     </select>
                   </div>
@@ -1114,7 +1155,7 @@ export default function AddCartFunc() {
                         className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
                         onChange={(e) => priceValFunc(e.target.value)}
                       >
-                        {cardPriceVal.map((item,index) => (
+                        {cardPriceVal.map((item, index) => (
                           <option value={item.node.price.amount} key={index}>
                             {item.node.title}
                           </option>
@@ -1159,7 +1200,7 @@ export default function AddCartFunc() {
                       onClick={() => closeModal()}
                       className="transition text-primary "
                     >
-                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </button>
                   </div>
 
@@ -1265,7 +1306,7 @@ export default function AddCartFunc() {
                       }}
                     >
                       {' '}
-                      {msgShow.replace(/\/n/g, "\n")}
+                      {msgShow.replace(/\/n/g, '\n')}
                     </span>
                     <br />
                     <span

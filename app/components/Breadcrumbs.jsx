@@ -34,7 +34,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   let ab = ['collections', 'pages', 'policies'];
 
   return (
-    <div className="breadcrumb inline-block pt-[39px] text-[#010101] capitalize font-medium ">
+    <div className="breadcrumb inline-block pt-[20px] text-[#010101] capitalize font-medium ">
       <nav
         className="flex px-2 sm:px-5 py-3  border  border-gray-200 rounded-lg bg-gray-50 "
         aria-label="Breadcrumb"
@@ -89,7 +89,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
           {pathnames.map((name, index) => {
             let breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
             if (
-              ['collections', 'products', 'pages', 'policies','custom'].includes(name)
+              ['collections', 'products', 'pages', 'policies','custom','journal','video'].includes(name)
             ) {
               return null; // Skip collections, products, etc.
             }

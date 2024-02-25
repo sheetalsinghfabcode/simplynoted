@@ -92,7 +92,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
               Phone:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
-              {phoneNumber ? phoneNumber : phone}
+              {phoneNumber ? phoneNumber : phone ? phone :null  }
             </p>
           </div>
 

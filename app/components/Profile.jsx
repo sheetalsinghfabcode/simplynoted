@@ -4,6 +4,7 @@ import DynamicButton from './DynamicButton';
 import CircularLoader from './CircularLoder';
 import {json} from '@shopify/remix-oxygen';
 import {useStateContext} from '~/context/StateContext';
+import SuccessfullLoader from './SucessfullLoader';
 
 const Profile = ({
   customer,
@@ -14,11 +15,12 @@ const Profile = ({
 }) => {
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
-  const [activeTab, setActiveTab] = useState('account'); // 'account' or 'security'
+  const [activeTabs, setActiveTabs] = useState('account'); // 'account' or 'security'
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
+  const [successfullLoader, setSuccessFullLoader] = useState(false);
 
-  const {setFullName, setUserEmail} = useStateContext();
+  const {setFullName, setAccountTabName,setActiveTab, setUserEmail} = useStateContext();
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
@@ -118,6 +120,7 @@ const Profile = ({
             }`,
           );
 
+
           setTimeout(() => {
             setUserEmail(accountDetails.email);
             setFullName(
@@ -126,9 +129,18 @@ const Profile = ({
               }`,
             );
             setProfile(false);
+            setSuccessFullLoader(true);
+            debugger
+
             setLoader(false);
             setAccountDetail(true);
           }, [1000]);
+
+          setTimeout(() => {
+            setAccountTabName("Profile")
+            setActiveTab(7)
+            setSuccessFullLoader(false);
+          }, 3000);
         }
       } else {
         // Handle errors if the response is not OK
@@ -181,12 +193,20 @@ const Profile = ({
       if (jsonResponse.customer) {
         setProfile(false);
         setLoader(false);
-
+        setSuccessFullLoader(true);
         setAccountDetail(true);
       }
 
       if (response.ok) {
         setLoader(false);
+       
+
+        setTimeout(() => {
+          setSuccessFullLoader(false);
+          setAccountTabName("Profile")
+          setActiveTab(7)
+        }, 3000);
+    
         // Request was successful
       } else {
         setLoader(false);
@@ -201,51 +221,55 @@ const Profile = ({
   };
 
   const switchToTab = (tabName) => {
-    setActiveTab(tabName);
+    setActiveTabs(tabName);
     setError(null);
   };
 
   return (
     <div className="relative">
       {loader && (
-        <div className="z-50 absolute top-[50%] left-[50%]">
+        <div className="z-50  absolute top-[50%] left-[30%]">
           <CircularLoader
             title={
-              activeTab === 'account' ? 'Updating Profile' : 'Updating Password'
+              activeTabs === 'account' ? 'Updating Profile' : 'Updating Password'
             }
             color="#ef6e6e"
           />
         </div>
       )}
+      {
+        successfullLoader && 
+        <SuccessfullLoader successfullMessage= {activeTabs ==="account" ? "Updated Profile Successfully" : "Updated Password Successfully"} />
+      }
       <div
-        className={`bg-white  rounded-lg md:p-6 w-full  mx-auto custom-box-shadow  ${
-          loader && 'opacity-50'
+        className={`rounded-lg md:p-6 w-full  mx-auto   ${
+         ( loader || successfullLoader) && 'opacity-50'
         } `}
       >
-          <div className="flex w-full mb-4">
-            <button
-              onClick={() => switchToTab('account')}
-              className={`mr-4 px-4 py-4 w-full rounded-t-lg font-karla ${
-                activeTab === 'account'
-                  ? 'bg-[#001a5f] text-white'
-                  : 'bg-gray-300 text-gray-700'
-              }`}
-            >
-              Account Details
-            </button>
-            <button
-              onClick={() => switchToTab('security')}
-              className={`px-4 py-4 w-full rounded-t-lg font-karla ${
-                activeTab === 'security'
-                  ? 'bg-[#001a5f] text-white'
-                  : 'bg-gray-300 text-gray-700'
-              }`}
-            >
-              Security
-            </button>
-          </div>
+        <div className="flex w-full mb-4">
+          <button
+            onClick={() => switchToTab('account')}
+            className={`mr-4 px-4 py-4 w-full rounded-t-lg font-karla ${
+              activeTabs === 'account'
+                ? 'bg-[#001a5f] text-white'
+                : 'bg-gray-300 text-gray-700'
+            }`}
+          >
+            Account Details
+          </button>
+          <button
+            onClick={() => switchToTab('security')}
+            className={`px-4 py-4 w-full rounded-t-lg font-karla ${
+              activeTabs === 'security'
+                ? 'bg-[#001a5f] text-white'
+                : 'bg-gray-300 text-gray-700'
+            }`}
+          >
+            Security
+          </button>
+        </div>
 
-        {activeTab === 'account' && (
+        {activeTabs === 'account' && (
           <form onSubmit={handleSubmit} className="">
             <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 mb-6">
@@ -259,7 +283,7 @@ const Profile = ({
                   type="text"
                   id="firstName"
                   name="firstName"
-                  value={accountDetails.firstName || ""}
+                  value={accountDetails.firstName || ''}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -275,7 +299,7 @@ const Profile = ({
                   type="text"
                   id="lastName"
                   name="lastName"
-                  value={accountDetails.lastName ||""}
+                  value={accountDetails.lastName || ''}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -296,7 +320,7 @@ const Profile = ({
                   id="email"
                   disabled
                   name="email"
-                  value={accountDetails.email || ""}
+                  value={accountDetails.email || ''}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -313,7 +337,7 @@ const Profile = ({
                   type="text"
                   id="phone"
                   name="phone"
-                  value={accountDetails.phone || ""}
+                  value={accountDetails.phone || ''}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
@@ -430,7 +454,7 @@ const Profile = ({
           </form>
         )}
 
-        {activeTab === 'security' && (
+        {activeTabs === 'security' && (
           <>
             {error && (
               <span className="text-[16px] text-[#ef6e6e] font-semibold">
@@ -480,7 +504,7 @@ const Profile = ({
         <div className=" flex items-center justiy-center w-full mx-auto">
           <DynamicButton
             onClickFunction={() => {
-              if (activeTab === 'account') {
+              if (activeTabs === 'account') {
                 updateUserProfile();
               } else {
                 updateUserPassword();
@@ -488,7 +512,7 @@ const Profile = ({
             }}
             className="bg-[#ef6e6e] text-white font-bold sm:max-w-[40%] 2xl:max-w-[60%] cursor-pointer font-karla h-[50px] mx-auto w-[100%]"
             text={
-              activeTab === 'account' ? 'Update Profile' : 'Update Password'
+              activeTabs === 'account' ? 'Update Profile' : 'Update Password'
             }
           />
         </div>

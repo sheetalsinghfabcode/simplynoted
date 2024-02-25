@@ -8,7 +8,7 @@ import {
   useOutlet,
   useNavigate,
 } from '@remix-run/react';
-import {Suspense, useEffect, useState} from 'react';
+import {Suspense, useEffect, useState,useRef} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
 import {flattenConnection} from '@shopify/hydrogen';
 import {
@@ -42,6 +42,7 @@ import help from '../../assets/Image/help.png';
 import customOrder from '../../assets/Image/custom-order.png';
 import CardComponent from '~/components/account/CardComponent';
 import automate from '../../assets/Image/automate.png';
+import Instruction from '~/components/modal/Instruction';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -135,14 +136,20 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
-  const {orderHistory, setCustomerId, setIsAccountLoader, acountTabName, setAccountTabName,activeTab,setActiveTab} =
-    useStateContext();
+  const {
+    orderHistory,
+    setCustomerId,
+    setIsAccountLoader,
+    acountTabName,
+    setAccountTabName,
+    activeTab,
+    setActiveTab,
+  } = useStateContext();
   const [accountDetail, setAccountDetail] = useState(
     !orderHistory ? true : false,
   );
   const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
-
 
   const tabs = [
     'General',
@@ -152,8 +159,8 @@ function Account({customer, heading, featuredData}) {
     'Manage Plans',
     'Affiliate Program',
     'Edit Profile',
+    'Profile',
   ];
-
 
   useEffect(() => {
     if (customer) {
@@ -185,23 +192,23 @@ function Account({customer, heading, featuredData}) {
     }
   };
 
-  useEffect(()=>{
-  if (data == true) {
-    remove();
-  } else if (data == false) {
-    if (customer && typeof window !== 'undefined' ) {
-      localStorage.setItem('customerId', result);
-      setCustomerId(result);
-      localStorage.setItem('SnEmail', customer.email);
-      localStorage.setItem('firstName', customer.firstName);
-      localStorage.setItem('lastName', customer.lastName);
+  useEffect(() => {
+    if (data == true) {
+      remove();
+    } else if (data == false) {
+      if (customer && typeof window !== 'undefined') {
+        localStorage.setItem('customerId', result);
+        setCustomerId(result);
+        localStorage.setItem('SnEmail', customer.email);
+        localStorage.setItem('firstName', customer.firstName);
+        localStorage.setItem('lastName', customer.lastName);
+      }
     }
-  }
-}, [data, customer, result]);
+  }, [data, customer, result]);
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
+        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${result}`,
       );
       const json = await res.json();
 
@@ -225,6 +232,52 @@ function Account({customer, heading, featuredData}) {
       }
     } catch (error) {}
   }
+
+  const [key,setKey] = useState("")
+  const [keyModal,setKeyModal] = useState(false)
+
+  const textToCopyRef = useRef(null);
+
+  const copyTextToClipboard = () => {
+    const textToCopy = textToCopyRef.current.textContent;
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert('Text copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+  };
+
+  const generateApiKey = async () => {
+    try {
+      const response = await fetch(
+        `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${Number(
+          customer.id.match(/\d+/)[0],
+        )}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setKey(data.result)
+    setKeyModal(true)
+
+        localStorage.setItem('apiKey', data.result);
+      } else {
+        // Handle errors here
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      // Handle network errors or exceptions
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <div className="w-full global-max-width-handler ">
@@ -305,14 +358,7 @@ function Account({customer, heading, featuredData}) {
               </button>
             </Form>
           </div>
-          <div className="hidden">
-            <AccountDetails
-              loader={loader}
-              setLoader={setLoader}
-              accountDetail={accountDetail}
-              customer={customer}
-            />
-          </div>
+          <div className="hidden"></div>
 
           <div className=" w-full  md:w-[80%]">
             {activeTab === 0 && (
@@ -347,6 +393,7 @@ function Account({customer, heading, featuredData}) {
                   buttonText="Get Started"
                   onClick={() => navigate('/zapier-integration')}
                   showDownloadButton={true}
+                  onDownload={() => generateApiKey()}
                   downloadButtonText="Generate API Key"
                 />
                 <CardComponent
@@ -358,14 +405,19 @@ function Account({customer, heading, featuredData}) {
                   onClick={() =>
                     window.open('https://meetings.hubspot.com/rick24', '_blank')
                   }
-                  onDownload={() =>
-                    window.open('https://meetings.hubspot.com/rick24', '_blank')
-                  }
+                  onDownload={() => navigate('/Video')}
                   showDownloadButton={true}
                   downloadButtonText="See Tutorials"
                 />
               </div>
             )}
+            <Instruction
+              title="Generated Api Key"
+              closeModal={()=>setKeyModal(false)}
+              isOpen={keyModal}
+              close={true}
+              body={key}
+            />
 
             {activeTab === 2 && <AccountOrderHistory orders={orders} />}
 
@@ -381,6 +433,15 @@ function Account({customer, heading, featuredData}) {
                 loader={loader}
                 accountDetails={accountDetail}
                 setLoader={setLoader}
+              />
+            )}
+
+            {activeTab === 7 && (
+              <AccountDetails
+                loader={loader}
+                setLoader={setLoader}
+                accountDetail={accountDetail}
+                customer={customer}
               />
             )}
           </div>
@@ -507,6 +568,3 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
-
-
-
