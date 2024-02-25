@@ -528,23 +528,21 @@ const ContactTable = ({
   useEffect(() => {
     function handleClickOutside(event) {
       if (
-        clickUploadBulkAddress.current &&
-        !clickUploadBulkAddress.current.contains(event.target)
-      ) {
-        setUploadBulkAddress(false);
-      } else if (
+        uploadBulkAddressRef.current &&
+        !uploadBulkAddressRef.current.contains(event.target) &&
         clickUploadBulkAddress.current &&
         !clickUploadBulkAddress.current.contains(event.target)
       ) {
         setUploadBulkAddress(false);
       }
     }
-
+  
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [uploadBulkAddressRef, clickUploadBulkAddress]);
+  
 
   return (
     <>

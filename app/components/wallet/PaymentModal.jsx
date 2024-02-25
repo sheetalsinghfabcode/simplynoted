@@ -8,9 +8,8 @@ import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
 import {useStateContext} from '~/context/StateContext';
-import { FaAngleDown } from "react-icons/fa6";
-import { FaAngleRight } from "react-icons/fa6";
-
+import {FaAngleDown} from 'react-icons/fa6';
+import {FaAngleRight} from 'react-icons/fa6';
 
 const PaymentModal = ({
   show,
@@ -19,7 +18,7 @@ const PaymentModal = ({
   StripeKey,
   setShowAccordion,
   setPurchaseModal,
-  confirmText,
+  setPackageModal,
   cancelText,
 }) => {
   const {
@@ -210,7 +209,7 @@ const PaymentModal = ({
   // Example usage:
   const {discount, cards} = extractDiscountAndCardsInfo(selectedPlan);
 
-  const createSubscription = async (id) => {
+  const createSubscription = async (json) => {
     try {
       const payLoad = {
         subscriptionPriceId: subscriptionPriceId,
@@ -228,19 +227,31 @@ const PaymentModal = ({
       });
 
       const data = await response.json();
-      if (data) {
-        id, data;
+
+      if (data.redirectUrl) {
+        setloader(false);
+        setPaymentLoader(false)
+
+        const result = await stripe.confirmCardPayment(data.client_secret);
+        if (result?.error) {
+          setPaymentLoader(false)
+        }
+      } else {
+        paymentSave(data, json);
       }
       // Handle the response data here
     } catch (error) {
+      setPaymentLoader(false)
       // Handle errors here
       console.error('Error:', error);
+    } finally {
+      
     }
   };
 
-  const paymentPurchase = (id, savePaymentData) => {
+  const paymentPurchase = (data, json) => {
     const payLoad = {
-      paymentMethodId: id,
+      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
@@ -270,16 +281,27 @@ const PaymentModal = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          paymentSave(savePaymentData);
+          setShowAccordion(false)
+          setPurchaseModal(false)
+          setPackageModal(false)
+          setPaymentLoader(false);
+          setTimeout(() => {
+            navigate('/account');
+            setActiveTab(4);
+            setAccountTabName('Manage Plans');
+          }, []);
         }
       })
+
       .catch((error) => {
         // Handle errors here
+        setPaymentLoader(false)
+
         console.error('Error:', error);
       });
   };
 
-  const paymentSave = (data) => {
+  const paymentSave = (data, json) => {
     const payLoad = {
       subscriptionId: data.subscriptionId,
       subscriptionName: subscriptionTitle,
@@ -309,8 +331,7 @@ const PaymentModal = ({
         return response.json();
       })
       .then((data) => {
-        setPaymentLoader(false);
-        navigate('/manage-subscription');
+        paymentPurchase(data, json);
         // Handle the response data here
       })
       .catch((error) => {
@@ -370,12 +391,20 @@ const PaymentModal = ({
                 <span className="font-bold  md:text-[20px] text-[17px] text-[#001a5f]">
                   Billing Address
                 </span>
-                <span className="mr-2">{isBillingOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
+                <span className="mr-2">
+                  {isBillingOpen ? <FaAngleDown /> : <FaAngleRight />}
+                </span>
               </div>
-               <div className={`overflow-hidden 
-                ${isBillingOpen ? "max-h-[800px] transition-max-height" : "max-h-0"}
-               `}>
-              <div className="rounded">
+              <div
+                className={`overflow-hidden 
+                ${
+                  isBillingOpen
+                    ? 'max-h-[800px] transition-max-height'
+                    : 'max-h-0'
+                }
+               `}
+              >
+                <div className="rounded">
                   <div className="w-full max-w-[650px]  mx-auto  p-3 mt-3">
                     <div className="md:flex grid md:gap-3 gap-0">
                       <div className="w-full">
@@ -511,9 +540,9 @@ const PaymentModal = ({
                       </div>
                     </div>
                   </div>
+                </div>
               </div>
-               </div>
-                <div className="border-b border-solid border-black mt-[12px]"></div>
+              <div className="border-b border-solid border-black mt-[12px]"></div>
 
               <div className="mt-4">
                 <div
@@ -522,13 +551,21 @@ const PaymentModal = ({
                 >
                   <span className="font-bold md:text-[20px] text-[17px] text-[#001a5f]">
                     Credit Card Information
-                  </span> 
-                  <span className="mr-2">{isCardInfoOpen ? <FaAngleDown /> : <FaAngleRight />}</span>
+                  </span>
+                  <span className="mr-2">
+                    {isCardInfoOpen ? <FaAngleDown /> : <FaAngleRight />}
+                  </span>
                 </div>
-             
-               <div className={`overflow-hidden  
-                 ${isCardInfoOpen ?"max-h-[800px] transition-max-height" : "max-h-0"}
-               `}>
+
+                <div
+                  className={`overflow-hidden  
+                 ${
+                   isCardInfoOpen
+                     ? 'max-h-[800px] transition-max-height'
+                     : 'max-h-0'
+                 }
+               `}
+                >
                   <>
                     <Elements stripe={stripe}>
                       {savedCard &&
@@ -560,13 +597,12 @@ const PaymentModal = ({
                         <div className="savedCard flex items-start justify-between mb-[12px]">
                           <div>
                             <button
-                            
                               className="bg-[#1b5299] font-bold h-[45px] w-[200px] mt-[13px] text-[#fff] p-2 rounded"
                               onClick={() => {
                                 setShowStripeCard(!showStripeCard);
                               }}
                             >
-                           Add New Card
+                              Add New Card
                             </button>
                           </div>
                         </div>
@@ -598,48 +634,43 @@ const PaymentModal = ({
                         <DynamicButton
                           text="Previous"
                           onClickFunction={() => {
-                            setWalletPurchase(true);
-                            setWalletPayment(false);
+                            setShowAccordion(false);
+                            setPurchaseModal(true);
                           }}
                           className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                         />
                         <DynamicButton
                           text="Complete Purchase"
-                          onClick={() => {
+                          onClickFunction={() => {{
                             setPaymentLoader(true);
                             createSubscription(paymentMethodId);
-                          }}
+                          }}}
                           className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                         ></DynamicButton>
                       </div>
                     )}
-                
                   </>
-               </div>
+                </div>
               </div>
               <div className=" border-2 text-[12px] bg-white text-left p-[10px] mt-[12px] border-solid border-[#324879]">
-                      <span>
-                        Custom cards and international postage may cost extra.
-                        You will receive the same level of discount on custom
-                        cards.
-                      </span>
-                      <br />
-                      <br />
-                      <span>
-                        By making this purchase, you agree to allow us to
-                        automatically renew your prepaid package when your
-                        balance drops below $100 and to renew your subscription
-                        at the end of your subscription period. Both your
-                        subscription and prepaid package can be changed later
-                        from your Account area.
-                      </span>
-                    </div>
-
+                <span>
+                  Custom cards and international postage may cost extra. You
+                  will receive the same level of discount on custom cards.
+                </span>
+                <br />
+                <br />
+                <span>
+                  By making this purchase, you agree to allow us to
+                  automatically renew your prepaid package when your balance
+                  drops below $100 and to renew your subscription at the end of
+                  your subscription period. Both your subscription and prepaid
+                  package can be changed later from your Account area.
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   );
 };
