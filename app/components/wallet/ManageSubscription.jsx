@@ -477,6 +477,7 @@ console.log("Formatted date based on user's location:", formattedDate);
         StripeKey={StripeKey}
         setShowAccordion={setShowAccordion}
         setPurchaseModal={setPurchaseModal}
+        setPackageModal={setPackageModal}
         show={showAccordion}
       />
 

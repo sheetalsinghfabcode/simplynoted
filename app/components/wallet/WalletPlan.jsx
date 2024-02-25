@@ -43,6 +43,10 @@ const WalletPlans = ({
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
+
+  console.log("stripeCollection",stripeCollection);
+
+
   return (
 <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
 <div className="flex flex-col md:flex-row overflow-auto">
@@ -86,18 +90,17 @@ const WalletPlans = ({
             );
 
 
+
             return (
               <div
               key={index}
                 onClick={() => {
-                  if (
-                    stripeCollection.stripe?.subscription !==
-                      product.node.title ||
-                    stripeCollection.stripe?.subscriptionStatus !==
-                      'canceled'
-                  ) {
+                  if (stripeCollection.stripe?.subscriptionStatus === 'canceled') {
                     setSubscription(subscriptionMetafield?.value || 0);
-                  }
+                } else if (stripeCollection.stripe?.subscription !== product.node.title) {
+                    setSubscription(subscriptionMetafield?.value || 0);
+                }
+                
                   setSubscriptionProduct(product.node.id);
                   setPackageProduct(variant.node.id);
                   setSubscriptionTitle(product.node.title);
