@@ -122,7 +122,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       price: pricePerCard[1],
       tickCount: 19,
       firstTwoFeaturesText: ['40% - 55% OFF', '100+ Cards/mo'],
-      buttonText: subscribeTeam ? 'Purchase Package' : 'Buy Plan',
+      buttonText: subscribeTeam ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeTeam ? '#1b5299' : '#ef6e6e',
       onClick: () => setWalletPlan(true),
       features: [
@@ -135,7 +135,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       price: pricePerCard[3],
       tickCount: 23,
       firstTwoFeaturesText: ['60% - 70% OFF', '1000+ Cards/mo'],
-      buttonText: subscribeBusiness ? 'Purchase Package' : 'Buy Plan',
+      buttonText: subscribeBusiness ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
       onClick: () => setWalletPlan(true),
       features: [

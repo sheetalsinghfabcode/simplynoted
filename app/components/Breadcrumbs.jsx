@@ -89,7 +89,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
           {pathnames.map((name, index) => {
             let breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
             if (
-              ['collections', 'products', 'pages', 'policies','custom'].includes(name)
+              ['collections', 'products', 'pages', 'policies','custom','journal','video'].includes(name)
             ) {
               return null; // Skip collections, products, etc.
             }

@@ -85,7 +85,6 @@ const WalletPlans = ({
                   stripeCollection.stripe?.subscription,
             );
 
-            console.log("Variant Price",Number(variant.node.price.amount).toFixed(2) , typeof(variant.node.price.amount));
 
             return (
               <div

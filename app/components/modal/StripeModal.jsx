@@ -24,7 +24,6 @@ const StripeModal = ({
 
   const [errors, setErrors] = useState([]);
 
-  console.log("stripe",stripe);
 
   useEffect(() => {
     const fullName = localStorage.getItem('SNFullName');

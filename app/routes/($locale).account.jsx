@@ -8,7 +8,7 @@ import {
   useOutlet,
   useNavigate,
 } from '@remix-run/react';
-import {Suspense, useEffect, useState} from 'react';
+import {Suspense, useEffect, useState,useRef} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
 import {flattenConnection} from '@shopify/hydrogen';
 import {
@@ -42,6 +42,7 @@ import help from '../../assets/Image/help.png';
 import customOrder from '../../assets/Image/custom-order.png';
 import CardComponent from '~/components/account/CardComponent';
 import automate from '../../assets/Image/automate.png';
+import Instruction from '~/components/modal/Instruction';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -232,6 +233,52 @@ function Account({customer, heading, featuredData}) {
     } catch (error) {}
   }
 
+  const [key,setKey] = useState("")
+  const [keyModal,setKeyModal] = useState(false)
+
+  const textToCopyRef = useRef(null);
+
+  const copyTextToClipboard = () => {
+    const textToCopy = textToCopyRef.current.textContent;
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert('Text copied to clipboard!');
+      })
+      .catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+  };
+
+  const generateApiKey = async () => {
+    try {
+      const response = await fetch(
+        `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${Number(
+          customer.id.match(/\d+/)[0],
+        )}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setKey(data.result)
+    setKeyModal(true)
+
+        localStorage.setItem('apiKey', data.result);
+      } else {
+        // Handle errors here
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      // Handle network errors or exceptions
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="w-full global-max-width-handler ">
       <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
@@ -346,6 +393,7 @@ function Account({customer, heading, featuredData}) {
                   buttonText="Get Started"
                   onClick={() => navigate('/zapier-integration')}
                   showDownloadButton={true}
+                  onDownload={() => generateApiKey()}
                   downloadButtonText="Generate API Key"
                 />
                 <CardComponent
@@ -363,6 +411,13 @@ function Account({customer, heading, featuredData}) {
                 />
               </div>
             )}
+            <Instruction
+              title="Generated Api Key"
+              closeModal={()=>setKeyModal(false)}
+              isOpen={keyModal}
+              close={true}
+              body={key}
+            />
 
             {activeTab === 2 && <AccountOrderHistory orders={orders} />}
 

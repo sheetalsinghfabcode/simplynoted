@@ -126,7 +126,7 @@ export default function AddCartFunc() {
   let keyToUpdate5 = 'giftCardProdUrl';
   function updateValueInArray(index) {
     setSuccessfullLoader(true);
-
+    setOperation("updateValue");
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -148,7 +148,7 @@ export default function AddCartFunc() {
   }
   function deleteKeyInArray(index) {
     setSuccessfullLoader(true);
-
+    setOperation("deleteKey");
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -190,6 +190,8 @@ export default function AddCartFunc() {
   }
 
   function deleteOrder(index) {
+    setSuccessfullLoader(true);
+    setOperation("deleteOrder"); 
     setUpdateGift(!updateGift);
     // if (index >= 0 && index < cartData.length) {
     // Delete the order
@@ -199,6 +201,9 @@ export default function AddCartFunc() {
     localStorage.setItem('mydata', JSON.stringify(cartData));
     localStorage.setItem('cartCount', JSON.stringify(cartData.length));
     setDeleteModal(false);
+    setTimeout(() => {
+      setSuccessfullLoader(false);
+    }, 2000);
   }
 
   function editOrderData(index) {
@@ -279,6 +284,8 @@ export default function AddCartFunc() {
     setIsOpen2(false);
   }
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [operation, setOperation] = useState(null);
+
 
   const handlePrevClick = () => {
     if (currentIndex > 0) {
@@ -1079,13 +1086,21 @@ export default function AddCartFunc() {
             confirmText="Delete"
             cancelText="Cancel"
           />
-          {sucessfullLoader && (
-            <SuccessfullLoader
-              successfullMessage={
-                !deleteCardModal ? 'Adding Gift Cards...' : 'Deleting Gift Cart...'
-              }
-            />
-          )}
+  {sucessfullLoader && (
+  <SuccessfullLoader
+    successfullMessage={
+      operation === "deleteOrder"
+        ? 'Deleting Order...'
+        : operation === "updateValue"
+          ? 'Adding Gift Card...'
+          : operation === "deleteKey"
+            ? 'Deleting Gift Card ...'
+            : 'Processing...'
+    }
+  />
+)}
+
+
 
           <Modal
             isOpen={modalIsOpen}
@@ -1103,7 +1118,7 @@ export default function AddCartFunc() {
                   onClick={() => setIsOpen(false)}
                   className="transition text-primary "
                 >
-                   <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                  <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                 </button>
               </div>
             </div>
@@ -1185,7 +1200,7 @@ export default function AddCartFunc() {
                       onClick={() => closeModal()}
                       className="transition text-primary "
                     >
-                        <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                      <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </button>
                   </div>
 
@@ -1291,7 +1306,7 @@ export default function AddCartFunc() {
                       }}
                     >
                       {' '}
-                      {msgShow.replace(/\/n/g, "\n")}
+                      {msgShow.replace(/\/n/g, '\n')}
                     </span>
                     <br />
                     <span
