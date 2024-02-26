@@ -22,7 +22,7 @@ export function AddCart({
   customFontName,
   variantsVal,
 }) {
-  const {addressForm, setAddressForm, setEditAddress} =
+  const {addressForm, setAddressForm, setEditAddress,setProductShow} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
@@ -112,6 +112,8 @@ export function AddCart({
     setPurchaseType(selectedOrder)
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
+    cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
+
     // if (discountedCount > 0) {
     //   console.log(discountedCount, offPrice, '-------------');
     //   setUpdatedPrice(
@@ -144,7 +146,7 @@ export function AddCart({
   }
     }
   }, []);
-  const findMatchingVariant = (variants, targetValue,discount) => {
+  const findMatchingVariant = async(variants, targetValue,discount) => {
     console.log(variants,"variants from edit");
     let matchedVariant = null;
     for (let i = 0; i < variants.length; i++) {
@@ -155,6 +157,7 @@ export function AddCart({
         matchedVariant = variant.id;
         if(discount>0){
           setFinalPrice((variant.price.amount-(variant.price.amount * discount)/100).toFixed(2))
+          debugger
         } else {
           setFinalPrice(variant.price.amount);
         }
@@ -388,6 +391,8 @@ export function AddCart({
   let keyUpdate26 = 'giftCardProdUrl';
   let keyUpdate27 = 'shippingMethodProdUrl';
   let keyUpdate28 = 'optionalShipDate';
+  let keyUpdate29 = 'price';
+  let keyUpdate30 = 'variant_id';
 
  
   function onClickAddCart() {
@@ -469,9 +474,12 @@ export function AddCart({
           ? cartDataReq.ship_date
           : '';
         storedData[editOrderValue.index][keyUpdate24] = show ? show : false;
+        storedData[editOrderValue.index][keyUpdate29] = finalPrice ? finalPrice : productData?.price?.amount;
+        storedData[editOrderValue.index][keyUpdate30] = apiVariantID ? apiVariantID : variantID;
       }
       localStorage.setItem('mydata', JSON.stringify(storedData));
       localStorage.removeItem('reqFielddInCart');
+      // setProductShow(true)
       navigate('/cart');
 
       setLoader(false);
@@ -487,7 +495,7 @@ export function AddCart({
         const updatedDataString = JSON.stringify(existingDataArray);
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
-
+        // setProductShow(true)
         navigate('/cart');
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
@@ -502,6 +510,7 @@ export function AddCart({
 
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
+      // setProductShow(true)
         navigate('/cart');
         setLoader(false);
       } else {

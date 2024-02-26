@@ -552,11 +552,9 @@ export function MessageWriting({
     innerContainer.style.lineHeight =
       parseFloat(lineHeight) - lineHeightDecrement + 'px';
     if (resizeSelection === 'customTextResizing') {
-      console.log(innerContainer.style.fontSize, 'MainBox------');
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
     } else if (resizeSelection === 'signOffResizing') {
-      console.log(signOffTextBox.style.fontSize, '------');
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
@@ -566,7 +564,6 @@ export function MessageWriting({
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    console.log(file, 'fileee');
     if (file) {
       const reader = new FileReader();
       const keyToRemove = 'Type';
@@ -625,7 +622,6 @@ export function MessageWriting({
     } else {
       setLenCsvData(fileData.length);
     }
-    console.log(fileData, 'fileData logs');
 
     let reqField = [
       'Type',
@@ -645,7 +641,6 @@ export function MessageWriting({
         const missingKeys = reqField.filter((key) => !(key in obj));
         if (missingKeys.length > 0) {
           errObj.push(missingKeys);
-          console.log(`Missing keys in array[${index}]: `, missingKeys);
         }
       });
       if (errObj.length > 0) {
@@ -670,8 +665,6 @@ export function MessageWriting({
         let countryCheck = 'Country';
         for (const key of reqField) {
           // debugger
-          console.log(key, 'keys');
-          console.log(obj[key], 'obj keys');
           if (obj[key] === '') {
             // debugger
             emptyKeys.push(key);
@@ -699,7 +692,6 @@ export function MessageWriting({
           nonUSCount++;
         }
         if (mailText.test(obj[emailValid]) == false) {
-          console.log(obj[emailValid], '----');
           errMsg.push(
             `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
           );
@@ -866,7 +858,6 @@ export function MessageWriting({
   const ref4 = useRef(null);
   const ref5 = useRef(null);
   const location = useLocation();
-  console.log(location, 'location for product page');
   useEffect(() => {
     mainMessageBox = ref1.current;
     signOffTextBox = ref3.current;
