@@ -78,10 +78,10 @@ export function ProductCard({
             <Text className="flex w-full justify-center gap-4 leadimg-5 text-[15px] font-medium">
               {offPrice > 0 ? (
                 <span className="text-[red]">
-                  <span className="line-through text-[black]">
-                    ${price.amount}
-                  </span>
-                  ${(price.amount - (price.amount * offPrice) / 100).toFixed(2)}
+                  <span className="line-through text-[black] pr-[5px]">
+                    ${price.amount} 
+                  </span >
+                   ${ (price.amount - (price.amount * offPrice) / 100).toFixed(2)}
                 </span>
               ) : (
                 <span className="text-[red]">$ {price.amount}</span>
@@ -100,7 +100,7 @@ export function ProductCard({
       {isbirthdayAutomated ? 
       <Link to={`/products/${product.handle}?select=Bulk`}>
       <DynamicButton
-        className="bg-[#001a5f] w-[100%] font-normal  text-[#fff] py-[14px] px-[8px] mb-[10px]"
+        className="bg-[#001a5f] w-[100%] font-normal text-[#fff] py-[14px] px-[8px] mb-[10px]"
         text="SELECT FOR BIRTHDAY AUTOMATION!"
         onClickFunction={() => ''}
       />

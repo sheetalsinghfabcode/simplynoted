@@ -317,6 +317,7 @@ export function CheckoutData({
 
   async function paymentPurchase() {
     try {
+      setloader(true)
       const postageUSCountries = [
         'USA',
         'US',
@@ -526,7 +527,7 @@ export function CheckoutData({
       //   payload,
       // );
       fetch(
-        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        `https://testapi.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -542,6 +543,7 @@ export function CheckoutData({
         localStorage.setItem('mydata', '[]');
         // localStorage.removeItem('cartCount')
         setPurchaseCompleted(true);
+        setloader(false)
       }
     } catch (error) {
       console.error(error, 'error on CreateCard');
