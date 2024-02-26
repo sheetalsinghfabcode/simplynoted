@@ -11,6 +11,7 @@ import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import DynamicButton from './DynamicButton';
 import { useStateContext } from '~/context/StateContext';
+import {useNavigate} from '@remix-run/react';
 
 import {Link} from '~/components';
 
@@ -61,6 +62,8 @@ export function CheckoutData({
   const [walletBalance, setWalletBalance] = useState('');
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const {setCartCountVal} = useStateContext()
+  const navigate = useNavigate();
+
   function showWalletBtn() {
     setShowWallet(true);
     setShowCardDetail(false);
