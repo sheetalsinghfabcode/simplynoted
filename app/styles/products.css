@@ -81,4 +81,7 @@
   .single-purchase-btn {
     width: 110%;
   }
+  .templateButton {
+    padding: 0 0.5rem;
+  }
 }
