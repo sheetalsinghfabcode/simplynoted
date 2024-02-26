@@ -527,7 +527,7 @@ export function CheckoutData({
       //   payload,
       // );
       fetch(
-        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        `https://testapi.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
