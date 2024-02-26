@@ -57,7 +57,7 @@ const CanvasDesign = () => {
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
+        <div className="md:hidden block mt-10 w-[85%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5">
             Send one or send &nbsp;
             <span className="font-beauty text-6xl font-bold">thousands</span>
@@ -127,7 +127,7 @@ const CanvasDesign = () => {
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
+        <div className="md:hidden block mt-10 w-[85%] mx-auto text-center">
           <div className="  text-3xl font-karla text-[#001A5F] mb-5 ">
             Unlimited card
             <span className="font-beauty text-6xl font-bold">options</span>
@@ -194,7 +194,7 @@ const CanvasDesign = () => {
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[70%] mx-auto text-center">
+        <div className="md:hidden block mt-10 w-[85%] mx-auto text-center">
           <div className="  text-3xl font-bold text-[#001A5F] mb-5">
             Gift cards & &nbsp;
             <span className="font-beauty text-6xl font-bold">inserts</span>

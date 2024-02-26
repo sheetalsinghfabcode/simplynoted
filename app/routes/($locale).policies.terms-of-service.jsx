@@ -17,7 +17,7 @@ export default function Termsofser() {
       <div className="flex justify-center md:w-[45%] mx-auto sm:w-[65%] w-[85%]">
         <div className="">
           <DynamicTitle
-            dynamicButton
+         
             title="Terms of service"
             className="mt-[20px]"
           />

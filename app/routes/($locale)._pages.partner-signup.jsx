@@ -17,12 +17,12 @@ export async function loader({request,context}){
 const Partner_signup = () => {
   return (
     <>
-      <div className="mt-8 w-full mx-auto flex justify-center global-max-width-handler">
-        <div className="relative grid lg:flex flex-wrap justify-center  gap-[50px] ">
-          <div className="lg:w-[40%] w-[90%] lg:mx-0 mx-auto relative text-left mt-5">
-            <h1 className="text-[#001a5f] text-center md:text-3xl text-xl font-karla tracking-tight pb-[6px] mx-2">
-              Signup for the <hr />
-              <span className="font-beauty ml-2 text-6xl  !leading-7 font-extrabold">
+      <div className=" w-full mx-auto flex justify-center global-max-width-handler">
+        <div className="relative grid lg:flex flex-wrap justify-center lg:gap-[50px] sm:mt-8 mt-3">
+          <div className="lg:w-[40%] w-full lg:mx-0 mx-auto relative text-left mt-5">
+            <h1 className="text-[#001a5f] text-center md:text-[50px] text-4xl font-bold tracking-tight pb-[6px] mx-2 leading-[3.5rem]">
+              Sign up for the <br/>
+              <span className="font-beauty mx-2 text-[200%]  font-extrabold ">
                 partner
               </span>
               Program
@@ -51,12 +51,12 @@ const Partner_signup = () => {
                 </div>
 
                 <div className="text-center mx-auto">
-                  <DynamicButton text="GET STARTED NOW" className="btn1" />
+                  <DynamicButton text="GET STARTED NOW" className="btn1 py-[15px] px-[6px] md:w-[320px] w-[200px]" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="lg:w-[40%] w-full  text-left mt-5 mr-auto xl:ml-auto ml-0">
+          <div className="lg:w-[40%] w-full  text-left md:mt-5  xl:ml-auto ml-0">
             <div className="lg:inline-flex z-[-1]  hidden absolute">
               <img
                 className="z-1  w-full ml-[-146px] mt-[100px]"
@@ -67,7 +67,7 @@ const Partner_signup = () => {
 
             <div className="wrap-sample-form-sign ">
               <form className="hubForm" data-hs-cf-bound="true">
-                <div className="mt-[3rem] text-[30px] text-center text-white leading-8">
+                <div className="mt-[3rem] text-[30px] text-center text-white leading-8 font-medium pb-4">
                   Start Earning Today
                 </div>
                 <div className="row">
@@ -177,9 +177,9 @@ const Partner_signup = () => {
             </div>
           </div>
 
-          <div className="pt-[60ox] relative flex flex-wrap mx-[-10px] justify-center ">
+          <div className="lg:pt-0 pt-[60px] relative flex flex-wrap mx-[-10px] justify-center ">
             <div>
-              <h2 className="text-[#001a5f] text-center text-4xl  font-karla mb-10 signup-underline">
+              <h2 className="text-[#001a5f] text-center text-[40px]  font-bold mb-10 signup-underline">
                 Program Benefits
               </h2>
               <ul className="md:columns-2 columns-1">

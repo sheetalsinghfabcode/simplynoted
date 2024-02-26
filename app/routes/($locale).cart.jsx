@@ -345,7 +345,7 @@ export default function AddCartFunc() {
     <div className="global-max-width-handler">
       {showCartPage ? (
         <>
-          <div className="w-full h-full gap-2 mt-14">
+          <div className="w-full h-full gap-2 md:mt-14">
             {cartData && cartData.length > 0 ? (
               <>
                 <DynamicTitle
@@ -358,7 +358,7 @@ export default function AddCartFunc() {
                     cartData.map((item, index) => (
                       <div
                         key={index}
-                        className="w-[90%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom"
+                        className="sm:w-[90%] w-[95%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom"
                       >
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
@@ -829,7 +829,7 @@ export default function AddCartFunc() {
                         {item.shippingData &&
                           item.shippingMethodImage &&
                           item.isShippidata && (
-                            <div className="flex w-[100%] flex-wrap lg:border-none border-t-[1px] border-[#AAA]">
+                            <div className="flex w-[100%] flex-wrap lg:border-none border-t border-[#AAA]">
                               <div className="md:max-w-[50%] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px]  border-[#AAA]">
                                 <div className="flex w-[95%] justify-start ">
                                   <div className="max-w-[33%] w-full md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">

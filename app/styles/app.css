@@ -36,8 +36,6 @@
   src: url(./fonts/Al-dente.ttf) format(truetype);
 }
 
-
-
 /* Tokens */
 :root {
   --color-primary: 20 20 20; /* Text, buttons, etc. */
@@ -1402,7 +1400,7 @@ body {
   -webkit-border-radius: 20px;
   margin-top: -51px;
 }
-.headerImage{
+.headerImage {
   -webkit-backface-visibility: hidden;
 }
 
@@ -1892,10 +1890,10 @@ body {
 }
 
 .transition-max-height.closing {
-  transition-duration: 0.6s; 
+  transition-duration: 0.6s;
 }
-.icon-transition{
-  transition:transform 0.5s ease-in-out;
+.icon-transition {
+  transition: transform 0.5s ease-in-out;
 }
 /******************* Partner-referral ****************************/
 .wrap-referral-form {
@@ -1913,6 +1911,8 @@ body {
   filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
   -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
   -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .wrap-referral-form input,
@@ -1932,9 +1932,9 @@ body {
   -webkit-box-shadow: none;
 }
 .wrap-referral-form ::placeholder {
-  color: rgb(50, 50, 50);
-  opacity: 1;
-  font-size: 13px;
+  color: #000;
+  font-weight: 400;
+  font-size: 14px;
 }
 .wrap-referral-form select option {
   background: 0 0;
@@ -1970,15 +1970,14 @@ body {
 }
 
 .underline-text {
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
   font-family: 'Karla', sans-serif;
+  color: #000;
   font-size: 14px;
-  font-weight: 300;
-  line-height: 22px;
+  font-weight: 400;
+  line-height: 50px;
   box-sizing: border-box;
   width: 47%;
-  padding-bottom: 15px;
+  padding-bottom: 6px;
   position: relative;
   text-align: left;
   margin: 1.5%;
@@ -2034,6 +2033,7 @@ body {
   font-size: 24px;
   background-image: url('../../assets//Image/signup-overview-title-bg.png');
   padding: 8px;
+  padding-top: 20px;
   width: 433px;
   height: 82px;
   text-align: center;
@@ -2042,6 +2042,7 @@ body {
   background-size: contain;
   margin-top: 30px;
   width: 100%;
+  font-weight: 500;
 }
 
 .signup-row {
@@ -2055,8 +2056,8 @@ body {
 .signup-underline {
   background: url('../../assets/Image/signup-underline.png') no-repeat;
   background-position: bottom center;
-
-  padding-bottom: 10px !important;
+background-size: 360px;
+  padding-bottom: 22px ;
 }
 
 .programm-list {
@@ -2383,7 +2384,7 @@ body {
     width: 24%;
     left: 35rem;
   }
-  .card-lorem{
+  .card-lorem {
     top: 11%;
     max-width: 550px;
     width: 100%;
@@ -2418,6 +2419,11 @@ body {
   }
   .item_block_right::before {
     opacity: 0;
+  }
+  .wrap-sample-form-sign {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 @media only screen and (max-width: 1124px) {
@@ -2465,11 +2471,7 @@ body {
   .signup-row {
     margin: 13px auto;
   }
-  .wrap-sample-form-sign {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+ 
   .wrap-sample-form {
     width: 75%;
     margin-left: 0px;
@@ -2513,7 +2515,7 @@ body {
   .req-btn {
   }
   .wrap-sample-form-sign {
-    width: 93%;
+    width: 100%;
     padding: 10px;
   }
   .sch-btn {
@@ -2574,6 +2576,9 @@ body {
   .custom_testing {
     width: 52%;
   }
+  .signup-title {
+    background-image: none;
+  }
 }
 @media only screen and (max-width: 511px) {
   .custom_testing {
@@ -2583,9 +2588,7 @@ body {
   .data_card {
     margin: 0px;
   }
-  .signup-title {
-    background-image: none;
-  }
+  
   .cars-killer {
     width: 45%;
     margin-left: 4rem;
@@ -2666,57 +2669,60 @@ body {
 
 /* custom scroll bar css  */
 
-    .twentytwenty-handle::before {
-      content: '';
-      position: absolute;
-      bottom: 50%;
-      margin-bottom: 22px;
-      box-shadow: 0 3px 0 white, 0 0 12px rgba(51, 51, 51, 0.5);
-      /* Add browser-specific box shadow properties if needed */
-    }
-    .twentytwenty-handle::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      margin-top: 19px;
-      box-shadow: 0 3px 0 white, 0 0 12px rgba(51, 51, 51, 0.5);
-      /* Add browser-specific box shadow properties if needed */
-    }
-     .twentytwenty-handle:before {
-      width: 3px;
-      height: 9999px;
-      left: 50%;
-      margin-left: -1.5px;
-    background-color: white;}
-     .twentytwenty-handle:after {
-      width: 3px;
-      height: 9999px;
-      left: 50%;
-      margin-left: -1.5px;
-    background-color: white;}
+.twentytwenty-handle::before {
+  content: '';
+  position: absolute;
+  bottom: 50%;
+  margin-bottom: 22px;
+  box-shadow: 0 3px 0 white, 0 0 12px rgba(51, 51, 51, 0.5);
+  /* Add browser-specific box shadow properties if needed */
+}
+.twentytwenty-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: 19px;
+  box-shadow: 0 3px 0 white, 0 0 12px rgba(51, 51, 51, 0.5);
+  /* Add browser-specific box shadow properties if needed */
+}
+.twentytwenty-handle:before {
+  width: 3px;
+  height: 9999px;
+  left: 50%;
+  margin-left: -1.5px;
+  background-color: white;
+}
+.twentytwenty-handle:after {
+  width: 3px;
+  height: 9999px;
+  left: 50%;
+  margin-left: -1.5px;
+  background-color: white;
+}
 
-    .real-text.arrow-left:before {
-      height: 42px;
-      width: 72px;
-      content: " ";
-      background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-left.png?v=1602786113);
-      position: absolute;
-      left: 70%;
-      top: 115%;
-  }
-  .real-text.arrow-right:before {
-    height: 44px;
-    width: 71px;
-    content: " ";
-    background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-right.png?v=1602786113);
-    position: absolute;
-    left: 10%;
-    top: 115%;
+.real-text.arrow-left:before {
+  height: 42px;
+  width: 72px;
+  content: ' ';
+  background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-left.png?v=1602786113);
+  position: absolute;
+  left: 70%;
+  top: 115%;
+}
+.real-text.arrow-right:before {
+  height: 44px;
+  width: 71px;
+  content: ' ';
+  background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-right.png?v=1602786113);
+  position: absolute;
+  left: 10%;
+  top: 115%;
 }
 .tt-block-title::after {
-  content: "";
-  background: url(https://simplynoted.com/cdn/shop/files/line-real-pen.png) no-repeat;
-  bottom: 70px!important;
+  content: '';
+  background: url(https://simplynoted.com/cdn/shop/files/line-real-pen.png)
+    no-repeat;
+  bottom: 70px !important;
   display: block;
   height: 10px;
   left: 27%;
@@ -2729,7 +2735,6 @@ body {
   height: 5px;
 }
 
-
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 10px;
@@ -2740,9 +2745,6 @@ body {
   border-radius: 5px;
   background: #324879;
 }
-
-
-
 
 .plan-input-radio input[type='radio']:checked {
   border: 1px solid #324879;
@@ -2775,10 +2777,6 @@ body {
 .custom-box-shadow {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
-
-
-
 
 /* SuccessFullLoader Compoent Css */
 

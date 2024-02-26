@@ -144,7 +144,7 @@ function Header({title, menu}) {
         openCart={openCart}
         openMenu={openMenu}
       />
-      <div className="global-max-width-handler !my-0 w-full !pt-[40px] sm:!pt-[20px] md:!pt-0 ">
+      <div className="max-w-full md:px-[40px] px-[20px] w-full  sm:pt-[5px]  pt-[25px]">
         {pathname.pathname !== '/' &&
           pathname.pathname !== '/cart' &&
           pathname.pathname !== '/account/login' &&
@@ -644,7 +644,7 @@ function DesktopHeader({isHome, menu}) {
             : 'text-primary'
         } ${
           !isHome && y > 50 ? 'shadow-lightHeader' : ''
-        } hidden global-max-width-handler pt-4 h-nav lg:mb-[10px] lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 justify-between w-full leading-none font-roboto font-semibold text-base`}
+        } hidden max-w-full px-[40px] pt-4 h-nav lg:mb-[10px] lg:flex items-center z-20 lg-text-white bg-transparent transition duration-300 backdrop-blur-lg top-0 justify-between w-full leading-none font-roboto font-semibold text-base`}
       >
         <div
           onClick={() => {

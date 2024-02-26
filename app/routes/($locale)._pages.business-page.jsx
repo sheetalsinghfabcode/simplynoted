@@ -110,16 +110,16 @@ export default function bussniess() {
 
   return (
     <>
-      <Section>
-        <div className="sm:mt-5 mt-7">
-          <div className="w-[100%] pl-[10px]  ">
+      <Section className="!p-0">
+        <div className="mt-4">
+          <div className="w-[100%]  ">
             <div className="relative w-full lg:flex grid flex-wrap ">
               <img
                 className="absolute lg:block hidden ml-[16.2rem] w-[500px] mt-[7.06rem] z-[-1]"
                 src={business_curve}
                 alt="business line"
               />
-              <div className="lg:w-[40%] lg:ml-[4rem] lg:mr-0 md:w-[40%] w-[55%] ml-auto mr-auto text-left mt-5">
+              <div className="lg:w-[40%] lg:ml-[4rem] lg:mr-0 md:w-[40%] sm:w-[55%] w-[90%] ml-auto mr-auto text-left mt-5">
                 <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold justify-center">
                   <div className="text-[42px]">
                     You
@@ -134,27 +134,31 @@ export default function bussniess() {
                     </span>
                   </div>
                 </div>
-                <p className="text-[24px] max-w-[350px] leading-8 text-[#535252] font-thin mt-[16px]">
+                <p className="sm:text-[24px] text-[20px] max-w-[350px] leading-8 text-[#535252] font-thin mt-[16px] lg:text-start text-center">
                   Simply Noted puts a personal touch back into your business.
                 </p>
 
-                <div className="inline-flex relative">
+                <div className="relative">
+                  <div className='relative'>
                   <img
-                    className="relative h-auto ml-[-35px] mt-[-10px] w-[460px]"
+                    className="relative h-auto  mt-[-10px] lg:w-[85%] w-full lg:ml-[-5rem]"
                     src={letter}
                     alt="Letter"
                   />
+                  </div>
+                  <div className='relative flex lg:justify-evenly  justify-between mt-[-10rem] lg:ml-[-16rem] ml-[-6rem]'>
                   <img
-                    className="md:absolute md:ml-[-150px] md:mt-[10rem]  md:w-[245px] sm:ml-[-25rem] ml-[-16rem] relative h-auto  mt-[8rem] w-[170px] z-1"
+                    className=" md:w-[245px]  relative h-auto  w-[170px] z-1"
                     src={rice_elmore}
                     alt=""
                   />
                   <img
-                    className="md:absolute relative md:ml-[12rem] mt-[8rem] md:w-[235px] sm:ml-[4rem] ml-[1rem] w-[160px] mt z-1"
+                    className="relative  md:w-[235px]  w-[160px]  z-1"
                     src={amazon_card}
                     alt=""
                   />
-                </div>
+                  </div>
+                  </div>
               </div>
               <div className="lg:w-[53%] lg:block flex justify-center w-full text-left lg:mt-5 md:mt-24 mt-16 ml-auto">
                 <div className="lg:inline-flex z-[-1] absolute hidden">
@@ -176,7 +180,7 @@ export default function bussniess() {
                     data-hs-cf-bound="true"
                     onSubmit={handleSubmit}
                   >
-                    <div className="mt-[3rem] sm:text-[28px] text-[18px] text-center text-white leading-8">
+                    <div className="mt-[3rem] sm:text-[28px] text-[18px] font-bold text-center text-white leading-8">
                       Request a Writing Sample Packet
                     </div>
                     <div className="row">
@@ -621,7 +625,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold  mt-[20px] mb-[20px">
                       Salesforce Integration
                     </div>
-                    <div className="text-[#707070] sm:text-[16px] text-[12px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] sm:text-[16px] text-[12px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Leverage Salesforce Process Builder and easily automate
                       sending real penwritten notes based off activities such as
                       new customer, anniversary, or after hitting predetermined
@@ -641,7 +645,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold mt-[20px] mb-[20px">
                       Zapier Integration
                     </div>
-                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Integrate and automate sending real handwritten notes from
                       2,500+ softwares instantly. Request access to our Zapier
                       App today!
@@ -659,7 +663,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] md:text-[30px] sm:text-[20px] text-[18px] font-bold mt-[20px] mb-[20px">
                       Leverage Zapier to Integrate with Shopify
                     </div>
-                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Automatically send welcome new customers notes to your
                       customers. We recommend sending a discount code or a
                       personalized product recommendation to encourage customer
@@ -681,7 +685,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f]  md:text-[30px] sm:text-[20px] text-[18px] font-bold  mt-[20px] mb-[20px">
                       Access our Open RESTful API
                     </div>
-                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Add the Simply Noted API to your app, website or software.
                       Using this api, you can send cards to users in the
                       handwriting style of your choice, with an optional gift
@@ -927,7 +931,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold  mt-[20px] mb-[20px]">
                       Create Your Own Card
                     </div>
-                    <div className="text-[#707070] sm:text-[16px] text-[12px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] sm:text-[16px] text-[12px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Simply Noted offers a wide array of cards to choose from
                       and a powerful custom create a card tool. Over 95% of our
                       clients are businesses and use their own or create custom
@@ -943,7 +947,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold mt-[20px] mb-[20px]">
                       Add Business Cards & Inserts
                     </div>
-                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Simply Noted makes it easy to add your business cards and
                       desired inserts. Just simply contact us and we will house
                       your items in our warehouse to be added as needed.
@@ -957,7 +961,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] md:text-[30px] sm:text-[20px] text-[18px] font-bold mt-[20px] mb-[20px]">
                       Add Gift Cards
                     </div>
-                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Simply Noted makes it easy to send gift cards from your
                       favorite stores with each order. From $5 Starbucks cards
                       to $100 Visas, there's a gift card to match any budget.
@@ -972,7 +976,7 @@ export default function bussniess() {
                     <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold  mt-[20px] mb-[20px]">
                       Lorem ipsum
                     </div>
-                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px]">
+                    <div className="text-[#707070] text-[16px] leading-5 mt-[20px] mb-[25px] text-justify">
                       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
                       sed diam nonumy eirmod tempor invidunt ut labore et dolore
                       magna aliquyam erat, sed diam voluptua. At vero eos et
