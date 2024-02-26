@@ -24,10 +24,11 @@ import custom from '../../assets/Image/custom.webp';
 import mobile_curve from '../../assets/Image/business-arrow-curve-mobile.png';
 import DynamicButton from '~/components/DynamicButton';
 import {useState} from 'react';
-import { Section } from '~/components';
+import {Section} from '~/components';
 import {defer} from '@remix-run/server-runtime';
-import { seoPayload } from '~/lib/seo.server';
-export async function loader({request,context}){
+import {seoPayload} from '~/lib/seo.server';
+import CanvasBuss from '../../assets/Video/canvas-buss.gif';
+export async function loader({request, context}) {
   const {page} = await context.storefront.query(BUSSINESS_GRAPH_QL, {
     variants: {},
   });
@@ -37,7 +38,7 @@ export async function loader({request,context}){
     page,
   });
 }
-export default function bussniess(){
+export default function bussniess() {
   const [integrated, setIntegrated] = useState('salesforce');
   const [customizable, setCustomizable] = useState('create_card');
   const BLOCK = {display: 'block'};
@@ -250,12 +251,7 @@ export default function bussniess(){
                           onChange={handleChange}
                           value={formData.volume}
                         >
-                          <option
-                            value=""
-                            disabled
-                            
-                            hidden
-                          >
+                          <option value="" disabled hidden>
                             Expected Volume
                           </option>
                           <option value="100-500">100-500</option>
@@ -340,8 +336,15 @@ export default function bussniess(){
               </div>
             </div>
 
-            <div className="w-full px-[10px] ">
-              <div className="lg:flex flex-wrap flex-row-reverse mt-14 grid ">
+            <div className="w-full relative px-[10px] ">
+              <div className="absolute top-[605px] hidden xl:block z-[-12] right-[174px]">
+                <img
+                  className="w-[718px]"
+                  src={CanvasBuss}
+                  alt="Computer man"
+                />
+              </div>
+              <div className="lg:flex flex-wrap flex-row-reverse xl:mt-[250px] mt-[40px] grid ">
                 <div className="md:w-[70%] w-[100%] text-right lg:mx-0 mx-auto">
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]  ">
@@ -695,10 +698,8 @@ export default function bussniess(){
                   </div>
                 </div>
               </div>
-
               {/* Customizable */}
-
-              <div className="lg:flex flex-wrap flex-row-reverse mt-14 grid ">
+              <div className="lg:flex flex-wrap flex-row-reverse xl:mt-[260px] mt-14 grid ">
                 <div className="w-[70%]  text-right lg:mx-0 mx-auto">
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px] ">
@@ -990,7 +991,7 @@ export default function bussniess(){
       </Section>
     </>
   );
-};
+}
 
 const BUSSINESS_GRAPH_QL = `#graphql
   query
@@ -1002,5 +1003,5 @@ const BUSSINESS_GRAPH_QL = `#graphql
       description
     }
   }
-}`
+}`;
 // export default Business;

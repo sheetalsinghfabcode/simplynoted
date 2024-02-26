@@ -213,7 +213,7 @@ const AddressForm = ({customerID, defaultOption}) => {
             loader && 'opacity-40' 
           }`}
         >
-          <div className="lg:flex grid justify-between gap-[90px] items-center mb-[16px]">
+          <div className="lg:flex grid justify-between md:gap-[90px] gap-[0px] items-center mb-[16px]">
             <h2 className=" text-left text-[#001a5f] font-bold md:text-[34px] text-[24px] leading-[43px]">
               New Address
             </h2>
