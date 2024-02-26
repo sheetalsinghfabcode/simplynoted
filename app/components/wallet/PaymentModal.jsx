@@ -9,7 +9,7 @@ import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
 import {useStateContext} from '~/context/StateContext';
 import {FaAngleDown} from 'react-icons/fa6';
-import { FaAngleUp } from 'react-icons/fa';
+import {FaAngleUp} from 'react-icons/fa';
 
 const PaymentModal = ({
   show,
@@ -230,22 +230,21 @@ const PaymentModal = ({
 
       if (data.redirectUrl) {
         setloader(false);
-        setPaymentLoader(false)
+        setPaymentLoader(false);
 
         const result = await stripe.confirmCardPayment(data.client_secret);
         if (result?.error) {
-          setPaymentLoader(false)
+          setPaymentLoader(false);
+        } else {
+          paymentSave(data, json);
         }
-      } else {
-        paymentSave(data, json);
       }
       // Handle the response data here
     } catch (error) {
-      setPaymentLoader(false)
+      setPaymentLoader(false);
       // Handle errors here
       console.error('Error:', error);
     } finally {
-      
     }
   };
 
@@ -281,9 +280,9 @@ const PaymentModal = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          setShowAccordion(false)
-          setPurchaseModal(false)
-          setPackageModal(false)
+          setShowAccordion(false);
+          setPurchaseModal(false);
+          setPackageModal(false);
           setPaymentLoader(false);
           setTimeout(() => {
             navigate('/account');
@@ -295,7 +294,7 @@ const PaymentModal = ({
 
       .catch((error) => {
         // Handle errors here
-        setPaymentLoader(false)
+        setPaymentLoader(false);
 
         console.error('Error:', error);
       });
@@ -641,10 +640,12 @@ const PaymentModal = ({
                         />
                         <DynamicButton
                           text="Complete Purchase"
-                          onClickFunction={() => {{
-                            setPaymentLoader(true);
-                            createSubscription(paymentMethodId);
-                          }}}
+                          onClickFunction={() => {
+                            {
+                              setPaymentLoader(true);
+                              createSubscription(paymentMethodId);
+                            }
+                          }}
                           className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                         ></DynamicButton>
                       </div>

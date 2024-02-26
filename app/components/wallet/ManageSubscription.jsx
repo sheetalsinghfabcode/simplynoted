@@ -605,7 +605,7 @@ let formattedDate = formatDate(currentDate);
                                 setCancelSubscription(true)
                               }
                               text="Cancel Plan"
-                              className="!bg-[#ef6e6e]  rounded-[9px] md:max-w-[190px]  md:h-[45px] h-[32px] lg:text-[13px] text-[12px] lg:max-w-[190px]  uppercase min-w-[190px]"
+                              className="!bg-[#ef6e6e]   rounded-[9px] md:max-w-[190px]  md:h-[45px] h-[32px] lg:text-[13px] text-[12px] lg:max-w-[190px]   uppercase lg:min-w-[190px]"
                             />
                           </div>
                         )}
@@ -685,7 +685,7 @@ let formattedDate = formatDate(currentDate);
                       {!stripeCollection.error &&
                         !stripeCollection?.stripe?.manual && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
-                            <span className=" lg:text-[14px] text-[12px] text-[#001a5f] lg:ml-[0px] ml-[12px] font-karla font-bold uppercase">
+                            <span className=" lg:text-[14px] text-[12px] text-[#001a5f] sm:ml-[12px] ml-0 font-karla font-bold uppercase">
                               AUTO RENEW
                             </span>
                             <DynamicButton
@@ -831,7 +831,7 @@ let formattedDate = formatDate(currentDate);
                                 <td className=" text-[#1b5299] p-[11px] lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
                                   {payment.description ? payment.description : null}
                                 </td>
-                                <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
+                                <td className="text-[#1b5299] p-[11px] font-karla text-[9px] lg:  text-[14px] !font-bold uppercase">
                                 {formatDate(payment.created*1000)}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
