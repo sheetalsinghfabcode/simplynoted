@@ -143,7 +143,6 @@ export async function loader({params, request, context}) {
 let customerid;
 export default function Collection() {
   const {birthdayAutomation,isbirthdayAutomated,setISBirthdayAutomated} = useStateContext()
-  console.log(birthdayAutomation,"birthdayAutomation");
   const navigate = useNavigate();
   const [handleName, setHandleName] = useState('');
   const [addingProductsData, setAddingProd] = useState([]);
@@ -168,7 +167,6 @@ export default function Collection() {
   } = useLoaderData();
   let myColletionData = myCollection.collection.products;
   
-  console.log(myColletionData,"myColletionData");
   myColletionData = myColletionData.nodes.filter(
     (item) => item.productType != 'customisable card',
   );
@@ -188,7 +186,6 @@ if (index !== -1) {
     'just-because',
     'customisable-cards',
   ];
-  console.log(addingProductsData.length, '------length of custom card array');
   let filterTag = handleLinkData.collections.edges;
   const data = filterTag.filter((item) => mainTags.includes(item.node.handle));
 
@@ -295,7 +292,6 @@ if (index !== -1) {
     );
   }
   useEffect(() => {
-    console.log(collectionHandle,"iiiiiiii");
     customerid = localStorage.getItem('customerId');
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
@@ -334,10 +330,10 @@ if (index !== -1) {
             />
 
             <DynamicButton
-            disabled={locationRef.pathname == '/collections/customisable-cards'}
+            // disabled={locationRef.pathname == '/collections/customisable-cards'}
               className={`btnShadow bg-[#EF6E6E] px-[20px] py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]`}
               text="View My Custom Card"
-              onClickFunction={() => customisedCard()}
+              onClickFunction={() =>locationRef.pathname !== '/collections/customisable-cards'? customisedCard():''}
             />
           </div>
           <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center items-center selectArrow sm:mt-[0px] mt-[15px]">
