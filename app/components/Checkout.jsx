@@ -317,6 +317,7 @@ export function CheckoutData({
 
   async function paymentPurchase() {
     try {
+      setloader(true)
       const postageUSCountries = [
         'USA',
         'US',
@@ -542,6 +543,7 @@ export function CheckoutData({
         localStorage.setItem('mydata', '[]');
         // localStorage.removeItem('cartCount')
         setPurchaseCompleted(true);
+        setloader(false)
       }
     } catch (error) {
       console.error(error, 'error on CreateCard');
