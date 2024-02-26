@@ -14,7 +14,7 @@ export async function loader({request,context}){
 function our100guarntee() {
   return (
     <div className='global-max-width-handler'>
-      <div className="ml-[50px]">
+      <div className="">
         <DynamicTitle
           title="OUR 100% SATISFACTION GUARANTEE"
           className={'!text-[18px]'}

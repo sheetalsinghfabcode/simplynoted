@@ -1191,18 +1191,20 @@ export default function FlatCustomisableCard({
                             (footerData.alignment === 'right' && 'justify-end ')
                           }`}
                         >
-                          <div
-                            className={`overflow-hidden h-[50px] p-[12px] whitespace-nowrap items-center flex`}
-                            style={{
-                              fontFamily: footerData.fontFamily,
-                              fontSize: `${footerData.fontSize}px`,
-                              color: `${footerData.fontColor}`,
-                              maxWidth: `${qr.isQrAdded ? '375px' : '434px'}`,
-                            }}
-                          >
-                            {!footerData.isImageSelected &&
-                              footerData.customText}
-                          </div>
+                          {footerData.customText && (
+                            <div
+                              className={`overflow-hidden h-[50px] p-[12px] whitespace-nowrap items-center flex`}
+                              style={{
+                                fontFamily: footerData.fontFamily,
+                                fontSize: `${footerData.fontSize}px`,
+                                color: `${footerData.fontColor}`,
+                                maxWidth: `${qr.isQrAdded ? '375px' : '434px'}`,
+                              }}
+                            >
+                              {!footerData.isImageSelected &&
+                                footerData.customText}
+                            </div>
+                          )}
                           {(footerData.isImageSelected || qr.isQrAdded) && (
                             <div
                               id="backFooterImageDiv"
@@ -1264,20 +1266,24 @@ export default function FlatCustomisableCard({
           >
             {selectedCardPage === 'Card Front' && (
               <>
-                <div className="relative flex w-[70px] h-[50px] lg:mt-[-9rem] mt-0 ">
-                  <div className="flex flex-col gap-[3px]">
+                <div className="relative flex w-[70px] h-[40px] lg:mt-[-9rem] mt-0 ">
+                  <div className="flex flex-row gap-[3px] items-center lg:justify-start justify-center">
                     <img
                       src={AddImageIcon}
                       alt="Add image file icon"
                       draggable="false"
                     />
-                    <div className="font-bold text-[14px] whitespace-nowrap">
+                    <label
+                      htmlFor="image-input"
+                      className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                    >
                       Add Image
-                    </div>
+                    </label>
                   </div>
                   {selectedCardPage === 'Card Front' && (
                     <input
                       type="file"
+                      id="image-input"
                       accept="image/png, image/jpeg"
                       ref={frontImageRef}
                       className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
@@ -1285,13 +1291,15 @@ export default function FlatCustomisableCard({
                     />
                   )}
                 </div>
-                <div className="h-[160px] mt-[40px]">
+                <div className="h-[160px] mt-[30px]">
                   {selectedCardPage === 'Card Front' &&
                     (frontImageDetails.imageBlobUrl ||
                       frontImageDetails.blackAndWhiteImageBlobUrl) && (
-                      <div className="flex flex-col gap-8 md:mt-[0px] mt-[-60px]">
+                      <div className="flex flex-col gap-8 md:mt-[0px] ">
                         <div className="flex flex-col">
-                          <span>Resize image</span>
+                          <span className="text-sm font-bold">
+                            Resize image
+                          </span>
                           <input
                             type="range"
                             min="0.3"
@@ -1599,18 +1607,26 @@ export default function FlatCustomisableCard({
                       </label>
                     </div>
                   </div>
-                  <div className="flex sm:flex-col flex-row flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-center">
+                  <div className="flex flex-col flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-center">
                     <div className="relative mt-5 w-[60px] h-[50px]">
                       {observingData.isHeader && !qr.isQrAdded && (
                         <>
+                        <div className='flex items-center gap-2'>
                           <img
                             src={AddImageIcon}
                             alt="Add image file icon"
                             draggable="false"
                           />
-
+                          <label
+                            htmlFor="image-input2"
+                            className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                          >
+                            Header Image
+                          </label>
+                          </div>
                           <input
                             type="file"
+                            id="image-input2"
                             accept="image/png, image/jpeg"
                             ref={backHeaderImageRef}
                             className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
@@ -1620,14 +1636,23 @@ export default function FlatCustomisableCard({
                       )}
                       {observingData.isFooter && !qr.isQrAdded && (
                         <>
+                        <div className='flex items-center gap-2'>
                           <img
                             src={AddImageIcon}
                             ref={backFooterImageRef}
                             alt="Add image file icon"
                             draggable="false"
                           />
+                           <label
+                            htmlFor="image-input3"
+                            className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                          >
+                            Footer Image
+                          </label>
+                          </div>
                           <input
                             type="file"
+                            id="image-input3"
                             accept="image/png, image/jpeg"
                             className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
                             onChange={handleImageFileInsertion}
@@ -1635,7 +1660,7 @@ export default function FlatCustomisableCard({
                         </>
                       )}
                     </div>
-                    <div className="flex sm:flex-col flex-col sm:items-baseline items-center gap-8  sm:w-full w-[45%]">
+                    <div className="flex  flex-col items-baseline gap-8  sm:w-full w-[45%]">
                       <div className="h-[160px] sm:w-1/2 w-[90%] sm:ml-0 ml-[33px]">
                         {observingData.isHeader &&
                           headerData.imageFile &&
@@ -1643,7 +1668,7 @@ export default function FlatCustomisableCard({
                           !qr.isQrAdded && (
                             <>
                               <div className="flex flex-col mb-3 mt-3">
-                                <span>Resize image</span>
+                                <span className='font-bold text-[14px]'>Resize image</span>
                                 <input
                                   type="range"
                                   min="0.3"

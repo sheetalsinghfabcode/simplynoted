@@ -1,4 +1,5 @@
 import underline from '../../assets/Image/faq-underline.png';
+import DynamicTitle from '../components/Title';
 import {defer} from '@remix-run/server-runtime';
 import { seoPayload } from '~/lib/seo.server';
 export async function loader({request,context}){
@@ -16,27 +17,28 @@ const Partner_referral = () => {
   return (
     <>
       <div className="mt-10 global-max-width-handler">
-        <h1 className="text-[#001a5f] text-center md:text-5xl text-3xl font-karla tracking-tight pb-[6px] mx-2">
+        {/* <h1 className="text-[#001a5f] text-center sm:text-[50px] text-4xl md:mt-0 mt-7 font-bold tracking-tight pb-[6px] mx-2">
           Submit a
-          <span className="font-beauty ml-2 md:text-8xl text-6xl font-extrabold">
+          <span className="font-beauty ml-2 sm:text-8xl text-6xl font-extrabold">
             referral
           </span>
         </h1>
         <div className="flex justify-center">
           <img
-            className="xl:w-[28%] w-[35%] mb-[33px]"
+            className="xl:w-[300px] w-[35%] mb-[33px]"
             src={underline}
             alt="menu-underline"
           />
-        </div>
+        </div> */}
+        <DynamicTitle title={'Submit a '} title2={'referral'}/>
 
-        <div className="flex justify-center mt-[30px] lg:mx-auto mx-[30px]">
+        <div className="flex justify-center md:mt-[30px] mt-5 mx-auto">
           <div className="wrap-referral-form">
-            <form className="w-[90%] m-0 flex-row flex-wrap pb-[60px]">
+            <form className="w-[90%] m-0 flex-row flex-wrap pb-[60px] font-bold">
               <div className="mt-10">
                 <div className="underline-heading">
                   <div className="top-underline">
-                    <h3 className=" text-[#001a5f] text-2xl font-karla">
+                    <h3 className=" text-[#001a5f] text-[24px] font-karla">
                       Your Information
                     </h3>
                   </div>
@@ -48,6 +50,7 @@ const Partner_referral = () => {
                       required=""
                       type="text"
                       name="first-name"
+                      className=''
                       placeholder="Your First Name"
                     />
                   </div>
@@ -92,7 +95,7 @@ const Partner_referral = () => {
                 </div>
               </div>
 
-              <div className="mt-10">
+              <div className="mt-14">
                 <div className="underline-heading">
                   <div className="top-underline">
                     <h3 className=" text-[#001a5f] text-2xl font-karla">

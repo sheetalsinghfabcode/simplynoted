@@ -338,7 +338,7 @@ export default function Salesforce() {
         </div>
 
         <div className="text-center relative flex justify-center lg:mt-0 mt-10">
-          <h2 className="text-[#001a5f] text-center text-4xl  font-karla mb-10 signup-underline">
+          <h2 className="text-[#001a5f] text-center sm:text-[40px] text-2xl  font-bold mb-10 signup-underline">
             Integration Feature
           </h2>
         </div>

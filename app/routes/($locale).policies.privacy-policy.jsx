@@ -14,8 +14,8 @@ export async function loader({request,context}){
 export default function privacypolicy() {
   return (
     <div className='global-max-width-handler'>
-      <div className="ml-[50px]">
-        <DynamicTitle dynamicButton title="Privacy policy" />
+      <div className="">
+        <DynamicTitle title="Privacy policy" />
         <div className="flex justify-center md:w-full mx-auto">
           <div className="sm:text-[14px] text-[12px]">
             <p className="mt-[25px] font-medium ">

@@ -888,15 +888,16 @@ console.log(arrCardPrice,"arrr cardPrice");
         {showShipAddress && (
           <Modal
             children={
-              <div className="w-[100%] border border-solid border-black p-3 mt-3">
+              <div className="w-[100%]  p-3 mt-3">
                 {reqFields && (
                   <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
                     Please add all fields with * that are Mandatory
                   </p>
                 )}
-                <div className="grid grid-cols-2 gap-4">
+                <div className='lg:text-[30px] sm:text-[26px]  text-[20px] text-[#001a5f] font-bold flex justify-center pb-[25px]'>BULK SHIPPING ADDRESS</div>
+                <div className="grid lg:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="">First Name*</label>
+                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>First Name*</label>
                     <input
                       type="text"
                       id="firstName"
@@ -904,11 +905,11 @@ console.log(arrCardPrice,"arrr cardPrice");
                       placeholder="First Name"
                       value={formData.firstName}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid border-black p-3 w-[100%]"
+                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
                   <div>
-                    <label htmlFor="">Last Name*</label>
+                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>Last Name*</label>
                     <input
                       id="lastName"
                       name="lastName"
@@ -916,13 +917,13 @@ console.log(arrCardPrice,"arrr cardPrice");
                       placeholder="Last Name"
                       value={formData.lastName}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid border-black p-3 w-[100%]"
+                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid lg:grid-cols-2 gap-4">
                 <div className="mt-2 ">
-                  <label htmlFor="" className="">
+                  <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>
                     Address1*
                   </label>
                   <input
@@ -933,11 +934,11 @@ console.log(arrCardPrice,"arrr cardPrice");
                     required
                     value={formData.address1}
                     onChange={(e) => handleChange(e)}
-                    className="mt-2 border border-solid border-black p-3 w-[100%]"
+                    className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
                   />
                 </div>
                 <div className="mt-2">
-                  <label htmlFor="" className="">
+                  <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>
                     Address 2
                   </label>
                   <input
@@ -947,13 +948,13 @@ console.log(arrCardPrice,"arrr cardPrice");
                     placeholder="Address 2"
                     value={formData.address2}
                     onChange={(e) => handleChange(e)}
-                    className="mt-2 border border-solid border-black p-3 w-[100%]"
+                    className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
                   />
                 </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid lg:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="">City*</label>
+                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>City*</label>
                     <input
                       type="text"
                       id="city"
@@ -961,11 +962,11 @@ console.log(arrCardPrice,"arrr cardPrice");
                       placeholder="City"
                       value={formData.city}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid border-black p-3 w-[100%]"
+                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
                   <div>
-                    <label htmlFor="">Postal Code*</label>
+                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>Postal Code*</label>
                     <input
                       id="postalCode"
                       name="postalCode"
@@ -973,14 +974,14 @@ console.log(arrCardPrice,"arrr cardPrice");
                       placeholder="Postal Code"
                       value={formData.postalCode}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid border-black p-3 w-[100%]"
+                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid lg:grid-cols-2 gap-4">
                   <div>
                     <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
+                     className='text-[#001a5f] font-bold text-sm '
                       htmlFor="country"
                     >
                       Country*
@@ -991,7 +992,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       itemID="country"
                       name="country"
                       id="country"
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="appearance-none  rounded w-full py-2 px-3 border mt-2 border-black leading-tight focus:outline-none focus:shadow-outline"
                     >
                       {location.countries.map((country,index) => (
                         <option key={index} value={country.country}>
@@ -1002,7 +1003,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                   </div>
                   <div>
                     <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
+                     className='text-[#001a5f] font-bold text-sm '
                       htmlFor="country"
                     >
                       State*
@@ -1011,7 +1012,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       onChange={(e) => handleChange(e)}
                       value={formData.state}
                       name="state"
-                      className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                      className={`appearance-none  rounded w-full py-2 px-3 border mt-2 border-black leading-tight focus:outline-none focus:shadow-outline  ${
                         errors.state ? 'border-red-500' : ''
                       }`}
                       id="state"
@@ -1031,7 +1032,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                     )}
                   </div>
                 </div>
-                <div className="flex items-center justify-center mt-[24px] gap-[8px]">
+                <div className="flex items-center  mt-[24px] gap-[8px] justify-between">
                   <div>
                     <DynamicButton
                       className="bg-[#ef6e6e] h-[40px] w-full  "

@@ -70,7 +70,7 @@ export default function Article() {
       </PageHeader> */}
       <div className="px-[5%]">
         <DynamicTitle
-          dynamicButton
+          
           title={title}
           className={'mt-[15px] !text-[22px] '}
         />
