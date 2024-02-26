@@ -635,7 +635,7 @@ const ContactTable = ({
                   </div>
 
                   <a
-                    className="text-[#000] text-[14px] leading-[22px] font-karla font-bold"
+                    className="text-[#000] text-[14px] lg:whitespace-nowrap leading-[22px] font-karla font-bold"
                     href="https://api.simplynoted.com/docs/bulk-template"
                   >
                     Download bulk address template

@@ -130,7 +130,6 @@ const Profile = ({
             );
             setProfile(false);
             setSuccessFullLoader(true);
-            debugger
 
             setLoader(false);
             setAccountDetail(true);

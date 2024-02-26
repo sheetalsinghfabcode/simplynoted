@@ -44,7 +44,6 @@ const WalletPlans = ({
   }
 
 
-  console.log("stripeCollection",stripeCollection);
 
 
   return (
@@ -131,7 +130,7 @@ const WalletPlans = ({
                       {titleMetafield?.value}
                     </span>
                     <span className="text-[15px] font-bold">
-                      {variant.node.title}
+                      {variant.node?.title}
                     </span>
                   </div>
                   {descriptionMetafield?.value &&
