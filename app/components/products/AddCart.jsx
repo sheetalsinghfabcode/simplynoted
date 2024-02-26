@@ -207,6 +207,9 @@ export function AddCart({
   );
   function onNewAddressClick() {
     setAddressForm(true);
+    setsearchData2(null)
+    setsearchData(null)
+
   }
 
   async function getRecipient() {
@@ -683,6 +686,8 @@ console.log(arrCardPrice,"arrr cardPrice");
                           onClickFunction={() => {
                             handleButtonClick('recipient');
                             setAddressForm(true);
+                            setsearchData(null)
+                            setsearchData2(null)
                           }}
                         />
                         <div>
@@ -761,7 +766,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                             </label>
                           </div>
                           <div className="custom_variant_price cursor-pointer font-medium sm:text-[16px] text-[14px]">
-                            ${item?.node.price.amount}
+                            ${Number(item?.node.price.amount).toFixed(2)}
                           </div>
                         </div>
                       ))}
