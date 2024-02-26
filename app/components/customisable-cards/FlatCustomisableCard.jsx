@@ -1261,7 +1261,7 @@ export default function FlatCustomisableCard({
             </div>
           </div>
           <div
-            className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[8rem] mt-[30px]  lg:ml-[47px]  sm:ml-7 gap-5  flex-1 lg:w-[50%] md:w-[500px] sm:w-[445px] w-[350px]"
+            className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[8rem] mt-[30px]  lg:ml-[47px]  gap-5  flex-1 lg:w-[50%] md:w-[500px] sm:w-[445px] w-[350px]"
             // style={{marginTop: '9rem'}}
           >
             {selectedCardPage === 'Card Front' && (
@@ -1269,6 +1269,7 @@ export default function FlatCustomisableCard({
                 <div className="relative flex w-[70px] h-[40px] lg:mt-[-9rem] mt-0 ">
                   <div className="flex flex-row gap-[3px] items-center lg:justify-start justify-center">
                     <img
+                    className='cursor-pointer'
                       src={AddImageIcon}
                       alt="Add image file icon"
                       draggable="false"
@@ -1286,12 +1287,12 @@ export default function FlatCustomisableCard({
                       id="image-input"
                       accept="image/png, image/jpeg"
                       ref={frontImageRef}
-                      className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
+                      className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none "
                       onChange={handleImageFileInsertion}
                     />
                   )}
                 </div>
-                <div className="h-[160px] mt-[30px]">
+                <div className="h-auto mt-[30px]">
                   {selectedCardPage === 'Card Front' &&
                     (frontImageDetails.imageBlobUrl ||
                       frontImageDetails.blackAndWhiteImageBlobUrl) && (
@@ -1398,7 +1399,7 @@ export default function FlatCustomisableCard({
                     Footer
                   </button>
                 </div>
-                <div className="flex min-h-[330px]  sm:flex-row flex-col items-center lg:w-auto w-[100%] ">
+                <div className="flex min-h-[330px]  sm:flex-row flex-col items-start lg:w-auto w-[100%] ">
                   <div className="flex flex-1 sm:w-[50%] w-[100%] ">
                     <div className="flex flex-col w-full text-[14px] text-black font-medium">
                       <label htmlFor="custom-text">
@@ -1607,12 +1608,13 @@ export default function FlatCustomisableCard({
                       </label>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-center">
+                  <div className="flex sm:flex-col flex-row flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-between">
                     <div className="relative mt-5 w-[60px] h-[50px]">
                       {observingData.isHeader && !qr.isQrAdded && (
                         <>
                         <div className='flex items-center gap-2'>
                           <img
+                          className='cursor-pointer'
                             src={AddImageIcon}
                             alt="Add image file icon"
                             draggable="false"
@@ -1636,8 +1638,9 @@ export default function FlatCustomisableCard({
                       )}
                       {observingData.isFooter && !qr.isQrAdded && (
                         <>
-                        <div className='flex items-center gap-2'>
+                        <div className='flex items-center gap-2 '>
                           <img
+                          className='cursor-pointer'
                             src={AddImageIcon}
                             ref={backFooterImageRef}
                             alt="Add image file icon"
@@ -1661,7 +1664,7 @@ export default function FlatCustomisableCard({
                       )}
                     </div>
                     <div className="flex  flex-col items-baseline gap-8  sm:w-full w-[45%]">
-                      <div className="h-[160px] sm:w-1/2 w-[90%] sm:ml-0 ml-[33px]">
+                      <div className="h-auto sm:w-1/2 w-[90%] ">
                         {observingData.isHeader &&
                           headerData.imageFile &&
                           headerData.imageBlobUrl &&
