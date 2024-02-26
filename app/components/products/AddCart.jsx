@@ -22,6 +22,7 @@ export function AddCart({
   customFontName,
   variantsVal,
 }) {
+  console.log(data,"gift card data");
   const {addressForm, setAddressForm, setEditAddress,setProductShow} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
@@ -106,6 +107,7 @@ export function AddCart({
   const [selectedBoxCheck,setSelectedBoxCheck] = useState(false)
   const [selectedBoxCheck2,setSelectedBoxCheck2] = useState(false)
   const [purchaseType,setPurchaseType] = useState('')
+  const [giftPriceVariantId,setGiftPriceVariantID] = useState('')
   useEffect(() => {
     setIsInitialRender(false);
     let selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
@@ -284,23 +286,27 @@ export function AddCart({
   const cardvalFunc = async (item) => {
     setCardVal(item);
     let selCardName = data.collection.products.edges[item].node;
+    console.log(selCardName,"selected gift card");
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
     setGiftCardUrl(selCardName.onlineStoreUrl);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
     setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
-
+console.log(arrCardPrice,"arrr cardPrice");
     let firstPrice = arrCardPrice[0].node.price.amount;
     setCardPrice(firstPrice);
     setCardPriceTitle(arrCardPrice[0].node.title);
     setCardPriceVal(arrCardPrice);
+    setGiftPriceVariantID(arrCardPrice[0].node.id)
   };
 
   const priceValFunc = async (item) => {
     let priceAmount = cardPriceVal[item].node.price.amount;
     let priceTitle = cardPriceVal[item].node.title;
+    let variantIDs = cardPriceVal[item].node.id
     setCardPrice(priceAmount);
     setCardPriceTitle(priceTitle);
+    setGiftCardId(variantIDs.match(/\d+/g).join(''))
   };
   useEffect(() => {
     customerid = localStorage.getItem('customerId');

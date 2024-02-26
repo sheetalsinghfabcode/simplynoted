@@ -11,6 +11,7 @@ import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import DynamicButton from './DynamicButton';
 import { useStateContext } from '~/context/StateContext';
+import {useNavigate} from '@remix-run/react';
 
 import {Link} from '~/components';
 
@@ -61,6 +62,8 @@ export function CheckoutData({
   const [walletBalance, setWalletBalance] = useState('');
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const {setCartCountVal} = useStateContext()
+  const navigate = useNavigate();
+
   function showWalletBtn() {
     setShowWallet(true);
     setShowCardDetail(false);
@@ -122,7 +125,7 @@ export function CheckoutData({
       //   },
       // );
       fetch(
-        `https://testapi.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -157,7 +160,7 @@ export function CheckoutData({
       //   paymentMethodId: paymentID,
       // });
       fetch(
-        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -182,7 +185,7 @@ export function CheckoutData({
       const res = await 
       // getApi(`${API_PATH.GET_STRIPE_CUSTOMER_DATA}${Id}`);
       fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -209,7 +212,7 @@ export function CheckoutData({
       //   `${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       // );
        fetch(
-        `https://testapi.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
+        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       );
       const data = await res.json();
 
@@ -527,7 +530,7 @@ export function CheckoutData({
       //   payload,
       // );
       fetch(
-        `https://testapi.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        `https://api.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
