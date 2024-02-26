@@ -25,6 +25,8 @@ export function StateContextProvider({children}) {
   const [walletPayment, setWalletPayment] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
 
+  const [birthdayAutomation, setBirthdayAutomation] = useState(true)
+  const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
 
 
 
@@ -165,7 +167,11 @@ export function StateContextProvider({children}) {
         walletPayment,
         setWalletPayment,
         updateModal,
-        setUpdateModal
+        setUpdateModal,
+        birthdayAutomation,
+        setBirthdayAutomation,
+        isbirthdayAutomated,
+        setISBirthdayAutomated
       }}
     >
       {children}

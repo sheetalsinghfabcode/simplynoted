@@ -45,7 +45,7 @@ export function ProductCard({
       {/* <h2>Helloo{product.title}</h2> */}
       <Link
         onClick={onClick}
-        to={`/products/${product.handle}`}
+        to={isbirthdayAutomated?`/products/${product.handle}?select=Bulk`:`/products/${product.handle}`}
         prefetch="intent"
       >
         <div className={clsx('grid gap-4', className)}>
@@ -98,7 +98,7 @@ export function ProductCard({
         </div>
       </Link>
       {isbirthdayAutomated ? 
-      <Link to={`/products/${product.handle}`}>
+      <Link to={`/products/${product.handle}?select=Bulk`}>
       <DynamicButton
         className="bg-[#001a5f] w-[100%] font-normal  text-[#fff] py-[14px] px-[8px] mb-[10px]"
         text="SELECT FOR BIRTHDAY AUTOMATION!"

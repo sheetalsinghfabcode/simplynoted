@@ -13,6 +13,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     setWalletPlan,
     setWalletPayment,
     setWalletPurchase,
+    setBirthdayAutomation
   } = useStateContext();
 
   useEffect(() => {
@@ -24,9 +25,13 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   }, [location.pathname]);
 
   useEffect(() => {
+    setBirthdayAutomation(true)
     const prevPage = localStorage.getItem('previousPage');
     if (prevPage && prevPage !== location.pathname) {
       setPreviousPage(prevPage);
+    }
+    if(location.pathname.includes('birthday') && location.pathname.includes('products')){
+      setBirthdayAutomation(false)
     }
     localStorage.setItem('previousPage', location.pathname);
   }, [location.pathname]);

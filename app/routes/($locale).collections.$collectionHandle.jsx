@@ -33,6 +33,7 @@ import CircularLoader from '~/components/CircularLoder';
 import {getApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
+import { useStateContext } from '~/context/StateContext';
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -141,6 +142,8 @@ export async function loader({params, request, context}) {
 }
 let customerid;
 export default function Collection() {
+  const {birthdayAutomation,isbirthdayAutomated,setISBirthdayAutomated} = useStateContext()
+  console.log(birthdayAutomation,"birthdayAutomation");
   const navigate = useNavigate();
   const [handleName, setHandleName] = useState('');
   const [addingProductsData, setAddingProd] = useState([]);
@@ -152,7 +155,7 @@ export default function Collection() {
   const [loadMore, setLoadMore] = useState(false);
   const [newOffset, setNewOffset] = useState('');
   const [offPrice, setOffPrice] = useState('');
-  const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
+  // const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
   const [confirmModal,setConfirmModal] = useState(false)
   const locationRef = useLocation();
   const {
@@ -188,7 +191,7 @@ export default function Collection() {
       setCheckState(false);
       setAddingProd([]);
     }
-    if(collectionHandle == 'birthday'){
+    if(collectionHandle == 'birthday' && birthdayAutomation){
       setConfirmModal(true)
     }
   }, [locationRef.pathname]);
@@ -292,9 +295,9 @@ export default function Collection() {
     if (collectionHandle == 'customisable-cards') {
       customisedCard();
     }
-    if(collectionHandle == 'birthday'){
-      setConfirmModal(true)
-    }
+    // if(collectionHandle == 'birthday' && birthdayAutomation){
+    //   setConfirmModal(true)
+    // }
   }, []);
   function loadMoreCustomData() {
     setOffSetVal(newOffset);
@@ -307,6 +310,7 @@ export default function Collection() {
   function onConfirmClick(){
     setISBirthdayAutomated(true)
     setConfirmModal(false)
+    // localStorage.setItem("isBirthdayAutomated", "true")
   }
 
   return (
@@ -435,7 +439,7 @@ export default function Collection() {
           onCancel={() => setConfirmModal(false) && setISBirthdayAutomated(!isbirthdayAutomated)}
           onConfirm={() => onConfirmClick()}
           message="Select a card and we’ll automatically send them to your recipients on their birthdays"
-          confirmText="Gey Started"
+          confirmText="Get Started"
           cancelText="Cancel"
         />
       </div>

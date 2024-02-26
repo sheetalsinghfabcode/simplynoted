@@ -38,7 +38,6 @@ export function MessageWriting({
   selectedFile,
   setSelectedFile,
   setShowBox,
-
   EditMess,
   editEndMess,
   editFontFamily,
@@ -61,6 +60,8 @@ export function MessageWriting({
     addresses,
     setAddresses,
     setProductShow,
+    isbirthdayAutomated,
+    setISBirthdayAutomated,
   } = useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -121,6 +122,8 @@ export function MessageWriting({
     editShippingDate ? editShippingDate : '',
   );
   const [disableSelectAddressBtn, setDisableSelectAddressBtn] = useState(false);
+  const [confirmModal,setConfirmModal] = useState(true)
+
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -394,8 +397,8 @@ export function MessageWriting({
                 justifyContent: metafields.header.justifyContent,
                 flexDirection: metafields.header.flexDirection,
                 color: metafields.header.fontColor,
-                maxWidth: (qrValue && qrValue.length) ? '90%' : '100%',
-                overflow:'hidden'
+                maxWidth: qrValue && qrValue.length ? '90%' : '100%',
+                overflow: 'hidden',
               }}
             >
               {metafields.header.data}
@@ -439,8 +442,8 @@ export function MessageWriting({
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
                 color: metafields.footer.fontColor,
-                maxWidth: (qrValue && qrValue.length) ? '90%' : '100%',
-                overflow:'hidden'
+                maxWidth: qrValue && qrValue.length ? '90%' : '100%',
+                overflow: 'hidden',
               }}
             >
               {metafields.footer.data}
@@ -560,10 +563,10 @@ export function MessageWriting({
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
-  
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    console.log(file,"fileee");
+    console.log(file, 'fileee');
     if (file) {
       const reader = new FileReader();
       const keyToRemove = 'Type';
@@ -651,10 +654,9 @@ export function MessageWriting({
         );
 
         setIsOpen2(true);
-        onCancelCSVUpload()
+        onCancelCSVUpload();
         setTimeout(() => setIsOpen2(false), 3000);
         found = true;
-        
       }
     }
     if (errMsg.length == 0) {
@@ -715,12 +717,10 @@ export function MessageWriting({
         }
 
         if (errMsg.length > 0) {
-          
           setIsOpen2(true);
           setTimeout(() => setIsOpen2(false), 3000);
           found = true;
-        onCancelCSVUpload()
-
+          onCancelCSVUpload();
         } else {
           if (stateCheckCart) {
             await uploadDataToAPI(obj);
@@ -865,6 +865,8 @@ export function MessageWriting({
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
+  const location = useLocation();
+  console.log(location, 'location for product page');
   useEffect(() => {
     mainMessageBox = ref1.current;
     signOffTextBox = ref3.current;
@@ -1155,6 +1157,15 @@ export function MessageWriting({
     setStandardFontVal('Select Standard Font');
     setCustomFontName(val);
   }
+  function onConfirmClick(){
+      const anchor = document.createElement('a');
+      anchor.href = 'https://api.simplynoted.com/docs/new-birthday-template';
+      anchor.download = 'new-birthday-template';
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      setConfirmModal(false)
+  }
   return (
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
@@ -1307,17 +1318,20 @@ export function MessageWriting({
                 </div>
               </div>
             </div>
-            {!customFonts &&
-            <div className="mb-[24px]  font-inter text-xs">
-              <span className="text-[#001A5F] font-medium">
-                Contact Us &nbsp;
-              </span>
-              <a href="https://meetings.hubspot.com/rick24"  target="_self"
-              className="text-[#737373]">
-                to find out how to add your own custom handwriting fonts.
-              </a>
-            </div>
-            }
+            {!customFonts && (
+              <div className="mb-[24px]  font-inter text-xs">
+                <span className="text-[#001A5F] font-medium">
+                  Contact Us &nbsp;
+                </span>
+                <a
+                  href="https://meetings.hubspot.com/rick24"
+                  target="_self"
+                  className="text-[#737373]"
+                >
+                  to find out how to add your own custom handwriting fonts.
+                </a>
+              </div>
+            )}
             <textarea
               type="text"
               id="example-one-input"
@@ -1733,18 +1747,18 @@ export function MessageWriting({
                           </div>
                           {bulkUploadDiv && !showNextBtn ? (
                             <>
-                            <div className="mt-3">
-                              <label className="cursor-pointer text-[18px] font-semibold">
-                                Click to upload or drag and drop
-                                <input
-                                  type="file"
-                                  name="file"
-                                  accept=".csv"
-                                  className="upload-input hidden"
-                                  onChange={(e) => handleFileChange(e)}
-                                />
-                              </label>
-                            </div>
+                              <div className="mt-3">
+                                <label className="cursor-pointer text-[18px] font-semibold">
+                                  Click to upload or drag and drop
+                                  <input
+                                    type="file"
+                                    name="file"
+                                    accept=".csv"
+                                    className="upload-input hidden"
+                                    onChange={(e) => handleFileChange(e)}
+                                  />
+                                </label>
+                              </div>
                             </>
                           ) : (
                             ''
@@ -1944,7 +1958,17 @@ export function MessageWriting({
           )
         }
       />
-
+      <ConfirmationModal
+        show={confirmModal && isbirthdayAutomated}
+        title={'AUTOMATED BIRTHDAY CARDS'}
+        onCancel={() =>
+          setConfirmModal(false) && setISBirthdayAutomated(!isbirthdayAutomated)
+        }
+        onConfirm={() => onConfirmClick()}
+        message="Download the recipient template and populate each person birthdate. Their custom card will be sent to them in time to receive it for their birthday!"
+        confirmText="Download"
+        cancelText="Exit"
+      />
       <Instruction
         isOpen={isModalOpen}
         title="INSTRUCTIONS FOR BULK UPLOAD"

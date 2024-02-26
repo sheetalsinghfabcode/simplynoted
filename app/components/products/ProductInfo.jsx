@@ -17,6 +17,8 @@ import {FaYoutube} from 'react-icons/fa';
 import Instruction from '../modal/Instruction';
 import {VideoTutorial} from '../VideoTutorial';
 import DynamicButton from '../DynamicButton';
+import { useStateContext } from '~/context/StateContext';
+import ConfirmationModal from '../modal/ConfirmationModal';
 
 export function ProductInfo({
   title,
@@ -29,12 +31,12 @@ export function ProductInfo({
   setCustomFontName,
   editCustomFontFamily,
 }) {
+  const { isbirthdayAutomated,setISBirthdayAutomated} = useStateContext()
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
-
   function CloseVideoComp() {
     setVideoBtn(false);
   }
@@ -84,6 +86,7 @@ export function ProductInfo({
     setStandardFontVal('Select Standard Font');
     setCustomFontName(val);
   }
+  
 
   return (
     <div className="flex justify-center md:w-[46%] w-[90%]  md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
@@ -117,6 +120,10 @@ export function ProductInfo({
             </div>
           </div>
           <div className="purchase-btn-cont flex justify-start mt-3 mb-3">
+            {isbirthdayAutomated?
+            <span className='text-[#1b5299] text-[32px] font-bold underline'>Birthday Automation Setup!</span>
+            :
+            <>
             <DynamicButton
               className={`bulk-purchase-btn ${
                 show ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
@@ -131,6 +138,8 @@ export function ProductInfo({
               text="Single Card"
               onClickFunction={() => singleBtnCLick()}
             />
+            </>
+            }
           </div>
           <div
             className="flex items-center gap-[10px] mt-[9px]"
@@ -159,6 +168,7 @@ export function ProductInfo({
             close={true}
             closeModal={CloseVideoComp}
           />
+          
           {/* <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
             <div className="lg:w-[47%] w-[42%]">
               <Text className="font-bold w-[100px]">
