@@ -103,6 +103,8 @@ export function AddCart({
   const [apiVariantID, setApiVariantID] = useState('');
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [finalPrice, setFinalPrice] = useState('');
+  const [selectedBoxCheck,setSelectedBoxCheck] = useState(false)
+  const [selectedBoxCheck2,setSelectedBoxCheck2] = useState(false)
   useEffect(() => {
     setIsInitialRender(false);
     let selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
@@ -232,9 +234,15 @@ export function AddCart({
   }
   const handleCheckboxChange = (item) => {
     setSelectedItem(item);
+    if(selectedItem == item){
+      setSelectedBoxCheck(!selectedBoxCheck)
+    }
   };
   const handleCheckboxChange2 = (item) => {
     setSelectedItem2(item);
+    if(selectedItem2 == item){
+    setSelectedBoxCheck2(!selectedBoxCheck2)
+    }
   };
   
   const handleBoxoNShipping = (item) => {
@@ -620,7 +628,7 @@ export function AddCart({
                             className="cursor-pointer border-2 border-black"
                             type="checkbox"
                             value={item}
-                            checked={selectedItem2?._id === item._id}
+                            checked={selectedItem2?._id === item._id && !selectedBoxCheck2}
                             onChange={() => handleCheckboxChange2(item)}
                           />
                           <span className="font-karla ml-4">
@@ -675,7 +683,7 @@ export function AddCart({
                                 className="cursor-pointer border-2 border-black"
                                 type="checkbox"
                                 value={item}
-                                checked={selectedItem?._id === item._id}
+                                checked={selectedItem?._id === item._id && !selectedBoxCheck}
                                 onChange={() => handleCheckboxChange(item)}
                                 // ref={refRec}
                               />
@@ -829,7 +837,7 @@ export function AddCart({
               </div>
             </div>
 
-            {((onSaveShip && selectShipMode &&  selectShipMode.node.price.amount !== '0.0') || (editOrderValue?.data?.locationForShipMethod && editOrderValue?.node?.price?.amount !== '0.0' )) && (
+            {((onSaveShip && selectShipMode &&  selectShipMode.node.price.amount !== '0.0') || (editOrderValue?.data?.isShippidata && editOrderValue?.data?.locationForShipMethod && editOrderValue?.node?.price?.amount !== '0.0' )) && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
                 {formData?.firstName}, {formData?.lastName},{formData?.address1}
                 , {formData?.city}, {formData?.state},{formData?.country}

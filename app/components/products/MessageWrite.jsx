@@ -1,29 +1,29 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import Modal from 'react-modal';
-import { BsXCircle } from 'react-icons/bs';
+import {BsXCircle} from 'react-icons/bs';
 import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
-import { Image } from '@shopify/hydrogen';
+import {Image} from '@shopify/hydrogen';
 import LoginModal from '../modal/LoginModal';
 import DynamicButton from '../DynamicButton';
 import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
-import { useLocation } from '@remix-run/react';
-import { useStateContext } from '../../context/StateContext';
+import {useLocation} from '@remix-run/react';
+import {useStateContext} from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import TickImg from '../../../assets/Image/check-mark.png';
 import Del from '../../../assets/Image/delete.png';
 import calender_icon from '../../../assets/Image/calendar.png';
-import { Text } from '../Text';
-import { FaYoutube } from 'react-icons/fa';
-import { FiUploadCloud } from 'react-icons/fi';
-import { VideoTutorial } from '../VideoTutorial';
-import { RxCross2 } from 'react-icons/rx';
-import { ImCross } from 'react-icons/im';
-import { Modal as ModalComp } from '../Modal'
+import {Text} from '../Text';
+import {FaYoutube} from 'react-icons/fa';
+import {FiUploadCloud} from 'react-icons/fi';
+import {VideoTutorial} from '../VideoTutorial';
+import {RxCross2} from 'react-icons/rx';
+import {ImCross} from 'react-icons/im';
+import {Modal as ModalComp} from '../Modal';
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -54,8 +54,14 @@ export function MessageWriting({
   editCustomFontFamily,
   editShippingDate,
 }) {
-  const { setAddressForm, addressForm, loadAddress, addresses, setAddresses, setProductShow } =
-    useStateContext();
+  const {
+    setAddressForm,
+    addressForm,
+    loadAddress,
+    addresses,
+    setAddresses,
+    setProductShow,
+  } = useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
   const [name2, setName2] = useState(editEndMess ? editEndMess : '');
@@ -114,7 +120,7 @@ export function MessageWriting({
   const [shippingDate, setShippingDate] = useState(
     editShippingDate ? editShippingDate : '',
   );
-  const [disableSelectAddressBtn, setDisableSelectAddressBtn] = useState(false)
+  const [disableSelectAddressBtn, setDisableSelectAddressBtn] = useState(false);
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -130,7 +136,7 @@ export function MessageWriting({
     );
     const modifiedData = data.map((item) => {
       // Specify the fields you want to remove from each object
-      const { _id, shopifyId, created, updated, __v, ...newObject } = item;
+      const {_id, shopifyId, created, updated, __v, ...newObject} = item;
       return newObject;
     });
     setFileData(modifiedData);
@@ -165,8 +171,8 @@ export function MessageWriting({
   function onCancelCSVUpload() {
     setDragAndDropBorderColor('#525252');
     setShowNextBtn(false);
-    setSelectedFile('')
-    setDisableSelectAddressBtn(false)
+    setSelectedFile('');
+    setDisableSelectAddressBtn(false);
   }
   async function checkUserLogged() {
     if (!customerid) {
@@ -363,18 +369,24 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex h-[48px]  mt-2 aaa`}
-            style={{ justifyContent: metafields.header.justifyContent }}
+            className={`flex h-[48px]`}
+            style={{justifyContent: metafields.header.justifyContent}}
           >
-            <img  className={`!w-20 headerImage ${metafields.header.isColored? 'grayscale-0' : 'grayscale'}`} src={metafields.header.data} />
+            <img
+              className={`!w-20 headerImage ${
+                metafields.header.isColored ? 'grayscale-0' : 'grayscale'
+              }`}
+              src={metafields.header.data}
+            />
           </div>
         );
-      } else if (metafields.header.data){
+      } else if (metafields.header.data) {
         return (
-        
-          <div className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2 aaa`}>
+          <div
+            className={`overflow-hidden h-[48px] w-[100%]  px-[2rem] mt-2 aaa`}
+          >
             <span
-              className={`flex w-full h-full aaaa`}
+              className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.header.fontType,
                 fontSize: metafields.header.fontSize,
@@ -402,17 +414,21 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex  h-[48px] bb`}
-            style={{ justifyContent: metafields.footer.justifyContent }}
+            className={`flex  h-[48px]`}
+            style={{justifyContent: metafields.footer.justifyContent}}
           >
-            <img className={`!w-20 ${metafields.footer.isColored? 'grayscale-0' : 'grayscale'}`} src={metafields.footer.data} />
+            <img
+              className={`!w-20 ${
+                metafields.footer.isColored ? 'grayscale-0' : 'grayscale'
+              }`}
+              src={metafields.footer.data}
+            />
           </div>
         );
-      }
-       else {
+      } else {
         return (
           <div
-            className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem] bbb`}
+            className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem]`}
           >
             <span
               className={`flex w-full h-full bbb`}
@@ -493,8 +509,8 @@ export function MessageWriting({
     if (!mainMessageBox) return;
     mainMessageBox.style.fontSize = '34px';
     mainMessageBox.style.lineHeight = '34px';
-    setFontSize('34px')
-    setLineHeight('34px')
+    setFontSize('34px');
+    setLineHeight('34px');
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
@@ -502,8 +518,8 @@ export function MessageWriting({
     if (!signOffTextBox) return;
     signOffTextBox.style.fontSize = '34px';
     signOffTextBox.style.lineHeight = '34px';
-    setSignOffFontSize('34px')
-    setSignOffLineHeight('34px')
+    setSignOffFontSize('34px');
+    setSignOffLineHeight('34px');
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
@@ -533,36 +549,34 @@ export function MessageWriting({
     innerContainer.style.lineHeight =
       parseFloat(lineHeight) - lineHeightDecrement + 'px';
     if (resizeSelection === 'customTextResizing') {
-      console.log(innerContainer.style.fontSize,"MainBox------");
+      console.log(innerContainer.style.fontSize, 'MainBox------');
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
     } else if (resizeSelection === 'signOffResizing') {
-      console.log(signOffTextBox.style.fontSize,"------");
+      console.log(signOffTextBox.style.fontSize, '------');
       setSignOffFontSize(signOffTextBox.style.fontSize);
       setSignOffLineHeight(signOffTextBox.style.lineHeight);
     }
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
-
+  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    console.log(file,"fileee");
     if (file) {
       const reader = new FileReader();
       const keyToRemove = 'Type';
       reader.onload = (e) => {
         const csvData = e.target.result;
         let jsonData = csvToJson(csvData);
-
         const cleanedArray = jsonData.map((obj) => {
           const cleanedObj = {};
-
           Object.keys(obj).forEach((key) => {
             const newKey = key.replace(/"/g, ''); // Remove quotes from key
             const newValue = obj[key].replace(/"/g, ''); // Remove quotes from value
             cleanedObj[newKey] = newValue;
           });
-
           return cleanedObj;
         });
         setSelectedFile(file); // Update the selected file state
@@ -588,7 +602,7 @@ export function MessageWriting({
       }
       result.push(obj);
     }
-    setDisableSelectAddressBtn(true)
+    setDisableSelectAddressBtn(true);
     return result;
   }
   async function uploadCsvFile() {
@@ -608,7 +622,10 @@ export function MessageWriting({
     } else {
       setLenCsvData(fileData.length);
     }
+    console.log(fileData, 'fileData logs');
+
     let reqField = [
+      'Type',
       'First Name',
       'Last Name',
       'Address',
@@ -619,63 +636,95 @@ export function MessageWriting({
 
     const alphabetPattern = /^[A-Za-z]+$/;
     const mailText = /@.*\.com$/;
-
-    for (let index = 0; index < fileData.length; index++) {
-      const obj = fileData[index];
-      const emptyKeys = [];
-      const numkeys = [];
-      let targetField = 'First Name';
-      let emailValid = 'Email';
-      let countryCheck = 'Country';
-      for (const key of reqField) {
-        if (obj[key] === '') {
-          emptyKeys.push(key);
+    if (fileData.length) {
+      let errObj = [];
+      fileData.forEach((obj, index) => {
+        const missingKeys = reqField.filter((key) => !(key in obj));
+        if (missingKeys.length > 0) {
+          errObj.push(missingKeys);
+          console.log(`Missing keys in array[${index}]: `, missingKeys);
         }
-      }
-
-      if (alphabetPattern.test(obj[targetField]) == false) {
-        errMsg.push(`'${targetField}' at row ${index} includes a number.`);
-      }
-      if (
-        obj[countryCheck] === 'USA' ||
-        obj[countryCheck].toLowerCase() === '' ||
-        obj[countryCheck].toLowerCase() === ' ' ||
-        obj[countryCheck].toLowerCase() === 'u.s.a' ||
-        obj[countryCheck].toLowerCase() === 'u.s' ||
-        obj[countryCheck].toLowerCase() === 'usa' ||
-        obj[countryCheck].toLowerCase() === 'us' ||
-        obj[countryCheck].toLowerCase() === 'america' ||
-        obj[countryCheck].toLowerCase() === 'united states' ||
-        obj[countryCheck].toLowerCase() === 'united states of america' ||
-        obj[countryCheck].toLowerCase() == undefined
-      ) {
-        usCount++;
-      } else {
-        nonUSCount++;
-      }
-      if (mailText.test(obj[emailValid]) == false) {
+      });
+      if (errObj.length > 0) {
         errMsg.push(
-          `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
+          'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
         );
-        // setIsOpen2(true)
-        // setTimeout(() => setIsOpen2(false), 3000)
-      }
 
-      if (emptyKeys.length > 0) {
-        errMsg.push(
-          ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
-        );
-        // setIsOpen2(true)
-        // setTimeout(() => setIsOpen2(false), 3000)
-        // break;
-      }
-      if (errMsg.length > 0) {
         setIsOpen2(true);
+        onCancelCSVUpload()
         setTimeout(() => setIsOpen2(false), 3000);
         found = true;
-      } else {
-        if (stateCheckCart) {
-          await uploadDataToAPI(obj);
+        
+      }
+    }
+    if (errMsg.length == 0) {
+      for (let index = 0; index < fileData.length; index++) {
+        const obj = fileData[index];
+
+        let emptyKeys = [];
+        const numkeys = [];
+        let targetField = 'First Name';
+        let emailValid = 'Email';
+        let countryCheck = 'Country';
+        for (const key of reqField) {
+          // debugger
+          console.log(key, 'keys');
+          console.log(obj[key], 'obj keys');
+          if (obj[key] === '') {
+            // debugger
+            emptyKeys.push(key);
+          }
+        }
+
+        if (alphabetPattern.test(obj[targetField]) == false) {
+          errMsg.push(`'${targetField}' at row ${index} includes a number.`);
+        }
+        if (
+          obj[countryCheck] === 'USA' ||
+          obj[countryCheck].toLowerCase() === '' ||
+          obj[countryCheck].toLowerCase() === ' ' ||
+          obj[countryCheck].toLowerCase() === 'u.s.a' ||
+          obj[countryCheck].toLowerCase() === 'u.s' ||
+          obj[countryCheck].toLowerCase() === 'usa' ||
+          obj[countryCheck].toLowerCase() === 'us' ||
+          obj[countryCheck].toLowerCase() === 'america' ||
+          obj[countryCheck].toLowerCase() === 'united states' ||
+          obj[countryCheck].toLowerCase() === 'united states of america' ||
+          obj[countryCheck].toLowerCase() == undefined
+        ) {
+          usCount++;
+        } else {
+          nonUSCount++;
+        }
+        if (mailText.test(obj[emailValid]) == false) {
+          console.log(obj[emailValid], '----');
+          errMsg.push(
+            `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
+          );
+          // setIsOpen2(true)
+          // setTimeout(() => setIsOpen2(false), 3000)
+        }
+
+        if (emptyKeys.length > 0) {
+          errMsg.push(
+            ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
+          );
+          // setIsOpen2(true)
+          // setTimeout(() => setIsOpen2(false), 3000)
+          // break;
+        }
+
+        if (errMsg.length > 0) {
+          
+          setIsOpen2(true);
+          setTimeout(() => setIsOpen2(false), 3000);
+          found = true;
+        onCancelCSVUpload()
+
+        } else {
+          if (stateCheckCart) {
+            await uploadDataToAPI(obj);
+          }
         }
       }
     }
@@ -798,7 +847,7 @@ export function MessageWriting({
           Authorization:
             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
         },
-        body: JSON.stringify({ msg: valToGen }),
+        body: JSON.stringify({msg: valToGen}),
       });
 
       const json = await res.json();
@@ -828,8 +877,8 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.optionalShipDate
         : editShippingDate
-          ? editShippingDate
-          : '',
+        ? editShippingDate
+        : '',
     );
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
@@ -844,15 +893,15 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.signOffFontSize
         : editSignOffFontSize
-          ? editSignOffFontSize
-          : '',
+        ? editSignOffFontSize
+        : '',
     );
     setSignOffLineHeight(
       savedMsg
         ? savedMsg.signOffLineHeight
         : editSignOffLineHeight
-          ? editSignOffLineHeight
-          : '',
+        ? editSignOffLineHeight
+        : '',
     );
     setTempVal(ref4.current?.value);
   }, []);
@@ -915,7 +964,6 @@ export function MessageWriting({
   function AddNewTemplate() {
     return (
       <>
-
         <div className="w-[100%]">
           <div>
             <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
@@ -944,7 +992,9 @@ export function MessageWriting({
             <DynamicButton
               className="bg-[#ef6e6e] w-full h-[40px]"
               text="Cancel"
-              onClickFunction={() => setAddNewTem(false) && setErrorTemplate(false)}
+              onClickFunction={() =>
+                setAddNewTem(false) && setErrorTemplate(false)
+              }
             />
           </div>
         </div>
@@ -986,7 +1036,7 @@ export function MessageWriting({
               SELECT TEMPLATE
             </h1>
           </div>
-          <div className='mt-[30px]'>
+          <div className="mt-[30px]">
             <input
               type="text"
               className="w-full rounded p-3 text-[15px] mt-4 bg-[#e8e8ea3d] font-karla"
@@ -1109,16 +1159,18 @@ export function MessageWriting({
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
         <div
-          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${show
+          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
+            show
               ? 'lg:h-[1110px] texting-relative-cont-bulk'
               : 'lg:h-[714px] texting-relative-cont-single'
-            }`}
+          }`}
         >
           <div
-            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${show
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${
+              show
                 ? 'md:pb-[35rem] textarea-cont-bulk'
                 : 'md:pb-[15rem] textarea-cont-single'
-              }`}
+            }`}
           >
             <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left">
@@ -1134,8 +1186,8 @@ export function MessageWriting({
                     {standardFontVal
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
-                        ? editFontFamily
-                        : 'Tarzan'}
+                      ? editFontFamily
+                      : 'Tarzan'}
                   </option>
                   {editFontFamily && editFontFamily !== 'tarzan' && (
                     <option value="Tarzan" className={`font-tarzan`}>
@@ -1159,12 +1211,6 @@ export function MessageWriting({
                   </option>
                   <option value="Lumiere" className={`font-lumiere`}>
                     Lumiere
-                  </option>
-                  <option value="Kaa" className={`font-kaa`}>
-                    Kaa
-                  </option>
-                  <option value="KaaNew" className={`font-kaaNew`}>
-                    KaaNew
                   </option>
                   <option value="dumbo" className={`font-dumbo`}>
                     Dumbo
@@ -1234,12 +1280,14 @@ export function MessageWriting({
                     {customFontVal
                       ? customFontVal
                       : editCustomFontFamily
-                        ? editCustomFontFamily
-                        : 'Select Custom Font'}
+                      ? editCustomFontFamily
+                      : 'Select Custom Font'}
                   </option>
                   {customFonts &&
                     customFonts.map((item, index) => (
-                      <option key={index} value={item.fontName}>{item.fontName}</option>
+                      <option key={index} value={item.fontName}>
+                        {item.fontName}
+                      </option>
                     ))}
                 </select>
               </div>
@@ -1247,17 +1295,15 @@ export function MessageWriting({
                 <span>Optional shipping date</span>
                 <div className="flex relative">
                   <input
-                   
                     type="date"
                     className="h-[40px] calendar-input highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => {
                       setShippingDate(e.target.value);
-                      e.target.blur()
+                      e.target.blur();
                     }}
                     value={shippingDate}
                   />
-                 
                 </div>
               </div>
             </div>
@@ -1428,8 +1474,9 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${show ? 'h-[940px]' : 'h-[370px] '
-            } mb-[200px] md:mb-[0px]`}
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${
+            show ? 'h-[940px]' : 'h-[370px] '
+          } mb-[200px] md:mb-[0px]`}
         >
           <div
             id="outer"
@@ -1442,8 +1489,7 @@ export function MessageWriting({
               id="outer"
               className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
-              {metafields &&
-                metafields.isHeaderIncluded &&<ShowHeaderComp />}
+              {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
               <div
                 className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
                 ref={ref2}
@@ -1454,64 +1500,64 @@ export function MessageWriting({
                     metafields.footer.data &&
                     metafields.header.data &&
                     name2.length > 0
-                    ? '131px'
-                    : (metafields.footer &&
-                      metafields.header &&
-                      metafields.footer.data &&
-                      metafields.footer &&
-                      metafields.header &&
-                      metafields.header.data) ||
-                      (metafields.footer &&
-                        metafields.header &&
-                        metafields.footer.data &&
-                        name2.length > 0) ||
-                      (metafields.footer &&
-                        metafields.header &&
-                        metafields.header.data &&
-                        name2.length > 0)
+                      ? '131px'
+                      : (metafields.footer &&
+                          metafields.header &&
+                          metafields.footer.data &&
+                          metafields.footer &&
+                          metafields.header &&
+                          metafields.header.data) ||
+                        (metafields.footer &&
+                          metafields.header &&
+                          metafields.footer.data &&
+                          name2.length > 0) ||
+                        (metafields.footer &&
+                          metafields.header &&
+                          metafields.header.data &&
+                          name2.length > 0)
                       ? '179px'
                       : (metafields.footer &&
-                        metafields.header &&
-                        metafields.footer.data) ||
+                          metafields.header &&
+                          metafields.footer.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data) ||
                         name2.length > 0
-                        ? '231px'
-                        : '291px',
-              }}
-            >
-              <div
-                id="messageBoxID"
-                ref={ref1}
-                className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
-                style={{
-                  fontFamily: fontFamilyName
-                    ? fontFamilyName
-                    : editFontFamily
-                      ? editFontFamily
-                      : 'great vibes',
-                  fontSize: fontSize ? fontSize : '34px',
-                  lineHeight: lineHeight ? lineHeight : '50px',
+                      ? '231px'
+                      : '291px',
                 }}
               >
-                {name ? name : 'Enter your custom message here...'}
+                <div
+                  id="messageBoxID"
+                  ref={ref1}
+                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
+                  style={{
+                    fontFamily: fontFamilyName
+                      ? fontFamilyName
+                      : editFontFamily
+                      ? editFontFamily
+                      : 'great vibes',
+                    fontSize: fontSize ? fontSize : '34px',
+                    lineHeight: lineHeight ? lineHeight : '50px',
+                  }}
+                >
+                  {name ? name : 'Enter your custom message here...'}
+                </div>
               </div>
-            </div>
-            {/* {name2.length>0 && */}
-            <div
-              className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
-              ref={ref}
-              style={{ display: name2.length > 0 ? 'block' : 'none' }}
-            >
+              {/* {name2.length>0 && */}
               <div
-                id="signOffText"
-                ref={ref3}
-                className="output2 text-[#0040ac] max-w-[300px]"
-                style={{
-                  fontFamily: fontFamilyName
-                    ? fontFamilyName
-                    : editFontFamily
+                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
+                ref={ref}
+                style={{display: name2.length > 0 ? 'block' : 'none'}}
+              >
+                <div
+                  id="signOffText"
+                  ref={ref3}
+                  className="output2 text-[#0040ac] max-w-[300px]"
+                  style={{
+                    fontFamily: fontFamilyName
+                      ? fontFamilyName
+                      : editFontFamily
                       ? editFontFamily
                       : 'great vibes',
                     fontSize: signOffFontSize ? signOffFontSize : '50px',
@@ -1522,8 +1568,7 @@ export function MessageWriting({
                 </div>
               </div>
               {/* } */}
-              {metafields &&
-                metafields.isFooterIncluded &&<ShowFooterComp />}
+              {metafields && metafields.isFooterIncluded && <ShowFooterComp />}
             </div>
             {/* } */}
             {/* {metafields &&
@@ -1552,7 +1597,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({ target: { files: [file] } });
+                        handleFileChange({target: {files: [file]}});
                       }
                     }}
                     onDragEnter={() => {
@@ -1626,7 +1671,9 @@ export function MessageWriting({
                               type="checkbox"
                               className=" border-[1px] border-[#E5E5E5] outline-none border-none"
                               checked={stateCheckCart}
-                              onChange={() => setStateCheckCart(!stateCheckCart)}
+                              onChange={() =>
+                                setStateCheckCart(!stateCheckCart)
+                              }
                             />
                             &nbsp;
                             <label htmlFor="">
@@ -1646,7 +1693,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({ target: { files: [file] } });
+                        handleFileChange({target: {files: [file]}});
                       }
                     }}
                     onDragEnter={() => {
@@ -1685,6 +1732,7 @@ export function MessageWriting({
                             </span>
                           </div>
                           {bulkUploadDiv && !showNextBtn ? (
+                            <>
                             <div className="mt-3">
                               <label className="cursor-pointer text-[18px] font-semibold">
                                 Click to upload or drag and drop
@@ -1697,6 +1745,7 @@ export function MessageWriting({
                                 />
                               </label>
                             </div>
+                            </>
                           ) : (
                             ''
                           )}
@@ -1720,7 +1769,9 @@ export function MessageWriting({
                               type="checkbox"
                               className=" border-[1px] border-[#E5E5E5] outline-none border-none"
                               checked={stateCheckCart}
-                              onChange={() => setStateCheckCart(!stateCheckCart)}
+                              onChange={() =>
+                                setStateCheckCart(!stateCheckCart)
+                              }
                             />
                             &nbsp;
                             <label htmlFor="">
@@ -1739,14 +1790,16 @@ export function MessageWriting({
                 <div className="m-auto w-full grid font-bold">
                   <DynamicButton
                     disabled={disableSelectAddressBtn}
-                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${disableSelectAddressBtn && 'opacity-40'}`}
+                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${
+                      disableSelectAddressBtn && 'opacity-40'
+                    }`}
                     text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   <DynamicButton
                     className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Buy Leads (Mailing List)"
-                    onClickFunction={() => { }}
+                    onClickFunction={() => {}}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
@@ -1794,69 +1847,73 @@ export function MessageWriting({
         </div>
       </div>
 
-      {modalIsOpen &&
+      {modalIsOpen && (
         <ModalComp
-          children={<div className='w-[100%] h-[80'>
-            <div className="flex">
-              <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
-                AI Message Assistant
-              </h2>
-            </div>
-            <div className="mt-[12px]">
-              <text className="text-[black]">
-                Type in words or a phrase to use our AI Assistant to
-                <br /> help generate a great message
-              </text>
-            </div>
-            <div>
-              {loader ? (
-                <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
-                  <CircularLoader color="#ef6e6e" />
+          children={
+            <div className="w-[100%] h-[80">
+              <div className="flex">
+                <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
+                  AI Message Assistant
+                </h2>
+              </div>
+              <div className="mt-[12px]">
+                <text className="text-[black]">
+                  Type in words or a phrase to use our AI Assistant to
+                  <br /> help generate a great message
+                </text>
+              </div>
+              <div>
+                {loader ? (
+                  <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
+                    <CircularLoader color="#ef6e6e" />
+                  </div>
+                ) : (
+                  <textarea
+                    type="text"
+                    id="aiTextArea"
+                    value={aiText ? aiText : valToGen}
+                    onChange={(e) => setValToGen(e.target.value)}
+                    placeholder="Example: Message for Birthday"
+                    maxLength="250"
+                  ></textarea>
+                )}
+              </div>
+              {!aiText ? (
+                <div className="ai-generate">
+                  <button
+                    id="generate-msg"
+                    disabled=""
+                    onClick={() => aiGenrateMess()}
+                    className="w-full"
+                  >
+                    Generate Message
+                  </button>
                 </div>
               ) : (
-                <textarea
-                  type="text"
-                  id="aiTextArea"
-                  value={aiText ? aiText : valToGen}
-                  onChange={(e) => setValToGen(e.target.value)}
-                  placeholder="Example: Message for Birthday"
-                  maxLength="250"
-                ></textarea>
+                <div className="buttonClass flex justify-start">
+                  <div className="buttonDiv pr-5">
+                    <button
+                      className="bg-[#001a5f] text-[#fff] p-2 rounded"
+                      onClick={() => onInsetClick()}
+                    >
+                      Insert
+                    </button>
+                  </div>
+                  <div className="gap-2">
+                    <button
+                      className="bg-[#f0f0f0] text-[black] p-2 rounded "
+                      onClick={() => onCancl()}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               )}
             </div>
-            {!aiText ? (
-              <div className="ai-generate">
-                <button
-                  id="generate-msg"
-                  disabled=""
-                  onClick={() => aiGenrateMess()}
-                  className='w-full'
-                >
-                  Generate Message
-                </button>
-              </div>
-            ) : (
-              <div className="buttonClass flex justify-start">
-                <div className="buttonDiv pr-5">
-                  <button
-                    className="bg-[#001a5f] text-[#fff] p-2 rounded"
-                    onClick={() => onInsetClick()}
-                  >
-                    Insert
-                  </button>
-                </div>
-                <div className="gap-2">
-                  <button
-                    className="bg-[#f0f0f0] text-[black] p-2 rounded "
-                    onClick={() => onCancl()}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            )}</div>}
+          }
           cancelLink={onCancl}
-        />}
+        />
+      )}
       <Instruction
         isOpen={instructionModal}
         title="Text Can not be Empty"
@@ -1900,10 +1957,12 @@ export function MessageWriting({
         ]}
         table={true}
       />
-      {addNewTem &&
+      {addNewTem && (
         <ModalComp
           children={<AddNewTemplate />}
-          cancelLink={() => setAddNewTem(false)} />}
+          cancelLink={() => setAddNewTem(false)}
+        />
+      )}
       {/* <Instruction
         isOpen={addNewTem}
         title=""
@@ -1911,10 +1970,12 @@ export function MessageWriting({
         table={false}
         body={<AddNewTemplate />}
       /> */}
-      {loadTemModal &&
-        <ModalComp children={<LoadTemplate />}
-          cancelLink={() => setLoadTemModal(false)} />
-      }
+      {loadTemModal && (
+        <ModalComp
+          children={<LoadTemplate />}
+          cancelLink={() => setLoadTemModal(false)}
+        />
+      )}
       {/* <Instruction
         isOpen={loadTemModal}
         close={true}
