@@ -207,16 +207,15 @@ const Accordion = ({
 
   // Example usage:
   const {discount, cards} = extractDiscountAndCardsInfo(selectedPlan);
-
   const createSubscription = async (json) => {
     try {
       const payLoad = {
         subscriptionPriceId: subscriptionPriceId,
         subscriptionName: subscriptionTitle,
       };
-
+  
       const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
-
+  
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -224,28 +223,31 @@ const Accordion = ({
         },
         body: JSON.stringify(payLoad),
       });
-
+  
       const data = await response.json();
-
+  
       if (data.redirectUrl) {
-        setloader(false);
-        setPaymentLoader(false);
-
         const result = await stripe.confirmCardPayment(data.client_secret);
-        if (result?.error) {
+        if (result && result.error) {
           setPaymentLoader(false);
+        } else {
+          if (result?.error) {
+            setPaymentLoader(false);
+          } else {
+            paymentSave(data, json);
+          }
         }
       } else {
         paymentSave(data, json);
       }
-      // Handle the response data here
     } catch (error) {
       setPaymentLoader(false);
       // Handle errors here
       console.error('Error:', error);
-    } finally {
     }
   };
+  
+  
 
   const paymentPurchase = (data, json) => {
     const payLoad = {

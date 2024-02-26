@@ -281,7 +281,7 @@ function Account({customer, heading, featuredData}) {
 
   return (
     <div className="w-full global-max-width-handler ">
-      <div className=" flex flex-col p-[20px] pt-[40px] px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
+      <div className=" flex flex-col p-[20px] pt-[40px] px-0 md:px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
         <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
           <div className="user-name-account">
             {customer.firstName?.charAt(0)}
