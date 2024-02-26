@@ -5,8 +5,11 @@ import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
 import {useEffect, useState} from 'react';
 import {defer} from '@remix-run/server-runtime';
-import { seoPayload } from '~/lib/seo.server';
-export async function loader({request,context}){
+import {seoPayload} from '~/lib/seo.server';
+import CanvasOne from '../../assets/Video/canvas-first.gif';
+import CanvasTow from '../../assets/Video/canvas-sec.gif';
+
+export async function loader({request, context}) {
   const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
     variants: {},
   });
@@ -28,9 +31,7 @@ export default function Salesforce() {
     <section>
       <div className={`w-full ${animate ? 'fade-in' : ''}`}>
         <div className="flex px-[16px] md:px-[40px]  items-center">
-          <div
-            className="lg:flex-row flex-col flex  sm:mt-10 mt-5"
-          >
+          <div className="lg:flex-row flex-col flex  sm:mt-10 mt-5">
             {/* first div left side */}
             <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
               <div>
@@ -50,7 +51,8 @@ export default function Salesforce() {
                       }}
                     >
                       Deep
-                    </span><br/>
+                    </span>
+                    <br />
                     Integration
                   </div>
                 </div>
@@ -212,7 +214,11 @@ export default function Salesforce() {
           />
         </div>
         {/* second */}
-        <div className="flex flex-wrap justify-center ml-auto pr-[40px] pl-[40px] lg:mr-0 mr-auto  ">
+        <div className="flex flex-wrap justify-center ml-auto pr-[40px] relative pl-[40px] lg:mr-0 mr-auto">
+          <div className="absolute hidden xl:block top-[362px] right-[316px] z-[-12]">
+            <img className="w-[1084px]" src={CanvasOne} alt="Computer man" />
+          </div>
+
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[32px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
@@ -228,22 +234,22 @@ export default function Salesforce() {
               erat, sed diam voluptua.
             </p>
             <div className="lg:flex-row flex-col flex lg:items-left items-center gap-[12px] mt-5">
-            <DynamicButton
-              text="INTEGRATE NOW"
-              className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
-              onClickFunction={() =>
-                (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')
-              }
-            />
-            <DynamicButton
-              text="TUTORIALS"
-              className="btn2 lg:!text-[17px] w-[247px] md:text-[14px] h-[67px] items-center text-center"
-              onClickFunction={() =>
-                (window.location.href = 'https://simplynoted.com/blogs/news')
-              }
-            />
-          </div>
+              <DynamicButton
+                text="INTEGRATE NOW"
+                className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
+              />
+              <DynamicButton
+                text="TUTORIALS"
+                className="btn2 lg:!text-[17px] w-[247px] md:text-[14px] h-[67px] items-center text-center"
+                onClickFunction={() =>
+                  (window.location.href = 'https://simplynoted.com/blogs/news')
+                }
+              />
+            </div>
           </div>
           <div className="lg:hidden block sm:mb-10 mb-7">
             <div className="xl:text-[36px] text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">
@@ -273,7 +279,10 @@ export default function Salesforce() {
 
         {/* third */}
 
-        <div className="flex flex-wrap flex-row-reverse justify-center mr-auto  ml-auto  w-[90%] mt-8">
+        <div className="flex flex-wrap flex-row-reverse justify-center relative  mr-auto  ml-auto  w-[90%] mt-8">
+        <div className="absolute top-[331px] hidden xl:block z-[-12] right-[134px]">
+          <img className="w-[1135px]" src={CanvasTow} alt="Computer man" />
+        </div>
           <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[36px] md:text-left text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">
@@ -323,7 +332,7 @@ export default function Salesforce() {
             src="	https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
           />
           <img
-            className="w-[50%] mt-[-8rem] mr-[-421px]"
+            className="w-[36%]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
           />
         </div>
@@ -406,4 +415,4 @@ const Shopify_GRAPH_QL = `#graphql
       description
     }
   }
-}`
+}`;

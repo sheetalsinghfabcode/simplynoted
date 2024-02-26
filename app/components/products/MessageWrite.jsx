@@ -942,7 +942,7 @@ export function MessageWriting({
               text="Save template"
             />
             <DynamicButton
-              className="bg-gray-400 w-full h-[40px]"
+              className="bg-[#ef6e6e] w-full h-[40px]"
               text="Cancel"
               onClickFunction={() => setAddNewTem(false) && setErrorTemplate(false)}
             />
