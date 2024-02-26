@@ -12,7 +12,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
   const [loader, setLoader] = useState(false);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -23,17 +23,48 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '', // Set default state
       }));
+    } else if (name === 'birthday' || name === 'anniversary') {
+      const currentDate = new Date();
+      const selectedDate = new Date(value); // Convert value to Date object
+      if (selectedDate > currentDate) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} cannot be in the future`,
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: null, // Set error to null for the current field
+        }));
+      }
+      setFormData({
+        ...formData,
+        [name]: selectedDate, // Store as Date object
+      });
+    } else if (name === 'postalCode') {
+      if (!/^\d+$/.test(value)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: 'Invalid postal code format',
+        }));
+      } else {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: null, // Set error to null for the current field
+        }));
+      }
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
     } else {
       setSelectedAddress({
         ...selectedAddress,
         [name]: value,
       });
     }
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: '',
-    }));
   };
+  
 
   const selectedCountry = location.countries.find(
     (country) => country.country === selectedAddress.country,
@@ -105,6 +136,12 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       newErrors.zip = 'Postal Code is required';
     }
 
+    if(errors.birthday){
+      newErrors.birthday = "Birthday cannot be in the future"
+    }
+    if(errors.anniversary){
+      newErrors.anniversary = "Anniversary cannot be in the future"
+    }
     setErrors(newErrors);
 
     // Return true if the form is valid, i.e., no errors
@@ -408,10 +445,17 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               fieldType="birthday"
               label="Birthday"
               value={selectedAddress.birthday}
-              onChange={(value) =>
+              onChange={(value) =>{
                 handleChange({target: {name: 'birthday', value}})
+                
+              }
               }
             />
+            {errors.birthday && (
+                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                  {errors.birthday}
+                </p>
+              )}
           </div>
           <div className="w-full px-3 mb-6">
             <DateInput
@@ -422,6 +466,11 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
                 handleChange({target: {name: 'anniversary', value}})
               }
             />
+             {errors.anniversary && (
+                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                  {errors.anniversary}
+                </p>
+              )}
           </div>
         </div>
         <div className="text-center">

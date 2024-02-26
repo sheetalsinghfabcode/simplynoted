@@ -5,6 +5,7 @@ import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
 import {  useLocation } from '@remix-run/react';
+import { formatText } from '~/lib/utils';
 
 const AddressForm = ({customerID, defaultOption}) => {
   const {setAddressForm, setEditAddress} = useStateContext();
@@ -24,14 +25,13 @@ const AddressForm = ({customerID, defaultOption}) => {
     anniversary: '',
   });
 
+
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
 
   const pathname = useLocation()
 
 
-  console.log("birthday",formData.birthday)
-  console.log("anniversary",formData.anniversary)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +45,8 @@ const AddressForm = ({customerID, defaultOption}) => {
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '',
       }));
-    } else if (name === 'birthday' || name === 'anniversary') {
+    }
+     else if (name === 'birthday' || name === 'anniversary') {
       const currentDate = new Date();
       const selectedDate = new Date(value); // Convert value to Date object
       if (selectedDate > currentDate) {
@@ -94,7 +95,6 @@ const AddressForm = ({customerID, defaultOption}) => {
       }));
     }
   };
-  
   
 
   const selectedCountry = location.countries.find(
@@ -171,6 +171,12 @@ const AddressForm = ({customerID, defaultOption}) => {
     if (!formData.postalCode) {
       newErrors.postalCode = 'Postal Code is required';
     }
+    if(errors.birthday){
+      newErrors.birthday = "Birthday cannot be in the future"
+    }
+    if(errors.anniversary){
+      newErrors.anniversary = "Anniversary cannot be in the future"
+    }
   
     // Validate postal code format
     if (formData.postalCode && !/^\d+$/.test(formData.postalCode)) {
@@ -178,14 +184,7 @@ const AddressForm = ({customerID, defaultOption}) => {
     }
   
     // Validate date format
-    const currentDate = new Date();
-    if (formData.birthday && new Date(formData.birthday) > currentDate) {
-      newErrors.birthday = 'Birthday cannot be in the future';
-    }
-    if (formData.anniversary && new Date(formData.anniversary) > currentDate) {
-      newErrors.anniversary = 'Anniversary cannot be in the future';
-    }
-  
+   
     setErrors(newErrors);
   
     return Object.keys(newErrors).length === 0;
@@ -501,6 +500,11 @@ const AddressForm = ({customerID, defaultOption}) => {
                   handleChange({target: {name: 'birthday', value}})
                 }
               />
+              {errors.birthday && (
+                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                  {errors.birthday}
+                </p>
+              )}
             </div>
             <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <DateInput
@@ -512,6 +516,11 @@ const AddressForm = ({customerID, defaultOption}) => {
                   handleChange({target: {name: 'anniversary', value}})
                 }
               />
+              {errors.anniversary && (
+                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                  {errors.anniversary}
+                </p>
+              )}
             </div>
           </div>
           <div className="lg:flex  flex justify-center text-center">

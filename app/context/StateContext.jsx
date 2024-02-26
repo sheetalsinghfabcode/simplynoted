@@ -23,6 +23,7 @@ export function StateContextProvider({children}) {
   const [isCardTypeSelectionPage, setIsCardTypeSelectionPage] = useState(true);
   const [walletPurcase, setWalletPurchase] = useState(false);
   const [walletPayment, setWalletPayment] = useState(false);
+  const [updateModal, setUpdateModal] = useState(false);
 
 
 
@@ -162,7 +163,9 @@ export function StateContextProvider({children}) {
         walletPurcase,
         setWalletPurchase,
         walletPayment,
-        setWalletPayment
+        setWalletPayment,
+        updateModal,
+        setUpdateModal
       }}
     >
       {children}

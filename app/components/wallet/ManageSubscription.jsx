@@ -14,6 +14,7 @@ import PurchaseModal from '~/components/wallet/PurchaseModal';
 import Accordion from '~/components/wallet/Accordian';
 import PaymentModal from '~/components/wallet/PaymentModal';
 import {fetchWalletData} from '~/utils/graphqlUtils';
+import { useStateContext } from '~/context/StateContext';
 
 export async function loader({context}) {
   const StripeKey =
@@ -34,7 +35,6 @@ const ManageSubscription = () => {
   const [restartAutoRenew, setRestartAutoNew] = useState(false);
   const [paymentId, setPaymentId] = useState('');
   const [deleteModal, setDeleteModal] = useState(false);
-  const [updateModal, setUpdateModal] = useState(false);
   const [addCreditModal, setAddCreditModal] = useState(false);
   const [forUpdateData, setForUpdateData] = useState(false);
   const [defaultCard, setDefaultCard] = useState(false);
@@ -43,8 +43,7 @@ const ManageSubscription = () => {
   const [purchaseModal, setPurchaseModal] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
   const [loader, setLoader] = useState(false);
-
-  console.log('paymentHistory', paymentHistory);
+  const {updateModal, setUpdateModal} = useStateContext()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -79,7 +78,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -409,6 +408,8 @@ const ManageSubscription = () => {
     }
   }
 
+  console.log("stripeCollection",stripeCollection);
+
   const filteredWalletData = WalletData.collection.products.edges.filter(
     (product) => {
       return (
@@ -456,7 +457,6 @@ let currentDate = new Date();
 let formattedDate = formatDate(currentDate);
 
 // Display the formatted date
-console.log("Formatted date based on user's location:", formattedDate);
 
 
   return (

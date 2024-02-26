@@ -9,7 +9,7 @@ import {useNavigate} from '@remix-run/react';
 import CircularLoader from '../CircularLoder';
 import {useStateContext} from '~/context/StateContext';
 import {FaAngleDown} from 'react-icons/fa6';
-import {FaAngleRight} from 'react-icons/fa6';
+import { FaAngleUp } from 'react-icons/fa';
 
 const PaymentModal = ({
   show,
@@ -392,7 +392,7 @@ const PaymentModal = ({
                   Billing Address
                 </span>
                 <span className="mr-2">
-                  {isBillingOpen ? <FaAngleDown /> : <FaAngleRight />}
+                  {isBillingOpen ? <FaAngleDown /> : <FaAngleUp />}
                 </span>
               </div>
               <div
@@ -553,7 +553,7 @@ const PaymentModal = ({
                     Credit Card Information
                   </span>
                   <span className="mr-2">
-                    {isCardInfoOpen ? <FaAngleDown /> : <FaAngleRight />}
+                    {isCardInfoOpen ? <FaAngleDown /> : <FaAngleUp />}
                   </span>
                 </div>
 

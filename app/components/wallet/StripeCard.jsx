@@ -68,10 +68,11 @@ const StripeCard = ({
     className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
   >
    {
-  ((pathname.pathname === '/simply-noted-plans' || pathname.pathname === '/account') && !addCreditModal && !showStripeCard) ? 'Complete Purchase' :
-  ( !addCreditModal && !showStripeCard ) ? 'Update Card' :
-  (showStripeCard || addCreditModal) ? 'Add Card' : 'Update Card'
+  ((pathname.pathname === '/simply-noted-plans' || pathname.pathname === '/account') && !addCreditModal && !showStripeCard && !updateCard) ? 'Complete Purchase' :
+  ( (!addCreditModal && !showStripeCard) && updateCard ) ? 'Update Card' :
+  (showStripeCard || addCreditModal) && 'Add Card' 
 }
+
 
   </button>
 </div>

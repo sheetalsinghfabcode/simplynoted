@@ -425,7 +425,7 @@ export default function Zapier() {
           <div className="mt-5 flex xl:justify-normal hidden xl:block justify-center xl:order-first">
             <div className="INTEGRATE flex justify-center">
               <button
-                onclick="window.location.href = 'https://zapier.com/apps/simply-noted/integrations'"
+                onClick="window.location.href = 'https://zapier.com/apps/simply-noted/integrations'"
                 className="mt-1 order-first text-lg font-bold text-white py-2 px-4 order-1	rounded"
               >
                 INTEGRATE NOW
@@ -448,7 +448,7 @@ export default function Zapier() {
           <div className="mt-5 flex xl:justify-normal justify-center block xl:hidden xl:order-first">
             <div className="INTEGRATE flex justify-center">
               <button
-                onclick="window.location.href = 'https://zapier.com/apps/simply-noted/integrations'"
+                onClick="window.location.href = 'https://zapier.com/apps/simply-noted/integrations'"
                 className="mt-1 order-first text-lg font-bold text-white py-2 px-4 order-1	rounded"
               >
                 INTEGRATE NOW

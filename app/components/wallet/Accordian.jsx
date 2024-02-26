@@ -10,6 +10,7 @@ import {useStateContext} from '~/context/StateContext';
 import arrow_ups from '../../../assets/Image/arrow-up.png';
 import arrow_down from '../../../assets/Image/arrow-down.png';
 import SuccessfullLoader from '../SucessfullLoader';
+import {FaAngleDown, FaAngleUp} from 'react-icons/fa';
 
 const Accordion = ({
   StripeKey,
@@ -228,22 +229,21 @@ const Accordion = ({
 
       if (data.redirectUrl) {
         setloader(false);
-        setPaymentLoader(false)
+        setPaymentLoader(false);
 
         const result = await stripe.confirmCardPayment(data.client_secret);
         if (result?.error) {
-          setPaymentLoader(false)
+          setPaymentLoader(false);
         }
       } else {
         paymentSave(data, json);
       }
       // Handle the response data here
     } catch (error) {
-      setPaymentLoader(false)
+      setPaymentLoader(false);
       // Handle errors here
       console.error('Error:', error);
     } finally {
-      
     }
   };
 
@@ -369,12 +369,8 @@ const Accordion = ({
           <span className="font-bold  md:text-[20px] text-[17px] text-[#001a5f]">
             Billing Address
           </span>
-          <span className="mr-2">
-            {!isBillingOpen ? (
-              <img className="h-[12px]" src={arrow_down} alt="" />
-            ) : (
-              <img className="h-[21px]" src={arrow_ups} alt="" />
-            )}
+          <span className="">
+            {isBillingOpen ? <FaAngleDown /> : <FaAngleUp />}
           </span>
         </div>
         <div
@@ -526,12 +522,8 @@ const Accordion = ({
             <span className="font-bold md:text-[20px] text-[17px] text-[#001a5f]">
               Credit Card Information
             </span>
-            <span className="mr-2">
-              {!isCardInfoOpen ? (
-                <img className="h-[12px]" src={arrow_down} alt="" />
-              ) : (
-                <img className="h-[21px]" src={arrow_ups} alt="" />
-              )}
+            <span className="">
+              {!isCardInfoOpen ? <FaAngleDown /> : <FaAngleUp />}
             </span>
           </div>
           <div
