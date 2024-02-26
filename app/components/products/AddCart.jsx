@@ -157,7 +157,6 @@ export function AddCart({
         matchedVariant = variant.id;
         if(discount>0){
           setFinalPrice((variant.price.amount-(variant.price.amount * discount)/100).toFixed(2))
-          debugger
         } else {
           setFinalPrice(variant.price.amount);
         }
