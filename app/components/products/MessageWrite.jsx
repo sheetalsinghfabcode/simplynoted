@@ -122,7 +122,7 @@ export function MessageWriting({
     editShippingDate ? editShippingDate : '',
   );
   const [disableSelectAddressBtn, setDisableSelectAddressBtn] = useState(false);
-  const [confirmModal,setConfirmModal] = useState(true)
+  const [confirmModal, setConfirmModal] = useState(true);
 
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
@@ -538,8 +538,8 @@ export function MessageWriting({
     let lineHeightDecrement = 1;
 
     if (heightDifference > 1000) {
-      fontSizeDecrement = 7;
-      lineHeightDecrement = 7;
+      fontSizeDecrement = 8;
+      lineHeightDecrement = 8;
     } else if (heightDifference > 500) {
       fontSizeDecrement = 5;
       lineHeightDecrement = 5;
@@ -1148,14 +1148,14 @@ export function MessageWriting({
     setStandardFontVal('Select Standard Font');
     setCustomFontName(val);
   }
-  function onConfirmClick(){
-      const anchor = document.createElement('a');
-      anchor.href = 'https://api.simplynoted.com/docs/new-birthday-template';
-      anchor.download = 'new-birthday-template';
-      document.body.appendChild(anchor);
-      anchor.click();
-      document.body.removeChild(anchor);
-      setConfirmModal(false)
+  function onConfirmClick() {
+    const anchor = document.createElement('a');
+    anchor.href = 'https://api.simplynoted.com/docs/new-birthday-template';
+    anchor.download = 'new-birthday-template';
+    document.body.appendChild(anchor);
+    anchor.click();
+    document.body.removeChild(anchor);
+    setConfirmModal(false);
   }
   return (
     <>
@@ -1208,6 +1208,9 @@ export function MessageWriting({
                   <option value="Roo" className={`font-roo`}>
                     Roo
                   </option>
+                  <option value="pinocchio" className={`font-pinocchio`}>
+                    Pinocchio
+                  </option>
                   <option value="Nimo" className={`font-nimo`}>
                     Nimo
                   </option>
@@ -1231,6 +1234,9 @@ export function MessageWriting({
                   </option>
                   <option value="Cinderella" className={`font-cinderella`}>
                     Cinderella
+                  </option>
+                  <option value="kaa" className={`font-kaa`}>
+                    Kaa
                   </option>
                   <option value="Copper" className={`font-copper`}>
                     Copper
@@ -1505,7 +1511,7 @@ export function MessageWriting({
                     metafields.footer.data &&
                     metafields.header.data &&
                     name2.length > 0
-                      ? '131px'
+                      ? '121px'
                       : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data &&
@@ -1520,7 +1526,7 @@ export function MessageWriting({
                           metafields.header &&
                           metafields.header.data &&
                           name2.length > 0)
-                      ? '179px'
+                      ? '169px'
                       : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data) ||
@@ -1528,8 +1534,8 @@ export function MessageWriting({
                           metafields.header &&
                           metafields.header.data) ||
                         name2.length > 0
-                      ? '231px'
-                      : '291px',
+                      ? '221px'
+                      : '280px',
                 }}
               >
                 <div

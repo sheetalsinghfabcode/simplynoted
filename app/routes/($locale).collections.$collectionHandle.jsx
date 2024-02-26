@@ -167,9 +167,16 @@ export default function Collection() {
     collectionHandle,
   } = useLoaderData();
   let myColletionData = myCollection.collection.products;
+  
+  console.log(myColletionData,"myColletionData");
   myColletionData = myColletionData.nodes.filter(
     (item) => item.productType != 'customisable card',
   );
+  let titleToExclude = "US Postage";
+let index = myColletionData.findIndex(item => item.title === titleToExclude);
+if (index !== -1) {
+    myColletionData.splice(index, 1);
+}
   let mainTags = [
     'best-sellers',
     'thank-you',
@@ -327,7 +334,8 @@ export default function Collection() {
             />
 
             <DynamicButton
-              className="btnShadow bg-[#EF6E6E] px-[20px] py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]"
+            disabled={locationRef.pathname == '/collections/customisable-cards'}
+              className={`btnShadow bg-[#EF6E6E] px-[20px] py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]`}
               text="View My Custom Card"
               onClickFunction={() => customisedCard()}
             />
