@@ -521,7 +521,6 @@ export function CheckoutData({
           : '',
       };
       console.log(payload);
-debugger
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,
