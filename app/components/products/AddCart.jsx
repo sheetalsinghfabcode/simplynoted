@@ -105,9 +105,11 @@ export function AddCart({
   const [finalPrice, setFinalPrice] = useState('');
   const [selectedBoxCheck,setSelectedBoxCheck] = useState(false)
   const [selectedBoxCheck2,setSelectedBoxCheck2] = useState(false)
+  const [purchaseType,setPurchaseType] = useState('')
   useEffect(() => {
     setIsInitialRender(false);
     let selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
+    setPurchaseType(selectedOrder)
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
     // if (discountedCount > 0) {
@@ -121,12 +123,15 @@ export function AddCart({
     // }
     // Replace with your desired value
     if (selectedOrder == 'Single Card') {
-      setVariantID(productData.id.match(/\d+/g).join(''));
+      console.log(productData,"----productData");
+      setVariantID(productData?.id?.match(/\d+/g).join(''));
       setFinalPrice((productData?.price?.amount -(productData?.price?.amount * discountedCount)/100).toFixed(2))
     } else {
-      const variants = variantsVal.variants.nodes;
+      // const variants = variantsVal?.variants?.nodes;
+      // console.log(variants,"variants logs---");
       const targetValue = cartDataReq?.csvFileLen;
-      const matchedVariant = findMatchingVariant(variants, targetValue,discountedCount);
+      if(variantsVal?.variants?.nodes.length){
+      const matchedVariant = findMatchingVariant(variantsVal?.variants?.nodes, targetValue,discountedCount);
       if (matchedVariant) {
         setVariantID(matchedVariant);
         setUpdatedPrice(finalPrice)
@@ -135,10 +140,12 @@ export function AddCart({
         //     (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
         //   );
         // }
-      }
+    }
+  }
     }
   }, []);
   const findMatchingVariant = (variants, targetValue,discount) => {
+    console.log(variants,"variants from edit");
     let matchedVariant = null;
     for (let i = 0; i < variants.length; i++) {
       const variant = variants[i];
@@ -837,7 +844,7 @@ export function AddCart({
               </div>
             </div>
 
-            {((onSaveShip && selectShipMode &&  selectShipMode.node.price.amount !== '0.0') || (editOrderValue?.data?.isShippidata && editOrderValue?.data?.locationForShipMethod && editOrderValue?.node?.price?.amount !== '0.0' )) && (
+            {((onSaveShip && selectShipMode &&  selectShipMode.node.price.amount !== '0.0') || ( purchaseType == "Bulk Purchase"  && editOrderValue?.data?.isShippidata && editOrderValue?.data?.locationForShipMethod && editOrderValue?.node?.price?.amount !== '0.0' )) && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
                 {formData?.firstName}, {formData?.lastName},{formData?.address1}
                 , {formData?.city}, {formData?.state},{formData?.country}
