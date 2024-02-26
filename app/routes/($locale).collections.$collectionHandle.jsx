@@ -32,6 +32,7 @@ import DynamicTitle from '~/components/Title';
 import CircularLoader from '~/components/CircularLoder';
 import {getApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
+import ConfirmationModal from '~/components/modal/ConfirmationModal';
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -151,6 +152,8 @@ export default function Collection() {
   const [loadMore, setLoadMore] = useState(false);
   const [newOffset, setNewOffset] = useState('');
   const [offPrice, setOffPrice] = useState('');
+  const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
+  const [confirmModal,setConfirmModal] = useState(false)
   const locationRef = useLocation();
   const {
     collection,
@@ -175,14 +178,18 @@ export default function Collection() {
     'just-because',
     'customisable-cards',
   ];
-  console.log(addingProductsData.length,"------length of custom card array");
+  console.log(addingProductsData.length, '------length of custom card array');
   let filterTag = handleLinkData.collections.edges;
   const data = filterTag.filter((item) => mainTags.includes(item.node.handle));
 
   useEffect(() => {
+    setISBirthdayAutomated(false)
     if (locationRef.pathname !== '/collections/customisable-cards') {
       setCheckState(false);
       setAddingProd([]);
+    }
+    if(collectionHandle == 'birthday'){
+      setConfirmModal(true)
     }
   }, [locationRef.pathname]);
   async function changeHandle(e) {
@@ -255,6 +262,7 @@ export default function Collection() {
   function continueShopping() {
     navigate('/customise-your-card');
   }
+  
 
   function CustomeCard() {
     return (
@@ -277,11 +285,15 @@ export default function Collection() {
     );
   }
   useEffect(() => {
+    console.log(collectionHandle,"iiiiiiii");
     customerid = localStorage.getItem('customerId');
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
     if (collectionHandle == 'customisable-cards') {
       customisedCard();
+    }
+    if(collectionHandle == 'birthday'){
+      setConfirmModal(true)
     }
   }, []);
   function loadMoreCustomData() {
@@ -292,15 +304,15 @@ export default function Collection() {
       customisedCard();
     }
   }, [offSetVal]);
+  function onConfirmClick(){
+    setISBirthdayAutomated(true)
+    setConfirmModal(false)
+  }
 
   return (
     <>
       <div className="global-max-width-handler">
-        <DynamicTitle
-          title={'Simply Noted'}
-          title2={'cards'}
-          className=""
-        />
+        <DynamicTitle title={'Simply Noted'} title2={'cards'} className="" />
 
         <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid xl:mt-8 ">
           <div className="gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
@@ -326,13 +338,17 @@ export default function Collection() {
               className="!border-none md:w-[244px] w-[270px] capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
-              <option className="w-full "selected disabled>
+              <option className="w-full " selected disabled>
                 {collectionHandle}
               </option>
 
               {data &&
-                data.map((item,index) => (
-                  <option className="capitalize" value={item.node.handle} key={index} >
+                data.map((item, index) => (
+                  <option
+                    className="capitalize"
+                    value={item.node.handle}
+                    key={index}
+                  >
                     {item.node.handle}
                   </option>
                 ))}
@@ -354,6 +370,7 @@ export default function Collection() {
                       product={product}
                       loading={getImageLoadingPriority(i)}
                       offPrice={offPrice}
+                      isbirthdayAutomated={isbirthdayAutomated}
                     />
                   ))}
               </>
@@ -363,24 +380,29 @@ export default function Collection() {
               </>
             )}
           </Grid>
-          {collectionHandle == 'customisable-cards' && addingProductsData && addingProductsData.length == 0 && checkState &&
-          <>
-          <div className="w-full h-full gap-2 mt-8 mb-8">
-                <div className="w-[90%]  m-auto mt-[6rem] mb-10 flex justify-center">
-                  <div>
-                    <h3 className="text-[black] font-karla sm:text-[40px] text-[24px] mb-4">
-                      You don't have any custom card!
-                    </h3>
-                    <div className="flex justify-center">
-                      <DynamicButton
-                        className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
-                        text="CREATE ONE"
-                        onClickFunction={() => continueShopping()}
-                      />
+          {collectionHandle == 'customisable-cards' &&
+            addingProductsData &&
+            addingProductsData.length == 0 &&
+            checkState && (
+              <>
+                <div className="w-full h-full gap-2 mt-8 mb-8">
+                  <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
+                    <div>
+                      <h3 className="text-[black] font-karla sm:text-[40px] text-[24px] mb-4">
+                        You don't have any custom card!
+                      </h3>
+                      <div className="flex justify-center">
+                        <DynamicButton
+                          className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
+                          text="CREATE ONE"
+                          onClickFunction={() => continueShopping()}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div></>}
+              </>
+            )}
           {loadMore && collectionHandle == 'customisable-cards' && (
             <div className="flex justify-center mt-[2rem]">
               <DynamicButton
@@ -391,56 +413,6 @@ export default function Collection() {
             </div>
           )}
         </div>
-        {/* <Pagination connection={collection.products}>
-          {({ nodes, isLoading, PreviousLink, NextLink }) => (
-            <>
-              <div className='gap-4'>
-                <DynamicButton
-                  className="bg-[#1b5299] w-[200px] text-[#fff] p-2 mb-6"
-                  text="Create A Custom Card"
-                  onClickFunction={() => ''}
-                />
-                <br />
-                <DynamicButton
-                  className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2"
-                  text="View My Custom Card"
-                  onClickFunction={() => ''}
-                />
-              </div>
-              <div className='flex gap-5 justify-center'>
-                <h2 className='text-2xl'>Choose a card from our collection: </h2>
-                <select name="" id="" onChange={(e) => changeHandle(e.target.value)}>
-                  <option value="best-sellers">{'best-sellers'}</option>
-                  {handleLinkData.collections.edges.map((item) =>
-                    <option value={item.node.handle}>{item.node.handle}</option>
-                  )}
-                </select>
-              </div>
-              <div className="flex items-center justify-center mb-6">
-                <Button as={PreviousLink} variant="secondary" width="full">
-                  {isLoading ? 'Loading...' : 'Load previous'}
-                </Button>
-              </div>
-              <Grid layout="products">
-                {collection.products.nodes.map((product, i) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    loading={getImageLoadingPriority(i)}
-                  />
-                ))}
-              </Grid>
- 
-              <div className="flex items-center justify-center mt-6">
-                <Button as={NextLink} variant="secondary" width="full">
-                  {isLoading ? 'Loading...' : 'Load more products'}
-                </Button>
-              </div>
-            </>
-          )}
-        </Pagination> */}
-        {/* </SortFilter> */}
-
         <LoginModal
           title={' Check your Custom Card'}
           show={loginModal}
@@ -456,6 +428,15 @@ export default function Collection() {
           onCancel={() => setLoginModal2(false)}
           confirmText="Login"
           cancelText="Register"
+        />
+        <ConfirmationModal
+          show={confirmModal}
+          title={'AUTOMATED BIRTHDAY CARDS'}
+          onCancel={() => setConfirmModal(false) && setISBirthdayAutomated(!isbirthdayAutomated)}
+          onConfirm={() => onConfirmClick()}
+          message="Select a card and we’ll automatically send them to your recipients on their birthdays"
+          confirmText="Gey Started"
+          cancelText="Cancel"
         />
       </div>
     </>

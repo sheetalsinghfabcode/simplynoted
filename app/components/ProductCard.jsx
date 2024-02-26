@@ -14,6 +14,7 @@ export function ProductCard({
   onClick,
   quickAdd,
   offPrice,
+  isbirthdayAutomated
 }) {
   let cardLabel;
   const [productPrice, setproductPrice] = useState('');
@@ -96,6 +97,14 @@ export function ProductCard({
           </div>
         </div>
       </Link>
+      {isbirthdayAutomated ? 
+      <Link to={`/products/${product.handle}`}>
+      <DynamicButton
+        className="bg-[#001a5f] w-[100%] font-normal  text-[#fff] py-[14px] px-[8px] mb-[10px]"
+        text="SELECT FOR BIRTHDAY AUTOMATION!"
+        onClickFunction={() => ''}
+      />
+    </Link>:
       <div>
         <Link to={`/products/${product.handle}`}>
           <DynamicButton
@@ -112,6 +121,7 @@ export function ProductCard({
           />
         </Link>
       </div>
+      }
   
     </div>
   );
