@@ -324,6 +324,7 @@ export default function CustomProducts() {
           fontFamilyName={fontFamilyName}
           customFontName={customFontName}
           variantsVal={customProductData}
+          metafields={metafields?metafields:null}
         />
       )}
     </div>

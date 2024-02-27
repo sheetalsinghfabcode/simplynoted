@@ -133,14 +133,14 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     />
                   </svg>
                   {((isLast && additionalBreadcrumbs) || location.pathname.includes("orders")) ? (
-                    <Link
-                      to={breadcrumbPath}
-                      className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 "
+                    <span
+                      // to={breadcrumbPath}
+                      className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 cursor-pointer"
                     >
                       {name}
-                    </Link>
+                    </span>
                   ) : (
-                    <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 ">
+                    <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 cursor-pointer">
                       {name}
                     </span>
                   )}

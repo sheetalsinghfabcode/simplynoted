@@ -11,7 +11,7 @@ import CircularLoader from '../CircularLoder';
 import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 
-let customerid, cartDataReq;
+let customerid, cartDataReq, selectedOrder;
 export function AddCart({
   show,
   data,
@@ -21,6 +21,7 @@ export function AddCart({
   fontFamilyName,
   customFontName,
   variantsVal,
+  metafields
 }) {
   console.log(data,"gift card data");
   const {addressForm, setAddressForm, setEditAddress,setProductShow} =
@@ -110,7 +111,7 @@ export function AddCart({
   const [giftPriceVariantId,setGiftPriceVariantID] = useState('')
   useEffect(() => {
     setIsInitialRender(false);
-    let selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
+     selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
     setPurchaseType(selectedOrder)
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
@@ -250,12 +251,14 @@ export function AddCart({
     setSelectedItem(item);
     if(selectedItem == item){
       setSelectedBoxCheck(!selectedBoxCheck)
+    setSelectedItem(null);
     }
   };
   const handleCheckboxChange2 = (item) => {
     setSelectedItem2(item);
     if(selectedItem2 == item){
     setSelectedBoxCheck2(!selectedBoxCheck2)
+    setSelectedItem2(null);
     }
   };
   
@@ -369,6 +372,7 @@ console.log(arrCardPrice,"arrr cardPrice");
     signOffFontSize: cartDataReq?.signOffFontSize,
     isShippidata: show ? show : false,
     optionalShipDate: cartDataReq?.ship_date,
+    custom_pdf:metafields?metafields.pdfURL:null
   };
 
   let keyUpdate1 = 'messageData';
@@ -404,14 +408,16 @@ console.log(arrCardPrice,"arrr cardPrice");
 
  
   function onClickAddCart() {
+    console.log(selectedItem,selectedItem2,"selected cheeck");
     setLoader(true);
-    if (editOrderValue?.index >= 0) {
+    if (editOrderValue?.index >= 0 && selectedItem2) {
       const storedData = JSON.parse(localStorage.getItem('mydata'));
 
       if (
         editOrderValue.index >= 0 &&
-        editOrderValue.index < storedData.length
+        editOrderValue.index < storedData.length 
       ) {
+        
         storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg
           ? cartDataReq?.msg
           : editOrderValue?.data.messageData;
@@ -492,7 +498,7 @@ console.log(arrCardPrice,"arrr cardPrice");
 
       setLoader(false);
     } else {
-      if (cartDataReq && cartDataReq.csvFileLen && selectedItem2) {
+      if (cartDataReq && cartDataReq.csvFileLen && selectedItem2 &&((selectedOrder === 'Single Card' && selectedItem)|| selectedOrder !== 'Single Card')) {
         const existingDataString = localStorage.getItem('mydata');
         let existingDataArray = [];
         if (existingDataString) {

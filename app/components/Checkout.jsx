@@ -488,6 +488,7 @@ export function CheckoutData({
                 recipient_state: item?.reciverAddress?.state,
                 recipient_zip: item?.reciverAddress?.zip,
                 recipient_country: item?.reciverAddress?.country,
+                custom_pdf:item?.custom_pdf
               },
               additionalProducts: {
                 ...(giftCard && {giftCard}),
