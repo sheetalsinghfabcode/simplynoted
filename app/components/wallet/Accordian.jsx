@@ -150,6 +150,8 @@ const Accordion = ({
     formData.email = userEmail;
   }, [showStripeCard]);
 
+
+
   const handleChange = (e) => {
     const {name, value} = e.target;
     if (name.startsWith('address.')) {
@@ -169,10 +171,70 @@ const Accordion = ({
         [name]: value,
       }));
     }
+
+    // Clear error for the specific field on change
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: '', // Clear error for the field on change
     }));
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {};
+
+    // Validate name
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailPattern.test(formData.email)) {
+      errors.email = 'Email is required and must be valid';
+      isValid = false;
+    }
+
+    // Validate address
+    if (!formData.address.line1.trim()) {
+      errors.addressLine1 = 'Address is required';
+      isValid = false;
+    }
+
+    // Validate city
+    if (!formData.address.city.trim()) {
+      errors.city = 'City is required';
+      isValid = false;
+    }
+
+    // Validate country
+    if (!formData.address.country.trim()) {
+      errors.country = 'Country is required';
+      isValid = false;
+    }
+
+    // Validate state
+    if (!formData.address.state.trim()) {
+      errors.state = 'State is required';
+      isValid = false;
+    }
+
+    setErrors(errors); // Set errors state to display validation messages
+    if (!isValid) {
+      const firstErrorField = Object.keys(errors)[0];
+      const firstErrorElement = document.getElementById(firstErrorField);
+      if (firstErrorElement) {
+        firstErrorElement.focus();
+      }
+    }
+
+    // Open billing address section if there are any errors
+    if (!isValid) {
+      setIsBillingOpen(true);
+      setIsCardInfoOpen(false);
+    }
+    return isValid;
   };
 
   const selectedCountry = location.countries.find(
@@ -213,9 +275,9 @@ const Accordion = ({
         subscriptionPriceId: subscriptionPriceId,
         subscriptionName: subscriptionTitle,
       };
-  
+
       const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
-  
+
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -223,19 +285,21 @@ const Accordion = ({
         },
         body: JSON.stringify(payLoad),
       });
-  
+
       const data = await response.json();
-  
+      debugger;
+
       if (data.redirectUrl) {
         const result = await stripe.confirmCardPayment(data.client_secret);
-        if (result && result.error) {
+        debugger;
+        if (result?.error) {
           setPaymentLoader(false);
         } else {
-          if (result?.error) {
-            setPaymentLoader(false);
-          } else {
-            paymentSave(data, json);
-          }
+          data.subscriptionId = result.paymentIntent.id;
+          data.status = result.paymentIntent.status;
+          debugger;
+          paymentSave(data, json);
+          debugger;
         }
       } else {
         paymentSave(data, json);
@@ -246,10 +310,8 @@ const Accordion = ({
       console.error('Error:', error);
     }
   };
-  
-  
 
-  const paymentPurchase = (data, json) => {
+  const  paymentPurchase = async (data, json) => {
     const payLoad = {
       paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
       packageDiscount: Number(discount),
@@ -262,7 +324,7 @@ const Accordion = ({
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
-    fetch(apiUrl, {
+   await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -310,8 +372,11 @@ const Accordion = ({
       isAutorenew: true,
       subscriptionStartDate: data.subscriptionStartDate,
       subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status,
+      subscriptionStatus: data.status ==="successed" ? "active" : data.status,
     };
+    debugger
+
+    console.log("payLoad",payLoad);
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
@@ -330,6 +395,7 @@ const Accordion = ({
       })
       .then((data) => {
         paymentPurchase(data, json);
+        debugger
         // Handle the response data here
       })
       .catch((error) => {
@@ -372,12 +438,20 @@ const Accordion = ({
             Billing Address
           </span>
           <span className="">
-            {isBillingOpen ? <FaAngleDown /> : <FaAngleUp />}
+            {isBillingOpen || errors.length > 0 ? (
+              <FaAngleDown />
+            ) : (
+              <FaAngleUp />
+            )}
           </span>
         </div>
         <div
           className={`overflow-hidden
-         ${isBillingOpen ? 'max-h-[800px] transition-max-height ' : 'max-h-0'}
+         ${
+           isBillingOpen || errors.length > 0
+             ? 'max-h-[800px] transition-max-height '
+             : 'max-h-0'
+         }
         `}
         >
           <div className="rounded">
@@ -397,6 +471,11 @@ const Accordion = ({
                     onChange={(e) => handleChange(e)}
                     className="mt-2 border border-solid border-black p-3 w-[100%]"
                   />
+                  {errors.name && (
+                    <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div className="w-full">
                   <label className="font-bold" htmlFor="">
@@ -412,6 +491,11 @@ const Accordion = ({
                     onChange={(e) => handleChange(e)}
                     className="mt-2 border border-solid border-black p-3 w-[100%]"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="mt-2">
@@ -425,9 +509,17 @@ const Accordion = ({
                   placeholder="Address"
                   required
                   value={formData.address.line1}
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => {
+                    errors.addressLine1 = '';
+                    handleChange(e);
+                  }}
                   className="mt-2 border border-solid border-black p-3 w-[100%]"
                 />
+                {errors.addressLine1 && (
+                  <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                    {errors.addressLine1}
+                  </p>
+                )}
               </div>
               <div className="mt-2">
                 <label htmlFor="" className="font-bold">
@@ -454,9 +546,17 @@ const Accordion = ({
                   required
                   placeholder="City"
                   value={formData.address.city}
-                  onChange={(e) => handleChange(e)}
+                  onChange={(e) => {
+                    errors.city = '';
+                    handleChange(e);
+                  }}
                   className="mt-2 border border-solid border-black p-3 w-[100%]"
                 />
+                {errors.city && (
+                  <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                    {errors.city}
+                  </p>
+                )}
               </div>
               <div className="grid-rows-2 lg:flex grid gap-3">
                 <div className="w-full">
@@ -489,7 +589,10 @@ const Accordion = ({
                     State
                   </label>
                   <select
-                    onChange={(e) => handleChange(e)}
+                    onChange={(e) => {
+                      errors.state = '';
+                      handleChange(e);
+                    }}
                     value={formData.address.state}
                     name="address.state"
                     className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
@@ -610,8 +713,10 @@ const Accordion = ({
                   <button
                     type="submit"
                     onClick={() => {
-                      setPaymentLoader(true);
-                      createSubscription(paymentMethodId);
+                      if (validateForm()) {
+                        setPaymentLoader(true);
+                        createSubscription(paymentMethodId);
+                      }
                     }}
                     className="!bg-[#1b5299] w-full !h-[45px] text-[white] font-bold !rounded-0  !px-[30px]"
                   >

@@ -2,7 +2,7 @@ const CircularLoader = ({color, title, height = '48px', width = '48px'}) => {
   return (
     <div className="flex flex-col gap-[8px] justify-center items-center ">
       {title && (
-        <h4 className="text-[16px] md:text-[24px] lg:text-[36px] text-[#001a5f]  font-bold text-center font-karla mb-6">
+        <h4 className="text-[16px] md:text-[24px] lg:text-[28px] text-[#001a5f]  font-bold text-center font-karla mb-6">
           {title}
         </h4>
       )}

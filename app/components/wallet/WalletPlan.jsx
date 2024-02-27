@@ -15,10 +15,14 @@ const WalletPlans = ({
   amount,
   setSubscriptionTitle,
   setSubscriptionPriceId,
+  subscriptionPriceId
 }) => {
   const handleRadioChange = (event) => {
     setSelectedPlan(event.target.value);
   };
+
+
+  console.log("subscriptionPriceId",subscriptionPriceId);
 
   let packageQuantity;
 
@@ -42,6 +46,8 @@ const WalletPlans = ({
   function formatNumberWithCommas(number) {
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
+
+  console.log("WalletData",WalletData);
 
 
 
