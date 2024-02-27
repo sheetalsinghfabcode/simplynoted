@@ -102,6 +102,13 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
 
+  console.log('subscriptionType', subscriptionType);
+
+  console.log('subscribeFree', subscribeFree);
+
+  console.log('subscribeTeam', subscribeTeam);
+  console.log('subscribeBusiness', subscribeBusiness);
+
   const pricingPlans = [
     {
       name: 'Free',
@@ -132,7 +139,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
     },
     {
       name: 'Business',
-      price: pricePerCard[3],
+      price: pricePerCard[2],
       tickCount: 23,
       firstTwoFeaturesText: ['60% - 70% OFF', '1000+ Cards/mo'],
       buttonText: subscribeBusiness ? 'Purchase Package' : 'Upgrade',
@@ -164,75 +171,92 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
 
   return (
     <>
-    <div className="max-w-[1640px] mx-auto lg:p-4">
-      <div className="overflow-auto">
-        <div className="hidden md:block">
-          {' '}
-          {/* Display only on desktop */}
-          <div className="grid grid-cols-1 md:grid-cols-5  border-b border-gray-200">
-            <div className="py-2 px-4  lg:max-w-none lg:min-w-[190px]"></div>
-            {pricingPlans.map((plan, index) => (
+      <div className="max-w-[1640px] mx-auto lg:p-4">
+        <div className="overflow-auto">
+          <div className="hidden md:block">
+            {' '}
+            {/* Display only on desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-5  border-b border-gray-200">
+              <div className="py-2 px-4  lg:max-w-none lg:min-w-[190px]"></div>
+              {pricingPlans.map((plan, index) => (
+                <div
+                  key={index}
+                  className="py-2 px-4 md:  lg:min-w-[190px] flex flex-col text-center"
+                >
+                  <div className="flex flex-col font-karla py-[10px] px-[20px] flex-row-reverse items-center">
+                    <span className="text-[18px] font-bold text-[#000] uppercase">
+                      {plan.name}
+                    </span>
+                    <span
+                      className={` text-[14px] lg:text-[16px] ${
+                        plan.name === 'Enterprise' && 'invisible'
+                      } text-[#000] font-bold`}
+                    >
+                      as low as
+                    </span>
+                   
+                      <div
+                        className={` text-[18px] lg:text-[24px] xl:text-[36px] whitespace-nowrap my-2 text-[#000] ${
+                          plan.buttonText === 'Contact Us'
+                            ? '!font-normal'
+                            : 'font-bold'
+                        } `}
+                      >
+                        {plan.price}
+                      </div>
+                    <span
+                      className={`text-[14px] lg:text-[16px] ${
+                        plan.name === 'Enterprise' && 'invisible'
+                      } text-[#000] font-bold`}
+                    >
+                      per card
+                    </span>
+                  </div>
+                  {(subscribeTeam && plan.name === 'Free') ||
+                    (subscribeBusiness &&
+                      (plan.name === 'Free' || plan.name === 'Team')) ? null : (
+                  <DynamicButton
+                    onClickFunction={plan.onClick}
+                    className={`bg-[${plan.buttonColor}] ${
+                      plan.buttonText === 'Contact Us' && '!font-normal'
+                    } mt-2  md:mx-auto  w-full
+               rounded-full h-[46px] lg:px-4 text-[12px] lg:text-[16px] `}
+                    text={plan.buttonText}
+                  />
+                  )}
+
+                </div>
+              ))}
+            </div>
+            {data.map((item, index) => (
               <div
                 key={index}
-                className="py-2 px-4 md:  lg:min-w-[190px] flex flex-col text-center"
+                className="grid grid-cols-5 items-center border-b border-gray-200 py-2 pl-4"
               >
-                <div className="flex flex-col font-karla py-[10px] px-[20px] flex-row-reverse items-center">
-                  <span className="text-[18px] font-bold text-[#000] uppercase">
-                    {plan.name}
-                  </span>
-                  <span
-                    className={` text-[14px] lg:text-[16px] ${
-                      plan.name === 'Enterprise' && 'invisible'
-                    } text-[#000] font-bold`}
-                  >
-                    as low as
-                  </span>
-                  <div
-                    className={` text-[18px] lg:text-[24px] xl:text-[36px] whitespace-nowrap my-2 text-[#000] ${
-                      plan.buttonText === 'Contact Us'
-                        ? '!font-normal'
-                        : 'font-bold'
-                    } `}
-                  >
-                    {plan.price}
-                  </div>
-                  <span
-                    className={`text-[14px] lg:text-[16px] ${
-                      plan.name === 'Enterprise' && 'invisible'
-                    } text-[#000] font-bold`}
-                  >
-                    per card
-                  </span>
-                </div>
-                <DynamicButton
-                  onClickFunction={plan.onClick}
-                  className={`bg-[${plan.buttonColor}] ${
-                    plan.buttonText === 'Contact Us' && '!font-normal'
-                  } mt-2  md:mx-auto  w-full
-               rounded-full h-[46px] lg:px-4 text-[12px] lg:text-[16px] `}
-                  text={plan.buttonText}
-                />
-              </div>
-            ))}
-          </div>
-          {data.map((item, index) => (
-            <div
-              key={index}
-              className="grid grid-cols-5 items-center border-b border-gray-200 py-2 pl-4"
-            >
-              <span className="font-bold col-span-1">{item.feature}</span>
-              {pricingPlans.map((plan, i) => (
-                <div key={i} className="text-center col-span-1">
-                  {index < plan.tickCount ? (
-                    // Render tick/cross icons only for the third field onwards
-                    index < 2 ? (
-                      <span className="text-[14px] text-[#000] font-bold">
-                        {plan.firstTwoFeaturesText[index]}
-                      </span>
-                    ) : index < plan.firstTwoFeaturesText.length ? (
-                      <span className="text-[14px] text-[#000] font-bold">
-                        {plan.firstTwoFeaturesText[index]}
-                      </span>
+                <span className="font-bold col-span-1">{item.feature}</span>
+                {pricingPlans.map((plan, i) => (
+                  <div key={i} className="text-center col-span-1">
+                    {index < plan.tickCount ? (
+                      // Render tick/cross icons only for the third field onwards
+                      index < 2 ? (
+                        <span className="text-[14px] text-[#000] font-bold">
+                          {plan.firstTwoFeaturesText[index]}
+                        </span>
+                      ) : index < plan.firstTwoFeaturesText.length ? (
+                        <span className="text-[14px] text-[#000] font-bold">
+                          {plan.firstTwoFeaturesText[index]}
+                        </span>
+                      ) : (
+                        <img
+                          src={
+                            index < plan.tickCount
+                              ? 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941'
+                              : 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149'
+                          }
+                          className="w-4 h-4 mx-auto"
+                          alt={index < plan.tickCount ? 'tick' : 'remove'}
+                        />
+                      )
                     ) : (
                       <img
                         src={
@@ -243,24 +267,13 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                         className="w-4 h-4 mx-auto"
                         alt={index < plan.tickCount ? 'tick' : 'remove'}
                       />
-                    )
-                  ) : (
-                    <img
-                      src={
-                        index < plan.tickCount
-                          ? 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941'
-                          : 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149'
-                      }
-                      className="w-4 h-4 mx-auto"
-                      alt={index < plan.tickCount ? 'tick' : 'remove'}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="md:hidden">
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="md:hidden">
             {/* Display only on mobile */}
             {pricingPlans.map((plan, index) => (
               <div key={index}>
@@ -281,11 +294,15 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                         per card
                       </span>
                     </div>
+                    {(subscribeTeam && plan.name === 'Free') ||
+                    (subscribeBusiness &&
+                      (plan.name === 'Free' || plan.name === 'Team')) ? null : (
                     <DynamicButton
                       onClickFunction={plan.onClick}
                       className={`bg-[${plan.buttonColor}] min-w-[164.93px] max-w-[360px] mx-auto mt-2 rounded-full h-[46px] px-4 `}
                       text={plan.buttonText}
                     />
+                      )}  
                   </div>
                 </div>
                 {data.map((item, dataIndex) => (
@@ -314,9 +331,9 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
               </div>
             ))}
           </div>
+        </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
 

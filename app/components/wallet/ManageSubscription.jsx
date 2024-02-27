@@ -102,11 +102,13 @@ const ManageSubscription = () => {
       ...prevLoader,
       stopSubscription: true,
     }));
+    debugger
     const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
+        debugger
         setLoader((prevLoader) => ({
           ...prevLoader,
           stopSubscription: false,
@@ -132,7 +134,13 @@ const ManageSubscription = () => {
           ...prevLoader,
           stopSubscription: false,
         }));
-      });
+      })
+      .finally(() => {
+        setCancelSubscription(false);
+        setLoader(false);
+
+        debugger
+      })
   };
 
   const handleAutoRewnew = () => {
@@ -352,6 +360,7 @@ const ManageSubscription = () => {
     deleteModal,
     updateModal,
     restartAutoRenew,
+    cancelSubscription,
     autoModal,
   ]);
 

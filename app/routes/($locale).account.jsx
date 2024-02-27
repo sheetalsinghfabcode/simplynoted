@@ -453,8 +453,8 @@ function Account({customer, heading, featuredData}) {
 
 function AccountOrderHistory({orders}) {
   return (
-    <div class="mt-6 overflow-auto">
-      <div class="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
+    <div className="mt-6 overflow-auto">
+      <div className="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
     </div>
