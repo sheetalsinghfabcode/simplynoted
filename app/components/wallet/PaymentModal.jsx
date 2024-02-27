@@ -215,7 +215,6 @@ const PaymentModal = ({
         subscriptionPriceId: subscriptionPriceId,
         subscriptionName: subscriptionTitle,
       };
-      debugger
 
       const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
@@ -226,7 +225,6 @@ const PaymentModal = ({
         },
         body: JSON.stringify(payLoad),
       });
-      debugger
 
       const data = await response.json();
 
@@ -251,7 +249,6 @@ const PaymentModal = ({
   };
 
   const paymentPurchase = (data, json) => {
-    debugger
     const payLoad = {
       paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
       packageDiscount: Number(discount),
@@ -261,7 +258,6 @@ const PaymentModal = ({
       packageProduct: productId,
       subscriptionProduct: variantId,
     };
-    debugger
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
@@ -305,7 +301,6 @@ const PaymentModal = ({
   };
 
   const paymentSave = (data, json) => {
-    debugger
 
     const payLoad = {
       subscriptionId: data.subscriptionId,
@@ -319,7 +314,6 @@ const PaymentModal = ({
       subscriptionEndDate: data.subscriptionEndDate,
       subscriptionStatus: data.status === "successed" ? "active" : data.status,
     };
-    debugger
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
