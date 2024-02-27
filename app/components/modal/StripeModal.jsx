@@ -24,7 +24,6 @@ const StripeModal = ({
 
   const [errors, setErrors] = useState([]);
 
-
   useEffect(() => {
     const fullName = localStorage.getItem('SNFullName');
     const userEmail = localStorage.getItem('SnEmail');
@@ -80,7 +79,6 @@ const StripeModal = ({
     (country) => country.country === formData.address.country,
   );
 
-
   return (
     <div
       className={`${
@@ -90,11 +88,11 @@ const StripeModal = ({
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
       <div className="modal-container py-[15px] px-[24px]  relative bg-[white] w-full max-w-[80%] max-h-[90%]  md:max-w-[568px] mx-auto rounded shadow-lg shadow-lg z-50 overflow-auto">
-         <div className="absolute top-[35px] right-0  pr-8 sm:block">
-            <button onClick={onCancel} className="transition text-primary ">
-              <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
-            </button>
-          </div>
+        <div className="absolute top-[35px] right-0  pr-8 sm:block">
+          <button onClick={onCancel} className="transition text-primary ">
+            <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+          </button>
+        </div>
         <div className="modal-content p ">
           <div className="modal-header">
             <h3 className="md:text-[29px] text-[20px] text-center leading-[1.4] w-full max-w-[418px] mx-auto text-[#001a5f] font-semibold">
@@ -115,7 +113,6 @@ const StripeModal = ({
               <div className="w-[100%] mt-3">
                 {!savedCard && (
                   <>
-
                     <div className="grid-rows-2  grid gap-3">
                       <div>
                         <label className="font-bold" htmlFor="">
@@ -254,16 +251,15 @@ const StripeModal = ({
                         )}
                       </div>
                     </div>
-                   
                   </>
                 )}
-                 <Elements stripe={stripe}>
-                      <StripeCard
-                        updateCard={updateCard}
-                        handlePurchaseCard={handlePurchaseCard}
-                        addCreditModal={addCreditModal}
-                      />
-                    </Elements>
+                <Elements stripe={stripe}>
+                  <StripeCard
+                    updateCard={updateCard}
+                    handlePurchaseCard={handlePurchaseCard}
+                    addCreditModal={addCreditModal}
+                  />
+                </Elements>
               </div>
             </>
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>

@@ -465,7 +465,6 @@ const ManageSubscription = () => {
 
   // Display the formatted date
 
-  console.log("stripeCollection",stripeCollection);
 
   return (
     <>
@@ -486,6 +485,7 @@ const ManageSubscription = () => {
         setShowAccordion={setShowAccordion}
         setPurchaseModal={setPurchaseModal}
         setPackageModal={setPackageModal}
+        stripeCollection={stripeCollection}
         show={showAccordion}
       />
 
