@@ -1053,18 +1053,22 @@ export default function FoldedCustomisableCard({
                   <div className="relative md:ml-[0px] ml-[-108px] w-[60px] h-[50px]">
                     {selectedCardPage === 'Card Front' && (
                       <>
-                        <div className="flex flex-col gap-[3px]">
+                        <div className="flex gap-[3px] items-center">
                           <img
                             src={AddImageIcon}
                             alt="Add image file icon"
                             draggable="false"
                           />
-                          <div className="font-bold text-[14px] whitespace-nowrap">
+                           <label
+                            htmlFor="image-input"
+                            className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                          >
                             Add Image
-                          </div>
+                          </label>
                         </div>
 
                         <input
+                        id="image-input"
                           type="file"
                           accept="image/png, image/jpeg"
                           className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
@@ -1076,12 +1080,21 @@ export default function FoldedCustomisableCard({
 
                     {selectedCardPage === 'Card Back' && (
                       <>
+                      <div className='flex gap-[3px] items-center'>
                         <img
                           src={AddImageIcon}
                           alt="Add image file icon"
                           draggable="false"
                         />
+                         <label
+                            htmlFor="image-input2"
+                            className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                          >
+                            Add Image
+                          </label>
+                          </div>
                         <input
+                        id="image-input2"
                           type="file"
                           accept="image/png, image/jpeg"
                           className="absolute top-0 bottom-0 left-0 right-0 opacity-0 focus:outline-none focus:border-none"
