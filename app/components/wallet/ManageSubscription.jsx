@@ -427,15 +427,15 @@ const ManageSubscription = () => {
     return inputString; // Return as is if not a valid number
   }
 
-// Function to format date
-function formatDate(date) {
-  // Get the user's preferred language
-  let userLanguage = navigator.language || navigator.userLanguage;
+  // Function to format date
+  function formatDate(date) {
+    // Get the user's preferred language
+    let userLanguage = navigator.language || navigator.userLanguage;
 
-  // Get the user's time zone dynamically
-  let userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // Get the user's time zone dynamically
+    let userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-  let options = {
+    let options = {
       weekday: 'short',
       month: 'short',
       day: '2-digit',
@@ -444,20 +444,19 @@ function formatDate(date) {
       minute: '2-digit',
       second: '2-digit',
       timeZoneName: 'short',
-      timeZone: userTimeZone // Set the time zone dynamically
-  };
+      timeZone: userTimeZone, // Set the time zone dynamically
+    };
 
-  return new Intl.DateTimeFormat('en-IN', options).format(date);
-}
+    return new Intl.DateTimeFormat('en-IN', options).format(date);
+  }
 
-// Get the current date
-let currentDate = new Date();
+  // Get the current date
+  let currentDate = new Date();
 
-// Format the current date based on the user's location
-let formattedDate = formatDate(currentDate);
+  // Format the current date based on the user's location
+  let formattedDate = formatDate(currentDate);
 
-// Display the formatted date
-
+  // Display the formatted date
 
   return (
     <>
@@ -569,7 +568,7 @@ let formattedDate = formatDate(currentDate);
                     <span className="lg:text-[15px] text-[12px] text-[#001a5f] font-karla font-bold uppercase">
                       wallet balance
                     </span>
-                    <span className="lg:text-[46px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
+                    <span className="md:text-[46px] sm:text-[30px] text-[13px] !font-bold text-[#ef6e6e] uppercase">
                       $
                       {stripeCollection.stripe?.balance
                         ? prettyFormatNumber(stripeCollection.stripe?.balance)
@@ -578,12 +577,12 @@ let formattedDate = formatDate(currentDate);
                   </div>
                   <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]"></div>
                   <WalletAccordion accordion={true} title="Plan">
-                    <div className="p-[8px] mb-[15px]">
+                    <div className="sm:p-[8px] p-[3px] mb-[15px]">
                       <div className="flex justify-between items-center gap-[15px] py-[10px]  border-b border-solid border-[#e6edf8]">
-                        <span className="lg:text-[14px] text-[12px] text-[#001a5f] font-semibold uppercase">
+                        <span className="md:text-[14px] sm:text-[18px] text-[12px] text-[#001a5f] font-semibold uppercase">
                           My Plan
                         </span>
-                        <span className="lg:text-[20px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
+                        <span className="md:text-[20px] sm:text-[18px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
                           {stripeCollection &&
                           stripeCollection.stripe?.subscriptionStatus !==
                             'canceled' &&
@@ -596,7 +595,7 @@ let formattedDate = formatDate(currentDate);
                         stripeCollection.stripe?.subscriptionStatus !==
                           'canceled' &&
                         !stripeCollection.error && (
-                          <div className="flex justify-between  border-b border-solid border-[#e6edf8] items-center gap-[15px] py-[10px]">
+                          <div className="flex justify-between justify-center  border-b border-solid border-[#e6edf8] items-center gap-[15px] py-[10px]">
                             <span className="lg:text-[14px] text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
                               CHANGE STATUS
                             </span>
@@ -605,7 +604,7 @@ let formattedDate = formatDate(currentDate);
                                 setCancelSubscription(true)
                               }
                               text="Cancel Plan"
-                              className="!bg-[#ef6e6e]   rounded-[9px] md:max-w-[190px]  md:h-[45px] h-[32px] lg:text-[13px] text-[12px] lg:max-w-[190px]   uppercase lg:min-w-[190px]"
+                              className="!bg-[#ef6e6e]  rounded-[9px]  w-[190px] md:h-[45px] h-[32px] lg:text-[13px] text-[12px]   uppercase"
                             />
                           </div>
                         )}
@@ -625,10 +624,9 @@ let formattedDate = formatDate(currentDate);
                               ? 'Change Plan'
                               : 'Buy Plan'
                           }
-                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] md:max-w-[190px] min-w-[19px] md:h-[45px] h-[32px] uppercase lg:min-w-[190px] min-w-[3px]"
+                          className="!bg-[#001a5f]  rounded-[9px]  w-[190px] md:h-[45px] h-[32px] lg:text-[13px] text-[12px]  uppercase"
                         />
                       </div>
-
                       {!stripeCollection.error && (
                         <>
                           {stripeCollection.stripe?.subscriptionStatus !==
@@ -637,7 +635,7 @@ let formattedDate = formatDate(currentDate);
                               <span className="lg:text-[14px] text-[12px]  text-[#001a5f] font-karla font-semibold uppercase">
                                 PLAN RENEWAL DATE
                               </span>
-                              <span className="md:text-[20px] text-[12px] text-[#ef6e6e] font-karla font-bold uppercase">
+                              <span className="md:text-[20px] sm:text-[18px] text-[12px] text-[#ef6e6e] font-karla font-bold uppercase">
                                 {formattedDateString}
                               </span>
                             </div>
@@ -668,7 +666,7 @@ let formattedDate = formatDate(currentDate);
                         stripeCollection.stripe?.balance !== 0 &&
                         !stripeCollection?.stripe?.manual &&
                         !stripeCollection.error ? (
-                          <span className="lg:text-[20px] text-[9px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                          <span className="md:text-[20px] sm:text-[18px] text-[12px] font-karla !font-bold text-[#ef6e6e] uppercase">
                             {stripeCollection.stripe?.subscriptionStatus !==
                             'canceled'
                               ? stripeCollection.stripe?.subscription
@@ -701,7 +699,7 @@ let formattedDate = formatDate(currentDate);
                                   ? 'Stop Auto Renew'
                                   : 'Restart Auto Renew'
                               }
-                              className="!bg-[#4bb543]  max-w-[190px] lg:!text-[13px]  !text-[12px] whitespace-nowrap rounded-[9px] md:h-[45px] h-[32px] uppercase md:min-w-[190px] min-w-[2px]"
+                              className="!bg-[#4bb543]  rounded-[9px]  w-[190px] md:h-[45px] h-[32px] lg:text-[13px] text-[12px]  uppercase"
                             />
                           </div>
                         )}
@@ -718,7 +716,7 @@ let formattedDate = formatDate(currentDate);
                               ? 'Change Package'
                               : 'Buy Package'
                           }
-                          className="!bg-[#001a5f] lg:text-[13px] text-[12px] rounded-[9px] font-karla max-w-[190px] uppercase md:h-[45px] h-[32px] lg:min-w-[190px] min-w-[2px]"
+                          className="!bg-[#001a5f] rounded-[9px]  w-[190px] md:h-[45px] h-[32px] lg:text-[13px] text-[12px]  uppercase"
                         />
                       </div>
                     </div>
@@ -803,7 +801,7 @@ let formattedDate = formatDate(currentDate);
                     </div>
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">
-                    <div className="p-[8px] mb-[15px]">
+                    <div className="p-[8px] mb-[15px] overflow-x-auto">
                       <table className="lg:min-w-full min-w-[50%] divide-y divide-gray-200">
                         <thead>
                           <tr>
@@ -829,10 +827,12 @@ let formattedDate = formatDate(currentDate);
                                   {i + 1}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
-                                  {payment.description ? payment.description : null}
+                                  {payment.description
+                                    ? payment.description
+                                    : null}
                                 </td>
-                                <td className="text-[#1b5299] p-[11px] font-karla text-[9px] lg:  text-[14px] !font-bold uppercase">
-                                {formatDate(payment.created*1000)}
+                                <td className="text-[#1b5299] p-[11px] font-karla text-[14px] !font-bold uppercase">
+                                  {formatDate(payment.created * 1000)}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
                                   $ {payment.amount}

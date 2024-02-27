@@ -1,8 +1,9 @@
 import underline from '../../assets/Image/faq-underline.png';
 import DynamicTitle from '../components/Title';
 import {defer} from '@remix-run/server-runtime';
-import { seoPayload } from '~/lib/seo.server';
-export async function loader({request,context}){
+import {seoPayload} from '~/lib/seo.server';
+import CanvasReferral from '../../assets/Video/canvas-referral.gif';
+export async function loader({request, context}) {
   const {page} = await context.storefront.query(GRAPH_QL, {
     variants: {},
   });
@@ -17,19 +18,6 @@ const Partner_referral = () => {
   return (
     <>
       <div className="mt-10 global-max-width-handler">
-        {/* <h1 className="text-[#001a5f] text-center sm:text-[50px] text-4xl md:mt-0 mt-7 font-bold tracking-tight pb-[6px] mx-2">
-          Submit a
-          <span className="font-beauty ml-2 sm:text-8xl text-6xl font-extrabold">
-            referral
-          </span>
-        </h1>
-        <div className="flex justify-center">
-          <img
-            className="xl:w-[300px] w-[35%] mb-[33px]"
-            src={underline}
-            alt="menu-underline"
-          />
-        </div> */}
         <DynamicTitle title={'Submit a '} title2={'referral'}/>
 
         <div className="flex justify-center md:mt-[30px] mt-5 mx-auto">
@@ -174,6 +162,11 @@ const Partner_referral = () => {
             </form>
           </div>
         </div>
+        <div className="max-w-full relative mt-[30px] hidden 2xl:block h-[444px]">
+          <div className="absolute left-[-118px]   z-[-12]">
+            <img className="max-w-[1543px]" src={CanvasReferral} alt="canvas" />
+          </div>
+        </div>
       </div>
     </>
   );
@@ -190,4 +183,4 @@ const GRAPH_QL = `#graphql
       description
     }
   }
-}`
+}`;

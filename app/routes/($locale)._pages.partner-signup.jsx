@@ -3,8 +3,9 @@ import robot4 from '../../assets/Image/Robot-4.webp';
 import signup_card from '../../assets/Image/signup-envelopes.webp';
 import DynamicButton from '~/components/DynamicButton';
 import {defer} from '@remix-run/server-runtime';
-import { seoPayload } from '~/lib/seo.server';
-export async function loader({request,context}){
+import {seoPayload} from '~/lib/seo.server';
+import CanvasFooter from '../../assets/Video/canvas-footer.gif';
+export async function loader({request, context}) {
   const {page} = await context.storefront.query(GRAPH_QL, {
     variants: {},
   });
@@ -204,6 +205,15 @@ const Partner_signup = () => {
               </ul>
             </div>
           </div>
+          <div className="w-full relative h-[444px]">
+            <div className="absolute left-[-107px]   z-[-12]">
+              <img
+                className="max-w-[1533px]"
+                src={CanvasFooter}
+                alt="Computer man"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>
@@ -221,4 +231,4 @@ const GRAPH_QL = `#graphql
       description
     }
   }
-}`
+}`;

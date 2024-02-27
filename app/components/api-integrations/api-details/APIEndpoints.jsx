@@ -1,11 +1,11 @@
 
 const APIEndpoints = () => {
   return (
-    <div>
-      <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px]">
+    <div className="">
+      <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px]">
         <span className="text-blue-500"> 1.</span> API ENDPOINTS
       </h2>
-      <div className="text-[16px] leading-[27px] color-[black]">
+      <div className="text-[16px] leading-[27px] overflow-x-auto color-[black]">
         <p className=" mb-[7px] ml-[8px] font-thin mt-[23px]">
           The production API can be found at:{' '}
           <a

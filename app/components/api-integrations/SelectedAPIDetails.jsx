@@ -3,10 +3,10 @@ import {useAPIIntegrationContext} from '~/context/APIIntegrationContext';
 
 const SelectedAPIDetails = () => {
   const {selectedSection} = useAPIIntegrationContext();
-  
+  console.log(selectedSection,"selectd");
   return (
     <>
-    <div className=" sidebar h-[500px] overflow-y-scroll border-1 hidden md:block border-solid w-[80%] p-[12px]">
+    <div className=" sidebar h-[500px] overflow-auto border-1 hidden md:block border-solid w-[80%] p-[12px]">
       {selectedSection === 'API ENDPOINTS' && <APIEndpoints />}
       {selectedSection === 'AUTHENTICATION' &&   <Authentication />}
       {selectedSection === 'USERS' && <Users />}
@@ -16,7 +16,7 @@ const SelectedAPIDetails = () => {
       {selectedSection === 'ADDRESSES' && <Addresses />}
       {selectedSection === 'AVAILABLE HANDWRITING STYLES' && <AvailableHandwritingStyles />}
     </div>
-    <div className='sec sec block md:hidden'>
+    <div className='sec sec block  w-[100%] md:hidden'>
     <APIEndpoints />
     <Authentication />
     <Users />

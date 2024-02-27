@@ -6,7 +6,6 @@ import robot1 from '../../../assets/Image/robot.webp';
 import robot2 from '../../../assets/Image/robot2.webp';
 import robot3 from '../../../assets/Image/robot3.webp';
 import DynamicButton from '../DynamicButton';
-
 import {useNavigate} from '@remix-run/react';
 import Arrow1 from '../../../assets/Image/FirstArrow.gif'
 import Arrow2 from '../../../assets/Image/SecondArrow.gif'

@@ -208,12 +208,12 @@ const AddressForm = ({customerID, defaultOption}) => {
           </div>
         )}
         <div
-          className={`bg-white  rounded px-8 pt-6  pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
+          className={`rounded px-8 pt-6  pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
             loader && 'opacity-40' 
           }`}
         >
-          <div className="lg:flex grid justify-between md:gap-[90px] gap-[0px] items-center mb-[16px]">
-            <h2 className=" text-left text-[#001a5f] font-bold md:text-[34px] text-[24px] leading-[43px]">
+          <div className="xl:flex grid justify-between  xl:gap-[90px] gap-[0px] items-center mb-[16px]">
+            <h2 className=" text-left text-[#001a5f] font-bold md:text-[32px] text-[24px] leading-[43px]">
               New Address
             </h2>
             <div className="flex gap-[10px] lg:mt-0 mt-[12px]">

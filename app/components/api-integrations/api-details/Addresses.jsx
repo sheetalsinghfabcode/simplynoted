@@ -3,16 +3,16 @@ import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 function Addresses() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos md:mt-[0px] mt-[37px]  font-bold ml-2 md:text-[33px] text-[20px] font-tiempos ">
+    <h2 className="text-[#001a5f] font-tiempos md:mt-[0px] mt-[37px]   font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
       <span className="text-blue-500">7.</span> ADDRESSES
     </h2>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
           <span className="text-blue-500">7.1.</span> Create An Address
         </h2>
         <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
-          <p className="mt-[17px] text-[16px] mt-[22px] leading-[27px] color-[black]  font-thin">
+          <p className="mt-[17px] sm:text-[16px] text-[16px] mt-[22px] api:leading-[27px] leading-[45px] color-[black]  font-thin">
             <b>Description:</b>This endpoint creates an Address. If any
             required properties are missing an error will be returned.
           </p>
@@ -27,6 +27,7 @@ function Addresses() {
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -48,9 +49,11 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -123,11 +126,12 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Returns on success:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.createAnAddress,
@@ -141,7 +145,7 @@ function Addresses() {
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Example:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.createAnAddress1,
@@ -154,7 +158,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos  ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos  ">
           <span className="text-blue-500">7.2.</span> Retrieve All
           Addresses
         </h2>
@@ -172,6 +176,7 @@ function Addresses() {
         <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           Headers:
         </h2>
+        <div className='overflow-x-auto'>
         <table className="w-2/4 text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -193,11 +198,13 @@ function Addresses() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
 
       <h2 className="font-tiempos text-lg  mt-[13px] font-bold ml-2">
         URL Parameters:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -216,11 +223,13 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <div>
         <h3 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           <b>Returns on success:</b>
         </h3>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] p-[28px] overflow-x-auto">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.retriveAllAddresses,
@@ -233,7 +242,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
           <span className="text-blue-500"> 7.3. </span> Retrieve A Single
           Address
         </h2>
@@ -252,6 +261,7 @@ function Addresses() {
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -273,9 +283,12 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         URL Parameters:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -294,11 +307,13 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <div>
         <h3 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           <b>Returns on success:</b>
         </h3>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.singleAddress,
@@ -311,7 +326,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
           <span className="text-blue-500">7.4.</span> Update An Address
         </h2>
         <div className="leading-[1.5rem] mt-[21px] ml-[9px]">
@@ -329,6 +344,7 @@ function Addresses() {
         <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           Headers:
         </h2>
+        <div className='overflow-x-auto'>
         <table className="w-2/4 text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -350,10 +366,13 @@ function Addresses() {
             </tr>
           </tbody>
         </table>
+
+        </div>
       </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         URL Parameters:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -372,9 +391,12 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Body:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-xs table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -447,11 +469,13 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <div>
         <h3 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           <b>Returns on success:</b>
         </h3>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.updateAddress,
@@ -465,7 +489,7 @@ function Addresses() {
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Example:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.updateAddress1,
@@ -478,7 +502,7 @@ function Addresses() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 md:text-[33px] text-[27px] font-tiempos ">
+        <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
           <span className="text-blue-500">7.5.</span> Delete A Single
           Address
         </h2>
@@ -497,6 +521,7 @@ function Addresses() {
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -513,9 +538,11 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         URL Parameters:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -534,11 +561,12 @@ function Addresses() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <h3 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           <b>Returns on success:</b>
         </h3>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.deleteSingleAddress,
@@ -553,4 +581,4 @@ function Addresses() {
   )
 }
 
-export default Addresses
+export default Addresses;

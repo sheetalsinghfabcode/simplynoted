@@ -16,6 +16,7 @@ export default {
         sm: '32em',
         md: '48em',
         tab: '60em',
+        api: '454',
         lg: '70em',
         xl: '80em',
         '2xl': '84em',
@@ -82,6 +83,8 @@ export default {
         'Winter Song': ['Winter Song'],
         'Premium Ultra': ['Premium Ultra'],
         dente: ['Al-dente'],
+        arial: ['Arial'],
+        'comic sans ms': ['Comic Sans MS']
       },
       fontSize: {
         display: ['var(--font-size-display)', '1.1'],

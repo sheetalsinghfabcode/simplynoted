@@ -1045,19 +1045,19 @@ export function MessageWriting({
           {loadTempData &&
             filteredList(loadTempData, searchData).map((item, index) => (
               <div className="" key={index}>
-                <div className="border border-black-600 mt-[12px] mb-[12px] px-[10px] h-[42px] items-center w-full flex">
-                  <div className="w-full font-font-semibold mt-[10px] text-[14px]">
+                <div className="border border-black-600 mt-[12px] lg:h-[74px] h-[59px] mb-[12px] px-[10px] items-center w-full flex">
+                  <div className="w-full font-font-semibold  text-[14px]">
                     {item.templateName}
                   </div>
                   <div className="w-full flex items-center gap-[11px] justify-end">
                     <img
                       src={TickImg}
-                      className="w-[12%] h-[5%] cursor-pointer"
+                      className="2xl:w-[12%] w-[17%] h-[5%] cursor-pointer"
                       onClick={() => setLoadedTemVal(item.customMessage)}
                     />
                     <img
                       src={Del}
-                      className="w-[12%] h-[5%] cursor-pointer"
+                      className="2xl:w-[12%] w-[17%] h-[5%] cursor-pointer"
                       onClick={() => deleteTemp(item._id)}
                     />
                   </div>

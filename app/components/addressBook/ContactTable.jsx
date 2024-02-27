@@ -11,6 +11,7 @@ import Instruction from '../modal/Instruction';
 import chooseFile from '../../../assets/Image/choose-file.svg';
 import {useLocation} from '@remix-run/react';
 import {VideoTutorial} from '../VideoTutorial';
+import { RxCross2 } from "react-icons/rx";
 
 const ContactTable = ({
   customerID,
@@ -587,6 +588,7 @@ const ContactTable = ({
 
               <div
                 ref={uploadBulkAddressRef}
+              
                 className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
                   overflow-hidden  ${
                     uploadBulkAddress
@@ -598,6 +600,9 @@ const ContactTable = ({
                 aria-orientation="vertical"
                 aria-labelledby="options-menu"
               >
+                <div className='flex justify-end mr-[7px] mt-[5px]'>
+                <p className='bg-[#ef6e6e] text-[white]'onClick={() => setUploadBulkAddress(false)}><RxCross2 /></p>
+                </div>
                 <div className="flex flex-col justify-center items-start p-4">
                   <div className="flex flex-col items-start gap-[4px]">
                     <h2 className="text-[#000] text-[16px] md:text-[20px] leading-[110%] font-bold font-karla ">
