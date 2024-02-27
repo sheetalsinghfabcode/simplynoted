@@ -144,6 +144,7 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
+      console.log(json,"added credit card");
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
@@ -172,7 +173,7 @@ export function CheckoutData({
         },
       );
       const jsonData = await res.json();
-      setNewCardAdded(true);
+      setNewCardAdded(!newCardAdded);
       setShowCardBox(false);
       setloader(false);
     } catch (error) {

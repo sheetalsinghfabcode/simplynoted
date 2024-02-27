@@ -627,7 +627,7 @@ export default function AddCartFunc() {
                                 ) : (
                                   ''
                                 )}
-                                {item.usCount && (
+                                {item.usCount && item.usCount? (
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                       <div className="flex w-[95%] justify-start ">
@@ -683,7 +683,7 @@ export default function AddCartFunc() {
                                     </div>
                                     <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
                                   </div>
-                                )}
+                                ):''}
                               </>
                             ) : (
                               <>
@@ -821,7 +821,8 @@ export default function AddCartFunc() {
                                   </div>
                                 )}
                               </>
-                            )}
+                            )
+                            }
                           </>
                         )}
                         {/* <div className="w-full h-[1px] bg-[black]"></div> */}
