@@ -1,29 +1,30 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Modal from 'react-modal';
-import {BsXCircle} from 'react-icons/bs';
+import { BsXCircle } from 'react-icons/bs';
 import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import Loader from '../modal/Loader';
-import {Image} from '@shopify/hydrogen';
+import { Image } from '@shopify/hydrogen';
 import LoginModal from '../modal/LoginModal';
 import DynamicButton from '../DynamicButton';
 import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
-import {useLocation} from '@remix-run/react';
-import {useStateContext} from '../../context/StateContext';
+import { useLocation } from '@remix-run/react';
+import { useStateContext } from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import TickImg from '../../../assets/Image/check-mark.png';
 import Del from '../../../assets/Image/delete.png';
 import calender_icon from '../../../assets/Image/calendar.png';
-import {Text} from '../Text';
-import {FaYoutube} from 'react-icons/fa';
-import {FiUploadCloud} from 'react-icons/fi';
-import {VideoTutorial} from '../VideoTutorial';
-import {RxCross2} from 'react-icons/rx';
-import {ImCross} from 'react-icons/im';
-import {Modal as ModalComp} from '../Modal';
+import { Text } from '../Text';
+import { FaYoutube } from 'react-icons/fa';
+import { FiUploadCloud } from 'react-icons/fi';
+import { VideoTutorial } from '../VideoTutorial';
+import { RxCross2 } from 'react-icons/rx';
+import { ImCross } from 'react-icons/im';
+import { Modal as ModalComp } from '../Modal';
+
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -141,7 +142,7 @@ export function MessageWriting({
     );
     const modifiedData = data.map((item) => {
       // Specify the fields you want to remove from each object
-      const {_id, shopifyId, created, updated, __v, ...newObject} = item;
+      const { _id, shopifyId, created, updated, __v, ...newObject } = item;
       return newObject;
     });
     setFileData(modifiedData);
@@ -375,12 +376,11 @@ export function MessageWriting({
         return (
           <div
             className={`flex h-[48px]`}
-            style={{justifyContent: metafields.header.justifyContent}}
+            style={{ justifyContent: metafields.header.justifyContent }}
           >
             <img
-              className={`!w-20 headerImage ${
-                metafields.header.isColored ? 'grayscale-0' : 'grayscale'
-              }`}
+              className={`!w-20 headerImage ${metafields.header.isColored ? 'grayscale-0' : 'grayscale'
+                }`}
               src={metafields.header.data}
             />
           </div>
@@ -420,12 +420,11 @@ export function MessageWriting({
         return (
           <div
             className={`flex  h-[48px]`}
-            style={{justifyContent: metafields.footer.justifyContent}}
+            style={{ justifyContent: metafields.footer.justifyContent }}
           >
             <img
-              className={`!w-20 ${
-                metafields.footer.isColored ? 'grayscale-0' : 'grayscale'
-              }`}
+              className={`!w-20 ${metafields.footer.isColored ? 'grayscale-0' : 'grayscale'
+                }`}
               src={metafields.footer.data}
             />
           </div>
@@ -841,7 +840,7 @@ export function MessageWriting({
           Authorization:
             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
         },
-        body: JSON.stringify({msg: valToGen}),
+        body: JSON.stringify({ msg: valToGen }),
       });
 
       const json = await res.json();
@@ -872,8 +871,8 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.optionalShipDate
         : editShippingDate
-        ? editShippingDate
-        : '',
+          ? editShippingDate
+          : '',
     );
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
@@ -888,15 +887,15 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.signOffFontSize
         : editSignOffFontSize
-        ? editSignOffFontSize
-        : '',
+          ? editSignOffFontSize
+          : '',
     );
     setSignOffLineHeight(
       savedMsg
         ? savedMsg.signOffLineHeight
         : editSignOffLineHeight
-        ? editSignOffLineHeight
-        : '',
+          ? editSignOffLineHeight
+          : '',
     );
     setTempVal(ref4.current?.value);
   }, []);
@@ -1175,18 +1174,16 @@ export function MessageWriting({
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
         <div
-          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
-            show
-              ? 'lg:h-[1110px] texting-relative-cont-bulk'
-              : 'lg:h-[714px] texting-relative-cont-single'
-          }`}
+          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${show
+            ? 'lg:h-[1110px] texting-relative-cont-bulk'
+            : 'lg:h-[714px] texting-relative-cont-single'
+            }`}
         >
           <div
-            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${
-              show
-                ? 'md:pb-[35rem] textarea-cont-bulk'
-                : 'md:pb-[15rem] textarea-cont-single'
-            }`}
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${show
+              ? 'md:pb-[35rem] textarea-cont-bulk'
+              : 'md:pb-[15rem] textarea-cont-single'
+              }`}
           >
             <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left">
@@ -1202,8 +1199,8 @@ export function MessageWriting({
                     {standardFontVal
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
-                      ? editFontFamily
-                      : 'Tarzan'}
+                        ? editFontFamily
+                        : 'Tarzan'}
                   </option>
                   {editFontFamily && editFontFamily !== 'tarzan' && (
                     <option value="Tarzan" className={`font-tarzan`}>
@@ -1302,8 +1299,8 @@ export function MessageWriting({
                     {customFontVal
                       ? customFontVal
                       : editCustomFontFamily
-                      ? editCustomFontFamily
-                      : 'Select Custom Font'}
+                        ? editCustomFontFamily
+                        : 'Select Custom Font'}
                   </option>
                   {customFonts &&
                     customFonts.map((item, index) => (
@@ -1318,14 +1315,20 @@ export function MessageWriting({
                 <div className="flex relative">
                   <input
                     type="date"
-                    className="h-[40px] calendar-input highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+                    className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => {
                       setShippingDate(e.target.value);
-                      e.target.blur();
+                      if(e.target.value){
+                        e.target.blur()
+                      }
                     }}
+                    
                     value={shippingDate}
                   />
+                  <span className="calendar-icon">
+                    <img src={calender_icon} alt="Calendar" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -1499,9 +1502,8 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${
-            show ? 'h-[940px]' : 'h-[370px] '
-          } mb-[200px] md:mb-[0px]`}
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${show ? 'h-[940px]' : 'h-[370px] '
+            } mb-[200px] md:mb-[0px]`}
         >
           <div
             id="outer"
@@ -1532,11 +1534,11 @@ export function MessageWriting({
                       name2.length > 0)
                       ? '121px'
                       : (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data &&
-                          metafields.footer &&
-                          metafields.header &&
-                          metafields.header.data) ||
+                        metafields.header &&
+                        metafields.footer.data &&
+                        metafields.footer &&
+                        metafields.header &&
+                        metafields.header.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data &&
@@ -1546,8 +1548,8 @@ export function MessageWriting({
                           metafields.header &&
                           metafields.header.data &&
                           name2.length > 0)
-                      ? '169px'
-                      : (metafields.footer &&
+                        ? '169px'
+                        : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data) ||
                         (metafields.footer &&
@@ -1567,8 +1569,8 @@ export function MessageWriting({
                     fontFamily: fontFamilyName
                       ? fontFamilyName
                       : editFontFamily
-                      ? editFontFamily
-                      : 'great vibes',
+                        ? editFontFamily
+                        : 'great vibes',
                     fontSize: fontSize ? fontSize : '34px',
                     lineHeight: lineHeight ? lineHeight : '50px',
                   }}
@@ -1580,7 +1582,7 @@ export function MessageWriting({
               <div
                 className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
                 ref={ref}
-                style={{display: name2.length > 0 ? 'block' : 'none'}}
+                style={{ display: name2.length > 0 ? 'block' : 'none' }}
               >
                 <div
                   id="signOffText"
@@ -1590,8 +1592,8 @@ export function MessageWriting({
                     fontFamily: fontFamilyName
                       ? fontFamilyName
                       : editFontFamily
-                      ? editFontFamily
-                      : 'great vibes',
+                        ? editFontFamily
+                        : 'great vibes',
                     fontSize: signOffFontSize ? signOffFontSize : '50px',
                     lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
                   }}
@@ -1629,7 +1631,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({target: {files: [file]}});
+                        handleFileChange({ target: { files: [file] } });
                       }
                     }}
                     onDragEnter={() => {
@@ -1725,7 +1727,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({target: {files: [file]}});
+                        handleFileChange({ target: { files: [file] } });
                       }
                     }}
                     onDragEnter={() => {
@@ -1822,16 +1824,15 @@ export function MessageWriting({
                 <div className="m-auto w-full grid font-bold">
                   <DynamicButton
                     disabled={disableSelectAddressBtn}
-                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${
-                      disableSelectAddressBtn && 'opacity-40'
-                    }`}
+                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${disableSelectAddressBtn && 'opacity-40'
+                      }`}
                     text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   <DynamicButton
                     className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Buy Leads (Mailing List)"
-                    onClickFunction={() => {}}
+                    onClickFunction={() => { }}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton
