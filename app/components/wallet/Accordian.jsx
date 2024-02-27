@@ -293,7 +293,6 @@ const Accordion = ({
         if (result?.error) {
           setPaymentLoader(false);
         } else {
-          data.subscriptionId = result.paymentIntent.id;
           data.status = result.paymentIntent.status;
           paymentSave(data, json);
         }
@@ -368,9 +367,8 @@ const Accordion = ({
       isAutorenew: true,
       subscriptionStartDate: data.subscriptionStartDate,
       subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status ==="successed" ? "active" : data.status,
+      subscriptionStatus: data.status ==="succeeded" ? "active" : data.status,
     };
-
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 

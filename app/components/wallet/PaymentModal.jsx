@@ -27,6 +27,7 @@ const PaymentModal = ({
     amount,
     packageProduct,
     subscriptionProduct,
+    setUpdateModal,
     subscriptionTitle,
     subscriptionPriceId,
   } = useStateContext();
@@ -240,15 +241,15 @@ const PaymentModal = ({
       }
 
       if (data.redirectUrl) {
-        setloader(false);
-        setPaymentLoader(false);
-
         const result = await stripe.confirmCardPayment(data.client_secret);
         if (result?.error) {
           setPaymentLoader(false);
         } else {
+          data.status = result.paymentIntent.status;
           paymentSave(data, json);
         }
+      } else {
+        paymentSave(data, json);
       }
       // Handle the response data here
     } catch (error) {
@@ -298,6 +299,7 @@ const PaymentModal = ({
           setPurchaseModal(false);
           setPackageModal(false);
           setPaymentLoader(false);
+          setUpdateModal(false)
           setTimeout(() => {
             navigate('/account');
             setActiveTab(4);
@@ -383,7 +385,7 @@ const PaymentModal = ({
       isAutorenew: true,
       subscriptionStartDate: data.subscriptionStartDate,
       subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status === 'successed' ? 'active' : data.status,
+      subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
     };
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;

@@ -104,7 +104,7 @@ const ManageSubscription = () => {
     }));
     const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
-    // Make a GET request to the API
+    // Make a GET request to the API 
     fetch(apiUrl)
       .then((response) => {
         setLoader((prevLoader) => ({

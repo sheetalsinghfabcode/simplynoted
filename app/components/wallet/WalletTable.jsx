@@ -101,14 +101,7 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const subscribeTeam = subscriptionType === 'team';
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
-
-  console.log('subscriptionType', subscriptionType);
-
-  console.log('subscribeFree', subscribeFree);
-
-  console.log('subscribeTeam', subscribeTeam);
-  console.log('subscribeBusiness', subscribeBusiness);
-
+  
   const pricingPlans = [
     {
       name: 'Free',
