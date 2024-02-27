@@ -287,19 +287,15 @@ const Accordion = ({
       });
 
       const data = await response.json();
-      debugger;
 
       if (data.redirectUrl) {
         const result = await stripe.confirmCardPayment(data.client_secret);
-        debugger;
         if (result?.error) {
           setPaymentLoader(false);
         } else {
           data.subscriptionId = result.paymentIntent.id;
           data.status = result.paymentIntent.status;
-          debugger;
           paymentSave(data, json);
-          debugger;
         }
       } else {
         paymentSave(data, json);
@@ -374,9 +370,7 @@ const Accordion = ({
       subscriptionEndDate: data.subscriptionEndDate,
       subscriptionStatus: data.status ==="successed" ? "active" : data.status,
     };
-    debugger
 
-    console.log("payLoad",payLoad);
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
@@ -395,7 +389,6 @@ const Accordion = ({
       })
       .then((data) => {
         paymentPurchase(data, json);
-        debugger
         // Handle the response data here
       })
       .catch((error) => {

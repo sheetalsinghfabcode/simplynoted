@@ -102,13 +102,11 @@ const ManageSubscription = () => {
       ...prevLoader,
       stopSubscription: true,
     }));
-    debugger
     const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
-        debugger
         setLoader((prevLoader) => ({
           ...prevLoader,
           stopSubscription: false,
@@ -139,7 +137,6 @@ const ManageSubscription = () => {
         setCancelSubscription(false);
         setLoader(false);
 
-        debugger
       })
   };
 
@@ -417,7 +414,6 @@ const ManageSubscription = () => {
     }
   }
 
-  console.log("stripeCollection",stripeCollection);
 
   const filteredWalletData = WalletData.collection.products.edges.filter(
     (product) => {
@@ -466,6 +462,8 @@ const ManageSubscription = () => {
   let formattedDate = formatDate(currentDate);
 
   // Display the formatted date
+
+  console.log("stripeCollection",stripeCollection);
 
   return (
     <>
@@ -721,7 +719,8 @@ const ManageSubscription = () => {
                           text={
                             stripeCollection.stripe?.balance !== 0 &&
                             !stripeCollection.error &&
-                            !stripeCollection?.stripe?.manual
+                            !stripeCollection?.stripe?.manual &&  stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled' 
                               ? 'Change Package'
                               : 'Buy Package'
                           }

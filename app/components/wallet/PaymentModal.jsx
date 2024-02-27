@@ -10,6 +10,7 @@ import CircularLoader from '../CircularLoder';
 import {useStateContext} from '~/context/StateContext';
 import {FaAngleDown} from 'react-icons/fa6';
 import {FaAngleUp} from 'react-icons/fa';
+import SuccessfullLoader from '../SucessfullLoader';
 
 const PaymentModal = ({
   show,
@@ -98,7 +99,9 @@ const PaymentModal = ({
         await createSubscription(id);
       }
     } catch (error) {
+      setPaymentLoader(false);
       setloader(false);
+
     }
   }
 
@@ -170,9 +173,11 @@ const PaymentModal = ({
         [name]: value,
       }));
     }
+
+    // Clear error for the specific field on change
     setErrors((prevErrors) => ({
       ...prevErrors,
-      [name]: '',
+      [name]: '', // Clear error for the field on change
     }));
   };
 
@@ -227,6 +232,12 @@ const PaymentModal = ({
       });
 
       const data = await response.json();
+      if(data.statusCode === 400) {
+        setShowAccordion(false);
+        setPurchaseModal(false);
+        setPackageModal(false);
+        setPaymentLoader(false);
+      }
 
       if (data.redirectUrl) {
         setloader(false);
@@ -241,6 +252,9 @@ const PaymentModal = ({
       }
       // Handle the response data here
     } catch (error) {
+      setShowAccordion(false);
+      setPurchaseModal(false);
+      setPackageModal(false);
       setPaymentLoader(false);
       // Handle errors here
       console.error('Error:', error);
@@ -300,8 +314,65 @@ const PaymentModal = ({
       });
   };
 
-  const paymentSave = (data, json) => {
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {};
 
+    // Validate name
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailPattern.test(formData.email)) {
+      errors.email = 'Email is required and must be valid';
+      isValid = false;
+    }
+
+    // Validate address
+    if (!formData.address.line1.trim()) {
+      errors.addressLine1 = 'Address is required';
+      isValid = false;
+    }
+
+    // Validate city
+    if (!formData.address.city.trim()) {
+      errors.city = 'City is required';
+      isValid = false;
+    }
+
+    // Validate country
+    if (!formData.address.country.trim()) {
+      errors.country = 'Country is required';
+      isValid = false;
+    }
+
+    // Validate state
+    if (!formData.address.state.trim()) {
+      errors.state = 'State is required';
+      isValid = false;
+    }
+
+    setErrors(errors); // Set errors state to display validation messages
+    if (!isValid) {
+      const firstErrorField = Object.keys(errors)[0];
+      const firstErrorElement = document.getElementById(firstErrorField);
+      if (firstErrorElement) {
+        firstErrorElement.focus();
+      }
+    }
+
+    // Open billing address section if there are any errors
+    if (!isValid) {
+      setIsBillingOpen(true);
+      setIsCardInfoOpen(false);
+    }
+    return isValid;
+  };
+
+  const paymentSave = (data, json) => {
     const payLoad = {
       subscriptionId: data.subscriptionId,
       subscriptionName: subscriptionTitle,
@@ -312,7 +383,7 @@ const PaymentModal = ({
       isAutorenew: true,
       subscriptionStartDate: data.subscriptionStartDate,
       subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status === "successed" ? "active" : data.status,
+      subscriptionStatus: data.status === 'successed' ? 'active' : data.status,
     };
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
@@ -371,9 +442,8 @@ const PaymentModal = ({
               }}
             />
             {paymentLoader && (
-               <SuccessfullLoader successfullMessage="Processing your payment securely. Please wait a moment." />
-               )}
-            
+              <SuccessfullLoader successfullMessage="Processing your payment securely. Please wait a moment." />
+            )}
 
             <div
               className={` ${
@@ -388,13 +458,13 @@ const PaymentModal = ({
                   Billing Address
                 </span>
                 <span className="mr-2">
-                  {isBillingOpen ? <FaAngleDown /> : <FaAngleUp />}
+                {isBillingOpen || errors.length > 0 ? <FaAngleDown /> : <FaAngleUp />}
                 </span>
               </div>
               <div
                 className={`overflow-hidden 
                 ${
-                  isBillingOpen
+                  (isBillingOpen || errors.length > 0) 
                     ? 'max-h-[800px] transition-max-height'
                     : 'max-h-0'
                 }
@@ -445,9 +515,17 @@ const PaymentModal = ({
                         placeholder="Address"
                         required
                         value={formData.address.line1}
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                          errors.addressLine1 = '';
+                          handleChange(e);
+                        }}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
+                      {errors.addressLine1 && (
+                        <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                          {errors.addressLine1}
+                        </p>
+                      )}
                     </div>
                     <div className="mt-2">
                       <label htmlFor="" className="font-bold">
@@ -474,9 +552,17 @@ const PaymentModal = ({
                         required
                         placeholder="City"
                         value={formData.address.city}
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                          errors.city = '';
+                          handleChange(e);
+                        }}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
+                       {errors.city && (
+                        <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                          {errors.city}
+                        </p>
+                      )}
                     </div>
                     <div className="md:flex grid  md:gap-3 gap-0">
                       <div className="w-full">
@@ -512,7 +598,10 @@ const PaymentModal = ({
                           State
                         </label>
                         <select
-                          onChange={(e) => handleChange(e)}
+                           onChange={(e) => {
+                            errors.state = '';
+                            handleChange(e);
+                          }}
                           value={formData.address.state}
                           name="address.state"
                           className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
@@ -638,7 +727,7 @@ const PaymentModal = ({
                         <DynamicButton
                           text="Complete Purchase"
                           onClickFunction={() => {
-                            {
+                            if (validateForm()) {
                               setPaymentLoader(true);
                               createSubscription(paymentMethodId);
                             }
