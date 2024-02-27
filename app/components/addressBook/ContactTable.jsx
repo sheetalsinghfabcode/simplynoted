@@ -597,7 +597,7 @@ const ContactTable = ({
                 className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]"
               >
                 <DynamicButton
-                  className="bg-[#EF6E6E] px-[50px] py-[14px] w-[190px] h-[45px] text-[14px] font-normal "
+                  className="bg-[#EF6E6E] px-[50px] py-[14px] whitespace-nowrap md:w-[190px] w-[287px] h-[45px] text-[14px] font-normal "
                   text="Upload Bulk Address"
                   onClickFunction={(event) => {
                     setUploadBulkAddress(!uploadBulkAddress);
@@ -675,7 +675,7 @@ const ContactTable = ({
 
               <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299] px-[50px] w-[190px] h-[45px] py-[14px] text-[14px] font-normal "
+                  className="bg-[#1b5299] px-[50px] md:w-[190px] w-[287px] whitespace-nowrap h-[45px] py-[14px] text-[14px] font-normal "
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />
@@ -745,7 +745,7 @@ const ContactTable = ({
                   !ProdcuctSide && (
                     <button
                       onClick={() => setDeleteModal(true)}
-                      className="text-white bg-[#ef6e6e] h-[45px] w-[200px] border border-solid md:text-[13px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
+                      className="text-white bg-[#ef6e6e] mt-[0px] h-[45px] w-[200px] border border-solid md:text-[13px] text-[12px] lg:m-[0px] m-[12px] lg:ml-[0px] ml-[2px] font-bold py-[3px] px-[16px]"
                     >
                       Delete Selected
                     </button>

@@ -1,7 +1,6 @@
 import {json, redirect} from '@shopify/remix-oxygen';
 import {Form, useActionData, useLoaderData, useNavigate} from '@remix-run/react';
 import {useEffect, useState} from 'react';
-
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
 
@@ -87,7 +86,8 @@ export default function Login() {
   async function setVar() {
     if (typeof window !== 'undefined') {
       localStorage.setItem('resultVar', 'result');
-    }
+    
+    }  
   }
 
 

@@ -131,17 +131,17 @@ const WalletPlans = ({
                 />
 
                 <div className="flex flex-col gap-[8px]">
-                  <div className="flex gap-[6px] text-[#001a5f]  items-start">
-                    <span className="text-[15px] font-bold">
+                  <div className="flex gap-[6px] whitespace-nowrap text-[#001a5f]  items-start">
+                    <span className="sm:text-[15px] text-[11px] font-bold">
                       {titleMetafield?.value}
                     </span>
-                    <span className="text-[15px] font-bold">
+                    <span className="sm:text-[15px] text-[11px] font-bold">
                       {variant.node?.title}
                     </span>
                   </div>
                   {descriptionMetafield?.value &&
                     variant.node.price.amount !== '0.0' && (
-                      <span className="text-[14px] font-medium">
+                      <span className="sm:text-[14px] text-[11px] font-medium">
                         {descriptionMetafield
                           ? JSON.parse(
                               descriptionMetafield?.value

@@ -245,7 +245,7 @@ const Profile = ({
          ( loader || successfullLoader) && 'opacity-50'
         } `}
       >
-        <div className="flex w-full mb-4">
+        <div className="flex w-full md:mt-[0px] mt-[23px] mb-4">
           <button
             onClick={() => switchToTab('account')}
             className={`mr-4 px-4 py-4 w-full rounded-t-lg font-karla ${

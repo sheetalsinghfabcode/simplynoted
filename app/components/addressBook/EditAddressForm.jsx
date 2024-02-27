@@ -162,12 +162,12 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         </div>
       )}
       <div
-        className={`bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 ${
+        className={`bg-white shadow-md rounded md:mt-[0px] mt-[23px] px-8 pt-6 pb-8 mb-4 ${
           loader && 'opacity-40'
         }`}
       >
         <div className="md:flex grid md:justify-between justify-normal items-center mb-[16px]">
-          <h2 className="text-left text-[#001a5f] md:text-[19px] text-[12px] font-bold text-[34px] leading-[44px]">
+          <h2 className="text-left text-[#001a5f] md:text-normal text-center md:mb-[0px] mb-[7px] md:text-[34px] text-[31px] font-bold  leading-[44px]">
             Edit Address
           </h2>
           <div className="md:flex grid gap-[10px]">
