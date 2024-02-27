@@ -201,14 +201,14 @@ const AddressForm = ({customerID, defaultOption}) => {
 
   return (
     <>
-      <div className={`container relative mx-auto`}>
+      <div className={`relative mx-auto`}>
         {loader && (
           <div className="absolute z-[50] top-[50%] left-[50%]">
             <CircularLoader title="Adding Address" color="#ef6e6e" />
           </div>
         )}
         <div
-          className={`rounded px-8 pt-6  pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
+          className={`rounded md:px-8 px-[0px]   pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
             loader && 'opacity-40' 
           }`}
         >

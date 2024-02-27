@@ -12,7 +12,7 @@ export function OrderCard({order}) {
   return (
     <li className="grid text-center shadow-lg">
       <Link
-        className=" flex md:grid items-center justify-center gap-4 p-4 md:gap-6 md:p-6  md:grid-cols-2"
+        className=" flex md:grid items-center md:justify-center justify-normal gap-4 p-4 md:gap-6 md:p-6  md:grid-cols-2"
         to={`/account/orders/${legacyOrderId}?${key}`}
         prefetch="intent"
       >

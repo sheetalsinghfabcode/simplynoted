@@ -24,7 +24,7 @@ function WalletAccordion({title, children, className,  accordion = false}) {
           </span>
       </div>
       <div
-        className={`overflow-hidden transition-max-height ${
+        className={`overflow-hidden width:90% overflow-x-auto transition-max-height ${
           isExpanded ? 'max-h-[1000px] ' : 'max-h-0 closing'
         }`}
       >

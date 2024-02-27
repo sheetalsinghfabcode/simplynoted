@@ -31,7 +31,6 @@ const Partner_referral = () => {
                     </h3>
                   </div>
                 </div>
-
                 <div className="underline-heading">
                   <div className="underline-text">
                     <input

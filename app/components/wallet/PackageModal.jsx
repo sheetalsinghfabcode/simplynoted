@@ -161,17 +161,17 @@ const PackageModal = ({
                             />
 
                             <div className="flex flex-col gap-[8px]">
-                              <div className="flex gap-[6px] items-start">
-                                <span className=" md:text-[15px] text-[12px]  font-bold">
+                              <div className="flex gap-[6px] whitespace-nowrap  items-start">
+                                <span className=" sm:text-[15px] text-[10px]  font-bold">
                                   {titleMetafield?.value}
                                 </span>
-                                <span className="md:text-[15px] text-[12px]  font-bold">
+                                <span className="sm:text-[15px] text-[10px]  font-bold">
                                   {variant.node.title}
                                 </span>
                               </div>
                               {descriptionMetafield?.value &&
                                 variant.node.price.amount !== '0.0' && (
-                                  <span className="md:text-[14px] text-justify text-[12px] font-light">
+                                  <span className="sm:text-[14px] text-justify text-[11px] font-light">
                                     {descriptionMetafield
                                       ? JSON.parse(descriptionMetafield?.value)
                                           .children[0].children[0]?.value

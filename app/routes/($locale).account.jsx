@@ -300,22 +300,22 @@ function Account({customer, heading, featuredData}) {
             </span>
           </div>
         </div>
-        <div className="flex flex-col bg-[#fff]  mx-auto items-center md:items-start md:flex-row gap-[23px] w-full">
-          <div className="flex flex-col items-center md:items-start w-full md:w-[20%] max-w-[200px] font-inter gap-[24px]">
+        <div className="flex flex-col bg-[#fff]  mx-auto items-center md:items-start md:flex-row md:gap-[23px] gap-[0px] w-full">
+          <div className="md:flex md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[500px] font-inter gap-[24px] overflow-y-auto">
             <>
               {tabs &&
                 tabs.length > 0 &&
-                tabs?.map((tab, i) => (
-                  <div key={i}>
+                tabs?.map((tab, i) => ( 
+                  <div className='' key={i}>
                     {i === 1 || i === 5 ? (
-                      <a
+                      <a 
                         target="_blank"
                         href={
                           i === 1
                             ? 'https://meetings.hubspot.com/rick24'
                             : 'https://simplynoted.leaddyno.com'
                         }
-                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
+                        className={`text-[16px] leading-[19.36px] whitespace-nowrap hover:text-[#0D0C22] cursor-pointer  ${
                           activeTab === i
                             ? 'text-[#0D0C22] font-semibold'
                             : 'text-[#6E6D7A] font-normal'
@@ -332,7 +332,7 @@ function Account({customer, heading, featuredData}) {
                             setActiveTab(i);
                           }
                         }}
-                        className={`text-[16px] leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
+                        className={`text-[16px] min-w-[233px] whitespace-nowrap	 leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
                           activeTab === i
                             ? 'text-[#0D0C22] font-semibold'
                             : 'text-[#6E6D7A] font-normal'
@@ -352,7 +352,7 @@ function Account({customer, heading, featuredData}) {
             >
               <button
                 onClick={() => setData(true)}
-                className="text-[16px] hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
+                className="text-[16px] whitespace-nowrap hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
               >
                 Log Out
               </button>
@@ -362,7 +362,7 @@ function Account({customer, heading, featuredData}) {
 
           <div className=" w-full  md:w-[80%]">
             {activeTab === 0 && (
-              <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+              <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex md:mt-[0px] mt-[23px] gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                 <CardComponent
                   imgSrc={sendcard}
                   title="Send Cards"

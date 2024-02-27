@@ -34,7 +34,7 @@ const APIIntegration = () => {
 export default APIIntegration;
 const API_GRAPH_QL = `#graphql
   query
-  {
+  {The quick brown fox jumps over the lazy dog
     page(id:"gid://shopify/Page/47245295721"){
     title
     seo{
