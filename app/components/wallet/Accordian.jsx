@@ -360,7 +360,6 @@ const Accordion = ({
     const payLoad = {
       subscriptionId: data.subscriptionId,
       subscriptionName: subscriptionTitle,
-      isSubscriptionOnly: true,
       packageDiscount: String(discount),
       packageQuantity: String(cards),
       packagePrice: String(amount),

@@ -20,7 +20,7 @@ const PaymentModal = ({
   setShowAccordion,
   setPurchaseModal,
   setPackageModal,
-  cancelText,
+  stripeCollection,
 }) => {
   const {
     selectedPlan,
@@ -44,6 +44,7 @@ const PaymentModal = ({
   const [paymentMethodId, setPaymentMethodId] = useState('');
 
   let customerid, fullName, userEmail;
+
 
   let productId = packageProduct?.replace(/[^0-9]/g, '');
   let variantId = subscriptionProduct?.replace(/[^0-9]/g, '');
@@ -102,7 +103,6 @@ const PaymentModal = ({
     } catch (error) {
       setPaymentLoader(false);
       setloader(false);
-
     }
   }
 
@@ -233,7 +233,7 @@ const PaymentModal = ({
       });
 
       const data = await response.json();
-      if(data.statusCode === 400) {
+      if (data.statusCode === 400) {
         setShowAccordion(false);
         setPurchaseModal(false);
         setPackageModal(false);
@@ -299,7 +299,7 @@ const PaymentModal = ({
           setPurchaseModal(false);
           setPackageModal(false);
           setPaymentLoader(false);
-          setUpdateModal(false)
+          setUpdateModal(false);
           setTimeout(() => {
             navigate('/account');
             setActiveTab(4);
@@ -378,7 +378,6 @@ const PaymentModal = ({
     const payLoad = {
       subscriptionId: data.subscriptionId,
       subscriptionName: subscriptionTitle,
-      isSubscriptionOnly: true,
       packageDiscount: String(discount),
       packageQuantity: String(cards),
       packagePrice: String(amount),
@@ -460,13 +459,17 @@ const PaymentModal = ({
                   Billing Address
                 </span>
                 <span className="mr-2">
-                {isBillingOpen || errors.length > 0 ? <FaAngleDown /> : <FaAngleUp />}
+                  {isBillingOpen || errors.length > 0 ? (
+                    <FaAngleDown />
+                  ) : (
+                    <FaAngleUp />
+                  )}
                 </span>
               </div>
               <div
                 className={`overflow-hidden 
                 ${
-                  (isBillingOpen || errors.length > 0) 
+                  isBillingOpen || errors.length > 0
                     ? 'max-h-[800px] transition-max-height'
                     : 'max-h-0'
                 }
@@ -560,7 +563,7 @@ const PaymentModal = ({
                         }}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
-                       {errors.city && (
+                      {errors.city && (
                         <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
                           {errors.city}
                         </p>
@@ -600,7 +603,7 @@ const PaymentModal = ({
                           State
                         </label>
                         <select
-                           onChange={(e) => {
+                          onChange={(e) => {
                             errors.state = '';
                             handleChange(e);
                           }}
@@ -729,9 +732,19 @@ const PaymentModal = ({
                         <DynamicButton
                           text="Complete Purchase"
                           onClickFunction={() => {
-                            if (validateForm()) {
+                            if (
+                              stripeCollection?.stripe?.subscription !==
+                                'Free' &&
+                              stripeCollection?.stripe?.subscriptionStatus ===
+                                'active'
+                            ) {
                               setPaymentLoader(true);
-                              createSubscription(paymentMethodId);
+                              paymentSave(stripeCollection?.stripe);
+                            } else {
+                              if (validateForm()) {
+                                setPaymentLoader(true);
+                                createSubscription(paymentMethodId);
+                              }
                             }
                           }}
                           className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"

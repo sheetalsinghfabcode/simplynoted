@@ -47,10 +47,6 @@ const WalletPlans = ({
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
-  console.log("WalletData",WalletData);
-
-
-
 
   return (
 <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
