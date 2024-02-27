@@ -3,12 +3,12 @@ import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 function Templates() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] md:mt-[0px] mt-[37px]  font-tiempos   font-bold ml-2">
+    <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px] md:mt-[0px] mt-[37px]  font-tiempos   font-bold ml-2">
       <span className="text-blue-500">6.</span> TEMPLATES
     </h2>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[20px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500"> 6.1.</span> Create A Message
           Template
         </h2>
@@ -28,6 +28,7 @@ function Templates() {
       <h2 className="text-[black] font-tiempos ml-[-2px]  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4  text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -49,10 +50,12 @@ function Templates() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <h2 className="text-[black] font-tiempos ml-[-2px]  mb-[7px] text-[23px] mt-[55px] font-bold ml-2">
           Body:
         </h2>
+        <div className='overflow-x-auto'>
         <table className="w-2/4  text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -83,12 +86,14 @@ function Templates() {
             </tr>
           </tbody>
         </table>
+
+        </div>
       </div>
       <div>
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Returns on success:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.templates,
@@ -102,7 +107,7 @@ function Templates() {
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Example:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.templates1,
@@ -115,7 +120,7 @@ function Templates() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500">6.2.</span> Retrieve All Message
           Templates
         </h2>
@@ -134,6 +139,7 @@ function Templates() {
         <h2 className="text-[black] font-tiempos   mb-[7px] text-[23px] mt-[55px] font-bold">
           Headers:
         </h2>
+        <div className='overflow-x-auto'>
         <table className="w-2/4 ml-[9px] text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -155,12 +161,14 @@ function Templates() {
             </tr>
           </tbody>
         </table>
+
+        </div>
       </div>
       <div>
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Returns on success:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.messageTemplates,
@@ -173,7 +181,7 @@ function Templates() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500"> 6.3.</span> Retrieve A Single
           Template
         </h2>
@@ -192,6 +200,7 @@ function Templates() {
       <h2 className="text-[black] font-tiempos mb-[7px] text-[23px] mt-[55px] font-bold">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -213,9 +222,11 @@ function Templates() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos mb-[7px] text-[23px] mt-[55px] font-bold">
         URL Parameters:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -234,10 +245,12 @@ function Templates() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
         Returns on success:
       </h2>
-      <div className="bg-[#f7f7f7] p-[28px]">
+      <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
         <pre>
           {JSON.stringify(
             ExposedAPIsResponse.products.singleTemplate,
@@ -249,7 +262,7 @@ function Templates() {
     </div>
     <div className="mt-[55px]">
       <div>
-        <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px]  font-tiempos   font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px]  font-tiempos   font-bold ml-2">
           <span className="text-blue-500"> 6.4.</span> Update A Template
         </h2>
         <div className="leading-[1.5rem] text-sm mt-[21px] ml-[9px]">
@@ -268,6 +281,7 @@ function Templates() {
       <h2 className="text-[black] font-tiempos mb-[7px] text-[23px] mt-[55px] font-bold">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -289,9 +303,11 @@ function Templates() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos mb-[7px] text-[23px] mt-[55px] font-bold">
         URL Parameters:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr>
@@ -310,9 +326,12 @@ function Templates() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos mb-[7px] text-[23px] mt-[55px] font-bold">
         Body:
       </h2>
+      <div className='overflow-x-auto'>
+
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -343,11 +362,12 @@ function Templates() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
           Returns on success:
         </h2>
-        <div className="bg-[#f7f7f7] p-[28px]">
+        <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
           <pre>
             {JSON.stringify(
               ExposedAPIsResponse.products.updateTemplate,
@@ -362,7 +382,7 @@ function Templates() {
           <h2 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
             Returns on success:
           </h2>
-          <div className="bg-[#f7f7f7] p-[28px]">
+          <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
             <pre>
               {JSON.stringify(
                 ExposedAPIsResponse.products.updateTemplate,
@@ -378,4 +398,4 @@ function Templates() {
   )
 }
 
-export default Templates
+export default Templates;

@@ -3,12 +3,12 @@ import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 function Orders() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos md:text-[33px] text-[27px] md:mt-[0px] mt-[37px] font-bold ml-2">
+    <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px] md:mt-[0px] mt-[37px] font-bold ml-2">
       <span className="text-blue-500">5.</span> ORDERS
     </h2>
     <div>
       <div>
-        <h2 className="text-[#001a5f] font-tiempos mt-[40px] md:text-[33px] text-[27px] font-bold ml-2">
+        <h2 className="text-[#001a5f] font-tiempos mt-[40px] sm:text-[33px] text-[20px] font-bold ml-2">
           <span className="text-blue-500">5.1.</span> Create An Order
         </h2>
         <div className="leading-[1.5rem] text-sm ml-[9px]">
@@ -29,6 +29,7 @@ function Orders() {
           Headers:
         </h2>
       </div>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm	 table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -50,11 +51,13 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <h2 className="text-[black] ml-[-2px] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           Body:
         </h2>
       </div>
+      <div className='overflow-x-auto'>
       <table className="min-w-full text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -126,11 +129,13 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <h2 className="text-[black] ml-[-2px] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           Recipient Object:
         </h2>
       </div>
+      <div className='overflow-x-auto'>
       <table className="min-w-full text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -227,11 +232,14 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+
+      </div>
       <div>
         <h2 className="text-[black] ml-[-2px] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           Recipient Object:
         </h2>
       </div>
+      <div className='overflow-x-auto'>
       <table className="min-w-full text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -328,10 +336,11 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos ml-[-2px]  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Returns on success:
       </h2>
-      <div className="bg-[#f7f7f7] p-[28px] w-[100%]">
+      <div className="bg-[#f7f7f7] overflow-x-auto p-[28px] w-[100%]">
         <pre>
           {JSON.stringify(
             ExposedAPIsResponse.products.createAnOrder,
@@ -343,7 +352,7 @@ function Orders() {
       <h2 className="text-[black] font-tiempos ml-[-2px]  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Example:
       </h2>
-      <div className="bg-[#f7f7f7] p-[28px]">
+      <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
         <pre>
           {JSON.stringify(
             ExposedAPIsResponse.products.createAnOrder1,
@@ -352,12 +361,13 @@ function Orders() {
           )}
         </pre>
       </div>
-      <div className="text-[#001a5f] font-tiempos mt-[40px] text-[33px]  ml-[-2px] font-bold ml-2">
+      <div className="text-[#001a5f] font-tiempos mt-[40px] sm:text-[33px] text-[20px]  ml-[-2px] font-bold ml-2">
         Types of Gift Cards:
       </div>
       <p className="text-[#555] text-[16px] mt-[20px] font-medium">
         1. Starbucks Gift Card
       </p>
+      <div className='overflow-x-auto'>
       <table className="min-w-[28%] mt-[12px] text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -384,10 +394,12 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div>
         <p className="text-[#555] text-[16px] mt-[20px] font-medium">
           2. Amazon Gift Card
         </p>
+        <div className='overflow-x-auto'>
         <table className="min-w-[28%] mt-[12px] text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -410,11 +422,13 @@ function Orders() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
       <div>
         <p className="text-[#555] text-[16px] mt-[20px] font-medium">
           3. Visa Gift Card
         </p>
+        <div className='overflow-x-auto'>
         <table className="min-w-[28%] mt-[12px] text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -437,11 +451,13 @@ function Orders() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
       <div>
         <p className="text-[#555] text-[16px] mt-[20px] font-medium">
           4. Home Depot Gift Card
         </p>
+        <div className='overflow-x-auto'>
         <table className="min-w-[28%] mt-[12px] text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -468,11 +484,13 @@ function Orders() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
       <div>
         <p className="text-[#555] text-[16px] mt-[20px] font-medium">
           5. Lowe’s Gift Card
         </p>
+        <div className='overflow-x-auto'>
         <table className="min-w-[28%] mt-[12px] text-sm table-auto">
           <thead>
             <tr className="text-[15px]">
@@ -499,12 +517,14 @@ function Orders() {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </div>
     <div>
-      <h2 className="text-[#001a5f] font-tiempos mt-[40px] md:text-[33px] text-[27px] font-bold ml-2">
+      <h2 className="text-[#001a5f] font-tiempos mt-[40px] sm:text-[33px] text-[20px] font-bold ml-2">
         <span className="text-blue-500">5.2.</span> Get Orders
       </h2>
+      <div className='overflow-x-auto'>
       <p className="mt-[17px] text-[16px] mt-[18px] leading-[27px] color-[black]  font-thin">
         <b>Description:</b> This endpoint gets all orders in the account.
       </p>
@@ -515,9 +535,11 @@ function Orders() {
       <p className="mt-[17px] text-[16px] mt-[15px] leading-[27px] color-[black]  font-thin">
         <b>Method:</b> GET
       </p>
+      </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Headers:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="w-2/4 text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -539,9 +561,11 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+      </div>
       <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
         Body:
       </h2>
+      <div className='overflow-x-auto'>
       <table className="min-w-full text-sm table-auto">
         <thead>
           <tr className="text-[15px]">
@@ -578,12 +602,13 @@ function Orders() {
           </tr>
         </tbody>
       </table>
+      </div>
       <div className="mt-[15px]">
         <p className="text-[#555] text-[20px] font-medium mb-[6px]">
           In response you will get
         </p>
       </div>
-      <div className="bg-[#f7f7f7] p-[28px]">
+      <div className="bg-[#f7f7f7] overflow-x-auto p-[28px]">
         <pre>
           {JSON.stringify(
             ExposedAPIsResponse.products.getOrders,

@@ -218,7 +218,6 @@ export default function Salesforce() {
           <div className="absolute hidden xl:block top-[362px] right-[316px] z-[-12]">
             <img className="w-[1084px]" src={CanvasOne} alt="Computer man" />
           </div>
-
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[32px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
@@ -343,7 +342,7 @@ export default function Salesforce() {
           </h2>
         </div>
         <div className="lg:flex justify-center grid">
-          <div className="md:mt-14 mt-0">
+          <div className="md:mt-14  mt-0">
             <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-1.png?v=1611260064" />
             <h2 className="w-[271px] text-center">
               Our team of handwriting robots will help you engage with vast
