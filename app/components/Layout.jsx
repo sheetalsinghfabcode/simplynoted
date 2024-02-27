@@ -430,7 +430,7 @@ function MenuMobileNav({menu, onClose}) {
                               <li>Get a Custom Quote</li>
                             </button>
                           </Link>
-                          <Link to="/simply-noted-plan">
+                          <Link to="/simply-noted-plans">
                             <li>Plans and Packages</li>
                           </Link>
                         </ul>
