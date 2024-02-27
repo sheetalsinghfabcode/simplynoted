@@ -304,23 +304,42 @@ const ContactTable = ({
     }
   };
 
+  // const handleSearchInputChange = (event) => {
+
+  //   const value = event.target.value;
+  //   setSearchText(value);
+  //   setSelectedCheckboxes([]);
+
+  //   // Filter the addresses based on the search term
+  //   if (value) {
+  //     const filtered = data.filter((address) =>
+  //       Object.values(address).some((field) =>
+  //         field.toString().toLowerCase().includes(value.toLowerCase()),
+  //       ),
+  //     );
+  //     setFilteredAddresses(filtered);
+  //   } else {
+  //     setFilteredAddresses(addresses);
+  //   }
+  // };
+
   const handleSearchInputChange = (event) => {
     const value = event.target.value;
     setSearchText(value);
-    setSelectedCheckboxes([]);
-
+  
     // Filter the addresses based on the search term
-    if (value) {
-      const filtered = data.filter((address) =>
+    if (value.trim() !== '') {
+      const filtered = addresses.filter((address) =>
         Object.values(address).some((field) =>
-          field.toString().toLowerCase().includes(value.toLowerCase()),
-        ),
+          field.toString().toLowerCase().includes(value.toLowerCase())
+        )
       );
       setFilteredAddresses(filtered);
     } else {
       setFilteredAddresses(addresses);
     }
   };
+  
 
   const uploadDataToAPI = async (data) => {
     setLoader(true);

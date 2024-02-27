@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import DynamicButton from '../DynamicButton';
 import {useLocation} from '@remix-run/react';
@@ -56,6 +56,7 @@ const StripeCard = ({
       console.error(error.message);
     }
   };
+
 
   const pathname = useLocation();
 
