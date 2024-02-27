@@ -499,7 +499,7 @@ const ManageSubscription = () => {
         }}
         filteredWalletData={filteredWalletData}
         stripeCollection={stripeCollection}
-        cancelText="Prev"
+        cancelText="Previous"
         confirmText="Continue To Checkout"
       />
 
