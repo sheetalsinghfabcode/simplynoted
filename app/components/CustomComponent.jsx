@@ -61,25 +61,25 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
         >
           <Link to={`/custom/${product.handle}`} prefetch="intent">
             <div className={clsx('grid gap-4')}>
-              <div className="card-image aspect-[4/5] bg-primary/5">
+              <div className="card-image aspect-[5/5] bg-primary/5">
                 <img
                   className="object-cover w-full fadeIn"
                   sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw"
-                  aspectRatio="4/5"
+                  aspectRatio="5/5"
                   src={product.image?.src}
                 />
               </div>
-              <div className="grid gap-1">
+              <div className="grid my-[10px]">
                 <Text
-                  className="w-full overflow-hidden whitespace-nowrap text-ellipsis text-center uppercase text-[14px] font-karla"
-                  as="h3"
+                  className="w-full overflow-hidden whitespace-nowrap text-ellipsis text-center uppercase text-[14px] leading-loose text-[#001a5f] font-karla"
+                  as="h2"
                 >
                   {product.title}
                 </Text>
-                <Text className="flex w-full justify-center gap-4">
+                <Text className="flex w-full justify-center gap-4 leadimg-5 text-[15px] font-medium">
                   {offPrice > 0 ? (
                     <span className="text-[red]">
-                      <span className="line-through text-[black]">
+                      <span className="line-through text-[black] pr-[5px]">
                         ${productPrice}
                       </span>
                       $
@@ -104,14 +104,14 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
           <div>
             <Link to={`/custom/${product.handle}`}>
               <DynamicButton
-                className="bg-[#001a5f] w-[100%] text-[#fff] py-[14px] px-[8px] mb-3"
+                className="bg-[#001a5f] w-[100%] font-normal  text-[#fff] py-[14px] px-[8px] mb-[10px]"
                 text="SINGLE CARD"
                 onClickFunction={() => ''}
               />
             </Link>
             <Link to={`/custom/${product.handle}?select=Bulk`}>
               <DynamicButton
-                className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
+                className="bg-[#ef6e6e] w-[100%] font-normal text-[#fff] py-[14px] px-[8px]"
                 text="BULK PURCHASE"
                 onClickFunction={() => ''}
               />
