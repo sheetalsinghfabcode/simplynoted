@@ -112,7 +112,6 @@ function Header({title, menu}) {
     walletPayment,
   } = useStateContext();
 
-
   return (
     <>
       <CartDrawer isOpen={isCartOpen} onClose={closeCart} />
@@ -196,11 +195,23 @@ export function MenuDrawer({isOpen, onClose, menu}) {
 }
 
 function MenuMobileNav({menu, onClose}) {
+  const [isInitialRender, setIsInitialRender] = useState(true);
+  const {
+    customerId,
+    setActiveTab,
+    setAccountTabName,
+    setIsAccountLoader,
+  } = useStateContext();
+  const navigate = useNavigate();
+  const pathname = useLocation();
   const [show, setShow] = useState(false);
   const [showSendCard, setShowSendCard] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
   const [showLearn, setShowLearn] = useState(false);
-
+  const [showAbout, setShowAbout] = useState(false);
+  const handleChangeAbout = () => {
+    setShowAbout(!showAbout);
+  };
   const handleChangeLearn = () => {
     setShowLearn(!showLearn);
   };
@@ -242,12 +253,12 @@ function MenuMobileNav({menu, onClose}) {
                     <div classNhame="">Business</div>
                   </Link>
                 ) : null}
-                {item.title === ''}
+                {/* {item.title === ''} */}
                 {item.title === 'Order' ? (
                   <>
                     <div className="">
                       <div
-                        className="flex justify-between mt-[-16px] items-center"
+                        className="flex justify-between items-center"
                         onClick={handleChangeSendCard}
                         style={{fontWeight: showSendCard ? 'bold' : 'normal'}}
                       >
@@ -298,9 +309,7 @@ function MenuMobileNav({menu, onClose}) {
                       )}
                     </div>
                   </>
-                ) : (
-                  <></>
-                )}
+                ) : null}
 
                 {item.title === 'Integrations' ? (
                   // <div className="">
@@ -421,8 +430,8 @@ function MenuMobileNav({menu, onClose}) {
                               <li>Get a Custom Quote</li>
                             </button>
                           </Link>
-                          <Link to="/roicalculator">
-                            <li>ROI Calculator</li>
+                          <Link to="/simply-noted-plan">
+                            <li>Plans and Packages</li>
                           </Link>
                         </ul>
                       </div>
@@ -467,15 +476,80 @@ function MenuMobileNav({menu, onClose}) {
                     )}
                   </div>
                 ) : null}
-                {item.title === 'About Us' ? (
-                  <Link onClick={onClose} to="/about-us">
-                    About Us
-                  </Link>
+                {item.title === 'About' ? (
+                  <div className="">
+                    <div
+                      className="flex justify-between items-center"
+                      onClick={handleChangeAbout}
+                      style={{fontWeight: showAbout ? 'bold' : 'normal'}}
+                    >
+                      About
+                      {showAbout ? (
+                        <img className="h-[12px]" src={arrow_down} alt="" />
+                      ) : (
+                        <img className="h-[12px]" src={arrow_rights} alt="" />
+                      )}
+                    </div>
+                    {showAbout && (
+                      <div className="">
+                        <ul
+                          onClick={onClose}
+                          className="text-thin ml-[8px]"
+                          style={{color: 'black'}}
+                        >
+                          {/* <Link to="/price">
+                          <li>Credit Packages</li>
+                        </Link> */}
+
+                          <Link to="/pages/about-us">
+                            <li>About Us</li>
+                          </Link>
+                          <Link to="/Video">
+                            <li>Tutorials</li>
+                          </Link>
+                          <Link to="#">
+                            <button
+                              onClick={(e) => {
+                                e.preventDefault();
+                                window.location.href =
+                                  'https://www.youtube.com/@simplynoted';
+                                return false;
+                              }}
+                            >
+                              <li>Video</li>
+                            </button>
+                          </Link>
+                          <Link to="/news">
+                            <li>Blog</li>
+                          </Link>
+                          <Link to="/pages/faq">
+                            <li>F.A.Q</li>
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 ) : null}
               </Text>
+              
             </Link>
           </span>
         ))}
+        <button className='flex' onClick={() => {
+          console.log("aaaaaaaaaaa");
+                        setActiveTab(0);
+                        setAccountTabName('General');
+                        if (customerId && pathname.pathname !== '/account') {
+                          setIsAccountLoader(true);
+                          navigate('/account');
+                          
+                        } else if (!customerId) {
+                          navigate('account/login');
+                        }
+                        onClose()
+                      }} >
+                  <div classNhame="">{customerId?"Account":"Login"}</div>
+                </button>
       </nav>
     </div>
   );
@@ -595,7 +669,6 @@ function DesktopHeader({isHome, menu}) {
   const stateContext = useStateContext() || {
     cartCountVal: 0,
     setCartCountVal: () => {},
-    
   };
 
   const {
@@ -615,7 +688,6 @@ function DesktopHeader({isHome, menu}) {
 
   const navigate = useNavigate();
   const pathname = useLocation();
-
 
   useEffect(() => {
     setIsInitialRender(false);
@@ -672,11 +744,11 @@ function DesktopHeader({isHome, menu}) {
           {(menu?.items || []).map((item) => {
             return (
               <div
-              onClick={() =>{
-                setWalletPayment(false)
-                setWalletPlan(false)
-                setWalletPurchase(false)
-              }}
+                onClick={() => {
+                  setWalletPayment(false);
+                  setWalletPlan(false);
+                  setWalletPurchase(false);
+                }}
                 key={item.id}
                 prefetch="intent"
                 // className={`${({isActive}) =>
@@ -747,8 +819,8 @@ function DesktopHeader({isHome, menu}) {
               className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-base !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
-                setActiveTab(0)
-                setAccountTabName("General")
+                setActiveTab(0);
+                setAccountTabName('General');
                 if (customerId && pathname.pathname !== '/account') {
                   setIsAccountLoader(true);
                   navigate('/account');
@@ -758,7 +830,7 @@ function DesktopHeader({isHome, menu}) {
               }}
             />
           )}
-        
+
           <DynamicButton
             // style={{padding: '11px 20px 10px 20px', fontWeight: '700 !important'}}
             text="REQUEST A SAMPLE"
@@ -993,18 +1065,10 @@ function FooterMenu({menu}) {
           </div>
           <div className="flex mt-5 sm:w-full  w-[50%] sm:mx-0 mx-auto gap-[10px] justify-center">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-              <img
-                className="w-[55px] h-[55px]"
-                src={linkdin}
-                alt=""
-              ></img>
+              <img className="w-[55px] h-[55px]" src={linkdin} alt=""></img>
             </a>
             <a href="#">
-              <img
-                className="w-[55px] h-[55px] "
-                src={fb}
-                alt=""
-              ></img>
+              <img className="w-[55px] h-[55px] " src={fb} alt=""></img>
             </a>
             <a href="#">
               <img

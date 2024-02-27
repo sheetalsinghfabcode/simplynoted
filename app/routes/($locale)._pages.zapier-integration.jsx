@@ -57,7 +57,8 @@ export default function Zapier() {
           <div className="mt-5 flex xl:justify-normal hidden xl:block justify-center xl:order-first">
             <div className="INTEGRATE flex justify-center">
               <button
-                onClick="window.location.href = 'https://zapier.com/apps/simply-noted/integrations'"
+                onClick={() => (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')}
                 className="mt-1 order-first text-lg font-bold text-white py-2 px-4 order-1	rounded"
               >
                 INTEGRATE NOW
@@ -215,9 +216,10 @@ export default function Zapier() {
           <div className="mt-5 flex xl:justify-normal hidden xl:block justify-center xl:order-first">
             <div className="xl:flex grid">
               <DynamicButton
-                text="START WRITING"
+                text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[30px]"
-                onClickFunction={() => navigate('/collections/best-sellers')}
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')}
               />
               <DynamicButton
                 text="TUTORIALS"
