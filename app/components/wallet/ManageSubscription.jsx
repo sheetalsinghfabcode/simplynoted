@@ -465,6 +465,7 @@ const ManageSubscription = () => {
 
   // Display the formatted date
 
+  console.log("stripeCollection",stripeCollection);
 
   return (
     <>
@@ -564,7 +565,7 @@ const ManageSubscription = () => {
         updateCard={updateCard}
         addCreditModal={addCreditModal}
         handlePurchaseCard={handlePurchaseCard}
-      />
+      /> 
       <>
         <div className="w-full max-w-[1640px] md:mt-[0px] mt-[23px] mx-auto md:px-[20px] px-[0px]">
           <div className="flex flex-col lg:flex-row w-full  gap-[30px] items-start">

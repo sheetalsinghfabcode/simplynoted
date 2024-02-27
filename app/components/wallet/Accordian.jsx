@@ -313,6 +313,7 @@ const Accordion = ({
       packageQuantity: Number(cards),
       packagePrice: amount,
       description: selectedPlan,
+    
       packageProduct: productId,
       subscriptionProduct: variantId,
     };
@@ -338,6 +339,7 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
+          
           setPaymentSuccessFullMessage(true);
           setTimeout(() => {
             setPaymentSuccessFullMessage(false);
@@ -364,6 +366,7 @@ const Accordion = ({
       packageQuantity: String(cards),
       packagePrice: String(amount),
       isAutorenew: true,
+      isSubscriptionOnly: true,
       subscriptionStartDate: data.subscriptionStartDate,
       subscriptionEndDate: data.subscriptionEndDate,
       subscriptionStatus: data.status ==="succeeded" ? "active" : data.status,
