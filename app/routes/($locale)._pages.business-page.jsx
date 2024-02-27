@@ -545,7 +545,7 @@ export default function bussniess() {
                       alt="business_arrow"
                     />
                     <img
-                      className="2xl:h-[400px] h-[420px] 2xl:ml-[80px] xl:ml-[5.5%] lg:ml-[7%] absolute 2xl:mt-[110px] mt-[91px] z-[-1]"
+                      className="2xl:h-[400px] h-[420px] 2xl:ml-[80px] xl:ml-[6.5%] lg:ml-[7%] absolute 2xl:mt-[110px] mt-[91px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />
@@ -553,7 +553,7 @@ export default function bussniess() {
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
                     <img
-                      className="click-link 2xl:w-[85px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
                       style={
                         integrated === 'salesforce'
                           ? {filter: 'grayscale(0)'}
@@ -564,7 +564,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('salesforce')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] lg:w-[30%] sm:w-[65px] w-[60px]  bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] sm:w-[65px] w-[60px]  bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
                       style={
                         integrated === 'zapier'
                           ? {filter: 'grayscale(0)'}
@@ -575,7 +575,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('zapier')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
                       style={
                         integrated === 'shopify'
                           ? {filter: 'grayscale(0)'}
@@ -586,7 +586,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('shopify')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer "
                       style={
                         integrated === 'hubspot'
                           ? {filter: 'grayscale(0)'}
@@ -597,7 +597,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('hubspot')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] lg:p-[10px] p-[13px] mt-7 rounded-full cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] sm:w-[65px] w-[60px] bg-[#f0f8ff] lg:p-[10px] p-[13px] mt-7 rounded-full cursor-pointer "
                       style={
                         integrated === 'api'
                           ? {filter: 'grayscale(0)'}
@@ -620,9 +620,9 @@ export default function bussniess() {
                   </span>
                 </div>
 
-                <div className="lg:hidden block w-[80%] mx-auto text-center mt-8">
+                <div className="lg:hidden block sm:w-[80%] w-full mx-auto text-center mt-8">
                   <div style={integrated === 'salesforce' ? BLOCK : NONE}>
-                    <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold  mt-[20px] mb-[20px">
+                    <div className="text-[#001a5f] sm:text-[30px] text-[22px] font-bold  mt-[20px] mb-[20px">
                       Salesforce Integration
                     </div>
                     <div className="text-[#707070] sm:text-[16px] text-[12px] leading-5 mt-[20px] mb-[25px] text-justify">
@@ -704,7 +704,7 @@ export default function bussniess() {
               </div>
               {/* Customizable */}
               <div className="lg:flex flex-wrap flex-row-reverse xl:mt-[260px] mt-14 grid ">
-                <div className="w-[70%]  text-right lg:mx-0 mx-auto">
+                <div className="sm:w-[70%] w-full text-right lg:mx-0 mx-auto">
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px] ">
                       <div className="text-center">
@@ -867,7 +867,7 @@ export default function bussniess() {
                       alt="business_arrow"
                     />
                     <img
-                      className="2xl:h-[310px] h-[340px] 2xl:ml-[82px] xl:ml-[5.5%] lg:ml-[6.8%] absolute 2xl:mt-[110px] mt-[82px] z-[-1]"
+                      className="2xl:h-[375px] h-[349px] 2xl:ml-[82px] xl:ml-[6.5%] lg:ml-[6.8%] absolute 2xl:mt-[110px] mt-[88px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />
@@ -875,7 +875,7 @@ export default function bussniess() {
 
                   <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
                     <div
-                      className="click-link 2xl:w-[22%] lg:w-[30%] lg:mt-0 mt-7 w-[70px] h-[70px] bg-[#f0f8ff] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] p-[15px] rounded-full  cursor-pointer lg:text-[14px] text-[12px]"
+                      className="click-link xl:w-[22%] lg:w-[26%] lg:mt-0 mt-7 w-[70px] h-[70px] bg-[#f0f8ff] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] p-[15px] rounded-full  cursor-pointer lg:text-[14px] text-[12px]"
                       style={
                         customizable === 'create_card' ? {color: '#7F00FF'} : {}
                       }
@@ -884,7 +884,7 @@ export default function bussniess() {
                       Create a Card
                     </div>
                     <div
-                      className="click-link 2xl:w-[22%] lg:w-[30%] w-[70px] h-[70px] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer lg:text-[14px] text-[12px]"
+                      className="click-link xl:w-[22%] lg:w-[26%] w-[70px] h-[70px] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer lg:text-[14px] text-[12px]"
                       style={
                         customizable === 'business_card'
                           ? {color: '#7F00FF'}
@@ -895,7 +895,7 @@ export default function bussniess() {
                       Business Card
                     </div>
                     <div
-                      className="click-link 2xl:w-[22%] lg:w-[30%] w-[70px] h-[70px] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] bg-[#f0f8ff] p-[20px] mt-7 rounded-full cursor-pointer lg:text-[14px] text-[12px]"
+                      className="click-link xl:w-[22%] lg:w-[26%] w-[70px] h-[70px] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] bg-[#f0f8ff] p-[20px] mt-7 rounded-full cursor-pointer lg:text-[14px] text-[12px]"
                       style={
                         customizable === 'gift_card' ? {color: '#7F00FF'} : {}
                       }
@@ -905,7 +905,7 @@ export default function bussniess() {
                     </div>
 
                     <div
-                      className="click-link 2xl:w-[22%] lg:w-[30%] w-[70px] h-[70px] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer lg:text-[14px] text-[12px]"
+                      className="click-link xl:w-[22%] lg:w-[26%] w-[70px] h-[70px] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer lg:text-[14px] text-[12px]"
                       style={
                         customizable === 'custom_card' ? {color: '#7F00FF'} : {}
                       }
@@ -926,7 +926,7 @@ export default function bussniess() {
                   </span>
                 </div>
 
-                <div className="lg:hidden block w-[80%] mx-auto text-center mt-8">
+                <div className="lg:hidden block sm:w-[80%] w-full mx-auto text-center mt-8">
                   <div style={customizable === 'create_card' ? BLOCK : NONE}>
                     <div className="text-[#001a5f] sm:text-[30px] text-[24px] font-bold  mt-[20px] mb-[20px]">
                       Create Your Own Card

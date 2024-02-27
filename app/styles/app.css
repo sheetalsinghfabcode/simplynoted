@@ -2536,7 +2536,7 @@ background-size: 360px;
     width: 54%;
   }
   .bottom_background {
-    margin-right: 0px;
+   background-size: 100% 100%;
   }
   .swiper-button-prev,
   .swiper-button-next {
@@ -2579,6 +2579,7 @@ background-size: 360px;
   .signup-title {
     background-image: none;
   }
+  
 }
 @media only screen and (max-width: 511px) {
   .custom_testing {
@@ -2602,6 +2603,18 @@ background-size: 360px;
   }
   .form-title {
     font-size: 12px;
+  }
+  .texts {
+    font-size: 15px;
+  }
+  .subscribe {
+    width: 8rem;
+    font-size: 14px;
+   
+    height: 55px;
+  }
+  .tab-content {
+    padding: 10px 15px;
   }
 }
 @media only screen and (max-width: 500px) {

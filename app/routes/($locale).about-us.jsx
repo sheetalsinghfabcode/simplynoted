@@ -16,21 +16,21 @@ export async function loader({request,context}){
 const AboutUs = () => {
   return (
     <>
-      <div className="md:max-w-full max-w-[400px] global-max-width-handler md:mr-auto ">
+      <div className=" global-max-width-handler  ">
         <div className="sm:mt-10 mt-7">
-          <div className="m-auto max-w-[900px] px-[15px] ">
+          <div className="m-auto max-w-[900px] sm:px-[15px] ">
             <div className="video-text ">
               <div className='justify-center items-center grid'>
-              <h2 className="text-center font-bold capitalize text-[37px]  text-[#001a5f] font-karla">
+              <h2 className="text-center font-bold capitalize sm:text-[37px] text-[27px] text-[#001a5f] font-karla">
                 Meet Simply Noted
               </h2>
               <img
-                className="w-[350px]  mt-5"
+                className="sm:w-[350px] w-[245px] mt-5"
                 src={about_underline}
                 alt="about-underline"
               />
               </div>
-              <p className="text-center max-w-[30rem] mt-[10px] mx-auto md:text-[18px] text-[14px] leading-5 pb-[30px] text-[#696969]">
+              <p className="text-center max-w-[30rem] mt-[10px] mx-auto md:text-[18px] text-[14px] sm:leading-5 pb-[30px] text-[#696969]">
                 Simply Noted enhances customer relationships through the unique
                 power of authentic handwritten notes
               </p>
@@ -53,7 +53,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div className="max-w-[1000px] mt-[50px] mx-auto px-[15px]">
+        <div className="max-w-[1000px] mt-[50px] mx-auto sm:px-[15px]">
           <div className="bg-[#ee7272] p-[30px] text-white">
             <div className="flex items-center md:gap-[50px] md:flex-nowrap flex-wrap gap-[18px]">
               <div className="md:w-[50%] md:order-none order-2 w-full ">

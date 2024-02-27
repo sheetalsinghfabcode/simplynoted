@@ -631,7 +631,7 @@ console.log(arrCardPrice,"arrr cardPrice");
               <div className="col-6 md:w-[49%] w-full rounded h-fit shadow-outer-custom ">
                 <div className=" max-h-[600px] p-[20px] overflow-y-auto">
                   <div className="address-data">
-                    <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
+                    <h3 className="sm:text-[26px] text-[15px] my-8 font-bold">
                       Your Info (return/sender address)
                     </h3>
                     <DynamicButton
@@ -654,7 +654,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       (item,index) => (
                         <div
                         key={index}
-                          className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold text-[14px] cursor-pointer flex items-center"
+                          className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold sm:text-[14px] text-[12px] cursor-pointer flex items-center"
                           onClick={() => handleCheckboxChange2(item)}
                         >
                           <input
@@ -711,7 +711,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                           (item, index) => (
                             <div
                             key={index}
-                              className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold flex items-center text-[14px] cursor-pointer"
+                              className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold flex items-center sm:text-[14px] text-[12px] cursor-pointer"
                               onClick={() => handleCheckboxChange(item)}
                             >
                               <input
@@ -785,7 +785,7 @@ console.log(arrCardPrice,"arrr cardPrice");
               )}
 
               <div className="col-6 md:w-[49%] w-full  shadow-outer-custom  rounded">
-                <div className="max-h-[600px] p-[20px] overflow-y-auto mt-10 ">
+                <div className="max-h-[600px] sm:p-[20px] py-[15px] px-3 overflow-y-auto mt-10 ">
                   <div className="address-data">
                     <h3 className="sm:text-[30px] text-[18px] font-bold mb-5">
                       Add a Gift Card
@@ -794,7 +794,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       <div className="col-4 mt-4 font-bold ">
                         Select Gift Card:
                       </div>
-                      <div className="col-8 mt-3 pr-0 w-[60%] border-b-[1px] border-[#e8e1e1]">
+                      <div className="col-8  pr-0 w-[58%] border-b-[1px] border-[#e8e1e1]">
                         <select
                           className="w-full font-karla font-normal text-black border-none"
                           onChange={(e) => cardvalFunc(e.target.value)}
@@ -818,7 +818,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       <div className="col-4 mt-4 font-bold ">
                         Select Gift Price:
                       </div>
-                      <div className="col-8 mt-3 pr-0 w-[60%] border-b-[1px] border-[#e8e1e1]">
+                      <div className="col-8 pr-0 w-[58%] border-b-[1px] border-[#e8e1e1]">
                         {cardPrice ? (
                           // <div>heelooo</div>
                           <select

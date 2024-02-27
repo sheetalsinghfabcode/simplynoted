@@ -20,7 +20,7 @@ const Gift_card = () => {
             <div className="grid">
                 <div className=''>
                   <img
-                    className="p-0 m-0 h-auto static  rounded-[12px] 2xl:max-h-[170px] lg:max-h-[160px]  max-h-[200px] w-full "
+                    className="p-0 m-0  static  rounded-[12px] max-h-[218px] xl:h-[170px] lg:h-[150px] md:h-[200px] h-[230px] w-full "
                     src="https://simplynoted.com/cdn/shop/files/0fc6819ba12f512fcce1b6f7ccaa582b.jpg?v=1708348430"
                     alt="gift-card"
                   />

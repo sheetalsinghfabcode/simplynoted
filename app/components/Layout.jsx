@@ -132,7 +132,7 @@ function Header({title, menu}) {
       <MobileHeader
         isHome={isHome}
         title={
-          <div style={{minWidth: '170px'}}>
+          <div style={{minWidth: '140px'}}>
             <img
               className="max-w-full"
               src={nav_logo}
@@ -1063,16 +1063,24 @@ function FooterMenu({menu}) {
           <div className="lg:w-[200px] sm:w-[165px] w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
           </div>
-          <div className="flex mt-5 sm:w-full  w-[50%] sm:mx-0 mx-auto gap-[10px] justify-center">
+          <div className="flex mt-5 sm:w-full  w-[50%] sm:mx-0 mx-auto gap-[10px] justify-center items-center">
             <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
-              <img className="w-[55px] h-[55px]" src={linkdin} alt=""></img>
-            </a>
-            <a href="#">
-              <img className="w-[55px] h-[55px] " src={fb} alt=""></img>
+              <img
+                className="w-[55px] h-[53px]"
+                src={linkdin}
+                alt=""
+              ></img>
             </a>
             <a href="#">
               <img
-                className="w-[55px] h-[55px] ml-[-3px]"
+                className="w-[55px] sm:h-[55px] h-[50px]"
+                src={fb}
+                alt=""
+              ></img>
+            </a>
+            <a href="#">
+              <img
+                className="w-[55px] sm:h-[55px] h-[50px] ml-[-3px]"
                 src={twitter}
                 alt=""
               ></img>
