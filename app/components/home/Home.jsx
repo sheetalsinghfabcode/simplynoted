@@ -11,7 +11,7 @@ export default function Home() {
   const Navigate = useNavigate();
   return (
     <div className="sm-only:mt-[35px]">
-      <div className="flex 2xl:items-start items-center flex-col tab:flex-row justify-center tab:justify-between items-center gap-[25px] overflow-hidden">
+      <div className="flex 2xl:items-start items-center flex-col tab:flex-row justify-center tab:justify-between  gap-[25px] overflow-hidden">
         {/* LEFT IMAGE  */}
         <div>
           <img
@@ -21,8 +21,8 @@ export default function Home() {
           />
         </div>
         {/* MIDDLE SECTION  */}
-        <div className="flex flex-col flex-wrap justify-center items-center text-[34px] 2xl:text-[38px] max-w-[75vw] gap-5 2xl:mt-[50px]">
-          <span className="text-center leading-[45px] font-bold text-[#001a5f]">
+        <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5 2xl:mt-[50px]">
+          <span className="text-center sm:leading-[45px] leading-7 font-bold text-[#001a5f]">
             Send Real Handwritten Notes to your
           </span>
           <div className="typewriter-bottom-line font-dente">
@@ -75,12 +75,12 @@ export default function Home() {
         {/* RIGHT IMAGE */}
         <div className="w-full tab:w-auto relative">
           <img
-            className="-rotate-6 max-w-[63vw] tab:max-w-[24vw]"
+            className="-rotate-6 sm:max-w-[42vw] max-w-[63vw] tab:max-w-[24vw] relative tab:left-0 sm:left-[130px] left-0"
             src={CardKiller}
             alt="CardKillerpic"
           />
           <img
-            className="absolute top-[50px] right-0 max-w-[57vw] tab:hidden"
+            className="absolute sm:top-[80px] top-[50px] sm:right-[100px] right-0 sm:max-w-[39vw] max-w-[57vw] tab:hidden"
             src={thankyou}
             alt="Thankyou"
           />

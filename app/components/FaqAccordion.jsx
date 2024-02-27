@@ -15,11 +15,11 @@ function FaqAccordion({ title, children, className, accordion = false }) {
         onClick={toggleAccordion}
       >
         <div className='flex w-full justify-between gap-[10px] items-center font-karla py-[5px]'>
-          <span className="md:text-[20px] text-[15px] font-karla text-black font-bold">
+          <span className="md:text-[20px] sm:text-[15px] text-[13px] font-karla text-black font-bold">
             {title}
           </span>
-          <span className="flex justify-center mr-[20px]">
-              <IoIosArrowForward className={`relative text-[20px] icon-transition transform ${ isExpanded ? 'rotate-90' : ''} `} />
+          <span className="flex justify-center sm:mr-[20px] mr-2">
+              <IoIosArrowForward className={`relative sm:text-[20px] text-[14px] icon-transition transform ${ isExpanded ? 'rotate-90' : ''} `} />
           </span>
         </div>
       </div>

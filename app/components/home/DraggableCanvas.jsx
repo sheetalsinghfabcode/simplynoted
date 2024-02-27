@@ -98,14 +98,14 @@ const DraggableCanvas = () => {
   }, [isDragging]);
 
   return (
-    <div className="bg-[#324879] pt-[5rem] pb-[12rem]">
-      <div className="bg-[#324879] flex flex-col gap-[60px] pt-[35px] pb-[35px] items-center justify-center global-max-width-handler">
+    <div className="bg-[#324879] sm:pt-[5rem] pt-[2rem]  md:pb-[12rem] pb-[5rem]">
+      <div className="bg-[#324879] flex flex-col sm:gap-[60px] gap-[40px] pt-[35px] pb-[35px] items-center justify-center overflow-hidden global-max-width-handler">
         <div className="text-white -tracking-[1.2px] mb-[25px] font-bold text-[25px] md:text-[30px] tt-block-title">
           Real Handwritten Notes
         </div>
         {/* side divs with canvas  */}
         <div className="w-full relative flex justify-center">
-          <div className="hidden lg:block absolute text-[18px] text-[white] top-[-8%]">
+          <div className=" absolute text-[18px] text-[white] sm:top-[-8%] top-[-14%]">
             <div className="">
               <span className="pr-[130px]">SimplyNoted</span>{' '}
               <span className="absolute left-[138px]">Typed</span>
@@ -212,7 +212,16 @@ const DraggableCanvas = () => {
               />
             </div>
           </div>
+          
         </div>
+        <div className='lg:hidden flex  justify-end'>
+            <ul className='text-[18px] text-[white] list-disc w-[85%] grid gap-[20px]'>
+              <li >Personalize each card with each recipient's name</li>
+              <li > Realistic handwriting with real ink, without the work</li>
+              <li >Add your own signature and customizations</li>
+              <li>Boring, impersonal typed note</li>
+            </ul>
+          </div>
       </div>
     </div>
   );
