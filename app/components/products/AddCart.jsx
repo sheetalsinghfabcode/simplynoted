@@ -23,7 +23,6 @@ export function AddCart({
   variantsVal,
   metafields
 }) {
-  console.log(data,"gift card data");
   const {addressForm, setAddressForm, setEditAddress,setProductShow} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
@@ -128,7 +127,6 @@ export function AddCart({
     // }
     // Replace with your desired value
     if (selectedOrder == 'Single Card') {
-      console.log(productData,"----productData");
       setVariantID(productData?.id?.match(/\d+/g).join(''));
       setFinalPrice((productData?.price?.amount -(productData?.price?.amount * discountedCount)/100).toFixed(2))
     } else {
@@ -150,7 +148,6 @@ export function AddCart({
     }
   }, []);
   const findMatchingVariant = async(variants, targetValue,discount) => {
-    console.log(variants,"variants from edit");
     let matchedVariant = null;
     for (let i = 0; i < variants.length; i++) {
       const variant = variants[i];
@@ -248,10 +245,14 @@ export function AddCart({
     }
   }
   const handleCheckboxChange = (item) => {
+    console.log(selectedItem,"editFor selected Item");
+    console.log(item,"handleCheck box on click");
     setSelectedItem(item);
     if(selectedItem == item){
       setSelectedBoxCheck(!selectedBoxCheck)
     setSelectedItem(null);
+    } else{
+      setSelectedBoxCheck(false)
     }
   };
   const handleCheckboxChange2 = (item) => {
@@ -259,6 +260,8 @@ export function AddCart({
     if(selectedItem2 == item){
     setSelectedBoxCheck2(!selectedBoxCheck2)
     setSelectedItem2(null);
+    } else {
+      setSelectedBoxCheck2(false)
     }
   };
   
@@ -410,7 +413,7 @@ console.log(arrCardPrice,"arrr cardPrice");
   function onClickAddCart() {
     console.log(selectedItem,selectedItem2,"selected cheeck");
     setLoader(true);
-    if (editOrderValue?.index >= 0 && selectedItem2) {
+    if (editOrderValue?.index >= 0 && selectedItem2 &&((selectedOrder === 'Single Card' && selectedItem)|| selectedOrder !== 'Single Card')) {
       const storedData = JSON.parse(localStorage.getItem('mydata'));
 
       if (

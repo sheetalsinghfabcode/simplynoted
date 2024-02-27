@@ -1049,7 +1049,7 @@ export default function FlatCustomisableCard({
       )}
 
       <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap  lg:flex-row flex-col">
+        <div className="min-h-[612px] flex justify-center items-center flex-wrap  lg:flex-row flex-col">
           <div
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "
             style={{minHeight: '564px'}}
