@@ -565,7 +565,7 @@ console.log(arrCardPrice,"arrr cardPrice");
 
   function onClickOFAddCartBtn() {
     if (offPrice > 0) {
-      newDiscountedCard();
+      onClickAddCart(); //before here was newDiscountedCard function
     } else {
       onClickAddCart();
     }

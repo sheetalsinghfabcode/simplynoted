@@ -24,6 +24,7 @@ export function CheckoutData({
   postalId,
   postalId2,
 }) {
+  console.log(cartData,"final cartData value ");
   const stripe = loadStripe(`${StripeKey}`);
   let customerid, fullName, userEmail, firstName, lastName, selectedText;
   const [showWallet, setShowWallet] = useState(true);
