@@ -146,6 +146,7 @@ function Header({title, menu}) {
       <div className="max-w-full md:px-[40px] px-[20px] w-full  sm:pt-[5px]  pt-[25px]">
         {pathname.pathname !== '/' &&
           pathname.pathname !== '/cart' &&
+          pathname.pathname !== '/account/recover' &&
           pathname.pathname !== '/account/login' &&
           pathname.pathname !== '/account/register' && (
             <Breadcrumbs
@@ -684,6 +685,8 @@ function DesktopHeader({isHome, menu}) {
     setWalletPayment,
     setWalletPurchase,
     setLoginModal,
+    checkLogin,
+    setCheckLogin
   } = stateContext;
 
   const navigate = useNavigate();
@@ -844,9 +847,9 @@ function DesktopHeader({isHome, menu}) {
       </header>
       <LoginModal
         title={' Create a Card'}
-        show={loginModal}
-        setLoginModal={setLoginModal}
-        onCancel={() => setLoginModal(false)}
+        show={checkLogin}
+        setLoginModal={setCheckLogin}
+        onCancel={() => setCheckLogin(false)}
         confirmText="Login"
         cancelText="Register"
         cross={true}
@@ -894,16 +897,34 @@ const FlyoutLink = ({children, href, FlyoutContent, data}) => {
 };
 
 const PricingContent = ({props}) => {
+  const navigate = useNavigate()
+  const {customerId,setCheckLogin} = useStateContext()
+  console.log(props,"nav bar data");
+  function onCLickCheck(){
+    if(!customerId){
+      setCheckLogin(true)
+    } else{
+      navigate('/customise-your-card')
+    }
+  }
   return (
     <div className="w-64 bg-wheat p-6 shadow-xl">
       {props.map((item) => (
         <div key={item.id} className="mb-3 space-y-3 ">
+          {item.to === "/customise-your-card"?
+          
+          <button className="block text-sm hover:underline font-[400]" onClick={()=>onCLickCheck()}
+          >
+            {item.title}
+
+          </button>:
           <Link
             to={item.to}
             className="block text-sm hover:underline font-[400]"
           >
             {item.title}
           </Link>
+        }
         </div>
       ))}
     </div>

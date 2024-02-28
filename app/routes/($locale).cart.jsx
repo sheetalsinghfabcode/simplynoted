@@ -340,6 +340,97 @@ export default function AddCartFunc() {
     );
     setTotalPrize(prices);
   }
+  // async function newDiscountedCard(productTitle,productImage,productPrice) {  
+  //   let failArr = []
+  //   // try {
+  //     // setLoader(true)
+  //     let tagsData = `customise_card, customise_card_edited, packageDiscount_${40}`;
+
+  //     const res = await fetch(
+  //       'https://testapi.simplynoted.com/api/new-discounted-card',
+  //       {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           Authorization:
+  //             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
+  //         },
+  //         body: JSON.stringify({
+  //           quantity: 1,
+  //           title: productTitle,
+  //           tags: tagsData,
+  //           featuredImage: productImage,
+  //           price: productPrice,
+  //         }),
+  //       },
+  //     );
+  //     const json = await res.json();
+  //     return json
+  //     console.log(json,"***** response of new discounted");
+  //     if (json.result) {
+  //       return json.result.product.variants[0].id
+  //       setApiVariantID(json.result.product.variants[0].id);
+  //       // setLoader(false)
+  //     }
+  //   // } catch (error) {
+  //   //   // newDiscountedCard(productTitle,productImage,productPrice)
+  //   //   console.log(error, 'error in new discounted adding');
+  //   //   // failArr.push()
+  //   // }
+  //   // finally {
+
+  //   // }
+  // }
+  // async function onCLickOfCheckoutBtn(){
+  //   console.log(cartData,"all card data ");
+    
+  //   let createdProducts = [];
+  //   let errorProducts = [1,1,0,1];
+  //   let i=0
+  //   for(let i = 0; i<cartData.length; i++){
+  //     let updatedCartData = cartData[i] 
+  //     console.log(updatedCartData.variant_id,"variant id's");
+  //     console.log(updatedCartData,"logs for every product");
+  //     if(updatedCartData.productTitle && updatedCartData.productImg && updatedCartData.price){
+  //       const res = await newDiscountedCard(updatedCartData.productTitle,updatedCartData.productImg,updatedCartData.price)
+  //       console.log(res,"api given response");
+  //       console.log(res.errors.length,"error length from response");
+  //       if(res.errors.length>0){
+  //         console.log("log inside error check");
+  //         errorProducts.push({productTitle:updatedCartData.productTitle,productImg:updatedCartData.productImg,price:updatedCartData.price})
+  //       } else {
+  //       updatedCartData.variant_id = res.result.product.variants[0].id          
+  //       }
+  //     }
+  //   }
+
+  //   if(errorProducts.length>0) {
+  //     // for(let i=0; i<errorProducts.length; i++){
+  //     //   let prodValue = errorProducts[i] 
+  //     //   if(prodValue ==1){
+  //     //     console.log("for loopget ones");
+  //     //   } else {
+  //     //     errorProducts.push(1)
+  //     //     console.log(" for loop0 ");
+  //     //   }
+  //     // }
+  //   }
+  //   while (i < errorProducts.length) {
+  //     let prodValue = errorProducts[i];
+    
+  //     if (prodValue == 1) {
+  //       console.log(" while get ones");
+  //     } else {
+  //       errorProducts.push(1);
+  //       console.log("while0 ");
+  //     }
+    
+  //     i++;
+  //   }
+  //   console.log(arrOfRes,"variant id response");
+  //   console.log(cartData,"2nd time card data ");
+
+  // }
 
   return (
     <div className="global-max-width-handler">
@@ -991,6 +1082,7 @@ export default function AddCartFunc() {
                               className="bg-[#EF6E6E] w-[100%]  lg:text-[16px] text-[14px] text-[#fff] p-[12px] rounded border-[1px] border-[#000] font-bold flex justify-center mt-2"
                               onClick={() => {
                                 if (customerId) {
+                                  // onCLickOfCheckoutBtn()
                                   setShowCartPage(false);
                                   window.scrollTo({
                                     top: 0,
@@ -1343,7 +1435,7 @@ export default function AddCartFunc() {
       )}
 
       <LoginModal
-        title={'Update a cart'}
+        title={'Place an order'}
         show={loginModal}
         setLoginModal={setLoginModal}
         onCancel={() => setLoginModal(false)}

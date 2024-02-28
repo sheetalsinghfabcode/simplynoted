@@ -81,6 +81,7 @@ export function MessageWriting({
   const [nonusAddress, setnonUsAddress] = useState(null);
   const [instructionModal, setInstructionModal] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [aiTextLoader, setAiTestLoader] = useState(false);
   const [fontSize, setFontSize] = useState(editFontSize ? editFontSize : '');
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
@@ -123,7 +124,8 @@ export function MessageWriting({
   );
   const [disableSelectAddressBtn, setDisableSelectAddressBtn] = useState(false);
   const [confirmModal, setConfirmModal] = useState(true);
-
+  const [delTemplateState, setDelTemplateState] = useState(false);
+  const [delTempValue, setDelTempValue] = useState(false);
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -434,7 +436,7 @@ export function MessageWriting({
             className={` overflow-hidden justify-center h-[48px] w-[100%] px-[2rem]`}
           >
             <span
-              className={`flex w-full h-full bbb`}
+              className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.footer.fontType,
                 fontSize: metafields.footer.fontSize,
@@ -451,7 +453,7 @@ export function MessageWriting({
             {qrValue && qrValue.length ? (
               <img
                 src={qrValue}
-                className="h-[50px] w-[50px] absolute  right-[10px] bottom-[10px]"
+                className="h-[50px] w-[50px] absolute right-[10px] bottom-[10px]"
               />
             ) : (
               ''
@@ -830,7 +832,7 @@ export function MessageWriting({
     setValToGen(null);
   }
   async function aiGenrateMess() {
-    setLoader(true);
+    setAiTestLoader(true);
     try {
       const res = await fetch('https://api.simplynoted.com/api/ai-generate', {
         method: 'POST',
@@ -844,9 +846,9 @@ export function MessageWriting({
 
       const json = await res.json();
       setaiText(json.message);
-      setLoader(false);
+      setAiTestLoader(false);
     } catch (error) {
-      setLoader(false);
+      setAiTestLoader(false);
       console.error(error, 'error at Ai generated message ');
     }
   }
@@ -1045,20 +1047,20 @@ export function MessageWriting({
           {loadTempData &&
             filteredList(loadTempData, searchData).map((item, index) => (
               <div className="" key={index}>
-                <div className="border border-black-600 mt-[12px] lg:h-[74px] h-[59px] mb-[12px] px-[10px] items-center w-full flex">
+                <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
                   <div className="w-full font-font-semibold  text-[14px]">
                     {item.templateName}
                   </div>
                   <div className="w-full flex items-center gap-[11px] justify-end">
                     <img
                       src={TickImg}
-                      className="2xl:w-[12%] w-[17%] h-[5%] cursor-pointer"
+                      className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
                       onClick={() => setLoadedTemVal(item.customMessage)}
                     />
                     <img
                       src={Del}
-                      className="2xl:w-[12%] w-[17%] h-[5%] cursor-pointer"
-                      onClick={() => deleteTemp(item._id)}
+                      className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
+                      onClick={() => onConfirmDeleteTemplate(item._id)}
                     />
                   </div>
                 </div>
@@ -1088,9 +1090,16 @@ export function MessageWriting({
       const json = await res.json();
 
       setOnDelTemp(!onDelTemp);
+      setDelTemplateState(false);
+      setLoadTemModal(true);
     } catch (error) {
       console.error(error, 'delete Template');
     }
+  }
+  function onConfirmDeleteTemplate(val) {
+    setDelTempValue(val);
+    setDelTemplateState(true);
+    setLoadTemModal(false);
   }
   const closeModal = () => {
     setIsModalOpen(false);
@@ -1157,6 +1166,11 @@ export function MessageWriting({
     document.body.removeChild(anchor);
     setConfirmModal(false);
   }
+  function cancelCompDelTem() {
+    setDelTemplateState(false);
+    setLoadTemModal(true);
+  }
+  console.log(metafields, 'metafileds data', qrValue);
   return (
     <>
       <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
@@ -1506,11 +1520,16 @@ export function MessageWriting({
                 ref={ref2}
                 style={{
                   height:
-                    metafields.footer &&
-                    metafields.header &&
-                    metafields.footer.data &&
-                    metafields.header.data &&
-                    name2.length > 0
+                    (metafields.footer &&
+                      metafields.header &&
+                      metafields.footer.data &&
+                      metafields.header.data &&
+                      name2.length > 0) ||
+                    (metafields.footer &&
+                      metafields.header &&
+                      metafields.header.data &&
+                      qrValue &&
+                      name2.length > 0)
                       ? '121px'
                       : (metafields.footer &&
                           metafields.header &&
@@ -1522,6 +1541,7 @@ export function MessageWriting({
                           metafields.header &&
                           metafields.footer.data &&
                           name2.length > 0) ||
+                          (metafields.footer && metafields.header && metafields.header.data && qrValue )||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data &&
@@ -1533,6 +1553,7 @@ export function MessageWriting({
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data) ||
+                          (qrValue)||
                         name2.length > 0
                       ? '221px'
                       : '280px',
@@ -1619,9 +1640,9 @@ export function MessageWriting({
                     }}
                   >
                     <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
-                      {loader ? (
+                      {/* {loader ? (
                         <CircularLoader color="#ef6e6e" />
-                      ) : (
+                      ) : ( */}
                         <>
                           <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
                             <FiUploadCloud />
@@ -1693,7 +1714,7 @@ export function MessageWriting({
                           </div>
                           <AfterUpload />
                         </>
-                      )}
+                      {/* // )} */}
                     </div>
                   </div>
                 ) : (
@@ -1874,7 +1895,7 @@ export function MessageWriting({
                 </text>
               </div>
               <div>
-                {loader ? (
+                {aiTextLoader ? (
                   <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
                     <CircularLoader color="#ef6e6e" />
                   </div>
@@ -1966,6 +1987,15 @@ export function MessageWriting({
         confirmText="Download"
         cancelText="Exit"
       />
+      <ConfirmationModal
+        show={delTemplateState}
+        message={'Are you sure you want to delete this template?'}
+        onCancel={() => cancelCompDelTem()}
+        onConfirm={() => deleteTemp(delTempValue)}
+        confirmText={'Delete'}
+        cancelText={'Cancel'}
+      />
+
       <Instruction
         isOpen={isModalOpen}
         title="INSTRUCTIONS FOR BULK UPLOAD"
