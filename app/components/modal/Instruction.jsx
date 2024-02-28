@@ -40,7 +40,7 @@ function Instruction({
       ariaHideApp={false}
     >
       <div className="">
-        <div className="relative">
+        <div className="relative w-[100%] max-w-[100%]">
           {/* {close && (
             <span
               className="absolute cursor-pointer !leading-[0] right-[10px] text-[40px]"

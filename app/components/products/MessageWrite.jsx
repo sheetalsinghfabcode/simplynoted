@@ -1367,7 +1367,7 @@ export function MessageWriting({
                 onClick={() => setIsOpen(true)}
               />
               <span
-                className="cursor-pointer font-bold text-[#836FE5] text-[14px] lg:mb-[7px] underline"
+                className="cursor-pointer font-bold text-[#836FE5] text-[13px] lg:mb-[7px] underline"
                 onClick={() => setIsOpen(true)}
               >
                 <span className="text-[red]">Try our</span> New AI Message
@@ -1450,13 +1450,13 @@ export function MessageWriting({
               <div className="flex flex-col justify-between gap-[24px]">
                 <div className="flex justify-between font-bold text-[#1b5299] text-[12px] md:text-[14px] gap-[20px] items-start xl:mr-3 mb-2">
                   <button
-                    className="templateButton cursor-pointer border border-[#1b5299] rounded-[5px] p-2 h-[44px]"
+                    className="templateButton cursor-pointer border whitespace-nowrap border-[#1b5299] rounded-[5px] p-2 h-[44px]"
                     onClick={() => OpenAddTemplateBox()}
                   >
                     Save New Template
                   </button>
                   <button
-                    className="templateButton cursor-pointer border border-[#1b5299] rounded-[5px] p-2 h-[44px]"
+                    className="templateButton cursor-pointer whitespace-nowrap border border-[#1b5299] rounded-[5px] p-2 h-[44px]"
                     onClick={() => OpenLoadTemp()}
                   >
                     Load Save Template
@@ -1885,14 +1885,14 @@ export function MessageWriting({
           children={
             <div className="w-[100%] h-[80">
               <div className="flex">
-                <h2 className="font-bold text-[black] md:text-[28px] text-[20px] w-[600px]">
+                <h2 className="font-bold text-[black] md:text-[28px] text-[19px] w-[600px]">
                   AI Message Assistant
                 </h2>
               </div>
               <div className="mt-[12px]">
-                <text className="text-[black]">
+                <text className="text-[black] text-[15px]">
                   Type in words or a phrase to use our AI Assistant to
-                  <br /> help generate a great message
+                  help generate a great message
                 </text>
               </div>
               <div>
@@ -1917,7 +1917,7 @@ export function MessageWriting({
                     id="generate-msg"
                     disabled=""
                     onClick={() => aiGenrateMess()}
-                    className="w-full"
+                    className="bg-[#ef6e6e] w-full h-[45px]  bg-red-500 text-white text-lg rounded-md mt-2 transition-all duration-500 ease-in-out"
                   >
                     Generate Message
                   </button>

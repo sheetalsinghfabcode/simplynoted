@@ -84,7 +84,7 @@ export default function AddressBook() {
           </div>
         )}
         {addressForm && (
-          <div className="w-full max-w-[1640px] px-[20px] mx-auto">
+          <div className="w-full max-w-[1640px] sm:px-[20px] px-[0px] mx-auto">
             <AddressForm
               customerID={customerID}
               setAddressForm={setAddressForm}
@@ -93,7 +93,7 @@ export default function AddressBook() {
           </div>
         )}
         {selectedAddress && (
-          <div className="w-full max-w-[1640px] px-[20px] mx-auto">
+          <div className="w-full max-w-[1640px] sm:px-[20px] px-[0px] mx-auto">
             <EditAddressForm
               customerID={customerID}
               selectedAddress={selectedAddress}

@@ -234,7 +234,7 @@ function MenuMobileNav({menu, onClose}) {
 
   return (
     <div className="">
-      <nav className="grid gap-4 p-6 sm:gap-6 sm:px-12  sm:py-8">
+      <nav className="grid gap-[9px] p-6 sm:gap-6 sm:px-12  sm:py-8">
         {/* Top level menu items */}
         {(menu?.items || []).map((item) => (
           <span key={item.id} className="">
@@ -251,7 +251,7 @@ function MenuMobileNav({menu, onClose}) {
               <Text as="span" size="copy">
                 {item.title === 'Business' ? (
                   <Link to="/business-page">
-                    <div classNhame="">Business</div>
+                    <div classNhame="" style={{fontWeight:'bold', fontSize:'16px' }}>Business</div>
                   </Link>
                 ) : null}
                 {/* {item.title === ''} */}
@@ -261,7 +261,7 @@ function MenuMobileNav({menu, onClose}) {
                       <div
                         className="flex justify-between items-center"
                         onClick={handleChangeSendCard}
-                        style={{fontWeight: showSendCard ? 'bold' : 'normal'}}
+                        style={{fontWeight:  showSendCard ? 'bold' : 'bold', fontSize:'16px' }}
                       >
                         Order
                         {showSendCard ? (
@@ -359,7 +359,7 @@ function MenuMobileNav({menu, onClose}) {
                     <div
                       className="flex justify-between items-center"
                       onClick={handleChange}
-                      style={{fontWeight: show ? 'bold' : 'normal'}}
+                      style={{fontWeight: show ? 'bold' : 'bold', fontSize:'16px' }}
                     >
                       Integrations
                       {show ? (
@@ -400,7 +400,7 @@ function MenuMobileNav({menu, onClose}) {
                     <div
                       className="flex justify-between items-center"
                       onClick={handleChangePricing}
-                      style={{fontWeight: showPricing ? 'bold' : 'normal'}}
+                      style={{fontWeight: showPricing ? 'bold' : 'bold',fontSize:'16px' }}
                     >
                       Pricing
                       {showPricing ? (
@@ -444,7 +444,7 @@ function MenuMobileNav({menu, onClose}) {
                     <div
                       className="flex justify-between items-center"
                       onClick={handleChangeLearn}
-                      style={{fontWeight: showLearn ? 'bold' : 'normal'}}
+                      style={{fontWeight: showLearn ? 'bold' : 'bold',fontSize:'16px' }}
                     >
                       Learn
                       {showLearn ? (
@@ -482,7 +482,7 @@ function MenuMobileNav({menu, onClose}) {
                     <div
                       className="flex justify-between items-center"
                       onClick={handleChangeAbout}
-                      style={{fontWeight: showAbout ? 'bold' : 'normal'}}
+                      style={{fontWeight: showAbout ? 'bold' : 'bold', fontSize:'16px' }}
                     >
                       About
                       {showAbout ? (
@@ -549,7 +549,7 @@ function MenuMobileNav({menu, onClose}) {
                         }
                         onClose()
                       }} >
-                  <div classNhame="">{customerId?"Account":"Login"}</div>
+                  <div classNhame="" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
                 </button>
       </nav>
     </div>

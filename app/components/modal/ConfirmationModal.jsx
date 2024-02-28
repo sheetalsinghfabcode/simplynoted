@@ -35,10 +35,10 @@ const ConfirmationModal = ({
             </button>
             <button
               onClick={onCancel}
-              className="bg-[#001a5f] uppercase md:text-[12px] text-[9px]  text-white whitespace-nowrap tracking-normal uppercase w-full min-h-[48px]  md:max-w-[400px]  min-w-[175px] text-center transition duration-400 hover:bg-red-500 text-gray-800 font-semibold py-2 px-4"
+              className="bg-[#001a5f] uppercase text-[12px]   text-white whitespace-nowrap tracking-normal uppercase w-full min-h-[48px]  md:max-w-[400px]  min-w-[175px] text-center transition duration-400 hover:bg-red-500 text-gray-800 font-semibold py-2 px-4"
             >
               {cancelText}
-            </button>
+            </button> 
           </div>
         </div>
       </div>

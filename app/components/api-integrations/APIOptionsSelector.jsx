@@ -1,7 +1,8 @@
 import {useAPIIntegrationContext} from '~/context/APIIntegrationContext';
 
 const APIOptionsSelector = () => {
-  const {selectedSection, handleSectionChange} = useAPIIntegrationContext();
+  const {selectedSection,
+   handleSectionChange} = useAPIIntegrationContext();
 
   return (
     <div className="w-full leading-[44px] grid max-w-[20%] hidden md:block">

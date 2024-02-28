@@ -208,7 +208,7 @@ const AddressForm = ({customerID, defaultOption}) => {
           </div>
         )}
         <div
-          className={`rounded md:px-8 px-[0px]   pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
+          className={`rounded md:px-8 px-[0px] pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
             loader && 'opacity-40' 
           }`}
         >

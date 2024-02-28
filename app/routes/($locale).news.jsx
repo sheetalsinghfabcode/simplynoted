@@ -195,10 +195,10 @@ export default function blog() {
                     <Link
                       to={`/journal/news/${article.handle}`}
                       key={article.id}
-                      className="flex flex-col bg-white shadow-lg text-black hover:text-black"
+                      className="flex flex-col bg-white shadow-lg mb-[15px] text-black hover:text-black"
                       style={{maxWidth: '363px'}}
                     >
-                      <div className="flex-1 ">
+                      <div className="flex-1 md:mt-[2px] mt-[3px]">
                         <img
                           
                           src={article.image.url}

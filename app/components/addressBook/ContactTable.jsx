@@ -576,11 +576,10 @@ const ContactTable = ({
       ) : (
         <div className="w-full mx-auto relative max-w-[100%]">
           {pathName.pathname !== '/account' && (
-            <h2 className="font-bold text-[29px] font-karla lg:text-[34px] text-center text-[#001a5f]">
+            <h2 className="font-bold sm:text-[29px] text-[21px] font-karla lg:text-[34px] text-center text-[#001a5f]">
               ADDRESS BOOK
             </h2>
           )}
-
           <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 my-8">
             <div className="w-full max-w-[400px]">
               <input
@@ -597,7 +596,7 @@ const ContactTable = ({
                 className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]"
               >
                 <DynamicButton
-                  className="bg-[#EF6E6E] px-[50px] py-[14px] whitespace-nowrap md:w-[190px] w-[287px] h-[45px] text-[14px] font-normal "
+                  className="bg-[#EF6E6E] px-[50px] py-[14px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px] h-[45px] text-[14px] font-normal "
                   text="Upload Bulk Address"
                   onClickFunction={(event) => {
                     setUploadBulkAddress(!uploadBulkAddress);
@@ -659,7 +658,7 @@ const ContactTable = ({
                   </div>
 
                   <a
-                    className="text-[#000] text-[14px] lg:whitespace-nowrap leading-[22px] font-karla font-bold"
+                    className="text-[#000]  w-[233px] text-[14px] lg:whitespace-nowrap leading-[22px] font-karla font-bold"
                     href="https://api.simplynoted.com/docs/bulk-template"
                   >
                     Download bulk address template
@@ -675,7 +674,7 @@ const ContactTable = ({
 
               <div className="flex items-center justify-end lg:mt-[0px]  md:mb-[0px] mb-[17px]">
                 <DynamicButton
-                  className="bg-[#1b5299] px-[50px] md:w-[190px] w-[287px] whitespace-nowrap h-[45px] py-[14px] text-[14px] font-normal "
+                  className="bg-[#1b5299] px-[50px] md:w-[190px] sm:w-[287px] w-[220px] whitespace-nowrap h-[45px] py-[14px] text-[14px] font-normal "
                   text="+ New Address"
                   onClickFunction={() => setAddressForm(true)}
                 />
