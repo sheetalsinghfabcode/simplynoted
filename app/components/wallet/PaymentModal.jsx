@@ -241,18 +241,15 @@ const PaymentModal = ({
       }
 
       if (data.redirectUrl) {
-        debugger
         const result = await stripe.confirmCardPayment(data.client_secret);
         if (result?.error) {
           setPaymentLoader(false);
         } else {
           data.status = result.paymentIntent.status;
           paymentSave(data, json);
-          debugger
         }
       } else {
         paymentSave(data, json);
-        debugger
       }
       // Handle the response data here
     } catch (error) {
@@ -279,7 +276,6 @@ const PaymentModal = ({
 
     };
 
-    debugger
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
@@ -291,7 +287,6 @@ const PaymentModal = ({
       body: JSON.stringify(payLoad),
     })
       .then((response) => {
-        debugger
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -395,7 +390,6 @@ const PaymentModal = ({
       subscriptionEndDate: data.subscriptionEndDate,
       subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
     };
-    debugger
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
@@ -414,7 +408,6 @@ const PaymentModal = ({
       })
       .then((data) => {
         paymentPurchase(data, json);
-        debugger
         // Handle the response data here
       })
       .catch((error) => {
