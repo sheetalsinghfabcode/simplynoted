@@ -99,6 +99,9 @@ const ManageSubscription = () => {
     return () => {};
   }, []);
 
+
+  console.log("paymentHistory",paymentHistory);
+
   const handleSubscription = () => {
     setLoader((prevLoader) => ({
       ...prevLoader,
@@ -846,7 +849,7 @@ const ManageSubscription = () => {
                                   {formatDate(payment.created * 1000)}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] whitespace-nowrap font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
-                                  $ {payment.amount}
+                                  $ {payment.amount/100}
                                 </td>
                                 <td className="flex justify-center p-[11px] text-center">
                                   <td className="rounded-[50px] mt-[5px] min-h-[22px] whitespace-nowrap !font-bold uppercase lg:text-[12px] text-[9px] lg:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
