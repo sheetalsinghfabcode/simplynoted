@@ -251,7 +251,7 @@ function MenuMobileNav({menu, onClose}) {
               <Text as="span" size="copy">
                 {item.title === 'Business' ? (
                   <Link to="/business-page">
-                    <div classNhame="" style={{fontWeight:'bold', fontSize:'16px' }}>Business</div>
+                    <div className="" style={{fontWeight:'bold', fontSize:'16px' }}>Business</div>
                   </Link>
                 ) : null}
                 {/* {item.title === ''} */}
@@ -549,7 +549,7 @@ function MenuMobileNav({menu, onClose}) {
                         }
                         onClose()
                       }} >
-                  <div classNhame="" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
+                  <div className="" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
                 </button>
       </nav>
     </div>
