@@ -31,7 +31,7 @@ export default function Salesforce() {
     <section>
       <div className={`w-full ${animate ? 'fade-in' : ''}`}>
         <div className="flex px-[16px] md:px-[40px]  items-center">
-          <div className="lg:flex-row flex-col flex  sm:mt-10 mt-5">
+          <div className="lg:flex-row flex-col global-max-width-handler flex  sm:mt-10 mt-5">
             {/* first div left side */}
             <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
               <div>
@@ -67,6 +67,10 @@ export default function Salesforce() {
                   <button
                     className="text-white p-[17px] text-[17px] bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold"
                     type="button"
+                    onClickFunction={() =>
+                      (window.location.href =
+                        'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
+                    }
                   >
                     CONNECT USING OUR PROCESS BUILDER
                   </button>
@@ -74,13 +78,12 @@ export default function Salesforce() {
                     or
                   </span>
                   <img
-                    className="lg:block hidden relative right-[4px] top-[47px] w-[20%]"
+                    className="xl:block hidden relative xl:right-[4px] right-[-384px]  xl:top-[47px] top-[-37px] w-[20%]"
                     src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-1.png?v=1609453677&94441"
                     alt="arrow"
                   />
                 </div>
               </div>
-
               {/* first div form */}
               <div className="lg:flex grid  justify-center">
                 <div className="lg:hidden inline-block text-center">
@@ -209,14 +212,18 @@ export default function Salesforce() {
         </div>
         <div className="lg:block hidden relative mt-[36px]">
           <img
-            className=""
+            className="pl-[80px]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-cards.png?v=5725391707754373102"
           />
         </div>
         {/* second */}
         <div className="flex flex-wrap justify-center relative global-max-width-handler">
           <div className="absolute w-full hidden xl:block top-[373px] 2xl:right-[-144px] right-[-116px] z-[-12]">
-            <img className="2xl:w-[1084px] w-[1061px]" src={CanvasOne} alt="Computer man" />
+            <img
+              className="2xl:w-[1084px] w-[1061px]"
+              src={CanvasOne}
+              alt="Computer man"
+            />
           </div>
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
@@ -234,7 +241,7 @@ export default function Salesforce() {
             </p>
             <div className="lg:flex-row flex-col flex lg:items-left items-center gap-[12px] mt-5">
               <DynamicButton
-                text="INTEGRATE NOW"
+                text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
                 onClickFunction={() =>
                   (window.location.href =
@@ -279,9 +286,13 @@ export default function Salesforce() {
         {/* third */}
 
         <div className="flex flex-wrap flex-row-reverse justify-center relative  global-max-width-handler   w-[100%] mt-8">
-        <div className="absolute 2xl:top-[331px] top-[215px] hidden xl:block z-[-12] 2xl:right-[134px] right-[65px]">
-          <img className="2xl:w-[1135px] w-[1051px]" src={CanvasTow} alt="Computer man" />
-        </div>
+          <div className="absolute 2xl:top-[331px] top-[215px] hidden xl:block z-[-12] 2xl:right-[134px] right-[65px]">
+            <img
+              className="2xl:w-[1135px] w-[1051px]"
+              src={CanvasTow}
+              alt="Computer man"
+            />
+          </div>
           <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[36px] md:text-left text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">
@@ -296,7 +307,7 @@ export default function Salesforce() {
             </p>
             <div className="lg:flex-row flex-col gap-[10px] flex lg:items-left items-center  mt-5">
               <DynamicButton
-                text="INTEGRATE NOW"
+                text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
                 onClickFunction={() =>
                   (window.location.href =
@@ -324,9 +335,9 @@ export default function Salesforce() {
           </div>
         </div>
 
-        <div className="lg:flex hidden overflow-hidden mt-[18rem] relative justify-between  max-w 5/6">
+        <div className="lg:flex hidden overflow-hidden pl-[20px] mt-[18rem] relative justify-between  max-w 5/6">
           <img
-            className="h-[310px]"
+            className="h-[490px] xc:ml-[35px] ml-[-122px]"
             src="	https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
           />
           <img
@@ -340,30 +351,39 @@ export default function Salesforce() {
             Integration Feature
           </h2>
         </div>
-        <div className="lg:flex justify-center grid">
+        <div className="lg:flex mt-[12px] justify-center grid">
           <div className="md:mt-14  mt-0">
-            <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-1.png?v=1611260064" />
-            <h2 className="w-[271px] text-center">
+            <img
+              className="pb-[12px]"
+              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-1.png?v=1611260064"
+            />
+            <h2 className="w-[299px] text-[18px] text-black text-center">
               Our team of handwriting robots will help you engage with vast
               audiences.
             </h2>
           </div>
           <div className="mt-14">
-            <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-2.png?v=1611260106" />
-            <h2 className="w-[297px] text-center">
+            <img
+              className="pb-[12px]"
+              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-2.png?v=1611260106"
+            />
+            <h2 className="w-[299px] text-black text-[18px] text-center">
               Sending a letter to 1 customer or 10,000 + customers. We’ve got
               you covered!
             </h2>
           </div>
           <div className="mt-14">
-            <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-3.png?v=1611260085" />
-            <h2 className="w-[341px] text-center">
+            <img
+              className="pb-[12px]"
+              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-3.png?v=1611260085"
+            />
+            <h2 className="w-[306px] text-black text-[18px] text-center">
               Every handwritten card and envelope we produce is hand quality
               controlled to ensure the highest quality product possible.
             </h2>
           </div>
         </div>
-        <div className="lg:flex hidden justify-evenly mt-[20px]">
+        <div className="lg:flex hidden pt-[50px] justify-center gap-[191px] mt-[20px]">
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-left.png?v=1507224686358523339" />
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-center.png?v=1294751222991646381" />
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-right.png?v=17628020455828864692" />

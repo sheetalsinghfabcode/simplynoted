@@ -29,7 +29,7 @@ const DynamicTitle = ({
         )}
         <div className="flex items-center justify-center w-full">
           <h2
-            className={`titleImage md:text-[50px] text-[30px] mt-[18px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[15px] ${className} `}
+            className={`titleImage md:text-[50px] md:text-[30px] text-[27px] text-center mt-[18px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[15px] ${className} `}
           >
             {title}
             <span className="font-beauty text-[60px] md:text-[70px] lg:text-[200%] ">

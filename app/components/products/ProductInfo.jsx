@@ -134,7 +134,7 @@ export function ProductInfo({
             <DynamicButton
               className={`single-purchase-btn ${
                 show ? 'bg-[#ef6e6e]' : 'bg-[#001a5f]'
-              } w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base font-roboto quantitybutton`}
+              } w-[179px] h-[44px] rounded text-[#fff] font-semibold zx:mt-[0px] mt-[10px] text-base font-roboto quantitybutton`}
               text="Single Card"
               onClickFunction={() => singleBtnCLick()}
             />
