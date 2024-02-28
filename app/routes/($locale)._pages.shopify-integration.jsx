@@ -257,7 +257,7 @@ export default function Zapier() {
         </div>
       </div>
       <div className=" hidden xl:block w-full relative h-[577px]">
-        <div className="absolute right-[-67px] top-[77px]">
+        <div className="absolute right-[50px] top-[77px]">
           <img
             className="max-w-[650px]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
@@ -380,8 +380,8 @@ export default function Zapier() {
           </div>
             
           </div>
-      </div>
     </div>
+      </div>
   );
 }
 const Zapier_GRAPH_QL = `#graphql

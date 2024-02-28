@@ -813,7 +813,7 @@ const ManageSubscription = () => {
                   </WalletAccordion>
                   <WalletAccordion title="PLANS AND PACKAGES TRANSACTIONS">
                     <div className="p-[8px] mb-[15px] w-[100%] overflow-x-auto">
-                      <table className="divide-y divide-gray-200">
+                      <table className="divide-y w-[100%] divide-gray-200">
                         <thead>
                           <tr>
                             {header.map((column, index) => (

@@ -198,7 +198,7 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-      <div className="xl:flex mt-10 items-center relative  justify-center">
+      <div className="xl:flex mt-10 items-center w-full relative  justify-center">
            <div className="absolute hidden xl:block top-[390px] right-[362px] z-[-12]">
           <img className="w-[1084px]" src={CanvasOne} alt="Computer man" />
         </div> 
