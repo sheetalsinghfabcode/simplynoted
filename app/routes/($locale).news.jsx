@@ -144,7 +144,7 @@ export default function blog() {
         <DynamicTitle
           // dynamicButton
           title="Simply Noted 101"
-          className={'mt-[20px] md:text-[45px] text-[38px]'}
+          className={'mt-[20px] md:text-[45px] small:text-[38px] text-[32px]'}
         />
 
         <div className="blog-page-button sm:flex flex gap-[13px] justify-center mt-[32px]">

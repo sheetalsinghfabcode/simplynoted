@@ -43,7 +43,7 @@ export default function Home() {
               repeat={Infinity}
             />
           </div>
-          <div className="flex flex-col mt-[20px]">
+          <div className="flex tab:flex-col flex-col-reverse mt-[20px]">
             <div className="flex flex-col justify-center tab:flex-row text-[15px] font-normal leading-[25px] -tracking-[0.65px] text-center mb-[10px]">
               <span className="whitespace-nowrap">
                 Send real handwritten notes, at scale.
@@ -52,7 +52,7 @@ export default function Home() {
                 &nbsp; Go Unlimited, Only $0.97
               </span>
             </div>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-col tab:flex-row">
               <DynamicButton
                 text="START WRITING!"
                 className="start-writing-button md:mr-[10px] w-[100%]"
@@ -87,9 +87,12 @@ export default function Home() {
         </div>
       </div>
 
-      <video className="mt-[10px] w-full" autoPlay loop muted>
+      <video className="mt-[10px] w-full sm:flex hidden" autoPlay loop muted>
         <source src={WorkingRobots} type="video/webm"></source>
       </video>
+      <div className='sm:hidden flex mt-[20px]'>
+     <img class="lazyload" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" data-src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" alt="Simply Noted Robots" width="500" height="119"/>
+     </div>
     </div>
   );
 }

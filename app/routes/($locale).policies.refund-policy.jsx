@@ -16,7 +16,7 @@ export default function refundpolicy() {
     <div className='global-max-width-handler'>
 
       <div className="">
-        <DynamicTitle  title="Refund policy" />
+        <DynamicTitle  title="Refund Policy" />
         <div className="flex justify-center md:w-full mx-auto">
           <div className="sm:text-[14px] text-[12px]">
             <p className="mt-[25px] font-medium">RETURNS</p>

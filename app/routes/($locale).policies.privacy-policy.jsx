@@ -15,7 +15,7 @@ export default function privacypolicy() {
   return (
     <div className='global-max-width-handler'>
       <div className="">
-        <DynamicTitle title="Privacy policy" />
+        <DynamicTitle title="Privacy Policy" />
         <div className="flex justify-center md:w-full mx-auto">
           <div className="sm:text-[14px] text-[12px]">
             <p className="mt-[25px] font-medium ">

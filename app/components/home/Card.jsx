@@ -108,7 +108,7 @@ const Card = () => {
           </div>
         </div>
 
-        <div className="ml-[-20rem]">
+        <div className="ml-[-20rem] relative sm:mt-0 small:mt-[2rem] mt-[1rem]">
           <Swiper
             direction={'horizontal'}
             allowTouchMove={false}
@@ -161,7 +161,7 @@ const Card = () => {
         </div>
 
         <div className="bg-white text-center mt-[-11rem] mb-[-12px] ">
-          <div className="md:w-[50%] sm:w-[100%]  w=[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
+          <div className="md:w-[50%]   w-[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
             <img className="w-full" src={pen} alt="LogoSimplinotedpic" />
           </div>
           <div className="flex flex-col flex-wrap md:gap-2 gap-7 pt-[20px] pb-[20px] md:pt-0 md:pb-0 md:h-[120px] md:flex-row md:justify-around items-center bg-[#1b3064]">

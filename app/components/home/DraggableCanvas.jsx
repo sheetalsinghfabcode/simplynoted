@@ -111,16 +111,16 @@ const DraggableCanvas = () => {
               <span className="absolute left-[138px]">Typed</span>
             </div>
           </div>
-          <div className="hidden lg:block absolute left-[-3%] text-[18px] text-[white] top-[-6%] w-[250px] real-text arrow-left">
+          <div className="hidden lg:block absolute xl:left-[2%] left-[-3%] text-[18px] text-[white] top-[-6%] w-[230px] real-text arrow-left">
             Personalize each card with each recipient's name
           </div>
-          <div className="hidden lg:block absolute text-[18px] text-[white] w-[194px] right-0 top-[35%] text-right real-text arrow-right">
+          <div className="hidden lg:block absolute text-[18px] text-[white] w-[194px] xl:right-[6%] right-[2%] top-[35%] text-right real-text arrow-right">
             Boring, impersonal typed note
           </div>
-          <div className="hidden lg:block absolute left-[-3%] text-[18px] text-[white] top-[28%] w-[250px] real-text arrow-left">
+          <div className="hidden lg:block absolute xl:left-[2%] left-[-3%] text-[18px] text-[white] top-[28%] w-[230px] real-text arrow-left">
             Realistic handwriting with real ink, without the work
           </div>
-          <div className="hidden lg:block absolute left-[-3%] text-[18px] text-[white] top-[58%] w-[250px] real-text arrow-left">
+          <div className="hidden lg:block absolute xl:left-[2%] left-[-3%] text-[18px] text-[white] top-[58%] w-[230px] real-text arrow-left">
             Add your own signature and customizations
           </div>
           {/* Canvas div itself */}

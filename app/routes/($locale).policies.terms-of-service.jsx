@@ -18,7 +18,7 @@ export default function Termsofser() {
         <div className="">
           <DynamicTitle
          
-            title="Terms of service"
+            title="Terms of Service"
             className="mt-[20px]"
           />
 

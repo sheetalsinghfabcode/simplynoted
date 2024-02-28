@@ -13,6 +13,7 @@ export default {
         shopPay: 'rgb(var(--color-shop-pay) / <alpha-value>)',
       },
       screens: {
+        small:'24em',
         sm: '32em',
         md: '48em',
         tab: '60em',

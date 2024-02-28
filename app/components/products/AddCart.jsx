@@ -629,13 +629,13 @@ console.log(arrCardPrice,"arrr cardPrice");
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
               <div className="col-6 md:w-[49%] w-full rounded h-fit shadow-outer-custom ">
-                <div className=" max-h-[600px] p-[20px] overflow-y-auto">
+                <div className=" max-h-[600px] small:p-[20px] p-[10px] overflow-y-auto">
                   <div className="address-data">
-                    <h3 className="sm:text-[26px] text-[15px] my-8 font-bold">
+                    <h3 className="sm:text-[26px] small:text-[18px] text-[15px] small:my-8 my-4 font-bold">
                       Your Info (return/sender address)
                     </h3>
                     <DynamicButton
-                      className="bg-[#1b5299] text-[14px] font-normal px-[15px] py-2.5 "
+                      className="bg-[#1b5299] text-[14px] small:font-normal font-light small:px-[15px] px-[8px] py-2.5 "
                       text="+ New Address"
                       onClickFunction={() => {
                         handleButtonClick('sender');
@@ -645,7 +645,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                     <div>
                       <input
                         type="text "
-                        className="w-full rounded-xl p-3 mt-4 border-2 border-[#aaa] text-black font-normal "
+                        className="w-full rounded-xl p-3 small:my-4 my-2 border-2 border-[#aaa] text-black font-normal "
                         onChange={(e) => setsearchData2(e.target.value)}
                         placeholder="Search Addresses..."
                       />
@@ -654,7 +654,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       (item,index) => (
                         <div
                         key={index}
-                          className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold sm:text-[14px] text-[12px] cursor-pointer flex items-center"
+                          className="w-full border-b-[1px] border-[#e8e1e1] px-3 small:py-[16px] py-3 bg-white text-black font-bold sm:text-[14px] text-[12px] cursor-pointer flex items-center"
                           onClick={() => handleCheckboxChange2(item)}
                         >
                           <input
@@ -674,10 +674,10 @@ console.log(arrCardPrice,"arrr cardPrice");
                   </div>
                 </div>
               </div>
-              <div className="col-6 md:w-[49%] w-full shadow-outer-custom rounded h-fit">
-                <div className=" max-h-[600px] p-[20px] overflow-y-auto">
+              <div className="col-6 md:w-[48%] w-full shadow-outer-custom rounded h-fit">
+                <div className=" max-h-[600px] small:p-[20px] p-[10px] overflow-y-auto">
                   <div className="address-data">
-                    <h3 className="sm:text-[26px] text-[19px] my-8 font-bold">
+                    <h3 className="sm:text-[26px] text-[18px] small:my-8 my-4 font-bold">
                       Recipient address
                     </h3>
                     {show ? (
@@ -690,7 +690,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                     ) : (
                       <>
                         <DynamicButton
-                          className="bg-[#1b5299] text-[14px] font-normal px-[15px] py-2.5 "
+                          className="bg-[#1b5299] text-[14px] small:font-normal font-light small:px-[15px] px-[8px] py-2.5 "
                           text="+ New Address"
                           onClickFunction={() => {
                             handleButtonClick('recipient');
@@ -702,7 +702,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                         <div>
                           <input
                             type="text "
-                            className="w-full rounded-xl p-3 mt-4 border-2 border-[#aaa] text-black font-normal"
+                            className="w-full rounded-xl p-3 small:my-4 my-2 border-2 border-[#aaa] text-black font-normal"
                             onChange={(e) => setsearchData(e.target.value)}
                             placeholder="Search Addresses..."
                           />
@@ -711,7 +711,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                           (item, index) => (
                             <div
                             key={index}
-                              className="w-full border-b-[1px] border-[#e8e1e1] p-3 mt-4 bg-white text-black font-bold flex items-center sm:text-[14px] text-[12px] cursor-pointer"
+                              className="w-full border-b-[1px] border-[#e8e1e1] px-3 small:py-[16px] py-3 bg-white text-black font-bold flex items-center sm:text-[14px] text-[12px] cursor-pointer"
                               onClick={() => handleCheckboxChange(item)}
                             >
                               <input
@@ -737,14 +737,14 @@ console.log(arrCardPrice,"arrr cardPrice");
               </div>
             </div>
             <div
-              className={`row flex mr-2 ml-2 gap-4 mt-10 w-full ${
+              className={`row flex mr-2 ml-2 gap-4 small:mt-10 mt-4 w-full ${
                 show ? 'justify-between' : 'justify-end'
               }`}
             >
               {show && (
-                <div className="col-6 md:w-[49%] w-full  shadow-md rounded">
-                  <div className="max-h-[600px] p-[20px] overflow-y-auto ">
-                    <h3 className="sm:text-[30px] text-[14px] font-bold my-8">
+                <div className="col-6 md:w-[49%] w-full  shadow-outer-custom rounded">
+                  <div className="max-h-[600px] small:p-[20px] p-[15px] overflow-y-auto ">
+                    <h3 className="sm:text-[30px] text-[18px] font-bold small:my-8 my-4">
                       {shippingData?.title}
                     </h3>
 
@@ -768,13 +768,13 @@ console.log(arrCardPrice,"arrr cardPrice");
                               type="radio"
                             />
                             <label
-                              className="font-medium cursor-pointer sm:text-[16px] text-[14px]"
+                              className="font-medium cursor-pointer tab:text-[16px] text-[14px]"
                               htmlFor="Mail-Individual-Cards-Normally-(default)"
                             >
                               {item?.node.title}
                             </label>
                           </div>
-                          <div className="custom_variant_price cursor-pointer font-medium sm:text-[16px] text-[14px]">
+                          <div className="custom_variant_price cursor-pointer font-medium tab:text-[16px] text-[14px]">
                             ${Number(item?.node.price.amount).toFixed(2)}
                           </div>
                         </div>
@@ -785,7 +785,7 @@ console.log(arrCardPrice,"arrr cardPrice");
               )}
 
               <div className="col-6 md:w-[49%] w-full  shadow-outer-custom  rounded">
-                <div className="max-h-[600px] sm:p-[20px] py-[15px] px-3 overflow-y-auto mt-10 ">
+                <div className="max-h-[600px] sm:p-[20px] py-[15px] px-3 overflow-y-auto small:mt-10 my-4">
                   <div className="address-data">
                     <h3 className="sm:text-[30px] text-[18px] font-bold mb-5">
                       Add a Gift Card
