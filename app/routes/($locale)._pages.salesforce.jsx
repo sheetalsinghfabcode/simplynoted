@@ -209,14 +209,14 @@ export default function Salesforce() {
         </div>
         <div className="lg:block hidden relative mt-[36px]">
           <img
-            className="ml-[-173px]"
+            className=""
             src="https://simplynoted.com/cdn/shop/files/salesforce-cards.png?v=5725391707754373102"
           />
         </div>
         {/* second */}
-        <div className="flex flex-wrap justify-center ml-auto pr-[40px] relative pl-[40px] lg:mr-0 mr-auto">
-          <div className="absolute hidden xl:block top-[362px] right-[316px] z-[-12]">
-            <img className="w-[1084px]" src={CanvasOne} alt="Computer man" />
+        <div className="flex flex-wrap justify-center relative global-max-width-handler">
+          <div className="absolute w-full hidden xl:block top-[373px] 2xl:right-[-144px] right-[-116px] z-[-12]">
+            <img className="2xl:w-[1084px] w-[1061px]" src={CanvasOne} alt="Computer man" />
           </div>
           <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
@@ -267,7 +267,7 @@ export default function Salesforce() {
 
         <div className="lg:flex hidden overflow-hidden justify-between mt-[188px] max-w 5/6  mb-[64px]">
           <img
-            className="h-[466px] ml-[-188px]"
+            className="h-[466px]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
           />
           <img
@@ -278,9 +278,9 @@ export default function Salesforce() {
 
         {/* third */}
 
-        <div className="flex flex-wrap flex-row-reverse justify-center relative  mr-auto  ml-auto  w-[90%] mt-8">
-        <div className="absolute top-[331px] hidden xl:block z-[-12] right-[134px]">
-          <img className="w-[1135px]" src={CanvasTow} alt="Computer man" />
+        <div className="flex flex-wrap flex-row-reverse justify-center relative  global-max-width-handler   w-[100%] mt-8">
+        <div className="absolute 2xl:top-[331px] top-[215px] hidden xl:block z-[-12] 2xl:right-[134px] right-[65px]">
+          <img className="2xl:w-[1135px] w-[1051px]" src={CanvasTow} alt="Computer man" />
         </div>
           <div className="lg:w-[40%] xl:mt-[61px]  lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
@@ -310,13 +310,12 @@ export default function Salesforce() {
               />
             </div>
           </div>
-          <div className="lg:hidden block sm:mb-10 mb-7">
+          <div className="lg:hidden block">
             <div className="xl:text-[36px] mb-[12px] text-[32px] text-center font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
-
           <div className="xl:w-[60%] lg:w-[60%] relative  w-full">
             <img
               className="lg:absolute relative xl:max-w-[800px] lg:max-w-[725px] mx-auto overflow-hidden "
@@ -327,7 +326,7 @@ export default function Salesforce() {
 
         <div className="lg:flex hidden overflow-hidden mt-[18rem] relative justify-between  max-w 5/6">
           <img
-            className="h-[310px] ml-[-143px]"
+            className="h-[310px]"
             src="	https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
           />
           <img
@@ -337,7 +336,7 @@ export default function Salesforce() {
         </div>
 
         <div className="text-center relative flex justify-center lg:mt-0 mt-10">
-          <h2 className="text-[#001a5f] text-center sm:text-[40px] text-2xl  font-bold mb-10 signup-underline">
+          <h2 className="text-[#001a5f] text-center sm:text-[40px] text-2xl   font-bold mb-10 signup-underline">
             Integration Feature
           </h2>
         </div>

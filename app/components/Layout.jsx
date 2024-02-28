@@ -56,7 +56,7 @@ export function Layout({children, layout}) {
 
   return (
     <>
-      <div className="flex flex-col md:min-h-screen min-h-0 w-full">
+      <div className="flex flex-col md:min-h-screen min-h-0 w-full overflow-hidden">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
