@@ -1094,21 +1094,21 @@ function FooterMenu({menu}) {
             </a>
             <a href="#">
               <img
-                className="w-[55px] sm:h-[55px] h-[50px]"
+                className="w-[55px] sm:h-[55px] h-[52px]"
                 src={fb}
                 alt=""
               ></img>
             </a>
             <a href="#">
               <img
-                className="w-[55px] sm:h-[55px] h-[50px] ml-[-3px]"
+                className="w-[55px] sm:h-[55px] h-[52px] ml-[-3px]"
                 src={twitter}
                 alt=""
               ></img>
             </a>
           </div>
         </div>
-        <div className="  text-white md:text-left text-center grid justify-center ">
+        <div className="  text-white md:text-left text-center grid justify-center gap-[8px]">
           <div className="lg:text-xl md:text-[18px] text-[22px] font-bold ">
             Quick Links
           </div>
@@ -1159,14 +1159,14 @@ function FooterMenu({menu}) {
           </div>
         </div>
         <div className=" text-white ">
-          <div>
+          <div className='grid gap-[8px]'>
             <div className="lg:text-xl text-[16px] font-bold ">Address</div>
             <div className="w-[99%] ">
               5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>
           </div>
 
-          <div className="md:mt-24 mt-[40px] text-white">
+          <div className="md:mt-24 mt-[40px] text-white grid gap-[8px]">
             <div className="lg:text-xl text-[16px] font-bold ">Email</div>
             <div className="">
               <a href="mailto:support@simplynoted.com">
@@ -1176,8 +1176,8 @@ function FooterMenu({menu}) {
           </div>
         </div>
 
-        <div className=" text-white ">
-          <div className="lg:text-xl text-[16px] font-bold">Hours</div>
+        <div className=" text-white">
+          <div className="lg:text-xl text-[16px] font-bold mb-[8px]">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>
         </div>

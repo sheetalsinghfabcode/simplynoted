@@ -180,9 +180,9 @@ export default function Zapier() {
       </div>
       <div className="w-full hidden xl:block relative h-[459px]">
         <div className="flex">
-          <div className="absolute left-[-302px] top-[3px]">
+          <div className="absolute left-[-150px] top-[3px]">
             <img
-              className="max-w-[500px] left-[-22w]"
+              className="max-w-[500px] "
               src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
             />
             <div className="absolute   right-[-285px] top-[192px]">
