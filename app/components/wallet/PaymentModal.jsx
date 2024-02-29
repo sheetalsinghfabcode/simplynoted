@@ -45,6 +45,8 @@ const PaymentModal = ({
 
   let customerid, fullName, userEmail;
 
+  console.log("stripeCollection",stripeCollection);
+
 
   let productId = packageProduct?.replace(/[^0-9]/g, '');
   let variantId = subscriptionProduct?.replace(/[^0-9]/g, '');

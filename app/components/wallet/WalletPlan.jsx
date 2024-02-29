@@ -14,15 +14,13 @@ const WalletPlans = ({
   setPackageProduct,
   amount,
   setSubscriptionTitle,
+  subscriptionTitle,
   setSubscriptionPriceId,
-  subscriptionPriceId
+  subscriptionPriceId,
 }) => {
   const handleRadioChange = (event) => {
     setSelectedPlan(event.target.value);
   };
-
-
-  console.log("subscriptionPriceId",subscriptionPriceId);
 
   let packageQuantity;
 
@@ -47,121 +45,137 @@ const WalletPlans = ({
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
+  console.log('stripeCollection', stripeCollection);
+  useEffect(() => {
+    if (stripeCollection?.stripe?.subscriptionStatus === 'canceled') {
+      setSubscriptionTitle("Free")
+    }
+  }, [stripeCollection]);
+
+  console.log('subscriptionTitle', subscriptionTitle);
 
   return (
-<div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
-<div className="flex flex-col md:flex-row overflow-auto">
-  {WalletData.collection.products.edges.map((product, index) => (
-    <div
-      key={index}
-      className={`flex-1 p-[20px] ${
-        (stripeCollection?.error && product.node.title === 'Free') ||
-        product.node.title.toLowerCase() ===
-          stripeCollection.stripe?.subscription
-          ? 'bg-[#F7B7B7]'
-          : ''
-      }`}
-    >
-      <DynamicButton
-        text={`${product.node.title} PLAN PREPAID PACKAGES`}
-        className="bg-[#EF6E6E]  text-[14px] sm:text-[18px] rounded-[5px] py-[12px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]   uppercase mx-auto  px-2 text-left"
-      />
-      <div className="flex flex-col gap-[16px]">
-        {product.node.variants.edges
-          .filter((variant) => variant.node.title !== 'Subscription')
-          .map((variant,index) => {
-            const titleMetafield = variant.node.metafields.find(
-              (metafield) => metafield?.key === 'variant_title',
-            );
-            const descriptionMetafield = variant.node.metafields.find(
-              (metafield) => metafield?.key === 'description',
-            );
-            const amountMetafield = variant.node.metafields.find(
-              (metafield) => metafield?.key === 'card_amount',
-            );
-            const subscriptionPriceId = product.node.metafields.find(
-              (metafield) => metafield?.key === 'strip_link',
-            );
-
-            const subscriptionMetafield = product.node.metafields.find(
-              (metafield) =>
-                metafield?.key === 'subscription_plan_price_monthly' &&
-                product.node.title.toLowerCase() !==
-                  stripeCollection.stripe?.subscription,
-            );
-
-
-
-            return (
-              <div
+    <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
+      <div className="flex flex-col md:flex-row overflow-auto">
+        {WalletData.collection.products.edges
+          .slice(0, 1) // Get elements before the second index
+          .concat(WalletData.collection.products.edges.slice(2))
+          .map((product, index) => (
+            <div
               key={index}
-                onClick={() => {
-                  if (stripeCollection.stripe?.subscriptionStatus === 'canceled') {
-                    setSubscription(subscriptionMetafield?.value || 0);
-                } else if (stripeCollection.stripe?.subscription !== product.node.title) {
-                    setSubscription(subscriptionMetafield?.value || 0);
-                }
-                
-                  setSubscriptionProduct(product.node.id);
-                  setPackageProduct(variant.node.id);
-                  setSubscriptionTitle(product.node.title);
-                  setAmount(variant.node.price.amount || 0);
-                  setSubscriptionPriceId(subscriptionPriceId?.value);
-                  handleRadioChange({
-                    target: {
-                      value: `${variant.node.title} ${titleMetafield?.value}`,
-                    },
-                  });
-                }}
-                className="flex justify-start p-[20px] bg-white cursor-pointer items-start gap-[16px] border border-solid border-black rounded-[10px]"
-              >
-                <input
-                  type="radio"
-                  className="mt-[4px]"
-                  value={`${variant.node.title} ${titleMetafield?.value}`}
-                  checked={
-                    selectedPlan ===
-                    `${variant.node.title} ${titleMetafield?.value}`
-                  }
-                  onChange={()=>''}
-                />
+              className={`flex-1 p-[20px] ${
+                (subscriptionTitle === product?.node?.title &&   'bg-[#f7b7b7]')   ||
+                (stripeCollection?.stripe?.subscription === product?.node?.title &&
+                  stripeCollection?.stripe?.subscriptionStatus !== 'canceled')
+                  ? 'bg-[#f7b7b7]'
+                  : ''
+              }`}
+            >
+              <DynamicButton
+                text={`${product.node.title} PLAN PREPAID PACKAGES`}
+                className="bg-[#EF6E6E]  text-[14px] sm:text-[18px] rounded-[5px] py-[12px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]   uppercase mx-auto  px-2 text-left"
+              />
+              <div className="flex flex-col gap-[16px]">
+                {product.node.variants.edges
+                  .filter((variant) => variant.node.title !== 'Subscription')
+                  .map((variant, index) => {
+                    const titleMetafield = variant.node.metafields.find(
+                      (metafield) => metafield?.key === 'variant_title',
+                    );
+                    const descriptionMetafield = variant.node.metafields.find(
+                      (metafield) => metafield?.key === 'description',
+                    );
+                    const amountMetafield = variant.node.metafields.find(
+                      (metafield) => metafield?.key === 'card_amount',
+                    );
+                    const subscriptionPriceId = product.node.metafields.find(
+                      (metafield) => metafield?.key === 'strip_link',
+                    );
 
-                <div className="flex flex-col gap-[8px]">
-                  <div className="flex gap-[6px] whitespace-nowrap text-[#001a5f]  items-start">
-                    <span className="sm:text-[15px] text-[11px] font-bold">
-                      {titleMetafield?.value}
-                    </span>
-                    <span className="sm:text-[15px] text-[11px] font-bold">
-                      {variant.node?.title}
-                    </span>
-                  </div>
-                  {descriptionMetafield?.value &&
-                    variant.node.price.amount !== '0.0' && (
-                      <span className="sm:text-[14px] text-[11px] font-medium">
-                        {descriptionMetafield
-                          ? JSON.parse(
-                              descriptionMetafield?.value
-                            ).children[0].children[0]?.value
-                          : ''}
-                      </span>
-                    )}
-                  {amountMetafield?.value && (
-                    <span className="text-[14px] font-medium">
-                    ${formatNumberWithCommas(Number(variant.node.price.amount))}
-                    </span>
-                  )}
-                </div>
+                    const subscriptionMetafield = product.node.metafields.find(
+                      (metafield) =>
+                        metafield?.key === 'subscription_plan_price_monthly' &&
+                        product.node.title.toLowerCase() !==
+                          stripeCollection.stripe?.subscription,
+                    );
+
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => {
+                          if (
+                            stripeCollection.stripe?.subscriptionStatus ===
+                            'canceled'
+                          ) {
+                            setSubscription(subscriptionMetafield?.value || 0);
+                          } else if (
+                            stripeCollection.stripe?.subscription !==
+                            product.node.title
+                          ) {
+                            setSubscription(subscriptionMetafield?.value || 0);
+                          }
+
+                          setSubscriptionProduct(product.node.id);
+                          setPackageProduct(variant.node.id);
+                          setSubscriptionTitle(product.node.title);
+                          setAmount(variant.node.price.amount || 0);
+                          setSubscriptionPriceId(subscriptionPriceId?.value);
+                          handleRadioChange({
+                            target: {
+                              value: `${variant.node.title} ${titleMetafield?.value}`,
+                            },
+                          });
+                        }}
+                        className="flex justify-start p-[20px] bg-white cursor-pointer items-start gap-[16px] border border-solid border-black rounded-[10px]"
+                      >
+                        <input
+                          type="radio"
+                          className="mt-[4px]"
+                          value={`${variant.node.title} ${titleMetafield?.value}`}
+                          checked={
+                            selectedPlan ===
+                            `${variant.node.title} ${titleMetafield?.value}`
+                          }
+                          onChange={() => ''}
+                        />
+
+                        <div className="flex flex-col gap-[8px]">
+                          <div className="flex gap-[6px] whitespace-nowrap text-[#001a5f]  items-start">
+                            <span className="sm:text-[15px] text-[11px] font-bold">
+                              {titleMetafield?.value}
+                            </span>
+                            <span className="sm:text-[15px] text-[11px] font-bold">
+                              {variant.node?.title}
+                            </span>
+                          </div>
+                          {descriptionMetafield?.value &&
+                            variant.node.price.amount !== '0.0' && (
+                              <span className="sm:text-[14px] text-[11px] font-medium">
+                                {descriptionMetafield
+                                  ? JSON.parse(descriptionMetafield?.value)
+                                      .children[0].children[0]?.value
+                                  : ''}
+                              </span>
+                            )}
+                          {amountMetafield?.value && (
+                            <span className="text-[14px] font-medium">
+                              $
+                              {formatNumberWithCommas(
+                                Number(variant.node.price.amount),
+                              )}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                <span className="text-[14px] leading-1.3 text-[#000] mt-[16px] font-medium">
+                  {product.node.description}
+                </span>
               </div>
-            );
-          })}
-        <span className="text-[14px] leading-1.3 text-[#000] mt-[16px] font-medium">
-          {product.node.description}
-        </span>
+            </div>
+          ))}
       </div>
-    </div>
-  ))}
-</div>
-
 
       <div className="mt-[30px]  px-[20px] bg-white  flex flex-col-reverse md:flex-row w-full items-center justify-between gap-[50px]">
         <div className="w-full text-[#000] max-w-[810px] font-karla font-normal">

@@ -55,9 +55,10 @@ const CanvasDesign = () => {
                 className="z-[2] lg:w-[600px] w-[450px] overflow-hidden"
                 autoPlay
                 loop
+                playsInline
                 muted
               >
-                <source src={First} type="video/webm"></source>
+                <source src={First} type="video/mp4"></source>
               </video>
             </div>
           </div>
@@ -74,8 +75,8 @@ const CanvasDesign = () => {
             <span className="font-beauty text-6xl font-bold">thousands</span>
           </div>
           <div className="w-full">
-            <video className="w-full" autoPlay loop muted>
-              <source src={First} type="video/webm"></source>
+            <video className="w-full" playsInline autoPlay loop muted>
+              <source src={First} type="video/mp4"></source>
             </video>
           </div>
           <div className="text-justify mt-5 !leading-7 texts">
@@ -105,9 +106,10 @@ const CanvasDesign = () => {
                 className="max-w-[435px]  relative overflow-hidden z-[1]"
                 autoPlay
                 loop
+                playsInline
                 muted
               >
-                <source src={Second} type="video/webm"></source>
+                <source src={Second} type="video/mp4"></source>
               </video>
               <img
                 className="absolute top-0 -right-[74%] xl:-right-[53%] lg:-right-[63%] lg:w-[85%] w-full "
@@ -148,8 +150,8 @@ const CanvasDesign = () => {
             <span className="font-beauty text-6xl font-bold">options</span>
           </div>
           <div className="w-full">
-            <video className="w-full" autoPlay loop muted>
-              <source src={First} type="video/webm"></source>
+            <video className="w-full" playsInline autoPlay loop muted>
+              <source src={First} type="video/mp4"></source>
             </video>
           </div>
           <div className="texts text-justify !leading-7 mt-5">
@@ -199,8 +201,9 @@ const CanvasDesign = () => {
                 autoPlay
                 loop
                 muted
+                playsInline
               >
-                <source src={Third} type="video/webm"></source>
+                <source src={Third} type="video/mp4"></source>
               </video>
             </div>
           </div>
@@ -217,8 +220,8 @@ const CanvasDesign = () => {
             <span className="font-beauty text-6xl font-bold">inserts</span>
           </div>
           <div className="w-full">
-            <video className="w-full" autoPlay loop muted>
-              <source src={Third} type="video/webm"></source>
+            <video className="w-full" playsInline autoPlay loop muted>
+              <source src={Third} type="video/mp4"></source>
             </video>
           </div>
           <div className="texts text-justify !leading-7 mt-5">

@@ -11,6 +11,7 @@ import arrow_ups from '../../../assets/Image/arrow-up.png';
 import arrow_down from '../../../assets/Image/arrow-down.png';
 import SuccessfullLoader from '../SucessfullLoader';
 import {FaAngleDown, FaAngleUp} from 'react-icons/fa';
+import StripeCardComp from '../StripeCardComp';
 
 const Accordion = ({
   StripeKey,
@@ -149,8 +150,6 @@ const Accordion = ({
     formData.name = fullName ? fullName : firstName + ' ' + lastName;
     formData.email = userEmail;
   }, [showStripeCard]);
-
-
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -307,21 +306,21 @@ const Accordion = ({
     }
   };
 
-  const  paymentPurchase = async (data, json) => {
+  const paymentPurchase = async (data, json) => {
     const payLoad = {
       paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
       description: selectedPlan,
-    
+
       packageProduct: productId,
       subscriptionProduct: variantId,
     };
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
-   await fetch(apiUrl, {
+    await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -340,7 +339,6 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          
           setPaymentSuccessFullMessage(true);
           setTimeout(() => {
             setPaymentSuccessFullMessage(false);
@@ -370,7 +368,7 @@ const Accordion = ({
       isSubscriptionOnly: true,
       subscriptionStartDate: data.subscriptionStartDate,
       subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status ==="succeeded" ? "active" : data.status,
+      subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
     };
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;

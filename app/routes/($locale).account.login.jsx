@@ -1,8 +1,16 @@
 import {json, redirect} from '@shopify/remix-oxygen';
-import {Form, useActionData, useLoaderData, useNavigate} from '@remix-run/react';
+import {
+  Form,
+  useActionData,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from '@remix-run/react';
 import {useEffect, useState} from 'react';
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
+import {useStateContext} from '~/context/StateContext';
+import CircularLoader from '~/components/CircularLoder';
 
 export const handle = {
   isPublic: true,
@@ -25,6 +33,7 @@ export const action = async ({request, context, params}) => {
 
   const email = formData.get('email');
   const password = formData.get('password');
+
 
   if (
     !email ||
@@ -81,19 +90,10 @@ export default function Login() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
-  const navigate = useNavigate()
-
-  async function setVar() {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('resultVar', 'result');
-    
-    }  
-  }
-
-
 
   return (
     <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
+
       <div className="max-w-md w-full">
         <h1 className="name text-4xl text-blue-900">Sign in</h1>
         <img
@@ -173,7 +173,7 @@ export default function Login() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              onClick={() => setVar()}
+             
               className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}

@@ -158,7 +158,7 @@ const ContactTable = ({
           Header: 'Type',
           accessor: 'type',
           Cell: ({row}) =>
-            row.original.type === 'return' ? 'Sender' : row.original.type,
+            row.original.type === 'return' ? 'sender' : row.original.type,
         },
         {
           Header: 'first Name',
