@@ -23,7 +23,7 @@ export function AddCart({
   variantsVal,
   metafields,
 }) {
-  const {addressForm, setAddressForm, setEditAddress, setProductShow} =
+  const {addressForm, setAddressForm, setEditAddress, defaultOption,setDefaultOption} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
@@ -99,7 +99,6 @@ export function AddCart({
   const [offPrice, setOffPrice] = useState('');
   const [updatedPrice, setUpdatedPrice] = useState('');
 
-  const [defaultOption, setDefaultOption] = useState(null);
   const [variantID, setVariantID] = useState('');
   const [apiVariantID, setApiVariantID] = useState('');
   const [isInitialRender, setIsInitialRender] = useState(true);
@@ -641,7 +640,6 @@ export function AddCart({
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm
-              defaultOption={defaultOption}
               customerID={customerid}
               setAddressForm={setAddressForm}
               setEditAddress={setEditAddress}

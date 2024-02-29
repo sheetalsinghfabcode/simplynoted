@@ -7,8 +7,8 @@ import CircularLoader from '../CircularLoder';
 import {  useLocation } from '@remix-run/react';
 import { formatText } from '~/lib/utils';
 
-const AddressForm = ({customerID, defaultOption}) => {
-  const {setAddressForm, setEditAddress} = useStateContext();
+const AddressForm = ({customerID}) => {
+  const {setAddressForm, defaultOption, setEditAddress} = useStateContext();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -20,10 +20,13 @@ const AddressForm = ({customerID, defaultOption}) => {
     state: '',
     postalCode: '',
     country: 'USA',
-    type: defaultOption,
+    type: defaultOption ? defaultOption : "",
     birthday: '',
     anniversary: '',
   });
+
+
+  console.log("defaultOption",defaultOption);
 
 
   const [errors, setErrors] = useState({});
@@ -472,7 +475,7 @@ const AddressForm = ({customerID, defaultOption}) => {
                 value={formData.type}
                 onChange={handleChange}
               >
-                {defaultOption === 'recipient' ? (
+                { (defaultOption &&  defaultOption === 'recipient') ? (
                   <>
                     {' '}
                     (<option>Recipient</option>
