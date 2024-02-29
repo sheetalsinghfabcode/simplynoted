@@ -573,7 +573,7 @@ export function CheckoutData({
                 <div className="p-5 bg-white lg:max-w-[48%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold shadow-outer-custom">
                   <div className="border border-solid border-[#e6edf8] sm:m-3 rounded-tl-lg rounded-tr-lg">
                     <div
-                      className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg flex justify-between ${
+                      className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg md:flex grid justify-between ${
                         showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
                       }`}
                       onClick={showWalletBtn}
@@ -590,12 +590,11 @@ export function CheckoutData({
                       </div>
                       <div>
                         <Link to="/simply-noted-plans">
-                          <span className='text-sm font-bold underline pointer-cursor hover:text-[#0056b3'>Get huge discounts with our Plans and Packages</span>
+                          <span className='text-sm font-bold sm:mt-[0px] mt-[8px] underline pointer-cursor hover:text-[#0056b3'>Get huge discounts with our Plans and Packages</span>
                         </Link>
                       </div>
                     </div>
                     <hr />
-
                     <div
                      className={`overflow-hidden  ${
                       showWallet
@@ -677,7 +676,7 @@ export function CheckoutData({
                               </div>
                             </div>
                           ))}
-                        <div className="savedCard flex items-start justify-between flex-wrap sm:flex-row flex-col mt-4">
+                        <div className="savedCard flex items-start justify-between flex-wrap md:flex-row flex-col mt-4">
                           <div className="text-base font-normal flex items-center">
                             <input
                               type="radio"
@@ -692,7 +691,7 @@ export function CheckoutData({
                           </div>
                           <div className="sm:mt-0 mt-[10px]">
                             <button
-                              className="bg-[#EF6E6E] w-[200px] text-[#fff] p-2 rounded"
+                              className="bg-[#EF6E6E] md:w-[200px] w-[254px] md:h-full h-[49px] text-[#fff] p-2 rounded"
                               onClick={() => onpenAddCardModal()}
                             >
                               Add New Card
@@ -751,8 +750,8 @@ export function CheckoutData({
                       <span>If you have a discount code, enter it here:</span>
                       <div
                         className="flex gap-2 justify-start items-stretch mt-3"
-                        style={{maxWidth: '90%'}}
-                      >
+                        style={{maxWidth: '100%'}}
+                      > 
                         <input
                           className="flex-2 w-full rounded text-sm"
                           type="text"

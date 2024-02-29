@@ -39,7 +39,7 @@ function Instruction({
       contentLabel="CSV Instruction Modal"
       ariaHideApp={false}
     >
-      <div className="">
+      <div className="lg:max-w-[700px]">
         <div className="relative w-[100%] max-w-[100%]">
           {/* {close && (
             <span
