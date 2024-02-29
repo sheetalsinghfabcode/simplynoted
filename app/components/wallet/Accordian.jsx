@@ -289,7 +289,6 @@ const Accordion = ({
 
       if (data.redirectUrl) {
         const result = await stripe.confirmCardPayment(data.client_secret);
-        debugger
         if (result?.error) {
           setPaymentLoader(false);
         } else {
