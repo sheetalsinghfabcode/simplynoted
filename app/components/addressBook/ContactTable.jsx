@@ -27,11 +27,11 @@ const ContactTable = ({
   continueBtn,
   setFilteredAddresses,
 }) => {
-  const {loadAddress, setLoadAddress, addresses} = useStateContext();
+  const {loadAddress, setLoadAddress, addresses, loaderTitle, setLoaderTitle} =
+    useStateContext();
   const [selectedType, setSelectedType] = useState('all');
   const [loader, setLoader] = useState(false);
-  const [uploadAddressSuccessMessage, setuploadAddressSuccessMessage] =
-    useState(false);
+
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileData, setFileData] = useState([]);
@@ -299,7 +299,6 @@ const ContactTable = ({
         const jsonData = csvToJson(csvData);
         setSelectedFile(file);
         setFileData(jsonData);
-        setUploadBulkAddress(false);
 
         // Set the 'file' variable to null after using it
       };
@@ -307,36 +306,33 @@ const ContactTable = ({
     }
   };
 
-
-  const updatedAddressData = addresses.map(item => {
-    if (item.type === "return") {
-        return { ...item, type: "sender" };
+  const updatedAddressData = addresses.map((item) => {
+    if (item.type === 'return') {
+      return {...item, type: 'sender'};
     }
     return item;
-});
+  });
 
- 
+  const handleSearchInputChange = (event) => {
+    const value = event.target.value;
+    setSearchText(value);
 
-const handleSearchInputChange = (event) => {
-  const value = event.target.value;
-  setSearchText(value);
+    // Filter the addresses based on the search term
+    if (value.trim() !== '') {
+      const filtered = updatedAddressData.filter((address) =>
+        Object.values(address).some((field) =>
+          field.toString().toLowerCase().includes(value.toLowerCase()),
+        ),
+      );
+      setFilteredAddresses(filtered);
+    } else {
+      setFilteredAddresses(updatedAddressData);
+    }
+  };
 
-  // Filter the addresses based on the search term
-  if (value.trim() !== '') {
-    const filtered = updatedAddressData.filter((address) =>
-      Object.values(address).some((field) =>
-        field.toString().toLowerCase().includes(value.toLowerCase())
-      )
-    );
-    setFilteredAddresses(filtered);
-  } else {
-    setFilteredAddresses(updatedAddressData);
-  }
-};
-  
-  
   const uploadDataToAPI = async (data) => {
-    setuploadAddressSuccessMessage(true);
+    setLoaderTitle('Uploading Address Book....');
+    setLoader(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -377,20 +373,28 @@ const handleSearchInputChange = (event) => {
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
         setTimeout(() => {
-          setuploadAddressSuccessMessage(false);
-        }, 1000);
+          setLoader(false);
+        }, 2000);
+        setLoaderTitle('Uploaded Address Successfully...');
         file.current.value = '';
 
         'Successful response data:', responseData.result;
       } else {
         setSelectedFile(null);
-        setuploadAddressSuccessMessage(false);
+        setTimeout(() => {
+          setLoader(false);
+        }, 1000);
+        setLoaderTitle('Error while Uploading Address Book...');
         file.current.value = '';
         throw new Error('Network response was not ok');
       }
     } catch (error) {
+      setTimeout(() => {
+        setLoader(false);
+      }, 1000);
+      setLoaderTitle('Error while Uploading Address Book');
+
       setSelectedFile(null);
-      setuploadAddressSuccessMessage(false);
       file.current.value = '';
       console.error('Error uploading data:', error);
       throw error;
@@ -426,6 +430,9 @@ const handleSearchInputChange = (event) => {
   }
 
   const handleUploadClick = async () => {
+    setLoader(true);
+    setUploadBulkAddress(false);
+
     if (fileData.length === 0) {
       console.warn('No data to upload');
       return;
@@ -550,6 +557,7 @@ const handleSearchInputChange = (event) => {
         !clickUploadBulkAddress.current.contains(event.target)
       ) {
         setUploadBulkAddress(false);
+        setSelectedFile(null);
       }
     }
 
@@ -558,6 +566,8 @@ const handleSearchInputChange = (event) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [uploadBulkAddressRef, clickUploadBulkAddress]);
+
+  console.log('loader', loader);
 
   return (
     <>
@@ -614,8 +624,11 @@ const handleSearchInputChange = (event) => {
               >
                 <div className="flex justify-end mr-[7px] mt-[5px]">
                   <p
-                    className="bg-[#ef6e6e] text-[white]"
-                    onClick={() => setUploadBulkAddress(false)}
+                    className="bg-[#ef6e6e] cursor-pointer text-white"
+                    onClick={() => {
+                      setSelectedFile(null);
+                      setUploadBulkAddress(false);
+                    }}
                   >
                     <RxCross2 />
                   </p>
@@ -632,6 +645,7 @@ const handleSearchInputChange = (event) => {
                       Watch Tutorial <span className="underline">Video</span>
                     </h4>
                   </div>
+
                   <div className="flex flex-col justify-center mt-[16px] mb-[8px] items-center border-2 border-dashed max-w-[100%] w-[100%] min-h-[100px] border-[#1B5299]">
                     <label
                       htmlFor="fileInput"
@@ -668,6 +682,18 @@ const handleSearchInputChange = (event) => {
                   >
                     View bulk upload instructions.
                   </span>
+                  {selectedFile && (
+                    <div className="mt-2">
+                      <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
+                        {selectedFile?.name}
+                      </span>
+                      <DynamicButton
+                        text="Upload"
+                        className="bg-[#ef6e6e] w-full mt-2  h-[36px] mx-auto "
+                        onClickFunction={() => handleUploadClick()}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -679,15 +705,6 @@ const handleSearchInputChange = (event) => {
                 />
               </div>
             </div>
-          </div>
-          <div className="flex justify-end">
-            {selectedFile && (
-              <DynamicButton
-                text="Upload"
-                className="bg-[#ef6e6e] w-full max-w-[240px] h-[45px] !mt-[10px] !ml-[10px] "
-                onClickFunction={() => handleUploadClick()}
-              />
-            )}
           </div>
 
           {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
@@ -851,14 +868,8 @@ const handleSearchInputChange = (event) => {
               )}
               {loader && (
                 <div className="flex justify-center items-center mt-[24px]">
-                  <CircularLoader
-                    title="Updating Address Book"
-                    color="#ef6e6e"
-                  />
+                  <CircularLoader title={loaderTitle} color="#ef6e6e" />
                 </div>
-              )}
-              {uploadAddressSuccessMessage && (
-                <SuccessfullLoader successfullMessage="Uploaded Addresses Sucessfully" />
               )}
 
               {page && page.length > 0 && !updateLoader && !loader && (

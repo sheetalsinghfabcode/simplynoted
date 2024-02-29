@@ -26,15 +26,10 @@ const AddressForm = ({customerID}) => {
   });
 
 
-  console.log("defaultOption",defaultOption);
-
-
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
 
   const pathname = useLocation()
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
