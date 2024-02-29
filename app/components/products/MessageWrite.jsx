@@ -948,6 +948,7 @@ export function MessageWriting({
         );
         const json = await res.json();
         if (json) {
+          
           setAddNewTem(false);
         }
       }

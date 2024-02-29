@@ -83,6 +83,7 @@ export default function AddCartFunc() {
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
+  const [circleLoader, setCircleLoader] = useState(false);
 
   useEffect(() => {
     storedDataString = localStorage.getItem('mydata')
@@ -126,7 +127,7 @@ export default function AddCartFunc() {
   let keyToUpdate5 = 'giftCardProdUrl';
   function updateValueInArray(index) {
     setSuccessfullLoader(true);
-    setOperation("updateValue");
+    setOperation('Adding Gift Card');
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -138,17 +139,25 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate5] = giftProdUrl;
     }
     localStorage.setItem('mydata', JSON.stringify(cartData));
+    setTimeout(() => {
+      setOperation('Gift Card added Sucessfully');
+    }, 1500);
+    setTimeout(() => {
+      setCircleLoader(true);
+    }, 1600);
+
     setCardPrice('');
     setTimeout(() => {
       setIsOpen(false);
     }, [100]);
     setTimeout(() => {
       setSuccessfullLoader(false);
-    }, 2000);
+      setCircleLoader(false)
+    }, 4000);
   }
   function deleteKeyInArray(index) {
     setSuccessfullLoader(true);
-    setOperation("deleteKey");
+    setOperation('Deleting Gift Card');
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -159,12 +168,19 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate4] = null;
     }
     setTimeout(() => {
-      setSuccessfullLoader(false);
-    }, 2000);
+      setOperation('Gift card deleted sucessfully.');
+    }, 1500);
+    setTimeout(() => {
+      setCircleLoader(true);
+    }, 1600);
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setTimeout(() => {
       setDeleteCardModal(false);
     }, 100);
+    setTimeout(() => {
+      setSuccessfullLoader(false);
+      setCircleLoader(false);
+    }, 4000);
   }
   function confirmCardDel(index) {
     setDeleteCardModal(true);
@@ -191,19 +207,26 @@ export default function AddCartFunc() {
 
   function deleteOrder(index) {
     setSuccessfullLoader(true);
-    setOperation("deleteOrder"); 
+    setOperation('Deleting Order');
     setUpdateGift(!updateGift);
     // if (index >= 0 && index < cartData.length) {
     // Delete the order
     cartData.splice(index, 1);
     // delete cartData[index];
     // }
+    setTimeout(() => {
+      setOperation('Order deleted successfully.');
+    }, 1500);
+    setTimeout(() => {
+      setCircleLoader(true);
+    }, 1600);
     localStorage.setItem('mydata', JSON.stringify(cartData));
     localStorage.setItem('cartCount', JSON.stringify(cartData.length));
     setDeleteModal(false);
     setTimeout(() => {
       setSuccessfullLoader(false);
-    }, 2000);
+      setCircleLoader(false)
+    }, 4000);
   }
 
   function editOrderData(index) {
@@ -286,7 +309,6 @@ export default function AddCartFunc() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [operation, setOperation] = useState(null);
 
-
   const handlePrevClick = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -340,7 +362,7 @@ export default function AddCartFunc() {
     );
     setTotalPrize(prices);
   }
-  // async function newDiscountedCard(productTitle,productImage,productPrice) {  
+  // async function newDiscountedCard(productTitle,productImage,productPrice) {
   //   let failArr = []
   //   // try {
   //     // setLoader(true)
@@ -383,12 +405,12 @@ export default function AddCartFunc() {
   // }
   // async function onCLickOfCheckoutBtn(){
   //   console.log(cartData,"all card data ");
-    
+
   //   let createdProducts = [];
   //   let errorProducts = [1,1,0,1];
   //   let i=0
   //   for(let i = 0; i<cartData.length; i++){
-  //     let updatedCartData = cartData[i] 
+  //     let updatedCartData = cartData[i]
   //     console.log(updatedCartData.variant_id,"variant id's");
   //     console.log(updatedCartData,"logs for every product");
   //     if(updatedCartData.productTitle && updatedCartData.productImg && updatedCartData.price){
@@ -399,14 +421,14 @@ export default function AddCartFunc() {
   //         console.log("log inside error check");
   //         errorProducts.push({productTitle:updatedCartData.productTitle,productImg:updatedCartData.productImg,price:updatedCartData.price})
   //       } else {
-  //       updatedCartData.variant_id = res.result.product.variants[0].id          
+  //       updatedCartData.variant_id = res.result.product.variants[0].id
   //       }
   //     }
   //   }
 
   //   if(errorProducts.length>0) {
   //     // for(let i=0; i<errorProducts.length; i++){
-  //     //   let prodValue = errorProducts[i] 
+  //     //   let prodValue = errorProducts[i]
   //     //   if(prodValue ==1){
   //     //     console.log("for loopget ones");
   //     //   } else {
@@ -417,14 +439,14 @@ export default function AddCartFunc() {
   //   }
   //   while (i < errorProducts.length) {
   //     let prodValue = errorProducts[i];
-    
+
   //     if (prodValue == 1) {
   //       console.log(" while get ones");
   //     } else {
   //       errorProducts.push(1);
   //       console.log("while0 ");
   //     }
-    
+
   //     i++;
   //   }
   //   console.log(arrOfRes,"variant id response");
@@ -718,7 +740,7 @@ export default function AddCartFunc() {
                                 ) : (
                                   ''
                                 )}
-                                {item.usCount && item.usCount? (
+                                {item.usCount && item.usCount ? (
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                       <div className="flex w-[95%] justify-start ">
@@ -774,7 +796,9 @@ export default function AddCartFunc() {
                                     </div>
                                     <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
                                   </div>
-                                ):''}
+                                ) : (
+                                  ''
+                                )}
                               </>
                             ) : (
                               <>
@@ -912,8 +936,7 @@ export default function AddCartFunc() {
                                   </div>
                                 )}
                               </>
-                            )
-                            }
+                            )}
                           </>
                         )}
                         {/* <div className="w-full h-[1px] bg-[black]"></div> */}
@@ -1179,21 +1202,12 @@ export default function AddCartFunc() {
             confirmText="Delete"
             cancelText="Cancel"
           />
-  {sucessfullLoader && (
-  <SuccessfullLoader
-    successfullMessage={
-      operation === "deleteOrder"
-        ? 'Deleting Order...'
-        : operation === "updateValue"
-          ? 'Adding Gift Card...'
-          : operation === "deleteKey"
-            ? 'Deleting Gift Card ...'
-            : 'Processing...'
-    }
-  />
-)}
-
-
+          {sucessfullLoader && (
+            <SuccessfullLoader
+              circle={circleLoader}
+              successfullMessage={operation}
+            />
+          )}
 
           <Modal
             isOpen={modalIsOpen}

@@ -1,19 +1,32 @@
-const CircularLoader = ({color, title, height = '48px', width = '48px'}) => {
+import { useState, useEffect } from 'react';
+
+const CircularLoader = ({ color = '#3182CE', title, height = '48px', width = '48px' }) => {
+  const [rotation, setRotation] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setRotation(rotation => (rotation + 45) % 360);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="flex flex-col gap-[8px] justify-center items-center ">
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <div className="relative w-[48px] h-[48px] mb-2">
+        <div
+          className="absolute inset-0 flex items-center justify-center border-4 border-gray-200 rounded-full animate-spin"
+          style={{
+            borderTopColor: color,
+            height,
+            width,
+            transform: `rotate(${rotation}deg)`
+          }}
+        ></div>
+      </div>
       {title && (
-        <h4 className="text-[16px] md:text-[24px] lg:text-[28px] text-[#001a5f]  font-bold text-center font-karla mb-6">
-          {title}
-        </h4>
+        <h4 className="text-lg text-[#001a5f] font-bold font-karla">{title}</h4>
       )}
-      <div
-        className="custom-spinner border-4 border-t-4 border-gray-200 rounded-full mb-4"
-        style={{
-          borderTopColor: color,
-          height,
-          width,
-        }}
-      ></div>
     </div>
   );
 };

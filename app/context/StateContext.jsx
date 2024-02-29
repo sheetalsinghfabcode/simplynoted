@@ -28,6 +28,7 @@ export function StateContextProvider({children}) {
   const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
   const [checkLogin,setCheckLogin] = useState(false)
   const [defaultOption, setDefaultOption] = useState(null);
+  const [loaderTitle,setLoaderTitle] = useState("");
 
 
   const [fullName, setFullName] = useState(() => {
@@ -175,7 +176,9 @@ export function StateContextProvider({children}) {
         checkLogin,
         setCheckLogin,
         defaultOption,
-        setDefaultOption
+        setDefaultOption,
+        loaderTitle,
+        setLoaderTitle
       }}
     >
       {children}
