@@ -25,12 +25,12 @@ export default function CardTypeSelection({
         </div>
       </div>
       <div className="md:flex  justify-center flex  flex-1">
-        <div className="flex flex-col h-[300px] w-[300px]">
+        <div className="flex flex-col md:h-[300px] h-[250px] w-[300px]">
           <span className=" text-center text-[17px] text-black font-bold">
             Start by selecting the size and style of card you want to create.
           </span>
           <div className="flex flex-col justify-center  items-center">
-            <div className="flex justify-center h-[88px] mt-8 mb-4  w-[90%]">
+            <div className="flex justify-center h-[88px] my-8 w-[90%]">
               <div
                 className="pl-3 pr-3 flex justify-center items-center flex-1 cursor-pointer"
                 style={{
