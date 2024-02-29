@@ -113,7 +113,7 @@ export default function FlatCustomisableCard({
       window.removeEventListener('scroll', scrollHandler);
     };
   }, [isScrollerRemoved]);
-  
+
   useEffect(() => {
     if (isLoading) {
       window.scroll({top: 0, left: 0, behavior: 'instant'});
@@ -226,6 +226,15 @@ export default function FlatCustomisableCard({
         setErrorResponse({
           message: '',
           status: false,
+        });
+      }
+
+      if (validationModalData.isNameValidated) {
+        setValidationModalData((prevValidationData) => {
+          return {
+            ...prevValidationData,
+            isNameValidated: false,
+          };
         });
       }
     }
@@ -989,7 +998,6 @@ export default function FlatCustomisableCard({
                   type="text"
                   placeholder="Card Name"
                   onChange={(e) => handleCardTitleInputChange(e)}
-                  readOnly={validationModalData.isNameValidated}
                 />
                 {validationModalData.isNameValidated ? (
                   <MdOutlineDone className="text-[green] text-[22px] ml-[30px] absolute right-[10px] top-[9px]" />

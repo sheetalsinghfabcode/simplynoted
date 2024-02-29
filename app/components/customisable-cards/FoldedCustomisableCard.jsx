@@ -173,6 +173,14 @@ export default function FoldedCustomisableCard({
           status: false,
         });
       }
+      if (validationModalData.isNameValidated) {
+        setValidationModalData((prevValidationData) => {
+          return {
+            ...prevValidationData,
+            isNameValidated: false,
+          };
+        });
+      }
     }
     return () => {
       clearTimeout(timeout);
@@ -790,7 +798,6 @@ export default function FoldedCustomisableCard({
                   type="text"
                   placeholder="Card Name"
                   onChange={(e) => handleCardTitleInputChange(e)}
-                  readOnly={validationModalData.isNameValidated}
                 />
                 {validationModalData.isNameValidated ? (
                   <MdOutlineDone className="text-[green] text-[22px] ml-[30px] absolute right-[10px] top-[9px]" />
