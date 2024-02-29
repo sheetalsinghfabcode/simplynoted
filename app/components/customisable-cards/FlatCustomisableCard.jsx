@@ -7,6 +7,7 @@ import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import CustomCheckbox from '../CustomCheckbox';
 import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.png';
+import {MdOutlineDone} from 'react-icons/md';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -14,6 +15,7 @@ export default function FlatCustomisableCard({
   customerId,
 }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingText, setLoadingText] = useState('Checking availability...');
   const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
   const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
     useState(false);
@@ -63,8 +65,11 @@ export default function FlatCustomisableCard({
   });
   const [customCardTitle, setCustomCardTitle] = useState('');
   const [s3ImageUrls, setS3ImageUrls] = useState({});
-  const [checkTitleDuplicacyModalOpen, setCheckTitleDuplicacyModalOpen] =
-    useState(false);
+  const [validationModalData, setValidationModalData] = useState({
+    isModalOpen: false,
+    isNameValidated: false,
+    isUserTyping: false,
+  });
   const [qr, setQr] = useState({
     isInputModalOpened: false,
     isConfirmationModalOpened: false,
@@ -108,6 +113,12 @@ export default function FlatCustomisableCard({
       window.removeEventListener('scroll', scrollHandler);
     };
   }, [isScrollerRemoved]);
+  
+  useEffect(() => {
+    if (isLoading) {
+      window.scroll({top: 0, left: 0, behavior: 'instant'});
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     setQr((prevQrValues) => {
@@ -198,6 +209,30 @@ export default function FlatCustomisableCard({
     headerData.isImageSelected,
     footerData.isImageSelected,
   ]);
+
+  useEffect(() => {
+    let timeout;
+    if (validationModalData.isUserTyping) {
+      timeout = setTimeout(() => {
+        setValidationModalData((prevValidationData) => {
+          return {
+            ...prevValidationData,
+            isUserTyping: false,
+          };
+        });
+      }, 1000);
+
+      if (errorResponse.status) {
+        setErrorResponse({
+          message: '',
+          status: false,
+        });
+      }
+    }
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [validationModalData.isUserTyping]);
 
   async function blobUrlToFileObject(blobUrl, fileName = 'image') {
     try {
@@ -596,14 +631,9 @@ export default function FlatCustomisableCard({
 
   const handleFinishEditingButton = async () => {
     try {
-      const isPdfUploaded = await uploadPdfRequest();
-      setCheckTitleDuplicacyModalOpen(true);
-      if (!isPdfUploaded) {
-        return setErrorResponse({
-          message: 'Unable to upload the PDF.',
-          status: true,
-        });
-      }
+      setValidationModalData((prevValidationData) => {
+        return {...prevValidationData, isModalOpen: true};
+      });
     } catch (err) {
       throw err;
     }
@@ -671,7 +701,6 @@ export default function FlatCustomisableCard({
       );
 
       if (data.ok) {
-        setIsLoading(false);
         setIsScrollerRemoved(false);
         const response = await data.json();
         setS3ImageUrls(response.result);
@@ -688,10 +717,10 @@ export default function FlatCustomisableCard({
   }
 
   const handleCustomCardSaveButton = async () => {
-    const isDuplicateTitle = await checkForDuplicateTitle();
-    if (isDuplicateTitle) {
+    const isPdfUploaded = await uploadPdfRequest();
+    if (!isPdfUploaded) {
       return setErrorResponse({
-        message: 'Card name already exists.',
+        message: 'Unable to upload the PDF.',
         status: true,
       });
     }
@@ -749,7 +778,6 @@ export default function FlatCustomisableCard({
 
   async function saveCustomCard() {
     try {
-      setIsLoading(true);
       setIsScrollerRemoved(true);
 
       const formData = new FormData();
@@ -891,6 +919,31 @@ export default function FlatCustomisableCard({
     }));
   };
 
+  const handleCardTitleInputChange = (event) => {
+    setCustomCardTitle(event.target.value);
+    setValidationModalData((prevValidationData) => {
+      return {...prevValidationData, isUserTyping: true};
+    });
+  };
+  const handleCardTitleValidation = async () => {
+    if (validationModalData.isUserTyping || customCardTitle.trim().length === 0)
+      return;
+    const isDuplicateTitle = await checkForDuplicateTitle();
+    if (isDuplicateTitle) {
+      return setErrorResponse({
+        message: 'Card name already exists.',
+        status: true,
+      });
+    }
+    setLoadingText('Saving in progress...');
+    setValidationModalData((prevValidationData) => {
+      return {
+        ...prevValidationData,
+        isNameValidated: true,
+      };
+    });
+  };
+
   return (
     <section>
       {isLoading && (
@@ -898,14 +951,18 @@ export default function FlatCustomisableCard({
           style={{zIndex: 999}}
           className="min-h-screen w-full absolute top-[-10px] flex justify-center items-center bg-transparent backdrop-filter backdrop-blur"
         >
-          <CircularLoader color={'#ef6e6e'} title="Saving in progress..." />
+          <CircularLoader color={'#ef6e6e'} title={loadingText} />
         </div>
       )}
-      {checkTitleDuplicacyModalOpen && (
+      {validationModalData.isModalOpen && (
         <Modal
           cancelLink={() => {
             setErrorResponse({message: '', status: false});
-            setCheckTitleDuplicacyModalOpen(false);
+            setValidationModalData({
+              isModalOpen: false,
+              isNameValidated: false,
+              isUserTyping: false,
+            });
           }}
         >
           <div className="p-[35px]">
@@ -922,15 +979,51 @@ export default function FlatCustomisableCard({
               )}
             </div>
             <div className="flex lg:flex-row flex-col justify-between gap-2 mt-3">
-              <input
-                className="min-w-[190px] h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1"
-                type="text"
-                placeholder="Card Name"
-                onChange={(e) => setCustomCardTitle(e.target.value)}
-              ></input>
-
+              <div className="relative flex-1">
+                <input
+                  className={`min-w-[190px] w-full h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1 focus:ring-0 ${
+                    validationModalData.isNameValidated
+                      ? 'border-emerald-600 focus:border-emerald-600'
+                      : 'focus:border-red-400'
+                  } ${errorResponse.status ? 'border-red-400' : ''}`}
+                  type="text"
+                  placeholder="Card Name"
+                  onChange={(e) => handleCardTitleInputChange(e)}
+                  readOnly={validationModalData.isNameValidated}
+                />
+                {validationModalData.isNameValidated ? (
+                  <MdOutlineDone className="text-[green] text-[22px] ml-[30px] absolute right-[10px] top-[9px]" />
+                ) : (
+                  <button
+                    type="button"
+                    className={`absolute right-[3px] top-[3px] py-2 px-4 w-[81px] h-[35px] shadow-md bg-[#1b5299] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
+                    onClick={handleCardTitleValidation}
+                    disabled={validationModalData.isNameValidated}
+                  >
+                    {validationModalData.isUserTyping ? (
+                      <svg
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="mr-2 animate-spin"
+                        viewBox="0 0 1792 1792"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                      </svg>
+                    ) : (
+                      <>Validate</>
+                    )}
+                  </button>
+                )}
+              </div>
               <button
-                className="bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] "
+                className={`${
+                  !validationModalData.isNameValidated
+                    ? 'cursor-not-allowed'
+                    : ''
+                } bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
+                disabled={!validationModalData.isNameValidated}
                 type="button"
                 onClick={handleCustomCardSaveButton}
               >
@@ -1268,7 +1361,7 @@ export default function FlatCustomisableCard({
                 <div className="relative flex w-[70px] h-[40px] lg:mt-[-9rem] mt-0 ">
                   <div className="flex flex-row gap-[3px] items-center lg:justify-start justify-center">
                     <img
-                    className='cursor-pointer'
+                      className="cursor-pointer"
                       src={AddImageIcon}
                       alt="Add image file icon"
                       draggable="false"
@@ -1611,19 +1704,19 @@ export default function FlatCustomisableCard({
                     <div className="relative mt-5 w-[60px] h-[50px]">
                       {observingData.isHeader && !qr.isQrAdded && (
                         <>
-                        <div className='flex items-center gap-2'>
-                          <img
-                          className='cursor-pointer'
-                            src={AddImageIcon}
-                            alt="Add image file icon"
-                            draggable="false"
-                          />
-                          <label
-                            htmlFor="image-input2"
-                            className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
-                          >
-                            Header Image
-                          </label>
+                          <div className="flex items-center gap-2">
+                            <img
+                              className="cursor-pointer"
+                              src={AddImageIcon}
+                              alt="Add image file icon"
+                              draggable="false"
+                            />
+                            <label
+                              htmlFor="image-input2"
+                              className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                            >
+                              Header Image
+                            </label>
                           </div>
                           <input
                             type="file"
@@ -1637,20 +1730,20 @@ export default function FlatCustomisableCard({
                       )}
                       {observingData.isFooter && !qr.isQrAdded && (
                         <>
-                        <div className='flex items-center gap-2 '>
-                          <img
-                          className='cursor-pointer'
-                            src={AddImageIcon}
-                            ref={backFooterImageRef}
-                            alt="Add image file icon"
-                            draggable="false"
-                          />
-                           <label
-                            htmlFor="image-input3"
-                            className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
-                          >
-                            Footer Image
-                          </label>
+                          <div className="flex items-center gap-2 ">
+                            <img
+                              className="cursor-pointer"
+                              src={AddImageIcon}
+                              ref={backFooterImageRef}
+                              alt="Add image file icon"
+                              draggable="false"
+                            />
+                            <label
+                              htmlFor="image-input3"
+                              className="font-bold text-[14px] whitespace-nowrap cursor-pointer"
+                            >
+                              Footer Image
+                            </label>
                           </div>
                           <input
                             type="file"
@@ -1670,7 +1763,9 @@ export default function FlatCustomisableCard({
                           !qr.isQrAdded && (
                             <>
                               <div className="flex flex-col mb-3 mt-3">
-                                <span className='font-bold text-[14px]'>Resize image</span>
+                                <span className="font-bold text-[14px]">
+                                  Resize image
+                                </span>
                                 <input
                                   type="range"
                                   min="0.3"
