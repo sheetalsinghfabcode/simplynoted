@@ -91,7 +91,7 @@ export default function Home() {
         <source src={WorkingRobots} type="video/webm"></source>
       </video>
       <div className='sm:hidden flex mt-[20px]'>
-     <img class="lazyload" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" data-src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" alt="Simply Noted Robots" width="500" height="119"/>
+     <img className="lazyload" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" data-src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" alt="Simply Noted Robots" width="500" height="119"/>
      </div>
     </div>
   );

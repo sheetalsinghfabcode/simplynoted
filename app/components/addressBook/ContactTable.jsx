@@ -11,7 +11,8 @@ import Instruction from '../modal/Instruction';
 import chooseFile from '../../../assets/Image/choose-file.svg';
 import {useLocation} from '@remix-run/react';
 import {VideoTutorial} from '../VideoTutorial';
-import { RxCross2 } from "react-icons/rx";
+import {RxCross2} from 'react-icons/rx';
+import SuccessfullLoader from '../SucessfullLoader';
 
 const ContactTable = ({
   customerID,
@@ -29,6 +30,8 @@ const ContactTable = ({
   const {loadAddress, setLoadAddress, addresses} = useStateContext();
   const [selectedType, setSelectedType] = useState('all');
   const [loader, setLoader] = useState(false);
+  const [uploadAddressSuccessMessage, setuploadAddressSuccessMessage] =
+    useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileData, setFileData] = useState([]);
@@ -290,6 +293,7 @@ const ContactTable = ({
     file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
+      console.log('file', file);
 
       reader.onload = (e) => {
         const csvData = e.target.result;
@@ -304,45 +308,37 @@ const ContactTable = ({
     }
   };
 
-  // const handleSearchInputChange = (event) => {
 
-  //   const value = event.target.value;
-  //   setSearchText(value);
-  //   setSelectedCheckboxes([]);
-
-  //   // Filter the addresses based on the search term
-  //   if (value) {
-  //     const filtered = data.filter((address) =>
-  //       Object.values(address).some((field) =>
-  //         field.toString().toLowerCase().includes(value.toLowerCase()),
-  //       ),
-  //     );
-  //     setFilteredAddresses(filtered);
-  //   } else {
-  //     setFilteredAddresses(addresses);
-  //   }
-  // };
-
-  const handleSearchInputChange = (event) => {
-    const value = event.target.value;
-    setSearchText(value);
-  
-    // Filter the addresses based on the search term
-    if (value.trim() !== '') {
-      const filtered = addresses.filter((address) =>
-        Object.values(address).some((field) =>
-          field.toString().toLowerCase().includes(value.toLowerCase())
-        )
-      );
-      setFilteredAddresses(filtered);
-    } else {
-      setFilteredAddresses(addresses);
+  console.log("addresses",addresses);
+  const updatedAddressData = addresses.map(item => {
+    if (item.type === "return") {
+        return { ...item, type: "sender" };
     }
-  };
-  
+    return item;
+});
 
+ 
+
+const handleSearchInputChange = (event) => {
+  const value = event.target.value;
+  setSearchText(value);
+
+  // Filter the addresses based on the search term
+  if (value.trim() !== '') {
+    const filtered = updatedAddressData.filter((address) =>
+      Object.values(address).some((field) =>
+        field.toString().toLowerCase().includes(value.toLowerCase())
+      )
+    );
+    setFilteredAddresses(filtered);
+  } else {
+    setFilteredAddresses(updatedAddressData);
+  }
+};
+  
+  
   const uploadDataToAPI = async (data) => {
-    setLoader(true);
+    setuploadAddressSuccessMessage(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -382,19 +378,21 @@ const ContactTable = ({
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
-        setLoader(false);
+        setTimeout(() => {
+          setuploadAddressSuccessMessage(false);
+        }, 1000);
         file.current.value = '';
 
         'Successful response data:', responseData.result;
       } else {
         setSelectedFile(null);
-        setLoader(false);
+        setuploadAddressSuccessMessage(false);
         file.current.value = '';
         throw new Error('Network response was not ok');
       }
     } catch (error) {
       setSelectedFile(null);
-      setLoader(false);
+      setuploadAddressSuccessMessage(false);
       file.current.value = '';
       console.error('Error uploading data:', error);
       throw error;
@@ -556,13 +554,12 @@ const ContactTable = ({
         setUploadBulkAddress(false);
       }
     }
-  
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [uploadBulkAddressRef, clickUploadBulkAddress]);
-  
 
   return (
     <>
@@ -606,7 +603,6 @@ const ContactTable = ({
 
               <div
                 ref={uploadBulkAddressRef}
-              
                 className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
                   overflow-hidden  ${
                     uploadBulkAddress
@@ -618,8 +614,13 @@ const ContactTable = ({
                 aria-orientation="vertical"
                 aria-labelledby="options-menu"
               >
-                <div className='flex justify-end mr-[7px] mt-[5px]'>
-                <p className='bg-[#ef6e6e] text-[white]'onClick={() => setUploadBulkAddress(false)}><RxCross2 /></p>
+                <div className="flex justify-end mr-[7px] mt-[5px]">
+                  <p
+                    className="bg-[#ef6e6e] text-[white]"
+                    onClick={() => setUploadBulkAddress(false)}
+                  >
+                    <RxCross2 />
+                  </p>
                 </div>
                 <div className="flex flex-col justify-center items-start p-4">
                   <div className="flex flex-col items-start gap-[4px]">
@@ -828,7 +829,7 @@ const ContactTable = ({
                             {row.cells.map((cell, index) => (
                               <td
                                 {...cell.getCellProps()}
-                                className="border border-[#EFEFF2] py-2 px-4 whitespace-nowrap"
+                                className="border border-[#EFEFF2] capitalize py-2 px-4 whitespace-nowrap"
                                 key={index}
                               >
                                 {cell.render('Cell')}
@@ -853,10 +854,13 @@ const ContactTable = ({
               {loader && (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader
-                    title="Updaing Address Book"
+                    title="Updating Address Book"
                     color="#ef6e6e"
                   />
                 </div>
+              )}
+              {uploadAddressSuccessMessage && (
+                <SuccessfullLoader successfullMessage="Uploaded Addresses Sucessfully" />
               )}
 
               {page && page.length > 0 && !updateLoader && !loader && (
