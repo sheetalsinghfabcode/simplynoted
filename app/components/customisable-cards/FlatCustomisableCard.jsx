@@ -999,10 +999,9 @@ export default function FlatCustomisableCard({
           }
         >
           <div className="flex gap-1 flex-col justify-center items-center">
-            <div className="font-bold tex-xl p-3">
+            <div className="font-bold tex-xl text-center pt-[30px] p-3">
               Please scan the QR code to confirm that it works as you expect.
             </div>
-
             <div className="h-[100px]">
               <img
                 className="object-contain h-full"
@@ -1707,7 +1706,7 @@ export default function FlatCustomisableCard({
                               </div>
                               <div className="h-[40px] sm:mt-5 mt-2">
                                 <button
-                                  className="bg-[#1b5299] border-none text-white text-sm outline-none text-center h-[40px] w-full font-bold"
+                                  className="bg-[#1b5299] border-none text-white  text-sm outline-none text-center h-[40px] w-full font-bold"
                                   type="button"
                                   onClick={handleSelectedImageReset}
                                 >
@@ -1772,7 +1771,7 @@ export default function FlatCustomisableCard({
                     <div
                       className={` ${
                         qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-                      } sm:w-[200px] w-[100%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5 mt-10`}
+                      } sm:w-[200px] w-[100%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center sm:justify-start justify-center gap-2 text-white flex-wrap mb-5 mt-10`}
                       onClick={handleQrSelectionButton}
                     >
                       <div>

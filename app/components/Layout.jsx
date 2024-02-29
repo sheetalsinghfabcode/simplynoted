@@ -251,7 +251,7 @@ function MenuMobileNav({menu, onClose}) {
               <Text as="span" size="copy">
                 {item.title === 'Business' ? (
                   <Link to="/business-page">
-                    <div classNhame="" style={{fontWeight:'bold', fontSize:'16px' }}>Business</div>
+                    <div className="" style={{fontWeight:'bold', fontSize:'16px' }}>Business</div>
                   </Link>
                 ) : null}
                 {/* {item.title === ''} */}
@@ -278,13 +278,13 @@ function MenuMobileNav({menu, onClose}) {
                             style={{color: 'black'}}
                           >
                             <Link to="/collections/best-sellers">
-                              <li>Cards</li>
+                              <li className='mb-[6px]'>Cards</li>
                             </Link>
                             <Link
                               to="/customise-your-card"
                               // onClick={handleCreateCardClick}
                             >
-                              <li>Create a Card</li>
+                              <li className='mb-[6px]'> Create a Card</li>
                             </Link>
                             {/* {loginModal && (
                               <>
@@ -300,10 +300,10 @@ function MenuMobileNav({menu, onClose}) {
                               </>
                             )} */}
                             <Link to="/collections/birthday">
-                              <li>Birthday Automation</li>
+                              <li className='mb-[6px]'>Birthday Automation</li>
                             </Link>
                             <Link to="/gift-cards">
-                              <li>Gift Cards </li>
+                              <li className='mb-[6px]'>Gift Cards </li>
                             </Link>
                           </ul>
                         </div>
@@ -379,16 +379,16 @@ function MenuMobileNav({menu, onClose}) {
                           <li>Credit Packages</li>
                         </Link> */}
                           <Link to="/zapier-integration">
-                            <li>Zapier</li>
+                            <li className='mb-[6px]'>Zapier</li>
                           </Link>
                           <Link to="/shopify-integration">
-                            <li>Shopify</li>
+                            <li className='mb-[6px]'>Shopify</li>
                           </Link>
                           <Link to="/salesforce">
-                            <li>Sales</li>
+                            <li className='mb-[6px]'>Sales</li>
                           </Link>
                           <Link to="/api-automation">
-                            <li>Api</li>
+                            <li className='mb-[6px]'>Api</li>
                           </Link>
                         </ul>
                       </div>
@@ -428,11 +428,11 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              <li>Get a Custom Quote</li>
+                              <li className='mb-[6px]'>Get a Custom Quote</li>
                             </button>
                           </Link>
                           <Link to="/simply-noted-plans">
-                            <li>Plans and Packages</li>
+                            <li className='mb-[6px]'>Plans and Packages</li>
                           </Link>
                         </ul>
                       </div>
@@ -461,16 +461,16 @@ function MenuMobileNav({menu, onClose}) {
                           style={{color: 'black'}}
                         >
                           <Link to="/blog">
-                            <li onClick={onClose}>Blog.</li>
+                            <li className='mb-[6px]' onClick={onClose}>Blog.</li>
                           </Link>
                           <Link to="/tutorials">
-                            <li onClick={onClose}>Tutorials</li>
+                            <li className='mb-[6px]' onClick={onClose}>Tutorials</li>
                           </Link>
                           <a href="https://www.youtube.com/@simplynoted">
-                            <li>Videos</li>
+                            <li className='mb-[6px]'>Videos</li>
                           </a>
                           <Link to="/faq">
-                            <li>F.A.Q.</li>
+                            <li className='mb-[6px]'>F.A.Q.</li>
                           </Link>
                         </ul>
                       </div>
@@ -503,10 +503,10 @@ function MenuMobileNav({menu, onClose}) {
                         </Link> */}
 
                           <Link to="/pages/about-us">
-                            <li>About Us</li>
+                            <li className='mb-[6px]'>About Us</li>
                           </Link>
                           <Link to="/Video">
-                            <li>Tutorials</li>
+                            <li className='mb-[6px]'>Tutorials</li>
                           </Link>
                           <Link to="#">
                             <button
@@ -517,14 +517,14 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              <li>Video</li>
+                              <li className='mb-[6px]'>Video</li>
                             </button>
                           </Link>
                           <Link to="/news">
-                            <li>Blog</li>
+                            <li className='mb-[6px]'>Blog</li>
                           </Link>
                           <Link to="/pages/faq">
-                            <li>F.A.Q</li>
+                            <li className='mb-[6px]'>F.A.Q</li>
                           </Link>
                         </ul>
                       </div>
@@ -549,7 +549,7 @@ function MenuMobileNav({menu, onClose}) {
                         }
                         onClose()
                       }} >
-                  <div classNhame="" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
+                  <div className="" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
                 </button>
       </nav>
     </div>
