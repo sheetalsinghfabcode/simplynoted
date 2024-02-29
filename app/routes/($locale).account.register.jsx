@@ -94,6 +94,8 @@ export default function Register() {
   const [nativeLastNameError, setNativeLastNameError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
+
+
   return (
     <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
       <div className="max-w-md w-full">
@@ -108,7 +110,7 @@ export default function Register() {
         <Form
           method="post"
           noValidate
-          className="pt-6 pb-8 mt-4 mb-[-175px] space-y-3"
+          className="pt-6 pb-8 mt-4 mb-[-100px] space-y-3"
         >
           {actionData?.formError && (
             <div className="flex items-center justify-center mb-6 bg-zinc-500">
@@ -147,18 +149,24 @@ export default function Register() {
               )}`}
               id="name"
               name="name"
-              type="name"
+              type="text"
+              onKeyDown={(event) => {
+                // Prevent the input of numeric characters
+                if (/\d/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               autoComplete="name"
               required
+              pattern="[A-Za-z]+"
               placeholder="Enter First Name"
               aria-label="First Name"
-              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
               onBlur={(event) => {
                 setNativeFirstNameError(
                   event.currentTarget.value.length &&
-                    !event.currentTarget.validity.valid
-                    ? 'Please Enter First Name'
+                    !/^[A-Za-z]+$/.test(event.currentTarget.value)
+                    ? 'Please Enter a valid First Name (only alphabetic characters allowed)'
                     : null,
                 );
               }}
@@ -169,25 +177,32 @@ export default function Register() {
               </p>
             )}
           </div>
+
           <div>
             <input
               className={`mb-1 h-12 ${getInputStyleClasses(
                 nativeLastNameError,
               )}`}
+              onKeyDown={(event) => {
+                // Prevent the input of numeric characters
+                if (/\d/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               id="last name"
               name="last Name"
-              type="name"
+              type="text"
               autoComplete="last Name"
               required
+              pattern="[A-Za-z]+"
               placeholder="Enter Last Name"
               aria-label="Last Name"
-              // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
               onBlur={(event) => {
                 setNativeLastNameError(
                   event.currentTarget.value.length &&
-                    !event.currentTarget.validity.valid
-                    ? 'Please Enter Last Name'
+                    !/^[A-Za-z]+$/.test(event.currentTarget.value)
+                    ? 'Please Enter a valid Last Name (only alphabetic characters allowed)'
                     : null,
                 );
               }}
@@ -198,6 +213,7 @@ export default function Register() {
               </p>
             )}
           </div>
+
           <div>
             <input
               className={`mb-1 h-12 ${getInputStyleClasses(

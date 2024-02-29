@@ -183,7 +183,6 @@ const Card = () => {
               <DynamicButton
                 text="SUBSCRIBE"
                 className="subscribe"
-                onClickFunction={() => Navigate('/blogs/news')}
               />
             </div>
           </div>

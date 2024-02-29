@@ -28,8 +28,6 @@ export function StateContextProvider({children}) {
   const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
   const [checkLogin,setCheckLogin] = useState(false)
 
-
-
   const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedFullName = localStorage.getItem('SNFullName');

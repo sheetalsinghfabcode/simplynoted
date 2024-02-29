@@ -1085,25 +1085,31 @@ function FooterMenu({menu}) {
             <img src={footerlogo} alt=""></img>
           </div>
           <div className="flex mt-5 sm:w-full  w-[50%] sm:mx-0 mx-auto gap-[10px] justify-center items-center">
-            <a href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
+            <a
+            target='_blank'
+            href="https://www.linkedin.com/company/simplynoted/?viewAsMember=true">
               <img
                 className="w-[55px] h-[53px]"
                 src={linkdin}
-                alt=""
+                alt="linkdin-link"
               ></img>
             </a>
-            <a href="#">
+            <a 
+            target='!blank'
+            href="https://m.facebook.com/profile.php/?id=100054865066445&name=xhp_nt__fb__action__open_user">
               <img
                 className="w-[55px] sm:h-[55px] h-[52px]"
                 src={fb}
-                alt=""
+                alt="facebook-link"
               ></img>
             </a>
-            <a href="#">
+            <a
+            target='_blank'
+            href="https://twitter.com/SimplyNotedLLC">
               <img
                 className="w-[55px] sm:h-[55px] h-[52px] ml-[-3px]"
                 src={twitter}
-                alt=""
+                alt="twitter-link"
               ></img>
             </a>
           </div>

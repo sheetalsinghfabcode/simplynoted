@@ -43,6 +43,7 @@ import customOrder from '../../assets/Image/custom-order.png';
 import CardComponent from '~/components/account/CardComponent';
 import automate from '../../assets/Image/automate.png';
 import Instruction from '~/components/modal/Instruction';
+import ApiKeyModal from '~/components/modal/ApiKeyModal';
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -411,7 +412,7 @@ function Account({customer, heading, featuredData}) {
                 />
               </div>
             )}
-            <Instruction
+            <ApiKeyModal
               title="Generated Api Key"
               closeModal={()=>setKeyModal(false)}
               isOpen={keyModal}

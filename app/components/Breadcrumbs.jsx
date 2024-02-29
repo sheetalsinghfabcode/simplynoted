@@ -91,21 +91,20 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                 </div>
               </li>
             )}
-          {pathnames.map((name, index) => {
+   {pathnames.map((name, index) => {
             let breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
-            if (
-              ['collections', 'products', 'pages', 'policies','custom','journal','video'].includes(name)
-            ) {
+            if (['collections', 'products', 'pages', 'policies', 'custom', 'journal','blogs'].includes(name)) {
               return null; // Skip collections, products, etc.
             }
             if (location.pathname.includes('orders')) {
               if (location.pathname.includes('orders') && /\d/.test(location.pathname) && name.split(' ').filter((item, index, arr) => arr.indexOf(item) === index).length === 1) {
                 return null; // Skip rendering breadcrumbs for paths containing "orders" with a number and where the name appears only once
               }
-              
             }
+            // Replace "news" with "articles" and "video" with "tutorial"
+            if (name === 'news') name = 'articles';
+            if (name === 'Video') name = 'tutorial';
             const isLast = index === pathnames.length - 1;
-
             return (
               <Fragment key={index}>
                 <li

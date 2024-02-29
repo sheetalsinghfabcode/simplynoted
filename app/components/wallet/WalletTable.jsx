@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import DynamicButton from '../../components/DynamicButton';
+import LoginModal from '../modal/LoginModal';
 
 const data = [
   {
@@ -81,7 +83,12 @@ const data = [
   },
 ];
 
-const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
+const WalletTable = ({
+  pricePerCard,
+  setWalletPlan,
+  stripeCollection,
+  customerID,
+}) => {
   const getSubscriptionType = (stripeCollection) => {
     if (
       stripeCollection &&
@@ -101,7 +108,8 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
   const subscribeTeam = subscriptionType === 'team';
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
-  
+  const [loginModal,setLoginModal] = useState(false)
+
   const pricingPlans = [
     {
       name: 'Free',
@@ -110,7 +118,10 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       buttonColor: '#1b5299',
       tickCount: 17,
       firstTwoFeaturesText: ['0% - 40% OFF', 'Lite Users'],
-      onClick: () => setWalletPlan(true),
+      onClick: () => {
+        customerID ? setWalletPlan(true) : setLoginModal(true);
+      },
+
       features: [
         'Discounts / Savings',
         'Reccomended for',
@@ -122,9 +133,12 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       price: pricePerCard[1],
       tickCount: 19,
       firstTwoFeaturesText: ['40% - 55% OFF', '100+ Cards/mo'],
-      buttonText: subscribeTeam ? 'Purchase Package' : 'Upgrade',
+      buttonText: !customerID ? 'Buy Plan' :  subscribeTeam ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeTeam ? '#1b5299' : '#ef6e6e',
-      onClick: () => setWalletPlan(true),
+      onClick: () => {
+        customerID ? setWalletPlan(true) : setLoginModal(true);
+
+      },
       features: [
         'Discounts / Savings',
         'Global Leading Technology' /* add features as needed */,
@@ -135,9 +149,12 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
       price: pricePerCard[2],
       tickCount: 23,
       firstTwoFeaturesText: ['60% - 70% OFF', '1000+ Cards/mo'],
-      buttonText: subscribeBusiness ? 'Purchase Package' : 'Upgrade',
+      buttonText: !customerID ? 'Buy Plan' : subscribeBusiness ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
-      onClick: () => setWalletPlan(true),
+      onClick: () => {
+        customerID ? setWalletPlan(true) : setLoginModal(true);
+
+      },
       features: [
         'Discounts / Savings',
         'Global Leading Technology',
@@ -187,16 +204,16 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                     >
                       as low as
                     </span>
-                   
-                      <div
-                        className={` text-[18px] lg:text-[24px] xl:text-[36px] whitespace-nowrap my-2 text-[#000] ${
-                          plan.buttonText === 'Contact Us'
-                            ? '!font-normal'
-                            : 'font-bold'
-                        } `}
-                      >
-                        {plan.price}
-                      </div>
+
+                    <div
+                      className={` text-[18px] lg:text-[24px] xl:text-[36px] whitespace-nowrap my-2 text-[#000] ${
+                        plan.buttonText === 'Contact Us'
+                          ? '!font-normal'
+                          : 'font-bold'
+                      } `}
+                    >
+                      {plan.price}
+                    </div>
                     <span
                       className={`text-[14px] lg:text-[16px] ${
                         plan.name === 'Enterprise' && 'invisible'
@@ -206,18 +223,17 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                     </span>
                   </div>
                   {(subscribeTeam && plan.name === 'Free') ||
-                    (subscribeBusiness &&
-                      (plan.name === 'Free' || plan.name === 'Team')) ? null : (
-                  <DynamicButton
-                    onClickFunction={plan.onClick}
-                    className={`bg-[${plan.buttonColor}] ${
-                      plan.buttonText === 'Contact Us' && '!font-normal'
-                    } mt-2  md:mx-auto  w-full
+                  (subscribeBusiness &&
+                    (plan.name === 'Free' || plan.name === 'Team')) ? null : (
+                    <DynamicButton
+                      onClickFunction={plan.onClick}
+                      className={`bg-[${plan.buttonColor}] ${
+                        plan.buttonText === 'Contact Us' && '!font-normal'
+                      } mt-2  md:mx-auto  w-full
                rounded-full h-[46px] lg:px-4 text-[12px] lg:text-[16px] `}
-                    text={plan.buttonText}
-                  />
+                      text={plan.buttonText}
+                    />
                   )}
-
                 </div>
               ))}
             </div>
@@ -290,12 +306,12 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
                     {(subscribeTeam && plan.name === 'Free') ||
                     (subscribeBusiness &&
                       (plan.name === 'Free' || plan.name === 'Team')) ? null : (
-                    <DynamicButton
-                      onClickFunction={plan.onClick}
-                      className={`bg-[${plan.buttonColor}] min-w-[164.93px] max-w-[360px] mx-auto mt-2 rounded-full h-[46px] px-4 `}
-                      text={plan.buttonText}
-                    />
-                      )}  
+                      <DynamicButton
+                        onClickFunction={plan.onClick}
+                        className={`bg-[${plan.buttonColor}] min-w-[164.93px] max-w-[360px] mx-auto mt-2 rounded-full h-[46px] px-4 `}
+                        text={plan.buttonText}
+                      />
+                    )}
                   </div>
                 </div>
                 {data.map((item, dataIndex) => (
@@ -326,6 +342,15 @@ const WalletTable = ({pricePerCard, setWalletPlan, stripeCollection}) => {
           </div>
         </div>
       </div>
+
+      <LoginModal
+          show={loginModal}
+          title=" buy plan"
+          confirmText="Login"
+          cancelText="Register"
+          onCancel={() => setLoginModal(false)}
+          hasCancelIcon={true}
+        />
     </>
   );
 };

@@ -57,16 +57,14 @@ export default function SimplyNoted() {
     walletPurcase,
     setWalletPurchase,
     walletPayment,
-    setWalletPayment
+    setWalletPayment,
   } = useStateContext();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
-    if (!customerID) {
-      navigate('/account/login');
-    }
+
   }, []);
 
   useEffect(() => {
@@ -94,6 +92,7 @@ export default function SimplyNoted() {
   }, []);
 
 
+
   return (
     <div className=" w-full global-max-width-handler ">
       {/* {loader && (
@@ -101,12 +100,13 @@ export default function SimplyNoted() {
           <CircularLoader title="Loading Plans" color="#ef6e6e" />
         </div>
       )} */}
-      <div className='flex px-[16px] md:px-[40px] justify-start items-center'>
+      <div className="flex px-[16px] md:px-[40px] justify-start items-center">
         <DynamicTitle className="" title={'Simply Noted Plans'} />
       </div>
       <div className={`${loader && 'opacity-40'}`}>
         {!walletPlan && !walletPurcase && !walletPayment && (
           <WalletTable
+          customerID={customerID}
             WalletData={WalletData}
             pricePerCard={pricePerCard}
             setWalletPlan={setWalletPlan}
@@ -125,6 +125,7 @@ export default function SimplyNoted() {
             setSubscription={setSubscription}
             stripeCollection={stripeCollection}
             setPackageProduct={setPackageProduct}
+            subscriptionTitle={subscriptionTitle}
             setSubscriptionProduct={setSubscriptionProduct}
             setSubscriptionTitle={setSubscriptionTitle}
             setSubscriptionPriceId={setSubscriptionPriceId}

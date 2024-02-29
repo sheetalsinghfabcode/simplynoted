@@ -24,6 +24,8 @@ const StripeModal = ({
 
   const [errors, setErrors] = useState([]);
 
+  
+
   useEffect(() => {
     const fullName = localStorage.getItem('SNFullName');
     const userEmail = localStorage.getItem('SnEmail');
@@ -261,6 +263,8 @@ const StripeModal = ({
                   />
                 </Elements>
               </div>
+
+
             </>
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>
           </div>

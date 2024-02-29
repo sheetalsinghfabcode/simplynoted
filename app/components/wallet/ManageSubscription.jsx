@@ -100,8 +100,6 @@ const ManageSubscription = () => {
   }, []);
 
 
-  console.log("paymentHistory",paymentHistory);
-
   const handleSubscription = () => {
     setLoader((prevLoader) => ({
       ...prevLoader,
@@ -468,7 +466,6 @@ const ManageSubscription = () => {
 
   // Display the formatted date
 
-  console.log("stripeCollection",stripeCollection);
 
   return (
     <>
