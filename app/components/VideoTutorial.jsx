@@ -17,15 +17,15 @@ export const VideoTutorial = () => {
     //     <source src="https://www.youtube.com/embed/hEzSeiixgqw?si=gO9Wa4JRfMXwkoy-" type="video/mp4" />
     // </video>
     // </div>
-    <div class="containerxyz">
-    <div class="ratio ratio-16x9">
+    <div className="containerxyz">
+    <div className="ratio ratio-16x9">
       <iframe 
         src="https://www.youtube.com/embed/hEzSeiixgqw?si=gO9Wa4JRfMXwkoy-" 
         title="YouTube video player" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen
-        class="w-full h-full"
+        className="w-full h-full"
       ></iframe>
     </div>
   </div>

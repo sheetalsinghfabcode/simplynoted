@@ -1957,7 +1957,7 @@ export function MessageWriting({
       <Instruction
         isOpen={modalForAddressBook}
         title=""
-        close={true}
+        close= { !addressForm && true}
         closeModal={closeSelectAddressModal}
         body={
           addressForm ? (
