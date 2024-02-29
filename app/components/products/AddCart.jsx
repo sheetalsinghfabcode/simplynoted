@@ -21,9 +21,9 @@ export function AddCart({
   fontFamilyName,
   customFontName,
   variantsVal,
-  metafields
+  metafields,
 }) {
-  const {addressForm, setAddressForm, setEditAddress,setProductShow} =
+  const {addressForm, setAddressForm, setEditAddress, setProductShow} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
@@ -104,14 +104,14 @@ export function AddCart({
   const [apiVariantID, setApiVariantID] = useState('');
   const [isInitialRender, setIsInitialRender] = useState(true);
   const [finalPrice, setFinalPrice] = useState('');
-  const [selectedBoxCheck,setSelectedBoxCheck] = useState(false)
-  const [selectedBoxCheck2,setSelectedBoxCheck2] = useState(false)
-  const [purchaseType,setPurchaseType] = useState('')
-  const [giftPriceVariantId,setGiftPriceVariantID] = useState('')
+  const [selectedBoxCheck, setSelectedBoxCheck] = useState(false);
+  const [selectedBoxCheck2, setSelectedBoxCheck2] = useState(false);
+  const [purchaseType, setPurchaseType] = useState('');
+  const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
   useEffect(() => {
     setIsInitialRender(false);
-     selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
-    setPurchaseType(selectedOrder)
+    selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
+    setPurchaseType(selectedOrder);
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
     cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
@@ -128,26 +128,35 @@ export function AddCart({
     // Replace with your desired value
     if (selectedOrder == 'Single Card') {
       setVariantID(productData?.id?.match(/\d+/g).join(''));
-      setFinalPrice((productData?.price?.amount -(productData?.price?.amount * discountedCount)/100).toFixed(2))
+      setFinalPrice(
+        (
+          productData?.price?.amount -
+          (productData?.price?.amount * discountedCount) / 100
+        ).toFixed(2),
+      );
     } else {
       // const variants = variantsVal?.variants?.nodes;
       // console.log(variants,"variants logs---");
       const targetValue = cartDataReq?.csvFileLen;
-      if(variantsVal?.variants?.nodes.length){
-      const matchedVariant = findMatchingVariant(variantsVal?.variants?.nodes, targetValue,discountedCount);
-      if (matchedVariant) {
-        setVariantID(matchedVariant);
-        setUpdatedPrice(finalPrice)
-        // if (discountedCount > 0) {
-        //   setUpdatedPrice(
-        //     (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
-        //   );
-        // }
-    }
-  }
+      if (variantsVal?.variants?.nodes.length) {
+        const matchedVariant = findMatchingVariant(
+          variantsVal?.variants?.nodes,
+          targetValue,
+          discountedCount,
+        );
+        if (matchedVariant) {
+          setVariantID(matchedVariant);
+          setUpdatedPrice(finalPrice);
+          // if (discountedCount > 0) {
+          //   setUpdatedPrice(
+          //     (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
+          //   );
+          // }
+        }
+      }
     }
   }, []);
-  const findMatchingVariant = async(variants, targetValue,discount) => {
+  const findMatchingVariant = async (variants, targetValue, discount) => {
     let matchedVariant = null;
     for (let i = 0; i < variants.length; i++) {
       const variant = variants[i];
@@ -155,8 +164,13 @@ export function AddCart({
       let lastValue = parseInt(quantityRange.split(' -')[1]);
       if (!isNaN(lastValue) && lastValue >= targetValue) {
         matchedVariant = variant.id;
-        if(discount>0){
-          setFinalPrice((variant.price.amount-(variant.price.amount * discount)/100).toFixed(2))
+        if (discount > 0) {
+          setFinalPrice(
+            (
+              variant.price.amount -
+              (variant.price.amount * discount) / 100
+            ).toFixed(2),
+          );
         } else {
           setFinalPrice(variant.price.amount);
         }
@@ -205,9 +219,8 @@ export function AddCart({
   );
   function onNewAddressClick() {
     setAddressForm(true);
-    setsearchData2(null)
-    setsearchData(null)
-
+    setsearchData2(null);
+    setsearchData(null);
   }
 
   async function getRecipient() {
@@ -245,31 +258,30 @@ export function AddCart({
     }
   }
   const handleCheckboxChange = (item) => {
-    console.log(selectedItem,"editFor selected Item");
-    console.log(item,"handleCheck box on click");
+    console.log(selectedItem, 'editFor selected Item');
+    console.log(item, 'handleCheck box on click');
     setSelectedItem(item);
-    if(selectedItem == item){
-      setSelectedBoxCheck(!selectedBoxCheck)
-    setSelectedItem(null);
-    } else{
-      setSelectedBoxCheck(false)
+    if (selectedItem == item) {
+      setSelectedBoxCheck(!selectedBoxCheck);
+      setSelectedItem(null);
+    } else {
+      setSelectedBoxCheck(false);
     }
   };
   const handleCheckboxChange2 = (item) => {
     setSelectedItem2(item);
-    if(selectedItem2 == item){
-    setSelectedBoxCheck2(!selectedBoxCheck2)
-    setSelectedItem2(null);
+    if (selectedItem2 == item) {
+      setSelectedBoxCheck2(!selectedBoxCheck2);
+      setSelectedItem2(null);
     } else {
-      setSelectedBoxCheck2(false)
+      setSelectedBoxCheck2(false);
     }
   };
-  
+
   const handleBoxoNShipping = (item) => {
-    setSelectShipMode(prevMode => prevMode === item ? null : item);
+    setSelectShipMode((prevMode) => (prevMode === item ? null : item));
   };
 
-  
   const filteredList = (recipientAddress, searchData) => {
     return recipientAddress.filter((dataobj) => bySearch(dataobj, searchData));
   };
@@ -295,27 +307,27 @@ export function AddCart({
   const cardvalFunc = async (item) => {
     setCardVal(item);
     let selCardName = data.collection.products.edges[item].node;
-    console.log(selCardName,"selected gift card");
+    console.log(selCardName, 'selected gift card');
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
     setGiftCardUrl(selCardName.onlineStoreUrl);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
     setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
-console.log(arrCardPrice,"arrr cardPrice");
+    console.log(arrCardPrice, 'arrr cardPrice');
     let firstPrice = arrCardPrice[0].node.price.amount;
     setCardPrice(firstPrice);
     setCardPriceTitle(arrCardPrice[0].node.title);
     setCardPriceVal(arrCardPrice);
-    setGiftPriceVariantID(arrCardPrice[0].node.id)
+    setGiftPriceVariantID(arrCardPrice[0].node.id);
   };
 
   const priceValFunc = async (item) => {
     let priceAmount = cardPriceVal[item].node.price.amount;
     let priceTitle = cardPriceVal[item].node.title;
-    let variantIDs = cardPriceVal[item].node.id
+    let variantIDs = cardPriceVal[item].node.id;
     setCardPrice(priceAmount);
     setCardPriceTitle(priceTitle);
-    setGiftCardId(variantIDs.match(/\d+/g).join(''))
+    setGiftCardId(variantIDs.match(/\d+/g).join(''));
   };
   useEffect(() => {
     customerid = localStorage.getItem('customerId');
@@ -342,7 +354,9 @@ console.log(arrCardPrice,"arrr cardPrice");
 
   const navigate = useNavigate();
   let arrOfObj = {
-    productTitle: productData?.product?.title ? productData.product.title : null,
+    productTitle: productData?.product?.title
+      ? productData.product.title
+      : null,
     variant_id: apiVariantID ? apiVariantID : variantID,
     price: finalPrice ? finalPrice : productData?.price?.amount,
     productImg: productData?.image?.url,
@@ -375,7 +389,7 @@ console.log(arrCardPrice,"arrr cardPrice");
     signOffFontSize: cartDataReq?.signOffFontSize,
     isShippidata: show ? show : false,
     optionalShipDate: cartDataReq?.ship_date,
-    custom_pdf:metafields?metafields.pdfURL:null
+    custom_pdf: metafields ? metafields.pdfURL : null,
   };
 
   let keyUpdate1 = 'messageData';
@@ -409,18 +423,21 @@ console.log(arrCardPrice,"arrr cardPrice");
   let keyUpdate29 = 'price';
   let keyUpdate30 = 'variant_id';
 
- 
   function onClickAddCart() {
-    console.log(selectedItem,selectedItem2,"selected cheeck");
+    console.log(selectedItem, selectedItem2, 'selected cheeck');
     setLoader(true);
-    if (editOrderValue?.index >= 0 && selectedItem2 &&((selectedOrder === 'Single Card' && selectedItem)|| selectedOrder !== 'Single Card')) {
+    if (
+      editOrderValue?.index >= 0 &&
+      selectedItem2 &&
+      ((selectedOrder === 'Single Card' && selectedItem) ||
+        selectedOrder !== 'Single Card')
+    ) {
       const storedData = JSON.parse(localStorage.getItem('mydata'));
 
       if (
         editOrderValue.index >= 0 &&
-        editOrderValue.index < storedData.length 
+        editOrderValue.index < storedData.length
       ) {
-        
         storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg
           ? cartDataReq?.msg
           : editOrderValue?.data.messageData;
@@ -491,8 +508,12 @@ console.log(arrCardPrice,"arrr cardPrice");
           ? cartDataReq.ship_date
           : '';
         storedData[editOrderValue.index][keyUpdate24] = show ? show : false;
-        storedData[editOrderValue.index][keyUpdate29] = finalPrice ? finalPrice : productData?.price?.amount;
-        storedData[editOrderValue.index][keyUpdate30] = apiVariantID ? apiVariantID : variantID;
+        storedData[editOrderValue.index][keyUpdate29] = finalPrice
+          ? finalPrice
+          : productData?.price?.amount;
+        storedData[editOrderValue.index][keyUpdate30] = apiVariantID
+          ? apiVariantID
+          : variantID;
       }
       localStorage.setItem('mydata', JSON.stringify(storedData));
       localStorage.removeItem('reqFielddInCart');
@@ -501,7 +522,13 @@ console.log(arrCardPrice,"arrr cardPrice");
 
       setLoader(false);
     } else {
-      if (cartDataReq && cartDataReq.csvFileLen && selectedItem2 &&((selectedOrder === 'Single Card' && selectedItem)|| selectedOrder !== 'Single Card')) {
+      if (
+        cartDataReq &&
+        cartDataReq.csvFileLen &&
+        selectedItem2 &&
+        ((selectedOrder === 'Single Card' && selectedItem) ||
+          selectedOrder !== 'Single Card')
+      ) {
         const existingDataString = localStorage.getItem('mydata');
         let existingDataArray = [];
         if (existingDataString) {
@@ -527,7 +554,7 @@ console.log(arrCardPrice,"arrr cardPrice");
 
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
-      // setProductShow(true)
+        // setProductShow(true)
         navigate('/cart');
         setLoader(false);
       } else {
@@ -572,7 +599,7 @@ console.log(arrCardPrice,"arrr cardPrice");
   }
   async function newDiscountedCard() {
     try {
-      setLoader(true)
+      setLoader(true);
       let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
 
       const res = await fetch(
@@ -596,7 +623,7 @@ console.log(arrCardPrice,"arrr cardPrice");
       const json = await res.json();
       if (json.result) {
         setApiVariantID(json.result.product.variants[0].id);
-        setLoader(false)
+        setLoader(false);
       }
     } catch (error) {
       console.log(error, 'error in new discounted adding');
@@ -651,9 +678,9 @@ console.log(arrCardPrice,"arrr cardPrice");
                       />
                     </div>
                     {filteredForSender(returnAddress, searchData2).map(
-                      (item,index) => (
+                      (item, index) => (
                         <div
-                        key={index}
+                          key={index}
                           className="w-full border-b-[1px] border-[#e8e1e1] px-3 small:py-[16px] py-3 bg-white text-black font-bold sm:text-[14px] text-[12px] cursor-pointer flex items-center"
                           onClick={() => handleCheckboxChange2(item)}
                         >
@@ -661,7 +688,10 @@ console.log(arrCardPrice,"arrr cardPrice");
                             className="cursor-pointer border-2 border-black"
                             type="checkbox"
                             value={item}
-                            checked={selectedItem2?._id === item._id && !selectedBoxCheck2}
+                            checked={
+                              selectedItem2?._id === item._id &&
+                              !selectedBoxCheck2
+                            }
                             onChange={() => handleCheckboxChange2(item)}
                           />
                           <span className="font-karla ml-4">
@@ -695,8 +725,8 @@ console.log(arrCardPrice,"arrr cardPrice");
                           onClickFunction={() => {
                             handleButtonClick('recipient');
                             setAddressForm(true);
-                            setsearchData(null)
-                            setsearchData2(null)
+                            setsearchData(null);
+                            setsearchData2(null);
                           }}
                         />
                         <div>
@@ -710,7 +740,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                         {filteredList(recipientAddress, searchData).map(
                           (item, index) => (
                             <div
-                            key={index}
+                              key={index}
                               className="w-full border-b-[1px] border-[#e8e1e1] px-3 small:py-[16px] py-3 bg-white text-black font-bold flex items-center sm:text-[14px] text-[12px] cursor-pointer"
                               onClick={() => handleCheckboxChange(item)}
                             >
@@ -718,7 +748,10 @@ console.log(arrCardPrice,"arrr cardPrice");
                                 className="cursor-pointer border-2 border-black"
                                 type="checkbox"
                                 value={item}
-                                checked={selectedItem?._id === item._id && !selectedBoxCheck}
+                                checked={
+                                  selectedItem?._id === item._id &&
+                                  !selectedBoxCheck
+                                }
                                 onChange={() => handleCheckboxChange(item)}
                                 // ref={refRec}
                               />
@@ -754,10 +787,11 @@ console.log(arrCardPrice,"arrr cardPrice");
                     >
                       {shippingData?.variants.edges.map((item, index) => (
                         <div
-                        onClick={() => handleBoxoNShipping(item)}
-                        className='flex flex-col gap-[6px] cursor-pointer'
-                        key={index}>
-                          <div className=''>
+                          onClick={() => handleBoxoNShipping(item)}
+                          className="flex flex-col gap-[6px] cursor-pointer"
+                          key={index}
+                        >
+                          <div className="">
                             <input
                               className="mr-2 cursor-pointer"
                               value={item}
@@ -872,13 +906,25 @@ console.log(arrCardPrice,"arrr cardPrice");
               </div>
             </div>
 
-            {((onSaveShip && selectShipMode &&  selectShipMode.node.price.amount !== '0.0') || ( purchaseType == "Bulk Purchase"  && editOrderValue?.data?.isShippidata && editOrderValue?.data?.locationForShipMethod && editOrderValue?.node?.price?.amount !== '0.0' )) && (
+            {((onSaveShip &&
+              selectShipMode &&
+              selectShipMode.node.price.amount !== '0.0') ||
+              (purchaseType == 'Bulk Purchase' &&
+                editOrderValue?.data?.isShippidata &&
+                editOrderValue?.data?.locationForShipMethod.firstName &&
+                editOrderValue?.node?.price?.amount !== '0.0')) && (
               <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
                 {formData?.firstName}, {formData?.lastName},{formData?.address1}
                 , {formData?.city}, {formData?.state},{formData?.country}
               </div>
             )}
-            <div className={`row flex mt-4 relative w-full ${(selectShipMode && selectShipMode.node.price.amount !== '0.0') ?"justify-between" :"justify-end"} font-normal text-[14px]`}>
+            <div
+              className={`row flex mt-4 relative w-full ${
+                selectShipMode && selectShipMode.node.price.amount !== '0.0'
+                  ? 'justify-between'
+                  : 'justify-end'
+              } font-normal text-[14px]`}
+            >
               <div className="buttonDiv my-2 order-2">
                 <DynamicButton
                   className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
@@ -891,7 +937,11 @@ console.log(arrCardPrice,"arrr cardPrice");
                 <div className="buttonDiv my-2">
                   <DynamicButton
                     className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4 sm:w-full w-[90%]"
-                    text= { (onSaveShip || editOrderValue?.data )  ? "Change Shipping Address": "Enter the shipping address for the package"}
+                    text={
+                      onSaveShip || editOrderValue?.data
+                        ? 'Change Shipping Address'
+                        : 'Enter the shipping address for the package'
+                    }
                     onClickFunction={() => onpenAddCardModal()}
                   />
                 </div>
@@ -908,10 +958,17 @@ console.log(arrCardPrice,"arrr cardPrice");
                     Please add all fields with * that are Mandatory
                   </p>
                 )}
-                <div className='lg:text-[30px] sm:text-[26px]  text-[20px] text-[#001a5f] font-bold flex justify-center pb-[25px]'>BULK SHIPPING ADDRESS</div>
+                <div className="lg:text-[30px] sm:text-[26px]  text-[20px] text-[#001a5f] font-bold flex justify-center pb-[25px]">
+                  BULK SHIPPING ADDRESS
+                </div>
                 <div className="grid lg:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>First Name*</label>
+                    <label
+                      htmlFor=""
+                      className="text-[#001a5f] font-bold text-sm "
+                    >
+                      First Name*
+                    </label>
                     <input
                       type="text"
                       id="firstName"
@@ -923,7 +980,12 @@ console.log(arrCardPrice,"arrr cardPrice");
                     />
                   </div>
                   <div>
-                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>Last Name*</label>
+                    <label
+                      htmlFor=""
+                      className="text-[#001a5f] font-bold text-sm "
+                    >
+                      Last Name*
+                    </label>
                     <input
                       id="lastName"
                       name="lastName"
@@ -936,39 +998,50 @@ console.log(arrCardPrice,"arrr cardPrice");
                   </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-4">
-                <div className="mt-2 ">
-                  <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>
-                    Address1*
-                  </label>
-                  <input
-                    id="address1"
-                    name="address1"
-                    type="text"
-                    placeholder="Address"
-                    required
-                    value={formData.address1}
-                    onChange={(e) => handleChange(e)}
-                    className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
-                  />
-                </div>
-                <div className="mt-2">
-                  <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>
-                    Address 2
-                  </label>
-                  <input
-                    id="address2"
-                    name="address2"
-                    type="text"
-                    placeholder="Address 2"
-                    value={formData.address2}
-                    onChange={(e) => handleChange(e)}
-                    className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
-                  />
-                </div>
+                  <div className="mt-2 ">
+                    <label
+                      htmlFor=""
+                      className="text-[#001a5f] font-bold text-sm "
+                    >
+                      Address1*
+                    </label>
+                    <input
+                      id="address1"
+                      name="address1"
+                      type="text"
+                      placeholder="Address"
+                      required
+                      value={formData.address1}
+                      onChange={(e) => handleChange(e)}
+                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
+                    />
+                  </div>
+                  <div className="mt-2">
+                    <label
+                      htmlFor=""
+                      className="text-[#001a5f] font-bold text-sm "
+                    >
+                      Address 2
+                    </label>
+                    <input
+                      id="address2"
+                      name="address2"
+                      type="text"
+                      placeholder="Address 2"
+                      value={formData.address2}
+                      onChange={(e) => handleChange(e)}
+                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
+                    />
+                  </div>
                 </div>
                 <div className="grid lg:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>City*</label>
+                    <label
+                      htmlFor=""
+                      className="text-[#001a5f] font-bold text-sm "
+                    >
+                      City*
+                    </label>
                     <input
                       type="text"
                       id="city"
@@ -980,7 +1053,12 @@ console.log(arrCardPrice,"arrr cardPrice");
                     />
                   </div>
                   <div>
-                    <label htmlFor="" className='text-[#001a5f] font-bold text-sm '>Postal Code*</label>
+                    <label
+                      htmlFor=""
+                      className="text-[#001a5f] font-bold text-sm "
+                    >
+                      Postal Code*
+                    </label>
                     <input
                       id="postalCode"
                       name="postalCode"
@@ -995,7 +1073,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                 <div className="grid lg:grid-cols-2 gap-4">
                   <div>
                     <label
-                     className='text-[#001a5f] font-bold text-sm '
+                      className="text-[#001a5f] font-bold text-sm "
                       htmlFor="country"
                     >
                       Country*
@@ -1008,7 +1086,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                       id="country"
                       className="appearance-none  rounded w-full py-2 px-3 border mt-2 border-black leading-tight focus:outline-none focus:shadow-outline"
                     >
-                      {location.countries.map((country,index) => (
+                      {location.countries.map((country, index) => (
                         <option key={index} value={country.country}>
                           {country.country}
                         </option>
@@ -1017,7 +1095,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                   </div>
                   <div>
                     <label
-                     className='text-[#001a5f] font-bold text-sm '
+                      className="text-[#001a5f] font-bold text-sm "
                       htmlFor="country"
                     >
                       State*
@@ -1033,7 +1111,7 @@ console.log(arrCardPrice,"arrr cardPrice");
                     >
                       <option value="">Select a state</option>
                       {selectedCountry &&
-                        selectedCountry.states.map((state,index) => (
+                        selectedCountry.states.map((state, index) => (
                           <option key={index} value={state}>
                             {state}
                           </option>

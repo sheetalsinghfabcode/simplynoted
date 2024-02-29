@@ -1536,14 +1536,13 @@ export function MessageWriting({
                       : (metafields.footer &&
                         metafields.header &&
                         metafields.footer.data &&
-                        metafields.footer &&
-                        metafields.header &&
                         metafields.header.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data &&
                           name2.length > 0) ||
                           (metafields.footer && metafields.header && metafields.header.data && qrValue )||
+                          (qrValue && name2.length>0) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data &&
