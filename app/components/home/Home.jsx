@@ -87,7 +87,7 @@ export default function Home() {
         </div>
       </div>
 
-      <video className="mt-[10px] w-full sm:flex hidden" autoPlay loop muted>
+      <video className="mt-[10px] w-full sm:flex hidden" autoPlay loop muted playsInline>
         <source src={WorkingRobots} type="video/webm"></source>
       </video>
       <div className='sm:hidden flex mt-[20px]'>
