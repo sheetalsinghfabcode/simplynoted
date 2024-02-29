@@ -1172,7 +1172,7 @@ export function MessageWriting({
   console.log(metafields, 'metafileds data', qrValue);
   return (
     <>
-      <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5 md:mt-16 lg:mt-0 md:justify-between">
+      <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
         <div
           className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${show
             ? 'lg:h-[1110px] texting-relative-cont-bulk'
@@ -1180,7 +1180,7 @@ export function MessageWriting({
             }`}
         >
           <div
-            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] ${show
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] w-full ${show
               ? 'md:pb-[35rem] textarea-cont-bulk'
               : 'md:pb-[15rem] textarea-cont-single'
               }`}
@@ -1189,6 +1189,7 @@ export function MessageWriting({
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=''> Standard Handwriting Style</span>
                 <select
+                
                   id="font"
     className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={standardFontVal}

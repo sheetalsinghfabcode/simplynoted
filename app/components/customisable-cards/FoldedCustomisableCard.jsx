@@ -1012,7 +1012,7 @@ export default function FoldedCustomisableCard({
                   )) ||
                     (selectedCardPage === 'Card Inside' && (
                       <div
-                        className="absolute flex justify-center items-center  text-center m-auto inset-0 h-[330px] sm:w-[480px] w-[330px]"
+                        className="absolute flex justify-center items-center  text-center m-auto inset-0 sm:h-[380px] h-[320px] md:w-[445px] sm:w-[430px] w-[330px] sm:pt-4 pt-2"
                         style={{
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -1020,7 +1020,7 @@ export default function FoldedCustomisableCard({
                         }}
                       >
                         <div className="relative w-full h-full">
-                          <span className="p-8 font-pinocchio">
+                          <span className=" font-pinocchio">
                             Your custom message text will be here...
                           </span>
                           {qr.isQrAdded && (
@@ -1141,7 +1141,7 @@ export default function FoldedCustomisableCard({
             <div className="flex flex-col justify-between md:items-start items-baseline gap-5 min-w-[240px] ">
               {!(selectedCardPage === 'Card Inside') && (
                 <>
-                  <div className="relative md:ml-[0px] ml-[-108px] w-[60px] h-[50px]">
+                  <div className="relative w-[60px] h-[50px]">
                     {selectedCardPage === 'Card Front' && (
                       <>
                         <div className="flex gap-[3px] items-center">

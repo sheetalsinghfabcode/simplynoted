@@ -934,12 +934,8 @@ export function AddCart({
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
                   <DynamicButton
-                    className="bg-[#1b5299] text-[12px] opacity-65 px-8 py-4 sm:w-full w-[90%]"
-                    text={
-                      onSaveShip || editOrderValue?.data
-                        ? 'Change Shipping Address'
-                        : 'Enter the shipping address for the package'
-                    }
+                    className="bg-[#1b5299] sm:text-[12px] text-[10px] opacity-65 px-8 py-4 w-full "
+                    text= { (onSaveShip || editOrderValue?.data )  ? "Change Shipping Address": "Enter the shipping address for the package"}
                     onClickFunction={() => onpenAddCardModal()}
                   />
                 </div>

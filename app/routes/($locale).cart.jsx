@@ -449,7 +449,7 @@ export default function AddCartFunc() {
                     cartData.map((item, index) => (
                       <div
                         key={index}
-                        className="sm:w-[90%] w-[95%] bg-[white] md:px-[30px] m-auto mt-10 mb-10 p-[20px] rounded-[10px] shadow-inset-custom"
+                        className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] shadow-inset-custom"
                       >
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
@@ -458,7 +458,7 @@ export default function AddCartFunc() {
                                 <img src={item.productImg} alt="" />
                               </div>
                               <div className="mt-[30px] font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
-                                <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] text-[22px] font-bold">
+                                <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] small:text-[22px] text-[18px] font-bold">
                                   {item.productTitle}
                                 </h3>
                                 <div className="flex flex-wrap ">
@@ -478,7 +478,7 @@ export default function AddCartFunc() {
                                 </div>
                                 <div className="buttonDiv mt-2">
                                   <button
-                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] font-inter text-xs sm:w-auto w-full"
+                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] font-inter text-[10px] small:text-xs sm:w-auto w-full"
                                     onClick={() => {
                                       OpenModalFunc2(index);
                                     }}
@@ -490,9 +490,9 @@ export default function AddCartFunc() {
                             </div>
                           </div>
 
-                          <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] sm:py-[15px] py-[20px] px-[20px] justify-between flex items-center ">
+                          <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] sm:py-[15px] pt-[15px]  px-[20px] justify-between flex items-center ">
                             <div className="w-[100%] h-[100%] flex items-center ">
-                              <div className="w-[100%] text-[16px] font-bold">
+                              <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                 <div className="flex justify-between ">
                                   <span className="text-[#1b5299] ">
                                     {' '}
@@ -523,14 +523,14 @@ export default function AddCartFunc() {
                               </div>
                             </div>
                           </div>
-                          <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full  sm:flex-row flex-col flex-wrap flex justify-end">
+                          <div className="lg:w-[20%] relative item_block_right small:pb-[15px] w-full  sm:flex-row flex-col flex-wrap flex justify-end">
                             <div className="flex lg:flex-col sm:flex-row flex-col justify-center lg:gap-[8px]  gap-[3px] ">
                               {item.giftCardName !== null ? (
                                 ''
                               ) : (
                                 <div className="buttonDiv  m-[0.2rem]">
                                   <DynamicButton
-                                    className="bg-[#ef6e6e] rounded-[10px] md:py-[14px]  py-[10px] md:px-[20px] px-[12px] w-full md:text-[14px] text-[12px] font-bold"
+                                    className="bg-[#ef6e6e] rounded-[10px] md:py-[14px]  py-[10px] md:px-[20px] px-[12px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
                                     text="ADD GIFT CARD"
                                     onClickFunction={() => {
                                       OpenModalFunc(index);
@@ -541,7 +541,7 @@ export default function AddCartFunc() {
 
                               <div className="buttonDiv  m-[0.2rem]">
                                 <DynamicButton
-                                  className="bg-[#1b5299] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  w-full md:text-[14px] text-[12px] font-bold"
+                                  className="bg-[#1b5299] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
                                   text="EDIT ORDER"
                                   onClickFunction={() => {
                                     editOrderData(index);
@@ -550,7 +550,7 @@ export default function AddCartFunc() {
                               </div>
                               <div className="buttonDiv m-[0.2rem]">
                                 <DynamicButton
-                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  w-full md:text-[14px] text-[12px] font-bold"
+                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
                                   text="DELETE ORDER"
                                   onClickFunction={() => {
                                     ConfirmDeleteOrder(index);
@@ -574,7 +574,7 @@ export default function AddCartFunc() {
                                   />
                                 </div>
                                 <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col   ">
-                                  <div className="font-bold text-[#1b5299] text-[16px] ">
+                                  <div className="font-bold text-[#1b5299] md:text-[18px] text-[16px] ">
                                     {' '}
                                     Gift Card:
                                   </div>
@@ -625,10 +625,10 @@ export default function AddCartFunc() {
                                 </div>
                               </div>
                             </div>
-                            <div className="lg:w-[20%] relative item_block_right pb-[15px] sm:w-[50%] w-full sm:flex-row flex-col sm:items-end  flex-wrap flex justify-end">
+                            <div className="lg:w-[20%] relative item_block_right small:pb-[15px] sm:w-[50%] w-full sm:flex-row flex-col sm:items-end  flex-wrap flex justify-end">
                               <div className="buttonDiv lg:my-auto mr-[0.2rem]">
                                 <DynamicButton
-                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] px-[20px] w-full md:text-[14px] text-[12px] font-bold "
+                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] px-[20px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold "
                                   text="DELETE CARD"
                                   onClickFunction={() => {
                                     confirmCardDel(index);
@@ -663,11 +663,11 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                       <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                        <div className="lg:max-w-[33%] w-full !ml-0 sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                           <img
                                             src={postImage}
                                             alt=""
-                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                           />
                                         </div>
                                         <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -722,11 +722,11 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                       <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                        <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                           <img
                                             src={postImage}
                                             alt=""
-                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                           />
                                         </div>
                                         <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -740,7 +740,7 @@ export default function AddCartFunc() {
                                       <div className="w-[100%] h-[100%] flex items-center ">
                                         <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                           <div className="flex justify-between ">
-                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299] ">
                                               {' '}
                                               Price:
                                             </span>
@@ -749,7 +749,7 @@ export default function AddCartFunc() {
                                             </span>
                                           </div>
                                           <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299]">
                                               {' '}
                                               Quantity:
                                             </span>
@@ -758,7 +758,7 @@ export default function AddCartFunc() {
                                             </span>
                                           </div>
                                           <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299] ">
                                               {' '}
                                               Subtotal:
                                             </span>
@@ -802,11 +802,11 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                       <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                        <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                           <img
                                             src={postImage}
                                             alt=""
-                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                           />
                                         </div>
                                         <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -820,7 +820,7 @@ export default function AddCartFunc() {
                                       <div className="w-[100%] h-[100%] flex items-center ">
                                         <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                           <div className="flex justify-between ">
-                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299] ">
                                               {' '}
                                               Price:
                                             </span>
@@ -829,7 +829,7 @@ export default function AddCartFunc() {
                                             </span>
                                           </div>
                                           <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            <span className="text-[#1b5299] ">
                                               {' '}
                                               Quantity:
                                             </span>
@@ -838,7 +838,7 @@ export default function AddCartFunc() {
                                             </span>
                                           </div>
                                           <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299] ">
                                               {' '}
                                               Subtotal:
                                             </span>
@@ -858,11 +858,11 @@ export default function AddCartFunc() {
                                   <div className="flex w-[100%] flex-wrap space-between">
                                     <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                       <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                        <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                           <img
                                             src={postImage}
                                             alt=""
-                                            className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                           />
                                         </div>
                                         <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -876,7 +876,7 @@ export default function AddCartFunc() {
                                       <div className="w-[100%] h-[100%] flex items-center ">
                                         <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                           <div className="flex justify-between ">
-                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299] ">
                                               {' '}
                                               Price:
                                             </span>
@@ -885,7 +885,7 @@ export default function AddCartFunc() {
                                             </span>
                                           </div>
                                           <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299] ">
                                               {' '}
                                               Quantity:
                                             </span>
@@ -894,7 +894,7 @@ export default function AddCartFunc() {
                                             </span>
                                           </div>
                                           <div className="flex justify-between">
-                                            <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                            <span className=" text-[#1b5299]">
                                               {' '}
                                               Subtotal:
                                             </span>
@@ -942,7 +942,7 @@ export default function AddCartFunc() {
                                 <div className="w-[100%] h-[100%] flex items-center ">
                                   <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                     <div className="flex justify-between ">
-                                      <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      <span className="text-[#1b5299]">
                                         {' '}
                                         Price:
                                       </span>
@@ -951,7 +951,7 @@ export default function AddCartFunc() {
                                       </span>
                                     </div>
                                     <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                      <span className=" text-[#1b5299]">
                                         {' '}
                                         Quantity:
                                       </span>
@@ -960,7 +960,7 @@ export default function AddCartFunc() {
                                       </span>
                                     </div>
                                     <div className="flex justify-between">
-                                      <span className="font-karla text-[#1b5299] text-[16px] tracking-[1.5px]">
+                                      <span className=" text-[#1b5299] ">
                                         {' '}
                                         Subtotal:
                                       </span>
@@ -1036,24 +1036,24 @@ export default function AddCartFunc() {
                       </div>
                     ))}
                   {totalPrize && (
-                    <div className="w-[90%] bg-white m-auto mt-10 mb-10">
-                      <div className="flex lg:p-3 p-5 flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
-                        <div className="lg:w-[25%] md:w-[35%] sm:w-[47%] w-full flex lg:items-center items-end sm:justify-start justify-center">
-                          <div className="buttonDiv m-2 sm:text-[14px] font-bold sm:w-[82%] w-[77%]">
+                    <div className="sm:w-[90%] w-[98%]  bg-white m-auto mt-10 mb-10">
+                      <div className="flex lg:p-3 p-5  flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
+                        <div className="lg:w-[25%] md:w-[39%] sm:w-[47%] w-full flex lg:items-center items-end justify-start ">
+                          <div className="buttonDiv md:text-[14px] sm:text-[12px] text-[10px] font-normal md:w-[85%] sm:w-[90%] w-[60%]">
                             <button
-                              className="bg-[#1b5299] text-[#fff] p-3 flex  rounded gap-2.5 w-full sm:justify-start justify-center"
+                              className="bg-[#1b5299] text-[#fff] p-3 flex  rounded gap-2.5 w-full justify-center  items-center"
                               onClick={() => {
                                 clearCartBtn();
                               }}
                             >
-                              <RiDeleteBin6Line className="text-white text-[20px]" />
+                              <RiDeleteBin6Line className="text-white md:text-[20px] text-[18px]" />
                               CLEAR SHOPPING CART
                             </button>
                           </div>
                         </div>
                         <div
                           className="lg:w-[45%]  w-[100%] flex items-center  lg:order-none order-[-1]
-                         md:text-[30px] sm:text-[28px] text-[24px] text-[#1b5299] font-karla font-bold  lg:justify-around justify-evenly"
+                         md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-start gap-[20px]"
                         >
                           <span className="md:mr-[2px]">GRAND TOTAL</span>
                           <span>${totalPrize.toFixed(2)}</span>
@@ -1117,8 +1117,8 @@ export default function AddCartFunc() {
                       </div>
                     </div>
                   )}
-                  <div className="w-[90%] m-auto mt-10 mb-10">
-                    <div className="p-[30px] bg-white md:w-[50%] w-[100%] shadow-inset-custom rounded-[10px]">
+                  <div className="sm:w-[90%] w-[98%]  m-auto mt-10 mb-10">
+                    <div className="sm:p-[30px] p-[20px] bg-white md:w-[50%] w-[100%] shadow-inset-custom rounded-[10px]">
                       <h3 className="text-[30px] font-bold text-[#1b5299]">
                         NOTE
                       </h3>

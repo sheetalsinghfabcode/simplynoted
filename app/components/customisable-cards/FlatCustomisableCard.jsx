@@ -1275,7 +1275,7 @@ export default function FlatCustomisableCard({
                           <span>Your custom message text will be here...</span>
                         </div>
                         <div
-                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center gap-[25px] ${
+                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
                             headerFooterVisibility.isFooterVisible
                               ? 'block '
                               : 'hidden '
@@ -1293,7 +1293,7 @@ export default function FlatCustomisableCard({
                         >
                           {footerData.customText && (
                             <div
-                              className={`overflow-hidden h-[50px] p-[12px] whitespace-nowrap items-center flex`}
+                              className={`overflow-hidden h-[50px]  whitespace-nowrap items-center flex`}
                               style={{
                                 fontFamily: footerData.fontFamily,
                                 fontSize: `${footerData.fontSize}px`,
@@ -1309,7 +1309,7 @@ export default function FlatCustomisableCard({
                             <div
                               id="backFooterImageDiv"
                               className={`h-[45px] flex justify-center overflow-hidden ${
-                                qr.isQrAdded ? 'w-[20px] ml-3 ' : 'w-[60px]'
+                                (qr.isQrAdded && footerData.alignment === 'right') ? 'w-[35px] ' : 'w-0'
                               }`}
                             >
                               <img
