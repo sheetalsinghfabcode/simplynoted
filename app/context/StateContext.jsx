@@ -27,6 +27,8 @@ export function StateContextProvider({children}) {
   const [birthdayAutomation, setBirthdayAutomation] = useState(true)
   const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
   const [checkLogin,setCheckLogin] = useState(false)
+  const [defaultOption, setDefaultOption] = useState(null);
+
 
   const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -171,7 +173,9 @@ export function StateContextProvider({children}) {
         isbirthdayAutomated,
         setISBirthdayAutomated,
         checkLogin,
-        setCheckLogin
+        setCheckLogin,
+        defaultOption,
+        setDefaultOption
       }}
     >
       {children}

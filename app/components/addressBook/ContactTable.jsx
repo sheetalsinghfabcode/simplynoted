@@ -293,7 +293,6 @@ const ContactTable = ({
     file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      console.log('file', file);
 
       reader.onload = (e) => {
         const csvData = e.target.result;
@@ -309,7 +308,6 @@ const ContactTable = ({
   };
 
 
-  console.log("addresses",addresses);
   const updatedAddressData = addresses.map(item => {
     if (item.type === "return") {
         return { ...item, type: "sender" };
