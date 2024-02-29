@@ -1186,16 +1186,16 @@ export function MessageWriting({
               }`}
           >
             <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
-              <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left">
-                <span> Standard Handwriting Style</span>
+              <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
+                <span className=''> Standard Handwriting Style</span>
                 <select
                   id="font"
-                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+    className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
                 >
-                  <option value={standardFontVal} disabled>
+                  <option value={standardFontVal} disabled style={{fontSize:'16px'}}>
                     {standardFontVal
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
@@ -1203,91 +1203,91 @@ export function MessageWriting({
                         : 'Tarzan'}
                   </option>
                   {editFontFamily && editFontFamily !== 'tarzan' && (
-                    <option value="Tarzan" className={`font-tarzan`}>
+                    <option value="Tarzan" className={`font-tarzan`} >
                       Tarzan
                     </option>
                   )}
-                  <option value="Stitch" className={`font-stitch`}>
+                  <option value="Stitch" style={{fontSize:'33px'}} className={`font-stitch`} >
                     Stitch
                   </option>
-                  <option value="Tarzan" className={`font-tarzan`}>
+                  <option value="Tarzan" style={{fontSize:'33px'}} className={`font-tarzan`}>
                     Tarzan
                   </option>
-                  <option value="Simba" className={`font-simba`}>
+                  <option value="Simba" style={{fontSize:'33px'}} className={`font-simba`}>
                     Simba
                   </option>
-                  <option value="Roo" className={`font-roo`}>
+                  <option  value="Roo" style={{fontSize:'20px'}} className={`font-roo`}>
                     Roo
                   </option>
-                  <option value="pinocchio" className={`font-pinocchio`}>
+                  <option value="pinocchio" style={{fontSize:'16px'}} className={`font-pinocchio`}>
                     Pinocchio
                   </option>
-                  <option value="Nimo" className={`font-nimo`}>
+                  <option value="Nimo" style={{fontSize:'20px'}} className={`font-nimo`}>
                     Nimo
                   </option>
-                  <option value="Lumiere" className={`font-lumiere`}>
+                  <option value="Lumiere" style={{fontSize:'33px'}} className={`font-lumiere`}>
                     Lumiere
                   </option>
-                  <option value="dumbo" className={`font-dumbo`}>
+                  <option value="dumbo" style={{fontSize:'33px'}} className={`font-dumbo`}>
                     Dumbo
                   </option>
-                  <option value="Donald" className={`font-donald`}>
+                  <option value="Donald" style={{fontSize:'20px'}} className={`font-donald`}>
                     Donald
                   </option>
-                  <option value="Aladdin" className={`font-aladdin`}>
+                  <option value="Aladdin" style={{fontSize:'29px'}} className={`font-aladdin`}>
                     Aladdin
                   </option>
-                  <option value="Belle" className={`font-belle`}>
+                  <option value="Belle" style={{fontSize:'39px'}} className={`font-belle`}>
                     Belle
                   </option>
-                  <option value="Boo" className={`font-boo`}>
+                  <option value="Boo" style={{fontSize:'38px'}} className={`font-boo`}>
                     Boo
                   </option>
-                  <option value="Cinderella" className={`font-cinderella`}>
+                  <option value="Cinderella" style={{fontSize:'33px'}} className={`font-cinderella`}>
                     Cinderella
                   </option>
-                  <option value="kaa" className={`font-kaa`}>
+                  <option value="kaa" style={{fontSize:'33px'}} className={`font-kaa`}>
                     Kaa
                   </option>
-                  <option value="Copper" className={`font-copper`}>
+                  <option value="Copper" style={{fontSize:'33px'}} className={`font-copper`}>
                     Copper
                   </option>
-                  <option value="Jasmine" className={`font-jasmine`}>
+                  <option value="Jasmine" style={{fontSize:'33px'}} className={`font-jasmine`}>
                     Jasmine
                   </option>
-                  <option value="Merlin" className={`font-merlin`}>
+                  <option value="Merlin" style={{fontSize:'33px'}} className={`font-merlin`}>
                     Merlin
                   </option>
-                  <option value="Goofy" className={`font-goofy`}>
+                  <option value="Goofy" style={{fontSize:'33px'}} className={`font-goofy`}>
                     Goofy
                   </option>
-                  <option value="Hercules" className={`font-hercules`}>
+                  <option value="Hercules" style={{fontSize:'38px'}} className={`font-hercules`}>
                     Hercules
                   </option>
-                  <option value="Rafiki" className={`font-rafiki`}>
+                  <option value="Rafiki" style={{fontSize:'33px'}} className={`font-rafiki`}>
                     Rafiki
                   </option>
-                  <option value="Rapunzel" className={`font-rapunzel`}>
+                  <option value="Rapunzel" style={{fontSize:'33px'}} className={`font-rapunzel`}>
                     Rapunzel
                   </option>
-                  <option value="Ratigan" className={`font-ratigan`}>
+                  <option value="Ratigan" style={{fontSize:'33px'}} className={`font-ratigan`}>
                     Ratigan
                   </option>
-                  <option value="Sarabi" className={`font-sarabi`}>
+                  <option value="Sarabi" style={{fontSize:'33px'}} className={`font-sarabi`}>
                     Sarabi
                   </option>
-                  <option value="Scar" className={`font-scar`}>
+                  <option value="Scar" style={{fontSize:'33px'}} className={`font-scar`}>
                     Scar
                   </option>
-                  <option value="Triton" className={`font-triton`}>
+                  <option value="Triton" style={{fontSize:'33px'}} className={`font-triton`}>
                     Triton
                   </option>
-                  <option value="Woody" className={`font-woody`}>
+                  <option value="Woody" style={{fontSize:'33px'}} className={`font-woody`}>
                     Woody
                   </option>
                 </select>
               </div>
-              <div className="h-[73px] xl:max-w-[178px] flex flex-col justify-between font-inter font-semibold text-[14px] text-left flex-1 w-full self-end">
+              <div className="h-[73px] xl:max-w-[178px] flex flex-col 2xl:text-[14px] text-[11px] whitespace-nowrap  justify-between font-inter font-semibold text-left flex-1 w-full self-end">
                 <span>Custom Handwriting Style</span>
                 <select
                   id="Coustomfont"
@@ -1310,7 +1310,7 @@ export function MessageWriting({
                     ))}
                 </select>
               </div>
-              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter font-semibold text-[14px] flex-1 w-full text-left self-end">
+              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter whitespace-nowrap  font-semibold 2xl:text-[14px] text-[11px]  flex-1 w-full text-left self-end">
                 <span>Optional shipping date</span>
                 <div className="flex relative">
                   <input
@@ -1480,7 +1480,7 @@ export function MessageWriting({
                   value={name2}
                   v-model="keyword"
                   id="example-one-input2"
-                  className="inputText2 resize-none h-[100px] !w-full rounded p-[7px] border-2 border-dotted border-[#1b5299]"
+                  className="inputText2 resize-none lg:h-[100px] h-[130px] !w-full rounded p-[7px] border-2 border-dotted border-[#1b5299]"
                   maxLength="50"
                   onChange={(e) => onchnageOfRegardBox(e.target.value)}
                   data-gtm-form-interact-field-id="0"

@@ -17,8 +17,8 @@ export const VideoTutorial = () => {
     //     <source src="https://www.youtube.com/embed/hEzSeiixgqw?si=gO9Wa4JRfMXwkoy-" type="video/mp4" />
     // </video>
     // </div>
-    <div className="containerxyz">
-    <div className="ratio ratio-16x9">
+    <div class="containerxyz">
+    <div class="ratio ratio-16x9 w-[880px] mt-[12px] min-h-[341px]">
       <iframe 
         src="https://www.youtube.com/embed/hEzSeiixgqw?si=gO9Wa4JRfMXwkoy-" 
         title="YouTube video player" 
