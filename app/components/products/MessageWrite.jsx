@@ -1737,7 +1737,7 @@ export function MessageWriting({
                       setDragAndDropBorderColor('');
                     }}
                   >
-                    <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
+                    <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader color="#ef6e6e" />
                       ) : (
