@@ -16,7 +16,7 @@ import {defer} from '@remix-run/server-runtime';
 import {seoPayload} from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
-
+import {useNavigate} from '@remix-run/react';
 
 export async function loader({request, context}) {
   const {page} = await context.storefront.query(Zapier_GRAPH_QL, {
@@ -31,6 +31,7 @@ export async function loader({request, context}) {
 }
 export default function Zapier() {
   const [animate, setAnimate] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setAnimate(true);
@@ -50,7 +51,7 @@ export default function Zapier() {
             </h2>
           </div>
           <div className="xl:justify-normal xl:flex hidden justify-center">
-            <p className="w-3/4  xl:text-left  font-light text-center  leading-7 mt-5  text-[18px]">
+            <p className="w-3/4  xl:text-left texts text-center mt-5 ">
               Integrate and automate sending real handwritten notes from 2,500+
               softwares instantly. Request access to our Zapier App today!
             </p>
@@ -75,7 +76,7 @@ export default function Zapier() {
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden justify-center">
-            <p className="sm:w-3/4 w-full xl:text-left text-justify sm:text-center font-light mt-8 text-[16px]">
+            <p className="sm:w-3/4 w-full xl:text-left text-justify sm:text-center texts mt-8">
               Integrate and automate sending real handwritten notes from 2,500+
               softwares instantly. Request access to our Zapier App today!
             </p>
@@ -194,12 +195,12 @@ export default function Zapier() {
               className="max-w-[500px] "
               src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
             />
-            <div className="absolute   right-[-285px] top-[192px]">
-              <p className="text-center w-[311px] text-[18px]">
+            <div className="absolute   right-[-371px] top-[163px]">
+              <p className="text-center w-[344px] texts">
                 Send pen written notes automatically from your favorite CRM
               </p>
             </div>
-            <div className="absolute right-[-120px] top-[241px]">
+            <div className="absolute right-[-166px] top-[235px]">
               <img src="  https://simplynoted.com/cdn/shop/files/zapier-arrow.png?v=17017241910886262831" />
             </div>
           </div>
@@ -216,7 +217,7 @@ export default function Zapier() {
             </h2>
           </div>
           <div className="xl:justify-normal  xl:flex hidden justify-center">
-            <p className="max-w-[100%]  xl:text-left text-center font-light leading-7 mt-5 text-[18px]">
+            <p className="max-w-[100%]  xl:text-left text-center mt-5 texts">
               Start your trigger by finding your app in the Zapier database
             </p>
           </div>
@@ -231,7 +232,7 @@ export default function Zapier() {
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[18px] xl:mt-[0px] mt-[12px] px-[45px] ml-[15px]"
-                onClickFunction={() => navigate('/blogs/news')}
+                onClickFunction={() => navigate('/news')}
               />
             </div>
           </div>
@@ -244,7 +245,7 @@ export default function Zapier() {
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden  justify-center">
-            <p className="max-w-[100%]  xl:text-left text-justify  font-light  mt-8 text-[16px]">
+            <p className="max-w-[100%]  xl:text-left text-justify texts  mt-8 ">
               Start your trigger by finding your app in the Zapier database
             </p>
           </div>
@@ -253,12 +254,13 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[24px]"
-                onClickFunction={() => navigate('/collections/best-sellers')}
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')}
               />
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[18px] mt-[12px] px-[55px] "
-                onClickFunction={() => navigate('/blogs/news')}
+                onClickFunction={() => navigate('/news')}
               />
             </div>
           </div>
@@ -284,7 +286,7 @@ export default function Zapier() {
             </h2>
           </div>
           <div className="flex xl:justify-normal justify-center">
-            <p className="w-3/4  xl:text-left text-center  font-light hidden xl:block  leading-7 mt-5 text-[18px]">
+            <p className="w-3/4  xl:text-left text-center texts hidden xl:block mt-5 ">
               Simply Noted integrates with your software and will do bulk sends
               in just a few minutes of your time.
             </p>
@@ -294,12 +296,13 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[30px]"
-                onClickFunction={() => navigate('/collections/best-sellers')}
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')}
               />
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[18px] xl:mt-[0px] mt-[12px] px-[45px] ml-[15px]"
-                onClickFunction={() => navigate('/blogs/news')}
+                onClickFunction={() => navigate('/news')}
               />
             </div>
           </div>
@@ -312,7 +315,7 @@ export default function Zapier() {
             />
           </div>
           <div className="flex xl:justify-norma xl:hidden justify-center">
-            <p className="sm:w-3/4 w-full  xl:text-left text-justify  font-light  mt-8 text-[16px] sm:px-0 px-[20px]">
+            <p className="sm:w-3/4 w-full  xl:text-left text-justify   mt-8 texts sm:px-0 px-[20px]">
               Simply Noted integrates with your software and will do bulk sends
               in just a few minutes of your time.
             </p>
@@ -322,12 +325,13 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[20px]"
-                onClickFunction={() => navigate('/collections/best-sellers')}
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')}
               />
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[18px]  mt-[12px] px-[60px] "
-                onClickFunction={() => navigate('/blogs/news')}
+                onClickFunction={() => navigate('/news')}
               />
             </div>
           </div>
@@ -370,25 +374,35 @@ export default function Zapier() {
             </div>
             <div className="xl:flex grid justify-center sm:gap-[12px]">
               <DynamicButton
-                text="REQUEST SAMPLE"
+                text="INTEGRATE NOW"
                 className="req-btn sm:w-[247px] w-[185px] h-[54px] sm:text-[16px] text-sm"
                 onClickFunction={() =>
-                  (window.location.href =
-                    'https://share.hsforms.com/1goN6DmMuTFaYMfPPD4I5ng39obb')
-                }
-              />
+                  window.open(
+                    'https://zapier.com/apps/simply-noted/integrations',
+                    '_blank',
+                  )}
+                />
               <DynamicButton
-                text="SCHEDULE A DEMO"
+                text="VIEW ALL INTEGRATIONS"
                 className="sch-btn text-[white] sm:w-[247px] w-[185px] !h-[69px]"
                 onClickFunction={() =>
-                  (window.location.href = 'https://meetings.hubspot.com/rick24')
-                }
+                  window.open(
+                    'https://zapier.com/apps',
+                    '_blank',
+                  )}
+                
               />
             </div>
           </div>
             
           </div>
       </div>
+      <div className="absolute left-[-8rem] lg:block hidden">
+          <img
+            className="max-w-[540px] rotate-90"
+            src="https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
+          />
+        </div>
     </div>
   );
 }

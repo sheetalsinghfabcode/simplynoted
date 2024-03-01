@@ -79,7 +79,7 @@ const CanvasDesign = () => {
               <source src={First} type="video/mp4"></source>
             </video>
           </div>
-          <div className="text-justify mt-5 !leading-7 texts">
+          <div className="text-justify mt-5  texts">
             Simply Noteds platform makes sending 1,000s of real penwritten notes
             as quick and easy as sending just 1. It has never been easier to
             scale your personal touch and leave lasting impressions!
@@ -92,7 +92,7 @@ const CanvasDesign = () => {
           />
           <DynamicButton
             text="TUTORIALS"
-            className="btn2 w-full mt-5 py-[18px] px-[40px]"
+            className="btn2 sm:w-auto w-full mt-5 py-[18px] px-[40px]"
             onClickFunction={() => navigate('/news')}
           />
         
@@ -154,7 +154,7 @@ const CanvasDesign = () => {
               <source src={First} type="video/mp4"></source>
             </video>
           </div>
-          <div className="texts text-justify !leading-7 mt-5">
+          <div className="texts text-justify mt-5">
             Use our cards, send us yours or design your own! Simply Noted offers
             a wide array of cards to choose from and a powerful custom create a
             card tool. Over 95% of our clients are businesses and use their own
@@ -171,7 +171,7 @@ const CanvasDesign = () => {
 
         <div className="global-max-width-handler relative md:flex hidden justify-between xl:top-[10rem] top-[7rem] flex-wrap mx-auto w-full  lg:gap-[10px] gap-[55px] ">
           <div className="lg:w-[35%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
-            <div className="text-3xl  font-bold text-left  text-[#001A5F]">
+            <div className="text-4xl  font-bold text-left  text-[#001A5F]">
               Gift cards & &nbsp;
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 inserts
@@ -224,7 +224,7 @@ const CanvasDesign = () => {
               <source src={Third} type="video/mp4"></source>
             </video>
           </div>
-          <div className="texts text-justify !leading-7 mt-5">
+          <div className="texts text-justify mt-5">
             Simply Noted makes it easy to send gift cards from your favorite
             stores with each order. From $5 Starbucks cards to $100 Visas,
             there's a gift card to match any budget.
@@ -278,7 +278,7 @@ const CanvasDesign = () => {
             <img src={ShopifyPhoto} className="" />
           </div>
           <div className="lg:max-w-[50%] w-[80%] lg:mx-0 mx-auto ml-auto  lg:mt-[60px] lg:order-none order-2 data-background text-left ">
-            <div className="text-3xl  font-bold text-left  text-[#001A5F]">
+            <div className="text-4xl  font-bold text-left  text-[#001A5F]">
               Integrate &nbsp;
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 and
@@ -311,7 +311,7 @@ const CanvasDesign = () => {
             <img src={ShopifyPhoto} className="" />
           </div>
           </div>
-          <div className="texts text-justify !leading-7 mt-5">
+          <div className="texts text-justify mt-5">
               Leveraging our RESTful API or Zapier app Simply Noted can
               integrate to your favorite software and automate your handwritten
               outreach.
