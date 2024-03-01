@@ -1,8 +1,8 @@
 import {useRef, Suspense} from 'react';
 import {Disclosure, Listbox} from '@headlessui/react';
 import {defer, json, redirect} from '@shopify/remix-oxygen';
-import {useLoaderData, Await, useLocation, useNavigate} from '@remix-run/react';
-
+import {useLoaderData, Await, useLocation, useNavigate,Form,useActionData} from '@remix-run/react';
+import {getInputStyleClasses} from '~/lib/utils';
 import {
   AnalyticsPageType,
   Money,
@@ -42,6 +42,7 @@ import {ProductInfo} from '../components/products/ProductInfo';
 import DynamicButton from '~/components/DynamicButton';
 import Breadcrumbs from '~/components/Breadcrumbs';
 import {useStateContext} from '~/context/StateContext';
+import Instruction from '~/components/modal/Instruction';
 
 export const headers = routeHeaders;
 
@@ -137,25 +138,90 @@ function redirectToFirstVariant({product, request}) {
   }
   throw redirect(`/products/${product.handle}?${searchParams.toString()}`, 302);
 }
+const badRequest = (data) => json(data, {status: 400});
 
+export const action = async ({request, context, params}) => {
+  const formData = await request.formData();
+console.log(params,"params logsss");
+  const email = formData.get('email');
+  const password = formData.get('password');
+
+
+  if (
+    !email ||
+    !password ||
+    typeof email !== 'string' ||
+    typeof password !== 'string'
+  ) {
+    return badRequest({
+      formError: 'Please provide both an email and a password.',
+    });
+  }
+
+  const {session, storefront, cart} = context;
+
+  try {
+    const customerAccessToken = await doLogin(context, {email, password});
+    session.set('customerAccessToken', customerAccessToken);
+    console.log(customerAccessToken,"customerAccessToken");
+    // Sync customerAccessToken with existing cart
+    const result = await cart.updateBuyerIdentity({customerAccessToken});
+    const path =  `http://localhost:3000/account`;
+    // Update cart id in cookie
+    const headers = cart.setCartId(result.cart.id);
+    headers.append('Set-Cookie', await session.commit());
+  const {customer} = await getCustomer(context, customerAccessToken);
+    return json({customer},(params.locale ? `/${params.locale}/products/${params.productHandle}` : `/products/${params.productHandle}`,{headers}))
+    
+  } catch (error) {
+    if (storefront.isApiError(error)) {
+      return badRequest({
+        formError: 'Something went wrong. Please try again later.',
+      });
+    }
+
+    /**
+     * The user did something wrong, but the raw error from the API is not super friendly.
+     * Let's make one up.
+     */
+    return badRequest({
+      formError:
+        'Sorry. We did not recognize either your email or password. Please try to sign in again or create a new account.',
+    });
+  }
+};
+export async function getCustomer(context, customerAccessToken) {
+  const {storefront} = context;
+
+  const customer = await storefront.query(CUSTOMER_QUERY, {
+    variables: {
+      customerAccessToken,
+      country: context.storefront.i18n.country,
+      language: context.storefront.i18n.language,
+    },
+    cache: storefront.CacheNone(),
+  });
+  return customer
+}
 let parameterValue;
+
 export default function Product() {
-  const {product, shop, recommended, variants, data, shippingData} =
+  const {product, shop, recommended, variants, data, shippingData,customer} =
     useLoaderData();
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
-  let EditMess = datafornav.state?.data?.messageData;
-  let editEndMess = datafornav.state?.data.endText;
-  let editOrderValue = datafornav.state;
-  let editFontFamily = datafornav.state?.data.fontFamily;
-  let showBulkOnEdit = datafornav.state?.data.csvBulkData.length;
-  let editFontSize = datafornav.state?.data.fontSizeMsg;
-  let editCustomFontFamily = datafornav.state?.data.customFontName;
-  let editLineHeight = datafornav.state?.data.lineHeight;
-  let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
-  let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
-  let editShippingDate = datafornav.state?.data.optionalShipDate
+  let EditMess = datafornav?.state?.data?.messageData;
+  let editEndMess = datafornav?.state?.data?.endText;
+  let editOrderValue = datafornav?.state;
+  let editFontFamily = datafornav?.state?.data?.fontFamily;
+  let showBulkOnEdit = datafornav?.state?.data?.csvBulkData.length;
+  let editFontSize = datafornav?.state?.data?.fontSizeMsg;
+  let editCustomFontFamily = datafornav?.state?.data?.customFontName;
+  let editLineHeight = datafornav?.state?.data?.lineHeight;
+  let editSignOffLineHeight = datafornav?.state?.data?.signOffLineHeight;
+  let editSignOffFontSize = datafornav?.state?.data?.signOffFontSize;
+  let editShippingDate = datafornav?.state?.data?.optionalShipDate
 
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
@@ -163,7 +229,9 @@ export default function Product() {
     showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
 
-  const {productshow, setProductShow} = useStateContext();
+  const {productshow, setProductShow,showSignScreen,
+    setShowSignScreen,stateCheckCustomerId,
+    setStateCheckCustomerId} = useStateContext();
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
@@ -231,18 +299,6 @@ export default function Product() {
           <Section
             className={`w-full mt-[20px] !p-0 `}
           >
-            {/* <DynamicButton
-            className="bg-[#EF6E6E] w-full max-w-[150px]"
-            text="Go Back"
-            backArrow={true}
-            onClickFunction={goBack}
-          /> */}
-            {/* <Heading
-            as="h1"
-            className="whitespace-normal xl:text-[30px] md:text-[23px] sm:text-[34px] leading-10 text-[30px] font-semibold text-[#191919]"
-          >
-            {title}
-          </Heading> */}
             <div className="flex flex-wrap md:flex-row md:justify-between flex-col w-full xl:gap-[40px] gap-[20px] md:mt-0 mt-[15px]">
               <ProductInfo
                 title={title}
@@ -279,17 +335,6 @@ export default function Product() {
               />
             )}
           </Section>
-
-          {/* <Suspense fallback={<Skeleton className="" />}>
-            <Await
-              errorElement="There was a problem loading related products"
-              resolve={recommended}
-            >
-              {(products) => (
-                <ProductSwimlane title="Related Products" products={products} />
-              )}
-            </Await>
-          </Suspense> */}
           <Modal
             isOpen={modalIsOpen2}
             // onAfterOpen={afterOpenModal}
@@ -302,6 +347,10 @@ export default function Product() {
               <div key={index}>{item}</div>
             ))}
           </Modal>
+          <Instruction
+          isOpen={showSignScreen}
+          body={<LoginFunc/>}
+          />
         </>
       ) : (
         <AddCart
@@ -531,7 +580,202 @@ function ProductDetail({title, content, learnMore}) {
     </Disclosure>
   );
 }
+export const meta = () => {
+  return [{title: 'Login'}];
+};
+export  function LoginFunc() {
+  const {setShowSignScreen,setCustomerId} = useStateContext()
 
+  const {shopName} = useLoaderData();
+  const actionData = useActionData();
+  console.log(actionData?.customer,"actiondata");
+  const [nativeEmailError, setNativeEmailError] = useState(null);
+  const [nativePasswordError, setNativePasswordError] = useState(null);
+  if(actionData?.customer?.id){
+    let result = actionData.customer.id.replace(/[^0-9]/g, '');
+    localStorage.setItem('customerId', result);
+    localStorage.setItem('SnEmail', actionData.customer.email);
+    localStorage.setItem('firstName', actionData.customer.firstName);
+    localStorage.setItem('lastName', actionData.customer.lastName);
+    getSavedCards(result)
+    setCustomerId(result)
+  }
+
+  async function getSavedCards(Id) {
+    try {
+      const res = await fetch(
+        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+      );
+      const json = await res.json();
+
+      if (json.stripe) {
+        localStorage.setItem(
+          'packageDiscount',
+          JSON.stringify(json.stripe.packageDiscount),
+        );
+        localStorage.setItem(
+          'subscriptionName',
+          json.stripe.subscription ? json.stripe.subscription : 'Free',
+        );
+
+        localStorage.setItem(
+          'subscriptionPriceId',
+          json.stripe.subscriptionId && json.stripe.subscriptionId,
+        );
+      } else {
+        localStorage.setItem('packageDiscount', JSON.stringify(0));
+        localStorage.setItem('subscriptionName', 'Free');
+      }
+      setShowSignScreen(false)
+    } catch (error) {}
+  }
+  return (
+    <div className="flex justify-center sm:mt-12 mt-4 mb-24 px-4">
+
+      <div className="max-w-md w-full">
+        <h1 className="name text-4xl text-blue-900">Sign in</h1>
+        <img
+          className="mt-2 w-32"
+          src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
+        />
+        <p className="mt-[12px] text-black text-opacity-80 text-xs">
+          If you have an account with us, please log in.
+        </p>
+        {/* TODO: Add onSubmit to validate _before_ submission with native? */}
+        <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
+          {actionData?.formError && (
+            <div className="flex items-center justify-center mb-6 bg-zinc-500">
+              <p className="m-4 text-s text-contrast">{actionData.formError}</p>
+            </div>
+          )}
+          <div>
+            <input
+              className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="Enter-E-mail"
+              aria-label="Email address"
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              onBlur={(event) => {
+                setNativeEmailError(
+                  event.currentTarget.value.length &&
+                    !event.currentTarget.validity.valid
+                    ? 'Invalid email address'
+                    : null,
+                );
+              }}
+            />
+            {nativeEmailError && (
+              <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
+            )}
+          </div>
+          <div>
+            <input
+              className={`mb-1 h-12 ${getInputStyleClasses(
+                nativePasswordError,
+              )}`}
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              placeholder=" Enter-Password"
+              aria-label="Password"
+              minLength={8}
+              required
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              onBlur={(event) => {
+                if (
+                  event.currentTarget.validity.valid ||
+                  !event.currentTarget.value.length
+                ) {
+                  setNativePasswordError(null);
+                } else {
+                  setNativePasswordError(
+                    event.currentTarget.validity.valueMissing
+                      ? 'Please enter a password'
+                      : 'Passwords must be at least 8 characters',
+                  );
+                }
+              }}
+            />
+            {nativePasswordError && (
+              <p className="text-red-500 text-xs">
+                {nativePasswordError} &nbsp;
+              </p>
+            )}
+          </div>
+          <div className="flex items-center justify-between">
+            <button
+            //  onClick={()=>setShowSignScreen(false)}
+              className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
+              type="submit"
+              disabled={!!(nativePasswordError || nativeEmailError)}
+            >
+              Sign in
+            </button>
+          </div>
+          <div className="md:flex grid justify-between items-center sm:mt-8 mt-4 border-t border-gray-300">
+            <p className="align-baseline text-sm mt-6">
+              New to {shopName}? &nbsp;
+              <Link className="text-xs inline underline" to="/account/register">
+                Create an account
+              </Link>
+            </p>
+            <Link
+              className="mt-6 inline-block align-baseline text-sm text-primary/50"
+              to="/account/recover"
+            >
+              Forgot password
+            </Link>
+          </div>
+        </Form>
+      </div>
+    </div>
+  );
+}
+
+const LOGIN_MUTATION = `#graphql
+  mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+    customerAccessTokenCreate(input: $input) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+    }
+  }
+`;
+
+export async function doLogin({storefront}, {email, password}) {
+  const data = await storefront.mutate(LOGIN_MUTATION, {
+    variables: {
+      input: {
+        email,
+        password,
+      },
+    },
+  });
+
+  if (data?.customerAccessTokenCreate?.customerAccessToken?.accessToken) {
+    return data.customerAccessTokenCreate.customerAccessToken.accessToken;
+  }
+
+  /**
+   * Something is wrong with the user's input.
+   */
+  throw new Error(
+    data?.customerAccessTokenCreate?.customerUserErrors.join(', '),
+  );
+}
 const PRODUCT_VARIANT_FRAGMENT = `#graphql
   fragment ProductVariantFragment on ProductVariant {
     id
@@ -700,7 +944,27 @@ query
     }
   }
 }`;
+const CUSTOMER_QUERY = `#graphql
+  query CustomerDetails(
+    $customerAccessToken: String!
+    $country: CountryCode
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
+    customer(customerAccessToken: $customerAccessToken) {
+      ...CustomerDetails
+    }
+  }
 
+  fragment CustomerDetails on Customer {
+    firstName
+    lastName
+    phone
+    email
+    tags
+    id
+  }
+
+`;
 // async function getRecommendedProducts(storefront, productId) {
 //   const products = await storefront.query(RECOMMENDED_PRODUCTS_QUERY, {
 //     variables: { productId, count: 12 },

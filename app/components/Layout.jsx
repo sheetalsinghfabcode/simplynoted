@@ -537,7 +537,6 @@ function MenuMobileNav({menu, onClose}) {
           </span>
         ))}
         <button className='flex' onClick={() => {
-          console.log("aaaaaaaaaaa");
                         setActiveTab(0);
                         setAccountTabName('General');
                         if (customerId && pathname.pathname !== '/account') {
@@ -822,12 +821,14 @@ function DesktopHeader({isHome, menu}) {
               className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-base !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
+                console.log(customerId,"id of customer");
                 setActiveTab(0);
                 setAccountTabName('General');
                 if (customerId && pathname.pathname !== '/account') {
                   setIsAccountLoader(true);
                   navigate('/account');
-                } else if (!customerId) {
+                }
+                 else if (!customerId) {
                   navigate('account/login');
                 }
               }}
@@ -899,7 +900,6 @@ const FlyoutLink = ({children, href, FlyoutContent, data}) => {
 const PricingContent = ({props}) => {
   const navigate = useNavigate()
   const {customerId,setCheckLogin} = useStateContext()
-  console.log(props,"nav bar data");
   function onCLickCheck(){
     if(!customerId){
       setCheckLogin(true)
