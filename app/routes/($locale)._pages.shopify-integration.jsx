@@ -16,6 +16,7 @@ import {defer} from '@remix-run/server-runtime';
 import {seoPayload} from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
+import {useNavigate} from '@remix-run/react';
 
 export async function loader({request, context}) {
   const {page} = await context.storefront.query(Zapier_GRAPH_QL, {
@@ -28,7 +29,8 @@ export async function loader({request, context}) {
   });
   ``;
 }
-export default function Zapier() {
+export default function Shopify() {
+    const navigate = useNavigate();
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -57,16 +59,14 @@ export default function Zapier() {
             </p>
           </div>
           <div className="mt-5  xl:justify-normal  xl:flex hidden  justify-center xl:order-first">
-            <div className="INTEGRATE flex justify-center">
-              <button
-                onClick={() =>
-                  (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
-                }
-                className="mt-1  text-lg font-bold text-white py-2 px-4 order-1	rounded"
-              >
-                INTEGRATE NOW
-              </button>
+            <div className="flex justify-center">
+            <DynamicButton
+                text="INTEGRATE NOW"
+                className="INTEGRATE  text-[18px] font-bold text-white py-[30px] px-[76px] order-1	rounded"
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')}
+              />
+              
             </div>
           </div>
         </div>
@@ -86,17 +86,15 @@ export default function Zapier() {
               customers.
             </p>
           </div>
-          <div className="mt-5 flex xl:justify-normal justify-center  xl:hidden xl:order-first">
-            <div className="INTEGRATE flex justify-center">
-              <button
-                onClick={() =>
-                  (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
-                }
-                className="mt-1  text-lg font-bold text-white py-2 px-4 order-1	rounded"
-              >
-                INTEGRATE NOW
-              </button>
+          <div className=" flex xl:justify-normal justify-center  xl:hidden xl:order-first">
+            <div className="flex justify-center">
+            <DynamicButton
+                text="INTEGRATE NOW"
+                className="INTEGRATE  text-[16px] font-bold text-white py-[22px] px-[40px] order-1	rounded"
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')}
+              />
+             
             </div>
           </div>
         </div>
@@ -214,7 +212,7 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-      <div className="xl:flex mt-10 items-center w-full relative  justify-center global-max-width-handler lg:left-[30px]">
+      <div className="xl:flex !mt-10 items-center w-full relative  justify-center global-max-width-handler lg:left-[30px] ">
         <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
           <img
             className="w-full 2xl:h-[53rem] h-[45rem]"
@@ -243,7 +241,7 @@ export default function Zapier() {
                 className="btn1 text-sm py-[20px] px-[30px] "
                 onClickFunction={() =>
                   (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
+                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')
                 }
               />
               <DynamicButton
@@ -257,7 +255,7 @@ export default function Zapier() {
         <div>
           <div className="flex xl:justify-normal justify-center mt-5">
             <img
-              className="w-full"
+              className="w-full 2xl-only:min-w-[75rem] xl:min-w-[55rem]"
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
             />
           </div>
@@ -268,7 +266,7 @@ export default function Zapier() {
               erat, sed diam voluptua.
             </p>
           </div>
-          <div className="mt-5 flex xl:justify-normal  xl:hidden justify-center xl:order-first">
+          <div className=" flex xl:justify-normal  xl:hidden justify-center xl:order-first">
             <div className="xl:flex grid">
               <DynamicButton
                 text="INTEGRATE NOW"
@@ -297,9 +295,9 @@ export default function Zapier() {
       </div>
 
       <div className="xl:flex  items-center relative  justify-center mx-auto 3xl:w-[85%] w-full ">
-        <div className="absolute 2xl:top-[27rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
+        <div className="absolute 2xl:top-[24rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
           <img
-            className="w-full 2xl:h-[54rem] h-[42rem]"
+            className="w-full 2xl:h-[56rem] h-[42rem]"
             src={CanvasTow}
             alt="Computer man"
           />
@@ -324,7 +322,7 @@ export default function Zapier() {
                 className="btn1 text-sm py-[20px] px-[30px]"
                 onClickFunction={() =>
                   (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
+                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105 ')
                 }
               />
               <DynamicButton
@@ -336,9 +334,9 @@ export default function Zapier() {
           </div>
         </div>
         <div>
-          <div className="flex xl:justify-normal justify-center mt-5">
+          <div className="flex xl:justify-normal justify-end mt-5">
             <img
-              className="w-[98%]"
+              className="lg:w-[98%] w-[95%]"
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
             />
           </div>
@@ -348,14 +346,14 @@ export default function Zapier() {
               in just a few minutes of your time.
             </p>
           </div>
-          <div className="mt-5 flex xl:justify-normal  xl:hidden justify-center xl:order-first">
+          <div className=" flex xl:justify-normal  xl:hidden justify-center xl:order-first">
             <div className="xl:flex grid">
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[20px]"
                 onClickFunction={() =>
                   (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
+                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')
                 }
               />
               <DynamicButton

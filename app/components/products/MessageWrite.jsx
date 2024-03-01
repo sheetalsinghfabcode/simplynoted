@@ -2053,7 +2053,7 @@ export function MessageWriting({
                     id="generate-msg"
                     disabled=""
                     onClick={() => aiGenrateMess()}
-                    className="bg-[#ef6e6e] w-full h-[45px]  bg-red-500 text-white text-lg rounded-md mt-2 transition-all duration-500 ease-in-out"
+                    className="bg-[#ef6e6e] sm:w-[40%] w-[50%] h-[45px]  bg-red-500 text-white text-lg rounded-md mt-2 transition-all duration-500 ease-in-out"
                   >
                     Generate Message
                   </button>

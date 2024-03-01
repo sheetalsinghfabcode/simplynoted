@@ -57,14 +57,13 @@ export default function Zapier() {
             </p>
           </div>
           <div className="mt-5  xl:justify-normal  xl:flex hidden  justify-center xl:order-first">
-            <div className="INTEGRATE flex justify-center">
-              <button
-                onClick={() => (window.location.href =
+            <div className="flex justify-center">
+            <DynamicButton
+                text="INTEGRATE NOW"
+                className="INTEGRATE  text-[18px] font-bold text-white py-[30px] px-[76px] order-1	rounded"
+                onClickFunction={() => (window.location.href =
                   'https://zapier.com/apps/simply-noted/integrations')}
-                className="mt-1  text-lg font-bold text-white py-2 px-4 order-1	rounded"
-              >
-                INTEGRATE NOW
-              </button>
+              />
             </div>
           </div>
         </div>
@@ -81,14 +80,15 @@ export default function Zapier() {
               softwares instantly. Request access to our Zapier App today!
             </p>
           </div>
-          <div className="mt-5 flex xl:justify-normal justify-center  xl:hidden xl:order-first">
-            <div className="INTEGRATE flex justify-center">
-              <button
-                onClick="window.location.href = 'https://zapier.com/apps/simply-noted/integrations'"
-                className="mt-1  text-lg font-bold text-white py-2 px-4 order-1	rounded"
-              >
-                INTEGRATE NOW
-              </button>
+          <div className=" flex xl:justify-normal justify-center  xl:hidden xl:order-first">
+            <div className=" flex justify-center">
+            <DynamicButton
+                text="INTEGRATE NOW"
+                className="INTEGRATE  text-[16px] font-bold text-white py-[22px] px-[40px] order-1	rounded"
+                onClickFunction={() => (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')}
+              />
+          
             </div>
           </div>
   
@@ -249,7 +249,7 @@ export default function Zapier() {
               Start your trigger by finding your app in the Zapier database
             </p>
           </div>
-          <div className="mt-5 flex xl:justify-normal  xl:hidden justify-center xl:order-first">
+          <div className=" flex xl:justify-normal  xl:hidden justify-center xl:order-first">
             <div className="xl:flex grid">
               <DynamicButton
                 text="INTEGRATE NOW"
@@ -320,7 +320,7 @@ export default function Zapier() {
               in just a few minutes of your time.
             </p>
           </div>
-          <div className="mt-5 flex xl:justify-normal  xl:hidden justify-center xl:order-first">
+          <div className=" flex xl:justify-normal  xl:hidden justify-center xl:order-first">
             <div className="xl:flex grid">
               <DynamicButton
                 text="INTEGRATE NOW"
