@@ -2,7 +2,7 @@ import React from 'react';
 
 function CardComponent({ imgSrc, title, description, buttonText, showDownloadButton, onDownload, onClick, downloadButtonText,showBorder=true }) {
   return (
-    <div className="flex flex-col items-center md:items-start flex-1 gap-[12px] justify-center relative">
+    <div className="flex flex-col items-center md:items-start sm:pt-[0px] pt-[20px] flex-1 gap-[12px] justify-center relative">
     <img
       src={imgSrc}
       className="w-[48px] h-[48px]"

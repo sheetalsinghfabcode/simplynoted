@@ -278,13 +278,13 @@ function MenuMobileNav({menu, onClose}) {
                             style={{color: 'black'}}
                           >
                             <Link to="/collections/best-sellers">
-                              <li className='mb-[6px]'>Cards</li>
+                              <li className='mb-[6px]  mt-[6px]'>Cards</li>
                             </Link>
                             <Link
                               to="/customise-your-card"
                               // onClick={handleCreateCardClick}
                             >
-                              <li className='mb-[6px]'> Create a Card</li>
+                              <li className='mb-[6px]'>Create a Card</li>
                             </Link>
                             {/* {loginModal && (
                               <>
@@ -372,7 +372,7 @@ function MenuMobileNav({menu, onClose}) {
                       <div className="">
                         <ul
                           onClick={onClose}
-                          className="text-thin ml-[8px]"
+                          className="text-thin  ml-[8px]"
                           style={{color: 'black'}}
                         >
                           {/* <Link to="/price">

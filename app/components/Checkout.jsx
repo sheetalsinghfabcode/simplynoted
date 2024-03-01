@@ -604,7 +604,7 @@ export function CheckoutData({
                     >
                       <div className="border border-solid border-[#e6edf8] sm:p-[20px] p-[10px] sm:m-[15px] m-[7px]">
                         <span className="flex justify-between items-center text-[#001a5f] flex-wrap">
-                          <span className="flex-1 sm:text-[15px] text-[11px] font-bold">WALLET BALANCE </span>
+                          <span className="flex-1 sm:text-[15px] text-[12px] font-bold">WALLET BALANCE </span>
                           <span className="flex-1 sm:text-[46px] text-[16px] text-[#ef6e6e] font-black text-right">
                             $
                             {walletBalance && walletBalance.balance
@@ -689,7 +689,7 @@ export function CheckoutData({
                               &nbsp;Use Saved Credit Card
                             </label>
                           </div>
-                          <div className="sm:mt-0 mt-[10px]">
+                          <div className="md:mt-0 mt-[10px]">
                             <button
                               className="bg-[#EF6E6E] md:w-[200px] w-[254px] md:h-full h-[49px] text-[#fff] p-2 rounded"
                               onClick={() => onpenAddCardModal()}
@@ -718,7 +718,7 @@ export function CheckoutData({
                     <h1 className="text-left font-bold sm:text-[30px] text-[26px]">
                       ORDER SUMMARY
                     </h1>
-                    <span className="flex justify-between items-center mt-3 mb-3 text-base">
+                    <span className="flex justify-between items-center sm:mt-3 mt-[34px] mb-3 text-base">
                       <span className="font-medium">Subtotal</span>
                       <span>${prices.subtotalPrice}</span>
                     </span>
@@ -742,11 +742,11 @@ export function CheckoutData({
                       </span>
                     )}
                     <div className="w-full h-[1px] bg-black"></div>
-                    <span className="flex justify-between items-center mt-3 mb-3 font-bold text-base">
+                    <span className="flex justify-between items-center sm:mt-3 mb-[mt-[32px] font-bold text-base">
                       Total{' '}
                       <span>${Number(prices.totalPrice)?.toFixed(2)}</span>
                     </span>
-                    <div className="font-bold text-base">
+                    <div className="font-bold sm:mt-[0px] mt-[31px] text-base">
                       <span>If you have a discount code, enter it here:</span>
                       <div
                         className="flex gap-2 justify-start items-stretch mt-3"

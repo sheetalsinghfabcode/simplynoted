@@ -446,7 +446,7 @@ const Accordion = ({
         `}
         >
           <div className="rounded">
-            <div className="w-full max-w-[650px]  mx-auto p-3 mt-3">
+            <div className="w-full max-w-[650px]  mx-auto mt-3">
               <div className="grid-rows-2 lg:flex grid gap-3">
                 <div className="w-full">
                   <label className="font-bold" htmlFor="">
