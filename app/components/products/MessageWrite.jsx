@@ -945,7 +945,6 @@ export function MessageWriting({
       } else if (name.length === 0 || ref4.current?.value.length === 0) {
         setErrorTemplate(true);
       } else {
-        setAddNewTem(false);
         setLoaderMessage('Adding New Templates');
         setShowLoader(true);
 
@@ -959,6 +958,8 @@ export function MessageWriting({
         const json = await res.json();
         if (json) {
           setTimeout(() => {
+            setAddNewTem(false);
+
             setLoaderMessage(null);
             setShowLoader(false);
           }, 2000);
@@ -990,7 +991,10 @@ export function MessageWriting({
               Please check that the value is not empty
             </span>
           )}
-          <div className="flex justify-center sm:gap-[17px] gap-3 mt-[18px] items-center sm:flex-row flex-col">
+          <div className="mt-2">
+            {showLoader && <CircularLoader title={loaderMessage} />}
+          </div>
+          <div className="flex justify-center sm:gap-[17px] gap-3 mt-[18px]  items-center sm:flex-row flex-col">
             <DynamicButton
               className="bg-[#1b5299] w-full h-[40px] text-base"
               onClickFunction={() => addNewTemplateFunc()}
@@ -1060,23 +1064,27 @@ export function MessageWriting({
           {loadTempData &&
             filteredList(loadTempData, searchData).map((item, index) => (
               <div className="" key={index}>
-                <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
-                  <div className="w-full font-font-semibold  text-[14px]">
-                    {item.templateName}
+                {showLoader ? (
+                  <CircularLoader title={loaderMessage} color="#ef6e6e" />
+                ) : (
+                  <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
+                    <div className="w-full font-font-semibold  text-[14px]">
+                      {item.templateName}
+                    </div>
+                    <div className="w-full flex items-center gap-[11px] justify-end">
+                      <img
+                        src={TickImg}
+                        className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
+                        onClick={() => setLoadedTemVal(item.customMessage)}
+                      />
+                      <img
+                        src={Del}
+                        className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
+                        onClick={() => onConfirmDeleteTemplate(item._id)}
+                      />
+                    </div>
                   </div>
-                  <div className="w-full flex items-center gap-[11px] justify-end">
-                    <img
-                      src={TickImg}
-                      className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
-                      onClick={() => setLoadedTemVal(item.customMessage)}
-                    />
-                    <img
-                      src={Del}
-                      className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
-                      onClick={() => onConfirmDeleteTemplate(item._id)}
-                    />
-                  </div>
-                </div>
+                )}
               </div>
             ))}
           <div></div>
@@ -1089,14 +1097,17 @@ export function MessageWriting({
     setLoaderMessage('Loading Saved Template');
     setTimeout(() => {
       setShowLoader(false);
+      setLoadTemModal(false);
+
       setLoaderMessage(null);
     }, 2000);
     setName(val);
-    setLoadTemModal(false);
   }
 
   async function deleteTemp(val) {
     setShowLoader(true);
+    setLoadTemModal(true);
+
     setLoaderMessage('Deleting Template');
     setDelTemplateState(false);
     try {
@@ -1114,8 +1125,9 @@ export function MessageWriting({
       setTimeout(() => {
         setOnDelTemp(!onDelTemp);
         setShowLoader(false);
+        setLoadTemModal(false);
+
         setLoaderMessage(null);
-        setLoadTemModal(true);
       }, 2000);
     } catch (error) {
       console.error(error, 'delete Template');
@@ -1197,10 +1209,16 @@ export function MessageWriting({
   }
   return (
     <>
-      {showLoader && (
-        <SuccessfullLoader successfullMessage={loaderMessage} circle={true} />
-      )}
-      <div className="mainDivForBox flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
+      <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
+        {/* {showLoader && loaderMessage !== 'Adding New Templates' && (
+          <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-80 flex justify-center items-center z-10">
+            <CircularLoader
+              textColor="text-white"
+              title={loaderMessage}
+              color="#ef6e6e"
+            />
+          </div>
+        )} */}
         <div
           className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
             show
