@@ -33,11 +33,11 @@ export default function Salesforce() {
         <div className="flex px-[16px] md:px-[40px]  items-center">
           <div className="lg:flex-row flex-col global-max-width-handler flex  sm:mt-10 mt-5">
             {/* first div left side */}
-            <div className="lg:flex-col  flex-col-reverse  flex p-3 mr-10 lg:w-[50%] w-full ">
+            <div className="lg:flex-col  flex-col-reverse  flex  lg:w-[50%] w-full lg:justify-start justify-center">
               <div>
                 <div className="lg:block hidden">
                   <div className="text-white text-center text-[12px] p-[3px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
-                    COMING SOON
+                    COMING SOON &nbsp;
                   </div>
                   <div
                     className="lg:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f]"
@@ -56,7 +56,7 @@ export default function Salesforce() {
                     Integration
                   </div>
                 </div>
-                <div className=" mt-[14px] lg:w-[83%]  font-light w-full lg:text-left sm:text-center text-justify text-[19px]">
+                <div className=" mt-[14px] lg:w-[83%]   w-full lg:text-left sm:text-center text-justify texts">
                   We go as far as to design the type of slant, spacing and
                   stroke variability that goes into a unique personalized font.
                   We can control everything from the slant of the lettering,
@@ -64,37 +64,36 @@ export default function Salesforce() {
                   your unique style is.
                 </div>
                 <div className="flex lg:justify-start justify-center flex-wrap items-center gap-2 mt-5 mb-5 relative ">
-                  <button
-                    className="text-white p-[17px] text-[17px] bg-[#ef6e6e] px-2 pt-4 pb-4 font-bold"
-                    type="button"
+                  <DynamicButton
+                    text="CONNECT USING OUR PROCESS BUILDER"
+                    className="text-white p-[17px] sm:text-[16px] small:text-[14px] text-[10px] bg-[#ef6e6e] px-2 py-5 font-bold"
                     onClickFunction={() =>
                       (window.location.href =
                         'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
                     }
-                  >
-                    CONNECT USING OUR PROCESS BUILDER
-                  </button>
-                  <span className="lg:block hidden font-karla  text-[#001a5f] underline ml-5 text-2xl">
+                  />
+
+                  <span className="lg:block hidden font-karla  text-[#001a5f] underline xl:ml-5 text-[28px] font-bold">
                     or
                   </span>
                   <img
-                    className="xl:block hidden relative xl:right-[4px] right-[-384px]  xl:top-[47px] top-[-37px] w-[20%]"
+                    className="lg:block hidden relative right-[4px] top-[36px] xl:top-[47px] xl:w-[20%] w-[16%] "
                     src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-1.png?v=1609453677&94441"
                     alt="arrow"
                   />
                 </div>
               </div>
               {/* first div form */}
-              <div className="lg:flex grid  justify-center">
+              <div className="lg:flex grid lg:justify-start justify-center">
                 <div className="lg:hidden inline-block text-center">
                   <div className="text-white inline-block text-center text-[12px] p-[4px] bg-[#ef6e6e] w-[104px] rounded-3xl lg:mb-0  mb-[14px]">
                     COMING SOON
                   </div>
                   <div
-                    className="text-[44px] font-karla md:flex grid  text-[#001a5f]"
+                    className="text-[44px] font-karla md:flex grid  text-[#001a5f] items-center font-bold"
                     style={{lineHeight: '0.75'}}
                   >
-                    Salesforce
+                    Salesforce &nbsp;
                     <span
                       style={{
                         fontFamily: 'Beauty, Handwriting',
@@ -114,7 +113,13 @@ export default function Salesforce() {
                         alt="Salesforce form stamp"
                       />
                     </div>
-                    <div className="wrap-business-form-salesforce">
+                    <div className=" hidden small:block lg:hidden absolute top-[-2rem] right-[8rem] md:right-[15rem] z-[3]">
+                      <img
+                        src="https://simplynoted.com/cdn/shop/files/salesforce-logo.png?v=8956079057539837102"
+                        alt="salesforce"
+                      />
+                    </div>
+                    <div className="wrap-business-form-salesforce xl:min-w-[35rem] lg:min-w-[30rem] md:min-w-[40rem]">
                       <h3 className="form-title">
                         Sign-Up for Early Access to our Deep Integration
                       </h3>
@@ -196,7 +201,7 @@ export default function Salesforce() {
               </div>
             </div>
             {/* first div right side */}
-            <div className="lg:block hidden flex-1 p-3 flex flex-col gap-5  items-center mt-28">
+            <div className="lg:block hidden flex-1 p-3  flex-col gap-5  items-center mt-28">
               <div className="text-3xl mb-10 font-karla text-center font-bold  text-[#001a5f]">
                 Current Salesforce Workflow
               </div>
@@ -210,22 +215,22 @@ export default function Salesforce() {
             </div>
           </div>
         </div>
-        <div className="lg:block hidden relative mt-[36px]">
+        <div className="lg:block hidden relative my-[30px]">
           <img
-            className="pl-[80px]"
+            className="pl-[50px] 2xl:w-[750px] w-[650px]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-cards.png?v=5725391707754373102"
           />
         </div>
         {/* second */}
-        <div className="flex flex-wrap justify-center relative global-max-width-handler">
-          <div className="absolute w-full hidden xl:block top-[373px] 2xl:right-[-144px] right-[-116px] z-[-12]">
+        <div className="flex flex-wrap justify-center relative global-max-width-handler !my-[30px]">
+          <div className="absolute hidden lg:block xl:top-[373px] top-[280px] right-[14rem] z-[-12]">
             <img
-              className="2xl:w-[1084px] w-[1061px]"
+              className="w-full xl:h-[56rem] h-[44rem]"
               src={CanvasOne}
               alt="Computer man"
             />
           </div>
-          <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
+          <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center xl:pl-0 pl-[27px]">
             <div className="lg:block hidden">
               <div className="xl:text-[32px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
@@ -234,7 +239,7 @@ export default function Salesforce() {
                 </span>
               </div>
             </div>
-            <p className="lg:text-[20px] text-[18px] text-black font-light xl:w-[550] w-[100%] leading-8 lg:mt-0 mt-7 ">
+            <p className=" xl:w-[550] w-[100%]  lg:mt-0 mt-7 texts">
               Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua.
@@ -257,36 +262,36 @@ export default function Salesforce() {
               />
             </div>
           </div>
-          <div className="lg:hidden block sm:mb-10 mb-7">
-            <div className="xl:text-[36px] text-center mb-[12px] text-[32px] font-bold text-[#001A5F]">
+          <div className="lg:hidden block  mb-">
+            <div className="text-center mb-[12px] sm:text-[32px]  text-[28px] font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
           </div>
 
-          <div className="lg:w-[60%] relative overflow-x-clip  w-full">
+          <div className="lg:w-[60%] relative  w-full">
             <img
-              className="lg:absolute relative 2xl:left-[30px] xl:max-w-[950px] lg:max-w-[725px] mx-auto overflow-hidden "
+              className="lg:absolute relative 2xl:left-[30px] xl:max-w-[1000px] lg:max-w-[725px] mx-auto overflow-hidden "
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-1.png?v=1611260653"
             />
           </div>
         </div>
 
-        <div className="lg:flex hidden overflow-hidden justify-between mt-[188px] max-w 5/6  mb-[64px]">
+        <div className="lg:flex hidden overflow-hidden justify-between h-[40rem] py-[30px] ">
           <img
-            className="h-[466px]"
+            className="h-[500px]  relative"
             src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
           />
           <img
-            className="simplinoted-card-image"
+            className="relative  h-[430px] "
             src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
           />
         </div>
 
         {/* third */}
 
-        <div className="flex flex-wrap flex-row-reverse justify-center relative  global-max-width-handler   w-[100%] mt-8">
-          <div className="absolute 2xl:top-[331px] top-[215px] hidden xl:block z-[-12] 2xl:right-[134px] right-[65px]">
+        <div className="flex flex-wrap flex-row-reverse justify-center relative  global-max-width-handler   w-[100%] mt-8 lg:my-0 !my-[30px]">
+          <div className="absolute xl:top-[331px] top-[183px] hidden lg:block z-[-12] xl:right-[134px] right-[33px]">
             <img
               className="2xl:w-[1135px] w-[1051px]"
               src={CanvasTow}
@@ -302,7 +307,7 @@ export default function Salesforce() {
                 </span>
               </div>
             </div>
-            <p className="lg:text-[20px] text-[18px] text-black font-light w-[100%] leading-8 lg:mt-0 mt-7 ">
+            <p className=" w-[100%] texts lg:mt-0 mt-7 ">
               Send one or send thousands
             </p>
             <div className="lg:flex-row flex-col gap-[10px] flex lg:items-left items-center  mt-5">
@@ -329,7 +334,7 @@ export default function Salesforce() {
           </div>
           <div className="xl:w-[60%] lg:w-[60%] relative  w-full">
             <img
-              className="lg:absolute relative xl:max-w-[800px] lg:max-w-[725px] mx-auto overflow-hidden "
+              className="lg:absolute relative xl:max-w-[1000px] lg:max-w-[800px] lg:right-[-3rem] xl:right-[-7rem]  mx-auto overflow-hidden "
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
             />
           </div>
@@ -337,7 +342,7 @@ export default function Salesforce() {
 
         <div className="lg:flex hidden overflow-hidden pl-[20px] mt-[18rem] relative justify-between  max-w 5/6">
           <img
-            className="h-[490px] xc:ml-[35px] ml-[-122px]"
+            className="h-[430px] xl:ml-[35px] ml-[-122px] xl:rotate-0 rotate-90"
             src="	https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
           />
           <img
@@ -357,7 +362,7 @@ export default function Salesforce() {
               className="pb-[12px]"
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-1.png?v=1611260064"
             />
-            <h2 className="w-[299px] text-[18px] text-black text-center">
+            <h2 className="w-[299px] texts text-center">
               Our team of handwriting robots will help you engage with vast
               audiences.
             </h2>
@@ -367,7 +372,7 @@ export default function Salesforce() {
               className="pb-[12px]"
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-2.png?v=1611260106"
             />
-            <h2 className="w-[299px] text-black text-[18px] text-center">
+            <h2 className="w-[299px] texts text-center">
               Sending a letter to 1 customer or 10,000 + customers. We’ve got
               you covered!
             </h2>
@@ -377,7 +382,7 @@ export default function Salesforce() {
               className="pb-[12px]"
               src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-3.png?v=1611260085"
             />
-            <h2 className="w-[306px] text-black text-[18px] text-center">
+            <h2 className="w-[306px] texts text-center">
               Every handwritten card and envelope we produce is hand quality
               controlled to ensure the highest quality product possible.
             </h2>
@@ -389,8 +394,8 @@ export default function Salesforce() {
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-right.png?v=17628020455828864692" />
         </div>
 
-        <div className="flex flex-row items-center justify-center lg:w-full md:w-[90%] mx-auto mt-[70px]">
-          <div className="banner-detail text-center">
+        <div className="flex flex-row items-center justify-center mx-auto mt-[70px]">
+          <div className="banner-detail text-center tab:w-[80%] w-[1200px]">
             <img
               className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] "
               src={SalesforceIcon}
