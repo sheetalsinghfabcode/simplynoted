@@ -188,7 +188,6 @@ const AddressForm = ({customerID}) => {
     return Object.keys(newErrors).length === 0;
   };
   
-
   const saveAddress = () => {
     if (validateForm()) {
       uploadDataToAPI();
@@ -211,7 +210,7 @@ const AddressForm = ({customerID}) => {
           }`}
         >
           <div className="xl:flex grid justify-between  xl:gap-[90px] gap-[0px] items-center mb-[16px]">
-            <h2 className=" text-left text-[#001a5f] font-bold md:text-[32px] text-[24px] leading-[43px]">
+            <h2 className=" text-left text-[#001a5f] whitespace-nowrap font-bold md:text-[32px] text-[24px] leading-[43px]">
               New Address
             </h2>
             <div className="flex gap-[10px] lg:mt-0 mt-[12px]">

@@ -302,7 +302,7 @@ function Account({customer, heading, featuredData}) {
           </div>
         </div>
         <div className="flex flex-col bg-[#fff]  mx-auto items-center md:items-start md:flex-row md:gap-[23px] gap-[0px] w-full">
-          <div className="md:flex md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[500px] font-inter gap-[24px] overflow-y-auto">
+          <div className="md:flex md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[721px] font-inter gap-[24px] overflow-y-auto">
             <>
               {tabs &&
                 tabs.length > 0 &&
@@ -346,7 +346,7 @@ function Account({customer, heading, featuredData}) {
                   </div>
                 ))}
             </>
-            <div className="border w-full max-w-[199.53px] border-solid border-[#DBDBDE]"></div>
+            <div className="border hidden md:block w-full max-w-[199.53px] border-solid border-[#DBDBDE]"></div>
             <Form
               method="post"
               action={usePrefixPathWithLocale('/account/logout')}

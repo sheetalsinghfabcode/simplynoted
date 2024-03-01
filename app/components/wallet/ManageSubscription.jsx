@@ -587,7 +587,7 @@ const ManageSubscription = () => {
                   </div>
                   <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]"></div>
                   <WalletAccordion accordion={true} title="Plan">
-                    <div className="sm:p-[8px] p-[3px] mb-[15px]">
+                    <div className="sm:p-[8px] p-[3px]">
                       <div className="flex justify-between items-center gap-[15px] py-[10px]  border-b border-solid border-[#e6edf8]">
                         <span className="md:text-[14px] sm:text-[18px] text-[12px] text-[#001a5f] font-semibold uppercase">
                           My Plan
@@ -642,7 +642,7 @@ const ManageSubscription = () => {
                           {stripeCollection.stripe?.subscriptionStatus !==
                           'canceled' ? (
                             <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                              <span className="lg:text-[14px] text-[12px]  text-[#001a5f] font-karla font-semibold uppercase">
+                              <span className="lg:text-[14px] text-[11px]  text-[#001a5f] font-karla font-semibold uppercase">
                                 PLAN RENEWAL DATE
                               </span>
                               <span className="md:text-[20px] sm:text-[18px] sm:text-[12px] text-[11px] text-[#ef6e6e] font-karla font-bold uppercase">
@@ -669,7 +669,7 @@ const ManageSubscription = () => {
                   <WalletAccordion accordion={false} title="PREPAID PACKAGE">
                     <div className="p-[8px] mb-[15px]">
                       <div className="flex justify-between py-[10px] border-b border-solid border-[#e6edf8]">
-                        <span className=" lg:text-[14px] sm:text-[12px] text-[11px]  lg:pl-[0px] pl-[9px]  lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px] text-[12px] text-left text-[#001a5f] font-karla font-bold uppercase">
+                        <span className=" lg:text-[14px] sm:text-[12px] text-[11px]  lg:pl-[0px]   lg:mr-[0px] mr-[46px] lg:w-[147px]  w-[190px]  text-left text-[#001a5f] font-karla font-bold uppercase">
                           PREPAID PACKAGE
                         </span>
                         {stripeCollection &&
@@ -714,7 +714,7 @@ const ManageSubscription = () => {
                           </div>
                         )}
                       <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
-                        <span className=" lg:text-[14px] sm:text-[12px] text-[11px] lg:pl-[0px] pl-[10px]  text-[#001a5f] font-karla font-bold uppercase">
+                        <span className=" lg:text-[14px] sm:text-[12px] text-[12px]   text-[#001a5f] font-karla font-bold uppercase">
                           Update
                         </span>
                         <DynamicButton
@@ -789,7 +789,7 @@ const ManageSubscription = () => {
                                           setDeleteModal(true);
                                         }}
                                         src="https://simplynoted.com/cdn/shop/files/delete.png"
-                                        className="sm:w-[20px] w-[18%]  sm:h-[20px] h-[19px] cursor-pointer"
+                                        className="sm:w-[20px] w-[18%]  sm:h-[20px] h-[30px] cursor-pointer"
                                       />
                                     </div>
                                   )}
@@ -837,15 +837,15 @@ const ManageSubscription = () => {
                                 <td className="text-[#1b5299] p-[11px]">
                                   {i + 1}
                                 </td>
-                                <td className=" text-[#1b5299] p-[11px] whitespace-nowrap lg:text-[14px] text-[9px] font-karla !font-bold uppercase">
+                                <td className=" text-[#1b5299] p-[11px] whitespace-nowrap lg:text-[14px] text-[10px] font-karla !font-bold uppercase">
                                   {payment.description
                                     ? payment.description
                                     : null}
                                 </td>
-                                <td className="text-[#1b5299] p-[11px] whitespace-nowrap font-karla text-[14px] !font-bold uppercase">
+                                <td className="text-[#1b5299] p-[11px] whitespace-nowrap font-karla lg:text-[14px] text-[10px] !font-bold uppercase">
                                   {formatDate(payment.created * 1000)}
                                 </td>
-                                <td className=" text-[#1b5299] p-[11px] whitespace-nowrap font-karla lg:text-[14px] text-[9px] !font-bold uppercase">
+                                <td className=" text-[#1b5299] p-[11px] whitespace-nowrap font-karla lg:text-[14px] text-[10px] !font-bold uppercase">
                                   $ {payment.amount/100}
                                 </td>
                                 <td className="flex justify-center p-[11px] text-center">
