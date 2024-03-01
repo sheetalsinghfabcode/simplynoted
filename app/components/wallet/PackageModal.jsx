@@ -192,7 +192,7 @@ const PackageModal = ({
               ))}
           </div>
         </div>
-        <div className="modal-footer w-full flex justify-center  items-center gap-[12px] mt-[20px]">
+        <div className="modal-footer w-full flex justify-center  items-center gap-[12px] mt-[11px]">
           <button
             onClick={onConfirm}
             className="bg-red-500 uppercase whitespace-nowrap text-[12px] w-full min-h-[48px] min-w-[175px] max-w-[175px]  text-center hover:bg-red-600 text-white font-semibold py-2 px-4"

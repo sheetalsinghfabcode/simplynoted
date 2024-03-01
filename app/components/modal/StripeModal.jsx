@@ -147,7 +147,7 @@ const StripeModal = ({
                         />
                       </div>
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-[11px]">
                       <label className="font-bold" htmlFor="">
                         Address
                       </label>
@@ -162,7 +162,7 @@ const StripeModal = ({
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-[11px]">
                       <label htmlFor="" className="font-bold">
                         Apartment,suite,etc
                       </label>
@@ -176,7 +176,7 @@ const StripeModal = ({
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
                     </div>
-                    <div className="mt-2">
+                    <div className="mt-[11px]">
                       <label htmlFor="" className="font-bold">
                         City
                       </label>
@@ -188,7 +188,7 @@ const StripeModal = ({
                         placeholder="City"
                         value={formData.address.city}
                         onChange={(e) => handleChange(e)}
-                        className="mt-2 border border-solid border-black p-3 w-[100%]"
+                        className="mt-2 border border-solid h-[46px] border-black p-3 w-[100%]"
                       />
                       {errors['address.city'] && (
                         <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
@@ -196,7 +196,7 @@ const StripeModal = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:flex grid md:gap-[35px] gap-0 mt-[8px]">
+                    <div className="md:flex grid md:gap-[35px] gap-0 mt-[11px]">
                       <div className="w-full">
                         <label
                           className="block text-gray-700 font-bold mb-2"
@@ -210,7 +210,7 @@ const StripeModal = ({
                           itemID="country"
                           name="address.country"
                           id="country"
-                          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          className="appearance-none border border-black h-[46px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         >
                           {location.countries.map((country) => (
                             <option
@@ -222,7 +222,7 @@ const StripeModal = ({
                           ))}
                         </select>
                       </div>
-                      <div className="w-full">
+                      <div className="w-full md:mt-[0px] mt-[11px]">
                         <label
                           className="block text-gray-700  font-bold mb-2"
                           htmlFor="country"
@@ -233,7 +233,7 @@ const StripeModal = ({
                           onChange={(e) => handleChange(e)}
                           value={formData.address.state}
                           name="address.state"
-                          className={`appearance-none border rounded w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                          className={`appearance-none border border-black h-[46px] w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                             errors.state ? 'border-red-500' : ''
                           }`}
                           id="state"
