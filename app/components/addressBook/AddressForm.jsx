@@ -227,17 +227,17 @@ const AddressForm = ({customerID}) => {
             <h2 className=" text-left text-[#001a5f] whitespace-nowrap font-bold md:text-[32px] text-[24px] leading-[43px]">
               New Address
             </h2>
-            <div className="flex gap-[10px] lg:mt-0 mt-[12px]">
+            <div className="xl:flex grid  gap-[10px] lg:mt-0 mt-[12px]">
               <DynamicButton
-                className="bg-[#ef6e6e] md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full lg:min-w-[190px]  "
+                className="bg-[#ef6e6e] md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full xl:min-w-[190px] max-w-[190px]"
                 text="Cancel"
                 onClickFunction={() => {
-                  setAddressForm(false);
+                  setAddressForm(false);  
                   setEditAddress(false);
                 }}
               />
               <DynamicButton
-                className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full xl:min-w-[190px] max-w-[200px]"
+                className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full xl:min-w-[190px] max-w-[190px]"
                 text="Save Address"
                 onClickFunction={saveAddress}
               />

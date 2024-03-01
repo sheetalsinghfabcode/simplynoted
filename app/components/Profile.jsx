@@ -296,7 +296,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[7px] text-[12px] font-semibold"
+                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
                 >
                   Last Name
                 </label>
@@ -333,7 +333,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="phone"
-                  className="block md:text-[16px] whitespace-nowrap text-[12px]  mb-1 font-semibold"
+                  className="block md:text-[16px] md:mt-[0px] mt-[12px] whitespace-nowrap text-[12px]  mb-1 font-semibold"
                 >
                   Phone Number (with area code)
                 </label>
@@ -375,7 +375,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
                 >
                   Address 2
                 </label>
@@ -409,7 +409,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="state"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
                 >
                   State
                 </label>
@@ -443,7 +443,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="zip"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
                 >
                   Zip
                 </label>

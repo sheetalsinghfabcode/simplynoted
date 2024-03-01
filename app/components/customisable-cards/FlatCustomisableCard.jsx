@@ -944,7 +944,7 @@ export default function FlatCustomisableCard({
         status: true,
       });
     }
-    setLoadingText('Saving in progress...');
+    setLoadingText('Product name...');
     setValidationModalData((prevValidationData) => {
       return {
         ...prevValidationData,
@@ -952,7 +952,6 @@ export default function FlatCustomisableCard({
       };
     });
   };
-
   return (
     <section>
       {isLoading && (
@@ -1004,7 +1003,7 @@ export default function FlatCustomisableCard({
                 ) : (
                   <button
                     type="button"
-                    className={`absolute right-[3px] top-[3px] py-2 px-4 w-[81px] h-[35px] shadow-md bg-[#1b5299] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
+                    className={`absolute right-[3px] top-[3px] py-2 px-4 w-[81px] h-[35px] shadow-md bg-[#EF6E6E] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
                     onClick={handleCardTitleValidation}
                     disabled={validationModalData.isNameValidated}
                   >
