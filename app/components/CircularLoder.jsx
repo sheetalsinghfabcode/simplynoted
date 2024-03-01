@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const CircularLoader = ({ color = '#3182CE', title, height = '48px', width = '48px' }) => {
+const CircularLoader = ({ color = '#ef6e6e', title, height = '48px', width = '48px' }) => {
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {

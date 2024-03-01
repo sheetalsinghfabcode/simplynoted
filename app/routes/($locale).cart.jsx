@@ -138,22 +138,14 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate4] = giftCardId;
       cartData[index][keyToUpdate5] = giftProdUrl;
     }
-    localStorage.setItem('mydata', JSON.stringify(cartData));
-    setTimeout(() => {
-      setOperation('Gift Card added Sucessfully');
-    }, 1500);
-    setTimeout(() => {
-      setCircleLoader(true);
-    }, 1600);
-
-    setCardPrice('');
-    setTimeout(() => {
-      setIsOpen(false);
-    }, [100]);
     setTimeout(() => {
       setSuccessfullLoader(false);
-      setCircleLoader(false)
-    }, 4000);
+      setOperation(null);
+      setIsOpen(false)
+    }, 2000);
+
+    localStorage.setItem('mydata', JSON.stringify(cartData));
+    setCardPrice('');
   }
   function deleteKeyInArray(index) {
     setSuccessfullLoader(true);
@@ -167,20 +159,16 @@ export default function AddCartFunc() {
       cartData[index][keyToUpdate3] = null;
       cartData[index][keyToUpdate4] = null;
     }
+
     setTimeout(() => {
-      setOperation('Gift card deleted sucessfully.');
-    }, 1500);
-    setTimeout(() => {
-      setCircleLoader(true);
-    }, 1600);
+      setSuccessfullLoader(false);
+      setOperation(null);
+    }, 2000);
+
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setTimeout(() => {
       setDeleteCardModal(false);
     }, 100);
-    setTimeout(() => {
-      setSuccessfullLoader(false);
-      setCircleLoader(false);
-    }, 4000);
   }
   function confirmCardDel(index) {
     setDeleteCardModal(true);
@@ -225,7 +213,7 @@ export default function AddCartFunc() {
     setDeleteModal(false);
     setTimeout(() => {
       setSuccessfullLoader(false);
-      setCircleLoader(false)
+      setCircleLoader(false);
     }, 4000);
   }
 
@@ -1202,12 +1190,6 @@ export default function AddCartFunc() {
             confirmText="Delete"
             cancelText="Cancel"
           />
-          {sucessfullLoader && (
-            <SuccessfullLoader
-              circle={circleLoader}
-              successfullMessage={operation}
-            />
-          )}
 
           <Modal
             isOpen={modalIsOpen}
@@ -1215,81 +1197,88 @@ export default function AddCartFunc() {
             contentLabel="Example Modal"
             ariaHideApp={false}
           >
-            <div className="flex justify-center">
-              <h2 className="font-bold text-[30px] text-[#333] leading-10  mt-3 text-center">
-                Add a Gift Card
-              </h2>
+            <>
+              <div className="flex justify-center">
+                <h2 className="font-bold text-[30px] text-[#333] leading-10  mt-3 text-center">
+                  Add a Gift Card
+                </h2>
 
-              <div className="absolute top-[35px] right-0  pr-8 sm:block">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="transition text-primary "
-                >
-                  <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
-                </button>
-              </div>
-            </div>
-            <div className="address-data">
-              <div className="flex justify-between md:mt-4 md:flex-row flex-col">
-                <div className="md:w-[45%] w-full mr-2 ml-2 ">
-                  <div className="col-4 mt-4 font-bold text-[16px]">
-                    Select Gift Card:
-                  </div>
-                  <div className="col-8 mt-3 pr-0 ">
-                    <select
-                      className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                      onChange={(e) => cardvalFunc(e.target.value)}
-                    >
-                      <option className="w-full"> Select Gift Card</option>
-                      {data.collection.products.edges.map((item, i) => (
-                        <option value={i} key={i}>
-                          {item.node.title}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                <div className="absolute top-[35px] right-0  pr-8 sm:block">
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="transition text-primary "
+                  >
+                    <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                  </button>
                 </div>
-                <div className="md:w-[45%] w-full mr-2 ml-2 ">
-                  <div className="col-4 mt-4 font-bold text-[16px]">
-                    Select Gift Price:
-                  </div>
-                  <div className="col-8 mt-3 pr-0">
-                    {cardPriceVal && cardPriceVal.length ? (
-                      // <div>heelooo</div>
+              </div>
+
+              <div className="address-data">
+                <div className="flex justify-between md:mt-4 md:flex-row flex-col">
+                  <div className="md:w-[45%] w-full mr-2 ml-2 ">
+                    <div className="col-4 mt-4 font-bold text-[16px]">
+                      Select Gift Card:
+                    </div>
+                    <div className="col-8 mt-3 pr-0 ">
                       <select
-                        name=""
-                        id=""
                         className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                        onChange={(e) => priceValFunc(e.target.value)}
+                        onChange={(e) => cardvalFunc(e.target.value)}
                       >
-                        {cardPriceVal.map((item, index) => (
-                          <option value={item.node.price.amount} key={index}>
+                        <option className="w-full"> Select Gift Card</option>
+                        {data.collection.products.edges.map((item, i) => (
+                          <option value={i} key={i}>
                             {item.node.title}
                           </option>
                         ))}
                       </select>
-                    ) : (
-                      // <AfterCardSel />
-                      <select
-                        name=""
-                        id=""
-                        className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                      >
-                        <option value="">Price Card</option>
-                      </select>
-                    )}
+                    </div>
+                  </div>
+                  <div className="md:w-[45%] w-full mr-2 ml-2 ">
+                    <div className="col-4 mt-4 font-bold text-[16px]">
+                      Select Gift Price:
+                    </div>
+                    <div className="col-8 mt-3 pr-0">
+                      {cardPriceVal && cardPriceVal.length ? (
+                        // <div>heelooo</div>
+                        <select
+                          name=""
+                          id=""
+                          className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
+                          onChange={(e) => priceValFunc(e.target.value)}
+                        >
+                          {cardPriceVal.map((item, index) => (
+                            <option value={item.node.price.amount} key={index}>
+                              {item.node.title}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        // <AfterCardSel />
+                        <select
+                          name=""
+                          id=""
+                          className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
+                        >
+                          <option value="">Price Card</option>
+                        </select>
+                      )}
+                    </div>
                   </div>
                 </div>
+                <div className="buttonDiv flex justify-center items-center md:mt-10 mt-6">
+                  {!sucessfullLoader ? (
+                    <button
+                      className="bg-[#ef6e6e] text-[#fff] py-[15px] px-[25px] rounded-xl text-[14px] font-bold cursor-pointer"
+                      onClick={() => updateValueInArray(cardVal)}
+                    >
+                      ADD GIFT CARD
+                    </button>
+                  ) : (
+                    <CircularLoader title={operation} color="#ef6e6e" />
+                  )}
+                </div>
               </div>
-              <div className="buttonDiv flex justify-center items-center md:mt-10 mt-6">
-                <button
-                  className="bg-[#ef6e6e] text-[#fff] py-[15px] px-[25px] rounded-xl text-[14px] font-bold cursor-pointer"
-                  onClick={() => updateValueInArray(cardVal)}
-                >
-                  ADD GIFT CARD
-                </button>
-              </div>
-            </div>
+            </>
           </Modal>
 
           <Modal
