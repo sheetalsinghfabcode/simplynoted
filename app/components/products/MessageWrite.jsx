@@ -64,6 +64,10 @@ export function MessageWriting({
     setProductShow,
     isbirthdayAutomated,
     setISBirthdayAutomated,
+    setShowSignScreen,
+    customerId,
+    showSignScreen,
+    
   } = useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -106,15 +110,12 @@ export function MessageWriting({
   const [signOffLineHeight, setSignOffLineHeight] = useState(
     editSignOffLineHeight ? editSignOffLineHeight : '',
   );
-  const [searchData, setsearchData] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stateCheckCart, setStateCheckCart] = useState(false);
   const [isAddressUploadSuccess, setIsAddressUploadSuccess] = useState(false);
   const [getMetafields, setgetMetafield] = useState(
     metafields ? metafields : '',
   );
-  const [metafieldsHeader, setMetafieldsHeader] = useState(false);
-  const [metafieldsFooter, setMetafieldsFooter] = useState(false);
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
@@ -185,8 +186,12 @@ export function MessageWriting({
     setDisableSelectAddressBtn(false);
   }
   async function checkUserLogged() {
-    if (!customerid) {
-      setLoginModal(true);
+    // console.log(customerid,customerId,"customerId");
+    // debugger
+    if (!customerId) {
+      // setLoginModal(true);
+      // debugger
+      setShowSignScreen(true)
     } else if (name.length == 0) {
       setInstructionModal(true);
     } else {
@@ -857,7 +862,6 @@ export function MessageWriting({
       console.error(error, 'error at Ai generated message ');
     }
   }
-
   const ref = useRef(null);
   const ref1 = useRef(null);
   const ref2 = useRef(null);
@@ -1529,25 +1533,6 @@ export function MessageWriting({
                 Assistant
               </span>
             </div>
-            {/* <div className="flex justify-between font-bold text-[#1b5299] text-[14px] mt-[10px]">
-            <div className='border-1'>
-              <span
-                className=" cursor-pointer"
-                onClick={() => OpenAddTemplateBox()}
-              >
-                Save New Template
-              </span>
-            </div>
-            <div>
-              <span
-                className=" cursor-pointer"
-                onClick={() => OpenLoadTemp()}
-              >
-                Load Save Template
-              </span>
-            </div>
-          </div> */}
-            {/* )} */}
 
             {checkCharCount && (
               <span className="text-[red] font-bold">
@@ -2111,7 +2096,6 @@ export function MessageWriting({
         button={true}
         image={true}
       />
-
       <Instruction
         isOpen={modalForAddressBook}
         title=""
@@ -2153,7 +2137,6 @@ export function MessageWriting({
         confirmText={'Delete'}
         cancelText={'Cancel'}
       />
-
       <Instruction
         isOpen={isModalOpen}
         title="INSTRUCTIONS FOR BULK UPLOAD"
@@ -2172,28 +2155,12 @@ export function MessageWriting({
           cancelLink={() => setAddNewTem(false)}
         />
       )}
-      {/* <Instruction
-        isOpen={addNewTem}
-        title=""
-        closeModal={() => setAddNewTem(false)}
-        table={false}
-        body={<AddNewTemplate />}
-      /> */}
       {loadTemModal && (
         <ModalComp
           children={<LoadTemplate />}
           cancelLink={() => setLoadTemModal(false)}
         />
       )}
-      {/* <Instruction
-        isOpen={loadTemModal}
-        close={true}
-        title=""
-        closeModal={() => setLoadTemModal(false)}
-        table={false}
-        body={<LoadTemplate />}
-      /> */}
-
       <LoginModal
         title={' Add'}
         show={loginModal}
@@ -2202,7 +2169,6 @@ export function MessageWriting({
         confirmText="Login"
         cancelText="Register"
       />
-
       <ErrorModal
         title="Uploaded Error!"
         isOpen={modalIsOpen2}

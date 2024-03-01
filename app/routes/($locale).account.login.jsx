@@ -59,10 +59,13 @@ export const action = async ({request, context, params}) => {
     const headers = cart.setCartId(result.cart.id);
 
     headers.append('Set-Cookie', await session.commit());
+    console.log(params);
 
-    return redirect(params.locale ? `/${params.locale}/account` : '/account', {
-      headers,
-    });
+    return redirect(params.locale ? `/${params.locale}/account` : '/account', 
+    {
+      // headers,
+    }
+    );
   } catch (error) {
     if (storefront.isApiError(error)) {
       return badRequest({

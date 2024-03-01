@@ -1,4 +1,4 @@
-import react from 'react';
+import react, { useState } from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {
   Navigation,
@@ -26,7 +26,25 @@ import swiper_arrow_left from '../../../assets/Image/swiper-arrow-left.png';
 import swiper_arrow_right from '../../../assets/Image/swiper-arrow-right.png';
 const Card = () => {
   const Navigate = useNavigate();
-
+  const [emailForSubs, setEmailForSubs] = useState(null)
+ async function onClickForSubs(){
+  try {
+    const formData = new FormData();
+      formData.append('email', emailForSubs);
+    const res = await fetch(
+      `https://api.simplynoted.com/api/storefront/users/newsletter-subscription`,
+      {
+        method: 'POST',
+        body: formData,
+      },
+    );
+    if(res.result){
+      
+    }
+  } catch (error) {
+    console.log(error,"error for subscription");
+  }
+ }
   return (
     <>
       <div>
@@ -179,10 +197,12 @@ const Card = () => {
                 type="email"
                 className="input_email"
                 placeholder="Enter your email address"
+                onChange={(e)=>setEmailForSubs(e.target.value)}
               />
               <DynamicButton
                 text="SUBSCRIBE"
                 className="subscribe"
+                onClickFunction={()=>onClickForSubs()}
               />
             </div>
           </div>

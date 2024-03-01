@@ -30,6 +30,7 @@ export function StateContextProvider({children}) {
   const [defaultOption, setDefaultOption] = useState(null);
   const [loaderTitle,setLoaderTitle] = useState("");
 
+  const [showSignScreen,setShowSignScreen] = useState(false)
 
   const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -178,7 +179,9 @@ export function StateContextProvider({children}) {
         defaultOption,
         setDefaultOption,
         loaderTitle,
-        setLoaderTitle
+        setLoaderTitle,
+        showSignScreen,
+        setShowSignScreen
       }}
     >
       {children}

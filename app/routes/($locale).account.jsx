@@ -71,14 +71,17 @@ export async function loader({request, context, params}) {
     // pass through to public routes
     return json({isAuthenticated: false});
   }
+  // let custmo
+  // if(customerAccessToken){
+    const customer = await getCustomer(context, customerAccessToken);
 
-  const customer = await getCustomer(context, customerAccessToken);
-
-  const heading = customer
-    ? customer.result
-      ? `Welcome, ${customer.firstName}.`
-      : `Account`
-    : 'Account Details';
+    const heading = customer
+      ? customer.result
+        ? `Welcome, ${customer.firstName}.`
+        : `Account`
+      : 'Account Details';
+  
+  // }
 
   return defer(
     {
@@ -132,8 +135,8 @@ export default function Authenticated() {
 }
 
 function Account({customer, heading, featuredData}) {
-  const orders = flattenConnection(customer.orders);
-  const addresses = flattenConnection(customer.addresses);
+  const orders = flattenConnection(customer?.orders);
+  const addresses = flattenConnection(customer?.addresses);
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
