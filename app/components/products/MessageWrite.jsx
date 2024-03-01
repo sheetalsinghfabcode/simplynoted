@@ -763,6 +763,8 @@ export function MessageWriting({
         return json.result;
       }
     } catch (error) {
+      
+      setModalForAddressBook(false)
       console.error(error, 'file upload error');
       setLoader(false);
     }

@@ -28,11 +28,11 @@ const WalletPurchase = ({
             text={`${
               subscriptionTitle ? subscriptionTitle : 'Free' 
             } Plan Packages`}
-            className="!bg-[#EF6E6E] font-karla !p-[18px] whitespace-nowrap  mt-[-9px] sm:!h-[45px]  !w-[100%]  uppercase md:text-[16px] text-[12px]"
+            className="!bg-[#EF6E6E] font-karla !p-[18px] whitespace-nowrap  mt-[-9px] sm:!h-[45px]  w-full sm:max-w-[80%] md:max-w-[40%]  uppercase md:text-[16px] text-[12px]"
           />
         </div>
         {subscriptionPrice > 0 &&
-        <div className="flex justify-between items-center mt-[27px]  text-[#001a5f]">
+        <div className="flex justify-between items-center mt-[27px] md:mt-[16px]  text-[#001a5f]">
           <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">Plan Amount</span>
           <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
             ${subscription === 'Always Free' || 0 ? 0 : Number(subscriptionPrice).toFixed(2)}

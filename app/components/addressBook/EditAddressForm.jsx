@@ -6,13 +6,13 @@ import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
 
 const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
-  const {setAddressForm} = useStateContext();
+  const {setAddressForm, setShowLoader, setLoaderTitle} = useStateContext();
 
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -29,7 +29,9 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       if (selectedDate > currentDate) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} cannot be in the future`,
+          [name]: `${
+            name.charAt(0).toUpperCase() + name.slice(1)
+          } cannot be in the future`,
         }));
       } else {
         setErrors((prevErrors) => ({
@@ -64,13 +66,24 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       });
     }
   };
-  
 
   const selectedCountry = location.countries.find(
     (country) => country.country === selectedAddress.country,
   );
 
+  function convertISOToMMDDYYYY(isoDateString) {
+    const date = new Date(isoDateString);
+    const month = date.getUTCMonth() + 1; // Month is zero-based, so we add 1
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
+
+    return `${month}/${day}/${year}`;
+  }
+
   const uploadDataToAPI = () => {
+    setSelectedAddress(null);
+    setShowLoader(true);
+    setLoaderTitle('Updating Address Book');
     setLoader(true);
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
 
@@ -94,13 +107,14 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             ? 'return'
             : 'recipient'
           : 'recipient',
-        birthday: selectedAddress.birthday || '',
-        anniversary: selectedAddress.anniversary || '',
+        birthday: convertISOToMMDDYYYY(selectedAddress.birthday) || '',
+        anniversary: convertISOToMMDDYYYY(selectedAddress.anniversary) || '',
       }),
     })
       .then((response) => {
         if (response.ok) {
-          setSelectedAddress(null);
+          setShowLoader(false);
+          setLoaderTitle(null);
           setLoader(false);
           return response.json(); // Parse the response JSON if it's a successful response
         } else {
@@ -136,11 +150,11 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       newErrors.zip = 'Postal Code is required';
     }
 
-    if(errors.birthday){
-      newErrors.birthday = "Birthday cannot be in the future"
+    if (errors.birthday) {
+      newErrors.birthday = 'Birthday cannot be in the future';
     }
-    if(errors.anniversary){
-      newErrors.anniversary = "Anniversary cannot be in the future"
+    if (errors.anniversary) {
+      newErrors.anniversary = 'Anniversary cannot be in the future';
     }
     setErrors(newErrors);
 
@@ -445,17 +459,15 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               fieldType="birthday"
               label="Birthday"
               value={selectedAddress.birthday}
-              onChange={(value) =>{
-                handleChange({target: {name: 'birthday', value}})
-                
-              }
-              }
+              onChange={(value) => {
+                handleChange({target: {name: 'birthday', value}});
+              }}
             />
             {errors.birthday && (
-                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
-                  {errors.birthday}
-                </p>
-              )}
+              <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                {errors.birthday}
+              </p>
+            )}
           </div>
           <div className="w-full px-3 mb-6">
             <DateInput
@@ -466,11 +478,11 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
                 handleChange({target: {name: 'anniversary', value}})
               }
             />
-             {errors.anniversary && (
-                <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
-                  {errors.anniversary}
-                </p>
-              )}
+            {errors.anniversary && (
+              <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                {errors.anniversary}
+              </p>
+            )}
           </div>
         </div>
         <div className="text-center">

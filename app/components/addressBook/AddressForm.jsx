@@ -8,7 +8,7 @@ import {  useLocation } from '@remix-run/react';
 import { formatText } from '~/lib/utils';
 
 const AddressForm = ({customerID}) => {
-  const {setAddressForm, defaultOption, setEditAddress} = useStateContext();
+  const {setAddressForm, defaultOption, setLoaderTitle,  setEditAddress,setShowLoader} = useStateContext();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -99,7 +99,20 @@ const AddressForm = ({customerID}) => {
     (country) => country.country === formData.country,
   );
 
+  function convertISOToMMDDYYYY(isoDateString) {
+    const date = new Date(isoDateString);
+    const month = date.getUTCMonth() + 1; // Month is zero-based, so we add 1
+    const day = date.getUTCDate();
+    const year = date.getUTCFullYear();
+
+    return `${month}/${day}/${year}`;
+}
+
+
   const uploadDataToAPI = () => {
+    setAddressForm(false);
+    setLoaderTitle('Saving Address Book....');
+    setShowLoader(true)
     setLoader(true);
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
 
@@ -123,13 +136,15 @@ const AddressForm = ({customerID}) => {
             ? 'return'
             : 'recipient'
           : 'recipient',
-        birthday: formData.birthday || '',
-        anniversary: formData.anniversary || '',
+        birthday:  convertISOToMMDDYYYY(formData.birthday) || '',
+        anniversary: convertISOToMMDDYYYY(formData.anniversary) || '',
       }),
     })
       .then((response) => {
         if (response.ok) {
           setLoader(false);
+          setShowLoader(false)
+          setLoaderTitle(null)
           setAddressForm(false);
           return response.json(); // Parse the response JSON if it's a successful response
         } else {
@@ -194,7 +209,6 @@ const AddressForm = ({customerID}) => {
     }
   };
 
-  console.log("errors",errors);
 
   return (
     <>
