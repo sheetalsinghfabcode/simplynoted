@@ -52,15 +52,11 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
-  console.log('subscriptionTitle', subscriptionTitle);
 
   return (
     <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
       <div className="flex flex-col md:flex-row overflow-auto">
-        {WalletData.collection.products.edges
-          .slice(0, 1) // Get elements before the second index
-          .concat(WalletData.collection.products.edges.slice(2))
-          .map((product, index) => (
+        {WalletData.collection.products.edges.map((product, index) => (
             <div
               key={index}
               className={`flex-1 p-[20px] ${
