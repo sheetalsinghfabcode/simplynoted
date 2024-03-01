@@ -300,7 +300,7 @@ function MenuMobileNav({menu, onClose}) {
                               </>
                             )} */}
                             <Link to="/collections/birthday">
-                              <li className='mb-[6px]'>Birthday Automation</li>
+                              <li className='mb-[6px] mt-[7px] '>Birthday Automation</li>
                             </Link>
                             <Link to="/gift-cards">
                               <li className='mb-[6px]'>Gift Cards </li>
@@ -428,7 +428,7 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              <li className='mt-[7px] mb-[6px]'>Get a Custom Quote</li>
+                              <li className='mb-[6px] mt-[7px]'>Get a Custom Quote</li>
                             </button>
                           </Link>
                           <Link to="/simply-noted-plans">
@@ -503,7 +503,7 @@ function MenuMobileNav({menu, onClose}) {
                         </Link> */}
 
                           <Link to="/pages/about-us">
-                            <li className='mt-[7px] mb-[6px]'>About Us</li>
+                            <li className=' mt-[7px] mb-[6px]'>About Us</li>
                           </Link>
                           <Link to="/Video">
                             <li className='mb-[6px]'>Tutorials</li>
@@ -517,7 +517,7 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              <li className='mb-[6px]'>Video</li>
+                              <li className=' mt-[7px] mb-[6px]'>Video</li>
                             </button>
                           </Link>
                           <Link to="/news">
@@ -548,7 +548,7 @@ function MenuMobileNav({menu, onClose}) {
                         }
                         onClose()
                       }} >
-                  <div className="" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
+                  <div className="text-[16px]" style={{fontWeight: 'bold'}}>{customerId?"Account":"Login"}</div>
                 </button>
       </nav>
     </div>
