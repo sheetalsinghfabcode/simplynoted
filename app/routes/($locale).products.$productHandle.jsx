@@ -348,8 +348,12 @@ export default function Product() {
             ))}
           </Modal>
           <Instruction
+            close={true}
           isOpen={showSignScreen}
           body={<LoginFunc/>}
+          closeModal={() => {
+            setShowSignScreen(false);
+          }}
           />
         </>
       ) : (

@@ -1,10 +1,6 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
-import Modal from 'react-modal';
-import {BsXCircle} from 'react-icons/bs';
 import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
-import Loader from '../modal/Loader';
-import {Image} from '@shopify/hydrogen';
 import LoginModal from '../modal/LoginModal';
 import DynamicButton from '../DynamicButton';
 import ContactTable from '../addressBook/ContactTable';
@@ -17,12 +13,8 @@ import ConfirmationModal from '../modal/ConfirmationModal';
 import TickImg from '../../../assets/Image/check-mark.png';
 import Del from '../../../assets/Image/delete.png';
 import calender_icon from '../../../assets/Image/calendar.png';
-import {Text} from '../Text';
-import {FaYoutube} from 'react-icons/fa';
 import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
-import {RxCross2} from 'react-icons/rx';
-import {ImCross} from 'react-icons/im';
 import {Modal as ModalComp} from '../Modal';
 import SuccessfullLoader from '../SucessfullLoader';
 
