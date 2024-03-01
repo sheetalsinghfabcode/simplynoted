@@ -127,7 +127,7 @@ export default function AddCartFunc() {
   let keyToUpdate5 = 'giftCardProdUrl';
   function updateValueInArray(index) {
     setSuccessfullLoader(true);
-    setOperation('Adding Gift Card');
+    setOperation('Adding Gift Card...');
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -141,7 +141,7 @@ export default function AddCartFunc() {
     setTimeout(() => {
       setSuccessfullLoader(false);
       setOperation(null);
-      setIsOpen(false)
+      setIsOpen(false);
     }, 2000);
 
     localStorage.setItem('mydata', JSON.stringify(cartData));
@@ -149,7 +149,7 @@ export default function AddCartFunc() {
   }
   function deleteKeyInArray(index) {
     setSuccessfullLoader(true);
-    setOperation('Deleting Gift Card');
+    setOperation('Deleting Gift Card...');
     setUpdateGift(!updateGift);
     // Check if the index is valid
     if (index >= 0 && index < cartData.length) {
@@ -202,9 +202,7 @@ export default function AddCartFunc() {
     cartData.splice(index, 1);
     // delete cartData[index];
     // }
-    setTimeout(() => {
-      setOperation('Order deleted successfully.');
-    }, 1500);
+
     setTimeout(() => {
       setCircleLoader(true);
     }, 1600);
@@ -214,7 +212,7 @@ export default function AddCartFunc() {
     setTimeout(() => {
       setSuccessfullLoader(false);
       setCircleLoader(false);
-    }, 4000);
+    }, 2000);
   }
 
   function editOrderData(index) {
@@ -239,7 +237,7 @@ export default function AddCartFunc() {
       width: '90%',
       padding: '30px',
       height: 'fit-content',
-      maxHeight: '65%',
+      maxHeight: '68%',
       zIndex: '10000',
       background: '#FFFFFF',
       border: 'none',
@@ -446,6 +444,15 @@ export default function AddCartFunc() {
     <div className="global-max-width-handler">
       {showCartPage ? (
         <>
+          {sucessfullLoader && (
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+              <CircularLoader
+                textColor="text-white"
+                title={operation}
+                color="#ef6e6e"
+              />
+            </div>
+          )}
           <div className="w-full h-full gap-2 md:mt-14">
             {cartData && cartData.length > 0 ? (
               <>
@@ -461,6 +468,16 @@ export default function AddCartFunc() {
                         key={index}
                         className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] shadow-inset-custom"
                       >
+                        {sucessfullLoader && (
+                          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+                            <CircularLoader
+                              textColor="text-white"
+                              title={operation}
+                              color="#ef6e6e"
+                            />
+                          </div>
+                        )}
+
                         <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                           <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                             <div className="flex w-full justify-start sm:flex-row flex-col">
@@ -1190,7 +1207,6 @@ export default function AddCartFunc() {
             confirmText="Delete"
             cancelText="Cancel"
           />
-
           <Modal
             isOpen={modalIsOpen}
             style={customStyles}
@@ -1214,7 +1230,7 @@ export default function AddCartFunc() {
               </div>
 
               <div className="address-data">
-                <div className="flex justify-between md:mt-4 md:flex-row flex-col">
+                <div className="flex justify-between md:my-4 md:flex-row flex-col">
                   <div className="md:w-[45%] w-full mr-2 ml-2 ">
                     <div className="col-4 mt-4 font-bold text-[16px]">
                       Select Gift Card:
@@ -1265,7 +1281,7 @@ export default function AddCartFunc() {
                     </div>
                   </div>
                 </div>
-                <div className="buttonDiv flex justify-center items-center md:mt-10 mt-6">
+                <div className="buttonDiv flex justify-center items-center ">
                   {!sucessfullLoader ? (
                     <button
                       className="bg-[#ef6e6e] text-[#fff] py-[15px] px-[25px] rounded-xl text-[14px] font-bold cursor-pointer"
@@ -1280,7 +1296,6 @@ export default function AddCartFunc() {
               </div>
             </>
           </Modal>
-
           <Modal
             isOpen={modalIsOpen2}
             style={customStyles}

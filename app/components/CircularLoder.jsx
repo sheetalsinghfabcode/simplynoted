@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const CircularLoader = ({ color = '#ef6e6e', title, height = '48px', width = '48px' }) => {
+const CircularLoader = ({ color = '#ef6e6e', title, height = '48px', width = '48px', textColor="text-[#001a5f]" }) => {
   const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const CircularLoader = ({ color = '#ef6e6e', title, height = '48px', width = '48
         ></div>
       </div>
       {title && (
-        <h4 className="text-lg text-[#001a5f] font-bold font-karla">{title}</h4>
+        <h4 className={`text-lg ${textColor}  font-bold font-karla`}>{title}</h4>
       )}
     </div>
   );
