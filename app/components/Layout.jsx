@@ -379,7 +379,7 @@ function MenuMobileNav({menu, onClose}) {
                           <li>Credit Packages</li>
                         </Link> */}
                           <Link to="/zapier-integration">
-                            <li className='mb-[6px]'>Zapier</li>
+                            <li className=' mt-[7px] mb-[6px]'>Zapier</li>
                           </Link>
                           <Link to="/shopify-integration">
                             <li className='mb-[6px]'>Shopify</li>
@@ -428,7 +428,7 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              <li className='mb-[6px]'>Get a Custom Quote</li>
+                              <li className='mt-[7px] mb-[6px]'>Get a Custom Quote</li>
                             </button>
                           </Link>
                           <Link to="/simply-noted-plans">
@@ -461,7 +461,7 @@ function MenuMobileNav({menu, onClose}) {
                           style={{color: 'black'}}
                         >
                           <Link to="/blog">
-                            <li className='mb-[6px]' onClick={onClose}>Blog.</li>
+                            <li className='mb-[6px] mt-[7px]' onClick={onClose}>Blog.</li>
                           </Link>
                           <Link to="/tutorials">
                             <li className='mb-[6px]' onClick={onClose}>Tutorials</li>
@@ -503,7 +503,7 @@ function MenuMobileNav({menu, onClose}) {
                         </Link> */}
 
                           <Link to="/pages/about-us">
-                            <li className='mb-[6px]'>About Us</li>
+                            <li className='mt-[7px] mb-[6px]'>About Us</li>
                           </Link>
                           <Link to="/Video">
                             <li className='mb-[6px]'>Tutorials</li>

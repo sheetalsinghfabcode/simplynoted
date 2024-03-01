@@ -73,7 +73,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
   return (
     <>
       <div className="container mx-auto sm:px-4 px-[0px] ">
-        <div className="bg-white font-karla  rounded-lg md:p-6 p-[0px] md:mt-[0px] mt-[23px]">
+        <div className="bg-white font-karla rounded-[12px] border border-solid border-[#DDDDDD] rounded-lg md:p-6 p-[0px] md:mt-[0px] mt-[23px]">
           {/* Name */}
           <div className="flex mb-4">
             <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
@@ -97,7 +97,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
           </div>
 
           {/* Email */}
-          <div className="flex mb-4">
+          <div className="flex mb-4 items-center">
             <div className="w-1/4 md:text-sm text-[12px] text-sm text-black font-normal ">
               Email address:
             </div>

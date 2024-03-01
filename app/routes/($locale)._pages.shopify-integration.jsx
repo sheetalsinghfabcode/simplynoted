@@ -287,8 +287,8 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-      <div className=" hidden xl:block w-full relative h-[384px]">
-        <div className="absolute 2xl:right-[40px]  right-[-185px] top-[-25px] 2xl:top-[-30px]">
+      <div className=" hidden xl:block w-full relative h-[577px]">
+        <div className="absolute right-[166px] top-[77px]">
           <img
             className="max-w-[540px]"
             src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
