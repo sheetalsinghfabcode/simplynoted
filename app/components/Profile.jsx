@@ -20,7 +20,8 @@ const Profile = ({
   const [error, setError] = useState('');
   const [successfullLoader, setSuccessFullLoader] = useState(false);
 
-  const {setFullName, setAccountTabName,setActiveTab, setUserEmail} = useStateContext();
+  const {setFullName, setAccountTabName, setActiveTab, setUserEmail} =
+    useStateContext();
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
@@ -120,7 +121,6 @@ const Profile = ({
             }`,
           );
 
-
           setTimeout(() => {
             setUserEmail(accountDetails.email);
             setFullName(
@@ -136,8 +136,8 @@ const Profile = ({
           }, [1000]);
 
           setTimeout(() => {
-            setAccountTabName("Profile")
-            setActiveTab(7)
+            setAccountTabName('Profile');
+            setActiveTab(7);
             setSuccessFullLoader(false);
           }, 3000);
         }
@@ -198,14 +198,13 @@ const Profile = ({
 
       if (response.ok) {
         setLoader(false);
-       
 
         setTimeout(() => {
           setSuccessFullLoader(false);
-          setAccountTabName("Profile")
-          setActiveTab(7)
+          setAccountTabName('Profile');
+          setActiveTab(7);
         }, 3000);
-    
+
         // Request was successful
       } else {
         setLoader(false);
@@ -230,19 +229,26 @@ const Profile = ({
         <div className="z-50  absolute top-[50%] left-[30%]">
           <CircularLoader
             title={
-              activeTabs === 'account' ? 'Updating Profile' : 'Updating Password'
+              activeTabs === 'account'
+                ? 'Updating Profile'
+                : 'Updating Password'
             }
             color="#ef6e6e"
           />
         </div>
       )}
-      {
-        successfullLoader && 
-        <SuccessfullLoader successfullMessage= {activeTabs ==="account" ? "Updated Profile Successfully" : "Updated Password Successfully"} />
-      }
+      {successfullLoader && (
+        <SuccessfullLoader
+          successfullMessage={
+            activeTabs === 'account'
+              ? 'Updated Profile Successfully'
+              : 'Updated Password Successfully'
+          }
+        />
+      )}
       <div
         className={`rounded-lg md:p-6 w-full  mx-auto   ${
-         ( loader || successfullLoader) && 'opacity-50'
+          (loader || successfullLoader) && 'opacity-50'
         } `}
       >
         <div className="flex w-full md:mt-[0px] mt-[23px] mb-4">
@@ -333,8 +339,9 @@ const Profile = ({
                 </label>
 
                 <input
-                  type="text"
+                  type="tel"
                   id="phone"
+                  maxLength="13"
                   name="phone"
                   value={accountDetails.phone || ''}
                   onChange={handleAccountInputChange}

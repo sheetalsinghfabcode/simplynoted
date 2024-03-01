@@ -19,6 +19,7 @@ export default function AddressBook() {
     setAddressForm,
     editAddress,
     setEditAddress,
+    showLoader,
     selectedAddress,
     setSelectedAddress,
   } = useStateContext();
@@ -59,7 +60,7 @@ export default function AddressBook() {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [addressForm, selectedAddress, editAddress, loadAddress]);
+  }, [addressForm, selectedAddress, editAddress, loadAddress,showLoader]);
 
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);

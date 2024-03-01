@@ -466,9 +466,6 @@ const ManageSubscription = () => {
 
   // Display the formatted date
 
-  console.log("stripeCollection",stripeCollection);
-
-
   return (
     <>
       <PackageModal

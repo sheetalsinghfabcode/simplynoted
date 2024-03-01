@@ -45,18 +45,20 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
     }
   };
   return (
-    <form 
+    <form
       onSubmit={handleSubmit}
       className="w-full max-w-[500px] mx-auto h-[130px] p-[1px] mt-[20px] "
     >
-      <CardElement options={CARD_OPTIONS} className="m-5 " />
-      <div className='flex justify-center mt-[29px]'>
-      <button
-        type="submit"
-        className="!bg-[#EF6E6E] text-white md:!text-[16px] font-bold !text-[13px] font-bold  w-full !rounded-0 md:max-w-[300px] max-w-[220px] p-[10px]"
-      >
-        Add Card
-      </button>
+      <div className="border border-solid border-black">
+        <CardElement options={CARD_OPTIONS} className="m-5 " />
+      </div>
+      <div className="flex justify-center mt-[29px]">
+        <button
+          type="submit"
+          className="!bg-[#EF6E6E] text-white md:!text-[16px] font-bold !text-[13px] font-bold  w-full !rounded-0 md:max-w-[300px] max-w-[220px] p-[10px]"
+        >
+          Add Card
+        </button>
       </div>
     </form>
   );

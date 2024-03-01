@@ -27,10 +27,16 @@ const ContactTable = ({
   continueBtn,
   setFilteredAddresses,
 }) => {
-  const {loadAddress, setLoadAddress, addresses, loaderTitle, setLoaderTitle} =
-    useStateContext();
+  const {
+    loadAddress,
+    setLoadAddress,
+    addresses,
+    loaderTitle,
+    setLoaderTitle,
+    showLoader,
+    setShowLoader,
+  } = useStateContext();
   const [selectedType, setSelectedType] = useState('all');
-  const [loader, setLoader] = useState(false);
 
   const [deleteModal, setDeleteModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -71,8 +77,8 @@ const ContactTable = ({
 
   const handleDeleteSelected = () => {
     setDeleteModal(false);
-
-    setLoader(true);
+    setLoaderTitle('Deleting Address...');
+    setShowLoader(true);
     const url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
 
     fetch(url, {
@@ -90,7 +96,9 @@ const ContactTable = ({
       })
       .then((data) => {
         setTimeout(() => {
-          setLoader(false);
+          setLoaderTitle(null);
+
+          setShowLoader(false);
         }, [1000]);
         // Handle the response data if needed
         setSelectedCheckboxes([]);
@@ -119,12 +127,11 @@ const ContactTable = ({
 
   useEffect(() => {
     setupdateLoader(true);
-    if (filteredAddresses && filteredAddresses.length > 0) {
-      setTimeout(() => {
-        setupdateLoader(false);
-      }, [2000]);
-    }
-  }, []);
+    setTimeout(() => {
+      setupdateLoader(false);
+    }, 1500);
+  }, [addresses]);
+
 
   data = useMemo(
     () => filterAddressesByType(),
@@ -332,7 +339,7 @@ const ContactTable = ({
 
   const uploadDataToAPI = async (data) => {
     setLoaderTitle('Uploading Address Book....');
-    setLoader(true);
+    setShowLoader(true);
     const modifiedData = {};
 
     for (let key in data) {
@@ -373,7 +380,7 @@ const ContactTable = ({
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
         setTimeout(() => {
-          setLoader(false);
+          setShowLoader(false);
         }, 2000);
         setLoaderTitle('Uploaded Address Successfully...');
         file.current.value = '';
@@ -382,7 +389,7 @@ const ContactTable = ({
       } else {
         setSelectedFile(null);
         setTimeout(() => {
-          setLoader(false);
+          setShowLoader(false);
         }, 1000);
         setLoaderTitle('Error while Uploading Address Book...');
         file.current.value = '';
@@ -390,7 +397,7 @@ const ContactTable = ({
       }
     } catch (error) {
       setTimeout(() => {
-        setLoader(false);
+        setShowLoader(false);
       }, 1000);
       setLoaderTitle('Error while Uploading Address Book');
 
@@ -430,7 +437,7 @@ const ContactTable = ({
   }
 
   const handleUploadClick = async () => {
-    setLoader(true);
+    setShowLoader(true);
     setUploadBulkAddress(false);
 
     if (fileData.length === 0) {
@@ -566,8 +573,6 @@ const ContactTable = ({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [uploadBulkAddressRef, clickUploadBulkAddress]);
-
-  console.log('loader', loader);
 
   return (
     <>
@@ -829,7 +834,7 @@ const ContactTable = ({
                       </tr>
                     ))}
                   </thead>
-                  {!updateLoader && !loader && (
+                  {!updateLoader && !showLoader && (
                     <tbody>
                       {page.map((row, index) => {
                         prepareRow(row);
@@ -858,7 +863,7 @@ const ContactTable = ({
                 </table>
               </div>
 
-              {updateLoader && (
+              {updateLoader && !showLoader && (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader
                     title="Loading Address Book"
@@ -866,13 +871,13 @@ const ContactTable = ({
                   />
                 </div>
               )}
-              {loader && (
+              {showLoader && (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader title={loaderTitle} color="#ef6e6e" />
                 </div>
               )}
 
-              {page && page.length > 0 && !updateLoader && !loader && (
+              {page && page.length > 0 && !updateLoader && !showLoader && (
                 <div className="pagination">
                   <div>
                     <button
