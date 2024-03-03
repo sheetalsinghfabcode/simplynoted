@@ -291,7 +291,7 @@ export default function Salesforce() {
         {/* third */}
 
         <div className="flex flex-wrap flex-row-reverse justify-center relative  global-max-width-handler   w-[100%] mt-8 lg:my-0 !my-[30px]">
-          <div className="absolute xl:top-[331px] top-[183px] hidden lg:block z-[-12] xl:right-[134px] right-[33px]">
+          <div className="absolute xl:top-[270px] top-[175px] hidden lg:block z-[-12] xl:right-[134px] right-[17px]">
             <img
               className="2xl:w-[1135px] w-[1051px]"
               src={CanvasTow}

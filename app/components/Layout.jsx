@@ -1079,7 +1079,7 @@ function FooterMenu({menu}) {
 
   return (
     <>
-      <div className="grid md:flex justify-center xl:gap-[120px] lg:gap-[75px] gap-[40px] md:text-[16px]  text-[18px] md:text-left text-center md:pt-[70px] pt-[20px] pb-[30px] mx-auto w-[98%] ">
+      <div className="grid md:flex justify-center xl:gap-[120px] lg:gap-[75px] gap-[40px] md:text-[16px]  text-[18px] md:text-left text-center md:pt-[70px] pt-[20px] pb-[30px] mx-auto w-[98%] font-normal">
         <div className="md:mx-0 mx-auto">
           <div className="lg:w-[200px] sm:w-[165px] w-[50%] sm:mx-0 mx-auto pt-10 md:pt-0">
             <img src={footerlogo} alt=""></img>
@@ -1166,14 +1166,14 @@ function FooterMenu({menu}) {
         </div>
         <div className=" text-white ">
           <div className='grid gap-[8px]'>
-            <div className="lg:text-xl text-[16px] font-bold ">Address</div>
+            <div className="lg:text-xl md:text-[18px] text-[22px]  font-bold ">Address</div>
             <div className="w-[99%] ">
               5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>
           </div>
 
           <div className="md:mt-24 mt-[40px] text-white grid gap-[8px]">
-            <div className="lg:text-xl text-[16px] font-bold ">Email</div>
+            <div className="lg:text-xl md:text-[18px] text-[22px] font-bold ">Email</div>
             <div className="">
               <a href="mailto:support@simplynoted.com">
                 support@simplynoted.com
@@ -1183,7 +1183,7 @@ function FooterMenu({menu}) {
         </div>
 
         <div className=" text-white">
-          <div className="lg:text-xl text-[16px] font-bold mb-[8px]">Hours</div>
+          <div className="lg:text-xl md:text-[18px] text-[22px] font-bold mb-[8px]">Hours</div>
           <div>Monday-Friday</div>
           <div>9:00am - 5:00pm MST</div>
         </div>

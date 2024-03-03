@@ -11,7 +11,7 @@ export default function Home() {
   const Navigate = useNavigate();
   return (
     <div className="sm-only:mt-[35px]">
-      <div className="flex 2xl:items-start items-center flex-col tab:flex-row justify-center tab:justify-between  gap-[25px] overflow-hidden">
+      <div className="flex 2xl:items-start 2xl-only:pt-[20px] items-center flex-col tab:flex-row justify-center tab:justify-between  gap-[25px] overflow-hidden">
         {/* LEFT IMAGE  */}
         <div>
           <img
@@ -21,7 +21,7 @@ export default function Home() {
           />
         </div>
         {/* MIDDLE SECTION  */}
-        <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5 2xl:mt-[50px]">
+        <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5  tab:mt-[40px]">
           <span className="text-center sm:leading-[45px] leading-7 font-bold text-[#001a5f]">
             Send Real Handwritten Notes to your
           </span>
@@ -44,7 +44,7 @@ export default function Home() {
             />
           </div>
           <div className="flex tab:flex-col flex-col-reverse mt-[20px]">
-            <div className="flex flex-col justify-center tab:flex-row text-[15px] font-normal leading-[25px] -tracking-[0.65px] text-center mb-[10px]">
+            <div className="flex flex-col justify-center tab:flex-row 2xl:text-[20px] text-[16px] font-normal leading-[25px] -tracking-[0.65px] text-center mb-[10px]">
               <span className="whitespace-nowrap">
                 Send real handwritten notes, at scale.
               </span>

@@ -113,9 +113,8 @@ export default function bussniess() {
   return (
     <>
       <Section className="!p-0">
-        <div className="mt-4">
-          <div className="w-[100%]  ">
-            <div className="relative w-full lg:flex grid flex-wrap ">
+          <div className="w-[100%] pb-10 ">
+            <div className="relative w-full lg:flex grid flex-wrap global-section-divider">
               <img
                 className="absolute lg:block hidden ml-[16.2rem] w-[500px] mt-[7.06rem] z-[-1]"
                 src={business_curve}
@@ -124,19 +123,19 @@ export default function bussniess() {
               <div className="lg:w-[40%] lg:ml-[4rem] lg:mr-0 md:w-[40%] sm:w-[55%] w-[90%] ml-auto mr-auto text-left mt-5">
                 <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold justify-center">
                   <div className="text-[42px]">
-                    You
+                    You 
                     <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
                       type
                     </span>
                   </div>
                   <div className="lg:mt-[-30px] text-[42px] ml-[7px]">
-                    We
-                    <span className="font-beauty lg:text-8xl md:text-[60px] text-[50px]  ml-2 font-extrabold">
+                    We 
+                    <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
                       write
                     </span>
                   </div>
                 </div>
-                <p className="max-w-[350px] texts  mt-[16px] lg:text-start text-center">
+                <p className="max-w-[350px] texts lg:mt-[20px] mt-[30px] lg:text-start text-center">
                   Simply Noted puts a personal touch back into your business.
                 </p>
 
@@ -343,24 +342,24 @@ export default function bussniess() {
             </div>
 
             <div className="w-full relative px-[10px] ">
-              <div className="absolute top-[605px] hidden xl:block z-[-12] right-[174px]">
+              <div className="absolute top-[570px] xl:top-[661px] hidden lg:block z-[-12] right-[55px] xl:right-[168px]">
                 <img
-                  className="w-[718px]"
+                  className="w-full h-[30rem]"
                   src={CanvasBuss}
                   alt="Computer man"
                 />
               </div>
-              <div className="lg:flex flex-wrap flex-row-reverse xl:mt-[65px] mt-14 grid ">
+              <div className="lg:flex flex-wrap flex-row-reverse lg:mt-[65px]  grid global-section-divider">
                 <div className="md:w-[70%] w-[100%] text-right lg:mx-0 mx-auto">
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]  ">
                       <div className="text-center">
                         <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3  mb-6">
-                          Integrate
-                          <span className="font-beauty text-7xl mr-2 font-extrabold sm:leading-2 leading-7">
+                          Integrate&nbsp;
+                          <span className="font-beauty text-7xl font-extrabold sm:leading-2 leading-7">
                             and
                           </span>
-                          Automate
+                         &nbsp; Automate
                         </div>
                         <img
                           className="lg:inline hidden absolute w-[9%]  ml-[12rem] mt-[-2.5rem] curve-line"
@@ -542,20 +541,20 @@ export default function bussniess() {
                   </div>
                   <div className="lg:flex hidden item-center flex-col">
                     <img
-                      className="w-[10%] 2xl:ml-[56px] ml-[65px]"
+                      className="w-[10%] 2xl:ml-[56px] ml-[60px]"
                       src={business_arrow}
                       alt="business_arrow"
                     />
                     <img
-                      className="2xl:h-[400px] h-[420px] 2xl:ml-[80px] xl:ml-[6.5%] lg:ml-[7%] absolute 2xl:mt-[110px] mt-[91px] z-[-1]"
+                      className="2xl:h-[400px] h-[420px] ml-[75px] absolute 2xl:mt-[110px] mt-[91px] z-[-1]"
                       src={business_line}
                       alt="business_line"
                     />
                   </div>
 
-                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
+                  <div className="lg:ml-[40px] md:ml-[60px] ml-0 lg:flex-col flex flex-row lg:gap-0 small:gap-[5px]">
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
                       style={
                         integrated === 'salesforce'
                           ? {filter: 'grayscale(0)'}
@@ -566,7 +565,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('salesforce')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] sm:w-[65px] w-[60px]  bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px]  bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
                       style={
                         integrated === 'zapier'
                           ? {filter: 'grayscale(0)'}
@@ -577,7 +576,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('zapier')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
                       style={
                         integrated === 'shopify'
                           ? {filter: 'grayscale(0)'}
@@ -588,7 +587,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('shopify')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] sm:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer "
                       style={
                         integrated === 'hubspot'
                           ? {filter: 'grayscale(0)'}
@@ -599,7 +598,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('hubspot')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] sm:w-[65px] w-[60px] bg-[#f0f8ff] lg:p-[10px] p-[13px] mt-7 rounded-full cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] small:w-[65px] w-[60px] bg-[#f0f8ff] lg:p-[10px] p-[13px] mt-7 rounded-full cursor-pointer "
                       style={
                         integrated === 'api'
                           ? {filter: 'grayscale(0)'}
@@ -705,15 +704,15 @@ export default function bussniess() {
                 </div>
               </div>
               {/* Customizable */}
-              <div className="lg:flex flex-wrap flex-row-reverse xl:mt-[260px] sm:mt-28 mt-20 grid ">
-                <div className="sm:w-[70%] w-full text-right lg:mx-0 mx-auto">
+              <div className="lg:flex flex-wrap flex-row-reverse xl:mt-[260px] lg:mt-[135px] mt-7 grid global-section-divider">
+                <div className="md:w-[70%] w-full text-right lg:mx-0 mx-auto">
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px] ">
                       <div className="text-center">
                         <div className="sm:text-5xl text-3xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3 mb-6">
-                          Fully
-                          <span className="font-beauty sm:text-7xl text-5xl mr-2 font-extrabold sm:leading-2 leading-7">
-                            Customizable
+                          Fully 
+                          <span className="font-beauty sm:text-7xl ml-2 text-5xl font-extrabold sm:leading-2 leading-7">
+                            Customizable 
                           </span>
                         </div>
                         <img
@@ -869,7 +868,7 @@ export default function bussniess() {
                   </div>
                 </div>
 
-                <div className="lg:w-[30%] w-[84%]  lg:ml-0 ml-auto mr-auto lg:mr-0 text-center">
+                <div className="lg:w-[30%] md:w-[77%] w-full  lg:ml-0 ml-auto mr-auto lg:mr-0 text-center">
                   <div className="lg:block hidden wrap-integrate relative z-[1] font-beauty">
                     Click these to learn more
                   </div>
@@ -886,9 +885,9 @@ export default function bussniess() {
                     />
                   </div>
 
-                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row">
+                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row lg:gap-0 small:gap-[5px]">
                     <div
-                      className="click-link xl:w-[22%] lg:w-[26%] lg:mt-0 mt-7 w-[70px] h-[70px] font-semibold bg-[#f0f8ff] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] p-[15px] rounded-full  cursor-pointer lg:text-[14px] text-[12px]"
+                      className="click-link xl:w-[22%] lg:w-[26%] lg:mt-0 mt-7 w-[70px] h-[70px] font-semibold bg-[#f0f8ff] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] p-[15px] rounded-full  cursor-pointer lg:text-[14px] text-[12px] "
                       style={
                         customizable === 'create_card' ? {color: '#7F00FF'} : {}
                       }
@@ -1016,7 +1015,6 @@ export default function bussniess() {
               </div>
             </div>
           </div>
-        </div>
       </Section>
     </>
   );
