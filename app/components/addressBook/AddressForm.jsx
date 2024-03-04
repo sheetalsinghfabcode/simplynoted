@@ -4,11 +4,16 @@ import DateInput from '../addressBook/DateInput';
 import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
-import {  useLocation } from '@remix-run/react';
-import { formatText } from '~/lib/utils';
+import {useLocation} from '@remix-run/react';
+import {formatText} from '~/lib/utils';
 
 const AddressForm = ({customerID}) => {
-  const {setAddressForm, defaultOption, setLoaderTitle,  setEditAddress,setShowLoader} = useStateContext();
+  const {
+    setAddressForm,
+    setLoaderTitle,
+    setEditAddress,
+    setShowLoader,
+  } = useStateContext();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -20,19 +25,18 @@ const AddressForm = ({customerID}) => {
     state: '',
     postalCode: '',
     country: 'USA',
-    type: defaultOption ? defaultOption : "",
+    type:  '',
     birthday: '',
     anniversary: '',
   });
 
-
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
 
-  const pathname = useLocation()
+  const pathname = useLocation();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -43,14 +47,15 @@ const AddressForm = ({customerID}) => {
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '',
       }));
-    }
-     else if (name === 'birthday' || name === 'anniversary') {
+    } else if (name === 'birthday' || name === 'anniversary') {
       const currentDate = new Date();
       const selectedDate = new Date(value); // Convert value to Date object
       if (selectedDate > currentDate) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [name]: `${name.charAt(0).toUpperCase() + name.slice(1)} cannot be in the future`,
+          [name]: `${
+            name.charAt(0).toUpperCase() + name.slice(1)
+          } cannot be in the future`,
         }));
         setFormData({
           ...formData,
@@ -93,7 +98,6 @@ const AddressForm = ({customerID}) => {
       }));
     }
   };
-  
 
   const selectedCountry = location.countries.find(
     (country) => country.country === formData.country,
@@ -106,13 +110,12 @@ const AddressForm = ({customerID}) => {
     const year = date.getUTCFullYear();
 
     return `${month}/${day}/${year}`;
-}
-
+  }
 
   const uploadDataToAPI = () => {
     setAddressForm(false);
     setLoaderTitle('Saving Address Book....');
-    setShowLoader(true)
+    setShowLoader(true);
     setLoader(true);
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
 
@@ -136,15 +139,15 @@ const AddressForm = ({customerID}) => {
             ? 'return'
             : 'recipient'
           : 'recipient',
-        birthday:  convertISOToMMDDYYYY(formData.birthday) || '',
+        birthday: convertISOToMMDDYYYY(formData.birthday) || '',
         anniversary: convertISOToMMDDYYYY(formData.anniversary) || '',
       }),
     })
       .then((response) => {
         if (response.ok) {
           setLoader(false);
-          setShowLoader(false)
-          setLoaderTitle(null)
+          setShowLoader(false);
+          setLoaderTitle(null);
           setAddressForm(false);
           return response.json(); // Parse the response JSON if it's a successful response
         } else {
@@ -157,14 +160,13 @@ const AddressForm = ({customerID}) => {
       });
   };
 
-
   function containsOnlyNumbers(str) {
     return /^\d+$/.test(str);
   }
-  
+
   const validateForm = () => {
     const newErrors = {};
-  
+
     // Check required fields and set error messages if empty
     if (!formData.firstName) {
       newErrors.firstName = 'First Name is required';
@@ -184,31 +186,30 @@ const AddressForm = ({customerID}) => {
     if (!formData.postalCode) {
       newErrors.postalCode = 'Postal Code is required';
     }
-    if(errors.birthday){
-      newErrors.birthday = "Birthday cannot be in the future"
+    if (errors.birthday) {
+      newErrors.birthday = 'Birthday cannot be in the future';
     }
-    if(errors.anniversary){
-      newErrors.anniversary = "Anniversary cannot be in the future"
+    if (errors.anniversary) {
+      newErrors.anniversary = 'Anniversary cannot be in the future';
     }
-  
+
     // Validate postal code format
     if (formData.postalCode && !/^\d+$/.test(formData.postalCode)) {
       newErrors.postalCode = 'Invalid postal code format';
     }
-  
+
     // Validate date format
-   
+
     setErrors(newErrors);
-  
+
     return Object.keys(newErrors).length === 0;
   };
-  
+
   const saveAddress = () => {
     if (validateForm()) {
       uploadDataToAPI();
     }
   };
-
 
   return (
     <>
@@ -219,9 +220,9 @@ const AddressForm = ({customerID}) => {
           </div>
         )}
         <div
-          className={`rounded md:px-8 px-[0px] pb-8 mb-4 ${pathname.pathname !=="/account" && "mt-6"}   ${
-            loader && 'opacity-40' 
-          }`}
+          className={`rounded md:px-8 px-[0px] pb-8 mb-4 ${
+            pathname.pathname !== '/account' && 'mt-6'
+          }   ${loader && 'opacity-40'}`}
         >
           <div className="xl:flex grid justify-between  xl:gap-[90px] gap-[0px] items-center mb-[16px]">
             <h2 className=" text-left text-[#001a5f] whitespace-nowrap font-bold md:text-[32px] text-[24px] leading-[43px]">
@@ -232,7 +233,7 @@ const AddressForm = ({customerID}) => {
                 className="bg-[#ef6e6e] md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full xl:min-w-[190px] max-w-[190px]"
                 text="Cancel"
                 onClickFunction={() => {
-                  setAddressForm(false);  
+                  setAddressForm(false);
                   setEditAddress(false);
                 }}
               />
@@ -483,19 +484,13 @@ const AddressForm = ({customerID}) => {
                 value={formData.type}
                 onChange={handleChange}
               >
-                { (defaultOption &&  defaultOption === 'recipient') ? (
                   <>
                     {' '}
-                    (<option>Recipient</option>
-                    <option>Sender</option>){' '}
-                  </>
-                ) : (
-                  <>
-                    {' '}
-                    <option>Sender</option>
                     <option>Recipient</option>
+                    <option>Sender</option>
+                   
                   </>
-                )}
+               
               </select>
             </div>
           </div>
