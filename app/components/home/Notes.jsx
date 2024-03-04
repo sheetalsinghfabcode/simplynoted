@@ -34,8 +34,13 @@ const Notes = () => {
         slidesPerView={4}
         loop={true}
         breakpoints={{
+          320: {
+            spaceBetween: 1,
+            slidesPerView: 2.5,
+          },
+         
           768: {
-            spaceBetween: 10,
+            spaceBetween: 3,
             slidesPerView: 2.5,
           },
           1024: {

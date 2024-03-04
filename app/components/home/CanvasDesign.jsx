@@ -20,9 +20,9 @@ const CanvasDesign = () => {
 
   return (
     <>
-      <div className="mt-[4rem] xl:mb-[17rem] md:mb-[8rem] mb-2">
+      <div className="sm:py-[50px] py-[20px] ">
         {/* First */}
-        <div className="global-max-width-handler relative md:flex flex-col lg:flex-row hidden justify-between flex-wrap mx-auto w-full mt-6 lg:gap-[10px] gap-[15px] ">
+        <div className="global-max-width-handler global-section-divider relative md:flex flex-col lg:flex-row hidden justify-between flex-wrap mx-auto w-full  lg:gap-[10px] gap-[30px] ">
           <div className="flex-1 lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-[6rem] lg:order-none order-2 data-background text-left">
             <div className="text-4xl text-custom font-custom font-bold text-left  text-[#001A5F] ">
               Send one or send &nbsp;
@@ -64,12 +64,12 @@ const CanvasDesign = () => {
           </div>
           <img
             src={Arrow1}
-            className="hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[158px] lg:left-[263px] z-[-1] xl:top-[80px] xl:h-[474px] xl:left-[227px]"
+            className="hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[226px] lg:left-[25rem] z-[-1]  xl:h-[474px] xl:left-[227px]"
           />
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[85%] mx-auto text-center">
+        <div className="md:hidden block  w-[85%] mx-auto text-center global-section-divider">
           <div className="  text-3xl font-bold text-[#001A5F] mb-5">
             Send one or send &nbsp;
             <span className="font-beauty text-6xl font-bold">thousands</span>
@@ -99,7 +99,7 @@ const CanvasDesign = () => {
         </div>
 
         {/* Second */}
-        <div className="global-max-width-handler md:flex hidden lg:justify-between xl:top-[3rem] top-14 relative justify-center flex-wrap w-full my-10  lg:gap-[50px] gap-[15px]">
+        <div className="global-max-width-handler global-section-divider md:flex hidden lg:justify-between xl:top-[3rem] lg:top-14 relative justify-center flex-wrap w-full  lg:gap-[50px] gap-[30px]">
           <div className="lg:w-[60%] w-[80%] mx-auto lg:mx-0 relative flex flex-wrap  lg:p-[10px] mt-[50px] lg:overflow-hidden overflow-visible  justify-start">
             <div className="text-right relative w-[67%]">
               <video
@@ -112,7 +112,7 @@ const CanvasDesign = () => {
                 <source src={Second} type="video/mp4"></source>
               </video>
               <img
-                className="absolute top-0 -right-[74%] xl:-right-[53%] lg:-right-[63%] lg:w-[85%] w-full "
+                className="absolute top-0 left-[25rem]  w-[440px] "
                 src={robot2}
                 alt="LogoSimplinotedpic"
               />
@@ -139,14 +139,14 @@ const CanvasDesign = () => {
           </div>
           <img
             src={Arrow2}
-            className="hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[158px] lg:left-[263px] z-[-1] xl:top-[14rem] xl:h-[434px] xl:left-[227px]"
+            className="hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[24rem] xl:top-[27rem] lg:left-[263px] z-[-1] xl:h-[434px] xl:left-[227px]"
           />
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[85%] mx-auto text-center">
+        <div className="md:hidden block  w-[85%] mx-auto text-center global-section-divider">
           <div className="  text-3xl font-bold text-[#001A5F] mb-5 ">
-            Unlimited card
+            Unlimited card &nbsp;
             <span className="font-beauty text-6xl font-bold">options</span>
           </div>
           <div className="w-full">
@@ -169,7 +169,7 @@ const CanvasDesign = () => {
 
         {/* Third */}
 
-        <div className="global-max-width-handler relative md:flex hidden justify-between xl:top-[10rem] top-[7rem] flex-wrap mx-auto w-full  lg:gap-[10px] gap-[55px] ">
+        <div className="global-max-width-handler global-section-divider relative md:flex hidden justify-between lg:top-[15rem]  flex-wrap mx-auto w-full  lg:gap-[10px] gap-[40px] ">
           <div className="lg:w-[35%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
             <div className="text-4xl  font-bold text-left  text-[#001A5F]">
               Gift cards & &nbsp;
@@ -192,7 +192,7 @@ const CanvasDesign = () => {
           <div className="lg:w-[60%] lg:mx-0 mx-auto relative flex flex-wrap justify-end w-full  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
             <div className="text-right relative lg:w-[67%] w-[60%] border-b-[1px]">
               <img
-                className="absolute -top-[12px] -left-[350px] lg:top-[30px] lg:-left-[300px]"
+                className="absolute -top-[30px] -left-[350px] lg:top-[30px] lg:-left-[300px]"
                 src={robot3}
                 alt="LogoSimplinotedpic"
               />
@@ -209,12 +209,12 @@ const CanvasDesign = () => {
           </div>
           <img
             src={Arrow3}
-            className="hidden lg:block absolute bottom-0 lg:h-[345px] lg:top-[293px] lg:left-[252px] z-[-1] xl:top-[165px] xl:h-[486px] xl:left-[252px]"
+            className="hidden lg:block absolute bottom-0 lg:h-[400px]  lg:left-[20rem] z-[-1] lg:top-[24rem] xl:left-[33rem]"
           />
         </div>
 
         {/* mobile view */}
-        <div className="md:hidden block mt-10 w-[85%] mx-auto text-center">
+        <div className="md:hidden block  w-[85%] mx-auto text-center global-section-divider">
           <div className="  text-3xl font-bold text-[#001A5F] mb-5">
             Gift cards & &nbsp;
             <span className="font-beauty text-6xl font-bold">inserts</span>
@@ -236,7 +236,7 @@ const CanvasDesign = () => {
           />
         </div>
 
-        <div className="lg:hidden block md:mt-[11rem] sm:mt-[4rem] mt-3 sm:p-[40px] p-[30px]">
+        <div className="lg:hidden block  sm:p-[40px] p-[30px]">
           <Swiper
             allowTouchMove={false}
             direction={'horizontal'}
@@ -244,7 +244,7 @@ const CanvasDesign = () => {
             slidesPerView={2.5}
             breakpoints={{
               320 : {
-                slidesPerView: 2,
+                slidesPerView: 1.5,
               },
              511 : {
                 slidesPerView: 2,
@@ -272,7 +272,7 @@ const CanvasDesign = () => {
         </div>
         {/* {Fourth } */}
         
-        <div className="global-max-width-handler xl:top-[17rem] lg:top-[7rem] top-4 relative  md:flex hidden justify-between mx-auto w-full  gap-[40px] items-center">
+        <div className="global-max-width-handler  global-section-divider 2xl:mt-[24rem] lg:mt-[30rem] mt-4 relative  md:flex hidden justify-between mx-auto w-full  gap-[40px] items-center">
        
           <div className=" lg:max-w-[50%] w-[80%] lg:mx-0 mx-auto ml-auto lg:mt-[60px] lg:order-none order-2 data-background text-left ">
             <img src={ShopifyPhoto} className="" />
@@ -298,7 +298,7 @@ const CanvasDesign = () => {
           </div>
         </div>
          {/* mobile view */}
-         <div className="md:hidden block mt-5 w-[85%] mx-auto text-center">
+         <div className="md:hidden block  w-[85%] mx-auto text-center global-section-divider">
           <div className="small:text-3xl text-[22px] font-bold text-[#001A5F] mb-5">
               Integrate &nbsp;
               <span className="font-beauty  md:text-7xl text-5xl font-bold">
