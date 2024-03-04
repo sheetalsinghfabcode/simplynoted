@@ -97,7 +97,7 @@ export default function Register() {
 
 
   return (
-    <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
+    <div className="flex md:min-w-[540px] justify-center sm:mt-12 pb-[85px] mt-4 mb-10 px-4">
       <div className="max-w-md w-full">
         <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">
           Create an Account 
