@@ -188,10 +188,7 @@ export function AddCart({
     return matchedVariant;
   };
 
-  const handleButtonClick = (option) => {
-    setDefaultOption(option);
-  };
-
+ 
   const handleChange = (e) => {
     const {name, value} = e.target;
     if (name === 'country') {
@@ -668,7 +665,6 @@ export function AddCart({
                       className="bg-[#1b5299] text-[14px] small:font-normal font-light small:px-[15px] px-[8px] py-2.5 "
                       text="+ New Address"
                       onClickFunction={() => {
-                        handleButtonClick('sender');
                         onNewAddressClick();
                       }}
                     />
@@ -726,7 +722,6 @@ export function AddCart({
                           className="bg-[#1b5299] text-[14px] small:font-normal font-light small:px-[15px] px-[8px] py-2.5 "
                           text="+ New Address"
                           onClickFunction={() => {
-                            handleButtonClick('recipient');
                             setAddressForm(true);
                             setsearchData(null);
                             setsearchData2(null);

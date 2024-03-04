@@ -13,8 +13,9 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+
     if (name === 'country') {
-      // Find the selected country's states
+      // Handling country selection
       const selectedCountry = location.countries.find(
         (country) => country.country === value,
       );
@@ -24,9 +25,18 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         state: selectedCountry ? selectedCountry.states[0] : '', // Set default state
       }));
     } else if (name === 'birthday' || name === 'anniversary') {
+      // Handling birthday and anniversary fields
+      const selectedDate = new Date(value); // Parse input value to Date object
       const currentDate = new Date();
-      const selectedDate = new Date(value); // Convert value to Date object
-      if (selectedDate > currentDate) {
+
+      if (isNaN(selectedDate)) {
+        // Handle invalid date format
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: 'Invalid date format',
+        }));
+      } else if (selectedDate > currentDate) {
+        // Handle future date
         setErrors((prevErrors) => ({
           ...prevErrors,
           [name]: `${
@@ -34,16 +44,21 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           } cannot be in the future`,
         }));
       } else {
+        // Reset error for the current field
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [name]: null, // Set error to null for the current field
+          [name]: null,
         }));
       }
-      setFormData({
-        ...formData,
-        [name]: selectedDate, // Store as Date object
-      });
+
+      // Store the date as a string or Date object, depending on your preference
+      setSelectedAddress((prev) => ({
+        ...prev,
+        [name]: value, // Store as string
+        // [name]: selectedDate, // Store as Date object
+      }));
     } else if (name === 'postalCode') {
+      // Handling postal code
       if (!/^\d+$/.test(value)) {
         setErrors((prevErrors) => ({
           ...prevErrors,
@@ -52,18 +67,19 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       } else {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          [name]: null, // Set error to null for the current field
+          [name]: null,
         }));
       }
-      setFormData({
-        ...formData,
+      setSelectedAddress((prev) => ({
+        ...prev,
         [name]: value,
-      });
+      }));
     } else {
-      setSelectedAddress({
-        ...selectedAddress,
+      // Handling other input fields
+      setSelectedAddress((prev) => ({
+        ...prev,
         [name]: value,
-      });
+      }));
     }
   };
 
@@ -107,8 +123,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             ? 'return'
             : 'recipient'
           : 'recipient',
-        birthday: convertISOToMMDDYYYY(selectedAddress.birthday) || '',
-        anniversary: convertISOToMMDDYYYY(selectedAddress.anniversary) || '',
+        birthday: selectedAddress.birthday || '',
+        anniversary: selectedAddress.anniversary || '',
       }),
     })
       .then((response) => {
@@ -126,6 +142,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         throw error;
       });
   };
+
+  console.log('selectedAddress', selectedAddress);
 
   const validateForm = () => {
     const newErrors = {};
@@ -437,16 +455,17 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               value={selectedAddress.type}
               onChange={handleChange}
             >
-              {selectedAddress.type === 'return' ? (
+              {selectedAddress.type === '"recipient"' ? (
                 <>
-                  <option value={'sender'}>Sender</option>
-                  <option value={'recipient'}>Recipient</option>
-                </>
+                <option value={'recipient'}>Recipient</option>
+                <option value={'return'}>Sender</option>
+              </>
+              
               ) : (
                 <>
-                  <option value={'recipient'}>Recipient</option>
-                  <option value={'sender'}>Sender</option>
-                </>
+                <option value={'return'}>Sender</option>
+                <option value={'recipient'}>Recipient</option>
+              </>
               )}
               {/* Add other types if needed */}
             </select>
