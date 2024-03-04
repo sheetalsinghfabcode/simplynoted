@@ -438,6 +438,7 @@ export function CheckoutData({
 
             return {
               productTitle: item.productTitle,
+              productId:item?.productId.match(/\d+/g).join(''),
               variant_id: item.variant_id,
               productUrlGet: item.productGetUrl,
               productPrice: `$${item.price}`,
@@ -527,13 +528,13 @@ export function CheckoutData({
           ? discountCouponCode?.apiDiscountResponse?.value_type
           : '',
       };
-      console.log(payload);
+      // console.log(payload);
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,
       // );
       fetch(
-        `https://testapi.simplynoted.com/api/storefront/wallet-order?customerId=${customerID}`,
+        `https://api.simplynoted.com/api/storefront/checkout?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -543,7 +544,7 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
-      console.log(json.result,"----rresult data");
+      // console.log(json.result,"----rresult data");       
       if (json) {
         setCartCountVal(0)
         localStorage.setItem('mydata', '[]');

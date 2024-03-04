@@ -24,11 +24,14 @@ import {useNavigate} from '@remix-run/react';
 import pen from '../../../assets/Image/pen-img.webp';
 import swiper_arrow_left from '../../../assets/Image/swiper-arrow-left.png';
 import swiper_arrow_right from '../../../assets/Image/swiper-arrow-right.png';
+import CircularLoader from '../CircularLoder';
 const Card = () => {
   const Navigate = useNavigate();
   const [emailForSubs, setEmailForSubs] = useState(null)
+  const [loader,setLoader] = useState(false)
  async function onClickForSubs(){
   try {
+    setLoader(true)
     const formData = new FormData();
       formData.append('email', emailForSubs);
     const res = await fetch(
@@ -39,7 +42,7 @@ const Card = () => {
       },
     );
     if(res.result){
-      
+    setLoader(false)
     }
   } catch (error) {
     console.log(error,"error for subscription");
@@ -47,6 +50,7 @@ const Card = () => {
  }
   return (
     <>
+    
       <div>
         <div className="flex md:flex-row flex-col sm:w-[76%] w-[80%] mx-auto">
           <div className="swiper-button-prev relative my-auto md:block hidden">

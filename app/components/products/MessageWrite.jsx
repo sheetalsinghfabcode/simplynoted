@@ -59,7 +59,6 @@ export function MessageWriting({
     setShowSignScreen,
     customerId,
     showSignScreen,
-    
   } = useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -123,6 +122,7 @@ export function MessageWriting({
   const [delTempValue, setDelTempValue] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState(false);
+  const [minDateCheck, setMinDateCheck] = useState(false);
 
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
@@ -183,7 +183,7 @@ export function MessageWriting({
     if (!customerId) {
       // setLoginModal(true);
       // debugger
-      setShowSignScreen(true)
+      setShowSignScreen(true);
     } else if (name.length == 0) {
       setInstructionModal(true);
     } else {
@@ -763,8 +763,7 @@ export function MessageWriting({
         return json.result;
       }
     } catch (error) {
-      
-      setModalForAddressBook(false)
+      setModalForAddressBook(false);
       console.error(error, 'file upload error');
       setLoader(false);
     }
@@ -1205,6 +1204,19 @@ export function MessageWriting({
     setDelTemplateState(false);
     setLoadTemModal(true);
   }
+  function onDateChangeFunction(value) {
+    let minValue = new Date().toISOString().split('T')[0];
+    console.log(minValue, 'mindate value');
+    console.log(value.target.value, 'selected value');
+    if (minValue > value.target.value) {
+      setMinDateCheck(true);
+    } else {
+      setShippingDate(e.target.value);
+      if (e.target.value) {
+        e.target.blur();
+      }
+    }
+  }
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
@@ -1470,13 +1482,8 @@ export function MessageWriting({
                   <input
                     type="date"
                     className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
-                    min={new Date().toISOString().split('T')[0]}
-                    onChange={(e) => {
-                      setShippingDate(e.target.value);
-                      if (e.target.value) {
-                        e.target.blur();
-                      }
-                    }}
+                    // min={new Date().toISOString().split('T')[0]}
+                    onChange={(e) => onDateChangeFunction(e)}
                     value={shippingDate}
                   />
                   <span className="calendar-icon">
@@ -2168,6 +2175,18 @@ export function MessageWriting({
         isOpen={modalIsOpen2}
         // onRequestClose={() => setErrorModal(false)}
         content={errorVal}
+      />
+      <Instruction
+        isOpen={minDateCheck}
+        close={true}
+        closeModal={() => setMinDateCheck(false)}
+        body={<>
+        <div className='w-100%'>
+        <div>
+            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
+              Please select a date greater than today
+            </h1>
+          </div></div></>}
       />
     </>
   );

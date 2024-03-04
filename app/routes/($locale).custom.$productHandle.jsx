@@ -121,6 +121,7 @@ export default function CustomProducts() {
         `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
       );
       const json = await res.json();
+      // console.log(json.result,"EEEEEEEE");
       setCustomProductData(json.result);
       // getMetaFields(json.result)
     } catch (error) {
@@ -325,6 +326,7 @@ export default function CustomProducts() {
           customFontName={customFontName}
           variantsVal={customProductData}
           metafields={metafields?metafields:null}
+          productId={customProductData?.id}
         />
       )}
     </div>
