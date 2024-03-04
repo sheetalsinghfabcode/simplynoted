@@ -178,9 +178,15 @@ export default function AddCartFunc() {
   }
 
   function clearCart() {
+    setSuccessfullLoader(true);
+    setOperation('Clear shopping cart');
     setUpdateGift(!updateGift);
     localStorage.removeItem('mydata');
     setClearCartModal(false);
+    setTimeout(() => {
+      setSuccessfullLoader(false);
+      setOperation(null);
+    }, 1300);
     window.scrollTo({
       top: 0,
       behavior: 'smooth', // Make the scroll behavior smooth
@@ -441,6 +447,16 @@ export default function AddCartFunc() {
       <div className="global-max-width-handler">
         {showCartPage ? (
           <>
+          {sucessfullLoader && operation === 'Clear shopping cart' && (
+              <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+                <CircularLoader
+                  textColor="text-white"
+                  title={operation}
+                  color="#ef6e6e"
+                />
+              </div>
+            )}
+
             {sucessfullLoader && operation === 'Deleting Order' && (
               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
                 <CircularLoader
