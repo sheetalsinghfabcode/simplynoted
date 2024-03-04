@@ -283,7 +283,7 @@ const Accordion = ({
         },
         body: JSON.stringify(payLoad),
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to create subscription');
       }
@@ -412,17 +412,17 @@ const Accordion = ({
   return (
     <div className="w-full  relative max-w-[1440px] mt-[24px] mx-auto px-[24px]">
       {paymentLoader && (
-        <SuccessfullLoader successfullMessage="Processing your payment securely. Please wait a moment." />
-      )}
-
-      {paymentSuccessFullMessage && (
-        <SuccessfullLoader successfullMessage="Payment Sucessfully Completed" />
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+          <CircularLoader
+            textColor="text-white"
+            title="Processing your payment securely. Please wait a moment."
+          />
+        </div>
       )}
 
       <div
-        className={`w-full ${
-          paymentLoader && 'opacity-40'
-        }  p-[20px]  border border-solid border-black mt-[14px] max-w-[640px] mx-auto`}
+        className={`w-full
+          p-[20px]  border border-solid border-black mt-[14px] max-w-[640px] mx-auto`}
       >
         <div
           className="flex items-center justify-between cursor-pointer"
