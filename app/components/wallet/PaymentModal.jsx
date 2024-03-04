@@ -34,7 +34,7 @@ const PaymentModal = ({
 
   const stripe = loadStripe(StripeKey);
   const [isBillingOpen, setIsBillingOpen] = useState(true);
-  const [isCardInfoOpen, setIsCardInfoOpen] = useState(false);
+  const [isCardInfoOpen, setIsCardInfoOpen] = useState(true);
   const [loader, setloader] = useState(false);
   const [paymentLoader, setPaymentLoader] = useState(false);
   const [errors, setErrors] = useState({});
