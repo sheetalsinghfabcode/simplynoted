@@ -2170,23 +2170,35 @@ export function MessageWriting({
         confirmText="Login"
         cancelText="Register"
       />
-      <ErrorModal
+      {/* <ErrorModal
         title="Uploaded Error!"
         isOpen={modalIsOpen2}
         // onRequestClose={() => setErrorModal(false)}
         content={errorVal}
+      /> */}
+
+      <Instruction
+        title="Uploaded Error!"
+        body={errorVal}
+        close={true}
+        closeModal={() => setIsOpen2(false)}
+        isOpen={modalIsOpen2}
       />
       <Instruction
         isOpen={minDateCheck}
         close={true}
         closeModal={() => setMinDateCheck(false)}
-        body={<>
-        <div className='w-100%'>
-        <div>
-            <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
-              Please select a date greater than today
-            </h1>
-          </div></div></>}
+        body={
+          <>
+            <div className="w-100%">
+              <div>
+                <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
+                  Please select a date greater than today
+                </h1>
+              </div>
+            </div>
+          </>
+        }
       />
     </>
   );

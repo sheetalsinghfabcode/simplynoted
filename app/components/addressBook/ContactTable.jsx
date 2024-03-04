@@ -128,6 +128,7 @@ const ContactTable = ({
   useEffect(() => {
     setupdateLoader(true);
     setTimeout(() => {
+      setShowLoader(false)
       setupdateLoader(false);
     }, 1500);
   }, [addresses]);
@@ -374,7 +375,6 @@ const ContactTable = ({
           anniversary: modifiedData.Anniversary || '',
         }),
       });
-      debugger
 
       if (response.ok) {
         const responseData = await response.json();
@@ -389,18 +389,14 @@ const ContactTable = ({
         'Successful response data:', responseData.result;
       } else {
         setSelectedFile(null);
-        setTimeout(() => {
           setShowLoader(false);
-        }, 1000);
+      
         setLoaderTitle('Error while Uploading Address Book...');
         file.current.value = '';
         throw new Error('Network response was not ok');
       }
-      debugger
     } catch (error) {
-      setTimeout(() => {
         setShowLoader(false);
-      }, 1000);
       setLoaderTitle('Error while Uploading Address Book');
 
       setSelectedFile(null);
@@ -437,6 +433,8 @@ const ContactTable = ({
 
     return {isValidFormat, missingHeaders};
   }
+
+  
 
   const handleUploadClick = async () => {
     setShowLoader(true);
@@ -493,6 +491,7 @@ const ContactTable = ({
 
     if (!isValidFormat) {
       setErrorModal(true);
+      setShowLoader(false)
       setSelectedFile(null);
       serErrorContent([
         'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
@@ -579,12 +578,20 @@ const ContactTable = ({
   return (
     <>
       {errorModal ? (
-        <ErrorModal
-          title="Uploaded Error!"
-          isOpen={errorModal}
-          onRequestClose={() => setErrorModal(false)}
-          content={errorContent}
+        <Instruction
+        title="Uploaded Error!"
+        body={errorContent}
+        close={true}
+        closeModal={() => setErrorModal(false)}
+        isOpen={errorModal}
         />
+
+        // <ErrorModal
+        //   title="Uploaded Error!"
+        //   isOpen={errorModal}
+        //   onRequestClose={() => setErrorModal(false)}
+        //   content={errorContent}
+        // />
       ) : (
         <div className="w-full mx-auto relative max-w-[100%]">
           {pathName.pathname !== '/account' && (

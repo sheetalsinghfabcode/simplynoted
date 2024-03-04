@@ -48,9 +48,7 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
     }
   };
 
-  useEffect(() => {
-    generateApiKey();
-  }, [customerID]);
+
 
   const {
     fullName,

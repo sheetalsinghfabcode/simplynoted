@@ -39,7 +39,7 @@ const WalletPurchase = ({
           </span>
         </div>
 }
-        <div className="flex justify-between items-center mt-[27px]  text-[#001a5f]">
+        <div className="flex justify-between items-center mt-[16px]  text-[#001a5f]">
           <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
             Selected Prepaid Package: {selectedPlan}
           </span>
