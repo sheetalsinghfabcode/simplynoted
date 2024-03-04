@@ -534,7 +534,7 @@ export function CheckoutData({
       //   payload,
       // );
       fetch(
-        `https://api.simplynoted.com/api/storefront/checkout?customerId=${customerID}`,
+        `https://testapi.simplynoted.com/api/storefront/checkout?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
