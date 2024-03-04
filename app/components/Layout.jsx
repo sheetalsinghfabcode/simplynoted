@@ -385,7 +385,7 @@ function MenuMobileNav({menu, onClose}) {
                             <li className='mb-[6px]'>Shopify</li>
                           </Link>
                           <Link to="/salesforce">
-                            <li className='mb-[6px]'>Sales</li>
+                            <li className='mb-[6px]'>Salesforce</li>
                           </Link>
                           <Link to="/api-automation">
                             <li className='mb-[6px]'>Api</li>
@@ -913,14 +913,14 @@ const PricingContent = ({props}) => {
         <div key={item.id} className="mb-3 space-y-3 ">
           {item.to === "/customise-your-card"?
           
-          <button className="block text-sm hover:underline font-[400]" onClick={()=>onCLickCheck()}
+          <button className="block text-sm font-[400]" onClick={()=>onCLickCheck()}
           >
             {item.title}
 
           </button>:
           <Link
             to={item.to}
-            className="block text-sm hover:underline font-[400]"
+            className="block text-sm  font-[400]"
           >
             {item.title}
           </Link>
