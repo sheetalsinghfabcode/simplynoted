@@ -381,7 +381,7 @@ export function CheckoutData({
             if (item.isShippidata) {
               let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
               shipping = {
-                id: item.shippingData.node.id.match(/\d+/g).join(''),
+                id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
                 url: shippingUrl,
                 qyt: 1,
               };
@@ -438,7 +438,7 @@ export function CheckoutData({
 
             return {
               productTitle: item.productTitle,
-              productId: item?.productId.match(/\d+/g).join(''),
+              productId: item?.productId?.match(/\d+/g)?.join(''),
               variant_id: item.variant_id,
               productUrlGet: item.productGetUrl,
               productPrice: `$${item.price}`,

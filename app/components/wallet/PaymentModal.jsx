@@ -446,14 +446,16 @@ const PaymentModal = ({
                 setPurchaseModal(true);
               }}
             />
-            {paymentLoader && (
-              <SuccessfullLoader successfullMessage="Processing your payment securely. Please wait a moment." />
-            )}
+            <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+              {paymentLoader && (
+                <CircularLoader
+                textColor='text-white'
+                title="Processing your payment securely. Please wait a moment." />
+              )}
+            </div>
 
             <div
-              className={` ${
-                paymentLoader && 'opacity-40'
-              }  p-[20px] mt-[20px] border border-solid border-black mt-[14px] max-w-[693px] mx-auto`}
+              className={`  p-[20px] mt-[20px] border border-solid border-black mt-[14px] max-w-[693px] mx-auto`}
             >
               <div
                 className="flex items-center justify-between cursor-pointer"

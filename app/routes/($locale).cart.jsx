@@ -83,7 +83,6 @@ export default function AddCartFunc() {
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
-  const [circleLoader, setCircleLoader] = useState(false);
 
   useEffect(() => {
     storedDataString = localStorage.getItem('mydata')
@@ -1170,20 +1169,24 @@ export default function AddCartFunc() {
                   </>
                 </>
               ) : (
-                <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
-                  <div>
-                    <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
-                      YOUR CART IS EMPTY!
-                    </h3>
-                    <div className="flex justify-center mt-[8px]">
-                      <DynamicButton
-                        className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
-                        text="CONTINUE SHOPPING"
-                        onClickFunction={() => continueShopping()}
-                      />
+                <>
+                  {!sucessfullLoader && (
+                    <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
+                      <div>
+                        <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
+                          YOUR CART IS EMPTY!
+                        </h3>
+                        <div className="flex justify-center mt-[8px]">
+                          <DynamicButton
+                            className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
+                            text="CONTINUE SHOPPING"
+                            onClickFunction={() => continueShopping()}
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  )}
+                </>
               )}
             </div>
             <ConfirmationModal

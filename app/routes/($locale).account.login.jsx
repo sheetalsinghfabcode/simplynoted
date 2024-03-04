@@ -92,7 +92,7 @@ export default function Login() {
   const [nativePasswordError, setNativePasswordError] = useState(null);
 
   return (
-    <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-24 px-4">
+    <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
 
       <div className="max-w-md w-full">
         <h1 className="name text-4xl text-blue-900">Sign in</h1>

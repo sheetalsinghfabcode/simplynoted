@@ -226,9 +226,11 @@ const Profile = ({
   return (
     <div className="relative">
       {loader && (
-        <div className="z-50  absolute top-[50%] left-[30%]">
+       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader
+          textColor='text-white'
             title={
+
               activeTabs === 'account'
                 ? 'Updating Profile'
                 : 'Updating Password'
