@@ -1,7 +1,7 @@
 function AvailableHandwritingStyles() {
   return (
     <div className="">
-      <h3 className="ftext-[#001a5f] font-tiempos mt-[12px]  font-bold ml-2 sm:text-[33px] text-[17px] font-tiempos ">
+      <h3 className="ftext-[#001a5f] font-tiempos mt-[12px] md:mt-[37px] mt-[37px] font-bold ml-2 sm:text-[33px] text-[17px] font-tiempos ">
         <span className="font-italic text-blue-500">8. </span> AVAILABLE
         HANDWRITING STYLES
       </h3>
@@ -74,7 +74,7 @@ function AvailableHandwritingStyles() {
           <p className="mt-[33px] ml-[7px]   font-thin text-[16px]  color-[black]">
             <strong>Bolt:</strong>
           </p>
-          <p className="Bolt sm:leading-[0px] leading-[39px]  text-[41px] mt-[54px] font-bolt">
+          <p className="Bolt sm:leading-[0px] leading-[25px]  text-[41px] mt-[54px] font-bolt">
             The quick brown fox jumps over the lazy dog
           </p>
           <p className="mt-[33px] ml-[7px]  font-thin text-[16px]  color-[black]">

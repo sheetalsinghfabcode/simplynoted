@@ -3,7 +3,7 @@ import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 function Addresses() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos md:mt-[0px] mt-[37px]   font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
+    <h2 className="text-[#001a5f] font-tiempos md:mt-[37px] mt-[37px]   font-bold ml-2 sm:text-[33px] text-[20px] font-tiempos ">
       <span className="text-blue-500">7.</span> ADDRESSES
     </h2>
     <div className="mt-[55px]">

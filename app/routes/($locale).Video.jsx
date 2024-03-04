@@ -44,7 +44,7 @@ export default function tutorials() {
   };
 
   return (
-    <div className='global-max-width-handler'>
+    <div className='global-max-width-handler h-[2045px]'>
       <div className="px-5">
         <DynamicTitle
           // dynamicButton

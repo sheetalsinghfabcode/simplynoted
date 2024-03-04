@@ -34,7 +34,6 @@ export const action = async ({request, context, params}) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-
   if (
     !email ||
     !password ||
@@ -95,19 +94,23 @@ export default function Login() {
     <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
 
       <div className="max-w-md w-full">
-        <h1 className="name text-4xl text-blue-900">Sign in</h1>
-        <img
-          className="mt-2 w-32"
-          src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
-        />
+        <h1 className="name text-4xl flex justify-center font-bold text-blue-900">
+          Sign in
+        </h1>
+        <div className="flex justify-center">
+          <img
+            className="mt-2 w-32"
+            src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
+          />
+        </div>
         <p className="mt-[12px] text-black text-opacity-80 text-xs">
           If you have an account with us, please log in.
         </p>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
           {actionData?.formError && (
-            <div className="flex items-center justify-center mb-6 bg-zinc-500">
-              <p className="m-4 text-s text-contrast">{actionData.formError}</p>
+            <div className="flex items-center text-left text-red">
+              <p className="text-red text-[red]">{actionData.formError}</p>
             </div>
           )}
           <div>
@@ -131,6 +134,7 @@ export default function Login() {
                 );
               }}
             />
+
             {nativeEmailError && (
               <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
             )}
@@ -173,7 +177,6 @@ export default function Login() {
           </div>
           <div className="flex items-center justify-between">
             <button
-             
               className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
               disabled={!!(nativePasswordError || nativeEmailError)}

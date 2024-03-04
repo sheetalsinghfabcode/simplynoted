@@ -3,7 +3,7 @@ import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 function Templates() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px] md:mt-[0px] mt-[37px]  font-tiempos   font-bold ml-2">
+    <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px] md:mt-[37px] mt-[37px]  font-tiempos   font-bold ml-2">
       <span className="text-blue-500">6.</span> TEMPLATES
     </h2>
     <div className="mt-[55px]">

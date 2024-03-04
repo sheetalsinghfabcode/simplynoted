@@ -625,7 +625,7 @@ const ContactTable = ({
 
               <div
                 ref={uploadBulkAddressRef}
-                className={`absolute md:right-[165px]  right-0 sm:right-[50px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
+                className={`absolute md:right-[165px]  right-[30px] sm:right-[246px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
                   overflow-hidden  ${
                     uploadBulkAddress
                       ? 'max-h-[500px] transition-max-h duration-1000 ease-in-out'

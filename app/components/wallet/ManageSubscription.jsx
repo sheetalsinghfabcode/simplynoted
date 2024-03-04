@@ -653,7 +653,7 @@ const ManageSubscription = () => {
                               <span className="lg:text-[14px] sm:text-[12px] text-[11px] text-left text-[#001a5f] font-karla font-semibold uppercase">
                                 SUBSCRIPTION CANCELLATION DATE
                               </span>
-                              <span className="text-[12px] lg:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
+                              <span className="text-[14px] lg:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
                                 {
                                   stripeCollection.stripe
                                     ?.subscriptionCancelledAt

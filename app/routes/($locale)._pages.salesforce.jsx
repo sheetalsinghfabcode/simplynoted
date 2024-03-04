@@ -33,7 +33,7 @@ export default function Salesforce() {
         <div className="flex px-[16px] md:px-[40px]  items-center">
           <div className="lg:flex-row flex-col global-max-width-handler flex  sm:mt-10 mt-5">
             {/* first div left side */}
-            <div className="lg:flex-col  flex-col-reverse  flex  lg:w-[50%] w-full lg:justify-start justify-center">
+            <div className="lg:flex-col  flex-col-reverse global-section-divider  flex  lg:w-[50%] w-full lg:justify-start justify-center">
               <div>
                 <div className="lg:block hidden">
                   <div className="text-white text-center text-[12px] p-[3px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
@@ -222,7 +222,7 @@ export default function Salesforce() {
           />
         </div>
         {/* second */}
-        <div className="flex flex-wrap justify-center relative global-max-width-handler !my-[30px]">
+        <div className="flex flex-wrap justify-center global-section-divider relative global-max-width-handler !my-[30px]">
           <div className="absolute hidden lg:block xl:top-[373px] top-[280px] right-[14rem] z-[-12]">
             <img
               className="w-full xl:h-[56rem] h-[44rem]"
@@ -290,7 +290,7 @@ export default function Salesforce() {
 
         {/* third */}
 
-        <div className="flex flex-wrap flex-row-reverse justify-center relative  global-max-width-handler   w-[100%] mt-8 lg:my-0 !my-[30px]">
+        <div className="flex flex-wrap flex-row-reverse global-section-divider justify-center relative  global-max-width-handler   w-[100%] mt-8 lg:my-0 !my-[30px]">
           <div className="absolute xl:top-[270px] top-[175px] hidden lg:block z-[-12] xl:right-[134px] right-[17px]">
             <img
               className="2xl:w-[1135px] w-[1051px]"
