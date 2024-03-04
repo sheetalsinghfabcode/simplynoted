@@ -230,8 +230,12 @@ const PaymentModal = ({
         },
         body: JSON.stringify(payLoad),
       });
+      if (!response.ok) {
+        throw new Error('Failed to create subscription');
+      }
 
       const data = await response.json();
+
       if (data.statusCode === 400) {
         setShowAccordion(false);
         setPurchaseModal(false);
@@ -272,9 +276,7 @@ const PaymentModal = ({
       packageProduct: productId,
       subscriptionProduct: variantId,
       isSubscriptionOnly: true,
-
     };
-
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 

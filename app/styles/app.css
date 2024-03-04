@@ -1037,9 +1037,10 @@ body {
 
   background: #ef6e6e;
   color: white;
-  width: 8.5rem;
+  display: inline-block;
   font-size: 16px;
   font-weight: 600;
+  padding: 0 20px;
   height: 56px;
 }
 .subscribe:hover {
@@ -2616,12 +2617,7 @@ background-size: 360px;
     line-height: 26px;
     font-size: 16px;
   }
-  .subscribe {
-    width: 8rem;
-    font-size: 14px;
-   
-    height: 55px;
-  }
+ 
   .tab-content {
     padding: 10px 15px;
   }

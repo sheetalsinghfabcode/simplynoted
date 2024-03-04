@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import react, {useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {
   Navigation,
@@ -27,30 +27,56 @@ import swiper_arrow_right from '../../../assets/Image/swiper-arrow-right.png';
 import CircularLoader from '../CircularLoder';
 const Card = () => {
   const Navigate = useNavigate();
-  const [emailForSubs, setEmailForSubs] = useState(null)
-  const [loader,setLoader] = useState(false)
- async function onClickForSubs(){
-  try {
-    setLoader(true)
-    const formData = new FormData();
-      formData.append('email', emailForSubs);
-    const res = await fetch(
-      `https://api.simplynoted.com/api/storefront/users/newsletter-subscription`,
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
-    if(res.result){
-    setLoader(false)
+  const [emailForSubs, setEmailForSubs] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [isEmailSubscribed, setisEmailSubscribed] = useState(false);
+  const [error, setError] = useState('');
+  const [successfullMessage, setSuccessFullMessage] = useState('');
+
+  const validateEmail = (email) => {
+    // Regular expression for validating email
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  async function onClickForSubs() {
+    if (!validateEmail(emailForSubs)) {
+      setError('Please enter a valid email address');
+      return;
     }
-  } catch (error) {
-    console.log(error,"error for subscription");
+    try {
+      setError('');
+      setLoader(true);
+      const formData = new FormData();
+      formData.append('email', emailForSubs);
+
+      const res = await fetch(
+        `https://api.simplynoted.com/api/storefront/users/newsletter-subscription`,
+        {
+          method: 'POST',
+          body: formData,
+        },
+      );
+      console.log('res', res);
+      const data = await res.json();
+      console.log(data);
+
+      if (res.ok) {
+        console.clear();
+        console.log(data);
+        setSuccessFullMessage(data.result);
+        setisEmailSubscribed(true);
+      }
+    } catch (error) {
+      setError('Subscription failed. Please try again.');
+      console.log(error, 'error for subscription');
+    } finally {
+      setLoader(false);
+    }
   }
- }
+
   return (
     <>
-    
       <div>
         <div className="flex md:flex-row flex-col sm:w-[76%] w-[80%] mx-auto">
           <div className="swiper-button-prev relative my-auto md:block hidden">
@@ -83,26 +109,25 @@ const Card = () => {
           >
             {stockData.map((data, index) => {
               return (
-                  <SwiperSlide key={data.img}>
-                    <div className="data_card shadow-inset-custom text-center mt-5 sm:w-[88%] w-full mx-auto ">
-                      <div className="m-auto w-full pt-5 md:pt-20">
-                        <img
-                          src={data.img}
-                          alt=""
-                          className="w-[100px] mt-1 text-center inline "
-                        ></img>
-                      </div>
-                      <div className="pt-5 pb-5  md:text-center text-justify text-sm md:px-24 sm:px-16 px-[35px] text-[#696969] tracking-normal">
-                        {data.description}
-                      </div>
-                      <div className="text-black pb-32 font-bold">
-                        {data.Name}
-                        <br />
-                        {data.Department}
-                      </div>
+                <SwiperSlide key={data.img}>
+                  <div className="data_card shadow-inset-custom text-center mt-5 sm:w-[88%] w-full mx-auto ">
+                    <div className="m-auto w-full pt-5 md:pt-20">
+                      <img
+                        src={data.img}
+                        alt=""
+                        className="w-[100px] mt-1 text-center inline "
+                      ></img>
                     </div>
-                  </SwiperSlide>
-              
+                    <div className="pt-5 pb-5  md:text-center text-justify text-sm md:px-24 sm:px-16 px-[35px] text-[#696969] tracking-normal">
+                      {data.description}
+                    </div>
+                    <div className="text-black pb-32 font-bold">
+                      {data.Name}
+                      <br />
+                      {data.Department}
+                    </div>
+                  </div>
+                </SwiperSlide>
               );
             })}
           </Swiper>
@@ -195,19 +220,50 @@ const Card = () => {
                 Join our email list and receive your first card free.
               </div>
             </div>
+            <div className="flex flex-1 flex-col">
+              <div className="flex  justify-center items-center text-center  w-full">
+                <input
+                  type="email"
+                  className="input_email"
+                  placeholder="Enter your email address"
+                  onChange={(e) => {
+                    setSuccessFullMessage('');
+                    setError('');
+                    setEmailForSubs(e.target.value);
+                    setisEmailSubscribed(false);
+                  }}
+                />
 
-            <div className="flex justify-center items-center text-center flex-1 w-full">
-              <input
-                type="email"
-                className="input_email"
-                placeholder="Enter your email address"
-                onChange={(e)=>setEmailForSubs(e.target.value)}
-              />
-              <DynamicButton
-                text="SUBSCRIBE"
-                className="subscribe"
-                onClickFunction={()=>onClickForSubs()}
-              />
+                <button
+                  disabled={emailForSubs?.length === 0 || isEmailSubscribed}
+                  className="subscribe"
+                  onClick={() => onClickForSubs()}
+                >
+                  {loader ? (
+                    <div className="flex gap-[4px] items-center">
+                      <svg
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        className="mr-2 animate-spin"
+                        viewBox="0 0 1792 1792"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                      </svg>
+                      <span className="whitespace-nowrap">Subscribing</span>
+                    </div>
+                  ) : isEmailSubscribed ? (
+                    'SUBSCRIBED'
+                  ) : (
+                    'SUBSCRIBE'
+                  )}
+                </button>
+              </div>
+              {error && <p className="text-red-500 mt-2 ">{error}</p>}
+              {successfullMessage && (
+                <p className="text-red-500 mt-2 ">{successfullMessage}</p>
+              )}
             </div>
           </div>
         </div>

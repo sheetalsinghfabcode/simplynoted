@@ -544,6 +544,7 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
+      debugger
       // console.log(json.result,"----rresult data");       
       if (json) {
         setCartCountVal(0)

@@ -1206,11 +1206,11 @@ export function MessageWriting({
   }
   function onDateChangeFunction(value) {
     let minValue = new Date().toISOString().split('T')[0];
-    console.log(minValue, 'mindate value');
-    console.log(value.target.value, 'selected value');
     if (minValue > value.target.value) {
       setMinDateCheck(true);
     } else {
+      setMinDateCheck(false);
+      
       setShippingDate(e.target.value);
       if (e.target.value) {
         e.target.blur();
@@ -1483,13 +1483,14 @@ export function MessageWriting({
                     type="date"
                     className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
                     // min={new Date().toISOString().split('T')[0]}
-                    onChange={(e) => onDateChangeFunction(e)}
+                    onChange={(e) =>  onDateChangeFunction(e)}
                     value={shippingDate}
                   />
                   <span className="calendar-icon">
                     <img src={calender_icon} alt="Calendar" />
                   </span>
                 </div>
+                { minDateCheck  && <span className=' text-[10.5px] pt-[14px] text-red-500'>Please choose a future date</span> }
               </div>
             </div>
             {!customFonts && (
@@ -2184,7 +2185,7 @@ export function MessageWriting({
         closeModal={() => setIsOpen2(false)}
         isOpen={modalIsOpen2}
       />
-      <Instruction
+      {/* <Instruction
         isOpen={minDateCheck}
         close={true}
         closeModal={() => setMinDateCheck(false)}
@@ -2199,7 +2200,7 @@ export function MessageWriting({
             </div>
           </>
         }
-      />
+      /> */}
     </>
   );
 }
