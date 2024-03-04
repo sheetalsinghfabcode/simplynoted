@@ -142,7 +142,7 @@ export default function AddCartFunc() {
       setSuccessfullLoader(false);
       setOperation(null);
       setIsOpen(false);
-    }, 2000);
+    }, 1300);
 
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
@@ -163,7 +163,7 @@ export default function AddCartFunc() {
     setTimeout(() => {
       setSuccessfullLoader(false);
       setOperation(null);
-    }, 2000);
+    }, 1300);
 
     localStorage.setItem('mydata', JSON.stringify(cartData));
     setTimeout(() => {
@@ -212,7 +212,7 @@ export default function AddCartFunc() {
     setTimeout(() => {
       setSuccessfullLoader(false);
       setCircleLoader(false);
-    }, 2000);
+    }, 1300);
   }
 
   function editOrderData(index) {
@@ -441,192 +441,87 @@ export default function AddCartFunc() {
   // }
 
   return (
-    <div className="global-max-width-handler">
-      {showCartPage ? (
-        <>
-          {sucessfullLoader && (
-            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
-              <CircularLoader
-                textColor="text-white"
-                title={operation}
-                color="#ef6e6e"
-              />
-            </div>
-          )}
-          <div className="w-full h-full gap-2 md:mt-14">
-            {cartData && cartData.length > 0 ? (
-              <>
-                <DynamicTitle
-                  title={'SHOPPING CART'}
-                  className="md:text-[40px] text-[24px]"
-                />
+    <div className="">
+      <div className="global-max-width-handler">
+        {showCartPage ? (
+          <>
+            <div className="w-full h-full gap-2 md:mt-14">
+              {cartData && cartData.length > 0 ? (
                 <>
-                  {cartData.length === 0 && <CircularLoader color="#ef6e6e" />}
-                  {cartData &&
-                    cartData.map((item, index) => (
-                      <div
-                        key={index}
-                        className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] shadow-inset-custom"
-                      >
-                        {sucessfullLoader && (
-                          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
-                            <CircularLoader
-                              textColor="text-white"
-                              title={operation}
-                              color="#ef6e6e"
-                            />
-                          </div>
-                        )}
-
-                        <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
-                          <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                            <div className="flex w-full justify-start sm:flex-row flex-col">
-                              <div className="lg:max-w-[33%] sm:max-w-[22%] min-w-[80px] md:m-5 sm:m-3 mx-auto w-[50%] sm:mt-[30px] mt-4 rounded-[10px] overflow-hidden">
-                                <img src={item.productImg} alt="" />
-                              </div>
-                              <div className="mt-[30px] font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
-                                <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] small:text-[22px] text-[18px] font-bold">
-                                  {item.productTitle}
-                                </h3>
-                                <div className="flex flex-wrap ">
-                                  <span className="font-karla text-[#1b5299] text-[16px] font-bold ">
-                                    {' '}
-                                    Sender:
-                                  </span>
-                                  <span className=" text-[black] font-normal inline-flex ml-[10px] md:text-[16px] text-[12px] ">
-                                    {' '}
-                                    {item.senderAddress?.address1}
-                                    <br className="sm:block hidden" />
-                                    {item.senderAddress?.city},
-                                    {item.senderAddress?.state}
-                                    {item.senderAddress?.zip},
-                                    {item.senderAddress?.country}
-                                  </span>
-                                </div>
-                                <div className="buttonDiv mt-2">
-                                  <button
-                                    className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] font-inter text-[10px] small:text-xs sm:w-auto w-full"
-                                    onClick={() => {
-                                      OpenModalFunc2(index);
-                                    }}
-                                  >
-                                    PREVIEW YOUR CUSTOM MESSAGE
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] sm:py-[15px] pt-[15px]  px-[20px] justify-between flex items-center ">
-                            <div className="w-[100%] h-[100%] flex items-center ">
-                              <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
-                                <div className="flex justify-between ">
-                                  <span className="text-[#1b5299] ">
-                                    {' '}
-                                    Price:
-                                  </span>
-                                  <span className="text-black">
-                                    $ {item.price}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-[#1b5299]">
-                                    {' '}
-                                    Quantity:
-                                  </span>
-                                  <span className="text-[black]">
-                                    {item.csvFileLen}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-[#1b5299]">
-                                    Subtotal:
-                                  </span>
-                                  <span className="text-[black]">
-                                    ${' '}
-                                    {(item.price * item.csvFileLen).toFixed(2)}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="lg:w-[20%] relative item_block_right small:pb-[15px] w-full  sm:flex-row flex-col flex-wrap flex justify-end">
-                            <div className="flex lg:flex-col sm:flex-row flex-col justify-center lg:gap-[8px]  gap-[3px] ">
-                              {item.giftCardName !== null ? (
-                                ''
-                              ) : (
-                                <div className="buttonDiv  m-[0.2rem]">
-                                  <DynamicButton
-                                    className="bg-[#ef6e6e] rounded-[10px] md:py-[14px]  py-[10px] md:px-[20px] px-[12px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
-                                    text="ADD GIFT CARD"
-                                    onClickFunction={() => {
-                                      OpenModalFunc(index);
-                                    }}
-                                  />
-                                </div>
-                              )}
-
-                              <div className="buttonDiv  m-[0.2rem]">
-                                <DynamicButton
-                                  className="bg-[#1b5299] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
-                                  text="EDIT ORDER"
-                                  onClickFunction={() => {
-                                    editOrderData(index);
-                                  }}
+                  <DynamicTitle
+                    title={'SHOPPING CART'}
+                    className="md:text-[40px] text-[24px]"
+                  />
+                  <>
+                    {cartData.length === 0 && (
+                      <CircularLoader color="#ef6e6e" />
+                    )}
+                    {cartData &&
+                      cartData.map((item, index) => (
+                        <div
+                          key={index}
+                          className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] shadow-inset-custom"
+                        >
+                          {sucessfullLoader &&
+                            operation !== 'Adding Gift Card...' && (
+                              <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+                                <CircularLoader
+                                  textColor="text-white"
+                                  title={operation}
+                                  color="#ef6e6e"
                                 />
                               </div>
-                              <div className="buttonDiv m-[0.2rem]">
-                                <DynamicButton
-                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
-                                  text="DELETE ORDER"
-                                  onClickFunction={() => {
-                                    ConfirmDeleteOrder(index);
-                                  }}
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        {/* <div className="w-full h-[1px] bg-[black]"></div> */}
+                            )}
 
-                        {item.giftCardName && (
                           <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                             <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                              <div className="flex w-[95%] justify-start ">
-                                <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
-                                  <img
-                                    src={item.giftCardImg}
-                                    alt=""
-                                    className="w-[100px] h-[100px] object-contain"
-                                  />
+                              <div className="flex w-full justify-start sm:flex-row flex-col">
+                                <div className="lg:max-w-[33%] sm:max-w-[22%] min-w-[80px] md:m-5 sm:m-3 mx-auto w-[50%] sm:mt-[30px] mt-4 rounded-[10px] overflow-hidden">
+                                  <img src={item.productImg} alt="" />
                                 </div>
-                                <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col   ">
-                                  <div className="font-bold text-[#1b5299] md:text-[18px] text-[16px] ">
-                                    {' '}
-                                    Gift Card:
+                                <div className="mt-[30px] font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
+                                  <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] small:text-[22px] text-[18px] font-bold">
+                                    {item.productTitle}
+                                  </h3>
+                                  <div className="flex flex-wrap ">
+                                    <span className="font-karla text-[#1b5299] text-[16px] font-bold ">
+                                      {' '}
+                                      Sender:
+                                    </span>
+                                    <span className=" text-[black] font-normal inline-flex ml-[10px] md:text-[16px] text-[12px] ">
+                                      {' '}
+                                      {item.senderAddress?.address1}
+                                      <br className="sm:block hidden" />
+                                      {item.senderAddress?.city},
+                                      {item.senderAddress?.state}
+                                      {item.senderAddress?.zip},
+                                      {item.senderAddress?.country}
+                                    </span>
                                   </div>
-
-                                  <span className=" text-[black] font-normal text-[16px]   ">
-                                    {''}
-                                    {item.giftCardName}
-                                  </span>
-                                  {/* <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
-
-                                  Gift Card: {item.giftCardName}
-                                  </h3> */}
+                                  <div className="buttonDiv mt-2">
+                                    <button
+                                      className="bg-[#EF6E6E] text-[#fff]  p-[10px] rounded-[10px] font-inter text-[10px] small:text-xs sm:w-auto w-full"
+                                      onClick={() => {
+                                        OpenModalFunc2(index);
+                                      }}
+                                    >
+                                      PREVIEW YOUR CUSTOM MESSAGE
+                                    </button>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <div className="lg:max-w-[30%] sm:w-[50%] w-full relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+
+                            <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] sm:py-[15px] pt-[15px]  px-[20px] justify-between flex items-center ">
                               <div className="w-[100%] h-[100%] flex items-center ">
                                 <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                   <div className="flex justify-between ">
-                                    <span className=" text-[#1b5299] ">
+                                    <span className="text-[#1b5299] ">
                                       {' '}
                                       Price:
                                     </span>
-                                    <span className="text-[black]">
-                                      $ {item.giftCardPrice}
+                                    <span className="text-black">
+                                      $ {item.price}
                                     </span>
                                   </div>
                                   <div className="flex justify-between">
@@ -634,499 +529,601 @@ export default function AddCartFunc() {
                                       {' '}
                                       Quantity:
                                     </span>
-                                    <span className=" text-[black]">
+                                    <span className="text-[black]">
                                       {item.csvFileLen}
                                     </span>
                                   </div>
                                   <div className="flex justify-between">
-                                    <span className=" text-[#1b5299]">
+                                    <span className="text-[#1b5299]">
                                       Subtotal:
                                     </span>
                                     <span className="text-[black]">
                                       ${' '}
-                                      {(
-                                        item.giftCardPrice * item.csvFileLen
-                                      ).toFixed(2)}
+                                      {(item.price * item.csvFileLen).toFixed(
+                                        2,
+                                      )}
                                     </span>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div className="lg:w-[20%] relative item_block_right small:pb-[15px] sm:w-[50%] w-full sm:flex-row flex-col sm:items-end  flex-wrap flex justify-end">
-                              <div className="buttonDiv lg:my-auto mr-[0.2rem]">
-                                <DynamicButton
-                                  className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] px-[20px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold "
-                                  text="DELETE CARD"
-                                  onClickFunction={() => {
-                                    confirmCardDel(index);
-                                  }}
-                                />
+                            <div className="lg:w-[20%] relative item_block_right small:pb-[15px] w-full  sm:flex-row flex-col flex-wrap flex justify-end">
+                              <div className="flex lg:flex-col sm:flex-row flex-col justify-center lg:gap-[8px]  gap-[3px] ">
+                                {item.giftCardName !== null ? (
+                                  ''
+                                ) : (
+                                  <div className="buttonDiv  m-[0.2rem]">
+                                    <DynamicButton
+                                      className="bg-[#ef6e6e] rounded-[10px] md:py-[14px]  py-[10px] md:px-[20px] px-[12px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
+                                      text="ADD GIFT CARD"
+                                      onClickFunction={() => {
+                                        OpenModalFunc(index);
+                                      }}
+                                    />
+                                  </div>
+                                )}
+
+                                <div className="buttonDiv  m-[0.2rem]">
+                                  <DynamicButton
+                                    className="bg-[#1b5299] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
+                                    text="EDIT ORDER"
+                                    onClickFunction={() => {
+                                      editOrderData(index);
+                                    }}
+                                  />
+                                </div>
+                                <div className="buttonDiv m-[0.2rem]">
+                                  <DynamicButton
+                                    className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] md:px-[20px] px-[12px]  sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold"
+                                    text="DELETE ORDER"
+                                    onClickFunction={() => {
+                                      ConfirmDeleteOrder(index);
+                                    }}
+                                  />
+                                </div>
                               </div>
                             </div>
                           </div>
-                        )}
-                        {/* {item.giftCardName && (
-                          <div className="w-full h-[1px] bg-[black]"></div>
-                        )} */}
+                          {/* <div className="w-full h-[1px] bg-[black]"></div> */}
 
-                        {(item.shippingData &&
-                          item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                        (item.shippingData &&
-                          item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards Only') ||
-                        (item.shippingData &&
-                          item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                        (item.shippingData &&
-                          item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ? (
-                          ''
-                        ) : (
-                          <>
-                            {item.usCount || item.nonUSCount ? (
-                              <>
-                                {item.nonUSCount && item.nonUSCount ? (
-                                  <div className="flex w-[100%] flex-wrap space-between">
-                                    <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                      <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] w-full !ml-0 sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
-                                          <img
-                                            src={postImage}
-                                            alt=""
-                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
-                                          />
-                                        </div>
-                                        <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
-                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
-                                            Postal {postTitle2}
-                                          </h3>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
-                                      <div className="w-[100%] h-[100%] flex items-center ">
-                                        <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
-                                          <div className="flex justify-between ">
-                                            <span className="text-[#1b5299]">
-                                              {' '}
-                                              Price:
-                                            </span>
-                                            <span className="text-[black] text-[16px] tracking-[1.5px]">
-                                              $ {postPrice2}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Quantity:
-                                            </span>
-                                            <span className="text-black">
-                                              {item.nonUSCount}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="text-black">
-                                              {' '}
-                                              Subtotal:
-                                            </span>
-                                            <span className="text-black ">
-                                              ${' '}
-                                              {(
-                                                postPrice2 * item.nonUSCount
-                                              ).toFixed(2)}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
-                                  </div>
-                                ) : (
-                                  ''
-                                )}
-                                {item.usCount && item.usCount ? (
-                                  <div className="flex w-[100%] flex-wrap space-between">
-                                    <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                      <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
-                                          <img
-                                            src={postImage}
-                                            alt=""
-                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
-                                          />
-                                        </div>
-                                        <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
-                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
-                                            Postal {postTitle}
-                                          </h3>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
-                                      <div className="w-[100%] h-[100%] flex items-center ">
-                                        <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
-                                          <div className="flex justify-between ">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Price:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              $ {postPrice}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className=" text-[#1b5299]">
-                                              {' '}
-                                              Quantity:
-                                            </span>
-                                            <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                              {item.usCount}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Subtotal:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              ${' '}
-                                              {(
-                                                postPrice * item.usCount
-                                              ).toFixed(2)}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
-                                  </div>
-                                ) : (
-                                  ''
-                                )}
-                              </>
-                            ) : (
-                              <>
-                                {item.reciverAddress?.country === 'USA' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  '' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  ' ' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'u.s.a' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'u.s' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'usa' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'us' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'america' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'united states' ||
-                                item.reciverAddress?.country?.toLowerCase() ===
-                                  'united states of america' ||
-                                item.reciverAddress?.country?.toLowerCase() ==
-                                  undefined ? (
-                                  <div className="flex w-[100%] flex-wrap space-between">
-                                    <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                      <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
-                                          <img
-                                            src={postImage}
-                                            alt=""
-                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
-                                          />
-                                        </div>
-                                        <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
-                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
-                                            Postage {postTitle}
-                                          </h3>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
-                                      <div className="w-[100%] h-[100%] flex items-center ">
-                                        <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
-                                          <div className="flex justify-between ">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Price:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              $ {postPrice}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className="text-[#1b5299] ">
-                                              {' '}
-                                              Quantity:
-                                            </span>
-                                            <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                              {item.csvFileLen}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Subtotal:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              ${' '}
-                                              {(
-                                                postPrice * item.csvFileLen
-                                              ).toFixed(2)}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
-                                  </div>
-                                ) : (
-                                  <div className="flex w-[100%] flex-wrap space-between">
-                                    <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                      <div className="flex w-[95%] justify-start ">
-                                        <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
-                                          <img
-                                            src={postImage}
-                                            alt=""
-                                            className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
-                                          />
-                                        </div>
-                                        <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
-                                          <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
-                                            Postal{postTitle2}
-                                          </h3>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
-                                      <div className="w-[100%] h-[100%] flex items-center ">
-                                        <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
-                                          <div className="flex justify-between ">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Price:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              ${postPrice2}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className=" text-[#1b5299] ">
-                                              {' '}
-                                              Quantity:
-                                            </span>
-                                            <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                              {item.csvFileLen}
-                                            </span>
-                                          </div>
-                                          <div className="flex justify-between">
-                                            <span className=" text-[#1b5299]">
-                                              {' '}
-                                              Subtotal:
-                                            </span>
-                                            <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                              $
-                                              {(
-                                                postPrice2 * item.csvFileLen
-                                              ).toFixed(2)}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
-                                  </div>
-                                )}
-                              </>
-                            )}
-                          </>
-                        )}
-                        {/* <div className="w-full h-[1px] bg-[black]"></div> */}
-
-                        {item.shippingData &&
-                          item.shippingMethodImage &&
-                          item.isShippidata && (
-                            <div className="flex w-[100%] flex-wrap lg:border-none border-t border-[#AAA]">
-                              <div className="md:max-w-[50%] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px]  border-[#AAA]">
+                          {item.giftCardName && (
+                            <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
+                              <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
                                 <div className="flex w-[95%] justify-start ">
-                                  <div className="max-w-[33%] w-full md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">
+                                  <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                     <img
-                                      src={item.shippingMethodImage}
+                                      src={item.giftCardImg}
                                       alt=""
-                                      className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                      className="w-[100px] h-[100px] object-contain"
                                     />
                                   </div>
-                                  <div className="sm:max-w-[100%] max-w-[46%] m-auto md:mt-auto sm:mt-[40px] mt-[20px]">
-                                    <h3 className="text-[#1b5299] font-bold sm:text-[16px] text-[14px] lg:tracking-[0.5px] tracking-0">
-                                      {item.shippingData?.node.title}
-                                    </h3>
+                                  <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col   ">
+                                    <div className="font-bold text-[#1b5299] md:text-[18px] text-[16px] ">
+                                      {' '}
+                                      Gift Card:
+                                    </div>
+
+                                    <span className=" text-[black] font-normal text-[16px]   ">
+                                      {''}
+                                      {item.giftCardName}
+                                    </span>
+                                    {/* <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">
+
+                                  Gift Card: {item.giftCardName}
+                                  </h3> */}
                                   </div>
                                 </div>
                               </div>
-                              <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                              <div className="lg:max-w-[30%] sm:w-[50%] w-full relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
                                 <div className="w-[100%] h-[100%] flex items-center ">
                                   <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
                                     <div className="flex justify-between ">
-                                      <span className="text-[#1b5299]">
+                                      <span className=" text-[#1b5299] ">
                                         {' '}
                                         Price:
                                       </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {item.shippingDataCost}
+                                      <span className="text-[black]">
+                                        $ {item.giftCardPrice}
+                                      </span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span className="text-[#1b5299]">
+                                        {' '}
+                                        Quantity:
+                                      </span>
+                                      <span className=" text-[black]">
+                                        {item.csvFileLen}
                                       </span>
                                     </div>
                                     <div className="flex justify-between">
                                       <span className=" text-[#1b5299]">
-                                        {' '}
-                                        Quantity:
-                                      </span>
-                                      <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                        1
-                                      </span>
-                                    </div>
-                                    <div className="flex justify-between">
-                                      <span className=" text-[#1b5299] ">
-                                        {' '}
                                         Subtotal:
                                       </span>
-                                      <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
-                                        $ {item.shippingDataCost * 1}
+                                      <span className="text-[black]">
+                                        ${' '}
+                                        {(
+                                          item.giftCardPrice * item.csvFileLen
+                                        ).toFixed(2)}
                                       </span>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
+                              <div className="lg:w-[20%] relative item_block_right small:pb-[15px] sm:w-[50%] w-full sm:flex-row flex-col sm:items-end  flex-wrap flex justify-end">
+                                <div className="buttonDiv lg:my-auto mr-[0.2rem]">
+                                  <DynamicButton
+                                    className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] px-[20px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold "
+                                    text="DELETE CARD"
+                                    onClickFunction={() => {
+                                      confirmCardDel(index);
+                                    }}
+                                  />
+                                </div>
+                              </div>
                             </div>
                           )}
-                        <div className="flex w-[100%] flex-wrap ">
-                          <div className="md:max-w-[50%] w-[100%] items-center relative flex">
-                            {''}
-                          </div>
+                          {/* {item.giftCardName && (
+                          <div className="w-full h-[1px] bg-[black]"></div>
+                        )} */}
 
-                          <div className="lg:max-w-[30%] w-full lg:border-none border-t-[1px] border-[#AAA] relative  md:py-[15px] py-[8px] px-[20px]  items-center text-[#1b5299] font-karla text-[20px] font-bold flex  justify-between">
-                            <div> SUBTOTAL: </div>
-                            <div>
-                              ${' '}
-                              {(
-                                item.price * item.csvFileLen +
-                                item.giftCardPrice * item.csvFileLen +
-                                (item.isShippidata
-                                  ? item.shippingDataCost * 1
-                                  : 0) +
-                                ((item.shippingData &&
-                                  item.shippingData.node?.title ==
-                                    'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                                (item.shippingData &&
-                                  item.shippingData.node?.title ==
-                                    'Ship Cards in Bulk - Cards Only') ||
-                                (item.shippingData &&
-                                  item.shippingData.node?.title ==
-                                    'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                                (item.shippingData &&
-                                  item.shippingData.node?.title ==
-                                    'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
-                                  ? 0
-                                  : item.usCount || item.nonUSCount
-                                  ? postPrice * item.usCount +
-                                    postPrice2 * item.nonUSCount
-                                  : item.reciverAddress?.country === 'USA' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      '' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      ' ' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'u.s.a' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'u.s' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'usa' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'us' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'america' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'united states' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
-                                      'united states of america' ||
-                                    item.reciverAddress?.country?.toLowerCase() ==
-                                      undefined
-                                  ? postPrice * item.csvFileLen
-                                  : postPrice2 * item.csvFileLen)
-                              ).toFixed(2)}
+                          {(item.shippingData &&
+                            item.shippingData.node?.title ==
+                              'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                          (item.shippingData &&
+                            item.shippingData.node?.title ==
+                              'Ship Cards in Bulk - Cards Only') ||
+                          (item.shippingData &&
+                            item.shippingData.node?.title ==
+                              'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+                          (item.shippingData &&
+                            item.shippingData.node?.title ==
+                              'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ? (
+                            ''
+                          ) : (
+                            <>
+                              {item.usCount || item.nonUSCount ? (
+                                <>
+                                  {item.nonUSCount && item.nonUSCount ? (
+                                    <div className="flex w-[100%] flex-wrap space-between">
+                                      <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
+                                        <div className="flex w-[95%] justify-start ">
+                                          <div className="lg:max-w-[33%] w-full !ml-0 sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                            <img
+                                              src={postImage}
+                                              alt=""
+                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            />
+                                          </div>
+                                          <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
+                                            <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
+                                              Postal {postTitle2}
+                                            </h3>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                                        <div className="w-[100%] h-[100%] flex items-center ">
+                                          <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
+                                            <div className="flex justify-between ">
+                                              <span className="text-[#1b5299]">
+                                                {' '}
+                                                Price:
+                                              </span>
+                                              <span className="text-[black] text-[16px] tracking-[1.5px]">
+                                                $ {postPrice2}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Quantity:
+                                              </span>
+                                              <span className="text-black">
+                                                {item.nonUSCount}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="text-black">
+                                                {' '}
+                                                Subtotal:
+                                              </span>
+                                              <span className="text-black ">
+                                                ${' '}
+                                                {(
+                                                  postPrice2 * item.nonUSCount
+                                                ).toFixed(2)}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
+                                    </div>
+                                  ) : (
+                                    ''
+                                  )}
+                                  {item.usCount && item.usCount ? (
+                                    <div className="flex w-[100%] flex-wrap space-between">
+                                      <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
+                                        <div className="flex w-[95%] justify-start ">
+                                          <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                            <img
+                                              src={postImage}
+                                              alt=""
+                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            />
+                                          </div>
+                                          <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
+                                            <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
+                                              Postal {postTitle}
+                                            </h3>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                                        <div className="w-[100%] h-[100%] flex items-center ">
+                                          <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
+                                            <div className="flex justify-between ">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Price:
+                                              </span>
+                                              <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                                $ {postPrice}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className=" text-[#1b5299]">
+                                                {' '}
+                                                Quantity:
+                                              </span>
+                                              <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                                {item.usCount}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Subtotal:
+                                              </span>
+                                              <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                                ${' '}
+                                                {(
+                                                  postPrice * item.usCount
+                                                ).toFixed(2)}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
+                                    </div>
+                                  ) : (
+                                    ''
+                                  )}
+                                </>
+                              ) : (
+                                <>
+                                  {item.reciverAddress?.country === 'USA' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    '' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    ' ' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'u.s.a' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'u.s' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'usa' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'us' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'america' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'united states' ||
+                                  item.reciverAddress?.country?.toLowerCase() ===
+                                    'united states of america' ||
+                                  item.reciverAddress?.country?.toLowerCase() ==
+                                    undefined ? (
+                                    <div className="flex w-[100%] flex-wrap space-between">
+                                      <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
+                                        <div className="flex w-[95%] justify-start ">
+                                          <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                            <img
+                                              src={postImage}
+                                              alt=""
+                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            />
+                                          </div>
+                                          <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
+                                            <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
+                                              Postage {postTitle}
+                                            </h3>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                                        <div className="w-[100%] h-[100%] flex items-center ">
+                                          <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
+                                            <div className="flex justify-between ">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Price:
+                                              </span>
+                                              <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                                $ {postPrice}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className="text-[#1b5299] ">
+                                                {' '}
+                                                Quantity:
+                                              </span>
+                                              <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                                {item.csvFileLen}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Subtotal:
+                                              </span>
+                                              <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                                ${' '}
+                                                {(
+                                                  postPrice * item.csvFileLen
+                                                ).toFixed(2)}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
+                                    </div>
+                                  ) : (
+                                    <div className="flex w-[100%] flex-wrap space-between">
+                                      <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
+                                        <div className="flex w-[95%] justify-start ">
+                                          <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
+                                            <img
+                                              src={postImage}
+                                              alt=""
+                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                            />
+                                          </div>
+                                          <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
+                                            <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
+                                              Postal{postTitle2}
+                                            </h3>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                                        <div className="w-[100%] h-[100%] flex items-center ">
+                                          <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
+                                            <div className="flex justify-between ">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Price:
+                                              </span>
+                                              <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                                ${postPrice2}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className=" text-[#1b5299] ">
+                                                {' '}
+                                                Quantity:
+                                              </span>
+                                              <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                                {item.csvFileLen}
+                                              </span>
+                                            </div>
+                                            <div className="flex justify-between">
+                                              <span className=" text-[#1b5299]">
+                                                {' '}
+                                                Subtotal:
+                                              </span>
+                                              <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                                $
+                                                {(
+                                                  postPrice2 * item.csvFileLen
+                                                ).toFixed(2)}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
+                                    </div>
+                                  )}
+                                </>
+                              )}
+                            </>
+                          )}
+                          {/* <div className="w-full h-[1px] bg-[black]"></div> */}
+
+                          {item.shippingData &&
+                            item.shippingMethodImage &&
+                            item.isShippidata && (
+                              <div className="flex w-[100%] flex-wrap lg:border-none border-t border-[#AAA]">
+                                <div className="md:max-w-[50%] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px]  border-[#AAA]">
+                                  <div className="flex w-[95%] justify-start ">
+                                    <div className="max-w-[33%] w-full md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">
+                                      <img
+                                        src={item.shippingMethodImage}
+                                        alt=""
+                                        className="min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                      />
+                                    </div>
+                                    <div className="sm:max-w-[100%] max-w-[46%] m-auto md:mt-auto sm:mt-[40px] mt-[20px]">
+                                      <h3 className="text-[#1b5299] font-bold sm:text-[16px] text-[14px] lg:tracking-[0.5px] tracking-0">
+                                        {item.shippingData?.node.title}
+                                      </h3>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="lg:max-w-[30%] w-full  relative item_block_middle lg:border-r-[1px] border-[#AAA] md:py-[15px] py-[8px] px-[20px] justify-between flex items-center ">
+                                  <div className="w-[100%] h-[100%] flex items-center ">
+                                    <div className="w-[100%] sm:text-[16px] text-[14px] font-bold">
+                                      <div className="flex justify-between ">
+                                        <span className="text-[#1b5299]">
+                                          {' '}
+                                          Price:
+                                        </span>
+                                        <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                          $ {item.shippingDataCost}
+                                        </span>
+                                      </div>
+                                      <div className="flex justify-between">
+                                        <span className=" text-[#1b5299]">
+                                          {' '}
+                                          Quantity:
+                                        </span>
+                                        <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
+                                          1
+                                        </span>
+                                      </div>
+                                      <div className="flex justify-between">
+                                        <span className=" text-[#1b5299] ">
+                                          {' '}
+                                          Subtotal:
+                                        </span>
+                                        <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
+                                          $ {item.shippingDataCost * 1}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="lg:w-[20%] relative item_block_right pb-[15px] w-full flex-wrap flex "></div>
+                              </div>
+                            )}
+                          <div className="flex w-[100%] flex-wrap ">
+                            <div className="md:max-w-[50%] w-[100%] items-center relative flex">
+                              {''}
+                            </div>
+
+                            <div className="lg:max-w-[30%] w-full lg:border-none border-t-[1px] border-[#AAA] relative  md:py-[15px] py-[8px] px-[20px]  items-center text-[#1b5299] font-karla text-[20px] font-bold flex  justify-between">
+                              <div> SUBTOTAL: </div>
+                              <div>
+                                ${' '}
+                                {(
+                                  item.price * item.csvFileLen +
+                                  item.giftCardPrice * item.csvFileLen +
+                                  (item.isShippidata
+                                    ? item.shippingDataCost * 1
+                                    : 0) +
+                                  ((item.shippingData &&
+                                    item.shippingData.node?.title ==
+                                      'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                                  (item.shippingData &&
+                                    item.shippingData.node?.title ==
+                                      'Ship Cards in Bulk - Cards Only') ||
+                                  (item.shippingData &&
+                                    item.shippingData.node?.title ==
+                                      'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+                                  (item.shippingData &&
+                                    item.shippingData.node?.title ==
+                                      'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
+                                    ? 0
+                                    : item.usCount || item.nonUSCount
+                                    ? postPrice * item.usCount +
+                                      postPrice2 * item.nonUSCount
+                                    : item.reciverAddress?.country === 'USA' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        '' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        ' ' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'u.s.a' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'u.s' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'usa' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'us' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'america' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'united states' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
+                                        'united states of america' ||
+                                      item.reciverAddress?.country?.toLowerCase() ==
+                                        undefined
+                                    ? postPrice * item.csvFileLen
+                                    : postPrice2 * item.csvFileLen)
+                                ).toFixed(2)}
+                              </div>
+                            </div>
+                            <div className="lg:w-[20%] relative  w-full flex-wrap flex "></div>
+                          </div>
+                        </div>
+                      ))}
+                    {totalPrize && (
+                      <div className="sm:w-[90%] w-[98%]  bg-white m-auto mt-10 mb-10">
+                        <div className="flex lg:p-3 p-5  flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
+                          <div className="lg:w-[25%] md:w-[39%] sm:w-[47%] w-full flex lg:items-center items-end justify-start ">
+                            <div className="buttonDiv md:text-[14px] sm:text-[12px] text-[10px] font-normal md:w-[85%] sm:w-[90%] w-[60%]">
+                              <button
+                                className="bg-[#1b5299] text-[#fff] p-3 flex  rounded gap-2.5 w-full justify-center  items-center"
+                                onClick={() => {
+                                  clearCartBtn();
+                                }}
+                              >
+                                <RiDeleteBin6Line className="text-white md:text-[20px] text-[18px]" />
+                                CLEAR SHOPPING CART
+                              </button>
                             </div>
                           </div>
-                          <div className="lg:w-[20%] relative  w-full flex-wrap flex "></div>
-                        </div>
-                      </div>
-                    ))}
-                  {totalPrize && (
-                    <div className="sm:w-[90%] w-[98%]  bg-white m-auto mt-10 mb-10">
-                      <div className="flex lg:p-3 p-5  flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
-                        <div className="lg:w-[25%] md:w-[39%] sm:w-[47%] w-full flex lg:items-center items-end justify-start ">
-                          <div className="buttonDiv md:text-[14px] sm:text-[12px] text-[10px] font-normal md:w-[85%] sm:w-[90%] w-[60%]">
-                            <button
-                              className="bg-[#1b5299] text-[#fff] p-3 flex  rounded gap-2.5 w-full justify-center  items-center"
-                              onClick={() => {
-                                clearCartBtn();
-                              }}
-                            >
-                              <RiDeleteBin6Line className="text-white md:text-[20px] text-[18px]" />
-                              CLEAR SHOPPING CART
-                            </button>
-                          </div>
-                        </div>
-                        <div
-                          className="lg:w-[45%]  w-[100%] flex items-center  lg:order-none order-[-1]
+                          <div
+                            className="lg:w-[45%]  w-[100%] flex items-center  lg:order-none order-[-1]
                          md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-start gap-[20px]"
-                        >
-                          <span className="md:mr-[2px]">GRAND TOTAL</span>
-                          <span>${totalPrize.toFixed(2)}</span>
-                        </div>
-                        <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
-                          <div className="">
-                            <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
-                              <input
-                                type="checkbox"
-                                className="cursor-pointer"
-                                onChange={() => setAgree(!agree)}
-                                checked={agree}
-                              />
-                              <span>
-                                {' '}
-                                I agree with{' '}
-                                <span className="underline decoration-solid">
-                                  <a href="/policies/terms-of-service">
-                                    Terms of service
-                                  </a>
-                                </span>
-                              </span>
-                            </div>
-                            <button
-                              disabled={!agree}
-                              className="bg-[#EF6E6E] w-[100%]  lg:text-[16px] text-[14px] text-[#fff] p-[12px] rounded border-[1px] border-[#000] font-bold flex justify-center mt-2"
-                              onClick={() => {
-                                if (customerId) {
-                                  // onCLickOfCheckoutBtn()
-                                  setShowCartPage(false);
-                                  window.scrollTo({
-                                    top: 0,
-                                    behavior: 'smooth', // Make the scroll behavior smooth
-                                  });
-                                } else {
-                                  setLoginModal(true);
-                                }
-                              }}
-                            >
-                              CHECKOUT{' '}
-                              <HiArrowLongRight className="text-2xl ml-2 " />
-                            </button>
+                          >
+                            <span className="md:mr-[2px]">GRAND TOTAL</span>
+                            <span>${totalPrize.toFixed(2)}</span>
                           </div>
-                        </div>
-                        {/* <div className="text-[9px] sm:hidden flex justify-end w-full">
+                          <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
+                            <div className="">
+                              <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
+                                <input
+                                  type="checkbox"
+                                  className="cursor-pointer"
+                                  onChange={() => setAgree(!agree)}
+                                  checked={agree}
+                                />
+                                <span>
+                                  {' '}
+                                  I agree with{' '}
+                                  <span className="underline decoration-solid">
+                                    <a href="/policies/terms-of-service">
+                                      Terms of service
+                                    </a>
+                                  </span>
+                                </span>
+                              </div>
+                              <button
+                                disabled={!agree}
+                                className="bg-[#EF6E6E] w-[100%]  lg:text-[16px] text-[14px] text-[#fff] p-[12px] rounded border-[1px] border-[#000] font-bold flex justify-center mt-2"
+                                onClick={() => {
+                                  if (customerId) {
+                                    // onCLickOfCheckoutBtn()
+                                    setShowCartPage(false);
+                                    window.scrollTo({
+                                      top: 0,
+                                      behavior: 'smooth', // Make the scroll behavior smooth
+                                    });
+                                  } else {
+                                    setLoginModal(true);
+                                  }
+                                }}
+                              >
+                                CHECKOUT{' '}
+                                <HiArrowLongRight className="text-2xl ml-2 " />
+                              </button>
+                            </div>
+                          </div>
+                          {/* <div className="text-[9px] sm:hidden flex justify-end w-full">
                           <input
                             type="checkbox"
                             onClick={() => setAgree(!agree)}
@@ -1142,260 +1139,173 @@ export default function AddCartFunc() {
                             </span>
                           </text>
                         </div> */}
+                        </div>
+                      </div>
+                    )}
+                    <div className="sm:w-[90%] w-[98%]  m-auto mt-10 mb-10">
+                      <div className="sm:p-[30px] p-[20px] bg-white md:w-[50%] w-[100%] shadow-inset-custom rounded-[10px]">
+                        <h3 className="text-[30px] font-bold text-[#1b5299]">
+                          NOTE
+                        </h3>
+                        <p className="text-[#000] font-normal text-[14px] py-5 ">
+                          Add special instructions for your order...
+                        </p>
+                        <textarea
+                          name=""
+                          className="rounded w-full border-[#787878cc] border-[1px]"
+                          id="cart-note"
+                          cols="30"
+                          rows="10"
+                          onChange={(e) => setCartNote(e.target.value)}
+                          value={cartNote}
+                        ></textarea>
                       </div>
                     </div>
-                  )}
-                  <div className="sm:w-[90%] w-[98%]  m-auto mt-10 mb-10">
-                    <div className="sm:p-[30px] p-[20px] bg-white md:w-[50%] w-[100%] shadow-inset-custom rounded-[10px]">
-                      <h3 className="text-[30px] font-bold text-[#1b5299]">
-                        NOTE
-                      </h3>
-                      <p className="text-[#000] font-normal text-[14px] py-5 ">
-                        Add special instructions for your order...
-                      </p>
-                      <textarea
-                        name=""
-                        className="rounded w-full border-[#787878cc] border-[1px]"
-                        id="cart-note"
-                        cols="30"
-                        rows="10"
-                        onChange={(e) => setCartNote(e.target.value)}
-                        value={cartNote}
-                      ></textarea>
-                    </div>
-                  </div>
+                  </>
                 </>
-              </>
-            ) : (
-              <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
-                <div>
-                  <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
-                    YOUR CART IS EMPTY!
-                  </h3>
-                  <div className="flex justify-center mt-[8px]">
-                    <DynamicButton
-                      className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
-                      text="CONTINUE SHOPPING"
-                      onClickFunction={() => continueShopping()}
-                    />
+              ) : (
+                <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
+                  <div>
+                    <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
+                      YOUR CART IS EMPTY!
+                    </h3>
+                    <div className="flex justify-center mt-[8px]">
+                      <DynamicButton
+                        className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
+                        text="CONTINUE SHOPPING"
+                        onClickFunction={() => continueShopping()}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
-          <ConfirmationModal
-            show={deleteModal}
-            onCancel={() => setDeleteModal(false)}
-            onConfirm={() => deleteOrder(deleteOrderIndex)}
-            message="Are you sure you want to delete this order?"
-            confirmText="Delete"
-            cancelText="Cancel"
-          />
-          <ConfirmationModal
-            show={deleteCardModal}
-            onCancel={() => setDeleteCardModal(false)}
-            onConfirm={() => deleteKeyInArray(delCardIndex)}
-            message="Are you sure you want to delete Gift Card?"
-            confirmText="Delete"
-            cancelText="Cancel"
-          />
-          <ConfirmationModal
-            show={clearCartModal}
-            onCancel={() => setClearCartModal(false)}
-            onConfirm={() => clearCart()}
-            message="Are you sure you want to clear your Cart?"
-            confirmText="Delete"
-            cancelText="Cancel"
-          />
-          <Modal
-            isOpen={modalIsOpen}
-            style={customStyles}
-            contentLabel="Example Modal"
-            ariaHideApp={false}
-          >
-            <>
-              <div className="flex justify-center">
-                <h2 className="font-bold text-[30px] text-[#333] leading-10  mt-3 text-center">
-                  Add a Gift Card
-                </h2>
+              )}
+            </div>
+            <ConfirmationModal
+              show={deleteModal}
+              onCancel={() => setDeleteModal(false)}
+              onConfirm={() => deleteOrder(deleteOrderIndex)}
+              message="Are you sure you want to delete this order?"
+              confirmText="Delete"
+              cancelText="Cancel"
+            />
+            <ConfirmationModal
+              show={deleteCardModal}
+              onCancel={() => setDeleteCardModal(false)}
+              onConfirm={() => deleteKeyInArray(delCardIndex)}
+              message="Are you sure you want to delete Gift Card?"
+              confirmText="Delete"
+              cancelText="Cancel"
+            />
+            <ConfirmationModal
+              show={clearCartModal}
+              onCancel={() => setClearCartModal(false)}
+              onConfirm={() => clearCart()}
+              message="Are you sure you want to clear your Cart?"
+              confirmText="Delete"
+              cancelText="Cancel"
+            />
+            <Modal
+              isOpen={modalIsOpen}
+              style={customStyles}
+              contentLabel="Example Modal"
+              ariaHideApp={false}
+            >
+              <>
+                <div className="flex justify-center">
+                  <h2 className="font-bold text-[30px] text-[#333] leading-10  mt-3 text-center">
+                    Add a Gift Card
+                  </h2>
 
-                <div className="absolute top-[35px] right-0  pr-8 sm:block">
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="transition text-primary "
-                  >
-                    <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="address-data">
-                <div className="flex justify-between md:my-4 md:flex-row flex-col">
-                  <div className="md:w-[45%] w-full mr-2 ml-2 ">
-                    <div className="col-4 mt-4 font-bold text-[16px]">
-                      Select Gift Card:
-                    </div>
-                    <div className="col-8 mt-3 pr-0 ">
-                      <select
-                        className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                        onChange={(e) => cardvalFunc(e.target.value)}
-                      >
-                        <option className="w-full"> Select Gift Card</option>
-                        {data.collection.products.edges.map((item, i) => (
-                          <option value={i} key={i}>
-                            {item.node.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="md:w-[45%] w-full mr-2 ml-2 ">
-                    <div className="col-4 mt-4 font-bold text-[16px]">
-                      Select Gift Price:
-                    </div>
-                    <div className="col-8 mt-3 pr-0">
-                      {cardPriceVal && cardPriceVal.length ? (
-                        // <div>heelooo</div>
-                        <select
-                          name=""
-                          id=""
-                          className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                          onChange={(e) => priceValFunc(e.target.value)}
-                        >
-                          {cardPriceVal.map((item, index) => (
-                            <option value={item.node.price.amount} key={index}>
-                              {item.node.title}
-                            </option>
-                          ))}
-                        </select>
-                      ) : (
-                        // <AfterCardSel />
-                        <select
-                          name=""
-                          id=""
-                          className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                        >
-                          <option value="">Price Card</option>
-                        </select>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="buttonDiv flex justify-center items-center ">
-                  {!sucessfullLoader ? (
-                    <button
-                      className="bg-[#ef6e6e] text-[#fff] py-[15px] px-[25px] rounded-xl text-[14px] font-bold cursor-pointer"
-                      onClick={() => updateValueInArray(cardVal)}
-                    >
-                      ADD GIFT CARD
-                    </button>
-                  ) : (
-                    <CircularLoader title={operation} color="#ef6e6e" />
-                  )}
-                </div>
-              </div>
-            </>
-          </Modal>
-          <Modal
-            isOpen={modalIsOpen2}
-            style={customStyles}
-            className="sm:h-fit h-auto fixed overflow-auto"
-            contentLabel="Example Modal"
-            ariaHideApp={false}
-          >
-            <div className="text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto ">
-              {bulkAddress.length ? (
-                <>
                   <div className="absolute top-[35px] right-0  pr-8 sm:block">
                     <button
-                      onClick={() => closeModal()}
+                      onClick={() => setIsOpen(false)}
                       className="transition text-primary "
                     >
                       <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                     </button>
                   </div>
+                </div>
 
-                  {bulkAddress &&
-                    bulkAddress.map((item, index) => (
-                      <div>
-                        <div
-                          key={index}
-                          style={{
-                            display: index === currentIndex ? 'block' : 'none',
-                          }}
-                          className="mt-[10px]"
-                        >
-                          <span className=" text-center ">
-                            Recipient:
-                            <span className="ml-2 font-normal">
-                              {' '}
-                              {item['First Name'] || item.firstName},
-                              {item['Last Name'] || item.lastName},
-                              {item['Address'] || item.address1},
-                              {item['City'] || item.city},
-                              {item['State/Province'] || item.state}
-                            </span>
-                          </span>
-
-                          <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-center mt-3 leading-10">
-                            Your Custom Message
-                          </h2>
-                          <div className="my-7 mr-5 relative flex justify-between">
-                            <div>
-                              <button onClick={handlePrevClick}>
-                                Previous
-                              </button>
-                            </div>
-                            <div>
-                              <button onClick={handleNextClick}>Next</button>
-                            </div>
-                          </div>
-                          <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-auto mt-5  p-[20px] h-auto ">
-                            <span
-                              className=" w-full"
-                              style={{
-                                fontFamily: msgFont,
-                                fontSize: msgFontSize || '30px',
-                              }}
-                            >
-                              {' '}
-                              {item.msgData}
-                            </span>
-                            <br />
-                            <span
-                              className="text-center w-full ml-10"
-                              style={{
-                                fontFamily: msgFont,
-                                fontSize: msgFontSize || '30px',
-                              }}
-                            >
-                              {msglastText}
-                            </span>
-                          </div>
-                          <div className="mt-[24px]">
-                            <span>
-                              Font:{' '}
-                              <span className="font-normal ml-2">
-                                {msgFont}
-                              </span>{' '}
-                            </span>
-                          </div>
-                        </div>
+                <div className="address-data">
+                  <div className="flex justify-between md:my-4 md:flex-row flex-col">
+                    <div className="md:w-[45%] w-full mr-2 ml-2 ">
+                      <div className="col-4 mt-4 font-bold text-[16px]">
+                        Select Gift Card:
                       </div>
-                    ))}
-                </>
-              ) : (
-                <>
-                  <div className="flex">
-                    <div className="w-full mt-[10px]">
-                      <span className=" text-center ">
-                        Recipient:{' '}
-                        <span className="font-normal">
-                          {reciverAddress.firstName},{reciverAddress.address1},
-                          {reciverAddress.city},{reciverAddress.country}
-                        </span>
-                      </span>
+                      <div className="col-8 mt-3 pr-0 ">
+                        <select
+                          className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
+                          onChange={(e) => cardvalFunc(e.target.value)}
+                        >
+                          <option className="w-full"> Select Gift Card</option>
+                          {data.collection.products.edges.map((item, i) => (
+                            <option value={i} key={i}>
+                              {item.node.title}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
+                    <div className="md:w-[45%] w-full mr-2 ml-2 ">
+                      <div className="col-4 mt-4 font-bold text-[16px]">
+                        Select Gift Price:
+                      </div>
+                      <div className="col-8 mt-3 pr-0">
+                        {cardPriceVal && cardPriceVal.length ? (
+                          // <div>heelooo</div>
+                          <select
+                            name=""
+                            id=""
+                            className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
+                            onChange={(e) => priceValFunc(e.target.value)}
+                          >
+                            {cardPriceVal.map((item, index) => (
+                              <option
+                                value={item.node.price.amount}
+                                key={index}
+                              >
+                                {item.node.title}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          // <AfterCardSel />
+                          <select
+                            name=""
+                            id=""
+                            className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
+                          >
+                            <option value="">Price Card</option>
+                          </select>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="buttonDiv flex justify-center items-center ">
+                    {!sucessfullLoader ? (
+                      <button
+                        className="bg-[#ef6e6e] text-[#fff] py-[15px] px-[25px] rounded-xl text-[14px] font-bold cursor-pointer"
+                        onClick={() => updateValueInArray(cardVal)}
+                      >
+                        ADD GIFT CARD
+                      </button>
+                    ) : (
+                      <CircularLoader title={operation} color="#ef6e6e" />
+                    )}
+                  </div>
+                </div>
+              </>
+            </Modal>
+            <Modal
+              isOpen={modalIsOpen2}
+              style={customStyles}
+              className="sm:h-fit h-auto fixed overflow-auto"
+              contentLabel="Example Modal"
+              ariaHideApp={false}
+            >
+              <div className="text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto ">
+                {bulkAddress.length ? (
+                  <>
                     <div className="absolute top-[35px] right-0  pr-8 sm:block">
                       <button
                         onClick={() => closeModal()}
@@ -1404,63 +1314,156 @@ export default function AddCartFunc() {
                         <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
                       </button>
                     </div>
-                  </div>
-                  <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-left mt-5 leading-10">
-                    Your Custom Message
-                  </h2>
-                  <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  h-auto mt-5 overflow-auto p-[20px]">
-                    <span
-                      className=" w-full"
-                      style={{
-                        fontFamily: msgFont,
-                        fontSize: msgFontSize || '30px',
-                      }}
-                    >
-                      {' '}
-                      {msgShow.replace(/\/n/g, '\n')}
-                    </span>
-                    <br />
-                    <span
-                      className="text-center w-full ml-10"
-                      style={{
-                        fontFamily: msgFont,
-                        fontSize: msgFontSize || '30px',
-                      }}
-                    >
-                      {msglastText}
-                    </span>
-                  </div>
-                  <div className="mt-[24px]">
-                    <span>
-                      Font: <span className="font-normal ml-2">{msgFont}</span>{' '}
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
-          </Modal>
-        </>
-      ) : (
-        <CheckoutData
-          cartNote={cartNote && cartNote}
-          cartData={cartData}
-          postalId={postalId}
-          postalId2={postalId2}
-          setShowCartPage={setShowCartPage}
-          StripeKey={StripeKey}
-          totalPrize={Number(totalPrize).toFixed(2)}
-        />
-      )}
 
-      <LoginModal
-        title={'Place an order'}
-        show={loginModal}
-        setLoginModal={setLoginModal}
-        onCancel={() => setLoginModal(false)}
-        confirmText="Login"
-        cancelText="Register"
-        cross={true}
-      />
+                    {bulkAddress &&
+                      bulkAddress.map((item, index) => (
+                        <div>
+                          <div
+                            key={index}
+                            style={{
+                              display:
+                                index === currentIndex ? 'block' : 'none',
+                            }}
+                            className="mt-[10px]"
+                          >
+                            <span className=" text-center ">
+                              Recipient:
+                              <span className="ml-2 font-normal">
+                                {' '}
+                                {item['First Name'] || item.firstName},
+                                {item['Last Name'] || item.lastName},
+                                {item['Address'] || item.address1},
+                                {item['City'] || item.city},
+                                {item['State/Province'] || item.state}
+                              </span>
+                            </span>
+
+                            <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-center mt-3 leading-10">
+                              Your Custom Message
+                            </h2>
+                            <div className="my-7 mr-5 relative flex justify-between">
+                              <div>
+                                <button onClick={handlePrevClick}>
+                                  Previous
+                                </button>
+                              </div>
+                              <div>
+                                <button onClick={handleNextClick}>Next</button>
+                              </div>
+                            </div>
+                            <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-auto mt-5  p-[20px] h-auto ">
+                              <span
+                                className=" w-full"
+                                style={{
+                                  fontFamily: msgFont,
+                                  fontSize: msgFontSize || '30px',
+                                }}
+                              >
+                                {' '}
+                                {item.msgData}
+                              </span>
+                              <br />
+                              <span
+                                className="text-center w-full ml-10"
+                                style={{
+                                  fontFamily: msgFont,
+                                  fontSize: msgFontSize || '30px',
+                                }}
+                              >
+                                {msglastText}
+                              </span>
+                            </div>
+                            <div className="mt-[24px]">
+                              <span>
+                                Font:{' '}
+                                <span className="font-normal ml-2">
+                                  {msgFont}
+                                </span>{' '}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </>
+                ) : (
+                  <>
+                    <div className="flex">
+                      <div className="w-full mt-[10px]">
+                        <span className=" text-center ">
+                          Recipient:{' '}
+                          <span className="font-normal">
+                            {reciverAddress.firstName},{reciverAddress.address1}
+                            ,{reciverAddress.city},{reciverAddress.country}
+                          </span>
+                        </span>
+                      </div>
+                      <div className="absolute top-[35px] right-0  pr-8 sm:block">
+                        <button
+                          onClick={() => closeModal()}
+                          className="transition text-primary "
+                        >
+                          <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />
+                        </button>
+                      </div>
+                    </div>
+                    <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-left mt-5 leading-10">
+                      Your Custom Message
+                    </h2>
+                    <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  h-auto mt-5 overflow-auto p-[20px]">
+                      <span
+                        className=" w-full"
+                        style={{
+                          fontFamily: msgFont,
+                          fontSize: msgFontSize || '30px',
+                        }}
+                      >
+                        {' '}
+                        {msgShow.replace(/\/n/g, '\n')}
+                      </span>
+                      <br />
+                      <span
+                        className="text-center w-full ml-10"
+                        style={{
+                          fontFamily: msgFont,
+                          fontSize: msgFontSize || '30px',
+                        }}
+                      >
+                        {msglastText}
+                      </span>
+                    </div>
+                    <div className="mt-[24px]">
+                      <span>
+                        Font:{' '}
+                        <span className="font-normal ml-2">{msgFont}</span>{' '}
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+            </Modal>
+          </>
+        ) : (
+          <CheckoutData
+            cartNote={cartNote && cartNote}
+            cartData={cartData}
+            postalId={postalId}
+            postalId2={postalId2}
+            setShowCartPage={setShowCartPage}
+            StripeKey={StripeKey}
+            totalPrize={Number(totalPrize).toFixed(2)}
+          />
+        )}
+
+        <LoginModal
+          title={'Place an order'}
+          show={loginModal}
+          setLoginModal={setLoginModal}
+          onCancel={() => setLoginModal(false)}
+          confirmText="Login"
+          cancelText="Register"
+          cross={true}
+        />
+      </div>
     </div>
   );
 }
