@@ -130,7 +130,6 @@ const Profile = ({
             );
             setProfile(false);
             setSuccessFullLoader(true);
-
             setLoader(false);
             setAccountDetail(true);
           }, [1000]);
@@ -239,15 +238,7 @@ const Profile = ({
           />
         </div>
       )}
-      {successfullLoader && (
-        <SuccessfullLoader
-          successfullMessage={
-            activeTabs === 'account'
-              ? 'Updated Profile Successfully'
-              : 'Updated Password Successfully'
-          }
-        />
-      )}
+      
       <div
         className={`rounded-lg md:p-6 w-full  mx-auto   ${
           (loader || successfullLoader) && 'opacity-50'

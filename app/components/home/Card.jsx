@@ -57,15 +57,15 @@ const Card = () => {
           body: formData,
         },
       );
-      console.log('res', res);
       const data = await res.json();
-      console.log(data);
 
       if (res.ok) {
-        console.clear();
-        console.log(data);
         setSuccessFullMessage(data.result);
         setisEmailSubscribed(true);
+        setTimeout(() => {
+          setSuccessFullMessage(null);
+          setisEmailSubscribed(false);
+        }, 2000);
       }
     } catch (error) {
       setError('Subscription failed. Please try again.');
@@ -221,7 +221,7 @@ const Card = () => {
               </div>
             </div>
             <div className="flex flex-1 flex-col">
-              <div className="flex  justify-center items-center text-center  w-full">
+              <div className="flex  justify-center mb-2 items-center text-center  w-full">
                 <input
                   type="email"
                   className="input_email"
@@ -260,9 +260,9 @@ const Card = () => {
                   )}
                 </button>
               </div>
-              {error && <p className="text-red-500 mt-2 ">{error}</p>}
+              {error && <p className="text-red-500 ">{error}</p>}
               {successfullMessage && (
-                <p className="text-red-500 mt-2 ">{successfullMessage}</p>
+                <p className="text-red-500 ">{successfullMessage}</p>
               )}
             </div>
           </div>
