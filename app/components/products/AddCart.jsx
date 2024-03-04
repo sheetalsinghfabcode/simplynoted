@@ -22,7 +22,9 @@ export function AddCart({
   customFontName,
   variantsVal,
   metafields,
+  productId
 }) {
+  console.log(productData,"product data",productId);
   const {addressForm, setAddressForm, setEditAddress, defaultOption,setDefaultOption} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
@@ -356,6 +358,7 @@ export function AddCart({
     productTitle: productData?.product?.title
       ? productData.product.title
       : null,
+      productId:productId?productId:null,
     variant_id: apiVariantID ? apiVariantID : variantID,
     price: finalPrice ? finalPrice : productData?.price?.amount,
     productImg: productData?.image?.url,

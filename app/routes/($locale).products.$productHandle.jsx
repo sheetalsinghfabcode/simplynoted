@@ -142,7 +142,7 @@ const badRequest = (data) => json(data, {status: 400});
 
 export const action = async ({request, context, params}) => {
   const formData = await request.formData();
-console.log(params,"params logsss");
+// console.log(params,"params logsss");
   const email = formData.get('email');
   const password = formData.get('password');
 
@@ -163,7 +163,7 @@ console.log(params,"params logsss");
   try {
     const customerAccessToken = await doLogin(context, {email, password});
     session.set('customerAccessToken', customerAccessToken);
-    console.log(customerAccessToken,"customerAccessToken");
+    // console.log(customerAccessToken,"customerAccessToken");
     // Sync customerAccessToken with existing cart
     const result = await cart.updateBuyerIdentity({customerAccessToken});
     const path =  `http://localhost:3000/account`;
@@ -208,6 +208,7 @@ let parameterValue;
 export default function Product() {
   const {product, shop, recommended, variants, data, shippingData,customer} =
     useLoaderData();
+    // console.log(product,"product data route page  ");
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
@@ -366,6 +367,7 @@ export default function Product() {
           fontFamilyName={fontFamilyName}
           customFontName={customFontName}
           variantsVal={product}
+          productId={product.id}
         />
       )}
     </>
@@ -592,7 +594,7 @@ export  function LoginFunc() {
 
   const {shopName} = useLoaderData();
   const actionData = useActionData();
-  console.log(actionData?.customer,"actiondata");
+  // console.log(actionData?.customer,"actiondata");
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
   if(actionData?.customer?.id){
