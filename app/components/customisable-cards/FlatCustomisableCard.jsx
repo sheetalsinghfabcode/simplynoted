@@ -944,7 +944,7 @@ export default function FlatCustomisableCard({
         status: true,
       });
     }
-    setLoadingText('Saving in progress...')
+    setLoadingText('Saving in progress...');
     setValidationModalData((prevValidationData) => {
       return {
         ...prevValidationData,
@@ -965,12 +965,14 @@ export default function FlatCustomisableCard({
       {validationModalData.isModalOpen && (
         <Modal
           cancelLink={() => {
-            setErrorResponse({message: '', status: false});
-            setValidationModalData({
-              isModalOpen: false,
-              isNameValidated: false,
-              isUserTyping: false,
-            });
+            if (!isLoading) {
+              setErrorResponse({message: '', status: false});
+              setValidationModalData({
+                isModalOpen: false,
+                isNameValidated: false,
+                isUserTyping: false,
+              });
+            }
           }}
         >
           <div className="p-[35px]">
@@ -1050,7 +1052,9 @@ export default function FlatCustomisableCard({
                 type="button"
                 onClick={handleCustomCardSaveButton}
               >
-               {isLoading && validationModalData.isNameValidated && loadingText === 'Saving in progress...' ? (
+                {isLoading &&
+                validationModalData.isNameValidated &&
+                loadingText === 'Saving in progress...' ? (
                   <div className="flex gap-[4px] items-center">
                     <svg
                       width="20"
@@ -1340,7 +1344,9 @@ export default function FlatCustomisableCard({
                             <div
                               id="backFooterImageDiv"
                               className={`h-[45px] flex justify-center overflow-hidden ${
-                                (qr.isQrAdded && footerData.alignment === 'right') ? 'w-[35px] ' : 'w-0'
+                                qr.isQrAdded && footerData.alignment === 'right'
+                                  ? 'w-[35px] '
+                                  : 'w-0'
                               }`}
                             >
                               <img
