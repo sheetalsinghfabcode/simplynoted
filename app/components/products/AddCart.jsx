@@ -939,7 +939,7 @@ export function AddCart({
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
                   <DynamicButton
-                    className="bg-[#1b5299] sm:text-[12px] text-[10px] opacity-65 px-8 py-4 w-full "
+                    className="bg-[#1b5299] sm:text-[14px] text-[11px] opacity-65 px-8 py-4 w-full "
                     text= { (onSaveShip || editOrderValue?.data )  ? "Change Shipping Address": "Enter the shipping address for the package"}
                     onClickFunction={() => onpenAddCardModal()}
                   />
@@ -996,8 +996,8 @@ export function AddCart({
                     />
                   </div>
                 </div>
-                <div className="grid lg:grid-cols-2 gap-4">
-                  <div className="mt-2 ">
+                <div className="grid lg:grid-cols-2 lg:gap-4 gap-0">
+                  <div className="mt-[9px]">
                     <label
                       htmlFor=""
                       className="text-[#001a5f] font-bold text-sm "
@@ -1012,10 +1012,10 @@ export function AddCart({
                       required
                       value={formData.address1}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
+                      className=" border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
-                  <div className="mt-2">
+                  <div className="mt-[8px]">
                     <label
                       htmlFor=""
                       className="text-[#001a5f] font-bold text-sm "
@@ -1029,12 +1029,12 @@ export function AddCart({
                       placeholder="Address 2"
                       value={formData.address2}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
+                      className=" border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
                 </div>
-                <div className="grid lg:grid-cols-2 gap-4">
-                  <div>
+                <div className="grid lg:grid-cols-2 lg:gap-4 gap-0">
+                  <div className='mt-[12px]'>
                     <label
                       htmlFor=""
                       className="text-[#001a5f] font-bold text-sm "
@@ -1048,10 +1048,10 @@ export function AddCart({
                       placeholder="City"
                       value={formData.city}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
+                      className=" border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
-                  <div>
+                  <div className='mt-[12px]'>
                     <label
                       htmlFor=""
                       className="text-[#001a5f] font-bold text-sm "
@@ -1065,25 +1065,25 @@ export function AddCart({
                       placeholder="Postal Code"
                       value={formData.postalCode}
                       onChange={(e) => handleChange(e)}
-                      className="mt-2 border border-solid rounded border-black p-3 w-[100%]"
+                      className="border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
                 </div>
-                <div className="grid lg:grid-cols-2 gap-4">
-                  <div>
+                <div className="grid lg:grid-cols-2 lg:gap-4 gap-0">
+                  <div className='mt-[12px]'>
                     <label
-                      className="text-[#001a5f] font-bold text-sm "
+                      className="text-[#001a5f] font-bold text-sm"
                       htmlFor="country"
                     >
                       Country*
-                    </label>
+                    </label>  
                     <select
                       onChange={(e) => handleChange(e)}
                       value={formData.country}
                       itemID="country"
                       name="country"
                       id="country"
-                      className="appearance-none  rounded w-full py-2 px-3 border mt-2 border-black leading-tight focus:outline-none focus:shadow-outline"
+                      className="appearance-none h-[42px]  rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline"
                     >
                       {location.countries.map((country, index) => (
                         <option key={index} value={country.country}>
@@ -1092,7 +1092,7 @@ export function AddCart({
                       ))}
                     </select>
                   </div>
-                  <div>
+                  <div className='mt-[12px]'>
                     <label
                       className="text-[#001a5f] font-bold text-sm "
                       htmlFor="country"
@@ -1103,7 +1103,7 @@ export function AddCart({
                       onChange={(e) => handleChange(e)}
                       value={formData.state}
                       name="state"
-                      className={`appearance-none  rounded w-full py-2 px-3 border mt-2 border-black leading-tight focus:outline-none focus:shadow-outline  ${
+                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${
                         errors.state ? 'border-red-500' : ''
                       }`}
                       id="state"
@@ -1117,23 +1117,23 @@ export function AddCart({
                         ))}
                     </select>
                     {errors.state && (
-                      <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                      <p className="text-red-500  text-[14px] font-semibold italic">
                         {errors.state}
                       </p>
                     )}
                   </div>
                 </div>
-                <div className="flex items-center  mt-[24px] gap-[8px] justify-between">
+                <div className="md:flex grid items-center  mt-[24px] gap-[8px] justify-between">
                   <div>
                     <DynamicButton
-                      className="bg-[#ef6e6e] h-[40px] w-full  "
+                      className="bg-[#ef6e6e] !w-[190px] h-[40px]"
                       text="Cancel"
                       onClickFunction={() => closeModal()}
                     />
                   </div>
                   <div>
                     <DynamicButton
-                      className="bg-[#1b5299] h-[40px] w-full  "
+                      className="bg-[#1b5299] !w-[190px] h-[40px]"
                       text="Save Address"
                       onClickFunction={() => OnSaveClickShipAddress()}
                     />

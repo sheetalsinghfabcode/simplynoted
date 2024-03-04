@@ -60,6 +60,7 @@ export default function Article() {
   const {article, formattedDate} = useLoaderData();
   const {title, image, contentHtml, author} = article;
 
+
   return (
     <>
       {/* <PageHeader heading={title} /> */}
@@ -72,7 +73,7 @@ export default function Article() {
         <DynamicTitle
           
           title={title}
-          className={'mt-[15px] !text-[22px] '}
+          className={'mt-[15px] !text-[30px] '}
         />
         <div>
           {image && (

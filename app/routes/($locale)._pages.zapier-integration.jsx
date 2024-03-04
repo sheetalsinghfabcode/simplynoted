@@ -40,7 +40,7 @@ export default function Zapier() {
   return (
     <div className="w-full">
      
-      <div className="xl:flex relative items-center top-10 justify-center global-max-width-handler lg:left-[30px]">
+      <div className="xl:flex relative items-center global-section-divider top-10 justify-center global-max-width-handler lg:left-[30px]">
         <div className="">
           <div className="md:flex flex xl:justify-normal justify-center">
             <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" />
@@ -206,13 +206,13 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-      <div className="xl:flex mt-10 items-center w-full relative  justify-center global-max-width-handler lg:left-[30px]">
+      <div className="xl:flex mt-10 items-center global-section-divider w-full relative  justify-center global-max-width-handler lg:left-[30px]">
            <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
           <img className="w-full 2xl:h-[53rem] h-[45rem]" src={CanvasOne} alt="Computer man" />
         </div> 
         <div className="">
           <div className="xl:mt-5 mt-14 flex xl:justify-normal xl:w-[490px] w-[100%] leading-[48px] font-bold justify-center">
-            <h2 className="xl:text-[40px] md:text-[32px] sm:text-[26px] xl:text-left text-center text-[18px]  text-[#001a5f] font-bold md:leading-[60px] leading-8 ">
+            <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal ">
               Instantly Integrate With 1,000s of Applications
             </h2>
           </div>
@@ -274,7 +274,7 @@ export default function Zapier() {
           />
         </div>
       </div>
-      <div className="xl:flex  items-center relative  justify-center mx-auto 3xl:w-[85%] w-full ">
+      <div className="xl:flex  items-center relative  global-section-divider justify-center mx-auto 3xl:w-[85%] w-full ">
       <div className="absolute 2xl:top-[27rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
           <img className="w-full 2xl:h-[54rem] h-[42rem]" src={CanvasTow} alt="Computer man" />
         </div>

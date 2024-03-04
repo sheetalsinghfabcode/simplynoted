@@ -23,7 +23,7 @@ const APIIntegration = () => {
   return (
     <APIIntegrationProvider>
       <APIHeader />
-      <div className="flex md:gap-[20px] mt-[70px]  mx-5 bg-white md:p-[50px] p-[0]  rounded-3xl">
+      <div className="md:gap-[20px]  mx-5 bg-white md:p-[50px] p-[0]  rounded-3xl">
         <APIOptionsSelector />
         <SelectedAPIDetails />
       </div>

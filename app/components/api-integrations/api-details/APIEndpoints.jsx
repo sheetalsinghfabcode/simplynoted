@@ -2,7 +2,7 @@
 const APIEndpoints = () => {
   return (
     <div className="">
-      <h2 className="text-[#001a5f] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px]">
+      <h2 className="text-[#001a5f] mt-[37px] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px]">
         <span className="text-blue-500"> 1.</span> API ENDPOINTS
       </h2>
       <div className="text-[16px] leading-[27px] overflow-x-auto color-[black]">

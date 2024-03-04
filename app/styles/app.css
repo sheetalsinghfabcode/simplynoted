@@ -1510,7 +1510,7 @@ body {
   color: #000 !important;
   border-bottom: 1px solid #d3d3d3;
   padding: 25px 20px;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 .Delight-customers {
@@ -1889,6 +1889,7 @@ body {
 }
 .icon-transition {
   transition: transform 0.5s ease-in-out;
+
 }
 /******************* Partner-referral ****************************/
 .wrap-referral-form {

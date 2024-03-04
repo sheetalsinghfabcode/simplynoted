@@ -56,7 +56,7 @@ export function Layout({children, layout}) {
 
   return (
     <>
-      <div className="flex flex-col md:min-h-screen min-h-0 w-full overflow-hidden">
+      <div className="flex flex-col  w-full overflow-hidden">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -890,10 +890,10 @@ const FlyoutLink = ({children, href, FlyoutContent, data}) => {
             <div className="absolute -top-6 left-0 right-0 h-6 bg-transparent" />
             <div className="absolute left-1/2 top-0 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rotate-45 bg-white" />
             <FlyoutContent props={data} />
-          </motion.div>
+           </motion.div>
         )}
-      </AnimatePresence>
-    </div>
+      </AnimatePresence> 
+    </div> 
   );
 };
 
@@ -913,10 +913,9 @@ const PricingContent = ({props}) => {
         <div key={item.id} className="mb-3 space-y-3 ">
           {item.to === "/customise-your-card"?
           
-          <button className="block text-sm font-[400]" onClick={()=>onCLickCheck()}
+          <button className="block text-sm hover:text-blue-700 font-[400]" onClick={()=>onCLickCheck()}
           >
             {item.title}
-
           </button>:
           <Link
             to={item.to}

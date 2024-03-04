@@ -3,7 +3,7 @@ import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
 function Orders() {
   return (
     <div>
-    <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px] md:mt-[0px] mt-[37px] font-bold ml-2">
+    <h2 className="text-[#001a5f] font-tiempos sm:text-[33px] text-[20px] md:mt-[37px] mt-[37px] font-bold ml-2">
       <span className="text-blue-500">5.</span> ORDERS
     </h2>
     <div>

@@ -30,7 +30,7 @@ export async function loader({request, context}) {
   ``;
 }
 export default function Shopify() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Shopify() {
 
   return (
     <div className="w-full">
-      <div className="xl:flex relative items-center top-10 justify-center global-max-width-handler lg:left-[30px]">
+      <div className="xl:flex relative items-center top-10 global-section-divider justify-center global-max-width-handler lg:left-[30px]">
         <div className="2xl:w-[75%] w-full ">
           <div className="md:flex flex xl:justify-normal justify-center">
             <img src={shopifys} />
@@ -60,13 +60,14 @@ export default function Shopify() {
           </div>
           <div className="mt-5  xl:justify-normal  xl:flex hidden  justify-center xl:order-first">
             <div className="flex justify-center">
-            <DynamicButton
+              <DynamicButton
                 text="INTEGRATE NOW"
                 className="INTEGRATE  text-[18px] font-bold text-white py-[30px] px-[76px] order-1	rounded"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')
+                }
               />
-              
             </div>
           </div>
         </div>
@@ -78,7 +79,7 @@ export default function Shopify() {
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden justify-center">
-            <p className="sm:w-3/4 w-full xl:text-left text-justify sm:text-center texts mt-8">
+            <p className="max-w-[100%]  xl:text-left text-justify texts  mt-8 ">
               Delight your customers with automated real handwritten notes from
               your Shopify store. A personalized handwritten note makes the
               customer experience so much more memorable, and is a great way to
@@ -88,13 +89,14 @@ export default function Shopify() {
           </div>
           <div className=" flex xl:justify-normal justify-center  xl:hidden xl:order-first">
             <div className="flex justify-center">
-            <DynamicButton
+              <DynamicButton
                 text="INTEGRATE NOW"
                 className="INTEGRATE  text-[16px] font-bold text-white py-[22px] px-[40px] order-1	rounded"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/developer/public-invite/27690/a14b419f142ef350556c85f9ccafe775/?context=4136105')
+                }
               />
-             
             </div>
           </div>
         </div>
@@ -212,7 +214,7 @@ export default function Shopify() {
           </div>
         </div>
       </div>
-      <div className="xl:flex !mt-10 items-center w-full relative  justify-center global-max-width-handler lg:left-[30px] ">
+      <div className="xl:flex items-center w-full relative global-section-divider  justify-center global-max-width-handler lg:left-[30px] ">
         <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
           <img
             className="w-full 2xl:h-[53rem] h-[45rem]"
@@ -222,9 +224,9 @@ export default function Shopify() {
         </div>
         <div className="">
           <div className="xl:mt-5 mt-14 flex xl:justify-normal xl:w-[490px] w-[100%] leading-[48px] font-bold justify-center">
-            <h2 className="xl:text-[40px] md:text-[32px] sm:text-[26px] xl:text-left text-center text-[18px]  text-[#001a5f] font-bold md:leading-[60px] leading-8 ">
+            <h2 class="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal">
               Send one or send
-              <span className="font-beauty text-6xl font-bold">thousands</span>
+              <span class="font-beauty text-6xl font-bold">thousands</span>
             </h2>
           </div>
           <div className="xl:justify-normal  xl:flex hidden justify-center">
@@ -294,7 +296,7 @@ export default function Shopify() {
         </div>
       </div>
 
-      <div className="xl:flex  items-center relative  justify-center mx-auto 3xl:w-[85%] w-full ">
+      <div className="xl:flex  items-center relative global-section-divider  justify-center mx-auto 3xl:w-[85%] w-full ">
         <div className="absolute 2xl:top-[24rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
           <img
             className="w-full 2xl:h-[56rem] h-[42rem]"

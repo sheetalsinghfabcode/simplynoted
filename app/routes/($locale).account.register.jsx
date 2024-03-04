@@ -99,13 +99,15 @@ export default function Register() {
   return (
     <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
       <div className="max-w-md w-full">
-        <h1 className="text-4xl block text-blue-900 text-2xl">
-          Create an Account.
+        <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">
+          Create an Account 
         </h1>
+        <div className='flex justify-center'>
         <img
           className="w-64 mt-3"
           src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
         />
+        </div>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form
           method="post"
@@ -113,8 +115,8 @@ export default function Register() {
           className="pt-6 pb-8 mt-4 mb-[-100px] space-y-3"
         >
           {actionData?.formError && (
-            <div className="flex items-center justify-center mb-6 bg-zinc-500">
-              <p className="m-4 text-s text-contrast">{actionData.formError}</p>
+            <div className="flex items-center justify-left">
+              <p className="text-[red]">{actionData.formError}</p>
             </div>
           )}
           <div>

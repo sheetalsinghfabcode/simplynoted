@@ -50,7 +50,7 @@ export default function Recover() {
   const isSubmitted = actionData?.resetRequested;
 
   return (
-    <div className="flex justify-center my-24 px-4">
+    <div className="flex justify-center mt-[72px] px-4">
       <div className="max-w-md w-full">
         {isSubmitted ? (
           <>
@@ -63,8 +63,8 @@ export default function Recover() {
           </>
         ) : (
           <>
-            <h1 className="text-4xl">Forgot Password.</h1>
-            <p className="mt-4">
+            <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">Forgot Password.</h1>
+            <p className="mt-4 ">
               Enter the email address associated with your account to receive a
               link to reset your password.
             </p>
@@ -74,13 +74,7 @@ export default function Recover() {
               noValidate
               className="pt-6 pb-8 mt-4 mb-4 space-y-3"
             >
-              {actionData?.formError && (
-                <div className="flex items-center justify-center mb-6 bg-zinc-500">
-                  <p className="m-4 text-s text-contrast">
-                    {actionData.formError}
-                  </p>
-                </div>
-              )}
+              
               <div>
                 <input
                   className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
@@ -102,6 +96,13 @@ export default function Recover() {
                     );
                   }}
                 />
+                {actionData?.formError && (
+                <div className="flex items-left text-left  text-red">
+                  <p className="text-[red] text-red">
+                    {actionData.formError}
+                  </p>
+                </div>
+              )}
                 {nativeEmailError && (
                   <p className="text-red-500 text-xs">
                     {nativeEmailError} &nbsp;
@@ -110,7 +111,7 @@ export default function Recover() {
               </div>
               <div className="flex items-center justify-between">
                 <button
-                  className="bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full"
+                  className="bg-[#ef6e6e] text-contrast rounded py-2 px-4 h-[45px] focus:shadow-outline block w-full"
                   type="submit"
                 >
                   Request Reset Link

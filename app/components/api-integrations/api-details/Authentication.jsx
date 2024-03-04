@@ -3,7 +3,7 @@ function Authentication() {
   return (
     <div>
         <div>
-          <h2 className="text-[#001a5f] font-tiempos  md:mt-[0px] mt-[37px]  font-bold ml-2 sm:text-[33px] text-[20px]">
+          <h2 className="text-[#001a5f] font-tiempos  md:mt-[37px] mt-[37px]  font-bold ml-2 sm:text-[33px] text-[20px]">
             <span className="text-blue-500">2.</span> AUTHENTICATION
           </h2>
           <div className="mt-[55px]">
