@@ -69,7 +69,7 @@ const WalletPlans = ({
             >
               <DynamicButton
                 text={`${product.node.title} PLAN PREPAID PACKAGES`}
-                className="bg-[#EF6E6E]  text-[14px] sm:text-[18px] rounded-[5px] py-[12px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]   uppercase mx-auto  px-2 text-left"
+                className="bg-[#EF6E6E] whitespace-nowrap  text-[14px] sm:text-[18px] rounded-[5px] py-[12px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]   uppercase mx-auto  px-2 text-left"
               />
               <div className="flex flex-col gap-[16px]">
                 {product.node.variants.edges

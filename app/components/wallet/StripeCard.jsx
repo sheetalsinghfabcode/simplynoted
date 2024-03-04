@@ -69,7 +69,7 @@ const StripeCard = ({
       <CardElement options={CARD_OPTIONS} className="m-5" />
       </div>
 
-      <div className="flex md:justify-center justify-normal w-full gap-[10px] items-center mt-[24px] mb-[16px]">
+      <div className="flex md:justify-center  justify-normal w-full gap-[10px] items-center mt-[24px] mb-[16px]">
         <button
           type="submit"
           className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "

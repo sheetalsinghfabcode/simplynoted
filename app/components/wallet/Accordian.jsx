@@ -231,7 +231,6 @@ const Accordion = ({
     // Open billing address section if there are any errors
     if (!isValid) {
       setIsBillingOpen(true);
-      setIsCardInfoOpen(false);
     }
     return isValid;
   };
@@ -419,7 +418,7 @@ const Accordion = ({
       <div
         className={`w-full ${
           paymentLoader && 'opacity-40'
-        }  p-[20px]  border border-solid border-black max-w-[640px] mx-auto`}
+        }  p-[20px]  border border-solid border-black mt-[14px] max-w-[640px] mx-auto`}
       >
         <div
           className="flex items-center justify-between cursor-pointer"
@@ -655,7 +654,7 @@ const Accordion = ({
                     </div>
                   ))}
                 {savedCard && (
-                  <div className="savedCard flex items-start justify-between mb-[12px]">
+                  <div className="savedCard flex items-start justify-between mb-2 ">
                     <div>
                       <button
                         className="bg-[#1b5299] w-[200px] text-[#fff] p-2 rounded"

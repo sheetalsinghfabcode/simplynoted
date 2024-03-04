@@ -24,8 +24,6 @@ const StripeModal = ({
 
   const [errors, setErrors] = useState([]);
 
-  
-
   useEffect(() => {
     const fullName = localStorage.getItem('SNFullName');
     const userEmail = localStorage.getItem('SnEmail');
@@ -114,7 +112,7 @@ const StripeModal = ({
             <>
               <div className="w-[100%] mt-3">
                 {!savedCard && (
-                  <>
+                  <div className="mb-11">
                     <div className="grid-rows-2  grid gap-3">
                       <div>
                         <label className="font-bold" htmlFor="">
@@ -253,7 +251,7 @@ const StripeModal = ({
                         )}
                       </div>
                     </div>
-                  </>
+                  </div>
                 )}
                 <Elements stripe={stripe}>
                   <StripeCard
@@ -263,8 +261,6 @@ const StripeModal = ({
                   />
                 </Elements>
               </div>
-
-
             </>
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>
           </div>

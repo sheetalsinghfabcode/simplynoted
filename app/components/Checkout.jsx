@@ -818,7 +818,7 @@ export function CheckoutData({
               children={
                 <Elements stripe={stripe}>
                   {!savedCard && (
-                    <div className="w-[100%] p-3">
+                    <div className="mb-2 w-[100%] p-3">
                       <div className="lg:grid-rows-2 grid gap-3 ">
                         <div>
                           <label htmlFor="" className='text-gray-700 text-sm font-bold mb-2'>Full Name</label>

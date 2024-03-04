@@ -8,7 +8,7 @@ import {
   useOutlet,
   useNavigate,
 } from '@remix-run/react';
-import {Suspense, useEffect, useState,useRef} from 'react';
+import {Suspense, useEffect, useState, useRef} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
 import {flattenConnection} from '@shopify/hydrogen';
 import {
@@ -73,14 +73,14 @@ export async function loader({request, context, params}) {
   }
   // let custmo
   // if(customerAccessToken){
-    const customer = await getCustomer(context, customerAccessToken);
+  const customer = await getCustomer(context, customerAccessToken);
 
-    const heading = customer
-      ? customer.result
-        ? `Welcome, ${customer.firstName}.`
-        : `Account`
-      : 'Account Details';
-  
+  const heading = customer
+    ? customer.result
+      ? `Welcome, ${customer.firstName}.`
+      : `Account`
+    : 'Account Details';
+
   // }
 
   return defer(
@@ -237,21 +237,26 @@ function Account({customer, heading, featuredData}) {
     } catch (error) {}
   }
 
-  const [key,setKey] = useState("")
-  const [keyModal,setKeyModal] = useState(false)
+  const [key, setKey] = useState('');
+  const [keyModal, setKeyModal] = useState(false);
 
   const textToCopyRef = useRef(null);
 
   const copyTextToClipboard = () => {
     const textToCopy = textToCopyRef.current.textContent;
-    navigator.clipboard.writeText(textToCopy)
+    navigator.clipboard
+      .writeText(textToCopy)
       .then(() => {
         alert('Text copied to clipboard!');
       })
-      .catch(err => {
+      .catch((err) => {
         console.error('Could not copy text: ', err);
       });
   };
+
+  useEffect(() => {
+    generateApiKey();
+  }, [customer]);
 
   const generateApiKey = async () => {
     try {
@@ -269,8 +274,7 @@ function Account({customer, heading, featuredData}) {
 
       if (response.ok) {
         const data = await response.json();
-        setKey(data.result)
-    setKeyModal(true)
+        setKey(data.result);
 
         localStorage.setItem('apiKey', data.result);
       } else {
@@ -309,10 +313,10 @@ function Account({customer, heading, featuredData}) {
             <>
               {tabs &&
                 tabs.length > 0 &&
-                tabs?.map((tab, i) => ( 
-                  <div className='' key={i}>
+                tabs?.map((tab, i) => (
+                  <div className="" key={i}>
                     {i === 1 || i === 5 ? (
-                      <a 
+                      <a
                         target="_blank"
                         href={
                           i === 1
@@ -397,7 +401,10 @@ function Account({customer, heading, featuredData}) {
                   buttonText="Get Started"
                   onClick={() => navigate('/zapier-integration')}
                   showDownloadButton={true}
-                  onDownload={() => generateApiKey()}
+                  onDownload={() => {
+                    setKeyModal(true);
+                    generateApiKey();
+                  }}
                   downloadButtonText="Generate API Key"
                 />
                 <CardComponent
@@ -417,7 +424,7 @@ function Account({customer, heading, featuredData}) {
             )}
             <ApiKeyModal
               title="Generated Api Key"
-              closeModal={()=>setKeyModal(false)}
+              closeModal={() => setKeyModal(false)}
               isOpen={keyModal}
               close={true}
               body={key}
