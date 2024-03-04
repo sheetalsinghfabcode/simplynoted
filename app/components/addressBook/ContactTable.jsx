@@ -374,6 +374,7 @@ const ContactTable = ({
           anniversary: modifiedData.Anniversary || '',
         }),
       });
+      debugger
 
       if (response.ok) {
         const responseData = await response.json();
@@ -395,6 +396,7 @@ const ContactTable = ({
         file.current.value = '';
         throw new Error('Network response was not ok');
       }
+      debugger
     } catch (error) {
       setTimeout(() => {
         setShowLoader(false);
@@ -495,9 +497,9 @@ const ContactTable = ({
       serErrorContent([
         'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
       ]);
-      setTimeout(() => {
-        setErrorModal(false);
-      }, 3000);
+      // setTimeout(() => {
+      //   setErrorModal(false);
+      // }, 3000);
       return;
     }
 
@@ -542,10 +544,10 @@ const ContactTable = ({
       serErrorContent(errors);
       setErrorModal(true);
       setSelectedFile(null);
-      setTimeout(() => {
-        setErrorModal(false);
-        serErrorContent([]);
-      }, 4000);
+      // setTimeout(() => {
+      //   setErrorModal(false);
+      //   serErrorContent([]);
+      // }, 4000);
     }
   };
   const closeModal = () => {
@@ -688,7 +690,7 @@ const ContactTable = ({
                     View bulk upload instructions.
                   </span>
                   {selectedFile && (
-                    <div className="mt-2">
+                    <div className="mt-2 mx-auto">
                       <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
                         {selectedFile?.name}
                       </span>

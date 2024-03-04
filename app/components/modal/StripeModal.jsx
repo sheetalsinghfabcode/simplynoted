@@ -114,7 +114,7 @@ const StripeModal = ({
             <>
               <div className="w-[100%] mt-3">
                 {!savedCard && (
-                  <>
+                  <div className='mb-2'>
                     <div className="grid-rows-2  grid gap-3">
                       <div>
                         <label className="font-bold" htmlFor="">
@@ -253,7 +253,7 @@ const StripeModal = ({
                         )}
                       </div>
                     </div>
-                  </>
+                  </div>
                 )}
                 <Elements stripe={stripe}>
                   <StripeCard
