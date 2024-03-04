@@ -766,12 +766,14 @@ export default function FoldedCustomisableCard({
       {validationModalData.isModalOpen && (
         <Modal
           cancelLink={() => {
-            setErrorResponse({message: '', status: false});
-            setValidationModalData({
-              isModalOpen: false,
-              isNameValidated: false,
-              isUserTyping: false,
-            });
+            if (!isLoading) {
+              setErrorResponse({message: '', status: false});
+              setValidationModalData({
+                isModalOpen: false,
+                isNameValidated: false,
+                isUserTyping: false,
+              });
+            }
           }}
         >
           <div className="p-[35px]">
@@ -851,7 +853,9 @@ export default function FoldedCustomisableCard({
                 type="button"
                 onClick={handleCustomCardSaveButton}
               >
-                {isLoading && validationModalData.isNameValidated && loadingText === 'Saving in progress...' ? (
+                {isLoading &&
+                validationModalData.isNameValidated &&
+                loadingText === 'Saving in progress...' ? (
                   <div className="flex gap-[4px] items-center">
                     <svg
                       width="20"

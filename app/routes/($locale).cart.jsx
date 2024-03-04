@@ -203,15 +203,12 @@ export default function AddCartFunc() {
     // delete cartData[index];
     // }
 
-    setTimeout(() => {
-      setCircleLoader(true);
-    }, 1600);
     localStorage.setItem('mydata', JSON.stringify(cartData));
     localStorage.setItem('cartCount', JSON.stringify(cartData.length));
     setDeleteModal(false);
     setTimeout(() => {
       setSuccessfullLoader(false);
-      setCircleLoader(false);
+      setOperation(null);
     }, 1300);
   }
 
@@ -445,6 +442,15 @@ export default function AddCartFunc() {
       <div className="global-max-width-handler">
         {showCartPage ? (
           <>
+            {sucessfullLoader && operation === 'Deleting Order' && (
+              <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+                <CircularLoader
+                  textColor="text-white"
+                  title={operation}
+                  color="#ef6e6e"
+                />
+              </div>
+            )}
             <div className="w-full h-full gap-2 md:mt-14">
               {cartData && cartData.length > 0 ? (
                 <>
@@ -463,7 +469,7 @@ export default function AddCartFunc() {
                           className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] shadow-inset-custom"
                         >
                           {sucessfullLoader &&
-                            operation !== 'Adding Gift Card...' && (
+                            operation === 'Deleting Gift Card...' && (
                               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
                                 <CircularLoader
                                   textColor="text-white"
