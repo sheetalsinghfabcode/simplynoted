@@ -643,7 +643,7 @@ const PaymentModal = ({
 
               <div className="mt-4">
                 <div
-                  className="flex items-center justify-between cursor-pointer"
+                  className="flex items-center border-b border-solid border-black pb-[15px] justify-between cursor-pointer"
                   onClick={toggleCardInfo}
                 >
                   <span className="font-bold md:text-[20px] text-[17px] text-[#001a5f]">

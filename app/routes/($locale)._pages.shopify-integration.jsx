@@ -198,7 +198,7 @@ export default function Shopify() {
       </div>
       <div className="w-full hidden xl:block relative h-[459px] ">
         <div className="flex">
-          <div className="absolute left-[-150px] top-[3px]">
+          <div className="absolute top-[3px]">
             <img
               className="max-w-[500px] "
               src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
@@ -425,9 +425,9 @@ export default function Shopify() {
           </div>
         </div>
       </div>
-      <div className="absolute left-[-8rem] lg:block hidden">
+      <div className="absolute left-[11px] w-[251px] lg:block hidden">
         <img
-          className="max-w-[540px] rotate-90"
+          className="rotate-90"
           src="https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
         />
       </div>

@@ -617,7 +617,7 @@ const ContactTable = ({
 
               <div
                 ref={uploadBulkAddressRef}
-                className={`absolute md:right-[165px]  right-[30px] sm:right-[246px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
+                className={`absolute md:right-[165px] z-10 right-[30px] sm:right-[246px] md:top-[57px] top-[122px] mt-[-2px] rounded-md shadow-lg bg-white ring-1 w-full max-w-[240px] mx-auto ring-black ring-opacity-0 focus:outline-none
                   overflow-hidden  ${
                     uploadBulkAddress
                       ? 'max-h-[500px] transition-max-h duration-1000 ease-in-out'
@@ -712,52 +712,6 @@ const ContactTable = ({
               </div>
             </div>
           </div>
-
-          {/* <div className="flex md:flex-row flex-col self-center gap-[15px] justify-center ">
-              <div
-                className={`md:w-[310px]  w-full border-2 border-solid border-[#000] py-[5px]`}
-              >
-                <div className="flex flex-col">
-                  <h2 className="font-bold md:text-[16px] text-[12px] px-[12px] pt-[10px] leading-[120%] text-[#333]">
-                    Bulk Address Upload
-                  </h2>
-                  <input
-                    onChange={handleFileChange}
-                    type="file"
-                    accept=".csv"
-                    ref={file}
-                    className="p-[10px] cursor-pointer"
-                  />
-                  <a
-                    href="https://api.simplynoted.com/docs/bulk-template"
-                    className="md:text-[14px] text-[12px] px-[12px] font-bold underline"
-                  >
-                    Download bulk address template
-                  </a>
-                  <span
-                    onClick={openModal}
-                    className="font-bold  md:text-[14px] text-[12px] px-[12px] cursor-pointer underline"
-                  >
-                    View Instructions
-                  </span>
-                </div>
-                {selectedFile && (
-                  <DynamicButton
-                    text="Upload"
-                    className="bg-[#ef6e6e] w-full max-w-[292px] !mt-[10px] !ml-[10px] "
-                    onClickFunction={() => handleUploadClick()}
-                  />
-                )}
-              </div>
-              <div className="flex items-center  md:items-end justify-center md:justify-end lg:mt-[0px] mt-[17px] md:mb-[0px] mb-[17px]">
-                <DynamicButton
-                  className="bg-[#1b5299] px-[50px] py-[14px] text-[14px] font-normal "
-                  text="+ New Address"
-                  onClickFunction={() => setAddressForm(true)}
-                />
-              </div>
-            </div> */}
-
           {!editAddress && (
             <>
               <div className="md:flex grid  md:gap-[16px] gap-0 items-center sm:mt-[0px] mb-[14px]">
