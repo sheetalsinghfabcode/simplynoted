@@ -22,9 +22,9 @@ export function AddCart({
   customFontName,
   variantsVal,
   metafields,
-  productId
+  productId,
 }) {
-  console.log(productData,"product data",productId);
+  
   const {addressForm, setAddressForm, setEditAddress,setDefaultAddressType,showLoader} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
@@ -188,7 +188,6 @@ export function AddCart({
     return matchedVariant;
   };
 
- 
   const handleChange = (e) => {
     const {name, value} = e.target;
     if (name === 'country') {
@@ -351,7 +350,7 @@ export function AddCart({
     productTitle: productData?.product?.title
       ? productData.product.title
       : null,
-      productId:productId?productId:null,
+    productId: productId ? productId : null,
     variant_id: apiVariantID ? apiVariantID : variantID,
     price: finalPrice ? finalPrice : productData?.price?.amount,
     productImg: productData?.image?.url,
@@ -626,9 +625,7 @@ export function AddCart({
     <div className="relative global-max-width-handler">
       {loader && (
         <div className="absolute top-[50%] left-[50%]">
-          <CircularLoader
-          title="Loading Address"
-          color="#ef6e6e" />
+          <CircularLoader title="Loading Address" color="#ef6e6e" />
         </div>
       )}
 
@@ -636,7 +633,6 @@ export function AddCart({
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm
-            
               customerID={customerid}
               setAddressForm={setAddressForm}
               setEditAddress={setEditAddress}
@@ -660,7 +656,7 @@ export function AddCart({
                       className="bg-[#1b5299] text-[14px] small:font-normal font-light small:px-[15px] px-[8px] py-2.5 "
                       text="+ New Address"
                       onClickFunction={() => {
-                        setDefaultAddressType("return")
+                        setDefaultAddressType('return');
                         onNewAddressClick();
                       }}
                     />
@@ -719,7 +715,7 @@ export function AddCart({
                           text="+ New Address"
                           onClickFunction={() => {
                             setAddressForm(true);
-                            setDefaultAddressType("recipient")
+                            setDefaultAddressType('recipient');
                             setsearchData(null);
                             setsearchData2(null);
                           }}
@@ -932,7 +928,11 @@ export function AddCart({
                 <div className="buttonDiv my-2">
                   <DynamicButton
                     className="bg-[#1b5299] sm:text-[14px] text-[11px] opacity-65 px-8 py-4 w-full "
-                    text= { (onSaveShip || editOrderValue?.data )  ? "Change Shipping Address": "Enter the shipping address for the package"}
+                    text={
+                      onSaveShip || editOrderValue?.data
+                        ? 'Change Shipping Address'
+                        : 'Enter the shipping address for the package'
+                    }
                     onClickFunction={() => onpenAddCardModal()}
                   />
                 </div>
@@ -944,14 +944,14 @@ export function AddCart({
           <Modal
             children={
               <div className="w-[100%]  p-3 mt-3">
+                <div className="lg:text-[30px] sm:text-[26px]  text-[20px] text-[#001a5f] font-bold flex justify-center pb-[25px]">
+                  BULK SHIPPING ADDRESS
+                </div>
                 {reqFields && (
                   <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
                     Please add all fields with * that are Mandatory
                   </p>
                 )}
-                <div className="lg:text-[30px] sm:text-[26px]  text-[20px] text-[#001a5f] font-bold flex justify-center pb-[25px]">
-                  BULK SHIPPING ADDRESS
-                </div>
                 <div className="grid lg:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -1026,7 +1026,7 @@ export function AddCart({
                   </div>
                 </div>
                 <div className="grid lg:grid-cols-2 lg:gap-4 gap-0">
-                  <div className='mt-[12px]'>
+                  <div className="mt-[12px]">
                     <label
                       htmlFor=""
                       className="text-[#001a5f] font-bold text-sm "
@@ -1043,7 +1043,7 @@ export function AddCart({
                       className=" border border-solid rounded border-black p-3 w-[100%]"
                     />
                   </div>
-                  <div className='mt-[12px]'>
+                  <div className="mt-[12px]">
                     <label
                       htmlFor=""
                       className="text-[#001a5f] font-bold text-sm "
@@ -1062,13 +1062,13 @@ export function AddCart({
                   </div>
                 </div>
                 <div className="grid lg:grid-cols-2 lg:gap-4 gap-0">
-                  <div className='mt-[12px]'>
+                  <div className="mt-[12px]">
                     <label
                       className="text-[#001a5f] font-bold text-sm"
                       htmlFor="country"
                     >
                       Country*
-                    </label>  
+                    </label>
                     <select
                       onChange={(e) => handleChange(e)}
                       value={formData.country}
@@ -1084,7 +1084,7 @@ export function AddCart({
                       ))}
                     </select>
                   </div>
-                  <div className='mt-[12px]'>
+                  <div className="mt-[12px]">
                     <label
                       className="text-[#001a5f] font-bold text-sm "
                       htmlFor="country"

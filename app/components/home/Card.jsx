@@ -208,7 +208,7 @@ const Card = () => {
         </div>
 
         <div className="bg-white text-center mt-[-11rem] mb-[-12px] ">
-          <div className="md:w-[50%]   w-[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
+          <div className="md:w-[50%]   w-[90%] flex flex-wrap  mx-auto  pt-60">
             <img className="w-full" src={pen} alt="LogoSimplinotedpic" />
           </div>
           

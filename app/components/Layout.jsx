@@ -56,7 +56,7 @@ export function Layout({children, layout,isLoggedIn}) {
 
   return (
     <>
-      <div className="flex flex-col  w-full overflow-hidden">
+      <div className="flex flex-col  w-full">
         <div className="">
           <a href="#mainContent" className="sr-only">
             Skip to content
@@ -519,7 +519,7 @@ function MenuMobileNav({menu, onClose}) {
                                 return false;
                               }}
                             >
-                              <li className=' mt-[7px] mb-[6px]'>Video</li>
+                              <li className='mb-[6px]'>Video</li>
                             </button>
                           </Link>
                           <Link to="/news">
