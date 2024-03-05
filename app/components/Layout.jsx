@@ -51,7 +51,7 @@ import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 import Breadcrumbs from './Breadcrumbs';
 
-export function Layout({children, layout}) {
+export function Layout({children, layout,isLoggedIn}) {
   const {headerMenu, footerMenu} = layout;
 
   return (
@@ -62,7 +62,7 @@ export function Layout({children, layout}) {
             Skip to content
           </a>
         </div>
-        {headerMenu && <Header title={layout.shop.name} menu={headerMenu} />}
+        {headerMenu && <Header isLoggedIn={isLoggedIn} title={layout.shop.name} menu={headerMenu} />}
         <main role="main" id="mainContent" className="flex-grow">
           {children}
         </main>
@@ -74,7 +74,7 @@ export function Layout({children, layout}) {
   );
 }
 
-function Header({title, menu}) {
+function Header({title, menu,isLoggedIn}) {
   const isHome = useIsHomePath();
 
   const {
@@ -120,6 +120,7 @@ function Header({title, menu}) {
       )}
       <DesktopHeader
         isHome={isHome}
+        isLoggedIn={isLoggedIn}
         title={
           <div>
             <img src={nav_logo} />
@@ -131,6 +132,7 @@ function Header({title, menu}) {
 
       <MobileHeader
         isHome={isHome}
+        isLoggedIn={isLoggedIn}
         title={
           <div style={{minWidth: '140px'}}>
             <img
@@ -663,7 +665,7 @@ function MobileHeader({title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({isHome, menu}) {
+function DesktopHeader({isHome, menu,isLoggedIn}) {
   const [isInitialRender, setIsInitialRender] = useState(true);
 
   const stateContext = useStateContext() || {
@@ -817,14 +819,14 @@ function DesktopHeader({isHome, menu}) {
             </div>
           ) : (
             <DynamicButton
-              text={customerId ? 'Account' : 'Login'}
+              text={isLoggedIn ? 'Account' : 'Login'}
               className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-base !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
                 console.log(customerId,"id of customer");
                 setActiveTab(0);
                 setAccountTabName('General');
-                if (customerId && pathname.pathname !== '/account') {
+                if (isLoggedIn && pathname.pathname !== '/account') {
                   setIsAccountLoader(true);
                   navigate('/account');
                 }

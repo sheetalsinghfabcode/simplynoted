@@ -8,12 +8,8 @@ import {useLocation} from '@remix-run/react';
 import {formatText} from '~/lib/utils';
 
 const AddressForm = ({customerID}) => {
-  const {
-    setAddressForm,
-    setLoaderTitle,
-    setEditAddress,
-    setShowLoader,
-  } = useStateContext();
+  const {setAddressForm, setLoaderTitle, setEditAddress, setShowLoader} =
+    useStateContext();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -25,7 +21,7 @@ const AddressForm = ({customerID}) => {
     state: '',
     postalCode: '',
     country: 'USA',
-    type:  '',
+    type: '',
     birthday: '',
     anniversary: '',
   });
@@ -112,6 +108,11 @@ const AddressForm = ({customerID}) => {
     return `${month}/${day}/${year}`;
   }
 
+  const options = [
+    {value: 'return', label: 'Sender'},
+    {value: 'recipient', label: 'Recipient'},
+  ];
+
   const uploadDataToAPI = () => {
     setAddressForm(false);
     setLoaderTitle('Saving Address Book....');
@@ -134,13 +135,13 @@ const AddressForm = ({customerID}) => {
         state: formData.state || '',
         zip: formData.postalCode || '',
         country: formData.country || 'USA',
-        type: formData.type
-          ? formData.type.toLowerCase() === 'sender'
-            ? 'return'
-            : 'recipient'
-          : 'recipient',
-        birthday: convertISOToMMDDYYYY(formData.birthday) || '',
-        anniversary: convertISOToMMDDYYYY(formData.anniversary) || '',
+        type: formData.type || '',
+        birthday: formData.birthday
+          ? convertISOToMMDDYYYY(formData.birthday)
+          : '',
+        anniversary: formData.anniversary
+          ? convertISOToMMDDYYYY(formData.anniversary)
+          : '',
       }),
     })
       .then((response) => {
@@ -160,9 +161,7 @@ const AddressForm = ({customerID}) => {
       });
   };
 
-  function containsOnlyNumbers(str) {
-    return /^\d+$/.test(str);
-  }
+  console.log('formData', formData);
 
   const validateForm = () => {
     const newErrors = {};
@@ -484,13 +483,11 @@ const AddressForm = ({customerID}) => {
                 value={formData.type}
                 onChange={handleChange}
               >
-                  <>
-                    {' '}
-                    <option>Recipient</option>
-                    <option>Sender</option>
-                   
-                  </>
-               
+                {options.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

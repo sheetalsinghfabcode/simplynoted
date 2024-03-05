@@ -14,8 +14,7 @@ import PurchaseModal from '~/components/wallet/PurchaseModal';
 import Accordion from '~/components/wallet/Accordian';
 import PaymentModal from '~/components/wallet/PaymentModal';
 import {fetchWalletData} from '~/utils/graphqlUtils';
-import { useStateContext } from '~/context/StateContext';
-
+import {useStateContext} from '~/context/StateContext';
 
 export async function loader({context}) {
   const StripeKey =
@@ -44,7 +43,7 @@ const ManageSubscription = () => {
   const [purchaseModal, setPurchaseModal] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
   const [loader, setLoader] = useState(false);
-  const {updateModal, setUpdateModal} = useStateContext()
+  const {updateModal, setUpdateModal} = useStateContext();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -80,12 +79,12 @@ const ManageSubscription = () => {
   useEffect(() => {
     // Define the API URL
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
-    setLoader(true)
+    setLoader(true);
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          setLoader(false)
+          setLoader(false);
           throw new Error('Network response was not ok');
         }
         return response.json();
@@ -99,7 +98,6 @@ const ManageSubscription = () => {
     return () => {};
   }, []);
 
-
   const handleSubscription = () => {
     setLoader((prevLoader) => ({
       ...prevLoader,
@@ -107,7 +105,7 @@ const ManageSubscription = () => {
     }));
     const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
-    // Make a GET request to the API 
+    // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
         setLoader((prevLoader) => ({
@@ -139,8 +137,7 @@ const ManageSubscription = () => {
       .finally(() => {
         setCancelSubscription(false);
         setLoader(false);
-
-      })
+      });
   };
 
   const handleAutoRewnew = () => {
@@ -287,9 +284,14 @@ const ManageSubscription = () => {
       );
       const json = await res.json();
       setLoader(false);
+      debugger
     } catch (error) {
       setLoader(false);
+
       console.log('Error on CreateCard:', error);
+    } finally {
+      debugger
+      setUpdateModal(false);
     }
   }
 
@@ -416,7 +418,6 @@ const ManageSubscription = () => {
       setLoader(false);
     }
   }
-
 
   const filteredWalletData = WalletData.collection.products.edges.filter(
     (product) => {
@@ -558,13 +559,14 @@ const ManageSubscription = () => {
         onCancel={() => setUpdateModal(false)}
         title={addCreditModal ? 'Add Credit Card' : 'Update Credit Card'}
         // confirmText="Update"
+        setUpdateModal={setUpdateModal}
         StripeKey={StripeKey}
         formData={formData}
         setFormData={setFormData}
         updateCard={updateCard}
         addCreditModal={addCreditModal}
         handlePurchaseCard={handlePurchaseCard}
-      /> 
+      />
       <>
         <div className="w-full max-w-[1640px] md:mt-[0px] mt-[23px] mx-auto md:px-[20px] px-[0px]">
           <div className="flex flex-col lg:flex-row w-full  gap-[30px] items-start">
@@ -709,7 +711,7 @@ const ManageSubscription = () => {
                                   : 'Restart Auto Renew'
                               }
                               className="!bg-[#4bb543] rounded-[9px] sm:!tracking-wider !tracking-normal whitespace-nowrap sm:w-[190px] w-[130px] md:h-[45px] h-[32px] lg:text-[13px] text-[11px] uppercase"
-                              />
+                            />
                           </div>
                         )}
                       <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
@@ -721,8 +723,9 @@ const ManageSubscription = () => {
                           text={
                             stripeCollection.stripe?.balance !== 0 &&
                             !stripeCollection.error &&
-                            !stripeCollection?.stripe?.manual &&  stripeCollection.stripe?.subscriptionStatus !==
-                            'canceled' 
+                            !stripeCollection?.stripe?.manual &&
+                            stripeCollection.stripe?.subscriptionStatus !==
+                              'canceled'
                               ? 'Change Package'
                               : 'Buy Package'
                           }
@@ -845,7 +848,7 @@ const ManageSubscription = () => {
                                   {formatDate(payment.created * 1000)}
                                 </td>
                                 <td className=" text-[#1b5299] p-[11px] whitespace-nowrap font-karla lg:text-[14px] text-[10px] !font-bold uppercase">
-                                  $ {payment.amount/100}
+                                  $ {payment.amount / 100}
                                 </td>
                                 <td className="flex justify-center p-[11px] text-center">
                                   <td className="rounded-[50px] mt-[5px] min-h-[22px] whitespace-nowrap !font-bold uppercase lg:text-[12px] text-[9px] lg:pt-[0px] pt-[4px] px-[15px] bg-[#4BB543] text-white">
@@ -862,7 +865,6 @@ const ManageSubscription = () => {
               )}
             </div>
           </div>
-          
         </div>
       </>
     </>

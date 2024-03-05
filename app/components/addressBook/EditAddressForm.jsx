@@ -118,11 +118,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         state: selectedAddress.state || '',
         zip: selectedAddress.zip || '',
         country: selectedAddress.country || 'US',
-        type: selectedAddress.type
-          ? selectedAddress.type.toLowerCase() === 'sender'
-            ? 'return'
-            : 'recipient'
-          : 'recipient',
+        type: selectedAddress.type,
         birthday: selectedAddress.birthday || '',
         anniversary: selectedAddress.anniversary || '',
       }),

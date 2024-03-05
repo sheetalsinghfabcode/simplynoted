@@ -29,6 +29,7 @@ const StripeCard = ({
   addCreditModal,
   showStripeCard,
   updateCard,
+  
 }) => {
   const stripe = useStripe();
   const elements = useElements();

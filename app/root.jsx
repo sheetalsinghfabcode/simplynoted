@@ -26,6 +26,7 @@ import productStyles from './styles/products.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {StateContextProvider} from './context/StateContext';
+import { useEffect, useLayoutEffect } from 'react';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
@@ -86,6 +87,15 @@ export default function App() {
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
   const hasUserConsent = true;
 
+
+
+  useEffect(()=>{
+    if(!data.isLoggedIn){
+      localStorage.clear()
+      console.log("localstoage clear")
+    }
+  },[])
+
   useAnalytics(hasUserConsent);
 
   return (
@@ -105,6 +115,7 @@ export default function App() {
           <Layout
             key={`${locale.language}-${locale.country}`}
             layout={data.layout}
+            isLoggedIn={data.isLoggedIn}
           >
             <Outlet />
           </Layout>
