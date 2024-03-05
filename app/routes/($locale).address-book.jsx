@@ -41,8 +41,6 @@ export default function AddressBook() {
     setIsModalOpen(true);
   };
 
-
-
   useEffect(() => {
     // Define the API URL
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
@@ -60,7 +58,7 @@ export default function AddressBook() {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [addressForm, selectedAddress, editAddress, loadAddress,showLoader]);
+  }, [addressForm, selectedAddress, editAddress, loadAddress, showLoader]);
 
   useEffect(() => {
     if (addresses) setFilteredAddresses(addresses);

@@ -18,12 +18,15 @@ const CARD_OPTIONS = {
   },
 };
 
-const StripeCardComp = ({setPaymentMethodId, AddCreditCard}) => {
+const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm}) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!validateForm()) {
+      return; // Exit early if the form is not valid
+    }
 
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',

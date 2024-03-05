@@ -29,7 +29,7 @@ export function StateContextProvider({children}) {
   const [checkLogin,setCheckLogin] = useState(false)
   const [loaderTitle,setLoaderTitle] = useState("");
   const [showLoader,setShowLoader] = useState(false)
-  const [defaultAddressType,setDefaultAddressType] = useState(false)
+  const [defaultAddressType,setDefaultAddressType] = useState("return")
 
   const [showSignScreen,setShowSignScreen] = useState(false)
 

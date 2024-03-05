@@ -284,13 +284,13 @@ const ManageSubscription = () => {
       );
       const json = await res.json();
       setLoader(false);
-      debugger
+      debugger;
     } catch (error) {
       setLoader(false);
 
       console.log('Error on CreateCard:', error);
     } finally {
-      debugger
+      debugger;
       setUpdateModal(false);
     }
   }
@@ -465,6 +465,7 @@ const ManageSubscription = () => {
   // Format the current date based on the user's location
   let formattedDate = formatDate(currentDate);
 
+
   // Display the formatted date
 
   return (
@@ -594,10 +595,11 @@ const ManageSubscription = () => {
                           My Plan
                         </span>
                         <span className="md:text-[20px] sm:text-[18px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
-                          {stripeCollection &&
-                          stripeCollection.stripe?.subscriptionStatus !==
-                            'canceled' &&
-                          !stripeCollection.error
+                          {(stripeCollection &&
+                            stripeCollection.stripe?.subscriptionStatus !==
+                              'canceled' &&
+                            !stripeCollection.error) ||
+                          stripeCollection.stripe?.balance === 0
                             ? stripeCollection.stripe?.subscription
                             : 'Free'}
                         </span>
@@ -638,33 +640,34 @@ const ManageSubscription = () => {
                           className="!bg-[#001a5f]  rounded-[9px]  sm:w-[190px] w-[120px] md:h-[45px] h-[32px] lg:text-[13px] text-[12px]  uppercase"
                         />
                       </div>
-                      {!stripeCollection.error && (
-                        <>
-                          {stripeCollection.stripe?.subscriptionStatus !==
-                          'canceled' ? (
-                            <div className="flex justify-between items-center gap-[15px] py-[10px]">
-                              <span className="md:text-[14px] sm:text-[14px]  text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
-                                PLAN RENEWAL DATE
-                              </span>
-                              <span className="md:text-[20px] sm:text-[18px] sm:text-[12px] text-[11px] text-[#ef6e6e] font-karla font-bold uppercase">
-                                {formattedDateString}
-                              </span>
-                            </div>
-                          ) : (
-                            <div className="lg:flex grid justify-between items-left  md:gap-[15px] gap-[36px] py-[10px]">
-                              <span className="lg:text-[14px] sm:text-[12px] text-[11px] text-left text-[#001a5f] font-karla font-semibold uppercase">
-                                SUBSCRIPTION CANCELLATION DATE
-                              </span>
-                              <span className="text-[14px] lg:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
-                                {
-                                  stripeCollection.stripe
-                                    ?.subscriptionCancelledAt
-                                }
-                              </span>
-                            </div>
-                          )}
-                        </>
-                      )}
+                      {!stripeCollection.error &&
+                        stripeCollection.stripe?.balance !== 0 && (
+                          <>
+                            {stripeCollection.stripe?.subscriptionStatus !==
+                            'canceled' ? (
+                              <div className="flex justify-between items-center gap-[15px] py-[10px]">
+                                <span className="md:text-[14px] sm:text-[14px]  text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
+                                  PLAN RENEWAL DATE
+                                </span>
+                                <span className="md:text-[20px] sm:text-[18px] sm:text-[12px] text-[11px] text-[#ef6e6e] font-karla font-bold uppercase">
+                                  {formattedDateString}
+                                </span>
+                              </div>
+                            ) : (
+                              <div className="lg:flex grid justify-between items-left  md:gap-[15px] gap-[36px] py-[10px]">
+                                <span className="lg:text-[14px] sm:text-[12px] text-[11px] text-left text-[#001a5f] font-karla font-semibold uppercase">
+                                  SUBSCRIPTION CANCELLATION DATE
+                                </span>
+                                <span className="text-[14px] lg:text-center text-left  text-[#001a5f] font-karla font-normal uppercase">
+                                  {
+                                    stripeCollection.stripe
+                                      ?.subscriptionCancelledAt
+                                  }
+                                </span>
+                              </div>
+                            )}
+                          </>
+                        )}
                     </div>
                   </WalletAccordion>
                   <WalletAccordion accordion={false} title="PREPAID PACKAGE">
@@ -692,7 +695,8 @@ const ManageSubscription = () => {
                         )}
                       </div>
                       {!stripeCollection.error &&
-                        !stripeCollection?.stripe?.manual && (
+                        !stripeCollection?.stripe?.manual &&
+                        stripeCollection.stripe?.balance !== 0 && (
                           <div className="flex justify-between items-center gap-[15px] py-[10px] border-b border-solid border-[#e6edf8]">
                             <span className=" lg:text-[14px] sm:text-[12px] text-[11px] text-[#001a5f]  font-karla font-bold uppercase">
                               AUTO RENEW
