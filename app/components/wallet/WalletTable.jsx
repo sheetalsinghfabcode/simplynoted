@@ -116,7 +116,7 @@ const WalletTable = ({
       price: pricePerCard[0],
       buttonText: 'Purchase Package',
       buttonColor: '#1b5299',
-      tickCount: 17,
+      tickCount: 16,
       firstTwoFeaturesText: ['0% - 40% OFF', 'Lite Users'],
       onClick: () => {
         customerID ? setWalletPlan(true) : setLoginModal(true);
@@ -131,7 +131,7 @@ const WalletTable = ({
     {
       name: 'Team',
       price: pricePerCard[1],
-      tickCount: 19,
+      tickCount: 18,
       firstTwoFeaturesText: ['40% - 55% OFF', '100+ Cards/mo'],
       buttonText: !customerID ? 'Buy Plan' :  subscribeTeam ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeTeam ? '#1b5299' : '#ef6e6e',
@@ -147,7 +147,7 @@ const WalletTable = ({
     {
       name: 'Business',
       price: pricePerCard[2],
-      tickCount: 23,
+      tickCount: 22,
       firstTwoFeaturesText: ['60% - 70% OFF', '1000+ Cards/mo'],
       buttonText: !customerID ? 'Buy Plan' : subscribeBusiness ? 'Purchase Package' : 'Upgrade',
       buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',

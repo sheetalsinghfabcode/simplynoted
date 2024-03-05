@@ -284,13 +284,11 @@ const ManageSubscription = () => {
       );
       const json = await res.json();
       setLoader(false);
-      debugger;
     } catch (error) {
       setLoader(false);
 
       console.log('Error on CreateCard:', error);
     } finally {
-      debugger;
       setUpdateModal(false);
     }
   }
