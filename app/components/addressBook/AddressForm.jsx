@@ -5,7 +5,6 @@ import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
 import {useLocation} from '@remix-run/react';
-import {formatText} from '~/lib/utils';
 
 const AddressForm = ({customerID}) => {
   const {setAddressForm, defaultAddressType, setLoaderTitle, setEditAddress, setShowLoader} =

@@ -25,7 +25,7 @@ export function AddCart({
   productId
 }) {
   console.log(productData,"product data",productId);
-  const {addressForm, setAddressForm, setEditAddress,setDefaultAddressType} =
+  const {addressForm, setAddressForm, setEditAddress,setDefaultAddressType,showLoader} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
@@ -256,8 +256,6 @@ export function AddCart({
     }
   }
   const handleCheckboxChange = (item) => {
-    console.log(selectedItem, 'editFor selected Item');
-    console.log(item, 'handleCheck box on click');
     setSelectedItem(item);
     if (selectedItem == item) {
       setSelectedBoxCheck(!selectedBoxCheck);
@@ -305,13 +303,11 @@ export function AddCart({
   const cardvalFunc = async (item) => {
     setCardVal(item);
     let selCardName = data.collection.products.edges[item].node;
-    console.log(selCardName, 'selected gift card');
     setCardName(selCardName.title);
     setCardImg(selCardName.featuredImage.url);
     setGiftCardUrl(selCardName.onlineStoreUrl);
     let arrCardPrice = data.collection.products.edges[item].node.variants.edges;
     setGiftCardId(arrCardPrice[0].node.id.match(/\d+/g).join(''));
-    console.log(arrCardPrice, 'arrr cardPrice');
     let firstPrice = arrCardPrice[0].node.price.amount;
     setCardPrice(firstPrice);
     setCardPriceTitle(arrCardPrice[0].node.title);
@@ -343,7 +339,7 @@ export function AddCart({
     setMesgtext(cartDataReq?.msg);
     getRecipient();
     getReturn();
-  }, [addressForm]);
+  }, [addressForm,showLoader]);
   useEffect(() => {
     if (!isInitialRender) {
       onClickAddCart();
@@ -423,7 +419,6 @@ export function AddCart({
   let keyUpdate30 = 'variant_id';
 
   function onClickAddCart() {
-    console.log(selectedItem, selectedItem2, 'selected cheeck');
     setLoader(true);
     if (
       editOrderValue?.index >= 0 &&
@@ -625,7 +620,6 @@ export function AddCart({
         setLoader(false);
       }
     } catch (error) {
-      console.log(error, 'error in new discounted adding');
     }
   }
   return (
