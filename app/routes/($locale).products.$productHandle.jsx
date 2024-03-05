@@ -142,7 +142,6 @@ const badRequest = (data) => json(data, {status: 400});
 
 export const action = async ({request, context, params}) => {
   const formData = await request.formData();
-// console.log(params,"params logsss");
   const email = formData.get('email');
   const password = formData.get('password');
 

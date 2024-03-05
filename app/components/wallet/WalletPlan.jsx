@@ -45,7 +45,6 @@ const WalletPlans = ({
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
-  console.log('stripeCollection', stripeCollection);
   useEffect(() => {
     if (stripeCollection?.stripe?.subscriptionStatus === 'canceled') {
       setSubscriptionTitle("Free")

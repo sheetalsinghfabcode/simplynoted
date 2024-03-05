@@ -557,7 +557,6 @@ export default function FoldedCustomisableCard({
         setIsScrollerRemoved(false);
         const response = await data.json();
         setS3ImageUrls(response.result);
-        console.log(s3ImageUrls);
         return true;
       } else {
         return false;

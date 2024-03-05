@@ -710,6 +710,7 @@ function DesktopHeader({isHome, menu,isLoggedIn}) {
 
   const {y} = useWindowScroll();
 
+
   return (
     <>
       <header
@@ -823,7 +824,6 @@ function DesktopHeader({isHome, menu,isLoggedIn}) {
               className="!font-semibold py-[10px] px-[12px] rounded border border-[#1E1E1E] h-[44px] text-base !text-black hover:!text-[#001a5f]"
               onHoverColorEnabled={false}
               onClickFunction={() => {
-                console.log(customerId,"id of customer");
                 setActiveTab(0);
                 setAccountTabName('General');
                 if (isLoggedIn && pathname.pathname !== '/account') {

@@ -3,7 +3,6 @@ import {useAPIIntegrationContext} from '~/context/APIIntegrationContext';
 
 const SelectedAPIDetails = () => {
   const {selectedSection} = useAPIIntegrationContext();
-  console.log(selectedSection,"selectd");
   return (
     <>
     <div className=" sidebar h-[500px] overflow-auto  hidden lg:block w-full max-w-full p-[12px]">
