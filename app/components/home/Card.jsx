@@ -261,10 +261,6 @@ const Card = () => {
                   )}
                 </button>
               </div>
-              {error && <p className="text-red-500 ">{error}</p>}
-              {successfullMessage && (
-                <p className="text-red-500 ">{successfullMessage}</p>
-              )}
             </div>
           </div>
           <div className='w-[100%]  bg-[#1b3064]'>
