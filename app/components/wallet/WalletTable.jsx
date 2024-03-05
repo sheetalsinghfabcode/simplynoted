@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import DynamicButton from '../../components/DynamicButton';
 import LoginModal from '../modal/LoginModal';
 
@@ -108,7 +108,9 @@ const WalletTable = ({
   const subscribeTeam = subscriptionType === 'team';
   const subscribeBusiness = subscriptionType === 'business';
   const subscribeFree = subscriptionType === 'free';
-  const [loginModal,setLoginModal] = useState(false)
+  const [loginModal, setLoginModal] = useState(false);
+
+  let businessPrice = pricePerCard[pricePerCard.length - 1];
 
   const pricingPlans = [
     {
@@ -133,11 +135,14 @@ const WalletTable = ({
       price: pricePerCard[1],
       tickCount: 18,
       firstTwoFeaturesText: ['40% - 55% OFF', '100+ Cards/mo'],
-      buttonText: !customerID ? 'Buy Plan' :  subscribeTeam ? 'Purchase Package' : 'Upgrade',
+      buttonText: !customerID
+        ? 'Buy Plan'
+        : subscribeTeam
+        ? 'Purchase Package'
+        : 'Upgrade',
       buttonColor: subscribeTeam ? '#1b5299' : '#ef6e6e',
       onClick: () => {
         customerID ? setWalletPlan(true) : setLoginModal(true);
-
       },
       features: [
         'Discounts / Savings',
@@ -146,14 +151,17 @@ const WalletTable = ({
     },
     {
       name: 'Business',
-      price: pricePerCard[2],
+      price: businessPrice,
       tickCount: 22,
       firstTwoFeaturesText: ['60% - 70% OFF', '1000+ Cards/mo'],
-      buttonText: !customerID ? 'Buy Plan' : subscribeBusiness ? 'Purchase Package' : 'Upgrade',
+      buttonText: !customerID
+        ? 'Buy Plan'
+        : subscribeBusiness
+        ? 'Purchase Package'
+        : 'Upgrade',
       buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
       onClick: () => {
         customerID ? setWalletPlan(true) : setLoginModal(true);
-
       },
       features: [
         'Discounts / Savings',
@@ -344,13 +352,13 @@ const WalletTable = ({
       </div>
 
       <LoginModal
-          show={loginModal}
-          title=" buy plan"
-          confirmText="Login"
-          cancelText="Register"
-          onCancel={() => setLoginModal(false)}
-          hasCancelIcon={true}
-        />
+        show={loginModal}
+        title=" buy plan"
+        confirmText="Login"
+        cancelText="Register"
+        onCancel={() => setLoginModal(false)}
+        hasCancelIcon={true}
+      />
     </>
   );
 };

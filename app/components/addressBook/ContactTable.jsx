@@ -128,11 +128,10 @@ const ContactTable = ({
   useEffect(() => {
     setupdateLoader(true);
     setTimeout(() => {
-      setShowLoader(false)
+      setShowLoader(false);
       setupdateLoader(false);
     }, 1500);
   }, [addresses]);
-
 
   data = useMemo(
     () => filterAddressesByType(),
@@ -389,14 +388,14 @@ const ContactTable = ({
         'Successful response data:', responseData.result;
       } else {
         setSelectedFile(null);
-          setShowLoader(false);
-      
+        setShowLoader(false);
+
         setLoaderTitle('Error while Uploading Address Book...');
         file.current.value = '';
         throw new Error('Network response was not ok');
       }
     } catch (error) {
-        setShowLoader(false);
+      setShowLoader(false);
       setLoaderTitle('Error while Uploading Address Book');
 
       setSelectedFile(null);
@@ -433,8 +432,6 @@ const ContactTable = ({
 
     return {isValidFormat, missingHeaders};
   }
-
-  
 
   const handleUploadClick = async () => {
     setShowLoader(true);
@@ -491,7 +488,7 @@ const ContactTable = ({
 
     if (!isValidFormat) {
       setErrorModal(true);
-      setShowLoader(false)
+      setShowLoader(false);
       setSelectedFile(null);
       serErrorContent([
         'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
@@ -534,19 +531,15 @@ const ContactTable = ({
         for (const field of missingFields) {
           errors.push(`Row ${i + 1}: Missing field - ${field}`);
         }
-      } else {
+      } 
+      else if (errors.length > 0) {
+        serErrorContent(errors);
+        setErrorModal(true);
+        setSelectedFile(null);
+      }
+       else {
         await uploadDataToAPI(data);
       }
-    }
-
-    if (errors.length > 0) {
-      serErrorContent(errors);
-      setErrorModal(true);
-      setSelectedFile(null);
-      // setTimeout(() => {
-      //   setErrorModal(false);
-      //   serErrorContent([]);
-      // }, 4000);
     }
   };
   const closeModal = () => {
@@ -579,20 +572,19 @@ const ContactTable = ({
     <>
       {errorModal ? (
         <Instruction
-        title="Uploaded Error!"
-        body={errorContent}
-        close={true}
-        closeModal={() => setErrorModal(false)}
-        isOpen={errorModal}
+          title="Uploaded Error!"
+          body={errorContent}
+          close={true}
+          closeModal={() => setErrorModal(false)}
+          isOpen={errorModal}
         />
-
+      ) : (
         // <ErrorModal
         //   title="Uploaded Error!"
         //   isOpen={errorModal}
         //   onRequestClose={() => setErrorModal(false)}
         //   content={errorContent}
         // />
-      ) : (
         <div className="w-full mx-auto relative max-w-[100%]">
           {pathName.pathname !== '/account' && (
             <h2 className="font-bold sm:text-[29px] text-[21px] font-karla lg:text-[34px] text-center text-[#001a5f]">
@@ -697,7 +689,7 @@ const ContactTable = ({
                     View bulk upload instructions.
                   </span>
                   {selectedFile && (
-                    <div className="mt-2 mx-auto">
+                    <div className="mt-2  w-full text-center">
                       <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
                         {selectedFile?.name}
                       </span>
