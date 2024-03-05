@@ -183,7 +183,7 @@ export default function blog() {
         </div>
         <div className="flex justify-center gap-1">
           <div
-            className="md:flex gap-4 flex-wrap justify-center items-start mb-[-40px] mt-[40px]"
+            className="md:flex gap-4 flex-wrap justify-center mb-[17px] items-start mt-[40px]"
             style={{maxWidth: '793px'}}
           >
             {loader ? (
@@ -207,7 +207,7 @@ export default function blog() {
                         />
                       </div>
                       <div className="p-[30px] ">
-                        <div className="mt-2 flex-1 text-black text-[22px] font-bold leading-[30px] hover:text-[#2267d8] line-clamp-2">
+                        <div className="mt-2 flex-1 text  -black text-[22px] font-bold leading-[30px] hover:text-[#2267d8] line-clamp-2">
                           {article.title}
                         </div>
                         <div

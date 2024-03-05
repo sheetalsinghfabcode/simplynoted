@@ -775,7 +775,7 @@ export default function AddCartFunc() {
                                             />
                                           </div>
                                           <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
-                                            <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[16px] font-bold">
+                                            <h3 className="text-[#1b5299] ml-[17px] font-karla md:text-[18px] text-[16px] font-bold">
                                               Postal {postTitle}
                                             </h3>
                                           </div>
@@ -848,7 +848,7 @@ export default function AddCartFunc() {
                                     undefined ? (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[95%] justify-start ">
+                                        <div className="flex w-[100%] justify-around ">
                                           <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}

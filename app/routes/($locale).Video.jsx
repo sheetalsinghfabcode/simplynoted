@@ -84,7 +84,7 @@ export default function tutorials() {
         </div>
         <div className="flex justify-center gap-1">
           <div
-            className="flex gap-4 flex-wrap justify-center mb-[-40px] items-start mt-[40px]"
+            className="flex gap-4 flex-wrap justify-center mb-[17px] items-start mt-[40px]"
             style={{maxWidth: '793px'}}
           >
             {loader ? (
