@@ -8,7 +8,7 @@ import {useLocation} from '@remix-run/react';
 import {formatText} from '~/lib/utils';
 
 const AddressForm = ({customerID}) => {
-  const {setAddressForm, setLoaderTitle, setEditAddress, setShowLoader} =
+  const {setAddressForm, defaultAddressType, setLoaderTitle, setEditAddress, setShowLoader} =
     useStateContext();
 
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ const AddressForm = ({customerID}) => {
     state: '',
     postalCode: '',
     country: 'USA',
-    type: '',
+    type: defaultAddressType? defaultAddressType: '',
     birthday: '',
     anniversary: '',
   });
@@ -161,7 +161,6 @@ const AddressForm = ({customerID}) => {
       });
   };
 
-  console.log('formData', formData);
 
   const validateForm = () => {
     const newErrors = {};

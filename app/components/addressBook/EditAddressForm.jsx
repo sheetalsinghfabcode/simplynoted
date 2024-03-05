@@ -139,7 +139,6 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
       });
   };
 
-  console.log('selectedAddress', selectedAddress);
 
   const validateForm = () => {
     const newErrors = {};

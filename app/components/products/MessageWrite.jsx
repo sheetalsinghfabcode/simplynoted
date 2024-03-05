@@ -1482,7 +1482,7 @@ export function MessageWriting({
                   <input
                     type="date"
                     className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
-                    // min={new Date().toISOString().split('T')[0]}
+                    min={new Date().toISOString().split('T')[0]}
                     onChange={(e) =>  onDateChangeFunction(e)}
                     value={shippingDate}
                   />
@@ -1490,7 +1490,7 @@ export function MessageWriting({
                     <img src={calender_icon} alt="Calendar" />
                   </span>
                 </div>
-                { minDateCheck  && <span className=' text-[10.5px] pt-[14px] text-red-500'>Please choose a future date</span> }
+                { minDateCheck  && <span className=' text-[10.5px] pt-[14px] text-red-500'>Please choose a future date.</span> }
               </div>
             </div>
             {!customFonts && (

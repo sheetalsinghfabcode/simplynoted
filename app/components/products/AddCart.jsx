@@ -25,7 +25,7 @@ export function AddCart({
   productId
 }) {
   console.log(productData,"product data",productId);
-  const {addressForm, setAddressForm, setEditAddress, defaultOption,setDefaultOption} =
+  const {addressForm, setAddressForm, setEditAddress,setDefaultAddressType} =
     useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
@@ -642,6 +642,7 @@ export function AddCart({
         {addressForm && (
           <div className="md:w-full w-[100%]  max-w-[1440px] ">
             <AddressForm
+            
               customerID={customerid}
               setAddressForm={setAddressForm}
               setEditAddress={setEditAddress}
@@ -665,6 +666,7 @@ export function AddCart({
                       className="bg-[#1b5299] text-[14px] small:font-normal font-light small:px-[15px] px-[8px] py-2.5 "
                       text="+ New Address"
                       onClickFunction={() => {
+                        setDefaultAddressType("return")
                         onNewAddressClick();
                       }}
                     />
@@ -723,6 +725,7 @@ export function AddCart({
                           text="+ New Address"
                           onClickFunction={() => {
                             setAddressForm(true);
+                            setDefaultAddressType("recipient")
                             setsearchData(null);
                             setsearchData2(null);
                           }}

@@ -29,6 +29,7 @@ export function StateContextProvider({children}) {
   const [checkLogin,setCheckLogin] = useState(false)
   const [loaderTitle,setLoaderTitle] = useState("");
   const [showLoader,setShowLoader] = useState(false)
+  const [defaultAddressType,setDefaultAddressType] = useState(false)
 
   const [showSignScreen,setShowSignScreen] = useState(false)
 
@@ -181,7 +182,9 @@ export function StateContextProvider({children}) {
         showSignScreen,
         setShowSignScreen,
         showLoader,
-        setShowLoader
+        setShowLoader,
+        defaultAddressType,
+        setDefaultAddressType
       }}
     >
       {children}
