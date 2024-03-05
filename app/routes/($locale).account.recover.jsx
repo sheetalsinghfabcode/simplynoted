@@ -63,8 +63,9 @@ export default function Recover() {
           </>
         ) : (
           <>
-            <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">Forgot Password.</h1>
-            <p className="mt-4 ">
+            <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">Forgot Password</h1>
+            <div class="flex justify-center"><img className="w-64 mt-3" src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/></div>
+            <p className="mt-4 text-[10px]">
               Enter the email address associated with your account to receive a
               link to reset your password.
             </p>
@@ -111,7 +112,7 @@ export default function Recover() {
               </div>
               <div className="flex items-center justify-between">
                 <button
-                  className="bg-[#ef6e6e] text-contrast rounded py-2 px-4 h-[45px] focus:shadow-outline block w-full"
+                  className=" shadow-custom  shadow-lg h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
                   type="submit"
                 >
                   Request Reset Link

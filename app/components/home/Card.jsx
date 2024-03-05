@@ -211,6 +211,7 @@ const Card = () => {
           <div className="md:w-[50%]   w-[90%] flex flex-wrap overflow-hidden mx-auto  pt-60">
             <img className="w-full" src={pen} alt="LogoSimplinotedpic" />
           </div>
+          
           <div className="flex flex-col flex-wrap md:gap-2 gap-7 pt-[20px] pb-[20px] md:pt-0 md:pb-0 md:h-[120px] md:flex-row md:justify-around items-center bg-[#1b3064]">
             <div className="text-white flex flex-col flex-1">
               <div className="md:text-4xl sm:text-3xl text-xl font-bold">
@@ -266,6 +267,14 @@ const Card = () => {
               )}
             </div>
           </div>
+          <div className='w-[100%]  bg-[#1b3064]'>
+            <div className='flex  w-[80%] justify-end'>
+              {error && <p className="text-red-500 whitespace-nowrap md:mt-[-29px] sm:mr-[74px] mt-[-19px] md:mr-[-15px] mr-[25px] ">{error}</p>}
+              {successfullMessage && (
+                <p className="text-red-500 whitespace-nowrap  md:mt-[-29px] sm:mr-[74px] mt-[-19px] md:mr-[-15px] mr-[25px] ">{successfullMessage}</p>
+              )}
+            </div>
+              </div>
         </div>
       </div>
       <div className="w-full overflow-hidden">
