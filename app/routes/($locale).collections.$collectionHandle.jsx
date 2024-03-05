@@ -322,7 +322,7 @@ if (index !== -1) {
         <DynamicTitle title={'Simply Noted'} title2={'cards'} className="" />
 
         <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid xl:mt-8 ">
-          <div className="gap-5 flex xl:flex-row flex-col justify-center items-center xl:order-none order-1">
+          <div className="gap-5 flex xl:flex-row flex-col justify-center sm:items-center items-normal xl:order-none order-1">
             <DynamicButton
               className="btnShadow bg-[#001a5f] px-[20px] py-[16px]  text-[16px]  text-[#fff]  hover:bg-[#1B5299]"
               text="Create A Custom Card"

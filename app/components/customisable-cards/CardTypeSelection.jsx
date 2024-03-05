@@ -16,7 +16,7 @@ export default function CardTypeSelection({
   return (
     <section className="flex lg:flex-row flex-col global-max-width-handler justify-center items-center  !mt-20  flex-wrap xl:gap-28  lg:gap-[6rem] gap-5 ">
       <div className="md:flex hidden items-center justify-center flex-1 ">
-        <div className="lg:w-[540px] w-[485px] h-[350px] ">
+        <div className="lg:w-[540px] w-[485px] h-[368px] ">
           <img
             src={isFlatCardType ? FlatBlankCanvasImage : FoldedBlankCanvasImage}
             alt="Selected blank canvas image on card selection"

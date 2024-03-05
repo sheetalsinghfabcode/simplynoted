@@ -2033,7 +2033,7 @@ export function MessageWriting({
                   AI Message Assistant
                 </h2>
               </div>
-              <div className="mt-[12px]">
+              <div className="mt-[12px] mb-[12px]">
                 <text className="text-[black] text-[15px]">
                   Type in words or a phrase to use our AI Assistant to help
                   generate a great message
@@ -2061,7 +2061,7 @@ export function MessageWriting({
                     id="generate-msg"
                     disabled=""
                     onClick={() => aiGenrateMess()}
-                    className="bg-[#ef6e6e] sm:w-[40%] w-[50%] h-[45px]  bg-red-500 text-white text-lg rounded-md mt-2 transition-all duration-500 ease-in-out"
+                    className="bg-[#ef6e6e] sm:w-[40%] w-[60%] h-[45px]  bg-red-500 text-white text-lg rounded-md mt-2 transition-all duration-500 ease-in-out"
                   >
                     Generate Message
                   </button>
