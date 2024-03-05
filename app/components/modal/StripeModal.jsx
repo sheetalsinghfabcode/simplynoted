@@ -255,6 +255,7 @@ const StripeModal = ({
                 )}
                 <Elements stripe={stripe}>
                   <StripeCard
+                    onCancel={onCancel}
                     updateCard={updateCard}
                     handlePurchaseCard={handlePurchaseCard}
                     addCreditModal={addCreditModal}
