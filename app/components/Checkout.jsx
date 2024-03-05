@@ -563,16 +563,63 @@ export function CheckoutData({
       console.error(error, 'error on CreateCard');
     }
   }
+
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {};
+
+    // Validate name
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailPattern.test(formData.email)) {
+      errors.email = 'Email is required and must be valid';
+      isValid = false;
+    }
+
+    // Validate address line 1
+    if (!formData.address.line1.trim()) {
+      errors.addressLine1 = 'Address is required';
+      isValid = false;
+    }
+
+    // Validate city
+    if (!formData.address.city.trim()) {
+      errors.city = 'City is required';
+      isValid = false;
+    }
+
+    // Validate country
+    if (!formData.address.country.trim()) {
+      errors.country = 'Country is required';
+      isValid = false;
+    }
+
+    // Validate state
+    if (!formData.address.state.trim()) {
+      errors.state = 'State is required';
+      isValid = false;
+    }
+
+    setErrors(errors); // Set errors state to display validation messages
+
+    return isValid;
+  };
+
+  console.log('errors', errors);
+
   function continueShopping() {
     navigate('/collections/best-sellers');
   }
   return (
-    <div className='relative'>
+    <div className="relative">
       {purchaseCompleted && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
-          <CircularLoader
-          textColor='text-white'
-          title={paymentLoaderMessage} />
+          <CircularLoader textColor="text-white" title={paymentLoaderMessage} />
         </div>
       )}
 
@@ -886,9 +933,17 @@ export function CheckoutData({
                         placeholder="Address"
                         required
                         value={formData.address.line1}
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                          errors.addressLine1 = '';
+                          handleChange(e);
+                        }}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
+                      {errors.addressLine1 && (
+                        <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                          {errors.addressLine1}
+                        </p>
+                      )}
                     </div>
                     <div className="mt-2">
                       <label
@@ -921,9 +976,17 @@ export function CheckoutData({
                         required
                         placeholder="City"
                         value={formData.address.city}
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                          errors.city = '';
+                          handleChange(e);
+                        }}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
+                      {errors.city && (
+                        <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                          {errors.city}
+                        </p>
+                      )}
                     </div>
                     <div className="lg:grid-rows-2 grid  gap-3 ">
                       <div>
@@ -959,7 +1022,10 @@ export function CheckoutData({
                           State
                         </label>
                         <select
-                          onChange={(e) => handleChange(e)}
+                           onChange={(e) => {
+                            errors.state = '';
+                            handleChange(e);
+                          }}
                           value={formData.address.state}
                           name="address.state"
                           className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
@@ -985,6 +1051,7 @@ export function CheckoutData({
                   </div>
                 )}
                 <StripeCardComp
+                  validateForm={validateForm}
                   setPaymentMethodId={setPaymentMethodId}
                   AddCreditCard={AddCreditCard}
                 />

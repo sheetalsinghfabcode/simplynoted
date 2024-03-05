@@ -7,7 +7,7 @@ import CircularLoader from '../CircularLoder';
 import {useLocation} from '@remix-run/react';
 
 const AddressForm = ({customerID}) => {
-  const {setAddressForm, defaultAddressType, setLoaderTitle, setEditAddress, setShowLoader} =
+  const {setAddressForm, defaultAddressType, setLoaderTitle, setEditAddress, setShowLoader,setDefaultAddressType} =
     useStateContext();
 
   const [formData, setFormData] = useState({

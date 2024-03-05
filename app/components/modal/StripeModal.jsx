@@ -22,7 +22,8 @@ const StripeModal = ({
 }) => {
   const stripe = loadStripe(`${StripeKey}`);
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
+
 
   useEffect(() => {
     const fullName = localStorage.getItem('SNFullName');
@@ -36,24 +37,11 @@ const StripeModal = ({
   const handleChange = (e) => {
     const {name, value} = e.target;
 
-    // Validation for state and city fields
-    if (name === 'address.state' && value.trim() === '') {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: 'State is required.',
-      }));
-    } else if (name === 'address.city' && value.trim() === '') {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: 'City is required.',
-      }));
-    } else {
-      // Clear error if the field is filled
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: '',
-      }));
-    }
+    // Clear error if the field is filled
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: '',
+    }));
 
     // Update form data based on field name
     if (name.startsWith('address.')) {
@@ -64,7 +52,6 @@ const StripeModal = ({
           ...prev.address,
           [name.substring(8)]: value,
         },
-        // paymentMethodId: paymentMethodId ? paymentMethodId : '',
       }));
     } else {
       // It's not part of the address object, update it directly
@@ -73,6 +60,52 @@ const StripeModal = ({
         [name]: value,
       }));
     }
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {};
+
+    // Validate name
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailPattern.test(formData.email)) {
+      errors.email = 'Email is required and must be valid';
+      isValid = false;
+    }
+
+    // Validate address line 1
+    if (!formData.address.line1.trim()) {
+      errors.addressLine1 = 'Address is required';
+      isValid = false;
+    }
+
+    // Validate city
+    if (!formData.address.city.trim()) {
+      errors.city = 'City is required';
+      isValid = false;
+    }
+
+    // Validate country
+    if (!formData.address.country.trim()) {
+      errors.country = 'Country is required';
+      isValid = false;
+    }
+
+    // Validate state
+    if (!formData.address.state.trim()) {
+      errors.state = 'State is required';
+      isValid = false;
+    }
+
+    setErrors(errors); // Set errors state to display validation messages
+
+    return isValid;
   };
 
   const selectedCountry = location.countries.find(
@@ -156,9 +189,17 @@ const StripeModal = ({
                         placeholder="Address"
                         required
                         value={formData.address.line1}
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                          errors.addressLine1 = '';
+                          handleChange(e);
+                        }}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
+                      {errors.addressLine1 && (
+                        <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                          {errors.addressLine1}
+                        </p>
+                      )}
                     </div>
                     <div className="mt-[11px]">
                       <label htmlFor="" className="font-bold">
@@ -185,12 +226,15 @@ const StripeModal = ({
                         required
                         placeholder="City"
                         value={formData.address.city}
-                        onChange={(e) => handleChange(e)}
+                        onChange={(e) => {
+                          errors.city = '';
+                          handleChange(e);
+                        }}
                         className="mt-2 border border-solid h-[46px] border-black p-3 w-[100%]"
                       />
-                      {errors['address.city'] && (
+                      {errors.city && (
                         <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
-                          {errors['address.city']}
+                          {errors.city}
                         </p>
                       )}
                     </div>
@@ -223,12 +267,15 @@ const StripeModal = ({
                       <div className="w-full md:mt-[0px] mt-[11px]">
                         <label
                           className="block text-gray-700  font-bold mb-2"
-                          htmlFor="country"
+                          htmlFor="state"
                         >
-                          Country
+                          State
                         </label>
                         <select
-                          onChange={(e) => handleChange(e)}
+                         onChange={(e) => {
+                          errors.state = '';
+                          handleChange(e);
+                        }}
                           value={formData.address.state}
                           name="address.state"
                           className={`appearance-none border border-black h-[46px] w-full py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
@@ -244,9 +291,9 @@ const StripeModal = ({
                               </option>
                             ))}
                         </select>
-                        {errors['address.state'] && (
+                        {errors.state && (
                           <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
-                            {errors['address.state']}
+                            {errors.state}
                           </p>
                         )}
                       </div>
@@ -257,6 +304,7 @@ const StripeModal = ({
                   <StripeCard
                     onCancel={onCancel}
                     updateCard={updateCard}
+                    validateForm={validateForm}
                     handlePurchaseCard={handlePurchaseCard}
                     addCreditModal={addCreditModal}
                   />

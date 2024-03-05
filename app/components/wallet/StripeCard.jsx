@@ -29,6 +29,7 @@ const StripeCard = ({
   addCreditModal,
   showStripeCard,
   updateCard,
+  validateForm
   
 }) => {
   const stripe = useStripe();
@@ -37,6 +38,9 @@ const StripeCard = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!validateForm()) {
+      return; // Exit early if the form is not valid
+    }
 
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',

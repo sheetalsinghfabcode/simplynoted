@@ -830,8 +830,8 @@ function DesktopHeader({isHome, menu,isLoggedIn}) {
                   setIsAccountLoader(true);
                   navigate('/account');
                 }
-                 else if (!customerId) {
-                  navigate('account/login');
+                 else {
+                  navigate('/account/login');
                 }
               }}
             />
