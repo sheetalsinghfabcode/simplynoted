@@ -18,7 +18,7 @@ const CARD_OPTIONS = {
   },
 };
 
-const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm}) => {
+const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm,savedCard}) => {
   const stripe = useStripe();
   const elements = useElements();
 

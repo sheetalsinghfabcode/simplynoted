@@ -167,7 +167,10 @@ const ManageSubscription = () => {
   };
 
   const handleDeleteSelected = () => {
+    setDeleteModal(false);
     setLoader(true);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    
     const url = `https://testapi.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
 
     fetch(url, {
@@ -184,7 +187,6 @@ const ManageSubscription = () => {
         return response.json();
       })
       .then((data) => {
-        setDeleteModal(false);
         setLoader(false);
         setForUpdateData(true);
         // Handle the response data if needed
@@ -227,6 +229,8 @@ const ManageSubscription = () => {
   };
 
   const makeDefaultCard = () => {
+    setDefaultCard(false);
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     setLoader(true);
     const url = `https://testapi.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
 
@@ -245,9 +249,7 @@ const ManageSubscription = () => {
       })
       .then((data) => {
         setLoader(false);
-        setTimeout(() => {
-          setDefaultCard(false);
-        }, [500]);
+
         // Handle the response data if needed
       })
       .catch((error) => {
@@ -454,7 +456,7 @@ const ManageSubscription = () => {
       timeZone: userTimeZone, // Set the time zone dynamically
     };
 
-    return new Intl.DateTimeFormat('en-IN', options).format(date);
+    return new Intl.DateTimeFormat('en-US', options).format(date);
   }
 
   // Get the current date
@@ -462,7 +464,6 @@ const ManageSubscription = () => {
 
   // Format the current date based on the user's location
   let formattedDate = formatDate(currentDate);
-
 
   // Display the formatted date
 

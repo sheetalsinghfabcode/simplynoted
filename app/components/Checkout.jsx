@@ -610,7 +610,6 @@ export function CheckoutData({
     return isValid;
   };
 
-  console.log('errors', errors);
 
   function continueShopping() {
     navigate('/collections/best-sellers');
@@ -1051,6 +1050,7 @@ export function CheckoutData({
                   </div>
                 )}
                 <StripeCardComp
+                savedCard={savedCard}
                   validateForm={validateForm}
                   setPaymentMethodId={setPaymentMethodId}
                   AddCreditCard={AddCreditCard}
