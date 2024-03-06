@@ -610,7 +610,6 @@ export function CheckoutData({
     return isValid;
   };
 
-
   function continueShopping() {
     navigate('/collections/best-sellers');
   }
@@ -987,47 +986,22 @@ export function CheckoutData({
                         </p>
                       )}
                     </div>
-                    <div className="lg:grid-rows-2 grid  gap-3 ">
+                    <div className="lg:grid-rows-2 grid mt-2  gap-3 ">
                       <div>
                         <label
                           className="block text-gray-700 text-sm font-bold mb-2"
-                          htmlFor="country"
-                        >
-                          Country
-                        </label>
-                        <select
-                          onChange={(e) => handleChange(e)}
-                          value={formData.address.country}
-                          itemID="country"
-                          name="address.country"
-                          id="country"
-                          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        >
-                          {location.countries.map((country) => (
-                            <option
-                              key={country.country}
-                              value={country.country}
-                            >
-                              {country.country}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      <div>
-                        <label
-                          className="block text-gray-700 text-sm font-bold mb-2"
-                          htmlFor="country"
+                          htmlFor="state"
                         >
                           State
                         </label>
                         <select
-                           onChange={(e) => {
+                          onChange={(e) => {
                             errors.state = '';
                             handleChange(e);
                           }}
                           value={formData.address.state}
                           name="address.state"
-                          className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                          className={`appearance-none border border-solid  border-black rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                             errors.state ? 'border-red-500' : ''
                           }`}
                           id="state"
@@ -1046,11 +1020,36 @@ export function CheckoutData({
                           </p>
                         )}
                       </div>
+                      <div>
+                        <label
+                          className="block text-gray-700 text-sm font-bold "
+                          htmlFor="country"
+                        >
+                          Country
+                        </label>
+                        <select
+                          onChange={(e) => handleChange(e)}
+                          value={formData.address.country}
+                          itemID="country"
+                          name="address.country"
+                          id="country"
+                          className="appearance-none border mt-2 border-solid  border-black rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        >
+                          {location.countries.map((country) => (
+                            <option
+                              key={country.country}
+                              value={country.country}
+                            >
+                              {country.country}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 )}
                 <StripeCardComp
-                savedCard={savedCard}
+                  savedCard={savedCard}
                   validateForm={validateForm}
                   setPaymentMethodId={setPaymentMethodId}
                   AddCreditCard={AddCreditCard}
