@@ -28,14 +28,6 @@ export async function loader({request, context}) {
     page,
   });
 }
-let firstName = 'name';
-let lastName = 'kumar';
-
-const handlePurchaseCard = (firstName, lastName) => {
-   return(`${firstName},${lastName}`);
-   console.log(handlePurchaseCard,"hhh");
- 
-};
 
 export default function Zapier() {
   const [animate, setAnimate] = useState(false);

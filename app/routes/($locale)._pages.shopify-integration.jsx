@@ -215,7 +215,7 @@ export default function Shopify() {
         </div>
       </div>
       <div className="xl:flex items-center w-full relative global-section-divider  justify-center global-max-width-handler lg:left-[30px] ">
-        <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
+        <div className="absolute hidden xl:block top-[431px] right-[280px] z-[-12]">
           <img
             className="w-full 2xl:h-[53rem] h-[45rem]"
             src={CanvasOne}

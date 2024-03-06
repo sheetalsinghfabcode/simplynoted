@@ -846,7 +846,7 @@ export default function AddCartFunc() {
                                     undefined ? (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[100%] justify-around ">
+                                        <div className="flex w-[100%] md:gap-[10px] gap-0 justify-self-start ">
                                           <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}
