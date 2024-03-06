@@ -1,7 +1,9 @@
 import {redirect, json} from '@shopify/remix-oxygen';
 import {Form, useActionData} from '@remix-run/react';
 import {useState} from 'react';
+import {useStateContext} from '~/context/StateContext';
 
+import CircularLoder from '../components/CircularLoder';
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
 
@@ -93,20 +95,51 @@ export default function Register() {
   const [nativeFirstNameError, setNativeFirstNameError] = useState(null);
   const [nativeLastNameError, setNativeLastNameError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
+  const {loaderTitle, setLoaderTitle, showLoader, setShowLoader} =
+    useStateContext();
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
+  const handleRegister = async () => {
+    if (
+      !email.trim() ||
+      !firstName.trim() ||
+      !lastName.trim() ||
+      nativeEmailError ||
+      nativeFirstNameError ||
+      nativeLastNameError ||
+      nativePasswordError ||
+      !password.trim()
+    ) {
+      return;
+    }
+
+    setShowLoader(true);
+
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
+  };
 
   return (
     <div className="flex md:min-w-[540px] justify-center sm:mt-12 pb-[85px] mt-4 mb-10 px-4">
+      {showLoader && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+          <CircularLoder textColor="text-white" title="Registering..." />
+        </div>
+      )}
       <div className="max-w-md w-full">
         <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">
-          Create an Account 
+          Create an Account
         </h1>
-        <div className='flex justify-center'>
-        <img
-          className="w-64 mt-3"
-          src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
-        />
+        <div className="flex justify-center">
+          <img
+            className="w-64 mt-3"
+            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+          />
         </div>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form
@@ -125,6 +158,13 @@ export default function Register() {
               id="email"
               name="email"
               type="email"
+              value={email}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setEmail(e.target.value);
+              }}
               autoComplete="email"
               required
               placeholder="Enter Email"
@@ -151,6 +191,13 @@ export default function Register() {
               )}`}
               id="name"
               name="name"
+              value={firstName}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setFirstName(e.target.value);
+              }}
               type="text"
               onKeyDown={(event) => {
                 // Prevent the input of numeric characters
@@ -192,6 +239,13 @@ export default function Register() {
                 }
               }}
               id="last name"
+              value={lastName}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setLastName(e.target.value);
+              }}
               name="last Name"
               type="text"
               autoComplete="last Name"
@@ -216,7 +270,7 @@ export default function Register() {
             )}
           </div>
 
-          <div>
+          <div className="!mb-3">
             <input
               className={`mb-1 h-12 ${getInputStyleClasses(
                 nativePasswordError,
@@ -228,6 +282,13 @@ export default function Register() {
               placeholder="Enter Password"
               aria-label="Password"
               minLength={8}
+              value={password}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setPassword(e.target.value);
+              }}
               required
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
@@ -253,7 +314,10 @@ export default function Register() {
             )}
           </div>
 
-          <div className="flex items-center justify-between">
+          <div
+            onClick={handleRegister}
+            className="flex items-center !mt-0 justify-between"
+          >
             <button
               className=" shadow-custom  shadow-lg h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
@@ -262,7 +326,8 @@ export default function Register() {
                   nativePasswordError ||
                   nativeEmailError ||
                   nativeFirstNameError ||
-                  nativeLastNameError
+                  nativeLastNameError ||
+                  actionData?.formError
                 )
               }
             >

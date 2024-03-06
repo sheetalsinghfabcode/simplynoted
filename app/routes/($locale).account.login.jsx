@@ -1,12 +1,10 @@
 import {json, redirect} from '@shopify/remix-oxygen';
-import {
-  Form,
-  useActionData,
-  useLoaderData,
-} from '@remix-run/react';
+import {Form, useActionData, useLoaderData} from '@remix-run/react';
 import {useState} from 'react';
 import {getInputStyleClasses} from '~/lib/utils';
+import {useStateContext} from '~/context/StateContext';
 import {Link} from '~/components';
+import CircularLoader from '~/components/CircularLoder';
 
 export const handle = {
   isPublic: true,
@@ -85,9 +83,34 @@ export default function Login() {
   const actionData = useActionData();
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
+  const {loaderTitle, setLoaderTitle, showLoader, setShowLoader} =
+    useStateContext();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    if (
+      !email.trim() ||
+      nativeEmailError ||
+      nativePasswordError ||
+      !password.trim()
+    ) {
+      return;
+    }
+    setShowLoader(true);
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 2000);
+  };
 
   return (
-    <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
+    <div className="flex relative md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
+      {showLoader && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+          <CircularLoader textColor="text-white" title="Logging in..." />
+        </div>
+      )}
       <div className="max-w-md w-full">
         <h1 className="name text-4xl flex justify-center font-bold text-blue-900">
           Sign in
@@ -120,6 +143,13 @@ export default function Login() {
               aria-label="Email address"
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
+              value={email}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setEmail(e.target.value);
+              }}
               onBlur={(event) => {
                 setNativeEmailError(
                   event.currentTarget.value.length &&
@@ -134,7 +164,7 @@ export default function Login() {
               <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
             )}
           </div>
-          <div>
+          <div className="!mb-3">
             <input
               className={`mb-1 h-12 ${getInputStyleClasses(
                 nativePasswordError,
@@ -147,8 +177,13 @@ export default function Login() {
               aria-label="Password"
               minLength={8}
               required
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
+              value={password}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setPassword(e.target.value);
+              }}
               onBlur={(event) => {
                 if (
                   event.currentTarget.validity.valid ||
@@ -170,11 +205,20 @@ export default function Login() {
               </p>
             )}
           </div>
-          <div className="flex items-center justify-between">
+          <div
+            onClick={handleLogin}
+            className="flex !mt-0 items-center justify-between"
+          >
             <button
               className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
               type="submit"
-              disabled={!!(nativePasswordError || nativeEmailError)}
+              disabled={
+                !!(
+                  nativePasswordError ||
+                  nativeEmailError ||
+                  actionData?.formError
+                )
+              }
             >
               Sign in
             </button>
@@ -200,20 +244,20 @@ export default function Login() {
 }
 
 const LOGIN_MUTATION = `#graphql
-  mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
-    customerAccessTokenCreate(input: $input) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-      customerAccessToken {
-        accessToken
-        expiresAt
+    mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+      customerAccessTokenCreate(input: $input) {
+        customerUserErrors {
+          code
+          field
+          message
+        }
+        customerAccessToken {
+          accessToken
+          expiresAt
+        }
       }
     }
-  }
-`;
+  `;
 
 export async function doLogin({storefront}, {email, password}) {
   const data = await storefront.mutate(LOGIN_MUTATION, {
