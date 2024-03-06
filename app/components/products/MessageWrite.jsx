@@ -179,10 +179,8 @@ export function MessageWriting({
   }
   async function checkUserLogged() {
     // console.log(customerid,customerId,"customerId");
-    // debugger
     if (!customerId) {
       // setLoginModal(true);
-      // debugger
       setShowSignScreen(true);
     } else if (name.length == 0) {
       setInstructionModal(true);
@@ -668,9 +666,7 @@ export function MessageWriting({
         let emailValid = 'Email';
         let countryCheck = 'Country';
         for (const key of reqField) {
-          // debugger
           if (obj[key] === '') {
-            // debugger
             emptyKeys.push(key);
           }
         }

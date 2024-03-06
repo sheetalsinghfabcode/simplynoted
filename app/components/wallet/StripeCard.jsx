@@ -70,7 +70,7 @@ const StripeCard = ({
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className='border border-solid border-#bfc1c7'>
+      <div className='border border-solid border-black'>
       <CardElement options={CARD_OPTIONS} className="m-5" />
       </div>
 

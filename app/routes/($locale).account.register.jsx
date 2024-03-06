@@ -121,7 +121,7 @@ export default function Register() {
 
     setTimeout(() => {
       setShowLoader(false);
-    }, 2000);
+    }, 2200);
   };
 
   return (
