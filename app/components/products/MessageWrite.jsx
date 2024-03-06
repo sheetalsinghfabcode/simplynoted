@@ -1211,12 +1211,13 @@ export function MessageWriting({
     } else {
       setMinDateCheck(false);
       
-      setShippingDate(e.target.value);
-      if (e.target.value) {
-        e.target.blur();
+      setShippingDate(value.target.value);
+      if (value.target.value) {
+        value.target.blur();
       }
     }
   }
+
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">

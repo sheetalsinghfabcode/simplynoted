@@ -45,6 +45,9 @@ export default function FoldedCustomisableCard({
     isColoredImage: true,
     isLongImage: false,
   });
+
+
+
   const [qr, setQr] = useState({
     isInputModalOpened: false,
     isConfirmationModalOpened: false,
@@ -726,6 +729,8 @@ export default function FoldedCustomisableCard({
       return false;
     }
   }
+
+  console.log("s3ImageUrls",s3ImageUrls);
 
   const handleCardTitleInputChange = (event) => {
     setCustomCardTitle(event.target.value);
