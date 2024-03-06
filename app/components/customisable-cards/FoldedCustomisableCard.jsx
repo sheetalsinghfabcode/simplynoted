@@ -26,7 +26,6 @@ export default function FoldedCustomisableCard({
   });
   const [selectedCardPage, setSelectedCardPage] = useState('Card Front');
   const [customCardTitle, setCustomCardTitle] = useState('');
-  const [s3ImageUrls, setS3ImageUrls] = useState({});
   const [frontImageDetails, setFrontImageDetails] = useState({
     isImageSelected: false,
     imageBlobUrl: null,
@@ -45,8 +44,6 @@ export default function FoldedCustomisableCard({
     isColoredImage: true,
     isLongImage: false,
   });
-
-
 
   const [qr, setQr] = useState({
     isInputModalOpened: false,
@@ -97,7 +94,7 @@ export default function FoldedCustomisableCard({
       };
     });
   }, [qr.inputText]);
-
+ 
   useEffect(() => {
     const generateImageFiles = async () => {
       try {
@@ -422,14 +419,14 @@ export default function FoldedCustomisableCard({
   };
 
   const handleCustomCardSaveButton = async () => {
-    const isPdfUploaded = await uploadPdfRequest();
-    if (!isPdfUploaded) {
+    const pdfUpload = await uploadPdfRequest();
+    if (!pdfUpload.isSuccess) {
       return setErrorResponse({
         message: 'Unable to upload the PDF.',
         status: true,
       });
     }
-    const isCustomCardSaved = await saveCustomCard();
+    const isCustomCardSaved = await saveCustomCard(pdfUpload.s3ImageUrls);
     if (!isCustomCardSaved) {
       return setErrorResponse({
         message: 'Unable to save the custom card.',
@@ -559,14 +556,22 @@ export default function FoldedCustomisableCard({
       if (data.ok) {
         setIsScrollerRemoved(false);
         const response = await data.json();
-        setS3ImageUrls(response.result);
-        return true;
+        return {
+          s3ImageUrls: response.result,
+          isSuccess: true,
+        };
       } else {
-        return false;
+        return {
+          s3ImageUrls: null,
+          isSuccess: false,
+        };
       }
     } catch (err) {
       console.error('Failed uploading the PDF: ', err);
-      return false;
+      return {
+        s3ImageUrls: null,
+        isSuccess: false,
+      };
     }
   }
 
@@ -603,7 +608,7 @@ export default function FoldedCustomisableCard({
     }
   }
 
-  async function saveCustomCard() {
+  async function saveCustomCard(s3ImageUrls) {
     try {
       setIsScrollerRemoved(true);
 
@@ -704,7 +709,7 @@ export default function FoldedCustomisableCard({
             width: '100%',
             height: '0px',
           },
-          pdfURL: s3ImageUrls.pdfUrl,
+          pdfURL: s3ImageUrls ? s3ImageUrls.pdfUrl : null,
         },
         s3ImageUrls: s3ImageUrls,
         featuredImage: frontImageDetails.selectedImageFile,
@@ -729,8 +734,6 @@ export default function FoldedCustomisableCard({
       return false;
     }
   }
-
-  console.log("s3ImageUrls",s3ImageUrls);
 
   const handleCardTitleInputChange = (event) => {
     setCustomCardTitle(event.target.value);
