@@ -181,6 +181,11 @@ export default function CustomProducts() {
     localStorage.removeItem('reqFielddInCart');
     setLocationValue(true);
   }, [datafornav.pathname]);
+
+
+    console.log("customProductData",customProductData);
+
+    console.log("metafields",metafields);
   return (
     <div className="relative">
       {customProductData.length === 0 && metafields.length === 0 && (
