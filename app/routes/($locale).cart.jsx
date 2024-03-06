@@ -46,7 +46,6 @@ export async function loader({context, request}) {
 
 export default function AddCartFunc() {
   const {setCartCountVal, customerId} = useStateContext();
-
   const {data, postalData, StripeKey} = useLoaderData();
   const [cartData, setCartData] = useState([]);
   const [updateGift, setUpdateGift] = useState(false);
@@ -618,14 +617,13 @@ export default function AddCartFunc() {
                                       className="w-[100px] h-[100px] object-contain"
                                     />
                                   </div>
-                                  <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col   ">
+                                  <div className="max-w-[100%] flex  gap-[5px] justify-center  lg:items-center items-start  lg:flex-row flex-col   ">
                                     <div className="font-bold text-[#1b5299] md:text-[18px] text-[16px] ">
                                       {' '}
                                       Gift Card:
                                     </div>
-
+                                     {''}
                                     <span className=" text-[black] font-normal text-[16px]   ">
-                                      {''}
                                       {item.giftCardName}
                                     </span>
                                     {/* <h3 className="text-[#1b5299] font-karla md:text-[18px] text-[20px] lg:tracking-[0.5px] tracking-0">

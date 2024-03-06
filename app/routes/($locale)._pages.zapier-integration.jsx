@@ -27,8 +27,16 @@ export async function loader({request, context}) {
     seo,
     page,
   });
-  ``;
 }
+let firstName = 'name';
+let lastName = 'kumar';
+
+const handlePurchaseCard = (firstName, lastName) => {
+   return(`${firstName},${lastName}`);
+   console.log(handlePurchaseCard,"hhh");
+ 
+};
+
 export default function Zapier() {
   const [animate, setAnimate] = useState(false);
   const navigate = useNavigate();
@@ -39,7 +47,6 @@ export default function Zapier() {
 
   return (
     <div className="w-full">
-     
       <div className="xl:flex relative items-center global-section-divider top-10 justify-center global-max-width-handler lg:left-[30px]">
         <div className="">
           <div className="md:flex flex xl:justify-normal justify-center">
@@ -58,11 +65,13 @@ export default function Zapier() {
           </div>
           <div className="mt-5  xl:justify-normal  xl:flex hidden  justify-center xl:order-first">
             <div className="flex justify-center">
-            <DynamicButton
+              <DynamicButton
                 text="INTEGRATE NOW"
                 className="INTEGRATE  text-[18px] font-bold text-white py-[30px] px-[76px] order-1	rounded"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
               />
             </div>
           </div>
@@ -82,16 +91,16 @@ export default function Zapier() {
           </div>
           <div className=" flex xl:justify-normal justify-center  xl:hidden xl:order-first">
             <div className=" flex justify-center">
-            <DynamicButton
+              <DynamicButton
                 text="INTEGRATE NOW"
                 className="INTEGRATE  text-[16px] font-bold text-white py-[22px] px-[40px] order-1	rounded"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
               />
-          
             </div>
           </div>
-  
         </div>
       </div>
       <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[130px] mt-[70px]">
@@ -121,7 +130,7 @@ export default function Zapier() {
             1500: {
               spaceBetween: 10,
               slidesPerView: 8,
-            }
+            },
           }}
           autoplay={{
             delay: 1000,
@@ -207,9 +216,13 @@ export default function Zapier() {
         </div>
       </div>
       <div className="xl:flex mt-10 items-center global-section-divider w-full relative  justify-center global-max-width-handler lg:left-[30px]">
-           <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
-          <img className="w-full 2xl:h-[53rem] h-[45rem]" src={CanvasOne} alt="Computer man" />
-        </div> 
+        <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
+          <img
+            className="w-full 2xl:h-[53rem] h-[45rem]"
+            src={CanvasOne}
+            alt="Computer man"
+          />
+        </div>
         <div className="">
           <div className="xl:mt-5 mt-14 flex xl:justify-normal xl:w-[490px] w-[100%] leading-[48px] font-bold justify-center">
             <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal ">
@@ -226,8 +239,10 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[30px] "
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
               />
               <DynamicButton
                 text="TUTORIALS"
@@ -254,8 +269,10 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[24px]"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
               />
               <DynamicButton
                 text="TUTORIALS"
@@ -275,13 +292,17 @@ export default function Zapier() {
         </div>
       </div>
       <div className="xl:flex  items-center relative  global-section-divider justify-center mx-auto 3xl:w-[85%] w-full ">
-      <div className="absolute 2xl:top-[27rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
-          <img className="w-full 2xl:h-[54rem] h-[42rem]" src={CanvasTow} alt="Computer man" />
+        <div className="absolute 2xl:top-[27rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
+          <img
+            className="w-full 2xl:h-[54rem] h-[42rem]"
+            src={CanvasTow}
+            alt="Computer man"
+          />
         </div>
         <div className="order-2 xl:mr-[56px] mr-[0px]">
           <div className="xl:mt-5 mt-14 flex xl:justify-normal justify-center">
             <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal">
-              Send one or send 
+              Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </h2>
           </div>
@@ -296,8 +317,10 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[30px]"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
               />
               <DynamicButton
                 text="TUTORIALS"
@@ -325,8 +348,10 @@ export default function Zapier() {
               <DynamicButton
                 text="INTEGRATE NOW"
                 className="btn1 text-sm py-[20px] px-[20px]"
-                onClickFunction={() => (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')}
+                onClickFunction={() =>
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
+                }
               />
               <DynamicButton
                 text="TUTORIALS"
@@ -345,8 +370,8 @@ export default function Zapier() {
           />
         </div>
       </div>
-        <div className='w-full flex sm:p-[37px] py-[20px] xl:mt-[173px] mt-[0px] relative justify-center'>
-          <div className='banner-detail  w-[1200px]'>
+      <div className="w-full flex sm:p-[37px] py-[20px] xl:mt-[173px] mt-[0px] relative justify-center">
+        <div className="banner-detail  w-[1200px]">
           <div className="absolute right-[-198px] top-[-89px]">
             <img
               className="xl:block hidden"
@@ -380,29 +405,26 @@ export default function Zapier() {
                   window.open(
                     'https://zapier.com/apps/simply-noted/integrations',
                     '_blank',
-                  )}
-                />
+                  )
+                }
+              />
               <DynamicButton
                 text="VIEW ALL INTEGRATIONS"
                 className="sch-btn text-[white] sm:w-[247px] w-[185px] !h-[69px]"
                 onClickFunction={() =>
-                  window.open(
-                    'https://zapier.com/apps',
-                    '_blank',
-                  )}
-                
+                  window.open('https://zapier.com/apps', '_blank')
+                }
               />
             </div>
           </div>
-            
-          </div>
+        </div>
       </div>
       <div className="absolute w-[251px] left-[11px] lg:block hidden">
-          <img
-            className="rotate-90"
-            src="https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
-          />
-        </div>
+        <img
+          className="rotate-90"
+          src="https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
+        />
+      </div>
     </div>
   );
 }
