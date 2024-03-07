@@ -74,7 +74,7 @@ function Instruction({
               <button
                 type="button"
                 onClick={closeModal}
-                className="bg-[#ef6e6e] text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                className="bg-[#ef6e6e] text-white font-bold py-2 px-4 h-[45px] focus:outline-none focus:shadow-outline"
                 style={{width: '100%'}}
               >
                 Close

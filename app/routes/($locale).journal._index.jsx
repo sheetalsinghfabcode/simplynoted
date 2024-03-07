@@ -150,7 +150,7 @@ function ArticleCard({blogHandle, article, loading}) {
             />
           </div>
         )}
-        <h2 className="mt-4 font-medium">{article.title}</h2>
+        <h2 className="mt-4 text-[green] font-medium">{article.title}</h2>
         <span className="block mt-1">{article.publishedAt}</span>
       </Link>
     </li>

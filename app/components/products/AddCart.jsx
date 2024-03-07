@@ -24,9 +24,13 @@ export function AddCart({
   metafields,
   productId,
 }) {
-  
-  const {addressForm, setAddressForm, setEditAddress,setDefaultAddressType,showLoader} =
-    useStateContext();
+  const {
+    addressForm,
+    setAddressForm,
+    setEditAddress,
+    setDefaultAddressType,
+    showLoader,
+  } = useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -44,6 +48,7 @@ export function AddCart({
   const [searchData2, setsearchData2] = useState(null);
   const [cardVal, setCardVal] = useState('');
   const [cardPriceVal, setCardPriceVal] = useState([]);
+  const [buttonTextChange, setButtonTextChange] = useState(false);
 
   const [cardPriceTitle, setCardPriceTitle] = useState(
     editOrderValue?.data ? editOrderValue.data.giftCardPriceTitle : '',
@@ -338,7 +343,7 @@ export function AddCart({
     setMesgtext(cartDataReq?.msg);
     getRecipient();
     getReturn();
-  }, [addressForm,showLoader]);
+  }, [addressForm, showLoader]);
   useEffect(() => {
     if (!isInitialRender) {
       onClickAddCart();
@@ -512,7 +517,7 @@ export function AddCart({
       localStorage.removeItem('reqFielddInCart');
       // setProductShow(true)
       navigate('/cart');
-
+      setButtonTextChange(true);
       setLoader(false);
     } else {
       if (
@@ -533,6 +538,7 @@ export function AddCart({
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
         // setProductShow(true)
+        setButtonTextChange(true)
         navigate('/cart');
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
@@ -548,6 +554,7 @@ export function AddCart({
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
         // setProductShow(true)
+        setButtonTextChange(true);
         navigate('/cart');
         setLoader(false);
       } else {
@@ -618,8 +625,7 @@ export function AddCart({
         setApiVariantID(json.result.product.variants[0].id);
         setLoader(false);
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   }
   return (
     <div className="relative global-max-width-handler">
@@ -642,7 +648,7 @@ export function AddCart({
         {!addressForm && (
           <div
             className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
-              loader ? 'opacity-40': ''
+              loader ? 'opacity-40' : ''
             }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
@@ -919,7 +925,7 @@ export function AddCart({
               <div className="buttonDiv my-2 order-2">
                 <DynamicButton
                   className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
-                  text="ADD TO CART"
+                  text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
                   // disabled={!agree}
                   onClickFunction={() => onClickOFAddCartBtn()}
                 />
