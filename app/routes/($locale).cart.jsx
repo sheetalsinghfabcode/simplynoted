@@ -542,7 +542,7 @@ export default function AddCartFunc() {
                                       {' '}
                                       Price:
                                     </span>
-                                    <span className="text-black">
+                                    <span className="text-black tracking-[1.5px]">
                                       $ {item.price}
                                     </span>
                                   </div>
@@ -551,7 +551,7 @@ export default function AddCartFunc() {
                                       {' '}
                                       Quantity:
                                     </span>
-                                    <span className="text-[black]">
+                                    <span className="text-[black] tracking-[1.5px]">
                                       {item.csvFileLen}
                                     </span>
                                   </div>
@@ -559,7 +559,7 @@ export default function AddCartFunc() {
                                     <span className="text-[#1b5299]">
                                       Subtotal:
                                     </span>
-                                    <span className="text-[black]">
+                                    <span className="text-[black] tracking-[1.5px]">
                                       ${' '}
                                       {(item.price * item.csvFileLen).toFixed(
                                         2,
@@ -643,7 +643,7 @@ export default function AddCartFunc() {
                                         {' '}
                                         Price:
                                       </span>
-                                      <span className="text-[black]">
+                                      <span className="text-[black] tracking-[1.5px]">
                                         $ {item.giftCardPrice}
                                       </span>
                                     </div>
@@ -652,7 +652,7 @@ export default function AddCartFunc() {
                                         {' '}
                                         Quantity:
                                       </span>
-                                      <span className=" text-[black]">
+                                      <span className=" text-[black] tracking-[1.5px]">
                                         {item.csvFileLen}
                                       </span>
                                     </div>
@@ -660,7 +660,7 @@ export default function AddCartFunc() {
                                       <span className=" text-[#1b5299]">
                                         Subtotal:
                                       </span>
-                                      <span className="text-[black]">
+                                      <span className="text-[black] tracking-[1.5px]">
                                         ${' '}
                                         {(
                                           item.giftCardPrice * item.csvFileLen
@@ -707,12 +707,12 @@ export default function AddCartFunc() {
                                   {item.nonUSCount && item.nonUSCount ? (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[95%] justify-start ">
+                                        <div className="flex w-[100%] gap-[10px] justify-start ">
                                           <div className="lg:max-w-[33%] w-full !ml-0 sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}
                                               alt=""
-                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                              className="md:min-w-[179px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                             />
                                           </div>
                                           <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -739,7 +739,7 @@ export default function AddCartFunc() {
                                                 {' '}
                                                 Quantity:
                                               </span>
-                                              <span className="text-black">
+                                              <span className="text-black tracking-[1.5px]">
                                                 {item.nonUSCount}
                                               </span>
                                             </div>
@@ -748,7 +748,7 @@ export default function AddCartFunc() {
                                                 {' '}
                                                 Subtotal:
                                               </span>
-                                              <span className="text-black ">
+                                              <span className="text-black tracking-[1.5px] ">
                                                 ${' '}
                                                 {(
                                                   postPrice2 * item.nonUSCount
@@ -766,12 +766,12 @@ export default function AddCartFunc() {
                                   {item.usCount && item.usCount ? (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[95%] justify-start ">
+                                        <div className="flex w-[100%] gap-[10px] justify-start ">
                                           <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}
                                               alt=""
-                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                              className="md:min-w-[179px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                             />
                                           </div>
                                           <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -853,7 +853,7 @@ export default function AddCartFunc() {
                                             <img
                                               src={postImage}
                                               alt=""
-                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                              className="md:min-w-[179px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                             />
                                           </div>
                                           <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -904,12 +904,12 @@ export default function AddCartFunc() {
                                   ) : (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[95%] justify-start ">
+                                        <div className="flex w-[100%] gap-[10px] justify-start ">
                                           <div className="lg:max-w-[33%] !ml-0 w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}
                                               alt=""
-                                              className="md:min-w-[125px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
+                                              className="md:min-w-[179px] min-w-[100px] max-w-[100px] w-[100%] h-[65px] object-cover"
                                             />
                                           </div>
                                           <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
@@ -969,7 +969,7 @@ export default function AddCartFunc() {
                             item.isShippidata && (
                               <div className="flex w-[100%] flex-wrap lg:border-none border-t border-[#AAA]">
                                 <div className="md:max-w-[50%] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px]  border-[#AAA]">
-                                  <div className="flex w-[95%] justify-start ">
+                                  <div className="flex w-[100%] justify-start ">
                                     <div className="max-w-[33%] w-full md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">
                                       <img
                                         src={item.shippingMethodImage}
@@ -1189,7 +1189,7 @@ export default function AddCartFunc() {
                   {!sucessfullLoader && (
                     <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
                       <div>
-                        <h3 className="text-[black] text-[#324879] font-karla sm:text-[40px] text-[24px] font-bold">
+                        <h3 className="text-[#324879] font-karla sm:text-[40px] text-[24px] font-bold">
                           YOUR CART IS EMPTY!
                         </h3>
                         <div className="flex justify-center mt-[8px]">

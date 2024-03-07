@@ -1738,8 +1738,8 @@ body {
   color: #1e1e1e;
   text-align: left !important;
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   margin-right: -10px;
   margin-left: -10px;
 }

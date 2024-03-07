@@ -10,6 +10,7 @@ import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
 import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
+import {BsJustify} from 'react-icons/bs';
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -538,7 +539,7 @@ export function AddCart({
         localStorage.setItem('mydata', updatedDataString);
         localStorage.removeItem('reqFielddInCart');
         // setProductShow(true)
-        setButtonTextChange(true)
+        setButtonTextChange(true);
         navigate('/cart');
         setLoader(false);
       } else if (selectedItem && selectedItem2) {
@@ -631,11 +632,8 @@ export function AddCart({
     <div className="relative global-max-width-handler">
       {loader && !addressForm && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
-        <CircularLoader
-          textColor="text-white"
-          title="Loading Address.."
-        />
-      </div>
+          <CircularLoader textColor="text-white" title="Loading Address.." />
+        </div>
       )}
 
       <>
@@ -702,6 +700,7 @@ export function AddCart({
                       ),
                     )}
                   </div>
+               
                 </div>
               </div>
               <div className="col-6 md:w-[49%] w-full shadow-outer-custom rounded h-fit">
@@ -766,12 +765,13 @@ export function AddCart({
                       </>
                     )}
                   </div>
+               
                 </div>
               </div>
             </div>
             <div
-              className={`row flex mr-2 ml-2 gap-4 mt-[1.5rem]  w-full ${
-                show ? 'justify-between' : 'justify-start'
+              className={`row flex   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${
+                show ? 'justify-end' : 'justify-start'
               }`}
             >
               {show && (
@@ -814,10 +814,10 @@ export function AddCart({
                         </div>
                       ))}
                     </div>
+              
                   </div>
                 </div>
               )}
-
               <div className="col-6 md:w-[49%] w-full  shadow-outer-custom  rounded">
                 <div className="max-h-[600px] sm:p-[20px] py-[15px] px-3 overflow-y-auto small:mt-10 my-4">
                   <div className="address-data">
@@ -903,6 +903,7 @@ export function AddCart({
                     </div>
                   </div>
                 </div>
+         
               </div>
             </div>
 
@@ -919,20 +920,12 @@ export function AddCart({
               </div>
             )}
             <div
-              className={`row flex mt-4 relative w-full ${
+              className={`row flex mt-4 w-full ${
                 selectShipMode && selectShipMode.node.price.amount !== '0.0'
                   ? 'justify-between'
-                  : 'justify-end'
+                  : ''
               } font-normal text-[14px]`}
             >
-              <div className="buttonDiv my-2 order-2">
-                <DynamicButton
-                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
-                  text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
-                  // disabled={!agree}
-                  onClickFunction={() => onClickOFAddCartBtn()}
-                />
-              </div>
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
                   <DynamicButton
@@ -946,6 +939,14 @@ export function AddCart({
                   />
                 </div>
               )}
+              <div className="buttonDiv  my-2">
+                <DynamicButton
+                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
+                  text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
+                  // disabled={!agree}x`x`
+                  onClickFunction={() => onClickOFAddCartBtn()}
+                />
+              </div>
             </div>
           </div>
         )}
