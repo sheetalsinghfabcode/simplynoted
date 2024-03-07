@@ -1085,7 +1085,7 @@ export default function FlatCustomisableCard({
         >
           <div>
             <div>
-              <p className="bg-[#deebf7] text-2xl h-[55px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold mb-4">
+              <p className="bg-[#deebf7] text-2xl h-[55px] mt-[20px] flex justify-center items-center text-black border-2 border-solid border-['gray'] font-bold mb-4">
                 ADD QR CODE
               </p>
             </div>
@@ -1116,7 +1116,7 @@ export default function FlatCustomisableCard({
             </label>
             <br />
             <button
-              className="bg-[#ef6e6e] border-none text-white outline-none p-1 pl-8 pr-8 w-full h-[43px] mt-5 font-bold"
+              className="bg-[#ef6e6e] border-none text-white outline-none mb-[20px] p-1 pl-8 pr-8 w-full h-[43px] mt-5 font-bold"
               type="button"
               onClick={handleQrCodeCreation}
             >

@@ -132,7 +132,7 @@ export default function Register() {
         </div>
       )}
       <div className="max-w-md w-full">
-        <h1 className="text-4xl block font-bold flex justify-center text-blue-900 text-2xl">
+        <h1 className="text-4xl block sm:mt-[-23px] mt-[0px] font-bold flex justify-center text-blue-900 text-2xl">
           Create an Account
         </h1>
         <div className="flex justify-center">
@@ -335,7 +335,7 @@ export default function Register() {
             </button>
           </div>
           <div className="flex items-center mt-8 border-t border-gray-300">
-            <p className="align-baseline text-sm mt-6">
+            <p className="align-baseline text-[15px] mt-6">
               Already have an account? &nbsp;
               <Link className="inline underline" to="/account/login">
                 Sign in

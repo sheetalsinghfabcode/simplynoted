@@ -65,6 +65,7 @@ const Card = () => {
         setTimeout(() => {
           setSuccessFullMessage(null);
           setisEmailSubscribed(false);
+          
         }, 2000);
       }
     } catch (error) {

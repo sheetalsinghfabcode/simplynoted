@@ -50,7 +50,7 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm,savedCar
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-[500px] mx-auto h-[130px] p-[1px] mt-[20px] "
+      className="w-full mx-auto h-[130px] p-[1px] mt-[20px] "
     >
       <div className="border border-solid border-black">
         <CardElement options={CARD_OPTIONS} className="m-5 " />

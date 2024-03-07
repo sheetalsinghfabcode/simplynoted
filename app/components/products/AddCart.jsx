@@ -642,7 +642,7 @@ export function AddCart({
         {!addressForm && (
           <div
             className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
-              loader && 'opacity-40'
+              loader ? 'opacity-40': ''
             }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
@@ -695,7 +695,7 @@ export function AddCart({
                   </div>
                 </div>
               </div>
-              <div className="col-6 md:w-[48%] w-full shadow-outer-custom rounded h-fit">
+              <div className="col-6 md:w-[49%] w-full shadow-outer-custom rounded h-fit">
                 <div className=" max-h-[600px] small:p-[20px] p-[10px] overflow-y-auto">
                   <div className="address-data">
                     <h3 className="sm:text-[26px] text-[18px] small:my-8 my-4 font-bold">
@@ -761,8 +761,8 @@ export function AddCart({
               </div>
             </div>
             <div
-              className={`row flex mr-2 ml-2 gap-4 small:mt-10 mt-4 w-full ${
-                show ? 'justify-between' : 'justify-end'
+              className={`row flex mr-2 ml-2 gap-4 mt-[1.5rem]  w-full ${
+                show ? 'justify-between' : 'justify-start'
               }`}
             >
               {show && (
