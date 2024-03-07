@@ -725,17 +725,19 @@ const ContactTable = ({
                       Delete Selected
                     </button>
                   )}
-                <span className="text-black text-[13px] lg:mt-[0px] mt-[12px] font-bold">
+                <span className="text-black text-[13px] md:text-left text-center lg:mt-[0px] md:mt-[12px] mt-[-12px] font-bold">
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>
               {ProdcuctSide && selectedCheckboxes.length > 0 && (
+                <div className='flex md:justify-normal justify-center'>
                 <button
-                  className="text-white bg-[#EF6E6E] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                  className="text-white bg-[#EF6E6E] w-[190px] h-[45px] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
                   onClick={continueBtn}
                 >
                   Continue
                 </button>
+                </div>
               )}
               {/* Your table rendering code here... */}
               <div className="overflow-auto">

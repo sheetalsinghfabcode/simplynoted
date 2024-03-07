@@ -5,18 +5,18 @@ const APIOptionsSelector = () => {
 
   return (
     <div className="w-full flex leading-[44px]  hidden lg:block">
-      <div className="flex justify-between  bg-[beige] pl-[22px] p-[22px] w-full max-w-full">
+      <div className="flex justify-between color-[white] bg-[#001a5f] pl-[22px] p-[22px] w-full max-w-full">
         <button
           type="button"
           onClick={handleSectionChange}
           value="API ENDPOINTS"
-          className={`hover:text-blue-700 font-bold ${
-            selectedSection === 'API ENDPOINTS' ? 'text-blue-700' : ''
+          className={`hover:text-[#ef6e6e]  font-bold ${
+            selectedSection === 'API ENDPOINTS' ? 'text-[#ef6e6e]' : 'text-[white]'
           }`}
           style={{
             borderBottom:
               selectedSection === 'API ENDPOINTS'
-                ? '2px solid black'
+                ? '2px solid #ef6e6e'
                 : 'none',
           }}
         >
@@ -28,13 +28,13 @@ const APIOptionsSelector = () => {
             type="button"
             value="AUTHENTICATION"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
-              selectedSection === 'AUTHENTICATION' ? 'text-blue-700' : ''
+            className={`hover:text-[#ef6e6e]  font-bold ${
+              selectedSection === 'AUTHENTICATION' ? 'text-[#ef6e6e]' : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'AUTHENTICATION'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -47,13 +47,13 @@ const APIOptionsSelector = () => {
             type="button"
             value="USERS"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
-              selectedSection === 'USERS' ? 'text-blue-700' : ''
+            className={`hover:text-[#ef6e6e] font-bold ${
+              selectedSection === 'USERS' ? 'text-[#ef6e6e]' : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'USERS'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -65,13 +65,13 @@ const APIOptionsSelector = () => {
             type="button"
             value="PRODUCTS"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
-              selectedSection === 'PRODUCTS' ? 'text-blue-700' : ''
+            className={`hover:text-[#ef6e6e] font-bold ${
+              selectedSection === 'PRODUCTS' ? 'text-[#ef6e6e]' : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'PRODUCTS'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -83,13 +83,13 @@ const APIOptionsSelector = () => {
             type="button"
             value="ORDERS"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
-              selectedSection === 'ORDERS' ? 'text-blue-700' : ''
+            className={`hover:text-[#ef6e6e] font-bold ${
+              selectedSection === 'ORDERS' ? 'text-[#ef6e6e]' : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'ORDERS'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -102,13 +102,13 @@ const APIOptionsSelector = () => {
             type="button"
             value="TEMPLATES"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
-              selectedSection === 'TEMPLATES' ? 'text-blue-700' : ''
+            className={`hover:text-[#ef6e6e] font-bold ${
+              selectedSection === 'TEMPLATES' ? 'text-[#ef6e6e]' : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'TEMPLATES'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -120,13 +120,13 @@ const APIOptionsSelector = () => {
             type="button"
             value="ADDRESSES"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
-              selectedSection === 'ADDRESSES' ? 'text-blue-700' : ''
+            className={`hover:text-[#ef6e6e] font-bold ${
+              selectedSection === 'ADDRESSES' ? 'text-[#ef6e6e]' : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'ADDRESSES'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -139,15 +139,15 @@ const APIOptionsSelector = () => {
             type="button"
             value="AVAILABLE HANDWRITING STYLES"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 font-bold ${
+            className={`hover:text-[#ef6e6e]  font-bold ${
               selectedSection === 'AVAILABLE HANDWRITING STYLES'
-                ? 'text-blue-700'
-                : ''
+                ? 'text-[#ef6e6e]'
+                : 'text-[white]'
             }`}
             style={{
               borderBottom:
                 selectedSection === 'AVAILABLE HANDWRITING STYLES'
-                  ? '2px solid black'
+                  ? '2px solid #ef6e6e'
                   : 'none',
             }}
           >
@@ -160,7 +160,7 @@ const APIOptionsSelector = () => {
             type="button"
             value="AVAILABLE HANDWRITING STYLES"
             onClick={handleSectionChange}
-            className={`hover:text-blue-700 ${
+            className={`hover:text-[#ef6e6e] ${
               selectedSection === 'AVAILABLE HANDWRITING STYLES'
                 ? 'font-bold'
                 : ''

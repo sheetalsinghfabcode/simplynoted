@@ -20,6 +20,8 @@ import {RiDeleteBin6Line} from 'react-icons/ri';
 import LoginModal from '~/components/modal/LoginModal';
 import {seoPayload} from '~/lib/seo.server';
 import SuccessfullLoader from '~/components/SucessfullLoader';
+import {RiArrowRightLine} from 'react-icons/ri';
+import {FiArrowLeft} from 'react-icons/fi';
 
 let storedDataString, storedDataArray;
 
@@ -446,7 +448,7 @@ export default function AddCartFunc() {
       <div className="global-max-width-handler">
         {showCartPage ? (
           <>
-          {sucessfullLoader && operation === 'Clear shopping cart' && (
+            {sucessfullLoader && operation === 'Clear shopping cart' && (
               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
                 <CircularLoader
                   textColor="text-white"
@@ -609,7 +611,7 @@ export default function AddCartFunc() {
                           {item.giftCardName && (
                             <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                               <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                <div className="flex w-[95%] justify-start ">
+                                <div className="flex w-[95%]  justify-start ">
                                   <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                     <img
                                       src={item.giftCardImg}
@@ -622,7 +624,7 @@ export default function AddCartFunc() {
                                       {' '}
                                       Gift Card:
                                     </div>
-                                     {''}
+                                    {''}
                                     <span className=" text-[black] font-normal text-[16px]   ">
                                       {item.giftCardName}
                                     </span>
@@ -1187,7 +1189,7 @@ export default function AddCartFunc() {
                   {!sucessfullLoader && (
                     <div className="w-[90%]  m-auto mt-[4rem] mb-10 flex justify-center">
                       <div>
-                        <h3 className="text-[black] font-karla sm:text-[40px] text-[24px]">
+                        <h3 className="text-[black] text-[#324879] font-karla sm:text-[40px] text-[24px] font-bold">
                           YOUR CART IS EMPTY!
                         </h3>
                         <div className="flex justify-center mt-[8px]">
@@ -1349,7 +1351,10 @@ export default function AddCartFunc() {
                             }}
                             className="mt-[10px]"
                           >
-                            <span className=" text-center ">
+                            <h2 className="font-bold sm:text-[30px] mb-[15px] text-[22px] w-full text-center  leading-10">
+                              Your Custom Message
+                            </h2>
+                            <span className="text-center mt-3">
                               Recipient:
                               <span className="ml-2 font-normal">
                                 {' '}
@@ -1360,41 +1365,59 @@ export default function AddCartFunc() {
                                 {item['State/Province'] || item.state}
                               </span>
                             </span>
-
-                            <h2 className="font-bold sm:text-[30px] text-[22px] w-full text-center mt-3 leading-10">
-                              Your Custom Message
-                            </h2>
-                            <div className="my-7 mr-5 relative flex justify-between">
-                              <div>
+                            {/* <div className="my-7 mr-5 relative flex justify-between"></div> */}
+                            <div className="relative">
+                              <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-auto mt-2  p-[20px] h-auto ">
+                                <span
+                                  className=" w-full"
+                                  style={{
+                                    fontFamily: msgFont,
+                                    fontSize: msgFontSize || '30px',
+                                  }}
+                                >
+                                  {' '}
+                                  {item.msgData}
+                                </span>
+                                <br />
+                                <span
+                                  className="text-center w-full ml-10"
+                                  style={{
+                                    fontFamily: msgFont,
+                                    fontSize: msgFontSize || '30px',
+                                  }}
+                                >
+                                  {msglastText}
+                                </span>
+                              </div>
+                              <div className="absolute flex items-center hidden md:block top-[37px] left-[-89px]">
+                                <div className='flex items-center'>
+                                <FiArrowLeft />
                                 <button onClick={handlePrevClick}>
                                   Previous
                                 </button>
+
+                                </div>
                               </div>
-                              <div>
+                              <div className="absolute flex items-center hidden md:block top-[37px] right-[-59px]">
+                                <div className='flex items-center'>
                                 <button onClick={handleNextClick}>Next</button>
+                                <RiArrowRightLine />
+                                </div>
                               </div>
-                            </div>
-                            <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-auto mt-5  p-[20px] h-auto ">
-                              <span
-                                className=" w-full"
-                                style={{
-                                  fontFamily: msgFont,
-                                  fontSize: msgFontSize || '30px',
-                                }}
-                              >
-                                {' '}
-                                {item.msgData}
-                              </span>
-                              <br />
-                              <span
-                                className="text-center w-full ml-10"
-                                style={{
-                                  fontFamily: msgFont,
-                                  fontSize: msgFontSize || '30px',
-                                }}
-                              >
-                                {msglastText}
-                              </span>
+                              <div className="flex justify-between mt-[8px] block md:hidden items-center">
+                                <div className='flex items-center'>
+                                  <FiArrowLeft />
+                                  <button onClick={handlePrevClick}>
+                                    Previous
+                                  </button>
+                                </div>
+                                <div className="flex items-center">
+                                  <button onClick={handleNextClick}>
+                                    Next
+                                  </button>
+                                  <RiArrowRightLine />
+                                </div>
+                              </div>
                             </div>
                             <div className="mt-[24px]">
                               <span>

@@ -47,6 +47,7 @@ const Profile = ({
   });
 
   const handleAccountInputChange = (e) => {
+    setError('');
     const {name, value} = e.target;
     setAccountDetails({
       ...accountDetails,
@@ -225,11 +226,10 @@ const Profile = ({
   return (
     <div className="relative">
       {loader && (
-       <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader
-          textColor='text-white'
+            textColor="text-white"
             title={
-
               activeTabs === 'account'
                 ? 'Updating Profile'
                 : 'Updating Password'
@@ -238,7 +238,7 @@ const Profile = ({
           />
         </div>
       )}
-      
+
       <div
         className={`rounded-lg md:p-6 w-full  mx-auto   ${
           (loader || successfullLoader) && 'opacity-50'

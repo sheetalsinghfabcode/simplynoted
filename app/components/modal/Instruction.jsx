@@ -74,10 +74,11 @@ function Instruction({
               <button
                 type="button"
                 onClick={closeModal}
-                className="bg-red-500 hover:bg-#ef6e6e-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                className="bg-[#ef6e6e] text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 style={{width: '100%'}}
               >
                 Close
+
               </button>
             )}
           </div>

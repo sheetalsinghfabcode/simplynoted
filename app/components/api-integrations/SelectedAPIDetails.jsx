@@ -5,7 +5,7 @@ const SelectedAPIDetails = () => {
   const {selectedSection} = useAPIIntegrationContext();
   return (
     <>
-    <div className=" sidebar h-[500px] overflow-auto  hidden lg:block w-full max-w-full p-[12px]">
+    <div className="h-[600px] overflow-auto border border-solid border-black  hidden lg:block w-full max-w-full p-[12px]">
       {selectedSection === 'API ENDPOINTS' && <APIEndpoints />}
       {selectedSection === 'AUTHENTICATION' &&   <Authentication />}
       {selectedSection === 'USERS' && <Users />}
