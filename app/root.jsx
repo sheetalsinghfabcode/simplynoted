@@ -89,11 +89,15 @@ export default function App() {
 
 
 
+
+
+
   useEffect(()=>{
     if(!data.isLoggedIn){
       localStorage.clear()
       console.log("localstoage clear")
     }
+
   },[])
 
   useAnalytics(hasUserConsent);

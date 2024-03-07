@@ -846,6 +846,7 @@ export function CheckoutData({
                 </div>
                 <div className="mt-2">
                   <button
+                  disabled={(!walletBalance || walletBalance?.balance === 0 && showWallet)}
                     onClick={paymentPurchase}
                     className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
                   >
