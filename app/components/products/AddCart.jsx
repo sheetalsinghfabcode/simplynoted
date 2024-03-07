@@ -630,9 +630,12 @@ export function AddCart({
   return (
     <div className="relative global-max-width-handler">
       {loader && (
-        <div className="absolute top-[50%] left-[50%]">
-          <CircularLoader title="Loading Address" color="#ef6e6e" />
-        </div>
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+        <CircularLoader
+          textColor="text-white"
+          title="Loading Address.."
+        />
+      </div>
       )}
 
       <>

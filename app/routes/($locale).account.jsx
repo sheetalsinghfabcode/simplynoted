@@ -237,7 +237,7 @@ function Account({customer, heading, featuredData}) {
     } catch (error) {}
   }
 
-  const [key, setKey] = useState('');
+  const [apiKey, setApiKey] = useState('');
   const [keyModal, setKeyModal] = useState(false);
 
   const textToCopyRef = useRef(null);
@@ -274,7 +274,7 @@ function Account({customer, heading, featuredData}) {
 
       if (response.ok) {
         const data = await response.json();
-        setKey(data.result);
+        setApiKey(data.result);
 
         localStorage.setItem('apiKey', data.result);
       } else {
@@ -427,7 +427,7 @@ function Account({customer, heading, featuredData}) {
               closeModal={() => setKeyModal(false)}
               isOpen={keyModal}
               close={true}
-              body={key}
+              body={apiKey}
             />
 
             {activeTab === 2 && <AccountOrderHistory orders={orders} />}
@@ -450,6 +450,8 @@ function Account({customer, heading, featuredData}) {
             {activeTab === 7 && (
               <AccountDetails
                 loader={loader}
+                apiKey={apiKey}
+                setApiKey={setApiKey}
                 setLoader={setLoader}
                 accountDetail={accountDetail}
                 customer={customer}
@@ -464,7 +466,7 @@ function Account({customer, heading, featuredData}) {
 
 function AccountOrderHistory({orders}) {
   return (
-    <div className="mt-6 overflow-auto">
+    <div className="mt-6 h-[500px] overflow-auto">
       <div className="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>
@@ -495,7 +497,7 @@ function EmptyOrders() {
 
 function Orders({orders}) {
   return (
-    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 md:grid-cols-2 overflow-auto h-[500px] lg:grid-cols-3">
+    <ul className="grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 md:grid-cols-2 overflow-auto  lg:grid-cols-3">
       {orders.map((order) => (
         <OrderCard order={order} key={order.id} />
       ))}
