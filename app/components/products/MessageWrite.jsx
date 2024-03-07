@@ -1224,15 +1224,7 @@ export function MessageWriting({
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
-        {/* {showLoader && loaderMessage !== 'Adding New Templates' && (
-          <div className="absolute top-0 left-0 w-full h-full bg-gray-800 opacity-80 flex justify-center items-center z-10">
-            <CircularLoader
-              textColor="text-white"
-              title={loaderMessage}
-              color="#ef6e6e"
-            />
-          </div>
-        )} */}
+       
         <div
           className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
             show
@@ -1795,9 +1787,7 @@ export function MessageWriting({
                     }}
                   >
                     <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
-                      {/* {loader ? (
-                        <CircularLoader color="#ef6e6e" />
-                      ) : ( */}
+                    
                       <>
                         <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
                           <FiUploadCloud />
@@ -1890,7 +1880,7 @@ export function MessageWriting({
                   >
                     <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
-                        <CircularLoader color="#ef6e6e" />
+                        <CircularLoader title="Uploding Addresses..." color="#ef6e6e" />
                       ) : (
                         <>
                           <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
@@ -2050,7 +2040,7 @@ export function MessageWriting({
               <div>
                 {aiTextLoader ? (
                   <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
-                    <CircularLoader color="#ef6e6e" />
+                    <CircularLoader title="Generating AI Text" color="#ef6e6e" />
                   </div>
                 ) : (
                   <textarea

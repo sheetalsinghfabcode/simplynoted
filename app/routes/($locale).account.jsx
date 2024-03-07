@@ -286,19 +286,33 @@ function Account({customer, heading, featuredData}) {
       console.error('Error:', error);
     }
   };
+  const [accountDetails, setAccountDetails] = useState({
+    firstName: customer.firstName,
+    lastName: customer.lastName,
+    email: customer.email,
+    phone: customer.phone,
+    address1: '',
+    address2: '',
+    city: '',
+    state: '',
+    country: '',
+    zip: '',
+  });
+
+
 
   return (
     <div className="w-full global-max-width-handler ">
       <div className=" flex flex-col p-[20px] pt-[40px] px-0 md:px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
         <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
           <div className="user-name-account">
-            {customer.firstName?.charAt(0)}
-            {customer.lastName?.charAt(0)}
+            { accountDetails.firstName ? accountDetails.firstName?.charAt(0) : customer.firstName?.charAt(0)}
+            { accountDetails.lastName ? accountDetails.lastName?.charAt(0) : customer.lastname?.charAt(0)}
           </div>
           <div className="flex flex-col items-center md:items-start">
             <h4 className="text-[16px] md:text-[20px] leading-[145%] text-[#0D0C22] font-normal ">
-              {customer?.firstName ? customer.firstName + ' ' : ''}
-              {customer?.lastName ? customer.lastName : ''}
+              { accountDetails.firstName ? accountDetails.firstName : customer?.firstName } {' '}
+             {accountDetails.lastName ? accountDetails?.lastName : customer?.lastName  }
             </h4>
             <span
               onClick={() => setActiveTab(6)}
@@ -441,8 +455,10 @@ function Account({customer, heading, featuredData}) {
                 setAccountDetail={setAccountDetail}
                 customer={customer}
                 result={result}
+                accountDetails={accountDetails}
+                setAccountDetails={setAccountDetails}
                 loader={loader}
-                accountDetails={accountDetail}
+                accountDetail={accountDetail}
                 setLoader={setLoader}
               />
             )}

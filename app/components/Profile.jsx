@@ -11,6 +11,8 @@ const Profile = ({
   setProfile,
   loader,
   setLoader,
+  setAccountDetails,
+  accountDetails,
   setAccountDetail,
 }) => {
   const customerID = customer.id.replace(/[^0-9]/g, '');
@@ -27,19 +29,6 @@ const Profile = ({
     const apiKey = localStorage.getItem('apiKey');
     setApiKey(apiKey);
   }, [apiKey]);
-
-  const [accountDetails, setAccountDetails] = useState({
-    firstName: customer.firstName,
-    lastName: customer.lastName,
-    email: customer.email,
-    phone: customer.phone,
-    address1: '',
-    address2: '',
-    city: '',
-    state: '',
-    country: '',
-    zip: '',
-  });
 
   const [securityDetails, setSecurityDetails] = useState({
     newPassword: '',
@@ -97,7 +86,7 @@ const Profile = ({
         {
           method: 'POST',
           headers: {
-            Authorization: `Bearer ${key}`,
+            Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
@@ -139,7 +128,7 @@ const Profile = ({
             setAccountTabName('Profile');
             setActiveTab(7);
             setSuccessFullLoader(false);
-          }, 3000);
+          }, 1000);
         }
       } else {
         // Handle errors if the response is not OK
@@ -173,7 +162,7 @@ const Profile = ({
         {
           method: 'POST',
           headers: {
-            Authorization: `Bearer ${key}`,
+            Authorization: `Bearer ${apiKey}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(payload),
@@ -198,13 +187,9 @@ const Profile = ({
 
       if (response.ok) {
         setLoader(false);
-
-        setTimeout(() => {
-          setSuccessFullLoader(false);
-          setAccountTabName('Profile');
-          setActiveTab(7);
-        }, 3000);
-
+        setSuccessFullLoader(false);
+        setAccountTabName('Profile');
+        setActiveTab(7);
         // Request was successful
       } else {
         setLoader(false);
