@@ -1,23 +1,16 @@
-import {Link} from '~/components';
-import DynamicButton from './DynamicButton';
 import {useEffect, useState} from 'react';
 import CircularLoader from './CircularLoder';
 import {useStateContext} from '~/context/StateContext';
-import { postApi } from '~/utils/ApiService';
-import { API_PATH } from '~/utils/Path';
 
-export function AccountDetails({customer, loader, setLoader, accountDetail}) {
+export function AccountDetails({customer, apiKey,setApiKey}) {
   const {firstName, lastName, email, phone, id} = customer;
 
-  const [key, setKey] = useState('');
   const [handleGenerateClick, setHandleGenerateClick] = useState(false);
 
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const generateApiKey = async () => {
-    if (handleGenerateClick) {
-      setLoader(true);
-    }
+    
     try {
       const response = await 
       // postApi(`${API_PATH.GENRATE_API_KEY}${customerID}`,'')
@@ -34,15 +27,15 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('apiKey', data.result);
-        setLoader(false)
-        setKey(data.result);
+        setHandleGenerateClick(false)
+        setApiKey(data.result);
       } else {
-        setLoader(false)
+        setHandleGenerateClick(false)
         // Handle errors here
         console.error('Error:', response.statusText);
       }
     } catch (error) {
-      setLoader(false)
+      setHandleGenerateClick(false)
       // Handle network errors or exceptions
       console.error('Error:', error);
     }
@@ -68,12 +61,13 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
     setPhoneNumber(phoneNumber);
   }, []);
 
+
   return (
     <>
       <div className="max-w-[100%] mx-auto sm:px-4 px-[0px] ">
         <div className="bg-white font-karla rounded-[12px] p-[9px] border border-solid border-[#DDDDDD] rounded-lg md:p-6 p-[0px] md:mt-[0px] mt-[23px]">
           {/* Name */}
-          <div className="flex mb-4">
+          <div className="flex mb-4 ">
             <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Name:
             </div>
@@ -132,23 +126,21 @@ export function AccountDetails({customer, loader, setLoader, accountDetail}) {
             </div>
           </div>
 
-          <div className="flex mb-4">
+          <div className={`flex mb-4  `}>
             <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
               Generated API Key:
             </div>
-            {handleGenerateClick && (
               <>
-                {loader ? (
-                  <div className='w-3/4'>
+                {(handleGenerateClick) ? (
+                  <div className=''>
                   <CircularLoader color="#ef6e6e" />
                   </div>
                 ) : (
                   <p className="w-3/4 md:text-[14px] text-[11px] font-semibold break-all">
-                    {key}
+                    {apiKey}
                   </p>
                 )}
               </>
-            )}
           </div>
         </div>
       </div>

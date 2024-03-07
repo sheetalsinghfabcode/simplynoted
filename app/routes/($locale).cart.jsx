@@ -1306,7 +1306,7 @@ export default function AddCartFunc() {
                       </div>
                     </div>
                   </div>
-                  <div className="buttonDiv flex justify-center items-center ">
+                  <div className="buttonDiv mt-2 sm:mt-0 flex justify-center items-center ">
                     {!sucessfullLoader ? (
                       <button
                         className="bg-[#ef6e6e] text-[#fff] py-[15px] px-[25px] rounded-xl text-[14px] font-bold cursor-pointer"

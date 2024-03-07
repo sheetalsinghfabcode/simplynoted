@@ -16,7 +16,7 @@ const Profile = ({
   const customerID = customer.id.replace(/[^0-9]/g, '');
 
   const [activeTabs, setActiveTabs] = useState('account'); // 'account' or 'security'
-  const [key, setKey] = useState('');
+  const [apiKey, setApiKey] = useState('');
   const [error, setError] = useState('');
   const [successfullLoader, setSuccessFullLoader] = useState(false);
 
@@ -25,8 +25,8 @@ const Profile = ({
 
   useEffect(() => {
     const apiKey = localStorage.getItem('apiKey');
-    setKey(apiKey);
-  }, [key]);
+    setApiKey(apiKey);
+  }, [apiKey]);
 
   const [accountDetails, setAccountDetails] = useState({
     firstName: customer.firstName,

@@ -46,6 +46,7 @@ export function MessageWriting({
   setCustomFontName,
   editCustomFontFamily,
   editShippingDate,
+  showBulkOnEdit
 }) {
   const {
     setAddressForm,
@@ -170,6 +171,7 @@ export function MessageWriting({
   function closeSelectAddressModal() {
     setModalForAddressBook(false);
   }
+
 
   function onCancelCSVUpload() {
     setDragAndDropBorderColor('#525252');
@@ -326,6 +328,7 @@ export function MessageWriting({
     setModalForAddressBook(false);
     setBulkFileCount(fileData.length);
   }
+
 
   function AfterUpload() {
     if (selectedFile) {
@@ -1999,7 +2002,7 @@ export function MessageWriting({
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <span className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
                       {' '}
-                      Number of addresses selected: {bulkFileCount}
+                      Number of addresses selected: { bulkFileCount}
                     </span>
                   ) : (
                     ''

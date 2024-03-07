@@ -211,6 +211,11 @@ export default function Product() {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
+
+
+  console.log("datafornav",datafornav);
+
+  let selectedAddress ;
   let EditMess = datafornav?.state?.data?.messageData;
   let editEndMess = datafornav?.state?.data?.endText;
   let editOrderValue = datafornav?.state;
@@ -319,6 +324,7 @@ export default function Product() {
                 selectedFile={selectedFile}
                 setSelectedFile={setSelectedFile}
                 setShowBox={setShowBox}
+                showBulkOnEdit={showBulkOnEdit}
                 EditMess={EditMess}
                 editEndMess={editEndMess}
                 editFontFamily={editFontFamily}
