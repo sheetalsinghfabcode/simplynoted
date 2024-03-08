@@ -178,21 +178,21 @@ export default function AddCartFunc() {
     setClearCartModal(true);
   }
 
-  function clearCart() {
-    setSuccessfullLoader(true);
-    setOperation('Clear shopping cart');
-    setUpdateGift(!updateGift);
-    localStorage.removeItem('mydata');
-    setClearCartModal(false);
-    setTimeout(() => {
-      setSuccessfullLoader(false);
-      setOperation(null);
-    }, 1300);
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth', // Make the scroll behavior smooth
-    });
-  }
+  // function clearCart() {
+  //   setSuccessfullLoader(true);
+  //   setOperation('Clear shopping cart');
+  //   setUpdateGift(!updateGift);
+  //   localStorage.removeItem('mydata');
+  //   setClearCartModal(false);
+  //   setTimeout(() => {
+  //     setSuccessfullLoader(false);
+  //     setOperation(null);
+  //   }, 1300);
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth', // Make the scroll behavior smooth
+  //   });
+  // }
 
   function ConfirmDeleteOrder(index) {
     setDelOrderIndex(index);
@@ -217,6 +217,31 @@ export default function AddCartFunc() {
       setOperation(null);
     }, 1300);
   }
+
+  const clearCart = () => {
+
+    const customerId = localStorage.getItem('customerId')
+    const apiUrl =
+      `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+    fetch(apiUrl, {
+      method: 'POST',
+    })
+      .then((response) => {
+        console.log('Response status:', response.status);
+        if (response.ok) {
+          alert('Cart cleared successfully');
+        } else {
+          console.log('Failed to clear cart');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        console.log('An error occurred while clearing the cart');
+      });
+  };
+
+
+ 
 
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
@@ -775,7 +800,7 @@ export default function AddCartFunc() {
                                             />
                                           </div>
                                           <div className="max-w-[100%] flex  justify-center  lg:items-center items-start  lg:flex-row flex-col  ">
-                                            <h3 className="text-[#1b5299] ml-[17px] font-karla md:text-[18px] text-[16px] font-bold">
+                                            <h3 className="text-[#1b5299]  font-karla md:text-[18px] text-[16px] font-bold">
                                               Postal {postTitle}
                                             </h3>
                                           </div>
@@ -970,7 +995,7 @@ export default function AddCartFunc() {
                               <div className="flex w-[100%] flex-wrap lg:border-none border-t border-[#AAA]">
                                 <div className="md:max-w-[50%] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px]  border-[#AAA]">
                                   <div className="flex w-[100%] justify-start ">
-                                    <div className="max-w-[33%] w-full md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">
+                                    <div className="max-w-[27%] w-full md:m-5 mt-[30px] mx-auto rounded-[10px] overflow-hidden">
                                       <img
                                         src={item.shippingMethodImage}
                                         alt=""
@@ -1224,7 +1249,7 @@ export default function AddCartFunc() {
             <ConfirmationModal
               show={clearCartModal}
               onCancel={() => setClearCartModal(false)}
-              onConfirm={() => clearCart()}
+              onConfirm={clearCart}
               message="Are you sure you want to clear your Cart?"
               confirmText="Delete"
               cancelText="Cancel"
@@ -1390,22 +1415,23 @@ export default function AddCartFunc() {
                                 </span>
                               </div>
                               <div className="absolute flex items-center hidden md:block top-[37px] left-[-89px]">
-                                <div className='flex items-center'>
-                                <FiArrowLeft />
-                                <button onClick={handlePrevClick}>
-                                  Previous
-                                </button>
-
+                                <div className="flex items-center">
+                                  <FiArrowLeft />
+                                  <button onClick={handlePrevClick}>
+                                    Previous
+                                  </button>
                                 </div>
                               </div>
                               <div className="absolute flex items-center hidden md:block top-[37px] right-[-59px]">
-                                <div className='flex items-center'>
-                                <button onClick={handleNextClick}>Next</button>
-                                <RiArrowRightLine />
+                                <div className="flex items-center">
+                                  <button onClick={handleNextClick}>
+                                    Next
+                                  </button>
+                                  <RiArrowRightLine />
                                 </div>
                               </div>
                               <div className="flex justify-between mt-[8px] block md:hidden items-center">
-                                <div className='flex items-center'>
+                                <div className="flex items-center">
                                   <FiArrowLeft />
                                   <button onClick={handlePrevClick}>
                                     Previous

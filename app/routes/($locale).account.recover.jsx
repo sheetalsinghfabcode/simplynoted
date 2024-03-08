@@ -120,7 +120,7 @@ export default function Recover() {
                 </button>
               </div>
               <div className="flex items-center mt-8 border-t border-gray-300">
-                <p className="align-baseline text-[15px] mt-6">
+                <p className="align-baseline text-[16px] mt-6">
                   Return to &nbsp;
                   <Link className="inline underline" to="/account/login">
                     Login

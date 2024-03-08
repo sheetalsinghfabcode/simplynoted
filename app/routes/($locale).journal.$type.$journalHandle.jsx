@@ -74,6 +74,7 @@ export default function Article() {
           title={title}
           className={'!text-[30px] '}
         />
+
         <div>
           {image && (
             <Image

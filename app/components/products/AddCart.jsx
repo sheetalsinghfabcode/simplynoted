@@ -392,6 +392,8 @@ export function AddCart({
     custom_pdf: metafields ? metafields.pdfURL : null,
   };
 
+
+
   let keyUpdate1 = 'messageData';
   let keyUpdate2 = 'reciverAddress';
   let keyUpdate3 = 'senderAddress';
@@ -513,7 +515,10 @@ export function AddCart({
         storedData[editOrderValue.index][keyUpdate30] = apiVariantID
           ? apiVariantID
           : variantID;
+      console.log(variantID,"variant_id");
+
       }
+
       localStorage.setItem('mydata', JSON.stringify(storedData));
       localStorage.removeItem('reqFielddInCart');
       // setProductShow(true)

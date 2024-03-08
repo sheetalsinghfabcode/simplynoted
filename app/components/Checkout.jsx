@@ -318,6 +318,9 @@ export function CheckoutData({
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
 
+  console.log("cartData",cartData
+  );
+
   async function paymentPurchase() {
     setPurchaseCompleted(true);
     setPaymentLoaderMessage('Processing your order...');
@@ -435,7 +438,6 @@ export function CheckoutData({
                 };
               }
             }
-
             return {
               productTitle: item.productTitle,
               productId: item?.productId?.match(/\d+/g)?.join(''),
@@ -527,8 +529,12 @@ export function CheckoutData({
         discountValueType: discountCouponCode?.apiDiscountResponse?.value_type
           ? discountCouponCode?.apiDiscountResponse?.value_type
           : '',
+
       };
-      // console.log(payload);
+      
+      console.log(payload);
+
+
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,
@@ -548,10 +554,10 @@ export function CheckoutData({
       if (json.result.success) {
         setCartCountVal(0);
         localStorage.setItem('mydata', '[]');
+        setPurchaseCompleted(false);
         setPaymentLoaderMessage(json.result.message);
         setTimeout(() => {
           setPaymentSuccessfull(true);
-          setPurchaseCompleted(false);
         }, 1500);
       } else {
         setPaymentLoaderMessage(json.result.message);
@@ -613,6 +619,9 @@ export function CheckoutData({
   function continueShopping() {
     navigate('/collections/best-sellers');
   }
+
+
+
   return (
     <div className="relative">
       {purchaseCompleted && (

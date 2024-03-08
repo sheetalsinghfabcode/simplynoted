@@ -18,7 +18,6 @@ export async function loader({request,context}){
     page,
   });
 }
-
 const APIIntegration = () => {
   return (
     <APIIntegrationProvider>
@@ -30,6 +29,8 @@ const APIIntegration = () => {
     </APIIntegrationProvider>
   );
 };
+
+
 
 export default APIIntegration;
 const API_GRAPH_QL = `#graphql
