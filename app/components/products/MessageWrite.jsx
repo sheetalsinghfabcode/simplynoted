@@ -181,7 +181,7 @@ export function MessageWriting({
   }
   async function checkUserLogged() {
     // console.log(customerid,customerId,"customerId");
-    if (!customerId) {
+    if (!customerid) {
       // setLoginModal(true);
       setShowSignScreen(true);
     } else if (name.length == 0) {

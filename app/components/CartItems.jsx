@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useStateContext } from '~/context/StateContext';
 
 const CartItems = ({id}) => {
-  const { setCartCountVal, setCartData,isCartUpdated} = useStateContext();
+  const { setCartCountVal, cartCountVal, setCartData,isCartUpdated} = useStateContext();
 
   useEffect(() => {
     // Read customerId from localStorage
@@ -26,7 +26,7 @@ const CartItems = ({id}) => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [isCartUpdated]);
+  }, [isCartUpdated,cartCountVal]);
 
 
   return <></>;

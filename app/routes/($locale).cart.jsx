@@ -47,7 +47,7 @@ export async function loader({context, request}) {
 }
 
 export default function AddCartFunc() {
-  const {setCartCountVal, customerId, cartData} = useStateContext();
+  const {setCartCountVal,  cartData,setIsCartUpdated} = useStateContext();
   const {data, postalData, StripeKey} = useLoaderData();
   const [updateGift, setUpdateGift] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -78,25 +78,27 @@ export default function AddCartFunc() {
   const [deleteOrderIndex, setDelOrderIndex] = useState(null);
   const [delCardIndex, setDelCardIndex] = useState(null);
   const [showCartPage, setShowCartPage] = useState(true);
-  const [totalPrize, setTotalPrize] = useState('');
+  const [totalPrize, setTotalPrize] = useState(null);
   const [agree, setAgree] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
 
+
+
+  let customerId;
+
   useEffect(() => {
-    storedDataString = localStorage.getItem('mydata')
-      ? JSON.parse(localStorage.getItem('mydata'))
-      : [];
-    localStorage.setItem('cartCount', JSON.stringify(storedDataString.length));
 
     if (postalData) {
       setPostalValue();
     }
     if (postPrice) {
-      subTotalAmount(storedDataString);
+      subTotalAmount();
     }
-  }, [updateGift, postPrice]);
+  }, [updateGift, postPrice,cartData]);
+
+
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
@@ -115,7 +117,14 @@ export default function AddCartFunc() {
     setPostImage(postalImag.url);
   }
 
+  useEffect(() => {
+     customerId = localStorage.getItem('customerId');
+
+  })
+
   async function updateCartData(cartData) {
+    const customerId = localStorage.getItem('customerId');
+
     try {
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
       const response = await fetch(url, {
@@ -132,6 +141,8 @@ export default function AddCartFunc() {
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
+          setIsCartUpdated(true)
+          setCartCountVal(cartData.length)
         }
       } else {
         throw new Error('Failed to update data');
@@ -199,20 +210,21 @@ export default function AddCartFunc() {
     setDelCardIndex(index);
   }
   function clearCartBtn() {
+    
     setClearCartModal(true);
   }
 
 
- 
+
 
   function deleteCartItem() {
     const customerId = localStorage.getItem('customerId');
     
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items?customerId=${customerId}`;
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
   
     // Make a DELETE request to the API
     fetch(apiUrl, {
-      method: 'DELETE',
+      method: 'POST',
     })
     .then((response) => {
       if (!response.ok) {
@@ -221,6 +233,10 @@ export default function AddCartFunc() {
       return response.json();
     })
     .then((data) => {
+      if(data.result.success){
+        setCartCountVal(0)
+        setIsCartUpdated(true)
+      }
       // Handle successful deletion if needed
     })
     .catch((error) => {
@@ -233,6 +249,8 @@ export default function AddCartFunc() {
     setDelOrderIndex(index);
     setDeleteModal(true);
   }
+
+  console.log("cartData",cartData);
   
 
   function deleteOrder(index) {
@@ -241,15 +259,15 @@ export default function AddCartFunc() {
     setUpdateGift(!updateGift);
     // if (index >= 0 && index < cartData.length) {
     // // Delete the order
-    // cartData.splice(index, 1);
+    cartData.splice(index, 1);
     // // delete cartData[index];
     // // }
 
     localStorage.setItem('mydata', JSON.stringify(cartData));
-    if (cartData && cartData.length === 1) {
-      deleteCartItem();
-    } else {
+    if (cartData && cartData.length >0) {
       updateCartData(cartData);
+    } else {
+      deleteCartItem();
     
     }
 
@@ -378,11 +396,14 @@ export default function AddCartFunc() {
     }
   };
 
-  async function subTotalAmount(cartData) {
+  console.log("cartData",cartData);
+
+  async function subTotalAmount() {
+
     const prices = cartData.reduce(
       (sum, cartData) =>
         sum +
-        (cartData.productPrice * cartData.qyt +
+        (cartData.cartTotal * cartData.qyt +
           cartData.giftCardPrice * cartData.qyt +
           ((cartData.shippingData &&
             cartData.shippingData.node?.title ==
@@ -520,7 +541,7 @@ export default function AddCartFunc() {
                                       Price:
                                     </span>
                                     <span className="text-black">
-                                      $ {item.productPrice}
+                                      $ {item.cartTotal}
                                     </span>
                                   </div>
                                   <div className="flex justify-between">
@@ -538,7 +559,7 @@ export default function AddCartFunc() {
                                     </span>
                                     <span className="text-[black] tracking-[1.5px]">
                                       ${' '}
-                                      {(item.productPrice * item.qyt).toFixed(
+                                      {(item.cartTotal * item.qyt).toFixed(
                                         2,
                                       )}
                                     </span>
@@ -1007,7 +1028,7 @@ export default function AddCartFunc() {
                               <div>
                                 ${' '}
                                 {(
-                                  item.productPrice * item.qyt +
+                                  item.cartTotal * item.qyt +
                                   item.giftCardPrice * item.qyt +
                                   (item.isShippidata
                                     ? item.shippingDataCost * 1
@@ -1079,7 +1100,7 @@ export default function AddCartFunc() {
                          md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-start gap-[20px]"
                           >
                             <span className="md:mr-[2px]">GRAND TOTAL</span>
-                            <span>${totalPrize.toFixed(2)}</span>
+                            <span>${Number(totalPrize).toFixed(2)}</span>
                           </div>
                           <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
                             <div className="">

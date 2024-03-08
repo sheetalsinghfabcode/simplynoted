@@ -32,6 +32,7 @@ export function AddCart({
     setDefaultAddressType,
     showLoader,
     cartData,
+    setCartCountVal,
     setIsCartUpdated,
     custometId,
   } = useStateContext();
@@ -439,7 +440,7 @@ export function AddCart({
   }
 
   async function onClickAddCart() {
-    setLoader(true);
+    setButtonTextChange(true)
 
     try {
       // Construct new cart item
@@ -449,7 +450,7 @@ export function AddCart({
           : null,
         productId: productId ? productId.replace(/[^0-9]/g, '') : null,
         variant_id: apiVariantID ? apiVariantID : variantID,
-        productPrice: finalPrice ? finalPrice : productData?.price?.amount,
+        cartTotal: finalPrice ? finalPrice : productData?.price?.amount,
         productImg: productData?.image?.url,
         senderAddress: selectedItem2,
         reciverAddress: selectedItem,
@@ -511,12 +512,12 @@ export function AddCart({
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
-          
+          setIsCartUpdated(true)
+          setCartCountVal(storedData.length)
           setTimeout(() => {
-            setIsCartUpdated(true)
             navigate('/cart');
-          }, 100);
-         
+          }, 300);
+          setButtonTextChange(false)
         }
         // Proceed with any further actions upon successful update
       } else {
