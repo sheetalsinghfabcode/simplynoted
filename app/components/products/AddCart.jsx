@@ -31,6 +31,9 @@ export function AddCart({
     setEditAddress,
     setDefaultAddressType,
     showLoader,
+    cartData,
+    setIsCartUpdated,
+    custometId,
   } = useStateContext();
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
@@ -381,6 +384,7 @@ export function AddCart({
     signOffLineHeight: cartDataReq?.signOffLineHeight,
     signOffFontSize: cartDataReq?.signOffFontSize,
     isShippidata: show ? show : false,
+
     optionalShipDate: cartDataReq?.ship_date,
     custom_pdf: metafields ? metafields.pdfURL : null,
   };
@@ -418,151 +422,114 @@ export function AddCart({
   let keyUpdate29 = 'price';
   let keyUpdate30 = 'variant_id';
 
-  function onClickAddCart() {
-    setLoader(true);
-    if (
-      editOrderValue?.index >= 0 &&
-      selectedItem2 &&
-      ((selectedOrder === 'Single Card' && selectedItem) ||
-        selectedOrder !== 'Single Card')
-    ) {
-      const storedData = JSON.parse(localStorage.getItem('mydata'));
-
-      if (
-        editOrderValue.index >= 0 &&
-        editOrderValue.index < storedData.length
-      ) {
-        storedData[editOrderValue.index][keyUpdate1] = cartDataReq?.msg
-          ? cartDataReq?.msg
-          : editOrderValue?.data.messageData;
-        storedData[editOrderValue.index][keyUpdate2] = selectedItem;
-        storedData[editOrderValue.index][keyUpdate3] = selectedItem2;
-        storedData[editOrderValue.index][keyUpdate4] =
-          cardImg && stateCheckCart ? cardImg : null;
-        storedData[editOrderValue.index][keyUpdate5] =
-          cardName && stateCheckCart ? cardName : null;
-        storedData[editOrderValue.index][keyUpdate25] =
-          giftCardId && stateCheckCart ? giftCardId : null;
-        storedData[editOrderValue.index][keyUpdate26] =
-          giftCardUrl && stateCheckCart ? giftCardUrl : null;
-        storedData[editOrderValue.index][keyUpdate6] =
-          cardPrice && stateCheckCart ? cardPrice : null;
-        storedData[editOrderValue.index][keyUpdate7] = cartDataReq?.signOffText
-          ? cartDataReq?.signOffText
-          : editOrderValue?.data.endText;
-        storedData[editOrderValue.index][keyUpdate8] = formData ? formData : '';
-        storedData[editOrderValue.index][keyUpdate9] = selectShipMode
-          ? selectShipMode
-          : '';
-        storedData[editOrderValue.index][keyUpdate10] = selectShipMode
-          ? selectShipMode.node.price.amount
-          : '';
-        storedData[editOrderValue.index][keyUpdate11] = fontFamilyName
-          ? fontFamilyName
-          : 'tarzan';
-        storedData[editOrderValue.index][keyUpdate12] =
-          cardPriceTitle && stateCheckCart ? cardPriceTitle : null;
-        storedData[editOrderValue.index][keyUpdate13] = cartDataReq
-          ? cartDataReq?.fontSize
-          : editOrderValue?.data.fontSizeMsg;
-        storedData[editOrderValue.index][keyUpdate14] = customFontName
-          ? customFontName
-          : 'Select custom Font';
-        storedData[editOrderValue.index][keyUpdate15] = cartDataReq
-          ? cartDataReq?.lineHeight
-          : editOrderValue?.data.lineHeight;
-        storedData[editOrderValue.index][keyUpdate16] = cartDataReq
-          ? cartDataReq?.signOffLineHeight
-          : editOrderValue?.data.signOffLineHeight;
-        storedData[editOrderValue.index][keyUpdate17] = cartDataReq
-          ? cartDataReq?.signOffFontSize
-          : editOrderValue?.data.signOffFontSize;
-        storedData[editOrderValue.index][keyUpdate18] = cartDataReq
-          ? cartDataReq?.csvFileLen
-          : editOrderValue?.data.csvFileLen;
-        storedData[editOrderValue.index][keyUpdate19] = cartDataReq
-          ? cartDataReq?.bulkCsvData
-          : editOrderValue?.data.bulkCsvData;
-        storedData[editOrderValue.index][keyUpdate20] = cartDataReq
-          ? cartDataReq?.csvFileBulk
-          : editOrderValue?.data.csvFileBulk;
-        storedData[editOrderValue.index][keyUpdate21] = cartDataReq
-          ? cartDataReq?.usCount
-          : editOrderValue?.data.usCount;
-        storedData[editOrderValue.index][keyUpdate22] = cartDataReq
-          ? cartDataReq?.nonUsCount
-          : editOrderValue?.data.nonUsCount;
-        storedData[editOrderValue.index][keyUpdate23] = selectShipMode
-          ? shippingData.featuredImage.url
-          : '';
-        storedData[editOrderValue.index][keyUpdate27] = selectShipMode
-          ? shippingData.onlineStoreUrl
-          : '';
-        storedData[editOrderValue.index][keyUpdate28] = cartDataReq
-          ? cartDataReq.ship_date
-          : '';
-        storedData[editOrderValue.index][keyUpdate24] = show ? show : false;
-        storedData[editOrderValue.index][keyUpdate29] = finalPrice
-          ? finalPrice
-          : productData?.price?.amount;
-        storedData[editOrderValue.index][keyUpdate30] = apiVariantID
-          ? apiVariantID
-          : variantID;
-      console.log(variantID,"variant_id");
-
-      }
-
-      localStorage.setItem('mydata', JSON.stringify(storedData));
-      localStorage.removeItem('reqFielddInCart');
-      // setProductShow(true)
-      navigate('/cart');
-      setButtonTextChange(true);
-      setLoader(false);
-    } else {
-      if (
-        cartDataReq &&
-        cartDataReq.csvFileLen &&
-        selectedItem2 &&
-        ((selectedOrder === 'Single Card' && selectedItem) ||
-          selectedOrder !== 'Single Card')
-      ) {
-        const existingDataString = localStorage.getItem('mydata');
-        let existingDataArray = [];
-        if (existingDataString) {
-          existingDataArray = JSON.parse(existingDataString);
-          localStorage.removeItem('mydata');
-        }
-        existingDataArray.push(arrOfObj);
-        const updatedDataString = JSON.stringify(existingDataArray);
-        localStorage.setItem('mydata', updatedDataString);
-        localStorage.removeItem('reqFielddInCart');
-        // setProductShow(true)
-        setButtonTextChange(true);
-        navigate('/cart');
-        setLoader(false);
-      } else if (selectedItem && selectedItem2) {
-        const existingDataString = localStorage.getItem('mydata');
-        let existingDataArray = [];
-        if (existingDataString) {
-          existingDataArray = JSON.parse(existingDataString);
-          localStorage.removeItem('mydata');
-        }
-        existingDataArray.push(arrOfObj);
-        const updatedDataString = JSON.stringify(existingDataArray);
-
-        localStorage.setItem('mydata', updatedDataString);
-        localStorage.removeItem('reqFielddInCart');
-        // setProductShow(true)
-        setButtonTextChange(true);
-        navigate('/cart');
-        setLoader(false);
+  async function fetchExistingData() {
+    try {
+      const response = await fetch(
+        'https://testapi.simplynoted.com/api/storefront/cart-items?customerId=6406284116073',
+      );
+      if (response.ok) {
+        return await response.json();
       } else {
-        setCheckSelAddress(true);
-        // alert('please select the address')
-        setLoader(false);
+        throw new Error('Failed to fetch existing data');
       }
+    } catch (error) {
+      console.error('Error fetching existing data:', error);
+      throw error; // Rethrow the error for the caller to handle
     }
   }
+
+  async function onClickAddCart() {
+    setLoader(true);
+
+    try {
+      // Construct new cart item
+      const newCartItem = {
+        productTitle: productData?.product?.title
+          ? productData.product.title
+          : null,
+        productId: productId ? productId.replace(/[^0-9]/g, '') : null,
+        variant_id: apiVariantID ? apiVariantID : variantID,
+        productPrice: finalPrice ? finalPrice : productData?.price?.amount,
+        productImg: productData?.image?.url,
+        senderAddress: selectedItem2,
+        reciverAddress: selectedItem,
+        giftCardName: cardName && stateCheckCart ? cardName : null,
+        giftCardId: giftCardId && stateCheckCart ? giftCardId : null,
+        giftCardImg: cardImg && stateCheckCart ? cardImg : null,
+        giftCardPrice: cardPrice && stateCheckCart ? cardPrice : null,
+        giftCardPriceTitle:
+          cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
+        giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
+        messageData: MsgText,
+        fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
+        productGetUrl: window?.location.pathname,
+        endText: cartDataReq?.signOffText,
+        csvFileURL: cartDataReq?.csvFileBulk,
+        qyt: cartDataReq?.csvFileLen,
+        usCount: cartDataReq?.usCount,
+        nonUSCount: cartDataReq?.nonUsCount,
+        csvBulkData: cartDataReq?.bulkCsvData,
+        shippingData: selectShipMode ? selectShipMode : '',
+        shippingMethodImage: selectShipMode
+          ? shippingData.featuredImage.url
+          : '',
+        shippingMethodProdUrl: selectShipMode
+          ? shippingData.onlineStoreUrl
+          : '',
+        locationForShipMethod: formData ? formData : '',
+        shippingDataCost: selectShipMode
+          ? selectShipMode.node.price.amount
+          : '',
+        fontSizeMsg: cartDataReq?.fontSize,
+        customFontName: customFontName ? customFontName : 'Select Custom Font',
+        lineHeight: cartDataReq?.lineHeight,
+        signOffLineHeight: cartDataReq?.signOffLineHeight,
+        signOffFontSize: cartDataReq?.signOffFontSize,
+        isShippidata: show ? show : false,
+        optionalShipDate: cartDataReq?.ship_date,
+        custom_pdf: metafields ? metafields.pdfURL : null,
+      };
+
+      // Combine existing data with new data from the cartData array
+      const storedData = [...cartData, newCartItem];
+
+      // Define the API URL
+      const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
+
+      // Make POST request to update data
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerId: customerid,
+          cartItems: storedData,
+        }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.result.success) {
+          
+          setTimeout(() => {
+            setIsCartUpdated(true)
+            navigate('/cart');
+          }, 100);
+         
+        }
+        // Proceed with any further actions upon successful update
+      } else {
+        throw new Error('Failed to update data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error
+    }
+
+    setLoader(false);
+  }
+
   function closeSelAddressModal() {
     setCheckSelAddress(false);
   }

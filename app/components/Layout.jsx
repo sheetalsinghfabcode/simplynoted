@@ -50,12 +50,21 @@ import LoginModal from './modal/LoginModal';
 import {useStateContext} from '../context/StateContext';
 import CircularLoader from './CircularLoder';
 import Breadcrumbs from './Breadcrumbs';
+import CartItems from './CartItems';
 
 export function Layout({children, layout,isLoggedIn}) {
+  const {customerId} = useStateContext()
   const {headerMenu, footerMenu} = layout;
+
+  let storedCustomerId;
+  useEffect(() => {
+     storedCustomerId = localStorage.getItem('customerId');
+  }, []);
+
 
   return (
     <>
+    <CartItems id ={storedCustomerId} />
       <div className="flex flex-col  w-full">
         <div className="">
           <a href="#mainContent" className="sr-only">
@@ -707,6 +716,8 @@ function DesktopHeader({isHome, menu,isLoggedIn}) {
       : 0;
     setCartCountVal(totalCartCount);
   }, []);
+
+
 
   const {y} = useWindowScroll();
 

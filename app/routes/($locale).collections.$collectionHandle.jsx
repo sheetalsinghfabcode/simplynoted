@@ -282,7 +282,7 @@ if (index !== -1) {
                 key={index}
                 product={product}
                 offPrice={offPrice}
-                productPrice={product.variants[0].price}
+                productPrice={product?.variants[0]?.price}
                 customerId={customerid}
                 // loading={getImageLoadingPriority(i)}
               />
