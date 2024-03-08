@@ -137,7 +137,6 @@ export default function blog() {
     setCurrentPage((prevPage) => prevPage - 1);
   };
  
-
   return (
     <div className="global-max-width-handler">
       <div className="px-5">
@@ -229,7 +228,7 @@ export default function blog() {
                     </Link>
                   ))
                 ) : (
-                  <div className="font-medium text-2xl font-cursive text-blue">
+                  <div className="font-bold text-2xl font-cursive text-[#001a5f]">
                     No Blog Found
                   </div>
                 )}

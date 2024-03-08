@@ -173,7 +173,7 @@ export default function Login() {
               name="password"
               type="password"
               autoComplete="current-password"
-              placeholder=" Enter-Password"
+              placeholder="Enter-Password"
               aria-label="Password"
               minLength={8}
               required

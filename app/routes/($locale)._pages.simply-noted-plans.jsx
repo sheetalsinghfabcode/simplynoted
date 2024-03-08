@@ -100,7 +100,7 @@ export default function SimplyNoted() {
           <CircularLoader title="Loading Plans" color="#ef6e6e" />
         </div>
       )} */}
-      <div className="flex px-[16px] md:px-[40px] justify-start items-center">
+      <div className="flex px-[16px] md:mt-[30px] mt-[1px] md:px-[40px] justify-start items-center">
         <DynamicTitle className="" title={'Simply Noted Plans'} />
       </div>
       <div className={`${loader && 'opacity-40'}`}>
