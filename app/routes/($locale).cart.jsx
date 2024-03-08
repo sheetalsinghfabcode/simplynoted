@@ -178,7 +178,6 @@ export default function AddCartFunc() {
     }, 1300);
     updateCartData(cartData);
 
-    localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
   }
   function deleteKeyInArray(index) {
@@ -199,7 +198,6 @@ export default function AddCartFunc() {
       setOperation(null);
     }, 1300);
 
-    localStorage.setItem('mydata', JSON.stringify(cartData));
     updateCartData(cartData);
     setTimeout(() => {
       setDeleteCardModal(false);
@@ -263,7 +261,6 @@ export default function AddCartFunc() {
     // // delete cartData[index];
     // // }
 
-    localStorage.setItem('mydata', JSON.stringify(cartData));
     if (cartData && cartData.length >0) {
       updateCartData(cartData);
     } else {
@@ -271,7 +268,7 @@ export default function AddCartFunc() {
     
     }
 
-    localStorage.setItem('cartCount', JSON.stringify(cartData.length));
+    setCartCountVal(cartData.length)
     setDeleteModal(false);
     setTimeout(() => {
       setSuccessfullLoader(false);
