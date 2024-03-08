@@ -213,7 +213,6 @@ export default function Product() {
   const datafornav = useLocation();
 
 
-  console.log("datafornav",datafornav);
 
   let selectedAddress ;
   let EditMess = datafornav?.state?.data?.messageData;
