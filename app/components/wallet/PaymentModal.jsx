@@ -29,6 +29,7 @@ const PaymentModal = ({
     subscriptionProduct,
     setUpdateModal,
     subscriptionTitle,
+    setActiveTab,
     subscriptionPriceId,
   } = useStateContext();
 
@@ -713,6 +714,7 @@ const PaymentModal = ({
                             addNewCreditCard={addNewCreditCard}
                             setPaymentMethodId={setPaymentMethodId}
                             createCustomerId={createCustomerId}
+                            validateForm={validateForm}
                             savedCard={savedCard}
                             paymentPurchase={paymentPurchase}
                             setloader={setloader}
@@ -739,18 +741,20 @@ const PaymentModal = ({
                         <DynamicButton
                           text="Complete Purchase"
                           onClickFunction={() => {
-                            if (
-                              stripeCollection?.stripe?.subscription !==
-                                'Free' &&
-                              stripeCollection?.stripe?.subscriptionStatus ===
-                                'active'
-                            ) {
-                              setPaymentLoader(true);
-                              paymentSave(stripeCollection?.stripe);
-                            } else {
-                              if (validateForm()) {
+                            if (validateForm()) {
+                              if (
+                                stripeCollection?.stripe?.subscription !==
+                                  'Free' &&
+                                stripeCollection?.stripe?.subscriptionStatus ===
+                                  'active'
+                              ) {
                                 setPaymentLoader(true);
-                                createSubscription(paymentMethodId);
+                                paymentSave(stripeCollection?.stripe);
+                              } else {
+                                {
+                                  setPaymentLoader(true);
+                                  createSubscription(paymentMethodId);
+                                }
                               }
                             }
                           }}
