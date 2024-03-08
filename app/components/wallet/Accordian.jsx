@@ -683,6 +683,7 @@ const Accordion = ({
                       createCustomerId={createCustomerId}
                       savedCard={savedCard}
                       paymentPurchase={paymentPurchase}
+                      validateForm={validateForm}
                       stripePayments={stripePayments}
                       setloader={setloader}
                       showStripeCard={showStripeCard}

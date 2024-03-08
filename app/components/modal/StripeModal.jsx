@@ -33,6 +33,62 @@ const StripeModal = ({
     formData.email = userEmail;
   }, []);
 
+  const validateForm = () => {
+    let isValid = true;
+    const errors = {};
+
+    // Validate name
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    // Validate email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailPattern.test(formData.email)) {
+      errors.email = 'Email is required and must be valid';
+      isValid = false;
+    }
+
+    // Validate address
+    if (!formData.address.line1.trim()) {
+      errors.addressLine1 = 'Address is required';
+      isValid = false;
+    }
+
+    // Validate city
+    if (!formData.address.city.trim()) {
+      errors.city = 'City is required';
+      isValid = false;
+    }
+
+    // Validate country
+    if (!formData.address.country.trim()) {
+      errors.country = 'Country is required';
+      isValid = false;
+    }
+
+    // Validate state
+    if (!formData.address.state.trim()) {
+      errors.state = 'State is required';
+      isValid = false;
+    }
+
+    setErrors(errors); // Set errors state to display validation messages
+    if (!isValid) {
+      const firstErrorField = Object.keys(errors)[0];
+      const firstErrorElement = document.getElementById(firstErrorField);
+      if (firstErrorElement) {
+        firstErrorElement.focus();
+      }
+    }
+
+    // Open billing address section if there are any errors
+    if (!isValid) {
+    }
+    return isValid;
+  };
+
   const handleChange = (e) => {
     const {name, value} = e.target;
 
@@ -257,6 +313,7 @@ const StripeModal = ({
                   <StripeCard
                     onCancel={onCancel}
                     updateCard={updateCard}
+                    validateForm={validateForm}
                     handlePurchaseCard={handlePurchaseCard}
                     addCreditModal={addCreditModal}
                   />
