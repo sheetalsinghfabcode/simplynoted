@@ -318,8 +318,6 @@ export function CheckoutData({
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
 
-  console.log("cartData",cartData
-  );
 
   async function paymentPurchase() {
     setPurchaseCompleted(true);
@@ -531,10 +529,6 @@ export function CheckoutData({
           : '',
 
       };
-      
-      console.log(payload);
-
-
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,

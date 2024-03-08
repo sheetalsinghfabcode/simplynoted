@@ -115,54 +115,47 @@ export function AddCart({
   const [selectedBoxCheck2, setSelectedBoxCheck2] = useState(false);
   const [purchaseType, setPurchaseType] = useState('');
   const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
+  
   useEffect(() => {
     setIsInitialRender(false);
-    selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
+    const selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
     setPurchaseType(selectedOrder);
-    let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
+    const discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
-    cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
+    const cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
 
-    // if (discountedCount > 0) {
-    //   console.log(discountedCount, offPrice, '-------------');
-    //   setUpdatedPrice(
-    //     (
-    //       productData.price.amount -
-    //       (productData.price.amount * discountedCount) / 100
-    //     ).toFixed(2),
-    //   );
-    // }
-    // Replace with your desired value
-    if (selectedOrder == 'Single Card') {
-      setVariantID(productData?.id?.match(/\d+/g).join(''));
-      setFinalPrice(
-        (
-          productData?.price?.amount -
-          (productData?.price?.amount * discountedCount) / 100
-        ).toFixed(2),
-      );
-    } else {
-      // const variants = variantsVal?.variants?.nodes;
-      // console.log(variants,"variants logs---");
-      const targetValue = cartDataReq?.csvFileLen;
-      if (variantsVal?.variants?.nodes.length) {
-        const matchedVariant = findMatchingVariant(
-          variantsVal?.variants?.nodes,
-          targetValue,
-          discountedCount,
-        );
-        if (matchedVariant) {
-          setVariantID(matchedVariant);
-          setUpdatedPrice(finalPrice);
-          // if (discountedCount > 0) {
-          //   setUpdatedPrice(
-          //     (finalPrice - (finalPrice * discountedCount) / 100).toFixed(2),
-          //   );
-          // }
+    const fetchData = async () => {
+        if (selectedOrder === 'Single Card') {
+            setVariantID(productData?.id?.match(/\d+/g).join(''));
+            setFinalPrice(
+                (
+                    productData?.price?.amount -
+                    (productData?.price?.amount * discountedCount) / 100
+                ).toFixed(2),
+            );
+        } else {
+            const targetValue = cartDataReq?.csvFileLen;
+            if (variantsVal?.variants?.nodes.length) {
+                try {
+                    const matchedVariant = await findMatchingVariant(
+                        variantsVal?.variants?.nodes,
+                        targetValue,
+                        discountedCount,
+                    );
+                    if (matchedVariant) {
+                        setVariantID(matchedVariant.replace(/[^0-9]/g, ''));
+                        setUpdatedPrice(finalPrice);
+                    }
+                } catch (error) {
+                    console.error("Error while fetching data:", error);
+                }
+            }
         }
-      }
-    }
-  }, []);
+    };
+
+    fetchData();
+}, []);
+
   const findMatchingVariant = async (variants, targetValue, discount) => {
     let matchedVariant = null;
     for (let i = 0; i < variants.length; i++) {
