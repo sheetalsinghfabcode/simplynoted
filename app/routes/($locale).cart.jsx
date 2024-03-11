@@ -695,7 +695,7 @@ export default function AddCartFunc() {
                                   </div>
                                 </div>
                               </div>
-                              <div className="lg:w-[20%] relative item_block_right small:pb-[15px]  w-full sm:flex-row flex-col sm:items-end  flex-wrap flex justify-end">
+                              <div className="lg:w-[20%] relative item_block_right small:pb-[15px] sm:w-[50%] w-full sm:flex-row flex-col sm:items-end  flex-wrap flex justify-end">
                                 <div className="buttonDiv lg:my-auto mr-[0.2rem]">
                                   <DynamicButton
                                     className="bg-[#E30000] rounded-[10px] md:py-[14px] py-[10px] px-[20px] sm:w-full w-[90%] mx-auto md:text-[14px] text-[12px] font-bold "
