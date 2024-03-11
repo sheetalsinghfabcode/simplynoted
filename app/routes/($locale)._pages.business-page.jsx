@@ -185,7 +185,7 @@ export default function bussniess() {
                       Request a Writing Sample Packet
                     </div>
                     <div className="row">
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="text"
@@ -196,7 +196,7 @@ export default function bussniess() {
                           id="fname"
                         />
                       </div>
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="text"
@@ -210,7 +210,7 @@ export default function bussniess() {
                     </div>
 
                     <div className="row">
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="text"
@@ -220,7 +220,7 @@ export default function bussniess() {
                           onChange={handleChange}
                         />
                       </div>
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="tel"
@@ -237,7 +237,7 @@ export default function bussniess() {
                     </div>
 
                     <div className="row">
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="email"
@@ -247,7 +247,7 @@ export default function bussniess() {
                           onChange={handleChange}
                         />
                       </div>
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <select
                           required
                           className="!text-[13px]"
@@ -268,7 +268,7 @@ export default function bussniess() {
                     </div>
 
                     <div className="row">
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           type="text"
                           name="address"
@@ -278,7 +278,7 @@ export default function bussniess() {
                           required
                         />
                       </div>
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="text"
@@ -292,7 +292,7 @@ export default function bussniess() {
                     </div>
 
                     <div className="row">
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           type="text"
                           name="state"
@@ -302,7 +302,7 @@ export default function bussniess() {
                           required
                         />
                       </div>
-                      <div className="white-underline">
+                      <div className="white-underline !w-[100%]">
                         <input
                           required
                           type="text"
