@@ -8,7 +8,6 @@ function WalletAccordion({title, children, className,  accordion = false}) {
     setIsExpanded(!isExpanded);
   };
 
-
   return (
     <div className="w-full">
       <div

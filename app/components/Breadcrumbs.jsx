@@ -134,7 +134,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                   {((isLast && additionalBreadcrumbs) || location.pathname.includes("orders")) ? (
                     <span
                       // to={breadcrumbPath}
-                      className="inline-flex sm:whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 cursor-pointer"
+                      className="inline-flex whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 cursor-pointer"
                     >
                       {name}
                     </span>
