@@ -346,7 +346,7 @@ export function CheckoutData({
             : '',
           apartment: customerInformation?.address?.line2
             ? customerInformation.address?.line2
-            : '',
+            : '', 
           city: customerInformation?.address?.city
             ? customerInformation.address?.city
             : '',
@@ -626,8 +626,8 @@ export function CheckoutData({
 
       <>
         {!paymentSuccessfull ? (
-          <div className="'w-full h-full gap-2 mt-8 mb-8">
-            <div className="lg:pb-[80px]">
+          <div className="'w-full h-full gap-2 mt-[4.5rem]">
+            <div className="lg:pb-[40px]">
               <DynamicTitle title={'PAYMENT'} />
             </div>
             <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
@@ -1005,7 +1005,7 @@ export function CheckoutData({
                           }}
                           value={formData.address.state}
                           name="address.state"
-                          className={`appearance-none border border-solid  border-black rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                          className={`appearance-none border border-solid  border-black h-[46px] w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                             errors.state ? 'border-red-500' : ''
                           }`}
                           id="state"
@@ -1037,7 +1037,7 @@ export function CheckoutData({
                           itemID="country"
                           name="address.country"
                           id="country"
-                          className="appearance-none border mt-2 border-solid  border-black rounded w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          className="appearance-none border mt-2 border-solid  h-[46px]  border-black  w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         >
                           {location.countries.map((country) => (
                             <option

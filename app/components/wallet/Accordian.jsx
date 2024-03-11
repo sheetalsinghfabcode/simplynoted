@@ -557,7 +557,7 @@ const Accordion = ({
                 <div className="w-full">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="country"
+                    htmlFor="country" 
                   >
                     Country
                   </label>
@@ -567,7 +567,7 @@ const Accordion = ({
                     itemID="country"
                     name="address.country"
                     id="country"
-                    className="appearance-none border rounded w-full  border border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="appearance-none border h-[46px] w-full  border border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   >
                     {location.countries.map((country) => (
                       <option key={country.country} value={country.country}>
@@ -590,7 +590,7 @@ const Accordion = ({
                     }}
                     value={formData.address.state}
                     name="address.state"
-                    className={`appearance-none border rounded w-full  border border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                    className={`appearance-none border h-[46px]  w-full  border border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                       errors.state ? 'border-red-500' : ''
                     }`}
                     id="state"

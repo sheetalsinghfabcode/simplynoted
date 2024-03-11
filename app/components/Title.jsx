@@ -13,7 +13,7 @@ const DynamicTitle = ({
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   return (
-    <div className="flex justify-center items-center mx-auto  my-[1rem]">
+    <div className="flex justify-center items-center mx-auto lg:mt-[1rem] sm:mt-[4rem] mt-[2rem] mb-[2rem]">
       <div className="grid items-center w-full">
         {dynamicButton && (
           <div>
@@ -29,7 +29,7 @@ const DynamicTitle = ({
         )}
         <div className="flex items-center justify-center w-full">
           <h2
-            className={`titleImage md:text-[50px] md:text-[30px] text-[27px] text-center md:mt-[-46px] mt-[18px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[15px] ${className} `}
+            className={`titleImage md:text-[50px] md:text-[30px] text-[27px] text-center md:mt-[-46px] mt-[-23px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[15px] ${className} `}
           >
             {title}
             <span className="font-beauty text-[60px] md:text-[70px] lg:text-[200%] ">

@@ -577,8 +577,8 @@ const PaymentModal = ({
                         </p>
                       )}
                     </div>
-                    <div className="md:flex grid  md:gap-3 gap-0">
-                      <div className="w-full">
+                    <div className="md:flex grid md:gap-3 gap-0">
+                      <div className="w-full mt-[6px]">
                         <label
                           className="block font-bold text-gray-700 font-bold mb-2"
                           htmlFor="country"
@@ -591,7 +591,7 @@ const PaymentModal = ({
                           itemID="country"
                           name="address.country"
                           id="country"
-                          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          className="appearance-none border border-black w-full py-2 h-[46px]  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         >
                           {location.countries.map((country) => (
                             <option
@@ -603,7 +603,7 @@ const PaymentModal = ({
                           ))}
                         </select>
                       </div>
-                      <div className="w-full">
+                      <div className="w-full mt-[6px]">
                         <label
                           className="block text-gray-700 font-bold font-bold mb-2"
                           htmlFor="state"
@@ -617,7 +617,7 @@ const PaymentModal = ({
                           }}
                           value={formData.address.state}
                           name="address.state"
-                          className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                          className={`appearance-none border border-black  h-[46px]  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                             errors.state ? 'border-red-500' : ''
                           }`}
                           id="state"
