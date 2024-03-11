@@ -936,6 +936,7 @@ export function MessageWriting({
   }, [addresses]);
 
   async function addNewTemplateFunc() {
+
     try {
       const formData = new FormData();
       formData.append('templateName', ref4.current?.value);
@@ -1074,12 +1075,12 @@ export function MessageWriting({
                     <div className="w-full flex items-center gap-[11px] justify-end">
                       <img
                         src={TickImg}
-                        className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
+                        className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
                         onClick={() => setLoadedTemVal(item.customMessage)}
                       />
                       <img
                         src={Del}
-                        className="2xl:w-[7%] w-[7%] h-[5%] cursor-pointer"
+                        className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
                         onClick={() => onConfirmDeleteTemplate(item._id)}
                       />
                     </div>

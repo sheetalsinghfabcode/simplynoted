@@ -701,8 +701,8 @@ const WalletTable = ({
                       >
                         <button type="button w-[100%]">
                           <div className="text-[black]  flex items-center justify-center text-center ">
-                            <span className="text-[22px]">Show Feature </span>
-                            <span className="mt-[6px] text-[22px]">
+                            <span className="text-[22px] font-normal">Show Feature </span>
+                            <span className="text-[22px]">
                               {showId === index ? (
                                 <GoChevronUp />
                               ) : (
