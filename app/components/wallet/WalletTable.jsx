@@ -705,7 +705,7 @@ const WalletTable = ({
                             <span className="text-[22px]">
                               {showId === index ? (
                                 <GoChevronUp />
-                              ) : (
+                              ) : ( 
                                 <GoChevronDown />
                               )}
                             </span>
