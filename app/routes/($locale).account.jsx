@@ -180,7 +180,8 @@ function Account({customer, heading, featuredData}) {
     if (typeof window !== 'undefined' && customer) {
       localStorage.removeItem('customerId');
       setCustomerId(null);
-
+      setCartCountVal(0)
+      setCartData(null)
       localStorage.removeItem('subscriptionPriceId');
       localStorage.removeItem('SNFirstName');
       localStorage.removeItem('SnEmail');
