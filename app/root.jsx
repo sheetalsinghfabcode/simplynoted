@@ -87,11 +87,6 @@ export default function App() {
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
   const hasUserConsent = true;
 
-
-
-
-
-
   useEffect(()=>{
     if(!data.isLoggedIn){
       localStorage.clear()

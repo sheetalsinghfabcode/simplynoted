@@ -27,6 +27,7 @@ import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 import Profile from '~/components/Profile';
 import {useStateContext} from '~/context/StateContext';
+import CartItems from '../components/CartItems';
 
 import {getFeaturedData} from './($locale).featured-products';
 import {doLogout} from './($locale).account.logout';
@@ -143,6 +144,7 @@ function Account({customer, heading, featuredData}) {
   const {
     orderHistory,
     setCustomerId,
+    customerId,
     setIsAccountLoader,
     acountTabName,
     setAccountTabName,
@@ -240,19 +242,6 @@ function Account({customer, heading, featuredData}) {
   const [apiKey, setApiKey] = useState('');
   const [keyModal, setKeyModal] = useState(false);
 
-  const textToCopyRef = useRef(null);
-
-  const copyTextToClipboard = () => {
-    const textToCopy = textToCopyRef.current.textContent;
-    navigator.clipboard
-      .writeText(textToCopy)
-      .then(() => {
-        alert('Text copied to clipboard!');
-      })
-      .catch((err) => {
-        console.error('Could not copy text: ', err);
-      });
-  };
 
   useEffect(() => {
     generateApiKey();
@@ -299,184 +288,196 @@ function Account({customer, heading, featuredData}) {
     zip: '',
   });
 
-
-
   return (
-    <div className="w-full global-max-width-handler ">
-      <div className=" flex flex-col p-[20px] pt-[40px] px-0 md:px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
-        <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
-          <div className="user-name-account">
-            { accountDetails.firstName ? accountDetails.firstName?.charAt(0) : customer.firstName?.charAt(0)}
-            { accountDetails.lastName ? accountDetails.lastName?.charAt(0) : customer.lastname?.charAt(0)}
-          </div>
-          <div className="flex flex-col items-center md:items-start">
-            <h4 className="text-[16px] md:text-[20px] leading-[145%] text-[#0D0C22] font-normal ">
-              { accountDetails.firstName ? accountDetails.firstName : customer?.firstName } {' '}
-             {accountDetails.lastName ? accountDetails?.lastName : customer?.lastName  }
-            </h4>
-            <span
-              onClick={() => setActiveTab(6)}
-              className="text-[14px] cursor-pointer hover:text-[#0D0C22] text-center md:text-left hover:underline  decoration-[#0D0C22] text-[#6E6D7A] leading-[18.2px] font-normal "
-            >
-              Update your username and manage your account
-            </span>
-          </div>
-        </div>
-        <div className="flex flex-col bg-[#fff]  mx-auto items-center md:items-start md:flex-row md:gap-[23px] gap-[0px] w-full">
-          <div className="md:flex md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[721px] font-inter gap-[24px] overflow-y-auto">
-            <>
-              {tabs &&
-                tabs.length > 0 &&
-                tabs?.map((tab, i) => (
-                  <div className="" key={i}>
-                    {i === 1 || i === 5 ? (
-                      <a
-                        target="_blank"
-                        href={
-                          i === 1
-                            ? 'https://meetings.hubspot.com/rick24'
-                            : 'https://simplynoted.leaddyno.com'
-                        }
-                        className={`text-[16px] leading-[19.36px] whitespace-nowrap hover:text-[#0D0C22] cursor-pointer  ${
-                          activeTab === i
-                            ? 'text-[#0D0C22] font-semibold'
-                            : 'text-[#6E6D7A] font-normal'
-                        }  `}
-                        key={i}
-                      >
-                        {tab}
-                      </a>
-                    ) : (
-                      <span
-                        onClick={() => {
-                          {
-                            setAccountTabName(tab);
-                            setActiveTab(i);
-                          }
-                        }}
-                        className={`text-[16px] min-w-[233px] whitespace-nowrap	 leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
-                          activeTab === i
-                            ? 'text-[#0D0C22] font-semibold'
-                            : 'text-[#6E6D7A] font-normal'
-                        }  `}
-                        key={i}
-                      >
-                        {tab}
-                      </span>
-                    )}
-                  </div>
-                ))}
-            </>
-            <div className="border hidden md:block w-full max-w-[199.53px] border-solid border-[#DBDBDE]"></div>
-            <Form
-              method="post"
-              action={usePrefixPathWithLocale('/account/logout')}
-            >
-              <button
-                onClick={() => setData(true)}
-                className="text-[16px] whitespace-nowrap hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
+    <>
+      <div className="w-full global-max-width-handler ">
+        <div className=" flex flex-col p-[20px] pt-[40px] px-0 md:px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
+          <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
+            <div className="user-name-account">
+              {accountDetails.firstName
+                ? accountDetails.firstName?.charAt(0)
+                : customer.firstName?.charAt(0)}
+              {accountDetails.lastName
+                ? accountDetails.lastName?.charAt(0)
+                : customer.lastname?.charAt(0)}
+            </div>
+            <div className="flex flex-col items-center md:items-start">
+              <h4 className="text-[16px] md:text-[20px] leading-[145%] text-[#0D0C22] font-normal ">
+                {accountDetails.firstName
+                  ? accountDetails.firstName
+                  : customer?.firstName}{' '}
+                {accountDetails.lastName
+                  ? accountDetails?.lastName
+                  : customer?.lastName}
+              </h4>
+              <span
+                onClick={() => setActiveTab(6)}
+                className="text-[14px] cursor-pointer hover:text-[#0D0C22] text-center md:text-left hover:underline  decoration-[#0D0C22] text-[#6E6D7A] leading-[18.2px] font-normal "
               >
-                Log Out
-              </button>
-            </Form>
+                Update your username and manage your account
+              </span>
+            </div>
           </div>
-          <div className="hidden"></div>
+          <div className="flex flex-col bg-[#fff]  mx-auto items-center md:items-start md:flex-row md:gap-[23px] gap-[0px] w-full">
+            <div className="md:flex md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[721px] font-inter gap-[24px] overflow-y-auto">
+              <>
+                {tabs &&
+                  tabs.length > 0 &&
+                  tabs?.map((tab, i) => (
+                    <div className="" key={i}>
+                      {i === 1 || i === 5 ? (
+                        <a
+                          target="_blank"
+                          href={
+                            i === 1
+                              ? 'https://meetings.hubspot.com/rick24'
+                              : 'https://simplynoted.leaddyno.com'
+                          }
+                          className={`text-[16px] leading-[19.36px] whitespace-nowrap hover:text-[#0D0C22] cursor-pointer  ${
+                            activeTab === i
+                              ? 'text-[#0D0C22] font-semibold'
+                              : 'text-[#6E6D7A] font-normal'
+                          }  `}
+                          key={i}
+                        >
+                          {tab}
+                        </a>
+                      ) : (
+                        <span
+                          onClick={() => {
+                            {
+                              setAccountTabName(tab);
+                              setActiveTab(i);
+                            }
+                          }}
+                          className={`text-[16px] min-w-[233px] whitespace-nowrap	 leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
+                            activeTab === i
+                              ? 'text-[#0D0C22] font-semibold'
+                              : 'text-[#6E6D7A] font-normal'
+                          }  `}
+                          key={i}
+                        >
+                          {tab}
+                        </span>
+                      )}
+                    </div>
+                  ))}
+              </>
+              <div className="border hidden md:block w-full max-w-[199.53px] border-solid border-[#DBDBDE]"></div>
+              <Form
+                method="post"
+                action={usePrefixPathWithLocale('/account/logout')}
+              >
+                <button
+                  onClick={() => setData(true)}
+                  className="text-[16px] whitespace-nowrap hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
+                >
+                  Log Out
+                </button>
+              </Form>
+            </div>
+            <div className="hidden"></div>
 
-          <div className=" w-full  md:w-[80%]">
-            {activeTab === 0 && (
-              <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex md:mt-[0px] mt-[23px] gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
-                <CardComponent
-                  imgSrc={sendcard}
-                  title="Send Cards"
-                  onClick={() => navigate('/collections/best-sellers')}
-                  description="Send a card to one or more people by starting here"
-                  buttonText="Send Now"
-                  showDownloadButton={true}
-                  downloadButtonText="Download Bulk Template"
-                  onDownload={() =>
-                    window.open(
-                      'https://api.simplynoted.com/docs/bulk-template',
-                      '_self',
-                    )
-                  }
-                />
+            <div className=" w-full  md:w-[80%]">
+              {activeTab === 0 && (
+                <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex md:mt-[0px] mt-[23px] gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+                  <CardComponent
+                    imgSrc={sendcard}
+                    title="Send Cards"
+                    onClick={() => navigate('/collections/best-sellers')}
+                    description="Send a card to one or more people by starting here"
+                    buttonText="Send Now"
+                    showDownloadButton={true}
+                    downloadButtonText="Download Bulk Template"
+                    onDownload={() =>
+                      window.open(
+                        'https://api.simplynoted.com/docs/bulk-template',
+                        '_self',
+                      )
+                    }
+                  />
 
-                <CardComponent
-                  imgSrc={customOrder}
-                  title="Custom Order"
-                  description="Tailored to yours Needs: Custom Orders Welcome!"
-                  buttonText="Get Started"
-                  onClick={() => navigate('/customise-your-card')}
-                />
-                <CardComponent
-                  imgSrc={automate}
-                  title="Automate"
-                  description="Automate your campaigns with our API or Zapier App"
-                  buttonText="Get Started"
-                  onClick={() => navigate('/zapier-integration')}
-                  showDownloadButton={true}
-                  onDownload={() => {
-                    setKeyModal(true);
-                    generateApiKey();
-                  }}
-                  downloadButtonText="Generate API Key"
-                />
-                <CardComponent
-                  imgSrc={help}
-                  title="Get Help"
-                  description="Need Help? Schedule a call with Us Today!"
-                  buttonText="Get Started"
-                  showBorder={false}
-                  onClick={() =>
-                    window.open('https://meetings.hubspot.com/rick24', '_blank')
-                  }
-                  onDownload={() => navigate('/Video')}
-                  showDownloadButton={true}
-                  downloadButtonText="See Tutorials"
-                />
-              </div>
-            )}
-            <ApiKeyModal
-              title="Generated Api Key"
-              closeModal={() => setKeyModal(false)}
-              isOpen={keyModal}
-              close={true}
-              body={apiKey}
-            />
-
-            {activeTab === 2 && <AccountOrderHistory orders={orders} />}
-
-            {activeTab === 3 && <AddressBook />}
-
-            {activeTab === 4 && <ManageSubscription />}
-            {activeTab === 6 && (
-              <Profile
-                setProfile={setProfile}
-                setAccountDetail={setAccountDetail}
-                customer={customer}
-                result={result}
-                accountDetails={accountDetails}
-                setAccountDetails={setAccountDetails}
-                loader={loader}
-                accountDetail={accountDetail}
-                setLoader={setLoader}
+                  <CardComponent
+                    imgSrc={customOrder}
+                    title="Custom Order"
+                    description="Tailored to yours Needs: Custom Orders Welcome!"
+                    buttonText="Get Started"
+                    onClick={() => navigate('/customise-your-card')}
+                  />
+                  <CardComponent
+                    imgSrc={automate}
+                    title="Automate"
+                    description="Automate your campaigns with our API or Zapier App"
+                    buttonText="Get Started"
+                    onClick={() => navigate('/zapier-integration')}
+                    showDownloadButton={true}
+                    onDownload={() => {
+                      setKeyModal(true);
+                      generateApiKey();
+                    }}
+                    downloadButtonText="Generate API Key"
+                  />
+                  <CardComponent
+                    imgSrc={help}
+                    title="Get Help"
+                    description="Need Help? Schedule a call with Us Today!"
+                    buttonText="Get Started"
+                    showBorder={false}
+                    onClick={() =>
+                      window.open(
+                        'https://meetings.hubspot.com/rick24',
+                        '_blank',
+                      )
+                    }
+                    onDownload={() => navigate('/Video')}
+                    showDownloadButton={true}
+                    downloadButtonText="See Tutorials"
+                  />
+                </div>
+              )}
+              <ApiKeyModal
+                title="Generated Api Key"
+                closeModal={() => setKeyModal(false)}
+                isOpen={keyModal}
+                close={true}
+                body={apiKey}
               />
-            )}
 
-            {activeTab === 7 && (
-              <AccountDetails
-                loader={loader}
-                apiKey={apiKey}
-                setApiKey={setApiKey}
-                setLoader={setLoader}
-                accountDetail={accountDetail}
-                customer={customer}
-              />
-            )}
+              {activeTab === 2 && <AccountOrderHistory orders={orders} />}
+
+              {activeTab === 3 && <AddressBook />}
+
+              {activeTab === 4 && <ManageSubscription />}
+              {activeTab === 6 && (
+                <Profile
+                  setProfile={setProfile}
+                  setAccountDetail={setAccountDetail}
+                  customer={customer}
+                  result={result}
+                  accountDetails={accountDetails}
+                  setAccountDetails={setAccountDetails}
+                  loader={loader}
+                  accountDetail={accountDetail}
+                  setLoader={setLoader}
+                />
+              )}
+
+              {activeTab === 7 && (
+                <AccountDetails
+                  loader={loader}
+                  apiKey={apiKey}
+                  setApiKey={setApiKey}
+                  setLoader={setLoader}
+                  accountDetail={accountDetail}
+                  customer={customer}
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <CartItems id={result}/>
+    </>
   );
 }
 

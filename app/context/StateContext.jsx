@@ -30,6 +30,8 @@ export function StateContextProvider({children}) {
   const [loaderTitle,setLoaderTitle] = useState("");
   const [showLoader,setShowLoader] = useState(false)
   const [defaultAddressType,setDefaultAddressType] = useState("return")
+  const [cartData, setCartData] = useState([]);
+  const [isCartUpdated,setIsCartUpdated] = useState(false)
 
   const [showSignScreen,setShowSignScreen] = useState(false)
 
@@ -87,27 +89,7 @@ export function StateContextProvider({children}) {
     return 'Free'; // Fallback if localStorage is not available
   });
 
-  useEffect(() => {
-    const storedCustomerId = localStorage.getItem('customerId');
-    if (storedCustomerId) {
-      setCustomerId(storedCustomerId);
-    }
-    setIsInitialRender(false);
-
-    const handleLocalStorageChange = (e) => {
-      if (e.key === 'customerId') {
-        setCustomerId(e.newValue); // Update state when the 'customerId' key changes
-      }
-    };
-
-    // Add event listener for changes in localStorage
-    window.addEventListener('storage', handleLocalStorageChange);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('storage', handleLocalStorageChange);
-    };
-  }, []);
+ 
 
   return (
     <StateContext.Provider
@@ -184,7 +166,11 @@ export function StateContextProvider({children}) {
         showLoader,
         setShowLoader,
         defaultAddressType,
-        setDefaultAddressType
+        setDefaultAddressType,
+        cartData,
+        setCartData,
+        isCartUpdated,
+        setIsCartUpdated
       }}
     >
       {children}

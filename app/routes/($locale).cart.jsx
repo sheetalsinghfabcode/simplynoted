@@ -47,9 +47,8 @@ export async function loader({context, request}) {
 }
 
 export default function AddCartFunc() {
-  const {setCartCountVal, customerId} = useStateContext();
+  const {setCartCountVal,  cartData,setIsCartUpdated} = useStateContext();
   const {data, postalData, StripeKey} = useLoaderData();
-  const [cartData, setCartData] = useState([]);
   const [updateGift, setUpdateGift] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsOpen2, setIsOpen2] = useState(false);
@@ -79,30 +78,27 @@ export default function AddCartFunc() {
   const [deleteOrderIndex, setDelOrderIndex] = useState(null);
   const [delCardIndex, setDelCardIndex] = useState(null);
   const [showCartPage, setShowCartPage] = useState(true);
-  const [totalPrize, setTotalPrize] = useState('');
+  const [totalPrize, setTotalPrize] = useState(null);
   const [agree, setAgree] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
 
+
+
+  let customerId;
+
   useEffect(() => {
-    storedDataString = localStorage.getItem('mydata')
-      ? JSON.parse(localStorage.getItem('mydata'))
-      : [];
-    setCartData(storedDataString);
-    localStorage.setItem('cartCount', JSON.stringify(storedDataString.length));
-    let totalCartCount = localStorage.getItem('cartCount')
-      ? JSON.parse(localStorage.getItem('cartCount'))
-      : 0;
-    setCartCountVal(totalCartCount);
 
     if (postalData) {
       setPostalValue();
     }
     if (postPrice) {
-      subTotalAmount(storedDataString);
+      subTotalAmount();
     }
-  }, [updateGift, postPrice]);
+  }, [updateGift, postPrice,cartData]);
+
+
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
@@ -120,6 +116,43 @@ export default function AddCartFunc() {
     setPostPrice2(postalrate2);
     setPostImage(postalImag.url);
   }
+
+  useEffect(() => {
+     customerId = localStorage.getItem('customerId');
+
+  })
+
+  async function updateCartData(cartData) {
+    const customerId = localStorage.getItem('customerId');
+
+    try {
+      const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          customerId: customerId,
+          cartItems: cartData,
+        }),
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        if (responseData.result.success) {
+          setIsCartUpdated(true)
+          setCartCountVal(cartData.length)
+        }
+      } else {
+        throw new Error('Failed to update data');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle error
+    }
+  }
+
   let keyToUpdate1 = 'giftCardName';
   let keyToUpdate2 = 'giftCardImg';
   let keyToUpdate3 = 'giftCardPrice';
@@ -143,8 +176,8 @@ export default function AddCartFunc() {
       setOperation(null);
       setIsOpen(false);
     }, 1300);
+    updateCartData(cartData);
 
-    localStorage.setItem('mydata', JSON.stringify(cartData));
     setCardPrice('');
   }
   function deleteKeyInArray(index) {
@@ -165,7 +198,7 @@ export default function AddCartFunc() {
       setOperation(null);
     }, 1300);
 
-    localStorage.setItem('mydata', JSON.stringify(cartData));
+    updateCartData(cartData);
     setTimeout(() => {
       setDeleteCardModal(false);
     }, 100);
@@ -175,42 +208,67 @@ export default function AddCartFunc() {
     setDelCardIndex(index);
   }
   function clearCartBtn() {
+    
     setClearCartModal(true);
   }
 
-  // function clearCart() {
-  //   setSuccessfullLoader(true);
-  //   setOperation('Clear shopping cart');
-  //   setUpdateGift(!updateGift);
-  //   localStorage.removeItem('mydata');
-  //   setClearCartModal(false);
-  //   setTimeout(() => {
-  //     setSuccessfullLoader(false);
-  //     setOperation(null);
-  //   }, 1300);
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth', // Make the scroll behavior smooth
-  //   });
-  // }
+
+
+
+  function deleteCartItem() {
+    const customerId = localStorage.getItem('customerId');
+    
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+  
+    // Make a DELETE request to the API
+    fetch(apiUrl, {
+      method: 'POST',
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if(data.result.success){
+        setCartCountVal(0)
+        setIsCartUpdated(true)
+      }
+      // Handle successful deletion if needed
+    })
+    .catch((error) => {
+      console.error('Error deleting item:', error);
+    });
+  };
+  
 
   function ConfirmDeleteOrder(index) {
     setDelOrderIndex(index);
     setDeleteModal(true);
   }
 
+  console.log("cartData",cartData);
+  
+
   function deleteOrder(index) {
     setSuccessfullLoader(true);
     setOperation('Deleting Order');
     setUpdateGift(!updateGift);
     // if (index >= 0 && index < cartData.length) {
-    // Delete the order
+    // // Delete the order
     cartData.splice(index, 1);
-    // delete cartData[index];
-    // }
+    // // delete cartData[index];
+    // // }
 
-    localStorage.setItem('mydata', JSON.stringify(cartData));
-    localStorage.setItem('cartCount', JSON.stringify(cartData.length));
+    if (cartData && cartData.length >0) {
+      updateCartData(cartData);
+    } else {
+      deleteCartItem();
+    
+    }
+
+    setCartCountVal(cartData.length)
     setDeleteModal(false);
     setTimeout(() => {
       setSuccessfullLoader(false);
@@ -335,12 +393,15 @@ export default function AddCartFunc() {
     }
   };
 
-  async function subTotalAmount(cartData) {
+  console.log("cartData",cartData);
+
+  async function subTotalAmount() {
+
     const prices = cartData.reduce(
       (sum, cartData) =>
         sum +
-        (cartData.price * cartData.csvFileLen +
-          cartData.giftCardPrice * cartData.csvFileLen +
+        (cartData.cartTotal * cartData.qyt +
+          cartData.giftCardPrice * cartData.qyt +
           ((cartData.shippingData &&
             cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
@@ -369,104 +430,13 @@ export default function AddCartFunc() {
               cartData.reciverAddress?.country?.toLowerCase() ===
                 'united states of america' ||
               cartData.reciverAddress?.country?.toLowerCase() == undefined
-            ? postPrice * cartData.csvFileLen
-            : postPrice2 * cartData.csvFileLen) +
+            ? postPrice * cartData.qyt
+            : postPrice2 * cartData.qyt) +
           (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
       0,
     );
     setTotalPrize(prices);
   }
-  // async function newDiscountedCard(productTitle,productImage,productPrice) {
-  //   let failArr = []
-  //   // try {
-  //     // setLoader(true)
-  //     let tagsData = `customise_card, customise_card_edited, packageDiscount_${40}`;
-
-  //     const res = await fetch(
-  //       'https://testapi.simplynoted.com/api/new-discounted-card',
-  //       {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           Authorization:
-  //             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
-  //         },
-  //         body: JSON.stringify({
-  //           quantity: 1,
-  //           title: productTitle,
-  //           tags: tagsData,
-  //           featuredImage: productImage,
-  //           price: productPrice,
-  //         }),
-  //       },
-  //     );
-  //     const json = await res.json();
-  //     return json
-  //     console.log(json,"***** response of new discounted");
-  //     if (json.result) {
-  //       return json.result.product.variants[0].id
-  //       setApiVariantID(json.result.product.variants[0].id);
-  //       // setLoader(false)
-  //     }
-  //   // } catch (error) {
-  //   //   // newDiscountedCard(productTitle,productImage,productPrice)
-  //   //   console.log(error, 'error in new discounted adding');
-  //   //   // failArr.push()
-  //   // }
-  //   // finally {
-
-  //   // }
-  // }
-  // async function onCLickOfCheckoutBtn(){
-  //   console.log(cartData,"all card data ");
-
-  //   let createdProducts = [];
-  //   let errorProducts = [1,1,0,1];
-  //   let i=0
-  //   for(let i = 0; i<cartData.length; i++){
-  //     let updatedCartData = cartData[i]
-  //     console.log(updatedCartData.variant_id,"variant id's");
-  //     console.log(updatedCartData,"logs for every product");
-  //     if(updatedCartData.productTitle && updatedCartData.productImg && updatedCartData.price){
-  //       const res = await newDiscountedCard(updatedCartData.productTitle,updatedCartData.productImg,updatedCartData.price)
-  //       console.log(res,"api given response");
-  //       console.log(res.errors.length,"error length from response");
-  //       if(res.errors.length>0){
-  //         console.log("log inside error check");
-  //         errorProducts.push({productTitle:updatedCartData.productTitle,productImg:updatedCartData.productImg,price:updatedCartData.price})
-  //       } else {
-  //       updatedCartData.variant_id = res.result.product.variants[0].id
-  //       }
-  //     }
-  //   }
-
-  //   if(errorProducts.length>0) {
-  //     // for(let i=0; i<errorProducts.length; i++){
-  //     //   let prodValue = errorProducts[i]
-  //     //   if(prodValue ==1){
-  //     //     console.log("for loopget ones");
-  //     //   } else {
-  //     //     errorProducts.push(1)
-  //     //     console.log(" for loop0 ");
-  //     //   }
-  //     // }
-  //   }
-  //   while (i < errorProducts.length) {
-  //     let prodValue = errorProducts[i];
-
-  //     if (prodValue == 1) {
-  //       console.log(" while get ones");
-  //     } else {
-  //       errorProducts.push(1);
-  //       console.log("while0 ");
-  //     }
-
-  //     i++;
-  //   }
-  //   console.log(arrOfRes,"variant id response");
-  //   console.log(cartData,"2nd time card data ");
-
-  // }
 
   return (
     <div className="">
@@ -567,8 +537,8 @@ export default function AddCartFunc() {
                                       {' '}
                                       Price:
                                     </span>
-                                    <span className="text-black tracking-[1.5px]">
-                                      $ {item.price}
+                                    <span className="text-black">
+                                      $ {item.cartTotal}
                                     </span>
                                   </div>
                                   <div className="flex justify-between">
@@ -576,8 +546,8 @@ export default function AddCartFunc() {
                                       {' '}
                                       Quantity:
                                     </span>
-                                    <span className="text-[black] tracking-[1.5px]">
-                                      {item.csvFileLen}
+                                    <span className="text-[black]">
+                                      {item.qyt}
                                     </span>
                                   </div>
                                   <div className="flex justify-between">
@@ -586,7 +556,7 @@ export default function AddCartFunc() {
                                     </span>
                                     <span className="text-[black] tracking-[1.5px]">
                                       ${' '}
-                                      {(item.price * item.csvFileLen).toFixed(
+                                      {(item.cartTotal * item.qyt).toFixed(
                                         2,
                                       )}
                                     </span>
@@ -677,8 +647,8 @@ export default function AddCartFunc() {
                                         {' '}
                                         Quantity:
                                       </span>
-                                      <span className=" text-[black] tracking-[1.5px]">
-                                        {item.csvFileLen}
+                                      <span className=" text-[black]">
+                                        {item.qyt}
                                       </span>
                                     </div>
                                     <div className="flex justify-between">
@@ -688,7 +658,7 @@ export default function AddCartFunc() {
                                       <span className="text-[black] tracking-[1.5px]">
                                         ${' '}
                                         {(
-                                          item.giftCardPrice * item.csvFileLen
+                                          item.giftCardPrice * item.qyt
                                         ).toFixed(2)}
                                       </span>
                                     </div>
@@ -769,7 +739,7 @@ export default function AddCartFunc() {
                                               </span>
                                             </div>
                                             <div className="flex justify-between">
-                                              <span className="text-black">
+                                              <span className="text-[#1b5299]">
                                                 {' '}
                                                 Subtotal:
                                               </span>
@@ -906,7 +876,7 @@ export default function AddCartFunc() {
                                                 Quantity:
                                               </span>
                                               <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                                {item.csvFileLen}
+                                                {item.qyt}
                                               </span>
                                             </div>
                                             <div className="flex justify-between">
@@ -916,9 +886,9 @@ export default function AddCartFunc() {
                                               </span>
                                               <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
                                                 ${' '}
-                                                {(
-                                                  postPrice * item.csvFileLen
-                                                ).toFixed(2)}
+                                                {(postPrice * item.qyt).toFixed(
+                                                  2,
+                                                )}
                                               </span>
                                             </div>
                                           </div>
@@ -962,7 +932,7 @@ export default function AddCartFunc() {
                                                 Quantity:
                                               </span>
                                               <span className="font-karla text-[black] lg:text-[16px] md:text-[14px] tracking-[1.5px]">
-                                                {item.csvFileLen}
+                                                {item.qyt}
                                               </span>
                                             </div>
                                             <div className="flex justify-between">
@@ -973,7 +943,7 @@ export default function AddCartFunc() {
                                               <span className="font-karla text-[black] text-[16px] tracking-[1.5px]">
                                                 $
                                                 {(
-                                                  postPrice2 * item.csvFileLen
+                                                  postPrice2 * item.qyt
                                                 ).toFixed(2)}
                                               </span>
                                             </div>
@@ -1055,8 +1025,8 @@ export default function AddCartFunc() {
                               <div>
                                 ${' '}
                                 {(
-                                  item.price * item.csvFileLen +
-                                  item.giftCardPrice * item.csvFileLen +
+                                  item.cartTotal * item.qyt +
+                                  item.giftCardPrice * item.qyt +
                                   (item.isShippidata
                                     ? item.shippingDataCost * 1
                                     : 0) +
@@ -1097,8 +1067,8 @@ export default function AddCartFunc() {
                                         'united states of america' ||
                                       item.reciverAddress?.country?.toLowerCase() ==
                                         undefined
-                                    ? postPrice * item.csvFileLen
-                                    : postPrice2 * item.csvFileLen)
+                                    ? postPrice * item.qyt
+                                    : postPrice2 * item.qyt)
                                 ).toFixed(2)}
                               </div>
                             </div>
@@ -1127,7 +1097,7 @@ export default function AddCartFunc() {
                          md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-start gap-[20px]"
                           >
                             <span className="md:mr-[2px]">GRAND TOTAL</span>
-                            <span>${totalPrize.toFixed(2)}</span>
+                            <span>${Number(totalPrize).toFixed(2)}</span>
                           </div>
                           <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
                             <div className="">
