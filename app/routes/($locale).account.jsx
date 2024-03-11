@@ -149,6 +149,8 @@ function Account({customer, heading, featuredData}) {
     acountTabName,
     setAccountTabName,
     activeTab,
+    setCartCountVal,
+    setCartData,
     setActiveTab,
   } = useStateContext();
   const [accountDetail, setAccountDetail] = useState(
