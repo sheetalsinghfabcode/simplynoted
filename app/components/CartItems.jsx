@@ -18,6 +18,7 @@ const CartItems = ({id}) => {
         }
         return response.json();
       })
+
       .then((data) => {
         // Update state with fetched data
         setCartCountVal(data.result.cartItems.length);

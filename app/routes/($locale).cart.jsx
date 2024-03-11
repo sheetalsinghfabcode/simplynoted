@@ -47,7 +47,7 @@ export async function loader({context, request}) {
 }
 
 export default function AddCartFunc() {
-  const {setCartCountVal,  cartData,setIsCartUpdated} = useStateContext();
+  const {setCartCountVal, cartData, setCartData, setIsCartUpdated} = useStateContext();
   const {data, postalData, StripeKey} = useLoaderData();
   const [updateGift, setUpdateGift] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -84,21 +84,16 @@ export default function AddCartFunc() {
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
 
-
-
   let customerId;
 
   useEffect(() => {
-
     if (postalData) {
       setPostalValue();
     }
     if (postPrice) {
       subTotalAmount();
     }
-  }, [updateGift, postPrice,cartData]);
-
-
+  }, [updateGift, postPrice, cartData]);
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
@@ -118,9 +113,8 @@ export default function AddCartFunc() {
   }
 
   useEffect(() => {
-     customerId = localStorage.getItem('customerId');
-
-  })
+    customerId = localStorage.getItem('customerId');
+  });
 
   async function updateCartData(cartData) {
     const customerId = localStorage.getItem('customerId');
@@ -141,8 +135,8 @@ export default function AddCartFunc() {
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
-          setIsCartUpdated(true)
-          setCartCountVal(cartData.length)
+          setIsCartUpdated(true);
+          setCartCountVal(cartData.length);
         }
       } else {
         throw new Error('Failed to update data');
@@ -208,48 +202,42 @@ export default function AddCartFunc() {
     setDelCardIndex(index);
   }
   function clearCartBtn() {
-    
     setClearCartModal(true);
   }
 
-
-
-
   function deleteCartItem() {
     const customerId = localStorage.getItem('customerId');
-    
+
     const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
-  
+
     // Make a DELETE request to the API
     fetch(apiUrl, {
       method: 'POST',
     })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if(data.result.success){
-        setCartCountVal(0)
-        setIsCartUpdated(true)
-      }
-      // Handle successful deletion if needed
-    })
-    .catch((error) => {
-      console.error('Error deleting item:', error);
-    });
-  };
-  
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.result.success) {
+          setCartCountVal(0);
+          setIsCartUpdated(true);
+        }
+        // Handle successful deletion if needed
+      })
+      .catch((error) => {
+        console.error('Error deleting item:', error);
+      });
+  }
 
   function ConfirmDeleteOrder(index) {
     setDelOrderIndex(index);
     setDeleteModal(true);
   }
 
-  console.log("cartData",cartData);
-  
+  console.log('cartData', cartData);
 
   function deleteOrder(index) {
     setSuccessfullLoader(true);
@@ -261,14 +249,13 @@ export default function AddCartFunc() {
     // // delete cartData[index];
     // // }
 
-    if (cartData && cartData.length >0) {
+    if (cartData && cartData.length > 0) {
       updateCartData(cartData);
     } else {
       deleteCartItem();
-    
     }
 
-    setCartCountVal(cartData.length)
+    setCartCountVal(cartData.length);
     setDeleteModal(false);
     setTimeout(() => {
       setSuccessfullLoader(false);
@@ -277,17 +264,29 @@ export default function AddCartFunc() {
   }
 
   const clearCart = () => {
+    setSuccessfullLoader(true);
+    setOperation('Clear shopping cart');
+    setUpdateGift(!updateGift);
+    setClearCartModal(false);
 
-    const customerId = localStorage.getItem('customerId')
-    const apiUrl =
-      `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+    const customerId = localStorage.getItem('customerId');
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
     fetch(apiUrl, {
       method: 'POST',
     })
       .then((response) => {
         console.log('Response status:', response.status);
         if (response.ok) {
-          alert('Cart cleared successfully');
+          setTimeout(() => {
+            setSuccessfullLoader(false);
+            setOperation(null);
+          }, 1000);
+          setCartCountVal(0)
+          setCartData(null)
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Make the scroll behavior smooth
+          });
         } else {
           console.log('Failed to clear cart');
         }
@@ -297,9 +296,6 @@ export default function AddCartFunc() {
         console.log('An error occurred while clearing the cart');
       });
   };
-
-
- 
 
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
@@ -393,10 +389,9 @@ export default function AddCartFunc() {
     }
   };
 
-  console.log("cartData",cartData);
+  console.log('cartData', cartData);
 
   async function subTotalAmount() {
-
     const prices = cartData.reduce(
       (sum, cartData) =>
         sum +
@@ -555,10 +550,7 @@ export default function AddCartFunc() {
                                       Subtotal:
                                     </span>
                                     <span className="text-[black] tracking-[1.5px]">
-                                      ${' '}
-                                      {(item.cartTotal * item.qyt).toFixed(
-                                        2,
-                                      )}
+                                      $ {(item.cartTotal * item.qyt).toFixed(2)}
                                     </span>
                                   </div>
                                 </div>
