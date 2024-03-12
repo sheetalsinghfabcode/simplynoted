@@ -36,6 +36,7 @@ export function AddCart({
     setIsCartUpdated,
     custometId,
   } = useStateContext();
+
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -119,7 +120,7 @@ export function AddCart({
   const [selectedBoxCheck2, setSelectedBoxCheck2] = useState(false);
   const [purchaseType, setPurchaseType] = useState('');
   const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
-  
+
   useEffect(() => {
     setIsInitialRender(false);
     const selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
@@ -129,36 +130,36 @@ export function AddCart({
     const cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
 
     const fetchData = async () => {
-        if (selectedOrder === 'Single Card') {
-            setVariantID(productData?.id?.match(/\d+/g).join(''));
-            setFinalPrice(
-                (
-                    productData?.price?.amount -
-                    (productData?.price?.amount * discountedCount) / 100
-                ).toFixed(2),
+      if (selectedOrder === 'Single Card') {
+        setVariantID(productData?.id?.match(/\d+/g).join(''));
+        setFinalPrice(
+          (
+            productData?.price?.amount -
+            (productData?.price?.amount * discountedCount) / 100
+          ).toFixed(2),
+        );
+      } else {
+        const targetValue = cartDataReq?.csvFileLen;
+        if (variantsVal?.variants?.nodes.length) {
+          try {
+            const matchedVariant = await findMatchingVariant(
+              variantsVal?.variants?.nodes,
+              targetValue,
+              discountedCount,
             );
-        } else {
-            const targetValue = cartDataReq?.csvFileLen;
-            if (variantsVal?.variants?.nodes.length) {
-                try {
-                    const matchedVariant = await findMatchingVariant(
-                        variantsVal?.variants?.nodes,
-                        targetValue,
-                        discountedCount,
-                    );
-                    if (matchedVariant) {
-                        setVariantID(matchedVariant.replace(/[^0-9]/g, ''));
-                        setUpdatedPrice(finalPrice);
-                    }
-                } catch (error) {
-                    console.error("Error while fetching data:", error);
-                }
+            if (matchedVariant) {
+              setVariantID(matchedVariant.replace(/[^0-9]/g, ''));
+              setUpdatedPrice(finalPrice);
             }
+          } catch (error) {
+            console.error('Error while fetching data:', error);
+          }
         }
+      }
     };
 
     fetchData();
-}, []);
+  }, []);
 
   const findMatchingVariant = async (variants, targetValue, discount) => {
     let matchedVariant = null;
@@ -341,7 +342,7 @@ export function AddCart({
     setMesgtext(cartDataReq?.msg);
     getRecipient();
     getReturn();
-  }, [addressForm, showLoader]);
+  }, [addressForm, showLoader, buttonTextChange]);
   useEffect(() => {
     if (!isInitialRender) {
       onClickAddCart();
@@ -389,8 +390,6 @@ export function AddCart({
     optionalShipDate: cartDataReq?.ship_date,
     custom_pdf: metafields ? metafields.pdfURL : null,
   };
-
-
 
   let keyUpdate1 = 'messageData';
   let keyUpdate2 = 'reciverAddress';
@@ -440,7 +439,11 @@ export function AddCart({
   }
 
   async function onClickAddCart() {
-    setButtonTextChange(true)
+    if (selectedItem2 === null || selectedItem === null) {
+      setCheckSelAddress(true);
+      return;
+    }
+    setButtonTextChange(true);
 
     try {
       // Construct new cart item
@@ -461,7 +464,7 @@ export function AddCart({
         giftCardPriceTitle:
           cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
         giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
-        messageData: MsgText,
+        messageData: cartDataReq.msg ? cartDataReq.msg : MsgText,
         fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
@@ -492,7 +495,9 @@ export function AddCart({
       };
 
       // Combine existing data with new data from the cartData array
-      const storedData = [...cartData, newCartItem];
+      const storedData = !editOrderValue
+        ? [...cartData, newCartItem]
+        : [newCartItem];
 
       // Define the API URL
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
@@ -512,12 +517,12 @@ export function AddCart({
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
-          setIsCartUpdated(true)
-          setCartCountVal(storedData.length)
+          setIsCartUpdated(true);
+          setCartCountVal(storedData.length);
           setTimeout(() => {
             navigate('/cart');
           }, 300);
-          setButtonTextChange(false)
+          setButtonTextChange(false);
         }
         // Proceed with any further actions upon successful update
       } else {
@@ -666,7 +671,6 @@ export function AddCart({
                       ),
                     )}
                   </div>
-               
                 </div>
               </div>
               <div className="col-6 md:w-[49%] w-full shadow-outer-custom rounded h-fit">
@@ -731,7 +735,6 @@ export function AddCart({
                       </>
                     )}
                   </div>
-               
                 </div>
               </div>
             </div>
@@ -780,7 +783,6 @@ export function AddCart({
                         </div>
                       ))}
                     </div>
-              
                   </div>
                 </div>
               )}
@@ -869,7 +871,6 @@ export function AddCart({
                     </div>
                   </div>
                 </div>
-         
               </div>
             </div>
 

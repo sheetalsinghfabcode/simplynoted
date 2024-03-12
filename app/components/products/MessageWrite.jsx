@@ -46,7 +46,7 @@ export function MessageWriting({
   setCustomFontName,
   editCustomFontFamily,
   editShippingDate,
-  showBulkOnEdit
+  showBulkOnEdit,
 }) {
   const {
     setAddressForm,
@@ -171,7 +171,6 @@ export function MessageWriting({
   function closeSelectAddressModal() {
     setModalForAddressBook(false);
   }
-
 
   function onCancelCSVUpload() {
     setDragAndDropBorderColor('#525252');
@@ -328,7 +327,6 @@ export function MessageWriting({
     setModalForAddressBook(false);
     setBulkFileCount(fileData.length);
   }
-
 
   function AfterUpload() {
     if (selectedFile) {
@@ -501,7 +499,7 @@ export function MessageWriting({
   }, [name2, fontFamilyName]);
 
   async function onChnageNameVal(nameData) {
-    setErrorTemplate('')
+    setErrorTemplate('');
     setName(nameData);
     // processInput();
   }
@@ -903,8 +901,6 @@ export function MessageWriting({
     setTempVal(ref4.current?.value);
   }, []);
 
-
-
   async function firstNameBtn(data) {
     if (remainingWord > data.length) {
       setCheckCharCount(false);
@@ -936,7 +932,6 @@ export function MessageWriting({
   }, [addresses]);
 
   async function addNewTemplateFunc() {
-
     try {
       const formData = new FormData();
       formData.append('templateName', ref4.current?.value);
@@ -1062,8 +1057,8 @@ export function MessageWriting({
             <span className="font-bold text-[15px]">Template Name</span>
             <span className="font-bold text-[15px]">Actions</span>
           </div>
-          {loadTempData &&
-            filteredList(loadTempData, searchData).map((item, index) => (
+          {loadTempData && loadTempData.length > 0 ? (
+              filteredList(loadTempData, searchData).map((item, index) => (
               <div className="" key={index}>
                 {showLoader ? (
                   <CircularLoader title={loaderMessage} color="#ef6e6e" />
@@ -1087,8 +1082,10 @@ export function MessageWriting({
                   </div>
                 )}
               </div>
-            ))}
-          <div></div>
+              ))
+          ) : (
+            <div className='text-center font-bold mt-4 text-[#001a5f] text-[15px]'> No Saved Templates </div>
+          )}
         </div>
       </>
     );
@@ -1225,7 +1222,6 @@ export function MessageWriting({
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
-       
         <div
           className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
             show
@@ -1496,16 +1492,18 @@ export function MessageWriting({
             </div>
             {!customFonts && (
               <div className="mb-[24px]  font-inter text-xs">
-                <span className="text-[#001A5F] font-medium">
-                  Contact Us &nbsp;
-                </span>
                 <a
                   href="https://meetings.hubspot.com/rick24"
                   target="_self"
                   className="text-[#737373]"
                 >
-                  to find out how to add your own custom handwriting fonts.
+                  <span className="text-[#001A5F] font-medium">
+                    Contact Us &nbsp;
+                  </span>
                 </a>
+                <span>
+                  to find out how to add your own custom handwriting fonts.
+                </span>
               </div>
             )}
             <textarea
@@ -1788,7 +1786,6 @@ export function MessageWriting({
                     }}
                   >
                     <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
-                    
                       <>
                         <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
                           <FiUploadCloud />
@@ -1814,7 +1811,7 @@ export function MessageWriting({
                           </span>
                         </div>
                         {bulkUploadDiv && !showNextBtn ? (
-                          <div className="mt-3">
+                          <div className="mt-3 capitalize">
                             <label className="cursor-pointer text-[18px] font-semibold">
                               Click to upload or drag and drop
                               <input
@@ -1834,17 +1831,17 @@ export function MessageWriting({
                             href="https://api.simplynoted.com/docs/bulk-template"
                             className="underline  text-[14px] font-normal text-[#1B5299]"
                           >
-                            Download the Bulk Order Template
+                            Download The Bulk Order Template
                           </a>
                         </>
                         <p
                           onClick={openModal}
                           className="underline underline-offset-1 cursor-pointer text-[14px] text-[#1B5299] font-normal hover:text-blue-600"
                         >
-                          View bulk upload instructions
+                          View Bulk Upload Instructions
                         </p>
                         {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                        <div className="bg-[#E5E5E5] p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                        <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
                           <input
                             type="checkbox"
                             className=" border-[1px] border-[#E5E5E5] outline-none border-none"
@@ -1881,7 +1878,10 @@ export function MessageWriting({
                   >
                     <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
-                        <CircularLoader title="Uploding Addresses..." color="#ef6e6e" />
+                        <CircularLoader
+                          title="Uploding Addresses..."
+                          color="#ef6e6e"
+                        />
                       ) : (
                         <>
                           <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
@@ -1937,10 +1937,10 @@ export function MessageWriting({
                             onClick={openModal}
                             className="underline underline-offset-1 cursor-pointer text-[14px] text-[#1B5299] font-normal hover:text-blue-600"
                           >
-                            View bulk upload instructions
+                            View Bulk Upload Instructions
                           </p>
                           {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                          <div className="bg-[#E5E5E5] p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                          <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
                             <input
                               type="checkbox"
                               className=" border-[1px] border-[#E5E5E5] outline-none border-none"
@@ -1991,9 +1991,9 @@ export function MessageWriting({
                     />
                   )}
                   {bulkFileCount && bulkFileCount > 0 ? (
-                    <span className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
+                    <span className="text-[#737373] capitalize font-inter text-sm font-medium mt-[12px] text-center">
                       {' '}
-                      Number of addresses selected: { bulkFileCount}
+                      Number of addresses selected: {bulkFileCount}
                     </span>
                   ) : (
                     ''
@@ -2041,7 +2041,10 @@ export function MessageWriting({
               <div>
                 {aiTextLoader ? (
                   <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
-                    <CircularLoader title="Generating AI Text" color="#ef6e6e" />
+                    <CircularLoader
+                      title="Generating AI Text"
+                      color="#ef6e6e"
+                    />
                   </div>
                 ) : (
                   <textarea
@@ -2149,6 +2152,8 @@ export function MessageWriting({
           'Upload your completed file in .csv format',
         ]}
         table={true}
+        subtitle={true}
+        instructionsTitle={true}
       />
       {addNewTem && (
         <ModalComp

@@ -28,6 +28,8 @@ function Instruction({
   instructions,
   table,
   image,
+  subtitle,
+  instructionsTitle,
   body,
 }) {
   return (
@@ -69,6 +71,10 @@ function Instruction({
               {title}
             </h2>
           )}
+          {subtitle &&
+          <h4 className="text-black font-bold text-xl  sm:text-2xl ">
+            We recommend a maximum of 1,000 records per upload.
+          </h4> }
           <div className="flex justify-center">
             {button && (
               <button
@@ -78,11 +84,12 @@ function Instruction({
                 style={{width: '100%'}}
               >
                 Close
-
               </button>
             )}
           </div>
           <div className="w-full break-all">{body}</div>
+          {instructionsTitle &&
+          <h4 className="text-black font-bold text-[1rem] md:text-[1.2rem] my-2 ">Bulk upload can be used to add addresses to your address book or for bulk card orders..</h4>}
           <p className="!text-[#000] font-medium text-[14px]  leading-[160%]">
             {instructions &&
               instructions.map((instruction, index) => (

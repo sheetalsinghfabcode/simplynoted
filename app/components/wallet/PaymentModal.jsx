@@ -377,45 +377,58 @@ const PaymentModal = ({
     }
     return isValid;
   };
-
-  const paymentSave = (data, json) => {
-    const payLoad = {
-      subscriptionId: data.subscriptionId,
-      subscriptionName: subscriptionTitle,
-      packageDiscount: String(discount),
-      packageQuantity: String(cards),
-      packagePrice: String(amount),
-      isSubscriptionOnly: true,
-      isAutorenew: true,
-      subscriptionStartDate: data.subscriptionStartDate,
-      subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
-    };
+  const paymentSave = (data, json, directly) => {
+    let payLoad;
+    if (directly) {
+        payLoad = {
+            subscriptionId: data.subscriptionId,
+            subscriptionName: subscriptionTitle,
+            packageDiscount: String(discount),
+            packageQuantity: String(cards),
+            packagePrice: String(amount),
+            isSubscriptionOnly: true,
+            isAutorenew: true,
+        };
+    } else {
+        payLoad = {
+            subscriptionId: data.subscriptionId,
+            subscriptionName: subscriptionTitle,
+            packageDiscount: String(discount),
+            packageQuantity: String(cards),
+            packagePrice: String(amount),
+            isSubscriptionOnly: true,
+            isAutorenew: true,
+            subscriptionStartDate: data.subscriptionStartDate,
+            subscriptionEndDate: data.subscriptionEndDate,
+            subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
+        };
+    }
 
     const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payLoad),
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payLoad),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        paymentPurchase(data, json);
-        // Handle the response data here
-      })
-      .catch((error) => {
-        // Handle errors here
-        console.error('Error:', error);
-      });
-  };
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then((data) => {
+            paymentPurchase(data, json);
+            // Handle the response data here
+        })
+        .catch((error) => {
+            // Handle errors here
+            console.error('Error:', error);
+        });
+};
+
 
   const setFirstPaymentId = () => {
     if (savedCard && savedCard.length > 0) {
@@ -438,7 +451,7 @@ const PaymentModal = ({
       <div className="modal-container bg-[white] md:w-full w-[97%] mx-auto md:max-w-[645px] h-[90%]  rounded shadow-lg z-50 rounded-[10px] overflow-auto">
         <div className="modal-content h-[550px] py-4  px-6">
           <div className="w-full  relative mt-[24px] mx-auto">
-            <DynamicButton
+            {/* <DynamicButton
               className="bg-[#EF6E6E]  w-full max-w-[150px]"
               text="Go Back"
               backArrow={true}
@@ -446,7 +459,7 @@ const PaymentModal = ({
                 setShowAccordion(false);
                 setPurchaseModal(true);
               }}
-            />
+            /> */}
             {paymentLoader && (
               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
                 <CircularLoader
@@ -741,22 +754,16 @@ const PaymentModal = ({
                         <DynamicButton
                           text="Complete Purchase"
                           onClickFunction={() => {
+                            setPaymentLoader(true);
                             if (validateForm()) {
-                              if (
-                                stripeCollection?.stripe?.subscription !==
-                                  'Free' &&
-                                stripeCollection?.stripe?.subscriptionStatus ===
-                                  'active'
-                              ) {
-                                setPaymentLoader(true);
-                                paymentSave(stripeCollection?.stripe);
-                              } else {
-                                {
-                                  setPaymentLoader(true);
-                                  createSubscription(paymentMethodId);
+                                if (stripeCollection?.stripe?.subscription !== 'Free' &&
+                                    stripeCollection?.stripe?.subscriptionStatus === 'active') {
+                                    paymentSave(stripeCollection?.stripe, null, true);
+                                } else {
+                                    createSubscription(paymentMethodId);
                                 }
-                              }
                             }
+                            
                           }}
                           className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                         ></DynamicButton>
