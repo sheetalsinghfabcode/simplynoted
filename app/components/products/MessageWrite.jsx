@@ -1930,7 +1930,7 @@ export function MessageWriting({
                               href="https://api.simplynoted.com/docs/bulk-template"
                               className="underline  text-[14px] font-normal text-[#1B5299]"
                             >
-                              Download the Bulk Order Template
+                              Download Bulk Order Templates
                             </a>
                           </>
                           <p

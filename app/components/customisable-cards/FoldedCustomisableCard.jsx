@@ -15,7 +15,7 @@ export default function FoldedCustomisableCard({
   customerId,
 }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState('Checking availability...');
+  const [loadingText, setLoadingText] = useState('Checking availability');
   const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
   const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
     useState(false);
@@ -824,7 +824,7 @@ export default function FoldedCustomisableCard({
                           width="20"
                           height="20"
                           fill="currentColor"
-                          className="mr-2 animate-spin"
+                          className="mr-2 animate-spin min-w-[100px]"
                           viewBox="0 0 1792 1792"
                           xmlns="http://www.w3.org/2000/svg"
                         >

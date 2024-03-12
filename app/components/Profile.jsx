@@ -253,7 +253,7 @@ const Profile = ({
         </div>
 
         {activeTabs === 'account' && (
-          <form onSubmit={handleSubmit} className="">
+          <form onSubmit={handleSubmit} className="mt-[21px] mb-[24px]">
             <div className="mb-4 lg:grid grid-cols-1 items-center md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 ">
                 <label
@@ -464,7 +464,7 @@ const Profile = ({
                   />
                 </div>
 
-                <div className="px-3">
+                <div className="px-3 md:mt-[0px] mt-[12px]">
                   <label
                     htmlFor="confirmPassword"
                     className="block mb-1 md:text-[16px] text-[12px] font-semibold"

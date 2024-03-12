@@ -33,7 +33,7 @@ function FaqAccordion({title, children, className, accordion = false}) {
           isExpanded ? 'max-h-[1000px] ' : 'max-h-0 closing'
         }`}
       >
-        <div className="px-[1.5rem] py-5 texts bg-white font-normal text-[#707070] sm:text-[17px] text-[17px]">
+        <div className="px-[1.5rem] py-5 md:text-[17px] text-[12px] bg-white font-normal text-[#707070]">
           {children}
         </div>
       </div>

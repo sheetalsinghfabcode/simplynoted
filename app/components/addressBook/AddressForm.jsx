@@ -241,13 +241,13 @@ const AddressForm = ({customerID}) => {
               />
             </div>
           </div>
-          <div className="mb-4 flex mt-[30px] flex-wrap -mx-3">
+          <div className=" flex mt-[35px] flex-wrap -mx-3">
             <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="firstName"
               >
-                First Name
+                First Name  
               </label>
               <input
                 className={`appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${

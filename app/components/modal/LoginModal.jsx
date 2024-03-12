@@ -44,7 +44,7 @@ const LoginModal = ({
           </div>
           <div className="modal-body mt-[12px]">
             <h3 className="text-[29px] text-center leading-[1.4] text-[#001a5f] font-semibold">
-              Please login first!
+              Please Login First!
             </h3>
 
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>
