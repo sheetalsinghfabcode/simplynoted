@@ -895,6 +895,8 @@ const ContactTable = ({
           <Instruction
             isOpen={isModalOpen}
             close={true}
+            subtitle={true}
+        instructionsTitle={true}
             title="INSTRUCTIONS FOR BULK UPLOAD"
             closeModal={closeModal}
             instructions={[

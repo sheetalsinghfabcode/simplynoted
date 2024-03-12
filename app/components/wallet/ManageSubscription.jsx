@@ -465,6 +465,8 @@ const ManageSubscription = () => {
   // Format the current date based on the user's location
   let formattedDate = formatDate(currentDate);
 
+
+
   // Display the formatted date
 
   return (
@@ -646,7 +648,7 @@ const ManageSubscription = () => {
                             'canceled' ? (
                               <div className="flex justify-between items-center gap-[15px] py-[10px]">
                                 <span className="md:text-[14px] sm:text-[14px]  text-[12px] text-[#001a5f] font-karla font-semibold uppercase">
-                                  PLAN RENEWAL DATE
+                                {stripeCollection.stripe?.isAutorenew ? ' PLAN RENEWAL DATE' : '  SUBSCRIPTION END DATE' }  
                                 </span>
                                 <span className="md:text-[20px] sm:text-[18px] sm:text-[12px] text-[11px] text-[#ef6e6e] font-karla font-bold uppercase">
                                   {formattedDateString}

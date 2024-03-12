@@ -237,7 +237,6 @@ export default function AddCartFunc() {
     setDeleteModal(true);
   }
 
-  console.log('cartData', cartData);
 
   function deleteOrder(index) {
     setSuccessfullLoader(true);

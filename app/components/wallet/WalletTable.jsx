@@ -559,7 +559,6 @@ const WalletTable = ({
       ],
     },
   ];
-  console.log(subscribeTeam, 'subscribeTeam');
 
   return (
     <>
@@ -608,9 +607,7 @@ const WalletTable = ({
                     (plan.name === 'Free' || plan.name === 'Team')) ? null : (
                     <DynamicButton
                       onClickFunction={plan.onClick}
-                      className={`bg-[${plan.buttonColor}] ${
-                        plan.buttonText === 'Contact Us' && '!font-normal'
-                      } mt-2  md:mx-auto  w-full
+                      className={`bg-[${plan.buttonColor}] font-bold mt-2  md:mx-auto  w-full
                rounded-full h-[46px] lg:px-4 text-[12px] lg:text-[16px] `}
                       text={plan.buttonText}
                     />

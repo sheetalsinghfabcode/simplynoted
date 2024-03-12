@@ -81,7 +81,7 @@ export default function CustomProducts() {
   const [show, setShow] = useState(
     showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
   );
-  const {productshow, setProductShow} = useStateContext()
+  const {productshow, cartData} = useStateContext()
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
@@ -103,6 +103,9 @@ export default function CustomProducts() {
   //   let result =  product.id.replace(/[^0-9]/g,"");
   //        getMetaFields(result)
   //   }, []);
+
+
+  console.log("cartData",cartData);
 
   useEffect(() => {
     getProductDetails();
@@ -183,9 +186,7 @@ export default function CustomProducts() {
   }, [datafornav.pathname]);
 
 
-    console.log("customProductData",customProductData);
 
-    console.log("metafields",metafields);
   return (
     <div className="relative">
       {customProductData.length === 0 && metafields.length === 0 && (

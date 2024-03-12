@@ -11,7 +11,7 @@ const CARD_OPTIONS = {
       color: 'black',
       fontWeight: 500,
       fontSize: '16px',
-      border: '1px solid #000', 
+      border: '1px solid #000',
       padding: '10px',
     },
     invalid: {
@@ -29,12 +29,11 @@ const StripeCard = ({
   addCreditModal,
   showStripeCard,
   updateCard,
-  validateForm
-  
+  validateForm,
 }) => {
   const stripe = useStripe();
   const elements = useElements();
-  
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,8 +59,8 @@ const StripeCard = ({
       } catch (error) {
         console.error(error, 'stripe error');
       }
-     
     } else {
+
       console.error(error.message);
     }
   };
@@ -70,8 +69,8 @@ const StripeCard = ({
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className='border border-solid border-black'>
-      <CardElement options={CARD_OPTIONS} className="m-5" />
+      <div className="border border-solid border-black">
+        <CardElement options={CARD_OPTIONS} className="m-5" />
       </div>
 
       <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
