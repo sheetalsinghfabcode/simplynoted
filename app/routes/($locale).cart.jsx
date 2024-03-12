@@ -489,7 +489,7 @@ export default function AddCartFunc() {
                                   <img src={item.productImg} alt="" />
                                 </div>
                                 <div className="mt-[30px] font-bold flex flex-col xl:gap-[16px] lg:gap-[5px] w-full sm:px-0 px-[20px]">
-                                  <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] small:text-[22px] text-[18px] font-bold">
+                                  <h3 className="text-[#1b5299] font-karla lg:text-[20px] sm:text-[18px] small:text-[22px] text-[18px] md:mb-[0px] mb-[12px] font-bold">
                                     {item.productTitle}
                                   </h3>
                                   <div className="flex flex-wrap ">
@@ -1178,7 +1178,7 @@ export default function AddCartFunc() {
                         </h3>
                         <div className="flex justify-center mt-[8px]">
                           <DynamicButton
-                            className="bg-[#EF6E6E] m-5 w-full max-w-[225px]"
+                            className="bg-[#EF6E6E] m-5 h-[45px] w-full max-w-[225px]"
                             text="CONTINUE SHOPPING"
                             onClickFunction={() => continueShopping()}
                           />

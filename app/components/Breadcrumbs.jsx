@@ -41,7 +41,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   return (
     <div className="breadcrumb inline-block pt-[20px] text-[#010101] capitalize font-medium ">
       <nav
-        className="flex px-2 sm:px-5 py-3  border  border-gray-200 rounded-lg bg-gray-50 "
+        className="flex px-2 sm:px-5 py-3 overflow-x-auto  border  border-gray-200 rounded-lg bg-gray-50 "
         aria-label="Breadcrumb"
       >
         <ol className="inline-flex sm:whitespace-nowrap items-center space-x-1 md:space-x-2 rtl:space-x-reverse">

@@ -394,14 +394,14 @@ export default function Salesforce() {
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-right.png?v=17628020455828864692" />
         </div>
 
-        <div className="flex flex-row items-center justify-center mx-auto mt-[70px]">
+        <div className="flex flex-row items-center mb-[51px] relative justify-center mx-auto mt-[70px]">
           <div className="banner-detail text-center tab:w-[80%] w-[1200px]">
             <img
               className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] "
               src={SalesforceIcon}
               alt="shopify"
             />
-
+            <img className='absolute right-[143px] top-[60px]' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495"/>
             <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
               Salesforce Deep Integration
               <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">

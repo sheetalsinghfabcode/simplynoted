@@ -362,7 +362,7 @@ export default function Zapier() {
           />
         </div>
       </div>
-      <div className="w-full flex sm:p-[37px] py-[20px] xl:mt-[173px] mt-[0px] relative justify-center">
+      <div className="w-full flex sm:p-[37px] py-[20px] xl:mt-[173px] mb-[51px] mt-[0px] relative justify-center">
         <div className="banner-detail  w-[1200px]">
           <div className="absolute right-[-198px] top-[-89px]">
             <img

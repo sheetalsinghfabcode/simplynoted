@@ -189,7 +189,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         </div>
       )}
       <div
-        className={`bg-white shadow-md rounded md:mt-[0px] mt-[23px] px-8 pt-6 pb-8 mb-4 ${
+        className={`bg-white rounded md:mt-[0px] mt-[23px] px-8 pt-6 pb-8 mb-4 ${
           loader && 'opacity-40'
         }`}
       >

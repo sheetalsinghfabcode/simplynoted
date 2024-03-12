@@ -725,7 +725,7 @@ const ContactTable = ({
                       Delete Selected
                     </button>
                   )}
-                <span className="text-black text-[13px] md:text-left text-center lg:mt-[0px] md:mt-[12px] mt-[-12px] font-bold">
+                <span className="text-black text-[13px] md:text-left text-center lg:mt-[0px] md:mt-[12px]  font-bold">
                   Number of address selected : {selectedCheckboxes?.length}
                 </span>
               </div>

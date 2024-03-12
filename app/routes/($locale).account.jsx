@@ -304,7 +304,7 @@ function Account({customer, heading, featuredData}) {
                 ? accountDetails.lastName?.charAt(0)
                 : customer.lastname?.charAt(0)}
             </div>
-            <div className="flex flex-col items-center md:items-start">
+            <div className="flex flex-col items-center md:gap-0 gap-[24px] md:items-start">
               <h4 className="text-[16px] md:text-[20px] leading-[145%] text-[#0D0C22] font-normal ">
                 {accountDetails.firstName
                   ? accountDetails.firstName
