@@ -223,7 +223,7 @@ export default function Login() {
               Sign in
             </button>
           </div>
-          <div className="md:flex grid justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
+          <div className="flex  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
             <p className="align-baseline mt-[12px] text-[16px]">
               <Link className="text-[17px] mt-4 inline underline" to="/account/register">
                   Create an account
@@ -233,7 +233,7 @@ export default function Login() {
               className="inline-block mt-[12px] align-baseline text-[16px] text-primary/50"
               to="/account/recover"
             >
-              Forgot password
+              Lost your password?
             </Link>
           </div>
         </Form>
