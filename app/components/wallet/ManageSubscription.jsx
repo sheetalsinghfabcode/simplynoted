@@ -681,7 +681,7 @@ const ManageSubscription = () => {
                           stripeCollection.stripe?.balance !== 0 &&
                           !stripeCollection?.stripe?.manual &&
                           !stripeCollection.error ? (
-                          <span className="md:text-[20px] sm:text-[18px] sm:text-[12px] whitespace-nowrap text-[11px] font-karla !font-bold text-[#ef6e6e] uppercase">
+                          <span className="md:text-[20px] sm:text-[18px] sm:text-[12px] whitespace-nowrap text-[12px] font-karla !font-bold text-[#ef6e6e] uppercase">
                             {stripeCollection.stripe?.subscriptionStatus !==
                               'canceled'
                               ? stripeCollection.stripe?.subscription
@@ -865,7 +865,11 @@ const ManageSubscription = () => {
                     </div>
                   </WalletAccordion>
                   <div className='mt-[20px]'>
-                    <p className='text-[#001a5f] md:text-[16px] text-left text-[14px] font-semibold'>*Please note: Your wallet balance reflects promotional value, not the original purchase price. Terms apply, <b className='font-bold text-[black]'>learn more here.</b></p>
+                    <p className='text-[#001a5f] md:text-[16px] text-left text-[14px] font-semibold'>*Please note: Your wallet balance reflects promotional value, not the original purchase price. Terms apply,
+                    
+                        <b className='font-bold text-[black]'> <a href="policies/terms-of-service" target="_blank">learn more here</a>.</b>
+                      </p> 
+
                   </div>
                   <div className='border border-[#e6edf8] mt-[6px] border-bottom '></div>
                 </>
