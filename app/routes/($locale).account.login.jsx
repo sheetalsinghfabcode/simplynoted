@@ -224,8 +224,8 @@ export default function Login() {
             </button>
           </div>
           <div className="flex  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
-            <p className="align-baseline mt-[12px] text-[16px]">
-              <Link className="text-[17px] mt-4 inline underline" to="/account/register">
+            <p className="align-baseline  mt-[12px]">
+              <Link className="text-[16px] mt-4 inline underline" to="/account/register">
                   Create an account
               </Link>
             </p>

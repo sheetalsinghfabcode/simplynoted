@@ -1649,7 +1649,7 @@ export function MessageWriting({
         >
           <div
             id="outer"
-            className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+            className="outerr shadow-outer-custom h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
           >
             {metafields &&
               metafields.isHeaderIncluded &&
