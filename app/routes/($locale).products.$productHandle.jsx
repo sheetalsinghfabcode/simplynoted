@@ -782,7 +782,7 @@ export  function LoginFunc() {
             Sign in
           </button>
         </div>
-        <div className="flex  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
+        <div className="sm:flex grid  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
           <p className="align-baseline mt-[12px] text-[16px]">
             <Link className="text-[17px] mt-4 inline underline" to="/account/register">
                 Create an account

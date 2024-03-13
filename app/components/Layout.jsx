@@ -914,12 +914,16 @@ const PricingContent = ({props}) => {
   const navigate = useNavigate()
   const {customerId,setCheckLogin} = useStateContext()
   function onCLickCheck(){
-    if(!customerId){
+    if(customerId === null || customerId === undefined){
       setCheckLogin(true)
     } else{
       navigate('/customise-your-card')
     }
   }
+
+
+
+
   return (
     <div className="w-64 bg-wheat p-6 shadow-xl">
       {props.map((item) => (

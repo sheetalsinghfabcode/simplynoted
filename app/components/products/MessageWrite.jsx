@@ -502,6 +502,9 @@ export function MessageWriting({
   async function onChnageNameVal(nameData) {
     setErrorTemplate('');
     setName(nameData);
+    if(fontFamilyName === null || fontFamilyName === undefined){
+    setFontFamily('tarzan')
+    }
     // processInput();
   }
 
@@ -1242,6 +1245,8 @@ export function MessageWriting({
     }
   }
 
+
+
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
@@ -1264,10 +1269,11 @@ export function MessageWriting({
                 <span className=""> Standard Handwriting Style</span>
                 <select
                   id="font"
-                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+                  className="h-[40px] highlight-none cursor-pointer font-bold  text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]" 
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
+                
                 >
                   <option
                     value={standardFontVal}
@@ -1280,7 +1286,7 @@ export function MessageWriting({
                       ? editFontFamily
                       : 'Tarzan'}
                   </option>
-                  {editFontFamily && editFontFamily !== 'tarzan' && (
+                  {editFontFamily && editFontFamily !== 'Tarzan' && (
                     <option value="Tarzan" className={`font-tarzan`}>
                       Tarzan
                     </option>
