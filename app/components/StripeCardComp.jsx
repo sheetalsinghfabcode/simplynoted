@@ -24,7 +24,7 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm,savedCar
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!validateForm() && savedCard && savedCard.length === 0) {
+    if (!validateForm() && savedCard && savedCard.length === 0 ) {
       return; // Exit early if the form is not valid
     }
 

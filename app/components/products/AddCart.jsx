@@ -391,63 +391,16 @@ export function AddCart({
     custom_pdf: metafields ? metafields.pdfURL : null,
   };
 
-  let keyUpdate1 = 'messageData';
-  let keyUpdate2 = 'reciverAddress';
-  let keyUpdate3 = 'senderAddress';
-  let keyUpdate4 = 'giftCardImg';
-  let keyUpdate5 = 'giftCardName';
-  let keyUpdate6 = 'giftCardPrice';
-  let keyUpdate7 = 'endText';
-  let keyUpdate8 = 'locationForShipMethod';
-  let keyUpdate9 = 'shippingData';
-  let keyUpdate10 = 'shippingDataCost';
-  let keyUpdate11 = 'fontFamily';
-  let keyUpdate12 = 'giftCardPriceTitle';
-  let keyUpdate13 = 'fontSizeMsg';
-  let keyUpdate14 = 'customFontName';
-  let keyUpdate15 = 'lineHeight';
-  let keyUpdate16 = 'signOffLineHeight';
-  let keyUpdate17 = 'signOffFontSize';
-  let keyUpdate18 = 'csvFileLen';
-  let keyUpdate19 = 'csvBulkData';
-  let keyUpdate20 = 'csvFileURL';
-  let keyUpdate21 = 'usCount';
-  let keyUpdate22 = 'nonUSCount';
-  let keyUpdate23 = 'shippingMethodImage';
-  let keyUpdate24 = 'isShippidata';
-  let keyUpdate25 = 'giftCardId';
-  let keyUpdate26 = 'giftCardProdUrl';
-  let keyUpdate27 = 'shippingMethodProdUrl';
-  let keyUpdate28 = 'optionalShipDate';
-  let keyUpdate29 = 'price';
-  let keyUpdate30 = 'variant_id';
-
-  async function fetchExistingData() {
-    try {
-      const response = await fetch(
-        'https://testapi.simplynoted.com/api/storefront/cart-items?customerId=6406284116073',
-      );
-      if (response.ok) {
-        return await response.json();
-      } else {
-        throw new Error('Failed to fetch existing data');
-      }
-    } catch (error) {
-      console.error('Error fetching existing data:', error);
-      throw error; // Rethrow the error for the caller to handle
-    }
-  }
-
   async function onClickAddCart() {
-    if (selectedItem2 === null || selectedItem === null) {
+    
+    if (selectedItem2 === null || (selectedItem === null && !show)) {
       setCheckSelAddress(true);
       return;
     }
     setButtonTextChange(true);
 
     try {
-
-      setLoader(false)
+      setLoader(false);
       // Construct new cart item
       const newCartItem = {
         productTitle: productData?.product?.title
@@ -496,10 +449,16 @@ export function AddCart({
         custom_pdf: metafields ? metafields.pdfURL : null,
       };
 
-      // Combine existing data with new data from the cartData array
-      const storedData = !editOrderValue
-        ? [...cartData, newCartItem]
-        : [newCartItem];
+      const storedData = editOrderValue
+      ? cartData.map(item => {
+          if (item.productId === newCartItem.productId) {
+            return newCartItem;
+          } else {
+            return item;
+          }
+        })
+      : [...cartData, newCartItem];
+    
 
       // Define the API URL
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
@@ -519,13 +478,13 @@ export function AddCart({
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
-          setLoader(false)
+          setLoader(false);
           setIsCartUpdated(true);
           setCartCountVal(storedData.length);
-            navigate('/cart');
-            setTimeout(() => {
+          navigate('/cart');
+          setTimeout(() => {
             setButtonTextChange(false);
-            },[300])
+          }, [300]);
         }
         // Proceed with any further actions upon successful update
       } else {
@@ -535,7 +494,6 @@ export function AddCart({
       console.error('Error:', error);
       // Handle error
     }
-
   }
 
   function closeSelAddressModal() {
