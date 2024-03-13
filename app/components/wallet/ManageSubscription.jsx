@@ -42,8 +42,7 @@ const ManageSubscription = () => {
   const [packageModal, setPackageModal] = useState(false);
   const [purchaseModal, setPurchaseModal] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
-  const [loader, setLoader] = useState(false);
-  const { updateModal, setUpdateModal } = useStateContext();
+  const { updateModal, setUpdateModal,loader,setLoader } = useStateContext();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -199,7 +198,6 @@ const ManageSubscription = () => {
   };
 
   const updateCreditCard = (id) => {
-    setLoader(true);
     const url = `https://testapi.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
 
     fetch(url, {
@@ -219,6 +217,10 @@ const ManageSubscription = () => {
         setLoader(false);
         setForUpdateData(true);
         setUpdateModal(false);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth', // Make the scroll behavior smooth
+        });
         // Handle the response data if needed
       })
       .catch((error) => {
@@ -307,7 +309,6 @@ const ManageSubscription = () => {
 
   async function addNewCreditCard(paymentID) {
     try {
-      setLoader(true);
       const res = await fetch(
         `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
@@ -326,6 +327,10 @@ const ManageSubscription = () => {
         setLoader(false);
         setForUpdateData(true);
         setUpdateModal(false);
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth', // Make the scroll behavior smooth
+        });
       }, [500]);
     } catch (error) {
       setLoader(false);

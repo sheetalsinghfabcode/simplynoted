@@ -17,23 +17,25 @@ export function StateContextProvider({children}) {
   const [managePlan, setManagePlan] = useState(false);
   const [addressBook, setAddressBook] = useState(false);
   const [productshow, setProductShow] = useState(true);
-  const [accountTabName,setAccountTabName] = useState("")
+  const [accountTabName, setAccountTabName] = useState('');
   const [activeTab, setActiveTab] = useState(0);
   const [walletPlan, setWalletPlan] = useState(false);
   const [isCardTypeSelectionPage, setIsCardTypeSelectionPage] = useState(true);
   const [walletPurcase, setWalletPurchase] = useState(false);
   const [walletPayment, setWalletPayment] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
-  const [birthdayAutomation, setBirthdayAutomation] = useState(true)
-  const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
-  const [checkLogin,setCheckLogin] = useState(false)
-  const [loaderTitle,setLoaderTitle] = useState("");
-  const [showLoader,setShowLoader] = useState(false)
-  const [defaultAddressType,setDefaultAddressType] = useState("return")
-  const [cartData, setCartData] = useState([]);
-  const [isCartUpdated,setIsCartUpdated] = useState(false)
+  const [birthdayAutomation, setBirthdayAutomation] = useState(true);
+  const [isbirthdayAutomated, setISBirthdayAutomated] = useState(false);
+  const [checkLogin, setCheckLogin] = useState(false);
+  const [loaderTitle, setLoaderTitle] = useState('');
+  const [loader, setLoader] = useState(false);
 
-  const [showSignScreen,setShowSignScreen] = useState(false)
+  const [showLoader, setShowLoader] = useState(false);
+  const [defaultAddressType, setDefaultAddressType] = useState('return');
+  const [cartData, setCartData] = useState([]);
+  const [isCartUpdated, setIsCartUpdated] = useState(false);
+
+  const [showSignScreen, setShowSignScreen] = useState(false);
 
   const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -89,8 +91,6 @@ export function StateContextProvider({children}) {
     return 'Free'; // Fallback if localStorage is not available
   });
 
- 
-
   return (
     <StateContext.Provider
       value={{
@@ -120,6 +120,8 @@ export function StateContextProvider({children}) {
         amount,
         setAmount,
         packageProduct,
+        loader,
+        setLoader,
         setPackageProduct,
         subscriptionProduct,
         setSubscriptionProduct,
@@ -170,7 +172,7 @@ export function StateContextProvider({children}) {
         cartData,
         setCartData,
         isCartUpdated,
-        setIsCartUpdated
+        setIsCartUpdated,
       }}
     >
       {children}

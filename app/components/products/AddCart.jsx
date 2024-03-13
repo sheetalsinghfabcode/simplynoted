@@ -561,7 +561,7 @@ export function AddCart({
   }
   return (
     <div className="relative global-max-width-handler">
-      {loader && !addressForm && buttonTextChange && (
+      {loader && !addressForm  && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader textColor="text-white" title="Loading Address.." />
         </div>
