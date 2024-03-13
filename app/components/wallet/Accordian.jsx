@@ -36,10 +36,9 @@ const Accordion = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
-  const [paymentSuccessFullMessage, setPaymentSuccessFullMessage] =
     useState(false);
 
-  const {setActiveTab, setAccountTabName} = useStateContext();
+  const {setActiveTab, loaderTitle, setLoaderTitle, setAccountTabName} = useStateContext();
 
   let customerid, fullName, userEmail;
 
@@ -342,14 +341,14 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          setPaymentSuccessFullMessage(true);
-          setTimeout(() => {
-            setPaymentSuccessFullMessage(false);
-            navigate('/account');
-            setActiveTab(4);
-            setAccountTabName('Manage Plans');
-            setPaymentLoader(false);
-          }, []);
+          setLoaderTitle("Payment completed successfully... ")
+            setTimeout(() => {
+              navigate('/account');
+              setActiveTab(4);
+              setAccountTabName('Manage Plans');
+              setPaymentLoader(false);
+            }, 2000);
+           
         }
       })
 
@@ -416,7 +415,7 @@ const Accordion = ({
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader
             textColor="text-white"
-            title="Processing your payment securely. Please wait a moment."
+            title={loaderTitle ? loaderTitle :"Processing your payment securely. Please wait a moment."}
           />
         </div>
       )}

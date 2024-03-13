@@ -446,6 +446,8 @@ export function AddCart({
     setButtonTextChange(true);
 
     try {
+
+      setLoader(false)
       // Construct new cart item
       const newCartItem = {
         productTitle: productData?.product?.title
@@ -517,12 +519,13 @@ export function AddCart({
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
+          setLoader(false)
           setIsCartUpdated(true);
           setCartCountVal(storedData.length);
-          setTimeout(() => {
             navigate('/cart');
-          }, 300);
-          setButtonTextChange(false);
+            setTimeout(() => {
+            setButtonTextChange(false);
+            },[300])
         }
         // Proceed with any further actions upon successful update
       } else {
@@ -533,7 +536,6 @@ export function AddCart({
       // Handle error
     }
 
-    setLoader(false);
   }
 
   function closeSelAddressModal() {
@@ -601,7 +603,7 @@ export function AddCart({
   }
   return (
     <div className="relative global-max-width-handler">
-      {loader && !addressForm && (
+      {loader && !addressForm && buttonTextChange && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader textColor="text-white" title="Loading Address.." />
         </div>

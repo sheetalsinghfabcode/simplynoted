@@ -51,7 +51,6 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
-  console.log("amount",amount);
 
 
   return (
@@ -96,7 +95,6 @@ const WalletPlans = ({
                           stripeCollection.stripe?.subscription,
                     );
 
-                    console.log("variant",variant);
 
                     return (
                       <div
