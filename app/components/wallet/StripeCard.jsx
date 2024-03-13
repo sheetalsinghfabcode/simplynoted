@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import DynamicButton from '../DynamicButton';
 import {useLocation} from '@remix-run/react';
+import { useStateContext } from '~/context/StateContext';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
@@ -35,6 +36,10 @@ const StripeCard = ({
   const elements = useElements();
 
 
+  const {setLoader} = useStateContext()
+  const [errorMessage, setErrorMessage] = useState('');
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validateForm() && !addCreditModal && !updateCard ) {
@@ -60,7 +65,7 @@ const StripeCard = ({
         console.error(error, 'stripe error');
       }
     } else {
-
+      setErrorMessage(error.message)
       console.error(error.message);
     }
   };
@@ -70,11 +75,18 @@ const StripeCard = ({
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="border border-solid border-black">
-        <CardElement options={CARD_OPTIONS} className="m-5" />
+        <CardElement 
+        onChange={()=>setErrorMessage('')}
+        options={CARD_OPTIONS} 
+        className="m-5" />
       </div>
+      {errorMessage && (
+        <div className="text-red-700 font-karla text-[14px] mt-2">{errorMessage}</div>
+      )}
 
       <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
         <button
+        onClick={()=>setLoader(true)}
           type="submit"
           className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
         >

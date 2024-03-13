@@ -146,7 +146,6 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
-      console.log(json, 'added credit card');
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);

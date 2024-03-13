@@ -24,6 +24,10 @@ const PackageModal = ({
     setSelectedPlan(event.target.value);
   };
 
+  function formatNumberWithCommas(number) {
+    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+  }
+
   return (
     <div
       className={`${
@@ -93,16 +97,13 @@ const PackageModal = ({
             {filteredWalletData &&
               filteredWalletData.length > 0 &&
               filteredWalletData.map((product, index) => (
-                <div
-                  key={index}
-                  className={`col-span-1`}
-                >
+                <div key={index} className={`col-span-1`}>
                   <div className="flex flex-col mt-[15px] gap-[16px]">
                     {product.node.variants.edges
                       .filter(
                         (variant) => variant.node.title !== 'Subscription',
                       )
-                      .map((variant,index) => {
+                      .map((variant, index) => {
                         const titleMetafield = variant.node.metafields.find(
                           (metafield) => metafield?.key === 'variant_title',
                         );
@@ -129,7 +130,7 @@ const PackageModal = ({
 
                         return (
                           <div
-                          key={index}
+                            key={index}
                             onClick={() => {
                               setSubscription(
                                 subscriptionMetafield?.value || 0,
@@ -157,7 +158,7 @@ const PackageModal = ({
                                 selectedPlan ===
                                 `${variant.node.title} ${titleMetafield?.value}`
                               }
-                              onChange={()=>''}
+                              onChange={() => ''}
                             />
 
                             <div className="flex flex-col gap-[8px]">
@@ -180,7 +181,10 @@ const PackageModal = ({
                                 )}
                               {amountMetafield?.value && (
                                 <span className="md:text-[14px] text-justify text-[12px]  font-light">
-                                  ${variant.node.price.amount}
+                                  ${' '}
+                                  {formatNumberWithCommas(
+                                    Number(variant.node.price.amount),
+                                  )}
                                 </span>
                               )}
                             </div>

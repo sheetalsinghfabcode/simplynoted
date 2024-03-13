@@ -44,7 +44,7 @@ const ContactTable = ({
   const [searchText, setSearchText] = useState('');
   const [updateLoader, setupdateLoader] = useState(false);
   const [errorModal, setErrorModal] = useState(false);
-  const [errorContent, serErrorContent] = useState([]);
+  const [errorContent, setErrorContent] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [uploadBulkAddress, setUploadBulkAddress] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -126,11 +126,13 @@ const ContactTable = ({
   };
 
   useEffect(() => {
-    setupdateLoader(true);
-    setTimeout(() => {
-      setShowLoader(false);
-      setupdateLoader(false);
-    }, 1500);
+    if (addresses.length > 0) {
+      setupdateLoader(true);
+      setTimeout(() => {
+        setShowLoader(false);
+        setupdateLoader(false);
+      }, 1500);
+    }
   }, [addresses]);
 
   data = useMemo(
@@ -296,6 +298,7 @@ const ContactTable = ({
 
   let file = useRef(null);
 
+
   const handleFileChange = (event) => {
     file = event.target.files[0];
     if (file) {
@@ -312,6 +315,8 @@ const ContactTable = ({
       reader.readAsText(file);
     }
   };
+
+
 
   const updatedAddressData = addresses.map((item) => {
     if (item.type === 'return') {
@@ -379,17 +384,19 @@ const ContactTable = ({
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
-        setTimeout(() => {
-          setShowLoader(false);
-        }, 2000);
-        setLoaderTitle('Uploaded Address Successfully...');
         file.current.value = '';
-
+        setFileData(null)
+        setTimeout(() => {
+        }, 2000);
+        file.current.value = '';
         'Successful response data:', responseData.result;
       } else {
+
+        file.current.value = '';
         setSelectedFile(null);
         setShowLoader(false);
-
+        setFileData(null)
+        setupdateLoader(false)
         setLoaderTitle('Error while Uploading Address Book...');
         file.current.value = '';
         throw new Error('Network response was not ok');
@@ -397,11 +404,17 @@ const ContactTable = ({
     } catch (error) {
       setShowLoader(false);
       setLoaderTitle('Error while Uploading Address Book');
-
+      setFileData(null)
+      setupdateLoader(false)
       setSelectedFile(null);
       file.current.value = '';
       console.error('Error uploading data:', error);
       throw error;
+    }
+    finally {
+      setShowLoader(false);
+      setLoaderTitle(null)
+      
     }
   };
 
@@ -474,6 +487,7 @@ const ContactTable = ({
 
     const errors = [];
 
+
     const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
@@ -489,8 +503,10 @@ const ContactTable = ({
     if (!isValidFormat) {
       setErrorModal(true);
       setShowLoader(false);
+      setFileData(null)
+      file.current.value = '';
       setSelectedFile(null);
-      serErrorContent([
+      setErrorContent([
         'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
       ]);
       // setTimeout(() => {
@@ -508,6 +524,7 @@ const ContactTable = ({
       });
       return cleanedEntry;
     });
+
 
     for (let i = 0; i < cleanedData.length; i++) {
       const data = cleanedData[i];
@@ -531,21 +548,24 @@ const ContactTable = ({
         for (const field of missingFields) {
           errors.push(`Row ${i + 1}: Missing field - ${field}`);
         }
-      } 
-      else if (errors.length > 0) {
-        serErrorContent(errors);
-        setErrorModal(true);
-        setSelectedFile(null);
-      }
-       else {
+        setTimeout(() => {
+          setErrorContent(errors);
+          setErrorModal(true);
+          setShowLoader(false);
+        }, 100);
+      
+      } else {
+        
         await uploadDataToAPI(data);
       }
+      
     }
   };
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
+ 
   const uploadBulkAddressRef = useRef(null);
   const clickUploadBulkAddress = useRef(null);
 
@@ -559,6 +579,8 @@ const ContactTable = ({
       ) {
         setUploadBulkAddress(false);
         setSelectedFile(null);
+        file.current.value = '';
+        setFileData(null)
       }
     }
 
@@ -575,7 +597,10 @@ const ContactTable = ({
           title="Uploaded Error!"
           body={errorContent}
           close={true}
-          closeModal={() => setErrorModal(false)}
+          closeModal={() => {
+            setErrorModal(false)
+            setShowLoader(false)
+          } }
           isOpen={errorModal}
         />
       ) : (
@@ -633,6 +658,8 @@ const ContactTable = ({
                     className="bg-[#ef6e6e] cursor-pointer text-white"
                     onClick={() => {
                       setSelectedFile(null);
+                      file.current.value = '';
+                      setFileData(null)
                       setUploadBulkAddress(false);
                     }}
                   >
@@ -730,13 +757,13 @@ const ContactTable = ({
                 </span>
               </div>
               {ProdcuctSide && selectedCheckboxes.length > 0 && (
-                <div className='flex md:justify-normal justify-center'>
-                <button
-                  className="text-white bg-[#EF6E6E] w-[190px] h-[45px] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
-                  onClick={continueBtn}
-                >
-                  Continue
-                </button>
+                <div className="flex md:justify-normal justify-center">
+                  <button
+                    className="text-white bg-[#EF6E6E] w-[190px] h-[45px] mb-2 border border-solid text-[16px] font-bold py-[3px] px-[16px]"
+                    onClick={continueBtn}
+                  >
+                    Continue
+                  </button>
                 </div>
               )}
               {/* Your table rendering code here... */}
@@ -820,7 +847,7 @@ const ContactTable = ({
                 </table>
               </div>
 
-              {updateLoader && !showLoader && (
+              {updateLoader && !showLoader && loaderTitle &&  (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader
                     title="Loading Address Book"
@@ -882,8 +909,11 @@ const ContactTable = ({
                   </div>
                 </div>
               )}
+              
             </>
+            
           )}
+       
           <ConfirmationModal
             show={deleteModal}
             onCancel={() => setDeleteModal(false)}
@@ -896,7 +926,7 @@ const ContactTable = ({
             isOpen={isModalOpen}
             close={true}
             subtitle={true}
-        instructionsTitle={true}
+            instructionsTitle={true}
             title="INSTRUCTIONS FOR BULK UPLOAD"
             closeModal={closeModal}
             instructions={[

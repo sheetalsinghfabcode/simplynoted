@@ -92,6 +92,7 @@ export function MessageWriting({
   const [loadTempData, setloadTempData] = useState([]);
   const [bulkFileCount, setBulkFileCount] = useState(0);
   const [errorTemplate, setErrorTemplate] = useState(false);
+  const [errorMessage,setErrorMessage] = useState(false)
   const [onDelTemp, setOnDelTemp] = useState(false);
   const [lineHeight, setLineHeight] = useState(
     editLineHeight ? editLineHeight : '',
@@ -899,7 +900,7 @@ export function MessageWriting({
         : '',
     );
     setTempVal(ref4.current?.value);
-  }, [showSignScreen,customerId,customerid]);
+  }, [showSignScreen, customerId, customerid]);
 
   async function firstNameBtn(data) {
     if (remainingWord > data.length) {
@@ -945,20 +946,25 @@ export function MessageWriting({
         setShowLoader(true);
 
         const res = await fetch(
-          `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+          `https://testapi.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
           {
             method: 'POST',
             body: formData,
           },
         );
         const json = await res.json();
-        if (json) {
+        if (!json.result.message) {
           setTimeout(() => {
             setAddNewTem(false);
 
             setLoaderMessage(null);
             setShowLoader(false);
           }, 2000);
+        }
+        else {
+          setLoaderMessage(null);
+          setShowLoader(false);
+          setErrorMessage(json.result.message)
         }
       }
     } catch (error) {
@@ -978,6 +984,7 @@ export function MessageWriting({
             <input
               type="text"
               ref={ref4}
+              onChange={()=>setErrorMessage('')}
               value={tempVal}
               className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
             />
@@ -985,6 +992,12 @@ export function MessageWriting({
           {errorTemplate && (
             <span className="text-red-500 font-karla">
               Please check that the value is not empty
+            </span>
+          )}
+          {errorMessage && (
+            <span className="text-red-500 font-karla">
+              
+              {errorMessage}
             </span>
           )}
           <div className="mt-2">
@@ -1011,7 +1024,7 @@ export function MessageWriting({
   async function SavedTemp() {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+        `https://testapi.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
       );
       const json = await res.json();
       setloadTempData(json.result);
@@ -1057,35 +1070,45 @@ export function MessageWriting({
             <span className="font-bold text-[15px]">Template Name</span>
             <span className="font-bold text-[15px]">Actions</span>
           </div>
-          {loadTempData && loadTempData.length > 0 ? (
-              filteredList(loadTempData, searchData).map((item, index) => (
-              <div className="" key={index}>
-                {showLoader ? (
-                  <CircularLoader title={loaderMessage} color="#ef6e6e" />
-                ) : (
-                  <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
-                    <div className="w-full font-font-semibold  text-[14px]">
-                      {item.templateName}
-                    </div>
-                    <div className="w-full flex items-center gap-[11px] justify-end">
-                      <img
-                        src={TickImg}
-                        className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
-                        onClick={() => setLoadedTemVal(item.customMessage)}
-                      />
-                      <img
-                        src={Del}
-                        className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
-                        onClick={() => onConfirmDeleteTemplate(item._id)}
-                      />
+          {showLoader ? (
+            <CircularLoader title={loaderMessage} color="#ef6e6e" />
+          ) : (
+            <>
+              {loadTempData && loadTempData.length > 0 ? (
+                filteredList(loadTempData, searchData).map((item, index) => (
+                  <div className="" key={index}>
+                    <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
+                      <div className="w-full font-font-semibold  text-[14px]">
+                        {item.templateName}
+                      </div>
+                      <div className="w-full flex items-center gap-[11px] justify-end">
+                        <img
+                          src={TickImg}
+                          className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
+                          onClick={() => setLoadedTemVal(item.customMessage)}
+                        />
+                        <img
+                          src={Del}
+                          className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
+                          onClick={() => onConfirmDeleteTemplate(item._id)}
+                        />
+                      </div>
                     </div>
                   </div>
-                )}
-              </div>
-              ))
-          ) : (
-            <div className='text-center font-bold mt-4 text-[#001a5f] text-[15px]'> No Saved Templates Yet! </div>
+                ))
+              ) : (
+                <div className="text-center font-bold mt-4 text-[#001a5f] text-[15px]">
+                  {' '}
+                  No Saved Templates Yet!{' '}
+                </div>
+              )}
+            </>
           )}
+
+                
+
+
+       
         </div>
       </>
     );
@@ -1112,7 +1135,7 @@ export function MessageWriting({
       const formData = new FormData();
       formData.append('templateId', val);
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
+        `https://testapi.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
         {
           method: 'POST',
           body: formData,
