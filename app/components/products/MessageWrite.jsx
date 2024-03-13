@@ -899,7 +899,7 @@ export function MessageWriting({
         : '',
     );
     setTempVal(ref4.current?.value);
-  }, []);
+  }, [showSignScreen,customerId,customerid]);
 
   async function firstNameBtn(data) {
     if (remainingWord > data.length) {
@@ -1163,7 +1163,7 @@ export function MessageWriting({
   }
   function OpenAddressBookModal() {
     if (!customerid) {
-      setLoginModal(true);
+      setShowSignScreen(true);
     } else {
       setModalForAddressBook(true);
     }
