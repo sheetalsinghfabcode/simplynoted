@@ -105,7 +105,6 @@ export default function CustomProducts() {
   //   }, []);
 
 
-  console.log("cartData",cartData);
 
   useEffect(() => {
     getProductDetails();

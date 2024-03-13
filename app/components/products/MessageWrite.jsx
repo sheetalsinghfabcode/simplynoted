@@ -355,7 +355,7 @@ export function MessageWriting({
             </>
           ) : (
             <button
-              className="bg-[#ef6e6e] text-[#fff] p-2 font-roboto text-base font-bold w-full"
+              className="bg-[#ef6e6e] text-[#fff] max-w-[286.14px] mx-auto p-2 font-roboto text-base font-bold w-full"
               onClick={() => uploadCsvFile()}
             >
               Upload
@@ -1084,7 +1084,7 @@ export function MessageWriting({
               </div>
               ))
           ) : (
-            <div className='text-center font-bold mt-4 text-[#001a5f] text-[15px]'> No Saved Templates </div>
+            <div className='text-center font-bold mt-4 text-[#001a5f] text-[15px]'> No Saved Templates Yet! </div>
           )}
         </div>
       </>
