@@ -68,7 +68,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
         <div className="bg-white font-karla rounded-[12px] p-[9px] border border-solid border-[#DDDDDD] rounded-lg md:p-6 p-[0px] md:mt-[0px] mt-[23px]">
           {/* Name */}
           <div className="flex mb-4 ">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
+            <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla">
               Name:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px] font-semibold">
@@ -80,7 +80,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
 
           {/* Phone */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
+            <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla ">
               Phone:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -90,7 +90,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
 
           {/* Email */}
           <div className="flex mb-4 items-center">
-            <div className="w-1/4 md:text-sm text-[12px] text-sm text-black font-normal ">
+            <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black  ">
               Email address:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -100,7 +100,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
 
           {/* Password */}
           <div className="flex mb-4">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
+            <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla ">
               Password:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
@@ -110,7 +110,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
 
           {/* API Key */}
           <div className="flex mb-4 items-center">
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal ">
+            <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla  ">
               API Key:
             </div>
             <div className='w-3/4'>
@@ -127,7 +127,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
           </div>
 
           <div className={`flex mb-4  `}>
-            <div className="w-1/4 md:text-sm text-[12px]  md:text-[16px] text-black font-karla font-normal">
+            <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla ">
               Generated API Key:
             </div>
               <>
@@ -136,7 +136,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
                   <CircularLoader color="#ef6e6e" />
                   </div>
                 ) : (
-                  <p className="w-3/4 md:text-[14px] text-[11px] font-semibold break-all">
+                  <p className="w-3/4 md:text-[16px] text-[12px] font-semibold break-all">
                     {apiKey}
                   </p>
                 )}

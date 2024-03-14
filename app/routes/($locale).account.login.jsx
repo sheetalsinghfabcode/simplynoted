@@ -101,7 +101,7 @@ export default function Login() {
     setShowLoader(true);
     setTimeout(() => {
       setShowLoader(false);
-    }, 2000);
+    }, 2300);
   };
 
   return (
@@ -223,18 +223,17 @@ export default function Login() {
               Sign in
             </button>
           </div>
-          <div className="md:flex grid justify-between items-center sm:mt-8 mt-4 border-t border-gray-300">
-            <p className="align-baseline text-[15px] mt-6">
-              New to {shopName}? &nbsp;
-              <Link className="text-[15px] inline underline" to="/account/register">
-                Create an account
+          <div className="flex  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
+            <p className="align-baseline  mt-[12px]">
+              <Link className="text-[16px] mt-4 inline underline" to="/account/register">
+                  Create an account
               </Link>
             </p>
             <Link
-              className="mt-6 inline-block align-baseline text-[16px] text-primary/50"
+              className="inline-block mt-[12px] align-baseline text-[16px] text-primary/50"
               to="/account/recover"
             >
-              Forgot password
+              Lost your password?
             </Link>
           </div>
         </Form>

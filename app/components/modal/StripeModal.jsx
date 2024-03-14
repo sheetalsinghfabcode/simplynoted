@@ -22,8 +22,6 @@ const StripeModal = ({
 }) => {
   const stripe = loadStripe(`${StripeKey}`);
 
-  const [errors, setErrors] = useState([]);
-
   useEffect(() => {
     const fullName = localStorage.getItem('SNFullName');
     const userEmail = localStorage.getItem('SnEmail');
@@ -33,97 +31,85 @@ const StripeModal = ({
     formData.email = userEmail;
   }, []);
 
+  const [errors, setErrors] = useState({});
+
   const validateForm = () => {
     let isValid = true;
-    const errors = {};
+    const newErrors = {};
 
     // Validate name
     if (!formData.name.trim()) {
-      errors.name = 'Name is required';
+      newErrors.name = 'Name is required';
       isValid = false;
     }
 
     // Validate email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailPattern.test(formData.email)) {
-      errors.email = 'Email is required and must be valid';
+      newErrors.email = 'Email is required and must be valid';
       isValid = false;
     }
 
     // Validate address
     if (!formData.address.line1.trim()) {
-      errors.addressLine1 = 'Address is required';
+      newErrors['address.line1'] = 'Address is required';
       isValid = false;
     }
-
-    // Validate city
     if (!formData.address.city.trim()) {
-      errors.city = 'City is required';
+      newErrors['address.city'] = 'City is required';
       isValid = false;
     }
-
-    // Validate country
     if (!formData.address.country.trim()) {
-      errors.country = 'Country is required';
+      newErrors['address.country'] = 'Country is required';
       isValid = false;
     }
-
-    // Validate state
     if (!formData.address.state.trim()) {
-      errors.state = 'State is required';
+      newErrors['address.state'] = 'State is required';
       isValid = false;
     }
 
-    setErrors(errors); // Set errors state to display validation messages
+    setErrors(newErrors);
+
     if (!isValid) {
-      const firstErrorField = Object.keys(errors)[0];
+      const firstErrorField = Object.keys(newErrors)[0];
       const firstErrorElement = document.getElementById(firstErrorField);
       if (firstErrorElement) {
         firstErrorElement.focus();
       }
     }
 
-    // Open billing address section if there are any errors
-    if (!isValid) {
-    }
     return isValid;
   };
 
   const handleChange = (e) => {
     const {name, value} = e.target;
+    let updatedErrors = {...errors};
 
-    // Validation for state and city fields
     if (name === 'address.state' && value.trim() === '') {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
+      updatedErrors = {
+        ...updatedErrors,
         [name]: 'State is required.',
-      }));
+      };
     } else if (name === 'address.city' && value.trim() === '') {
-      setErrors((prevErrors) => ({
-        ...prevErrors,
+      updatedErrors = {
+        ...updatedErrors,
         [name]: 'City is required.',
-      }));
+      };
     } else {
-      // Clear error if the field is filled
-      setErrors((prevErrors) => ({
-        ...prevErrors,
-        [name]: '',
-      }));
+      delete updatedErrors[name]; // Clear error if the field is filled
     }
 
-    // Update form data based on field name
+    setErrors(updatedErrors);
+
     if (name.startsWith('address.')) {
-      // If the name starts with 'address.', it's part of the address object
       setFormData((prev) => ({
         ...prev,
         address: {
           ...prev.address,
           [name.substring(8)]: value,
         },
-        // paymentMethodId: paymentMethodId ? paymentMethodId : '',
       }));
     } else {
-      // It's not part of the address object, update it directly
       setFormData((prev) => ({
         ...prev,
         [name]: value,
@@ -215,6 +201,11 @@ const StripeModal = ({
                         onChange={(e) => handleChange(e)}
                         className="mt-2 border border-solid border-black p-3 w-[100%]"
                       />
+                      {errors['address.line1'] && (
+                        <p className="text-red-500 mt-2 text-14 font-semibold italic">
+                          {errors['address.line1']}
+                        </p>
+                      )}
                     </div>
                     <div className="mt-[11px]">
                       <label htmlFor="" className="font-bold">
@@ -245,7 +236,7 @@ const StripeModal = ({
                         className="mt-2 border border-solid h-[46px] border-black p-3 w-[100%]"
                       />
                       {errors['address.city'] && (
-                        <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                        <p className="text-red-500 mt-2 text-14 font-semibold italic">
                           {errors['address.city']}
                         </p>
                       )}
@@ -301,7 +292,7 @@ const StripeModal = ({
                             ))}
                         </select>
                         {errors['address.state'] && (
-                          <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                          <p className="text-red-500 mt-2 text-14 font-semibold italic">
                             {errors['address.state']}
                           </p>
                         )}

@@ -43,6 +43,7 @@ import DynamicButton from '~/components/DynamicButton';
 import Breadcrumbs from '~/components/Breadcrumbs';
 import {useStateContext} from '~/context/StateContext';
 import Instruction from '~/components/modal/Instruction';
+import CircularLoader from '~/components/CircularLoder';
 
 export const headers = routeHeaders;
 
@@ -601,6 +602,29 @@ export  function LoginFunc() {
   // console.log(actionData?.customer,"actiondata");
   const [nativeEmailError, setNativeEmailError] = useState(null);
   const [nativePasswordError, setNativePasswordError] = useState(null);
+  const {loaderTitle, setLoaderTitle, showLoader, setShowLoader} =
+    useStateContext();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    if (
+      !email.trim() ||
+      nativeEmailError ||
+      nativePasswordError ||
+      !password.trim()
+    ) {
+      return;
+    }
+    setShowLoader(true);
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 2300);
+  };
+
+
+
   if(actionData?.customer?.id){
     let result = actionData.customer.id.replace(/[^0-9]/g, '');
     localStorage.setItem('customerId', result);
@@ -640,112 +664,140 @@ export  function LoginFunc() {
     } catch (error) {}
   }
   return (
-    <div className="flex md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
-
-      <div className="max-w-md w-full">
-        <h1 className="name text-4xl text-blue-900">Sign in</h1>
+    <div className="flex relative md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
+    {showLoader && (
+      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+        <CircularLoader textColor="text-white" title="Logging in..." />
+      </div>
+    )}
+    <div className="max-w-md w-full">
+      <h1 className="name text-4xl flex sm:mt-[-20px] mt-[0px] justify-center font-bold text-blue-900">
+        Sign in
+      </h1>
+      <div className="flex justify-center">
         <img
           className="mt-2 w-32"
           src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
         />
-        <p className="mt-[12px] text-black text-opacity-80 text-xs">
-          If you have an account with us, please log in.
-        </p>
-        {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
-          {actionData?.formError && (
-            <div className="flex items-center justify-center mb-6 bg-zinc-500">
-              <p className="m-4 text-s text-contrast">{actionData.formError}</p>
-            </div>
-          )}
-          <div>
-            <input
-              className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              placeholder="Enter-E-mail"
-              aria-label="Email address"
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
-              onBlur={(event) => {
-                setNativeEmailError(
-                  event.currentTarget.value.length &&
-                    !event.currentTarget.validity.valid
-                    ? 'Invalid email address'
-                    : null,
-                );
-              }}
-            />
-            {nativeEmailError && (
-              <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
-            )}
-          </div>
-          <div>
-            <input
-              className={`mb-1 h-12 ${getInputStyleClasses(
-                nativePasswordError,
-              )}`}
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              placeholder=" Enter-Password"
-              aria-label="Password"
-              minLength={8}
-              required
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
-              onBlur={(event) => {
-                if (
-                  event.currentTarget.validity.valid ||
-                  !event.currentTarget.value.length
-                ) {
-                  setNativePasswordError(null);
-                } else {
-                  setNativePasswordError(
-                    event.currentTarget.validity.valueMissing
-                      ? 'Please enter a password'
-                      : 'Passwords must be at least 8 characters',
-                  );
-                }
-              }}
-            />
-            {nativePasswordError && (
-              <p className="text-red-500 text-xs">
-                {nativePasswordError} &nbsp;
-              </p>
-            )}
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-            //  onClick={()=>setShowSignScreen(false)}
-              className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
-              type="submit"
-              disabled={!!(nativePasswordError || nativeEmailError)}
-            >
-              Sign in
-            </button>
-          </div>
-          <div className="md:flex grid justify-between items-center sm:mt-8 mt-4 border-t border-gray-300">
-            <p className="align-baseline text-sm mt-6">
-              New to {shopName}? &nbsp;
-              <Link className="text-xs inline underline" to="/account/register">
-                Create an account
-              </Link>
-            </p>
-            <Link
-              className="mt-6 inline-block align-baseline text-sm text-primary/50"
-              to="/account/recover"
-            >
-              Forgot password
-            </Link>
-          </div>
-        </Form>
       </div>
+      <p className="mt-[20px] text-black text-opacity-80 text-[15px]">
+        If you have an account with us, please log in.
+      </p>
+      {/* TODO: Add onSubmit to validate _before_ submission with native? */}
+      <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
+        {actionData?.formError && (
+          <div className="flex items-center text-left text-red">
+            <p className="text-red text-[red]">{actionData.formError}</p>
+          </div>
+        )}
+        <div>
+          <input
+            className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            placeholder="Enter-E-mail"
+            aria-label="Email address"
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            value={email}
+            onChange={(e) => {
+              if (actionData) {
+                actionData.formError = '';
+              }
+              setEmail(e.target.value);
+            }}
+            onBlur={(event) => {
+              setNativeEmailError(
+                event.currentTarget.value.length &&
+                  !event.currentTarget.validity.valid
+                  ? 'Invalid email address'
+                  : null,
+              );
+            }}
+          />
+
+          {nativeEmailError && (
+            <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
+          )}
+        </div>
+        <div className="!mb-3">
+          <input
+            className={`mb-1 h-12 ${getInputStyleClasses(
+              nativePasswordError,
+            )}`}
+            id="password"
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            placeholder="Enter-Password"
+            aria-label="Password"
+            minLength={8}
+            required
+            value={password}
+            onChange={(e) => {
+              if (actionData) {
+                actionData.formError = '';
+              }
+              setPassword(e.target.value);
+            }}
+            onBlur={(event) => {
+              if (
+                event.currentTarget.validity.valid ||
+                !event.currentTarget.value.length
+              ) {
+                setNativePasswordError(null);
+              } else {
+                setNativePasswordError(
+                  event.currentTarget.validity.valueMissing
+                    ? 'Please enter a password'
+                    : 'Passwords must be at least 8 characters',
+                );
+              }
+            }}
+          />
+          {nativePasswordError && (
+            <p className="text-red-500 text-xs">
+              {nativePasswordError} &nbsp;
+            </p>
+          )}
+        </div>
+        <div
+          onClick={handleLogin}
+          className="flex !mt-0 items-center justify-between"
+        >
+          <button
+            className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
+            type="submit"
+            disabled={
+              !!(
+                nativePasswordError ||
+                nativeEmailError ||
+                actionData?.formError
+              )
+            }
+          >
+            Sign in
+          </button>
+        </div>
+        <div className="sm:flex grid  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
+          <p className="align-baseline mt-[12px] text-[16px]">
+            <Link className="text-[17px] mt-4 inline underline" to="/account/register">
+                Create an account
+            </Link>
+          </p>
+          <Link
+            className="inline-block mt-[12px] align-baseline text-[16px] text-primary/50"
+            to="/account/recover"
+          >
+            Lost your password?
+          </Link>
+        </div>
+      </Form>
     </div>
+  </div>
   );
 }
 

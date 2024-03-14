@@ -335,9 +335,9 @@ export default function Register() {
             </button>
           </div>
           <div className="flex items-center mt-8 border-t border-gray-300">
-            <p className="align-baseline text-[15px] mt-6">
+            <p className="align-baseline text-[16px] mt-6">
               Already have an account? &nbsp;
-              <Link className="inline underline" to="/account/login">
+              <Link className="inline underline text-[16px]" to="/account/login">
                 Sign in
               </Link>
             </p>

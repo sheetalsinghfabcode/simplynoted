@@ -3,17 +3,17 @@ import SalesforceFormBgImage02 from '../../assets/Image/salesforce-form-bg-2.web
 import SalesforceFormStampImage from '../../assets/Image/salesforce-form-stamp.avif';
 import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
-import {useEffect, useState} from 'react';
-import {defer} from '@remix-run/server-runtime';
-import {seoPayload} from '~/lib/seo.server';
+import { useEffect, useState } from 'react';
+import { defer } from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
 
-export async function loader({request, context}) {
-  const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
+export async function loader({ request, context }) {
+  const { page } = await context.storefront.query(Shopify_GRAPH_QL, {
     variants: {},
   });
-  const seo = seoPayload.page({page, url: request.url});
+  const seo = seoPayload.page({ page, url: request.url });
   return defer({
     seo,
     page,
@@ -41,7 +41,7 @@ export default function Salesforce() {
                   </div>
                   <div
                     className="lg:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f]"
-                    style={{lineHeight: '0.75'}}
+                    style={{ lineHeight: '0.75' }}
                   >
                     Salesforce
                     <span
@@ -68,8 +68,8 @@ export default function Salesforce() {
                     text="CONNECT USING OUR PROCESS BUILDER"
                     className="text-white p-[17px] sm:text-[16px] small:text-[14px] text-[10px] bg-[#ef6e6e] px-2 py-5 font-bold"
                     onClickFunction={() =>
-                      (window.location.href =
-                        'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
+                    (window.location.href =
+                      'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
                     }
                   />
 
@@ -91,7 +91,7 @@ export default function Salesforce() {
                   </div>
                   <div
                     className="text-[44px] font-karla md:flex grid  text-[#001a5f] items-center font-bold"
-                    style={{lineHeight: '0.75'}}
+                    style={{ lineHeight: '0.75' }}
                   >
                     Salesforce &nbsp;
                     <span
@@ -249,8 +249,8 @@ export default function Salesforce() {
                 text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
                 onClickFunction={() =>
-                  (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
+                (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')
                 }
               />
               <DynamicButton
@@ -315,9 +315,10 @@ export default function Salesforce() {
                 text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
                 onClickFunction={() =>
-                  (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
-                }
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth', // Make the scroll behavior smooth
+                  })}
               />
               <DynamicButton
                 text="TUTORIALS"
@@ -394,14 +395,14 @@ export default function Salesforce() {
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-right.png?v=17628020455828864692" />
         </div>
 
-        <div className="flex flex-row items-center justify-center mx-auto mt-[70px]">
+        <div className="flex flex-row items-center mb-[51px] relative justify-center mx-auto mt-[70px]">
           <div className="banner-detail text-center tab:w-[80%] w-[1200px]">
             <img
               className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] "
               src={SalesforceIcon}
               alt="shopify"
             />
-
+            <img className='absolute right-[143px] top-[60px]' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495" />
             <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
               Salesforce Deep Integration
               <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
@@ -409,15 +410,19 @@ export default function Salesforce() {
                   text="JOIN WAITLIST"
                   className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] h-[54px]  mt-[35px]"
                   onClickFunction={() =>
-                    (window.location.href =
-                      'https://zapier.com/apps/simply-noted/integrations')
-                  }
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth', // Make the scroll behavior smooth
+                    })}
                 />
                 <DynamicButton
                   text="USE PROCESS BUILDER"
                   className="sch-btn lg:!text-[17px] whitespace-pre-line w-[247px] md:text-[14px] !h-[67px] text-[white] items-center text-center"
                   onClickFunction={() =>
-                    (window.location.href = 'https://zapier.com/apps')
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth' // Make the scrool behavior smooth
+                    })
                   }
                 />
               </div>

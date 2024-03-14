@@ -25,7 +25,7 @@ const Faq = () => {
         <div className="shadow-outer-custom md:mt-14 mt-4 w-full mx-auto">
           <FaqAccordion
             title="Do you have have business pricing / offer custom orders?"
-            className=" tab-content text-[17px] "
+            className=" tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Yes we do! Orders up-to 5,000 can be placed online with our normal
@@ -36,7 +36,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="What type of card / paper can you write on?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               We are proud to offer the most flexibility in the industry by
@@ -50,7 +50,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="How fast do you write and mail orders?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Great question! Orders that do not require custom printed card
@@ -66,7 +66,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Do your notes have Simply Noted branding?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               NO! The person receiving this letter will think that it came from
@@ -77,7 +77,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="How do I format my data to submit orders?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Simply submit us your contacts address and the message you would
@@ -88,7 +88,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="How does Simply Noted write notes?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Glad you asked! Simply Noted has highly sophisticated software and
@@ -101,7 +101,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can I use my own stationery?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               If you are sending more than 1,000 handwritten notes per month we
@@ -115,7 +115,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can you just write envelopes?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Yes! We offer business solutions for companies or individuals who
@@ -127,7 +127,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can you just write cards?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Yes! Just like our envelope service we offer business solutions
@@ -139,7 +139,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can I include a business card, gift card, stuffer, etc?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Absolutely! For a small monthly fee we will stuff 1 item at no
@@ -151,7 +151,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can I use my own handwriting?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Yes! We have the ability to take your handwriting and convert it
@@ -164,7 +164,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can I add my own signature?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Yes! We have the ability to convert your signature as well. It
@@ -176,7 +176,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="What is Simply Noteds return policy?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               We offer a 15 day no questions asked return policy on
@@ -191,14 +191,14 @@ const Faq = () => {
 
           <FaqAccordion
             title="Have a question we haven’t answered?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>Simply reach out to us at support@SimplyNoted.com</span>
           </FaqAccordion>
 
           <FaqAccordion
             title="Can you clean my mailing list to verify mailing addresses?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               We can clean your mailing list to improve delivery rates. Starts
@@ -208,7 +208,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="How long will it take for my note to be delivered?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               We use real Forever Stamps which take 3-5 business days to be
@@ -219,7 +219,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can you sending me tracking for my order?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Since we use real Forever Stamps there is no tracking. If we used
@@ -232,7 +232,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="How do I know when my order has been shipped?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               The best way for efficient communication of your order status is
@@ -245,7 +245,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Can you ship my order directly to me?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Yes! At check out just ask (in the "Note" box) for us to ship it
@@ -256,7 +256,7 @@ const Faq = () => {
             </span>
           </FaqAccordion>
 
-          <FaqAccordion title="How do gift cards work?" className="tab-content">
+          <FaqAccordion title="How do gift cards work?" className="tab-content md:text-[17px] text-[13px]">
             <span>
               We use real physical gift cards just as if you would. We manually
               buy and include the gift card in the handwritten note. The Gift
@@ -268,7 +268,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="How do you track open rates?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               Although we think the best reason to send a handwritten note is to
@@ -281,7 +281,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="What happens if my handwritten note is not delivered?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               If your handwritten note is not delivered to your recipient it is
@@ -293,7 +293,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="What happens if there is a spelling, grammar or address error on my order, will you fix it?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               If there is an error on your order that you placed, the order will
@@ -305,7 +305,7 @@ const Faq = () => {
 
           <FaqAccordion
             title="Who is responsible for bounced mail?"
-            className="tab-content"
+            className="tab-content md:text-[17px] text-[13px]"
           >
             <span>
               When a letter bounces back, it is most likely due to a bad or

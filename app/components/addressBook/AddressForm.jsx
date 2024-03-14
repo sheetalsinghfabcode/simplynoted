@@ -221,13 +221,13 @@ const AddressForm = ({customerID}) => {
             pathname.pathname !== '/account' && 'mt-6'
           }   ${loader && 'opacity-40'}`}
         >
-          <div className="xl:flex grid justify-between  xl:gap-[90px] gap-[0px] items-center mb-[16px]">
-            <h2 className=" text-left text-[#001a5f] whitespace-nowrap font-bold md:text-[32px] text-[24px] leading-[43px]">
+          <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 my-8">
+            <h2 className=" text-left text-[#001a5f] mt-[-6px] whitespace-nowrap font-bold md:text-[32px] text-[24px] leading-[43px]">
               New Address
             </h2>
-            <div className="xl:flex grid  gap-[10px] lg:mt-0 mt-[12px]">
+            <div className="tab:flex grid md:items-end  items-center md:gap-[10px] gap-[12px]">
               <DynamicButton
-                className="bg-[#ef6e6e] md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full xl:min-w-[190px] max-w-[190px]"
+                className="bg-[#001a5f] md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
                 text="Cancel"
                 onClickFunction={() => {
                   setAddressForm(false);
@@ -235,19 +235,19 @@ const AddressForm = ({customerID}) => {
                 }}
               />
               <DynamicButton
-                className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] lg:h-[45px] h-[33px] w-full xl:min-w-[190px] max-w-[190px]"
+                className="bg-[#ef6e6e] md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
                 text="Save Address"
                 onClickFunction={saveAddress}
               />
             </div>
           </div>
-          <div className="mb-4 flex mt-[30px] flex-wrap -mx-3">
+          <div className=" flex mt-[35px] flex-wrap -mx-3">
             <div className="md:w-1/2 w-[100%] px-3 mb-6">
               <label
                 className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
                 htmlFor="firstName"
               >
-                First Name
+                First Name  
               </label>
               <input
                 className={`appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${

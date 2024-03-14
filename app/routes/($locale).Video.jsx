@@ -102,7 +102,7 @@ export default function tutorials() {
                       <div className="flex-1">
                         <img
                           src={article.node.image.url}
-                          className="h-full object-scale-down"
+                          className="object-scale-down"
                           alt={article.node.title}
                         />
                       </div>

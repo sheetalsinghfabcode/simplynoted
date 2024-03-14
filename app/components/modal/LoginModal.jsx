@@ -37,14 +37,14 @@ const LoginModal = ({
         )}
         <div className="modal-content py-4  px-6">
           <div className="modal-header">
-            <h3 className="text-[29px] text-center leading-[1.4] mt-[17px] text-[#001a5f] font-semibold">
+            <h3 className="md:text-[29px] text-[22px] text-center leading-[1.4] mt-[24px] text-[#001a5f] font-semibold">
               Want to
               <span className="font-beauty text-[40px]"> {title} ?</span>
             </h3>
           </div>
           <div className="modal-body mt-[12px]">
-            <h3 className="text-[29px] text-center leading-[1.4] text-[#001a5f] font-semibold">
-              Please login first!
+            <h3 className="md:text-[29px] text-[22px] text-center leading-[1.4] text-[#001a5f] font-semibold">
+              Please Login First!
             </h3>
 
             <p className="text-[20px] w-full max-w-[600px] mx-auto text-center leading-[1.4] text-[#001a5f] font-semibold"></p>

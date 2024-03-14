@@ -146,7 +146,6 @@ export function CheckoutData({
         },
       );
       const json = await res.json();
-      console.log(json, 'added credit card');
       setNewCardAdded(true);
       setShowCardBox(false);
       setloader(false);
@@ -441,8 +440,8 @@ export function CheckoutData({
               productId: item?.productId?.match(/\d+/g)?.join(''),
               variant_id: item.variant_id,
               productUrlGet: item.productGetUrl,
-              productPrice: `$${item.price}`,
-              qyt: item.csvFileLen,
+              productPrice: `$${item.cartTotal}`,
+              qyt: item.qyt,
               properties: {
                 bulk_shipping_address: item.locationForShipMethod
                   ? item.locationForShipMethod.firstName +
@@ -529,6 +528,7 @@ export function CheckoutData({
           : '',
 
       };
+
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
       //   payload,

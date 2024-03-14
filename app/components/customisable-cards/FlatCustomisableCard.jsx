@@ -1,13 +1,13 @@
-import {useState, useEffect, useRef} from 'react';
-import {useNavigate} from '@remix-run/react';
-import {FaArrowLeft} from 'react-icons/fa';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from '@remix-run/react';
+import { FaArrowLeft } from 'react-icons/fa';
 import html2canvas from 'html2canvas';
-import {Modal} from '../Modal';
+import { Modal } from '../Modal';
 import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import CustomCheckbox from '../CustomCheckbox';
 import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.png';
-import {MdOutlineDone} from 'react-icons/md';
+import { MdOutlineDone } from 'react-icons/md';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -94,7 +94,7 @@ export default function FlatCustomisableCard({
     console.log({
       qr,
       frontImageDetails,
-      backImageDetails: {observingData, headerData, footerData},
+      backImageDetails: { observingData, headerData, footerData },
     });
   }, [observingData, frontImageDetails, headerData, footerData, qr]);
 
@@ -116,7 +116,7 @@ export default function FlatCustomisableCard({
 
   useEffect(() => {
     if (isLoading) {
-      window.scroll({top: 0, left: 0, behavior: 'instant'});
+      window.scroll({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [isLoading]);
 
@@ -257,7 +257,7 @@ export default function FlatCustomisableCard({
       const blob = await response.blob();
 
       // Create a File object with the blob
-      const fileObject = new File([blob], `${fileName}.jpg`, {type: blob.type});
+      const fileObject = new File([blob], `${fileName}.jpg`, { type: blob.type });
 
       return fileObject;
     } catch (error) {
@@ -641,7 +641,7 @@ export default function FlatCustomisableCard({
   const handleFinishEditingButton = async () => {
     try {
       setValidationModalData((prevValidationData) => {
-        return {...prevValidationData, isModalOpen: true};
+        return { ...prevValidationData, isModalOpen: true };
       });
     } catch (err) {
       throw err;
@@ -930,7 +930,7 @@ export default function FlatCustomisableCard({
   const handleCardTitleInputChange = (event) => {
     setCustomCardTitle(event.target.value);
     setValidationModalData((prevValidationData) => {
-      return {...prevValidationData, isUserTyping: true};
+      return { ...prevValidationData, isUserTyping: true };
     });
   };
   const handleCardTitleValidation = async () => {
@@ -964,7 +964,7 @@ export default function FlatCustomisableCard({
         <Modal
           cancelLink={() => {
             if (!isLoading) {
-              setErrorResponse({message: '', status: false});
+              setErrorResponse({ message: '', status: false });
               setValidationModalData({
                 isModalOpen: false,
                 isNameValidated: false,
@@ -989,11 +989,10 @@ export default function FlatCustomisableCard({
             <div className="flex lg:flex-row flex-col justify-between gap-2 mt-3">
               <div className="relative flex-1">
                 <input
-                  className={`min-w-[190px] w-full h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1 focus:ring-0 ${
-                    validationModalData.isNameValidated
-                      ? 'border-emerald-600 focus:border-emerald-600'
-                      : 'focus:border-red-400'
-                  } ${errorResponse.status ? 'border-red-400' : ''}`}
+                  className={`min-w-[190px] w-full h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1 focus:ring-0 ${validationModalData.isNameValidated
+                    ? 'border-emerald-600 focus:border-emerald-600'
+                    : 'focus:border-red-400'
+                    } ${errorResponse.status ? 'border-red-400' : ''}`}
                   type="text"
                   placeholder="Card Name"
                   onChange={(e) => handleCardTitleInputChange(e)}
@@ -1010,7 +1009,7 @@ export default function FlatCustomisableCard({
                     {!isLoading && 'Validate'}
 
                     {isLoading && (
-                      <div className="flex gap-[4px] items-center">
+                      <div className="flex gap-[4px]  items-center">
                         <svg
                           width="20"
                           height="20"
@@ -1021,24 +1020,31 @@ export default function FlatCustomisableCard({
                         >
                           <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                         </svg>
-                        <span className="whitespace-nowrap">{loadingText}</span>
+                        <span className="whitespace-nowrap hidden md:block ">{loadingText}</span>
+
                       </div>
+
                     )}
                   </button>
                 )}
+                <div className='block md:hidden'>
+                  {isLoading && !validationModalData.isNameValidated && (
+                    <span className="whitespace-nowrap md:text-[14px] font-bold text-[12px] text-[#001a5f]">{loadingText}</span>
+                  )}
+                </div>
+
               </div>
               <button
-                className={`${
-                  !validationModalData.isNameValidated
-                    ? 'cursor-not-allowed'
-                    : ''
-                } bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
+                className={`${!validationModalData.isNameValidated
+                  ? 'cursor-not-allowed'
+                  : ''
+                  } bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
                 disabled={!validationModalData.isNameValidated}
                 type="button"
                 onClick={handleCustomCardSaveButton}
               >
                 {isLoading &&
-                validationModalData.isNameValidated  ? (
+                  validationModalData.isNameValidated ? (
                   <div className="flex gap-[4px] items-center">
                     <svg
                       width="20"
@@ -1050,7 +1056,7 @@ export default function FlatCustomisableCard({
                     >
                       <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                     </svg>
-                    <span className="whitespace-nowrap">Saving in progress...</span>
+                    <span className="whitespace-nowrap text-center">Saving in progress...</span>
                   </div>
                 ) : (
                   'SAVE CARD'
@@ -1064,7 +1070,7 @@ export default function FlatCustomisableCard({
         <Modal
           cancelLink={() =>
             setQr((prevQrValues) => {
-              return {...prevQrValues, isInputModalOpened: false};
+              return { ...prevQrValues, isInputModalOpened: false };
             })
           }
         >
@@ -1083,9 +1089,8 @@ export default function FlatCustomisableCard({
                 )}
               </div>
               <input
-                className={`${
-                  qr.isEnteredTextInvalid && 'border-red-500 '
-                } w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none`}
+                className={`${qr.isEnteredTextInvalid && 'border-red-500 '
+                  } w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none`}
                 type="text"
                 required
                 onChange={(e) =>
@@ -1114,7 +1119,7 @@ export default function FlatCustomisableCard({
         <Modal
           cancelLink={() =>
             setQr((prevQrValues) => {
-              return {...prevQrValues, isConfirmationModalOpened: false};
+              return { ...prevQrValues, isConfirmationModalOpened: false };
             })
           }
         >
@@ -1167,11 +1172,11 @@ export default function FlatCustomisableCard({
         </Modal>
       )}
 
-      <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
+      <div className="relative md:mt-3" style={{ marginTop: '-2rem' }}>
         <div className="min-h-[612px] flex justify-center items-center flex-wrap  lg:flex-row flex-col">
           <div
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "
-            style={{minHeight: '564px'}}
+            style={{ minHeight: '564px' }}
           >
             <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[65px] mt-[4rem]">
               Custom Flat {selectedCardPage}
@@ -1214,20 +1219,20 @@ export default function FlatCustomisableCard({
                       >
                         {(frontImageDetails.imageBlobUrl ||
                           frontImageDetails.blackAndWhiteImageBlobUrl) && (
-                          <img
-                            src={
-                              frontImageDetails.isColoredImage
-                                ? frontImageDetails.imageBlobUrl
-                                : frontImageDetails.blackAndWhiteImageBlobUrl
-                            }
-                            alt="Selected front card image file"
-                            className="object-contain h-full"
-                            draggable="false"
-                            style={{
-                              transform: `scale(${frontImageDetails.zoom})`,
-                            }}
-                          />
-                        )}
+                            <img
+                              src={
+                                frontImageDetails.isColoredImage
+                                  ? frontImageDetails.imageBlobUrl
+                                  : frontImageDetails.blackAndWhiteImageBlobUrl
+                              }
+                              alt="Selected front card image file"
+                              className="object-contain h-full"
+                              draggable="false"
+                              style={{
+                                transform: `scale(${frontImageDetails.zoom})`,
+                              }}
+                            />
+                          )}
                       </div>
                     </>
                   )) ||
@@ -1243,21 +1248,18 @@ export default function FlatCustomisableCard({
                         }}
                       >
                         <div
-                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
-                            headerFooterVisibility.isHeaderVisible
-                              ? 'block '
-                              : 'hidden '
-                          }  ${
-                            isMouseHoveredOnContainer
+                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${headerFooterVisibility.isHeaderVisible
+                            ? 'block '
+                            : 'hidden '
+                            }  ${isMouseHoveredOnContainer
                               ? 'border-black '
                               : 'border-transparent '
-                          } ${
-                            (headerData.alignment === 'left' &&
+                            } ${(headerData.alignment === 'left' &&
                               'justify-start ') ||
                             (headerData.alignment === 'center' &&
                               'justify-center ') ||
                             (headerData.alignment === 'right' && 'justify-end ')
-                          }`}
+                            }`}
                         >
                           <div
                             className={`overflow-hidden h-[50px] whitespace-nowrap items-center flex`}
@@ -1278,12 +1280,11 @@ export default function FlatCustomisableCard({
                             >
                               <img
                                 src={headerData.imageBlobUrl}
-                                className={`object-contain h-full ${
-                                  headerData.isColoredImage
-                                    ? 'grayscale-0'
-                                    : 'grayscale'
-                                }`}
-                                style={{transform: `scale(${headerData.zoom})`}}
+                                className={`object-contain h-full ${headerData.isColoredImage
+                                  ? 'grayscale-0'
+                                  : 'grayscale'
+                                  }`}
+                                style={{ transform: `scale(${headerData.zoom})` }}
                                 alt="Selected header image"
                                 draggable="false"
                               />
@@ -1294,21 +1295,18 @@ export default function FlatCustomisableCard({
                           <span>Your custom message text will be here...</span>
                         </div>
                         <div
-                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${
-                            headerFooterVisibility.isFooterVisible
-                              ? 'block '
-                              : 'hidden '
-                          } ${
-                            isMouseHoveredOnContainer
+                          className={`flex relative h-[50px] border-dashed border font-semibold pl-6 pr-6 items-center ${headerFooterVisibility.isFooterVisible
+                            ? 'block '
+                            : 'hidden '
+                            } ${isMouseHoveredOnContainer
                               ? 'border-black '
                               : 'border-transparent '
-                          } ${
-                            (footerData.alignment === 'left' &&
+                            } ${(footerData.alignment === 'left' &&
                               'justify-start ') ||
                             (footerData.alignment === 'center' &&
                               'justify-center ') ||
                             (footerData.alignment === 'right' && 'justify-end ')
-                          }`}
+                            }`}
                         >
                           {footerData.customText && (
                             <div
@@ -1327,11 +1325,10 @@ export default function FlatCustomisableCard({
                           {(footerData.isImageSelected || qr.isQrAdded) && (
                             <div
                               id="backFooterImageDiv"
-                              className={`h-[45px] flex justify-center overflow-hidden ${
-                                qr.isQrAdded && footerData.alignment === 'right'
-                                  ? 'w-[35px] '
-                                  : 'w-0'
-                              }`}
+                              className={`h-[45px] flex justify-center overflow-hidden ${qr.isQrAdded && footerData.alignment === 'right'
+                                ? 'w-[35px] '
+                                : 'w-0'
+                                }`}
                             >
                               <img
                                 src={
@@ -1339,12 +1336,11 @@ export default function FlatCustomisableCard({
                                     ? qr.generatedQrImageLink
                                     : footerData.imageBlobUrl
                                 }
-                                className={`object-contain h-full ${
-                                  footerData.isColoredImage
-                                    ? 'grayscale-0'
-                                    : 'grayscale'
-                                } ${qr.isQrAdded && 'absolute right-1 pb-1'}`}
-                                style={{transform: `scale(${footerData.zoom})`}}
+                                className={`object-contain h-full ${footerData.isColoredImage
+                                  ? 'grayscale-0'
+                                  : 'grayscale'
+                                  } ${qr.isQrAdded && 'absolute right-1 pb-1'}`}
+                                style={{ transform: `scale(${footerData.zoom})` }}
                                 alt="Selected footer image"
                                 draggable="false"
                               />
@@ -1358,22 +1354,20 @@ export default function FlatCustomisableCard({
               <div className="flex gap-4 w-full mt-3">
                 <button
                   value="Card Front"
-                  className={`flex-1 p-[10px] text-white font-normal text-[18px] ${
-                    selectedCardPage === 'Card Front'
-                      ? 'button-blue'
-                      : 'button-tomato'
-                  }`}
+                  className={`flex-1 p-[10px] text-white font-normal text-[18px] ${selectedCardPage === 'Card Front'
+                    ? 'button-blue'
+                    : 'button-tomato'
+                    }`}
                   onClick={handleCardPageSelectionButton}
                 >
                   Card Front
                 </button>
                 <button
                   value="Card Back"
-                  className={`flex-1 p-[10px] text-white font-normal text-[18px]  ${
-                    selectedCardPage === 'Card Back'
-                      ? 'button-blue'
-                      : 'button-tomato'
-                  }`}
+                  className={`flex-1 p-[10px] text-white font-normal text-[18px]  ${selectedCardPage === 'Card Back'
+                    ? 'button-blue'
+                    : 'button-tomato'
+                    }`}
                   onClick={handleCardPageSelectionButton}
                 >
                   Card Back
@@ -1383,7 +1377,7 @@ export default function FlatCustomisableCard({
           </div>
           <div
             className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[8rem] mt-[30px]  lg:ml-[47px]  gap-5  flex-1 lg:w-[50%] md:w-[500px] sm:w-[445px] w-[350px]"
-            // style={{marginTop: '9rem'}}
+          // style={{marginTop: '9rem'}}
           >
             {selectedCardPage === 'Card Front' && (
               <>
@@ -1496,25 +1490,23 @@ export default function FlatCustomisableCard({
                 </div>
                 <div className="flex justify-between items-center text-white gap-1 lg:w-[90%]  w-[100%] ">
                   <button
-                    className={`${
-                      observingData.isHeader
-                        ? 'bg-[#1b5299] text-white shadow-md'
-                        : 'bg-transparent text-[#1b5299]'
-                    } h-[35px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px]`}
+                    className={`${observingData.isHeader
+                      ? 'bg-[#1b5299] text-white shadow-md'
+                      : 'bg-transparent text-[#1b5299]'
+                      } h-[35px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px]`}
                     onClick={() =>
-                      setObservingData({isHeader: true, isFooter: false})
+                      setObservingData({ isHeader: true, isFooter: false })
                     }
                   >
                     Header
                   </button>
                   <button
-                    className={`${
-                      observingData.isFooter
-                        ? 'bg-[#1b5299] text-white shadow-md'
-                        : 'bg-transparent text-[#1b5299]'
-                    } h-[38px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px]`}
+                    className={`${observingData.isFooter
+                      ? 'bg-[#1b5299] text-white shadow-md'
+                      : 'bg-transparent text-[#1b5299]'
+                      } h-[38px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px]`}
                     onClick={() =>
-                      setObservingData({isHeader: false, isFooter: true})
+                      setObservingData({ isHeader: false, isFooter: true })
                     }
                   >
                     Footer
@@ -1534,9 +1526,8 @@ export default function FlatCustomisableCard({
                           id="custom-text"
                           className="w-full"
                           type="text"
-                          placeholder={`Enter ${
-                            observingData.isHeader ? 'header' : 'footer'
-                          } text here.`}
+                          placeholder={`Enter ${observingData.isHeader ? 'header' : 'footer'
+                            } text here.`}
                           value={
                             observingData.isHeader
                               ? headerData.customText
@@ -1562,8 +1553,8 @@ export default function FlatCustomisableCard({
                               headerData.alignment === 'left') ||
                               (observingData.isFooter &&
                                 footerData.alignment === 'left')) && (
-                              <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z" />
-                            )}
+                                <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm0 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm0 4h10a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2z" />
+                              )}
                           </svg>
                           <svg
                             className="flex-1 mr-1 cursor-pointer"
@@ -1579,8 +1570,8 @@ export default function FlatCustomisableCard({
                               headerData.alignment === 'center') ||
                               (observingData.isFooter &&
                                 footerData.alignment === 'center')) && (
-                              <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z" />
-                            )}
+                                <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z" />
+                              )}
                           </svg>
                           <svg
                             className="flex-1 mr-1 cursor-pointer"
@@ -1596,8 +1587,8 @@ export default function FlatCustomisableCard({
                               headerData.alignment === 'right') ||
                               (observingData.isFooter &&
                                 footerData.alignment === 'right')) && (
-                              <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z" />
-                            )}
+                                <path d="M3 3h14a1 1 0 0 1 0 2H3a1 1 0 1 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 1 1 0-2zm-4 4h14a1 1 0 0 1 0 2H3a1 1 0 0 1 0-2zm4 4h10a1 1 0 0 1 0 2H7a1 1 0 0 1 0-2z" />
+                              )}
                           </svg>
                         </div>
                       </div>
@@ -1620,65 +1611,65 @@ export default function FlatCustomisableCard({
                         >
                           <option
                             value="Arial"
-                            style={{fontFamily: 'Arial'}}
+                            style={{ fontFamily: 'Arial' }}
                             className={`font-arial`}
                           >
                             Arial
                           </option>
                           <option
                             value="Comic Sans MS"
-                            style={{fontFamily: 'Comic Sans MS'}}
+                            style={{ fontFamily: 'Comic Sans MS' }}
                           >
                             Comic Sans Ms
                           </option>
                           <option
                             value="Arial Black"
-                            style={{fontFamily: 'Arial Black'}}
+                            style={{ fontFamily: 'Arial Black' }}
                           >
                             Arial Black
                           </option>
                           <option
                             value="Arial Narrow"
-                            style={{fontFamily: 'Arial Black'}}
+                            style={{ fontFamily: 'Arial Black' }}
                           >
                             Arial Narrow
                           </option>
                           <option
                             value="Courier New"
-                            style={{fontFamily: 'Courier New'}}
+                            style={{ fontFamily: 'Courier New' }}
                           >
                             Courier New
                           </option>
                           <option
                             value="CImpact"
-                            style={{fontFamily: 'Impact'}}
+                            style={{ fontFamily: 'Impact' }}
                           >
                             Impact
                           </option>
                           <option
                             value="Rockwell"
-                            style={{fontFamily: 'Rockwell'}}
+                            style={{ fontFamily: 'Rockwell' }}
                           >
                             Rockwell
                           </option>
-                          <option value="Tahoma" style={{fontFamily: 'Tahoma'}}>
+                          <option value="Tahoma" style={{ fontFamily: 'Tahoma' }}>
                             Tahoma
                           </option>
                           <option
                             value="Times New Roman"
-                            style={{fontFamily: 'Times New Roman'}}
+                            style={{ fontFamily: 'Times New Roman' }}
                           >
                             Times New Roman
                           </option>
                           <option
                             value="Trebuchet MS"
-                            style={{fontFamily: 'Trebuchet MS'}}
+                            style={{ fontFamily: 'Trebuchet MS' }}
                           >
                             Trebuchet MS
                           </option>
                           <option
                             value="Verdana"
-                            style={{fontFamily: 'Verdana'}}
+                            style={{ fontFamily: 'Verdana' }}
                           >
                             Verdana
                           </option>
@@ -1698,7 +1689,7 @@ export default function FlatCustomisableCard({
                               : footerData.fontSize
                           }
                         >
-                          {Array.from({length: 33}, (_, index) => (
+                          {Array.from({ length: 33 }, (_, index) => (
                             <option key={index} value={index + 8}>
                               {index + 8}px
                             </option>
@@ -1893,9 +1884,8 @@ export default function FlatCustomisableCard({
                     </div>
 
                     <div
-                      className={` ${
-                        qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-                      } sm:w-[200px] w-[100%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center sm:justify-start justify-center gap-2 text-white flex-wrap mb-5 mt-10`}
+                      className={` ${qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
+                        } sm:w-[200px] w-[100%] cursor-pointer border border-solid border-black rounded p-1.5 flex items-center sm:justify-start justify-center gap-2 text-white flex-wrap mb-5 mt-10`}
                       onClick={handleQrSelectionButton}
                     >
                       <div>

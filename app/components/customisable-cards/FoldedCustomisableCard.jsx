@@ -1,13 +1,13 @@
-import {useEffect, useRef, useState} from 'react';
-import {useNavigate} from '@remix-run/react';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from '@remix-run/react';
 import html2canvas from 'html2canvas';
-import {Modal} from '../Modal';
+import { Modal } from '../Modal';
 import CircularLoader from '../CircularLoder';
-import {FaArrowLeft} from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import DefaultFrontCardImage from '../../../assets/Image/foldFront.webp';
 import DefaultBackCardImage from '../../../assets/Image/foldBack.png';
-import {MdOutlineDone} from 'react-icons/md';
+import { MdOutlineDone } from 'react-icons/md';
 
 export default function FoldedCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -15,7 +15,7 @@ export default function FoldedCustomisableCard({
   customerId,
 }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingText, setLoadingText] = useState('Checking availability...');
+  const [loadingText, setLoadingText] = useState('Checking availability');
   const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
   const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
     useState(false);
@@ -82,7 +82,7 @@ export default function FoldedCustomisableCard({
 
   useEffect(() => {
     if (isLoading) {
-      window.scroll({top: 0, left: 0, behavior: 'instant'});
+      window.scroll({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [isLoading]);
 
@@ -201,7 +201,7 @@ export default function FoldedCustomisableCard({
       const blob = await response.blob();
 
       // Create a File object with the blob
-      const fileObject = new File([blob], `${fileName}.jpg`, {type: blob.type});
+      const fileObject = new File([blob], `${fileName}.jpg`, { type: blob.type });
 
       return fileObject;
     } catch (error) {
@@ -411,7 +411,7 @@ export default function FoldedCustomisableCard({
   const handleFinishEditingButton = async () => {
     try {
       setValidationModalData((prevValidationData) => {
-        return {...prevValidationData, isModalOpen: true};
+        return { ...prevValidationData, isModalOpen: true };
       });
     } catch (err) {
       throw err;
@@ -738,7 +738,7 @@ export default function FoldedCustomisableCard({
   const handleCardTitleInputChange = (event) => {
     setCustomCardTitle(event.target.value);
     setValidationModalData((prevValidationData) => {
-      return {...prevValidationData, isUserTyping: true};
+      return { ...prevValidationData, isUserTyping: true };
     });
   };
   const handleCardTitleValidation = async () => {
@@ -773,7 +773,7 @@ export default function FoldedCustomisableCard({
         <Modal
           cancelLink={() => {
             if (!isLoading) {
-              setErrorResponse({message: '', status: false});
+              setErrorResponse({ message: '', status: false });
               setValidationModalData({
                 isModalOpen: false,
                 isNameValidated: false,
@@ -798,11 +798,10 @@ export default function FoldedCustomisableCard({
             <div className="flex lg:flex-row flex-col justify-between gap-2 mt-3">
               <div className="relative flex-1">
                 <input
-                  className={`min-w-[190px] w-full h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1 focus:ring-0 ${
-                    validationModalData.isNameValidated
-                      ? 'border-emerald-600 focus:border-emerald-600'
-                      : 'focus:border-red-400'
-                  } ${errorResponse.status ? 'border-red-400' : ''}`}
+                  className={`min-w-[190px] w-full h-[42px] rounded border-[#aaa] border-solid border-2 outline-none focus:outline-none flex-1 focus:ring-0 ${validationModalData.isNameValidated
+                    ? 'border-emerald-600 focus:border-emerald-600'
+                    : 'focus:border-red-400'
+                    } ${errorResponse.status ? 'border-red-400' : ''}`}
                   type="text"
                   placeholder="Card Name"
                   onChange={(e) => handleCardTitleInputChange(e)}
@@ -824,30 +823,35 @@ export default function FoldedCustomisableCard({
                           width="20"
                           height="20"
                           fill="currentColor"
-                          className="mr-2 animate-spin"
+                          className="mr-2 animate-spin min-w-[100px]"
                           viewBox="0 0 1792 1792"
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                         </svg>
-                        <span className="whitespace-nowrap">{loadingText}</span>
+                        <span className="whitespace-nowrap hidden md:block">{loadingText}</span>
                       </div>
                     )}
                   </button>
                 )}
               </div>
+              <div className='block md:hidden'>
+              {isLoading && (
+                <span className="whitespace-nowrap ">{loadingText}</span>
+              )}
+
+              </div>
               <button
-                className={`${
-                  !validationModalData.isNameValidated
-                    ? 'cursor-not-allowed'
-                    : ''
-                } bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
+                className={`${!validationModalData.isNameValidated
+                  ? 'cursor-not-allowed'
+                  : ''
+                  } bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
                 disabled={!validationModalData.isNameValidated}
                 type="button"
                 onClick={handleCustomCardSaveButton}
               >
                 {isLoading &&
-                validationModalData.isNameValidated  ? (
+                  validationModalData.isNameValidated ? (
                   <div className="flex gap-[4px] items-center">
                     <svg
                       width="20"
@@ -873,7 +877,7 @@ export default function FoldedCustomisableCard({
         <Modal
           cancelLink={() =>
             setQr((prevQrValues) => {
-              return {...prevQrValues, isInputModalOpened: false};
+              return { ...prevQrValues, isInputModalOpened: false };
             })
           }
         >
@@ -892,9 +896,8 @@ export default function FoldedCustomisableCard({
                 )}
               </div>
               <input
-                className={`${
-                  qr.isEnteredTextInvalid && 'border-red-500 '
-                } w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none`}
+                className={`${qr.isEnteredTextInvalid && 'border-red-500 '
+                  } w-full mt-1 border-black border-solid border-2 outline-none focus:outline-none`}
                 type="text"
                 required
                 onChange={(e) =>
@@ -923,7 +926,7 @@ export default function FoldedCustomisableCard({
         <Modal
           cancelLink={() =>
             setQr((prevQrValues) => {
-              return {...prevQrValues, isConfirmationModalOpened: false};
+              return { ...prevQrValues, isConfirmationModalOpened: false };
             })
           }
         >
@@ -976,11 +979,11 @@ export default function FoldedCustomisableCard({
           </div>
         </Modal>
       )}
-      <div className="relative md:mt-3" style={{marginTop: '-2rem'}}>
+      <div className="relative md:mt-3" style={{ marginTop: '-2rem' }}>
         <div className="min-h-[553px] flex justify-center items-center flex-wrap lg:gap-0 gap-5 lg:flex-row flex-col">
           <div
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%]"
-            style={{minHeight: '564px'}}
+            style={{ minHeight: '564px' }}
           >
             <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[85px] mt-[4rem]">
               Custom Folded {selectedCardPage}
@@ -1021,20 +1024,20 @@ export default function FoldedCustomisableCard({
                       >
                         {(frontImageDetails.imageBlobUrl ||
                           frontImageDetails.blackAndWhiteImageBlobUrl) && (
-                          <img
-                            src={
-                              frontImageDetails.isColoredImage
-                                ? frontImageDetails.imageBlobUrl
-                                : frontImageDetails.blackAndWhiteImageBlobUrl
-                            }
-                            alt="Selected front card image file"
-                            className="object-contain h-full"
-                            draggable="false"
-                            style={{
-                              transform: `scale(${frontImageDetails.zoom})`,
-                            }}
-                          />
-                        )}
+                            <img
+                              src={
+                                frontImageDetails.isColoredImage
+                                  ? frontImageDetails.imageBlobUrl
+                                  : frontImageDetails.blackAndWhiteImageBlobUrl
+                              }
+                              alt="Selected front card image file"
+                              className="object-contain h-full"
+                              draggable="false"
+                              style={{
+                                transform: `scale(${frontImageDetails.zoom})`,
+                              }}
+                            />
+                          )}
                       </div>
                     </>
                   )) ||
@@ -1086,20 +1089,20 @@ export default function FoldedCustomisableCard({
                         >
                           {(backImageDetails.imageBlobUrl ||
                             backImageDetails.blackAndWhiteImageBlobUrl) && (
-                            <img
-                              src={
-                                backImageDetails.isColoredImage
-                                  ? backImageDetails.imageBlobUrl
-                                  : backImageDetails.blackAndWhiteImageBlobUrl
-                              }
-                              alt="Selected back card image file"
-                              className="object-contain h-full"
-                              draggable="false"
-                              style={{
-                                transform: `scale(${backImageDetails.zoom})`,
-                              }}
-                            />
-                          )}
+                              <img
+                                src={
+                                  backImageDetails.isColoredImage
+                                    ? backImageDetails.imageBlobUrl
+                                    : backImageDetails.blackAndWhiteImageBlobUrl
+                                }
+                                alt="Selected back card image file"
+                                className="object-contain h-full"
+                                draggable="false"
+                                style={{
+                                  transform: `scale(${backImageDetails.zoom})`,
+                                }}
+                              />
+                            )}
                         </div>
                       </>
                     ))}
@@ -1108,33 +1111,30 @@ export default function FoldedCustomisableCard({
               <div className="flex gap-4 w-full mt-3">
                 <button
                   value="Card Front"
-                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${
-                    selectedCardPage === 'Card Front'
-                      ? 'button-blue'
-                      : 'button-tomato'
-                  }`}
+                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${selectedCardPage === 'Card Front'
+                    ? 'button-blue'
+                    : 'button-tomato'
+                    }`}
                   onClick={handleCardPageSelectionButton}
                 >
                   Card Front
                 </button>
                 <button
                   value="Card Inside"
-                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${
-                    selectedCardPage === 'Card Inside'
-                      ? 'button-blue'
-                      : 'button-tomato'
-                  }`}
+                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${selectedCardPage === 'Card Inside'
+                    ? 'button-blue'
+                    : 'button-tomato'
+                    }`}
                   onClick={handleCardPageSelectionButton}
                 >
                   Card Inside
                 </button>
                 <button
                   value="Card Back"
-                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${
-                    selectedCardPage === 'Card Back'
-                      ? 'button-blue'
-                      : 'button-tomato'
-                  }`}
+                  className={`flex-1 p-[10px] text-white font-normal sm:text-[18px] text-[16px] ${selectedCardPage === 'Card Back'
+                    ? 'button-blue'
+                    : 'button-tomato'
+                    }`}
                   onClick={handleCardPageSelectionButton}
                 >
                   Card Back
@@ -1144,9 +1144,8 @@ export default function FoldedCustomisableCard({
           </div>
           <div className="flex flex-col justify-center items-start gap-8 flex-1 lg:mt-[12rem] mt-[10px] lg:mb-auto">
             <div
-              className={` ${
-                qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
-              } w-[200px] cursor-pointer border border-solid  border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5`}
+              className={` ${qr.isQrAdded ? 'bg-[#ef6e6e] ' : 'bg-[#1b5299]'
+                } w-[200px] cursor-pointer border border-solid  border-black rounded p-1.5 flex items-center justify-start gap-2 text-white flex-wrap mb-5`}
               onClick={handleQrSelectionButton}
             >
               <div>

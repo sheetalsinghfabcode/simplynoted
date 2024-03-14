@@ -336,14 +336,14 @@ if (index !== -1) {
               onClickFunction={() =>locationRef.pathname !== '/collections/customisable-cards'? customisedCard():''}
             />
           </div>
-          <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center items-center selectArrow sm:mt-[0px] md:mt-[15px] mt-[0px] ">
-            <h2 className="md:text-[24px] text-[18px] text-[#001a5f]">
+          <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center md:mb-[0px] mb-[17px] items-center selectArrow sm:mt-[0px] md:mt-[0px] mt-[-17px] ">
+            <h2 className="md:text-[24px] whitespace-nowrap text-[18px] text-[#001a5f]">
               Choose a card from our collection:
             </h2>
             <select
               name=""
               id=""
-              className="!border-none md:w-[244px] w-[270px] capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
+              className="!border-none w-full capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
               <option className="w-full " selected disabled>

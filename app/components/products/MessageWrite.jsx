@@ -46,7 +46,7 @@ export function MessageWriting({
   setCustomFontName,
   editCustomFontFamily,
   editShippingDate,
-  showBulkOnEdit
+  showBulkOnEdit,
 }) {
   const {
     setAddressForm,
@@ -92,6 +92,7 @@ export function MessageWriting({
   const [loadTempData, setloadTempData] = useState([]);
   const [bulkFileCount, setBulkFileCount] = useState(0);
   const [errorTemplate, setErrorTemplate] = useState(false);
+  const [errorMessage,setErrorMessage] = useState(false)
   const [onDelTemp, setOnDelTemp] = useState(false);
   const [lineHeight, setLineHeight] = useState(
     editLineHeight ? editLineHeight : '',
@@ -171,7 +172,6 @@ export function MessageWriting({
   function closeSelectAddressModal() {
     setModalForAddressBook(false);
   }
-
 
   function onCancelCSVUpload() {
     setDragAndDropBorderColor('#525252');
@@ -329,7 +329,6 @@ export function MessageWriting({
     setBulkFileCount(fileData.length);
   }
 
-
   function AfterUpload() {
     if (selectedFile) {
       setShowBox(false);
@@ -357,7 +356,7 @@ export function MessageWriting({
             </>
           ) : (
             <button
-              className="bg-[#ef6e6e] text-[#fff] p-2 font-roboto text-base font-bold w-full"
+              className="bg-[#ef6e6e] text-[#fff] max-w-[286.14px] mx-auto p-2 font-roboto text-base font-bold w-full"
               onClick={() => uploadCsvFile()}
             >
               Upload
@@ -501,8 +500,11 @@ export function MessageWriting({
   }, [name2, fontFamilyName]);
 
   async function onChnageNameVal(nameData) {
-    setErrorTemplate('')
+    setErrorTemplate('');
     setName(nameData);
+    if(fontFamilyName === null || fontFamilyName === undefined){
+    setFontFamily('tarzan')
+    }
     // processInput();
   }
 
@@ -901,9 +903,7 @@ export function MessageWriting({
         : '',
     );
     setTempVal(ref4.current?.value);
-  }, []);
-
-
+  }, [showSignScreen, customerId, customerid]);
 
   async function firstNameBtn(data) {
     if (remainingWord > data.length) {
@@ -936,7 +936,6 @@ export function MessageWriting({
   }, [addresses]);
 
   async function addNewTemplateFunc() {
-
     try {
       const formData = new FormData();
       formData.append('templateName', ref4.current?.value);
@@ -950,20 +949,25 @@ export function MessageWriting({
         setShowLoader(true);
 
         const res = await fetch(
-          `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+          `https://testapi.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
           {
             method: 'POST',
             body: formData,
           },
         );
         const json = await res.json();
-        if (json) {
+        if (!json.result.message) {
           setTimeout(() => {
             setAddNewTem(false);
 
             setLoaderMessage(null);
             setShowLoader(false);
           }, 2000);
+        }
+        else {
+          setLoaderMessage(null);
+          setShowLoader(false);
+          setErrorMessage(json.result.message)
         }
       }
     } catch (error) {
@@ -983,6 +987,7 @@ export function MessageWriting({
             <input
               type="text"
               ref={ref4}
+              onChange={()=>setErrorMessage('')}
               value={tempVal}
               className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
             />
@@ -990,6 +995,12 @@ export function MessageWriting({
           {errorTemplate && (
             <span className="text-red-500 font-karla">
               Please check that the value is not empty
+            </span>
+          )}
+          {errorMessage && (
+            <span className="text-red-500 font-karla">
+              
+              {errorMessage}
             </span>
           )}
           <div className="mt-2">
@@ -1016,7 +1027,7 @@ export function MessageWriting({
   async function SavedTemp() {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+        `https://testapi.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
       );
       const json = await res.json();
       setloadTempData(json.result);
@@ -1062,33 +1073,45 @@ export function MessageWriting({
             <span className="font-bold text-[15px]">Template Name</span>
             <span className="font-bold text-[15px]">Actions</span>
           </div>
-          {loadTempData &&
-            filteredList(loadTempData, searchData).map((item, index) => (
-              <div className="" key={index}>
-                {showLoader ? (
-                  <CircularLoader title={loaderMessage} color="#ef6e6e" />
-                ) : (
-                  <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
-                    <div className="w-full font-font-semibold  text-[14px]">
-                      {item.templateName}
-                    </div>
-                    <div className="w-full flex items-center gap-[11px] justify-end">
-                      <img
-                        src={TickImg}
-                        className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
-                        onClick={() => setLoadedTemVal(item.customMessage)}
-                      />
-                      <img
-                        src={Del}
-                        className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
-                        onClick={() => onConfirmDeleteTemplate(item._id)}
-                      />
+          {showLoader ? (
+            <CircularLoader title={loaderMessage} color="#ef6e6e" />
+          ) : (
+            <>
+              {loadTempData && loadTempData.length > 0 ? (
+                filteredList(loadTempData, searchData).map((item, index) => (
+                  <div className="" key={index}>
+                    <div className="border border-black-600 mt-[12px] lg:h-[50px] h-[40px] mb-[12px] px-[10px] items-center w-full flex">
+                      <div className="w-full font-font-semibold  text-[14px]">
+                        {item.templateName}
+                      </div>
+                      <div className="w-full flex items-center gap-[11px] justify-end">
+                        <img
+                          src={TickImg}
+                          className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
+                          onClick={() => setLoadedTemVal(item.customMessage)}
+                        />
+                        <img
+                          src={Del}
+                          className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
+                          onClick={() => onConfirmDeleteTemplate(item._id)}
+                        />
+                      </div>
                     </div>
                   </div>
-                )}
-              </div>
-            ))}
-          <div></div>
+                ))
+              ) : (
+                <div className="text-center font-bold mt-4 text-[#001a5f] text-[15px]">
+                  {' '}
+                  No Saved Templates Yet!{' '}
+                </div>
+              )}
+            </>
+          )}
+
+                
+
+
+       
         </div>
       </>
     );
@@ -1115,7 +1138,7 @@ export function MessageWriting({
       const formData = new FormData();
       formData.append('templateId', val);
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
+        `https://testapi.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
         {
           method: 'POST',
           body: formData,
@@ -1166,7 +1189,7 @@ export function MessageWriting({
   }
   function OpenAddressBookModal() {
     if (!customerid) {
-      setLoginModal(true);
+      setShowSignScreen(true);
     } else {
       setModalForAddressBook(true);
     }
@@ -1222,10 +1245,11 @@ export function MessageWriting({
     }
   }
 
+
+
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
-       
         <div
           className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
             show
@@ -1245,10 +1269,11 @@ export function MessageWriting({
                 <span className=""> Standard Handwriting Style</span>
                 <select
                   id="font"
-                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+                  className="h-[40px] highlight-none cursor-pointer font-bold  text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]" 
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
+                
                 >
                   <option
                     value={standardFontVal}
@@ -1261,7 +1286,7 @@ export function MessageWriting({
                       ? editFontFamily
                       : 'Tarzan'}
                   </option>
-                  {editFontFamily && editFontFamily !== 'tarzan' && (
+                  {editFontFamily && editFontFamily !== 'Tarzan' && (
                     <option value="Tarzan" className={`font-tarzan`}>
                       Tarzan
                     </option>
@@ -1496,16 +1521,18 @@ export function MessageWriting({
             </div>
             {!customFonts && (
               <div className="mb-[24px]  font-inter text-xs">
-                <span className="text-[#001A5F] font-medium">
-                  Contact Us &nbsp;
-                </span>
                 <a
                   href="https://meetings.hubspot.com/rick24"
                   target="_self"
                   className="text-[#737373]"
                 >
-                  to find out how to add your own custom handwriting fonts.
+                  <span className="text-[#001A5F] font-medium">
+                    Contact Us &nbsp;
+                  </span>
                 </a>
+                <span>
+                  to find out how to add your own custom handwriting fonts.
+                </span>
               </div>
             )}
             <textarea
@@ -1651,7 +1678,7 @@ export function MessageWriting({
         >
           <div
             id="outer"
-            className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+            className="outerr shadow-outer-custom h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
           >
             {metafields &&
               metafields.isHeaderIncluded &&
@@ -1788,7 +1815,6 @@ export function MessageWriting({
                     }}
                   >
                     <div className="sm:w-full md:w-[50%] flex flex-col gap-3 justify-center items-center">
-                    
                       <>
                         <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
                           <FiUploadCloud />
@@ -1814,7 +1840,7 @@ export function MessageWriting({
                           </span>
                         </div>
                         {bulkUploadDiv && !showNextBtn ? (
-                          <div className="mt-3">
+                          <div className="mt-3 capitalize">
                             <label className="cursor-pointer text-[18px] font-semibold">
                               Click to upload or drag and drop
                               <input
@@ -1834,17 +1860,17 @@ export function MessageWriting({
                             href="https://api.simplynoted.com/docs/bulk-template"
                             className="underline  text-[14px] font-normal text-[#1B5299]"
                           >
-                            Download the Bulk Order Template
+                            Download The Bulk Order Template
                           </a>
                         </>
                         <p
                           onClick={openModal}
                           className="underline underline-offset-1 cursor-pointer text-[14px] text-[#1B5299] font-normal hover:text-blue-600"
                         >
-                          View bulk upload instructions
+                          View Bulk Upload Instructions
                         </p>
                         {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                        <div className="bg-[#E5E5E5] p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                        <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
                           <input
                             type="checkbox"
                             className=" border-[1px] border-[#E5E5E5] outline-none border-none"
@@ -1881,7 +1907,10 @@ export function MessageWriting({
                   >
                     <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
-                        <CircularLoader title="Uploding Addresses..." color="#ef6e6e" />
+                        <CircularLoader
+                          title="Uploding Addresses..."
+                          color="#ef6e6e"
+                        />
                       ) : (
                         <>
                           <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
@@ -1930,17 +1959,17 @@ export function MessageWriting({
                               href="https://api.simplynoted.com/docs/bulk-template"
                               className="underline  text-[14px] font-normal text-[#1B5299]"
                             >
-                              Download the Bulk Order Template
+                              Download Bulk Order Templates
                             </a>
                           </>
                           <p
                             onClick={openModal}
                             className="underline underline-offset-1 cursor-pointer text-[14px] text-[#1B5299] font-normal hover:text-blue-600"
                           >
-                            View bulk upload instructions
+                            View Bulk Upload Instructions
                           </p>
                           {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                          <div className="bg-[#E5E5E5] p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                          <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
                             <input
                               type="checkbox"
                               className=" border-[1px] border-[#E5E5E5] outline-none border-none"
@@ -1991,9 +2020,9 @@ export function MessageWriting({
                     />
                   )}
                   {bulkFileCount && bulkFileCount > 0 ? (
-                    <span className="text-[#737373] font-inter text-sm font-medium mt-[12px] text-center">
+                    <span className="text-[#737373] capitalize font-inter text-sm font-medium mt-[12px] text-center">
                       {' '}
-                      Number of addresses selected: { bulkFileCount}
+                      Number of addresses selected: {bulkFileCount}
                     </span>
                   ) : (
                     ''
@@ -2041,7 +2070,10 @@ export function MessageWriting({
               <div>
                 {aiTextLoader ? (
                   <div className="h-[300px] flex justify-center items-center mt-[12px] border-dashed border border-[#999999]">
-                    <CircularLoader title="Generating AI Text" color="#ef6e6e" />
+                    <CircularLoader
+                      title="Generating AI Text"
+                      color="#ef6e6e"
+                    />
                   </div>
                 ) : (
                   <textarea
@@ -2149,6 +2181,8 @@ export function MessageWriting({
           'Upload your completed file in .csv format',
         ]}
         table={true}
+        subtitle={true}
+        instructionsTitle={true}
       />
       {addNewTem && (
         <ModalComp

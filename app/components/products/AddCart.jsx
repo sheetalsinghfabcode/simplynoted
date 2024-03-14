@@ -1,16 +1,16 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {useNavigate} from '@remix-run/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from '@remix-run/react';
 import DynamicButton from '../DynamicButton';
-import {useStateContext} from '~/context/StateContext';
+import { useStateContext } from '~/context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import Loader from '../modal/Loader';
-import {Modal} from '../Modal';
+import { Modal } from '../Modal';
 import location from '../../../location.json';
 import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
-import {getApi, postApi} from '~/utils/ApiService';
-import {API_PATH} from '~/utils/Path';
-import {BsJustify} from 'react-icons/bs';
+import { getApi, postApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
+import { BsJustify } from 'react-icons/bs';
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -36,6 +36,7 @@ export function AddCart({
     setIsCartUpdated,
     custometId,
   } = useStateContext();
+
   const [returnAddress, setReturnAddress] = useState([]);
   const [recipientAddress, setRecipientAddress] = useState([]);
   const [selectedItem, setSelectedItem] = useState(
@@ -119,7 +120,7 @@ export function AddCart({
   const [selectedBoxCheck2, setSelectedBoxCheck2] = useState(false);
   const [purchaseType, setPurchaseType] = useState('');
   const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
-  
+
   useEffect(() => {
     setIsInitialRender(false);
     const selectedOrder = localStorage.getItem('selectedOrderPurchaseQuantity');
@@ -129,36 +130,36 @@ export function AddCart({
     const cartDataReq = JSON.parse(localStorage.getItem('reqFielddInCart'));
 
     const fetchData = async () => {
-        if (selectedOrder === 'Single Card') {
-            setVariantID(productData?.id?.match(/\d+/g).join(''));
-            setFinalPrice(
-                (
-                    productData?.price?.amount -
-                    (productData?.price?.amount * discountedCount) / 100
-                ).toFixed(2),
+      if (selectedOrder === 'Single Card') {
+        setVariantID(productData?.id?.match(/\d+/g).join(''));
+        setFinalPrice(
+          (
+            productData?.price?.amount -
+            (productData?.price?.amount * discountedCount) / 100
+          ).toFixed(2),
+        );
+      } else {
+        const targetValue = cartDataReq?.csvFileLen;
+        if (variantsVal?.variants?.nodes.length) {
+          try {
+            const matchedVariant = await findMatchingVariant(
+              variantsVal?.variants?.nodes,
+              targetValue,
+              discountedCount,
             );
-        } else {
-            const targetValue = cartDataReq?.csvFileLen;
-            if (variantsVal?.variants?.nodes.length) {
-                try {
-                    const matchedVariant = await findMatchingVariant(
-                        variantsVal?.variants?.nodes,
-                        targetValue,
-                        discountedCount,
-                    );
-                    if (matchedVariant) {
-                        setVariantID(matchedVariant.replace(/[^0-9]/g, ''));
-                        setUpdatedPrice(finalPrice);
-                    }
-                } catch (error) {
-                    console.error("Error while fetching data:", error);
-                }
+            if (matchedVariant) {
+              setVariantID(matchedVariant.replace(/[^0-9]/g, ''));
+              setUpdatedPrice(finalPrice);
             }
+          } catch (error) {
+            console.error('Error while fetching data:', error);
+          }
         }
+      }
     };
 
     fetchData();
-}, []);
+  }, []);
 
   const findMatchingVariant = async (variants, targetValue, discount) => {
     let matchedVariant = null;
@@ -192,7 +193,7 @@ export function AddCart({
   };
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -341,7 +342,7 @@ export function AddCart({
     setMesgtext(cartDataReq?.msg);
     getRecipient();
     getReturn();
-  }, [addressForm, showLoader]);
+  }, [addressForm, showLoader, buttonTextChange]);
   useEffect(() => {
     if (!isInitialRender) {
       onClickAddCart();
@@ -390,59 +391,16 @@ export function AddCart({
     custom_pdf: metafields ? metafields.pdfURL : null,
   };
 
-
-
-  let keyUpdate1 = 'messageData';
-  let keyUpdate2 = 'reciverAddress';
-  let keyUpdate3 = 'senderAddress';
-  let keyUpdate4 = 'giftCardImg';
-  let keyUpdate5 = 'giftCardName';
-  let keyUpdate6 = 'giftCardPrice';
-  let keyUpdate7 = 'endText';
-  let keyUpdate8 = 'locationForShipMethod';
-  let keyUpdate9 = 'shippingData';
-  let keyUpdate10 = 'shippingDataCost';
-  let keyUpdate11 = 'fontFamily';
-  let keyUpdate12 = 'giftCardPriceTitle';
-  let keyUpdate13 = 'fontSizeMsg';
-  let keyUpdate14 = 'customFontName';
-  let keyUpdate15 = 'lineHeight';
-  let keyUpdate16 = 'signOffLineHeight';
-  let keyUpdate17 = 'signOffFontSize';
-  let keyUpdate18 = 'csvFileLen';
-  let keyUpdate19 = 'csvBulkData';
-  let keyUpdate20 = 'csvFileURL';
-  let keyUpdate21 = 'usCount';
-  let keyUpdate22 = 'nonUSCount';
-  let keyUpdate23 = 'shippingMethodImage';
-  let keyUpdate24 = 'isShippidata';
-  let keyUpdate25 = 'giftCardId';
-  let keyUpdate26 = 'giftCardProdUrl';
-  let keyUpdate27 = 'shippingMethodProdUrl';
-  let keyUpdate28 = 'optionalShipDate';
-  let keyUpdate29 = 'price';
-  let keyUpdate30 = 'variant_id';
-
-  async function fetchExistingData() {
-    try {
-      const response = await fetch(
-        'https://testapi.simplynoted.com/api/storefront/cart-items?customerId=6406284116073',
-      );
-      if (response.ok) {
-        return await response.json();
-      } else {
-        throw new Error('Failed to fetch existing data');
-      }
-    } catch (error) {
-      console.error('Error fetching existing data:', error);
-      throw error; // Rethrow the error for the caller to handle
-    }
-  }
-
   async function onClickAddCart() {
-    setButtonTextChange(true)
+
+    if (selectedItem2 === null || (selectedItem === null && !show)) {
+      setCheckSelAddress(true);
+      return;
+    }
+    setButtonTextChange(true);
 
     try {
+      setLoader(false);
       // Construct new cart item
       const newCartItem = {
         productTitle: productData?.product?.title
@@ -461,7 +419,7 @@ export function AddCart({
         giftCardPriceTitle:
           cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
         giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
-        messageData: MsgText,
+        messageData: cartDataReq.msg ? cartDataReq.msg : MsgText,
         fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
@@ -491,8 +449,16 @@ export function AddCart({
         custom_pdf: metafields ? metafields.pdfURL : null,
       };
 
-      // Combine existing data with new data from the cartData array
-      const storedData = [...cartData, newCartItem];
+      const storedData = editOrderValue
+        ? cartData.map(item => {
+          if (item.productId === newCartItem.productId) {
+            return newCartItem;
+          } else {
+            return item;
+          }
+        })
+        : [...cartData, newCartItem];
+
 
       // Define the API URL
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
@@ -512,12 +478,13 @@ export function AddCart({
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
-          setIsCartUpdated(true)
-          setCartCountVal(storedData.length)
+          setLoader(false);
+          setIsCartUpdated(true);
+          setCartCountVal(storedData.length);
+          navigate('/cart');
           setTimeout(() => {
-            navigate('/cart');
-          }, 300);
-          setButtonTextChange(false)
+            setButtonTextChange(false);
+          }, [300]);
         }
         // Proceed with any further actions upon successful update
       } else {
@@ -527,8 +494,6 @@ export function AddCart({
       console.error('Error:', error);
       // Handle error
     }
-
-    setLoader(false);
   }
 
   function closeSelAddressModal() {
@@ -592,11 +557,11 @@ export function AddCart({
         setApiVariantID(json.result.product.variants[0].id);
         setLoader(false);
       }
-    } catch (error) {}
+    } catch (error) { }
   }
   return (
     <div className="relative global-max-width-handler">
-      {loader && !addressForm && (
+      {loader && !addressForm  && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader textColor="text-white" title="Loading Address.." />
         </div>
@@ -614,9 +579,8 @@ export function AddCart({
         )}
         {!addressForm && (
           <div
-            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
-              loader ? 'opacity-40' : ''
-            }`}
+            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${loader ? 'opacity-40' : ''
+              }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
               <div className="col-6 md:w-[49%] w-full rounded h-fit shadow-outer-custom ">
@@ -666,7 +630,6 @@ export function AddCart({
                       ),
                     )}
                   </div>
-               
                 </div>
               </div>
               <div className="col-6 md:w-[49%] w-full shadow-outer-custom rounded h-fit">
@@ -718,7 +681,7 @@ export function AddCart({
                                   !selectedBoxCheck
                                 }
                                 onChange={() => handleCheckboxChange(item)}
-                                // ref={refRec}
+                              // ref={refRec}
                               />
 
                               <span className="font-karla ml-4">
@@ -731,14 +694,12 @@ export function AddCart({
                       </>
                     )}
                   </div>
-               
                 </div>
               </div>
             </div>
             <div
-              className={`row flex   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${
-                show ? 'justify-end' : 'justify-start'
-              }`}
+              className={`row flex  md:flex-row flex-col   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${show ? 'justify-end' : 'justify-start'
+                }`}
             >
               {show && (
                 <div className="col-6 md:w-[49%] w-full  shadow-outer-custom rounded">
@@ -780,7 +741,6 @@ export function AddCart({
                         </div>
                       ))}
                     </div>
-              
                   </div>
                 </div>
               )}
@@ -853,11 +813,10 @@ export function AddCart({
                       <input
                         type="checkbox"
                         id=""
-                        className={`${
-                          cardPriceTitle
+                        className={`${cardPriceTitle
                             ? 'cursor-pointer'
                             : 'cursor-not-allowed'
-                        }`}
+                          }`}
                         name=""
                         value=""
                         onChange={() => setStateCheckCart(!stateCheckCart)}
@@ -869,7 +828,6 @@ export function AddCart({
                     </div>
                   </div>
                 </div>
-         
               </div>
             </div>
 
@@ -880,17 +838,16 @@ export function AddCart({
                 editOrderValue?.data?.isShippidata &&
                 editOrderValue?.data?.locationForShipMethod.firstName &&
                 editOrderValue?.node?.price?.amount !== '0.0')) && (
-              <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
-                {formData?.firstName}, {formData?.lastName},{formData?.address1}
-                , {formData?.city}, {formData?.state},{formData?.country}
-              </div>
-            )}
+                <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
+                  {formData?.firstName}, {formData?.lastName},{formData?.address1}
+                  , {formData?.city}, {formData?.state},{formData?.country}
+                </div>
+              )}
             <div
-              className={`row flex mt-4 w-full ${
-                selectShipMode && selectShipMode.node.price.amount !== '0.0'
+              className={`row flex mt-4 w-full ${selectShipMode && selectShipMode.node.price.amount !== '0.0'
                   ? 'justify-between'
                   : ''
-              } font-normal text-[14px]`}
+                } font-normal text-[14px]`}
             >
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
@@ -1071,9 +1028,8 @@ export function AddCart({
                       onChange={(e) => handleChange(e)}
                       value={formData.state}
                       name="state"
-                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${
-                        errors.state ? 'border-red-500' : ''
-                      }`}
+                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${errors.state ? 'border-red-500' : ''
+                        }`}
                       id="state"
                     >
                       <option value="">Select a state</option>

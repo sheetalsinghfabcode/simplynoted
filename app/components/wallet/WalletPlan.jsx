@@ -52,6 +52,7 @@ const WalletPlans = ({
   }, [stripeCollection]);
 
 
+
   return (
     <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
       <div className="flex flex-col md:flex-row overflow-auto">
@@ -93,6 +94,7 @@ const WalletPlans = ({
                         product.node.title.toLowerCase() !==
                           stripeCollection.stripe?.subscription,
                     );
+
 
                     return (
                       <div
@@ -156,7 +158,7 @@ const WalletPlans = ({
                             <span className="text-[14px] font-medium">
                               $
                               {formatNumberWithCommas(
-                                Number(variant.node.price.amount),
+                                Number(variant.node.price.amount)
                               )}
                             </span>
                           )}
