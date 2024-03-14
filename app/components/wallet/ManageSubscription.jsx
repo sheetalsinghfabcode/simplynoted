@@ -660,7 +660,7 @@ const ManageSubscription = () => {
                                 </span>
                               </div>
                             ) : (
-                              <div className="lg:flex grid justify-between items-left  md:gap-[15px] gap-[36px] py-[10px]">
+                              <div className="lg:flex grid justify-between items-left  md:gap-[15px] gap-[10px] py-[10px]">
                                 <span className="md:text-[14px] sm:text-[14px] text-left text-[12px] text-[#001a5f] font-semibold uppercase">
                                   SUBSCRIPTION CANCELLATION DATE
                                 </span>

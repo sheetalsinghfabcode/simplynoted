@@ -1,16 +1,16 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {useNavigate} from '@remix-run/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from '@remix-run/react';
 import DynamicButton from '../DynamicButton';
-import {useStateContext} from '~/context/StateContext';
+import { useStateContext } from '~/context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import Loader from '../modal/Loader';
-import {Modal} from '../Modal';
+import { Modal } from '../Modal';
 import location from '../../../location.json';
 import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
-import {getApi, postApi} from '~/utils/ApiService';
-import {API_PATH} from '~/utils/Path';
-import {BsJustify} from 'react-icons/bs';
+import { getApi, postApi } from '~/utils/ApiService';
+import { API_PATH } from '~/utils/Path';
+import { BsJustify } from 'react-icons/bs';
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -193,7 +193,7 @@ export function AddCart({
   };
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -392,7 +392,7 @@ export function AddCart({
   };
 
   async function onClickAddCart() {
-    
+
     if (selectedItem2 === null || (selectedItem === null && !show)) {
       setCheckSelAddress(true);
       return;
@@ -450,15 +450,15 @@ export function AddCart({
       };
 
       const storedData = editOrderValue
-      ? cartData.map(item => {
+        ? cartData.map(item => {
           if (item.productId === newCartItem.productId) {
             return newCartItem;
           } else {
             return item;
           }
         })
-      : [...cartData, newCartItem];
-    
+        : [...cartData, newCartItem];
+
 
       // Define the API URL
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
@@ -557,7 +557,7 @@ export function AddCart({
         setApiVariantID(json.result.product.variants[0].id);
         setLoader(false);
       }
-    } catch (error) {}
+    } catch (error) { }
   }
   return (
     <div className="relative global-max-width-handler">
@@ -579,9 +579,8 @@ export function AddCart({
         )}
         {!addressForm && (
           <div
-            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
-              loader ? 'opacity-40' : ''
-            }`}
+            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${loader ? 'opacity-40' : ''
+              }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
               <div className="col-6 md:w-[49%] w-full rounded h-fit shadow-outer-custom ">
@@ -682,7 +681,7 @@ export function AddCart({
                                   !selectedBoxCheck
                                 }
                                 onChange={() => handleCheckboxChange(item)}
-                                // ref={refRec}
+                              // ref={refRec}
                               />
 
                               <span className="font-karla ml-4">
@@ -699,9 +698,8 @@ export function AddCart({
               </div>
             </div>
             <div
-              className={`row flex   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${
-                show ? 'justify-end' : 'justify-start'
-              }`}
+              className={`row flex  md:flex-row flex-col   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${show ? 'justify-end' : 'justify-start'
+                }`}
             >
               {show && (
                 <div className="col-6 md:w-[49%] w-full  shadow-outer-custom rounded">
@@ -815,11 +813,10 @@ export function AddCart({
                       <input
                         type="checkbox"
                         id=""
-                        className={`${
-                          cardPriceTitle
+                        className={`${cardPriceTitle
                             ? 'cursor-pointer'
                             : 'cursor-not-allowed'
-                        }`}
+                          }`}
                         name=""
                         value=""
                         onChange={() => setStateCheckCart(!stateCheckCart)}
@@ -841,17 +838,16 @@ export function AddCart({
                 editOrderValue?.data?.isShippidata &&
                 editOrderValue?.data?.locationForShipMethod.firstName &&
                 editOrderValue?.node?.price?.amount !== '0.0')) && (
-              <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
-                {formData?.firstName}, {formData?.lastName},{formData?.address1}
-                , {formData?.city}, {formData?.state},{formData?.country}
-              </div>
-            )}
+                <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
+                  {formData?.firstName}, {formData?.lastName},{formData?.address1}
+                  , {formData?.city}, {formData?.state},{formData?.country}
+                </div>
+              )}
             <div
-              className={`row flex mt-4 w-full ${
-                selectShipMode && selectShipMode.node.price.amount !== '0.0'
+              className={`row flex mt-4 w-full ${selectShipMode && selectShipMode.node.price.amount !== '0.0'
                   ? 'justify-between'
                   : ''
-              } font-normal text-[14px]`}
+                } font-normal text-[14px]`}
             >
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
@@ -1032,9 +1028,8 @@ export function AddCart({
                       onChange={(e) => handleChange(e)}
                       value={formData.state}
                       name="state"
-                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${
-                        errors.state ? 'border-red-500' : ''
-                      }`}
+                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${errors.state ? 'border-red-500' : ''
+                        }`}
                       id="state"
                     >
                       <option value="">Select a state</option>
