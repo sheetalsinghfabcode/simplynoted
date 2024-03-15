@@ -1,13 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from '@remix-run/react';
-import { FaArrowLeft } from 'react-icons/fa';
-import html2canvas from 'html2canvas';
-import { Modal } from '../Modal';
+import {useState, useEffect, useRef} from 'react';
+import {useNavigate} from '@remix-run/react';
+import {FaArrowLeft} from 'react-icons/fa';
+import domtoimage from 'dom-to-image';
+import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import CustomCheckbox from '../CustomCheckbox';
 import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.png';
-import { MdOutlineDone } from 'react-icons/md';
+import CardBackImage from '../../../assets/Image/foldFront.webp';
+import {MdOutlineDone} from 'react-icons/md';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -23,6 +24,7 @@ export default function FlatCustomisableCard({
   const [frontImageDetails, setFrontImageDetails] = useState({
     isImageSelected: false,
     imageBlobUrl: null,
+    screenShotUrl: null,
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
     zoom: 1,
@@ -133,37 +135,6 @@ export default function FlatCustomisableCard({
     const generateImageFiles = async () => {
       try {
         let imageFile;
-        if (selectedCardPage === 'Card Front') {
-          if (frontImageDetails.isImageSelected) {
-            const selectedBlobUrl = frontImageDetails.isColoredImage
-              ? frontImageDetails.imageBlobUrl
-              : frontImageDetails.blackAndWhiteImageBlobUrl;
-            imageFile = await blobUrlToFileObject(
-              selectedBlobUrl,
-              `${customerId}-flat-front-image`,
-            );
-
-            setFrontImageDetails((prevFrontImageDetails) => {
-              return {
-                ...prevFrontImageDetails,
-                selectedImageFile: imageFile,
-              };
-            });
-          } else {
-            const response = await fetch(DefaultFrontCardImage);
-            const blob = await response.blob();
-            const filename = 'default-screenshot.png';
-            const frontDefaultImageFile = new File([blob], filename, {
-              type: blob.type,
-            });
-            setFrontImageDetails((prevFrontImageDetails) => {
-              return {
-                ...prevFrontImageDetails,
-                selectedImageFile: frontDefaultImageFile,
-              };
-            });
-          }
-        }
 
         if (
           selectedCardPage === 'Card Back' &&
@@ -206,6 +177,7 @@ export default function FlatCustomisableCard({
   }, [
     frontImageDetails.isImageSelected,
     frontImageDetails.isColoredImage,
+    frontImageDetails.imageBlobUrl,
     headerData.isImageSelected,
     footerData.isImageSelected,
   ]);
@@ -316,8 +288,15 @@ export default function FlatCustomisableCard({
     });
   }
 
-  const handleCardPageSelectionButton = (event) => {
+  const handleCardPageSelectionButton = async (event) => {
     event.preventDefault();
+    if (
+      selectedCardPage === 'Card Front' &&
+      frontImageDetails.isImageSelected
+    ) {
+      const trimmedDiv = document.getElementById('frontTrimmedDiv');
+      await generateTrimmedImageScreenshotFile(trimmedDiv);
+    }
     setIsRotationAnimationApplied((prevRotationValue) => !prevRotationValue);
     switch (event.target.value) {
       case 'Card Front':
@@ -640,6 +619,7 @@ export default function FlatCustomisableCard({
 
   const handleFinishEditingButton = async () => {
     try {
+      await generateScreenshotFile();
       setValidationModalData((prevValidationData) => {
         return { ...prevValidationData, isModalOpen: true };
       });
@@ -647,6 +627,152 @@ export default function FlatCustomisableCard({
       throw err;
     }
   };
+
+  async function generateTrimmedImageScreenshotFile(element) {
+    try {
+      const image = element.querySelector('img');
+
+      // Wait for the image to be fully loaded for the timing issue.
+      await new Promise((resolve) => {
+        if (image.complete) {
+          resolve();
+        } else {
+          image.onload = resolve;
+        }
+      });
+
+      const dataUrl = await domtoimage.toPng(element, {
+        width: element.offsetWidth,
+        height: element.offsetHeight,
+        quality: 1,
+      });
+
+      if (selectedCardPage === 'Card Front') {
+        setFrontImageDetails((prevFrontImageDetails) => {
+          return {
+            ...prevFrontImageDetails,
+            screenShotUrl: dataUrl,
+            isImageSelected: true,
+          };
+        });
+      }
+    } catch (error) {
+      console.error('Error generating a screenshot file:', error);
+    }
+  }
+
+  async function generateScreenshotFile() {
+    try {
+      // Image file present, generating screenshot.
+      let imageFile;
+      if (frontImageDetails.isImageSelected) {
+        const selectedBlobUrl = await generateCanvasImage();
+        if (selectedBlobUrl) {
+          imageFile = await blobUrlToFileObject(
+            selectedBlobUrl,
+            `${customerId}-flat-front-image`,
+          );
+          setFrontImageDetails((prevFrontImageDetails) => {
+            return {
+              ...prevFrontImageDetails,
+              selectedImageFile: imageFile,
+            };
+          });
+        }
+      } else {
+        const response = await fetch(DefaultFrontCardImage);
+        const blob = await response.blob();
+        const filename = 'default-screenshot.png';
+        const frontDefaultImageFile = new File([blob], filename, {
+          type: blob.type,
+        });
+        setFrontImageDetails((prevFrontImageDetails) => {
+          return {
+            ...prevFrontImageDetails,
+            selectedImageFile: frontDefaultImageFile,
+          };
+        });
+      }
+    } catch (error) {
+      console.error('Error generating screenshot:', error);
+    }
+  }
+
+  async function generateCanvasImage() {
+    try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const blobUrl = frontImageDetails.screenShotUrl;
+        const image1 = new Image();
+        image1.src = CardBackImage;
+    
+        const image2 = new Image();
+        image2.src = blobUrl;
+    
+        await Promise.all([
+          new Promise((resolve, reject) => {
+            image1.onload = resolve;
+            image1.onerror = reject;
+          }),
+          new Promise((resolve, reject) => {
+            image2.onload = resolve;
+            image2.onerror = reject;
+          }),
+        ]);
+    
+        canvas.width = 400;
+        canvas.height = 280;
+
+        ctx.imageSmoothingEnabled = true;
+    
+        ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+    
+        const fixedWidth = 268; 
+        const fixedHeight = 220; 
+    
+        
+        const offsetX = -6;
+        const offsetY = 4;
+    
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+    
+        const rotationAngle = (3.5 * Math.PI) / 180;
+    
+        ctx.save();
+    
+        ctx.translate(centerX, centerY);
+    
+
+        ctx.rotate(rotationAngle);
+    
+        ctx.drawImage(
+          image2,
+          -fixedWidth / 2 + offsetX,
+          -fixedHeight / 2 + offsetY,
+          fixedWidth,
+          fixedHeight
+        );
+    
+        ctx.restore();
+    
+        const blob = await new Promise((resolve, reject) => {
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error('Failed to generate blob from canvas'));
+            }
+          });
+        });
+    
+        const blobImageUrl = URL.createObjectURL(blob);
+    
+        return blobImageUrl;
+    } catch (error) {
+      console.error('Error generating a screenshot file:', error);
+    }
+  }
 
   async function uploadPdfRequest() {
     try {
@@ -950,6 +1076,7 @@ export default function FlatCustomisableCard({
       };
     });
   };
+
   return (
     <section>
       {/* {isLoading && (
@@ -1459,6 +1586,7 @@ export default function FlatCustomisableCard({
                       </div>
                     )}
                 </div>
+
                 {selectedCardPage === 'Card Back' && (
                   <button
                     type="button"

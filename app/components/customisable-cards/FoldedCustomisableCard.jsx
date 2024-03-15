@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from '@remix-run/react';
-import html2canvas from 'html2canvas';
-import { Modal } from '../Modal';
+import {useEffect, useRef, useState} from 'react';
+import {useNavigate} from '@remix-run/react';
+import domtoimage from 'dom-to-image';
+import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import { FaArrowLeft } from 'react-icons/fa';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
@@ -17,6 +17,7 @@ export default function FoldedCustomisableCard({
   const [isLoading, setIsLoading] = useState(false);
   const [loadingText, setLoadingText] = useState('Checking availability');
   const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
+  const [triggerEvent, setTriggerEvent] = useState(false);
   const [isRotationAnimationApplied, setIsRotationAnimationApplied] =
     useState(false);
   const [validationModalData, setValidationModalData] = useState({
@@ -29,6 +30,7 @@ export default function FoldedCustomisableCard({
   const [frontImageDetails, setFrontImageDetails] = useState({
     isImageSelected: false,
     imageBlobUrl: null,
+    screenShotUrl: null,
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
     zoom: 1,
@@ -38,6 +40,7 @@ export default function FoldedCustomisableCard({
   const [backImageDetails, setBackImageDetails] = useState({
     isImageSelected: false,
     imageBlobUrl: null,
+    screenShotUrl: null,
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
     zoom: 1,
@@ -96,64 +99,77 @@ export default function FoldedCustomisableCard({
   }, [qr.inputText]);
 
   useEffect(() => {
-    const generateImageFiles = async () => {
-      try {
-        let imageFile;
-        if (selectedCardPage === 'Card Front') {
-          if (frontImageDetails.isImageSelected) {
-            const selectedBlobUrl = frontImageDetails.isColoredImage
-              ? frontImageDetails.imageBlobUrl
-              : frontImageDetails.blackAndWhiteImageBlobUrl;
-            imageFile = await blobUrlToFileObject(
-              selectedBlobUrl,
-              `${customerId}-folded-front-image`,
-            );
-
-            setFrontImageDetails((prevFrontImageDetails) => {
-              return {
-                ...prevFrontImageDetails,
-                selectedImageFile: imageFile,
-              };
-            });
-          } else {
-            generateDefaultScreenshotImage(
-              DefaultFrontCardImage,
-              'front-image',
-            );
-          }
-        }
-
-        if (selectedCardPage === 'Card Back') {
-          if (backImageDetails.isImageSelected) {
-            const selectedBlobUrl = backImageDetails.isColoredImage
-              ? backImageDetails.imageBlobUrl
-              : backImageDetails.blackAndWhiteImageBlobUrl;
-            imageFile = await blobUrlToFileObject(
-              selectedBlobUrl,
-              `${customerId}-folded-back-image`,
-            );
-
-            setBackImageDetails((prevBackImageDetails) => {
-              return {
-                ...prevBackImageDetails,
-                selectedImageFile: imageFile,
-              };
-            });
-          } else {
-            generateDefaultScreenshotImage(DefaultBackCardImage, 'back-image');
-          }
-        }
-      } catch (err) {
-        console.error('Failed to generate image files', err);
+    const trimmDiv = async () => {
+      if (
+        selectedCardPage === 'Card Back' &&
+        backImageDetails.isImageSelected
+      ) {
+        const trimmedData = document.getElementById('backTrimmedDiv');
+        await generateTrimmedImageScreenshotFile(trimmedData);
       }
     };
-    generateImageFiles();
-  }, [
-    frontImageDetails.isImageSelected,
-    frontImageDetails.isColoredImage,
-    backImageDetails.isImageSelected,
-    backImageDetails.isColoredImage,
-  ]);
+    trimmDiv();
+  }, [triggerEvent, backImageDetails.isImageSelected, backImageDetails.zoom]);
+
+  // useEffect(() => {
+  //   const generateImageFiles = async () => {
+  //     try {
+  //       let imageFile;
+  //       if (selectedCardPage === 'Card Front') {
+  //         if (frontImageDetails.isImageSelected) {
+  //           const selectedBlobUrl = frontImageDetails.isColoredImage
+  //             ? frontImageDetails.imageBlobUrl
+  //             : frontImageDetails.blackAndWhiteImageBlobUrl;
+  //           imageFile = await blobUrlToFileObject(
+  //             selectedBlobUrl,
+  //             `${customerId}-folded-front-image`,
+  //           );
+
+  //           setFrontImageDetails((prevFrontImageDetails) => {
+  //             return {
+  //               ...prevFrontImageDetails,
+  //               selectedImageFile: imageFile,
+  //             };
+  //           });
+  //         } else {
+  //           generateDefaultScreenshotImage(
+  //             DefaultFrontCardImage,
+  //             'front-image',
+  //           );
+  //         }
+  //       }
+
+  //       if (selectedCardPage === 'Card Back') {
+  //         if (backImageDetails.isImageSelected) {
+  //           const selectedBlobUrl = backImageDetails.isColoredImage
+  //             ? backImageDetails.imageBlobUrl
+  //             : backImageDetails.blackAndWhiteImageBlobUrl;
+  //           imageFile = await blobUrlToFileObject(
+  //             selectedBlobUrl,
+  //             `${customerId}-folded-back-image`,
+  //           );
+
+  //           setBackImageDetails((prevBackImageDetails) => {
+  //             return {
+  //               ...prevBackImageDetails,
+  //               selectedImageFile: imageFile,
+  //             };
+  //           });
+  //         } else {
+  //           generateDefaultScreenshotImage(DefaultBackCardImage, 'back-image');
+  //         }
+  //       }
+  //     } catch (err) {
+  //       console.error('Failed to generate image files', err);
+  //     }
+  //   };
+  //   generateImageFiles();
+  // }, [
+  //   frontImageDetails.isImageSelected,
+  //   frontImageDetails.isColoredImage,
+  //   backImageDetails.isImageSelected,
+  //   backImageDetails.isColoredImage,
+  // ]);
 
   useEffect(() => {
     let timeout;
@@ -410,6 +426,7 @@ export default function FoldedCustomisableCard({
 
   const handleFinishEditingButton = async () => {
     try {
+      await generateScreenshotFile();
       setValidationModalData((prevValidationData) => {
         return { ...prevValidationData, isModalOpen: true };
       });
@@ -445,8 +462,17 @@ export default function FoldedCustomisableCard({
     navigate(`/custom/${handleName}`);
   };
 
-  const handleCardPageSelectionButton = (event) => {
+  const handleCardPageSelectionButton = async (event) => {
     event.preventDefault();
+
+    if (
+      selectedCardPage === 'Card Front' &&
+      frontImageDetails.isImageSelected
+    ) {
+      const trimmedData = document.getElementById('frontTrimmedDiv');
+      await generateTrimmedImageScreenshotFile(trimmedData);
+    }
+
     setIsRotationAnimationApplied((prevRotationValue) => !prevRotationValue);
     switch (event.target.value) {
       case 'Card Front':
@@ -499,6 +525,177 @@ export default function FoldedCustomisableCard({
       });
     }
   };
+
+  async function generateTrimmedImageScreenshotFile(element) {
+    try {
+      const image = element.querySelector('img');
+
+      // Wait for the image to be fully loaded for the timing issue.
+      await new Promise((resolve) => {
+        if (image.complete) {
+          resolve();
+        } else {
+          image.onload = resolve;
+        }
+      });
+
+    
+      const dataUrl = await domtoimage.toPng(element, {
+        width: element.offsetWidth,
+        height: element.offsetHeight,
+        quality: 1,
+      });
+
+      if (selectedCardPage === 'Card Back' && dataUrl) {
+        setBackImageDetails((prevBackImageDetails) => {
+          return {
+            ...prevBackImageDetails,
+            screenShotUrl: dataUrl,
+            isImageSelected: true,
+          };
+        });
+      } else if (selectedCardPage === 'Card Front' && dataUrl) {
+        setFrontImageDetails((prevFrontImageDetails) => {
+          return {
+            ...prevFrontImageDetails,
+            screenShotUrl: dataUrl,
+            isImageSelected: true,
+          };
+        });
+      }
+    } catch (error) {
+      console.error('Error generating a screenshot file:', error);
+    }
+  }
+
+  async function generateScreenshotFile() {
+    try {
+      // Image file present, generating screenshot.
+      let imageFile;
+      const frontblobUrl = frontImageDetails.screenShotUrl;
+      const backblobUrl = backImageDetails.screenShotUrl;
+      if (frontImageDetails.isImageSelected && frontblobUrl) {
+        const selectedBlobUrl = await generateCanvasImage(frontblobUrl);
+        if (selectedBlobUrl) {
+          imageFile = await blobUrlToFileObject(
+            selectedBlobUrl,
+            `${customerId}-folded-front-image`,
+          );
+          setFrontImageDetails((prevFrontImageDetails) => {
+            return {
+              ...prevFrontImageDetails,
+              selectedImageFile: imageFile,
+            };
+          });
+        }
+      } else {
+        generateDefaultScreenshotImage(DefaultFrontCardImage, 'front-image');
+      }
+
+      if (backImageDetails.isImageSelected && backblobUrl) {
+        const selectedBlobUrl = await generateCanvasImage(backblobUrl);
+        if (selectedBlobUrl) {
+          imageFile = await blobUrlToFileObject(
+            selectedBlobUrl,
+            `${customerId}-folded-back-image`,
+          );
+          setBackImageDetails((prevBackImageDetails) => {
+            return {
+              ...prevBackImageDetails,
+              selectedImageFile: imageFile,
+            };
+          });
+        }
+      } else {
+        generateDefaultScreenshotImage(DefaultBackCardImage, 'front-image');
+      }
+      setTriggerEvent(false);
+    } catch (error) {
+      console.error('Error generating screenshot:', error);
+    }
+  }
+
+  async function generateCanvasImage(blobUrl) {
+    try {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      const image1 = new Image();
+      image1.src = DefaultFrontCardImage;
+
+      const image2 = new Image();
+      image2.src = blobUrl;
+      document.body.appendChild(image2);
+
+      await Promise.all([
+        new Promise((resolve, reject) => {
+          image1.onload = resolve;
+          image1.onerror = reject;
+        }),
+        new Promise((resolve, reject) => {
+          image2.onload = resolve;
+          image2.onerror = reject;
+        }),
+      ]);
+      canvas.width = 400;
+      canvas.height = 280;
+
+      ctx.imageSmoothingEnabled = true;
+  
+      ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+  
+      const fixedWidth = 268; 
+      const fixedHeight = 220; 
+  
+      
+      const offsetX = -6;
+      const offsetY = 4;
+  
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+  
+      const rotationAngle = (3.5 * Math.PI) / 180;
+  
+      ctx.save();
+  
+      ctx.translate(centerX, centerY);
+  
+
+      ctx.rotate(rotationAngle);
+  
+      ctx.drawImage(
+        image2,
+        -fixedWidth / 2 + offsetX,
+        -fixedHeight / 2 + offsetY,
+        fixedWidth,
+        fixedHeight
+      );
+  
+      ctx.restore();
+  
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error('Failed to generate blob from canvas'));
+          }
+        });
+      });
+  
+      const blobImageUrl = URL.createObjectURL(blob);
+
+      const imgElement = document.createElement('img');
+      // Set its src attribute to the captured data URL
+      imgElement.src = blobImageUrl;
+
+      // Append the image element to the body
+      document.body.appendChild(imgElement);
+      return blobImageUrl;
+    } catch (error) {
+      console.error('Error generating a screenshot file:', error);
+    }
+  }
 
   async function uploadPdfRequest() {
     try {
@@ -761,6 +958,7 @@ export default function FoldedCustomisableCard({
 
   return (
     <section>
+      <div id="ones"></div>
       {/* {isLoading && (
         <div
           style={{zIndex: 999}}
@@ -863,7 +1061,9 @@ export default function FoldedCustomisableCard({
                     >
                       <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
                     </svg>
-                    <span className="whitespace-nowrap">Saving in progress...</span>
+                    <span className="whitespace-nowrap">
+                      Saving in progress...
+                    </span>
                   </div>
                 ) : (
                   'SAVE CARD'
@@ -1082,27 +1282,26 @@ export default function FoldedCustomisableCard({
                           id="backTrimmedDiv"
                           style={{
                             zIndex: '-20',
-                            transform: isRotationAnimationApplied
-                              ? 'rotateY(-180deg)'
-                              : 'rotateY(0deg)',
+                        
                           }}
                         >
                           {(backImageDetails.imageBlobUrl ||
                             backImageDetails.blackAndWhiteImageBlobUrl) && (
-                              <img
-                                src={
-                                  backImageDetails.isColoredImage
-                                    ? backImageDetails.imageBlobUrl
-                                    : backImageDetails.blackAndWhiteImageBlobUrl
-                                }
-                                alt="Selected back card image file"
-                                className="object-contain h-full"
-                                draggable="false"
-                                style={{
-                                  transform: `scale(${backImageDetails.zoom})`,
-                                }}
-                              />
-                            )}
+                            <img
+                              src={
+                                backImageDetails.isColoredImage
+                                  ? backImageDetails.imageBlobUrl
+                                  : backImageDetails.blackAndWhiteImageBlobUrl
+                              }
+                              alt="Selected back card image file"
+                              className="object-contain h-full"
+                              draggable="false"
+                              style={{
+                                transform: `scale(${backImageDetails.zoom}) ${isRotationAnimationApplied ? 'rotateY(-180deg)' : 'rotateY(0deg)'}`,
+                                imageRendering: 'auto',
+                              }}
+                            />
+                          )}
                         </div>
                       </>
                     ))}
@@ -1325,7 +1524,10 @@ export default function FoldedCustomisableCard({
                     <button
                       type="button"
                       className="bg-[#1b5299] h-[40px] border-none ml-[0px]  text-white text-[14px]  outline-none text-center w-[85%] font-semibold"
-                      onClick={handleFinishEditingButton}
+                      onClick={() => {
+                        setTriggerEvent(true);
+                        handleFinishEditingButton();
+                      }}
                     >
                       Finish Editing
                     </button>
