@@ -343,7 +343,7 @@ if (index !== -1) {
             <select
               name=""
               id=""
-              className="!border-none w-full capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
+              className="!border-none sm:w-[228px] w-full capitalize text-[#508ee3] p-[15px] text-[18px] font-normal shadow-lg"
               onChange={(e) => changeHandle(e.target.value)}
             >
               <option className="w-full " selected disabled>

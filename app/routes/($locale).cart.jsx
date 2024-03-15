@@ -354,7 +354,6 @@ export default function AddCartFunc() {
 
   const cardvalFunc = async (item) => {
     let selCardName = data.collection.products.edges[item].node;
-
     setCardName(selCardName.title);
     setCardImage(selCardName.featuredImage.url);
     setGiftProdUrl(selCardName.onlineStoreUrl);
@@ -370,7 +369,6 @@ export default function AddCartFunc() {
   };
   function closeModal() {
     setBulkAddress([]);
-
     setIsOpen2(false);
   }
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -381,7 +379,6 @@ export default function AddCartFunc() {
       setCurrentIndex(currentIndex - 1);
     }
   };
-
   const handleNextClick = () => {
     if (currentIndex < bulkAddress.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -1067,11 +1064,11 @@ export default function AddCartFunc() {
                       ))}
                     {totalPrize && (
                       <div className="sm:w-[90%] w-[98%]  bg-white m-auto mt-10 mb-10">
-                        <div className="flex lg:p-3 p-5  flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
-                          <div className="lg:w-[25%] md:w-[39%] sm:w-[47%] w-full flex lg:items-center items-end justify-start ">
-                            <div className="buttonDiv md:text-[14px] sm:text-[12px] text-[10px] font-normal md:w-[85%] sm:w-[90%] w-[60%]">
+                        <div className="flex lg:p-3 p-5  flex-wrap justify-end lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
+                          <div className="lg:w-[25%] md:w-[39%] sm:w-[47%] w-full flex lg:items-center items-end justify-center ">
+                            <div className="buttonDiv md:text-[14px] sm:text-[12px] text-[10px] font-normal md:w-[85%] sm:w-[90%] w-[100%]">
                               <button
-                                className="bg-[#1b5299] text-[#fff] p-3 flex  rounded gap-2.5 w-full justify-center  items-center"
+                                className="bg-[#1b5299] text-[#fff] p-3 flex h-[47px] rounded gap-2.5 w-full justify-center  items-center"
                                 onClick={() => {
                                   clearCartBtn();
                                 }}
@@ -1083,13 +1080,13 @@ export default function AddCartFunc() {
                           </div>
                           <div
                             className="lg:w-[45%]  w-[100%] flex items-center  lg:order-none order-[-1]
-                         md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-start gap-[20px]"
+                         md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-center gap-[20px]"
                           >
                             <span className="md:mr-[2px]">GRAND TOTAL</span>
                             <span>${Number(totalPrize).toFixed(2)}</span>
                           </div>
-                          <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
-                            <div className="">
+                          <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-center ">
+                            <div className="md:w-[190px] w-[100%]">
                               <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
                                 <input
                                   type="checkbox"

@@ -147,7 +147,7 @@ const WalletPlans = ({
                           </div>
                           {descriptionMetafield?.value &&
                             variant.node.price.amount !== '0.0' && (
-                              <span className="sm:text-[14px] text-[11px] font-medium">
+                              <span className="sm:text-[14px] text-[12px] font-medium">
                                 {descriptionMetafield
                                   ? JSON.parse(descriptionMetafield?.value)
                                       .children[0].children[0]?.value
@@ -155,7 +155,7 @@ const WalletPlans = ({
                               </span>
                             )}
                           {amountMetafield?.value && (
-                            <span className="text-[14px] font-medium">
+                            <span className="md:text-[14px] text-[12px] font-medium">
                               $
                               {formatNumberWithCommas(
                                 Number(variant.node.price.amount)

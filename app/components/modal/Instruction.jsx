@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import {ImCross} from 'react-icons/im';
+import { ImCross } from 'react-icons/im';
 
 const customStyles = {
   content: {
@@ -72,16 +72,16 @@ function Instruction({
             </h2>
           )}
           {subtitle &&
-          <h4 className="text-black font-bold text-xl  sm:text-2xl ">
-            We recommend a maximum of 1,000 records per upload.
-          </h4> }
+            <h4 className="text-black font-bold text-xl  sm:text-2xl ">
+              We recommend a maximum of 1,000 records per upload.
+            </h4>}
           <div className="flex justify-center">
             {button && (
               <button
                 type="button"
                 onClick={closeModal}
                 className="bg-[#ef6e6e] text-white font-bold py-2 px-4 h-[45px] focus:outline-none focus:shadow-outline"
-                style={{width: '100%'}}
+                style={{ width: '100%' }}
               >
                 Close
               </button>
@@ -89,7 +89,7 @@ function Instruction({
           </div>
           <div className="w-full break-all">{body}</div>
           {instructionsTitle &&
-          <h4 className="text-black font-bold text-[1rem] md:text-[1.2rem] my-2 ">Bulk upload can be used to add addresses to your address book or for bulk card orders..</h4>}
+            <h4 className="text-black font-bold text-[1rem] md:text-[1.2rem] my-2 ">Bulk upload can be used to add addresses to your address book or for bulk card orders..</h4>}
           <p className="!text-[#000] font-medium text-[14px]  leading-[160%]">
             {instructions &&
               instructions.map((instruction, index) => (
@@ -222,11 +222,17 @@ function Instruction({
                       </td>
                     </tr>
                     <tr>
-                      <td className="border border-solid border-black py-2 px-4">
-                        Custom 1
+                      <td className="border border-solid border-black">
+                        <p className="ml-[12px] mt-[10px]">Custom 1</p>
+                        <div className='border-b mt-[10px] border-black border-solid'></div>
+                        <p className='ml-[12px] mt-[10px]'>Custom 1</p>
+                        <div className='border-b mt-[10px] border-black border-solid'></div>
+
+                        <p className='ml-[12px] mb-[10px] mt-[10px]'>Custom 1</p>
+
                       </td>
                       <td className="border border-solid border-black py-2 px-4">
-                        Text
+                        The custom fields are used only in a bulk order and will not be saved to the address book. They can be used for special dynamic inserts into the message.
                       </td>
                     </tr>
                   </tbody>
