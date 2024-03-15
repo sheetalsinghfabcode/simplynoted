@@ -229,7 +229,7 @@ const Profile = ({
           (loader || successfullLoader) && 'opacity-50'
         } `}
       >
-        <div className="flex w-full md:mt-[0px] mt-[23px] mb-4">
+        <div className="flex w-full md:mt-[0px] mt-[23px]">
           <button
             onClick={() => switchToTab('account')}
             className={`mr-4 px-4 py-4 w-full text-[18px] font-semibold  rounded-t-lg font-karla ${
@@ -251,10 +251,18 @@ const Profile = ({
             Security
           </button>
         </div>
-
         {activeTabs === 'account' && (
-          <form onSubmit={handleSubmit} className="mt-[21px] mb-[24px]">
-            <div className="mb-4 lg:grid grid-cols-1 items-center md:grid-cols-2 grid flex-wrap -mx-3">
+
+
+
+
+
+
+
+
+
+          <form onSubmit={handleSubmit} className="mb-[3rem]">
+            <div className=" lg:grid grid-cols-1 items-center mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 ">
                 <label
                   htmlFor="firstName"
@@ -274,7 +282,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
+                  className="block md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
                 >
                   Last Name
                 </label>
@@ -290,11 +298,11 @@ const Profile = ({
               </div>
             </div>
 
-            <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
+            <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="email"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block md:text-[16px]  text-[12px] font-semibold"
                 >
                   Email
                 </label>
@@ -311,7 +319,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="phone"
-                  className="block md:text-[16px] md:mt-[0px] mt-[12px] whitespace-nowrap text-[12px]  mb-1 font-semibold"
+                  className="block md:text-[16px] md:mt-[0px] mt-[12px] whitespace-nowrap text-[12px]   font-semibold"
                 >
                   Phone Number (with area code)
                 </label>
@@ -333,7 +341,7 @@ const Profile = ({
               </div>
             </div>
 
-            <div className="mb-4 lg:grid grid grid-cols-1 md:grid-cols-2 flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid grid-cols-1 mt-[2rem] md:grid-cols-2 flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="address1"
@@ -353,7 +361,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
+                  className="block  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
                 >
                   Address 2
                 </label>
@@ -367,11 +375,11 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 lg:grid grid grid-cols-1 md:grid-cols-2 flex-wrap -mx-3">
+            <div className=" lg:grid grid grid-cols-1 mt-[2rem] md:grid-cols-2 flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="city"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block  md:text-[16px] text-[12px] font-semibold"
                 >
                   City
                 </label>
@@ -387,7 +395,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="state"
-                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
+                  className="block mb-1 md:mt-[0px] mt-[12px] md:text-[16px]  text-[12px] font-semibold"
                 >
                   State
                 </label>
@@ -401,11 +409,11 @@ const Profile = ({
                 />
               </div>
             </div>
-            <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
+            <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block  md:text-[16px] text-[12px] font-semibold"
                 >
                   Country
                 </label>
@@ -421,7 +429,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="zip"
-                  className="block mb-1 md:text-[16px] md:mt-[0px] mt-[12px] text-[12px] font-semibold"
+                  className="block  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
                 >
                   Zip
                 </label>
@@ -438,6 +446,16 @@ const Profile = ({
           </form>
         )}
 
+
+
+
+
+
+
+
+
+
+
         {activeTabs === 'security' && (
           <>
             {error && (
@@ -446,7 +464,7 @@ const Profile = ({
               </span>
             )}
             <form onSubmit={handleSubmit}>
-              <div className="mb-4 lg:grid grid-cols-1 md:grid-cols-2 grid flex-wrap -mx-3">
+              <div className="mb-4 lg:grid grid-cols-1 mt-[2rem] mb-[3rem] md:grid-cols-2 grid flex-wrap -mx-3">
                 <div className="px-3">
                   <label
                     htmlFor="newPassword"

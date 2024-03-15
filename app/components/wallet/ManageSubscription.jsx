@@ -583,10 +583,10 @@ const ManageSubscription = () => {
               ) : (
                 <>
                   <div className="flex justify-between items-center w-full min-h-[68px] border border-solid border-[#e6edf8] py-[10px] px-[20px]">
-                    <span className="lg:text-[15px] text-[12px] text-[#001a5f] font-karla font-bold uppercase">
+                    <span className="lg:text-[15px] text-[16px] text-[#001a5f] font-karla font-bold uppercase">
                       wallet balance
                     </span>
-                    <span className="md:text-[46px] sm:text-[30px] text-[13px] !font-bold text-[#ef6e6e] uppercase">
+                    <span className="md:text-[46px] sm:text-[30px] text-[17px] !font-bold text-[#ef6e6e] uppercase">
                       $
                       {stripeCollection.stripe?.balance
                         ? prettyFormatNumber(stripeCollection.stripe?.balance)
@@ -600,7 +600,7 @@ const ManageSubscription = () => {
                         <span className="md:text-[14px] sm:text-[14px] text-[12px] text-[#001a5f] font-semibold uppercase">
                           My Plan
                         </span>
-                        <span className="md:text-[20px] sm:text-[18px] text-[12px] !font-bold text-[#ef6e6e] uppercase">
+                        <span className="md:text-[20px] sm:text-[18px] text-[17px] !font-bold text-[#ef6e6e] uppercase">
                           {(stripeCollection &&
                             stripeCollection.stripe?.subscriptionStatus !==
                             'canceled' &&
@@ -800,7 +800,7 @@ const ManageSubscription = () => {
                                           setDeleteModal(true);
                                         }}
                                         src="https://simplynoted.com/cdn/shop/files/delete.png"
-                                        className="sm:w-[26px] w-[16%]  sm:h-[27px] h-[26px] cursor-pointer"
+                                        className="sm:w-[26px] w-[10%]  sm:h-[27px] h-[37px] cursor-pointer"
                                       />
                                     </div>
                                   )}
@@ -870,9 +870,9 @@ const ManageSubscription = () => {
                     </div>
                   </WalletAccordion>
                   <div className='mt-[20px]'>
-                    <p className='text-[#001a5f] md:text-[16px] text-left text-[14px] font-semibold'>*Please note: Your wallet balance reflects promotional value, not the original purchase price. Terms apply,
+                    <p className='text-[#001a5f] md:text-[12px] text-left text-[9px] font-bold'>*Please note: Your wallet balance reflects promotional value, not the original purchase price. Terms apply,
                     
-                        <b className='font-bold text-[black]'> <a href="policies/terms-of-service" target="_blank">learn more here</a>.</b>
+                        <b className='font-bold text-[black]'> <a href="policies/terms-of-service" target="_self">learn more here</a>.</b>
                       </p> 
 
                   </div>
