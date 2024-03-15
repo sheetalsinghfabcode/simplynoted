@@ -1102,9 +1102,7 @@ export function MessageWriting({
               ) : (
                 <div className="text-center font-bold mt-4 text-[#001a5f] text-[15px]">
                   {' '}
-                  No Saved templateButton cursor-pointer border
-                  whitespace-nowrap border-[#1b5299] rounded-[5px] p-2 h-[44px]
-                  Yet!{' '}
+                  No Saved template
                 </div>
               )}
             </>

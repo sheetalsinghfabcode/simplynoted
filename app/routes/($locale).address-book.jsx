@@ -1,11 +1,9 @@
 import {useEffect, useState} from 'react';
 import AddressForm from '../components/addressBook/AddressForm';
 import EditAddressForm from '../components/addressBook/EditAddressForm';
-import Instruction from '~/components/modal/Instruction';
 import {useNavigate} from '@remix-run/react';
 import ContactTable from '~/components/addressBook/ContactTable';
 import {useStateContext} from '~/context/StateContext';
-import DynamicTitle from '~/components/Title';
 
 let customerID;
 

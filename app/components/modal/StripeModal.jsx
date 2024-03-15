@@ -300,6 +300,7 @@ const StripeModal = ({
                     </div>
                   </div>
                 )}
+
                 <Elements stripe={stripe}>
                   <StripeCard
                     onCancel={onCancel}
