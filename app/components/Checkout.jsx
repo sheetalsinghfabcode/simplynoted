@@ -22,6 +22,7 @@ export function CheckoutData({
   totalPrize,
   cartData,
   cartNote,
+  deleteCartItem,
   postalId,
   postalId2,
 }) {
@@ -60,11 +61,14 @@ export function CheckoutData({
     subtotalPrice: totalPrize,
     totalPrice: totalPrize,
   });
+
+
+
   const [errors, setErrors] = useState({});
   const [walletBalance, setWalletBalance] = useState('');
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const [paymentLoaderMessage, setPaymentLoaderMessage] = useState(false);
-  const {setCartCountVal} = useStateContext();
+  const {setCartCountVal,setCartData} = useStateContext();
   const navigate = useNavigate();
 
   function showWalletBtn() {
@@ -317,7 +321,6 @@ export function CheckoutData({
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
 
-
   async function paymentPurchase() {
     setPurchaseCompleted(true);
     setPaymentLoaderMessage('Processing your order...');
@@ -497,21 +500,6 @@ export function CheckoutData({
                 ...(shipping && {shipping}),
                 ...(postageUS && {postageUS}),
                 ...(postageNonUS && {postageNonUS}),
-                // postageUS: {
-                //   id: postalId ,
-                //   url: '/products/postage',
-                //   qyt: 0,
-                // },
-                // PostageNonUs:{
-                //   id:postalId2,
-                //   url: '/products/postage',
-                //   qyt:0
-                // },
-                //   shipping: {
-                //     id: "40647526121577",
-                //     url: "/products/shipping-methods",
-                //     qyt: 1
-                // }
               },
             };
           }),
@@ -528,6 +516,7 @@ export function CheckoutData({
           : '',
 
       };
+
 
       const res = await // postApi(
       //   `${API_PATH.PURCHASE_API}${customerID}`,
@@ -547,10 +536,12 @@ export function CheckoutData({
       // console.log(json.result,"----rresult data");
       if (json.result.success) {
         setCartCountVal(0);
+        setCartData(null)
+        deleteCartItem()
         localStorage.setItem('mydata', '[]');
-        setPurchaseCompleted(false);
-        setPaymentLoaderMessage(json.result.message);
+        setPaymentLoaderMessage("Your order has been successfully processed. ");
         setTimeout(() => {
+        setPurchaseCompleted(false);
           setPaymentSuccessfull(true);
         }, 1500);
       } else {
@@ -560,6 +551,7 @@ export function CheckoutData({
         }, 1500);
       }
     } catch (error) {
+      setPaymentLoaderMessage("Error while processing your order. Please try after some time");
       console.error(error, 'error on CreateCard');
     }
   }
