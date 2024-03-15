@@ -36,6 +36,7 @@ export function StateContextProvider({children}) {
   const [isCartUpdated, setIsCartUpdated] = useState(false);
 
   const [showSignScreen, setShowSignScreen] = useState(false);
+  const [isStripeDataUpdated,setIsStripeDataUpdated] = useState(false)
 
   const [fullName, setFullName] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -173,6 +174,8 @@ export function StateContextProvider({children}) {
         setCartData,
         isCartUpdated,
         setIsCartUpdated,
+        isStripeDataUpdated,
+        setIsStripeDataUpdated
       }}
     >
       {children}

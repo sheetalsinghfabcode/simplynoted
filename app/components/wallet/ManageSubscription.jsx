@@ -42,7 +42,7 @@ const ManageSubscription = () => {
   const [packageModal, setPackageModal] = useState(false);
   const [purchaseModal, setPurchaseModal] = useState(false);
   const [showAccordion, setShowAccordion] = useState(false);
-  const { updateModal, setUpdateModal,loader,setLoader } = useStateContext();
+  const { updateModal, setUpdateModal,loader,setLoader,isStripeDataUpdated } = useStateContext();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -366,6 +366,7 @@ const ManageSubscription = () => {
     addCreditModal,
     deleteModal,
     updateModal,
+    isStripeDataUpdated,
     restartAutoRenew,
     cancelSubscription,
     autoModal,

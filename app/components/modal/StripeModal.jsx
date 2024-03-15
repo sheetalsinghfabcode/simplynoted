@@ -129,7 +129,7 @@ const StripeModal = ({
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
 
-      <div className="modal-container py-[15px] px-[24px]  relative bg-[white] w-full max-w-[80%] max-h-[90%]  md:max-w-[568px] mx-auto rounded shadow-lg shadow-lg z-50 overflow-auto">
+      <div className="modal-container py-[15px] px-[24px]  relative bg-[white] w-full max-w-[93%] max-h-[90%]  md:max-w-[568px] mx-auto rounded shadow-lg shadow-lg z-50 overflow-auto">
         <div className="absolute top-[35px] right-0  pr-8 sm:block">
           <button onClick={onCancel} className="transition text-primary ">
             <ImCross className="md:mr-[-12px] mr-[-16px] mt-[-34px] text-white text-[22px] p-[5px] bg-[#EF6E6E]" />

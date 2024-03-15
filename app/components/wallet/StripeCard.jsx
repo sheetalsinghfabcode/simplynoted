@@ -42,7 +42,7 @@ const StripeCard = ({
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!validateForm() && !addCreditModal && !updateCard ) {
+    if (!validateForm() && !addCreditModal && !updateCard && !showStripeCard ) {
       return; // Exit early if the form is not valid
     }
 
@@ -78,7 +78,7 @@ const StripeCard = ({
         <CardElement 
         onChange={()=>setErrorMessage('')}
         options={CARD_OPTIONS} 
-        className="m-5" />
+        className="my-5 mx-2 sm:mx-5" />
       </div>
       {errorMessage && (
         <div className="text-red-700 font-karla text-[14px] mt-2">{errorMessage}</div>
