@@ -146,8 +146,8 @@ const AddressForm = ({customerID}) => {
       .then((response) => {
         if (response.ok) {
           setLoader(false);
-          setShowLoader(false);
-          setLoaderTitle(null);
+            setShowLoader(false);
+            setLoaderTitle(null);
           setAddressForm(false);
           return response.json(); // Parse the response JSON if it's a successful response
         } else {

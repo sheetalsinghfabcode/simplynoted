@@ -28,6 +28,11 @@ const PackageModal = ({
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
+
+  let dollarUSLocale = Intl.NumberFormat('en-US');
+
+ 
+
   return (
     <div
       className={`${
@@ -57,7 +62,7 @@ const PackageModal = ({
               stripeCollection.stripe?.subscriptionStatus &&
               stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                 ? stripeCollection.stripe?.subscription
-                : 'FREE'}{' '}
+                : ' FREE'}{' '}
               Prepaid Packages
             </span>
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
@@ -66,8 +71,8 @@ const PackageModal = ({
                 <span className="md:text-[14px] text-[12px] font-karla font-normal ">
                   {stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                     ? stripeCollection.stripe?.subscription
-                    : 'Free'}
-                  - {stripeCollection.stripe?.packageQuantity} cards -
+                    : ' Free '}
+                  - {dollarUSLocale.format(Number(stripeCollection.stripe?.packageQuantity))} cards -
                   {stripeCollection.stripe?.packageDiscount}% DISCOUNT
                 </span>
               ) : (
@@ -77,8 +82,8 @@ const PackageModal = ({
             <span className="md:text-[14px] text-[12px] font-normal font-karla text-center">
               Balance: $
               {stripeCollection.stripe?.balance
-                ? stripeCollection.stripe?.balance
-                : 0.0}
+                ? Number(stripeCollection.stripe?.balance).toFixed(2)
+                : 0.00}
             </span>
           </div>
           <h3 className="md:text-[20px] text-[12px] mt-[13px] text-center leading-[1.4] w-full max-w-[418px] mx-auto  font-semibold">

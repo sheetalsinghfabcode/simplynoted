@@ -49,6 +49,7 @@ const ContactTable = ({
   const [uploadBulkAddress, setUploadBulkAddress] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
+
   const pathName = useLocation();
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
@@ -298,7 +299,6 @@ const ContactTable = ({
 
   let file = useRef(null);
 
-
   const handleFileChange = (event) => {
     file = event.target.files[0];
     if (file) {
@@ -315,8 +315,6 @@ const ContactTable = ({
       reader.readAsText(file);
     }
   };
-
-
 
   const updatedAddressData = addresses.map((item) => {
     if (item.type === 'return') {
@@ -385,18 +383,16 @@ const ContactTable = ({
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
         file.current.value = '';
-        setFileData(null)
-        setTimeout(() => {
-        }, 2000);
+        setFileData(null);
+        setTimeout(() => {}, 2000);
         file.current.value = '';
         'Successful response data:', responseData.result;
       } else {
-
         file.current.value = '';
         setSelectedFile(null);
         setShowLoader(false);
-        setFileData(null)
-        setupdateLoader(false)
+        setFileData(null);
+        setupdateLoader(false);
         setLoaderTitle('Error while Uploading Address Book...');
         file.current.value = '';
         throw new Error('Network response was not ok');
@@ -404,17 +400,15 @@ const ContactTable = ({
     } catch (error) {
       setShowLoader(false);
       setLoaderTitle('Error while Uploading Address Book');
-      setFileData(null)
-      setupdateLoader(false)
+      setFileData(null);
+      setupdateLoader(false);
       setSelectedFile(null);
       file.current.value = '';
       console.error('Error uploading data:', error);
       throw error;
-    }
-    finally {
+    } finally {
       setShowLoader(false);
-      setLoaderTitle(null)
-      
+      setLoaderTitle(null);
     }
   };
 
@@ -487,7 +481,6 @@ const ContactTable = ({
 
     const errors = [];
 
-
     const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
@@ -503,7 +496,7 @@ const ContactTable = ({
     if (!isValidFormat) {
       setErrorModal(true);
       setShowLoader(false);
-      setFileData(null)
+      setFileData(null);
       file.current.value = '';
       setSelectedFile(null);
       setErrorContent([
@@ -524,7 +517,6 @@ const ContactTable = ({
       });
       return cleanedEntry;
     });
-
 
     for (let i = 0; i < cleanedData.length; i++) {
       const data = cleanedData[i];
@@ -553,19 +545,15 @@ const ContactTable = ({
           setErrorModal(true);
           setShowLoader(false);
         }, 100);
-      
       } else {
-        
         await uploadDataToAPI(data);
       }
-      
     }
   };
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
- 
   const uploadBulkAddressRef = useRef(null);
   const clickUploadBulkAddress = useRef(null);
 
@@ -580,7 +568,7 @@ const ContactTable = ({
         setUploadBulkAddress(false);
         setSelectedFile(null);
         file.current.value = '';
-        setFileData(null)
+        setFileData(null);
       }
     }
 
@@ -598,9 +586,9 @@ const ContactTable = ({
           body={errorContent}
           close={true}
           closeModal={() => {
-            setErrorModal(false)
-            setShowLoader(false)
-          } }
+            setErrorModal(false);
+            setShowLoader(false);
+          }}
           isOpen={errorModal}
         />
       ) : (
@@ -659,7 +647,7 @@ const ContactTable = ({
                     onClick={() => {
                       setSelectedFile(null);
                       file.current.value = '';
-                      setFileData(null)
+                      setFileData(null);
                       setUploadBulkAddress(false);
                     }}
                   >
@@ -847,7 +835,7 @@ const ContactTable = ({
                 </table>
               </div>
 
-              {updateLoader && !showLoader && loaderTitle &&  (
+              {updateLoader && !showLoader && addresses.length > 0 && (
                 <div className="flex justify-center items-center mt-[24px]">
                   <CircularLoader
                     title="Loading Address Book"
@@ -860,6 +848,9 @@ const ContactTable = ({
                   <CircularLoader title={loaderTitle} color="#ef6e6e" />
                 </div>
               )}
+
+              {filteredAddresses.length === 0 &&  !updateLoader && !showLoader &&
+              <div className='text-[22px] md:text-[30px] font-medium mt-10 text-center text-[#0D0C22]  font-karla'>No Address Found</div>}
 
               {page && page.length > 0 && !updateLoader && !showLoader && (
                 <div className="pagination">
@@ -909,11 +900,9 @@ const ContactTable = ({
                   </div>
                 </div>
               )}
-              
             </>
-            
           )}
-       
+
           <ConfirmationModal
             show={deleteModal}
             onCancel={() => setDeleteModal(false)}

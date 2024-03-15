@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import Instruction from '../modal/Instruction';
 import ErrorModal from '../modal/ErrorModal';
 import LoginModal from '../modal/LoginModal';
@@ -6,16 +6,16 @@ import DynamicButton from '../DynamicButton';
 import ContactTable from '../addressBook/ContactTable';
 import CircularLoader from '../CircularLoder';
 import AiImage from '../../../assets/Image/aiImage.avif';
-import { useLocation } from '@remix-run/react';
-import { useStateContext } from '../../context/StateContext';
+import {useLocation} from '@remix-run/react';
+import {useStateContext} from '../../context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import ConfirmationModal from '../modal/ConfirmationModal';
 import TickImg from '../../../assets/Image/check-mark.png';
 import Del from '../../../assets/Image/delete.png';
 import calender_icon from '../../../assets/Image/calendar.png';
-import { FiUploadCloud } from 'react-icons/fi';
-import { VideoTutorial } from '../VideoTutorial';
-import { Modal as ModalComp } from '../Modal';
+import {FiUploadCloud} from 'react-icons/fi';
+import {VideoTutorial} from '../VideoTutorial';
+import {Modal as ModalComp} from '../Modal';
 import SuccessfullLoader from '../SucessfullLoader';
 
 let mainMessageBox,
@@ -92,7 +92,7 @@ export function MessageWriting({
   const [loadTempData, setloadTempData] = useState([]);
   const [bulkFileCount, setBulkFileCount] = useState(0);
   const [errorTemplate, setErrorTemplate] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false);
   const [onDelTemp, setOnDelTemp] = useState(false);
   const [lineHeight, setLineHeight] = useState(
     editLineHeight ? editLineHeight : '',
@@ -125,7 +125,7 @@ export function MessageWriting({
   const [showLoader, setShowLoader] = useState(false);
   const [loaderMessage, setLoaderMessage] = useState(false);
   const [minDateCheck, setMinDateCheck] = useState(false);
-  const [errorCustomText, setErrorCustomText] = useState(false)
+  const [errorCustomText, setErrorCustomText] = useState(false);
 
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
@@ -142,7 +142,7 @@ export function MessageWriting({
     );
     const modifiedData = data.map((item) => {
       // Specify the fields you want to remove from each object
-      const { _id, shopifyId, created, updated, __v, ...newObject } = item;
+      const {_id, shopifyId, created, updated, __v, ...newObject} = item;
       return newObject;
     });
     setFileData(modifiedData);
@@ -378,11 +378,12 @@ export function MessageWriting({
         return (
           <div
             className={`flex h-[48px]`}
-            style={{ justifyContent: metafields.header.justifyContent }}
+            style={{justifyContent: metafields.header.justifyContent}}
           >
             <img
-              className={`!w-20 headerImage ${metafields.header.isColored ? 'grayscale-0' : 'grayscale'
-                }`}
+              className={`!w-20 headerImage ${
+                metafields.header.isColored ? 'grayscale-0' : 'grayscale'
+              }`}
               src={metafields.header.data}
             />
           </div>
@@ -422,11 +423,12 @@ export function MessageWriting({
         return (
           <div
             className={`flex  h-[48px]`}
-            style={{ justifyContent: metafields.footer.justifyContent }}
+            style={{justifyContent: metafields.footer.justifyContent}}
           >
             <img
-              className={`!w-20 ${metafields.footer.isColored ? 'grayscale-0' : 'grayscale'
-                }`}
+              className={`!w-20 ${
+                metafields.footer.isColored ? 'grayscale-0' : 'grayscale'
+              }`}
               src={metafields.footer.data}
             />
           </div>
@@ -498,19 +500,11 @@ export function MessageWriting({
     }
   }, [name2, fontFamilyName]);
 
-
-
-
-
-
-
-
-
   async function onChnageNameVal(nameData) {
-    setErrorCustomText('')
+    setErrorCustomText('');
     setName(nameData);
     if (!fontFamilyName) {
-      setFontFamily('tarzan')
+      setFontFamily('tarzan');
     }
     // processInput();
   }
@@ -853,7 +847,7 @@ export function MessageWriting({
           Authorization:
             'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNjZjBiNDAwODcwZjFmMjQ3OTA5ODUiLCJ1c2VyIjp7ImVtYWlsIjoia2FyYW5AdGhlZmFiY29kZS5vcmciLCJzaG9waWZ5SWQiOiI2MjMzNjE5MTAzODQ5IiwiX2lkIjoiNjQzY2YwYjQwMDg3MGYxZjI0NzkwOTg1IiwiZmlyc3RfbmFtZSI6InRlc3RlciIsImxhc3RfbmFtZSI6InRlc3RlciJ9LCJpYXQiOjE2ODE3MzIxNTd9.wFzXMBbN3mSy8nDIlczfkp6m_r1nshHGLCFuLz81Bkc',
         },
-        body: JSON.stringify({ msg: valToGen }),
+        body: JSON.stringify({msg: valToGen}),
       });
 
       const json = await res.json();
@@ -883,8 +877,8 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.optionalShipDate
         : editShippingDate
-          ? editShippingDate
-          : '',
+        ? editShippingDate
+        : '',
     );
     setName(savedMsg ? savedMsg.msg : EditMess ? EditMess : '');
     setName2(savedMsg ? savedMsg.signOffText : editEndMess ? editEndMess : '');
@@ -899,15 +893,15 @@ export function MessageWriting({
       savedMsg
         ? savedMsg.signOffFontSize
         : editSignOffFontSize
-          ? editSignOffFontSize
-          : '',
+        ? editSignOffFontSize
+        : '',
     );
     setSignOffLineHeight(
       savedMsg
         ? savedMsg.signOffLineHeight
         : editSignOffLineHeight
-          ? editSignOffLineHeight
-          : '',
+        ? editSignOffLineHeight
+        : '',
     );
     setTempVal(ref4.current?.value);
   }, [showSignScreen, customerId, customerid]);
@@ -970,11 +964,10 @@ export function MessageWriting({
             setLoaderMessage(null);
             setShowLoader(false);
           }, 2000);
-        }
-        else {
+        } else {
           setLoaderMessage(null);
           setShowLoader(false);
-          setErrorMessage(json.result.message)
+          setErrorMessage(json.result.message);
         }
       }
     } catch (error) {
@@ -1008,10 +1001,7 @@ export function MessageWriting({
             </span>
           )}
           {errorMessage && (
-            <span className="text-red-500 font-karla">
-
-              {errorMessage}
-            </span>
+            <span className="text-red-500 font-karla">{errorMessage}</span>
           )}
           <div className="mt-2">
             {showLoader && <CircularLoader title={loaderMessage} />}
@@ -1112,16 +1102,13 @@ export function MessageWriting({
               ) : (
                 <div className="text-center font-bold mt-4 text-[#001a5f] text-[15px]">
                   {' '}
-                  No Saved templateButton cursor-pointer border whitespace-nowrap border-[#1b5299] rounded-[5px] p-2 h-[44px] Yet!{' '}
+                  No Saved templateButton cursor-pointer border
+                  whitespace-nowrap border-[#1b5299] rounded-[5px] p-2 h-[44px]
+                  Yet!{' '}
                 </div>
               )}
             </>
           )}
-
-
-
-
-
         </div>
       </>
     );
@@ -1184,25 +1171,22 @@ export function MessageWriting({
 
   function OpenAddTemplateBox() {
     if (!name) {
-      setAddNewTem(false)
+      setAddNewTem(false);
       setLoginModal(false);
       setAddNewTem(false);
       setErrorCustomText(true);
-    }
+    } else if (!customerid && name) {
+      setShowSignScreen(true);
 
-    else if (!customerid && name) {
-      setLoginModal(true);
-
-      setErrorCustomText(false)
-
+      setErrorCustomText(false);
     } else {
       setAddNewTem(true);
-      setErrorCustomText(false)
+      setErrorCustomText(false);
     }
   }
   function OpenLoadTemp() {
     if (!customerid) {
-      setLoginModal(true);
+      setShowSignScreen(true);
     } else {
       SavedTemp() && setLoadTemModal(true);
     }
@@ -1265,22 +1249,22 @@ export function MessageWriting({
     }
   }
 
-
-
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
         <div
-          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${show
-            ? 'lg:h-[1110px] texting-relative-cont-bulk'
-            : 'lg:h-[714px] texting-relative-cont-single'
-            }`}
+          className={`relative  w-auto xl:w-[618px] md:h-[1068px] ${
+            show
+              ? 'lg:h-[1110px] texting-relative-cont-bulk'
+              : 'lg:h-[714px] texting-relative-cont-single'
+          }`}
         >
           <div
-            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] w-full ${show
-              ? 'md:pb-[35rem] textarea-cont-bulk'
-              : 'md:pb-[15rem] textarea-cont-single'
-              }`}
+            className={`md:mx-0 mx-auto bg-[#FAFAFA] p-[20px] md:w-[618px] md:absolute -top-[94px] w-full ${
+              show
+                ? 'md:pb-[35rem] textarea-cont-bulk'
+                : 'md:pb-[15rem] textarea-cont-single'
+            }`}
           >
             <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
@@ -1291,18 +1275,17 @@ export function MessageWriting({
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   placeholder="aaaa"
-
                 >
                   <option
                     value={standardFontVal}
                     disabled
-                    style={{ fontSize: '16px' }}
+                    style={{fontSize: '16px'}}
                   >
                     {standardFontVal
                       ? standardFontVal
                       : editFontFamily && !editCustomFontFamily
-                        ? editFontFamily
-                        : 'Tarzan'}
+                      ? editFontFamily
+                      : 'Tarzan'}
                   </option>
                   {editFontFamily && editFontFamily !== 'Tarzan' && (
                     <option value="Tarzan" className={`font-tarzan`}>
@@ -1311,182 +1294,182 @@ export function MessageWriting({
                   )}
                   <option
                     value="Stitch"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-stitch`}
                   >
                     Stitch
                   </option>
                   <option
                     value="Tarzan"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-tarzan`}
                   >
                     Tarzan
                   </option>
                   <option
                     value="Simba"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-simba`}
                   >
                     Simba
                   </option>
                   <option
                     value="Roo"
-                    style={{ fontSize: '20px' }}
+                    style={{fontSize: '20px'}}
                     className={`font-roo`}
                   >
                     Roo
                   </option>
                   <option
                     value="pinocchio"
-                    style={{ fontSize: '16px' }}
+                    style={{fontSize: '16px'}}
                     className={`font-pinocchio`}
                   >
                     Pinocchio
                   </option>
                   <option
                     value="Nimo"
-                    style={{ fontSize: '20px' }}
+                    style={{fontSize: '20px'}}
                     className={`font-nimo`}
                   >
                     Nimo
                   </option>
                   <option
                     value="Lumiere"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-lumiere`}
                   >
                     Lumiere
                   </option>
                   <option
                     value="dumbo"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-dumbo`}
                   >
                     Dumbo
                   </option>
                   <option
                     value="Donald"
-                    style={{ fontSize: '20px' }}
+                    style={{fontSize: '20px'}}
                     className={`font-donald`}
                   >
                     Donald
                   </option>
                   <option
                     value="Aladdin"
-                    style={{ fontSize: '29px' }}
+                    style={{fontSize: '29px'}}
                     className={`font-aladdin`}
                   >
                     Aladdin
                   </option>
                   <option
                     value="Belle"
-                    style={{ fontSize: '39px' }}
+                    style={{fontSize: '39px'}}
                     className={`font-belle`}
                   >
                     Belle
                   </option>
                   <option
                     value="Boo"
-                    style={{ fontSize: '38px' }}
+                    style={{fontSize: '38px'}}
                     className={`font-boo`}
                   >
                     Boo
                   </option>
                   <option
                     value="Cinderella"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-cinderella`}
                   >
                     Cinderella
                   </option>
                   <option
                     value="kaa"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-kaa`}
                   >
                     Kaa
                   </option>
                   <option
                     value="Copper"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-copper`}
                   >
                     Copper
                   </option>
                   <option
                     value="Jasmine"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-jasmine`}
                   >
                     Jasmine
                   </option>
                   <option
                     value="Merlin"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-merlin`}
                   >
                     Merlin
                   </option>
                   <option
                     value="Goofy"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-goofy`}
                   >
                     Goofy
                   </option>
                   <option
                     value="Hercules"
-                    style={{ fontSize: '38px' }}
+                    style={{fontSize: '38px'}}
                     className={`font-hercules`}
                   >
                     Hercules
                   </option>
                   <option
                     value="Rafiki"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-rafiki`}
                   >
                     Rafiki
                   </option>
                   <option
                     value="Rapunzel"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-rapunzel`}
                   >
                     Rapunzel
                   </option>
                   <option
                     value="Ratigan"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-ratigan`}
                   >
                     Ratigan
                   </option>
                   <option
                     value="Sarabi"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-sarabi`}
                   >
                     Sarabi
                   </option>
                   <option
                     value="Scar"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-scar`}
                   >
                     Scar
                   </option>
                   <option
                     value="Triton"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-triton`}
                   >
                     Triton
                   </option>
                   <option
                     value="Woody"
-                    style={{ fontSize: '33px' }}
+                    style={{fontSize: '33px'}}
                     className={`font-woody`}
                   >
                     Woody
@@ -1505,8 +1488,8 @@ export function MessageWriting({
                     {customFontVal
                       ? customFontVal
                       : editCustomFontFamily
-                        ? editCustomFontFamily
-                        : 'Select Custom Font'}
+                      ? editCustomFontFamily
+                      : 'Select Custom Font'}
                   </option>
                   {customFonts &&
                     customFonts.map((item, index) => (
@@ -1637,13 +1620,13 @@ export function MessageWriting({
 
             {errorCustomText && (
               <>
-                <p className='text-[red] mb-[12px]'>Please provide a custom message</p>
+                <p className="text-[red] mb-[12px]">
+                  Please provide a custom message
+                </p>
               </>
             )}
             <div className="flex w-full justify-between xl:flex-row flex-col ">
-
               <div className="flex flex-col justify-between gap-[24px]">
-
                 <div className="flex justify-between font-bold text-[#1b5299] text-[12px] md:text-[14px] gap-[20px] items-start xl:mr-3 mb-2">
                   <button
                     className="templateButton cursor-pointer border whitespace-nowrap border-[#1b5299] rounded-[5px] p-2 h-[44px]"
@@ -1698,8 +1681,9 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${show ? 'h-[940px]' : 'h-[370px] '
-            } mb-[200px] md:mb-[0px]`}
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${
+            show ? 'h-[940px]' : 'h-[370px] '
+          } mb-[200px] md:mb-[0px]`}
         >
           <div
             id="outer"
@@ -1723,16 +1707,16 @@ export function MessageWriting({
                       metafields.footer.data &&
                       metafields.header.data &&
                       name2.length > 0) ||
-                      (metafields.footer &&
-                        metafields.header &&
-                        metafields.header.data &&
-                        qrValue &&
-                        name2.length > 0)
+                    (metafields.footer &&
+                      metafields.header &&
+                      metafields.header.data &&
+                      qrValue &&
+                      name2.length > 0)
                       ? '121px'
                       : (metafields.footer &&
-                        metafields.header &&
-                        metafields.footer.data &&
-                        metafields.header.data) ||
+                          metafields.header &&
+                          metafields.footer.data &&
+                          metafields.header.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data &&
@@ -1746,17 +1730,17 @@ export function MessageWriting({
                           metafields.header &&
                           metafields.header.data &&
                           name2.length > 0)
-                        ? '169px'
-                        : (metafields.footer &&
+                      ? '169px'
+                      : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data) ||
-                          (metafields.footer &&
-                            metafields.header &&
-                            metafields.header.data) ||
-                          qrValue ||
-                          name2.length > 0
-                          ? '221px'
-                          : '280px',
+                        (metafields.footer &&
+                          metafields.header &&
+                          metafields.header.data) ||
+                        qrValue ||
+                        name2.length > 0
+                      ? '221px'
+                      : '280px',
                 }}
               >
                 <div
@@ -1767,8 +1751,8 @@ export function MessageWriting({
                     fontFamily: fontFamilyName
                       ? fontFamilyName
                       : editFontFamily
-                        ? editFontFamily
-                        : 'great vibes',
+                      ? editFontFamily
+                      : 'great vibes',
                     fontSize: fontSize ? fontSize : '34px',
                     lineHeight: lineHeight ? lineHeight : '50px',
                   }}
@@ -1780,7 +1764,7 @@ export function MessageWriting({
               <div
                 className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
                 ref={ref}
-                style={{ display: name2.length > 0 ? 'block' : 'none' }}
+                style={{display: name2.length > 0 ? 'block' : 'none'}}
               >
                 <div
                   id="signOffText"
@@ -1790,8 +1774,8 @@ export function MessageWriting({
                     fontFamily: fontFamilyName
                       ? fontFamilyName
                       : editFontFamily
-                        ? editFontFamily
-                        : 'great vibes',
+                      ? editFontFamily
+                      : 'great vibes',
                     fontSize: signOffFontSize ? signOffFontSize : '50px',
                     lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
                   }}
@@ -1829,7 +1813,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({ target: { files: [file] } });
+                        handleFileChange({target: {files: [file]}});
                       }
                     }}
                     onDragEnter={() => {
@@ -1920,7 +1904,7 @@ export function MessageWriting({
                       event.preventDefault();
                       const file = event.dataTransfer.files[0];
                       if (file && file.type === 'text/csv') {
-                        handleFileChange({ target: { files: [file] } });
+                        handleFileChange({target: {files: [file]}});
                       }
                     }}
                     onDragEnter={() => {
@@ -2020,15 +2004,16 @@ export function MessageWriting({
                 <div className="m-auto w-full grid font-bold">
                   <DynamicButton
                     disabled={disableSelectAddressBtn}
-                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${disableSelectAddressBtn && 'opacity-40'
-                      }`}
+                    className={`bg-[#1b5299] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px] ${
+                      disableSelectAddressBtn && 'opacity-40'
+                    }`}
                     text="Select From Address Book"
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   <DynamicButton
                     className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
                     text="Buy Leads (Mailing List)"
-                    onClickFunction={() => { }}
+                    onClickFunction={() => {}}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
                     <DynamicButton

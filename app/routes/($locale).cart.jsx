@@ -386,7 +386,7 @@ export default function AddCartFunc() {
   };
 
   async function subTotalAmount() {
-    const prices = cartData.reduce(
+    const prices = cartData?.reduce(
       (sum, cartData) =>
         sum +
         (cartData.cartTotal * cartData.qyt +
@@ -1477,6 +1477,7 @@ export default function AddCartFunc() {
             cartNote={cartNote && cartNote}
             cartData={cartData}
             postalId={postalId}
+            deleteCartItem={deleteCartItem}
             postalId2={postalId2}
             setShowCartPage={setShowCartPage}
             StripeKey={StripeKey}

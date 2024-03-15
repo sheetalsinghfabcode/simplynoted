@@ -207,6 +207,8 @@ function Account({customer, heading, featuredData}) {
     } else if (data == false) {
       if (customer && typeof window !== 'undefined') {
         localStorage.setItem('customerId', result);
+        setActiveTab(0)
+        setAccountTabName("General")
         setCustomerId(result);
         localStorage.setItem('SnEmail', customer.email);
         localStorage.setItem('firstName', customer.firstName);

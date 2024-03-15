@@ -30,6 +30,7 @@ const PaymentModal = ({
     setUpdateModal,
     subscriptionTitle,
     setActiveTab,
+    setIsStripeDataUpdated,
     subscriptionPriceId,
   } = useStateContext();
 
@@ -305,11 +306,13 @@ const PaymentModal = ({
           setPackageModal(false);
           setPaymentLoader(false);
           setUpdateModal(false);
+         
           setTimeout(() => {
-            navigate('/account');
+            navigate('/account')
+          setAccountTabName('Manage Plans');
+            setIsStripeDataUpdated(true);
             setActiveTab(4);
-            setAccountTabName('Manage Plans');
-          }, []);
+          }, [100]);
         }
       })
 
@@ -451,17 +454,17 @@ const PaymentModal = ({
       <div className="modal-container bg-[white] md:w-full w-[97%] mx-auto md:max-w-[645px] h-[90%]  rounded shadow-lg z-50 rounded-[10px] overflow-auto">
         <div className="modal-content h-[550px] py-4  px-6">
           <div className="w-full  relative mt-[24px] mx-auto">
-          {savedCard && savedCard.length === 0 &&
-            <DynamicButton
-              className="bg-[#EF6E6E]  w-full max-w-[150px]"
-              text="Go Back"
-              backArrow={true}
-              onClickFunction={() => {
-                setShowAccordion(false);
-                setPurchaseModal(true);
-              }}
-            />
-}
+            {savedCard && savedCard.length === 0 && (
+              <DynamicButton
+                className="bg-[#EF6E6E]  w-full max-w-[150px]"
+                text="Go Back"
+                backArrow={true}
+                onClickFunction={() => {
+                  setShowAccordion(false);
+                  setPurchaseModal(true);
+                }}
+              />
+            )}
             {paymentLoader && (
               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
                 <CircularLoader
@@ -778,7 +781,7 @@ const PaymentModal = ({
                           className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
                         ></DynamicButton>
                       </div>
-                    )} 
+                    )}
                   </>
                 </div>
               </div>

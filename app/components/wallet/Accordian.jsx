@@ -36,9 +36,15 @@ const Accordion = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
-    useState(false);
+  useState(false);
 
-  const {setActiveTab, loaderTitle, setLoaderTitle, setAccountTabName} = useStateContext();
+  const {
+    setActiveTab,
+    loaderTitle,
+    setLoaderTitle,
+    setAccountTabName,
+    setIsStripeDataUpdated,
+  } = useStateContext();
 
   let customerid, fullName, userEmail;
 
@@ -302,7 +308,7 @@ const Accordion = ({
       }
     } catch (error) {
       setPaymentLoader(false);
-      setloader(false)
+      setloader(false);
       // Handle errors here
       console.error('Error:', error);
     }
@@ -341,14 +347,14 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          setLoaderTitle("Payment completed successfully... ")
-            setTimeout(() => {
-              navigate('/account');
-              setActiveTab(4);
-              setAccountTabName('Manage Plans');
-              setPaymentLoader(false);
-            }, 2000);
-           
+          setLoaderTitle('Payment completed successfully... ')
+          setTimeout(() => {
+            navigate('/account');
+            setActiveTab(4)
+            setAccountTabName('Manage Plans')
+            setPaymentLoader(false)
+          setIsStripeDataUpdated(true)
+          }, 2000);
         }
       })
 
@@ -415,7 +421,11 @@ const Accordion = ({
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader
             textColor="text-white"
-            title={loaderTitle ? loaderTitle :"Processing your payment securely. Please wait a moment."}
+            title={
+              loaderTitle
+                ? loaderTitle
+                : 'Processing your payment securely. Please wait a moment.'
+            }
           />
         </div>
       )}
@@ -556,7 +566,7 @@ const Accordion = ({
                 <div className="w-full">
                   <label
                     className="block text-gray-700 text-sm font-bold mb-2"
-                    htmlFor="country" 
+                    htmlFor="country"
                   >
                     Country
                   </label>
