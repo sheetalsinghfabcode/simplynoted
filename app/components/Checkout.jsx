@@ -377,7 +377,7 @@ export function CheckoutData({
               giftCard = {
                 id: item.giftCardId, // Add a unique identifier for the gift card
                 url: giftProdUrl, // URL based on gift card name
-                qyt: item.csvFileLen,
+                qyt: item.qyt,
               };
             }
             let shipping = null;

@@ -306,13 +306,13 @@ const PaymentModal = ({
           setPackageModal(false);
           setPaymentLoader(false);
           setUpdateModal(false);
+          navigate('/account')
          
           setTimeout(() => {
-            navigate('/account')
-          setAccountTabName('Manage Plans');
+            setAccountTabName('Manage Plans');
             setIsStripeDataUpdated(true);
             setActiveTab(4);
-          }, [100]);
+          }, [300]);
         }
       })
 

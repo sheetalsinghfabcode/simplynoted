@@ -350,11 +350,13 @@ const Accordion = ({
           setLoaderTitle('Payment completed successfully... ')
           setTimeout(() => {
             navigate('/account');
-            setActiveTab(4)
-            setAccountTabName('Manage Plans')
             setPaymentLoader(false)
           setIsStripeDataUpdated(true)
           }, 2000);
+          setTimeout(() => {
+            setActiveTab(4)
+            setAccountTabName('Manage Plans')
+          }, 22000);
         }
       })
 
