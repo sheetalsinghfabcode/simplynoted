@@ -983,6 +983,10 @@ body {
   gap: 20px;
 }
 
+.object-fit-inherit {
+  object-fit: inherit !important;
+}
+
 /* Pagination buttons */
 .pagination button {
   background-color: #0d0c22;

@@ -645,6 +645,12 @@ export default function FlatCustomisableCard({
         width: element.offsetWidth,
         height: element.offsetHeight,
         quality: 1,
+        style: {
+            display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin:'0',
+        },  
       });
 
       if (selectedCardPage === 'Card Front') {
@@ -721,54 +727,47 @@ export default function FlatCustomisableCard({
         ]);
     
         canvas.width = 400;
-        canvas.height = 280;
+      canvas.height = 280;
 
-        ctx.imageSmoothingEnabled = true;
-    
-        ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
-    
-        const fixedWidth = 268; 
-        const fixedHeight = 220; 
-    
-        
-        const offsetX = -6;
-        const offsetY = 4;
-    
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-    
-        const rotationAngle = (3.5 * Math.PI) / 180;
-    
-        ctx.save();
-    
-        ctx.translate(centerX, centerY);
-    
+      ctx.imageSmoothingEnabled = true;
+  
+      ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+  
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
 
-        ctx.rotate(rotationAngle);
-    
-        ctx.drawImage(
-          image2,
-          -fixedWidth / 2 + offsetX,
-          -fixedHeight / 2 + offsetY,
-          fixedWidth,
-          fixedHeight
-        );
-    
-        ctx.restore();
-    
-        const blob = await new Promise((resolve, reject) => {
-          canvas.toBlob((blob) => {
-            if (blob) {
-              resolve(blob);
-            } else {
-              reject(new Error('Failed to generate blob from canvas'));
-            }
-          });
+      const maxAllowedWidth = canvas.width * 0.68; 
+      const maxAllowedHeight = canvas.height * 0.7;
+
+      const scaledWidth = Math.min(maxAllowedWidth, image2.width);
+      const scaledHeight = Math.min(maxAllowedHeight , image2.height);
+
+      const offsetX = centerX - scaledWidth / 2 ;
+      const offsetY = centerY - scaledHeight / 2 ;
+  
+      const rotationAngle = (1.3 * Math.PI) / 180;
+  
+      ctx.save();
+  
+      ctx.rotate(rotationAngle);
+  
+   
+      ctx.drawImage(image2, offsetX, offsetY, scaledWidth, scaledHeight);
+  
+      ctx.restore();
+  
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob((blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error('Failed to generate blob from canvas'));
+          }
         });
-    
-        const blobImageUrl = URL.createObjectURL(blob);
-    
-        return blobImageUrl;
+      });
+  
+      const blobImageUrl = URL.createObjectURL(blob);
+      return blobImageUrl;
     } catch (error) {
       console.error('Error generating a screenshot file:', error);
     }

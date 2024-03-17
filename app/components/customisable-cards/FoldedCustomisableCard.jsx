@@ -539,11 +539,18 @@ export default function FoldedCustomisableCard({
         }
       });
 
-    
       const dataUrl = await domtoimage.toPng(element, {
         width: element.offsetWidth,
         height: element.offsetHeight,
         quality: 1,
+        style: {
+          transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
+            display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                margin:'0',
+        },  
+       
       });
 
       if (selectedCardPage === 'Card Back' && dataUrl) {
@@ -563,6 +570,7 @@ export default function FoldedCustomisableCard({
           };
         });
       }
+      setTriggerEvent(false);
     } catch (error) {
       console.error('Error generating a screenshot file:', error);
     }
@@ -570,10 +578,10 @@ export default function FoldedCustomisableCard({
 
   async function generateScreenshotFile() {
     try {
-      // Image file present, generating screenshot.
       let imageFile;
       const frontblobUrl = frontImageDetails.screenShotUrl;
       const backblobUrl = backImageDetails.screenShotUrl;
+
       if (frontImageDetails.isImageSelected && frontblobUrl) {
         const selectedBlobUrl = await generateCanvasImage(frontblobUrl);
         if (selectedBlobUrl) {
@@ -607,14 +615,12 @@ export default function FoldedCustomisableCard({
           });
         }
       } else {
-        generateDefaultScreenshotImage(DefaultBackCardImage, 'front-image');
+        generateDefaultScreenshotImage(DefaultBackCardImage, 'back-image');
       }
-      setTriggerEvent(false);
     } catch (error) {
       console.error('Error generating screenshot:', error);
     }
   }
-
   async function generateCanvasImage(blobUrl) {
     try {
       const canvas = document.createElement('canvas');
@@ -625,7 +631,6 @@ export default function FoldedCustomisableCard({
 
       const image2 = new Image();
       image2.src = blobUrl;
-      document.body.appendChild(image2);
 
       await Promise.all([
         new Promise((resolve, reject) => {
@@ -644,32 +649,26 @@ export default function FoldedCustomisableCard({
   
       ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
   
-      const fixedWidth = 268; 
-      const fixedHeight = 220; 
-  
-      
-      const offsetX = -6;
-      const offsetY = 4;
-  
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
+
+      const maxAllowedWidth = canvas.width * 0.68; 
+      const maxAllowedHeight = canvas.height * 0.7;
+
+      const scaledWidth = Math.min(maxAllowedWidth, image2.width);
+      const scaledHeight = Math.min(maxAllowedHeight , image2.height);
+
+      const offsetX = centerX - scaledWidth / 2 ;
+      const offsetY = centerY - scaledHeight / 2 ;
   
-      const rotationAngle = (3.5 * Math.PI) / 180;
+      const rotationAngle = (1.3 * Math.PI) / 180;
   
       ctx.save();
   
-      ctx.translate(centerX, centerY);
-  
-
       ctx.rotate(rotationAngle);
   
-      ctx.drawImage(
-        image2,
-        -fixedWidth / 2 + offsetX,
-        -fixedHeight / 2 + offsetY,
-        fixedWidth,
-        fixedHeight
-      );
+   
+      ctx.drawImage(image2, offsetX, offsetY, scaledWidth, scaledHeight);
   
       ctx.restore();
   
@@ -684,21 +683,15 @@ export default function FoldedCustomisableCard({
       });
   
       const blobImageUrl = URL.createObjectURL(blob);
-
-      const imgElement = document.createElement('img');
-      // Set its src attribute to the captured data URL
-      imgElement.src = blobImageUrl;
-
-      // Append the image element to the body
-      document.body.appendChild(imgElement);
       return blobImageUrl;
     } catch (error) {
       console.error('Error generating a screenshot file:', error);
     }
   }
-
+  
   async function uploadPdfRequest() {
     try {
+      console.log(frontImageDetails.selectedImageFile);
       setIsLoading(true);
       setIsScrollerRemoved(true);
       const formData = new FormData();
@@ -1282,7 +1275,9 @@ export default function FoldedCustomisableCard({
                           id="backTrimmedDiv"
                           style={{
                             zIndex: '-20',
-                        
+                            transform: isRotationAnimationApplied
+                            ? 'rotateY(-180deg)'
+                            : 'rotateY(0deg)',
                           }}
                         >
                           {(backImageDetails.imageBlobUrl ||
@@ -1297,8 +1292,7 @@ export default function FoldedCustomisableCard({
                               className="object-contain h-full"
                               draggable="false"
                               style={{
-                                transform: `scale(${backImageDetails.zoom}) ${isRotationAnimationApplied ? 'rotateY(-180deg)' : 'rotateY(0deg)'}`,
-                                imageRendering: 'auto',
+                                transform: `scale(${backImageDetails.zoom})`,
                               }}
                             />
                           )}
