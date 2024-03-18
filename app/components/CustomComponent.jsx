@@ -61,9 +61,9 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
         >
           <Link to={`/custom/${product.handle}`} prefetch="intent">
             <div className={clsx('grid gap-4')}>
-              <div className="card-image aspect-[5/5] bg-primary/5">
+              <div className="card-image aspect-[5/4.7] bg-primary/5">
                 <img
-                  className="object-cover w-full fadeIn"
+                  className="object-fit-inherit w-full fadeIn"
                   sizes="(min-width: 64em) 25vw, (min-width: 48em) 30vw, 45vw"
                   aspectRatio="5/5"
                   src={product.image?.src}

@@ -184,8 +184,6 @@ export default function CustomProducts() {
     setLocationValue(true);
   }, [datafornav.pathname]);
 
-
-
   return (
     <div className="relative">
       {customProductData.length === 0 && metafields.length === 0 && (
@@ -222,19 +220,19 @@ export default function CustomProducts() {
                 className={`swimlane flex flex-col hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full max-h-[400px] justify-center items-end`}
               >
                 <div
-                  className="product-image-cont card-image self-center bg-white dark:bg-contrast/10 sm:w-[356px] sm:h-[200px]  md:w-[544px] md:h-[307px]  w-full"
+                  className="product-image-cont card-image self-center bg-white dark:bg-contrast/10  sm:h-[240px] sm:w-[345px] md:w-[400px] xl:w-[544px] lg:w-[460px] md:h-[307px]  w-full"
                 >
                   {customProductData &&
                     metafields &&
                     metafields.cardType == 'folded5x7' && (
                       <img
-                        style={{
-                          transform: `scale(${
-                            imageShow == 0
-                              ? metafields.face && metafields.face.zoom
-                              : metafields.back && metafields.back.zoom
-                          })`,
-                        }}
+                        // style={{
+                        //   transform: `scale(${
+                        //     imageShow == 0
+                        //       ? metafields.face && metafields.face.zoom
+                        //       : metafields.back && metafields.back.zoom
+                        //   })`,
+                        // }}
                         src={
                           customProductData.images.length
                             ? customProductData.images[imageShow].originalSrc
@@ -258,7 +256,7 @@ export default function CustomProducts() {
                           ? customProductData.images[imageShow].originalSrc
                           : flatCardImg
                       }
-                      className="object-contain fadeIn h-full w-full"
+                      className="object-fit-inherit fadeIn h-full w-full"
                     />
                   )}
                 </div>
