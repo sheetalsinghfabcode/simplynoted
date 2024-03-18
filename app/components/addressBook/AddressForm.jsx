@@ -35,7 +35,7 @@ const AddressForm = ({customerID}) => {
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
-        (country) => country.country === value,
+        (country) => country.country === value
       );
       setFormData((prev) => ({
         ...prev,

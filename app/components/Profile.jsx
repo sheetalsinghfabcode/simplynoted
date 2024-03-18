@@ -1,11 +1,11 @@
 // src/components/AccountForm.js
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import DynamicButton from './DynamicButton';
 import CircularLoader from './CircularLoder';
-import { json } from '@shopify/remix-oxygen';
-import { useStateContext } from '~/context/StateContext';
+import {json} from '@shopify/remix-oxygen';
+import {useStateContext} from '~/context/StateContext';
 import SuccessfullLoader from './SucessfullLoader';
-import location from "../../location.json"
+import location from "../../location.json";
 
 const Profile = ({
   customer,
@@ -23,7 +23,7 @@ const Profile = ({
   const [error, setError] = useState('');
   const [successfullLoader, setSuccessFullLoader] = useState(false);
 
-  const { setFullName, setAccountTabName, setActiveTab, setUserEmail } =
+  const {setFullName, setAccountTabName, setActiveTab, setUserEmail} =
     useStateContext();
 
   useEffect(() => {
@@ -38,41 +38,40 @@ const Profile = ({
 
   const handleAccountInputChange = (e) => {
     setError('');
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setAccountDetails({
       ...accountDetails,
       [name]: value,
     });
-
-    if (name === 'country' === 'city') {
-      const selectedCountry = location.countries?.find(
-        (country) => country.country === value,
+    if (name === 'country') {
+      // Find the selected country's states
+      const selectedCountry = location.countries.find(
+        (country) => country.country === value
       );
-      setSelectedAddress((prev) => ({
+      setAccountDetails((prev) => ({
         ...prev,
         country: value,
         state: selectedCountry ? selectedCountry.states[0] : '',
       }));
     }
+ 
+
   };
 
-  console.log(location);
-  const selectedCountry = location.countries?.find(
-    (country) => country.country === accountDetails.country,
-  );
-
-
   const handleSecurityInputChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setError('');
     setSecurityDetails({
       ...securityDetails,
       [name]: value,
     });
+
+  
   };
 
-
-
+  const selectedCountry = location.countries.find(
+    (country) => country.country === formData.country,
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,10 +114,8 @@ const Profile = ({
       );
       const jsonResponse = await response.json();
       if (jsonResponse?.errors && jsonResponse?.errors.phone) {
-        console.log("jsonResponse",jsonResponse);
         setError(jsonResponse?.errors.phone[0]);
       }
-
 
       if (response.ok) {
         // Request was successful
@@ -129,14 +126,16 @@ const Profile = ({
 
           localStorage.setItem(
             'SNFullName',
-            `${accountDetails.firstName || ''} ${accountDetails.lastName ? accountDetails.lastName + ' ' : ''
+            `${accountDetails.firstName || ''} ${
+              accountDetails.lastName ? accountDetails.lastName + ' ' : ''
             }`,
           );
 
           setTimeout(() => {
             setUserEmail(accountDetails.email);
             setFullName(
-              `${accountDetails.firstName || ''} ${accountDetails.lastName ? accountDetails.lastName + ' ' : ''
+              `${accountDetails.firstName || ''} ${
+                accountDetails.lastName ? accountDetails.lastName + ' ' : ''
               }`,
             );
             setProfile(false);
@@ -193,8 +192,8 @@ const Profile = ({
       const jsonResponse = await response.json();
       setError(
         jsonResponse.errors?.password_confirmation ||
-        jsonResponse.errors?.password ||
-        '',
+          jsonResponse.errors?.password ||
+          '',
       );
       if (error) {
         setLoader(false);
@@ -229,7 +228,6 @@ const Profile = ({
     setError(null);
   };
 
-
   return (
     <div className="relative">
       {loader && (
@@ -247,30 +245,42 @@ const Profile = ({
       )}
 
       <div
-        className={`rounded-lg md:p-6 w-full  mx-auto   ${(loader || successfullLoader) && 'opacity-50'
-          } `}
+        className={`rounded-lg md:p-6 w-full  mx-auto   ${
+          (loader || successfullLoader) && 'opacity-50'
+        } `}
       >
         <div className="flex w-full md:mt-[0px] mt-[23px]">
           <button
             onClick={() => switchToTab('account')}
-            className={`mr-4 px-4 py-4 w-full text-[18px] font-semibold  rounded-t-lg font-karla ${activeTabs === 'account'
-              ? 'bg-[#001a5f] text-white'
-              : 'bg-gray-300 text-gray-700'
-              }`}
+            className={`mr-4 px-4 py-4 w-full text-[18px] font-semibold  rounded-t-lg font-karla ${
+              activeTabs === 'account'
+                ? 'bg-[#001a5f] text-white'
+                : 'bg-gray-300 text-gray-700'
+            }`}
           >
             Account Details
           </button>
           <button
             onClick={() => switchToTab('security')}
-            className={`px-4 py-4 w-full text-[18px] font-semibold  rounded-t-lg font-karla ${activeTabs === 'security'
-              ? 'bg-[#001a5f] text-white'
-              : 'bg-gray-300 text-gray-700'
-              }`}
+            className={`px-4 py-4 w-full text-[18px] font-semibold  rounded-t-lg font-karla ${
+              activeTabs === 'security'
+                ? 'bg-[#001a5f] text-white'
+                : 'bg-gray-300 text-gray-700'
+            }`}
           >
             Security
           </button>
         </div>
         {activeTabs === 'account' && (
+
+
+
+
+
+
+
+
+
           <form onSubmit={handleSubmit} className="mb-[3rem]">
             <div className=" lg:grid grid-cols-1 items-center mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 ">
@@ -389,52 +399,20 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="city"
-                  className="block md:text-[16px] text-[12px] font-semibold"
+                  className="block  md:text-[16px] text-[12px] font-semibold"
                 >
                   City
                 </label>
-                <select
+                <input
+                  type="text"
                   id="city"
                   name="city"
                   value={accountDetails.city}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-                >
-
-                  {location.countries.map((country) => (
-                    <option key={country.country} value={country.country}>
-                      {country.country}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
-
-
               <div className="px-3">
-                <label
-                  htmlFor="state"
-                  className="block md:text-[16px] text-[12px] font-semibold"
-                >
-                  State
-                </label>
-                <select
-                  id="city"
-                  name="city"
-                  value={accountDetails.state}
-                  onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-                >
-                  <option value="">Select a state</option>
-                  {selectedCountry &&
-                    selectedCountry.countries.map((state) => (
-                      <option key={state} value={state}>
-                        {state}
-                      </option>
-                    ))}
-
-                </select>
-              </div>
-              {/* <div className="px-3">
                 <label
                   htmlFor="state"
                   className="block mb-1 md:mt-[0px] mt-[12px] md:text-[16px]  text-[12px] font-semibold"
@@ -449,38 +427,31 @@ const Profile = ({
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md  px-3 py-2 w-[100%]"
                 />
-                 <option value="">Select a state</option>
+                  <option value="">Select a state</option>
                 {selectedCountry &&
-                  selectedCountry.states.map((state) => (
+                  selectedCountry.countries.map((state) => (
                     <option key={state} value={state}>
                       {state}
                     </option>
                   ))}
-              </div> */}
+              </div>
             </div>
             <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3">
                 <label
-                  htmlFor="city"
-                  className="block md:text-[16px] text-[12px] font-semibold"
+                  htmlFor="firstName"
+                  className="block  md:text-[16px] text-[12px] font-semibold"
                 >
-                  City
+                  Country
                 </label>
-                <select
-                  id="city"
-                  name="city"
-                  value={accountDetails.city}
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  value={accountDetails.country}
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-                >
-                  <option value="">Select a city</option>
-                  {selectedCountry &&
-                    selectedCountry.cities.map((city, index) => (
-                      <option key={index} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                </select>
+                />
               </div>
               <div className="px-3">
                 <label
