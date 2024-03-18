@@ -33,6 +33,10 @@ const StripeModal = ({
     formData.email = userEmail;
   }, []);
 
+
+
+
+
   const {stripeLoader, setStripeLoader} = useStateContext();
 
   const [errors, setErrors] = useState({});
