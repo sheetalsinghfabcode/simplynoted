@@ -36,12 +36,12 @@ const Accordion = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
-  useState(false);
 
   const {
     setActiveTab,
     loaderTitle,
     setLoaderTitle,
+    setStripeLoader,
     setAccountTabName,
     setIsStripeDataUpdated,
   } = useStateContext();
@@ -50,6 +50,8 @@ const Accordion = ({
 
   let productId = packageProduct?.replace(/[^0-9]/g, '');
   let variantId = subscriptionProduct?.replace(/[^0-9]/g, '');
+
+
 
   const toggleBilling = () => {
     setIsBillingOpen(!isBillingOpen);
@@ -236,6 +238,7 @@ const Accordion = ({
     // Open billing address section if there are any errors
     if (!isValid) {
       setIsBillingOpen(true);
+      setStripeLoader(false)
     }
     return isValid;
   };
@@ -356,7 +359,7 @@ const Accordion = ({
           setTimeout(() => {
             setActiveTab(4)
             setAccountTabName('Manage Plans')
-          }, 22000);
+          }, 2200);
         }
       })
 
@@ -683,16 +686,16 @@ const Accordion = ({
                     </div>
                   </div>
                 )}
-                {loader && (
+                {/* {loader && ( */}
                   <CircularLoader title="Adding Card.." color="#ef6e6e" />
-                )}
+                {/* )} */}
                 {(!savedCard || showStripeCard) && (
                   <div className="p-4">
                     <StripeCard
                       addNewCreditCard={addNewCreditCard}
                       setPaymentMethodId={setPaymentMethodId}
                       createCustomerId={createCustomerId}
-                      savedCard={savedCard}
+                      savedCard={(savedCard && savedCard.length > 0)  ? savedCard : []}
                       paymentPurchase={paymentPurchase}
                       validateForm={validateForm}
                       stripePayments={stripePayments}

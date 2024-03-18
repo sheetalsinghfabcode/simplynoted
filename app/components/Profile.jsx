@@ -5,6 +5,7 @@ import CircularLoader from './CircularLoder';
 import {json} from '@shopify/remix-oxygen';
 import {useStateContext} from '~/context/StateContext';
 import SuccessfullLoader from './SucessfullLoader';
+import location from '../../location.json';
 
 const Profile = ({
   customer,
@@ -38,11 +39,33 @@ const Profile = ({
   const handleAccountInputChange = (e) => {
     setError('');
     const {name, value} = e.target;
-    setAccountDetails({
-      ...accountDetails,
-      [name]: value,
-    });
+    if (name === 'country') {
+      // Handling country selection
+      const selectedCountry = location.countries.find(
+        (country) => country.country === value,
+      );
+
+
+      
+      setAccountDetails((prevAccountDetails) => ({
+        ...prevAccountDetails,
+        country: value,
+        state: selectedCountry ? selectedCountry.states[0] : '', // Set default state
+      }));
+    } else {
+      setAccountDetails((prevAccountDetails) => ({
+        ...prevAccountDetails,
+        [name]: value,
+      }));
+    }
   };
+
+  const selectedCountry = location.countries.find(
+    (country) => country.country === accountDetails.country,
+  );
+
+  console.log("selectedCountry",selectedCountry);
+
 
   const handleSecurityInputChange = (e) => {
     const {name, value} = e.target;
@@ -352,7 +375,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
+                  className="block mb-1  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
                 >
                   Address 2
                 </label>
@@ -386,18 +409,28 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="state"
-                  className="block mb-1 md:mt-[0px] mt-[12px] md:text-[16px]  text-[12px] font-semibold"
+                  className="block md:mt-[0px] mt-[12px] md:text-[16px]  text-[12px] font-semibold"
                 >
                   State
                 </label>
-                <input
-                  type="text"
-                  id="state"
-                  name="state"
-                  value={accountDetails.state}
+
+                <select
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md  px-3 py-2 w-[100%]"
-                />
+                  value={accountDetails.state}
+                  name="state"
+                  className={`appearance-none border border-gray-300 rounded w-full h-[36.6px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+                  id="state"
+                >
+                  <option value="">Select a state</option>
+                  {selectedCountry &&
+                    selectedCountry.states.map((state) => (
+                      <option key={state} value={state}>
+                        {state}
+                      </option>
+                    ))}
+                </select>
+
+               
               </div>
             </div>
             <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
@@ -408,14 +441,20 @@ const Profile = ({
                 >
                   Country
                 </label>
-                <input
-                  type="text"
-                  id="country"
-                  name="country"
+                <select
                   value={accountDetails.country}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
-                />
+                  itemID="country"
+                  name="country"
+                  id="country"
+                  className="appearance-none border border-gray-300 rounded w-full h-[36.6px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                >
+                  {location.countries.map((country) => (
+                    <option key={country.country} value={country.country}>
+                      {country.country}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="px-3">
                 <label

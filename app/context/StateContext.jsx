@@ -29,7 +29,7 @@ export function StateContextProvider({children}) {
   const [checkLogin, setCheckLogin] = useState(false);
   const [loaderTitle, setLoaderTitle] = useState('');
   const [loader, setLoader] = useState(false);
-
+  const [stripeLoader,setStripeLoader] = useState(false)
   const [showLoader, setShowLoader] = useState(false);
   const [defaultAddressType, setDefaultAddressType] = useState('return');
   const [cartData, setCartData] = useState([]);
@@ -121,6 +121,8 @@ export function StateContextProvider({children}) {
         amount,
         setAmount,
         packageProduct,
+        stripeLoader,
+        setStripeLoader,
         loader,
         setLoader,
         setPackageProduct,

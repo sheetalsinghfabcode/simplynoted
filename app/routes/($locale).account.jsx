@@ -289,7 +289,7 @@ function Account({customer, heading, featuredData}) {
     address2: '',
     city: '',
     state: '',
-    country: '',
+    country: 'USA',
     zip: '',
   });
 

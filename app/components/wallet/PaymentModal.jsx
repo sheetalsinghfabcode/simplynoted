@@ -25,6 +25,7 @@ const PaymentModal = ({
   const {
     selectedPlan,
     amount,
+    setStripeLoader,
     packageProduct,
     subscriptionProduct,
     setUpdateModal,
@@ -54,6 +55,8 @@ const PaymentModal = ({
     setIsBillingOpen(!isBillingOpen);
     setIsCardInfoOpen(false);
   };
+
+ 
 
   const toggleCardInfo = () => {
     setIsCardInfoOpen(!isCardInfoOpen);
@@ -307,10 +310,10 @@ const PaymentModal = ({
           setPaymentLoader(false);
           setUpdateModal(false);
           navigate('/account')
+          setIsStripeDataUpdated(true)
          
           setTimeout(() => {
             setAccountTabName('Manage Plans');
-            setIsStripeDataUpdated(true);
             setActiveTab(4);
           }, [300]);
         }
@@ -377,6 +380,7 @@ const PaymentModal = ({
     // Open billing address section if there are any errors
     if (!isValid) {
       setIsBillingOpen(true);
+      setStripeLoader(false)
     }
     return isValid;
   };
@@ -723,9 +727,9 @@ const PaymentModal = ({
                           </div>
                         </div>
                       )}
-                      {loader && (
+                      {/* {loader && ( */}
                         <CircularLoader title="Adding Card.." color="#ef6e6e" />
-                      )}
+                      {/* )} */}
                       {(!savedCard || showStripeCard) && (
                         <div className="p-4">
                           <StripeCard
@@ -733,7 +737,8 @@ const PaymentModal = ({
                             setPaymentMethodId={setPaymentMethodId}
                             createCustomerId={createCustomerId}
                             validateForm={validateForm}
-                            savedCard={savedCard}
+                            savedCard={(savedCard && savedCard.length > 0)  ? savedCard : []}
+
                             paymentPurchase={paymentPurchase}
                             setloader={setloader}
                             showStripeCard={showStripeCard}

@@ -344,6 +344,7 @@ const ContactTable = ({
     setLoaderTitle('Uploading Address Book....');
     setShowLoader(true);
     const modifiedData = {};
+    debugger
 
     for (let key in data) {
       const modifiedKey = key?.replace(/"/g, '');
@@ -387,6 +388,7 @@ const ContactTable = ({
         setTimeout(() => {}, 2000);
         file.current.value = '';
         'Successful response data:', responseData.result;
+        debugger
       } else {
         file.current.value = '';
         setSelectedFile(null);
@@ -412,6 +414,7 @@ const ContactTable = ({
         setShowLoader(false);
         setLoaderTitle(null);
       }, 1200);
+      debugger
     
     }
   };
