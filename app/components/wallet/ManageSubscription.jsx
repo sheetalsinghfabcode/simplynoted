@@ -575,6 +575,7 @@ const ManageSubscription = () => {
         setUpdateModal={setUpdateModal}
         StripeKey={StripeKey}
         formData={formData}
+        setLoader={setLoader}
         setFormData={setFormData}
         updateCard={updateCard}
         addCreditModal={addCreditModal}

@@ -62,9 +62,11 @@ const StripeCard = ({
           handlePurchaseCard(id);
         }
       } catch (error) {
+        setLoader(false)
         console.error(error, 'stripe error');
       }
     } else {
+      setLoader(false)
       setErrorMessage(error.message)
       console.error(error.message);
     }
