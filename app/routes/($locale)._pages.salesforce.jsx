@@ -222,7 +222,7 @@ export default function Salesforce() {
           />
         </div>
         {/* second */}
-        <div className="flex flex-wrap justify-center global-section-divider relative global-max-width-handler !my-[30px]">
+        <div className="flex flex-wrap justify-center global-section-divider relative global-max-width-handler">
           <div className="absolute hidden lg:block xl:top-[373px] top-[280px] right-[14rem] z-[-12]">
             <img
               className="w-full xl:h-[56rem] h-[44rem]"
@@ -230,7 +230,7 @@ export default function Salesforce() {
               alt="Computer man"
             />
           </div>
-          <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center xl:pl-0 pl-[27px]">
+          <div className="xl:w-[30%] lg:w-[40%] xl:mt-[61px] lg:order-none order-2 w-full lg:text-left text-center">
             <div className="lg:block hidden">
               <div className="xl:text-[32px] mb-[12px] text-[32px] font-bold text-[#001A5F]">
                 Send one or send
@@ -290,7 +290,7 @@ export default function Salesforce() {
 
         {/* third */}
 
-        <div className="flex flex-wrap flex-row-reverse global-section-divider justify-center relative  global-max-width-handler   w-[100%] mt-8 lg:my-0 !my-[30px]">
+        <div className="flex flex-wrap flex-row-reverse global-section-divider justify-center relative  global-max-width-handler   w-[100%] ">
           <div className="absolute xl:top-[270px] top-[175px] hidden lg:block z-[-12] xl:right-[134px] right-[17px]">
             <img
               className="2xl:w-[1135px] w-[1051px]"
@@ -328,7 +328,7 @@ export default function Salesforce() {
             </div>
           </div>
           <div className="lg:hidden block">
-            <div className="xl:text-[36px] mb-[12px] text-[32px] text-center font-bold text-[#001A5F]">
+            <div className="xl:text-[36px] mb-[12px] text-[27px] text-center font-bold text-[#001A5F]">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </div>
@@ -402,7 +402,7 @@ export default function Salesforce() {
               src={SalesforceIcon}
               alt="shopify"
             />
-            <img className='absolute right-[143px] top-[60px]' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495" />
+            <img className='absolute right-[143px] top-[60px] hidden md:block' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495" />
             <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
               Salesforce Deep Integration
               <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">

@@ -552,7 +552,7 @@ export default function bussniess() {
                     />
                   </div>
 
-                  <div className="lg:ml-[40px] md:ml-[60px] ml-0 lg:flex-col flex flex-row lg:gap-0 small:gap-[5px]">
+                  <div className="lg:ml-[40px] md:ml-[60px] ml-0 lg:flex-col flex flex-row gap-[3px] small:gap-[5px]">
                     <img
                       className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
                       style={
@@ -885,7 +885,7 @@ export default function bussniess() {
                     />
                   </div>
 
-                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row lg:gap-0 small:gap-[5px]">
+                  <div className="md:ml-[40px] ml-0 lg:flex-col flex flex-row gap-[3px] small:gap-[5px]">
                     <div
                       className="click-link xl:w-[22%] lg:w-[26%] lg:mt-0 mt-7 w-[70px] h-[70px] font-semibold bg-[#f0f8ff] 2xl:p-[40px] flex justify-center items-center 2xl:text-[16px] p-[15px] rounded-full  cursor-pointer lg:text-[14px] text-[12px] "
                       style={
