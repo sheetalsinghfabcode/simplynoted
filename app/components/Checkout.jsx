@@ -1045,7 +1045,7 @@ export function CheckoutData({
                   </div>
                 )}
                 <StripeCardComp
-                    savedCard={savedCard ? savedCard : []}
+                  savedCard={savedCard ? savedCard : []}
                   validateForm={validateForm}
                   setPaymentMethodId={setPaymentMethodId}
                   AddCreditCard={AddCreditCard}

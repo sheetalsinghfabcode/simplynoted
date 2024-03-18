@@ -34,6 +34,7 @@ export function StateContextProvider({children}) {
   const [defaultAddressType, setDefaultAddressType] = useState('return');
   const [cartData, setCartData] = useState([]);
   const [isCartUpdated, setIsCartUpdated] = useState(false);
+  const [cardElements,setCardElements] = useState(false)
 
   const [showSignScreen, setShowSignScreen] = useState(false);
   const [isStripeDataUpdated,setIsStripeDataUpdated] = useState(false)
@@ -177,7 +178,9 @@ export function StateContextProvider({children}) {
         isCartUpdated,
         setIsCartUpdated,
         isStripeDataUpdated,
-        setIsStripeDataUpdated
+        setIsStripeDataUpdated,
+        cardElements,
+        setCardElements
       }}
     >
       {children}

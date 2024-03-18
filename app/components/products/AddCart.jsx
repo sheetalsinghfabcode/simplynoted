@@ -605,7 +605,7 @@ export function AddCart({
                         placeholder="Search Addresses..."
                       />
                     </div>
-                    {filteredForSender(returnAddress, searchData2).map(
+                    {filteredForSender(returnAddress, searchData2).reverse().map(
                       (item, index) => (
                         <div
                           key={index}
@@ -665,7 +665,7 @@ export function AddCart({
                             placeholder="Search Addresses..."
                           />
                         </div>
-                        {filteredList(recipientAddress, searchData).map(
+                        {filteredList(recipientAddress, searchData).reverse().map(
                           (item, index) => (
                             <div
                               key={index}

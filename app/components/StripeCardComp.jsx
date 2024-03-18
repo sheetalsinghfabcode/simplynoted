@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
 import DynamicButton from './DynamicButton';
 
@@ -18,13 +18,18 @@ const CARD_OPTIONS = {
   },
 };
 
-const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm,savedCard}) => {
+const StripeCardComp = ({
+  setPaymentMethodId,
+  AddCreditCard,
+  validateForm,
+  savedCard,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!validateForm() && savedCard && savedCard.length === 0 ) {
+    if (!validateForm() && savedCard && savedCard.length === 0) {
       return; // Exit early if the form is not valid
     }
 
@@ -47,6 +52,8 @@ const StripeCardComp = ({setPaymentMethodId, AddCreditCard,validateForm,savedCar
       console.error(error.message);
     }
   };
+
+
   return (
     <form
       onSubmit={handleSubmit}

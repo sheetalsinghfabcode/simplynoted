@@ -35,8 +35,16 @@ const StripeCard = ({
   const stripe = useStripe();
   let elements = useElements();
 
-  const {stripeLoader, setStripeLoader} = useStateContext();
+  const {stripeLoader, setStripeLoader,setCardElements} = useStateContext();
   const [errorMessage, setErrorMessage] = useState('');
+
+  const clearCard = () => {
+    const cardElement = elements.getElement(CardElement);
+    // ensure the Element is still mounted
+    if (cardElement) {
+      cardElement.clear();
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -72,7 +80,7 @@ const StripeCard = ({
         setStripeLoader(false);
 
         console.error(error, 'stripe error');
-      }
+      } 
     } else {
       setErrorMessage(error.message);
       console.error(error.message);
@@ -80,14 +88,13 @@ const StripeCard = ({
     }
   };
 
-  console.log('stripeLoader', stripeLoader);
-
   const pathname = useLocation();
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="border border-solid border-black">
         <CardElement
+          onReady={(e)=>setCardElements(e)}          
           onChange={() => setErrorMessage('')}
           options={CARD_OPTIONS}
           className="my-5 mx-2 sm:mx-5"
@@ -100,25 +107,27 @@ const StripeCard = ({
       )}
 
       <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
-        <div 
-          onClick={() => setStripeLoader(true)}
-        
-        className='flex items-center justify-center w-full max-w-[300px] !mt-0 '>
-        <button
-          type="submit"
-          className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
+        <div
+          onClick={() => {
+            setStripeLoader(true);
+          }}
+          className="flex items-center justify-center w-full max-w-[300px] !mt-0 "
         >
-          {(pathname.pathname === '/simply-noted-plans' ||
-            pathname.pathname === '/account') &&
-          !addCreditModal &&
-          !showStripeCard &&
-          !updateCard
-            ? 'Complete Purchase'
-            : !addCreditModal && !showStripeCard && updateCard
-            ? 'Update Card'
-            : (showStripeCard || addCreditModal) && 'Add Card'}
-        </button>
-      </div>
+          <button
+            type="submit"
+            className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
+          >
+            {(pathname.pathname === '/simply-noted-plans' ||
+              pathname.pathname === '/account') &&
+            !addCreditModal &&
+            !showStripeCard &&
+            !updateCard
+              ? 'Complete Purchase'
+              : !addCreditModal && !showStripeCard && updateCard
+              ? 'Update Card'
+              : (showStripeCard || addCreditModal) && 'Add Card'}
+          </button>
+        </div>
       </div>
     </form>
   );

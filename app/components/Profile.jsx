@@ -64,7 +64,6 @@ const Profile = ({
     (country) => country.country === accountDetails.country,
   );
 
-  console.log("selectedCountry",selectedCountry);
 
 
   const handleSecurityInputChange = (e) => {

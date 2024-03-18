@@ -738,7 +738,6 @@ const PaymentModal = ({
                             createCustomerId={createCustomerId}
                             validateForm={validateForm}
                             savedCard={(savedCard && savedCard.length > 0)  ? savedCard : []}
-
                             paymentPurchase={paymentPurchase}
                             setloader={setloader}
                             showStripeCard={showStripeCard}

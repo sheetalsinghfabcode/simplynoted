@@ -47,6 +47,7 @@ const ManageSubscription = () => {
     setUpdateModal,
     loader,
     setLoader,
+    cardElements,
     isStripeDataUpdated,
     setIsStripeDataUpdated,
   } = useStateContext();
@@ -67,6 +68,11 @@ const ManageSubscription = () => {
   const header = ['S.NO', 'DESCRIPTION', 'DATE', 'AMOUNT', 'PAYMENT STATUS'];
 
   const navigate = useNavigate();
+
+
+  function someEvent() {
+    cardElements.clear()
+}
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
@@ -789,6 +795,7 @@ const ManageSubscription = () => {
                                       text="Update Card"
                                       className="bg-[#ef6e6e] rounded-[9px] md:w-[190px] w-[130px] md:h-[45px] h-[38px] text-white text-[13px]"
                                       onClickFunction={() => {
+                                        someEvent()
                                         setAddCreditModal(false);
                                         setPaymentId(item.paymentId);
                                         setUpdateModal(true);
@@ -822,6 +829,7 @@ const ManageSubscription = () => {
 
                           <DynamicButton
                             onClickFunction={() => {
+                              someEvent()
                               setAddCreditModal(true);
                               setUpdateModal(true);
                             }}
