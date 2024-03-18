@@ -14,6 +14,7 @@ const StripeModal = ({
   title,
   savedCard,
   StripeKey,
+  setLoader,
   addCreditModal,
   handlePurchaseCard,
   updateCard,
@@ -303,6 +304,7 @@ const StripeModal = ({
 
                 <Elements stripe={stripe}>
                   <StripeCard
+                  setLoader={setLoader}
                     onCancel={onCancel}
                     updateCard={updateCard}
                     validateForm={validateForm}
