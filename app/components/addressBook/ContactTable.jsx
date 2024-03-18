@@ -126,15 +126,15 @@ const ContactTable = ({
     }
   };
 
-  useEffect(() => {
-    if (addresses.length > 0) {
-      setupdateLoader(true);
-      setTimeout(() => {
-        setShowLoader(false);
-        setupdateLoader(false);
-      }, 1500);
-    }
-  }, [addresses]);
+    useEffect(() => {
+      if (addresses.length > 0) {
+        setupdateLoader(true);
+        setTimeout(() => {
+          setShowLoader(false);
+          setupdateLoader(false);
+        }, 1500);
+      }
+    }, []);
 
   data = useMemo(
     () => filterAddressesByType(),
@@ -407,8 +407,12 @@ const ContactTable = ({
       console.error('Error uploading data:', error);
       throw error;
     } finally {
-      setShowLoader(false);
-      setLoaderTitle(null);
+      setLoaderTitle("Uploaded Address Successfully")
+      setTimeout(() => {
+        setShowLoader(false);
+        setLoaderTitle(null);
+      }, 1200);
+    
     }
   };
 
