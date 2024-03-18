@@ -27,6 +27,7 @@ export default function FlatCustomisableCard({
     screenShotUrl: null,
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
+    canvasImageUrl:null,
     zoom: 1,
     isColoredImage: true,
     isLongImage: false,
@@ -135,7 +136,37 @@ export default function FlatCustomisableCard({
     const generateImageFiles = async () => {
       try {
         let imageFile;
+        if (selectedCardPage === 'Card Front') {
+          if (frontImageDetails.isImageSelected) {
+            const selectedBlobUrl = frontImageDetails.isColoredImage
+              ? frontImageDetails.imageBlobUrl
+              : frontImageDetails.blackAndWhiteImageBlobUrl;
+            imageFile = await blobUrlToFileObject(
+              selectedBlobUrl,
+              `${customerId}-flat-front-image`,
+            );
 
+            setFrontImageDetails((prevFrontImageDetails) => {
+              return {
+                ...prevFrontImageDetails,
+                selectedImageFile: imageFile,
+              };
+            });
+          } else {
+            const response = await fetch(DefaultFrontCardImage);
+            const blob = await response.blob();
+            const filename = 'default-screenshot.png';
+            const frontDefaultImageFile = new File([blob], filename, {
+              type: blob.type,
+            });
+            setFrontImageDetails((prevFrontImageDetails) => {
+              return {
+                ...prevFrontImageDetails,
+                selectedImageFile: frontDefaultImageFile,
+              };
+            });
+          }
+        }
         if (
           selectedCardPage === 'Card Back' &&
           observingData.isHeader &&
@@ -158,6 +189,7 @@ export default function FlatCustomisableCard({
           observingData.isFooter &&
           footerData.isImageSelected
         ) {
+          console.log("footerData.imageBlobUrl",footerData.imageBlobUrl)
           imageFile = await blobUrlToFileObject(
             footerData.imageBlobUrl,
             `${customerId}-flat-front-image`,
@@ -681,7 +713,7 @@ export default function FlatCustomisableCard({
           setFrontImageDetails((prevFrontImageDetails) => {
             return {
               ...prevFrontImageDetails,
-              selectedImageFile: imageFile,
+              canvasImageUrl: imageFile,
             };
           });
         }
@@ -695,7 +727,7 @@ export default function FlatCustomisableCard({
         setFrontImageDetails((prevFrontImageDetails) => {
           return {
             ...prevFrontImageDetails,
-            selectedImageFile: frontDefaultImageFile,
+            canvasImageUrl: frontDefaultImageFile,
           };
         });
       }
@@ -1015,7 +1047,7 @@ export default function FlatCustomisableCard({
           pdfURL: s3ImageUrls.pdfUrl,
         },
         s3ImageUrls: s3ImageUrls,
-        featuredImage: frontImageDetails.selectedImageFile,
+        featuredImage: frontImageDetails.canvasImageUrl,
       };
 
       formData.append('product', JSON.stringify(payload.product));

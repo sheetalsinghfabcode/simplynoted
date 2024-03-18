@@ -233,12 +233,21 @@ export default function CustomProducts() {
                         //       : metafields.back && metafields.back.zoom
                         //   })`,
                         // }}
+
+                        //Change when back image is changed to canvas image
+                        style={{
+                            transform: `scale(${
+                              imageShow == 1
+                                ? metafields.back && metafields.back.zoom
+                                :1
+                            })`,
+                          }}
                         src={
                           customProductData.images.length
                             ? customProductData.images[imageShow].originalSrc
                             : foldBack
                         }
-                        className="object-fit-inherit fadeIn h-full w-full"
+                        className="!object-contain fadeIn h-full w-full"
                       />
                     )}
                   {/* {metafields && metafields.face.zoom}------ */}
