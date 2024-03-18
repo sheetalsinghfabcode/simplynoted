@@ -94,8 +94,10 @@ const Profile = ({
       );
       const jsonResponse = await response.json();
       if (jsonResponse?.errors && jsonResponse?.errors.phone) {
+        console.log("jsonResponse",jsonResponse);
         setError(jsonResponse?.errors.phone[0]);
       }
+
 
       if (response.ok) {
         // Request was successful
