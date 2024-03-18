@@ -402,7 +402,7 @@ export default function Salesforce() {
               src={SalesforceIcon}
               alt="shopify"
             />
-            <img className='absolute right-[143px] top-[60px] hidden md:block' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495" />
+            <img className='absolute right-[143px] hiiden lg:block top-[60px] hidden md:block' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495" />
             <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
               Salesforce Deep Integration
               <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
