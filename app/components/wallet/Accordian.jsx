@@ -686,9 +686,9 @@ const Accordion = ({
                     </div>
                   </div>
                 )}
-                {/* {loader && ( */}
+                {loader && (
                   <CircularLoader title="Adding Card.." color="#ef6e6e" />
-                {/* )} */}
+                )}
                 {(!savedCard || showStripeCard) && (
                   <div className="p-4">
                     <StripeCard

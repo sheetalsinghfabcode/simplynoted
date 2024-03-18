@@ -339,19 +339,18 @@ const ContactTable = ({
       setFilteredAddresses(updatedAddressData);
     }
   };
-
-  const uploadDataToAPI = async (data) => {
+  const uploadDataToAPI = async (data, totalAddresses) => {
     setLoaderTitle('Uploading Address Book....');
     setShowLoader(true);
     const modifiedData = {};
-
+  
     for (let key in data) {
       const modifiedKey = key?.replace(/"/g, '');
-
+  
       modifiedData[modifiedKey] = data[key]?.replace(/"/g, '');
     }
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
-
+  
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -377,7 +376,7 @@ const ContactTable = ({
           anniversary: modifiedData.Anniversary || '',
         }),
       });
-
+  
       if (response.ok) {
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
@@ -407,14 +406,18 @@ const ContactTable = ({
       console.error('Error uploading data:', error);
       throw error;
     } finally {
-      setLoaderTitle("Uploaded Address Successfully")
-      setTimeout(() => {
-        setShowLoader(false);
-        setLoaderTitle(null);
-      }, 1200);
-    
+      totalAddresses--;
+  
+      if (totalAddresses === 0) {
+        setLoaderTitle("Uploaded Address Successfully");
+        setTimeout(() => {
+          setShowLoader(false);
+          setLoaderTitle(null);
+        }, 1200);
+      }
     }
-  };
+  }
+  
 
   function cleanHeaders(headerRow) {
     const cleanedHeaders = {};
@@ -550,7 +553,7 @@ const ContactTable = ({
           setShowLoader(false);
         }, 100);
       } else {
-        await uploadDataToAPI(data);
+        await uploadDataToAPI(data,cleanedData.length);
       }
     }
   };
