@@ -406,9 +406,8 @@ const ContactTable = ({
       console.error('Error uploading data:', error);
       throw error;
     } finally {
-      totalAddresses--;
   
-      if (totalAddresses === 0) {
+      if (totalAddresses === 1) {
         setLoaderTitle("Uploaded Address Successfully");
         setTimeout(() => {
           setShowLoader(false);
@@ -525,6 +524,8 @@ const ContactTable = ({
       return cleanedEntry;
     });
 
+    let totalAddresses = cleanedData.length;
+
     for (let i = 0; i < cleanedData.length; i++) {
       const data = cleanedData[i];
       const missingFields = [];
@@ -553,7 +554,8 @@ const ContactTable = ({
           setShowLoader(false);
         }, 100);
       } else {
-        await uploadDataToAPI(data,cleanedData.length);
+        await uploadDataToAPI(data, totalAddresses); // Pass totalAddresses to uploadDataToAPI
+        totalAddresses--; // Decrement totalAddresses for each call
       }
     }
   };
