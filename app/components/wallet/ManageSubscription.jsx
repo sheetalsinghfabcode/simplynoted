@@ -258,7 +258,7 @@ const ManageSubscription = () => {
       })
       .then((data) => {
         setLoader(false);
-        setIsStripeDataUpdated(true)
+        setIsStripeDataUpdated(true);
         // Handle the response data if needed
       })
       .catch((error) => {
@@ -611,10 +611,12 @@ const ManageSubscription = () => {
                           {(stripeCollection &&
                             stripeCollection.stripe?.subscriptionStatus !==
                               'canceled' &&
-                            !stripeCollection.error) ||
-                          stripeCollection.stripe?.balance === 0
-                            ? stripeCollection.stripe?.subscription
-                            : 'Free'}
+                            !stripeCollection.error &&
+                            stripeCollection.stripe?.subscription) ||
+                            (stripeCollection &&
+                              Number(stripeCollection.stripe?.balance) === 0 &&
+                              stripeCollection.stripe?.subscription) ||
+                            'Free'}
                         </span>
                       </div>
                       {stripeCollection.stripe?.subscriptionStatus &&

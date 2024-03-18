@@ -6,6 +6,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import location from 'location.json';
 import {useState, useEffect} from 'react';
 import {ImCross} from 'react-icons/im';
+import { useStateContext } from '~/context/StateContext';
 
 const StripeModal = ({
   loader,
@@ -32,7 +33,12 @@ const StripeModal = ({
     formData.email = userEmail;
   }, []);
 
+  const {stripeLoader,setStripeLoader} = useStateContext();
+
+
   const [errors, setErrors] = useState({});
+
+
 
   const validateForm = () => {
     let isValid = true;
@@ -72,6 +78,8 @@ const StripeModal = ({
     setErrors(newErrors);
 
     if (!isValid) {
+      setStripeLoader(false)
+
       const firstErrorField = Object.keys(newErrors)[0];
       const firstErrorElement = document.getElementById(firstErrorField);
       if (firstErrorElement) {
@@ -122,6 +130,8 @@ const StripeModal = ({
     (country) => country.country === formData.address.country,
   );
 
+
+
   return (
     <div
       className={`${
@@ -143,7 +153,7 @@ const StripeModal = ({
             </h3>
           </div>
           <div className="modal-body h-240px mt-[12px]">
-            {loader && (
+            {stripeLoader && (
               <div className="flex items-center justify-center">
                 <div className="absolute inset-0 bg-white opacity-50 z-40"></div>
                 <div className="z-50">
@@ -307,6 +317,7 @@ const StripeModal = ({
                   setLoader={setLoader}
                     onCancel={onCancel}
                     updateCard={updateCard}
+                    savedCard={(savedCard && savedCard.length > 0)  ? savedCard : []}
                     validateForm={validateForm}
                     handlePurchaseCard={handlePurchaseCard}
                     addCreditModal={addCreditModal}

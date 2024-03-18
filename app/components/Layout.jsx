@@ -912,17 +912,21 @@ const FlyoutLink = ({children, href, FlyoutContent, data}) => {
 
 const PricingContent = ({props}) => {
   const navigate = useNavigate()
+
+  let storedCustomerId;
+  useEffect(() => {
+     storedCustomerId = localStorage.getItem('customerId');
+  }, []);
+
+  
   const {customerId,setCheckLogin} = useStateContext()
   function onCLickCheck(){
-    if(customerId === null || customerId === undefined){
+    if(customerId === null && customerId === undefined  && storedCustomerId=== null  ){
       setCheckLogin(true)
     } else{
       navigate('/customise-your-card')
     }
   }
-
-
-
 
   return (
     <div className="w-64 bg-wheat p-6 shadow-xl">
