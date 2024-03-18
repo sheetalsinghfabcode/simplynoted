@@ -223,7 +223,7 @@ const PaymentModal = ({
         subscriptionName: subscriptionTitle,
       };
 
-      const apiUrl = `https://a8ab-122-173-24-70.ngrok-free.app/stripe/create-subscription?customerId=${customerID}`;
+      const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
