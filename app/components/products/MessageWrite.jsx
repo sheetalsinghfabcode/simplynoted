@@ -983,23 +983,27 @@ export function MessageWriting({
               NEW TEMPLATE
             </h1>
           </div>
+          <div className="h-[16px] mt-[5px]">
+            {errorTemplate && (
+              <span className="text-red-500 font-karla">
+                Please check that the value is not empty
+              </span>
+            )}
+          </div>
           <div>
             <input
               type="text"
               ref={ref4}
-              onChange={() => {
+              autoFocus
+              onChange={(e) => {
                 setErrorMessage('');
                 setErrorTemplate('');
+                e.target.value
               }}
               value={tempVal}
               className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
             />
           </div>
-          {errorTemplate && (
-            <span className="text-red-500 font-karla">
-              Please check that the value is not empty
-            </span>
-          )}
           {errorMessage && (
             <span className="text-red-500 font-karla">{errorMessage}</span>
           )}

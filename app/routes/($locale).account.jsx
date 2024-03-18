@@ -383,7 +383,7 @@ function Account({customer, heading, featuredData}) {
             </div>
             <div className="hidden"></div>
 
-            <div className=" w-full  md:w-[80%]">
+            <div className=" w-full mr-[5px] ml-[5px]  md:w-[80%]">
               {activeTab === 0 && (
                 <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex md:mt-[0px] mt-[23px] gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                   <CardComponent

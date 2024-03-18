@@ -152,6 +152,14 @@ function Instruction({
                       </td>
                     </tr>
                     <tr>
+                      <td className="border border-solid border-black py-2 px-4">
+                        City
+                      </td>
+                      <td className="border border-solid border-black py-2 px-4">
+                        Text
+                      </td>
+                    </tr>
+                    <tr>
                       <td className="border border-solid border-black py-2 px-4"></td>
                       <td className="border border-solid border-black py-2 px-4">
                         Text
@@ -225,10 +233,9 @@ function Instruction({
                       <td className="border border-solid border-black">
                         <p className="ml-[12px] mt-[10px]">Custom 1</p>
                         <div className='border-b mt-[10px] border-black border-solid'></div>
-                        <p className='ml-[12px] mt-[10px]'>Custom 1</p>
+                        <p className='ml-[12px] mt-[10px]'>Custom 2</p>
                         <div className='border-b mt-[10px] border-black border-solid'></div>
-
-                        <p className='ml-[12px] mb-[10px] mt-[10px]'>Custom 1</p>
+                        <p className='ml-[12px] mb-[10px] mt-[10px]'>Custom </p>
 
                       </td>
                       <td className="border border-solid border-black py-2 px-4">

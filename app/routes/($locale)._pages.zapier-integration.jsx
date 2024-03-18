@@ -216,7 +216,7 @@ export default function Zapier() {
           />
         </div>
         <div className="">
-          <div className="xl:mt-5 mt-14 flex xl:justify-normal xl:w-[490px] w-[100%] leading-[48px] font-bold justify-center">
+          <div className="flex xl:justify-normal xl:w-[490px] w-[100%] leading-[48px] font-bold justify-center">
             <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal ">
               Instantly Integrate With 1,000s of Applications
             </h2>
@@ -292,7 +292,7 @@ export default function Zapier() {
           />
         </div>
         <div className="order-2 xl:mr-[56px] mr-[0px]">
-          <div className="xl:mt-5 mt-14 flex xl:justify-normal justify-center">
+          <div className="flex xl:justify-normal justify-center">
             <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
