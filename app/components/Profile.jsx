@@ -5,7 +5,6 @@ import CircularLoader from './CircularLoder';
 import {json} from '@shopify/remix-oxygen';
 import {useStateContext} from '~/context/StateContext';
 import SuccessfullLoader from './SucessfullLoader';
-import location from "../../location.json";
 
 const Profile = ({
   customer,
@@ -43,19 +42,6 @@ const Profile = ({
       ...accountDetails,
       [name]: value,
     });
-    if (name === 'country') {
-      // Find the selected country's states
-      const selectedCountry = location.countries.find(
-        (country) => country.country === value
-      );
-      setAccountDetails((prev) => ({
-        ...prev,
-        country: value,
-        state: selectedCountry ? selectedCountry.states[0] : '',
-      }));
-    }
- 
-
   };
 
   const handleSecurityInputChange = (e) => {
@@ -65,13 +51,7 @@ const Profile = ({
       ...securityDetails,
       [name]: value,
     });
-
-  
   };
-
-  const selectedCountry = location.countries.find(
-    (country) => country.country === formData.country,
-  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -272,15 +252,6 @@ const Profile = ({
           </button>
         </div>
         {activeTabs === 'account' && (
-
-
-
-
-
-
-
-
-
           <form onSubmit={handleSubmit} className="mb-[3rem]">
             <div className=" lg:grid grid-cols-1 items-center mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 ">
@@ -427,13 +398,6 @@ const Profile = ({
                   onChange={handleAccountInputChange}
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md  px-3 py-2 w-[100%]"
                 />
-                  <option value="">Select a state</option>
-                {selectedCountry &&
-                  selectedCountry.countries.map((state) => (
-                    <option key={state} value={state}>
-                      {state}
-                    </option>
-                  ))}
               </div>
             </div>
             <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
@@ -472,16 +436,6 @@ const Profile = ({
             </div>
           </form>
         )}
-
-
-
-
-
-
-
-
-
-
 
         {activeTabs === 'security' && (
           <>
