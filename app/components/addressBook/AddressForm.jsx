@@ -227,7 +227,7 @@ const AddressForm = ({customerID}) => {
             </h2>
             <div className="tab:flex grid md:items-end  items-center md:gap-[10px] gap-[12px]">
               <DynamicButton
-                className="bg-[#001a5f] md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
+                className="bg-[#ef6e6e]  md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
                 text="Cancel"
                 onClickFunction={() => {
                   setAddressForm(false);
@@ -235,7 +235,7 @@ const AddressForm = ({customerID}) => {
                 }}
               />
               <DynamicButton
-                className="bg-[#ef6e6e] md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
+                className="bg-[#001a5f] md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
                 text="Save Address"
                 onClickFunction={saveAddress}
               />
@@ -526,7 +526,7 @@ const AddressForm = ({customerID}) => {
           </div>
           <div className="lg:flex  flex justify-center text-center">
             <DynamicButton
-              className="bg-[#1b5299] whitespace-nowrap md:text-[14px] text-[12px] text-center w-full max-w-[200px]  md:h-[45px] h-[33px]"
+              className="bg-[#001a5f] whitespace-nowrap md:text-[14px] text-[12px] text-center w-full max-w-[200px]  md:h-[45px] h-[33px]"
               text="Save Address"
               onClickFunction={saveAddress}
             />

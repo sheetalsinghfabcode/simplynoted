@@ -1919,7 +1919,7 @@ export function MessageWriting({
                     <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader
-                          title="Uploding Addresses..."
+                          title="Uploading Addresses..."
                           color="#ef6e6e"
                         />
                       ) : (
