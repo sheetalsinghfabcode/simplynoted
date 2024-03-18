@@ -334,7 +334,7 @@ export default function OrderRoute() {
                 </tr>
               </tfoot>
             </table>
-            <div className="sticky border-none top-nav md:my-8">
+            <div className="border-none md:my-8">
               <Heading
                 size="copy"
                 className="font-semibold text-[20px] text-[#141414e6] "

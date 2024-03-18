@@ -235,7 +235,7 @@ function Instruction({
                         <div className='border-b mt-[10px] border-black border-solid'></div>
                         <p className='ml-[12px] mt-[10px]'>Custom 2</p>
                         <div className='border-b mt-[10px] border-black border-solid'></div>
-                        <p className='ml-[12px] mb-[10px] mt-[10px]'>Custom </p>
+                        <p className='ml-[12px] mb-[10px] mt-[10px]'>Custom 3</p>
 
                       </td>
                       <td className="border border-solid border-black py-2 px-4">

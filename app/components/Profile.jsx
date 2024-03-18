@@ -94,10 +94,8 @@ const Profile = ({
       );
       const jsonResponse = await response.json();
       if (jsonResponse?.errors && jsonResponse?.errors.phone) {
-        console.log("jsonResponse",jsonResponse);
         setError(jsonResponse?.errors.phone[0]);
       }
-
 
       if (response.ok) {
         // Request was successful
@@ -254,15 +252,6 @@ const Profile = ({
           </button>
         </div>
         {activeTabs === 'account' && (
-
-
-
-
-
-
-
-
-
           <form onSubmit={handleSubmit} className="mb-[3rem]">
             <div className=" lg:grid grid-cols-1 items-center mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 ">
@@ -447,16 +436,6 @@ const Profile = ({
             </div>
           </form>
         )}
-
-
-
-
-
-
-
-
-
-
 
         {activeTabs === 'security' && (
           <>

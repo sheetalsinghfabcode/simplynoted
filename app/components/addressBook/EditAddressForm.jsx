@@ -7,13 +7,11 @@ import CircularLoader from '../CircularLoder';
 
 const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
   const {setAddressForm, setShowLoader, setLoaderTitle} = useStateContext();
-
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
 
   const handleChange = (e) => {
     const {name, value} = e.target;
-
     if (name === 'country') {
       // Handling country selection
       const selectedCountry = location.countries.find(
