@@ -33,6 +33,7 @@ export default function FoldedCustomisableCard({
     screenShotUrl: null,
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
+    canvasImageUrl:null,
     zoom: 1,
     isColoredImage: true,
     isLongImage: false,
@@ -43,6 +44,7 @@ export default function FoldedCustomisableCard({
     screenShotUrl: null,
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
+    canvasImageUrl:null,
     zoom: 1,
     isColoredImage: true,
     isLongImage: false,
@@ -111,65 +113,67 @@ export default function FoldedCustomisableCard({
     trimmDiv();
   }, [triggerEvent, backImageDetails.isImageSelected, backImageDetails.zoom]);
 
-  // useEffect(() => {
-  //   const generateImageFiles = async () => {
-  //     try {
-  //       let imageFile;
-  //       if (selectedCardPage === 'Card Front') {
-  //         if (frontImageDetails.isImageSelected) {
-  //           const selectedBlobUrl = frontImageDetails.isColoredImage
-  //             ? frontImageDetails.imageBlobUrl
-  //             : frontImageDetails.blackAndWhiteImageBlobUrl;
-  //           imageFile = await blobUrlToFileObject(
-  //             selectedBlobUrl,
-  //             `${customerId}-folded-front-image`,
-  //           );
+  useEffect(() => {
+    const generateImageFiles = async () => {
+      try {
+        let imageFile;
+        if (selectedCardPage === 'Card Front') {
+          if (frontImageDetails.isImageSelected) {
+            const selectedBlobUrl = frontImageDetails.isColoredImage
+              ? frontImageDetails.imageBlobUrl
+              : frontImageDetails.blackAndWhiteImageBlobUrl;
+            imageFile = await blobUrlToFileObject(
+              selectedBlobUrl,
+              `${customerId}-folded-front-image`,
+            );
 
-  //           setFrontImageDetails((prevFrontImageDetails) => {
-  //             return {
-  //               ...prevFrontImageDetails,
-  //               selectedImageFile: imageFile,
-  //             };
-  //           });
-  //         } else {
-  //           generateDefaultScreenshotImage(
-  //             DefaultFrontCardImage,
-  //             'front-image',
-  //           );
-  //         }
-  //       }
+            setFrontImageDetails((prevFrontImageDetails) => {
+              return {
+                ...prevFrontImageDetails,
+                selectedImageFile: imageFile,
+              };
+            });
+          } else {
+            generateDefaultScreenshotImage(
+              DefaultFrontCardImage,
+              'front-image',
+            );
+          }
+        }
 
-  //       if (selectedCardPage === 'Card Back') {
-  //         if (backImageDetails.isImageSelected) {
-  //           const selectedBlobUrl = backImageDetails.isColoredImage
-  //             ? backImageDetails.imageBlobUrl
-  //             : backImageDetails.blackAndWhiteImageBlobUrl;
-  //           imageFile = await blobUrlToFileObject(
-  //             selectedBlobUrl,
-  //             `${customerId}-folded-back-image`,
-  //           );
+        if (selectedCardPage === 'Card Back') {
+          if (backImageDetails.isImageSelected) {
+            const selectedBlobUrl = backImageDetails.isColoredImage
+              ? backImageDetails.imageBlobUrl
+              : backImageDetails.blackAndWhiteImageBlobUrl;
+            imageFile = await blobUrlToFileObject(
+              selectedBlobUrl,
+              `${customerId}-folded-back-image`,
+            );
 
-  //           setBackImageDetails((prevBackImageDetails) => {
-  //             return {
-  //               ...prevBackImageDetails,
-  //               selectedImageFile: imageFile,
-  //             };
-  //           });
-  //         } else {
-  //           generateDefaultScreenshotImage(DefaultBackCardImage, 'back-image');
-  //         }
-  //       }
-  //     } catch (err) {
-  //       console.error('Failed to generate image files', err);
-  //     }
-  //   };
-  //   generateImageFiles();
-  // }, [
-  //   frontImageDetails.isImageSelected,
-  //   frontImageDetails.isColoredImage,
-  //   backImageDetails.isImageSelected,
-  //   backImageDetails.isColoredImage,
-  // ]);
+            setBackImageDetails((prevBackImageDetails) => {
+              return {
+                ...prevBackImageDetails,
+                selectedImageFile: imageFile,
+              };
+            });
+          } else {
+            generateDefaultScreenshotImage(DefaultBackCardImage, 'back-image');
+          }
+        }
+      } catch (err) {
+        console.error('Failed to generate image files', err);
+      }
+    };
+    generateImageFiles();
+  }, [
+    frontImageDetails.isImageSelected,
+    frontImageDetails.isColoredImage,
+    frontImageDetails.imageBlobUrl,
+    backImageDetails.isImageSelected,
+    backImageDetails.isColoredImage,
+    backImageDetails.imageBlobUrl
+  ]);
 
   useEffect(() => {
     let timeout;
@@ -242,6 +246,7 @@ export default function FoldedCustomisableCard({
           return {
             ...prevFrontImageDetails,
             selectedImageFile,
+            canvasImageUrl:selectedImageFile,
           };
         });
       }
@@ -250,6 +255,7 @@ export default function FoldedCustomisableCard({
           return {
             ...prevBackImageDetails,
             selectedImageFile,
+            canvasImageUrl:selectedImageFile,
           };
         });
       }
@@ -592,7 +598,7 @@ export default function FoldedCustomisableCard({
           setFrontImageDetails((prevFrontImageDetails) => {
             return {
               ...prevFrontImageDetails,
-              selectedImageFile: imageFile,
+              canvasImageUrl: imageFile,
             };
           });
         }
@@ -610,7 +616,7 @@ export default function FoldedCustomisableCard({
           setBackImageDetails((prevBackImageDetails) => {
             return {
               ...prevBackImageDetails,
-              selectedImageFile: imageFile,
+              canvasImageUrl: imageFile,
             };
           });
         }
@@ -691,7 +697,6 @@ export default function FoldedCustomisableCard({
   
   async function uploadPdfRequest() {
     try {
-      console.log(frontImageDetails.selectedImageFile);
       setIsLoading(true);
       setIsScrollerRemoved(true);
       const formData = new FormData();
@@ -902,7 +907,7 @@ export default function FoldedCustomisableCard({
           pdfURL: s3ImageUrls ? s3ImageUrls.pdfUrl : null,
         },
         s3ImageUrls: s3ImageUrls,
-        featuredImage: frontImageDetails.selectedImageFile,
+        featuredImage: frontImageDetails?.canvasImageUrl,
       };
 
       formData.append('product', JSON.stringify(payload.product));
