@@ -49,7 +49,6 @@ const ContactTable = ({
   const [uploadBulkAddress, setUploadBulkAddress] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
 
-
   const pathName = useLocation();
   let data = filteredAddresses.sort((a, b) => {
     const dateA = new Date(a.created);
@@ -80,7 +79,7 @@ const ContactTable = ({
     setDeleteModal(false);
     setLoaderTitle('Deleting Address...');
     setShowLoader(true);
-    const url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
+    const url = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -126,15 +125,15 @@ const ContactTable = ({
     }
   };
 
-    useEffect(() => {
-      if (addresses.length > 0) {
-        setupdateLoader(true);
-        setTimeout(() => {
-          setShowLoader(false);
-          setupdateLoader(false);
-        }, 1500);
-      }
-    }, []);
+  useEffect(() => {
+    if (addresses.length > 0) {
+      setupdateLoader(true);
+      setTimeout(() => {
+        setShowLoader(false);
+        setupdateLoader(false);
+      }, 1500);
+    }
+  }, []);
 
   data = useMemo(
     () => filterAddressesByType(),
@@ -343,14 +342,14 @@ const ContactTable = ({
     setLoaderTitle('Uploading Address Book....');
     setShowLoader(true);
     const modifiedData = {};
-  
+
     for (let key in data) {
       const modifiedKey = key?.replace(/"/g, '');
-  
+
       modifiedData[modifiedKey] = data[key]?.replace(/"/g, '');
     }
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
-  
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
+
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -376,14 +375,13 @@ const ContactTable = ({
           anniversary: modifiedData.Anniversary || '',
         }),
       });
-  
+
       if (response.ok) {
         const responseData = await response.json();
         setLoadAddress(!loadAddress);
         setSelectedFile(null);
         file.current.value = '';
         setFileData(null);
-        setTimeout(() => {}, 2000);
         file.current.value = '';
         'Successful response data:', responseData.result;
       } else {
@@ -406,17 +404,15 @@ const ContactTable = ({
       console.error('Error uploading data:', error);
       throw error;
     } finally {
-  
       if (totalAddresses === 1) {
-        setLoaderTitle("Uploaded Address Successfully");
+        setLoaderTitle('Uploaded Address Successfully');
         setTimeout(() => {
           setShowLoader(false);
           setLoaderTitle(null);
-        }, 1200);
+        }, 1400);
       }
     }
-  }
-  
+  };
 
   function cleanHeaders(headerRow) {
     const cleanedHeaders = {};
@@ -486,14 +482,10 @@ const ContactTable = ({
     ];
 
     const errors = [];
-
     const namePattern = /^[A-Za-z\s]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
-    // Function to check if fileData matches the required CSV format
-
     const cleanedHeaders = cleanHeaders(fileData[0]);
-
     const {isValidFormat, missingHeaders} = checkCSVFormat(
       cleanedHeaders,
       requiredHeaders,
@@ -508,9 +500,6 @@ const ContactTable = ({
       setErrorContent([
         'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
       ]);
-      // setTimeout(() => {
-      //   setErrorModal(false);
-      // }, 3000);
       return;
     }
 
@@ -526,39 +515,147 @@ const ContactTable = ({
 
     let totalAddresses = cleanedData.length;
 
-    for (let i = 0; i < cleanedData.length; i++) {
-      const data = cleanedData[i];
-      const missingFields = [];
+    try {
+      const batchSize = 250;
+      const numBatches = Math.ceil(cleanedData.length / batchSize);
 
-      for (const field of requiredFields) {
-        if (!data[field] || data[field].trim() === '') {
-          missingFields.push(field);
-        } else if (field === 'First Name' || field === 'Last Name') {
-          if (!namePattern.test(data[field])) {
-            missingFields.push(`${field} contains numbers`);
+      for (let i = 0; i < numBatches; i++) {
+        const startIdx = i * batchSize;
+        const endIdx = Math.min((i + 1) * batchSize, cleanedData.length);
+        const batchData = cleanedData.slice(startIdx, endIdx);
+
+        // Validate missing fields in the current batch
+        for (const data of batchData) {
+          const missingFields = [];
+
+          for (const field of requiredFields) {
+            if (!data[field] || data[field].trim() === '') {
+              missingFields.push(field);
+            } else if (field === 'First Name' || field === 'Last Name') {
+              if (!namePattern.test(data[field])) {
+                missingFields.push(`${field} contains invalid characters`);
+              }
+            } else if (field === 'Email') {
+              if (!emailPattern.test(data[field])) {
+                missingFields.push(`${field} is not a valid email`);
+              }
+            }
           }
-        } else if (field === 'Email') {
-          if (!emailPattern.test(data[field])) {
-            missingFields.push(`${field} is not a valid email`);
+
+          if (missingFields.length > 0) {
+            errors.push(
+              `Missing fields in row ${startIdx + 1}: ${missingFields.join(
+                ', ',
+              )}`,
+            );
           }
         }
-      }
 
-      if (missingFields.length > 0) {
-        for (const field of missingFields) {
-          errors.push(`Row ${i + 1}: Missing field - ${field}`);
-        }
-        setTimeout(() => {
+        if (errors.length > 0) {
+          // If any missing fields found, display error and halt further processing
           setErrorContent(errors);
           setErrorModal(true);
           setShowLoader(false);
-        }, 100);
+          return;
+        }
+
+        // If no missing fields, proceed to upload the batch
+        await uploadDataBatchToAPI(batchData, totalAddresses);
+        totalAddresses -= batchData.length;
+      }
+    } catch (error) {
+      setShowLoader(false);
+      setLoaderTitle('Error while Uploading Address Book');
+      setFileData(null);
+      setupdateLoader(false);
+      setSelectedFile(null);
+      file.current.value = '';
+      console.error('Error uploading data:', error);
+      throw error;
+    } finally {
+      setLoaderTitle('Uploaded Address Successfully');
+      setTimeout(() => {
+        setShowLoader(false);
+        setLoaderTitle(null);
+      }, 1400);
+    }
+  };
+
+  const uploadDataBatchToAPI = async (batchData, totalAddresses) => {
+    setLoaderTitle('Uploading Address Book....');
+    setShowLoader(true);
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
+
+    const requestData = batchData.map((data) => ({
+      firstName: data['First Name'] || '',
+      lastName: data['Last Name'] || '',
+      businessName: data.Company || '',
+      address1: data.Address || '',
+      address2: data['Address 2'] || '',
+      city: data.City || '',
+      state: data['State/Province'] || '',
+      zip: data['Postal Code'] || '',
+      country: data.Country || 'USA',
+      type: data.Type
+        ? data.Type.toLowerCase() === 'sender'
+          ? 'return'
+          : 'recipient'
+        : 'recipient',
+      birthday: data.Birthday || '',
+      anniversary: data.Anniversary || '',
+    }));
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      if (response.ok) {
+        const responseData = await response.json();
+        setLoadAddress(!loadAddress);
+        setSelectedFile(null);
+        file.current.value = '';
+        setFileData(null);
+        file.current.value = '';
+        'Successful response data:', responseData.result;
       } else {
-        await uploadDataToAPI(data, totalAddresses); // Pass totalAddresses to uploadDataToAPI
-        totalAddresses--; // Decrement totalAddresses for each call
+        file.current.value = '';
+        setSelectedFile(null);
+        setShowLoader(false);
+        setFileData(null);
+        setupdateLoader(false);
+        setLoaderTitle('Error while Uploading Address Book...');
+        file.current.value = '';
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      setShowLoader(false);
+      setLoaderTitle('Error while Uploading Address Book');
+      setFileData(null);
+      setupdateLoader(false);
+      setSelectedFile(null);
+      file.current.value = '';
+      console.error('Error uploading data:', error);
+      throw error;
+    } finally {
+      if (totalAddresses === 1) {
+        setLoaderTitle('Uploaded Address Successfully');
+        setTimeout(() => {
+          setShowLoader(false);
+          setLoaderTitle(null);
+        }, 1400);
       }
     }
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -858,8 +955,13 @@ const ContactTable = ({
                 </div>
               )}
 
-              {filteredAddresses.length === 0 &&  !updateLoader && !showLoader &&
-              <div className='text-[22px] md:text-[30px] font-medium mt-10 text-center text-[#0D0C22]  font-karla'>No Address Found</div>}
+              {filteredAddresses.length === 0 &&
+                !updateLoader &&
+                !showLoader && (
+                  <div className="text-[22px] md:text-[30px] font-medium mt-10 text-center text-[#0D0C22]  font-karla">
+                    No Address Found
+                  </div>
+                )}
 
               {page && page.length > 0 && !updateLoader && !showLoader && (
                 <div className="pagination">
