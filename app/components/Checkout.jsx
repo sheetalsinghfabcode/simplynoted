@@ -323,8 +323,10 @@ export function CheckoutData({
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
 
+
+
   async function paymentPurchase() {
-    if ((walletBalance.balance <= 100 || walletBalance.balance < prices.totalPrice ) && showWallet) {
+    if ((walletBalance.balance < 100 || walletBalance.balance < prices.totalPrice ) && showWallet) {
       setOpenModal(true);
     }
     else {
@@ -612,10 +614,6 @@ export function CheckoutData({
   function continueShopping() {
     navigate('/collections/best-sellers');
   }
-
-
-  console.log(openModal, "login");
-
 
   return (
     <div className="relative">
@@ -1063,7 +1061,8 @@ export function CheckoutData({
       <ConfirmationModal
         show={openModal}
         title="Attention: Low Wallet Balance"
-        message={`Your Wallet has insufficient funds ${walletBalance.balance < 100 && "( < 100)"} for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
+        message={`Your Wallet has insufficient funds ${walletBalance.balance < 100 ? "(minimum of $100)" : ""} for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
+
         confirmText="Purchase Package"
         onConfirm={() => {
           setTimeout(() => {
