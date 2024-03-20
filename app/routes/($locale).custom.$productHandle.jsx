@@ -234,14 +234,14 @@ export default function CustomProducts() {
                         //   })`,
                         // }}
 
-                        //Change when back image is changed to canvas image
+                        //Remove when back image is changed to canvas image(style)
                         style={{
                             transform: `scale(${
-                              imageShow == 1
-                                ? metafields.back && metafields.back.zoom
-                                :1
+                              imageShow == 0
+                                ? 1: metafields.back && metafields.back.zoom
                             })`,
                           }}
+
                         src={
                           customProductData.images.length
                             ? customProductData.images[imageShow].originalSrc

@@ -1,6 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import {useNavigate} from '@remix-run/react';
 import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
 import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import { FaArrowLeft } from 'react-icons/fa';
@@ -544,20 +545,29 @@ export default function FoldedCustomisableCard({
           image.onload = resolve;
         }
       });
-
-      const dataUrl = await domtoimage.toPng(element, {
+      const canvas = await html2canvas(element, {
         width: element.offsetWidth,
         height: element.offsetHeight,
         quality: 1,
         style: {
-          transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
-            display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                margin:'0',
-        },  
-       
+          margin: 0,
+        }
       });
+      const dataUrl = canvas.toDataURL('image/png');
+
+      // const dataUrl = await domtoimage.toPng(element, {
+      //   width: element.offsetWidth,
+      //   height: element.offsetHeight,
+      //   quality: 1,
+      //   style: {
+      //     transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
+      //       display: 'flex',
+      //           justifyContent: 'center',
+      //           alignItems: 'center',
+      //           margin:'0',
+      //   },  
+       
+      // });
 
       if (selectedCardPage === 'Card Back' && dataUrl) {
         setBackImageDetails((prevBackImageDetails) => {
@@ -1229,7 +1239,7 @@ export default function FoldedCustomisableCard({
                                   : frontImageDetails.blackAndWhiteImageBlobUrl
                               }
                               alt="Selected front card image file"
-                              className="object-contain h-full"
+                              className="max-h-full"
                               draggable="false"
                               style={{
                                 transform: `scale(${frontImageDetails.zoom})`,
@@ -1294,7 +1304,7 @@ export default function FoldedCustomisableCard({
                                   : backImageDetails.blackAndWhiteImageBlobUrl
                               }
                               alt="Selected back card image file"
-                              className="object-contain h-full"
+                              className="max-h-full"
                               draggable="false"
                               style={{
                                 transform: `scale(${backImageDetails.zoom})`,

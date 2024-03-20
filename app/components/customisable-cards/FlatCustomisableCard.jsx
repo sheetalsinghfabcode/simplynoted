@@ -2,6 +2,7 @@ import {useState, useEffect, useRef} from 'react';
 import {useNavigate} from '@remix-run/react';
 import {FaArrowLeft} from 'react-icons/fa';
 import domtoimage from 'dom-to-image';
+import html2canvas from 'html2canvas';
 import {Modal} from '../Modal';
 import CircularLoader from '../CircularLoder';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
@@ -673,18 +674,27 @@ export default function FlatCustomisableCard({
         }
       });
 
-      const dataUrl = await domtoimage.toPng(element, {
+      const canvas = await html2canvas(element, {
         width: element.offsetWidth,
         height: element.offsetHeight,
         quality: 1,
         style: {
-            display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                margin:'0',
-        },  
-      });
+          margin: 0,
+        }
+      });;
+      const dataUrl = canvas.toDataURL('image/png');
 
+      // const dataUrl = await domtoimage.toPng(element, {
+      //   width: element.offsetWidth,
+      //   height: element.offsetHeight,
+      //   quality: 1,
+      //   style: {
+      //       display: 'flex',
+      //           justifyContent: 'center',
+      //           alignItems: 'center',
+      //           margin:'0',
+      //   },  
+      // });
       if (selectedCardPage === 'Card Front') {
         setFrontImageDetails((prevFrontImageDetails) => {
           return {
@@ -1384,7 +1394,7 @@ export default function FlatCustomisableCard({
                                   : frontImageDetails.blackAndWhiteImageBlobUrl
                               }
                               alt="Selected front card image file"
-                              className="object-contain h-full"
+                              className="max-h-full"
                               draggable="false"
                               style={{
                                 transform: `scale(${frontImageDetails.zoom})`,
@@ -1485,7 +1495,7 @@ export default function FlatCustomisableCard({
                               id="backFooterImageDiv"
                               className={`h-[45px] flex justify-center overflow-hidden ${qr.isQrAdded && footerData.alignment === 'right'
                                 ? 'w-[35px] '
-                                : 'w-0'
+                                : 'w-[60px]'
                                 }`}
                             >
                               <img
