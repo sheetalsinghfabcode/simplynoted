@@ -95,6 +95,9 @@ export default function AddCartFunc() {
     }
   }, [updateGift, postPrice, cartData]);
 
+
+  console.log("cartData",cartData);
+
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
     let postalID = postalData.product.variants.edges[0].node.id;

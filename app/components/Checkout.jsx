@@ -323,8 +323,10 @@ export function CheckoutData({
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
 
+
+
   async function paymentPurchase() {
-    if ((walletBalance.balance <= 100 || walletBalance.balance < prices.totalPrice ) && showWallet) {
+    if ((walletBalance.balance < 100 || walletBalance.balance < prices.totalPrice ) && showWallet) {
       setOpenModal(true);
     }
     else {
@@ -344,62 +346,62 @@ export function CheckoutData({
           'u.s.a',
         ];
 
-        const payload = {
-          billingAddress: {
-            firstName: separatedNames?.firstName ? separatedNames?.firstName : '',
-            lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
-            email: customerInformation?.email ? customerInformation?.email : '',
-            address: customerInformation?.address?.line1
-              ? customerInformation.address?.line1
-              : '',
-            apartment: customerInformation?.address?.line2
-              ? customerInformation.address?.line2
-              : '',
-            city: customerInformation?.address?.city
-              ? customerInformation.address?.city
-              : '',
-            country: customerInformation?.address?.country
-              ? customerInformation.address?.country
-              : '',
-            state: customerInformation?.address?.state
-              ? customerInformation.address?.state
-              : '',
-          },
-          cartNote: cartNote ? cartNote : '',
-          cartItems:
-            cartData &&
-            cartData.map((item) => {
-              let senderFullName =
-                item.senderAddress?.firstName +
-                ' ' +
-                item.senderAddress?.lastName;
-              let receiverFullName =
-                item.reciverAddress?.firstName +
-                ' ' +
-                item.reciverAddress?.lastName;
-              let giftCard = null;
-              if (item.giftCardName) {
-                let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
-                giftCard = {
-                  id: item.giftCardId, // Add a unique identifier for the gift card
-                  url: giftProdUrl, // URL based on gift card name
-                  qyt: item.qyt,
-                };
-              }
-              let shipping = null;
-              if (item.isShippidata) {
-                let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
-                shipping = {
-                  id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
-                  url: shippingUrl,
-                  qyt: 1,
-                };
-              }
-              let postageUS = null;
-              let postageNonUS = null;
-              if (
-                (item.shippingData &&
-                  item.shippingData.node.title ==
+      const payload = {
+        billingAddress: {
+          firstName: separatedNames?.firstName ? separatedNames?.firstName : '',
+          lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
+          email: customerInformation?.email ? customerInformation?.email : '',
+          address: customerInformation?.address?.line1
+            ? customerInformation.address?.line1
+            : '',
+          apartment: customerInformation?.address?.line2
+            ? customerInformation.address?.line2
+            : '', 
+          city: customerInformation?.address?.city
+            ? customerInformation.address?.city
+            : '',
+          country: customerInformation?.address?.country
+            ? customerInformation.address?.country
+            : '',
+          state: customerInformation?.address?.state
+            ? customerInformation.address?.state
+            : '',
+        },
+        cartNote: cartNote ? cartNote : '',
+        cartItems:
+          cartData &&
+          cartData.map((item) => {
+            let senderFullName =
+              item.senderAddress?.firstName +
+              ' ' +
+              item.senderAddress?.lastName;
+            let receiverFullName =
+              item.reciverAddress?.firstName +
+              ' ' +
+              item.reciverAddress?.lastName;
+            let giftCard = null;
+            if (item.giftCardName) {
+              let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
+              giftCard = {
+                id: item.giftCardId, // Add a unique identifier for the gift card
+                url: giftProdUrl, // URL based on gift card name
+                qyt: item.qyt,
+              };
+            }
+            let shipping = null;
+            if (item.isShippidata) {
+              let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
+              shipping = {
+                id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
+                url: shippingUrl,
+                qyt: item.qyt,
+              };
+            }
+            let postageUS = null;
+            let postageNonUS = null;
+            if (
+              (item.shippingData &&
+                item.shippingData.node.title ==
                   'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
                 (item.shippingData &&
                   item.shippingData.node.title ==
@@ -421,12 +423,12 @@ export function CheckoutData({
                   ? (postageUS = {
                     id: postalId,
                     url: '/products/postage',
-                    qyt: 1,
+                    qyt: item.qyt,
                   })
                   : (postageNonUS = {
                     id: postalId2,
                     url: '/products/postage',
-                    qyt: 1,
+                    qyt: item.qyt,
                   });
               } else {
                 if (item.usCount) {
@@ -612,10 +614,6 @@ export function CheckoutData({
   function continueShopping() {
     navigate('/collections/best-sellers');
   }
-
-
-  console.log(openModal, "login");
-
 
   return (
     <div className="relative">
@@ -1063,7 +1061,8 @@ export function CheckoutData({
       <ConfirmationModal
         show={openModal}
         title="Attention: Low Wallet Balance"
-        message={`Your Wallet has insufficient funds ${walletBalance.balance < 100 && "( < 100)"} for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
+        message={`Your Wallet has insufficient funds ${walletBalance.balance < 100 ? "(minimum of $100)" : ""} for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
+
         confirmText="Purchase Package"
         onConfirm={() => {
           setTimeout(() => {
