@@ -421,12 +421,12 @@ export function CheckoutData({
                   ? (postageUS = {
                     id: postalId,
                     url: '/products/postage',
-                    qyt: 1,
+                    qyt: item.qyt,
                   })
                   : (postageNonUS = {
                     id: postalId2,
                     url: '/products/postage',
-                    qyt: 1,
+                    qyt: item.qyt,
                   });
               } else {
                 if (item.usCount) {
