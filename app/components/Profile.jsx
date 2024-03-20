@@ -371,7 +371,7 @@ const Profile = ({
                   className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
                 />
               </div>
-              <div className="px-3">
+              <div className="px-3">  
                 <label
                   htmlFor="firstName"
                   className="block mb-1  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
