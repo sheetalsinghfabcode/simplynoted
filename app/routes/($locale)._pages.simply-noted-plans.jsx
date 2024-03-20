@@ -92,7 +92,6 @@ export default function SimplyNoted() {
   }, []);
 
 
-
   return (
     <div className=" w-full global-max-width-handler ">
       {/* {loader && (
