@@ -344,62 +344,62 @@ export function CheckoutData({
           'u.s.a',
         ];
 
-        const payload = {
-          billingAddress: {
-            firstName: separatedNames?.firstName ? separatedNames?.firstName : '',
-            lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
-            email: customerInformation?.email ? customerInformation?.email : '',
-            address: customerInformation?.address?.line1
-              ? customerInformation.address?.line1
-              : '',
-            apartment: customerInformation?.address?.line2
-              ? customerInformation.address?.line2
-              : '',
-            city: customerInformation?.address?.city
-              ? customerInformation.address?.city
-              : '',
-            country: customerInformation?.address?.country
-              ? customerInformation.address?.country
-              : '',
-            state: customerInformation?.address?.state
-              ? customerInformation.address?.state
-              : '',
-          },
-          cartNote: cartNote ? cartNote : '',
-          cartItems:
-            cartData &&
-            cartData.map((item) => {
-              let senderFullName =
-                item.senderAddress?.firstName +
-                ' ' +
-                item.senderAddress?.lastName;
-              let receiverFullName =
-                item.reciverAddress?.firstName +
-                ' ' +
-                item.reciverAddress?.lastName;
-              let giftCard = null;
-              if (item.giftCardName) {
-                let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
-                giftCard = {
-                  id: item.giftCardId, // Add a unique identifier for the gift card
-                  url: giftProdUrl, // URL based on gift card name
-                  qyt: item.qyt,
-                };
-              }
-              let shipping = null;
-              if (item.isShippidata) {
-                let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
-                shipping = {
-                  id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
-                  url: shippingUrl,
-                  qyt: 1,
-                };
-              }
-              let postageUS = null;
-              let postageNonUS = null;
-              if (
-                (item.shippingData &&
-                  item.shippingData.node.title ==
+      const payload = {
+        billingAddress: {
+          firstName: separatedNames?.firstName ? separatedNames?.firstName : '',
+          lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
+          email: customerInformation?.email ? customerInformation?.email : '',
+          address: customerInformation?.address?.line1
+            ? customerInformation.address?.line1
+            : '',
+          apartment: customerInformation?.address?.line2
+            ? customerInformation.address?.line2
+            : '', 
+          city: customerInformation?.address?.city
+            ? customerInformation.address?.city
+            : '',
+          country: customerInformation?.address?.country
+            ? customerInformation.address?.country
+            : '',
+          state: customerInformation?.address?.state
+            ? customerInformation.address?.state
+            : '',
+        },
+        cartNote: cartNote ? cartNote : '',
+        cartItems:
+          cartData &&
+          cartData.map((item) => {
+            let senderFullName =
+              item.senderAddress?.firstName +
+              ' ' +
+              item.senderAddress?.lastName;
+            let receiverFullName =
+              item.reciverAddress?.firstName +
+              ' ' +
+              item.reciverAddress?.lastName;
+            let giftCard = null;
+            if (item.giftCardName) {
+              let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
+              giftCard = {
+                id: item.giftCardId, // Add a unique identifier for the gift card
+                url: giftProdUrl, // URL based on gift card name
+                qyt: item.qyt,
+              };
+            }
+            let shipping = null;
+            if (item.isShippidata) {
+              let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
+              shipping = {
+                id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
+                url: shippingUrl,
+                qyt: item.qyt,
+              };
+            }
+            let postageUS = null;
+            let postageNonUS = null;
+            if (
+              (item.shippingData &&
+                item.shippingData.node.title ==
                   'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
                 (item.shippingData &&
                   item.shippingData.node.title ==
