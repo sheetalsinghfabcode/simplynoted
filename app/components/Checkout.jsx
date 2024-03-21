@@ -10,6 +10,7 @@ import { getApi, postApi } from '~/utils/ApiService';
 import { API_PATH } from '~/utils/Path';
 import DynamicButton from './DynamicButton';
 import { useStateContext } from '~/context/StateContext';
+import location from "../../location.json"
 import { useNavigate } from '@remix-run/react';
 
 import { Link } from '~/components';
@@ -322,6 +323,8 @@ export function CheckoutData({
   let separatedNames = separateFullName(name);
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
+
+
 
 
 
@@ -844,7 +847,7 @@ export function CheckoutData({
                 </div>
                 <div className="mt-2">
                   <button
-                    disabled={(!walletBalance || walletBalance?.balance === 0 && showWallet)}
+                    disabled={((!walletBalance || walletBalance?.balance === 0 && showWallet) || (!savedCard &&  showCardDetail ) )}
                     onClick={paymentPurchase}
                     className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
                   >
@@ -1033,7 +1036,7 @@ export function CheckoutData({
                           id="country"
                           className="appearance-none border mt-2 border-solid  h-[46px]  border-black  w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         >
-                          {location.countries.map((country) => (
+                          {location.countries?.map((country) => (
                             <option
                               key={country.country}
                               value={country.country}
