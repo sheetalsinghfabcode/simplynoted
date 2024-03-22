@@ -620,8 +620,7 @@ export function MessageWriting({
     let nonUSCount = 0;
     let found = false;
     let replacedMsg = [];
-
-    // setbulkUploadDiv(false)
+  
     if (!fileData.length) {
       errMsg.push('it is empty please add addresses');
       setErrorVal(errMsg);
@@ -631,7 +630,7 @@ export function MessageWriting({
     } else {
       setLenCsvData(fileData.length);
     }
-
+  
     let reqField = [
       'Type',
       'First Name',
@@ -641,9 +640,10 @@ export function MessageWriting({
       'State/Province',
       'Postal Code',
     ];
-
+  
     const alphabetPattern = /^[A-Za-z]+$/;
     const mailText = /@.*\.com$/;
+  
     if (fileData.length) {
       let errObj = [];
       fileData.forEach((obj, index) => {
@@ -656,89 +656,102 @@ export function MessageWriting({
         errMsg.push(
           'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
         );
-
+  
         setIsOpen2(true);
         onCancelCSVUpload();
         setTimeout(() => setIsOpen2(false), 3000);
         found = true;
       }
     }
-    if (errMsg.length == 0) {
-      for (let index = 0; index < fileData.length; index++) {
-        const obj = fileData[index];
 
-        let emptyKeys = [];
-        const numkeys = [];
-        let targetField = 'First Name';
-        let emailValid = 'Email';
-        let countryCheck = 'Country';
-        for (const key of reqField) {
-          if (obj[key] === '') {
-            emptyKeys.push(key);
+
+    let totalAddresses = fileData.length
+  
+    if (errMsg.length == 0) {
+      const batchSize = 250; // Define your batch size
+      const numBatches = Math.ceil(fileData.length / batchSize);
+  
+      for (let i = 0; i < numBatches; i++) {
+        const startIdx = i * batchSize;
+        const endIdx = Math.min((i + 1) * batchSize, fileData.length);
+        const batchData = fileData.slice(startIdx, endIdx);
+  
+        for (let index = 0; index < batchData.length; index++) {
+          const obj = batchData[index];
+  
+          let emptyKeys = [];
+          const numkeys = [];
+          let targetField = 'First Name';
+          let emailValid = 'Email';
+          let countryCheck = 'Country';
+          for (const key of reqField) {
+            if (obj[key] === '') {
+              emptyKeys.push(key);
+            }
+          }
+  
+          if (alphabetPattern.test(obj[targetField]) == false) {
+            errMsg.push(`'${targetField}' at row ${index} includes a number.`);
+          }
+          if (
+            obj[countryCheck] === 'USA' ||
+            obj[countryCheck].toLowerCase() === '' ||
+            obj[countryCheck].toLowerCase() === ' ' ||
+            obj[countryCheck].toLowerCase() === 'u.s.a' ||
+            obj[countryCheck].toLowerCase() === 'u.s' ||
+            obj[countryCheck].toLowerCase() === 'usa' ||
+            obj[countryCheck].toLowerCase() === 'us' ||
+            obj[countryCheck].toLowerCase() === 'america' ||
+            obj[countryCheck].toLowerCase() === 'united states' ||
+            obj[countryCheck].toLowerCase() === 'united states of america' ||
+            obj[countryCheck].toLowerCase() == undefined
+          ) {
+            usCount++;
+          } else {
+            nonUSCount++;
+          }
+          if (mailText.test(obj[emailValid]) == false) {
+            errMsg.push(
+              `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
+            );
+          }
+  
+          if (emptyKeys.length > 0) {
+            errMsg.push(
+              ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
+            );
+          }
+  
+          if (errMsg.length > 0) {
+            setIsOpen2(true);
+            setTimeout(() => setIsOpen2(false), 3000);
+            found = true;
+            onCancelCSVUpload();
           }
         }
-
-        if (alphabetPattern.test(obj[targetField]) == false) {
-          errMsg.push(`'${targetField}' at row ${index} includes a number.`);
-        }
-        if (
-          obj[countryCheck] === 'USA' ||
-          obj[countryCheck].toLowerCase() === '' ||
-          obj[countryCheck].toLowerCase() === ' ' ||
-          obj[countryCheck].toLowerCase() === 'u.s.a' ||
-          obj[countryCheck].toLowerCase() === 'u.s' ||
-          obj[countryCheck].toLowerCase() === 'usa' ||
-          obj[countryCheck].toLowerCase() === 'us' ||
-          obj[countryCheck].toLowerCase() === 'america' ||
-          obj[countryCheck].toLowerCase() === 'united states' ||
-          obj[countryCheck].toLowerCase() === 'united states of america' ||
-          obj[countryCheck].toLowerCase() == undefined
-        ) {
-          usCount++;
-        } else {
-          nonUSCount++;
-        }
-        if (mailText.test(obj[emailValid]) == false) {
-          errMsg.push(
-            `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
-          );
-          // setIsOpen2(true)
-          // setTimeout(() => setIsOpen2(false), 3000)
-        }
-
-        if (emptyKeys.length > 0) {
-          errMsg.push(
-            ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
-          );
-          // setIsOpen2(true)
-          // setTimeout(() => setIsOpen2(false), 3000)
-          // break;
-        }
-
-        if (errMsg.length > 0) {
-          setIsOpen2(true);
-          setTimeout(() => setIsOpen2(false), 3000);
-          found = true;
-          onCancelCSVUpload();
-        } else {
+  
+        if (!found) {
           if (stateCheckCart) {
-            await uploadDataToAPI(obj);
+            await uploadDataToAPI(batchData, totalAddresses);
+            totalAddresses -= batchData.length;
           }
         }
       }
     }
+  
     setErrorVal(errMsg);
     setUsAddress(usCount);
     setnonUsAddress(nonUSCount);
     if (stateCheckCart) {
       setIsAddressUploadSuccess(!isAddressUploadSuccess);
     }
-    if (found) {
-    } else {
+    if (!found) {
       uploadCsvFileOnClick();
-      // checkUserLogged()
     }
   }
+  
+
+
   async function uploadCsvFileOnClick() {
     try {
       setLoader(true);
@@ -771,17 +784,72 @@ export function MessageWriting({
       setLoader(false);
     }
   }
-  const uploadDataToAPI = async (data) => {
-    setLoader(true);
+  // const uploadDataToAPI = async (batchData) => {
 
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+  //   setLoader(true);
+
+  //   const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
+  //   try {
+  //     const response = await fetch(apiUrl, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         firstName: data['First Name'] || '',
+  //         lastName: data['Last Name'] || '',
+  //         businessName: data.Company || '',
+  //         address1: data.Address || '',
+  //         address2: data['Address 2'] || '',
+  //         city: data.City || '',
+  //         state: data['State/Province'] || '',
+  //         zip: data['Postal Code'] || '',
+  //         country: data.Country || 'USA',
+  //         type: data.Type
+  //           ? data.Type.toLowerCase() === 'sender'
+  //             ? 'return'
+  //             : 'recipient'
+  //           : 'recipient',
+  //         birthday: data.Birthday || '',
+  //         anniversary: data.Anniversary || '',
+  //       }),
+  //     });
+
+  //     if (response.ok) {
+  //       const responseData = await response.json();
+  //       // setLoadAddress(!loadAddress);
+  //       // setSelectedFile(null);
+  //       // setLoader(false);
+
+  //       setLoader(false);
+  //     } else {
+  //       // setSelectedFile(null);
+  //       setLoader(false);
+
+  //       throw new Error('Network response was not ok');
+  //     }
+  //   } catch (error) {
+  //     // setSelectedFile(null);
+  //     setLoader(false);
+
+  //     console.error('Error uploading data:', error);
+  //     throw error;
+  //   }
+  // };
+ 
+ 
+  const uploadDataToAPI = async (batchData,totalAddresses) => {
+    setLoaderMessage('Uploading Addresses...');
+    setLoader(true);
+  
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerid}`;
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
+        body: JSON.stringify(batchData.map(data => ({
           firstName: data['First Name'] || '',
           lastName: data['Last Name'] || '',
           businessName: data.Company || '',
@@ -798,30 +866,34 @@ export function MessageWriting({
             : 'recipient',
           birthday: data.Birthday || '',
           anniversary: data.Anniversary || '',
-        }),
+        }))),
       });
-
+  
       if (response.ok) {
+        // Assuming you want to handle response data from each batch, you can add your logic here
         const responseData = await response.json();
-        // setLoadAddress(!loadAddress);
-        // setSelectedFile(null);
-        // setLoader(false);
-
+        // Handle response data if needed
+  
         setLoader(false);
       } else {
-        // setSelectedFile(null);
         setLoader(false);
-
         throw new Error('Network response was not ok');
       }
     } catch (error) {
-      // setSelectedFile(null);
       setLoader(false);
-
       console.error('Error uploading data:', error);
       throw error;
     }
+
+    if (totalAddresses === 1) {
+      setLoaderMessage('Uploaded Address Successfully');
+      setTimeout(() => {
+        setLoader(false);
+        setLoaderMessage(null);
+      }, 1400);
+    }
   };
+  
   async function onCancl() {
     setIsOpen(false);
     setValToGen(null);
@@ -831,7 +903,6 @@ export function MessageWriting({
   async function onInsetClick() {
     mainMessageBox.style.fontSize = '20px';
     mainMessageBox.style.lineHeight = '20px';
-
     setName(aiText);
     setIsOpen(false);
     setaiText('');
@@ -1919,7 +1990,7 @@ export function MessageWriting({
                     <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
                         <CircularLoader
-                          title="Uploading Addresses..."
+                          title={loaderMessage}
                           color="#ef6e6e"
                         />
                       ) : (
