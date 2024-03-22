@@ -85,14 +85,6 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     (country) => country.country === selectedAddress.country,
   );
 
-  function convertISOToMMDDYYYY(isoDateString) {
-    const date = new Date(isoDateString);
-    const month = date.getUTCMonth() + 1; // Month is zero-based, so we add 1
-    const day = date.getUTCDate();
-    const year = date.getUTCFullYear();
-
-    return `${month}/${day}/${year}`;
-  }
 
   const uploadDataToAPI = () => {
     setSelectedAddress(null);

@@ -739,6 +739,8 @@ export function MessageWriting({
       // checkUserLogged()
     }
   }
+
+  
   async function uploadCsvFileOnClick() {
     try {
       setLoader(true);
@@ -771,7 +773,7 @@ export function MessageWriting({
       setLoader(false);
     }
   }
-  const uploadDataToAPI = async (data) => {
+  const uploadDataToAPI = async (batchData,totalAddresses) => {
     setLoader(true);
 
     const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
@@ -782,22 +784,22 @@ export function MessageWriting({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          firstName: data['First Name'] || '',
-          lastName: data['Last Name'] || '',
-          businessName: data.Company || '',
-          address1: data.Address || '',
-          address2: data['Address 2'] || '',
-          city: data.City || '',
-          state: data['State/Province'] || '',
-          zip: data['Postal Code'] || '',
-          country: data.Country || 'USA',
-          type: data.Type
-            ? data.Type.toLowerCase() === 'sender'
+          firstName: batchData['First Name'] || '',
+          lastName: batchData['Last Name'] || '',
+          businessName: batchData.Company || '',
+          address1: batchData.Address || '',
+          address2: batchData['Address 2'] || '',
+          city: batchData.City || '',
+          state: batchData['State/Province'] || '',
+          zip: batchData['Postal Code'] || '',
+          country: batchData.Country || 'USA',
+          type: batchData.Type
+            ? batchData.Type.toLowerCase() === 'sender'
               ? 'return'
               : 'recipient'
             : 'recipient',
-          birthday: data.Birthday || '',
-          anniversary: data.Anniversary || '',
+          birthday: batchData.Birthday || '',
+          anniversary: batchData.Anniversary || '',
         }),
       });
 
@@ -814,6 +816,7 @@ export function MessageWriting({
 
         throw new Error('Network response was not ok');
       }
+      
     } catch (error) {
       // setSelectedFile(null);
       setLoader(false);
@@ -821,8 +824,9 @@ export function MessageWriting({
       console.error('Error uploading data:', error);
       throw error;
     }
+   
   };
-  async function onCancl() {
+  async function onCancel() {
     setIsOpen(false);
     setValToGen(null);
     setaiText(null);
@@ -2121,7 +2125,7 @@ export function MessageWriting({
                   <div className="gap-2">
                     <button
                       className="bg-[#f0f0f0] text-[black] p-2 rounded "
-                      onClick={() => onCancl()}
+                      onClick={() => onCancel()}
                     >
                       Cancel
                     </button>
@@ -2130,7 +2134,7 @@ export function MessageWriting({
               )}
             </div>
           }
-          cancelLink={onCancl}
+          cancelLink={onCancel}
         />
       )}
       <Instruction
