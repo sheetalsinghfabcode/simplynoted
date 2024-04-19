@@ -10,7 +10,7 @@ import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
 import { getApi, postApi } from '~/utils/ApiService';
 import { API_PATH } from '~/utils/Path';
-import { BsJustify } from 'react-icons/bs';
+import CartItems from "../CartItems";
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -523,6 +523,8 @@ export function AddCart({
   }
 
   function onClickOFAddCartBtn() {
+    // Update the cart items for the next cart updates in the cart
+    <CartItems />
     if (offPrice > 0) {
       onClickAddCart(); //before here was newDiscountedCard function
     } else {
