@@ -171,7 +171,7 @@ const Accordion = ({
   }, []);
 
     useEffect(()=>{
-      formData.address.line1 = customerData && customerData.address?.line1
+      formData.address.line1 = customerData  && customerData.address?.line1
       formData.address.line2 = customerData && customerData.address?.line2
       formData.address.state = customerData && customerData.address?.state
       formData.address.city = customerData && customerData.address?.city
@@ -539,7 +539,7 @@ const Accordion = ({
                   type="text"
                   placeholder="Address"
                   required
-                  disabled={customerData.address?.line1}
+                  disabled={ customerData && customerData?.address?.line1}
                   value={formData.address.line1}
                   onChange={(e) => {
                     errors.addressLine1 = '';
@@ -561,7 +561,7 @@ const Accordion = ({
                   id="address2"
                   name="address.line2"
                   type="text"
-                  disabled={customerData.address?.line2}
+                  disabled={ customerData && customerData.address?.line2}
 
                   placeholder="Address 2"
                   value={formData.address.line2}
@@ -579,7 +579,7 @@ const Accordion = ({
                   type="text"
                   required
                   placeholder="City"
-                  disabled={customerData.address?.city}
+                  disabled={ customerData && customerData.address?.city}
 
                   value={formData.address.city}
                   onChange={(e) => {
@@ -607,7 +607,7 @@ const Accordion = ({
                     value={formData.address.country}
                     itemID="country"
                     name="address.country"
-                    disabled={customerData.address?.country}
+                    disabled={ customerData && customerData.address?.country}
                     id="country"
                     className="appearance-none rounded-md border h-[46px] w-full  border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   >
@@ -630,7 +630,7 @@ const Accordion = ({
                       errors.state = '';
                       handleChange(e);
                     }}
-                    disabled={customerData.address?.state}
+                    disabled={ customerData && customerData.address?.state}
                     value={formData.address.state}
                     name="address.state"
                     className={`appearance-none rounded-md border h-[46px]  w-full  border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${

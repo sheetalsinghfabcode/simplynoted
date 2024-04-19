@@ -272,10 +272,38 @@ const ContactTable = ({
     }
   };
 
+  // function csvToJson(csv) {
+
+  //     console.log("csv>>>>",csv);
+  //   var lines = csv.split('\n');
+  //   var result = [];
+
+  //   var headers = lines[0].split(',');
+  //   for (var i = 1; i < lines.length; i++) {
+  //     var currentLine = lines[i].split(',');
+
+  //     // Skip empty lines
+  //     if (currentLine.length === 1 && currentLine[0].trim() === '') {
+  //       continue;
+  //     }
+
+  //     var obj = {};
+  //     for (var j = 0; j < headers.length; j++) {
+  //       obj[headers[j]] = currentLine[j];
+  //     }
+
+  //     result.push(obj);
+  //   }
+
+  //   return result;
+  // }
+
   function csvToJson(csv) {
+
+    console.log("csv>>>",csv);
     var lines = csv.split('\n');
     var result = [];
- 
+  
     var headers = lines[0].split(',');
     for (var i = 1; i < lines.length; i++) {
         var currentLine = lines[i].trim();
@@ -283,20 +311,23 @@ const ContactTable = ({
         if (currentLine.length === 0) {
             continue;
         }
- 
+
         // Handle commas inside double quotes
-        var parts = currentLine.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-       
+        var parts = currentLine?.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+        
         var obj = {};
         for (var j = 0; j < headers.length; j++) {
             obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
         }
- 
+  
         result.push(obj);
     }
- 
+  
     return result;
 }
+
+
+
 
   let file = useRef(null);
 
@@ -437,7 +468,10 @@ const ContactTable = ({
       return;
     }
 
+    console.log("fileData>>>",fileData)
+
     const cleanedData = fileData.map((entry) => {
+
       const cleanedEntry = {};
       Object.keys(entry).forEach((key) => {
         const cleanedKey = key?.replace(/"/g, ''); // Remove double quotes from keys
@@ -446,6 +480,9 @@ const ContactTable = ({
       });
       return cleanedEntry;
     });
+
+    console.log("cleanedData",cleanedData);
+
 
     let totalAddresses = cleanedData.length;
 
@@ -485,6 +522,8 @@ const ContactTable = ({
           }
 
           if (missingFields.length > 0) {
+          setSelectedFile(null)
+
             errors.push(
               `Missing fields in row ${startIdx + 1}: ${missingFields.join(
                 ', ',
@@ -497,6 +536,7 @@ const ContactTable = ({
           // If any missing fields found, display error and halt further processing
           setErrorContent(errors);
           setErrorModal(true);
+          setSelectedFile(null)
           setShowLoader(false);
           return;
         }
