@@ -1,11 +1,9 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import {useStateContext} from '~/context/StateContext';
-import {useLocation} from '@remix-run/react';
 
 const CartItems = ({id}) => {
   const {setCartCountVal, cartCountVal, setCartData, isCartUpdated, customerId} =
     useStateContext();
-    const pathname = useLocation();
 
   useEffect(() => {
     // Read customerId from localStorage

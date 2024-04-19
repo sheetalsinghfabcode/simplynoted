@@ -301,6 +301,8 @@ export default function AddCartFunc() {
     // navigate(,{state:{index:'index'}})
     let data = cartData[index];
     let ab = cartData[index].productGetUrl;
+    data.customFontName = null;
+    console.log({data})
     navigate(`${ab}`, { state: { data: data, index: index } });
   }
   const navigate = useNavigate();
@@ -1429,8 +1431,8 @@ export default function AddCartFunc() {
                         <span className=" text-center ">
                           Recipient:{' '}
                           <span className="font-normal">
-                            {reciverAddress.firstName},{reciverAddress.address1}
-                            ,{reciverAddress.city},{reciverAddress.country}
+                            {reciverAddress?.firstName},{reciverAddress?.address1}
+                            ,{reciverAddress?.city},{reciverAddress?.country}
                           </span>
                         </span>
                       </div>
