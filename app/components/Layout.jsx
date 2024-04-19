@@ -54,7 +54,6 @@ import CartItems from './CartItems';
 import { FaArrowLeft } from 'react-icons/fa';
 
 export function Layout({ children, layout, isLoggedIn }) {
-  const { customerId } = useStateContext()
   const { headerMenu, footerMenu } = layout;
 
   let storedCustomerId;
