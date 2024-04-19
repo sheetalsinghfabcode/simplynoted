@@ -22,8 +22,8 @@ const CanvasDesign = () => {
     <>
       <div className="sm:py-[50px] py-[20px] ">
         {/* First */}
-        <div className="global-max-width-handler global-section-divider relative md:flex flex-col lg:flex-row hidden justify-between flex-wrap mx-auto w-full  lg:gap-[10px] gap-[30px] ">
-          <div className="flex-1 lg:w-[35%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-[6rem] lg:order-none order-2 data-background text-left">
+        <div className="global-max-width-handler global-section-divider relative md:flex flex-col lg:flex-row hidden justify-between flex-wrap tab:flex-nowrap mx-auto w-full  lg:gap-[10px] gap-[30px] ">
+          <div className="lg:w-[40%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-[6rem] lg:order-none order-2 data-background text-left">
             <div className="text-4xl text-custom font-custom font-bold text-left  text-[#001A5F] ">
               Send one or send &nbsp;
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
@@ -48,11 +48,11 @@ const CanvasDesign = () => {
           </div>
           <div className="flex-1">
             <div className="flex relative justify-end mt-[30px]">
-              <div className="z-[1] lg:w-[615px] w-[414px] text-left  relative left-[86px] lg:left-[75px]">
+              <div className="absolute  z-[1] w-[48%] top-[60px] left-[76px]">
                 <img className="" src={robot1} alt="LogoSimplinotedpic" />
               </div>
-              <video
-                className="z-[2] lg:w-[600px] w-[450px] overflow-hidden"
+              <video   
+                className="z-[2] tab:max-w-[500px] tab:w-[58%] w-[450px] overflow-hidden"
                 autoPlay
                 loop
                 playsInline
@@ -189,10 +189,10 @@ const CanvasDesign = () => {
             />
           </div>
 
-          <div className="lg:w-[60%] lg:mx-0 mx-auto relative flex flex-wrap justify-end w-full  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-start">
-            <div className="text-right relative lg:w-[67%] w-[60%] border-b-[1px]">
+          <div className="lg:w-[60%] lg:mx-0 mx-auto relative flex flex-wrap w-full  xl:pl-[180px]  pl-0 mt-5  lg:overflow-hidden overflow-visible  justify-end">
+            <div className="text-right relative lg:w-[67%] w-full border-b-[1px]">
               <img
-                className="absolute -top-[30px] -left-[350px] lg:top-[30px] lg:-left-[300px]"
+                className="absolute -top-[30px] -left-[350px] lg:top-[30px] lg:-left-[300px] w-[48%] tab:w-auto"
                 src={robot3}
                 alt="LogoSimplinotedpic"
               />

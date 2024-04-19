@@ -234,13 +234,7 @@ export default function CustomProducts() {
                         //   })`,
                         // }}
 
-                        //Remove when back image is changed to canvas image(style)
-                        style={{
-                            transform: `scale(${
-                              imageShow == 0
-                                ? 1: metafields.back && metafields.back.zoom
-                            })`,
-                          }}
+                       
 
                         src={
                           customProductData.images.length
@@ -286,7 +280,7 @@ export default function CustomProducts() {
                           imageShow == '1' ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
                         } w-[100%] text-[#fff] py-[14px] px-[8px] font-normal text-base rounded`}
                         text="VIEW CARD BACK"
-                        onClickFunction={() => setImageShow(1)}
+                        onClickFunction={() => setImageShow(2)}
                       />
                     </div>
                   )}

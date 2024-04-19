@@ -39,18 +39,18 @@ export default function Zapier() {
 
   return (
     <div className="w-full">
-      <div className="xl:flex relative items-center global-section-divider top-10 justify-center global-max-width-handler lg:left-[30px]">
-        <div className="">
+      <div className="xl:flex relative items-center global-section-divider max-lg:top-0 top-10 justify-center global-max-width-handler max-lg:left-0 lg:left-[30px]">
+        <div className="tab:max-w-[40%] max-lg:mx-auto">
           <div className="md:flex flex xl:justify-normal justify-center">
             <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" />
           </div>
-          <div className="mt-5  flex xl:justify-normal justify-center">
-            <h2 className="md:text-[48px] sm:text-[35px] text-[29px]  text-[#001a5f] font-normal">
+          <div className="flex xl:justify-normal justify-center">
+            <h2 className="md:text-[48px] sm:text-[35px] text-[29px]  text-[#001a5f] font-bold tracking-[-0.2px] leading-normal max-lg:!text-center">
               Zapier Integration
             </h2>
           </div>
           <div className="xl:justify-normal xl:flex hidden justify-center">
-            <p className="w-3/4  xl:text-left texts text-center mt-5 ">
+            <p className=" xl:text-left texts !text-[18px] !leading-normal text-center !mb-0 ">
               Integrate and automate sending real handwritten notes from 2,500+
               softwares instantly. Request access to our Zapier App today!
             </p>
@@ -59,7 +59,7 @@ export default function Zapier() {
             <div className="flex justify-center">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="INTEGRATE  text-[18px] font-bold text-white py-[30px] px-[76px] order-1	rounded"
+                className="INTEGRATE  text-[14px] font-bold text-white py-[20px] px-[50px] order-1	rounded"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -68,7 +68,7 @@ export default function Zapier() {
             </div>
           </div>
         </div>
-        <div>
+        <div className=''>
           <div className="flex xl:justify-normal xl:mt-[0px]  justify-center mt-8">
             <img
               className="w-full"
@@ -76,7 +76,7 @@ export default function Zapier() {
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden justify-center">
-            <p className="sm:w-3/4 w-full xl:text-left text-justify sm:text-center texts mt-8">
+            <p className="sm:w-3/4 w-full xl:text-left text-justify sm:text-center texts mt-8 max-lg:max-w-xl max-lg:text-center max-lg:mx-auto">
               Integrate and automate sending real handwritten notes from 2,500+
               softwares instantly. Request access to our Zapier App today!
             </p>
@@ -85,7 +85,7 @@ export default function Zapier() {
             <div className=" flex justify-center">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="INTEGRATE  text-[16px] font-bold text-white py-[22px] px-[40px] order-1	rounded"
+                className="INTEGRATE  text-[14px] font-bold text-white py-[20px] px-[50px] order-1	rounded"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -95,7 +95,7 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[130px] mt-[70px]">
+      <div className="shopify-tag flex justify-center mx-3 max-w 5/6 sm:mt-[130px] mt-[70px] max-lg:my-[70px] max-sm:my-[40px]">
         <Swiper
           modules={[Autoplay]}
           direction={'horizontal'}
@@ -191,7 +191,7 @@ export default function Zapier() {
       </div>
       <div className="w-full hidden xl:block relative h-[459px] ">
         <div className="flex">
-          <div className="absolute top-[3px]">
+          <div className="absolute tab:left-[-10vw] top-[3px]">
             <img
               className="max-w-[500px] "
               src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
@@ -207,7 +207,7 @@ export default function Zapier() {
           </div>
         </div>
       </div>
-      <div className="xl:flex mt-10 items-center global-section-divider w-full relative  justify-center global-max-width-handler lg:left-[30px]">
+      <div className="xl:flex mt-10 items-center global-section-divider w-full relative  justify-center global-max-width-handler max-lg:left-0 lg:left-[30px]">
         <div className="absolute hidden xl:block top-[320px] right-[280px] z-[-12]">
           <img
             className="w-full 2xl:h-[53rem] h-[45rem]"
@@ -217,12 +217,12 @@ export default function Zapier() {
         </div>
         <div className="">
           <div className="flex xl:justify-normal xl:w-[490px] w-[100%] leading-[48px] font-bold justify-center">
-            <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal ">
+            <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-bold max-sm:leading-normal max-lg:max-w-xl max-lg:text-center max-lg:mx-auto ">
               Instantly Integrate With 1,000s of Applications
             </h2>
           </div>
           <div className="xl:justify-normal  xl:flex hidden justify-center">
-            <p className="max-w-[100%]  xl:text-left text-center mt-5 texts">
+            <p className="max-w-[100%]  xl:text-left text-center mt-5 texts max-sm:text-center">
               Start your trigger by finding your app in the Zapier database
             </p>
           </div>
@@ -252,15 +252,15 @@ export default function Zapier() {
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden  justify-center">
-            <p className="max-w-[100%]  xl:text-left text-justify texts  mt-8 ">
+            <p className="max-w-[100%]  xl:text-left text-justify texts  mt-8 max-sm:text-center ">
               Start your trigger by finding your app in the Zapier database
             </p>
           </div>
           <div className=" flex xl:justify-normal  xl:hidden justify-center xl:order-first">
-            <div className="xl:flex grid">
+            <div className="flex gap-2 items-center w-full max-lg:max-w-[353px] max-lg:mx-auto">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="btn1 text-sm py-[20px] px-[24px]"
+                className="btn1 text-sm py-[15px] px-[5px] max-sm:text-[14px] flex-1 !mt-0"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -268,7 +268,7 @@ export default function Zapier() {
               />
               <DynamicButton
                 text="TUTORIALS"
-                className="btn2 py-[18px] mt-[12px] px-[55px] "
+                className="btn2 py-[15px] mt-[0] px-[24px]  max-sm:text-[14px]  flex-1"
                 onClickFunction={() => navigate('/news')}
               />
             </div>
@@ -283,7 +283,7 @@ export default function Zapier() {
           />
         </div>
       </div>
-      <div className="xl:flex  items-center relative  global-section-divider justify-center mx-auto 3xl:w-[85%] w-full ">
+      <div className="xl:flex  items-center relative  global-section-divider global-max-width-handler justify-center mx-auto 3xl:w-[85%] w-full ">
         <div className="absolute 2xl:top-[27rem] top-[20rem]  hidden xl:block z-[-12] 2xl:left-[26rem] left-[14rem]">
           <img
             className="w-full 2xl:h-[54rem] h-[42rem]"
@@ -293,13 +293,13 @@ export default function Zapier() {
         </div>
         <div className="order-2 xl:mr-[56px] mr-[0px]">
           <div className="flex xl:justify-normal justify-center">
-            <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] sm:font-bold font-normal">
+            <h2 className="md:text-[40px] xl:text-left text-center sm:text-[35px] text-[26px]  text-[#001a5f] font-bold">
               Send one or send
               <span className="font-beauty text-6xl font-bold">thousands</span>
             </h2>
           </div>
           <div className="flex xl:justify-normal justify-center">
-            <p className="w-3/4  xl:text-left text-center texts hidden xl:block mt-5 ">
+          <p className="max-w-[100%]  xl:text-left text-justify texts  mt-8 max-sm:text-center hidden xl:block max-lg:max-w-xl max-lg:text-center max-lg:mx-auto">
               Simply Noted integrates with your software and will do bulk sends
               in just a few minutes of your time.
             </p>
@@ -316,8 +316,8 @@ export default function Zapier() {
               />
               <DynamicButton
                 text="TUTORIALS"
-                className="btn2 py-[18px] xl:mt-[0px] mt-[12px] px-[45px] ml-[15px]"
-                onClickFunction={() => navigate('/news')}
+                className="btn2 py-[18px] xl:mt-[0px] mt-[12px] px-[45px] ml-[15px]"  
+              onClickFunction={() => navigate('/news')}
               />
             </div>
           </div>
@@ -330,16 +330,16 @@ export default function Zapier() {
             />
           </div>
           <div className="flex xl:justify-norma xl:hidden justify-center">
-            <p className="sm:w-3/4 w-full  xl:text-left text-justify   mt-8 texts sm:px-0 px-[20px]">
+          <p className="max-w-[100%]  xl:text-left text-justify texts  mt-8 max-sm:text-center max-lg:max-w-xl max-lg:text-center max-lg:mx-auto">
               Simply Noted integrates with your software and will do bulk sends
               in just a few minutes of your time.
             </p>
           </div>
           <div className=" flex xl:justify-normal  xl:hidden justify-center xl:order-first">
-            <div className="xl:flex grid">
+          <div className="flex gap-2 items-center w-full max-lg:max-w-[353px] max-lg:mx-auto">
               <DynamicButton
                 text="INTEGRATE NOW"
-                className="btn1 text-sm py-[20px] px-[20px]"
+                className="btn1 py-[15px] px-[15px]  max-sm:text-[14px]  flex-1 !mt-0"
                 onClickFunction={() =>
                   (window.location.href =
                     'https://zapier.com/apps/simply-noted/integrations')
@@ -347,7 +347,7 @@ export default function Zapier() {
               />
               <DynamicButton
                 text="TUTORIALS"
-                className="btn2 py-[18px]  mt-[12px] px-[60px] "
+                className="btn2 py-[15px] mt-[0] px-[5px]  max-sm:text-[14px]  flex-1"
                 onClickFunction={() => navigate('/news')}
               />
             </div>

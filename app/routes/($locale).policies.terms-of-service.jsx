@@ -23,10 +23,6 @@ export default function Termsofser() {
           />
 
           <div className="sm:text-[14px] text-[12px] flex flex-col items-center">
-            <div className="w-[100%]  text-justify">
-              <p className="mt-[25px] font-medium ">TERMS OF SERVICE</p>
-              <p className="mt-[25px]  ">----</p>
-            </div>
             <div className=" w-[100%]  text-justify">
               <p className="mt-[25px] font-medium  ">OVERVIEW</p>
               <p className="mt-[25px] ">

@@ -23,6 +23,7 @@ import SuccessfullLoader from '~/components/SucessfullLoader';
 import { RiArrowRightLine } from 'react-icons/ri';
 import { FiArrowLeft } from 'react-icons/fi';
 
+
 let storedDataString, storedDataArray;
 
 export async function loader({ context, request }) {
@@ -264,7 +265,7 @@ export default function AddCartFunc() {
 
   const clearCart = () => {
     setSuccessfullLoader(true);
-    setOperation('Clear shopping cart');
+    setOperation('Clearing shopping cart');
     setUpdateGift(!updateGift);
     setClearCartModal(false);
 
@@ -435,7 +436,7 @@ export default function AddCartFunc() {
       <div className="global-max-width-handler">
         {showCartPage ? (
           <>
-            {sucessfullLoader && operation === 'Clear shopping cart' && (
+            {sucessfullLoader && operation === 'Clearing shopping cart' && (
               <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
                 <CircularLoader
                   textColor="text-white"
@@ -469,7 +470,7 @@ export default function AddCartFunc() {
                       cartData.map((item, index) => (
                         <div
                           key={index}
-                          className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] shadow-inset-custom"
+                          className="sm:w-[90%] w-[98%] bg-[white] md:px-[30px] m-auto md:mt-10 mb-10 p-[12px] small:p-[20px]  rounded-[10px] border border-[#aaa]"
                         >
                           {sucessfullLoader &&
                             operation === 'Deleting Gift Card...' && (
@@ -1063,7 +1064,7 @@ export default function AddCartFunc() {
                       ))}
                     {totalPrize && (
                       <div className="sm:w-[90%] w-[98%]  bg-white m-auto mt-10 mb-10">
-                        <div className="flex lg:p-3 p-5  flex-wrap justify-evenly lg:gap-0 gap-[15px] shadow-inset-custom rounded-[10px]">
+                        <div className="flex lg:p-3 p-5  flex-wrap justify-evenly lg:gap-0 gap-[15px] border border-[#aaa] rounded-[10px]">
                           <div className="lg:w-[25%] md:w-[39%] sm:w-[47%] w-full flex lg:items-center items-end justify-start ">
                             <div className="buttonDiv md:text-[14px] sm:text-[12px] text-[10px] font-normal md:w-[85%] sm:w-[90%] w-[60%]">
                               <button
@@ -1085,22 +1086,27 @@ export default function AddCartFunc() {
                             <span>${Number(totalPrize).toFixed(2)}</span>
                           </div>
                           <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">
-                            <div className="">
+                            <div className="w-full sm:w-auto">
                               <div className="md:text-[12px] sm:text-[10px] text-[11px] font-medium  items-center gap-2">
                                 <input
                                   type="checkbox"
+                                  id="term"
                                   className="cursor-pointer"
                                   onChange={() => setAgree(!agree)}
                                   checked={agree}
                                 />
                                 <span>
+                                  <label htmlFor='term'>
                                   {' '}
                                   I agree with{' '}
-                                  <span className="underline decoration-solid">
-                                    <a href="/policies/terms-of-service">
-                                      Terms of service
-                                    </a>
-                                  </span>
+                                  <span className="underline decoration-solid">             
+                                    <DynamicButton
+              onClickFunction={() => navigate('/policies/terms-of-service')}
+              text="Terms of service"
+              className="btnTerm text-sm"
+            />
+                             </span>
+                                  </label>
                                 </span>
                               </div>
                               <button
@@ -1144,7 +1150,7 @@ export default function AddCartFunc() {
                       </div>
                     )}
                     <div className="sm:w-[90%] w-[98%]  m-auto mt-10 mb-10">
-                      <div className="sm:p-[30px] p-[20px] bg-white md:w-[50%] w-[100%] shadow-inset-custom rounded-[10px]">
+                      <div className="sm:p-[30px] p-[20px] bg-white md:w-[50%] w-[100%] border border-[#aaa] rounded-[10px]">
                         <h3 className="text-[30px] font-bold text-[#1b5299]">
                           NOTE
                         </h3>

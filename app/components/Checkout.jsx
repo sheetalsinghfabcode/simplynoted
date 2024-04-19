@@ -586,7 +586,7 @@ export function CheckoutData({
     }
 
     // Validate address line 1
-    if (!formData.address.line1.trim()) {
+    if (!formData.address?.line1.trim()) {
       errors.addressLine1 = 'Address is required';
       isValid = false;
     }
@@ -633,7 +633,7 @@ export function CheckoutData({
               <DynamicTitle title={'PAYMENT'} />
             </div>
             <div className="w-[98%] flex lg:flex-row flex-col mr-2 ml-2 gap-8  justify-center">
-              <div className="p-5 bg-white lg:max-w-[48%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold shadow-outer-custom">
+              <div className="p-5 bg-white lg:max-w-[48%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold border border-[#aaa]">
                 <div className="border border-solid border-[#e6edf8] sm:m-3 rounded-tl-lg rounded-tr-lg">
                   <div
                     className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg md:flex grid justify-between ${showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
@@ -777,7 +777,7 @@ export function CheckoutData({
                 </div>
               </div>
               <div className="lg:max-w-[35%] lg:w-full w-[90%] lg:mx-0 mx-auto ">
-                <div className="p-5 bg-white  rounded-xl shadow-outer-custom">
+                <div className="p-5 bg-white  rounded-xl border border-[#aaa]">
                   <h1 className="text-left font-bold sm:text-[30px] text-[26px]">
                     ORDER SUMMARY
                   </h1>

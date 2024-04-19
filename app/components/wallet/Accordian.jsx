@@ -36,6 +36,12 @@ const Accordion = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
+  const [customerData,setCustomerData] = useState({});
+  
+
+
+
+
 
   const {
     setActiveTab,
@@ -128,7 +134,9 @@ const Accordion = ({
 
       setTimeout(() => {
         setloader(false);
+        setCustomerData(jsonData.customer);
         setShowStripeCard(!showStripeCard);
+        setSavedCard(jsonData.payments);
       }, [500]);
     } catch (error) {
       setloader(false);
@@ -140,7 +148,8 @@ const Accordion = ({
         `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
-      if (json) {
+      if (json) {        
+        setCustomerData(json.customer);
         setSavedCard(json.payments);
       }
     } catch (error) {}
@@ -156,8 +165,19 @@ const Accordion = ({
     getSavedCards(customerid);
     formData.name = fullName ? fullName : firstName + ' ' + lastName;
     formData.email = userEmail;
-  }, [showStripeCard]);
+   
+    // formData.address.country = customerData && customerData.address?.country
+   
+  }, []);
 
+    useEffect(()=>{
+      formData.address.line1 = customerData && customerData.address?.line1
+      formData.address.line2 = customerData && customerData.address?.line2
+      formData.address.state = customerData && customerData.address?.state
+      formData.address.city = customerData && customerData.address?.city
+    },[customerData])
+
+  
   const handleChange = (e) => {
     const {name, value} = e.target;
     if (name.startsWith('address.')) {
@@ -203,25 +223,25 @@ const Accordion = ({
     }
 
     // Validate address
-    if (!formData.address.line1.trim()) {
+    if (!formData.address?.line1) {
       errors.addressLine1 = 'Address is required';
       isValid = false;
     }
 
     // Validate city
-    if (!formData.address.city.trim()) {
+    if (!formData.address.city) {
       errors.city = 'City is required';
       isValid = false;
     }
 
     // Validate country
-    if (!formData.address.country.trim()) {
+    if (!formData.address.country) {
       errors.country = 'Country is required';
       isValid = false;
     }
 
     // Validate state
-    if (!formData.address.state.trim()) {
+    if (!formData.address.state) {
       errors.state = 'State is required';
       isValid = false;
     }
@@ -243,9 +263,11 @@ const Accordion = ({
     return isValid;
   };
 
-  const selectedCountry = location.countries.find(
+  const selectedCountry = location?.countries?.find(
     (country) => country.country === formData.address.country,
   );
+
+
 
   function extractDiscountAndCardsInfo(str) {
     // Regular expressions to extract discount and card numbers
@@ -448,9 +470,9 @@ const Accordion = ({
           </span>
           <span className="">
             {isBillingOpen || errors.length > 0 ? (
-              <FaAngleDown />
-            ) : (
               <FaAngleUp />
+            ) : (
+              <FaAngleDown />
             )}
           </span>
         </div>
@@ -478,7 +500,7 @@ const Accordion = ({
                     // placeholder="FullName"
                     value={formData.name}
                     onChange={(e) => handleChange(e)}
-                    className="mt-2 border border-solid border-black p-3 w-[100%]"
+                    className="mt-2 border rounded-md border-solid border-black p-3 w-[100%]"
                   />
                   {errors.name && (
                     <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
@@ -498,7 +520,7 @@ const Accordion = ({
                     //  placeholder="email"
                     value={formData.email}
                     onChange={(e) => handleChange(e)}
-                    className="mt-2 border border-solid border-black p-3 w-[100%]"
+                    className="mt-2 border  rounded-md border-solid border-black p-3 w-[100%]"
                   />
                   {errors.email && (
                     <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
@@ -517,15 +539,16 @@ const Accordion = ({
                   type="text"
                   placeholder="Address"
                   required
+                  disabled={customerData.address?.line1}
                   value={formData.address.line1}
                   onChange={(e) => {
                     errors.addressLine1 = '';
                     handleChange(e);
                   }}
-                  className="mt-2 border border-solid border-black p-3 w-[100%]"
+                  className="mt-2 border rounded-md border-solid border-black p-3 w-[100%]"
                 />
                 {errors.addressLine1 && (
-                  <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
+                  <p className="text-red-500  mt-[2px] text-[14px] font-semibold italic">
                     {errors.addressLine1}
                   </p>
                 )}
@@ -538,10 +561,12 @@ const Accordion = ({
                   id="address2"
                   name="address.line2"
                   type="text"
+                  disabled={customerData.address?.line2}
+
                   placeholder="Address 2"
                   value={formData.address.line2}
                   onChange={(e) => handleChange(e)}
-                  className="mt-2 border border-solid border-black p-3 w-[100%]"
+                  className="mt-2 border rounded-md border-solid border-black p-3 w-[100%]"
                 />
               </div>
               <div className="mt-2">
@@ -554,12 +579,14 @@ const Accordion = ({
                   type="text"
                   required
                   placeholder="City"
+                  disabled={customerData.address?.city}
+
                   value={formData.address.city}
                   onChange={(e) => {
                     errors.city = '';
                     handleChange(e);
                   }}
-                  className="mt-2 border border-solid border-black p-3 w-[100%]"
+                  className="mt-2 border rounded-md border-solid border-black p-3 w-[100%]"
                 />
                 {errors.city && (
                   <p className="text-red-500 mt-[2px] text-[14px] font-semibold italic">
@@ -570,7 +597,7 @@ const Accordion = ({
               <div className="grid-rows-2 mt-2 lg:flex grid gap-3">
                 <div className="w-full">
                   <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
+                    className="block text-gray-700 font-bold mb-2"
                     htmlFor="country"
                   >
                     Country
@@ -580,8 +607,9 @@ const Accordion = ({
                     value={formData.address.country}
                     itemID="country"
                     name="address.country"
+                    disabled={customerData.address?.country}
                     id="country"
-                    className="appearance-none border h-[46px] w-full  border border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="appearance-none rounded-md border h-[46px] w-full  border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   >
                     {location.countries.map((country) => (
                       <option key={country.country} value={country.country}>
@@ -592,7 +620,7 @@ const Accordion = ({
                 </div>
                 <div className="w-full">
                   <label
-                    className="block text-gray-700 text-sm font-bold mb-2"
+                    className="block text-gray-700  font-bold mb-2"
                     htmlFor="state"
                   >
                     State
@@ -602,9 +630,10 @@ const Accordion = ({
                       errors.state = '';
                       handleChange(e);
                     }}
+                    disabled={customerData.address?.state}
                     value={formData.address.state}
                     name="address.state"
-                    className={`appearance-none border h-[46px]  w-full  border border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                    className={`appearance-none rounded-md border h-[46px]  w-full  border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                       errors.state ? 'border-red-500' : ''
                     }`}
                     id="state"
@@ -651,12 +680,15 @@ const Accordion = ({
               <Elements stripe={stripe}>
                 {savedCard &&
                   savedCard.map((item, i) => (
-                    <div
-                      key={i}
-                      className="border-y border-solid border-[#000] p-[1rem] mt-1 mb-2 flex justify-between "
+                    <label
+                      key={i}  
+                      htmlFor={"item-index-" + i}
+                      className={paymentMethodId === item.paymentId ? 'bg-[#ffdada] cursor-pointer border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between ' : 'bg-[#f5fffa]  border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between  cursor-pointer'}
                     >
-                      <div className="flex justify-start items-center text-[14px] font-bold">
+                      <div className="flex justify-start items-center text-[14px] font-bold ">
+                        
                         <input
+                          id={"item-index-" + i}
                           type="radio"
                           onChange={() => setPaymentMethodId(item.paymentId)}
                           name="action"
@@ -670,7 +702,7 @@ const Accordion = ({
                           {item.cardExpMonth}/{item.cardExpYear}
                         </span>
                       </div>
-                    </div>
+                    </label>
                   ))}
                 {savedCard && (
                   <div className="savedCard flex items-start justify-between mb-2 ">
@@ -718,7 +750,8 @@ const Accordion = ({
                       setWalletPurchase(true);
                       setWalletPayment(false);
                     }}
-                    className="!bg-[#EF6E6E] w-full !h-[45px] !rounded-0 !py-[16px] !px-[30px]"
+                    backArrow={true}
+                    className="!bg-[#EF6E6E] w-full !h-[55px]  !py-[16px] !px-[30px] uppercase md:text-[16px] text-[12px]"
                   />
                   <button
                     type="submit"
@@ -728,7 +761,7 @@ const Accordion = ({
                         createSubscription(paymentMethodId);
                       }
                     }}
-                    className="!bg-[#1b5299] w-full !h-[45px] text-[white] font-bold !rounded-0  !px-[30px]"
+                    className="!bg-[#1b5299] w-full !h-[55px] text-[white] font-bold rounded-lg  !px-[30px] uppercase md:text-[16px] text-[12px]"
                   >
                     Complete Purchase
                   </button>

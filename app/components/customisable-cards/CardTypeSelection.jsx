@@ -14,9 +14,10 @@ export default function CardTypeSelection({
   };
 
   return (
-    <section className="flex lg:flex-row flex-col global-max-width-handler justify-center items-center  !mt-20  flex-wrap xl:gap-28  lg:gap-[6rem] gap-5 ">
+    <section className="flex lg:flex-row flex-col global-max-width-handler justify-center items-center  !mt-20  flex-wrap xl:gap-0  lg:gap-[6rem] gap-5 ">
+      <div className='border border-[#f2f2f2] w-full flex items-center lg:flex-row flex-col bg-[#fafafa] lg:p-0 py-10 px-4'>
       <div className="md:flex hidden items-center justify-center flex-1 ">
-        <div className="lg:w-[540px] w-[485px] h-[368px] ">
+        <div className="w-full">
           <img
             src={isFlatCardType ? FlatBlankCanvasImage : FoldedBlankCanvasImage}
             alt="Selected blank canvas image on card selection"
@@ -25,14 +26,14 @@ export default function CardTypeSelection({
         </div>
       </div>
       <div className="md:flex  justify-center flex  flex-1">
-        <div className="flex flex-col md:h-[300px] h-[250px] w-[300px]">
+        <div className="flex flex-col  max-w-[300px]">
           <span className=" text-center text-[17px] text-black font-bold">
             Start by selecting the size and style of card you want to create.
           </span>
           <div className="flex flex-col justify-center  items-center">
             <div className="flex justify-center h-[88px] my-8 w-[90%]">
               <div
-                className="pl-3 pr-3 flex justify-center items-center flex-1 cursor-pointer"
+                className="p-4 md:p-6 flex justify-center items-center flex-1 cursor-pointer"
                 style={{
                   backgroundColor: isFlatCardType
                     ? 'rgb(239, 110, 110)'
@@ -47,7 +48,7 @@ export default function CardTypeSelection({
                 />
               </div>
               <div
-                className="pr-3 pl-3 flex justify-center items-center flex-1 cursor-pointer"
+                className="p-4 md:p-6 flex justify-center items-center flex-1 cursor-pointer"
                 style={{
                   backgroundColor: isFlatCardType
                     ? 'white'
@@ -70,6 +71,7 @@ export default function CardTypeSelection({
             </button>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

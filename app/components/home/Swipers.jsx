@@ -60,42 +60,42 @@ const Swipers = () => {
             className="swiper-company md:block hidden"
           >
             <SwiperSlide>
-              <img className="w-[85%]" src={Fairway} alt="LogoSimplinotedpic" />
+              <img className="w-[85%] sm:scale-[0.8]" src={Fairway} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[72%]"
+                className="w-[72%] sm:scale-[0.8]"
                 src={Mariott}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
-            <SwiperSlide>
-              <img className="w-[80%]" src={Ncca} alt="LogoSimplinotedpic" />
+            <SwiperSlide> 
+              <img className="w-[80%] sm:scale-[0.8]" src={Ncca} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[78%]"
+                className="w-[78%] sm:scale-[0.8]"
                 src={Ford}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="w-[80%]" src={Edward} alt="LogoSimplinotedpic" />
+              <img className="w-[80%] sm:scale-[0.8]" src={Edward} alt="LogoSimplinotedpic" />
             </SwiperSlide>
 
             <SwiperSlide>
               <img
-                className="w-[75%] "
+                className="w-[75%] sm:scale-[0.8]"
                 src={Ronald}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="w-[65%]" src={kw} alt="LogoSimplinotedpic" />
+              <img className="w-[65%] sm:scale-[0.8]" src={kw} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[90%] "
+                className="w-[90%] sm:scale-[0.8]"
                 src={tesla}
                 alt="LogoSimplinotedpic"
               />
@@ -103,35 +103,35 @@ const Swipers = () => {
 
             <SwiperSlide>
               <img
-                className="w-[72%]"
+                className="w-[72%] sm:scale-[0.8]"
                 src={Mariott}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="w-[80%]" src={Ncca} alt="LogoSimplinotedpic" />
+              <img className="w-[80%] sm:scale-[0.8]" src={Ncca} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[78%]"
+                className="w-[78%]  sm:scale-[0.8]"
                 src={Ford}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="w-[80%]" src={Edward} alt="LogoSimplinotedpic" />
+              <img className="w-[80%] sm:scale-[0.8]" src={Edward} alt="LogoSimplinotedpic" />
             </SwiperSlide>
 
             <SwiperSlide>
               <img
-                className="w-[75%] "
+                className="w-[75%] sm:scale-[0.8]"
                 src={Ronald}
                 alt="LogoSimplinotedpic"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[90%]"
+                className="w-[90%] sm:scale-[0.8]"
                 src={tesla}
                 alt="LogoSimplinotedpic"
               />

@@ -37,7 +37,8 @@ const StripeCard = ({
 
   const {stripeLoader, setStripeLoader,setCardElements} = useStateContext();
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [loading, setLoading] = useState(false);
+  const {setUpdateModal} = useStateContext();
   const clearCard = () => {
     const cardElement = elements.getElement(CardElement);
     // ensure the Element is still mounted
@@ -47,6 +48,7 @@ const StripeCard = ({
   };
 
   const handleSubmit = async (event) => {
+    setLoading(true)
     event.preventDefault();
     if (
       (!validateForm() && !addCreditModal && !updateCard && !showStripeCard) ||
@@ -76,15 +78,20 @@ const StripeCard = ({
         } else {
           handlePurchaseCard(id);
         }
+        setUpdateModal(false);
+        setLoading(false);
       } catch (error) {
         setStripeLoader(false);
-
+        setLoading(false);
         console.error(error, 'stripe error');
       } 
+
+      
     } else {
       setErrorMessage(error.message);
       console.error(error.message);
       setStripeLoader(false);
+      setLoading(false)
     }
   };
 
@@ -115,7 +122,8 @@ const StripeCard = ({
         >
           <button
             type="submit"
-            className="!bg-[#EF6E6E] text-white flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] "
+            className={ `!bg-[#EF6E6E] text-white dsgsdgsgsd flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] `}
+            // disabled={loading}
           >
             {(pathname.pathname === '/simply-noted-plans' ||
               pathname.pathname === '/account') &&
@@ -125,7 +133,7 @@ const StripeCard = ({
               ? 'Complete Purchase'
               : !addCreditModal && !showStripeCard && updateCard
               ? 'Update Card'
-              : (showStripeCard || addCreditModal) && 'Add Card'}
+              : (showStripeCard || addCreditModal) && (loading ? 'Adding Card...' : 'Add Card')}
           </button>
         </div>
       </div>

@@ -10,15 +10,9 @@ const APIOptionsSelector = () => {
           type="button"
           onClick={handleSectionChange}
           value="API ENDPOINTS"
-          className={`hover:text-[#ef6e6e]  font-bold ${
-            selectedSection === 'API ENDPOINTS' ? 'text-[#ef6e6e]' : 'text-[white]'
+          className={`hover:text-[#ef6e6e] px-2 xl:px-10 font-bold ${
+            selectedSection === 'API ENDPOINTS' ? ' bg-white rounded-md ' : 'text-[white]'
           }`}
-          style={{
-            borderBottom:
-              selectedSection === 'API ENDPOINTS'
-                ? '2px solid #ef6e6e'
-                : 'none',
-          }}
         >
           {' '}
           API ENDPOINTS
@@ -27,16 +21,10 @@ const APIOptionsSelector = () => {
           <button
             type="button"
             value="AUTHENTICATION"
-            onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e]  font-bold ${
-              selectedSection === 'AUTHENTICATION' ? 'text-[#ef6e6e]' : 'text-[white]'
+            onClick={handleSectionChange}          
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10 font-bold ${
+              selectedSection === 'AUTHENTICATION' ? ' bg-white rounded-md ' : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'AUTHENTICATION'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
           >
             AUTHENTICATION
           </button>
@@ -47,15 +35,10 @@ const APIOptionsSelector = () => {
             type="button"
             value="USERS"
             onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e] font-bold ${
-              selectedSection === 'USERS' ? 'text-[#ef6e6e]' : 'text-[white]'
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10  font-bold ${
+              selectedSection === 'USERS' ? 'bg-white rounded-md' : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'USERS'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
+
           >
             USERS
           </button>
@@ -65,15 +48,10 @@ const APIOptionsSelector = () => {
             type="button"
             value="PRODUCTS"
             onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e] font-bold ${
-              selectedSection === 'PRODUCTS' ? 'text-[#ef6e6e]' : 'text-[white]'
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10  font-bold ${
+              selectedSection === 'PRODUCTS' ? 'bg-white rounded-md' : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'PRODUCTS'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
+ 
           >
             PRODUCTS
           </button>
@@ -83,15 +61,10 @@ const APIOptionsSelector = () => {
             type="button"
             value="ORDERS"
             onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e] font-bold ${
-              selectedSection === 'ORDERS' ? 'text-[#ef6e6e]' : 'text-[white]'
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10  font-bold ${
+              selectedSection === 'ORDERS' ? 'bg-white rounded-md' : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'ORDERS'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
+       
           >
             {' '}
             ORDERS
@@ -102,15 +75,10 @@ const APIOptionsSelector = () => {
             type="button"
             value="TEMPLATES"
             onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e] font-bold ${
-              selectedSection === 'TEMPLATES' ? 'text-[#ef6e6e]' : 'text-[white]'
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10  font-bold ${
+              selectedSection === 'TEMPLATES' ? 'bg-white rounded-md' : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'TEMPLATES'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
+      
           >
             TEMPLATES
           </button>
@@ -120,15 +88,10 @@ const APIOptionsSelector = () => {
             type="button"
             value="ADDRESSES"
             onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e] font-bold ${
-              selectedSection === 'ADDRESSES' ? 'text-[#ef6e6e]' : 'text-[white]'
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10  font-bold ${
+              selectedSection === 'ADDRESSES' ? 'bg-white rounded-md' : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'ADDRESSES'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
+  
           >
             {' '}
             ADDRESSES
@@ -139,17 +102,12 @@ const APIOptionsSelector = () => {
             type="button"
             value="AVAILABLE HANDWRITING STYLES"
             onClick={handleSectionChange}
-            className={`hover:text-[#ef6e6e]  font-bold ${
+            className={`hover:text-[#ef6e6e] px-2 xl:px-10  font-bold ${
               selectedSection === 'AVAILABLE HANDWRITING STYLES'
-                ? 'text-[#ef6e6e]'
+                ? 'bg-white rounded-md'
                 : 'text-[white]'
             }`}
-            style={{
-              borderBottom:
-                selectedSection === 'AVAILABLE HANDWRITING STYLES'
-                  ? '2px solid #ef6e6e'
-                  : 'none',
-            }}
+       
           >
             {' '}
             AVAILABLE HANDWRITING STYLES

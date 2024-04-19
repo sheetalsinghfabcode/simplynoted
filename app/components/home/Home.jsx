@@ -1,28 +1,22 @@
 import React from 'react';
-import CardKiller from '../../../assets/Image/Card_Keller_kwlegacy.webp';
 import LogoSimplinoted from '../../../assets/Image/Your_Logo_simplinoted.webp';
 import WorkingRobots from '../../../assets/Video/working-robots.webm';
 import thankyou from '../../../assets/Image/thankyou.png';
 import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import {TypeAnimation} from 'react-type-animation';
+import HomeHeroEnvelop from '../../../assets/Image/home-hero-envelopes-2.webp'
+import HomeHeroEnvelopLeft from '../../../assets/Image/home-hero-envelopes-1.webp'
 
 export default function Home() {
   const Navigate = useNavigate();
   return (
-    <div className="sm-only:mt-[35px]">
-      <div className="flex 2xl:items-start 2xl-only:pt-[20px] items-center flex-col tab:flex-row justify-center tab:justify-between  gap-[25px] overflow-hidden">
-        {/* LEFT IMAGE  */}
-        <div>
-          <img
-            className="hidden tab:block -rotate-6 max-w-[24vw] mt-[35px]"
-            src={LogoSimplinoted}
-            alt="LogoSimplinotedpic"
-          />
-        </div>
+    <div className="sm-only:mt-[35px] relative tab:mt-[40px]">
+      <div className="flex 2xl:items-start 2xl-only:pt-[20px] items-center flex-col tab:flex-row justify-center relative z-10 gap-[25px] overflow-hidden">
+        
         {/* MIDDLE SECTION  */}
-        <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5  tab:mt-[40px]">
-          <span className="text-center sm:leading-[45px] leading-7 font-bold text-[#001a5f]">
+        <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5  zx:max-w-[51%] ">
+          <span className="text-center sm:leading-[45px] text-[35px] tab:text-[59px] tab:leading-[70px] leading-[40px] font-bold text-[#001a5f] tracking-[-2.07px]">
             Send Real Handwritten Notes to your
           </span>
           <div className="typewriter-bottom-line font-dente">
@@ -44,7 +38,7 @@ export default function Home() {
             />
           </div>
           <div className="flex tab:flex-col flex-col-reverse mt-[20px]">
-            <div className="flex flex-col justify-center tab:flex-row 2xl:text-[20px] text-[16px] font-normal leading-[25px] -tracking-[0.65px] text-center mb-[10px]">
+            <div className="flex flex-col justify-center tab:flex-row 2xl:text-[22px] text-[16px] font-normal tab:leading-[69px] -tracking-[0.65px] text-center mb-[10px] ">
               <span className="whitespace-nowrap">
                 Send real handwritten notes, at scale.
               </span>
@@ -72,21 +66,32 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* RIGHT IMAGE */}
-        <div className="w-full tab:w-auto relative">
+   
+      </div>
+      <div className='overflow-hidden tab:absolute top-[2vw] w-full'>
+        <div className='flex justify-between'>
+        {/* LEFT IMAGE  */}
+        <div className='w-[24vw] relative left-[-30px] hidden tab:block '>
           <img
-            className="-rotate-6 sm:max-w-[42vw] max-w-[63vw] tab:max-w-[24vw] relative tab:left-0 sm:left-[130px] left-0"
-            src={CardKiller}
+            className="hidden tab:block max-w-[100%]"
+            src={HomeHeroEnvelopLeft}
+            alt="LogoSimplinotedpic"
+          />
+        </div>
+             {/* RIGHT IMAGE */}
+             <div className="my-[40px] tab:my-0 h-[50vw] tab:h-auto w-full tab:w-[24vw] relative sm:left-[-20px] tab:mt-[-2%]">
+          <img
+            className="absolute tab:relative sm:max-w-full max-w-[63vw] tab:max-w-full tab:left-0 sm:left-[0px] left-auto right-[37%] tab:right-auto "
+            src={HomeHeroEnvelop}
             alt="CardKillerpic"
           />
           <img
-            className="absolute sm:top-[80px] top-[50px] sm:right-[100px] right-0 sm:max-w-[39vw] max-w-[57vw] tab:hidden"
+            className="absolute tab:top-[80px] top-[50px] tab:right-[100px] left-[37%] tab:max-w-[39vw] max-w-[45vw] tab:hidden"
             src={thankyou}
             alt="Thankyou"
           />
-        </div>
+        </div></div>
       </div>
-
       <video className="mt-[10px] w-full sm:flex hidden" autoPlay loop muted playsInline>
         <source src={WorkingRobots} type="video/webm"></source>
       </video>

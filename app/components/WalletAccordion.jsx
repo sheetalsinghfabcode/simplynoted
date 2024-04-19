@@ -11,7 +11,7 @@ function WalletAccordion({title, children, className,  accordion = false}) {
   return (
     <div className="w-full">
       <div
-        className={`flex justify-between mt-[8px] items-center cursor-pointer w-full min-h-[40px] border-b-2 border-solid border-[#e6edf8] uppercase py-[5px] ${className}`}
+        className={`flex justify-between  items-center cursor-pointer w-full min-h-[40px] border-t-2 border-solid border-[#e6edf8] uppercase py-[5px]  ${className}`}
         onClick={toggleAccordion}
       >
         <span className="lg:text-[16px] text-[15px] font-karla text-[#001a5f] font-bold uppercase">
@@ -27,7 +27,7 @@ function WalletAccordion({title, children, className,  accordion = false}) {
           isExpanded ? 'max-h-[1000px] ' : 'max-h-0 closing'
         }`}
       >
-        <div className="bg-white border-b-2 border-solid border-[#e6edf8] p-[8px] border ">{children}</div>
+        <div className="bg-white border-solid border-[#e6edf8] p-[8px] my-2 border ">{children}</div>
       </div>
     </div>
   );

@@ -296,7 +296,7 @@ function Account({customer, heading, featuredData}) {
   return (
     <>
       <div className="w-full global-max-width-handler ">
-        <div className=" flex flex-col p-[20px] pt-[40px] px-0 md:px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
+        <div className=" flex flex-col p-[20px] px-0 md:px-[20px] lg:p-[40px] gap-[24px] md:gap-[48px]">
           <div className="flex gap-[12px] font-inter flex-col md:flex-row md:gap-[24px] w-full items-center justify-center md:justify-start md:items-start md:max-w-[388px]">
             <div className="user-name-account">
               {accountDetails.firstName
@@ -323,13 +323,13 @@ function Account({customer, heading, featuredData}) {
               </span>
             </div>
           </div>
-          <div className="flex flex-col bg-[#fff]  mx-auto items-center md:items-start md:flex-row md:gap-[23px] gap-[0px] w-full">
-            <div className="md:flex md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[721px] font-inter gap-[24px] overflow-y-auto">
+          <div className="flex flex-col bg-[#fff]  mx-auto md:flex-row md:gap-[23px] gap-[0px] w-full ">
+            <div className="md:flex  md:flex-col md:pb-[0px] pb-[7px] flex items-center md:items-start w-full md:w-[20%] max-w-[721px] font-inter gap-[24px] md:gap-4 overflow-y-auto md:overflow-visible">
               <>
                 {tabs &&
                   tabs.length > 0 &&
                   tabs?.map((tab, i) => (
-                    <div className="" key={i}>
+                    <div className="accountTab" key={i}>
                       {i === 1 || i === 5 ? (
                         <a
                           target="_blank"
@@ -340,7 +340,7 @@ function Account({customer, heading, featuredData}) {
                           }
                           className={`text-[16px] leading-[19.36px] whitespace-nowrap hover:text-[#0D0C22] cursor-pointer  ${
                             activeTab === i
-                              ? 'text-[#0D0C22] font-semibold'
+                              ? 'text-[#0D0C22] font-semibold '
                               : 'text-[#6E6D7A] font-normal'
                           }  `}
                           key={i}
@@ -355,10 +355,10 @@ function Account({customer, heading, featuredData}) {
                               setActiveTab(i);
                             }
                           }}
-                          className={`text-[16px] min-w-[233px] whitespace-nowrap	 leading-[19.36px] hover:text-[#0D0C22] cursor-pointer  ${
+                          className={`text-[16px] relative min-w-[233px] whitespace-nowrap	 leading-[19.36px] hover:text-[#0D0C22] cursor-pointer after:content-[''] after:h-full after:w-[1px] after:bg-[#f9f9f8] after:absolute after:right-[-1px] after:top-0 ${
                             activeTab === i
-                              ? 'text-[#0D0C22] font-semibold'
-                              : 'text-[#6E6D7A] font-normal'
+                              ? 'text-[#0D0C22] font-semibold '
+                              : 'text-[#6E6D7A] font-normal  after:opacity-0 '
                           }  `}
                           key={i}
                         >
@@ -368,14 +368,15 @@ function Account({customer, heading, featuredData}) {
                     </div>
                   ))}
               </>
-              <div className="border hidden md:block w-full max-w-[199.53px] border-solid border-[#DBDBDE]"></div>
+              
               <Form
                 method="post"
+                className='w-full tab:mt-[9px] tab:pt-[25px] tab:border-t tab:border-[#DBDBDE]'
                 action={usePrefixPathWithLocale('/account/logout')}
               >
                 <button
                   onClick={() => setData(true)}
-                  className="text-[16px] whitespace-nowrap hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
+                  className="text-[16px] w-full block text-left whitespace-nowrap hover:underline cursor-pointer leading-[19.36px] font-normal text-[#FF5555]"
                 >
                   Log Out
                 </button>
@@ -383,9 +384,9 @@ function Account({customer, heading, featuredData}) {
             </div>
             <div className="hidden"></div>
 
-            <div className=" w-full mr-[5px] ml-[5px]  md:w-[80%]">
+            <div className=" w-full  md:w-[80%]">
               {activeTab === 0 && (
-                <div className=" grid md:grid-cols-2 xl:max-w-[972.09px] 2xl:flex md:mt-[0px] mt-[23px] gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
+                <div className="bg-white max-w-[972.09px] grid md:grid-cols-2  2xl:flex md:mt-[0px] mt-[23px] gap-[32px] font-inter justify-center sm:justify-normal  p-[24px] w-full rounded-[12px] border border-solid border-[#DDDDDD]">
                   <CardComponent
                     imgSrc={sendcard}
                     title="Send Cards"
@@ -448,12 +449,13 @@ function Account({customer, heading, featuredData}) {
                 body={apiKey}
               />
 
-              {activeTab === 2 && <AccountOrderHistory orders={orders} />}
+              {activeTab === 2 && (<div className='p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]'><AccountOrderHistory orders={orders} /></div>)}
 
-              {activeTab === 3 && <AddressBook />}
+              {activeTab === 3 && (<div className='p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]'><AddressBook /></div>)}
 
-              {activeTab === 4 && <ManageSubscription />}
+              {activeTab === 4 && (<div className='p-4 md:py-8 md:bg-white mt-[23px] rounded-[12px] border border-solid border-[#DDDDDD]'><ManageSubscription /></div>)}
               {activeTab === 6 && (
+                <div className='p-4 md:p-4 md:pb-12 md:bg-white rounded-[12px] mt-[23px] border border-solid border-[#DDDDDD]'>
                 <Profile
                   setProfile={setProfile}
                   setAccountDetail={setAccountDetail}
@@ -465,6 +467,7 @@ function Account({customer, heading, featuredData}) {
                   accountDetail={accountDetail}
                   setLoader={setLoader}
                 />
+                </div>
               )}
 
               {activeTab === 7 && (
@@ -488,7 +491,7 @@ function Account({customer, heading, featuredData}) {
 
 function AccountOrderHistory({orders}) {
   return (
-    <div className="mt-6 h-[500px] overflow-auto">
+    <div className="mt-0 h-[500px] p-4 overflow-auto">
       <div className="md:grid grid justify-center w-full gap-4 p-4 py-6 md:p-0 ">
         {orders?.length ? <Orders orders={orders} /> : <EmptyOrders />}
       </div>

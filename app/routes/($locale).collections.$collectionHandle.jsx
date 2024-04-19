@@ -324,20 +324,20 @@ if (index !== -1) {
         <div className="xl:gap-2 gap-5 md:flex xl:flex-row flex-col md:justify-between grid ">
           <div className="gap-5 flex xl:flex-row flex-col justify-center sm:items-center items-normal xl:order-none order-1">
             <DynamicButton
-              className="btnShadow bg-[#001a5f] px-[20px] py-[16px]  text-[16px]  text-[#fff]  hover:bg-[#1B5299]"
+              className="shadow-shbox bg-[#001a5f] px-[20px] py-[16px]  text-[16px]  text-[#fff]  hover:bg-[#1B5299]"
               text="Create A Custom Card"
               onClickFunction={CreateCustomCard}
             />
 
             <DynamicButton
             // disabled={locationRef.pathname == '/collections/customisable-cards'}
-              className={`btnShadow bg-[#EF6E6E] px-[20px]   py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]`}
+              className={`shadow-shbox bg-[#EF6E6E] px-[20px]   py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]`}
               text="View My Custom Card"
               onClickFunction={() =>locationRef.pathname !== '/collections/customisable-cards'? customisedCard():''}
             />
           </div>
           <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center md:mb-[0px] mb-[17px] items-center selectArrow sm:mt-[0px] md:mt-[0px] mt-[-17px] ">
-            <h2 className="md:text-[24px] whitespace-nowrap text-[18px] text-[#001a5f]">
+            <h2 className="md:text-[24px] whitespace-nowrap text-[18px] text-[#001a5f] tracking-[-0.2px]">
               Choose a card from our collection:
             </h2>
             <select

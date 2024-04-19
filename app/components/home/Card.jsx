@@ -154,11 +154,11 @@ const Card = () => {
           </div>
         </div>
 
-        <div className="ml-[-20rem] relative sm:mt-0 small:mt-[2rem] mt-[1rem]">
+        <div className="ml-[-13rem] relative  mt-[1rem] sm:mt-[-70px] cards-swiper-slider">
           <Swiper
             direction={'horizontal'}
             allowTouchMove={false}
-            spaceBetween={10}
+            spaceBetween={5}
             slidesPerView={3.5}
             breakpoints={{
               580: {
@@ -184,7 +184,7 @@ const Card = () => {
             }}
           >
             <SwiperSlide>
-              <img className="w-full" src={Card1} alt="LogoSimplinotedpic" />
+              <img className="w-full " src={Card1} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
@@ -194,11 +194,11 @@ const Card = () => {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img className="w-full" src={Card3} alt="LogoSimplinotedpic" />
+              <img className="w-full " src={Card3} alt="LogoSimplinotedpic" />
             </SwiperSlide>
             <SwiperSlide>
               <img
-                className="w-[90%] lg:mt-[-1rem]"
+                className="w-[90%] lg:mt-[-1rem] "
                 src={Card2}
                 alt="LogoSimplinotedpic"
               />
@@ -207,8 +207,8 @@ const Card = () => {
         </div>
 
         <div className="bg-white text-center mt-[-11rem] mb-[-12px] ">
-          <div className="md:w-[50%]   w-[90%] flex flex-wrap  mx-auto  pt-60">
-            <img className="w-full" src={pen} alt="LogoSimplinotedpic" />
+          <div className="md:w-[50%]   w-[90%] flex flex-wrap justify-center  mx-auto  pt-60">
+            <img className="max-w-full" src={pen} alt="LogoSimplinotedpic" />
           </div>
           
           <div className="flex flex-col flex-wrap md:gap-2 gap-7 pt-[20px] pb-[20px] md:pt-0 md:pb-0 md:h-[120px] md:flex-row md:justify-around items-center bg-[#1b3064]">
@@ -281,7 +281,7 @@ const Card = () => {
 
             <div className=" flex flex-col md:flex-row text-white  md:gap-[20px] items-center">
               <DynamicButton
-                text="REQUEST SAMPLE"
+                text="REQUEST A SAMPLE"
                 className="req-btn  py-[15px] tab:px-[32px] px-[20px]"
                 onClickFunction={() =>
                   (window.location.href =

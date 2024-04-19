@@ -50,7 +50,7 @@ export function Drawer({heading, open, onClose, openFrom = 'right', children}) {
               >
                 <Dialog.Panel className="w-screen max-w-lg text-left align-middle transition-all transform shadow-xl h-screen-dynamic bg-white">
                   <header
-                    className={`sticky top-[17px] flex items-center px-6 h-nav sm:px-8 md:px-12 ${
+                    className={`sticky top-[px] bg-[#f2f2f2] flex items-center px-6 h-nav sm:px-8 md:px-12 border-b border-[#dbdbdb] ${
                       heading ? 'justify-between' : 'justify-end'
                     }`}
                   >

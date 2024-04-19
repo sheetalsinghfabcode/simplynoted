@@ -275,11 +275,11 @@ const Profile = ({
         </div>
         {activeTabs === 'account' && (
           <form onSubmit={handleSubmit} className="mb-[3rem]">
-            <div className=" lg:grid grid-cols-1 items-center mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
+            <div className=" lg:grid grid-cols-1 items-center mt-[1rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3 ">
                 <label
                   htmlFor="firstName"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                     className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   First Name
                 </label>
@@ -289,13 +289,13 @@ const Profile = ({
                   name="firstName"
                   value={accountDetails.firstName || ''}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   Last Name
                 </label>
@@ -305,17 +305,17 @@ const Profile = ({
                   name="lastName"
                   value={accountDetails.lastName || ''}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 {/* Other Account Details Fields */}
               </div>
             </div>
 
-            <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
+            <div className=" lg:grid grid-cols-1 mt-[1rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="email"
-                  className="block md:text-[16px]  text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   Email
                 </label>
@@ -326,13 +326,13 @@ const Profile = ({
                   name="email"
                   value={accountDetails.email || ''}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
               <div className="px-3">
                 <label
                   htmlFor="phone"
-                  className="block md:text-[16px] md:mt-[0px] mt-[12px] whitespace-nowrap text-[12px]   font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2 whitespace-nowrap"
                 >
                   Phone Number (with area code)
                 </label>
@@ -344,7 +344,7 @@ const Profile = ({
                   name="phone"
                   value={accountDetails.phone || ''}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 {error && (
                   <span className="text-[16px] text-[#ef6e6e] font-semibold">
@@ -354,11 +354,11 @@ const Profile = ({
               </div>
             </div>
 
-            <div className="mb-4 lg:grid grid grid-cols-1 mt-[2rem] md:grid-cols-2 flex-wrap -mx-3">
+            <div className="mb-4 lg:grid grid grid-cols-1 mt-[1rem] md:grid-cols-2 flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="address1"
-                  className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   Address 1
                 </label>
@@ -368,13 +368,13 @@ const Profile = ({
                   name="address1"
                   value={accountDetails.address1}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
               <div className="px-3">  
                 <label
                   htmlFor="firstName"
-                  className="block mb-1  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   Address 2
                 </label>
@@ -384,15 +384,15 @@ const Profile = ({
                   name="address2"
                   value={accountDetails.address2}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
             </div>
-            <div className=" lg:grid grid grid-cols-1 mt-[2rem] md:grid-cols-2 flex-wrap -mx-3">
+            <div className=" lg:grid grid grid-cols-1 mt-[1rem] md:grid-cols-2 flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="city"
-                  className="block  md:text-[16px] text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   City
                 </label>
@@ -402,13 +402,13 @@ const Profile = ({
                   name="city"
                   value={accountDetails.city}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
               <div className="px-3">
                 <label
                   htmlFor="state"
-                  className="block md:mt-[0px] mt-[12px] md:text-[16px]  text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   State
                 </label>
@@ -417,7 +417,7 @@ const Profile = ({
                   onChange={handleAccountInputChange}
                   value={accountDetails.state}
                   name="state"
-                  className={`appearance-none border border-gray-300 rounded w-full h-[36.6px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline`}
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="state"
                 >
                   <option value="">Select a state</option>
@@ -432,11 +432,11 @@ const Profile = ({
                
               </div>
             </div>
-            <div className=" lg:grid grid-cols-1 mt-[2rem] md:grid-cols-2 grid flex-wrap -mx-3">
+            <div className=" lg:grid grid-cols-1 mt-[1rem] md:grid-cols-2 grid flex-wrap -mx-3">
               <div className="px-3">
                 <label
                   htmlFor="firstName"
-                  className="block  md:text-[16px] text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   Country
                 </label>
@@ -446,7 +446,7 @@ const Profile = ({
                   itemID="country"
                   name="country"
                   id="country"
-                  className="appearance-none border border-gray-300 rounded w-full h-[36.6px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 >
                   {location.countries.map((country) => (
                     <option key={country.country} value={country.country}>
@@ -458,7 +458,7 @@ const Profile = ({
               <div className="px-3">
                 <label
                   htmlFor="zip"
-                  className="block  md:text-[16px] md:mt-[0px] mt-[12px]  text-[12px] font-semibold"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   Zip
                 </label>
@@ -468,7 +468,7 @@ const Profile = ({
                   name="zip"
                   value={accountDetails.zip}
                   onChange={handleAccountInputChange}
-                  className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
             </div>
@@ -483,11 +483,11 @@ const Profile = ({
               </span>
             )}
             <form onSubmit={handleSubmit}>
-              <div className="mb-4 lg:grid grid-cols-1 mt-[2rem] mb-[3rem] md:grid-cols-2 grid flex-wrap -mx-3">
+              <div className="mb-4 lg:grid grid-cols-1 mt-[1rem] mb-[3rem] md:grid-cols-2 grid flex-wrap -mx-3">
                 <div className="px-3">
                   <label
                     htmlFor="newPassword"
-                    className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                    className="block text-gray-700  text-[14px]  font-bold mb-2"
                   >
                     New Password
                   </label>
@@ -497,14 +497,14 @@ const Profile = ({
                     name="newPassword"
                     value={securityDetails.newPassword}
                     onChange={handleSecurityInputChange}
-                    className="border border-gray-300 md:text-[16px] text-[12px] rounded-md px-3 py-2 w-[100%]"
+                    className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </div>
 
                 <div className="px-3 md:mt-[0px] mt-[12px]">
                   <label
                     htmlFor="confirmPassword"
-                    className="block mb-1 md:text-[16px] text-[12px] font-semibold"
+                    className="block text-gray-700  text-[14px]  font-bold mb-2"
                   >
                     Confirm Password
                   </label>
@@ -514,7 +514,7 @@ const Profile = ({
                     name="confirmPassword"
                     value={securityDetails.confirmPassword}
                     onChange={handleSecurityInputChange}
-                    className="border border-gray-300 rounded-md px-3 py-2 w-[100%]"
+                    className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </div>
               </div>

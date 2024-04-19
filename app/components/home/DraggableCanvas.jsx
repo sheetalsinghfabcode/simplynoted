@@ -60,14 +60,23 @@ const DraggableCanvas = () => {
       isHoveredOnParent: true,
     });
   };
-
+  const handleMovementEventTouch = (e) => {    
+      updateClip(e.changedTouches[0].clientX);
+      if (hoveredBackground.isHoveredOnParent) {
+        setIsHoveredBackground((prevHoveredValues) => {
+          return {
+            ...prevHoveredValues,
+            isHoveredOnParent: false,
+          };
+        });
+      }
+    };
   useEffect(() => {
     const handleReleasingEvent = () => {
      
       setIsDragging(false);
     };
     const handleMovementEvent = (e) => {
-      
       updateClip(e.clientX);
       if (hoveredBackground.isHoveredOnParent) {
         setIsHoveredBackground((prevHoveredValues) => {
@@ -171,7 +180,7 @@ const DraggableCanvas = () => {
                     !hoveredBackground.isHoveredOnVerticalLine
                       ? 'bg-opacity-10'
                       : 'bg-opacity-0'
-                  } mr-2 mt-[4px] select-none bg-black text-[13px] pr-[20px] pl-[20px] h-[38px] w-[73px] flex justify-around items-center justify-end rounded transition-all duration-500 ease-in-out delay-100`}
+                  } mr-2 mt-[4px] select-none bg-black text-[13px] pr-[20px] pl-[20px] h-[38px] w-[73px] flex items-center justify-end rounded transition-all duration-500 ease-in-out delay-100`}
                 >
                   After
                 </div>
@@ -198,7 +207,8 @@ const DraggableCanvas = () => {
               }}
               onMouseDown={handleMouseDown}
               onMouseOver={enableBGOnVerticalLineHover}
-              onMouseOut={disableBGOnVerticalLineHover}
+              onMouseOut={disableBGOnVerticalLineHover} 
+              onTouchMove={handleMovementEventTouch}       
             >
               <IoMdArrowDropleft
                 className="absolute ml-[-2px] top-[20%]"

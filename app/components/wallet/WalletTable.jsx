@@ -206,9 +206,9 @@ const WalletTable = ({
               {pricingPlans.map((plan, index) => (
                 <div
                   key={index}
-                  className="py-2 px-4 md:  lg:min-w-[190px] flex flex-col text-center"
+                  className=' py-2 pb-4 px-4 md:  lg:min-w-[190px] flex flex-col text-center'
                 >
-                  <div className="flex flex-col font-karla py-[10px] px-[20px] flex-row-reverse items-center">
+                  <div className="flex flex-col font-karla py-[10px] px-[20px] items-center">
                     <span className="text-[18px] font-bold text-[#000] uppercase">
                       {plan.name}
                     </span>
@@ -249,7 +249,7 @@ const WalletTable = ({
             {data.map((item, index) => (
               <div
                 key={index}
-                className="grid grid-cols-5 items-center border-b border-gray-200 py-2 pl-4"
+                className="grid grid-cols-5 items-center border-b border-gray-200 py-1 pl-4"
               >
                 <span className="font-bold col-span-1">{item.feature}</span>
                 {pricingPlans.map((plan, i) => (
@@ -296,10 +296,10 @@ const WalletTable = ({
             {pricingPlans.map((plan, index) => (
               <div key={index}>
                 <div className="">
-                  <div className="flex justify-center shadow-slate-100 border border-solid border-black mt-[12px] overflow-auto border-b border-gray-200">
+                  <div className="flex justify-center shadow-slate-100 border border-solid  mt-[12px] overflow-auto border-b border-gray-200">
                     {/* <div className="py-2 px-4 min-w-[190px]"></div> */}
-                    <div className="py-2 px-4 min-w-full text-center">
-                      <div className="font-karla py-[10px] px-[20px]  flex-row-reverse flex flex-col items-center">
+                    <div className="py-1 px-4 min-w-full text-center">
+                      <div className="font-karla py-[10px] px-[20px] flex flex-col items-center">
                         <span className="text-[18px] font-bold text-[#000] uppercase">
                           {plan.name}
                         </span>

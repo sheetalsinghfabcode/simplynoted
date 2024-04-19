@@ -455,7 +455,7 @@ const PaymentModal = ({
       } fixed inset-0  flex items-center justify-center z-50`}
     >
       <div className="modal-overlay absolute inset-0 bg-black opacity-50"></div>
-      <div className="modal-container bg-[white] md:w-full w-[97%] mx-auto md:max-w-[645px] h-[90%]  rounded shadow-lg z-50 rounded-[10px] overflow-auto">
+      <div className="modal-container bg-[white] md:w-full w-[97%] mx-auto md:max-w-[645px] h-[90%]   shadow-lg z-50 rounded-[10px] overflow-auto">
         <div className="modal-content h-[550px] py-4  px-6">
           <div className="w-full  relative mt-[24px] mx-auto">
             {savedCard && savedCard.length === 0 && (
@@ -479,7 +479,7 @@ const PaymentModal = ({
             )}
 
             <div
-              className={`  p-[20px] mt-[20px] border border-solid border-black mt-[14px] max-w-[693px] mx-auto`}
+              className={`  p-[20px] border border-solid border-black mt-[14px] max-w-[693px] mx-auto`}
             >
               <div
                 className="flex items-center justify-between cursor-pointer"
@@ -602,7 +602,7 @@ const PaymentModal = ({
                     <div className="md:flex grid md:gap-3 gap-0">
                       <div className="w-full mt-[6px]">
                         <label
-                          className="block font-bold text-gray-700 font-bold mb-2"
+                          className="block font-bold text-gray-700 mb-2"
                           htmlFor="country"
                         >
                           Country
@@ -627,7 +627,7 @@ const PaymentModal = ({
                       </div>
                       <div className="w-full mt-[6px]">
                         <label
-                          className="block text-gray-700 font-bold font-bold mb-2"
+                          className="block text-gray-700 font-bold mb-2"
                           htmlFor="state"
                         >
                           State
@@ -692,7 +692,7 @@ const PaymentModal = ({
                         savedCard.map((item, i) => (
                           <div
                             key={i}
-                            className="bg-[white] border-[#000] mt-[15px] border border-solid border-black p-[1rem] mt-1 mb-2 flex justify-between "
+                            className="bg-[white] border-[#000] mt-[15px] border border-solid p-[1rem]  mb-2 flex justify-between "
                           >
                             <div className="flex justify-start gap-[3px]  items-center text-[14px] font-bold">
                               <input
