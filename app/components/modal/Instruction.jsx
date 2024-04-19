@@ -89,8 +89,13 @@ function Instruction({
               </button>
             )}
           </div>
-          {isArrayTrue && <div>array</div>}
+          {isArrayTrue ? 
+          body.map((value,index)=>(
+            <div key={index} className='text-black px-1'>{value}</div>
+          )):
           <div className="w-full break-all">{body}</div>
+          }
+         
         
          
           {instructionsTitle &&

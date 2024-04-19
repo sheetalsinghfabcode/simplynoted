@@ -444,7 +444,6 @@ const ContactTable = ({
       return;
     }
 
-
     const cleanedData = fileData.map((entry) => {
 
       const cleanedEntry = {};
@@ -455,8 +454,6 @@ const ContactTable = ({
       });
       return cleanedEntry;
     });
-
-    console.log("cleanedData",cleanedData);
 
 
     let totalAddresses = cleanedData.length;
@@ -475,7 +472,7 @@ const ContactTable = ({
           const missingFields = [];
           for (const field of requiredFields) {
             if (!data[field] || data[field].trim() === '') {
-              missingFields.push(`${field}`);
+              missingFields.push(`${field} is empty field`);
             } else if (field === 'First Name' || field === 'Last Name') {
               if (!namePattern.test(data[field])) {
                 missingFields.push(`${field} contains invalid characters`);
@@ -493,22 +490,22 @@ const ContactTable = ({
 
           if (data['Email']) {
               if (!emailPattern.test(data['Email'])) {
-                missingFields.push(`Email is not a valid email`);
+                missingFields.push(`Email should follow email format (name@company.com)`);
               }
             }
             if (data['Phone']) {
               if (!phoneNumberPattern.test(data['Phone'])) {
-                missingFields.push(`Phone Number is not a valid.It should be Number Only`);
+                missingFields.push(`Phone Number should be Number Only`);
               }
             }
             if (data['Anniversary']) {
               if (!dateFormat.test(data['Anniversary'])) {
-                missingFields.push(`Anniversary Date is not a valid.It should be MM/DD/YYYY format`);
+                missingFields.push(`Anniversary Date should follow MM/DD/YYYY format`);
               }
             }
             if (data['Birthday']) {
               if (!dateFormat.test(data['Birthday'])) {
-                missingFields.push(`Birthday Date is not a valid.It should be MM/DD/YYYY format`);
+                missingFields.push(`Birthday Date should follow MM/DD/YYYY format`);
               }
             }
             
@@ -518,7 +515,7 @@ const ContactTable = ({
             errors.push(
               ` In row ${index+1}: ${missingFields.join(
                 ', ',
-              )} is empty field`,
+              )}`,
             );
           }
         }
