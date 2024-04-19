@@ -20,13 +20,11 @@ import Card3 from '../../../assets/Image/Card3.webp';
 import next from '../../../assets/Image/next.png';
 import prev from '../../../assets/Image/pre.png';
 import DynamicButton from '../DynamicButton';
-import {useNavigate} from '@remix-run/react';
 import pen from '../../../assets/Image/pen-img.webp';
 import swiper_arrow_left from '../../../assets/Image/swiper-arrow-left.png';
 import swiper_arrow_right from '../../../assets/Image/swiper-arrow-right.png';
-import CircularLoader from '../CircularLoder';
+
 const Card = () => {
-  const Navigate = useNavigate();
   const [emailForSubs, setEmailForSubs] = useState('');
   const [loader, setLoader] = useState(false);
   const [isEmailSubscribed, setisEmailSubscribed] = useState(false);
