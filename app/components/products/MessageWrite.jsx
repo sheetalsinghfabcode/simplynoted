@@ -574,30 +574,53 @@ export function MessageWriting({
 
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      const keyToRemove = 'Type';
-      reader.onload = (e) => {
-        const csvData = e.target.result;
-        let jsonData = csvToJson(csvData);
-        const cleanedArray = jsonData.map((obj) => {
-          const cleanedObj = {};
-          Object.keys(obj).forEach((key) => {
-            const newKey = key?.replace(/"/g, ''); // Remove quotes from key
-            const newValue = obj[key]?.replace(/"/g, ''); // Remove quotes from value
-            cleanedObj[newKey] = newValue;
-          });
-          return cleanedObj;
-        });
-        setSelectedFile(file); // Update the selected file state
-        setFileData(cleanedArray);
-      };
-      reader.readAsText(file);
-    }
-    event.target.value = '';
-    setDragAndDropBorderColor('#ef6e6e');
-  };
+    const  file = event.target.files[0];
+     if (file) {
+       const reader = new FileReader();
+       const keyToRemove = 'Type';
+       reader.onload = (e) => {
+         const csvData = e.target.result;
+         let jsonData = csvToJson(csvData);
+         const cleanedArray = jsonData.map((obj) => {
+           const cleanedObj = {};
+           Object.keys(obj).forEach((key) => {
+             const newKey = key?.replace(/"/g, ''); // Remove quotes from key
+             const newValue = obj[key]?.replace(/"/g, ''); // Remove quotes from value
+             cleanedObj[newKey] = newValue;
+           });
+           return cleanedObj;
+         });
+         setSelectedFile(file); // Update the selected file state
+         setFileData(cleanedArray);
+       };
+       reader.readAsText(file);
+     }
+     event.target.value = '';
+     setDragAndDropBorderColor('#ef6e6e');
+   };
+   
+//    function csvToJson(csv) {
+//     var lines = csv.split('\n');
+//     var result = [];
+//     var headers = lines[0].split(',');
+//     for (var i = 1; i < lines.length; i++) {
+//         var currentLine = lines[i].trim();
+//         // Skip empty lines
+//         if (currentLine.length === 0 && currentLine[0].trim() === '') {
+//             continue;
+//         }
+//         // Handle commas inside double quotes
+//         var parts = currentLine.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+//         var obj = {};
+//         for (var j = 0; j < headers.length; j++) {
+//           console.log(headers[j], parts[j])
+//             obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
+//         }
+//         result.push(obj);
+//     }
+//     setDisableSelectAddressBtn(true);
+//     return result;
+// }
   function csvToJson(csv) {
     var lines = csv.split('\n');
     var result = [];
@@ -646,8 +669,10 @@ export function MessageWriting({
     ];
 
     const alphabetPattern = /^[A-Za-z]+$/;
-    const mailText = /@.*\.com$/;
-
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    const phoneNumberPattern = /^\+?[0-9\-]{6,15}$/;
+    const dateFormat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/;
+  
     if (fileData.length) {
       let errObj = [];
       fileData.forEach((obj, index) => {
@@ -687,14 +712,37 @@ export function MessageWriting({
           let targetField = 'First Name';
           let emailValid = 'Email';
           let countryCheck = 'Country';
+          let type = 'Type';
+          let email='Email';
+          let phoneNumber='Phone';
+          let anniversary='Anniversary';
+          let birthday='Birthday';
           for (const key of reqField) {
+         
             if (obj[key] === '') {
               emptyKeys.push(key);
             }
           }
-
-          if (alphabetPattern.test(obj[targetField]) == false) {
-            errMsg.push(`'${targetField}' at row ${index} includes a number.`);
+          if (obj[type].toLowerCase() !== 'recipient' && obj[type].toLowerCase() !=='sender') {
+            errMsg.push(`'${type}' at row ${index+1} should be either 'Sender' or 'Recipient `);
+          }
+          if (alphabetPattern.test(obj[fnameField]) == false) {
+            errMsg.push(`'${fnameField}' at row ${index+1} contains invalid characters `);
+          }
+          if (alphabetPattern.test(obj[lnameField]) == false) {
+            errMsg.push(`'${lnameField}' at row ${index+1} contains invalid characters `);
+          }
+          if (obj[email] && emailPattern.test(obj[email]) == false) {
+            errMsg.push(`'${email}' at row ${index+1} is not a valid. It must include the '@' symbol. `);
+          }
+          if (obj[phoneNumber] && phoneNumberPattern.test(obj[phoneNumber]) == false) {
+            errMsg.push(`'${phoneNumber}' Number at row ${index+1} is not a valid.It should be Number Only `);
+          }
+          if (obj[anniversary] && dateFormat.test(obj[anniversary]) == false) {
+            errMsg.push(`'${anniversary}' at row ${index+1} is not a valid.It should be MM/DD/YYYY format `);
+          }
+          if (obj[birthday] && dateFormat.test(obj[birthday]) == false) {
+            errMsg.push(`'${birthday}' at row ${index+1} is not a valid email.It should be MM/DD/YYYY format `);
           }
           if (
             obj[countryCheck] === 'USA' ||
@@ -1818,9 +1866,9 @@ export function MessageWriting({
                       ? fontFamilyName
                       : editFontFamily
                       ? editFontFamily
-                      : 'great vibes',
-                    fontSize: signOffFontSize ? signOffFontSize : '50px',
-                    lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
+                      : 'tarzan',
+                    fontSize: fontSize ? fontSize : INITIAL_INPUT_CSS.initailFontSize,
+                    lineHeight: lineHeight ? lineHeight : INITIAL_INPUT_CSS.initalLineHeight,
                   }}
                 >
                   {name2}
@@ -2087,6 +2135,7 @@ export function MessageWriting({
             closeModal={() => {
               setVideoBtn(false);
             }}
+      
           />
           {!show && (
             <div className="bg-[#001a5f] h-[50px] text-center">
@@ -2260,6 +2309,7 @@ export function MessageWriting({
         close={true}
         closeModal={() => setIsOpen2(false)}
         isOpen={modalIsOpen2}
+      
       />
     </>
   );

@@ -415,6 +415,8 @@ const ContactTable = ({
     const errors = [];
     const namePattern = /^[A-Za-z]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    const phoneNumberPattern = /^\+?[0-9\-]{6,15}$/;
+    const dateFormat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/;
 
   
     fileData.forEach((obj, index) => {
@@ -467,23 +469,18 @@ const ContactTable = ({
         const startIdx = i * batchSize;
         const endIdx = Math.min((i + 1) * batchSize, cleanedData.length);
         const batchData = cleanedData.slice(startIdx, endIdx);
-
         // Validate missing fields in the current batch
         for (const data of batchData) {
+          const index = batchData.indexOf(data);
           const missingFields = [];
           for (const field of requiredFields) {
             if (!data[field] || data[field].trim() === '') {
-              missingFields.push(field);
+              missingFields.push(`${field}`);
             } else if (field === 'First Name' || field === 'Last Name') {
               if (!namePattern.test(data[field])) {
                 missingFields.push(`${field} contains invalid characters`);
               }
-            }
-            //  else if (field === 'Email') {
-            //   if (!emailPattern.test(data[field])) {
-            //     missingFields.push(`${field} is not a valid email`);
-            //   }
-            // } 
+            } 
             else if (field === 'Type') {
               if (
                 data[field].toLowerCase() !== 'recipient' &&
@@ -494,13 +491,34 @@ const ContactTable = ({
             }
           }
 
+          if (data['Email']) {
+              if (!emailPattern.test(data['Email'])) {
+                missingFields.push(`Email is not a valid email`);
+              }
+            }
+            if (data['Phone']) {
+              if (!phoneNumberPattern.test(data['Phone'])) {
+                missingFields.push(`Phone Number is not a valid.It should be Number Only`);
+              }
+            }
+            if (data['Anniversary']) {
+              if (!dateFormat.test(data['Anniversary'])) {
+                missingFields.push(`Anniversary Date is not a valid.It should be MM/DD/YYYY format`);
+              }
+            }
+            if (data['Birthday']) {
+              if (!dateFormat.test(data['Birthday'])) {
+                missingFields.push(`Birthday Date is not a valid.It should be MM/DD/YYYY format`);
+              }
+            }
+            
           if (missingFields.length > 0) {
           setSelectedFile(null)
 
             errors.push(
-              `Missing fields in row ${startIdx + 1}: ${missingFields.join(
+              ` In row ${index+1}: ${missingFields.join(
                 ', ',
-              )}`,
+              )} is empty field`,
             );
           }
         }
@@ -651,6 +669,7 @@ const ContactTable = ({
             setShowLoader(false);
           }}
           isOpen={errorModal}
+          isArrayTrue={true}
         />
       ) : (
         // <ErrorModal
