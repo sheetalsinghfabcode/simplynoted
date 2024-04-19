@@ -1512,11 +1512,13 @@ body {
   font-weight: 700;
   cursor: pointer;
   color: #000 !important;
-  border-bottom: 1px solid #d3d3d3;
+  border-top: 1px solid #d3d3d3;
   padding: 25px 20px;
   /* font-size: 20px; */
 }
-
+.shadow-outer-custom{
+  border-bottom: 1px solid #d3d3d3;
+}
 .Delight-customers {
   font-size: 19px;
 }
@@ -1775,7 +1777,7 @@ body {
   width: 100%;
   background: url('../../assets/Image/white-underline.svg');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 34%;
 }
 
 .sample-request {
@@ -1863,7 +1865,7 @@ body {
   margin-top: 0;
   margin-bottom: 3vw;
   margin-left: 7rem;
-  width: 397px;
+  width: 400px;
   max-width: 100%;
   z-index: 2;
 }
@@ -1908,9 +1910,9 @@ body {
   justify-content: center;
   background-size: cover;
   background-repeat: no-repeat;
-  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
-  -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
-  -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
+  -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
+  -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
   margin-left:auto;
   margin-right: auto;
 }
@@ -1974,7 +1976,7 @@ body {
   color: #000;
   font-size: 14px;
   font-weight: 400;
-  line-height: 50px;
+  line-height: 1;
   box-sizing: border-box;
   width: 47%;
   padding-bottom: 6px;
@@ -2017,9 +2019,9 @@ body {
   width: 466px;
   height: 503px;
   display: block;
-  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
-  -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
-  -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
+  -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
+  -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -2118,7 +2120,7 @@ background-size: 360px;
 }
 
 .shadow-outer-custom {
-  box-shadow: 0 0 4px rgba(120, 120, 120, 0.8);
+  /* box-shadow: 0 0 4px rgba(120, 120, 120, 0.8); */
 }
 /********************************************* ROI CALCULATOR **********************************************************/
 .roi-calculator-section-1 {
@@ -2756,6 +2758,9 @@ background-size: 360px;
   position: relative;
   width: 100%;
   top: 15px;
+  @media (max-width: 749px) {
+    left: 0;
+  }
 }
 ::-webkit-scrollbar {
   width: 7px;
@@ -2848,9 +2853,42 @@ background-size: 360px;
 }
 
 
+.zoom{
+zoom:1.2;
+@media (max-width:749px) {
+  zoom:1; 
+}
+}
+
+.btnTerm {
+  display: inline-block;
+  color: #141414E6;
+  padding: 0;
+  letter-spacing: 0;
+  font-weight: 500;
+  text-decoration: underline;
+}
+.home_swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
 
 
+.twentytwenty-handle path {
+  fill: #b3b3b3;
+}
 
-
-
-  
+.twentytwenty-handle:hover path {
+  fill: #324879;
+}
+.prError{
+  @apply text-white bg-red-400 px-4 py-1 rounded-md mt-4 border border-red-700 block;
+}
+.error-message{
+  @apply text-white bg-green-400 px-4 py-1 rounded-md mt-4 border border-green-700 block; 
+}
+.cards-swiper-slider .swiper-slide {
+  width: 550px !important;
+}
+.custom-product-shadow{
+  box-shadow: 0px 4px 15px 0px #0000000F;
+}

@@ -4,7 +4,7 @@ import signup_card from '../../assets/Image/signup-envelopes.webp';
 import DynamicButton from '~/components/DynamicButton';
 import {defer} from '@remix-run/server-runtime';
 import {seoPayload} from '~/lib/seo.server';
-import CanvasFooter from '../../assets/Video/canvas-footer.gif';
+import PartnerReferral from '../../assets/Video/partner-referral.mp4'
 export async function loader({request, context}) {
   const {page} = await context.storefront.query(GRAPH_QL, {
     variants: {},
@@ -32,23 +32,23 @@ const Partner_signup = () => {
             <div className="flex relative justify-center">
               <div className="signup-overview">
                 <h3 className="signup-title">Partner Program Overview</h3>
-                <div className="font-bold text-[#ef6e6e] text-[21px] bg-white signup-row">
-                  <div className="">Referral amount</div>
+                <div className="font-bold text-[#ef6e6e] text-[21px] signup-row flex !bg-transparent">
+                  <div className="">Referral Amount</div>
                   <div className="">Commision %</div>
                 </div>
 
-                <div className="signup-row">
-                  <div>$5,000 - $49,999</div>
-                  <div>7.5%</div>
+                <div className="signup-row flex">
+                  <div className='text-[21px]'>$5,000 - $49,999</div>
+                  <div className='text-[21px]'>7.5%</div>
                 </div>
-                <div className="signup-row">
-                  <div>$50,000 - $99,999</div>
-                  <div>10%</div>
+                <div className="signup-row flex">
+                  <div className='text-[21px]'>$50,000 - $99,999</div>
+                  <div className='text-[21px]'>10%</div>
                 </div>
 
-                <div className="signup-row">
-                  <div>$100,000+</div>
-                  <div>12.5%</div>
+                <div className="signup-row flex">
+                  <div className='text-[21px]'>$100,000+</div>
+                  <div className='text-[21px]'>12.5%</div>
                 </div>
 
                 <div className="text-center mx-auto">
@@ -71,7 +71,7 @@ const Partner_signup = () => {
                 <div className="mt-[3rem] text-[30px] text-center text-white leading-8 font-medium pb-4">
                   Start Earning Today
                 </div>
-                <div className="row">
+                <div className="row flex">
                   <div className="white-underline">
                     <input
                       required=""
@@ -90,7 +90,7 @@ const Partner_signup = () => {
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row flex">
                   <div className="white-underline">
                     <input type="text" name="company" placeholder="Company" />
                   </div>
@@ -105,7 +105,7 @@ const Partner_signup = () => {
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row flex">
                   <div className="white-underline">
                     <input
                       required=""
@@ -125,7 +125,7 @@ const Partner_signup = () => {
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row flex">
                   <div className="white-underline">
                     <input
                       type="text"
@@ -144,7 +144,7 @@ const Partner_signup = () => {
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row flex">
                   <div className="white-underline">
                     <input type="text" name="State" placeholder="State" />
                   </div>
@@ -183,39 +183,46 @@ const Partner_signup = () => {
               <h2 className="text-[#001a5f] text-center text-[40px]  font-bold mb-10 signup-underline">
                 Program Benefits
               </h2>
-              <ul className="md:columns-2 columns-1">
-                <li className="programm-list">
+              <ul className="grid tab:grid-cols-2 gap-4 gap-x-8 max-sm:ml-6">
+                <li className="programm-list !mb-0 !p-0">
                   Support Sales & Marketing Programs
                 </li>
-                <li className="programm-list">
+                <li className="programm-list !mb-0 !p-0">Access to our API </li>
+                <li className="programm-list !mb-0 !p-0">
                   Define Joint Business Opportunities
                 </li>
-                <li className="programm-list">
-                  Provide Product and Technical Expertise
-                </li>
-                <li className="programm-list">
-                  Training and Development Activities
-                </li>
-                <li className="programm-list">Access to our API </li>
-                <li className="programm-list">
+                    
+                <li className="programm-list !mb-0 !p-0">
                   Automate with our Zapier Integration
                 </li>
-                <li className="programm-list">Commissions Paid Monthly</li>
-                <li className="programm-list">Contract Discounts</li>
+                <li className="programm-list !mb-0 !p-0">
+                  Provide Product and Technical Expertise
+                </li>
+                <li className="programm-list !mb-0 !p-0">Commissions Paid Monthly</li>
+                <li className="programm-list !mb-0 !p-0">
+                  Training and Development Activities
+                </li>
+           
+            
+                <li className="programm-list !mb-0 !p-0">Contract Discounts</li>
               </ul>
             </div>
           </div>
-          <div className="w-full relative h-[444px]">
-            <div className="absolute left-[-107px]   z-[-12]">
-              <img
-                className="max-w-[1533px]"
-                src={CanvasFooter}
-                alt="Computer man"
-              />
-            </div>
-          </div>
+  
         </div>
       </div>
+      <div className='w-full overflow-hidden'>
+      <video   
+                className="z-[0] w-full block overflow-hidden scale-[1.01] mix-blend-multiply"
+                autoPlay
+                loop
+                playsInline
+                muted
+                nocontrols
+              >
+                <source src={PartnerReferral} type="video/mp4"></source>
+              </video>
+              </div>
     </>
   );
 };

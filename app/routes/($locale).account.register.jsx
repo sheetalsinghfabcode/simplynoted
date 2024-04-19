@@ -131,8 +131,8 @@ export default function Register() {
           <CircularLoder textColor="text-white" title="Registering..." />
         </div>
       )}
-      <div className="max-w-md w-full">
-        <h1 className="text-4xl block sm:mt-[-23px] mt-[0px] font-bold flex justify-center text-blue-900 text-2xl">
+      <div className="max-w-[32rem] p-[20px] border border-[#f2f2f2] w-full rounded-3xl shadow-box">
+        <h1 className="text-4xl block text-center mt-[0px] font-bold  text-blue-900 ">
           Create an Account
         </h1>
         <div className="flex justify-center">
@@ -145,7 +145,7 @@ export default function Register() {
         <Form
           method="post"
           noValidate
-          className="pt-6 pb-8 mt-4 mb-[-100px] space-y-3"
+          className="pt-6 pb-0 mt-4  space-y-3"
         >
           {actionData?.formError && (
             <div className="flex items-center justify-left">

@@ -183,7 +183,7 @@ export default function blog() {
         <div className="flex justify-center gap-1">
           <div
             className="md:flex gap-4 flex-wrap justify-center mb-[17px] items-start mt-[40px]"
-            style={{maxWidth: '793px'}}
+            style={{maxWidth: '100%'}}
           >
             {loader ? (
               <CircularLoader color="#ef6e6e" />

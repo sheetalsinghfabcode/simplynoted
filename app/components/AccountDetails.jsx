@@ -65,7 +65,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
   return (
     <>
       <div className="max-w-[100%] mx-auto sm:px-4 px-[0px] ">
-        <div className="bg-white font-karla rounded-[12px] p-[9px] border border-solid border-[#DDDDDD] rounded-lg md:p-6 p-[0px] md:mt-[0px] mt-[23px]">
+        <div className="bg-white font-karla rounded-[12px] p-[9px] border border-solid border-[#DDDDDD]  md:p-6  md:mt-[0px] mt-[23px]">
           {/* Name */}
           <div className="flex mb-4 ">
             <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla">
@@ -84,14 +84,14 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
               Phone:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
-              {phoneNumber ? phoneNumber : phone ? phone :null  }
+              {phoneNumber &&  phoneNumber !== "null" ? phoneNumber : phone &&  phone !== "null" ? phone : ' '  }
             </p>
           </div>
 
           {/* Email */}
           <div className="flex mb-4 items-center">
             <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black  ">
-              Email address:
+              Email Address:
             </div>
             <p className="w-3/4 md:text-[16px] text-[12px]  font-semibold">
               {email ? email : userEmail}

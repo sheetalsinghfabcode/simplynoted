@@ -28,10 +28,7 @@ const PackageModal = ({
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
 
-
   let dollarUSLocale = Intl.NumberFormat('en-US');
-
- 
 
   return (
     <div
@@ -72,8 +69,13 @@ const PackageModal = ({
                   {stripeCollection.stripe?.subscriptionStatus !== 'canceled'
                     ? stripeCollection.stripe?.subscription
                     : ' Free '}
-                  - {dollarUSLocale.format(Number(stripeCollection.stripe?.packageQuantity))} cards -
-                  {stripeCollection.stripe?.packageDiscount}% DISCOUNT
+                  -{' '}
+                  {stripeCollection.stripe?.packageQuantity
+                    ? dollarUSLocale.format(
+                        Number(stripeCollection.stripe?.packageQuantity),
+                      )
+                    : '0 '}
+                  cards -{stripeCollection.stripe?.packageDiscount}% DISCOUNT
                 </span>
               ) : (
                 <span>None</span>
@@ -83,7 +85,7 @@ const PackageModal = ({
               Balance: $
               {stripeCollection.stripe?.balance
                 ? Number(stripeCollection.stripe?.balance).toFixed(2)
-                : 0.00}
+                : 0.0}
             </span>
           </div>
           <h3 className="md:text-[20px] text-[12px] mt-[13px] text-center leading-[1.4] w-full max-w-[418px] mx-auto  font-semibold">

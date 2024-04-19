@@ -1,12 +1,11 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useStateContext} from '~/context/StateContext';
 import {useLocation} from '@remix-run/react';
 
 const CartItems = ({id}) => {
-  const {setCartCountVal, cartCountVal, setCartData, isCartUpdated} =
+  const {setCartCountVal, cartCountVal, setCartData, isCartUpdated, customerId} =
     useStateContext();
-
-  const pathname = useLocation();
+    const pathname = useLocation();
 
   useEffect(() => {
     // Read customerId from localStorage
@@ -25,13 +24,13 @@ const CartItems = ({id}) => {
 
       .then((data) => {
         // Update state with fetched data
-        setCartCountVal(data.result.cartItems.length);
+       setCartCountVal(data.result.cartItems.length);
         setCartData(data.result.cartItems);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, [isCartUpdated, cartCountVal, pathname.pathname]);
+  }, [isCartUpdated, cartCountVal, customerId]);
 
   return <></>;
 };

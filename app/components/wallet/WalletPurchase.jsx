@@ -22,7 +22,7 @@ const WalletPurchase = ({
 
   return (
     <div className="max-w-[1366px] mx-auto px-[20px]  py-[40px] ml-[14px] mr-[14px] bg-white">
-      <div className="max-w-[850px] mx-auto p-[17px] border border-solid border-[#ef6e6e]">
+      <div className="max-w-[640px] mx-auto p-[17px] border border-solid border-[#ef6e6e]">
         <div className="flex justify-center">
           <DynamicButton
             text={`${
@@ -56,7 +56,7 @@ const WalletPurchase = ({
         <div className=" sm:flex grid lg:justify-between md:justify-around justify-normal lg:gap-[11px] gap-[12px] items-center mt-[27px]">
           <DynamicButton
             text="Go Back"
-            className="!bg-[#EF6E6E] font-karla !w-full   !h-[45px]  uppercase md:text-[16px] text-[12px]"
+            className="!bg-[#EF6E6E] font-karla !w-full   !h-[50px]  uppercase md:text-[16px] text-[12px]"
             onClickFunction={() => {
               setWalletPurchase(false);
               setWalletPlan(true);
@@ -69,7 +69,7 @@ const WalletPurchase = ({
               setWalletPurchase(false);
               setWalletPayment(true);
             }}
-            className="!bg-[#1b5299] font-karla !w-full  whitespace-nowrap !h-[45px] uppercase md:text-[16px] text-[12px]"
+            className="!bg-[#1b5299] font-karla !w-full  whitespace-nowrap !h-[50px] uppercase md:text-[16px] text-[12px]"
           />
         </div>
       </div>

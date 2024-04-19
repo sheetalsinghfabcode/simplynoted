@@ -31,16 +31,16 @@ export default function Salesforce() {
     <section>
       <div className={`w-full ${animate ? 'fade-in' : ''}`}>
         <div className="flex px-[16px] md:px-[40px]  items-center">
-          <div className="lg:flex-row flex-col global-max-width-handler flex  sm:mt-10 mt-5">
+          <div className="xl:flex-row flex-col global-max-width-handler flex  sm:mt-10 mt-5">
             {/* first div left side */}
-            <div className="lg:flex-col  flex-col-reverse global-section-divider  flex  lg:w-[50%] w-full lg:justify-start justify-center">
+            <div className="xl:flex-col  flex-col-reverse global-section-divider  flex  xl:w-[50%] w-full xl:justify-start justify-center">
               <div>
-                <div className="lg:block hidden">
+                <div className="xl:block hidden">
                   <div className="text-white text-center text-[12px] p-[3px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
                     COMING SOON &nbsp;
                   </div>
                   <div
-                    className="lg:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f]"
+                    className="xl:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f] mb-6"
                     style={{ lineHeight: '0.75' }}
                   >
                     Salesforce
@@ -56,14 +56,14 @@ export default function Salesforce() {
                     Integration
                   </div>
                 </div>
-                <div className=" mt-[14px] lg:w-[83%]   w-full lg:text-left sm:text-center text-justify texts">
+                <div className="  xl:text-left texts !text-[18px] !leading-normal text-center !mb-0 ">
                   We go as far as to design the type of slant, spacing and
                   stroke variability that goes into a unique personalized font.
                   We can control everything from the slant of the lettering,
                   tight spacing, loose spacing and much more depending on what
                   your unique style is.
                 </div>
-                <div className="flex lg:justify-start justify-center flex-wrap items-center gap-2 mt-5 mb-5 relative ">
+                <div className="flex xl:justify-start justify-center flex-wrap items-center gap-2 mt-5 mb-5 relative ">
                   <DynamicButton
                     text="CONNECT USING OUR PROCESS BUILDER"
                     className="text-white p-[17px] sm:text-[16px] small:text-[14px] text-[10px] bg-[#ef6e6e] px-2 py-5 font-bold"
@@ -73,20 +73,20 @@ export default function Salesforce() {
                     }
                   />
 
-                  <span className="lg:block hidden font-karla  text-[#001a5f] underline xl:ml-5 text-[28px] font-bold">
+                  <span className="xl:block hidden font-karla  text-[#001a5f] underline xl:ml-5 text-[28px] font-bold">
                     or
                   </span>
                   <img
-                    className="lg:block hidden relative right-[4px] top-[36px] xl:top-[47px] xl:w-[20%] w-[16%] "
+                    className="xl:block hidden relative right-[4px] top-[36px] xl:top-[47px] xl:w-[20%] w-[16%] "
                     src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-1.png?v=1609453677&94441"
                     alt="arrow"
                   />
                 </div>
               </div>
               {/* first div form */}
-              <div className="lg:flex grid lg:justify-start justify-center">
-                <div className="lg:hidden inline-block text-center">
-                  <div className="text-white inline-block text-center text-[12px] p-[4px] bg-[#ef6e6e] w-[104px] rounded-3xl lg:mb-0  mb-[14px]">
+              <div className="xl:flex grid xl:justify-start justify-center">
+                <div className="xl:hidden inline-block text-center">
+                  <div className="text-white inline-block text-center text-[12px] p-[4px] bg-[#ef6e6e] w-[104px] rounded-3xl xl:mb-0  mb-[14px]">
                     COMING SOON
                   </div>
                   <div
@@ -106,14 +106,14 @@ export default function Salesforce() {
                   </div>
                 </div>
                 <div className="wrap-business-banner justify-center">
-                  <div className="relative flex lg:w-auto">
-                    <div className="formStamp lg:block hidden">
+                  <div className="relative flex xl:w-auto">
+                    <div className="formStamp xl:block hidden">
                       <img
                         src={SalesforceFormStampImage}
                         alt="Salesforce form stamp"
                       />
                     </div>
-                    <div className=" hidden small:block lg:hidden absolute top-[-2rem] right-[8rem] md:right-[15rem] z-[3]">
+                    <div className=" hidden small:block xl:hidden absolute top-[-2rem] right-[8rem] md:right-[15rem] z-[3]">
                       <img
                         src="https://simplynoted.com/cdn/shop/files/salesforce-logo.png?v=8956079057539837102"
                         alt="salesforce"
@@ -125,9 +125,10 @@ export default function Salesforce() {
                       </h3>
                       <p id="messageBox"></p>
                       <form className="hubForm" data-hs-cf-bound="true">
-                        <div className="row">
+                        <div className="row flex">
                           <div className="white-underline-salesforce">
                             <input
+                            className='p-0'
                               required=""
                               type="text"
                               name="first-name"
@@ -136,6 +137,7 @@ export default function Salesforce() {
                           </div>
                           <div className="white-underline-salesforce">
                             <input
+                            className='p-0'
                               required=""
                               type="text"
                               name="last-name"
@@ -144,9 +146,10 @@ export default function Salesforce() {
                           </div>
                         </div>
 
-                        <div className="row">
+                        <div className="row flex">
                           <div className="white-underline-salesforce">
                             <input
+                            className='p-0'
                               type="text"
                               name="company"
                               placeholder="Company"
@@ -154,6 +157,7 @@ export default function Salesforce() {
                           </div>
                           <div className="white-underline-salesforce">
                             <input
+                            className='p-0'
                               required=""
                               type="tel"
                               name="phone"
@@ -163,9 +167,10 @@ export default function Salesforce() {
                           </div>
                         </div>
 
-                        <div className="row">
+                        <div className="row flex">
                           <div className="white-underline-salesforce">
                             <input
+                            className='p-0'
                               required=""
                               type="email"
                               name="email-address"
@@ -173,7 +178,7 @@ export default function Salesforce() {
                             />
                           </div>
                           <div className="white-underline-salesforce">
-                            <select name="volume" id="">
+                            <select name="volume" id="" className='py-0'>
                               <option value="Expected Volume">
                                 Expected Volume
                               </option>
@@ -244,7 +249,7 @@ export default function Salesforce() {
               nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
               erat, sed diam voluptua.
             </p>
-            <div className="lg:flex-row flex-col flex lg:items-left items-center gap-[12px] mt-5">
+            <div className="flex gap-2 items-center w-full max-lg:max-w-[353px] max-lg:mx-auto">
               <DynamicButton
                 text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
@@ -310,7 +315,7 @@ export default function Salesforce() {
             <p className=" w-[100%] texts lg:mt-0 mt-7 ">
               Send one or send thousands
             </p>
-            <div className="lg:flex-row flex-col gap-[10px] flex lg:items-left items-center  mt-5">
+            <div className="flex gap-2 items-center w-full max-lg:max-w-[353px] max-lg:mx-auto">
               <DynamicButton
                 text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
@@ -394,9 +399,23 @@ export default function Salesforce() {
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-center.png?v=1294751222991646381" />
           <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-right.png?v=17628020455828864692" />
         </div>
-
+  <div className='max-w-[1550px] mx-auto'>
         <div className="flex flex-row items-center mb-[51px] relative justify-center mx-auto mt-[70px]">
           <div className="banner-detail text-center tab:w-[80%] w-[1200px]">
+          <div className="absolute right-[-198px] top-[-89px]">
+            <img
+              className="xl:block hidden"
+              src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+              alt="shopify"
+            />
+          </div>
+          <div className="absolute left-[-98px] top-[-91px]">
+            <img
+              className="xl:block hidden"
+              src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+              alt="shopify"
+            />
+          </div>
             <img
               className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] "
               src={SalesforceIcon}
@@ -428,6 +447,7 @@ export default function Salesforce() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

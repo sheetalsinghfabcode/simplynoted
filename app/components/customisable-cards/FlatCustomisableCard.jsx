@@ -190,7 +190,7 @@ export default function FlatCustomisableCard({
           observingData.isFooter &&
           footerData.isImageSelected
         ) {
-          console.log("footerData.imageBlobUrl",footerData.imageBlobUrl)
+          // console.log("footerData.imageBlobUrl",footerData.imageBlobUrl)
           imageFile = await blobUrlToFileObject(
             footerData.imageBlobUrl,
             `${customerId}-flat-front-image`,
@@ -1172,7 +1172,7 @@ export default function FlatCustomisableCard({
                 ) : (
                   <button
                     type="button"
-                    className={`absolute right-[3px] top-[3px] py-2 px-4 inline-block min-w-[100px] h-[35px] shadow-md bg-[#EF6E6E] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
+                    className={`absolute right-[3px] top-[3px] py-2 px-4 min-w-[100px] h-[35px] shadow-md bg-[#EF6E6E] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
                     onClick={handleCardTitleValidation}
                     disabled={validationModalData.isNameValidated}
                   >
@@ -1341,13 +1341,12 @@ export default function FlatCustomisableCard({
         </Modal>
       )}
 
-      <div className="relative md:mt-3" style={{ marginTop: '-2rem' }}>
-        <div className="min-h-[612px] flex justify-center items-center flex-wrap  lg:flex-row flex-col">
+      <div className="relative md:mt-16">
+        <div className=" global-max-width-handler flex justify-center items-center flex-wrap  lg:flex-row flex-col">
           <div
-            className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "
-            style={{ minHeight: '564px' }}
+            className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%] "        
           >
-            <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[65px] mt-[4rem]">
+            <span className="text-[30px] text-[#333] font-normal mb-3 md:mt-[0px] mt-[4rem] md:mb-4">
               Custom Flat {selectedCardPage}
             </span>
             <div>
@@ -1545,15 +1544,15 @@ export default function FlatCustomisableCard({
             </div>
           </div>
           <div
-            className="flex flex-col justify-between lg:items-baseline  items-center lg:mt-[8rem] mt-[30px]  lg:ml-[47px]  gap-5  flex-1 lg:w-[50%] md:w-[500px] sm:w-[445px] w-[350px]"
+            className="flex flex-col justify-between lg:items-baseline md:mt-0 mt-6  items-centermt-[30px]  lg:ml-[47px]  gap-5  flex-1 lg:w-[50%] md:w-[500px] sm:w-[445px] w-[350px]"
           // style={{marginTop: '9rem'}}
           >
             {selectedCardPage === 'Card Front' && (
               <>
-                <div className="relative flex w-[70px] h-[40px] lg:mt-[-9rem] mt-0 ">
-                  <div className="flex flex-row gap-[3px] items-center lg:justify-start justify-center">
+                <div className="relative flex lg:mt-[-9rem] mt-0 ">
+                  <div className="flex flex-row items-center lg:justify-start gap-2 justify-center p-2 border border-[#ddd] rounded-lg w-full md:w-adto">
                     <img
-                      className="cursor-pointer"
+                      className="cursor-pointer w-[70px]"
                       src={AddImageIcon}
                       alt="Add image file icon"
                       draggable="false"
@@ -1580,9 +1579,9 @@ export default function FlatCustomisableCard({
                   {selectedCardPage === 'Card Front' &&
                     (frontImageDetails.imageBlobUrl ||
                       frontImageDetails.blackAndWhiteImageBlobUrl) && (
-                      <div className="flex flex-col gap-8 md:mt-[0px] ">
+                      <div className="flex flex-col gap-3 md:mt-[0px] ">
                         <div className="flex flex-col">
-                          <span className="text-sm font-bold">
+                          <span className="text-base font-bold">
                             Resize image
                           </span>
                           <input
@@ -1642,8 +1641,9 @@ export default function FlatCustomisableCard({
             )}
             {selectedCardPage === 'Card Back' && (
               <>
+              <div className=' border border-[#ddd] p-6 flex flex-col gap-3 shadow-box'>
                 <div>
-                  <div className="flex items-center space-x-4 gap-8 mb-5">
+                  <div className="flex items-center space-x-4 gap-8 ">
                     <CustomCheckbox
                       label={'Add Header'}
                       isChecked={headerFooterVisibility.isHeaderVisible}
@@ -1658,12 +1658,12 @@ export default function FlatCustomisableCard({
                     />
                   </div>
                 </div>
-                <div className="flex justify-between items-center text-white gap-1 lg:w-[90%]  w-[100%] ">
+                <div className="flex justify-between items-center text-white gap-1 lg:w-[90%]  w-[100%] mb-4">
                   <button
                     className={`${observingData.isHeader
                       ? 'bg-[#1b5299] text-white shadow-md'
                       : 'bg-transparent text-[#1b5299]'
-                      } h-[35px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px]`}
+                      } h-[45px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px] rounded-lg`}
                     onClick={() =>
                       setObservingData({ isHeader: true, isFooter: false })
                     }
@@ -1674,7 +1674,7 @@ export default function FlatCustomisableCard({
                     className={`${observingData.isFooter
                       ? 'bg-[#1b5299] text-white shadow-md'
                       : 'bg-transparent text-[#1b5299]'
-                      } h-[38px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px]`}
+                      } h-[45px] border border-solid border-[#1b5299] outline-none text-center flex-1 font-semibold text-[16px] rounded-lg`}
                     onClick={() =>
                       setObservingData({ isHeader: false, isFooter: true })
                     }
@@ -2085,7 +2085,7 @@ export default function FlatCustomisableCard({
                   >
                     Finish Editing
                   </button>
-                </div>
+                </div></div>
               </>
             )}
           </div>

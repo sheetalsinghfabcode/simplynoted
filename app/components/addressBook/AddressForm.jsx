@@ -117,7 +117,7 @@ const AddressForm = ({customerID}) => {
     setLoaderTitle('Saving Address Book....');
     setShowLoader(true);
     setLoader(true);
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
@@ -227,7 +227,7 @@ const AddressForm = ({customerID}) => {
             </h2>
             <div className="tab:flex grid md:items-end  items-center md:gap-[10px] gap-[12px]">
               <DynamicButton
-                className="bg-[#ef6e6e]  md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
+                className="bg-[#ef6e6e]  md:text-[14px]  text-[14px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
                 text="Cancel"
                 onClickFunction={() => {
                   setAddressForm(false);
@@ -235,22 +235,22 @@ const AddressForm = ({customerID}) => {
                 }}
               />
               <DynamicButton
-                className="bg-[#001a5f] md:text-[14px]  text-[12px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
+                className="bg-[#001a5f] md:text-[14px]  text-[14px] lg:h-[45px] h-[45px] whitespace-nowrap md:w-[190px] sm:w-[287px] w-[220px]"
                 text="Save Address"
                 onClickFunction={saveAddress}
               />
             </div>
           </div>
           <div className=" flex mt-[35px] flex-wrap -mx-3">
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                className="block text-gray-700  text-[14px]  font-bold mb-2"
                 htmlFor="firstName"
               >
                 First Name  
               </label>
               <input
-                className={`appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.firstName ? 'border-red-500' : ''
                 }`}
                 id="firstName"
@@ -267,15 +267,15 @@ const AddressForm = ({customerID}) => {
                 </p>
               )}
             </div>
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                className="block text-gray-700  text-[14px]  font-bold mb-2"
                 htmlFor="lastName"
               >
                 Last Name
               </label>
               <input
-                className={`appearance-none border rounded w-full md:text-[14px] text-[12px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded w-full md:text-[14px] text-[14px] font-medium  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.lastName ? 'border-red-500' : ''
                 }`}
                 id="lastName"
@@ -295,15 +295,15 @@ const AddressForm = ({customerID}) => {
           </div>
           <div className="md: items-center">
             <div className="flex flex-wrap -mx-3">
-              <div className="md:w-1/2 w-[100%] px-3 mb-6">
+              <div className="md:w-1/2 w-[100%] px-3 mb-3">
                 <label
-                  className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                   htmlFor="businessName"
                 >
                   Business Name (Optional)
                 </label>
                 <input
-                  className="appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="businessName"
                   name="businessName"
                   type="text"
@@ -312,15 +312,15 @@ const AddressForm = ({customerID}) => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="md:w-1/2 w-[100%] px-3 mb-6">
+              <div className="md:w-1/2 w-[100%] px-3 mb-3">
                 <label
-                  className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                   htmlFor="postalCode"
                 >
                   Postal Code
                 </label>
                 <input
-                  className={`appearance-none border rounded w-full md:text-[14px] text-[12px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  className={`appearance-none border rounded w-full md:text-[14px] text-[14px] font-medium  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                     errors.postalCode ? 'border-red-500' : ''
                   }`}
                   id="postalCode"
@@ -341,15 +341,15 @@ const AddressForm = ({customerID}) => {
           </div>
 
           <div className="flex flex-wrap -mx-3">
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700  md:text-sm text-[12px]  font-bold mb-2"
+                className="block text-gray-700   text-[14px]  font-bold mb-2"
                 htmlFor="address1"
               >
                 Address 1
               </label>
               <input
-                className={`appearance-none border rounded md:text-[14px] text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.address1 ? 'border-red-500' : ''
                 }`}
                 id="address1"
@@ -367,15 +367,15 @@ const AddressForm = ({customerID}) => {
               )}
             </div>
 
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                className="block text-gray-700 text-[14px]  font-bold mb-2"
                 htmlFor="address2"
               >
                 Address 2 (Optional)
               </label>
               <input
-                className="appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded  text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="address2"
                 name="address2"
                 type="text"
@@ -387,15 +387,15 @@ const AddressForm = ({customerID}) => {
           </div>
 
           <div className="flex flex-wrap -mx-3">
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                className="block text-gray-700 text-[14px]  font-bold mb-2"
                 htmlFor="city"
               >
                 City
               </label>
               <input
-                className={`appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                className={`appearance-none border rounded  text-[14px] w-full font-medium  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                   errors.city ? 'border-red-500' : ''
                 }`}
                 id="city"
@@ -412,9 +412,9 @@ const AddressForm = ({customerID}) => {
                 </p>
               )}
             </div>
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700  md:text-sm text-[12px] font-bold mb-2"
+                className="block text-gray-700  text-[14px] font-bold mb-2"
                 htmlFor="state"
               >
                 State/Province
@@ -423,7 +423,7 @@ const AddressForm = ({customerID}) => {
                 onChange={handleChange}
                 value={formData.state}
                 name="state"
-                className={`appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                className={`appearance-none border rounded  text-[14px] w-full font-medium  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
                   errors.state ? 'border-red-500' : ''
                 }`}
                 id="state"
@@ -445,9 +445,9 @@ const AddressForm = ({customerID}) => {
           </div>
 
           <div className="flex flex-wrap -mx-3">
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700 md:text-sm text-[12px]  font-bold mb-2"
+                className="block text-gray-700 text-[14px]  font-bold mb-2"
                 htmlFor="country"
               >
                 Country
@@ -458,7 +458,7 @@ const AddressForm = ({customerID}) => {
                 itemID="country"
                 name="country"
                 id="country"
-                className="appearance-none border rounded w-full md:text-sm text-[12px] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded w-full  text-[14px] font-medium  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               >
                 {location.countries.map((country) => (
                   <option key={country.country} value={country.country}>
@@ -467,15 +467,15 @@ const AddressForm = ({customerID}) => {
                 ))}
               </select>
             </div>
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <label
-                className="block text-gray-700 md:text-sm text-[12px] font-bold mb-2"
+                className="block text-gray-700  text-[14px] font-bold mb-2"
                 htmlFor="type"
               >
                 Type
               </label>
               <select
-                className="appearance-none border rounded md:text-sm text-[12px] w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="appearance-none border rounded  text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="type"
                 name="type"
                 value={formData.type}
@@ -491,11 +491,11 @@ const AddressForm = ({customerID}) => {
           </div>
 
           <div className="flex flex-wrap -mx-3">
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <DateInput
                 fieldType="birthday"
                 label="Birthday"
-                className="md:text-sm text-[10px]"
+                className=" text-[14px] font-medium "
                 value={formData.birthday}
                 onChange={(value) =>
                   handleChange({target: {name: 'birthday', value}})
@@ -507,11 +507,11 @@ const AddressForm = ({customerID}) => {
                 </p>
               )}
             </div>
-            <div className="md:w-1/2 w-[100%] px-3 mb-6">
+            <div className="md:w-1/2 w-[100%] px-3 mb-3">
               <DateInput
                 fieldType="anniversary"
                 label="Anniversary"
-                className="md:text-sm text-[10px]"
+                className=" text-[14px] font-medium "
                 value={formData.anniversary}
                 onChange={(value) =>
                   handleChange({target: {name: 'anniversary', value}})
@@ -526,7 +526,7 @@ const AddressForm = ({customerID}) => {
           </div>
           <div className="lg:flex  flex justify-center text-center">
             <DynamicButton
-              className="bg-[#001a5f] whitespace-nowrap md:text-[14px] text-[12px] text-center w-full max-w-[200px]  md:h-[45px] h-[33px]"
+              className="bg-[#001a5f] whitespace-nowrap md:text-[14px] text-[14px] text-center w-full max-w-[200px]  md:h-[45px] h-[33px]"
               text="Save Address"
               onClickFunction={saveAddress}
             />

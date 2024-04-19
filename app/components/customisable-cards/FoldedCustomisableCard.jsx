@@ -503,6 +503,7 @@ export default function FoldedCustomisableCard({
           isQrAdded: false,
         };
       });
+      
     } else {
       setQr((prevQrValues) => {
         return {
@@ -545,7 +546,7 @@ export default function FoldedCustomisableCard({
           image.onload = resolve;
         }
       });
-      const canvas = await html2canvas(element, {
+     /* const canvas = await html2canvas(element, {
         width: element.offsetWidth,
         height: element.offsetHeight,
         quality: 1,
@@ -553,21 +554,21 @@ export default function FoldedCustomisableCard({
           margin: 0,
         }
       });
-      const dataUrl = canvas.toDataURL('image/png');
+      const dataUrl = canvas.toDataURL('image/png');*/
 
-      // const dataUrl = await domtoimage.toPng(element, {
-      //   width: element.offsetWidth,
-      //   height: element.offsetHeight,
-      //   quality: 1,
-      //   style: {
-      //     transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
-      //       display: 'flex',
-      //           justifyContent: 'center',
-      //           alignItems: 'center',
-      //           margin:'0',
-      //   },  
+       const dataUrl = await domtoimage.toPng(element, {
+         width: element.offsetWidth,
+         height: element.offsetHeight,
+         quality: 1,
+         style: {
+          transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
+             display: 'flex',
+                 justifyContent: 'center',
+                 alignItems: 'center',
+                 margin:'0',
+         },  
        
-      // });
+       });
 
       if (selectedCardPage === 'Card Back' && dataUrl) {
         setBackImageDetails((prevBackImageDetails) => {
@@ -918,12 +919,14 @@ export default function FoldedCustomisableCard({
         },
         s3ImageUrls: s3ImageUrls,
         featuredImage: frontImageDetails?.canvasImageUrl,
+        featuredBackImage: backImageDetails?.canvasImageUrl,
       };
 
       formData.append('product', JSON.stringify(payload.product));
       formData.append('customFields', JSON.stringify(payload.customFields));
       formData.append('s3ImageUrls', JSON.stringify(payload.s3ImageUrls));
       formData.append('featuredImage', payload.featuredImage);
+      formData.append('featuredBackImage',payload.featuredBackImage)
 
       let options = {
         method: 'POST',
@@ -1017,7 +1020,7 @@ export default function FoldedCustomisableCard({
                 ) : (
                   <button
                     type="button"
-                    className={`absolute right-[3px] min-w-[100px] inline-block top-[3px] py-2 px-4  max-w-full h-[35px] shadow-md bg-[#EF6E6E] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
+                    className={`absolute right-[3px] min-w-[100px] top-[3px] py-2 px-4  max-w-full h-[35px] shadow-md bg-[#EF6E6E] flex justify-center items-center text-white transition ease-in duration-200 text-center text-base font-semibold focus:outline-none rounded`}
                     onClick={handleCardTitleValidation}
                     disabled={validationModalData.isNameValidated}
                   >
@@ -1188,7 +1191,7 @@ export default function FoldedCustomisableCard({
         </Modal>
       )}
       <div className="relative md:mt-3" style={{ marginTop: '-2rem' }}>
-        <div className="min-h-[553px] flex justify-center items-center flex-wrap lg:gap-0 gap-5 lg:flex-row flex-col">
+        <div className="min-h-[553px] global-max-width-handler flex justify-center items-center flex-wrap lg:gap-0 gap-5 lg:flex-row flex-col">
           <div
             className="flex flex-col justify-start items-center flex-1 lg:w-auto w-[95%]"
             style={{ minHeight: '564px' }}
@@ -1376,12 +1379,13 @@ export default function FoldedCustomisableCard({
             <div className="flex flex-col justify-between md:items-start items-baseline gap-5 min-w-[240px] ">
               {!(selectedCardPage === 'Card Inside') && (
                 <>
-                  <div className="relative w-[60px] h-[50px]">
+                  <div className="relative ">
                     {selectedCardPage === 'Card Front' && (
                       <>
-                        <div className="flex gap-[3px] items-center">
+                        <div className="flex flex-row items-center lg:justify-start gap-2 justify-center p-2 border border-[#ddd] rounded-lg w-full md:w-adto">
                           <img
                             src={AddImageIcon}
+                            className="cursor-pointer w-[70px]"
                             alt="Add image file icon"
                             draggable="false"
                           />
@@ -1406,10 +1410,11 @@ export default function FoldedCustomisableCard({
 
                     {selectedCardPage === 'Card Back' && (
                       <>
-                        <div className="flex gap-[3px] items-center">
+                        <div className="flex flex-row items-center lg:justify-start gap-2 justify-center p-2 border border-[#ddd] rounded-lg w-full md:w-adto">
                           <img
                             src={AddImageIcon}
                             alt="Add image file icon"
+                            className="cursor-pointer w-[70px]"
                             draggable="false"
                           />
                           <label

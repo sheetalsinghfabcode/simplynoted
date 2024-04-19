@@ -26,7 +26,7 @@ import 'swiper/css';
 
 const Notes = () => {
   return (
-    <div className="md:mt-[-8.5rem] mt-[-2.5rem] ml-[-20rem]">
+    <div className="md:mt-[-8.5rem] mt-[-2.5rem] ml-[-20rem] home_swiper">
       <Swiper
         modules={[Autoplay]}
         direction={'horizontal'}
@@ -48,8 +48,9 @@ const Notes = () => {
             slidesPerView: 3.5,
           },
         }}
+        speed={5000}
         autoplay={{
-          delay: 1000,
+          delay: 0,
           pauseOnMouseEnter: true,
           disableOnInteraction: false,
         }}

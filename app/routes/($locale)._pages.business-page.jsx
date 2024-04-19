@@ -112,9 +112,9 @@ export default function bussniess() {
 
   return (
     <>
-      <Section className="!p-0">
+      <Section className="!p-0 ">
           <div className="w-[100%] pb-10 ">
-            <div className="relative w-full lg:flex grid flex-wrap global-section-divider">
+            <div className="relative w-full lg:flex grid flex-wrap global-section-divider zoom">
               <img
                 className="absolute lg:block hidden ml-[16.2rem] w-[500px] mt-[7.06rem] z-[-1]"
                 src={business_curve}
@@ -181,12 +181,13 @@ export default function bussniess() {
                     data-hs-cf-bound="true"
                     onSubmit={handleSubmit}
                   >
-                    <div className="mt-[3rem] sm:text-[28px] text-[18px] font-bold text-center text-white leading-8">
+                    <div className="mt-[3rem] sm:text-[28px] text-[18px] font-bold text-center text-white leading-8 mb-[25px]">
                       Request a Writing Sample Packet
                     </div>
-                    <div className="row">
-                      <div className="white-underline !w-[100%]">
+                    <div className="row flex">
+                      <div className="white-underline ">
                         <input
+                        className='p-0'
                           required
                           type="text"
                           name="first_name"
@@ -196,8 +197,9 @@ export default function bussniess() {
                           id="fname"
                         />
                       </div>
-                      <div className="white-underline !w-[100%]">
+                      <div className="white-underline ">
                         <input
+                        className='p-0'
                           required
                           type="text"
                           name="last_name"
@@ -209,9 +211,10 @@ export default function bussniess() {
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="white-underline !w-[100%]">
+                    <div className="row flex">
+                      <div className="white-underline">
                         <input
+                        className='p-0'
                           required
                           type="text"
                           name="company"
@@ -220,8 +223,9 @@ export default function bussniess() {
                           onChange={handleChange}
                         />
                       </div>
-                      <div className="white-underline !w-[100%]">
+                      <div className="white-underline ">
                         <input
+                        className='p-0'
                           required
                           type="tel"
                           name="phone"
@@ -236,9 +240,10 @@ export default function bussniess() {
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="white-underline !w-[100%]">
+                    <div className="row flex">
+                      <div className="white-underline ">
                         <input
+                        className='p-0'
                           required
                           type="email"
                           name="email"
@@ -247,10 +252,10 @@ export default function bussniess() {
                           onChange={handleChange}
                         />
                       </div>
-                      <div className="white-underline !w-[100%]">
-                        <select
+                      <div className="white-underline ">
+                        <select     
                           required
-                          className="!text-[13px]"
+                          className="!text-[13px] p-0"
                           name="volume"
                           id=""
                           onChange={handleChange}
@@ -267,9 +272,10 @@ export default function bussniess() {
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="white-underline !w-[100%]">
+                    <div className="row flex">
+                      <div className="white-underline ">
                         <input
+                        className='p-0'
                           type="text"
                           name="address"
                           value={formData.address}
@@ -278,8 +284,9 @@ export default function bussniess() {
                           required
                         />
                       </div>
-                      <div className="white-underline !w-[100%]">
+                      <div className="white-underline ">
                         <input
+                        className='p-0'
                           required
                           type="text"
                           name="city"
@@ -291,9 +298,10 @@ export default function bussniess() {
                       </div>
                     </div>
 
-                    <div className="row">
-                      <div className="white-underline !w-[100%]">
+                    <div className="row flex">
+                      <div className="white-underline">
                         <input
+                        className='p-0'
                           type="text"
                           name="state"
                           value={formData.state}
@@ -302,8 +310,9 @@ export default function bussniess() {
                           required
                         />
                       </div>
-                      <div className="white-underline !w-[100%]">
+                      <div className="white-underline">
                         <input
+                        className='p-0'
                           required
                           type="text"
                           name="zip"
@@ -317,11 +326,11 @@ export default function bussniess() {
                         />
                       </div>
                     </div>
-
-                    <div className="white-underline !w-[100%]">
-                      <input
+                    <div className="row flex">
+                    <div className="white-underline  !w-[100%]">
+                      <input                 
                         required
-                        className="!w-full !px-0"
+                        className="!w-full !px-0 p-0"
                         type="text"
                         name="information"
                         onChange={handleChange}
@@ -329,10 +338,10 @@ export default function bussniess() {
                         placeholder="How did you hear about us?"
                       />
                     </div>
-
+                    </div>  
                     <input
                       type="submit"
-                      value="REQUEST SAMPLE"
+                      value="REQUEST A SAMPLE"
                       className="sample-request"
                       id="Form-submit"
                     />
@@ -342,9 +351,9 @@ export default function bussniess() {
             </div>
 
             <div className="w-full relative px-[10px] ">
-              <div className="absolute top-[570px] xl:top-[661px] hidden lg:block z-[-12] right-[55px] xl:right-[168px]">
+              <div className="absolute z-10 top-[570px] xl:top-[661px] hidden lg:block right-[55px] xl:right-[168px] mix-blend-multiply">
                 <img
-                  className="w-full h-[30rem]"
+                  className="w-full h-[30rem] "
                   src={CanvasBuss}
                   alt="Computer man"
                 />
@@ -554,7 +563,7 @@ export default function bussniess() {
 
                   <div className="lg:ml-[40px] md:ml-[60px] ml-0 lg:flex-col flex flex-row gap-[3px] small:gap-[5px]">
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] lg:mt-0 mt-7 rounded-full  object-contain  h-[60px] small:h-[70px] cursor-pointer "
                       style={
                         integrated === 'salesforce'
                           ? {filter: 'grayscale(0)'}
@@ -565,7 +574,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('salesforce')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px]  bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px]  bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain  h-[60px] small:h-[70px] cursor-pointer "
                       style={
                         integrated === 'zapier'
                           ? {filter: 'grayscale(0)'}
@@ -576,7 +585,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('zapier')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain h-[70px] cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[30%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full object-contain  h-[60px] small:h-[70px] cursor-pointer "
                       style={
                         integrated === 'shopify'
                           ? {filter: 'grayscale(0)'}
@@ -587,7 +596,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('shopify')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] small:w-[65px] w-[60px] bg-[#f0f8ff] p-[10px] mt-7 rounded-full cursor-pointer  h-[60px] small:h-[70px]"
                       style={
                         integrated === 'hubspot'
                           ? {filter: 'grayscale(0)'}
@@ -598,7 +607,7 @@ export default function bussniess() {
                       onClick={() => setIntegrated('hubspot')}
                     />
                     <img
-                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] small:w-[65px] w-[60px] bg-[#f0f8ff] lg:p-[10px] p-[13px] mt-7 rounded-full cursor-pointer "
+                      className="click-link 2xl:w-[85px] xl:w-[76px] lg:w-[28%] small:w-[65px] w-[60px] bg-[#f0f8ff] lg:p-[10px] p-[13px] mt-7 rounded-full cursor-pointer h-[60px] small:h-[70px]"
                       style={
                         integrated === 'api'
                           ? {filter: 'grayscale(0)'}
@@ -616,7 +625,7 @@ export default function bussniess() {
                     src={mobile_curve}
                     alt="mobile curve"
                   />
-                  <span className="mt-[20px] ml-[5px]">
+                  <span className="mt-[20px] ml-[5px] text-[15px] font-medium">
                     Click a Bubble to Learn More
                   </span>
                 </div>
@@ -933,7 +942,7 @@ export default function bussniess() {
                     src={mobile_curve}
                     alt="mobile curve"
                   />
-                  <span className="mt-[20px] ml-[5px]">
+                  <span className="mt-[20px] ml-[5px] text-[15px] font-medium">
                     Click a Bubble to Learn More
                   </span>
                 </div>

@@ -91,7 +91,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     setShowLoader(true);
     setLoaderTitle('Updating Address Book');
     setLoader(true);
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'PUT',
@@ -184,7 +184,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
         }`}
       >
         <div className="md:flex grid md:justify-between justify-normal items-center mb-[16px]">
-          <h2 className="text-left text-[#001a5f] md:text-normal text-center md:mb-[0px] mb-[7px] md:text-[34px] text-[31px] font-bold  leading-[44px]">
+          <h2 className="text-left text-[#001a5f] md:text-normal md:mb-[0px] mb-[7px] md:text-[34px] text-[31px] font-bold  leading-[44px]">
             Edit Address
           </h2>
           <div className="md:flex grid gap-[10px]">
@@ -203,16 +203,16 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             />
           </div>
         </div>
-        <div className="mb-4 md:flex grid  -mx-3">
-          <div className="w-full px-3 mb-6">
+        <div className="md:flex grid -mx-3">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="firstName"
             >
               First Name
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                 errors.firstName ? 'border-red-500' : ''
               }`}
               id="firstName"
@@ -229,15 +229,15 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               </p>
             )}
           </div>
-          <div className="w-full px-3 mb-6">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="lastName"
             >
               Last Name
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                 errors.lastName ? 'border-red-500' : ''
               }`}
               id="lastName"
@@ -255,16 +255,16 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
         </div>
-        <div className="mb-4 md:flex grid -mx-3">
-          <div className="w-full px-3 mb-6">
+        <div className="md:flex grid -mx-3">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="businessName"
             >
               Business Name (Optional)
             </label>
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="businessName"
               name="businessName"
               type="text"
@@ -273,15 +273,15 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               onChange={handleChange}
             />
           </div>
-          <div className="w-full px-3 mb-6">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="postalCode"
             >
               Postal Code
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                 errors.zip ? 'border-red-500' : ''
               }`}
               id="postalCode"
@@ -299,16 +299,16 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
         </div>
-        <div className="mb-4 md:flex grid -mx-3">
-          <div className="w-full px-3 mb-6">
+        <div className="md:flex grid -mx-3">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="address1"
             >
               Address 1
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                 errors.address1 ? 'border-red-500' : ''
               }`}
               id="address1"
@@ -326,15 +326,15 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
 
-          <div className="w-full px-3 mb-6">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="address2"
             >
               Address 2 (Optional)
             </label>
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="address2"
               name="address2"
               type="text"
@@ -345,16 +345,16 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           </div>
         </div>
 
-        <div className="mb-4 md:flex grid -mx-3">
-          <div className="w-full px-3 mb-6">
+        <div className="md:flex grid -mx-3">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="city"
             >
               City
             </label>
             <input
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                 errors.city ? 'border-red-500' : ''
               }`}
               id="city"
@@ -371,9 +371,9 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               </p>
             )}
           </div>
-          <div className="w-full px-3 mb-6">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="state"
             >
               State/Province
@@ -382,7 +382,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               onChange={handleChange}
               value={selectedAddress.state}
               name="state"
-              className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              className={`appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
                 errors.state ? 'border-red-500' : ''
               }`}
               id="state"
@@ -403,10 +403,10 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           </div>
         </div>
 
-        <div className="mb-4 md:flex grid -mx-3">
-          <div className="w-full px-3 mb-6">
+        <div className="md:flex grid -mx-3">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="country"
             >
               Country
@@ -417,7 +417,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               itemID="country"
               name="country"
               id="country"
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             >
               {location.countries.map((country) => (
                 <option key={country.country} value={country.country}>
@@ -426,15 +426,15 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               ))}
             </select>
           </div>
-          <div className="w-full px-3 mb-6">
+          <div className="w-full px-3 mb-3">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-gray-700  text-[14px]  font-bold mb-2"
               htmlFor="type"
             >
               Type
             </label>
             <select
-              className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="type"
               name="type"
               value={selectedAddress.type}
@@ -457,8 +457,8 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
           </div>
         </div>
 
-        <div className="mb-4 md:flex grid -mx-3">
-          <div className="w-full px-3 mb-6">
+        <div className="md:flex grid -mx-3">
+          <div className="w-full px-3 mb-3">
             <DateInput
               fieldType="birthday"
               label="Birthday"
@@ -473,7 +473,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
               </p>
             )}
           </div>
-          <div className="w-full px-3 mb-6">
+          <div className="w-full px-3 mb-3">
             <DateInput
               fieldType="anniversary"
               label="Anniversary"
@@ -489,9 +489,9 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
             )}
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center flex justify-center">
           <DynamicButton
-            className="bg-[#1b5299] whitespace-nowrap !h-[45px] text-center w-full max-w-[200px]  h-[60px] "
+            className="bg-[#1b5299] whitespace-nowrap !h-[45px] text-center w-full max-w-[200px]  sm:max-w-[40%] 2xl:max-w-[60%] "
             text="Update Address"
             onClickFunction={updateAddress}
           />

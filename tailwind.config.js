@@ -29,6 +29,8 @@ export default {
         'lg-only': {min: '64em', max: '80em'},
         'xl-only': {min: '80em', max: '96em'},
         '2xl-only': {min: '96em'},
+        'max-lg': {max: '1279px'},
+        'max-sm': {max: '749px'}
       },
       spacing: {
         nav: 'var(--height-nav)',
@@ -103,6 +105,8 @@ export default {
         border: 'inset 0px 0px 0px 1px rgb(var(--color-primary) / 0.08)',
         darkHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.4)',
         lightHeader: 'inset 0px -1px 0px 0px rgba(21, 21, 21, 0.05)',
+        box:'0 15px 15px 5px rgba(245, 246, 240, 0.39)',
+        shbox:'0 15px 15px 5px rgba(245, 246, 240, 0.59)'
       },
     },
   },

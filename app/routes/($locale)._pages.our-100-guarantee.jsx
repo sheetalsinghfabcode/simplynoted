@@ -19,8 +19,8 @@ function our100guarntee() {
           title="OUR 100% SATISFACTION GUARANTEE"
           className={'!text-[18px]'}
         />
-        <div className="flex justify-center md:w-full mx-auto ">
-          <div className="sm: text-[12px]">
+        <div className="flex justify-center md:w-[45%] mx-auto sm:w-[65%] w-[85%] ">
+          <div className="sm: text-[14px]">
             <p className="mt-[25px] ">
               At Simply Noted, your satisfaction is our paramount concern. We
               want you to

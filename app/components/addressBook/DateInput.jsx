@@ -62,14 +62,14 @@ function DateInput({fieldType, label, value, onChange}) {
   return (
     <div>
       <label
-        className="block text-gray-700 md:text-sm text-[12px] font-bold mb-2"
+        className="block text-gray-700  text-[14px] font-bold mb-2"
         htmlFor="dateinput"
       >
         {label} (MM/DD/YYYY)
       </label>
       <input
         type="text"
-        className="appearance-none md:text-sm text-[12px] border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none  text-[14px] font-medium border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         value={formattedDate}
         onChange={handleDateChange}
         placeholder={`(MM/DD/YYYY)`}

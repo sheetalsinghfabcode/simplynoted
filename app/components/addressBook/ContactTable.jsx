@@ -352,7 +352,6 @@ const ContactTable = ({
   function checkCSVFormat(headerRow, requiredHeaders) {
     const headerKeys = Object.keys(headerRow);
     const missingHeaders = [];
-
     for (let i = 0; i < requiredHeaders.length; i++) {
       const requiredHeader = requiredHeaders[i];
       const headerKey = headerKeys[i];
@@ -363,7 +362,6 @@ const ContactTable = ({
     }
 
     const isValidFormat = missingHeaders.length === 0;
-
     return {isValidFormat, missingHeaders};
   }
 
@@ -377,6 +375,7 @@ const ContactTable = ({
     }
 
     const requiredFields = [
+      'Type',
       'First Name',
       'Last Name',
       'Address',
@@ -407,10 +406,10 @@ const ContactTable = ({
     ];
 
     const errors = [];
-    const namePattern = /^[A-Za-z\s]+$/;
+    const namePattern = /^[A-Za-z]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-
     const cleanedHeaders = cleanHeaders(fileData[0]);
+
     const {isValidFormat, missingHeaders} = checkCSVFormat(
       cleanedHeaders,
       requiredHeaders,
@@ -452,7 +451,6 @@ const ContactTable = ({
         // Validate missing fields in the current batch
         for (const data of batchData) {
           const missingFields = [];
-
           for (const field of requiredFields) {
             if (!data[field] || data[field].trim() === '') {
               missingFields.push(field);
@@ -463,6 +461,13 @@ const ContactTable = ({
             } else if (field === 'Email') {
               if (!emailPattern.test(data[field])) {
                 missingFields.push(`${field} is not a valid email`);
+              }
+            } else if (field === 'Type') {
+              if (
+                data[field].toLowerCase() !== 'recipient' &&
+                data[field].toLowerCase() !== 'sender'
+              ) {
+                missingFields.push(`${field} is not a valid`);
               }
             }
           }

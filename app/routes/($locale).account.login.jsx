@@ -111,8 +111,8 @@ export default function Login() {
           <CircularLoader textColor="text-white" title="Logging in..." />
         </div>
       )}
-      <div className="max-w-md w-full">
-        <h1 className="name text-4xl flex sm:mt-[-20px] mt-[0px] justify-center font-bold text-blue-900">
+      <div className="max-w-[32rem] p-[20px] border border-[#f2f2f2] w-full rounded-3xl  shadow-box">
+        <h1 className="name text-4xl flex mt-[0px] justify-center font-bold text-blue-900">
           Sign in
         </h1>
         <div className="flex justify-center">
@@ -121,11 +121,11 @@ export default function Login() {
             src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
           />
         </div>
-        <p className="mt-[20px] text-black text-opacity-80 text-[15px]">
+        <p className="mt-[20px] text-black text-opacity-80 text-[15px] text-center">
           If you have an account with us, please log in.
         </p>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
+        <Form method="post" noValidate className="pb-0 mt-4 mb-4 space-y-3">
           {actionData?.formError && (
             <div className="flex items-center text-left text-red">
               <p className="text-red text-[red]">{actionData.formError}</p>

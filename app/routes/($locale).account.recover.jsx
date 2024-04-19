@@ -52,7 +52,7 @@ export default function Recover() {
 
   return (
     <div className="flex justify-center mt-[72px] px-4">
-      <div className="max-w-md w-full">
+      <div className="max-w-[32rem] p-[20px] border border-[#f2f2f2] w-full rounded-3xl  shadow-box">
         {isSubmitted ? (
           <>
             <h1 className="text-4xl">Request Sent.</h1>
@@ -64,9 +64,9 @@ export default function Recover() {
           </>
         ) : (
           <>
-            <h1 className="text-4xl block mt-[-50px] font-bold flex justify-center text-blue-900 text-2xl">Forgot Password</h1>
+            <h1 className="text-4xl block font-bold text-center text-blue-900 ">Forgot Password</h1>
             <div class="flex justify-center"><img className="w-64 mt-3" src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/></div>
-            <p className="mt-4 text-[15px]">
+            <p className="mt-4 text-[15px] text-center">
               Enter the email address associated with your account to receive a
               link to reset your password.
             </p>
@@ -74,7 +74,7 @@ export default function Recover() {
             <Form
               method="post"
               noValidate
-              className="pt-6 pb-8 mt-4 mb-4 space-y-3"
+              className="pt-6 pb-0 mt-4 mb-4 space-y-3"
             >
               
               <div>

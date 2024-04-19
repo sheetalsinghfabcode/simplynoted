@@ -35,9 +35,11 @@ const ManageSubscription = () => {
   const [restartAutoRenew, setRestartAutoNew] = useState(false);
   const [paymentId, setPaymentId] = useState('');
   const [deleteModal, setDeleteModal] = useState(false);
+  const [deleted, setDeleted] = useState(false);
   const [addCreditModal, setAddCreditModal] = useState(false);
   const [forUpdateData, setForUpdateData] = useState(false);
   const [defaultCard, setDefaultCard] = useState(false);
+  const [defaultCardConfirm, setDefaultCardConfirm] = useState(false);
   const [updateCard, setUpdateCard] = useState(false);
   const [packageModal, setPackageModal] = useState(false);
   const [purchaseModal, setPurchaseModal] = useState(false);
@@ -201,12 +203,14 @@ const ManageSubscription = () => {
       .then((data) => {
         setLoader(false);
         setForUpdateData(true);
+        setDeleted(true)
         // Handle the response data if needed
       })
       .catch((error) => {
         // Handle errors here
         console.error('API Error:', error);
         setLoader(false);
+        setDeleted(false)
       });
   };
 
@@ -244,6 +248,7 @@ const ManageSubscription = () => {
   };
 
   const makeDefaultCard = () => {
+    setDefaultCardConfirm(false)
     setDefaultCard(false);
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     setLoader(true);
@@ -265,6 +270,7 @@ const ManageSubscription = () => {
       .then((data) => {
         setLoader(false);
         setIsStripeDataUpdated(true);
+        setDefaultCardConfirm(true)
         // Handle the response data if needed
       })
       .catch((error) => {
@@ -375,9 +381,9 @@ const ManageSubscription = () => {
     return () => {};
   }, [
     forUpdateData,
-    defaultCard,
+    defaultCardConfirm,
     addCreditModal,
-    deleteModal,
+    deleted,
     updateModal,
     isStripeDataUpdated,
     restartAutoRenew,
@@ -606,7 +612,7 @@ const ManageSubscription = () => {
                         : '0.00'}
                     </span>
                   </div>
-                  <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]"></div>
+                  <div className="mt-[20px] border-b-2 border-solid border-[#e6edf8]">
                   <WalletAccordion accordion={true} title="Plan">
                     <div className="sm:p-[8px] p-[3px]">
                       <div className="flex justify-between items-center gap-[15px] py-[10px]  border-b border-solid border-[#e6edf8]">
@@ -890,6 +896,8 @@ const ManageSubscription = () => {
                       </table>
                     </div>
                   </WalletAccordion>
+                  </div>
+
                   <div className="mt-[20px]">
                     <p className="text-[#001a5f] md:text-[12px] text-left text-[9px] font-bold">
                       *Please note: Your wallet balance reflects promotional
