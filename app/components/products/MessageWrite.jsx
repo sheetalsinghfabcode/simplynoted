@@ -17,7 +17,7 @@ import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
 import {Modal as ModalComp} from '../Modal';
 import SuccessfullLoader from '../SucessfullLoader';
-import {Link} from '~/components';
+
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
@@ -48,12 +48,6 @@ export function MessageWriting({
   editShippingDate,
   showBulkOnEdit,
 }) {
-  const INITIAL_INPUT_CSS={
-    initailFontSize:'45px',
-    initalLineHeight:'47px',
-    initailSignOffFontSize:'45px',
-    initailSignOffLineHeight:'47px'
-  }
   const {
     setAddressForm,
     addressForm,
@@ -375,7 +369,6 @@ export function MessageWriting({
       return <div></div>;
     }
   }
- 
   function ShowHeaderComp() {
     if (typeof metafields.header.data == 'string') {
       if (
@@ -526,19 +519,19 @@ export function MessageWriting({
   }
   function processCustomMessageInput() {
     if (!mainMessageBox) return;
-    mainMessageBox.style.fontSize = INITIAL_INPUT_CSS.initailFontSize;
-    mainMessageBox.style.lineHeight = INITIAL_INPUT_CSS.initalLineHeight;
-    setFontSize(INITIAL_INPUT_CSS.initailFontSize);
-    setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
+    mainMessageBox.style.fontSize = '34px';
+    mainMessageBox.style.lineHeight = '34px';
+    setFontSize('34px');
+    setLineHeight('34px');
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
   function processSignOffInput() {
     if (!signOffTextBox) return;
-    signOffTextBox.style.fontSize = INITIAL_INPUT_CSS.initailSignOffFontSize;
-    signOffTextBox.style.lineHeight = INITIAL_INPUT_CSS.initailSignOffLineHeight;
-    setSignOffFontSize(INITIAL_INPUT_CSS.initailSignOffFontSize);
-    setSignOffLineHeight(INITIAL_INPUT_CSS.initailSignOffLineHeight);
+    signOffTextBox.style.fontSize = '34px';
+    signOffTextBox.style.lineHeight = '34px';
+    setSignOffFontSize('34px');
+    setSignOffLineHeight('34px');
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
@@ -578,7 +571,8 @@ export function MessageWriting({
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
-  
+  console.log('selectedFile', selectedFile);
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -586,7 +580,6 @@ export function MessageWriting({
       const keyToRemove = 'Type';
       reader.onload = (e) => {
         const csvData = e.target.result;
-
         let jsonData = csvToJson(csvData);
         const cleanedArray = jsonData.map((obj) => {
           const cleanedObj = {};
@@ -602,6 +595,7 @@ export function MessageWriting({
       };
       reader.readAsText(file);
     }
+    event.target.value = '';
     setDragAndDropBorderColor('#ef6e6e');
   };
   function csvToJson(csv) {
@@ -611,39 +605,37 @@ export function MessageWriting({
     for (var i = 1; i < lines.length; i++) {
       var currentLine = lines[i].split(',');
       // Skip empty lines
-      if (currentLine.length === 1 && currentLine[0].trim() === '') {
+      if (currentLine.length === 1 && currentLine[0]?.trim() === '') {
         continue;
       }
       var obj = {};
       for (var j = 0; j < headers.length; j++) {
-        if(currentLine[j]){
         obj[headers[j]] = currentLine[j];
-        }
       }
       result.push(obj);
     }
     setDisableSelectAddressBtn(true);
     return result;
   }
+
   async function uploadCsvFile() {
     let errMsg = [];
     let usCount = 0;
     let nonUSCount = 0;
     let found = false;
     let replacedMsg = [];
-  
+
     if (!fileData.length) {
       errMsg.push('it is empty please add addresses');
       setErrorVal(errMsg);
       setIsOpen2(true);
-
       setTimeout(() => setIsOpen2(false), 3000);
       return;
     } else {
       setLenCsvData(fileData.length);
     }
-  
-    const reqField = [
+
+    let reqField = [
       'Type',
       'First Name',
       'Last Name',
@@ -652,9 +644,10 @@ export function MessageWriting({
       'State/Province',
       'Postal Code',
     ];
-  
+
     const alphabetPattern = /^[A-Za-z]+$/;
-  
+    const mailText = /@.*\.com$/;
+
     if (fileData.length) {
       let errObj = [];
       fileData.forEach((obj, index) => {
@@ -667,48 +660,41 @@ export function MessageWriting({
         errMsg.push(
           'The file you are trying to upload does not have the right columns or headers. Please download our Bulk Address template and try again.',
         );
-  
+
         setIsOpen2(true);
         onCancelCSVUpload();
-        // setTimeout(() => setIsOpen2(false), 3000);
+        setTimeout(() => setIsOpen2(false), 3000);
         found = true;
       }
     }
 
+    let totalAddresses = fileData.length;
 
-    let totalAddresses = fileData.length
-  
     if (errMsg.length == 0) {
       const batchSize = 250; // Define your batch size
       const numBatches = Math.ceil(fileData.length / batchSize);
-  
+
       for (let i = 0; i < numBatches; i++) {
         const startIdx = i * batchSize;
         const endIdx = Math.min((i + 1) * batchSize, fileData.length);
         const batchData = fileData.slice(startIdx, endIdx);
-  
+
         for (let index = 0; index < batchData.length; index++) {
           const obj = batchData[index];
-  
+
           let emptyKeys = [];
           const numkeys = [];
-          let fnameField = 'First Name';
-          let lnameField = 'Last Name';
+          let targetField = 'First Name';
+          let emailValid = 'Email';
           let countryCheck = 'Country';
-          let type = 'Type';
           for (const key of reqField) {
             if (obj[key] === '') {
               emptyKeys.push(key);
             }
           }
-          if (obj[type].toLowerCase() !== 'recipient' && obj[type].toLowerCase() !=='sender') {
-            errMsg.push(`'${type}' at row ${index+1} should be either 'Sender' or 'Recipient`);
-          }
-          if (alphabetPattern.test(obj[fnameField]) == false) {
-            errMsg.push(`'${fnameField}' at row ${index+1} contains invalid characters`);
-          }
-          if (alphabetPattern.test(obj[lnameField]) == false) {
-            errMsg.push(`'${lnameField}' at row ${index+1} contains invalid characters`);
+
+          if (alphabetPattern.test(obj[targetField]) == false) {
+            errMsg.push(`'${targetField}' at row ${index} includes a number.`);
           }
           if (
             obj[countryCheck] === 'USA' ||
@@ -727,26 +713,26 @@ export function MessageWriting({
           } else {
             nonUSCount++;
           }
-          // if (mailText.test(obj[emailValid]) == false) {
-          //   errMsg.push(
-          //     `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
-          //   );
-          // }
-  
-          if (emptyKeys.length > 0) {
+          if (mailText.test(obj[emailValid]) == false) {
             errMsg.push(
-              ` ${emptyKeys.join(', ')} is empty please check at row ${index+1}`,
+              `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
             );
           }
-  
+
+          if (emptyKeys.length > 0) {
+            errMsg.push(
+              ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
+            );
+          }
+
           if (errMsg.length > 0) {
             setIsOpen2(true);
-            // setTimeout(() => setIsOpen2(false), 3000);
+            setTimeout(() => setIsOpen2(false), 3000);
             found = true;
             onCancelCSVUpload();
           }
         }
-  
+
         if (!found) {
           if (stateCheckCart) {
             await uploadDataToAPI(batchData, totalAddresses);
@@ -755,7 +741,7 @@ export function MessageWriting({
         }
       }
     }
-  
+
     setErrorVal(errMsg);
     setUsAddress(usCount);
     setnonUsAddress(nonUSCount);
@@ -766,34 +752,41 @@ export function MessageWriting({
       uploadCsvFileOnClick();
     }
   }
-  
-
 
   async function uploadCsvFileOnClick() {
     try {
-      setLoader(true);
+      const batchSize = 250; // Define your batch size
+      const numBatches = Math.ceil(fileData.length / batchSize);
 
-      const res = await fetch(
-        'https://api.simplynoted.com/api/orders/bulk-orders-upload-s3',
-        {
-          method: 'POST',
-          timeout: 0,
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization:
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
+      for (let i = 0; i < numBatches; i++) {
+        const startIdx = i * batchSize;
+        const endIdx = Math.min((i + 1) * batchSize, fileData.length);
+        const batchData = fileData.slice(startIdx, endIdx);
+        console.log("",batchData)
+        setLoader(true);
+
+        const res = await fetch(
+          'https://api.simplynoted.com/api/orders/bulk-orders-upload-s3',
+          {
+            method: 'POST',
+            timeout: 0,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
+            },
+            body: JSON.stringify(fileData),
           },
-          body: JSON.stringify(fileData),
-        },
-      );
-      const json = await res.json();
+        );
+        const json = await res.json();
 
-      setCsvFile(json.result);
+        setCsvFile(json.result);
 
-      if (json.result) {
-        setShowNextBtn(true);
-        setLoader(false);
-        return json.result;
+        if (json.result) {
+          setShowNextBtn(true);
+          setLoader(false);
+          return json.result;
+        }
       }
     } catch (error) {
       setModalForAddressBook(false);
@@ -801,64 +794,11 @@ export function MessageWriting({
       setLoader(false);
     }
   }
-  // const uploadDataToAPI = async (batchData) => {
 
-  //   setLoader(true);
-
-  //   const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
-  //   try {
-  //     const response = await fetch(apiUrl, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         firstName: data['First Name'] || '',
-  //         lastName: data['Last Name'] || '',
-  //         businessName: data.Company || '',
-  //         address1: data.Address || '',
-  //         address2: data['Address 2'] || '',
-  //         city: data.City || '',
-  //         state: data['State/Province'] || '',
-  //         zip: data['Postal Code'] || '',
-  //         country: data.Country || 'USA',
-  //         type: data.Type
-  //           ? data.Type.toLowerCase() === 'sender'
-  //             ? 'return'
-  //             : 'recipient'
-  //           : 'recipient',
-  //         birthday: data.Birthday || '',
-  //         anniversary: data.Anniversary || '',
-  //       }),
-  //     });
-
-  //     if (response.ok) {
-  //       const responseData = await response.json();
-  //       // setLoadAddress(!loadAddress);
-  //       // setSelectedFile(null);
-  //       // setLoader(false);
-
-  //       setLoader(false);
-  //     } else {
-  //       // setSelectedFile(null);
-  //       setLoader(false);
-
-  //       throw new Error('Network response was not ok');
-  //     }
-  //   } catch (error) {
-  //     // setSelectedFile(null);
-  //     setLoader(false);
-
-  //     console.error('Error uploading data:', error);
-  //     throw error;
-  //   }
-  // };
- 
- 
-  const uploadDataToAPI = async (batchData,totalAddresses) => {
+  const uploadDataToAPI = async (batchData, totalAddresses) => {
     setLoaderMessage('Uploading Addresses...');
     setLoader(true);
-  
+
     const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerid}`;
     try {
       const response = await fetch(apiUrl, {
@@ -866,31 +806,33 @@ export function MessageWriting({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(batchData.map(data => ({
-          firstName: data['First Name'] || '',
-          lastName: data['Last Name'] || '',
-          businessName: data.Company || '',
-          address1: data.Address || '',
-          address2: data['Address 2'] || '',
-          city: data.City || '',
-          state: data['State/Province'] || '',
-          zip: data['Postal Code'] || '',
-          country: data.Country || 'USA',
-          type: data.Type
-            ? data.Type.toLowerCase() === 'sender'
-              ? 'return'
-              : 'recipient'
-            : 'recipient',
-          birthday: data.Birthday || '',
-          anniversary: data.Anniversary || '',
-        }))),
+        body: JSON.stringify(
+          batchData.map((data) => ({
+            firstName: data['First Name'] || '',
+            lastName: data['Last Name'] || '',
+            businessName: data.Company || '',
+            address1: data.Address || '',
+            address2: data['Address 2'] || '',
+            city: data.City || '',
+            state: data['State/Province'] || '',
+            zip: data['Postal Code'] || '',
+            country: data.Country || 'USA',
+            type: data.Type
+              ? data.Type.toLowerCase() === 'sender'
+                ? 'return'
+                : 'recipient'
+              : 'recipient',
+            birthday: data.Birthday || '',
+            anniversary: data.Anniversary || '',
+          })),
+        ),
       });
-  
+
       if (response.ok) {
         // Assuming you want to handle response data from each batch, you can add your logic here
         const responseData = await response.json();
         // Handle response data if needed
-  
+
         setLoader(false);
       } else {
         setLoader(false);
@@ -910,7 +852,7 @@ export function MessageWriting({
       }, 1400);
     }
   };
-  
+
   async function onCancl() {
     setIsOpen(false);
     setValToGen(null);
@@ -1004,7 +946,7 @@ export function MessageWriting({
   }
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
@@ -1086,7 +1028,7 @@ export function MessageWriting({
               onChange={(e) => {
                 setErrorMessage('');
                 setErrorTemplate('');
-                e.target.value
+                e.target.value;
               }}
               value={tempVal}
               className="border border-gray-300 p-2 mt-[12px] rounded-md w-full"
@@ -1733,13 +1675,13 @@ export function MessageWriting({
                 </div>
                 <div className="flex flex-col">
                   <div className="h-[26px] font-roboto font-bold text-base">
-                    Refer & Earn:       <Link to={`/pages/partner-referral`}>Click to Join!</Link>
+                    Refer & Earn: Click to Join!
                   </div>
                   <div className="h-[26px] font-roboto font-bold text-base">
                     Upgrade To Unlimited $0.97 Notes
                   </div>
                   <div className="h-[26px] font-roboto font-bold text-base">
-                    Need Help? <Link to={`mailto:support@simplynoted.com`}>Contact Support Here</Link>
+                    Need Help? Contact Support Here
                   </div>
                 </div>
               </div>
@@ -1771,20 +1713,20 @@ export function MessageWriting({
           </div>
         </div>
         <div
-          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[618px] md:min-w-0  relative  ${
+          className={`mt-[11px] flex flex-col w-full md:w-[48%] sm:max-w-[702px] md:min-w-0  relative  ${
             show ? 'h-[940px]' : 'h-[370px] '
           } mb-[200px] md:mb-[0px]`}
         >
           <div
             id="outer"
-            className="outerr border border-[#E5E5E5] rounded custom-product-shadow h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+            className="outerr shadow-outer-custom h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
           >
             {metafields &&
               metafields.isHeaderIncluded &&
               metafields.header.data && <ShowHeaderComp />}
             <div
               id="outer"
-              className="outerr h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+              className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
               {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
               <div
@@ -1836,21 +1778,23 @@ export function MessageWriting({
                 <div
                   id="messageBoxID"
                   ref={ref1}
-                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac] relative"
+                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
                   style={{
                     fontFamily: fontFamilyName
                       ? fontFamilyName
                       : editFontFamily
                       ? editFontFamily
-                      : 'tarzan',
-                    fontSize: fontSize ? fontSize : INITIAL_INPUT_CSS.initailFontSize,
-                    lineHeight: lineHeight ? lineHeight : INITIAL_INPUT_CSS.initalLineHeight,
+                      : 'great vibes',
+                    fontSize: fontSize ? fontSize : '34px',
+                    lineHeight: lineHeight ? lineHeight : '50px',
                   }}
                 >
                   {name ? name : 'Enter your custom message here...'}
                 </div>
-                <div
-                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white absolute right-0`}
+              </div>
+              {/* {name2.length>0 && */}
+              <div
+                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
                 ref={ref}
                 style={{display: name2.length > 0 ? 'block' : 'none'}}
               >
@@ -1863,17 +1807,14 @@ export function MessageWriting({
                       ? fontFamilyName
                       : editFontFamily
                       ? editFontFamily
-                      : 'tarzan',
-                    fontSize: signOffFontSize ? signOffFontSize : INITIAL_INPUT_CSS.initailSignOffFontSize,
-                    lineHeight: signOffLineHeight ? signOffLineHeight : INITIAL_INPUT_CSS.initailSignOffLineHeight,
+                      : 'great vibes',
+                    fontSize: signOffFontSize ? signOffFontSize : '50px',
+                    lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
                   }}
                 >
                   {name2}
                 </div>
               </div>
-              </div>
-              {/* {name2.length>0 && */}
-              
               {/* } */}
               {metafields && metafields.isFooterIncluded && <ShowFooterComp />}
             </div>
@@ -1948,7 +1889,7 @@ export function MessageWriting({
                                 name="file"
                                 accept=".csv"
                                 className="upload-input hidden"
-                                onChange={handleFileChange}
+                                onChange={(e) => handleFileChange(e)}
                               />
                             </label>
                           </div>
@@ -2007,10 +1948,7 @@ export function MessageWriting({
                   >
                     <div className="sm:w-full md:w-[100%] flex flex-col gap-3 justify-center items-center">
                       {loader ? (
-                        <CircularLoader
-                          title={loaderMessage}
-                          color="#ef6e6e"
-                        />
+                        <CircularLoader title={loaderMessage} color="#ef6e6e" />
                       ) : (
                         <>
                           <div className="rounded-full p-3 bg-[#E6E6E6] w-[60px] text-[40px]">
@@ -2046,7 +1984,7 @@ export function MessageWriting({
                                     name="file"
                                     accept=".csv"
                                     className="upload-input hidden"
-                                    onChange={handleFileChange}
+                                    onChange={(e) => handleFileChange(e)}
                                   />
                                 </label>
                               </div>
@@ -2304,36 +2242,14 @@ export function MessageWriting({
         confirmText="Login"
         cancelText="Register"
       />
-      {/* <ErrorModal
-        title="Uploaded Error!"
-        isOpen={modalIsOpen2}
-        // onRequestClose={() => setErrorModal(false)}
-        content={errorVal}
-      /> */}
 
       <Instruction
         title="Uploaded Error!"
         body={errorVal}
         close={true}
-        closeModal={() =>setIsOpen2(false)}
+        closeModal={() => setIsOpen2(false)}
         isOpen={modalIsOpen2}
       />
-      {/* <Instruction
-        isOpen={minDateCheck}
-        close={true}
-        closeModal={() => setMinDateCheck(false)}
-        body={
-          <>
-            <div className="w-100%">
-              <div>
-                <h1 className="text-[18px] sm:text-[24px] md:text-[34px] text-[#001a5f] font-bold text-center font-karla">
-                  Please select a date greater than today
-                </h1>
-              </div>
-            </div>
-          </>
-        }
-      /> */}
     </>
   );
 }
