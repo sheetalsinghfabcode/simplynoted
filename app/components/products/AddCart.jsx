@@ -427,7 +427,7 @@ export function AddCart({
         qyt: cartDataReq?.csvFileLen,
         usCount: cartDataReq?.usCount,
         nonUSCount: cartDataReq?.nonUsCount,
-        csvBulkData: cartDataReq?.bulkCsvData,
+        csvBulkData: !cartDataReq?.csvFileBulk && cartDataReq?.bulkCsvData,
         shippingData: selectShipMode ? selectShipMode : '',
         shippingMethodImage: selectShipMode
           ? shippingData.featuredImage.url
