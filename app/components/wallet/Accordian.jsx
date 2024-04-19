@@ -130,12 +130,12 @@ const Accordion = ({
         },
       );
       const jsonData = await res.json();
-
+      
+      const customerId = localStorage.getItem('customerId')
+      await getSavedCards(customerId);
       setTimeout(() => {
         setloader(false);
-        setCustomerData(jsonData.customer);
         setShowStripeCard(!showStripeCard);
-        setSavedCard(jsonData.payments);
       }, [500]);
     } catch (error) {
       setloader(false);
