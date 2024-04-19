@@ -1459,7 +1459,7 @@ export default function FlatCustomisableCard({
                             </div>
                           )}
                         </div>
-                        <div className="flex flex-1 pl-6 mt-5 mb-5 font-pinocchio">
+                        <div className="flex flex-1 pl-6 mt-5 mb-5 font-tarzan text-[40px] text-[#0040ac]">
                           <span>Your custom message text will be here...</span>
                         </div>
                         <div

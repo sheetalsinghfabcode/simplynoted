@@ -31,7 +31,9 @@ function Instruction({
   subtitle,
   instructionsTitle,
   body,
+  isArrayTrue
 }) {
+
   return (
     <Modal
       isOpen={isOpen}
@@ -87,7 +89,15 @@ function Instruction({
               </button>
             )}
           </div>
+          {isArrayTrue ? 
+          body.map((value,index)=>(
+            <div key={index} className='text-black px-1'>{value}</div>
+          )):
           <div className="w-full break-all">{body}</div>
+          }
+         
+        
+         
           {instructionsTitle &&
             <h4 className="text-black font-bold text-[1rem] md:text-[1.2rem] my-2 ">Bulk upload can be used to add addresses to your address book or for bulk card orders..</h4>}
           <p className="!text-[#000] font-medium text-[14px]  leading-[160%]">

@@ -241,7 +241,7 @@ export default function CustomProducts() {
                             ? customProductData.images[imageShow].originalSrc
                             : foldBack
                         }
-                        className="!object-contain fadeIn h-full w-full"
+                        className="object-fit-inherit fadeIn h-full w-full"
                       />
                     )}
                   {/* {metafields && metafields.face.zoom}------ */}

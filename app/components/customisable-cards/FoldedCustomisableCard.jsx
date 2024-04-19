@@ -1270,7 +1270,7 @@ export default function FoldedCustomisableCard({
                         }}
                       >
                         <div className="relative w-full h-full">
-                          <span className=" font-pinocchio">
+                          <span className="font-tarzan text-[40px] text-[#0040ac]">
                             Your custom message text will be here...
                           </span>
                           {qr.isQrAdded && (

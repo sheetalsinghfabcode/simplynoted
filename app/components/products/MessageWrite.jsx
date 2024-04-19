@@ -48,6 +48,12 @@ export function MessageWriting({
   editShippingDate,
   showBulkOnEdit,
 }) {
+  const INITIAL_INPUT_CSS={
+    initailFontSize:'45px',
+    initalLineHeight:'47px',
+    initailSignOffFontSize:'45px',
+    initailSignOffLineHeight:'47px'
+  }
   const {
     setAddressForm,
     addressForm,
@@ -520,19 +526,19 @@ export function MessageWriting({
   }
   function processCustomMessageInput() {
     if (!mainMessageBox) return;
-    mainMessageBox.style.fontSize = '34px';
-    mainMessageBox.style.lineHeight = '34px';
-    setFontSize('34px');
-    setLineHeight('34px');
+    mainMessageBox.style.fontSize = INITIAL_INPUT_CSS.initailFontSize;
+    mainMessageBox.style.lineHeight = INITIAL_INPUT_CSS.initalLineHeight;
+    setFontSize(INITIAL_INPUT_CSS.initailFontSize);
+    setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
   }
 
   function processSignOffInput() {
     if (!signOffTextBox) return;
-    signOffTextBox.style.fontSize = '34px';
-    signOffTextBox.style.lineHeight = '34px';
-    setSignOffFontSize('34px');
-    setSignOffLineHeight('34px');
+    signOffTextBox.style.fontSize = INITIAL_INPUT_CSS.initailSignOffFontSize;
+    signOffTextBox.style.lineHeight = INITIAL_INPUT_CSS.initailSignOffLineHeight;
+    setSignOffFontSize(INITIAL_INPUT_CSS.initailSignOffFontSize);
+    setSignOffLineHeight(INITIAL_INPUT_CSS.initailSignOffLineHeight);
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
@@ -574,49 +580,98 @@ export function MessageWriting({
 
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      const keyToRemove = 'Type';
-      reader.onload = (e) => {
-        const csvData = e.target.result;
-        let jsonData = csvToJson(csvData);
-        const cleanedArray = jsonData.map((obj) => {
-          const cleanedObj = {};
-          Object.keys(obj).forEach((key) => {
-            const newKey = key?.replace(/"/g, ''); // Remove quotes from key
-            const newValue = obj[key]?.replace(/"/g, ''); // Remove quotes from value
-            cleanedObj[newKey] = newValue;
-          });
-          return cleanedObj;
-        });
-        setSelectedFile(file); // Update the selected file state
-        setFileData(cleanedArray);
-      };
-      reader.readAsText(file);
-    }
-    event.target.value = '';
-    setDragAndDropBorderColor('#ef6e6e');
-  };
-  function csvToJson(csv) {
-    var lines = csv.split('\n');
-    var result = [];
-    var headers = lines[0].split(',');
-    for (var i = 1; i < lines.length; i++) {
-      var currentLine = lines[i].split(',');
+    const  file = event.target.files[0];
+     if (file) {
+       const reader = new FileReader();
+       const keyToRemove = 'Type';
+       reader.onload = (e) => {
+         const csvData = e.target.result;
+         let jsonData = csvToJson(csvData);
+         const cleanedArray = jsonData.map((obj) => {
+           const cleanedObj = {};
+           Object.keys(obj).forEach((key) => {
+             const newKey = key?.replace(/"/g, ''); // Remove quotes from key
+             const newValue = obj[key]?.replace(/"/g, ''); // Remove quotes from value
+             cleanedObj[newKey] = newValue;
+           });
+           return cleanedObj;
+         });
+         setSelectedFile(file); // Update the selected file state
+         setFileData(cleanedArray);
+       };
+       reader.readAsText(file);
+     }
+     event.target.value = '';
+     setDragAndDropBorderColor('#ef6e6e');
+   };
+   
+//    function csvToJson(csv) {
+//     var lines = csv.split('\n');
+//     var result = [];
+//     var headers = lines[0].split(',');
+//     for (var i = 1; i < lines.length; i++) {
+//         var currentLine = lines[i].trim();
+//         // Skip empty lines
+//         if (currentLine.length === 0 && currentLine[0].trim() === '') {
+//             continue;
+//         }
+//         // Handle commas inside double quotes
+//         var parts = currentLine.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+//         var obj = {};
+//         for (var j = 0; j < headers.length; j++) {
+//           console.log(headers[j], parts[j])
+//             obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
+//         }
+//         result.push(obj);
+//     }
+//     setDisableSelectAddressBtn(true);
+//     return result;
+// }
+function csvToJson(csv) {
+
+  var lines = csv.split('\n');
+  var result = [];
+
+  var headers = lines[0].split(',');
+  for (var i = 1; i < lines.length; i++) {
+      var currentLine = lines[i].trim();
       // Skip empty lines
-      if (currentLine.length === 1 && currentLine[0]?.trim() === '') {
-        continue;
+      if (currentLine.length === 0) {
+          continue;
       }
+
+      // Handle commas inside double quotes
+      var parts = currentLine?.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+      
       var obj = {};
       for (var j = 0; j < headers.length; j++) {
-        obj[headers[j]] = currentLine[j];
+          obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
       }
+
       result.push(obj);
-    }
-    setDisableSelectAddressBtn(true);
-    return result;
   }
+  setDisableSelectAddressBtn(true);
+  return result;
+}
+  // function csvToJson(csv) {
+  //   var lines = csv.split('\n');
+  //   var result = [];
+  //   var headers = lines[0].split(',');
+  //   for (var i = 1; i < lines.length; i++) {
+  //     var currentLine = lines[i].split(',');
+  //     // Skip empty lines
+  //     if (currentLine.length === 1 && currentLine[0]?.trim() === '') {
+  //       continue;
+  //     }
+  //     var obj = {};
+  //     for (var j = 0; j < headers.length; j++) {
+  //       obj[headers[j]] = currentLine[j];
+  //     }
+  //     result.push(obj);
+  //   }
+  //   setDisableSelectAddressBtn(true);
+  //   return result;
+  // }
 
   async function uploadCsvFile() {
     let errMsg = [];
@@ -629,7 +684,7 @@ export function MessageWriting({
       errMsg.push('it is empty please add addresses');
       setErrorVal(errMsg);
       setIsOpen2(true);
-      setTimeout(() => setIsOpen2(false), 3000);
+      // setTimeout(() => setIsOpen2(false), 3000);
       return;
     } else {
       setLenCsvData(fileData.length);
@@ -646,8 +701,10 @@ export function MessageWriting({
     ];
 
     const alphabetPattern = /^[A-Za-z]+$/;
-    const mailText = /@.*\.com$/;
-
+    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+    const phoneNumberPattern = /^\+?[0-9\-]{6,15}$/;
+    const dateFormat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/;
+  
     if (fileData.length) {
       let errObj = [];
       fileData.forEach((obj, index) => {
@@ -663,7 +720,7 @@ export function MessageWriting({
 
         setIsOpen2(true);
         onCancelCSVUpload();
-        setTimeout(() => setIsOpen2(false), 3000);
+        // setTimeout(() => setIsOpen2(false), 3000);
         found = true;
       }
     }
@@ -684,17 +741,40 @@ export function MessageWriting({
 
           let emptyKeys = [];
           const numkeys = [];
-          let targetField = 'First Name';
-          let emailValid = 'Email';
+          let fnameField = 'First Name';
+          let lnameField = 'Last Name'
           let countryCheck = 'Country';
+          let type = 'Type';
+          let email='Email';
+          let phoneNumber='Phone';
+          let anniversary='Anniversary';
+          let birthday='Birthday';
           for (const key of reqField) {
+         
             if (obj[key] === '') {
               emptyKeys.push(key);
             }
           }
-
-          if (alphabetPattern.test(obj[targetField]) == false) {
-            errMsg.push(`'${targetField}' at row ${index} includes a number.`);
+          if (obj[type].toLowerCase() !== 'recipient' && obj[type].toLowerCase() !=='sender') {
+            errMsg.push(`'${type}' at row ${index+1} should be either 'Sender' or 'Recipient `);
+          }
+          if (alphabetPattern.test(obj[fnameField]) == false) {
+            errMsg.push(`'${fnameField}' at row ${index+1} contains invalid characters `);
+          }
+          if (alphabetPattern.test(obj[lnameField]) == false) {
+            errMsg.push(`'${lnameField}' at row ${index+1} contains invalid characters `);
+          }
+          if (obj[email] && emailPattern.test(obj[email]) == false) {
+            errMsg.push(`'${email}' at row ${index+1} should follow email format (name@company.com)`);
+          }
+          if (obj[phoneNumber] && phoneNumberPattern.test(obj[phoneNumber]) == false) {
+            errMsg.push(`'${phoneNumber}' Number at row ${index+1} should be Number Only `);
+          }
+          if (obj[anniversary] && dateFormat.test(obj[anniversary]) == false) {
+            errMsg.push(`'${anniversary}' at row ${index+1} should follow MM/DD/YYYY format `);
+          }
+          if (obj[birthday] && dateFormat.test(obj[birthday]) == false) {
+            errMsg.push(`'${birthday}' at row ${index+1} should follow MM/DD/YYYY format `);
           }
           if (
             obj[countryCheck] === 'USA' ||
@@ -713,21 +793,21 @@ export function MessageWriting({
           } else {
             nonUSCount++;
           }
-          if (mailText.test(obj[emailValid]) == false) {
-            errMsg.push(
-              `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
-            );
-          }
+          // if (mailText.test(obj[emailValid]) == false) {
+          //   errMsg.push(
+          //     `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
+          //   );
+          // }
 
           if (emptyKeys.length > 0) {
             errMsg.push(
-              ` ${emptyKeys.join(', ')} is empty please check at row ${index}`,
+              ` ${emptyKeys.join(', ')} is empty please check at row ${index+1}`,
             );
           }
 
           if (errMsg.length > 0) {
             setIsOpen2(true);
-            setTimeout(() => setIsOpen2(false), 3000);
+            // setTimeout(() => setIsOpen2(false), 3000);
             found = true;
             onCancelCSVUpload();
           }
@@ -1737,7 +1817,7 @@ export function MessageWriting({
               metafields.header.data && <ShowHeaderComp />}
             <div
               id="outer"
-              className="outerr shadow-lg h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+              className="outerr border border-[#E5E5E5] rounded custom-product-shadow h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
               {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
               <div
@@ -1789,23 +1869,21 @@ export function MessageWriting({
                 <div
                   id="messageBoxID"
                   ref={ref1}
-                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac]"
+                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac] relative"
                   style={{
                     fontFamily: fontFamilyName
                       ? fontFamilyName
                       : editFontFamily
                       ? editFontFamily
-                      : 'great vibes',
-                    fontSize: fontSize ? fontSize : '34px',
-                    lineHeight: lineHeight ? lineHeight : '50px',
+                      : 'tarzan',
+                    fontSize: fontSize ? fontSize : INITIAL_INPUT_CSS.initailFontSize,
+                    lineHeight: lineHeight ? lineHeight : INITIAL_INPUT_CSS.initalLineHeight,
                   }}
                 >
                   {name ? name : 'Enter your custom message here...'}
                 </div>
-              </div>
-              {/* {name2.length>0 && */}
-              <div
-                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white `}
+                <div
+                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white absolute right-0`}
                 ref={ref}
                 style={{display: name2.length > 0 ? 'block' : 'none'}}
               >
@@ -1818,14 +1896,17 @@ export function MessageWriting({
                       ? fontFamilyName
                       : editFontFamily
                       ? editFontFamily
-                      : 'great vibes',
-                    fontSize: signOffFontSize ? signOffFontSize : '50px',
-                    lineHeight: signOffLineHeight ? signOffLineHeight : '50px',
+                      : 'tarzan',
+                    fontSize: signOffFontSize ? signOffFontSize : INITIAL_INPUT_CSS.initailSignOffFontSize,
+                    lineHeight: signOffLineHeight ? signOffLineHeight : INITIAL_INPUT_CSS.initailSignOffLineHeight,
                   }}
                 >
                   {name2}
                 </div>
               </div>
+              </div>
+              {/* {name2.length>0 && */}
+             
               {/* } */}
               {metafields && metafields.isFooterIncluded && <ShowFooterComp />}
             </div>
@@ -2087,6 +2168,7 @@ export function MessageWriting({
             closeModal={() => {
               setVideoBtn(false);
             }}
+      
           />
           {!show && (
             <div className="bg-[#001a5f] h-[50px] text-center">
@@ -2260,6 +2342,7 @@ export function MessageWriting({
         close={true}
         closeModal={() => setIsOpen2(false)}
         isOpen={modalIsOpen2}
+      isArrayTrue={true}
       />
     </>
   );
