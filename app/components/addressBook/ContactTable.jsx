@@ -272,35 +272,9 @@ const ContactTable = ({
     }
   };
 
-  // function csvToJson(csv) {
-
-  //     console.log("csv>>>>",csv);
-  //   var lines = csv.split('\n');
-  //   var result = [];
-
-  //   var headers = lines[0].split(',');
-  //   for (var i = 1; i < lines.length; i++) {
-  //     var currentLine = lines[i].split(',');
-
-  //     // Skip empty lines
-  //     if (currentLine.length === 1 && currentLine[0].trim() === '') {
-  //       continue;
-  //     }
-
-  //     var obj = {};
-  //     for (var j = 0; j < headers.length; j++) {
-  //       obj[headers[j]] = currentLine[j];
-  //     }
-
-  //     result.push(obj);
-  //   }
-
-  //   return result;
-  // }
 
   function csvToJson(csv) {
 
-    console.log("csv>>>",csv);
     var lines = csv.split('\n');
     var result = [];
   
@@ -468,7 +442,6 @@ const ContactTable = ({
       return;
     }
 
-    console.log("fileData>>>",fileData)
 
     const cleanedData = fileData.map((entry) => {
 

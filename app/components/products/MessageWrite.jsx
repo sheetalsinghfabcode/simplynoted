@@ -126,6 +126,7 @@ export function MessageWriting({
   const [loaderMessage, setLoaderMessage] = useState(false);
   const [minDateCheck, setMinDateCheck] = useState(false);
   const [errorCustomText, setErrorCustomText] = useState(false);
+  const [collectionId, setCollectionId] = useState('');
 
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
@@ -571,7 +572,6 @@ export function MessageWriting({
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
-  console.log('selectedFile', selectedFile);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -754,19 +754,29 @@ export function MessageWriting({
   }
 
   async function uploadCsvFileOnClick() {
+
+
+    let collectionid = ""
     try {
-      const batchSize = 250; // Define your batch size
+      const batchSize = 250;
       const numBatches = Math.ceil(fileData.length / batchSize);
 
       for (let i = 0; i < numBatches; i++) {
         const startIdx = i * batchSize;
         const endIdx = Math.min((i + 1) * batchSize, fileData.length);
         const batchData = fileData.slice(startIdx, endIdx);
-        console.log("",batchData)
         setLoader(true);
 
+        const payload = {
+          initiatePartialUpload: i === 0 ? true : false,
+          initiatePartialUploadsAggregation:
+            i === numBatches - 1 ? true : false,
+          partialS3Data: batchData,
+          collectionId: collectionid,
+        };
+
         const res = await fetch(
-          'https://api.simplynoted.com/api/orders/bulk-orders-upload-s3',
+          `https://api.simplynoted.com/api/orders/bulk-orders-partial-upload-s3?customerId=${customerid}`,
           {
             method: 'POST',
             timeout: 0,
@@ -775,17 +785,18 @@ export function MessageWriting({
               Authorization:
                 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
             },
-            body: JSON.stringify(fileData),
+            body: JSON.stringify(payload),
           },
         );
         const json = await res.json();
 
-        setCsvFile(json.result);
-
         if (json.result) {
           setShowNextBtn(true);
           setLoader(false);
-          return json.result;
+          setCsvFile(json.result);
+          if(i==0){
+          collectionid = json.result[0].collectionId
+          }
         }
       }
     } catch (error) {

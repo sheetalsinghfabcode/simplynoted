@@ -37,12 +37,11 @@ const Accordion = ({
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
   const [customerData,setCustomerData] = useState({});
+
+  console.log("stripePayments>>>",stripePayments)
+
+
   
-
-
-
-
-
   const {
     setActiveTab,
     loaderTitle,
@@ -686,7 +685,6 @@ const Accordion = ({
                       className={paymentMethodId === item.paymentId ? 'bg-[#ffdada] cursor-pointer border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between ' : 'bg-[#f5fffa]  border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between  cursor-pointer'}
                     >
                       <div className="flex justify-start items-center text-[14px] font-bold ">
-                        
                         <input
                           id={"item-index-" + i}
                           type="radio"
