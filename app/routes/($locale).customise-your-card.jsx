@@ -6,10 +6,10 @@ import CardTypeSelection from '~/components/customisable-cards/CardTypeSelection
 import FlatCustomisableCard from '~/components/customisable-cards/FlatCustomisableCard';
 import FoldedCustomisableCard from '~/components/customisable-cards/FoldedCustomisableCard';
 import ShopifyCustomCardProductDetails from '~/components/customisable-cards/ShopifyCustomCardProductDetails';
-import { seoPayload } from '~/lib/seo.server';
-import { useStateContext } from '~/context/StateContext';
+import {seoPayload} from '~/lib/seo.server';
+import {useStateContext} from '~/context/StateContext';
 
-export async function loader({context,request}) {
+export async function loader({context, request}) {
   const customisableCardProductQuery = `#graphql
   query {
     product(handle:"customise-your-card"){
@@ -50,17 +50,18 @@ export async function loader({context,request}) {
     customisableCardProductQuery,
     {variable: {}},
   );
-  const {product} = shopifyCustomisableCardProduct
-  
-  const seo = seoPayload.Create_Custom({product,url:request.url})
-  return defer({shopifyCustomisableCardProduct,seo});
+  const {product} = shopifyCustomisableCardProduct;
+
+  const seo = seoPayload.Create_Custom({product, url: request.url});
+  return defer({shopifyCustomisableCardProduct, seo});
 }
 
 export default function customisableCard() {
   const {shopifyCustomisableCardProduct} = useLoaderData();
   const [customerId, setCustomerId] = useState(null);
   const [isFlatCardType, setIsFlatCardType] = useState(true);
-  const {isCardTypeSelectionPage, setIsCardTypeSelectionPage} = useStateContext();
+  const {isCardTypeSelectionPage, setIsCardTypeSelectionPage} =
+    useStateContext();
   // To get rid of the modal glitch for split seconds on initial render.
   const [isInitialRender, setIsInitialRender] = useState(true);
 
@@ -68,6 +69,7 @@ export default function customisableCard() {
   const [getSelectedProductVariant, setGetSelectedProductVariant] = useState(
     shopifyCustomisableCardProduct.product.variants.edges[0].node.title,
   );
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
@@ -79,11 +81,12 @@ export default function customisableCard() {
     <>
       {!isInitialRender && !customerId && (
         <LoginModal
-          show={!customerId}
+          show={!customerId && showModal}
           title="Create a Card"
           confirmText="Login"
           cancelText="Register"
-          hasCancelIcon={false}
+          onCancel={() => setShowModal(false)}
+          hasCancelIcon={true}
         />
       )}
       {isCardTypeSelectionPage ? (

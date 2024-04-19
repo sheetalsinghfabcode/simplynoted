@@ -650,7 +650,7 @@ function csvToJson(csv) {
 
       result.push(obj);
   }
-
+  setDisableSelectAddressBtn(true);
   return result;
 }
   // function csvToJson(csv) {
