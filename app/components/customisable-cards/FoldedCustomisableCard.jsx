@@ -9,6 +9,7 @@ import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import DefaultFrontCardImage from '../../../assets/Image/foldFront.webp';
 import DefaultBackCardImage from '../../../assets/Image/foldBack.png';
 import { MdOutlineDone } from 'react-icons/md';
+import { transform } from 'framer-motion';
 
 export default function FoldedCustomisableCard({
   setIsCardTypeSelectionPage,
@@ -112,7 +113,7 @@ export default function FoldedCustomisableCard({
       }
     };
     trimmDiv();
-  }, [triggerEvent, backImageDetails.isImageSelected, backImageDetails.zoom]);
+  }, [triggerEvent, backImageDetails.isImageSelected, backImageDetails.zoom,backImageDetails.isColoredImage]);
 
   useEffect(() => {
     const generateImageFiles = async () => {
@@ -546,29 +547,36 @@ export default function FoldedCustomisableCard({
           image.onload = resolve;
         }
       });
-     /* const canvas = await html2canvas(element, {
+      
+      const canvas = await html2canvas(element, {
         width: element.offsetWidth,
         height: element.offsetHeight,
         quality: 1,
-        style: {
-          margin: 0,
-        }
+        onclone: (clonedDoc) => {
+         
+          const clonedElement = clonedDoc.querySelector('#' + element.id);
+          clonedElement.style.transform = 'rotateY(0deg)'; 
+          clonedElement.style.margin = '0'; 
+          
+        },
+        
       });
-      const dataUrl = canvas.toDataURL('image/png');*/
 
-       const dataUrl = await domtoimage.toPng(element, {
-         width: element.offsetWidth,
-         height: element.offsetHeight,
-         quality: 1,
-         style: {
-          transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
-             display: 'flex',
-                 justifyContent: 'center',
-                 alignItems: 'center',
-                 margin:'0',
-         },  
+      const dataUrl = canvas.toDataURL('image/png');
+
+      //  const dataUrl = await domtoimage.toPng(element, {
+      //    width: element.offsetWidth,
+      //    height: element.offsetHeight,
+      //    quality: 1,
+      //    style: {
+      //     transform: (element.id === 'backTrimmedDiv') ? 'rotateY(360deg)' : 'rotateY(0deg)',
+      //        display: 'flex',
+      //            justifyContent: 'center',
+      //            alignItems: 'center',
+      //            margin:'0',
+      //    },  
        
-       });
+      //  });
 
       if (selectedCardPage === 'Card Back' && dataUrl) {
         setBackImageDetails((prevBackImageDetails) => {
