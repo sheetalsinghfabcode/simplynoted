@@ -50,9 +50,7 @@ export function MessageWriting({
 }) {
   const INITIAL_INPUT_CSS={
     initailFontSize:'45px',
-    initalLineHeight:'47px',
-    initailSignOffFontSize:'45px',
-    initailSignOffLineHeight:'47px'
+    initalLineHeight:'45px',
   }
   const {
     setAddressForm,
@@ -154,6 +152,8 @@ export function MessageWriting({
     });
     setFileData(modifiedData);
   }
+
+
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
@@ -493,6 +493,10 @@ export function MessageWriting({
       // resizeObserver.observe(mainMessageBox);
       // return () => resizeObserver.disconnect();
     }
+    else{
+      setFontSize(INITIAL_INPUT_CSS.initailFontSize);
+      setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
+    }
   }, [name, fontFamilyName]);
 
   useEffect(() => {
@@ -505,7 +509,8 @@ export function MessageWriting({
 
       // return () => resizeObserver.disconnect();
     }
-  }, [name2, fontFamilyName]);
+  
+  }, [name2, fontFamilyName,fontSize,lineHeight]);
 
   async function onChnageNameVal(nameData) {
     setErrorCustomText('');
@@ -535,11 +540,11 @@ export function MessageWriting({
 
   function processSignOffInput() {
     if (!signOffTextBox) return;
-    signOffTextBox.style.fontSize = INITIAL_INPUT_CSS.initailSignOffFontSize;
-    signOffTextBox.style.lineHeight = INITIAL_INPUT_CSS.initailSignOffLineHeight;
-    setSignOffFontSize(INITIAL_INPUT_CSS.initailSignOffFontSize);
-    setSignOffLineHeight(INITIAL_INPUT_CSS.initailSignOffLineHeight);
-    resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
+    signOffTextBox.style.fontSize = fontSize;
+    signOffTextBox.style.lineHeight = lineHeight;
+    setSignOffFontSize(fontSize);
+    setSignOffLineHeight(lineHeight);
+    // resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
@@ -570,9 +575,8 @@ export function MessageWriting({
     if (resizeSelection === 'customTextResizing') {
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
-    } else if (resizeSelection === 'signOffResizing') {
-      setSignOffFontSize(signOffTextBox.style.fontSize);
-      setSignOffLineHeight(signOffTextBox.style.lineHeight);
+      // setSignOffFontSize(innerContainer.style.fontSize);
+      // setSignOffLineHeight(innerContainer.style.lineHeight);
     }
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
@@ -1819,7 +1823,7 @@ function csvToJson(csv) {
               id="outer"
               className="outerr border border-[#E5E5E5] rounded custom-product-shadow h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
-              {metafields && metafields.isHeaderIncluded && <ShowHeaderComp />}
+              {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
               <div
                 className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
                 ref={ref2}
@@ -1828,42 +1832,40 @@ function csvToJson(csv) {
                     (metafields.footer &&
                       metafields.header &&
                       metafields.footer.data &&
-                      metafields.header.data &&
-                      name2.length > 0) ||
+                      metafields.header.data  ) 
+                      ||
                     (metafields.footer &&
                       metafields.header &&
                       metafields.header.data &&
-                      qrValue &&
-                      name2.length > 0)
-                      ? '121px'
+                      qrValue?.length>0 )
+                      ? '169px'
                       : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data &&
                           metafields.header.data) ||
                         (metafields.footer &&
                           metafields.header &&
-                          metafields.footer.data &&
-                          name2.length > 0) ||
+                          metafields.footer.data ) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data &&
-                          qrValue) ||
-                        (qrValue && name2.length > 0) ||
+                          qrValue.length>0) ||
+                        (qrValue?.length>0 ) ||
                         (metafields.footer &&
                           metafields.header &&
-                          metafields.header.data &&
-                          name2.length > 0)
-                      ? '169px'
+                          metafields.header.data )
+                      ? '217px'
+            
                       : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data) ||
-                        qrValue ||
-                        name2.length > 0
-                      ? '221px'
+                        (qrValue?.length>0) 
+                      ? '269px'
                       : '280px',
+                      
                 }}
               >
                 <div
@@ -1881,11 +1883,15 @@ function csvToJson(csv) {
                   }}
                 >
                   {name ? name : 'Enter your custom message here...'}
-                </div>
-                <div
-                className={`secDiv h-[48px] w-[100%] max-w-[300px] ml-auto mr-5 bg-white absolute right-0`}
+                  <div
+                className={`secDiv w-[100%] max-w-[300px] ml-auto mr-5 bg-white`}
                 ref={ref}
-                style={{display: name2.length > 0 ? 'block' : 'none'}}
+                style={{display: name2.length > 0 ? 'block' : 'none',
+                height:(metafields.footer ||
+                metafields.header ||
+                qrValue?.length>0) &&
+                '48px'
+              }}
               >
                 <div
                   id="signOffText"
@@ -1897,18 +1903,20 @@ function csvToJson(csv) {
                       : editFontFamily
                       ? editFontFamily
                       : 'tarzan',
-                    fontSize: signOffFontSize ? signOffFontSize : INITIAL_INPUT_CSS.initailSignOffFontSize,
-                    lineHeight: signOffLineHeight ? signOffLineHeight : INITIAL_INPUT_CSS.initailSignOffLineHeight,
+                    fontSize: signOffFontSize ? signOffFontSize : INITIAL_INPUT_CSS.initailFontSize,
+                    lineHeight: signOffLineHeight ? signOffLineHeight : INITIAL_INPUT_CSS.initalLineHeight,
                   }}
                 >
                   {name2}
                 </div>
               </div>
+                </div>
+               
               </div>
               {/* {name2.length>0 && */}
              
               {/* } */}
-              {metafields && metafields.isFooterIncluded && <ShowFooterComp />}
+              {metafields && metafields.isFooterIncluded && (metafields.footer.data || qrValue?.length>0) && <ShowFooterComp />}
             </div>
             {/* } */}
             {/* {metafields &&
