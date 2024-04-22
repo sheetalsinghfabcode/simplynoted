@@ -75,11 +75,13 @@ export default function CustomProducts() {
   let editFontSize = datafornav.state?.data.fontSizeMsg;
   let editCustomFontFamily = datafornav.state?.data.customFontName;
   let editLineHeight = datafornav.state?.data.lineHeight;
+  let csvFileUrl =  datafornav?.state?.data?.csvFileURL
+
   let editSignOffLineHeight = datafornav.state?.data.signOffLineHeight;
   let editSignOffFontSize = datafornav.state?.data.signOffFontSize;
   let editShippingDate = datafornav.state?.data.optionalShipDate
   const [show, setShow] = useState(
-    showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
+    showBulkOnEdit>0 || csvFileUrl || datafornav.search == '?select=Bulk' ? true : false,
   );
   const {productshow, cartData} = useStateContext()
   const [modalIsOpen2, setIsOpen2] = useState(false);

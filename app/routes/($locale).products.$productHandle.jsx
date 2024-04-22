@@ -220,7 +220,8 @@ export default function Product() {
   let editEndMess = datafornav?.state?.data?.endText;
   let editOrderValue = datafornav?.state;
   let editFontFamily = datafornav?.state?.data?.fontFamily;
-  let showBulkOnEdit = datafornav?.state?.data?.csvBulkData.length;
+  let showBulkOnEdit = datafornav?.state?.data?.csvBulkData?.length ;
+  let csvFileUrl =  datafornav?.state?.data?.csvFileURL
   let editFontSize = datafornav?.state?.data?.fontSizeMsg;
   let editCustomFontFamily = datafornav?.state?.data?.customFontName;
   let editLineHeight = datafornav?.state?.data?.lineHeight;
@@ -231,8 +232,18 @@ export default function Product() {
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const [show, setShow] = useState(
-    showBulkOnEdit || datafornav.search == '?select=Bulk' ? true : false,
+    showBulkOnEdit > 0 || csvFileUrl || datafornav?.search == '?select=Bulk' ? true : false,
   );
+
+
+
+
+
+  console.log("datafornav?.state?.data?>>",datafornav?.state?.data);
+  console.log("showBulkOnEdit",showBulkOnEdit);
+
+  console.log("csvFileUrl>>>",csvFileUrl)
+
 
   const {productshow, setProductShow,showSignScreen,
     setShowSignScreen,stateCheckCustomerId,
@@ -308,6 +319,7 @@ export default function Product() {
               <ProductInfo
                 title={title}
                 product={product}
+                showBulkOnEdit={showBulkOnEdit}
                 show={show}
                 setShow={setShow}
                 setShowBox={setShowBox}
