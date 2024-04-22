@@ -84,8 +84,12 @@ export default function AddCartFunc() {
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
+  const [csvFileData, setCsvFileData] = useState([]);
 
-  let customerId, csvBulkAddress;
+  console.log('csvFileData', csvFileData);
+  console.log('bulkAddress', bulkAddress);
+
+  let customerId;
 
   useEffect(() => {
     if (postalData) {
@@ -115,8 +119,8 @@ export default function AddCartFunc() {
 
   useEffect(() => {
     customerId = localStorage.getItem('customerId');
-  
-  },[]);
+    console.log('customerId', customerId);
+  }, []);
 
   async function updateCartData(cartData) {
     const customerId = localStorage.getItem('customerId');
@@ -297,6 +301,13 @@ export default function AddCartFunc() {
       });
   };
 
+  function getFilenameFromURL(url) {
+    // Split the URL by '/' and get the last part
+    const parts = url?.split('/');
+    const filename = parts[parts?.length - 1];
+    return filename;
+  }
+
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
     let data = cartData[index];
@@ -338,27 +349,52 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
 
- 
   async function OpenModalFunc2(item) {
+    const customerId = localStorage.getItem('customerId');
 
-    csvBulkAddress = JSON.parse(localStorage.getItem('reqFielddInCart'));
-    console.log('csvBulkAddress', csvBulkAddress?.bulkCsvData);
-    console.log('csvBulkAddress', cartData[item]?.bulkCsvData );
+    try {
+      if (cartData[item]?.csvFileURL) {
+        const response = await fetch(
+          `https://api.simplynoted.com/api/storefront/addresses/partial-uploaded?customerId=${customerId}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({
+              csvFileUrl: cartData[item].csvFileURL,
+            }),
+          },
+        );
 
-    setIsOpen2(true);
-    // setCardVal(item)
-    if (cartData[item].csvBulkData.length) {
-      setBulkAddress(cartData[item]?.csvBulkData || csvBulkAddress?.bulkCsvData );
-      setMsgFont(cartData[item].fontFamily);
-      setMsgFontSize(cartData[item].fontSizeMsg);
-      setMsgShow(cartData[item].messageData);
-      setMsglastText(cartData[item].endText);
-    } else {
-      setMsgFont(cartData[item].fontFamily);
-      setMsgShow(cartData[item].messageData);
-      setMsgFontSize(cartData[item].fontSizeMsg);
-      setReciverAddress(cartData[item].reciverAddress);
-      setMsglastText(cartData[item].endText);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const data = await response.json();
+        setBulkAddress(data.result[0]?.addresses);
+      }
+
+      setIsOpen2(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+
+ 
+
+    if (cartData[item]?.csvBulkData.length > 0) {
+      setBulkAddress(cartData[item].csvBulkData);
+    } else if (
+      !cartData[item]?.csvBulkData.length &&
+      !cartData[item]?.csvFileURL
+    ) {
+      setReciverAddress(cartData[item]?.reciverAddress || '');
+    }
+    else {
+      setMsgFont(cartData[item]?.fontFamily);
+      setMsgFontSize(cartData[item]?.fontSizeMsg);
+      setMsgShow(cartData[item]?.messageData);
+      setMsglastText(cartData[item]?.endText);
     }
   }
 
@@ -397,7 +433,7 @@ export default function AddCartFunc() {
   };
 
   const handleNextClick = () => {
-    if (currentIndex < bulkAddress.length - 1) {
+    if (currentIndex < bulkAddress?.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -1136,6 +1172,9 @@ export default function AddCartFunc() {
                                 disabled={!agree}
                                 className="bg-[#EF6E6E] w-[100%]  lg:text-[16px] text-[14px] text-[#fff] p-[12px] rounded border-[1px] border-[#000] font-bold flex justify-center mt-2"
                                 onClick={() => {
+                                  customerId =
+                                    localStorage.getItem('customerId');
+
                                   if (customerId) {
                                     // onCLickOfCheckoutBtn()
                                     setShowCartPage(false);
@@ -1338,7 +1377,7 @@ export default function AddCartFunc() {
               ariaHideApp={false}
             >
               <div className="text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto ">
-                {bulkAddress.length ? (
+                {bulkAddress?.length ? (
                   <>
                     <div className="absolute top-[35px] right-0  pr-8 sm:block">
                       <button
