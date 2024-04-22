@@ -38,9 +38,10 @@ export function ProductInfo({
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
+  const [isBulkPurchase,setIsBulkPurchase] = useState(false)
 
 
-  let cardType ; 
+
 
   function CloseVideoComp() {
     setVideoBtn(false);
@@ -71,7 +72,6 @@ export function ProductInfo({
 
   useEffect(() => {
     let customerid = localStorage.getItem('customerId');
-    cardType = localStorage.getItem('selectedOrderPurchaseQuantity')
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
 
@@ -81,12 +81,14 @@ export function ProductInfo({
 
   useEffect(() => {
     if (show) {
+      setIsBulkPurchase(true)
       localStorage.setItem('selectedOrderPurchaseQuantity', 'Bulk Purchase');
     } else {
       localStorage.setItem('selectedOrderPurchaseQuantity', 'Single Card');
     }
 
   }, [show]);
+
 
 
 
@@ -99,7 +101,6 @@ export function ProductInfo({
   }
   
 
-  console.log("showBulkOnEdit in product",showBulkOnEdit);
   return (
     <div className="flex justify-center md:w-[46%] w-[90%]  md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
@@ -138,14 +139,14 @@ export function ProductInfo({
             <>
             <DynamicButton
               className={`bulk-purchase-btn ${
-                (show || showBulkOnEdit )  ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
+                (show || isBulkPurchase  )? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
               } w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base mr-[16px] font-roboto quantitybutton`}
               text="Bulk Purchase"
               onClickFunction={() => setShow(true)}
             />
             <DynamicButton
               className={`single-purchase-btn ${
-                (show || showBulkOnEdit )  ? '!bg-[#ef6e6e]' : '!bg-[#001a5f]'
+                (show || isBulkPurchase  )  ? 'bg-[#ef6e6e]' : '!bg-[#001a5f]'
               } w-[179px] h-[44px] rounded text-[#fff] font-semibold zx:mt-[0px] mt-[10px] text-base font-roboto quantitybutton`}
               text="Single Card"
               onClickFunction={() => singleBtnCLick()}
