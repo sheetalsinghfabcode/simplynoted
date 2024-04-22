@@ -335,7 +335,7 @@ export default function OrderRoute() {
               </tfoot>
             </table>
             <div className="border-none md:my-8">
-              <Heading
+              {/* <Heading
                 size="copy"
                 className="font-semibold text-[20px] text-[#141414e6] "
                 as="h3"
@@ -370,10 +370,10 @@ export default function OrderRoute() {
                 <p className="mt-3 text-[14px] text-[#141414e6] font-medium">
                   No shipping address defined
                 </p>
-              )}
+              )} */}
               <Heading
                 size="copy"
-                className="mt-8 mb-4 font-semibold  text-[20px] text-[#141414e6] "
+                className="mb-4 font-semibold  text-[20px] text-[#141414e6] "
                 as="h3"
               >
                 Status
