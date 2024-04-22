@@ -32,6 +32,7 @@ export function AddCart({
     setDefaultAddressType,
     showLoader,
     cartData,
+    setCartData,
     setCartCountVal,
     setIsCartUpdated,
     custometId,
@@ -350,46 +351,7 @@ export function AddCart({
   }, [apiVariantID]);
 
   const navigate = useNavigate();
-  let arrOfObj = {
-    productTitle: productData?.product?.title
-      ? productData.product.title
-      : null,
-    productId: productId ? productId : null,
-    variant_id: apiVariantID ? apiVariantID : variantID,
-    price: finalPrice ? finalPrice : productData?.price?.amount,
-    productImg: productData?.image?.url,
-    senderAddress: selectedItem2,
-    reciverAddress: selectedItem,
-    giftCardName: cardName && stateCheckCart ? cardName : null,
-    giftCardId: giftCardId && stateCheckCart ? giftCardId : null,
-    giftCardImg: cardImg && stateCheckCart ? cardImg : null,
-    giftCardPrice: cardPrice && stateCheckCart ? cardPrice : null,
-    giftCardPriceTitle: cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
-    giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
-    messageData: MsgText,
-    fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
-    productGetUrl: window?.location.pathname,
-    endText: cartDataReq?.signOffText,
-    csvFileURL: cartDataReq?.csvFileBulk,
-    csvFileLen: cartDataReq?.csvFileLen,
-    usCount: cartDataReq?.usCount,
-    nonUSCount: cartDataReq?.nonUsCount,
-    csvBulkData: cartDataReq?.bulkCsvData,
-    shippingData: selectShipMode ? selectShipMode : '',
-    shippingMethodImage: selectShipMode ? shippingData.featuredImage.url : '',
-    shippingMethodProdUrl: selectShipMode ? shippingData.onlineStoreUrl : '',
-    locationForShipMethod: formData ? formData : '',
-    shippingDataCost: selectShipMode ? selectShipMode.node.price.amount : '',
-    fontSizeMsg: cartDataReq?.fontSize,
-    customFontName: customFontName ? customFontName : 'Select Custom Font',
-    lineHeight: cartDataReq?.lineHeight,
-    signOffLineHeight: cartDataReq?.signOffLineHeight,
-    signOffFontSize: cartDataReq?.signOffFontSize,
-    isShippidata: show ? show : false,
 
-    optionalShipDate: cartDataReq?.ship_date,
-    custom_pdf: metafields ? metafields.pdfURL : null,
-  };
 
   async function onClickAddCart() {
 
@@ -398,6 +360,8 @@ export function AddCart({
       return;
     }
     setButtonTextChange(true);
+
+    console.log("cartData>>>>>",cartData);
 
     try {
       setLoader(false);
@@ -423,11 +387,11 @@ export function AddCart({
         fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
-        csvFileURL: cartDataReq?.csvFileBulk,
-        qyt: cartDataReq?.csvFileLen,
+        csvFileURL: cartDataReq?.csvFileBulk &&  cartDataReq?.csvFileBulk[0]?.csvFileUrl ,
+        qyt:  cartDataReq?.csvFileLen,
         usCount: cartDataReq?.usCount,
         nonUSCount: cartDataReq?.nonUsCount,
-        csvBulkData: !cartDataReq?.csvFileBulk && cartDataReq?.bulkCsvData,
+        csvBulkData:  !cartDataReq.csvFileBulk &&  cartDataReq?.bulkCsvData,
         shippingData: selectShipMode ? selectShipMode : '',
         shippingMethodImage: selectShipMode
           ? shippingData.featuredImage.url
@@ -460,6 +424,7 @@ export function AddCart({
         : [newCartItem, ...cartData];
 
 
+
       // Define the API URL
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
 
@@ -480,6 +445,7 @@ export function AddCart({
         if (responseData.result.success) {
           setLoader(false);
           setIsCartUpdated(true);
+          setCartData(storedData)
           setCartCountVal(storedData.length);
           navigate('/cart');
           setTimeout(() => {
@@ -523,6 +489,7 @@ export function AddCart({
   }
 
   function onClickOFAddCartBtn() {
+
     // Update the cart items for the next cart updates in the cart
     <CartItems />
     if (offPrice > 0) {

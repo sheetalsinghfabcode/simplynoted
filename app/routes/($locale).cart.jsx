@@ -85,7 +85,7 @@ export default function AddCartFunc() {
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
 
-  let customerId;
+  let customerId, csvBulkAddress;
 
   useEffect(() => {
     if (postalData) {
@@ -115,7 +115,8 @@ export default function AddCartFunc() {
 
   useEffect(() => {
     customerId = localStorage.getItem('customerId');
-  });
+  
+  },[]);
 
   async function updateCartData(cartData) {
     const customerId = localStorage.getItem('customerId');
@@ -336,11 +337,18 @@ export default function AddCartFunc() {
     setIsOpen(true);
     setCardVal(item);
   }
+
+ 
   async function OpenModalFunc2(item) {
+
+    csvBulkAddress = JSON.parse(localStorage.getItem('reqFielddInCart'));
+    console.log('csvBulkAddress', csvBulkAddress?.bulkCsvData);
+    console.log('csvBulkAddress', cartData[item]?.bulkCsvData );
+
     setIsOpen2(true);
     // setCardVal(item)
     if (cartData[item].csvBulkData.length) {
-      setBulkAddress(cartData[item].csvBulkData);
+      setBulkAddress(cartData[item]?.csvBulkData || csvBulkAddress?.bulkCsvData );
       setMsgFont(cartData[item].fontFamily);
       setMsgFontSize(cartData[item].fontSizeMsg);
       setMsgShow(cartData[item].messageData);
