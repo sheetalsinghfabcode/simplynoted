@@ -243,9 +243,9 @@ input[type='checkbox']:focus {
   padding: 0 80px 0;
 }
 
-.global-section-divider{
-  padding-top:40px;
-  padding-bottom:40px;
+.global-section-divider {
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 @media (max-width: 1399px) {
@@ -488,7 +488,6 @@ nav a {
     width: 100%;
   }
   .ai-generate button {
- 
   }
   .custom_testing {
     background-color: #f1f1f1;
@@ -851,7 +850,7 @@ nav a {
   cursor: pointer;
   color: #fff;
   font-size: 20px;
-  font-weight: 600 ;
+  font-weight: 600;
 }
 .start-writing-button:hover {
   background-color: #1b5299;
@@ -861,7 +860,7 @@ nav a {
   min-width: 250px;
   border-radius: 0px;
   text-transform: uppercase;
-  font-weight: 600 ;
+  font-weight: 600;
   min-height: 64px;
   cursor: pointer;
   color: #fff;
@@ -1516,7 +1515,7 @@ body {
   padding: 25px 20px;
   /* font-size: 20px; */
 }
-.shadow-outer-custom{
+.shadow-outer-custom {
   border-bottom: 1px solid #d3d3d3;
 }
 .Delight-customers {
@@ -1826,7 +1825,7 @@ body {
   font-size: 16px;
   font-weight: 700;
   line-height: 16px;
- 
+
   border-radius: 0px;
 }
 .wrap-integrate {
@@ -1895,7 +1894,6 @@ body {
 }
 .icon-transition {
   transition: transform 0.5s ease-in-out;
-
 }
 /******************* Partner-referral ****************************/
 .wrap-referral-form {
@@ -1913,7 +1911,7 @@ body {
   filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
   -webkit-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
   -moz-filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.05));
-  margin-left:auto;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -2058,8 +2056,8 @@ body {
 .signup-underline {
   background: url('../../assets/Image/signup-underline.png') no-repeat;
   background-position: bottom center;
-background-size: 360px;
-  padding-bottom: 22px ;
+  background-size: 360px;
+  padding-bottom: 22px;
 }
 
 .programm-list {
@@ -2427,9 +2425,9 @@ background-size: 360px;
     margin-left: auto;
     margin-right: auto;
   }
-  .global-section-divider{
-    padding-top:50px;
-    padding-bottom:50px;
+  .global-section-divider {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 @media only screen and (max-width: 1124px) {
@@ -2442,7 +2440,7 @@ background-size: 360px;
     line-height: 28px;
     font-size: 18px;
   }
- 
+
   .cars-killer {
     position: static;
     margin-top: 42px;
@@ -2478,7 +2476,7 @@ background-size: 360px;
   .signup-row {
     margin: 13px auto;
   }
- 
+
   .wrap-sample-form {
     width: 75%;
     margin-left: 0px;
@@ -2518,7 +2516,7 @@ background-size: 360px;
     width: 100%;
   }
 }
-@media only screen and (max-width :998px) {
+@media only screen and (max-width: 998px) {
   .banner-detail {
     background-size: 81% 85%;
   }
@@ -2549,7 +2547,7 @@ background-size: 360px;
     width: 54%;
   }
   .bottom_background {
-   background-size: 100% 100%;
+    background-size: 100% 100%;
   }
   .swiper-button-prev,
   .swiper-button-next {
@@ -2574,7 +2572,7 @@ background-size: 360px;
     padding-bottom: 0px;
     font-size: 15px;
   }
- 
+
   .roiNumbers {
     width: 100%;
   }
@@ -2590,13 +2588,12 @@ background-size: 360px;
   .signup-title {
     background-image: none;
   }
-  
 }
 @media only screen and (max-width: 511px) {
   .banner-detail {
     background-size: 85% 100%;
-    height:320px;
-    padding:0;
+    height: 320px;
+    padding: 0;
   }
   .custom_testing {
     width: 100%;
@@ -2605,7 +2602,7 @@ background-size: 360px;
   .data_card {
     margin: 0px;
   }
-  
+
   .cars-killer {
     width: 45%;
     margin-left: 4rem;
@@ -2624,13 +2621,13 @@ background-size: 360px;
     line-height: 26px;
     font-size: 16px;
   }
- 
+
   .tab-content {
     padding: 10px 15px;
   }
-  .global-section-divider{
-    padding-top:40px;
-    padding-bottom:40px;
+  .global-section-divider {
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -2846,23 +2843,21 @@ background-size: 360px;
   }
 }
 
-
 .containerxyz {
   display: flex;
   justify-content: center;
 }
 
-
-.zoom{
-zoom:1.2;
-@media (max-width:749px) {
-  zoom:1; 
-}
+.zoom {
+  zoom: 1.2;
+  @media (max-width: 749px) {
+    zoom: 1;
+  }
 }
 
 .btnTerm {
   display: inline-block;
-  color: #141414E6;
+  color: #141414e6;
   padding: 0;
   letter-spacing: 0;
   font-weight: 500;
@@ -2872,7 +2867,6 @@ zoom:1.2;
   transition-timing-function: linear !important;
 }
 
-
 .twentytwenty-handle path {
   fill: #b3b3b3;
 }
@@ -2880,15 +2874,23 @@ zoom:1.2;
 .twentytwenty-handle:hover path {
   fill: #324879;
 }
-.prError{
+.prError {
   @apply text-white bg-red-400 px-4 py-1 rounded-md mt-4 border border-red-700 block;
 }
-.error-message{
-  @apply text-white bg-green-400 px-4 py-1 rounded-md mt-4 border border-green-700 block; 
+.error-message {
+  @apply text-white bg-green-400 px-4 py-1 rounded-md mt-4 border border-green-700 block;
 }
 .cards-swiper-slider .swiper-slide {
   width: 550px !important;
 }
-.custom-product-shadow{
-  box-shadow: 0px 4px 15px 0px #0000000F;
+.custom-product-shadow {
+  box-shadow: 0px 4px 15px 0px #0000000f;
+}
+
+.singleOrderPurchaseQuantity {
+  background-color: '#001a5f';
+}
+
+.bulkOrderPurchaseQuantity {
+  background-color: '#ef6e6e';
 }

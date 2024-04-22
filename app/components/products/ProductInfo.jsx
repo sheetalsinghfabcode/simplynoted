@@ -25,6 +25,7 @@ export function ProductInfo({
   product,
   setShow,
   show,
+  showBulkOnEdit,
   setShowBox,
   editFontFamily,
   setFontFamily,
@@ -37,13 +38,17 @@ export function ProductInfo({
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
+
+
+  let cardType ; 
+
   function CloseVideoComp() {
     setVideoBtn(false);
   }
   async function singleBtnCLick() {
     setShow(false);
-    setSelectedFile('');
     setShowBox(true);
+    setSelectedFile('');
   }
 
   function setFont(e) {
@@ -66,11 +71,13 @@ export function ProductInfo({
 
   useEffect(() => {
     let customerid = localStorage.getItem('customerId');
+    cardType = localStorage.getItem('selectedOrderPurchaseQuantity')
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
 
     customFontFamily(customerid);
   }, []);
+
 
   useEffect(() => {
     if (show) {
@@ -78,7 +85,11 @@ export function ProductInfo({
     } else {
       localStorage.setItem('selectedOrderPurchaseQuantity', 'Single Card');
     }
+
   }, [show]);
+
+
+
 
   function getCustomFont(val) {
     setFontFamily(val);
@@ -88,6 +99,7 @@ export function ProductInfo({
   }
   
 
+  console.log("showBulkOnEdit in product",showBulkOnEdit);
   return (
     <div className="flex justify-center md:w-[46%] w-[90%]  md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
       <section className="flex flex-col w-full gap-8 md:mx-auto md:px-0 ">
@@ -126,14 +138,14 @@ export function ProductInfo({
             <>
             <DynamicButton
               className={`bulk-purchase-btn ${
-                show ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
+                (show || showBulkOnEdit )  ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
               } w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base mr-[16px] font-roboto quantitybutton`}
               text="Bulk Purchase"
               onClickFunction={() => setShow(true)}
             />
             <DynamicButton
               className={`single-purchase-btn ${
-                show ? 'bg-[#ef6e6e]' : 'bg-[#001a5f]'
+                (show || showBulkOnEdit )  ? '!bg-[#ef6e6e]' : '!bg-[#001a5f]'
               } w-[179px] h-[44px] rounded text-[#fff] font-semibold zx:mt-[0px] mt-[10px] text-base font-roboto quantitybutton`}
               text="Single Card"
               onClickFunction={() => singleBtnCLick()}

@@ -38,10 +38,8 @@ const Accordion = ({
   const [paymentMethodId, setPaymentMethodId] = useState('');
   const [customerData,setCustomerData] = useState({});
 
-  console.log("stripePayments>>>",stripePayments)
 
 
-  
   const {
     setActiveTab,
     loaderTitle,
