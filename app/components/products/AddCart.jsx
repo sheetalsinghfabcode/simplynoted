@@ -457,7 +457,7 @@ export function AddCart({
             return item;
           }
         })
-        : [...cartData, newCartItem];
+        : [newCartItem, ...cartData];
 
 
       // Define the API URL
