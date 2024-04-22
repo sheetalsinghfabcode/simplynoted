@@ -17,7 +17,7 @@ import {FaYoutube} from 'react-icons/fa';
 import Instruction from '../modal/Instruction';
 import {VideoTutorial} from '../VideoTutorial';
 import DynamicButton from '../DynamicButton';
-import { useStateContext } from '~/context/StateContext';
+import {useStateContext} from '~/context/StateContext';
 import ConfirmationModal from '../modal/ConfirmationModal';
 
 export function ProductInfo({
@@ -32,16 +32,16 @@ export function ProductInfo({
   setCustomFontName,
   editCustomFontFamily,
 }) {
-  const { isbirthdayAutomated,setISBirthdayAutomated} = useStateContext()
+  const {isbirthdayAutomated} = useStateContext();
   const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
   const [videoBtn, setVideoBtn] = useState(false);
-  const [isBulkPurchase,setIsBulkPurchase] = useState(false)
-
-
-
+  const [purchaseBtnBgColor, setPurchaseBtnBgColor] = useState({
+    bulkPurchase: 'bg-[#001a5f]',
+    singlePurchase: 'bg-[#ef6e6e]',
+  });
 
   function CloseVideoComp() {
     setVideoBtn(false);
@@ -49,7 +49,6 @@ export function ProductInfo({
   async function singleBtnCLick() {
     setShow(false);
     setShowBox(true);
-    setSelectedFile('');
   }
 
   function setFont(e) {
@@ -78,20 +77,21 @@ export function ProductInfo({
     customFontFamily(customerid);
   }, []);
 
-
   useEffect(() => {
+    console.log('show in useEffect', show);
+    const colorMode = {
+      bulkPurchase: show ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]',
+      singlePurchase: show ? 'bg-[#ef6e6e]' : 'bg-[#001a5f]',
+    };
+
+    setPurchaseBtnBgColor(colorMode);
+
     if (show) {
-      setIsBulkPurchase(true)
       localStorage.setItem('selectedOrderPurchaseQuantity', 'Bulk Purchase');
     } else {
       localStorage.setItem('selectedOrderPurchaseQuantity', 'Single Card');
     }
-
   }, [show]);
-
-
-
-
 
   function getCustomFont(val) {
     setFontFamily(val);
@@ -99,7 +99,6 @@ export function ProductInfo({
     setStandardFontVal('Select Standard Font');
     setCustomFontName(val);
   }
-  
 
   return (
     <div className="flex justify-center md:w-[46%] w-[90%]  md:mx-0 flex-wrap md:-mb-nav md:top-nav md:-translate-y-nav  md:pt-nav hiddenScroll md:overflow-y-scroll ">
@@ -133,26 +132,24 @@ export function ProductInfo({
             </div>
           </div>
           <div className="purchase-btn-cont flex justify-start mt-3 mb-3">
-            {isbirthdayAutomated?
-            <span className='text-[#1b5299] text-[32px] font-bold underline'>Birthday Automation Setup!</span>
-            :
-            <>
-            <DynamicButton
-              className={`bulk-purchase-btn ${
-                (show || isBulkPurchase  )? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
-              } w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base mr-[16px] font-roboto quantitybutton`}
-              text="Bulk Purchase"
-              onClickFunction={() => setShow(true)}
-            />
-            <DynamicButton
-              className={`single-purchase-btn ${
-                (show || isBulkPurchase  )  ? 'bg-[#ef6e6e]' : '!bg-[#001a5f]'
-              } w-[179px] h-[44px] rounded text-[#fff] font-semibold zx:mt-[0px] mt-[10px] text-base font-roboto quantitybutton`}
-              text="Single Card"
-              onClickFunction={() => singleBtnCLick()}
-            />
-            </>
-            }
+            {isbirthdayAutomated ? (
+              <span className="text-[#1b5299] text-[32px] font-bold underline">
+                Birthday Automation Setup!
+              </span>
+            ) : (
+              <>
+                <DynamicButton
+                  className={`bulk-purchase-btn ${purchaseBtnBgColor.bulkPurchase} w-[179px] h-[44px] rounded text-[#fff] font-semibold text-base mr-[16px] font-roboto quantitybutton`}
+                  text="Bulk Purchase"
+                  onClickFunction={() => setShow(true)}
+                />
+                <DynamicButton
+                  className={`single-purchase-btn ${purchaseBtnBgColor.singlePurchase} w-[179px] h-[44px] rounded text-[#fff] font-semibold zx:mt-[0px] mt-[10px] text-base font-roboto quantitybutton`}
+                  text="Single Card"
+                  onClickFunction={() => singleBtnCLick()}
+                />
+              </>
+            )}
           </div>
           <div
             className="flex items-center gap-[10px] mt-[9px]"
@@ -181,7 +178,7 @@ export function ProductInfo({
             close={true}
             closeModal={CloseVideoComp}
           />
-          
+
           {/* <div className="selectOtion mb-5 flex md:mt-[1rem]  text-[14px] text-[#1e1e1e] mt-[10px] md:gap-[10px] gap-[1rem] w-full flex-wrap">
             <div className="lg:w-[47%] w-[42%]">
               <Text className="font-bold w-[100px]">
