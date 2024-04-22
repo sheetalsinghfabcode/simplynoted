@@ -4,7 +4,7 @@ import {ImCross} from 'react-icons/im';
 export function Modal({children, cancelLink}) {
   return (
     <div
-      className="relative z-50"
+      className="relative outline-none	 z-50"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
@@ -16,7 +16,7 @@ export function Modal({children, cancelLink}) {
           <div
             className="max-h-[80%] mt-[10rem] w-fit relative flex-1 px-4 pt-5 pb-4 overflow-auto text-left transition-all
             transform rounded shadow-xl
-              my-auto sm:flex-none sm:w-full md:max-w-[56vw] max-w-[447px] sm:p-6 bg-white"
+              my-auto sm:flex-none  sm:w-full md:max-w-[56vw] max-w-[447px] sm:p-6 bg-white"
             role="button"
             onClick={(e) => {
               e.stopPropagation();

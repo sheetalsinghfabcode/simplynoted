@@ -29,6 +29,7 @@ export default function FlatCustomisableCard({
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
     canvasImageUrl: null,
+    canvasImageUrl: null,
     zoom: 1,
     isColoredImage: true,
     isLongImage: false,
@@ -1449,6 +1450,12 @@ export default function FlatCustomisableCard({
                           >
                             {!headerData.isImageSelected &&
                               headerData.customText}
+                            {!headerData.isImageSelected &&
+                              !headerData.customText && (
+                                <span className="text-[#dcdcdc] font-serif text-[30px]">
+                                  Header
+                                </span>
+                              )}
                           </div>
                           {headerData.isImageSelected && (
                             <div
@@ -1501,13 +1508,39 @@ export default function FlatCustomisableCard({
                             >
                               {!footerData.isImageSelected &&
                                 footerData.customText}
+                              {!footerData.isImageSelected &&
+                                !footerData.customText && (
+                                  <span className="text-[#dcdcdc] font-serif text-[30px]">
+                                    Footer
+                                  </span>
+                                )}
                             </div>
                           )}
+                          {!footerData.customText &&
+                            !footerData.isImageSelected && (
+                              <div
+                                className={`overflow-hidden h-[50px]  whitespace-nowrap items-center flex`}
+                                style={{
+                                  fontFamily: footerData.fontFamily,
+                                  fontSize: `${footerData.fontSize}px`,
+                                  color: `${footerData.fontColor}`,
+                                  maxWidth: `${
+                                    qr.isQrAdded ? '375px' : '434px'
+                                  }`,
+                                }}
+                              >
+                                {!footerData.isImageSelected && (
+                                  <span className="text-[#dcdcdc] font-serif text-[30px]">
+                                    Footer
+                                  </span>
+                                )}
+                              </div>
+                            )}
                           {(footerData.isImageSelected || qr.isQrAdded) && (
                             <div
                               id="backFooterImageDiv"
                               className={`h-[45px] flex justify-center overflow-hidden ${
-                                qr.isQrAdded && footerData.alignment === 'right'
+                                qr.isQrAdded && footerData.alignment  === 'right'
                                   ? 'w-[35px] '
                                   : 'w-[60px]'
                               }`}
@@ -1528,6 +1561,7 @@ export default function FlatCustomisableCard({
                                 draggable="false"
                               />
                             </div>
+
                           )}
                         </div>
                       </div>
@@ -2030,7 +2064,7 @@ export default function FlatCustomisableCard({
                             footerData.imageBlobUrl && (
                               <>
                                 <div className="flex flex-col mb-3 mt-3">
-                                  <span>Resize image</span>
+                                  <span className='font-bold'>Resize image</span>
                                   <input
                                     type="range"
                                     min="0.3"
