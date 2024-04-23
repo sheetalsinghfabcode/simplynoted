@@ -24,6 +24,7 @@ export function AddCart({
   variantsVal,
   metafields,
   productId,
+  editFontFamily
 }) {
   const {
     addressForm,
@@ -121,6 +122,11 @@ export function AddCart({
   const [selectedBoxCheck2, setSelectedBoxCheck2] = useState(false);
   const [purchaseType, setPurchaseType] = useState('');
   const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
+
+
+
+    console.log("editOrderValue>>>>",editOrderValue)
+
 
   useEffect(() => {
     setIsInitialRender(false);
@@ -350,9 +356,10 @@ export function AddCart({
     }
   }, [apiVariantID]);
 
+
+    console.log("fontFamilyName>>>>>>",fontFamilyName)
+
   const navigate = useNavigate();
-
-
   async function onClickAddCart() {
 
     if (selectedItem2 === null || (selectedItem === null && !show)) {
@@ -383,7 +390,7 @@ export function AddCart({
           cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
         giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
         messageData: cartDataReq.msg ? cartDataReq.msg : MsgText,
-        fontFamily: fontFamilyName ? fontFamilyName : 'great vibes',
+        fontFamily: fontFamilyName ? fontFamilyName : editFontFamily ,
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
         csvFileURL: cartDataReq?.csvFileBulk &&  cartDataReq?.csvFileBulk[0]?.csvFileUrl ,
@@ -439,6 +446,7 @@ export function AddCart({
         }),
       });
 
+
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
@@ -486,6 +494,9 @@ export function AddCart({
       setReqFields(true);
     }
   }
+
+
+  console.log("fontFamilyName>>>",fontFamilyName)
 
   function onClickOFAddCartBtn() {
 
