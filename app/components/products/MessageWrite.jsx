@@ -154,7 +154,7 @@ export function MessageWriting({
   }
 
 
-
+  console.log("metafields>>>>>",metafields);
 
 
 
@@ -380,6 +380,8 @@ export function MessageWriting({
       return <div></div>;
     }
   }
+
+
   function ShowHeaderComp() {
     if (typeof metafields.header.data == 'string') {
       if (
@@ -388,11 +390,16 @@ export function MessageWriting({
       ) {
         return (
           <div
-            className={`flex h-[48px]`}
-            style={{justifyContent: metafields.header.justifyContent}}
+            className={`flex h-[48px] `}
+            style={{
+              justifyContent: metafields.header.justifyContent,
+              transform: `scale(${metafields.header.zoom})`
+            
+            }}
           >
             <img
               className={`!w-20 headerImage ${
+
                 metafields.header.isColored ? 'grayscale-0' : 'grayscale'
               }`}
               src={metafields.header.data}
@@ -434,7 +441,10 @@ export function MessageWriting({
         return (
           <div
             className={`flex  h-[48px]`}
-            style={{justifyContent: metafields.footer.justifyContent}}
+            style={{
+              justifyContent: metafields.footer.justifyContent,
+              transform: `scale(${metafields.footer.zoom})`
+            }}
           >
             <img
               className={`!w-20 ${
