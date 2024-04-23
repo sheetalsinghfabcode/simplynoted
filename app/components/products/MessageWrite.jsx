@@ -49,14 +49,8 @@ export function MessageWriting({
   showBulkOnEdit,
 }) {
   const INITIAL_INPUT_CSS = {
-    initailFontSize: 
-      (metafields.footer ||
-        metafields.header ||
-        qrValue?.length > 0) ? '34px' : '45px',
-    initalLineHeight: 
-      (metafields.footer ||
-        metafields.header ||
-        qrValue?.length > 0) ? '34px' : '45px',
+    initailFontSize: '60px',
+    initalLineHeight: '60px',
   };
   const {
     setAddressForm,
@@ -1837,14 +1831,14 @@ function csvToJson(csv) {
         >
           <div
             id="outer"
-            className="outerr shadow-outer-custom h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+            className="outerr shadow-outer-custom h-[400px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
           >
             {metafields &&
               metafields.isHeaderIncluded &&
               metafields.header.data && <ShowHeaderComp />}
             <div
               id="outer"
-              className="outerr border border-[#E5E5E5] rounded flex flex-col justify-between custom-product-shadow h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+              className="outerr border border-[#E5E5E5] rounded flex flex-col justify-between custom-product-shadow h-[400px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
               {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
               <div
@@ -1861,7 +1855,7 @@ function csvToJson(csv) {
                       metafields.header &&
                       metafields.header.data &&
                       qrValue?.length>0 )
-                      ? '169px'
+                      ? '224.5px'
                       : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data &&
@@ -1877,7 +1871,7 @@ function csvToJson(csv) {
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data )
-                      ? '217px'
+                      ? '288.37px'
             
                       : (metafields.footer &&
                           metafields.header &&
@@ -1886,8 +1880,8 @@ function csvToJson(csv) {
                           metafields.header &&
                           metafields.header.data) ||
                         (qrValue?.length>0) 
-                      ? '269px'
-                      : '280px',
+                      ? '357.475px'
+                      : '372.757px',
                       
                 }}
               >
@@ -1947,7 +1941,7 @@ function csvToJson(csv) {
               metafields.footer.data && <ShowFooterComp />} */}
           </div>
           {/* // This margin is similar to the height of the absolute div above this */}
-          <div className="text-[#737373] text-sm mt-[306px] mb-[44px]">
+          <div className="text-[#737373] text-sm mt-[406px] mb-[44px]">
             Preview doesn't do the quality justice, See the real writing magic
             there.
           </div>
