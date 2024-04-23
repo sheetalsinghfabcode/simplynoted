@@ -117,7 +117,7 @@ const AddressForm = ({customerID}) => {
     setLoaderTitle('Saving Address Book....');
     setShowLoader(true);
     setLoader(true);
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
