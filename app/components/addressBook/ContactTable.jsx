@@ -390,7 +390,7 @@ const ContactTable = ({
       'City',
       'State/Province',
       'Postal Code',
-
+      'Country'
     ];
 
     // const requiredHeaders = [
