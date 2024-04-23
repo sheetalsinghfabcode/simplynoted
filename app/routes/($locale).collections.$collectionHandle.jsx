@@ -234,12 +234,12 @@ if (index !== -1) {
       setLoader(true);
       if (customerid) {
         navigate(`/collections/customisable-cards`);
-        const res = await getApi(
-          `${API_PATH.GET_CUSTOM_CARDS}${customerid}&offset=${offSetVal}`,
-        );
-        // fetch(
-        //   `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
+        // const res = await getApi(
+        //   `${API_PATH.GET_CUSTOM_CARDS}${customerid}&offset=${offSetVal}`,
         // );
+        const res = await fetch(
+          `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
+        );
         const json = await res.json();
         let myData = await json.result.products;
         setCheckState(true);
