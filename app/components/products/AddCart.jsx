@@ -235,12 +235,12 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await getApi(
-        `${API_PATH.GET_ADDRESS}${customerid}&type=recipient`,
-      );
-      // fetch(
-      //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
+      // const res = await getApi(
+      //   `${API_PATH.GET_ADDRESS}${customerid}&type=recipient`,
       // );
+      const res = await fetch(
+        `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
+      );
       const json = await res.json();
       setRecipientAddress(json.result);
       setLoader(false);
@@ -252,12 +252,12 @@ export function AddCart({
     setLoader(true);
 
     try {
-      const res = await getApi(
-        `${API_PATH.GET_ADDRESS}${customerid}&type=return`,
-      );
-      // fetch(
-      //   `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
+      // const res = await getApi(
+      //   `${API_PATH.GET_ADDRESS}${customerid}&type=return`,
       // );
+      const res = await fetch(
+        `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
+      );
       const json = await res.json();
       setReturnAddress(json.result);
       setLoader(false);
