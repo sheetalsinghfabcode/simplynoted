@@ -455,9 +455,7 @@ export function AddCart({
           setCartData(storedData)
           setCartCountVal(storedData.length);
           navigate('/cart');
-          setTimeout(() => {
-            setButtonTextChange(false);
-          }, [300]);
+         
         }
         // Proceed with any further actions upon successful update
       } else {
@@ -849,7 +847,7 @@ export function AddCart({
                 <DynamicButton
                   className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
                   text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
-                  // disabled={!agree}x`x`
+                  disabled={buttonTextChange}
                   onClickFunction={() => onClickOFAddCartBtn()}
                 />
               </div>

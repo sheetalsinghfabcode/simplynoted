@@ -155,7 +155,6 @@ export function MessageWriting({
 
 
 
-  console.log("standardFontVal>>>",standardFontVal)
 
 
 
@@ -2292,8 +2291,10 @@ function csvToJson(csv) {
               filteredAddresses={filteredAddresses}
               setSelectedCheckboxes={setSelectedCheckboxes}
               selectedCheckboxes={selectedCheckboxes}
+              isAddressUploadSuccess={isAddressUploadSuccess}
               ProdcuctSide={ProdcuctSide}
               setAddressForm={setAddressForm}
+              setIsAddressUploadSuccess={setIsAddressUploadSuccess}
               continueBtn={onClickOfContinue}
               setFilteredAddresses={setFilteredAddresses}
             />

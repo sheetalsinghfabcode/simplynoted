@@ -282,7 +282,7 @@ export default function CustomProducts() {
                       />
                       <DynamicButton
                         className={`${
-                          imageShow == '1' ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
+                          imageShow != '0' ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]'
                         } w-[100%] text-[#fff] py-[14px] px-[8px] font-normal text-base rounded`}
                         text="VIEW CARD BACK"
                         onClickFunction={() =>customProductData.images.length >2 ?setImageShow(2):setImageShow(1) }

@@ -24,6 +24,8 @@ const ContactTable = ({
   selectedCheckboxes,
   setAddressForm,
   ProdcuctSide,
+  isAddressUploadSuccess,
+  setIsAddressUploadSuccess,
   continueBtn,
   setFilteredAddresses,
 }) => {
@@ -544,6 +546,8 @@ const ContactTable = ({
       console.error('Error uploading data:', error);
       throw error;
     } finally {
+      isAddressUploadSuccess && setIsAddressUploadSuccess && setIsAddressUploadSuccess(!isAddressUploadSuccess)
+
       setLoaderTitle('Uploaded Address Successfully');
       setTimeout(() => {
         setShowLoader(false);
@@ -618,6 +622,7 @@ const ContactTable = ({
       throw error;
     } finally {
       if (totalAddresses === 1) {
+        isAddressUploadSuccess && setIsAddressUploadSuccess && setIsAddressUploadSuccess(!isAddressUploadSuccess)
         setLoaderTitle('Uploaded Address Successfully');
         setTimeout(() => {
           setShowLoader(false);
