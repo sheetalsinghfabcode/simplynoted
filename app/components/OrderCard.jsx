@@ -93,6 +93,9 @@ export const ORDER_CARD_FRAGMENT = `#graphql
       edges {
         node {
           variant {
+          requiresShipping
+          title
+          
             image {
               url
               altText
@@ -101,6 +104,7 @@ export const ORDER_CARD_FRAGMENT = `#graphql
             }
           }
           title
+        
         }
       }
     }

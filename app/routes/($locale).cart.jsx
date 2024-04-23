@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {defer, json, redirect} from '@shopify/remix-oxygen';
 import {useLoaderData, Await} from '@remix-run/react';
 import Modal from 'react-modal';
@@ -67,7 +67,7 @@ export default function AddCartFunc() {
   const [postPrice, setPostPrice] = useState('');
   const [postPrice2, setPostPrice2] = useState('');
   const [postImage, setPostImage] = useState('');
-  const [msgShow, setMsgShow] = useState('');
+  const [msgShow, setMsgShow] = useState('kfjkfkdskjdnsk');
   const [msgFont, setMsgFont] = useState('');
   const [msgFontSize, setMsgFontSize] = useState('');
   const [msglastText, setMsglastText] = useState('');
@@ -84,6 +84,9 @@ export default function AddCartFunc() {
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
+
+  
+  
 
   let customerId;
 
@@ -115,7 +118,7 @@ export default function AddCartFunc() {
 
   useEffect(() => {
     customerId = localStorage.getItem('customerId');
-  });
+  }, []);
 
   async function updateCartData(cartData) {
     const customerId = localStorage.getItem('customerId');
@@ -296,6 +299,13 @@ export default function AddCartFunc() {
       });
   };
 
+  function getFilenameFromURL(url) {
+    // Split the URL by '/' and get the last part
+    const parts = url?.split('/');
+    const filename = parts[parts?.length - 1];
+    return filename;
+  }
+
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
     let data = cartData[index];
@@ -336,23 +346,70 @@ export default function AddCartFunc() {
     setIsOpen(true);
     setCardVal(item);
   }
+
+  useEffect(() => {
+    console.log({msgShow});
+  }, [msgShow]);
+
+
+
+
+
+
+
+    console.log("msgShow",msgShow);
+
   async function OpenModalFunc2(item) {
-    setIsOpen2(true);
-    // setCardVal(item)
-    if (cartData[item].csvBulkData.length) {
+
+
+
+    const customerId = localStorage.getItem('customerId');
+    try {
+      if (cartData[item]?.csvFileURL) {
+        const response = await fetch(
+          `https://api.simplynoted.com/api/storefront/addresses/partial-uploaded?customerId=${customerId}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+            body: JSON.stringify({
+              csvFileUrl: cartData[item].csvFileURL,
+            }),
+          },
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+
+        const data = await response.json();
+        setBulkAddress(data.result[0]?.addresses);
+    setMsgShow(cartData[item]?.messageData);
+
+      }
+
+      setIsOpen2(true);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+
+    setMsgShow(cartData[item]?.messageData);
+    setMsgFont(cartData[item]?.fontFamily);
+    setMsgFontSize(cartData[item]?.fontSizeMsg);
+    setMsglastText(cartData[item]?.endText);
+
+    if (cartData[item]?.csvBulkData.length > 0) {
       setBulkAddress(cartData[item].csvBulkData);
-      setMsgFont(cartData[item].fontFamily);
-      setMsgFontSize(cartData[item].fontSizeMsg);
-      setMsgShow(cartData[item].messageData);
-      setMsglastText(cartData[item].endText);
-    } else {
-      setMsgFont(cartData[item].fontFamily);
-      setMsgShow(cartData[item].messageData);
-      setMsgFontSize(cartData[item].fontSizeMsg);
-      setReciverAddress(cartData[item].reciverAddress);
-      setMsglastText(cartData[item].endText);
+    } else if (
+      !cartData[item]?.csvBulkData.length &&
+      !cartData[item]?.csvFileURL
+    ) {
+      setReciverAddress(cartData[item]?.reciverAddress || '');
     }
   }
+
+
 
   const cardvalFunc = async (item) => {
     let selCardName = data.collection.products.edges[item].node;
@@ -389,7 +446,7 @@ export default function AddCartFunc() {
   };
 
   const handleNextClick = () => {
-    if (currentIndex < bulkAddress.length - 1) {
+    if (currentIndex < bulkAddress?.length - 1) {
       setCurrentIndex(currentIndex + 1);
     }
   };
@@ -1128,6 +1185,9 @@ export default function AddCartFunc() {
                                 disabled={!agree}
                                 className="bg-[#EF6E6E] w-[100%]  lg:text-[16px] text-[14px] text-[#fff] p-[12px] rounded border-[1px] border-[#000] font-bold flex justify-center mt-2"
                                 onClick={() => {
+                                  customerId =
+                                    localStorage.getItem('customerId');
+
                                   if (customerId) {
                                     // onCLickOfCheckoutBtn()
                                     setShowCartPage(false);
@@ -1330,7 +1390,7 @@ export default function AddCartFunc() {
               ariaHideApp={false}
             >
               <div className="text-[#1B5299] text-[16px] font-bold sm:w-[80%] w-full mx-auto ">
-                {bulkAddress.length ? (
+                {bulkAddress?.length ? (
                   <>
                     <div className="absolute top-[35px] right-0  pr-8 sm:block">
                       <button
@@ -1377,7 +1437,7 @@ export default function AddCartFunc() {
                                   }}
                                 >
                                   {' '}
-                                  {item.msgData}
+                                  {msgShow}
                                 </span>
                                 <br />
                                 <span
@@ -1468,7 +1528,7 @@ export default function AddCartFunc() {
                         }}
                       >
                         {' '}
-                        {msgShow.replace(/\/n/g, '\n')}
+                        {msgShow }
                       </span>
                       <br />
                       <span

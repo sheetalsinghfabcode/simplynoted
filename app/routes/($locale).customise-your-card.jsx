@@ -69,7 +69,6 @@ export default function customisableCard() {
   const [getSelectedProductVariant, setGetSelectedProductVariant] = useState(
     shopifyCustomisableCardProduct.product.variants.edges[0].node.title,
   );
-  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     const storedCustomerId = localStorage.getItem('customerId');
@@ -81,12 +80,11 @@ export default function customisableCard() {
     <>
       {!isInitialRender && !customerId && (
         <LoginModal
-          show={!customerId && showModal}
+          show={!customerId}
           title="Create a Card"
           confirmText="Login"
           cancelText="Register"
-          onCancel={() => setShowModal(false)}
-          hasCancelIcon={true}
+          hasCancelIcon={false}
         />
       )}
       {isCardTypeSelectionPage ? (

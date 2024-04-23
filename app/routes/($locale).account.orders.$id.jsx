@@ -71,6 +71,10 @@ export default function OrderRoute() {
   useEffect(()=>{
     setOrderHistory(true)
   },[])
+
+
+
+
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
       <div className="mt-[30px]">
@@ -466,6 +470,7 @@ const CUSTOMER_ORDER_QUERY = `#graphql
     variant {
       ...ProductVariant
     }
+    
   }
 
   query CustomerOrder(

@@ -235,16 +235,6 @@ export default function Product() {
     showBulkOnEdit > 0 || csvFileUrl || datafornav?.search == '?select=Bulk' ? true : false,
   );
 
-
-
-
-
-  console.log("datafornav?.state?.data?>>",datafornav?.state?.data);
-  console.log("showBulkOnEdit",showBulkOnEdit);
-
-  console.log("csvFileUrl>>>",csvFileUrl)
-
-
   const {productshow, setProductShow,showSignScreen,
     setShowSignScreen,stateCheckCustomerId,
     setStateCheckCustomerId} = useStateContext();
