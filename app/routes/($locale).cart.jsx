@@ -1,32 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { defer, json, redirect } from '@shopify/remix-oxygen';
-import { useLoaderData, Await } from '@remix-run/react';
+import React, {useEffect, useState} from 'react';
+import {defer, json, redirect} from '@shopify/remix-oxygen';
+import {useLoaderData, Await} from '@remix-run/react';
 import Modal from 'react-modal';
-import { BsXCircle } from 'react-icons/bs';
-import { ImCross } from 'react-icons/im';
-import { useNavigate } from '@remix-run/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import {BsXCircle} from 'react-icons/bs';
+import {ImCross} from 'react-icons/im';
+import {useNavigate} from '@remix-run/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation} from 'swiper';
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
 import DynamicButton from '~/components/DynamicButton';
 // import { RiDeleteBin5Line } from "react-icons/Ri";
-import { HiArrowLongRight } from 'react-icons/hi2';
-import { CheckoutData } from '../components/Checkout';
+import {HiArrowLongRight} from 'react-icons/hi2';
+import {CheckoutData} from '../components/Checkout';
 import DynamicTitle from '../components/Title';
 import CircularLoader from '~/components/CircularLoder';
-import { useStateContext } from '~/context/StateContext';
-import { RiDeleteBin6Line } from 'react-icons/ri';
+import {useStateContext} from '~/context/StateContext';
+import {RiDeleteBin6Line} from 'react-icons/ri';
 import LoginModal from '~/components/modal/LoginModal';
-import { seoPayload } from '~/lib/seo.server';
+import {seoPayload} from '~/lib/seo.server';
 import SuccessfullLoader from '~/components/SucessfullLoader';
-import { RiArrowRightLine } from 'react-icons/ri';
-import { FiArrowLeft } from 'react-icons/fi';
-
+import {RiArrowRightLine} from 'react-icons/ri';
+import {FiArrowLeft} from 'react-icons/fi';
 
 let storedDataString, storedDataArray;
 
-export async function loader({ context, request }) {
+export async function loader({context, request}) {
   const StripeKey =
     'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
 
@@ -48,8 +47,9 @@ export async function loader({ context, request }) {
 }
 
 export default function AddCartFunc() {
-  const { setCartCountVal, cartData, setCartData, setIsCartUpdated } = useStateContext();
-  const { data, postalData, StripeKey } = useLoaderData();
+  const {setCartCountVal, cartData, setCartData, setIsCartUpdated} =
+    useStateContext();
+  const {data, postalData, StripeKey} = useLoaderData();
   const [updateGift, setUpdateGift] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [modalIsOpen2, setIsOpen2] = useState(false);
@@ -238,7 +238,6 @@ export default function AddCartFunc() {
     setDeleteModal(true);
   }
 
-
   function deleteOrder(index) {
     setSuccessfullLoader(true);
     setOperation('Deleting Order');
@@ -281,8 +280,8 @@ export default function AddCartFunc() {
             setSuccessfullLoader(false);
             setOperation(null);
           }, 1000);
-          setCartCountVal(0)
-          setCartData(null)
+          setCartCountVal(0);
+          setCartData(null);
           window.scrollTo({
             top: 0,
             behavior: 'smooth', // Make the scroll behavior smooth
@@ -302,8 +301,8 @@ export default function AddCartFunc() {
     let data = cartData[index];
     let ab = cartData[index].productGetUrl;
     data.customFontName = null;
-    console.log({data})
-    navigate(`${ab}`, { state: { data: data, index: index } });
+    console.log({data});
+    navigate(`${ab}`, {state: {data: data, index: index}});
   }
   const navigate = useNavigate();
 
@@ -357,7 +356,6 @@ export default function AddCartFunc() {
 
   const cardvalFunc = async (item) => {
     let selCardName = data.collection.products.edges[item].node;
-
     setCardName(selCardName.title);
     setCardImage(selCardName.featuredImage.url);
     setGiftProdUrl(selCardName.onlineStoreUrl);
@@ -368,9 +366,14 @@ export default function AddCartFunc() {
     setCardPriceVal(arrCardPrice);
     // await AfterCardSel(ab)
   };
-  const priceValFunc = async (item) => {
-    setCardPrice(item);
+
+  const handleGiftCard = async (event) => {
+    setCardPrice(event.target.value);
+    const selectedGift =
+      cardPriceVal && cardPriceVal[event.target.selectedIndex];
+    setGiftCardId(selectedGift.node.id.match(/\d+/g).join(''));
   };
+
   function closeModal() {
     setBulkAddress([]);
 
@@ -399,34 +402,34 @@ export default function AddCartFunc() {
           cartData.giftCardPrice * cartData.qyt +
           ((cartData.shippingData &&
             cartData.shippingData.node?.title ==
-            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-            (cartData.shippingData &&
-              cartData.shippingData.node?.title ==
+              'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards Only') ||
-            (cartData.shippingData &&
-              cartData.shippingData.node?.title ==
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-            (cartData.shippingData &&
-              cartData.shippingData.node?.title ==
+          (cartData.shippingData &&
+            cartData.shippingData.node?.title ==
               'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
             ? 0
             : cartData.usCount || cartData.nonUSCount
-              ? postPrice * cartData.usCount + postPrice2 * cartData.nonUSCount
-              : cartData.reciverAddress?.country === 'USA' ||
-                cartData.reciverAddress?.country?.toLowerCase() === '' ||
-                cartData.reciverAddress?.country?.toLowerCase() === ' ' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'u.s.a' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'u.s' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'usa' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'us' ||
-                cartData.reciverAddress?.country?.toLowerCase() === 'america' ||
-                cartData.reciverAddress?.country?.toLowerCase() ===
+            ? postPrice * cartData.usCount + postPrice2 * cartData.nonUSCount
+            : cartData.reciverAddress?.country === 'USA' ||
+              cartData.reciverAddress?.country?.toLowerCase() === '' ||
+              cartData.reciverAddress?.country?.toLowerCase() === ' ' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'u.s.a' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'u.s' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'usa' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'us' ||
+              cartData.reciverAddress?.country?.toLowerCase() === 'america' ||
+              cartData.reciverAddress?.country?.toLowerCase() ===
                 'united states' ||
-                cartData.reciverAddress?.country?.toLowerCase() ===
+              cartData.reciverAddress?.country?.toLowerCase() ===
                 'united states of america' ||
-                cartData.reciverAddress?.country?.toLowerCase() == undefined
-                ? postPrice * cartData.qyt
-                : postPrice2 * cartData.qyt) +
+              cartData.reciverAddress?.country?.toLowerCase() == undefined
+            ? postPrice * cartData.qyt
+            : postPrice2 * cartData.qyt) +
           (cartData.isShippidata ? cartData.shippingDataCost * 1 : 0)),
       0,
     );
@@ -598,7 +601,10 @@ export default function AddCartFunc() {
                           {item.giftCardName && (
                             <div className="flex w-[100%] flex-wrap space-between lg:border-none border-b-[1px] border-[#AAA]">
                               <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                <div className="flex w-[95%] gap-[16px] md:ml-[0px] ml-[12px]  justify-start "style={{textAlign:"-webkit-center"}}>
+                                <div
+                                  className="flex w-[95%] gap-[16px] md:ml-[0px] ml-[12px]  justify-start "
+                                  style={{textAlign: '-webkit-center'}}
+                                >
                                   <div className="lg:max-w-[33%] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                     <img
                                       src={item.giftCardImg}
@@ -615,7 +621,6 @@ export default function AddCartFunc() {
                                     <span className=" text-[black] font-normal text-[16px]   ">
                                       {item.giftCardName}
                                     </span>
-
                                   </div>
                                 </div>
                               </div>
@@ -673,15 +678,15 @@ export default function AddCartFunc() {
 
                           {(item.shippingData &&
                             item.shippingData.node?.title ==
-                            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                            (item.shippingData &&
-                              item.shippingData.node?.title ==
+                              'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                          (item.shippingData &&
+                            item.shippingData.node?.title ==
                               'Ship Cards in Bulk - Cards Only') ||
-                            (item.shippingData &&
-                              item.shippingData.node?.title ==
+                          (item.shippingData &&
+                            item.shippingData.node?.title ==
                               'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                            (item.shippingData &&
-                              item.shippingData.node?.title ==
+                          (item.shippingData &&
+                            item.shippingData.node?.title ==
                               'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped') ? (
                             ''
                           ) : (
@@ -691,7 +696,10 @@ export default function AddCartFunc() {
                                   {item.nonUSCount && item.nonUSCount ? (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[100%] gap-[10px] justify-start " style={{textAlign:'-webkit-center'}}>
+                                        <div
+                                          className="flex w-[100%] gap-[10px] justify-start "
+                                          style={{textAlign: '-webkit-center'}}
+                                        >
                                           <div className="lg:max-w-[33%] w-full !ml-[13px] sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}
@@ -810,29 +818,32 @@ export default function AddCartFunc() {
                               ) : (
                                 <>
                                   {item.reciverAddress?.country === 'USA' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     '' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     ' ' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'u.s.a' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'u.s' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'usa' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'us' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'america' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'united states' ||
-                                    item.reciverAddress?.country?.toLowerCase() ===
+                                  item.reciverAddress?.country?.toLowerCase() ===
                                     'united states of america' ||
-                                    item.reciverAddress?.country?.toLowerCase() ==
+                                  item.reciverAddress?.country?.toLowerCase() ==
                                     undefined ? (
                                     <div className="flex w-[100%] flex-wrap space-between">
                                       <div className="lg:max-w-[50%] min-w-[150px] w-[100%] items-center relative flex  item_block_left lg:border-r-[1px] border-[#AAA] lg:pb-[15px]">
-                                        <div className="flex w-[100%] md:gap-[10px] gap-0" style={{ textAlign: '-webkit-center' }}>
+                                        <div
+                                          className="flex w-[100%] md:gap-[10px] gap-0"
+                                          style={{textAlign: '-webkit-center'}}
+                                        >
                                           <div className="lg:max-w-[33%] !ml-[13px] w-full sm:max-w-[22%] max-w-[30%] min-w-[80px] md:m-5  m-3 mt-[30px] rounded-[10px] overflow-hidden">
                                             <img
                                               src={postImage}
@@ -1020,43 +1031,43 @@ export default function AddCartFunc() {
                                     : 0) +
                                   ((item.shippingData &&
                                     item.shippingData.node?.title ==
-                                    'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                                    (item.shippingData &&
-                                      item.shippingData.node?.title ==
+                                      'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+                                  (item.shippingData &&
+                                    item.shippingData.node?.title ==
                                       'Ship Cards in Bulk - Cards Only') ||
-                                    (item.shippingData &&
-                                      item.shippingData.node?.title ==
+                                  (item.shippingData &&
+                                    item.shippingData.node?.title ==
                                       'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                                    (item.shippingData &&
-                                      item.shippingData.node?.title ==
+                                  (item.shippingData &&
+                                    item.shippingData.node?.title ==
                                       'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
                                     ? 0
                                     : item.usCount || item.nonUSCount
-                                      ? postPrice * item.usCount +
+                                    ? postPrice * item.usCount +
                                       postPrice2 * item.nonUSCount
-                                      : item.reciverAddress?.country === 'USA' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                    : item.reciverAddress?.country === 'USA' ||
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         '' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         ' ' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'u.s.a' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'u.s' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'usa' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'us' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'america' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'united states' ||
-                                        item.reciverAddress?.country?.toLowerCase() ===
+                                      item.reciverAddress?.country?.toLowerCase() ===
                                         'united states of america' ||
-                                        item.reciverAddress?.country?.toLowerCase() ==
+                                      item.reciverAddress?.country?.toLowerCase() ==
                                         undefined
-                                        ? postPrice * item.qyt
-                                        : postPrice2 * item.qyt)
+                                    ? postPrice * item.qyt
+                                    : postPrice2 * item.qyt)
                                 ).toFixed(2)}
                               </div>
                             </div>
@@ -1098,16 +1109,18 @@ export default function AddCartFunc() {
                                   checked={agree}
                                 />
                                 <span>
-                                  <label htmlFor='term'>
-                                  {' '}
-                                  I agree with{' '}
-                                  <span className="underline decoration-solid">             
-                                    <DynamicButton
-              onClickFunction={() => navigate('/policies/terms-of-service')}
-              text="Terms of service"
-              className="btnTerm text-sm"
-            />
-                             </span>
+                                  <label htmlFor="term">
+                                    {' '}
+                                    I agree with{' '}
+                                    <span className="underline decoration-solid">
+                                      <DynamicButton
+                                        onClickFunction={() =>
+                                          navigate('/policies/terms-of-service')
+                                        }
+                                        text="Terms of service"
+                                        className="btnTerm text-sm"
+                                      />
+                                    </span>
                                   </label>
                                 </span>
                               </div>
@@ -1270,7 +1283,7 @@ export default function AddCartFunc() {
                             name=""
                             id=""
                             className="w-full border-2 border-[#ef6e6e] rounded-xl font-normal text-[16px] leading-10"
-                            onChange={(e) => priceValFunc(e.target.value)}
+                            onChange={handleGiftCard}
                           >
                             {cardPriceVal.map((item, index) => (
                               <option
@@ -1426,13 +1439,13 @@ export default function AddCartFunc() {
                       Your Custom Message
                     </h2>
                     <div className="flex">
-
                       <div className="w-full mt-[10px]">
                         <span className=" text-center ">
                           Recipient:{' '}
                           <span className="font-normal">
-                            {reciverAddress?.firstName},{reciverAddress?.address1}
-                            ,{reciverAddress?.city},{reciverAddress?.country}
+                            {reciverAddress?.firstName},
+                            {reciverAddress?.address1},{reciverAddress?.city},
+                            {reciverAddress?.country}
                           </span>
                         </span>
                       </div>
