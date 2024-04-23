@@ -36,9 +36,7 @@ const Accordion = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
-  const [customerData,setCustomerData] = useState({});
-
-
+  const [customerData, setCustomerData] = useState({});
 
   const {
     setActiveTab,
@@ -53,8 +51,6 @@ const Accordion = ({
 
   let productId = packageProduct?.replace(/[^0-9]/g, '');
   let variantId = subscriptionProduct?.replace(/[^0-9]/g, '');
-
-
 
   const toggleBilling = () => {
     setIsBillingOpen(!isBillingOpen);
@@ -128,8 +124,8 @@ const Accordion = ({
         },
       );
       const jsonData = await res.json();
-      
-      const customerId = localStorage.getItem('customerId')
+
+      const customerId = localStorage.getItem('customerId');
       await getSavedCards(customerId);
       setTimeout(() => {
         setloader(false);
@@ -145,7 +141,7 @@ const Accordion = ({
         `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
-      if (json) {        
+      if (json) {
         setCustomerData(json.customer);
         setSavedCard(json.payments);
       }
@@ -162,19 +158,17 @@ const Accordion = ({
     getSavedCards(customerid);
     formData.name = fullName ? fullName : firstName + ' ' + lastName;
     formData.email = userEmail;
-   
+
     // formData.address.country = customerData && customerData.address?.country
-   
   }, []);
 
-    useEffect(()=>{
-      formData.address.line1 = customerData  && customerData.address?.line1
-      formData.address.line2 = customerData && customerData.address?.line2
-      formData.address.state = customerData && customerData.address?.state
-      formData.address.city = customerData && customerData.address?.city
-    },[customerData])
+  useEffect(() => {
+    formData.address.line1 = customerData && customerData.address?.line1;
+    formData.address.line2 = customerData && customerData.address?.line2;
+    formData.address.state = customerData && customerData.address?.state;
+    formData.address.city = customerData && customerData.address?.city;
+  }, [customerData]);
 
-  
   const handleChange = (e) => {
     const {name, value} = e.target;
     if (name.startsWith('address.')) {
@@ -255,7 +249,7 @@ const Accordion = ({
     // Open billing address section if there are any errors
     if (!isValid) {
       setIsBillingOpen(true);
-      setStripeLoader(false)
+      setStripeLoader(false);
     }
     return isValid;
   };
@@ -263,8 +257,6 @@ const Accordion = ({
   const selectedCountry = location?.countries?.find(
     (country) => country.country === formData.address.country,
   );
-
-
 
   function extractDiscountAndCardsInfo(str) {
     // Regular expressions to extract discount and card numbers
@@ -369,15 +361,15 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          setLoaderTitle('Payment completed successfully... ')
+          setLoaderTitle('Payment completed successfully... ');
           setTimeout(() => {
             navigate('/account');
-            setPaymentLoader(false)
-          setIsStripeDataUpdated(true)
+            setPaymentLoader(false);
+            setIsStripeDataUpdated(true);
           }, 2000);
           setTimeout(() => {
-            setActiveTab(4)
-            setAccountTabName('Manage Plans')
+            setActiveTab(4);
+            setAccountTabName('Manage Plans');
           }, 2200);
         }
       })
@@ -536,7 +528,7 @@ const Accordion = ({
                   type="text"
                   placeholder="Address"
                   required
-                  disabled={ customerData && customerData?.address?.line1}
+                  disabled={customerData && customerData?.address?.line1}
                   value={formData.address.line1}
                   onChange={(e) => {
                     errors.addressLine1 = '';
@@ -558,8 +550,7 @@ const Accordion = ({
                   id="address2"
                   name="address.line2"
                   type="text"
-                  disabled={ customerData && customerData.address?.line2}
-
+                  disabled={customerData && customerData.address?.line2}
                   placeholder="Address 2"
                   value={formData.address.line2}
                   onChange={(e) => handleChange(e)}
@@ -576,8 +567,7 @@ const Accordion = ({
                   type="text"
                   required
                   placeholder="City"
-                  disabled={ customerData && customerData.address?.city}
-
+                  disabled={customerData && customerData.address?.city}
                   value={formData.address.city}
                   onChange={(e) => {
                     errors.city = '';
@@ -604,7 +594,7 @@ const Accordion = ({
                     value={formData.address.country}
                     itemID="country"
                     name="address.country"
-                    disabled={ customerData && customerData.address?.country}
+                    disabled={customerData && customerData.address?.country}
                     id="country"
                     className="appearance-none rounded-md border h-[46px] w-full  border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   >
@@ -627,7 +617,7 @@ const Accordion = ({
                       errors.state = '';
                       handleChange(e);
                     }}
-                    disabled={ customerData && customerData.address?.state}
+                    disabled={customerData && customerData.address?.state}
                     value={formData.address.state}
                     name="address.state"
                     className={`appearance-none rounded-md border h-[46px]  w-full  border-solid border-black p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
@@ -678,13 +668,17 @@ const Accordion = ({
                 {savedCard &&
                   savedCard.map((item, i) => (
                     <label
-                      key={i}  
-                      htmlFor={"item-index-" + i}
-                      className={paymentMethodId === item.paymentId ? 'bg-[#ffdada] cursor-pointer border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between ' : 'bg-[#f5fffa]  border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between  cursor-pointer'}
+                      key={i}
+                      htmlFor={'item-index-' + i}
+                      className={
+                        paymentMethodId === item.paymentId
+                          ? 'bg-[#ffdada] cursor-pointer border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between '
+                          : 'bg-[#f5fffa]  border border-solid border-[#dbdbdb] rounded-md p-[1rem] mt-1 mb-2 flex justify-between  cursor-pointer'
+                      }
                     >
                       <div className="flex justify-start items-center text-[14px] font-bold ">
                         <input
-                          id={"item-index-" + i}
+                          id={'item-index-' + i}
                           type="radio"
                           onChange={() => setPaymentMethodId(item.paymentId)}
                           name="action"
@@ -723,7 +717,9 @@ const Accordion = ({
                       addNewCreditCard={addNewCreditCard}
                       setPaymentMethodId={setPaymentMethodId}
                       createCustomerId={createCustomerId}
-                      savedCard={(savedCard && savedCard.length > 0)  ? savedCard : []}
+                      savedCard={
+                        savedCard && savedCard.length > 0 ? savedCard : []
+                      }
                       paymentPurchase={paymentPurchase}
                       validateForm={validateForm}
                       stripePayments={stripePayments}
@@ -743,6 +739,10 @@ const Accordion = ({
                   <DynamicButton
                     text="Previous"
                     onClickFunction={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                      });
                       setWalletPurchase(true);
                       setWalletPayment(false);
                     }}

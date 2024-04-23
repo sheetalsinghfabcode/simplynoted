@@ -150,14 +150,7 @@ export default function Login() {
                 }
                 setEmail(e.target.value);
               }}
-              onBlur={(event) => {
-                setNativeEmailError(
-                  event.currentTarget.value.length &&
-                    !event.currentTarget.validity.valid
-                    ? 'Invalid email address'
-                    : null,
-                );
-              }}
+             
             />
 
             {nativeEmailError && (
@@ -184,20 +177,7 @@ export default function Login() {
                 }
                 setPassword(e.target.value);
               }}
-              onBlur={(event) => {
-                if (
-                  event.currentTarget.validity.valid ||
-                  !event.currentTarget.value.length
-                ) {
-                  setNativePasswordError(null);
-                } else {
-                  setNativePasswordError(
-                    event.currentTarget.validity.valueMissing
-                      ? 'Please enter a password'
-                      : 'Passwords must be at least 8 characters',
-                  );
-                }
-              }}
+             
             />
             {nativePasswordError && (
               <p className="text-red-500 text-xs">

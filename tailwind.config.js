@@ -21,6 +21,7 @@ export default {
         zx: '25em',
         xc:'111.25em',
         xl: '80em',
+        xls: '69.938em',
         '2xl': '84em',
         '3xl': '134em',
         'sm-max': {max: '48em'},

@@ -38,10 +38,15 @@ export const action = async ({request, context, params}) => {
     typeof email !== 'string' ||
     typeof firstName !== 'string' ||
     typeof lastName !== 'string' ||
-    typeof password !== 'string'
+    typeof password !== 'string' ||
+    password.length < 8
   ) {
+    let errorMessage = 'Please provide all the fields.';
+    if (password.length < 8) {
+      errorMessage = 'Password must be at least 8 characters long.';
+    }
     return badRequest({
-      formError: 'Please provide all the fields.',
+      formError: errorMessage,
     });
   }
 
@@ -142,11 +147,7 @@ export default function Register() {
           />
         </div>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-        <Form
-          method="post"
-          noValidate
-          className="pt-6 pb-0 mt-4  space-y-3"
-        >
+        <Form method="post" noValidate className="pt-6 pb-0 mt-4  space-y-3">
           {actionData?.formError && (
             <div className="flex items-center justify-left">
               <p className="text-[red]">{actionData.formError}</p>
@@ -246,7 +247,6 @@ export default function Register() {
               placeholder="Enter Last Name"
               aria-label="Last Name"
               autoFocus
-          
             />
             {nativeLastNameError && (
               <p className="text-red-500 text-xs">
@@ -273,26 +273,11 @@ export default function Register() {
                   actionData.formError = '';
                 }
                 setPassword(e.target.value);
-                  setNativePasswordError(false)
-
+                setNativePasswordError(false);
               }}
               required
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
-              onBlur={(event) => {
-                if (
-                  event.currentTarget.validity.valid ||
-                  !event.currentTarget.value.length
-                ) {
-                  setNativePasswordError(null);
-                } else {
-                  setNativePasswordError(
-                    event.currentTarget.validity.valueMissing
-                      ? 'Please enter a password'
-                      : 'Passwords must be at least 8 characters',
-                  );
-                }
-              }}
             />
             {nativePasswordError && (
               <p className="text-red-500 text-xs">
@@ -324,7 +309,10 @@ export default function Register() {
           <div className="flex items-center mt-8 border-t border-gray-300">
             <p className="align-baseline text-[16px] mt-6">
               Already have an account? &nbsp;
-              <Link className="inline underline text-[16px]" to="/account/login">
+              <Link
+                className="inline underline text-[16px]"
+                to="/account/login"
+              >
                 Sign in
               </Link>
             </p>
