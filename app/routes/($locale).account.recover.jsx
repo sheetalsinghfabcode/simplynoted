@@ -2,7 +2,6 @@ import {json, redirect} from '@shopify/remix-oxygen';
 import {Form, useActionData} from '@remix-run/react';
 import {useState} from 'react';
 
-
 import {Link} from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
 
@@ -15,6 +14,8 @@ export async function loader({context, params}) {
 
   return new Response(null);
 }
+
+
 
 const badRequest = (data) => json(data, {status: 400});
 
@@ -64,8 +65,15 @@ export default function Recover() {
           </>
         ) : (
           <>
-            <h1 className="text-4xl block font-bold text-center text-blue-900 ">Forgot Password</h1>
-            <div class="flex justify-center"><img className="w-64 mt-3" src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"/></div>
+            <h1 className="text-4xl block font-bold text-center text-blue-900 ">
+              Forgot Password
+            </h1>
+            <div class="flex justify-center">
+              <img
+                className="w-64 mt-3"
+                src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+              />
+            </div>
             <p className="mt-4 text-[15px] text-center">
               Enter the email address associated with your account to receive a
               link to reset your password.
@@ -76,7 +84,6 @@ export default function Recover() {
               noValidate
               className="pt-6 pb-0 mt-4 mb-4 space-y-3"
             >
-              
               <div>
                 <input
                   className={`mb-1 ${getInputStyleClasses(nativeEmailError)}`}
@@ -89,22 +96,16 @@ export default function Recover() {
                   aria-label="Email address"
                   // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
-                  onBlur={(event) => {
-                    setNativeEmailError(
-                      event.currentTarget.value.length &&
-                        !event.currentTarget.validity.valid
-                        ? 'Invalid email address'
-                        : null,
-                    );
-                  }}
                 />
+
                 {actionData?.formError && (
-                <div className="flex items-left text-left  text-red">
-                  <p className="text-[red] text-red">
-                    {actionData.formError}
-                  </p>
-                </div>
-              )}
+                  <div className="flex items-left text-left  text-red">
+                    <p className="text-[red] text-red">
+                      {actionData.formError}
+                    </p>
+                  </div>
+                )}
+
                 {nativeEmailError && (
                   <p className="text-red-500 text-xs">
                     {nativeEmailError} &nbsp;
