@@ -361,7 +361,6 @@ export function AddCart({
     }
     setButtonTextChange(true);
 
-    console.log("cartData>>>>>",cartData);
 
     try {
       setLoader(false);

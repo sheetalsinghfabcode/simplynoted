@@ -78,7 +78,6 @@ export function ProductInfo({
   }, []);
 
   useEffect(() => {
-    console.log('show in useEffect', show);
     const colorMode = {
       bulkPurchase: show ? 'bg-[#001a5f]' : 'bg-[#ef6e6e]',
       singlePurchase: show ? 'bg-[#ef6e6e]' : 'bg-[#001a5f]',

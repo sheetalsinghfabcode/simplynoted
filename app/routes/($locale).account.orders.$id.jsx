@@ -74,7 +74,6 @@ export default function OrderRoute() {
 
 
 
-  console.log("order>>>>>>>",order)
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">

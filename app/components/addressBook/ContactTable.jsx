@@ -275,7 +275,6 @@ const ContactTable = ({
 
   function csvToJson(csv) {
 
-    console.log("csv>>>",csv)
 
     var lines = csv.split('\n');
     var result = [];

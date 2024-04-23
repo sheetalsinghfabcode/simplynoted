@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {defer, json, redirect} from '@shopify/remix-oxygen';
 import {useLoaderData, Await} from '@remix-run/react';
 import Modal from 'react-modal';
@@ -67,7 +67,7 @@ export default function AddCartFunc() {
   const [postPrice, setPostPrice] = useState('');
   const [postPrice2, setPostPrice2] = useState('');
   const [postImage, setPostImage] = useState('');
-  const [msgShow, setMsgShow] = useState('');
+  const [msgShow, setMsgShow] = useState('kfjkfkdskjdnsk');
   const [msgFont, setMsgFont] = useState('');
   const [msgFontSize, setMsgFontSize] = useState('');
   const [msglastText, setMsglastText] = useState('');
@@ -84,10 +84,9 @@ export default function AddCartFunc() {
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
-  const [csvFileData, setCsvFileData] = useState([]);
 
-  console.log('csvFileData', csvFileData);
-  console.log('bulkAddress', bulkAddress);
+  
+  
 
   let customerId;
 
@@ -119,7 +118,6 @@ export default function AddCartFunc() {
 
   useEffect(() => {
     customerId = localStorage.getItem('customerId');
-    console.log('customerId', customerId);
   }, []);
 
   async function updateCartData(cartData) {
@@ -349,9 +347,23 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
 
-  async function OpenModalFunc2(item) {
-    const customerId = localStorage.getItem('customerId');
+  useEffect(() => {
+    console.log({msgShow});
+  }, [msgShow]);
 
+
+
+
+
+
+
+    console.log("msgShow",msgShow);
+
+  async function OpenModalFunc2(item) {
+
+
+
+    const customerId = localStorage.getItem('customerId');
     try {
       if (cartData[item]?.csvFileURL) {
         const response = await fetch(
@@ -373,6 +385,8 @@ export default function AddCartFunc() {
 
         const data = await response.json();
         setBulkAddress(data.result[0]?.addresses);
+    setMsgShow(cartData[item]?.messageData);
+
       }
 
       setIsOpen2(true);
@@ -380,7 +394,10 @@ export default function AddCartFunc() {
       console.error('Error submitting form:', error);
     }
 
- 
+    setMsgShow(cartData[item]?.messageData);
+    setMsgFont(cartData[item]?.fontFamily);
+    setMsgFontSize(cartData[item]?.fontSizeMsg);
+    setMsglastText(cartData[item]?.endText);
 
     if (cartData[item]?.csvBulkData.length > 0) {
       setBulkAddress(cartData[item].csvBulkData);
@@ -390,13 +407,9 @@ export default function AddCartFunc() {
     ) {
       setReciverAddress(cartData[item]?.reciverAddress || '');
     }
-    else {
-      setMsgFont(cartData[item]?.fontFamily);
-      setMsgFontSize(cartData[item]?.fontSizeMsg);
-      setMsgShow(cartData[item]?.messageData);
-      setMsglastText(cartData[item]?.endText);
-    }
   }
+
+
 
   const cardvalFunc = async (item) => {
     let selCardName = data.collection.products.edges[item].node;
@@ -1424,7 +1437,7 @@ export default function AddCartFunc() {
                                   }}
                                 >
                                   {' '}
-                                  {item.msgData}
+                                  {msgShow}
                                 </span>
                                 <br />
                                 <span
@@ -1515,7 +1528,7 @@ export default function AddCartFunc() {
                         }}
                       >
                         {' '}
-                        {msgShow.replace(/\/n/g, '\n')}
+                        {msgShow }
                       </span>
                       <br />
                       <span
