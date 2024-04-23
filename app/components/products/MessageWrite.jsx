@@ -153,11 +153,6 @@ export function MessageWriting({
     setFileData(modifiedData);
   }
 
-
-  console.log("metafields>>>>>",metafields);
-
-
-
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
