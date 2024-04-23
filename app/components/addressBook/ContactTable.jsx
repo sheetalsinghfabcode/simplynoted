@@ -947,10 +947,6 @@ const ContactTable = ({
                     <button
                       onClick={() => {
                         previousPage();
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth', // Make the scroll behavior smooth
-                        });
                       }}
                       disabled={!canPreviousPage}
                     >
@@ -959,10 +955,6 @@ const ContactTable = ({
                     <button
                       onClick={() => {
                         nextPage();
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth', // Make the scroll behavior smooth
-                        });
                       }}
                       disabled={!canNextPage}
                     >

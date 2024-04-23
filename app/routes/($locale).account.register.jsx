@@ -211,14 +211,6 @@ export default function Register() {
               placeholder="Enter First Name"
               aria-label="First Name"
               autoFocus
-              onBlur={(event) => {
-                setNativeFirstNameError(
-                  event.currentTarget.value.length &&
-                    !/^[A-Za-z]+$/.test(event.currentTarget.value)
-                    ? 'Please Enter a valid First Name (only alphabetic characters allowed)'
-                    : null,
-                );
-              }}
             />
             {nativeFirstNameError && (
               <p className="text-red-500 text-xs">
@@ -254,14 +246,7 @@ export default function Register() {
               placeholder="Enter Last Name"
               aria-label="Last Name"
               autoFocus
-              onBlur={(event) => {
-                setNativeLastNameError(
-                  event.currentTarget.value.length &&
-                    !/^[A-Za-z]+$/.test(event.currentTarget.value)
-                    ? 'Please Enter a valid Last Name (only alphabetic characters allowed)'
-                    : null,
-                );
-              }}
+          
             />
             {nativeLastNameError && (
               <p className="text-red-500 text-xs">
@@ -288,6 +273,8 @@ export default function Register() {
                   actionData.formError = '';
                 }
                 setPassword(e.target.value);
+                  setNativePasswordError(false)
+
               }}
               required
               // eslint-disable-next-line jsx-a11y/no-autofocus
