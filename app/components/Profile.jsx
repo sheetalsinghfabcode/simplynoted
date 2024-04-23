@@ -45,8 +45,6 @@ const Profile = ({
         (country) => country.country === value,
       );
 
-
-      
       setAccountDetails((prevAccountDetails) => ({
         ...prevAccountDetails,
         country: value,
@@ -63,8 +61,6 @@ const Profile = ({
   const selectedCountry = location.countries.find(
     (country) => country.country === accountDetails.country,
   );
-
-
 
   const handleSecurityInputChange = (e) => {
     const {name, value} = e.target;
@@ -279,7 +275,7 @@ const Profile = ({
               <div className="px-3 ">
                 <label
                   htmlFor="firstName"
-                     className="block text-gray-700  text-[14px]  font-bold mb-2"
+                  className="block text-gray-700  text-[14px]  font-bold mb-2"
                 >
                   First Name
                 </label>
@@ -371,7 +367,7 @@ const Profile = ({
                   className="appearance-none border rounded md:text-[14px] text-[14px] font-medium  w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
               </div>
-              <div className="px-3">  
+              <div className="px-3">
                 <label
                   htmlFor="firstName"
                   className="block text-gray-700  text-[14px]  font-bold mb-2"
@@ -428,8 +424,6 @@ const Profile = ({
                       </option>
                     ))}
                 </select>
-
-               
               </div>
             </div>
             <div className=" lg:grid grid-cols-1 mt-[1rem] md:grid-cols-2 grid flex-wrap -mx-3">

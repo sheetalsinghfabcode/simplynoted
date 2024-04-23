@@ -207,9 +207,9 @@ export function MenuDrawer({ isOpen, onClose, menu }) {
 }
 
 function MenuMobileNav({ menu, onClose }) {
-  const [isInitialRender, setIsInitialRender] = useState(true);
   const {
     customerId,
+    setCustomerId,
     setActiveTab,
     setAccountTabName,
     setIsAccountLoader,
@@ -227,6 +227,10 @@ function MenuMobileNav({ menu, onClose }) {
   const [showAboutLeft, setShowAboutLeft] = useState(false);
   const [showSendCardLeft, setShowSendCardLeft] = useState(false);
   
+  useEffect(() => {
+    setCustomerId(localStorage.getItem('customerId'));
+  }, []);
+
   
   const handleChangeAbout = () => {
     setShowAbout(!showAbout);    
