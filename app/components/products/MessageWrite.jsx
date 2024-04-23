@@ -154,6 +154,11 @@ export function MessageWriting({
   }
 
 
+
+  console.log("standardFontVal>>>",standardFontVal)
+
+
+
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
@@ -1046,7 +1051,7 @@ function csvToJson(csv) {
   }
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {

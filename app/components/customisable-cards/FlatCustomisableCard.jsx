@@ -190,7 +190,6 @@ export default function FlatCustomisableCard({
           observingData.isFooter &&
           footerData.isImageSelected
         ) {
-          // console.log("footerData.imageBlobUrl",footerData.imageBlobUrl)
           imageFile = await blobUrlToFileObject(
             footerData.imageBlobUrl,
             `${customerId}-flat-front-image`,

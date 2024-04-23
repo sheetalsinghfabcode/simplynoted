@@ -235,6 +235,10 @@ export default function Product() {
     showBulkOnEdit > 0 || csvFileUrl || datafornav?.search == '?select=Bulk' ? true : false,
   );
 
+
+  console.log("datafornav.state?.data?",datafornav.state?.data)
+
+
   const {productshow, setProductShow,showSignScreen,
     setShowSignScreen,stateCheckCustomerId,
     setStateCheckCustomerId} = useStateContext();
@@ -251,6 +255,7 @@ export default function Product() {
     const urlParams = new URLSearchParams(window?.location.search);
     parameterValue = urlParams.get('select');
   }
+
 
   useEffect(() => {
     let result = product.id.replace(/[^0-9]/g, '');
@@ -368,6 +373,7 @@ export default function Product() {
         <AddCart
           show={show}
           data={data}
+          editFontFamily={editFontFamily}
           productData={product.variants.nodes[0]}
           editOrderValue={editOrderValue}
           shippingData={shippingData?.product}

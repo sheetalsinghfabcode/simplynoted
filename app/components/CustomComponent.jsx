@@ -54,7 +54,7 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
       ) : (
         <div
           className={`flex flex-col gap-2 bg-[white] ${
-            product.id === Number(stateval) && 'hidden'
+            product?.id === Number(stateval) && 'hidden'
           } shadow-lg relative`}
           onMouseEnter={() => setShowDeleteICon(true)}
           onMouseLeave={() => setShowDeleteICon(false)}
