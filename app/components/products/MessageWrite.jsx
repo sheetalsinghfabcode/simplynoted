@@ -48,10 +48,16 @@ export function MessageWriting({
   editShippingDate,
   showBulkOnEdit,
 }) {
-  const INITIAL_INPUT_CSS={
-    initailFontSize:'45px',
-    initalLineHeight:'45px',
-  }
+  const INITIAL_INPUT_CSS = {
+    initailFontSize: 
+      (metafields.footer ||
+        metafields.header ||
+        qrValue?.length > 0) ? '34px' : '45px',
+    initalLineHeight: 
+      (metafields.footer ||
+        metafields.header ||
+        qrValue?.length > 0) ? '34px' : '45px',
+  };
   const {
     setAddressForm,
     addressForm,
@@ -84,7 +90,7 @@ export function MessageWriting({
   const [instructionModal, setInstructionModal] = useState(false);
   const [loader, setLoader] = useState(false);
   const [aiTextLoader, setAiTestLoader] = useState(false);
-  const [fontSize, setFontSize] = useState(editFontSize ? editFontSize : '');
+  const [fontSize, setFontSize] = useState(editFontSize ? editFontSize : INITIAL_INPUT_CSS.initailFontSize);
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
@@ -99,13 +105,13 @@ export function MessageWriting({
   const [errorMessage, setErrorMessage] = useState(false);
   const [onDelTemp, setOnDelTemp] = useState(false);
   const [lineHeight, setLineHeight] = useState(
-    editLineHeight ? editLineHeight : '',
+    editLineHeight ? editLineHeight : INITIAL_INPUT_CSS.initalLineHeight,
   );
   const [signOffFontSize, setSignOffFontSize] = useState(
-    editSignOffFontSize ? editSignOffFontSize : '',
+    editSignOffFontSize ? editSignOffFontSize : INITIAL_INPUT_CSS.initailFontSize,
   );
   const [signOffLineHeight, setSignOffLineHeight] = useState(
-    editSignOffLineHeight ? editSignOffLineHeight : '',
+    editSignOffLineHeight ? editSignOffLineHeight : INITIAL_INPUT_CSS.initalLineHeight,
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stateCheckCart, setStateCheckCart] = useState(false);
@@ -542,9 +548,9 @@ export function MessageWriting({
   function processCustomMessageInput() {
     if (!mainMessageBox) return;
     mainMessageBox.style.fontSize = `${isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize}`
-    mainMessageBox.style.lineHeight = `${isFirstTime ? editLineHeight : INITIAL_INPUT_CSS.initailFontSize}`;
-    setFontSize(isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize);
-    setLineHeight(isFirstTime ? editLineHeight  : INITIAL_INPUT_CSS.initalLineHeight);
+    mainMessageBox.style.lineHeight = `${isFirstTime ? editLineHeight : INITIAL_INPUT_CSS.initalLineHeight}`;
+    // setFontSize(isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize);
+    // setLineHeight(isFirstTime ? editLineHeight  : INITIAL_INPUT_CSS.initalLineHeight);
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
     setIsFirstTime(false);
   }
@@ -559,8 +565,10 @@ export function MessageWriting({
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-    isOverflowing = innerContainer.clientHeight >= outerContainer.clientHeight;
+console.log("innerContainer.clientHeight",innerContainer.clientHeight)
+    isOverflowing = innerContainer.clientHeight > outerContainer.clientHeight;
     // console.log({isOverflowing});
+
     if (!innerContainer || !outerContainer || !isOverflowing) return;
 
     const heightDifference =
@@ -579,6 +587,7 @@ export function MessageWriting({
 
     const fontSize = parseFloat(window.getComputedStyle(innerContainer).fontSize);
     const lineHeight = parseFloat(window.getComputedStyle(innerContainer).lineHeight);
+
     innerContainer.style.fontSize =
       parseFloat(fontSize) - fontSizeDecrement + 'px';
     innerContainer.style.lineHeight =
@@ -589,8 +598,8 @@ export function MessageWriting({
       setLineHeight(innerContainer.style.lineHeight);
       // setSignOffFontSize(innerContainer.style.fontSize);
       // setSignOffLineHeight(innerContainer.style.lineHeight);
-      console.log(innerContainer.style.fontSize,"innerContainer.style.fontSize")
-    }
+
+  }
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
@@ -1835,7 +1844,7 @@ function csvToJson(csv) {
               metafields.header.data && <ShowHeaderComp />}
             <div
               id="outer"
-              className="outerr border border-[#E5E5E5] rounded custom-product-shadow h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
+              className="outerr border border-[#E5E5E5] rounded flex flex-col justify-between custom-product-shadow h-[301px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
               {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
               <div
@@ -1885,7 +1894,7 @@ function csvToJson(csv) {
                 <div
                   id="messageBoxID"
                   ref={ref1}
-                  className="output pt-[3px] pl-[20px] pr-[20px] text-[#0040ac] relative"
+                  className="output  pl-[20px] pr-[20px] text-[#0040ac] relative"
                   style={{
                     fontFamily: fontFamilyName
                       ? fontFamilyName
