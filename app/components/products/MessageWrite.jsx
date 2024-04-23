@@ -131,7 +131,7 @@ export function MessageWriting({
   const [minDateCheck, setMinDateCheck] = useState(false);
   const [errorCustomText, setErrorCustomText] = useState(false);
   const [collectionId, setCollectionId] = useState('');
-
+  const [isFirstTime, setIsFirstTime] = useState(editFontSize && editLineHeight && true);
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -497,6 +497,7 @@ export function MessageWriting({
       setFontSize(INITIAL_INPUT_CSS.initailFontSize);
       setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
     }
+    
   }, [name, fontFamilyName]);
 
   useEffect(() => {
@@ -531,11 +532,12 @@ export function MessageWriting({
   }
   function processCustomMessageInput() {
     if (!mainMessageBox) return;
-    mainMessageBox.style.fontSize = INITIAL_INPUT_CSS.initailFontSize;
-    mainMessageBox.style.lineHeight = INITIAL_INPUT_CSS.initalLineHeight;
-    setFontSize(INITIAL_INPUT_CSS.initailFontSize);
-    setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
+    mainMessageBox.style.fontSize = `${isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize}`
+    mainMessageBox.style.lineHeight = `${isFirstTime ? editLineHeight : INITIAL_INPUT_CSS.initailFontSize}`;
+    setFontSize(isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize);
+    setLineHeight(isFirstTime ? editLineHeight  : INITIAL_INPUT_CSS.initalLineHeight);
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
+    setIsFirstTime(false);
   }
 
   function processSignOffInput() {
@@ -566,17 +568,19 @@ export function MessageWriting({
       lineHeightDecrement = 5;
     }
 
-    const fontSize = window.getComputedStyle(innerContainer).fontSize;
-    const lineHeight = window.getComputedStyle(innerContainer).lineHeight;
+    const fontSize = parseFloat(window.getComputedStyle(innerContainer).fontSize);
+    const lineHeight = parseFloat(window.getComputedStyle(innerContainer).lineHeight);
     innerContainer.style.fontSize =
       parseFloat(fontSize) - fontSizeDecrement + 'px';
     innerContainer.style.lineHeight =
       parseFloat(lineHeight) - lineHeightDecrement + 'px';
     if (resizeSelection === 'customTextResizing') {
+     
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
       // setSignOffFontSize(innerContainer.style.fontSize);
       // setSignOffLineHeight(innerContainer.style.lineHeight);
+      console.log(innerContainer.style.fontSize,"innerContainer.style.fontSize")
     }
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
@@ -702,6 +706,7 @@ function csvToJson(csv) {
       'City',
       'State/Province',
       'Postal Code',
+      'Country'
     ];
 
     const alphabetPattern = /^[A-Za-z]+$/;
