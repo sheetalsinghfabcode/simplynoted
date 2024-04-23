@@ -706,6 +706,7 @@ function csvToJson(csv) {
       'City',
       'State/Province',
       'Postal Code',
+      'Country'
     ];
 
     const alphabetPattern = /^[A-Za-z]+$/;
