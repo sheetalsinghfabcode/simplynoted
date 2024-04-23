@@ -154,6 +154,11 @@ export function MessageWriting({
   }
 
 
+
+  console.log("standardFontVal>>>",standardFontVal)
+
+
+
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);

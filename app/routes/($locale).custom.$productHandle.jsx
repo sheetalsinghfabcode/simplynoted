@@ -89,7 +89,7 @@ export default function CustomProducts() {
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
   const [errorVal, setErrorVal] = useState([]);
-  const [fontFamilyName, setFontFamily] = useState();
+  const [fontFamilyName, setFontFamily] = useState(editFontFamily);
   const [metafields, setMetafields] = useState([]);
   const [customProductData, setCustomProductData] = useState('');
   const [imageShow, setImageShow] = useState(0);
@@ -101,6 +101,7 @@ export default function CustomProducts() {
     const urlParams = new URLSearchParams(window?.location.search);
     parameterValue = urlParams.get('select');
   }
+
 
   // useEffect(() => {
   //   let result =  product.id.replace(/[^0-9]/g,"");
@@ -186,6 +187,7 @@ export default function CustomProducts() {
     localStorage.removeItem('reqFielddInCart');
     setLocationValue(true);
   }, [datafornav.pathname]);
+
 
   return (
     <div className="relative">
@@ -332,6 +334,7 @@ export default function CustomProducts() {
           editOrderValue={editOrderValue}
           shippingData={shippingData?.product}
           fontFamilyName={fontFamilyName}
+          editFontFamily={editFontFamily}
           customFontName={customFontName}
           variantsVal={customProductData}
           metafields={metafields?metafields:null}

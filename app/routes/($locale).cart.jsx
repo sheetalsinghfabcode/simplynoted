@@ -27,7 +27,7 @@ let storedDataString, storedDataArray;
 
 export async function loader({context, request}) {
   const StripeKey =
-    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+    'pk_test_51P8brGSDHYyyIzPesKc1pGB2w9NmB38efSuM4p9pzwYE0srizZM14SDiJdqdS7yIChlBVMw8YYcNYpVTNmuwnL7i00huEjlM5Z';
 
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
@@ -85,9 +85,6 @@ export default function AddCartFunc() {
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
 
-  
-  
-
   let customerId;
 
   useEffect(() => {
@@ -119,6 +116,9 @@ export default function AddCartFunc() {
   useEffect(() => {
     customerId = localStorage.getItem('customerId');
   }, []);
+
+
+
 
   async function updateCartData(cartData) {
     const customerId = localStorage.getItem('customerId');
@@ -347,20 +347,9 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
 
-  useEffect(() => {
-    console.log({msgShow});
-  }, [msgShow]);
 
-
-
-
-
-
-
-    console.log("msgShow",msgShow);
 
   async function OpenModalFunc2(item) {
-
 
 
     const customerId = localStorage.getItem('customerId');
@@ -385,8 +374,7 @@ export default function AddCartFunc() {
 
         const data = await response.json();
         setBulkAddress(data.result[0]?.addresses);
-    setMsgShow(cartData[item]?.messageData);
-
+        setMsgShow(cartData[item]?.messageData);
       }
 
       setIsOpen2(true);
@@ -408,8 +396,6 @@ export default function AddCartFunc() {
       setReciverAddress(cartData[item]?.reciverAddress || '');
     }
   }
-
-
 
   const cardvalFunc = async (item) => {
     let selCardName = data.collection.products.edges[item].node;
@@ -1528,7 +1514,7 @@ export default function AddCartFunc() {
                         }}
                       >
                         {' '}
-                        {msgShow }
+                        {msgShow}
                       </span>
                       <br />
                       <span
