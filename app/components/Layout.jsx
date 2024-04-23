@@ -231,7 +231,6 @@ function MenuMobileNav({ menu, onClose }) {
     setCustomerId(localStorage.getItem('customerId'));
   }, []);
 
-  
   const handleChangeAbout = () => {
     setShowAbout(!showAbout);    
     setTimeout(() => {
@@ -287,7 +286,7 @@ function MenuMobileNav({ menu, onClose }) {
   // };
 
   return (
-    <div className="">
+    <div className=" xl:hidden block">
       <nav className="grid pb-6 sm:pb-8 pt-[0px]">
         {/* Top level menu items */}
         {(menu?.items || []).map((item) => (

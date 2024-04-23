@@ -736,8 +736,16 @@ const ManageSubscription = () => {
                               onClickFunction={() => {
                                 if (stripeCollection.stripe?.isAutorenew) {
                                   setAutoModal(true);
+                                  window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth',
+                                  });
                                 } else {
                                   setRestartAutoNew(true);
+                                  window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth',
+                                  });
                                 }
                               }}
                               text={
@@ -803,6 +811,10 @@ const ManageSubscription = () => {
                                       text="Update Card"
                                       className="bg-[#ef6e6e] rounded-[9px] md:w-[190px] w-[130px] md:h-[45px] h-[38px] text-white text-[13px]"
                                       onClickFunction={() => {
+                                        window.scrollTo({
+                                          top: 0,
+                                          behavior: 'smooth',
+                                        });
                                         someEvent()
                                         setAddCreditModal(false);
                                         setPaymentId(item.paymentId);
@@ -838,6 +850,10 @@ const ManageSubscription = () => {
                           <DynamicButton
                             onClickFunction={() => {
                               someEvent()
+                              window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
                               setAddCreditModal(true);
                               setUpdateModal(true);
                             }}

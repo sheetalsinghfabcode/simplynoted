@@ -29,13 +29,13 @@ export function Drawer({heading, open, onClose, openFrom = 'right', children}) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-25" />
+          <div className="fixed inset-0 bg-black xls:bg-opacity-0 bg-opacity-25" />
         </Transition.Child>
 
         <div className="fixed inset-0">
           <div className="absolute inset-0 overflow-hidden">
             <div
-              className={`fixed inset-y-0 flex max-w-full ${
+              className={`fixed inset-y-0 xls:hidden block flex max-w-full ${
                 openFrom === 'right' ? 'right-0' : ''
               }`}
             >
