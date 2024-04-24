@@ -1,5 +1,6 @@
 import DynamicButton from '../DynamicButton';
-import {useEffect} from 'react';
+import {useEffect } from 'react';
+
 
 const WalletPlans = ({
   WalletData,
@@ -50,6 +51,7 @@ const WalletPlans = ({
       setSubscriptionTitle('Free');
     }
   }, [stripeCollection]);
+
 
   return (
     <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
@@ -104,10 +106,13 @@ const WalletPlans = ({
                         ) {
                           setSubscription(subscriptionMetafield?.value || 0);
                         } else if (
-                          stripeCollection.stripe?.subscription !==
+                          stripeCollection.stripe?.subscription !=
                           product.node.title
                         ) {
                           setSubscription(subscriptionMetafield?.value || 0);
+                        }
+                        else {
+                          setSubscription(0);
                         }
 
                         setSubscriptionProduct(product.node.id);
@@ -191,9 +196,9 @@ const WalletPlans = ({
         <DynamicButton
           text="Continue"
           nextArrow={true}
-          disabled={amount == 0} // Here's the condition to disable the button
+          disabled={amount == 0 } // Here's the condition to disable the button
           className={`bg-[#0c5699] ${
-            amount == 0 && 'cursor-not-allowed'
+            amount == 0  && 'cursor-not-allowed'
           } flex-row-reverse min-w-[190px] font-bold max-w-[190px] text-[16px] rounded-0 border-2 text-white border-solid border-[#000] py-[16px] px-[30px] border-black`}
           onClickFunction={() => {
             setWalletPlan(false);

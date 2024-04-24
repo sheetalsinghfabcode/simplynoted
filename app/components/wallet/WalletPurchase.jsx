@@ -17,8 +17,7 @@ const WalletPurchase = ({
     subscriptionPrice > 0
       ? (parseFloat(subscriptionPrice) + parseFloat(amount)).toFixed(2)
       : parseFloat(amount).toFixed(2);
-  setFinalPrice(total);
-
+        setFinalPrice(total);
 
   return (
     <div className="max-w-[1366px] mx-auto px-[20px]  py-[40px] ml-[14px] mr-[14px] bg-white">
@@ -26,28 +25,37 @@ const WalletPurchase = ({
         <div className="flex justify-center">
           <DynamicButton
             text={`${
-              subscriptionTitle ? subscriptionTitle : 'Free' 
+              subscriptionTitle ? subscriptionTitle : 'Free'
             } Plan Packages`}
-            className="!bg-[#EF6E6E] font-karla !p-[18px] whitespace-nowrap  mt-[-9px] sm:!h-[45px]  w-full sm:max-w-[80%] md:max-w-[50%]  uppercase md:text-[16px] text-[12px]"
+            className="!bg-[#EF6E6E] font-karla !p-[18px] whitespace-nowrap  mt-[-9px] sm:!h-[45px]  w-full sm:max-w-[80%] md:max-w-[55%]  uppercase md:text-[16px] text-[12px]"
           />
         </div>
-        {subscriptionPrice > 0 &&
-        <div className="flex justify-between items-center mt-[27px] md:mt-[16px]  text-[#001a5f]">
-          <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">Plan Amount</span>
-          <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
-            ${subscription === 'Always Free' || 0 ? 0 : Number(subscriptionPrice).toFixed(2)}
-          </span>
-        </div>
-}
+        {subscriptionPrice > 0 && (
+          <div className="flex justify-between items-center mt-[27px] md:mt-[16px]  text-[#001a5f]">
+            <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
+              Plan Amount
+            </span>
+            <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
+              $
+              {subscription === 'Always Free' || 0
+                ? 0
+                : Number(subscriptionPrice).toFixed(2)}
+            </span>
+          </div>
+        )}
         <div className="flex justify-between items-center mt-[16px]  text-[#001a5f]">
           <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
             Selected Prepaid Package: {selectedPlan}
           </span>
-          <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">${amount || 0}</span>
+          <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
+            ${amount || 0}
+          </span>
         </div>
 
         <div className="flex justify-between items-center py-[10px] mt-[10px] border-y border-solid border-[#cfcfcf] text-[16px] font-medium text-[#001a5f]">
-          <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">Total</span>
+          <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
+            Total
+          </span>
           <span className="md:text-[16px] text-[#001a5f] font-medium text-[12px]">
             ${subscription === 'Always Free' ? amount : total}
           </span>
