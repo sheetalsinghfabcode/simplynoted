@@ -56,7 +56,7 @@ export async function loader({request, context, params}) {
   const isAccountPage = /^\/account\/?$/.test(pathname);
 
   const StripeKey =
-    'pk_test_51P8brGSDHYyyIzPesKc1pGB2w9NmB38efSuM4p9pzwYE0srizZM14SDiJdqdS7yIChlBVMw8YYcNYpVTNmuwnL7i00huEjlM5Z';
+    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   let WalletData;
   try {
     WalletData = await fetchWalletData(context);
