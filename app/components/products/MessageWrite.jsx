@@ -776,27 +776,27 @@ function csvToJson(csv) {
               emptyKeys.push(key);
             }
           }
-          if (obj[type].toLowerCase() !== 'recipient' && obj[type].toLowerCase() !=='sender') {
-            errMsg.push(`'${type}' at row ${index+1} should be either 'Sender' or 'Recipient `);
-          }
-          if (alphabetPattern.test(obj[fnameField]) == false) {
-            errMsg.push(`'${fnameField}' at row ${index+1} contains invalid characters `);
-          }
-          if (alphabetPattern.test(obj[lnameField]) == false) {
-            errMsg.push(`'${lnameField}' at row ${index+1} contains invalid characters `);
-          }
-          if (obj[email] && emailPattern.test(obj[email]) == false) {
-            errMsg.push(`'${email}' at row ${index+1} should follow email format (name@company.com)`);
-          }
-          if (obj[phoneNumber] && phoneNumberPattern.test(obj[phoneNumber]) == false) {
-            errMsg.push(`'${phoneNumber}' Number at row ${index+1} should be Number Only `);
-          }
-          if (obj[anniversary] && dateFormat.test(obj[anniversary]) == false) {
-            errMsg.push(`'${anniversary}' at row ${index+1} should follow MM/DD/YYYY format `);
-          }
-          if (obj[birthday] && dateFormat.test(obj[birthday]) == false) {
-            errMsg.push(`'${birthday}' at row ${index+1} should follow MM/DD/YYYY format `);
-          }
+          // if (obj[type].toLowerCase() !== 'recipient' && obj[type].toLowerCase() !=='sender') {
+          //   errMsg.push(`'${type}' at row ${index+1} should be either 'Sender' or 'Recipient `);
+          // }
+          // if (alphabetPattern.test(obj[fnameField]) == false) {
+          //   errMsg.push(`'${fnameField}' at row ${index+1} contains invalid characters `);
+          // }
+          // if (alphabetPattern.test(obj[lnameField]) == false) {
+          //   errMsg.push(`'${lnameField}' at row ${index+1} contains invalid characters `);
+          // }
+          // if (obj[email] && emailPattern.test(obj[email]) == false) {
+          //   errMsg.push(`'${email}' at row ${index+1} should follow email format (name@company.com)`);
+          // }
+          // if (obj[phoneNumber] && phoneNumberPattern.test(obj[phoneNumber]) == false) {
+          //   errMsg.push(`'${phoneNumber}' Number at row ${index+1} should be Number Only `);
+          // }
+          // if (obj[anniversary] && dateFormat.test(obj[anniversary]) == false) {
+          //   errMsg.push(`'${anniversary}' at row ${index+1} should follow MM/DD/YYYY format `);
+          // }
+          // if (obj[birthday] && dateFormat.test(obj[birthday]) == false) {
+          //   errMsg.push(`'${birthday}' at row ${index+1} should follow MM/DD/YYYY format `);
+          // }
           if (
             obj[countryCheck] === 'USA' ||
             obj[countryCheck].toLowerCase() === '' ||
@@ -814,11 +814,7 @@ function csvToJson(csv) {
           } else {
             nonUSCount++;
           }
-          // if (mailText.test(obj[emailValid]) == false) {
-          //   errMsg.push(
-          //     `Index: ${index}, 'email' is not valid (missing @ or not ending with .com).`,
-          //   );
-          // }
+     
 
           if (emptyKeys.length > 0) {
             errMsg.push(

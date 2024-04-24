@@ -470,58 +470,59 @@ const ContactTable = ({
         const endIdx = Math.min((i + 1) * batchSize, cleanedData.length);
         const batchData = cleanedData.slice(startIdx, endIdx);
         // Validate missing fields in the current batch
-        for (const data of batchData) {
-          const index = batchData.indexOf(data);
-          const missingFields = [];
-          for (const field of requiredFields) {
-            if (!data[field] || data[field].trim() === '') {
-              missingFields.push(`${field} is empty field`);
-            } else if (field === 'First Name' || field === 'Last Name') {
-              if (!namePattern.test(data[field])) {
-                missingFields.push(`${field} contains invalid characters`);
-              }
-            } 
-            else if (field === 'Type') {
-              if (
-                data[field].toLowerCase() !== 'recipient' &&
-                data[field].toLowerCase() !== 'sender'
-              ) {
-                missingFields.push(`${field} should be either 'Sender' or 'Recipient`);
-              }
-            }
-          }
+        // for (const data of batchData) {
+        //   const index = batchData.indexOf(data);
+        //   const missingFields = [];
+        //   for (const field of requiredFields) {
+        //     if (!data[field] || data[field].trim() === '') {
+        //       missingFields.push(`${field} is empty field`);
+        //     } 
+        //     // else if (field === 'First Name' || field === 'Last Name') {
+        //     //   if (!namePattern.test(data[field])) {
+        //     //     missingFields.push(`${field} contains invalid characters`);
+        //     //   }
+        //     // } 
+        //     // else if (field === 'Type') {
+        //     //   if (
+        //     //     data[field].toLowerCase() !== 'recipient' &&
+        //     //     data[field].toLowerCase() !== 'sender'
+        //     //   ) {
+        //     //     missingFields.push(`${field} should be either 'Sender' or 'Recipient`);
+        //     //   }
+        //     // }
+        //   }
 
-          if (data['Email']) {
-              if (!emailPattern.test(data['Email'])) {
-                missingFields.push(`Email should follow email format (name@company.com)`);
-              }
-            }
-            if (data['Phone']) {
-              if (!phoneNumberPattern.test(data['Phone'])) {
-                missingFields.push(`Phone Number should be Number Only`);
-              }
-            }
-            if (data['Anniversary']) {
-              if (!dateFormat.test(data['Anniversary'])) {
-                missingFields.push(`Anniversary Date should follow MM/DD/YYYY format`);
-              }
-            }
-            if (data['Birthday']) {
-              if (!dateFormat.test(data['Birthday'])) {
-                missingFields.push(`Birthday Date should follow MM/DD/YYYY format`);
-              }
-            }
+        //   // if (data['Email']) {
+        //   //     if (!emailPattern.test(data['Email'])) {
+        //   //       missingFields.push(`Email should follow email format (name@company.com)`);
+        //   //     }
+        //   //   }
+        //   //   if (data['Phone']) {
+        //   //     if (!phoneNumberPattern.test(data['Phone'])) {
+        //   //       missingFields.push(`Phone Number should be Number Only`);
+        //   //     }
+        //   //   }
+        //   //   if (data['Anniversary']) {
+        //   //     if (!dateFormat.test(data['Anniversary'])) {
+        //   //       missingFields.push(`Anniversary Date should follow MM/DD/YYYY format`);
+        //   //     }
+        //   //   }
+        //   //   if (data['Birthday']) {
+        //   //     if (!dateFormat.test(data['Birthday'])) {
+        //   //       missingFields.push(`Birthday Date should follow MM/DD/YYYY format`);
+        //   //     }
+        //   //   }
             
-          if (missingFields.length > 0) {
-          setSelectedFile(null)
+        //   // if (missingFields.length > 0) {
+        //   // setSelectedFile(null)
 
-            errors.push(
-              ` In row ${index+1}: ${missingFields.join(
-                ', ',
-              )}`,
-            );
-          }
-        }
+        //   //   errors.push(
+        //   //     ` In row ${index+1}: ${missingFields.join(
+        //   //       ', ',
+        //   //     )}`,
+        //   //   );
+        //   // }
+        // }
 
         if (errors.length > 0) {
           // If any missing fields found, display error and halt further processing
