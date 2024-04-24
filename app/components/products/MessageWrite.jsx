@@ -712,12 +712,12 @@ function csvToJson(csv) {
 
     let reqField = [
       'Type',
-      'First Name',
-      'Last Name',
-      'Address',
-      'City',
-      'State/Province',
-      'Postal Code',
+      // 'First Name',
+      // 'Last Name',
+      // 'Address',
+      // 'City',
+      // 'State/Province',
+      // 'Postal Code',
       'Country'
     ];
 
