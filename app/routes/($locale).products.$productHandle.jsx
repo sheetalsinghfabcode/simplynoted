@@ -236,7 +236,6 @@ export default function Product() {
   );
 
 
-  console.log("datafornav.state?.data?",datafornav.state?.data)
 
 
   const {productshow, setProductShow,showSignScreen,

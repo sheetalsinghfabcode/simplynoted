@@ -99,6 +99,7 @@ const Accordion = ({
           }),
         },
       );
+
       const json = await res.json();
       if (json) {
         await createSubscription(json);

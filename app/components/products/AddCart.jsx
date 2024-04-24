@@ -125,7 +125,6 @@ export function AddCart({
 
 
 
-    console.log("editOrderValue>>>>",editOrderValue)
 
 
   useEffect(() => {
@@ -357,7 +356,6 @@ export function AddCart({
   }, [apiVariantID]);
 
 
-    console.log("fontFamilyName>>>>>>",fontFamilyName)
 
   const navigate = useNavigate();
   async function onClickAddCart() {
@@ -494,7 +492,6 @@ export function AddCart({
   }
 
 
-  console.log("fontFamilyName>>>",fontFamilyName)
 
   function onClickOFAddCartBtn() {
 

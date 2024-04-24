@@ -13,7 +13,7 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
     setWalletPlan,
     setWalletPayment,
     setWalletPurchase,
-    setBirthdayAutomation
+    setBirthdayAutomation,
   } = useStateContext();
 
   useEffect(() => {
@@ -25,18 +25,24 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    setBirthdayAutomation(true)
+    setBirthdayAutomation(true);
     const prevPage = localStorage.getItem('previousPage');
     if (prevPage && prevPage !== location.pathname) {
       setPreviousPage(prevPage);
     }
-    if(location.pathname.includes('birthday') && location.pathname.includes('products')){
-      setBirthdayAutomation(false)
+    if (
+      location.pathname.includes('birthday') &&
+      location.pathname.includes('products')
+    ) {
+      setBirthdayAutomation(false);
     }
     localStorage.setItem('previousPage', location.pathname);
   }, [location.pathname]);
 
   let ab = ['collections', 'pages', 'policies'];
+
+  const formattedPreviousPage = previousPage?.split('/')?.pop()?.replace(/-/g, ' ')?.replace(/\b\w/g, c => c?.toUpperCase());
+
 
   return (
     <div className="breadcrumb inline-block pt-[20px] text-[#010101] capitalize font-medium ">
@@ -86,67 +92,92 @@ const Breadcrumbs = ({additionalBreadcrumbs}) => {
                     to={previousPage}
                     className="ms-1 text-xs sm:text-sm font-medium  hover:text-blue-600 md:ms-2 "
                   >
-                    {previousPage.split('/').pop()}
+                    {formattedPreviousPage}
                   </Link>
                 </div>
               </li>
             )}
-   {pathnames.map((name, index) => {
-            let breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
-            if (['collections', 'products', 'pages', 'policies', 'custom', 'journal','blogs'].includes(name)) {
-              return null; // Skip collections, products, etc.
-            }
-            if (location.pathname.includes('orders')) {
-              if (location.pathname.includes('orders') && /\d/.test(location.pathname) && name.split(' ').filter((item, index, arr) => arr.indexOf(item) === index).length === 1) {
-                return null; // Skip rendering breadcrumbs for paths containing "orders" with a number and where the name appears only once
+          {pathnames
+            .filter((name) => name.trim() !== '')
+            .map((name, index) => {
+              // Replace hyphens with spaces and capitalize each word
+              let formattedName = name
+                .replace(/-/g, ' ')
+                .replace(/\b\w/g, (c) => c.toUpperCase());
+              let breadcrumbPath = `/${pathnames
+                .slice(0, index + 1)
+                .join('/')}`;
+              if (
+                [
+                  'collections',
+                  'products',
+                  'pages',
+                  'policies',
+                  'custom',
+                  'journal',
+                  'blogs',
+                ].includes(name)
+              ) {
+                return null; // Skip collections, products, etc.
               }
-            }
-            // Replace "news" with "articles" and "video" with "tutorial"
-            if (name === 'news') name = 'articles';
-            if (name === 'Video') name = 'tutorial';
-            const isLast = index === pathnames.length - 1;
-            return (
-              <Fragment key={index}>
-                <li
-                  onClick={() => {
-                    setWalletPlan(false);
-                    setIsCardTypeSelectionPage(true);
-                    setProductShow(true);
-                  }}
-                  
-                  className="inline-flex items-center"
-                >
-                  <svg
-                    className="rtl:rotate-180 mb-[1px]  w-3 h-3 mx-1 "
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
+              if (location.pathname.includes('orders')) {
+                if (
+                  location.pathname.includes('orders') &&
+                  /\d/.test(location.pathname) &&
+                  name
+                    .split(' ')
+                    .filter((item, index, arr) => arr.indexOf(item) === index)
+                    .length === 1
+                ) {
+                  return null; // Skip rendering breadcrumbs for paths containing "orders" with a number and where the name appears only once
+                }
+              }
+              // Replace "news" with "articles" and "video" with "tutorial"
+              if (formattedName === 'News') formattedName = 'Articles';
+              if (formattedName === 'Video') formattedName = 'Tutorial';
+              const isLast = index === pathnames.length - 1;
+              return (
+                <Fragment key={index}>
+                  <li
+                    onClick={() => {
+                      setWalletPlan(false);
+                      setIsCardTypeSelectionPage(true);
+                      setProductShow(true);
+                    }}
+                    className="inline-flex items-center"
                   >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  {((isLast && additionalBreadcrumbs) || location.pathname.includes("orders")) ? (
-                    <span
-                      // to={breadcrumbPath}
-                      className="inline-flex whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 cursor-pointer"
+                    <svg
+                      className="rtl:rotate-180 mb-[1px]  w-3 h-3 mx-1 "
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
                     >
-                      {name}
-                    </span>
-                  ) : (
-                    <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 cursor-pointer">
-                      {name}
-                    </span>
-                  )}
-                </li>
-              </Fragment>
-            );
-          })}
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m1 9 4-4-4-4"
+                      />
+                    </svg>
+                    {(isLast && additionalBreadcrumbs) ||
+                    location.pathname.includes('orders') ? (
+                      <span
+                        // to={breadcrumbPath}
+                        className="inline-flex whitespace-nowrap items-center text-xs sm:text-sm font-medium  hover:text-blue-600 cursor-pointer"
+                      >
+                        {formattedName}
+                      </span>
+                    ) : (
+                      <span className="ms-1 text-xs sm:text-sm font-normal  md:ms-2 cursor-pointer">
+                        {formattedName}
+                      </span>
+                    )}
+                  </li>
+                </Fragment>
+              );
+            })}
 
           {additionalBreadcrumbs &&
             additionalBreadcrumbs.length > 0 &&
