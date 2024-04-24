@@ -28,7 +28,7 @@ const WalletPurchase = ({
             text={`${
               subscriptionTitle ? subscriptionTitle : 'Free' 
             } Plan Packages`}
-            className="!bg-[#EF6E6E] font-karla !p-[18px] whitespace-nowrap  mt-[-9px] sm:!h-[45px]  w-full sm:max-w-[80%] md:max-w-[40%]  uppercase md:text-[16px] text-[12px]"
+            className="!bg-[#EF6E6E] font-karla !p-[18px] whitespace-nowrap  mt-[-9px] sm:!h-[45px]  w-full sm:max-w-[80%] md:max-w-[50%]  uppercase md:text-[16px] text-[12px]"
           />
         </div>
         {subscriptionPrice > 0 &&

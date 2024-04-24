@@ -99,6 +99,8 @@ const Accordion = ({
           }),
         },
       );
+
+      debugger
       const json = await res.json();
       if (json) {
         await createSubscription(json);
