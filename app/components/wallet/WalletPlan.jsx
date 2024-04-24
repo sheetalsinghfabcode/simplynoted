@@ -47,131 +47,130 @@ const WalletPlans = ({
 
   useEffect(() => {
     if (stripeCollection?.stripe?.subscriptionStatus === 'canceled') {
-      setSubscriptionTitle("Free")
+      setSubscriptionTitle('Free');
     }
   }, [stripeCollection]);
-
-
 
   return (
     <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
       <div className="flex flex-col md:flex-row overflow-auto">
         {WalletData.collection.products.edges.map((product, index) => (
-            <div
-              key={index}
-              className={`flex-1 p-[20px] ${
-                (subscriptionTitle === product?.node?.title &&   'bg-[#f7b7b7]')   ||
-                (stripeCollection?.stripe?.subscription === product?.node?.title &&
-                  stripeCollection?.stripe?.subscriptionStatus !== 'canceled')
-                  ? 'bg-[#f7b7b7]'
-                  : ''
-              }`}
-            >
-              <DynamicButton
-                text={`${product.node.title} PLAN PREPAID PACKAGES`}
-                className="bg-[#EF6E6E] whitespace-nowrap  text-[14px] sm:text-[18px] rounded-[5px] py-[12px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]   uppercase mx-auto  px-2 text-left"
-              />
-              <div className="flex flex-col gap-[16px]">
-                {product.node.variants.edges
-                  .filter((variant) => variant.node.title !== 'Subscription')
-                  .map((variant, index) => {
-                    const titleMetafield = variant.node.metafields.find(
-                      (metafield) => metafield?.key === 'variant_title',
-                    );
-                    const descriptionMetafield = variant.node.metafields.find(
-                      (metafield) => metafield?.key === 'description',
-                    );
-                    const amountMetafield = variant.node.metafields.find(
-                      (metafield) => metafield?.key === 'card_amount',
-                    );
-                    const subscriptionPriceId = product.node.metafields.find(
-                      (metafield) => metafield?.key === 'strip_link',
-                    );
+          <div
+            key={index}
+            className={`flex-1 p-[20px] ${
+              (subscriptionTitle === product?.node?.title && 'bg-[#f7b7b7]') ||
+              (stripeCollection?.stripe?.subscription ===
+                product?.node?.title &&
+                stripeCollection?.stripe?.subscriptionStatus !== 'canceled')
+                ? 'bg-[#f7b7b7]'
+                : ''
+            }`}
+          >
+            <DynamicButton
+              text={`${product.node.title} PLAN PREPAID PACKAGES`}
+              className="bg-[#EF6E6E] whitespace-nowrap  text-[14px] sm:text-[18px] rounded-[5px] py-[12px] border border-solid border-[#001a5f] md:text-[22px] w-full mb-[24px]   uppercase mx-auto  px-2 text-left"
+            />
+            <div className="flex flex-col gap-[16px]">
+              {product.node.variants.edges
+                .filter((variant) => variant.node.title !== 'Subscription')
+                .map((variant, index) => {
+                  const titleMetafield = variant.node.metafields.find(
+                    (metafield) => metafield?.key === 'variant_title',
+                  );
+                  const descriptionMetafield = variant.node.metafields.find(
+                    (metafield) => metafield?.key === 'description',
+                  );
+                  const amountMetafield = variant.node.metafields.find(
+                    (metafield) => metafield?.key === 'card_amount',
+                  );
+                  const subscriptionPriceId = product.node.metafields.find(
+                    (metafield) => metafield?.key === 'strip_link',
+                  );
 
-                    const subscriptionMetafield = product.node.metafields.find(
-                      (metafield) =>
-                        metafield?.key === 'subscription_plan_price_monthly' &&
-                        product.node.title.toLowerCase() !==
-                          stripeCollection.stripe?.subscription,
-                    );
+                  const subscriptionMetafield = product.node.metafields.find(
+                    (metafield) =>
+                      metafield?.key === 'subscription_plan_price_monthly' &&
+                      product.node.title.toLowerCase() !==
+                        stripeCollection.stripe?.subscription,
+                  );
 
+                  return (
+                    <div
+                      key={index}
+                      onClick={() => {
+                        if (
+                          stripeCollection.stripe?.subscriptionStatus ===
+                          'canceled'
+                        ) {
+                          setSubscription(subscriptionMetafield?.value || 0);
+                        } else if (
+                          stripeCollection.stripe?.subscription !==
+                          product.node.title
+                        ) {
+                          setSubscription(subscriptionMetafield?.value || 0);
+                        }
 
-                    return (
-                      <div
-                        key={index}
-                        onClick={() => {
-                          if (
-                            stripeCollection.stripe?.subscriptionStatus ===
-                            'canceled'
-                          ) {
-                            setSubscription(subscriptionMetafield?.value || 0);
-                          } else if (
-                            stripeCollection.stripe?.subscription !==
-                            product.node.title
-                          ) {
-                            setSubscription(subscriptionMetafield?.value || 0);
-                          }
+                        setSubscriptionProduct(product.node.id);
+                        setPackageProduct(variant.node.id);
+                        setSubscriptionTitle(product.node.title);
+                        setAmount(variant.node.price.amount || 0);
+                        setSubscriptionPriceId(subscriptionPriceId?.value);
+                        handleRadioChange({
+                          target: {
+                            value: `${variant.node.title} ${titleMetafield?.value}`,
+                          },
+                        });
+                      }}
+                      className="flex justify-start p-[20px] bg-white cursor-pointer items-start gap-[16px] border border-solid border-black rounded-[10px]"
+                    >
+                      <input
+                        type="radio"
+                        className="mt-[4px]"
+                        value={`${variant.node.title} ${titleMetafield?.value}`}
+                        checked={
+                          selectedPlan ===
+                          `${variant.node.title} ${titleMetafield?.value}`
+                        }
+                        onChange={() => ''}
+                      />
 
-                          setSubscriptionProduct(product.node.id);
-                          setPackageProduct(variant.node.id);
-                          setSubscriptionTitle(product.node.title);
-                          setAmount(variant.node.price.amount || 0);
-                          setSubscriptionPriceId(subscriptionPriceId?.value);
-                          handleRadioChange({
-                            target: {
-                              value: `${variant.node.title} ${titleMetafield?.value}`,
-                            },
-                          });
-                        }}
-                        className="flex justify-start p-[20px] bg-white cursor-pointer items-start gap-[16px] border border-solid border-black rounded-[10px]"
-                      >
-                        <input
-                          type="radio"
-                          className="mt-[4px]"
-                          value={`${variant.node.title} ${titleMetafield?.value}`}
-                          checked={
-                            selectedPlan ===
-                            `${variant.node.title} ${titleMetafield?.value}`
-                          }
-                          onChange={() => ''}
-                        />
-
-                        <div className="flex flex-col gap-[8px]">
-                          <div className="flex gap-[6px] whitespace-nowrap text-[#001a5f]  items-start">
-                            <span className="sm:text-[15px] text-[11px] font-bold">
-                              {titleMetafield?.value}
-                            </span>
-                            <span className="sm:text-[15px] text-[11px] font-bold">
-                              {variant.node?.title}
-                            </span>
-                          </div>
-                          {descriptionMetafield?.value &&
-                            variant.node.price.amount !== '0.0' && (
-                              <span className="sm:text-[14px] text-[12px] font-medium">
-                                {descriptionMetafield
-                                  ? JSON.parse(descriptionMetafield?.value)
-                                      .children[0].children[0]?.value
-                                  : ''}
-                              </span>
-                            )}
-                          {amountMetafield?.value && (
-                            <span className="md:text-[14px] text-[12px] font-medium">
-                              $
-                              {formatNumberWithCommas(
-                                Number(variant.node.price.amount)
-                              )}
+                      <div className="flex flex-col gap-[8px]">
+                        <div className="flex gap-[6px] whitespace-nowrap text-[#001a5f]  items-start">
+                          <span className="sm:text-[15px] text-[11px] font-bold">
+                            {titleMetafield?.value}
+                          </span>
+                          <span className="sm:text-[15px] text-[11px] font-bold">
+                            {variant.node?.title}
+                          </span>
+                        </div>
+                        {descriptionMetafield?.value &&
+                          variant.node.price.amount !== '0.0' && (
+                            <span className="sm:text-[14px] text-[12px] font-medium">
+                              {descriptionMetafield
+                                ? JSON.parse(descriptionMetafield?.value)
+                                    .children[0].children[0]?.value
+                                : ''}
                             </span>
                           )}
-                        </div>
+
+                        {amountMetafield?.value && (
+                          <span className="md:text-[14px] text-[12px] font-medium">
+                            $
+                            {formatNumberWithCommas(
+                              Number(variant.node.price.amount),
+                            )}
+                          </span>
+                        )}
                       </div>
-                    );
-                  })}
-                <span className="text-[14px] leading-1.3 text-[#000] mt-[16px] font-medium">
-                  {product.node.description}
-                </span>
-              </div>
+                    </div>
+                  );
+                })}
+              <span className="text-[14px] leading-1.3 text-[#000] mt-[16px] font-medium">
+                {product.node.description}
+              </span>
             </div>
-          ))}
+          </div>
+        ))}
       </div>
 
       <div className="mt-[30px]  px-[20px] bg-white  flex flex-col-reverse md:flex-row w-full items-center justify-between gap-[50px]">
@@ -192,14 +191,16 @@ const WalletPlans = ({
         <DynamicButton
           text="Continue"
           nextArrow={true}
-          disabled={amount === 0}
-          className="!bg-[#0c5699]  flex-row-reverse min-w-[190px] font-bold max-w-[190px] text-[16px] !rounded-0 !border-2 text-white border-solid border-[#000] py-[16px] px-[30px] border-black"
+          disabled={amount == 0} // Here's the condition to disable the button
+          className={`bg-[#0c5699] ${
+            amount == 0 && 'cursor-not-allowed'
+          } flex-row-reverse min-w-[190px] font-bold max-w-[190px] text-[16px] rounded-0 border-2 text-white border-solid border-[#000] py-[16px] px-[30px] border-black`}
           onClickFunction={() => {
             setWalletPlan(false);
             setWalletPurchase(true);
             window.scrollTo({
               top: 0,
-              behavior: 'smooth', // Make the scroll behavior smooth
+              behavior: 'smooth',
             });
           }}
         />
