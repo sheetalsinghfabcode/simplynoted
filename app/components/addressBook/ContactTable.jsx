@@ -274,37 +274,31 @@ const ContactTable = ({
     }
   };
 
-
   function csvToJson(csv) {
-
-
     var lines = csv.split('\n');
     var result = [];
-  
+
     var headers = lines[0].split(',');
     for (var i = 1; i < lines.length; i++) {
-        var currentLine = lines[i].trim();
-        // Skip empty lines
-        if (currentLine.length === 0) {
-            continue;
-        }
+      var currentLine = lines[i].trim();
+      // Skip empty lines
+      if (currentLine.length === 0) {
+        continue;
+      }
 
-        // Handle commas inside double quotes
-        var parts = currentLine?.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-        
-        var obj = {};
-        for (var j = 0; j < headers.length; j++) {
-            obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
-        }
-  
-        result.push(obj);
+      // Handle commas inside double quotes
+      var parts = currentLine?.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+      var obj = {};
+      for (var j = 0; j < headers.length; j++) {
+        obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
+      }
+
+      result.push(obj);
     }
-  
+
     return result;
-}
-
-
-
+  }
 
   let file = useRef(null);
 
@@ -359,21 +353,6 @@ const ContactTable = ({
     return cleanedHeaders;
   }
 
-  // function checkCSVFormat(headerRow, requiredHeaders) {
-  //   const headerKeys = Object.keys(headerRow);
-  //   const missingHeaders = [];
-  //   for (let i = 0; i < requiredHeaders.length; i++) {
-  //     const requiredHeader = requiredHeaders[i];
-  //     const headerKey = headerKeys[i];
-
-  //     if (!headerKey || headerKey !== requiredHeader) {
-  //       missingHeaders.push(requiredHeader);
-  //     }
-  //   }
-
-  //   const isValidFormat = missingHeaders.length === 0;
-  //   return {isValidFormat, missingHeaders};
-  // }
 
   const handleUploadClick = async () => {
     setShowLoader(true);
@@ -386,54 +365,28 @@ const ContactTable = ({
 
     const requiredFields = [
       'Type',
-      'First Name',
-      'Last Name',
-      'Address',
-      'City',
-      'State/Province',
-      'Postal Code',
-      'Country'
+      // 'First Name',
+      // 'Last Name',
+      // 'Address',
+      // 'City',
+      // 'State/Province',
+      // 'Postal Code',
+      'Country',
     ];
 
-    // const requiredHeaders = [
-    //   'Type',
-    //   'First Name',
-    //   'Last Name',
-    //   'Address',
-    //   'Address 2',
-    //   'City',
-    //   'State/Province',
-    //   'Country',
-    //   'Postal Code',
-    //   'Phone',
-    //   'Email',
-    //   'Company',
-    //   'Birthday',
-    //   'Anniversary',
-    //   'Custom 1',
-    //   'Custom 2',
-    //   'Custom 3',
-    // ];
-
     const errors = [];
-    const namePattern = /^[A-Za-z]+$/;
-    const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-    const phoneNumberPattern = /^\+?[0-9\-]{6,15}$/;
-    const dateFormat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/;
 
-  
     fileData.forEach((obj, index) => {
       const cleanedHeaders = cleanHeaders(obj);
-      const missingKeys = requiredFields.filter((key) => !(key in cleanedHeaders));
+      const missingKeys = requiredFields.filter(
+        (key) => !(key in cleanedHeaders),
+      );
       if (missingKeys.length > 0) {
         errors.push(missingKeys);
       }
     });
 
-    // const {isValidFormat, missingHeaders} = checkCSVFormat(
-    //   cleanedHeaders,
-    //   requiredHeaders,
-    // );
+  
 
     if (errors.length > 0) {
       setErrorModal(true);
@@ -448,7 +401,6 @@ const ContactTable = ({
     }
 
     const cleanedData = fileData.map((entry) => {
-
       const cleanedEntry = {};
       Object.keys(entry).forEach((key) => {
         const cleanedKey = key?.replace(/"/g, ''); // Remove double quotes from keys
@@ -457,7 +409,6 @@ const ContactTable = ({
       });
       return cleanedEntry;
     });
-
 
     let totalAddresses = cleanedData.length;
 
@@ -469,66 +420,28 @@ const ContactTable = ({
         const startIdx = i * batchSize;
         const endIdx = Math.min((i + 1) * batchSize, cleanedData.length);
         const batchData = cleanedData.slice(startIdx, endIdx);
-        // Validate missing fields in the current batch
-        // for (const data of batchData) {
-        //   const index = batchData.indexOf(data);
-        //   const missingFields = [];
-        //   for (const field of requiredFields) {
-        //     if (!data[field] || data[field].trim() === '') {
-        //       missingFields.push(`${field} is empty field`);
-        //     } 
-        //     // else if (field === 'First Name' || field === 'Last Name') {
-        //     //   if (!namePattern.test(data[field])) {
-        //     //     missingFields.push(`${field} contains invalid characters`);
-        //     //   }
-        //     // } 
-        //     // else if (field === 'Type') {
-        //     //   if (
-        //     //     data[field].toLowerCase() !== 'recipient' &&
-        //     //     data[field].toLowerCase() !== 'sender'
-        //     //   ) {
-        //     //     missingFields.push(`${field} should be either 'Sender' or 'Recipient`);
-        //     //   }
-        //     // }
-        //   }
+        for (const data of batchData) {
+          const index = batchData.indexOf(data);
+          const missingFields = [];
 
-        //   // if (data['Email']) {
-        //   //     if (!emailPattern.test(data['Email'])) {
-        //   //       missingFields.push(`Email should follow email format (name@company.com)`);
-        //   //     }
-        //   //   }
-        //   //   if (data['Phone']) {
-        //   //     if (!phoneNumberPattern.test(data['Phone'])) {
-        //   //       missingFields.push(`Phone Number should be Number Only`);
-        //   //     }
-        //   //   }
-        //   //   if (data['Anniversary']) {
-        //   //     if (!dateFormat.test(data['Anniversary'])) {
-        //   //       missingFields.push(`Anniversary Date should follow MM/DD/YYYY format`);
-        //   //     }
-        //   //   }
-        //   //   if (data['Birthday']) {
-        //   //     if (!dateFormat.test(data['Birthday'])) {
-        //   //       missingFields.push(`Birthday Date should follow MM/DD/YYYY format`);
-        //   //     }
-        //   //   }
-            
-        //   // if (missingFields.length > 0) {
-        //   // setSelectedFile(null)
+          const obj = batchData[index];
+            for (const key of requiredFields) {
+              if (obj[key] === '') {
+                missingFields.push(key);
+              }
+            }
 
-        //   //   errors.push(
-        //   //     ` In row ${index+1}: ${missingFields.join(
-        //   //       ', ',
-        //   //     )}`,
-        //   //   );
-        //   // }
-        // }
+          if (missingFields.length > 0) {
+            setSelectedFile(null);
+            errors.push(` ${missingFields.join(', ')} is empty please check at row ${index + 1}`);
+          }
+        }
 
         if (errors.length > 0) {
           // If any missing fields found, display error and halt further processing
           setErrorContent(errors);
           setErrorModal(true);
-          setSelectedFile(null)
+          setSelectedFile(null);
           setShowLoader(false);
           return;
         }
@@ -547,7 +460,9 @@ const ContactTable = ({
       console.error('Error uploading data:', error);
       throw error;
     } finally {
-      isAddressUploadSuccess && setIsAddressUploadSuccess && setIsAddressUploadSuccess(!isAddressUploadSuccess)
+      isAddressUploadSuccess &&
+        setIsAddressUploadSuccess &&
+        setIsAddressUploadSuccess(!isAddressUploadSuccess);
 
       setLoaderTitle('Uploaded Address Successfully');
       setTimeout(() => {
@@ -623,7 +538,9 @@ const ContactTable = ({
       throw error;
     } finally {
       if (totalAddresses === 1) {
-        isAddressUploadSuccess && setIsAddressUploadSuccess && setIsAddressUploadSuccess(!isAddressUploadSuccess)
+        isAddressUploadSuccess &&
+          setIsAddressUploadSuccess &&
+          setIsAddressUploadSuccess(!isAddressUploadSuccess);
         setLoaderTitle('Uploaded Address Successfully');
         setTimeout(() => {
           setShowLoader(false);
