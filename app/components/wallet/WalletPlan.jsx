@@ -1,6 +1,5 @@
 import DynamicButton from '../DynamicButton';
-import {useEffect } from 'react';
-
+import {useEffect, useState} from 'react';
 
 const WalletPlans = ({
   WalletData,
@@ -24,6 +23,8 @@ const WalletPlans = ({
   };
 
   let packageQuantity;
+
+  const [isButtonDisabled, setIsButtonDisabled] = useState();
 
   useEffect(() => {
     // Set initial values based on stripeCollection data
@@ -51,6 +52,18 @@ const WalletPlans = ({
       setSubscriptionTitle('Free');
     }
   }, [stripeCollection]);
+
+  useEffect(() => {
+    if (selectedPlan) {
+      const parts = selectedPlan?.split('%');
+      const firstPart = parts[0]?.trim();
+      const discountPercentage = parseInt(firstPart);
+      const isZeroDiscountPlan = discountPercentage === 0;
+      setIsButtonDisabled(isZeroDiscountPlan);
+    }
+    
+  }, [selectedPlan]);
+
 
 
   return (
@@ -110,11 +123,9 @@ const WalletPlans = ({
                           product.node.title
                         ) {
                           setSubscription(subscriptionMetafield?.value || 0);
-                        }
-                        else {
+                        } else {
                           setSubscription(0);
                         }
-
                         setSubscriptionProduct(product.node.id);
                         setPackageProduct(variant.node.id);
                         setSubscriptionTitle(product.node.title);
@@ -196,9 +207,9 @@ const WalletPlans = ({
         <DynamicButton
           text="Continue"
           nextArrow={true}
-          disabled={amount == 0 } // Here's the condition to disable the button
+          disabled={isButtonDisabled}
           className={`bg-[#0c5699] ${
-            amount == 0  && 'cursor-not-allowed'
+            isButtonDisabled && 'cursor-not-allowed'
           } flex-row-reverse min-w-[190px] font-bold max-w-[190px] text-[16px] rounded-0 border-2 text-white border-solid border-[#000] py-[16px] px-[30px] border-black`}
           onClickFunction={() => {
             setWalletPlan(false);

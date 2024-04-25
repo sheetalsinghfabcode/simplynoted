@@ -29,13 +29,20 @@ const StripeCard = ({
   addNewCreditCard,
   addCreditModal,
   showStripeCard,
+  stripePayments,
   updateCard,
   validateForm,
 }) => {
   const stripe = useStripe();
   let elements = useElements();
 
-  const {stripeLoader, setStripeLoader,setCardElements} = useStateContext();
+  const {
+    stripeLoader,
+    setStripeLoader,
+    setWalletPurchase,
+    setWalletPayment,
+    setCardElements,
+  } = useStateContext();
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const {setUpdateModal} = useStateContext();
@@ -48,7 +55,7 @@ const StripeCard = ({
   };
 
   const handleSubmit = async (event) => {
-    setLoading(true)
+    setLoading(true);
     event.preventDefault();
     if (
       (!validateForm() && !addCreditModal && !updateCard && !showStripeCard) ||
@@ -84,24 +91,23 @@ const StripeCard = ({
         setStripeLoader(false);
         setLoading(false);
         console.error(error, 'stripe error');
-      } 
-
-      
+      }
     } else {
       setErrorMessage(error.message);
       console.error(error.message);
       setStripeLoader(false);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
   const pathname = useLocation();
 
+
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="border border-solid border-black">
         <CardElement
-          onReady={(e)=>setCardElements(e)}          
+          onReady={(e) => setCardElements(e)}
           onChange={() => setErrorMessage('')}
           options={CARD_OPTIONS}
           className="my-5 mx-2 sm:mx-5"
@@ -113,7 +119,22 @@ const StripeCard = ({
         </div>
       )}
 
-      <div className="flex justify-center w-full gap-[10px] items-center mt-[24px] mb-[16px]">
+      <div className="md:flex grid md:justify-between justify-normal  w-full gap-[10px] items-center my-[16px]">
+        <>
+          <DynamicButton
+            text="Previous"
+            onClickFunction={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              });
+              setWalletPurchase(true);
+              setWalletPayment(false);
+            }}
+            backArrow={true}
+            className="!bg-[#1b5299] w-full   !h-[55px]  !py-[16px] !px-[30px] uppercase md:text-[16px] text-[12px]"
+          />
+        </>
         <div
           onClick={() => {
             setStripeLoader(true);
@@ -122,7 +143,7 @@ const StripeCard = ({
         >
           <button
             type="submit"
-            className={ `!bg-[#EF6E6E] text-white dsgsdgsgsd flex justify-center items-center h-[45px]  w-full !rounded-0 !py-[16px] hover:!bg-sky-700 transition duration-400 !px-[30px] max-w-[300px] `}
+            className={`!bg-[#EF6E6E] text-white font-bold dsgsdgsgsd uppercase md:text-[16px] text-[12px] flex justify-center items-center h-[55px]  w-full !rounded-0 !py-[16px]  transition duration-400 !px-[30px] max-w-[300px] `}
             // disabled={loading}
           >
             {(pathname.pathname === '/simply-noted-plans' ||
@@ -133,7 +154,8 @@ const StripeCard = ({
               ? 'Complete Purchase'
               : !addCreditModal && !showStripeCard && updateCard
               ? 'Update Card'
-              : (showStripeCard || addCreditModal) && (loading ? 'Adding Card...' : 'Add Card')}
+              : (showStripeCard || addCreditModal) &&
+                (loading ? 'Adding Card...' : 'Add Card')}
           </button>
         </div>
       </div>

@@ -141,6 +141,10 @@ function Account({customer, heading, featuredData}) {
 
   const navigate = useNavigate();
   const [data, setData] = useState(false);
+
+  const location = useLocation();
+  const  {state} = location;
+
   const {
     orderHistory,
     setCustomerId,
@@ -182,8 +186,8 @@ function Account({customer, heading, featuredData}) {
     if (typeof window !== 'undefined' && customer) {
       localStorage.removeItem('customerId');
       setCustomerId(null);
-      setCartCountVal(0)
-      setCartData(null)
+      setCartCountVal(0);
+      setCartData(null);
       localStorage.removeItem('subscriptionPriceId');
       localStorage.removeItem('SNFirstName');
       localStorage.removeItem('SnEmail');
@@ -207,8 +211,8 @@ function Account({customer, heading, featuredData}) {
     } else if (data == false) {
       if (customer && typeof window !== 'undefined') {
         localStorage.setItem('customerId', result);
-        setActiveTab(0)
-        setAccountTabName("General")
+        setActiveTab(0);
+        setAccountTabName('General');
         setCustomerId(result);
         localStorage.setItem('SnEmail', customer.email);
         localStorage.setItem('firstName', customer.firstName);
@@ -244,9 +248,11 @@ function Account({customer, heading, featuredData}) {
     } catch (error) {}
   }
 
+
+
+
   const [apiKey, setApiKey] = useState('');
   const [keyModal, setKeyModal] = useState(false);
-
 
   useEffect(() => {
     generateApiKey();
@@ -292,6 +298,15 @@ function Account({customer, heading, featuredData}) {
     country: 'USA',
     zip: '',
   });
+
+
+
+  useEffect(() => {
+    if(state?.activeTab) {
+    setActiveTab(state?.activeTab);
+    setAccountTabName(state?.acountTabName)
+    }
+  }, []);
 
   return (
     <>
@@ -368,10 +383,10 @@ function Account({customer, heading, featuredData}) {
                     </div>
                   ))}
               </>
-              
+
               <Form
                 method="post"
-                className='w-full tab:mt-[9px] tab:pt-[25px] tab:border-t tab:border-[#DBDBDE]'
+                className="w-full tab:mt-[9px] tab:pt-[25px] tab:border-t tab:border-[#DBDBDE]"
                 action={usePrefixPathWithLocale('/account/logout')}
               >
                 <button
@@ -449,24 +464,36 @@ function Account({customer, heading, featuredData}) {
                 body={apiKey}
               />
 
-              {activeTab === 2 && (<div className='p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]'><AccountOrderHistory orders={orders} /></div>)}
+              {activeTab === 2 && (
+                <div className="p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]">
+                  <AccountOrderHistory orders={orders} />
+                </div>
+              )}
 
-              {activeTab === 3 && (<div className='p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]'><AddressBook /></div>)}
+              {activeTab === 3 && (
+                <div className="p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]">
+                  <AddressBook />
+                </div>
+              )}
 
-              {activeTab === 4 && (<div className='p-4 md:py-8 md:bg-white mt-[23px] rounded-[12px] border border-solid border-[#DDDDDD]'><ManageSubscription /></div>)}
+              {activeTab === 4 && (
+                <div className="p-4 md:py-8 md:bg-white mt-[23px] rounded-[12px] border border-solid border-[#DDDDDD]">
+                  <ManageSubscription />
+                </div>
+              )}
               {activeTab === 6 && (
-                <div className='p-4 md:p-4 md:pb-12 md:bg-white rounded-[12px] mt-[23px] border border-solid border-[#DDDDDD]'>
-                <Profile
-                  setProfile={setProfile}
-                  setAccountDetail={setAccountDetail}
-                  customer={customer}
-                  result={result}
-                  accountDetails={accountDetails}
-                  setAccountDetails={setAccountDetails}
-                  loader={loader}
-                  accountDetail={accountDetail}
-                  setLoader={setLoader}
-                />
+                <div className="p-4 md:p-4 md:pb-12 md:bg-white rounded-[12px] mt-[23px] border border-solid border-[#DDDDDD]">
+                  <Profile
+                    setProfile={setProfile}
+                    setAccountDetail={setAccountDetail}
+                    customer={customer}
+                    result={result}
+                    accountDetails={accountDetails}
+                    setAccountDetails={setAccountDetails}
+                    loader={loader}
+                    accountDetail={accountDetail}
+                    setLoader={setLoader}
+                  />
                 </div>
               )}
 
@@ -484,7 +511,7 @@ function Account({customer, heading, featuredData}) {
           </div>
         </div>
       </div>
-      <CartItems id={result}/>
+      <CartItems id={result} />
     </>
   );
 }
