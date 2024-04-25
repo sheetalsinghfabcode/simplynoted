@@ -55,13 +55,6 @@ export async function loader({request, context, params}) {
   const loginPath = locale ? `/${locale}/account/login` : '/account/login';
   const isAccountPage = /^\/account\/?$/.test(pathname);
 
-
-
-  const productInformation = await context.storefront.query(ProductData, {
-    variants: {},
-  });
-
-
   const StripeKey =
     'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
   let WalletData;
@@ -90,12 +83,12 @@ export async function loader({request, context, params}) {
     : 'Account Details';
 
   // }
+  
 
   return defer(
     {
       isAuthenticated,
       customer,
-      productInformation,
       heading,
       featuredData: getFeaturedData(context.storefront),
       StripeKey,
@@ -151,19 +144,7 @@ function Account({customer, heading, featuredData}) {
   const [data, setData] = useState(false);
 
   const location = useLocation();
-  const  {state} = location;
-
-  const {productInformation} = useLoaderData();
-
-  console.log("productInformation",productInformation);
-  console.log("orders",orders[0].lineItems);
-
-  const lineItems = orders.map((order)=>(
-    order.lineItems
-  ))
-
-  console.log("lineItems",lineItems);
-
+  const {state} = location;
 
 
   const {
@@ -269,9 +250,6 @@ function Account({customer, heading, featuredData}) {
     } catch (error) {}
   }
 
-
-
-
   const [apiKey, setApiKey] = useState('');
   const [keyModal, setKeyModal] = useState(false);
 
@@ -320,20 +298,28 @@ function Account({customer, heading, featuredData}) {
     zip: '',
   });
 
-
-
   useEffect(() => {
-    if(state?.activeTab) {
-    setActiveTab(state?.activeTab);
-    setAccountTabName(state?.acountTabName)
+    if (state?.activeTab) {
+      setActiveTab(state?.activeTab);
+      setAccountTabName(state?.acountTabName);
     }
+    console.log({lineItems});
   }, []);
 
+  const lineItems = orders.map((order) => {
+    const products = order.lineItems.edges;
+    const productsWithImageUrls = products.map((product) => {
+      const productHandle = getProductHandleName(product.node.title);
+      
+      product.node.example = 'value';
+      return product;
+    });
+    order.lineItems.edges = productsWithImageUrls;
+    return order;
+  });
 
-  const productTitle = "Thank You Card Black Line"
-
-
-  let handleName = productTitle.trim();
+  function getProductHandleName(productTitle) {
+    let handleName = productTitle.trim();
     // Remove special characters from the beginning and the end.
     handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
     // Replace all remaining whitespace or special characters with a single hyphen.
@@ -341,7 +327,8 @@ function Account({customer, heading, featuredData}) {
     // Making the title to lowercase.
     handleName = handleName.toLowerCase();
 
-    console.log("handleName",handleName);
+    return handleName;
+  }
 
   return (
     <>
@@ -668,16 +655,3 @@ export async function getCustomer(context, customerAccessToken) {
 
   return data.customer;
 }
-
-
-
-const ProductData = `#graphql
-  query
-  {
-  product(handle:"thank-you-card-black-line"){
-    featuredImage{
-      url
-    }
-    
-  }
-}`;
