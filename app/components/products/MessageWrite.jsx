@@ -84,7 +84,9 @@ export function MessageWriting({
   const [instructionModal, setInstructionModal] = useState(false);
   const [loader, setLoader] = useState(false);
   const [aiTextLoader, setAiTestLoader] = useState(false);
-  const [fontSize, setFontSize] = useState(editFontSize ? editFontSize : INITIAL_INPUT_CSS.initailFontSize);
+  const [fontSize, setFontSize] = useState(
+    editFontSize ? editFontSize : INITIAL_INPUT_CSS.initailFontSize,
+  );
   const [loginModal, setLoginModal] = useState(false);
   const [checkCharCount, setCheckCharCount] = useState(false);
   const [modalForAddressBook, setModalForAddressBook] = useState(false);
@@ -102,10 +104,14 @@ export function MessageWriting({
     editLineHeight ? editLineHeight : INITIAL_INPUT_CSS.initalLineHeight,
   );
   const [signOffFontSize, setSignOffFontSize] = useState(
-    editSignOffFontSize ? editSignOffFontSize : INITIAL_INPUT_CSS.initailFontSize,
+    editSignOffFontSize
+      ? editSignOffFontSize
+      : INITIAL_INPUT_CSS.initailFontSize,
   );
   const [signOffLineHeight, setSignOffLineHeight] = useState(
-    editSignOffLineHeight ? editSignOffLineHeight : INITIAL_INPUT_CSS.initalLineHeight,
+    editSignOffLineHeight
+      ? editSignOffLineHeight
+      : INITIAL_INPUT_CSS.initalLineHeight,
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [stateCheckCart, setStateCheckCart] = useState(false);
@@ -131,7 +137,9 @@ export function MessageWriting({
   const [minDateCheck, setMinDateCheck] = useState(false);
   const [errorCustomText, setErrorCustomText] = useState(false);
   const [collectionId, setCollectionId] = useState('');
-  const [isFirstTime, setIsFirstTime] = useState(editFontSize && editLineHeight && true);
+  const [isFirstTime, setIsFirstTime] = useState(
+    editFontSize && editLineHeight && true,
+  );
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -343,7 +351,7 @@ export function MessageWriting({
         <div className="w-full text-center">
           {showNextBtn ? (
             <>
-              <div className="text-center mt-5 flex flex-col mb-2">
+              <div className="text-center mt-3 flex flex-col mb-2">
                 <button
                   className="bg-[#1b5299] text-[#fff] items-center mb-2 justify-center p-4 h-[50px] font-roboto text-base font-bold"
                   onClick={() => checkUserLogged()}
@@ -376,7 +384,6 @@ export function MessageWriting({
     }
   }
 
-
   function ShowHeaderComp() {
     if (typeof metafields.header.data == 'string') {
       if (
@@ -388,13 +395,11 @@ export function MessageWriting({
             className={`flex h-[48px] `}
             style={{
               justifyContent: metafields.header.justifyContent,
-              transform: `scale(${metafields.header.zoom})`
-            
+              transform: `scale(${metafields.header.zoom})`,
             }}
           >
             <img
               className={`!w-20 headerImage ${
-
                 metafields.header.isColored ? 'grayscale-0' : 'grayscale'
               }`}
               src={metafields.header.data}
@@ -438,7 +443,7 @@ export function MessageWriting({
             className={`flex  h-[48px]`}
             style={{
               justifyContent: metafields.footer.justifyContent,
-              transform: `scale(${metafields.footer.zoom})`
+              transform: `scale(${metafields.footer.zoom})`,
             }}
           >
             <img
@@ -501,12 +506,10 @@ export function MessageWriting({
       if (!document.body.contains(mainMessageBox)) return;
       // resizeObserver.observe(mainMessageBox);
       // return () => resizeObserver.disconnect();
-    }
-    else{
+    } else {
       setFontSize(INITIAL_INPUT_CSS.initailFontSize);
       setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
     }
-    
   }, [name, fontFamilyName]);
 
   useEffect(() => {
@@ -519,8 +522,7 @@ export function MessageWriting({
 
       // return () => resizeObserver.disconnect();
     }
-  
-  }, [name2, fontFamilyName,fontSize,lineHeight]);
+  }, [name2, fontFamilyName, fontSize, lineHeight]);
 
   async function onChnageNameVal(nameData) {
     setErrorCustomText('');
@@ -541,8 +543,12 @@ export function MessageWriting({
   }
   function processCustomMessageInput() {
     if (!mainMessageBox) return;
-    mainMessageBox.style.fontSize = `${isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize}`
-    mainMessageBox.style.lineHeight = `${isFirstTime ? editLineHeight : INITIAL_INPUT_CSS.initalLineHeight}`;
+    mainMessageBox.style.fontSize = `${
+      isFirstTime ? editFontSize : INITIAL_INPUT_CSS.initailFontSize
+    }`;
+    mainMessageBox.style.lineHeight = `${
+      isFirstTime ? editLineHeight : INITIAL_INPUT_CSS.initalLineHeight
+    }`;
     // setFontSize(isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize);
     // setLineHeight(isFirstTime ? editLineHeight  : INITIAL_INPUT_CSS.initalLineHeight);
     resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
@@ -559,7 +565,7 @@ export function MessageWriting({
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-console.log("innerContainer.clientHeight",innerContainer.clientHeight)
+    console.log('innerContainer.clientHeight', innerContainer.clientHeight);
     isOverflowing = innerContainer.clientHeight > outerContainer.clientHeight;
     // console.log({isOverflowing});
 
@@ -579,100 +585,100 @@ console.log("innerContainer.clientHeight",innerContainer.clientHeight)
       lineHeightDecrement = 5;
     }
 
-    const fontSize = parseFloat(window.getComputedStyle(innerContainer).fontSize);
-    const lineHeight = parseFloat(window.getComputedStyle(innerContainer).lineHeight);
+    const fontSize = parseFloat(
+      window.getComputedStyle(innerContainer).fontSize,
+    );
+    const lineHeight = parseFloat(
+      window.getComputedStyle(innerContainer).lineHeight,
+    );
 
     innerContainer.style.fontSize =
       parseFloat(fontSize) - fontSizeDecrement + 'px';
     innerContainer.style.lineHeight =
       parseFloat(lineHeight) - lineHeightDecrement + 'px';
     if (resizeSelection === 'customTextResizing') {
-     
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
       // setSignOffFontSize(innerContainer.style.fontSize);
       // setSignOffLineHeight(innerContainer.style.lineHeight);
-
-  }
+    }
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
 
-
   const handleFileChange = (event) => {
-    const  file = event.target.files[0];
-     if (file) {
-       const reader = new FileReader();
-       const keyToRemove = 'Type';
-       reader.onload = (e) => {
-         const csvData = e.target.result;
-         let jsonData = csvToJson(csvData);
-         const cleanedArray = jsonData.map((obj) => {
-           const cleanedObj = {};
-           Object.keys(obj).forEach((key) => {
-             const newKey = key?.replace(/"/g, ''); // Remove quotes from key
-             const newValue = obj[key]?.replace(/"/g, ''); // Remove quotes from value
-             cleanedObj[newKey] = newValue;
-           });
-           return cleanedObj;
-         });
-         setSelectedFile(file); // Update the selected file state
-         setFileData(cleanedArray);
-       };
-       reader.readAsText(file);
-     }
-     event.target.value = '';
-     setDragAndDropBorderColor('#ef6e6e');
-   };
-   
-//    function csvToJson(csv) {
-//     var lines = csv.split('\n');
-//     var result = [];
-//     var headers = lines[0].split(',');
-//     for (var i = 1; i < lines.length; i++) {
-//         var currentLine = lines[i].trim();
-//         // Skip empty lines
-//         if (currentLine.length === 0 && currentLine[0].trim() === '') {
-//             continue;
-//         }
-//         // Handle commas inside double quotes
-//         var parts = currentLine.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-//         var obj = {};
-//         for (var j = 0; j < headers.length; j++) {
-//           console.log(headers[j], parts[j])
-//             obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
-//         }
-//         result.push(obj);
-//     }
-//     setDisableSelectAddressBtn(true);
-//     return result;
-// }
-function csvToJson(csv) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      const keyToRemove = 'Type';
+      reader.onload = (e) => {
+        const csvData = e.target.result;
+        let jsonData = csvToJson(csvData);
+        const cleanedArray = jsonData.map((obj) => {
+          const cleanedObj = {};
+          Object.keys(obj).forEach((key) => {
+            const newKey = key?.replace(/"/g, ''); // Remove quotes from key
+            const newValue = obj[key]?.replace(/"/g, ''); // Remove quotes from value
+            cleanedObj[newKey] = newValue;
+          });
+          return cleanedObj;
+        });
+        setSelectedFile(file); // Update the selected file state
+        setFileData(cleanedArray);
+      };
+      reader.readAsText(file);
+    }
+    event.target.value = '';
+    setDragAndDropBorderColor('#ef6e6e');
+  };
 
-  var lines = csv.split('\n');
-  var result = [];
+  //    function csvToJson(csv) {
+  //     var lines = csv.split('\n');
+  //     var result = [];
+  //     var headers = lines[0].split(',');
+  //     for (var i = 1; i < lines.length; i++) {
+  //         var currentLine = lines[i].trim();
+  //         // Skip empty lines
+  //         if (currentLine.length === 0 && currentLine[0].trim() === '') {
+  //             continue;
+  //         }
+  //         // Handle commas inside double quotes
+  //         var parts = currentLine.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+  //         var obj = {};
+  //         for (var j = 0; j < headers.length; j++) {
+  //           console.log(headers[j], parts[j])
+  //             obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
+  //         }
+  //         result.push(obj);
+  //     }
+  //     setDisableSelectAddressBtn(true);
+  //     return result;
+  // }
+  function csvToJson(csv) {
+    var lines = csv.split('\n');
+    var result = [];
 
-  var headers = lines[0].split(',');
-  for (var i = 1; i < lines.length; i++) {
+    var headers = lines[0].split(',');
+    for (var i = 1; i < lines.length; i++) {
       var currentLine = lines[i].trim();
       // Skip empty lines
       if (currentLine.length === 0) {
-          continue;
+        continue;
       }
 
       // Handle commas inside double quotes
       var parts = currentLine?.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-      
+
       var obj = {};
       for (var j = 0; j < headers.length; j++) {
-          obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
+        obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
       }
 
       result.push(obj);
+    }
+    setDisableSelectAddressBtn(true);
+    return result;
   }
-  setDisableSelectAddressBtn(true);
-  return result;
-}
   // function csvToJson(csv) {
   //   var lines = csv.split('\n');
   //   var result = [];
@@ -718,14 +724,14 @@ function csvToJson(csv) {
       // 'City',
       // 'State/Province',
       // 'Postal Code',
-      'Country'
+      'Country',
     ];
 
     const alphabetPattern = /^[A-Za-z]+$/;
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
     const phoneNumberPattern = /^\+?[0-9\-]{6,15}$/;
     const dateFormat = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/;
-  
+
     if (fileData.length) {
       let errObj = [];
       fileData.forEach((obj, index) => {
@@ -763,15 +769,14 @@ function csvToJson(csv) {
           let emptyKeys = [];
           const numkeys = [];
           let fnameField = 'First Name';
-          let lnameField = 'Last Name'
+          let lnameField = 'Last Name';
           let countryCheck = 'Country';
           let type = 'Type';
-          let email='Email';
-          let phoneNumber='Phone';
-          let anniversary='Anniversary';
-          let birthday='Birthday';
+          let email = 'Email';
+          let phoneNumber = 'Phone';
+          let anniversary = 'Anniversary';
+          let birthday = 'Birthday';
           for (const key of reqField) {
-         
             if (obj[key] === '') {
               emptyKeys.push(key);
             }
@@ -814,11 +819,12 @@ function csvToJson(csv) {
           } else {
             nonUSCount++;
           }
-     
 
           if (emptyKeys.length > 0) {
             errMsg.push(
-              ` ${emptyKeys.join(', ')} is empty please check at row ${index+1}`,
+              ` ${emptyKeys.join(', ')} is empty please check at row ${
+                index + 1
+              }`,
             );
           }
 
@@ -851,9 +857,7 @@ function csvToJson(csv) {
   }
 
   async function uploadCsvFileOnClick() {
-
-
-    let collectionid = ""
+    let collectionid = '';
     try {
       const batchSize = 250;
       const numBatches = Math.ceil(fileData.length / batchSize);
@@ -891,8 +895,8 @@ function csvToJson(csv) {
           setShowNextBtn(true);
           setLoader(false);
           setCsvFile(json.result);
-          if(i==0){
-          collectionid = json.result[0].collectionId
+          if (i == 0) {
+            collectionid = json.result[0].collectionId;
           }
         }
       }
@@ -1836,7 +1840,9 @@ function csvToJson(csv) {
               id="outer"
               className="outerr border border-[#E5E5E5] rounded flex flex-col justify-between custom-product-shadow h-[400px] bg-white absolute pt-[13px] pb-[16px] top-0 right-0 left-0 bottom-0 md:mx-0 overflow-hidden"
             >
-              {metafields && metafields.isHeaderIncluded && metafields.header.data && <ShowHeaderComp />}
+              {metafields &&
+                metafields.isHeaderIncluded &&
+                metafields.header.data && <ShowHeaderComp />}
               <div
                 className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
                 ref={ref2}
@@ -1845,12 +1851,11 @@ function csvToJson(csv) {
                     (metafields.footer &&
                       metafields.header &&
                       metafields.footer.data &&
-                      metafields.header.data  ) 
-                      ||
+                      metafields.header.data) ||
                     (metafields.footer &&
                       metafields.header &&
                       metafields.header.data &&
-                      qrValue?.length>0 )
+                      qrValue?.length > 0)
                       ? '224.5px'
                       : (metafields.footer &&
                           metafields.header &&
@@ -1858,27 +1863,25 @@ function csvToJson(csv) {
                           metafields.header.data) ||
                         (metafields.footer &&
                           metafields.header &&
-                          metafields.footer.data ) ||
+                          metafields.footer.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data &&
-                          qrValue.length>0) ||
-                        (qrValue?.length>0 ) ||
+                          qrValue.length > 0) ||
+                        qrValue?.length > 0 ||
                         (metafields.footer &&
                           metafields.header &&
-                          metafields.header.data )
+                          metafields.header.data)
                       ? '288.37px'
-            
                       : (metafields.footer &&
                           metafields.header &&
                           metafields.footer.data) ||
                         (metafields.footer &&
                           metafields.header &&
                           metafields.header.data) ||
-                        (qrValue?.length>0) 
+                        qrValue?.length > 0
                       ? '357.475px'
                       : '372.757px',
-                      
                 }}
               >
                 <div
@@ -1891,45 +1894,58 @@ function csvToJson(csv) {
                       : editFontFamily
                       ? editFontFamily
                       : 'tarzan',
-                    fontSize: fontSize ? fontSize : INITIAL_INPUT_CSS.initailFontSize,
-                    lineHeight: lineHeight ? lineHeight : INITIAL_INPUT_CSS.initalLineHeight,
+                    fontSize: fontSize
+                      ? fontSize
+                      : INITIAL_INPUT_CSS.initailFontSize,
+                    lineHeight: lineHeight
+                      ? lineHeight
+                      : INITIAL_INPUT_CSS.initalLineHeight,
                   }}
                 >
                   {name ? name : 'Enter your custom message here...'}
                   <div
-                className={`secDiv w-[100%] max-w-[300px] ml-auto mr-5 bg-white`}
-                ref={ref}
-                style={{display: name2.length > 0 ? 'block' : 'none',
-                height:(metafields.footer ||
-                metafields.header ||
-                qrValue?.length>0) &&
-                '48px'
-              }}
-              >
-                <div
-                  id="signOffText"
-                  ref={ref3}
-                  className="output2 text-[#0040ac] max-w-[300px]"
-                  style={{
-                    fontFamily: fontFamilyName
-                      ? fontFamilyName
-                      : editFontFamily
-                      ? editFontFamily
-                      : 'tarzan',
-                    fontSize: signOffFontSize ? signOffFontSize : INITIAL_INPUT_CSS.initailFontSize,
-                    lineHeight: signOffLineHeight ? signOffLineHeight : INITIAL_INPUT_CSS.initalLineHeight,
-                  }}
-                >
-                  {name2}
+                    className={`secDiv w-[100%] max-w-[300px] ml-auto mr-5 bg-white`}
+                    ref={ref}
+                    style={{
+                      display: name2.length > 0 ? 'block' : 'none',
+                      height:
+                        (metafields.footer ||
+                          metafields.header ||
+                          qrValue?.length > 0) &&
+                        '48px',
+                    }}
+                  >
+                    <div
+                      id="signOffText"
+                      ref={ref3}
+                      className="output2 text-[#0040ac] max-w-[300px]"
+                      style={{
+                        fontFamily: fontFamilyName
+                          ? fontFamilyName
+                          : editFontFamily
+                          ? editFontFamily
+                          : 'tarzan',
+                        fontSize: signOffFontSize
+                          ? signOffFontSize
+                          : INITIAL_INPUT_CSS.initailFontSize,
+                        lineHeight: signOffLineHeight
+                          ? signOffLineHeight
+                          : INITIAL_INPUT_CSS.initalLineHeight,
+                      }}
+                    >
+                      {name2}
+                    </div>
+                  </div>
                 </div>
-              </div>
-                </div>
-               
               </div>
               {/* {name2.length>0 && */}
-             
+
               {/* } */}
-              {metafields && metafields.isFooterIncluded && (metafields.footer.data || qrValue?.length>0) && <ShowFooterComp />}
+              {metafields &&
+                metafields.isFooterIncluded &&
+                (metafields.footer.data || qrValue?.length > 0) && (
+                  <ShowFooterComp />
+                )}
             </div>
             {/* } */}
             {/* {metafields &&
@@ -2024,18 +2040,31 @@ function csvToJson(csv) {
                           View Bulk Upload Instructions
                         </p>
                         {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                        <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
-                          <input
-                            type="checkbox"
-                            className=" border-[1px] border-[#E5E5E5] outline-none border-none"
-                            checked={stateCheckCart}
-                            onChange={() => setStateCheckCart(!stateCheckCart)}
-                          />
-                          &nbsp;
-                          <label htmlFor="">
-                            Add all addresses to address book
-                          </label>
-                        </div>
+                        {!showNextBtn ? (
+                          <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                            <input
+                              type="checkbox"
+                              className=" border-[1px] border-[#E5E5E5] outline-none border-none"
+                              checked={stateCheckCart}
+                              onChange={() =>
+                                setStateCheckCart(!stateCheckCart)
+                              }
+                            />
+                            &nbsp;
+                            <label htmlFor="">
+                              Add all addresses to address book
+                            </label>
+                          </div>
+                        ) : (
+                          selectedFile && (
+                            <div className="mt-2  w-full text-center">
+                              <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
+                                {selectedFile?.name}
+                              </span>
+                            </div>
+                          )
+                        )}
+
                         <AfterUpload />
                       </>
                       {/* // )} */}
@@ -2120,20 +2149,30 @@ function csvToJson(csv) {
                             View Bulk Upload Instructions
                           </p>
                           {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                          <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
-                            <input
-                              type="checkbox"
-                              className=" border-[1px] border-[#E5E5E5] outline-none border-none"
-                              checked={stateCheckCart}
-                              onChange={() =>
-                                setStateCheckCart(!stateCheckCart)
-                              }
-                            />
-                            &nbsp;
-                            <label htmlFor="">
-                              Add all addresses to address book
-                            </label>
-                          </div>
+                          {!showNextBtn ? (
+                            <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
+                              <input
+                                type="checkbox"
+                                className=" border-[1px] border-[#E5E5E5] outline-none border-none"
+                                checked={stateCheckCart}
+                                onChange={() =>
+                                  setStateCheckCart(!stateCheckCart)
+                                }
+                              />
+                              &nbsp;
+                              <label htmlFor="">
+                                Add all addresses to address book
+                              </label>
+                            </div>
+                          ) : (
+                            selectedFile && (
+                              <div className="mt-2  w-full text-center">
+                                <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
+                                  {selectedFile?.name}
+                                </span>
+                              </div>
+                            )
+                          )}
                           <AfterUpload />
                         </>
                       )}
@@ -2189,7 +2228,6 @@ function csvToJson(csv) {
             closeModal={() => {
               setVideoBtn(false);
             }}
-      
           />
           {!show && (
             <div className="bg-[#001a5f] h-[50px] text-center">
@@ -2365,7 +2403,7 @@ function csvToJson(csv) {
         close={true}
         closeModal={() => setIsOpen2(false)}
         isOpen={modalIsOpen2}
-      isArrayTrue={true}
+        isArrayTrue={true}
       />
     </>
   );

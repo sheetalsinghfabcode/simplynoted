@@ -358,14 +358,14 @@ export function AddCart({
     if (selectedItem2 === null || (selectedItem === null && !show)) {
       setCheckSelAddress(true);
       if (selectedItem2 === null && selectedItem === null && !show) {
-        setUnCheckedAddressTitle('Please Select Sender & Recipient address');
+        setUnCheckedAddressTitle('Please Add or Select (Sender & Recipient) address');
       } else if (selectedItem2 === null) {
-        setUnCheckedAddressTitle('Please Select Sender address');
+        setUnCheckedAddressTitle('Please Add or Select Sender address');
       } else if (selectedItem === null && !show) {
-        setUnCheckedAddressTitle('Please Select Recipient address');
+        setUnCheckedAddressTitle('Please Add or Select Recipient address');
       }
 
-      return;
+      return; 
     }
     setButtonTextChange(true);
 
