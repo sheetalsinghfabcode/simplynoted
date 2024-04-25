@@ -9,7 +9,8 @@ import DynamicTitle from '~/components/Title';
 import {statusMessage} from '~/lib/utils';
 import {Link, Heading, PageHeader, Text} from '~/components';
 import DynamicButton from '~/components/DynamicButton';
-import { Fragment, useEffect } from 'react';
+import {Fragment, useEffect} from 'react';
+import placeholderImage from '../../assets/Image/product-placeholder.png';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -68,20 +69,15 @@ export default function OrderRoute() {
   const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
   const {setOrderHistory} = useStateContext();
 
-  useEffect(()=>{
-    setOrderHistory(true)
-  },[])
-
-
+  useEffect(() => {
+    setOrderHistory(true);
+  }, []);
 
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
       <div className="mt-[30px]">
-        <DynamicTitle
-          
-          title={'Order Detail'}
-        />
+        <DynamicTitle title={'Order Detail'} />
       </div>
 
       <div className="w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6">
@@ -126,104 +122,112 @@ export default function OrderRoute() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {lineItems.map((lineItem,index) => (
+                {lineItems.map((lineItem, index) => (
                   <Fragment key={index}>
-                    {lineItem.variant?.id && (
-                      <tr >
-                        <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
-                          <div className="flex gap-6">
-                            {lineItem?.variant?.image && (
-                              <div className="w-24 card-image aspect-square">
-                                <img
-                                  src={lineItem.variant.image.src}
-                                  width={96}
-                                  height={96}
-                                  alt={lineItem?.title || 'Product Image'}
-                                />
-                              </div>
-                            )}
-                            <div className="flex-col text-[14px] justify-center hidden lg:flex">
-                              <p className="text-[16px] text-[#141414e6] font-medium">
-                                {lineItem?.title || 'Untitled Product'}
-                              </p>
-                              <p className="mt-1 text-[16px] text-[#141414e6] font-medium">
-                                {lineItem?.variant?.title || 'Untitled Variant'}
-                              </p>
+                    {/* {lineItem.variant?.id && ( */}
+                    <tr>
+                      <td className="w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none">
+                        <div className="flex gap-6">
+                          {lineItem?.variant?.image ? (
+                            <div className="w-24 card-image aspect-square">
+                              <img
+                                src={lineItem.variant.image.src}
+                                width={96}
+                                height={96}
+                                alt={lineItem?.title || 'Product Image'}
+                              />
                             </div>
-                            <dl className="grid">
-                              <dt className="text-[16px] text-[#141414e6] hidden font-medium">
-                                Product
-                              </dt>
-                              <dd className="truncate lg:hidden">
-                                <Heading
-                                  size="copy"
-                                  className="text-[16px] text-[#141414e6] font-medium"
-                                  format
-                                  as="h3"
-                                >
-                                  {lineItem?.title || 'Untitled Product'}
-                                </Heading>
-                                <Text
-                                  size="fine"
-                                  className="mt-1 text-[16px] text-[#141414e6] font-medium"
-                                >
-                                  {lineItem?.variant?.title ||
-                                    'Untitled Variant'}
-                                </Text>
-                              </dd>
-                              <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
-                                Price
-                              </dt>
-                              <dd className="truncate sm:hidden">
-                                <span
-                                  size="fine"
-                                  className="mt-4 text-[16px] text-[#141414e6] font-medium"
-                                >
-                                  {lineItem?.variant?.price && (
-                                    <Money
-                                      className="text-[16px] text-[#141414e6] font-medium"
-                                      data={lineItem.variant.price}
-                                    />
-                                  )}
-                                </span>
-                              </dd>
-                              <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
-                                Quantity
-                              </dt>
-                              <dd className="truncate sm:hidden">
-                                <span
-                                  className="mt-1 text-[16px] text-[#141414e6] font-medium"
-                                  size="fine"
-                                >
-                                  Qty: {lineItem.quantity}
-                                </span>
-                              </dd>
-                            </dl>
+                          ) : (
+                            <div className="w-24 card-image aspect-square">
+                              <img
+                                src={placeholderImage}
+                                width={96}
+                                height={96}
+                                alt={lineItem?.title || 'Product Image'}
+                              />
+                            </div>
+                          )}
+                          <div className="flex-col text-[14px] justify-center hidden lg:flex">
+                            <p className="text-[16px] text-[#141414e6] font-medium">
+                              {lineItem?.title || 'Untitled Product'}
+                            </p>
+                            <p className="mt-1 text-[16px] text-[#141414e6] font-medium">
+                              {lineItem?.variant?.title}
+                            </p>
                           </div>
-                        </td>
-                        <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
-                          {lineItem?.variant?.price && (
+                          <dl className="grid">
+                            <dt className="text-[16px] text-[#141414e6] hidden font-medium">
+                              Product
+                            </dt>
+                            <dd className="truncate lg:hidden">
+                              <Heading
+                                size="copy"
+                                className="text-[16px] text-[#141414e6] font-medium"
+                                format
+                                as="h3"
+                              >
+                                {lineItem?.title || 'Untitled Product'}
+                              </Heading>
+                              <Text
+                                size="fine"
+                                className="mt-1 text-[16px] text-[#141414e6] font-medium"
+                              >
+                                {lineItem?.variant?.title || 'Untitled Variant'}
+                              </Text>
+                            </dd>
+                            <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
+                              Price
+                            </dt>
+                            <dd className="truncate sm:hidden">
+                              <span
+                                size="fine"
+                                className="mt-4 text-[16px] text-[#141414e6] font-medium"
+                              >
+                                {lineItem?.variant?.price && (
+                                  <Money
+                                    className="text-[16px] text-[#141414e6] font-medium"
+                                    data={lineItem.variant.price}
+                                  />
+                                )}
+                              </span>
+                            </dd>
+                            <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
+                              Quantity
+                            </dt>
+                            <dd className="truncate sm:hidden">
+                              <span
+                                className="mt-1 text-[16px] text-[#141414e6] font-medium"
+                                size="fine"
+                              >
+                                Qty: {lineItem.quantity}
+                              </span>
+                            </dd>
+                          </dl>
+                        </div>
+                      </td>
+                      <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        {lineItem?.variant?.price && (
+                          <Money
+                            className="text-[16px] text-[#141414e6] font-medium"
+                            data={lineItem.variant.price}
+                          />
+                        )}
+                      </td>
+                      <td className="hidden px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
+                        {lineItem.quantity}
+                      </td>
+                      <td className="px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
+                        <Text>
+                          {lineItem?.discountedTotalPrice && (
                             <Money
                               className="text-[16px] text-[#141414e6] font-medium"
-                              data={lineItem.variant.price}
+                              data={lineItem.discountedTotalPrice}
                             />
                           )}
-                        </td>
-                        <td className="hidden px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
-                          {lineItem.quantity}
-                        </td>
-                        <td className="px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
-                          <Text>
-                            {lineItem?.discountedTotalPrice && (
-                              <Money
-                                className="text-[16px] text-[#141414e6] font-medium"
-                                data={lineItem.discountedTotalPrice}
-                              />
-                            )}
-                          </Text>
-                        </td>
-                      </tr>
-                    )}
+                        </Text>
+                      </td>
+                    </tr>
+                    {/* )} */}
                   </Fragment>
                 ))}
               </tbody>

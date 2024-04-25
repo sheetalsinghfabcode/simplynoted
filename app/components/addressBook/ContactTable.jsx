@@ -241,7 +241,7 @@ const ContactTable = ({
       columns,
       data,
       // Add the initialState for pagination
-      initialState: {pageIndex: 0, pageSize: 10},
+      initialState: {pageIndex: 0, pageSize: 50},
     },
     usePagination, // Use the pagination plugin
   );
@@ -839,7 +839,7 @@ const ContactTable = ({
                 </div>
               )}
               {/* Your table rendering code here... */}
-              <div className="overflow-auto">
+              <div className="overflow-auto max-h-[400px]">
                 <table className="min-w-full bg-gray-200 text-black overflow-auto">
                   <thead className="bg-[#0D0C22] text-[white] text-[14px] font-bold">
                     {headerGroups.map((headerGroup, index) => (

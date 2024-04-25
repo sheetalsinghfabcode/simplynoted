@@ -29,7 +29,6 @@ export default function FlatCustomisableCard({
     blackAndWhiteImageBlobUrl: null,
     selectedImageFile: null,
     canvasImageUrl: null,
-    canvasImageUrl: null,
     zoom: 1,
     isColoredImage: true,
     isLongImage: false,

@@ -266,7 +266,7 @@ const Profile = ({
                 : 'bg-gray-300 text-gray-700'
             }`}
           >
-            Security
+            Update Password
           </button>
         </div>
         {activeTabs === 'account' && (

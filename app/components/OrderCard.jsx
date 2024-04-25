@@ -1,14 +1,26 @@
 import {flattenConnection, Image} from '@shopify/hydrogen';
 import {Heading, Text, Link} from '~/components';
-import {statusMessage} from '~/lib/utils';
+import {defer} from '@shopify/remix-oxygen';
+
 import DynamicButton from './DynamicButton';
 import placeholderImage from '../../assets/Image/product-placeholder.png';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader({context}) {
+  const productInformation = await context.storefront.query(ProductData, {
+    variants: {},
+  });
+  return defer({
+    productInformation,
+  });
+}
 
 export function OrderCard({order}) {
   if (!order?.id) return null;
   const [legacyOrderId, key] = order.id.split('/').pop().split('?');
   const lineItems = flattenConnection(order?.lineItems);
 
+  const {productInformation} = useLoaderData();
   return (
     <li className="grid text-center shadow-lg">
       <Link
@@ -89,7 +101,7 @@ export const ORDER_CARD_FRAGMENT = `#graphql
       amount
       currencyCode
     }
-    lineItems(first: 2) {
+    lineItems(first: 20) {
       edges {
         node {
           variant {
@@ -103,10 +115,21 @@ export const ORDER_CARD_FRAGMENT = `#graphql
               width
             }
           }
-          title
+          quantity
         
+          title      
         }
       }
     }
   }
 `;
+
+const ProductData = `#graphql
+  query
+  {
+  product(handle:"thank-you-card-black-line"){
+    featuredImage{
+      url
+    }
+  }
+}`;
