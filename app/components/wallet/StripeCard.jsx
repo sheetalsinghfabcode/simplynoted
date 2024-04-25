@@ -121,6 +121,7 @@ const StripeCard = ({
 
       <div className="md:flex grid md:justify-between justify-normal  w-full gap-[10px] items-center my-[16px]">
         <>
+        {!savedCard &&
           <DynamicButton
             text="Previous"
             onClickFunction={() => {
@@ -134,6 +135,7 @@ const StripeCard = ({
             backArrow={true}
             className="!bg-[#1b5299] w-full   !h-[55px]  !py-[16px] !px-[30px] uppercase md:text-[16px] text-[12px]"
           />
+}
         </>
         <div
           onClick={() => {
