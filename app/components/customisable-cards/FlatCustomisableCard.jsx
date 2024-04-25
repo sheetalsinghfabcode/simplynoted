@@ -1066,6 +1066,8 @@ export default function FlatCustomisableCard({
         method: 'POST',
         body: formData,
       };
+
+      debugger
       const response = await fetch(
         ` https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
         options,

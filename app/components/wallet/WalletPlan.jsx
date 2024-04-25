@@ -26,10 +26,6 @@ const WalletPlans = ({
 
   const [isButtonDisabled, setIsButtonDisabled] = useState();
 
-
-
-  console.log("selectedPlan>>>>",selectedPlan);
-
   useEffect(() => {
     // Set initial values based on stripeCollection data
     if (!stripeCollection?.error) {
@@ -49,7 +45,6 @@ const WalletPlans = ({
 
 
 
-  console.log("stripeCollection>>>>",stripeCollection);
 
   function formatNumberWithCommas(number) {
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
