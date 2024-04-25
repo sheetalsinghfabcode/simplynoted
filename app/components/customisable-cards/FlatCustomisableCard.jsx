@@ -815,9 +815,6 @@ export default function FlatCustomisableCard({
     }
   }
 
-
-
-
   async function uploadPdfRequest() {
     try {
       setIsLoading(true);
@@ -895,19 +892,13 @@ export default function FlatCustomisableCard({
   const handleCustomCardSaveButton = async () => {
     const uploadPDFResponse = await uploadPdfRequest();
     if (!uploadPDFResponse.success) {
-      return setErrorResponse({
-        message: 'Unable to upload the PDF.',
-        status: true,
-      });
+      return failedSaveRequestReset('Unable to upload the PDF.');
     }
     const isCustomCardSaved = await saveCustomCard(
       uploadPDFResponse.s3ImageUrls,
     );
     if (!isCustomCardSaved) {
-      return setErrorResponse({
-        message: 'Unable to save the custom card.',
-        status: true,
-      });
+      return failedSaveRequestReset('Unable to save the custom card.');
     }
     setIsScrollerRemoved(false);
     // Convert product title to a handle name as per handle name's convention.
@@ -1087,6 +1078,16 @@ export default function FlatCustomisableCard({
     }
   }
 
+  async function failedSaveRequestReset(message) {
+    setErrorResponse({message, status: true});
+    setValidationModalData({
+      isModalOpen: true,
+      isNameValidated: false,
+      isUserTyping: false,
+    });
+    setIsLoading(false);
+  }
+
   const handleHeaderVisibilityChange = () => {
     setHeaderFooterVisibility((prevVisibility) => ({
       ...prevVisibility,
@@ -1203,20 +1204,20 @@ export default function FlatCustomisableCard({
                     )}
                   </button>
                 )}
-                <div className="block md:hidden">
+                {/* <div className="block md:hidden">
                   {isLoading && !validationModalData.isNameValidated && (
                     <span className="whitespace-nowrap md:text-[14px] font-bold text-[12px] text-[#001a5f]">
                       {loadingText}
                     </span>
                   )}
-                </div>
+                </div> */}
               </div>
               <button
                 className={`${
                   !validationModalData.isNameValidated
                     ? 'cursor-not-allowed'
                     : ''
-                } bg-[#1b5299] text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
+                } bg-[#1b5299] min-w-[204px] text-center text-[13px] font-normal border-none text-white  outline-none p-1 px-8  h-[42px] `}
                 disabled={!validationModalData.isNameValidated}
                 type="button"
                 onClick={handleCustomCardSaveButton}
@@ -1542,7 +1543,7 @@ export default function FlatCustomisableCard({
                             <div
                               id="backFooterImageDiv"
                               className={`h-[45px] flex justify-center overflow-hidden ${
-                                qr.isQrAdded && footerData.alignment  === 'right'
+                                qr.isQrAdded && footerData.alignment === 'right'
                                   ? 'w-[35px] '
                                   : 'w-[60px]'
                               }`}
@@ -1563,7 +1564,6 @@ export default function FlatCustomisableCard({
                                 draggable="false"
                               />
                             </div>
-
                           )}
                         </div>
                       </div>
@@ -2066,7 +2066,9 @@ export default function FlatCustomisableCard({
                             footerData.imageBlobUrl && (
                               <>
                                 <div className="flex flex-col mb-3 mt-3">
-                                  <span className='font-bold'>Resize image</span>
+                                  <span className="font-bold">
+                                    Resize image
+                                  </span>
                                   <input
                                     type="range"
                                     min="0.3"
