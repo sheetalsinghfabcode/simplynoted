@@ -161,6 +161,9 @@ export function MessageWriting({
     setFileData(modifiedData);
   }
 
+  console.log("metafields>>>",metafields)
+
+
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
@@ -415,7 +418,7 @@ export function MessageWriting({
               className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.header.fontType,
-                fontSize: metafields.header.fontSize,
+                fontSize: `${metafields.header.fontSize}px` ,
                 textAlign: metafields.header.textAlign,
                 justifyContent: metafields.header.justifyContent,
                 flexDirection: metafields.header.flexDirection,
@@ -463,7 +466,7 @@ export function MessageWriting({
               className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.footer.fontType,
-                fontSize: metafields.footer.fontSize,
+                fontSize: `${metafields.footer.fontSize}px` ,
                 textAlign: metafields.footer.textAlign,
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
