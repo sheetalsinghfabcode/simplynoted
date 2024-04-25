@@ -364,7 +364,12 @@ const Accordion = ({
         if (data) {
           setLoaderTitle('Payment completed successfully... ');
           setTimeout(() => {
-            navigate('/account');
+            navigate('/account', {
+              state: {
+                activeTab: 4,
+                accountTabName: 'Manage Plans',
+              },
+            });
             setPaymentLoader(false);
             setIsStripeDataUpdated(true);
           }, 2000);
@@ -763,7 +768,7 @@ const Accordion = ({
                     Complete Purchase
                   </button>
                 </div>
-              )}
+             )} 
             </>
           </div>
           <div className=" border-2 text-[12px] mt-[15px] bg-white text-left p-[10px] border-solid border-[#324879]">

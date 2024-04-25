@@ -109,7 +109,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
           </div>
 
           {/* API Key */}
-          <div className="flex mb-4 items-center">
+          {/* <div className="flex mb-4 items-center">
             <div className="w-1/4 md:text-[16px] text-[12px] font-semibold text-black font-karla  ">
               API Key:
             </div>
@@ -141,7 +141,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
                   </p>
                 )}
               </>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

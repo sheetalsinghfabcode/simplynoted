@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from '@remix-run/react';
+import React, {useState, useEffect, useRef} from 'react';
+import {useNavigate} from '@remix-run/react';
 import DynamicButton from '../DynamicButton';
-import { useStateContext } from '~/context/StateContext';
+import {useStateContext} from '~/context/StateContext';
 import AddressForm from '../addressBook/AddressForm';
 import Loader from '../modal/Loader';
-import { Modal } from '../Modal';
+import {Modal} from '../Modal';
 import location from '../../../location.json';
 import Instruction from '../modal/Instruction';
 import CircularLoader from '../CircularLoder';
-import { getApi, postApi } from '~/utils/ApiService';
-import { API_PATH } from '~/utils/Path';
-import CartItems from "../CartItems";
+import {getApi, postApi} from '~/utils/ApiService';
+import {API_PATH} from '~/utils/Path';
+import CartItems from '../CartItems';
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -24,7 +24,7 @@ export function AddCart({
   variantsVal,
   metafields,
   productId,
-  editFontFamily
+  editFontFamily,
 }) {
   const {
     addressForm,
@@ -122,10 +122,7 @@ export function AddCart({
   const [selectedBoxCheck2, setSelectedBoxCheck2] = useState(false);
   const [purchaseType, setPurchaseType] = useState('');
   const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
-
-
-
-
+  const [unCheckedAddressTitle, setUnCheckedAddressTitle] = useState('');
 
   useEffect(() => {
     setIsInitialRender(false);
@@ -199,7 +196,7 @@ export function AddCart({
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     if (name === 'country') {
       // Find the selected country's states
       const selectedCountry = location.countries.find(
@@ -356,16 +353,21 @@ export function AddCart({
   }, [apiVariantID]);
 
 
-
   const navigate = useNavigate();
   async function onClickAddCart() {
-
     if (selectedItem2 === null || (selectedItem === null && !show)) {
       setCheckSelAddress(true);
+      if (selectedItem2 === null && selectedItem === null && !show) {
+        setUnCheckedAddressTitle('Please Select Sender & Recipient address');
+      } else if (selectedItem2 === null) {
+        setUnCheckedAddressTitle('Please Select Sender address');
+      } else if (selectedItem === null && !show) {
+        setUnCheckedAddressTitle('Please Select Recipient address');
+      }
+
       return;
     }
     setButtonTextChange(true);
-
 
     try {
       setLoader(false);
@@ -388,14 +390,15 @@ export function AddCart({
           cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
         giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
         messageData: cartDataReq.msg ? cartDataReq.msg : MsgText,
-        fontFamily: fontFamilyName ? fontFamilyName : editFontFamily ,
+        fontFamily: fontFamilyName ? fontFamilyName : editFontFamily,
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
-        csvFileURL: cartDataReq?.csvFileBulk &&  cartDataReq?.csvFileBulk[0]?.csvFileUrl ,
-        qyt:  cartDataReq?.csvFileLen,
+        csvFileURL:
+          cartDataReq?.csvFileBulk && cartDataReq?.csvFileBulk[0]?.csvFileUrl,
+        qyt: cartDataReq?.csvFileLen,
         usCount: cartDataReq?.usCount,
         nonUSCount: cartDataReq?.nonUsCount,
-        csvBulkData:  !cartDataReq.csvFileBulk &&  cartDataReq?.bulkCsvData,
+        csvBulkData: !cartDataReq.csvFileBulk && cartDataReq?.bulkCsvData,
         shippingData: selectShipMode ? selectShipMode : '',
         shippingMethodImage: selectShipMode
           ? shippingData.featuredImage.url
@@ -418,16 +421,14 @@ export function AddCart({
       };
 
       const storedData = editOrderValue
-        ? cartData.map(item => {
-          if (item.productId === newCartItem.productId) {
-            return newCartItem;
-          } else {
-            return item;
-          }
-        })
+        ? cartData.map((item) => {
+            if (item.productId === newCartItem.productId) {
+              return newCartItem;
+            } else {
+              return item;
+            }
+          })
         : [newCartItem, ...cartData];
-
-
 
       // Define the API URL
       const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
@@ -444,16 +445,14 @@ export function AddCart({
         }),
       });
 
-
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.result.success) {
           setLoader(false);
           setIsCartUpdated(true);
-          setCartData(storedData)
+          setCartData(storedData);
           setCartCountVal(storedData.length);
           navigate('/cart');
-         
         }
         // Proceed with any further actions upon successful update
       } else {
@@ -491,12 +490,9 @@ export function AddCart({
     }
   }
 
-
-
   function onClickOFAddCartBtn() {
-
     // Update the cart items for the next cart updates in the cart
-    <CartItems />
+    <CartItems />;
     if (offPrice > 0) {
       onClickAddCart(); //before here was newDiscountedCard function
     } else {
@@ -531,11 +527,11 @@ export function AddCart({
         setApiVariantID(json.result.product.variants[0].id);
         setLoader(false);
       }
-    } catch (error) { }
+    } catch (error) {}
   }
   return (
     <div className="relative global-max-width-handler">
-      {loader && !addressForm  && !buttonTextChange && (
+      {loader && !addressForm && !buttonTextChange && (
         <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
           <CircularLoader textColor="text-white" title="Loading Address.." />
         </div>
@@ -553,8 +549,9 @@ export function AddCart({
         )}
         {!addressForm && (
           <div
-            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${loader ? 'opacity-40' : ''
-              }`}
+            className={`w-[100%] h-full gap-2 my-[2rem] flex justify-center flex-wrap ${
+              loader ? 'opacity-40' : ''
+            }`}
           >
             <div className="row flex md:flex-row flex-col gap-4 mr-2 ml-2 justify-between w-full">
               <div className="col-6 md:w-[49%] w-full  rounded-md  bg-[#FAFAFA] border border-[#dbdbdb]">
@@ -579,31 +576,36 @@ export function AddCart({
                         placeholder="Search Addresses..."
                       />
                     </div>
-                    <div className='flex flex-col gap-3'>
-                    {filteredForSender(returnAddress, searchData2).reverse().map(
-                      (item, index) => (
-                        <div
-                          key={index}
-                          className={`  ${selectedItem2?._id === item._id && !selectedBoxCheck2 ? 'bg-[#ffdada] ' : 'bg-white '} w-full border rounded-md border-[#e8e1e1] px-3 small:py-[16px] py-3  text-black font-bold sm:text-[14px] text-[12px] cursor-pointer flex items-center`}
-                          onClick={() => handleCheckboxChange2(item)}
-                        >
-                          <input
-                            className="cursor-pointer border-2 border-black"
-                            type="checkbox"
-                            value={item}
-                            checked={
+                    <div className="flex flex-col gap-3">
+                      {filteredForSender(returnAddress, searchData2)
+                        .reverse()
+                        .map((item, index) => (
+                          <div
+                            key={index}
+                            className={`  ${
                               selectedItem2?._id === item._id &&
                               !selectedBoxCheck2
-                            }
-                            onChange={() => handleCheckboxChange2(item)}
-                          />
-                          <span className="font-karla ml-4">
-                            {item.firstName} {item.lastName}, {item.city},
-                            {item.state}, {item.zip}, {item.country}
-                          </span>
-                        </div>
-                      ),
-                    )}
+                                ? 'bg-[#ffdada] '
+                                : 'bg-white '
+                            } w-full border rounded-md border-[#e8e1e1] px-3 small:py-[16px] py-3  text-black font-bold sm:text-[14px] text-[12px] cursor-pointer flex items-center`}
+                            onClick={() => handleCheckboxChange2(item)}
+                          >
+                            <input
+                              className="cursor-pointer border-2 border-black"
+                              type="checkbox"
+                              value={item}
+                              checked={
+                                selectedItem2?._id === item._id &&
+                                !selectedBoxCheck2
+                              }
+                              onChange={() => handleCheckboxChange2(item)}
+                            />
+                            <span className="font-karla ml-4">
+                              {item.firstName} {item.lastName}, {item.city},
+                              {item.state}, {item.zip}, {item.country}
+                            </span>
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -641,33 +643,38 @@ export function AddCart({
                             placeholder="Search Addresses..."
                           />
                         </div>
-                        <div className='flex flex-col gap-3'>
-                        {filteredList(recipientAddress, searchData).reverse().map(
-                          (item, index) => (
-                            <div
-                              key={index}
-                              className={` ${selectedItem?._id === item._id && !selectedBoxCheck ? 'bg-[#ffdada] ' : 'bg-white '} w-full border rounded-md border-[#e8e1e1] px-3 small:py-[16px] py-3  text-black font-bold flex items-center sm:text-[14px] text-[12px] cursor-pointer`}
-                              onClick={() => handleCheckboxChange(item)}
-                            >
-                              <input
-                                className="cursor-pointer border-2 border-black"
-                                type="checkbox"
-                                value={item}
-                                checked={
+                        <div className="flex flex-col gap-3">
+                          {filteredList(recipientAddress, searchData)
+                            .reverse()
+                            .map((item, index) => (
+                              <div
+                                key={index}
+                                className={` ${
                                   selectedItem?._id === item._id &&
                                   !selectedBoxCheck
-                                }
-                                onChange={() => handleCheckboxChange(item)}
-                              // ref={refRec}
-                              />
+                                    ? 'bg-[#ffdada] '
+                                    : 'bg-white '
+                                } w-full border rounded-md border-[#e8e1e1] px-3 small:py-[16px] py-3  text-black font-bold flex items-center sm:text-[14px] text-[12px] cursor-pointer`}
+                                onClick={() => handleCheckboxChange(item)}
+                              >
+                                <input
+                                  className="cursor-pointer border-2 border-black"
+                                  type="checkbox"
+                                  value={item}
+                                  checked={
+                                    selectedItem?._id === item._id &&
+                                    !selectedBoxCheck
+                                  }
+                                  onChange={() => handleCheckboxChange(item)}
+                                  // ref={refRec}
+                                />
 
-                              <span className="font-karla ml-4">
-                                {item.firstName} {item.lastName}, {item.city},
-                                {item.state}, {item.zip}, {item.country}
-                              </span>
-                            </div>
-                          ),
-                        )}
+                                <span className="font-karla ml-4">
+                                  {item.firstName} {item.lastName}, {item.city},
+                                  {item.state}, {item.zip}, {item.country}
+                                </span>
+                              </div>
+                            ))}
                         </div>
                       </>
                     )}
@@ -676,8 +683,9 @@ export function AddCart({
               </div>
             </div>
             <div
-              className={`row flex  md:flex-row flex-col   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${show ? 'justify-end' : 'justify-start'
-                }`}
+              className={`row flex  md:flex-row flex-col   mr-2 ml-2 gap-[2rem] mt-[1.5rem]  w-full ${
+                show ? 'justify-end' : 'justify-start'
+              }`}
             >
               {show && (
                 <div className="col-6 md:w-[49%] w-full   rounded-md  bg-[#FAFAFA] border border-[#dbdbdb]">
@@ -791,10 +799,11 @@ export function AddCart({
                       <input
                         type="checkbox"
                         id=""
-                        className={`${cardPriceTitle
+                        className={`${
+                          cardPriceTitle
                             ? 'cursor-pointer'
                             : 'cursor-not-allowed'
-                          }`}
+                        }`}
                         name=""
                         value=""
                         onChange={() => setStateCheckCart(!stateCheckCart)}
@@ -816,16 +825,17 @@ export function AddCart({
                 editOrderValue?.data?.isShippidata &&
                 editOrderValue?.data?.locationForShipMethod.firstName &&
                 editOrderValue?.node?.price?.amount !== '0.0')) && (
-                <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
-                  {formData?.firstName}, {formData?.lastName},{formData?.address1}
-                  , {formData?.city}, {formData?.state},{formData?.country}
-                </div>
-              )}
+              <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
+                {formData?.firstName}, {formData?.lastName},{formData?.address1}
+                , {formData?.city}, {formData?.state},{formData?.country}
+              </div>
+            )}
             <div
-              className={`row flex mt-4 w-full ${selectShipMode && selectShipMode.node.price.amount !== '0.0'
+              className={`row flex mt-4 w-full ${
+                selectShipMode && selectShipMode.node.price.amount !== '0.0'
                   ? 'justify-between'
                   : ''
-                } font-normal text-[14px]`}
+              } font-normal text-[14px]`}
             >
               {selectShipMode && selectShipMode.node.price.amount !== '0.0' && (
                 <div className="buttonDiv my-2">
@@ -1006,8 +1016,9 @@ export function AddCart({
                       onChange={(e) => handleChange(e)}
                       value={formData.state}
                       name="state"
-                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${errors.state ? 'border-red-500' : ''
-                        }`}
+                      className={`appearance-none h-[42px] rounded w-full py-2 px-3 border  border-black leading-tight focus:outline-none focus:shadow-outline  ${
+                        errors.state ? 'border-red-500' : ''
+                      }`}
                       id="state"
                     >
                       <option value="">Select a state</option>
@@ -1049,7 +1060,7 @@ export function AddCart({
 
         <Instruction
           isOpen={checkSelAddress}
-          title="Please Select Address"
+          title={unCheckedAddressTitle}
           button={true}
           image={true}
           closeModal={closeSelAddressModal}
