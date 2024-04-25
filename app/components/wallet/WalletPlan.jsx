@@ -26,9 +26,13 @@ const WalletPlans = ({
 
   const [isButtonDisabled, setIsButtonDisabled] = useState();
 
+
+
+  console.log("selectedPlan>>>>",selectedPlan);
+
   useEffect(() => {
     // Set initial values based on stripeCollection data
-    if (stripeCollection) {
+    if (!stripeCollection?.error) {
       const packageDiscount = stripeCollection.stripe?.packageDiscount || 0;
       packageQuantity = stripeCollection.stripe?.packageQuantity || 0;
 
@@ -42,6 +46,10 @@ const WalletPlans = ({
       setAmount(stripeCollection.stripe?.packageQuantity || 0); // Set the amount
     }
   }, [stripeCollection]);
+
+
+
+  console.log("stripeCollection>>>>",stripeCollection);
 
   function formatNumberWithCommas(number) {
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
@@ -207,9 +215,9 @@ const WalletPlans = ({
         <DynamicButton
           text="Continue"
           nextArrow={true}
-          disabled={isButtonDisabled}
+          disabled={isButtonDisabled || !selectedPlan}
           className={`bg-[#0c5699] ${
-            isButtonDisabled && 'cursor-not-allowed'
+            (isButtonDisabled || !selectedPlan) && 'cursor-not-allowed'
           } flex-row-reverse min-w-[190px] font-bold max-w-[190px] text-[16px] rounded-0 border-2 text-white border-solid border-[#000] py-[16px] px-[30px] border-black`}
           onClickFunction={() => {
             setWalletPlan(false);
