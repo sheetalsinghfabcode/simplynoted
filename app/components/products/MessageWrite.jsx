@@ -17,6 +17,7 @@ import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
 import {Modal as ModalComp} from '../Modal';
 import SuccessfullLoader from '../SucessfullLoader';
+import { Link } from '../Link';
 
 let mainMessageBox,
   signOffTextBox,
@@ -195,7 +196,6 @@ export function MessageWriting({
     setDisableSelectAddressBtn(false);
   }
   async function checkUserLogged() {
-    // console.log(customerid,customerId,"customerId");
     if (!customerid) {
       // setLoginModal(true);
       setShowSignScreen(true);
@@ -567,28 +567,28 @@ export function MessageWriting({
     signOffTextBox.style.lineHeight = lineHeight;
     setSignOffFontSize(fontSize);
     setSignOffLineHeight(lineHeight);
-    // resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
+    resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-    console.log('innerContainer.clientHeight', innerContainer.clientHeight);
     isOverflowing = innerContainer.clientHeight > outerContainer.clientHeight;
-    // console.log({isOverflowing});
+
 
     if (!innerContainer || !outerContainer || !isOverflowing) return;
 
     const heightDifference =
       innerContainer.clientHeight - outerContainer.clientHeight;
 
+
     let fontSizeDecrement = 1;
     let lineHeightDecrement = 1;
 
     if (heightDifference > 1000) {
-      fontSizeDecrement = 12;
-      lineHeightDecrement = 12;
+      fontSizeDecrement = 10;
+      lineHeightDecrement = 10;
     } else if (heightDifference > 500) {
-      fontSizeDecrement = 8;
-      lineHeightDecrement = 8;
+      fontSizeDecrement = 7;
+      lineHeightDecrement = 7;
     }
 
     const fontSize = parseFloat(
@@ -608,17 +608,12 @@ export function MessageWriting({
       // setSignOffFontSize(innerContainer.style.fontSize);
       // setSignOffLineHeight(innerContainer.style.lineHeight);
     }
-    if (isOverflowing)
+    if (isOverflowing){
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
+
+    }
+
   }
-
-
-
-  console.log("fontSize>>>>>>>>",fontSize)
-  console.log("lineHeight>>",lineHeight)
-  console.log("signOffFontSize>>>>>>>>",signOffFontSize)
-  console.log("signOffLineHeight>>>>>>>>",signOffLineHeight)
-
 
 
 
@@ -1392,7 +1387,7 @@ export function MessageWriting({
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-            <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=""> Standard Handwriting Style</span>
                 <select
@@ -1769,15 +1764,21 @@ export function MessageWriting({
                   </button>
                 </div>
                 <div className="flex flex-col">
-                  <div className="h-[26px] font-roboto font-bold text-base">
+                  <a 
+                  href='https://simplynoted.leaddyno.com/' target='_blank'
+                  className="h-[26px] underline font-roboto font-bold text-base">
                     Refer & Earn: Click to Join!
-                  </div>
-                  <div className="h-[26px] font-roboto font-bold text-base">
+                  </a>
+                  <Link
+                     to='/pages/simply-noted-plans' 
+                  className="h-[26px] underline font-roboto font-bold text-base">
                     Upgrade To Unlimited $0.97 Notes
-                  </div>
-                  <div className="h-[26px] font-roboto font-bold text-base">
+                  </Link>
+                  <Link
+                     to='/pages/faq'
+                  className="h-[26px] underline font-roboto font-bold text-base">
                     Need Help? Contact Support Here
-                  </div>
+                  </Link>
                 </div>
               </div>
               <div className="xl:w-[40%] w-full xl:mt-0 mt-[10px]">
@@ -2177,8 +2178,8 @@ export function MessageWriting({
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   <DynamicButton
-                    className="bg-[#FF0000] px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-semibold h-[44px]"
-                    text="Buy Leads (Mailing List)"
+                    className="bg-[#ff0000] opacity-80 px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-bold h-[44px]"
+                    text='Buy Leads (Mailing List) Comming Soon'
                     onClickFunction={() => {}}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (

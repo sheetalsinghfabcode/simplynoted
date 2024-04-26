@@ -784,6 +784,16 @@ nav a {
   --tw-ring-color: transparent;
 }
 
+.handwrittenStyle select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+
+
+
 .dropdown > div {
   cursor: pointer;
   margin-bottom: 4px;

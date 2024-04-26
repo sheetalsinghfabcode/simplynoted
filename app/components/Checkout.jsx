@@ -651,7 +651,7 @@ export function CheckoutData({
                       &emsp; USE WALLET
                     </div>
                     <div>
-                      <Link to="/simply-noted-plans">
+                      <Link to="/pages/simply-noted-plans">
                         <span className="text-sm font-bold sm:mt-[0px] mt-[8px] underline pointer-cursor hover:text-[#0056b3">
                           Get huge discounts with our Plans and Packages
                         </span>
@@ -1072,7 +1072,7 @@ export function CheckoutData({
             setWalletPlan(true)
           }, 800);
           setOpenModal(false)
-          navigate("/simply-noted-plans")
+          navigate("/pages/simply-noted-plans")
         }}
         cancelText="Use credit card"
         onCancel={() => {
