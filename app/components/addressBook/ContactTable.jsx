@@ -81,7 +81,7 @@ const ContactTable = ({
     setDeleteModal(false);
     setLoaderTitle('Deleting Address...');
     setShowLoader(true);
-    const url = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -475,7 +475,7 @@ const ContactTable = ({
   const uploadDataBatchToAPI = async (batchData, totalAddresses) => {
     setLoaderTitle('Uploading Address Book....');
     setShowLoader(true);
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
 
     const requestData = batchData.map((data) => ({
       firstName: data['First Name'] || '',

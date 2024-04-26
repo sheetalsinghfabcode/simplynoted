@@ -18,7 +18,7 @@ import {useStateContext} from '~/context/StateContext';
 
 export async function loader({context}) {
   const StripeKey =
-    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
   const WalletData = await fetchWalletData(context);
   return defer({
     StripeKey,
@@ -93,7 +93,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/payment-history?customerId=${customerID}`;
     setLoader(true);
     // Make a GET request to the API
     fetch(apiUrl)
@@ -118,7 +118,7 @@ const ManageSubscription = () => {
       ...prevLoader,
       stopSubscription: true,
     }));
-    const apiUrl = `https://testapi.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/stop-subscription?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -157,7 +157,7 @@ const ManageSubscription = () => {
 
   const handleAutoRewnew = () => {
     setLoader(true);
-    const apiUrl = `https://testapi.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/stop-autorenew?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)
@@ -186,7 +186,7 @@ const ManageSubscription = () => {
     setLoader(true);
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
 
-    const url = `https://testapi.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/stripe/delete-card?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -216,7 +216,7 @@ const ManageSubscription = () => {
   };
 
   const updateCreditCard = (id) => {
-    const url = `https://testapi.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/stripe/update-payment-method?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -253,7 +253,7 @@ const ManageSubscription = () => {
     setDefaultCard(false);
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     setLoader(true);
-    const url = `https://testapi.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
+    const url = `https://api.simplynoted.com/stripe/default-creditcard?customerId=${customerID}`;
 
     fetch(url, {
       method: 'PUT',
@@ -297,7 +297,7 @@ const ManageSubscription = () => {
       };
 
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -330,7 +330,7 @@ const ManageSubscription = () => {
   async function addNewCreditCard(paymentID) {
     try {
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -359,7 +359,7 @@ const ManageSubscription = () => {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
     setLoader(true);
 
     // Make a GET request to the API
@@ -418,7 +418,7 @@ const ManageSubscription = () => {
     try {
       setLoader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {

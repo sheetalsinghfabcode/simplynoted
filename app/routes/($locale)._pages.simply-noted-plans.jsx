@@ -13,7 +13,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 
 export async function loader({context}) {
   const StripeKey =
-    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });
@@ -69,7 +69,7 @@ export default function SimplyNoted() {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)

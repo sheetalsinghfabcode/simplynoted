@@ -235,7 +235,7 @@ export function AddCart({
       //   `${API_PATH.GET_ADDRESS}${customerid}&type=recipient`,
       // );
       const res = await fetch(
-        `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
+        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
       );
       const json = await res.json();
       setRecipientAddress(json.result);
@@ -252,7 +252,7 @@ export function AddCart({
       //   `${API_PATH.GET_ADDRESS}${customerid}&type=return`,
       // );
       const res = await fetch(
-        `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
+        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
       );
       const json = await res.json();
       setReturnAddress(json.result);
@@ -432,7 +432,7 @@ export function AddCart({
         : [newCartItem, ...cartData];
 
       // Define the API URL
-      const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
+      const url = 'https://api.simplynoted.com/api/storefront/cart-items';
 
       // Make POST request to update data
       const response = await fetch(url, {

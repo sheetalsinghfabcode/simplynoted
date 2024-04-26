@@ -56,7 +56,7 @@ export async function loader({request, context, params}) {
   const isAccountPage = /^\/account\/?$/.test(pathname);
 
   const StripeKey =
-    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
   let WalletData;
   try {
     WalletData = await fetchWalletData(context);
@@ -225,7 +225,7 @@ function Account({customer, heading, featuredData}) {
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${result}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
       );
       const json = await res.json();
 

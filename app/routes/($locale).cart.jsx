@@ -27,7 +27,7 @@ let storedDataString, storedDataArray;
 
 export async function loader({context, request}) {
   const StripeKey =
-    'pk_test_51NWJuCKwXDGuBPYABUNXd2dplCTxFziZU0QVQJpYTQmh0d59BUFAZNX2J8FhN74jBjMFUOF0tqrlEDMIRKaei2e800kPIWqGnz';
+    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
 
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
@@ -124,7 +124,7 @@ export default function AddCartFunc() {
     const customerId = localStorage.getItem('customerId');
 
     try {
-      const url = 'https://testapi.simplynoted.com/api/storefront/cart-items';
+      const url = 'https://api.simplynoted.com/api/storefront/cart-items';
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -212,7 +212,7 @@ export default function AddCartFunc() {
   function deleteCartItem() {
     const customerId = localStorage.getItem('customerId');
 
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
 
     // Make a DELETE request to the API
     fetch(apiUrl, {
@@ -272,7 +272,7 @@ export default function AddCartFunc() {
     setClearCartModal(false);
 
     const customerId = localStorage.getItem('customerId');
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
     fetch(apiUrl, {
       method: 'POST',
     })

@@ -41,7 +41,7 @@ export default function AddressBook() {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
