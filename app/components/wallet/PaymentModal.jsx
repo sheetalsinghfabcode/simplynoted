@@ -82,7 +82,7 @@ const PaymentModal = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -114,7 +114,7 @@ const PaymentModal = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -138,7 +138,7 @@ const PaymentModal = ({
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -226,7 +226,7 @@ const PaymentModal = ({
         subscriptionName: subscriptionTitle,
       };
 
-      const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
+      const apiUrl = `https://api.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -283,7 +283,7 @@ const PaymentModal = ({
       isSubscriptionOnly: true,
     };
 
-    const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
@@ -412,7 +412,7 @@ const PaymentModal = ({
       };
     }
 
-    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',

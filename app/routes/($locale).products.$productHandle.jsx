@@ -645,7 +645,7 @@ export  function LoginFunc() {
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
 

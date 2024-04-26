@@ -10,7 +10,7 @@ const CartItems = ({id}) => {
     const customerId = localStorage.getItem('customerId');
 
     // Define the API URL with customerId
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/cart-items?customerId=${customerId}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items?customerId=${customerId}`;
 
     fetch(apiUrl)
       .then((response) => {

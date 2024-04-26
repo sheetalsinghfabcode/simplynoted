@@ -537,6 +537,8 @@ export function MessageWriting({
 
 
 
+
+
   async function onchnageOfRegardBox(data) {
     setName2(data);
     const debouncFunc = debounce(processCustomMessageInput);
@@ -582,11 +584,11 @@ export function MessageWriting({
     let lineHeightDecrement = 1;
 
     if (heightDifference > 1000) {
+      fontSizeDecrement = 12;
+      lineHeightDecrement = 12;
+    } else if (heightDifference > 500) {
       fontSizeDecrement = 8;
       lineHeightDecrement = 8;
-    } else if (heightDifference > 500) {
-      fontSizeDecrement = 5;
-      lineHeightDecrement = 5;
     }
 
     const fontSize = parseFloat(
@@ -609,6 +611,17 @@ export function MessageWriting({
     if (isOverflowing)
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
   }
+
+
+
+  console.log("fontSize>>>>>>>>",fontSize)
+  console.log("lineHeight>>",lineHeight)
+  console.log("signOffFontSize>>>>>>>>",signOffFontSize)
+  console.log("signOffLineHeight>>>>>>>>",signOffLineHeight)
+
+
+
+
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -857,7 +870,7 @@ export function MessageWriting({
     setLoaderMessage('Uploading Addresses...');
     setLoader(true);
 
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerid}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerid}`;
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -1027,7 +1040,7 @@ export function MessageWriting({
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
@@ -1061,7 +1074,7 @@ export function MessageWriting({
         setShowLoader(true);
 
         const res = await fetch(
-          `https://testapi.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+          `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
           {
             method: 'POST',
             body: formData,
@@ -1142,7 +1155,7 @@ export function MessageWriting({
   async function SavedTemp() {
     try {
       const res = await fetch(
-        `https://testapi.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
       );
       const json = await res.json();
       setloadTempData(json.result);
@@ -1248,7 +1261,7 @@ export function MessageWriting({
       const formData = new FormData();
       formData.append('templateId', val);
       const res = await fetch(
-        `https://testapi.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
+        `https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
         {
           method: 'POST',
           body: formData,

@@ -91,7 +91,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     setShowLoader(true);
     setLoaderTitle('Updating Address Book');
     setLoader(true);
-    const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'PUT',

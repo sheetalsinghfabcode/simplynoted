@@ -81,7 +81,7 @@ const Accordion = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -113,7 +113,7 @@ const Accordion = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -139,7 +139,7 @@ const Accordion = ({
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://testapi.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -294,7 +294,7 @@ const Accordion = ({
         subscriptionName: subscriptionTitle,
       };
 
-      const apiUrl = `https://testapi.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
+      const apiUrl = `https://api.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -341,7 +341,7 @@ const Accordion = ({
       subscriptionProduct: variantId,
     };
 
-    const apiUrl = `https://testapi.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
 
     await fetch(apiUrl, {
       method: 'POST',
@@ -401,7 +401,7 @@ const Accordion = ({
       subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
     };
 
-    const apiUrl = `https://testapi.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
+    const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',
