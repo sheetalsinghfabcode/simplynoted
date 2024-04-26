@@ -161,9 +161,6 @@ export function MessageWriting({
     setFileData(modifiedData);
   }
 
-  console.log("metafields>>>",metafields)
-
-
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
@@ -347,6 +344,7 @@ export function MessageWriting({
     setBulkFileCount(fileData.length);
   }
 
+
   function AfterUpload() {
     if (selectedFile) {
       setShowBox(false);
@@ -418,7 +416,7 @@ export function MessageWriting({
               className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.header.fontType,
-                fontSize: `${metafields.header.fontSize}px` ,
+                fontSize: `${metafields.header.fontSize}px`,
                 textAlign: metafields.header.textAlign,
                 justifyContent: metafields.header.justifyContent,
                 flexDirection: metafields.header.flexDirection,
@@ -466,7 +464,7 @@ export function MessageWriting({
               className={`flex w-full h-full`}
               style={{
                 fontFamily: metafields.footer.fontType,
-                fontSize: `${metafields.footer.fontSize}px` ,
+                fontSize: `${metafields.footer.fontSize}px`,
                 textAlign: metafields.footer.textAlign,
                 justifyContent: metafields.footer.justifyContent,
                 flexDirection: metafields.footer.flexDirection,
@@ -535,6 +533,9 @@ export function MessageWriting({
     }
     // processInput();
   }
+
+
+
 
   async function onchnageOfRegardBox(data) {
     setName2(data);
@@ -635,28 +636,9 @@ export function MessageWriting({
     setDragAndDropBorderColor('#ef6e6e');
   };
 
-  //    function csvToJson(csv) {
-  //     var lines = csv.split('\n');
-  //     var result = [];
-  //     var headers = lines[0].split(',');
-  //     for (var i = 1; i < lines.length; i++) {
-  //         var currentLine = lines[i].trim();
-  //         // Skip empty lines
-  //         if (currentLine.length === 0 && currentLine[0].trim() === '') {
-  //             continue;
-  //         }
-  //         // Handle commas inside double quotes
-  //         var parts = currentLine.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-  //         var obj = {};
-  //         for (var j = 0; j < headers.length; j++) {
-  //           console.log(headers[j], parts[j])
-  //             obj[headers[j]] = parts[j]?.replace(/"/g, '').trim();
-  //         }
-  //         result.push(obj);
-  //     }
-  //     setDisableSelectAddressBtn(true);
-  //     return result;
-  // }
+
+
+
   function csvToJson(csv) {
     var lines = csv.split('\n');
     var result = [];
@@ -682,25 +664,7 @@ export function MessageWriting({
     setDisableSelectAddressBtn(true);
     return result;
   }
-  // function csvToJson(csv) {
-  //   var lines = csv.split('\n');
-  //   var result = [];
-  //   var headers = lines[0].split(',');
-  //   for (var i = 1; i < lines.length; i++) {
-  //     var currentLine = lines[i].split(',');
-  //     // Skip empty lines
-  //     if (currentLine.length === 1 && currentLine[0]?.trim() === '') {
-  //       continue;
-  //     }
-  //     var obj = {};
-  //     for (var j = 0; j < headers.length; j++) {
-  //       obj[headers[j]] = currentLine[j];
-  //     }
-  //     result.push(obj);
-  //   }
-  //   setDisableSelectAddressBtn(true);
-  //   return result;
-  // }
+ 
 
   async function uploadCsvFile() {
     let errMsg = [];
@@ -956,7 +920,7 @@ export function MessageWriting({
   async function onInsetClick() {
     mainMessageBox.style.fontSize = '20px';
     mainMessageBox.style.lineHeight = '20px';
-    setName(aiText);
+    setName(aiText.slice(0, 450));
     setIsOpen(false);
     setaiText('');
     setValToGen(null);
@@ -988,6 +952,7 @@ export function MessageWriting({
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
+  const textareaRef = useRef(null)
   const location = useLocation();
   useEffect(() => {
     mainMessageBox = ref1.current;
@@ -1030,14 +995,36 @@ export function MessageWriting({
     setTempVal(ref4.current?.value);
   }, [showSignScreen, customerId, customerid]);
 
+  // async function firstNameBtn(data) {
+  //   if (remainingWord > data.length) {
+  //     setCheckCharCount(false);
+  //     setName((prevString) => prevString + data);
+  //   } else {
+  //     setCheckCharCount(true);
+  //   }
+  // }
+
   async function firstNameBtn(data) {
     if (remainingWord > data.length) {
       setCheckCharCount(false);
-      setName((prevString) => prevString + data);
+      setName((prevString) => {
+        // Get the cursor position
+        const selectionStart = textareaRef?.current?.selectionStart;
+        const selectionEnd = textareaRef?.current?.selectionEnd;
+
+        // Insert the new data at the cursor position
+        const newValue =
+          prevString.substring(0, selectionStart) +
+          data +
+          prevString.substring(selectionEnd);
+
+        return newValue;
+      });
     } else {
       setCheckCharCount(true);
     }
   }
+
   useEffect(() => {
     // Define the API URL
     const apiUrl = `https://testapi.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
@@ -1215,12 +1202,12 @@ export function MessageWriting({
                       <div className="w-full flex items-center gap-[11px] justify-end">
                         <img
                           src={TickImg}
-                          className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
+                          className="2xl:w-[6%] md:w-[6%] w-[14%] h-[5%] cursor-pointer"
                           onClick={() => setLoadedTemVal(item.customMessage)}
                         />
                         <img
                           src={Del}
-                          className="2xl:w-[7%] md:w-[7%] w-[14%] h-[5%] cursor-pointer"
+                          className="2xl:w-[6%] md:w-[6%] w-[14%] h-[5%] cursor-pointer"
                           onClick={() => onConfirmDeleteTemplate(item._id)}
                         />
                       </div>
@@ -1664,6 +1651,7 @@ export function MessageWriting({
             )}
             <textarea
               type="text"
+              ref={textareaRef} 
               id="example-one-input"
               value={name}
               placeholder="Enter your custom message text here..."
@@ -2022,7 +2010,7 @@ export function MessageWriting({
                           View Bulk Upload Instructions
                         </p>
                         {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                        {!showNextBtn ? (
+                        {!showNextBtn && (
                           <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
                             <input
                               type="checkbox"
@@ -2037,15 +2025,16 @@ export function MessageWriting({
                               Add all addresses to address book
                             </label>
                           </div>
-                        ) : (
-                          selectedFile && (
-                            <div className="mt-2  w-full text-center">
-                              <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
-                                {selectedFile?.name}
-                              </span>
-                            </div>
-                          )
                         )}
+
+                        {selectedFile && (
+                          <div className="mt-2  w-full text-center">
+                            <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
+                              {selectedFile?.name}
+                            </span>
+                          </div>
+                        )}
+                        {/* )} */}
 
                         <AfterUpload />
                       </>
@@ -2131,7 +2120,7 @@ export function MessageWriting({
                             View Bulk Upload Instructions
                           </p>
                           {/* <div className='text-[14px] text-[#1b5299] font-bold'>Watch Tutorial <span className='border-b-[1px] border-[#1b5299]'>Video</span></div> */}
-                          {!showNextBtn ? (
+                          {!showNextBtn && (
                             <div className="bg-[#E5E5E5] capitalize p-4 flex items-center mt-3 text-[14px] text-[#737373] font-bold rounded gap-[3px]">
                               <input
                                 type="checkbox"
@@ -2146,7 +2135,8 @@ export function MessageWriting({
                                 Add all addresses to address book
                               </label>
                             </div>
-                          ) : (
+                          )}
+                          {
                             selectedFile && (
                               <div className="mt-2  w-full text-center">
                                 <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
@@ -2154,7 +2144,7 @@ export function MessageWriting({
                                 </span>
                               </div>
                             )
-                          )}
+                          }
                           <AfterUpload />
                         </>
                       )}

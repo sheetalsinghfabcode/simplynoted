@@ -303,32 +303,8 @@ function Account({customer, heading, featuredData}) {
       setActiveTab(state?.activeTab);
       setAccountTabName(state?.acountTabName);
     }
-    console.log({lineItems});
   }, []);
 
-  const lineItems = orders.map((order) => {
-    const products = order.lineItems.edges;
-    const productsWithImageUrls = products.map((product) => {
-      const productHandle = getProductHandleName(product.node.title);
-      
-      product.node.example = 'value';
-      return product;
-    });
-    order.lineItems.edges = productsWithImageUrls;
-    return order;
-  });
-
-  function getProductHandleName(productTitle) {
-    let handleName = productTitle.trim();
-    // Remove special characters from the beginning and the end.
-    handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
-    // Replace all remaining whitespace or special characters with a single hyphen.
-    handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
-    // Making the title to lowercase.
-    handleName = handleName.toLowerCase();
-
-    return handleName;
-  }
 
   return (
     <>
