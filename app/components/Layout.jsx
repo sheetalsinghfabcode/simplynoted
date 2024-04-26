@@ -785,6 +785,7 @@ function DesktopHeader({ isHome, menu, isLoggedIn }) {
 
 
 
+
   return (
     <>
       <header
@@ -842,8 +843,9 @@ function DesktopHeader({ isHome, menu, isLoggedIn }) {
                         FlyoutContent={PricingContent}
                         data={item.items}
                       >
-                      <Link to={item.to}>
-
+                      <Link to={item.to !=="/pages/integrations" && item.to}
+                      
+                      >
                         {item.title}
                         </Link>
                       </FlyoutLink>

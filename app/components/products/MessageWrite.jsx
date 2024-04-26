@@ -2179,7 +2179,7 @@ export function MessageWriting({
                   />
                   <DynamicButton
                     className="bg-[#ff0000] opacity-80 px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-bold h-[44px]"
-                    text='Buy Leads (Mailing List) Comming Soon'
+                    text='Buy Leads (Mailing List) Coming Soon'
                     onClickFunction={() => {}}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
