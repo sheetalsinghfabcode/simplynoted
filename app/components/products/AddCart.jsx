@@ -352,20 +352,21 @@ export function AddCart({
     }
   }, [apiVariantID]);
 
-
   const navigate = useNavigate();
   async function onClickAddCart() {
     if (selectedItem2 === null || (selectedItem === null && !show)) {
       setCheckSelAddress(true);
       if (selectedItem2 === null && selectedItem === null && !show) {
-        setUnCheckedAddressTitle('Please Add or Select (Sender & Recipient) address');
+        setUnCheckedAddressTitle(
+          'Please Add or Select (Sender & Recipient) address',
+        );
       } else if (selectedItem2 === null) {
         setUnCheckedAddressTitle('Please Add or Select Sender address');
       } else if (selectedItem === null && !show) {
         setUnCheckedAddressTitle('Please Add or Select Recipient address');
       }
 
-      return; 
+      return;
     }
     setButtonTextChange(true);
 
@@ -825,9 +826,12 @@ export function AddCart({
                 editOrderValue?.data?.isShippidata &&
                 editOrderValue?.data?.locationForShipMethod.firstName &&
                 editOrderValue?.node?.price?.amount !== '0.0')) && (
-              <div className="w-[600px] border border-solid border-black p-3 mt-3 ml-3">
-                {formData?.firstName}, {formData?.lastName},{formData?.address1}
-                , {formData?.city}, {formData?.state},{formData?.country}
+              <div className="flex w-full justify-start">
+                <div className="w-[600px] border border-solid border-black p-3 mt-3 ">
+                  {formData?.firstName}, {formData?.lastName},
+                  {formData?.address1}, {formData?.city}, {formData?.state},
+                  {formData?.country}
+                </div>
               </div>
             )}
             <div
