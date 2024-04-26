@@ -103,6 +103,8 @@ const StripeCard = ({
   const pathname = useLocation();
 
 
+
+
   return (
     <form onSubmit={handleSubmit} className="w-full">
       <div className="border border-solid border-black">
@@ -148,7 +150,7 @@ const StripeCard = ({
             className={`!bg-[#EF6E6E] text-white font-bold dsgsdgsgsd uppercase md:text-[16px] text-[12px] flex justify-center items-center h-[55px]  w-full !rounded-0 !py-[16px]  transition duration-400 !px-[30px] max-w-[300px] `}
             // disabled={loading}
           >
-            {(pathname.pathname === '/simply-noted-plans' ||
+            {(pathname.pathname === '/pages/simply-noted-plans' ||
               pathname.pathname === '/account') &&
             !addCreditModal &&
             !showStripeCard &&

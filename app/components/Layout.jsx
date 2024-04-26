@@ -497,7 +497,7 @@ function MenuMobileNav({ menu, onClose }) {
                               </button>
                             </Link></li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'>
-                            <Link to="/simply-noted-plans" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                            <Link to="/pages/simply-noted-plans" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                               Plans and Packages
                             </Link>
                           </li>
@@ -784,6 +784,7 @@ function DesktopHeader({ isHome, menu, isLoggedIn }) {
   const { y } = useWindowScroll();
 
 
+
   return (
     <>
       <header
@@ -841,7 +842,10 @@ function DesktopHeader({ isHome, menu, isLoggedIn }) {
                         FlyoutContent={PricingContent}
                         data={item.items}
                       >
+                      <Link to={item.to}>
+
                         {item.title}
+                        </Link>
                       </FlyoutLink>
                     ) : (
                       <Link to="/pages/business-page">

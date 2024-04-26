@@ -649,7 +649,7 @@ const ManageSubscription = () => {
                           </span>
                           <DynamicButton
                             onClickFunction={() =>
-                              navigate('/simply-noted-plans')
+                              navigate('/pages/simply-noted-plans')
                             }
                             text={
                               stripeCollection.stripe?.subscriptionStatus &&
