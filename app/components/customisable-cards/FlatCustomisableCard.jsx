@@ -1532,7 +1532,7 @@ export default function FlatCustomisableCard({
                                   }`,
                                 }}
                               >
-                                {!footerData.isImageSelected && !qr.isQrAdded (
+                                {!footerData.isImageSelected && !qr.isQrAdded && (
                                   <span className="text-[#dcdcdc] font-serif text-[30px]">
                                     Footer
                                   </span>
