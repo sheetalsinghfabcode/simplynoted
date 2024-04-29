@@ -8,10 +8,10 @@ const CustomDropdown = ({ options, value, onChange }) => {
         // Render nested options
         return (
           <optgroup key={index} className='text-[16px]' label={option.label}>
-            {option.map((nestedOption, nestedIndex) => (
+            {option?.map((nestedOption, nestedIndex) => (
               <option
                 key={nestedIndex}
-                style={nestedOption.style ? nestedOption.style : {fontSize:"16px"}}
+                style={nestedOption?.style ? nestedOption?.style : {fontSize:"16px"}}
                 className={`${nestedOption.className}`}
                 value={nestedOption.value}
               >
@@ -25,11 +25,11 @@ const CustomDropdown = ({ options, value, onChange }) => {
         return (
           <option
             key={index}
-            style={option.style}
-            className={`${option.className}`}
-            value={option.value}
+            style={option?.style}
+            className={`${option?.className}`}
+            value={option?.value}
           >
-            {option.label}
+            {option?.label}
           </option>
         );
       }

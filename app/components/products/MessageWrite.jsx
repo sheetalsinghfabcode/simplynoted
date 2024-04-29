@@ -17,7 +17,8 @@ import {FiUploadCloud} from 'react-icons/fi';
 import {VideoTutorial} from '../VideoTutorial';
 import {Modal as ModalComp} from '../Modal';
 import SuccessfullLoader from '../SucessfullLoader';
-import { Link } from '../Link';
+import {Link} from '../Link';
+import CustomDropdown from '../CustomDropDown';
 
 let mainMessageBox,
   signOffTextBox,
@@ -203,10 +204,10 @@ export function MessageWriting({
       setInstructionModal(true);
     } else {
       let reqField;
+      let subName = name;
 
       if (fileData.length) {
         fileData.map((obj) => {
-          let subName = name;
           if (obj['First Name']) {
             subName = subName.replace(/\[First Name\]/g, obj['First Name']);
           }
@@ -228,7 +229,7 @@ export function MessageWriting({
           obj.msgData = subName;
         });
         reqField = {
-          msg: name,
+          msg: subName,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
           csvFileLen: lenCsvData ? lenCsvData : '1',
@@ -277,13 +278,14 @@ export function MessageWriting({
     } else if (name.length == 0) {
       setInstructionModal(true);
     } else {
+      let subName = name;
+
       const csvFileURL = await uploadCsvFileOnClick();
       let reqField,
         usCountAdd = 0,
         nonUsAdd = 0;
       if (fileData.length) {
         fileData.map((obj) => {
-          let subName = name;
           if (obj['firstName']) {
             subName = subName.replace(/\[First Name\]/g, obj['firstName']);
           }
@@ -313,7 +315,7 @@ export function MessageWriting({
           obj.msgData = subName;
         });
         reqField = {
-          msg: name,
+          msg: subName,
           signOffText: name2,
           csvFileBulk: csvFileURL ? csvFileURL : null,
           csvFileLen: fileData ? fileData.length : '1',
@@ -343,7 +345,6 @@ export function MessageWriting({
     setModalForAddressBook(false);
     setBulkFileCount(fileData.length);
   }
-
 
   function AfterUpload() {
     if (selectedFile) {
@@ -534,11 +535,6 @@ export function MessageWriting({
     // processInput();
   }
 
-
-
-
-
-
   async function onchnageOfRegardBox(data) {
     setName2(data);
     const debouncFunc = debounce(processCustomMessageInput);
@@ -573,12 +569,10 @@ export function MessageWriting({
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
     isOverflowing = innerContainer.clientHeight > outerContainer.clientHeight;
 
-
     if (!innerContainer || !outerContainer || !isOverflowing) return;
 
     const heightDifference =
       innerContainer.clientHeight - outerContainer.clientHeight;
-
 
     let fontSizeDecrement = 1;
     let lineHeightDecrement = 1;
@@ -608,15 +602,10 @@ export function MessageWriting({
       // setSignOffFontSize(innerContainer.style.fontSize);
       // setSignOffLineHeight(innerContainer.style.lineHeight);
     }
-    if (isOverflowing){
+    if (isOverflowing) {
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
-
     }
-
   }
-
-
-
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -644,9 +633,6 @@ export function MessageWriting({
     setDragAndDropBorderColor('#ef6e6e');
   };
 
-
-
-
   function csvToJson(csv) {
     var lines = csv.split('\n');
     var result = [];
@@ -672,7 +658,6 @@ export function MessageWriting({
     setDisableSelectAddressBtn(true);
     return result;
   }
- 
 
   async function uploadCsvFile() {
     let errMsg = [];
@@ -960,7 +945,7 @@ export function MessageWriting({
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
-  const textareaRef = useRef(null)
+  const textareaRef = useRef(null);
   const location = useLocation();
   useEffect(() => {
     mainMessageBox = ref1.current;
@@ -1387,7 +1372,7 @@ export function MessageWriting({
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            {/* <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=""> Standard Handwriting Style</span>
                 <select
@@ -1640,7 +1625,98 @@ export function MessageWriting({
                   </span>
                 )}
               </div>
+            </div> */}
+
+<div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+              <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
+                <span className=""> Standard Handwriting Style</span>
+                <CustomDropdown
+                  id="font"
+                  value={standardFontVal}
+                  onChange={(e) => setFont(e.target.value)}
+                  options={[
+                    {
+                      value: standardFontVal,
+                      label: standardFontVal
+                        ? standardFontVal
+                        : editFontFamily && !editCustomFontFamily
+                        ? editFontFamily
+                        : 'Tarzan',
+                      style: {fontSize: '16px'},
+                    },
+                    editFontFamily && editFontFamily !== 'Tarzan'
+                      ? {
+                          value: 'Tarzan',
+                          label: 'Tarzan',
+                          className: 'font-tarzan',
+                        }
+                      : null,
+                    {
+                      value: 'Stitch',
+                      label: 'Stitch',
+                      style: {fontSize: '33px'},
+                      className: 'font-stitch',
+                    },
+                    {
+                      value: 'Simba',
+                      label: 'Simba',
+                      style: {fontSize: '33px'},
+                      className: 'font-simba',
+                    },
+                    {
+                      value: 'Simba',
+                      style: {fontSize: '33px'},
+                      className: `font-simba`,
+                    },
+                  ]}
+                />
+              </div>
+              <div className="h-[73px] xl:max-w-[178px] flex flex-col 2xl:text-[14px] text-[11px] whitespace-nowrap  justify-between font-inter font-semibold text-left flex-1 w-full self-end">
+                <span>Custom Handwriting Style</span>
+                <CustomDropdown
+                  id="Coustomfont"
+                  value={customFontVal}
+                  onChange={(e) => getCustomFont(e.target.value)}
+                  options={[
+                    {
+                      value: customFontVal,
+                      label: customFontVal
+                        ? customFontVal
+                        : editCustomFontFamily
+                        ? editCustomFontFamily
+                        : 'Select Custom Font',
+                      disabled: true,
+                    },
+                    customFonts &&
+                      customFonts.map((item, index) => ({
+                        value: item.fontName,
+                        label: item.fontName,
+                      })),
+                  ]}
+                />
+              </div>
+              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter whitespace-nowrap  font-semibold 2xl:text-[14px] text-[11px]  flex-1 w-full text-left self-end">
+                <span>Optional shipping date</span>
+                <div className="flex relative">
+                  <input
+                    type="date"
+                    className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+                    // min={new Date().toISOString().split('T')[0]}
+                    onChange={(e) => onDateChangeFunction(e)}
+                    value={shippingDate}
+                  />
+                  <span className="calendar-icon">
+                    <img src={calender_icon} alt="Calendar" />
+                  </span>
+                </div>
+                {minDateCheck && (
+                  <span className=" text-[10.5px] pt-[14px] text-red-500">
+                    Please choose a future date
+                  </span>
+                )}
+              </div>
             </div>
+
             {!customFonts && (
               <div className="mb-[24px]  font-inter text-xs">
                 <a
@@ -1659,7 +1735,7 @@ export function MessageWriting({
             )}
             <textarea
               type="text"
-              ref={textareaRef} 
+              ref={textareaRef}
               id="example-one-input"
               value={name}
               placeholder="Enter your custom message text here..."
@@ -1764,19 +1840,23 @@ export function MessageWriting({
                   </button>
                 </div>
                 <div className="flex flex-col">
-                  <a 
-                  href='https://simplynoted.leaddyno.com/' target='_blank'
-                  className="h-[26px] underline font-roboto font-bold text-base">
+                  <a
+                    href="https://simplynoted.leaddyno.com/"
+                    target="_blank"
+                    className="h-[26px] underline font-roboto font-bold text-base"
+                  >
                     Refer & Earn: Click to Join!
                   </a>
                   <Link
-                     to='/pages/simply-noted-plans' 
-                  className="h-[26px] underline font-roboto font-bold text-base">
+                    to="/pages/simply-noted-plans"
+                    className="h-[26px] underline font-roboto font-bold text-base"
+                  >
                     Upgrade To Unlimited $0.97 Notes
                   </Link>
                   <Link
-                     to='/pages/faq'
-                  className="h-[26px] underline font-roboto font-bold text-base">
+                    to="/pages/faq"
+                    className="h-[26px] underline font-roboto font-bold text-base"
+                  >
                     Need Help? Contact Support Here
                   </Link>
                 </div>
@@ -2150,15 +2230,13 @@ export function MessageWriting({
                               </label>
                             </div>
                           )}
-                          {
-                            selectedFile && (
-                              <div className="mt-2  w-full text-center">
-                                <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
-                                  {selectedFile?.name}
-                                </span>
-                              </div>
-                            )
-                          }
+                          {selectedFile && (
+                            <div className="mt-2  w-full text-center">
+                              <span className="text-[#000] text-[14px] break-all  leading-[22px] font-karla font-bold">
+                                {selectedFile?.name}
+                              </span>
+                            </div>
+                          )}
                           <AfterUpload />
                         </>
                       )}
@@ -2178,8 +2256,8 @@ export function MessageWriting({
                     onClickFunction={() => OpenAddressBookModal()}
                   />
                   <DynamicButton
-                    className="bg-[#ff0000] opacity-80 px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-bold h-[44px]"
-                    text='Buy Leads (Mailing List) Coming Soon'
+                    className="bg-[#ff0000] cursor-not-allowed !opacity-40 px-[10px] py-[16px] md:mb-6 mb-[16px] w-full text-base font-roboto font-bold h-[44px]"
+                    text="Buy Leads (Mailing List) Coming Soon"
                     onClickFunction={() => {}}
                   />
                   {bulkFileCount && bulkFileCount > 0 ? (
