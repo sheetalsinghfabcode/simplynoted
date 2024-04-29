@@ -1532,7 +1532,7 @@ export default function FlatCustomisableCard({
                                   }`,
                                 }}
                               >
-                                {!footerData.isImageSelected && (
+                                {!footerData.isImageSelected && !qr.isQrAdded (
                                   <span className="text-[#dcdcdc] font-serif text-[30px]">
                                     Footer
                                   </span>
@@ -1953,7 +1953,7 @@ export default function FlatCustomisableCard({
                     </div>
                     <div className="flex sm:flex-col flex-row flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-between">
                       <div className="relative mt-5 w-[60px] h-[50px]">
-                        {observingData.isHeader && !qr.isQrAdded && (
+                        {observingData.isHeader  && (
                           <>
                             <div className="flex items-center gap-2">
                               <img
@@ -1979,7 +1979,7 @@ export default function FlatCustomisableCard({
                             />
                           </>
                         )}
-                        {observingData.isFooter && !qr.isQrAdded && (
+                        {observingData.isFooter && (
                           <>
                             <div className="flex items-center gap-2 ">
                               <img

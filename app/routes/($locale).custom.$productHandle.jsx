@@ -239,8 +239,6 @@ export default function CustomProducts() {
                         //   })`,
                         // }}
 
-                       
-
                         src={
                           customProductData.images.length
                             ? customProductData.images[imageShow].originalSrc
