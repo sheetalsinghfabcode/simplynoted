@@ -1,183 +1,70 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 
-// Icon component
-const Icon = ({isOpen}) => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="18"
-      height="18"
-      stroke="#222"
-      strokeWidth="1.5"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={isOpen ? 'translate' : ''}
-    >
-      <polyline points="6 9 12 15 18 9"></polyline>
-    </svg>
-  );
-};
+const CustomDropdown = ({id, value, onChange, options}) => {
+  console.log('options', options);
+  const [isOpen, setIsOpen] = useState(false);
 
-// CloseIcon component
-const CloseIcon = () => {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="14"
-      height="14"
-      stroke="#fff"
-      strokeWidth="2"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-  );
-};
-
-// CustomSelect component
-const CustomDropdown = ({
-  placeHolder,
-  options,
-  isMulti,
-  value,
-  isSearchable,
-  onChange,
-  align,
-}) => {
-  // State variables using React hooks
-  const [showMenu, setShowMenu] = useState(false); // Controls the visibility of the dropdown menu
-  const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null); // Stores the selected value(s)
-  const searchRef = useRef(); // Reference to the search input element
-  const inputRef = useRef(); // Reference to the custom select input element
-
-  useEffect(() => {
-    if (showMenu && searchRef.current) {
-      searchRef.current.focus();
-    }
-  }, [showMenu]);
-
-
-  useEffect(() => {
-    const handler = (e) => {
-      if (inputRef.current && !inputRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
-
-    window.addEventListener('click', handler);
-    return () => {
-      window.removeEventListener('click', handler);
-    };
-  });
-
-  const handleInputClick = (e) => {
-    setShowMenu(!showMenu);
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
-  const getDisplay = () => {
-    if (!selectedValue || selectedValue.length === 0) {
-      return placeHolder;
-    }
-    if (isMulti) {
-      return (
-        <div className="dropdown-tags">
-          {selectedValue.map((option, index) => (
-            <div key={`${option?.value}-${index}`} className="dropdown-tag-item">
-              {option.label}
-              <span
-                onClick={(e) => onTagRemove(e, option)}
-                className="dropdown-tag-close"
-              >
-                <CloseIcon />
-              </span>
-            </div>
-          ))}
-        </div>
-      );
-    }
-    return selectedValue.label;
+  const handleOptionClick = (optionValue) => {
+    onChange({target: {value: optionValue}});
+    setIsOpen(false);
   };
-
-  const removeOption = (option) => {
-    return selectedValue.filter((o) => o.value !== option?.value);
-  };
-
-  const onTagRemove = (e, option) => {
-    e.stopPropagation();
-    const newValue = removeOption(option);
-    setSelectedValue(newValue);
-    onChange(newValue);
-  };
-
-  const onItemClick = (option) => {
-    let newValue;
-    if (isMulti) {
-      if (selectedValue.findIndex((o) => o.value === option?.value) >= 0) {
-        newValue = removeOption(option);
-      } else {
-        newValue = [...selectedValue, option];
-      }
-    } else {
-      newValue = option;
-    }
-    setSelectedValue(newValue);
-    onChange(newValue);
-  };
-
-  const isSelected = (option) => {
-    if (isMulti) {
-      return selectedValue.filter((o) => o.value === option?.value).length > 0;
-    }
-
-    if (!selectedValue) {
-      return false;
-    }
-
-    return selectedValue.value === option?.value;
-  };
-
-
-
-  console.log("options",options);
 
   return (
-    <div className="custom--dropdown-container">
-      <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
-        <div
-          className={`dropdown-selected-value ${
-            !selectedValue || selectedValue.length === 0 ? 'placeholder' : ''
-          }`}
+    <div className="relative inline-block text-left">
+      <div>
+        <button
+          type="button"
+          className="h-[40px] flex items-center justify-center px-[10px] highlight-none font-bold bg-white text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+          id={id}
+          onClick={toggleDropdown}
         >
-          {getDisplay()}
-        </div>
-        <div className="dropdown-tools">
-          <div className="dropdown-tool">
-            <Icon isOpen={showMenu} />
-          </div>
-        </div>
+          {value}
+          <svg
+            className="mr-2 ml-auto h-5 w-5"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
       </div>
 
-      {showMenu && (
-        <div className={`dropdown-menu alignment--${align || 'auto'}`}>
-         
-          {options.map((option) => (
-            <div
-            style={option?.style}
-              onClick={() => onItemClick(option)}
-              key={option?.value}
-              className={`dropdown-item ${option?.className} ${isSelected(option) && 'selected'}`}
-            >
-              {option?.label}
-            </div>
-          ))}
+      {isOpen && (
+        <div
+          className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby={id}
+        >
+          <div className="py-1" role="none">
+            {options &&
+              options.length > 0 &&
+              options.map((option, index) => (
+                <div
+                  key={index}
+                  style={option?.style}
+                  className={`block px-4 py-2 text-sm text-gray-700 ${option?.className} hover:bg-gray-100 cursor-pointer`}
+                  onClick={() => handleOptionClick(option?.value)}
+                  role="menuitem"
+                >
+                  {option?.label}
+                </div>
+              ))}
+          </div>
         </div>
       )}
     </div>
   );
 };
 
-export default CustomDropdown
+export default CustomDropdown;

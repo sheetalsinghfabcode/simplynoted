@@ -163,6 +163,8 @@ export function MessageWriting({
     setFileData(modifiedData);
   }
 
+  console.log('standardFontVal>>', standardFontVal);
+
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
@@ -1308,6 +1310,7 @@ export function MessageWriting({
     setCustomFontVal('Select Custom Font');
     setFontFamily(e);
     // setFontLoad(true)
+
     setStandardFontVal(e);
   }
   async function customFontFamily(id) {
@@ -1355,6 +1358,60 @@ export function MessageWriting({
     }
   }
 
+  const [options, setOptions] = useState([
+    {
+      label: 'Option 1',
+      value: 'opt1',
+    },
+    {
+      label: 'Option 2',
+      value: 'opt2',
+    },
+    {
+      label: 'Option 3',
+      value: 'opt3',
+    },
+  ]);
+  const handleChangeSelect = (e) => {
+    console.log(e);
+  };
+
+  const standFontOptions = [
+    {
+      value: standardFontVal,
+      label: standardFontVal
+        ? standardFontVal
+        : editFontFamily && !editCustomFontFamily
+        ? editFontFamily
+        : 'Tarzan',
+      style: {fontSize: '16px'},
+    },
+    editFontFamily && editFontFamily !== 'Tarzan'
+      ? {
+          value: 'Tarzan',
+          label: 'Tarzan',
+          className: 'font-tarzan',
+        }
+      : null,
+    {
+      value: 'Stitch',
+      label: 'Stitch',
+      style: {fontSize: '33px'},
+      className: 'font-stitch',
+    },
+    {
+      value: 'Simba',
+      label: 'Simba',
+      style: {fontSize: '33px'},
+      className: 'font-simba',
+    },
+    {
+      value: 'Simba',
+      style: {fontSize: '33px'},
+      className: 'font-simba',
+    },
+  ];
+
   return (
     <>
       <div className="mainDivForBox relative flex md:flex-row flex-col xl:gap-[40px] md:gap-[20px] w-full gap-5  md:justify-between">
@@ -1372,12 +1429,11 @@ export function MessageWriting({
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-         
-
-            <div className="flex flex-col items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
-                <span className="">Standard Handwriting Style</span>
+                <span className=""> Standard Handwriting Style</span>
                 <CustomDropdown
+                  id="font"
                   value={standardFontVal}
                   onChange={(e) => setFont(e.target.value)}
                   options={[
@@ -1391,11 +1447,12 @@ export function MessageWriting({
                       style: {fontSize: '16px'},
                     },
                     editFontFamily && editFontFamily !== 'Tarzan'
-                      && {
+                      ? {
                           value: 'Tarzan',
                           label: 'Tarzan',
                           className: 'font-tarzan',
-                        },
+                        }
+                      : null,
                     {
                       value: 'Stitch',
                       label: 'Stitch',
@@ -1408,63 +1465,35 @@ export function MessageWriting({
                       style: {fontSize: '33px'},
                       className: 'font-simba',
                     },
-  
                     {
-                      label: ' Roo',
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
+                      value: 'Simba',
+                      style: {fontSize: '33px'},
+                      className: `font-simba`,
                     },
-                    {
-                      label: 'Pinocchio',
-                      value:"pinocchio",
-                      style:{fontSize: '16px'},
-                      className:`font-pinocchio`
-                    },
-                    {
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
-                    },
-                    {
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
-                    },
-                    {
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
-                    },
-                    {
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
-                    },
-                    {
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
-                    },
-                    {
-                      value:"Roo",
-                      style:{fontSize: '20px'},
-                      className:`font-roo`
-                    },
-                    
-                  
                   ]}
                 />
-
               </div>
               <div className="h-[73px] xl:max-w-[178px] flex flex-col 2xl:text-[14px] text-[11px] whitespace-nowrap  justify-between font-inter font-semibold text-left flex-1 w-full self-end">
                 <span>Custom Handwriting Style</span>
                 <CustomDropdown
+                  id="Coustomfont"
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
                   options={[
-                    { value: customFontVal, label: customFontVal ? customFontVal : 'Select Custom Font', disabled: true },
-                    ...(customFonts.map((item) => ({ value: item.fontName, label: item.fontName }))),
+                    {
+                      value: customFontVal,
+                      label: customFontVal
+                        ? customFontVal
+                        : editCustomFontFamily
+                        ? editCustomFontFamily
+                        : 'Select Custom Font',
+                      disabled: true,
+                    },
+                    customFonts &&
+                      customFonts.map((item, index) => ({
+                        value: item.fontName,
+                        label: item.fontName,
+                      })),
                   ]}
                 />
               </div>
@@ -1474,6 +1503,7 @@ export function MessageWriting({
                   <input
                     type="date"
                     className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+                    // min={new Date().toISOString().split('T')[0]}
                     onChange={(e) => onDateChangeFunction(e)}
                     value={shippingDate}
                   />
@@ -1482,7 +1512,7 @@ export function MessageWriting({
                   </span>
                 </div>
                 {minDateCheck && (
-                  <span className="text-[10.5px] pt-[14px] text-red-500">
+                  <span className=" text-[10.5px] pt-[14px] text-red-500">
                     Please choose a future date
                   </span>
                 )}
