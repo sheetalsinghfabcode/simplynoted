@@ -163,7 +163,6 @@ export function MessageWriting({
     setFileData(modifiedData);
   }
 
-  console.log('standardFontVal>>', standardFontVal);
 
   useEffect(() => {
     gettingCheckBoxAddress();
@@ -1376,41 +1375,7 @@ export function MessageWriting({
     console.log(e);
   };
 
-  const standFontOptions = [
-    {
-      value: standardFontVal,
-      label: standardFontVal
-        ? standardFontVal
-        : editFontFamily && !editCustomFontFamily
-        ? editFontFamily
-        : 'Tarzan',
-      style: {fontSize: '16px'},
-    },
-    editFontFamily && editFontFamily !== 'Tarzan'
-      ? {
-          value: 'Tarzan',
-          label: 'Tarzan',
-          className: 'font-tarzan',
-        }
-      : null,
-    {
-      value: 'Stitch',
-      label: 'Stitch',
-      style: {fontSize: '33px'},
-      className: 'font-stitch',
-    },
-    {
-      value: 'Simba',
-      label: 'Simba',
-      style: {fontSize: '33px'},
-      className: 'font-simba',
-    },
-    {
-      value: 'Simba',
-      style: {fontSize: '33px'},
-      className: 'font-simba',
-    },
-  ];
+
 
   return (
     <>
@@ -1429,7 +1394,7 @@ export function MessageWriting({
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            {/* <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=""> Standard Handwriting Style</span>
                 <CustomDropdown
@@ -1466,36 +1431,339 @@ export function MessageWriting({
                       className: 'font-simba',
                     },
                     {
-                      value: 'Simba',
-                      style: {fontSize: '33px'},
-                      className: `font-simba`,
+                      value: 'Nimo',
+                      label: 'Nimo',
+                      style: {fontSize: '20px'},
+                      className:`font-nimo`
                     },
+                    {
+                      value: 'Lumiere',
+                      label: 'Lumiere',
+                      style: {fontSize: '33px'},
+                      className:`font-lumiere`
+                    },
+                    {
+                      value: 'dumbo',
+                      label: 'Dumbo',
+                      style: {fontSize: '33px'},
+                      className:`font-dumbo`
+                    },
+                    {
+                      value: 'Donald',
+                      label: 'Donald',
+                      style: {fontSize: '20px'},
+                      className:`font-donald`
+                    },
+                    {
+                      value: 'Aladdin',
+                      label: 'Aladdin',
+                      style: {fontSize: '29px'},
+                      className:`font-aladdin`
+                    },
+                    {
+                      value: 'Belle',
+                      label: 'Belle',
+                      style: {fontSize: '39px'},
+                      className:`font-belle`
+                    },
+                    {
+                      value: 'Boo',
+                      label: 'Boo',
+                      style: {fontSize: '29px'},
+                      className:`font-boo`
+                    },
+                    {
+                      value: 'Cinderella',
+                      label: 'Cinderella',
+                      style: {fontSize: '33px'},
+                      className:`font-cinderella`
+                    },
+                    {
+                      value: 'kaa',
+                      label: 'Kaa',
+                      style: {fontSize: '33px'},
+                      className:`font-kaa`
+                    },
+                    
                   ]}
                 />
               </div>
               <div className="h-[73px] xl:max-w-[178px] flex flex-col 2xl:text-[14px] text-[11px] whitespace-nowrap  justify-between font-inter font-semibold text-left flex-1 w-full self-end">
                 <span>Custom Handwriting Style</span>
-                <CustomDropdown
+                <select
                   id="Coustomfont"
+                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
                   value={customFontVal}
                   onChange={(e) => getCustomFont(e.target.value)}
-                  options={[
-                    {
-                      value: customFontVal,
-                      label: customFontVal
-                        ? customFontVal
-                        : editCustomFontFamily
-                        ? editCustomFontFamily
-                        : 'Select Custom Font',
-                      disabled: true,
-                    },
-                    customFonts &&
-                      customFonts.map((item, index) => ({
-                        value: item.fontName,
-                        label: item.fontName,
-                      })),
-                  ]}
-                />
+                >
+                  <option value={customFontVal} disabled>
+                    {customFontVal
+                      ? customFontVal
+                      : editCustomFontFamily
+                      ? editCustomFontFamily
+                      : 'Select Custom Font'}
+                  </option>
+                  {customFonts &&
+                    customFonts.map((item, index) => (
+                      <option key={index} value={item.fontName}>
+                        {item.fontName}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter whitespace-nowrap  font-semibold 2xl:text-[14px] text-[11px]  flex-1 w-full text-left self-end">
+                <span>Optional shipping date</span>
+                <div className="flex relative">
+                  <input
+                    type="date"
+                    className="h-[40px] highlight-none font-bold text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+                    // min={new Date().toISOString().split('T')[0]}
+                    onChange={(e) => onDateChangeFunction(e)}
+                    value={shippingDate}
+                  />
+                  <span className="calendar-icon">
+                    <img src={calender_icon} alt="Calendar" />
+                  </span>
+                </div>
+                {minDateCheck && (
+                  <span className=" text-[10.5px] pt-[14px] text-red-500">
+                    Please choose a future date
+                  </span>
+                )}
+              </div>
+            </div> */}
+            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+              <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
+                <span className=""> Standard Handwriting Style</span>
+                <select
+                  id="font"
+                  className="h-[40px] highlight-none cursor-pointer font-bold  text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+                  value={standardFontVal}
+                  onChange={(e) => setFont(e.target.value)}
+                  placeholder="aaaa"
+                >
+                  <option
+                    value={standardFontVal}
+                    disabled
+                    style={{fontSize: '16px'}}
+                  >
+                    {standardFontVal
+                      ? standardFontVal
+                      : editFontFamily && !editCustomFontFamily
+                      ? editFontFamily
+                      : 'Tarzan'}
+                  </option>
+                  {editFontFamily && editFontFamily !== 'Tarzan' && (
+                    <option value="Tarzan" className={`font-tarzan`}>
+                      Tarzan
+                    </option>
+                  )}
+                  <option
+                    value="Stitch"
+                    style={{fontSize: '33px'}}
+                    className={`font-stitch`}
+                  >
+                    Stitch
+                  </option>
+                  <option
+                    value="Tarzan"
+                    style={{fontSize: '33px'}}
+                    className={`font-tarzan`}
+                  >
+                    Tarzan
+                  </option>
+                  <option
+                    value="Simba"
+                    style={{fontSize: '33px'}}
+                    className={`font-simba`}
+                  >
+                    Simba
+                  </option>
+                  <option
+                    value="Roo"
+                    style={{fontSize: '20px'}}
+                    className={`font-roo`}
+                  >
+                    Roo
+                  </option>
+                  <option
+                    value="pinocchio"
+                    style={{fontSize: '16px'}}
+                    className={`font-pinocchio`}
+                  >
+                    Pinocchio
+                  </option>
+                  <option
+                    value="Nimo"
+                    style={{fontSize: '20px'}}
+                    className={`font-nimo`}
+                  >
+                    Nimo
+                  </option>
+                  <option
+                    value="Lumiere"
+                    style={{fontSize: '33px'}}
+                    className={`font-lumiere`}
+                  >
+                    Lumiere
+                  </option>
+                  <option
+                    value="dumbo"
+                    style={{fontSize: '33px'}}
+                    className={`font-dumbo`}
+                  >
+                    Dumbo
+                  </option>
+                  <option
+                    value="Donald"
+                    style={{fontSize: '20px'}}
+                    className={`font-donald`}
+                  >
+                    Donald
+                  </option>
+                  <option
+                    value="Aladdin"
+                    style={{fontSize: '29px'}}
+                    className={`font-aladdin`}
+                  >
+                    Aladdin
+                  </option>
+                  <option
+                    value="Belle"
+                    style={{fontSize: '39px'}}
+                    className={`font-belle`}
+                  >
+                    Belle
+                  </option>
+                  <option
+                    value="Boo"
+                    style={{fontSize: '38px'}}
+                    className={`font-boo`}
+                  >
+                    Boo
+                  </option>
+                  <option
+                    value="Cinderella"
+                    style={{fontSize: '33px'}}
+                    className={`font-cinderella`}
+                  >
+                    Cinderella
+                  </option>
+                  <option
+                    value="kaa"
+                    style={{fontSize: '33px'}}
+                    className={`font-kaa`}
+                  >
+                    Kaa
+                  </option>
+                  <option
+                    value="Copper"
+                    style={{fontSize: '33px'}}
+                    className={`font-copper`}
+                  >
+                    Copper
+                  </option>
+                  <option
+                    value="Jasmine"
+                    style={{fontSize: '33px'}}
+                    className={`font-jasmine`}
+                  >
+                    Jasmine
+                  </option>
+                  <option
+                    value="Merlin"
+                    style={{fontSize: '33px'}}
+                    className={`font-merlin`}
+                  >
+                    Merlin
+                  </option>
+                  <option
+                    value="Goofy"
+                    style={{fontSize: '33px'}}
+                    className={`font-goofy`}
+                  >
+                    Goofy
+                  </option>
+                  <option
+                    value="Hercules"
+                    style={{fontSize: '38px'}}
+                    className={`font-hercules`}
+                  >
+                    Hercules
+                  </option>
+                  <option
+                    value="Rafiki"
+                    style={{fontSize: '33px'}}
+                    className={`font-rafiki`}
+                  >
+                    Rafiki
+                  </option>
+                  <option
+                    value="Rapunzel"
+                    style={{fontSize: '33px'}}
+                    className={`font-rapunzel`}
+                  >
+                    Rapunzel
+                  </option>
+                  <option
+                    value="Ratigan"
+                    style={{fontSize: '33px'}}
+                    className={`font-ratigan`}
+                  >
+                    Ratigan
+                  </option>
+                  <option
+                    value="Sarabi"
+                    style={{fontSize: '33px'}}
+                    className={`font-sarabi`}
+                  >
+                    Sarabi
+                  </option>
+                  <option
+                    value="Scar"
+                    style={{fontSize: '33px'}}
+                    className={`font-scar`}
+                  >
+                    Scar
+                  </option>
+                  <option
+                    value="Triton"
+                    style={{fontSize: '33px'}}
+                    className={`font-triton`}
+                  >
+                    Triton
+                  </option>
+                  <option
+                    value="Woody"
+                    style={{fontSize: '33px'}}
+                    className={`font-woody`}
+                  >
+                    Woody
+                  </option>
+                </select>
+              </div>
+              <div className="h-[73px] xl:max-w-[178px] flex flex-col 2xl:text-[14px] text-[11px] whitespace-nowrap  justify-between font-inter font-semibold text-left flex-1 w-full self-end">
+                <span>Custom Handwriting Style</span>
+                <select
+                  id="Coustomfont"
+                  className="h-[40px] highlight-none cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
+                  value={customFontVal}
+                  onChange={(e) => getCustomFont(e.target.value)}
+                >
+                  <option value={customFontVal} disabled>
+                    {customFontVal
+                      ? customFontVal
+                      : editCustomFontFamily
+                      ? editCustomFontFamily
+                      : 'Select Custom Font'}
+                  </option>
+                  {customFonts &&
+                    customFonts.map((item, index) => (
+                      <option key={index} value={item.fontName}>
+                        {item.fontName}
+                      </option>
+                    ))}
+                </select>
               </div>
               <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter whitespace-nowrap  font-semibold 2xl:text-[14px] text-[11px]  flex-1 w-full text-left self-end">
                 <span>Optional shipping date</span>

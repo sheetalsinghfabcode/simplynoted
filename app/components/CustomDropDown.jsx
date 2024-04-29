@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const CustomDropdown = ({id, value, onChange, options}) => {
-  console.log('options', options);
+const CustomDropdown = ({ id, value, onChange, options }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -9,7 +8,7 @@ const CustomDropdown = ({id, value, onChange, options}) => {
   };
 
   const handleOptionClick = (optionValue) => {
-    onChange({target: {value: optionValue}});
+    onChange({ target: { value: optionValue } });
     setIsOpen(false);
   };
 
@@ -18,13 +17,13 @@ const CustomDropdown = ({id, value, onChange, options}) => {
       <div>
         <button
           type="button"
-          className="h-[40px] flex items-center justify-center px-[10px] highlight-none font-bold bg-white text-[14px] cursor-pointer w-full outline-none border-none rounded-tl rounded-bl font-inter text-sm text-[#737373]"
+          className="h-[40px] highlight-none bg-white flex items-center justify-between  px-4 cursor-pointer font-bold text-[14px] rounded border-0 border-black w-full font-inter text-sm text-[#737373]"
           id={id}
           onClick={toggleDropdown}
         >
           {value}
           <svg
-            className="mr-2 ml-auto h-5 w-5"
+            className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -47,19 +46,18 @@ const CustomDropdown = ({id, value, onChange, options}) => {
           aria-labelledby={id}
         >
           <div className="py-1" role="none">
-            {options &&
-              options.length > 0 &&
-              options.map((option, index) => (
-                <div
-                  key={index}
-                  style={option?.style}
-                  className={`block px-4 py-2 text-sm text-gray-700 ${option?.className} hover:bg-gray-100 cursor-pointer`}
-                  onClick={() => handleOptionClick(option?.value)}
-                  role="menuitem"
-                >
-                  {option?.label}
-                </div>
-              ))}
+            {options.map((option, index) => (
+              <div
+                key={index}
+                style={option?.style}
+                className={`block px-4 py-2 ${option?.className}  text-sm text-gray-700 hover:bg-gray-100 cursor-pointer`}
+                onClick={() => handleOptionClick(option.value)}
+                role="menuitem"
+              >
+                {option?.label}
+              </div>
+            ))}
+          
           </div>
         </div>
       )}
