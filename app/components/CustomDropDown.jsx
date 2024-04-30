@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect ,useRef} from 'react';
 
 const CustomDropdown = ({ id, value, onChange, options }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -6,6 +6,23 @@ const CustomDropdown = ({ id, value, onChange, options }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    // Add event listener when the component mounts
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const handleOptionClick = (optionValue) => {
     onChange({ target: { value: optionValue } });
@@ -13,7 +30,7 @@ const CustomDropdown = ({ id, value, onChange, options }) => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div  ref={dropdownRef} className="relative inline-block  text-left">
       <div>
         <button
           type="button"
@@ -40,7 +57,7 @@ const CustomDropdown = ({ id, value, onChange, options }) => {
 
       {isOpen && (
         <div
-          className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="origin-top-right absolute z-[999] right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby={id}
