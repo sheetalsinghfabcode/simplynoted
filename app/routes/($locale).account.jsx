@@ -432,7 +432,7 @@ function Account({customer, heading, featuredData}) {
                   <CardComponent
                     imgSrc={sendcard}
                     title="Send Cards"
-                    onClick={navigate('/collections/best-sellers')}
+                    onClick={()=>navigate('/collections/best-sellers')}
                     description="Send a card to one or more people by starting here"
                     buttonText="Send Now"
                     showDownloadButton={true}
