@@ -8,7 +8,7 @@ import {
   useOutlet,
   useNavigate,
 } from '@remix-run/react';
-import {Suspense, useEffect, useState, useRef} from 'react';
+import {Suspense, useEffect, useState, useMemo, useRef} from 'react';
 import {json, defer, redirect} from '@shopify/remix-oxygen';
 import {flattenConnection} from '@shopify/hydrogen';
 import {
@@ -135,32 +135,39 @@ export default function Authenticated() {
   return <Account {...data} />;
 }
 
-function Account({customer, heading, featuredData}) {
-  const orders = flattenConnection(customer?.orders);
-  const addresses = flattenConnection(customer?.addresses);
+function Account({customer}) {
+  let orders = useRef([]);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (state?.activeTab) {
+      setActiveTab(state?.activeTab);
+      setAccountTabName(state?.acountTabName);
+    }
+    if (!isMounted.current) {
+      isMounted.current = true;
+      orders.current = flattenConnection(customer?.orders);
+      setMissingProductImages(orders);
+    }
+  }, []);
 
   const navigate = useNavigate();
-  const [data, setData] = useState(false);
-
-  const location = useLocation();
-  const {state} = location;
+  const {state} = useLocation();
 
   const {
     orderHistory,
     setCustomerId,
-    customerId,
     setIsAccountLoader,
-    acountTabName,
     setAccountTabName,
     activeTab,
     setCartCountVal,
     setCartData,
     setActiveTab,
   } = useStateContext();
+  const [data, setData] = useState(false);
   const [accountDetail, setAccountDetail] = useState(
-    !orderHistory ? true : false,
+    orderHistory ? false : true,
   );
-  const [profile, setProfile] = useState(false);
   const [loader, setLoader] = useState(false);
 
   const tabs = [
@@ -295,45 +302,6 @@ function Account({customer, heading, featuredData}) {
     country: 'USA',
     zip: '',
   });
-
-  useEffect(() => {
-    if (state?.activeTab) {
-      setActiveTab(state?.activeTab);
-      setAccountTabName(state?.acountTabName);
-    }
-  }, []);
-
-  const sendEmail = () => {
-    const url = `https://22e6-122-173-31-32.ngrok-free.app/api/storefront/shopify/send-mail`;
-
-    const payload = {
-      email: customer.email,
-      subject: 'Hello World',
-      text: 'Hello World',
-    };
-
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log('data', data);
-      })
-
-      .catch((error) => {
-        // Handle errors here
-        console.error('API Error:', error);
-      });
-  };
 
   return (
     <>
@@ -495,7 +463,7 @@ function Account({customer, heading, featuredData}) {
 
               {activeTab === 2 && (
                 <div className="p-4 md:p-4 md:pb-12 mt-[23px] md:bg-white rounded-[12px] border border-solid border-[#DDDDDD]">
-                  <AccountOrderHistory orders={orders} />
+                  <AccountOrderHistory orders={orders.current} />
                 </div>
               )}
 
@@ -513,7 +481,6 @@ function Account({customer, heading, featuredData}) {
               {activeTab === 6 && (
                 <div className="p-4 md:p-4 md:pb-12 md:bg-white rounded-[12px] mt-[23px] border border-solid border-[#DDDDDD]">
                   <Profile
-                    setProfile={setProfile}
                     setAccountDetail={setAccountDetail}
                     customer={customer}
                     result={result}
@@ -661,4 +628,71 @@ export async function getCustomer(context, customerAccessToken) {
   }
 
   return data.customer;
+}
+
+async function setMissingProductImages(orders) {
+  orders = orders.current;
+  const nullVariantTitles = new Set();
+  if (orders.length > 0) {
+    for (const order of orders) {
+      const items = order.lineItems?.edges || [];
+      items.forEach(
+        (item) => !item.node?.variant && nullVariantTitles.add(item.node.title),
+      );
+    }
+  }
+  getNullVariantProducts(nullVariantTitles).then((nullProducts) => {
+    for (const order of orders) {
+      const items = order.lineItems?.edges || [];
+      for (const item of items) {
+        const nullProduct = nullProducts.find(
+          (product) => product.title === item.node.title,
+        );
+        if (nullProduct && !item.node.variant) {
+          item.node.variant = {
+            image: {url: nullProduct.images[0]?.originalSrc},
+          };
+        }
+      }
+    }
+  });
+}
+
+async function getNullVariantProducts(nullVariantTitles) {
+  try {
+    if (!nullVariantTitles.size) return;
+    const productPromises = [];
+    for (const title of nullVariantTitles) {
+      const request = fetch(
+        `https://api.simplynoted.com/api/storefront/product?handleName=${getProductHandleFromTitle(
+          title,
+        )}`,
+      );
+      productPromises.push(request);
+    }
+    const productResponses = await Promise.all(productPromises);
+    const responses = [];
+    for (const response of productResponses) {
+      const res = await response.json();
+      responses.push(res?.result);
+    }
+
+    return responses;
+  } catch (err) {
+    console.error(`Failed to get products with null variant: ${err}`);
+  }
+}
+
+function getProductHandleFromTitle(title) {
+  if (!title) return;
+  // Convert product title to a handle name as per handle name's convention.
+  let handleName = title.trim();
+  // Remove special characters from the beginning and the end.
+  handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
+  // Replace all remaining whitespace or special characters with a single hyphen.
+  handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
+  // Making the title to lowercase.
+  handleName = handleName.toLowerCase();
+
+  return handleName;
 }
