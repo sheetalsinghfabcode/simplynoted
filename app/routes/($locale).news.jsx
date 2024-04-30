@@ -321,7 +321,7 @@ query Blog(
       title
       description
     }
-    articles(first: $pageBy, after: $cursor) {
+    articles(first: $pageBy, after: $cursor,reverse: true) {
         nodes {
           ...Article
         }

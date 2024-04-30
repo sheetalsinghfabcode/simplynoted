@@ -163,7 +163,6 @@ export function MessageWriting({
     setFileData(modifiedData);
   }
 
-
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
@@ -1357,24 +1356,15 @@ export function MessageWriting({
     }
   }
 
-  const [options, setOptions] = useState([
-    {
-      label: 'Option 1',
-      value: 'opt1',
-    },
-    {
-      label: 'Option 2',
-      value: 'opt2',
-    },
-    {
-      label: 'Option 3',
-      value: 'opt3',
-    },
-  ]);
-  const handleChangeSelect = (e) => {
-    console.log(e);
-  };
 
+  useEffect(()=>{
+    if(!standardFontVal && !editFontFamily){
+      setStandardFontVal("Tarzan")
+    }
+    else if(editFontFamily){
+      setStandardFontVal(editFontFamily)
+    }
+  },[])
 
 
   return (
@@ -1394,7 +1384,7 @@ export function MessageWriting({
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-            {/* <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=""> Standard Handwriting Style</span>
                 <CustomDropdown
@@ -1411,19 +1401,21 @@ export function MessageWriting({
                         : 'Tarzan',
                       style: {fontSize: '16px'},
                     },
-                    editFontFamily && editFontFamily !== 'Tarzan'
-                      ? {
-                          value: 'Tarzan',
-                          label: 'Tarzan',
-                          className: 'font-tarzan',
-                        }
-                      : null,
+                  
+
                     {
                       value: 'Stitch',
                       label: 'Stitch',
                       style: {fontSize: '33px'},
                       className: 'font-stitch',
                     },
+                    {
+                      value: 'Tarzan',
+                      label: 'Tarzan',
+                      style: {fontSize: '33px'},
+                      className: 'font-tarzan',
+                    },
+
                     {
                       value: 'Simba',
                       label: 'Simba',
@@ -1434,57 +1426,129 @@ export function MessageWriting({
                       value: 'Nimo',
                       label: 'Nimo',
                       style: {fontSize: '20px'},
-                      className:`font-nimo`
+                      className: `font-nimo`,
                     },
                     {
                       value: 'Lumiere',
                       label: 'Lumiere',
                       style: {fontSize: '33px'},
-                      className:`font-lumiere`
+                      className: `font-lumiere`,
                     },
                     {
                       value: 'dumbo',
                       label: 'Dumbo',
                       style: {fontSize: '33px'},
-                      className:`font-dumbo`
+                      className: `font-dumbo`,
                     },
                     {
                       value: 'Donald',
                       label: 'Donald',
                       style: {fontSize: '20px'},
-                      className:`font-donald`
+                      className: `font-donald`,
                     },
                     {
                       value: 'Aladdin',
                       label: 'Aladdin',
                       style: {fontSize: '29px'},
-                      className:`font-aladdin`
+                      className: `font-aladdin`,
                     },
                     {
                       value: 'Belle',
                       label: 'Belle',
                       style: {fontSize: '39px'},
-                      className:`font-belle`
+                      className: `font-belle`,
                     },
                     {
                       value: 'Boo',
                       label: 'Boo',
                       style: {fontSize: '29px'},
-                      className:`font-boo`
+                      className: `font-boo`,
                     },
                     {
                       value: 'Cinderella',
                       label: 'Cinderella',
                       style: {fontSize: '33px'},
-                      className:`font-cinderella`
+                      className: `font-cinderella`,
                     },
                     {
                       value: 'kaa',
                       label: 'Kaa',
                       style: {fontSize: '33px'},
-                      className:`font-kaa`
+                      className: `font-kaa`,
                     },
-                    
+                    {
+                      value: 'Copper',
+                      label: 'Copper',
+                      style: {fontSize: '33px'},
+                      className: `font-copper`,
+                    },
+                    {
+                      value: 'Jasmine',
+                      label: 'Jasmine',
+                      style: {fontSize: '33px'},
+                      className: `font-jasmine`,
+                    },
+                    {
+                      value: 'Merlin',
+                      label: 'Merlin',
+                      style: {fontSize: '33px'},
+                      className: `font-merlin`,
+                    },
+                    {
+                      value: 'Goofy',
+                      label: 'Goofy',
+                      style: {fontSize: '33px'},
+                      className: `font-goofy`,
+                    },
+
+                    {
+                      value: 'Hercules',
+                      label: 'Hercules',
+                      style: {fontSize: '38px'},
+                      className: `font-hercules`,
+                    },
+                    {
+                      value: 'Rafiki',
+                      label: 'Rafiki',
+                      style: {fontSize: '33px'},
+                      className: `font-rafiki`,
+                    },
+                    {
+                      value: 'Rapunzel',
+                      label: 'Rapunzel',
+                      style: {fontSize: '33px'},
+                      className: `font-rapunzel`,
+                    },
+                    {
+                      value: 'Scar',
+                      label: 'Scar',
+                      style: {fontSize: '33px'},
+                      className: `font-scar`,
+                    },
+                    {
+                      value: 'Sarabi',
+                      label: 'Sarabi',
+                      style: {fontSize: '33px'},
+                      className: `font-sarabi`,
+                    },
+                    {
+                      value: 'Ratigan',
+                      label: 'Ratigan',
+                      style: {fontSize: '33px'},
+                      className: `font-ratigan`,
+                    },
+                    {
+                      value: 'Triton',
+                      label: 'Triton',
+                      style: {fontSize: '33px'},
+                      className: `font-triton`,
+                    },
+                    {
+                      value: 'Woody',
+                      label: 'Woody',
+                      style: {fontSize: '33px'},
+                      className: `font-woody`,
+                    },
                   ]}
                 />
               </div>
@@ -1531,8 +1595,8 @@ export function MessageWriting({
                   </span>
                 )}
               </div>
-            </div> */}
-            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            </div>
+            {/* <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=""> Standard Handwriting Style</span>
                 <select
@@ -1785,7 +1849,7 @@ export function MessageWriting({
                   </span>
                 )}
               </div>
-            </div>
+            </div> */}
 
             {!customFonts && (
               <div className="mb-[24px]  font-inter text-xs">

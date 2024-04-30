@@ -20,6 +20,8 @@ export function OrderCard({order}) {
   const [legacyOrderId, key] = order.id.split('/').pop().split('?');
   const lineItems = flattenConnection(order?.lineItems);
 
+
+
   const {productInformation} = useLoaderData();
   return (
     <li className="grid text-center shadow-lg">

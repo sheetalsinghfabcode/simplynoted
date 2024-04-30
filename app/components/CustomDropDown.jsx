@@ -45,7 +45,7 @@ const CustomDropdown = ({ id, value, onChange, options }) => {
           aria-orientation="vertical"
           aria-labelledby={id}
         >
-          <div className="py-1" role="none">
+          <div className="py-1 max-h-[400px] overflow-scroll" role="none">
             {options.map((option, index) => (
               <div
                 key={index}

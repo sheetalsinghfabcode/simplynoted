@@ -83,7 +83,6 @@ export async function loader({request, context, params}) {
     : 'Account Details';
 
   // }
-  
 
   return defer(
     {
@@ -145,7 +144,6 @@ function Account({customer, heading, featuredData}) {
 
   const location = useLocation();
   const {state} = location;
-
 
   const {
     orderHistory,
@@ -305,6 +303,37 @@ function Account({customer, heading, featuredData}) {
     }
   }, []);
 
+  const sendEmail = () => {
+    const url = `https://22e6-122-173-31-32.ngrok-free.app/api/storefront/shopify/send-mail`;
+
+    const payload = {
+      email: customer.email,
+      subject: 'Hello World',
+      text: 'Hello World',
+    };
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('data', data);
+      })
+
+      .catch((error) => {
+        // Handle errors here
+        console.error('API Error:', error);
+      });
+  };
 
   return (
     <>
@@ -403,7 +432,7 @@ function Account({customer, heading, featuredData}) {
                   <CardComponent
                     imgSrc={sendcard}
                     title="Send Cards"
-                    onClick={() => navigate('/collections/best-sellers')}
+                    onClick={navigate('/collections/best-sellers')}
                     description="Send a card to one or more people by starting here"
                     buttonText="Send Now"
                     showDownloadButton={true}
@@ -421,7 +450,9 @@ function Account({customer, heading, featuredData}) {
                     title="Custom Order"
                     description="Tailored to yours Needs: Custom Orders Welcome!"
                     buttonText="Get Started"
-                    onClick={() => navigate('/customise-your-card')}
+                    onClick={() => {
+                      navigate('/customise-your-card');
+                    }}
                   />
                   <CardComponent
                     imgSrc={automate}
