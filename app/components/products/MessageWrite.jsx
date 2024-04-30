@@ -489,6 +489,17 @@ export function MessageWriting({
       }
     }
   }
+
+
+  async function onChnageNameVal(nameData) {
+    setErrorCustomText('');
+    setName(nameData);
+    if (!fontFamilyName) {
+      setFontFamily('tarzan');
+    }
+    // processInput();
+  }
+
   function debounce(func, timeout = 300) {
     let timer;
     return (...args) => {
@@ -526,14 +537,7 @@ export function MessageWriting({
     }
   }, [name2, fontFamilyName, fontSize, lineHeight]);
 
-  async function onChnageNameVal(nameData) {
-    setErrorCustomText('');
-    setName(nameData);
-    if (!fontFamilyName) {
-      setFontFamily('tarzan');
-    }
-    // processInput();
-  }
+ 
 
   async function onchnageOfRegardBox(data) {
     setName2(data);
@@ -563,6 +567,7 @@ export function MessageWriting({
     signOffTextBox.style.lineHeight = lineHeight;
     setSignOffFontSize(fontSize);
     setSignOffLineHeight(lineHeight);
+
     resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
   }
 
@@ -578,11 +583,11 @@ export function MessageWriting({
     let lineHeightDecrement = 1;
 
     if (heightDifference > 1000) {
-      fontSizeDecrement = 6;
-      lineHeightDecrement = 6;
+      fontSizeDecrement = 8;
+      lineHeightDecrement = 8;
     } else if (heightDifference > 500) {
-      fontSizeDecrement = 4;
-      lineHeightDecrement = 4;
+      fontSizeDecrement = 5;
+      lineHeightDecrement = 5;
     }
 
     const fontSize = parseFloat(
@@ -599,11 +604,12 @@ export function MessageWriting({
     if (resizeSelection === 'customTextResizing') {
       setFontSize(innerContainer.style.fontSize);
       setLineHeight(innerContainer.style.lineHeight);
-      // setSignOffFontSize(innerContainer.style.fontSize);
-      // setSignOffLineHeight(innerContainer.style.lineHeight);
+      
     }
+
     if (isOverflowing) {
       resize_to_fit(outerContainer, innerContainer, resizeSelection);
+      debugger
     }
   }
 
