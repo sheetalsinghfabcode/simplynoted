@@ -9,7 +9,7 @@ import DynamicTitle from '~/components/Title';
 import {statusMessage} from '~/lib/utils';
 import {Link, Heading, PageHeader, Text} from '~/components';
 import DynamicButton from '~/components/DynamicButton';
-import {Fragment, useEffect} from 'react';
+import {Fragment, useEffect, useRef, useState} from 'react';
 import placeholderImage from '../../assets/Image/product-placeholder.png';
 
 export const meta = ({data}) => {
@@ -44,7 +44,7 @@ export async function loader({request, context, params}) {
     throw new Response('Order not found', {status: 404});
   }
 
-  const lineItems = flattenConnection(order.lineItems);
+  const orderLineItems = flattenConnection(order.lineItems);
 
   const discountApplications = flattenConnection(order.discountApplications);
 
@@ -59,20 +59,30 @@ export async function loader({request, context, params}) {
 
   return json({
     order,
-    lineItems,
+    orderLineItems,
     discountValue,
     discountPercentage,
   });
 }
 
 export default function OrderRoute() {
-  const {order, lineItems, discountValue, discountPercentage} = useLoaderData();
+  const {order, orderLineItems, discountValue, discountPercentage} = useLoaderData();
   const {setOrderHistory} = useStateContext();
+  const isMounted = useRef(false);
+  const [lineItems, setlineItems] = useState(orderLineItems);
 
   useEffect(() => {
     setOrderHistory(true);
+    if (!isMounted.current) {
+      isMounted.current = true;
+      setMissingProductImages(order, setlineItems);
+      console.log({lineItems});
+    }
   }, []);
 
+  useEffect(() => {
+    lineItems && console.log({lineItems});
+  }, [lineItems]);
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">
@@ -397,6 +407,67 @@ export default function OrderRoute() {
       </div>
     </div>
   );
+}
+
+async function setMissingProductImages(order, setlineItems) {
+  const nullVariantTitles = new Set();
+  const line_items = order.lineItems?.nodes || [];
+  line_items.forEach(
+    (item) => !item?.variant && nullVariantTitles.add(item.title),
+  );
+
+  const nullProducts = await getNullVariantProducts(nullVariantTitles);
+  const items = order.lineItems?.nodes || [];
+  for (const item of items) {
+    const nullProduct = nullProducts.find(
+      (product) => product.title === item.title,
+    );
+    if (nullProduct && !item.variant) {
+      item.variant = {
+        image: {src: nullProduct.images[0]?.originalSrc},
+      };
+    }
+  }
+  setlineItems(order.lineItems.nodes);
+}
+
+async function getNullVariantProducts(nullVariantTitles) {
+  try {
+    if (!nullVariantTitles.size) return;
+    const productPromises = [];
+    for (const title of nullVariantTitles) {
+      const request = fetch(
+        `https://api.simplynoted.com/api/storefront/product?handleName=${getProductHandleFromTitle(
+          title,
+        )}`,
+      );
+      productPromises.push(request);
+    }
+    const productResponses = await Promise.all(productPromises);
+    const responses = [];
+    for (const response of productResponses) {
+      const res = await response.json();
+      responses.push(res?.result);
+    }
+
+    return responses;
+  } catch (err) {
+    console.error(`Failed to get products with null variant: ${err}`);
+  }
+}
+
+function getProductHandleFromTitle(title) {
+  if (!title) return;
+  // Convert product title to a handle name as per handle name's convention.
+  let handleName = title.trim();
+  // Remove special characters from the beginning and the end.
+  handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
+  // Replace all remaining whitespace or special characters with a single hyphen.
+  handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
+  // Making the title to lowercase.
+  handleName = handleName.toLowerCase();
+
+  return handleName;
 }
 
 const CUSTOMER_ORDER_QUERY = `#graphql
