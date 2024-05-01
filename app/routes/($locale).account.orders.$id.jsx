@@ -76,13 +76,8 @@ export default function OrderRoute() {
     if (!isMounted.current) {
       isMounted.current = true;
       setMissingProductImages(order, setlineItems);
-      console.log({lineItems});
     }
   }, []);
-
-  useEffect(() => {
-    lineItems && console.log({lineItems});
-  }, [lineItems]);
 
   return (
     <div className=" w-full max-w-[1440px] px-[24] mx-auto">

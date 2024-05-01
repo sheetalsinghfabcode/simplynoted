@@ -23,6 +23,8 @@ import CustomDropdown from '../CustomDropDown';
 let mainMessageBox,
   signOffTextBox,
   messageBocContainer,
+  messageBoxOuterRef,
+  signOffBoxOuterRef,
   signOffBocContainer,
   customerid,
   loadTempDataFilter,
@@ -138,10 +140,35 @@ export function MessageWriting({
   const [loaderMessage, setLoaderMessage] = useState(false);
   const [minDateCheck, setMinDateCheck] = useState(false);
   const [errorCustomText, setErrorCustomText] = useState(false);
-  const [collectionId, setCollectionId] = useState('');
   const [isFirstTime, setIsFirstTime] = useState(
     editFontSize && editLineHeight && true,
   );
+
+  const [customMessageBoxMaxHeight, setCustomMessageBoxMaxHeight] = useState();
+  const [signOffBoxMaxHeight, setsignOffBoxMaxHeight] = useState();
+
+  const ref = useRef(null);
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const ref4 = useRef(null);
+  const ref5 = useRef(null);
+  const ref6 = useRef(null);
+  const ref7 = useRef(null);
+  const textareaRef = useRef(null);
+
+  useEffect(() => {
+    if (ref6.current) {
+      messageBoxOuterRef = ref6.current;
+    }
+  }, [ref6]);
+
+  useEffect(() => {
+    if (ref7.current) {
+      signOffBoxOuterRef = ref7.current;
+    }
+  }, [ref7]);
+
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -166,23 +193,7 @@ export function MessageWriting({
   useEffect(() => {
     gettingCheckBoxAddress();
   }, [selectedCheckboxes]);
-  const customStyles = {
-    content: {
-      top: '60%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      maxWidth: '620px',
-      background: '#fff',
-      width: '100%',
-      padding: '30px',
-      maxHeight: '500px',
-      zIndex: '2',
-      position: 'relative',
-    },
-  };
+
   function closeModalInt() {
     setInstructionModal(false);
   }
@@ -490,7 +501,6 @@ export function MessageWriting({
     }
   }
 
-
   async function onChnageNameVal(nameData) {
     setErrorCustomText('');
     setName(nameData);
@@ -511,8 +521,65 @@ export function MessageWriting({
     };
   }
 
+  function updateMessageBoxesMaxHeight() {
+    const outermostContainer = ref2.current;
+    const mainMessageBox = ref1.current;
+    if (outermostContainer) {
+      const messageBoxMaxHeight =
+        name2.length > 0
+          ? outermostContainer?.getBoundingClientRect().height / 1.3
+          : outermostContainer?.getBoundingClientRect().height;
+      if (messageBoxMaxHeight !== customMessageBoxMaxHeight) {
+        setCustomMessageBoxMaxHeight(messageBoxMaxHeight);
+      }
+      if (mainMessageBox) {
+        const signOffMaxHeight =
+          outermostContainer?.getBoundingClientRect().height -
+          mainMessageBox?.getBoundingClientRect().height;
+
+        if (signOffMaxHeight !== signOffBoxMaxHeight) {
+          setsignOffBoxMaxHeight(signOffMaxHeight);
+        }
+      }
+    }
+  }
+
+  // useEffect(() => {
+  //   console.clear();
+
+  //   if (fontSize && signOffFontSize) {
+  //     const commonFontSize = Math.min(
+  //       parseFloat(fontSize),
+  //       parseFloat(signOffFontSize),
+  //     );
+  //     commonFontSize !== parseFloat(fontSize) && setFontSize(commonFontSize);
+  //     commonFontSize !== parseFloat(signOffFontSize) &&
+  //       setSignOffFontSize(commonFontSize);
+  //     console.log({
+  //       fontSize,
+  //       signOffFontSize,
+  //     });
+  //   }
+  //   if (lineHeight && signOffLineHeight) {
+  //     const commonLineHeight = Math.min(
+  //       parseFloat(lineHeight),
+  //       parseFloat(signOffLineHeight),
+  //     );
+  //     commonLineHeight !== parseFloat(lineHeight) &&
+  //       setLineHeight(commonLineHeight);
+
+  //     commonLineHeight !== parseFloat(signOffLineHeight) &&
+  //       setSignOffLineHeight(commonLineHeight);
+  //     console.log({
+  //       lineHeight,
+  //       signOffLineHeight,
+  //     });
+  //   }
+  // }, [fontSize, lineHeight, signOffFontSize, signOffLineHeight]);
+
   useEffect(() => {
     if (name.length > 0) {
+      updateMessageBoxesMaxHeight();
       const debouncedCallback = debounce(processCustomMessageInput);
       // const resizeObserver = new ResizeObserver(debouncedCallback);
       debouncedCallback();
@@ -523,10 +590,11 @@ export function MessageWriting({
       setFontSize(INITIAL_INPUT_CSS.initailFontSize);
       setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
     }
-  }, [name, fontFamilyName]);
+  }, [name, name2, fontFamilyName, customMessageBoxMaxHeight, signOffFontSize, signOffLineHeight]);
 
   useEffect(() => {
     if (name2.length > 0) {
+      updateMessageBoxesMaxHeight();
       const debouncedCallback = debounce(processSignOffInput);
       // const resizeObserver = new ResizeObserver(debouncedCallback);
       debouncedCallback();
@@ -534,10 +602,11 @@ export function MessageWriting({
       // resizeObserver.observe(signOffTextBox);
 
       // return () => resizeObserver.disconnect();
+    } else {
+      setSignOffFontSize(INITIAL_INPUT_CSS.initailFontSize);
+      setSignOffLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
     }
-  }, [name2, fontFamilyName, fontSize, lineHeight]);
-
- 
+  }, [name2, name, fontFamilyName, fontSize, lineHeight, signOffBoxMaxHeight]);
 
   async function onchnageOfRegardBox(data) {
     setName2(data);
@@ -557,7 +626,7 @@ export function MessageWriting({
     }`;
     // setFontSize(isFirstTime ? editFontSize  : INITIAL_INPUT_CSS.initailFontSize);
     // setLineHeight(isFirstTime ? editLineHeight  : INITIAL_INPUT_CSS.initalLineHeight);
-    resize_to_fit(messageBocContainer, mainMessageBox, 'customTextResizing');
+    resize_to_fit(messageBoxOuterRef, mainMessageBox, 'customTextResizing');
     setIsFirstTime(false);
   }
 
@@ -565,78 +634,41 @@ export function MessageWriting({
     if (!signOffTextBox) return;
     signOffTextBox.style.fontSize = fontSize;
     signOffTextBox.style.lineHeight = lineHeight;
-    setSignOffFontSize(fontSize);
-    setSignOffLineHeight(lineHeight);
-
-    resize_to_fit(signOffBocContainer, signOffTextBox, 'signOffResizing');
+    resize_to_fit(signOffBoxOuterRef, signOffTextBox, 'signOffResizing');
   }
 
-  // function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
-  //   isOverflowing = innerContainer.clientHeight > outerContainer.clientHeight;
-
-  //   if (!innerContainer || !outerContainer || !isOverflowing) return;
-
-  //   const heightDifference =
-  //     innerContainer.clientHeight - outerContainer.clientHeight;
-
-  //   let fontSizeDecrement = 1;
-  //   let lineHeightDecrement = 1;
-
-  //   if (heightDifference > 1000) {
-  //     fontSizeDecrement = 8;
-  //     lineHeightDecrement = 8;
-  //   } else if (heightDifference > 500) {
-  //     fontSizeDecrement = 5;
-  //     lineHeightDecrement = 5;
-  //   }
-
-  //   const fontSize = parseFloat(
-  //     window.getComputedStyle(innerContainer).fontSize,
-  //   );
-  //   const lineHeight = parseFloat(
-  //     window.getComputedStyle(innerContainer).lineHeight,
-  //   );
-
-  //   innerContainer.style.fontSize =
-  //     parseFloat(fontSize) - fontSizeDecrement + 'px';
-  //   innerContainer.style.lineHeight =
-  //     parseFloat(lineHeight) - lineHeightDecrement + 'px';
-  //   if (resizeSelection === 'customTextResizing') {
-  //     setFontSize(innerContainer.style.fontSize);
-  //     setLineHeight(innerContainer.style.lineHeight);
-      
-  //   }
-
-  //   if (isOverflowing) {
-  //     resize_to_fit(outerContainer, innerContainer, resizeSelection);
-  //     debugger
-  //   }
-  // }
   function resize_to_fit(outerContainer, innerContainer, resizeSelection) {
     isOverflowing = innerContainer.clientHeight > outerContainer.clientHeight;
     if (!innerContainer || !outerContainer || !isOverflowing) return;
-    const heightDifference = innerContainer.clientHeight - outerContainer.clientHeight;
+    const heightDifference =
+      innerContainer.clientHeight - outerContainer.clientHeight;
     let fontSizeDecrement = 1;
     let lineHeightDecrement = 1;
     if (heightDifference > 1000) {
-        fontSizeDecrement = 8;
-        lineHeightDecrement = 8;
+      fontSizeDecrement = 8;
+      lineHeightDecrement = 8;
     } else if (heightDifference > 500) {
-        fontSizeDecrement = 5;
-        lineHeightDecrement = 5;
+      fontSizeDecrement = 5;
+      lineHeightDecrement = 5;
     }
-    const fontSize = parseFloat(window.getComputedStyle(innerContainer).fontSize);
-    const lineHeight = parseFloat(window.getComputedStyle(innerContainer).lineHeight);
-    innerContainer.style.fontSize = parseFloat(fontSize) - fontSizeDecrement + 'px';
-    innerContainer.style.lineHeight = parseFloat(lineHeight) - lineHeightDecrement + 'px';
+    const fontSize = parseFloat(
+      window.getComputedStyle(innerContainer).fontSize,
+    );
+    const lineHeight = parseFloat(
+      window.getComputedStyle(innerContainer).lineHeight,
+    );
+    innerContainer.style.fontSize =
+      parseFloat(fontSize) - fontSizeDecrement + 'px';
+    innerContainer.style.lineHeight =
+      parseFloat(lineHeight) - lineHeightDecrement + 'px';
     if (resizeSelection === 'customTextResizing') {
-        setFontSize(innerContainer.style.fontSize);
-        setLineHeight(innerContainer.style.lineHeight);
+      setFontSize(innerContainer.style.fontSize);
+      setLineHeight(innerContainer.style.lineHeight);
     }
     if (isOverflowing) {
-        resize_to_fit(outerContainer, innerContainer, resizeSelection);
+      resize_to_fit(outerContainer, innerContainer, resizeSelection);
     }
-}
+  }
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -970,18 +1002,13 @@ export function MessageWriting({
       console.error(error, 'error at Ai generated message ');
     }
   }
-  const ref = useRef(null);
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-  const ref4 = useRef(null);
-  const ref5 = useRef(null);
-  const textareaRef = useRef(null);
-  const location = useLocation();
+
   useEffect(() => {
     mainMessageBox = ref1.current;
     signOffTextBox = ref3.current;
     messageBocContainer = ref2.current;
+    messageBoxOuterRef = ref6.current;
+    signOffBoxOuterRef = ref7.current;
     signOffBocContainer = ref.current;
     loadTempDataFilter = ref5.current?.value;
     customerid = localStorage.getItem('customerId');
@@ -1387,16 +1414,13 @@ export function MessageWriting({
     }
   }
 
-
-  useEffect(()=>{
-    if(!standardFontVal && !editFontFamily){
-      setStandardFontVal("Tarzan")
+  useEffect(() => {
+    if (!standardFontVal && !editFontFamily) {
+      setStandardFontVal('Tarzan');
+    } else if (editFontFamily) {
+      setStandardFontVal(editFontFamily);
     }
-    else if(editFontFamily){
-      setStandardFontVal(editFontFamily)
-    }
-  },[])
-
+  }, []);
 
   return (
     <>
@@ -1432,7 +1456,6 @@ export function MessageWriting({
                         : 'Tarzan',
                       style: {fontSize: '16px'},
                     },
-                  
 
                     {
                       value: 'Stitch',
@@ -2114,26 +2137,41 @@ export function MessageWriting({
                 }}
               >
                 <div
-                  id="messageBoxID"
-                  ref={ref1}
-                  className="output  pl-[20px] pr-[20px] text-[#0040ac] relative"
+                  ref={ref6}
+                  style={{maxHeight: `${customMessageBoxMaxHeight}px`}}
+                  className="output"
+                >
+                  <div
+                    id="messageBoxID"
+                    ref={ref1}
+                    className="pl-[20px] pr-[20px] text-[#0040ac] relative"
+                    style={{
+                      fontFamily: fontFamilyName
+                        ? fontFamilyName
+                        : editFontFamily
+                        ? editFontFamily
+                        : 'tarzan',
+                      fontSize: fontSize
+                        ? fontSize
+                        : INITIAL_INPUT_CSS.initailFontSize,
+                      lineHeight: lineHeight
+                        ? lineHeight
+                        : INITIAL_INPUT_CSS.initalLineHeight,
+                    }}
+                  >
+                    {name ? name : 'Enter your custom message here...'}
+                  </div>
+                </div>
+                <div
+                  ref={ref7}
                   style={{
-                    fontFamily: fontFamilyName
-                      ? fontFamilyName
-                      : editFontFamily
-                      ? editFontFamily
-                      : 'tarzan',
-                    fontSize: fontSize
-                      ? fontSize
-                      : INITIAL_INPUT_CSS.initailFontSize,
-                    lineHeight: lineHeight
-                      ? lineHeight
-                      : INITIAL_INPUT_CSS.initalLineHeight,
+                    height:
+                      name.length > 0 ? 'auto' : `${signOffBoxMaxHeight}px`,
+                    maxHeight: `${signOffBoxMaxHeight}px`,
                   }}
                 >
-                  {name ? name : 'Enter your custom message here...'}
                   <div
-                    className={`secDiv w-[100%] max-w-[300px] ml-auto mr-5 bg-white`}
+                    className={`secDiv output w-[100%] max-w-[300px] ml-auto mr-5 bg-white`}
                     ref={ref}
                     style={{
                       display: name2.length > 0 ? 'block' : 'none',
@@ -2147,7 +2185,7 @@ export function MessageWriting({
                     <div
                       id="signOffText"
                       ref={ref3}
-                      className="output2 text-[#0040ac] max-w-[300px]"
+                      className="text-[#0040ac] max-w-[300px]"
                       style={{
                         fontFamily: fontFamilyName
                           ? fontFamilyName
@@ -2155,10 +2193,10 @@ export function MessageWriting({
                           ? editFontFamily
                           : 'tarzan',
                         fontSize: signOffFontSize
-                          ? signOffFontSize
+                          ? `${signOffFontSize}px`
                           : INITIAL_INPUT_CSS.initailFontSize,
                         lineHeight: signOffLineHeight
-                          ? signOffLineHeight
+                          ? `${signOffLineHeight}px`
                           : INITIAL_INPUT_CSS.initalLineHeight,
                       }}
                     >
