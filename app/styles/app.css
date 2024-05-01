@@ -413,10 +413,7 @@ nav a {
   word-wrap: break-word;
   white-space: pre-wrap;
 }
-.output2 {
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
+
 .price-breakdown td {
   padding: 4px 16px;
   border: 1px solid #ddd;
