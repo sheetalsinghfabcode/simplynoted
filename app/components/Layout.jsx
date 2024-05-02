@@ -843,7 +843,7 @@ function DesktopHeader({ isHome, menu, isLoggedIn }) {
                         FlyoutContent={PricingContent}
                         data={item.items}
                       >
-                      <Link to={item.to !=="/pages/integrations" && item.to}
+                      <Link to={item.to}
                       
                       >
                         {item.title}

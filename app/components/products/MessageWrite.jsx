@@ -1570,6 +1570,18 @@ export function MessageWriting({
                       style: {fontSize: '33px'},
                       className: `font-woody`,
                     },
+                    {
+                      value: 'Roo',
+                      label: 'Roo',
+                      style: {fontSize: '33px'},
+                      className: `font-roo`,
+                    },
+                    {
+                      value: 'Boo',
+                      label: 'Boo',
+                      style: {fontSize: '33px'},
+                      className: `font-boo`,
+                    },
                   ]}
                 />
               </div>
