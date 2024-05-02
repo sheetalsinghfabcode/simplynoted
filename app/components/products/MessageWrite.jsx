@@ -525,6 +525,7 @@ export function MessageWriting({
     const outermostContainer = ref2.current;
     const mainMessageBox = ref1.current;
     if (outermostContainer) {
+      console.log({oH: outermostContainer?.getBoundingClientRect().height});
       const messageBoxMaxHeight =
         name2.length > 0
           ? outermostContainer?.getBoundingClientRect().height / 1.3
@@ -536,7 +537,8 @@ export function MessageWriting({
         const signOffMaxHeight =
           outermostContainer?.getBoundingClientRect().height -
           mainMessageBox?.getBoundingClientRect().height;
-
+        console.log({iH: mainMessageBox?.getBoundingClientRect().height});
+        console.log({signOffMaxHeight});
         if (signOffMaxHeight !== signOffBoxMaxHeight) {
           setsignOffBoxMaxHeight(signOffMaxHeight);
         }
@@ -544,64 +546,29 @@ export function MessageWriting({
     }
   }
 
-  // useEffect(() => {
-  //   console.clear();
-
-  //   if (fontSize && signOffFontSize) {
-  //     const commonFontSize = Math.min(
-  //       parseFloat(fontSize),
-  //       parseFloat(signOffFontSize),
-  //     );
-  //     commonFontSize !== parseFloat(fontSize) && setFontSize(commonFontSize);
-  //     commonFontSize !== parseFloat(signOffFontSize) &&
-  //       setSignOffFontSize(commonFontSize);
-  //     console.log({
-  //       fontSize,
-  //       signOffFontSize,
-  //     });
-  //   }
-  //   if (lineHeight && signOffLineHeight) {
-  //     const commonLineHeight = Math.min(
-  //       parseFloat(lineHeight),
-  //       parseFloat(signOffLineHeight),
-  //     );
-  //     commonLineHeight !== parseFloat(lineHeight) &&
-  //       setLineHeight(commonLineHeight);
-
-  //     commonLineHeight !== parseFloat(signOffLineHeight) &&
-  //       setSignOffLineHeight(commonLineHeight);
-  //     console.log({
-  //       lineHeight,
-  //       signOffLineHeight,
-  //     });
-  //   }
-  // }, [fontSize, lineHeight, signOffFontSize, signOffLineHeight]);
-
   useEffect(() => {
     if (name.length > 0) {
       updateMessageBoxesMaxHeight();
       const debouncedCallback = debounce(processCustomMessageInput);
-      // const resizeObserver = new ResizeObserver(debouncedCallback);
       debouncedCallback();
-      if (!document.body.contains(mainMessageBox)) return;
-      // resizeObserver.observe(mainMessageBox);
-      // return () => resizeObserver.disconnect();
     } else {
       setFontSize(INITIAL_INPUT_CSS.initailFontSize);
       setLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
     }
-  }, [name, name2, fontFamilyName, customMessageBoxMaxHeight, signOffFontSize, signOffLineHeight]);
+  }, [
+    name,
+    name2,
+    fontFamilyName,
+    customMessageBoxMaxHeight,
+    signOffFontSize,
+    signOffLineHeight,
+  ]);
 
   useEffect(() => {
     if (name2.length > 0) {
       updateMessageBoxesMaxHeight();
       const debouncedCallback = debounce(processSignOffInput);
-      // const resizeObserver = new ResizeObserver(debouncedCallback);
       debouncedCallback();
-      if (!document.body.contains(signOffTextBox)) return;
-      // resizeObserver.observe(signOffTextBox);
-
-      // return () => resizeObserver.disconnect();
     } else {
       setSignOffFontSize(INITIAL_INPUT_CSS.initailFontSize);
       setSignOffLineHeight(INITIAL_INPUT_CSS.initalLineHeight);
@@ -2096,45 +2063,8 @@ export function MessageWriting({
                 metafields.isHeaderIncluded &&
                 metafields.header.data && <ShowHeaderComp />}
               <div
-                className={`outerSec w-[100%] bg-white mt-1 overflow-hidden`}
+                className={`outerSec flex flex-col flex-1 w-[100%] bg-white mt-1 overflow-hidden`}
                 ref={ref2}
-                style={{
-                  height:
-                    (metafields.footer &&
-                      metafields.header &&
-                      metafields.footer.data &&
-                      metafields.header.data) ||
-                    (metafields.footer &&
-                      metafields.header &&
-                      metafields.header.data &&
-                      qrValue?.length > 0)
-                      ? '224.5px'
-                      : (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data &&
-                          metafields.header.data) ||
-                        (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data) ||
-                        (metafields.footer &&
-                          metafields.header &&
-                          metafields.header.data &&
-                          qrValue.length > 0) ||
-                        qrValue?.length > 0 ||
-                        (metafields.footer &&
-                          metafields.header &&
-                          metafields.header.data)
-                      ? '288.37px'
-                      : (metafields.footer &&
-                          metafields.header &&
-                          metafields.footer.data) ||
-                        (metafields.footer &&
-                          metafields.header &&
-                          metafields.header.data) ||
-                        qrValue?.length > 0
-                      ? '357.475px'
-                      : '372.757px',
-                }}
               >
                 <div
                   ref={ref6}
@@ -2169,6 +2099,7 @@ export function MessageWriting({
                       name.length > 0 ? 'auto' : `${signOffBoxMaxHeight}px`,
                     maxHeight: `${signOffBoxMaxHeight}px`,
                   }}
+                  className="flex-1"
                 >
                   <div
                     className={`secDiv output w-[100%] max-w-[300px] ml-auto mr-5 bg-white`}

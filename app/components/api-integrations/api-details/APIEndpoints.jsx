@@ -1,8 +1,4 @@
-
 const APIEndpoints = () => {
-
-
-
   return (
     <div className="">
       <h2 className="text-[#001a5f] mt-[37px] font-tiempos  font-bold ml-2 sm:text-[33px] text-[20px]">
@@ -10,18 +6,24 @@ const APIEndpoints = () => {
       </h2>
       <div className="text-[16px] leading-[27px] overflow-x-auto color-[black]">
         <p className=" mb-[7px] ml-[8px] font-thin mt-[23px]">
-          The production API can be found at:{' '}
+          The production API can be found at {" "}
           <a
             className="text-blue-500"
-            href="https://simplynoted.com/pages/api-automation"
+            href="https://hydrogen-simplynoted.vercel.app/pages/api-automation"
           >
             https://api.simplynoted.com/api
           </a>
         </p>
         <p className=" ml-[8px] font-thin mt-[20px] mb-[7px]">
-          The test API can be found at:
-          <a className="text-blue-500" href="https://api.simplynoted.com/api ">
-            <span className="text-red">https://api.simplynoted.com/api</span>
+          The test API can be found at
+          <a
+            className="text-blue-500"
+            href="https://hydrogen-simplynoted.vercel.app/pages/api-automation"
+          >
+            <span className="text-red">
+              {' '}
+              https://testapi.simplynoted.com/api
+            </span>
           </a>
         </p>
         <p className=" mt-[19px] font-thin ml-[8px]">
