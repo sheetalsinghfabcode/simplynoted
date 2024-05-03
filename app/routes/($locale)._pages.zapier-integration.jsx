@@ -17,7 +17,16 @@ import {seoPayload} from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
 import {useNavigate} from '@remix-run/react';
-
+import ZapierLogo from '../../assets/Image/zapier-logo-orange.png'
+import ZapierLaptop from '../../assets/Image/zapier-laptop-1.webp'
+import Salesforce from '../../assets/Image/salesforce-cards-1.webp'
+import zapierArrow from '../../assets/Image/zapier-arrow.png'
+import Salesforce2 from '../../assets/Image/salesforce-2.webp'
+import SalesforceLetter from '../../assets/Image/salesforce-letter-1.webp'
+import SalesforceLetter2 from '../../assets/Image/salesforce-letter-2.webp'
+import Pen from '../../assets/Image/deep-integration-pen.webp'
+import Stamps from '../../assets/Image/deep-integration-stamps.png'
+import Espiral from '../../assets/Image/espiral.png'
 export async function loader({request, context}) {
   const {page} = await context.storefront.query(Zapier_GRAPH_QL, {
     variants: {},
@@ -42,7 +51,7 @@ export default function Zapier() {
       <div className="xl:flex relative items-center global-section-divider max-lg:top-0 top-10 justify-center global-max-width-handler max-lg:left-0 lg:left-[30px]">
         <div className="tab:max-w-[40%] max-lg:mx-auto">
           <div className="md:flex flex xl:justify-normal justify-center">
-            <img src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806" />
+            <img src={ZapierLogo} />
           </div>
           <div className="flex xl:justify-normal justify-center">
             <h2 className="md:text-[48px] sm:text-[35px] text-[29px]  text-[#001a5f] font-bold tracking-[-0.2px] leading-normal max-lg:!text-center">
@@ -72,7 +81,7 @@ export default function Zapier() {
           <div className="flex xl:justify-normal xl:mt-[0px]  justify-center mt-8">
             <img
               className="w-full"
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-laptop-1.png?v=1611259837"
+              src={ZapierLaptop}
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden justify-center">
@@ -194,7 +203,7 @@ export default function Zapier() {
           <div className="absolute tab:left-[-10vw] top-[3px]">
             <img
               className="max-w-[500px] "
-              src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
+              src={Salesforce}
             />
             <div className="absolute   right-[-371px] top-[163px]">
               <p className="text-center w-[344px] texts">
@@ -202,7 +211,7 @@ export default function Zapier() {
               </p>
             </div>
             <div className="absolute right-[-166px] top-[235px]">
-              <img src="  https://simplynoted.com/cdn/shop/files/zapier-arrow.png?v=17017241910886262831" />
+              <img src={zapierArrow} />
             </div>
           </div>
         </div>
@@ -248,7 +257,7 @@ export default function Zapier() {
           <div className="flex xl:justify-normal justify-center mt-5">
             <img
               className="w-full"
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-laptop-1.png?v=1611259837"
+              src={Salesforce2}
             />
           </div>
           <div className="flex xl:justify-normal  xl:hidden  justify-center">
@@ -279,7 +288,7 @@ export default function Zapier() {
         <div className="absolute 2xl:right-[40px]  right-[-185px] top-[-25px] 2xl:top-[-30px]">
           <img
             className="max-w-[540px]"
-            src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
+            src={SalesforceLetter}
           />
         </div>
       </div>
@@ -326,7 +335,7 @@ export default function Zapier() {
           <div className="flex xl:justify-normal justify-center mt-5">
             <img
               className="w-[98%]"
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-laptop-1.png?v=1611259837"
+              src={Salesforce2}
             />
           </div>
           <div className="flex xl:justify-norma xl:hidden justify-center">
@@ -358,7 +367,7 @@ export default function Zapier() {
         <div className="absolute right-[-23px] top-[3rem] ">
           <img
             className="max-w-[650px]"
-            src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
+            src={SalesforceLetter2}
           />
         </div>
       </div>
@@ -367,21 +376,21 @@ export default function Zapier() {
           <div className="absolute right-[-198px] top-[-89px]">
             <img
               className="xl:block hidden"
-              src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+              src={Pen}
               alt="shopify"
             />
           </div>
           <div className="absolute left-[-98px] top-[-91px]">
             <img
               className="xl:block hidden"
-              src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+              src={Stamps}
               alt="shopify"
             />
           </div>
           <div>
             <img
               className=""
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/zapier-logo-orange.png?v=1611259806"
+              src={ZapierLogo}
               alt="shopify"
             />
           </div>
@@ -414,7 +423,7 @@ export default function Zapier() {
       <div className="absolute w-[251px]  left-[11px] lg:block hidden">
         <img
           className="rotate-90 hidden"
-          src="https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
+          src={Espiral}
         />
       </div>
     </div>
