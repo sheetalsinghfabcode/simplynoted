@@ -8,7 +8,23 @@ import { defer } from '@remix-run/server-runtime';
 import { seoPayload } from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
-
+import Pen from '../../assets/Image/deep-integration-pen.webp'
+import Stamps from '../../assets/Image/deep-integration-stamps.png'
+import Espiral from '../../assets/Image/espiral.png'
+import ComingSoon from '../../assets/Image/coming-soon.webp'
+import Salesforce2 from '../../assets/Image/salesforce-2.webp'
+import SalesforceLetter from '../../assets/Image/salesforce-letter-1.webp'
+import SalesforceLetter2 from '../../assets/Image/salesforce-letter-2.webp'
+import SalesforceArrowLeft from '../../assets/Image/salesforce-arrow-left.avif'
+import SalesforceArrowCenter from '../../assets/Image/salesforce-arrow-center.png'
+import SalesforceArrowRight from '../../assets/Image/salesforce-arrow-right.avif'
+import calculator1 from '../../assets/Image/calculator-why-1.webp'
+import calculator2 from '../../assets/Image/calculator-why-2.webp'
+import calculator3 from '../../assets/Image/calculator-why-3.webp'
+import SalesforceCard from '../../assets/Image/salesforce-cards-1.webp'
+import Arrow from '../../assets/Image/salesforce-arrow-1.png'
+import SalesforceLogo from '../../assets/Image/salesforce-logo.avif'
+import SalesforceItem from '../../assets/Image/salesforce-1.webp'
 export async function loader({ request, context }) {
   const { page } = await context.storefront.query(Shopify_GRAPH_QL, {
     variants: {},
@@ -78,7 +94,7 @@ export default function Salesforce() {
                   </span>
                   <img
                     className="xl:block hidden relative right-[4px] top-[36px] xl:top-[47px] xl:w-[20%] w-[16%] "
-                    src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-1.png?v=1609453677&94441"
+                    src={Arrow}
                     alt="arrow"
                   />
                 </div>
@@ -115,7 +131,7 @@ export default function Salesforce() {
                     </div>
                     <div className=" hidden small:block xl:hidden absolute top-[-2rem] right-[8rem] md:right-[15rem] z-[3]">
                       <img
-                        src="https://simplynoted.com/cdn/shop/files/salesforce-logo.png?v=8956079057539837102"
+                        src={SalesforceLogo}
                         alt="salesforce"
                       />
                     </div>
@@ -223,7 +239,7 @@ export default function Salesforce() {
         <div className="lg:block hidden relative my-[30px]">
           <img
             className="pl-[50px] 2xl:w-[750px] w-[650px]"
-            src="https://simplynoted.com/cdn/shop/files/salesforce-cards.png?v=5725391707754373102"
+            src={SalesforceCard}
           />
         </div>
         {/* second */}
@@ -277,7 +293,7 @@ export default function Salesforce() {
           <div className="lg:w-[60%] relative  w-full">
             <img
               className="lg:absolute relative 2xl:left-[30px] xl:max-w-[1000px] lg:max-w-[725px] mx-auto overflow-hidden "
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-1.png?v=1611260653"
+              src={SalesforceItem}
             />
           </div>
         </div>
@@ -285,11 +301,11 @@ export default function Salesforce() {
         <div className="lg:flex hidden overflow-hidden justify-between h-[40rem] py-[30px] ">
           <img
             className="h-[500px]  relative"
-            src="https://simplynoted.com/cdn/shop/files/salesforce-cards-1.png?v=6344989565106697086"
+            src={SalesforceCard}
           />
           <img
             className="relative  h-[430px] "
-            src="https://simplynoted.com/cdn/shop/files/salesforce-letter-1.png?v=14369353811488978466"
+            src={SalesforceLetter}
           />
         </div>
 
@@ -341,7 +357,7 @@ export default function Salesforce() {
           <div className="xl:w-[60%] lg:w-[60%] relative  w-full">
             <img
               className="lg:absolute relative xl:max-w-[1000px] lg:max-w-[800px] lg:right-[-3rem] xl:right-[-7rem]  mx-auto overflow-hidden "
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/salesforce-2.png?v=1611259750"
+              src={Salesforce2}
             />
           </div>
         </div>
@@ -349,11 +365,11 @@ export default function Salesforce() {
         <div className="lg:flex hidden overflow-hidden pl-[20px] mt-[18rem] relative justify-between  max-w 5/6">
           <img
             className="h-[430px] xl:ml-[35px] ml-[-122px] xl:rotate-0 rotate-90"
-            src="	https://simplynoted.com/cdn/shop/files/espiral.png?v=3800721941933214506"
+            src={Espiral}
           />
           <img
             className="w-[36%]"
-            src="https://simplynoted.com/cdn/shop/files/salesforce-letter-2.png?v=12785632709067599954"
+            src={SalesforceLetter2}
           />
         </div>
 
@@ -366,7 +382,7 @@ export default function Salesforce() {
           <div className="md:mt-14  mt-0">
             <img
               className="pb-[12px]"
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-1.png?v=1611260064"
+              src={calculator1}
             />
             <h2 className="w-[299px] texts text-center">
               Our team of handwriting robots will help you engage with vast
@@ -376,7 +392,7 @@ export default function Salesforce() {
           <div className="mt-14">
             <img
               className="pb-[12px]"
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-2.png?v=1611260106"
+              src={calculator2}
             />
             <h2 className="w-[299px] texts text-center">
               Sending a letter to 1 customer or 10,000 + customers. We’ve got
@@ -386,7 +402,7 @@ export default function Salesforce() {
           <div className="mt-14">
             <img
               className="pb-[12px]"
-              src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/calculator-why-3.png?v=1611260085"
+              src={calculator3}
             />
             <h2 className="w-[306px] texts text-center">
               Every handwritten card and envelope we produce is hand quality
@@ -395,9 +411,9 @@ export default function Salesforce() {
           </div>
         </div>
         <div className="lg:flex hidden pt-[50px] justify-center gap-[191px] mt-[20px]">
-          <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-left.png?v=1507224686358523339" />
-          <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-center.png?v=1294751222991646381" />
-          <img src="https://simplynoted.com/cdn/shop/files/salesforce-arrow-right.png?v=17628020455828864692" />
+          <img src={SalesforceArrowLeft} />
+          <img src={SalesforceArrowCenter} />
+          <img src={SalesforceArrowRight} />
         </div>
   <div className='max-w-[1550px] mx-auto'>
         <div className="flex flex-row items-center mb-[51px] relative justify-center mx-auto mt-[70px]">
@@ -405,14 +421,14 @@ export default function Salesforce() {
           <div className="absolute right-[-198px] top-[-89px]">
             <img
               className="xl:block hidden"
-              src="https://simplynoted.com/cdn/shop/files/deep-integration-pen.png?v=2271676627160902087"
+              src={Pen}
               alt="shopify"
             />
           </div>
           <div className="absolute left-[-98px] top-[-91px]">
             <img
               className="xl:block hidden"
-              src="https://simplynoted.com/cdn/shop/files/deep-integration-stamps.png?v=1452620472871025556"
+              src={Stamps}
               alt="shopify"
             />
           </div>
@@ -421,7 +437,7 @@ export default function Salesforce() {
               src={SalesforceIcon}
               alt="shopify"
             />
-            <img className='absolute right-[143px] hiiden lg:block top-[60px] hidden md:block' src="https://simplynoted.com/cdn/shop/files/coming-soon.png?v=5027339731676722495" />
+            <img className='absolute right-[143px] hiiden lg:block top-[60px] hidden md:block' src={ComingSoon}/>
             <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
               Salesforce Deep Integration
               <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
