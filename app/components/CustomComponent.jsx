@@ -7,6 +7,7 @@ import DynamicButton from './DynamicButton';
 import {getProductPlaceholder} from '~/lib/placeholders';
 import {RiDeleteBin6Line} from 'react-icons/ri';
 import ConfirmationModal from './modal/ConfirmationModal';
+import {useStateContext} from '~/context/StateContext';
 
 export function CustomComponent({product, offPrice, productPrice, customerId}) {
   const [loader, setLoader] = useState(false);
@@ -14,13 +15,17 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
   const [showDeleteICon, setShowDeleteICon] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [valOfProdId, setValOfProdId] = useState(null);
+  const {cartData, setCartData, setCartCountVal} = useStateContext();
+
   function deleteOrderBtn(id) {
     setDeleteModal(true);
     setValOfProdId(id);
   }
+
   async function deleteCustomCardAPI(id) {
     try {
       // setLoader(true)
+      await deleteProductFromCartItems(id);
       const res = await fetch(
         `https://api.simplynoted.com/api/customizedCard/deleteProduct?customerId=${customerId}`,
         {
@@ -38,10 +43,42 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
         setStateval(id);
         // setLoader(false)
       }
-    } catch (error) {
-      console.log(error, 'delete customCard ');
+    } catch (err) {
+      console.log(`Unable to delete custom card: ${err}`);
     }
   }
+
+  async function deleteProductFromCartItems(id) {
+    try {
+      console.log(cartData);
+      const foundProductIndex = cartData.findIndex(
+        (item) => item.productId == id,
+      );
+      if (foundProductIndex === -1) return;
+      const newCartData = cartData.filter((item) => item.productId != id);
+      const url = newCartData.length
+        ? 'https://api.simplynoted.com/api/storefront/cart-items'
+        : `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+
+      const options = {
+        method: 'POST',
+        ...(newCartData.length && {
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({customerId, cartItems: newCartData}),
+        }),
+      };
+      const response = await fetch(url, options);
+      if (!response.ok) throw new Error('Failed to update cart data');
+      const responseData = await response.json();
+      if (responseData.result.success) {
+        setCartData(newCartData);
+        setCartCountVal(newCartData.length);
+      }
+    } catch (err) {
+      console.log(`Unable to delete cart product: ${err}`);
+    }
+  }
+
   // const cardProduct = product?.variants ? product : getProductPlaceholder();
   // if (!cardProduct?.variants?.nodes?.length) return null;
   // const firstVariant = flattenConnection(cardProduct.variants)[0];
@@ -54,7 +91,7 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
       ) : (
         <div
           className={`flex flex-col gap-2 bg-[white] ${
-            product?.id === Number(stateval) && 'hidden'
+            product?.id == Number(stateval) && 'hidden'
           } shadow-lg relative`}
           onMouseEnter={() => setShowDeleteICon(true)}
           onMouseLeave={() => setShowDeleteICon(false)}
