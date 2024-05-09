@@ -64,7 +64,6 @@ export default function SimplyNoted() {
 
   useEffect(() => {
     customerID = localStorage.getItem('customerId');
-
   }, []);
 
   useEffect(() => {
@@ -91,7 +90,6 @@ export default function SimplyNoted() {
     return () => {};
   }, []);
 
-
   return (
     <div className=" w-full global-max-width-handler ">
       {/* {loader && (
@@ -102,10 +100,14 @@ export default function SimplyNoted() {
       <div className="flex px-[16px] md:mt-[30px] mt-[1px] md:px-[40px] justify-start items-center">
         <DynamicTitle className="" title={'Simply Noted Plans'} />
       </div>
-      <div className={`${loader && 'opacity-40'}`}>
+      <div
+        className={`${
+          loader ? 'pointer-events-none opacity-40' : 'pointer-events-auto'
+        }`}
+      >
         {!walletPlan && !walletPurcase && !walletPayment && (
           <WalletTable
-          customerID={customerID}
+            customerID={customerID}
             WalletData={WalletData}
             pricePerCard={pricePerCard}
             setWalletPlan={setWalletPlan}
