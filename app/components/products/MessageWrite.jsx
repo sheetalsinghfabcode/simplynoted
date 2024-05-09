@@ -1423,13 +1423,6 @@ export function MessageWriting({
                         : 'Tarzan',
                       style: {fontSize: '16px'},
                     },
-
-                    {
-                      value: 'Stitch',
-                      label: 'Stitch',
-                      style: {fontSize: '33px'},
-                      className: 'font-stitch',
-                    },
                     {
                       value: 'Tarzan',
                       label: 'Tarzan',
@@ -1438,16 +1431,35 @@ export function MessageWriting({
                     },
 
                     {
+                      value: 'Stitch',
+                      label: 'Stitch',
+                      style: {fontSize: '33px'},
+                      className: 'font-stitch',
+                    },
+
+                    {
+                      value: 'Pinocchio',
+                      label: 'Pinocchio',
+                      style: {fontSize: '20px'},
+                      className: 'font-pinocchio',
+                    },
+                    {
                       value: 'Simba',
                       label: 'Simba',
                       style: {fontSize: '33px'},
                       className: 'font-simba',
                     },
                     {
-                      value: 'Nimo',
-                      label: 'Nimo',
+                      value: 'Roo',
+                      label: 'Roo',
+                      style: {fontSize: '33px'},
+                      className: `font-roo`,
+                    },
+                    {
+                      value: 'Nemo',
+                      label: 'Nemo',
                       style: {fontSize: '20px'},
-                      className: `font-nimo`,
+                      className: `font-nemo`,
                     },
                     {
                       value: 'Lumiere',
@@ -1456,34 +1468,22 @@ export function MessageWriting({
                       className: `font-lumiere`,
                     },
                     {
-                      value: 'dumbo',
+                      value: 'Kaa',
+                      label: 'Kaa',
+                      style: {fontSize: '33px'},
+                      className: `font-kaa`,
+                    },
+                    {
+                      value: 'Dumbo',
                       label: 'Dumbo',
                       style: {fontSize: '33px'},
                       className: `font-dumbo`,
                     },
                     {
-                      value: 'Donald',
-                      label: 'Donald',
-                      style: {fontSize: '20px'},
-                      className: `font-donald`,
-                    },
-                    {
-                      value: 'Aladdin',
-                      label: 'Aladdin',
-                      style: {fontSize: '29px'},
-                      className: `font-aladdin`,
-                    },
-                    {
-                      value: 'Belle',
-                      label: 'Belle',
-                      style: {fontSize: '39px'},
-                      className: `font-belle`,
-                    },
-                    {
-                      value: 'Boo',
-                      label: 'Boo',
-                      style: {fontSize: '29px'},
-                      className: `font-boo`,
+                      value: 'Bolt',
+                      label: 'Bolt',
+                      style: {fontSize: '33px'},
+                      className: `font-bolt`,
                     },
                     {
                       value: 'Cinderella',
@@ -1492,47 +1492,16 @@ export function MessageWriting({
                       className: `font-cinderella`,
                     },
                     {
-                      value: 'kaa',
-                      label: 'Kaa',
-                      style: {fontSize: '33px'},
-                      className: `font-kaa`,
-                    },
-                    {
-                      value: 'Copper',
-                      label: 'Copper',
-                      style: {fontSize: '33px'},
-                      className: `font-copper`,
-                    },
-                    {
-                      value: 'Jasmine',
-                      label: 'Jasmine',
-                      style: {fontSize: '33px'},
-                      className: `font-jasmine`,
-                    },
-                    {
-                      value: 'Merlin',
-                      label: 'Merlin',
-                      style: {fontSize: '33px'},
-                      className: `font-merlin`,
-                    },
-                    {
-                      value: 'Goofy',
-                      label: 'Goofy',
-                      style: {fontSize: '33px'},
-                      className: `font-goofy`,
-                    },
-
-                    {
                       value: 'Hercules',
                       label: 'Hercules',
                       style: {fontSize: '38px'},
                       className: `font-hercules`,
                     },
                     {
-                      value: 'Rafiki',
-                      label: 'Rafiki',
+                      value: 'Merlin',
+                      label: 'Merlin',
                       style: {fontSize: '33px'},
-                      className: `font-rafiki`,
+                      className: `font-merlin`,
                     },
                     {
                       value: 'Rapunzel',
@@ -1547,16 +1516,34 @@ export function MessageWriting({
                       className: `font-scar`,
                     },
                     {
+                      value: 'Woody',
+                      label: 'Woody',
+                      style: {fontSize: '33px'},
+                      className: `font-woody`,
+                    },
+                    {
                       value: 'Sarabi',
                       label: 'Sarabi',
                       style: {fontSize: '33px'},
                       className: `font-sarabi`,
                     },
                     {
-                      value: 'Ratigan',
-                      label: 'Ratigan',
+                      value: 'Goofy',
+                      label: 'Goofy',
                       style: {fontSize: '33px'},
-                      className: `font-ratigan`,
+                      className: `font-goofy`,
+                    },
+                    {
+                      value: 'Donald',
+                      label: 'Donald',
+                      style: {fontSize: '20px'},
+                      className: `font-donald`,
+                    },
+                    {
+                      value: 'Aladdin',
+                      label: 'Aladdin',
+                      style: {fontSize: '29px'},
+                      className: `font-aladdin`,
                     },
                     {
                       value: 'Triton',
@@ -1565,21 +1552,34 @@ export function MessageWriting({
                       className: `font-triton`,
                     },
                     {
-                      value: 'Woody',
-                      label: 'Woody',
+                      value: 'Ratigan',
+                      label: 'Ratigan',
                       style: {fontSize: '33px'},
-                      className: `font-woody`,
+                      className: `font-ratigan`,
+                    },
+
+                    {
+                      value: 'Rafiki',
+                      label: 'Rafiki',
+                      style: {fontSize: '33px'},
+                      className: `font-rafiki`,
                     },
                     {
-                      value: 'Roo',
-                      label: 'Roo',
+                      value: 'Jasmine',
+                      label: 'Jasmine',
                       style: {fontSize: '33px'},
-                      className: `font-roo`,
+                      className: `font-jasmine`,
+                    },
+                    {
+                      value: 'Copper',
+                      label: 'Copper',
+                      style: {fontSize: '33px'},
+                      className: `font-copper`,
                     },
                     {
                       value: 'Boo',
                       label: 'Boo',
-                      style: {fontSize: '33px'},
+                      style: {fontSize: '29px'},
                       className: `font-boo`,
                     },
                   ]}
