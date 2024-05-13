@@ -6,8 +6,8 @@ function root({shop, url}) {
     handle: '@shopify',
     url,
     robots: {
-      noIndex: false,
-      noFollow: false,
+      noIndex: true,
+      noFollow: true,
     },
     jsonLd: {
       '@context': 'https://schema.org',
@@ -37,8 +37,8 @@ function home() {
     titleTemplate: '%s | SimplyNoted',
     description: 'Simply Noted writes handwritten notes, letters, thank you notes, and cards using robots with real penmanship. Ideal for all businesses.',
     robots: {
-      noIndex: false,
-      noFollow: false,
+      noIndex: true,
+      noFollow: true,
     },
     jsonLd: {
       '@context': 'https://schema.org',

@@ -127,6 +127,7 @@ export default function App() {
             name="facebook-domain-verification"
             content="lu5iuajp669xmj62mgeeos8haa5sf8"
           />
+          <meta name="ahrefs-site-verification" content="97e56e9d1eb6053922d7700f69079d07b6055abbb22c43a3ea00e965046b0318"></meta>
 
           {/* gatg script  */}
           <script
