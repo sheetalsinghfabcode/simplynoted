@@ -208,7 +208,7 @@ export function MessageWriting({
     setDisableSelectAddressBtn(false);
   }
   async function checkUserLogged() {
-    if (!customerid) {
+    if (!customerId) {
       // setLoginModal(true);
       setShowSignScreen(true);
     } else if (name.length == 0) {
@@ -525,7 +525,6 @@ export function MessageWriting({
     const outermostContainer = ref2.current;
     const mainMessageBox = ref1.current;
     if (outermostContainer) {
-      console.log({oH: outermostContainer?.getBoundingClientRect().height});
       const messageBoxMaxHeight =
         name2.length > 0
           ? outermostContainer?.getBoundingClientRect().height / 1.3
@@ -537,8 +536,6 @@ export function MessageWriting({
         const signOffMaxHeight =
           outermostContainer?.getBoundingClientRect().height -
           mainMessageBox?.getBoundingClientRect().height;
-        console.log({iH: mainMessageBox?.getBoundingClientRect().height});
-        console.log({signOffMaxHeight});
         if (signOffMaxHeight !== signOffBoxMaxHeight) {
           setsignOffBoxMaxHeight(signOffMaxHeight);
         }
@@ -1011,7 +1008,7 @@ export function MessageWriting({
         : '',
     );
     setTempVal(ref4.current?.value);
-  }, [showSignScreen, customerId, customerid]);
+  }, []);
 
   // async function firstNameBtn(data) {
   //   if (remainingWord > data.length) {
