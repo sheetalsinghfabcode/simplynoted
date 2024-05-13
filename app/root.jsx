@@ -26,7 +26,7 @@ import productStyles from './styles/products.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {StateContextProvider} from './context/StateContext';
-import { useEffect, useLayoutEffect } from 'react';
+import {useEffect, useLayoutEffect} from 'react';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
@@ -87,11 +87,11 @@ export default function App() {
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
   const hasUserConsent = true;
 
-  useEffect(()=>{
-    if(!data.isLoggedIn){
-      localStorage.clear()
+  useEffect(() => {
+    if (!data.isLoggedIn) {
+      localStorage.clear();
     }
-  },[])
+  }, []);
 
   useAnalytics(hasUserConsent);
 
@@ -101,7 +101,59 @@ export default function App() {
         <head>
           <meta charSet="utf-8" />
 
+          <meta
+            name="google-site-verification"
+            content="pwZ54nt5azNKUe_olhEo10QlwgogX315hOXtfjPEXng"
+          />
+          <meta
+            name="google-site-verification"
+            content="QGpj3O3aTREvEJmQKJVQmEDp_J8IjCuZBBr8jNKNqls"
+          />
+          <meta
+            name="google-site-verification"
+            content="pufqJ0q35yyCllyfMRe9wrc-c0-Z2aIFYiI8hcLvO-M"
+          />
+          <meta
+            name="google-site-verification"
+            content="bpeVfYNJuxGDBdO4-ILSDUqRBikvy5prBzPNvGzHetM"
+          />
+          <meta name="robots" content="noindex,nofollow"/>
           <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+          <meta
+            name="facebook-domain-verification"
+            content="q3xpgu5qz9wlus48ett2p2p4dxt15v"
+          />
+          <meta
+            name="facebook-domain-verification"
+            content="lu5iuajp669xmj62mgeeos8haa5sf8"
+          />
+          <meta name="ahrefs-site-verification" content="97e56e9d1eb6053922d7700f69079d07b6055abbb22c43a3ea00e965046b0318"></meta>
+
+          {/* gatg script  */}
+          <script
+            src="https://www.googletagmanager.com/gtag/js?id=AW-777809600"
+            async=""
+          ></script>
+          <script
+            type="text/javascript"
+            async=""
+            src="https://www.googletagmanager.com/gtag/js?id=G-Z60WCK1S1P&amp;l=dataLayer&amp;cx=c"
+          ></script>
+          <script
+            type="text/javascript"
+            async=""
+            src="https://www.googletagmanager.com/gtag/destination?id=MC-XZVHC517D3&amp;l=dataLayer&amp;cx=c"
+          ></script>
+          <script
+            async=""
+            src="https://www.googletagmanager.com/gtag/js?id=AW-777809600"
+          ></script>
+          <script
+            async=""
+            src="https://www.googletagmanager.com/gtm.js?id=GTM-PB7P5VV"
+          ></script>
+
           <Seo />
           <Meta />
           <Links />

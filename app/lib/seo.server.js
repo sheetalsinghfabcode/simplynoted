@@ -5,10 +5,10 @@ function root({shop, url}) {
     description: truncate(shop?.description ?? ''),
     handle: '@shopify',
     url,
-    robots: {
-      noIndex: false,
-      noFollow: false,
-    },
+    // robots: {
+    //   noIndex: false,
+    //   noFollow: false,
+    // },
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -36,10 +36,10 @@ function home() {
     title: 'Home',
     titleTemplate: '%s | SimplyNoted',
     description: 'Simply Noted writes handwritten notes, letters, thank you notes, and cards using robots with real penmanship. Ideal for all businesses.',
-    robots: {
-      noIndex: false,
-      noFollow: false,
-    },
+    // robots: {
+    //   noIndex: false,
+    //   noFollow: false,
+    // },
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
