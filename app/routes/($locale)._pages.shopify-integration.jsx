@@ -258,7 +258,7 @@ export default function Shopify() {
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[18px] xl:mt-[0px] mt-[12px] px-[45px] ml-[15px]"
-                onClickFunction={() => navigate('/news')}
+                onClickFunction={() => navigate('/blogs/news')}
               />
             </div>
           </div>
@@ -290,7 +290,7 @@ export default function Shopify() {
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[15px] mt-[0] px-[24px]  max-sm:text-[14px]  flex-1"
-                onClickFunction={() => navigate('/news')}
+                onClickFunction={() => navigate('/blogs/news')}
               />
             </div>
           </div>
@@ -339,7 +339,7 @@ export default function Shopify() {
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[18px] xl:mt-[0px] mt-[12px] px-[45px] ml-[15px]"
-                onClickFunction={() => navigate('/news')}
+                onClickFunction={() => navigate('/blogs/news')}
               />
             </div>
           </div>
@@ -370,7 +370,7 @@ export default function Shopify() {
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 py-[15px] mt-[0] px-[24px]  max-sm:text-[14px]  flex-1"
-                onClickFunction={() => navigate('/news')}
+                onClickFunction={() => navigate('/blogs/news')}
               />
             </div>
           </div>

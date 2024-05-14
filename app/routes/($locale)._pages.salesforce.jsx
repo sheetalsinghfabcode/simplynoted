@@ -3,33 +3,34 @@ import SalesforceFormBgImage02 from '../../assets/Image/salesforce-form-bg-2.web
 import SalesforceFormStampImage from '../../assets/Image/salesforce-form-stamp.avif';
 import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
-import { useEffect, useState } from 'react';
-import { defer } from '@remix-run/server-runtime';
-import { seoPayload } from '~/lib/seo.server';
+import {useEffect, useState} from 'react';
+import {defer} from '@remix-run/server-runtime';
+import {seoPayload} from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
-import Pen from '../../assets/Image/deep-integration-pen.webp'
-import Stamps from '../../assets/Image/deep-integration-stamps.png'
-import Espiral from '../../assets/Image/espiral.png'
-import ComingSoon from '../../assets/Image/coming-soon.webp'
-import Salesforce2 from '../../assets/Image/salesforce-2.webp'
-import SalesforceLetter from '../../assets/Image/salesforce-letter-1.webp'
-import SalesforceLetter2 from '../../assets/Image/salesforce-letter-2.webp'
-import SalesforceArrowLeft from '../../assets/Image/salesforce-arrow-left.avif'
-import SalesforceArrowCenter from '../../assets/Image/salesforce-arrow-center.png'
-import SalesforceArrowRight from '../../assets/Image/salesforce-arrow-right.avif'
-import calculator1 from '../../assets/Image/calculator-why-1.webp'
-import calculator2 from '../../assets/Image/calculator-why-2.webp'
-import calculator3 from '../../assets/Image/calculator-why-3.webp'
-import SalesforceCard from '../../assets/Image/salesforce-cards-1.webp'
-import Arrow from '../../assets/Image/salesforce-arrow-1.png'
-import SalesforceLogo from '../../assets/Image/salesforce-logo.avif'
-import SalesforceItem from '../../assets/Image/salesforce-1.webp'
-export async function loader({ request, context }) {
-  const { page } = await context.storefront.query(Shopify_GRAPH_QL, {
+import Pen from '../../assets/Image/deep-integration-pen.webp';
+import Stamps from '../../assets/Image/deep-integration-stamps.png';
+import Espiral from '../../assets/Image/espiral.png';
+import ComingSoon from '../../assets/Image/coming-soon.webp';
+import Salesforce2 from '../../assets/Image/salesforce-2.webp';
+import SalesforceLetter from '../../assets/Image/salesforce-letter-1.webp';
+import SalesforceLetter2 from '../../assets/Image/salesforce-letter-2.webp';
+import SalesforceArrowLeft from '../../assets/Image/salesforce-arrow-left.avif';
+import SalesforceArrowCenter from '../../assets/Image/salesforce-arrow-center.png';
+import SalesforceArrowRight from '../../assets/Image/salesforce-arrow-right.avif';
+import calculator1 from '../../assets/Image/calculator-why-1.webp';
+import calculator2 from '../../assets/Image/calculator-why-2.webp';
+import calculator3 from '../../assets/Image/calculator-why-3.webp';
+import SalesforceCard from '../../assets/Image/salesforce-cards-1.webp';
+import Arrow from '../../assets/Image/salesforce-arrow-1.png';
+import SalesforceLogo from '../../assets/Image/salesforce-logo.avif';
+import SalesforceItem from '../../assets/Image/salesforce-1.webp';
+import {useNavigate} from '@remix-run/react';
+export async function loader({request, context}) {
+  const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
     variants: {},
   });
-  const seo = seoPayload.page({ page, url: request.url });
+  const seo = seoPayload.page({page, url: request.url});
   return defer({
     seo,
     page,
@@ -38,6 +39,7 @@ export async function loader({ request, context }) {
 
 export default function Salesforce() {
   const [animate, setAnimate] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setAnimate(true);
@@ -57,7 +59,7 @@ export default function Salesforce() {
                   </div>
                   <div
                     className="xl:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f] mb-6"
-                    style={{ lineHeight: '0.75' }}
+                    style={{lineHeight: '0.75'}}
                   >
                     Salesforce
                     <span
@@ -84,8 +86,8 @@ export default function Salesforce() {
                     text="CONNECT USING OUR PROCESS BUILDER"
                     className="text-white p-[17px] sm:text-[16px] small:text-[14px] text-[10px] bg-[#ef6e6e] px-2 py-5 font-bold"
                     onClickFunction={() =>
-                    (window.location.href =
-                      'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
+                      (window.location.href =
+                        'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
                     }
                   />
 
@@ -107,7 +109,7 @@ export default function Salesforce() {
                   </div>
                   <div
                     className="text-[44px] font-karla md:flex grid  text-[#001a5f] items-center font-bold"
-                    style={{ lineHeight: '0.75' }}
+                    style={{lineHeight: '0.75'}}
                   >
                     Salesforce &nbsp;
                     <span
@@ -130,10 +132,7 @@ export default function Salesforce() {
                       />
                     </div>
                     <div className=" hidden small:block xl:hidden absolute top-[-2rem] right-[8rem] md:right-[15rem] z-[3]">
-                      <img
-                        src={SalesforceLogo}
-                        alt="salesforce"
-                      />
+                      <img src={SalesforceLogo} alt="salesforce" />
                     </div>
                     <div className="wrap-business-form-salesforce xl:min-w-[35rem] lg:min-w-[30rem] md:min-w-[40rem]">
                       <h3 className="form-title">
@@ -144,7 +143,7 @@ export default function Salesforce() {
                         <div className="row flex">
                           <div className="white-underline-salesforce">
                             <input
-                            className='p-0'
+                              className="p-0"
                               required=""
                               type="text"
                               name="first-name"
@@ -153,7 +152,7 @@ export default function Salesforce() {
                           </div>
                           <div className="white-underline-salesforce">
                             <input
-                            className='p-0'
+                              className="p-0"
                               required=""
                               type="text"
                               name="last-name"
@@ -165,7 +164,7 @@ export default function Salesforce() {
                         <div className="row flex">
                           <div className="white-underline-salesforce">
                             <input
-                            className='p-0'
+                              className="p-0"
                               type="text"
                               name="company"
                               placeholder="Company"
@@ -173,7 +172,7 @@ export default function Salesforce() {
                           </div>
                           <div className="white-underline-salesforce">
                             <input
-                            className='p-0'
+                              className="p-0"
                               required=""
                               type="tel"
                               name="phone"
@@ -186,7 +185,7 @@ export default function Salesforce() {
                         <div className="row flex">
                           <div className="white-underline-salesforce">
                             <input
-                            className='p-0'
+                              className="p-0"
                               required=""
                               type="email"
                               name="email-address"
@@ -194,7 +193,7 @@ export default function Salesforce() {
                             />
                           </div>
                           <div className="white-underline-salesforce">
-                            <select name="volume" id="" className='py-0'>
+                            <select name="volume" id="" className="py-0">
                               <option value="Expected Volume">
                                 Expected Volume
                               </option>
@@ -270,16 +269,14 @@ export default function Salesforce() {
                 text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
                 onClickFunction={() =>
-                (window.location.href =
-                  'https://zapier.com/apps/simply-noted/integrations')
+                  (window.location.href =
+                    'https://zapier.com/apps/simply-noted/integrations')
                 }
               />
               <DynamicButton
                 text="TUTORIALS"
                 className="btn2 lg:!text-[17px] w-[247px] md:text-[14px] h-[67px] items-center text-center"
-                onClickFunction={() =>
-                  (window.location.href = 'https://simplynoted.com/blogs/news')
-                }
+                onClickFunction={() => navigate('/blogs/news')}
               />
             </div>
           </div>
@@ -299,14 +296,8 @@ export default function Salesforce() {
         </div>
 
         <div className="lg:flex hidden overflow-hidden justify-between h-[40rem] py-[30px] ">
-          <img
-            className="h-[500px]  relative"
-            src={SalesforceCard}
-          />
-          <img
-            className="relative  h-[430px] "
-            src={SalesforceLetter}
-          />
+          <img className="h-[500px]  relative" src={SalesforceCard} />
+          <img className="relative  h-[430px] " src={SalesforceLetter} />
         </div>
 
         {/* third */}
@@ -339,7 +330,8 @@ export default function Salesforce() {
                   window.scrollTo({
                     top: 0,
                     behavior: 'smooth', // Make the scroll behavior smooth
-                  })}
+                  })
+                }
               />
               <DynamicButton
                 text="TUTORIALS"
@@ -367,10 +359,7 @@ export default function Salesforce() {
             className="h-[430px] xl:ml-[35px] ml-[-122px] xl:rotate-0 rotate-90"
             src={Espiral}
           />
-          <img
-            className="w-[36%]"
-            src={SalesforceLetter2}
-          />
+          <img className="w-[36%]" src={SalesforceLetter2} />
         </div>
 
         <div className="text-center relative flex justify-center lg:mt-0 mt-10">
@@ -380,30 +369,21 @@ export default function Salesforce() {
         </div>
         <div className="lg:flex mt-[12px] justify-center grid">
           <div className="md:mt-14  mt-0">
-            <img
-              className="pb-[12px]"
-              src={calculator1}
-            />
+            <img className="pb-[12px]" src={calculator1} />
             <h2 className="w-[299px] texts text-center">
               Our team of handwriting robots will help you engage with vast
               audiences.
             </h2>
           </div>
           <div className="mt-14">
-            <img
-              className="pb-[12px]"
-              src={calculator2}
-            />
+            <img className="pb-[12px]" src={calculator2} />
             <h2 className="w-[299px] texts text-center">
               Sending a letter to 1 customer or 10,000 + customers. We’ve got
               you covered!
             </h2>
           </div>
           <div className="mt-14">
-            <img
-              className="pb-[12px]"
-              src={calculator3}
-            />
+            <img className="pb-[12px]" src={calculator3} />
             <h2 className="w-[306px] texts text-center">
               Every handwritten card and envelope we produce is hand quality
               controlled to ensure the highest quality product possible.
@@ -415,55 +395,51 @@ export default function Salesforce() {
           <img src={SalesforceArrowCenter} />
           <img src={SalesforceArrowRight} />
         </div>
-  <div className='max-w-[1550px] mx-auto'>
-        <div className="flex flex-row items-center mb-[51px] relative justify-center mx-auto mt-[70px]">
-          <div className="banner-detail text-center tab:w-[80%] w-[1200px]">
-          <div className="absolute right-[-198px] top-[-89px]">
-            <img
-              className="xl:block hidden"
-              src={Pen}
-              alt="shopify"
-            />
-          </div>
-          <div className="absolute left-[-98px] top-[-91px]">
-            <img
-              className="xl:block hidden"
-              src={Stamps}
-              alt="shopify"
-            />
-          </div>
-            <img
-              className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] "
-              src={SalesforceIcon}
-              alt="shopify"
-            />
-            <img className='absolute right-[143px] hiiden lg:block top-[60px] hidden md:block' src={ComingSoon}/>
-            <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
-              Salesforce Deep Integration
-              <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
-                <DynamicButton
-                  text="JOIN WAITLIST"
-                  className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] h-[54px]  mt-[35px]"
-                  onClickFunction={() =>
-                    window.scrollTo({
-                      top: 0,
-                      behavior: 'smooth', // Make the scroll behavior smooth
-                    })}
-                />
-                <DynamicButton
-                  text="USE PROCESS BUILDER"
-                  className="sch-btn lg:!text-[17px] whitespace-pre-line w-[247px] md:text-[14px] !h-[67px] text-[white] items-center text-center"
-                  onClickFunction={() =>
-                    window.scrollTo({
-                      top: 0,
-                      behavior: 'smooth' // Make the scrool behavior smooth
-                    })
-                  }
-                />
+        <div className="max-w-[1550px] mx-auto">
+          <div className="flex flex-row items-center mb-[51px] relative justify-center mx-auto mt-[70px]">
+            <div className="banner-detail text-center tab:w-[80%] w-[1200px]">
+              <div className="absolute right-[-198px] top-[-89px]">
+                <img className="xl:block hidden" src={Pen} alt="shopify" />
+              </div>
+              <div className="absolute left-[-98px] top-[-91px]">
+                <img className="xl:block hidden" src={Stamps} alt="shopify" />
+              </div>
+              <img
+                className="absolute lg:mt-[-14rem] md:mt-[-11rem] mt-[-16rem] "
+                src={SalesforceIcon}
+                alt="shopify"
+              />
+              <img
+                className="absolute right-[143px] hiiden lg:block top-[60px] hidden md:block"
+                src={ComingSoon}
+              />
+              <div className="lg:text-6xl md:text-[37px] sm:text-[28px] text-[20px] lg:mt-0 md:mt-[28px] mt-[55px] flex text-white flex-col items-center font-karla">
+                Salesforce Deep Integration
+                <div className="md:flex-row flex-col  lg:mt-10 md:mt-[20px]  flex md:gap-12 items-center">
+                  <DynamicButton
+                    text="JOIN WAITLIST"
+                    className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] h-[54px]  mt-[35px]"
+                    onClickFunction={() =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth', // Make the scroll behavior smooth
+                      })
+                    }
+                  />
+                  <DynamicButton
+                    text="USE PROCESS BUILDER"
+                    className="sch-btn lg:!text-[17px] whitespace-pre-line w-[247px] md:text-[14px] !h-[67px] text-[white] items-center text-center"
+                    onClickFunction={() =>
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth', // Make the scrool behavior smooth
+                      })
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </section>

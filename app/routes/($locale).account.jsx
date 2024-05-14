@@ -447,7 +447,7 @@ function Account({customer}) {
                         '_blank',
                       )
                     }
-                    onDownload={() => navigate('/Video')}
+                    onDownload={() => navigate('/blogs/Video')}
                     showDownloadButton={true}
                     downloadButtonText="See Tutorials"
                   />

@@ -152,7 +152,7 @@ export default function blog() {
             type="button"
             onClick={() => {
               handleButtonClick('articles');
-              navigate('/news');
+              navigate('/blogs/news');
             }}
           >
             Articles
@@ -164,7 +164,7 @@ export default function blog() {
             type="button"
             onClick={() => {
               handleButtonClick('tutorials');
-              navigate('/Video');
+              navigate('/blogs/Video');
             }}
           >
             Tutorials

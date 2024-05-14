@@ -576,7 +576,7 @@ function MenuMobileNav({ menu, onClose }) {
                             <Link to="/pages/about-us" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                               About Us
                             </Link></li><li className=' whitespace-normal border-b border-[#dbdbdb]'>
-                            <Link to="/Video" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                            <Link to="/blogs/Video" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                               Tutorials
                             </Link></li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'>  
@@ -593,7 +593,7 @@ function MenuMobileNav({ menu, onClose }) {
                             </button>
                           </Link></li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'>  
-                            <Link to="/news" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                            <Link to="/blogs/news" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                             Blog
                           </Link></li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'> 
@@ -995,7 +995,7 @@ const PricingContent = ({ props }) => {
   }
 
   return (
-    <div className="w-64 bg-wheat p-6 shadow-xl">
+    <div className="w-[155px] bg-wheat p-6 shadow-xl">
       {props.map((item) => (
         <div key={item.id} className="mb-3 space-y-3 ">
           {item.to === "/customise-your-card" ?
