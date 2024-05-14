@@ -63,11 +63,10 @@ export function MessageWriting({
     addresses,
     setAddresses,
     setProductShow,
-    isbirthdayAutomated,
-    setISBirthdayAutomated,
+    // isbirthdayAutomated,
+    // setIsBirthdayAutomated,
     setShowSignScreen,
     customerId,
-    showSignScreen,
   } = useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -2550,17 +2549,17 @@ export function MessageWriting({
           )
         }
       />
-      <ConfirmationModal
+      {/* <ConfirmationModal
         show={confirmModal && isbirthdayAutomated}
         title={'AUTOMATED BIRTHDAY CARDS'}
         onCancel={() =>
-          setConfirmModal(false) && setISBirthdayAutomated(!isbirthdayAutomated)
+          setConfirmModal(false) && setIsBirthdayAutomated(!isbirthdayAutomated)
         }
         onConfirm={() => onConfirmClick()}
         message="Download the recipient template and populate each person birthdate. Their custom card will be sent to them in time to receive it for their birthday!"
         confirmText="Download"
         cancelText="Exit"
-      />
+      /> */}
       <ConfirmationModal
         show={delTemplateState}
         message={'Are you sure you want to delete this template?'}

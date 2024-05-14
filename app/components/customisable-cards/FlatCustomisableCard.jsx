@@ -10,12 +10,14 @@ import CustomCheckbox from '../CustomCheckbox';
 import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.png';
 import CardBackImage from '../../../assets/Image/foldFront.webp';
 import {MdOutlineDone} from 'react-icons/md';
+// import { useStateContext } from '~/context/StateContext';
 
 export default function FlatCustomisableCard({
   setIsCardTypeSelectionPage,
   shopifyCustomisableCardProduct,
   customerId,
 }) {
+  // const {setIsBirthdayAutomated} = useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const [loadingText, setLoadingText] = useState('Checking availability...');
   const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
@@ -107,9 +109,9 @@ export default function FlatCustomisableCard({
     };
     if (isScrollerRemoved) {
       window.addEventListener('scroll', scrollHandler);
-      document.body.style.overflow = 'hidden';
+      // document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflowY = 'auto';
+      // document.body.style.overflowY = 'auto';
       window.removeEventListener('scroll', scrollHandler);
     }
     return () => {
@@ -908,6 +910,8 @@ export default function FlatCustomisableCard({
     handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
     // Making the title to lowercase.
     handleName = handleName.toLowerCase();
+
+    // setIsBirthdayAutomated(false);
     navigate(`/custom/${handleName}`);
   };
 
@@ -1532,11 +1536,12 @@ export default function FlatCustomisableCard({
                                   }`,
                                 }}
                               >
-                                {!footerData.isImageSelected && !qr.isQrAdded && (
-                                  <span className="text-[#dcdcdc] font-serif text-[30px]">
-                                    Footer
-                                  </span>
-                                )}
+                                {!footerData.isImageSelected &&
+                                  !qr.isQrAdded && (
+                                    <span className="text-[#dcdcdc] font-serif text-[30px]">
+                                      Footer
+                                    </span>
+                                  )}
                               </div>
                             )}
                           {(footerData.isImageSelected || qr.isQrAdded) && (
@@ -1953,7 +1958,7 @@ export default function FlatCustomisableCard({
                     </div>
                     <div className="flex sm:flex-col flex-row flex-1 sm:ml-[38px] ml-0 w-full flex-wrap sm:justify-start justify-between">
                       <div className="relative mt-5 w-[60px] h-[50px]">
-                        {observingData.isHeader  && (
+                        {observingData.isHeader && (
                           <>
                             <div className="flex items-center gap-2">
                               <img
