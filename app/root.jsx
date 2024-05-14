@@ -303,7 +303,7 @@ async function getLayoutData({storefront, env}) {
           - /blog/news/blog-post -> /news/blog-post
           - /collections/all -> /products
       */
-  const customPrefixes = {BLOG: '', CATALOG: 'products'};
+  const customPrefixes = {BLOG: 'blogs', CATALOG: 'products'};
   const headerMenu = data?.headerMenu
     ? parseMenu(
         data.headerMenu,

@@ -43,7 +43,7 @@ const CanvasDesign = () => {
             <DynamicButton
               text="TUTORIALS"
               className="btn2 py-[18px] px-[40px] ml-[15px]"
-              onClickFunction={() => navigate('/news')}
+              onClickFunction={() => navigate('/blogs/news')}
             />
           </div>
           <div className="flex-1">
@@ -93,7 +93,7 @@ const CanvasDesign = () => {
           <DynamicButton
             text="TUTORIALS"
             className="btn2 sm:w-auto w-full mt-5 py-[18px] px-[40px]"
-            onClickFunction={() => navigate('/news')}
+            onClickFunction={() => navigate('/blogs/news')}
           />
         
         </div>
