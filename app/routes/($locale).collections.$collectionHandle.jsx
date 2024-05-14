@@ -142,7 +142,7 @@ export async function loader({params, request, context}) {
 }
 let customerid;
 export default function Collection() {
-  const {birthdayAutomation,isbirthdayAutomated,setISBirthdayAutomated} = useStateContext()
+  const {birthdayAutomation,isbirthdayAutomated,setIsBirthdayAutomated} = useStateContext()
   const navigate = useNavigate();
   const [handleName, setHandleName] = useState('');
   const [addingProductsData, setAddingProd] = useState([]);
@@ -154,7 +154,7 @@ export default function Collection() {
   const [loadMore, setLoadMore] = useState(false);
   const [newOffset, setNewOffset] = useState('');
   const [offPrice, setOffPrice] = useState('');
-  // const [isbirthdayAutomated,setISBirthdayAutomated] = useState(false)
+  // const [isbirthdayAutomated,setIsBirthdayAutomated] = useState(false)
   const [confirmModal,setConfirmModal] = useState(false)
   const locationRef = useLocation();
   const {
@@ -190,7 +190,7 @@ if (index !== -1) {
   const data = filterTag.filter((item) => mainTags.includes(item.node.handle));
 
   useEffect(() => {
-    setISBirthdayAutomated(false)
+    // setIsBirthdayAutomated(false)
     if (locationRef.pathname !== '/collections/customisable-cards') {
       setCheckState(false);
       setAddingProd([]);
@@ -311,7 +311,7 @@ if (index !== -1) {
     }
   }, [offSetVal]);
   function onConfirmClick(){
-    setISBirthdayAutomated(true)
+    // setIsBirthdayAutomated(true)
     setConfirmModal(false)
     // localStorage.setItem("isBirthdayAutomated", "true")
   }
@@ -437,15 +437,15 @@ if (index !== -1) {
           confirmText="Login"
           cancelText="Register"
         />
-        <ConfirmationModal
+        {/* <ConfirmationModal
           show={confirmModal}
           title={'AUTOMATED BIRTHDAY CARDS'}
-          onCancel={() => setConfirmModal(false) && setISBirthdayAutomated(!isbirthdayAutomated)}
+          onCancel={() => setConfirmModal(false) && setIsBirthdayAutomated(!isbirthdayAutomated)}
           onConfirm={() => onConfirmClick()}
           message="Select a card and we’ll automatically send them to your recipients on their birthdays"
           confirmText="Get Started"
           cancelText="Cancel"
-        />
+        /> */}
       </div>
     </>
   );

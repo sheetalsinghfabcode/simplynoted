@@ -6,12 +6,14 @@ import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import DefaultFrontCardImage from '../../../assets/Image/foldFront.webp';
 import DefaultBackCardImage from '../../../assets/Image/foldBack.png';
 import {MdOutlineDone} from 'react-icons/md';
+// import {useStateContext} from '~/context/StateContext';
 
 export default function FoldedCustomisableCard({
   setIsCardTypeSelectionPage,
   shopifyCustomisableCardProduct,
   customerId,
 }) {
+  // const {setIsBirthdayAutomated} = useStateContext();
   const [isLoading, setIsLoading] = useState(false);
   const [loadingText, setLoadingText] = useState('Checking availability');
   const [isScrollerRemoved, setIsScrollerRemoved] = useState(false);
@@ -73,9 +75,9 @@ export default function FoldedCustomisableCard({
     };
     if (isScrollerRemoved) {
       window.addEventListener('scroll', scrollHandler);
-      document.body.style.overflow = 'hidden';
+      // document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflowY = 'auto';
+      // document.body.style.overflowY = 'auto';
       window.removeEventListener('scroll', scrollHandler);
     }
     return () => {
@@ -462,6 +464,8 @@ export default function FoldedCustomisableCard({
     handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
     // Making the title to lowercase.
     handleName = handleName.toLowerCase();
+
+    // setIsBirthdayAutomated(false);
     navigate(`/custom/${handleName}`);
   };
 
@@ -950,7 +954,7 @@ export default function FoldedCustomisableCard({
     });
     setIsLoading(false);
   }
-  
+
   const handleCardTitleInputChange = (event) => {
     setCustomCardTitle(event.target.value);
     setValidationModalData((prevValidationData) => {
