@@ -33,7 +33,7 @@ import CircularLoader from '~/components/CircularLoder';
 import {getApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
-import { useStateContext } from '~/context/StateContext';
+import {useStateContext} from '~/context/StateContext';
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -142,7 +142,8 @@ export async function loader({params, request, context}) {
 }
 let customerid;
 export default function Collection() {
-  const {birthdayAutomation,isbirthdayAutomated,setIsBirthdayAutomated} = useStateContext()
+  const {birthdayAutomation, isbirthdayAutomated, setIsBirthdayAutomated} =
+    useStateContext();
   const navigate = useNavigate();
   const [handleName, setHandleName] = useState('');
   const [addingProductsData, setAddingProd] = useState([]);
@@ -155,7 +156,7 @@ export default function Collection() {
   const [newOffset, setNewOffset] = useState('');
   const [offPrice, setOffPrice] = useState('');
   // const [isbirthdayAutomated,setIsBirthdayAutomated] = useState(false)
-  const [confirmModal,setConfirmModal] = useState(false)
+  const [confirmModal, setConfirmModal] = useState(false);
   const locationRef = useLocation();
   const {
     collection,
@@ -166,15 +167,17 @@ export default function Collection() {
     collectionHandle,
   } = useLoaderData();
   let myColletionData = myCollection.collection.products;
-  
+
   myColletionData = myColletionData.nodes.filter(
     (item) => item.productType != 'customisable card',
   );
-  let titleToExclude = "US Postage";
-let index = myColletionData.findIndex(item => item.title === titleToExclude);
-if (index !== -1) {
+  let titleToExclude = 'US Postage';
+  let index = myColletionData.findIndex(
+    (item) => item.title === titleToExclude,
+  );
+  if (index !== -1) {
     myColletionData.splice(index, 1);
-}
+  }
   let mainTags = [
     'best-sellers',
     'thank-you',
@@ -195,10 +198,11 @@ if (index !== -1) {
       setCheckState(false);
       setAddingProd([]);
     }
-    if(collectionHandle == 'birthday' && birthdayAutomation){
-      setConfirmModal(true)
+    if (collectionHandle == 'birthday' && birthdayAutomation) {
+      setConfirmModal(true);
     }
   }, [locationRef.pathname]);
+
   async function changeHandle(e) {
     setLoader(true);
     setHandleName(e);
@@ -269,7 +273,6 @@ if (index !== -1) {
   function continueShopping() {
     navigate('/customise-your-card');
   }
-  
 
   function CustomeCard() {
     return (
@@ -310,9 +313,9 @@ if (index !== -1) {
       customisedCard();
     }
   }, [offSetVal]);
-  function onConfirmClick(){
+  function onConfirmClick() {
     // setIsBirthdayAutomated(true)
-    setConfirmModal(false)
+    setConfirmModal(false);
     // localStorage.setItem("isBirthdayAutomated", "true")
   }
 
@@ -330,10 +333,14 @@ if (index !== -1) {
             />
 
             <DynamicButton
-            // disabled={locationRef.pathname == '/collections/customisable-cards'}
+              // disabled={locationRef.pathname == '/collections/customisable-cards'}
               className={`shadow-shbox bg-[#EF6E6E] px-[20px]   py-[16px] text-[16px]  text-[#fff] hover:bg-[#1B5299]`}
               text="View My Custom Card"
-              onClickFunction={() =>locationRef.pathname !== '/collections/customisable-cards'? customisedCard():''}
+              onClickFunction={() =>
+                locationRef.pathname !== '/collections/customisable-cards'
+                  ? customisedCard()
+                  : ''
+              }
             />
           </div>
           <div className="flex md:flex-row flex-col gap-5 xl:justify-end justify-center md:mb-[0px] mb-[17px] items-center selectArrow sm:mt-[0px] md:mt-[0px] mt-[-17px] ">

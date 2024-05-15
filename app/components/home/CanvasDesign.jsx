@@ -291,7 +291,7 @@ const CanvasDesign = () => {
               outreach.
             </div>
             <DynamicButton
-              onClickFunction={() => navigate('/pages/business-page')}
+              onClickFunction={() => navigate('/pages/business')}
               text="VIEW ALL INTEGRATIONS"
               className="btn1 text-sm py-[20px] px-[30px]"
             />
@@ -317,7 +317,7 @@ const CanvasDesign = () => {
               outreach.
             </div>
             <DynamicButton
-              onClickFunction={() => navigate('/pages/business-page')}
+              onClickFunction={() => navigate('/pages/business')}
               text="VIEW ALL INTEGRATIONS"
               className="btn1 text-sm py-[20px] small:px-[40px] px-[20px] sm:w-auto w-full"
             />

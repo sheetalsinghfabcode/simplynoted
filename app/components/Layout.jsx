@@ -303,7 +303,7 @@ function MenuMobileNav({ menu, onClose }) {
             >
               <Text as="span" size="copy">
                 {item.title === 'Business' ? (
-                  <Link to="/business-page">
+                  <Link to="/pages/business">
                     <div className="" style={{ fontWeight: 'bold', fontSize: '16px' }}>Business</div>
                   </Link>
                 ) : null}
@@ -850,7 +850,7 @@ function DesktopHeader({ isHome, menu, isLoggedIn }) {
                         </Link>
                       </FlyoutLink>
                     ) : (
-                      <Link to="/pages/business-page">
+                      <Link to="/pages/business">
                         <span className="hover:text-[#EF6E6E]">
                           {item.title}
                         </span>
