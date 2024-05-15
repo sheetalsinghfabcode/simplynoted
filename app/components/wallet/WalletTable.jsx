@@ -1,9 +1,10 @@
-
-import { useState } from 'react';
+import {useState} from 'react';
 import DynamicButton from '../../components/DynamicButton';
 import LoginModal from '../modal/LoginModal';
-import { GoChevronDown } from 'react-icons/go';
-import { GoChevronUp } from 'react-icons/go';
+import {GoChevronDown} from 'react-icons/go';
+import {GoChevronUp} from 'react-icons/go';
+import GreenTickMark from '../../../assets/Image/green-tick.svg';
+import RemoveCrossImage from '../../../assets/Image/remove-cross.webp';
 
 const data = [
   {
@@ -145,8 +146,8 @@ const WalletTable = ({
       buttonText: !customerID
         ? 'Buy Plan'
         : subscribeTeam
-          ? 'Purchase Package'
-          : 'Upgrade',
+        ? 'Purchase Package'
+        : 'Upgrade',
       buttonColor: subscribeTeam ? '#1b5299' : '#ef6e6e',
       onClick: () => {
         customerID ? setWalletPlan(true) : setLoginModal(true);
@@ -164,8 +165,8 @@ const WalletTable = ({
       buttonText: !customerID
         ? 'Buy Plan'
         : subscribeBusiness
-          ? 'Purchase Package'
-          : 'Upgrade',
+        ? 'Purchase Package'
+        : 'Upgrade',
       buttonColor: subscribeBusiness ? '#1b5299' : '#ef6e6e',
       onClick: () => {
         customerID ? setWalletPlan(true) : setLoginModal(true);
@@ -206,36 +207,39 @@ const WalletTable = ({
               {pricingPlans.map((plan, index) => (
                 <div
                   key={index}
-                  className=' py-2 pb-4 px-4 md:  lg:min-w-[190px] flex flex-col text-center'
+                  className=" py-2 pb-4 px-4 md:  lg:min-w-[190px] flex flex-col text-center"
                 >
                   <div className="flex flex-col font-karla py-[10px] px-[20px] items-center">
                     <span className="text-[18px] font-bold text-[#000] uppercase">
                       {plan.name}
                     </span>
                     <span
-                      className={` text-[14px] lg:text-[16px] ${plan.name === 'Enterprise' && 'invisible'
-                        } text-[#000] font-bold`}
+                      className={` text-[14px] lg:text-[16px] ${
+                        plan.name === 'Enterprise' && 'invisible'
+                      } text-[#000] font-bold`}
                     >
                       as low as
                     </span>
                     <div
-                      className={` text-[18px] lg:text-[24px] xl:text-[36px] whitespace-nowrap my-2 text-[#000] ${plan.buttonText === 'Contact Us'
+                      className={` text-[18px] lg:text-[24px] xl:text-[36px] whitespace-nowrap my-2 text-[#000] ${
+                        plan.buttonText === 'Contact Us'
                           ? '!font-normal'
                           : 'font-bold'
-                        } `}
+                      } `}
                     >
                       {plan.price}
                     </div>
                     <span
-                      className={`text-[14px] lg:text-[16px] ${plan.name === 'Enterprise' && 'invisible'
-                        } text-[#000] font-bold`}
+                      className={`text-[14px] lg:text-[16px] ${
+                        plan.name === 'Enterprise' && 'invisible'
+                      } text-[#000] font-bold`}
                     >
                       per card
                     </span>
                   </div>
                   {(subscribeTeam && plan.name === 'Free') ||
-                    (subscribeBusiness &&
-                      (plan.name === 'Free' || plan.name === 'Team')) ? null : (
+                  (subscribeBusiness &&
+                    (plan.name === 'Free' || plan.name === 'Team')) ? null : (
                     <DynamicButton
                       onClickFunction={plan.onClick}
                       className={`bg-[${plan.buttonColor}] font-bold mt-2  md:mx-auto  w-full
@@ -268,8 +272,8 @@ const WalletTable = ({
                         <img
                           src={
                             index < plan.tickCount
-                              ? 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941'
-                              : 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149'
+                              ? GreenTickMark
+                              : RemoveCrossImage
                           }
                           className="w-4 h-4 mx-auto"
                           alt={index < plan.tickCount ? 'tick' : 'remove'}
@@ -279,8 +283,8 @@ const WalletTable = ({
                       <img
                         src={
                           index < plan.tickCount
-                            ? 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941'
-                            : 'https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149'
+                            ? GreenTickMark
+                            : RemoveCrossImage
                         }
                         className="w-4 h-4 mx-auto"
                         alt={index < plan.tickCount ? 'tick' : 'remove'}
@@ -314,9 +318,9 @@ const WalletTable = ({
                         </span>
                       </div>
                       {(subscribeTeam && plan.name === 'Free') ||
-                        (subscribeBusiness &&
-                          (plan.name === 'Free' ||
-                            plan.name === 'Team')) ? null : (
+                      (subscribeBusiness &&
+                        (plan.name === 'Free' ||
+                          plan.name === 'Team')) ? null : (
                         <DynamicButton
                           onClickFunction={plan.onClick}
                           className={`bg-[${plan.buttonColor}] w-[150px] whitespace-nowrap rounded-md mx-auto mt-2  h-[46px] px-4 `}
@@ -329,7 +333,9 @@ const WalletTable = ({
                       >
                         <button type="button w-[100%]">
                           <div className="text-[black]  flex items-center justify-center text-center ">
-                            <span className="text-[19px] font-normal">Show Feature </span>
+                            <span className="text-[19px] font-normal">
+                              Show Feature{' '}
+                            </span>
                             <span className="text-[22px]">
                               {showId === index ? (
                                 <GoChevronUp />
@@ -355,13 +361,13 @@ const WalletTable = ({
                       <div className="text-center col-span-1">
                         {dataIndex < plan.tickCount ? (
                           <img
-                            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/tick.svg?v=1690531941"
+                            src={GreenTickMark}
                             className="w-4 h-4 mx-auto"
                             alt="tick"
                           />
                         ) : (
                           <img
-                            src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/remove.png?v=1690532149"
+                            src={RemoveCrossImage}
                             className="w-4 h-4 mx-auto"
                             alt="remove"
                           />

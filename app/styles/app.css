@@ -792,10 +792,6 @@ nav a {
   -moz-appearance: none;
 }
 
-
-
-
-
 .dropdown > div {
   cursor: pointer;
   margin-bottom: 4px;
@@ -1095,7 +1091,7 @@ body {
 
 .INTEGRATE::after {
   content: '';
-  background-image: url('https://simplynoted.com/cdn/shop/files/Group_460.svg');
+  background-image: url('../../assets/Image/Group_460.svg');
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -1318,7 +1314,7 @@ body {
 /************************************PRICE*****************************/
 
 .flex-item {
-  background-image: url('https://simplynoted.com/cdn/shop/files/circle-title.png');
+  background-image: url('../../assets/Image/circle-title.png');
   color: #fff;
   font-size: 36px;
   line-height: 30px;
@@ -1431,7 +1427,7 @@ body {
 }
 
 .real-pen-notice {
-  background: url('https://simplynoted.com/cdn/shop/files/pricing-box-white.png');
+  background: url('../../assets/Image/pricing-box-white.avif');
   background-size: 100% 100%;
   height: 235px;
   padding: 30px 30px;
@@ -1472,7 +1468,7 @@ body {
 }
 
 .amount {
-  background-image: url('https://simplynoted.com/cdn/shop/files/pricing-table-field.png');
+  background-image: url('../../assets/Image/pricing-table-field.avif');
   color: #001a5f;
   display: flex;
   justify-content: space-between;
@@ -1483,7 +1479,7 @@ body {
 }
 
 .right-cont {
-  background-image: url('https://simplynoted.com/cdn/shop/files/pricing-form-bg.png');
+  background-image: url('../../assets/Image/pricing-form-bg.webp');
   background-size: 100% 100%;
   color: #fff;
 }
@@ -1561,7 +1557,7 @@ body {
   margin-top: 20px;
 }
 .banner-detail {
-  background-image: url('https://simplynoted.com/cdn/shop/files/blue-callout.png');
+  background-image: url('../../assets/Image/blue-callout.webp');
   background-size: contain;
   background-position: center;
   display: flex;
@@ -1575,7 +1571,7 @@ body {
   position: relative;
 }
 .banner-detail-roi {
-  background-image: url('https://simplynoted.com/cdn/shop/files/calculator-callout.png');
+  background-image: url('../../assets/Image/calculator-callout.webp');
   background-size: contain;
   background-position: center;
   width: 100%;
@@ -1584,7 +1580,7 @@ body {
   background-repeat: no-repeat;
 }
 .roi-total {
-  background-image: url('https://simplynoted.com/cdn/shop/files/roi-bg.png');
+  background-image: url('../../assets/Image/roi-red-bg.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -2742,7 +2738,7 @@ body {
   height: 42px;
   width: 72px;
   content: ' ';
-  background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-left.png?v=1602786113);
+  background-image: url(../../assets/Image/arrow-left.png);
   position: absolute;
   left: 70%;
   top: 115%;
@@ -2751,15 +2747,14 @@ body {
   height: 44px;
   width: 71px;
   content: ' ';
-  background-image: url(https://cdn.shopify.com/s/files/1/0447/5279/7861/files/arrow-right.png?v=1602786113);
+  background-image: url(../../assets/Image/arrow-right.png);
   position: absolute;
   left: 10%;
   top: 115%;
 }
 .tt-block-title::after {
   content: '';
-  background: url(https://simplynoted.com/cdn/shop/files/line-real-pen.png)
-    no-repeat;
+  background: url(../../assets/Image/line-real-pen.png) no-repeat;
   bottom: 70px !important;
   display: block;
   height: 10px;
@@ -2907,8 +2902,6 @@ body {
   background-color: '#ef6e6e';
 }
 
-
-
 /* custom .dropdown */
 
 .custom--dropdown-container {
@@ -2940,7 +2933,9 @@ body {
   gap: 7px;
 }
 
-.custom--dropdown-container .dropdown-input .dropdown-selected-value.placeholder {
+.custom--dropdown-container
+  .dropdown-input
+  .dropdown-selected-value.placeholder {
   color: #82868b;
 }
 
@@ -3041,7 +3036,7 @@ body {
 
 .custom--dropdown-container .dropdown-tag-item {
   background-color: #ff7300;
-  color: #FFF;
+  color: #fff;
   font-size: 12px;
   font-weight: 500;
   padding: 2px 4px;

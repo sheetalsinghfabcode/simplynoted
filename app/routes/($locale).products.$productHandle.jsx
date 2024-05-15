@@ -1,7 +1,14 @@
 import {useRef, Suspense} from 'react';
 import {Disclosure, Listbox} from '@headlessui/react';
 import {defer, json, redirect} from '@shopify/remix-oxygen';
-import {useLoaderData, Await, useLocation, useNavigate,Form,useActionData} from '@remix-run/react';
+import {
+  useLoaderData,
+  Await,
+  useLocation,
+  useNavigate,
+  Form,
+  useActionData,
+} from '@remix-run/react';
 import {getInputStyleClasses} from '~/lib/utils';
 import {
   AnalyticsPageType,
@@ -11,8 +18,9 @@ import {
   getSelectedProductOptions,
 } from '@shopify/hydrogen';
 import invariant from 'tiny-invariant';
-
 import clsx from 'clsx';
+import MenuUnderlineImage from '../../assets/Image/menu-underline.png';
+
 
 import {
   Heading,
@@ -146,7 +154,6 @@ export const action = async ({request, context, params}) => {
   const email = formData.get('email');
   const password = formData.get('password');
 
-
   if (
     !email ||
     !password ||
@@ -166,13 +173,18 @@ export const action = async ({request, context, params}) => {
     // console.log(customerAccessToken,"customerAccessToken");
     // Sync customerAccessToken with existing cart
     const result = await cart.updateBuyerIdentity({customerAccessToken});
-    const path =  `http://localhost:3000/account`;
+    const path = `http://localhost:3000/account`;
     // Update cart id in cookie
     const headers = cart.setCartId(result.cart.id);
     headers.append('Set-Cookie', await session.commit());
-  const {customer} = await getCustomer(context, customerAccessToken);
-    return json({customer},(params.locale ? `/${params.locale}/products/${params.productHandle}` : `/products/${params.productHandle}`,{headers}))
-    
+    const {customer} = await getCustomer(context, customerAccessToken);
+    return json(
+      {customer},
+      (params.locale
+        ? `/${params.locale}/products/${params.productHandle}`
+        : `/products/${params.productHandle}`,
+      {headers}),
+    );
   } catch (error) {
     if (storefront.isApiError(error)) {
       return badRequest({
@@ -201,46 +213,48 @@ export async function getCustomer(context, customerAccessToken) {
     },
     cache: storefront.CacheNone(),
   });
-  return customer
+  return customer;
 }
 let parameterValue;
 
 export default function Product() {
-  const {product, shop, recommended, variants, data, shippingData,customer} =
+  const {product, shop, recommended, variants, data, shippingData, customer} =
     useLoaderData();
-    // console.log(product,"product data route page  ");
+  // console.log(product,"product data route page  ");
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
 
-
-
-  let selectedAddress ;
+  let selectedAddress;
   let EditMess = datafornav?.state?.data?.messageData;
   let editEndMess = datafornav?.state?.data?.endText;
   let editOrderValue = datafornav?.state;
   let editFontFamily = datafornav?.state?.data?.fontFamily;
-  let showBulkOnEdit = datafornav?.state?.data?.csvBulkData?.length ;
-  let csvFileUrl =  datafornav?.state?.data?.csvFileURL
+  let showBulkOnEdit = datafornav?.state?.data?.csvBulkData?.length;
+  let csvFileUrl = datafornav?.state?.data?.csvFileURL;
   let editFontSize = datafornav?.state?.data?.fontSizeMsg;
   let editCustomFontFamily = datafornav?.state?.data?.customFontName;
   let editLineHeight = datafornav?.state?.data?.lineHeight;
   let editSignOffLineHeight = datafornav?.state?.data?.signOffLineHeight;
   let editSignOffFontSize = datafornav?.state?.data?.signOffFontSize;
-  let editShippingDate = datafornav?.state?.data?.optionalShipDate
+  let editShippingDate = datafornav?.state?.data?.optionalShipDate;
 
   const {media, title, vendor, descriptionHtml} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const [show, setShow] = useState(
-    showBulkOnEdit > 0 || csvFileUrl || datafornav?.search == '?select=Bulk' ? true : false,
+    showBulkOnEdit > 0 || csvFileUrl || datafornav?.search == '?select=Bulk'
+      ? true
+      : false,
   );
 
-
-
-
-  const {productshow, setProductShow,showSignScreen,
-    setShowSignScreen,stateCheckCustomerId,
-    setStateCheckCustomerId} = useStateContext();
+  const {
+    productshow,
+    setProductShow,
+    showSignScreen,
+    setShowSignScreen,
+    stateCheckCustomerId,
+    setStateCheckCustomerId,
+  } = useStateContext();
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
@@ -254,7 +268,6 @@ export default function Product() {
     const urlParams = new URLSearchParams(window?.location.search);
     parameterValue = urlParams.get('select');
   }
-
 
   useEffect(() => {
     let result = product.id.replace(/[^0-9]/g, '');
@@ -276,9 +289,7 @@ export default function Product() {
       let y = json.result.metafields[0].value;
       let extractMetafield = JSON.parse(y);
       setMetafields(extractMetafield);
-    } catch (error) {
-    
-    }
+    } catch (error) {}
   }
 
   const customStyles = {
@@ -306,9 +317,7 @@ export default function Product() {
     <>
       {productshow ? (
         <>
-          <Section
-            className={`w-full mt-[20px] !p-0 `}
-          >
+          <Section className={`w-full mt-[20px] !p-0 `}>
             <div className="flex flex-wrap md:flex-row md:justify-between flex-col w-full xl:gap-[40px] gap-[20px] md:mt-0 mt-[15px]">
               <ProductInfo
                 title={title}
@@ -355,17 +364,17 @@ export default function Product() {
             contentLabel="Example Modal"
             ariaHideApp={false}
           >
-            {errorVal.map((item,index) => (
+            {errorVal.map((item, index) => (
               <div key={index}>{item}</div>
             ))}
           </Modal>
           <Instruction
             close={true}
-          isOpen={showSignScreen}
-          body={<LoginFunc/>}
-          closeModal={() => {
-            setShowSignScreen(false);
-          }}
+            isOpen={showSignScreen}
+            body={<LoginFunc />}
+            closeModal={() => {
+              setShowSignScreen(false);
+            }}
           />
         </>
       ) : (
@@ -601,8 +610,8 @@ function ProductDetail({title, content, learnMore}) {
 export const meta = () => {
   return [{title: 'Login'}];
 };
-export  function LoginFunc() {
-  const {setShowSignScreen,setCustomerId} = useStateContext()
+export function LoginFunc() {
+  const {setShowSignScreen, setCustomerId} = useStateContext();
 
   const {shopName} = useLoaderData();
   const actionData = useActionData();
@@ -630,16 +639,14 @@ export  function LoginFunc() {
     }, 2300);
   };
 
-
-
-  if(actionData?.customer?.id){
+  if (actionData?.customer?.id) {
     let result = actionData.customer.id.replace(/[^0-9]/g, '');
     localStorage.setItem('customerId', result);
     localStorage.setItem('SnEmail', actionData.customer.email);
     localStorage.setItem('firstName', actionData.customer.firstName);
     localStorage.setItem('lastName', actionData.customer.lastName);
-    getSavedCards(result)
-    setCustomerId(result)
+    getSavedCards(result);
+    setCustomerId(result);
   }
 
   async function getSavedCards(Id) {
@@ -667,144 +674,144 @@ export  function LoginFunc() {
         localStorage.setItem('packageDiscount', JSON.stringify(0));
         localStorage.setItem('subscriptionName', 'Free');
       }
-      setShowSignScreen(false)
+      setShowSignScreen(false);
     } catch (error) {}
   }
   return (
     <div className="flex relative md:min-w-[540px] justify-center sm:mt-12 mt-4 mb-10 px-4">
-    {showLoader && (
-      <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
-        <CircularLoader textColor="text-white" title="Logging in..." />
-      </div>
-    )}
-    <div className="max-w-md w-full">
-      <h1 className="name text-4xl flex sm:mt-[-20px] mt-[0px] justify-center font-bold text-blue-900">
-        Sign in
-      </h1>
-      <div className="flex justify-center">
-        <img
-          className="mt-2 w-32"
-          src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
-        />
-      </div>
-      <p className="mt-[20px] text-black text-opacity-80 text-[15px]">
-        If you have an account with us, please log in.
-      </p>
-      {/* TODO: Add onSubmit to validate _before_ submission with native? */}
-      <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
-        {actionData?.formError && (
-          <div className="flex items-center text-left text-red">
-            <p className="text-red text-[red]">{actionData.formError}</p>
-          </div>
-        )}
-        <div>
-          <input
-            className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            placeholder="Enter-E-mail"
-            aria-label="Email address"
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
-            value={email}
-            onChange={(e) => {
-              if (actionData) {
-                actionData.formError = '';
-              }
-              setEmail(e.target.value);
-            }}
-            onBlur={(event) => {
-              setNativeEmailError(
-                event.currentTarget.value.length &&
-                  !event.currentTarget.validity.valid
-                  ? 'Invalid email address'
-                  : null,
-              );
-            }}
-          />
-
-          {nativeEmailError && (
-            <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
-          )}
+      {showLoader && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black opacity-80 flex justify-center items-center z-50">
+          <CircularLoader textColor="text-white" title="Logging in..." />
         </div>
-        <div className="!mb-3">
-          <input
-            className={`mb-1 h-12 ${getInputStyleClasses(
-              nativePasswordError,
-            )}`}
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            placeholder="Enter-Password"
-            aria-label="Password"
-            minLength={8}
-            required
-            value={password}
-            onChange={(e) => {
-              if (actionData) {
-                actionData.formError = '';
-              }
-              setPassword(e.target.value);
-            }}
-            onBlur={(event) => {
-              if (
-                event.currentTarget.validity.valid ||
-                !event.currentTarget.value.length
-              ) {
-                setNativePasswordError(null);
-              } else {
-                setNativePasswordError(
-                  event.currentTarget.validity.valueMissing
-                    ? 'Please enter a password'
-                    : 'Passwords must be at least 8 characters',
+      )}
+      <div className="max-w-md w-full">
+        <h1 className="name text-4xl flex sm:mt-[-20px] mt-[0px] justify-center font-bold text-blue-900">
+          Sign in
+        </h1>
+        <div className="flex justify-center">
+          <img className="mt-2 w-32" src={MenuUnderlineImage} />
+        </div>
+        <p className="mt-[20px] text-black text-opacity-80 text-[15px]">
+          If you have an account with us, please log in.
+        </p>
+        {/* TODO: Add onSubmit to validate _before_ submission with native? */}
+        <Form method="post" noValidate className="pb-8 mt-4 mb-4 space-y-3">
+          {actionData?.formError && (
+            <div className="flex items-center text-left text-red">
+              <p className="text-red text-[red]">{actionData.formError}</p>
+            </div>
+          )}
+          <div>
+            <input
+              className={`mb-1 h-12 ${getInputStyleClasses(nativeEmailError)}`}
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              placeholder="Enter-E-mail"
+              aria-label="Email address"
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              value={email}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setEmail(e.target.value);
+              }}
+              onBlur={(event) => {
+                setNativeEmailError(
+                  event.currentTarget.value.length &&
+                    !event.currentTarget.validity.valid
+                    ? 'Invalid email address'
+                    : null,
                 );
+              }}
+            />
+
+            {nativeEmailError && (
+              <p className="text-red-500 text-xs">{nativeEmailError} &nbsp;</p>
+            )}
+          </div>
+          <div className="!mb-3">
+            <input
+              className={`mb-1 h-12 ${getInputStyleClasses(
+                nativePasswordError,
+              )}`}
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              placeholder="Enter-Password"
+              aria-label="Password"
+              minLength={8}
+              required
+              value={password}
+              onChange={(e) => {
+                if (actionData) {
+                  actionData.formError = '';
+                }
+                setPassword(e.target.value);
+              }}
+              onBlur={(event) => {
+                if (
+                  event.currentTarget.validity.valid ||
+                  !event.currentTarget.value.length
+                ) {
+                  setNativePasswordError(null);
+                } else {
+                  setNativePasswordError(
+                    event.currentTarget.validity.valueMissing
+                      ? 'Please enter a password'
+                      : 'Passwords must be at least 8 characters',
+                  );
+                }
+              }}
+            />
+            {nativePasswordError && (
+              <p className="text-red-500 text-xs">
+                {nativePasswordError} &nbsp;
+              </p>
+            )}
+          </div>
+          <div
+            onClick={handleLogin}
+            className="flex !mt-0 items-center justify-between"
+          >
+            <button
+              className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
+              type="submit"
+              disabled={
+                !!(
+                  nativePasswordError ||
+                  nativeEmailError ||
+                  actionData?.formError
+                )
               }
-            }}
-          />
-          {nativePasswordError && (
-            <p className="text-red-500 text-xs">
-              {nativePasswordError} &nbsp;
-            </p>
-          )}
-        </div>
-        <div
-          onClick={handleLogin}
-          className="flex !mt-0 items-center justify-between"
-        >
-          <button
-            className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"
-            type="submit"
-            disabled={
-              !!(
-                nativePasswordError ||
-                nativeEmailError ||
-                actionData?.formError
-              )
-            }
-          >
-            Sign in
-          </button>
-        </div>
-        <div className="sm:flex grid  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
-          <p className="align-baseline mt-[12px] text-[16px]">
-            <Link className="text-[17px] mt-4 inline underline" to="/account/register">
+            >
+              Sign in
+            </button>
+          </div>
+          <div className="sm:flex grid  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
+            <p className="align-baseline mt-[12px] text-[16px]">
+              <Link
+                className="text-[17px] mt-4 inline underline"
+                to="/account/register"
+              >
                 Create an account
+              </Link>
+            </p>
+            <Link
+              className="inline-block mt-[12px] align-baseline text-[16px] text-primary/50"
+              to="/account/recover"
+            >
+              Lost your password?
             </Link>
-          </p>
-          <Link
-            className="inline-block mt-[12px] align-baseline text-[16px] text-primary/50"
-            to="/account/recover"
-          >
-            Lost your password?
-          </Link>
-        </div>
-      </Form>
+          </div>
+        </Form>
+      </div>
     </div>
-  </div>
   );
 }
 

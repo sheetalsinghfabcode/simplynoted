@@ -2,10 +2,10 @@ import {redirect, json} from '@shopify/remix-oxygen';
 import {Form, useActionData} from '@remix-run/react';
 import {useState} from 'react';
 import {useStateContext} from '~/context/StateContext';
-
 import CircularLoder from '../components/CircularLoder';
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
+import Underline from "../../assets/Image/underline-2-img.png"
 
 import {doLogin} from './($locale).account.login';
 
@@ -143,7 +143,7 @@ export default function Register() {
         <div className="flex justify-center">
           <img
             className="w-64 mt-3"
-            src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+            src={Underline}
           />
         </div>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}

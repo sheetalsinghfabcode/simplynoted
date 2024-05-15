@@ -1,19 +1,19 @@
 import React from 'react';
 import LogoSimplinoted from '../../../assets/Image/Your_Logo_simplinoted.webp';
+import RobotsNewMobileImage from '../../../assets/Image/ROBOTS-new-mobile-new.webp';
 import WorkingRobots from '../../../assets/Video/working-robots.webm';
 import thankyou from '../../../assets/Image/thankyou.png';
 import DynamicButton from '../DynamicButton';
 import {useNavigate} from '@remix-run/react';
 import {TypeAnimation} from 'react-type-animation';
-import HomeHeroEnvelop from '../../../assets/Image/home-hero-envelopes-2.webp'
-import HomeHeroEnvelopLeft from '../../../assets/Image/home-hero-envelopes-1.webp'
+import HomeHeroEnvelop from '../../../assets/Image/home-hero-envelopes-2.webp';
+import HomeHeroEnvelopLeft from '../../../assets/Image/home-hero-envelopes-1.webp';
 
 export default function Home() {
   const Navigate = useNavigate();
   return (
     <div className="sm-only:mt-[35px] relative tab:mt-[40px]">
       <div className="flex 2xl:items-start 2xl-only:pt-[20px] items-center flex-col tab:flex-row justify-center relative z-10 gap-[25px] overflow-hidden">
-        
         {/* MIDDLE SECTION  */}
         <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5  zx:max-w-[51%] ">
           <span className="text-center sm:leading-[45px] text-[35px] tab:text-[59px] tab:leading-[70px] leading-[40px] font-bold text-[#001a5f] tracking-[-2.07px]">
@@ -66,38 +66,51 @@ export default function Home() {
             </div>
           </div>
         </div>
-   
       </div>
-      <div className='overflow-hidden tab:absolute top-[2vw] w-full'>
-        <div className='flex justify-between'>
-        {/* LEFT IMAGE  */}
-        <div className='w-[24vw] relative left-[-30px] hidden tab:block '>
-          <img
-            className="hidden tab:block max-w-[100%]"
-            src={HomeHeroEnvelopLeft}
-            alt="LogoSimplinotedpic"
-          />
+      <div className="overflow-hidden tab:absolute top-[2vw] w-full">
+        <div className="flex justify-between">
+          {/* LEFT IMAGE  */}
+          <div className="w-[24vw] relative left-[-30px] hidden tab:block ">
+            <img
+              className="hidden tab:block max-w-[100%]"
+              src={HomeHeroEnvelopLeft}
+              alt="LogoSimplinotedpic"
+            />
+          </div>
+          {/* RIGHT IMAGE */}
+          <div className="my-[40px] tab:my-0 h-[50vw] tab:h-auto w-full tab:w-[24vw] relative sm:left-[-20px] tab:mt-[-2%]">
+            <img
+              className="absolute tab:relative sm:max-w-full max-w-[63vw] tab:max-w-full tab:left-0 sm:left-[0px] left-auto right-[37%] tab:right-auto "
+              src={HomeHeroEnvelop}
+              alt="CardKillerpic"
+            />
+            <img
+              className="absolute tab:top-[80px] top-[50px] tab:right-[100px] left-[37%] tab:max-w-[39vw] max-w-[45vw] tab:hidden"
+              src={thankyou}
+              alt="Thankyou"
+            />
+          </div>
         </div>
-             {/* RIGHT IMAGE */}
-             <div className="my-[40px] tab:my-0 h-[50vw] tab:h-auto w-full tab:w-[24vw] relative sm:left-[-20px] tab:mt-[-2%]">
-          <img
-            className="absolute tab:relative sm:max-w-full max-w-[63vw] tab:max-w-full tab:left-0 sm:left-[0px] left-auto right-[37%] tab:right-auto "
-            src={HomeHeroEnvelop}
-            alt="CardKillerpic"
-          />
-          <img
-            className="absolute tab:top-[80px] top-[50px] tab:right-[100px] left-[37%] tab:max-w-[39vw] max-w-[45vw] tab:hidden"
-            src={thankyou}
-            alt="Thankyou"
-          />
-        </div></div>
       </div>
-      <video className="mt-[10px] w-full sm:flex hidden" autoPlay loop muted playsInline>
+      <video
+        className="mt-[10px] w-full sm:flex hidden"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
         <source src={WorkingRobots} type="video/webm"></source>
       </video>
-      <div className='sm:hidden flex mt-[20px]'>
-     <img className="lazyload" src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" data-src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/ROBOTS-new-mobile-new.gif?v=1650467899" alt="Simply Noted Robots" width="500" height="119"/>
-     </div>
+      <div className="sm:hidden flex mt-[20px]">
+        <img
+          className="lazyload"
+          src={RobotsNewMobileImage}
+          data-src={RobotsNewMobileImage}
+          alt="Simply Noted Robots"
+          width="500"
+          height="119"
+        />
+      </div>
     </div>
   );
 }
