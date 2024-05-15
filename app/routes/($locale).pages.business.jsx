@@ -866,7 +866,7 @@ export default function bussniess() {
                                 text="START INTEGRATING"
                                 className="business-btn"
                                 onClickFunction={() =>
-                                  navigate('/pages/business-page')
+                                  navigate('/pages/business')
                                 }
                               />
                             </div>
@@ -1016,7 +1016,7 @@ export default function bussniess() {
                       text="START INTEGRATING"
                       className="business-btn lg:w-[37%] h-[50px] lg:!text-[17px] text-[14px] w-[225px]"
                       onClickFunction={() =>
-                        navigate('/pages/business-page')
+                        navigate('/pages/business')
                       }
                     />
                   </div>
