@@ -1,9 +1,9 @@
 import {json, redirect} from '@shopify/remix-oxygen';
 import {Form, useActionData} from '@remix-run/react';
 import {useState} from 'react';
-
 import {Link} from '~/components';
 import {getInputStyleClasses} from '~/lib/utils';
+import Underline from "../../assets/Image/underline-2-img.png"
 
 export async function loader({context, params}) {
   const customerAccessToken = await context.session.get('customerAccessToken');
@@ -71,7 +71,7 @@ export default function Recover() {
             <div class="flex justify-center">
               <img
                 className="w-64 mt-3"
-                src="https://simplynoted.com/cdn/shop/files/underline-2-img.png"
+                src={Underline}
               />
             </div>
             <p className="mt-4 text-[15px] text-center">

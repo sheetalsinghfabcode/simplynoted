@@ -15,6 +15,7 @@ import Accordion from '~/components/wallet/Accordian';
 import PaymentModal from '~/components/wallet/PaymentModal';
 import {fetchWalletData} from '~/utils/graphqlUtils';
 import {useStateContext} from '~/context/StateContext';
+import DeleteIcon from '../../../assets/Image/delete.png';
 
 export async function loader({context}) {
   const StripeKey =
@@ -394,8 +395,6 @@ const ManageSubscription = () => {
 
   let formattedDateString;
 
-
-
   function formatDateString(inputDateString) {
     const options = {
       weekday: 'short',
@@ -444,7 +443,6 @@ const ManageSubscription = () => {
       setSubscriptionTitle(subscriptionTitleName);
     }
   }, []);
-
 
   function prettyFormatNumber(inputString) {
     inputString = inputString?.toString();
@@ -832,7 +830,7 @@ const ManageSubscription = () => {
                                             setPaymentId(item.paymentId);
                                             setDeleteModal(true);
                                           }}
-                                          src="https://simplynoted.com/cdn/shop/files/delete.png"
+                                          src={DeleteIcon}
                                           className="sm:w-[26px] w-[10%]  sm:h-[27px] h-[37px] cursor-pointer"
                                         />
                                       </div>

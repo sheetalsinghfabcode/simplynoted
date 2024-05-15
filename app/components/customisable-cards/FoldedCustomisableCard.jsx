@@ -5,6 +5,7 @@ import {Modal} from '../Modal';
 import AddImageIcon from '../../../assets/Image/add_image_icon.png';
 import DefaultFrontCardImage from '../../../assets/Image/foldFront.webp';
 import DefaultBackCardImage from '../../../assets/Image/foldBack.png';
+import SampleQRImage from '../../../assets/Image/sample-qr.png';
 import {MdOutlineDone} from 'react-icons/md';
 // import {useStateContext} from '~/context/StateContext';
 
@@ -1381,7 +1382,7 @@ export default function FoldedCustomisableCard({
               >
                 <div>
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/qr.png?v=1696332445"
+                    src={SampleQRImage}
                     alt="QR Sample Image"
                     className="h-[40px]"
                     draggable="false"

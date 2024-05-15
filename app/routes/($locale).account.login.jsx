@@ -5,6 +5,7 @@ import {getInputStyleClasses} from '~/lib/utils';
 import {useStateContext} from '~/context/StateContext';
 import {Link} from '~/components';
 import CircularLoader from '~/components/CircularLoder';
+import Underline from "../../assets/Image/underline-2-img.png"
 
 export const handle = {
   isPublic: true,
@@ -118,7 +119,7 @@ export default function Login() {
         <div className="flex justify-center">
           <img
             className="mt-2 w-32"
-            src="https://simplynoted.com/cdn/shop/files/menu-underline.png"
+            src={Underline}
           />
         </div>
         <p className="mt-[20px] text-black text-opacity-80 text-[15px] text-center">

@@ -358,7 +358,7 @@ function MenuMobileNav({ menu, onClose }) {
                                 Birthday Automation
                               </Link></li>
                             <li className=' whitespace-normal border-b border-[#dbdbdb]'>
-                              <Link to="/gift-cards " className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                              <Link to="/pages/gift-cards " className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                                 Gift Cards
                               </Link> </li>
                           </ul>
