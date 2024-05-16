@@ -192,7 +192,7 @@ export default function blog() {
                 {filteredArticles.length > 0 ? (
                   filteredArticles.map((article) => (
                     <Link
-                      to={`/journal/news/${article.handle}`}
+                      to={`/blogs/news/${article.handle}`}
                       key={article.id}
                       className="flex flex-col bg-white shadow-lg mb-[2px] text-black hover:text-black"
                       style={{maxWidth: '363px'}}
@@ -218,7 +218,7 @@ export default function blog() {
                         <p className="text-[18px] mt-[16px] text-[#ef6e6e] font-bold underline">
                           <span
                             className="hover:text-[#ef6e6e]"
-                            // to={`/journal/news/${article.handle}`}
+                            // to={`/blogs/news/${article.handle}`}
                             val={'News'}
                           >
                             Click here to read full article
