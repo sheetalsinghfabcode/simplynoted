@@ -688,9 +688,9 @@ function getProductHandleFromTitle(title) {
   // Convert product title to a handle name as per handle name's convention.
   let handleName = title.trim();
   // Remove special characters from the beginning and the end.
-  handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
+  handleName = handleName.replace(/^[^a-zA-Z0-9_]+|[^a-zA-Z0-9_]+$/g, '');
   // Replace all remaining whitespace or special characters with a single hyphen.
-  handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
+  handleName = handleName.replace(/[^a-zA-Z0-9_]+/g, '-');
   // Making the title to lowercase.
   handleName = handleName.toLowerCase();
 

@@ -896,24 +896,16 @@ export default function FlatCustomisableCard({
     if (!uploadPDFResponse.success) {
       return failedSaveRequestReset('Unable to upload the PDF.');
     }
-    const isCustomCardSaved = await saveCustomCard(
+    const productSaveResponse = await saveCustomCard(
       uploadPDFResponse.s3ImageUrls,
     );
-    if (!isCustomCardSaved) {
+    if (!productSaveResponse.isSuccess) {
       return failedSaveRequestReset('Unable to save the custom card.');
     }
+    
     setIsScrollerRemoved(false);
-    // Convert product title to a handle name as per handle name's convention.
-    let handleName = customCardTitle.trim();
-    // Remove special characters from the beginning and the end.
-    handleName = handleName.replace(/^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$/g, '');
-    // Replace all remaining whitespace or special characters with a single hyphen.
-    handleName = handleName.replace(/[^a-zA-Z0-9]+/g, '-');
-    // Making the title to lowercase.
-    handleName = handleName.toLowerCase();
-
     // setIsBirthdayAutomated(false);
-    navigate(`/custom/${handleName}`);
+    navigate(`/custom/${productSaveResponse.product.handle}`);
   };
 
   async function checkForDuplicateTitle() {
@@ -1076,7 +1068,13 @@ export default function FlatCustomisableCard({
         ` https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
         options,
       );
-      return response.ok ? true : false;
+      if (response.ok) {
+        let {result} = await response.json();
+        result = JSON.parse(result);
+        return {isSuccess: true, product: result?.product};
+      } else {
+        return {isSuccess: false, product: null};
+      }
     } catch (err) {
       console.error('Failed to save the custom card: ', err);
       return false;
