@@ -397,7 +397,7 @@ export function CheckoutData({
               shipping = {
                 id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
                 url: shippingUrl,
-                qyt: item.qyt,
+                qyt: 1,
               };
             }
             let postageUS = null;
