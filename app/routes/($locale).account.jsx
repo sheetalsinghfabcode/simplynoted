@@ -428,7 +428,7 @@ function Account({customer}) {
                     title="Automate"
                     description="Automate your campaigns with our API or Zapier App"
                     buttonText="Get Started"
-                    onClick={() => navigate('/zapier-integration')}
+                    onClick={() => navigate('/pages/zapier-integration')}
                     showDownloadButton={true}
                     onDownload={() => {
                       setKeyModal(true);

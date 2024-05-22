@@ -389,7 +389,7 @@ function MenuMobileNav({ menu, onClose }) {
                   //         className="integration-color ml-[8px]"
                   //         style={{color: 'black'}}
                   //       >
-                  //         <Link to="/zapier-integration">
+                  //         <Link to="/pages/zapier-integration">
                   //           <li
                   //             className={`mt-[-21px] ${
                   //               show === 'Zapier' ? 'selected' : 'green'
@@ -398,13 +398,13 @@ function MenuMobileNav({ menu, onClose }) {
                   //             Zapier
                   //           </li>
                   //         </Link>
-                  //         <Link to="/shopify-integration">
+                  //         <Link to="/pages/shopify-integration">
                   //           <li className="mt-[-21px]">Shopify</li>
                   //         </Link>
-                  //         <Link to="/salesforce">
+                  //         <Link to="/pages/salesforce">
                   //           <li className="mt-[-21px]">Salesforce</li>
                   //         </Link>
-                  //         <Link to="/api-automation ">
+                  //         <Link to="/pages/api-automation ">
                   //           <li className="mt-[-21px]">API</li>
                   //         </Link>
                   //       </ul>
@@ -435,22 +435,22 @@ function MenuMobileNav({ menu, onClose }) {
                           <li>Credit Packages</li>
                         </Link> */}
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'>
-                            <Link to="/zapier-integration" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                            <Link to="/pages/zapier-integration" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                               Zapier
                             </Link>
                           </li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb] '>
-                            <Link to="/shopify-integration " className="font-semibold text-[16px] block p-[10px] px-[21px] sm:px-[28px]">
+                            <Link to="/pages/shopify-integration " className="font-semibold text-[16px] block p-[10px] px-[21px] sm:px-[28px]">
                               Shopify
                             </Link>
                           </li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'>
-                            <Link to="/salesforce" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                            <Link to="/pages/salesforce" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                               Salesforce
                             </Link>
                           </li>
                           <li className=' whitespace-normal border-b border-[#dbdbdb]'>
-                            <Link to="/api-automation" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
+                            <Link to="/pages/api-automation" className="font-semibold text-[16px] block px-[21px] p-[10px] sm:px-[28px]">
                               Api
                             </Link>
                           </li>
