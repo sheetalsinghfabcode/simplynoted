@@ -1402,7 +1402,7 @@ export function MessageWriting({
                 : 'md:pb-[15rem] textarea-cont-single'
             }`}
           >
-            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2">
+            <div className="flex flex-col handwrittenStyle items-start xl:flex-row xl:items-center gap-[16px] text-center mb-2 pb-[0.86rem]">
               <div className="h-[73px] xl:max-w-[187px] flex flex-col justify-between font-inter whitespace-nowrap font-semibold 2xl:text-[14px] text-[11px] flex-1 w-full text-left">
                 <span className=""> Standard Handwriting Style</span>
                 <CustomDropdown
@@ -1604,7 +1604,7 @@ export function MessageWriting({
                     ))}
                 </select>
               </div>
-              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter whitespace-nowrap  font-semibold 2xl:text-[14px] text-[11px]  flex-1 w-full text-left self-end">
+              <div className="h-[73px] xl:max-w-[181px] flex flex-col justify-between font-inter whitespace-nowrap relative font-semibold 2xl:text-[14px] text-[11px]  flex-1 w-full text-left self-end">
                 <span>Optional shipping date</span>
                 <div className="flex relative">
                   <input
@@ -1619,7 +1619,7 @@ export function MessageWriting({
                   </span>
                 </div>
                 {minDateCheck && (
-                  <span className=" text-[10.5px] pt-[14px] text-red-500">
+                  <span className="absolute h-[22px] -bottom-[22px] text-[10.5px] text-red-500">
                     Please choose a future date
                   </span>
                 )}
