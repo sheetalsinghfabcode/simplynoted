@@ -9,7 +9,6 @@ import location from '../../location.json';
 
 const Profile = ({
   customer,
-  setProfile,
   loader,
   setLoader,
   setAccountDetails,
@@ -136,7 +135,6 @@ const Profile = ({
                 accountDetails.lastName ? accountDetails.lastName + ' ' : ''
               }`,
             );
-            setProfile(false);
             setSuccessFullLoader(true);
             setLoader(false);
             setAccountDetail(true);
@@ -197,7 +195,6 @@ const Profile = ({
         setLoader(false);
       }
       if (jsonResponse.customer) {
-        setProfile(false);
         setLoader(false);
         setSuccessFullLoader(true);
         setAccountDetail(true);
