@@ -37,6 +37,7 @@ const Accordion = ({
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
   const [customerData, setCustomerData] = useState({});
+  const {setCartCountVal, setIsCartUpdated} = useStateContext();
 
   const {
     setActiveTab,
@@ -329,6 +330,28 @@ const Accordion = ({
     }
   };
 
+  function deleteCartItem() {
+    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerID}`;
+    fetch(apiUrl, {
+      method: 'POST',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.result.success) {
+          setCartCountVal(0);
+          setIsCartUpdated(true);
+        }
+      })
+      .catch((error) => {
+        console.error('Error deleting cart item:', error);
+      });
+  }
+
   const paymentPurchase = async (data, json) => {
     const payLoad = {
       paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
@@ -362,6 +385,7 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
+          deleteCartItem()
           setLoaderTitle('Payment completed successfully... ');
           setTimeout(() => {
             navigate('/account', {
@@ -768,7 +792,7 @@ const Accordion = ({
                     Complete Purchase
                   </button>
                 </div>
-             )} 
+              )}
             </>
           </div>
           <div className=" border-2 text-[12px] mt-[15px] bg-white text-left p-[10px] border-solid border-[#324879]">

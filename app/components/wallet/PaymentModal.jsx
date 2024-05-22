@@ -45,6 +45,7 @@ const PaymentModal = ({
   const [showStripeCard, setShowStripeCard] = useState(false);
   const [customerID, setCustomertID] = useState('');
   const [paymentMethodId, setPaymentMethodId] = useState('');
+  const {setCartCountVal, setIsCartUpdated} = useStateContext();
 
   let customerid, fullName, userEmail;
 
@@ -55,8 +56,6 @@ const PaymentModal = ({
     setIsBillingOpen(!isBillingOpen);
     setIsCardInfoOpen(false);
   };
-
- 
 
   const toggleCardInfo = () => {
     setIsCardInfoOpen(!isCardInfoOpen);
@@ -271,6 +270,28 @@ const PaymentModal = ({
     }
   };
 
+  function deleteCartItem() {
+    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerID}`;
+    fetch(apiUrl, {
+      method: 'POST',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.result.success) {
+          setCartCountVal(0);
+          setIsCartUpdated(true);
+        }
+      })
+      .catch((error) => {
+        console.error('Error deleting cart item:', error);
+      });
+  }
+
   const paymentPurchase = (data, json) => {
     const payLoad = {
       paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
@@ -304,14 +325,15 @@ const PaymentModal = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
+          deleteCartItem();
           setShowAccordion(false);
           setPurchaseModal(false);
           setPackageModal(false);
           setPaymentLoader(false);
           setUpdateModal(false);
-          navigate('/account')
-          setIsStripeDataUpdated(true)
-         
+          navigate('/account');
+          setIsStripeDataUpdated(true);
+
           setTimeout(() => {
             setAccountTabName('Manage Plans');
             setActiveTab(4);
@@ -380,7 +402,7 @@ const PaymentModal = ({
     // Open billing address section if there are any errors
     if (!isValid) {
       setIsBillingOpen(true);
-      setStripeLoader(false)
+      setStripeLoader(false);
     }
     return isValid;
   };
@@ -737,7 +759,9 @@ const PaymentModal = ({
                             setPaymentMethodId={setPaymentMethodId}
                             createCustomerId={createCustomerId}
                             validateForm={validateForm}
-                            savedCard={(savedCard && savedCard.length > 0)  ? savedCard : []}
+                            savedCard={
+                              savedCard && savedCard.length > 0 ? savedCard : []
+                            }
                             paymentPurchase={paymentPurchase}
                             setloader={setloader}
                             showStripeCard={showStripeCard}
