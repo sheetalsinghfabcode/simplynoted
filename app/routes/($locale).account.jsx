@@ -295,13 +295,14 @@ function Account({customer}) {
     lastName: customer.lastName,
     email: customer.email,
     phone: customer.phone,
-    address1: '',
-    address2: '',
-    city: '',
-    state: '',
+    address1: customer?.defaultAddress?.address1 || '',
+    address2: customer?.defaultAddress?.address2 || '',
+    city: customer?.defaultAddress?.city || '',
+    state: customer?.defaultAddress?.address2 || '',
     country: 'USA',
-    zip: '',
+    zip: customer?.defaultAddress?.zip || '',
   });
+
 
   return (
     <>
@@ -400,7 +401,7 @@ function Account({customer}) {
                   <CardComponent
                     imgSrc={sendcard}
                     title="Send Cards"
-                    onClick={()=>navigate('/collections/best-sellers')}
+                    onClick={() => navigate('/collections/best-sellers')}
                     description="Send a card to one or more people by starting here"
                     buttonText="Send Now"
                     showDownloadButton={true}
