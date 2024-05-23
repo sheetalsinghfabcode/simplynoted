@@ -222,11 +222,9 @@ export default function Product() {
     useLoaderData();
   // console.log(product,"product data route page  ");
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
   const datafornav = useLocation();
 
-  let selectedAddress;
-  let EditMess = datafornav?.state?.data?.messageData;
+  let EditMess = datafornav?.state?.data?.baseCustomMessage;
   let editEndMess = datafornav?.state?.data?.endText;
   let editOrderValue = datafornav?.state;
   let editFontFamily = datafornav?.state?.data?.fontFamily;
@@ -239,8 +237,7 @@ export default function Product() {
   let editSignOffFontSize = datafornav?.state?.data?.signOffFontSize;
   let editShippingDate = datafornav?.state?.data?.optionalShipDate;
 
-  const {media, title, vendor, descriptionHtml} = product;
-  const {shippingPolicy, refundPolicy} = shop;
+  const {media, title} = product;
   const [show, setShow] = useState(
     showBulkOnEdit > 0 || csvFileUrl || datafornav?.search == '?select=Bulk'
       ? true
@@ -249,17 +246,14 @@ export default function Product() {
 
   const {
     productshow,
-    setProductShow,
     showSignScreen,
     setShowSignScreen,
-    stateCheckCustomerId,
-    setStateCheckCustomerId,
   } = useStateContext();
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
   const [errorVal, setErrorVal] = useState([]);
-  const [fontFamilyName, setFontFamily] = useState();
+  const [fontFamilyName, setFontFamily] = useState('tarzan');
   const [metafields, setMetafields] = useState([]);
   const [customFontName, setCustomFontName] = useState('');
   const [locationValue, setLocationValue] = useState(false);
@@ -933,14 +927,6 @@ const PRODUCT_QUERY = `#graphql
       name
       primaryDomain {
         url
-      }
-      shippingPolicy {
-        body
-        handle
-      }
-      refundPolicy {
-        body
-        handle
       }
     }
   }

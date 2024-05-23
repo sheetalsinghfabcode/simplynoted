@@ -391,9 +391,12 @@ export function AddCart({
           cardPriceTitle && stateCheckCart ? cardPriceTitle : '',
         giftCardProdUrl: giftCardUrl && stateCheckCart ? giftCardUrl : null,
         messageData: cartDataReq.msg ? cartDataReq.msg : MsgText,
+        baseCustomMessage: cartDataReq?.baseCustomMessage,
         fontFamily: fontFamilyName ? fontFamilyName : editFontFamily,
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
+        csvMessageData:
+          cartDataReq?.csvFileBulk && cartDataReq?.csvMessageData,
         csvFileURL:
           cartDataReq?.csvFileBulk && cartDataReq?.csvFileBulk[0]?.csvFileUrl,
         qyt: cartDataReq?.csvFileLen,

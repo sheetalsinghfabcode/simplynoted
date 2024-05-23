@@ -471,7 +471,7 @@ export function CheckoutData({
                     selectedOrderPurchaseQuantity &&
                     selectedOrderPurchaseQuantity,
                   font_family: item.fontFamily,
-                  custom_message: item.messageData,
+                  custom_message: item.baseCustomMessage,
                   font_size: item.fontSizeMsg ? item.fontSizeMsg : '50px',
                   font_size_cust_card: item.fontSizeMsg
                     ? item.fontSizeMsg

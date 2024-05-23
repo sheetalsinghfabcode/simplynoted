@@ -84,8 +84,16 @@ export default function AddCartFunc() {
   const [loginModal, setLoginModal] = useState(false);
   const [cartNote, setCartNote] = useState('');
   const [sucessfullLoader, setSuccessfullLoader] = useState(false);
+  const [selectedCartItemIndex, setSelectedCartItemIndex] = useState(0);
+  const [currentRecipientIndex, setCurrentRecipientIndex] = useState(0);
+  const [operation, setOperation] = useState(null);
 
+  const navigate = useNavigate();
   let customerId;
+
+  useEffect(() => {
+    customerId = localStorage.getItem('customerId');
+  }, []);
 
   useEffect(() => {
     if (postalData) {
@@ -95,6 +103,12 @@ export default function AddCartFunc() {
       subTotalAmount();
     }
   }, [updateGift, postPrice, cartData]);
+
+  useEffect(() => {
+    if (bulkAddress.length) {
+      setMsgShow(cartData[selectedCartItemIndex]?.csvMessageData[currentRecipientIndex].msg);
+    }
+  },[selectedCartItemIndex, currentRecipientIndex]);
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
@@ -112,13 +126,6 @@ export default function AddCartFunc() {
     setPostPrice2(postalrate2);
     setPostImage(postalImag.url);
   }
-
-  useEffect(() => {
-    customerId = localStorage.getItem('customerId');
-  }, []);
-
-
-
 
   async function updateCartData(cartData) {
     const customerId = localStorage.getItem('customerId');
@@ -156,6 +163,7 @@ export default function AddCartFunc() {
   let keyToUpdate3 = 'giftCardPrice';
   let keyToUpdate4 = 'giftCardId';
   let keyToUpdate5 = 'giftCardProdUrl';
+
   function updateValueInArray(index) {
     setSuccessfullLoader(true);
     setOperation('Adding Gift Card...');
@@ -208,7 +216,6 @@ export default function AddCartFunc() {
   function clearCartBtn() {
     setClearCartModal(true);
   }
-
   function deleteCartItem() {
     const customerId = localStorage.getItem('customerId');
 
@@ -311,10 +318,8 @@ export default function AddCartFunc() {
     let data = cartData[index];
     let ab = cartData[index].productGetUrl;
     data.customFontName = null;
-    console.log({data});
     navigate(`${ab}`, {state: {data: data, index: index}});
   }
-  const navigate = useNavigate();
 
   const customStyles = {
     overlay: {
@@ -347,14 +352,11 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
 
-
-
-  async function OpenModalFunc2(item) {
-
-
+  async function OpenModalFunc2(cartItemIndex) {
+    setSelectedCartItemIndex(cartItemIndex);
     const customerId = localStorage.getItem('customerId');
     try {
-      if (cartData[item]?.csvFileURL) {
+      if (cartData[cartItemIndex]?.csvFileURL) {
         const response = await fetch(
           `https://api.simplynoted.com/api/storefront/addresses/partial-uploaded?customerId=${customerId}`,
           {
@@ -363,7 +365,7 @@ export default function AddCartFunc() {
             },
             method: 'POST',
             body: JSON.stringify({
-              csvFileUrl: cartData[item].csvFileURL,
+              csvFileUrl: cartData[cartItemIndex].csvFileURL,
             }),
           },
         );
@@ -374,7 +376,7 @@ export default function AddCartFunc() {
 
         const data = await response.json();
         setBulkAddress(data.result[0]?.addresses);
-        setMsgShow(cartData[item]?.messageData);
+        setMsgShow(cartData[cartItemIndex]?.csvMessageData[currentRecipientIndex].msg);
       }
 
       setIsOpen2(true);
@@ -382,18 +384,18 @@ export default function AddCartFunc() {
       console.error('Error submitting form:', error);
     }
 
-    setMsgShow(cartData[item]?.messageData);
-    setMsgFont(cartData[item]?.fontFamily);
-    setMsgFontSize(cartData[item]?.fontSizeMsg);
-    setMsglastText(cartData[item]?.endText);
+    setMsgShow(cartData[cartItemIndex]?.messageData);
+    setMsgFont(cartData[cartItemIndex]?.fontFamily);
+    setMsgFontSize(cartData[cartItemIndex]?.fontSizeMsg);
+    setMsglastText(cartData[cartItemIndex]?.endText);
 
-    if (cartData[item]?.csvBulkData.length > 0) {
-      setBulkAddress(cartData[item].csvBulkData);
+    if (cartData[cartItemIndex]?.csvBulkData.length > 0) {
+      setBulkAddress(cartData[cartItemIndex].csvBulkData);
     } else if (
-      !cartData[item]?.csvBulkData.length &&
-      !cartData[item]?.csvFileURL
+      !cartData[cartItemIndex]?.csvBulkData.length &&
+      !cartData[cartItemIndex]?.csvFileURL
     ) {
-      setReciverAddress(cartData[item]?.reciverAddress || '');
+      setReciverAddress(cartData[cartItemIndex]?.reciverAddress || '');
     }
   }
 
@@ -422,18 +424,16 @@ export default function AddCartFunc() {
 
     setIsOpen2(false);
   }
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [operation, setOperation] = useState(null);
 
   const handlePrevClick = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+    if (currentRecipientIndex > 0) {
+      setCurrentRecipientIndex(currentRecipientIndex - 1);
     }
   };
 
   const handleNextClick = () => {
-    if (currentIndex < bulkAddress?.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+    if (currentRecipientIndex < bulkAddress?.length - 1) {
+      setCurrentRecipientIndex(currentRecipientIndex + 1);
     }
   };
 
@@ -1394,7 +1394,7 @@ export default function AddCartFunc() {
                             key={index}
                             style={{
                               display:
-                                index === currentIndex ? 'block' : 'none',
+                                index === currentRecipientIndex ? 'block' : 'none',
                             }}
                             className="mt-[10px]"
                           >

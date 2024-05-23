@@ -215,31 +215,44 @@ export function MessageWriting({
     } else {
       let reqField;
       let subName = name;
+      const baseCustomMessage = name;
+      const csvMailMergedMessages = [];
 
       if (fileData.length) {
         fileData.map((obj) => {
+          let csvMessageData;
           if (obj['First Name']) {
             subName = subName.replace(/\[First Name\]/g, obj['First Name']);
+            csvMessageData = baseCustomMessage.replace(/\[First Name\]/g, obj['First Name']);
           }
           if (obj['Last Name']) {
             subName = subName.replace(/\[Last Name\]/g, obj['Last Name']);
+            csvMessageData = csvMessageData.replace(/\[Last Name\]/g, obj['Last Name']);
           }
           if (obj['Company']) {
             subName = subName.replace(/\[Company\]/g, obj['Company']);
+            csvMessageData = csvMessageData.replace(/\[Company\]/g, obj['Company']);
+           
           }
           if (obj['Custom 1']) {
             subName = subName.replace(/\[Custom 1\]/g, obj['Custom 1']);
+            csvMessageData = csvMessageData.replace(/\[Custom 1\]/g, obj['Custom 1']);
           }
           if (obj['Custom 2']) {
             subName = subName.replace(/\[Custom 2\]/g, obj['Custom 2']);
+            csvMessageData = csvMessageData.replace(/\[Custom 2\]/g, obj['Custom 2']);
           }
           if (obj['Custom 3']) {
             subName = subName.replace(/\[Custom 3\]/g, obj['Custom 3']);
+            csvMessageData = csvMessageData.replace(/\[Custom 2\]/g, obj['Custom 2'])
           }
           obj.msgData = subName;
+          csvMailMergedMessages.push({msg: csvMessageData})
         });
         reqField = {
           msg: subName,
+          baseCustomMessage, 
+          csvMessageData: csvMailMergedMessages,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
           csvFileLen: lenCsvData ? lenCsvData : '1',
@@ -257,6 +270,7 @@ export function MessageWriting({
       } else {
         reqField = {
           msg: name,
+          baseCustomMessage,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
           csvFileLen: lenCsvData ? lenCsvData : '1',
@@ -289,6 +303,7 @@ export function MessageWriting({
       setInstructionModal(true);
     } else {
       let subName = name;
+      const baseCustomMessage = name;
 
       const csvFileURL = await uploadCsvFileOnClick();
       let reqField,
@@ -326,6 +341,7 @@ export function MessageWriting({
         });
         reqField = {
           msg: subName,
+          baseCustomMessage,
           signOffText: name2,
           csvFileBulk: csvFileURL ? csvFileURL : null,
           csvFileLen: fileData ? fileData.length : '1',
@@ -341,7 +357,7 @@ export function MessageWriting({
           ship_date: shippingDate,
         };
       } else {
-        alert("you haven't added Address");
+        alert("You haven't added Address");
       }
       localStorage.setItem('reqFielddInCart', JSON.stringify(reqField));
       setProductShow(false);
