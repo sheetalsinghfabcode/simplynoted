@@ -145,6 +145,7 @@ export function MessageWriting({
 
   const [customMessageBoxMaxHeight, setCustomMessageBoxMaxHeight] = useState();
   const [signOffBoxMaxHeight, setsignOffBoxMaxHeight] = useState();
+  const importedCustomFonts = useRef([]);
 
   const ref = useRef(null);
   const ref1 = useRef(null);
@@ -223,35 +224,52 @@ export function MessageWriting({
           let csvMessageData;
           if (obj['First Name']) {
             subName = subName.replace(/\[First Name\]/g, obj['First Name']);
-            csvMessageData = baseCustomMessage.replace(/\[First Name\]/g, obj['First Name']);
+            csvMessageData = baseCustomMessage.replace(
+              /\[First Name\]/g,
+              obj['First Name'],
+            );
           }
           if (obj['Last Name']) {
             subName = subName.replace(/\[Last Name\]/g, obj['Last Name']);
-            csvMessageData = csvMessageData.replace(/\[Last Name\]/g, obj['Last Name']);
+            csvMessageData = csvMessageData.replace(
+              /\[Last Name\]/g,
+              obj['Last Name'],
+            );
           }
           if (obj['Company']) {
             subName = subName.replace(/\[Company\]/g, obj['Company']);
-            csvMessageData = csvMessageData.replace(/\[Company\]/g, obj['Company']);
-           
+            csvMessageData = csvMessageData.replace(
+              /\[Company\]/g,
+              obj['Company'],
+            );
           }
           if (obj['Custom 1']) {
             subName = subName.replace(/\[Custom 1\]/g, obj['Custom 1']);
-            csvMessageData = csvMessageData.replace(/\[Custom 1\]/g, obj['Custom 1']);
+            csvMessageData = csvMessageData.replace(
+              /\[Custom 1\]/g,
+              obj['Custom 1'],
+            );
           }
           if (obj['Custom 2']) {
             subName = subName.replace(/\[Custom 2\]/g, obj['Custom 2']);
-            csvMessageData = csvMessageData.replace(/\[Custom 2\]/g, obj['Custom 2']);
+            csvMessageData = csvMessageData.replace(
+              /\[Custom 2\]/g,
+              obj['Custom 2'],
+            );
           }
           if (obj['Custom 3']) {
             subName = subName.replace(/\[Custom 3\]/g, obj['Custom 3']);
-            csvMessageData = csvMessageData.replace(/\[Custom 2\]/g, obj['Custom 2'])
+            csvMessageData = csvMessageData.replace(
+              /\[Custom 2\]/g,
+              obj['Custom 2'],
+            );
           }
           obj.msgData = subName;
-          csvMailMergedMessages.push({msg: csvMessageData})
+          csvMailMergedMessages.push({msg: csvMessageData});
         });
         reqField = {
           msg: subName,
-          baseCustomMessage, 
+          baseCustomMessage,
           csvMessageData: csvMailMergedMessages,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
@@ -1348,6 +1366,53 @@ export function MessageWriting({
 
     setStandardFontVal(e);
   }
+
+  async function initiateCustomFontImport(customFonts) {
+    if (!customFonts.length) return;
+    for (const font of customFonts) {
+      const res = await fetch(
+        `https://api.simplynoted.com/fonts/myFont/${font.fileName}`,
+      );
+      const fontData = await readReadableFile(res.body);
+      const fontBlob = new Blob([fontData.buffer]);
+      const fontUrl = URL.createObjectURL(fontBlob);
+
+      if (!importedCustomFonts.current.includes(font.fontName)) {
+        const style = document.createElement('style');
+        style.appendChild(
+          document.createTextNode(
+            `@font-face { font-family: '${font.fontName}'; src: url('${fontUrl}') format('truetype'); }`,
+          ),
+        );
+        document.head.appendChild(style);
+        importedCustomFonts.current.push(font.fontName);
+      }
+    }
+  }
+
+  async function readReadableFile(fileResponse) {
+    const reader = fileResponse.getReader();
+    const chunks = [];
+    let done = false;
+
+    while (!done) {
+      const {value, done: readerDone} = await reader.read();
+      done = readerDone;
+      if (value) {
+        chunks.push(value);
+      }
+    }
+    const fontData = new Uint8Array(
+      chunks.reduce((acc, chunk) => acc + chunk.length, 0),
+    );
+    let offset = 0;
+    for (const chunk of chunks) {
+      fontData.set(chunk, offset);
+      offset += chunk.length;
+    }
+    return fontData;
+  }
+
   async function customFontFamily(id) {
     try {
       const res = await fetch(
@@ -1356,6 +1421,7 @@ export function MessageWriting({
       const json = await res.json();
 
       setCustomFonts(json.data);
+      initiateCustomFontImport(json.data);
     } catch (error) {
       console.error(error, 'customfontError');
     }

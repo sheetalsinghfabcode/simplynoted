@@ -33,7 +33,7 @@ export function ProductInfo({
   editCustomFontFamily,
 }) {
   const {isbirthdayAutomated} = useStateContext();
-  const [customFonts, setCustomFonts] = useState([]);
+  // const [customFonts, setCustomFonts] = useState([]);
   const [standardFontVal, setStandardFontVal] = useState('');
   const [customFontVal, setCustomFontVal] = useState('');
   const [offPrice, setOffPrice] = useState('');
@@ -57,24 +57,24 @@ export function ProductInfo({
     setStandardFontVal(e);
   }
 
-  async function customFontFamily(id) {
-    try {
-      const res = await fetch(
-        `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
-      );
-      const json = await res.json();
-      setCustomFonts(json.data);
-    } catch (error) {
-      console.error(error, 'customfontError');
-    }
-  }
+  // async function customFontFamily(id) {
+  //   try {
+  //     const res = await fetch(
+  //       `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
+  //     );
+  //     const json = await res.json();
+  //     setCustomFonts(json.data);
+  //   } catch (error) {
+  //     console.error(error, 'customfontError');
+  //   }
+  // }
 
   useEffect(() => {
     let customerid = localStorage.getItem('customerId');
     let discountedCount = JSON.parse(localStorage.getItem('packageDiscount'));
     setOffPrice(discountedCount);
 
-    customFontFamily(customerid);
+    // customFontFamily(customerid);
   }, []);
 
   useEffect(() => {
