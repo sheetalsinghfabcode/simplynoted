@@ -303,7 +303,6 @@ function Account({customer}) {
     zip: customer?.defaultAddress?.zip || '',
   });
 
-
   return (
     <>
       <div className="w-full global-max-width-handler ">
@@ -420,7 +419,8 @@ function Account({customer}) {
                     description="Tailored to yours Needs: Custom Orders Welcome!"
                     buttonText="Get Started"
                     onClick={() => {
-                      navigate('/customise-your-card');
+                      window.location.href =
+                        'https://share.hsforms.com/17v4fJX1GR-mtrLa0OWPEvA39obb';
                     }}
                   />
                   <CardComponent
