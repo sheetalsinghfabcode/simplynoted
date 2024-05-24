@@ -50,7 +50,6 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
 
   async function deleteProductFromCartItems(id) {
     try {
-      console.log(cartData);
       const foundProductIndex = cartData.findIndex(
         (item) => item.productId == id,
       );
