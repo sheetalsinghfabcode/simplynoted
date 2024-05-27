@@ -225,7 +225,7 @@ export default function CustomProducts() {
                 className={`swimlane flex flex-col hiddenScroll p-0 md:overflow-x-auto md:grid-cols-2 md:w-[48%] w-full max-h-[400px] justify-center items-end`}
               >
                 <div
-                  className="product-image-cont card-image self-center  bg-white dark:bg-contrast/10  sm:h-[240px] sm:w-[345px] md:w-[400px] xl:w-[544px] lg:w-[460px] md:h-[307px]  w-full"
+                  className="product-image-cont card-image self-center  bg-white dark:bg-contrast/10  sm:h-[240px] sm:w-[345px] md:w-[400px] xl:w-[460px] md:h-[307px]  w-full"
                 >
                   {customProductData &&
                     metafields &&
