@@ -67,6 +67,7 @@ export function MessageWriting({
     // setIsBirthdayAutomated,
     setShowSignScreen,
     customerId,
+    setCustomerId
   } = useStateContext();
   let ProdcuctSide = true;
   let [name, setName] = useState(EditMess ? EditMess : '');
@@ -169,6 +170,10 @@ export function MessageWriting({
     }
   }, [ref7]);
 
+  useEffect(() => {
+    setCustomerId(localStorage.getItem('customerId'));
+  }, []);
+
   //  useEffect(()=>{
   //   setMetafieldsHeader(metafields.header && metafields.header.data.length>0?true:false)
   //   setMetafieldsFooter(metafields.footer && metafields.footer.data.length>0?true:false)
@@ -223,43 +228,43 @@ export function MessageWriting({
         fileData.map((obj) => {
           let csvMessageData;
           if (obj['First Name']) {
-            subName = subName.replace(/\[First Name\]/g, obj['First Name']);
-            csvMessageData = baseCustomMessage.replace(
+            subName = subName?.replace(/\[First Name\]/g, obj['First Name']);
+            csvMessageData = baseCustomMessage?.replace(
               /\[First Name\]/g,
               obj['First Name'],
             );
           }
           if (obj['Last Name']) {
-            subName = subName.replace(/\[Last Name\]/g, obj['Last Name']);
-            csvMessageData = csvMessageData.replace(
+            subName = subName?.replace(/\[Last Name\]/g, obj['Last Name']);
+            csvMessageData = csvMessageData?.replace(
               /\[Last Name\]/g,
               obj['Last Name'],
             );
           }
           if (obj['Company']) {
-            subName = subName.replace(/\[Company\]/g, obj['Company']);
-            csvMessageData = csvMessageData.replace(
+            subName = subName?.replace(/\[Company\]/g, obj['Company']);
+            csvMessageData = csvMessageData?.replace(
               /\[Company\]/g,
               obj['Company'],
             );
           }
           if (obj['Custom 1']) {
-            subName = subName.replace(/\[Custom 1\]/g, obj['Custom 1']);
-            csvMessageData = csvMessageData.replace(
+            subName = subName?.replace(/\[Custom 1\]/g, obj['Custom 1']);
+            csvMessageData = csvMessageData?.replace(
               /\[Custom 1\]/g,
               obj['Custom 1'],
             );
           }
           if (obj['Custom 2']) {
-            subName = subName.replace(/\[Custom 2\]/g, obj['Custom 2']);
-            csvMessageData = csvMessageData.replace(
+            subName = subName?.replace(/\[Custom 2\]/g, obj['Custom 2']);
+            csvMessageData = csvMessageData?.replace(
               /\[Custom 2\]/g,
               obj['Custom 2'],
             );
           }
           if (obj['Custom 3']) {
-            subName = subName.replace(/\[Custom 3\]/g, obj['Custom 3']);
-            csvMessageData = csvMessageData.replace(
+            subName = subName?.replace(/\[Custom 3\]/g, obj['Custom 3']);
+            csvMessageData = csvMessageData?.replace(
               /\[Custom 2\]/g,
               obj['Custom 2'],
             );
@@ -315,7 +320,7 @@ export function MessageWriting({
   }
 
   async function onSelectFromAddressBook() {
-    if (!customerid) {
+    if (!customerId) {
       setLoginModal(true);
     } else if (name.length == 0) {
       setInstructionModal(true);
