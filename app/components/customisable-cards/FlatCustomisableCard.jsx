@@ -49,7 +49,7 @@ export default function FlatCustomisableCard({
   const [headerData, setHeaderData] = useState({
     customText: '',
     alignment: 'center',
-    fontFamily: 'pinocchio',
+    fontFamily: 'Arial',
     fontSize: 30,
     fontColor: '#000',
     zoom: 1,
@@ -61,7 +61,7 @@ export default function FlatCustomisableCard({
   const [footerData, setFooterData] = useState({
     customText: '',
     alignment: 'center',
-    fontFamily: 'pinocchio',
+    fontFamily: 'Arial',
     fontSize: 30,
     fontColor: '#000',
     zoom: 1,
