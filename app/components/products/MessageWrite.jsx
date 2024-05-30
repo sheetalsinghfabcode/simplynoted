@@ -278,7 +278,7 @@ export function MessageWriting({
           csvMessageData: csvMailMergedMessages,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
-          csvFileLen: lenCsvData ? lenCsvData : '1',
+          csvFileLen: lenCsvData ? lenCsvData : 1,
           usCount: usAddress,
           nonUsCount: nonusAddress,
           bulkCsvData: fileData,
@@ -296,7 +296,7 @@ export function MessageWriting({
           baseCustomMessage,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
-          csvFileLen: lenCsvData ? lenCsvData : '1',
+          csvFileLen: lenCsvData ? lenCsvData : 1,
           usCount: usAddress,
           nonUsCount: nonusAddress,
           bulkCsvData: fileData ? fileData : null,
@@ -328,7 +328,7 @@ export function MessageWriting({
       let subName = name;
       const baseCustomMessage = name;
 
-      const csvFileURL = await uploadCsvFileOnClick();
+      const csvFileResponse = await uploadCsvFileOnClick();
       let reqField,
         usCountAdd = 0,
         nonUsAdd = 0;
@@ -366,8 +366,8 @@ export function MessageWriting({
           msg: subName,
           baseCustomMessage,
           signOffText: name2,
-          csvFileBulk: csvFileURL ? csvFileURL : null,
-          csvFileLen: fileData ? fileData.length : '1',
+          csvFileBulk: csvFileResponse ? csvFileResponse : null,
+          csvFileLen: fileData ? fileData.length : 1,
           usCount: usCountAdd,
           nonUsCount: nonUsAdd,
           bulkCsvData: fileData,
@@ -808,16 +808,16 @@ export function MessageWriting({
           }
           if (
             obj[countryCheck] === 'USA' ||
-            obj[countryCheck].toLowerCase() === '' ||
-            obj[countryCheck].toLowerCase() === ' ' ||
-            obj[countryCheck].toLowerCase() === 'u.s.a' ||
-            obj[countryCheck].toLowerCase() === 'u.s' ||
-            obj[countryCheck].toLowerCase() === 'usa' ||
-            obj[countryCheck].toLowerCase() === 'us' ||
-            obj[countryCheck].toLowerCase() === 'america' ||
-            obj[countryCheck].toLowerCase() === 'united states' ||
-            obj[countryCheck].toLowerCase() === 'united states of america' ||
-            obj[countryCheck].toLowerCase() == undefined
+            obj[countryCheck]?.toLowerCase() === '' ||
+            obj[countryCheck]?.toLowerCase() === ' ' ||
+            obj[countryCheck]?.toLowerCase() === 'u.s.a' ||
+            obj[countryCheck]?.toLowerCase() === 'u.s' ||
+            obj[countryCheck]?.toLowerCase() === 'usa' ||
+            obj[countryCheck]?.toLowerCase() === 'us' ||
+            obj[countryCheck]?.toLowerCase() === 'america' ||
+            obj[countryCheck]?.toLowerCase() === 'united states' ||
+            obj[countryCheck]?.toLowerCase() === 'united states of america' ||
+            obj[countryCheck]?.toLowerCase() == undefined
           ) {
             usCount++;
           } else {
@@ -870,12 +870,12 @@ export function MessageWriting({
         const startIdx = i * batchSize;
         const endIdx = Math.min((i + 1) * batchSize, fileData.length);
         const batchData = fileData.slice(startIdx, endIdx);
+        const isLastBatch = i === numBatches - 1;
         setLoader(true);
 
         const payload = {
           initiatePartialUpload: i === 0 ? true : false,
-          initiatePartialUploadsAggregation:
-            i === numBatches - 1 ? true : false,
+          initiatePartialUploadsAggregation: isLastBatch ? true : false,
           partialS3Data: batchData,
           collectionId: collectionid,
         };
@@ -901,6 +901,9 @@ export function MessageWriting({
           setCsvFile(json.result);
           if (i == 0) {
             collectionid = json.result[0].collectionId;
+          }
+          if (isLastBatch && json.result[0].success) {
+            return json.result;
           }
         }
       }

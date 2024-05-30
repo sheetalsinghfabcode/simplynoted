@@ -353,6 +353,7 @@ export function AddCart({
   }, [apiVariantID]);
 
   const navigate = useNavigate();
+
   async function onClickAddCart() {
     if (selectedItem2 === null || (selectedItem === null && !show)) {
       setCheckSelAddress(true);
@@ -372,6 +373,17 @@ export function AddCart({
 
     try {
       setLoader(false);
+      const metafieldsCartItems = {};
+      if (metafields) {
+        metafieldsCartItems.card_type = metafields?.cardType;
+        metafieldsCartItems.custom_pdf = metafields?.pdfURL;
+        if (metafields?.cardType.includes('flat')) {
+          metafieldsCartItems.isHeaderIncluded = metafields?.isHeaderIncluded;
+          metafieldsCartItems.isFooterIncluded = metafields?.isFooterIncluded;
+          metafieldsCartItems.messageAreaPosition =
+            metafields?.messageAreaPosition;
+          }
+        }
       // Construct new cart item
       const newCartItem = {
         productTitle: productData?.product?.title
@@ -395,8 +407,7 @@ export function AddCart({
         fontFamily: fontFamilyName ? fontFamilyName : editFontFamily,
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
-        csvMessageData:
-          cartDataReq?.csvFileBulk && cartDataReq?.csvMessageData,
+        csvMessageData: cartDataReq?.csvFileBulk && cartDataReq?.csvMessageData,
         csvFileURL:
           cartDataReq?.csvFileBulk && cartDataReq?.csvFileBulk[0]?.csvFileUrl,
         qyt: cartDataReq?.csvFileLen,
@@ -421,7 +432,7 @@ export function AddCart({
         signOffFontSize: cartDataReq?.signOffFontSize,
         isShippidata: show ? show : false,
         optionalShipDate: cartDataReq?.ship_date,
-        custom_pdf: metafields ? metafields.pdfURL : null,
+        ...metafieldsCartItems,
       };
 
       const storedData = editOrderValue

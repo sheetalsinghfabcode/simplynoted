@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { HiArrowLongLeft } from 'react-icons/hi2';
-import { loadStripe } from '@stripe/stripe-js';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
+import {HiArrowLongLeft} from 'react-icons/hi2';
+import {loadStripe} from '@stripe/stripe-js';
 import StripeCardComp from './StripeCardComp';
-import { Elements } from '@stripe/react-stripe-js';
-import { Modal } from './Modal';
+import {Elements} from '@stripe/react-stripe-js';
+import {Modal} from './Modal';
 import Loader from './modal/Loader';
 import DynamicTitle from './Title';
-import { getApi, postApi } from '~/utils/ApiService';
-import { API_PATH } from '~/utils/Path';
+import {getApi, postApi} from '~/utils/ApiService';
+import {API_PATH} from '~/utils/Path';
 import DynamicButton from './DynamicButton';
-import { useStateContext } from '~/context/StateContext';
-import location from "../../location.json"
-import { useNavigate } from '@remix-run/react';
+import {useStateContext} from '~/context/StateContext';
+import location from '../../location.json';
+import {useNavigate} from '@remix-run/react';
 
-import { Link } from '~/components';
+import {Link} from '~/components';
 import CircularLoader from './CircularLoder';
 import ConfirmationModal from './modal/ConfirmationModal';
 
@@ -65,12 +65,12 @@ export function CheckoutData({
   });
 
   const [showPlan, setShowPlan] = useState(false);
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
   const [errors, setErrors] = useState({});
   const [walletBalance, setWalletBalance] = useState('');
   const [purchaseCompleted, setPurchaseCompleted] = useState(false);
   const [paymentLoaderMessage, setPaymentLoaderMessage] = useState(false);
-  const { setCartCountVal, setCartData, setWalletPlan } = useStateContext();
+  const {setCartCountVal, setCartData, setWalletPlan} = useStateContext();
   const navigate = useNavigate();
 
   function showWalletBtn() {
@@ -92,7 +92,6 @@ export function CheckoutData({
       createCustomerId(id);
     }
   }
-
 
   useEffect(() => {
     if (discountCouponCode.apiDiscountResponse?.discountedAmount) {
@@ -121,37 +120,37 @@ export function CheckoutData({
     try {
       setloader(true);
       const res = await // postApi(
-        //   `${API_PATH.CREATE_STRIPE_CUSTOMER}${customerID}`,
-        //   {
-        //     name: formData.name || '',
-        //     email: formData.email || '',
-        //     'address[line1]': formData.address.line1 || '',
-        //     'address[line2]': formData.address.line2 || '',
-        //     'address[city]': formData.address.city || '',
-        //     'address[state]': formData.address.state || '',
-        //     'address[country]': formData.address.country || '',
-        //     paymentMethodId: id || '',
-        //   },
-        // );
-        fetch(
-          `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: formData.name || '',
-              email: formData.email || '',
-              'address[line1]': formData.address.line1 || '',
-              'address[line2]': formData.address.line2 || '',
-              'address[city]': formData.address.city || '',
-              'address[state]': formData.address.state || '',
-              'address[country]': formData.address.country || '',
-              paymentMethodId: id || '',
-            }),
+      //   `${API_PATH.CREATE_STRIPE_CUSTOMER}${customerID}`,
+      //   {
+      //     name: formData.name || '',
+      //     email: formData.email || '',
+      //     'address[line1]': formData.address.line1 || '',
+      //     'address[line2]': formData.address.line2 || '',
+      //     'address[city]': formData.address.city || '',
+      //     'address[state]': formData.address.state || '',
+      //     'address[country]': formData.address.country || '',
+      //     paymentMethodId: id || '',
+      //   },
+      // );
+      fetch(
+        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        );
+          body: JSON.stringify({
+            name: formData.name || '',
+            email: formData.email || '',
+            'address[line1]': formData.address.line1 || '',
+            'address[line2]': formData.address.line2 || '',
+            'address[city]': formData.address.city || '',
+            'address[state]': formData.address.state || '',
+            'address[country]': formData.address.country || '',
+            paymentMethodId: id || '',
+          }),
+        },
+      );
       const json = await res.json();
       setNewCardAdded(true);
       setShowCardBox(false);
@@ -165,20 +164,20 @@ export function CheckoutData({
     try {
       setloader(true);
       const res = await // postApi(`${API_PATH.ADD_NEW_CARD}${customerID}`, {
-        //   paymentMethodId: paymentID,
-        // });
-        fetch(
-          `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              paymentMethodId: paymentID,
-            }),
+      //   paymentMethodId: paymentID,
+      // });
+      fetch(
+        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        );
+          body: JSON.stringify({
+            paymentMethodId: paymentID,
+          }),
+        },
+      );
       const jsonData = await res.json();
       setNewCardAdded(!newCardAdded);
       setShowCardBox(false);
@@ -191,9 +190,9 @@ export function CheckoutData({
   async function getSavedCards(Id) {
     try {
       const res = await // getApi(`${API_PATH.GET_STRIPE_CUSTOMER_DATA}${Id}`);
-        fetch(
-          `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
-        );
+      fetch(
+        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+      );
       const json = await res.json();
       if (json) {
         setCustomerInformation(json.customer);
@@ -210,16 +209,16 @@ export function CheckoutData({
       if (
         discountCouponCode.apiDiscountResponse &&
         discountCouponCode.payloadValue ===
-        discountCouponCode.oldTriedPayloadValue
+          discountCouponCode.oldTriedPayloadValue
       ) {
         return 'Already used API with the same value.';
       }
       let res = await // getApi(
-        //   `${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
-        // );
-        fetch(
-          `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
-        );
+      //   `${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
+      // );
+      fetch(
+        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
+      );
       const data = await res.json();
 
       if (res.ok && data) {
@@ -236,7 +235,7 @@ export function CheckoutData({
       setDiscountCouponCode((prevDiscountCouponCode) => {
         return {
           ...prevDiscountCouponCode,
-          apiDiscountResponse: { message: 'Unable to apply discount code.' },
+          apiDiscountResponse: {message: 'Unable to apply discount code.'},
         };
       });
     }
@@ -260,7 +259,7 @@ export function CheckoutData({
   }, [newCardAdded]);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     if (name.startsWith('address.')) {
       // If the name starts with 'address.', it's part of the address object
       setFormData((prev) => ({
@@ -324,197 +323,43 @@ export function CheckoutData({
 
   const totalPrice = Number(prices?.totalPrice)?.toFixed(2);
 
-
-
-
-
   async function paymentPurchase() {
-    if ((walletBalance?.balance < 100 || walletBalance?.balance < prices?.totalPrice ) && showWallet) {
+    if (
+      (walletBalance?.balance < 100 ||
+        walletBalance?.balance < prices?.totalPrice) &&
+      showWallet
+    ) {
       setOpenModal(true);
-    }
-    else {
-      setPurchaseCompleted(true)
+    } else {
+      setPurchaseCompleted(true);
       setPaymentLoaderMessage('Processing your order...');
       try {
         setloader(true);
-        const postageUSCountries = [
-          'USA',
-          'US',
-          'United States',
-          'United States of America',
-          'America',
-          'u.s',
-          'us',
-          'usa',
-          'u.s.a',
-        ];
-
-      const payload = {
-        billingAddress: {
-          firstName: separatedNames?.firstName ? separatedNames?.firstName : '',
-          lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
-          email: customerInformation?.email ? customerInformation?.email : '',
-          address: customerInformation?.address?.line1
-            ? customerInformation.address?.line1
-            : '',
-          apartment: customerInformation?.address?.line2
-            ? customerInformation.address?.line2
-            : '', 
-          city: customerInformation?.address?.city
-            ? customerInformation.address?.city
-            : '',
-          country: customerInformation?.address?.country
-            ? customerInformation.address?.country
-            : '',
-          state: customerInformation?.address?.state
-            ? customerInformation.address?.state
-            : '',
-        },
-        cartNote: cartNote ? cartNote : '',
-        cartItems:
-          cartData &&
-          cartData.map((item) => {
-            let senderFullName =
-              item.senderAddress?.firstName +
-              ' ' +
-              item.senderAddress?.lastName;
-            let receiverFullName =
-              item.reciverAddress?.firstName +
-              ' ' +
-              item.reciverAddress?.lastName;
-            let giftCard = null;
-            if (item.giftCardName) {
-              let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
-              giftCard = {
-                id: item.giftCardId, // Add a unique identifier for the gift card
-                url: giftProdUrl, // URL based on gift card name
-                qyt: item.qyt,
-              };
-            }
-            let shipping = null;
-            if (item.isShippidata) {
-              let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
-              shipping = {
-                id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
-                url: shippingUrl,
-                qyt: 1,
-              };
-            }
-            let postageUS = null;
-            let postageNonUS = null;
-            if (
-              (item.shippingData &&
-                item.shippingData.node.title ==
-                  'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
-                (item.shippingData &&
-                  item.shippingData.node.title ==
-                  'Ship Cards in Bulk - Cards Only') ||
-                (item.shippingData &&
-                  item.shippingData.node.title ==
-                  'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
-                (item.shippingData &&
-                  item.shippingData.node.title ==
-                  'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
-              ) {
-                postageUS = null;
-                postageNonUS = null;
-              } else if (item.reciverAddress) {
-                const isPostageUSCountry = postageUSCountries.includes(
-                  item.reciverAddress?.country,
-                );
-                isPostageUSCountry
-                  ? (postageUS = {
-                    id: postalId,
-                    url: '/products/postage',
-                    qyt: item.qyt,
-                  })
-                  : (postageNonUS = {
-                    id: postalId2,
-                    url: '/products/postage',
-                    qyt: item.qyt,
-                  });
-              } else {
-                if (item.usCount) {
-                  postageUS = {
-                    id: postalId,
-                    url: '/products/postage',
-                    qyt: item.usCount,
-                  };
-                }
-                if (item.nonUSCount) {
-                  postageNonUS = {
-                    id: postalId2,
-                    url: 'products/postage',
-                    qyt: item.nonUSCount,
-                  };
-                }
-              }
-              return {
-                productTitle: item.productTitle,
-                productId: item?.productId?.match(/\d+/g)?.join(''),
-                variant_id: item.variant_id,
-                productUrlGet: item.productGetUrl,
-                productPrice: `$${item.cartTotal}`,
-                qyt: item.qyt,
-                properties: {
-                  bulk_shipping_address: item.locationForShipMethod
-                    ? item.locationForShipMethod.firstName +
-                    item.locationForShipMethod.lastName +
-                    item.locationForShipMethod.address1 +
-                    item.locationForShipMethod.address2 +
-                    item.locationForShipMethod.city +
-                    item.locationForShipMethod.state +
-                    item.locationForShipMethod.country +
-                    item.locationForShipMethod.postalCode
-                    : '',
-                  selectedText:
-                    selectedOrderPurchaseQuantity &&
-                    selectedOrderPurchaseQuantity,
-                  font_family: item.fontFamily,
-                  custom_message: item.baseCustomMessage,
-                  font_size: item.fontSizeMsg ? item.fontSizeMsg : '50px',
-                  font_size_cust_card: item.fontSizeMsg
-                    ? item.fontSizeMsg
-                    : '50px',
-                  line_ht_cust_card: item.lineHeight ? item.lineHeight : '50px',
-                  signoff: item?.endText,
-                  custom_font: item?.customFontName,
-                  font_selection: item?.fontFamily,
-                  recipient_upload: item?.csvFileURL
-                    ? item.csvFileURL
-                    : 'Not Applicable :',
-                  ship_date: item?.optionalShipDate ? item.optionalShipDate : '',
-                  sender_fullName: senderFullName && senderFullName,
-                  sender_address1: item.senderAddress?.address1,
-                  sender_address2: item.senderAddress?.address2,
-                  sender_city: item.senderAddress?.city,
-                  sender_state: item.senderAddress?.state,
-                  sender_zip: item.senderAddress?.zip,
-                  sender_country: item.senderAddress?.country,
-                  sender_id: item.senderAddress?._id,
-                  gift_card_ID: giftCard ? giftCard.id : '',
-                  uqId: giftCard ? giftCard.id : '',
-                  gift_id: giftCard ? giftCard.id : '',
-                  recipient_id: item?.reciverAddress?._id,
-                  recipient_fullName: receiverFullName && receiverFullName,
-                  recipient_businessName: item?.reciverAddress?.businessName,
-                  recipient_address1: item?.reciverAddress?.address1,
-                  recipient_address2: item?.reciverAddress?.address2,
-                  recipient_city: item?.reciverAddress?.city,
-                  recipient_state: item?.reciverAddress?.state,
-                  recipient_zip: item?.reciverAddress?.zip,
-                  recipient_country: item?.reciverAddress?.country,
-                  custom_pdf: item?.custom_pdf,
-                },
-                additionalProducts: {
-                  ...(giftCard && { giftCard }),
-                  ...(shipping && { shipping }),
-                  ...(postageUS && { postageUS }),
-                  ...(postageNonUS && { postageNonUS }),
-                },
-              };
-            }),
-
+        const payload = {
+          billingAddress: {
+            firstName: separatedNames?.firstName
+              ? separatedNames?.firstName
+              : '',
+            lastName: separatedNames?.lastName ? separatedNames?.lastName : '',
+            email: customerInformation?.email ? customerInformation?.email : '',
+            address: customerInformation?.address?.line1
+              ? customerInformation.address?.line1
+              : '',
+            apartment: customerInformation?.address?.line2
+              ? customerInformation.address?.line2
+              : '',
+            city: customerInformation?.address?.city
+              ? customerInformation.address?.city
+              : '',
+            country: customerInformation?.address?.country
+              ? customerInformation.address?.country
+              : '',
+            state: customerInformation?.address?.state
+              ? customerInformation.address?.state
+              : '',
+          },
+          cartNote: cartNote ? cartNote : '',
+          cartItems: cartData && getUpdatedCartItems(cartData),
           cartTotal: Number(totalPrice),
           wallet: showWallet,
           paymentMethodKey: !showWallet && paymentMethodId,
@@ -525,32 +370,32 @@ export function CheckoutData({
           discountValueType: discountCouponCode?.apiDiscountResponse?.value_type
             ? discountCouponCode?.apiDiscountResponse?.value_type
             : '',
-
         };
 
-
         const res = await // postApi(
-          //   `${API_PATH.PURCHASE_API}${customerID}`,
-          //   payload,
-          // );
-          fetch(
-            `https://api.simplynoted.com/api/storefront/checkout?customerId=${customerID}`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(payload),
+        //   `${API_PATH.PURCHASE_API}${customerID}`,
+        //   payload,
+        // );
+        fetch(
+          `https://api.simplynoted.com/api/storefront/checkout?customerId=${customerID}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
             },
-          );
+            body: JSON.stringify(payload),
+          },
+        );
         const json = await res.json();
         // console.log(json.result,"----rresult data");
         if (json.result.success) {
           setCartCountVal(0);
-          setCartData(null)
-          deleteCartItem()
+          setCartData(null);
+          deleteCartItem();
           localStorage.setItem('mydata', '[]');
-          setPaymentLoaderMessage("Your order has been successfully processed. ");
+          setPaymentLoaderMessage(
+            'Your order has been successfully processed. ',
+          );
           setTimeout(() => {
             setPurchaseCompleted(false);
             setPaymentSuccessfull(true);
@@ -562,10 +407,181 @@ export function CheckoutData({
           }, 1500);
         }
       } catch (error) {
-        setPaymentLoaderMessage("Error while processing your order. Please try after some time");
+        setPaymentLoaderMessage(
+          'Error while processing your order. Please try after some time',
+        );
         console.error(error, 'error on CreateCard');
       }
     }
+  }
+
+  function getUpdatedCartItems(cartData) {
+    const postageUSCountries = [
+      'USA',
+      'US',
+      'United States',
+      'United States of America',
+      'America',
+      'u.s',
+      'us',
+      'usa',
+      'u.s.a',
+    ];
+
+    let postageUS = null;
+    let postageNonUS = null;
+    let giftCard = null;
+    let shipping = null;
+
+    return cartData.map((item) => {
+      if (item.giftCardName) {
+        let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
+        giftCard = {
+          id: item.giftCardId, // Add a unique identifier for the gift card
+          url: giftProdUrl, // URL based on gift card name
+          qyt: item.qyt,
+        };
+      }
+  
+      if (item.isShippidata) {
+        let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
+        shipping = {
+          id: item.shippingData.node?.id?.match(/\d+/g)?.join(''),
+          url: shippingUrl,
+          qyt: 1,
+        };
+      }
+
+      if (
+        (item.shippingData &&
+          item.shippingData.node.title ==
+            'Ship Cards in Bulk - Cards plus Blank Envelopes Unsealed') ||
+        (item.shippingData &&
+          item.shippingData.node.title == 'Ship Cards in Bulk - Cards Only') ||
+        (item.shippingData &&
+          item.shippingData.node.title ==
+            'Ship Cards in Bulk - Cards Plus Envelopes Addressed, Unsealed, Not Stamped') ||
+        (item.shippingData &&
+          item.shippingData.node.title ==
+            'Ship Cards in Bulk - Cards Plus Envelopes Addressed and Sealed, Not Stamped')
+      ) {
+        postageUS = null;
+        postageNonUS = null;
+      } else if (item.reciverAddress) {
+        const isPostageUSCountry = postageUSCountries.includes(
+          item.reciverAddress?.country,
+        );
+        isPostageUSCountry
+          ? (postageUS = {
+              id: postalId,
+              url: '/products/postage',
+              qyt: item.qyt,
+            })
+          : (postageNonUS = {
+              id: postalId2,
+              url: '/products/postage',
+              qyt: item.qyt,
+            });
+      } else {
+        if (item.usCount) {
+          postageUS = {
+            id: postalId,
+            url: '/products/postage',
+            qyt: item.usCount,
+          };
+        }
+        if (item.nonUSCount) {
+          postageNonUS = {
+            id: postalId2,
+            url: 'products/postage',
+            qyt: item.nonUSCount,
+          };
+        }
+      }
+
+      return {
+        productTitle: item.productTitle,
+        productId: item?.productId?.match(/\d+/g)?.join(''),
+        variant_id: item.variant_id,
+        productUrlGet: item.productGetUrl,
+        productPrice: `$${item.cartTotal}`,
+        qyt: item.qyt,
+        properties: generateCartItemProperties(item, giftCard),
+        additionalProducts: {
+          ...(giftCard && {giftCard}),
+          ...(shipping && {shipping}),
+          ...(postageUS && {postageUS}),
+          ...(postageNonUS && {postageNonUS}),
+        },
+      };
+    });
+  }
+
+  function generateCartItemProperties(item, giftCard) {
+    let senderFullName =
+      item.senderAddress?.firstName + ' ' + item.senderAddress?.lastName;
+    let receiverFullName =
+      item.reciverAddress?.firstName + ' ' + item.reciverAddress?.lastName;
+
+    let properties = {
+      signoff: item?.endText,
+      custom_message: item.baseCustomMessage,
+      font_selection: item?.fontFamily,
+      recipient_upload: item?.csvFileURL ? item.csvFileURL : 'Not Applicable :',
+      sender_fullName: senderFullName && senderFullName,
+      sender_address1: item.senderAddress?.address1,
+      sender_address2: item.senderAddress?.address2,
+      sender_city: item.senderAddress?.city,
+      sender_state: item.senderAddress?.state,
+      sender_zip: item.senderAddress?.zip,
+      sender_country: item.senderAddress?.country,
+      gift_card_Id: giftCard ? giftCard.id : '',
+      card_type: item?.card_type,
+      is_header_included: item?.isHeaderIncluded,
+      is_footer_included: item?.isFooterIncluded,
+      message_area_position: item?.messageAreaPosition,
+      custom_pdf: item?.custom_pdf,
+    };
+
+    if (item.qyt && item.qyt === 1) {
+      let singleQuantityProperties = {
+        recipient_fullName: receiverFullName && receiverFullName,
+        recipient_businessName: item?.reciverAddress?.businessName,
+        recipient_address1: item?.reciverAddress?.address1,
+        recipient_address2: item?.reciverAddress?.address2,
+        recipient_city: item?.reciverAddress?.city,
+        recipient_state: item?.reciverAddress?.state,
+        recipient_zip: item?.reciverAddress?.zip,
+        recipient_country: item?.reciverAddress?.country,
+      };
+      properties = {...properties, ...singleQuantityProperties};
+    } else {
+      let bulkQuantityProperties = {
+        bulk_shipping_address: item.locationForShipMethod
+          ? item.locationForShipMethod.firstName +
+            item.locationForShipMethod.lastName +
+            item.locationForShipMethod.address1 +
+            item.locationForShipMethod.address2 +
+            item.locationForShipMethod.city +
+            item.locationForShipMethod.state +
+            item.locationForShipMethod.country +
+            item.locationForShipMethod.postalCode
+          : '',
+        selected_text:
+          selectedOrderPurchaseQuantity && selectedOrderPurchaseQuantity,
+        font_family: item.fontFamily,
+        font_size: item.fontSizeMsg ? item.fontSizeMsg : '50px',
+        font_size_cust_card: item.fontSizeMsg ? item.fontSizeMsg : '50px',
+        line_ht_cust_card: item.lineHeight ? item.lineHeight : '50px',
+        custom_font: item?.customFontName,
+
+        ship_date: item?.optionalShipDate ? item.optionalShipDate : '',
+        uqId: giftCard ? giftCard.id : '',
+      };
+       properties = {...properties, ...bulkQuantityProperties};
+    }
+
+    return {...properties};
   }
 
   const validateForm = () => {
@@ -636,8 +652,9 @@ export function CheckoutData({
               <div className="p-5 bg-white lg:max-w-[48%] lg:w-full w-[90%] lg:mx-0 mx-auto rounded-xl font-bold border border-[#aaa]">
                 <div className="border border-solid border-[#e6edf8] sm:m-3 rounded-tl-lg rounded-tr-lg">
                   <div
-                    className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg md:flex grid justify-between ${showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
-                      }`}
+                    className={`p-3 text-[15px] cursor-pointer rounded-tl-lg rounded-tr-lg md:flex grid justify-between ${
+                      showWallet ? 'bg-[#ef6e6e] bg-opacity-25' : ''
+                    }`}
                     onClick={showWalletBtn}
                   >
                     <div>
@@ -660,10 +677,11 @@ export function CheckoutData({
                   </div>
                   <hr />
                   <div
-                    className={`overflow-hidden  ${showWallet
-                      ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s]  '
-                      : 'max-h-0 transition-max-h ease-in-out duration-0'
-                      }`}
+                    className={`overflow-hidden  ${
+                      showWallet
+                        ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s]  '
+                        : 'max-h-0 transition-max-h ease-in-out duration-0'
+                    }`}
                   >
                     <div className="border border-solid border-[#e6edf8] sm:p-[20px] p-[10px] sm:m-[15px] m-[7px]">
                       <span className="flex justify-between items-center text-[#001a5f] flex-wrap">
@@ -682,8 +700,9 @@ export function CheckoutData({
 
                   <hr />
                   <div
-                    className={`p-3 cursor-pointer text-[15px] font-bold ${showWallet ? '' : 'bg-[#ef6e6e] bg-opacity-25'
-                      }`}
+                    className={`p-3 cursor-pointer text-[15px] font-bold ${
+                      showWallet ? '' : 'bg-[#ef6e6e] bg-opacity-25'
+                    }`}
                     onClick={cardDetailBtn}
                   >
                     <input
@@ -697,10 +716,11 @@ export function CheckoutData({
                   </div>
 
                   <div
-                    className={`overflow-hidden  ${showCardDetail
-                      ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s] '
-                      : 'max-h-0 transition-max-h ease-in-out duration-700'
-                      }`}
+                    className={`overflow-hidden  ${
+                      showCardDetail
+                        ? 'max-h-[1000px] transition-max-h ease-in-out duration-[3s] '
+                        : 'max-h-0 transition-max-h ease-in-out duration-700'
+                    }`}
                   >
                     <div className="p-3">
                       <div className="mt-2 ">
@@ -812,7 +832,7 @@ export function CheckoutData({
                     <span>If you have a discount code, enter it here:</span>
                     <div
                       className="flex gap-2 justify-start items-stretch mt-3"
-                      style={{ maxWidth: '100%' }}
+                      style={{maxWidth: '100%'}}
                     >
                       <input
                         className="flex-2 w-full rounded text-sm"
@@ -838,7 +858,7 @@ export function CheckoutData({
                     {discountCouponCode.apiDiscountResponse?.message && (
                       <div
                         className="mt-5 bg-[#ffd4d4] bg-opacity-25 border border-[#EF6E6E] p-2 text-xs"
-                        style={{ maxWidth: '90%' }}
+                        style={{maxWidth: '90%'}}
                       >
                         {discountCouponCode.apiDiscountResponse.message}
                       </div>
@@ -847,7 +867,11 @@ export function CheckoutData({
                 </div>
                 <div className="mt-2">
                   <button
-                    disabled={((!walletBalance || walletBalance?.balance === 0 && showWallet) || (!savedCard &&  showCardDetail ) )}
+                    disabled={
+                      !walletBalance ||
+                      (walletBalance?.balance === 0 && showWallet) ||
+                      (!savedCard && showCardDetail)
+                    }
                     onClick={paymentPurchase}
                     className="bg-[#EF6E6E] w-full justify-center text-[#fff] p-3 text-lg mt-8 rounded flex font-bold"
                   >
@@ -1003,8 +1027,9 @@ export function CheckoutData({
                           }}
                           value={formData.address.state}
                           name="address.state"
-                          className={`appearance-none border border-solid  border-black h-[46px] w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${errors.state ? 'border-red-500' : ''
-                            }`}
+                          className={`appearance-none border border-solid  border-black h-[46px] w-full p-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  ${
+                            errors.state ? 'border-red-500' : ''
+                          }`}
                           id="state"
                         >
                           <option value="">Select a state</option>
@@ -1064,24 +1089,24 @@ export function CheckoutData({
       <ConfirmationModal
         show={openModal}
         title="Attention: Low Wallet Balance"
-        message={`Your Wallet has insufficient funds ${walletBalance?.balance < 100 ? "(minimum of $100)" : ""} for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
-
+        message={`Your Wallet has insufficient funds ${
+          walletBalance?.balance < 100 ? '(minimum of $100)' : ''
+        } for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
         confirmText="Purchase Package"
         onConfirm={() => {
           setTimeout(() => {
-            setWalletPlan(true)
+            setWalletPlan(true);
           }, 800);
-          setOpenModal(false)
-          navigate("/pages/simply-noted-plans")
+          setOpenModal(false);
+          navigate('/pages/simply-noted-plans');
         }}
         cancelText="Use credit card"
         onCancel={() => {
-          setOpenModal(false)
-          setShowWallet(false)
-          setShowCardDetail(true)
+          setOpenModal(false);
+          setShowWallet(false);
+          setShowCardDetail(true);
         }}
       />
-
     </div>
   );
 }
