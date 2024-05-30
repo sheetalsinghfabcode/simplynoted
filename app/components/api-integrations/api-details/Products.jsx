@@ -25,28 +25,28 @@ function Products() {
         <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           Headers:
         </h2>
-        <div className='overflow-x-auto'>
-        <table className="w-2/4	 text-sm text-thin table-auto">
-          <thead>
-            <tr className="text-[15px]">
-              <td className="border p-4">Name</td>
-              <td className="border p-4">Value</td>
-              <td className="border p-4">Required?</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="text-[14px]">
-              <td className="border p-4">Content-Type</td>
-              <td className="border p-4">application/json</td>
-              <td className="border p-4">$Yes</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">Authorization</td>
-              <td className="border p-4">Bearer TOKEN_HERE</td>
-              <td className="border p-4">Yes</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-2/4	 text-sm text-thin table-auto">
+            <thead>
+              <tr className="text-[15px]">
+                <td className="border p-4">Name</td>
+                <td className="border p-4">Value</td>
+                <td className="border p-4">Required?</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-[14px]">
+                <td className="border p-4">Content-Type</td>
+                <td className="border p-4">application/json</td>
+                <td className="border p-4">$Yes</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">Authorization</td>
+                <td className="border p-4">Bearer TOKEN_HERE</td>
+                <td className="border p-4">Yes</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div>
           <h3 className="mt-[19px] font-tiempos  mb-[7px] text-[23px]">
@@ -69,15 +69,16 @@ function Products() {
         </h2>
         <div className="leading-[1.25rem] text-[16px] mt-[22px] leading-[27px] color-[black] font-thin">
           <p className="">
+            <span className="font-bold">Description: </span> This endpoint will
+            retrieve a list of custom cards, returning up to 200 cards for each
+            call.
+          </p>
+          <p className="">
             <span className="font-bold">Endpoint:</span> /customProducts
           </p>
           <p className="">
-            <span className="font-bold">Get-https:</span>{' '}
-            //api.simplynoted.com/api/customProducts?offset=0
-          </p>
-          <p className="">
-            <span className="font-bold">This endpoint</span> will retrieve a
-            list of custom cards, returning up to 200 cards for each call.
+            <span className="font-bold">Get:</span>{' '}
+            {`https://api.simplynoted.com/api/customProducts?offset=0`}
           </p>
         </div>
         <div className="overflow-x-auto">
@@ -164,116 +165,116 @@ function Products() {
         <h2 className="text-[black] font-tiempos  mb-[7px] text-[23px]   mt-[61px] font-bold ml-2">
           Headers
         </h2>
-        <div className='overflow-x-auto'>
-        <table className="w-2/4 text-sm	 table-auto">
-          <thead>
-            <tr className="text-[15px]">
-              <td className="border p-4">Name</td>
-              <td className="border p-4">Value</td>
-              <td className="border p-4">Required?</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="text-[14px]">
-              <td className="border p-4">Content-Type</td>
-              <td className="border p-4">application/json</td>
-              <td className="border p-4">$Yes</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">Authorization</td>
-              <td className="border p-4">Bearer TOKEN_HERE</td>
-              <td className="border p-4">Yes</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-2/4 text-sm	 table-auto">
+            <thead>
+              <tr className="text-[15px]">
+                <td className="border p-4">Name</td>
+                <td className="border p-4">Value</td>
+                <td className="border p-4">Required?</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-[14px]">
+                <td className="border p-4">Content-Type</td>
+                <td className="border p-4">application/json</td>
+                <td className="border p-4">$Yes</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">Authorization</td>
+                <td className="border p-4">Bearer TOKEN_HERE</td>
+                <td className="border p-4">Yes</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div className="text-[black] font-tiempos  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
           <h2>Body:</h2>
         </div>
-        <div className='overflow-x-auto'>
-        <table className="min-w-full text-sm table-auto">
-          <thead>
-            <tr className="text-[15px]">
-              <td className="border p-4">Name</td>
-              <td className="border p-4">Value</td>
-              <td className="border p-4">Required?</td>
-              <td className="border p-4">Example</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="text-[14px]">
-              <td className="border p-4">Content-Type</td>
-              <td className="border p-4">application/json</td>
-              <td className="border p-4"></td>
-              <td className="border p-4">$Yes</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">cardName</td>
-              <td className="border p-4">String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4"> "Happy Birthday"</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">cardType</td>
-              <td className="border p-4">String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4"> “flat5x7” / “folded5x7”</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">frontImage</td>
-              <td className="border p-4">File</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">.</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">isHeaderIncluded</td>
-              <td className="border p-4"> Boolean</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">True</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">isFooterIncluded</td>
-              <td className="border p-4"> Boolean</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">True</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">header</td>
-              <td className="border p-4">String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4"> sImage": true</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">footer</td>
-              <td className="border p-4">String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">
-                "data": "Yours Sincerely","textAlign": "left","justifyContent":
-                "center","flexDirection": "column","fontType": "Courier
-                New","fontSize": 30,"fontColor": "rgb(255, 0, 0)","zoom":
-                "1","isImage": false
-              </td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">headerImage</td>
-              <td className="border p-4">File</td>
-              <td className="border p-4">No</td>
-              <td className="border p-4"></td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">footerImage</td>
-              <td className="border p-4">File</td>
-              <td className="border p-4">No</td>
-              <td className="border p-4"></td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">backImage</td>
-              <td className="border p-4">File</td>
-              <td className="border p-4">No</td>
-              <td className="border p-4">.</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm table-auto">
+            <thead>
+              <tr className="text-[15px]">
+                <td className="border p-4">Name</td>
+                <td className="border p-4">Value</td>
+                <td className="border p-4">Required?</td>
+                <td className="border p-4">Example</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-[14px]">
+                <td className="border p-4">Content-Type</td>
+                <td className="border p-4">application/json</td>
+                <td className="border p-4"></td>
+                <td className="border p-4">$Yes</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">cardName</td>
+                <td className="border p-4">String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4"> "Happy Birthday"</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">cardType</td>
+                <td className="border p-4">String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4"> “flat5x7” / “folded5x7”</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">frontImage</td>
+                <td className="border p-4">File</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">.</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">isHeaderIncluded</td>
+                <td className="border p-4"> Boolean</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">true</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">isFooterIncluded</td>
+                <td className="border p-4"> Boolean</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">true</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">header</td>
+                <td className="border p-4">String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4"> {`{ isImage": true }`}</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">footer</td>
+                <td className="border p-4">String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">
+                  {`{ "data": "Yours Sincerely","textAlign":
+                    "left","justifyContent": "center","flexDirection":
+                    "column","fontType": "Courier New","fontSize": 30,"fontColor":
+                    "rgb(255, 0, 0)","zoom": "1","isImage": false }`}
+                </td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">headerImage</td>
+                <td className="border p-4">File</td>
+                <td className="border p-4">No</td>
+                <td className="border p-4"></td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">footerImage</td>
+                <td className="border p-4">File</td>
+                <td className="border p-4">No</td>
+                <td className="border p-4"></td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">backImage</td>
+                <td className="border p-4">File</td>
+                <td className="border p-4">No</td>
+                <td className="border p-4">.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div>
           <h2 className="mt-[19px] ml-[-2px] font-tiempos font-bold  mb-[7px] text-[23px]">
@@ -309,42 +310,42 @@ function Products() {
           </h2>
         </div>
         <div>
-          <div className='overflow-x-auto'>
-          <table className="min-w-full text-xs table-auto">
-            <thead>
-              <tr className="text-[15px]">
-                <td className="border p-4">Status</td>
-                <td className="border p-4">Errors</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="text-[14px]">
-                <td className="border p-4">400</td>
-                <td className="border p-4">
-                  cardType, cardName & frontImage are required fields
-                </td>
-              </tr>
-              <tr className="text-[14px]">
-                <td className="border p-4">400</td>
-                <td className="border p-4">
-                  headerImage is required when header has isImage true
-                </td>
-              </tr>
-              <tr className="text-[14px]">
-                <td className="border p-4">400</td>
-                <td className="border p-4">
-                  footerImage is required when footer has isImage true
-                </td>
-              </tr>
-              <tr className="text-[14px]">
-                <td className="border p-4">400</td>
-                <td className="border p-4">
-                  For flat cardType, isHeaderIncluded, isFooterIncluded, header,
-                  and footer are required fields
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-xs table-auto">
+              <thead>
+                <tr className="text-[15px]">
+                  <td className="border p-4">Status</td>
+                  <td className="border p-4">Errors</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="text-[14px]">
+                  <td className="border p-4">400</td>
+                  <td className="border p-4">
+                    cardType, cardName & frontImage are required fields
+                  </td>
+                </tr>
+                <tr className="text-[14px]">
+                  <td className="border p-4">400</td>
+                  <td className="border p-4">
+                    headerImage is required when header has isImage true
+                  </td>
+                </tr>
+                <tr className="text-[14px]">
+                  <td className="border p-4">400</td>
+                  <td className="border p-4">
+                    footerImage is required when footer has isImage true
+                  </td>
+                </tr>
+                <tr className="text-[14px]">
+                  <td className="border p-4">400</td>
+                  <td className="border p-4">
+                    For flat cardType, isHeaderIncluded, isFooterIncluded,
+                    header, and footer are required fields
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -371,7 +372,7 @@ function Products() {
             Headers:
           </h2>
         </div>
-        <div className='overflow-x-auto'>
+        <div className="overflow-x-auto">
           <table className="w-2/4 text-sm table-auto">
             <thead>
               <tr className="text-[15px]">
@@ -399,72 +400,72 @@ function Products() {
             Body:
           </h2>
         </div>
-        <div className='overflow-x-auto'>
-        <table className="min-w-full text-sm table-auto">
-          <thead>
-            <tr className="text-[15px]">
-              <td className="border p-4">Key</td>
-              <td className="border p-4">Type/Values</td>
-              <td className="border p-4">Required?</td>
-              <td className="border p-4">Example</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="text-[14px]">
-              <td className="border p-4">CoriginalCustomCardID</td>
-              <td className="border p-4">String</td>
-              <td className="border p-4"> Yes</td>
-              <td className="border p-4">7046020595817</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">cardName</td>
-              <td className="border p-4">String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4"> "Happy Birthday Modified 1a"</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">sHeaderIncluded</td>
-              <td className="border p-4"> Boolean</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4"> True</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">isFooterIncluded</td>
-              <td className="border p-4">Boolean</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">true</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">Header</td>
-              <td className="border p-4"> String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">"isImage": true</td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">footer</td>
-              <td className="border p-4"> String</td>
-              <td className="border p-4">Yes</td>
-              <td className="border p-4">
-                "data": "Yours Sincerely","textAlign": "left","justifyContent":
-                "center","flexDirection": "column","fontType": "Courier
-                New","fontSize": 30,"fontColor": "rgb(255, 0, 0)","zoom":
-                "1","isImage": false
-              </td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">headerImage</td>
-              <td className="border p-4">File</td>
-              <td className="border p-4">No</td>
-              <td className="border p-4"></td>
-            </tr>
-            <tr className="text-[14px]">
-              <td className="border p-4">footerImage</td>
-              <td className="border p-4">File</td>
-              <td className="border p-4">No</td>
-              <td className="border p-4"></td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-sm table-auto">
+            <thead>
+              <tr className="text-[15px]">
+                <td className="border p-4">Key</td>
+                <td className="border p-4">Type/Values</td>
+                <td className="border p-4">Required?</td>
+                <td className="border p-4">Example</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-[14px]">
+                <td className="border p-4">originalCustomCardID</td>
+                <td className="border p-4">String</td>
+                <td className="border p-4"> Yes</td>
+                <td className="border p-4">7046020595817</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">cardName</td>
+                <td className="border p-4">String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4"> "Happy Birthday Modified 1a"</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">isHeaderIncluded</td>
+                <td className="border p-4"> Boolean</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4"> true</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">isFooterIncluded</td>
+                <td className="border p-4">Boolean</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">true</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">header</td>
+                <td className="border p-4"> String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">"isImage": true</td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">footer</td>
+                <td className="border p-4"> String</td>
+                <td className="border p-4">Yes</td>
+                <td className="border p-4">
+                  {`{ "data": "Yours Sincerely","textAlign":
+                  "left","justifyContent": "center","flexDirection":
+                  "column","fontType": "Courier New","fontSize": 30,"fontColor":
+                  "rgb(255, 0, 0)","zoom": "1","isImage": false }`}
+                </td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">headerImage</td>
+                <td className="border p-4">File</td>
+                <td className="border p-4">No</td>
+                <td className="border p-4"></td>
+              </tr>
+              <tr className="text-[14px]">
+                <td className="border p-4">footerImage</td>
+                <td className="border p-4">File</td>
+                <td className="border p-4">No</td>
+                <td className="border p-4"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div>
           <div>
@@ -515,25 +516,25 @@ function Products() {
             </p>
           </div>
         </div>
-        <div className='overflow-x-auto'>
-        <table className="min-w-full mt-[10px] text-sm table-auto">
-          <thead>
-            <tr className="text-[15px]">
-              <td className="border p-4">Method</td>
-              <td className="border p-4">URL</td>
-              <td className="border p-4">Parameters</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="text-[14px]">
-              <td className="border p-4">DELETE</td>
-              <td className="border p-4">
-                /delete-custom-card?productId=7072904347753,7073022279785,123456789000
-              </td>
-              <td className="border p-4">productId - productId contains</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="min-w-full mt-[10px] text-sm table-auto">
+            <thead>
+              <tr className="text-[15px]">
+                <td className="border p-4">Method</td>
+                <td className="border p-4">URL</td>
+                <td className="border p-4">Parameters</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-[14px]">
+                <td className="border p-4">DELETE</td>
+                <td className="border p-4">
+                  /delete-custom-card?productId=7072904347753,7073022279785,123456789000
+                </td>
+                <td className="border p-4">productId - productId contains</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div>
           <h2 className="text-[black] font-tiempos ml-[-2px]  mb-[7px] text-[23px] mt-[61px] font-bold ml-2">
