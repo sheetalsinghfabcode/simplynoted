@@ -428,12 +428,12 @@ export function CheckoutData({
       'u.s.a',
     ];
 
-    let postageUS = null;
-    let postageNonUS = null;
-    let giftCard = null;
-    let shipping = null;
-
     return cartData.map((item) => {
+      let postageUS = null;
+      let postageNonUS = null;
+      let giftCard = null;
+      let shipping = null;
+      
       if (item.giftCardName) {
         let giftProdUrl = item.giftCardProdUrl.split('.com/')[1];
         giftCard = {
@@ -442,7 +442,7 @@ export function CheckoutData({
           qyt: item.qyt,
         };
       }
-  
+
       if (item.isShippidata) {
         let shippingUrl = item.shippingMethodProdUrl.split('.com/')[1];
         shipping = {
@@ -498,7 +498,6 @@ export function CheckoutData({
           };
         }
       }
-
       return {
         productTitle: item.productTitle,
         productId: item?.productId?.match(/\d+/g)?.join(''),
@@ -578,7 +577,7 @@ export function CheckoutData({
         ship_date: item?.optionalShipDate ? item.optionalShipDate : '',
         uqId: giftCard ? giftCard.id : '',
       };
-       properties = {...properties, ...bulkQuantityProperties};
+      properties = {...properties, ...bulkQuantityProperties};
     }
 
     return {...properties};
