@@ -354,12 +354,11 @@ const Accordion = ({
 
   const paymentPurchase = async (data, json) => {
     const payLoad = {
-      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
+      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId[0],
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
       description: selectedPlan,
-
       packageProduct: productId,
       subscriptionProduct: variantId,
     };
