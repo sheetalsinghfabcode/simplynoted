@@ -142,7 +142,7 @@ const PackageModal = ({
                               setSubscription(
                                 subscriptionMetafield?.value || 0,
                               );
-                              setSubscriptionProduct(product.node.id);
+                              setSubscriptionProduct(product.node.variants.edges[0].node.id)
                               setPackageProduct(variant.node.id);
                               setSubscriptionTitle(product.node.title);
                               setAmount(variant.node.price.amount || 0);

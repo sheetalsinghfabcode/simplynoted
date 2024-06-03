@@ -294,7 +294,7 @@ const PaymentModal = ({
 
   const paymentPurchase = (data, json) => {
     const payLoad = {
-      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId,
+      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId[0],
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
