@@ -103,7 +103,12 @@ const Accordion = ({
 
       const json = await res.json();
       if (json) {
-        await createSubscription(json);
+        setPaymentMethodId(id);
+        if (subscriptionTitle === 'Free') {
+          paymentSave(subscriptionTitle, json, true,id);
+        } else {
+          await createSubscription(json);
+        }
       }
     } catch (error) {
       setloader(false);
@@ -354,7 +359,9 @@ const Accordion = ({
 
   const paymentPurchase = async (data, json) => {
     const payLoad = {
-      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId[0],
+      paymentMethodId: paymentMethodId
+        ? paymentMethodId
+        : json?.paymentMethodId[0],
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
@@ -384,7 +391,7 @@ const Accordion = ({
         localStorage.setItem('amount', amount);
         // Handle the response data here
         if (data) {
-          deleteCartItem()
+          deleteCartItem();
           setLoaderTitle('Payment completed successfully... ');
           setTimeout(() => {
             navigate('/account', {
@@ -410,19 +417,35 @@ const Accordion = ({
       });
   };
 
-  const paymentSave = (data, json) => {
-    const payLoad = {
-      subscriptionId: data.subscriptionId,
-      subscriptionName: subscriptionTitle,
-      packageDiscount: String(discount),
-      packageQuantity: String(cards),
-      packagePrice: String(amount),
-      isAutorenew: true,
-      isSubscriptionOnly: true,
-      subscriptionStartDate: data.subscriptionStartDate,
-      subscriptionEndDate: data.subscriptionEndDate,
-      subscriptionStatus: data.status === 'succeeded' ? 'active' : data.status,
-    };
+
+  const paymentSave = (data, json, directly,id) => {
+    let payLoad;
+
+    if (subscriptionTitle === 'Free') {
+      payLoad = {
+        subscriptionName: subscriptionTitle,
+        packageDiscount: String(discount),
+        packageQuantity: String(cards),
+        packagePrice: String(amount),
+        isAutorenew: true,
+        paymentOnly: true,
+      };
+    } 
+    else {
+      payLoad = {
+        subscriptionId: data.subscriptionId,
+        subscriptionName: subscriptionTitle,
+        packageDiscount: String(discount),
+        paymentOnly: false,
+        packageQuantity: String(cards),
+        packagePrice: String(amount),
+        isAutorenew: true,
+        subscriptionStartDate: data.subscriptionStartDate,
+        subscriptionEndDate: data.subscriptionEndDate,
+        subscriptionStatus:
+          data.status === 'succeeded' ? 'active' : data.status,
+      };
+    }
 
     const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
 
@@ -434,12 +457,14 @@ const Accordion = ({
       body: JSON.stringify(payLoad),
     })
       .then((response) => {
+        console.log('response', response);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
       .then((data) => {
+        console.log('data', data);
         paymentPurchase(data, json);
         // Handle the response data here
       })
@@ -783,7 +808,11 @@ const Accordion = ({
                     onClick={() => {
                       if (validateForm()) {
                         setPaymentLoader(true);
-                        createSubscription(paymentMethodId);
+                        if (subscriptionTitle === 'Free') {
+                          paymentSave(subscriptionTitle, paymentMethodId, true,);
+                        } else {
+                          createSubscription(paymentMethodId);
+                        }
                       }
                     }}
                     className="!bg-[#1b5299] w-full !h-[55px] text-[white] font-bold rounded-lg  !px-[30px] uppercase md:text-[16px] text-[12px]"
