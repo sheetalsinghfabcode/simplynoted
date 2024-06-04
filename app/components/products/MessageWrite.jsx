@@ -265,8 +265,8 @@ export function MessageWriting({
           if (obj['Custom 3']) {
             subName = subName?.replace(/\[Custom 3\]/g, obj['Custom 3']);
             csvMessageData = csvMessageData?.replace(
-              /\[Custom 2\]/g,
-              obj['Custom 2'],
+              /\[Custom 3\]/g,
+              obj['Custom 3'],
             );
           }
           obj.msgData = subName;
