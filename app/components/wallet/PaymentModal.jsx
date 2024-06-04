@@ -101,7 +101,12 @@ const PaymentModal = ({
       );
       const json = await res.json();
       if (json) {
-        await createSubscription(id);
+        setPaymentMethodId(id);
+        if (subscriptionTitle === 'Free') {
+          paymentSave(null,id);
+        } else {
+          await createSubscription(id);
+        }
       }
     } catch (error) {
       setPaymentLoader(false);
@@ -294,7 +299,9 @@ const PaymentModal = ({
 
   const paymentPurchase = (data, json) => {
     const payLoad = {
-      paymentMethodId: paymentMethodId ? paymentMethodId : json.paymentMethodId[0],
+      paymentMethodId: paymentMethodId
+        ? paymentMethodId
+        : json?.paymentMethodId[0],
       packageDiscount: Number(discount),
       packageQuantity: Number(cards),
       packagePrice: amount,
@@ -802,7 +809,13 @@ const PaymentModal = ({
                                 );
                               } else {
                                 setPaymentLoader(true);
-                                createSubscription(paymentMethodId);
+                                if (subscriptionTitle === 'Free') {
+                                  paymentSave(subscriptionTitle,
+                                    paymentMethodId,
+                                    true,);
+                                } else {
+                                  createSubscription(paymentMethodId);
+                                }
                               }
                             }
                           }}
