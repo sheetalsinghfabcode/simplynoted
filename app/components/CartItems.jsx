@@ -2,32 +2,39 @@ import {useEffect} from 'react';
 import {useStateContext} from '~/context/StateContext';
 
 const CartItems = ({id}) => {
-  const {setCartCountVal, cartCountVal, setCartData, isCartUpdated, customerId} =
-    useStateContext();
+  const {
+    setCartCountVal,
+    cartCountVal,
+    setCartData,
+    isCartUpdated,
+    customerId,
+  } = useStateContext();
 
   useEffect(() => {
     // Read customerId from localStorage
     const customerId = localStorage.getItem('customerId');
 
-    // Define the API URL with customerId
-    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items?customerId=${customerId}`;
+    if (customerId) {
+      // Define the API URL with customerId
+      const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items?customerId=${customerId}`;
 
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+      fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
 
-      .then((data) => {
-        // Update state with fetched data
-       setCartCountVal(data.result.cartItems.length);
-        setCartData(data.result.cartItems);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+        .then((data) => {
+          // Update state with fetched data
+          setCartCountVal(data.result.cartItems.length);
+          setCartData(data.result.cartItems);
+        })
+        .catch((error) => {
+          console.error('Error fetching data:', error);
+        });
+    }
   }, [isCartUpdated, cartCountVal, customerId]);
 
   return <></>;
