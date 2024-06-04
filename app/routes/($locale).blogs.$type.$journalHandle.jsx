@@ -69,21 +69,21 @@ export default function Article() {
           {formattedDate} &middot; {author?.name}
         </span>
       </PageHeader> */}
-      <div className="px-[5%] mt-[70px]">
+      <div className="mt-[70px]">
         <DynamicTitle
           title={title}
           className={'!text-[30px] '}
         />
 
         <div>
-          {image && (
+          {/* {image && (
             <Image
               data={image}
               className="w-full mx-auto  md:mt-16 max-w-7xl"
               sizes="90vw"
               loading="eager"
             />
-          )}
+          )} */}
           {contentHtml && (
             <div
               dangerouslySetInnerHTML={{__html: contentHtml && contentHtml}}
