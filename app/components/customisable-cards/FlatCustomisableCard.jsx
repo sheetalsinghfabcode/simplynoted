@@ -1365,7 +1365,7 @@ export default function FlatCustomisableCard({
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="md:min-w-[465px] sm:w-[450px] sm:h-[400px] h-[340px] w-[350px] bg-white relative overflow-hidden"
+                  className="md:min-w-[548px] sm:w-[450px] sm:h-[400px] h-[340px] w-[350px] bg-white relative overflow-hidden"
                   style={{
                     zIndex: selectedCardPage === 'Card Front' ? '-30' : '0',
                     transform: isRotationAnimationApplied
@@ -1379,7 +1379,7 @@ export default function FlatCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[528px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                         style={{
                           background: 'transparent',
                           zIndex: '-10',
@@ -1389,7 +1389,7 @@ export default function FlatCustomisableCard({
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px] "
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[528px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
                           zIndex: '-20',

@@ -1217,7 +1217,7 @@ export default function FoldedCustomisableCard({
             <div>
               <div className="border-2 border-black border-solid">
                 <div
-                  className="md:min-w-[465px] sm:w-[450px] w-[350px] sm:h-[400px] h-[340px] bg-white relative overflow-hidden"
+                  className="md:min-w-[548px] sm:w-[450px] w-[350px] sm:h-[400px] h-[340px] bg-white relative overflow-hidden"
                   style={{
                     zIndex: '-30',
                     transform: isRotationAnimationApplied
@@ -1229,7 +1229,7 @@ export default function FoldedCustomisableCard({
                   {(selectedCardPage === 'Card Front' && (
                     <>
                       <div
-                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[528px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                         style={{
                           background: 'transparent',
                           zIndex: '-10',
@@ -1239,7 +1239,7 @@ export default function FoldedCustomisableCard({
                         }}
                       ></div>
                       <div
-                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px] "
+                        className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[528px] w-[330px] "
                         id="frontTrimmedDiv"
                         style={{
                           zIndex: '-20',
@@ -1269,7 +1269,7 @@ export default function FoldedCustomisableCard({
                   )) ||
                     (selectedCardPage === 'Card Inside' && (
                       <div
-                        className="absolute flex justify-center items-center  text-center m-auto inset-0 sm:h-[380px] h-[320px] md:w-[445px] sm:w-[430px] w-[330px] sm:pt-4 pt-2"
+                        className="absolute flex justify-center items-center  text-center m-auto inset-0 sm:h-[380px] h-[320px] md:w-[528px] sm:w-[430px] w-[330px] sm:pt-4 pt-2"
                         style={{
                           transform: isRotationAnimationApplied
                             ? 'rotateY(-180deg)'
@@ -1294,7 +1294,7 @@ export default function FoldedCustomisableCard({
                     (selectedCardPage === 'Card Back' && (
                       <>
                         <div
-                          className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
+                          className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[528px] sm:w-[430px] w-[330px] sm:border-[3px] border-[2px] border-dashed border-[#ff0000]"
                           style={{
                             background: 'transparent',
                             zIndex: '-10',
@@ -1304,7 +1304,7 @@ export default function FoldedCustomisableCard({
                           }}
                         ></div>
                         <div
-                          className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[445px] w-[330px]"
+                          className="absolute flex justify-center sm:h-[380px] h-[320px] items-center m-auto inset-0 md:w-[528px] w-[330px]"
                           id="backTrimmedDiv"
                           style={{
                             zIndex: '-20',
