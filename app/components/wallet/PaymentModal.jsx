@@ -102,6 +102,8 @@ const PaymentModal = ({
       );
       const json = await res.json();
       if (json) {
+        json.paymentMethodId = [json.paymentMethodId];
+
         setPaymentMethodId(id);
         if (subscriptionTitle === 'Free') {
           paymentSave(null,id);

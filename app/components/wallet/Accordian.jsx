@@ -104,6 +104,8 @@ const Accordion = ({
 
       const json = await res.json();
       if (json) {
+        // Expecting to be an array in further usage
+        json.paymentMethodId = [json.paymentMethodId];
         setPaymentMethodId(id);
         if (subscriptionTitle === 'Free') {
           paymentSave(subscriptionTitle, json, true,id);
