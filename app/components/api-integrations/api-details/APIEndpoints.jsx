@@ -1,3 +1,5 @@
+import { SERVER_BASE_URL } from "~/data/config";
+
 const APIEndpoints = () => {
   return (
     <div className="">
@@ -11,7 +13,7 @@ const APIEndpoints = () => {
             className="text-blue-500"
             href="https://hydrogen-simplynoted.vercel.app/pages/api-automation"
           >
-            https://api.simplynoted.com/api
+            {`${SERVER_BASE_URL}/api`}
           </a>
         </p>
         <p className=" ml-[8px] font-thin mt-[20px] mb-[7px]">
@@ -32,9 +34,9 @@ const APIEndpoints = () => {
           found at the endpoint:{' '}
           <a
             className="text-blue-500"
-            href="https://api.simplynoted.com/api/orders"
+            href="https://hydrogen-simplynoted.vercel.app/pages/api-automation"
           >
-            https://api.simplynoted.com/api/orders
+            {`${SERVER_BASE_URL}/api/orders`}
           </a>
         </p>
       </div>

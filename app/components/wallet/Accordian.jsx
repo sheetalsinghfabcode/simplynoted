@@ -12,6 +12,7 @@ import arrow_down from '../../../assets/Image/arrow-down.png';
 import SuccessfullLoader from '../SucessfullLoader';
 import {FaAngleDown, FaAngleUp} from 'react-icons/fa';
 import StripeCardComp from '../StripeCardComp';
+import { SERVER_BASE_URL } from '../../data/config';
 
 const Accordion = ({
   StripeKey,
@@ -82,7 +83,7 @@ const Accordion = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -119,7 +120,7 @@ const Accordion = ({
     try {
       setloader(true);
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -145,7 +146,7 @@ const Accordion = ({
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `${SERVER_BASE_URL}/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -300,7 +301,7 @@ const Accordion = ({
         subscriptionName: subscriptionTitle,
       };
 
-      const apiUrl = `https://api.simplynoted.com/stripe/create-subscription?customerId=${customerID}`;
+      const apiUrl = `${SERVER_BASE_URL}/stripe/create-subscription?customerId=${customerID}`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -336,7 +337,7 @@ const Accordion = ({
   };
 
   function deleteCartItem() {
-    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/cart-items/delete?customerId=${customerID}`;
     fetch(apiUrl, {
       method: 'POST',
     })
@@ -373,7 +374,7 @@ const Accordion = ({
       isAutorenew: true,
     };
 
-    const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/stripe/package-payment?customerId=${customerID}`;
 
     await fetch(apiUrl, {
       method: 'POST',
@@ -451,7 +452,7 @@ const Accordion = ({
       };
     }
 
-    const apiUrl = `https://api.simplynoted.com/stripe/payment-save?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/stripe/payment-save?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',

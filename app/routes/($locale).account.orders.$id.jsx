@@ -11,6 +11,7 @@ import {Link, Heading, PageHeader, Text} from '~/components';
 import DynamicButton from '~/components/DynamicButton';
 import {Fragment, useEffect, useRef, useState} from 'react';
 import placeholderImage from '../../assets/Image/product-placeholder.png';
+import { SERVER_BASE_URL } from '~/data/config';
 
 export const meta = ({data}) => {
   return [{title: `Order ${data?.order?.name}`}];
@@ -432,7 +433,7 @@ async function getNullVariantProducts(nullVariantTitles) {
     const productPromises = [];
     for (const title of nullVariantTitles) {
       const request = fetch(
-        `https://api.simplynoted.com/api/storefront/product?handleName=${getProductHandleFromTitle(
+        `${SERVER_BASE_URL}/api/storefront/product?handleName=${getProductHandleFromTitle(
           title,
         )}`,
       );

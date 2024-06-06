@@ -1,4 +1,5 @@
 import {ExposedAPIsResponse} from '~/data/apiIntegrationData';
+import { SERVER_BASE_URL } from '../../../data/config';
 
 function Products() {
   return (
@@ -78,7 +79,7 @@ function Products() {
           </p>
           <p className="">
             <span className="font-bold">Get:</span>{' '}
-            {`https://api.simplynoted.com/api/customProducts?offset=0`}
+            {`${SERVER_BASE_URL}/api/customProducts?offset=0`}
           </p>
         </div>
         <div className="overflow-x-auto">
@@ -94,7 +95,7 @@ function Products() {
               <tr className="text-[14px]">
                 <td className="border p-4">GET</td>
                 <td className="border p-4">
-                  https://api.simplynoted.com/api/customProducts?offset=0
+                  {`${SERVER_BASE_URL}/api/customProducts?offset=0`}
                 </td>
                 <td className="border p-4">
                   offset – Default/Initial value = 0. You will get the next

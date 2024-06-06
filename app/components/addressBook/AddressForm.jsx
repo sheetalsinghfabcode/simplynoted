@@ -5,6 +5,7 @@ import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
 import {useLocation} from '@remix-run/react';
+import { SERVER_BASE_URL } from '~/data/config';
 
 const AddressForm = ({customerID}) => {
   const {setAddressForm, defaultAddressType, setLoaderTitle, setEditAddress, setShowLoader,setDefaultAddressType} =
@@ -117,7 +118,7 @@ const AddressForm = ({customerID}) => {
     setLoaderTitle('Saving Address Book....');
     setShowLoader(true);
     setLoader(true);
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/addresses?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'POST',

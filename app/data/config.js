@@ -1,0 +1,5 @@
+const SERVER_BASE_URL = 'https://api.simplynoted.com';
+const STRIPE_PUBLISHABLE_KEY =
+  'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
+
+export {SERVER_BASE_URL, STRIPE_PUBLISHABLE_KEY};

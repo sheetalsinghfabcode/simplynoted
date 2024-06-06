@@ -7,6 +7,7 @@ import DefaultFrontCardImage from '../../../assets/Image/foldFront.webp';
 import DefaultBackCardImage from '../../../assets/Image/foldBack.png';
 import SampleQRImage from '../../../assets/Image/sample-qr.png';
 import {MdOutlineDone} from 'react-icons/md';
+import { SERVER_BASE_URL } from '~/data/config';
 // import {useStateContext} from '~/context/StateContext';
 
 export default function FoldedCustomisableCard({
@@ -751,7 +752,7 @@ export default function FoldedCustomisableCard({
       };
 
       let data = await fetch(
-        `https://api.simplynoted.com/api/customizedCard/uploadPDFv2?customerId=${customerId}`,
+        `${SERVER_BASE_URL}/api/customizedCard/uploadPDFv2?customerId=${customerId}`,
         options,
       );
 
@@ -792,7 +793,7 @@ export default function FoldedCustomisableCard({
         }),
       };
       const response = await fetch(
-        'https://api.simplynoted.com/api/storefront/product/checkDuplicateProductName',
+        `${SERVER_BASE_URL}/api/storefront/product/checkDuplicateProductName`,
         options,
       );
 
@@ -929,7 +930,7 @@ export default function FoldedCustomisableCard({
         body: formData,
       };
       const response = await fetch(
-        ` https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
+        `${SERVER_BASE_URL}/api/customizedCard/save?customerId=${customerId}`,
         options,
       );
       if (response.ok) {

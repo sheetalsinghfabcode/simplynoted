@@ -47,6 +47,8 @@ import CircularLoader from '~/components/CircularLoder';
 import { getApi, postApi } from '~/utils/ApiService';
 import { API_PATH } from '~/utils/Path';
 import { useStateContext } from '~/context/StateContext';
+import { SERVER_BASE_URL } from '~/data/config';
+
 export async function loader({params, context}) {
   const {productHandle} = params;
   const data = await context.storefront.query(GiftProduct, {
@@ -124,7 +126,7 @@ export default function CustomProducts() {
       const res = await 
       // getApi(`${API_PATH.GET_HANDLE_NAME}${productHandle}`)
       fetch(
-        `https://api.simplynoted.com/api/storefront/product?handleName=${productHandle}`,
+        `${SERVER_BASE_URL}/api/storefront/product?handleName=${productHandle}`,
       );
       const json = await res.json();
       // console.log(json.result,"EEEEEEEE");
@@ -136,7 +138,7 @@ export default function CustomProducts() {
   }
   async function getMetaFields(id) {
     try {
-      const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`;
+      const queryEndPoint = `${SERVER_BASE_URL}/api/storefront/product/product-metafields`;
       const data = await 
       // postApi(API_PATH.GET_METAFIELDS, {productId: id})
        fetch(queryEndPoint, {

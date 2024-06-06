@@ -11,6 +11,7 @@ import CircularLoader from '../CircularLoder';
 import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import CartItems from '../CartItems';
+import { SERVER_BASE_URL } from '~/data/config';
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -235,7 +236,7 @@ export function AddCart({
       //   `${API_PATH.GET_ADDRESS}${customerid}&type=recipient`,
       // );
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=recipient`,
+        `${SERVER_BASE_URL}/api/storefront/addresses?customerId=${customerid}&type=recipient`,
       );
       const json = await res.json();
       setRecipientAddress(json.result);
@@ -252,7 +253,7 @@ export function AddCart({
       //   `${API_PATH.GET_ADDRESS}${customerid}&type=return`,
       // );
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}&type=return`,
+        `${SERVER_BASE_URL}/api/storefront/addresses?customerId=${customerid}&type=return`,
       );
       const json = await res.json();
       setReturnAddress(json.result);
@@ -446,7 +447,7 @@ export function AddCart({
         : [newCartItem, ...cartData];
 
       // Define the API URL
-      const url = 'https://api.simplynoted.com/api/storefront/cart-items';
+      const url = `${SERVER_BASE_URL}/api/storefront/cart-items`;
 
       // Make POST request to update data
       const response = await fetch(url, {
@@ -520,7 +521,7 @@ export function AddCart({
       let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
 
       const res = await fetch(
-        'https://api.simplynoted.com/api/new-discounted-card',
+        `${SERVER_BASE_URL}/api/new-discounted-card`,
         {
           method: 'POST',
           headers: {

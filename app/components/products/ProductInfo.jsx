@@ -19,6 +19,7 @@ import {VideoTutorial} from '../VideoTutorial';
 import DynamicButton from '../DynamicButton';
 import {useStateContext} from '~/context/StateContext';
 import ConfirmationModal from '../modal/ConfirmationModal';
+// import { SERVER_BASE_URL } from '~/data/config';
 
 export function ProductInfo({
   title,
@@ -60,7 +61,7 @@ export function ProductInfo({
   // async function customFontFamily(id) {
   //   try {
   //     const res = await fetch(
-  //       `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
+  //       `${SERVER_BASE_URL}/fonts/getMyFonts/${id}`,
   //     );
   //     const json = await res.json();
   //     setCustomFonts(json.data);

@@ -11,6 +11,7 @@ import DefaultFrontCardImage from '../../../assets/Image/flatCustomImg.png';
 import CardBackImage from '../../../assets/Image/foldFront.webp';
 import SampleQRImage from '../../../assets/Image/sample-qr.png';
 import {MdOutlineDone} from 'react-icons/md';
+import { SERVER_BASE_URL } from '~/data/config';
 // import { useStateContext } from '~/context/StateContext';
 
 export default function FlatCustomisableCard({
@@ -874,7 +875,7 @@ export default function FlatCustomisableCard({
       };
 
       let data = await fetch(
-        `https://api.simplynoted.com/api/customizedCard/uploadPDFv2?customerId=${customerId}`,
+        `${SERVER_BASE_URL}/api/customizedCard/uploadPDFv2?customerId=${customerId}`,
         options,
       );
 
@@ -923,7 +924,7 @@ export default function FlatCustomisableCard({
         }),
       };
       const response = await fetch(
-        'https://api.simplynoted.com/api/storefront/product/checkDuplicateProductName',
+        `${SERVER_BASE_URL}/api/storefront/product/checkDuplicateProductName`,
         options,
       );
 
@@ -1065,7 +1066,7 @@ export default function FlatCustomisableCard({
       };
 
       const response = await fetch(
-        ` https://api.simplynoted.com/api/customizedCard/save?customerId=${customerId}`,
+        `${SERVER_BASE_URL}/api/customizedCard/save?customerId=${customerId}`,
         options,
       );
       if (response.ok) {

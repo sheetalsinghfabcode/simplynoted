@@ -1,5 +1,6 @@
 import {useEffect} from 'react';
 import {useStateContext} from '~/context/StateContext';
+import { SERVER_BASE_URL } from '~/data/config';
 
 const CartItems = () => {
   const {
@@ -29,7 +30,7 @@ const CartItems = () => {
 
   async function updateCartItems(customerId) {
     try {
-      const URL = `https://api.simplynoted.com/api/storefront/cart-items?customerId=${customerId}`;
+      const URL = `${SERVER_BASE_URL}/api/storefront/cart-items?customerId=${customerId}`;
       const response = await fetch(URL);
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -46,7 +47,7 @@ const CartItems = () => {
 
   async function deleteCartItem(customerId) {
     try {
-      const URL = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+      const URL = `${SERVER_BASE_URL}/api/storefront/cart-items/delete?customerId=${customerId}`;
       const response = await fetch(URL, {method: 'POST'});
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -67,7 +68,7 @@ const CartItems = () => {
         localStorage.getItem('packageDiscount'),
       );
       if (!localPackageDiscount) return true;
-      const URL = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerId}`;
+      const URL = `${SERVER_BASE_URL}/stripe/customer-data?customerId=${customerId}`;
       const response = await fetch(URL);
       if (!response.ok) {
         throw new Error('Network response was not ok');

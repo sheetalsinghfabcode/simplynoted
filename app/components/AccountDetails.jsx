@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import CircularLoader from './CircularLoder';
 import {useStateContext} from '~/context/StateContext';
+import { SERVER_BASE_URL } from '~/data/config';
 
 export function AccountDetails({customer, apiKey,setApiKey}) {
   const {firstName, lastName, email, phone, id} = customer;
@@ -15,7 +16,7 @@ export function AccountDetails({customer, apiKey,setApiKey}) {
       const response = await 
       // postApi(`${API_PATH.GENRATE_API_KEY}${customerID}`,'')
       fetch(
-        `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/api/storefront/apiKeys?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {

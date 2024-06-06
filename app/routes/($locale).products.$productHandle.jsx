@@ -52,6 +52,7 @@ import Breadcrumbs from '~/components/Breadcrumbs';
 import {useStateContext} from '~/context/StateContext';
 import Instruction from '~/components/modal/Instruction';
 import CircularLoader from '~/components/CircularLoder';
+import { SERVER_BASE_URL } from '~/data/config';
 
 export const headers = routeHeaders;
 
@@ -269,7 +270,7 @@ export default function Product() {
   }, []);
   async function getMetaFields(id) {
     try {
-      const queryEndPoint = `https://api.simplynoted.com/api/storefront/product/product-metafields`;
+      const queryEndPoint = `${SERVER_BASE_URL}/api/storefront/product/product-metafields`;
       const data = await fetch(queryEndPoint, {
         method: 'POST',
         headers: {
@@ -646,7 +647,7 @@ export function LoginFunc() {
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `${SERVER_BASE_URL}/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
 

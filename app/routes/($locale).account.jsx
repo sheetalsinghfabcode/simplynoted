@@ -23,6 +23,7 @@ import {
 } from '~/components';
 import {FeaturedCollections} from '~/components/FeaturedCollections';
 import {usePrefixPathWithLocale} from '~/lib/utils';
+import {STRIPE_PUBLISHABLE_KEY, SERVER_BASE_URL} from '~/data/config';
 import {CACHE_NONE, routeHeaders} from '~/data/cache';
 import {ORDER_CARD_FRAGMENT} from '~/components/OrderCard';
 import Profile from '~/components/Profile';
@@ -45,6 +46,7 @@ import CardComponent from '~/components/account/CardComponent';
 import automate from '../../assets/Image/automate.png';
 import Instruction from '~/components/modal/Instruction';
 import ApiKeyModal from '~/components/modal/ApiKeyModal';
+
 export const headers = routeHeaders;
 
 export async function loader({request, context, params}) {
@@ -55,8 +57,7 @@ export async function loader({request, context, params}) {
   const loginPath = locale ? `/${locale}/account/login` : '/account/login';
   const isAccountPage = /^\/account\/?$/.test(pathname);
 
-  const StripeKey =
-    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
+  const StripeKey = STRIPE_PUBLISHABLE_KEY;
   let WalletData;
   try {
     WalletData = await fetchWalletData(context);
@@ -230,7 +231,7 @@ function Account({customer}) {
   async function getSavedCards(Id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${result}`,
+        `${SERVER_BASE_URL}/stripe/customer-data?customerId=${result}`,
       );
       const json = await res.json();
 
@@ -265,7 +266,7 @@ function Account({customer}) {
   const generateApiKey = async () => {
     try {
       const response = await fetch(
-        `https://api.simplynoted.com/api/storefront/apiKeys?customerId=${Number(
+        `${SERVER_BASE_URL}/api/storefront/apiKeys?customerId=${Number(
           customer.id.match(/\d+/)[0],
         )}`,
         {
@@ -407,7 +408,7 @@ function Account({customer}) {
                     downloadButtonText="Download Bulk Template"
                     onDownload={() =>
                       window.open(
-                        'https://api.simplynoted.com/docs/bulk-template',
+                        SERVER_BASE_URL + '/docs/bulk-template',
                         '_self',
                       )
                     }
@@ -665,7 +666,7 @@ async function getNullVariantProducts(nullVariantTitles) {
     const productPromises = [];
     for (const title of nullVariantTitles) {
       const request = fetch(
-        `https://api.simplynoted.com/api/storefront/product?handleName=${getProductHandleFromTitle(
+        `${SERVER_BASE_URL}/api/storefront/product?handleName=${getProductHandleFromTitle(
           title,
         )}`,
       );

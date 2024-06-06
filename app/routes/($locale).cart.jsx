@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {defer, json, redirect} from '@shopify/remix-oxygen';
 import {useLoaderData, Await} from '@remix-run/react';
+import {STRIPE_PUBLISHABLE_KEY, SERVER_BASE_URL} from '~/data/config';
 import Modal from 'react-modal';
 import {BsXCircle} from 'react-icons/bs';
 import {ImCross} from 'react-icons/im';
@@ -26,8 +27,7 @@ import {FiArrowLeft} from 'react-icons/fi';
 let storedDataString, storedDataArray;
 
 export async function loader({context, request}) {
-  const StripeKey =
-    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
+  const StripeKey = STRIPE_PUBLISHABLE_KEY;
 
   const data = await context.storefront.query(GiftProduct, {
     variables: {},
@@ -106,9 +106,12 @@ export default function AddCartFunc() {
 
   useEffect(() => {
     if (bulkAddress.length) {
-      setMsgShow(cartData[selectedCartItemIndex]?.csvMessageData[currentRecipientIndex].msg);
+      setMsgShow(
+        cartData[selectedCartItemIndex]?.csvMessageData[currentRecipientIndex]
+          .msg,
+      );
     }
-  },[selectedCartItemIndex, currentRecipientIndex]);
+  }, [selectedCartItemIndex, currentRecipientIndex]);
 
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
@@ -131,7 +134,7 @@ export default function AddCartFunc() {
     const customerId = localStorage.getItem('customerId');
 
     try {
-      const url = 'https://api.simplynoted.com/api/storefront/cart-items';
+      const url = `${SERVER_BASE_URL}/api/storefront/cart-items`;
       const response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -219,7 +222,7 @@ export default function AddCartFunc() {
   function deleteCartItem() {
     const customerId = localStorage.getItem('customerId');
 
-    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/cart-items/delete?customerId=${customerId}`;
 
     // Make a DELETE request to the API
     fetch(apiUrl, {
@@ -279,7 +282,7 @@ export default function AddCartFunc() {
     setClearCartModal(false);
 
     const customerId = localStorage.getItem('customerId');
-    const apiUrl = `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/cart-items/delete?customerId=${customerId}`;
     fetch(apiUrl, {
       method: 'POST',
     })
@@ -358,7 +361,7 @@ export default function AddCartFunc() {
     try {
       if (cartData[cartItemIndex]?.csvFileURL) {
         const response = await fetch(
-          `https://api.simplynoted.com/api/storefront/addresses/partial-uploaded?customerId=${customerId}`,
+          `${SERVER_BASE_URL}/api/storefront/addresses/partial-uploaded?customerId=${customerId}`,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -376,7 +379,9 @@ export default function AddCartFunc() {
 
         const data = await response.json();
         setBulkAddress(data.result[0]?.addresses);
-        setMsgShow(cartData[cartItemIndex]?.csvMessageData[currentRecipientIndex].msg);
+        setMsgShow(
+          cartData[cartItemIndex]?.csvMessageData[currentRecipientIndex].msg,
+        );
       }
 
       setIsOpen2(true);
@@ -1394,7 +1399,9 @@ export default function AddCartFunc() {
                             key={index}
                             style={{
                               display:
-                                index === currentRecipientIndex ? 'block' : 'none',
+                                index === currentRecipientIndex
+                                  ? 'block'
+                                  : 'none',
                             }}
                             className="mt-[10px]"
                           >

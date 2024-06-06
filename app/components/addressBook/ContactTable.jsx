@@ -13,6 +13,7 @@ import {useLocation} from '@remix-run/react';
 import {VideoTutorial} from '../VideoTutorial';
 import {RxCross2} from 'react-icons/rx';
 import SuccessfullLoader from '../SucessfullLoader';
+import {SERVER_BASE_URL} from '~/data/config';
 
 const ContactTable = ({
   customerID,
@@ -81,7 +82,7 @@ const ContactTable = ({
     setDeleteModal(false);
     setLoaderTitle('Deleting Address...');
     setShowLoader(true);
-    const url = `https://api.simplynoted.com/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
+    const url = `${SERVER_BASE_URL}/api/storefront/addresses/multiple-remove?customerId=${customerID}`;
 
     fetch(url, {
       method: 'POST',
@@ -353,7 +354,6 @@ const ContactTable = ({
     return cleanedHeaders;
   }
 
-
   const handleUploadClick = async () => {
     setShowLoader(true);
     setUploadBulkAddress(false);
@@ -385,8 +385,6 @@ const ContactTable = ({
         errors.push(missingKeys);
       }
     });
-
-  
 
     if (errors.length > 0) {
       setErrorModal(true);
@@ -425,15 +423,19 @@ const ContactTable = ({
           const missingFields = [];
 
           const obj = batchData[index];
-            for (const key of requiredFields) {
-              if (obj[key] === '') {
-                missingFields.push(key);
-              }
+          for (const key of requiredFields) {
+            if (obj[key] === '') {
+              missingFields.push(key);
             }
+          }
 
           if (missingFields.length > 0) {
             setSelectedFile(null);
-            errors.push(` ${missingFields.join(', ')} is empty please check at row ${index + 1}`);
+            errors.push(
+              ` ${missingFields.join(', ')} is empty please check at row ${
+                index + 1
+              }`,
+            );
           }
         }
 
@@ -475,7 +477,7 @@ const ContactTable = ({
   const uploadDataBatchToAPI = async (batchData, totalAddresses) => {
     setLoaderTitle('Uploading Address Book....');
     setShowLoader(true);
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/addresses/multiple-save?customerId=${customerID}`;
 
     const requestData = batchData.map((data) => ({
       firstName: data['First Name'] || '',
@@ -694,7 +696,7 @@ const ContactTable = ({
 
                   <a
                     className="text-[#000]  w-[233px] text-[14px] lg:whitespace-nowrap leading-[22px] font-karla font-bold"
-                    href="https://api.simplynoted.com/docs/bulk-template"
+                    href={`${SERVER_BASE_URL}/docs/bulk-template`}
                   >
                     Download bulk address template
                   </a>
