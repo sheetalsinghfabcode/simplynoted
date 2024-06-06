@@ -1,7 +1,8 @@
+import {useState, useEffect} from 'react';
 import {defer} from '@shopify/remix-oxygen';
 import {useLoaderData, useNavigate} from '@remix-run/react';
+import {STRIPE_PUBLISHABLE_KEY, SERVER_BASE_URL} from '~/data/config';
 import WalletTable from '../components/wallet/WalletTable';
-import {useState, useEffect} from 'react';
 import WalletPlan from '~/components/wallet/WalletPlan';
 import WalletPurchase from '../components/wallet/WalletPurchase';
 import Accordion from '~/components/wallet/Accordian';
@@ -12,8 +13,7 @@ import {useStateContext} from '~/context/StateContext';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 export async function loader({context}) {
-  const StripeKey =
-    'pk_live_51NWJuCKwXDGuBPYACTmf4whQke6gj77EyaKRvNgEwQ6TtajZ2WV5mqId0CJVv681JbA5OAoW58UBua1nyYCOKjCf00PsVowSiN';
+  const StripeKey = STRIPE_PUBLISHABLE_KEY;
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });
@@ -68,7 +68,7 @@ export default function SimplyNoted() {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/stripe/customer-data?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/stripe/customer-data?customerId=${customerID}`;
 
     // Make a GET request to the API
     fetch(apiUrl)

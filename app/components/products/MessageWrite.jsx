@@ -19,6 +19,7 @@ import {Modal as ModalComp} from '../Modal';
 import SuccessfullLoader from '../SucessfullLoader';
 import {Link} from '../Link';
 import CustomDropdown from '../CustomDropDown';
+import { SERVER_BASE_URL } from "../../data/config"
 
 let mainMessageBox,
   signOffTextBox,
@@ -881,7 +882,7 @@ export function MessageWriting({
         };
 
         const res = await fetch(
-          `https://api.simplynoted.com/api/orders/bulk-orders-partial-upload-s3?customerId=${customerid}`,
+          `${SERVER_BASE_URL}/api/orders/bulk-orders-partial-upload-s3?customerId=${customerid}`,
           {
             method: 'POST',
             timeout: 0,
@@ -918,7 +919,7 @@ export function MessageWriting({
     setLoaderMessage('Uploading Addresses...');
     setLoader(true);
 
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/multiple-save?customerId=${customerid}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/addresses/multiple-save?customerId=${customerid}`;
     try {
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -989,7 +990,7 @@ export function MessageWriting({
   async function aiGenrateMess() {
     setAiTestLoader(true);
     try {
-      const res = await fetch('https://api.simplynoted.com/api/ai-generate', {
+      const res = await fetch(`${SERVER_BASE_URL}/api/ai-generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1083,7 +1084,7 @@ export function MessageWriting({
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerid}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/addresses?customerId=${customerid}`;
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {
@@ -1117,7 +1118,7 @@ export function MessageWriting({
         setShowLoader(true);
 
         const res = await fetch(
-          `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+          `${SERVER_BASE_URL}/api/storefront/messageTemplates?customerId=${customerid}`,
           {
             method: 'POST',
             body: formData,
@@ -1198,7 +1199,7 @@ export function MessageWriting({
   async function SavedTemp() {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates?customerId=${customerid}`,
+        `${SERVER_BASE_URL}/api/storefront/messageTemplates?customerId=${customerid}`,
       );
       const json = await res.json();
       setloadTempData(json.result);
@@ -1304,7 +1305,7 @@ export function MessageWriting({
       const formData = new FormData();
       formData.append('templateId', val);
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/messageTemplates/delete?customerId=${customerid}`,
+        `${SERVER_BASE_URL}/api/storefront/messageTemplates/delete?customerId=${customerid}`,
         {
           method: 'POST',
           body: formData,
@@ -1379,7 +1380,7 @@ export function MessageWriting({
     if (!customFonts.length) return;
     for (const font of customFonts) {
       const res = await fetch(
-        `https://api.simplynoted.com/fonts/myFont/${font.fileName}`,
+        `${SERVER_BASE_URL}/fonts/myFont/${font.fileName}`,
       );
       const fontData = await readReadableFile(res.body);
       const fontBlob = new Blob([fontData.buffer]);
@@ -1424,7 +1425,7 @@ export function MessageWriting({
   async function customFontFamily(id) {
     try {
       const res = await fetch(
-        `https://api.simplynoted.com/fonts/getMyFonts/${id}`,
+        `${SERVER_BASE_URL}/fonts/getMyFonts/${id}`,
       );
       const json = await res.json();
 
@@ -1442,7 +1443,7 @@ export function MessageWriting({
   }
   function onConfirmClick() {
     const anchor = document.createElement('a');
-    anchor.href = 'https://api.simplynoted.com/docs/new-birthday-template';
+    anchor.href = `${SERVER_BASE_URL}/docs/new-birthday-template`;
     anchor.download = 'new-birthday-template';
     document.body.appendChild(anchor);
     anchor.click();
@@ -2323,7 +2324,7 @@ export function MessageWriting({
                         )}
                         <>
                           <a
-                            href="https://api.simplynoted.com/docs/bulk-template"
+                            href={`${SERVER_BASE_URL}/docs/bulk-template`}
                             className="underline  text-[14px] font-normal text-[#1B5299]"
                           >
                             Download The Bulk Order Template
@@ -2433,7 +2434,7 @@ export function MessageWriting({
                           )}
                           <>
                             <a
-                              href="https://api.simplynoted.com/docs/bulk-template"
+                              href={`${SERVER_BASE_URL}/docs/bulk-template`}
                               className="underline  text-[14px] font-normal text-[#1B5299]"
                             >
                               Download Bulk Order Templates

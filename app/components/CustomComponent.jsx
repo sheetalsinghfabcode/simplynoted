@@ -8,6 +8,7 @@ import {getProductPlaceholder} from '~/lib/placeholders';
 import {RiDeleteBin6Line} from 'react-icons/ri';
 import ConfirmationModal from './modal/ConfirmationModal';
 import {useStateContext} from '~/context/StateContext';
+import { SERVER_BASE_URL } from '~/data/config';
 
 export function CustomComponent({product, offPrice, productPrice, customerId}) {
   const [loader, setLoader] = useState(false);
@@ -27,7 +28,7 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
       // setLoader(true)
       await deleteProductFromCartItems(id);
       const res = await fetch(
-        `https://api.simplynoted.com/api/customizedCard/deleteProduct?customerId=${customerId}`,
+        `${SERVER_BASE_URL}/api/customizedCard/deleteProduct?customerId=${customerId}`,
         {
           method: 'POST',
           headers: {
@@ -56,8 +57,8 @@ export function CustomComponent({product, offPrice, productPrice, customerId}) {
       if (foundProductIndex === -1) return;
       const newCartData = cartData.filter((item) => item.productId != id);
       const url = newCartData.length
-        ? 'https://api.simplynoted.com/api/storefront/cart-items'
-        : `https://api.simplynoted.com/api/storefront/cart-items/delete?customerId=${customerId}`;
+        ? `${SERVER_BASE_URL}/api/storefront/cart-items`
+        : `${SERVER_BASE_URL}/api/storefront/cart-items/delete?customerId=${customerId}`;
 
       const options = {
         method: 'POST',

@@ -4,6 +4,7 @@ import EditAddressForm from '../components/addressBook/EditAddressForm';
 import {useNavigate} from '@remix-run/react';
 import ContactTable from '~/components/addressBook/ContactTable';
 import {useStateContext} from '~/context/StateContext';
+import { SERVER_BASE_URL } from '../data/config';
 
 let customerID;
 
@@ -41,7 +42,7 @@ export default function AddressBook() {
 
   useEffect(() => {
     // Define the API URL
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/addresses?customerId=${customerID}`;
     // Make a GET request to the API
     fetch(apiUrl)
       .then((response) => {

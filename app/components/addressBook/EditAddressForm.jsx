@@ -4,6 +4,7 @@ import DateInput from '../addressBook/DateInput';
 import DynamicButton from '../DynamicButton';
 import {useStateContext} from '../../context/StateContext';
 import CircularLoader from '../CircularLoder';
+import { SERVER_BASE_URL } from '../../data/config';
 
 const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
   const {setAddressForm, setShowLoader, setLoaderTitle} = useStateContext();
@@ -91,7 +92,7 @@ const EditAddressForm = ({setSelectedAddress, customerID, selectedAddress}) => {
     setShowLoader(true);
     setLoaderTitle('Updating Address Book');
     setLoader(true);
-    const apiUrl = `https://api.simplynoted.com/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
+    const apiUrl = `${SERVER_BASE_URL}/api/storefront/addresses/${selectedAddress._id}?customerId=${customerID}`;
 
     fetch(apiUrl, {
       method: 'PUT',

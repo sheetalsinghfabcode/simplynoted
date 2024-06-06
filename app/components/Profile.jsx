@@ -6,6 +6,7 @@ import {json} from '@shopify/remix-oxygen';
 import {useStateContext} from '~/context/StateContext';
 import SuccessfullLoader from './SucessfullLoader';
 import location from '../../location.json';
+import { SERVER_BASE_URL } from '~/data/config';
 
 const Profile = ({
   customer,
@@ -99,7 +100,7 @@ const Profile = ({
 
     try {
       const response = await fetch(
-        `https://api.simplynoted.com/api/users/update-profile?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/api/users/update-profile?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -174,7 +175,7 @@ const Profile = ({
     setLoader(true);
     try {
       const response = await fetch(
-        `https://api.simplynoted.com/api/users/update-password?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/api/users/update-password?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {

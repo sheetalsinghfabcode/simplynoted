@@ -23,6 +23,7 @@ import DynamicButton from '../DynamicButton';
 import pen from '../../../assets/Image/pen-img.webp';
 import swiper_arrow_left from '../../../assets/Image/swiper-arrow-left.png';
 import swiper_arrow_right from '../../../assets/Image/swiper-arrow-right.png';
+import { SERVER_BASE_URL } from '~/data/config';
 
 const Card = () => {
   const [emailForSubs, setEmailForSubs] = useState('');
@@ -49,7 +50,7 @@ const Card = () => {
       formData.append('email', emailForSubs);
 
       const res = await fetch(
-        `https://api.simplynoted.com/api/storefront/users/newsletter-subscription`,
+        `${SERVER_BASE_URL}/api/storefront/users/newsletter-subscription`,
         {
           method: 'POST',
           body: formData,

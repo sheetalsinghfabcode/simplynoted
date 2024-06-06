@@ -16,6 +16,7 @@ import {useNavigate} from '@remix-run/react';
 import {Link} from '~/components';
 import CircularLoader from './CircularLoder';
 import ConfirmationModal from './modal/ConfirmationModal';
+import { SERVER_BASE_URL } from '~/data/config';
 
 export function CheckoutData({
   setShowCartPage,
@@ -133,7 +134,7 @@ export function CheckoutData({
       //   },
       // );
       fetch(
-        `https://api.simplynoted.com/stripe/create-customer?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/stripe/create-customer?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -167,7 +168,7 @@ export function CheckoutData({
       //   paymentMethodId: paymentID,
       // });
       fetch(
-        `https://api.simplynoted.com/stripe/add-new-payment-method?customerId=${customerID}`,
+        `${SERVER_BASE_URL}/stripe/add-new-payment-method?customerId=${customerID}`,
         {
           method: 'POST',
           headers: {
@@ -191,7 +192,7 @@ export function CheckoutData({
     try {
       const res = await // getApi(`${API_PATH.GET_STRIPE_CUSTOMER_DATA}${Id}`);
       fetch(
-        `https://api.simplynoted.com/stripe/customer-data?customerId=${Id}`,
+        `${SERVER_BASE_URL}/stripe/customer-data?customerId=${Id}`,
       );
       const json = await res.json();
       if (json) {
@@ -217,7 +218,7 @@ export function CheckoutData({
       //   `${API_PATH.GET_DISCOUNT_COUPON}${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       // );
       fetch(
-        `https://api.simplynoted.com/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
+        `${SERVER_BASE_URL}/api/storefront/shopify/coupon-details?code=${discountCouponCode.payloadValue}&amount=${totalPrize}&customerId=${customerID}`,
       );
       const data = await res.json();
 
@@ -377,7 +378,7 @@ export function CheckoutData({
         //   payload,
         // );
         fetch(
-          `https://api.simplynoted.com/api/storefront/checkout?customerId=${customerID}`,
+          `${SERVER_BASE_URL}/api/storefront/checkout?customerId=${customerID}`,
           {
             method: 'POST',
             headers: {

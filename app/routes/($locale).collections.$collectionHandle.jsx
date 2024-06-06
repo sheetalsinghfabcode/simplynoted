@@ -34,6 +34,8 @@ import {getApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import ConfirmationModal from '~/components/modal/ConfirmationModal';
 import {useStateContext} from '~/context/StateContext';
+import { SERVER_BASE_URL } from '~/data/config';
+
 export const headers = routeHeaders;
 
 export async function loader({params, request, context}) {
@@ -242,7 +244,7 @@ export default function Collection() {
         //   `${API_PATH.GET_CUSTOM_CARDS}${customerid}&offset=${offSetVal}`,
         // );
         const res = await fetch(
-          `https://api.simplynoted.com/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
+          `${SERVER_BASE_URL}/api/storefront/product/customizable-cards?customerId=${customerid}&offset=${offSetVal}`,
         );
         const json = await res.json();
         let myData = await json.result.products;
