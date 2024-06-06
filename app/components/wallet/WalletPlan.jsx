@@ -1,5 +1,6 @@
 import DynamicButton from '../DynamicButton';
 import {useEffect, useState} from 'react';
+import {PRODUCTION_PLANS_SHOPIFY_IDS} from '~/data/config';
 
 const WalletPlans = ({
   WalletData,
@@ -43,9 +44,6 @@ const WalletPlans = ({
     }
   }, [stripeCollection]);
 
-
-
-
   function formatNumberWithCommas(number) {
     return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
   }
@@ -64,10 +62,7 @@ const WalletPlans = ({
       const isZeroDiscountPlan = discountPercentage === 0;
       setIsButtonDisabled(isZeroDiscountPlan);
     }
-    
   }, [selectedPlan]);
-
-
 
   return (
     <div className="w-full font-karla plan-input-radio mx-auto my-[16px] ">
@@ -76,6 +71,12 @@ const WalletPlans = ({
           <div
             key={index}
             className={`flex-1 p-[20px] ${
+              PRODUCTION_PLANS_SHOPIFY_IDS.includes(
+                product?.node.id.match(/\d+$/)[0],
+              )
+                ? 'block'
+                : 'hidden'
+            } ${
               (subscriptionTitle === product?.node?.title && 'bg-[#f7b7b7]') ||
               (stripeCollection?.stripe?.subscription ===
                 product?.node?.title &&
@@ -129,7 +130,9 @@ const WalletPlans = ({
                         } else {
                           setSubscription(0);
                         }
-                        setSubscriptionProduct(product.node.variants.edges[0].node.id)
+                        setSubscriptionProduct(
+                          product.node.variants.edges[0].node.id,
+                        );
                         setPackageProduct(variant.node.id);
                         setSubscriptionTitle(product.node.title);
                         setAmount(variant.node.price.amount || 0);
