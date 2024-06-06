@@ -367,7 +367,10 @@ const Accordion = ({
       packagePrice: amount,
       description: selectedPlan,
       packageProduct: productId,
+      subscriptionName: subscriptionTitle,
       subscriptionProduct: variantId,
+      isSubscriptionOnly: true,
+      isAutorenew: true,
     };
 
     const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
@@ -444,6 +447,7 @@ const Accordion = ({
         subscriptionEndDate: data.subscriptionEndDate,
         subscriptionStatus:
           data.status === 'succeeded' ? 'active' : data.status,
+        isSubscriptionOnly: true
       };
     }
 

@@ -308,7 +308,9 @@ const PaymentModal = ({
       description: selectedPlan,
       packageProduct: productId,
       subscriptionProduct: variantId,
+      subscriptionName: subscriptionTitle,
       isSubscriptionOnly: true,
+      isAutorenew: true,
     };
 
     const apiUrl = `https://api.simplynoted.com/stripe/package-payment?customerId=${customerID}`;
@@ -810,9 +812,7 @@ const PaymentModal = ({
                               } else {
                                 setPaymentLoader(true);
                                 if (subscriptionTitle === 'Free') {
-                                  paymentSave(subscriptionTitle,
-                                    paymentMethodId,
-                                    true,);
+                                  paymentSave(null,paymentMethodId);
                                 } else {
                                   createSubscription(paymentMethodId);
                                 }
