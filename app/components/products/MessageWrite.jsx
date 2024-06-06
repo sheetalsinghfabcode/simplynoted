@@ -226,7 +226,7 @@ export function MessageWriting({
 
       if (fileData.length) {
         fileData.map((obj) => {
-          let csvMessageData;
+          let csvMessageData = baseCustomMessage;
           if (obj['First Name']) {
             subName = subName?.replace(/\[First Name\]/g, obj['First Name']);
             csvMessageData = baseCustomMessage?.replace(
