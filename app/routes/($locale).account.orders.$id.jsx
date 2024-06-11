@@ -67,7 +67,8 @@ export async function loader({request, context, params}) {
 }
 
 export default function OrderRoute() {
-  const {order, orderLineItems, discountValue, discountPercentage} = useLoaderData();
+  const {order, orderLineItems, discountValue, discountPercentage} =
+    useLoaderData();
   const {setOrderHistory} = useStateContext();
   const isMounted = useRef(false);
   const [lineItems, setlineItems] = useState(orderLineItems);
@@ -97,7 +98,13 @@ export default function OrderRoute() {
           >
             Placed on {new Date(order.processedAt).toDateString()}
           </span>
-          <div className="grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200">
+          <div className="border-none md:mb-2 md:mt-2">
+            <span className="mb-4 font-semibold  text-[16px] text-[#141414e6] ">
+              Status : &nbsp;
+              {statusMessage(order.fulfillmentStatus)}
+            </span>
+          </div>
+          <div className="grid items-start gap-12 sm:grid-cols-1 md:grid-cols-3 md:gap-16 sm:divide-y sm:divide-gray-200">
             <table className="my-8 divide-y divide-gray-300 md:col-span-3">
               <thead>
                 <tr className="align-baseline text-[16px] xl:text-[18px] font-semibold ">
@@ -105,28 +112,53 @@ export default function OrderRoute() {
                     scope="col"
                     className="pb-4 pl-0 pr-3 font-semibold text-left"
                   >
-                    Product
+                    PRODUCT
+                  </th>
+                  <th
+                    scope="col"
+                    className="pb-4 pl-0 pr-3 font-semibold text-left"
+                  >
+                    ORDER MESSAGE
+                  </th>
+                  <th
+                    scope="col"
+                    className="pb-4 pl-0 pr-3 font-semibold text-left"
+                  >
+                    FONT SELECTION
+                  </th>
+                  <th
+                    scope="col"
+                    className="pb-4 pl-0 pr-3 font-semibold text-left"
+                  >
+                    SENDER'S ADDRESS
+                  </th>
+                  <th
+                    scope="col"
+                    className="pb-4 pl-0 pr-3 font-semibold text-left"
+                  >
+                    RECIPIENT'S ADDRESS
                   </th>
                   <th
                     scope="col"
                     className="hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell"
                   >
-                    Price
+                    PRICE
                   </th>
                   <th
                     scope="col"
                     className="hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell"
                   >
-                    Quantity
+                    QUANTITY
                   </th>
                   <th
                     scope="col"
                     className="px-4 pb-4 font-semibold text-right"
                   >
-                    Total
+                    TOTAL
                   </th>
                 </tr>
               </thead>
+
               <tbody className="divide-y divide-gray-200">
                 {lineItems.map((lineItem, index) => (
                   <Fragment key={index}>
@@ -178,7 +210,7 @@ export default function OrderRoute() {
                                 size="fine"
                                 className="mt-1 text-[16px] text-[#141414e6] font-medium"
                               >
-                                {lineItem?.variant?.title || 'Untitled Variant'}
+                                {lineItem?.variant?.title || ''}
                               </Text>
                             </dd>
                             <dt className="sr-only text-[16px] text-[#141414e6] font-medium">
@@ -211,13 +243,39 @@ export default function OrderRoute() {
                           </dl>
                         </div>
                       </td>
-                      <td className="hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
-                        {lineItem?.variant?.price && (
-                          <Money
-                            className="text-[16px] text-[#141414e6] font-medium"
-                            data={lineItem.variant.price}
-                          />
-                        )}
+                      <td className="break-words max-w-[135px] py-4 pl-0 pr-3 align-top sm:align-middle">
+                        {lineItem?.customAttributes.length > 0 &&
+                          lineItem?.customAttributes.map((attr) => {
+                            return (
+                              attr.key === 'custom_message' && <>{attr.value}</>
+                            );
+                          })}
+                      </td>
+                      <td className="break-words max-w-[135px] py-4 pl-0 pr-3 align-top sm:align-middle">
+                        {lineItem?.customAttributes.length > 0 &&
+                          lineItem?.customAttributes.map((attr) => {
+                            return (
+                              attr.key === 'font_selection' &&
+                              getCapitalizedFont(attr.value)
+                            );
+                          })}
+                      </td>
+                      <td className="break-words max-w-[135px] py-4 pl-0 pr-3 align-top sm:align-middle">
+                        {lineItem?.customAttributes.length > 0 &&
+                          getFullAddress(lineItem?.customAttributes)}
+                      </td>
+                      <td className="break-words max-w-[135px] py-4 pl-0 pr-3 align-top sm:align-middle">
+                        {lineItem?.customAttributes.length > 0 &&
+                          getRecipientsAddress(lineItem?.customAttributes)}
+                      </td>
+                      <td className="px-3 py-4 text-right align-top sm:align-middle sm:table-cell">
+                        <Money
+                          className="text-[16px] text-[#141414e6] font-medium"
+                          data={
+                            lineItem.variant?.price ||
+                            lineItem?.originalTotalPrice
+                          }
+                        />
                       </td>
                       <td className="hidden px-3 py-4 text-[16px] text-[#141414e6] font-medium text-right align-top sm:align-middle sm:table-cell">
                         {lineItem.quantity}
@@ -348,61 +406,79 @@ export default function OrderRoute() {
                 </tr>
               </tfoot>
             </table>
-            <div className="border-none md:my-8">
-              {/* <Heading
-                size="copy"
-                className="font-semibold text-[20px] text-[#141414e6] "
-                as="h3"
-              >
-                Shipping Address
-              </Heading>
-              {order?.shippingAddress ? (
-                <ul className="mt-6">
-                  <li>
-                    <Text>
-                      {order.shippingAddress.firstName &&
-                        order.shippingAddress.firstName + ' '}
-                      {order.shippingAddress.lastName}
-                    </Text>
-                  </li>
-                  {order?.shippingAddress?.formatted ? (
-                    order.shippingAddress.formatted.map((line,index) => (
-                      <li key={index}>
-                        <Text
-                          className="text-[16px] text-[#141414e6]"
-                          font-semibold
-                        >
-                          {line}
-                        </Text>
-                      </li>
-                    ))
-                  ) : (
-                    <></>
-                  )}
-                </ul>
-              ) : (
-                <p className="mt-3 text-[14px] text-[#141414e6] font-medium">
-                  No shipping address defined
-                </p>
-              )} */}
-              <Heading
-                size="copy"
-                className="mb-4 font-semibold  text-[20px] text-[#141414e6] "
-                as="h3"
-              >
-                Status
-              </Heading>
-
-              <DynamicButton
-                className="bg-[#ef6e6e] w-[100%] text-[#fff] py-[14px] px-[8px]"
-                text={statusMessage(order.fulfillmentStatus)}
-              />
-            </div>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+function getCapitalizedFont(font) {
+  if (!font || typeof font != 'string') return null;
+  return `${font[0].toUpperCase() + font.slice(1)}`
+}
+
+function getFullAddress(properties, type = 'SENDER') {
+  const address = {
+    sender_address1: '',
+    sender_address2: '',
+    sender_city: '',
+    sender_state: '',
+    sender_zip: '',
+    recipient_address1: '',
+    recipient_address2: '',
+    recipient_city: '',
+    recipient_state: '',
+    recipient_zip: '',
+  };
+
+  for (const {key, value} of properties) {
+    if (key in address) {
+      address[key] = value;
+    }
+  }
+
+  if (type === 'SENDER') {
+    return `${address.sender_address1} ${address.sender_address2}, ${address.sender_city}, ${address.sender_state} ${address.sender_zip}`;
+  } else if (type === 'RECIPIENT') {
+    return `${address.recipient_address1} ${address.recipient_address2}, ${address.recipient_city}, ${address.recipient_state} ${address.recipient_zip}`;
+  }
+
+  return '';
+}
+
+function getRecipientsAddress(properties) {
+  const singlePurchaseValidation = {
+    recipient_address1: true,
+    recipient_address2: true,
+    recipient_city: true,
+    recipient_state: true,
+    recipient_zip: true,
+  };
+
+  let recipientUpload = null;
+
+  for (const {key, value} of properties) {
+    if (!(key in singlePurchaseValidation)) {
+      if (key === 'recipient_upload' && value !== 'Not Applicable :') {
+        recipientUpload = value;
+      }
+    }
+  }
+
+  if (recipientUpload) {
+    return (
+      <a
+        href={recipientUpload}
+        className="font-bold text-[#001A5F]"
+        alt="recipient_upload"
+      >
+        Download All Recipients
+      </a>
+    );
+  } else {
+    return getFullAddress(properties, 'RECIPIENT');
+  }
 }
 
 async function setMissingProductImages(order, setlineItems) {
@@ -524,6 +600,7 @@ const CUSTOMER_ORDER_QUERY = `#graphql
   fragment LineItemFull on OrderLineItem {
     title
     quantity
+    customAttributes { key, value }
     discountAllocations {
       allocatedAmount {
         ...Money
