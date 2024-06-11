@@ -328,6 +328,8 @@ export function MessageWriting({
     } else {
       let subName = name;
       const baseCustomMessage = name;
+      const csvMailMergedMessages = [];
+      
 
       const csvFileResponse = await uploadCsvFileOnClick();
       let reqField,
@@ -362,10 +364,12 @@ export function MessageWriting({
             nonUsAdd++;
           }
           obj.msgData = subName;
+          csvMailMergedMessages.push({msg: name});
         });
         reqField = {
           msg: subName,
           baseCustomMessage,
+          csvMessageData: csvMailMergedMessages,
           signOffText: name2,
           csvFileBulk: csvFileResponse ? csvFileResponse : null,
           csvFileLen: fileData ? fileData.length : 1,
@@ -2173,7 +2177,7 @@ export function MessageWriting({
                   <div
                     id="messageBoxID"
                     ref={ref1}
-                    className="pl-[20px] pr-[20px] text-[#0040ac] relative"
+                    className="pl-[20px] pr-[20px] pt-2 pb-2 text-[#0040ac] relative"
                     style={{
                       fontFamily: fontFamilyName
                         ? fontFamilyName
