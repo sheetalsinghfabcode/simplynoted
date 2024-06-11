@@ -117,7 +117,6 @@ export default function App() {
             name="google-site-verification"
             content="bpeVfYNJuxGDBdO4-ILSDUqRBikvy5prBzPNvGzHetM"
           />
-          <meta name="robots" content="noindex,nofollow"/>
           <meta name="viewport" content="width=device-width,initial-scale=1" />
 
           <meta
