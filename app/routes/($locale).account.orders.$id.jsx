@@ -234,16 +234,16 @@ export default function OrderRoute() {
                             </dt>
                             <dd className="truncate sm:hidden">
                               <span
-                                className="mt-1 text-[16px] text-[#141414e6] font-medium"
+                                className="mt-1 text-[14px] text-[#141414e6] font-medium"
                                 size="fine"
                               >
-                                Qty: {lineItem.quantity}
+                                qty: {lineItem.quantity}
                               </span>
                             </dd>
                           </dl>
                         </div>
                       </td>
-                      <td className="break-words max-w-[135px] py-4 pl-0 pr-3 align-top sm:align-middle">
+                      <td className="break-words md:w-[300px] max-w-[300px] py-4 pl-0 pr-3 align-top sm:align-middle">
                         {lineItem?.customAttributes.length > 0 &&
                           lineItem?.customAttributes.map((attr) => {
                             return (
@@ -302,7 +302,7 @@ export default function OrderRoute() {
                   <tr>
                     <th
                       scope="row"
-                      colSpan={3}
+                      colSpan={7}
                       className="hidden  pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                     >
                       <span className="text-[16px] text-[#141414e6] font-medium">
@@ -336,7 +336,7 @@ export default function OrderRoute() {
                 <tr>
                   <th
                     scope="row"
-                    colSpan={3}
+                    colSpan={7}
                     className="hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
                     <h6 className="text-[18px] text-[#141414e6] font-semibold">
@@ -361,7 +361,7 @@ export default function OrderRoute() {
                 <tr>
                   <th
                     scope="row"
-                    colSpan={3}
+                    colSpan={7}
                     className="hidden pt-4 text-[18px] text-[#141414e6] font-semibold  pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0"
                   >
                     Tax
@@ -384,7 +384,7 @@ export default function OrderRoute() {
                 <tr>
                   <th
                     scope="row"
-                    colSpan={3}
+                    colSpan={7}
                     className="hidden pt-4 pl-6 pr-3 text-[18px] text-[#141414e6]  font-semibold text-right sm:table-cell md:pl-0"
                   >
                     Total
