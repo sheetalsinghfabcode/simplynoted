@@ -72,20 +72,17 @@ export default {
 
       const response = await handleRequest(request);
 
-      if (response.status === 404) {
-        /**
-         * Check for redirects only when there's a 404 from the app.
-         * If the redirect doesn't exist, then `storefrontRedirect`
-         * will pass through the 404 response.
-         */
-        return storefrontRedirect({request, response, storefront});
+      if ([500, 503, 404].includes(response.status)) {
+        // Redirect to a custom 404 page
+        return new Response(null, {status: 302, headers: {Location: '/not-found'}});
       }
 
       return response;
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
-      return new Response('An unexpected error occurred', {status: 500});
+      // Redirect to 404 page in case of any unhandled errors
+      return new Response(null, {status: 302, headers: {Location: '/not-found'}});
     }
   },
 };

@@ -1,5 +1,5 @@
 import {Button} from './Button';
-import {FeaturedSection} from './FeaturedSection';
+// import {FeaturedSection} from './FeaturedSection';
 import {PageHeader, Text} from './Text';
 
 export function NotFound({type = 'page'}) {
@@ -17,7 +17,7 @@ export function NotFound({type = 'page'}) {
           GO TO HOME
         </Button>
         </div>
-      <FeaturedSection />
+      {/* <FeaturedSection /> */}
     </div>
   );
 }
