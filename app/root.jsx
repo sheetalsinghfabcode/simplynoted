@@ -117,6 +117,11 @@ export default function App() {
             name="google-site-verification"
             content="bpeVfYNJuxGDBdO4-ILSDUqRBikvy5prBzPNvGzHetM"
           />
+          <meta
+            name="google-site-verification"
+            content="x04VnoyVjG2G7tiib1qgc7EnE7fyoRzdXNwhgg3G_Wk"
+          />
+          
           <meta name="viewport" content="width=device-width,initial-scale=1" />
 
           <meta
@@ -127,9 +132,11 @@ export default function App() {
             name="facebook-domain-verification"
             content="lu5iuajp669xmj62mgeeos8haa5sf8"
           />
-          <meta name="ahrefs-site-verification" content="97e56e9d1eb6053922d7700f69079d07b6055abbb22c43a3ea00e965046b0318"></meta>
+          <meta
+            name="ahrefs-site-verification"
+            content="97e56e9d1eb6053922d7700f69079d07b6055abbb22c43a3ea00e965046b0318"
+          ></meta>
 
-          {/* gatg script  */}
           <script
             src="https://www.googletagmanager.com/gtag/js?id=AW-777809600"
             async=""
