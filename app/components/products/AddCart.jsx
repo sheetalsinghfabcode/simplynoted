@@ -178,7 +178,6 @@ export function AddCart({
 
     const bool = isValidatedShippingAddress || noShippingAddressOption;
 
-    debugger;
     setIsCartButtonEnabled(bool);
   }, [selectShipMode, showShipAddress, onSaveShip]);
 
