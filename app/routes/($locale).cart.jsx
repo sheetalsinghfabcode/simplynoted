@@ -355,7 +355,10 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
 
-  function updateCartItemWithRecipientAddresses(addresses, selectedCartItemIndex) {
+  function updateCartItemWithRecipientAddresses(
+    addresses,
+    selectedCartItemIndex,
+  ) {
     const indicesRemoved = new Set();
     const recipientOnlyAddresses = addresses.filter((address, index) => {
       if (address?.Type && address.Type?.toUpperCase().trim() !== 'SENDER') {
@@ -419,7 +422,6 @@ export default function AddCartFunc() {
     setMsgFont(cartData[cartItemIndex]?.fontFamily);
     setMsgFontSize(cartData[cartItemIndex]?.fontSizeMsg);
     setMsglastText(cartData[cartItemIndex]?.endText);
-
     if (cartData[cartItemIndex]?.csvBulkData.length > 0) {
       setBulkAddress(cartData[cartItemIndex].csvBulkData);
     } else if (
@@ -452,7 +454,7 @@ export default function AddCartFunc() {
 
   function closeModal() {
     setBulkAddress([]);
-
+    setCurrentRecipientIndex(0);
     setIsOpen2(false);
   }
 
