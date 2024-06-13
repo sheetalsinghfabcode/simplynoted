@@ -355,6 +355,27 @@ export default function AddCartFunc() {
     setCardVal(item);
   }
 
+  function updateCartItemWithRecipientAddresses(addresses, selectedCartItemIndex) {
+    const indicesRemoved = new Set();
+    const recipientOnlyAddresses = addresses.filter((address, index) => {
+      if (address?.Type && address.Type?.toUpperCase().trim() !== 'SENDER') {
+        return true;
+      } else {
+        indicesRemoved.add(index);
+        return false;
+      }
+    });
+
+    const respectiveAddressMessages =
+      cartData[selectedCartItemIndex]?.csvMessageData;
+    cartData[selectedCartItemIndex].csvMessageData =
+      respectiveAddressMessages.filter(
+        (_, index) => !indicesRemoved.has(index),
+      );
+
+    return recipientOnlyAddresses;
+  }
+
   async function OpenModalFunc2(cartItemIndex) {
     setSelectedCartItemIndex(cartItemIndex);
     const customerId = localStorage.getItem('customerId');
@@ -378,10 +399,16 @@ export default function AddCartFunc() {
         }
 
         const data = await response.json();
-        setBulkAddress(data.result[0]?.addresses);
+        const recipientOnlyAddresses = updateCartItemWithRecipientAddresses(
+          data.result[0]?.addresses,
+          cartItemIndex,
+        );
+        setBulkAddress(recipientOnlyAddresses);
         setMsgShow(
           cartData[cartItemIndex]?.csvMessageData[currentRecipientIndex].msg,
         );
+      } else {
+        setMsgShow(cartData[cartItemIndex]?.messageData);
       }
 
       setIsOpen2(true);
@@ -389,7 +416,6 @@ export default function AddCartFunc() {
       console.error('Error submitting form:', error);
     }
 
-    setMsgShow(cartData[cartItemIndex]?.messageData);
     setMsgFont(cartData[cartItemIndex]?.fontFamily);
     setMsgFontSize(cartData[cartItemIndex]?.fontSizeMsg);
     setMsglastText(cartData[cartItemIndex]?.endText);
