@@ -124,6 +124,7 @@ export function AddCart({
   const [purchaseType, setPurchaseType] = useState('');
   const [giftPriceVariantId, setGiftPriceVariantID] = useState('');
   const [unCheckedAddressTitle, setUnCheckedAddressTitle] = useState('');
+  const [isCartButtonEnabled, setIsCartButtonEnabled] = useState(false);
 
   useEffect(() => {
     setIsInitialRender(false);
@@ -164,6 +165,22 @@ export function AddCart({
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    console.log({selectShipMode, onSaveShip});
+    const isValidatedShippingAddress =
+      selectShipMode.node.price.amount !== '0.0' && onSaveShip;
+
+    const noShippingAddressOption =
+      !showShipAddress &&
+      selectShipMode.node.price.amount === '0.0' &&
+      !onSaveShip;
+
+    const bool = isValidatedShippingAddress || noShippingAddressOption;
+
+    debugger;
+    setIsCartButtonEnabled(bool);
+  }, [selectShipMode, showShipAddress, onSaveShip]);
 
   const findMatchingVariant = async (variants, targetValue, discount) => {
     let matchedVariant = null;
@@ -507,41 +524,11 @@ export function AddCart({
   }
 
   function onClickOFAddCartBtn() {
-    // Update the cart items for the next cart updates in the cart
+    if (!isCartButtonEnabled) return null;
     <CartItems />;
-    if (offPrice > 0) {
-      onClickAddCart(); //before here was newDiscountedCard function
-    } else {
-      onClickAddCart();
-    }
+    onClickAddCart();
   }
-  async function newDiscountedCard() {
-    try {
-      setLoader(true);
-      let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
 
-      const res = await fetch(`${SERVER_BASE_URL}/api/new-discounted-card`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization:
-            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
-        },
-        body: JSON.stringify({
-          quantity: 1,
-          title: productData.product.title,
-          tags: tagsData,
-          featuredImage: productData.image.url,
-          price: finalPrice,
-        }),
-      });
-      const json = await res.json();
-      if (json.result) {
-        setApiVariantID(json.result.product.variants[0].id);
-        setLoader(false);
-      }
-    } catch (error) {}
-  }
   return (
     <div className="relative global-max-width-handler">
       {loader && !addressForm && !buttonTextChange && (
@@ -866,18 +853,19 @@ export function AddCart({
                   />
                 </div>
               )}
-              {((selectShipMode.node.price.amount !== '0.0' && onSaveShip) ||
-                (selectShipMode.node.price.amount === '0.0' &&
-                  !onSaveShip)) && (
-                <div className="buttonDiv  my-2">
-                  <DynamicButton
-                    className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
-                    text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
-                    disabled={buttonTextChange}
-                    onClickFunction={() => onClickOFAddCartBtn()}
-                  />
-                </div>
-              )}
+
+              <div className="buttonDiv  my-2">
+                <DynamicButton
+                  className={`${
+                    isCartButtonEnabled
+                      ? 'pointer opacity-100'
+                      : 'cursor-not-allowed opacity-50'
+                  } bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 `}
+                  text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
+                  disabled={buttonTextChange}
+                  onClickFunction={() => onClickOFAddCartBtn()}
+                />
+              </div>
             </div>
           </div>
         )}
