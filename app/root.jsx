@@ -159,7 +159,7 @@ export default function App() {
             src="https://www.googletagmanager.com/gtm.js?id=GTM-PB7P5VV"
           ></script>
 
-          <script type="text/javascript">
+          {/* <script type="text/javascript">
             {(function (c, l, a, r, i, t, y) {
               c[a] =
                 c[a] ||
@@ -172,7 +172,7 @@ export default function App() {
               y = l.getElementsByTagName(r)[0];
               y.parentNode.insertBefore(t, y);
             })(window, document, 'clarity', 'script', 'mr8fm8dv9t')}
-          </script>
+          </script> */}
 
           <Seo />
           <Meta />
