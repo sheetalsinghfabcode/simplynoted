@@ -11,7 +11,7 @@ import CircularLoader from '../CircularLoder';
 import {getApi, postApi} from '~/utils/ApiService';
 import {API_PATH} from '~/utils/Path';
 import CartItems from '../CartItems';
-import { SERVER_BASE_URL } from '~/data/config';
+import {SERVER_BASE_URL} from '~/data/config';
 
 let customerid, cartDataReq, selectedOrder;
 export function AddCart({
@@ -383,8 +383,8 @@ export function AddCart({
           metafieldsCartItems.isFooterIncluded = metafields?.isFooterIncluded;
           metafieldsCartItems.messageAreaPosition =
             metafields?.messageAreaPosition;
-          }
         }
+      }
       // Construct new cart item
       const newCartItem = {
         productTitle: productData?.product?.title
@@ -520,24 +520,21 @@ export function AddCart({
       setLoader(true);
       let tagsData = `customise_card, customise_card_edited, packageDiscount_${offPrice}`;
 
-      const res = await fetch(
-        `${SERVER_BASE_URL}/api/new-discounted-card`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization:
-              'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
-          },
-          body: JSON.stringify({
-            quantity: 1,
-            title: productData.product.title,
-            tags: tagsData,
-            featuredImage: productData.image.url,
-            price: finalPrice,
-          }),
+      const res = await fetch(`${SERVER_BASE_URL}/api/new-discounted-card`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization:
+            'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NDNiYjVhOTAwODcwZjFmMjQ3OGRjNjkiLCJ1c2VyIjp7ImVtYWlsIjoiZmFicHJvamVjdG1hbmFnZXJAZ21haWwuY29tIiwic2hvcGlmeUlkIjoiNjIzMjYyMjg5MTExMyIsIl9pZCI6IjY0M2JiNWE5MDA4NzBmMWYyNDc4ZGM2OSIsImZpcnN0X25hbWUiOiJQcmFkZWVwIiwibGFzdF9uYW1lIjoic2luZ2gifSwiaWF0IjoxNjkwNDQwNDY0fQ.5s5g9A2PtZ8Dr5dQZsd0D9wWTT2BzDioqDXzTbIJPko',
         },
-      );
+        body: JSON.stringify({
+          quantity: 1,
+          title: productData.product.title,
+          tags: tagsData,
+          featuredImage: productData.image.url,
+          price: finalPrice,
+        }),
+      });
       const json = await res.json();
       if (json.result) {
         setApiVariantID(json.result.product.variants[0].id);
@@ -869,14 +866,18 @@ export function AddCart({
                   />
                 </div>
               )}
-              <div className="buttonDiv  my-2">
-                <DynamicButton
-                  className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
-                  text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
-                  disabled={buttonTextChange}
-                  onClickFunction={() => onClickOFAddCartBtn()}
-                />
-              </div>
+              {((selectShipMode.node.price.amount !== '0.0' && onSaveShip) ||
+                (selectShipMode.node.price.amount === '0.0' &&
+                  !onSaveShip)) && (
+                <div className="buttonDiv  my-2">
+                  <DynamicButton
+                    className="bg-[#1b5299] w-[190px] h-[45px] opacity-65 px-8 py-4 "
+                    text={buttonTextChange ? 'ADDING...' : 'ADD TO CART'}
+                    disabled={buttonTextChange}
+                    onClickFunction={() => onClickOFAddCartBtn()}
+                  />
+                </div>
+              )}
             </div>
           </div>
         )}
