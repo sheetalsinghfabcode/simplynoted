@@ -361,7 +361,11 @@ export default function AddCartFunc() {
   ) {
     const indicesRemoved = new Set();
     const recipientOnlyAddresses = addresses.filter((address, index) => {
-      if (address?.Type && address.Type?.toUpperCase().trim() !== 'SENDER') {
+      if (
+        (address?.Type || address?.type) &&
+        (address.Type?.toUpperCase().trim() !== 'SENDER' ||
+          address.type?.toUpperCase().trim() !== 'SENDER')
+      ) {
         return true;
       } else {
         indicesRemoved.add(index);
