@@ -364,7 +364,7 @@ export default function AddCartFunc() {
       if (
         (address?.Type || address?.type) &&
         (address.Type?.toUpperCase().trim() !== 'SENDER' ||
-          address.type?.toUpperCase().trim() !== 'SENDER')
+          address.type?.toUpperCase().trim() !== 'RETURN')
       ) {
         return true;
       } else {
