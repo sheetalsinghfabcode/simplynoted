@@ -26,7 +26,7 @@ import productStyles from './styles/products.css';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import {useAnalytics} from './hooks/useAnalytics';
 import {StateContextProvider} from './context/StateContext';
-import {useEffect, useLayoutEffect} from 'react';
+import {createElement, useEffect, useLayoutEffect} from 'react';
 
 // This is important to avoid re-fetching root queries on sub-navigations
 export const shouldRevalidate = ({formMethod, currentUrl, nextUrl}) => {
@@ -91,6 +91,30 @@ export default function App() {
     if (!data.isLoggedIn) {
       localStorage.clear();
     }
+
+    console.clear();
+    console.log({document});
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-X1D2VJQ3LE');
+
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', 'mr8fm8dv9t');
+    
   }, []);
 
   useAnalytics(hasUserConsent);
@@ -158,21 +182,12 @@ export default function App() {
             async=""
             src="https://www.googletagmanager.com/gtm.js?id=GTM-PB7P5VV"
           ></script>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-X1D2VJQ3LE"
+          ></script>
 
-          {/* <script type="text/javascript">
-            {(function (c, l, a, r, i, t, y) {
-              c[a] =
-                c[a] ||
-                function () {
-                  (c[a].q = c[a].q || []).push(arguments);
-                };
-              t = l.createElement(r);
-              t.async = 1;
-              t.src = 'https://www.clarity.ms/tag/' + i;
-              y = l.getElementsByTagName(r)[0];
-              y.parentNode.insertBefore(t, y);
-            })(window, document, 'clarity', 'script', 'mr8fm8dv9t')}
-          </script> */}
+          {/* <script async="">{ClarityIntegration()}</script> */}
 
           <Seo />
           <Meta />
