@@ -57,7 +57,7 @@ export default function Salesforce() {
                   <div className="text-white text-center text-[12px] p-[3px] bg-[#ef6e6e] w-[104px] rounded-3xl ">
                     COMING SOON &nbsp;
                   </div>
-                  <div
+                  <h1
                     className="xl:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f] mb-6"
                     style={{lineHeight: '0.75'}}
                   >
@@ -72,7 +72,7 @@ export default function Salesforce() {
                     </span>
                     <br />
                     Integration
-                  </div>
+                  </h1>
                 </div>
                 <div className="  xl:text-left texts !text-[18px] !leading-normal text-center !mb-0 ">
                   We go as far as to design the type of slant, spacing and

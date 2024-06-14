@@ -54,9 +54,9 @@ export default function Shopify() {
             <img src={shopifys} />
           </div>
           <div className="mt-5  flex xl:justify-normal justify-center">
-            <h2 className="md:text-[48px] sm:text-[35px] text-[29px]  text-[#001a5f] font-bold tracking-[-0.2px] leading-normal max-lg:!text-center">
+            <h1 className="md:text-[48px] sm:text-[35px] text-[29px]  text-[#001a5f] font-bold tracking-[-0.2px] leading-normal max-lg:!text-center">
               Shopify Integration
-            </h2>
+            </h1>
           </div>
           <div className="xl:justify-normal xl:flex hidden justify-center">
             <p className="  xl:text-left texts !text-[18px] !leading-normal text-center !mb-0 ">

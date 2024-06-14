@@ -121,7 +121,7 @@ export default function bussniess() {
                 alt="business line"
               />
               <div className="lg:w-[40%] lg:ml-[4rem] lg:mr-0 md:w-[40%] sm:w-[55%] w-[90%] ml-auto mr-auto text-left mt-5">
-                <div className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold justify-center">
+                <h1 className="flex lg:flex-col flex-row md:text-[42px] sm:text-[40px] text-[22px] text-[#001A5F] font-karla font-extrabold justify-center">
                   <div className="text-[42px]">
                     You 
                     <span className="font-beauty ml-2 lg:text-8xl md:text-[60px] text-[50px]  font-extrabold">
@@ -134,7 +134,7 @@ export default function bussniess() {
                       write
                     </span>
                   </div>
-                </div>
+                </h1>
                 <p className="max-w-[350px] texts lg:mt-[20px] mt-[30px] lg:text-start text-center">
                   Simply Noted puts a personal touch back into your business.
                 </p>
@@ -181,9 +181,9 @@ export default function bussniess() {
                     data-hs-cf-bound="true"
                     onSubmit={handleSubmit}
                   >
-                    <div className="mt-[3rem] sm:text-[28px] text-[18px] font-bold text-center text-white leading-8 mb-[25px]">
+                    <h3 className="mt-[3rem] sm:text-[28px] text-[18px] font-bold text-center text-white leading-8 mb-[25px]">
                       Request a Writing Sample Packet
-                    </div>
+                    </h3>
                     <div className="row flex">
                       <div className="white-underline ">
                         <input
@@ -363,13 +363,13 @@ export default function bussniess() {
                   <div className="inline-flex relative">
                     <div className=" mr-[-10px] lg:ml-[-6.8rem] ml-0 mt-[-12px]  ">
                       <div className="text-center">
-                        <div className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3  mb-6">
+                        <h2 className="sm:text-5xl text-2xl text-[#001A5F] font-karla font-extrabold lg:ml-[-8rem] ml-0 lg:mb-3  mb-6">
                           Integrate&nbsp;
                           <span className="font-beauty text-7xl font-extrabold sm:leading-2 leading-7">
                             and
                           </span>
                          &nbsp; Automate
-                        </div>
+                        </h2>
                         <img
                           className="lg:inline hidden absolute w-[9%]  ml-[12rem] mt-[-2.5rem] curve-line"
                           src={curve}
