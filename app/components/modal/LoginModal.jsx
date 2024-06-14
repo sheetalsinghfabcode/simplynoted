@@ -31,10 +31,10 @@ const LoginModal = ({
 }
         <div className="modal-content py-4  px-6">
           <div className="modal-header">
-            <h3 className="md:text-[29px] text-[22px] text-center leading-[1.4] mt-[24px] text-[#001a5f] font-semibold">
+            <h2 className="md:text-[29px] text-[22px] text-center leading-[1.4] mt-[24px] text-[#001a5f] font-semibold">
               Want to
               <span className="font-beauty text-[40px]"> {title} ?</span>
-            </h3>
+            </h2>
           </div>
           <div className="modal-body mt-[12px]">
             <h3 className="md:text-[29px] text-[22px] text-center leading-[1.4] text-[#001a5f] font-semibold">

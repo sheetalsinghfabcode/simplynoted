@@ -276,9 +276,9 @@ const Card = () => {
       <div className="w-full overflow-hidden">
         <div className="bottom_background mt-3 relative  overflow-x-hidden">
           <div className="md:flex grid  justify-evenly items-center md:p-[70px] pb-4 pt-14 md:gap-0 gap-[20px]">
-            <h3 className="tab:text-[33px]  text-[24px] font-bold ">
+            <h5 className="tab:text-[33px]  text-[24px] font-bold ">
               Ready to start writing?
-            </h3>
+            </h5>
 
             <div className=" flex flex-col md:flex-row text-white  md:gap-[20px] items-center">
               <DynamicButton

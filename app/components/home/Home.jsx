@@ -17,7 +17,7 @@ export default function Home() {
         {/* MIDDLE SECTION  */}
         <div className="flex flex-col flex-wrap justify-center items-center sm:text-[34px] text-[20px] 2xl:text-[38px] max-w-[75vw] gap-5  zx:max-w-[51%] ">
           <span className="text-center sm:leading-[45px] text-[35px] tab:text-[59px] tab:leading-[70px] leading-[40px] font-bold text-[#001a5f] tracking-[-2.07px]">
-            Send Real Handwritten Notes to your
+            Send <h1> Real Handwritten Notes to your </h1>
           </span>
           <div className="typewriter-bottom-line font-dente">
             <TypeAnimation
@@ -39,12 +39,12 @@ export default function Home() {
           </div>
           <div className="flex tab:flex-col flex-col-reverse mt-[20px]">
             <div className="flex flex-col justify-center tab:flex-row 2xl:text-[22px] text-[16px] font-normal tab:leading-[69px] -tracking-[0.65px] text-center mb-[10px] ">
-              <span className="whitespace-nowrap">
+              <h6 className="whitespace-nowrap">
                 Send real handwritten notes, at scale.
-              </span>
-              <span className="font-bold whitespace-nowrap">
+              </h6>
+              <h6 className="font-bold whitespace-nowrap">
                 &nbsp; Go Unlimited, Only $0.97
-              </span>
+              </h6>
             </div>
             <div className="flex flex-col tab:flex-row">
               <DynamicButton

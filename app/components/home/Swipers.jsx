@@ -23,9 +23,9 @@ const Swipers = () => {
   return (
     <>
       <div className="sm:my-8 my-2">
-        <div className="sm:text-[32px] text-2xl font-bold text-[#001A5F] text-center sm:mt-20 mt-10 md:mb-16 mb-5">
+        <h2 className="sm:text-[32px] text-2xl font-bold text-[#001A5F] text-center sm:mt-20 mt-10 md:mb-16 mb-5">
           Companies we've worked with
-        </div>
+        </h2>
         <div className="ml-5 mr-10">
           <Swiper
             modules={[Autoplay]}

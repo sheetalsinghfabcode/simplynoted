@@ -42,10 +42,10 @@ const Integrations = () => {
               />
             </div>
             <div className="flex-1 pt-[40px] pb-[104px] mx-5">
-              <div className="text-left text-[#001a5f] text-[40px] leading-9 font-bold my-5">
+              <h1 className="text-left text-[#001a5f] text-[40px] leading-9 font-bold my-5">
                 Integrate <span className="font-beauty text-[200%]">and</span>{' '}
                 automate
-              </div>
+              </h1>
               <div className="text-[20px] text-left">
                 <span className="text-[#707070] leading-normal font-normal">
                   Simply Noted integrates with your software and will do bulk
@@ -246,9 +246,9 @@ const Integrations = () => {
         {/** Mobile: Third section */}
         <div className="global-max-width-handler text-white !mt-4">
           <div className="xl:hidden pt-3 pb-3">
-            <div className="text-center text-[25px] leading-7 font-medium m-7 mt-14">
+            <h4 className="text-center text-[25px] leading-7 font-medium m-7 mt-14">
               Access our Zapier App today!
-            </div>
+            </h4>
             <div className="flex justify-center align-center">
               <img
                 className="p-3 object-contain"

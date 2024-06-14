@@ -1175,7 +1175,7 @@ export default function AddCartFunc() {
                             className="lg:w-[45%]  w-[100%] flex items-center  lg:order-none order-[-1]
                          md:text-[30px] sm:text-[28px] text-[22px] text-[#1b5299] font-karla font-bold  lg:justify-around sm:justify-evenly justify-start gap-[20px]"
                           >
-                            <span className="md:mr-[2px]">GRAND TOTAL</span>
+                            <h2 className="md:mr-[2px]">GRAND TOTAL</h2>
                             <span>${Number(totalPrize).toFixed(2)}</span>
                           </div>
                           <div className="lg:w-[25%] sm:w-[45%] w-full  mr-1 flex justify-end ">

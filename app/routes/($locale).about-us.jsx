@@ -21,9 +21,9 @@ const AboutUs = () => {
           <div className="m-auto max-w-[900px] sm:px-[15px] ">
             <div className="video-text ">
               <div className='justify-center items-center grid'>
-              <h2 className="text-center font-bold capitalize sm:text-[37px] text-[27px] text-[#001a5f] font-karla">
+              <h1 className="text-center font-bold capitalize sm:text-[37px] text-[27px] text-[#001a5f] font-karla">
                 Meet Simply Noted
-              </h2>
+              </h1>
               <img
                 className="sm:w-[350px] w-[245px] mt-5"
                 src={about_underline}

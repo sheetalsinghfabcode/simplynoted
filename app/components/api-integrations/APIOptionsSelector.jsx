@@ -13,6 +13,7 @@ const APIOptionsSelector = () => {
           className={`hover:text-[#ef6e6e] px-2 xl:px-10 font-bold ${
             selectedSection === 'API ENDPOINTS' ? ' bg-white rounded-md ' : 'text-[white]'
           }`}
+  
         >
           {' '}
           API ENDPOINTS

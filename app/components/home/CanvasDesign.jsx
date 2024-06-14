@@ -24,12 +24,12 @@ const CanvasDesign = () => {
         {/* First */}
         <div className="global-max-width-handler global-section-divider relative md:flex flex-col lg:flex-row hidden justify-between flex-wrap tab:flex-nowrap mx-auto w-full  lg:gap-[10px] gap-[30px] ">
           <div className="lg:w-[40%] w-[80%] relative lg:mx-0 mx-auto ml-auto lg:my-[6rem] lg:order-none order-2 data-background text-left">
-            <div className="text-4xl text-custom font-custom font-bold text-left  text-[#001A5F] ">
+            <h4 className="text-4xl text-custom font-custom font-bold text-left  text-[#001A5F] ">
               Send one or send &nbsp;
               <span className="font-beauty xl:text-7xl lg:text-5xl text-7xl font-bold">
                 thousands
               </span>
-            </div>
+            </h4>
             <div className="texts mt-3 lg:text-left text-justify lg:w-[94%] w-full">
               Simply Noted platform makes sending 1,000s of real penwritten
               notes as quick and easy as sending just 1. It has never been

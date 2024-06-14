@@ -54,6 +54,7 @@ export default function ShopifyCustomCardProductDetails({
       style={{zIndex: 999}}
     >
       <div className="lg:w-1/2 md:w-[35%] w-[80%] flex gap-4 justify-between md:justify-start">
+      <h1 className='hidden' >Customise Your Card</h1>
         <div className="h-[50px] md:w-[72px] w-[66px]">
           <img
             src={isFlatCardType ? FlatBlankCanvasImage : FoldedBlankCanvasImage}

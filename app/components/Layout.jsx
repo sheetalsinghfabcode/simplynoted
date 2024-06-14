@@ -1130,11 +1130,11 @@ function Footer({ menu }) {
         </button>
       )}
       {/* <CountrySelector /> */}
-      <div
+      <h4
         className={` bg-[#2c3b68] h-[45px] flex pl-[6px] pt-[10px] text-lg justify-center`}
       >
         &copy; Simply Noted {new Date().getFullYear()}. All Rights Reserved
-      </div>
+      </h4>
     </div>
   );
 }
@@ -1213,7 +1213,7 @@ function FooterMenu({ menu }) {
                           <Heading
                             className="flex justify-between  !font-base leading-loose hover:text-white capitalize"
                             size="lead"
-                            as="h3"
+                            as="h6"
                           >
                             {item.title}
                             {item?.items?.length > 0 && (
@@ -1249,7 +1249,7 @@ function FooterMenu({ menu }) {
         </div>
         <div className=" text-white ">
           <div className='grid gap-[8px]'>
-            <div className="lg:text-xl md:text-[18px] text-[22px]  font-bold ">Address</div>
+            <h5 className="lg:text-xl md:text-[18px] text-[22px]  font-bold ">Address</h5>
             <div className="w-[99%] ">
               5025 S Ash Ave Suite B16 Tempe AZ 85282
             </div>

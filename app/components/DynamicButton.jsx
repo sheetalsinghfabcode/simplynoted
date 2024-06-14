@@ -13,7 +13,7 @@ const DynamicButton = ({
   onHoverColorEnabled = false,
 }) => {
   return (
-    <>
+    <h2>
       <button
         onClick={onClickFunction}
         disabled={disabled}
@@ -29,7 +29,7 @@ const DynamicButton = ({
         {text}
 
       </button>
-    </>
+    </h2>
   );
 };
 
