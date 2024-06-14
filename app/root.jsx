@@ -146,7 +146,6 @@ export default function App() {
             content="x04VnoyVjG2G7tiib1qgc7EnE7fyoRzdXNwhgg3G_Wk"
           />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
-
           <meta
             name="facebook-domain-verification"
             content="q3xpgu5qz9wlus48ett2p2p4dxt15v"
@@ -159,8 +158,7 @@ export default function App() {
             name="ahrefs-site-verification"
             content="97e56e9d1eb6053922d7700f69079d07b6055abbb22c43a3ea00e965046b0318"
           ></meta>
-          <meta property="og:site_name" content="SimplyNoted"></meta>
-          <meta property="og:type" content="website"></meta>
+
           <script
             src="https://www.googletagmanager.com/gtag/js?id=AW-777809600"
             async=""
@@ -187,10 +185,20 @@ export default function App() {
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-X1D2VJQ3LE"
           ></script>
-
-          {/* <script async="">{ClarityIntegration()}</script> */}
-
+          <meta property="og:site_name" content="SimplyNoted"></meta>
+          <meta property="og:type" content="website"></meta>
           <Seo />
+          <meta
+            property="og:image"
+            content="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Screen_Shot_2021-02-07_at_12.31.19_PM_05bc08b9-5541-4dee-84d5-bd72a9f67297.png?v=1622150650"
+          />
+
+          <meta
+            property="og:image:secure_url"
+            content="https://cdn.shopify.com/s/files/1/0275/6457/2777/files/Screen_Shot_2021-02-07_at_12.31.19_PM_05bc08b9-5541-4dee-84d5-bd72a9f67297.png?v=1622150650"
+          />
+          <meta property="og:image:width" content="3304" />
+          <meta property="og:image:height" content="1602" />
           <Meta />
           <Links />
         </head>

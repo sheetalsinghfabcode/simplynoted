@@ -276,9 +276,7 @@ function Video({blog, url}) {
 
 
 function page({page, url}) {
-  console.log("url",url);
 
-  console.log("page",page);
   return {
     description: truncate(page?.seo?.description || ''),
     title: page?.seo?.title ?? page?.title,
