@@ -33,7 +33,7 @@ function root({shop, url}) {
 
 function home() {
   return {
-    title: 'Home',
+    title: 'Real Handwritten Notes to Scale',
     titleTemplate: '%s | SimplyNoted',
     description: 'Simply Noted writes handwritten notes, letters, thank you notes, and cards using robots with real penmanship. Ideal for all businesses.',
     // robots: {
@@ -274,7 +274,11 @@ function Video({blog, url}) {
   };
 }
 
+
 function page({page, url}) {
+  console.log("url",url);
+
+  console.log("page",page);
   return {
     description: truncate(page?.seo?.description || ''),
     title: page?.seo?.title ?? page?.title,
@@ -287,6 +291,7 @@ function page({page, url}) {
     },
   };
 }
+
 
 function policy({policy, url}) {
   return {

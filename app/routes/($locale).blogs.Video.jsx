@@ -17,7 +17,6 @@ export async function loader({request,context}) {
   return defer({
     seo,
     blog,
-    
   });
 }
 

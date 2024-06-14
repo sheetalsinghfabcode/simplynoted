@@ -10,7 +10,22 @@ import Integration from '../../assets/Image/deep-integration-stamps.png'
 import WhiteZapierLogo from '../../assets/Image/white-zapier-logo.png';
 import IntegrationsRedCalloutBG from '../../assets/Image/integrations-callout-red-bg.webp';
 import ROIRobot from '../../assets/Image/roi-robot.webp';
+import {seoPayload} from '~/lib/seo.server';
+import {defer} from '@remix-run/server-runtime';
+
+
 import CustomNoteRobot from '../../assets/Image/Robot-4.webp';
+
+export async function loader({request, context}) {
+  const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
+  return defer({
+    seo,
+    page,
+  });
+}
 
 const Integrations = () => {
   const FirstSection = () => {
@@ -325,3 +340,16 @@ const Integrations = () => {
 };
 
 export default Integrations;
+
+const Shopify_GRAPH_QL = `#graphql
+  query
+  {
+    page(id:"gid://shopify/Page/73125527657"){
+    title
+    seo{
+      title
+      description
+    }
+  }
+}`;
+
