@@ -655,7 +655,7 @@ function MobileHeader({ title, isHome, openCart, openMenu }) {
         >
           <Heading
             className="font-bold text-center leading-none"
-            as={isHome ? 'h1' : 'h2'}
+            as={isHome ? 'h2' : 'h2'}
           >
             {title}
           </Heading>
