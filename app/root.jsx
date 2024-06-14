@@ -94,7 +94,7 @@ export default function App() {
     }
     if (!isMounted.current) {
       isMounted.current = true;
-      
+
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -159,7 +159,8 @@ export default function App() {
             name="ahrefs-site-verification"
             content="97e56e9d1eb6053922d7700f69079d07b6055abbb22c43a3ea00e965046b0318"
           ></meta>
-
+          <meta property="og:site_name" content="SimplyNoted"></meta>
+          <meta property="og:type" content="website"></meta>
           <script
             src="https://www.googletagmanager.com/gtag/js?id=AW-777809600"
             async=""
