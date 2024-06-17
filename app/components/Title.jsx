@@ -9,6 +9,7 @@ const DynamicTitle = ({
   text,
   setOrderHisory,
   className,
+  tag: Tag = 'h1', // Default to 'h1' if no tag is provided
 }) => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -28,14 +29,14 @@ const DynamicTitle = ({
           </div>
         )}
         <div className="flex items-center justify-center w-full">
-          <h1
+          <Tag
             className={`titleImage md:text-[50px] text-[27px] text-center md:mt-[-46px] mt-[-23px] font-bold text-[#001a5f] font-karla leading-[100%] pb-[15px] ${className} `}
           >
             {title}
             <span className="font-beauty text-[60px] md:text-[70px] lg:text-[200%] ">
               {title2}
             </span>
-          </h1>
+          </Tag>
         </div>
       </div>
     </div>

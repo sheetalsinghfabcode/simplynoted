@@ -11,14 +11,20 @@ import CircularLoader from '~/components/CircularLoder';
 
 import {useStateContext} from '~/context/StateContext';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { seoPayload } from '~/lib/seo.server';
 
-export async function loader({context}) {
+export async function loader({request,context}) {
+  const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
+    variants: {},
+  });
+  const seo = seoPayload.page({page, url: request.url});
   const StripeKey = STRIPE_PUBLISHABLE_KEY;
   const WalletData = await context.storefront.query(Wallet, {
     variants: {},
   });
 
   return defer({
+    seo,
     WalletData,
     StripeKey,
   });
@@ -221,3 +227,18 @@ const Wallet = `#graphql
       }
     }
   }`;
+
+const Shopify_GRAPH_QL = `#graphql
+query
+{
+  page(id:"gid://shopify/Page/97325056105"){
+  title
+  seo{
+    title
+    description
+  }
+}
+}`;
+
+
+

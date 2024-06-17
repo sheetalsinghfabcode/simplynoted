@@ -141,7 +141,6 @@ export default function blog() {
     <div className="global-max-width-handler">
       <div className="px-5">
         <DynamicTitle
-          // dynamicButton
           title="Simply Noted 101"
           className={'mt-[20px] md:text-[45px] small:text-[38px] text-[32px]'}
         />
