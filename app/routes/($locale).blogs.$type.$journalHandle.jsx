@@ -8,6 +8,7 @@ import {seoPayload} from '~/lib/seo.server';
 import {routeHeaders} from '~/data/cache';
 import DynamicTitle from '~/components/Title';
 import styles from '../styles/custom-font.css';
+import blog from './($locale).blogs.news';
 
 const BLOG_HANDLE = 'journal';
 
@@ -53,37 +54,26 @@ export async function loader({request, params, context}) {
 
   const seo = seoPayload.article({article, url: request.url});
 
-  return json({article, seo, journalhandle, type});
+  const blogTitle = blog.title
+
+  return json({article, seo, journalhandle, type,blogTitle});
 }
 
 export default function Article() {
-  const {article, formattedDate} = useLoaderData();
+  const {article,blogTitle, formattedDate} = useLoaderData();
   const {title, image, contentHtml, author} = article;
-
-
+  
   return (
     <>
-      {/* <PageHeader heading={title} /> */}
-      {/* <PageHeader heading={title} variant="blogPost">
-        <span>
-          {formattedDate} &middot; {author?.name}
-        </span>
-      </PageHeader> */}
+     
       <div className="mt-[70px]">
         <DynamicTitle
+          tag={blogTitle === 'Blog' ? 'h2' : 'h1'} // This will render the title inside an h2 tag
           title={title}
           className={'!text-[30px] '}
         />
 
         <div>
-          {/* {image && (
-            <Image
-              data={image}
-              className="w-full mx-auto  md:mt-16 max-w-7xl"
-              sizes="90vw"
-              loading="eager"
-            />
-          )} */}
           {contentHtml && (
             <div
               dangerouslySetInnerHTML={{__html: contentHtml && contentHtml}}
@@ -127,4 +117,3 @@ const BlogData = `#graphql
       }
     }
   }`;
-
