@@ -65,7 +65,6 @@ export default function Article() {
   
   return (
     <>
-     
       <div className="mt-[70px]">
         <DynamicTitle
           tag={blogTitle === 'Blog' ? 'h2' : 'h1'} // This will render the title inside an h2 tag
