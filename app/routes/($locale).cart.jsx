@@ -70,7 +70,10 @@ export default function AddCartFunc() {
   const [msgShow, setMsgShow] = useState('kfjkfkdskjdnsk');
   const [msgFont, setMsgFont] = useState('');
   const [msgFontSize, setMsgFontSize] = useState('');
+  const [lineHeight, setLineHeight] = useState('');
   const [msglastText, setMsglastText] = useState('');
+  const [signOffFontSize, setSignOffFontSize] = useState('');
+  const [signOffLineHeight, setSignOffLineHeight] = useState('');
   const [reciverAddress, setReciverAddress] = useState('');
   const [bulkAddress, setBulkAddress] = useState([]);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -114,7 +117,7 @@ export default function AddCartFunc() {
   }, [selectedCartItemIndex, currentRecipientIndex]);
 
   function setCsvMessageData(cartItem, uploadedAddresses) {
-    const csvMailMergedMessages = []
+    const csvMailMergedMessages = [];
     uploadedAddresses.forEach((item, index) => {
       let baseCustomMessage = cartItem?.baseCustomMessage;
       let csvMessageData = baseCustomMessage;
@@ -155,7 +158,7 @@ export default function AddCartFunc() {
           item['Custom 3'],
         );
       }
-      csvMailMergedMessages.push({msg: csvMessageData})
+      csvMailMergedMessages.push({msg: csvMessageData});
     });
     cartItem.csvMessageData = csvMailMergedMessages;
   }
@@ -473,6 +476,9 @@ export default function AddCartFunc() {
 
     setMsgFont(cartData[cartItemIndex]?.fontFamily);
     setMsgFontSize(cartData[cartItemIndex]?.fontSizeMsg);
+    setLineHeight(cartData[cartItemIndex]?.lineHeight);
+    setSignOffFontSize(cartData[cartItemIndex]?.signOffFontSize);
+    setSignOffLineHeight(cartData[cartItemIndex]?.signOffLineHeight);
     setMsglastText(cartData[cartItemIndex]?.endText);
     if (cartData[cartItemIndex]?.csvBulkData.length > 0) {
       setBulkAddress(cartData[cartItemIndex].csvBulkData);
@@ -562,6 +568,11 @@ export default function AddCartFunc() {
       0,
     );
     setTotalPrize(prices);
+  }
+
+  function getCapitalizedFontName(fontName) {
+    if (!fontName || typeof fontName !== 'string') return fontName;
+    return `${fontName[0].toUpperCase()}${fontName.slice(1)}`;
   }
 
   return (
@@ -1501,27 +1512,28 @@ export default function AddCartFunc() {
                             </span>
                             {/* <div className="my-7 mr-5 relative flex justify-between"></div> */}
                             <div className="relative">
-                              <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-auto mt-2  p-[20px] h-auto ">
-                                <span
-                                  className=" w-full"
+                              <div className="items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  overflow-hidden mt-2  p-[20px] h-auto ">
+                                <pre
+                                  className="whitespace-pre-wrap"
                                   style={{
                                     fontFamily: msgFont,
                                     fontSize: msgFontSize || '30px',
+                                    lineHeight: lineHeight,
                                   }}
                                 >
-                                  {' '}
                                   {msgShow}
-                                </span>
+                                </pre>
                                 <br />
-                                <span
-                                  className="text-center w-full ml-10"
+                                <pre
+                                  className="text-center whitespace-pre-wrap w-full ml-10"
                                   style={{
                                     fontFamily: msgFont,
-                                    fontSize: msgFontSize || '30px',
+                                    fontSize: signOffFontSize || '30px',
+                                    lineHeight: signOffLineHeight,
                                   }}
                                 >
                                   {msglastText}
-                                </span>
+                                </pre>
                               </div>
                               <div className="absolute flex items-center hidden md:block top-[31px] left-[-89px]">
                                 <div className="flex items-center">
@@ -1558,7 +1570,7 @@ export default function AddCartFunc() {
                               <span>
                                 Font:{' '}
                                 <span className="font-normal ml-2">
-                                  {msgFont}
+                                  {getCapitalizedFontName(msgFont)}
                                 </span>{' '}
                               </span>
                             </div>
@@ -1592,32 +1604,35 @@ export default function AddCartFunc() {
                       </div>
                     </div>
 
-                    <div className="w-full items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  h-auto mt-5 overflow-auto p-[20px]">
-                      <span
-                        className=" w-full"
+                    <div className="items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  h-auto mt-5 overflow-hidden p-[20px]">
+                      <pre
+                        className="whitespace-pre-wrap"
                         style={{
                           fontFamily: msgFont,
                           fontSize: msgFontSize || '30px',
+                          lineHeight: lineHeight,
                         }}
                       >
-                        {' '}
                         {msgShow}
-                      </span>
+                      </pre>
                       <br />
-                      <span
-                        className="text-center w-full ml-10"
+                      <pre
+                        className="text-center whitespace-pre-wrap w-full ml-10"
                         style={{
                           fontFamily: msgFont,
-                          fontSize: msgFontSize || '30px',
+                          fontSize: signOffFontSize || '30px',
+                          lineHeight: signOffLineHeight,
                         }}
                       >
                         {msglastText}
-                      </span>
+                      </pre>
                     </div>
                     <div className="mt-[24px]">
                       <span>
                         Font:{' '}
-                        <span className="font-normal ml-2">{msgFont}</span>{' '}
+                        <span className="font-normal ml-2">
+                          {getCapitalizedFontName(msgFont)}
+                        </span>{' '}
                       </span>
                     </div>
                   </>
@@ -1682,7 +1697,7 @@ const GiftProduct = `#graphql
       }
     }
     }
-  `;
+`;
 
 const PostalProduct = `#graphql
   query
@@ -1706,4 +1721,4 @@ const PostalProduct = `#graphql
         }
       }
     }
-  }`;
+}`;
