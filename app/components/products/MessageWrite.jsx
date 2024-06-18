@@ -840,11 +840,11 @@ export function MessageWriting({
       const batchSize = 250;
       const numBatches = Math.ceil(fileData.length / batchSize);
 
-      for (let i = 0; i < numBatches; i++) {
+      for (let i = 0; i <= numBatches; i++) {
         const startIdx = i * batchSize;
         const endIdx = Math.min((i + 1) * batchSize, fileData.length);
         const batchData = fileData.slice(startIdx, endIdx);
-        const isLastBatch = i === numBatches - 1;
+        const isLastBatch = i === numBatches;
         setLoader(true);
 
         const payload = {
