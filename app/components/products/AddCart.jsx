@@ -424,7 +424,6 @@ export function AddCart({
         fontFamily: fontFamilyName ? fontFamilyName : editFontFamily,
         productGetUrl: window?.location.pathname,
         endText: cartDataReq?.signOffText,
-        csvMessageData: cartDataReq?.csvFileBulk && cartDataReq?.csvMessageData,
         csvFileURL:
           cartDataReq?.csvFileBulk && cartDataReq?.csvFileBulk[0]?.csvFileUrl,
         qyt: cartDataReq?.csvFileLen,

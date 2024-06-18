@@ -113,6 +113,53 @@ export default function AddCartFunc() {
     }
   }, [selectedCartItemIndex, currentRecipientIndex]);
 
+  function setCsvMessageData(cartItem, uploadedAddresses) {
+    const csvMailMergedMessages = []
+    uploadedAddresses.forEach((item, index) => {
+      let baseCustomMessage = cartItem?.baseCustomMessage;
+      let csvMessageData = baseCustomMessage;
+
+      if (item['First Name']) {
+        csvMessageData = baseCustomMessage?.replace(
+          /\[First Name\]/g,
+          item['First Name'],
+        );
+      }
+      if (item['Last Name']) {
+        csvMessageData = csvMessageData?.replace(
+          /\[Last Name\]/g,
+          item['Last Name'],
+        );
+      }
+      if (item['Company']) {
+        csvMessageData = csvMessageData?.replace(
+          /\[Company\]/g,
+          item['Company'],
+        );
+      }
+      if (item['Custom 1']) {
+        csvMessageData = csvMessageData?.replace(
+          /\[Custom 1\]/g,
+          item['Custom 1'],
+        );
+      }
+      if (item['Custom 2']) {
+        csvMessageData = csvMessageData?.replace(
+          /\[Custom 2\]/g,
+          item['Custom 2'],
+        );
+      }
+      if (item['Custom 3']) {
+        csvMessageData = csvMessageData?.replace(
+          /\[Custom 3\]/g,
+          item['Custom 3'],
+        );
+      }
+      csvMailMergedMessages.push({msg: csvMessageData})
+    });
+    cartItem.csvMessageData = csvMailMergedMessages;
+  }
+
   async function setPostalValue() {
     let postalTit = postalData.product.variants.edges[0].node.title;
     let postalID = postalData.product.variants.edges[0].node.id;
@@ -406,6 +453,7 @@ export default function AddCartFunc() {
         }
 
         const data = await response.json();
+        setCsvMessageData(cartData[cartItemIndex], data.result[0]?.addresses);
         const recipientOnlyAddresses = updateCartItemWithRecipientAddresses(
           data.result[0]?.addresses,
           cartItemIndex,

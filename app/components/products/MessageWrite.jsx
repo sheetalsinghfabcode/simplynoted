@@ -223,60 +223,32 @@ export function MessageWriting({
       let reqField;
       let subName = name;
       const baseCustomMessage = name;
-      const csvMailMergedMessages = [];
 
       if (fileData.length) {
         fileData.map((obj) => {
-          let csvMessageData = baseCustomMessage;
           if (obj['First Name']) {
             subName = subName?.replace(/\[First Name\]/g, obj['First Name']);
-            csvMessageData = baseCustomMessage?.replace(
-              /\[First Name\]/g,
-              obj['First Name'],
-            );
           }
           if (obj['Last Name']) {
             subName = subName?.replace(/\[Last Name\]/g, obj['Last Name']);
-            csvMessageData = csvMessageData?.replace(
-              /\[Last Name\]/g,
-              obj['Last Name'],
-            );
           }
           if (obj['Company']) {
             subName = subName?.replace(/\[Company\]/g, obj['Company']);
-            csvMessageData = csvMessageData?.replace(
-              /\[Company\]/g,
-              obj['Company'],
-            );
           }
           if (obj['Custom 1']) {
             subName = subName?.replace(/\[Custom 1\]/g, obj['Custom 1']);
-            csvMessageData = csvMessageData?.replace(
-              /\[Custom 1\]/g,
-              obj['Custom 1'],
-            );
           }
           if (obj['Custom 2']) {
             subName = subName?.replace(/\[Custom 2\]/g, obj['Custom 2']);
-            csvMessageData = csvMessageData?.replace(
-              /\[Custom 2\]/g,
-              obj['Custom 2'],
-            );
           }
           if (obj['Custom 3']) {
             subName = subName?.replace(/\[Custom 3\]/g, obj['Custom 3']);
-            csvMessageData = csvMessageData?.replace(
-              /\[Custom 3\]/g,
-              obj['Custom 3'],
-            );
           }
           obj.msgData = subName;
-          csvMailMergedMessages.push({msg: csvMessageData});
         });
         reqField = {
           msg: subName,
           baseCustomMessage,
-          csvMessageData: csvMailMergedMessages,
           signOffText: name2,
           csvFileBulk: csvFile ? csvFile : null,
           csvFileLen: lenCsvData ? lenCsvData : 1,
@@ -328,7 +300,6 @@ export function MessageWriting({
     } else {
       let subName = name;
       const baseCustomMessage = name;
-      const csvMailMergedMessages = [];
       
 
       const csvFileResponse = await uploadCsvFileOnClick();
@@ -364,12 +335,10 @@ export function MessageWriting({
             nonUsAdd++;
           }
           obj.msgData = subName;
-          csvMailMergedMessages.push({msg: name});
         });
         reqField = {
           msg: subName,
           baseCustomMessage,
-          csvMessageData: csvMailMergedMessages,
           signOffText: name2,
           csvFileBulk: csvFileResponse ? csvFileResponse : null,
           csvFileLen: fileData ? fileData.length : 1,
