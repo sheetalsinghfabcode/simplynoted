@@ -660,11 +660,6 @@ export function LoginFunc() {
           'subscriptionName',
           json.stripe.subscription ? json.stripe.subscription : 'Free',
         );
-
-        localStorage.setItem(
-          'subscriptionPriceId',
-          json.stripe.subscriptionId && json.stripe.subscriptionId,
-        );
       } else {
         localStorage.setItem('packageDiscount', JSON.stringify(0));
         localStorage.setItem('subscriptionName', 'Free');

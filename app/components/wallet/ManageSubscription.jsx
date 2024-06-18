@@ -55,6 +55,7 @@ const ManageSubscription = () => {
     subscriptionTitle,
     setSubscriptionTitle,
     isStripeDataUpdated,
+    subscriptionPriceId,
     setIsStripeDataUpdated,
   } = useStateContext();
 
@@ -216,6 +217,8 @@ const ManageSubscription = () => {
         setDeleted(false);
       });
   };
+
+  console.log('stripeCollection', stripeCollection);
 
   const updateCreditCard = (id) => {
     const url = `${SERVER_BASE_URL}/stripe/update-payment-method?customerId=${customerID}`;
@@ -439,11 +442,19 @@ const ManageSubscription = () => {
   );
 
   useEffect(() => {
-    const subscriptionTitleName = localStorage.getItem('subscriptionName');
-    if (subscriptionTitleName) {
-      setSubscriptionTitle(subscriptionTitleName);
+    if (
+      stripeCollection && stripeCollection.stripe &&
+      stripeCollection.stripe.subscriptionStatus === 'canceled'
+    ) {
+      setSubscriptionTitle('Free');
+    } else {
+      const subscriptionTitleName = localStorage.getItem('subscriptionName');
+      if (subscriptionTitleName) {
+        setSubscriptionTitle(subscriptionTitleName);
+      }
     }
-  }, []);
+  }, [stripeCollection]);
+
 
   function prettyFormatNumber(inputString) {
     inputString = inputString?.toString();
@@ -484,7 +495,6 @@ const ManageSubscription = () => {
   let formattedDate = formatDate(currentDate);
 
   // Display the formatted date
-
   return (
     <>
       <PackageModal

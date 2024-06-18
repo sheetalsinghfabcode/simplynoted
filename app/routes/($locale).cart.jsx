@@ -366,6 +366,8 @@ export default function AddCartFunc() {
     return filename;
   }
 
+  console.log("cartData",cartData)
+
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})
     let data = cartData[index];
@@ -1606,7 +1608,7 @@ export default function AddCartFunc() {
 
                     <div className="items-center bg-[#fff] border-2 border-[#001a5f] rounded-xl  h-auto mt-5 overflow-hidden p-[20px]">
                       <pre
-                        className="whitespace-pre-wrap"
+                        className="whitespace-pre-wrap font-normal"
                         style={{
                           fontFamily: msgFont,
                           fontSize: msgFontSize || '30px',
