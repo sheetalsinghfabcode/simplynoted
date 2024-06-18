@@ -70,7 +70,7 @@ export default function CustomProducts() {
   const goBack = () => navigate(-1);
   const datafornav = useLocation();
 
-  let EditMess = datafornav.state?.data?.messageData;
+  let EditMess = datafornav.state?.data?.baseCustomMessage;
   let editEndMess = datafornav.state?.data.endText;
   let editOrderValue = datafornav.state;
   let editFontFamily = datafornav.state?.data.fontFamily;
