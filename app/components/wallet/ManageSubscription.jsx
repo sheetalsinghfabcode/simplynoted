@@ -218,7 +218,6 @@ const ManageSubscription = () => {
       });
   };
 
-  console.log('stripeCollection', stripeCollection);
 
   const updateCreditCard = (id) => {
     const url = `${SERVER_BASE_URL}/stripe/update-payment-method?customerId=${customerID}`;
