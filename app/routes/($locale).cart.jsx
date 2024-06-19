@@ -366,7 +366,6 @@ export default function AddCartFunc() {
     return filename;
   }
 
-  console.log("cartData",cartData)
 
   function editOrderData(index) {
     // navigate(,{state:{index:'index'}})

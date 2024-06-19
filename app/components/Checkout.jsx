@@ -326,7 +326,7 @@ export function CheckoutData({
 
   async function paymentPurchase() {
     if (
-      (walletBalance?.balance < 100 ||
+      (walletBalance?.balance < 10 ||
         walletBalance?.balance < prices?.totalPrice) &&
       showWallet
     ) {
@@ -1090,7 +1090,7 @@ export function CheckoutData({
         show={openModal}
         title="Attention: Low Wallet Balance"
         message={`Your Wallet has insufficient funds ${
-          walletBalance?.balance < 100 ? '(minimum of $100)' : ''
+          walletBalance?.balance < 10 ? '(minimum of $10)' : ''
         } for this purchase. You can either purchase a new Pre-Paid Package or use your credit card on file for this purchase.`}
         confirmText="Purchase Package"
         onConfirm={() => {
