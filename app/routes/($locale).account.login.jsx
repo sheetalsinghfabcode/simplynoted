@@ -5,7 +5,10 @@ import {getInputStyleClasses} from '~/lib/utils';
 import {useStateContext} from '~/context/StateContext';
 import {Link} from '~/components';
 import CircularLoader from '~/components/CircularLoder';
-import Underline from "../../assets/Image/underline-2-img.png"
+import Underline from '../../assets/Image/underline-2-img.png';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+
 
 export const handle = {
   isPublic: true,
@@ -89,6 +92,14 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [verifid, setVerifid] = useState('');
+
+
+  function onChange(value) {
+    if(value) {
+      setVerifid(true)
+    }
+  }
 
   const handleLogin = async () => {
     if (
@@ -117,10 +128,7 @@ export default function Login() {
           Sign in
         </h1>
         <div className="flex justify-center">
-          <img
-            className="mt-2 w-32"
-            src={Underline}
-          />
+          <img className="mt-2 w-32" src={Underline} />
         </div>
         <p className="mt-[20px] text-black text-opacity-80 text-[15px] text-center">
           If you have an account with us, please log in.
@@ -151,7 +159,6 @@ export default function Login() {
                 }
                 setEmail(e.target.value);
               }}
-             
             />
 
             {nativeEmailError && (
@@ -178,7 +185,6 @@ export default function Login() {
                 }
                 setPassword(e.target.value);
               }}
-             
             />
             {nativePasswordError && (
               <p className="text-red-500 text-xs">
@@ -186,6 +192,7 @@ export default function Login() {
               </p>
             )}
           </div>
+          <ReCAPTCHA sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM" onChange={onChange} />,
           <div
             onClick={handleLogin}
             className="flex !mt-0 items-center justify-between"
@@ -197,7 +204,8 @@ export default function Login() {
                 !!(
                   nativePasswordError ||
                   nativeEmailError ||
-                  actionData?.formError
+                  actionData?.formError ||
+                  !verifid
                 )
               }
             >
@@ -206,8 +214,11 @@ export default function Login() {
           </div>
           <div className="flex  justify-between items-center sm:mt-6 mt-4 border-t border-gray-300">
             <p className="align-baseline  mt-[12px]">
-              <Link className="text-[16px] mt-4 inline underline" to="/account/register">
-                  Create an account
+              <Link
+                className="text-[16px] mt-4 inline underline"
+                to="/account/register"
+              >
+                Create an account
               </Link>
             </p>
             <Link

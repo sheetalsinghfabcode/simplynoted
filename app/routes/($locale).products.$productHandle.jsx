@@ -21,7 +21,6 @@ import invariant from 'tiny-invariant';
 import clsx from 'clsx';
 import MenuUnderlineImage from '../../assets/Image/menu-underline.png';
 
-
 import {
   Heading,
   IconCaret,
@@ -52,7 +51,8 @@ import Breadcrumbs from '~/components/Breadcrumbs';
 import {useStateContext} from '~/context/StateContext';
 import Instruction from '~/components/modal/Instruction';
 import CircularLoader from '~/components/CircularLoder';
-import { SERVER_BASE_URL } from '~/data/config';
+import {SERVER_BASE_URL} from '~/data/config';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export const headers = routeHeaders;
 
@@ -245,11 +245,7 @@ export default function Product() {
       : false,
   );
 
-  const {
-    productshow,
-    showSignScreen,
-    setShowSignScreen,
-  } = useStateContext();
+  const {productshow, showSignScreen, setShowSignScreen} = useStateContext();
   const [modalIsOpen2, setIsOpen2] = useState(false);
   const [showBox, setShowBox] = useState(true);
   const [selectedFile, setSelectedFile] = useState('');
@@ -619,6 +615,14 @@ export function LoginFunc() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [verifid, setVerifid] = useState(false);
+
+  function onChange(value) {
+    if (value) {
+      setVerifid(true);
+    }
+  }
+
   const handleLogin = async () => {
     if (
       !email.trim() ||
@@ -765,6 +769,11 @@ export function LoginFunc() {
               </p>
             )}
           </div>
+          <ReCAPTCHA
+            sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM"
+            onChange={onChange}
+          />
+          ,
           <div
             onClick={handleLogin}
             className="flex !mt-0 items-center justify-between"
@@ -776,7 +785,8 @@ export function LoginFunc() {
                 !!(
                   nativePasswordError ||
                   nativeEmailError ||
-                  actionData?.formError
+                  actionData?.formError ||
+                  !verifid
                 )
               }
             >

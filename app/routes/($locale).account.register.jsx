@@ -5,9 +5,10 @@ import {useStateContext} from '~/context/StateContext';
 import CircularLoder from '../components/CircularLoder';
 import {getInputStyleClasses} from '~/lib/utils';
 import {Link} from '~/components';
-import Underline from "../../assets/Image/underline-2-img.png"
+import Underline from '../../assets/Image/underline-2-img.png';
 
 import {doLogin} from './($locale).account.login';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export async function loader({context, params}) {
   const customerAccessToken = await context.session.get('customerAccessToken');
@@ -107,6 +108,13 @@ export default function Register() {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [verifid, setVerifid] = useState(false);
+
+  function onChange(value) {
+    if (value) {
+      setVerifid(true);
+    }
+  }
 
   const handleRegister = async () => {
     if (
@@ -141,10 +149,7 @@ export default function Register() {
           Create an Account
         </h1>
         <div className="flex justify-center">
-          <img
-            className="w-64 mt-3"
-            src={Underline}
-          />
+          <img className="w-64 mt-3" src={Underline} />
         </div>
         {/* TODO: Add onSubmit to validate _before_ submission with native? */}
         <Form method="post" noValidate className="pt-6 pb-0 mt-4  space-y-3">
@@ -219,7 +224,6 @@ export default function Register() {
               </p>
             )}
           </div>
-
           <div>
             <input
               className={`mb-1 h-12 ${getInputStyleClasses(
@@ -254,7 +258,6 @@ export default function Register() {
               </p>
             )}
           </div>
-
           <div className="!mb-3">
             <input
               className={`mb-1 h-12 ${getInputStyleClasses(
@@ -285,7 +288,11 @@ export default function Register() {
               </p>
             )}
           </div>
-
+          <ReCAPTCHA
+            sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM"
+            onChange={onChange}
+          />
+          ,
           <div
             onClick={handleRegister}
             className="flex items-center !mt-0 justify-between"
@@ -299,7 +306,8 @@ export default function Register() {
                   nativeEmailError ||
                   nativeFirstNameError ||
                   nativeLastNameError ||
-                  actionData?.formError
+                  actionData?.formError ||
+                  !verifid
                 )
               }
             >
