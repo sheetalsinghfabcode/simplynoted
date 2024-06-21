@@ -8,7 +8,7 @@ const PRODUCTION_PLANS_SHOPIFY_IDS = [
   '7034783891561',
 ];
 
-// export {SERVER_BASE_URL, STRIPE_PUBLISHABLE_KEY, PRODUCTION_PLANS_SHOPIFY_IDS};
+ export {SERVER_BASE_URL, STRIPE_PUBLISHABLE_KEY, PRODUCTION_PLANS_SHOPIFY_IDS};
 
 // For testing other plans, use the following code
 // const SERVER_BASE_URL = 'http://localhost:1112';
