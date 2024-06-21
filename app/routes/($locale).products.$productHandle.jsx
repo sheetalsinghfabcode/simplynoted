@@ -614,7 +614,6 @@ export function LoginFunc() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [verifid, setVerifid] = useState(false);
 
   function onChange(value) {

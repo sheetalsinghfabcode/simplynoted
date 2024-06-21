@@ -92,8 +92,7 @@ export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [verifid, setVerifid] = useState('');
-
+  const [verifid, setVerifid] = useState(false);
 
   function onChange(value) {
     if(value) {
