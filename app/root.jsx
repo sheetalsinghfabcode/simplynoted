@@ -185,6 +185,7 @@ export default function App() {
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-X1D2VJQ3LE"
           ></script>
+           <script src="https://www.google.com/recaptcha/api.js"></script>
           <meta property="og:site_name" content="SimplyNoted"></meta>
           <meta property="og:type" content="website"></meta>
           <Seo />
