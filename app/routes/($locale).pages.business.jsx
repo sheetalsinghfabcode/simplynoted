@@ -57,7 +57,7 @@ export default function bussniess() {
     city: '',
     state: '',
     zip: '',
-    information: '',
+    referral: '',
   });
 
   const handleChange = (e) => {
@@ -100,7 +100,7 @@ export default function bussniess() {
           city: '',
           state: '',
           zip: '',
-          information: '',
+          referral: '',
         });
       } else {
         console.error('Failed to send data');
@@ -332,9 +332,9 @@ export default function bussniess() {
                         required
                         className="!w-full !px-0 p-0"
                         type="text"
-                        name="information"
+                        name="referral"
                         onChange={handleChange}
-                        value={formData.information}
+                        value={formData.referral}
                         placeholder="How did you hear about us?"
                       />
                     </div>
