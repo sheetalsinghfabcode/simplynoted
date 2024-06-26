@@ -3,9 +3,9 @@ import SalesforceFormBgImage02 from '../../assets/Image/salesforce-form-bg-2.web
 import SalesforceFormStampImage from '../../assets/Image/salesforce-form-stamp.avif';
 import SalesforceIcon from '../../assets/Image/salesforce-icon.png';
 import DynamicButton from '~/components/DynamicButton';
-import {useEffect, useState} from 'react';
-import {defer} from '@remix-run/server-runtime';
-import {seoPayload} from '~/lib/seo.server';
+import { useEffect, useState } from 'react';
+import { defer } from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
 import CanvasOne from '../../assets/Video/canvas-first.gif';
 import CanvasTow from '../../assets/Video/canvas-sec.gif';
 import Pen from '../../assets/Image/deep-integration-pen.webp';
@@ -25,12 +25,13 @@ import SalesforceCard from '../../assets/Image/salesforce-cards-1.webp';
 import Arrow from '../../assets/Image/salesforce-arrow-1.png';
 import SalesforceLogo from '../../assets/Image/salesforce-logo.avif';
 import SalesforceItem from '../../assets/Image/salesforce-1.webp';
-import {useNavigate} from '@remix-run/react';
-export async function loader({request, context}) {
-  const {page} = await context.storefront.query(Shopify_GRAPH_QL, {
+import { useNavigate } from '@remix-run/react';
+import ReCAPTCHA from 'react-google-recaptcha';
+export async function loader({ request, context }) {
+  const { page } = await context.storefront.query(Shopify_GRAPH_QL, {
     variants: {},
   });
-  const seo = seoPayload.page({page, url: request.url});
+  const seo = seoPayload.page({ page, url: request.url });
   return defer({
     seo,
     page,
@@ -40,6 +41,13 @@ export async function loader({request, context}) {
 export default function Salesforce() {
   const [animate, setAnimate] = useState(false);
   const navigate = useNavigate();
+  const [verifid, setVerifid] = useState(false);
+
+  function onChange(value) {
+    if (value) {
+      setVerifid(true);
+    }
+  }
 
   useEffect(() => {
     setAnimate(true);
@@ -59,7 +67,7 @@ export default function Salesforce() {
                   </div>
                   <h1
                     className="xl:text-[50px] text-[35px] font-karla font-bold  text-[#001a5f] mb-6"
-                    style={{lineHeight: '0.75'}}
+                    style={{ lineHeight: '0.75' }}
                   >
                     Salesforce
                     <span
@@ -86,8 +94,8 @@ export default function Salesforce() {
                     text="CONNECT USING OUR PROCESS BUILDER"
                     className="text-white p-[17px] sm:text-[16px] small:text-[14px] text-[10px] bg-[#ef6e6e] px-2 py-5 font-bold"
                     onClickFunction={() =>
-                      (window.location.href =
-                        'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
+                    (window.location.href =
+                      'https://simplynoted.com/pages/Easily%20set%20up%20your%20campaign%20in%20minutes%20using%20Salesforce%20Process%20Builder%20or%20Zapier!')
                     }
                   />
 
@@ -109,7 +117,7 @@ export default function Salesforce() {
                   </div>
                   <div
                     className="text-[44px] font-karla md:flex grid  text-[#001a5f] items-center font-bold"
-                    style={{lineHeight: '0.75'}}
+                    style={{ lineHeight: '0.75' }}
                   >
                     Salesforce &nbsp;
                     <span
@@ -144,7 +152,7 @@ export default function Salesforce() {
                           <div className="white-underline-salesforce">
                             <input
                               className="p-0"
-                              required=""
+                              required
                               type="text"
                               name="first-name"
                               placeholder="First Name"
@@ -153,7 +161,7 @@ export default function Salesforce() {
                           <div className="white-underline-salesforce">
                             <input
                               className="p-0"
-                              required=""
+                              required
                               type="text"
                               name="last-name"
                               placeholder="Last Name"
@@ -167,13 +175,14 @@ export default function Salesforce() {
                               className="p-0"
                               type="text"
                               name="company"
+                              required
                               placeholder="Company"
                             />
                           </div>
                           <div className="white-underline-salesforce">
                             <input
                               className="p-0"
-                              required=""
+                              required
                               type="tel"
                               name="phone"
                               placeholder="Phone Number"
@@ -186,15 +195,17 @@ export default function Salesforce() {
                           <div className="white-underline-salesforce">
                             <input
                               className="p-0"
-                              required=""
+                              required
                               type="email"
                               name="email-address"
                               placeholder="Email"
                             />
                           </div>
                           <div className="white-underline-salesforce">
-                            <select name="volume" id="" className="py-0">
-                              <option value="Expected Volume">
+                            <select
+                            required
+                            name="volume" id="" className="py-0">
+                              <option  value="Expected Volume">
                                 Expected Volume
                               </option>
                               <option value="100-500">100-500</option>
@@ -204,9 +215,15 @@ export default function Salesforce() {
                             </select>
                           </div>
                         </div>
-
+                        <div className='mx-auto mb-2'>
+                        <ReCAPTCHA
+                          sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM"
+                          onChange={onChange}
+                        />
+                        </div>
                         <input
                           type="submit"
+                          disabled={!verifid}
                           value="SIGN UP"
                           className="sample-request"
                           id="Form-submit"
@@ -269,8 +286,8 @@ export default function Salesforce() {
                 text="START WRITING"
                 className="btn1 lg:!text-[17px] w-[247px]  md:text-[14px] !h-[54px]  mt-[35px]"
                 onClickFunction={() =>
-                  (window.location.href =
-                    'https://zapier.com/apps/simply-noted/integrations')
+                (window.location.href =
+                  'https://zapier.com/apps/simply-noted/integrations')
                 }
               />
               <DynamicButton

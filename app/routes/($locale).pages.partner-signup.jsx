@@ -2,27 +2,39 @@ import underline from '../../assets/Image/faq-underline.png';
 import robot4 from '../../assets/Image/Robot-4.webp';
 import signup_card from '../../assets/Image/signup-envelopes.webp';
 import DynamicButton from '~/components/DynamicButton';
-import {defer} from '@remix-run/server-runtime';
-import {seoPayload} from '~/lib/seo.server';
+import { defer } from '@remix-run/server-runtime';
+import { seoPayload } from '~/lib/seo.server';
 import PartnerReferral from '../../assets/Video/partner-referral.mp4'
-export async function loader({request, context}) {
-  const {page} = await context.storefront.query(GRAPH_QL, {
+import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+export async function loader({ request, context }) {
+  const { page } = await context.storefront.query(GRAPH_QL, {
     variants: {},
   });
-  const seo = seoPayload.page({page, url: request.url});
+  const seo = seoPayload.page({ page, url: request.url });
   return defer({
     seo,
     page,
   });
 }
 const Partner_signup = () => {
+
+
+  const [verifid, setVerifid] = useState(false);
+
+  function onChange(value) {
+    if (value) {
+      setVerifid(true);
+    }
+  }
+
   return (
     <>
       <div className=" w-full mx-auto flex justify-center global-max-width-handler">
         <div className="relative grid lg:flex flex-wrap justify-center lg:gap-[50px] sm:mt-8 mt-3">
           <div className="lg:w-[40%] w-full lg:mx-0 mx-auto relative text-left mt-5">
             <h1 className="text-[#001a5f] text-center md:text-[50px] text-4xl font-bold tracking-tight pb-[6px] mx-2 leading-[3.5rem]">
-              Sign up for the <br/>
+              Sign up for the <br />
               <span className="font-beauty mx-2 text-[200%]  font-extrabold ">
                 partner
               </span>
@@ -167,9 +179,13 @@ const Partner_signup = () => {
                     placeholder="How did you hear about us?"
                   />
                 </div>
-
+                <ReCAPTCHA
+                          sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM"
+                          onChange={onChange}
+                        />
                 <input
                   type="submit"
+                  disabled={!verifid}
                   value="SIGN UP"
                   className="sample-request"
                   id="Form-submit"
@@ -191,7 +207,7 @@ const Partner_signup = () => {
                 <li className="programm-list !mb-0 !p-0">
                   Define Joint Business Opportunities
                 </li>
-                    
+
                 <li className="programm-list !mb-0 !p-0">
                   Automate with our Zapier Integration
                 </li>
@@ -202,27 +218,27 @@ const Partner_signup = () => {
                 <li className="programm-list !mb-0 !p-0">
                   Training and Development Activities
                 </li>
-           
-            
+
+
                 <li className="programm-list !mb-0 !p-0">Contract Discounts</li>
               </ul>
             </div>
           </div>
-  
+
         </div>
       </div>
       <div className='w-full overflow-hidden'>
-      <video   
-                className="z-[0] w-full block overflow-hidden scale-[1.01] mix-blend-multiply"
-                autoPlay
-                loop
-                playsInline
-                muted
-                nocontrols
-              >
-                <source src={PartnerReferral} type="video/mp4"></source>
-              </video>
-              </div>
+        <video
+          className="z-[0] w-full block overflow-hidden scale-[1.01] mix-blend-multiply"
+          autoPlay
+          loop
+          playsInline
+          muted
+          nocontrols
+        >
+          <source src={PartnerReferral} type="video/mp4"></source>
+        </video>
+      </div>
     </>
   );
 };
