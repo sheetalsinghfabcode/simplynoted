@@ -49,7 +49,6 @@ export const action = async ({request, context, params}) => {
     session.set('customerAccessToken', customerAccessToken);
 
 
-    console.log("token",token)
 
     // Sync customerAccessToken with existing cart
     const result = await cart.updateBuyerIdentity({customerAccessToken});
