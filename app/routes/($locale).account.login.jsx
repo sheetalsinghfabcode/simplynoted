@@ -7,8 +7,7 @@ import {Link} from '~/components';
 import CircularLoader from '~/components/CircularLoder';
 import Underline from '../../assets/Image/underline-2-img.png';
 import ReCAPTCHA from 'react-google-recaptcha';
-
-
+import { useRef } from 'react';
 
 export const handle = {
   isPublic: true,
@@ -48,6 +47,9 @@ export const action = async ({request, context, params}) => {
   try {
     const customerAccessToken = await doLogin(context, {email, password});
     session.set('customerAccessToken', customerAccessToken);
+
+
+    console.log("token",token)
 
     // Sync customerAccessToken with existing cart
     const result = await cart.updateBuyerIdentity({customerAccessToken});
@@ -90,13 +92,15 @@ export default function Login() {
   const {loaderTitle, setLoaderTitle, showLoader, setShowLoader} =
     useStateContext();
 
+    const recaptchaRef = useRef()
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [verifid, setVerifid] = useState(false);
 
   function onChange(value) {
-    if(value) {
-      setVerifid(true)
+    if (value) {
+      setVerifid(true);
     }
   }
 
@@ -191,10 +195,13 @@ export default function Login() {
               </p>
             )}
           </div>
-          <ReCAPTCHA sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM" onChange={onChange} />,
+          <ReCAPTCHA
+            sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM"
+            onChange={onChange}
+          />
           <div
             onClick={handleLogin}
-            className="flex !mt-0 items-center justify-between"
+            className="flex !mt-2 items-center justify-between"
           >
             <button
               className=" shadow-custom h-12 sign-in-modal shadow-lg bg-ef6e6e text-contrast py-2 px-4 focus:shadow-outline block w-full"

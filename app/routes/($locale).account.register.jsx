@@ -292,10 +292,10 @@ export default function Register() {
             sitekey="6LdZCogiAAAAAF90CyxrwcnpuKDLAXD8LG4i_WRM"
             onChange={onChange}
           />
-          ,
+          
           <div
             onClick={handleRegister}
-            className="flex items-center !mt-0 justify-between"
+            className="flex items-center !mt-2 justify-between"
           >
             <button
               className=" shadow-custom  shadow-lg h-12  text-contrast  py-2 px-4 focus:shadow-outline block w-full"
