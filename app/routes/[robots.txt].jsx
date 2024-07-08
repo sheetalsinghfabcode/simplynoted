@@ -1,7 +1,7 @@
-export const loader = ({request}) => {
+export const loader = ({ request }) => {
   const url = new URL(request.url);
 
-  return new Response(robotsTxtData({url: url.origin}), {
+  return new Response(robotsTxtData({ url: url.origin }), {
     status: 200,
     headers: {
       'content-type': 'text/plain',
@@ -11,7 +11,7 @@ export const loader = ({request}) => {
   });
 };
 
-function robotsTxtData({url}) {
+function robotsTxtData({ url }) {
   const sitemapUrl = url ? `${url}/sitemap.xml` : undefined;
 
   return `
@@ -21,18 +21,12 @@ Disallow: /cart
 Disallow: /orders
 Disallow: /checkouts/
 Disallow: /checkout
-Disallow: /cart
 Disallow: /account
 ${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ''}
 
-# Google adsbot ignores robots.txt unless specifically named!
+# Allow Google AdsBot to access all content
 User-agent: adsbot-google
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /cart
-Disallow: /orders
-Disallow: /
-
+Allow: /
 
 User-agent: Pinterest
 Crawl-delay: 1
